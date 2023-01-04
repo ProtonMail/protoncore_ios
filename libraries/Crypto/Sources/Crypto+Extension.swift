@@ -579,11 +579,11 @@ public class Crypto {
         
         let plainMessage: CryptoPlainMessage?
         switch plainRaw {
-        case .left(let plainText): {
+        case .left(let plainText):
             let trimmed = (trimTrailingSpaces) ? plainText.trimTrailingSpaces() : plainText
             plainMessage = CryptoNewPlainMessageFromString(trimmed)
-        }
-        case .right(let plainData): plainMessage = CryptoNewPlainMessage(plainData)
+        case .right(let plainData):
+            plainMessage = CryptoNewPlainMessage(plainData)
         }
         
         let pgpSignature = try keyRing.signDetached(plainMessage)
@@ -594,9 +594,9 @@ public class Crypto {
     }
     
     internal func verifyDetached(input: Either<String, Data>, signature: Either<ArmoredSignature, UnArmoredSignature>,
-                                 verifier: ArmoredKey, verifyTime: Int64) throws -> Bool {
+                                 verifier: ArmoredKey, verifyTime: Int64, trimTrailingSpaces: Bool) throws -> Bool {
         return try self.verifyDetached(input: input, signature: signature,
-                                       verifiers: [verifier], verifyTime: verifyTime)
+                                       verifiers: [verifier], verifyTime: verifyTime, trimTrailingSpaces: trimTrailingSpaces)
     }
     
     internal func verifyDetached(input: Either<String, Data>, signature: Either<ArmoredSignature, UnArmoredSignature>,
@@ -605,11 +605,11 @@ public class Crypto {
         let publicKeyRing = try self.keyRingBuilder.buildPublicKeyRing(armoredKeys: verifiers)
         let plainMessage: CryptoPlainMessage?
         switch input {
-        case .left(let plainText): {
+        case .left(let plainText):
             let trimmed = (trimTrailingSpaces) ? plainText.trimTrailingSpaces() : plainText
             plainMessage = CryptoNewPlainMessageFromString(trimmed)
-        }
-        case .right(let plainData): plainMessage = CryptoNewPlainMessage(plainData.mutable as Data)
+        case .right(let plainData):
+            plainMessage = CryptoNewPlainMessage(plainData.mutable as Data)
         }
         let pgpSignature: CryptoPGPSignature?
         switch signature {

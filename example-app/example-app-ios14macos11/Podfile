@@ -69,7 +69,7 @@ def protoncore_unit_tests
   pod "ProtonCore-Authentication/#{crypto_variant}", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Authentication-KeyGeneration/#{crypto_variant}", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Payments/#{crypto_variant}", :path => "../../", :testspecs => ["Tests"]
-  pod "ProtonCore-APIClient/#{crypto_variant}", :path => "../../", :testspecs => ["Tests-#{crypto_variant}"]
+  pod "ProtonCore-APIClient", :path => "../../", :testspecs => ["Tests-#{crypto_variant}"]
   pod "ProtonCore-Challenge", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-GoLibs/#{crypto_variant}", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Foundations", :path => "../../", :testspecs => ["Tests"]

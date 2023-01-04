@@ -74,7 +74,7 @@ public enum Sign {
     /// - Returns: true / false
     public static func verifyDetached(unArmoredSignature: UnArmoredSignature, plainText: String,
                                       verifierKey: ArmoredKey, verifyTime: Int64 = 0, trimTrailingSpaces: Bool = true) throws -> Bool {
-        return try Crypto().verifyDetached(input: .left(plaintext), signature: .right(unArmoredSignature),
+        return try Crypto().verifyDetached(input: .left(plainText), signature: .right(unArmoredSignature),
                                            verifier: verifierKey, verifyTime: verifyTime, trimTrailingSpaces: trimTrailingSpaces)
     }
     
@@ -89,7 +89,7 @@ public enum Sign {
     ///     with old signatures, as this used to be the default behavior.
     /// - Returns: true / false
     public static func verifyDetached(signature: ArmoredSignature, plainText: String, verifierKeys: [ArmoredKey], verifyTime: Int64 = 0, trimTrailingSpaces: Bool = true) throws -> Bool {
-        return try Crypto().verifyDetached(input: .left(plaintext), signature: .left(signature),
+        return try Crypto().verifyDetached(input: .left(plainText), signature: .left(signature),
                                            verifiers: verifierKeys, verifyTime: verifyTime, trimTrailingSpaces: trimTrailingSpaces)
     }
     
@@ -104,8 +104,8 @@ public enum Sign {
     ///     with old signatures, as this used to be the default behavior.
     /// - Returns: true / false
     public static func verifyDetached(unArmoredSignature: UnArmoredSignature, plainText: String,
-                                      verifierKeys: [ArmoredKey], verifyTime: Int64 = 0, verifyTime: Int64 = 0, trimTrailingSpaces: Bool = true) throws -> Bool {
-        return try Crypto().verifyDetached(input: .left(plaintext), signature: .right(unArmoredSignature),
+                                      verifierKeys: [ArmoredKey], verifyTime: Int64 = 0, trimTrailingSpaces: Bool = true) throws -> Bool {
+        return try Crypto().verifyDetached(input: .left(plainText), signature: .right(unArmoredSignature),
                                            verifiers: verifierKeys, verifyTime: verifyTime, trimTrailingSpaces: trimTrailingSpaces)
     }
     

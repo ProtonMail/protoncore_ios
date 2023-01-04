@@ -940,7 +940,7 @@ extension Crypto {
         let passSlice = passphrase.data(using: .utf8)
         let unlockedKey = try key?.unlock(passSlice)
         let keyRing = try throwing { error in CryptoNewKeyRing(unlockedKey, &error) }
-        let plainMessage = CryptoNewPlainMessageFromString(trim.trimTrailingSpaces())
+        let plainMessage = CryptoNewPlainMessageFromString(plainText.trimTrailingSpaces())
         let pgpSignature = try keyRing!.signDetached(plainMessage)
         let signature = try throwing { error in pgpSignature.getArmored(&error) }
 
@@ -950,7 +950,7 @@ extension Crypto {
     @available(*, deprecated, message: "Please find the replacement in signer")
     public func verifyDetached(signature: String, plainText: String, publicKey: String, verifyTime: Int64) throws -> Bool {
         let trimmed = plainText.trimTrailingSpaces()
-        try verifyDetached(signature: signature, input: .left(trimmed), publicKey: publicKey, verifyTime: verifyTime)
+        return try verifyDetached(signature: signature, input: .left(trimmed), publicKey: publicKey, verifyTime: verifyTime)
     }
 
     @available(*, deprecated, message: "Please find the replacement in signer")
