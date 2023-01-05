@@ -309,6 +309,7 @@ run_ui_testing_light:
     - job: run_localization_tests
       artifacts: false
   script:
+    - fastlane build_ui_tests
     - bash scripts/run_ui_tests_on_ci.sh --light
   before_script:
     - rm -rf ../pmconstants
