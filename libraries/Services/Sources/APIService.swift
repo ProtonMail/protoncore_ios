@@ -313,6 +313,8 @@ public protocol AuthDelegate: AnyObject {
     func onRefresh(sessionUID: String, service: APIService, complete: @escaping AuthRefreshResultCompletion)
     func onUpdate(credential: Credential, sessionUID: String)
     func onLogout(sessionUID: String)
+
+    func eraseUnauthSessionCredentials(sessionUID: String)
 }
 
 public typealias AuthRefreshComplete = (_ auth: Credential?, _ hasError: AuthErrors?) -> Void

@@ -56,34 +56,39 @@ final class PMAPIServiceTests: XCTestCase {
     }
     
     func testCreateAPIService_doh_sessionUID() {
-        let apiServiceDef = PMAPIService.createAPIService(doh: doh, sessionUID: sessionUID)
+        let apiServiceDef = PMAPIService.createAPIService(doh: doh,
+                                                          sessionUID: sessionUID,
+                                                          challangeParametersProvider: .forAPIService(prefix: "core"))
         XCTAssertEqual(apiServiceDef.sessionUID, sessionUID)
         
-        let apiService = PMAPIService.createAPIService(doh: doh, sessionUID: sessionUID, sessionFactory: sessionFactoryMock, cacheToClear: cacheToClearMock, trustKitProvider: trustKitProviderMock)
+        let apiService = PMAPIService.createAPIService(doh: doh, sessionUID: sessionUID, sessionFactory: sessionFactoryMock, cacheToClear: cacheToClearMock, trustKitProvider: trustKitProviderMock, challangeParametersProvider: .forAPIService(prefix: "core"))
         XCTAssertEqual(apiService.sessionUID, sessionUID)
     }
     
     func testCreateAPIServiceWithoutSession_doh_sessionUID() {
-        let apiServiceDef = PMAPIService.createAPIServiceWithoutSession(doh: doh)
+        let apiServiceDef = PMAPIService.createAPIServiceWithoutSession(doh: doh,
+                                                                        challangeParametersProvider: .forAPIService(prefix: "core"))
         XCTAssertEqual(apiServiceDef.sessionUID, "")
         
-        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: doh, sessionFactory: sessionFactoryMock, cacheToClear: cacheToClearMock, trustKitProvider: trustKitProviderMock)
+        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: doh, sessionFactory: sessionFactoryMock, cacheToClear: cacheToClearMock, trustKitProvider: trustKitProviderMock, challangeParametersProvider: .forAPIService(prefix: "core"))
         XCTAssertEqual(apiService.sessionUID, "")
     }
     
     func testCreateAPIService_environment_sessionUID() {
-        let apiServiceDef = PMAPIService.createAPIService(environment: .black, sessionUID: sessionUID)
+        let apiServiceDef = PMAPIService.createAPIService(environment: .black, sessionUID: sessionUID,
+                                                          challangeParametersProvider: .forAPIService(prefix: "core"))
         XCTAssertEqual(apiServiceDef.sessionUID, sessionUID)
         
-        let apiService = PMAPIService.createAPIService(environment: .black, sessionUID: sessionUID, sessionFactory: sessionFactoryMock, cacheToClear: cacheToClearMock, trustKitProvider: trustKitProviderMock)
+        let apiService = PMAPIService.createAPIService(environment: .black, sessionUID: sessionUID, sessionFactory: sessionFactoryMock, cacheToClear: cacheToClearMock, trustKitProvider: trustKitProviderMock, challangeParametersProvider: .forAPIService(prefix: "core"))
         XCTAssertEqual(apiService.sessionUID, sessionUID)
     }
     
     func testCreateAPIServiceWithoutSession_environment_sessionUID() {
-        let apiServiceDef = PMAPIService.createAPIServiceWithoutSession(environment: .black)
+        let apiServiceDef = PMAPIService.createAPIServiceWithoutSession(environment: .black,
+                                                                        challangeParametersProvider: .forAPIService(prefix: "core"))
         XCTAssertEqual(apiServiceDef.sessionUID, "")
         
-        let apiService = PMAPIService.createAPIServiceWithoutSession(environment: .black, sessionFactory: sessionFactoryMock, cacheToClear: cacheToClearMock, trustKitProvider: trustKitProviderMock)
+        let apiService = PMAPIService.createAPIServiceWithoutSession(environment: .black, sessionFactory: sessionFactoryMock, cacheToClear: cacheToClearMock, trustKitProvider: trustKitProviderMock, challangeParametersProvider: .forAPIService(prefix: "core"))
         XCTAssertEqual(apiService.sessionUID, "")
     }
 }

@@ -100,6 +100,8 @@ PODS:
     - ProtonCore-DataModel (= 3.26.1)
     - ProtonCore-Networking (= 3.26.1)
     - ProtonCore-Services (= 3.26.1)
+  - ProtonCore-Authentication (3.26.1):
+    - ProtonCore-Authentication/ErrorWarningEmittingDefaultSubspec (= 3.26.1)
   - ProtonCore-Authentication-KeyGeneration/Crypto-Go1.19.4 (3.26.1):
     - ProtonCore-Authentication/Crypto-Go1.19.4 (= 3.26.1)
     - ProtonCore-FeatureSwitch (= 3.26.1)
@@ -127,6 +129,7 @@ PODS:
     - ProtonCore-GoLibs/Crypto-Go1.19.4 (= 3.26.1)
     - ProtonCore-Services (= 3.26.1)
     - ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto-Go1.19.4 (= 3.26.1)
+  - ProtonCore-Authentication/ErrorWarningEmittingDefaultSubspec (3.26.1)
   - ProtonCore-Challenge (3.26.1):
     - ProtonCore-Foundations (= 3.26.1)
     - ProtonCore-UIFoundations (= 3.26.1)
@@ -229,6 +232,14 @@ PODS:
     - ProtonCore-GoLibs/Crypto-Go1.19.4 (= 3.26.1)
   - ProtonCore-Log (3.26.1)
   - ProtonCore-Log/Tests (3.26.1)
+  - ProtonCore-Login (3.26.1):
+    - ProtonCore-CoreTranslation (= 3.26.1)
+    - ProtonCore-DataModel (= 3.26.1)
+    - ProtonCore-Foundations (= 3.26.1)
+    - ProtonCore-Log (= 3.26.1)
+    - ProtonCore-Login/ErrorWarningEmittingDefaultSubspec (= 3.26.1)
+    - ProtonCore-OpenPGP (= 3.26.1)
+    - TrustKit
   - ProtonCore-Login/Crypto-Go1.19.4 (3.26.1):
     - ProtonCore-Authentication-KeyGeneration/Crypto-Go1.19.4 (= 3.26.1)
     - ProtonCore-Authentication/Crypto-Go1.19.4 (= 3.26.1)
@@ -236,6 +247,13 @@ PODS:
     - ProtonCore-DataModel (= 3.26.1)
     - ProtonCore-Foundations (= 3.26.1)
     - ProtonCore-GoLibs/Crypto-Go1.19.4 (= 3.26.1)
+    - ProtonCore-Log (= 3.26.1)
+    - ProtonCore-OpenPGP (= 3.26.1)
+    - TrustKit
+  - ProtonCore-Login/ErrorWarningEmittingDefaultSubspec (3.26.1):
+    - ProtonCore-CoreTranslation (= 3.26.1)
+    - ProtonCore-DataModel (= 3.26.1)
+    - ProtonCore-Foundations (= 3.26.1)
     - ProtonCore-Log (= 3.26.1)
     - ProtonCore-OpenPGP (= 3.26.1)
     - TrustKit
@@ -376,7 +394,19 @@ PODS:
     - ProtonCore-Networking (= 3.26.1)
     - ProtonCore-Utilities (= 3.26.1)
     - TrustKit
-  - ProtonCore-Services/Tests (3.26.1):
+  - ProtonCore-Services/IntegrationTests (3.26.1):
+    - ProtonCore-Authentication (= 3.26.1)
+    - ProtonCore-Challenge (= 3.26.1)
+    - ProtonCore-DataModel (= 3.26.1)
+    - ProtonCore-Doh (= 3.26.1)
+    - ProtonCore-Environment (= 3.26.1)
+    - ProtonCore-FeatureSwitch (= 3.26.1)
+    - ProtonCore-Log (= 3.26.1)
+    - ProtonCore-Login (= 3.26.1)
+    - ProtonCore-Networking (= 3.26.1)
+    - ProtonCore-Utilities (= 3.26.1)
+    - TrustKit
+  - ProtonCore-Services/UnitTests (3.26.1):
     - ProtonCore-DataModel (= 3.26.1)
     - ProtonCore-Doh (= 3.26.1)
     - ProtonCore-Environment (= 3.26.1)
@@ -585,7 +615,8 @@ DEPENDENCIES:
   - ProtonCore-QuarkCommands (from `../../`)
   - ProtonCore-QuarkCommands/Tests (from `../../`)
   - ProtonCore-Services (from `../../`)
-  - ProtonCore-Services/Tests (from `../../`)
+  - ProtonCore-Services/IntegrationTests (from `../../`)
+  - ProtonCore-Services/UnitTests (from `../../`)
   - ProtonCore-Settings (from `../../`)
   - ProtonCore-Settings/Tests (from `../../`)
   - ProtonCore-TestingToolkit/TestData (from `../../`)
@@ -764,7 +795,7 @@ SPEC CHECKSUMS:
   ProtonCore-Payments: bf10bc221eb2e43381092051b249be3bc3ea981f
   ProtonCore-PaymentsUI: 94393e4145f32f26a5ea529964d38a8c5bd40151
   ProtonCore-QuarkCommands: ea5475e2b5ae462532ce09d9a2ac522b74d33938
-  ProtonCore-Services: 2b8e4d1d79dba7935d1ef3b925206d6c7dd4a9f6
+  ProtonCore-Services: e13c60658fd8df324b22f353e3c3b028f4ff4055
   ProtonCore-Settings: 3a3252fb16732abcac6d045520c006304096ba2b
   ProtonCore-TestingToolkit: 113d87d84f141defcbac855b6d3a427fb7a78e68
   ProtonCore-TroubleShooting: c7269ac42d6588d1561ab62d490446ec1c36cbf2
@@ -778,6 +809,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 75ff97f2484a463cf46c172fe7f94225612aeda1
   TrustKit: f830ff5af0a8cbad5178aef1d0951389b096d312
 
-PODFILE CHECKSUM: d94a5db46eb8f43a3bb15db953bd02bb3149482e
+PODFILE CHECKSUM: 74dce807e184992c01230484d9fa67439d93acda
 
 COCOAPODS: 1.11.3

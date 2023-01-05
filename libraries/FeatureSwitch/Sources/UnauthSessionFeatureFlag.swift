@@ -20,8 +20,8 @@
 //  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
 //
 
-import ProtonCore_FeatureSwitch
-
 extension Feature {
     public static var unauthSession = Feature.init(name: "core.unauthSession", isEnable: false)
+
+    public static var enforceUnauthSessionStrictVerificationOnBackend = Feature.init(name: "core.enforceUnauthSessionStrictVerificationOnBackend", isEnable: false)
 }

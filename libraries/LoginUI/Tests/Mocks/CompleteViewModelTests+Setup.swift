@@ -52,11 +52,11 @@ extension CompleteViewModelTests {
         
         let authDelegate = AuthHelper()
         let serviceDelegate = AnonymousServiceManager()
-        let api = PMAPIService.createAPIService(doh: doh, sessionUID: "test session ID")
+        let api = PMAPIService.createAPIService(doh: doh, sessionUID: "test session ID", challangeParametersProvider: .forAPIService(prefix: "core"))
         api.authDelegate = authDelegate
         api.serviceDelegate = serviceDelegate
         let login = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "CompleteVMTestAPP"), minimumAccountType: minimumAccountType)
-        let signupService = SignupService(api: api, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let signupService = SignupService(api: api, challangeParametersProvider: .forAPIService(prefix: "mail"), clientApp: .mail)
         let viewModel = CompleteViewModel(signupService: signupService, loginService: login, initDisplaySteps: [])
         return viewModel
     }

@@ -87,7 +87,9 @@ class PaymentsViewController: UIViewController, AccessibleView {
             viewController.serviceDelegate = ExampleAPIServiceDelegate()
             viewController.testPicker = testDataVariant.map(PaymentsTestUserPickerData.init(variant:))
         } else if let viewController = segue.destination as? PaymentsReceiptDetailsViewController {
-            viewController.testApi = PMAPIService.createAPIService(environment: .black, sessionUID: "testSessionUID")
+            viewController.testApi = PMAPIService.createAPIService(environment: .black,
+                                                                   sessionUID: "testSessionUID",
+                                                                   challangeParametersProvider: .forAPIService(prefix: clientApp.name))
         }
     }
 

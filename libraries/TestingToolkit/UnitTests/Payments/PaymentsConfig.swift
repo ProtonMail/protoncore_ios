@@ -24,7 +24,6 @@ import ProtonCore_Log
 import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_Payments
-import ProtonCore_TestingToolkit
 
 class TestAuthDelegate: AuthDelegate {
     func authCredential(sessionUID _: String) -> AuthCredential? {
@@ -36,6 +35,7 @@ class TestAuthDelegate: AuthDelegate {
     func onLogout(sessionUID uid: String) { }
     func onUpdate(credential: Credential, sessionUID: String) { }
     func onRefresh(sessionUID: String, service: APIService, complete: @escaping AuthRefreshResultCompletion) { }
+    func eraseUnauthSessionCredentials(sessionUID: String) { }
 }
 
 class TestStoreKitManagerDelegate: StoreKitManagerDelegate {

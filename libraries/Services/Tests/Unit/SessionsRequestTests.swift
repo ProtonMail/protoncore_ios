@@ -45,10 +45,11 @@ final class SessionsRequestTests: XCTestCase {
         super.setUp()
         setupMock()
         service = PMAPIService.createAPIService(doh: dohMock,
-                                   sessionUID: "test sessionUID",
-                                   sessionFactory: sessionFactoryMock,
-                                   cacheToClear: cacheToClearMock,
-                                   trustKitProvider: trustKitProviderMock)
+                                                sessionUID: "test sessionUID",
+                                                sessionFactory: sessionFactoryMock,
+                                                cacheToClear: cacheToClearMock,
+                                                trustKitProvider: trustKitProviderMock,
+                                                challangeParametersProvider: .forAPIService(prefix: "core"))
         service.authDelegate = authDelegateMock
     }
     

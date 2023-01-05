@@ -1,26 +1,40 @@
-lane :run_unit_tests_locally do
-  sh("mkdir", "-p", "fastlane/DerivedData")
+def execute_unit_tests_locally(folder, scheme, device, destination)
+  sh("mkdir", "-p", folder)
   sh("bash", "../scripts/generate_obfuscated_constants.sh")
   run_tests(
     workspace: "example-app/example-app/ExampleApp.xcworkspace", 
-    scheme: "Example-UnitTests", 
-    derived_data_path: "fastlane/DerivedData",
-    device: 'iPhone 11 (15.5)',
+    scheme: scheme, 
+    derived_data_path: folder,
+    device: device,
+    destination: destination,
     build_for_testing: true,
     code_coverage: true,
     result_bundle: true
   )
   run_tests(
     workspace: "example-app/example-app/ExampleApp.xcworkspace", 
-    scheme: "Example-UnitTests", 
-    derived_data_path: "fastlane/DerivedData",
-    device: 'iPhone 11 (15.5)',
+    scheme: scheme, 
+    derived_data_path: folder,
+    device: device,
+    destination: destination,
     clean: false, 
     skip_build: true,
     code_coverage: true,
     result_bundle: true
   )
-  sh("rm", "-rf", "fastlane/DerivedData")
+  sh("rm", "-rf", folder)
+end
+
+lane :run_unit_tests_locally do
+  execute_unit_tests_locally("fastlane/DerivedData/UnitTests", "Example-UnitTests", "iPhone 11 (15.5)", nil)
+end
+
+lane :run_unit_tests_macos_locally do
+  execute_unit_tests_locally("fastlane/DerivedData/UnitTests-macOS", "Example-UnitTests-macOS", nil, "platform=macOS")
+end
+
+lane :run_integration_tests_locally do
+  execute_unit_tests_locally("fastlane/DerivedData/IntegrationTests", "Example-IntegrationTests", "iPhone 11 (15.5)", nil)
 end
 
 lane :run_localization_tests_locally do
@@ -166,32 +180,55 @@ lane :cleanup_build_ui_tests do
   delete_derived_data_folder("UITestsOnlyBuild")
 end
 
-lane :run_unit_tests do
-  create_derived_data_folder("UnitTests")
+def execute_unit_tests(folder, scheme, device, destination)
+  create_derived_data_folder(folder)
   prepare_for_building
   run_tests(
     workspace: "example-app/example-app/ExampleApp.xcworkspace",
-    scheme: "Example-UnitTests",
-    derived_data_path: derived_data_path("UnitTests"),
+    scheme: scheme,
+    derived_data_path: derived_data_path(folder),
+    device: device,
+    destination: destination,
     build_for_testing: true,
     code_coverage: true,
     result_bundle: true
   )
   run_tests(
     workspace: "example-app/example-app/ExampleApp.xcworkspace",
-    scheme: "Example-UnitTests",
+    scheme: scheme,
     clean: false,
     skip_build: true,
-    derived_data_path: derived_data_path("UnitTests"),
+    derived_data_path: derived_data_path(folder),
     prelaunch_simulator: true,
-    device: 'iPhone 11',
+    device: device,
+    destination: destination,
     code_coverage: true,
     result_bundle: true
   )
 end
 
+lane :run_unit_tests do
+  execute_unit_tests("UnitTests", "Example-UnitTests", "iPhone 11", nil)
+end
+
 lane :cleanup_run_unit_tests do
   delete_derived_data_folder("UnitTests")
+end
+
+lane :run_unit_tests_macos do
+  execute_unit_tests("UnitTests-macOS", "Example-UnitTests-macOS", nil, "platform=macOS")
+end
+
+lane :cleanup_run_unit_tests_macos do
+  delete_derived_data_folder("UnitTests-macOS")
+end
+
+lane :run_integration_tests do
+  execute_unit_tests("IntegrationTests", "Example-IntegrationTests", "iPhone 11", nil)
+end
+
+lane :cleanup_run_integration_tests do
+  delete_derived_data_folder("IntegrationTests")
 end
 
 lane :run_localization_tests do

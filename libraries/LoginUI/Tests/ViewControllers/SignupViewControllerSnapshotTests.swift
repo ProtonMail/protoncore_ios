@@ -41,7 +41,7 @@ class SignupViewControllerSnapshotTests: SnapshotTestCase {
             controllerType: SignupViewController.self
         )
         sut.viewModel = SignupViewModel(
-            apiService: PMAPIService.createAPIServiceWithoutSession(doh: DohMock()),
+            apiService: PMAPIService.createAPIServiceWithoutSession(doh: DohMock(), challangeParametersProvider: .forAPIService(prefix: "core")),
             signupService: SignupServiceMock(),
             loginService: LoginMock(),
             challenge: PMChallenge()

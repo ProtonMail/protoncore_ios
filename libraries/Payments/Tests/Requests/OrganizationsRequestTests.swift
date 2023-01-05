@@ -61,6 +61,7 @@ final class OrganizationsRequestTests: XCTestCase {
         func onLogout(sessionUID uid: String) { }
         func onUpdate(credential: Credential, sessionUID: String) { }
         func onRefresh(sessionUID: String, service: APIService, complete: @escaping AuthRefreshResultCompletion) { }
+        func eraseUnauthSessionCredentials(sessionUID: String) { }
         private var testAuthCredential: AuthCredential? {
             AuthCredential(sessionID: "sessionID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", privateKey: nil, passwordKeySalt: nil)
         }
@@ -123,7 +124,9 @@ final class OrganizationsRequestTests: XCTestCase {
 
         queue.async {
             do {
-                let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID")
+                let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface,
+                                                        sessionUID: "testSessionUID",
+                                                        challangeParametersProvider: .forAPIService(prefix: "core"))
                 let testAuthDelegate = TestAuthDelegate()
                 api.authDelegate = testAuthDelegate
                 let testAPIServiceDelegate = TestAPIServiceDelegate()

@@ -28,7 +28,9 @@ class FeaturesViewController: UIViewController, TrustKitDelegate {
     private var authHelper: AuthHelper?
     private var user: User?
     private var addresses: [Address]?
-    var liveApi = PMAPIService.createAPIService(environment: clientApp == .vpn ? .vpnProd : .mailProd, sessionUID: "testSessionUID")
+    var liveApi = PMAPIService.createAPIService(environment: clientApp == .vpn ? .vpnProd : .mailProd,
+                                                sessionUID: "testSessionUID",
+                                                challangeParametersProvider: .forAPIService(prefix: clientApp.name))
     
     private var keypassphrase = ""
     

@@ -65,7 +65,7 @@ def protoncore_unit_tests_ios
   pod "ProtonCore-DataModel", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Doh", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Networking", :path => "../../", :testspecs => ["Tests"]
-  pod "ProtonCore-Services", :path => "../../", :testspecs => ["Tests"]
+  pod "ProtonCore-Services", :path => "../../", :testspecs => ["UnitTests"]
   pod "ProtonCore-CoreTranslation", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Authentication/#{crypto_variant}", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Authentication-KeyGeneration/#{crypto_variant}", :path => "../../", :testspecs => ["Tests"]
@@ -78,7 +78,6 @@ def protoncore_unit_tests_ios
   pod "ProtonCore-Keymaker/#{crypto_variant}", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-KeyManager/#{crypto_variant}", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Log", :path => "../../", :testspecs => ["Tests"]
-  pod "ProtonCore-Services", :path => "../../"
   pod "ProtonCore-Utilities", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-QuarkCommands", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-TroubleShooting", :path => "../../", :testspecs => ["Tests"]
@@ -123,6 +122,12 @@ def protoncore_unit_tests_macos
   pod "ProtonCore-TestingToolkit/UnitTests/Core", :path => "../../"
   pod "ProtonCore-TestingToolkit/UnitTests/Doh", :path => "../../"
 end
+
+def protoncore_integration_tests_ios
+  protoncore_ios
+  pod "ProtonCore-Services", :path => "../../", :testspecs => ["IntegrationTests"]
+end
+
 
 def shared_uitests_dependencies
   protoncore_dependencies
@@ -221,6 +226,13 @@ abstract_target "iOS" do
 
     protoncore_dependencies
     protoncore_unit_tests_ios
+  end
+
+  target "Example-IntegrationTests" do
+    project "ExampleApp.xcodeproj"
+
+    protoncore_dependencies
+    protoncore_integration_tests_ios
   end
 
   target "Example-AccountDeletion-UITests" do

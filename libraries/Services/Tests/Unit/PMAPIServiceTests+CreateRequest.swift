@@ -69,13 +69,14 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                        sessionUID: sessionUID,
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
-                                       trustKitProvider: trustKitProviderMock)
+                                       trustKitProvider: trustKitProviderMock,
+                                                challangeParametersProvider: .forAPIService(prefix: "core"))
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          UID: nil,
+                                          sessionUID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
@@ -85,7 +86,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: 100,
                                           headers: nil,
-                                          UID: nil,
+                                          sessionUID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 100)
         XCTAssertTrue( sessionTest.request?.method == .post)
@@ -95,7 +96,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: -100,
                                           headers: nil,
-                                          UID: nil,
+                                          sessionUID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == -100)
         XCTAssertTrue( sessionTest.request?.method == .put)
@@ -120,13 +121,14 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                        sessionUID: sessionUID,
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
-                                       trustKitProvider: trustKitProviderMock)
+                                       trustKitProvider: trustKitProviderMock,
+                                                challangeParametersProvider: .forAPIService(prefix: "core"))
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          UID: nil,
+                                          sessionUID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 30)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
@@ -136,7 +138,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: 100,
                                           headers: nil,
-                                          UID: nil,
+                                          sessionUID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 100)
         XCTAssertTrue( sessionTest.request?.method == .post)
@@ -147,7 +149,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: -100,
                                           headers: nil,
-                                          UID: nil,
+                                          sessionUID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == -100)
         XCTAssertTrue( sessionTest.request?.method == .delete)
@@ -171,7 +173,8 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                        sessionUID: sessionUID,
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
-                                       trustKitProvider: trustKitProviderMock)
+                                       trustKitProvider: trustKitProviderMock,
+                                                challangeParametersProvider: .forAPIService(prefix: "core"))
         testService.serviceDelegate = apiServiceDelegateMock
         apiServiceDelegateMock.additionalHeadersStub.fixture = ["a": "av", "b": "bc"]
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
@@ -179,15 +182,15 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          UID: nil,
+                                          sessionUID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
         XCTAssertTrue( sessionTest.request?.method == .get)
         XCTAssertTrue( sessionTest.headerCounts() > 0)
-        XCTAssertTrue( sessionTest.exsit(key: "a"))
-        XCTAssertTrue( sessionTest.exsit(key: "b"))
-        XCTAssertFalse( sessionTest.exsit(key: "c"))
+        XCTAssertTrue( sessionTest.hasHeader(key: "a"))
+        XCTAssertTrue( sessionTest.hasHeader(key: "b"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "c"))
     }
     
     func testCreateRequestCustomHeaders() throws {
@@ -208,22 +211,23 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                        sessionUID: sessionUID,
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
-                                       trustKitProvider: trustKitProviderMock)
+                                       trustKitProvider: trustKitProviderMock,
+                                                challangeParametersProvider: .forAPIService(prefix: "core"))
         testService.serviceDelegate = apiServiceDelegateMock
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          UID: nil,
+                                          sessionUID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
         XCTAssertTrue( sessionTest.request?.method == .get)
         XCTAssertTrue( sessionTest.headerCounts() > 0)
-        XCTAssertFalse( sessionTest.exsit(key: "a"))
-        XCTAssertFalse( sessionTest.exsit(key: "b"))
-        XCTAssertFalse( sessionTest.exsit(key: "c"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "a"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "b"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "c"))
         
         let testHeaders = ["a": "av", "b": "bc"]
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
@@ -231,15 +235,15 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: testHeaders,
-                                          UID: nil,
+                                          sessionUID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
         XCTAssertTrue( sessionTest.request?.method == .get)
         XCTAssertTrue( sessionTest.headerCounts() > 0)
-        XCTAssertTrue( sessionTest.exsit(key: "a"))
-        XCTAssertTrue( sessionTest.exsit(key: "b"))
-        XCTAssertFalse( sessionTest.exsit(key: "c"))
+        XCTAssertTrue( sessionTest.hasHeader(key: "a"))
+        XCTAssertTrue( sessionTest.hasHeader(key: "b"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "c"))
     }
     
     func testCreateRequestAccessToken() throws {
@@ -260,38 +264,39 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                        sessionUID: sessionUID,
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
-                                       trustKitProvider: trustKitProviderMock)
+                                       trustKitProvider: trustKitProviderMock,
+                                                challangeParametersProvider: .forAPIService(prefix: "core"))
         testService.serviceDelegate = apiServiceDelegateMock
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          UID: nil,
+                                          sessionUID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
         XCTAssertTrue( sessionTest.request?.method == .get)
         XCTAssertTrue( sessionTest.headerCounts() > 0)
-        XCTAssertFalse( sessionTest.exsit(key: "a"))
-        XCTAssertFalse( sessionTest.exsit(key: "b"))
-        XCTAssertFalse( sessionTest.exsit(key: "c"))
-        XCTAssertFalse( sessionTest.exsit(key: "Authorization"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "a"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "b"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "c"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "Authorization"))
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          UID: nil,
+                                          sessionUID: nil,
                                           accessToken: "this is a fake token")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
         XCTAssertTrue( sessionTest.request?.method == .get)
         XCTAssertTrue( sessionTest.headerCounts() > 0)
-        XCTAssertFalse( sessionTest.exsit(key: "a"))
-        XCTAssertFalse( sessionTest.exsit(key: "b"))
-        XCTAssertFalse( sessionTest.exsit(key: "c"))
-        XCTAssertTrue( sessionTest.exsit(key: "Authorization"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "a"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "b"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "c"))
+        XCTAssertTrue( sessionTest.hasHeader(key: "Authorization"))
     }
     
     func testCreateRequestUserID() throws {
@@ -312,54 +317,55 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                        sessionUID: sessionUID,
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
-                                       trustKitProvider: trustKitProviderMock)
+                                       trustKitProvider: trustKitProviderMock,
+                                                challangeParametersProvider: .forAPIService(prefix: "core"))
         testService.serviceDelegate = apiServiceDelegateMock
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          UID: nil,
+                                          sessionUID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
         XCTAssertTrue( sessionTest.request?.method == .get)
         XCTAssertTrue( sessionTest.headerCounts() > 0)
-        XCTAssertFalse( sessionTest.exsit(key: "a"))
-        XCTAssertFalse( sessionTest.exsit(key: "b"))
-        XCTAssertFalse( sessionTest.exsit(key: "x-pm-uid"))
-        XCTAssertFalse( sessionTest.exsit(key: "Authorization"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "a"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "b"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "x-pm-uid"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "Authorization"))
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          UID: "",
+                                          sessionUID: "",
                                           accessToken: "this is a fake token")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
         XCTAssertTrue( sessionTest.request?.method == .get)
         XCTAssertTrue( sessionTest.headerCounts() > 0)
-        XCTAssertFalse( sessionTest.exsit(key: "a"))
-        XCTAssertFalse( sessionTest.exsit(key: "b"))
-        XCTAssertFalse( sessionTest.exsit(key: "x-pm-uid"))
-        XCTAssertTrue( sessionTest.exsit(key: "Authorization"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "a"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "b"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "x-pm-uid"))
+        XCTAssertTrue( sessionTest.hasHeader(key: "Authorization"))
         
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          UID: "this is a fake userid",
+                                          sessionUID: "this is a fake userid",
                                           accessToken: "this is a fake token")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
         XCTAssertTrue( sessionTest.request?.method == .get)
         XCTAssertTrue( sessionTest.headerCounts() > 0)
-        XCTAssertFalse( sessionTest.exsit(key: "a"))
-        XCTAssertFalse( sessionTest.exsit(key: "b"))
-        XCTAssertTrue( sessionTest.exsit(key: "x-pm-uid"))
-        XCTAssertTrue( sessionTest.exsit(key: "Authorization"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "a"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "b"))
+        XCTAssertTrue( sessionTest.hasHeader(key: "x-pm-uid"))
+        XCTAssertTrue( sessionTest.hasHeader(key: "Authorization"))
     }
     
     func testCreateRequestAppLocal() throws {
@@ -380,23 +386,24 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                        sessionUID: sessionUID,
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
-                                       trustKitProvider: trustKitProviderMock)
+                                       trustKitProvider: trustKitProviderMock,
+                                                challangeParametersProvider: .forAPIService(prefix: "core"))
         testService.serviceDelegate = apiServiceDelegateMock
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          UID: nil,
+                                          sessionUID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
         XCTAssertTrue( sessionTest.request?.method == .get)
         XCTAssertTrue( sessionTest.headerCounts() > 0)
-        XCTAssertFalse( sessionTest.exsit(key: "a"))
-        XCTAssertFalse( sessionTest.exsit(key: "b"))
-        XCTAssertFalse( sessionTest.exsit(key: "x-pm-uid"))
-        XCTAssertFalse( sessionTest.exsit(key: "Authorization"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "a"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "b"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "x-pm-uid"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "Authorization"))
         XCTAssertTrue( sessionTest.matches(key: "x-pm-locale", value: "en_US"))
         
         apiServiceDelegateMock.localeStub.fixture = "us"
@@ -405,16 +412,16 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          UID: nil,
+                                          sessionUID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
         XCTAssertTrue( sessionTest.request?.method == .get)
         XCTAssertTrue( sessionTest.headerCounts() > 0)
-        XCTAssertFalse( sessionTest.exsit(key: "a"))
-        XCTAssertFalse( sessionTest.exsit(key: "b"))
-        XCTAssertFalse( sessionTest.exsit(key: "x-pm-uid"))
-        XCTAssertFalse( sessionTest.exsit(key: "Authorization"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "a"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "b"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "x-pm-uid"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "Authorization"))
         XCTAssertTrue( sessionTest.matches(key: "x-pm-locale", value: "us"))
     }
     
@@ -436,24 +443,25 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                        sessionUID: sessionUID,
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
-                                       trustKitProvider: trustKitProviderMock)
+                                       trustKitProvider: trustKitProviderMock,
+                                                challangeParametersProvider: .forAPIService(prefix: "core"))
         testService.serviceDelegate = apiServiceDelegateMock
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          UID: nil,
+                                          sessionUID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
         XCTAssertTrue( sessionTest.request?.method == .get)
         XCTAssertTrue( sessionTest.headerCounts() > 0)
-        XCTAssertFalse( sessionTest.exsit(key: "a"))
-        XCTAssertFalse( sessionTest.exsit(key: "b"))
-        XCTAssertFalse( sessionTest.exsit(key: "x-pm-uid"))
-        XCTAssertFalse( sessionTest.exsit(key: "Authorization"))
-        XCTAssertTrue( sessionTest.exsit(key: "x-pm-appversion"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "a"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "b"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "x-pm-uid"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "Authorization"))
+        XCTAssertTrue( sessionTest.hasHeader(key: "x-pm-appversion"))
         
         let appVersion = "iOS_0.1.0"
         apiServiceDelegateMock.appVersionStub.fixture = appVersion
@@ -462,16 +470,16 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          UID: nil,
+                                          sessionUID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
         XCTAssertTrue( sessionTest.request?.method == .get)
         XCTAssertTrue( sessionTest.headerCounts() > 0)
-        XCTAssertFalse( sessionTest.exsit(key: "a"))
-        XCTAssertFalse( sessionTest.exsit(key: "b"))
-        XCTAssertFalse( sessionTest.exsit(key: "x-pm-uid"))
-        XCTAssertFalse( sessionTest.exsit(key: "Authorization"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "a"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "b"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "x-pm-uid"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "Authorization"))
         XCTAssertTrue( sessionTest.matches(key: "x-pm-appversion", value: appVersion))
         
         apiServiceDelegateMock.appVersionStub.fixture = ""
@@ -480,16 +488,16 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          UID: nil,
+                                          sessionUID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
         XCTAssertTrue( sessionTest.request?.method == .get)
         XCTAssertTrue( sessionTest.headerCounts() > 0)
-        XCTAssertFalse( sessionTest.exsit(key: "a"))
-        XCTAssertFalse( sessionTest.exsit(key: "b"))
-        XCTAssertFalse( sessionTest.exsit(key: "x-pm-uid"))
-        XCTAssertFalse( sessionTest.exsit(key: "Authorization"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "a"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "b"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "x-pm-uid"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "Authorization"))
         let testValue = sessionTest.value(key: "x-pm-appversion")
         XCTAssertNotNil(testValue)
         XCTAssertFalse(testValue!.isEmpty)
@@ -513,24 +521,25 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                        sessionUID: sessionUID,
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
-                                       trustKitProvider: trustKitProviderMock)
+                                       trustKitProvider: trustKitProviderMock,
+                                                challangeParametersProvider: .forAPIService(prefix: "core"))
         testService.serviceDelegate = apiServiceDelegateMock
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          UID: nil,
+                                          sessionUID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
         XCTAssertTrue( sessionTest.request?.method == .get)
         XCTAssertTrue( sessionTest.headerCounts() > 0)
-        XCTAssertFalse( sessionTest.exsit(key: "a"))
-        XCTAssertFalse( sessionTest.exsit(key: "b"))
-        XCTAssertFalse( sessionTest.exsit(key: "x-pm-uid"))
-        XCTAssertFalse( sessionTest.exsit(key: "Authorization"))
-        XCTAssertTrue( sessionTest.exsit(key: "x-pm-appversion"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "a"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "b"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "x-pm-uid"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "Authorization"))
+        XCTAssertTrue( sessionTest.hasHeader(key: "x-pm-appversion"))
         
         let agent = "iOS_Simulator_12_23_567890"
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
@@ -538,32 +547,32 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          UID: nil,
+                                          sessionUID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
         XCTAssertTrue( sessionTest.request?.method == .get)
         XCTAssertTrue( sessionTest.headerCounts() > 0)
-        XCTAssertFalse( sessionTest.exsit(key: "a"))
-        XCTAssertFalse( sessionTest.exsit(key: "b"))
-        XCTAssertFalse( sessionTest.exsit(key: "x-pm-uid"))
-        XCTAssertFalse( sessionTest.exsit(key: "Authorization"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "a"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "b"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "x-pm-uid"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "Authorization"))
         apiServiceDelegateMock.userAgentStub.fixture = ""
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          UID: nil,
+                                          sessionUID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
         XCTAssertTrue( sessionTest.request?.method == .get)
         XCTAssertTrue( sessionTest.headerCounts() > 0)
-        XCTAssertFalse( sessionTest.exsit(key: "a"))
-        XCTAssertFalse( sessionTest.exsit(key: "b"))
-        XCTAssertFalse( sessionTest.exsit(key: "x-pm-uid"))
-        XCTAssertFalse( sessionTest.exsit(key: "Authorization"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "a"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "b"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "x-pm-uid"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "Authorization"))
         let userAgent = sessionTest.value(key: "User-Agent")
         XCTAssertNotNil(userAgent)
         XCTAssertFalse(userAgent!.isEmpty)
@@ -574,16 +583,16 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           parameters: nil,
                                           nonDefaultTimeout: nil,
                                           headers: nil,
-                                          UID: nil,
+                                          sessionUID: nil,
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 60)
         XCTAssertTrue( sessionTest.request?.url?.absoluteString == "proton.unittests/unit/tests")
         XCTAssertTrue( sessionTest.request?.method == .get)
         XCTAssertTrue( sessionTest.headerCounts() > 0)
-        XCTAssertFalse( sessionTest.exsit(key: "a"))
-        XCTAssertFalse( sessionTest.exsit(key: "b"))
-        XCTAssertFalse( sessionTest.exsit(key: "x-pm-uid"))
-        XCTAssertFalse( sessionTest.exsit(key: "Authorization"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "a"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "b"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "x-pm-uid"))
+        XCTAssertFalse( sessionTest.hasHeader(key: "Authorization"))
         XCTAssertTrue( sessionTest.matches(key: "User-Agent", value: agent))
     }
 }

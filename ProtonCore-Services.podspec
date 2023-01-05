@@ -36,10 +36,17 @@ Pod::Spec.new do |s|
 
     s.source_files = 'libraries/Services/Sources/*.swift'
 
-    s.test_spec "Tests" do |test_spec|
-        test_spec.source_files = "libraries/Services/Tests/*.swift"
+    s.test_spec "UnitTests" do |test_spec|
+        test_spec.source_files = "libraries/Services/Tests/Unit/*.swift"
         test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Networking", $version
         test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Services", $version
+    end
+
+    s.test_spec "IntegrationTests" do |test_spec|
+        test_spec.source_files = "libraries/Services/Tests/Integration/*.swift"
+        test_spec.dependency 'ProtonCore-Challenge', $version
+        test_spec.dependency 'ProtonCore-Authentication', $version
+        test_spec.dependency 'ProtonCore-Login', $version
     end
 
 end

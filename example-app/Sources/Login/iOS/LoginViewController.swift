@@ -116,9 +116,13 @@ final class LoginViewController: UIViewController, AccessibleView {
         
         // pre enable features for testing.
         FeatureFactory.shared.loadEnv()
+
         FeatureFactory.shared.enable(&.externalSignup)
         FeatureFactory.shared.enable(&.externalSignupHeader)
         FeatureFactory.shared.disable(&.externalAccountConversion)
+
+        FeatureFactory.shared.enable(&.unauthSession)
+        FeatureFactory.shared.enable(&.enforceUnauthSessionStrictVerificationOnBackend)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -447,7 +451,9 @@ final class LoginViewController: UIViewController, AccessibleView {
     
     @IBAction private func deleteAccount(_ sender: Any) {
         guard let credential = data?.credential else { return }
-        let api = PMAPIService.createAPIService(environment: environmentSelector.currentEnvironment, sessionUID: credential.UID)
+        let api = PMAPIService.createAPIService(environment: environmentSelector.currentEnvironment,
+                                                sessionUID: credential.UID,
+                                                challangeParametersProvider: .forAPIService(prefix: clientApp.name))
         authManager?.onUpdate(credential: credential, sessionUID: api.sessionUID)
         api.authDelegate = authManager
         api.serviceDelegate = serviceDelegate

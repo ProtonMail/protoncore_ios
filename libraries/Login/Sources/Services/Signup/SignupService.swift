@@ -31,6 +31,7 @@ import ProtonCore_Log
 import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_Utilities
+import ProtonCore_Foundations
 
 public protocol Signup {
 
@@ -42,10 +43,6 @@ public protocol Signup {
     func createNewExternalAccount(email: String, password: String, verifyToken: String, tokenType: String, completion: @escaping (Result<(), SignupError>) -> Void)
     func validateEmailServerSide(email: String, completion: @escaping (Result<Void, SignupError>) -> Void)
     func validatePhoneNumberServerSide(number: String, completion: @escaping (Result<Void, SignupError>) -> Void)
-}
-
-public protocol ChallangeParametersProvider {
-    func provideParameters() -> [[String: Any]]
 }
 
 public class SignupService: Signup {

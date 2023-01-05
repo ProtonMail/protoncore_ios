@@ -278,3 +278,19 @@ extension PMChallenge {
         interceptors.first { $0.textField == textField }
     }
 }
+
+public extension ChallangeParametersProvider {
+    static func forAPIService(prefix: String) -> ChallangeParametersProvider {
+        ChallangeParametersProvider(prefix: prefix) {
+            PMChallenge().export().deviceFingerprintDict()
+        }
+    }
+}
+
+public extension ChallangeParametersProvider {
+    static func forLoginAndSignup(prefix: String, challenge: PMChallenge) -> ChallangeParametersProvider {
+        ChallangeParametersProvider(prefix: prefix) {
+            challenge.export().allFingerprintDict()
+        }
+    }
+}

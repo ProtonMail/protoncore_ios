@@ -15,16 +15,16 @@
   "testTargets" : [
     {
       "target" : {
-        "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "4DF2256C59A2BBDA7EDCBE9F0C49BED1",
-        "name" : "ProtonCore-Environment-macOS-Unit-Tests"
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "66EEFA0C2975CECB00B377F3",
+        "name" : "Example-IntegrationTests"
       }
     },
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "5B07983AA0AA85A3821F0D61DF80738A",
-        "name" : "ProtonCore-Utilities-macOS-Unit-Tests"
+        "identifier" : "F2EB1AC55EC5B42DE6B353A6F41CCCC4",
+        "name" : "ProtonCore-Services-iOS-Unit-IntegrationTests"
       }
     }
   ],
