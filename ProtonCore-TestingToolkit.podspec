@@ -32,10 +32,8 @@ Pod::Spec.new do |s|
     s.static_framework = true
 
     s.subspec 'TestData' do |test_data|
-        test_data.dependency 'SwiftOTP', '~> 2.0'
         test_data.dependency 'CryptoSwift', '1.3.1'
         test_data.dependency 'ProtonCore-DataModel', $version
-        test_data.dependency 'ProtonCore-ObfuscatedConstants', $version
         test_data.dependency "ProtonCore-Networking", $version
 
         test_data.source_files = "libraries/TestingToolkit/TestData/**/*.swift"
@@ -219,7 +217,6 @@ Pod::Spec.new do |s|
     s.subspec 'UITests' do |ui_tests|
 
         ui_tests.dependency 'ProtonCore-CoreTranslation', $version
-        ui_tests.dependency 'ProtonCore-ObfuscatedConstants', $version
         ui_tests.dependency 'ProtonCore-QuarkCommands', $version
         ui_tests.dependency 'ProtonCore-Doh', $version
         ui_tests.dependency 'pmtest'

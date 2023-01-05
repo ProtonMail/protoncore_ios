@@ -32,6 +32,7 @@ import ProtonCore_Utilities
 import ProtonCore_Networking
 import ProtonCore_DataModel
 import ProtonCore_CoreTranslation
+import ProtonCore_ObfuscatedConstants
 import ProtonCore_Doh
 @testable import ProtonCore_LoginUI
 

@@ -153,6 +153,7 @@ PODS:
   - ProtonCore-Doh/Tests (3.25.2):
     - OHHTTPStubs/Swift
     - ProtonCore-Log (= 3.25.2)
+    - ProtonCore-ObfuscatedConstants (= 3.25.2)
     - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.25.2)
     - ProtonCore-Utilities (= 3.25.2)
   - ProtonCore-Environment (3.25.2):
@@ -312,6 +313,10 @@ PODS:
     - ProtonCore-Utilities (= 3.25.2)
     - TrustKit
   - ProtonCore-ObfuscatedConstants (3.25.2):
+    - CryptoSwift (= 1.3.1)
+    - ProtonCore-DataModel (= 3.25.2)
+    - ProtonCore-Networking (= 3.25.2)
+    - SwiftOTP (~> 2.0)
     - TrustKit
   - ProtonCore-OpenPGP (3.25.2)
   - ProtonCore-Payments/Crypto-Go1.19.4 (3.25.2):
@@ -343,6 +348,7 @@ PODS:
     - ProtonCore-CoreTranslation (= 3.25.2)
     - ProtonCore-Foundations (= 3.25.2)
     - ProtonCore-Log (= 3.25.2)
+    - ProtonCore-ObfuscatedConstants (= 3.25.2)
     - ProtonCore-Payments/Crypto-Go1.19.4 (= 3.25.2)
     - ProtonCore-TestingToolkit/UnitTests/Payments/Crypto-Go1.19.4 (= 3.25.2)
     - ProtonCore-UIFoundations (= 3.25.2)
@@ -389,44 +395,36 @@ PODS:
     - CryptoSwift (= 1.3.1)
     - ProtonCore-DataModel (= 3.25.2)
     - ProtonCore-Networking (= 3.25.2)
-    - ProtonCore-ObfuscatedConstants (= 3.25.2)
-    - SwiftOTP (~> 2.0)
   - ProtonCore-TestingToolkit/UITests/AccountDeletion (3.25.2):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.25.2)
     - ProtonCore-Doh (= 3.25.2)
-    - ProtonCore-ObfuscatedConstants (= 3.25.2)
     - ProtonCore-QuarkCommands (= 3.25.2)
   - ProtonCore-TestingToolkit/UITests/AccountSwitcher (3.25.2):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.25.2)
     - ProtonCore-Doh (= 3.25.2)
-    - ProtonCore-ObfuscatedConstants (= 3.25.2)
     - ProtonCore-QuarkCommands (= 3.25.2)
   - ProtonCore-TestingToolkit/UITests/Core (3.25.2):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.25.2)
     - ProtonCore-Doh (= 3.25.2)
     - ProtonCore-Log (= 3.25.2)
-    - ProtonCore-ObfuscatedConstants (= 3.25.2)
     - ProtonCore-QuarkCommands (= 3.25.2)
   - ProtonCore-TestingToolkit/UITests/HumanVerification (3.25.2):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.25.2)
     - ProtonCore-Doh (= 3.25.2)
-    - ProtonCore-ObfuscatedConstants (= 3.25.2)
     - ProtonCore-QuarkCommands (= 3.25.2)
   - ProtonCore-TestingToolkit/UITests/Login (3.25.2):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.25.2)
     - ProtonCore-Doh (= 3.25.2)
-    - ProtonCore-ObfuscatedConstants (= 3.25.2)
     - ProtonCore-QuarkCommands (= 3.25.2)
   - ProtonCore-TestingToolkit/UITests/PaymentsUI (3.25.2):
     - pmtest
     - ProtonCore-CoreTranslation (= 3.25.2)
     - ProtonCore-Doh (= 3.25.2)
-    - ProtonCore-ObfuscatedConstants (= 3.25.2)
     - ProtonCore-QuarkCommands (= 3.25.2)
   - ProtonCore-TestingToolkit/UnitTests/AccountDeletion/Crypto-Go1.19.4 (3.25.2):
     - ProtonCore-AccountDeletion/Crypto-Go1.19.4 (= 3.25.2)
@@ -744,7 +742,7 @@ SPEC CHECKSUMS:
   ProtonCore-Common: 1774896d3bdd5ca0d1a28d903e3fdfefd8a2a9ad
   ProtonCore-CoreTranslation: e699802a494493eef5e1de6ae2b4333702f1f355
   ProtonCore-DataModel: 0fa7dbbdc75576ec5261452139c19d3762f553b9
-  ProtonCore-Doh: eb6ccfdf8a6840ca99c79853183afef3c80b76e8
+  ProtonCore-Doh: 5176eaa0249aab06a475363d27f99e4ac11eb290
   ProtonCore-Environment: 97bfdb2a1e8e3b16a93e2c123bbd78d40f600962
   ProtonCore-Features: 4132529eba367aa58efb8e36f68a19d636d4339b
   ProtonCore-FeatureSwitch: f1378400c6cb86e7212e0e91e2bb4b46e111cd9e
@@ -759,14 +757,14 @@ SPEC CHECKSUMS:
   ProtonCore-Login: d72278808ade3962a3931ac397eb3514f733e18b
   ProtonCore-LoginUI: 8206ecd3d3fa236602368edbbfeef1841d414bb9
   ProtonCore-Networking: afa22326398988f8bc9ee079d4a5804bb352e99a
-  ProtonCore-ObfuscatedConstants: 720be580bbe84ced75a20761f74b784a31ef64f5
+  ProtonCore-ObfuscatedConstants: a262072b6c25fdd4ba42ea8d684fc017d2dc56e6
   ProtonCore-OpenPGP: 7196541366370dc10d7ca32abaf8a68ec901a302
   ProtonCore-Payments: 5771b35bf5fc3636089247625c0be58715d95185
-  ProtonCore-PaymentsUI: f014d06a5f531de0484f84c7c1cc8410e5ffeb4d
+  ProtonCore-PaymentsUI: c4c70f16544a81a164b713c226b8279e8ab28281
   ProtonCore-QuarkCommands: b0ddd8188d055526617dbebf3992a4f369ef80d0
   ProtonCore-Services: ae1d3214c4f16a1d18d05cc331ae70bf98e367c5
   ProtonCore-Settings: f4b824555fa654591e98051831fc683cc85e1249
-  ProtonCore-TestingToolkit: c9fc2a981d202ed64a836f7f02e814464530f63e
+  ProtonCore-TestingToolkit: 20f63e49021db5537e3fb5c16f244ee820132c52
   ProtonCore-TroubleShooting: 5f73fdea18b9dda9edfac9e314f421261576ca9e
   ProtonCore-UIFoundations: ab64636175d78c12e1442cf6249a94230124878a
   ProtonCore-Utilities: 5d08fbbccea25c9b1d10856da9e5ebcbb801d5d5

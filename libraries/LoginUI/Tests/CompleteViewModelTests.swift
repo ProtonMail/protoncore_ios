@@ -24,6 +24,7 @@
 import XCTest
 import GoLibs
 
+import ProtonCore_ObfuscatedConstants
 import ProtonCore_TestingToolkit
 import ProtonCore_Log
 import ProtonCore_Login

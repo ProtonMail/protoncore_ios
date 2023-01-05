@@ -30,12 +30,12 @@ Pod::Spec.new do |s|
     s.source_files = "libraries/Doh/Sources/*.swift"
 
     s.test_spec 'Tests' do |doh_tests|
-       doh_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Doh', $version
+      doh_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Doh', $version
+      doh_tests.dependency "ProtonCore-ObfuscatedConstants", $version
+      doh_tests.source_files = "libraries/Doh/Tests/*.swift"
+      doh_tests.dependency 'OHHTTPStubs/Swift'
 
-        doh_tests.source_files = "libraries/Doh/Tests/*.swift"
-        doh_tests.dependency 'OHHTTPStubs/Swift'
-
-        doh_tests.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
+      doh_tests.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
     end
     
 end
