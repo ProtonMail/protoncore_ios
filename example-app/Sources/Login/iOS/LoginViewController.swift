@@ -49,7 +49,6 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBOutlet private weak var environmentSelector: EnvironmentSelector!
     @IBOutlet private weak var headline: UILabel!
     @IBOutlet private weak var humanVerificationSwitch: UISwitch!
-    @IBOutlet private weak var hvVersionSegmented: UISegmentedControl!
     @IBOutlet private weak var initialErrorSwitch: UISwitch!
     @IBOutlet private weak var loginButton: ProtonButton!
     @IBOutlet private weak var logoutButton: ProtonButton!
@@ -135,7 +134,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             signupSegmentedControl.selectedSegmentIndex = 2
         }
         enableAccountConversionSwitch.isOn = false
-        hvVersionSegmented.selectedSegmentIndex = 1
+
         keyMigrationVersionSeg.selectedSegmentIndex = 1
     }
 
@@ -207,7 +206,6 @@ final class LoginViewController: UIViewController, AccessibleView {
             environment: environmentSelector.currentEnvironment,
             apiServiceDelegate: serviceDelegate,
             forceUpgradeDelegate: forceUpgradeServiceDelegate,
-            humanVerificationVersion: hVVersion,
             minimumAccountType: getMinimumAccountType,
             isCloseButtonAvailable: closeButtonSwitch.isOn,
             paymentsAvailability: planSelectorSwitch.isOn
@@ -306,7 +304,6 @@ final class LoginViewController: UIViewController, AccessibleView {
             environment: environmentSelector.currentEnvironment,
             apiServiceDelegate: serviceDelegate,
             forceUpgradeDelegate: forceUpgradeServiceDelegate,
-            humanVerificationVersion: hVVersion,
             minimumAccountType: getMinimumAccountType,
             isCloseButtonAvailable: closeButtonSwitch.isOn,
             paymentsAvailability: planSelectorSwitch.isOn
@@ -396,7 +393,6 @@ final class LoginViewController: UIViewController, AccessibleView {
             environment: environmentSelector.currentEnvironment,
             apiServiceDelegate: serviceDelegate,
             forceUpgradeDelegate: forceUpgradeServiceDelegate,
-            humanVerificationVersion: hVVersion,
             minimumAccountType: getMinimumAccountType,
             isCloseButtonAvailable: closeButtonSwitch.isOn,
             paymentsAvailability: planSelectorSwitch.isOn
@@ -495,7 +491,6 @@ final class LoginViewController: UIViewController, AccessibleView {
                                environment: .mailProd,
                                apiServiceDelegate: serviceDelegate,
                                forceUpgradeDelegate: forceUpgradeServiceDelegate,
-                               humanVerificationVersion: hVVersion,
                                minimumAccountType: getMinimumAccountType,
                                isCloseButtonAvailable: closeButtonSwitch.isOn,
                                paymentsAvailability: .notAvailable,
@@ -552,10 +547,6 @@ final class LoginViewController: UIViewController, AccessibleView {
         } else {
             loginButton.isEnabled = false
         }
-    }
-    
-    private var hVVersion: HumanVerificationVersion {
-        hvVersionSegmented.selectedSegmentIndex == 1 ? .v3 : .v2
     }
     
     private func setupKeyPhase() {

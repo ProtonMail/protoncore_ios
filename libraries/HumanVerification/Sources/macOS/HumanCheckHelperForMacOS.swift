@@ -32,7 +32,7 @@ public class HumanCheckHelper: HumanVerifyDelegate {
     private let apiService: APIService
     private let supportURL: URL
     private var verificationCompletion: ((HumanVerifyFinishReason) -> Void)?
-    private var coordinatorV3: HumanCheckV3Coordinator?
+    private var humanCheckCoordinator: HumanCheckCoordinator?
     private let clientApp: ClientApp
     
     public init(apiService: APIService,
@@ -72,15 +72,15 @@ public class HumanCheckHelper: HumanVerifyDelegate {
     }
 
     private func startMenuCoordinator(parameters: HumanVerifyParameters, completion: (@escaping (HumanVerifyFinishReason) -> Void)) {
-        prepareV3Coordinator(parameters: parameters)
+        prepareCoordinator(parameters: parameters)
         responseDelegate?.onHumanVerifyStart()
         verificationCompletion = completion
     }
     
-    private func prepareV3Coordinator(parameters: HumanVerifyParameters) {
-        coordinatorV3 = HumanCheckV3Coordinator(rootViewController: rootViewController, apiService: apiService, parameters: parameters, clientApp: clientApp)
-        coordinatorV3?.delegate = self
-        coordinatorV3?.start()
+    private func prepareCoordinator(parameters: HumanVerifyParameters) {
+        humanCheckCoordinator = HumanCheckCoordinator(rootViewController: rootViewController, apiService: apiService, parameters: parameters, clientApp: clientApp)
+        humanCheckCoordinator?.delegate = self
+        humanCheckCoordinator?.start()
     }
 
     public func getSupportURL() -> URL {

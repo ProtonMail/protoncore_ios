@@ -1,5 +1,5 @@
 //
-//  HumanCheckMenuCoordinator.swift
+//  HumanCheckCoordinator.swift
 //  ProtonCore-HumanVerification - Created on 8/20/19.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -26,7 +26,7 @@ import ProtonCore_Services
 import ProtonCore_UIFoundations
 import ProtonCore_CoreTranslation
 
-class HumanCheckV3Coordinator {
+class HumanCheckCoordinator {
 
     // MARK: - Private properties
 
@@ -38,11 +38,11 @@ class HumanCheckV3Coordinator {
     /// View controllers
     private let rootViewController: UIViewController?
     private let isModalPresentation: Bool
-    private var initialViewController: HumanVerifyV3ViewController?
+    private var initialViewController: HumanVerifyViewController?
     private var initialHelpViewController: HVHelpViewController?
 
     /// View models
-    let humanVerifyV3ViewModel: HumanVerifyV3ViewModel
+    let humanVerifyViewModel: HumanVerifyViewModel
 
     // MARK: - Public properties
 
@@ -57,10 +57,10 @@ class HumanCheckV3Coordinator {
         self.clientApp = clientApp
         self.title = parameters.title
         
-        self.humanVerifyV3ViewModel = HumanVerifyV3ViewModel(api: apiService, startToken: parameters.startToken, methods: parameters.methods, clientApp: clientApp)
-        self.humanVerifyV3ViewModel.onVerificationCodeBlock = { [weak self] verificationCodeBlock in
+        self.humanVerifyViewModel = HumanVerifyViewModel(api: apiService, startToken: parameters.startToken, methods: parameters.methods, clientApp: clientApp)
+        self.humanVerifyViewModel.onVerificationCodeBlock = { [weak self] verificationCodeBlock in
             guard let self = self else { return }
-            self.delegate?.verificationCode(tokenType: self.humanVerifyV3ViewModel.getToken(), verificationCodeBlock: verificationCodeBlock)
+            self.delegate?.verificationCode(tokenType: self.humanVerifyViewModel.getToken(), verificationCodeBlock: verificationCodeBlock)
         }
         
         if NSClassFromString("XCTest") == nil {
@@ -79,8 +79,8 @@ class HumanCheckV3Coordinator {
     // MARK: - Private methods
     
     private func instantiateViewController() {
-        initialViewController = instatntiateVC(method: HumanVerifyV3ViewController.self, identifier: "HumanVerifyV3ViewController")
-        initialViewController?.viewModel = humanVerifyV3ViewModel
+        initialViewController = instantiateVC(method: HumanVerifyViewController.self, identifier: "HumanVerifyViewController")
+        initialViewController?.viewModel = humanVerifyViewModel
         initialViewController?.delegate = self
         initialViewController?.isModalPresentation = isModalPresentation
         initialViewController?.viewTitle = title
@@ -124,16 +124,16 @@ class HumanCheckV3Coordinator {
     }
     
     private var getHelpViewController: HVHelpViewController {
-        let helpViewController = instatntiateVC(method: HVHelpViewController.self, identifier: "HumanCheckHelpViewController")
+        let helpViewController = instantiateVC(method: HVHelpViewController.self, identifier: "HumanCheckHelpViewController")
         helpViewController.delegate = self
         helpViewController.viewModel = HelpViewModel(url: apiService.humanDelegate?.getSupportURL(), clientApp: clientApp)
         return helpViewController
     }
 }
 
-// MARK: - HumanVerifyV3ViewControllerDelegate
+// MARK: - HumanVerifyViewControllerDelegate
 
-extension HumanCheckV3Coordinator: HumanVerifyV3ViewControllerDelegate {
+extension HumanCheckCoordinator: HumanVerifyViewControllerDelegate {
     func didFinishViewController() {
         if isModalPresentation {
             initialViewController?.navigationController?.dismiss(animated: true)
@@ -175,7 +175,7 @@ extension HumanCheckV3Coordinator: HumanVerifyV3ViewControllerDelegate {
 
 // MARK: - HVHelpViewControllerDelegate
 
-extension HumanCheckV3Coordinator: HVHelpViewControllerDelegate {
+extension HumanCheckCoordinator: HVHelpViewControllerDelegate {
     func didDismissHelpViewController() {
         if self.initialHelpViewController != nil {
             initialHelpViewController?.dismiss(animated: true)
@@ -186,8 +186,8 @@ extension HumanCheckV3Coordinator: HVHelpViewControllerDelegate {
     }
 }
 
-extension HumanCheckV3Coordinator {
-    private func instatntiateVC <T: UIViewController>(method: T.Type, identifier: String) -> T {
+extension HumanCheckCoordinator {
+    private func instantiateVC <T: UIViewController>(method: T.Type, identifier: String) -> T {
         let storyboard = UIStoryboard.init(name: "HumanVerify", bundle: HVCommon.bundle)
         let customViewController = storyboard.instantiateViewController(withIdentifier: identifier) as! T
         return customViewController

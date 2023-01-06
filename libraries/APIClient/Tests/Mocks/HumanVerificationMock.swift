@@ -31,8 +31,6 @@ class HumanCheckHelperMock: HumanVerifyDelegate {
     fileprivate let delay: TimeInterval
     fileprivate let resultClosure: ((@escaping(Bool) -> Void) -> Void)?
     
-    var version: HumanVerificationVersion = .v3
-    
     init(apiService: APIService, resultSuccess: Bool, resultHeaders: [[String: Any]]? = nil, delay: TimeInterval = 0, resultClosure: ((@escaping(Bool) -> Void) -> Void)? = nil) {
         self.resultSuccess = resultSuccess
         self.resultHeaders = resultHeaders

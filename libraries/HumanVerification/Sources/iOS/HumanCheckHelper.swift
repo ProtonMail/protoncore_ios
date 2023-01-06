@@ -33,8 +33,7 @@ public class HumanCheckHelper: HumanVerifyDelegate {
     private let apiService: APIService
     private let supportURL: URL
     private var verificationCompletion: ((HumanVerifyFinishReason) -> Void)?
-    var coordinator: HumanCheckMenuCoordinator?
-    var coordinatorV3: HumanCheckV3Coordinator?
+    var humanCheckCoordinator: HumanCheckCoordinator?
     private let clientApp: ClientApp
     
     public init(apiService: APIService,
@@ -51,21 +50,6 @@ public class HumanCheckHelper: HumanVerifyDelegate {
         self.clientApp = clientApp
         self.responseDelegate = responseDelegate
         self.paymentDelegate = paymentDelegate
-    }
-    
-    @available(*, deprecated, message: "HumanVerificationVersion parameter is removed. V3 HV will be used by default")
-    public convenience init(apiService: APIService,
-                            supportURL: URL? = nil,
-                            viewController: UIViewController? = nil,
-                            nonModalUrls: [URL]? = nil,
-                            clientApp: ClientApp,
-                            versionToBeUsed: HumanVerificationVersion,
-                            responseDelegate: HumanVerifyResponseDelegate? = nil,
-                            paymentDelegate: HumanVerifyPaymentDelegate? = nil) {
-        
-        self.init(apiService: apiService, supportURL: supportURL, viewController: viewController,
-                  nonModalUrls: nonModalUrls, clientApp: clientApp,
-                  responseDelegate: responseDelegate, paymentDelegate: paymentDelegate)
     }
     
     public func onHumanVerify(parameters: HumanVerifyParameters, currentURL: URL?, completion: (@escaping (HumanVerifyFinishReason) -> Void)) {
@@ -100,24 +84,15 @@ public class HumanCheckHelper: HumanVerifyDelegate {
         verificationCompletion = completion
     }
     
-    @available(*, deprecated, message: "we can remove it. was for HV v2")
-    private func prepareCoordinator(parameters: HumanVerifyParameters) {
-        DispatchQueue.main.async {
-            self.coordinator = HumanCheckMenuCoordinator(rootViewController: self.rootViewController, apiService: self.apiService, parameters: parameters, clientApp: self.clientApp)
-            self.coordinator?.delegate = self
-            self.coordinator?.start()
-        }
-    }
-    
     private func prepareV3Coordinator(parameters: HumanVerifyParameters, currentURL: URL?) {
         var isModalPresentation = true
         if nonModalUrls?.first(where: { $0 == currentURL }) != nil {
             isModalPresentation = false
         }
         DispatchQueue.main.async {
-            self.coordinatorV3 = HumanCheckV3Coordinator(rootViewController: self.rootViewController, isModalPresentation: isModalPresentation, apiService: self.apiService, parameters: parameters, clientApp: self.clientApp)
-            self.coordinatorV3?.delegate = self
-            self.coordinatorV3?.start()
+            self.humanCheckCoordinator = HumanCheckCoordinator(rootViewController: self.rootViewController, isModalPresentation: isModalPresentation, apiService: self.apiService, parameters: parameters, clientApp: self.clientApp)
+            self.humanCheckCoordinator?.delegate = self
+            self.humanCheckCoordinator?.start()
         }
     }
     
@@ -125,7 +100,7 @@ public class HumanCheckHelper: HumanVerifyDelegate {
     public static func removeHumanVerification(from navigationController: UINavigationController?) -> Bool {
         guard var viewControllers = navigationController?.viewControllers else { return false }
         var hvIndex: Int?
-        for (index, vc) in viewControllers.enumerated() where vc is HumanVerifyV3ViewController {
+        for (index, vc) in viewControllers.enumerated() where vc is HumanVerifyViewController {
             hvIndex = index
             break
         }

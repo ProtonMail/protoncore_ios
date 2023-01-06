@@ -35,7 +35,6 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
     
     func testSignupNewIntAccountWithFreeHV3PlanSuccess() {
         mainRobot
-            .hv3Tap()
             .showSignup()
             .verify.signupScreenIsShown()
             .insertName(name: randomName)
@@ -273,7 +272,6 @@ extension LoginSignupPlanSelectorTests {
     func testSignupNewExtAccountWithFreeHV3PlanSuccess() {
         mainRobot
             .changeEnvironmentToFosseyBlack()
-            .hv3Tap()
             .showSignup()
             .verify.signupScreenIsShown()
             .otherAccountButtonTap()
@@ -299,7 +297,6 @@ extension LoginSignupPlanSelectorTests {
         let email = randomEmail
         mainRobot
             .changeEnvironmentToFosseyBlack()
-            .hv3Tap()
             .showSignup()
             .verify.signupScreenIsShown()
             .otherAccountButtonTap()
@@ -328,7 +325,6 @@ extension LoginSignupPlanSelectorTests {
     func testSignupNewExtAccountWithPlusHV3PlanSuccess() {
         mainRobot
             .changeEnvironmentToFosseyBlack()
-            .hv3Tap()
             .showSignup()
             .verify.signupScreenIsShown()
             .otherAccountButtonTap()
@@ -354,7 +350,6 @@ extension LoginSignupPlanSelectorTests {
     func testSignupExistingExtAccountHV3() {
         mainRobot
             .changeEnvironmentToFosseyBlack()
-            .hv3Tap()
             .showSignup()
             .verify.signupScreenIsShown()
             .otherAccountButtonTap()
@@ -374,7 +369,6 @@ extension LoginSignupPlanSelectorTests {
     func testSignupNewExtAccountEditEmailHV3() {
         mainRobot
             .changeEnvironmentToFosseyBlack()
-            .hv3Tap()
             .showSignup()
             .verify.signupScreenIsShown()
             .otherAccountButtonTap()
@@ -385,6 +379,7 @@ extension LoginSignupPlanSelectorTests {
             .editEmailAddressButton(to: SignupRobot.self)
             .verify.signupScreenIsShown()
     }
+
     //Atm can be run only on payments.proton.black
     func testSignupNewIntAccountWithUnlimitedPlanSuccess() {
             mainRobot
@@ -408,4 +403,3 @@ extension LoginSignupPlanSelectorTests {
                 .logoutButtonTap()
     }
 }
- 

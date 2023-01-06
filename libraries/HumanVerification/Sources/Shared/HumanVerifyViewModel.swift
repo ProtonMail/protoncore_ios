@@ -1,5 +1,5 @@
 //
-//  RecaptchaViewModel.swift
+//  HumanVerifyViewModel.swift
 //  ProtonCore-HumanVerification - Created on 20/01/21.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -39,7 +39,7 @@ final class WeaklyProxingScriptHandler<OtherHandler: WKScriptMessageHandler>: NS
     }
 }
 
-class HumanVerifyV3ViewModel {
+class HumanVerifyViewModel {
 
     // MARK: - Private properties
 
@@ -192,7 +192,7 @@ class HumanVerifyV3ViewModel {
 
 #if canImport(AppKit)
 import AppKit
-extension HumanVerifyV3ViewModel {
+extension HumanVerifyViewModel {
     
     public var isInDarkMode: Bool {
         guard #available(macOS 10.14, *) else { return false }
@@ -217,7 +217,7 @@ extension HumanVerifyV3ViewModel {
 }
 #elseif canImport(UIKit)
 import UIKit
-extension HumanVerifyV3ViewModel {
+extension HumanVerifyViewModel {
     private var getTheme: Int {
         if #available(iOS 13.0, *) {
             if let vc = UIApplication.shared.keyWindow?.rootViewController, vc.traitCollection.userInterfaceStyle == .dark {
