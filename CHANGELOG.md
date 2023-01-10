@@ -1,3 +1,22 @@
+## 3.26.0 (2023-01-10)
+
+###  (10 changes)
+
+- [Removes deprecated HV v2](apple/shared/protoncore@671c21752957db60aace6fdd669633c841c4fbe3) ([merge request](apple/shared/protoncore!1034))
+- [Update gopenpgp to v2.5.0](apple/shared/protoncore@5153aa9c7ae8c25377d4340456c21f7374d43fdf) ([merge request](apple/shared/protoncore!1042))
+- [[CP-4894] Add new pod for Observability](apple/shared/protoncore@8c9fef8ada3486b311a4b6149d7c993ebf5fe57d) ([merge request](apple/shared/protoncore!1039))
+- [Remove unnecessary logs that are litering the console output and log file](apple/shared/protoncore@3640d4005f82c836c6c76838b84f52e6f5aeaac7) ([merge request](apple/shared/protoncore!1050))
+- [[CP-5188] - [iOS] V5 Modules renaming](apple/shared/protoncore@046c4593964124317cf33e155728b15b233ffae0) ([merge request](apple/shared/protoncore!1055))
+- [Update gitignore and remove untracked files](apple/shared/protoncore@b4cac8b4085a1507d6109eee6978f5487e7f720d) ([merge request](apple/shared/protoncore!1047))
+- [[CP-4522] - [iOS] V4 -> V5 Project structure migration](apple/shared/protoncore@c702e0416f5e70d89fc24504a331575ea8d861ac) ([merge request](apple/shared/protoncore!1054))
+- [[CP-4521] - [iOS] V4 -> V5 CoreTranslation migration](apple/shared/protoncore@7ef2ddc14db0cc3fd3612d20d1fed9cc04249c44) ([merge request](apple/shared/protoncore!1052))
+- [[CP-5053] - [iOS] Update the `PMAPIService` initialiser to expect the cached session UID on start](apple/shared/protoncore@90931051e824d1dc2849cfff1831930830a228d0) ([merge request](apple/shared/protoncore!1046))
+- [[CP-4520] - [iOS] V4 -> V5 Module files migration](apple/shared/protoncore@df5f8e028175f858a23eb2b29654dbfbf29a1135) ([merge request](apple/shared/protoncore!1048))
+
+### other (1 change)
+
+- [Remove the dependency on ObfuscatedConstants from the TestingToolkit module](apple/shared/protoncore@1573955769e1988770ee98f2c4d5c3f83be3074e) ([merge request](apple/shared/protoncore!1058))
+
 ## 3.25.0 (2022-12-08)
 
 ###  (15 changes)
