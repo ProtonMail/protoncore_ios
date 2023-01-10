@@ -140,7 +140,7 @@ final class HumanVerifyViewController: UIViewController, AccessibleView {
         closeBarButtonItem.accessibilityLabel = "closeButton"
         updateTitleAttributes()
         view.backgroundColor = ColorProvider.BackgroundNorm
-        closeBarButtonItem.image = isModalPresentation ? IconProvider.crossSmall : IconProvider.arrowLeft
+        closeBarButtonItem.image = isModalPresentation ? IconProvider.cross : IconProvider.arrowLeft
         setupWebView()
     }
 

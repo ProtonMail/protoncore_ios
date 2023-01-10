@@ -77,7 +77,7 @@ end
 
 lane :build_AccountSwitcher_all_variants do
   install_dependencies_from_gemfile
-  build_spec("AccountSwitcher", "ios", no_test_podspecs)
+  build_spec("AccountSwitcher", "ios", default_test_podspecs)
 end
 
 lane :build_AccountSwitcher_single_basic_variant do
@@ -395,12 +395,12 @@ end
 
 lane :build_UIFoundations_all_variants do
   install_dependencies_from_gemfile
-  build_spec("UIFoundations", "ios,macos", no_test_podspecs)
+  build_spec("UIFoundations", "ios,macos", default_test_podspecs)
 end
 
 lane :build_UIFoundations_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("UIFoundations", "ios", no_test_podspecs)
+  build_spec("UIFoundations", "ios", default_test_podspecs)
 end
 
 lane :build_Utilities_all_variants do

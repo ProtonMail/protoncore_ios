@@ -53,6 +53,7 @@ Pod::Spec.new do |s|
     }
 
     s.test_spec 'Tests' do |uifoundations_tests|
+        uifoundations_tests.dependency "ProtonCore-TestingToolkit/UnitTests/Core", $version
         uifoundations_tests.source_files = 'libraries/UIFoundations/Tests/**/*'
     end
 
