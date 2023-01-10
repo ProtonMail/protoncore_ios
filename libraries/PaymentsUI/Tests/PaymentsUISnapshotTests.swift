@@ -26,6 +26,7 @@ import ProtonCore_Services
 import ProtonCore_TestingToolkit
 import ProtonCore_ObfuscatedConstants
 import SnapshotTesting
+import ProtonCore_UIFoundations
 @testable import ProtonCore_Payments
 @testable import ProtonCore_PaymentsUI
 
@@ -248,6 +249,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                             paymentMethods: [PaymentMethod],
                                             name: String,
                                             clientApp: ClientApp,
+                                            modalPresentation: Bool = false,
                                             record: Bool,
                                             file: StaticString = #filePath,
                                             line: UInt = #line) async {
@@ -340,7 +342,15 @@ final class PaymentsUISnapshotTests: XCTestCase {
         
         let traits: UITraitCollection = .iPhoneSe(.portrait)
         
-        assertSnapshot(matching: paymentsUIViewController,
+        paymentsUIViewController.modalPresentation = modalPresentation
+        let viewController: UIViewController
+        if paymentsUIViewController.modalPresentation {
+            viewController = LoginNavigationViewController(rootViewController: paymentsUIViewController)
+        } else {
+            viewController = paymentsUIViewController
+        }
+        
+        assertSnapshot(matching: viewController,
                        as: .image(on: ViewImageConfig(safeArea: .zero, size: imageSize, traits: traits.updated(to: .light)),
                                   perceptualPrecision: 0.98,
                                   size: imageSize),
@@ -349,7 +359,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                        testName: "\(name)-Light",
                        line: line)
         
-        assertSnapshot(matching: paymentsUIViewController,
+        assertSnapshot(matching: viewController,
                        as: .image(on: ViewImageConfig(safeArea: .zero, size: imageSize, traits: traits.updated(to: .dark)),
                                   perceptualPrecision: 0.98,
                                   size: imageSize),
@@ -365,6 +375,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                                    paymentMethods: [PaymentMethod],
                                                    name: String = #function,
                                                    clientApp: ClientApp,
+                                                   modalPresentation: Bool = false,
                                                    record: Bool = false,
                                                    file: StaticString = #filePath,
                                                    line: UInt = #line) async {
@@ -373,6 +384,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                          paymentMethods: paymentMethods,
                                          name: name,
                                          clientApp: clientApp,
+                                         modalPresentation: modalPresentation,
                                          record: record,
                                          file: file,
                                          line: line)
@@ -584,6 +596,15 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
     
+    func testCurrentSubscription_Free_ModalPresentation() async {
+        await snapshotCurrentSubscriptionScreen(
+            currentSubscriptionPlan: nil,
+            paymentMethods: existingPaymentsMethods,
+            clientApp: .mail,
+            modalPresentation: true
+        )
+    }
+    
     // visionary2022
     
     func testCurrentSubscription_Visionary2022_1() async {
@@ -616,12 +637,14 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                                   paymentMethods: [PaymentMethod],
                                                   name: String = #function,
                                                   clientApp: ClientApp,
+                                                  modalPresentation: Bool = false,
                                                   record: Bool = false) async {
         await snapshotSubscriptionScreen(mode: .update,
                                          currentSubscriptionPlan: currentSubscriptionPlan,
                                          paymentMethods: paymentMethods,
                                          name: name,
                                          clientApp: clientApp,
+                                         modalPresentation: modalPresentation,
                                          record: record)
     }
     
@@ -854,6 +877,15 @@ final class PaymentsUISnapshotTests: XCTestCase {
             currentSubscriptionPlan: MockData.Plans.visionary2022.plan.updated(cycle: 24),
             paymentMethods: existingPaymentsMethods,
             clientApp: .mail
+        )
+    }
+    
+    func testUpdateSubscription_Free_ModalPresentation() async {
+        await snapshotUpdateSubscriptionScreen(
+            currentSubscriptionPlan: nil,
+            paymentMethods: .empty,
+            clientApp: .mail,
+            modalPresentation: true
         )
     }
     

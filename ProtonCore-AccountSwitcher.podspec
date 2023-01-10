@@ -36,6 +36,7 @@ Pod::Spec.new do |s|
     }
 
     s.test_spec 'Tests' do |account_switcher_tests|
+      account_switcher_tests.dependency "ProtonCore-TestingToolkit/UnitTests/Core", $version
         account_switcher_tests.source_files = 'libraries/AccountSwitcher/Tests/**/*'
     end
     

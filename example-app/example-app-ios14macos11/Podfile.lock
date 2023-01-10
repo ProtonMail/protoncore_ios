@@ -49,6 +49,7 @@ PODS:
   - ProtonCore-AccountSwitcher/Tests (3.25.2):
     - ProtonCore-CoreTranslation (= 3.25.2)
     - ProtonCore-Log (= 3.25.2)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.25.2)
     - ProtonCore-UIFoundations (= 3.25.2)
     - ProtonCore-Utilities (= 3.25.2)
   - ProtonCore-APIClient (3.25.2):
@@ -503,6 +504,7 @@ PODS:
     - ProtonCore-CoreTranslation (= 3.25.2)
     - ProtonCore-Foundations (= 3.25.2)
     - ProtonCore-Log (= 3.25.2)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.25.2)
     - ProtonCore-Utilities (= 3.25.2)
   - ProtonCore-Utilities (3.25.2):
     - ProtonCore-Log (= 3.25.2)
@@ -734,7 +736,7 @@ SPEC CHECKSUMS:
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   pmtest: 5cfa1c8f623eb9f68e8be673a6690991701cbb3a
   ProtonCore-AccountDeletion: 3784134a28b56d98c24b556a7022afdd53c414c1
-  ProtonCore-AccountSwitcher: fd8026b1ccd1db29010f99861fac0f3e91f9a1bd
+  ProtonCore-AccountSwitcher: d0d32dd341c81a487e5bb08f403bf5a803d4c6dc
   ProtonCore-APIClient: 555c13a99e406c04d86f9cbc924acc4046813ac4
   ProtonCore-Authentication: 7af9ba93941aed252f049e91cb0399ff16ec990b
   ProtonCore-Authentication-KeyGeneration: c79c87caa27d720319e4bba983c98ef4d209dc62
@@ -766,7 +768,7 @@ SPEC CHECKSUMS:
   ProtonCore-Settings: f4b824555fa654591e98051831fc683cc85e1249
   ProtonCore-TestingToolkit: 20f63e49021db5537e3fb5c16f244ee820132c52
   ProtonCore-TroubleShooting: 5f73fdea18b9dda9edfac9e314f421261576ca9e
-  ProtonCore-UIFoundations: ab64636175d78c12e1442cf6249a94230124878a
+  ProtonCore-UIFoundations: b08e924cc1694e87ab8965a3b0d726bcfadcb09e
   ProtonCore-Utilities: 5d08fbbccea25c9b1d10856da9e5ebcbb801d5d5
   ProtonCore-VCard: a97e72ff999bd8154ea615b1d552d7670444cbc8
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825

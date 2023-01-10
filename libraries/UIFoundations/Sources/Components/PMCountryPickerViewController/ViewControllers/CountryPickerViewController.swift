@@ -38,7 +38,7 @@ public class CountryPickerViewController: UIViewController, AccessibleView {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var cancelButton: UIButton! {
         didSet {
-            cancelButton.setImage(IconProvider.crossSmall, for: .normal)
+            cancelButton.setImage(IconProvider.cross, for: .normal)
         }
     }
     @IBOutlet weak var tableBottomConstraint: NSLayoutConstraint!
