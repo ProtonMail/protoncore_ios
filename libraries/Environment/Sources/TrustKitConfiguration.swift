@@ -26,8 +26,9 @@ import TrustKit
 public typealias Configuration = [String: Any]
 
 extension TrustKitWrapper {
-    static public func configuration(hardfail: Bool) -> Configuration {
+    static public func configuration(hardfail: Bool, ignoreMacUserDefinedTrustAnchors: Bool = true) -> Configuration {
         [
+            kTSKIgnorePinningForUserDefinedTrustAnchors: ignoreMacUserDefinedTrustAnchors,
             kTSKSwizzleNetworkDelegates: false,
             kTSKPinnedDomains: [
                 "protonmail.ch": [
