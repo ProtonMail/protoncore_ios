@@ -56,6 +56,7 @@ releasing:
     interruptible: false
     variables:
       GIT_STRATEGY: clone
+      GIT_DEPTH: 0
     tags:
       - macstadium-m1-protoncore
 
@@ -78,6 +79,7 @@ mirror_develop_to_github:
   needs: []
   variables:
     GIT_STRATEGY: clone
+    GIT_DEPTH: 0
   script:
     - bash scripts/mirror_to_github.sh develop
   tags:
@@ -96,6 +98,9 @@ linting:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: "$CI_COMMIT_BRANCH"
   needs: []
+  variables:
+    GIT_STRATEGY: clone
+    GIT_DEPTH: 0
   allow_failure: false
   interruptible: true
   artifacts:
@@ -324,6 +329,9 @@ build_AccountDeletion_all_variants:
         when: never
     allow_failure: false
     interruptible: true
+    variables:
+      GIT_STRATEGY: clone
+      GIT_DEPTH: 0
     needs:
       - job: build_mac
         artifacts: false
@@ -562,6 +570,9 @@ build_AccountDeletion_single_basic_variant:
       - if: "$CI_COMMIT_BRANCH"
     allow_failure: false
     interruptible: true
+    variables:
+      GIT_STRATEGY: clone
+      GIT_DEPTH: 0
     needs:
       - job: build_mac
         artifacts: false
@@ -822,6 +833,9 @@ ui_testing_smoke:
         artifacts: false
       - job: deploy:review
         artifacts: true
+    variables:
+      GIT_STRATEGY: clone
+      GIT_DEPTH: 0
     artifacts:
       when: always
       name: "test-report-$CI_PIPELINE_IID"
