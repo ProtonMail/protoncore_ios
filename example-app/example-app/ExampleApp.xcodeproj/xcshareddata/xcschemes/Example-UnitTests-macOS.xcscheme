@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1300"
+   LastUpgradeVersion = "1420"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,13 +13,23 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:../Sources/Example-ProtonCore/UnitTests/Example-UnitTests.xctestplan"
+            reference = "container:../Sources/Example-ProtonCore/UnitTests/Example-UnitTests_macOS.xctestplan"
             default = "YES">
          </TestPlanReference>
-         <TestPlanReference
-            reference = "container:../Sources/Example-ProtonCore/UnitTests/Example-UnitTests-Localization.xctestplan">
-         </TestPlanReference>
       </TestPlans>
+      <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "66B886CB2970167C00269ADD"
+               BuildableName = "Example-UnitTests-macOS.xctest"
+               BlueprintName = "Example-UnitTests-macOS"
+               ReferencedContainer = "container:ExampleApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"

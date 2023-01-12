@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "96956E60-DB7D-4928-97FF-577A6E166697",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "language" : "en",
+    "region" : "US"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "4DF2256C59A2BBDA7EDCBE9F0C49BED1",
+        "name" : "ProtonCore-Environment-macOS-Unit-Tests"
+      }
+    }
+  ],
+  "version" : 1
+}
