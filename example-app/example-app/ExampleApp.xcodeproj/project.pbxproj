@@ -953,6 +953,7 @@
 		6691E4C3274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6691E4C0274B89AA00132DC0 /* EnvironmentSelector.swift */; };
 		6691E4C4274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6691E4C0274B89AA00132DC0 /* EnvironmentSelector.swift */; };
 		6691E4C9274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6691E4C0274B89AA00132DC0 /* EnvironmentSelector.swift */; };
+		66934B7A29701A8400F03F0B /* Example_UnitTests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B886CE2970167D00269ADD /* Example_UnitTests_macOS.swift */; };
 		669F074C27E3874500FCC2CF /* UIFoundationsIconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669F074B27E3874500FCC2CF /* UIFoundationsIconsViewController.swift */; };
 		669F074D27E3874500FCC2CF /* UIFoundationsIconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669F074B27E3874500FCC2CF /* UIFoundationsIconsViewController.swift */; };
 		669F074E27E3874500FCC2CF /* UIFoundationsIconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669F074B27E3874500FCC2CF /* UIFoundationsIconsViewController.swift */; };
@@ -1055,6 +1056,7 @@
 		AFD4C8A88667348AD7A1EA93 /* Pods_iOS_Example_iOS_Mail_LocalIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B34BA4205C3BFF588ADDEC /* Pods_iOS_Example_iOS_Mail_LocalIAP.framework */; };
 		B075547C5DD1388510AF9CB4 /* Pods_macOS_Example_macOS_Calendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3B27716C2CACC9467FD5F7 /* Pods_macOS_Example_macOS_Calendar.framework */; };
 		BBE016B9969ED016E6872ECC /* Pods_iOS_Example_iOS_ProtonCore_NoIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A66FDE4616468A867A77745 /* Pods_iOS_Example_iOS_ProtonCore_NoIAP.framework */; };
+		DBDA61748B5A28A29EC8326F /* Pods_macOS_Example_UnitTests_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B21F0154B00A40049725DE /* Pods_macOS_Example_UnitTests_macOS.framework */; };
 		E47C7FD528BD56261DDA3F5C /* Pods_iOS_Example_TokenRefresh_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7DB0802C8FE2FC7604C412 /* Pods_iOS_Example_TokenRefresh_UITests.framework */; };
 		E5394C859451A94024D8949C /* Pods_iOS_Example_AccountSwitcher_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A7BEE039AD7D6EE7F338336 /* Pods_iOS_Example_AccountSwitcher_UITests.framework */; };
 		E54B0FED9D2333EEE9FE1230 /* Pods_iOS_Example_iOS_VPN_AppStoreIAP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C89D2D4DCC96DCE9D98DA5C /* Pods_iOS_Example_iOS_VPN_AppStoreIAP.framework */; };
@@ -1105,6 +1107,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 25BDF93C271424B3001BB254;
 			remoteInfo = "Example-iOS-Mail-AppStoreIAP";
+		};
+		66B886D02970167D00269ADD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25232F31270DDCAE009446AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6691E3BE2747C4AF00132DC0;
+			remoteInfo = "Example-macOS-Mail";
 		};
 		66BB9A08283D220000E1D3A9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1157,6 +1166,7 @@
 		04EB111334A15724042AFD89 /* Pods-macOS-Example-macOS-ProtonCore-V5.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-ProtonCore-V5.debug.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-ProtonCore-V5/Pods-macOS-Example-macOS-ProtonCore-V5.debug.xcconfig"; sourceTree = "<group>"; };
 		06241182E24DF72DFD2B76BC /* Pods-iOS-Example-iOS-Drive-V5-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Drive-V5-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Drive-V5-LocalIAP/Pods-iOS-Example-iOS-Drive-V5-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		0A1C3AA9AB2895393A1F515D /* Pods-iOS-Example-iOS-ProtonCore-V5-NoIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-ProtonCore-V5-NoIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-ProtonCore-V5-NoIAP/Pods-iOS-Example-iOS-ProtonCore-V5-NoIAP.release.xcconfig"; sourceTree = "<group>"; };
+		0B5FA5F0C0F51C6F87473FCF /* Pods-macOS-Example-UnitTests-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-UnitTests-macOS.debug.xcconfig"; path = "Target Support Files/Pods-macOS-Example-UnitTests-macOS/Pods-macOS-Example-UnitTests-macOS.debug.xcconfig"; sourceTree = "<group>"; };
 		0C8DA0A07EEE0FE49B21F022 /* Pods-iOS-Example-AccountSwitcher-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-AccountSwitcher-UITests.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-AccountSwitcher-UITests/Pods-iOS-Example-AccountSwitcher-UITests.release.xcconfig"; sourceTree = "<group>"; };
 		0D2ECA77C3F32969D49985F2 /* Pods-iOS-Example-iOS-Calendar-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Calendar-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Calendar-LocalIAP/Pods-iOS-Example-iOS-Calendar-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
 		0E1B5CC9136686F56B680196 /* Pods_iOS_Example_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1331,6 +1341,7 @@
 		3EDCE463D2DD37A51A49C846 /* Pods-macOS-Example-macOS-Mail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Mail.debug.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Mail/Pods-macOS-Example-macOS-Mail.debug.xcconfig"; sourceTree = "<group>"; };
 		426756F224FB1F10B7E7C647 /* Pods-macOS-Example-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS/Pods-macOS-Example-macOS.release.xcconfig"; sourceTree = "<group>"; };
 		450C021E563B8DA941CD1596 /* Pods-Example-iOS-Drive-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Drive-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Drive-AppStoreIAP/Pods-Example-iOS-Drive-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		47CFD1428078EB1239825916 /* Pods-iOS-Example-UnitTests-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-UnitTests-macOS.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-UnitTests-macOS/Pods-iOS-Example-UnitTests-macOS.debug.xcconfig"; sourceTree = "<group>"; };
 		4984659601FB1851FD8F4699 /* Pods-Example-AccountSwitcher-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-AccountSwitcher-UITests.debug.xcconfig"; path = "Target Support Files/Pods-Example-AccountSwitcher-UITests/Pods-Example-AccountSwitcher-UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4D770D8780A9574294DA638B /* Pods-iOS-Example-AccountDeletion-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-AccountDeletion-UITests.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-AccountDeletion-UITests/Pods-iOS-Example-AccountDeletion-UITests.release.xcconfig"; sourceTree = "<group>"; };
 		4E4A46B0D40E139D02198B42 /* Pods-Example-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-UnitTests.debug.xcconfig"; path = "Target Support Files/Pods-Example-UnitTests/Pods-Example-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1386,12 +1397,15 @@
 		6691E4A32747EB1400132DC0 /* AnonymousServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousServiceManager.swift; sourceTree = "<group>"; };
 		6691E4B6274B797E00132DC0 /* EnvironmentSelector.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnvironmentSelector.xib; sourceTree = "<group>"; };
 		6691E4C0274B89AA00132DC0 /* EnvironmentSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentSelector.swift; sourceTree = "<group>"; };
+		66934B79297019E600F03F0B /* Example-UnitTests_macOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Example-UnitTests_macOS.xctestplan"; path = "/Users/proton/Proton/Gitlab/Apple/Shared/protoncore-third/example-app/example-app/Sources/Example-ProtonCore/UnitTests/Example-UnitTests_macOS.xctestplan"; sourceTree = "<absolute>"; };
 		669F074B27E3874500FCC2CF /* UIFoundationsIconsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIFoundationsIconsViewController.swift; path = ../../../../Sources/UIFoundations/macOS/UIFoundationsIconsViewController.swift; sourceTree = "<group>"; };
 		66A3AB442770890B0056A570 /* Example-AccountDeletion-UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Example-AccountDeletion-UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66A3AB462770890B0056A570 /* AccountDeletionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeletionTests.swift; sourceTree = "<group>"; };
 		66A3AB4F277089530056A570 /* Example-AccountDeletion-UITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Example-AccountDeletion-UITests-Info.plist"; sourceTree = "<group>"; };
 		66A3AB50277096EB0056A570 /* AccountDeletionSampleAppRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeletionSampleAppRobot.swift; sourceTree = "<group>"; };
 		66A3AB52277097100056A570 /* AccountDeletionBaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeletionBaseTestCase.swift; sourceTree = "<group>"; };
+		66B886CC2970167C00269ADD /* Example-UnitTests-macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Example-UnitTests-macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		66B886CE2970167D00269ADD /* Example_UnitTests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_UnitTests_macOS.swift; sourceTree = "<group>"; };
 		66CD930CD776744323F20A68 /* Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP/Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		66EC3DB728F8032E002AA695 /* LoginExternalAccountTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginExternalAccountTests.swift; path = ../../../../../Sources/Login/UITests/Tests/LoginExternalAccountTests.swift; sourceTree = "<group>"; };
 		66F5998E287DB63200F5BE5E /* Example-Networking-UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Example-Networking-UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1462,6 +1476,7 @@
 		AD8980F975BE39C91A361150 /* Pods-macOS-Example-macOS-VPN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-VPN.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-VPN/Pods-macOS-Example-macOS-VPN.release.xcconfig"; sourceTree = "<group>"; };
 		B04C942FEF165690A15533EE /* Pods-iOS-Example-Payments-UITests-V5.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-Payments-UITests-V5.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-Payments-UITests-V5/Pods-iOS-Example-Payments-UITests-V5.release.xcconfig"; sourceTree = "<group>"; };
 		B0B58B4620E17D24634F820D /* Pods_iOS_Example_iOS_Calendar_AppStoreIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_iOS_Calendar_AppStoreIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B19FD18499C837BD2EF29364 /* Pods-macOS-Example-UnitTests-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-UnitTests-macOS.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-UnitTests-macOS/Pods-macOS-Example-UnitTests-macOS.release.xcconfig"; sourceTree = "<group>"; };
 		B4F6E7BECE864391BF2CD38D /* Pods-Example-Login-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-Login-UITests.debug.xcconfig"; path = "Target Support Files/Pods-Example-Login-UITests/Pods-Example-Login-UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B547D9F0A71F9E14A12021CB /* Pods-iOS-Example-iOS-Drive-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Drive-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Drive-LocalIAP/Pods-iOS-Example-iOS-Drive-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		BA11BC673C49F6F1DF48BBAB /* Pods-iOS-Example-iOS-ProtonCore-NoIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-ProtonCore-NoIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-ProtonCore-NoIAP/Pods-iOS-Example-iOS-ProtonCore-NoIAP.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1469,6 +1484,7 @@
 		BEDB43EE2C745AE5FFD9E158 /* Pods-Example-iOS-ProtonCore-NoIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-ProtonCore-NoIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-ProtonCore-NoIAP/Pods-Example-iOS-ProtonCore-NoIAP.release.xcconfig"; sourceTree = "<group>"; };
 		C15004EAEF1FCED0C4C88EDC /* Pods_macOS_Example_macOS_VPN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOS_Example_macOS_VPN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6732285513CE19F56B8C43F /* Pods-macOS-Example-macOS-ProtonCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-ProtonCore.debug.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-ProtonCore/Pods-macOS-Example-macOS-ProtonCore.debug.xcconfig"; sourceTree = "<group>"; };
+		CA30394D771B7ADE11B91C78 /* Pods-iOS-Example-UnitTests-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-UnitTests-macOS.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-UnitTests-macOS/Pods-iOS-Example-UnitTests-macOS.release.xcconfig"; sourceTree = "<group>"; };
 		CD3C2E0C143152AD06CC4292 /* Pods-macOS-Example-macOS-Mail-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Mail-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Mail-LocalIAP/Pods-macOS-Example-macOS-Mail-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
 		CDE47624B7DF21D2BD0C051F /* Pods-iOS-Example-iOS-Mail-V5-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Mail-V5-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Mail-V5-LocalIAP/Pods-iOS-Example-iOS-Mail-V5-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		CF1FB2A82E7FBC46C7C06438 /* Pods-iOS-Example-TokenRefresh-UITests-V5.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-TokenRefresh-UITests-V5.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-TokenRefresh-UITests-V5/Pods-iOS-Example-TokenRefresh-UITests-V5.release.xcconfig"; sourceTree = "<group>"; };
@@ -1490,6 +1506,7 @@
 		EC3B27716C2CACC9467FD5F7 /* Pods_macOS_Example_macOS_Calendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOS_Example_macOS_Calendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFD5CCECA5EA3F3948A43800 /* Pods_iOS_Example_iOS_Drive_LocalIAP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Example_iOS_Drive_LocalIAP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFE069AFDDBF76B175C69CF5 /* Pods-iOS-Example-Payments-UITests-V5.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-Payments-UITests-V5.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-Payments-UITests-V5/Pods-iOS-Example-Payments-UITests-V5.debug.xcconfig"; sourceTree = "<group>"; };
+		F0B21F0154B00A40049725DE /* Pods_macOS_Example_UnitTests_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOS_Example_UnitTests_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1AC4B999EF856894A608F80 /* Pods-macOS-Example-macOS-Drive-LocalIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Drive-LocalIAP.debug.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Drive-LocalIAP/Pods-macOS-Example-macOS-Drive-LocalIAP.debug.xcconfig"; sourceTree = "<group>"; };
 		F388737319A408E3A1DE0182 /* Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP.release.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP/Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP.release.xcconfig"; sourceTree = "<group>"; };
 		F3BF77827DBD04FFE8674E55 /* Pods-macOS-Example-macOS-Drive-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Drive-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Drive-LocalIAP/Pods-macOS-Example-macOS-Drive-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
@@ -1663,6 +1680,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		66B886C92970167C00269ADD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBDA61748B5A28A29EC8326F /* Pods_macOS_Example_UnitTests_macOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		66F5998B287DB63200F5BE5E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1724,6 +1749,7 @@
 				66A3AB442770890B0056A570 /* Example-AccountDeletion-UITests.xctest */,
 				35B49CDC28379DAC00744D78 /* Example-TokenRefresh-UITests.xctest */,
 				66F5998E287DB63200F5BE5E /* Example-Networking-UITests.xctest */,
+				66B886CC2970167C00269ADD /* Example-UnitTests-macOS.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2205,9 +2231,11 @@
 			children = (
 				66F8C7C52912A33C003C66FE /* Example-UnitTests-Localization.xctestplan */,
 				662C24C127B465C900802A63 /* Example-UnitTests.xctestplan */,
+				66934B79297019E600F03F0B /* Example-UnitTests_macOS.xctestplan */,
 				25E2662B270DF3660033E579 /* Empty.swift */,
 				574F178B2885C8AE008B0ABF /* LoginMockingSetupTests.swift */,
 				57C2419C2886FBD100D0D02B /* VerificationModifiableTests.swift */,
+				66B886CE2970167D00269ADD /* Example_UnitTests_macOS.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -2295,6 +2323,7 @@
 				8FBC75847ADF1BEB4269227F /* Pods_macOS_Example_macOS_Mail.framework */,
 				92C3EE47F8474D69418535A9 /* Pods_macOS_Example_macOS_ProtonCore.framework */,
 				C15004EAEF1FCED0C4C88EDC /* Pods_macOS_Example_macOS_VPN.framework */,
+				F0B21F0154B00A40049725DE /* Pods_macOS_Example_UnitTests_macOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2667,6 +2696,10 @@
 				F468F4C1F84D55E1CA025BEC /* Pods-iOS-Example-Networking-UITests.release.xcconfig */,
 				1C77C841453DD50E25688A2C /* Pods-iOS-Example-TokenRefresh-UITests.debug.xcconfig */,
 				FF0BD3A68D774C622D87A57D /* Pods-iOS-Example-TokenRefresh-UITests.release.xcconfig */,
+				47CFD1428078EB1239825916 /* Pods-iOS-Example-UnitTests-macOS.debug.xcconfig */,
+				CA30394D771B7ADE11B91C78 /* Pods-iOS-Example-UnitTests-macOS.release.xcconfig */,
+				0B5FA5F0C0F51C6F87473FCF /* Pods-macOS-Example-UnitTests-macOS.debug.xcconfig */,
+				B19FD18499C837BD2EF29364 /* Pods-macOS-Example-UnitTests-macOS.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -3065,6 +3098,26 @@
 			productReference = 66A3AB442770890B0056A570 /* Example-AccountDeletion-UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		66B886CB2970167C00269ADD /* Example-UnitTests-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66B886D42970167D00269ADD /* Build configuration list for PBXNativeTarget "Example-UnitTests-macOS" */;
+			buildPhases = (
+				4AC6875601E1C93A8EB3230E /* [CP] Check Pods Manifest.lock */,
+				66B886C82970167C00269ADD /* Sources */,
+				66B886C92970167C00269ADD /* Frameworks */,
+				66B886CA2970167C00269ADD /* Resources */,
+				2D06B121A8BCA98246795E88 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				66B886D12970167D00269ADD /* PBXTargetDependency */,
+			);
+			name = "Example-UnitTests-macOS";
+			productName = "Example-UnitTests-macOS";
+			productReference = 66B886CC2970167C00269ADD /* Example-UnitTests-macOS.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		66F5998D287DB63200F5BE5E /* Example-Networking-UITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 66F59998287DB63200F5BE5E /* Build configuration list for PBXNativeTarget "Example-Networking-UITests" */;
@@ -3092,7 +3145,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					25232F3C270DDCB0009446AF = {
@@ -3127,6 +3180,10 @@
 						CreatedOnToolsVersion = 13.1;
 						TestTargetID = 25BDFAF427142526001BB254;
 					};
+					66B886CB2970167C00269ADD = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 6691E3BE2747C4AF00132DC0;
+					};
 					66F5998D287DB63200F5BE5E = {
 						CreatedOnToolsVersion = 13.4.1;
 						LastSwiftMigration = 1340;
@@ -3158,6 +3215,7 @@
 				25BDFBA42714253B001BB254 /* Example-iOS-Drive-LocalIAP */,
 				25232F3C270DDCB0009446AF /* Example-iOS-ProtonCore-NoIAP */,
 				25E2661D270DEA430033E579 /* Example-UnitTests */,
+				66B886CB2970167C00269ADD /* Example-UnitTests-macOS */,
 				66A3AB432770890B0056A570 /* Example-AccountDeletion-UITests */,
 				25AAB485270EE45800CEA95A /* Example-AccountSwitcher-UITests */,
 				25AAB53D2710456A00CEA95A /* Example-Login-UITests */,
@@ -3667,6 +3725,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		66B886CA2970167C00269ADD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		66F5998C287DB63200F5BE5E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4028,6 +4093,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS-Example-TokenRefresh-UITests/Pods-iOS-Example-TokenRefresh-UITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		2D06B121A8BCA98246795E88 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-macOS-Example-UnitTests-macOS/Pods-macOS-Example-UnitTests-macOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-macOS-Example-UnitTests-macOS/Pods-macOS-Example-UnitTests-macOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-macOS-Example-UnitTests-macOS/Pods-macOS-Example-UnitTests-macOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3EAB810A6BA2EB78486863B0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4104,6 +4186,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-macOS-Example-macOS-ProtonCore/Pods-macOS-Example-macOS-ProtonCore-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4AC6875601E1C93A8EB3230E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-macOS-Example-UnitTests-macOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5EFC1B76CD0B0BF8632F74A9 /* [CP] Check Pods Manifest.lock */ = {
@@ -5315,6 +5419,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		66B886C82970167C00269ADD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66934B7A29701A8400F03F0B /* Example_UnitTests_macOS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		66F5998A287DB63200F5BE5E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -5358,6 +5470,11 @@
 			isa = PBXTargetDependency;
 			target = 25BDF93C271424B3001BB254 /* Example-iOS-Mail-AppStoreIAP */;
 			targetProxy = 66A3AB4A2770890B0056A570 /* PBXContainerItemProxy */;
+		};
+		66B886D12970167D00269ADD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6691E3BE2747C4AF00132DC0 /* Example-macOS-Mail */;
+			targetProxy = 66B886D02970167D00269ADD /* PBXContainerItemProxy */;
 		};
 		66BB9A09283D220000E1D3A9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -6996,6 +7113,47 @@
 			};
 			name = Release;
 		};
+		66B886D22970167D00269ADD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B5FA5F0C0F51C6F87473FCF /* Pods-macOS-Example-UnitTests-macOS.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.proton.core.Example-UnitTests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example-macOS-Mail.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Example-macOS-Mail";
+			};
+			name = Debug;
+		};
+		66B886D32970167D00269ADD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B19FD18499C837BD2EF29364 /* Pods-macOS-Example-UnitTests-macOS.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.proton.core.Example-UnitTests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example-macOS-Mail.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Example-macOS-Mail";
+			};
+			name = Release;
+		};
 		66F59996287DB63200F5BE5E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2FF007EC086C0D27ABD0C4A1 /* Pods-iOS-Example-Networking-UITests.debug.xcconfig */;
@@ -7243,6 +7401,15 @@
 			buildConfigurations = (
 				66A3AB4C2770890B0056A570 /* Debug */,
 				66A3AB4D2770890B0056A570 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66B886D42970167D00269ADD /* Build configuration list for PBXNativeTarget "Example-UnitTests-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66B886D22970167D00269ADD /* Debug */,
+				66B886D32970167D00269ADD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

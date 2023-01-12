@@ -745,7 +745,7 @@ SPEC CHECKSUMS:
   ProtonCore-CoreTranslation: e699802a494493eef5e1de6ae2b4333702f1f355
   ProtonCore-DataModel: 0fa7dbbdc75576ec5261452139c19d3762f553b9
   ProtonCore-Doh: 5176eaa0249aab06a475363d27f99e4ac11eb290
-  ProtonCore-Environment: 97bfdb2a1e8e3b16a93e2c123bbd78d40f600962
+  ProtonCore-Environment: 8f3fe3d496b6c16917f40ae5529ba27ff53319ff
   ProtonCore-Features: 4132529eba367aa58efb8e36f68a19d636d4339b
   ProtonCore-FeatureSwitch: f1378400c6cb86e7212e0e91e2bb4b46e111cd9e
   ProtonCore-ForceUpgrade: 765b8e6fda12eeab61fe6e483e2ea544c8f6dd90
