@@ -28,6 +28,7 @@ variables:
   GEM_HOME: "$CI_PROJECT_DIR/gem"
   ATLAS_DEPLOY_SCOPE: "qa-core-iOS-auto-$CI_PIPELINE_IID"
   ATLAS_DEPLOY_LIST: ""
+  GIT_DEPTH: 1
 
 releasing:
   stage: releasing
