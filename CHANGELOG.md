@@ -1,3 +1,10 @@
+## 3.26.1 (2023-01-13)
+
+###  (2 changes)
+
+- [Ignore user-defined certificate settings by default [CP-5258]](apple/shared/protoncore@c88dc257b26c4ae63089cc9b748810ade8f3c398) ([merge request](apple/shared/protoncore!1065))
+- [CP-4629 - [iOS] VPN sign in - Text update](apple/shared/protoncore@de26057f3162d3dea345e91394550286fce8e1c7) ([merge request](apple/shared/protoncore!1064))
+
 ## 3.26.0 (2023-01-10)
 
 ###  (10 changes)
