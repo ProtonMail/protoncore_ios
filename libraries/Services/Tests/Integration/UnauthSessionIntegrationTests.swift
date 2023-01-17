@@ -54,7 +54,7 @@ final class UnauthSessionIntegrationTests: XCTestCase {
     func testUnauthSessionIsObtainedDueToBackendRequirements() async {
         FeatureFactory.shared.enable(&.enforceUnauthSessionStrictVerificationOnBackend)
         PMAPIService.noTrustKit = true
-        let service = PMAPIService.createAPIServiceWithoutSession(environment: .black, challangeParametersProvider: .forAPIService(prefix: "core"))
+        let service = PMAPIService.createAPIServiceWithoutSession(environment: .black, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let authDelegate = AuthHelper()
         let serviceDelegate = TestServiceDelegate()
         service.authDelegate = authDelegate
@@ -76,7 +76,7 @@ final class UnauthSessionIntegrationTests: XCTestCase {
 
     func testUnauthSessionIsNotObtainedIfNoBackendRequirements() async {
         PMAPIService.noTrustKit = true
-        let service = PMAPIService.createAPIServiceWithoutSession(environment: .black, challangeParametersProvider: .forAPIService(prefix: "core"))
+        let service = PMAPIService.createAPIServiceWithoutSession(environment: .black, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let authDelegate = AuthHelper()
         let serviceDelegate = TestServiceDelegate()
         service.authDelegate = authDelegate

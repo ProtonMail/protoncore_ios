@@ -49,7 +49,7 @@ final class SessionsRequestTests: XCTestCase {
                                                 sessionFactory: sessionFactoryMock,
                                                 cacheToClear: cacheToClearMock,
                                                 trustKitProvider: trustKitProviderMock,
-                                                challangeParametersProvider: .forAPIService(prefix: "core"))
+                                                challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         service.authDelegate = authDelegateMock
     }
     

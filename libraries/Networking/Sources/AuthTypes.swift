@@ -72,7 +72,7 @@ public final class AuthCredential: NSObject, NSCoding {
         """
     }
 
-    public var areForUnauthenticatedSession: Bool { userID.isEmpty }
+    public var isForUnauthenticatedSession: Bool { userID.isEmpty }
     
     public init(sessionID: String,
                 accessToken: String,
@@ -258,7 +258,7 @@ public struct Credential: Equatable {
     
     public var hasFullScope: Bool { scopes.contains("full") }
 
-    public var areForUnauthenticatedSession: Bool { userID.isEmpty }
+    public var isForUnauthenticatedSession: Bool { userID.isEmpty }
 
     public init(UID: String, accessToken: String, refreshToken: String, userName: String, userID: String, scopes: Scopes) {
         self.UID = UID

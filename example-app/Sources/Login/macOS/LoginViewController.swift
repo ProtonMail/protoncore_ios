@@ -62,7 +62,7 @@ final class LoginViewController: NSViewController {
     }
     
     private func createAPIService(sessionId: String) -> APIService {
-        let service = PMAPIService.createAPIService(environment: environmentSelector.currentEnvironment, sessionUID: sessionId, challangeParametersProvider: .empty)
+        let service = PMAPIService.createAPIService(environment: environmentSelector.currentEnvironment, sessionUID: sessionId, challengeParametersProvider: .empty)
         service.serviceDelegate = serviceDelegate
         service.authDelegate = authManager
         let url = HVCommon.defaultSupportURL(clientApp: clientApp)
@@ -244,7 +244,7 @@ final class LoginViewController: NSViewController {
                                     clientApp: .other(named: "macOS sample app"),
                                     minimumAccountType: accountType)
         signupService = SignupService(api: service,
-                                      challangeParametersProvider: .empty,
+                                      challengeParametersProvider: .empty,
                                       clientApp: clientApp)
         switch signupTypeSegmentedControl.selectedSegment {
         case 0: handleInternalUserSignup()

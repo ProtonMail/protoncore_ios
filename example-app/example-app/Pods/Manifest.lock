@@ -131,9 +131,11 @@ PODS:
     - ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto-Go1.19.4 (= 3.26.1)
   - ProtonCore-Authentication/ErrorWarningEmittingDefaultSubspec (3.26.1)
   - ProtonCore-Challenge (3.26.1):
+    - ProtonCore-DataModel (= 3.26.1)
     - ProtonCore-Foundations (= 3.26.1)
     - ProtonCore-UIFoundations (= 3.26.1)
   - ProtonCore-Challenge/Tests (3.26.1):
+    - ProtonCore-DataModel (= 3.26.1)
     - ProtonCore-Foundations (= 3.26.1)
     - ProtonCore-UIFoundations (= 3.26.1)
   - ProtonCore-Common (3.26.1):
@@ -771,7 +773,7 @@ SPEC CHECKSUMS:
   ProtonCore-APIClient: bd8651d2d39349f1f3e91fff45f9117fbf631aca
   ProtonCore-Authentication: 9905048cfcf912ebbcb5da25c80b6367f7423db1
   ProtonCore-Authentication-KeyGeneration: 5713bea011e71c7cd66d859a80b3fecefb7d5b12
-  ProtonCore-Challenge: a8d4d02c306c88a8ec7c3d5a72d450f1455013ae
+  ProtonCore-Challenge: 37e2982d7d0febc308e04ffe9340ba73d4941e66
   ProtonCore-Common: 72ffc341c92881b6fc722dcd031f94962fa6ddcf
   ProtonCore-CoreTranslation: d0e0546cec2a8b429ac07e39895d892e9862f810
   ProtonCore-DataModel: 0d1d94dd2b481a7edd23978341fda4cac8e64efe

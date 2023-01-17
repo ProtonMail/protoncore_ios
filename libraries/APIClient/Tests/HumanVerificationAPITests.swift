@@ -139,7 +139,7 @@ class HumanVerificationAPITests: XCTestCase {
     
     func testSendCodeEmail() {
         let expectation = self.expectation(description: "Success completion block called")
-        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challangeParametersProvider: .forAPIService(prefix: "core"))
+        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -158,7 +158,7 @@ class HumanVerificationAPITests: XCTestCase {
     
     func testSendCodeSMS() {
         let expectation = self.expectation(description: "Success completion block called")
-        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challangeParametersProvider: .forAPIService(prefix: "core"))
+        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -177,7 +177,7 @@ class HumanVerificationAPITests: XCTestCase {
     
     func testSendCodeInvalidEmail() {
         let expectation = self.expectation(description: "Success completion block called")
-        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challangeParametersProvider: .forAPIService(prefix: "core"))
+        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -197,7 +197,7 @@ class HumanVerificationAPITests: XCTestCase {
     
     func testSendCodeInvalidSMS() {
         let expectation = self.expectation(description: "Success completion block called")
-        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challangeParametersProvider: .forAPIService(prefix: "core"))
+        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -224,7 +224,7 @@ class HumanVerificationAPITests: XCTestCase {
         }
         
         let expectation = self.expectation(description: "Success completion block called")
-        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challangeParametersProvider: .forAPIService(prefix: "core"))
+        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -261,7 +261,7 @@ class HumanVerificationAPITests: XCTestCase {
         }
         
         let expectation = self.expectation(description: "Success completion block called")
-        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challangeParametersProvider: .forAPIService(prefix: "core"))
+        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -299,7 +299,7 @@ class HumanVerificationAPITests: XCTestCase {
         
         let expectation1 = self.expectation(description: "Success send code completion block called testEmailMethodSuccess")
         let expectation2 = self.expectation(description: "Success verification completion block called")
-        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challangeParametersProvider: .forAPIService(prefix: "core"))
+        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -347,7 +347,7 @@ class HumanVerificationAPITests: XCTestCase {
 
         let expectation1 = self.expectation(description: "Success send code completion block called testSmsMethodSuccess")
         let expectation2 = self.expectation(description: "Success verification completion block called")
-        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challangeParametersProvider: .forAPIService(prefix: "core"))
+        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -409,7 +409,7 @@ class HumanVerificationAPITests: XCTestCase {
 
         let expectation1 = self.expectation(description: "Success send code completion block called testHumanVerificationFailFailSuccess")
         let expectation2 = self.expectation(description: "Success verification completion block called")
-        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challangeParametersProvider: .forAPIService(prefix: "core"))
+        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -470,7 +470,7 @@ class HumanVerificationAPITests: XCTestCase {
         let expectationCode4 = self.expectation(description: "Success send code completion block called 4")
         let expectationCode5 = self.expectation(description: "Success send code completion block called 5")
         let expectationCode6 = self.expectation(description: "Success send code completion block called 6")
-        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challangeParametersProvider: .forAPIService(prefix: "core"))
+        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()
@@ -565,7 +565,7 @@ class HumanVerificationAPITests: XCTestCase {
         let expectation5 = expectation(description: "Success 5th request - verify 1000")
         let expectation6 = expectation(description: "Success 6th request - verify 1000")
         let expectationCode1 = self.expectation(description: "Success send code completion block called testMultipleRequests_1xVerify9001_5xVerify1000")
-        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challangeParametersProvider: .forAPIService(prefix: "core"))
+        let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface, sessionUID: "testSessionUID", challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let testAuthDelegate = TestAuthDelegate()
         api.authDelegate = testAuthDelegate
         let testAPIServiceDelegate = TestAPIServiceDelegate()

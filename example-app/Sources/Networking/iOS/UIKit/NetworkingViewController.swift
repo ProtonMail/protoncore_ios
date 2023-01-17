@@ -50,7 +50,7 @@ class NetworkingViewController: UIViewController {
 
     var testApi = PMAPIService.createAPIService(environment: .black,
                                                 sessionUID: "testSessionUID",
-                                                challangeParametersProvider: .forAPIService(prefix: clientApp.name))
+                                                challengeParametersProvider: .forAPIService(clientApp: clientApp))
     var authHelper: AuthHelper?
     
     override func viewDidLoad() {
@@ -68,7 +68,7 @@ class NetworkingViewController: UIViewController {
     func setupEnv() {
         testApi = PMAPIService.createAPIService(environment: environmentSelector.currentEnvironment,
                                                 sessionUID: "testSessionUID",
-                                                challangeParametersProvider: .forAPIService(prefix: clientApp.name))
+                                                challengeParametersProvider: .forAPIService(clientApp: clientApp))
         authHelper = AuthHelper()
         testApi.authDelegate = authHelper
         testApi.serviceDelegate = self

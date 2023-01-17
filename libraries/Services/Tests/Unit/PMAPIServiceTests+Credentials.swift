@@ -34,7 +34,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     let numberOfRequests: UInt = 50
 
-    let challengeParameterProvider = ChallangeParametersProvider.forAPIService(prefix: "core")
+    let challengeParameterProvider = ChallengeParametersProvider.forAPIService(clientApp: .other(named: "core"))
     var challengeProperties: ChallengeProperties { ChallengeProperties(challenges: challengeParameterProvider.provideParameters(),
                                                                        productPrefix: challengeParameterProvider.prefix) }
     
@@ -52,7 +52,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
                                       sessionFactory: sessionFactoryMock,
                                       cacheToClear: cacheToClearMock,
                                       trustKitProvider: trustKitProviderMock,
-                                      challangeParametersProvider: challengeParameterProvider)
+                                      challengeParametersProvider: challengeParameterProvider)
     }
     
     override func setUp() {
@@ -83,7 +83,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(result, hostUrl)
     }
     
-    func testPMAPIServiceInitializer_ShouldSetSessionChallange() {
+    func testPMAPIServiceInitializer_ShouldSetSessionChallenge() {
         trustKitProviderMock.noTrustKitStub.fixture = false
         trustKitProviderMock.trustKitStub.fixture = TrustKit(configuration: [:])
         var noTrustKit: Bool?
@@ -1386,7 +1386,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 //                                                    sessionFactory: sessionFactoryMock,
 //                                                    cacheToClear: cacheToClearMock,
 //                                                    trustKitProvider: trustKitProviderMock,
-//                                                    challangeParametersProvider: challengeParameterProvider)
+//                                                    challengeParametersProvider: challengeParameterProvider)
 //        service.authDelegate = authDelegateMock
 //
 //        let rottenCredentials = AuthCredential(Credential.dummy

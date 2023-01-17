@@ -310,8 +310,8 @@ extension PMAPIService {
         } else if FeatureFactory.shared.isEnabled(.unauthSession),
                     httpCode == 401, authRetry, authRetryRemains > 0, let authCredential = authCredential {
 
-            let deviceFingerprints = ChallengeProperties(challenges: challangeParametersProvider.provideParameters(),
-                                                         productPrefix: challangeParametersProvider.prefix)
+            let deviceFingerprints = ChallengeProperties(challenges: challengeParametersProvider.provideParameters(),
+                                                         productPrefix: challengeParametersProvider.prefix)
             refreshAuthCredential(credentialsCausing401: authCredential,
                                   legacyPath: false,
                                   deviceFingerprints: deviceFingerprints) { (result: AuthCredentialRefreshingResult) in
@@ -399,8 +399,8 @@ extension PMAPIService {
         } else if FeatureFactory.shared.isEnabled(.unauthSession),
                     httpCode == 401, authRetry, authRetryRemains > 0, let authCredential = authCredential {
 
-            let deviceFingerprints = ChallengeProperties(challenges: challangeParametersProvider.provideParameters(),
-                                                         productPrefix: challangeParametersProvider.prefix)
+            let deviceFingerprints = ChallengeProperties(challenges: challengeParametersProvider.provideParameters(),
+                                                         productPrefix: challengeParametersProvider.prefix)
             refreshAuthCredential(credentialsCausing401: authCredential,
                                   legacyPath: false,
                                   deviceFingerprints: deviceFingerprints) { (result: AuthCredentialRefreshingResult) in
@@ -451,8 +451,8 @@ extension PMAPIService {
             return
         }
 
-        let deviceFingerprints = ChallengeProperties(challenges: challangeParametersProvider.provideParameters(),
-                                                     productPrefix: challangeParametersProvider.prefix)
+        let deviceFingerprints = ChallengeProperties(challenges: challengeParametersProvider.provideParameters(),
+                                                     productPrefix: challengeParametersProvider.prefix)
         refreshAuthCredential(credentialsCausing401: authCredential, legacyPath: true, deviceFingerprints: deviceFingerprints) { result in
             switch result {
             case .refreshed(let credentials):
@@ -488,8 +488,8 @@ extension PMAPIService {
                                           _ completion: PMAPIService.APIResponseCompletion<T>, _ task: URLSessionDataTask?,
                                           _ authRetry: Bool, _ authRetryRemains: Int, _ authCredential: AuthCredential?) where T: APIDecodableResponse {
 
-        let deviceFingerprints = ChallengeProperties(challenges: challangeParametersProvider.provideParameters(),
-                                                     productPrefix: challangeParametersProvider.prefix)
+        let deviceFingerprints = ChallengeProperties(challenges: challengeParametersProvider.provideParameters(),
+                                                     productPrefix: challengeParametersProvider.prefix)
         aquireSession(deviceFingerprints: deviceFingerprints) { (result: SessionAquisitionResult) in
             switch result {
             case .aquired(let newCredentials):

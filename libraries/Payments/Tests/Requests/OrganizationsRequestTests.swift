@@ -126,7 +126,7 @@ final class OrganizationsRequestTests: XCTestCase {
             do {
                 let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface,
                                                         sessionUID: "testSessionUID",
-                                                        challangeParametersProvider: .forAPIService(prefix: "core"))
+                                                        challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
                 let testAuthDelegate = TestAuthDelegate()
                 api.authDelegate = testAuthDelegate
                 let testAPIServiceDelegate = TestAPIServiceDelegate()

@@ -168,7 +168,7 @@ public class PMAPIService: APIService {
         label: "ch.proton.api.refresh_completion", qos: .userInitiated, attributes: [.concurrent]
     )
 
-    let challangeParametersProvider: ChallangeParametersProvider
+    let challengeParametersProvider: ChallengeParametersProvider
     
     /// by default will create a non auth api service. after calling the auth function, it will set the session. then use the delation to fetch the auth data  for this session.
     @available(*, deprecated, message: "This will be removed, use createAPIService, or createAPIServiceWithoutSession methods instead.")
@@ -177,10 +177,10 @@ public class PMAPIService: APIService {
                          sessionFactory: SessionFactoryInterface = SessionFactory.instance,
                          cacheToClear: URLCacheInterface = URLCache.shared,
                          trustKitProvider: TrustKitProvider = PMAPIServiceTrustKitProviderWrapper.instance,
-                         challangeParametersProvider: ChallangeParametersProvider) {
+                         challengeParametersProvider: ChallengeParametersProvider) {
         self.doh = doh
         self.sessionUID = sessionUID
-        self.challangeParametersProvider = challangeParametersProvider
+        self.challengeParametersProvider = challengeParametersProvider
         cacheToClear.removeAllCachedResponses()
         
         let apiHostUrl = self.doh.getCurrentlyUsedHostUrl()
@@ -197,14 +197,14 @@ public class PMAPIService: APIService {
                                      sessionFactory: SessionFactoryInterface = SessionFactory.instance,
                                      cacheToClear: URLCacheInterface = URLCache.shared,
                                      trustKitProvider: TrustKitProvider = PMAPIServiceTrustKitProviderWrapper.instance,
-                                     challangeParametersProvider: ChallangeParametersProvider) {
+                                     challengeParametersProvider: ChallengeParametersProvider) {
         guard let dohI = doh as? (DoH & ServerConfig) else {
             fatalError("DoH doesn't conform to DoH & ServerConfig")
         }
         self.init(doh: dohI, sessionUID: sessionUID,
                   sessionFactory: sessionFactory, cacheToClear: cacheToClear,
                   trustKitProvider: trustKitProvider,
-                  challangeParametersProvider: challangeParametersProvider)
+                  challengeParametersProvider: challengeParametersProvider)
     }
 
     @available(*, deprecated, message: "This will be removed, use createAPIService, or createAPIServiceWithoutSession methods instead.")
@@ -213,11 +213,11 @@ public class PMAPIService: APIService {
                             sessionFactory: SessionFactoryInterface = SessionFactory.instance,
                             cacheToClear: URLCacheInterface = URLCache.shared,
                             trustKitProvider: TrustKitProvider = PMAPIServiceTrustKitProviderWrapper.instance,
-                            challangeParametersProvider: ChallangeParametersProvider) {
+                            challengeParametersProvider: ChallengeParametersProvider) {
         self.init(doh: environment.doh, sessionUID: sessionUID,
                   sessionFactory: sessionFactory, cacheToClear: cacheToClear,
                   trustKitProvider: trustKitProvider,
-                  challangeParametersProvider: challangeParametersProvider)
+                  challengeParametersProvider: challengeParametersProvider)
     }
     
     /**
@@ -236,13 +236,13 @@ public class PMAPIService: APIService {
                                         sessionFactory: SessionFactoryInterface = SessionFactory.instance,
                                         cacheToClear: URLCacheInterface = URLCache.shared,
                                         trustKitProvider: TrustKitProvider = PMAPIServiceTrustKitProviderWrapper.instance,
-                                        challangeParametersProvider: ChallangeParametersProvider) -> PMAPIService {
+                                        challengeParametersProvider: ChallengeParametersProvider) -> PMAPIService {
         .init(doh: doh,
               sessionUID: sessionUID,
               sessionFactory: sessionFactory,
               cacheToClear: cacheToClear,
               trustKitProvider: trustKitProvider,
-              challangeParametersProvider: challangeParametersProvider)
+              challengeParametersProvider: challengeParametersProvider)
     }
 
     /**
@@ -259,13 +259,13 @@ public class PMAPIService: APIService {
                                                       sessionFactory: SessionFactoryInterface = SessionFactory.instance,
                                                       cacheToClear: URLCacheInterface = URLCache.shared,
                                                       trustKitProvider: TrustKitProvider = PMAPIServiceTrustKitProviderWrapper.instance,
-                                                      challangeParametersProvider: ChallangeParametersProvider) -> PMAPIService {
+                                                      challengeParametersProvider: ChallengeParametersProvider) -> PMAPIService {
         .init(doh: doh,
               sessionUID: "",
               sessionFactory: sessionFactory,
               cacheToClear: cacheToClear,
               trustKitProvider: trustKitProvider,
-              challangeParametersProvider: challangeParametersProvider)
+              challengeParametersProvider: challengeParametersProvider)
     }
 
     /**
@@ -284,13 +284,13 @@ public class PMAPIService: APIService {
                                         sessionFactory: SessionFactoryInterface = SessionFactory.instance,
                                         cacheToClear: URLCacheInterface = URLCache.shared,
                                         trustKitProvider: TrustKitProvider = PMAPIServiceTrustKitProviderWrapper.instance,
-                                        challangeParametersProvider: ChallangeParametersProvider) -> PMAPIService {
+                                        challengeParametersProvider: ChallengeParametersProvider) -> PMAPIService {
         .init(doh: environment.doh,
               sessionUID: sessionUID,
               sessionFactory: sessionFactory,
               cacheToClear: cacheToClear,
               trustKitProvider: trustKitProvider,
-              challangeParametersProvider: challangeParametersProvider)
+              challengeParametersProvider: challengeParametersProvider)
     }
     
     /**
@@ -307,13 +307,13 @@ public class PMAPIService: APIService {
                                                       sessionFactory: SessionFactoryInterface = SessionFactory.instance,
                                                       cacheToClear: URLCacheInterface = URLCache.shared,
                                                       trustKitProvider: TrustKitProvider = PMAPIServiceTrustKitProviderWrapper.instance,
-                                                      challangeParametersProvider: ChallangeParametersProvider) -> PMAPIService {
+                                                      challengeParametersProvider: ChallengeParametersProvider) -> PMAPIService {
         .init(doh: environment.doh,
               sessionUID: "",
               sessionFactory: sessionFactory,
               cacheToClear: cacheToClear,
               trustKitProvider: trustKitProvider,
-              challangeParametersProvider: challangeParametersProvider)
+              challengeParametersProvider: challengeParametersProvider)
     }
     
     public func getSession() -> Session? {

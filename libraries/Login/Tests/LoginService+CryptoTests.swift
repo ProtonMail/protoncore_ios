@@ -34,7 +34,7 @@ class LoginServiceCryptoTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        let api = PMAPIService.createAPIService(doh: DohMock() as DoHInterface, sessionUID: "test session ID", challangeParametersProvider: .forAPIService(prefix: "core"))
+        let api = PMAPIService.createAPIService(doh: DohMock() as DoHInterface, sessionUID: "test session ID", challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let authDelegate = AuthHelper()
         api.authDelegate = authDelegate
         login = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "TestAPP"), minimumAccountType: .internal)

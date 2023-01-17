@@ -79,7 +79,7 @@ final class EndToEndViewController: UIViewController,
         let env = environmentSelector.currentEnvironment
         let api = PMAPIService(environment: env,
                                sessionUID: "token refresh test session",
-                               challangeParametersProvider: .forAPIService(prefix: clientApp.name))
+                               challengeParametersProvider: .forAPIService(clientApp: clientApp))
         api.authDelegate = self
         api.serviceDelegate = self.serviceDelegate
         return .init(api: api)
@@ -117,7 +117,7 @@ final class EndToEndViewController: UIViewController,
         let env = environmentSelector.currentEnvironment
         let api = PMAPIService(environment: env,
                                sessionUID: "token refresh test session",
-                               challangeParametersProvider: .forAPIService(prefix: clientApp.name))
+                               challengeParametersProvider: .forAPIService(clientApp: clientApp))
         api.authDelegate = self
         api.serviceDelegate = self.serviceDelegate
         var output = "Server: \n"

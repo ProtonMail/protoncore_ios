@@ -65,7 +65,7 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
         let env = environmentSelector.currentEnvironment
         let api = PMAPIService.createAPIService(environment: env,
                                                 sessionUID: "token refresh test session",
-                                                challangeParametersProvider: .forAPIService(prefix: clientApp.name))
+                                                challengeParametersProvider: .forAPIService(clientApp: clientApp))
         api.authDelegate = self
         api.serviceDelegate = self.serviceDelegate
         return .init(api: api)

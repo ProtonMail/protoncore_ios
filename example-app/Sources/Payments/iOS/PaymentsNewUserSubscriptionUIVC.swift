@@ -71,7 +71,7 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
         super.viewDidLoad()
         testApi = PMAPIService.createAPIService(environment: currentEnv,
                                                 sessionUID: "testSessionUID",
-                                                challangeParametersProvider: .forAPIService(prefix: clientApp.name))
+                                                challengeParametersProvider: .forAPIService(clientApp: clientApp))
         testApi.serviceDelegate = serviceDelegate
         loginButton.isEnabled = true
         showCurrentPlanButton.isEnabled = false

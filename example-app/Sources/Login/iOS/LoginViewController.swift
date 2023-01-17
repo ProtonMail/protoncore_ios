@@ -453,7 +453,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         guard let credential = data?.credential else { return }
         let api = PMAPIService.createAPIService(environment: environmentSelector.currentEnvironment,
                                                 sessionUID: credential.UID,
-                                                challangeParametersProvider: .forAPIService(prefix: clientApp.name))
+                                                challengeParametersProvider: .forAPIService(clientApp: clientApp))
         authManager?.onUpdate(credential: credential, sessionUID: api.sessionUID)
         api.authDelegate = authManager
         api.serviceDelegate = serviceDelegate

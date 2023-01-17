@@ -24,6 +24,7 @@ Pod::Spec.new do |s|
 
     s.dependency 'ProtonCore-Foundations', $version
     s.dependency 'ProtonCore-UIFoundations', $version
+    s.dependency 'ProtonCore-DataModel', $version
 
     this_pod_does_not_have_subspecs(s)
 

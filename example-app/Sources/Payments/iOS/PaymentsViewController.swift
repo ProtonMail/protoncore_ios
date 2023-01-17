@@ -89,7 +89,7 @@ class PaymentsViewController: UIViewController, AccessibleView {
         } else if let viewController = segue.destination as? PaymentsReceiptDetailsViewController {
             viewController.testApi = PMAPIService.createAPIService(environment: .black,
                                                                    sessionUID: "testSessionUID",
-                                                                   challangeParametersProvider: .forAPIService(prefix: clientApp.name))
+                                                                   challengeParametersProvider: .forAPIService(clientApp: clientApp))
         }
     }
 

@@ -79,7 +79,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                       sessionFactory: sessionFactoryMock,
                                       cacheToClear: cacheToClearMock,
                                       trustKitProvider: trustKitProviderMock,
-                                      challangeParametersProvider: .forAPIService(prefix: "core"))
+                                      challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
     }
     
     override func setUp() {

@@ -44,7 +44,7 @@ extension SignupServiceTests {
     }
 
     var apiService: APIService {
-        return PMAPIService.createAPIServiceWithoutSession(doh: DohMock(), challangeParametersProvider: .forAPIService(prefix: "core"))
+        return PMAPIService.createAPIServiceWithoutSession(doh: DohMock(), challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
     }
 
     func mockValidationTokenOK() {

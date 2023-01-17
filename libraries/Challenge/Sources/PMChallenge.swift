@@ -21,6 +21,7 @@
 
 import UIKit
 import Foundation
+import ProtonCore_DataModel
 import ProtonCore_Foundations
 
 public final class PMChallenge: ChallengeProtocol {
@@ -279,17 +280,17 @@ extension PMChallenge {
     }
 }
 
-public extension ChallangeParametersProvider {
-    static func forAPIService(prefix: String) -> ChallangeParametersProvider {
-        ChallangeParametersProvider(prefix: prefix) {
+public extension ChallengeParametersProvider {
+    static func forAPIService(clientApp: ClientApp) -> ChallengeParametersProvider {
+        ChallengeParametersProvider(prefix: clientApp.name) {
             PMChallenge().export().deviceFingerprintDict()
         }
     }
 }
 
-public extension ChallangeParametersProvider {
-    static func forLoginAndSignup(prefix: String, challenge: PMChallenge) -> ChallangeParametersProvider {
-        ChallangeParametersProvider(prefix: prefix) {
+public extension ChallengeParametersProvider {
+    static func forLoginAndSignup(clientApp: ClientApp, challenge: PMChallenge) -> ChallengeParametersProvider {
+        ChallengeParametersProvider(prefix: clientApp.name) {
             challenge.export().allFingerprintDict()
         }
     }

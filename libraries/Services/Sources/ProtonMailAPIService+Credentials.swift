@@ -183,7 +183,7 @@ extension PMAPIService {
             completion(.refreshed(credentials: AuthCredential(credential)))
 
         case .failure(.networkingError(let responseError))
-            where credentialsCausing401.areForUnauthenticatedSession && (responseError.httpCode == 422 || responseError.httpCode == 400):
+            where credentialsCausing401.isForUnauthenticatedSession && (responseError.httpCode == 422 || responseError.httpCode == 400):
 
             authDelegate?.eraseUnauthSessionCredentials(sessionUID: sessionUID)
 
@@ -199,7 +199,7 @@ extension PMAPIService {
             }
 
         case .failure(.networkingError(let responseError))
-            where !credentialsCausing401.areForUnauthenticatedSession && (responseError.httpCode == 422 || responseError.httpCode == 400):
+            where !credentialsCausing401.isForUnauthenticatedSession && (responseError.httpCode == 422 || responseError.httpCode == 400):
             authDelegate?.onLogout(sessionUID: sessionUID)
 
             continuation()

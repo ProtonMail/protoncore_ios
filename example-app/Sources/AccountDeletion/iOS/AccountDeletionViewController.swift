@@ -142,7 +142,7 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
         self.showLoadingIndicator()
         let api = PMAPIService.createAPIService(environment: env,
                                                 sessionUID: "delete account test session",
-                                                challangeParametersProvider: .forAPIService(prefix: clientApp.name))
+                                                challengeParametersProvider: .forAPIService(clientApp: clientApp))
         api.authDelegate = self.authManager
         api.serviceDelegate = self.serviceDelegate
         LoginCreatedUser(api: api, authManager: authManager).login(account: createdAccountDetails) { [weak self] loginResult in
