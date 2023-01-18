@@ -32,6 +32,7 @@ Pod::Spec.new do |s|
     s.test_spec 'Tests' do |doh_tests|
       doh_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Doh', $version
       doh_tests.dependency "ProtonCore-ObfuscatedConstants", $version
+      doh_tests.dependency "ProtonCore-FeatureSwitch", $version
       doh_tests.source_files = "libraries/Doh/Tests/*.swift"
       doh_tests.dependency 'OHHTTPStubs/Swift'
 
