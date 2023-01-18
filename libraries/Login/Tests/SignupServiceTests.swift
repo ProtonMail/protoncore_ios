@@ -34,7 +34,7 @@ class SignupServiceTests: XCTestCase {
     // MARK: **** Validation tests ****
 
     func testValidationTokenRequestSuccess() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
 
         mockValidationTokenOK()
         let expect = expectation(description: "expectation1")
@@ -53,7 +53,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testValidationTokenRequestError() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
 
         mockValidationTokenError()
         let expect = expectation(description: "expectation1")
@@ -73,7 +73,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testValidationTokenCheckOK() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
         
         mockValidationTokenCheckOK()
         let expect = expectation(description: "expectation1")
@@ -93,7 +93,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testValidationTokenCheckInvalidVerificationCode() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
         
         mockValidationTokenCheckError12087()
         let expect = expectation(description: "expectation1")
@@ -117,7 +117,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testValidationTokenCheckEmailAddressAlreadyUsed() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
         
         mockValidationTokenCheckError2500()
         let expect = expectation(description: "expectation1")
@@ -142,7 +142,7 @@ class SignupServiceTests: XCTestCase {
     // MARK: **** Create username account tests ****
 
     func testCreateNewUsernameAccountOk() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
 
         mockCreateUsernameAccountOK()
         let expect = expectation(description: "expectation1")
@@ -162,7 +162,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewUsernameAccountModulusError() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
         
         mockModulusError()
         let expect = expectation(description: "expectation1")
@@ -185,7 +185,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewUsernameAccountUsersError() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
         
         mockCreateUsernameAccountError()
         let expect = expectation(description: "expectation1")
@@ -208,7 +208,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewUsernameAccountUsernameAlreadyTaken() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
         
         mockCreateUsernameAccountError12081()
         let expect = expectation(description: "expectation1")
@@ -232,7 +232,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewUsernameAccountInvalidInput() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
         
         mockCreateUsernameAccountError2001()
         let expect = expectation(description: "expectation1")
@@ -258,7 +258,7 @@ class SignupServiceTests: XCTestCase {
     // MARK: **** Create internal account tests ****
 
     func testCreateNewInternalAccountOk() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
         let domain = "proton.test"
         mockCreateInternalAccountOK(username: "abc", domain: domain)
         let expect = expectation(description: "expectation1")
@@ -278,7 +278,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewInternalAccountModulusError() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
         let domain = "proton.test"
         mockModulusErrorWithParseDomain(username: "abc", domain: domain)
         let expect = expectation(description: "expectation1")
@@ -301,7 +301,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewInternalAccountUsersError() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
         let domain = "proton.test"
         mockCreateInternalAccountError(username: "abc", domain: domain)
         let expect = expectation(description: "expectation1")
@@ -324,7 +324,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewInternalAccountUsernameAlreadyTaken() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
         let domain = "proton.test"
         mockCreateInternalAccountError12081(username: "abc", domain: domain)
         let expect = expectation(description: "expectation1")
@@ -348,7 +348,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewInternalAccountInvalidInput() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
         let domain = "proton.test"
         mockCreateInternalAccountError2001(username: "abc", domain: domain)
         let expect = expectation(description: "expectation1")
@@ -374,7 +374,7 @@ class SignupServiceTests: XCTestCase {
     // MARK: **** Create external user tests ****
 
     func testCreateNewExternalAccountOk() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
         mockCreateExternalUserOK()
         let expect = expectation(description: "expectation1")
         service.createNewExternalAccount(email: "test@test.ch", password: "1", verifyToken: "1234", tokenType: "test", completion: { result in
@@ -393,7 +393,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewExternalAccountError() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
 
         mockCreateExternalUserError()
         let expect = expectation(description: "expectation1")
@@ -416,7 +416,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewExternalUserEmailAddressAlreadyUsed() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
 
         mockCreateExternalUserError2500()
         let expect = expectation(description: "expectation1")
@@ -440,7 +440,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewExternalUserInvalidInput() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
 
         mockCreateExternalUserError2001()
         let expect = expectation(description: "expectation1")
@@ -464,7 +464,7 @@ class SignupServiceTests: XCTestCase {
     }
 
     func testCreateNewExternalUserInvalidVerificationCode() {
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
 
         mockCreateExternalUserError12087()
         let expect = expectation(description: "expectation1")
@@ -489,7 +489,7 @@ class SignupServiceTests: XCTestCase {
     
     func testValidEmailSuccess() {
         let apiService = APIServiceMock()
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
 
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/core/v4/validate/email") {
@@ -518,7 +518,7 @@ class SignupServiceTests: XCTestCase {
     
     func testValidEmailInvalidInput() {
         let apiService = APIServiceMock()
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/core/v4/validate/email") {
                 let error = """
@@ -562,7 +562,7 @@ class SignupServiceTests: XCTestCase {
     
     func testValidPhoneNumberSuccess() {
         let apiService = APIServiceMock()
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
 
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/core/v4/validate/phone") {
@@ -591,7 +591,7 @@ class SignupServiceTests: XCTestCase {
     
     func testValidPhoneNumberInvalidInput() {
         let apiService = APIServiceMock()
-        let service = SignupService(api: apiService, challangeParametersProvider: PMChallenge(), clientApp: .mail)
+        let service = SignupService(api: apiService, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/core/v4/validate/phone") {
                 let error = """

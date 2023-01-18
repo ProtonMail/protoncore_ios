@@ -48,7 +48,9 @@ class NetworkingViewController: UIViewController {
     @IBOutlet weak var timeoutTextField: UITextField!
     @IBOutlet weak var dohStatusLable: UILabel!
 
-    var testApi = PMAPIService.createAPIService(environment: .black, sessionUID: "testSessionUID")
+    var testApi = PMAPIService.createAPIService(environment: .black,
+                                                sessionUID: "testSessionUID",
+                                                challengeParametersProvider: .forAPIService(clientApp: clientApp))
     var authHelper: AuthHelper?
     
     override func viewDidLoad() {
@@ -64,7 +66,9 @@ class NetworkingViewController: UIViewController {
     }
     
     func setupEnv() {
-        testApi = PMAPIService.createAPIService(environment: environmentSelector.currentEnvironment, sessionUID: "testSessionUID")
+        testApi = PMAPIService.createAPIService(environment: environmentSelector.currentEnvironment,
+                                                sessionUID: "testSessionUID",
+                                                challengeParametersProvider: .forAPIService(clientApp: clientApp))
         authHelper = AuthHelper()
         testApi.authDelegate = authHelper
         testApi.serviceDelegate = self
@@ -94,6 +98,9 @@ class NetworkingViewController: UIViewController {
             
             func onLogout(sessionUID uid: String) {
                 assertionFailure("Should never be called")
+                credential = nil
+            }
+            func eraseUnauthSessionCredentials(sessionUID: String) {
                 credential = nil
             }
             var wasUpdateCalled = false

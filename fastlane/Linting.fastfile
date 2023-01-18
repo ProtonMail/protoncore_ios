@@ -367,12 +367,12 @@ end
 
 lane :build_Services_all_variants do
   install_dependencies_from_gemfile
-  build_spec("Services", "ios,macos", default_test_podspecs)
+  build_spec("Services", "macos,ios", default_test_podspecs, "Challenge", "Authentication", "Login", "UIFoundations", "Foundations", "OpenPGP")
 end
 
 lane :build_Services_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("Services", "ios", default_test_podspecs)
+  build_spec("Services", "ios", default_test_podspecs, "Challenge", "Authentication", "Login", "UIFoundations", "Foundations", "OpenPGP")
 end
 
 lane :build_Settings_all_variants do

@@ -191,13 +191,6 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "4B8E7D6D86EDA4552BFB6BACEEAA62FA",
-        "name" : "ProtonCore-Services-iOS-Unit-Tests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Pods\/Pods.xcodeproj",
         "identifier" : "7ACEC0FF2D0D56BDEFA434C92E6C60FB",
         "name" : "ProtonCore-Settings-Unit-Tests"
       }
@@ -228,6 +221,13 @@
         "containerPath" : "container:Pods\/Pods.xcodeproj",
         "identifier" : "B73A2275427AC8242A44C3213253776F",
         "name" : "ProtonCore-APIClient-iOS-Unit-Crypto-Go1.19.4-Tests-Crypto-Go1.19.4"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "15F8D09913146D2D4929F72187B84292",
+        "name" : "ProtonCore-Services-iOS-Unit-UnitTests"
       }
     }
   ],

@@ -5,22 +5,6 @@
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
-      <BuildActionEntries>
-         <BuildActionEntry
-            buildForTesting = "NO"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "66B886CB2970167C00269ADD"
-               BuildableName = "Example-UnitTests-macOS.xctest"
-               BlueprintName = "Example-UnitTests-macOS"
-               ReferencedContainer = "container:ExampleApp.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-      </BuildActionEntries>
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
@@ -29,10 +13,23 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:../Sources/Example-ProtonCore/UnitTests/Example-UnitTests_macOS.xctestplan"
+            reference = "container:Sources/Example-ProtonCore/IntegrationTests/Example-IntegrationTests.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
+      <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "66EEFA0C2975CECB00B377F3"
+               BuildableName = "Example-IntegrationTests.xctest"
+               BlueprintName = "Example-IntegrationTests"
+               ReferencedContainer = "container:ExampleApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -44,16 +41,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6691E3BE2747C4AF00132DC0"
-            BuildableName = "Example-macOS-Mail.app"
-            BlueprintName = "Example-macOS-Mail"
+            BlueprintIdentifier = "25BDF93C271424B3001BB254"
+            BuildableName = "Example-iOS-Mail-AppStoreIAP.app"
+            BlueprintName = "Example-iOS-Mail-AppStoreIAP"
             ReferencedContainer = "container:ExampleApp.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -61,15 +57,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6691E3BE2747C4AF00132DC0"
-            BuildableName = "Example-macOS-Mail.app"
-            BlueprintName = "Example-macOS-Mail"
-            ReferencedContainer = "container:ExampleApp.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

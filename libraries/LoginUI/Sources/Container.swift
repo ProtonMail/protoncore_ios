@@ -27,7 +27,9 @@ import ProtonCore_Challenge
 import ProtonCore_DataModel
 import ProtonCore_Doh
 import ProtonCore_HumanVerification
+import ProtonCore_Foundations
 import ProtonCore_Login
+import ProtonCore_Log
 import ProtonCore_Networking
 import ProtonCore_Services
 import typealias ProtonCore_Payments.ListOfIAPIdentifiers
@@ -36,12 +38,7 @@ import typealias ProtonCore_Payments.BugAlertHandler
 import ProtonCore_PaymentsUI
 import ProtonCore_TroubleShooting
 import ProtonCore_Environment
-
-extension PMChallenge: ChallangeParametersProvider {
-    public func provideParameters() -> [[String: Any]] {
-        export().toDictArray()
-    }
-}
+import ProtonCore_FeatureSwitch
 
 final class Container {
     let login: Login
@@ -92,14 +89,16 @@ final class Container {
             PMAPIService.trustKit = trustKit
         }
         
-        api = PMAPIService.createAPIServiceWithoutSession(doh: doh)
+        api = PMAPIService.createAPIServiceWithoutSession(doh: doh, challengeParametersProvider: .forAPIService(clientApp: clientApp))
         api.forceUpgradeDelegate = forceUpgradeDelegate
         api.serviceDelegate = apiServiceDelegate
         authManager = AuthHelper()
         api.authDelegate = authManager
         login = LoginService(api: api, authManager: authManager, clientApp: clientApp, minimumAccountType: minimumAccountType)
         challenge = PMChallenge()
-        signupService = SignupService(api: api, challangeParametersProvider: challenge, clientApp: clientApp)
+        signupService = SignupService(api: api,
+                                      challengeParametersProvider: .forLoginAndSignup(clientApp: clientApp, challenge: challenge),
+                                      clientApp: clientApp)
         self.appName = appName
         self.clientApp = clientApp
         self.externalLinks = ExternalLinks(clientApp: clientApp)

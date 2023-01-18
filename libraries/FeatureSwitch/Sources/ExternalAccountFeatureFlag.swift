@@ -19,8 +19,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore. If not, see <https://www.gnu.org/licenses/>.
 
-import ProtonCore_FeatureSwitch
-
 extension Feature {
     public static var externalSignup = Feature.init(name: "externalSignup", isEnable: false)
     

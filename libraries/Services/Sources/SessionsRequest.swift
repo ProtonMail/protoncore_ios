@@ -45,6 +45,7 @@ public final class SessionsRequest: Request {
     }
 }
 
+// TODO: remove
 extension PMAPIService {
     func performSessionsRequest(challenge: ChallengeProperties?,
                                 completion: @escaping (Result<Credential, ResponseError>) -> Void) {

@@ -76,7 +76,9 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        testApi = PMAPIService.createAPIService(environment: currentEnv, sessionUID: "testSessionUID")
+        testApi = PMAPIService.createAPIService(environment: currentEnv,
+                                                sessionUID: "testSessionUID",
+                                                challengeParametersProvider: .forAPIService(clientApp: clientApp))
         testApi.serviceDelegate = serviceDelegate
         loginButton.isEnabled = true
         currentSubscriptionButton.isEnabled = false

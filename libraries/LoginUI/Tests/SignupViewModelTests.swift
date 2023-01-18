@@ -40,7 +40,7 @@ class SignupViewModelTests: XCTestCase {
         try super.setUpWithError()
         signupServiceMock = SignupServiceMock()
         loginMock = LoginMock()
-        let api = PMAPIService.createAPIServiceWithoutSession(doh: DohMock())
+        let api = PMAPIService.createAPIServiceWithoutSession(doh: DohMock(), challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let authDelegate = AuthHelper()
         let serviceDelegate = AnonymousServiceManager()
         api.authDelegate = authDelegate

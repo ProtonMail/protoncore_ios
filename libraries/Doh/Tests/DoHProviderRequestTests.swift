@@ -53,7 +53,7 @@ class DoHProviderRequestTests: XCTestCase {
         func onLogout(sessionUID: String) { }
         func onUpdate(credential: Credential, sessionUID: String) { }
         func onRefresh(sessionUID: String, service: APIService, complete: @escaping AuthRefreshResultCompletion) { }
-        
+        func eraseUnauthSessionCredentials(sessionUID: String) { }
         private var testAuthCredential: AuthCredential? {
             AuthCredential(sessionID: sessionID, accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", privateKey: nil, passwordKeySalt: nil)
         }
@@ -96,7 +96,8 @@ class DoHProviderRequestTests: XCTestCase {
             }
         }
         let doh = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
-        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: doh as DoHInterface)
+        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: doh as DoHInterface,
+                                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let request = GenericRequest(path: "/users/testPath", isAuth: false)
         doh.status = .forceAlternativeRouting
         apiService.authDelegate = authDelegate
@@ -125,7 +126,8 @@ class DoHProviderRequestTests: XCTestCase {
             }
         }
         var doh: DoHInterface = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
-        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: doh)
+        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: doh,
+                                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let request = GenericRequest(path: "/users/testPath", isAuth: true)
         doh.status = .forceAlternativeRouting
         apiService.authDelegate = authDelegate
@@ -154,7 +156,8 @@ class DoHProviderRequestTests: XCTestCase {
             }
         }
         let doh = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
-        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: doh as DoHInterface)
+        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: doh as DoHInterface,
+                                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let request = GenericRequest(path: "/users/testPath", isAuth: false)
         doh.status = .forceAlternativeRouting
         
@@ -182,7 +185,8 @@ class DoHProviderRequestTests: XCTestCase {
             }
         }
         var doh: DoHInterface = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
-        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: doh)
+        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: doh,
+                                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let request = GenericRequest(path: "/users/testPath", isAuth: true)
         doh.status = .forceAlternativeRouting
         apiService.authDelegate = authDelegate
@@ -211,7 +215,9 @@ class DoHProviderRequestTests: XCTestCase {
             }
         }
         var doh: DoHInterface = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
-        let apiService = PMAPIService.createAPIService(doh: doh, sessionUID: "OwnSessionID_123")
+        let apiService = PMAPIService.createAPIService(doh: doh,
+                                                       sessionUID: "OwnSessionID_123",
+                                                       challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let request = GenericRequest(path: "/users/testPath", isAuth: true)
         doh.status = .forceAlternativeRouting
         apiService.authDelegate = authDelegate
@@ -240,7 +246,8 @@ class DoHProviderRequestTests: XCTestCase {
             }
         }
         let doh = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
-        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: doh as DoHInterface)
+        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: doh as DoHInterface,
+                                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let request = GenericRequest(path: "/users/testPath", isAuth: true, authCredential: authDelegate.authCredential)
         doh.status = .forceAlternativeRouting
         apiService.authDelegate = authDelegate
@@ -269,7 +276,8 @@ class DoHProviderRequestTests: XCTestCase {
             }
         }
         let doh = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
-        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: doh as DoHInterface)
+        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: doh as DoHInterface,
+                                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let request = GenericRequest(path: "/users/testPath", isAuth: true, authCredential: authDelegate2.authCredential)
         doh.status = .forceAlternativeRouting
         apiService.authDelegate = authDelegate
@@ -298,7 +306,9 @@ class DoHProviderRequestTests: XCTestCase {
             }
         }
         let doh = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
-        let apiService = PMAPIService.createAPIService(doh: doh as DoHInterface, sessionUID: "OwnSessionID_123")
+        let apiService = PMAPIService.createAPIService(doh: doh as DoHInterface,
+                                                       sessionUID: "OwnSessionID_123",
+                                                       challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         let request = GenericRequest(path: "/users/testPath", isAuth: true, authCredential: authDelegate2.authCredential)
         doh.status = .forceAlternativeRouting
         apiService.authDelegate = authDelegate

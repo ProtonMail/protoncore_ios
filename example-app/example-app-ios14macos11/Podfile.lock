@@ -128,9 +128,11 @@ PODS:
     - ProtonCore-Services (= 3.26.1)
     - ProtonCore-TestingToolkit/UnitTests/Authentication/Crypto-Go1.19.4 (= 3.26.1)
   - ProtonCore-Challenge (3.26.1):
+    - ProtonCore-DataModel (= 3.26.1)
     - ProtonCore-Foundations (= 3.26.1)
     - ProtonCore-UIFoundations (= 3.26.1)
   - ProtonCore-Challenge/Tests (3.26.1):
+    - ProtonCore-DataModel (= 3.26.1)
     - ProtonCore-Foundations (= 3.26.1)
     - ProtonCore-UIFoundations (= 3.26.1)
   - ProtonCore-Common (3.26.1):
@@ -376,7 +378,7 @@ PODS:
     - ProtonCore-Networking (= 3.26.1)
     - ProtonCore-Utilities (= 3.26.1)
     - TrustKit
-  - ProtonCore-Services/Tests (3.26.1):
+  - ProtonCore-Services/UnitTests (3.26.1):
     - ProtonCore-DataModel (= 3.26.1)
     - ProtonCore-Doh (= 3.26.1)
     - ProtonCore-Environment (= 3.26.1)
@@ -585,7 +587,7 @@ DEPENDENCIES:
   - ProtonCore-QuarkCommands (from `../../`)
   - ProtonCore-QuarkCommands/Tests (from `../../`)
   - ProtonCore-Services (from `../../`)
-  - ProtonCore-Services/Tests (from `../../`)
+  - ProtonCore-Services/UnitTests (from `../../`)
   - ProtonCore-Settings (from `../../`)
   - ProtonCore-Settings/Tests (from `../../`)
   - ProtonCore-TestingToolkit/TestData (from `../../`)
@@ -740,7 +742,7 @@ SPEC CHECKSUMS:
   ProtonCore-APIClient: bd8651d2d39349f1f3e91fff45f9117fbf631aca
   ProtonCore-Authentication: 9905048cfcf912ebbcb5da25c80b6367f7423db1
   ProtonCore-Authentication-KeyGeneration: 5713bea011e71c7cd66d859a80b3fecefb7d5b12
-  ProtonCore-Challenge: a8d4d02c306c88a8ec7c3d5a72d450f1455013ae
+  ProtonCore-Challenge: 37e2982d7d0febc308e04ffe9340ba73d4941e66
   ProtonCore-Common: 72ffc341c92881b6fc722dcd031f94962fa6ddcf
   ProtonCore-CoreTranslation: d0e0546cec2a8b429ac07e39895d892e9862f810
   ProtonCore-DataModel: 0d1d94dd2b481a7edd23978341fda4cac8e64efe
@@ -764,7 +766,7 @@ SPEC CHECKSUMS:
   ProtonCore-Payments: bf10bc221eb2e43381092051b249be3bc3ea981f
   ProtonCore-PaymentsUI: 94393e4145f32f26a5ea529964d38a8c5bd40151
   ProtonCore-QuarkCommands: ea5475e2b5ae462532ce09d9a2ac522b74d33938
-  ProtonCore-Services: 2b8e4d1d79dba7935d1ef3b925206d6c7dd4a9f6
+  ProtonCore-Services: e13c60658fd8df324b22f353e3c3b028f4ff4055
   ProtonCore-Settings: 3a3252fb16732abcac6d045520c006304096ba2b
   ProtonCore-TestingToolkit: 113d87d84f141defcbac855b6d3a427fb7a78e68
   ProtonCore-TroubleShooting: c7269ac42d6588d1561ab62d490446ec1c36cbf2
@@ -778,6 +780,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 75ff97f2484a463cf46c172fe7f94225612aeda1
   TrustKit: f830ff5af0a8cbad5178aef1d0951389b096d312
 
-PODFILE CHECKSUM: 46f65dc0a6559f1f4893d6cafcdcd15fc3ac035a
+PODFILE CHECKSUM: 81dfee9d7bea61ddf93dded0edc7c7bbe5a5ae33
 
 COCOAPODS: 1.11.3

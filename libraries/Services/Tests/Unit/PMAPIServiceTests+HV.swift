@@ -93,10 +93,11 @@ final class PMAPIServiceHVTests: XCTestCase {
     
     func testHumanVerificationIsLaunchedForJSONResponse_HVClose() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
-                                   sessionUID: "test sessionUID",
-                                   sessionFactory: sessionFactoryMock,
-                                   cacheToClear: cacheToClearMock,
-                                   trustKitProvider: trustKitProviderMock)
+                                                    sessionUID: "test sessionUID",
+                                                    sessionFactory: sessionFactoryMock,
+                                                    cacheToClear: cacheToClearMock,
+                                                    trustKitProvider: trustKitProviderMock,
+                                                    challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
         
@@ -129,10 +130,11 @@ final class PMAPIServiceHVTests: XCTestCase {
     
     func testHumanVerificationIsLaunchedForJSONResponse_HVError() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
-                                   sessionUID: "test sessionUID",
-                                   sessionFactory: sessionFactoryMock,
-                                   cacheToClear: cacheToClearMock,
-                                   trustKitProvider: trustKitProviderMock)
+                                                    sessionUID: "test sessionUID",
+                                                    sessionFactory: sessionFactoryMock,
+                                                    cacheToClear: cacheToClearMock,
+                                                    trustKitProvider: trustKitProviderMock,
+                                                    challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
         
@@ -164,10 +166,11 @@ final class PMAPIServiceHVTests: XCTestCase {
     
     func testHumanVerificationIsLaunchedForJSONResponse_ErrorInRetriedRequest() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
-                                   sessionUID: "test sessionUID",
-                                   sessionFactory: sessionFactoryMock,
-                                   cacheToClear: cacheToClearMock,
-                                   trustKitProvider: trustKitProviderMock)
+                                                    sessionUID: "test sessionUID",
+                                                    sessionFactory: sessionFactoryMock,
+                                                    cacheToClear: cacheToClearMock,
+                                                    trustKitProvider: trustKitProviderMock,
+                                                    challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
         
@@ -203,10 +206,11 @@ final class PMAPIServiceHVTests: XCTestCase {
     
     func testHumanVerificationIsLaunchedForJSONResponse_HVSuccess() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
-                                   sessionUID: "test sessionUID",
-                                   sessionFactory: sessionFactoryMock,
-                                   cacheToClear: cacheToClearMock,
-                                   trustKitProvider: trustKitProviderMock)
+                                                    sessionUID: "test sessionUID",
+                                                    sessionFactory: sessionFactoryMock,
+                                                    cacheToClear: cacheToClearMock,
+                                                    trustKitProvider: trustKitProviderMock,
+                                                    challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
         
@@ -244,10 +248,11 @@ final class PMAPIServiceHVTests: XCTestCase {
     
     func testHumanVerificationIsLaunchedForCodableEmptyResponse_HVClose() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
-                                   sessionUID: "test sessionUID",
-                                   sessionFactory: sessionFactoryMock,
-                                   cacheToClear: cacheToClearMock,
-                                   trustKitProvider: trustKitProviderMock)
+                                                    sessionUID: "test sessionUID",
+                                                    sessionFactory: sessionFactoryMock,
+                                                    cacheToClear: cacheToClearMock,
+                                                    trustKitProvider: trustKitProviderMock,
+                                                    challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
         
@@ -280,10 +285,11 @@ final class PMAPIServiceHVTests: XCTestCase {
     
     func testHumanVerificationIsLaunchedForCodableEmptyResponse_HVError() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
-                                   sessionUID: "test sessionUID",
-                                   sessionFactory: sessionFactoryMock,
-                                   cacheToClear: cacheToClearMock,
-                                   trustKitProvider: trustKitProviderMock)
+                                                    sessionUID: "test sessionUID",
+                                                    sessionFactory: sessionFactoryMock,
+                                                    cacheToClear: cacheToClearMock,
+                                                    trustKitProvider: trustKitProviderMock,
+                                                    challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
         
@@ -316,10 +322,11 @@ final class PMAPIServiceHVTests: XCTestCase {
     
     func testHumanVerificationIsLaunchedForCodableEmptyResponse_ErrorInRetriedRequest() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
-                                   sessionUID: "test sessionUID",
-                                   sessionFactory: sessionFactoryMock,
-                                   cacheToClear: cacheToClearMock,
-                                   trustKitProvider: trustKitProviderMock)
+                                                    sessionUID: "test sessionUID",
+                                                    sessionFactory: sessionFactoryMock,
+                                                    cacheToClear: cacheToClearMock,
+                                                    trustKitProvider: trustKitProviderMock,
+                                                    challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
         
@@ -358,10 +365,11 @@ final class PMAPIServiceHVTests: XCTestCase {
     
     func testHumanVerificationIsLaunchedForCodableEmptyResponse_HVSuccess() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
-                                   sessionUID: "test sessionUID",
-                                   sessionFactory: sessionFactoryMock,
-                                   cacheToClear: cacheToClearMock,
-                                   trustKitProvider: trustKitProviderMock)
+                                                    sessionUID: "test sessionUID",
+                                                    sessionFactory: sessionFactoryMock,
+                                                    cacheToClear: cacheToClearMock,
+                                                    trustKitProvider: trustKitProviderMock,
+                                                    challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
         
@@ -403,10 +411,11 @@ final class PMAPIServiceHVTests: XCTestCase {
     
     func testHumanVerificationIsLaunchedForCodableDataResponse_HVClose() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
-                                   sessionUID: "test sessionUID",
-                                   sessionFactory: sessionFactoryMock,
-                                   cacheToClear: cacheToClearMock,
-                                   trustKitProvider: trustKitProviderMock)
+                                                    sessionUID: "test sessionUID",
+                                                    sessionFactory: sessionFactoryMock,
+                                                    cacheToClear: cacheToClearMock,
+                                                    trustKitProvider: trustKitProviderMock,
+                                                    challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
         
@@ -439,10 +448,11 @@ final class PMAPIServiceHVTests: XCTestCase {
     
     func testHumanVerificationIsLaunchedForCodableDataResponse_HVError() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
-                                   sessionUID: "test sessionUID",
-                                   sessionFactory: sessionFactoryMock,
-                                   cacheToClear: cacheToClearMock,
-                                   trustKitProvider: trustKitProviderMock)
+                                                    sessionUID: "test sessionUID",
+                                                    sessionFactory: sessionFactoryMock,
+                                                    cacheToClear: cacheToClearMock,
+                                                    trustKitProvider: trustKitProviderMock,
+                                                    challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
         
@@ -475,10 +485,11 @@ final class PMAPIServiceHVTests: XCTestCase {
     
     func testHumanVerificationIsLaunchedForCodableDataResponse_ErrorInRetriedRequest() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
-                                   sessionUID: "test sessionUID",
-                                   sessionFactory: sessionFactoryMock,
-                                   cacheToClear: cacheToClearMock,
-                                   trustKitProvider: trustKitProviderMock)
+                                                    sessionUID: "test sessionUID",
+                                                    sessionFactory: sessionFactoryMock,
+                                                    cacheToClear: cacheToClearMock,
+                                                    trustKitProvider: trustKitProviderMock,
+                                                    challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
         
@@ -517,10 +528,11 @@ final class PMAPIServiceHVTests: XCTestCase {
     
     func testHumanVerificationIsLaunchedForCodableDataResponse_HVSuccess() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
-                                   sessionUID: "test sessionUID",
-                                   sessionFactory: sessionFactoryMock,
-                                   cacheToClear: cacheToClearMock,
-                                   trustKitProvider: trustKitProviderMock)
+                                                    sessionUID: "test sessionUID",
+                                                    sessionFactory: sessionFactoryMock,
+                                                    cacheToClear: cacheToClearMock,
+                                                    trustKitProvider: trustKitProviderMock,
+                                                    challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
         
@@ -564,10 +576,11 @@ final class PMAPIServiceHVTests: XCTestCase {
     
     func testHumanVerificationIsLaunchedForPOSTAuth_HVSuccess() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
-                                   sessionUID: "test sessionUID",
-                                   sessionFactory: sessionFactoryMock,
-                                   cacheToClear: cacheToClearMock,
-                                   trustKitProvider: trustKitProviderMock)
+                                                    sessionUID: "test sessionUID",
+                                                    sessionFactory: sessionFactoryMock,
+                                                    cacheToClear: cacheToClearMock,
+                                                    trustKitProvider: trustKitProviderMock,
+                                                    challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
         

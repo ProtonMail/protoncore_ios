@@ -63,7 +63,9 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
     
     private lazy var authenticator: Authenticator = {
         let env = environmentSelector.currentEnvironment
-        let api = PMAPIService.createAPIService(environment: env, sessionUID: "token refresh test session")
+        let api = PMAPIService.createAPIService(environment: env,
+                                                sessionUID: "token refresh test session",
+                                                challengeParametersProvider: .forAPIService(clientApp: clientApp))
         api.authDelegate = self
         api.serviceDelegate = self.serviceDelegate
         return .init(api: api)
@@ -287,7 +289,13 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
         credential
     }
     
-    func onLogout(sessionUID uid: String) {}
+    func onLogout(sessionUID uid: String) {
+        credential = nil
+    }
+
+    func eraseUnauthSessionCredentials(sessionUID: String) {
+        credential = nil
+    }
     
     func onUpdate(credential: Credential, sessionUID: String) {
         self.credential = credential

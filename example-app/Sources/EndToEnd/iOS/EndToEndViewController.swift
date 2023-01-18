@@ -77,7 +77,9 @@ final class EndToEndViewController: UIViewController,
     
     private lazy var authenticator: Authenticator = {
         let env = environmentSelector.currentEnvironment
-        let api = PMAPIService(environment: env, sessionUID: "token refresh test session")
+        let api = PMAPIService(environment: env,
+                               sessionUID: "token refresh test session",
+                               challengeParametersProvider: .forAPIService(clientApp: clientApp))
         api.authDelegate = self
         api.serviceDelegate = self.serviceDelegate
         return .init(api: api)
@@ -113,7 +115,9 @@ final class EndToEndViewController: UIViewController,
     
     private func testDeviceFingerprintsOnPostSession() {
         let env = environmentSelector.currentEnvironment
-        let api = PMAPIService(environment: env, sessionUID: "token refresh test session")
+        let api = PMAPIService(environment: env,
+                               sessionUID: "token refresh test session",
+                               challengeParametersProvider: .forAPIService(clientApp: clientApp))
         api.authDelegate = self
         api.serviceDelegate = self.serviceDelegate
         var output = "Server: \n"
@@ -209,7 +213,13 @@ final class EndToEndViewController: UIViewController,
         credential
     }
     
-    func onLogout(sessionUID uid: String) {}
+    func onLogout(sessionUID uid: String) {
+        credential = nil
+    }
+
+    func eraseUnauthSessionCredentials(sessionUID: String) {
+        credential = nil
+    }
     
     func onUpdate(credential: Credential, sessionUID: String) {
         self.credential = credential
