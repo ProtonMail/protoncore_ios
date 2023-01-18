@@ -252,7 +252,7 @@ extension LoginCoordinator: LoginStepsDelegate {
             showCreateAddress(data: data, defaultUsername: defaultUsername)
         } else {
             // account conversion not supported by feature flag
-            let externalAccountsNotSupportedError = LoginError.externalAccountsNotSupported(message: CoreString._ls_external_eccounts_not_supported_popup_local_desc, originalError: NSError())
+            let externalAccountsNotSupportedError = LoginError.externalAccountsNotSupported(message: CoreString._ls_external_accounts_not_supported_popup_local_desc, title: CoreString._ls_external_accounts_address_required_popup_title, originalError: NSError())
             popAndShowError(error: externalAccountsNotSupportedError)
         }
     }

@@ -1,5 +1,5 @@
 //
-//  LoginExternalAccountTests.swift
+//  LoginExternalAccountsUpdateRequiredUITests.swift
 //  SampleAppUITests
 //
 //  Created by Kristina Jureviciute on 2021-04-23.
@@ -11,20 +11,20 @@ import ProtonCore_TestingToolkit
 import ProtonCore_ObfuscatedConstants
 import ProtonCore_QuarkCommands
 
-class LoginExternalAccountUnavailableTests: LoginBaseTestCase {
+class LoginExternalAccountsUpdateRequiredUITests: LoginBaseTestCase {
     
     let mainRobot = LoginSampleAppRobot()
     lazy var quarkCommands = QuarkCommands(doh: doh)
     
     override func setUp() {
-        beforeSetUp(launchArguments: ["UITests_MockExternalAccountsUnavailableInAuth"])
+        beforeSetUp(launchArguments: ["UITests_MockExternalAccountsUpdateRequiredInAuth"])
         
         super.setUp()
         mainRobot
             .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
     }
     
-    func testExternalAccountUnavailablePopupIsClosable() {
+    func testExternalAccountsUpdateRequiredPopupIsClosable() {
         let randomEmail = "\(StringUtils.randomAlphanumericString(length: 8))@proton.uitests"
         let randomPassword = StringUtils.randomAlphanumericString(length: 8)
         quarkCommands.createUser(externalEmail: randomEmail, password: randomPassword)
@@ -34,13 +34,13 @@ class LoginExternalAccountUnavailableTests: LoginBaseTestCase {
             .fillUsername(username: randomEmail)
             .fillpassword(password: randomPassword)
             .signIn(robot: ExternalAccountsNotSupportedDialogRobot.self)
-            .verify.externalAccountsNotSupportedDialog()
+            .verify.externalAccountsUpdateRequireddDialog()
             .tapClose(to: LoginRobot.self)
             .closeLoginScreen(to: LoginSampleAppRobot.self)
             .verify.buttonLogoutIsNotVisible()
     }
     
-    func testExternalAccountUnavailablePopupOpensLearnMorePage() {
+    func testExternalAccountsUpdateRequiredPopupOpensLearnMorePage() {
         let randomEmail = "\(StringUtils.randomAlphanumericString(length: 8))@proton.uitests"
         let randomPassword = StringUtils.randomAlphanumericString(length: 8)
         quarkCommands.createUser(externalEmail: randomEmail, password: randomPassword)
@@ -50,7 +50,7 @@ class LoginExternalAccountUnavailableTests: LoginBaseTestCase {
             .fillUsername(username: randomEmail)
             .fillpassword(password: randomPassword)
             .signIn(robot: ExternalAccountsNotSupportedDialogRobot.self)
-            .verify.externalAccountsNotSupportedDialog()
+            .verify.externalAccountsUpdateRequireddDialog()
             .verify.isInsideTheApplication()
             .tapLearnMore(to: SafariRobot.self)
             .verify.isOutsideOfApplication()
