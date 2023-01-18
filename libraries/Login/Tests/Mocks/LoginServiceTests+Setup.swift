@@ -57,9 +57,14 @@ extension LoginServiceTests {
         mock(filename: "AuthInvalidCredentials", title: "Invalid credentials /auth mock", path: "/auth/v4")
     }
 
-    func mockAuthExtAccountsNotSupportedLogin() {
+    func mockAuthExtAccountsNotSupportedLoginError5099() {
         mock(filename: "AuthInfoInvalidCredentials", title: "Invalid credentials /auth/info mock", path: "/auth/info")
-        mock(filename: "AuthExtAccountsNotSupported", title: "Auth external accounts not supported mock", path: "/auth/v4")
+        mock(filename: "AuthExtAccountsNotSupportedError5099", title: "Auth external accounts not supported mock", path: "/auth/v4")
+    }
+    
+    func mockAuthExtAccountsNotSupportedLoginError5098() {
+        mock(filename: "AuthInfoInvalidCredentials", title: "Invalid credentials /auth/info mock", path: "/auth/info")
+        mock(filename: "AuthExtAccountsNotSupportedError5098", title: "Auth external accounts not supported mock", path: "/auth/v4")
     }
     
     func mockNonExistentUserLogin() {

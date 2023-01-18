@@ -28,6 +28,7 @@ import ProtonCore_Authentication
 import ProtonCore_Authentication_KeyGeneration
 import ProtonCore_DataModel
 import ProtonCore_Networking
+import ProtonCore_CoreTranslation
 import ProtonCore_ObfuscatedConstants
 import ProtonCore_FeatureSwitch
 @testable import ProtonCore_Services
@@ -36,6 +37,7 @@ import ProtonCore_FeatureSwitch
 class LoginServiceTests: XCTestCase {
     var authInfoRequestData: [String: Any]?
     var server: SrpServer?
+    
     
     override class func setUp() {
         super.setUp()
@@ -858,7 +860,6 @@ class LoginServiceTests: XCTestCase {
                 completion(nil, .success(AvailableDomainResponse.from(["Code": 1000, "Domains": []])))
             } else {
                 XCTFail()
-                completion(nil, .success([:]))
             }
         }
         let result = await withCheckedContinuation { continuation in
@@ -879,7 +880,6 @@ class LoginServiceTests: XCTestCase {
                 completion(nil, .success(AvailableDomainResponse.from(["Code": 1000, "Domains": ["proton.first"]])))
             } else {
                 XCTFail()
-                completion(nil, .success([:]))
             }
         }
         let result = await withCheckedContinuation { continuation in
@@ -900,7 +900,6 @@ class LoginServiceTests: XCTestCase {
                 completion(nil, .success(AvailableDomainResponse.from(["Code": 1000, "Domains": ["proton.first", "proton.second", "proton.third"]])))
             } else {
                 XCTFail()
-                completion(nil, .success([:]))
             }
         }
         let result = await withCheckedContinuation { continuation in
@@ -921,7 +920,6 @@ class LoginServiceTests: XCTestCase {
                 completion(nil, .success(AvailableDomainResponse.from(["Code": 1000, "Domains": ["proton.first", "proton.second", "proton.third"]])))
             } else {
                 XCTFail()
-                completion(nil, .success([:]))
             }
         }
         let result = await withCheckedContinuation { continuation in
@@ -943,7 +941,6 @@ class LoginServiceTests: XCTestCase {
                 completion(nil, .success(AvailableDomainResponse.from(["Code": 1000, "Domains": ["proton.first", "proton.second", "proton.third"]])))
             } else {
                 XCTFail()
-                completion(nil, .success([:]))
             }
         }
         let result = await withCheckedContinuation { continuation in
@@ -958,9 +955,9 @@ class LoginServiceTests: XCTestCase {
         XCTAssertEqual(service.currentlyChosenSignUpDomain, "proton.second")
     }
     
-    func testLoginWithAuthExtAccountsNotSupported() {
+    func testLoginWithAuthExtAccountsNotSupported_error5099() {
         let (api, authDelegate) = apiService
-        mockAuthExtAccountsNotSupportedLogin()
+        mockAuthExtAccountsNotSupportedLoginError5099()
 
         let expect = expectation(description: "testLoginWithUnsupportedExternalAcount")
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
@@ -971,9 +968,39 @@ class LoginServiceTests: XCTestCase {
                 XCTFail("Sign in with external account should fail")
             case let .failure(error):
                 switch error {
-                case .externalAccountsNotSupported(let message, let originalError):
+                case .externalAccountsNotSupported(let message, let title, let originalError):
                     XCTAssertEqual(originalError.responseCode, 5099)
                     XCTAssertEqual(message, "This app does not support external accounts")
+                    XCTAssertEqual(title, "Proton address required")
+                default:
+                    XCTFail("Wrong error")
+                }
+            }
+            expect.fulfill()
+        }
+
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+    
+    func testLoginWithAuthExtAccountsNotSupported_error5098() {
+        let (api, authDelegate) = apiService
+        mockAuthExtAccountsNotSupportedLoginError5098()
+
+        let expect = expectation(description: "testLoginWithUnsupportedExternalAcount")
+        let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
+
+        service.login(username: "extAccount", password: "ddssd", challenge: nil) { result in
+            switch result {
+            case .success:
+                XCTFail("Sign in with external account should fail")
+            case let .failure(error):
+                switch error {
+                case .externalAccountsNotSupported(let message, let title, let originalError):
+                    XCTAssertEqual(originalError.responseCode, 5098)
+                    XCTAssertEqual(message, "This app does not support external accounts")
+                    XCTAssertEqual(title, "Update required")
                 default:
                     XCTFail("Wrong error")
                 }
@@ -987,9 +1014,10 @@ class LoginServiceTests: XCTestCase {
     }
 
     @available(iOS 13, *)
-    func testExternalAccountNotSupportedErrorIsReturned() async throws {
+    func testExternalAccountNotSupported_Error5099IsReturned() async throws {
         let authDelegate = AuthHelper()
         let api = APIServiceMock()
+        let userFacingMessage = "Get a Proton Mail address linked to this account in your Proton web settings."
         let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
         api.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
@@ -1005,27 +1033,66 @@ class LoginServiceTests: XCTestCase {
                 ]))
             } else {
                 XCTFail()
-                completion(nil, .success([:]))
             }
         }
         api.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/v4") {
-                completion(nil, .failure(ResponseError(httpCode: 422, responseCode: 5099, userFacingMessage: "Get a Proton Mail address linked to this account in your Proton web settings.", underlyingError: nil) as NSError))
+                completion(nil, .failure(ResponseError(httpCode: 422, responseCode: 5099, userFacingMessage: userFacingMessage, underlyingError: nil) as NSError))
             } else {
                 XCTFail()
-                completion(nil, .success([:]))
             }
         }
         let result = await withCheckedContinuation { continuation in
             service.login(username: "test user", password: "test password", challenge: nil, completion: continuation.resume)
         }
         let error = try XCTUnwrap(result.error)
-        guard case .externalAccountsNotSupported(message: "Get a Proton Mail address linked to this account in your Proton web settings.", let originalError) = error else {
+        guard case .externalAccountsNotSupported(message: userFacingMessage, title: "Proton address required", let originalError) = error else {
             XCTFail(); return
         }
         XCTAssertEqual(originalError.httpCode, 422)
         XCTAssertEqual(originalError.responseCode, 5099)
-        XCTAssertEqual(originalError.messageForTheUser, "Get a Proton Mail address linked to this account in your Proton web settings.")
+        XCTAssertEqual(originalError.messageForTheUser, userFacingMessage)
+    }
+    
+    @available(iOS 13, *)
+    func testExternalAccountNotSupported_Error5098IsReturned() async throws {
+        let authDelegate = AuthHelper()
+        let api = APIServiceMock()
+        let userFacingMessage = "Get a Proton Mail address linked to this account in your Proton web settings."
+        let service = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "LoginServiceTest"), minimumAccountType: .internal)
+        api.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/auth/info") {
+                let verifier = Data(base64Encoded: ObfuscatedConstants.srpAuthVerifier)!
+                self.server = SrpNewServerFromSigned(ObfuscatedConstants.modulus, verifier, 2048, nil)!
+                let challenge = try! self.server!.generateChallenge() // this is the serverEphemeral
+                completion(nil, .success([
+                    "Modulus": ObfuscatedConstants.modulus,
+                    "ServerEphemeral": challenge.base64EncodedString(),
+                    "Salt": ObfuscatedConstants.srpAuthSalt,
+                    "SRPSession": "test srp session",
+                    "Version": 4
+                ]))
+            } else {
+                XCTFail()
+            }
+        }
+        api.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
+            if path.contains("/auth/v4") {
+                completion(nil, .failure(ResponseError(httpCode: 422, responseCode: 5098, userFacingMessage: userFacingMessage, underlyingError: nil) as NSError))
+            } else {
+                XCTFail()
+            }
+        }
+        let result = await withCheckedContinuation { continuation in
+            service.login(username: "test user", password: "test password", challenge: nil, completion: continuation.resume)
+        }
+        let error = try XCTUnwrap(result.error)
+        guard case .externalAccountsNotSupported(message: userFacingMessage, title: "Update required", let originalError) = error else {
+            XCTFail(); return
+        }
+        XCTAssertEqual(originalError.httpCode, 422)
+        XCTAssertEqual(originalError.responseCode, 5098)
+        XCTAssertEqual(originalError.messageForTheUser, userFacingMessage)
     }
     
     func testCheckUsernameFromEmailAvailableEmail_isSuccessful() {

@@ -48,14 +48,10 @@ final class LoginMockingSetup {
         // The `ProtonCoreBaseTestCase` class has helper for that:
         // `ProtonCoreBaseTestCase.beforeSetUp(bundleIdentifier:launchArguments:launchEnvironment:)`
         //
-        if ProcessInfo.processInfo.arguments.contains("UITests_MockExternalAccountsUnavailableInAuth") {
-            stub(condition: isHost(domainName) && pathEndsWith("auth") && isMethodPOST()) { request in
-                let response = """
-                { "Code": 5099, "Error": "UI tests mocking External accounts not supported" }
-                """.data(using: .utf8)!
-                let headers = ["Content-Type" : "application/json;charset=utf-8"]
-                return HTTPStubsResponse(data: response, statusCode: 404, headers: headers)
-            }
+        if ProcessInfo.processInfo.arguments.contains("UITests_MockExternalAccountsAddressRequiredInAuth") {
+            mockExternalAccountsAddressRequired(errorCode: 5099)
+        } else if ProcessInfo.processInfo.arguments.contains("UITests_MockExternalAccountsUpdateRequiredInAuth") {
+            mockExternalAccountsAddressRequired(errorCode: 5098)
         } else if shouldMockHumanVerification, ProcessInfo.processInfo.arguments.contains("UITests_MockHVInAuth") {
             weak var usersStub = stub(condition: isHost(domainName) && pathEndsWith("auth") && isMethodPOST() && isFirstRequest()) { request in
                 let url = Bundle.main.url(forResource: "HumanVerificationFail", withExtension: "json")!
@@ -72,6 +68,16 @@ final class LoginMockingSetup {
                 return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: 200, headers: headers)
             }
             usersStub?.name = "Users HumanVerificationFail stub"
+        }
+        
+        func mockExternalAccountsAddressRequired(errorCode: Int) {
+            stub(condition: isHost(domainName) && pathEndsWith("auth/v4") && isMethodPOST()) { request in
+                let response = """
+                { "Code": \(errorCode), "Error": "UI tests mocking External accounts not supported" }
+                """.data(using: .utf8)!
+                let headers = ["Content-Type" : "application/json;charset=utf-8"]
+                return HTTPStubsResponse(data: response, statusCode: 404, headers: headers)
+            }
         }
         
     }

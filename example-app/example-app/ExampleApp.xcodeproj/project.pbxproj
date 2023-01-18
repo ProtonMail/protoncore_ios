@@ -678,6 +678,8 @@
 		3784A05927AD7C6B00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
 		3784A05A27AD7C6B00DE92DE /* AppVersionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */; };
 		379675E128941DF8005A0CE4 /* LoginAccountDeletionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379675E028941DF8005A0CE4 /* LoginAccountDeletionTests.swift */; };
+		37CB30C5297580F500FDEB94 /* LoginExternalAccountsAddressRequiredUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB30C3297580F400FDEB94 /* LoginExternalAccountsAddressRequiredUITests.swift */; };
+		37CB30C6297580F500FDEB94 /* LoginExternalAccountsUpdateRequiredUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB30C4297580F400FDEB94 /* LoginExternalAccountsUpdateRequiredUITests.swift */; };
 		39D57049389F404DA3F89532 /* Pods_macOS_Example_macOS_VPN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15004EAEF1FCED0C4C88EDC /* Pods_macOS_Example_macOS_VPN.framework */; };
 		3E092B852754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
 		3E092B862754A0740064DFE3 /* UIFoundationsShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E092B832754A0740064DFE3 /* UIFoundationsShadowViewController.swift */; };
@@ -964,7 +966,6 @@
 		66A3AB53277097100056A570 /* AccountDeletionBaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3AB52277097100056A570 /* AccountDeletionBaseTestCase.swift */; };
 		66A3AB5427709AFF0056A570 /* CoreExampleMainRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB498270EF6CE00CEA95A /* CoreExampleMainRobot.swift */; };
 		66AEBB062869B988006144D7 /* PaymentsNewUserSubscriptionUIVCUITestsV5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D06A592848A40F00F628B2 /* PaymentsNewUserSubscriptionUIVCUITestsV5.swift */; };
-		66EC3DB828F8032E002AA695 /* LoginExternalAccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EC3DB728F8032E002AA695 /* LoginExternalAccountTests.swift */; };
 		66F5999E287DB79B00F5BE5E /* NetworkingSampleAppRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5999D287DB79B00F5BE5E /* NetworkingSampleAppRobot.swift */; };
 		66F599A0287DB7A800F5BE5E /* NetworkingBaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5999F287DB7A800F5BE5E /* NetworkingBaseTestCase.swift */; };
 		66F599A1287DBD8700F5BE5E /* CoreExampleMainRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB498270EF6CE00CEA95A /* CoreExampleMainRobot.swift */; };
@@ -1331,6 +1332,8 @@
 		3784A04C27AD7C6A00DE92DE /* AppVersionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionHeader.swift; sourceTree = "<group>"; };
 		379675E028941DF8005A0CE4 /* LoginAccountDeletionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginAccountDeletionTests.swift; path = ../../../../../Sources/Login/UITests/Tests/LoginAccountDeletionTests.swift; sourceTree = "<group>"; };
 		37C9E7874FD49438A4F07078 /* Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Calendar-AppStoreIAP/Pods-Example-iOS-Calendar-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
+		37CB30C3297580F400FDEB94 /* LoginExternalAccountsAddressRequiredUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginExternalAccountsAddressRequiredUITests.swift; path = ../../../../../Sources/Login/UITests/Tests/LoginExternalAccountsAddressRequiredUITests.swift; sourceTree = "<group>"; };
+		37CB30C4297580F400FDEB94 /* LoginExternalAccountsUpdateRequiredUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginExternalAccountsUpdateRequiredUITests.swift; path = ../../../../../Sources/Login/UITests/Tests/LoginExternalAccountsUpdateRequiredUITests.swift; sourceTree = "<group>"; };
 		37D06A592848A40F00F628B2 /* PaymentsNewUserSubscriptionUIVCUITestsV5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentsNewUserSubscriptionUIVCUITestsV5.swift; path = ../../../../../Sources/Payments/UITests/Tests/PaymentsNewUserSubscriptionUIVCUITestsV5.swift; sourceTree = "<group>"; };
 		3983C47C8AA58865DC145B3B /* Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig"; path = "Target Support Files/Pods-Example-iOS-Calendar-LocalIAP/Pods-Example-iOS-Calendar-LocalIAP.release.xcconfig"; sourceTree = "<group>"; };
 		3C4D6E7F3C989BDC934996D4 /* Pods-macOS-Example-macOS-Calendar-V5.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS-Example-macOS-Calendar-V5.release.xcconfig"; path = "Target Support Files/Pods-macOS-Example-macOS-Calendar-V5/Pods-macOS-Example-macOS-Calendar-V5.release.xcconfig"; sourceTree = "<group>"; };
@@ -1407,7 +1410,6 @@
 		66B886CC2970167C00269ADD /* Example-UnitTests-macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Example-UnitTests-macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66B886CE2970167D00269ADD /* Example_UnitTests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_UnitTests_macOS.swift; sourceTree = "<group>"; };
 		66CD930CD776744323F20A68 /* Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP/Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
-		66EC3DB728F8032E002AA695 /* LoginExternalAccountTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginExternalAccountTests.swift; path = ../../../../../Sources/Login/UITests/Tests/LoginExternalAccountTests.swift; sourceTree = "<group>"; };
 		66F5998E287DB63200F5BE5E /* Example-Networking-UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Example-Networking-UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66F5999A287DB71B00F5BE5E /* Example-Networking-UITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Example-Networking-UITests-Info.plist"; path = "../../../../Sources/Networking/UITests/Example-Networking-UITests-Info.plist"; sourceTree = "<group>"; };
 		66F5999D287DB79B00F5BE5E /* NetworkingSampleAppRobot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkingSampleAppRobot.swift; path = ../../../../../Sources/Networking/UITests/Utils/NetworkingSampleAppRobot.swift; sourceTree = "<group>"; };
@@ -2042,7 +2044,8 @@
 				379675E028941DF8005A0CE4 /* LoginAccountDeletionTests.swift */,
 				25AAB504270F35DE00CEA95A /* LoginBaseTestCase.swift */,
 				82323A9E29633FC800E049E0 /* isExternalSignupFeatureEnabled.json */,
-				66EC3DB728F8032E002AA695 /* LoginExternalAccountTests.swift */,
+				37CB30C3297580F400FDEB94 /* LoginExternalAccountsAddressRequiredUITests.swift */,
+				37CB30C4297580F400FDEB94 /* LoginExternalAccountsUpdateRequiredUITests.swift */,
 				664144DC28F57C080045694A /* LoginHumanVerificationTests.swift */,
 				25AAB503270F35DE00CEA95A /* LoginWelcomeTests.swift */,
 				25AAB505270F35DE00CEA95A /* LoginSignupPlanSelectorTests.swift */,
@@ -4714,11 +4717,12 @@
 				3705C32B2934AD4F00B98F30 /* CreateAddressTests.swift in Sources */,
 				664144DD28F57C080045694A /* LoginHumanVerificationTests.swift in Sources */,
 				25AAB54E2710458500CEA95A /* LoginWelcomeTests.swift in Sources */,
+				37CB30C6297580F500FDEB94 /* LoginExternalAccountsUpdateRequiredUITests.swift in Sources */,
 				25AAB54D2710458500CEA95A /* LoginSignupPlanSelectorTests.swift in Sources */,
 				25BDF93B27141C99001BB254 /* LoginPaymentsSignupPlanSelectorTests.swift in Sources */,
 				25AAB5C52710587C00CEA95A /* CoreExampleMainRobot.swift in Sources */,
-				66EC3DB828F8032E002AA695 /* LoginExternalAccountTests.swift in Sources */,
 				25AAB54C2710458500CEA95A /* MainRobot.swift in Sources */,
+				37CB30C5297580F500FDEB94 /* LoginExternalAccountsAddressRequiredUITests.swift in Sources */,
 				25AAB5502710458500CEA95A /* LoginBaseTestCase.swift in Sources */,
 				25AAB54F2710458500CEA95A /* LoginTests.swift in Sources */,
 				379675E128941DF8005A0CE4 /* LoginAccountDeletionTests.swift in Sources */,
