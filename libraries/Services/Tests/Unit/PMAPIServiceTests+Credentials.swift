@@ -1379,53 +1379,6 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         })
     }
 
-//    func testTokenRefreshCallRestartOnBadLocalCacheError_StressTests() async throws {
-//        // GIVEN
-//        let service = PMAPIService.createAPIService(doh: doh,
-//                                                    sessionUID: "test_session_uid",
-//                                                    sessionFactory: sessionFactoryMock,
-//                                                    cacheToClear: cacheToClearMock,
-//                                                    trustKitProvider: trustKitProviderMock,
-//                                                    challengeParametersProvider: challengeParameterProvider)
-//        service.authDelegate = authDelegateMock
-//
-//        let rottenCredentials = AuthCredential(Credential.dummy
-//            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
-//        )
-//
-//        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
-//
-//        let newCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token refreshed", refreshToken: "test refresh token refreshed", scopes: ["full"])
-//        let underlyingError = NSError(domain: "unit tests", code: APIErrorCode.AuthErrorCode.localCacheBad, localizedDescription: "test description")
-//        let error = AuthErrors.networkingError(.init(httpCode: 401, responseCode: 1000, userFacingMessage: "test message", underlyingError: underlyingError))
-//        authDelegateMock.onRefreshStub.bodyIs { counter, _, _, completion in
-//            if counter == 1 {
-//                DispatchQueue.global(qos: .userInitiated).async { completion(.failure(error)) }
-//            } else {
-//                DispatchQueue.global(qos: .userInitiated).async { completion(.success(newCredential)) }
-//            }
-//        }
-//
-//        // WHEN
-//        let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-//            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
-//        }
-//
-//        // THEN
-//        // are in incrementing by one because the local cache bad error retries the refresh token fetching
-//        XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests + 1)
-//        XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-//        XCTAssertEqual(authDelegateMock.onRefreshStub.callCounter, numberOfRequests + 1)
-//        XCTAssertEqual(authDelegateMock.onUpdateStub.callCounter, numberOfRequests)
-//        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-//        XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
-//        XCTAssertTrue(fetchResults.allSatisfy {
-//            guard case .refreshed(let capturedCredentials) = $0 else { return false }
-//            XCTAssertEqual(Credential(capturedCredentials), newCredential.updated(scopes: []))
-//            return true
-//        })
-//    }
-
     func testTokenRefreshCallRestartOnBadLocalCacheError_AuthenticatedSession_StressTests() async {
         // GIVEN
         let service = testService
