@@ -151,10 +151,12 @@ PODS:
     - ProtonCore-TestingToolkit/UnitTests/DataModel (= 3.26.1)
     - ProtonCore-Utilities (= 3.26.1)
   - ProtonCore-Doh (3.26.1):
+    - ProtonCore-FeatureSwitch (= 3.26.1)
     - ProtonCore-Log (= 3.26.1)
     - ProtonCore-Utilities (= 3.26.1)
-  - ProtonCore-Doh/Tests (3.26.1):
+  - ProtonCore-Doh/UnitTests (3.26.1):
     - OHHTTPStubs/Swift
+    - ProtonCore-FeatureSwitch (= 3.26.1)
     - ProtonCore-Log (= 3.26.1)
     - ProtonCore-ObfuscatedConstants (= 3.26.1)
     - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.26.1)
@@ -177,7 +179,6 @@ PODS:
     - ProtonCore-Networking (= 3.26.1)
   - ProtonCore-FeatureSwitch (3.26.1):
     - ProtonCore-CoreTranslation (= 3.26.1)
-    - ProtonCore-Doh (= 3.26.1)
     - ProtonCore-Foundations (= 3.26.1)
     - ProtonCore-Utilities (= 3.26.1)
   - ProtonCore-FeatureSwitch/Tests (3.26.1):
@@ -550,7 +551,7 @@ DEPENDENCIES:
   - ProtonCore-DataModel (from `../../`)
   - ProtonCore-DataModel/Tests (from `../../`)
   - ProtonCore-Doh (from `../../`)
-  - ProtonCore-Doh/Tests (from `../../`)
+  - ProtonCore-Doh/UnitTests (from `../../`)
   - ProtonCore-Environment (from `../../`)
   - ProtonCore-Environment/Tests (from `../../`)
   - ProtonCore-Features/Crypto-Go1.19.4 (from `../../`)
@@ -746,10 +747,10 @@ SPEC CHECKSUMS:
   ProtonCore-Common: 72ffc341c92881b6fc722dcd031f94962fa6ddcf
   ProtonCore-CoreTranslation: d0e0546cec2a8b429ac07e39895d892e9862f810
   ProtonCore-DataModel: 0d1d94dd2b481a7edd23978341fda4cac8e64efe
-  ProtonCore-Doh: 3470d69554cc3c12d48e1702410ac8a5470f41e0
+  ProtonCore-Doh: 6fd76a94e8073159f4efc80d6609da89201d18d2
   ProtonCore-Environment: 753ab20445809dec056bdea20eb0521615f89e33
   ProtonCore-Features: c2c14a602d77dae6bcb9a93969bbf42864ad1ecc
-  ProtonCore-FeatureSwitch: 8a4c817b66de9de0f004bc4eea5cc17816a2c70e
+  ProtonCore-FeatureSwitch: 4a6a4c5b17803b23a56f0aa2f3f52bd89deafee6
   ProtonCore-ForceUpgrade: dc53e39ccc03c8cf65f967a191fcf49bdc038729
   ProtonCore-Foundations: 03f43ac53e9c9ec84b60c10742319271eaa8e5a0
   ProtonCore-GoLibs: 4c029288d3ef4535e2a7523f4957a26c9da03744
@@ -780,6 +781,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 75ff97f2484a463cf46c172fe7f94225612aeda1
   TrustKit: f830ff5af0a8cbad5178aef1d0951389b096d312
 
-PODFILE CHECKSUM: 81dfee9d7bea61ddf93dded0edc7c7bbe5a5ae33
+PODFILE CHECKSUM: a371cf9f854781d25954d89e2bca93640d5e1aa5
 
 COCOAPODS: 1.11.3

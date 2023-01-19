@@ -59,10 +59,6 @@ protocol DoHProviderInternal: DoHProviderPublic {
     func query(host: String, type: DNSRecordType, sessionId: String?) -> String
 }
 
-extension Feature {
-    public static let dohARecordQueries = Self(name: "dohARecordQueries", isEnable: false)
-}
-
 extension DoHProviderInternal {
     public static var defaultRecordType: DNSRecordType {
         FeatureFactory.shared.isEnabled(.dohARecordQueries) ? .a : .txt

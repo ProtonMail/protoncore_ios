@@ -26,6 +26,13 @@
         "identifier" : "F2EB1AC55EC5B42DE6B353A6F41CCCC4",
         "name" : "ProtonCore-Services-iOS-Unit-IntegrationTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "FBF3F3B3DE482D97DF160A0751A8BB60",
+        "name" : "ProtonCore-Doh-iOS-Unit-IntegrationTests"
+      }
     }
   ],
   "version" : 1
