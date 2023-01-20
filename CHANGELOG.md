@@ -1,3 +1,14 @@
+## 3.26.2 (2023-01-20)
+
+### changed (2 changes)
+
+- [Put DoH A record queries behind feature flag](apple/shared/protoncore@16f10cb1c6bd85cdce9cc2a8c6c6e3314a7d7657) ([merge request](apple/shared/protoncore!1074))
+- [[CP-5201] Unauth session 401 error handling logic](apple/shared/protoncore@3989db6fd8aa31b7cee2d57bd84e413417871a8c) ([merge request](apple/shared/protoncore!1073))
+
+###  (1 change)
+
+- [[CP-5263] - [Core iOS] [EA Cap A] Wrong message for status-code 5098](apple/shared/protoncore@02f3a6f1bc829213d7e53dce922b3141d6c567a1) ([merge request](apple/shared/protoncore!1072))
+
 ## 3.26.1 (2023-01-13)
 
 ###  (2 changes)
