@@ -1,5 +1,5 @@
 //
-//  UiElement.swift
+//  UIElement.swift
 //
 //  ProtonMail - Created on 02.02.21.
 //
@@ -33,8 +33,12 @@ import XCTest
  * By default each XCUIElement that is referenced by this class already has a wait functionality in place except check functions or checkDoesNotExist() function.
  * Check functions assume that element was already located before check is called. checkDoesNotExist() function shouldn't wait for the element.
  */
+
+@available(*, deprecated, message: "`UiElement` has been renamed to `UIElement`.")
+typealias UiElement = UIElement
+
 // swiftlint:disable type_body_length
-open class UiElement {
+open class UIElement {
 
     init(_ query: XCUIElementQuery, _ elementType: XCUIElement.ElementType) {
         self.uiElementQuery = query
@@ -57,12 +61,11 @@ open class UiElement {
     internal var uiElementQuery: XCUIElementQuery?
     internal var ancestorElement: XCUIElement?
     internal var parentElement: XCUIElement?
-    private let app = XCUIApplication()
     private var locatedElement: XCUIElement?
     private var index: Int?
     private var identifier: String?
-    private var childElement: UiElement?
-    private var descendantElement: UiElement?
+    private var childElement: UIElement?
+    private var descendantElement: UIElement?
     private var elementEnabled: Bool?
     private var elementDisabled: Bool?
     private var elementHittable: Bool?
@@ -71,7 +74,7 @@ open class UiElement {
     private var labelPredicate: NSPredicate?
     private var titlePredicate: NSPredicate?
     private var valuePredicate: NSPredicate?
-    private var tableToSwipeInto: XCUIElement?
+    private var focusedTable: XCUIElement?
     private var containsType: XCUIElement.ElementType?
     private var containsIdentifier: String?
     private var containsPredicate: NSPredicate?
@@ -83,7 +86,7 @@ open class UiElement {
         return elementType
     }
 
-    internal func setType(_ elementQuery: XCUIElementQuery) -> UiElement {
+    internal func setType(_ elementQuery: XCUIElementQuery) -> UIElement {
         uiElementQuery = elementQuery
         return self
     }
@@ -166,39 +169,39 @@ open class UiElement {
     }
 
     /// Matchers
-    public func byIndex(_ index: Int) -> UiElement {
+    public func byIndex(_ index: Int) -> UIElement {
         self.index = index
         return self
     }
 
-    public func hasDescendant(_ element: UiElement) -> UiElement {
+    public func hasDescendant(_ element: UIElement) -> UIElement {
         self.containsType = element.getType()
         self.containsIdentifier = element.getIdentifier()
         self.containsPredicate = element.getPredicate()
         return self
     }
 
-    public func containsLabel(_ label: String) -> UiElement {
+    public func containsLabel(_ label: String) -> UIElement {
         self.containLabel = label
         return self
     }
 
-    public func isEnabled() -> UiElement {
+    public func isEnabled() -> UIElement {
         self.elementEnabled = true
         return self
     }
 
-    public func isDisabled() -> UiElement {
+    public func isDisabled() -> UIElement {
         self.elementDisabled = true
         return self
     }
 
-    public func isHittable() -> UiElement {
+    public func isHittable() -> UIElement {
         self.elementHittable = true
         return self
     }
 
-    public func firstMatch() -> UiElement {
+    public func firstMatch() -> UIElement {
         self.shouldUseFirstMatch = true
         return self
     }
@@ -207,57 +210,57 @@ open class UiElement {
      * Use it to specify in which table element test should swipe up or down in case of multiple tables in the layout hierarchy:
      * Example: cell(identifier).inTable(table(identifier)).swipeUpUntilVisible()
      */
-    public func inTable(_ table: UiElement) -> UiElement {
-        tableToSwipeInto = table.uiElement()
+    public func inTable(_ table: UIElement) -> UIElement {
+        focusedTable = table.uiElement()
         return self
     }
 
-    public func matchesPredicate(_ matchedPredicate: NSPredicate) -> UiElement {
+    public func matchesPredicate(_ matchedPredicate: NSPredicate) -> UIElement {
         self.matchedPredicate = matchedPredicate
         return self
     }
 
-    public func hasLabel(_ label: String) -> UiElement {
+    public func hasLabel(_ label: String) -> UIElement {
         return hasLabel(Predicate.labelEquals(label))
     }
 
-    public func hasLabel(_ labelPredicate: NSPredicate) -> UiElement {
+    public func hasLabel(_ labelPredicate: NSPredicate) -> UIElement {
         self.labelPredicate = labelPredicate
         return self
     }
 
-    public func hasTitle(_ title: String) -> UiElement {
+    public func hasTitle(_ title: String) -> UIElement {
         return hasTitle(Predicate.titleEquals(title))
     }
 
-    public func hasTitle(_ titlePredicate: NSPredicate) -> UiElement {
+    public func hasTitle(_ titlePredicate: NSPredicate) -> UIElement {
         self.titlePredicate = titlePredicate
         return self
     }
 
-    public func hasValue(_ value: String) -> UiElement {
+    public func hasValue(_ value: String) -> UIElement {
         return hasValue(Predicate.valueEquals(value))
     }
 
-    public func hasValue(_ valuePredicate: NSPredicate) -> UiElement {
+    public func hasValue(_ valuePredicate: NSPredicate) -> UIElement {
         self.valuePredicate = valuePredicate
         return self
     }
 
     /// Actions
-    public func clearText() -> UiElement {
+    public func clearText() -> UIElement {
         uiElement()!.clearText()
         return self
     }
 
     @discardableResult
-    public func doubleTap() -> UiElement {
+    public func doubleTap() -> UIElement {
         uiElement()!.doubleTap()
         return self
     }
 
     @discardableResult
-    public func multiTap(_ count: Int) -> UiElement {
+    public func multiTap(_ count: Int) -> UIElement {
         let element = uiElement()!
         for _ in 0...count {
             element.tap()
@@ -266,43 +269,49 @@ open class UiElement {
     }
 
     @discardableResult
-    public func forceTap() -> UiElement {
+    public func forceTap() -> UIElement {
         uiElement()!.coordinate(withNormalizedOffset: .zero).tap()
         return self
     }
 
     @discardableResult
-    public func longPress(_ timeInterval: TimeInterval = 2) -> UiElement {
+    public func longPress(_ timeInterval: TimeInterval = 2) -> UIElement {
         uiElement()!.press(forDuration: timeInterval)
         return self
     }
 
     @discardableResult
-    public func swipeDown() -> UiElement {
+    public func forcePress(_ timeInterval: TimeInterval = 2) -> UIElement {
+        uiElement()!.coordinate(withNormalizedOffset: .zero).press(forDuration: timeInterval)
+        return self
+    }
+
+    @discardableResult
+    public func swipeDown() -> UIElement {
         uiElement()!.swipeDown()
         return self
     }
 
     @discardableResult
-    public func swipeLeft() -> UiElement {
+    public func swipeLeft() -> UIElement {
         uiElement()!.swipeLeft()
         return self
     }
 
     @discardableResult
-    public func swipeRight() -> UiElement {
+    public func swipeRight() -> UIElement {
         uiElement()!.swipeRight()
         return self
     }
 
     @discardableResult
-    public func swipeUp() -> UiElement {
+    public func swipeUp() -> UIElement {
         uiElement()!.swipeUp()
         return self
     }
 
     @discardableResult
-    public func tapThenSwipeLeft( _ forDuration: TimeInterval, _ speed: XCUIGestureVelocity) -> UiElement {
+    public func tapThenSwipeLeft( _ forDuration: TimeInterval, _ speed: XCUIGestureVelocity) -> UIElement {
         let start = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5))
         let finish = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.1, dy: 0.5))
         start.press(forDuration: forDuration, thenDragTo: finish, withVelocity: speed, thenHoldForDuration: 0.1)
@@ -310,7 +319,7 @@ open class UiElement {
     }
 
     @discardableResult
-    public func tapThenSwipeRight( _ forDuration: TimeInterval, _ speed: XCUIGestureVelocity) -> UiElement {
+    public func tapThenSwipeRight( _ forDuration: TimeInterval, _ speed: XCUIGestureVelocity) -> UIElement {
         let start = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.1, dy: 0.5))
         let finish = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5))
         start.press(forDuration: forDuration, thenDragTo: finish, withVelocity: speed, thenHoldForDuration: 0.1)
@@ -318,7 +327,7 @@ open class UiElement {
     }
 
     @discardableResult
-    public func tapThenSwipeDown( _ forDuration: TimeInterval, _ speed: XCUIGestureVelocity) -> UiElement {
+    public func tapThenSwipeDown( _ forDuration: TimeInterval, _ speed: XCUIGestureVelocity) -> UIElement {
         let start = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.1))
         let finish = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.9))
         start.press(forDuration: forDuration, thenDragTo: finish, withVelocity: speed, thenHoldForDuration: 0.1)
@@ -326,7 +335,7 @@ open class UiElement {
     }
 
     @discardableResult
-    public func tapThenSwipeUp( _ forDuration: TimeInterval, _ speed: XCUIGestureVelocity) -> UiElement {
+    public func tapThenSwipeUp( _ forDuration: TimeInterval, _ speed: XCUIGestureVelocity) -> UIElement {
         let start = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.9))
         let finish = uiElement()!.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.1))
         start.press(forDuration: forDuration, thenDragTo: finish, withVelocity: speed, thenHoldForDuration: 0.1)
@@ -334,13 +343,13 @@ open class UiElement {
     }
 
     @discardableResult
-    public func tap() -> UiElement {
+    public func tap() -> UIElement {
         uiElement()!.tap()
         return self
     }
 
     @discardableResult
-    public func tapIfExists() -> UiElement {
+    public func tapIfExists() -> UIElement {
         let element = uiElement()!
         if Wait().forElement(element).exists {
             element.tap()
@@ -349,7 +358,7 @@ open class UiElement {
     }
 
     @discardableResult
-    public func forceKeyboardFocus(_ retries: Int = 5) -> UiElement {
+    public func forceKeyboardFocus(_ retries: Int = 5) -> UIElement {
         var count = 0
         uiElement()!.tap()
         // Give xctest enough time to evaluate predicate.
@@ -365,16 +374,16 @@ open class UiElement {
     }
 
     @discardableResult
-    public func swipeUpUntilVisible(maxAttempts: Int = 5) -> UiElement {
+    public func swipeUpUntilVisible(maxAttempts: Int = 5) -> UIElement {
         var eventCount = 0
         var swipeArea: XCUIElement
-        
-        if tableToSwipeInto != nil {
-            swipeArea = tableToSwipeInto!
+
+        if focusedTable != nil {
+            swipeArea = focusedTable!
         } else {
-            swipeArea = app
+            swipeArea = currentApp!
         }
-        
+
         while eventCount <= maxAttempts, !isVisible {
             swipeArea.swipeUp()
             eventCount += 1
@@ -383,16 +392,16 @@ open class UiElement {
     }
 
     @discardableResult
-    public func swipeDownUntilVisible(maxAttempts: Int = 5) -> UiElement {
+    public func swipeDownUntilVisible(maxAttempts: Int = 5) -> UIElement {
         var eventCount = 0
         var swipeArea: XCUIElement
-        
-        if tableToSwipeInto != nil {
-            swipeArea = tableToSwipeInto!
+
+        if focusedTable != nil {
+            swipeArea = focusedTable!
         } else {
-            swipeArea = app
+            swipeArea = currentApp!
         }
-        
+
         while eventCount <= maxAttempts, !isVisible {
             swipeArea.swipeDown()
             eventCount += 1
@@ -401,20 +410,20 @@ open class UiElement {
     }
 
     /// Allow actions on childs / descendants
-    public func onChild(_ childElement: UiElement) -> UiElement {
+    public func onChild(_ childElement: UIElement) -> UIElement {
         self.childElement = childElement
         return self
     }
 
     @discardableResult
-    public func onDescendant(_ descendantElement: UiElement) -> UiElement {
+    public func onDescendant(_ descendantElement: UIElement) -> UIElement {
         self.descendantElement = descendantElement
         return self
     }
 
     /// Checks
     @discardableResult
-    public func checkExists(file: StaticString = #filePath, line: UInt = #line) -> UiElement {
+    public func checkExists(file: StaticString = #filePath, line: UInt = #line) -> UIElement {
         XCTAssertTrue(
             uiElement()!.exists,
             "Expected element \(uiElement().debugDescription) to exist but it doesn't.",
@@ -425,7 +434,7 @@ open class UiElement {
     }
 
     @discardableResult
-    public func checkIsHittable(file: StaticString = #filePath, line: UInt = #line) -> UiElement {
+    public func checkIsHittable(file: StaticString = #filePath, line: UInt = #line) -> UIElement {
         XCTAssertTrue(
             uiElement()!.isHittable,
             "Expected element \(uiElement().debugDescription) to be hittable but it is not.",
@@ -436,7 +445,7 @@ open class UiElement {
     }
 
     @discardableResult
-    public func checkDoesNotExist(file: StaticString = #filePath, line: UInt = #line) -> UiElement {
+    public func checkDoesNotExist(file: StaticString = #filePath, line: UInt = #line) -> UIElement {
         XCTAssertFalse(
             uiElement()!.exists,
             "Expected element \(uiElement().debugDescription) to not exist but it exists.",
@@ -447,7 +456,7 @@ open class UiElement {
     }
 
     @discardableResult
-    public func checkDisabled(file: StaticString = #filePath, line: UInt = #line) -> UiElement {
+    public func checkDisabled(file: StaticString = #filePath, line: UInt = #line) -> UIElement {
         XCTAssertFalse(
             uiElement()!.isEnabled,
             "Expected element \(uiElement().debugDescription) to be in disabled state but it is enabled.",
@@ -458,7 +467,7 @@ open class UiElement {
     }
 
     @discardableResult
-    public func checkEnabled(file: StaticString = #filePath, line: UInt = #line) -> UiElement {
+    public func checkEnabled(file: StaticString = #filePath, line: UInt = #line) -> UIElement {
         XCTAssertTrue(
             uiElement()!.isEnabled,
             "Expected element \(uiElement().debugDescription) to be in enabled state but it is disabled.",
@@ -469,7 +478,7 @@ open class UiElement {
     }
 
     @discardableResult
-    public func checkHasChild(_ element: UiElement, file: StaticString = #filePath, line: UInt = #line) -> UiElement {
+    public func checkHasChild(_ element: UIElement, file: StaticString = #filePath, line: UInt = #line) -> UIElement {
         let parent = uiElement()!
         let locatedElement = parent.child(element)
         XCTAssertTrue(
@@ -482,7 +491,7 @@ open class UiElement {
     }
 
     @discardableResult
-    public func checkHasDescendant(_ element: UiElement, file: StaticString = #filePath, line: UInt = #line) -> UiElement {
+    public func checkHasDescendant(_ element: UIElement, file: StaticString = #filePath, line: UInt = #line) -> UIElement {
         let ancestor = uiElement()!
         let locatedElement = ancestor.descendant(element)
         XCTAssertTrue(
@@ -495,7 +504,7 @@ open class UiElement {
     }
 
     @discardableResult
-    public func checkHasLabel(_ label: String, file: StaticString = #filePath, line: UInt = #line) -> UiElement {
+    public func checkHasLabel(_ label: String, file: StaticString = #filePath, line: UInt = #line) -> UIElement {
         let labelValue = uiElement()!.label
         XCTAssertTrue(
             labelValue == label,
@@ -507,7 +516,7 @@ open class UiElement {
     }
 
     @discardableResult
-    public func checkContainsLabel(_ label: String, file: StaticString = #filePath, line: UInt = #line) -> UiElement {
+    public func checkContainsLabel(_ label: String, file: StaticString = #filePath, line: UInt = #line) -> UIElement {
         let labelValue = uiElement()!.label
         XCTAssertTrue(
             labelValue.contains(label),
@@ -519,7 +528,7 @@ open class UiElement {
     }
 
     @discardableResult
-    public func checkHasValue(_ value: String, file: StaticString = #filePath, line: UInt = #line) -> UiElement {
+    public func checkHasValue(_ value: String, file: StaticString = #filePath, line: UInt = #line) -> UIElement {
         guard let stringValue = uiElement()!.value as? String else {
             XCTFail("Element doesn't have text value.")
             return self
@@ -534,7 +543,7 @@ open class UiElement {
     }
 
     @discardableResult
-    public func checkHasTitle(_ title: String, file: StaticString = #filePath, line: UInt = #line) -> UiElement {
+    public func checkHasTitle(_ title: String, file: StaticString = #filePath, line: UInt = #line) -> UIElement {
         let stringValue = uiElement()!.title
         XCTAssertTrue(
             stringValue == title, "Expected Element title to be: \"\(title)\", but found: \"\(stringValue)\"",
@@ -545,7 +554,7 @@ open class UiElement {
     }
 
     @discardableResult
-    public func checkSelected(file: StaticString = #filePath, line: UInt = #line) -> UiElement {
+    public func checkSelected(file: StaticString = #filePath, line: UInt = #line) -> UIElement {
         XCTAssertTrue(
             uiElement()!.isSelected == true,
             "Expected Element to be selected, but it is not",
@@ -557,38 +566,38 @@ open class UiElement {
 
     /// Waits
     @discardableResult
-    public func wait(time: TimeInterval = 10.0) -> UiElement {
+    public func wait(time: TimeInterval = 10.0) -> UIElement {
         shouldWaitForExistance = false
         Wait(time: time).forElement(uiElement()!)
         return self
     }
 
     @discardableResult
-    public func waitForDisabled(time: TimeInterval = 10.0) -> UiElement {
+    public func waitForDisabled(time: TimeInterval = 10.0) -> UIElement {
         Wait(time: time).forElementToBeDisabled(uiElement()!)
         return self
     }
 
     @discardableResult
-    public func waitForHittable(time: TimeInterval = 10.0) -> UiElement {
+    public func waitForHittable(time: TimeInterval = 10.0) -> UIElement {
         Wait(time: time).forElementToBeHittable(uiElement()!)
         return self
     }
 
     @discardableResult
-    public func waitForEnabled(time: TimeInterval = 10.0) -> UiElement {
+    public func waitForEnabled(time: TimeInterval = 10.0) -> UIElement {
         Wait(time: time).forElementToBeEnabled(uiElement()!)
         return self
     }
 
     @discardableResult
-    public func waitForFocused(time: TimeInterval = 10.0) -> UiElement {
+    public func waitForFocused(time: TimeInterval = 10.0) -> UIElement {
         Wait(time: time).forHavingKeyboardFocus(uiElement()!)
         return self
     }
 
     @discardableResult
-    public func waitUntilGone(time: TimeInterval = 10.0) -> UiElement {
+    public func waitUntilGone(time: TimeInterval = 10.0) -> UIElement {
         shouldWaitForExistance = false
         Wait(time: time).forElementToDisappear(uiElement()!)
         return self
@@ -606,10 +615,16 @@ open class UiElement {
             return locatedElement!
         }
 
-        /// Filer out XCUIElementQuery based on identifier or predicate value provided.
+        /// Filter out XCUIElementQuery based on identifier or predicate value provided.
         if identifier != nil {
+            if focusedTable != nil {
+                uiElementQuery = currentApp!.tables[focusedTable!.identifier].descendants(matching: self.elementType).matching(identifier: identifier!)
+            }
             uiElementQuery = uiElementQuery!.matching(identifier: identifier!)
         } else if predicate != nil {
+            if focusedTable != nil {
+                uiElementQuery = currentApp!.tables[focusedTable!.identifier].descendants(matching: self.elementType).matching(predicate!)
+            }
             uiElementQuery = uiElementQuery!.matching(predicate!)
         }
 
@@ -618,34 +633,34 @@ open class UiElement {
             XCTFail("Only one isDisabled() or isEnabled() function can be applied to query the element.", file: #file, line: #line)
         }
 
-        /// Filer out XCUIElementQuery based on isEnabled / isDisabled state.
+        /// Filter out XCUIElementQuery based on isEnabled / isDisabled state.
         if elementDisabled == true {
             uiElementQuery = uiElementQuery?.matching(Predicate.disabled)
         } else if elementEnabled == true {
             uiElementQuery = uiElementQuery?.matching(Predicate.enabled)
         }
 
-        /// Filer out XCUIElementQuery based on element label predicate.
+        /// Filter out XCUIElementQuery based on element label predicate.
         if labelPredicate != nil {
             uiElementQuery = uiElementQuery?.matching(labelPredicate!)
         }
 
-        /// Filer out XCUIElementQuery based on element title predicate.
+        /// Filter out XCUIElementQuery based on element title predicate.
         if titlePredicate != nil {
             uiElementQuery = uiElementQuery?.matching(titlePredicate!)
         }
 
-        /// Filer out XCUIElementQuery based on element value predicate.
+        /// Filter out XCUIElementQuery based on element value predicate.
         if valuePredicate != nil {
             uiElementQuery = uiElementQuery?.matching(valuePredicate!)
         }
 
-        /// Filer out XCUIElementQuery based on provided predicate.
+        /// Filter out XCUIElementQuery based on provided predicate.
         if matchedPredicate != nil {
             uiElementQuery = uiElementQuery?.matching(matchedPredicate!)
         }
 
-        /// Filer out XCUIElementQuery based on isHittable state.
+        /// Filter out XCUIElementQuery based on isHittable state.
         if elementHittable == true {
             uiElementQuery = uiElementQuery?.matching(Predicate.hittable)
         }
@@ -693,6 +708,6 @@ open class UiElement {
 
     private var isVisible: Bool {
         guard uiElement()!.exists && !uiElement()!.frame.isEmpty else { return false }
-        return app.windows.element(boundBy: 0).frame.contains(uiElement()!.frame)
+        return currentApp!.windows.element(boundBy: 0).frame.contains(uiElement()!.frame)
     }
 }

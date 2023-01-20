@@ -133,7 +133,7 @@ end
 def shared_uitests_dependencies
   protoncore_dependencies
   pod "ProtonCore-FeatureSwitch", :path => "../../"
-  pod "pmtest", :git => "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
+  pod "pmtest", :git => "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git", :commit => "e98cc4c"
   pod "ProtonCore-Doh", :path => "../../"
   pod "ProtonCore-ObfuscatedConstants", :path => "../../"
   pod "ProtonCore-QuarkCommands", :path => "../../"
