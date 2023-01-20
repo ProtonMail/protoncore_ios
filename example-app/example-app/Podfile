@@ -63,7 +63,7 @@ def protoncore_unit_tests_ios
   pod "CryptoSwift", "1.3.1"
   pod "ProtonCore-ObfuscatedConstants", :path => "../../"
   pod "ProtonCore-DataModel", :path => "../../", :testspecs => ["Tests"]
-  pod "ProtonCore-Doh", :path => "../../", :testspecs => ["Tests"]
+  pod "ProtonCore-Doh", :path => "../../", :testspecs => ["UnitTests"]
   pod "ProtonCore-Networking", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Services", :path => "../../", :testspecs => ["UnitTests"]
   pod "ProtonCore-CoreTranslation", :path => "../../", :testspecs => ["Tests"]
@@ -125,6 +125,7 @@ end
 
 def protoncore_integration_tests_ios
   protoncore_ios
+  pod "ProtonCore-Doh", :path => "../../", :testspecs => ["IntegrationTests"]
   pod "ProtonCore-Services", :path => "../../", :testspecs => ["IntegrationTests"]
 end
 

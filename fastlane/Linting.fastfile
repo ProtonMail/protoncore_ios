@@ -162,13 +162,13 @@ end
 lane :build_Doh_all_variants do
   install_dependencies_from_gemfile
   ensure_obfuscated_constants_are_generated
-  build_spec("Doh", "ios,macos", default_test_podspecs, "ObfuscatedConstants", "DataModel", "Networking", "CoreTranslation", "Log", "Utilities", "Environment")
+  build_spec("Doh", "ios,macos", default_test_podspecs, "ObfuscatedConstants", "DataModel", "Networking", "CoreTranslation", "Log", "Utilities", "Environment", "Authentication", "Services")
 end
 
 lane :build_Doh_single_basic_variant do
   install_dependencies_from_gemfile
   ensure_obfuscated_constants_are_generated
-  build_spec("Doh", "ios", default_test_podspecs, "ObfuscatedConstants", "DataModel", "Networking", "CoreTranslation", "Log", "Utilities", "Environment")
+  build_spec("Doh", "ios", default_test_podspecs, "ObfuscatedConstants", "DataModel", "Networking", "CoreTranslation", "Log", "Utilities", "Environment", "Authentication", "Services")
 end
 
 lane :build_Features_all_variants do

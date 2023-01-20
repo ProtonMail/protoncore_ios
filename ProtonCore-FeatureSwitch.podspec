@@ -25,7 +25,6 @@ Pod::Spec.new do |s|
     
     s.dependency 'ProtonCore-Foundations', $version
     s.dependency 'ProtonCore-Utilities', $version
-    s.dependency 'ProtonCore-Doh', $version
     s.dependency 'ProtonCore-CoreTranslation', $version
 
     s.source_files = 'libraries/FeatureSwitch/Sources/**/*.{h,m,swift}'
@@ -38,6 +37,7 @@ Pod::Spec.new do |s|
 
     s.test_spec 'Tests' do |featureswitch_tests|
       featureswitch_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/Doh', $version
+      featureswitch_tests.dependency 'ProtonCore-Doh', $version
       featureswitch_tests.source_files = 'libraries/FeatureSwitch/Tests/**/*.swift'
       featureswitch_tests.resource = 'libraries/FeatureSwitch/Tests/Resources/**/*'
     end

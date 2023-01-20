@@ -44,13 +44,6 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "538A5CF58D6DD6072AE02A3E64AF246B",
-        "name" : "ProtonCore-Authentication-iOS-Unit-Crypto-Go1.19.4-Tests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Pods\/Pods.xcodeproj",
         "identifier" : "A6885EA264436953598B90922590051E",
         "name" : "ProtonCore-Challenge-Unit-Tests"
       }
@@ -67,13 +60,6 @@
         "containerPath" : "container:Pods\/Pods.xcodeproj",
         "identifier" : "EAD10E545DCBD6AA7632EDB2458FFF71",
         "name" : "ProtonCore-DataModel-iOS-Unit-Tests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "3960521878640787DEE0D257E77A8081",
-        "name" : "ProtonCore-Doh-iOS-Unit-Tests"
       }
     },
     {
@@ -144,13 +130,6 @@
         "containerPath" : "container:Pods\/Pods.xcodeproj",
         "identifier" : "E84A6DBEDCF74F96789E209DEB25F0B7",
         "name" : "ProtonCore-Log-iOS-Unit-Tests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "39ACF05B1173A09C391257DB875D7678",
-        "name" : "ProtonCore-Login-iOS-Unit-Tests-Crypto-Go1.19.4"
       }
     },
     {
@@ -228,6 +207,27 @@
         "containerPath" : "container:Pods\/Pods.xcodeproj",
         "identifier" : "15F8D09913146D2D4929F72187B84292",
         "name" : "ProtonCore-Services-iOS-Unit-UnitTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "90C1D8F69AFFF842E7ABA37247232BC4",
+        "name" : "ProtonCore-Authentication-Crypto-Go1.19.4-iOS-Unit-Crypto-Go1.19.4-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "4862F07220917CCD4C29F327A1E2CA04",
+        "name" : "ProtonCore-Doh-iOS-Unit-UnitTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "A84D68DBEFEAB52A327F0D1D9D53CE57",
+        "name" : "ProtonCore-Login-Crypto-Go1.19.4-iOS-Unit-Tests-Crypto-Go1.19.4"
       }
     }
   ],
