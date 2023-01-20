@@ -12,7 +12,7 @@
         <!--End to End-->
         <scene sceneID="S7Z-4Z-N5T">
             <objects>
-                <viewController title="EndToEnd Tests" id="Ke9-G2-M3W" userLabel="End to End" customClass="EndToEndViewController" customModule="Example_iOS_Calendar_V5_AppStoreIAP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="EndToEnd Tests" id="Ke9-G2-M3W" userLabel="End to End" customClass="EndToEndViewController" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QWT-lV-tMu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,7 +23,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ATo-Qh-auK">
                                         <rect key="frame" x="0.0" y="16" width="414" height="479"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0xh-Wu-XKu" customClass="EnvironmentSelector" customModule="Example_iOS_Calendar_V5_AppStoreIAP" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0xh-Wu-XKu" customClass="EnvironmentSelector" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="0.0" width="382" height="120"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -104,7 +104,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Execute selected test"/>
                                                 <connections>
-                                                    <action selector="createAccount:" destination="Ke9-G2-M3W" eventType="touchUpInside" id="1zH-Io-IoD"/>
+                                                    <action selector="runTests:" destination="Ke9-G2-M3W" eventType="touchUpInside" id="gkM-cd-SDz"/>
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sIW-W6-Mtq" userLabel="Test result Stack View">
@@ -198,12 +198,12 @@
                         <outlet property="activityIndicatorView" destination="nPm-zf-1C9" id="8xd-zm-wR7"/>
                         <outlet property="clearLogButton" destination="24K-FE-m4V" id="Qct-2Z-laz"/>
                         <outlet property="copyLogButton" destination="qfn-tJ-UKK" id="pIR-lq-bV6"/>
-                        <outlet property="createAccountButton" destination="YyB-LB-r3H" id="d1e-uK-aYz"/>
                         <outlet property="credentialsPasswordTextField" destination="Mfp-5Y-qaX" id="Osg-cs-jHQ"/>
                         <outlet property="credentialsSelector" destination="OrQ-Qv-o98" id="CSB-HT-YEw"/>
                         <outlet property="credentialsStackView" destination="xnT-ae-7eR" id="0Su-Le-tEY"/>
                         <outlet property="credentialsUsernameTextField" destination="bn2-vp-gEC" id="VKo-rU-cNQ"/>
                         <outlet property="environmentSelector" destination="0xh-Wu-XKu" id="mQq-42-dRb"/>
+                        <outlet property="executeTestButton" destination="YyB-LB-r3H" id="3EU-hm-7CQ"/>
                         <outlet property="tokenRefreshStackView" destination="sIW-W6-Mtq" id="nDI-bB-pud"/>
                     </connections>
                 </viewController>

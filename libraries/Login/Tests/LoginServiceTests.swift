@@ -37,8 +37,7 @@ import ProtonCore_FeatureSwitch
 class LoginServiceTests: XCTestCase {
     var authInfoRequestData: [String: Any]?
     var server: SrpServer?
-    
-    
+        
     override class func setUp() {
         super.setUp()
         FeatureFactory.shared.disable(&.externalAccountConversion)

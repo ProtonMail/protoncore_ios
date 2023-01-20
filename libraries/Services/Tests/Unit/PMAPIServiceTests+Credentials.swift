@@ -293,7 +293,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         })
     }
 
-    // MARK: - aquire session logic tests
+    // MARK: - acquire session logic tests
 
     private func assertThatNoAuthDelegateMethodWasCalled() {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
@@ -304,13 +304,13 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
     }
 
-    func testSessionAquiringFailsWhenNoDelegate() async {
+    func testSessionAcquiringFailsWhenNoDelegate() async {
         // GIVEN
         let service = testService
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.aquireSession(deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.acquireSession(deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -320,7 +320,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(service.sessionUID, "test_session_uid")
     }
 
-    func testSessionAquiringSuccess() async {
+    func testSessionAcquiringSuccess() async {
         // GIVEN
         let service = testService
         service.authDelegate = authDelegateMock
@@ -345,11 +345,11 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.aquireSession(deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.acquireSession(deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
-        guard case .aquired(let credentials) = result else { XCTFail(); return }
+        guard case .acquired(let credentials) = result else { XCTFail(); return }
 
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
@@ -363,7 +363,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(service.sessionUID, "new test session uid")
     }
 
-    private func ensureSessionAquiringErrorsOut(for code: Int) async {
+    private func ensureSessionAcquiringErrorsOut(for code: Int) async {
         // GIVEN
         let service = testService
         service.authDelegate = authDelegateMock
@@ -379,29 +379,29 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.aquireSession(deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.acquireSession(deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
-        guard case .aquiringError = result else { XCTFail(); return }
+        guard case .acquiringError = result else { XCTFail(); return }
         assertThatNoAuthDelegateMethodWasCalled()
         XCTAssertEqual(service.sessionUID, "test_session_uid")
     }
 
-    func testSessionAquiringWhenHttpError500() async {
-        await ensureSessionAquiringErrorsOut(for: 500)
+    func testSessionAcquiringWhenHttpError500() async {
+        await ensureSessionAcquiringErrorsOut(for: 500)
     }
 
-    func testSessionAquiringWhenHttpError401() async {
-        await ensureSessionAquiringErrorsOut(for: 401)
+    func testSessionAcquiringWhenHttpError401() async {
+        await ensureSessionAcquiringErrorsOut(for: 401)
     }
 
-    func testSessionAquiringWhenHttpError400() async {
-        await ensureSessionAquiringErrorsOut(for: 400)
+    func testSessionAcquiringWhenHttpError400() async {
+        await ensureSessionAcquiringErrorsOut(for: 400)
     }
 
-    func testSessionAquiringWhenHttpError422() async {
-        await ensureSessionAquiringErrorsOut(for: 422)
+    func testSessionAcquiringWhenHttpError422() async {
+        await ensureSessionAcquiringErrorsOut(for: 422)
     }
 
     // MARK: - Refresh token logic tests
@@ -416,7 +416,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -441,7 +441,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -469,7 +469,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -496,7 +496,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -529,7 +529,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -566,7 +566,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -590,7 +590,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         await ensureLogoutHappensForAuthenticatedSession(for: 400)
     }
 
-    private func ensureTokenRefreshForSuccessfulSessionAquisitionForUnauthenticatedSession(for code: Int) async {
+    private func ensureTokenRefreshForSuccessfulSessionAcquisitionForUnauthenticatedSession(for code: Int) async {
         // GIVEN
         let service = testService
         service.authDelegate = authDelegateMock
@@ -626,7 +626,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -645,15 +645,15 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.onUpdateStub.lastArguments?.second, "test_session_uid")
     }
 
-    func testTokenRefreshCallWhenHttpError422_UnauthenticatedSession_AquireSessionSuccess() async {
-        await ensureTokenRefreshForSuccessfulSessionAquisitionForUnauthenticatedSession(for: 422)
+    func testTokenRefreshCallWhenHttpError422_UnauthenticatedSession_AcquireSessionSuccess() async {
+        await ensureTokenRefreshForSuccessfulSessionAcquisitionForUnauthenticatedSession(for: 422)
     }
 
-    func testTokenRefreshCallWhenHttpError400_UnauthenticatedSession_AquireSessionSuccess() async {
-        await ensureTokenRefreshForSuccessfulSessionAquisitionForUnauthenticatedSession(for: 400)
+    func testTokenRefreshCallWhenHttpError400_UnauthenticatedSession_AcquireSessionSuccess() async {
+        await ensureTokenRefreshForSuccessfulSessionAcquisitionForUnauthenticatedSession(for: 400)
     }
 
-    private func ensureTokenRefreshForFailingSessionAquisitionForUnauthenticatedSession(for code: Int) async {
+    private func ensureTokenRefreshForFailingSessionAcquisitionForUnauthenticatedSession(for code: Int) async {
         // GIVEN
         let service = testService
         service.authDelegate = authDelegateMock
@@ -680,7 +680,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -697,12 +697,12 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(responseError.httpCode, 401)
     }
 
-    func testTokenRefreshCallWhenHttpError422_UnauthenticatedSession_AquireSessionFail() async {
-        await ensureTokenRefreshForFailingSessionAquisitionForUnauthenticatedSession(for: 422)
+    func testTokenRefreshCallWhenHttpError422_UnauthenticatedSession_AcquireSessionFail() async {
+        await ensureTokenRefreshForFailingSessionAcquisitionForUnauthenticatedSession(for: 422)
     }
 
-    func testTokenRefreshCallWhenHttpError400_UnauthenticatedSession_AquireSessionFail() async {
-        await ensureTokenRefreshForFailingSessionAquisitionForUnauthenticatedSession(for: 400)
+    func testTokenRefreshCallWhenHttpError400_UnauthenticatedSession_AcquireSessionFail() async {
+        await ensureTokenRefreshForFailingSessionAcquisitionForUnauthenticatedSession(for: 400)
     }
 
     func testTokenRefreshCallWhenHttpError500_AuthenticatedSession() async {
@@ -726,7 +726,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -761,7 +761,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -800,7 +800,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -836,7 +836,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -861,7 +861,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -889,7 +889,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -920,7 +920,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -950,7 +950,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -986,7 +986,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -1028,7 +1028,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -1047,7 +1047,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         })
     }
 
-    func testTokenRefreshCallWhenHttpError422_UnauthenticatedSession_AquireSessionSuccess_StressTests() async {
+    func testTokenRefreshCallWhenHttpError422_UnauthenticatedSession_AcquireSessionSuccess_StressTests() async {
         // GIVEN
         let service = testService
         service.authDelegate = authDelegateMock
@@ -1083,7 +1083,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -1107,7 +1107,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         })
     }
 
-    func testTokenRefreshCallWhenHttpError422_UnauthenticatedSession_AquireSessionFail_StressTests() async {
+    func testTokenRefreshCallWhenHttpError422_UnauthenticatedSession_AcquireSessionFail_StressTests() async {
         // GIVEN
         let service = testService
         service.authDelegate = authDelegateMock
@@ -1134,7 +1134,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -1174,7 +1174,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -1193,7 +1193,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         })
     }
 
-    func testTokenRefreshCallWhenHttpError400_UnauthenticatedSession_AquireSessionSuccess_StressTests() async {
+    func testTokenRefreshCallWhenHttpError400_UnauthenticatedSession_AcquireSessionSuccess_StressTests() async {
         // GIVEN
         let service = testService
         service.authDelegate = authDelegateMock
@@ -1229,7 +1229,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -1253,7 +1253,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         })
     }
 
-    func testTokenRefreshCallWhenHttpError400_UnauthenticatedSession_AquireSessionFail_StressTests() async {
+    func testTokenRefreshCallWhenHttpError400_UnauthenticatedSession_AcquireSessionFail_StressTests() async {
         // GIVEN
         let service = testService
         service.authDelegate = authDelegateMock
@@ -1280,7 +1280,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -1320,7 +1320,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -1359,7 +1359,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -1402,7 +1402,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -1443,7 +1443,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
@@ -1473,7 +1473,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: true, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
         
         // THEN
@@ -1502,7 +1502,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: true, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
         
         // THEN
@@ -1530,7 +1530,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: true, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
         
         // THEN
@@ -1557,7 +1557,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: true, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
         
         // THEN
@@ -1590,7 +1590,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: true, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
         
         // THEN
@@ -1626,7 +1626,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: true, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
         
         // THEN
@@ -1660,7 +1660,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: true, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
         
         // THEN
@@ -1694,7 +1694,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: true, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
         
         // THEN
@@ -1733,7 +1733,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: true, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
         
         // THEN
@@ -1757,7 +1757,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         )
         
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
         
         // THEN
@@ -1793,7 +1793,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         }
         
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
         
         // THEN
@@ -1824,7 +1824,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.failure(.notImplementedYet(""))) }
         
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
         
         // THEN
@@ -1853,7 +1853,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.failure(.notImplementedYet(""))) }
         
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
         
         // THEN
@@ -1887,7 +1887,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
         
         // THEN
@@ -1924,7 +1924,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
         
         // THEN
@@ -1959,7 +1959,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
         
         // THEN
@@ -1994,7 +1994,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
         
         // THEN
@@ -2035,7 +2035,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, legacyPath: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
         }
 
         // THEN
