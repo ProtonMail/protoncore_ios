@@ -3,6 +3,7 @@ PODS:
   - ASN1Swift (1.2.3)
   - CryptoSwift (1.3.1)
   - EllipticCurveKeyPair (2.0)
+  - JSONSchema (0.6.0)
   - lottie-ios (3.4.3)
   - OHHTTPStubs/Core (9.1.0)
   - OHHTTPStubs/Default (9.1.0):
@@ -348,6 +349,14 @@ PODS:
     - ProtonCore-Networking (= 3.26.2)
     - SwiftOTP (~> 2.0)
     - TrustKit
+  - ProtonCore-Observability (3.26.2)
+  - ProtonCore-Observability/IntegrationTests (3.26.2):
+    - ProtonCore-Authentication (= 3.26.2)
+    - ProtonCore-Networking (= 3.26.2)
+    - ProtonCore-Services (= 3.26.2)
+    - ProtonCore-TestingToolkit/UnitTests/FeatureSwitch (= 3.26.2)
+  - ProtonCore-Observability/UnitTests (3.26.2):
+    - JSONSchema
   - ProtonCore-OpenPGP (3.26.2)
   - ProtonCore-Payments/Crypto-Go1.19.4 (3.26.2):
     - ProtonCore-Authentication/Crypto-Go1.19.4 (= 3.26.2)
@@ -568,6 +577,7 @@ PODS:
 
 DEPENDENCIES:
   - CryptoSwift (= 1.3.1)
+  - JSONSchema (from `https://github.com/kylef/JSONSchema.swift`)
   - OHHTTPStubs/Swift
   - "pmtest (from `git@gitlab.protontech.ch:apple/shared/pmtestautomation.git`, commit `e98cc4c`)"
   - ProtonCore-AccountDeletion/Crypto-Go1.19.4 (from `../../`)
@@ -620,6 +630,9 @@ DEPENDENCIES:
   - ProtonCore-Networking (from `../../`)
   - ProtonCore-Networking/Tests (from `../../`)
   - ProtonCore-ObfuscatedConstants (from `../../`)
+  - ProtonCore-Observability (from `../../`)
+  - ProtonCore-Observability/IntegrationTests (from `../../`)
+  - ProtonCore-Observability/UnitTests (from `../../`)
   - ProtonCore-OpenPGP (from `../../`)
   - ProtonCore-Payments/Crypto-Go1.19.4 (from `../../`)
   - ProtonCore-Payments/Crypto-Go1.19.4/Tests (from `../../`)
@@ -677,6 +690,8 @@ SPEC REPOS:
     - TPInAppReceipt
 
 EXTERNAL SOURCES:
+  JSONSchema:
+    :git: https://github.com/kylef/JSONSchema.swift
   pmtest:
     :commit: e98cc4c
     :git: "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
@@ -730,6 +745,8 @@ EXTERNAL SOURCES:
     :path: "../../"
   ProtonCore-ObfuscatedConstants:
     :path: "../../"
+  ProtonCore-Observability:
+    :path: "../../"
   ProtonCore-OpenPGP:
     :path: "../../"
   ProtonCore-Payments:
@@ -762,6 +779,9 @@ EXTERNAL SOURCES:
     :git: https://github.com/ProtonMail/TrustKit.git
 
 CHECKOUT OPTIONS:
+  JSONSchema:
+    :commit: 8c7ec156dde09715d8d2ed83cc8fe6b1ba90648c
+    :git: https://github.com/kylef/JSONSchema.swift
   pmtest:
     :commit: e98cc4c
     :git: "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
@@ -777,6 +797,7 @@ SPEC CHECKSUMS:
   ASN1Swift: 73ba94f1d97c1c1d059d180708ad42845aeac4f9
   CryptoSwift: f12f037f6d0fcd6d48c96db0071b653de64e6c4d
   EllipticCurveKeyPair: 8c69e5238a6e47243a10a48fbd41dfb19110b22e
+  JSONSchema: 2fcb0c33de01b60afa07701b395732d66dfbd936
   lottie-ios: 9ae750cdc7820fecbd3c2f0cfc493038208fcdc4
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   pmtest: 5cfa1c8f623eb9f68e8be673a6690991701cbb3a
@@ -805,6 +826,7 @@ SPEC CHECKSUMS:
   ProtonCore-LoginUI: 14bfcbfa4eb628782f977eda59cef1f0dfa36c7a
   ProtonCore-Networking: a719f48826239e57aeb36deec8e1c8481d2bd2ba
   ProtonCore-ObfuscatedConstants: 1ba930b073e0ae846487d50f52b7dc910f34cc8c
+  ProtonCore-Observability: a9049e3b9519cec64e2a6ae6ba5b88ca9ad3a500
   ProtonCore-OpenPGP: 32a3000d81781c33a3b051bb910b84b35d6d0f8a
   ProtonCore-Payments: ac42b8557b05208e634ac806e3146228fea54cda
   ProtonCore-PaymentsUI: 0c960d3d0ad899baad6511565dbcf54aeaf9de59
@@ -823,6 +845,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 75ff97f2484a463cf46c172fe7f94225612aeda1
   TrustKit: f830ff5af0a8cbad5178aef1d0951389b096d312
 
-PODFILE CHECKSUM: f4b3ed98f2ce64ed16052dc0b93788a018990133
+PODFILE CHECKSUM: 16520d1d26ab7381729511cedc10c55c5b0b2602
 
 COCOAPODS: 1.11.3

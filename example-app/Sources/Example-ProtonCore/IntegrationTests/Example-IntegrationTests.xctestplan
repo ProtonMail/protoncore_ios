@@ -33,6 +33,13 @@
         "identifier" : "FBF3F3B3DE482D97DF160A0751A8BB60",
         "name" : "ProtonCore-Doh-iOS-Unit-IntegrationTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "4A28A49C1965C081A8EC357F05A9505C",
+        "name" : "ProtonCore-Observability-Unit-IntegrationTests"
+      }
     }
   ],
   "version" : 1

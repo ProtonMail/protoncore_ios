@@ -56,11 +56,14 @@ def protoncore_ios
   pod "ProtonCore-TroubleShooting", :path => "../../"
   pod "ProtonCore-Environment", :path => "../../"
   pod "ProtonCore-FeatureSwitch", :path => "../../"
+  pod "ProtonCore-Observability", :path => "../../"
 end
 
 def protoncore_unit_tests_ios
   pod "SwiftOTP", "~> 2.0"
   pod "CryptoSwift", "1.3.1"
+  # due to https://github.com/kylef/JSONSchema.swift/issues/154
+  pod 'JSONSchema', :git => 'https://github.com/kylef/JSONSchema.swift'
   pod "ProtonCore-ObfuscatedConstants", :path => "../../"
   pod "ProtonCore-DataModel", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Doh", :path => "../../", :testspecs => ["UnitTests"]
@@ -83,6 +86,7 @@ def protoncore_unit_tests_ios
   pod "ProtonCore-TroubleShooting", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Environment", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-FeatureSwitch", :path => "../../", :testspecs => ["Tests"]
+  pod "ProtonCore-Observability", :path => "../../", :testspecs => ["UnitTests"]
 
   pod "ProtonCore-TestingToolkit/UnitTests/Core", :path => "../../"
   pod "ProtonCore-TestingToolkit/UnitTests/DataModel", :path => "../../"
@@ -127,6 +131,7 @@ def protoncore_integration_tests_ios
   protoncore_ios
   pod "ProtonCore-Doh", :path => "../../", :testspecs => ["IntegrationTests"]
   pod "ProtonCore-Services", :path => "../../", :testspecs => ["IntegrationTests"]
+  pod "ProtonCore-Observability", :path => "../../", :testspecs => ["IntegrationTests"]
 end
 
 

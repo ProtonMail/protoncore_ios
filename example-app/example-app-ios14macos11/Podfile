@@ -61,6 +61,8 @@ end
 def protoncore_unit_tests
   pod "SwiftOTP", "~> 2.0"
   pod "CryptoSwift", "1.3.1"
+  # due to https://github.com/kylef/JSONSchema.swift/issues/154
+  pod 'JSONSchema', :git => 'https://github.com/kylef/JSONSchema.swift'
   pod "ProtonCore-ObfuscatedConstants", :path => "../../"
   pod "ProtonCore-DataModel", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Doh", :path => "../../", :testspecs => ["UnitTests"]

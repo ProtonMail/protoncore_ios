@@ -1,6 +1,6 @@
 //
-//  DummyTests.swift
-//  ProtonCore-Observability-Tests - Created on 16.12.22.
+//  HumanVerificationPageLoadEvent.swift
+//  ProtonCore-Observability - Created on 16.12.22.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -19,4 +19,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import XCTest
+public struct HumanVerificationPageLoadLabels: Encodable {
+    let status: SuccessOrFailureStatus
+}
+
+extension ObservabilityEvent where Payload == CounterPayloadWithLabels<HumanVerificationPageLoadLabels> {
+    public static func humanVerificationPageLoad(status: SuccessOrFailureStatus) -> Self {
+        .init(name: "ios_core_human_verification_page_load", labels: .init(status: status))
+    }
+}
