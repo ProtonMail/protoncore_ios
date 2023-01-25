@@ -12,8 +12,7 @@ public extension ElementsProtocol {
     /**
      UiDevice instance which can be used to invoke device functions.
      */
-    func device() -> UiDevice {
-        return UiDevice()
+    func device() -> UIDevice {
+        return UIDevice()
     }
-
 }

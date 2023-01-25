@@ -221,7 +221,7 @@ public final class LoginSampleAppRobot: CoreElements {
         }
         
         public func buttonLogoutIsNotVisible() {
-            button(logoutButtonLabelText).wait().checkDoesNotExist()
+            button(logoutButtonLabelText).waitUntilGone()
         }
         
         public func dialogLogoutShown() -> LoginSampleAppRobot {

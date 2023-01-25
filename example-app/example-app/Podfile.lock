@@ -568,7 +568,7 @@ PODS:
 DEPENDENCIES:
   - CryptoSwift (= 1.3.1)
   - OHHTTPStubs/Swift
-  - "pmtest (from `git@gitlab.protontech.ch:apple/shared/pmtestautomation.git`)"
+  - "pmtest (from `git@gitlab.protontech.ch:apple/shared/pmtestautomation.git`, commit `e98cc4c`)"
   - ProtonCore-AccountDeletion/Crypto-Go1.19.4 (from `../../`)
   - ProtonCore-AccountDeletion/Crypto-Go1.19.4/Tests (from `../../`)
   - ProtonCore-AccountSwitcher (from `../../`)
@@ -677,6 +677,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   pmtest:
+    :commit: e98cc4c
     :git: "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
   ProtonCore-AccountDeletion:
     :path: "../../"
@@ -761,7 +762,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   pmtest:
-    :commit: d65cbf1836fe42797891095f9e0269acbc823e7b
+    :commit: e98cc4c
     :git: "git@gitlab.protontech.ch:apple/shared/pmtestautomation.git"
   Sentry:
     :git: https://github.com/getsentry/sentry-cocoa.git
@@ -821,6 +822,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 75ff97f2484a463cf46c172fe7f94225612aeda1
   TrustKit: f830ff5af0a8cbad5178aef1d0951389b096d312
 
-PODFILE CHECKSUM: d4ef78036db74b75d833cec9fb3736d78d6cc633
+PODFILE CHECKSUM: f4b3ed98f2ce64ed16052dc0b93788a018990133
 
 COCOAPODS: 1.11.3

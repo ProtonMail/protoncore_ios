@@ -1,5 +1,5 @@
 //
-//  UiDevice.swift
+//  UIDevice.swift
 //
 //  ProtonMail - Created on 02.07.21.
 //
@@ -32,29 +32,32 @@ public enum ForegroundType {
     case launch
 }
 
+@available(*, deprecated, message: "`UiDevice` has been renamed to `UIDevice`.")
+typealias UiDevice = UIDevice
+
 /**
  Contains functions related to the device or system actions.
  */
-open class UiDevice {
+open class UIDevice {
 
-    public func backgroundApp() {
+    public func backgroundApp(app: XCUIApplication = XCUIApplication()) {
         XCUIDevice.shared.press(.home)
-        XCUIApplication().wait(for: .runningBackground, timeout: 5.0)
+        app.wait(for: .runningBackground, timeout: 5.0)
     }
 
-    public func foregroundApp(_ foregroundType: ForegroundType = ForegroundType.activate) {
+    public func foregroundApp(_ foregroundType: ForegroundType = ForegroundType.activate, app: XCUIApplication = XCUIApplication()) {
         switch foregroundType {
         case .activate:
-            XCUIApplication().activate()
+            app.activate()
         case .launch:
-            XCUIApplication().launch()
+            app.launch()
         }
-        XCUIApplication().wait(for: .runningForeground, timeout: 5.0)
+        app.wait(for: .runningForeground, timeout: 5.0)
     }
 
-    public func foregroundAppBySiri(_ text: String) {
+    public func foregroundAppBySiri(_ text: String, app: XCUIApplication = XCUIApplication()) {
         XCUIDevice.shared.siriService.activate(voiceRecognitionText: text)
-        XCUIApplication().wait(for: .runningForeground, timeout: 5.0)
+        app.wait(for: .runningForeground, timeout: 5.0)
     }
 
     public func saveTextToClipboard(_ text: String) {

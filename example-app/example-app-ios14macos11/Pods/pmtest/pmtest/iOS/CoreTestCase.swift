@@ -41,7 +41,7 @@ open class CoreTestCase: XCTestCase, ElementsProtocol {
 
     open override func tearDownWithError() throws {
         let attachment = testRecorder.generateGifAttachment()
-        if (attachment != nil) {
+        if attachment != nil {
             attachment!.lifetime = .keepAlways
             self.add(attachment!)
         }
