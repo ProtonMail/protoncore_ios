@@ -68,6 +68,7 @@ final class ObservabilityEventTests: XCTestCase {
         },
         "required": ["Value", "Labels"]
     }
+
     """
 
     func testExternalAccountCreationSigninEvent() throws {
@@ -108,6 +109,8 @@ final class ObservabilityEventTests: XCTestCase {
         },
         "required": ["Value", "Labels"]
     }
+
+
     """
 
     func testHumanVerificationOutcomeEvent() throws {
@@ -122,10 +125,10 @@ final class ObservabilityEventTests: XCTestCase {
 
     let ios_core_human_verification_page_load_v1 = """
     {
-        "$id": "https://proton.me/ios_core_human_verification_page_load_v1.schema.json",
+        "$id": "https://proton.me/ios_core_human_verification_screen_load_v1.schema.json",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "title": "iOS Core human verification page load",
-        "description": "Metric for the status of human verification page load",
+        "title": "iOS Core human verification screen load",
+        "description": "Metric for the status of human verification screen load",
         "type": "object",
         "properties": {
             "Value": {
@@ -147,6 +150,7 @@ final class ObservabilityEventTests: XCTestCase {
         },
         "required": ["Value", "Labels"]
     }
+
     """
 
     func testHumanVerificationPageLoadEvent() throws {
@@ -157,14 +161,14 @@ final class ObservabilityEventTests: XCTestCase {
         }
     }
 
-    // MARK: - pageLoadCount event
+    // MARK: - screenLoadCount event
 
-    let ios_core_page_load_count_v1 = """
+    let ios_core_screen_load_count_v1 = """
     {
-        "$id": "https://proton.me/ios_core_page_load_count_v1.schema.json",
+        "$id": "https://proton.me/ios_core_screen_load_count_v1.schema.json",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "title": "iOS Core page load count",
-        "description": "Metric for the page load count of each page",
+        "title": "iOS Core screen load count",
+        "description": "Metric for the screen load count of each screen",
         "type": "object",
         "properties": {
             "Value": {
@@ -192,13 +196,12 @@ final class ObservabilityEventTests: XCTestCase {
         },
         "required": ["Value", "Labels"]
     }
-
     """
 
-    func testPageLoadCountEvent() throws {
+    func testScreenLoadCountEvent() throws {
         try ScreenName.allCases.forEach { screenName in
-            let issues = try validatePayloadAccordingToSchema(event: .pageLoadCount(screenName: screenName),
-                                                              schema: ios_core_page_load_count_v1)
+            let issues = try validatePayloadAccordingToSchema(event: .screenLoadCount(screenName: screenName),
+                                                              schema: ios_core_screen_load_count_v1)
             XCTAssertEqual(issues, .noIssues)
         }
     }

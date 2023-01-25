@@ -30,7 +30,7 @@ public enum ScreenName: String, Encodable, CaseIterable {
     case planSelection = "plan_selection"
 }
 
-public struct PageLoadCountLabels: Encodable {
+public struct ScreenLoadCountLabels: Encodable {
     let screenName: ScreenName
 
     enum CodingKeys: String, CodingKey {
@@ -38,8 +38,8 @@ public struct PageLoadCountLabels: Encodable {
     }
 }
 
-extension ObservabilityEvent where Payload == CounterPayloadWithLabels<PageLoadCountLabels> {
-    public static func pageLoadCount(screenName: ScreenName) -> Self {
-        .init(name: "ios_core_page_load_count", labels: .init(screenName: screenName))
+extension ObservabilityEvent where Payload == CounterPayloadWithLabels<ScreenLoadCountLabels> {
+    public static func screenLoadCount(screenName: ScreenName) -> Self {
+        .init(name: "ios_core_screen_load_count", labels: .init(screenName: screenName))
     }
 }
