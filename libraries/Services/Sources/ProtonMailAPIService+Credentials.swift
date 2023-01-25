@@ -47,7 +47,7 @@ extension PMAPIService {
     
     func fetchAuthCredentials(completion: @escaping (AuthCredentialFetchingResult) -> Void) {
         performSeriallyInAuthCredentialQueue { continuation in
-            self.fetchAuthCredentialsNoSync(continuation: continuation, completion: completion)
+            self.fetchAuthCredentialsWithoutSynchronization(continuation: continuation, completion: completion)
         }
     }
     
@@ -68,12 +68,12 @@ extension PMAPIService {
                                deviceFingerprints: ChallengeProperties,
                                completion: @escaping (AuthCredentialRefreshingResult) -> Void) {
         performSeriallyInAuthCredentialQueue { continuation in
-            self.refreshAuthCredentialNoSync(credentialsCausing401: credentialsCausing401,
-                                             refreshCounter: refreshCounter,
-                                             withoutSupportForUnauthenticatedSessions: withoutSupportForUnauthenticatedSessions,
-                                             deviceFingerprints: deviceFingerprints,
-                                             continuation: continuation,
-                                             completion: completion)
+            self.refreshAuthCredentialWithoutSynchronization(credentialsCausing401: credentialsCausing401,
+                                                             refreshCounter: refreshCounter,
+                                                             withoutSupportForUnauthenticatedSessions: withoutSupportForUnauthenticatedSessions,
+                                                             deviceFingerprints: deviceFingerprints,
+                                                             continuation: continuation,
+                                                             completion: completion)
         }
     }
 
@@ -85,9 +85,9 @@ extension PMAPIService {
 
     func acquireSession(deviceFingerprints: ChallengeProperties, completion: @escaping (SessionAcquisitionResult) -> Void) {
         performSeriallyInAuthCredentialQueue { continuation in
-            self.acquireSessionNoSync(deviceFingerprints: deviceFingerprints,
-                                     continuation: continuation,
-                                     completion: completion)
+            self.acquireSessionWithoutSynchronization(deviceFingerprints: deviceFingerprints,
+                                                      continuation: continuation,
+                                                      completion: completion)
         }
     }
     
@@ -109,8 +109,8 @@ extension PMAPIService {
         }
     }
     
-    private func fetchAuthCredentialsNoSync(continuation: @escaping () -> Void,
-                                            completion: @escaping (AuthCredentialFetchingResult) -> Void) {
+    private func fetchAuthCredentialsWithoutSynchronization(continuation: @escaping () -> Void,
+                                                            completion: @escaping (AuthCredentialFetchingResult) -> Void) {
 
         guard let authDelegate = authDelegate else {
             finalize(result: .wrongConfigurationNoDelegate, continuation: continuation, completion: completion)
@@ -128,12 +128,12 @@ extension PMAPIService {
                  completion: completion)
     }
     
-    private func refreshAuthCredentialNoSync(credentialsCausing401: AuthCredential,
-                                             refreshCounter: Int,
-                                             withoutSupportForUnauthenticatedSessions: Bool,
-                                             deviceFingerprints: ChallengeProperties,
-                                             continuation: @escaping () -> Void,
-                                             completion: @escaping (AuthCredentialRefreshingResult) -> Void) {
+    private func refreshAuthCredentialWithoutSynchronization(credentialsCausing401: AuthCredential,
+                                                             refreshCounter: Int,
+                                                             withoutSupportForUnauthenticatedSessions: Bool,
+                                                             deviceFingerprints: ChallengeProperties,
+                                                             continuation: @escaping () -> Void,
+                                                             completion: @escaping (AuthCredentialRefreshingResult) -> Void) {
 
         guard let authDelegate = authDelegate else {
             finalize(result: .wrongConfigurationNoDelegate, continuation: continuation, completion: completion)
@@ -161,7 +161,7 @@ extension PMAPIService {
         authDelegate.onRefresh(sessionUID: sessionUID, service: self) { result in
             self.fetchAuthCredentialCompletionBlockBackgroundQueue.async {
                 if withoutSupportForUnauthenticatedSessions {
-                    self.handleRefreshingResultsWithoutSupportForUnauthenticatedSessions(result, credentialsCausing401, refreshCounter, deviceFingerprints, continuation, completion)
+                    self.handleRefreshingResultsWithUnsupportedUnauthenticatedSessions(result, credentialsCausing401, refreshCounter, deviceFingerprints, continuation, completion)
                 } else {
                     self.handleRefreshingResults(result, credentialsCausing401, refreshCounter, deviceFingerprints, continuation, completion)
                 }
@@ -189,7 +189,7 @@ extension PMAPIService {
 
             authDelegate?.eraseUnauthSessionCredentials(sessionUID: sessionUID)
 
-            self.acquireSessionNoSync(deviceFingerprints: deviceFingerprints, continuation: continuation) { (result: SessionAcquisitionResult) in
+            self.acquireSessionWithoutSynchronization(deviceFingerprints: deviceFingerprints, continuation: continuation) { (result: SessionAcquisitionResult) in
                 switch result {
                 case .wrongConfigurationNoDelegate:
                     completion(.wrongConfigurationNoDelegate)
@@ -223,12 +223,12 @@ extension PMAPIService {
         }
     }
     
-    private func handleRefreshingResultsWithoutSupportForUnauthenticatedSessions(_ result: Result<Credential, AuthErrors>,
-                                                                                 _ credentialsCausing401: AuthCredential,
-                                                                                 _ refreshCounter: Int,
-                                                                                 _ deviceFingerprints: ChallengeProperties,
-                                                                                 _ continuation: @escaping () -> Void,
-                                                                                 _ completion: @escaping (AuthCredentialRefreshingResult) -> Void) {
+    private func handleRefreshingResultsWithUnsupportedUnauthenticatedSessions(_ result: Result<Credential, AuthErrors>,
+                                                                               _ credentialsCausing401: AuthCredential,
+                                                                               _ refreshCounter: Int,
+                                                                               _ deviceFingerprints: ChallengeProperties,
+                                                                               _ continuation: @escaping () -> Void,
+                                                                               _ completion: @escaping (AuthCredentialRefreshingResult) -> Void) {
         debugError(result.error)
         
         switch result {
@@ -260,9 +260,9 @@ extension PMAPIService {
         }
     }
 
-    private func acquireSessionNoSync(deviceFingerprints: ChallengeProperties,
-                                      continuation: @escaping () -> Void,
-                                      completion: @escaping (SessionAcquisitionResult) -> Void) {
+    private func acquireSessionWithoutSynchronization(deviceFingerprints: ChallengeProperties,
+                                                      continuation: @escaping () -> Void,
+                                                      completion: @escaping (SessionAcquisitionResult) -> Void) {
         guard let authDelegate = authDelegate else {
             let nsError = NSError.protonMailError(0, localizedDescription: "AuthDelegate is required")
             finalize(result: .wrongConfigurationNoDelegate(nsError),

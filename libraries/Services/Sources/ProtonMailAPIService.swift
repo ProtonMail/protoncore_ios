@@ -277,13 +277,16 @@ public class PMAPIService: APIService {
 
     public func acquireSessionIfNeeded(completion: @escaping (Result<SessionAcquiringResult, APIError>) -> Void) {
         fetchAuthCredentials { [weak self] (result: AuthCredentialFetchingResult) in
-            guard let self else { return }
             switch result {
             case .found:
                 completion(.success(.sessionAlreadyPresent))
             case .wrongConfigurationNoDelegate:
                 completion(.success(.sessionUnavailableAndNotFetched))
             case .notFound:
+                guard let self else {
+                    completion(.success(.sessionUnavailableAndNotFetched))
+                    return
+                }
                 self.acquireSession(deviceFingerprints: self.deviceFingerprints) { (result: SessionAcquisitionResult) in
                     switch result {
                     case .acquired:
