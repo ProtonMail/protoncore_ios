@@ -21,6 +21,7 @@
 
 import XCTest
 import TrustKit
+import ProtonCore_Foundations
 import ProtonCore_CoreTranslation
 import ProtonCore_TestingToolkit
 import ProtonCore_Utilities
@@ -64,7 +65,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
     
     let numberOfRequests: UInt = 50
     
-    var dohMock: DoHInterface! = nil
+    var dohMock: DohMock! = nil
     var sessionUID: String! = nil
     var cacheToClearMock: URLCacheMock! = nil
     var sessionMock: SessionMock! = nil
@@ -101,106 +102,115 @@ final class PMAPIServiceRequestTests: XCTestCase {
         trustKitProviderMock = TrustKitProviderMock()
         apiServiceDelegateMock = APIServiceDelegateMock()
         authDelegateMock = AuthDelegateMock()
-        FeatureFactory.shared.enable(&.unauthSession)
     }
     
     // MARK: - Error propagation
     
     func testRequestWithJSONPassesServerErrorCodeInsteadOfHttpCode() async throws {
-        let service = testService
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+        try await withFeatureSwitches([.unauthSession]) {
+            let service = testService
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+                SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            }
+
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in
+                completion(URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 404)), .success(["Code": 2222]))
+            }
+
+            let result = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            _ = try XCTUnwrap(result.task)
+            let error = try XCTUnwrap(result.error)
+            XCTAssertEqual(error.code, 2222)
         }
-        
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in
-            completion(URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 404)), .success(["Code": 2222]))
-        }
-        
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
-        }
-        
-        _ = try XCTUnwrap(result.task)
-        let error = try XCTUnwrap(result.error)
-        XCTAssertEqual(error.code, 2222)
     }
     
     func testRequestWithJSONPassesHttpErrorCode() async throws {
-        let service = testService
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+        try await withFeatureSwitches([.unauthSession]) {
+            let service = testService
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+                SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            }
+
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in
+                completion(URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 404)), .success([:]))
+            }
+
+            let result = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            _ = try XCTUnwrap(result.task)
+            let error = try XCTUnwrap(result.error)
+            XCTAssertEqual(error.code, 404)
         }
-        
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in
-            completion(URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 404)), .success([:]))
-        }
-        
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
-        }
-        
-        _ = try XCTUnwrap(result.task)
-        let error = try XCTUnwrap(result.error)
-        XCTAssertEqual(error.code, 404)
     }
     
     // MARK: - Deprecated API
     
     @available(*, deprecated, message: "testing deprecated api")
     func testDeprecatedRequestMethods_Variant1() async throws {
-        let service = testService
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+        try await withFeatureSwitches([.unauthSession]) {
+            let service = testService
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+                SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            }
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
+
+            let result = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: false,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
+            }
+            XCTAssertNil(result.task)
+            XCTAssertTrue(try XCTUnwrap(result.response).isEmpty)
+            XCTAssertNil(result.error)
         }
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
-        
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: false,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, completion: optionalContinuation(continuation))
-        }
-        XCTAssertNil(result.task)
-        XCTAssertTrue(try XCTUnwrap(result.response).isEmpty)
-        XCTAssertNil(result.error)
     }
     
     @available(*, deprecated, message: "testing deprecated api")
     func testDeprecatedRequestMethods_Variant2() async throws {
-        let service = testService
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+        try await withFeatureSwitches([.unauthSession]) {
+            let service = testService
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+                SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            }
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
+
+            let result = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false,
+                                autoRetry: false, customAuthCredential: nil, completion: optionalContinuation(continuation))
+            }
+            XCTAssertNil(result.task)
+            XCTAssertTrue(try XCTUnwrap(result.response).isEmpty)
+            XCTAssertNil(result.error)
         }
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
-        
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false,
-                            autoRetry: false, customAuthCredential: nil, completion: optionalContinuation(continuation))
-        }
-        XCTAssertNil(result.task)
-        XCTAssertTrue(try XCTUnwrap(result.response).isEmpty)
-        XCTAssertNil(result.error)
     }
 
     @available(*, deprecated, message: "testing deprecated api")
     func testDeprecatedUploadMethods_Variant6() async throws {
-        let service = testService
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+        try await withFeatureSwitches([.unauthSession]) {
+            let service = testService
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+                SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            }
+
+            sessionMock.uploadWithFilesJSONStub.bodyIs { _, _, _, completion, _ in
+                completion(nil, .success(["Code": 1000]))
+            }
+
+            let result = await withCheckedContinuation { continuation in
+                service.upload(byPath: "/unit/tests", parameters: nil, files: [:], headers: nil, authenticated: false, customAuthCredential: nil,
+                               nonDefaultTimeout: nil, uploadProgress: nil, completion: optionalContinuation(continuation))
+            }
+
+            XCTAssertNil(result.task)
+            XCTAssertEqual(try result.response?.serializedToData(), try ["Code": 1000].serializedToData())
+            XCTAssertNil(result.error)
         }
-        
-        sessionMock.uploadWithFilesJSONStub.bodyIs { _, _, _, completion, _ in
-            completion(nil, .success(["Code": 1000]))
-        }
-        
-        let result = await withCheckedContinuation { continuation in
-            service.upload(byPath: "/unit/tests", parameters: nil, files: [:], headers: nil, authenticated: false, customAuthCredential: nil,
-                           nonDefaultTimeout: nil, uploadProgress: nil, completion: optionalContinuation(continuation))
-        }
-        
-        XCTAssertNil(result.task)
-        XCTAssertEqual(try result.response?.serializedToData(), try ["Code": 1000].serializedToData())
-        XCTAssertNil(result.error)
     }
     
     // MARK: - Part 1 — logic before network operation
@@ -245,48 +255,56 @@ final class PMAPIServiceRequestTests: XCTestCase {
     }
 
     func testNoFetchingWhenAuthenticatedIsFalseWithCustomAuthCredential() async throws {
-        try await noFetchingHappensWhenCustomAuthCredentials(authenticated: false)
+        try await withFeatureSwitches([.unauthSession]) {
+            try await noFetchingHappensWhenCustomAuthCredentials(authenticated: false)
+        }
     }
 
     func testNoFetchingWhenAuthenticatedIsFalseWithCustomAuthCredential_LegacyPath() async throws {
-        FeatureFactory.shared.disable(&.unauthSession)
-        try await noFetchingHappensWhenCustomAuthCredentials(authenticated: false)
+        try await withFeatureSwitches([]) {
+            try await noFetchingHappensWhenCustomAuthCredentials(authenticated: false)
+        }
     }
 
     func testNoFetchingWhenCustomAuthCredentials() async throws {
-        try await noFetchingHappensWhenCustomAuthCredentials(authenticated: true)
+        try await withFeatureSwitches([.unauthSession]) {
+            try await noFetchingHappensWhenCustomAuthCredentials(authenticated: true)
+        }
     }
 
     func testNoFetchingWhenCustomAuthCredentials_LegacyPath() async throws {
-        FeatureFactory.shared.disable(&.unauthSession)
-        try await noFetchingHappensWhenCustomAuthCredentials(authenticated: true)
+        try await withFeatureSwitches([]) {
+            try await noFetchingHappensWhenCustomAuthCredentials(authenticated: true)
+        }
     }
 
     func testRequestContainsCustomAuthAccessTokenWhenCustomAuthCredentials() async throws {
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
-        
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
-        
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        
-        // WHEN
-        _ = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: true, autoRetry: true,
-                            customAuthCredential: authCredential, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+        try await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
+
+            let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
+
+            // WHEN
+            _ = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: true, autoRetry: true,
+                                customAuthCredential: authCredential, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+            let request = try XCTUnwrap(sessionMock.requestJSONStub.lastArguments?.first)
+            XCTAssertEqual(request.value(key: "Authorization"), "Bearer test accessToken")
         }
-        
-        // THEN
-        XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        let request = try XCTUnwrap(sessionMock.requestJSONStub.lastArguments?.first)
-        XCTAssertEqual(request.value(key: "Authorization"), "Bearer test accessToken")
     }
 
     /*
@@ -299,7 +317,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
 
     */
 
-    private func ensureFetchingHappensWhenNoCustomAuthCredentials(authenticated: Bool) async {
+    private func ensureFetchingHappensWhenNoCustomAuthCredentials(authenticated: Bool) async throws {
         // GIVEN
         let service = testService
         service.authDelegate = authDelegateMock
@@ -328,43 +346,49 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertNil(result.error)
     }
 
-    func testFetchingHappensWhenNoCustomAuthCredentialsForAuthenticatedFlagTrue() async {
-        await ensureFetchingHappensWhenNoCustomAuthCredentials(authenticated: true)
+    func testFetchingHappensWhenNoCustomAuthCredentialsForAuthenticatedFlagTrue() async throws {
+        try await withFeatureSwitches([.unauthSession]) {
+            try await ensureFetchingHappensWhenNoCustomAuthCredentials(authenticated: true)
+        }
     }
 
-    func testFetchingHappensWhenNoCustomAuthCredentialsForAuthenticatedFlagFalse() async {
-        await ensureFetchingHappensWhenNoCustomAuthCredentials(authenticated: false)
+    func testFetchingHappensWhenNoCustomAuthCredentialsForAuthenticatedFlagFalse() async throws {
+        try await withFeatureSwitches([.unauthSession]) {
+            try await ensureFetchingHappensWhenNoCustomAuthCredentials(authenticated: false)
+        }
     }
 
-    func testFetchingHappensWhenNoCustomAuthCredentialsForAuthenticatedFlagTrue_LegacyPath() async {
-        FeatureFactory.shared.disable(&.unauthSession)
-        await ensureFetchingHappensWhenNoCustomAuthCredentials(authenticated: true)
+    func testFetchingHappensWhenNoCustomAuthCredentialsForAuthenticatedFlagTrue_LegacyPath() async throws {
+        try await withFeatureSwitches([]) {
+            try await ensureFetchingHappensWhenNoCustomAuthCredentials(authenticated: true)
+        }
     }
 
     func testNoFetchingHappensWhenNoCustomAuthCredentialsForAuthenticatedFlagFalse_LegacyPath() async throws {
-        FeatureFactory.shared.disable(&.unauthSession)
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
+        try await withFeatureSwitches([]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
 
-        // WHEN
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+            XCTAssertNil(result.task)
+            XCTAssertTrue(try XCTUnwrap(result.response).isEmpty)
+            XCTAssertNil(result.error)
         }
-
-        // THEN
-        XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        XCTAssertNil(result.task)
-        XCTAssertTrue(try XCTUnwrap(result.response).isEmpty)
-        XCTAssertNil(result.error)
     }
 
     /*
@@ -404,91 +428,98 @@ final class PMAPIServiceRequestTests: XCTestCase {
     }
 
     func testIfAuthenticatedFetchingFailsCreatesRequestWithoutAccessToken() async {
-        await ensureIfFetchingFailsRequestIsCreatedWithoutAccessToken(authenticated: true)
+        await withFeatureSwitches([.unauthSession]) {
+            await ensureIfFetchingFailsRequestIsCreatedWithoutAccessToken(authenticated: true)
+        }
     }
 
     func testIfNotAuthenticatedFetchingFailsCreatesRequestWithoutAccessToken() async {
-        await ensureIfFetchingFailsRequestIsCreatedWithoutAccessToken(authenticated: false)
+        await withFeatureSwitches([.unauthSession]) {
+            await ensureIfFetchingFailsRequestIsCreatedWithoutAccessToken(authenticated: false)
+        }
     }
     
     func testIfAuthenticatedAndFetchingFailsOperationFails_LegacyPath() async throws {
-        FeatureFactory.shared.disable(&.unauthSession)
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
-        
-        // WHEN
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+        await withFeatureSwitches([]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertTrue(sessionMock.generateStub.wasNotCalled)
+            XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
+            XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+            XCTAssertNotNil(result.error)
+            XCTAssertEqual(result.error, PMAPIService.AuthCredentialFetchingResult.notFound.toNSError)
         }
-        
-        // THEN
-        XCTAssertTrue(sessionMock.generateStub.wasNotCalled)
-        XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
-        XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        XCTAssertNotNil(result.error)
-        XCTAssertEqual(result.error, PMAPIService.AuthCredentialFetchingResult.notFound.toNSError)
     }
     
     func testIfNotAuthenticatedAndFetchingFailsRequestWithoutAccessTokenIsCreated_LegacyPath() async throws {
-        FeatureFactory.shared.disable(&.unauthSession)
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
-        
-        // WHEN
-        _ = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+        try await withFeatureSwitches([]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
+
+            // WHEN
+            _ = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: false, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+            let request = try XCTUnwrap(sessionMock.requestJSONStub.lastArguments?.first)
+            XCTAssertFalse(request.hasHeader(key: "Authorization"))
+            XCTAssertFalse(request.hasHeader(key: "x-pm-uid"))
         }
-        
-        // THEN
-        XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        let request = try XCTUnwrap(sessionMock.requestJSONStub.lastArguments?.first)
-        XCTAssertFalse(request.hasHeader(key: "Authorization"))
-        XCTAssertFalse(request.hasHeader(key: "x-pm-uid"))
     }
 
     func testIfNotAuthenticatedAndFetchingSucceedsRequestWithoutAccessTokenIsCreated_LegacyPath() async throws {
-        FeatureFactory.shared.disable(&.unauthSession)
-        // GIVEN
-        let service = testService
+        try await withFeatureSwitches([]) {
+            // GIVEN
+            let service = testService
 
-        service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
+            service.authDelegate = authDelegateMock
+            let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
 
-        // WHEN
-        _ = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            // WHEN
+            _ = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: false, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+            let request = try XCTUnwrap(sessionMock.requestJSONStub.lastArguments?.first)
+            XCTAssertFalse(request.hasHeader(key: "Authorization"))
+            XCTAssertFalse(request.hasHeader(key: "x-pm-uid"))
         }
-
-        // THEN
-        XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        let request = try XCTUnwrap(sessionMock.requestJSONStub.lastArguments?.first)
-        XCTAssertFalse(request.hasHeader(key: "Authorization"))
-        XCTAssertFalse(request.hasHeader(key: "x-pm-uid"))
     }
 
     /*
@@ -533,67 +564,75 @@ final class PMAPIServiceRequestTests: XCTestCase {
     }
 
     func testIfAuthenticatedAndFetchingSucceedsRequestWithAccessTokenIsCreated() async throws {
-        try await ensureIfFetchisSucceedsRequestWithAccessTokenIsCreated(authenticated: true)
+        try await withFeatureSwitches([.unauthSession]) {
+            try await ensureIfFetchisSucceedsRequestWithAccessTokenIsCreated(authenticated: true)
+        }
     }
 
     func testIfNotAuthenticatedAndFetchingSucceedsRequestWithAccessTokenIsCreated() async throws {
-        try await ensureIfFetchisSucceedsRequestWithAccessTokenIsCreated(authenticated: false)
+        try await withFeatureSwitches([.unauthSession]) {
+            try await ensureIfFetchisSucceedsRequestWithAccessTokenIsCreated(authenticated: false)
+        }
     }
     
     func testIfAuthenticatedAndFetchingSucceedsRequestWithAccessTokenIsCreated_LegacyPath() async throws {
-        FeatureFactory.shared.disable(&.unauthSession)
-        try await ensureIfFetchisSucceedsRequestWithAccessTokenIsCreated(authenticated: true)
+        try await withFeatureSwitches([]) {
+            try await ensureIfFetchisSucceedsRequestWithAccessTokenIsCreated(authenticated: true)
+        }
     }
 
     func testIfRequestCreationFailsOperationFails() async throws {
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
 
-        enum TestError: Error { case testError }
-        sessionMock.generateStub.bodyIs { _, _, _, _, _, _ in throw TestError.testError }
+            enum TestError: Error { case testError }
+            sessionMock.generateStub.bodyIs { _, _, _, _, _, _ in throw TestError.testError }
 
-        // WHEN
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: false, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
+            XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+            XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
+            XCTAssertEqual(result.error, TestError.testError as NSError)
         }
-
-        // THEN
-        XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
-        XCTAssertEqual(result.error, TestError.testError as NSError)
     }
     
     func testIfRequestCreationFailsOperationFails_LegacyPath() async throws {
-        FeatureFactory.shared.disable(&.unauthSession)
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
-        
-        enum TestError: Error { case testError }
-        sessionMock.generateStub.bodyIs { _, _, _, _, _, _ in throw TestError.testError }
-        
-        // WHEN
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+        await withFeatureSwitches([]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+
+            enum TestError: Error { case testError }
+            sessionMock.generateStub.bodyIs { _, _, _, _, _, _ in throw TestError.testError }
+
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: false, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+            XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
+            XCTAssertEqual(result.error, TestError.testError as NSError)
         }
-        
-        // THEN
-        XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
-        XCTAssertEqual(result.error, TestError.testError as NSError)
     }
     
     // MARK: - Part 2 — logic after network operation, around DoH
@@ -612,297 +651,314 @@ final class PMAPIServiceRequestTests: XCTestCase {
     */
     
     func testOperationFailsIfNetworkOperationThrows() async throws {
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
-        
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        
-        enum TestError: Error { case testError }
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(SessionResponseError.networkingEngineError(underlyingError: TestError.testError as NSError))) }
-        
-        // WHEN
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
+
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+
+            enum TestError: Error { case testError }
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(SessionResponseError.networkingEngineError(underlyingError: TestError.testError as NSError))) }
+
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: true, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
+            XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+            XCTAssertEqual(result.error, TestError.testError as NSError)
         }
-        
-        // THEN
-        XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
-        XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        XCTAssertEqual(result.error, TestError.testError as NSError)
     }
     
     func testServerTimeIsUpdatedAccordingToResponse() async throws {
-        // GIVEN
-        let service = testService
-        service.serviceDelegate = apiServiceDelegateMock
-        
-        service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
-        
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        let task = URLSessionDataTaskMock()
-        task.responseStub.fixture = HTTPURLResponse(url: URL(string: "https://unit.test")!, statusCode: 0, httpVersion: nil,
-                                                    headerFields: ["Date": "Fri, 13 May 2022 09:42:00 +02:00"])
-        let date = DateParser.parse(time: "Fri, 13 May 2022 09:42:00 +02:00").map { Int64($0.timeIntervalSince1970) }
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(task, .success([:])) }
-        
-        // WHEN
-        _ = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.serviceDelegate = apiServiceDelegateMock
+
+            service.authDelegate = authDelegateMock
+            let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
+
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            let task = URLSessionDataTaskMock()
+            task.responseStub.fixture = HTTPURLResponse(url: URL(string: "https://unit.test")!, statusCode: 0, httpVersion: nil,
+                                                        headerFields: ["Date": "Fri, 13 May 2022 09:42:00 +02:00"])
+            let date = DateParser.parse(time: "Fri, 13 May 2022 09:42:00 +02:00").map { Int64($0.timeIntervalSince1970) }
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(task, .success([:])) }
+
+            // WHEN
+            _ = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertTrue(apiServiceDelegateMock.onUpdateStub.wasCalledExactlyOnce)
+            XCTAssertEqual(apiServiceDelegateMock.onUpdateStub.lastArguments?.value, date)
         }
-        
-        // THEN
-        XCTAssertTrue(apiServiceDelegateMock.onUpdateStub.wasCalledExactlyOnce)
-        XCTAssertEqual(apiServiceDelegateMock.onUpdateStub.lastArguments?.value, date)
     }
     
     func testTLSErrorIsPassedToDoHIfFailsTLS() async throws {
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
-        
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
-        sessionMock.failsTLSStub.bodyIs { _, _ in "test TLS error description" }
-        
-        // WHEN
-        _ = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+        try await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
+
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
+            sessionMock.failsTLSStub.bodyIs { _, _ in "test TLS error description" }
+
+            // WHEN
+            _ = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertTrue(sessionMock.requestJSONStub.wasCalledExactlyOnce)
+            XCTAssertTrue(sessionMock.failsTLSStub.wasCalledExactlyOnce)
+            XCTAssertIdentical(sessionMock.failsTLSStub.lastArguments?.value, sessionMock.requestJSONStub.lastArguments?.first)
+            let error = try XCTUnwrap(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.capturedArguments.last?.a5)
+            XCTAssertEqual(error.messageForTheUser, "test TLS error description")
         }
-        
-        // THEN
-        XCTAssertTrue(sessionMock.requestJSONStub.wasCalledExactlyOnce)
-        XCTAssertTrue(sessionMock.failsTLSStub.wasCalledExactlyOnce)
-        XCTAssertIdentical(sessionMock.failsTLSStub.lastArguments?.value, sessionMock.requestJSONStub.lastArguments?.first)
-        let error = try XCTUnwrap((dohMock as! DohMock).handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.capturedArguments.last?.a5)
-        XCTAssertEqual(error.messageForTheUser, "test TLS error description")
     }
     
     func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded() async throws {
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
-        
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        enum TestError: Error, Equatable { case testError }
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: TestError.testError as NSError))) }
-        
-        // WHEN
-        _ = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+        try await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
+
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            enum TestError: Error, Equatable { case testError }
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: TestError.testError as NSError))) }
+
+            // WHEN
+            _ = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertTrue(sessionMock.requestJSONStub.wasCalledExactlyOnce)
+            let error = try XCTUnwrap(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.capturedArguments.last?.a5)
+            XCTAssertEqual(error as? TestError, TestError.testError)
         }
-        
-        // THEN
-        XCTAssertTrue(sessionMock.requestJSONStub.wasCalledExactlyOnce)
-        let error = try XCTUnwrap((dohMock as! DohMock).handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.capturedArguments.last?.a5)
-        XCTAssertEqual(error as? TestError, TestError.testError)
     }
 
     func testNoAuthenticatedRequestIsRestartedIfDoHSaysSo() async throws {
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
 
-        (dohMock as! DohMock).handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, _, _, _, _, _, executor, completion in
-            if counter == 1 {
-                executor.execute { completion(true) }
-            } else {
-                executor.execute { completion(false) }
+            dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, _, _, _, _, _, executor, completion in
+                if counter == 1 {
+                    executor.execute { completion(true) }
+                } else {
+                    executor.execute { completion(false) }
+                }
             }
-        }
 
-        // WHEN
-        _ = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
-        }
+            // WHEN
+            _ = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: false, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
 
-        // THEN
-        XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
-        XCTAssertEqual(sessionMock.requestJSONStub.callCounter, 2)
-        XCTAssertEqual((dohMock as! DohMock).handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.callCounter, 2)
+            // THEN
+            XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
+            XCTAssertEqual(sessionMock.requestJSONStub.callCounter, 2)
+            XCTAssertEqual(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.callCounter, 2)
+        }
     }
 
     func testAuthenticatedRequestIsRestartedIfDoHSaysSo() async throws {
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
 
-        (dohMock as! DohMock).handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, _, _, _, _, _, executor, completion in
-            if counter == 1 {
-                executor.execute { completion(true) }
-            } else {
-                executor.execute { completion(false) }
+            dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, _, _, _, _, _, executor, completion in
+                if counter == 1 {
+                    executor.execute { completion(true) }
+                } else {
+                    executor.execute { completion(false) }
+                }
             }
-        }
 
-        // WHEN
-        _ = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
-        }
+            // WHEN
+            _ = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: true, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
 
-        // THEN
-        XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
-        XCTAssertEqual(sessionMock.requestJSONStub.callCounter, 2)
-        XCTAssertEqual((dohMock as! DohMock).handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.callCounter, 2)
+            // THEN
+            XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
+            XCTAssertEqual(sessionMock.requestJSONStub.callCounter, 2)
+            XCTAssertEqual(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.callCounter, 2)
+        }
     }
     
     func testNoAuthenticatedRequestIsRestartedIfDoHSaysSo_LegacyPath() async throws {
-        FeatureFactory.shared.disable(&.unauthSession)
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
-        
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
-        
-        (dohMock as! DohMock).handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, _, _, _, _, _, executor, completion in
-            if counter == 1 {
-                executor.execute { completion(true) }
-            } else {
-                executor.execute { completion(false) }
+        await withFeatureSwitches([]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
+
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
+
+            dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, _, _, _, _, _, executor, completion in
+                if counter == 1 {
+                    executor.execute { completion(true) }
+                } else {
+                    executor.execute { completion(false) }
+                }
             }
+
+            // WHEN
+            _ = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: false, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
+            XCTAssertEqual(sessionMock.requestJSONStub.callCounter, 2)
+            XCTAssertEqual(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.callCounter, 2)
         }
-        
-        // WHEN
-        _ = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
-        }
-        
-        // THEN
-        XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
-        XCTAssertEqual(sessionMock.requestJSONStub.callCounter, 2)
-        XCTAssertEqual((dohMock as! DohMock).handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.callCounter, 2)
     }
     
     func testAuthenticatedRequestIsRestartedIfDoHSaysSo_LegacyPath() async throws {
-        FeatureFactory.shared.disable(&.unauthSession)
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
-        
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
-        
-        (dohMock as! DohMock).handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, _, _, _, _, _, executor, completion in
-            if counter == 1 {
-                executor.execute { completion(true) }
-            } else {
-                executor.execute { completion(false) }
+        await withFeatureSwitches([]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
+
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
+
+            dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, _, _, _, _, _, executor, completion in
+                if counter == 1 {
+                    executor.execute { completion(true) }
+                } else {
+                    executor.execute { completion(false) }
+                }
             }
+
+            // WHEN
+            _ = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: true, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
+            XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
+            XCTAssertEqual(sessionMock.requestJSONStub.callCounter, 2)
+            XCTAssertEqual(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.callCounter, 2)
         }
-        
-        // WHEN
-        _ = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
-        }
-        
-        // THEN
-        XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
-        XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertEqual(sessionMock.requestJSONStub.callCounter, 2)
-        XCTAssertEqual((dohMock as! DohMock).handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.callCounter, 2)
     }
     
     func testAPIMightBeBlockedIsReturnedIfNoRetryAndDoHError() async throws {
-        // GIVEN
-        let service = testService
-        service.serviceDelegate = apiServiceDelegateMock
-        service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
-        
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
-        
-        (dohMock as! DohMock).errorIndicatesDoHSolvableProblemStub.bodyIs { _, _ in true }
-        
-        // WHEN
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.serviceDelegate = apiServiceDelegateMock
+            service.authDelegate = authDelegateMock
+            let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
+
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
+
+            dohMock.errorIndicatesDoHSolvableProblemStub.bodyIs { _, _ in true }
+
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: false, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            XCTAssertEqual((result.error! as NSError).code, APIErrorCode.potentiallyBlocked)
+            XCTAssertEqual((result.error! as NSError).localizedDescription, CoreString._net_api_might_be_blocked_message)
+
+            // THEN
+            XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
+            XCTAssertTrue(sessionMock.requestJSONStub.wasCalledExactlyOnce)
+            XCTAssertTrue(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.wasCalledExactlyOnce)
         }
-        
-        XCTAssertEqual((result.error! as NSError).code, APIErrorCode.potentiallyBlocked)
-        XCTAssertEqual((result.error! as NSError).localizedDescription, CoreString._net_api_might_be_blocked_message)
-        
-        // THEN
-        XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
-        XCTAssertTrue(sessionMock.requestJSONStub.wasCalledExactlyOnce)
-        XCTAssertTrue((dohMock as! DohMock).handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.wasCalledExactlyOnce)
     }
 
     func testAPIMightBeBlockedIsReturnedIfNoRetryAndDoHError_LegacyPath() async throws {
-        FeatureFactory.shared.disable(&.unauthSession)
-        // GIVEN
-        let service = testService
-        service.serviceDelegate = apiServiceDelegateMock
-        service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
+        await withFeatureSwitches([]) {
+            // GIVEN
+            let service = testService
+            service.serviceDelegate = apiServiceDelegateMock
+            service.authDelegate = authDelegateMock
+            let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .success([:])) }
 
-        (dohMock as! DohMock).errorIndicatesDoHSolvableProblemStub.bodyIs { _, _ in true }
+            dohMock.errorIndicatesDoHSolvableProblemStub.bodyIs { _, _ in true }
 
-        // WHEN
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: false, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            XCTAssertEqual((result.error! as NSError).code, APIErrorCode.potentiallyBlocked)
+            XCTAssertEqual((result.error! as NSError).localizedDescription, CoreString._net_api_might_be_blocked_message)
+
+            // THEN
+            XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
+            XCTAssertTrue(sessionMock.requestJSONStub.wasCalledExactlyOnce)
+            XCTAssertTrue(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.wasCalledExactlyOnce)
         }
-
-        XCTAssertEqual((result.error! as NSError).code, APIErrorCode.potentiallyBlocked)
-        XCTAssertEqual((result.error! as NSError).localizedDescription, CoreString._net_api_might_be_blocked_message)
-
-        // THEN
-        XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
-        XCTAssertTrue(sessionMock.requestJSONStub.wasCalledExactlyOnce)
-        XCTAssertTrue((dohMock as! DohMock).handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.wasCalledExactlyOnce)
     }
     
     // MARK: - Part 3 — credential refreshing logic
@@ -910,145 +966,151 @@ final class PMAPIServiceRequestTests: XCTestCase {
     /*
 
      If we perform the call without the credentials and get 401 back, we need to:
-        * aquire the session
-        * if the session aquiring call fails, return error
-        * if the session aquiring call succeeds, retry the original call
+        * acquire the session
+        * if the session acquiring call fails, return error
+        * if the session acquiring call succeeds, retry the original call
             * if the retry of the original call fails, regardless of the code (including 401), return error (do not retry again)
 
     */
 
-    func test401WithoutCredentialsReturnsErrorIfSessionAquisitionFails() async {
-        // GIVEN
-        let service = testService
-        service.serviceDelegate = apiServiceDelegateMock
-        service.authDelegate = authDelegateMock
+    func test401WithoutCredentialsReturnsErrorIfSessionAcquisitionFails() async {
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.serviceDelegate = apiServiceDelegateMock
+            service.authDelegate = authDelegateMock
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { _, request, completion in
-            guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
-            let response = HTTPURLResponse(statusCode: 401)
-            let task = URLSessionDataTaskMock(response: response)
-            completion(task, .failure(.responseBodyIsNotAJSONDictionary(body: nil, response: response)))
-        }
-        sessionMock.requestDecodableStub.bodyIs { _, request, _, completion in
-            guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
-            let response = HTTPURLResponse(statusCode: 400)
-            let task = URLSessionDataTaskMock(response: response)
-            completion(task, .failure(.responseBodyIsNotADecodableObject(body: nil, response: response)))
-        }
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { _, request, completion in
+                guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
+                let response = HTTPURLResponse(statusCode: 401)
+                let task = URLSessionDataTaskMock(response: response)
+                completion(task, .failure(.responseBodyIsNotAJSONDictionary(body: nil, response: response)))
+            }
+            sessionMock.requestDecodableStub.bodyIs { _, request, _, completion in
+                guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
+                let response = HTTPURLResponse(statusCode: 400)
+                let task = URLSessionDataTaskMock(response: response)
+                completion(task, .failure(.responseBodyIsNotADecodableObject(body: nil, response: response)))
+            }
 
-        // WHEN
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
-        }
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: false, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
 
-        // THEN
-        XCTAssertNil(result.response)
-        guard let responseError = result.error as? ResponseError else { XCTFail(); return }
-        XCTAssertEqual(responseError.httpCode, 400)
+            // THEN
+            XCTAssertNil(result.response)
+            guard let responseError = result.error as? ResponseError else { XCTFail(); return }
+            XCTAssertEqual(responseError.httpCode, 400)
+        }
     }
 
-    func test401WithoutCredentialsReturnsSuccessIfSessionAquisitionSucceedsAndRetriedCallSucceeds() async {
-        // GIVEN
-        let service = testService
-        service.serviceDelegate = apiServiceDelegateMock
-        service.authDelegate = authDelegateMock
+    func test401WithoutCredentialsReturnsSuccessIfSessionAcquisitionSucceedsAndRetriedCallSucceeds() async {
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.serviceDelegate = apiServiceDelegateMock
+            service.authDelegate = authDelegateMock
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { counter, request, completion in
-            if counter == 1 {
-                guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
-                let response = HTTPURLResponse(statusCode: 401)
-                let task = URLSessionDataTaskMock(response: response)
-                completion(task, .failure(.responseBodyIsNotAJSONDictionary(body: nil, response: response)))
-            } else if counter == 2 {
-                guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
-                let response = HTTPURLResponse(statusCode: 200)
-                let task = URLSessionDataTaskMock(response: response)
-                completion(task, .success([:]))
-            } else {
-                XCTFail(); return
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { counter, request, completion in
+                if counter == 1 {
+                    guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
+                    let response = HTTPURLResponse(statusCode: 401)
+                    let task = URLSessionDataTaskMock(response: response)
+                    completion(task, .failure(.responseBodyIsNotAJSONDictionary(body: nil, response: response)))
+                } else if counter == 2 {
+                    guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
+                    let response = HTTPURLResponse(statusCode: 200)
+                    let task = URLSessionDataTaskMock(response: response)
+                    completion(task, .success([:]))
+                } else {
+                    XCTFail(); return
+                }
             }
-        }
-        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
-            guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
-            let data = """
-            {
-                "AccessToken": "new test access token",
-                "RefreshToken": "new test refresh token",
-                "TokenType": "new test token type",
-                "Scopes": ["scope1", "scope2"],
-                "UID": "new test session uid"
+            sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+                guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
+                let data = """
+                {
+                    "AccessToken": "new test access token",
+                    "RefreshToken": "new test refresh token",
+                    "TokenType": "new test token type",
+                    "Scopes": ["scope1", "scope2"],
+                    "UID": "new test session uid"
+                }
+                """.utf8!
+                let response = try! decoder!.decode(SessionsRequestResponse.self, from: data)
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 200))
+                completion(task, .success(response))
             }
-            """.utf8!
-            let response = try! decoder!.decode(SessionsRequestResponse.self, from: data)
-            let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 200))
-            completion(task, .success(response))
-        }
 
-        // WHEN
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
-        }
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: false, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
 
-        // THEN
-        XCTAssertNil(result.error)
-        XCTAssertNotNil(result.response)
+            // THEN
+            XCTAssertNil(result.error)
+            XCTAssertNotNil(result.response)
+        }
     }
 
-    func test401WithoutCredentialsReturnsErrorIfSessionAquisitionSucceedsAndRetriedCallErrors() async {
-        // GIVEN
-        let service = testService
-        service.serviceDelegate = apiServiceDelegateMock
-        service.authDelegate = authDelegateMock
+    func test401WithoutCredentialsReturnsErrorIfSessionAcquisitionSucceedsAndRetriedCallErrors() async {
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.serviceDelegate = apiServiceDelegateMock
+            service.authDelegate = authDelegateMock
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { counter, request, completion in
-            if counter == 1 {
-                guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
-                let response = HTTPURLResponse(statusCode: 401)
-                let task = URLSessionDataTaskMock(response: response)
-                completion(task, .failure(.responseBodyIsNotAJSONDictionary(body: nil, response: response)))
-            } else if counter == 2 {
-                guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
-                let response = HTTPURLResponse(statusCode: 401)
-                let task = URLSessionDataTaskMock(response: response)
-                completion(task, .failure(.responseBodyIsNotAJSONDictionary(body: nil, response: response)))
-            } else {
-                XCTFail(); return
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { counter, request, completion in
+                if counter == 1 {
+                    guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
+                    let response = HTTPURLResponse(statusCode: 401)
+                    let task = URLSessionDataTaskMock(response: response)
+                    completion(task, .failure(.responseBodyIsNotAJSONDictionary(body: nil, response: response)))
+                } else if counter == 2 {
+                    guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
+                    let response = HTTPURLResponse(statusCode: 401)
+                    let task = URLSessionDataTaskMock(response: response)
+                    completion(task, .failure(.responseBodyIsNotAJSONDictionary(body: nil, response: response)))
+                } else {
+                    XCTFail(); return
+                }
             }
-        }
-        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
-            guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
-            let data = """
-            {
-                "AccessToken": "new test access token",
-                "RefreshToken": "new test refresh token",
-                "TokenType": "new test token type",
-                "Scopes": ["scope1", "scope2"],
-                "UID": "new test session uid"
+            sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+                guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
+                let data = """
+                {
+                    "AccessToken": "new test access token",
+                    "RefreshToken": "new test refresh token",
+                    "TokenType": "new test token type",
+                    "Scopes": ["scope1", "scope2"],
+                    "UID": "new test session uid"
+                }
+                """.utf8!
+                let response = try! decoder!.decode(SessionsRequestResponse.self, from: data)
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 200))
+                completion(task, .success(response))
             }
-            """.utf8!
-            let response = try! decoder!.decode(SessionsRequestResponse.self, from: data)
-            let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 200))
-            completion(task, .success(response))
-        }
 
-        // WHEN
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
-        }
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: false, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
 
-        // THEN
-        XCTAssertNil(result.response)
-        guard let responseError = result.error as? ResponseError else { XCTFail(); return }
-        XCTAssertEqual(responseError.httpCode, 401)
+            // THEN
+            XCTAssertNil(result.response)
+            guard let responseError = result.error as? ResponseError else { XCTFail(); return }
+            XCTAssertEqual(responseError.httpCode, 401)
+        }
     }
 
     /*
@@ -1063,132 +1125,138 @@ final class PMAPIServiceRequestTests: XCTestCase {
      */
 
     func test401WithCredentialsReturnsSuccessIfRefreshCredentialsSucceedsAndRetryCallSucceeds() async {
-        // GIVEN
-        let service = testService
-        service.serviceDelegate = apiServiceDelegateMock
-        service.authDelegate = authDelegateMock
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.serviceDelegate = apiServiceDelegateMock
+            service.authDelegate = authDelegateMock
 
-        let oldCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test sessionUID", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
-        )
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in oldCredentials }
-        let freshCredential = Credential.dummy
-            .updated(UID: "test_session_uid_new", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
-        authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
-            // run on a different queue to simulate network call queue change
-            DispatchQueue.global(qos: .userInitiated).async { completion(.success(freshCredential)) }
-        }
-
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { counter, request, completion in
-            if counter == 1 {
-                guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
-                let response = HTTPURLResponse(statusCode: 401)
-                let task = URLSessionDataTaskMock(response: response)
-                completion(task, .failure(.responseBodyIsNotAJSONDictionary(body: nil, response: response)))
-            } else if counter == 2 {
-                guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
-                let response = HTTPURLResponse(statusCode: 200)
-                let task = URLSessionDataTaskMock(response: response)
-                completion(task, .success([:]))
-            } else {
-                XCTFail(); return
+            let oldCredentials = AuthCredential(Credential.dummy
+                .updated(UID: "test sessionUID", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
+            )
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in oldCredentials }
+            let freshCredential = Credential.dummy
+                .updated(UID: "test_session_uid_new", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
+            authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
+                // run on a different queue to simulate network call queue change
+                DispatchQueue.global(qos: .userInitiated).async { completion(.success(freshCredential)) }
             }
-        }
 
-        // WHEN
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
-        }
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { counter, request, completion in
+                if counter == 1 {
+                    guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
+                    let response = HTTPURLResponse(statusCode: 401)
+                    let task = URLSessionDataTaskMock(response: response)
+                    completion(task, .failure(.responseBodyIsNotAJSONDictionary(body: nil, response: response)))
+                } else if counter == 2 {
+                    guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
+                    let response = HTTPURLResponse(statusCode: 200)
+                    let task = URLSessionDataTaskMock(response: response)
+                    completion(task, .success([:]))
+                } else {
+                    XCTFail(); return
+                }
+            }
 
-        // THEN
-        XCTAssertNil(result.error)
-        XCTAssertNotNil(result.response)
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: false, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertNil(result.error)
+            XCTAssertNotNil(result.response)
+        }
     }
 
     func test401WithCredentialsReturnsErrorIfRefreshCredentialsSucceedsAndRetryCallErrors() async {
-        // GIVEN
-        let service = testService
-        service.serviceDelegate = apiServiceDelegateMock
-        service.authDelegate = authDelegateMock
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.serviceDelegate = apiServiceDelegateMock
+            service.authDelegate = authDelegateMock
 
-        let oldCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test sessionUID", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
-        )
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in oldCredentials }
-        let freshCredential = Credential.dummy
-            .updated(UID: "test_session_uid_new", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
-        authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
-            // run on a different queue to simulate network call queue change
-            DispatchQueue.global(qos: .userInitiated).async { completion(.success(freshCredential)) }
-        }
-
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { counter, request, completion in
-            if counter == 1 || counter == 2 {
-                guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
-                let response = HTTPURLResponse(statusCode: 401)
-                let task = URLSessionDataTaskMock(response: response)
-                completion(task, .failure(.responseBodyIsNotAJSONDictionary(body: nil, response: response)))
-            } else {
-                XCTFail(); return
+            let oldCredentials = AuthCredential(Credential.dummy
+                .updated(UID: "test sessionUID", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
+            )
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in oldCredentials }
+            let freshCredential = Credential.dummy
+                .updated(UID: "test_session_uid_new", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
+            authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
+                // run on a different queue to simulate network call queue change
+                DispatchQueue.global(qos: .userInitiated).async { completion(.success(freshCredential)) }
             }
-        }
 
-        // WHEN
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
-        }
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { counter, request, completion in
+                if counter == 1 || counter == 2 {
+                    guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
+                    let response = HTTPURLResponse(statusCode: 401)
+                    let task = URLSessionDataTaskMock(response: response)
+                    completion(task, .failure(.responseBodyIsNotAJSONDictionary(body: nil, response: response)))
+                } else {
+                    XCTFail(); return
+                }
+            }
 
-        // THEN
-        XCTAssertNil(result.response)
-        guard let responseError = result.error as? ResponseError else { XCTFail(); return }
-        XCTAssertEqual(responseError.httpCode, 401)
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: false, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertNil(result.response)
+            guard let responseError = result.error as? ResponseError else { XCTFail(); return }
+            XCTAssertEqual(responseError.httpCode, 401)
+        }
     }
 
     func test401WithCredentialsReturnsErrorIfRefreshCredentialsErrorsWithNonSpecialCode() async {
-        // GIVEN
-        let service = testService
-        service.serviceDelegate = apiServiceDelegateMock
-        service.authDelegate = authDelegateMock
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.serviceDelegate = apiServiceDelegateMock
+            service.authDelegate = authDelegateMock
 
-        let oldCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test sessionUID", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
-        )
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in oldCredentials }
-        authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
-            // run on a different queue to simulate network call queue change
-            let error = ResponseError(httpCode: 500, responseCode: nil, userFacingMessage: "test error message", underlyingError: nil)
-            DispatchQueue.global(qos: .userInitiated).async { completion(.failure(.networkingError(error))) }
-        }
-
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { counter, request, completion in
-            if counter == 1 {
-                guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
-                let response = HTTPURLResponse(statusCode: 401)
-                let task = URLSessionDataTaskMock(response: response)
-                completion(task, .failure(.responseBodyIsNotAJSONDictionary(body: nil, response: response)))
-            } else {
-                XCTFail(); return
+            let oldCredentials = AuthCredential(Credential.dummy
+                .updated(UID: "test sessionUID", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
+            )
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in oldCredentials }
+            authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
+                // run on a different queue to simulate network call queue change
+                let error = ResponseError(httpCode: 500, responseCode: nil, userFacingMessage: "test error message", underlyingError: nil)
+                DispatchQueue.global(qos: .userInitiated).async { completion(.failure(.networkingError(error))) }
             }
-        }
 
-        // WHEN
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
-        }
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { counter, request, completion in
+                if counter == 1 {
+                    guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
+                    let response = HTTPURLResponse(statusCode: 401)
+                    let task = URLSessionDataTaskMock(response: response)
+                    completion(task, .failure(.responseBodyIsNotAJSONDictionary(body: nil, response: response)))
+                } else {
+                    XCTFail(); return
+                }
+            }
 
-        // THEN
-        XCTAssertNil(result.response)
-        XCTAssertEqual(result.error?.code, 500)
-        XCTAssertEqual(result.error?.localizedDescription, "test error message")
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: false, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertNil(result.response)
+            XCTAssertEqual(result.error?.code, 500)
+            XCTAssertEqual(result.error?.localizedDescription, "test error message")
+        }
     }
 
     private func ensure401WithCredentialsLogsUserOutIfAuthenticateSessionAndRefreshCredentialsErrors(httpCode: Int) async {
@@ -1238,23 +1306,27 @@ final class PMAPIServiceRequestTests: XCTestCase {
     }
 
     func test401WithCredentialsLogsUserOutIfAuthenticateSessionAndRefreshCredentialsErrorsWith400() async {
-        await ensure401WithCredentialsLogsUserOutIfAuthenticateSessionAndRefreshCredentialsErrors(httpCode: 400)
+        await withFeatureSwitches([.unauthSession]) {
+            await ensure401WithCredentialsLogsUserOutIfAuthenticateSessionAndRefreshCredentialsErrors(httpCode: 400)
+        }
     }
 
     func test401WithCredentialsLogsUserOutIfAuthenticateSessionAndRefreshCredentialsErrorsWith422() async {
-        await ensure401WithCredentialsLogsUserOutIfAuthenticateSessionAndRefreshCredentialsErrors(httpCode: 422)
+        await withFeatureSwitches([.unauthSession]) {
+            await ensure401WithCredentialsLogsUserOutIfAuthenticateSessionAndRefreshCredentialsErrors(httpCode: 422)
+        }
     }
 
     /*
 
-     * if the credentials refresh fails with error 400 or 422 AND credentials were for the unauthenticated session, erase the credentials and aquire new session
-        * if the session aquiring call fails, return error
-        * if the session aquiring call succeeds, retry the original call
+     * if the credentials refresh fails with error 400 or 422 AND credentials were for the unauthenticated session, erase the credentials and acquire new session
+        * if the session acquiring call fails, return error
+        * if the session acquiring call succeeds, retry the original call
             * if the retry of the original call fails, regardless of the code (including 401), return error (do not retry again)
 
      */
 
-    private func ensure401WithCredentialsSucceedsIfUnauthenticateSessionAndRefreshCredentialsErrorsAndSessionAquisitionSuccedAndRetryCallSucceeds(httpCode: Int) async {
+    private func ensure401WithCredentialsSucceedsIfUnauthenticateSessionAndRefreshCredentialsErrorsAndSessionAcquisitionSuccedAndRetryCallSucceeds(httpCode: Int) async {
         // GIVEN
         let service = testService
         service.serviceDelegate = apiServiceDelegateMock
@@ -1319,15 +1391,19 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.eraseUnauthSessionCredentialsStub.lastArguments?.value, "test sessionUID")
     }
 
-    func test401WithCredentialsSucceedsIfUnauthenticateSessionAndRefreshCredentialsErrorsWith400AndSessionAquisitionSuccedAndRetryCallSucceeds() async {
-        await ensure401WithCredentialsSucceedsIfUnauthenticateSessionAndRefreshCredentialsErrorsAndSessionAquisitionSuccedAndRetryCallSucceeds(httpCode: 400)
+    func test401WithCredentialsSucceedsIfUnauthenticateSessionAndRefreshCredentialsErrorsWith400AndSessionAcquisitionSuccedAndRetryCallSucceeds() async {
+        await withFeatureSwitches([.unauthSession]) {
+            await ensure401WithCredentialsSucceedsIfUnauthenticateSessionAndRefreshCredentialsErrorsAndSessionAcquisitionSuccedAndRetryCallSucceeds(httpCode: 400)
+        }
     }
 
-    func test401WithCredentialsSucceedsIfUnauthenticateSessionAndRefreshCredentialsErrorsWith422AndSessionAquisitionSuccedAndRetryCallSucceeds() async {
-        await ensure401WithCredentialsSucceedsIfUnauthenticateSessionAndRefreshCredentialsErrorsAndSessionAquisitionSuccedAndRetryCallSucceeds(httpCode: 422)
+    func test401WithCredentialsSucceedsIfUnauthenticateSessionAndRefreshCredentialsErrorsWith422AndSessionAcquisitionSuccedAndRetryCallSucceeds() async {
+        await withFeatureSwitches([.unauthSession]) {
+            await ensure401WithCredentialsSucceedsIfUnauthenticateSessionAndRefreshCredentialsErrorsAndSessionAcquisitionSuccedAndRetryCallSucceeds(httpCode: 422)
+        }
     }
 
-    private func ensure401WithCredentialsSucceedsIfUnauthenticateSessionAndRefreshCredentialsErrorsAndSessionAquisitionErrors(httpCode: Int) async {
+    private func ensure401WithCredentialsSucceedsIfUnauthenticateSessionAndRefreshCredentialsErrorsAndSessionAcquisitionErrors(httpCode: Int) async {
         // GIVEN
         let service = testService
         service.serviceDelegate = apiServiceDelegateMock
@@ -1378,15 +1454,19 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.eraseUnauthSessionCredentialsStub.lastArguments?.value, "test sessionUID")
     }
 
-    func test401WithCredentialsSucceedsIfUnauthenticateSessionAndRefreshCredentialsErrorsWith400AndSessionAquisitionErrors() async {
-        await ensure401WithCredentialsSucceedsIfUnauthenticateSessionAndRefreshCredentialsErrorsAndSessionAquisitionErrors(httpCode: 400)
+    func test401WithCredentialsSucceedsIfUnauthenticateSessionAndRefreshCredentialsErrorsWith400AndSessionAcquisitionErrors() async {
+        await withFeatureSwitches([.unauthSession]) {
+            await ensure401WithCredentialsSucceedsIfUnauthenticateSessionAndRefreshCredentialsErrorsAndSessionAcquisitionErrors(httpCode: 400)
+        }
     }
 
-    func test401WithCredentialsErrorsIfUnauthenticateSessionAndRefreshCredentialsErrorsWith422AndSessionAquisitionErrors() async {
-        await ensure401WithCredentialsSucceedsIfUnauthenticateSessionAndRefreshCredentialsErrorsAndSessionAquisitionErrors(httpCode: 422)
+    func test401WithCredentialsErrorsIfUnauthenticateSessionAndRefreshCredentialsErrorsWith422AndSessionAcquisitionErrors() async {
+        await withFeatureSwitches([.unauthSession]) {
+            await ensure401WithCredentialsSucceedsIfUnauthenticateSessionAndRefreshCredentialsErrorsAndSessionAcquisitionErrors(httpCode: 422)
+        }
     }
 
-    private func ensure401WithCredentialsErrorsIfUnauthenticateSessionAndRefreshCredentialsErrorsAndSessionAquisitionSuccedAndRetryCallErrors(httpCode: Int) async {
+    private func ensure401WithCredentialsErrorsIfUnauthenticateSessionAndRefreshCredentialsErrorsAndSessionAcquisitionSuccedAndRetryCallErrors(httpCode: Int) async {
         // GIVEN
         let service = testService
         service.serviceDelegate = apiServiceDelegateMock
@@ -1446,12 +1526,16 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.eraseUnauthSessionCredentialsStub.lastArguments?.value, "test sessionUID")
     }
 
-    func test401WithCredentialsErrorsIfUnauthenticateSessionAndRefreshCredentialsErrorsWith400AndSessionAquisitionSuccedAndRetryCallErrors() async {
-        await ensure401WithCredentialsErrorsIfUnauthenticateSessionAndRefreshCredentialsErrorsAndSessionAquisitionSuccedAndRetryCallErrors(httpCode: 400)
+    func test401WithCredentialsErrorsIfUnauthenticateSessionAndRefreshCredentialsErrorsWith400AndSessionAcquisitionSuccedAndRetryCallErrors() async {
+        await withFeatureSwitches([.unauthSession]) {
+            await ensure401WithCredentialsErrorsIfUnauthenticateSessionAndRefreshCredentialsErrorsAndSessionAcquisitionSuccedAndRetryCallErrors(httpCode: 400)
+        }
     }
 
-    func test401WithCredentialsErrorsIfUnauthenticateSessionAndRefreshCredentialsErrorsWith422AndSessionAquisitionSuccedAndRetryCallErrors() async {
-        await ensure401WithCredentialsErrorsIfUnauthenticateSessionAndRefreshCredentialsErrorsAndSessionAquisitionSuccedAndRetryCallErrors(httpCode: 422)
+    func test401WithCredentialsErrorsIfUnauthenticateSessionAndRefreshCredentialsErrorsWith422AndSessionAcquisitionSuccedAndRetryCallErrors() async {
+        await withFeatureSwitches([.unauthSession]) {
+            await ensure401WithCredentialsErrorsIfUnauthenticateSessionAndRefreshCredentialsErrorsAndSessionAcquisitionSuccedAndRetryCallErrors(httpCode: 422)
+        }
     }
 
     // MARK: - Part 3 — credential refreshing logic — legacy path
@@ -1467,408 +1551,668 @@ final class PMAPIServiceRequestTests: XCTestCase {
      */
     
     func testIfAuthenticatedAndAuthCounterAndCredentialsAnd401ThenRefreshCallHappens_LegacyPath() async throws {
-        FeatureFactory.shared.disable(&.unauthSession)
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401)))) }
-        
-        authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.failure(.emptyAuthResponse)) }
-        
-        // WHEN
-        _ = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+        await withFeatureSwitches([]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401)))) }
+
+            authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.failure(.emptyAuthResponse)) }
+
+            // WHEN
+            _ = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
         }
-        
-        // THEN
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
     }
     
     func testIfRefreshCallHappensAndFailsThenOperationFails_LegacyPath() async throws {
-        FeatureFactory.shared.disable(&.unauthSession)
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401)))) }
-        
-        authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.failure(.emptyAuthResponse)) }
-        
-        // WHEN
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+        await withFeatureSwitches([]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401)))) }
+
+            authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.failure(.emptyAuthResponse)) }
+
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertEqual(result.error?.code, AuthErrors.emptyAuthResponse.codeInNetworking)
         }
-        
-        // THEN
-        XCTAssertEqual(result.error?.code, AuthErrors.emptyAuthResponse.codeInNetworking)
     }
     
     func testIfRefreshCallHappensAndSucceedsThenOperationIsRetried_LegacyPath() async throws {
-        FeatureFactory.shared.disable(&.unauthSession)
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { counter, _, completion in
-            if counter == 1 {
-                completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401))))
-            } else {
-                completion(nil, .success(["Code": 1000]))
+        await withFeatureSwitches([]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { counter, _, completion in
+                if counter == 1 {
+                    completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401))))
+                } else {
+                    completion(nil, .success(["Code": 1000]))
+                }
             }
+
+            let refreshedCredentials = Credential.dummy.updated(
+                UID: "test sessionID", accessToken: "test accessToken refreshed", refreshToken: "test refreshToken refreshed", scopes: ["full"]
+            )
+            authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.success(refreshedCredentials)) }
+
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertEqual(sessionMock.requestJSONStub.callCounter, 2)
+            XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
+            XCTAssertEqual(result.response?["Code"] as? Int, 1000)
         }
-        
-        let refreshedCredentials = Credential.dummy.updated(
-            UID: "test sessionID", accessToken: "test accessToken refreshed", refreshToken: "test refreshToken refreshed", scopes: ["full"]
-        )
-        authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.success(refreshedCredentials)) }
-        
-        // WHEN
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
-        }
-        
-        // THEN
-        XCTAssertEqual(sessionMock.requestJSONStub.callCounter, 2)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
-        XCTAssertEqual(result.response?["Code"] as? Int, 1000)
     }
     
     func testIfNotAuthenticatedAnd401ThenRefreshCallDoesNotHappens_LegacyPath() async throws {
-        FeatureFactory.shared.disable(&.unauthSession)
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401)))) }
-        
-        // WHEN
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+        await withFeatureSwitches([]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401)))) }
+
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, autoRetry: true,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
+            XCTAssertEqual(result.error, NSError(domain: NSURLErrorDomain, code: 401))
         }
-        
-        // THEN
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
-        XCTAssertEqual(result.error, NSError(domain: NSURLErrorDomain, code: 401))
     }
     
     func testIfNoAutoRetryAnd401ThenRefreshCallDoesNotHappens_LegacyPath() async throws {
-        FeatureFactory.shared.disable(&.unauthSession)
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
-        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401)))) }
-        
-        // WHEN
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: false,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+        await withFeatureSwitches([]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401)))) }
+
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: false,
+                                customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
+            XCTAssertEqual(result.error, NSError(domain: NSURLErrorDomain, code: 401))
         }
-        
-        // THEN
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
-        XCTAssertEqual(result.error, NSError(domain: NSURLErrorDomain, code: 401))
     }
     
     // MARK: - Part 4 — concurrent tests with token in-memory persistance
     
     func testOnlyOneRefreshHappensEvenIfMultipleRequestsGet401() async {
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
-        let auth: Atomic<AuthCredential> = .init(.dummy.updated(
-            sessionID: "test sessionID", accessToken: "test accessToken old", refreshToken: "test refreshToken old", userName: "test userName", userID: "test userID")
-        )
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in auth.value }
-        authDelegateMock.onUpdateStub.bodyIs { _, credentials, _ in
-            auth.mutate { $0 = AuthCredential(credentials) }
-        }
-        let refreshedCredentials = Credential.dummy.updated(
-            UID: "test sessionID", accessToken: "test accessToken refreshed", refreshToken: "test refreshToken refreshed", scopes: ["full"]
-        )
-        authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.success(refreshedCredentials)) }
-        
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { counter, request, completion in
-            if request.value(key: "Authorization") == "Bearer test accessToken old" {
-                completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401))))
-            } else {
-                completion(nil, .success(["Code": 1000]))
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            let auth: Atomic<AuthCredential> = .init(.dummy.updated(
+                sessionID: "test sessionID", accessToken: "test accessToken old", refreshToken: "test refreshToken old", userName: "test userName", userID: "test userID")
+            )
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in auth.value }
+            authDelegateMock.onUpdateStub.bodyIs { _, credentials, _ in
+                auth.mutate { $0 = AuthCredential(credentials) }
             }
+            let refreshedCredentials = Credential.dummy.updated(
+                UID: "test sessionID", accessToken: "test accessToken refreshed", refreshToken: "test refreshToken refreshed", scopes: ["full"]
+            )
+            authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.success(refreshedCredentials)) }
+
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { counter, request, completion in
+                if request.value(key: "Authorization") == "Bearer test accessToken old" {
+                    completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401))))
+                } else {
+                    completion(nil, .success(["Code": 1000]))
+                }
+            }
+
+            // WHEN
+            let results = await performConcurrentlySettingExpectations(amount: numberOfRequests) { index, continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: true, autoRetry: true, customAuthCredential: nil,
+                                nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
+            XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests * 2)
+            XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
+            XCTAssertEqual(sessionMock.requestJSONStub.callCounter, numberOfRequests * 2)
+            XCTAssertEqual(results.count, Int(numberOfRequests))
         }
-        
-        // WHEN
-        let results = await performConcurrentlySettingExpectations(amount: numberOfRequests) { index, continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: true, autoRetry: true, customAuthCredential: nil,
-                            nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
-        }
-        
-        // THEN
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests * 2)
-        XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertEqual(sessionMock.requestJSONStub.callCounter, numberOfRequests * 2)
-        XCTAssertEqual(results.count, Int(numberOfRequests))
     }
     
     func testOnlyOneRefreshHappensEvenIfMultipleRequestsGet401AndAuthIsUpdatedInPlace() async {
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
-        let auth: Atomic<AuthCredential> = .init(.dummy.updated(
-            sessionID: "test sessionID", accessToken: "test accessToken old", refreshToken: "test refreshToken old", userName: "test userName", userID: "test userID")
-        )
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in auth.value }
-        authDelegateMock.onUpdateStub.bodyIs { _, credentials, _ in
-            auth.mutate {
-                $0.udpate(sessionID: credentials.UID, accessToken: credentials.accessToken, refreshToken: credentials.refreshToken)
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            let auth: Atomic<AuthCredential> = .init(.dummy.updated(
+                sessionID: "test sessionID", accessToken: "test accessToken old", refreshToken: "test refreshToken old", userName: "test userName", userID: "test userID")
+            )
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in auth.value }
+            authDelegateMock.onUpdateStub.bodyIs { _, credentials, _ in
+                auth.mutate {
+                    $0.udpate(sessionID: credentials.UID, accessToken: credentials.accessToken, refreshToken: credentials.refreshToken)
+                }
             }
-        }
-        let refreshedCredentials = Credential.dummy.updated(
-            UID: "test sessionID", accessToken: "test accessToken refreshed", refreshToken: "test refreshToken refreshed", scopes: ["full"]
-        )
-        authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.success(refreshedCredentials)) }
-        
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { counter, request, completion in
-            if request.value(key: "Authorization") == "Bearer test accessToken old" {
-                completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401))))
-            } else {
-                completion(nil, .success(["Code": 1000]))
+            let refreshedCredentials = Credential.dummy.updated(
+                UID: "test sessionID", accessToken: "test accessToken refreshed", refreshToken: "test refreshToken refreshed", scopes: ["full"]
+            )
+            authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.success(refreshedCredentials)) }
+
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { counter, request, completion in
+                if request.value(key: "Authorization") == "Bearer test accessToken old" {
+                    completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401))))
+                } else {
+                    completion(nil, .success(["Code": 1000]))
+                }
             }
+
+            // WHEN
+            let results = await performConcurrentlySettingExpectations(amount: numberOfRequests) { index, continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: true, autoRetry: true, customAuthCredential: nil,
+                                nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
+            XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests * 2)
+            XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
+            XCTAssertEqual(sessionMock.requestJSONStub.callCounter, numberOfRequests * 2)
+            XCTAssertEqual(results.count, Int(numberOfRequests))
         }
-        
-        // WHEN
-        let results = await performConcurrentlySettingExpectations(amount: numberOfRequests) { index, continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: true, autoRetry: true, customAuthCredential: nil,
-                            nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
-        }
-        
-        // THEN
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests * 2)
-        XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertEqual(sessionMock.requestJSONStub.callCounter, numberOfRequests * 2)
-        XCTAssertEqual(results.count, Int(numberOfRequests))
     }
 
-    func testOnlyOneSessionAquisitionHappensEvenIfMultipleRequestsGet401() async {
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
-        let auth: Atomic<AuthCredential> = .init(.dummy.updated(
-            sessionID: "test sessionID", accessToken: "test accessToken old", refreshToken: "test refreshToken old"
-        ))
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in auth.value }
-        authDelegateMock.onUpdateStub.bodyIs { _, credentials, _ in
-            auth.mutate { $0 = AuthCredential(credentials) }
-        }
-        authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
-            // run on a different queue to simulate network call queue change
-            let error = ResponseError(httpCode: 400, responseCode: nil, userFacingMessage: "test error message", underlyingError: nil)
-            DispatchQueue.global(qos: .userInitiated).async { completion(.failure(.networkingError(error))) }
-        }
-
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { counter, request, completion in
-            if request.value(key: "Authorization") == "Bearer test accessToken old" {
-                completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401))))
-            } else {
-                completion(nil, .success(["Code": 1000]))
+    func testOnlyOneSessionAcquisitionHappensEvenIfMultipleRequestsGet401() async {
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            let auth: Atomic<AuthCredential> = .init(.dummy.updated(
+                sessionID: "test sessionID", accessToken: "test accessToken old", refreshToken: "test refreshToken old"
+            ))
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in auth.value }
+            authDelegateMock.onUpdateStub.bodyIs { _, credentials, _ in
+                auth.mutate { $0 = AuthCredential(credentials) }
             }
-        }
-
-        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
-        }
-        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
-            guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
-            let data = """
-            {
-                "AccessToken": "new test access token",
-                "RefreshToken": "new test refresh token",
-                "TokenType": "new test token type",
-                "Scopes": ["scope1", "scope2"],
-                "UID": "new test session uid"
+            authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
+                // run on a different queue to simulate network call queue change
+                let error = ResponseError(httpCode: 400, responseCode: nil, userFacingMessage: "test error message", underlyingError: nil)
+                DispatchQueue.global(qos: .userInitiated).async { completion(.failure(.networkingError(error))) }
             }
-            """.utf8!
-            let response = try! decoder!.decode(SessionsRequestResponse.self, from: data)
-            completion(nil, .success(response))
-        }
 
-        // WHEN
-        let results = await performConcurrentlySettingExpectations(amount: numberOfRequests) { index, continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: true, autoRetry: true, customAuthCredential: nil,
-                            nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
-        }
-
-        // THEN
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests * 2)
-        XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
-        XCTAssertEqual(sessionMock.requestJSONStub.callCounter, numberOfRequests * 2)
-        XCTAssertEqual(results.count, Int(numberOfRequests))
-        XCTAssertEqual(auth.value.sessionID, "new test session uid")
-    }
-
-    func testOnlyOneSessionAquisitionHappensEvenIfMultipleRequestsGet401AndAuthIsUpdatedInPlace() async {
-        // GIVEN
-        let service = testService
-        service.authDelegate = authDelegateMock
-        let auth: Atomic<AuthCredential> = .init(.dummy.updated(
-            sessionID: "test sessionID", accessToken: "test accessToken old", refreshToken: "test refreshToken old"
-        ))
-        authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in auth.value }
-        authDelegateMock.onUpdateStub.bodyIs { _, credentials, _ in
-            auth.mutate {
-                $0.udpate(sessionID: credentials.UID, accessToken: credentials.accessToken, refreshToken: credentials.refreshToken)
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { counter, request, completion in
+                if request.value(key: "Authorization") == "Bearer test accessToken old" {
+                    completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401))))
+                } else {
+                    completion(nil, .success(["Code": 1000]))
+                }
             }
-        }
-        authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
-            // run on a different queue to simulate network call queue change
-            let error = ResponseError(httpCode: 400, responseCode: nil, userFacingMessage: "test error message", underlyingError: nil)
-            DispatchQueue.global(qos: .userInitiated).async { completion(.failure(.networkingError(error))) }
-        }
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
-        sessionMock.requestJSONStub.bodyIs { counter, request, completion in
-            if request.value(key: "Authorization") == "Bearer test accessToken old" {
-                completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401))))
-            } else {
-                completion(nil, .success(["Code": 1000]))
+            sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+                SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
             }
-        }
-
-        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
-        }
-        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
-            guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
-            let data = """
-            {
-                "AccessToken": "new test access token",
-                "RefreshToken": "new test refresh token",
-                "TokenType": "new test token type",
-                "Scopes": ["scope1", "scope2"],
-                "UID": "new test session uid"
-            }
-            """.utf8!
-            let response = try! decoder!.decode(SessionsRequestResponse.self, from: data)
-            completion(nil, .success(response))
-        }
-
-        // WHEN
-        let results = await performConcurrentlySettingExpectations(amount: numberOfRequests) { index, continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
-                            authenticated: true, autoRetry: true, customAuthCredential: nil,
-                            nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
-        }
-
-        // THEN
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests * 2)
-        XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
-        XCTAssertEqual(sessionMock.requestJSONStub.callCounter, numberOfRequests * 2)
-        XCTAssertEqual(results.count, Int(numberOfRequests))
-        XCTAssertEqual(auth.value.sessionID, "new test session uid")
-    }
-
-    class TestResponse: Response, Codable {
-        let testString: String
-        let testInt: Int
-    }
-
-    class TestRequest: Request {
-        let path = "/test"
-        let method: HTTPMethod = .post
-        let isAuth = false
-    }
-    
-    let sessionsRequestSuccessResponse = """
-    {
-        "code": 1000,
-        "testString": "test",
-        "testInt": 123
-    }
-    """
-    
-    func test_session_Request_Success() {
-        let service = testService
-        service.authDelegate = authDelegateMock
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
-        }
-        sessionMock.requestDecodableStub.bodyIs { counter, request, decoder, completion in
-            let decoderedJSON = self.sessionsRequestSuccessResponse.data(using: .utf8)
-            do {
-                let response: TestResponse = try JSONDecoder().decode(TestResponse.self, from: decoderedJSON!)
+            sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+                guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
+                let data = """
+                {
+                    "AccessToken": "new test access token",
+                    "RefreshToken": "new test refresh token",
+                    "TokenType": "new test token type",
+                    "Scopes": ["scope1", "scope2"],
+                    "UID": "new test session uid"
+                }
+                """.utf8!
+                let response = try! decoder!.decode(SessionsRequestResponse.self, from: data)
                 completion(nil, .success(response))
-            } catch {
-                XCTFail(error.localizedDescription)
             }
-        }
-        let expectation = self.expectation(description: "Success completion block sessionRequest")
-        let request = TestRequest()
 
-        service.sessionRequest(request: request) { (task, result: Result<TestResponse, NSError>) in
-            switch result {
-            case .success(let output):
-                XCTAssertEqual(output.testString, "test")
-                XCTAssertEqual(output.testInt, 123)
-            case .failure:
-                XCTFail("Not expected error")
+            // WHEN
+            let results = await performConcurrentlySettingExpectations(amount: numberOfRequests) { index, continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: true, autoRetry: true, customAuthCredential: nil,
+                                nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
             }
-            expectation.fulfill()
-        }
-        self.waitForExpectations(timeout: 1.0) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
+
+            // THEN
+            XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
+            XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests * 2)
+            XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
+            XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
+            XCTAssertEqual(sessionMock.requestJSONStub.callCounter, numberOfRequests * 2)
+            XCTAssertEqual(results.count, Int(numberOfRequests))
+            XCTAssertEqual(auth.value.sessionID, "new test session uid")
         }
     }
-    
-    func test_session_Request_Fail() {
-        let service = testService
-        service.authDelegate = authDelegateMock
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
-        }
-        sessionMock.requestDecodableStub.bodyIs { counter, request, decoder, completion in
-            let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 404))
-            completion(task, .failure(SessionResponseError.configurationError))
-        }
-        let expectation = self.expectation(description: "Success completion block sessionRequest")
-        let request = TestRequest()
 
-        service.sessionRequest(request: request) { (task, result: Result<TestResponse, NSError>) in
-            switch result {
-            case .success:
-                XCTFail("Not expected success case")
-            case .failure(let error):
-                XCTAssertEqual(error.localizedDescription, SessionResponseError.configurationError.localizedDescription)
+    func testOnlyOneSessionAcquisitionHappensEvenIfMultipleRequestsGet401AndAuthIsUpdatedInPlace() async {
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            let auth: Atomic<AuthCredential> = .init(.dummy.updated(
+                sessionID: "test sessionID", accessToken: "test accessToken old", refreshToken: "test refreshToken old"
+            ))
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in auth.value }
+            authDelegateMock.onUpdateStub.bodyIs { _, credentials, _ in
+                auth.mutate {
+                    $0.udpate(sessionID: credentials.UID, accessToken: credentials.accessToken, refreshToken: credentials.refreshToken)
+                }
             }
-            expectation.fulfill()
+            authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
+                // run on a different queue to simulate network call queue change
+                let error = ResponseError(httpCode: 400, responseCode: nil, userFacingMessage: "test error message", underlyingError: nil)
+                DispatchQueue.global(qos: .userInitiated).async { completion(.failure(.networkingError(error))) }
+            }
+
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+            sessionMock.requestJSONStub.bodyIs { counter, request, completion in
+                if request.value(key: "Authorization") == "Bearer test accessToken old" {
+                    completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401))))
+                } else {
+                    completion(nil, .success(["Code": 1000]))
+                }
+            }
+
+            sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+                SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            }
+            sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+                guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
+                let data = """
+                {
+                    "AccessToken": "new test access token",
+                    "RefreshToken": "new test refresh token",
+                    "TokenType": "new test token type",
+                    "Scopes": ["scope1", "scope2"],
+                    "UID": "new test session uid"
+                }
+                """.utf8!
+                let response = try! decoder!.decode(SessionsRequestResponse.self, from: data)
+                completion(nil, .success(response))
+            }
+
+            // WHEN
+            let results = await performConcurrentlySettingExpectations(amount: numberOfRequests) { index, continuation in
+                service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil,
+                                authenticated: true, autoRetry: true, customAuthCredential: nil,
+                                nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+            }
+
+            // THEN
+            XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
+            XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests * 2)
+            XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
+            XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
+            XCTAssertEqual(sessionMock.requestJSONStub.callCounter, numberOfRequests * 2)
+            XCTAssertEqual(results.count, Int(numberOfRequests))
+            XCTAssertEqual(auth.value.sessionID, "new test session uid")
         }
-        self.waitForExpectations(timeout: 1.0) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
+    }
+
+    // MARK: - Part 5 — session acquisition
+
+    func testSessionAcquireCallDoesNothingIfSessionIsAlreadyAvailable() async throws {
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in
+                AuthCredential(sessionID: "test", accessToken: "test", refreshToken: "test", userName: "test", userID: "test", privateKey: "test", passwordKeySalt: "test")
+            }
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.acquireSessionIfNeeded(completion: continuation.resume(returning:))
+            }
+
+            // THEN
+            guard case .success(.sessionAlreadyPresent) = result else { XCTFail(); return }
+            XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
+            XCTAssertTrue(sessionMock.requestDecodableStub.wasNotCalled)
+        }
+    }
+
+    func testSessionAcquireCallDoesNothingIfNoDelegate() async throws {
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.acquireSessionIfNeeded(completion: continuation.resume(returning:))
+            }
+
+            // THEN
+            guard case .success(.sessionUnavailableAndNotFetched) = result else { XCTFail(); return }
+            XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
+            XCTAssertTrue(sessionMock.requestDecodableStub.wasNotCalled)
+        }
+    }
+
+    func testSessionAcquireCallSucceedsIfSessionAcquireCallSucceeds() async throws {
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+                SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
+            }
+            sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+                guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
+                let task = URLSessionDataTaskMock(response: .init(statusCode: 200))
+                let data = """
+                {
+                    "AccessToken": "new test access token",
+                    "RefreshToken": "new test refresh token",
+                    "TokenType": "new test token type",
+                    "Scopes": ["scope1", "scope2"],
+                    "UID": "new test session uid"
+                }
+                """.utf8!
+                let response = try! decoder!.decode(SessionsRequestResponse.self, from: data)
+                completion(task, .success(response))
+            }
+
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.acquireSessionIfNeeded(completion: continuation.resume(returning:))
+            }
+
+            // THEN
+            guard case .success(.sessionFetchedAndAvailable) = result else { XCTFail(); return }
+            XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
+            XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
+            XCTAssertEqual(service.sessionUID, "new test session uid")
+            XCTAssertTrue(authDelegateMock.onUpdateStub.wasCalledExactlyOnce)
+            XCTAssertEqual(authDelegateMock.onUpdateStub.lastArguments?.first.accessToken, "new test access token")
+        }
+    }
+
+    func testSessionAcquireCallContainsFingerprintData() async throws {
+        try await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let challengeProperties: ChallengeParametersProvider = .forAPIService(clientApp: .other(named: "core"))
+            let service = testService
+            service.authDelegate = authDelegateMock
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+                SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
+            }
+            var capturedRequest: SessionRequest?
+            sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+                guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
+                let task = URLSessionDataTaskMock(response: .init(statusCode: 200))
+                capturedRequest = request
+                let data = """
+                {
+                    "AccessToken": "new test access token",
+                    "RefreshToken": "new test refresh token",
+                    "TokenType": "new test token type",
+                    "Scopes": ["scope1", "scope2"],
+                    "UID": "new test session uid"
+                }
+                """.utf8!
+                let response = try! decoder!.decode(SessionsRequestResponse.self, from: data)
+                completion(task, .success(response))
+            }
+
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.acquireSessionIfNeeded(completion: continuation.resume(returning:))
+            }
+
+            // THEN
+            guard case .success(.sessionFetchedAndAvailable) = result else { XCTFail(); return }
+            let parameters = try XCTUnwrap(capturedRequest?.parameters as? [String: Any])
+            let payload = try XCTUnwrap(parameters["Payload"] as? [String: Any])
+            let challenge0 = try XCTUnwrap(payload["\(challengeProperties.prefix)-ios-v4-challenge-0"] as? [String: Any])
+            let challenge1 = try XCTUnwrap(payload["\(challengeProperties.prefix)-ios-v4-challenge-1"] as? [String: Any])
+            let challangeParameters0 = try XCTUnwrap(challengeProperties.provideParameters().first) as NSDictionary
+            let challangeParameters1 = try XCTUnwrap(challengeProperties.provideParameters().last) as NSDictionary
+            XCTAssertTrue(challangeParameters0.isEqual(to: challenge0))
+            XCTAssertTrue(challangeParameters1.isEqual(to: challenge1))
+        }
+    }
+
+    func testSessionAcquireCallFailsSilentlyIfSessionAcquireCallFailsWithHttpResponse() async throws {
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+                SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
+            }
+            sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+                guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
+                let task = URLSessionDataTaskMock(response: .init(statusCode: 404))
+                completion(task, .failure(.responseBodyIsNotADecodableObject(body: nil, response: nil)))
+            }
+
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.acquireSessionIfNeeded(completion: continuation.resume(returning:))
+            }
+
+            // THEN
+            guard case .success(.sessionUnavailableAndNotFetched) = result else { XCTFail(); return }
+            XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
+            XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
+            XCTAssertEqual(service.sessionUID, "test sessionUID")
+            XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+        }
+    }
+
+    func testSessionAcquireCallFailsIfSessionAcquireCallFailsWithoutHttpResponseAndNoAR() async throws {
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+                SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
+            }
+            sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+                guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
+                let task = URLSessionDataTaskMock()
+                completion(task, .failure(.networkingEngineError(underlyingError: NSError(domain: URLError.errorDomain, code: URLError.timedOut.rawValue))))
+            }
+
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.acquireSessionIfNeeded(completion: continuation.resume(returning:))
+            }
+
+            // THEN
+            guard case .failure(let error) = result else { XCTFail(); return }
+            XCTAssertEqual(error.domain, URLError.errorDomain)
+            XCTAssertEqual(error.code, URLError.timedOut.rawValue)
+            XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
+            XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
+            XCTAssertEqual(service.sessionUID, "test sessionUID")
+            XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+        }
+    }
+
+    func testSessionAcquireCallSucceedsIfSessionAcquireCallFailsButARRetrySucceeds() async throws {
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+                SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
+            }
+            sessionMock.requestDecodableStub.bodyIs { counter, request, decoder, completion in
+                guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
+                switch counter {
+                case 1:
+                    let task = URLSessionDataTaskMock()
+                    completion(task, .failure(.networkingEngineError(underlyingError: NSError(domain: URLError.errorDomain, code: URLError.timedOut.rawValue))))
+                case 2:
+                    let task = URLSessionDataTaskMock(response: .init(statusCode: 200))
+                    let data = """
+                    {
+                        "AccessToken": "new test access token",
+                        "RefreshToken": "new test refresh token",
+                        "TokenType": "new test token type",
+                        "Scopes": ["scope1", "scope2"],
+                        "UID": "new test session uid"
+                    }
+                    """.utf8!
+                    let response = try! decoder!.decode(SessionsRequestResponse.self, from: data)
+                    completion(task, .success(response))
+                default:
+                    XCTFail()
+                    completion(nil, .failure(.configurationError))
+                }
+            }
+            dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, host, requestHeaders, sessionId, response, error, callCompletionBlockUsing, completion in
+                switch counter {
+                case 1: completion(true)
+                case 2: completion(false)
+                default: XCTFail(); completion(false)
+                }
+            }
+
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.acquireSessionIfNeeded(completion: continuation.resume(returning:))
+            }
+
+            // THEN
+            guard case .success(.sessionFetchedAndAvailable) = result else { XCTFail(); return }
+            XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
+            XCTAssertEqual(sessionMock.requestDecodableStub.callCounter, 2)
+            XCTAssertEqual(service.sessionUID, "new test session uid")
+            XCTAssertTrue(authDelegateMock.onUpdateStub.wasCalledExactlyOnce)
+            XCTAssertEqual(authDelegateMock.onUpdateStub.lastArguments?.first.accessToken, "new test access token")
+        }
+    }
+
+    func testSessionAcquireCallFailsSilentlyIfSessionAcquireCallFailsAndARRetryFailsWithResponse() async throws {
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+                SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
+            }
+            sessionMock.requestDecodableStub.bodyIs { counter, request, decoder, completion in
+                guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
+                switch counter {
+                case 1:
+                    let task = URLSessionDataTaskMock()
+                    completion(task, .failure(.networkingEngineError(underlyingError: NSError(domain: URLError.errorDomain, code: URLError.timedOut.rawValue))))
+                case 2:
+                    let task = URLSessionDataTaskMock(response: .init(statusCode: 404))
+                    completion(task, .failure(.responseBodyIsNotADecodableObject(body: nil, response: nil)))
+                default:
+                    XCTFail()
+                    completion(nil, .failure(.configurationError))
+                }
+            }
+            dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, host, requestHeaders, sessionId, response, error, callCompletionBlockUsing, completion in
+                switch counter {
+                case 1: completion(true)
+                case 2: completion(false)
+                default: XCTFail(); completion(false)
+                }
+            }
+
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.acquireSessionIfNeeded(completion: continuation.resume(returning:))
+            }
+
+            // THEN
+            guard case .success(.sessionUnavailableAndNotFetched) = result else { XCTFail(); return }
+            XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
+            XCTAssertEqual(sessionMock.requestDecodableStub.callCounter, 2)
+            XCTAssertEqual(service.sessionUID, "test sessionUID")
+            XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+        }
+    }
+
+    func testSessionAcquireCallFailsIfSessionAcquireCallFailsAndARRetryFailsWithoutResponse() async throws {
+        await withFeatureSwitches([.unauthSession]) {
+            // GIVEN
+            let service = testService
+            service.authDelegate = authDelegateMock
+            sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+                SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
+            }
+            sessionMock.requestDecodableStub.bodyIs { counter, request, decoder, completion in
+                guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
+                switch counter {
+                case 1:
+                    let task = URLSessionDataTaskMock()
+                    completion(task, .failure(.networkingEngineError(underlyingError: NSError(domain: URLError.errorDomain, code: URLError.timedOut.rawValue))))
+                case 2:
+                    let task = URLSessionDataTaskMock()
+                    completion(task, .failure(.networkingEngineError(underlyingError: NSError(domain: URLError.errorDomain, code: URLError.timedOut.rawValue))))
+                default:
+                    XCTFail()
+                    completion(nil, .failure(.configurationError))
+                }
+            }
+            dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, host, requestHeaders, sessionId, response, error, callCompletionBlockUsing, completion in
+                switch counter {
+                case 1: completion(true)
+                case 2: completion(false)
+                default: XCTFail(); completion(false)
+                }
+            }
+
+            // WHEN
+            let result = await withCheckedContinuation { continuation in
+                service.acquireSessionIfNeeded(completion: continuation.resume(returning:))
+            }
+
+            // THEN
+            guard case .failure(let error) = result else { XCTFail(); return }
+            XCTAssertEqual(error.domain, URLError.errorDomain)
+            XCTAssertEqual(error.code, URLError.timedOut.rawValue)
+            XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
+            XCTAssertEqual(sessionMock.requestDecodableStub.callCounter, 2)
+            XCTAssertEqual(service.sessionUID, "test sessionUID")
+            XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         }
     }
 }

@@ -24,6 +24,7 @@ import UIKit
 import ProtonCore_Authentication
 import ProtonCore_DataModel
 import ProtonCore_Networking
+import ProtonCore_FeatureSwitch
 import ProtonCore_ObfuscatedConstants
 import ProtonCore_QuarkCommands
 import ProtonCore_Foundations
@@ -54,7 +55,7 @@ final class EndToEndViewController: UIViewController,
     @IBOutlet private var activityIndicatorView: UIView!
     @IBOutlet private var tokenRefreshStackView: UIStackView!
     @IBOutlet private var accountDetailsLabel: UILabel!
-    @IBOutlet private var createAccountButton: UIButton!
+    @IBOutlet private var executeTestButton: UIButton!
     @IBOutlet private var copyLogButton: UIButton!
     @IBOutlet private var clearLogButton: UIButton!
     @IBOutlet private var credentialsSelector: UISegmentedControl!
@@ -114,37 +115,39 @@ final class EndToEndViewController: UIViewController,
     }
     
     private func testDeviceFingerprintsOnPostSession() {
+        FeatureFactory.shared.enable(&.unauthSession)
+        FeatureFactory.shared.enable(&.enforceUnauthSessionStrictVerificationOnBackend)
         let env = environmentSelector.currentEnvironment
-        let api = PMAPIService(environment: env,
-                               sessionUID: "token refresh test session",
-                               challengeParametersProvider: .forAPIService(clientApp: clientApp))
+        let api = PMAPIService.createAPIServiceWithoutSession(environment: env, 
+                                                              challengeParametersProvider: .forAPIService(clientApp: clientApp))
         api.authDelegate = self
         api.serviceDelegate = self.serviceDelegate
+
         var output = "Server: \n"
-        output.append("RUL: \(api.doh.getCurrentlyUsedHostUrl()) \n")
-        let deviceChallenge = PMChallenge.shared().export().deviceFingerprintDict()
-        let challenge = ChallengeProperties.init(challenges: deviceChallenge, productPrefix: "mail")
-        let sessionsRequest = SessionsRequest.init(challenge: challenge)
-        
+        output.append("URL: \(api.doh.getCurrentlyUsedHostUrl()) \n")
+        output.append("Fingerprints: \n")
+        output.append("\(String(describing: ChallengeParametersProvider.forAPIService(clientApp: clientApp).provideParameters))\n")
+        output.append("\n")
+
         self.showLoadingIndicator()
-        api.sessionRequest(request: sessionsRequest) { (task, result: Result<SessionsRequestResponse, NSError>) in
+        api.acquireSessionIfNeeded { (result: Result<PMAPIService.SessionAcquiringResult, PMAPIService.APIError>) in
             self.hideLoadingIndicator()
-            if let body = task?.originalRequest?.httpBody {
-                output.append("Request: \n")
-                output.append(body.prettyPrintedJSONString!)
-                output.append("\n")
-            }
+            FeatureFactory.shared.disable(&.unauthSession)
+            FeatureFactory.shared.disable(&.enforceUnauthSessionStrictVerificationOnBackend)
             switch result {
-            case .success(let sessionsResponse):
-                output.append("Response: \n")
-                output.append("UID: \(sessionsResponse.UID) \n")
-                output.append("AccessToken: \(sessionsResponse.accessToken) \n")
-                output.append("RefreshToken: \(sessionsResponse.refreshToken) \n")
-                output.append("TokenType: \(sessionsResponse.tokenType) \n")
-                output.append("Scops: ")
-                for scop in sessionsResponse.scopes {
-                    output.append("    Scop: \(scop)")
+            case .success:
+                guard let credential = self.credential else {
+                    output.append("Error! No credentials\n")
+                    self.display(message: output)
+                    return
                 }
+                output.append("Response: \n")
+                output.append("UID: \(credential.UID) \n")
+                output.append("AccessToken: \(credential.accessToken) \n")
+                output.append("RefreshToken: \(credential.refreshToken) \n")
+                output.append("UserName: \(credential.userName) \n")
+                output.append("User ID: \(credential.userID) \n")
+                output.append("Scops: \(credential.scopes)")
             case .failure(let error):
                 output.append("Error: \n")
                 output.append(error.localizedDescription)

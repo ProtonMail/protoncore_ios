@@ -827,6 +827,7 @@
 		6666244E2869B6EB00C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624452869B6EB00C7737B /* Example-Localization.storyboard */; };
 		6666244F2869B6EB00C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624452869B6EB00C7737B /* Example-Localization.storyboard */; };
 		666624502869B6EB00C7737B /* Example-Localization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 666624452869B6EB00C7737B /* Example-Localization.storyboard */; };
+		666AC672297AF6FE0049F6A9 /* Example_IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666AC671297AF6FE0049F6A9 /* Example_IntegrationTests.swift */; };
 		66705C552742CB4F0076928B /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C522742CB4F0076928B /* ExampleViewController.swift */; };
 		66705C562742CB4F0076928B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66705C532742CB4F0076928B /* Main.storyboard */; };
 		66705C572742CB4F0076928B /* ExampleAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66705C542742CB4F0076928B /* ExampleAppDelegate.swift */; };
@@ -966,8 +967,6 @@
 		66A3AB53277097100056A570 /* AccountDeletionBaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3AB52277097100056A570 /* AccountDeletionBaseTestCase.swift */; };
 		66A3AB5427709AFF0056A570 /* CoreExampleMainRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AAB498270EF6CE00CEA95A /* CoreExampleMainRobot.swift */; };
 		66AEBB062869B988006144D7 /* PaymentsNewUserSubscriptionUIVCUITestsV5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D06A592848A40F00F628B2 /* PaymentsNewUserSubscriptionUIVCUITestsV5.swift */; };
-		66EC3DB828F8032E002AA695 /* LoginExternalAccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EC3DB728F8032E002AA695 /* LoginExternalAccountTests.swift */; };
-		66EEFA102975CECB00B377F3 /* Example_IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EEFA0F2975CECB00B377F3 /* Example_IntegrationTests.swift */; };
 		66EEFA182975CF2A00B377F3 /* Example-IntegrationTests.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 66EEFA172975CF2A00B377F3 /* Example-IntegrationTests.xctestplan */; };
 		66EEFA1A2975CF4B00B377F3 /* Example-UnitTests_macOS.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 66EEFA192975CF4B00B377F3 /* Example-UnitTests_macOS.xctestplan */; };
 		66F5999E287DB79B00F5BE5E /* NetworkingSampleAppRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5999D287DB79B00F5BE5E /* NetworkingSampleAppRobot.swift */; };
@@ -993,10 +992,10 @@
 		755DEA57294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA46294C59D200BE2206 /* Example-EndToEnd.storyboard */; };
 		755DEA58294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA46294C59D200BE2206 /* Example-EndToEnd.storyboard */; };
 		755DEA59294C59D200BE2206 /* Example-EndToEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 755DEA46294C59D200BE2206 /* Example-EndToEnd.storyboard */; };
-		75C8AD7828403A8C009EF6FA /* BuildFile in Resources */ = {isa = PBXBuildFile; };
-		75C8AD7928403A8C009EF6FA /* BuildFile in Resources */ = {isa = PBXBuildFile; };
-		75C8AD7A28403A8C009EF6FA /* BuildFile in Resources */ = {isa = PBXBuildFile; };
-		75C8AD7B28403A8C009EF6FA /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		75C8AD7828403A8C009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
+		75C8AD7928403A8C009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
+		75C8AD7A28403A8C009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
+		75C8AD7B28403A8C009EF6FA /* (null) in Resources */ = {isa = PBXBuildFile; };
 		75C8AD7E28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift */; };
 		75C8AD7F28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift */; };
 		75C8AD8028403C9C009EF6FA /* LocalizationPreviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD7D28403C9C009EF6FA /* LocalizationPreviewTableViewController.swift */; };
@@ -1393,6 +1392,7 @@
 		6656EE5E280E952600835E6D /* PaymentsTransactionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentsTransactionsViewController.swift; path = ../../../../Sources/Payments/iOS/PaymentsTransactionsViewController.swift; sourceTree = "<group>"; };
 		666509F02768B60B00E7B7FF /* LoginCreatedUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCreatedUser.swift; sourceTree = "<group>"; };
 		666624462869B6EB00C7737B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-Localization.storyboard"; sourceTree = "<group>"; };
+		666AC671297AF6FE0049F6A9 /* Example_IntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Example_IntegrationTests.swift; path = "../../../../Sources/Example-ProtonCore/IntegrationTests/Example_IntegrationTests.swift"; sourceTree = "<group>"; };
 		66705C522742CB4F0076928B /* ExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		66705C532742CB4F0076928B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		66705C542742CB4F0076928B /* ExampleAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleAppDelegate.swift; sourceTree = "<group>"; };
@@ -1421,9 +1421,7 @@
 		66B886CC2970167C00269ADD /* Example-UnitTests-macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Example-UnitTests-macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66B886CE2970167D00269ADD /* Example_UnitTests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_UnitTests_macOS.swift; sourceTree = "<group>"; };
 		66CD930CD776744323F20A68 /* Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP/Pods-iOS-Example-iOS-Mail-V5-AppStoreIAP.debug.xcconfig"; sourceTree = "<group>"; };
-		66EC3DB728F8032E002AA695 /* LoginExternalAccountTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginExternalAccountTests.swift; path = ../../../../../Sources/Login/UITests/Tests/LoginExternalAccountTests.swift; sourceTree = "<group>"; };
 		66EEFA0D2975CECB00B377F3 /* Example-IntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Example-IntegrationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		66EEFA0F2975CECB00B377F3 /* Example_IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_IntegrationTests.swift; sourceTree = "<group>"; };
 		66EEFA172975CF2A00B377F3 /* Example-IntegrationTests.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Example-IntegrationTests.xctestplan"; sourceTree = "<group>"; };
 		66EEFA192975CF4B00B377F3 /* Example-UnitTests_macOS.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Example-UnitTests_macOS.xctestplan"; path = "../../../../Sources/Example-ProtonCore/UnitTests/Example-UnitTests_macOS.xctestplan"; sourceTree = "<group>"; };
 		66F5998E287DB63200F5BE5E /* Example-Networking-UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Example-Networking-UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2486,8 +2484,8 @@
 		66EEFA162975CEDF00B377F3 /* IntegrationTests */ = {
 			isa = PBXGroup;
 			children = (
+				666AC671297AF6FE0049F6A9 /* Example_IntegrationTests.swift */,
 				66EEFA172975CF2A00B377F3 /* Example-IntegrationTests.xctestplan */,
-				66EEFA0F2975CECB00B377F3 /* Example_IntegrationTests.swift */,
 			);
 			path = IntegrationTests;
 			sourceTree = "<group>";
@@ -3250,6 +3248,7 @@
 					};
 					66EEFA0C2975CECB00B377F3 = {
 						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
 						TestTargetID = 25BDF93C271424B3001BB254;
 					};
 					66F5998D287DB63200F5BE5E = {
@@ -3569,7 +3568,7 @@
 				664F360A27D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */,
 				25BDFAE72714251B001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDFAE82714251B001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
-				75C8AD7828403A8C009EF6FA /* BuildFile in Resources */,
+				75C8AD7828403A8C009EF6FA /* (null) in Resources */,
 				6666244C2869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				75D3241D28DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */,
 				664F361C27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
@@ -3610,7 +3609,7 @@
 				664F360B27D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */,
 				25BDFB3F27142526001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDFB4027142526001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
-				75C8AD7928403A8C009EF6FA /* BuildFile in Resources */,
+				75C8AD7928403A8C009EF6FA /* (null) in Resources */,
 				6666244D2869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				75D3241E28DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */,
 				664F361D27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
@@ -3651,7 +3650,7 @@
 				664F360C27D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */,
 				25BDFC0527142BC8001BB254 /* CalendarSubscriptions.storekit in Resources */,
 				25BDFB9827142534001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
-				75C8AD7A28403A8C009EF6FA /* BuildFile in Resources */,
+				75C8AD7A28403A8C009EF6FA /* (null) in Resources */,
 				6666244E2869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				75D3241F28DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */,
 				664F361E27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
@@ -3692,7 +3691,7 @@
 				664F360D27D268E0002EBB2E /* VPNLaunchScreen.storyboard in Resources */,
 				25BDFBEF2714253B001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDFBF02714253B001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
-				75C8AD7B28403A8C009EF6FA /* BuildFile in Resources */,
+				75C8AD7B28403A8C009EF6FA /* (null) in Resources */,
 				6666244F2869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				75D3242028DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */,
 				664F361F27D268E0002EBB2E /* DriveLaunchScreen.storyboard in Resources */,
@@ -5549,7 +5548,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66EEFA102975CECB00B377F3 /* Example_IntegrationTests.swift in Sources */,
+				666AC672297AF6FE0049F6A9 /* Example_IntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7291,16 +7290,23 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.proton.core.Example-IntegrationTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example-iOS-Mail-AppStoreIAP.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Example-iOS-Mail-AppStoreIAP";
@@ -7313,10 +7319,16 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.proton.core.Example-IntegrationTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
