@@ -91,7 +91,7 @@ final class ObservabilityEventTests: XCTestCase {
     }
 
     func testInvalidEventIsRejected() async throws {
-        let event = ObservabilityEvent.pageLoadCount(screenName: .planSelection)
+        let event = ObservabilityEvent.screenLoadCount(screenName: .planSelection)
         let (task, _) = try await performRequest(event: event)
         let httpResponse = try XCTUnwrap(task?.response as? HTTPURLResponse)
         XCTAssertEqual(httpResponse.statusCode, 400)
@@ -103,19 +103,17 @@ final class ObservabilityEventTests: XCTestCase {
         service.authDelegate = authHelper
         let eventData = try JSONEncoder().encode(event)
         let parameters = try JSONSerialization.jsonObject(with: eventData, options: [])
-        let sessionsRequest = SessionsRequest(challenge: .none)
         return await withFeatureSwitches([.unauthSession, .enforceUnauthSessionStrictVerificationOnBackend]) {
             await withCheckedContinuation { continuation in
-                service.sessionRequest(request: sessionsRequest) { (previousTask: URLSessionDataTask?, result: Result<SessionsRequestResponse, PMAPIService.APIError>) in
+                service.acquireSessionIfNeeded { result in
                     switch result {
-                    case .failure(let error):
-                        continuation.resume(returning: (previousTask, .failure(error)))
-                    case .success(let response):
-                        self.authHelper.onUpdate(credential: Credential(UID: response.UID, accessToken: response.accessToken, refreshToken: response.refreshToken, userName: "", userID: "", scopes: response.scopes), sessionUID: response.UID)
-                        service.setSessionUID(uid: response.UID)
-                        service.request(method: .post, path: "/data/v1/metrics", parameters: parameters, headers: nil, authenticated: false, autoRetry: true, customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .background, jsonCompletion: { task, result in
-                            continuation.resume(returning: (task, result))
-                        })
+                    case .success(.sessionUnavailableAndNotFetched), .failure:
+                        XCTFail()
+                        continuation.resume(returning: (nil, .failure(.init(domain: "core.integration-tests", code: -1))))
+                    case .success(.sessionAlreadyPresent), .success(.sessionFetchedAndAvailable):
+                        service.request(method: .post, path: "/data/v1/metrics", parameters: parameters, headers: nil, authenticated: false,
+                                        autoRetry: true, customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .background,
+                                        jsonCompletion: { task, result in continuation.resume(returning: (task, result)) })
                     }
                 }
             }
