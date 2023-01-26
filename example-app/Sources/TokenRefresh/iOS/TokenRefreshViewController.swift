@@ -30,6 +30,7 @@ import ProtonCore_Foundations
 import ProtonCore_Log
 import ProtonCore_Login
 import ProtonCore_Services
+import ProtonCore_Challenge
 
 final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, AccessibleView, AuthDelegate {
     
@@ -57,6 +58,7 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
     }
     
     private var credential: Credential?
+    weak var authSessionInvalidatedDelegateForLoginAndSignup: AuthSessionInvalidatedDelegate?
     
     private let serviceDelegate = ExampleAPIServiceDelegate()
     private var quarkCommands: QuarkCommands { QuarkCommands(env: environmentSelector.currentEnvironment) }
@@ -65,7 +67,7 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
         let env = environmentSelector.currentEnvironment
         let api = PMAPIService.createAPIService(environment: env,
                                                 sessionUID: "token refresh test session",
-                                                challengeParametersProvider: .forAPIService(clientApp: clientApp))
+                                                challengeParametersProvider: .forAPIService(clientApp: clientApp, challenge: PMChallenge()))
         api.authDelegate = self
         api.serviceDelegate = self.serviceDelegate
         return .init(api: api)
@@ -289,17 +291,27 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
         credential
     }
     
-    func onLogout(sessionUID uid: String) {
+    func onAuthenticatedSessionInvalidated(sessionUID uid: String) {
         credential = nil
     }
 
-    func eraseUnauthSessionCredentials(sessionUID: String) {
+    func onUnauthenticatedSessionInvalidated(sessionUID: String) {
         credential = nil
     }
     
     func onUpdate(credential: Credential, sessionUID: String) {
         self.credential = credential
     }
+
+    func onSessionObtaining(credential: ProtonCore_Networking.Credential) {
+
+    }
+
+    func onAdditionalCredentialsInfoObtained(sessionUID: String, password: String?, salt: String?, privateKey: String?) {
+        
+    }
+
+    var delegate: AuthHelperDelegate?
     
     func onRefresh(sessionUID: String, service: APIService, complete: @escaping AuthRefreshResultCompletion) {
         guard let credential = credential else { return }

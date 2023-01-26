@@ -48,17 +48,17 @@ extension CompleteViewModelTests {
         }
     }
 
-    func createViewModel(doh: DoHInterface, type minimumAccountType: AccountType) -> CompleteViewModel {
+    func createViewModel(doh: DoHInterface, type minimumAccountType: AccountType) -> (CompleteViewModel, AuthDelegate, APIServiceDelegate) {
         
         let authDelegate = AuthHelper()
         let serviceDelegate = AnonymousServiceManager()
-        let api = PMAPIService.createAPIService(doh: doh, sessionUID: "test session ID", challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+        let api = PMAPIService.createAPIService(doh: doh, sessionUID: "test session ID", challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         api.authDelegate = authDelegate
         api.serviceDelegate = serviceDelegate
-        let login = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "CompleteVMTestAPP"), minimumAccountType: minimumAccountType)
-        let signupService = SignupService(api: api, challengeParametersProvider: .forAPIService(clientApp: .mail), clientApp: .mail)
+        let login = LoginService(api: api, clientApp: .other(named: "core"), minimumAccountType: minimumAccountType)
+        let signupService = SignupService(api: api, clientApp: .mail)
         let viewModel = CompleteViewModel(signupService: signupService, loginService: login, initDisplaySteps: [])
-        return viewModel
+        return (viewModel, authDelegate, serviceDelegate)
     }
 
     func mockCreateUserOK() {

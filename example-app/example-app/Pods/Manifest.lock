@@ -37,6 +37,7 @@ PODS:
     - ProtonCore-Log (= 3.27.0)
     - ProtonCore-Networking (= 3.27.0)
     - ProtonCore-Services (= 3.27.0)
+    - ProtonCore-TestingToolkit/UnitTests/AccountDeletion/Crypto-Go1.19.4 (= 3.27.0)
     - ProtonCore-TestingToolkit/UnitTests/Doh (= 3.27.0)
     - ProtonCore-TestingToolkit/UnitTests/Networking (= 3.27.0)
     - ProtonCore-TestingToolkit/UnitTests/Services (= 3.27.0)
@@ -281,6 +282,7 @@ PODS:
     - ProtonCore-ObfuscatedConstants (= 3.27.0)
     - ProtonCore-OpenPGP (= 3.27.0)
     - ProtonCore-TestingToolkit/TestData (= 3.27.0)
+    - ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/Crypto-Go1.19.4 (= 3.27.0)
     - ProtonCore-TestingToolkit/UnitTests/Login/Crypto-Go1.19.4 (= 3.27.0)
     - TrustKit
   - ProtonCore-LoginUI/Crypto-Go1.19.4 (3.27.0):
@@ -302,7 +304,30 @@ PODS:
     - ProtonCore-TroubleShooting (= 3.27.0)
     - ProtonCore-UIFoundations (= 3.27.0)
     - TrustKit
-  - ProtonCore-LoginUI/Tests-Crypto-Go1.19.4 (3.27.0):
+  - ProtonCore-LoginUI/IntegrationTests-Crypto-Go1.19.4 (3.27.0):
+    - lottie-ios (= 3.4.3)
+    - ProtonCore-Authentication-KeyGeneration/Crypto-Go1.19.4 (= 3.27.0)
+    - ProtonCore-Authentication/Crypto-Go1.19.4 (= 3.27.0)
+    - ProtonCore-Challenge (= 3.27.0)
+    - ProtonCore-CoreTranslation (= 3.27.0)
+    - ProtonCore-DataModel (= 3.27.0)
+    - ProtonCore-Environment (= 3.27.0)
+    - ProtonCore-Foundations (= 3.27.0)
+    - ProtonCore-GoLibs/Crypto-Go1.19.4 (= 3.27.0)
+    - ProtonCore-HumanVerification (= 3.27.0)
+    - ProtonCore-Log (= 3.27.0)
+    - ProtonCore-Login/Crypto-Go1.19.4 (= 3.27.0)
+    - ProtonCore-ObfuscatedConstants (= 3.27.0)
+    - ProtonCore-OpenPGP (= 3.27.0)
+    - ProtonCore-Payments/Crypto-Go1.19.4 (= 3.27.0)
+    - ProtonCore-PaymentsUI/Crypto-Go1.19.4 (= 3.27.0)
+    - ProtonCore-TestingToolkit/TestData (= 3.27.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 3.27.0)
+    - ProtonCore-TestingToolkit/UnitTests/LoginUI/Crypto-Go1.19.4 (= 3.27.0)
+    - ProtonCore-TroubleShooting (= 3.27.0)
+    - ProtonCore-UIFoundations (= 3.27.0)
+    - TrustKit
+  - ProtonCore-LoginUI/UnitTests-Crypto-Go1.19.4 (3.27.0):
     - lottie-ios (= 3.4.3)
     - OHHTTPStubs/Swift
     - ProtonCore-Authentication-KeyGeneration/Crypto-Go1.19.4 (= 3.27.0)
@@ -402,6 +427,7 @@ PODS:
     - ProtonCore-Networking (= 3.27.0)
     - ProtonCore-Services (= 3.27.0)
   - ProtonCore-QuarkCommands/Tests (3.27.0):
+    - OHHTTPStubs/Swift
     - ProtonCore-Doh (= 3.27.0)
     - ProtonCore-Environment (= 3.27.0)
     - ProtonCore-Log (= 3.27.0)
@@ -629,7 +655,8 @@ DEPENDENCIES:
   - ProtonCore-Login/Crypto-Go1.19.4 (from `../../`)
   - ProtonCore-Login/Tests-Crypto-Go1.19.4 (from `../../`)
   - ProtonCore-LoginUI/Crypto-Go1.19.4 (from `../../`)
-  - ProtonCore-LoginUI/Tests-Crypto-Go1.19.4 (from `../../`)
+  - ProtonCore-LoginUI/IntegrationTests-Crypto-Go1.19.4 (from `../../`)
+  - ProtonCore-LoginUI/UnitTests-Crypto-Go1.19.4 (from `../../`)
   - ProtonCore-Networking (from `../../`)
   - ProtonCore-Networking/Tests (from `../../`)
   - ProtonCore-ObfuscatedConstants (from `../../`)
@@ -804,7 +831,7 @@ SPEC CHECKSUMS:
   lottie-ios: 9ae750cdc7820fecbd3c2f0cfc493038208fcdc4
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   pmtest: 5cfa1c8f623eb9f68e8be673a6690991701cbb3a
-  ProtonCore-AccountDeletion: 3b24153bf92ad47544e37f905d54ad35abc84429
+  ProtonCore-AccountDeletion: 6f868fd76ab0ec9e5418be21c9b756f019a212c0
   ProtonCore-AccountSwitcher: 65665cada7a0e57c7124fbf51feb550d23aad61e
   ProtonCore-APIClient: 1060dd276020090f6d8eadc612d9023c37f97950
   ProtonCore-Authentication: 4d7cffa2e6ff6ffb67f35c3bfe0c93a8435afeb8
@@ -825,16 +852,16 @@ SPEC CHECKSUMS:
   ProtonCore-Keymaker: 97c508eb838be2d8cc31b1fb45bdb5645f8c628b
   ProtonCore-KeyManager: 25c9a01c7d12242e0825a22236a865a3e0b0b875
   ProtonCore-Log: 07235756e74723f7e745cdd0c2d342c523157765
-  ProtonCore-Login: b08230afa43b7ce78b0445895a2e3b4cb3b6894c
-  ProtonCore-LoginUI: 8883be493eefccdc5fec5a3cea3e31a3d80df8ee
+  ProtonCore-Login: be410c3cd31d9b2e2e77221d0581e718afc02218
+  ProtonCore-LoginUI: 024ae8b440a5bc5ba5dd2598515044b704f47c92
   ProtonCore-Networking: 2c75de42914e10addea03d8138cf383d61860df0
   ProtonCore-ObfuscatedConstants: ee168ba70cea5e5c90e90ab891fe9b1dfc4d4783
   ProtonCore-Observability: 22bb14180b333defa6dd1071e6b1101334c87847
   ProtonCore-OpenPGP: d29ced061aabf7b6037bf30bd5e331b381aeee96
   ProtonCore-Payments: f2c54107fbd722c10c3a219f12bb3059da4dc8b7
   ProtonCore-PaymentsUI: 3c405279f319121bfd0c7c25f9d828b6bfb3785c
-  ProtonCore-QuarkCommands: 9413c11ea252c0f94b0756ec0e1501fbdf683745
-  ProtonCore-Services: f5b45f0908ddffe7188fabec05839978ef2b4eef
+  ProtonCore-QuarkCommands: 273e9f60ebdce026094cf3e627f69ad67d2fe273
+  ProtonCore-Services: 5248ef48ce349da0d88ae30c2fb9e7151a88a584
   ProtonCore-Settings: 5bd5897e94dc5c898c062d7d696b0535e0a9e0da
   ProtonCore-TestingToolkit: edfc0dcd91c084caff1182f34c1ca11ced974777
   ProtonCore-TroubleShooting: 2776410dec14916b37cf1e8274e9a1f78140acbe
@@ -848,6 +875,6 @@ SPEC CHECKSUMS:
   TPInAppReceipt: 75ff97f2484a463cf46c172fe7f94225612aeda1
   TrustKit: f830ff5af0a8cbad5178aef1d0951389b096d312
 
-PODFILE CHECKSUM: adcaee7f0a3aecf89507072a32a553488f32393a
+PODFILE CHECKSUM: 2df8b59576cb415efeb2d4c46772c70ecd2c3691
 
 COCOAPODS: 1.11.3

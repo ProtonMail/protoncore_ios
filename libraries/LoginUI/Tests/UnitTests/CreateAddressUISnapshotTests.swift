@@ -42,10 +42,10 @@ final class CreateAddressUISnapshotTests: SnapshotTestCase {
         
         let authDelegate = AuthHelper()
         let serviceDelegate = AnonymousServiceManager()
-        let api = PMAPIService.createAPIService(doh: DohMock() as DoHInterface, sessionUID: "test session ID", challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+        let api = PMAPIService.createAPIService(doh: DohMock() as DoHInterface, sessionUID: "test session ID", challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         api.authDelegate = authDelegate
         api.serviceDelegate = serviceDelegate
-        let login = LoginService(api: api, authManager: authDelegate, clientApp: .other(named: "CompleteVMTestAPP"), minimumAccountType: .internal)
+        let login = LoginService(api: api, clientApp: .other(named: "core"), minimumAccountType: .internal)
         
         return CreateAddressViewModel(data: createAddressData, login: login, defaultUsername: defaultUsername)
     }

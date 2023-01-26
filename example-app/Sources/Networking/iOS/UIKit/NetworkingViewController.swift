@@ -33,6 +33,7 @@ import ProtonCore_ObfuscatedConstants
 import ProtonCore_UIFoundations
 import ProtonCore_TroubleShooting
 import ProtonCore_Environment
+import ProtonCore_Challenge
 import GoLibs
 
 ///each user will have one api service  & you can create more than one unauthed apiService
@@ -50,7 +51,7 @@ class NetworkingViewController: UIViewController {
 
     var testApi = PMAPIService.createAPIService(environment: .black,
                                                 sessionUID: "testSessionUID",
-                                                challengeParametersProvider: .forAPIService(clientApp: clientApp))
+                                                challengeParametersProvider: .forAPIService(clientApp: clientApp, challenge: PMChallenge()))
     var authHelper: AuthHelper?
     
     override func viewDidLoad() {
@@ -68,7 +69,7 @@ class NetworkingViewController: UIViewController {
     func setupEnv() {
         testApi = PMAPIService.createAPIService(environment: environmentSelector.currentEnvironment,
                                                 sessionUID: "testSessionUID",
-                                                challengeParametersProvider: .forAPIService(clientApp: clientApp))
+                                                challengeParametersProvider: .forAPIService(clientApp: clientApp, challenge: PMChallenge()))
         authHelper = AuthHelper()
         testApi.authDelegate = authHelper
         testApi.serviceDelegate = self
@@ -95,12 +96,16 @@ class NetworkingViewController: UIViewController {
             func credential(sessionUID: String) -> Credential? { credential }
             
             func authCredential(sessionUID: String) -> AuthCredential? { credential.map(AuthCredential.init) }
+
+            weak var authSessionInvalidatedDelegateForLoginAndSignup: AuthSessionInvalidatedDelegate?
+            func onSessionObtaining(credential: Credential) { }
+            func onAdditionalCredentialsInfoObtained(sessionUID: String, password: String?, salt: String?, privateKey: String?) { }
             
-            func onLogout(sessionUID uid: String) {
+            func onAuthenticatedSessionInvalidated(sessionUID uid: String) {
                 assertionFailure("Should never be called")
                 credential = nil
             }
-            func eraseUnauthSessionCredentials(sessionUID: String) {
+            func onUnauthenticatedSessionInvalidated(sessionUID: String) {
                 credential = nil
             }
             var wasUpdateCalled = false
@@ -183,7 +188,7 @@ class NetworkingViewController: UIViewController {
             let message = """
                     timeout: \(timeout)
                     
-                    url: \(self.testApi.doh.getCurrentlyUsedHostUrl() + request.path)
+                    url: \(self.testApi.dohInterface.getCurrentlyUsedHostUrl() + request.path)
                     """
             guard let error = response.error else {
                 self.showAlertView(title: "request succeeded", message: message)

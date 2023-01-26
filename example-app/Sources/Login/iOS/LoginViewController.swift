@@ -34,6 +34,7 @@ import ProtonCore_FeatureSwitch
 import ProtonCore_Authentication_KeyGeneration
 import ProtonCore_TroubleShooting
 import ProtonCore_Environment
+import ProtonCore_Challenge
 import Foundation
 import OHHTTPStubs
 
@@ -82,6 +83,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         let url = URL(string: "itms-apps://itunes.apple.com/app/id979659905")!
         return ForceUpgradeHelper(config: .mobile(url), responseDelegate: self)
     }
+    private var apiService: PMAPIService?
     private var login: LoginAndSignup?
     private var humanVerificationDelegate: HumanVerifyDelegate?
     var authManager: AuthHelper?
@@ -204,12 +206,19 @@ final class LoginViewController: UIViewController, AccessibleView {
         }
         
         self.setupKeyPhase()
+        let apiService = PMAPIService.createAPIServiceWithoutSession(environment: environmentSelector.currentEnvironment,
+                                                                     challengeParametersProvider: ChallengeParametersProvider.forAPIService(clientApp: clientApp, challenge: PMChallenge()))
+        self.apiService = apiService
+        self.authManager = AuthHelper()
+        self.humanVerificationDelegate = HumanCheckHelper(apiService: apiService, clientApp: clientApp)
+        apiService.authDelegate = authManager
+        apiService.serviceDelegate = serviceDelegate
+        apiService.forceUpgradeDelegate = forceUpgradeServiceDelegate
+        apiService.humanDelegate = humanVerificationDelegate
         login = LoginAndSignup(
             appName: appName,
             clientApp: clientApp,
-            environment: environmentSelector.currentEnvironment,
-            apiServiceDelegate: serviceDelegate,
-            forceUpgradeDelegate: forceUpgradeServiceDelegate,
+            apiService: apiService,
             minimumAccountType: getMinimumAccountType,
             isCloseButtonAvailable: closeButtonSwitch.isOn,
             paymentsAvailability: planSelectorSwitch.isOn
@@ -254,7 +263,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             PMLog.info("Signup OK")
         case .loginStateChanged(.dataIsAvailable(let loginData)), .signupStateChanged(.dataIsAvailable(let loginData)):
             data = loginData
-            authManager?.onAuthentication(credential: loginData.credential, service: nil)
+            authManager?.onSessionObtaining(credential: loginData.credential)
             PMLog.info("Login data: \(loginData)")
         case .dismissed:
             data = nil
@@ -302,12 +311,19 @@ final class LoginViewController: UIViewController, AccessibleView {
         }
     
         self.setupKeyPhase()
+        let apiService = PMAPIService.createAPIServiceWithoutSession(environment: environmentSelector.currentEnvironment,
+                                                                     challengeParametersProvider: ChallengeParametersProvider.forAPIService(clientApp: clientApp, challenge: PMChallenge()))
+        self.apiService = apiService
+        self.authManager = AuthHelper()
+        self.humanVerificationDelegate = HumanCheckHelper(apiService: apiService, clientApp: clientApp)
+        apiService.authDelegate = authManager
+        apiService.serviceDelegate = serviceDelegate
+        apiService.forceUpgradeDelegate = forceUpgradeServiceDelegate
+        apiService.humanDelegate = humanVerificationDelegate
         login = LoginAndSignup(
             appName: appName,
             clientApp: clientApp,
-            environment: environmentSelector.currentEnvironment,
-            apiServiceDelegate: serviceDelegate,
-            forceUpgradeDelegate: forceUpgradeServiceDelegate,
+            apiService: apiService,
             minimumAccountType: getMinimumAccountType,
             isCloseButtonAvailable: closeButtonSwitch.isOn,
             paymentsAvailability: planSelectorSwitch.isOn
@@ -391,12 +407,19 @@ final class LoginViewController: UIViewController, AccessibleView {
         guard let appName = appNameTextField.text, !appName.isEmpty else { return }
         
         self.setupKeyPhase()
+        let apiService = PMAPIService.createAPIServiceWithoutSession(environment: environmentSelector.currentEnvironment,
+                                                                     challengeParametersProvider: ChallengeParametersProvider.forAPIService(clientApp: clientApp, challenge: PMChallenge()))
+        self.apiService = apiService
+        self.authManager = AuthHelper()
+        self.humanVerificationDelegate = HumanCheckHelper(apiService: apiService, clientApp: clientApp)
+        apiService.authDelegate = authManager
+        apiService.serviceDelegate = serviceDelegate
+        apiService.forceUpgradeDelegate = forceUpgradeServiceDelegate
+        apiService.humanDelegate = humanVerificationDelegate
         login = LoginAndSignup(
             appName: appName,
             clientApp: clientApp,
-            environment: environmentSelector.currentEnvironment,
-            apiServiceDelegate: serviceDelegate,
-            forceUpgradeDelegate: forceUpgradeServiceDelegate,
+            apiService: apiService,
             minimumAccountType: getMinimumAccountType,
             isCloseButtonAvailable: closeButtonSwitch.isOn,
             paymentsAvailability: planSelectorSwitch.isOn
@@ -431,7 +454,7 @@ final class LoginViewController: UIViewController, AccessibleView {
                     alert.addAction(UIAlertAction(title: CoreString._net_api_might_be_blocked_button, style: .default, handler: { _ in
                         self.serviceDelegate.onDohTroubleshot()
                         // option #1
-                        let helper = TroubleShootingHelper.init(doh: self.environmentSelector.currentEnvironment.doh)
+                        let helper = TroubleShootingHelper(doh: self.environmentSelector.currentEnvironment.doh)
                         helper.showTroubleShooting(over: self)
                         // option #2
                         // self.present(doh: self.environmentSelector.currentDoh)
@@ -453,11 +476,13 @@ final class LoginViewController: UIViewController, AccessibleView {
         guard let credential = data?.credential else { return }
         let api = PMAPIService.createAPIService(environment: environmentSelector.currentEnvironment,
                                                 sessionUID: credential.UID,
-                                                challengeParametersProvider: .forAPIService(clientApp: clientApp))
+                                                challengeParametersProvider: .forAPIService(clientApp: clientApp, challenge: PMChallenge()))
+        self.humanVerificationDelegate = HumanCheckHelper(apiService: api, clientApp: clientApp)
         authManager?.onUpdate(credential: credential, sessionUID: api.sessionUID)
         api.authDelegate = authManager
         api.serviceDelegate = serviceDelegate
         api.forceUpgradeDelegate = forceUpgradeServiceDelegate
+        api.humanDelegate = humanVerificationDelegate
         let accountDeletion = AccountDeletionService(api: api)
         accountDeletion.initiateAccountDeletionProcess(over: self) { [weak self] result in
             DispatchQueue.main.async { [weak self] in
@@ -492,11 +517,18 @@ final class LoginViewController: UIViewController, AccessibleView {
         }
         
         self.setupKeyPhase()
+        let apiService = PMAPIService.createAPIServiceWithoutSession(environment: environmentSelector.currentEnvironment,
+                                                                     challengeParametersProvider: ChallengeParametersProvider.forAPIService(clientApp: clientApp, challenge: PMChallenge()))
+        self.apiService = apiService
+        self.authManager = AuthHelper()
+        self.humanVerificationDelegate = HumanCheckHelper(apiService: apiService, clientApp: clientApp)
+        apiService.authDelegate = authManager
+        apiService.serviceDelegate = serviceDelegate
+        apiService.forceUpgradeDelegate = forceUpgradeServiceDelegate
+        apiService.humanDelegate = humanVerificationDelegate
         login = LoginAndSignup(appName: appName,
                                clientApp: clientApp,
-                               environment: .mailProd,
-                               apiServiceDelegate: serviceDelegate,
-                               forceUpgradeDelegate: forceUpgradeServiceDelegate,
+                               apiService: apiService,
                                minimumAccountType: getMinimumAccountType,
                                isCloseButtonAvailable: closeButtonSwitch.isOn,
                                paymentsAvailability: .notAvailable,

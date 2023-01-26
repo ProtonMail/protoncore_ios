@@ -33,6 +33,7 @@ import ProtonCore_Payments
 import ProtonCore_PaymentsUI
 import ProtonCore_Foundations
 import ProtonCore_Environment
+import ProtonCore_Challenge
 
 class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleView {
     
@@ -71,7 +72,7 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
         super.viewDidLoad()
         testApi = PMAPIService.createAPIService(environment: currentEnv,
                                                 sessionUID: "testSessionUID",
-                                                challengeParametersProvider: .forAPIService(clientApp: clientApp))
+                                                challengeParametersProvider: .forAPIService(clientApp: clientApp, challenge: PMChallenge()))
         testApi.serviceDelegate = serviceDelegate
         loginButton.isEnabled = true
         showCurrentPlanButton.isEnabled = false
@@ -196,7 +197,8 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
             switch result {
             case .success(.newCredential(let credential, _)):
                 let actualCredential = credential
-                self.authHelper?.onAuthentication(credential: credential, service: self.testApi)
+                self.authHelper?.onSessionObtaining(credential: credential)
+                self.testApi.setSessionUID(uid: credential.UID)
                 authApi.getUserInfo(actualCredential) { [weak self] (result: Result<User, AuthErrors>) in
                     guard let self = self else { return }
                     self.testApi.serviceDelegate = self.serviceDelegate

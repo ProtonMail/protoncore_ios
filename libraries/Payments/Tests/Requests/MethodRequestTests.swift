@@ -55,13 +55,17 @@ final class MethodRequestTests: XCTestCase {
     }
     
     class TestAuthDelegate: AuthDelegate {
+        func onSessionObtaining(credential: Credential) {}
+        func onAdditionalCredentialsInfoObtained(sessionUID: String, password: String?, salt: String?, privateKey: String?) {}
+        weak var authSessionInvalidatedDelegateForLoginAndSignup: AuthSessionInvalidatedDelegate?
+
         var authCredential: AuthCredential? { testAuthCredential }
         func authCredential(sessionUID: String) -> AuthCredential? { testAuthCredential }
         func credential(sessionUID: String) -> Credential? { testAuthCredential.map(Credential.init) }
-        func onLogout(sessionUID uid: String) { }
+        func onAuthenticatedSessionInvalidated(sessionUID uid: String) { }
         func onUpdate(credential: Credential, sessionUID: String) { }
         func onRefresh(sessionUID: String, service: APIService, complete: @escaping AuthRefreshResultCompletion) { }
-        func eraseUnauthSessionCredentials(sessionUID: String) { }
+        func onUnauthenticatedSessionInvalidated(sessionUID: String) { }
         private var testAuthCredential: AuthCredential? {
             AuthCredential(sessionID: "sessionID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", privateKey: nil, passwordKeySalt: nil)
         }
@@ -107,7 +111,7 @@ final class MethodRequestTests: XCTestCase {
             do {
                 let api = PMAPIService.createAPIService(doh: TestDoH.default as DoHInterface,
                                                         sessionUID: "testSessionUID",
-                                                        challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+                                                        challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
                 let testAuthDelegate = TestAuthDelegate()
                 api.authDelegate = testAuthDelegate
                 let testAPIServiceDelegate = TestAPIServiceDelegate()

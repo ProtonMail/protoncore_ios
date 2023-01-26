@@ -200,7 +200,7 @@ extension PMAPIService {
         case .failure(.networkingError(let responseError))
             where credentialsCausing401.isForUnauthenticatedSession && (responseError.httpCode == 422 || responseError.httpCode == 400):
 
-            authDelegate?.eraseUnauthSessionCredentials(sessionUID: sessionUID)
+            authDelegate?.onUnauthenticatedSessionInvalidated(sessionUID: sessionUID)
 
             self.acquireSessionWithoutSynchronization(deviceFingerprints: deviceFingerprints, continuation: continuation) { (result: SessionAcquisitionResult) in
                 switch result {
@@ -215,7 +215,7 @@ extension PMAPIService {
 
         case .failure(.networkingError(let responseError))
             where !credentialsCausing401.isForUnauthenticatedSession && (responseError.httpCode == 422 || responseError.httpCode == 400):
-            authDelegate?.onLogout(sessionUID: sessionUID)
+            authDelegate?.onAuthenticatedSessionInvalidated(sessionUID: sessionUID)
 
             continuation()
             completion(.logout(underlyingError: responseError))
@@ -255,7 +255,7 @@ extension PMAPIService {
             // according to documentation 422 indicates expired refresh token and 400 indicates invalid refresh token
             // both situations should result in user logout
         case .failure(.networkingError(let responseError)) where responseError.httpCode == 422 || responseError.httpCode == 400:
-            authDelegate?.onLogout(sessionUID: sessionUID)
+            authDelegate?.onAuthenticatedSessionInvalidated(sessionUID: sessionUID)
             continuation()
             completion(.logout(underlyingError: responseError))
 
@@ -317,8 +317,8 @@ extension PMAPIService {
                                         userName: "",
                                         userID: "",
                                         scopes: sessionsResponse.scopes)
-            authDelegate.onUpdate(credential: credential, sessionUID: self.sessionUID)
-            self.setSessionUID(uid: sessionsResponse.UID)
+            authDelegate.onSessionObtaining(credential: credential)
+            self.setSessionUID(uid: credential.UID)
             continuation()
             completion(.acquired(AuthCredential(credential)))
         case .failure(let error):

@@ -18,6 +18,7 @@ import ProtonCore_Features
 import ProtonCore_Networking
 import ProtonCore_Services
 import ProtonCore_Environment
+import ProtonCore_Challenge
 
 class FeaturesViewController: UIViewController, TrustKitDelegate {
     
@@ -30,7 +31,7 @@ class FeaturesViewController: UIViewController, TrustKitDelegate {
     private var addresses: [Address]?
     var liveApi = PMAPIService.createAPIService(environment: clientApp == .vpn ? .vpnProd : .mailProd,
                                                 sessionUID: "testSessionUID",
-                                                challengeParametersProvider: .forAPIService(clientApp: clientApp))
+                                                challengeParametersProvider: .forAPIService(clientApp: clientApp, challenge: PMChallenge()))
     
     private var keypassphrase = ""
     
@@ -63,7 +64,8 @@ class FeaturesViewController: UIViewController, TrustKitDelegate {
         authApi.authenticate(username: username, password: password, challenge: nil) { result in
             switch result {
             case .success(.newCredential(let credential, _)):
-                self.authHelper?.onAuthentication(credential: credential, service: self.liveApi)
+                self.authHelper?.onSessionObtaining(credential: credential)
+                self.liveApi.setSessionUID(uid: credential.UID)
                 authApi.getUserInfo { resUser in
                     switch resUser {
                     case .success(let user):
@@ -75,7 +77,7 @@ class FeaturesViewController: UIViewController, TrustKitDelegate {
                                 authApi.getKeySalts { resSalt in
                                     switch resSalt {
                                     case .success(let salts):
-                                        self.authHelper?.updateAuth(for: self.liveApi.sessionUID, password: nil, salt: salts.first?.keySalt, privateKey: nil)
+                                        self.authHelper?.onAdditionalCredentialsInfoObtained(sessionUID: self.liveApi.sessionUID, password: nil, salt: salts.first?.keySalt, privateKey: nil)
                                         guard let salt = salts.first?.keySalt else {
                                             return
                                         }

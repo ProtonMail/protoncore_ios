@@ -20,6 +20,7 @@
 //  along with ProtonCore. If not, see <https://www.gnu.org/licenses/>.
 
 @testable import ProtonCore_LoginUI
+import ProtonCore_Services
 import ProtonCore_TestingToolkit
 import ProtonCore_UIFoundations
 import XCTest
@@ -36,13 +37,12 @@ final class SignupCoordinatorTests: XCTestCase {
     
     private func setupSut(signupAvailability: SignupAvailability,
                           featureFlagEnabled: Bool) {
+        let testService = PMAPIService.createAPIServiceWithoutSession(environment: .black, challengeParametersProvider: .empty)
         sut = .init(
             container: Container(
                 appName: #file,
-                clientApp: .other(named: #file),
-                environment: .black,
-                apiServiceDelegate: APIServiceDelegateMock(),
-                forceUpgradeDelegate: ForceUpgradeDelegateMock(),
+                clientApp: .other(named: "core"),
+                apiService: testService,
                 minimumAccountType: .internal),
             isCloseButton: false,
             paymentsAvailability: .notAvailable,

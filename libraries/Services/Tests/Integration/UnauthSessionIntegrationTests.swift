@@ -63,7 +63,7 @@ final class UnauthSessionIntegrationTests: XCTestCase {
     func testUnauthSessionIsNotObtainedWithoutFeatureFlagEnabled() async throws {
         try await withFeatureSwitches([]) {
             // GIVEN
-            let service = PMAPIService.createAPIServiceWithoutSession(environment: .black, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+            let service = PMAPIService.createAPIServiceWithoutSession(environment: .black, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
             let authDelegate = AuthHelper()
             service.authDelegate = authDelegate
             service.serviceDelegate = serviceDelegate
@@ -91,7 +91,7 @@ final class UnauthSessionIntegrationTests: XCTestCase {
     func testUnauthSessionIsNotObtainedIfNoBackendRequirements() async throws {
         try await withFeatureSwitches([.unauthSession]) {
             // GIVEN
-            let service = PMAPIService.createAPIServiceWithoutSession(environment: .black, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+            let service = PMAPIService.createAPIServiceWithoutSession(environment: .black, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
             let authDelegate = AuthHelper()
             service.authDelegate = authDelegate
             service.serviceDelegate = serviceDelegate
@@ -119,7 +119,7 @@ final class UnauthSessionIntegrationTests: XCTestCase {
     func testUnauthSessionIsNotObtainedAndRequestFailsWith401WithoutFeatureFlagEnabledEvenForBackendRequirements() async throws {
         try await withFeatureSwitches([.enforceUnauthSessionStrictVerificationOnBackend]) {
             // GIVEN
-            let service = PMAPIService.createAPIServiceWithoutSession(environment: .black, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+            let service = PMAPIService.createAPIServiceWithoutSession(environment: .black, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
             let authDelegate = AuthHelper()
             service.authDelegate = authDelegate
             service.serviceDelegate = serviceDelegate
@@ -147,7 +147,7 @@ final class UnauthSessionIntegrationTests: XCTestCase {
     func testUnauthSessionIsObtainedDueToBackendRequirements() async throws {
         try await withFeatureSwitches([.unauthSession, .enforceUnauthSessionStrictVerificationOnBackend]) {
             // GIVEN
-            let service = PMAPIService.createAPIServiceWithoutSession(environment: .black, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+            let service = PMAPIService.createAPIServiceWithoutSession(environment: .black, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
             let authDelegate = AuthHelper()
             service.authDelegate = authDelegate
             service.serviceDelegate = serviceDelegate
@@ -177,7 +177,7 @@ final class UnauthSessionIntegrationTests: XCTestCase {
     func testUnauthSessionIsNotAcquiredIfNoSessionIsAlreadyPresentAndBackendSupportFeatureFlagIsDisabled() async throws {
         await withFeatureSwitches([]) {
             // GIVEN
-            let service = PMAPIService.createAPIServiceWithoutSession(environment: .black, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+            let service = PMAPIService.createAPIServiceWithoutSession(environment: .black, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
             let authDelegate = AuthHelper()
             service.authDelegate = authDelegate
             service.serviceDelegate = serviceDelegate
@@ -200,7 +200,7 @@ final class UnauthSessionIntegrationTests: XCTestCase {
     func testUnauthSessionIsNotAcquiredIfNoSessionIsAlreadyPresentAndBackendSupportFeatureFlagIsDisabledAndUnauthFlagEnabled() async throws {
         await withFeatureSwitches([.unauthSession]) {
             // GIVEN
-            let service = PMAPIService.createAPIServiceWithoutSession(environment: .black, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+            let service = PMAPIService.createAPIServiceWithoutSession(environment: .black, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
             let authDelegate = AuthHelper()
             service.authDelegate = authDelegate
             service.serviceDelegate = serviceDelegate
@@ -223,7 +223,7 @@ final class UnauthSessionIntegrationTests: XCTestCase {
     func testUnauthSessionIsAcquiredIfNoSessionIsAlreadyPresentAndBackendSupportFeatureFlagIsEnabled() async throws {
         await withFeatureSwitches([.enforceUnauthSessionStrictVerificationOnBackend]) {
             // GIVEN
-            let service = PMAPIService.createAPIServiceWithoutSession(environment: .black, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+            let service = PMAPIService.createAPIServiceWithoutSession(environment: .black, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
             let authDelegate = AuthHelper()
             service.authDelegate = authDelegate
             service.serviceDelegate = serviceDelegate
@@ -246,7 +246,7 @@ final class UnauthSessionIntegrationTests: XCTestCase {
     func testUnauthSessionIsAcquiredIfNoSessionIsAlreadyPresentAndBothFeatureFlagsAreEnabled() async throws {
         await withFeatureSwitches([.unauthSession, .enforceUnauthSessionStrictVerificationOnBackend]) {
             // GIVEN
-            let service = PMAPIService.createAPIServiceWithoutSession(environment: .black, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+            let service = PMAPIService.createAPIServiceWithoutSession(environment: .black, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
             let authDelegate = AuthHelper()
             service.authDelegate = authDelegate
             service.serviceDelegate = serviceDelegate
@@ -269,7 +269,7 @@ final class UnauthSessionIntegrationTests: XCTestCase {
     func testUnauthSessionReturnsIsNotAcquiredIfSessionIsAlreadyPresent() async throws {
         await withFeatureSwitches([]) {
             // GIVEN
-            let service = PMAPIService.createAPIService(environment: .black, sessionUID: "test session", challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+            let service = PMAPIService.createAPIService(environment: .black, sessionUID: "test session", challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
             let testCredentials = Credential(UID: "test session", accessToken: "test access token", refreshToken: "test refresh token", userName: .empty, userID: .empty, scopes: .empty)
             let authDelegate = AuthHelper(credential: testCredentials)
             service.authDelegate = authDelegate

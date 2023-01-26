@@ -70,7 +70,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
                                        trustKitProvider: trustKitProviderMock,
-                                                challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+                                                challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
                                           parameters: nil,
@@ -122,7 +122,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
                                        trustKitProvider: trustKitProviderMock,
-                                                challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+                                                challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
                                           parameters: nil,
@@ -174,7 +174,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
                                        trustKitProvider: trustKitProviderMock,
-                                                challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+                                                challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         testService.serviceDelegate = apiServiceDelegateMock
         apiServiceDelegateMock.additionalHeadersStub.fixture = ["a": "av", "b": "bc"]
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
@@ -212,7 +212,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
                                        trustKitProvider: trustKitProviderMock,
-                                                challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+                                                challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         testService.serviceDelegate = apiServiceDelegateMock
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
@@ -265,7 +265,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
                                        trustKitProvider: trustKitProviderMock,
-                                                challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+                                                challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         testService.serviceDelegate = apiServiceDelegateMock
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
@@ -318,7 +318,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
                                        trustKitProvider: trustKitProviderMock,
-                                                challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+                                                challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         testService.serviceDelegate = apiServiceDelegateMock
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
@@ -387,7 +387,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
                                        trustKitProvider: trustKitProviderMock,
-                                                challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+                                                challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         testService.serviceDelegate = apiServiceDelegateMock
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
@@ -444,7 +444,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
                                        trustKitProvider: trustKitProviderMock,
-                                                challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+                                                challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         testService.serviceDelegate = apiServiceDelegateMock
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
@@ -522,7 +522,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                        sessionFactory: sessionFactoryMock,
                                        cacheToClear: cacheToClearMock,
                                        trustKitProvider: trustKitProviderMock,
-                                                challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+                                                challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         testService.serviceDelegate = apiServiceDelegateMock
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,

@@ -75,7 +75,7 @@ final class LoginCreatedUser {
     init(api: PMAPIService, authManager: AuthHelper) {
         self.api = api
         self.authManager = authManager
-        login = LoginService(api: api, authManager: authManager, clientApp: .other(named: "Deletion-example"), minimumAccountType: .username)
+        login = LoginService(api: api, clientApp: clientApp, minimumAccountType: .username)
     }
     
     func login(account: CreatedAccountDetails, completion: @escaping (Result<Credential, LoginError>) -> Void) {

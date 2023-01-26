@@ -47,7 +47,7 @@ extension LoginServiceTests {
 
     var apiService: (APIService, AuthHelper) {
         let authDelegate = AuthHelper()
-        let api = PMAPIService.createAPIServiceWithoutSession(doh: DohMock() as DoHInterface, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+        let api = PMAPIService.createAPIServiceWithoutSession(doh: DohMock() as DoHInterface, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         api.authDelegate = authDelegate
         return (api, authDelegate)
     }

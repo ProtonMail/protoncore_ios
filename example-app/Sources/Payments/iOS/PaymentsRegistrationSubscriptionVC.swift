@@ -34,6 +34,7 @@ import ProtonCore_Foundations
 import ProtonCore_UIFoundations
 import ProtonCore_Payments
 import ProtonCore_Environment
+import ProtonCore_Challenge
 import TrustKit
 
 class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, AccessibleView {
@@ -74,7 +75,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
         super.viewDidLoad()
         testApi = PMAPIService.createAPIService(environment: currentEnv,
                                                 sessionUID: "testSessionUID",
-                                                challengeParametersProvider: .forAPIService(clientApp: clientApp))
+                                                challengeParametersProvider: .forAPIService(clientApp: clientApp, challenge: PMChallenge()))
         testApi.serviceDelegate = serviceDelegate
         userCachedStatus = UserCachedStatus()
         payments = Payments(
@@ -222,7 +223,8 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
         authApi.authenticate(username: username, password: password, challenge: nil) { [unowned self] result in
             switch result {
             case .success(.newCredential(let credential, _)):
-                self.authHelper?.onAuthentication(credential: credential, service: testApi)
+                self.authHelper?.onSessionObtaining(credential: credential)
+                testApi.setSessionUID(uid: credential.UID)
                 self.loginStatusLabel.text = "Login status: OK"
                 self.userInfoAndUpdatePlans(authApi: authApi, credential: credential)
             case .failure(Authenticator.Errors.networkingError(let error)):

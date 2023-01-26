@@ -40,6 +40,13 @@
         "identifier" : "4A28A49C1965C081A8EC357F05A9505C",
         "name" : "ProtonCore-Observability-Unit-IntegrationTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "209FF44E08D9F3D7E5C3A4B2DFCF0926",
+        "name" : "ProtonCore-LoginUI-Unit-IntegrationTests-Crypto-Go1.19.4"
+      }
     }
   ],
   "version" : 1

@@ -72,15 +72,15 @@ final class EndToEndViewController: UIViewController,
     }
     
     private var credential: Credential?
+    var authSessionInvalidatedDelegateForLoginAndSignup: AuthSessionInvalidatedDelegate?
     
     private let serviceDelegate = ExampleAPIServiceDelegate()
     private var quarkCommands: QuarkCommands { QuarkCommands(env: environmentSelector.currentEnvironment) }
     
     private lazy var authenticator: Authenticator = {
         let env = environmentSelector.currentEnvironment
-        let api = PMAPIService(environment: env,
-                               sessionUID: "token refresh test session",
-                               challengeParametersProvider: .forAPIService(clientApp: clientApp))
+        let api = PMAPIService.createAPIServiceWithoutSession(environment: env,
+                                                              challengeParametersProvider: .forAPIService(clientApp: clientApp, challenge: PMChallenge()))
         api.authDelegate = self
         api.serviceDelegate = self.serviceDelegate
         return .init(api: api)
@@ -119,14 +119,14 @@ final class EndToEndViewController: UIViewController,
         FeatureFactory.shared.enable(&.enforceUnauthSessionStrictVerificationOnBackend)
         let env = environmentSelector.currentEnvironment
         let api = PMAPIService.createAPIServiceWithoutSession(environment: env, 
-                                                              challengeParametersProvider: .forAPIService(clientApp: clientApp))
+                                                              challengeParametersProvider: .forAPIService(clientApp: clientApp, challenge: PMChallenge()))
         api.authDelegate = self
         api.serviceDelegate = self.serviceDelegate
 
         var output = "Server: \n"
-        output.append("URL: \(api.doh.getCurrentlyUsedHostUrl()) \n")
+        output.append("URL: \(api.dohInterface.getCurrentlyUsedHostUrl()) \n")
         output.append("Fingerprints: \n")
-        output.append("\(String(describing: ChallengeParametersProvider.forAPIService(clientApp: clientApp).provideParameters))\n")
+        output.append("\(String(describing: ChallengeParametersProvider.forAPIService(clientApp: clientApp, challenge: PMChallenge()).provideParametersForSessionFetching()))\n")
         output.append("\n")
 
         self.showLoadingIndicator()
@@ -216,17 +216,27 @@ final class EndToEndViewController: UIViewController,
         credential
     }
     
-    func onLogout(sessionUID uid: String) {
+    func onAuthenticatedSessionInvalidated(sessionUID uid: String) {
         credential = nil
     }
 
-    func eraseUnauthSessionCredentials(sessionUID: String) {
+    func onUnauthenticatedSessionInvalidated(sessionUID: String) {
         credential = nil
     }
     
     func onUpdate(credential: Credential, sessionUID: String) {
         self.credential = credential
     }
+
+    func onSessionObtaining(credential: Credential) {
+
+    }
+
+    func onAdditionalCredentialsInfoObtained(sessionUID: String, password: String?, salt: String?, privateKey: String?) {
+        
+    }
+
+    var delegate: AuthHelperDelegate?
     
     func onRefresh(sessionUID: String, service: APIService, complete: @escaping AuthRefreshResultCompletion) {
         guard let credential = credential else { return }
