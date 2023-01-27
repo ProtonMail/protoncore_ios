@@ -121,9 +121,9 @@ final class ObservabilityEventTests: XCTestCase {
         }
     }
 
-    // MARK: - humanVerificationPageLoad event
+    // MARK: - humanVerificationScreenLoad event
 
-    let ios_core_human_verification_page_load_v1 = """
+    let ios_core_human_verification_screen_load_v1 = """
     {
         "$id": "https://proton.me/ios_core_human_verification_screen_load_v1.schema.json",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -153,10 +153,10 @@ final class ObservabilityEventTests: XCTestCase {
 
     """
 
-    func testHumanVerificationPageLoadEvent() throws {
+    func testHumanVerificationScreenLoadEvent() throws {
         try SuccessOrFailureStatus.allCases.forEach { status in
-            let issues = try validatePayloadAccordingToSchema(event: .humanVerificationPageLoad(status: status),
-                                                              schema: ios_core_human_verification_page_load_v1)
+            let issues = try validatePayloadAccordingToSchema(event: .humanVerificationScreenLoad(status: status),
+                                                              schema: ios_core_human_verification_screen_load_v1)
             XCTAssertEqual(issues, .noIssues)
         }
     }

@@ -1,5 +1,5 @@
 //
-//  PageLoadCountEvent.swift
+//  ScreenLoadCountEvent.swift
 //  ProtonCore-Observability - Created on 16.12.22.
 //
 //  Copyright (c) 2022 Proton Technologies AG
