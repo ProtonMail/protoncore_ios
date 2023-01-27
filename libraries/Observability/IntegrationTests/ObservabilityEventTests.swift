@@ -53,13 +53,13 @@ final class ObservabilityEventTests: XCTestCase {
     }
 
     override func tearDown() {
-        super.tearDown()
         authHelper = nil
+        super.tearDown()
     }
 
     override class func tearDown() {
-        super.tearDown()
         PMAPIService.noTrustKit = false
+        super.tearDown()
     }
 
     enum TestingEventFromWebStep: String, Encodable {

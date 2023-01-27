@@ -338,7 +338,7 @@ run_ui_testing_light:
     - fastlane cleanup_build_ui_tests
     - ssh-add -D
   tags:
-    - macstadium-m1-protoncore
+    - macstadium-m1-protoncore-tests
 
 #
 # --- Modules building related tasks ---
