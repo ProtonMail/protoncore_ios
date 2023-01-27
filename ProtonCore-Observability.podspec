@@ -26,8 +26,17 @@ Pod::Spec.new do |s|
 
     s.source_files = 'libraries/Observability/Sources/**/*.swift'
 
-    s.test_spec "Tests" do |test_spec|
-        test_spec.source_files = "libraries/Observability/Tests/**/*.swift"
+    s.test_spec "UnitTests" do |test_spec|
+        test_spec.dependency 'JSONSchema'
+        test_spec.source_files = "libraries/Observability/UnitTests/**/*.swift"
+    end
+
+    s.test_spec "IntegrationTests" do |test_spec|
+        test_spec.dependency "ProtonCore-Networking", $version
+        test_spec.dependency "ProtonCore-Services", $version
+        test_spec.dependency "ProtonCore-Authentication", $version
+        test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/FeatureSwitch", $version
+        test_spec.source_files = "libraries/Observability/IntegrationTests/**/*.swift"
     end
 
 end

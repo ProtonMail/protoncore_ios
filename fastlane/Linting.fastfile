@@ -425,12 +425,14 @@ end
 
 lane :build_Observability_all_variants do
   install_dependencies_from_gemfile
-  build_spec("Observability", "ios,macos", no_test_podspecs)
+  ensure_obfuscated_constants_are_generated
+  build_spec("Observability", "ios,macos", default_test_podspecs, "ObfuscatedConstants", "DataModel", "Networking", "CoreTranslation", "Log", "Utilities", "Environment", "Authentication", "Services", "Doh", "Networking", "FeatureSwitch", "Foundations")
 end
 
 lane :build_Observability_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("Observability", "ios", no_test_podspecs)
+  ensure_obfuscated_constants_are_generated
+  build_spec("Observability", "ios", default_test_podspecs, "ObfuscatedConstants", "DataModel", "Networking", "CoreTranslation", "Log", "Utilities", "Environment", "Authentication", "Services", "Doh", "Networking", "FeatureSwitch", "Foundations")
 end
   
 ### create pod add lane placeholder

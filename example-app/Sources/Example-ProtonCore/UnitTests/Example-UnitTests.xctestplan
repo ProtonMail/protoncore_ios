@@ -229,6 +229,13 @@
         "identifier" : "A84D68DBEFEAB52A327F0D1D9D53CE57",
         "name" : "ProtonCore-Login-Crypto-Go1.19.4-iOS-Unit-Tests-Crypto-Go1.19.4"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "B7CC18C13472FDDA15B948C9FFD14CB0",
+        "name" : "ProtonCore-Observability-Unit-UnitTests"
+      }
     }
   ],
   "version" : 1
