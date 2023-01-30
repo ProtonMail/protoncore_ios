@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
 
     this_pod_does_not_have_subspecs(s)
 
-    s.source_files = 'libraries/Services/Sources/*.swift'
+    s.source_files = 'libraries/Services/Sources/*.swift', "libraries/Services/Sources/**/*.swift"
 
     s.test_spec "UnitTests" do |test_spec|
         test_spec.source_files = "libraries/Services/Tests/Unit/*.swift"

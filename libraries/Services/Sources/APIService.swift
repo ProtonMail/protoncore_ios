@@ -309,8 +309,6 @@ public protocol AuthDelegate: AnyObject {
     
     func authCredential(sessionUID: String) -> AuthCredential?
     func credential(sessionUID: String) -> Credential?
-    
-    func onRefresh(sessionUID: String, service: APIService, complete: @escaping AuthRefreshResultCompletion)
     func onUpdate(credential: Credential, sessionUID: String)
     func onLogout(sessionUID: String)
 

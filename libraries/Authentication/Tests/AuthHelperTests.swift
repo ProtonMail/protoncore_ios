@@ -297,7 +297,7 @@ class AuthHelperTests: XCTestCase {
         let apiService = APIServiceMock()
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             guard path.contains("/auth/v4/refresh") else { XCTFail(); return }
-            completion(nil, .success(AuthService.RefreshResponse(accessToken: "", tokenType: "", scopes: [], refreshToken: "")))
+            completion(nil, .success(RefreshResponse(accessToken: "", tokenType: "", scopes: [], refreshToken: "")))
         }
         let out = try XCTUnwrap(AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential)))
         _ = await withCheckedContinuation { continuation in
@@ -312,7 +312,9 @@ class AuthHelperTests: XCTestCase {
         let apiService = APIServiceMock()
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             guard path.contains("/auth/v4/refresh") else { XCTFail(); return }
-            completion(nil, .success(AuthService.RefreshResponse(accessToken: "new access token", tokenType: "new token type", scopes: ["other"], refreshToken: "new refresh token")))
+            completion(nil, .success(RefreshResponse(accessToken: "new access token",
+                                                     tokenType: "new token type",
+                                                     scopes: ["other"], refreshToken: "new refresh token")))
         }
         let out = try XCTUnwrap(AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential)))
         let result = await withCheckedContinuation { continuation in
