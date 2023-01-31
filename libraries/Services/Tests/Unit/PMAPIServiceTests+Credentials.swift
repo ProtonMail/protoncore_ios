@@ -488,12 +488,27 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
 
         let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", scopes: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token",
+                     refreshToken: "test refresh token", scopes: ["full"])
         )
 
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
         authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.failure(.notImplementedYet(""))) }
-
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters,
+                                                         urlString: path, method: method,
+                                                         timeout: timeout!, retryPolicy: retryPolicy) }
+        let onRefreshCounter: Atomic<UInt> = .init(0)
+        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 400))
+                completion(task, .failure(.networkingEngineError(underlyingError: AuthErrors.notImplementedYet("").underlyingError)))
+            } else { XCTFail(); return }
+        }
+        
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
@@ -521,11 +536,33 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
 
         let freshCredential = Credential.dummy
-            .updated(UID: "test_user_session", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
         authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
             // run on a different queue to simulate network call queue change
             DispatchQueue.global(qos: .userInitiated).async { completion(.success(freshCredential)) }
         }
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+                SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            }
+            let onRefreshCounter: Atomic<UInt> = .init(0)
+            sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+                if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                    onRefreshCounter.mutate {
+                        $0 += 1
+                    }
+                    let data = """
+                    {
+                        "AccessToken": "test access token new",
+                        "RefreshToken": "test refresh token new",
+                        "TokenType": "test refresh token new",
+                        "Scopes": ["full"],
+                    }
+                    """.utf8!
+                    let response = try! decoder!.decode(RefreshResponse.self, from: data)
+                    let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 200))
+                    completion(task, .success(response))
+                } else { XCTFail(); return }
+            }
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
@@ -536,8 +573,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.onRefreshStub.lastArguments?.first, "test_session_uid")
+        XCTAssertTrue(onRefreshCounter == 1)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasCalledExactlyOnce)
         XCTAssertEqual(authDelegateMock.onUpdateStub.lastArguments?.first, freshCredential)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
@@ -563,7 +599,19 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
             // run on a different queue to simulate network call
             DispatchQueue.global(qos: .userInitiated).async { completion(.failure(error)) }
         }
-
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+        }
+        let onRefreshCounter: Atomic<UInt> = .init(0)
+        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 400))
+                completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+            } else { XCTFail(); return }
+        }
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
@@ -573,8 +621,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.onRefreshStub.lastArguments?.first, "test_session_uid")
+        XCTAssertTrue(onRefreshCounter.value == 1)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasCalledExactlyOnce)
         XCTAssertEqual(authDelegateMock.onLogoutStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
@@ -723,7 +770,19 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
             // run on a different queue to simulate network call
             DispatchQueue.global(qos: .userInitiated).async { completion(.failure(error)) }
         }
-
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+        }
+        let onRefreshCounter: Atomic<UInt> = .init(0)
+        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 500))
+                completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+            } else { XCTFail(); return }
+        }
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
@@ -733,8 +792,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.onRefreshStub.lastArguments?.first, "test_session_uid")
+        XCTAssertTrue(onRefreshCounter.value == 1)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         guard case .refreshingError(let capturedError) = result else { XCTFail(); return }
@@ -758,7 +816,19 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
             // run on a different queue to simulate network call
             DispatchQueue.global(qos: .userInitiated).async { completion(.failure(error)) }
         }
-
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+        }
+        let onRefreshCounter: Atomic<UInt> = .init(0)
+        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 500))
+                completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+            } else { XCTFail(); return }
+        }
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
@@ -768,8 +838,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.onRefreshStub.lastArguments?.first, "test_session_uid")
+        XCTAssertTrue(onRefreshCounter.value == 1)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         guard case .refreshingError(let capturedError) = result else { XCTFail(); return }
@@ -797,6 +866,34 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
                 DispatchQueue.global(qos: .userInitiated).async { completion(.success(freshCredential)) }
             }
         }
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+        }
+        let onRefreshCounter: Atomic<UInt> = .init(0)
+        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                if onRefreshCounter.value == 1 {
+                    let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 401))
+                    completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+                } else {
+                    let data =
+                    """
+                    {
+                        "AccessToken": "test access token new",
+                        "RefreshToken": "test refresh token new",
+                        "TokenType": "test refresh token new",
+                        "Scopes": ["full"],
+                    }
+                    """.utf8!
+                    let response = try! decoder!.decode(RefreshResponse.self, from: data)
+                    let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 200))
+                    completion(task, .success(response))
+                }
+            }
+        }
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
@@ -806,7 +903,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         // THEN
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, 2)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertEqual(authDelegateMock.onRefreshStub.callCounter, 2)
+        XCTAssertEqual(onRefreshCounter.value, 2)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasCalledExactlyOnce)
         guard case .refreshed(let returnedCredentials) = result else { XCTFail(); return }
         // scope is dropped when transforming from Credential to AuthCredentials
@@ -833,7 +930,34 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
                 DispatchQueue.global(qos: .userInitiated).async { completion(.success(freshCredential)) }
             }
         }
-
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+        }
+        let onRefreshCounter: Atomic<UInt> = .init(0)
+        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                if onRefreshCounter.value == 1 {
+                    let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 401))
+                    completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+                } else {
+                    let data =
+                    """
+                    {
+                        "AccessToken": "test access token new",
+                        "RefreshToken": "test refresh token new",
+                        "TokenType": "test refresh token new",
+                        "Scopes": ["full"],
+                    }
+                    """.utf8!
+                    let response = try! decoder!.decode(RefreshResponse.self, from: data)
+                    let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 200))
+                    completion(task, .success(response))
+                }
+            } else { XCTFail(); return }
+        }
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
@@ -917,7 +1041,20 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in nil }
         authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.failure(.notImplementedYet(""))) }
-
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters,
+                                                         urlString: path, method: method,
+                                                         timeout: timeout!, retryPolicy: retryPolicy) }
+        let onRefreshCounter: Atomic<UInt> = .init(0)
+        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 400))
+                completion(task, .failure(.networkingEngineError(underlyingError: AuthErrors.notImplementedYet("").underlyingError)))
+            } else { XCTFail(); return }
+        }
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
             service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
@@ -947,7 +1084,20 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
         authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.failure(.notImplementedYet(""))) }
-
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters,
+                                                         urlString: path, method: method,
+                                                         timeout: timeout!, retryPolicy: retryPolicy) }
+        let onRefreshCounter: Atomic<UInt> = .init(0)
+        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 400))
+                completion(task, .failure(.networkingEngineError(underlyingError: AuthErrors.notImplementedYet("").underlyingError)))
+            } else { XCTFail(); return }
+        }
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
             service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
@@ -978,10 +1128,33 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
 
         let freshCredential = Credential.dummy
-            .updated(UID: "test_user_session", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
+            .updated(UID: "test_session_uid", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
         authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
             // run on a different queue to simulate network call queue change
             DispatchQueue.global(qos: .userInitiated).async { completion(.success(freshCredential)) }
+        }
+        
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+        }
+        let onRefreshCounter: Atomic<UInt> = .init(0)
+        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                let data = """
+                {
+                    "AccessToken": "test access token new",
+                    "RefreshToken": "test refresh token new",
+                    "TokenType": "test refresh token new",
+                    "Scopes": ["full"],
+                }
+                """.utf8!
+                let response = try! decoder!.decode(RefreshResponse.self, from: data)
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 200))
+                completion(task, .success(response))
+            } else { XCTFail(); return }
         }
 
         // WHEN
@@ -1025,7 +1198,19 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
             // run on a different queue to simulate network call
             DispatchQueue.global(qos: .userInitiated).async { completion(.failure(error)) }
         }
-
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+        }
+        let onRefreshCounter: Atomic<UInt> = .init(0)
+        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 422))
+                completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+            } else { XCTFail(); return }
+        }
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
             service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
@@ -1171,7 +1356,19 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
             // run on a different queue to simulate network call
             DispatchQueue.global(qos: .userInitiated).async { completion(.failure(error)) }
         }
-
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+        }
+        let onRefreshCounter: Atomic<UInt> = .init(0)
+        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 400))
+                completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+            } else { XCTFail(); return }
+        }
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
             service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
@@ -1181,8 +1378,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests)
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.capturedArguments.allSatisfy { $0.value == "test_session_uid" })
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertEqual(authDelegateMock.onRefreshStub.callCounter, numberOfRequests)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.capturedArguments.allSatisfy { $0.first == "test_session_uid" })
+        XCTAssertEqual(onRefreshCounter.value, numberOfRequests)
         XCTAssertEqual(authDelegateMock.onLogoutStub.callCounter, numberOfRequests)
         XCTAssertTrue(authDelegateMock.onLogoutStub.capturedArguments.allSatisfy { $0.value == "test_session_uid" })
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
@@ -1272,10 +1468,20 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
             SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
+        
+        let onRefreshCounter: Atomic<UInt> = .init(0)
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
-            guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
-            let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 401))
-            completion(task, .failure(.responseBodyIsNotADecodableObject(body: nil, response: nil)))
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 400))
+                completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+            } else if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/sessions") {
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 401))
+                completion(task, .failure(.responseBodyIsNotADecodableObject(body: nil, response: nil)))
+            } else { XCTFail(); return }
+            
         }
 
         // WHEN
@@ -1287,8 +1493,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests)
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.capturedArguments.allSatisfy { $0.value == "test_session_uid" })
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertEqual(authDelegateMock.onRefreshStub.callCounter, numberOfRequests)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.capturedArguments.allSatisfy { $0.first == "test_session_uid" })
+        XCTAssertEqual(onRefreshCounter.value, numberOfRequests)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertEqual(authDelegateMock.eraseUnauthSessionCredentialsStub.callCounter, numberOfRequests)
@@ -1316,6 +1521,19 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in
             // run on a different queue to simulate network call
             DispatchQueue.global(qos: .userInitiated).async { completion(.failure(error)) }
+        }
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+        }
+        let onRefreshCounter: Atomic<UInt> = .init(0)
+        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 500))
+                completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+            } else { XCTFail(); return }
         }
 
         // WHEN
@@ -1356,6 +1574,19 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
             // run on a different queue to simulate network call
             DispatchQueue.global(qos: .userInitiated).async { completion(.failure(error)) }
         }
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+        }
+        let onRefreshCounter: Atomic<UInt> = .init(0)
+        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 500))
+                completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+            } else { XCTFail(); return }
+        }
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
@@ -1384,12 +1615,15 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         let service = testService
         service.authDelegate = authDelegateMock
 
-        let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
-        )
+        let rottenCredentials = AuthCredential(Credential.dummy.updated(UID: "test_session_uid",
+                                                                        accessToken: "test access token old",
+                                                                        refreshToken: "test refresh token old",
+                                                                        scopes: ["full"]))
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
-
-        let freshCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
+        let freshCredential = Credential.dummy.updated(UID: "test_session_uid",
+                                                       accessToken: "test access token new",
+                                                       refreshToken: "test refresh token new",
+                                                       scopes: ["full"])
         let underlyingError = NSError(domain: "unit tests", code: APIErrorCode.AuthErrorCode.localCacheBad, localizedDescription: "test description")
         let error = AuthErrors.networkingError(.init(httpCode: 401, responseCode: 1000, userFacingMessage: "test message", underlyingError: underlyingError))
         authDelegateMock.onRefreshStub.bodyIs { counter, _, _, completion in
@@ -1398,6 +1632,34 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
             } else {
                 DispatchQueue.global(qos: .userInitiated).async { completion(.success(freshCredential)) }
             }
+        }
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+        }
+        let onRefreshCounter: Atomic<UInt> = .init(0)
+        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                if onRefreshCounter.value == 1 {
+                    let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 401))
+                    completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+                } else {
+                    let data =
+                    """
+                    {
+                        "AccessToken": "test access token new",
+                        "RefreshToken": "test refresh token new",
+                        "TokenType": "test refresh token new",
+                        "Scopes": ["full"],
+                    }
+                    """.utf8!
+                    let response = try! decoder!.decode(RefreshResponse.self, from: data)
+                    let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 200))
+                    completion(task, .success(response))
+                }
+            } else { XCTFail(); return }
         }
 
         // WHEN
@@ -1408,7 +1670,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         // THEN
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests + 1)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertEqual(authDelegateMock.onRefreshStub.callCounter, numberOfRequests + 1)
+        XCTAssertEqual(onRefreshCounter.value, numberOfRequests + 1)
         XCTAssertEqual(authDelegateMock.onUpdateStub.callCounter, numberOfRequests)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
@@ -1576,31 +1838,52 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         let service = testService
         service.authDelegate = authDelegateMock
         
-        let rottenCredentials = AuthCredential(Credential.dummy
-            .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
-        )
+        let rottenCredentials = AuthCredential(Credential.dummy.updated(UID: "test_session_uid",
+                                                                        accessToken: "test access token old",
+                                                                        refreshToken: "test refresh token old",
+                                                                        scopes: ["full"]))
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
-        
-        let freshCredential = Credential.dummy
-            .updated(UID: "test_user_session", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
+        let freshCredential = Credential.dummy.updated(UID: "test_session_uid",
+                                                       accessToken: "test access token new",
+                                                       refreshToken: "test refresh token new",
+                                                       scopes: ["full"])
         authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
             // run on a different queue to simulate network call queue change
             DispatchQueue.global(qos: .userInitiated).async { completion(.success(freshCredential)) }
         }
-
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+        }
+        let onRefreshCounter: Atomic<UInt> = .init(0)
+        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                let data = """
+                {
+                    "AccessToken": "test access token new",
+                    "RefreshToken": "test refresh token new",
+                    "TokenType": "test refresh token new",
+                    "Scopes": ["full"],
+                }
+                """.utf8!
+                let response = try! decoder!.decode(RefreshResponse.self, from: data)
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 200))
+                completion(task, .success(response))
+            } else { XCTFail(); return }
+        }
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
-        
         // THEN
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.onRefreshStub.lastArguments?.first, "test_session_uid")
+        XCTAssertTrue(onRefreshCounter.value == 1)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.onUpdateStub.lastArguments?.first, freshCredential)
+        XCTAssertEqual(authDelegateMock.onUpdateStub.lastArguments?.first.accessToken, freshCredential.accessToken)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
         guard case .refreshed(let returnedCredentials) = result else { XCTFail(); return }
         // scope is dropped when transforming from Credential to AuthCredentials
@@ -1657,7 +1940,21 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
             // run on a different queue to simulate network call
             DispatchQueue.global(qos: .userInitiated).async { completion(.failure(error)) }
         }
-
+        
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+        }
+        let onRefreshCounter: Atomic<UInt> = .init(0)
+        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 400))
+                completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+            } else { XCTFail(); return }
+        }
+        
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
@@ -1667,8 +1964,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.onRefreshStub.lastArguments?.first, "test_session_uid")
+        XCTAssertTrue(onRefreshCounter.value == 1)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasCalledExactlyOnce)
         XCTAssertEqual(authDelegateMock.onLogoutStub.lastArguments?.value, "test_session_uid")
         guard case .logout(let capturedError) = result else { XCTFail(); return }
@@ -1720,7 +2016,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
         
-        let freshCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
+        let freshCredential = Credential.dummy.updated(UID: "test_session_uid", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
         let underlyingError = NSError(domain: "unit tests", code: APIErrorCode.AuthErrorCode.localCacheBad, localizedDescription: "test description")
         let error = AuthErrors.networkingError(.init(httpCode: 401, responseCode: 1000, userFacingMessage: "test message", underlyingError: underlyingError))
         authDelegateMock.onRefreshStub.bodyIs { counter, _, _, completion in
@@ -1729,6 +2025,34 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
             } else {
                 DispatchQueue.global(qos: .userInitiated).async { completion(.success(freshCredential)) }
             }
+        }
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+        }
+        let onRefreshCounter: Atomic<UInt> = .init(0)
+        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                if onRefreshCounter.value == 1 {
+                    let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 401))
+                    completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+                } else {
+                    let data =
+                    """
+                    {
+                        "AccessToken": "test access token new",
+                        "RefreshToken": "test refresh token new",
+                        "TokenType": "test refresh token new",
+                        "Scopes": ["full"],
+                    }
+                    """.utf8!
+                    let response = try! decoder!.decode(RefreshResponse.self, from: data)
+                    let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 200))
+                    completion(task, .success(response))
+                }
+            } else { XCTFail(); return }
         }
 
         // WHEN
@@ -1739,7 +2063,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         // THEN
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, 2)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertEqual(authDelegateMock.onRefreshStub.callCounter, 2)
+        XCTAssertEqual(onRefreshCounter.value, 2)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasCalledExactlyOnce)
         guard case .refreshed(let returnedCredentials) = result else { XCTFail(); return }
         // scope is dropped when transforming from Credential to AuthCredentials
@@ -1878,13 +2202,37 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         )
         
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
-        
-        let newCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
+        let newCredential = Credential.dummy.updated(UID: "test_session_uid",
+                                                     accessToken: "test access token new",
+                                                     refreshToken: "test refresh token new", scopes: ["full"])
         authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
             // run on a different queue to simulate network call
             DispatchQueue.global(qos: .userInitiated).async { completion(.success(newCredential)) }
         }
-
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+        }
+        let onRefreshCounter: Atomic<UInt> = .init(0)
+        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                let data =
+                """
+                {
+                    "AccessToken": "test access token new",
+                    "RefreshToken": "test refresh token new",
+                    "TokenType": "test refresh token new",
+                    "Scopes": ["full"],
+                }
+                """.utf8!
+                let response = try! decoder!.decode(RefreshResponse.self, from: data)
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 200))
+                completion(task, .success(response))
+            } else { XCTFail(); return }
+        }
+        
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
             service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
@@ -1893,9 +2241,11 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         // THEN
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertEqual(authDelegateMock.onRefreshStub.callCounter, numberOfRequests)
+        XCTAssertEqual(onRefreshCounter.value, numberOfRequests)
         XCTAssertEqual(authDelegateMock.onUpdateStub.callCounter, numberOfRequests)
-        XCTAssertTrue(authDelegateMock.onUpdateStub.capturedArguments.allSatisfy { $0.first == newCredential })
+        XCTAssertTrue(authDelegateMock.onUpdateStub.capturedArguments.allSatisfy {
+            $0.first.accessToken == newCredential.accessToken
+        })
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
@@ -1956,16 +2306,33 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in
             DispatchQueue.global(qos: .userInitiated).async { completion(.failure(error)) }
         }
+        
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+        }
+        let onRefreshCounter: Atomic<UInt> = .init(0)
+        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 400))
+                completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+            } else { XCTFail(); return }
+        }
 
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
-            service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
+            service.refreshAuthCredential(credentialsCausing401: rottenCredentials,
+                                          withoutSupportForUnauthenticatedSessions: true,
+                                          deviceFingerprints: self.challengeProperties,
+                                          completion: continuation.resume(returning:))
         }
         
         // THEN
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertEqual(authDelegateMock.onRefreshStub.callCounter, numberOfRequests)
+        XCTAssertEqual(onRefreshCounter.value, numberOfRequests)
         XCTAssertEqual(authDelegateMock.onLogoutStub.callCounter, numberOfRequests)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
@@ -1991,7 +2358,19 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in
             DispatchQueue.global(qos: .userInitiated).async { completion(.failure(error)) }
         }
-
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+        }
+        let onRefreshCounter: Atomic<UInt> = .init(0)
+        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 500))
+                completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+            } else { XCTFail(); return }
+        }
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
             service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
@@ -2000,7 +2379,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         // THEN
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertEqual(authDelegateMock.onRefreshStub.callCounter, numberOfRequests)
+        XCTAssertEqual(onRefreshCounter.value, numberOfRequests)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
@@ -2022,7 +2401,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
         
-        let newCredential = Credential.dummy.updated(UID: "test_user_session", accessToken: "test access token refreshed", refreshToken: "test refresh token refreshed", scopes: ["full"])
+        let newCredential = Credential.dummy.updated(UID: "test_session_uid", accessToken: "test access token refreshed", refreshToken: "test refresh token refreshed", scopes: ["full"])
         let underlyingError = NSError(domain: "unit tests", code: APIErrorCode.AuthErrorCode.localCacheBad, localizedDescription: "test description")
         let error = AuthErrors.networkingError(.init(httpCode: 401, responseCode: 1000, userFacingMessage: "test message", underlyingError: underlyingError))
         authDelegateMock.onRefreshStub.bodyIs { counter, _, _, completion in
@@ -2032,7 +2411,34 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
                 DispatchQueue.global(qos: .userInitiated).async { completion(.success(newCredential)) }
             }
         }
-
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+                    SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+                }
+                let onRefreshCounter: Atomic<UInt> = .init(0)
+                sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+                    if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                        onRefreshCounter.mutate {
+                            $0 += 1
+                        }
+                        if onRefreshCounter.value == 1 {
+                            let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 401))
+                            completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+                        } else {
+                            let data =
+                            """
+                            {
+                                "AccessToken": "test access token refreshed",
+                                "RefreshToken": "test refresh token refreshed",
+                                "TokenType": "test refresh token refreshed",
+                                "Scopes": ["full"],
+                            }
+                            """.utf8!
+                            let response = try! decoder!.decode(RefreshResponse.self, from: data)
+                            let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 200))
+                            completion(task, .success(response))
+                        }
+                    } else { XCTFail(); return }
+                }
         // WHEN
         let fetchResults = await performConcurrentlySettingExpectations(amount: numberOfRequests) { _, continuation in
             service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: true, deviceFingerprints: self.challengeProperties, completion: continuation.resume(returning:))
@@ -2042,7 +2448,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         // are in incrementing by one because the local cache bad error retries the refresh token fetching
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests + 1)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertEqual(authDelegateMock.onRefreshStub.callCounter, numberOfRequests + 1)
+        XCTAssertEqual(onRefreshCounter.value, numberOfRequests + 1)
         XCTAssertEqual(authDelegateMock.onUpdateStub.callCounter, numberOfRequests)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
