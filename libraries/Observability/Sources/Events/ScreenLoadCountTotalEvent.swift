@@ -1,5 +1,5 @@
 //
-//  ScreenLoadCountEvent.swift
+//  ScreenLoadCountTotalEvent.swift
 //  ProtonCore-Observability - Created on 16.12.22.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -39,7 +39,7 @@ public struct ScreenLoadCountLabels: Encodable {
 }
 
 extension ObservabilityEvent where Payload == CounterPayloadWithLabels<ScreenLoadCountLabels> {
-    public static func screenLoadCount(screenName: ScreenName) -> Self {
-        .init(name: "ios_core_screen_load_count", labels: .init(screenName: screenName))
+    public static func screenLoadCountTotal(screenName: ScreenName) -> Self {
+        .init(name: "ios_core_screen_load_count_total", labels: .init(screenName: screenName))
     }
 }

@@ -1,5 +1,5 @@
 //
-//  PlanSelectionCheckoutEvent.swift
+//  HumanVerificationOutcomeTotalEvent.swift
 //  ProtonCore-Observability - Created on 16.12.22.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -19,19 +19,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-public enum PlanName: String, Encodable, CaseIterable {
-    case unlimited
-    case plus
-    case free
+public struct HumanVerificationOutcomeLabels: Encodable {
+    let status: SuccessOrFailureOrCancelledStatus
 }
 
-public struct PlanSelectionCheckoutLabels: Encodable {
-    let status: SuccessOrFailureStatus
-    let plan: PlanName
-}
-
-extension ObservabilityEvent where Payload == CounterPayloadWithLabels<PlanSelectionCheckoutLabels> {
-    public static func planSelectionCheckout(status: SuccessOrFailureStatus, plan: PlanName) -> Self {
-        .init(name: "ios_core_plan_selection_checkout", labels: .init(status: status, plan: plan))
+extension ObservabilityEvent where Payload == CounterPayloadWithLabels<HumanVerificationOutcomeLabels> {
+    public static func humanVerificationOutcomeTotal(status: SuccessOrFailureOrCancelledStatus) -> Self {
+        .init(name: "ios_core_human_verification_outcome_total", labels: .init(status: status))
     }
 }

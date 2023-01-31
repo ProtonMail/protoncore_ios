@@ -1,5 +1,5 @@
 //
-//  HumanVerificationScreenLoadEvent.swift
+//  HumanVerificationScreenLoadTotalEvent.swift
 //  ProtonCore-Observability - Created on 16.12.22.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -24,7 +24,7 @@ public struct HumanVerificationScreenLoadLabels: Encodable {
 }
 
 extension ObservabilityEvent where Payload == CounterPayloadWithLabels<HumanVerificationScreenLoadLabels> {
-    public static func humanVerificationScreenLoad(status: SuccessOrFailureStatus) -> Self {
-        .init(name: "ios_core_human_verification_screen_load", labels: .init(status: status))
+    public static func humanVerificationScreenLoadTotal(status: SuccessOrFailureStatus) -> Self {
+        .init(name: "ios_core_human_verification_screen_load_total", labels: .init(status: status))
     }
 }
