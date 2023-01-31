@@ -246,7 +246,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
         // THEN
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
         XCTAssertNil(result.task)
@@ -299,7 +298,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
             // THEN
             XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
-            XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
             let request = try XCTUnwrap(sessionMock.requestJSONStub.lastArguments?.first)
@@ -338,7 +336,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test sessionUID")
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
         XCTAssertNil(result.task)
@@ -382,7 +379,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
             // THEN
             XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
-            XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
             XCTAssertNil(result.task)
@@ -419,7 +415,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
         // THEN
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
         guard let request = sessionMock.requestJSONStub.lastArguments?.first else { XCTFail(); return }
@@ -456,7 +451,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
             XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
             XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-            XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
             XCTAssertNotNil(result.error)
@@ -482,7 +476,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
             // THEN
             XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
-            XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
             let request = try XCTUnwrap(sessionMock.requestJSONStub.lastArguments?.first)
@@ -513,7 +506,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
             // THEN
             XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
-            XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
             let request = try XCTUnwrap(sessionMock.requestJSONStub.lastArguments?.first)
@@ -555,7 +547,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
         // THEN
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
         let request = try XCTUnwrap(sessionMock.requestJSONStub.lastArguments?.first)
@@ -600,7 +591,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
             // THEN
             XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
-            XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
             XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
@@ -627,7 +617,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
             // THEN
             XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
-            XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
             XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
@@ -673,7 +662,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
             // THEN
             XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
             XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-            XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
             XCTAssertEqual(result.error, TestError.testError as NSError)
@@ -1031,6 +1019,10 @@ final class PMAPIServiceRequestTests: XCTestCase {
                     XCTFail(); return
                 }
             }
+            
+            sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+                SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            }
             sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
                 guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
                 let data = """
@@ -1082,6 +1074,10 @@ final class PMAPIServiceRequestTests: XCTestCase {
                 } else {
                     XCTFail(); return
                 }
+            }
+            
+            sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+                SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
             }
             sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
                 guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
@@ -1135,13 +1131,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
                 .updated(UID: "test sessionUID", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
             )
             authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in oldCredentials }
-            let freshCredential = Credential.dummy
-                .updated(UID: "test_session_uid_new", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
-            authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
-                // run on a different queue to simulate network call queue change
-                DispatchQueue.global(qos: .userInitiated).async { completion(.success(freshCredential)) }
-            }
-
             sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
             sessionMock.requestJSONStub.bodyIs { counter, request, completion in
                 if counter == 1 {
@@ -1157,6 +1146,26 @@ final class PMAPIServiceRequestTests: XCTestCase {
                 } else {
                     XCTFail(); return
                 }
+            }
+            
+            sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+                SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            }
+            sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+                if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                    let data =
+                    """
+                    {
+                        "AccessToken": "test access token new",
+                        "RefreshToken": "test refresh token new",
+                        "TokenType": "test refresh token new",
+                        "Scopes": ["full"],
+                    }
+                    """.utf8!
+                    let response = try! decoder!.decode(RefreshResponse.self, from: data)
+                    let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 200))
+                    completion(task, .success(response))
+                } else { XCTFail(); return }
             }
 
             // WHEN
@@ -1183,13 +1192,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
                 .updated(UID: "test sessionUID", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
             )
             authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in oldCredentials }
-            let freshCredential = Credential.dummy
-                .updated(UID: "test_session_uid_new", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
-            authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
-                // run on a different queue to simulate network call queue change
-                DispatchQueue.global(qos: .userInitiated).async { completion(.success(freshCredential)) }
-            }
-
             sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
             sessionMock.requestJSONStub.bodyIs { counter, request, completion in
                 if counter == 1 || counter == 2 {
@@ -1200,6 +1202,25 @@ final class PMAPIServiceRequestTests: XCTestCase {
                 } else {
                     XCTFail(); return
                 }
+            }
+            
+            sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+                SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            }
+            sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+                guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }
+                let data =
+                """
+                {
+                    "AccessToken": "test access token new",
+                    "RefreshToken": "test refresh token new",
+                    "TokenType": "test refresh token new",
+                    "Scopes": ["full"],
+                }
+                """.utf8!
+                let response = try! decoder!.decode(RefreshResponse.self, from: data)
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 200))
+                completion(task, .success(response))
             }
 
             // WHEN
@@ -1227,12 +1248,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
                 .updated(UID: "test sessionUID", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
             )
             authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in oldCredentials }
-            authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
-                // run on a different queue to simulate network call queue change
-                let error = ResponseError(httpCode: 500, responseCode: nil, userFacingMessage: "test error message", underlyingError: nil)
-                DispatchQueue.global(qos: .userInitiated).async { completion(.failure(.networkingError(error))) }
-            }
-
             sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
             sessionMock.requestJSONStub.bodyIs { counter, request, completion in
                 if counter == 1 {
@@ -1243,6 +1258,16 @@ final class PMAPIServiceRequestTests: XCTestCase {
                 } else {
                     XCTFail(); return
                 }
+            }
+            sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+                SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            }
+            sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+                if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                    let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test error message")
+                    let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 500))
+                    completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+                } else { XCTFail(); return }
             }
 
             // WHEN
@@ -1270,11 +1295,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
                      userName: "test user name", userID: "test user ID", scopes: ["full"])
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in oldCredentials }
-        authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
-            // run on a different queue to simulate network call queue change
-            let error = ResponseError(httpCode: httpCode, responseCode: nil, userFacingMessage: "test error message", underlyingError: nil)
-            DispatchQueue.global(qos: .userInitiated).async { completion(.failure(.networkingError(error))) }
-        }
 
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { counter, request, completion in
@@ -1287,6 +1307,16 @@ final class PMAPIServiceRequestTests: XCTestCase {
                 XCTFail(); return
             }
         }
+        
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+        }
+        sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }
+            let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test error message")
+            let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: httpCode))
+            completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+        }
 
         // WHEN
         let result = await withCheckedContinuation { continuation in
@@ -1297,11 +1327,11 @@ final class PMAPIServiceRequestTests: XCTestCase {
 
         // THEN
         XCTAssertTrue(authDelegateMock.eraseUnauthSessionCredentialsStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
+        XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasCalledExactlyOnce)
         XCTAssertEqual(authDelegateMock.onLogoutStub.lastArguments?.value, "test sessionUID")
         XCTAssertNil(result.response)
-        XCTAssertEqual(result.error?.code, httpCode)
+        XCTAssertEqual(result.error?.code, 4242)
         XCTAssertEqual(result.error?.localizedDescription, "test error message")
     }
 
@@ -1336,16 +1366,23 @@ final class PMAPIServiceRequestTests: XCTestCase {
             .updated(UID: "test sessionUID", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in oldCredentials }
-        authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
-            // run on a different queue to simulate network call queue change
-            let error = ResponseError(httpCode: httpCode, responseCode: nil, userFacingMessage: "test error message", underlyingError: nil)
-            DispatchQueue.global(qos: .userInitiated).async { completion(.failure(.networkingError(error))) }
-        }
-
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
             SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
+        sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+        }
+        let onRefreshCounter: Atomic<UInt> = .init(0) // only tracking refresh calls
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test error message")
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: httpCode))
+                completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+                return
+            }
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
             let data = """
             {
@@ -1386,7 +1423,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertNil(result.error)
         XCTAssertNotNil(result.response)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
+        XCTAssertTrue(onRefreshCounter.value == 1)
         XCTAssertTrue(authDelegateMock.eraseUnauthSessionCredentialsStub.wasCalledExactlyOnce)
         XCTAssertEqual(authDelegateMock.eraseUnauthSessionCredentialsStub.lastArguments?.value, "test sessionUID")
     }
@@ -1413,16 +1450,21 @@ final class PMAPIServiceRequestTests: XCTestCase {
             .updated(UID: "test sessionUID", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in oldCredentials }
-        authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
-            // run on a different queue to simulate network call queue change
-            let error = ResponseError(httpCode: httpCode, responseCode: nil, userFacingMessage: "test error message", underlyingError: nil)
-            DispatchQueue.global(qos: .userInitiated).async { completion(.failure(.networkingError(error))) }
-        }
-
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
             SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
+        let onRefreshCounter: Atomic<UInt> = .init(0) // only tracking refresh calls
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test error message")
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: httpCode))
+                completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+                return
+                
+            }
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
             let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: httpCode))
             completion(task, .failure(.responseBodyIsNotADecodableObject(body: nil, response: nil)))
@@ -1449,7 +1491,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertNil(result.response)
         XCTAssertEqual(result.error?.code, httpCode)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
+        XCTAssertTrue(onRefreshCounter.value == 1)
         XCTAssertTrue(authDelegateMock.eraseUnauthSessionCredentialsStub.wasCalledExactlyOnce)
         XCTAssertEqual(authDelegateMock.eraseUnauthSessionCredentialsStub.lastArguments?.value, "test sessionUID")
     }
@@ -1476,16 +1518,21 @@ final class PMAPIServiceRequestTests: XCTestCase {
             .updated(UID: "test sessionUID", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in oldCredentials }
-        authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
-            // run on a different queue to simulate network call queue change
-            let error = ResponseError(httpCode: httpCode, responseCode: nil, userFacingMessage: "test error message", underlyingError: nil)
-            DispatchQueue.global(qos: .userInitiated).async { completion(.failure(.networkingError(error))) }
-        }
-
+        
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
             SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
+        let onRefreshCounter: Atomic<UInt> = .init(0) // only tracking refresh calls
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+            if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                onRefreshCounter.mutate {
+                    $0 += 1
+                }
+                let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test error message")
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: httpCode))
+                completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+                return
+            }
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
             let data = """
             {
@@ -1521,7 +1568,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertNil(result.response)
         XCTAssertEqual(result.error?.bestShotAtReasonableErrorCode, 401)
         XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
+        XCTAssertTrue(onRefreshCounter.value == 1)
         XCTAssertTrue(authDelegateMock.eraseUnauthSessionCredentialsStub.wasCalledExactlyOnce)
         XCTAssertEqual(authDelegateMock.eraseUnauthSessionCredentialsStub.lastArguments?.value, "test sessionUID")
     }
@@ -1560,7 +1607,20 @@ final class PMAPIServiceRequestTests: XCTestCase {
             sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
             sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401)))) }
 
-            authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.failure(.emptyAuthResponse)) }
+            sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+                SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            }
+            let onRefreshCounter: Atomic<UInt> = .init(0) // only tracking refresh calls
+            sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+                if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                    onRefreshCounter.mutate {
+                        $0 += 1
+                    }
+                    let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 400))
+                    let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test description")
+                    completion(task, .failure(.networkingEngineError(underlyingError:underlyingError)))
+                }
+            }
 
             // WHEN
             _ = await withCheckedContinuation { continuation in
@@ -1569,7 +1629,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
             }
 
             // THEN
-            XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
+            XCTAssertTrue(onRefreshCounter.value == 1)
         }
     }
     
@@ -1582,9 +1642,23 @@ final class PMAPIServiceRequestTests: XCTestCase {
             authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
             sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
             sessionMock.requestJSONStub.bodyIs { _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401)))) }
-
-            authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.failure(.emptyAuthResponse)) }
-
+           
+            sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+                SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            }
+            let onRefreshCounter: Atomic<UInt> = .init(0) // only tracking refresh calls
+            sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+                if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                    onRefreshCounter.mutate {
+                        $0 += 1
+                    }
+                    let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 400))
+                    let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test description")
+                    completion(task, .failure(.networkingEngineError(underlyingError:underlyingError)))
+                    return
+                }
+            }
+            
             // WHEN
             let result = await withCheckedContinuation { continuation in
                 service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: true, autoRetry: true,
@@ -1592,7 +1666,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
             }
 
             // THEN
-            XCTAssertEqual(result.error?.code, AuthErrors.emptyAuthResponse.codeInNetworking)
+            XCTAssertEqual(result.error?.code, 4242)
         }
     }
     
@@ -1611,11 +1685,23 @@ final class PMAPIServiceRequestTests: XCTestCase {
                     completion(nil, .success(["Code": 1000]))
                 }
             }
-
-            let refreshedCredentials = Credential.dummy.updated(
-                UID: "test sessionID", accessToken: "test accessToken refreshed", refreshToken: "test refreshToken refreshed", scopes: ["full"]
-            )
-            authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.success(refreshedCredentials)) }
+            sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+                SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            }
+            sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+                guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }
+                let data = """
+                {
+                    "AccessToken": "test access token new",
+                    "RefreshToken": "test refresh token new",
+                    "TokenType": "test refresh token new",
+                    "Scopes": ["full"],
+                }
+                """.utf8!
+                let response = try! decoder!.decode(RefreshResponse.self, from: data)
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 200))
+                completion(task, .success(response))
+            }
 
             // WHEN
             let result = await withCheckedContinuation { continuation in
@@ -1625,7 +1711,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
 
             // THEN
             XCTAssertEqual(sessionMock.requestJSONStub.callCounter, 2)
-            XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
+            XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
             XCTAssertEqual(result.response?["Code"] as? Int, 1000)
         }
     }
@@ -1647,7 +1733,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
             }
 
             // THEN
-            XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
             XCTAssertEqual(result.error, NSError(domain: NSURLErrorDomain, code: 401))
         }
     }
@@ -1669,7 +1754,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
             }
 
             // THEN
-            XCTAssertTrue(authDelegateMock.onRefreshStub.wasNotCalled)
             XCTAssertEqual(result.error, NSError(domain: NSURLErrorDomain, code: 401))
         }
     }
@@ -1688,11 +1772,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
             authDelegateMock.onUpdateStub.bodyIs { _, credentials, _ in
                 auth.mutate { $0 = AuthCredential(credentials) }
             }
-            let refreshedCredentials = Credential.dummy.updated(
-                UID: "test sessionID", accessToken: "test accessToken refreshed", refreshToken: "test refreshToken refreshed", scopes: ["full"]
-            )
-            authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.success(refreshedCredentials)) }
-
             sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
             sessionMock.requestJSONStub.bodyIs { counter, request, completion in
                 if request.value(key: "Authorization") == "Bearer test accessToken old" {
@@ -1700,6 +1779,24 @@ final class PMAPIServiceRequestTests: XCTestCase {
                 } else {
                     completion(nil, .success(["Code": 1000]))
                 }
+            }
+            
+            sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+                SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            }
+            sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+                guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }
+                let data = """
+                {
+                    "AccessToken": "test access token new",
+                    "RefreshToken": "test refresh token new",
+                    "TokenType": "test refresh token new",
+                    "Scopes": ["full"],
+                }
+                """.utf8!
+                let response = try! decoder!.decode(RefreshResponse.self, from: data)
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 200))
+                completion(task, .success(response))
             }
 
             // WHEN
@@ -1710,7 +1807,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
             }
 
             // THEN
-            XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
+            XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
             XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests * 2)
             XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
             XCTAssertEqual(sessionMock.requestJSONStub.callCounter, numberOfRequests * 2)
@@ -1732,11 +1829,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
                     $0.udpate(sessionID: credentials.UID, accessToken: credentials.accessToken, refreshToken: credentials.refreshToken)
                 }
             }
-            let refreshedCredentials = Credential.dummy.updated(
-                UID: "test sessionID", accessToken: "test accessToken refreshed", refreshToken: "test refreshToken refreshed", scopes: ["full"]
-            )
-            authDelegateMock.onRefreshStub.bodyIs { _, _, _, completion in completion(.success(refreshedCredentials)) }
-
             sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
             sessionMock.requestJSONStub.bodyIs { counter, request, completion in
                 if request.value(key: "Authorization") == "Bearer test accessToken old" {
@@ -1744,6 +1836,24 @@ final class PMAPIServiceRequestTests: XCTestCase {
                 } else {
                     completion(nil, .success(["Code": 1000]))
                 }
+            }
+            
+            sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
+                SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            }
+            sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+                guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }
+                let data = """
+                {
+                    "AccessToken": "test access token new",
+                    "RefreshToken": "test refresh token new",
+                    "TokenType": "test refresh token new",
+                    "Scopes": ["full"],
+                }
+                """.utf8!
+                let response = try! decoder!.decode(RefreshResponse.self, from: data)
+                let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 200))
+                completion(task, .success(response))
             }
 
             // WHEN
@@ -1754,7 +1864,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
             }
 
             // THEN
-            XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
+            XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
             XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests * 2)
             XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
             XCTAssertEqual(sessionMock.requestJSONStub.callCounter, numberOfRequests * 2)
@@ -1774,12 +1884,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
             authDelegateMock.onUpdateStub.bodyIs { _, credentials, _ in
                 auth.mutate { $0 = AuthCredential(credentials) }
             }
-            authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
-                // run on a different queue to simulate network call queue change
-                let error = ResponseError(httpCode: 400, responseCode: nil, userFacingMessage: "test error message", underlyingError: nil)
-                DispatchQueue.global(qos: .userInitiated).async { completion(.failure(.networkingError(error))) }
-            }
-
             sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
             sessionMock.requestJSONStub.bodyIs { counter, request, completion in
                 if request.value(key: "Authorization") == "Bearer test accessToken old" {
@@ -1788,11 +1892,21 @@ final class PMAPIServiceRequestTests: XCTestCase {
                     completion(nil, .success(["Code": 1000]))
                 }
             }
-
+            
             sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
                 SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
             }
+            let onRefreshCounter: Atomic<UInt> = .init(0) // only tracking refresh calls
             sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+                if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                    onRefreshCounter.mutate {
+                        $0 += 1
+                    }
+                    let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test error message")
+                    let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 400))
+                    completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+                    return
+                }
                 guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
                 let data = """
                 {
@@ -1815,10 +1929,10 @@ final class PMAPIServiceRequestTests: XCTestCase {
             }
 
             // THEN
-            XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
+            XCTAssertTrue(onRefreshCounter.value == 1)
             XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests * 2)
             XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-            XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
+            XCTAssertTrue(sessionMock.requestDecodableStub.callCounter == 2)
             XCTAssertEqual(sessionMock.requestJSONStub.callCounter, numberOfRequests * 2)
             XCTAssertEqual(results.count, Int(numberOfRequests))
             XCTAssertEqual(auth.value.sessionID, "new test session uid")
@@ -1839,12 +1953,6 @@ final class PMAPIServiceRequestTests: XCTestCase {
                     $0.udpate(sessionID: credentials.UID, accessToken: credentials.accessToken, refreshToken: credentials.refreshToken)
                 }
             }
-            authDelegateMock.onRefreshStub.bodyIs { _, sessionId, _, completion in
-                // run on a different queue to simulate network call queue change
-                let error = ResponseError(httpCode: 400, responseCode: nil, userFacingMessage: "test error message", underlyingError: nil)
-                DispatchQueue.global(qos: .userInitiated).async { completion(.failure(.networkingError(error))) }
-            }
-
             sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
             sessionMock.requestJSONStub.bodyIs { counter, request, completion in
                 if request.value(key: "Authorization") == "Bearer test accessToken old" {
@@ -1857,7 +1965,17 @@ final class PMAPIServiceRequestTests: XCTestCase {
             sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
                 SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
             }
+            let onRefreshCounter: Atomic<UInt> = .init(0) // only tracking refresh calls
             sessionMock.requestDecodableStub.bodyIs { _, request, decoder, completion in
+                if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
+                    onRefreshCounter.mutate {
+                        $0 += 1
+                    }
+                    let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test error message")
+                    let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 400))
+                    completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
+                    return
+                }
                 guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
                 let data = """
                 {
@@ -1880,10 +1998,10 @@ final class PMAPIServiceRequestTests: XCTestCase {
             }
 
             // THEN
-            XCTAssertTrue(authDelegateMock.onRefreshStub.wasCalledExactlyOnce)
+            XCTAssertTrue(onRefreshCounter.value == 1)
             XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests * 2)
             XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-            XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
+            XCTAssertTrue(sessionMock.requestDecodableStub.callCounter == 2)
             XCTAssertEqual(sessionMock.requestJSONStub.callCounter, numberOfRequests * 2)
             XCTAssertEqual(results.count, Int(numberOfRequests))
             XCTAssertEqual(auth.value.sessionID, "new test session uid")

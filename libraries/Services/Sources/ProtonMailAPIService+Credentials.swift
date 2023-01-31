@@ -158,7 +158,7 @@ extension PMAPIService {
             return
         }
         
-        self.onRefreshCredential(credential: currentCredentials) { result in
+        onRefreshCredential(credential: currentCredentials) { result in
             self.fetchAuthCredentialCompletionBlockBackgroundQueue.async {
                 if withoutSupportForUnauthenticatedSessions {
                     self.handleRefreshingResultsWithUnsupportedUnauthenticatedSessions(result, credentialsCausing401, refreshCounter, deviceFingerprints, continuation, completion)
@@ -171,8 +171,7 @@ extension PMAPIService {
 
     private func onRefreshCredential(credential: AuthCredential,
                                      complete: @escaping AuthRefreshResultCompletion) {
-        self.refreshCredential(Credential(credential) ) { result in
-            // captured reference ensures the authenticator is not deallocated until the completion block is called
+        refreshCredential(Credential(credential) ) { result in
             switch result {
             case .failure(let responseError):
                 complete(.failure(.from(responseError)))

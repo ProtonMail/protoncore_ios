@@ -97,31 +97,6 @@ public final class AuthHelper: AuthDelegate {
         }
     }
     
-    public func onRefresh(sessionUID: String, service: APIService, complete: @escaping AuthRefreshResultCompletion) {
-        guard let oldCredential = authCredentials.transform({ $0?.1 }) else {
-            PMLog.error("App tried to refresh non-existing credentials. It's a programmers error and should be investigated")
-            complete(.failure(.notImplementedYet("Not logged in")))
-            return
-        }
-        guard oldCredential.UID == sessionUID else {
-            PMLog.error("Asked for refreshing credentials of wrong session. It's a programmers error and should be investigated")
-            complete(.failure(.notImplementedYet("Wrong session")))
-            return
-        }
-        
-        var authenticator: Authenticator? = Authenticator(api: service)
-        authenticator?.refreshCredential(oldCredential) { result in
-            // captured reference ensures the authenticator is not deallocated until the completion block is called
-            authenticator = nil
-            switch result {
-            case .success(.ask2FA((let newCredential, _))), .success(.newCredential(let newCredential, _)), .success(.updatedCredential(let newCredential)):
-                complete(.success(newCredential))
-            case .failure(let authError):
-                complete(.failure(authError))
-            }
-        }
-    }
-    
     public func onUpdate(credential: Credential, sessionUID: String) {
         authCredentials.mutate { credentialsToBeUpdated in
             
@@ -223,11 +198,6 @@ extension AuthHelper {
     
     @available(*, deprecated, message: "Please use onUpdate(credential:sessionUID:) instead")
     public func onUpdate(auth: Credential) {
-        assertionFailure("Should never be called")
-    }
-    
-    @available(*, deprecated, message: "Please use onRefresh(sessionUID:for:complete:) instead")
-    public func onRefresh(bySessionUID sessionUID: String, complete: @escaping AuthRefreshComplete) {
         assertionFailure("Should never be called")
     }
 }

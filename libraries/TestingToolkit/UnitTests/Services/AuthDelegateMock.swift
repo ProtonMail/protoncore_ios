@@ -37,11 +37,7 @@ public final class AuthDelegateMock: AuthDelegate {
     
     @FuncStub(AuthDelegateMock.onUpdate) public var onUpdateStub
     public func onUpdate(credential: Credential, sessionUID: String) { onUpdateStub(credential, sessionUID) }
-    
-    @FuncStub(AuthDelegateMock.onRefresh) public var onRefreshStub
-    public func onRefresh(sessionUID: String, service: APIService, complete: @escaping AuthRefreshResultCompletion) {
-        onRefreshStub(sessionUID, service, complete)
-    }
+
     @FuncStub(AuthDelegateMock.eraseUnauthSessionCredentials) public var eraseUnauthSessionCredentialsStub
     public func eraseUnauthSessionCredentials(sessionUID: String) {
         eraseUnauthSessionCredentialsStub(sessionUID)
