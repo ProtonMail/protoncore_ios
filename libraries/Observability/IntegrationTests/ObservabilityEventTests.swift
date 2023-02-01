@@ -79,17 +79,6 @@ final class ObservabilityEventTests: XCTestCase {
         let step: TestingEventFromWebStep
     }
 
-    func testValidEventIsAccepted() async throws {
-        let event = ObservabilityEvent<CounterPayloadWithLabels<TestingEventFromWebStepLabels>>.init(
-            name: "web_core_signup_pageLoad_total",
-            version: .v1,
-            data: .init(labels: .init(step: .congratulations))
-        )
-        let (task, _) = try await performRequest(event: event)
-        let httpResponse = try XCTUnwrap(task?.response as? HTTPURLResponse)
-        XCTAssertEqual(httpResponse.statusCode, 200)
-    }
-
     func testInvalidEventIsRejected() async throws {
         let event = ObservabilityEvent.screenLoadCount(screenName: .planSelection)
         let (task, _) = try await performRequest(event: event)

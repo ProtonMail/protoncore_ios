@@ -269,12 +269,6 @@ public class PMAPIService: APIService {
               challengeParametersProvider: challengeParametersProvider)
     }
 
-    public enum SessionAcquiringResult {
-        case sessionFetchedAndAvailable
-        case sessionAlreadyPresent
-        case sessionUnavailableAndNotFetched
-    }
-
     public func acquireSessionIfNeeded(completion: @escaping (Result<SessionAcquiringResult, APIError>) -> Void) {
         fetchAuthCredentials { [weak self] (result: AuthCredentialFetchingResult) in
             switch result {
