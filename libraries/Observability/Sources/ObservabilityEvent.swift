@@ -21,6 +21,18 @@
 
 // MARK: - Envelope
 
+struct Metrics<T>: Encodable where T: Encodable {
+    let metrics: [ObservabilityEvent<T>]
+    
+    enum CodingKeys: String, CodingKey {
+        case metrics = "Metrics"
+    }
+    
+    init(metrics: [ObservabilityEvent<T>]) {
+        self.metrics = metrics
+    }
+}
+
 /// ObservabilityEvent structure defines the envelope for the event payload
 public struct ObservabilityEvent<Payload>: Encodable where Payload: Encodable {
 

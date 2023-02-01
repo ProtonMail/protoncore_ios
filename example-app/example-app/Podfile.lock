@@ -349,7 +349,8 @@ PODS:
     - ProtonCore-Networking (= 3.26.2)
     - SwiftOTP (~> 2.0)
     - TrustKit
-  - ProtonCore-Observability (3.26.2)
+  - ProtonCore-Observability (3.26.2):
+    - ProtonCore-Services (= 3.26.2)
   - ProtonCore-Observability/IntegrationTests (3.26.2):
     - ProtonCore-Authentication (= 3.26.2)
     - ProtonCore-Networking (= 3.26.2)
@@ -357,6 +358,8 @@ PODS:
     - ProtonCore-TestingToolkit/UnitTests/FeatureSwitch (= 3.26.2)
   - ProtonCore-Observability/UnitTests (3.26.2):
     - JSONSchema
+    - ProtonCore-Services (= 3.26.2)
+    - ProtonCore-TestingToolkit/UnitTests/Networking (= 3.26.2)
   - ProtonCore-OpenPGP (3.26.2)
   - ProtonCore-Payments/Crypto-Go1.19.4 (3.26.2):
     - ProtonCore-Authentication/Crypto-Go1.19.4 (= 3.26.2)
@@ -826,7 +829,7 @@ SPEC CHECKSUMS:
   ProtonCore-LoginUI: 14bfcbfa4eb628782f977eda59cef1f0dfa36c7a
   ProtonCore-Networking: a719f48826239e57aeb36deec8e1c8481d2bd2ba
   ProtonCore-ObfuscatedConstants: 1ba930b073e0ae846487d50f52b7dc910f34cc8c
-  ProtonCore-Observability: a9049e3b9519cec64e2a6ae6ba5b88ca9ad3a500
+  ProtonCore-Observability: ed8f23479697a0f0dcd47e9968a26cb11c741a9e
   ProtonCore-OpenPGP: 32a3000d81781c33a3b051bb910b84b35d6d0f8a
   ProtonCore-Payments: ac42b8557b05208e634ac806e3146228fea54cda
   ProtonCore-PaymentsUI: 0c960d3d0ad899baad6511565dbcf54aeaf9de59
