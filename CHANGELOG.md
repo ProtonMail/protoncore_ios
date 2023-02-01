@@ -1,3 +1,17 @@
+## 3.27.0 (2023-02-01)
+
+###  (3 changes)
+
+- [[CP-5261] Add Observability Endpoint and Service](apple/shared/protoncore@0128eaa5dd529f1db11de9237b7ad31c86e34bcd) ([merge request](apple/shared/protoncore!1086))
+- [Fixed _key setupCryptoTransformers in keymaker](apple/shared/protoncore@14592ffa62f7bffdee4e1a0dcc09bdfdac1c6856) ([merge request](apple/shared/protoncore!1077))
+- [Fix typos pmtest](apple/shared/protoncore@69dcd45e733d313bb1c798ce15fe8518ee8ff5d8) ([merge request](apple/shared/protoncore!1067))
+
+### added (3 changes)
+
+- [[CP-5260] Observability events definitions](apple/shared/protoncore@e213e9cfa26d59d6266f7630d9a15fb55e39724b) ([merge request](apple/shared/protoncore!1079))
+- [[MAILIOS-2607] Option to add views to PMActionSheetHeaderView title row](apple/shared/protoncore@3e49bc109123bbd1b45627798780a4413e481496) ([merge request](apple/shared/protoncore!1080))
+- [[CP-5052] Opportunistic session aquisition call](apple/shared/protoncore@91da72e32f056ba5ff91610bfbd0938a644fa0f7) ([merge request](apple/shared/protoncore!1078))
+
 ## 3.26.2 (2023-01-20)
 
 ### changed (2 changes)
