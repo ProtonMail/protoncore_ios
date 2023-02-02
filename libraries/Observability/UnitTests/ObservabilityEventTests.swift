@@ -41,16 +41,17 @@ final class ObservabilityEventTests: XCTestCase {
 
     // MARK: - externalAccountCreationSignin event
 
-    let ios_core_external_account_creation_signin_v1 = """
+    let ios_core_external_account_creation_signin_total_v1 = """
     {
-        "$id": "https://proton.me/ios_core_external_account_creation_signin_v1.schema.json",
+        "$id": "https://proton.me/ios_core_external_account_creation_signin_total_v1.schema.json",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "title": "iOS Core external account creation signin capability",
         "description": "Metric for the success or failure of the external account creation signin",
         "type": "object",
         "properties": {
             "Value": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 1
             },
             "Labels": {
                 "type": "object",
@@ -63,34 +64,36 @@ final class ObservabilityEventTests: XCTestCase {
                         ]
                     }
                 },
-                "required": ["status"]
+                "required": ["status"],
+                "additionalProperties": false
             }
         },
-        "required": ["Value", "Labels"]
+        "required": ["Value", "Labels"],
+        "additionalProperties": false
     }
-
     """
 
     func testExternalAccountCreationSigninEvent() throws {
         try SuccessOrFailureStatus.allCases.forEach { status in
-            let issues = try validatePayloadAccordingToSchema(event: .externalAccountCreationSignin(status: status),
-                                                              schema: ios_core_external_account_creation_signin_v1)
+            let issues = try validatePayloadAccordingToSchema(event: .externalAccountCreationSigninTotal(status: status),
+                                                              schema: ios_core_external_account_creation_signin_total_v1)
             XCTAssertEqual(issues, .noIssues)
         }
     }
 
     // MARK: - humanVerificationOutcome event
 
-    let ios_core_human_verification_outcome_v1 = """
+    let ios_core_human_verification_outcome_total_v1 = """
     {
-        "$id": "https://proton.me/ios_core_human_verification_outcome_v1.schema.json",
+        "$id": "https://proton.me/ios_core_human_verification_outcome_total_v1.schema.json",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "title": "iOS Core human verification status",
         "description": "Metric for the status of human verification outcome",
         "type": "object",
         "properties": {
             "Value": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 1
             },
             "Labels": {
                 "type": "object",
@@ -104,35 +107,36 @@ final class ObservabilityEventTests: XCTestCase {
                         ]
                     }
                 },
-                "required": ["status"]
+                "required": ["status"],
+                "additionalProperties": false
             }
         },
-        "required": ["Value", "Labels"]
+        "required": ["Value", "Labels"],
+        "additionalProperties": false
     }
-
-
     """
 
     func testHumanVerificationOutcomeEvent() throws {
         try SuccessOrFailureOrCancelledStatus.allCases.forEach { status in
-            let issues = try validatePayloadAccordingToSchema(event: .humanVerificationOutcome(status: status),
-                                                              schema: ios_core_human_verification_outcome_v1)
+            let issues = try validatePayloadAccordingToSchema(event: .humanVerificationOutcomeTotal(status: status),
+                                                              schema: ios_core_human_verification_outcome_total_v1)
             XCTAssertEqual(issues, .noIssues)
         }
     }
 
     // MARK: - humanVerificationScreenLoad event
 
-    let ios_core_human_verification_screen_load_v1 = """
+    let ios_core_human_verification_screen_load_total_v1 = """
     {
-        "$id": "https://proton.me/ios_core_human_verification_screen_load_v1.schema.json",
+        "$id": "https://proton.me/ios_core_human_verification_screen_load_total_v1.schema.json",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "title": "iOS Core human verification screen load",
         "description": "Metric for the status of human verification screen load",
         "type": "object",
         "properties": {
             "Value": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 1
             },
             "Labels": {
                 "type": "object",
@@ -145,34 +149,36 @@ final class ObservabilityEventTests: XCTestCase {
                         ]
                     }
                 },
-                "required": ["status"]
+                "required": ["status"],
+                "additionalProperties": false
             }
         },
-        "required": ["Value", "Labels"]
+        "required": ["Value", "Labels"],
+        "additionalProperties": false
     }
-
     """
 
     func testHumanVerificationScreenLoadEvent() throws {
         try SuccessOrFailureStatus.allCases.forEach { status in
-            let issues = try validatePayloadAccordingToSchema(event: .humanVerificationScreenLoad(status: status),
-                                                              schema: ios_core_human_verification_screen_load_v1)
+            let issues = try validatePayloadAccordingToSchema(event: .humanVerificationScreenLoadTotal(status: status),
+                                                              schema: ios_core_human_verification_screen_load_total_v1)
             XCTAssertEqual(issues, .noIssues)
         }
     }
 
     // MARK: - screenLoadCount event
 
-    let ios_core_screen_load_count_v1 = """
+    let ios_core_screen_load_count_total_v1 = """
     {
-        "$id": "https://proton.me/ios_core_screen_load_count_v1.schema.json",
+        "$id": "https://proton.me/ios_core_screen_load_count_total_v1.schema.json",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "title": "iOS Core screen load count",
         "description": "Metric for the screen load count of each screen",
         "type": "object",
         "properties": {
             "Value": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 1
             },
             "Labels": {
                 "type": "object",
@@ -191,33 +197,36 @@ final class ObservabilityEventTests: XCTestCase {
                         ]
                     }
                 },
-                "required": ["screen_name"]
+                "required": ["screen_name"],
+                "additionalProperties": false
             }
         },
-        "required": ["Value", "Labels"]
+        "required": ["Value", "Labels"],
+        "additionalProperties": false
     }
     """
 
     func testScreenLoadCountEvent() throws {
         try ScreenName.allCases.forEach { screenName in
-            let issues = try validatePayloadAccordingToSchema(event: .screenLoadCount(screenName: screenName),
-                                                              schema: ios_core_screen_load_count_v1)
+            let issues = try validatePayloadAccordingToSchema(event: .screenLoadCountTotal(screenName: screenName),
+                                                              schema: ios_core_screen_load_count_total_v1)
             XCTAssertEqual(issues, .noIssues)
         }
     }
 
     // MARK: - planSelectionCheckout event
 
-    let ios_core_plan_selection_checkout_v1 = """
+    let ios_core_plan_selection_checkout_total_v1 = """
     {
-        "$id": "https://proton.me/ios_core_plan_selection_checkout_v1.schema.json",
+        "$id": "https://proton.me/ios_core_plan_selection_checkout_total_v1.schema.json",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "title": "iOS Core plan selection checkout status",
         "description": "Metric for the status of plan selection checkout",
         "type": "object",
         "properties": {
             "Value": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 1
             },
             "Labels": {
                 "type": "object",
@@ -238,18 +247,20 @@ final class ObservabilityEventTests: XCTestCase {
                         ]
                     }
                 },
-                "required": ["status", "plan"]
+                "required": ["status", "plan"],
+                "additionalProperties": false
             }
         },
-        "required": ["Value", "Labels"]
+        "required": ["Value", "Labels"],
+        "additionalProperties": false
     }
     """
 
     func testPlanSelectionCheckoutEvent() throws {
         try SuccessOrFailureStatus.allCases.forEach { status in
             try PlanName.allCases.forEach { plan in
-                let issues = try validatePayloadAccordingToSchema(event: .planSelectionCheckout(status: status, plan: plan),
-                                                                  schema: ios_core_plan_selection_checkout_v1)
+                let issues = try validatePayloadAccordingToSchema(event: .planSelectionCheckoutTotal(status: status, plan: plan),
+                                                                  schema: ios_core_plan_selection_checkout_total_v1)
                 XCTAssertEqual(issues, .noIssues)
             }
         }
@@ -257,16 +268,17 @@ final class ObservabilityEventTests: XCTestCase {
 
     // MARK: - protonAccountCreationSignin event
 
-    let ios_core_proton_account_creation_signin_v1 = """
+    let ios_core_proton_account_creation_signin_total_v1 = """
     {
-        "$id": "https://proton.me/ios_core_proton_account_creation_signin_v1.schema.json",
+        "$id": "https://proton.me/ios_core_proton_account_creation_signin_total_v1.schema.json",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "title": "iOS Core proton account creation signin capability",
         "description": "Metric for the success or failure of the proton account creation signin",
         "type": "object",
         "properties": {
             "Value": {
-                "type": "integer"
+                "type": "integer",
+                "minimum": 1
             },
             "Labels": {
                 "type": "object",
@@ -279,17 +291,19 @@ final class ObservabilityEventTests: XCTestCase {
                         ]
                     }
                 },
-                "required": ["status"]
+                "required": ["status"],
+                "additionalProperties": false
             }
         },
-        "required": ["Value", "Labels"]
+        "required": ["Value", "Labels"],
+        "additionalProperties": false
     }
     """
 
     func testProtonAccountCreationSigninEvent() throws {
         try SuccessOrFailureStatus.allCases.forEach { status in
-            let issues = try validatePayloadAccordingToSchema(event: .protonAccountCreationSignin(status: status),
-                                                              schema: ios_core_proton_account_creation_signin_v1)
+            let issues = try validatePayloadAccordingToSchema(event: .protonAccountCreationSigninTotal(status: status),
+                                                              schema: ios_core_proton_account_creation_signin_total_v1)
             XCTAssertEqual(issues, .noIssues)
         }
     }

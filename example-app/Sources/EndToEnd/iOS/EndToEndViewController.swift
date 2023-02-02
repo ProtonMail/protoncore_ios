@@ -130,7 +130,7 @@ final class EndToEndViewController: UIViewController,
         output.append("\n")
 
         self.showLoadingIndicator()
-        api.acquireSessionIfNeeded { (result: Result<SessionAcquiringResult, PMAPIService.APIError>) in
+        api.acquireSessionIfNeeded { result in
             self.hideLoadingIndicator()
             FeatureFactory.shared.disable(&.unauthSession)
             FeatureFactory.shared.disable(&.enforceUnauthSessionStrictVerificationOnBackend)

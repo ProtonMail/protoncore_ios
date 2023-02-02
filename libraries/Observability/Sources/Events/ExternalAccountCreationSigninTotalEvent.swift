@@ -1,5 +1,5 @@
 //
-//  ProtonAccountCreationSigninEvent.swift
+//  ExternalAccountCreationSigninTotalEvent.swift
 //  ProtonCore-Observability - Created on 16.12.22.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -19,12 +19,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-public struct ProtonAccountCreationSigninLabels: Encodable {
+public struct ExternalAccountCreationLabels: Encodable {
     let status: SuccessOrFailureStatus
 }
 
-extension ObservabilityEvent where Payload == CounterPayloadWithLabels<ProtonAccountCreationSigninLabels> {
-    public static func protonAccountCreationSignin(status: SuccessOrFailureStatus) -> Self {
-        .init(name: "ios_core_proton_account_creation_signin_v1", labels: .init(status: status))
+extension ObservabilityEvent where Payload == CounterPayloadWithLabels<ExternalAccountCreationLabels> {
+    public static func externalAccountCreationSigninTotal(status: SuccessOrFailureStatus) -> Self {
+        .init(name: "ios_core_external_account_creation_signin_total", labels: .init(status: status))
     }
 }
