@@ -21,6 +21,7 @@
 
 import XCTest
 import ProtonCore_Networking
+import ProtonCore_Services
 @testable import ProtonCore_Authentication
 
 class RefreshEndpointTests: XCTestCase {
@@ -32,7 +33,7 @@ class RefreshEndpointTests: XCTestCase {
     
     func testRefreshEndpoint_request() {
         let authCredential = AuthCredential(sessionID: "sessionID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", privateKey: nil, passwordKeySalt: nil)
-        let refreshEndpoint = AuthService.RefreshEndpoint(authCredential: authCredential)
+        let refreshEndpoint = RefreshEndpoint(authCredential: authCredential)
         XCTAssertEqual(refreshEndpoint.method, .post)
         XCTAssertEqual(refreshEndpoint.path, "/auth/v4/refresh")
         XCTAssertEqual(refreshEndpoint.parameters?[parametersResponseType] as? String, "token")

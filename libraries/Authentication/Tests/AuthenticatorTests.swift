@@ -923,7 +923,10 @@ class AuthenticatorTests: XCTestCase {
     func testRefreshCredentialSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "refreshCredential")
-        let refreshResponse = AuthService.RefreshResponse(accessToken: "accessToken", tokenType: "tokenType", scopes: ["Scope"], refreshToken: "refreshToken")
+        let refreshResponse = RefreshResponse(accessToken: "accessToken",
+                                              tokenType: "tokenType",
+                                              scopes: ["Scope"],
+                                              refreshToken: "refreshToken")
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/v4/refresh") {
                 completion(nil, .success(refreshResponse))
