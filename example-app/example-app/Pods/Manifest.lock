@@ -861,7 +861,7 @@ SPEC CHECKSUMS:
   ProtonCore-Payments: f2c54107fbd722c10c3a219f12bb3059da4dc8b7
   ProtonCore-PaymentsUI: 3c405279f319121bfd0c7c25f9d828b6bfb3785c
   ProtonCore-QuarkCommands: 273e9f60ebdce026094cf3e627f69ad67d2fe273
-  ProtonCore-Services: 5248ef48ce349da0d88ae30c2fb9e7151a88a584
+  ProtonCore-Services: f5b45f0908ddffe7188fabec05839978ef2b4eef
   ProtonCore-Settings: 5bd5897e94dc5c898c062d7d696b0535e0a9e0da
   ProtonCore-TestingToolkit: edfc0dcd91c084caff1182f34c1ca11ced974777
   ProtonCore-TroubleShooting: 2776410dec14916b37cf1e8274e9a1f78140acbe

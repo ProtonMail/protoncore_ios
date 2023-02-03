@@ -172,13 +172,11 @@ public final class AuthHelper: AuthDelegate {
                 return
             }
             authCredentials = nil
-            
-            guard let delegate, let delegateExecutor else { return }
-            delegateExecutor.execute {
-                delegate.sessionWasInvalidated(for: sessionUID, isAuthenticatedSession: true)
+
+            delegateExecutor?.execute { [weak self] in
+                self?.delegate?.sessionWasInvalidated(for: sessionUID, isAuthenticatedSession: true)
             }
-            guard let authSessionInvalidatedDelegateForLoginAndSignup else { return }
-            authSessionInvalidatedDelegateForLoginAndSignup.sessionWasInvalidated(for: sessionUID, isAuthenticatedSession: true)
+            authSessionInvalidatedDelegateForLoginAndSignup?.sessionWasInvalidated(for: sessionUID, isAuthenticatedSession: true)
         }
     }
 
@@ -191,12 +189,10 @@ public final class AuthHelper: AuthDelegate {
             }
             authCredentials = nil
 
-            guard let delegate, let delegateExecutor else { return }
-            delegateExecutor.execute {
-                delegate.sessionWasInvalidated(for: sessionUID, isAuthenticatedSession: false)
+            delegateExecutor?.execute { [weak self] in
+                self?.delegate?.sessionWasInvalidated(for: sessionUID, isAuthenticatedSession: false)
             }
-            guard let authSessionInvalidatedDelegateForLoginAndSignup else { return }
-            authSessionInvalidatedDelegateForLoginAndSignup.sessionWasInvalidated(for: sessionUID, isAuthenticatedSession: false)
+            authSessionInvalidatedDelegateForLoginAndSignup?.sessionWasInvalidated(for: sessionUID, isAuthenticatedSession: false)
         }
     }
 }
