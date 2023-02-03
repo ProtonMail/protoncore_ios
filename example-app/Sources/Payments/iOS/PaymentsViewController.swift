@@ -28,6 +28,7 @@ import ProtonCore_Services
 import ProtonCore_Payments
 import ProtonCore_ObfuscatedConstants
 import ProtonCore_UIFoundations
+import ProtonCore_Challenge
 import StoreKit
 
 class PaymentsViewController: UIViewController, AccessibleView {
@@ -89,7 +90,7 @@ class PaymentsViewController: UIViewController, AccessibleView {
         } else if let viewController = segue.destination as? PaymentsReceiptDetailsViewController {
             viewController.testApi = PMAPIService.createAPIService(environment: .black,
                                                                    sessionUID: "testSessionUID",
-                                                                   challengeParametersProvider: .forAPIService(clientApp: clientApp))
+                                                                   challengeParametersProvider: .forAPIService(clientApp: clientApp, challenge: PMChallenge()))
         }
     }
 

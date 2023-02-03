@@ -20,7 +20,6 @@ def crypto_variant
 end
 
 def protoncore_ios
-
   pod "ProtonCore-APIClient", :path => "../../"
   pod "ProtonCore-Authentication-KeyGeneration/#{crypto_variant}", :path => "../../"
   pod "ProtonCore-Authentication/#{crypto_variant}", :path => "../../"
@@ -106,7 +105,7 @@ def protoncore_unit_tests
   pod "ProtonCore-Login", :subspecs => ["#{crypto_variant}"], :path => "../../", :testspecs => ["Tests-#{crypto_variant}"]
   
   pod "ProtonCore-TestingToolkit/UnitTests/LoginUI/#{crypto_variant}", :path => "../../"
-  pod "ProtonCore-LoginUI", :subspecs => ["#{crypto_variant}"], :path => "../../", :testspecs => ["Tests-#{crypto_variant}"]
+  pod "ProtonCore-LoginUI", :subspecs => ["#{crypto_variant}"], :path => "../../", :testspecs => ["UnitTests-#{crypto_variant}"]
 
   pod "ProtonCore-AccountSwitcher", :path => "../../", :testspecs => ["Tests"]
   pod "ProtonCore-Common", :path => "../../", :testspecs => ["Tests"]

@@ -52,6 +52,7 @@ Pod::Spec.new do |s|
             test_spec.dependency "ProtonCore-Authentication-KeyGeneration/#{crypto_subspec(crypto)}", $version
             test_spec.dependency "ProtonCore-ObfuscatedConstants", $version
             test_spec.dependency "ProtonCore-TestingToolkit/TestData", $version
+            test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration/#{crypto_subspec(crypto)}", $version
             test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Login/#{crypto_subspec(crypto)}", $version
             test_spec.dependency "OHHTTPStubs/Swift"
             test_spec.dependency "TrustKit"

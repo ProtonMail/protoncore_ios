@@ -135,13 +135,6 @@
     {
       "target" : {
         "containerPath" : "container:Pods\/Pods.xcodeproj",
-        "identifier" : "EE6688B8CAFD7B70A1ADBE7F38BA8DE2",
-        "name" : "ProtonCore-LoginUI-Unit-Tests-Crypto-Go1.19.4"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Pods\/Pods.xcodeproj",
         "identifier" : "3F85AE1081691546DF1835A0F9DA2B93",
         "name" : "ProtonCore-Networking-iOS-Unit-Tests"
       }
@@ -235,6 +228,13 @@
         "containerPath" : "container:Pods\/Pods.xcodeproj",
         "identifier" : "B7CC18C13472FDDA15B948C9FFD14CB0",
         "name" : "ProtonCore-Observability-Unit-UnitTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "C8D9950E6D64D3AD96377097AC0BB928",
+        "name" : "ProtonCore-LoginUI-Unit-UnitTests-Crypto-Go1.19.4"
       }
     }
   ],

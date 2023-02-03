@@ -32,10 +32,14 @@ class TestAuthDelegate: AuthDelegate {
     func credential(sessionUID _: String) -> Credential? {
         Credential.init(UID: "sessionID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: [])
     }
-    func onLogout(sessionUID uid: String) { }
+    func onAuthenticatedSessionInvalidated(sessionUID uid: String) { }
     func onUpdate(credential: Credential, sessionUID: String) { }
     func onRefresh(sessionUID: String, service: APIService, complete: @escaping AuthRefreshResultCompletion) { }
-    func eraseUnauthSessionCredentials(sessionUID: String) { }
+    func onUnauthenticatedSessionInvalidated(sessionUID: String) { }
+    func onSessionObtaining(credential: Credential) {}
+    func onAdditionalCredentialsInfoObtained(sessionUID: String, password: String?, salt: String?, privateKey: String?) {}
+
+    weak var authSessionInvalidatedDelegateForLoginAndSignup: ProtonCore_Services.AuthSessionInvalidatedDelegate?
 }
 
 class TestStoreKitManagerDelegate: StoreKitManagerDelegate {

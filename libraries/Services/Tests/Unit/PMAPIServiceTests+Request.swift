@@ -80,7 +80,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                       sessionFactory: sessionFactoryMock,
                                       cacheToClear: cacheToClearMock,
                                       trustKitProvider: trustKitProviderMock,
-                                      challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+                                      challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
     }
     
     override func setUp() {
@@ -247,7 +247,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertNil(result.task)
         XCTAssertTrue(try XCTUnwrap(result.response).isEmpty)
         XCTAssertNil(result.error)
@@ -299,7 +299,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
             XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-            XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
             let request = try XCTUnwrap(sessionMock.requestJSONStub.lastArguments?.first)
             XCTAssertEqual(request.value(key: "Authorization"), "Bearer test accessToken")
         }
@@ -337,7 +337,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test sessionUID")
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertNil(result.task)
         XCTAssertTrue(try XCTUnwrap(result.response).isEmpty)
         XCTAssertNil(result.error)
@@ -380,7 +380,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
             XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-            XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
             XCTAssertNil(result.task)
             XCTAssertTrue(try XCTUnwrap(result.response).isEmpty)
             XCTAssertNil(result.error)
@@ -416,7 +416,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         guard let request = sessionMock.requestJSONStub.lastArguments?.first else { XCTFail(); return }
         XCTAssertFalse(request.hasHeader(key: "Authorization"))
         XCTAssertFalse(request.hasHeader(key: "x-pm-uid"))
@@ -452,7 +452,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
             XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
             XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-            XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
             XCTAssertNotNil(result.error)
             XCTAssertEqual(result.error, PMAPIService.AuthCredentialFetchingResult.notFound.toNSError)
         }
@@ -477,7 +477,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
             XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-            XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
             let request = try XCTUnwrap(sessionMock.requestJSONStub.lastArguments?.first)
             XCTAssertFalse(request.hasHeader(key: "Authorization"))
             XCTAssertFalse(request.hasHeader(key: "x-pm-uid"))
@@ -507,7 +507,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
             XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-            XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
             let request = try XCTUnwrap(sessionMock.requestJSONStub.lastArguments?.first)
             XCTAssertFalse(request.hasHeader(key: "Authorization"))
             XCTAssertFalse(request.hasHeader(key: "x-pm-uid"))
@@ -548,7 +548,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         let request = try XCTUnwrap(sessionMock.requestJSONStub.lastArguments?.first)
         XCTAssertEqual(request.value(key: "Authorization"), "Bearer test accessToken")
         XCTAssertEqual(request.value(key: "x-pm-uid"), "test sessionID")
@@ -592,7 +592,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
             XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
             XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-            XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
             XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
             XCTAssertEqual(result.error, TestError.testError as NSError)
         }
@@ -618,7 +618,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
             XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-            XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
             XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
             XCTAssertEqual(result.error, TestError.testError as NSError)
         }
@@ -663,7 +663,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
             XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasCalledExactlyOnce)
             XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
             XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-            XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
             XCTAssertEqual(result.error, TestError.testError as NSError)
         }
     }
@@ -1326,10 +1326,10 @@ final class PMAPIServiceRequestTests: XCTestCase {
         }
 
         // THEN
-        XCTAssertTrue(authDelegateMock.eraseUnauthSessionCredentialsStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.onLogoutStub.lastArguments?.value, "test sessionUID")
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasCalledExactlyOnce)
+        XCTAssertEqual(authDelegateMock.onAuthenticatedSessionInvalidatedStub.lastArguments?.value, "test sessionUID")
         XCTAssertNil(result.response)
         XCTAssertEqual(result.error?.code, 4242)
         XCTAssertEqual(result.error?.localizedDescription, "test error message")
@@ -1422,10 +1422,10 @@ final class PMAPIServiceRequestTests: XCTestCase {
         // THEN
         XCTAssertNil(result.error)
         XCTAssertNotNil(result.response)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertTrue(onRefreshCounter.value == 1)
-        XCTAssertTrue(authDelegateMock.eraseUnauthSessionCredentialsStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.eraseUnauthSessionCredentialsStub.lastArguments?.value, "test sessionUID")
+        XCTAssertTrue(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.wasCalledExactlyOnce)
+        XCTAssertEqual(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.lastArguments?.value, "test sessionUID")
     }
 
     func test401WithCredentialsSucceedsIfUnauthenticateSessionAndRefreshCredentialsErrorsWith400AndSessionAcquisitionSuccedAndRetryCallSucceeds() async {
@@ -1490,10 +1490,10 @@ final class PMAPIServiceRequestTests: XCTestCase {
         // THEN
         XCTAssertNil(result.response)
         XCTAssertEqual(result.error?.code, httpCode)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertTrue(onRefreshCounter.value == 1)
-        XCTAssertTrue(authDelegateMock.eraseUnauthSessionCredentialsStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.eraseUnauthSessionCredentialsStub.lastArguments?.value, "test sessionUID")
+        XCTAssertTrue(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.wasCalledExactlyOnce)
+        XCTAssertEqual(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.lastArguments?.value, "test sessionUID")
     }
 
     func test401WithCredentialsSucceedsIfUnauthenticateSessionAndRefreshCredentialsErrorsWith400AndSessionAcquisitionErrors() async {
@@ -1567,10 +1567,10 @@ final class PMAPIServiceRequestTests: XCTestCase {
         // THEN
         XCTAssertNil(result.response)
         XCTAssertEqual(result.error?.bestShotAtReasonableErrorCode, 401)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertTrue(onRefreshCounter.value == 1)
-        XCTAssertTrue(authDelegateMock.eraseUnauthSessionCredentialsStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.eraseUnauthSessionCredentialsStub.lastArguments?.value, "test sessionUID")
+        XCTAssertTrue(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.wasCalledExactlyOnce)
+        XCTAssertEqual(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.lastArguments?.value, "test sessionUID")
     }
 
     func test401WithCredentialsErrorsIfUnauthenticateSessionAndRefreshCredentialsErrorsWith400AndSessionAcquisitionSuccedAndRetryCallErrors() async {
@@ -1881,6 +1881,9 @@ final class PMAPIServiceRequestTests: XCTestCase {
                 sessionID: "test sessionID", accessToken: "test accessToken old", refreshToken: "test refreshToken old"
             ))
             authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in auth.value }
+            authDelegateMock.onSessionObtainingStub.bodyIs { _, credentials in
+                auth.mutate { $0 = AuthCredential(credentials) }
+            }
             authDelegateMock.onUpdateStub.bodyIs { _, credentials, _ in
                 auth.mutate { $0 = AuthCredential(credentials) }
             }
@@ -1948,6 +1951,9 @@ final class PMAPIServiceRequestTests: XCTestCase {
                 sessionID: "test sessionID", accessToken: "test accessToken old", refreshToken: "test refreshToken old"
             ))
             authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in auth.value }
+            authDelegateMock.onSessionObtainingStub.bodyIs { _, credentials in
+                auth.mutate { $0 = AuthCredential(credentials) }
+            }
             authDelegateMock.onUpdateStub.bodyIs { _, credentials, _ in
                 auth.mutate {
                     $0.udpate(sessionID: credentials.UID, accessToken: credentials.accessToken, refreshToken: credentials.refreshToken)
@@ -2081,15 +2087,16 @@ final class PMAPIServiceRequestTests: XCTestCase {
             XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
             XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
             XCTAssertEqual(service.sessionUID, "new test session uid")
-            XCTAssertTrue(authDelegateMock.onUpdateStub.wasCalledExactlyOnce)
-            XCTAssertEqual(authDelegateMock.onUpdateStub.lastArguments?.first.accessToken, "new test access token")
+            XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onSessionObtainingStub.wasCalledExactlyOnce)
+            XCTAssertEqual(authDelegateMock.onSessionObtainingStub.lastArguments?.value.accessToken, "new test access token")
         }
     }
 
     func testSessionAcquireCallContainsFingerprintData() async throws {
         try await withFeatureSwitches([.unauthSession]) {
             // GIVEN
-            let challengeProperties: ChallengeParametersProvider = .forAPIService(clientApp: .other(named: "core"))
+            let challengeProperties: ChallengeParametersProvider = .forAPIService(clientApp: .other(named: "core"), challenge: .init())
             let service = testService
             service.authDelegate = authDelegateMock
             sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
@@ -2124,8 +2131,8 @@ final class PMAPIServiceRequestTests: XCTestCase {
             let payload = try XCTUnwrap(parameters["Payload"] as? [String: Any])
             let challenge0 = try XCTUnwrap(payload["\(challengeProperties.prefix)-ios-v4-challenge-0"] as? [String: Any])
             let challenge1 = try XCTUnwrap(payload["\(challengeProperties.prefix)-ios-v4-challenge-1"] as? [String: Any])
-            let challangeParameters0 = try XCTUnwrap(challengeProperties.provideParameters().first) as NSDictionary
-            let challangeParameters1 = try XCTUnwrap(challengeProperties.provideParameters().last) as NSDictionary
+            let challangeParameters0 = try XCTUnwrap(challengeProperties.provideParametersForSessionFetching().first) as NSDictionary
+            let challangeParameters1 = try XCTUnwrap(challengeProperties.provideParametersForSessionFetching().last) as NSDictionary
             XCTAssertTrue(challangeParameters0.isEqual(to: challenge0))
             XCTAssertTrue(challangeParameters1.isEqual(to: challenge1))
         }
@@ -2239,8 +2246,9 @@ final class PMAPIServiceRequestTests: XCTestCase {
             XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
             XCTAssertEqual(sessionMock.requestDecodableStub.callCounter, 2)
             XCTAssertEqual(service.sessionUID, "new test session uid")
-            XCTAssertTrue(authDelegateMock.onUpdateStub.wasCalledExactlyOnce)
-            XCTAssertEqual(authDelegateMock.onUpdateStub.lastArguments?.first.accessToken, "new test access token")
+            XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+            XCTAssertTrue(authDelegateMock.onSessionObtainingStub.wasCalledExactlyOnce)
+            XCTAssertEqual(authDelegateMock.onSessionObtainingStub.lastArguments?.value.accessToken, "new test access token")
         }
     }
 

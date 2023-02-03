@@ -32,6 +32,7 @@ Pod::Spec.new do |s|
 
     s.source_files = "libraries/QuarkCommands/Sources/**.swift"
     s.test_spec 'Tests' do |test_spec|
+        test_spec.dependency "OHHTTPStubs/Swift"
         test_spec.dependency 'ProtonCore-TestingToolkit/UnitTests/Doh', $version
         test_spec.source_files = 'libraries/QuarkCommands/Tests/**/*.swift'
         test_spec.resource = 'libraries/QuarkCommands/Tests/Mocks/Resources/*'

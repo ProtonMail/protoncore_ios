@@ -39,7 +39,8 @@ class CompleteViewModelTests: XCTestCase {
     // MARK: - Create new username user
     
     func test_createNewUsernameAccount_isSuccessful() {
-        let viewModel = createViewModel(doh: DohMock(), type: .username)
+        let (viewModel, authDelegate, serviceDelegate) = createViewModel(doh: DohMock(), type: .username)
+        _ = (authDelegate, serviceDelegate)
         mockCreateUserOK()
 
         let expectation = expectation(description: "Success expected")
@@ -59,7 +60,8 @@ class CompleteViewModelTests: XCTestCase {
     }
 
     func test_createNewUsernameAccount_withInvalidLoginCredentials_failsWithInvalidCredentialsError() {
-        let viewModel = createViewModel(doh: DohMock(), type: .username)
+        let (viewModel, authDelegate, serviceDelegate) = createViewModel(doh: DohMock(), type: .username)
+        _ = (authDelegate, serviceDelegate)
         mockCreateUserInvalidLoginCredentials()
 
         let expectation = expectation(description: "failure with invalidCredentials error expected")
@@ -87,7 +89,8 @@ class CompleteViewModelTests: XCTestCase {
     }
     
     func test_createNewUsernameAccount_withNonExistingUser_failsWithInvalidCredentialsError() {
-        let viewModel = createViewModel(doh: DohMock(), type: .username)
+        let (viewModel, authDelegate, serviceDelegate) = createViewModel(doh: DohMock(), type: .username)
+        _ = (authDelegate, serviceDelegate)
         mockCreateUserNonExistingUser()
 
         let expectation = expectation(description: "failure with invalidCredentials error expected")
@@ -115,7 +118,8 @@ class CompleteViewModelTests: XCTestCase {
     }
 
     func test_createNewUsernameAccount_with2FAError_failsWithInvalidStateError() {
-        let viewModel = createViewModel(doh: DohMock(), type: .username)
+        let (viewModel, authDelegate, serviceDelegate) = createViewModel(doh: DohMock(), type: .username)
+        _ = (authDelegate, serviceDelegate)
         mockCreateUser2FAError()
 
         let expectation = expectation(description: "failure with invalidState error expected")
@@ -145,7 +149,8 @@ class CompleteViewModelTests: XCTestCase {
     // MARK: - Create new internal user
     
     func test_createNewInternalAccount_isSuccessful() {
-        let viewModel = createViewModel(doh: DohMock(), type: .internal)
+        let (viewModel, authDelegate, serviceDelegate) = createViewModel(doh: DohMock(), type: .internal)
+        _ = (authDelegate, serviceDelegate)
         mockCreateUserOK()
 
         let expectation = expectation(description: "Success expected")
@@ -165,7 +170,8 @@ class CompleteViewModelTests: XCTestCase {
     }
 
     func test_createNewInternalAccountInvalidLoginCredentials_failsWithInvalidCredentialsError() {
-        let viewModel = createViewModel(doh: DohMock(), type: .internal)
+        let (viewModel, authDelegate, serviceDelegate) = createViewModel(doh: DohMock(), type: .internal)
+        _ = (authDelegate, serviceDelegate)
         mockCreateUserInvalidLoginCredentials()
 
         let expectation = expectation(description: "failure with invalidCredentials error expected")
@@ -193,7 +199,8 @@ class CompleteViewModelTests: XCTestCase {
     }
     
     func test_createNewInternalAccount_withNonExistingUser_failsWithInvalidCredentialsError() {
-        let viewModel = createViewModel(doh: DohMock(), type: .internal)
+        let (viewModel, authDelegate, serviceDelegate) = createViewModel(doh: DohMock(), type: .internal)
+        _ = (authDelegate, serviceDelegate)
         mockCreateUserNonExistingUser()
 
         let expectation = expectation(description: "failure with invalidCredentials error expected")
@@ -221,7 +228,8 @@ class CompleteViewModelTests: XCTestCase {
     }
 
     func test_createNewInternalAccount_with2FAError_failsWithInvalidStateError() {
-        let viewModel = createViewModel(doh: DohMock(), type: .internal)
+        let (viewModel, authDelegate, serviceDelegate) = createViewModel(doh: DohMock(), type: .internal)
+        _ = (authDelegate, serviceDelegate)
         mockCreateUser2FAError()
 
         let expectation = expectation(description: "failure with invalidState error expected")
@@ -251,7 +259,8 @@ class CompleteViewModelTests: XCTestCase {
     // MARK: - Create new external user
     
     func test_createNewExternalAccount_isSuccessful() {
-        let viewModel = createViewModel(doh: DohMock(), type: .external)
+        let (viewModel, authDelegate, serviceDelegate) = createViewModel(doh: DohMock(), type: .external)
+        _ = (authDelegate, serviceDelegate)
         mockCreateExternalUserOK()
 
         let expectation = expectation(description: "success expected")
@@ -273,7 +282,8 @@ class CompleteViewModelTests: XCTestCase {
     }
 
     func test_createNewExternalAccount_withInvalidLoginCredentials_failsWithInvalidCredentialsError() {
-        let viewModel = createViewModel(doh: DohMock(), type: .external)
+        let (viewModel, authDelegate, serviceDelegate) = createViewModel(doh: DohMock(), type: .external)
+        _ = (authDelegate, serviceDelegate)
         mockCreateExternalUserInvalidLoginCredentials()
 
         let expectation = expectation(description: "failure with invalidCredentials error expected")
@@ -301,7 +311,8 @@ class CompleteViewModelTests: XCTestCase {
     }
 
     func test_createNewExternalAccount_withNonExistingUser_failsWithInvalidCredentialsError() {
-        let viewModel = createViewModel(doh: DohMock(), type: .external)
+        let (viewModel, authDelegate, serviceDelegate) = createViewModel(doh: DohMock(), type: .external)
+        _ = (authDelegate, serviceDelegate)
         mockCreateExternalUserNonExistingUser()
 
         let expectation = expectation(description: "failure with invalidCredentials error expected")
@@ -329,7 +340,8 @@ class CompleteViewModelTests: XCTestCase {
     }
 
     func test_createNewExternalAccount_with2FAError_failsWithInvalidStateError() {
-        let viewModel = createViewModel(doh: DohMock(), type: .external)
+        let (viewModel, authDelegate, serviceDelegate) = createViewModel(doh: DohMock(), type: .external)
+        _ = (authDelegate, serviceDelegate)
         mockCreateExternalUser2FAError()
 
         let expectation = expectation(description: "Failure with invalidState error expected")

@@ -29,6 +29,7 @@ import ProtonCore_Foundations
 import ProtonCore_Login
 import ProtonCore_Services
 import ProtonCore_Log
+import ProtonCore_Challenge
 
 final class AccountDeletionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, AccessibleView {
     
@@ -142,7 +143,7 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
         self.showLoadingIndicator()
         let api = PMAPIService.createAPIService(environment: env,
                                                 sessionUID: "delete account test session",
-                                                challengeParametersProvider: .forAPIService(clientApp: clientApp))
+                                                challengeParametersProvider: .forAPIService(clientApp: clientApp, challenge: PMChallenge()))
         api.authDelegate = self.authManager
         api.serviceDelegate = self.serviceDelegate
         LoginCreatedUser(api: api, authManager: authManager).login(account: createdAccountDetails) { [weak self] loginResult in

@@ -77,8 +77,7 @@ final class LoginViewController: NSViewController {
     
     @IBAction func login(_ sender: Any?) {
         loginService = LoginService(api: createAPIService(sessionId: sessionId),
-                                    authManager: authManager,
-                                    clientApp: .other(named: "macOS sample app"),
+                                    clientApp: clientApp,
                                     minimumAccountType: getAccountType)
         loginService?.updateAllAvailableDomains(type: .login) { [weak self] domains in
             if domains == nil {
@@ -240,12 +239,9 @@ final class LoginViewController: NSViewController {
         }
         
         loginService = LoginService(api: service,
-                                    authManager: authManager,
-                                    clientApp: .other(named: "macOS sample app"),
+                                    clientApp: clientApp,
                                     minimumAccountType: accountType)
-        signupService = SignupService(api: service,
-                                      challengeParametersProvider: .empty,
-                                      clientApp: clientApp)
+        signupService = SignupService(api: service, clientApp: clientApp)
         switch signupTypeSegmentedControl.selectedSegment {
         case 0: handleInternalUserSignup()
         case 1: handleExternalUserSignup()

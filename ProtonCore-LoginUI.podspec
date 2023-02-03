@@ -60,8 +60,8 @@ Pod::Spec.new do |s|
 
     no_default_subspecs(s)
 
-    make_test_subspec = ->(spec, crypto) {
-        spec.test_spec "#{crypto_test_subspec(crypto)}" do |test_spec|
+    make_unit_test_subspec = ->(spec, crypto) {
+        spec.test_spec "Unit#{crypto_test_subspec(crypto)}" do |test_spec|
             test_spec.dependency "#{crypto_module(crypto)}", $version
             test_spec.dependency "ProtonCore-Authentication/#{crypto_subspec(crypto)}", $version
             test_spec.dependency "ProtonCore-Authentication-KeyGeneration/#{crypto_subspec(crypto)}", $version
@@ -75,11 +75,32 @@ Pod::Spec.new do |s|
             test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/LoginUI/#{crypto_subspec(crypto)}", $version
             test_spec.dependency "OHHTTPStubs/Swift"
             test_spec.dependency "TrustKit"
-            test_spec.source_files = 'libraries/LoginUI/Tests/**/*.swift'
-            test_spec.resources = "libraries/LoginUI/Tests/Mocks/Responses/**/*"
+            test_spec.source_files = 'libraries/LoginUI/Tests/UnitTests/**/*.swift'
+            test_spec.resources = "libraries/LoginUI/Tests/UnitTests/Mocks/Responses/**/*"
         end
     }
 
-    make_all_go_variants(make_test_subspec, s)
+    make_all_go_variants(make_unit_test_subspec, s)
+
+    make_integration_test_subspec = ->(spec, crypto) {
+        spec.test_spec "Integration#{crypto_test_subspec(crypto)}" do |test_spec|
+            test_spec.dependency "#{crypto_module(crypto)}", $version
+            test_spec.dependency "ProtonCore-Authentication/#{crypto_subspec(crypto)}", $version
+            test_spec.dependency "ProtonCore-Authentication-KeyGeneration/#{crypto_subspec(crypto)}", $version
+            test_spec.dependency "ProtonCore-Login/#{crypto_subspec(crypto)}", $version
+            test_spec.dependency "ProtonCore-Payments/#{crypto_subspec(crypto)}", $version
+            test_spec.dependency "ProtonCore-PaymentsUI/#{crypto_subspec(crypto)}", $version
+            test_spec.dependency "ProtonCore-HumanVerification", $version
+            test_spec.dependency "ProtonCore-ObfuscatedConstants", $version
+            test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Core", $version
+            test_spec.dependency "ProtonCore-TestingToolkit/TestData", $version
+            test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/LoginUI/#{crypto_subspec(crypto)}", $version
+            test_spec.dependency "TrustKit"
+            test_spec.source_files = 'libraries/LoginUI/Tests/IntegrationTests/**/*.swift'
+            test_spec.resources = "libraries/LoginUI/Tests/IntegrationTests/Mocks/Responses/**/*"
+        end
+    }
+
+    make_all_go_variants(make_integration_test_subspec, s)
             
 end

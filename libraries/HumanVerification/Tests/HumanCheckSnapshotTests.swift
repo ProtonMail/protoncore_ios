@@ -32,7 +32,7 @@ class HumanCheckSnapshotTests: SnapshotTestCase {
         let viewController = UIStoryboard.instantiate(storyboardName: "HumanVerify", controllerType: HumanVerifyViewController.self, name: "HumanVerifyViewController")
         let dohMock = DohMock()
         let apiService = PMAPIService.createAPIServiceWithoutSession(doh: dohMock,
-                                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+                                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         let viewModel = HumanVerifyViewModel(api: apiService, startToken: nil, methods: nil, clientApp: .mail)
         viewController.viewModel = viewModel
         

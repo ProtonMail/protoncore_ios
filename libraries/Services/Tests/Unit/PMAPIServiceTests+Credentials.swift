@@ -34,8 +34,8 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     
     let numberOfRequests: UInt = 50
 
-    let challengeParameterProvider = ChallengeParametersProvider.forAPIService(clientApp: .other(named: "core"))
-    var challengeProperties: ChallengeProperties { ChallengeProperties(challenges: challengeParameterProvider.provideParameters(),
+    let challengeParameterProvider = ChallengeParametersProvider.forAPIService(clientApp: .other(named: "core"), challenge: .init())
+    var challengeProperties: ChallengeProperties { ChallengeProperties(challenges: challengeParameterProvider.provideParametersForSessionFetching(),
                                                                        productPrefix: challengeParameterProvider.prefix) }
     
     var dohMock: DohMock!
@@ -176,7 +176,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertEqual(result, .wrongConfigurationNoDelegate)
     }
     
@@ -195,7 +195,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertEqual(result, .notFound)
     }
     
@@ -219,7 +219,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         guard case .found(let fetchedCredentials) = result else { XCTFail(); return }
         XCTAssertEqual(Credential(fetchedCredentials), Credential(freshCredentials))
     }
@@ -238,7 +238,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertTrue(fetchResults.allSatisfy { $0 == .wrongConfigurationNoDelegate })
     }
     
@@ -257,7 +257,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.capturedArguments.allSatisfy { $0.value == "test_session_uid" })
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertTrue(fetchResults.allSatisfy { $0 == .notFound })
     }
     
@@ -280,7 +280,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests)
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.capturedArguments.allSatisfy { $0.value == "test_session_uid" })
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertTrue(fetchResults.allSatisfy {
             guard case .found(let fetchedCredentials) = $0 else { return false }
             return Credential(freshCredentials) == Credential(fetchedCredentials)
@@ -292,8 +292,8 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
     private func assertThatNoAuthDelegateMethodWasCalled() {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.eraseUnauthSessionCredentialsStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
     }
 
@@ -346,12 +346,13 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.eraseUnauthSessionCredentialsStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.wasNotCalled)
 
-        XCTAssertTrue(authDelegateMock.onUpdateStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.onUpdateStub.lastArguments?.a2, "test_session_uid")
-        XCTAssertEqual(authDelegateMock.onUpdateStub.lastArguments.map { AuthCredential($0.a1).description }, credentials.description)
+        XCTAssertTrue(authDelegateMock.onSessionObtainingStub.wasCalledExactlyOnce)
+        XCTAssertEqual(authDelegateMock.onSessionObtainingStub.lastArguments?.value.UID, "new test session uid")
+        XCTAssertEqual(authDelegateMock.onSessionObtainingStub.lastArguments.map { AuthCredential($0.a1).description }, credentials.description)
         XCTAssertEqual(service.sessionUID, "new test session uid")
     }
 
@@ -441,7 +442,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         guard case .refreshed(let fetchedCredentials) = result else { XCTFail(); return }
         XCTAssertEqual(Credential(currentCredentials), Credential(fetchedCredentials))
     }
@@ -467,7 +468,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         guard case .noCredentialsToBeRefreshed = result else { XCTFail(); return }
     }
 
@@ -504,7 +505,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         guard case .refreshingError(let authError) = result else { XCTFail(); return }
         XCTAssertTrue(error.underlyingError == authError.underlyingError)
     }
@@ -553,7 +554,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasCalledExactlyOnce)
         XCTAssertEqual(authDelegateMock.onUpdateStub.lastArguments?.first, freshCredential)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         guard case .refreshed(let returnedCredentials) = result else { XCTFail(); return }
         // scope is dropped when transforming from Credential to AuthCredentials
         XCTAssertEqual(Credential(returnedCredentials), freshCredential.updated(scopes: []))
@@ -589,8 +590,8 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.onLogoutStub.lastArguments?.value, "test_session_uid")
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasCalledExactlyOnce)
+        XCTAssertEqual(authDelegateMock.onAuthenticatedSessionInvalidatedStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         guard case .logout(let capturedError) = result else { XCTFail(); return }
         XCTAssertEqual(capturedError.underlyingError, underlyingError)
@@ -651,14 +652,14 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(onRefreshCounter.value == 1)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.eraseUnauthSessionCredentialsStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.eraseUnauthSessionCredentialsStub.lastArguments?.value, "test_session_uid")
-        XCTAssertTrue(authDelegateMock.onUpdateStub.wasCalledExactlyOnce)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.wasCalledExactlyOnce)
+        XCTAssertEqual(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.lastArguments?.value, "test_session_uid")
+        XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onSessionObtainingStub.wasCalledExactlyOnce)
         guard case .refreshed(let credentials) = result else { XCTFail(); return }
-        XCTAssertEqual(authDelegateMock.onUpdateStub.lastArguments?.first.UID, credentials.sessionID)
+        XCTAssertEqual(authDelegateMock.onSessionObtainingStub.lastArguments?.value.UID, credentials.sessionID)
         XCTAssertEqual(credentials.sessionID, "new test session uid")
-        XCTAssertEqual(authDelegateMock.onUpdateStub.lastArguments?.second, "test_session_uid")
     }
 
     func testTokenRefreshCallWhenHttpError422_UnauthenticatedSession_AcquireSessionSuccess() async {
@@ -707,10 +708,10 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(onRefreshCounter.value == 1)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.eraseUnauthSessionCredentialsStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.eraseUnauthSessionCredentialsStub.lastArguments?.value, "test_session_uid")
+        XCTAssertTrue(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.wasCalledExactlyOnce)
+        XCTAssertEqual(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.lastArguments?.value, "test_session_uid")
         guard case .refreshingError(underlyingError: .networkingError(let responseError)) = result else { XCTFail(); return }
         XCTAssertEqual(responseError.httpCode, 401)
     }
@@ -754,7 +755,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         guard case .refreshingError(let capturedError) = result else { XCTFail(); return }
         guard case .networkingError(let responseError) = capturedError else { XCTFail(); return }
@@ -790,7 +791,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         guard case .refreshingError(let capturedError) = result else { XCTFail(); return }
         guard case .networkingError(let responseError) = capturedError else { XCTFail(); return }
@@ -946,7 +947,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, UInt(numberOfRequests))
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
             guard case .refreshed(let credentials) = $0 else { return false }
@@ -984,7 +985,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.capturedArguments.allSatisfy { $0.value == "test_session_uid" })
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
             if case .noCredentialsToBeRefreshed = $0 { return true } else { return false }
@@ -1021,7 +1022,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.capturedArguments.allSatisfy { $0.value == "test_session_uid" })
         XCTAssertEqual(sessionMock.requestDecodableStub.callCounter, UInt(numberOfRequests))
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
             guard case .refreshingError(let authError) = $0 else { return false }
@@ -1072,7 +1073,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(sessionMock.requestDecodableStub.callCounter, numberOfRequests)
         XCTAssertEqual(authDelegateMock.onUpdateStub.callCounter, numberOfRequests)
         XCTAssertTrue(authDelegateMock.onUpdateStub.capturedArguments.allSatisfy { $0.first == freshCredential })
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
             guard case .refreshed(let credentials) = $0 else { return false }
@@ -1111,8 +1112,8 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.capturedArguments.allSatisfy { $0.value == "test_session_uid" })
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertEqual(sessionMock.requestDecodableStub.callCounter, numberOfRequests)
-        XCTAssertEqual(authDelegateMock.onLogoutStub.callCounter, numberOfRequests)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.capturedArguments.allSatisfy { $0.value == "test_session_uid" })
+        XCTAssertEqual(authDelegateMock.onAuthenticatedSessionInvalidatedStub.callCounter, numberOfRequests)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.capturedArguments.allSatisfy { $0.value == "test_session_uid" })
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertTrue(fetchResults.allSatisfy {
             guard case .logout(let responseError) = $0 else { return false }
@@ -1168,14 +1169,15 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.capturedArguments.dropFirst().allSatisfy { $0.value == "new test session uid" })
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertEqual(onRefreshCounter.value, numberOfRequests)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        XCTAssertEqual(authDelegateMock.eraseUnauthSessionCredentialsStub.callCounter, numberOfRequests)
-        XCTAssertTrue(authDelegateMock.eraseUnauthSessionCredentialsStub.capturedArguments.first?.value == "test_session_uid")
-        XCTAssertTrue(authDelegateMock.eraseUnauthSessionCredentialsStub.capturedArguments.dropFirst().allSatisfy { $0.value == "new test session uid" })
-        XCTAssertEqual(authDelegateMock.onUpdateStub.callCounter, numberOfRequests)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
+        XCTAssertEqual(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.callCounter, numberOfRequests)
+        XCTAssertTrue(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.capturedArguments.first?.value == "test_session_uid")
+        XCTAssertTrue(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.capturedArguments.dropFirst().allSatisfy { $0.value == "new test session uid" })
+        XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+        XCTAssertEqual(authDelegateMock.onSessionObtainingStub.callCounter, numberOfRequests)
         XCTAssertTrue(fetchResults.allSatisfy {
             guard case .refreshed(let credentials) = $0 else { return false }
-            XCTAssertEqual(authDelegateMock.onUpdateStub.lastArguments?.first.UID, credentials.sessionID)
+            XCTAssertEqual(authDelegateMock.onSessionObtainingStub.lastArguments?.value.UID, credentials.sessionID)
             XCTAssertEqual(credentials.sessionID, "new test session uid")
             return true
         })
@@ -1219,10 +1221,10 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.capturedArguments.allSatisfy { $0.value == "test_session_uid" })
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertEqual(onRefreshCounter.value, numberOfRequests)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertEqual(authDelegateMock.eraseUnauthSessionCredentialsStub.callCounter, numberOfRequests)
-        XCTAssertTrue(authDelegateMock.eraseUnauthSessionCredentialsStub.capturedArguments.allSatisfy { $0.value == "test_session_uid" })
+        XCTAssertEqual(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.callCounter, numberOfRequests)
+        XCTAssertTrue(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.capturedArguments.allSatisfy { $0.value == "test_session_uid" })
         XCTAssertTrue(fetchResults.allSatisfy {
             guard case .refreshingError(underlyingError: .networkingError(let responseError)) = $0 else { return false }
             XCTAssertEqual(responseError.httpCode, 401)
@@ -1260,8 +1262,8 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.capturedArguments.allSatisfy { $0.value == "test_session_uid" })
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertEqual(sessionMock.requestDecodableStub.callCounter, numberOfRequests)
-        XCTAssertEqual(authDelegateMock.onLogoutStub.callCounter, numberOfRequests)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.capturedArguments.allSatisfy { $0.value == "test_session_uid" })
+        XCTAssertEqual(authDelegateMock.onAuthenticatedSessionInvalidatedStub.callCounter, numberOfRequests)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.capturedArguments.allSatisfy { $0.value == "test_session_uid" })
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertTrue(fetchResults.allSatisfy {
             guard case .logout(let responseError) = $0 else { return false }
@@ -1319,14 +1321,15 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.capturedArguments.dropFirst().allSatisfy { $0.value == "new test session uid" })
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertEqual(onRefreshCounter.value, numberOfRequests)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
-        XCTAssertEqual(authDelegateMock.eraseUnauthSessionCredentialsStub.callCounter, numberOfRequests)
-        XCTAssertTrue(authDelegateMock.eraseUnauthSessionCredentialsStub.capturedArguments.first?.value == "test_session_uid")
-        XCTAssertTrue(authDelegateMock.eraseUnauthSessionCredentialsStub.capturedArguments.dropFirst().allSatisfy { $0.value == "new test session uid" })
-        XCTAssertEqual(authDelegateMock.onUpdateStub.callCounter, numberOfRequests)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
+        XCTAssertEqual(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.callCounter, numberOfRequests)
+        XCTAssertTrue(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.capturedArguments.first?.value == "test_session_uid")
+        XCTAssertTrue(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.capturedArguments.dropFirst().allSatisfy { $0.value == "new test session uid" })
+        XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
+        XCTAssertEqual(authDelegateMock.onSessionObtainingStub.callCounter, numberOfRequests)
         XCTAssertTrue(fetchResults.allSatisfy {
             guard case .refreshed(let credentials) = $0 else { return false }
-            XCTAssertEqual(authDelegateMock.onUpdateStub.lastArguments?.first.UID, credentials.sessionID)
+            XCTAssertEqual(authDelegateMock.onSessionObtainingStub.lastArguments?.value.UID, credentials.sessionID)
             XCTAssertEqual(credentials.sessionID, "new test session uid")
             return true
         })
@@ -1370,10 +1373,10 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.capturedArguments.allSatisfy { $0.value == "test_session_uid" })
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertEqual(onRefreshCounter.value, numberOfRequests)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertEqual(authDelegateMock.eraseUnauthSessionCredentialsStub.callCounter, numberOfRequests)
-        XCTAssertTrue(authDelegateMock.eraseUnauthSessionCredentialsStub.capturedArguments.allSatisfy { $0.value == "test_session_uid" })
+        XCTAssertEqual(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.callCounter, numberOfRequests)
+        XCTAssertTrue(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.capturedArguments.allSatisfy { $0.value == "test_session_uid" })
         XCTAssertTrue(fetchResults.allSatisfy {
             guard case .refreshingError(underlyingError: .networkingError(let responseError)) = $0 else { return false }
             XCTAssertEqual(responseError.httpCode, 401)
@@ -1412,7 +1415,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.capturedArguments.allSatisfy { $0.value == "test_session_uid" })
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertEqual(sessionMock.requestDecodableStub.callCounter, numberOfRequests)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
@@ -1453,7 +1456,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.capturedArguments.allSatisfy { $0.value == "test_session_uid" })
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertEqual(sessionMock.requestDecodableStub.callCounter, numberOfRequests)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
@@ -1513,7 +1516,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertEqual(sessionMock.requestDecodableStub.callCounter, numberOfRequests + 1)
         XCTAssertEqual(authDelegateMock.onUpdateStub.callCounter, numberOfRequests)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         // scope is dropped when transforming from Credential to AuthCredentials
         XCTAssertTrue(fetchResults.allSatisfy {
@@ -1567,7 +1570,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertEqual(sessionMock.requestDecodableStub.callCounter, numberOfRequests + 1)
         XCTAssertEqual(authDelegateMock.onUpdateStub.callCounter, numberOfRequests)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         // scope is dropped when transforming from Credential to AuthCredentials
         XCTAssertTrue(fetchResults.allSatisfy {
@@ -1596,7 +1599,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         guard case .wrongConfigurationNoDelegate = result else { XCTFail(); return }
     }
     
@@ -1625,7 +1628,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         guard case .refreshed(let fetchedCredentials) = result else { XCTFail(); return }
         XCTAssertEqual(Credential(currentCredentials), Credential(fetchedCredentials))
     }
@@ -1659,7 +1662,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         guard case .noCredentialsToBeRefreshed = result else { XCTFail(); return }
     }
     
@@ -1692,7 +1695,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         guard case .refreshingError(let authError) = result else { XCTFail(); return }
         XCTAssertTrue(error.underlyingError == authError.underlyingError)
     }
@@ -1738,8 +1741,8 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.onUpdateStub.lastArguments?.first.accessToken, freshCredential.accessToken)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertEqual(authDelegateMock.onUpdateStub.lastArguments?.first, freshCredential)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         guard case .refreshed(let returnedCredentials) = result else { XCTFail(); return }
         // scope is dropped when transforming from Credential to AuthCredentials
         XCTAssertEqual(Credential(returnedCredentials), freshCredential.updated(scopes: []))
@@ -1775,8 +1778,8 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.onLogoutStub.lastArguments?.value, "test_session_uid")
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasCalledExactlyOnce)
+        XCTAssertEqual(authDelegateMock.onAuthenticatedSessionInvalidatedStub.lastArguments?.value, "test_session_uid")
         guard case .logout(let capturedError) = result else { XCTFail(); return }
         XCTAssertEqual(capturedError.underlyingError, underlyingError)
     }
@@ -1809,8 +1812,8 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.onLogoutStub.lastArguments?.value, "test_session_uid")
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasCalledExactlyOnce)
+        XCTAssertEqual(authDelegateMock.onAuthenticatedSessionInvalidatedStub.lastArguments?.value, "test_session_uid")
         guard case .logout(let capturedError) = result else { XCTFail(); return }
         XCTAssertEqual(capturedError.underlyingError, underlyingError)
     }
@@ -1845,7 +1848,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.lastArguments?.value, "test_session_uid")
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
         guard case .refreshingError(let capturedError) = result else { XCTFail(); return }
         guard case .networkingError(let responseError) = capturedError else { XCTFail(); return }
@@ -1919,7 +1922,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenAuthCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
             if case .wrongConfigurationNoDelegate = $0 { return true } else { return false }
@@ -1942,7 +1945,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         authDelegateMock.onUpdateStub.bodyIs { _, newCredentials, _ in
             returnedCredentials.mutate { $0 = newCredentials }
         }
-        authDelegateMock.onLogoutStub.bodyIs { _, newCredentials in
+        authDelegateMock.onAuthenticatedSessionInvalidatedStub.bodyIs { _, newCredentials in
             returnedCredentials.mutate { $0 = nil }
         }
         
@@ -1954,7 +1957,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, UInt(numberOfRequests))
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
             guard case .refreshed(let credentials) = $0 else { return false }
@@ -1990,7 +1993,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, UInt(numberOfRequests))
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
             if case .noCredentialsToBeRefreshed = $0 { return true } else { return false }
@@ -2026,7 +2029,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertEqual(sessionMock.requestDecodableStub.callCounter, UInt(numberOfRequests))
         XCTAssertTrue(authDelegateMock.onUpdateStub.wasNotCalled)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
             guard case .refreshingError(let authError) = $0 else { return false }
@@ -2080,7 +2083,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.onUpdateStub.capturedArguments.allSatisfy {
             $0.first.accessToken == newCredential.accessToken
         })
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
             guard case .refreshed(let credentials) = $0 else { return false }
@@ -2118,7 +2121,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertEqual(sessionMock.requestDecodableStub.callCounter, numberOfRequests)
-        XCTAssertEqual(authDelegateMock.onLogoutStub.callCounter, numberOfRequests)
+        XCTAssertEqual(authDelegateMock.onAuthenticatedSessionInvalidatedStub.callCounter, numberOfRequests)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
             guard case .logout(let responseError) = $0 else { return false }
@@ -2158,7 +2161,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertEqual(sessionMock.requestDecodableStub.callCounter, numberOfRequests)
-        XCTAssertEqual(authDelegateMock.onLogoutStub.callCounter, numberOfRequests)
+        XCTAssertEqual(authDelegateMock.onAuthenticatedSessionInvalidatedStub.callCounter, numberOfRequests)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
             guard case .logout(let responseError) = $0 else { return false }
@@ -2195,7 +2198,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertEqual(sessionMock.requestDecodableStub.callCounter, numberOfRequests)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
             guard case .refreshingError(let authError) = $0 else { return false }
@@ -2253,7 +2256,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertEqual(sessionMock.requestDecodableStub.callCounter, numberOfRequests + 1)
         XCTAssertEqual(authDelegateMock.onUpdateStub.callCounter, numberOfRequests)
-        XCTAssertTrue(authDelegateMock.onLogoutStub.wasNotCalled)
+        XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertEqual(fetchResults.count, Int(numberOfRequests))
         XCTAssertTrue(fetchResults.allSatisfy {
             guard case .refreshed(let capturedCredentials) = $0 else { return false }

@@ -38,7 +38,7 @@ class HumanCheckHelperTests: XCTestCase {
         delegate.onHumanVerifyStartStub.bodyIs { _ in expectationDelegateStart.fulfill() }
         delegate.onHumanVerifyEndStub.bodyIs { _, _ in expectationDelegateEnd.fulfill() }
         
-        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: DohMock(), challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: DohMock(), challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         let humanUrl = URL(string: "https://proton.me/support/human-verification")!
         // also test pass in v2. work as v3
         let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, clientApp: .mail, responseDelegate: delegate)
@@ -73,7 +73,7 @@ class HumanCheckHelperTests: XCTestCase {
         delegate.onHumanVerifyStartStub.bodyIs { _ in expectationDelegateStart.fulfill() }
         delegate.onHumanVerifyEndStub.bodyIs { _, _ in expectationDelegateEnd.fulfill() }
         
-        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: DohMock(), challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: DohMock(), challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         let humanUrl = URL(string: "https://proton.me/support/human-verification")!
         let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl,
                                                 clientApp: .mail, responseDelegate: delegate)
@@ -115,7 +115,7 @@ class HumanCheckHelperTests: XCTestCase {
         let delegate = HumanVerifyResponseDelegateMock()
         delegate.onHumanVerifyStartStub.bodyIs { _ in expectationDelegateStart.fulfill() }
         
-        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: DohMock(), challengeParametersProvider: .forAPIService(clientApp: .other(named: "core")))
+        let apiService = PMAPIService.createAPIServiceWithoutSession(doh: DohMock(), challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         let humanUrl = URL(string: "https://proton.me/support/human-verification")!
         let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, clientApp: .mail, responseDelegate: delegate)
         // triger finalToken from view model

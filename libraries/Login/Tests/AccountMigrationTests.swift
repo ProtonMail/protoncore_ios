@@ -49,7 +49,8 @@ final class AccountMigrationTests: XCTestCase {
         apiMock.sessionUIDStub.fixture = "test session ID"
         let authManager = AuthHelper(credential: credential)
         let authenticatorMock = AuthenticatorWithKeyGenerationMock()
-        let login = LoginService(api: apiMock, authManager: authManager, clientApp: .other(named: "AccountMigrationTestApp"), minimumAccountType: minimumAccountType, authenticator: authenticatorMock)
+        apiMock.authDelegateStub.fixture = authManager
+        let login = LoginService(api: apiMock, clientApp: .other(named: "core"), minimumAccountType: minimumAccountType, authenticator: authenticatorMock)
         return (login, apiMock, authManager, authenticatorMock)
     }
     
