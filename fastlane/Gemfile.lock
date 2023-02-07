@@ -242,8 +242,8 @@ GEM
     highline (2.0.3)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
-    httparty (0.20.0)
-      mime-types (~> 3.0)
+    httparty (0.21.0)
+      mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
     i18n (1.12.0)
@@ -256,9 +256,6 @@ GEM
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
     memoist (0.16.2)
-    mime-types (3.4.1)
-      mime-types-data (~> 3.2015)
-    mime-types-data (3.2022.0105)
     mini_magick (4.11.0)
     mini_mime (1.1.2)
     minitest (5.16.3)
@@ -349,6 +346,7 @@ PLATFORMS
   arm64-darwin-21
   universal-darwin-21
   x86_64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   cocoapods
