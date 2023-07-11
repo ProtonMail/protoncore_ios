@@ -64,4 +64,30 @@ class PMLogTests: XCTestCase {
         PMLog.error("Error message")
         XCTAssertEqual(externalError, "Error message")
     }
+
+    func testTrimsLeadingLinesWhenGoingOverLimit() {
+        for i in 0..<2000 {
+            PMLog.debug("Line \(i)")
+        }
+
+        let logsContentBeforeTrim = loggedMessages()
+
+        XCTAssertEqual(logsContentBeforeTrim.count, 2000)
+        XCTAssertEqual(logsContentBeforeTrim.first, "Line 0")
+        XCTAssertEqual(logsContentBeforeTrim.last, "Line 1999")
+
+        PMLog.debug("foo")
+
+        let logsContentAfterTrim = loggedMessages()
+        XCTAssertEqual(logsContentAfterTrim.count, 1501)
+        XCTAssertEqual(logsContentAfterTrim.first, "Line 500")
+        XCTAssertEqual(logsContentAfterTrim.last, "foo")
+    }
+
+    private func loggedMessages() -> [String] {
+        PMLog.logsContent()
+            .components(separatedBy: .newlines)
+            .filter { !$0.isEmpty }
+            .compactMap { $0.components(separatedBy: " - ").last }
+    }
 }
