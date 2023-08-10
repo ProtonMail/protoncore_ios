@@ -54,14 +54,14 @@ public final class LoginRobot: CoreElements {
         
         @discardableResult
         public func loginScreenIsShown() -> LoginRobot {
-            staticText(titleId).wait().checkExists()
-            staticText(subtitleId).wait().checkExists()
+            staticText(titleId).waitUntilExists().checkExists()
+            staticText(subtitleId).waitUntilExists().checkExists()
             return LoginRobot()
         }
 
         @discardableResult
         public func switchToCreateAccountButtonIsShown() -> LoginRobot {
-            button(signUpButtonId).wait().checkExists()
+            button(signUpButtonId).waitUntilExists().checkExists()
             return LoginRobot()
         }
 
@@ -79,36 +79,36 @@ public final class LoginRobot: CoreElements {
         
         @discardableResult
         public func emailAlreadyExists() -> LoginRobot {
-            LoginRobot().textView(errorBannerMessage).wait().checkExists()
+            LoginRobot().textView(errorBannerMessage).waitUntilExists().checkExists()
             LoginRobot().button(errorBannerButton).tap()
             return LoginRobot()
         }
         
         public func incorrectCredentialsErrorDialog() {
-            textView(invalidCredentialText).wait(time: 20).checkExists()
+            textView(invalidCredentialText).waitUntilExists(time: 20).checkExists()
         }
         
         public func suspendedErrorDialog() {
-            textView(textPredicate).wait().checkExists()
+            textView(textPredicate).waitUntilExists().checkExists()
         }
         
         public func changePassword() -> LoginRobot {
-            staticText(textChangePassword).wait(time: 20).checkExists()
+            staticText(textChangePassword).waitUntilExists(time: 20).checkExists()
             return LoginRobot()
         }
         
         public func changePasswordCancel() -> LoginRobot {
-            button(buttonChangePasswordCancel).wait(time: 20).checkExists()
+            button(buttonChangePasswordCancel).waitUntilExists(time: 20).checkExists()
             return LoginRobot()
         }
         
         public func changePasswordConfirm() {
-            button(buttonChangePassword).wait(time: 20).checkExists()
+            button(buttonChangePassword).waitUntilExists(time: 20).checkExists()
         }
         
         @discardableResult
         public func closeButtonIsShown() -> LoginRobot {
-            button(closeButton).wait().checkExists()
+            button(closeButton).waitUntilExists().checkExists()
             return LoginRobot()
         }
         
@@ -135,7 +135,7 @@ public final class LoginRobot: CoreElements {
     }
     
     public func fillpassword(password: String) -> LoginRobot {
-        secureTextField(passwordTextFieldId).tap().wait().typeText(password)
+        secureTextField(passwordTextFieldId).tap().waitUntilExists().typeText(password)
         return self
     }
     
@@ -145,7 +145,7 @@ public final class LoginRobot: CoreElements {
     }
     
     public func signInElementsDisplayed() {
-        button(loginViewCloseButtonId).wait().checkExists()
+        button(loginViewCloseButtonId).waitUntilExists().checkExists()
         staticText(titleId).checkExists()
         staticText(loginFieldTitleLabel).checkExists()
         staticText(passwordFieldTitleLabel).checkExists()
@@ -226,15 +226,15 @@ public final class CreateAddressRobot: CoreElements {
     public final class Verify: CoreElements {
         @discardableResult
         public func createAddress(email: String) -> CreateAddressRobot {
-            staticText(createAddressTitle).wait().checkExists()
+            staticText(createAddressTitle).waitUntilExists().checkExists()
             let predicate = NSPredicate(format: "label LIKE %@", createAddressDescription(email: email))
-            staticText(predicate).wait().checkExists()
+            staticText(predicate).waitUntilExists().checkExists()
             return CreateAddressRobot()
         }
         
         @discardableResult
         public func invalidCharactersBanner() -> CreateAddressRobot {
-            textView(errorInvalidCharacters).wait().checkExists()
+            textView(errorInvalidCharacters).waitUntilExists().checkExists()
             button(errorBannerButton).tap()
             return CreateAddressRobot()
         }

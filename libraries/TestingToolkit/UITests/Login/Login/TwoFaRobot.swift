@@ -47,7 +47,7 @@ public final class TwoFaRobot: CoreElements {
     public final class Verify: CoreElements {
         
         public func incorrectCredentialsErrorDialog() {
-            textView(invalidCredentialStaticText).wait().checkExists()
+            textView(invalidCredentialStaticText).waitUntilExists().checkExists()
         }
     }
 }

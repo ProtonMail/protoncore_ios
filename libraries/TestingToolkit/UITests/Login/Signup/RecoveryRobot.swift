@@ -62,7 +62,7 @@ public final class RecoveryRobot: CoreElements {
     public final class Verify: CoreElements {
         @discardableResult
         public func recoveryScreenIsShown() -> RecoveryRobot {
-            staticText(titleId).wait().checkExists()
+            staticText(titleId).waitUntilExists().checkExists()
             return RecoveryRobot()
         }
 
@@ -80,15 +80,15 @@ public final class RecoveryRobot: CoreElements {
         
         @discardableResult
         public func humanVerificationRequired() -> RecoveryRobot {
-            textView(errorBannerHVRequired).wait().checkExists()
+            textView(errorBannerHVRequired).waitUntilExists().checkExists()
             button(errorBannerButton).tap()
             return RecoveryRobot()
         }
 
         @discardableResult
         public func phoneNumberInvalid() -> SignupRobot {
-            textView(errorBannerInvalidNumber).wait().checkExists()
-            button(errorBannerButton).wait().checkExists().tap()
+            textView(errorBannerInvalidNumber).waitUntilExists().checkExists()
+            button(errorBannerButton).waitUntilExists().checkExists().tap()
             return SignupRobot()
         }
     }
@@ -99,7 +99,7 @@ public final class RecoveryRobot: CoreElements {
     }
     
     public func nextButtonTap() -> RecoveryRobot {
-        button(nextButtonId).wait().tap()
+        button(nextButtonId).waitUntilExists().tap()
         return self
     }
     
@@ -109,8 +109,8 @@ public final class RecoveryRobot: CoreElements {
         
         public final class Verify: CoreElements {
             public func recoveryDialogDisplay() -> RecoveryDialogRobot {
-                staticText(recoveryDialogTitleName).wait().checkExists()
-                staticText(recoveryDialogMessageName).wait().checkExists()
+                staticText(recoveryDialogTitleName).waitUntilExists().checkExists()
+                staticText(recoveryDialogMessageName).waitUntilExists().checkExists()
                 return RecoveryDialogRobot()
             }
         }

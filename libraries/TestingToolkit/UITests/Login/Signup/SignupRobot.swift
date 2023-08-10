@@ -46,20 +46,20 @@ public final class SignupRobot: CoreElements {
 
         @discardableResult
         public func signupScreenIsShown() -> SignupRobot {
-            staticText(titleId).wait().checkExists()
+            staticText(titleId).waitUntilExists().checkExists()
             return SignupRobot()
         }
         
         @discardableResult
         public func usernameAlreadyExists() -> SignupRobot {
-            textView(errorBannerMessage).wait().checkExists()
-            button(errorBannerButton).wait().checkExists().tap()
+            textView(errorBannerMessage).waitUntilExists().checkExists()
+            button(errorBannerButton).waitUntilExists().checkExists().tap()
             return SignupRobot()
         }
         
         @discardableResult
         public func closeButtonIsShown() -> SignupRobot {
-            button(closeButton).wait().checkExists()
+            button(closeButton).waitUntilExists().checkExists()
             return SignupRobot()
         }
         
@@ -71,13 +71,13 @@ public final class SignupRobot: CoreElements {
         
         @discardableResult
         public func otherAccountIntButtonIsShown() -> SignupRobot {
-            button(otherAccountIntName).wait().checkExists()
+            button(otherAccountIntName).waitUntilExists().checkExists()
             return SignupRobot()
         }
 
         @discardableResult
         public func otherAccountExtButtonIsShown() -> SignupRobot {
-            button(otherAccountExtName).wait().checkExists()
+            button(otherAccountExtName).waitUntilExists().checkExists()
             return SignupRobot()
         }
         
