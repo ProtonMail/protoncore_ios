@@ -12,7 +12,7 @@ include:
 stages:
   - i18n
   - releasing
-  #  - github
+  - github
   - linting
   - deploy
   - unit_test
@@ -94,26 +94,28 @@ releasing:
     tags:
       - macstadium-m1-protoncore
 
-# happens only if develop was not already mirrored as part of releasing
-# github:mirror:
-#   stage: github
-#   rules:
-#     - if: '$CI_PIPELINE_SOURCE == "web"'
-#       when: never
-#     - if: '$CI_PIPELINE_SOURCE == "schedule"'
-#       when: never
-#     - if: '$CI_COMMIT_TITLE =~ /^Merge branch .release\/.+ into .+$/'
-#       when: never
-#     - if: '$CI_COMMIT_BRANCH == "develop"'
-#       when: always
-#     - if: "$CI_COMMIT_BRANCH"
-#       when: never
-#   allow_failure: false
-#   interruptible: false
-#   needs: []
-#     - bash scripts/mirror_to_github.sh develop
-#   tags:
-#     - macstadium-m1-protoncore
+github:mirror:
+  stage: github
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+    - if: '$CI_COMMIT_TITLE =~ /^Merge branch .release\/.+ into .+$/'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+      when: always
+    - if: "$CI_COMMIT_BRANCH"
+      when: never
+  allow_failure: false
+  interruptible: false
+  variables:
+    GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/github-mirror
+  needs: []
+  script:
+    - zsh scripts/mirror_to_github.sh develop
+  tags:
+    - macstadium-m1-protoncore
 
 #
 # --- Linting ---
