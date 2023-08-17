@@ -91,7 +91,7 @@ final class EnvironmentSelector: UIView {
             }
         case 1: env = .black
         case EnvironmentSelector.paymentsIndex: env = .blackPayment
-        case 3: env = .custom("fossey.proton.black")
+        case 3: env = .custom(ObfuscatedConstants.fosseyBlackSignupDomain)
         case EnvironmentSelector.customDomainIndex:
             guard let customDomain = customDomain.text else {
                 fatalError("Misconfiguration, no value in custom domain")

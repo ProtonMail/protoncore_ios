@@ -8,13 +8,12 @@ SUMMARY:1111111111
 STATUS:CONFIRMED
 DTSTART;TZID=America/Los_Angeles:20210308T143000
 DTEND;TZID=America/Los_Angeles:20210308T150000
-ATTENDEE;CN=zhj4478@protonmail.com;ROLE=REQ-PARTICIPANT;RSVP=TRUE;PARTSTAT=
- NEEDS-ACTION;X-PM-TOKEN=4cee3d3fa71fb6e5b7c173e9b62f2520807b2bda:mailto:zhj
- 4478@protonmail.com
+ATTENDEE;CN=email2@example.com;ROLE=REQ-PARTICIPANT;RSVP=TRUE;PARTSTAT=
+ NEEDS-ACTION;X-PM-TOKEN=4cee3d3fa71fb6e5b7c173e9b62f2520807b2bda:mailto:email2@example.com
 ATTENDEE;CN=feng@pm.me;ROLE=OPT-PARTICIPANT;RSVP=TRUE;PARTSTAT=NEEDS-ACTION
- ;X-PM-TOKEN=a524fff37e1dfc3ef7cd817036c4e392ee9eee69:mailto:feng@pm.me
-UID:5bSt3seAXwcJGaYYTM09Zqjats95@proton.me
-ORGANIZER;CN=feng100@protonmail.ch:mailto:feng100@protonmail.ch
+ ;X-PM-TOKEN=a524fff37e1dfc3ef7cd817036c4e392ee9eee69:mailto:email@example.com
+UID:5bSt3seAXwcJGaYYTM09Zqjats95@example.com
+ORGANIZER;CN=email@example.com:mailto:email@example.com
 SEQUENCE:0
 DTSTAMP:20210308T222043Z
 END:VEVENT

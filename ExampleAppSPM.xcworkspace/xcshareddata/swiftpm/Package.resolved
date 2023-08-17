@@ -158,7 +158,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ProtonMail/TrustKit",
       "state" : {
-        "revision" : "d107d7cc825f38ae2d6dc7c54af71d58145c3506"
+        "revision" : "d107d7cc825f38ae2d6dc7c54af71d58145c3506",
+        "version" : "1.0.3"
       }
     }
   ],

@@ -40,7 +40,7 @@ public struct CancelledAccountRecoveryView: View {
 struct CancelledAccountRecoveryView_Previews: PreviewProvider {
     static var viewModel = {
         let vm = AccountRecoveryView.ViewModel()
-        vm.email = "eric.norbert@proton.me"
+        vm.email = "norbert@example.com"
         vm.remainingTime = 3600*72
         vm.state = .cancelled
         vm.reason = .cancelled

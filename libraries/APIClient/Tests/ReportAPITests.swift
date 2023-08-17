@@ -48,7 +48,7 @@ class ReportAPITests: XCTestCase {
                              client: "Web Mail", clientVersion: "iOS_1.12.0",
                              clientType: 1, title: "[V4] [Web Mail] Bug [/archive] Sign up problem",
                              description: "ignore this . test from feng", username: "feng100",
-                             email: "feng100@protonmail.ch", country: "US", ISP: "test", plan: "free")
+                             email: "email@example.com", country: "US", ISP: "test", plan: "free")
 
     func content(of name: String, ext: String) -> String {
         let url = testBundle.url(forResource: name, withExtension: ext)!
