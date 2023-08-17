@@ -1,0 +1,34 @@
+{
+  "configurations" : [
+    {
+      "id" : "96956E60-DB7D-4928-97FF-577A6E166697",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "language" : "en",
+    "maximumTestRepetitions" : 2,
+    "region" : "US",
+    "testRepetitionMode" : "retryOnFailure"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "5B07983AA0AA85A3821F0D61DF80738A",
+        "name" : "ProtonCore-Utilities-macOS-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "4DF2256C59A2BBDA7EDCBE9F0C49BED1",
+        "name" : "ProtonCore-Environment-macOS-Unit-Tests"
+      }
+    }
+  ],
+  "version" : 1
+}

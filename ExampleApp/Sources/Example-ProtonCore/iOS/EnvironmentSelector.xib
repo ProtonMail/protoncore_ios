@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EnvironmentSelector" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target">
+            <connections>
+                <outlet property="customDomain" destination="lL8-O5-HLF" id="da3-sA-lU3"/>
+                <outlet property="selector" destination="JWH-Oq-drL" id="Yok-iU-D1x"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="13" id="hRm-vF-Nk4">
+            <rect key="frame" x="0.0" y="0.0" width="257" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Backend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iX4-9w-qtf">
+                    <rect key="frame" x="0.0" y="0.0" width="257" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" id="JWH-Oq-drL">
+                    <rect key="frame" x="0.0" y="29" width="257" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <segments>
+                        <segment title="prod"/>
+                        <segment title="black"/>
+                        <segment title="payments"/>
+                        <segment title="fossey"/>
+                        <segment title="custom"/>
+                    </segments>
+                    <connections>
+                        <action selector="environmentChanged:" destination="-1" eventType="valueChanged" id="hsh-wj-zJy"/>
+                    </connections>
+                </segmentedControl>
+                <textField hidden="YES" opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="lL8-O5-HLF" userLabel="Custom env name">
+                    <rect key="frame" x="0.0" y="60" width="257" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="-200.72463768115944" y="-319.41964285714283"/>
+        </stackView>
+    </objects>
+</document>

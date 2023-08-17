@@ -1,0 +1,22 @@
+swiftlint.config_file = '.swiftlint.yml'
+swiftlint.binary_path = 'tools/portable_swiftlint/swiftlint'
+swiftlint.lint_all_files = true
+swiftlint.max_num_violations = 20
+swiftlint.lint_files inline_mode: true
+
+def derived_data_path
+  "/Users/administrator/ProtonCore/UnitTests/" + ENV['CI_PIPELINE_IID'] + "/DerivedData/"
+end
+
+xcov.report(
+   scheme: 'Example-UnitTests',
+   workspace: 'ExampleApp.xcworkspace',
+   derived_data_path: derived_data_path,
+   output_directory: 'fastlane/test_output',
+   xccov_file_direct_path: 'fastlane/test_output/Example-UnitTests.xcresult',
+   include_targets: 'ProtonCoreAPIClient.framework,ProtonCoreAccountDeletion.framework,ProtonCoreAccountSwitcher.framework,ProtonCoreAuthentication.framework,ProtonCoreAuthenticationKeyGeneration.framework,ProtonCoreChallenge.framework,ProtonCoreCommon.framework,ProtonCoreCoreTranslation.framework,ProtonCoreCrypto.framework,ProtonCoreDataModel.framework,ProtonCoreDoh.framework,ProtonCoreFeatures.framework,ProtonCoreForceUpgrade.framework,ProtonCoreFoundations.framework,ProtonCoreHash.framework,ProtonCoreHumanVerification.framework,ProtonCoreKeyManager.framework,ProtonCoreKeymaker.framework,ProtonCoreLog.framework,ProtonCoreLogin.framework,ProtonCoreLoginUI.framework,ProtonCoreNetworking.framework,ProtonCoreObfuscatedConstants.framework,ProtonCorePayments.framework,ProtonCorePaymentsUI.framework,ProtonCoreServices.framework,ProtonCoreSettings.framework,ProtonCoreTestingToolkit.framework,ProtonCoreUIFoundations.framework,ProtonCoreUtilities.framework' 
+)
+
+xcode_summary.ignored_files = 'ExampleApp/Pods/**'
+xcode_summary.inline_mode = true
+xcode_summary.report 'fastlane/test_output/Example-UnitTests.xcresult'

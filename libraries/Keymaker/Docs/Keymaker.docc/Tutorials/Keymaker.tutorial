@@ -1,0 +1,14 @@
+@Tutorials(name: "Keymaker") {
+    @Intro(title: "How to use Keymaker") {
+        TBA find details in Example app.
+        @Image(source: keymaker.png, alt: "Text")
+    }
+    
+    @Chapter(name: "Keymaker Essentials") {
+        @Image(source: keymaker.png, alt: "Text ")
+        
+        Create custom sloths and edit their attributes and powers using SlothCreator.
+        
+        @TutorialReference(tutorial: "doc:GettingStarted")
+    }
+}

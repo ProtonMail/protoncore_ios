@@ -1,0 +1,55 @@
+{
+  "configurations" : [
+    {
+      "id" : "96956E60-DB7D-4928-97FF-577A6E166697",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "language" : "en",
+    "maximumTestRepetitions" : 2,
+    "region" : "US",
+    "testRepetitionMode" : "retryOnFailure"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "FBF3F3B3DE482D97DF160A0751A8BB60",
+        "name" : "ProtonCore-Doh-iOS-Unit-IntegrationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "0240475DD9F606062934A0E1DC1147AE",
+        "name" : "ProtonCore-Login-iOS-Unit-IntegrationTests-Crypto-Go"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "4376C1690F6CACD3792561C5F7432529",
+        "name" : "ProtonCore-LoginUI-Unit-IntegrationTests-Crypto-Go"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "18E762A98191533C8DACFB9B9D9B7AD4",
+        "name" : "ProtonCore-Observability-iOS-Unit-IntegrationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "F2EB1AC55EC5B42DE6B353A6F41CCCC4",
+        "name" : "ProtonCore-Services-iOS-Unit-IntegrationTests"
+      }
+    }
+  ],
+  "version" : 1
+}

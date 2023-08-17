@@ -1,0 +1,246 @@
+{
+  "configurations" : [
+    {
+      "id" : "810DC55E-20C0-4654-A9E4-18C48590EBF9",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "language" : "en",
+    "maximumTestExecutionTimeAllowance" : 60,
+    "maximumTestRepetitions" : 2,
+    "region" : "US",
+    "testRepetitionMode" : "retryOnFailure",
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreAPIClientTests",
+        "name" : "ProtonCoreAPIClientTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreAccountDeletionTests",
+        "name" : "ProtonCoreAccountDeletionTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreAccountSwitcherTests",
+        "name" : "ProtonCoreAccountSwitcherTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreAuthenticationKeyGenerationTests",
+        "name" : "ProtonCoreAuthenticationKeyGenerationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreAuthenticationTests",
+        "name" : "ProtonCoreAuthenticationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreChallengeTests",
+        "name" : "ProtonCoreChallengeTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreCryptoPatchedGoImplementationTests",
+        "name" : "ProtonCoreCryptoPatchedGoImplementationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreCryptoTests",
+        "name" : "ProtonCoreCryptoTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreDataModelTests",
+        "name" : "ProtonCoreDataModelTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreDohUnitTests",
+        "name" : "ProtonCoreDohUnitTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreEnvironmentTests",
+        "name" : "ProtonCoreEnvironmentTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreFeatureSwitchTests",
+        "name" : "ProtonCoreFeatureSwitchTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreHashTests",
+        "name" : "ProtonCoreHashTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreHumanVerificationTests",
+        "name" : "ProtonCoreHumanVerificationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreKeyManagerTests",
+        "name" : "ProtonCoreKeyManagerTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreKeymakerTests",
+        "name" : "ProtonCoreKeymakerTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreLogTests",
+        "name" : "ProtonCoreLogTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreLoginUIUnitTests",
+        "name" : "ProtonCoreLoginUIUnitTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreLoginUnitTests",
+        "name" : "ProtonCoreLoginUnitTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreMissingScopesTests",
+        "name" : "ProtonCoreMissingScopesTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreNetworkingTests",
+        "name" : "ProtonCoreNetworkingTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreObservabilityUnitTests",
+        "name" : "ProtonCoreObservabilityUnitTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCorePasswordRequestUnitTests",
+        "name" : "ProtonCorePasswordRequestUnitTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCorePaymentsTests",
+        "name" : "ProtonCorePaymentsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCorePaymentsUITests",
+        "name" : "ProtonCorePaymentsUITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreQuarkCommandsTests",
+        "name" : "ProtonCoreQuarkCommandsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreServicesUnitTests",
+        "name" : "ProtonCoreServicesUnitTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreSettingsTests",
+        "name" : "ProtonCoreSettingsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreTroubleShootingTests",
+        "name" : "ProtonCoreTroubleShootingTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreUIFoundationsTests",
+        "name" : "ProtonCoreUIFoundationsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreUtilitiesTests",
+        "name" : "ProtonCoreUtilitiesTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreForceUpgradeTests",
+        "name" : "ProtonCoreForceUpgradeTests"
+      }
+    }
+  ],
+  "version" : 1
+}

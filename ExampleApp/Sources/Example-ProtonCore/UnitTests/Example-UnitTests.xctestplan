@@ -1,0 +1,232 @@
+{
+  "configurations" : [
+    {
+      "id" : "96956E60-DB7D-4928-97FF-577A6E166697",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "language" : "en",
+    "maximumTestExecutionTimeAllowance" : 60,
+    "maximumTestRepetitions" : 2,
+    "region" : "US",
+    "testRepetitionMode" : "retryOnFailure",
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "FDAD6445FA87D29416EC0972654DEF57",
+        "name" : "ProtonCore-APIClient-iOS-Unit-Tests-Crypto-Go"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "C1DB2D2E5D554221A404E159F637E1A3",
+        "name" : "ProtonCore-AccountDeletion-iOS-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "CF014CC4786F124C8C486A0E511F8815",
+        "name" : "ProtonCore-AccountSwitcher-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "30573344DD5E0F81DF3C101C942E77E5",
+        "name" : "ProtonCore-Authentication-KeyGeneration-iOS-Unit-Tests-Crypto-Go"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "988F45F47E9724212BDC18B506D75DE2",
+        "name" : "ProtonCore-Authentication-iOS-Unit-Tests-Crypto-Go"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "A6885EA264436953598B90922590051E",
+        "name" : "ProtonCore-Challenge-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "A436C8097B483445D8910C6AECA1A8D9",
+        "name" : "ProtonCore-CoreTranslation-iOS-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "9E8018C83679164EEAABBBBA8310CB10",
+        "name" : "ProtonCore-Crypto-iOS-Unit-Tests-Crypto-Go"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "EAD10E545DCBD6AA7632EDB2458FFF71",
+        "name" : "ProtonCore-DataModel-iOS-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "4862F07220917CCD4C29F327A1E2CA04",
+        "name" : "ProtonCore-Doh-iOS-Unit-UnitTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "E4224122352D5A9BE672CBF0871212E5",
+        "name" : "ProtonCore-Environment-iOS-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "0D717406DDD3DC3884F3E235B4E28013",
+        "name" : "ProtonCore-FeatureSwitch-iOS-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "15F72584B089DD6B782C4A14F51B1FEC",
+        "name" : "ProtonCore-Hash-iOS-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "96BA4338A5E99FE0EE0BDB54067BAFF4",
+        "name" : "ProtonCore-HumanVerification-iOS-Unit-Tests-Crypto-Go"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "467672D92272ECE605532958FDDAB64F",
+        "name" : "ProtonCore-KeyManager-iOS-Unit-Tests-Crypto-Go"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "E84A6DBEDCF74F96789E209DEB25F0B7",
+        "name" : "ProtonCore-Log-iOS-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "F3E33A29C013DC6592B2FA1ABA14E2DD",
+        "name" : "ProtonCore-Login-iOS-Unit-UnitTests-Crypto-Go"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "0448171EAB1EDDC40DD4BAF0A307FCAF",
+        "name" : "ProtonCore-LoginUI-Unit-UnitTests-Crypto-Go"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "C532E42E9B2182E76DD476E4CC5276EF",
+        "name" : "ProtonCore-MissingScopes-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "3F85AE1081691546DF1835A0F9DA2B93",
+        "name" : "ProtonCore-Networking-iOS-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "539F8B19F80C54EB8149FB9DCE77A4C5",
+        "name" : "ProtonCore-Observability-iOS-Unit-UnitTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "0326D55C4CC192184FE23432ABCB1FFA",
+        "name" : "ProtonCore-Payments-iOS-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "1BAF292DF47D669308EA304A83BDF444",
+        "name" : "ProtonCore-PaymentsUI-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "1C7E6E4EAF3E8ACCC0676E16A4D36687",
+        "name" : "ProtonCore-QuarkCommands-iOS-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "15F8D09913146D2D4929F72187B84292",
+        "name" : "ProtonCore-Services-iOS-Unit-UnitTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "7ACEC0FF2D0D56BDEFA434C92E6C60FB",
+        "name" : "ProtonCore-Settings-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "B05143DC95DF6F7F463510BD3765E2CB",
+        "name" : "ProtonCore-TroubleShooting-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "2234D6061D475D23B9B81091E86109D3",
+        "name" : "ProtonCore-UIFoundations-iOS-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "DDAF11A8CA5B2C853C5EC185FDD3B60E",
+        "name" : "ProtonCore-Utilities-iOS-Unit-Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "9556D5A0C63BCDF03C838B3B9EA2BF86",
+        "name" : "ProtonCore-Keymaker-iOS-Unit-Tests-Crypto-Go"
+      }
+    }
+  ],
+  "version" : 1
+}

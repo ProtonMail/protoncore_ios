@@ -1,0 +1,18 @@
+{
+    "Code": 1000,
+    "PaymentMethods": [{
+        "ID": "ID_ABC_123",
+        "Type": "card",
+        "Order": 500,
+        "Details": {
+            "ExpMonth": "12",
+            "Brand": "Visa",
+            "ExpYear": "2100",
+            "ZIP": "000",
+            "ThreeDSSupport": false,
+            "Country": "US",
+            "Name": "Test Name",
+            "Last4": "0000"
+        }
+    }]
+}

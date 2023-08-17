@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="bU7-R8-ocO">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="PEd-7d-5j0">
+            <objects>
+                <viewController id="bU7-R8-ocO" customClass="LoginViewController" customModule="ExampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="tOy-S4-hL0">
+                        <rect key="frame" x="0.0" y="0.0" width="741" height="400"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="32" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7av-7B-3hJ">
+                                <rect key="frame" x="239" y="69" width="263" height="262"/>
+                                <subviews>
+                                    <customView id="9qX-yw-YL7" customClass="EnvironmentSelector" customModule="ExampleApp" customModuleProvider="target">
+                                        <rect key="frame" x="50" y="212" width="163" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </customView>
+                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n0S-eb-zvz">
+                                        <rect key="frame" x="7" y="106" width="249" height="74"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cCq-Wl-tAM">
+                                                <rect key="frame" x="58" y="58" width="134" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Minimal account type" id="ckb-MR-0LB">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tmQ-HF-yOB">
+                                                <rect key="frame" x="-2" y="27" width="253" height="24"/>
+                                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="79N-ol-vTl">
+                                                    <font key="font" metaFont="system"/>
+                                                    <segments>
+                                                        <segment label="username" width="81"/>
+                                                        <segment label="external" width="80" tag="1"/>
+                                                        <segment label="internal" width="80" selected="YES"/>
+                                                    </segments>
+                                                </segmentedCell>
+                                            </segmentedControl>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Agt-sv-SaO">
+                                                <rect key="frame" x="91" y="-7" width="68" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mqf-vR-9kT">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="login:" target="bU7-R8-ocO" id="ljQ-cu-kny"/>
+                                                </connections>
+                                            </button>
+                                            <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zb3-ry-fZ8" userLabel="Logout">
+                                                <rect key="frame" x="-7" y="47" width="77" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Logout" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FEI-EI-WVj">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="logout:" target="bU7-R8-ocO" id="FFa-Mg-6BG"/>
+                                                </connections>
+                                            </button>
+                                            <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QO3-Q0-36t">
+                                                <rect key="frame" x="-7" y="47" width="126" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Delete account" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tnf-YA-mLg">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="deleteAccount:" target="bU7-R8-ocO" id="N01-S0-G7u"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2cn-l7-zB8">
+                                        <rect key="frame" x="0.0" y="0.0" width="263" height="74"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Adf-ZB-CTu">
+                                                <rect key="frame" x="93" y="58" width="77" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Signup type" id="ret-6U-G0N">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="f2v-ow-YuQ">
+                                                <rect key="frame" x="-2" y="27" width="267" height="24"/>
+                                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="XFL-9I-3ZQ">
+                                                    <font key="font" metaFont="system"/>
+                                                    <segments>
+                                                        <segment label="username" width="129" selected="YES"/>
+                                                        <segment label="external email" width="129" tag="1"/>
+                                                    </segments>
+                                                </segmentedCell>
+                                            </segmentedControl>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rFw-Fl-6s6">
+                                                <rect key="frame" x="93" y="-7" width="77" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Signup" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lkh-U3-rd7">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="signup:" target="bU7-R8-ocO" id="bES-MN-ccB"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="7av-7B-3hJ" firstAttribute="centerX" secondItem="tOy-S4-hL0" secondAttribute="centerX" id="1Pb-WE-4vE"/>
+                            <constraint firstItem="7av-7B-3hJ" firstAttribute="centerY" secondItem="tOy-S4-hL0" secondAttribute="centerY" id="LuD-Q8-3Lf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="accountTypeSegmentedControl" destination="tmQ-HF-yOB" id="xEx-y8-XiM"/>
+                        <outlet property="deleteAccountButton" destination="QO3-Q0-36t" id="DyC-C4-T8e"/>
+                        <outlet property="environmentSelector" destination="9qX-yw-YL7" id="pYw-Sn-H1g"/>
+                        <outlet property="logoutButton" destination="Zb3-ry-fZ8" id="nRl-pG-a96"/>
+                        <outlet property="signupTypeSegmentedControl" destination="f2v-ow-YuQ" id="JLg-Jf-vxW"/>
+                    </connections>
+                </viewController>
+                <customObject id="9uD-mB-xHs" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="224.5" y="181"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,54 @@
+# Fastfile containing the coverage reporting lanes
+
+excluded_targets_for_macos_unit_tests = [
+  'ProtonCoreAccountDeletionTests',
+  'ProtonCoreAccountSwitcherTests',
+  'ProtonCoreChallengeTests',
+  'ProtonCorePasswordRequestUnitTests',
+  'ProtonCorePaymentsTests',
+  'ProtonCorePaymentsUITests',
+  'ProtonCoreUIFoundationsTests',
+  'ProtonCoreMissingScopesTests'
+]
+
+lane :unit_test_reports do
+  xcov(
+    scheme: 'UnitTests',
+    workspace: '.swiftpm/xcode/package.xcworkspace',
+    xccov_file_direct_path: 'fastlane/test_output/UnitTests.xcresult',
+    minimum_coverage_percentage: 59.0
+  )
+end
+
+lane :integration_test_reports do
+  xcov(
+    scheme: 'IntegrationTests',
+    workspace: '.swiftpm/xcode/package.xcworkspace',
+    xccov_file_direct_path: 'fastlane/test_output/IntegrationTests.xcresult',
+    minimum_coverage_percentage: 22.5
+  )
+end
+
+lane :macos_apphost_test_reports do
+  xcov(
+    scheme: 'ProtonCore-Keymaker-macOS-AppHost',
+    project: 'ExampleAppSPM.xcodeproj',
+    xccov_file_direct_path: 'fastlane/test_output/ProtonCore-Keymaker-macOS-AppHost.xcresult',
+    ignore_file_path: './fastlane/.xcovignore-keymaker',
+    exclude_targets: [
+      "ProtonCore-Keymaker-macOS-AppHost.app",
+      "ProtonCore-Keymaker-macOS-AppHostTests.xctest"
+    ].join(","),
+    minimum_coverage_percentage: 40.2
+  )
+end
+
+lane :macos_unit_test_reports do
+  xcov(
+    scheme: 'UnitTests',
+    workspace: '.swiftpm/xcode/package.xcworkspace',
+    xccov_file_direct_path: 'fastlane/test_output/UnitTests.xcresult',
+    exclude_targets: excluded_targets_for_macos_unit_tests.join(","),
+    minimum_coverage_percentage: 51.0
+  )
+end

@@ -1,0 +1,82 @@
+{
+  "configurations" : [
+    {
+      "id" : "40E50E68-38D3-4D7C-9D08-3F11A82FD5FB",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "language" : "en",
+    "region" : "US",
+    "maximumTestRepetitions" : 2,
+    "testRepetitionMode" : "retryOnFailure",
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "66A3AB432770890B0056A570",
+        "name" : "Example-AccountDeletion-UITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "25AAB485270EE45800CEA95A",
+        "name" : "Example-AccountSwitcher-UITests"
+      }
+    },
+    {
+      "skippedTests" : [
+        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanSuccess()",
+        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanWithAppInBackground()",
+        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccess()",
+        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccessAppInBackground()",
+        "LoginPaymentsSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccessAppTermination()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusHV3PlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanWithAppInBackground()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccessAppInBackground()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWithUnlimitedPlanSuccess()"
+      ],
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "25AAB53D2710456A00CEA95A",
+        "name" : "Example-Login-UITests"
+      }
+    },
+    {
+      "skippedTests" : [
+        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdatePlusPlanSuccess()",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdatePlusPlanSuccessAppTermination()",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdatePlusPlanSuccessExtendSubscriptionSuccess()",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdatePlusPlanSuccessExtendSubscriptionSuccessAppTermination()"
+      ],
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "25AAB61527108CA500CEA95A",
+        "name" : "Example-Payments-UITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "35B49CDB28379DAC00744D78",
+        "name" : "Example-TokenRefresh-UITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "66F5998D287DB63200F5BE5E",
+        "name" : "Example-Networking-UITests"
+      }
+    }
+  ],
+  "version" : 1
+}

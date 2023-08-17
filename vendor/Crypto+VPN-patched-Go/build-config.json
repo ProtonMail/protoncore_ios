@@ -1,0 +1,42 @@
+{
+    "go_version":"1.20.6",
+    "go_fork_branch":"fork/go1.20.6-macos-patch",
+    "build_dir":"build",
+    "out_dir":"out",
+    "go_mobile_dir":"mobile",
+    "go_mobile_flags": [
+        "-x",
+        "-ldflags=\"-s -w\"",
+        "-trimpath"
+    ],
+    "build_name":"GoLibs",
+    "commit_message": "VPN build",
+    "upload_branch": "feature/crypto-update",
+    "destination_folder": "vendor/Crypto+VPN-patched-Go",
+    "targets":["apple"],
+    "min_ios_version": "14.0",
+    "min_macos_version": "10.15",
+    "requirements": [
+        {
+            "module":
+            {
+                "path":"github.com/ProtonMail/gopenpgp/v2",
+                "version":"v2.7.2-proton"
+            },
+            "packages": ["crypto", "armor", "constants", "models", "subtle", "helper"]
+        },
+        {
+            "module":{
+                "path":"github.com/ProtonMail/go-srp",
+                "version": "v0.0.7"
+            }
+        },
+        {
+            "module": {
+                "path":"github.com/ProtonVPN/go-vpn-lib",
+                "version": "9521be0462ecc9d2f3eedd38def63290abc5c0c4"
+            },
+            "packages": ["ed25519", "localAgent", "vpnPing"]
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+# macOS
+*.DS_Store
+
+# Xcode local
+xcuserdata/
+
+# Fastlane
+**/fastlane/README.md
+**/fastlane/report.xml
+**/fastlane/DerivedData
+**/fastlane/Preview.html
+**/fastlane/screenshots
+**/fastlane/test_output
+example-app/**/build
+
+# Obfuscated constants
+**/ObfuscatedConstants.swift
+
+# localization
+_translations
+macosV5_ios14macos11/9999/DerivedData
+
+# SPM
+.build
+.swiftpm/xcode/xcuserdata
+
+# example apps Pods
+ExampleApp/build
+ExampleApp/Pods/Local\ Podspecs
+ExampleApp/Pods/Target\ Support\ Files
+ExampleApp/Pods/Pods.xcodeproj/project.pbxproj
+ExampleApp/Pods/Pods.xcodeproj/project.xcworkspace
+ExampleApp/Pods/Pods.xcodeproj/xcuserdata
+!ExampleApp/Pods/Pods.xcodeproj/xcshareddata/xcschemes/**
+
+./ProtonCore/*
+!./ProtonCore/Configuration.swift 

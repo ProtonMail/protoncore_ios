@@ -1,0 +1,188 @@
+# Prevents timeouts during builds. More info: https://github.com/fastlane/fastlane/issues/10131
+ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "180"
+ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "180"
+
+# --- Functions definition ---
+
+def default_destination
+  "platform=iOS Simulator,name=iPhone 11,OS=15.5"
+end
+
+def device_name(arguments)
+  arguments.has_key?(:device_name) ? arguments[:device_name] : 'iPhone 11'
+end
+
+def derived_data_path(prefix)
+  pipeline_id = ENV['CI_PIPELINE_IID'] || "9999" # for local runs
+  "./ProtonCore/" + prefix + "/" + pipeline_id + "/DerivedData/"
+end
+
+def create_derived_data_folder(prefix)
+  sh("mkdir", "-p", derived_data_path(prefix))
+end
+
+def delete_derived_data_folder(prefix)
+  clear_derived_data(
+    derived_data_path: derived_data_path(prefix)
+  )
+  sh("rm", "-rf", derived_data_path(prefix))
+end
+
+def prepare_for_building
+  sh("bash", "../scripts/generate_obfuscated_constants.sh")
+  bundle_install(gemfile: "fastlane/Gemfile")
+end
+
+def build_for_testing(folder, scheme, device, destination, arguments)
+  create_derived_data_folder(folder)
+  prepare_for_building
+  run_tests(
+    workspace: ".swiftpm/xcode/package.xcworkspace",
+    scheme: scheme,
+    derived_data_path: derived_data_path(folder),
+    device: device,
+    destination: destination,
+    xcargs: arguments[:xcargs],
+    build_for_testing: true,
+    code_coverage: true,
+    result_bundle: true
+  )
+end
+
+def execute_unit_tests(folder, scheme, device, destination, arguments)
+  prepare_for_building
+  run_tests(
+    workspace: ".swiftpm/xcode/package.xcworkspace",
+    scheme: scheme,
+    clean: false,
+    skip_build: true,
+    # test_without_building: true,
+    derived_data_path: derived_data_path(folder),
+    prelaunch_simulator: true,
+    device: device,
+    destination: destination,
+    xcargs: arguments[:xcargs],
+    code_coverage: true,
+    result_bundle: true
+  )
+end
+
+def execute_tests_for_workspace(workspace, scheme, derived_data_path, destination, arguments)
+  sh("mkdir", "-p", derived_data_path)
+  prepare_for_building
+  run_tests(
+    workspace: workspace, 
+    scheme: scheme, 
+    derived_data_path: derived_data_path,
+    device: nil,
+    destination: destination,
+    xcargs: arguments[:xcargs],
+    clean: false, 
+    skip_build: true,
+    code_coverage: true,
+    result_bundle: true
+  )
+  sh("rm", "-rf", derived_data_path)
+end
+
+# --- Building lanes ---
+
+lane :build_mac do |arguments|
+  build_for_testing("UnitTests-macOS", "UnitTests", nil, "platform=macOS", arguments)
+end
+
+lane :build_ios do |arguments|
+  build_for_testing("UnitTests-iOS", "UnitTests", "iPhone 11", nil, arguments)
+end
+
+lane :build_integration do |arguments|
+  build_for_testing("IntegrationTests", "IntegrationTests", "iPhone 11", nil, arguments)
+end
+
+lane :build_localization do |arguments|
+  create_derived_data_folder("CoreTranslationTests")
+  prepare_for_building
+  run_tests(
+    workspace: ".swiftpm/xcode/package.xcworkspace",
+    scheme: "CoreTranslationTests",
+    derived_data_path: derived_data_path("CoreTranslationTests"),
+    prelaunch_simulator: false,
+    device: 'iPhone 11',
+    xcargs: arguments[:xcargs],
+    build_for_testing: true,
+    code_coverage: false,
+    result_bundle: false
+  )
+end
+
+lane :build_ui_tests do |arguments|
+  create_derived_data_folder("UITestsOnlyBuild")
+  prepare_for_building
+  run_tests(
+    workspace: "ExampleAppSPM.xcworkspace",
+    scheme: "UITests-light",
+    derived_data_path: derived_data_path("UITestsOnlyBuild"),
+    device: device_name(arguments),
+    xcargs: arguments[:xcargs],
+    build_for_testing: true,
+    clean: false
+  )
+end
+
+# --- Running tests lanes ---
+
+lane :run_unit_tests do |arguments|
+  execute_unit_tests("UnitTests-iOS", "UnitTests", device_name(arguments), nil, arguments)
+end
+
+lane :run_unit_tests_macos do |arguments|
+  execute_unit_tests("UnitTests-macOS", "UnitTests", nil, "platform=macOS", arguments)
+end
+
+lane :run_apphosted_test_macos do |arguments|
+  execute_tests_for_workspace("ExampleAppSPM.xcworkspace", "ProtonCore-Keymaker-macOS-AppHost", "fastlane/DerivedData/UnitTests-macOS", "platform=macOS", arguments)
+end
+
+lane :run_integration_tests do |arguments|
+  execute_unit_tests("IntegrationTests", "IntegrationTests", device_name(arguments), nil, arguments)
+end
+
+lane :run_localization_tests do |arguments|
+  prepare_for_building
+  run_tests(
+    workspace: ".swiftpm/xcode/package.xcworkspace",
+    scheme: "CoreTranslationTests",
+    testplan: "CoreTranslationTests",
+    derived_data_path: derived_data_path("CoreTranslationTests"),
+    prelaunch_simulator: false,
+    device: device_name(arguments),
+    xcargs: arguments[:xcargs],
+    clean: false,
+    skip_build: true,
+    code_coverage: false,
+    result_bundle: false
+  )
+end
+
+# --- Cleaning lanes ---
+
+lane :cleanup_build_ui_tests do
+  delete_derived_data_folder("UITestsOnlyBuild")
+end
+
+lane :cleanup_run_unit_tests do
+  delete_derived_data_folder("UnitTests-iOS")
+end
+
+lane :cleanup_run_unit_tests_macos do
+  delete_derived_data_folder("UnitTests-macOS")
+end
+
+lane :cleanup_run_integration_tests do
+  delete_derived_data_folder("IntegrationTests")
+end
+
+lane :cleanup_run_localization_tests do
+  delete_derived_data_folder("CoreTranslationTests")
+end
+

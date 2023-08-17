@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Networking-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController title="Networking" id="vXZ-lx-hvc" customClass="NetworkingViewController" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xIf-uf-9eG">
+                                <rect key="frame" x="16" y="16" width="343" height="425.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="3ne-hZ-ncO" customClass="EnvironmentSelector" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target">
+                                        <rect key="frame" x="171.5" y="0.0" width="0.0" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credentials used in tests below" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxW-EB-im2">
+                                        <rect key="frame" x="77" y="34" width="189" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="7bj-AU-Rij">
+                                        <rect key="frame" x="0.0" y="58" width="343" height="68"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1Tf-MJ-lMR">
+                                                <rect key="frame" x="0.0" y="0.0" width="62" height="68"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwi-WW-dlv">
+                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7W-Ci-PAH">
+                                                        <rect key="frame" x="0.0" y="34" width="62" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cMo-o2-z2z">
+                                                <rect key="frame" x="78" y="0.0" width="265" height="68"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mnw-wY-23d">
+                                                        <rect key="frame" x="0.0" y="0.0" width="265" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ygR-lO-95e">
+                                                        <rect key="frame" x="0.0" y="34" width="265" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WpQ-lr-QA0">
+                                        <rect key="frame" x="17.5" y="134" width="308" height="47.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of concurrent requests" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="83f-Fn-zfZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="138" height="47.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HHd-ac-3cR">
+                                                <rect key="frame" x="146" y="0.0" width="44" height="47.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tp6-Yg-kpe">
+                                                <rect key="frame" x="198" y="0.0" width="110" height="47.5"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Stress test token refresh">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="stressTestRefreshToken" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ql3-cl-ckl"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="79o-fI-Ss8">
+                                        <rect key="frame" x="44.5" y="189.5" width="254" height="26"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timeout [s, Double]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7s-Ld-yez">
+                                                <rect key="frame" x="0.0" y="0.0" width="104" height="26"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.1" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EWx-4V-yyX">
+                                                <rect key="frame" x="112" y="0.0" width="47" height="26"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yi2-BB-2UJ">
+                                                <rect key="frame" x="167" y="0.0" width="87" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="26" id="RF9-BV-mD1"/>
+                                                </constraints>
+                                                <state key="normal" title="Timeout test"/>
+                                                <connections>
+                                                    <action selector="timeoutAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="AlQ-AI-38l"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGL-70-jAR">
+                                        <rect key="frame" x="140" y="223.5" width="63" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="26" id="arh-cp-eDY"/>
+                                        </constraints>
+                                        <state key="normal" title="Auth test"/>
+                                        <connections>
+                                            <action selector="authAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="HI9-dZ-gVC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vum-O6-kWV">
+                                        <rect key="frame" x="105" y="257.5" width="133" height="30"/>
+                                        <state key="normal" title="Force Upgrade test"/>
+                                        <connections>
+                                            <action selector="forceUpgradeAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ne3-mP-cgb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuA-PY-RXK">
+                                        <rect key="frame" x="74" y="295.5" width="195" height="30"/>
+                                        <state key="normal" title="Human Verification auth test"/>
+                                        <connections>
+                                            <action selector="humanVerificationAuthAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="JOb-nv-GUt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IrQ-vp-gLY">
+                                        <rect key="frame" x="65.5" y="333.5" width="212" height="30"/>
+                                        <state key="normal" title="Human Verification unauth test"/>
+                                        <connections>
+                                            <action selector="humanVerificationUnauthAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="MlE-cN-vhE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="riw-kb-36e">
+                                        <rect key="frame" x="73.5" y="371.5" width="196" height="30"/>
+                                        <state key="normal" title="Networking TroubleShooting"/>
+                                        <connections>
+                                            <action selector="dohUIAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="RKf-MN-hRr"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Doh Status:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XU0-Ff-J9j">
+                                        <rect key="frame" x="136" y="409.5" width="71" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="7bj-AU-Rij" firstAttribute="width" secondItem="xIf-uf-9eG" secondAttribute="width" id="KIX-xX-61G"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xIf-uf-9eG" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="16" id="V7d-oB-3pC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xIf-uf-9eG" secondAttribute="trailing" id="fze-PR-qHi"/>
+                            <constraint firstItem="xIf-uf-9eG" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="woH-Rk-MOG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Opy-fk-95s">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Ndn-50-11I"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="dohStatusLable" destination="XU0-Ff-J9j" id="LZ2-96-8nM"/>
+                        <outlet property="environmentSelector" destination="3ne-hZ-ncO" id="kQP-Xf-Ll6"/>
+                        <outlet property="password" destination="ygR-lO-95e" id="Vpx-fY-4Yd"/>
+                        <outlet property="requestsNumberTextField" destination="HHd-ac-3cR" id="JUt-G5-yS1"/>
+                        <outlet property="timeoutTextField" destination="EWx-4V-yyX" id="1n2-sF-MSW"/>
+                        <outlet property="username" destination="Mnw-wY-23d" id="gzR-Rv-TQH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1071.2" y="132.68365817091455"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

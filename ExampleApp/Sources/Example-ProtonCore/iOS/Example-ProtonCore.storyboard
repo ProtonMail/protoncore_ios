@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YHT-bH-fs4">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Dark Mode Aware Navigation View Controller-->
+        <scene sceneID="EwB-rF-WJl">
+            <objects>
+                <navigationController id="YHT-bH-fs4" customClass="DarkModeAwareNavigationViewController" customModule="ProtonCoreUIFoundations" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4YI-TU-alR">
+                        <rect key="frame" x="0.0" y="47" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="hph-zV-bo8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ov2-ox-1AU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1487" y="142"/>
+        </scene>
+        <!--ProtonCore Examples-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController title="ProtonCore Examples" id="Y6W-OH-hqX" customClass="ExampleViewController" customModule="Example_iOS_Calendar_AppStoreIAP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="icK-yr-6Qp">
+                                <rect key="frame" x="0.0" y="91" width="375" height="687"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Xzs-sx-OSn">
+                                        <rect key="frame" x="32" y="16" width="311" height="1212.3333333333333"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9C5-0c-ysA">
+                                                <rect key="frame" x="0.0" y="0.0" width="311" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Huk-xp-H76">
+                                                <rect key="frame" x="0.0" y="36.333333333333343" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Account Deletion"/>
+                                                <connections>
+                                                    <segue destination="Y44-Dm-KUh" kind="show" id="S1P-7x-HNE"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nfk-ll-c9R" userLabel="Account Switcher Button">
+                                                <rect key="frame" x="0.0" y="82.333333333333343" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Account Switcher"/>
+                                                <connections>
+                                                    <segue destination="Obq-Ve-qJG" kind="show" id="I83-y2-oGS"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uox-Dc-Yqt">
+                                                <rect key="frame" x="0.0" y="128.33333333333334" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Features"/>
+                                                <connections>
+                                                    <segue destination="BTE-yh-IC0" kind="show" id="Gkj-ip-ZJ3"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sw3-xP-aHY" userLabel="Login">
+                                                <rect key="frame" x="0.0" y="174.33333333333331" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Login"/>
+                                                <connections>
+                                                    <segue destination="LrU-GH-Nr8" kind="show" id="DF0-8w-mym"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WcV-YS-SEg">
+                                                <rect key="frame" x="0.0" y="220.33333333333331" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Networking"/>
+                                                <connections>
+                                                    <segue destination="yhK-jN-nV7" kind="show" id="f2s-ED-shY"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6V-kR-r5d">
+                                                <rect key="frame" x="0.0" y="266.33333333333331" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Payments"/>
+                                                <connections>
+                                                    <segue destination="AnH-yM-w7x" kind="show" id="IGI-1R-9PX"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rgs-uw-Z4z">
+                                                <rect key="frame" x="0.0" y="312.33333333333331" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Settings"/>
+                                                <connections>
+                                                    <segue destination="Sjk-Ek-Tk8" kind="show" id="jyL-8s-P6P"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gk2-6K-Hyv">
+                                                <rect key="frame" x="0.0" y="358.33333333333331" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Token Refresh"/>
+                                                <connections>
+                                                    <segue destination="b5g-Fw-1LT" kind="show" id="s10-Ea-kOU"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fiO-og-NzX">
+                                                <rect key="frame" x="0.0" y="404.33333333333331" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="UIFoundation"/>
+                                                <connections>
+                                                    <segue destination="68X-8x-j2e" kind="show" id="N9N-V3-s3m"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGS-14-lFQ" userLabel="Localization Button">
+                                                <rect key="frame" x="0.0" y="450.33333333333337" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Localization"/>
+                                                <connections>
+                                                    <segue destination="Kj6-ky-Zv9" kind="show" id="7Px-AV-kz1"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Guv-pI-9gb" userLabel="FeatureSwitch Button">
+                                                <rect key="frame" x="0.0" y="496.33333333333337" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="FeatureSwitch"/>
+                                                <connections>
+                                                    <segue destination="7XP-SA-bOW" kind="show" id="lNn-oX-epb"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2l6-gR-6Mq" userLabel="EndToEnd Tests">
+                                                <rect key="frame" x="0.0" y="542.33333333333337" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="EndToEnd Tests"/>
+                                                <connections>
+                                                    <segue destination="BD3-1h-jNf" kind="push" id="ZBq-kW-hBd"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFd-Wv-mu2">
+                                                <rect key="frame" x="0.0" y="588.33333333333337" width="311" height="34.333333333333371"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App version " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Gc-pV-o1h">
+                                                        <rect key="frame" x="0.0" y="0.0" width="141" height="34.333333333333336"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="feF-eG-MXV">
+                                                        <rect key="frame" x="141" y="0.0" width="100" height="34.333333333333336"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="100" id="yei-u4-1Ft"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation" smartDashesType="no"/>
+                                                        <connections>
+                                                            <action selector="appVersionEditingChanged:" destination="Y6W-OH-hqX" eventType="editingChanged" id="bIk-ew-AX0"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="000-9J-02E">
+                                                        <rect key="frame" x="241" y="0.0" width="70" height="34.333333333333336"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="70" id="8KI-tJ-46W"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Reset"/>
+                                                        <connections>
+                                                            <action selector="appVersionResetTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="veB-iz-rXB"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="D8D-mg-7jj">
+                                                <rect key="frame" x="0.0" y="638.66666666666663" width="311" height="40.666666666666629"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="751" text="Alternative routing enabled" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVg-a3-r51">
+                                                        <rect key="frame" x="0.0" y="0.0" width="119.33333333333333" height="40.666666666666664"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LWA-B2-5BL">
+                                                        <rect key="frame" x="127.33333333333336" y="5" width="183.66666666666663" height="32"/>
+                                                        <segments>
+                                                            <segment title="Off"/>
+                                                            <segment title="On"/>
+                                                            <segment title="Force"/>
+                                                        </segments>
+                                                        <connections>
+                                                            <action selector="alternativeRoutingSetupChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="uZ2-L2-erg"/>
+                                                        </connections>
+                                                    </segmentedControl>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1py-Xf-dP8">
+                                                <rect key="frame" x="0.0" y="695.33333333333337" width="311" height="31"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="751" text="Trust kit enabled" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuI-4t-rpL">
+                                                        <rect key="frame" x="0.0" y="5.3333333333332575" width="126.66666666666667" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tjU-IO-ODP">
+                                                        <rect key="frame" x="134.66666666666663" y="0.0" width="176.33333333333337" height="32"/>
+                                                        <segments>
+                                                            <segment title="Off"/>
+                                                            <segment title="On"/>
+                                                        </segments>
+                                                        <connections>
+                                                            <action selector="alternativeRoutingSetupChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="w8H-ZW-HJl"/>
+                                                            <action selector="trustKitSetupChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="NeS-ng-udV"/>
+                                                        </connections>
+                                                    </segmentedControl>
+                                                </subviews>
+                                            </stackView>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wxs-Hd-hw0">
+                                                <rect key="frame" x="0.0" y="742.33333333333337" width="311" height="216"/>
+                                            </pickerView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dH-3j-7er">
+                                                <rect key="frame" x="0.0" y="974.33333333333326" width="311" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Scenario from picker"/>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WRw-bA-22z">
+                                                <rect key="frame" x="0.0" y="1020.3333333333333" width="311" height="192"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crash reporting testing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCR-sF-dog">
+                                                        <rect key="frame" x="0.0" y="0.0" width="311" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wv1-Yz-LgS">
+                                                        <rect key="frame" x="0.0" y="20.333333333333488" width="311" height="34.333333333333343"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Fatal error"/>
+                                                        <connections>
+                                                            <action selector="crashWithFatalError:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="dfc-dw-Nxo"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Fd-0O-f5k">
+                                                        <rect key="frame" x="0.0" y="54.666666666666742" width="311" height="34.333333333333343"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Assertion"/>
+                                                        <connections>
+                                                            <action selector="crashWithAssertion:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="k6Z-2T-gaY"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mVf-EM-SFE">
+                                                        <rect key="frame" x="0.0" y="89" width="311" height="34.333333333333343"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Force unwrap"/>
+                                                        <connections>
+                                                            <action selector="crashWithForceUnwrap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="UXU-jd-xj5"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6aE-3q-TXe">
+                                                        <rect key="frame" x="0.0" y="123.33333333333347" width="311" height="34.333333333333329"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Sentry crash"/>
+                                                        <connections>
+                                                            <action selector="crashWithSentryCrash:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="PgL-Ph-lVf"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAl-oa-9GU">
+                                                        <rect key="frame" x="0.0" y="157.66666666666674" width="311" height="34.333333333333343"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="No crash just event"/>
+                                                        <connections>
+                                                            <action selector="noCrashJustEvent:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="W5V-oV-Xv3"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="Xzs-sx-OSn" firstAttribute="trailing" secondItem="0Mo-0O-dWw" secondAttribute="trailing" constant="-32" id="BQ0-3t-zzB"/>
+                                    <constraint firstItem="Xzs-sx-OSn" firstAttribute="bottom" secondItem="0Mo-0O-dWw" secondAttribute="bottom" id="G26-FH-7qG"/>
+                                    <constraint firstItem="Xzs-sx-OSn" firstAttribute="leading" secondItem="0Mo-0O-dWw" secondAttribute="leading" constant="32" id="i3m-bA-UEF"/>
+                                    <constraint firstItem="Xzs-sx-OSn" firstAttribute="top" secondItem="0Mo-0O-dWw" secondAttribute="top" constant="16" id="rmH-iQ-JLl"/>
+                                    <constraint firstItem="Xzs-sx-OSn" firstAttribute="width" secondItem="icK-yr-6Qp" secondAttribute="width" constant="-64" id="yVX-52-ewA"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="0Mo-0O-dWw"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="yqe-kU-nqx"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="4S4-R4-TYP" appends="YES" id="L8H-C3-AIf"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="icK-yr-6Qp" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="5RG-FV-R6k"/>
+                            <constraint firstItem="icK-yr-6Qp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6C2-td-Hoa"/>
+                            <constraint firstItem="icK-yr-6Qp" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="dBX-8h-nfB"/>
+                            <constraint firstItem="icK-yr-6Qp" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="sur-WU-Npt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Proton Core" leftItemsSupplementBackButton="YES" id="GLa-xw-3gh"/>
+                    <connections>
+                        <outlet property="accountDeletionButton" destination="Huk-xp-H76" id="dGd-2a-dJA"/>
+                        <outlet property="accountSwitcherButton" destination="Nfk-ll-c9R" id="3GI-0s-MdL"/>
+                        <outlet property="alternativeRoutingSegmentedControl" destination="LWA-B2-5BL" id="2sX-Rr-ucc"/>
+                        <outlet property="appVersionResetButton" destination="000-9J-02E" id="CbW-pE-4Ml"/>
+                        <outlet property="appVersionTextField" destination="feF-eG-MXV" id="FBm-6c-heQ"/>
+                        <outlet property="featuresButton" destination="Uox-Dc-Yqt" id="NFJ-Gc-L3c"/>
+                        <outlet property="loginButton" destination="sw3-xP-aHY" id="fuX-ho-ERX"/>
+                        <outlet property="networkingButton" destination="WcV-YS-SEg" id="77B-hV-JfN"/>
+                        <outlet property="paymentsButton" destination="E6V-kR-r5d" id="OO0-Fj-srz"/>
+                        <outlet property="scenarioButton" destination="2dH-3j-7er" id="7sM-bY-P9E"/>
+                        <outlet property="scenarioPicker" destination="Wxs-Hd-hw0" id="Zww-T3-XHp"/>
+                        <outlet property="settingsButton" destination="Rgs-uw-Z4z" id="2zb-iV-li5"/>
+                        <outlet property="targetLabel" destination="9C5-0c-ysA" id="Db0-hM-Gx2"/>
+                        <outlet property="tokenRefreshButton" destination="gk2-6K-Hyv" id="V3A-u8-avO"/>
+                        <outlet property="trustKitSegmentedControl" destination="tjU-IO-ODP" id="fNP-0a-8fz"/>
+                        <outlet property="uiFoundationButton" destination="fiO-og-NzX" id="yD4-kE-pdQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="4S4-R4-TYP">
+                    <connections>
+                        <action selector="tapAction:" destination="Y6W-OH-hqX" id="BCE-ef-LdC"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-486" y="142"/>
+        </scene>
+        <!--Example-AccountDeletion-->
+        <scene sceneID="XSz-K8-qnD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-AccountDeletion" id="Y44-Dm-KUh" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="rRi-ar-RkT"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kbr-F4-5eh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="316" y="-3"/>
+        </scene>
+        <!--Example-AccountSwitcher-->
+        <scene sceneID="CCJ-Wm-vdt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-AccountSwitcher" id="Obq-Ve-qJG" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="p64-jD-UPd"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KMm-JO-cha" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="322" y="34"/>
+        </scene>
+        <!--Example-Features-->
+        <scene sceneID="rOd-Hi-est">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-Features" id="BTE-yh-IC0" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="zdD-5k-ei3"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yhw-49-xUJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="280" y="70"/>
+        </scene>
+        <!--Example-Login-->
+        <scene sceneID="cm0-YS-RDi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-Login" id="LrU-GH-Nr8" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="tYi-RS-ouA"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eg6-vy-KVU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="264" y="106"/>
+        </scene>
+        <!--Example-Networking-->
+        <scene sceneID="GsS-Aj-sT0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-Networking" id="yhK-jN-nV7" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="OWq-52-TxH"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TEY-0B-Kke" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="294" y="142"/>
+        </scene>
+        <!--Example-Payments-->
+        <scene sceneID="tlz-LJ-lev">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-Payments" id="AnH-yM-w7x" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="GtR-jH-F2i"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eee-7V-Jf7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="286" y="178"/>
+        </scene>
+        <!--Example-Settings-->
+        <scene sceneID="L08-DA-4KB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-Settings" id="Sjk-Ek-Tk8" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="lR9-xh-hzl"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UiE-mb-Oid" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="278" y="214"/>
+        </scene>
+        <!--Example-UIFoundations-->
+        <scene sceneID="Yto-Wa-rt1">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-UIFoundations" id="68X-8x-j2e" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="1IA-W7-Q2f"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vK8-ft-gEK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="306" y="280"/>
+        </scene>
+        <!--Example-TokenRefresh-->
+        <scene sceneID="TNy-vc-dzg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-TokenRefresh" id="b5g-Fw-1LT" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="rlY-qM-EZr"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GXk-hM-cnF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="297" y="246"/>
+        </scene>
+        <!--Example-Localization-->
+        <scene sceneID="ldT-yA-q6K">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-Localization" id="Kj6-ky-Zv9" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="nN7-Of-RXi"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3fL-6o-mL8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="291" y="313"/>
+        </scene>
+        <!--Example-FeatureSwitch-->
+        <scene sceneID="HcV-jd-kTh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-FeatureSwitch" id="7XP-SA-bOW" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="RtO-bk-iVP"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z7N-4R-CKK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="289" y="352"/>
+        </scene>
+        <!--Example-EndToEnd-->
+        <scene sceneID="goy-Yv-faf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Example-EndToEnd" id="BD3-1h-jNf" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="kAf-x7-yjx"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8XW-Hh-GIO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="278" y="393"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

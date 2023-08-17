@@ -1,0 +1,122 @@
+{
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire",
+      "state" : {
+        "revision" : "d120af1e8638c7da36c8481fd61a66c0c08dc4fc",
+        "version" : "5.4.4"
+      }
+    },
+    {
+      "identity" : "apple-fusion",
+      "kind" : "remoteSourceControl",
+      "location" : "git@gitlab.protontech.ch:tpe/apple-fusion.git",
+      "state" : {
+        "revision" : "5905ef7eb68a3ad7acdd3cdec75b781daf26fb4b",
+        "version" : "2.0.0"
+      }
+    },
+    {
+      "identity" : "cryptoswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/krzyzanowskim/CryptoSwift",
+      "state" : {
+        "revision" : "32f641cf24fc7abc1c591a2025e9f2f572648b0f",
+        "version" : "1.7.2"
+      }
+    },
+    {
+      "identity" : "ellipticcurvekeypair",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/agens-no/EllipticCurveKeyPair",
+      "state" : {
+        "revision" : "944ae5c89ca045e9f1a113b736706c73fc51d1c2",
+        "version" : "2.0.0"
+      }
+    },
+    {
+      "identity" : "jsonschema.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kylef/JSONSchema.swift",
+      "state" : {
+        "revision" : "d14de4b2d9205068c9db89c00d097ca43c897000",
+        "version" : "0.6.0"
+      }
+    },
+    {
+      "identity" : "lottie-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/airbnb/lottie-ios",
+      "state" : {
+        "revision" : "314537ec697719fa33a9d48210f4d06a463286d3",
+        "version" : "3.4.3"
+      }
+    },
+    {
+      "identity" : "ohhttpstubs",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AliSoftware/OHHTTPStubs",
+      "state" : {
+        "revision" : "12f19662426d0434d6c330c6974d53e2eb10ecd9",
+        "version" : "9.1.0"
+      }
+    },
+    {
+      "identity" : "pathkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kylef/PathKit.git",
+      "state" : {
+        "revision" : "3bfd2737b700b9a36565a8c94f4ad2b050a5e574",
+        "version" : "1.0.1"
+      }
+    },
+    {
+      "identity" : "reachability.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ashleymills/Reachability.swift",
+      "state" : {
+        "revision" : "c01bbdf2d633cf049ae1ed1a68a2020a8bda32e2",
+        "version" : "5.1.0"
+      }
+    },
+    {
+      "identity" : "spectre",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kylef/Spectre.git",
+      "state" : {
+        "revision" : "26cc5e9ae0947092c7139ef7ba612e34646086c7",
+        "version" : "0.10.1"
+      }
+    },
+    {
+      "identity" : "swift-snapshot-testing",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-snapshot-testing",
+      "state" : {
+        "revision" : "cef5b3f6f11781dd4591bdd1dd0a3d22bd609334",
+        "version" : "1.11.0"
+      }
+    },
+    {
+      "identity" : "swiftotp",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/lachlanbell/SwiftOTP",
+      "state" : {
+        "revision" : "93d4942c90dd498580988ffb9971e2ddf91d5a28",
+        "version" : "2.0.3"
+      }
+    },
+    {
+      "identity" : "trustkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ProtonMail/TrustKit",
+      "state" : {
+        "revision" : "d107d7cc825f38ae2d6dc7c54af71d58145c3506",
+        "version" : "1.0.3"
+      }
+    }
+  ],
+  "version" : 2
+}

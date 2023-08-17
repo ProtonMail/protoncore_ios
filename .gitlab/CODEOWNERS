@@ -1,0 +1,17 @@
+# Default owners
+* @yzhang @ksiejkow @crolland @vjalencas
+
+# Package-level owners section:
+[VPN]
+/libraries/Doh/ @jbiggs @jozevic @pjurczyk @kjanusie
+/libraries/Networking/ @jbiggs @jozevic @pjurczyk @kjanusie
+
+[MSA]
+/libraries/HumanVerification/ @yzhang
+
+[TESTAUTOMATION]
+/libraries/TestingToolkit/ @dzelench
+
+[CRYPTO]
+/libraries/Crypto/ @crypto
+/vendor/ @crypto

@@ -1,0 +1,48 @@
+{
+  "identifier" : "FDA259FA",
+  "nonRenewingSubscriptions" : [
+    {
+      "displayPrice" : "60",
+      "familyShareable" : false,
+      "internalID" : "F3736D4D",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "ioscal_mail2022_12_usd_non_renewing",
+      "referenceName" : "mail2022",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "150",
+      "familyShareable" : false,
+      "internalID" : "BC790759",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "ioscal_bundle2022_12_usd_non_renewing",
+      "referenceName" : "bundle2022",
+      "type" : "NonRenewingSubscription"
+    }
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 1
+  }
+}

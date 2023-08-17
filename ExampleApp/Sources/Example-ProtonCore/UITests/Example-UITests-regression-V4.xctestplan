@@ -1,0 +1,60 @@
+{
+  "configurations" : [
+    {
+      "id" : "40E50E68-38D3-4D7C-9D08-3F11A82FD5FB",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testRepetitionMode" : "retryOnFailure",
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp-V4.xcodeproj",
+        "identifier" : "BEF15948F09ABA935050C3687196C74E",
+        "name" : "Example-AccountDeletion-UITests-V4"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp-V4.xcodeproj",
+        "identifier" : "56248D4A691C58D853535E50635F001E",
+        "name" : "Example-AccountSwitcher-UITests-V4"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp-V4.xcodeproj",
+        "identifier" : "1B948A89DB01366A31C27A01870EC268",
+        "name" : "Example-Login-UITests-V4"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp-V4.xcodeproj",
+        "identifier" : "CCF2A9367D45FC0BDA7EAAFA6D0E3C4C",
+        "name" : "Example-Payments-UITests-V4"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp-V4.xcodeproj",
+        "identifier" : "6694CDDE287DC0BE0001C81E",
+        "name" : "Example-Networking-UITests-V5"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp-V4.xcodeproj",
+        "identifier" : "354EE07E2840DCCE00DC2002",
+        "name" : "Example-TokenRefresh-UITests-V4"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -1,0 +1,188 @@
+{
+  "configurations" : [
+    {
+      "id" : "76868DAC-C5AF-4D5F-AC8E-AACE5343AC12",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "language" : "en",
+    "maximumTestRepetitions" : 2,
+    "region" : "US",
+    "testRepetitionMode" : "retryOnFailure"
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "AccountDeletionTests\/testAccountDeletionFails_AbuserSubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_AdminSubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_BaseAdminSubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_BulkDisabledSubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_BulkSenderSubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_BulkSignupSubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_ChargeBackSubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_CompromisedSubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_CriminalSubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_CsaSubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_DeletedSubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_DeletedWithAddressAndKeys()",
+        "AccountDeletionTests\/testAccountDeletionFails_DisabledSubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_DisabledWithAddressAndKeys()",
+        "AccountDeletionTests\/testAccountDeletionFails_ForcePasswordChangeSubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_InactiveSubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_RansomwareSubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_RestrictedSubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_SelfDeletedSubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_SpammerSubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_SubuserPrivate()",
+        "AccountDeletionTests\/testAccountDeletionFails_SubuserPublic()",
+        "AccountDeletionTests\/testAccountDeletionFails_SuperSubuserPrivate()",
+        "AccountDeletionTests\/testAccountIsDeleted_AdminWithAddressAndKeys()",
+        "AccountDeletionTests\/testAccountIsDeleted_Paid_Professional()",
+        "AccountDeletionTests\/testAccountIsDeleted_Paid_Visionary()",
+        "AccountDeletionTests\/testAccountIsDeleted_SuperWithAddressAndKeys()",
+        "AccountDeletionTests\/testAccountIsDeleted_VpnAdminWithAddressAndKeys()"
+      ],
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "66A3AB432770890B0056A570",
+        "name" : "Example-AccountDeletion-UITests"
+      }
+    },
+    {
+      "skippedTests" : [
+        "AccountSwitcherTests\/testSwitcherComponentNavigatesToSwitcherScreen()",
+        "AccountSwitcherTests\/testSwitcherScreenIsClosing()",
+        "AccountSwitcherTests\/testSwitcherScreenRemovesAfterConfirmation()",
+        "AccountSwitcherTests\/testSwitcherScreenShowsConfirmationMenuForRemovingAccount()",
+        "AccountSwitcherTests\/testSwitcherScreenShowsConfirmationMenuForSigningOutAccount()",
+        "AccountSwitcherTests\/testSwitcherScreenShowsProperMenuForSignedInUser()",
+        "AccountSwitcherTests\/testSwitcherScreenShowsProperMenuForSignedOutUser()",
+        "AccountSwitcherTests\/testSwitcherScreenSignsOutAfterConfirmation()"
+      ],
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "25AAB485270EE45800CEA95A",
+        "name" : "Example-AccountSwitcher-UITests"
+      }
+    },
+    {
+      "skippedTests" : [
+        "LoginPaymentsSignupPlanSelectorTests",
+        "LoginSignupPlanSelectorTests\/testSignupExistingExtAccountHV3()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountEditEmailHV3()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithFreeHV3PlanResendEmailSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithFreeHV3PlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithFreePlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusHV3PlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewExtAccountWithPlusPlanWithAppInBackground()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWithPlusPlanSuccessAppInBackground()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntAccountWithUnlimitedPlanSuccess()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntFreePlanAndAppTermination()",
+        "LoginSignupPlanSelectorTests\/testSignupNewIntFreePlanWithAppInBackground()",
+        "LoginSignupPlanSelectorTests\/testSignupWithExtAccountFreePlanWithAppInBackground()",
+        "LoginSignupTests\/testCloseButtonDoesntExist()",
+        "LoginSignupTests\/testCloseButtonExists()",
+        "LoginSignupTests\/testPasswordVerificationEmpty()",
+        "LoginSignupTests\/testPasswordVerificationPasswordEmpty()",
+        "LoginSignupTests\/testPasswordVerificationRepeatPasswordEmpty()",
+        "LoginSignupTests\/testPasswordVerificationTooShort()",
+        "LoginSignupTests\/testPasswordsVerificationDoNotMatch()",
+        "LoginSignupTests\/testRecoverySelectCountryAndCheckCode()",
+        "LoginSignupTests\/testRecoveryVerificationEmail()",
+        "LoginSignupTests\/testRecoveryVerificationPhone()",
+        "LoginSignupTests\/testSignupExistingExtAccount()",
+        "LoginSignupTests\/testSignupExistingIntAccount()",
+        "LoginSignupTests\/testSignupNewExtAccountSuccess()",
+        "LoginSignupTests\/testSignupNewExtSendCodeCancel()",
+        "LoginSignupTests\/testSignupNewExtSendCodeRequestNewCode()",
+        "LoginSignupTests\/testSignupNewExtWrongVerificationCodeChangeEmail()",
+        "LoginSignupTests\/testSignupNewExtWrongVerificationCodeResend()",
+        "LoginSignupTests\/testSignupNewIntAccountHVRequired()",
+        "LoginSignupTests\/testSignupNewIntAccountSuccess()",
+        "LoginSignupTests\/testSignupNewIntStayInRecoveryMethod()",
+        "LoginSignupTests\/testSignupNewIntTermsAndConditions()",
+        "LoginSignupTests\/testSwitchExtToLogin()",
+        "LoginTests\/testCloseLoginScreen()",
+        "LoginTests\/testLoginNewExtAccountSuccessExternalAccType()",
+        "LoginTests\/testLoginNewExtAccountSuccessInternalAccType()",
+        "LoginTests\/testLoginNewExtAccountSuccessUsernameAccType()",
+        "LoginTests\/testLoginWithAddressNoKeysExternalAccType()",
+        "LoginTests\/testLoginWithAddressNoKeysInternalAccType()",
+        "LoginTests\/testLoginWithAppInBackground()",
+        "LoginTests\/testLoginWithDisabledUser()",
+        "LoginTests\/testLoginWithIncorrectTwoFACodeUser()",
+        "LoginTests\/testLoginWithInvalidMailboxPassword()",
+        "LoginTests\/testLoginWithInvalidPassword()",
+        "LoginTests\/testLoginWithOrgPrivateUser()",
+        "LoginTests\/testLoginWithOrgPublicUser()",
+        "LoginTests\/testLoginWithTwoPassAnd2FAUser()",
+        "LoginTests\/testLoginWithTwoPassUserInvalidTwoFACode()",
+        "LoginTests\/testLoginWithVPNOnlyFreeUser()",
+        "LoginTests\/testLoginWithVPNOnlyFreeUserExternal()",
+        "LoginTests\/testLoginWithVPNOnlyFreeUserInternal()",
+        "LoginTests\/testLogoutUserWithOnePass()",
+        "LoginTests\/testNeedHelpClosed()",
+        "LoginTests\/testNeedHelpOptionsLink()",
+        "LoginTests\/testSwitchToCreateAccount()",
+        "LoginWelcomeTests\/testCalendarWelcomeScreenIsShown()",
+        "LoginWelcomeTests\/testDriveWelcomeScreenIsShown()",
+        "LoginWelcomeTests\/testLoginButtonLeadsToLoginScreenWithSignUpWhenNeeded()",
+        "LoginWelcomeTests\/testLoginButtonLeadsToSignUpLessLoginScreenWhenNeeded()",
+        "LoginWelcomeTests\/testSignUpButtonIsNotPresentedOnWelcomeScreenWhenItShouldNotBe()",
+        "LoginWelcomeTests\/testSignUpButtonIsPresentedOnWelcomeScreenWhenItShouldBe()",
+        "LoginWelcomeTests\/testVpnWelcomeScreenIsShown()"
+      ],
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "25AAB53D2710456A00CEA95A",
+        "name" : "Example-Login-UITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "35B49CDB28379DAC00744D78",
+        "name" : "Example-TokenRefresh-UITests"
+      }
+    },
+    {
+      "skippedTests" : [
+        "PaymentsNewUserSubscriptionUIVCUITests\/testCurrentMailPlusVpnFreePlan()",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testCurrentMailProVpnFreePlan()",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testCurrentPlusPlan()",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testCurrentProPlan()",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testCurrentVisionaryPlan()",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testCurrentVpnBasicPlan()",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testCurrentVpnPlusPlan()",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdatePlusPlan()",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdatePlusPlanSuccess()",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdatePlusPlanSuccessAppTermination()",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdatePlusPlanSuccessExtendSubscriptionSuccess()",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdatePlusPlanSuccessExtendSubscriptionSuccessAppTermination()",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdateProPlan()",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdateVisionaryPlan()",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdateVpnBasicPlan()",
+        "PaymentsNewUserSubscriptionUIVCUITests\/testUpdateVpnPlusPlan()"
+      ],
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "25AAB61527108CA500CEA95A",
+        "name" : "Example-Payments-UITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp.xcodeproj",
+        "identifier" : "66F5998D287DB63200F5BE5E",
+        "name" : "Example-Networking-UITests"
+      }
+    }
+  ],
+  "version" : 1
+}

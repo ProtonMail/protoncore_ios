@@ -1,0 +1,29 @@
+{
+  "products" : [
+    {
+      "displayPrice" : "60",
+      "familyShareable" : false,
+      "internalID" : "220AFB9E",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "ios_plus_12_usd_non_renewing",
+      "referenceName" : "plus",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 0
+  }
+}

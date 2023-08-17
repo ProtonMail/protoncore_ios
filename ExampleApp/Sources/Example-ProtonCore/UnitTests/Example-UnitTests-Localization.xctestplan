@@ -1,0 +1,300 @@
+{
+  "configurations" : [
+    {
+      "id" : "96956E60-DB7D-4928-97FF-577A6E166697",
+      "name" : "Arabic",
+      "options" : {
+        "language" : "ar"
+      }
+    },
+    {
+      "id" : "F33E4DB4-98EF-4C07-ADB6-7A3BCF30FEC6",
+      "name" : "Catalan",
+      "options" : {
+        "language" : "ca"
+      }
+    },
+    {
+      "id" : "1FFF5F34-7CBF-4ACA-98E9-0C0655191A9B",
+      "name" : "Chinese (Hong Kong)",
+      "options" : {
+        "language" : "zh-HK"
+      }
+    },
+    {
+      "id" : "B3A0E255-F011-4D36-839D-D94BBDA719C3",
+      "name" : "Chinese, Simplified",
+      "options" : {
+        "language" : "zh-Hans"
+      }
+    },
+    {
+      "id" : "64767674-91CD-4D97-A5C2-FB7B3BA62EC5",
+      "name" : "Chinese, Traditional",
+      "options" : {
+        "language" : "zh-Hant"
+      }
+    },
+    {
+      "id" : "BF6B7EB2-518C-45F9-B7C4-5366EAB629E1",
+      "name" : "Croatian",
+      "options" : {
+        "language" : "hr"
+      }
+    },
+    {
+      "id" : "0309A4E0-7101-4F8F-B467-816BAE3DFD5D",
+      "name" : "Czech",
+      "options" : {
+        "language" : "cs"
+      }
+    },
+    {
+      "id" : "3A8DE432-CA09-48BA-85E7-7E6655F50CFA",
+      "name" : "Danish",
+      "options" : {
+        "language" : "da"
+      }
+    },
+    {
+      "id" : "005F9488-3C7B-48BA-93D9-03FFB6825EAA",
+      "name" : "Dutch",
+      "options" : {
+        "language" : "nl"
+      }
+    },
+    {
+      "id" : "584D33D6-47B6-49C8-860E-3F143A5EF9F5",
+      "name" : "English",
+      "options" : {
+        "language" : "en"
+      }
+    },
+    {
+      "id" : "5767F634-13E9-4982-84A3-6600B81D074B",
+      "name" : "English (Australia)",
+      "options" : {
+        "language" : "en-AU"
+      }
+    },
+    {
+      "id" : "C277C777-B1BE-433C-89A7-6AF930D05262",
+      "name" : "English (India)",
+      "options" : {
+        "language" : "en-IN"
+      }
+    },
+    {
+      "id" : "642B8772-2A53-44DF-9224-671EE6D004B2",
+      "name" : "English (United Kingdom)",
+      "options" : {
+        "language" : "en-GB"
+      }
+    },
+    {
+      "id" : "455E57E3-D31A-4273-AE94-BAD1A4D83C2E",
+      "name" : "Finnish",
+      "options" : {
+        "language" : "fi"
+      }
+    },
+    {
+      "id" : "DC07AFEE-5A7F-4E3F-8C8A-1FA9346F7E71",
+      "name" : "French",
+      "options" : {
+        "language" : "fr"
+      }
+    },
+    {
+      "id" : "14B2312C-C405-4D03-AC01-FAF12FA71678",
+      "name" : "French (Canada)",
+      "options" : {
+        "language" : "fr-CA"
+      }
+    },
+    {
+      "id" : "D6BD15FF-5897-46A0-A893-F4D91A789C4F",
+      "name" : "German",
+      "options" : {
+        "language" : "de"
+      }
+    },
+    {
+      "id" : "3D2B6A71-6526-47C9-8AA2-7192F08BBED7",
+      "name" : "Greek",
+      "options" : {
+        "language" : "el"
+      }
+    },
+    {
+      "id" : "CE6E2B2F-80B7-4412-BBA3-E2B659327226",
+      "name" : "Hebrew",
+      "options" : {
+        "language" : "he"
+      }
+    },
+    {
+      "id" : "7FBC644D-D979-4DBE-BDCC-15710F694ACC",
+      "name" : "Hindi",
+      "options" : {
+        "language" : "hi"
+      }
+    },
+    {
+      "id" : "B5034B95-C933-404A-894F-FAFD2A293BB2",
+      "name" : "Hungarian",
+      "options" : {
+        "language" : "hu"
+      }
+    },
+    {
+      "id" : "F37C69B8-49FF-4A91-8A3E-BC3C40DF63F0",
+      "name" : "Indonesian",
+      "options" : {
+        "language" : "id"
+      }
+    },
+    {
+      "id" : "AC38E89D-5D98-4310-BA93-166E8B630AD6",
+      "name" : "Italian",
+      "options" : {
+        "language" : "it"
+      }
+    },
+    {
+      "id" : "1E4E7B88-7B1C-49E2-852B-1D4F46C54175",
+      "name" : "Japanese",
+      "options" : {
+        "language" : "ja"
+      }
+    },
+    {
+      "id" : "B2A0E4EE-AA3F-4746-9616-570BE77D30C2",
+      "name" : "Korean",
+      "options" : {
+        "language" : "ko"
+      }
+    },
+    {
+      "id" : "F5A53EE8-CFA9-40F4-B953-1FC77B08C2B0",
+      "name" : "Malay",
+      "options" : {
+        "language" : "ms"
+      }
+    },
+    {
+      "id" : "75B85D82-648F-482F-8688-A9DB692BAD55",
+      "name" : "Norwegian Bokmäl",
+      "options" : {
+        "language" : "nb"
+      }
+    },
+    {
+      "id" : "26678328-6E52-43D9-8A4B-C86D2AEA45F1",
+      "name" : "Polish",
+      "options" : {
+        "language" : "pl"
+      }
+    },
+    {
+      "id" : "C1F8441F-4B03-4708-BA68-C6369A8EFD68",
+      "name" : "Portuguese (Brazil)",
+      "options" : {
+        "language" : "pt-BR"
+      }
+    },
+    {
+      "id" : "E8B927CC-C777-43B0-A223-3A941E7F98A0",
+      "name" : "Portuguese (Portugal)",
+      "options" : {
+        "language" : "pt-PT"
+      }
+    },
+    {
+      "id" : "DC48B1B3-AABA-4C65-AD48-39C9C38673F9",
+      "name" : "Romanian",
+      "options" : {
+        "language" : "ro"
+      }
+    },
+    {
+      "id" : "9A8D5F55-D555-4FC8-9D09-7B67020CDD13",
+      "name" : "Russian",
+      "options" : {
+        "language" : "ru"
+      }
+    },
+    {
+      "id" : "EA6139CE-D269-4B64-BACB-CA29B7D865D3",
+      "name" : "Slovak",
+      "options" : {
+        "language" : "sk"
+      }
+    },
+    {
+      "id" : "A880C8ED-3662-4823-A507-57631F019893",
+      "name" : "Spanish",
+      "options" : {
+        "language" : "es"
+      }
+    },
+    {
+      "id" : "8806B6CF-C32C-4439-8E12-C05679A96523",
+      "name" : "Spanish (Latin America)",
+      "options" : {
+        "language" : "es-419"
+      }
+    },
+    {
+      "id" : "4AD2512B-4E55-4E3C-B6BE-A758B1CD2A2E",
+      "name" : "Swedish",
+      "options" : {
+        "language" : "sv"
+      }
+    },
+    {
+      "id" : "2C8316DF-FE12-4A37-AF96-AA9A1CC5DD40",
+      "name" : "Thai",
+      "options" : {
+        "language" : "th"
+      }
+    },
+    {
+      "id" : "46213FB3-189D-4E25-A2CC-8E76710C81DF",
+      "name" : "Turkish",
+      "options" : {
+        "language" : "tr"
+      }
+    },
+    {
+      "id" : "901D5B22-16A0-423A-9F6C-42D247FEA3F0",
+      "name" : "Ukrainian",
+      "options" : {
+        "language" : "uk"
+      }
+    },
+    {
+      "id" : "7FB3DF57-684C-4889-9F79-AF7364D19E75",
+      "name" : "Vietnamese",
+      "options" : {
+        "language" : "vi"
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "language" : "en",
+    "maximumTestRepetitions" : 2,
+    "region" : "US",
+    "testRepetitionMode" : "retryOnFailure"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ExampleApp\/Pods\/Pods.xcodeproj",
+        "identifier" : "A436C8097B483445D8910C6AECA1A8D9",
+        "name" : "ProtonCore-CoreTranslation-iOS-Unit-Tests"
+      }
+    }
+  ],
+  "version" : 1
+}

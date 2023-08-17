@@ -1,0 +1,940 @@
+include:
+  - project: "proton/devops/atlas-deploy"
+    ref: main
+    file: "/scenarios/pipeline-env.yml"
+  - project: "translations/generator"
+    ref: master
+    file: "/jobs/sync-crowdin.gitlab-ci.yml"
+  - project: "translations/generator"
+    ref: master
+    file: "/jobs/commit-locales.gitlab-ci.yml"
+
+stages:
+  - i18n
+  - releasing
+  #  - github
+  - linting
+  - deploy
+  - unit_test
+  - ui_and_integration_test
+  - report
+  - cleanup
+  - verify
+
+variables:
+  LC_ALL: "en_US.UTF-8"
+  LANG: "en_US.UTF-8"
+  GEM_HOME: "$CI_PROJECT_DIR/gem"
+  ATLAS_DEPLOY_LIST: ""
+  GIT_DEPTH: 20
+  GIT_STRATEGY: clone
+  FF_ENABLE_JOB_CLEANUP: "true"
+
+.set_up_simulator: &set_up_simulator
+  - DEVICE_NAME=$CI_PIPELINE_ID-$CI_JOB_NAME
+  - DEVICE_OS=15.5
+  - xcrun simctl create $DEVICE_NAME "iPhone 11" iOS$DEVICE_OS
+
+.add_private_ssh_key: &add_private_ssh_key
+  - echo "$CI_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+
+.clone_pmconstants: &clone_pmconstants
+  - rm -rf ../pmconstants
+  - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
+
+.tear_down_simulator: &tear_down_simulator
+  - DEVICE_NAME=$CI_PIPELINE_ID-$CI_JOB_NAME
+  - xcrun simctl delete $DEVICE_NAME
+
+.rules_mr: &rules_mr
+  - if: '$CI_PIPELINE_SOURCE == "web"'
+    when: never
+  - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+    when: never
+  - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    when: always
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_BRANCH == "develop"
+      variables:
+        ATLAS_DEPLOY_ENV: "true"
+    - if: $CI_OPEN_MERGE_REQUESTS
+      when: never
+    - if: $CI_COMMIT_BRANCH
+      variables:
+        TEST: "manual"
+
+releasing:
+  stage: releasing
+  needs: []
+  artifacts:
+    when: always
+    name: "ReleaseNotes-$CI_COMMIT_SHA"
+    paths:
+      - ReleaseNotes.md
+    expire_in: never
+  script:
+    - git remote set-url origin https://protoncore:$PROTONCORE_ACCESS_TOKEN@${PROTON_GIT_URL}/apple/shared/protoncore.git
+    - git remote -v
+    - bash scripts/finish_release_mr_with_new_version.sh
+  <<: &release_jobs
+    rules:
+      - if: '$CI_PIPELINE_SOURCE == "web"'
+        when: never
+      - if: '$CI_PIPELINE_SOURCE == "schedule"'
+        when: never
+      - if: '$CI_COMMIT_TITLE =~ /^Merge branch .release\/.+ into .+$/'
+        when: always
+      - if: "$CI_COMMIT_BRANCH"
+        when: never
+    allow_failure: false
+    interruptible: false
+    tags:
+      - macstadium-m1-protoncore
+
+# happens only if develop was not already mirrored as part of releasing
+# github:mirror:
+#   stage: github
+#   rules:
+#     - if: '$CI_PIPELINE_SOURCE == "web"'
+#       when: never
+#     - if: '$CI_PIPELINE_SOURCE == "schedule"'
+#       when: never
+#     - if: '$CI_COMMIT_TITLE =~ /^Merge branch .release\/.+ into .+$/'
+#       when: never
+#     - if: '$CI_COMMIT_BRANCH == "develop"'
+#       when: always
+#     - if: "$CI_COMMIT_BRANCH"
+#       when: never
+#   allow_failure: false
+#   interruptible: false
+#   needs: []
+#     - bash scripts/mirror_to_github.sh develop
+#   tags:
+#     - macstadium-m1-protoncore
+
+#
+# --- Linting ---
+#
+
+linting:code-quality:
+  stage: linting
+  script:
+    - env
+    - tools/portable_swiftlint/swiftlint --config .swiftlint.yml --reporter junit > swiftlint.xml
+  rules: &rules_mr_and_develop
+    - if: $TEST == "manual"
+      when: manual
+    - when: on_success
+  needs: []
+  allow_failure: false
+  interruptible: true
+  artifacts:
+    name: "ios-lint-$CI_COMMIT_SHA"
+    paths:
+      - swiftlint.xml
+    reports:
+      junit:
+        - swiftlint.xml
+    expire_in: 90 days
+  tags:
+    - macstadium-m1-protoncore
+
+#
+# --- Unit testing ---
+#
+
+test:unit:ios:all:
+  stage: unit_test
+  retry: 2
+  rules: *rules_mr_and_develop
+  allow_failure: false
+  interruptible: true
+  before_script:
+    - *add_private_ssh_key
+    - *clone_pmconstants
+    - *set_up_simulator
+  script:
+    - fastlane run_unit_tests device_name:$DEVICE_NAME
+  after_script:
+    - *tear_down_simulator
+    - fastlane cleanup_run_unit_tests
+    - ssh-add -D
+  artifacts:
+    name: "ios-tests-$CI_COMMIT_SHA"
+    when: always
+    paths:
+      - fastlane/test_output/UnitTests.xcresult/**
+    expire_in: 14 days
+    reports:
+      junit:
+        - fastlane/test_output/report.junit
+  variables:
+    GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-1
+  tags:
+    - account-lane-1
+
+test:unit:macos:all:
+  stage: unit_test
+  retry: 2
+  rules: *rules_mr_and_develop
+  allow_failure: false
+  interruptible: true
+  before_script:
+    - *add_private_ssh_key
+    - *clone_pmconstants
+  script:
+    - fastlane run_unit_tests_macos
+  after_script:
+    - fastlane cleanup_run_unit_tests_macos
+  artifacts:
+    paths:
+      - fastlane/test_output/*xcresult/**
+  variables:
+    GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-2
+  tags:
+    - account-lane-2
+    
+test:apphost:macos:all:
+  stage: unit_test
+  retry: 2
+  rules: *rules_mr_and_develop
+  allow_failure: false
+  interruptible: true
+  before_script:
+    - *add_private_ssh_key
+    - *clone_pmconstants
+  script:
+    - fastlane run_apphosted_test_macos
+  after_script:
+    - fastlane cleanup_run_unit_tests_macos
+  artifacts:
+    paths:
+      - fastlane/test_output/*xcresult/**
+  variables:
+    GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-6
+  tags:
+    - account-lane-6
+
+test:unit:localization:
+  stage: unit_test
+  retry: 1
+  rules: *rules_mr_and_develop
+  allow_failure: false
+  interruptible: true
+  before_script:
+    - *add_private_ssh_key
+    - *set_up_simulator
+  script:
+    - fastlane run_localization_tests device_name:$DEVICE_NAME
+  after_script:
+    - *tear_down_simulator
+    - fastlane cleanup_run_localization_tests
+  variables:
+    GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-3
+  tags:
+    - account-lane-3
+
+#
+# --- Integration testing
+#
+
+test:unit:integration:
+  stage: ui_and_integration_test
+  retry: 1
+  rules: *rules_mr_and_develop
+  allow_failure: false
+  interruptible: true
+  needs:
+    - job: deploy:review
+      artifacts: true
+  before_script:
+    - *add_private_ssh_key
+    - *clone_pmconstants
+    - *set_up_simulator
+  script:
+    - fastlane run_integration_tests device_name:$DEVICE_NAME xcargs:DYNAMIC_DOMAIN="${DYNAMIC_DOMAIN}"
+  after_script:
+    - *tear_down_simulator
+    - fastlane cleanup_run_integration_tests
+  artifacts:
+    paths:
+      - fastlane/test_output/*xcresult/**
+  variables:
+    GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-4
+  tags:
+    - account-lane-4
+
+#
+# --- UI testing ---
+#
+
+test:ui:light:
+  retry: 1
+  rules: *rules_mr
+  script:
+    - fastlane build_ui_tests device_name:$DEVICE_NAME
+    - bash scripts/run_ui_tests_on_ci.sh --light --device $DEVICE_NAME $DEVICE_OS --dynamic-domain ${DYNAMIC_DOMAIN}
+  <<: &ui_testing_common_configuration
+    stage: ui_and_integration_test
+    allow_failure: false
+    interruptible: true
+    needs:
+      - job: linting:code-quality
+        artifacts: false
+      - job: deploy:review
+        artifacts: true
+    artifacts:
+      when: always
+      name: "test-report-$CI_PIPELINE_IID"
+      paths:
+        - UITestsResults-${CI_PIPELINE_IID}.html
+      expire_in: 7 days
+    before_script:
+      - *add_private_ssh_key
+      - *clone_pmconstants
+      - *set_up_simulator
+    after_script:
+      - *tear_down_simulator
+      - rm -rf ~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/
+      - fastlane cleanup_build_ui_tests
+      - ssh-add -D
+    variables:
+      GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-5
+    tags:
+      - account-lane-5
+
+# ui tests smoke is run on merge to develop
+test:ui:smoke:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+    - if: "$CI_PIPELINE_SOURCE"
+      when: never
+    - if: "$CI_COMMIT_BRANCH"
+      when: never
+  script:
+    - fastlane build_ui_tests device_name:$DEVICE_NAME
+    - bash scripts/run_ui_tests_on_ci.sh --smoke --device $DEVICE_NAME $DEVICE_OS --dynamic-domain ${DYNAMIC_DOMAIN}
+  <<: *ui_testing_common_configuration
+
+# ui tests regression is run only on schedules
+test:ui:regression:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: on_success
+    - if: "$CI_PIPELINE_SOURCE"
+      when: never
+    - if: "$CI_COMMIT_BRANCH"
+      when: never
+  timeout: 3 hours 30 minutes
+  script:
+    - fastlane build_ui_tests device_name:$DEVICE_NAME
+    - bash scripts/run_ui_tests_on_ci.sh --regression --device $DEVICE_NAME $DEVICE_OS --dynamic-domain ${DYNAMIC_DOMAIN}
+  <<: *ui_testing_common_configuration
+
+#
+# --- Coverage reports ---
+#
+
+report:integration:code:coverage:
+  retry: 1
+  coverage: '/Average Coverage.* (\d+\.\d+%)/'
+  stage: report
+  interruptible: true
+  rules: *rules_mr_and_develop
+  needs:
+    - job: test:unit:integration
+      artifacts: true
+  before_script:
+    - *add_private_ssh_key
+    - bash scripts/generate_obfuscated_constants.sh
+    - ls -l fastlane/test_output
+  script:
+    # Call xcov from fastlane
+    - fastlane integration_test_reports
+    # generate alt coverage json from xcresult
+    - xcrun xccov view --report --json fastlane/test_output/IntegrationTests.xcresult > fastlane/test_output/IntegrationTests.json
+    # Print and process the result for Gitlab coverage capture
+    - jq '"Line Coverage \(.lineCoverage * 100 |tostring | .[0:5])%"' fastlane/test_output/IntegrationTests.json
+    # generate cobertura xml from coverage json
+    - xcc generate fastlane/test_output/IntegrationTests.json fastlane/test_output cobertura-xml --verbose
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: fastlane/test_output/cobertura.xml
+  variables:
+    GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-4
+  tags:
+    - account-lane-4
+
+report:apphost:macos:code:coverage:
+  retry: 1
+  coverage: '/Average Coverage.* (\d+\.\d+%)/'
+  stage: report
+  interruptible: true
+  rules: *rules_mr_and_develop
+  needs:
+    - job: test:apphost:macos:all
+      artifacts: true
+  before_script:
+    - *add_private_ssh_key
+    - bash scripts/generate_obfuscated_constants.sh
+    - ls -l fastlane/test_output
+  script:
+    # Call xcov from fastlane
+    - fastlane macos_apphost_test_reports
+    # generate alt coverage json from xcresult
+    - xcrun xccov view --report --json fastlane/test_output/ProtonCore-Keymaker-macOS-AppHost.xcresult > fastlane/test_output/ProtonCore-Keymaker-macOS-AppHost.json
+    # Print and process the result for Gitlab coverage capture
+    - jq '"Line Coverage \(.lineCoverage * 100 |tostring | .[0:5])%"' fastlane/test_output/ProtonCore-Keymaker-macOS-AppHost.json
+    # generate cobertura xml from coverage json
+    - xcc generate fastlane/test_output/ProtonCore-Keymaker-macOS-AppHost.json fastlane/test_output cobertura-xml --verbose
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: fastlane/test_output/cobertura.xml
+  variables:
+    GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-6
+  tags:
+    - account-lane-6
+
+report:unit:macos:code:coverage:
+  retry: 1
+  coverage: '/Average Coverage.* (\d+\.\d+%)/'
+  stage: report
+  interruptible: true
+  rules: *rules_mr_and_develop
+  needs:
+    - job: test:unit:macos:all
+      artifacts: true
+  before_script:
+    - *add_private_ssh_key
+    - bash scripts/generate_obfuscated_constants.sh
+    - ls -l fastlane/test_output
+  script:
+    # Call xcov from fastlane
+    - fastlane macos_unit_test_reports
+    # generate alt coverage json from xcresult
+    - xcrun xccov view --report --json fastlane/test_output/UnitTests.xcresult > fastlane/test_output/UnitTests.json
+    # Print and process the result for Gitlab coverage capture
+    - jq '"Line Coverage \(.lineCoverage * 100 |tostring | .[0:5])%"' fastlane/test_output/UnitTests.json
+    # generate cobertura xml from coverage json
+    - xcc generate fastlane/test_output/UnitTests.json fastlane/test_output cobertura-xml --verbose
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: fastlane/test_output/cobertura.xml
+  variables:
+    GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-2
+  tags:
+    - account-lane-2
+
+report:unit:ios:code:coverage:
+  retry: 1
+  coverage: '/Average Coverage.* (\d+\.\d+%)/'
+  stage: report
+  interruptible: true
+  rules: *rules_mr_and_develop
+  needs:
+    - job: test:unit:ios:all
+      artifacts: true
+  before_script:
+    - *add_private_ssh_key
+    - bash scripts/generate_obfuscated_constants.sh
+    - ls -l fastlane/test_output
+  script:
+    # Call xcov from fastlane
+    - fastlane unit_test_reports
+    # generate alt coverage json from xcresult
+    - xcrun xccov view --report --json fastlane/test_output/UnitTests.xcresult > fastlane/test_output/UnitTests.json
+    # Print and process the result for Gitlab coverage capture
+    - jq '"Line Coverage \(.lineCoverage * 100 |tostring | .[0:5])%"' fastlane/test_output/UnitTests.json
+    # generate cobertura xml from coverage json
+    - xcc generate fastlane/test_output/UnitTests.json fastlane/test_output cobertura-xml --verbose
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: fastlane/test_output/cobertura.xml
+  variables:
+    GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-1
+  tags:
+    - account-lane-1
+
+#
+# --- Verifying modules ---
+#
+
+verify:all:AccountDeletion:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_AccountDeletion_all_variants
+  <<: &building_subspecs_full
+    stage: verify
+    retry: 1
+    rules:
+      - if: '$CI_COMMIT_BRANCH == "develop"'
+        when: on_success
+      - if: '$CI_PIPELINE_SOURCE == "web"'
+        when: never
+      - if: '$CI_PIPELINE_SOURCE == "schedule"'
+        when: never
+      - if: '$CI_COMMIT_BRANCH == "main"'
+        when: never
+      - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+        when: never
+      - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+        when: never
+      - if: "$CI_COMMIT_BRANCH"
+        when: never
+    allow_failure: false
+    interruptible: true
+    tags:
+      - macstadium-protoncore-module_building
+
+verify:all:AccountSwitcher:
+  script:
+    - fastlane build_AccountSwitcher_all_variants
+  <<: *building_subspecs_full
+
+verify:all:APIClient:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_APIClient_all_variants
+  <<: *building_subspecs_full
+
+verify:all:Authentication:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_Authentication_all_variants
+  <<: *building_subspecs_full
+
+# verify:all:Authentication_KeyGeneration:
+#   before_script:
+#     - bash scripts/generate_obfuscated_constants.sh
+#   script:
+#     - fastlane build_Authentication_KeyGeneration_all_variants
+#   <<: *building_subspecs_full
+
+verify:all:Challenge:
+  script:
+    - fastlane build_Challenge_all_variants
+  <<: *building_subspecs_full
+
+verify:all:Common:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_Common_all_variants
+  <<: *building_subspecs_full
+
+verify:all:GoLibs:
+  script:
+    - fastlane build_GoLibs_all_variants
+  <<: *building_subspecs_full
+
+verify:all:DataModel:
+  script:
+    - fastlane build_DataModel_all_variants
+  <<: *building_subspecs_full
+
+# verify:all:Doh:
+#   script:
+#     - fastlane build_Doh_all_variants
+#   <<: *building_subspecs_full
+
+verify:all:Features:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_Features_all_variants
+  <<: *building_subspecs_full
+
+verify:all:ForceUpgrade:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_ForceUpgrade_all_variants
+  <<: *building_subspecs_full
+
+verify:all:Foundations:
+  script:
+    - fastlane build_Foundations_all_variants
+  <<: *building_subspecs_full
+
+verify:all:Hash:
+  script:
+    - fastlane build_Hash_all_variants
+  <<: *building_subspecs_full
+
+verify:all:HumanVerification:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_HumanVerification_all_variants
+  <<: *building_subspecs_full
+
+verify:all:Keymaker:
+  script:
+    - fastlane build_Keymaker_all_variants
+  <<: *building_subspecs_full
+
+verify:all:KeyManager:
+  script:
+    - fastlane build_KeyManager_all_variants
+  <<: *building_subspecs_full
+
+verify:all:Log:
+  script:
+    - fastlane build_Log_all_variants
+  <<: *building_subspecs_full
+
+# verify:all:Login:
+#   before_script:
+#     - bash scripts/generate_obfuscated_constants.sh
+#   script:
+#     - fastlane build_Login_all_variants
+#   <<: *building_subspecs_full
+
+# verify:all:LoginUI:
+#   before_script:
+#     - bash scripts/generate_obfuscated_constants.sh
+#   script:
+#     - fastlane build_LoginUI_all_variants
+#   <<: *building_subspecs_full
+
+verify:all:Networking:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_Networking_all_variants
+  <<: *building_subspecs_full
+
+# verify:all:ObfuscatedConstants:
+#   before_script:
+#     - bash scripts/generate_obfuscated_constants.sh
+#   script:
+#     - fastlane build_ObfuscatedConstants_all_variants
+#   <<: *building_subspecs_full
+
+# verify:all:Payments:
+#   before_script:
+#     - bash scripts/generate_obfuscated_constants.sh
+#   script:
+#     - fastlane build_Payments_all_variants
+#   <<: *building_subspecs_full
+
+# verify:all:PaymentsUI:
+#   before_script:
+#     - bash scripts/generate_obfuscated_constants.sh
+#   script:
+#     - fastlane build_PaymentsUI_all_variants
+#   <<: *building_subspecs_full
+
+verify:all:QuarkCommands:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_QuarkCommands_all_variants
+  <<: *building_subspecs_full
+
+verify:all:TroubleShooting:
+  script:
+    - fastlane build_TroubleShooting_all_variants
+  <<: *building_subspecs_full
+
+verify:all:Services:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_Services_all_variants
+  <<: *building_subspecs_full
+
+verify:all:Settings:
+  script:
+    - fastlane build_Settings_all_variants
+  <<: *building_subspecs_full
+
+verify:all:UIFoundations:
+  script:
+    - fastlane build_UIFoundations_all_variants
+  <<: *building_subspecs_full
+
+verify:all:Utilities:
+  script:
+    - fastlane build_Utilities_all_variants
+  <<: *building_subspecs_full
+
+verify:all:VCard:
+  script:
+    - fastlane build_VCard_all_variants
+  <<: *building_subspecs_full
+
+# verify:all:Observability:
+#   script:
+#     - fastlane build_Observability_all_variants
+#   <<: *building_subspecs_full
+
+# build_MissingScopes_all_variants:
+#   script:
+#     - fastlane build_MissingScopes_all_variants
+#   <<: *building_subspecs_full
+
+### create pod build all variant place holder
+
+verify:AccountDeletion:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_AccountDeletion_single_basic_variant
+  <<: &building_subspecs_lite
+    stage: verify
+    retry: 1
+    rules:
+      - if: '$CI_PIPELINE_SOURCE == "web"'
+        when: never
+      - if: '$CI_PIPELINE_SOURCE == "schedule"'
+        when: never
+      - if: '$CI_COMMIT_BRANCH == "main"'
+        when: never
+      - if: '$CI_COMMIT_BRANCH == "develop"'
+        when: never
+        allow_failure: true
+      - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+        when: never
+      - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+        when: never
+      - if: "$CI_COMMIT_BRANCH"
+        when: never
+    allow_failure: false
+    interruptible: true
+    tags:
+      - macstadium-protoncore-module_building
+
+verify:AccountSwitcher:
+  script:
+    - fastlane build_AccountSwitcher_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:APIClient:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_APIClient_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:Authentication:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_Authentication_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:Authentication_KeyGeneration:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_Authentication_KeyGeneration_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:Challenge:
+  script:
+    - fastlane build_Challenge_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:Common:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_Common_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:GoLibs:
+  script:
+    - fastlane build_GoLibs_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:DataModel:
+  script:
+    - fastlane build_DataModel_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:Doh:
+  script:
+    - fastlane build_Doh_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:Features:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_Features_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:ForceUpgrade:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_ForceUpgrade_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:Foundations:
+  script:
+    - fastlane build_Foundations_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:Hash:
+  script:
+    - fastlane build_Hash_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:HumanVerification:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_HumanVerification_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:Keymaker:
+  script:
+    - fastlane build_Keymaker_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:KeyManager:
+  script:
+    - fastlane build_KeyManager_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:Log:
+  script:
+    - fastlane build_Log_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:Login:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_Login_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:LoginUI:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_LoginUI_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:Networking:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_Networking_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:ObfuscatedConstants:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_ObfuscatedConstants_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:Payments:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_Payments_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:PaymentsUI:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_PaymentsUI_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:QuarkCommands:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_QuarkCommands_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:TroubleShooting:
+  script:
+    - fastlane build_TroubleShooting_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:Services:
+  before_script:
+    - bash scripts/generate_obfuscated_constants.sh
+  script:
+    - fastlane build_Services_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:Settings:
+  script:
+    - fastlane build_Settings_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:UIFoundations:
+  script:
+    - fastlane build_UIFoundations_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:Utilities:
+  script:
+    - fastlane build_Utilities_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:VCard:
+  script:
+    - fastlane build_VCard_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:Observability:
+  script:
+    - fastlane build_Observability_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_MissingScopes_single_basic_variant:
+  script:
+    - fastlane build_MissingScopes_single_basic_variant
+  <<: *building_subspecs_lite
+
+build_PasswordRequest_single_basic_variant:
+  script:
+    - fastlane build_PasswordRequest_single_basic_variant
+  <<: *building_subspecs_lite
+  
+### create pod build single variant place holder
+
+#
+# --- Translation related tasks ---
+#
+
+i18n:crowdin-sync:
+  stage: i18n
+  needs: []
+  variables:
+    I18N_SYNC_CROWDIN_PROJECT: "apple-core"
+  extends: .i18n-sync-crowdin-shared-apple
+
+
+i18n:commit-locales:
+  stage: i18n
+  needs: []
+  variables:
+    I18N_COMMIT_CROWDIN_PROJECT: "apple-core"
+  extends: .i18n-commit-locales-shared-apple
+

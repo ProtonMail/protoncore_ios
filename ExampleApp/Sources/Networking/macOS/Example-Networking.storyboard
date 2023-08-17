@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="bU7-R8-ocO">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Networking-->
+        <scene sceneID="PEd-7d-5j0">
+            <objects>
+                <viewController title="Networking" showSeguePresentationStyle="single" id="bU7-R8-ocO" customClass="NetworkingViewController" customModule="ExampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="tOy-S4-hL0">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n0Q-99-Gds">
+                                <rect key="frame" x="100" y="42" width="251" height="216"/>
+                                <subviews>
+                                    <customView id="1qE-DT-sMf" customClass="EnvironmentSelector" customModule="ExampleApp" customModuleProvider="target">
+                                        <rect key="frame" x="44" y="120" width="163" height="96"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </customView>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tjd-NE-pcd">
+                                        <rect key="frame" x="-4" y="73" width="258" height="32"/>
+                                        <buttonCell key="cell" type="push" title="human verification with authorization" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="W6y-gm-tlz">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="humanVerificationAuthAction:" target="bU7-R8-ocO" id="L3w-5i-fdH"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZB3-LR-944">
+                                        <rect key="frame" x="-7" y="33" width="265" height="32"/>
+                                        <buttonCell key="cell" type="push" title="human verification when unauthorized" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vLr-T3-NGy">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="humanVerificationUnauthAction:" target="bU7-R8-ocO" id="OYQ-Xl-baw"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xcG-Y3-Vge">
+                                        <rect key="frame" x="37" y="-7" width="176" height="32"/>
+                                        <buttonCell key="cell" type="push" title="human verification help" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gnA-MH-9JZ">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="humanVerificationHelpAction:" target="bU7-R8-ocO" id="ayb-HB-y9M"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="n0Q-99-Gds" firstAttribute="centerX" secondItem="tOy-S4-hL0" secondAttribute="centerX" id="8cg-OV-zUf"/>
+                            <constraint firstItem="n0Q-99-Gds" firstAttribute="centerY" secondItem="tOy-S4-hL0" secondAttribute="centerY" id="Z4Y-Nb-hRE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="environmentSelector" destination="1qE-DT-sMf" id="UtW-cQ-6rv"/>
+                    </connections>
+                </viewController>
+                <customObject id="9uD-mB-xHs" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="221" y="75"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,65 @@
+{
+  "configurations" : [
+    {
+      "id" : "90B370B2-DD7E-4979-BC41-1F6DB56E877B",
+      "name" : "Configuration 1",
+      "options" : {
+        "environmentVariableEntries" : [
+          {
+            "key" : "DYNAMIC_DOMAIN",
+            "value" : "${DYNAMIC_DOMAIN}"
+          }
+        ],
+        "targetForVariableExpansion" : {
+          "containerPath" : "container:",
+          "identifier" : "ProtonCoreLog",
+          "name" : "ProtonCoreLog"
+        }
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "language" : "en",
+    "maximumTestRepetitions" : 2,
+    "region" : "US",
+    "testRepetitionMode" : "retryOnFailure"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreDohIntegrationTests",
+        "name" : "ProtonCoreDohIntegrationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreLoginIntegrationTests",
+        "name" : "ProtonCoreLoginIntegrationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreLoginUIIntegrationTests",
+        "name" : "ProtonCoreLoginUIIntegrationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreObservabilityIntegrationTests",
+        "name" : "ProtonCoreObservabilityIntegrationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreServicesIntegrationTests",
+        "name" : "ProtonCoreServicesIntegrationTests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -1,0 +1,65 @@
+{
+    "Code": 1000,
+    "Plans": [{
+        "Instances": [
+            {
+                "Month": 1,
+                "ID": "hUcV0_EeNwUmXA6EoyNrtO-Z...==",
+                "Description": "for 1 month",
+                "PeriodEnd": 1691915780,
+                "Price": [
+                    {
+                        "Currency": "EUR",
+                        "Current": 499,
+                        "Default": 499
+                    }
+                ],
+                "Vendors": {
+                    "Google": {
+                        "ID": "giap_mailpro2022_1_renewing_v1",
+                        "CustomerID": "cus_google_5Kh6Rb3--RMZSOiXZMk9"
+                    },
+                    "Apple": {
+                        "ID": "ios_mailpro2022_1_usd_renewing_v1",
+                        "CustomerID": "cus_apple_hah6Rb3gaagklah"
+                    }
+                }
+            }
+        ],
+        "Type": 1,
+        "Name": "mailpro2022",
+        "Title": "Mail Essentials",
+        "State": 1,
+        "Entitlements": [
+            {
+                "Type": "description",
+                "Text": "text",
+                "Icon": "<base64>",
+                "Hint": null
+            }
+        ],
+        "Offers": [
+            {
+                "Name": "offer name",
+                "StartTime": 3412324,
+                "EndTime": 3594124,
+                "Months": 1,
+                "Price": [
+                    {
+                        "Currency": "USD",
+                        "Current": 123
+                    }
+                ]
+            }
+        ],
+        "Decorations": [{
+                "Type": "Star",
+                "Icon": "<base64>"
+            },
+            {
+                "Type": "Border",
+                "Color": "#xxx"
+            }
+        ]
+    }]
+}

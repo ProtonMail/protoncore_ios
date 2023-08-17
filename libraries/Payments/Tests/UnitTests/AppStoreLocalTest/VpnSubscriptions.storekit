@@ -1,0 +1,44 @@
+{
+  "products" : [
+    {
+      "displayPrice" : "60",
+      "familyShareable" : false,
+      "internalID" : "521EB7D0",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "ios_vpnbasic_12_usd_non_renewing",
+      "referenceName" : "basic",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "100",
+      "familyShareable" : false,
+      "internalID" : "6DB5F1C2",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "ios_vpnplus_12_usd_non_renewing",
+      "referenceName" : "plus",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 0
+  }
+}

@@ -1,0 +1,246 @@
+//
+//  EndToEndViewController.swift
+//  ExampleApp - Created on 12/15/2022.
+//  
+//  Copyright (c) 2022 Proton Technologies AG
+//
+//  This file is part of Proton Technologies AG and ProtonCore.
+//
+//  ProtonCore is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  ProtonCore is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
+//
+
+import UIKit
+import ProtonCoreAuthentication
+import ProtonCoreDataModel
+import ProtonCoreNetworking
+import ProtonCoreFeatureSwitch
+import ProtonCoreObfuscatedConstants
+import ProtonCoreQuarkCommands
+import ProtonCoreFoundations
+import ProtonCoreLog
+import ProtonCoreLogin
+import ProtonCoreServices
+import ProtonCoreChallenge
+
+enum EndToEndTest: CaseIterable {
+    case deviceFingerprintsOnPostSession
+    var description:  String {
+        switch self {
+        case .deviceFingerprintsOnPostSession:
+            return "Send device fingerprints on POST Session call"
+        }
+    }
+    
+    static var allCases: [EndToEndTest] {
+        return [.deviceFingerprintsOnPostSession]
+    }
+}
+
+final class EndToEndViewController: UIViewController,
+                                    UIPickerViewDataSource,
+                                    UIPickerViewDelegate,
+                                    AccessibleView, AuthDelegate {
+    
+    @IBOutlet private var activityIndicatorView: UIView!
+    @IBOutlet private var tokenRefreshStackView: UIStackView!
+    @IBOutlet private var accountDetailsLabel: UILabel!
+    @IBOutlet private var executeTestButton: UIButton!
+    @IBOutlet private var copyLogButton: UIButton!
+    @IBOutlet private var clearLogButton: UIButton!
+    @IBOutlet private var credentialsSelector: UISegmentedControl!
+    @IBOutlet private var credentialsStackView: UIStackView!
+    @IBOutlet private var credentialsUsernameTextField: UITextField!
+    @IBOutlet private var credentialsPasswordTextField: UITextField!
+    @IBOutlet var environmentSelector: EnvironmentSelector!
+    
+    private var selectedTest: EndToEndTest?
+    private var createdAccountDetails: CreatedAccountDetails? {
+        didSet {
+            tokenRefreshStackView.isHidden = createdAccountDetails == nil
+        }
+    }
+    
+    private var credential: Credential?
+    var authSessionInvalidatedDelegateForLoginAndSignup: AuthSessionInvalidatedDelegate?
+    
+    private let serviceDelegate = ExampleAPIServiceDelegate()
+    private var quarkCommands: QuarkCommands { QuarkCommands(env: environmentSelector.currentEnvironment) }
+    
+    private lazy var authenticator: Authenticator = {
+        let env = environmentSelector.currentEnvironment
+        let api = PMAPIService.createAPIServiceWithoutSession(environment: env,
+                                                              challengeParametersProvider: .forAPIService(clientApp: clientApp, challenge: PMChallenge()))
+        api.authDelegate = self
+        api.serviceDelegate = self.serviceDelegate
+        return .init(api: api)
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if let dynamicDomain = ProcessInfo.processInfo.environment["DYNAMIC_DOMAIN"] {
+            environmentSelector.switchToCustomDomain(value: dynamicDomain)
+            PMLog.info("Filled customDomainTextField with dynamic domain: \(dynamicDomain)")
+        } else {
+            PMLog.info("Dynamic domain not found, customDomainTextField left unfilled")
+        }
+        selectedTest = EndToEndTest.allCases.first
+        generateAccessibilityIdentifiers()
+    }
+    
+    @IBAction func onCredentialsChanged(_ sender: Any) {
+        switch credentialsSelector.selectedSegmentIndex {
+        case 0:
+            credentialsStackView.isHidden = true
+        case 1:
+            credentialsStackView.isHidden = false
+        default:
+            assertionFailure("Misconfiguration in \(#file), \(#function), \(#line)")
+            break
+        }
+    }
+    
+    @IBAction func runTests(_ sender: Any) {
+        testDeviceFingerprintsOnPostSession()
+    }
+    
+    private func testDeviceFingerprintsOnPostSession() {
+        let env = environmentSelector.currentEnvironment
+        let api = PMAPIService.createAPIServiceWithoutSession(environment: env, 
+                                                              challengeParametersProvider: .forAPIService(clientApp: clientApp, challenge: PMChallenge()))
+        api.authDelegate = self
+        api.serviceDelegate = self.serviceDelegate
+
+        var output = "Server: \n"
+        output.append("URL: \(api.dohInterface.getCurrentlyUsedHostUrl()) \n")
+        output.append("Fingerprints: \n")
+        output.append("\(String(describing: ChallengeParametersProvider.forAPIService(clientApp: clientApp, challenge: PMChallenge()).provideParametersForSessionFetching()))\n")
+        output.append("\n")
+
+        self.showLoadingIndicator()
+        api.acquireSessionIfNeeded { result in
+            self.hideLoadingIndicator()
+            switch result {
+            case .success:
+                guard let credential = self.credential else {
+                    output.append("Error! No credentials\n")
+                    self.display(message: output)
+                    return
+                }
+                output.append("Response: \n")
+                output.append("UID: \(credential.UID) \n")
+                output.append("AccessToken: \(credential.accessToken) \n")
+                output.append("RefreshToken: \(credential.refreshToken) \n")
+                output.append("UserName: \(credential.userName) \n")
+                output.append("User ID: \(credential.userID) \n")
+                output.append("Scops: \(credential.scopes)")
+            case .failure(let error):
+                output.append("Error: \n")
+                output.append(error.localizedDescription)
+            }
+            self.display(message: output)
+        }
+    }
+    
+    @IBAction func copyLog() {
+        let log = self.accountDetailsLabel.text
+        UIPasteboard.general.string = log
+    }
+    
+    @IBAction func clearLog() {
+        self.accountDetailsLabel.text = ""
+    }
+    
+    private func showLoadingIndicator() {
+        DispatchQueue.main.async {
+            self.accountDetailsLabel.text = ""
+            self.activityIndicatorView.isHidden = false
+        }
+    }
+    
+    private func hideLoadingIndicator() {
+        DispatchQueue.main.async {
+            self.activityIndicatorView.isHidden = true
+        }
+    }
+    
+    private func display(message: String) {
+        DispatchQueue.main.async {
+            self.accountDetailsLabel.text = message
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = UILabel()
+        label.text = EndToEndTest.allCases[row].description
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 2
+        label.font = .systemFont(ofSize: UIFont.labelFontSize)
+        return label
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        UIFont.labelFontSize * 3
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        EndToEndTest.allCases.count
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedTest = EndToEndTest.allCases[row]
+    }
+    
+    // MARK: - AuthDelegate
+    func authCredential(sessionUID: String) -> AuthCredential? {
+        credential.map(AuthCredential.init)
+    }
+    
+    func credential(sessionUID: String) -> Credential? {
+        credential
+    }
+    
+    func onAuthenticatedSessionInvalidated(sessionUID uid: String) {
+        credential = nil
+    }
+
+    func onUnauthenticatedSessionInvalidated(sessionUID: String) {
+        credential = nil
+    }
+    
+    func onUpdate(credential: Credential, sessionUID: String) {
+        self.credential = credential
+    }
+
+    func onSessionObtaining(credential: Credential) {
+
+    }
+
+    func onAdditionalCredentialsInfoObtained(sessionUID: String, password: String?, salt: String?, privateKey: String?) {
+        
+    }
+
+    var delegate: AuthHelperDelegate?
+}
+
+extension Data {
+    var prettyPrintedJSONString: String? {
+        guard let object = try? JSONSerialization.jsonObject(with: self, options: []),
+              let data = try? JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted]),
+              let prettyPrintedString = String(data: data, encoding: .utf8) else { return nil }
+        
+        return prettyPrintedString
+    }
+}

@@ -1,0 +1,59 @@
+{
+  "pins" : [
+    {
+      "identity" : "apple-fusion",
+      "kind" : "remoteSourceControl",
+      "location" : "git@gitlab.protontech.ch:tpe/apple-fusion.git",
+      "state" : {
+        "revision" : "cd3db46940c5d64beb616f0a080ff65a920dd5fa",
+        "version" : "2.0.1"
+      }
+    },
+    {
+      "identity" : "asn1swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tikhop/ASN1Swift",
+      "state" : {
+        "revision" : "b53bee03a942623db25afc5bfb80227b2cb3b425",
+        "version" : "1.2.4"
+      }
+    },
+    {
+      "identity" : "ohhttpstubs",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AliSoftware/OHHTTPStubs",
+      "state" : {
+        "revision" : "12f19662426d0434d6c330c6974d53e2eb10ecd9",
+        "version" : "9.1.0"
+      }
+    },
+    {
+      "identity" : "sentry-cocoa",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/getsentry/sentry-cocoa",
+      "state" : {
+        "revision" : "80928b7e19a713fea798ba45c8bfda38096d7f30",
+        "version" : "5.2.2"
+      }
+    },
+    {
+      "identity" : "swift-snapshot-testing",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-snapshot-testing",
+      "state" : {
+        "revision" : "dc46eeb3928a75390651fac6c1ef7f93ad59a73b",
+        "version" : "1.11.1"
+      }
+    },
+    {
+      "identity" : "tpinappreceipt",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tikhop/TPInAppReceipt",
+      "state" : {
+        "revision" : "5b830d6ce6c34bb4bb976917576ab560e7945037",
+        "version" : "3.3.4"
+      }
+    }
+  ],
+  "version" : 2
+}
