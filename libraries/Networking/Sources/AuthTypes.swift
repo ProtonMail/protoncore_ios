@@ -214,6 +214,7 @@ public final class AuthCredential: NSObject, NSCoding {
         NSKeyedUnarchiver.setClass(AuthCredential.classForKeyedUnarchiver(), forClassName: "PushService.AuthCredential")
         NSKeyedUnarchiver.setClass(AuthCredential.classForKeyedUnarchiver(), forClassName: "PushServiceDev.AuthCredential")
         NSKeyedUnarchiver.setClass(AuthCredential.classForKeyedUnarchiver(), forClassName: "ProtonCore_Networking.AuthCredential")
+        NSKeyedUnarchiver.setClass(AuthCredential.classForKeyedUnarchiver(), forClassName: "ProtonCoreNetworking.AuthCredential")
 
         // Unarchive method that suppress this warning doesn't work when using old archive method (see below). Solution for this is to switch to
         // Codable.
