@@ -12,7 +12,6 @@ include:
 stages:
   - i18n
   - releasing
-  - github
   - linting
   - deploy
   - unit_test
@@ -20,6 +19,7 @@ stages:
   - report
   - cleanup
   - verify
+  - github
 
 variables:
   LC_ALL: "en_US.UTF-8"
@@ -115,7 +115,7 @@ github:mirror:
   script:
     - zsh scripts/mirror_to_github.sh develop
   tags:
-    - macstadium-m1-protoncore
+    - account-lane-3
 
 #
 # --- Linting ---
