@@ -31,7 +31,7 @@ public final class PaymentsNewUserSubscriptionUIRobot: CoreElements {
     public class Verify: CoreElements {
         @discardableResult
         public func newUserSubscriptionUIScreenIsShown() -> PaymentsNewUserSubscriptionUIRobot {
-            staticText(titleText).wait().checkExists()
+            staticText(titleText).waitUntilExists().checkExists()
             return PaymentsNewUserSubscriptionUIRobot()
         }
     }
@@ -62,17 +62,17 @@ public final class PaymentsNewUserSubscriptionUIRobot: CoreElements {
     }
     
     public func loginButtonTap() -> PaymentsNewUserSubscriptionUIRobot {
-        button(loginButtonId).wait().isEnabled().tap()
+        button(loginButtonId).waitUntilExists().isEnabled().tap()
         return self
     }
     
     public func showCurrentPlanButtonTap() -> PaymentsUIRobot {
-        button(showCurrentPlanButtonId).wait().isEnabled().doubleTap()
+        button(showCurrentPlanButtonId).waitUntilExists().isEnabled().doubleTap()
         return PaymentsUIRobot()
     }
     
     public func showUpdatePlansButtonTap() -> PaymentsUIRobot {
-        button(showUpdatePlansButtonId).wait().tap()
+        button(showUpdatePlansButtonId).waitUntilExists().tap()
         return PaymentsUIRobot()
     }
 }

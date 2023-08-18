@@ -23,7 +23,7 @@ fileprivate let environmentCustomText = "custom"
 public final class PaymentsSampleAppRobot: CoreElements {
     
     public func showPaymentsUI() -> PaymentsNewUserSubscriptionUIRobot {
-        button(showPaymentsUIButtonLabelText).wait().tap()
+        button(showPaymentsUIButtonLabelText).waitUntilExists().tap()
         return PaymentsNewUserSubscriptionUIRobot()
     }
 
@@ -68,11 +68,11 @@ public final class PaymentsSampleAppRobot: CoreElements {
     
     public class Verify: CoreElements {
         public func mainScreenVisible() {
-            button(titleLabelText).wait().checkExists()
+            button(titleLabelText).waitUntilExists().checkExists()
         }
         
         public func buttonPaymentsUIVisible() {
-            button(showPaymentsUIButtonLabelText).wait().checkExists()
+            button(showPaymentsUIButtonLabelText).waitUntilExists().checkExists()
         }
     }
 }

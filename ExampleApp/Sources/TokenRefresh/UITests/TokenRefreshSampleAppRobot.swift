@@ -44,31 +44,31 @@ final class TokenRefreshSampleAppRobot: CoreElements {
         
         @discardableResult
         public func createAccountMessageIsDisplayed() -> TokenRefreshSampleAppRobot {
-            staticText(TokenRefreshStrings.createAccountSuccessfully).wait().checkExists()
+            staticText(TokenRefreshStrings.createAccountSuccessfully).waitUntilExists().checkExists()
             return .init()
         }
         
         @discardableResult
         public func loggedInMessageIsDisplayed() -> TokenRefreshSampleAppRobot {
-            staticText(TokenRefreshStrings.loggedInSuccessfully).wait().checkExists()
+            staticText(TokenRefreshStrings.loggedInSuccessfully).waitUntilExists().checkExists()
             return .init()
         }
         
         @discardableResult
         public func expiredSessionMessageIsDisplayed() -> TokenRefreshSampleAppRobot {
-            staticText(TokenRefreshStrings.expiredSessionSuccessfully).wait().checkExists()
+            staticText(TokenRefreshStrings.expiredSessionSuccessfully).waitUntilExists().checkExists()
             return .init()
         }
         
         @discardableResult
         public func getUserMessageIsDisplayed() -> TokenRefreshSampleAppRobot {
-            staticText(TokenRefreshStrings.getUserSuccessfully).wait().checkExists()
+            staticText(TokenRefreshStrings.getUserSuccessfully).waitUntilExists().checkExists()
             return .init()
         }
 
         @discardableResult
         public func failedToGetUserMessageIsDisplayed() -> TokenRefreshSampleAppRobot {
-            staticText(TokenRefreshStrings.failedToGetUser).wait().checkExists()
+            staticText(TokenRefreshStrings.failedToGetUser).waitUntilExists().checkExists()
             return .init()
         }
     }

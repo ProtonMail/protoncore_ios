@@ -38,8 +38,8 @@ final class AccountSwitcherSampleAppRobot: CoreElements {
     public final class Verify: CoreElements {
         @discardableResult
         public func sampleAppScreenIsDisplayed() -> AccountSwitcherSampleAppRobot {
-            button(switcherComponentButton).wait().checkExists()
-            button(switcherScreenButton).wait().checkExists()
+            button(switcherComponentButton).waitUntilExists().checkExists()
+            button(switcherScreenButton).waitUntilExists().checkExists()
             return AccountSwitcherSampleAppRobot()
         }
     }
