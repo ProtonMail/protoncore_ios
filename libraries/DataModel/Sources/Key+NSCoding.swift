@@ -50,6 +50,7 @@ extension Key: NSCoding {
         // Unarchive method that suppress this warning doesn't work when using old archive method. Solution for this is to switch to
         // Codable.
         NSKeyedUnarchiver.setClass(Key.classForKeyedUnarchiver(), forClassName: "ProtonCore_DataModel.Key")
+        NSKeyedUnarchiver.setClass(Key.classForKeyedUnarchiver(), forClassName: "ProtonCoreDataModel.Key")
         return NSKeyedUnarchiver.unarchiveObject(with: data) as? [Key]
     }
     

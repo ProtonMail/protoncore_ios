@@ -35,6 +35,7 @@ extension Address: NSCoding {
         // Unarchive method that suppress this warning doesn't work when using old archive method (see above). Solution for this is to switch to
         // Codable.
         NSKeyedUnarchiver.setClass(Address.classForKeyedUnarchiver(), forClassName: "ProtonCore_DataModel.Address")
+        NSKeyedUnarchiver.setClass(Address.classForKeyedUnarchiver(), forClassName: "ProtonCoreDataModel.Address")
         return NSKeyedUnarchiver.unarchiveObject(with: data) as? Address
     }
     
