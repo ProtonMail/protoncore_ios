@@ -195,6 +195,7 @@ extension UserInfo {
         // Unarchive method that suppress this warning doesn't work when using old archive method (see above). Solution for this is to switch to
         // Codable.
         NSKeyedUnarchiver.setClass(UserInfo.classForKeyedUnarchiver(), forClassName: "ProtonCore_DataModel.UserInfo")
+        NSKeyedUnarchiver.setClass(UserInfo.classForKeyedUnarchiver(), forClassName: "ProtonCoreDataModel.UserInfo")
         return NSKeyedUnarchiver.unarchiveObject(with: data) as? UserInfo
     }
 }
