@@ -48,7 +48,7 @@ public final class AccountSummaryRobot: CoreElements {
     public final class Verify: CoreElements {
         @discardableResult
         public func startUsingPassButtonIsShown() -> AccountSummaryRobot {
-            button(startUsingAppButtonId).wait().checkExists()
+            button(startUsingAppButtonId).waitUntilExists().checkExists()
             return AccountSummaryRobot()
         }
     }

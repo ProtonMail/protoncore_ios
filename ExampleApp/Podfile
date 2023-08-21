@@ -157,7 +157,7 @@ end
 def shared_uitests_dependencies
   protoncore_dependencies
   pod "ProtonCore-FeatureSwitch", :path => "../"
-  pod "fusion", :git => "git@gitlab.protontech.ch:tpe/apple-fusion.git", :commit => "1ba256d5"
+  pod "fusion", :git => "git@gitlab.protontech.ch:tpe/apple-fusion.git", :commit => "04b8a422"
   pod "ProtonCore-Doh", :path => "../"
   pod "ProtonCore-ObfuscatedConstants", :path => "../"
   pod "ProtonCore-QuarkCommands", :path => "../"

@@ -53,26 +53,26 @@ final class AccountDeletionSampleAppRobot: CoreElements {
     final class Verify: CoreElements {
         @discardableResult
         func sampleAppScreenIsDisplayed() -> AccountDeletionSampleAppRobot {
-            button(createAccountButton).wait().checkExists()
+            button(createAccountButton).waitUntilExists().checkExists()
             return AccountDeletionSampleAppRobot()
         }
         
         @discardableResult
         func successAlertIsDisplayed() -> AccountDeletionSampleAppRobot {
-            alert(successfulAlertText).wait().checkExists()
+            alert(successfulAlertText).waitUntilExists().checkExists()
             return AccountDeletionSampleAppRobot()
         }
         
         @discardableResult
         func failureAlertIsDisplayed() -> AccountDeletionSampleAppRobot {
-            alert(failureAlertText).wait().checkExists()
+            alert(failureAlertText).waitUntilExists().checkExists()
             return AccountDeletionSampleAppRobot()
         }
     }
     
     func createAccount() -> (AccountDeletionButtonRobot, String, String, String) {
         button(createAccountButton).tap()
-        guard let detailsString = staticText(accountDetailsLabel).wait().checkExists().label() else {
+        guard let detailsString = staticText(accountDetailsLabel).waitUntilExists().checkExists().label() else {
             XCTFail("Couldn't find the details string in newly created account details")
             return (AccountDeletionButtonRobot(), "", "", "")
         }

@@ -82,7 +82,7 @@ public final class SignupHumanVerificationV3Robot: CoreElements {
         
         public func resendEmailDialogShown(email: String) -> SignupHumanVerificationV3Robot {
             let messageName = String(format: resendCodeLabel, email)
-            staticText(messageName).wait().checkExists()
+            staticText(messageName).waitUntilExists().checkExists()
             return SignupHumanVerificationV3Robot()
         }
     }

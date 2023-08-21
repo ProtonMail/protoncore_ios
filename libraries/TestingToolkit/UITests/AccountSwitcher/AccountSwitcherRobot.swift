@@ -46,7 +46,7 @@ public final class AccountSwitcherComponentRobot: CoreElements {
     public final class Verify: CoreElements {
         @discardableResult
         public func switcherScreenIsDisplayed() -> AccountSwitcherScreenRobot {
-            staticText(switcherComponentManageLabelValue).wait().checkExists()
+            staticText(switcherComponentManageLabelValue).waitUntilExists().checkExists()
             return AccountSwitcherScreenRobot()
         }
     }
@@ -70,7 +70,7 @@ public final class AccountSwitcherScreenRobot: CoreElements {
     public final class Verify: CoreElements {
         @discardableResult
         public func switcherScreenIsDisplayed() -> AccountSwitcherScreenRobot {
-            staticText(switcherScreenTitleLabelID).wait().checkExists()
+            staticText(switcherScreenTitleLabelID).waitUntilExists().checkExists()
             return AccountSwitcherScreenRobot()
         }
     }
@@ -109,14 +109,14 @@ public final class AccountSwitcherMoreMenuRobot: CoreElements {
     public final class Verify: CoreElements {
         @discardableResult
         public func signInMenuIsDisplayed() -> AccountSwitcherMoreMenuRobot {
-            button(signInPopupIdentifier).wait().checkExists()
-            button(removeAccountPopupIdentifier).wait().checkExists()
+            button(signInPopupIdentifier).waitUntilExists().checkExists()
+            button(removeAccountPopupIdentifier).waitUntilExists().checkExists()
             return AccountSwitcherMoreMenuRobot()
         }
         @discardableResult
         public func signOutMenuIsDisplayed() -> AccountSwitcherMoreMenuRobot {
-            button(signOutPopupIdentifier).wait().checkExists()
-            button(removeAccountPopupIdentifier).wait().checkExists()
+            button(signOutPopupIdentifier).waitUntilExists().checkExists()
+            button(removeAccountPopupIdentifier).waitUntilExists().checkExists()
             return AccountSwitcherMoreMenuRobot()
         }
     }
@@ -144,14 +144,14 @@ public final class AccountSwitcherConfirmationPopupRobot: CoreElements {
     public final class Verify: CoreElements {
         @discardableResult
         public func signOutConfirmationIsDisplayed() -> AccountSwitcherConfirmationPopupRobot {
-            button(signOutPopupIdentifier).wait().checkExists()
-            button(cancelPopupIdentifier).wait().checkExists()
+            button(signOutPopupIdentifier).waitUntilExists().checkExists()
+            button(cancelPopupIdentifier).waitUntilExists().checkExists()
             return AccountSwitcherConfirmationPopupRobot()
         }
         @discardableResult
         public func removeAccountConfirmationIsDisplayed() -> AccountSwitcherConfirmationPopupRobot {
-            button(removeAccountConfirmationIdentifier).wait().checkExists()
-            button(cancelPopupIdentifier).wait().checkExists()
+            button(removeAccountConfirmationIdentifier).waitUntilExists().checkExists()
+            button(cancelPopupIdentifier).waitUntilExists().checkExists()
             return AccountSwitcherConfirmationPopupRobot()
         }
     }

@@ -36,7 +36,7 @@ public final class TCRobot: CoreElements {
     public final class Verify: CoreElements {
         @discardableResult
         public func tcScreenIsShown() -> TCRobot {
-            staticText(titleId).wait().checkExists()
+            staticText(titleId).waitUntilExists().checkExists()
             return TCRobot()
         }
     }

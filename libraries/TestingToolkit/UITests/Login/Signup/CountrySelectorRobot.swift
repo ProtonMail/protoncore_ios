@@ -36,7 +36,7 @@ public final class CountrySelectorRobot: CoreElements {
     public final class Verify: CoreElements {
         @discardableResult
         public func countrySelectorScreenIsShown() -> CountrySelectorRobot {
-            otherElement(searchId).wait().checkExists()
+            otherElement(searchId).waitUntilExists().checkExists()
             return CountrySelectorRobot()
         }
     }
