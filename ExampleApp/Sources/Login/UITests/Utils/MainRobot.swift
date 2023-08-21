@@ -62,12 +62,12 @@ public final class LoginSampleAppRobot: CoreElements {
     
     @discardableResult
     public func showLogin() -> LoginRobot {
-        button(showLoginButtonLabelText).wait().tap()
+        button(showLoginButtonLabelText).waitUntilExists().tap()
         return LoginRobot()
     }
     
     public func showWelcomeScreen() -> WelcomeRobot {
-        button(showLoginButtonLabelText).wait().tap()
+        button(showLoginButtonLabelText).waitUntilExists().tap()
         return WelcomeRobot()
     }
     
@@ -150,7 +150,7 @@ public final class LoginSampleAppRobot: CoreElements {
     
     @discardableResult
     public func logoutButtonTap() -> LoginSampleAppRobot {
-        button(logoutButtonLabelText).wait(time: 180).tap()
+        button(logoutButtonLabelText).waitUntilExists(time: 180).tap()
         return self
     }
     
@@ -186,7 +186,7 @@ public final class LoginSampleAppRobot: CoreElements {
     
     @discardableResult
     public func showDeleteAccount() -> LoginSampleAppRobot {
-        button(deleteAccountButtonLabelText).wait().tap()
+        button(deleteAccountButtonLabelText).waitUntilExists().tap()
         return self
     }
     
@@ -195,7 +195,7 @@ public final class LoginSampleAppRobot: CoreElements {
     
     public class Verify: CoreElements {
         public func buttonLogoutVisible() {
-            button(logoutButtonLabelText).wait(time: 90).checkExists()
+            button(logoutButtonLabelText).waitUntilExists(time: 90).checkExists()
         }
         
         public func buttonLogoutIsNotVisible() {
@@ -203,24 +203,24 @@ public final class LoginSampleAppRobot: CoreElements {
         }
         
         public func dialogLogoutShown() -> LoginSampleAppRobot {
-            staticText(logoutDialogText).wait(time: 20).checkExists()
+            staticText(logoutDialogText).waitUntilExists(time: 20).checkExists()
             return LoginSampleAppRobot()
         }
         
         public func buttonLoginVisible() {
-            button(showLoginButtonLabelText).wait().checkExists()
+            button(showLoginButtonLabelText).waitUntilExists().checkExists()
         }
         
         @discardableResult
         public func buttonDeleAccountVisible() -> LoginSampleAppRobot {
-            button(deleteAccountButtonLabelText).wait(time: 90).checkExists()
+            button(deleteAccountButtonLabelText).waitUntilExists(time: 90).checkExists()
             return LoginSampleAppRobot()
         }
     }
     
     public class VerifyDeleteAccount: CoreElements {
         public func deleteAccountShown() {
-            button(deleteAccountDeleteButton).wait(time: 30).checkExists()
+            button(deleteAccountDeleteButton).waitUntilExists(time: 30).checkExists()
             button(deleteAccountCancelButton).checkExists()
             staticText(deleteAccountWarning).checkExists()
         }

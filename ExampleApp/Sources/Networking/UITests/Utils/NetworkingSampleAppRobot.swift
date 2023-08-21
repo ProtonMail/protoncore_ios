@@ -20,7 +20,7 @@ fileprivate let humanVerificationUnauthButton = "Human Verification unauth test"
 public final class NetworkingSampleAppRobot: CoreElements {
     
     public func humanVerificationUnauthShow() -> HumanVerificationRobot {
-        button(humanVerificationUnauthButton).wait().tap()
+        button(humanVerificationUnauthButton).waitUntilExists().tap()
         return HumanVerificationRobot()
     }
     
@@ -28,7 +28,7 @@ public final class NetworkingSampleAppRobot: CoreElements {
     
     public class Verify: CoreElements {
         public func hvUnauthButtonVisible() {
-            button(humanVerificationUnauthButton).wait().checkExists()
+            button(humanVerificationUnauthButton).waitUntilExists().checkExists()
         }
     }
 }

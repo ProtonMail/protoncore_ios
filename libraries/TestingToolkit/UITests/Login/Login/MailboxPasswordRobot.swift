@@ -40,7 +40,7 @@ public final class MailboxPasswordRobot: CoreElements {
         }
         
         public func incorrectMailboxPasswordErrorDialog() {
-            textView(incorrectMailboxPasswordStaticText).wait().checkExists()
+            textView(incorrectMailboxPasswordStaticText).waitUntilExists().checkExists()
         }
     }
     

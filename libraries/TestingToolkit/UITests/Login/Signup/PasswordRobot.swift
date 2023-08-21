@@ -42,34 +42,34 @@ public final class PasswordRobot: CoreElements {
     public final class Verify: CoreElements {
         @discardableResult
         public func passwordScreenIsShown() -> PasswordRobot {
-            staticText(titleId).wait().checkExists()
+            staticText(titleId).waitUntilExists().checkExists()
             return PasswordRobot()
         }
 
         @discardableResult
         public func passwordEmpty() -> PasswordRobot {
-            textView(errorBannerPassEmpty).wait().checkExists()
+            textView(errorBannerPassEmpty).waitUntilExists().checkExists()
             button(errorBannerButton).tap()
             return PasswordRobot()
         }
 
         @discardableResult
         public func passwordTooShort() -> PasswordRobot {
-            textView(errorBannerPassTooShort).wait().checkExists()
+            textView(errorBannerPassTooShort).waitUntilExists().checkExists()
             button(errorBannerButton).tap()
             return PasswordRobot()
         }
         
         @discardableResult
         public func passwordNotEqual() -> PasswordRobot {
-            textView(errorBannerPassNotEqual).wait().checkExists()
+            textView(errorBannerPassNotEqual).waitUntilExists().checkExists()
             button(errorBannerButton).tap()
             return PasswordRobot()
         }
     }
     
     public func insertPassword(password: String) -> PasswordRobot {
-        secureTextField(passwordNameTextFieldId).wait().tap().typeText(password)
+        secureTextField(passwordNameTextFieldId).waitUntilExists().tap().typeText(password)
         return self
     }
     

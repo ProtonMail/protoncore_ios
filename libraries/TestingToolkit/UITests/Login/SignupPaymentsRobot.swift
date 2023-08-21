@@ -55,11 +55,12 @@ private let okButtonName = "OK"
 
 public enum SignupPaymentsPlan: String {
     case free = "Free"
-    case mailPlus = "Plus"
-    case pro = "Professional"
     case visionary = "Visionary"
     case mailFree = "ProtonMail_Free"
     case mail2022 = "Mail_Plus"
+    case drive2022 = "Drive_Plus"
+    case vpn2022 = "VPN_Plus"
+    case pass2022 = "Pass_Plus"
     case unlimited = "Proton_Unlimited"
     case none = ""
     
@@ -71,20 +72,6 @@ public enum SignupPaymentsPlan: String {
                 "500 MB storage",
                 "1 email address",
                 "3 folders / labels"]
-        case .mailPlus:
-            return [
-                "7 GB storage",
-                "5 email addresses",
-                "200 folders / labels",
-                "Custom email addresses",
-                "Priority customer support"]
-        case .pro:
-            return [
-                "Current plan",
-                "7 GB storage / user",
-                "10 email addresses / user",
-                "2 custom domains",
-                "Multi-user support"]
         case .visionary:
             return [
                 "Current plan",
@@ -105,6 +92,22 @@ public enum SignupPaymentsPlan: String {
                 "1 of 10 email addresses",
                 "0 of 20 calendars",
                 "1 VPN connection"]
+        case .drive2022:
+            return [
+                "1 user",
+                "1 of 15 email addresses",
+                "0 of 25 personal calendars",
+                "10 VPN connection"]
+        case .vpn2022:
+            return [
+                "10 VPN connections",
+                "Highest VPN speed",
+                "1500+ servers in 51 countries"]
+        case .pass2022:
+            return [
+                "Unlimited logins and notes",
+                "Unlimited devices",
+                "20 vaults"]
         case .unlimited:
             return [
                 "500 GB storage",
@@ -124,20 +127,6 @@ public enum SignupPaymentsPlan: String {
                 "1 email address",
                 "1 calendar",
                 "1 VPN connection"]
-        case .mailPlus:
-            return [
-                "7 GB storage",
-                "5 email addresses",
-                "200 folders / labels",
-                "Custom email addresses",
-                "Priority customer support"]
-        case .pro:
-            return [
-                "Current plan",
-                "7 GB storage / user",
-                "10 email addresses / user",
-                "2 custom domains",
-                "Multi-user support"]
         case .visionary:
             return [
                 "Current plan",
@@ -158,6 +147,22 @@ public enum SignupPaymentsPlan: String {
                 "1 of 10 email addresses",
                 "0 of 20 calendars",
                 "1 VPN connection"]
+        case .drive2022:
+            return [
+                "1 user",
+                "1 of 15 email addresses",
+                "0 of 25 personal calendars",
+                "10 VPN connection"]
+        case .vpn2022:
+            return [
+                "10 VPN connections",
+                "Highest VPN speed",
+                "1500+ servers in 51 countries"]
+        case .pass2022:
+            return [
+                "Unlimited logins and notes",
+                "Unlimited devices",
+                "20 vaults"]
         case .unlimited:
             return [
                 "500 GB storage",
@@ -177,18 +182,18 @@ public final class SignupPaymentsRobot: CoreElements {
     public final class Verify: CoreElements {
         @discardableResult
         public func paymentsUIScreenIsShown() -> SignupPaymentsRobot {
-            staticText(title).wait().checkExists()
+            staticText(title).waitUntilExists().checkExists()
             return SignupPaymentsRobot()
         }
     }
     
     public func selectPlanCell(plan: SignupPaymentsPlan) -> SignupPaymentsRobot {
-        cell(planCellIdentifier(name: plan.rawValue)).wait().tap()
+        cell(planCellIdentifier(name: plan.rawValue)).waitUntilExists().tap()
         return self
     }
     
     public func selectCurrentPlanCell(plan: SignupPaymentsPlan) -> SignupPaymentsRobot {
-        cell(currentPlanCellIdentifier(name: plan.rawValue)).wait().tap()
+        cell(currentPlanCellIdentifier(name: plan.rawValue)).waitUntilExists().tap()
         return self
     }
     
@@ -226,13 +231,13 @@ public final class SignupPaymentsRobot: CoreElements {
     
     @discardableResult
     func verifyStaticText(_ name: String) -> Self {
-        staticText(name).wait().checkExists()
+        staticText(name).waitUntilExists().checkExists()
         return self
     }
     
     @discardableResult
     public func verifyNumberOfPlansToPurchase(number: Int) -> SignupPaymentsRobot {
-        table("PaymentsUIViewController.tableView").wait().checkExists()
+        table("PaymentsUIViewController.tableView").waitUntilExists().checkExists()
         let count = XCUIApplication().tables.matching(identifier: "PaymentsUIViewController.tableView").cells.count
         XCTAssertEqual(count, number)
         return self
@@ -240,7 +245,7 @@ public final class SignupPaymentsRobot: CoreElements {
     
     @discardableResult
     public func verifyTableCellStaticText(cellName: String, name: String) -> SignupPaymentsRobot {
-        table("PaymentsUIViewController.tableView").wait().checkExists()
+        table("PaymentsUIViewController.tableView").waitUntilExists().checkExists()
         let staticTexts = XCUIApplication().tables.matching(identifier: "PaymentsUIViewController.tableView").cells.matching(identifier: cellName).staticTexts
         XCTAssertTrue(staticTexts[name].exists)
         return self
@@ -249,23 +254,29 @@ public final class SignupPaymentsRobot: CoreElements {
     @discardableResult
     public func verifyPlan(plan: SignupPaymentsPlan) -> SignupPaymentsRobot {
         plan.getDescription.forEach {
-            staticText($0).wait().checkExists()
+            staticText($0).waitUntilExists().checkExists()
         }
+        return self
+    }
+
+    @discardableResult
+    public func verifyCurrentPlan(plan: SignupPaymentsPlan) -> SignupPaymentsRobot {
+        cell(currentPlanCellIdentifier(name: plan.rawValue)).waitUntilExists().checkExists()
         return self
     }
 
     @discardableResult
     public func verifyPlanV5(plan: SignupPaymentsPlan) -> SignupPaymentsRobot {
         plan.getDescriptionV5.forEach {
-            staticText($0).wait().checkExists()
+            staticText($0).waitUntilExists().checkExists()
         }
         return self
     }
     
     public func expandPlan(plan: SignupPaymentsPlan) -> SignupPaymentsRobot {
-         button(expandPlanButtonIdentifier(name: plan.rawValue)).tap().wait()
-            return self
-     }
+        button(expandPlanButtonIdentifier(name: plan.rawValue)).waitUntilExists().tap()
+        return self
+    }
     
     @discardableResult
     public func verifyExpirationTime() -> SignupPaymentsRobot {
@@ -292,7 +303,7 @@ public final class SignupPaymentsRobot: CoreElements {
     }
     
     public func extendSubscriptionTap() -> PaymentsUISystemRobot {
-        button(extendSubscriptionText).wait().tap()
+        button(extendSubscriptionText).waitUntilExists().tap()
         return PaymentsUISystemRobot()
     }
     
@@ -334,13 +345,13 @@ public final class SignupPaymentsRobot: CoreElements {
         
         private func isButtonExist(name: String) -> Bool {
             let button = XCUIApplication().buttons[name]
-            Wait(time: 2).forElement(button)
+            Wait(time: 10).forElement(button)
             return button.exists
         }
         
         private func systemButtonTap(name: String) {
             let button = springboard.buttons[name]
-            Wait(time: 4).forElement(button)
+            Wait(time: 10).forElement(button)
             button.tap()
         }
         

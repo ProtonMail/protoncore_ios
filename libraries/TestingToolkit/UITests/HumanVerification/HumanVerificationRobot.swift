@@ -38,23 +38,23 @@ public final class HumanVerificationRobot: CoreElements {
     public final class Verify: CoreElements {
         @discardableResult
         public func humanVerificationScreenIsShown() -> HumanVerificationRobot {
-            otherElement(humanVerificationScreenIdentifier).wait().checkExists()
+            otherElement(humanVerificationScreenIdentifier).waitUntilExists().checkExists()
             return HumanVerificationRobot()
         }
     }
     
     public func emailTab() -> HumanVerificationRobot {
-        button(emailButton).wait().tap()
+        button(emailButton).waitUntilExists().tap()
         return HumanVerificationRobot()
     }
     
     public func smsTab() -> HumanVerificationRobot {
-        button(smsButton).wait().tap()
+        button(smsButton).waitUntilExists().tap()
         return HumanVerificationRobot()
     }
     
     public func captchaTab() -> HumanVerificationRobot {
-        button(captchaButton).wait().tap()
+        button(captchaButton).waitUntilExists().tap()
         return HumanVerificationRobot()
     }
     
@@ -78,7 +78,7 @@ public final class HumanVerificationRobot: CoreElements {
     
     @discardableResult
     public func close<Robot: CoreElements>(to _: Robot.Type) -> Robot {
-        button(closeButtonAccessibilityId).wait().tap()
+        button(closeButtonAccessibilityId).waitUntilExists().tap()
         return Robot()
     }
 }

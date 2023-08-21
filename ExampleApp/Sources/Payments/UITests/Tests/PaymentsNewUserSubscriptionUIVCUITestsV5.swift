@@ -50,42 +50,6 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .verifyPlanV5(plan: .free)
     }
     
-    func testCurrentPlusPlan() {
-        let user = testData.mailPlusUser
-        
-        mainRobot
-            .showPaymentsUI()
-            .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: user.username)
-            .insertPassword(password: user.password)
-            .loginButtonTap()
-            .modalVCSwitchTap()
-            .showCurrentPlanButtonTap()
-            .wait(timeInterval: 2)
-            .selectCurrentPlanCell(plan: .mailPlus)
-            .planButtonDoesNotExist(plan: .mailPlus)
-            .verifyNumberOfCells(number: 1)
-            .verifyPlanV5(plan: .mailPlus)
-    }
-    
-    func testCurrentProPlan() {
-        let user = testData.mailProUser
-
-        mainRobot
-            .showPaymentsUI()
-            .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: user.username)
-            .insertPassword(password: user.password)
-            .loginButtonTap()
-            .modalVCSwitchTap()
-            .showCurrentPlanButtonTap()
-            .wait(timeInterval: 2)
-            .selectCurrentPlanCell(plan: .pro)
-            .planButtonDoesNotExist(plan: .pro)
-            .verifyNumberOfCells(number: 1)
-            .verifyPlanV5(plan: .pro)
-    }
-    
     func testCurrentVisionaryPlan() {
         let user = testData.visionaryUser
         
@@ -103,77 +67,6 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .verifyNumberOfCells(number: 1)
             .verifyPlanV5(plan: .visionary)
     }
-    // Commenting out until the mailPlusVpnPlusWithCouponUser user will be seeded
-//    func testCurrentMailPlusVpnPlusWithCouponPlan() {
-//        let user = testData.mailPlusVpnPlusWithCouponUser
-//
-//        mainRobot
-//            .showPaymentsUI()
-//            .verify.newUserSubscriptionUIScreenIsShown()
-//            .insertUsername(name: user.username)
-//            .insertPassword(password: user.password)
-//            .loginButtonTap()
-//            .modalVCSwitchTap()
-//            .showCurrentPlanButtonTap()
-//            .wait(timeInterval: 2)
-//            .selectPlanCell(plan: .mailPlus)
-//            .planButtonDoesNotExist(plan: .mailPlus)
-//            .verifyNumberOfCells(number: 1)
-//            .verifyPlanV5(plan: .mailPlus)
-//    }
-    
-    func testCurrentMailProVpnFreePlan() {
-        let user = testData.mailprovpnfreeUser
-        
-        mainRobot
-            .showPaymentsUI()
-            .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: user.username)
-            .insertPassword(password: user.password)
-            .loginButtonTap()
-            .modalVCSwitchTap()
-            .showCurrentPlanButtonTap()
-            .wait(timeInterval: 2)
-            .selectCurrentPlanCell(plan: .pro)
-            .planButtonDoesNotExist(plan: .pro)
-            .verifyNumberOfCells(number: 1)
-            .verifyPlanV5(plan: .pro)
-    }
-    
-    func testCurrentMailPlusVpnFreePlan() {
-        let user = testData.mailplusvpnfreeUser
-        
-        mainRobot
-            .showPaymentsUI()
-            .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: user.username)
-            .insertPassword(password: user.password)
-            .loginButtonTap()
-            .modalVCSwitchTap()
-            .showCurrentPlanButtonTap()
-            .wait(timeInterval: 2)
-            .selectCurrentPlanCell(plan: .mailPlus)
-            .planButtonDoesNotExist(plan: .mailPlus)
-            .verifyNumberOfCells(number: 1)
-            .verifyPlanV5(plan: .mailPlus)
-    }
-    
-    // Commenting out until the orgSubUser user will be seeded
-//    func testCurrentOrgMemberPlan() {
-//        let user = testData.orgSubUser
-//
-//        mainRobot
-//            .showPaymentsUI()
-//            .verify.newUserSubscriptionUIScreenIsShown()
-//            .insertUsername(name: user.email)
-//            .insertPassword(password: user.password)
-//            .loginButtonTap()
-//            .modalVCSwitchTap()
-//            .showCurrentPlanButtonTap()
-//            .wait(timeInterval: 2)
-//            .selectCurrentPlanCell(plan: .none)
-//            .verifyNumberOfCells(number: 1)
-//    }
 
     func testCurrentVpnPlusPlan() {
         let user = testData.vpnPlusUser
@@ -269,42 +162,6 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
                .verifyPlanV5(plan: .mail2022)
        }
     /// Test update plans
-    
-    func testUpdatePlusPlan() {
-        let user = testData.mailPlusUser
-        
-        mainRobot
-            .showPaymentsUI()
-            .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: user.username)
-            .insertPassword(password: user.password)
-            .loginButtonTap()
-            .modalVCSwitchTap()
-            .showUpdatePlansButtonTap()
-            .wait(timeInterval: 2)
-            .selectCurrentPlanCell(plan: .mailPlus)
-            .planButtonDoesNotExist(plan: .mailPlus)
-            .verifyNumberOfCells(number: 1)
-            .verifyPlanV5(plan: .mailPlus)
-    }
-    
-    func testUpdateProPlan() {
-        let user = testData.mailProUser
-        
-        mainRobot
-            .showPaymentsUI()
-            .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: user.username)
-            .insertPassword(password: user.password)
-            .loginButtonTap()
-            .modalVCSwitchTap()
-            .showUpdatePlansButtonTap()
-            .wait(timeInterval: 2)
-            .selectCurrentPlanCell(plan: .pro)
-            .planButtonDoesNotExist(plan: .pro)
-            .verifyNumberOfCells(number: 1)
-            .verifyPlanV5(plan: .pro)
-    }
     
     func testUpdateVisionaryPlan() {
         let user = testData.visionaryUser

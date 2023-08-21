@@ -1933,7 +1933,7 @@ let package = Package(
         ),
         .package(
             url: "git@gitlab.protontech.ch:tpe/apple-fusion.git",
-            from: "2.0.0"
+            from: "2.0.1"
         ),
         .package(
             url: "https://github.com/kylef/JSONSchema.swift",

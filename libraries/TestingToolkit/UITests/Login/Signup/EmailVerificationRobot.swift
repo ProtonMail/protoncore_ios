@@ -45,14 +45,14 @@ public class EmailVerificationRobot: CoreElements {
     public class Verify: CoreElements {
         @discardableResult
         public func emailVerificationScreenIsShown() -> EmailVerificationRobot {
-            staticText(titleId).wait().checkExists()
+            staticText(titleId).waitUntilExists().checkExists()
             return EmailVerificationRobot()
         }
         
         @discardableResult
         public func resendEmailMessage(email: String) -> EmailVerificationRobot {
             let msg = String(format: bannerSendMessage, email)
-            textView(msg).wait().checkExists()
+            textView(msg).waitUntilExists().checkExists()
             return EmailVerificationRobot()
         }
         
@@ -90,8 +90,8 @@ public class EmailVerificationRobot: CoreElements {
         public final class Verify: CoreElements {
             @discardableResult
             public func verificationDialogDisplay() -> EmailVerificationDialogRobot {
-                staticText(verificationDialogTitleName).wait().checkExists()
-                staticText(verificationDialogMessageName).wait().checkExists()
+                staticText(verificationDialogTitleName).waitUntilExists().checkExists()
+                staticText(verificationDialogMessageName).waitUntilExists().checkExists()
                 return EmailVerificationDialogRobot()
             }
         }
@@ -116,8 +116,8 @@ public class EmailVerificationRobot: CoreElements {
             @discardableResult
             public func resendDialogDisplay(email: String) -> ResendDialogRobot {
                 let messageName = String(format: LUITranslation.verification_new_alert_message.l10n, email)
-                staticText(resendDialogTitleName).wait().checkExists()
-                staticText(messageName).wait().checkExists()
+                staticText(resendDialogTitleName).waitUntilExists().checkExists()
+                staticText(messageName).waitUntilExists().checkExists()
                 return ResendDialogRobot()
             }
         }
