@@ -83,13 +83,13 @@ final class PaymentsUICoordinatorTests: XCTestCase {
         waitForExpectations(timeout: timeout)
     }
     
-    func testObservabilityEnvPlanSelectorPlusPlan() {
+    func testObservabilityEnvPlanSelectorPaidPlan() {
         let expectation = self.expectation(description: "Success completion block called")
         let expectation2 = self.expectation(description: "Should call refresh handler")
         let observeMock = ObservabilityServiceMock()
         ObservabilityEnv.current.observabilityService = observeMock
         observeMock.reportStub.bodyIs { _, event in
-            guard event.isSameAs(event: .planSelectionCheckoutTotal(status: .successful, plan: .plus)) else {
+            guard event.isSameAs(event: .planSelectionCheckoutTotal(status: .successful, plan: .paid)) else {
                 return
             }
             expectation.fulfill()
@@ -130,13 +130,13 @@ final class PaymentsUICoordinatorTests: XCTestCase {
         waitForExpectations(timeout: timeout)
     }
     
-    func testObservabilityEnvPlanSelectorPlusPlanFailed() {
+    func testObservabilityEnvPlanSelectorPaidPlanFailed() {
         let expectation = self.expectation(description: "Success completion block called")
         let observeMock = ObservabilityServiceMock()
         ObservabilityEnv.current.observabilityService = observeMock
         
         observeMock.reportStub.bodyIs { _, event in
-            guard event.isSameAs(event: .planSelectionCheckoutTotal(status: .failed, plan: .plus)) else {
+            guard event.isSameAs(event: .planSelectionCheckoutTotal(status: .failed, plan: .paid)) else {
                 return
             }
             expectation.fulfill()
@@ -176,7 +176,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success([:]))
         }
-        let plan = InAppPurchasePlan(protonPlan: .dummy.updated(name: "mail_p211l2us"), listOfIAPIdentifiers: ["ios_test_12_usd_non_renewing"])!
+        let plan = InAppPurchasePlan(protonPlan: .dummy.updated(name: "mail_p211l2us_free"), listOfIAPIdentifiers: ["ios_test_12_usd_non_renewing"])!
         let testPlan = PlanPresentation(accountPlan: plan, planPresentationType: .current(.unavailable))
         let coordinator = PaymentsUICoordinator.init(planService: planServiceMock,
                                                      storeKitManager: storeKitManager,
@@ -189,12 +189,12 @@ final class PaymentsUICoordinatorTests: XCTestCase {
         waitForExpectations(timeout: timeout)
     }
     
-    func testObservabilityEnvPlanSelectorPlusPlanApiBlocked() {
+    func testObservabilityEnvPlanSelectorPaidPlanApiBlocked() {
         let expectation = self.expectation(description: "Success completion block called")
         let observeMock = ObservabilityServiceMock()
         ObservabilityEnv.current.observabilityService = observeMock
         observeMock.reportStub.bodyIs { _, event in
-            guard event.isSameAs(event: .planSelectionCheckoutTotal(status: .failed, plan: .plus)) else {
+            guard event.isSameAs(event: .planSelectionCheckoutTotal(status: .apiMightBeBlocked, plan: .paid)) else {
                 return
             }
             expectation.fulfill()

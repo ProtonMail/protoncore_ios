@@ -237,31 +237,17 @@ final class ObservabilityEventTests: IntegrationTestCase {
 
     // MARK: - Test plan selection schema
 
-    func test_unlimitedPlanSelection_withSuccessfulStatus_isValid() {
+    func test_paidPlanSelection_withSuccessfulStatus_isValid() {
         let expectation = expectation(description: "test_unlimitedPlanSelection_withSuccessfulStatus_isValid")
         let service = setupService(expectation: expectation)
-        service.report(.planSelectionCheckoutTotal(status: .successful, plan: .unlimited))
+        service.report(.planSelectionCheckoutTotal(status: .successful, plan: .paid))
         wait(for: [expectation], timeout: expectationTimeout)
     }
 
-    func test_unlimitedPlanSelection_withFailedStatus_isValid() {
+    func test_paidPlanSelection_withFailedStatus_isValid() {
         let expectation = expectation(description: "test_unlimitedPlanSelection_withFailedStatus_isValid")
         let service = setupService(expectation: expectation)
-        service.report(.planSelectionCheckoutTotal(status: .failed, plan: .unlimited))
-        wait(for: [expectation], timeout: expectationTimeout)
-    }
-
-    func test_plusPlanSelection_withSuccessfulStatus_isValid() {
-        let expectation = expectation(description: "test_plusPlanSelection_withSuccessfulStatus_isValid")
-        let service = setupService(expectation: expectation)
-        service.report(.planSelectionCheckoutTotal(status: .successful, plan: .plus))
-        wait(for: [expectation], timeout: expectationTimeout)
-    }
-
-    func test_plusPlanSelection_withFailedStatus_isValid() {
-        let expectation = expectation(description: "test_plusPlanSelection_withFailedStatus_isValid")
-        let service = setupService(expectation: expectation)
-        service.report(.planSelectionCheckoutTotal(status: .failed, plan: .plus))
+        service.report(.planSelectionCheckoutTotal(status: .failed, plan: .paid))
         wait(for: [expectation], timeout: expectationTimeout)
     }
 
