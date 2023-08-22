@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "git@gitlab.protontech.ch:tpe/apple-fusion.git",
       "state" : {
-        "revision" : "5905ef7eb68a3ad7acdd3cdec75b781daf26fb4b",
-        "version" : "2.0.0"
+        "revision" : "cd3db46940c5d64beb616f0a080ff65a920dd5fa",
+        "version" : "2.0.1"
       }
     },
     {

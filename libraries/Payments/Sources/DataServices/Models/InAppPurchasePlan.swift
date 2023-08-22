@@ -161,27 +161,7 @@ public struct InAppPurchasePlan: Equatable, Hashable {
     }
     
     public init?(currentPlanSubscription: CurrentPlan.Subscription) {
-        // TODO: replace this logic with the correct one CP-6423
-        var id = "ioscore"
-        if !currentPlanSubscription.name.isEmpty {
-            id = "\(id)_\(currentPlanSubscription.name)"
-        }
-        
-        if !currentPlanSubscription.offer.isEmpty {
-            id = "\(id)_\(currentPlanSubscription.offer)"
-        }
-        
-        if currentPlanSubscription.cycle != nil {
-            id = "\(id)_\(currentPlanSubscription.cycle!.description)"
-        }
-        
-        if !currentPlanSubscription.currency.isEmpty {
-            id = "\(id)_\(currentPlanSubscription.currency)"
-        }
-        
-        id = "\(id)_non_renewing"
-        
-        self.init(storeKitProductId: id)
+        self.init(storeKitProductId: currentPlanSubscription.vendorName)
     }
 
     private init(protonPlanName: String, offer: String?, listOfIAPIdentifiers: ListOfIAPIdentifiers) {

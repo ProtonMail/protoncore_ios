@@ -20,66 +20,55 @@
 //  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
 //
 
+/// `CurrentPlan` object is the data model for the plan
+///  the user is currently subscribed to.
 public struct CurrentPlan: Decodable, Equatable {
-    var code: Int
-    var subscription: Subscription
-    var upcomingSubscription: Subscription?
+    public var subscriptions: [Subscription]
     
     public struct Subscription: Decodable, Equatable {
-        var name: String
-        var description: String
-        var ID: String
-        var parentMetaPlanID: String
-        var type: Int
-        var title: String
-        var cycle: Int?
-        var cycleDescription: String
-        var currency: String
-        var amount: Int
-        var offer: String
-        var quantity: Int
-        var periodStart: Int
-        var periodEnd: Int
-        var createTime: Int
-        var couponCode: String?
-        var discount: Int
-        var renewDiscount: Int
-        var renewAmount: Int
-        var renew: Int
-        var external: Int
-        var entitlements: [Entitlements]
-        var decorations: [Decoration]
+        public var vendorName: String
+        public var title: String
+        public var description: String
+        public var cycleDescription: String
+        public var currency: String?
+        public var amount: Int?
+        public var periodEnd: Int?
+        public var renew: Bool?
+        public var external: PaymentMethod?
+        public var entitlements: [Entitlement]
         
-        enum Entitlements: Equatable {
-            case storage(StorageBenefit)
-            case description(DescriptionBenefit)
+        public enum PaymentMethod: Int, Decodable {
+            case web = 0
+            case apple = 1
+            case google = 2
         }
         
-        struct StorageBenefit: Decodable, Equatable {
-            var type: String
-            var max: Int
-            var current: Int
+        public enum Entitlement: Equatable {
+            case progress(ProgressEntitlement)
+            case description(DescriptionEntitlement)
         }
         
-        struct DescriptionBenefit: Decodable, Equatable {
+        public struct ProgressEntitlement: Decodable, Equatable {
             var type: String
-            var text: String
-            var icon: String
-            var hint: String
+            public var text: String
+            public var min: Int
+            public var max: Int
+            public var current: Int
         }
         
-        struct Decoration: Decodable, Equatable {
+        public struct DescriptionEntitlement: Decodable, Equatable {
             var type: String
-            var icon: String?
-            var color: String?
+            public var text: String
+            public var iconName: String
+            public var hint: String?
         }
     }
 }
 
-extension CurrentPlan.Subscription.Entitlements: Decodable {
-    private enum BenefitType: String, Decodable {
-        case storage = "Storage"
-        case description = "Description"
+extension CurrentPlan.Subscription.Entitlement: Decodable {
+    private enum EntitlementType: String, Decodable {
+        case progress
+        case description
     }
     
     enum CodingKeys: String, CodingKey {
@@ -89,11 +78,11 @@ extension CurrentPlan.Subscription.Entitlements: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let type = try container.decode(BenefitType.self, forKey: .type)
+        let type = try container.decode(EntitlementType.self, forKey: .type)
         
         switch type {
-        case .storage:
-            self = .storage(try .init(from: decoder))
+        case .progress:
+            self = .progress(try .init(from: decoder))
         case .description:
             self = .description(try .init(from: decoder))
         }
