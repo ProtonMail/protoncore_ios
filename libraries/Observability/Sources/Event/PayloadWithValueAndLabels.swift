@@ -38,7 +38,6 @@ extension ObservabilityEvent {
     }
 }
 
-
 extension ObservabilityEvent {
     init<Labels>(name: String, value: Int, labels: Labels) where Payload == PayloadWithLabels<Labels>, Labels: Encodable {
         self.init(name: name, version: .v1, data: .init(value: value, labels: labels))
