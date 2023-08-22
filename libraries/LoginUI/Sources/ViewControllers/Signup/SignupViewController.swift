@@ -421,9 +421,9 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
             }
         case .notAvailable(let message):
             if isExternalEmail {
-                ObservabilityEnv.report(.externalAccountAvailableSignupTotal(status: .failed))
+                ObservabilityEnv.report(.externalAccountAvailableSignupTotal(status: .successful))
             } else {
-                ObservabilityEnv.report(.protonAccountAvailableSignupTotal(status: .failed))
+                ObservabilityEnv.report(.protonAccountAvailableSignupTotal(status: .successful))
             }
             self.currentlyUsedTextField.isError = true
             if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
@@ -431,9 +431,9 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
             }
         case let .apiMightBeBlocked(message, _):
             if isExternalEmail {
-                ObservabilityEnv.report(.externalAccountAvailableSignupTotal(status: .failed))
+                ObservabilityEnv.report(.externalAccountAvailableSignupTotal(status: .apiMightBeBlocked))
             } else {
-                ObservabilityEnv.report(.protonAccountAvailableSignupTotal(status: .failed))
+                ObservabilityEnv.report(.protonAccountAvailableSignupTotal(status: .apiMightBeBlocked))
             }
             if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
                 self.showError(message: message,
