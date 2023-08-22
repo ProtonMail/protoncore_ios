@@ -1,53 +1,29 @@
 {
     "Code": 1000,
-    "Subscription": {
-        "Name": "name",
-        "Description": "Current plan",
-        "ID": "6opBd5UdUtY_RtEz...YA==",
-        "ParentMetaPlanID": "hUcV0_EeNw...g==",
-        "Type": 1,
-        "Title": "Visionary",
-        "Cycle": 12,
-        "CycleDescription": "1 year",
-        "Currency": "USD",
+    "Subscriptions": [{
+        "VendorName": "VendorName",
+        "Title": "Title",
+        "Description": "Description",
+        "CycleDescription": "CycleDescription",
+        "Currency": "Currency",
         "Amount": 28788,
-        "Offer": "default",
-        "Quantity": 1,
-
-        "PeriodStart": 1665402858,
         "PeriodEnd": 1696938858,
-        "CreateTime": 1570708458,
-        "CouponCode": "PROTONTEAM",
-        "Discount": -28788,
-        "RenewDiscount": -28788,
-        "RenewAmount": 0,
-
-        "Renew": 1,
-        "External": 0,
-
-
-        "Entitlements": [{
-                "Type": "Storage",
+        "Renew": true,
+        "External": 1,
+        "Entitlements": [
+            {
+                "Type": "progress",
+                "Text": "19.55 MB of 15 GB",
+                "Min": 0,
                 "Max": 1024,
                 "Current": 512
             },
             {
-                "Type": "Description",
+                "Type": "description",
                 "Text": "500 GB storage",
-                "Icon": "http://.../blah.svg",
+                "IconName": "http://.../blah.svg",
                 "Hint": "You win a lot of storage"
             }
-        ],
-
-        "Decorations": [{
-                "Type": "Star",
-                "Icon": "<base64>"
-            },
-            {
-                "Type": "Border",
-                "Color": "#xxx"
-            }
         ]
-    },
-    "UpcomingSubscription": null
+    }]
 }

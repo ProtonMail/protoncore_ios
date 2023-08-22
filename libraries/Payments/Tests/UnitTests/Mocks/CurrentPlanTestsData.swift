@@ -25,88 +25,66 @@
 var currentPlanResponse: [String: Any] {
     [
         "Code": 1000,
-        "Subscription": [
-            "Name": "name",
-            "Description": "Current plan",
-            "ID": "6opBd5UdUtY_RtEz...YA==",
-            "ParentMetaPlanID": "hUcV0_EeNw...g==",
-            "Type": 1,
-            "Title": "Visionary",
-            "Cycle": 12,
-            "CycleDescription": "1 year",
-            "Currency": "USD",
+        "Subscriptions": [[
+            "VendorName": "VendorName",
+            "Title": "Title",
+            "Description": "Description",
+            "CycleDescription": "CycleDescription",
+            "Currency": "Currency",
             "Amount": 28788,
-            "Offer": "default",
-            "Quantity": 1,
-            "PeriodStart": 1665402858,
             "PeriodEnd": 1696938858,
-            "CreateTime": 1570708458,
-            "CouponCode": "PROTONTEAM",
-            "Discount": -28788,
-            "RenewDiscount": -28788,
-            "RenewAmount": 0,
-            "Renew": 1,
-            "External": 0,
+            "Renew": true,
+            "External": 1,
             "Entitlements": [
                 [
-                    "Type": "Storage",
+                    "Type": "progress",
+                    "Text": "19.55 MB of 15 GB",
+                    "Min": 0,
                     "Max": 1024,
                     "Current": 512
                 ],
                 [
-                    "Type": "Description",
+                    "Type": "description",
                     "Text": "500 GB storage",
-                    "Icon": "http://.../blah.svg",
+                    "IconName": "http://.../blah.svg",
                     "Hint": "You win a lot of storage"
                 ]
-            ],
-            "Decorations": [
-                [
-                    "Type": "Star",
-                    "Icon": "<base64>"
-                ],
-                [
-                    "Type": "Border",
-                    "Color": "#xxx"
-                ]
             ]
-        ]
+        ]]
     ]
 }
 
 var currentPlanToCompare: CurrentPlan {
     .init(
-        code: 1000,
-        subscription: .init(
-            name: "name",
-            description: "Current plan",
-            ID: "6opBd5UdUtY_RtEz...YA==",
-            parentMetaPlanID: "hUcV0_EeNw...g==",
-            type: 1,
-            title: "Visionary",
-            cycle: 12,
-            cycleDescription: "1 year",
-            currency: "USD",
+        subscriptions: [.init(
+            vendorName: "VendorName",
+            title: "Title",
+            description: "Description",
+            cycleDescription: "CycleDescription",
+            currency: "Currency",
             amount: 28788,
-            offer: "default",
-            quantity: 1,
-            periodStart: 1665402858,
             periodEnd: 1696938858,
-            createTime: 1570708458,
-            couponCode: "PROTONTEAM",
-            discount: -28788,
-            renewDiscount: -28788,
-            renewAmount: 0,
-            renew: 1,
-            external: 0,
+            renew: true,
+            external: .apple,
             entitlements: [
-                .storage(.init(type: "Storage", max: 1024, current: 512)),
-                .description(.init(type: "Description", text: "500 GB storage", icon: "http://.../blah.svg", hint: "You win a lot of storage"))
-            ],
-            decorations: [
-                .init(type: "Star", icon: "<base64>"),
-                .init(type: "Border", color: "#xxx")
+                .progress(
+                    .init(
+                        type: "progress",
+                        text: "19.55 MB of 15 GB",
+                        min: 0,
+                        max: 1024,
+                        current: 512
+                    )
+                ),
+                .description(
+                    .init(
+                        type: "description",
+                        text: "500 GB storage",
+                        iconName: "http://.../blah.svg",
+                        hint: "You win a lot of storage"
+                     )
+                )
             ]
-        )
+        )]
     )
 }
