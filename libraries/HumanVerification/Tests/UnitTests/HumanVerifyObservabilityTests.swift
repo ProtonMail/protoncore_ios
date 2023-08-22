@@ -196,7 +196,7 @@ final class HumanVerifyObservabilityTests: XCTestCase {
         XCTAssertTrue(observabilityService.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
     
-    func test_userContentController_humanVerificationAddressAlreadyTaken_doesNotReportsHVOutcomeFailed() {
+    func test_userContentController_humanVerificationAddressAlreadyTaken_doesReportsHVOutcomeFailed() {
         // Given
         let messageBody = """
             {
@@ -217,10 +217,10 @@ final class HumanVerifyObservabilityTests: XCTestCase {
         sut.userContentController(WKUserContentController(), didReceive: WKScriptMessageMock(name: "iOS", body: messageBody))
         
         // Then
-        XCTAssertTrue(observabilityService.reportStub.wasNotCalled)
+        XCTAssertTrue(observabilityService.reportStub.wasCalled)
     }
     
-    func test_userContentController_invalidVerificationCode_doesNotReportsHVOutcomeFailed() {
+    func test_userContentController_invalidVerificationCode_doesReportsHVOutcomeFailed() {
         // Given
         let messageBody = """
             {
@@ -241,7 +241,7 @@ final class HumanVerifyObservabilityTests: XCTestCase {
         sut.userContentController(WKUserContentController(), didReceive: WKScriptMessageMock(name: "iOS", body: messageBody))
         
         // Then
-        XCTAssertTrue(observabilityService.reportStub.wasNotCalled)
+        XCTAssertTrue(observabilityService.reportStub.wasCalled)
     }
 }
 

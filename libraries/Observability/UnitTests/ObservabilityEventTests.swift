@@ -83,9 +83,9 @@ final class ObservabilityEventTests: XCTestCase {
 
     // MARK: - humanVerificationOutcome event
 
-    let ios_core_human_verification_outcome_total_v1 = """
+    let ios_core_human_verification_outcome_total_v2 = """
     {
-        "$id": "https://proton.me/ios_core_human_verification_outcome_total_v1.schema.json",
+        "$id": "https://proton.me/ios_core_human_verification_outcome_total_v2.schema.json",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "title": "iOS Core human verification status",
         "description": "Metric for the status of human verification outcome",
@@ -103,7 +103,9 @@ final class ObservabilityEventTests: XCTestCase {
                         "enum": [
                             "successful",
                             "failed",
-                            "canceled"
+                            "canceled",
+                            "addressAlreadyTaken",
+                            "invalidVerificationCode"
                         ]
                     }
                 },
@@ -117,9 +119,9 @@ final class ObservabilityEventTests: XCTestCase {
     """
 
     func testHumanVerificationOutcomeEvent() throws {
-        try SuccessOrFailureOrCanceledStatus.allCases.forEach { status in
+        try HumanVerificationOutcomeStatus.allCases.forEach { status in
             let issues = try validatePayloadAccordingToSchema(event: .humanVerificationOutcomeTotal(status: status),
-                                                              schema: ios_core_human_verification_outcome_total_v1)
+                                                              schema: ios_core_human_verification_outcome_total_v2)
             XCTAssertEqual(issues, .noIssues)
         }
     }

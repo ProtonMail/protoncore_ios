@@ -215,7 +215,7 @@ final class ObservabilityEventTests: IntegrationTestCase {
     func test_humanVerification_everyStatus_isValid() {
         let expectation = expectation(description: #function)
         let service = setupService(expectation: expectation, interval: 1.0)
-        SuccessOrFailureOrCanceledStatus.allCases
+        HumanVerificationOutcomeStatus.allCases
             .map(ObservabilityEvent.humanVerificationOutcomeTotal(status:))
             .forEach { service.report($0) }
         wait(for: [expectation], timeout: expectationTimeout)
