@@ -77,14 +77,17 @@ class PlansDataSource: PlansDataSourceProtocol {
         guard let currentPlan = currentPlan else {
             return false
         }
+        
         // Special coupon that will extend subscription
-        if currentPlan.subscription.couponCode != nil {
+        if currentPlan.subscriptions.first?.renew ?? false {
             return true
         }
+        
         // Has credit that will be used for renewal
         if hasEnoughCreditToExtendSubscription(plan: plan) {
             return true
         }
+        
         return false
     }
     

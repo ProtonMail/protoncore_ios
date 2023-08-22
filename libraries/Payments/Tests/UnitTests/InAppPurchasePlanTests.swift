@@ -58,28 +58,12 @@ final class InAppPurchasePlanTests: XCTestCase {
 
     func test_init_with_currentPlanSubscription() {
         // Given
-        let subscription = CurrentPlan.Subscription(name: "core2023",
-            description: "",
-            ID: "",
-            parentMetaPlanID: "",
-            type: 1,
+        let subscription = CurrentPlan.Subscription(
+            vendorName: "ioscore_core2023_12_usd_non_renewing",
             title: "",
-            cycle: 12,
+            description: "",
             cycleDescription: "",
-            currency: "usd",
-            amount: 1,
-            offer: "",
-            quantity: 1,
-            periodStart: 1,
-            periodEnd: 1,
-            createTime: 1,
-            discount: 1,
-            renewDiscount: 1,
-            renewAmount: 1,
-            renew: 1,
-            external: 1,
-            entitlements: [],
-            decorations: []
+            entitlements: []
         )
         
         // When

@@ -45,64 +45,32 @@ import ProtonCoreTestingToolkit
 #endif
 
 final class CurrentPlanIntegrationTests: XCTestCase {
-    func test_currentPlan_parsesCorrectly() {
+    func test_currentPlan_parsesCorrectly() async throws {
         let api = PMAPIService.createAPIServiceWithoutSession(doh: DohMock() as DoHInterface, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         
         mockCurrentPlan()
 
-        let expectation = expectation(description: "test_currentPlan_parsesCorrectly")
         let request = CurrentPlanRequest(api: api)
         
-        Task {
-            do {
-                let currentPlanResponse = try request.awaitResponse(responseObject: CurrentPlanResponse())
-                guard let currentPlan = currentPlanResponse.currentPlan else {
-                    XCTFail("Expected: current plan")
-                    return
-                }
-                
-                expectation.fulfill()
-                
-                XCTAssertEqual(currentPlan.code, 1000)
-                XCTAssertEqual(currentPlan.subscription.name, "name")
-                XCTAssertEqual(currentPlan.subscription.description, "Current plan")
-                XCTAssertEqual(currentPlan.subscription.ID, "6opBd5UdUtY_RtEz...YA==")
-                XCTAssertEqual(currentPlan.subscription.parentMetaPlanID, "hUcV0_EeNw...g==")
-                XCTAssertEqual(currentPlan.subscription.type, 1)
-                XCTAssertEqual(currentPlan.subscription.title, "Visionary")
-                XCTAssertEqual(currentPlan.subscription.cycle, 12)
-                XCTAssertEqual(currentPlan.subscription.cycleDescription, "1 year")
-                XCTAssertEqual(currentPlan.subscription.currency, "USD")
-                XCTAssertEqual(currentPlan.subscription.amount, 28788)
-                XCTAssertEqual(currentPlan.subscription.offer, "default")
-                XCTAssertEqual(currentPlan.subscription.quantity, 1)
-                XCTAssertEqual(currentPlan.subscription.periodStart, 1665402858)
-                XCTAssertEqual(currentPlan.subscription.periodEnd, 1696938858)
-                XCTAssertEqual(currentPlan.subscription.createTime, 1570708458)
-                XCTAssertEqual(currentPlan.subscription.couponCode, "PROTONTEAM")
-                XCTAssertEqual(currentPlan.subscription.discount, -28788)
-                XCTAssertEqual(currentPlan.subscription.renewDiscount, -28788)
-                XCTAssertEqual(currentPlan.subscription.renewAmount, 0)
-                XCTAssertEqual(currentPlan.subscription.renew, 1)
-                XCTAssertEqual(currentPlan.subscription.external, 0)
-                
-                XCTAssertEqual(currentPlan.subscription.entitlements.count, 2)
-                XCTAssertEqual(currentPlan.subscription.entitlements[0], .storage(.init(type: "Storage", max: 1024, current: 512)))
-                XCTAssertEqual(currentPlan.subscription.entitlements[1], .description(.init(type: "Description", text: "500 GB storage", icon: "http://.../blah.svg", hint: "You win a lot of storage")))
-                
-                XCTAssertEqual(currentPlan.subscription.decorations.count, 2)
-                XCTAssertEqual(currentPlan.subscription.decorations[0].type, "Star")
-                XCTAssertEqual(currentPlan.subscription.decorations[0].icon, "<base64>")
-                XCTAssertEqual(currentPlan.subscription.decorations[1].type, "Border")
-                XCTAssertEqual(currentPlan.subscription.decorations[1].color, "#xxx")
-                
-                XCTAssertNil(currentPlan.upcomingSubscription)
-            } catch {
-                XCTFail("Expected: current plan")
-            }
+        let currentPlanResponse = try await request.response(responseObject: CurrentPlanResponse())
+        guard let currentPlan = currentPlanResponse.currentPlan else {
+            XCTFail("Expected: current plan")
+            return
         }
+                
+        XCTAssertEqual(currentPlan.subscriptions.first!.vendorName, "VendorName")
+        XCTAssertEqual(currentPlan.subscriptions.first!.title, "Title")
+        XCTAssertEqual(currentPlan.subscriptions.first!.description, "Description")
+        XCTAssertEqual(currentPlan.subscriptions.first!.cycleDescription, "CycleDescription")
+        XCTAssertEqual(currentPlan.subscriptions.first!.currency, "Currency")
+        XCTAssertEqual(currentPlan.subscriptions.first!.amount, 28788)
+        XCTAssertEqual(currentPlan.subscriptions.first!.periodEnd, 1696938858)
+        XCTAssertEqual(currentPlan.subscriptions.first!.renew, true)
+        XCTAssertEqual(currentPlan.subscriptions.first!.external, .apple)
         
-        wait(for: [expectation], timeout: 1)
+        XCTAssertEqual(currentPlan.subscriptions.first!.entitlements.count, 2)
+        XCTAssertEqual(currentPlan.subscriptions.first!.entitlements[0], .progress(.init(type: "progress", text: "19.55 MB of 15 GB", min: 0, max: 1024, current: 512)))
+        XCTAssertEqual(currentPlan.subscriptions.first!.entitlements[1], .description(.init(type: "description", text: "500 GB storage", iconName: "http://.../blah.svg", hint: "You win a lot of storage")))
     }
 }
 
