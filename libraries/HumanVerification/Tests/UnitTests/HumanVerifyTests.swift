@@ -1,5 +1,5 @@
 //
-//  HumanVerifyObservabilityTests.swift
+//  HumanVerifyTests.swift
 //  ProtonCore-HumanVerification-iOS-Unit-Tests - Created on 15.02.23.
 //
 //  Copyright (c) 2023 Proton Technologies AG

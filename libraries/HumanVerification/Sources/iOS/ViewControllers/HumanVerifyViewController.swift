@@ -297,8 +297,10 @@ extension HumanVerifyViewController: WKScriptMessageHandler {
                     if let code = error.responseCode {
                         switch code {
                         case APIErrorCode.humanVerificationAddressAlreadyTaken:
+                            ObservabilityEnv.report(.humanVerificationOutcomeTotal(status: .addressAlreadyTaken))
                             self?.delegate?.emailAddressAlreadyTakenWithError(code: code, description: error.localizedDescription)
                         case APIErrorCode.invalidVerificationCode:
+                            ObservabilityEnv.report(.humanVerificationOutcomeTotal(status: .invalidVerificationCode))
                             self?.delegate?.willReopenViewController()
                         default:
                             ObservabilityEnv.report(.humanVerificationOutcomeTotal(status: .failed))
