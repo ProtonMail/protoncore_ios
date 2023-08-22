@@ -219,9 +219,9 @@ final class ObservabilityEventTests: XCTestCase {
 
     // MARK: - planSelectionCheckout event
 
-    let ios_core_plan_selection_checkout_total_v1 = """
+    let ios_core_plan_selection_checkout_total_v2 = """
     {
-        "$id": "https://proton.me/ios_core_plan_selection_checkout_total_v1.schema.json",
+        "$id": "https://proton.me/ios_core_plan_selection_checkout_total_v2.schema.json",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "title": "iOS Core plan selection checkout status",
         "description": "Metric for the status of plan selection checkout",
@@ -238,7 +238,10 @@ final class ObservabilityEventTests: XCTestCase {
                         "type": "string",
                         "enum": [
                             "successful",
-                            "failed"
+                            "failed",
+                            "processingInProgress",
+                            "apiMightBeBlocked",
+                            "canceled"
                         ]
                     },
                     "plan": {
@@ -246,7 +249,8 @@ final class ObservabilityEventTests: XCTestCase {
                         "enum": [
                             "unlimited",
                             "plus",
-                            "free"
+                            "free",
+                            "paid"
                         ]
                     }
                 },
@@ -260,10 +264,10 @@ final class ObservabilityEventTests: XCTestCase {
     """
 
     func testPlanSelectionCheckoutEvent() throws {
-        try SuccessOrFailureStatus.allCases.forEach { status in
+        try PlanSelectionCheckoutStatus.allCases.forEach { status in
             try PlanName.allCases.forEach { plan in
                 let issues = try validatePayloadAccordingToSchema(event: .planSelectionCheckoutTotal(status: status, plan: plan),
-                                                                  schema: ios_core_plan_selection_checkout_total_v1)
+                                                                  schema: ios_core_plan_selection_checkout_total_v2)
                 XCTAssertEqual(issues, .noIssues)
             }
         }
