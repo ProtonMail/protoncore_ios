@@ -29,19 +29,14 @@ final class InAppPurchasePlanTests: XCTestCase {
     func test_init_with_availablePlanInstance() {
         // Given
         let instance = AvailablePlans.AvailablePlan.Instance(
-            month: 12,
             ID: "id",
+            cycle: 12,
             description: "description",
             periodEnd: 1,
             price: [],
             vendors: .init(
-                google: .init(
-                    ID: "bla",
-                    customerID: "bla"
-                ),
                 apple: .init(
-                    ID: "ioscore_core2023_12_usd_non_renewing",
-                    customerID: "bla"
+                    ID: "ioscore_core2023_12_usd_non_renewing"
                 )
             )
         )
