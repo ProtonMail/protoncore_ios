@@ -24,71 +24,62 @@
 
 var availablePlansResponse: [String: Any] {
     [
-        "Code": 1000,
         "Plans": [
             [
-                "Instances": [
-                    [
-                        "Month": 1,
-                        "ID": "id 1",
-                        "Description": "description 1",
-                        "PeriodEnd": 1691915780,
-                        "Price": [
-                            ["currency": "EUR", "current": 1, "default": 1]
-                        ],
-                        "Vendors": [
-                            "Google": [
-                                "ID": "google id 1",
-                                "CustomerID": "google customer id 1"
-                            ],
-                            "Apple": [
-                                "ID": "apple id 1",
-                                "CustomerID": "apple customer id 1"
-                            ],
-                        ]
-                    ]
-                ],
-                "Type": 1,
                 "Name": "name 1",
                 "Title": "title 1",
                 "State": 1,
-                "Entitlements": [
+                "Type": 1,
+                "Description": "description 1",
+                "Feature": 1,
+                "Layout": "default",
+                "Instances": [
                     [
-                        "Type": "type 1",
-                        "Text": "text 1",
-                        "Icon": "icon 1",
-                        "Hint": nil
+                        "ID": "id 1",
+                        "Cycle": 1,
+                        "Description": "description 1",
+                        "PeriodEnd": 1691915780,
+                        "Price": [
+                            ["current": 1, "default": 1]
+                        ],
+                        "Vendors": [
+                            "Apple": [
+                                "ID": "apple id 1"
+                            ],
+                        ]
                     ]
                 ],
-                "Offers": [
+                "Entitlements": [
                     [
-                        "Name": "name 1",
-                        "StartTime": 1584763447,
-                        "EndTime": 1700063447,
-                        "Months": 1,
-                        "Price": [
-                            ["Currency": "USD", "Current": 1],
-                            ["Currency": "EUR", "Current": 2],
-                            ["Currency": "CHF", "Current": 3]
-                        ]
+                        "Type": "description",
+                        "IconName": "icon 1",
+                        "Text": "text 1",
+                        "Hint": "hint"
                     ]
                 ],
                 "Decorations": [
                     [
-                        "Type": "Star",
+                        "Type": "star",
                         "Icon": "<base64>"
                     ],
                     [
-                        "Type": "Border",
+                        "Type": "border",
                         "Color": "#xxx"
                     ]
                 ]
             ],
             [
+                "Name": "name 2",
+                "Title": "title 2",
+                "State": 2,
+                "Type": 2,
+                "Description": "description 2",
+                "Feature": 2,
+                "Layout": "default",
                 "Instances": [
                     [
-                        "Month": 2,
                         "ID": "id 2",
+                        "Cycle": 2,
                         "Description": "description 2",
                         "PeriodEnd": 1691915780,
                         "Price": [
@@ -96,16 +87,8 @@ var availablePlansResponse: [String: Any] {
                         ]
                     ]
                 ],
-                "Type": 2,
-                "Name": "name 2",
-                "Title": "title 2",
-                "State": 2,
                 "Entitlements": [],
-                "Decorations": [
-                    [
-                        "Type": "Star"
-                    ]
-                ]
+                "Decorations": []
             ]
         ]
     ]
@@ -113,84 +96,65 @@ var availablePlansResponse: [String: Any] {
 
 var availablePlansToCompare: AvailablePlans {
     .init(
-        code: 1000,
         plans: [
             .init(
-                instances: [
-                    .init(
-                        month: 1,
-                        ID: "id 1",
-                        description: "description 1",
-                        periodEnd: 1691915780,
-                        price: [
-                            .init(currency: "EUR", current: 1, default: 1)
-                        ],
-                        vendors: .init(
-                            google: .init(
-                                ID: "google id 1",
-                                customerID: "google customer id 1"
-                            ),
-                            apple: .init(
-                                ID: "apple id 1",
-                                customerID: "apple customer id 1"
-                            )
-                        )
-                    )
-                ],
-                type: 1,
                 name: "name 1",
                 title: "title 1",
                 state: 1,
-                entitlements: [
+                type: 1,
+                description: "description 1",
+                feature: 1,
+                layout: "default",
+                instances: [
                     .init(
-                        type: "type 1",
-                        text: "text 1",
-                        icon: "icon 1"
+                        ID: "id 1",
+                        cycle: 1,
+                        description: "description 1",
+                        periodEnd: 1691915780,
+                        price: [.init(current: 1, default: 1)],
+                        vendors: .init(apple: .init(ID: "apple id 1"))
                     )
                 ],
-                offers: [
-                    .init(
-                        name: "name 1",
-                        startTime: 1584763447,
-                        endTime: 1700063447,
-                        months: 1,
-                        price: [
-                            .init(currency: "USD", current: 1),
-                            .init(currency: "EUR", current: 2),
-                            .init(currency: "CHF", current: 3)
-                        ]
+                entitlements: [
+                    .description(
+                        .init(
+                            type: "description",
+                            iconName: "icon 1",
+                            text: "text 1",
+                            hint: "hint"
+                        )
                     )
                 ],
                 decorations: [
-                    .init(
-                        type: "Star",
+                    .star(.init(
+                        type: "star",
                         icon: "<base64>"
-                    ),.init(
-                        type: "Border",
+                    )),
+                    .border(.init(
+                        type: "border",
                         color: "#xxx"
-                    )
+                    ))
                 ]
             ),
             .init(
-                instances: [
-                    .init(
-                        month: 2,
-                        ID: "id 2",
-                        description: "description 2",
-                        periodEnd: 1691915780,
-                        price: [
-                            .init(currency: "USD", current: 2, default: 2)
-                        ]
-                    )
-                ],
-                type: 2,
                 name: "name 2",
                 title: "title 2",
                 state: 2,
+                type: 2,
+                description: "description 2",
+                feature: 2,
+                layout: "default",
+                instances: [
+                    .init(
+                        ID: "id 2",
+                        cycle: 2,
+                        description: "description 2",
+                        periodEnd: 1691915780,
+                        price: [.init(current: 2, default: 2)]
+                    )
+                ],
                 entitlements: [],
-                decorations: [
-                    .init(type: "Star")
-                ]
+                decorations: []
             )
         ]
     )

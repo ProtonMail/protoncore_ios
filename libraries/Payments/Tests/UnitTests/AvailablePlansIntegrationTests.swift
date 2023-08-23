@@ -55,7 +55,7 @@ final class AvailablePlansIntegrationTests: XCTestCase {
         
         Task {
             do {
-                let availablePlansResponse = try request.awaitResponse(responseObject: AvailablePlansResponse())
+                let availablePlansResponse = try await request.response(responseObject: AvailablePlansResponse())
                 guard let availablePlans = availablePlansResponse.availablePlans else {
                     XCTFail("Expected: available plans")
                     return
@@ -63,25 +63,22 @@ final class AvailablePlansIntegrationTests: XCTestCase {
                 
                 expectation.fulfill()
                 
-                XCTAssertEqual(availablePlans.code, 1000)
                 XCTAssertEqual(availablePlans.plans.count, 1)
-                XCTAssertEqual(availablePlans.plans[0].type, 1)
                 XCTAssertEqual(availablePlans.plans[0].name, "mailpro2022")
                 XCTAssertEqual(availablePlans.plans[0].title, "Mail Essentials")
                 XCTAssertEqual(availablePlans.plans[0].state, 1)
+                XCTAssertEqual(availablePlans.plans[0].type, 1)
+                XCTAssertEqual(availablePlans.plans[0].description, "Description")
+                XCTAssertEqual(availablePlans.plans[0].feature, 1)
+                XCTAssertEqual(availablePlans.plans[0].layout, "default")
+                XCTAssertEqual(availablePlans.plans[0].instances[0].vendors?.apple.ID, "apple_some_random_id")
+                XCTAssertEqual(availablePlans.plans[0].instances[0].ID, "hUcV0_EeNwUmXA6EoyNrtO-Z...==")
+                XCTAssertEqual(availablePlans.plans[0].instances[0].cycle, 1)
+                XCTAssertEqual(availablePlans.plans[0].instances[0].description, "for 1 month")
+                XCTAssertEqual(availablePlans.plans[0].instances[0].price[0].current, 499)
+                XCTAssertEqual(availablePlans.plans[0].instances[0].price[0].default, 499)
                 XCTAssertEqual(availablePlans.plans[0].entitlements.count, 1)
-                XCTAssertEqual(availablePlans.plans[0].entitlements[0].type, "description")
-                XCTAssertEqual(availablePlans.plans[0].entitlements[0].text, "text")
-                XCTAssertEqual(availablePlans.plans[0].entitlements[0].icon, "<base64>")
-                XCTAssertNil(availablePlans.plans[0].entitlements[0].hint)
-                XCTAssertEqual(availablePlans.plans[0].offers?.count, 1)
-                XCTAssertEqual(availablePlans.plans[0].offers?[0].name, "offer name")
-                XCTAssertEqual(availablePlans.plans[0].offers?[0].startTime, 3412324)
-                XCTAssertEqual(availablePlans.plans[0].offers?[0].endTime, 3594124)
-                XCTAssertEqual(availablePlans.plans[0].offers?[0].months, 1)
-                XCTAssertEqual(availablePlans.plans[0].offers?[0].price.count, 1)
-                XCTAssertEqual(availablePlans.plans[0].offers?[0].price[0].currency, "USD")
-                XCTAssertEqual(availablePlans.plans[0].offers?[0].price[0].current, 123)
+                XCTAssertEqual(availablePlans.plans[0].entitlements[0], .description(.init(type: "description", iconName: "tick", text: "text", hint: "hint")))
             } catch {
                 XCTFail("Expected: available plans")
             }
