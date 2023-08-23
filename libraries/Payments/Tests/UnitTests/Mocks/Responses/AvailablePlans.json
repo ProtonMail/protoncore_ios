@@ -6,7 +6,7 @@
         "State": 1,
         "Type": 1,
         "Description": "Description",
-        "Feature": 1,
+        "Features": 1,
         "Layout": "default",
         "Instances": [
             {

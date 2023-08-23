@@ -1356,13 +1356,32 @@ add(
                         .services,
                         .testingToolkitTestData,
                         .testingToolkitUnitTestsPayments,
-                        .testingToolkitUnitTestsServices
+                        .testingToolkitUnitTestsServices,
+                        .ohhttpStubs
                     ],
                     path: "libraries/Payments/Tests/UnitTests",
                     resources: [
                         .process("AppStoreLocalTest"),
                         .process("Mocks/Responses")
                     ],
+                    swiftSettings: .spm),
+
+        .testTarget(name: .payments + "IntegrationTests",
+                    dependencies: [
+                        .authentication,
+                        .challenge,
+                        .dataModel,
+                        .doh,
+                        .environment,
+                        .log,
+                        .login,
+                        .payments,
+                        .services,
+                        .testingToolkitTestData,
+                        .testingToolkitUnitTestsPayments,
+                        .testingToolkitUnitTestsServices
+                    ],
+                    path: "libraries/Payments/Tests/IntegrationTests",
                     swiftSettings: .spm),
         
         .testTarget(name: .payments + "LocalizationTests",
