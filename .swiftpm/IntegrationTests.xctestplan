@@ -59,6 +59,13 @@
         "identifier" : "ProtonCoreServicesIntegrationTests",
         "name" : "ProtonCoreServicesIntegrationTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCorePaymentsIntegrationTests",
+        "name" : "ProtonCorePaymentsIntegrationTests"
+      }
     }
   ],
   "version" : 1

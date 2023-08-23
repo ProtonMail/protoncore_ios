@@ -25,40 +25,16 @@ import ProtonCoreTestingToolkitUnitTestsCore
 #endif
 import StoreKit
 
-let inAppPurchaseList: Set<String> = Set([
-    "test1", "test2", "test3", "test4", "test5"
-].map { "ios_\($0)_12_abc_non_renewing" })
+public class SKRequestMock: SKProductsRequest {
 
-let pricesList: [String: String] = ["test1": "1", "test2": "2", "test3": "3", "test4": "4", "test5": "5"]
+    @PropertyStub(\SKRequestMock.delegate, initialGet: nil) public var delegateStub
+    public override var delegate: SKProductsRequestDelegate? {
+        get { delegateStub() }
+        set { delegateStub(newValue) }
+    }
 
-class SKRequestMock: SKProductsRequest {
-    let productIdentifiers: Set<String>
-    
-    var locale = Locale(identifier: "en_US@currency=USDs")
-    var prices: [String: String] = pricesList
-    
-    override init(productIdentifiers: Set<String> = inAppPurchaseList) {
-        self.productIdentifiers = productIdentifiers
-        super.init()
-    }
-    
-    func setupPrices(locale: Locale = Locale(identifier: "en_US@currency=USDs"), prices: [String: String]) {
-        self.locale = locale
-        self.prices = prices
-    }
-    
-    override func start() {
-        var products: [SKProduct] = []
-        productIdentifiers.forEach {
-            var price = "60"
-            if prices.count == productIdentifiers.count {
-                price = prices[$0] ?? "60"
-            }
-            products += [SKProduct(identifier: $0, price: price, priceLocale: locale)]
-        }
-        let response = SKProductsResponseMock(products: products)
-        delegate?.productsRequest(self, didReceive: response)
-    }
+    @FuncStub(SKRequestMock.start) public var startStub
+    public override func start() { startStub() }
 }
 
 public extension SKProduct {

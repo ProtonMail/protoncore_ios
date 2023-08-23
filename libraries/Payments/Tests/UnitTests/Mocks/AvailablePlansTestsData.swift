@@ -31,7 +31,7 @@ var availablePlansResponse: [String: Any] {
                 "State": 1,
                 "Type": 1,
                 "Description": "description 1",
-                "Feature": 1,
+                "Features": 1,
                 "Layout": "default",
                 "Instances": [
                     [
@@ -74,7 +74,7 @@ var availablePlansResponse: [String: Any] {
                 "State": 2,
                 "Type": 2,
                 "Description": "description 2",
-                "Feature": 2,
+                "Features": 2,
                 "Layout": "default",
                 "Instances": [
                     [
@@ -103,7 +103,7 @@ var availablePlansToCompare: AvailablePlans {
                 state: 1,
                 type: 1,
                 description: "description 1",
-                feature: 1,
+                features: 1,
                 layout: "default",
                 instances: [
                     .init(
@@ -142,7 +142,7 @@ var availablePlansToCompare: AvailablePlans {
                 state: 2,
                 type: 2,
                 description: "description 2",
-                feature: 2,
+                features: 2,
                 layout: "default",
                 instances: [
                     .init(

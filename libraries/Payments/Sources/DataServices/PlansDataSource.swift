@@ -44,9 +44,11 @@ class PlansDataSource: PlansDataSourceProtocol {
     var paymentMethods: [PaymentMethod]?
     
     private let apiService: APIService
+    private let storeKitDataSource: StoreKitDataSourceProtocol
     
-    init(apiService: APIService) {
+    init(apiService: APIService, storeKitDataSource: StoreKitDataSourceProtocol) {
         self.apiService = apiService
+        self.storeKitDataSource = storeKitDataSource
     }
     
     func fetchIAPAvailability() async throws {
@@ -58,7 +60,15 @@ class PlansDataSource: PlansDataSourceProtocol {
     func fetchAvailablePlans() async throws {
         let availablePlansRequest = AvailablePlansRequest(api: apiService)
         let availablePlansResponse = try await availablePlansRequest.response(responseObject: AvailablePlansResponse())
-        availablePlans = availablePlansResponse.availablePlans
+        let backendAvailablePlans = availablePlansResponse.availablePlans
+
+        guard let backendAvailablePlans else {
+            availablePlans = nil
+            return
+        }
+
+        try await storeKitDataSource.fetchAvailableProducts(availablePlans: backendAvailablePlans)
+        availablePlans = storeKitDataSource.filterAccordingToAvailableProducts(availablePlans: backendAvailablePlans)
     }
     
     func fetchCurrentPlan() async throws {

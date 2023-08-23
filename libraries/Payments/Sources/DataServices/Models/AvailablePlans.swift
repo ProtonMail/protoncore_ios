@@ -28,12 +28,12 @@ public struct AvailablePlans: Decodable, Equatable {
     public var plans: [AvailablePlan]
     
     public struct AvailablePlan: Decodable, Equatable {
-        var name: String
+        var name: String?
         public var title: String
         var state: Int
         var type: Int?
-        public var description: String
-        var feature: Int
+        public var description: String?
+        var features: Int?
         var layout: String
         public var instances: [Instance]
         public var entitlements: [Entitlement]
@@ -61,6 +61,11 @@ public struct AvailablePlans: Decodable, Equatable {
                 
                 public struct Vendor: Decodable, Equatable {
                     public var ID: String
+//                    public var ID: String { plans._12 }
+//                    public var plans: TemporaryWorkaroundUntilAPIIsFixed
+//                    public struct TemporaryWorkaroundUntilAPIIsFixed: Decodable, Equatable {
+//                        var _12: String
+//                    }
                 }
             }
         }
