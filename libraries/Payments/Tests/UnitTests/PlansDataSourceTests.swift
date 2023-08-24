@@ -24,18 +24,21 @@ import XCTest
 
 #if canImport(ProtonCoreTestingToolkitUnitTestsServices)
 import ProtonCoreTestingToolkitUnitTestsServices
+import ProtonCoreTestingToolkitUnitTestsPayments
 #else
-import ProtonCoreTestingToolkitTestData
+import ProtonCoreTestingToolkit
 #endif
 
 final class PlansDataSourceTests: XCTestCase {
     var sut: PlansDataSource!
     var apiServiceMock: APIServiceMock!
+    var storeKitDataSourceMock: StoreKitDataSourceMock!
     
     override func setUp() {
         super.setUp()
         apiServiceMock = .init()
-        sut = .init(apiService: apiServiceMock)
+        storeKitDataSourceMock = .init()
+        sut = .init(apiService: apiServiceMock, storeKitDataSource: storeKitDataSourceMock)
     }
     
     // MARK: - fetchIAPAvailability
@@ -144,12 +147,36 @@ final class PlansDataSourceTests: XCTestCase {
         apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(availablePlansResponse))
         }
-        
+        storeKitDataSourceMock.filterAccordingToAvailableProductsStub.bodyIs { _, plans in
+            plans
+        }
+
         // When
         try await sut.fetchAvailablePlans()
-        
+
         // Then
         XCTAssertEqual(sut.availablePlans, availablePlansToCompare)
+        XCTAssertTrue(storeKitDataSourceMock.fetchAvailableProductsForPlansStub.wasCalledExactlyOnce)
+        XCTAssertTrue(storeKitDataSourceMock.filterAccordingToAvailableProductsStub.wasCalledExactlyOnce)
+    }
+
+    func test_fetchAvailablePlans_success_filterPlans() async throws {
+        // Given
+        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(availablePlansResponse))
+        }
+        storeKitDataSourceMock.filterAccordingToAvailableProductsStub.bodyIs { _, plans in
+            AvailablePlans(plans: Array(plans.plans.dropFirst()))
+        }
+        let filteredPlansToCompare = AvailablePlans(plans: Array(availablePlansToCompare.plans.dropFirst()))
+
+        // When
+        try await sut.fetchAvailablePlans()
+
+        // Then
+        XCTAssertEqual(sut.availablePlans, filteredPlansToCompare)
+        XCTAssertTrue(storeKitDataSourceMock.fetchAvailableProductsForPlansStub.wasCalledExactlyOnce)
+        XCTAssertTrue(storeKitDataSourceMock.filterAccordingToAvailableProductsStub.wasCalledExactlyOnce)
     }
     
     func test_fetchAvailablePlans_fails() async throws {
@@ -163,6 +190,8 @@ final class PlansDataSourceTests: XCTestCase {
         
         // Then
         XCTAssertNil(sut.availablePlans)
+        XCTAssertTrue(storeKitDataSourceMock.fetchAvailableProductsForPlansStub.wasNotCalled)
+        XCTAssertTrue(storeKitDataSourceMock.filterAccordingToAvailableProductsStub.wasNotCalled)
     }
     
     func test_fetchAvailablePlans_throws() async throws {
@@ -176,7 +205,8 @@ final class PlansDataSourceTests: XCTestCase {
             try await sut.fetchAvailablePlans()
             XCTFail("should throw an error")
         } catch {
-            // successfully thrown an error
+            XCTAssertTrue(storeKitDataSourceMock.fetchAvailableProductsForPlansStub.wasNotCalled)
+            XCTAssertTrue(storeKitDataSourceMock.filterAccordingToAvailableProductsStub.wasNotCalled)
         }
     }
     
