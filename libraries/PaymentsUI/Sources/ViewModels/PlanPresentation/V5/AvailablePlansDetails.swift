@@ -27,7 +27,7 @@ import ProtonCorePayments
 struct AvailablePlansDetails {
     let iapID: String
     let title: String // "VPN Plus"
-    let description: String // "Your privacy are our priority."
+    let description: String? // "Your privacy are our priority."
     let cycleDescription: String? // "for 1 year"
     let price: String // "$71.88"
     let decorations: [Decoration]

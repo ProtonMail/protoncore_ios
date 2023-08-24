@@ -22,17 +22,15 @@
 import Foundation
 #if canImport(ProtonCoreTestingToolkitUnitTestsCore)
 import ProtonCoreTestingToolkitUnitTestsCore
+#else
+import ProtonCoreTestingToolkit
 #endif
 import StoreKit
 
-class SKProductsResponseMock: SKProductsResponse {
-    var mockProducts: [SKProduct]
+public class SKProductsResponseMock: SKProductsResponse {
+    @PropertyStub(\SKProductsResponse.products, initialGet: []) public var productsStub
+    override public var products: [SKProduct] { productsStub() }
 
-    init (products: [SKProduct]) {
-        self.mockProducts = products
-    }
-    
-    override var products: [SKProduct] {
-        return mockProducts
-    }
+    @PropertyStub(\SKProductsResponse.invalidProductIdentifiers, initialGet: []) public var invalidProductIdentifiersStub
+    override public var invalidProductIdentifiers: [String] { invalidProductIdentifiersStub() }
 }

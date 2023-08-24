@@ -69,7 +69,7 @@ final class AvailablePlansIntegrationTests: XCTestCase {
                 XCTAssertEqual(availablePlans.plans[0].state, 1)
                 XCTAssertEqual(availablePlans.plans[0].type, 1)
                 XCTAssertEqual(availablePlans.plans[0].description, "Description")
-                XCTAssertEqual(availablePlans.plans[0].feature, 1)
+                XCTAssertEqual(availablePlans.plans[0].features, 1)
                 XCTAssertEqual(availablePlans.plans[0].layout, "default")
                 XCTAssertEqual(availablePlans.plans[0].instances[0].vendors?.apple.ID, "apple_some_random_id")
                 XCTAssertEqual(availablePlans.plans[0].instances[0].ID, "hUcV0_EeNwUmXA6EoyNrtO-Z...==")
