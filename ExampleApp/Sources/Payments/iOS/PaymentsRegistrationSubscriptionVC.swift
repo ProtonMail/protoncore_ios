@@ -107,9 +107,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
     }
     
     private func setupStoreKit(completion: @escaping (Error?) -> Void) {
-        payments.storeKitManager.delegate = self
-        payments.storeKitManager.subscribeToPaymentQueue()
-        payments.storeKitManager.updateAvailableProductsList(completion: completion)
+        payments.activate(delegate: self, storeKitProductsFetched: completion)
     }
     
     @IBAction func onPurchaseSubscriptionButtonTap(_ sender: Any) {
