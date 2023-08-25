@@ -252,9 +252,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
     }
     
     private func setupStoreKit(completion: @escaping (Error?) -> Void) {
-        payments.storeKitManager.delegate = self
-        payments.storeKitManager.subscribeToPaymentQueue()
-        payments.storeKitManager.updateAvailableProductsList(completion: completion)
+        payments.activate(delegate: self, storeKitProductsFetched: completion)
     }
     
     private func clearData() {
