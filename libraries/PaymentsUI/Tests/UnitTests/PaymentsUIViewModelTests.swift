@@ -205,7 +205,6 @@ final class PaymentsUIViewModelTests: XCTestCase {
         
         try await sut.fetchPlans()
         
-        XCTAssertEqual(sut.currentPlan?.storeKitProductId, "ios_vpnplus_12_usd_non_renewing")
         XCTAssertEqual(sut.currentPlan?.details.cycleDescription, "for 12 months")
         XCTAssertEqual(sut.currentPlan?.details.description, "nice vpn")
         XCTAssertEqual(sut.currentPlan?.details.title, "VPN Plus")
@@ -1406,7 +1405,6 @@ final class PaymentsUIViewModelTests: XCTestCase {
         try await sut.fetchCurrentPlan()
         
         // Then
-        XCTAssertEqual(sut.currentPlan?.storeKitProductId, "ios_vpnplus_12_usd_non_renewing")
         XCTAssertEqual(sut.currentPlan?.details.cycleDescription, "for 12 months")
         XCTAssertEqual(sut.currentPlan?.details.description, "nice vpn")
         XCTAssertEqual(sut.currentPlan?.details.title, "VPN Plus")
@@ -1491,7 +1489,6 @@ final class PaymentsUIViewModelTests: XCTestCase {
     
     func test_fetchIAPAvailability_callsPlanDataSource() async throws {
         // Given
-        // Given
         let storeKitManager = StoreKitManagerMock()
         storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
         
@@ -1519,7 +1516,6 @@ final class PaymentsUIViewModelTests: XCTestCase {
     
     func test_fetchPaymentMethods_callsPlanDataSource() async throws {
         // Given
-        // Given
         let storeKitManager = StoreKitManagerMock()
         storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
         
@@ -1541,6 +1537,36 @@ final class PaymentsUIViewModelTests: XCTestCase {
         
         // Then
         XCTAssertTrue(planDataSource.fetchPaymentMethodsWasCalled)
+    }
+    
+    // MARK: dynamicPlans
+    
+    func test_dynamicPlans_isWellComposed() async throws {
+        // Given
+        let storeKitManager = StoreKitManagerMock()
+        storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+        
+        let planDataSource = PlansDataSourceMock()
+        let sut = PaymentsUIViewModel(
+            mode: .current,
+            storeKitManager: storeKitManager,
+            servicePlan: ServicePlanDataServiceMock(),
+            planDataSource: planDataSource,
+            shownPlanNames: ["vpnplus", "vpnbasic", "free"],
+            clientApp: .mail,
+            customPlansDescription: [:],
+            planRefreshHandler:  { _ in XCTFail() },
+            extendSubscriptionHandler: { XCTFail() }
+        )
+        
+        // When
+        try await sut.fetchCurrentPlan()
+        try await sut.fetchAvailablePlans()
+        
+        // Then
+        XCTAssertEqual(sut.dynamicPlans.count, 2)
+        XCTAssertEqual(sut.dynamicPlans[0].count, 1)
+        XCTAssertEqual(sut.dynamicPlans[1].count, 2)
     }
 }
 
@@ -1591,8 +1617,7 @@ private final class PlansDataSourceMock: PlansDataSourceProtocol {
     
     func fetchCurrentPlan() async throws {
         currentPlan = .init(subscriptions: [
-            .init(vendorName: "ios_vpnplus_12_usd_non_renewing",
-                  title: "VPN Plus",
+            .init(title: "VPN Plus",
                   description: "nice vpn",
                   cycleDescription: "for 12 months",
                   entitlements: []

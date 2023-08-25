@@ -1,7 +1,6 @@
 {
     "Code": 1000,
     "Subscriptions": [{
-        "VendorName": "VendorName",
         "Title": "Title",
         "Description": "Description",
         "CycleDescription": "CycleDescription",
