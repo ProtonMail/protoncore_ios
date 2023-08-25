@@ -252,4 +252,32 @@ final class PlansDataSourceTests: XCTestCase {
             // successfully thrown an error
         }
     }
+    
+    // MARK: - willRenewAutomatically
+    
+    func test_willRenewAutomatically_isTrue() async throws {
+        // Given
+        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(currentPlanResponse))
+        }
+        
+        // When
+        try await sut.fetchCurrentPlan()
+        
+        // Then
+        XCTAssertTrue(sut.willRenewAutomatically)
+    }
+    
+    func test_willRenewAutomatically_isFalse() async throws {
+        // Given
+        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success([:]))
+        }
+        
+        // When
+        try await sut.fetchCurrentPlan()
+        
+        // Then
+        XCTAssertFalse(sut.willRenewAutomatically)
+    }
 }
