@@ -45,6 +45,38 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan = ServicePlanDataServiceMock()
     }
 
+    // MARK: - Signup mode
+    
+    func test_fetchPlans_signupMode() async throws {
+        let plansDataSource = PlansDataSourceMock()
+        let storeKitManager = StoreKitManagerMock()
+        storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+        let sut = PaymentsUIViewModel(
+            mode: .signup,
+            storeKitManager: storeKitManager,
+            servicePlan: servicePlan,
+            planDataSource: plansDataSource,
+            shownPlanNames: ["plus"],
+            clientApp: .mail,
+            customPlansDescription: [:],
+            planRefreshHandler: { _ in XCTFail() },
+            extendSubscriptionHandler: { XCTFail() }
+        )
+        
+        try await sut.fetchPlans()
+        
+        XCTAssertNil(sut.currentPlan)
+        XCTAssertEqual(sut.availablePlans?.count, 2)
+        XCTAssertEqual(sut.availablePlans?[0].storeKitProductId, "ios_passplus_12_usd_non_renewing")
+        XCTAssertEqual(sut.availablePlans?[0].details.cycleDescription, "for 12 months")
+        XCTAssertEqual(sut.availablePlans?[0].details.description, "plan description")
+        XCTAssertEqual(sut.availablePlans?[0].details.title, "Pass Plus")
+        XCTAssertEqual(sut.availablePlans?[1].storeKitProductId, "ios_passplus_24_usd_non_renewing")
+        XCTAssertEqual(sut.availablePlans?[1].details.cycleDescription, "for 24 months")
+        XCTAssertEqual(sut.availablePlans?[1].details.description, "plan description")
+        XCTAssertEqual(sut.availablePlans?[1].details.title, "Pass Plus")
+    }
+    
     func testFetchSignupPlansNoBackendFetch() {
         let expectation = self.expectation(description: "Success completion block called")
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_plus_12_usd_non_renewing"]
@@ -155,6 +187,39 @@ final class PaymentsUIViewModelTests: XCTestCase {
 
     // MARK: Current plan mode
 
+    func test_fetchPlans_currentMode() async throws {
+        let plansDataSource = PlansDataSourceMock()
+        let storeKitManager = StoreKitManagerMock()
+        storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+        let sut = PaymentsUIViewModel(
+            mode: .current,
+            storeKitManager: storeKitManager,
+            servicePlan: servicePlan,
+            planDataSource: plansDataSource,
+            shownPlanNames: ["plus"],
+            clientApp: .mail,
+            customPlansDescription: [:],
+            planRefreshHandler: { _ in XCTFail() },
+            extendSubscriptionHandler: { XCTFail() }
+        )
+        
+        try await sut.fetchPlans()
+        
+        XCTAssertEqual(sut.currentPlan?.storeKitProductId, "ios_vpnplus_12_usd_non_renewing")
+        XCTAssertEqual(sut.currentPlan?.details.cycleDescription, "for 12 months")
+        XCTAssertEqual(sut.currentPlan?.details.description, "nice vpn")
+        XCTAssertEqual(sut.currentPlan?.details.title, "VPN Plus")
+        XCTAssertEqual(sut.availablePlans?.count, 2)
+        XCTAssertEqual(sut.availablePlans?[0].storeKitProductId, "ios_passplus_12_usd_non_renewing")
+        XCTAssertEqual(sut.availablePlans?[0].details.cycleDescription, "for 12 months")
+        XCTAssertEqual(sut.availablePlans?[0].details.description, "plan description")
+        XCTAssertEqual(sut.availablePlans?[0].details.title, "Pass Plus")
+        XCTAssertEqual(sut.availablePlans?[1].storeKitProductId, "ios_passplus_24_usd_non_renewing")
+        XCTAssertEqual(sut.availablePlans?[1].details.cycleDescription, "for 24 months")
+        XCTAssertEqual(sut.availablePlans?[1].details.description, "plan description")
+        XCTAssertEqual(sut.availablePlans?[1].details.title, "Pass Plus")
+    }
+    
     func testFetchCurrentPlansNoBackendFetch() {
         let expectation = self.expectation(description: "Success completion block called")
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_plus_12_usd_non_renewing"]
@@ -303,6 +368,36 @@ final class PaymentsUIViewModelTests: XCTestCase {
 
     // MARK: Update plan mode
 
+    func test_fetchPlan_updateMode() async throws {
+        let plansDataSource = PlansDataSourceMock()
+        let storeKitManager = StoreKitManagerMock()
+        storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+        let sut = PaymentsUIViewModel(
+            mode: .update,
+            storeKitManager: storeKitManager,
+            servicePlan: servicePlan,
+            planDataSource: plansDataSource,
+            shownPlanNames: ["plus"],
+            clientApp: .mail,
+            customPlansDescription: [:],
+            planRefreshHandler: { _ in XCTFail() },
+            extendSubscriptionHandler: { XCTFail() }
+        )
+        
+        try await sut.fetchPlans()
+        
+        XCTAssertNil(sut.currentPlan)
+        XCTAssertEqual(sut.availablePlans?.count, 2)
+        XCTAssertEqual(sut.availablePlans?[0].storeKitProductId, "ios_passplus_12_usd_non_renewing")
+        XCTAssertEqual(sut.availablePlans?[0].details.cycleDescription, "for 12 months")
+        XCTAssertEqual(sut.availablePlans?[0].details.description, "plan description")
+        XCTAssertEqual(sut.availablePlans?[0].details.title, "Pass Plus")
+        XCTAssertEqual(sut.availablePlans?[1].storeKitProductId, "ios_passplus_24_usd_non_renewing")
+        XCTAssertEqual(sut.availablePlans?[1].details.cycleDescription, "for 24 months")
+        XCTAssertEqual(sut.availablePlans?[1].details.description, "plan description")
+        XCTAssertEqual(sut.availablePlans?[1].details.title, "Pass Plus")
+    }
+    
     func testFetchUpdatePlansNoBackendFetch() {
         let expectation = self.expectation(description: "Success completion block called")
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
@@ -1288,6 +1383,227 @@ final class PaymentsUIViewModelTests: XCTestCase {
         if case .withoutPlansToBuy = out.footerType { } else { XCTFail() }
     }
 
+    // MARK: - fetchCurrentPlan
+    
+    func test_fetchCurrentPlan_success() async throws {
+        // Given
+        let storeKitManager = StoreKitManagerMock()
+        storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+        
+        let sut = PaymentsUIViewModel(
+            mode: .current,
+            storeKitManager: storeKitManager,
+            servicePlan: ServicePlanDataServiceMock(),
+            planDataSource: PlansDataSourceMock(),
+            shownPlanNames: ["vpnplus", "vpnbasic", "free"],
+            clientApp: .mail,
+            customPlansDescription: [:],
+            planRefreshHandler:  { _ in XCTFail() },
+            extendSubscriptionHandler: { XCTFail() }
+        )
+        
+        // When
+        try await sut.fetchCurrentPlan()
+        
+        // Then
+        XCTAssertEqual(sut.currentPlan?.storeKitProductId, "ios_vpnplus_12_usd_non_renewing")
+        XCTAssertEqual(sut.currentPlan?.details.cycleDescription, "for 12 months")
+        XCTAssertEqual(sut.currentPlan?.details.description, "nice vpn")
+        XCTAssertEqual(sut.currentPlan?.details.title, "VPN Plus")
+    }
+    
+    func test_fetchCurrentPlan_withoutPlanDataSource_fails() async throws {
+        // Given
+        let sut = PaymentsUIViewModel(
+            mode: .current,
+            storeKitManager: StoreKitManagerMock(),
+            servicePlan: ServicePlanDataServiceMock(),
+            planDataSource: nil,
+            shownPlanNames: ["vpnplus", "vpnbasic", "free"],
+            clientApp: .mail,
+            customPlansDescription: [:],
+            planRefreshHandler:  { _ in XCTFail() },
+            extendSubscriptionHandler: { XCTFail() }
+        )
+        
+        // When
+        try await sut.fetchCurrentPlan()
+        
+        // Then
+        XCTAssertNil(sut.currentPlan)
+    }
+    
+    // MARK: - fetchAvailablePlans
+    
+    func test_fetchAvailablePlans_success() async throws {
+        // Given
+        let storeKitManager = StoreKitManagerMock()
+        storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+        
+        let sut = PaymentsUIViewModel(
+            mode: .current,
+            storeKitManager: storeKitManager,
+            servicePlan: ServicePlanDataServiceMock(),
+            planDataSource: PlansDataSourceMock(),
+            shownPlanNames: ["vpnplus", "vpnbasic", "free"],
+            clientApp: .mail,
+            customPlansDescription: [:],
+            planRefreshHandler:  { _ in XCTFail() },
+            extendSubscriptionHandler: { XCTFail() }
+        )
+        
+        // When
+        try await sut.fetchAvailablePlans()
+        
+        // Then
+        XCTAssertEqual(sut.availablePlans?[0].storeKitProductId, "ios_passplus_12_usd_non_renewing")
+        XCTAssertEqual(sut.availablePlans?[0].details.cycleDescription, "for 12 months")
+        XCTAssertEqual(sut.availablePlans?[0].details.description, "plan description")
+        XCTAssertEqual(sut.availablePlans?[0].details.title, "Pass Plus")
+        XCTAssertEqual(sut.availablePlans?[1].storeKitProductId, "ios_passplus_24_usd_non_renewing")
+        XCTAssertEqual(sut.availablePlans?[1].details.cycleDescription, "for 24 months")
+        XCTAssertEqual(sut.availablePlans?[1].details.description, "plan description")
+        XCTAssertEqual(sut.availablePlans?[1].details.title, "Pass Plus")
+    }
+    
+    func test_fetchAvailablePlans_withoutPlanDataSource_fails() async throws {
+        // Given
+        let sut = PaymentsUIViewModel(
+            mode: .current,
+            storeKitManager: storeKitManager,
+            servicePlan: ServicePlanDataServiceMock(),
+            planDataSource: nil,
+            shownPlanNames: ["vpnplus", "vpnbasic", "free"],
+            clientApp: .mail,
+            customPlansDescription: [:],
+            planRefreshHandler:  { _ in XCTFail() },
+            extendSubscriptionHandler: { XCTFail() }
+        )
+        
+        // When
+        try await sut.fetchAvailablePlans()
+        
+        // Then
+        XCTAssertNil(sut.availablePlans)
+    }
+    
+    // MARK: - fetchIAPAvailability
+    
+    func test_fetchIAPAvailability_callsPlanDataSource() async throws {
+        // Given
+        // Given
+        let storeKitManager = StoreKitManagerMock()
+        storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+        
+        let planDataSource = PlansDataSourceMock()
+        let sut = PaymentsUIViewModel(
+            mode: .current,
+            storeKitManager: storeKitManager,
+            servicePlan: ServicePlanDataServiceMock(),
+            planDataSource: planDataSource,
+            shownPlanNames: ["vpnplus", "vpnbasic", "free"],
+            clientApp: .mail,
+            customPlansDescription: [:],
+            planRefreshHandler:  { _ in XCTFail() },
+            extendSubscriptionHandler: { XCTFail() }
+        )
+        
+        // When
+       try await sut.fetchIAPAvailability()
+        
+        // Then
+        XCTAssertTrue(planDataSource.fetchIAPAvailabilityWasCalled)
+    }
+    
+    // MARK: - fetchPaymentMethods
+    
+    func test_fetchPaymentMethods_callsPlanDataSource() async throws {
+        // Given
+        // Given
+        let storeKitManager = StoreKitManagerMock()
+        storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+        
+        let planDataSource = PlansDataSourceMock()
+        let sut = PaymentsUIViewModel(
+            mode: .current,
+            storeKitManager: storeKitManager,
+            servicePlan: ServicePlanDataServiceMock(),
+            planDataSource: planDataSource,
+            shownPlanNames: ["vpnplus", "vpnbasic", "free"],
+            clientApp: .mail,
+            customPlansDescription: [:],
+            planRefreshHandler:  { _ in XCTFail() },
+            extendSubscriptionHandler: { XCTFail() }
+        )
+        
+        // When
+       try await sut.fetchPaymentMethods()
+        
+        // Then
+        XCTAssertTrue(planDataSource.fetchPaymentMethodsWasCalled)
+    }
+}
+
+private final class PlansDataSourceMock: PlansDataSourceProtocol {
+    var isIAPAvailable: Bool = false
+    var availablePlans: AvailablePlans?
+    var currentPlan: CurrentPlan?
+    var paymentMethods: [PaymentMethod]?
+    var willRenewAutomatically: Bool = false
+    
+    var fetchPaymentMethodsWasCalled = false
+    var fetchIAPAvailabilityWasCalled = false
+    
+    func fetchIAPAvailability() async throws {
+        fetchIAPAvailabilityWasCalled = true
+    }
+    
+    func fetchAvailablePlans() async throws {
+        availablePlans = .init(plans: [
+            .init(name: "passplus2023",
+                  title: "Pass Plus",
+                  state: 1,
+                  description: "plan description",
+                  features: 1,
+                  layout: "default",
+                  instances: [
+                    .init(
+                        ID: "ID",
+                        cycle: 12,
+                        description: "for 12 months",
+                        periodEnd: 1234,
+                        price: [],
+                        vendors: .init(apple: .init(ID: "ios_passplus_12_usd_non_renewing"))
+                    ),
+                    .init(
+                        ID: "ID",
+                        cycle: 24,
+                        description: "for 24 months",
+                        periodEnd: 1234,
+                        price: [],
+                        vendors: .init(apple: .init(ID: "ios_passplus_24_usd_non_renewing"))
+                    )
+                  ],
+                  entitlements: [],
+                  decorations: [])
+        ])
+    }
+    
+    func fetchCurrentPlan() async throws {
+        currentPlan = .init(subscriptions: [
+            .init(vendorName: "ios_vpnplus_12_usd_non_renewing",
+                  title: "VPN Plus",
+                  description: "nice vpn",
+                  cycleDescription: "for 12 months",
+                  entitlements: []
+                 )
+            ]
+        )
+    }
+    
+    func fetchPaymentMethods() async throws {
+        fetchPaymentMethodsWasCalled = true
+    }
 }
 
 #endif
