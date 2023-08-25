@@ -49,7 +49,8 @@ struct AvailablePlansDetails {
                            for instance: AvailablePlans.AvailablePlan.Instance,
                            iapPlan: InAppPurchasePlan,
                            storeKitManager: StoreKitManagerProtocol) -> AvailablePlansDetails? {
-        guard let price = iapPlan.planPrice(from: storeKitManager) else {
+        guard let price = iapPlan.planPrice(from: storeKitManager),
+              let iapID = instance.vendors?.apple.ID else {
             return nil
         }
         
@@ -73,7 +74,7 @@ struct AvailablePlansDetails {
         }
         
         return .init(
-            iapID: instance.vendors?.apple.ID ?? "",
+            iapID: iapID,
             title: plan.title,
             description: plan.description,
             cycleDescription: instance.description,

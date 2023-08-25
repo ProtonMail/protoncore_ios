@@ -43,8 +43,7 @@ class AvailablePlansPresentation {
     static func createAvailablePlans(from plan: AvailablePlans.AvailablePlan,
                                      for instance: AvailablePlans.AvailablePlan.Instance,
                                      storeKitManager: StoreKitManagerProtocol) -> AvailablePlansPresentation? {
-        guard let inAppPurchasePlan = InAppPurchasePlan(availablePlanInstance: instance),
-              let price = inAppPurchasePlan.planPrice(from: storeKitManager) else {
+        guard let inAppPurchasePlan = InAppPurchasePlan(availablePlanInstance: instance) else {
             return nil
         }
         

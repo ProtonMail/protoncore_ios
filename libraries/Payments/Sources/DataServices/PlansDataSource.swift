@@ -28,13 +28,12 @@ public protocol PlansDataSourceProtocol {
     var availablePlans: AvailablePlans? { get }
     var currentPlan: CurrentPlan? { get }
     var paymentMethods: [PaymentMethod]? { get }
+    var willRenewAutomatically: Bool { get }
     
     func fetchIAPAvailability() async throws
     func fetchAvailablePlans() async throws
     func fetchCurrentPlan() async throws
     func fetchPaymentMethods() async throws
-    
-    func willRenewAutomatically(plan: InAppPurchasePlan) -> Bool
 }
 
 class PlansDataSource: PlansDataSourceProtocol {
@@ -83,26 +82,7 @@ class PlansDataSource: PlansDataSourceProtocol {
         paymentMethods = paymentMethodsResponse.methods
     }
     
-    func willRenewAutomatically(plan: InAppPurchasePlan) -> Bool {
-        guard let currentPlan = currentPlan else {
-            return false
-        }
-        
-        // Special coupon that will extend subscription
-        if currentPlan.subscriptions.first?.renew ?? false {
-            return true
-        }
-        
-        // Has credit that will be used for renewal
-        if hasEnoughCreditToExtendSubscription(plan: plan) {
-            return true
-        }
-        
-        return false
-    }
-    
-    private func hasEnoughCreditToExtendSubscription(plan: InAppPurchasePlan) -> Bool {
-        // TODO: Update once BE added Credit to the response.
-        return false
+    var willRenewAutomatically: Bool {
+        currentPlan?.subscriptions.first?.renew ?? false
     }
 }

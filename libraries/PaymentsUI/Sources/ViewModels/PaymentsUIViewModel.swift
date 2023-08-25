@@ -51,6 +51,10 @@ final class PaymentsUIViewModel {
     private (set) var plans: [[PlanPresentation]] = []
     private (set) var footerType: FooterType = .withoutPlansToBuy
     
+    private var planDataSource: PlansDataSourceProtocol?
+    private (set) var availablePlans: [AvailablePlansPresentation]?
+    private (set) var currentPlan: CurrentPlanPresentation?
+    
     var isExpandButtonHidden: Bool {
         if UIDevice.current.isIpad, UIDevice.current.orientation.isPortrait {
             return true
@@ -84,6 +88,7 @@ final class PaymentsUIViewModel {
     init(mode: PaymentsUIMode,
          storeKitManager: StoreKitManagerProtocol,
          servicePlan: ServicePlanDataServiceProtocol,
+         planDataSource: PlansDataSourceProtocol? = nil,
          shownPlanNames: ListOfShownPlanNames,
          clientApp: ClientApp,
          customPlansDescription: CustomPlansDescription,
@@ -91,6 +96,7 @@ final class PaymentsUIViewModel {
          extendSubscriptionHandler: @escaping () -> Void) {
         self.mode = mode
         self.servicePlan = servicePlan
+        self.planDataSource = planDataSource
         self.storeKitManager = storeKitManager
         self.shownPlanNames = shownPlanNames
         self.clientApp = clientApp
@@ -105,6 +111,19 @@ final class PaymentsUIViewModel {
             return planDetails
         }
         return nil
+    }
+    
+    func fetchPlans() async throws {
+        footerType = .withoutPlansToBuy
+        switch mode {
+        case .signup:
+            try await fetchAvailablePlans()
+        case .current:
+            try await fetchCurrentPlan()
+            try await fetchAvailablePlans()
+        case .update:
+            try await fetchAvailablePlans()
+        }
     }
     
     func fetchPlans(backendFetch: Bool, completionHandler: ((Result<([[PlanPresentation]], FooterType), Error>) -> Void)? = nil) {
@@ -420,6 +439,52 @@ final class PaymentsUIViewModel {
         } failure: { _ in
             completionHandler?()
         }
+    }
+}
+
+// MARK: - dynamic plan
+
+extension PaymentsUIViewModel {
+    func fetchCurrentPlan() async throws {
+        try await planDataSource?.fetchCurrentPlan()
+        guard let currentPlanSubscription = planDataSource?.currentPlan?.subscriptions.first else {
+            return
+        }
+        
+        currentPlan = CurrentPlanPresentation.createCurrentPlan(
+            from: currentPlanSubscription,
+            storeKitManager: storeKitManager,
+            price: String(currentPlanSubscription.amount ?? 0) // TODO: check that price
+        )
+    }
+    
+    func fetchAvailablePlans() async throws {
+        try await planDataSource?.fetchAvailablePlans()
+        
+        guard let availablePlansDataSource = planDataSource?.availablePlans?.plans else {
+            return
+        }
+        
+        self.availablePlans = []
+        availablePlansDataSource.forEach { plan in
+            plan.instances.forEach { instance in
+                if let plan = AvailablePlansPresentation.createAvailablePlans(
+                    from: plan,
+                    for: instance,
+                    storeKitManager: storeKitManager
+                ) {
+                    self.availablePlans?.append(plan)
+                }
+            }
+        }
+    }
+    
+    func fetchPaymentMethods() async throws {
+        try await planDataSource?.fetchPaymentMethods()
+    }
+    
+    func fetchIAPAvailability() async throws {
+        try await planDataSource?.fetchIAPAvailability()
     }
 }
 
