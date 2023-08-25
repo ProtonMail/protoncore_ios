@@ -106,6 +106,7 @@ final class PaymentsUICoordinator {
         viewModel = PaymentsUIViewModel(mode: mode,
                                         storeKitManager: storeKitManager,
                                         servicePlan: servicePlan,
+                                        planDataSource: nil,
                                         shownPlanNames: shownPlanNames,
                                         clientApp: clientApp,
                                         customPlansDescription: customization.customPlansDescription) { [weak self] updatedPlan in
