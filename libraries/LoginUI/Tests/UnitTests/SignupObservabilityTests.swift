@@ -101,7 +101,7 @@ final class SignupObservabilityTests: XCTestCase {
         // Given
         sut.signupAccountType = .internal
         sut.minimumAccountType = .username
-        let expectedEvent: ObservabilityEvent = .protonAccountAvailableSignupTotal(status: .failed)
+        let expectedEvent: ObservabilityEvent = .protonAccountAvailableSignupTotal(status: .apiMightBeBlocked)
         loginServiceMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(.apiMightBeBlocked(message: "", originalError: AnyError())))
         }
@@ -165,7 +165,7 @@ final class SignupObservabilityTests: XCTestCase {
         // Given
         sut.signupAccountType = .internal
         sut.minimumAccountType = .internal
-        let expectedEvent: ObservabilityEvent = .protonAccountAvailableSignupTotal(status: .failed)
+        let expectedEvent: ObservabilityEvent = .protonAccountAvailableSignupTotal(status: .apiMightBeBlocked)
         loginServiceMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(.apiMightBeBlocked(message: "", originalError: AnyError())))
         }
@@ -181,7 +181,7 @@ final class SignupObservabilityTests: XCTestCase {
         // Given
         sut.signupAccountType = .internal
         sut.minimumAccountType = .internal
-        let expectedEvent: ObservabilityEvent = .protonAccountAvailableSignupTotal(status: .failed)
+        let expectedEvent: ObservabilityEvent = .protonAccountAvailableSignupTotal(status: .successful)
         loginServiceMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(.notAvailable(message: "")))
         }
@@ -231,7 +231,7 @@ final class SignupObservabilityTests: XCTestCase {
         // Given
         sut.signupAccountType = .internal
         sut.minimumAccountType = .external
-        let expectedEvent: ObservabilityEvent = .protonAccountAvailableSignupTotal(status: .failed)
+        let expectedEvent: ObservabilityEvent = .protonAccountAvailableSignupTotal(status: .apiMightBeBlocked)
         loginServiceMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(.apiMightBeBlocked(message: "", originalError: AnyError())))
         }
@@ -247,7 +247,7 @@ final class SignupObservabilityTests: XCTestCase {
         // Given
         sut.signupAccountType = .internal
         sut.minimumAccountType = .external
-        let expectedEvent: ObservabilityEvent = .protonAccountAvailableSignupTotal(status: .failed)
+        let expectedEvent: ObservabilityEvent = .protonAccountAvailableSignupTotal(status: .successful)
         loginServiceMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(.notAvailable(message: "")))
         }
@@ -294,7 +294,7 @@ final class SignupObservabilityTests: XCTestCase {
     func test_onNextButtonTap_withSignupAccountTypeExternal_reportsAPIFailure() {
         // Given
         sut.signupAccountType = .external
-        let expectedEvent: ObservabilityEvent = .externalAccountAvailableSignupTotal(status: .failed)
+        let expectedEvent: ObservabilityEvent = .externalAccountAvailableSignupTotal(status: .apiMightBeBlocked)
         loginServiceMock.checkAvailabilityForExternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(.apiMightBeBlocked(message: "", originalError: AnyError())))
         }
@@ -309,7 +309,7 @@ final class SignupObservabilityTests: XCTestCase {
     func test_onNextButtonTap_withExternalAccountType_reportsFailureIfNotAvailable() {
         // Given
         sut.signupAccountType = .external
-        let expectedEvent: ObservabilityEvent = .externalAccountAvailableSignupTotal(status: .failed)
+        let expectedEvent: ObservabilityEvent = .externalAccountAvailableSignupTotal(status: .successful)
         loginServiceMock.checkAvailabilityForExternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(.notAvailable(message: "")))
         }

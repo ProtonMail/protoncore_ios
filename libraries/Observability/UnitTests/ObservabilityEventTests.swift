@@ -41,9 +41,9 @@ final class ObservabilityEventTests: XCTestCase {
 
     // MARK: - externalAccountAvailableSignup event
 
-    let ios_core_external_account_available_signup_total_v1 = """
+    let ios_core_external_account_available_signup_total_v2 = """
     {
-        "$id": "https://proton.me/ios_core_external_account_available_signup_total_v1.schema.json",
+        "$id": "https://proton.me/ios_core_external_account_available_signup_total_v2.schema.json",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "title": "iOS Core external account availability in signup process",
         "description": "Metric for the success or failure of the external account availability in the signup process",
@@ -60,7 +60,8 @@ final class ObservabilityEventTests: XCTestCase {
                         "type": "string",
                         "enum": [
                             "successful",
-                            "failed"
+                            "failed",
+                            "apiMightBeBlocked"
                         ]
                     }
                 },
@@ -74,9 +75,9 @@ final class ObservabilityEventTests: XCTestCase {
     """
 
     func testExternalAccountAvailableSignupEvent() throws {
-        try SuccessOrFailureStatus.allCases.forEach { status in
+        try ExternalAccountAvailableStatus.allCases.forEach { status in
             let issues = try validatePayloadAccordingToSchema(event: .externalAccountAvailableSignupTotal(status: status),
-                                                              schema: ios_core_external_account_available_signup_total_v1)
+                                                              schema: ios_core_external_account_available_signup_total_v2)
             XCTAssertEqual(issues, .noIssues)
         }
     }
@@ -270,9 +271,9 @@ final class ObservabilityEventTests: XCTestCase {
 
     // MARK: - protonAccountAvailableSignup event
 
-    let ios_core_proton_account_available_signup_total_v1 = """
+    let ios_core_proton_account_available_signup_total_v2 = """
     {
-        "$id": "https://proton.me/ios_core_proton_account_available_signup_total_v1.schema.json",
+        "$id": "https://proton.me/ios_core_proton_account_available_signup_total_v2.schema.json",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "title": "iOS Core proton account availability in signup process",
         "description": "Metric for the success or failure of the proton account availability in signup process",
@@ -289,7 +290,8 @@ final class ObservabilityEventTests: XCTestCase {
                         "type": "string",
                         "enum": [
                             "successful",
-                            "failed"
+                            "failed",
+                            "apiMightBeBlocked"
                         ]
                     }
                 },
@@ -303,9 +305,9 @@ final class ObservabilityEventTests: XCTestCase {
     """
 
     func testProtonAccountAvailableSignupEvent() throws {
-        try SuccessOrFailureStatus.allCases.forEach { status in
+        try ProtonAccountAvailableSignupStatus.allCases.forEach { status in
             let issues = try validatePayloadAccordingToSchema(event: .protonAccountAvailableSignupTotal(status: status),
-                                                              schema: ios_core_proton_account_available_signup_total_v1)
+                                                              schema: ios_core_proton_account_available_signup_total_v2)
             XCTAssertEqual(issues, .noIssues)
         }
     }
