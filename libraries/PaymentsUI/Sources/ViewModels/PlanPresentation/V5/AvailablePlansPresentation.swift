@@ -29,6 +29,7 @@ class AvailablePlansPresentation {
     var storeKitProductId: String? { availablePlan.storeKitProductId }
     var isCurrentlyProcessed: Bool = false
     var isExpanded: Bool = false
+    var isSelectable: Bool = false
     
     init(availablePlan: InAppPurchasePlan,
          details: AvailablePlansDetails,

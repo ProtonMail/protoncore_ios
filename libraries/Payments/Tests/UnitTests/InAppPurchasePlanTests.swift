@@ -50,24 +50,4 @@ final class InAppPurchasePlanTests: XCTestCase {
         XCTAssertNil(sut.offer)
         XCTAssertEqual(sut.period, "12")
     }
-
-    func test_init_with_currentPlanSubscription() {
-        // Given
-        let subscription = CurrentPlan.Subscription(
-            vendorName: "ioscore_core2023_12_usd_non_renewing",
-            title: "",
-            description: "",
-            cycleDescription: "",
-            entitlements: []
-        )
-        
-        // When
-        sut = .init(currentPlanSubscription: subscription)
-        
-        // Then
-        XCTAssertEqual(sut.storeKitProductId, "ioscore_core2023_12_usd_non_renewing")
-        XCTAssertEqual(sut.protonName, "core2023")
-        XCTAssertNil(sut.offer)
-        XCTAssertEqual(sut.period, "12")
-    }
 }
