@@ -193,7 +193,7 @@ final class ObservabilityEventTests: IntegrationTestCase {
     func test_externalAccountAvailable_everyStatus_isValid() {
         let expectation = expectation(description: #function)
         let service = setupService(expectation: expectation, interval: 1.0)
-        SuccessOrFailureStatus.allCases
+        ExternalAccountAvailableStatus.allCases
             .map(ObservabilityEvent.externalAccountAvailableSignupTotal(status:))
             .forEach { service.report($0) }
         wait(for: [expectation], timeout: expectationTimeout)
@@ -204,7 +204,7 @@ final class ObservabilityEventTests: IntegrationTestCase {
     func test_protonAccountAvailable_everyStatus_isValid() {
         let expectation = expectation(description: #function)
         let service = setupService(expectation: expectation, interval: 1.0)
-        SuccessOrFailureStatus.allCases
+        ProtonAccountAvailableSignupStatus.allCases
             .map(ObservabilityEvent.protonAccountAvailableSignupTotal(status:))
             .forEach { service.report($0) }
         wait(for: [expectation], timeout: expectationTimeout)
