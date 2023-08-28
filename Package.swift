@@ -100,6 +100,7 @@ extension String {
     static let quarkCommands: String = "ProtonCoreQuarkCommands"
     static let services: String = "ProtonCoreServices"
     static let settings: String = "ProtonCoreSettings"
+    static let subscriptions: String = "ProtonCoreSubscriptions"
     static let testingToolkit: String = "ProtonCoreTestingToolkit"
     static let testingToolkitTestData: String = "ProtonCoreTestingToolkitTestData"
     static let testingToolkitUnitTestsAccountDeletion: String = "ProtonCoreTestingToolkitUnitTestsAccountDeletion"
@@ -212,6 +213,7 @@ extension Target.Dependency {
     static var quarkCommands: Target.Dependency { .target(name: .quarkCommands) }
     static var services: Target.Dependency { .target(name: .services) }
     static var settings: Target.Dependency { .target(name: .settings) }
+    static var subscriptions: Target.Dependency { .target(name: .subscriptions) }
     static var testingToolkit: Target.Dependency { .target(name: .testingToolkit) }
     static var testingToolkitTestData: Target.Dependency { .target(name: .testingToolkitTestData) }
     static var testingToolkitUnitTestsAccountDeletion: Target.Dependency { .target(name: .testingToolkitUnitTestsAccountDeletion) }
@@ -1583,6 +1585,27 @@ add(
 //                    resources: [
 //                        .copy("Resources")
 //                    ],
+                    swiftSettings: .spm)
+    ]
+)
+
+// MARK: Subscriptions
+
+add(product: .subscriptions,
+    targets: [
+        .target(name: .subscriptions,
+                dependencies: [
+                    .featureSwitch
+                ],
+                path: "libraries/Subscriptions/Sources",
+                swiftSettings: .spm),
+        .testTarget(name: .subscriptions + "Tests",
+                    dependencies: [
+                        .subscriptions,
+                        .featureSwitch,
+                        .testingToolkitUnitTestsFeatureSwitch
+                    ],
+                    path: "libraries/Subscriptions/Tests",
                     swiftSettings: .spm)
     ]
 )

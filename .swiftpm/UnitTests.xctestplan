@@ -240,6 +240,13 @@
         "identifier" : "ProtonCoreForceUpgradeTests",
         "name" : "ProtonCoreForceUpgradeTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreSubscriptionsTests",
+        "name" : "ProtonCoreSubscriptionsTests"
+      }
     }
   ],
   "version" : 1
