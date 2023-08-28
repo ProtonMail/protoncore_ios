@@ -251,30 +251,31 @@ extension PaymentsUICoordinator: PaymentsUIViewControllerDelegate {
             completionHandler()
             guard let self = self else { return }
             switch callback {
-            case .planPurchaseProcessingInProgress(let processingPlan):
+            case .planPurchaseProcessingInProgress(let plan):
                 ObservabilityEnv.report(.paymentLaunchBillingTotal(status: .planPurchaseProcessingInProgress))
-                self.unfinishedPurchasePlan = processingPlan
-                self.finishCallback(reason: .planPurchaseProcessingInProgress(accountPlan: processingPlan))
+                self.unfinishedPurchasePlan = plan
+                self.finishCallback(reason: .planPurchaseProcessingInProgress(accountPlan: plan))
                 ObservabilityEnv.report(.paymentPurchaseTotal(status: .planPurchaseProcessingInProgress))
+                ObservabilityEnv.report(.planSelectionCheckoutTotal(status: .processingInProgress, plan: self.getPlanNameForObservabilityPurposes(plan: plan)))
             case .purchasedPlan(let plan):
                 ObservabilityEnv.report(.paymentLaunchBillingTotal(status: .success))
                 self.unfinishedPurchasePlan = self.purchaseManager.unfinishedPurchasePlan
                 self.finishCallback(reason: .purchasedPlan(accountPlan: plan))
                 ObservabilityEnv.report(.paymentPurchaseTotal(status: .success))
-                ObservabilityEnv.report(.planSelectionCheckoutTotal(status: .successful, plan: self.getPlanName(plan: plan)))
+                ObservabilityEnv.report(.planSelectionCheckoutTotal(status: .successful, plan: self.getPlanNameForObservabilityPurposes(plan: plan)))
             case .toppedUpCredits:
                 ObservabilityEnv.report(.paymentLaunchBillingTotal(status: .success))
                 self.unfinishedPurchasePlan = self.purchaseManager.unfinishedPurchasePlan
                 self.finishCallback(reason: .toppedUpCredits)
                 ObservabilityEnv.report(.paymentPurchaseTotal(status: .success))
-                ObservabilityEnv.report(.planSelectionCheckoutTotal(status: .successful, plan: self.getPlanName(plan: plan.accountPlan)))
+                ObservabilityEnv.report(.planSelectionCheckoutTotal(status: .successful, plan: self.getPlanNameForObservabilityPurposes(plan: plan.accountPlan)))
             case .purchaseError(let error, let processingPlan):
                 ObservabilityEnv.report(.paymentLaunchBillingTotal(status: .purchaseError))
                 if let processingPlan = processingPlan {
                     self.unfinishedPurchasePlan = processingPlan
                 }
                 ObservabilityEnv.report(.paymentPurchaseTotal(status: .purchaseError))
-                ObservabilityEnv.report(.planSelectionCheckoutTotal(status: .failed, plan: self.getPlanName(plan: plan.accountPlan)))
+                ObservabilityEnv.report(.planSelectionCheckoutTotal(status: .failed, plan: self.getPlanNameForObservabilityPurposes(plan: plan.accountPlan)))
                 self.showError(error: error)
             case let .apiMightBeBlocked(message, originalError, processingPlan):
                 ObservabilityEnv.report(.paymentLaunchBillingTotal(status: .apiBlocked))
@@ -283,21 +284,23 @@ extension PaymentsUICoordinator: PaymentsUIViewControllerDelegate {
                 }
                 self.unfinishedPurchasePlan = processingPlan
                 ObservabilityEnv.report(.paymentPurchaseTotal(status: .apiBlocked))
-                ObservabilityEnv.report(.planSelectionCheckoutTotal(status: .failed, plan: self.getPlanName(plan: plan.accountPlan)))
+                ObservabilityEnv.report(.planSelectionCheckoutTotal(status: .apiMightBeBlocked, plan: self.getPlanNameForObservabilityPurposes(plan: plan.accountPlan)))
                 // TODO: should we handle it ourselves? or let the client do it?
                 self.finishCallback(reason: .apiMightBeBlocked(message: message, originalError: originalError))
             case .purchaseCancelled:
                 ObservabilityEnv.report(.paymentLaunchBillingTotal(status: .canceled))
                 ObservabilityEnv.report(.paymentPurchaseTotal(status: .canceled))
+                ObservabilityEnv.report(.planSelectionCheckoutTotal(status: .canceled, plan: self.getPlanNameForObservabilityPurposes(plan: plan.accountPlan)))
             }
         }
     }
     
-    func getPlanName(plan: InAppPurchasePlan) -> PlanName {
-        if plan.isFreePlan { return .free }
-        if plan.isPlusPlan { return .plus }
-        if plan.isUnlimitedPlan { return .unlimited }
-        return .free
+    func getPlanNameForObservabilityPurposes(plan: InAppPurchasePlan) -> PlanName {
+        if plan.protonName == InAppPurchasePlan.freePlanName || plan.protonName.contains("free") {
+            return .free
+        } else {
+            return .paid
+        }
     }
     
     func planPurchaseError() {
