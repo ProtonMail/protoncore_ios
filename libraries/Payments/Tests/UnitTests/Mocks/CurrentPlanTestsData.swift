@@ -26,7 +26,6 @@ var currentPlanResponse: [String: Any] {
     [
         "Code": 1000,
         "Subscriptions": [[
-            "VendorName": "VendorName",
             "Title": "Title",
             "Description": "Description",
             "CycleDescription": "CycleDescription",
@@ -57,7 +56,6 @@ var currentPlanResponse: [String: Any] {
 var currentPlanToCompare: CurrentPlan {
     .init(
         subscriptions: [.init(
-            vendorName: "VendorName",
             title: "Title",
             description: "Description",
             cycleDescription: "CycleDescription",

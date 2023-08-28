@@ -25,6 +25,8 @@ import UIKit
 import enum ProtonCoreDataModel.ClientApp
 import ProtonCoreUIFoundations
 import ProtonCorePayments
+import ProtonCoreUtilities
+import ProtonCoreFeatureSwitch
 
 enum FooterType {
     case withPlansToBuy
@@ -34,7 +36,9 @@ enum FooterType {
 }
 
 final class PaymentsUIViewModel {
-    
+    private var isDynamicPlansEnabled: Bool {
+        FeatureFactory.shared.isEnabled(.dynamicPlans)
+    }
     private var servicePlan: ServicePlanDataServiceProtocol
     private let mode: PaymentsUIMode
     private var accountPlans: [InAppPurchasePlan] = []
@@ -52,6 +56,18 @@ final class PaymentsUIViewModel {
     private (set) var footerType: FooterType = .withoutPlansToBuy
     
     private var planDataSource: PlansDataSourceProtocol?
+    var dynamicPlans: [[Either<CurrentPlanPresentation, AvailablePlansPresentation>]] {
+         [
+             {
+                 guard let currentPlan else { return [] }
+                 return [.left(currentPlan)]
+             }(),
+             {
+                 guard let availablePlans else { return [] }
+                 return availablePlans.map { .right($0) }
+             }()
+         ].filter { !$0.isEmpty }
+    }
     private (set) var availablePlans: [AvailablePlansPresentation]?
     private (set) var currentPlan: CurrentPlanPresentation?
     
@@ -393,6 +409,32 @@ final class PaymentsUIViewModel {
     // MARK: Private methods - Refresh data
     
     private func processUnfinishedPurchasePlan(unfinishedPurchasePlan: InAppPurchasePlan) {
+        if isDynamicPlansEnabled {
+             processUnfinishedPurchaseDynamicPlan(unfinishedPurchasePlan: unfinishedPurchasePlan)
+         } else {
+             processUnfinishedPurchaseStaticPlan(unfinishedPurchasePlan: unfinishedPurchasePlan)
+         }
+     }
+     
+     private func processUnfinishedPurchaseDynamicPlan(unfinishedPurchasePlan: InAppPurchasePlan) {
+         self.dynamicPlans.forEach {
+             $0.forEach {
+                 if case .right(let availablePlan) = $0 {
+                     if let planId = availablePlan.storeKitProductId, let processingPlanId = unfinishedPurchasePlan.storeKitProductId, planId == processingPlanId {
+                         // select currently prcessed buy plan button
+                         availablePlan.isCurrentlyProcessed = true
+                         availablePlan.isSelectable = true
+                     } else {
+                         // disable buy plan buttons for other plans
+                         availablePlan.isSelectable = false
+                     }
+                 }
+             }
+         }
+         planRefreshHandler(nil)
+     }
+     
+     private func processUnfinishedPurchaseStaticPlan(unfinishedPurchasePlan: InAppPurchasePlan) {
         self.plans.forEach {
             $0.forEach {
                 if case .plan(var planDetails) = $0.planPresentationType {
@@ -453,7 +495,6 @@ extension PaymentsUIViewModel {
         
         currentPlan = CurrentPlanPresentation.createCurrentPlan(
             from: currentPlanSubscription,
-            storeKitManager: storeKitManager,
             price: String(currentPlanSubscription.amount ?? 0) // TODO: check that price
         )
     }

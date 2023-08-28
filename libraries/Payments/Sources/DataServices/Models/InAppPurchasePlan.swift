@@ -159,10 +159,6 @@ public struct InAppPurchasePlan: Equatable, Hashable {
         }
         self.init(storeKitProductId: iapIdentifier)
     }
-    
-    public init?(currentPlanSubscription: CurrentPlan.Subscription) {
-        self.init(storeKitProductId: currentPlanSubscription.vendorName)
-    }
 
     private init(protonPlanName: String, offer: String?, listOfIAPIdentifiers: ListOfIAPIdentifiers) {
         let extractedData = listOfIAPIdentifiers
