@@ -26,7 +26,6 @@ public struct CurrentPlan: Decodable, Equatable {
     public var subscriptions: [Subscription]
     
     public struct Subscription: Decodable, Equatable {
-        public var vendorName: String
         public var title: String
         public var description: String
         public var cycleDescription: String

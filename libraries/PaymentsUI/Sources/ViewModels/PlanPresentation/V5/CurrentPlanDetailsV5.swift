@@ -51,19 +51,7 @@ struct CurrentPlanDetailsV5 {
     }
     
     static func createPlan(from details: CurrentPlan.Subscription,
-                           iapPlan: InAppPurchasePlan,
-                           storeKitManager: StoreKitManagerProtocol,
-                           protonPrice: String?) -> CurrentPlanDetailsV5? {
-        var price: String?
-        
-        if case .apple = details.external {
-            price = protonPrice
-        } else {
-            price = iapPlan.planPrice(from: storeKitManager)
-        }
-        
-        guard let price else { return nil }
-        
+                           protonPrice: String) -> CurrentPlanDetailsV5? {
         let entitlements = details.entitlements.map { entitlement -> CurrentPlanDetailsV5.Entitlement in
             switch entitlement {
             case .progress(let entitlement):
@@ -86,7 +74,7 @@ struct CurrentPlanDetailsV5 {
             title: details.title,
             description: details.description,
             cycleDescription: details.cycleDescription,
-            price: price,
+            price: protonPrice,
             endDate: endDateString(date: details.periodEnd, renew: details.renew ?? false),
             entitlements: entitlements
         )

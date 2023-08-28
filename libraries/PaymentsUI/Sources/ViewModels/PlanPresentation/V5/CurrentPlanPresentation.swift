@@ -24,32 +24,22 @@
 import ProtonCorePayments
 
 class CurrentPlanPresentation {
-    let currentPlan: InAppPurchasePlan
     let details: CurrentPlanDetailsV5
-    var storeKitProductId: String? { currentPlan.storeKitProductId }
     
-    init(currentPlan: InAppPurchasePlan,
-         details: CurrentPlanDetailsV5) {
-        self.currentPlan = currentPlan
+    init(details: CurrentPlanDetailsV5) {
         self.details = details
     }
     
     static func createCurrentPlan(from currentPlanSubscription: CurrentPlan.Subscription,
-                                  storeKitManager: StoreKitManagerProtocol,
                                   price protonPrice: String?) -> CurrentPlanPresentation? {
         
-        guard let inAppPurchasePlan = InAppPurchasePlan(currentPlanSubscription: currentPlanSubscription) else {
-            return nil
-        }
         
-        guard let details = CurrentPlanDetailsV5.createPlan(
+        guard let protonPrice, let details = CurrentPlanDetailsV5.createPlan(
             from: currentPlanSubscription,
-            iapPlan: inAppPurchasePlan,
-            storeKitManager: storeKitManager,
             protonPrice: protonPrice
         ) else { return nil }
         
-        return .init(currentPlan: inAppPurchasePlan, details: details)
+        return .init(details: details)
     }
 }
 

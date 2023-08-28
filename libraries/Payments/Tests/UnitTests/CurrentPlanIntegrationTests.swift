@@ -58,7 +58,6 @@ final class CurrentPlanIntegrationTests: XCTestCase {
             return
         }
                 
-        XCTAssertEqual(currentPlan.subscriptions.first!.vendorName, "VendorName")
         XCTAssertEqual(currentPlan.subscriptions.first!.title, "Title")
         XCTAssertEqual(currentPlan.subscriptions.first!.description, "Description")
         XCTAssertEqual(currentPlan.subscriptions.first!.cycleDescription, "CycleDescription")

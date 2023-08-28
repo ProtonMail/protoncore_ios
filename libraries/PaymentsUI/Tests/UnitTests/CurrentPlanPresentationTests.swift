@@ -43,32 +43,30 @@ final class CurrentPlanPresentationTests: XCTestCase {
         }
         
         let subscription = CurrentPlan.Subscription(
-            vendorName: "ioscore_core2023_testpromo_12_usd_non_renewing",
-            title: "",
-            description: "",
-            cycleDescription: "",
+            title: "title",
+            description: "description",
+            cycleDescription: "cycleDescription",
             entitlements: []
         )
         
         // When
         sut = CurrentPlanPresentation.createCurrentPlan(
             from: subscription,
-            storeKitManager: storeKitManager,
             price: "price"
         )
         
         // Then
-        XCTAssertEqual(sut.currentPlan.storeKitProductId, "ioscore_core2023_testpromo_12_usd_non_renewing")
-        XCTAssertEqual(sut.currentPlan.protonName, "core2023")
-        XCTAssertEqual(sut.currentPlan.offer, "testpromo")
-        XCTAssertEqual(sut.currentPlan.period, "12")
-        XCTAssertEqual(sut.storeKitProductId, "ioscore_core2023_testpromo_12_usd_non_renewing")
+        XCTAssertEqual(sut.details.title, "title")
+        XCTAssertEqual(sut.details.description, "description")
+        XCTAssertEqual(sut.details.cycleDescription, "cycleDescription")
+        XCTAssertEqual(sut.details.price, "price")
+        XCTAssertNil(sut.details.endDate)
+        XCTAssertTrue(sut.details.entitlements.isEmpty)
     }
     
     func test_createCurrentPlan_failure() {
         // Given
         let subscription = CurrentPlan.Subscription(
-            vendorName: "bad name",
             title: "",
             description: "",
             cycleDescription: "",
@@ -78,8 +76,7 @@ final class CurrentPlanPresentationTests: XCTestCase {
         // When
         sut = CurrentPlanPresentation.createCurrentPlan(
             from: subscription,
-            storeKitManager: StoreKitManagerMock(),
-            price: "price"
+            price: nil
         )
         
         // Then
