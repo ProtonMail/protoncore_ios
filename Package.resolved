@@ -14,8 +14,17 @@
       "kind" : "remoteSourceControl",
       "location" : "git@gitlab.protontech.ch:tpe/apple-fusion.git",
       "state" : {
-        "revision" : "5905ef7eb68a3ad7acdd3cdec75b781daf26fb4b",
-        "version" : "2.0.0"
+        "revision" : "cd3db46940c5d64beb616f0a080ff65a920dd5fa",
+        "version" : "2.0.1"
+      }
+    },
+    {
+      "identity" : "ccrypt_blowfish",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tannerdsilva/Ccrypt_blowfish.git",
+      "state" : {
+        "revision" : "abd2bf4ca4730e05d04e9a096f3f6300653ee40c",
+        "version" : "1.3.0"
       }
     },
     {
@@ -97,6 +106,15 @@
       "state" : {
         "revision" : "cef5b3f6f11781dd4591bdd1dd0a3d22bd609334",
         "version" : "1.11.0"
+      }
+    },
+    {
+      "identity" : "swiftbcrypt",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tannerdsilva/SwiftBCrypt.git",
+      "state" : {
+        "revision" : "12521ab8c1416828b00cb4d94e450dd111df6193",
+        "version" : "0.2.0"
       }
     },
     {
