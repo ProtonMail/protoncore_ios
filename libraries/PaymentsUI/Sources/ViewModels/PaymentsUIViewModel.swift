@@ -423,10 +423,10 @@ final class PaymentsUIViewModel {
                      if let planId = availablePlan.storeKitProductId, let processingPlanId = unfinishedPurchasePlan.storeKitProductId, planId == processingPlanId {
                          // select currently prcessed buy plan button
                          availablePlan.isCurrentlyProcessed = true
-                         availablePlan.isSelectable = true
+                         availablePlan.canBePurchasedNow = true
                      } else {
                          // disable buy plan buttons for other plans
-                         availablePlan.isSelectable = false
+                         availablePlan.canBePurchasedNow = false
                      }
                  }
              }
@@ -493,10 +493,7 @@ extension PaymentsUIViewModel {
             return
         }
         
-        currentPlan = CurrentPlanPresentation.createCurrentPlan(
-            from: currentPlanSubscription,
-            price: String(currentPlanSubscription.amount ?? 0) // TODO: check that price
-        )
+        currentPlan = CurrentPlanPresentation.createCurrentPlan(from: currentPlanSubscription)
     }
     
     func fetchAvailablePlans() async throws {

@@ -1586,12 +1586,8 @@ private final class PlansDataSourceMock: PlansDataSourceProtocol {
     
     func fetchAvailablePlans() async throws {
         availablePlans = .init(plans: [
-            .init(name: "passplus2023",
-                  title: "Pass Plus",
-                  state: 1,
+            .init(title: "Pass Plus",
                   description: "plan description",
-                  features: 1,
-                  layout: "default",
                   instances: [
                     .init(
                         ID: "ID",

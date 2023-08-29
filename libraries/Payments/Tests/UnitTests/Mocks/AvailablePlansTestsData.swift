@@ -59,8 +59,8 @@ var availablePlansResponse: [String: Any] {
                 ],
                 "Decorations": [
                     [
-                        "Type": "star",
-                        "Icon": "<base64>"
+                        "Type": "starred",
+                        "IconName": "<base64>"
                     ],
                     [
                         "Type": "border",
@@ -98,13 +98,8 @@ var availablePlansToCompare: AvailablePlans {
     .init(
         plans: [
             .init(
-                name: "name 1",
                 title: "title 1",
-                state: 1,
-                type: 1,
                 description: "description 1",
-                features: 1,
-                layout: "default",
                 instances: [
                     .init(
                         ID: "id 1",
@@ -126,9 +121,9 @@ var availablePlansToCompare: AvailablePlans {
                     )
                 ],
                 decorations: [
-                    .star(.init(
-                        type: "star",
-                        icon: "<base64>"
+                    .starred(.init(
+                        type: "starred",
+                        iconName: "<base64>"
                     )),
                     .border(.init(
                         type: "border",
@@ -137,13 +132,8 @@ var availablePlansToCompare: AvailablePlans {
                 ]
             ),
             .init(
-                name: "name 2",
                 title: "title 2",
-                state: 2,
-                type: 2,
                 description: "description 2",
-                features: 2,
-                layout: "default",
                 instances: [
                     .init(
                         ID: "id 2",
