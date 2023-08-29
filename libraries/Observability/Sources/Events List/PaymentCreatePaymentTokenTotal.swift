@@ -22,15 +22,8 @@
 
 import ProtonCoreNetworking
 
-public enum PaymentCreatePaymentTokenTotalStatus: String, Encodable, CaseIterable {
-    case http2xx
-    case http4xx
-    case http5xx
-    case unknown
-}
-
 public struct PaymentCreatePaymentTokenTotalLabels: Encodable, Equatable {
-    let status: PaymentCreatePaymentTokenTotalStatus
+    let status: HTTPResponseCodeStatus
 
     enum CodingKeys: String, CodingKey {
         case status
@@ -42,7 +35,7 @@ extension ObservabilityEvent where Payload == PayloadWithLabels<PaymentCreatePay
         static let eventName = "ios_core_checkout_aiapBilling_createPaymentToken_total"
     }
 
-    public static func paymentCreatePaymentTokenTotal(status: PaymentCreatePaymentTokenTotalStatus) -> Self {
+    public static func paymentCreatePaymentTokenTotal(status: HTTPResponseCodeStatus) -> Self {
         ObservabilityEvent(name: Constants.eventName, labels: PaymentCreatePaymentTokenTotalLabels(status: status))
     }
 
