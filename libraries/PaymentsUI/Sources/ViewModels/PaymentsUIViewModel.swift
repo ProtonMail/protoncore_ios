@@ -216,12 +216,12 @@ final class PaymentsUIViewModel {
                 case .current(let current):
                     switch current {
                     case .details(var currentPlanDetails):
-                        currentPlanDetails.price = InAppPurchasePlan.formatPlanPrice(price: NSDecimalNumber(value: 0.0), locale: locale, maximumFractionDigits: 0)
+                        currentPlanDetails.price = PriceFormatter.formatPlanPrice(price: 0, locale: locale, maximumFractionDigits: 0)
                         updatedFreePlan?.planPresentationType = .current(.details( currentPlanDetails))
                     default: break
                     }
                 case .plan(var plan):
-                    plan.price = InAppPurchasePlan.formatPlanPrice(price: NSDecimalNumber(value: 0.0), locale: locale, maximumFractionDigits: 0)
+                    plan.price = PriceFormatter.formatPlanPrice(price: 0, locale: locale, maximumFractionDigits: 0)
                     updatedFreePlan?.planPresentationType = .plan(plan)
                 case .none:
                     break
