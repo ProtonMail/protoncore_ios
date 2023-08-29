@@ -50,8 +50,7 @@ struct CurrentPlanDetailsV5 {
         }
     }
     
-    static func createPlan(from details: CurrentPlan.Subscription,
-                           protonPrice: String) -> CurrentPlanDetailsV5? {
+    static func createPlan(from details: CurrentPlan.Subscription) -> CurrentPlanDetailsV5 {
         let entitlements = details.entitlements.map { entitlement -> CurrentPlanDetailsV5.Entitlement in
             switch entitlement {
             case .progress(let entitlement):
@@ -70,11 +69,18 @@ struct CurrentPlanDetailsV5 {
             }
         }
         
+        var price: String
+        if let amount = details.amount {
+            price = PriceFormatter.formatPlanPrice(price: Double(amount), locale: Locale.current)
+        } else {
+            price = PriceFormatter.formatPlanPrice(price: 0, locale: Locale.current, maximumFractionDigits: 0)
+        }
+        
         return .init(
             title: details.title,
             description: details.description,
             cycleDescription: details.cycleDescription,
-            price: protonPrice,
+            price: price,
             endDate: endDateString(date: details.periodEnd, renew: details.renew ?? false),
             entitlements: entitlements
         )

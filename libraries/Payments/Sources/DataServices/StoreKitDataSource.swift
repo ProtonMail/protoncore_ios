@@ -69,12 +69,8 @@ final class StoreKitDataSource: NSObject, StoreKitDataSourceProtocol {
                 return availableProductIdentifiers.contains(vendors.apple.ID)
             }
             let updatedPlan = AvailablePlans.AvailablePlan(
-                name: originalPlan.name,
                 title: originalPlan.title,
-                state: originalPlan.state,
                 description: originalPlan.description,
-                features: originalPlan.features,
-                layout: originalPlan.layout,
                 instances: updatedInstances,
                 entitlements: originalPlan.entitlements,
                 decorations: originalPlan.decorations
