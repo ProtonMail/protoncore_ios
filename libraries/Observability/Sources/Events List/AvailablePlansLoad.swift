@@ -1,6 +1,6 @@
 //
-//  SSOAuthWithTokenTotalEvent.swift
-//  ProtonCore-Observability - Created on 16.12.22.
+//  AvailablePlansLoad.swift
+//  ProtonCore-Observability - Created on 29.08.2023.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -21,7 +21,7 @@
 
 import ProtonCoreNetworking
 
-public struct SSOAuthWithTokenLabels: Encodable, Equatable {
+public struct AvailablePlansLoadLabels: Encodable, Equatable {
     let status: HTTPResponseCodeStatus
 
     enum CodingKeys: String, CodingKey {
@@ -29,24 +29,28 @@ public struct SSOAuthWithTokenLabels: Encodable, Equatable {
     }
 }
 
-extension ObservabilityEvent where Payload == PayloadWithLabels<SSOAuthWithTokenLabels> {
-    public static func ssoAuthWithTokenTotalEvent(status: HTTPResponseCodeStatus) -> Self {
-        .init(name: "ios_core_login_sso_auth_total", labels: .init(status: status))
+extension ObservabilityEvent where Payload == PayloadWithLabels<AvailablePlansLoadLabels> {
+    private enum Constants {
+        static let eventName = "ios_core_available_plans_load_total"
     }
-    
-    public static func ssoAuthWithTokenTotalEvent(error: ResponseError) -> Self {
-        let name = "ios_core_login_sso_auth_total"
-        if let httpCode = error.httpCode {
+
+    public static func availablePlansLoad(status: HTTPResponseCodeStatus) -> Self {
+        ObservabilityEvent(name: Constants.eventName, labels: AvailablePlansLoadLabels(status: status))
+    }
+
+    public static func availablePlansLoad(httpCode: Int?) -> Self {
+        let name = Constants.eventName
+        if let httpCode {
             switch httpCode {
             case 400...499:
-                return .init(name: name, labels: .init(status: .http4xx))
+                return ObservabilityEvent(name: name, labels: AvailablePlansLoadLabels(status: .http4xx))
             case 500...599:
-                return .init(name: name, labels: .init(status: .http5xx))
+                return ObservabilityEvent(name: name, labels: AvailablePlansLoadLabels(status: .http5xx))
             default:
                 break
             }
         }
-        
-        return .init(name: name, labels: .init(status: .unknown))
+
+        return ObservabilityEvent(name: name, labels: AvailablePlansLoadLabels(status: .unknown))
     }
 }

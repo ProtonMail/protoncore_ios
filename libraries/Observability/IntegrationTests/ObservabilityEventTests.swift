@@ -104,7 +104,7 @@ final class ObservabilityEventTests: IntegrationTestCase {
     func test_ssoAuth_everyStatus_isValid() {
         let expectation = expectation(description: #function)
         let service = setupService(expectation: expectation, interval: 2.0)
-        SSOAuthWithTokenStatus.allCases
+        HTTPResponseCodeStatus.allCases
             .map(ObservabilityEvent.ssoAuthWithTokenTotalEvent(status:))
             .forEach(service.report)
         testResponses
@@ -165,7 +165,7 @@ final class ObservabilityEventTests: IntegrationTestCase {
     func test_ssoIDPPageLoadCountTotal_everyStatus_isValid() {
         let expectation = expectation(description: #function)
         let service = setupService(expectation: expectation, interval: 2.0)
-        SSOIDPPageLoadStatus.allCases
+        HTTPResponseCodeStatus.allCases
             .map(ObservabilityEvent.ssoIDPPageLoadCountTotal(status:))
             .forEach { service.report($0) }
         testResponses
@@ -179,7 +179,7 @@ final class ObservabilityEventTests: IntegrationTestCase {
     func test_ssoProtonPageLoadCountTotal_everyStatus_isValid() {
         let expectation = expectation(description: #function)
         let service = setupService(expectation: expectation, interval: 2.0)
-        SSOProtonPageLoadStatus.allCases
+        HTTPResponseCodeStatus.allCases
             .map(ObservabilityEvent.ssoProtonPageLoadCountTotal(status:))
             .forEach { service.report($0) }
         testResponses
@@ -360,7 +360,7 @@ final class ObservabilityEventTests: IntegrationTestCase {
     func test_paymentCreateToken_everyStatus_isValid() {
         let expectation = expectation(description: #function)
         let service = setupService(expectation: expectation, interval: 2.0)
-        PaymentCreatePaymentTokenTotalStatus.allCases
+        HTTPResponseCodeStatus.allCases
             .map { ObservabilityEvent.paymentCreatePaymentTokenTotal(status: $0) }
             .forEach { service.report($0) }
         testResponses
@@ -417,7 +417,7 @@ final class ObservabilityEventTests: IntegrationTestCase {
     func test_paymentValidatePlan_everyStatus_isValid() {
         let expectation = expectation(description: #function)
         let service = setupService(expectation: expectation, interval: 2.0)
-        PaymentValidatePlanTotalStatus.allCases
+        HTTPResponseCodeStatus.allCases
             .map { ObservabilityEvent.paymentValidatePlanTotal(status: $0) }
             .forEach { service.report($0) }
         testResponses
@@ -426,4 +426,43 @@ final class ObservabilityEventTests: IntegrationTestCase {
         wait(for: [expectation], timeout: expectationTimeout)
     }
 
+    // MARK: - Dynamic plans
+
+    func test_currentPlanLoad_everyStatus_isValid() {
+        let expectation = expectation(description: #function)
+        let service = setupService(expectation: expectation, interval: 2.0)
+        service.report(.currentPlanLoad(status: .http2xx))
+        [300, 400, 500, nil].forEach { (httpStatus: Int?) in
+            service.report(.currentPlanLoad(httpCode: httpStatus))
+        }
+        wait(for: [expectation], timeout: expectationTimeout)
+    }
+
+    func test_currentPlanPageLoad_everyStatus_isValid() {
+        let expectation = expectation(description: #function)
+        let service = setupService(expectation: expectation, interval: 2.0)
+        SuccessOrFailureStatus.allCases.forEach {
+            service.report(.currentPlanPageLoad(status: $0))
+        }
+        wait(for: [expectation], timeout: expectationTimeout)
+    }
+
+    func test_availablePlansLoad_everyStatus_isValid() {
+        let expectation = expectation(description: #function)
+        let service = setupService(expectation: expectation, interval: 2.0)
+        service.report(.availablePlansLoad(status: .http2xx))
+        [300, 400, 500, nil].forEach { (httpStatus: Int?) in
+            service.report(.availablePlansLoad(httpCode: httpStatus))
+        }
+        wait(for: [expectation], timeout: expectationTimeout)
+    }
+
+    func test_availablePlansPageLoad_everyStatus_isValid() {
+        let expectation = expectation(description: #function)
+        let service = setupService(expectation: expectation, interval: 2.0)
+        SuccessOrFailureStatus.allCases.forEach {
+            service.report(.availablePlansPageLoad(status: $0))
+        }
+        wait(for: [expectation], timeout: expectationTimeout)
+    }
 }
