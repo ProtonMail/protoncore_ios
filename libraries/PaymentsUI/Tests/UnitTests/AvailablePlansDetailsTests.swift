@@ -39,6 +39,7 @@ final class AvailablePlansDetailsTests: XCTestCase {
 //        // Given
 //        let plansDataSource = PlansDataSourceMock()
 //        let availablePlan = AvailablePlans.AvailablePlan(
+//            name: "name",
 //            title: "title",
 //            instances: [],
 //            entitlements: [
@@ -64,6 +65,8 @@ final class AvailablePlansDetailsTests: XCTestCase {
         }
         
         let availablePlan = AvailablePlans.AvailablePlan(
+            ID: "ID",
+            name: "name",
             title: "title",
             description: "description",
             instances: [
@@ -72,7 +75,7 @@ final class AvailablePlansDetailsTests: XCTestCase {
                       description: "12 months",
                       periodEnd: 123,
                       price: [
-                        .init(current: 123, default: 123)
+                        .init(current: 123, default: 123, currency: "USD")
                       ],
                       vendors: .init(apple: .init(productID: "ioscore_core2023_12_usd_non_renewing")
                 ))
@@ -106,6 +109,8 @@ final class AvailablePlansDetailsTests: XCTestCase {
         // Given
         let plansDataSource = PlansDataSourceMock()
         let availablePlan = AvailablePlans.AvailablePlan(
+            ID: "ID",
+            name: "name",
             title: "title",
             instances: [],
             entitlements: [

@@ -31,6 +31,7 @@ protocol PaymentsUIViewControllerDelegate: AnyObject {
     func userDidCloseViewController()
     func userDidDismissViewController()
     func userDidSelectPlan(plan: PlanPresentation, addCredits: Bool, completionHandler: @escaping () -> Void)
+    func userDidSelectPlan(plan: AvailablePlansPresentation, completionHandler: @escaping () -> Void)
     func planPurchaseError()
 }
 
@@ -526,6 +527,14 @@ extension PaymentsUIViewController: PlanCellDelegate {
     func userPressedSelectPlanButton(plan: PlanPresentation, completionHandler: @escaping () -> Void) {
         lockUI()
         delegate?.userDidSelectPlan(plan: plan, addCredits: false) { [weak self] in
+            self?.unlockUI()
+            completionHandler()
+        }
+    }
+
+    func userPressedSelectPlanButton(plan: AvailablePlansPresentation, completionHandler: @escaping () -> Void) {
+        lockUI()
+        delegate?.userDidSelectPlan(plan: plan) { [weak self] in
             self?.unlockUI()
             completionHandler()
         }

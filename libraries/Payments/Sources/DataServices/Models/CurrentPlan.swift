@@ -20,6 +20,8 @@
 //  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
 //
 
+import Foundation
+
 /// `CurrentPlan` object is the data model for the plan
 ///  the user is currently subscribed to.
 public struct CurrentPlan: Decodable, Equatable {
@@ -29,10 +31,11 @@ public struct CurrentPlan: Decodable, Equatable {
         public var title: String
         public var description: String
         public var cycleDescription: String
+        public var cycle: Int?
         public var currency: String?
         public var amount: Int?
         public var periodEnd: Int?
-        public var renew: Bool?
+        public var renew: Int?
         public var external: PaymentMethod?
         public var entitlements: [Entitlement]
         
@@ -85,5 +88,29 @@ extension CurrentPlan.Subscription.Entitlement: Decodable {
         case .description:
             self = .description(try .init(from: decoder))
         }
+    }
+}
+
+extension CurrentPlan {
+    public var hasExistingProtonSubscription: Bool {
+        // if there are no subscriptions, there is no subscription
+        guard !subscriptions.isEmpty else { return false }
+        // if there are multiple subscriptions, there one of them must be a paid one
+        guard subscriptions.count == 1, let singleSubscription = subscriptions.first else { return true }
+        // if amount, currency and cycle are nil, it's a free plan
+        guard singleSubscription.amount == nil, singleSubscription.currency == nil, singleSubscription.cycle == nil
+        else { return true }
+        return false
+    }
+
+    public var endDate: Date? {
+        guard let periodEnd = subscriptions.compactMap(\.periodEnd).max() else { return nil }
+        return Date(timeIntervalSince1970: Double(periodEnd))
+    }
+}
+
+extension CurrentPlan.Subscription {
+    public var willRenew: Bool? {
+        renew.map { $0 == 1 }
     }
 }
