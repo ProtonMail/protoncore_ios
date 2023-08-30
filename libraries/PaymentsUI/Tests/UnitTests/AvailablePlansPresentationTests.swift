@@ -58,7 +58,6 @@ final class AvailablePlansPresentationTests: XCTestCase {
             entitlements: [],
             decorations: []
         )
-        
 
         // When
         sut = AvailablePlansPresentation.createAvailablePlans(
