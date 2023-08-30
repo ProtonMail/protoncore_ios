@@ -50,37 +50,15 @@ final class CurrentPlanPresentationTests: XCTestCase {
         )
         
         // When
-        sut = CurrentPlanPresentation.createCurrentPlan(
-            from: subscription,
-            price: "price"
-        )
+        sut = CurrentPlanPresentation.createCurrentPlan(from: subscription)
         
         // Then
         XCTAssertEqual(sut.details.title, "title")
         XCTAssertEqual(sut.details.description, "description")
         XCTAssertEqual(sut.details.cycleDescription, "cycleDescription")
-        XCTAssertEqual(sut.details.price, "price")
+        XCTAssertEqual(sut.details.price, "$0")
         XCTAssertNil(sut.details.endDate)
         XCTAssertTrue(sut.details.entitlements.isEmpty)
-    }
-    
-    func test_createCurrentPlan_failure() {
-        // Given
-        let subscription = CurrentPlan.Subscription(
-            title: "",
-            description: "",
-            cycleDescription: "",
-            entitlements: []
-        )
-        
-        // When
-        sut = CurrentPlanPresentation.createCurrentPlan(
-            from: subscription,
-            price: nil
-        )
-        
-        // Then
-        XCTAssertNil(sut)
     }
 }
 
