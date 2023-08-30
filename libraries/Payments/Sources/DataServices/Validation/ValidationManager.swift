@@ -21,9 +21,11 @@
 
 import Foundation
 import StoreKit
+import ProtonCoreFeatureSwitch
+import ProtonCoreUtilities
 
 protocol ValidationManagerDependencies: AnyObject {
-    var planService: ServicePlanDataServiceProtocol { get }
+    var planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol> { get }
     var products: [SKProduct] { get }
 }
 
@@ -47,7 +49,13 @@ class ValidationManager {
             return .failure(StoreKitManager.Errors.unavailableProduct)
         }
 
-        guard dependencies.planService.currentSubscription?.hasExistingProtonSubscription == false else {
+        // TODO: support purchase process with PlansDataSource object
+        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = dependencies.planService else {
+            assertionFailure("Purchase process with dynamic plans is not supported yet")
+            return .failure(StoreKitManager.Errors.transactionFailedByUnknownReason)
+        }
+
+        guard planService.currentSubscription?.hasExistingProtonSubscription == false else {
             return .failure(StoreKitManager.Errors.invalidPurchase)
         }
 

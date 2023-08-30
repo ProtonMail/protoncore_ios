@@ -22,10 +22,12 @@
 import Foundation
 import StoreKit
 import Reachability
+import ProtonCoreFeatureSwitch
 import ProtonCoreLog
 import ProtonCoreHash
 import ProtonCoreServices
 import ProtonCoreObservability
+import ProtonCoreUtilities
 
 final class StoreKitManager: NSObject, StoreKitManagerProtocol {
 
@@ -41,9 +43,8 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     }
     private let inAppPurchaseIdentifiersGet: ListOfIAPIdentifiersGet
     private let inAppPurchaseIdentifiersSet: ListOfIAPIdentifiersSet
-
     // it's internal because of the ValidationManagerDependencies protocol
-    let planService: ServicePlanDataServiceProtocol
+    let planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>
     private let paymentsAlertManager: PaymentsAlertManager
     private let paymentsApi: PaymentsApiProtocol
     let apiService: APIService
@@ -183,6 +184,10 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     
     private var processingType: ProcessingType {
         guard applicationUserId() == nil else {
+            // TODO: support purchase process with PlansDataSource object
+            guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.planService else {
+                fatalError("Purchase process with dynamic plans is not supported yet")
+            }
             if planService.currentSubscription?.endDate?.isFuture ?? false {
                 return .existingUserAddCredits
             }
@@ -204,7 +209,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
 
     init(inAppPurchaseIdentifiersGet: @escaping ListOfIAPIdentifiersGet,
          inAppPurchaseIdentifiersSet: @escaping ListOfIAPIdentifiersSet,
-         planService: ServicePlanDataServiceProtocol,
+         planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>,
          paymentsApi: PaymentsApiProtocol,
          apiService: APIService,
          canExtendSubscription: Bool,
@@ -242,6 +247,10 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     }
 
     public func updateAvailableProductsList(completion: @escaping (Error?) -> Void) {
+        // This is just for early detection of programmers errors and to indicate what can be removed when we remove the feature flag
+        if FeatureFactory.shared.isEnabled(.dynamicPlans) {
+            assertionFailure("This method should never be called with dynamic plans. The StoreKitDataSource object fetches the SKProducts")
+        }
         updateAvailableProductsListCompletionBlock = { error in DispatchQueue.main.async { completion(error) } }
         request = SKProductsRequest(productIdentifiers: inAppPurchaseIdentifiersGet())
         request?.delegate = self
@@ -261,7 +270,12 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     }
 
     public func isValidPurchase(storeKitProductId: String, completion: @escaping (Bool) -> Void) {
-        let planService = planService
+        // TODO: support purchase process with PlansDataSource object
+        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.planService else {
+            assertionFailure("Purchase process with dynamic plans is not supported yet")
+            completion(false)
+            return
+        }
         planService.updateServicePlans(callBlocksOnParticularQueue: nil) { [weak self] in
             guard planService.isIAPAvailable else {
                 completion(false)
@@ -287,13 +301,20 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
               let product = availableProducts.first(where: { $0.productIdentifier == storeKitProductId })
         else { return errorCompletion(Errors.unavailableProduct) }
 
+        // TODO: support purchase process with PlansDataSource object
+        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.planService else {
+            assertionFailure("Purchase process with dynamic plans is not supported yet")
+            errorCompletion(Errors.transactionFailedByUnknownReason)
+            return
+        }
+
         planService.updateServicePlans(callBlocksOnParticularQueue: nil) { [weak self] in
             guard let self = self else {
                 errorCompletion(Errors.transactionFailedByUnknownReason)
                 return
             }
-            guard self.planService.isIAPAvailable,
-                  let details = self.planService.detailsOfPlanCorrespondingToIAP(plan),
+            guard planService.isIAPAvailable,
+                  let details = planService.detailsOfPlanCorrespondingToIAP(plan),
                   details.isPurchasable else {
                 errorCompletion(Errors.unavailableProduct)
                 return
@@ -351,13 +372,20 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
         
         threadSafeCache.set(value: amountDue, for: amountDueCacheKey, in: \.amountDue)
 
+        // TODO: support purchase process with PlansDataSource object
+        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.planService else {
+            assertionFailure("Purchase process with dynamic plans is not supported yet")
+            errorCompletion(Errors.transactionFailedByUnknownReason)
+            return
+        }
+
         planService.updateCurrentSubscription(callBlocksOnParticularQueue: nil) { [weak self] in
             guard let self = self else {
                 errorCompletion(Errors.transactionFailedByUnknownReason)
                 return
             }
             
-            guard self.planService.currentSubscription?.hasExistingProtonSubscription == false || (!self.planService.hasPaymentMethods && self.planService.currentSubscription?.hasExistingProtonSubscription == true && self.canExtendSubscription && !self.planService.willRenewAutomatically(plan: plan)) else {
+            guard planService.currentSubscription?.hasExistingProtonSubscription == false || (!planService.hasPaymentMethods && planService.currentSubscription?.hasExistingProtonSubscription == true && self.canExtendSubscription && !planService.willRenewAutomatically(plan: plan)) else {
                 errorCompletion(Errors.invalidPurchase)
                 return
             }
@@ -436,6 +464,10 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
 
 extension StoreKitManager: SKProductsRequestDelegate {
     public func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        // This is just for early detection of programmers errors and to indicate what can be removed when we remove the feature flag
+        if FeatureFactory.shared.isEnabled(.dynamicPlans) {
+            assertionFailure("This method should never be called with dynamic plans. The StoreKitDataSource object fetches the SKProducts")
+        }
         if !response.invalidProductIdentifiers.isEmpty {
             PMLog.error("Some IAP identifiers are reported as invalid by the AppStore: \(response.invalidProductIdentifiers)")
         }
@@ -448,6 +480,10 @@ extension StoreKitManager: SKProductsRequestDelegate {
     }
 
     func request(_: SKRequest, didFailWithError error: Error) {
+        // This is just for early detection of programmers errors and to indicate what can be removed when we remove the feature flag
+        if FeatureFactory.shared.isEnabled(.dynamicPlans) {
+            assertionFailure("This method should never be called with dynamic plans. The StoreKitDataSource object fetches the SKProducts")
+        }
         #if targetEnvironment(simulator)
         if let skerror = error as? SKError, skerror.code == .unknown {
             updateAvailableProductsListCompletionBlock?(nil)
@@ -613,6 +649,12 @@ extension StoreKitManager: SKPaymentTransactionObserver {
         guard let plan = InAppPurchasePlan(storeKitProductId: transaction.payment.productIdentifier)
         else { throw Errors.alreadyPurchasedPlanDoesNotMatchBackend }
 
+        // TODO: support purchase process with PlansDataSource object
+        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.planService else {
+            assertionFailure("Purchase process with dynamic plans is not supported yet")
+            throw Errors.transactionFailedByUnknownReason
+        }
+
         if planService.detailsOfPlanCorrespondingToIAP(plan) == nil {
             try planService.updateServicePlans()
         }
@@ -738,8 +780,21 @@ extension StoreKitManager: ProcessDependencies {
     var tokenStorage: PaymentTokenStorage { return commonTokenStorage }
     var paymentsApiProtocol: PaymentsApiProtocol { return paymentsApi }
     var alertManager: PaymentsAlertManager { return paymentsAlertManager }
-    var updateSubscription: (Subscription) -> Void { { [weak self] in self?.planService.currentSubscription = $0 } }
+    var updateSubscription: (Subscription) -> Void { { [weak self] in
+        // TODO: support purchase process with PlansDataSource object
+        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self?.planService else {
+            assertionFailure("Purchase process with dynamic plans is not supported yet")
+            return
+        }
+        planService.currentSubscription = $0
+    } }
     func updateCurrentSubscription(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        // TODO: support purchase process with PlansDataSource object
+        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.planService else {
+            assertionFailure("Purchase process with dynamic plans is not supported yet")
+            failure(StoreKitManager.Errors.transactionFailedByUnknownReason)
+            return
+        }
         planService.updateCurrentSubscription(success: success, failure: failure)
     }
     
@@ -770,4 +825,10 @@ extension StoreKitManager: ProcessDependencies {
 
 extension StoreKitManager: ValidationManagerDependencies {
     var products: [SKProduct] { availableProducts }
+}
+
+extension StoreKitManager: StoreKitManagerIAPUpdateProtocol {
+    func iapsWereFetched(iaps: [SKProduct]) {
+        availableProducts = iaps
+    }
 }

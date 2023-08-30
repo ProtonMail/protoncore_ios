@@ -64,7 +64,7 @@ final class StoreKitManagerTests: XCTestCase {
         // given
         let out = StoreKitManager(inAppPurchaseIdentifiersGet: { [] },
                                   inAppPurchaseIdentifiersSet: { _ in },
-                                  planService: planServiceMock,
+                                  planService: .left(planServiceMock),
                                   paymentsApi: paymentsApi,
                                   apiService: apiService,
                                   canExtendSubscription: false,
@@ -92,7 +92,7 @@ final class StoreKitManagerTests: XCTestCase {
         planServiceMock.isIAPAvailableStub.fixture = false
         let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
                                   inAppPurchaseIdentifiersSet: { _ in },
-                                  planService: planServiceMock,
+                                  planService: .left(planServiceMock),
                                   paymentsApi: paymentsApi,
                                   apiService: apiService,
                                   canExtendSubscription: false,
@@ -122,7 +122,7 @@ final class StoreKitManagerTests: XCTestCase {
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in nil }
         let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
                                   inAppPurchaseIdentifiersSet: { _ in },
-                                  planService: planServiceMock,
+                                  planService: .left(planServiceMock),
                                   paymentsApi: paymentsApi,
                                   apiService: apiService,
                                   canExtendSubscription: false,
@@ -152,7 +152,7 @@ final class StoreKitManagerTests: XCTestCase {
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in Plan.empty.updated(name: "ios_test_12_usd_non_renewing", state: 0) }
         let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
                                   inAppPurchaseIdentifiersSet: { _ in },
-                                  planService: planServiceMock,
+                                  planService: .left(planServiceMock),
                                   paymentsApi: paymentsApi,
                                   apiService: apiService,
                                   canExtendSubscription: false,
@@ -183,7 +183,7 @@ final class StoreKitManagerTests: XCTestCase {
         planServiceMock.currentSubscriptionStub.fixture = .dummy.updated(planDetails: [planDetails])
         let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
                                   inAppPurchaseIdentifiersSet: { _ in },
-                                  planService: planServiceMock,
+                                  planService: .left(planServiceMock),
                                   paymentsApi: paymentsApi,
                                   apiService: apiService,
                                   canExtendSubscription: false,
@@ -222,7 +222,7 @@ final class StoreKitManagerTests: XCTestCase {
         planServiceMock.paymentMethodsStub.fixture = []
         let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
                                   inAppPurchaseIdentifiersSet: { _ in },
-                                  planService: planServiceMock,
+                                  planService: .left(planServiceMock),
                                   paymentsApi: paymentsApi,
                                   apiService: apiService,
                                   canExtendSubscription: true,
@@ -261,7 +261,7 @@ final class StoreKitManagerTests: XCTestCase {
         planServiceMock.paymentMethodsStub.fixture = [PaymentMethod(type: "card")]
         let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
                                   inAppPurchaseIdentifiersSet: { _ in },
-                                  planService: planServiceMock,
+                                  planService: .left(planServiceMock),
                                   paymentsApi: paymentsApi,
                                   apiService: apiService,
                                   canExtendSubscription: true,
@@ -300,7 +300,7 @@ final class StoreKitManagerTests: XCTestCase {
         planServiceMock.paymentMethodsStub.fixture = []
         let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
                                   inAppPurchaseIdentifiersSet: { _ in },
-                                  planService: planServiceMock,
+                                  planService: .left(planServiceMock),
                                   paymentsApi: paymentsApi,
                                   apiService: apiService,
                                   canExtendSubscription: true,
@@ -334,7 +334,7 @@ final class StoreKitManagerTests: XCTestCase {
         storeKitManagerDelegate.userIdStub.fixture = nil
         let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
                                   inAppPurchaseIdentifiersSet: { _ in },
-                                  planService: planServiceMock,
+                                  planService: .left(planServiceMock),
                                   paymentsApi: paymentsApi,
                                   apiService: apiService,
                                   canExtendSubscription: false,
@@ -371,7 +371,7 @@ final class StoreKitManagerTests: XCTestCase {
         planServiceMock.currentSubscriptionStub.fixture = .dummy
         let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
                                   inAppPurchaseIdentifiersSet: { _ in },
-                                  planService: planServiceMock,
+                                  planService: .left(planServiceMock),
                                   paymentsApi: paymentsApi,
                                   apiService: apiService,
                                   canExtendSubscription: false,
@@ -407,7 +407,7 @@ final class StoreKitManagerTests: XCTestCase {
         }
         let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
                                   inAppPurchaseIdentifiersSet: { _ in },
-                                  planService: planServiceMock,
+                                  planService: .left(planServiceMock),
                                   paymentsApi: paymentsApi,
                                   apiService: apiService,
                                   canExtendSubscription: false,
