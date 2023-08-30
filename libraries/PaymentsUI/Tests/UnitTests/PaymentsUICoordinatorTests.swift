@@ -52,7 +52,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
         paymentsApi = PaymentsApiMock()
         apiService = APIServiceMock()
         alertManager = AlertManagerMock()
-        purchaseManager = PurchaseManager(planService: planServiceMock,
+        purchaseManager = PurchaseManager(planService: .left(planServiceMock),
                                           storeKitManager: storeKitManager,
                                           paymentsApi: paymentsApi,
                                           apiService: apiService )
@@ -72,7 +72,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
         
         let plan = InAppPurchasePlan.freePlan
         let testPlan = PlanPresentation(accountPlan: plan, planPresentationType: .current(.unavailable))
-        let coordinator = PaymentsUICoordinator.init(planService: planServiceMock,
+        let coordinator = PaymentsUICoordinator.init(planService: .left(planServiceMock),
                                                      storeKitManager: storeKitManager,
                                                      purchaseManager: purchaseManager,
                                                      clientApp: .vpn,
@@ -119,7 +119,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
         }
         let plan = InAppPurchasePlan(protonPlan: .dummy.updated(name: "mail_plus"), listOfIAPIdentifiers: ["ios_test_12_usd_non_renewing"])!
         let testPlan = PlanPresentation(accountPlan: plan, planPresentationType: .current(.unavailable))
-        let coordinator = PaymentsUICoordinator.init(planService: planServiceMock,
+        let coordinator = PaymentsUICoordinator.init(planService: .left(planServiceMock),
                                                      storeKitManager: storeKitManager,
                                                      purchaseManager: purchaseManager,
                                                      clientApp: .vpn,
@@ -149,7 +149,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
         }
         let plan = InAppPurchasePlan(protonPlan: .dummy.updated(name: "mail_plus"), listOfIAPIdentifiers: ["ios_test_12_usd_non_renewing"])!
         let testPlan = PlanPresentation(accountPlan: plan, planPresentationType: .current(.unavailable))
-        let coordinator = PaymentsUICoordinator.init(planService: planServiceMock,
+        let coordinator = PaymentsUICoordinator.init(planService: .left(planServiceMock),
                                                      storeKitManager: storeKitManager,
                                                      purchaseManager: purchaseManager,
                                                      clientApp: .vpn,
@@ -178,7 +178,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
         }
         let plan = InAppPurchasePlan(protonPlan: .dummy.updated(name: "mail_p211l2us_free"), listOfIAPIdentifiers: ["ios_test_12_usd_non_renewing"])!
         let testPlan = PlanPresentation(accountPlan: plan, planPresentationType: .current(.unavailable))
-        let coordinator = PaymentsUICoordinator.init(planService: planServiceMock,
+        let coordinator = PaymentsUICoordinator.init(planService: .left(planServiceMock),
                                                      storeKitManager: storeKitManager,
                                                      purchaseManager: purchaseManager,
                                                      clientApp: .vpn,
@@ -205,7 +205,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
         
         let plan = InAppPurchasePlan(protonPlan: .dummy.updated(name: "mail_plus"), listOfIAPIdentifiers: ["ios_test_12_usd_non_renewing"])!
         let testPlan = PlanPresentation(accountPlan: plan, planPresentationType: .current(.unavailable))
-        let coordinator = PaymentsUICoordinator.init(planService: planServiceMock,
+        let coordinator = PaymentsUICoordinator.init(planService: .left(planServiceMock),
                                                      storeKitManager: storeKitManager,
                                                      purchaseManager: purchaseManager,
                                                      clientApp: .vpn,

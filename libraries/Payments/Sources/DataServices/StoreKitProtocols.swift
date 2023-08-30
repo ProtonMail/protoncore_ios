@@ -49,7 +49,7 @@ public enum PaymentSucceeded: Equatable {
     case resolvingIAPToCreditsCausedByError
 }
 
-public protocol StoreKitManagerProtocol: NSObjectProtocol {
+public protocol StoreKitManagerProtocol: NSObjectProtocol, StoreKitManagerIAPUpdateProtocol {
     typealias SuccessCallback = (PaymentSucceeded) -> Void
     typealias ErrorCallback = (Error) -> Void
     typealias FinishCallback = () -> Void
@@ -76,6 +76,10 @@ public protocol StoreKitManagerProtocol: NSObjectProtocol {
     var reportBugAlertHandler: BugAlertHandler { get }
     var canExtendSubscription: Bool { get }
     var refreshHandler: (ProcessCompletionResult) -> Void { get set }
+}
+
+public protocol StoreKitManagerIAPUpdateProtocol: AnyObject {
+    func iapsWereFetched(iaps: [SKProduct])
 }
 
 public typealias BugAlertHandler = ((String?) -> Void)?

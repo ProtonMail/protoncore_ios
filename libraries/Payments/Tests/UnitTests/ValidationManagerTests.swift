@@ -58,7 +58,7 @@ final class ValidationManagerTests: XCTestCase {
         let planService = ServicePlanDataServiceMock()
         planService.currentSubscriptionStub.fixture = Subscription.dummy
             .updated(planDetails: [Plan.dummy.updated(name: "test_plan")])
-        dependencies.planServiceStub.fixture = planService
+        dependencies.planServiceStub.fixture = .left(planService)
         let out = ValidationManager(dependencies: dependencies)
 
         // when
@@ -77,7 +77,7 @@ final class ValidationManagerTests: XCTestCase {
         dependencies.productsStub.fixture = [testProduct]
         let planService = ServicePlanDataServiceMock()
         planService.currentSubscriptionStub.fixture = .dummy
-        dependencies.planServiceStub.fixture = planService
+        dependencies.planServiceStub.fixture = .left(planService)
         let out = ValidationManager(dependencies: dependencies)
 
         // when

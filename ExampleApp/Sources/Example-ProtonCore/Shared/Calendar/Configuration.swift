@@ -1,4 +1,5 @@
 import class Foundation.Bundle
+import ProtonCoreFeatureSwitch
 import ProtonCoreObfuscatedConstants
 import typealias ProtonCoreLogin.AccountType
 import typealias ProtonCorePayments.ListOfIAPIdentifiers
@@ -7,8 +8,8 @@ import enum ProtonCoreDataModel.ClientApp
 
 let clientApp: ClientApp = .calendar
 
-let listOfIAPIdentifiers: ListOfIAPIdentifiers = ObfuscatedConstants.calendarIAPIdentifiers
-let listOfShownPlanNames: ListOfShownPlanNames = ObfuscatedConstants.calendarShownPlanNames
+let listOfIAPIdentifiers: ListOfIAPIdentifiers = FeatureFactory.shared.isEnabled(.dynamicPlans) ? [] : ObfuscatedConstants.calendarIAPIdentifiers
+let listOfShownPlanNames: ListOfShownPlanNames = FeatureFactory.shared.isEnabled(.dynamicPlans) ? [] : ObfuscatedConstants.calendarShownPlanNames
 
 let appVersionHeader = AppVersionHeader(appNamePrefix: "ios-calendar@")
 

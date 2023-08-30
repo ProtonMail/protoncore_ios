@@ -42,7 +42,11 @@ final class StoreKitDataSource: NSObject, StoreKitDataSourceProtocol {
     private let requestFactory: (Set<String>) -> SKProductsRequest
     var requestContinuation: CheckedContinuation<Void, Error>?
 
-    init(requestFactory: @escaping (Set<String>) -> SKProductsRequest = { .init(productIdentifiers: $0) }) {
+    weak var storeKitManager: StoreKitManagerIAPUpdateProtocol?
+
+    init(storeKitManager: StoreKitManagerIAPUpdateProtocol?,
+         requestFactory: @escaping (Set<String>) -> SKProductsRequest = { .init(productIdentifiers: $0) }) {
+        self.storeKitManager = storeKitManager
         self.requestFactory = requestFactory
     }
     
@@ -89,6 +93,7 @@ extension StoreKitDataSource: SKProductsRequestDelegate {
         }
         unavailableProductsIdentifiers = response.invalidProductIdentifiers
         availableProducts = response.products
+        storeKitManager?.iapsWereFetched(iaps: response.products)
         request = nil
         requestContinuation?.resume(returning: ())
         requestContinuation = nil
