@@ -52,12 +52,8 @@ final class AvailablePlansPresentationTests: XCTestCase {
         )
         
         let plan = AvailablePlans.AvailablePlan(
-            name: "core2023",
             title: "title",
-            state: 1,
             description: "description",
-            features: 1,
-            layout: "default",
             instances: [instance],
             entitlements: [],
             decorations: []
@@ -72,10 +68,10 @@ final class AvailablePlansPresentationTests: XCTestCase {
         )
         
         // Then
-        XCTAssertEqual(sut.availablePlan.storeKitProductId, "ioscore_core2023_testpromo_12_usd_non_renewing")
-        XCTAssertEqual(sut.availablePlan.protonName, "core2023")
-        XCTAssertEqual(sut.availablePlan.offer, "testpromo")
-        XCTAssertEqual(sut.availablePlan.period, "12")
+        XCTAssertEqual(sut.availablePlan?.storeKitProductId, "ioscore_core2023_testpromo_12_usd_non_renewing")
+        XCTAssertEqual(sut.availablePlan?.protonName, "core2023")
+        XCTAssertEqual(sut.availablePlan?.offer, "testpromo")
+        XCTAssertEqual(sut.availablePlan?.period, "12")
         XCTAssertEqual(sut.storeKitProductId, "ioscore_core2023_testpromo_12_usd_non_renewing")
         XCTAssertFalse(sut.isCurrentlyProcessed)
         XCTAssertFalse(sut.isExpanded)
@@ -93,12 +89,8 @@ final class AvailablePlansPresentationTests: XCTestCase {
         )
         
         let plan = AvailablePlans.AvailablePlan(
-            name: "core2023",
             title: "title",
-            state: 1,
             description: "description",
-            features: 1,
-            layout: "default",
             instances: [instance],
             entitlements: [],
             decorations: []

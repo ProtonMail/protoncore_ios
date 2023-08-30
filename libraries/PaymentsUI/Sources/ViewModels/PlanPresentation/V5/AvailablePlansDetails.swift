@@ -25,7 +25,7 @@ import Foundation
 import ProtonCorePayments
 
 struct AvailablePlansDetails {
-    let iapID: String
+    let iapID: String?
     let title: String // "VPN Plus"
     let description: String? // "Your privacy are our priority."
     let cycleDescription: String? // "for 1 year"
@@ -35,7 +35,7 @@ struct AvailablePlansDetails {
     
     enum Decoration {
         case percentage(percentage: String, decription: String)
-        case star(iconName: String)
+        case starred(iconName: String)
         case border(color: String)
     }
     
@@ -46,20 +46,15 @@ struct AvailablePlansDetails {
     }
     
     static func createPlan(from plan: AvailablePlans.AvailablePlan,
-                           for instance: AvailablePlans.AvailablePlan.Instance,
-                           iapPlan: InAppPurchasePlan,
-                           storeKitManager: StoreKitManagerProtocol) -> AvailablePlansDetails? {
-        guard let price = iapPlan.planPrice(from: storeKitManager),
-              let iapID = instance.vendors?.apple.ID else {
-            return nil
-        }
-        
+                           for instance: AvailablePlans.AvailablePlan.Instance? = nil,
+                           iapPlan: InAppPurchasePlan? = nil,
+                           storeKitManager: StoreKitManagerProtocol? = nil) -> AvailablePlansDetails? {
         let decorations: [Decoration] = plan.decorations.map {
             switch $0 {
             case .border(let decoration):
                 return .border(color: decoration.color)
-            case .star(let decoration):
-                return .star(iconName: decoration.icon)
+            case .starred(let decoration):
+                return .starred(iconName: decoration.iconName)
             }
         }
         
@@ -73,15 +68,33 @@ struct AvailablePlansDetails {
             }
         }
         
-        return .init(
-            iapID: iapID,
-            title: plan.title,
-            description: plan.description,
-            cycleDescription: instance.description,
-            price: price,
-            decorations: decorations,
-            entitlements: entitlements
-        )
+        if let instance = instance {
+            guard let storeKitManager = storeKitManager,
+                  let price = iapPlan?.planPrice(from: storeKitManager),
+                  let iapID = instance.vendors?.apple.ID else {
+                return nil
+            }
+            
+            return .init(
+                iapID: iapID,
+                title: plan.title,
+                description: plan.description,
+                cycleDescription: instance.description,
+                price: price,
+                decorations: decorations,
+                entitlements: entitlements
+            )
+        } else {
+            return .init(
+                iapID: nil,
+                title: plan.title,
+                description: plan.description,
+                cycleDescription: nil,
+                price: PriceFormatter.formatPlanPrice(price: 0, locale: Locale.current, maximumFractionDigits: 0),
+                decorations: decorations,
+                entitlements: entitlements
+            )
+        }
     }
 }
 

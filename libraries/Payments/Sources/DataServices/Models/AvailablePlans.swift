@@ -28,13 +28,8 @@ public struct AvailablePlans: Decodable, Equatable {
     public var plans: [AvailablePlan]
     
     public struct AvailablePlan: Decodable, Equatable {
-        var name: String?
         public var title: String
-        var state: Int
-        var type: Int?
         public var description: String?
-        var features: Int?
-        var layout: String
         public var instances: [Instance]
         public var entitlements: [Entitlement]
         public var decorations: [Decoration]
@@ -83,7 +78,7 @@ public struct AvailablePlans: Decodable, Equatable {
         
         public enum Decoration: Equatable {
             case border(BorderDecoration)
-            case star(StarDecoration)
+            case starred(StarDecoration)
             
             public struct BorderDecoration: Decodable, Equatable {
                 public var type: String
@@ -92,7 +87,7 @@ public struct AvailablePlans: Decodable, Equatable {
             
             public struct StarDecoration: Decodable, Equatable {
                 public var type: String
-                public var icon: String
+                public var iconName: String
             }
         }
     }
@@ -122,7 +117,7 @@ extension AvailablePlans.AvailablePlan.Entitlement: Decodable {
 extension AvailablePlans.AvailablePlan.Decoration: Decodable {
     private enum EntitlementType: String, Decodable {
         case border
-        case star
+        case starred
     }
     
     enum CodingKeys: String, CodingKey {
@@ -137,8 +132,8 @@ extension AvailablePlans.AvailablePlan.Decoration: Decodable {
         switch type {
         case .border:
             self = .border(try .init(from: decoder))
-        case .star:
-            self = .star(try .init(from: decoder))
+        case .starred:
+            self = .starred(try .init(from: decoder))
         }
     }
 }

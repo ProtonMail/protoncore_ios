@@ -36,8 +36,8 @@
             }
         ],
         "Decorations": [{
-                "Type": "star",
-                "Icon": "<base64>"
+                "Type": "starred",
+                "IconName": "tick"
             },
             {
                 "Type": "border",

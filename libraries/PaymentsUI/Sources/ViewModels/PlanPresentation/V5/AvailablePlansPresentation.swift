@@ -24,14 +24,14 @@
 import ProtonCorePayments
 
 class AvailablePlansPresentation {
-    let availablePlan: InAppPurchasePlan
+    let availablePlan: InAppPurchasePlan?
     let details: AvailablePlansDetails
-    var storeKitProductId: String? { availablePlan.storeKitProductId }
+    var storeKitProductId: String? { availablePlan?.storeKitProductId }
     var isCurrentlyProcessed: Bool = false
     var isExpanded: Bool = false
-    var isSelectable: Bool = false
+    var canBePurchasedNow: Bool = true
     
-    init(availablePlan: InAppPurchasePlan,
+    init(availablePlan: InAppPurchasePlan?,
          details: AvailablePlansDetails,
          isCurrentlyProcessed: Bool = false,
          isExpanded: Bool = false) {
@@ -42,8 +42,18 @@ class AvailablePlansPresentation {
     }
     
     static func createAvailablePlans(from plan: AvailablePlans.AvailablePlan,
-                                     for instance: AvailablePlans.AvailablePlan.Instance,
-                                     storeKitManager: StoreKitManagerProtocol) -> AvailablePlansPresentation? {
+                                     for instance: AvailablePlans.AvailablePlan.Instance? = nil,
+                                     storeKitManager: StoreKitManagerProtocol? = nil) -> AvailablePlansPresentation? {
+        if let instance, let storeKitManager {
+            return createAvailablePlansWithInstance(from: plan, for: instance, storeKitManager: storeKitManager)
+        } else {
+            return createAvailablePlansWithoutInstance(from: plan)
+        }
+    }
+    
+    static func createAvailablePlansWithInstance(from plan: AvailablePlans.AvailablePlan,
+                                                 for instance: AvailablePlans.AvailablePlan.Instance,
+                                                 storeKitManager: StoreKitManagerProtocol) -> AvailablePlansPresentation? {
         guard let inAppPurchasePlan = InAppPurchasePlan(availablePlanInstance: instance) else {
             return nil
         }
@@ -56,6 +66,11 @@ class AvailablePlansPresentation {
         ) else { return nil }
         
         return .init(availablePlan: inAppPurchasePlan, details: details)
+    }
+    
+    static func createAvailablePlansWithoutInstance(from plan: AvailablePlans.AvailablePlan) -> AvailablePlansPresentation? {
+        guard let details = AvailablePlansDetails.createPlan(from: plan) else { return nil }
+        return .init(availablePlan: nil, details: details)
     }
 }
 

@@ -30,16 +30,8 @@ class CurrentPlanPresentation {
         self.details = details
     }
     
-    static func createCurrentPlan(from currentPlanSubscription: CurrentPlan.Subscription,
-                                  price protonPrice: String?) -> CurrentPlanPresentation? {
-        
-        
-        guard let protonPrice, let details = CurrentPlanDetailsV5.createPlan(
-            from: currentPlanSubscription,
-            protonPrice: protonPrice
-        ) else { return nil }
-        
-        return .init(details: details)
+    static func createCurrentPlan(from currentPlanSubscription: CurrentPlan.Subscription) -> CurrentPlanPresentation? {
+        .init(details: CurrentPlanDetailsV5.createPlan(from: currentPlanSubscription))
     }
 }
 
