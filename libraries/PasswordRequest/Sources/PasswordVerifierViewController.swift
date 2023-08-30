@@ -33,7 +33,6 @@ public protocol PasswordVerifierViewControllerDelegate: AnyObject {
     func didCloseWithError(code: Int, description: String)
 }
 
-
 public final class PasswordVerifierViewController: UIViewController {
     private let titleLabel = UILabel(frame: .zero)
     private let passwordTextField = PMTextField(frame: .zero)

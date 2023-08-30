@@ -28,7 +28,7 @@ import ProtonCorePayments
 
 public final class StoreKitDataSourceMock: NSObject, StoreKitDataSourceProtocol {
 
-    public override init() {}
+    override public init() {}
 
     @PropertyStub(\StoreKitDataSourceProtocol.availableProducts, initialGet: .crash) public var availableProductsStub
     public var availableProducts: [SKProduct] {
