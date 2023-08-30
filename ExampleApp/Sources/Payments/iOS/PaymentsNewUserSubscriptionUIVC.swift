@@ -270,9 +270,7 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
             canExtendSubscription: canExtendSubscriptionSwitch.isOn,
             reportBugAlertHandler: { [weak self] receipt in self?.reportBugAlertHandler(receipt) }
         )
-        payments.storeKitManager.delegate = self
-        payments.storeKitManager.subscribeToPaymentQueue()
-        payments.storeKitManager.updateAvailableProductsList(completion: completion)
+        payments.activate(delegate: self, storeKitProductsFetched: completion)
         paymentsUI = PaymentsUI(
             payments: payments, clientApp: clientApp, shownPlanNames: listOfShownPlanNames, customization: .empty
         )

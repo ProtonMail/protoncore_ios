@@ -28,13 +28,13 @@ import StoreKit
 public class SKRequestMock: SKProductsRequest {
 
     @PropertyStub(\SKRequestMock.delegate, initialGet: nil) public var delegateStub
-    public override var delegate: SKProductsRequestDelegate? {
+    override public var delegate: SKProductsRequestDelegate? {
         get { delegateStub() }
         set { delegateStub(newValue) }
     }
 
     @FuncStub(SKRequestMock.start) public var startStub
-    public override func start() { startStub() }
+    override public func start() { startStub() }
 }
 
 public extension SKProduct {

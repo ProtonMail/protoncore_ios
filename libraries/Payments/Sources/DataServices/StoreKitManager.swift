@@ -41,6 +41,8 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     }
     private let inAppPurchaseIdentifiersGet: ListOfIAPIdentifiersGet
     private let inAppPurchaseIdentifiersSet: ListOfIAPIdentifiersSet
+
+    // it's internal because of the ValidationManagerDependencies protocol
     let planService: ServicePlanDataServiceProtocol
     private let paymentsAlertManager: PaymentsAlertManager
     private let paymentsApi: PaymentsApiProtocol

@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
+import ProtonCoreFeatureSwitch
 import ProtonCoreServices
 
 typealias ListOfIAPIdentifiersGet = () -> ListOfIAPIdentifiers
@@ -79,6 +80,37 @@ public final class Payments {
         self.canExtendSubscription = canExtendSubscription
         paymentsAlertManager = PaymentsAlertManager(alertManager: alertManager ?? AlertManager())
         paymentsApi = PaymentsApiImplementation()
+    }
+
+    public func activate(delegate: StoreKitManagerDelegate, storeKitProductsFetched: @escaping (Error?) -> Void = { _ in }) {
+        // Setting delegate is a requirement before any purchase-related operation is performed
+        storeKitManager.delegate = delegate
+
+        // To initiate purchase recovery path, start listening for the transactions in the payment queue
+        // If there are no transactions, nothing will happen
+        // If there are transactions, they will be processed
+        // Part of the processing will be fetching the available plans from the BE
+        storeKitManager.subscribeToPaymentQueue()
+
+        if FeatureFactory.shared.isEnabled(.dynamicPlans) {
+            // No-op by design
+            // In the dynamic plans, fetching available IAPs from StoreKit is not a prerequisite.
+            // It is done alongside fetching available plans
+        } else {
+            // Before dynamic plans, to be ready to present the available plans, we must fetch the available IAPs from StoreKit
+            storeKitManager.updateAvailableProductsList(completion: storeKitProductsFetched)
+        }
+    }
+
+    public func deactivate() {
+        // After we unsubscribe from payments queue, StoreKit won't be informing us about any purchases, neither new nor restored
+        storeKitManager.unsubscribeFromPaymentQueue()
+
+        // In case any reference was captured in the refresh handler, we clean it
+        // The handler will be re-registered next time we call `showPaymentsUI`
+        storeKitManager.refreshHandler = { _ in }
+
+        storeKitManager.delegate = nil
     }
 }
 
