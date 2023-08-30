@@ -36,7 +36,7 @@ final class InAppPurchasePlanTests: XCTestCase {
             price: [],
             vendors: .init(
                 apple: .init(
-                    ID: "ioscore_core2023_12_usd_non_renewing"
+                    productID: "ioscore_core2023_12_usd_non_renewing"
                 )
             )
         )

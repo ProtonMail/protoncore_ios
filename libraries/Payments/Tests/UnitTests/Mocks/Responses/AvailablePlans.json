@@ -22,7 +22,7 @@
                 ],
                 "Vendors": {
                     "Apple": {
-                        "ID": "apple_some_random_id"
+                        "ProductID": "apple_some_random_id"
                     }
                 }
             }

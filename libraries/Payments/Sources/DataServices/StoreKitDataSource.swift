@@ -51,7 +51,7 @@ final class StoreKitDataSource: NSObject, StoreKitDataSourceProtocol {
     }
     
     func fetchAvailableProducts(availablePlans: AvailablePlans) async throws {
-        let planVendorIdentifiers = availablePlans.plans.flatMap(\.instances).compactMap(\.vendors).map(\.apple.ID)
+        let planVendorIdentifiers = availablePlans.plans.flatMap(\.instances).compactMap(\.vendors).map(\.apple.productID)
         try await fetchAvailableProducts(productIdentifiers: Set(planVendorIdentifiers))
     }
     
@@ -70,7 +70,7 @@ final class StoreKitDataSource: NSObject, StoreKitDataSourceProtocol {
             let originalInstances = originalPlan.instances
             let updatedInstances = originalInstances.filter {
                 guard let vendors = $0.vendors else { return false }
-                return availableProductIdentifiers.contains(vendors.apple.ID)
+                return availableProductIdentifiers.contains(vendors.apple.productID)
             }
             let updatedPlan = AvailablePlans.AvailablePlan(
                 title: originalPlan.title,

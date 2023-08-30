@@ -68,10 +68,10 @@ struct AvailablePlansDetails {
             }
         }
         
-        if let instance = instance {
+        if let instance {
             guard let storeKitManager = storeKitManager,
                   let price = iapPlan?.planPrice(from: storeKitManager),
-                  let iapID = instance.vendors?.apple.ID else {
+                  let iapID = instance.vendors?.apple.productID else {
                 return nil
             }
             

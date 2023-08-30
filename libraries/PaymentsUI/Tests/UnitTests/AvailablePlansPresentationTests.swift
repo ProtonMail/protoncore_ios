@@ -48,7 +48,7 @@ final class AvailablePlansPresentationTests: XCTestCase {
             description: "description",
             periodEnd: 1755445843,
             price: [.init(current: 19176, default: 19176)],
-            vendors: .init(apple: .init(ID: "ioscore_core2023_testpromo_12_usd_non_renewing"))
+            vendors: .init(apple: .init(productID: "ioscore_core2023_testpromo_12_usd_non_renewing"))
         )
         
         let plan = AvailablePlans.AvailablePlan(
@@ -84,7 +84,7 @@ final class AvailablePlansPresentationTests: XCTestCase {
             description: "description",
             periodEnd: 1755445843,
             price: [.init(current: 19176, default: 19176)],
-            vendors: .init(apple: .init(ID: "bad id"))
+            vendors: .init(apple: .init(productID: "bad id"))
         )
         
         let plan = AvailablePlans.AvailablePlan(
