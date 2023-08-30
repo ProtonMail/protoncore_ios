@@ -1397,7 +1397,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
             shownPlanNames: ["vpnplus", "vpnbasic", "free"],
             clientApp: .mail,
             customPlansDescription: [:],
-            planRefreshHandler:  { _ in XCTFail() },
+            planRefreshHandler: { _ in XCTFail() },
             extendSubscriptionHandler: { XCTFail() }
         )
         
@@ -1420,7 +1420,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
             shownPlanNames: ["vpnplus", "vpnbasic", "free"],
             clientApp: .mail,
             customPlansDescription: [:],
-            planRefreshHandler:  { _ in XCTFail() },
+            planRefreshHandler: { _ in XCTFail() },
             extendSubscriptionHandler: { XCTFail() }
         )
         
@@ -1446,7 +1446,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
             shownPlanNames: ["vpnplus", "vpnbasic", "free"],
             clientApp: .mail,
             customPlansDescription: [:],
-            planRefreshHandler:  { _ in XCTFail() },
+            planRefreshHandler: { _ in XCTFail() },
             extendSubscriptionHandler: { XCTFail() }
         )
         
@@ -1474,7 +1474,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
             shownPlanNames: ["vpnplus", "vpnbasic", "free"],
             clientApp: .mail,
             customPlansDescription: [:],
-            planRefreshHandler:  { _ in XCTFail() },
+            planRefreshHandler: { _ in XCTFail() },
             extendSubscriptionHandler: { XCTFail() }
         )
         
@@ -1501,7 +1501,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
             shownPlanNames: ["vpnplus", "vpnbasic", "free"],
             clientApp: .mail,
             customPlansDescription: [:],
-            planRefreshHandler:  { _ in XCTFail() },
+            planRefreshHandler: { _ in XCTFail() },
             extendSubscriptionHandler: { XCTFail() }
         )
         
@@ -1528,7 +1528,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
             shownPlanNames: ["vpnplus", "vpnbasic", "free"],
             clientApp: .mail,
             customPlansDescription: [:],
-            planRefreshHandler:  { _ in XCTFail() },
+            planRefreshHandler: { _ in XCTFail() },
             extendSubscriptionHandler: { XCTFail() }
         )
         
@@ -1555,7 +1555,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
             shownPlanNames: ["vpnplus", "vpnbasic", "free"],
             clientApp: .mail,
             customPlansDescription: [:],
-            planRefreshHandler:  { _ in XCTFail() },
+            planRefreshHandler: { _ in XCTFail() },
             extendSubscriptionHandler: { XCTFail() }
         )
         
@@ -1612,12 +1612,12 @@ private final class PlansDataSourceMock: PlansDataSourceProtocol {
     }
     
     func fetchCurrentPlan() async throws {
-        currentPlan = .init(subscriptions: [
-            .init(title: "VPN Plus",
-                  description: "nice vpn",
-                  cycleDescription: "for 12 months",
-                  entitlements: []
-                 )
+        currentPlan = .init(
+            subscriptions: [
+                .init(title: "VPN Plus",
+                      description: "nice vpn",
+                      cycleDescription: "for 12 months",
+                      entitlements: [])
             ]
         )
     }
