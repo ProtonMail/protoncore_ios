@@ -44,7 +44,7 @@ var availablePlansResponse: [String: Any] {
                         ],
                         "Vendors": [
                             "Apple": [
-                                "ID": "apple id 1"
+                                "ProductID": "apple id 1"
                             ],
                         ]
                     ]
@@ -107,7 +107,7 @@ var availablePlansToCompare: AvailablePlans {
                         description: "description 1",
                         periodEnd: 1691915780,
                         price: [.init(current: 1, default: 1)],
-                        vendors: .init(apple: .init(ID: "apple id 1"))
+                        vendors: .init(apple: .init(productID: "apple id 1"))
                     )
                 ],
                 entitlements: [
