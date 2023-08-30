@@ -124,25 +124,42 @@ class PaymentsManager {
                               completionHandler: @escaping (Result<(InAppPurchasePlan?), Error>) -> Void) {
         self.loginData = loginData
         if selectedPlan != nil {
-            // TODO: support purchase process with PlansDataSource object
-            guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.payments.planService else {
-                assertionFailure("Purchase process with dynamic plans is not supported yet")
-                completionHandler(.failure(StoreKitManagerErrors.transactionFailedByUnknownReason))
-                return
-            }
-            planService.updateCurrentSubscription { [weak self] in
-                self?.payments.storeKitManager.retryProcessingAllPendingTransactions { [weak self] in
-                    var result: InAppPurchasePlan?
-                    if planService.currentSubscription?.hasExistingProtonSubscription ?? false {
-                        result = self?.selectedPlan
+            // TODO: test purchase process with PlansDataSource object
+            switch payments.planService {
+            case .left(let planService):
+                planService.updateCurrentSubscription { [weak self] in
+                    self?.payments.storeKitManager.retryProcessingAllPendingTransactions { [weak self] in
+                        var result: InAppPurchasePlan?
+                        if planService.currentSubscription?.hasExistingProtonSubscription ?? false {
+                            result = self?.selectedPlan
+                        }
+
+                        self?.restoreExistingDelegate()
+                        self?.payments.storeKitManager.unsubscribeFromPaymentQueue()
+                        completionHandler(.success(result))
                     }
-                    
-                    self?.restoreExistingDelegate()
-                    self?.payments.storeKitManager.unsubscribeFromPaymentQueue()
-                    completionHandler(.success(result))
+                } failure: { error in
+                    completionHandler(.failure(error))
                 }
-            } failure: { error in
-                completionHandler(.failure(error))
+
+            case .right(let planDataSource):
+                Task { [weak self] in
+                    do {
+                        try await planDataSource.fetchCurrentPlan()
+                        self?.payments.storeKitManager.retryProcessingAllPendingTransactions { [weak self] in
+                            var result: InAppPurchasePlan?
+                            if planDataSource.currentPlan?.hasExistingProtonSubscription ?? false {
+                                result = self?.selectedPlan
+                            }
+
+                            self?.restoreExistingDelegate()
+                            self?.payments.storeKitManager.unsubscribeFromPaymentQueue()
+                            completionHandler(.success(result))
+                        }
+                    } catch {
+                        completionHandler(.failure(error))
+                    }
+                }
             }
         } else {
             self.restoreExistingDelegate()
@@ -160,13 +177,15 @@ class PaymentsManager {
     }
     
     func planTitle(plan: InAppPurchasePlan?) -> String? {
-        // TODO: support purchase process with PlansDataSource object
-        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.payments.planService else {
-            assertionFailure("Purchase process with dynamic plans is not supported yet")
-            return nil
-        }
         guard let plan else { return nil }
-        return planService.detailsOfPlanCorrespondingToIAP(plan)?.titleDescription
+
+        // TODO: test purchase process with PlansDataSource object
+        switch self.payments.planService {
+        case .left(let planService):
+            return planService.detailsOfPlanCorrespondingToIAP(plan)?.titleDescription
+        case .right(let planDataSource):
+            return planDataSource.detailsOfAvailablePlanCorrespondingToIAP(plan)?.title
+        }
     }
 }
 

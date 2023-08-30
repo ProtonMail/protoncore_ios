@@ -131,16 +131,25 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
     }
     
     private func updatePlans() {
-        // TODO: support purchase process with PlansDataSource object
-        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.payments.planService else {
-            assertionFailure("Purchase process with dynamic plans is not supported yet")
-            return
-        }
-        planService.updateServicePlans { [weak self] in
-            self?.purchaseSubscriptionButton.isEnabled = true
-            self?.processPossiblePlans()
-        } failure: { error in
-            PMLog.debug("Error: Update Service Plans error: \(error)")
+        // TODO: test purchase process with PlansDataSource object
+        switch payments.planService {
+        case .left(let planService):
+            planService.updateServicePlans { [weak self] in
+                self?.purchaseSubscriptionButton.isEnabled = true
+                self?.processPossiblePlans()
+            } failure: { error in
+                PMLog.debug("Error: Update Service Plans error: \(error)")
+            }
+        case .right(let planDataSource):
+            Task { [weak self] in
+                do {
+                    try await planDataSource.fetchAvailablePlans()
+                    self?.purchaseSubscriptionButton.isEnabled = true
+                    self?.processPossiblePlans()
+                } catch {
+                    PMLog.debug("Error: Update Service Plans error: \(error)")
+                }
+            }
         }
     }
     
@@ -148,20 +157,21 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
         availablePlans.removeAll()
         subscriptionSelector.removeAllSegments()
         inAppPurchases.compactMap(InAppPurchasePlan.init(storeKitProductId:)).forEach {
-            if let details = fetchDetails(accountPlan: $0), details.isPurchasable == true {
+            if let isPurchasable = checkIfIsPurchasable(accountPlan: $0), isPurchasable {
                 availablePlans.append($0)
             }
         }
         updateAvailablePlans()
     }
     
-    private func fetchDetails(accountPlan: InAppPurchasePlan) -> Plan? {
-        // TODO: support purchase process with PlansDataSource object
-        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.payments.planService else {
-            assertionFailure("Purchase process with dynamic plans is not supported yet")
-            return nil
+    private func checkIfIsPurchasable(accountPlan: InAppPurchasePlan) -> Bool? {
+        // TODO: test purchase process with PlansDataSource object
+        switch payments.planService {
+        case .left(let planService):
+            return planService.detailsOfPlanCorrespondingToIAP(accountPlan)?.isPurchasable
+        case .right(let planDataSource):
+            return planDataSource.detailsOfAvailablePlanInstanceCorrespondingToIAP(accountPlan) != nil
         }
-        return planService.detailsOfPlanCorrespondingToIAP(accountPlan)
     }
     
     private func updateAvailablePlans() {
@@ -272,27 +282,42 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
             switch result {
             case .success(let user):
                 self.userInfo = user
-                // TODO: support purchase process with PlansDataSource object
-                guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.payments.planService else {
-                    assertionFailure("Purchase process with dynamic plans is not supported yet")
-                    return
-                }
-                planService.updateServicePlans { [unowned self] in
-                    if planService.isIAPAvailable {
-                        planService.updateCurrentSubscription() { [unowned self] in
-                            let planNames = planService.currentSubscription?.planDetails?
-                                .filter { $0.isAPrimaryPlan }
-                                .compactMap { $0.name } ?? [InAppPurchasePlan.freePlanName]
-                            let plansStr = planNames.description.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")
-                            self.currentSubscriptionLabel.text = "Current subscriptions: \(plansStr)"
-                            self.contunuePurchase()
-                        } failure: { error in
+                // TODO: test purchase process with PlansDataSource object
+                switch payments.planService {
+                case .left(let planService):
+                    planService.updateServicePlans { [unowned self] in
+                        if planService.isIAPAvailable {
+                            planService.updateCurrentSubscription() { [unowned self] in
+                                let planNames = planService.currentSubscription?.planDetails?
+                                    .filter { $0.isAPrimaryPlan }
+                                    .compactMap { $0.name } ?? [InAppPurchasePlan.freePlanName]
+                                let plansStr = planNames.description.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")
+                                self.currentSubscriptionLabel.text = "Current subscriptions: \(plansStr)"
+                                self.contunuePurchase()
+                            } failure: { error in
+                                PMLog.debug(error.localizedDescription)
+                            }
+                        }
+                    } failure: { error in
+                        self.loginButton.isSelected = false
+                        PMLog.debug(error.localizedDescription)
+                    }
+                case .right(let planDataSource):
+                    Task {
+                        do {
+                            try await planDataSource.fetchAvailablePlans()
+                            if planDataSource.isIAPAvailable {
+                                try await planDataSource.fetchCurrentPlan()
+                                let planNames = planDataSource.currentPlan?.subscriptions.first?.title ?? InAppPurchasePlan.freePlanName
+                                let plansStr = planNames.description.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")
+                                self.currentSubscriptionLabel.text = "Current subscriptions: \(plansStr)"
+                                self.contunuePurchase()
+                            }
+                        } catch {
+                            self.loginButton.isSelected = false
                             PMLog.debug(error.localizedDescription)
                         }
                     }
-                } failure: { error in
-                    self.loginButton.isSelected = false
-                    PMLog.debug(error.localizedDescription)
                 }
             case .failure(let error):
                 self.loginButton.isSelected = false
@@ -309,16 +334,19 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
                 self.statusAfterSignLabel.text = "Subscription status: Success"
                 PMLog.debug("Subscription Success")
                 self.loginButton.isEnabled = false
-                // TODO: support purchase process with PlansDataSource object
-                guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.payments.planService else {
-                    assertionFailure("Purchase process with dynamic plans is not supported yet")
-                    return
+                // TODO: test purchase process with PlansDataSource object
+                switch payments.planService {
+                case .left(let planService):
+                    let planNames = planService.currentSubscription?.planDetails?
+                        .filter { $0.type == 1 }
+                        .compactMap { $0.name } ?? [InAppPurchasePlan.freePlanName]
+                    let plansStr = planNames.description.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")
+                    self.currentSubscriptionLabel.text = "Current subscriptions: \(plansStr)"
+                case .right(let planDataSource):
+                    let planTitles = planDataSource.currentPlan?.subscriptions.map(\.title) ?? [InAppPurchasePlan.freePlanName]
+                    let plansStr = planTitles.description.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")
+                    self.currentSubscriptionLabel.text = "Current subscriptions: \(plansStr)"
                 }
-                let planNames = planService.currentSubscription?.planDetails?
-                    .filter { $0.type == 1 }
-                    .compactMap { $0.name } ?? [InAppPurchasePlan.freePlanName]
-                let plansStr = planNames.description.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")
-                self.currentSubscriptionLabel.text = "Current subscriptions: \(plansStr)"
             }
         }
     }
@@ -389,15 +417,6 @@ extension PaymentsRegistrationSubscriptionVC: StoreKitManagerDelegate {
     
     var userId: String? {
         return userInfo?.ID
-    }
-    
-    var servicePlanDataService: ServicePlanDataServiceProtocol? {
-        // TODO: support purchase process with PlansDataSource object
-        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.payments.planService else {
-            assertionFailure("Purchase process with dynamic plans is not supported yet")
-            return nil
-        }
-        return planService
     }
 }
 

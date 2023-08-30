@@ -64,7 +64,7 @@ final class CurrentPlanIntegrationTests: XCTestCase {
         XCTAssertEqual(currentPlan.subscriptions.first!.currency, "Currency")
         XCTAssertEqual(currentPlan.subscriptions.first!.amount, 28788)
         XCTAssertEqual(currentPlan.subscriptions.first!.periodEnd, 1696938858)
-        XCTAssertEqual(currentPlan.subscriptions.first!.renew, true)
+        XCTAssertEqual(currentPlan.subscriptions.first!.renew, 1)
         XCTAssertEqual(currentPlan.subscriptions.first!.external, .apple)
         
         XCTAssertEqual(currentPlan.subscriptions.first!.entitlements.count, 2)

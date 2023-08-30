@@ -29,12 +29,16 @@ public protocol PlansDataSourceProtocol {
     var currentPlan: CurrentPlan? { get }
     var paymentMethods: [PaymentMethod]? { get }
     var willRenewAutomatically: Bool { get }
+    var hasPaymentMethods: Bool { get }
     
     func fetchIAPAvailability() async throws
     func fetchAvailablePlans() async throws
     func fetchCurrentPlan() async throws
     func fetchPaymentMethods() async throws
     func fetchIcon(iconName: String) async throws -> Data?
+
+    func detailsOfAvailablePlanCorrespondingToIAP(_ iap: InAppPurchasePlan) -> AvailablePlans.AvailablePlan?
+    func detailsOfAvailablePlanInstanceCorrespondingToIAP(_ iap: InAppPurchasePlan) -> AvailablePlans.AvailablePlan.Instance?
 }
 
 class PlansDataSource: PlansDataSourceProtocol {
@@ -90,6 +94,30 @@ class PlansDataSource: PlansDataSourceProtocol {
     }
     
     var willRenewAutomatically: Bool {
-        currentPlan?.subscriptions.first?.renew ?? false
+        currentPlan?.subscriptions.first?.willRenew ?? false
+    }
+
+    func detailsOfAvailablePlanCorrespondingToIAP(_ iap: InAppPurchasePlan) -> AvailablePlans.AvailablePlan? {
+        guard let identifier = iap.storeKitProductId else { return nil }
+        return availablePlans?.plans.first(where: { plan in
+            plan.instances.contains { instance in
+                instance.vendors?.apple.productID == identifier && instance.cycle == iap.period.flatMap(Int.init)
+            }
+        })
+    }
+
+    func detailsOfAvailablePlanInstanceCorrespondingToIAP(_ iap: InAppPurchasePlan) -> AvailablePlans.AvailablePlan.Instance? {
+        guard let identifier = iap.storeKitProductId else { return nil }
+        return availablePlans?.plans.flatMap(\.instances).first(where: { instance in
+            instance.vendors?.apple.productID == identifier && instance.cycle == iap.period.flatMap(Int.init)
+        })
+    }
+
+    var hasPaymentMethods: Bool {
+        guard let paymentMethods = paymentMethods else {
+            // if we don't know better, we default to assuming the user has payment methods available
+            return true
+        }
+        return !paymentMethods.isEmpty
     }
 }

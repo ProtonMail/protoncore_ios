@@ -28,6 +28,7 @@ import ProtonCoreFeatureSwitch
 
 protocol PlanCellDelegate: AnyObject {
     func userPressedSelectPlanButton(plan: PlanPresentation, completionHandler: @escaping () -> Void)
+    func userPressedSelectPlanButton(plan: AvailablePlansPresentation, completionHandler: @escaping () -> Void)
     func cellDidChange(indexPath: IndexPath)
 }
 
@@ -209,9 +210,16 @@ final class PlanCell: UITableViewCell, AccessibleCell {
     // MARK: - Actions
     
     @IBAction func onSelectPlanButtonTap(_ sender: ProtonButton) {
-        if let plan = plan {
+        if let plan {
             selectPlanButton.isSelected = true
             delegate?.userPressedSelectPlanButton(plan: plan) {
+                DispatchQueue.main.async {
+                    self.selectPlanButton.isSelected = false
+                }
+            }
+        } else if let dynamicPlan {
+            selectPlanButton.isSelected = true
+            delegate?.userPressedSelectPlanButton(plan: dynamicPlan) {
                 DispatchQueue.main.async {
                     self.selectPlanButton.isSelected = false
                 }
