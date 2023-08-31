@@ -28,13 +28,14 @@ import ProtonCoreTestingToolkitUnitTestsPayments
 import ProtonCoreTestingToolkit
 #endif
 @testable import ProtonCorePayments
+import ProtonCoreUtilities
 
 public final class ValidationManagerDependenciesMock: ValidationManagerDependencies {
 
     public init() {}
 
-    @PropertyStub(\ValidationManagerDependencies.planService, initialGet: ServicePlanDataServiceMock()) public var planServiceStub
-    public var planService: ServicePlanDataServiceProtocol { planServiceStub() }
+    @PropertyStub(\ValidationManagerDependencies.planService, initialGet: .left(ServicePlanDataServiceMock())) public var planServiceStub
+    public var planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol> { planServiceStub() }
 
     @PropertyStub(\ValidationManagerDependencies.products, initialGet: []) public var productsStub
     public var products: [SKProduct] { productsStub() }

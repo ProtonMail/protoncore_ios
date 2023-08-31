@@ -20,8 +20,10 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
+import ProtonCoreFeatureSwitch
 import ProtonCoreServices
 import ProtonCoreObservability
+import ProtonCoreUtilities
 
 public enum PurchaseResult {
     case purchasedPlan(accountPlan: InAppPurchasePlan)
@@ -51,7 +53,7 @@ public extension PurchaseManagerProtocol {
 
 final class PurchaseManager: PurchaseManagerProtocol {
 
-    private let planService: ServicePlanDataServiceProtocol
+    private let planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>
     private let storeKitManager: StoreKitManagerProtocol
     private var paymentsApi: PaymentsApiProtocol
     private let apiService: APIService
@@ -63,7 +65,7 @@ final class PurchaseManager: PurchaseManagerProtocol {
         return InAppPurchasePlan(storeKitProductId: transaction.payment.productIdentifier)
     }
 
-    init(planService: ServicePlanDataServiceProtocol,
+    init(planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>,
          storeKitManager: StoreKitManagerProtocol,
          paymentsApi: PaymentsApiProtocol,
          apiService: APIService) {
@@ -110,6 +112,13 @@ final class PurchaseManager: PurchaseManagerProtocol {
         guard unfinishedPurchasePlan == nil else {
             // purchase already started, don't start it again, report back that we're in progress
             finishCallback(.planPurchaseProcessingInProgress(processingPlan: unfinishedPurchasePlan!))
+            return
+        }
+
+        // TODO: support purchase process with PlansDataSource object
+        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.planService else {
+            assertionFailure("Purchase process with dynamic plans is not supported yet")
+            finishCallback(.purchaseError(error: StoreKitManager.Errors.transactionFailedByUnknownReason))
             return
         }
 
@@ -160,12 +169,18 @@ final class PurchaseManager: PurchaseManagerProtocol {
         let subscriptionRequest = paymentsApi.buySubscriptionForZeroRequest(api: apiService, planId: planId)
         let subscriptionResponse = try subscriptionRequest.awaitResponse(responseObject: SubscriptionResponse())
         if let newSubscription = subscriptionResponse.newSubscription {
+            // TODO: support purchase process with PlansDataSource object
+            guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.planService else {
+                assertionFailure("Purchase process with dynamic plans is not supported yet")
+                finishCallback(.purchaseError(error: StoreKitManager.Errors.transactionFailedByUnknownReason))
+                return
+            }
             planService.updateCurrentSubscription { [weak self] in
                 finishCallback(.purchasedPlan(accountPlan: plan))
                 self?.storeKitManager.refreshHandler(.finished(.resolvingIAPToSubscription))
             } failure: { [weak self] _ in
                 // if updateCurrentSubscription is failed for some reason, update subscription with newSubscription data
-                self?.planService.currentSubscription = newSubscription
+                planService.currentSubscription = newSubscription
                 finishCallback(.purchasedPlan(accountPlan: plan))
                 self?.storeKitManager.refreshHandler(.finished(.resolvingIAPToSubscription))
             }

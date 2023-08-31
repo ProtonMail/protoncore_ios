@@ -51,7 +51,7 @@ final class PurchaseManagerTests: XCTestCase {
     func testShouldAcceptFreePlan() {
         // given
         let plan = InAppPurchasePlan.freePlan
-        let out = PurchaseManager(planService: planServiceMock, storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        let out = PurchaseManager(planService: .left(planServiceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         var boughtPlan: InAppPurchasePlan?
         let expectation = expectation(description: "Should accept free plan")
 
@@ -83,7 +83,7 @@ final class PurchaseManagerTests: XCTestCase {
             }
             return SKPaymentTransactionMock()
         }
-        let out = PurchaseManager(planService: planServiceMock, storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        let out = PurchaseManager(planService: .left(planServiceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         var unfinishedPlan: InAppPurchasePlan?
         let expectation = expectation(description: "Should accept free plan")
 
@@ -106,7 +106,7 @@ final class PurchaseManagerTests: XCTestCase {
     func testShouldFetchAmountDueForPlanWithGivenIdAndReturnUnknownErrorOnLackOfResponse() {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
-        let out = PurchaseManager(planService: planServiceMock, storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        let out = PurchaseManager(planService: .left(planServiceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
         apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success([:])) }
         let expectation = expectation(description: "Should call completion block")
@@ -135,7 +135,7 @@ final class PurchaseManagerTests: XCTestCase {
     func testShouldFetchAmountDueForPlanWithGivenIdAndReturnNetworkErrorOnFailedRequest() {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
-        let out = PurchaseManager(planService: planServiceMock, storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        let out = PurchaseManager(planService: .left(planServiceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
         let underlyingError = NSError(domain: "test_domain", code: 1234, userInfo: nil)
         apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .failure(underlyingError)) }
@@ -161,7 +161,7 @@ final class PurchaseManagerTests: XCTestCase {
     func testShouldNotCallStoreKitIfAmountDueIsZero() {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
-        let out = PurchaseManager(planService: planServiceMock, storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        let out = PurchaseManager(planService: .left(planServiceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
         apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 0).toJsonDict)) }
         let expectation = expectation(description: "Should call completion block")
@@ -182,7 +182,7 @@ final class PurchaseManagerTests: XCTestCase {
         let expectation2 = expectation(description: "Should call refresh handler")
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
-        let out = PurchaseManager(planService: planServiceMock, storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        let out = PurchaseManager(planService: .left(planServiceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
         planServiceMock.currentSubscriptionStub.fixture = .dummy.updated(couponCode: "test code")
         planServiceMock.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, successCallback, errorCallback in successCallback() }
@@ -233,7 +233,7 @@ final class PurchaseManagerTests: XCTestCase {
         
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
-        let out = PurchaseManager(planService: planServiceMock, storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        let out = PurchaseManager(planService: .left(planServiceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
         planServiceMock.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, successCallback, errorCallback in errorCallback(NSError(domain: "test_domain", code: 1234, userInfo: nil)) }
         storeKitManager.refreshHandlerStub.fixture = { _ in expectation2.fulfill() }
@@ -280,7 +280,7 @@ final class PurchaseManagerTests: XCTestCase {
     func testShouldPassProductPurchasingToStoreKitIfAmountDueNonZero() {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
-        let out = PurchaseManager(planService: planServiceMock, storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        let out = PurchaseManager(planService: .left(planServiceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
         apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
         storeKitManager.purchaseProductStub.bodyIs { _, _, _, completion, _, _ in completion(.resolvingIAPToSubscription) }
@@ -309,7 +309,7 @@ final class PurchaseManagerTests: XCTestCase {
     func testShouldPassApiIsBlockedError() {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
-        let out = PurchaseManager(planService: planServiceMock, storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        let out = PurchaseManager(planService: .left(planServiceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
         apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
         storeKitManager.purchaseProductStub.bodyIs { _, _, _, _, errorCompletion, _ in errorCompletion(StoreKitManagerErrors.apiMightBeBlocked(message: "test message", originalError: NSError.protonMailError(APIErrorCode.potentiallyBlocked, localizedDescription: PSTranslation._core_api_might_be_blocked_message.l10n))) }
@@ -335,7 +335,7 @@ final class PurchaseManagerTests: XCTestCase {
     func testShouldPassErrorFromStoreKit() {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
-        let out = PurchaseManager(planService: planServiceMock, storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        let out = PurchaseManager(planService: .left(planServiceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
         apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
         storeKitManager.purchaseProductStub.bodyIs { _, _, _, _, errorCompletion, _ in errorCompletion(StoreKitManagerErrors.haveTransactionOfAnotherUser) }
@@ -361,7 +361,7 @@ final class PurchaseManagerTests: XCTestCase {
     func testShouldPassCancellationFromStoreKit() {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
-        let out = PurchaseManager(planService: planServiceMock, storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        let out = PurchaseManager(planService: .left(planServiceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
         apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
         storeKitManager.purchaseProductStub.bodyIs { _, _, _, successCompletion, _, _ in successCompletion(.cancelled) }

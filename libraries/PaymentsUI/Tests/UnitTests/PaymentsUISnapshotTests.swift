@@ -466,7 +466,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         
         let model = PaymentsUIViewModel(mode: mode,
                                         storeKitManager: storeKitManager,
-                                        servicePlan: servicePlan,
+                                        planService: .left(servicePlan),
                                         shownPlanNames: shownPlanNames,
                                         clientApp: clientApp,
                                         customPlansDescription: customPlansDescription,

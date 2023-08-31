@@ -28,6 +28,7 @@ import ProtonCoreNetworking
 import ProtonCoreUIFoundations
 import ProtonCoreObservability
 import ProtonCoreFoundations
+import ProtonCoreUtilities
 
 final class PaymentsUICoordinator {
     
@@ -38,7 +39,7 @@ final class PaymentsUICoordinator {
     private var viewModel: PaymentsUIViewModel?
     private var onDohTroubleshooting: () -> Void
     
-    private let planService: ServicePlanDataServiceProtocol
+    private let planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>
     private let storeKitManager: StoreKitManagerProtocol
     private let purchaseManager: PurchaseManagerProtocol
     private let shownPlanNames: ListOfShownPlanNames
@@ -58,7 +59,7 @@ final class PaymentsUICoordinator {
         didSet { alertManager.viewController = paymentsUIViewController }
     }
     
-    init(planService: ServicePlanDataServiceProtocol,
+    init(planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>,
          storeKitManager: StoreKitManagerProtocol,
          purchaseManager: PurchaseManagerProtocol,
          clientApp: ClientApp,
@@ -93,7 +94,7 @@ final class PaymentsUICoordinator {
     
     // MARK: Private methods
     
-    private func showPaymentsUI(servicePlan: ServicePlanDataServiceProtocol, backendFetch: Bool) {
+    private func showPaymentsUI(servicePlan: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>, backendFetch: Bool) {
         
         let paymentsUIViewController = UIStoryboard.instantiate(
             PaymentsUIViewController.self, storyboardName: storyboardName, inAppTheme: customization.inAppTheme
@@ -102,11 +103,10 @@ final class PaymentsUICoordinator {
         paymentsUIViewController.onDohTroubleshooting = { [weak self] in
             self?.onDohTroubleshooting()
         }
-        
+
         viewModel = PaymentsUIViewModel(mode: mode,
                                         storeKitManager: storeKitManager,
-                                        servicePlan: servicePlan,
-                                        planDataSource: nil,
+                                        planService: planService,
                                         shownPlanNames: shownPlanNames,
                                         clientApp: clientApp,
                                         customPlansDescription: customization.customPlansDescription) { [weak self] updatedPlan in

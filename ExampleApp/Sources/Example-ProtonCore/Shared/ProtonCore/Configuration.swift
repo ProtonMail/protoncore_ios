@@ -1,4 +1,5 @@
 import class Foundation.Bundle
+import ProtonCoreFeatureSwitch
 import ProtonCoreObfuscatedConstants
 import typealias ProtonCoreLogin.AccountType
 import typealias ProtonCorePayments.ListOfIAPIdentifiers
@@ -7,8 +8,8 @@ import enum ProtonCoreDataModel.ClientApp
 
 let clientApp: ClientApp = .pass
 
-let listOfIAPIdentifiers: ListOfIAPIdentifiers = ObfuscatedConstants.passIAPIdentifiers
-let listOfShownPlanNames: ListOfShownPlanNames = ObfuscatedConstants.passShownPlanNames
+let listOfIAPIdentifiers: ListOfIAPIdentifiers = FeatureFactory.shared.isEnabled(.dynamicPlans) ? [] : ObfuscatedConstants.passIAPIdentifiers
+let listOfShownPlanNames: ListOfShownPlanNames = FeatureFactory.shared.isEnabled(.dynamicPlans) ? [] : ObfuscatedConstants.passShownPlanNames
 
 let appVersionHeader = AppVersionHeader(appNamePrefix: "ios-pass@")
 
