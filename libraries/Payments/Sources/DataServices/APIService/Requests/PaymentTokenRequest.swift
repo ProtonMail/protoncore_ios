@@ -24,7 +24,7 @@ import ProtonCoreLog
 import ProtonCoreNetworking
 import ProtonCoreServices
 
-final class PaymentTokenRequest: BaseApiRequest<TokenResponse> {
+final class PaymentTokenOldRequest: BaseApiRequest<TokenResponse> {
     private let amount: Int
     private let receipt: String
 
@@ -51,6 +51,49 @@ final class PaymentTokenRequest: BaseApiRequest<TokenResponse> {
             paymentDict = [
                 "Type": "apple",
                 "Details": ["Receipt": receipt]
+            ]
+        }
+        return ["Amount": amount, "Currency": "USD", "Payment": paymentDict]
+    }
+}
+
+final class PaymentTokenRequest: BaseApiRequest<TokenResponse> {
+    private let amount: Int
+    private let receipt: String
+    private let transactionId: String
+    private let bundleId: String
+    private let productId: String
+
+    init (api: APIService, amount: Int, receipt: String, transactionId: String, bundleId: String, productId: String) {
+        self.amount = amount
+        self.receipt = receipt
+        self.transactionId = transactionId
+        self.bundleId = bundleId
+        self.productId = productId
+        super.init(api: api)
+    }
+
+    override var method: HTTPMethod { .post }
+
+    override var isAuth: Bool { false }
+
+    override var path: String { super.path + "/v4/tokens" }
+
+    override var parameters: [String: Any]? {
+        let paymentDict: [String: Any]
+        if let card = ProtonCorePayments.TemporaryHacks.testCardForPayments {
+            paymentDict = [
+                "Type": "card",
+                "Details": card
+            ]
+        } else {
+            paymentDict = [
+                "Type": "apple",
+                "Details": ["Receipt": receipt,
+                            "TransactionID": transactionId,
+                            "BundleID": bundleId,
+                            "ProductID": productId
+                            ]
             ]
         }
         return ["Amount": amount, "Currency": "USD", "Payment": paymentDict]

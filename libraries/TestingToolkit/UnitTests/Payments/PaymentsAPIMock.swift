@@ -64,8 +64,11 @@ public final class PaymentsApiMock: PaymentsApiProtocol {
     @FuncStub(PaymentsApiProtocol.methodsRequest, initialReturn: { MethodRequest(api: $0) }) public var methodsRequestStub
     public func methodsRequest(api: APIService) -> MethodRequest { methodsRequestStub(api) }
 
-    @FuncStub(PaymentsApiProtocol.paymentTokenRequest, initialReturn: { PaymentTokenRequest(api: $0.0, amount: $0.1, receipt: $0.2) }) public var paymentTokenRequestStub
-    public func paymentTokenRequest(api: APIService, amount: Int, receipt: String) -> PaymentTokenRequest { paymentTokenRequestStub(api, amount, receipt) }
+    @FuncStub(PaymentsApiProtocol.paymentTokenOldRequest, initialReturn: { PaymentTokenOldRequest(api: $0.0, amount: $0.1, receipt: $0.2) }) public var paymentTokenOldRequestStub
+    public func paymentTokenOldRequest(api: APIService, amount: Int, receipt: String) -> PaymentTokenOldRequest { paymentTokenOldRequestStub(api, amount, receipt) }
+
+    @FuncStub(PaymentsApiProtocol.paymentTokenRequest, initialReturn: { PaymentTokenRequest(api: $0.0, amount: $0.1, receipt: $0.2, transactionId: $0.3, bundleId: $0.4, productId: $0.5) }) public var paymentTokenRequestStub
+    public func paymentTokenRequest(api: APIService, amount: Int, receipt: String, transactionId: String, bundleId: String, productId: String) -> PaymentTokenRequest { paymentTokenRequestStub(api, amount, receipt, transactionId, bundleId, productId) }
 
     @FuncStub(PaymentsApiProtocol.paymentTokenStatusRequest, initialReturn: { PaymentTokenStatusRequest(api: $0.0, token: $0.1) }) public var paymentTokenStatusRequestStub
     public func paymentTokenStatusRequest(api: APIService, token: PaymentToken) -> PaymentTokenStatusRequest { paymentTokenStatusRequestStub(api, token) }
