@@ -102,7 +102,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     // MARK: - Properties
     
     weak var delegate: PaymentsUIViewControllerDelegate?
-    var model: PaymentsUIViewModel?
+    var viewModel: PaymentsUIViewModel?
     var mode: PaymentsUIMode = .signup
     var modalPresentation = false
     var hideFooter = false
@@ -165,7 +165,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     var banner: PMBanner?
     
     @objc private func informAboutIAPInProgress() {
-        if model?.iapInProgress == true {
+        if viewModel?.iapInProgress == true {
             let banner = PMBanner(message: PUITranslations.iap_in_progress_banner.l10n,
                                   style: PMBannerNewStyle.error,
                                   dismissDuration: .infinity)
@@ -210,7 +210,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     
     @IBAction func onExtendSubscriptionButtonTap(_ sender: ProtonButton) {
         extendSubscriptionButton.isSelected = true
-        guard case .withExtendSubscriptionButton(let plan) = model?.footerType else {
+        guard case .withExtendSubscriptionButton(let plan) = viewModel?.footerType else {
             extendSubscriptionButton.isSelected = false
             return
         }
@@ -303,7 +303,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     private func reloadUI() {
         guard isDataLoaded else { return }
         var hasExtendSubscriptionButton = false
-        switch model?.footerType {
+        switch viewModel?.footerType {
         case .withPlansToBuy:
             tableFooterTextLabel.text = PUITranslations._plan_footer_desc.l10n
         case .withoutPlansToBuy:
@@ -332,7 +332,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
                     navigationItem.title = PUITranslations.subscription_title.l10n
                     updateTitleAttributes()
                 case .update:
-                    switch model?.footerType {
+                    switch viewModel?.footerType {
                     case .withPlansToBuy:
                         navigationItem.title = PUITranslations.upgrade_plan_title.l10n
                     case .withoutPlansToBuy, .withExtendSubscriptionButton, .disabled, .none:
@@ -369,7 +369,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     }
     
     private func showExpandButton() {
-        guard let model = model else { return }
+        guard let model = viewModel else { return }
         for section in model.plans.indices {
             guard model.plans.indices.contains(section) else { continue }
             for row in model.plans[section].indices {
@@ -385,22 +385,22 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
 extension PaymentsUIViewController: UITableViewDataSource {
     
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return model?.plans.count ?? 0
+        return viewModel?.plans.count ?? 0
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model?.plans[safeIndex: section]?.count ?? 0
+        return viewModel?.plans[safeIndex: section]?.count ?? 0
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
-        guard let plan = model?.plans[safeIndex: indexPath.section]?[safeIndex: indexPath.row] else { return cell }
+        guard let plan = viewModel?.plans[safeIndex: indexPath.section]?[safeIndex: indexPath.row] else { return cell }
         switch plan.planPresentationType {
         case .plan:
             cell = tableView.dequeueReusableCell(withIdentifier: PlanCell.reuseIdentifier, for: indexPath)
             if let cell = cell as? PlanCell {
                 cell.delegate = self
-                cell.configurePlan(plan: plan, indexPath: indexPath, isSignup: mode == .signup, isExpandButtonHidden: model?.isExpandButtonHidden ?? true)
+                cell.configurePlan(plan: plan, indexPath: indexPath, isSignup: mode == .signup, isExpandButtonHidden: viewModel?.isExpandButtonHidden ?? true)
             }
             cell.selectionStyle = .none
         case .current:
@@ -435,7 +435,7 @@ extension PaymentsUIViewController: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let plan = model?.plans[safeIndex: indexPath.section]?[safeIndex: indexPath.row] else { return }
+        guard let plan = viewModel?.plans[safeIndex: indexPath.section]?[safeIndex: indexPath.row] else { return }
         if case .plan = plan.planPresentationType {
             if let cell = tableView.cellForRow(at: indexPath) as? PlanCell {
                 cell.selectCell()

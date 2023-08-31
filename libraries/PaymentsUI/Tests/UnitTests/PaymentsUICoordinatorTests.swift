@@ -38,6 +38,7 @@ import ProtonCoreServices
 final class PaymentsUICoordinatorTests: XCTestCase {
 
     var planServiceMock: ServicePlanDataServiceMock!
+    var plansDataSource: PlansDataSourceMock!
     var storeKitManager: StoreKitManagerMock!
     var paymentsApi: PaymentsApiMock!
     var apiService: APIServiceMock!
@@ -48,6 +49,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
     override func setUp() {
         super.setUp()
         planServiceMock = ServicePlanDataServiceMock()
+        plansDataSource = PlansDataSourceMock()
         storeKitManager = StoreKitManagerMock()
         paymentsApi = PaymentsApiMock()
         apiService = APIServiceMock()

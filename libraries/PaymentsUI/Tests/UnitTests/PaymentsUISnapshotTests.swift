@@ -464,7 +464,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         servicePlan.userStub.fixture = User.dummy.updated(usedSpace: maxSpace * 0.6, maxSpace: maxSpace)
         storeKitManager.canExtendSubscriptionStub.fixture = true
         
-        let model = PaymentsUIViewModel(mode: mode,
+        let viewModel = PaymentsUIViewModel(mode: mode,
                                         storeKitManager: storeKitManager,
                                         planService: .left(servicePlan),
                                         shownPlanNames: shownPlanNames,
@@ -476,10 +476,10 @@ final class PaymentsUISnapshotTests: XCTestCase {
         let paymentsUIViewController = UIStoryboard.instantiate(storyboardName: "PaymentsUI",
                                                                 controllerType: PaymentsUIViewController.self,
                                                                 inAppTheme: { .default })
-        paymentsUIViewController.model = model
+        paymentsUIViewController.viewModel = viewModel
         _ = await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
-            model.fetchPlans(backendFetch: false) { _ in
-                model.plans.flatMap { $0 }.forEach { $0.isExpanded = true }
+            viewModel.fetchPlans(backendFetch: false) { _ in
+                viewModel.plans.flatMap { $0 }.forEach { $0.isExpanded = true }
                 continuation.resume()
             }
         }

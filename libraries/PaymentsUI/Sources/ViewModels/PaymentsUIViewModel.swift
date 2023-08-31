@@ -83,7 +83,29 @@ final class PaymentsUIViewModel {
     }
     
     private var isExpandButtonHiddenByNumberOfPlans: Bool {
-        plans
+        if isDynamicPlansEnabled {
+            return isExpandButtonHiddenByNumberOfDynamicPlans
+        } else {
+            return isExpandButtonHiddenByNumberOfStaticPlans
+        }
+    }
+    
+    private var isExpandButtonHiddenByNumberOfDynamicPlans: Bool {
+        dynamicPlans
+            .flatMap { $0 }
+            .filter {
+                switch $0 {
+                case .right(let availablePlan):
+                    return !(availablePlan.availablePlan?.isFreePlan ?? true)
+                case .left:
+                    return false
+                }
+            }
+            .count < 2
+    }
+    
+    private var isExpandButtonHiddenByNumberOfStaticPlans: Bool {
+        return plans
             .flatMap { $0 }
             .filter { !$0.accountPlan.isFreePlan }
             .count < 2
@@ -448,7 +470,7 @@ final class PaymentsUIViewModel {
              $0.forEach {
                  if case .right(let availablePlan) = $0 {
                      if let planId = availablePlan.storeKitProductId, let processingPlanId = unfinishedPurchasePlan.storeKitProductId, planId == processingPlanId {
-                         // select currently prcessed buy plan button
+                         // select currently processed buy plan button
                          availablePlan.isCurrentlyProcessed = true
                          availablePlan.canBePurchasedNow = true
                      } else {
@@ -551,13 +573,19 @@ extension PaymentsUIViewModel {
         
         self.availablePlans = []
         availablePlansDataSource.forEach { plan in
-            plan.instances.forEach { instance in
-                if let plan = AvailablePlansPresentation.createAvailablePlans(
-                    from: plan,
-                    for: instance,
-                    storeKitManager: storeKitManager
-                ) {
+            if plan.instances.isEmpty {
+                if let plan = AvailablePlansPresentation.createAvailablePlans(from: plan) {
                     self.availablePlans?.append(plan)
+                }
+            } else {
+                plan.instances.forEach { instance in
+                    if let plan = AvailablePlansPresentation.createAvailablePlans(
+                        from: plan,
+                        for: instance,
+                        storeKitManager: storeKitManager
+                    ) {
+                        self.availablePlans?.append(plan)
+                    }
                 }
             }
         }
