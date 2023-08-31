@@ -34,6 +34,7 @@ import ProtonCorePaymentsUI
 import ProtonCoreFoundations
 import ProtonCoreEnvironment
 import ProtonCoreChallenge
+import ProtonCoreFeatureSwitch
 
 class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleView {
     
@@ -70,6 +71,7 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        FeatureFactory.shared.enable(&.dynamicPlans)
         testApi = PMAPIService.createAPIService(environment: currentEnv,
                                                 sessionUID: "testSessionUID",
                                                 challengeParametersProvider: .forAPIService(clientApp: clientApp, challenge: PMChallenge()))
@@ -274,6 +276,9 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
         paymentsUI = PaymentsUI(
             payments: payments, clientApp: clientApp, shownPlanNames: listOfShownPlanNames, customization: .empty
         )
+        if FeatureFactory.shared.isEnabled(.dynamicPlans) {
+            completion(nil)
+        }
     }
     
     private func cleanupStoreKit() {
