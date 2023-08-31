@@ -27,7 +27,6 @@ import ProtonCoreTestingToolkitUnitTestsCore
 import ProtonCorePayments
 
 public final class StoreKitManagerMock: NSObject, StoreKitManagerProtocol {
-    
     @PropertyStub(\StoreKitManagerProtocol.refreshHandler, initialGet: .crash) public var refreshHandlerStub
     public var refreshHandler: (ProcessCompletionResult) -> Void { get { refreshHandlerStub() } set { refreshHandlerStub(newValue) } }
     
@@ -97,6 +96,11 @@ public final class StoreKitManagerMock: NSObject, StoreKitManagerProtocol {
     
     @PropertyStub(\StoreKitManagerProtocol.canExtendSubscription, initialGet: false) public var canExtendSubscriptionStub
     public var canExtendSubscription: Bool { return canExtendSubscriptionStub() }
+
+    @FuncStub(StoreKitManagerIAPUpdateProtocol.iapsWereFetched) public var iapsWereFetchedStub
+    public func iapsWereFetched(iaps: [SKProduct]) {
+        iapsWereFetchedStub(iaps)
+    }
 }
 
 public final class StoreKitManagerDelegateMock: StoreKitManagerDelegate {
@@ -117,6 +121,16 @@ public final class StoreKitManagerDelegateMock: StoreKitManagerDelegate {
 
     @PropertyStub(\StoreKitManagerDelegate.userId, initialGet: nil) public var userIdStub
     public var userId: String? { userIdStub() }
+}
+
+public final class StoreKitManagerIAPUpdateMock: StoreKitManagerIAPUpdateProtocol {
+
+    public init() {}
+
+    @FuncStub(StoreKitManagerIAPUpdateProtocol.iapsWereFetched) public var iapsWereFetchedStub
+    public func iapsWereFetched(iaps: [SKProduct]) {
+        iapsWereFetchedStub(iaps)
+    }
 }
 
 public final class PaymentTokenStorageMock: PaymentTokenStorage {

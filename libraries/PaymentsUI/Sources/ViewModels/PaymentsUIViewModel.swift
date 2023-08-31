@@ -39,7 +39,7 @@ final class PaymentsUIViewModel {
     private var isDynamicPlansEnabled: Bool {
         FeatureFactory.shared.isEnabled(.dynamicPlans)
     }
-    private var servicePlan: ServicePlanDataServiceProtocol
+    private var planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>
     private let mode: PaymentsUIMode
     private var accountPlans: [InAppPurchasePlan] = []
     private let planRefreshHandler: (CurrentPlanDetails?) -> Void
@@ -54,8 +54,7 @@ final class PaymentsUIViewModel {
 
     private (set) var plans: [[PlanPresentation]] = []
     private (set) var footerType: FooterType = .withoutPlansToBuy
-    
-    private var planDataSource: PlansDataSourceProtocol?
+
     var dynamicPlans: [[Either<CurrentPlanPresentation, AvailablePlansPresentation>]] {
          [
              {
@@ -103,16 +102,14 @@ final class PaymentsUIViewModel {
     
     init(mode: PaymentsUIMode,
          storeKitManager: StoreKitManagerProtocol,
-         servicePlan: ServicePlanDataServiceProtocol,
-         planDataSource: PlansDataSourceProtocol? = nil,
-         shownPlanNames: ListOfShownPlanNames,
+         planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>,
+         shownPlanNames: ListOfShownPlanNames = [],
          clientApp: ClientApp,
          customPlansDescription: CustomPlansDescription,
          planRefreshHandler: @escaping (CurrentPlanDetails?) -> Void,
          extendSubscriptionHandler: @escaping () -> Void) {
         self.mode = mode
-        self.servicePlan = servicePlan
-        self.planDataSource = planDataSource
+        self.planService = planService
         self.storeKitManager = storeKitManager
         self.shownPlanNames = shownPlanNames
         self.clientApp = clientApp
@@ -177,6 +174,12 @@ final class PaymentsUIViewModel {
     }
     
     private func processAllPlans(completionHandler: ((Result<([[PlanPresentation]], FooterType), Error>) -> Void)? = nil) {
+        // TODO: support purchase process with PlansDataSource object
+        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let servicePlan) = planService else {
+            assertionFailure("Non dynamic plans must use the ServicePlanDataServiceProtocol object")
+            completionHandler?(.failure(StoreKitManagerErrors.transactionFailedByUnknownReason))
+            return
+        }
         var localPlans = servicePlan.plans
             .compactMap {
                 return createPlan(details: $0,
@@ -249,9 +252,15 @@ final class PaymentsUIViewModel {
     }
     
     private func createPlanPresentations(withCurrentPlan: Bool, completionHandler: ((Result<([[PlanPresentation]], FooterType), Error>) -> Void)? = nil) {
+        // TODO: support purchase process with PlansDataSource object
+        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let servicePlan) = planService else {
+            assertionFailure("Non dynamic plans must use the ServicePlanDataServiceProtocol object")
+            completionHandler?(.failure(StoreKitManagerErrors.transactionFailedByUnknownReason))
+            return
+        }
         var plans: [[PlanPresentation]] = []
-        let userHasNoAccessToThePlan = self.servicePlan.currentSubscription?.isEmptyBecauseOfUnsufficientScopeToFetchTheDetails == true
-        let userHasNoPlan = !userHasNoAccessToThePlan && (self.servicePlan.currentSubscription?.planDetails.map { $0.isEmpty } ?? true)
+        let userHasNoAccessToThePlan = servicePlan.currentSubscription?.isEmptyBecauseOfUnsufficientScopeToFetchTheDetails == true
+        let userHasNoPlan = !userHasNoAccessToThePlan && (servicePlan.currentSubscription?.planDetails.map { $0.isEmpty } ?? true)
         let freePlan = servicePlan.detailsOfPlanCorrespondingToIAP(InAppPurchasePlan.freePlan).flatMap {
             self.createPlan(details: $0,
                             isSelectable: false,
@@ -264,8 +273,7 @@ final class PaymentsUIViewModel {
         }
 
         if userHasNoPlan {
-
-            let plansToShow = self.servicePlan.availablePlansDetails
+            let plansToShow = servicePlan.availablePlansDetails
                 .compactMap {
                     createPlan(details: $0,
                                isSelectable: true,
@@ -299,7 +307,7 @@ final class PaymentsUIViewModel {
             completionHandler?(.success((self.plans, footerType)))
 
         } else {
-            if let subscription = self.servicePlan.currentSubscription,
+            if let subscription = servicePlan.currentSubscription,
                let accountPlan = InAppPurchasePlan(protonPlan: subscription.computedPresentationDetails(shownPlanNames: shownPlanNames),
                                                    listOfIAPIdentifiers: storeKitManager.inAppPurchaseIdentifiers),
                let plan = self.createPlan(details: subscription.computedPresentationDetails(shownPlanNames: shownPlanNames),
@@ -313,7 +321,7 @@ final class PaymentsUIViewModel {
                 plans.append([plan])
                 
                 // check if current plan is still available
-                let isExtensionPlanAvailable = self.servicePlan.availablePlansDetails.first { $0.name == accountPlan.protonName } != nil
+                let isExtensionPlanAvailable = servicePlan.availablePlansDetails.first { $0.name == accountPlan.protonName } != nil
                 
                 self.plans = plans
                 if storeKitManager.canExtendSubscription, !servicePlan.hasPaymentMethods, isExtensionPlanAvailable, !servicePlan.willRenewAutomatically(plan: accountPlan) {
@@ -345,8 +353,14 @@ final class PaymentsUIViewModel {
     
     private func updateServicePlanDataService(completion: @escaping (Result<(), Error>) -> Void) {
         updateServicePlans {
-            if self.servicePlan.isIAPAvailable {
-                self.servicePlan.updateCurrentSubscription {
+            // TODO: support purchase process with PlansDataSource object
+            guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let servicePlan) = self.planService else {
+                assertionFailure("Non dynamic plans must use the ServicePlanDataServiceProtocol object")
+                completion(.failure(StoreKitManagerErrors.transactionFailedByUnknownReason))
+                return
+            }
+            if servicePlan.isIAPAvailable {
+                servicePlan.updateCurrentSubscription {
                     completion(.success(()))
                 } failure: { error in
                     completion(.failure(error))
@@ -377,6 +391,12 @@ final class PaymentsUIViewModel {
         // we only show plans that are either current or available for purchase
         guard isCurrent || baseDetails.isPurchasable else { return nil }
 
+        // TODO: support purchase process with PlansDataSource object
+        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let servicePlan) = planService else {
+            assertionFailure("Non dynamic plans must use the ServicePlanDataServiceProtocol object")
+            return nil
+        }
+
         var details = servicePlan.defaultPlanDetails.map { Plan.combineDetailsKeepingPricing(baseDetails, $0) } ?? baseDetails
         if let cycle = cycle {
             details = details.updating(cycle: cycle)
@@ -395,11 +415,18 @@ final class PaymentsUIViewModel {
     }
     
     private func updateServicePlans(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        // TODO: support purchase process with PlansDataSource object
+        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let servicePlan) = planService else {
+            assertionFailure("Non dynamic plans must use the ServicePlanDataServiceProtocol object")
+            failure(StoreKitManagerErrors.transactionFailedByUnknownReason)
+            return
+        }
+
         if clientApp == .vpn {
-            servicePlan.updateCountriesCount { [weak self] in
-                self?.servicePlan.updateServicePlans(success: success, failure: failure)
-            } failure: { [weak self] error in
-                self?.servicePlan.updateServicePlans(success: success, failure: failure)
+            servicePlan.updateCountriesCount {
+                servicePlan.updateServicePlans(success: success, failure: failure)
+            } failure: { error in
+                servicePlan.updateServicePlans(success: success, failure: failure)
             }
         } else {
             servicePlan.updateServicePlans(success: success, failure: failure)
@@ -476,6 +503,13 @@ final class PaymentsUIViewModel {
     }
     
     private func updateCredits(completionHandler: (() -> Void)?) {
+        // TODO: support purchase process with PlansDataSource object
+        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let servicePlan) = planService else {
+            assertionFailure("Non dynamic plans must use the ServicePlanDataServiceProtocol object")
+            completionHandler?()
+            return
+        }
+
         servicePlan.updateCredits {
             completionHandler?()
         } failure: { _ in
@@ -488,8 +522,14 @@ final class PaymentsUIViewModel {
 
 extension PaymentsUIViewModel {
     func fetchCurrentPlan() async throws {
-        try await planDataSource?.fetchCurrentPlan()
-        guard let currentPlanSubscription = planDataSource?.currentPlan?.subscriptions.first else {
+        // TODO: support purchase process with PlansDataSource object
+        guard FeatureFactory.shared.isEnabled(.dynamicPlans), case .right(let planDataSource) = planService else {
+            assertionFailure("Dynamic plans must use the PlansDataSourceProtocol object")
+            throw StoreKitManagerErrors.transactionFailedByUnknownReason
+        }
+
+        try await planDataSource.fetchCurrentPlan()
+        guard let currentPlanSubscription = planDataSource.currentPlan?.subscriptions.first else {
             return
         }
         
@@ -497,9 +537,15 @@ extension PaymentsUIViewModel {
     }
     
     func fetchAvailablePlans() async throws {
-        try await planDataSource?.fetchAvailablePlans()
+        // TODO: support purchase process with PlansDataSource object
+        guard FeatureFactory.shared.isEnabled(.dynamicPlans), case .right(let planDataSource) = planService else {
+            assertionFailure("Dynamic plans must use the PlansDataSourceProtocol object")
+            throw StoreKitManagerErrors.transactionFailedByUnknownReason
+        }
+
+        try await planDataSource.fetchAvailablePlans()
         
-        guard let availablePlansDataSource = planDataSource?.availablePlans?.plans else {
+        guard let availablePlansDataSource = planDataSource.availablePlans?.plans else {
             return
         }
         
@@ -518,11 +564,23 @@ extension PaymentsUIViewModel {
     }
     
     func fetchPaymentMethods() async throws {
-        try await planDataSource?.fetchPaymentMethods()
+        // TODO: support purchase process with PlansDataSource object
+        guard FeatureFactory.shared.isEnabled(.dynamicPlans), case .right(let planDataSource) = planService else {
+            assertionFailure("Dynamic plans must use the PlansDataSourceProtocol object")
+            throw StoreKitManagerErrors.transactionFailedByUnknownReason
+        }
+
+        try await planDataSource.fetchPaymentMethods()
     }
     
     func fetchIAPAvailability() async throws {
-        try await planDataSource?.fetchIAPAvailability()
+        // TODO: support purchase process with PlansDataSource object
+        guard FeatureFactory.shared.isEnabled(.dynamicPlans), case .right(let planDataSource) = planService else {
+            assertionFailure("Dynamic plans must use the PlansDataSourceProtocol object")
+            throw StoreKitManagerErrors.transactionFailedByUnknownReason
+        }
+
+        try await planDataSource.fetchIAPAvailability()
     }
 }
 

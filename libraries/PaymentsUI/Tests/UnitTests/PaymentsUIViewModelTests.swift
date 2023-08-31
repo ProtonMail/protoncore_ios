@@ -26,6 +26,7 @@ import XCTest
 import ProtonCoreServices
 #if canImport(ProtonCoreTestingToolkitUnitTestsPayments)
 import ProtonCoreTestingToolkitUnitTestsPayments
+import ProtonCoreTestingToolkitUnitTestsFeatureSwitch
 #else
 import ProtonCoreTestingToolkit
 #endif
@@ -48,40 +49,40 @@ final class PaymentsUIViewModelTests: XCTestCase {
     // MARK: - Signup mode
     
     func test_fetchPlans_signupMode() async throws {
-        let plansDataSource = PlansDataSourceMock()
-        let storeKitManager = StoreKitManagerMock()
-        storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
-        let sut = PaymentsUIViewModel(
-            mode: .signup,
-            storeKitManager: storeKitManager,
-            servicePlan: servicePlan,
-            planDataSource: plansDataSource,
-            shownPlanNames: ["plus"],
-            clientApp: .mail,
-            customPlansDescription: [:],
-            planRefreshHandler: { _ in XCTFail() },
-            extendSubscriptionHandler: { XCTFail() }
-        )
-        
-        try await sut.fetchPlans()
-        
-        XCTAssertNil(sut.currentPlan)
-        XCTAssertEqual(sut.availablePlans?.count, 2)
-        XCTAssertEqual(sut.availablePlans?[0].storeKitProductId, "ios_passplus_12_usd_non_renewing")
-        XCTAssertEqual(sut.availablePlans?[0].details.cycleDescription, "for 12 months")
-        XCTAssertEqual(sut.availablePlans?[0].details.description, "plan description")
-        XCTAssertEqual(sut.availablePlans?[0].details.title, "Pass Plus")
-        XCTAssertEqual(sut.availablePlans?[1].storeKitProductId, "ios_passplus_24_usd_non_renewing")
-        XCTAssertEqual(sut.availablePlans?[1].details.cycleDescription, "for 24 months")
-        XCTAssertEqual(sut.availablePlans?[1].details.description, "plan description")
-        XCTAssertEqual(sut.availablePlans?[1].details.title, "Pass Plus")
+        try await withFeatureSwitches([.dynamicPlans]) {
+            let plansDataSource = PlansDataSourceMock()
+            let storeKitManager = StoreKitManagerMock()
+            storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+            let sut = PaymentsUIViewModel(
+                mode: .signup,
+                storeKitManager: storeKitManager,
+                planService: .right(plansDataSource),
+                clientApp: .mail,
+                customPlansDescription: [:],
+                planRefreshHandler: { _ in XCTFail() },
+                extendSubscriptionHandler: { XCTFail() }
+            )
+            
+            try await sut.fetchPlans()
+            
+            XCTAssertNil(sut.currentPlan)
+            XCTAssertEqual(sut.availablePlans?.count, 2)
+            XCTAssertEqual(sut.availablePlans?[0].storeKitProductId, "ios_passplus_12_usd_non_renewing")
+            XCTAssertEqual(sut.availablePlans?[0].details.cycleDescription, "for 12 months")
+            XCTAssertEqual(sut.availablePlans?[0].details.description, "plan description")
+            XCTAssertEqual(sut.availablePlans?[0].details.title, "Pass Plus")
+            XCTAssertEqual(sut.availablePlans?[1].storeKitProductId, "ios_passplus_24_usd_non_renewing")
+            XCTAssertEqual(sut.availablePlans?[1].details.cycleDescription, "for 24 months")
+            XCTAssertEqual(sut.availablePlans?[1].details.description, "plan description")
+            XCTAssertEqual(sut.availablePlans?[1].details.title, "Pass Plus")
+        }
     }
     
     func testFetchSignupPlansNoBackendFetch() {
         let expectation = self.expectation(description: "Success completion block called")
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_plus_12_usd_non_renewing"]
         servicePlan.plansStub.fixture = [Plan.empty.updated(name: "plus")]
-        let out = PaymentsUIViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["plus"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        let out = PaymentsUIViewModel(mode: .signup, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["plus"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
@@ -109,7 +110,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_plus_12_usd_non_renewing"]
         servicePlan.plansStub.fixture = [Plan.empty.updated(name: "plus")]
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, _, completion, _ in completion() }
-        let out = PaymentsUIViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["plus"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        let out = PaymentsUIViewModel(mode: .signup, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["plus"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: true) { result in
@@ -139,7 +140,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
             if counter == 1 { return [] } else { return [Plan.empty.updated(name: "plus")] }
         }
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, _, completion, _ in completion() }
-        let out = PaymentsUIViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["plus"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        let out = PaymentsUIViewModel(mode: .signup, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["plus"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
@@ -168,7 +169,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
         servicePlan.plansStub.fixture = [Plan.empty.updated(name: "test", title: "test title", state: 0)]
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, _, completion, _ in completion() }
-        let out = PaymentsUIViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["test"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        let out = PaymentsUIViewModel(mode: .signup, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["test"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
@@ -188,35 +189,35 @@ final class PaymentsUIViewModelTests: XCTestCase {
     // MARK: Current plan mode
 
     func test_fetchPlans_currentMode() async throws {
-        let plansDataSource = PlansDataSourceMock()
-        let storeKitManager = StoreKitManagerMock()
-        storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
-        let sut = PaymentsUIViewModel(
-            mode: .current,
-            storeKitManager: storeKitManager,
-            servicePlan: servicePlan,
-            planDataSource: plansDataSource,
-            shownPlanNames: ["plus"],
-            clientApp: .mail,
-            customPlansDescription: [:],
-            planRefreshHandler: { _ in XCTFail() },
-            extendSubscriptionHandler: { XCTFail() }
-        )
-        
-        try await sut.fetchPlans()
-        
-        XCTAssertEqual(sut.currentPlan?.details.cycleDescription, "for 12 months")
-        XCTAssertEqual(sut.currentPlan?.details.description, "nice vpn")
-        XCTAssertEqual(sut.currentPlan?.details.title, "VPN Plus")
-        XCTAssertEqual(sut.availablePlans?.count, 2)
-        XCTAssertEqual(sut.availablePlans?[0].storeKitProductId, "ios_passplus_12_usd_non_renewing")
-        XCTAssertEqual(sut.availablePlans?[0].details.cycleDescription, "for 12 months")
-        XCTAssertEqual(sut.availablePlans?[0].details.description, "plan description")
-        XCTAssertEqual(sut.availablePlans?[0].details.title, "Pass Plus")
-        XCTAssertEqual(sut.availablePlans?[1].storeKitProductId, "ios_passplus_24_usd_non_renewing")
-        XCTAssertEqual(sut.availablePlans?[1].details.cycleDescription, "for 24 months")
-        XCTAssertEqual(sut.availablePlans?[1].details.description, "plan description")
-        XCTAssertEqual(sut.availablePlans?[1].details.title, "Pass Plus")
+        try await withFeatureSwitches([.dynamicPlans]) {
+            let plansDataSource = PlansDataSourceMock()
+            let storeKitManager = StoreKitManagerMock()
+            storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+            let sut = PaymentsUIViewModel(
+                mode: .current,
+                storeKitManager: storeKitManager,
+                planService: .right(plansDataSource),
+                clientApp: .mail,
+                customPlansDescription: [:],
+                planRefreshHandler: { _ in XCTFail() },
+                extendSubscriptionHandler: { XCTFail() }
+            )
+
+            try await sut.fetchPlans()
+
+            XCTAssertEqual(sut.currentPlan?.details.cycleDescription, "for 12 months")
+            XCTAssertEqual(sut.currentPlan?.details.description, "nice vpn")
+            XCTAssertEqual(sut.currentPlan?.details.title, "VPN Plus")
+            XCTAssertEqual(sut.availablePlans?.count, 2)
+            XCTAssertEqual(sut.availablePlans?[0].storeKitProductId, "ios_passplus_12_usd_non_renewing")
+            XCTAssertEqual(sut.availablePlans?[0].details.cycleDescription, "for 12 months")
+            XCTAssertEqual(sut.availablePlans?[0].details.description, "plan description")
+            XCTAssertEqual(sut.availablePlans?[0].details.title, "Pass Plus")
+            XCTAssertEqual(sut.availablePlans?[1].storeKitProductId, "ios_passplus_24_usd_non_renewing")
+            XCTAssertEqual(sut.availablePlans?[1].details.cycleDescription, "for 24 months")
+            XCTAssertEqual(sut.availablePlans?[1].details.description, "plan description")
+            XCTAssertEqual(sut.availablePlans?[1].details.title, "Pass Plus")
+        }
     }
     
     func testFetchCurrentPlansNoBackendFetch() {
@@ -224,7 +225,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_plus_12_usd_non_renewing"]
         servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "plus")]
         servicePlan.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
-        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["plus", "free"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["plus", "free"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
@@ -266,7 +267,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, _, completion, errorCompletion in completion() }
         servicePlan.isIAPAvailableStub.fixture = true
         servicePlan.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, completion, errorCompletion in completion() }
-        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["plus", "free"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["plus", "free"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: true) { result in
@@ -306,7 +307,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
         servicePlan.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
         servicePlan.currentSubscriptionStub.fixture = Subscription.dummy.updated(planDetails: [Plan.empty.updated(name: "test2", title: "test2 title")])
-        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["test", "free", "test2"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["test", "free", "test2"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
@@ -337,7 +338,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
     func testFetchCurrentPlansNoBackendFetchDisabledFooter() {
         let expectation = self.expectation(description: "Success completion block called")
         servicePlan.currentSubscriptionStub.fixture = Subscription.userHasUnsufficientScopeToFetchSubscription
-        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: [""], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: [""], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
@@ -368,33 +369,33 @@ final class PaymentsUIViewModelTests: XCTestCase {
     // MARK: Update plan mode
 
     func test_fetchPlan_updateMode() async throws {
-        let plansDataSource = PlansDataSourceMock()
-        let storeKitManager = StoreKitManagerMock()
-        storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
-        let sut = PaymentsUIViewModel(
-            mode: .update,
-            storeKitManager: storeKitManager,
-            servicePlan: servicePlan,
-            planDataSource: plansDataSource,
-            shownPlanNames: ["plus"],
-            clientApp: .mail,
-            customPlansDescription: [:],
-            planRefreshHandler: { _ in XCTFail() },
-            extendSubscriptionHandler: { XCTFail() }
-        )
-        
-        try await sut.fetchPlans()
-        
-        XCTAssertNil(sut.currentPlan)
-        XCTAssertEqual(sut.availablePlans?.count, 2)
-        XCTAssertEqual(sut.availablePlans?[0].storeKitProductId, "ios_passplus_12_usd_non_renewing")
-        XCTAssertEqual(sut.availablePlans?[0].details.cycleDescription, "for 12 months")
-        XCTAssertEqual(sut.availablePlans?[0].details.description, "plan description")
-        XCTAssertEqual(sut.availablePlans?[0].details.title, "Pass Plus")
-        XCTAssertEqual(sut.availablePlans?[1].storeKitProductId, "ios_passplus_24_usd_non_renewing")
-        XCTAssertEqual(sut.availablePlans?[1].details.cycleDescription, "for 24 months")
-        XCTAssertEqual(sut.availablePlans?[1].details.description, "plan description")
-        XCTAssertEqual(sut.availablePlans?[1].details.title, "Pass Plus")
+        try await withFeatureSwitches([.dynamicPlans]) {
+            let plansDataSource = PlansDataSourceMock()
+            let storeKitManager = StoreKitManagerMock()
+            storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+            let sut = PaymentsUIViewModel(
+                mode: .update,
+                storeKitManager: storeKitManager,
+                planService: .right(plansDataSource),
+                clientApp: .mail,
+                customPlansDescription: [:],
+                planRefreshHandler: { _ in XCTFail() },
+                extendSubscriptionHandler: { XCTFail() }
+            )
+
+            try await sut.fetchPlans()
+
+            XCTAssertNil(sut.currentPlan)
+            XCTAssertEqual(sut.availablePlans?.count, 2)
+            XCTAssertEqual(sut.availablePlans?[0].storeKitProductId, "ios_passplus_12_usd_non_renewing")
+            XCTAssertEqual(sut.availablePlans?[0].details.cycleDescription, "for 12 months")
+            XCTAssertEqual(sut.availablePlans?[0].details.description, "plan description")
+            XCTAssertEqual(sut.availablePlans?[0].details.title, "Pass Plus")
+            XCTAssertEqual(sut.availablePlans?[1].storeKitProductId, "ios_passplus_24_usd_non_renewing")
+            XCTAssertEqual(sut.availablePlans?[1].details.cycleDescription, "for 24 months")
+            XCTAssertEqual(sut.availablePlans?[1].details.description, "plan description")
+            XCTAssertEqual(sut.availablePlans?[1].details.title, "Pass Plus")
+        }
     }
     
     func testFetchUpdatePlansNoBackendFetch() {
@@ -402,7 +403,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_test_12_usd_non_renewing"]
         servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
         servicePlan.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
-        let out = PaymentsUIViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["test", "free"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        let out = PaymentsUIViewModel(mode: .update, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["test", "free"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
@@ -433,7 +434,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, _, completion, errorCompletion in completion() }
         servicePlan.isIAPAvailableStub.fixture = true
         servicePlan.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, completion, errorCompletion in completion() }
-        let out = PaymentsUIViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["plus", "free"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        let out = PaymentsUIViewModel(mode: .update, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["plus", "free"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: true) { result in
@@ -463,7 +464,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, _, completion, errorCompletion in completion() }
         servicePlan.isIAPAvailableStub.fixture = true
         servicePlan.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, completion, errorCompletion in completion() }
-        let out = PaymentsUIViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: [], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        let out = PaymentsUIViewModel(mode: .update, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: [], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: true) { result in
@@ -497,7 +498,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "test", title: "test title")]
         servicePlan.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
         servicePlan.currentSubscriptionStub.fixture = Subscription.dummy.updated(planDetails: [Plan.empty.updated(name: "test2", title: "test2 title")])
-        let out = PaymentsUIViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["test", "free", "test2"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        let out = PaymentsUIViewModel(mode: .update, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["test", "free", "test2"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
@@ -528,7 +529,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
     func testFetchUpdatePlansNoBackendFetchDisabledFooter() {
         let expectation = self.expectation(description: "Success completion block called")
         servicePlan.currentSubscriptionStub.fixture = Subscription.userHasUnsufficientScopeToFetchSubscription
-        let out = PaymentsUIViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: [], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        let out = PaymentsUIViewModel(mode: .update, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: [], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
@@ -561,7 +562,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_vpnbasic_12_usd_non_renewing", "ios_vpnplus_12_usd_non_renewing"]
         servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "vpnplus", pricing: ["12": 9600]), Plan.empty.updated(name: "vpnbasic", pricing: ["12": 4800])]
         servicePlan.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
-        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .vpn, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .vpn, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
@@ -606,7 +607,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_vpnbasic_12_usd_non_renewing", "ios_vpnplus_12_usd_non_renewing"]
         servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "vpnplus", pricing: ["12": 9600]), Plan.empty.updated(name: "vpnbasic", pricing: ["12": 4800])]
         servicePlan.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
-        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["vpnbasic", "free"], clientApp: .vpn, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["vpnbasic", "free"], clientApp: .vpn, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         var returnedPlans: [[PlanPresentation]]?
         var returnedFooterType: FooterType?
         out.fetchPlans(backendFetch: false) { result in
@@ -644,7 +645,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = ["ios_vpnbasic_12_usd_non_renewing", "ios_vpnplus_12_usd_non_renewing"]
         servicePlan.availablePlansDetailsStub.fixture = [Plan.empty.updated(name: "vpnplus", pricing: ["12": 9600]), Plan.empty.updated(name: "vpnbasic", pricing: ["12": 4800])]
         servicePlan.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in Plan.empty.updated(name: "free", title: "free title") }
-        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["vpnplus", "free"], clientApp: .vpn, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["vpnplus", "free"], clientApp: .vpn, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         let (returnedPlans, returnedFooterType): ([[PlanPresentation]], FooterType) = await withCheckedContinuation { continuation in
             out.fetchPlans(backendFetch: false) { result in
                 switch result {
@@ -712,7 +713,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.paymentMethodsStub.fixture = []
 
         // WHEN: we compute price presentation
-        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan,
+        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .left(servicePlan),
                                                shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .vpn, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
             out.fetchPlans(backendFetch: false) { result in
@@ -770,7 +771,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.paymentMethodsStub.fixture = []
 
         // WHEN: we compute price presentation
-        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan,
+        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .left(servicePlan),
                                                shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .vpn, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
             out.fetchPlans(backendFetch: false) { result in
@@ -811,7 +812,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.paymentMethodsStub.fixture = []
 
         // WHEN: we compute price presentation
-        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan,
+        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .left(servicePlan),
                                                shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .vpn, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
             out.fetchPlans(backendFetch: false) { result in
@@ -852,7 +853,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.paymentMethodsStub.fixture = []
 
         // WHEN: we compute price presentation
-        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan,
+        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .left(servicePlan),
                                                shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .vpn, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
             out.fetchPlans(backendFetch: false) { result in
@@ -892,7 +893,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.paymentMethodsStub.fixture = [PaymentMethod(type: "card")]
 
         // WHEN: we compute price presentation
-        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan,
+        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .left(servicePlan),
                                                shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .vpn, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
             out.fetchPlans(backendFetch: false) { result in
@@ -948,7 +949,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.paymentMethodsStub.fixture = [PaymentMethod(type: "card")]
 
         // WHEN: we compute price presentation
-        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan,
+        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .left(servicePlan),
                                                shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .vpn, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
             out.fetchPlans(backendFetch: false) { result in
@@ -989,7 +990,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.paymentMethodsStub.fixture = [PaymentMethod(type: "card")]
 
         // WHEN: we compute price presentation
-        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan,
+        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .left(servicePlan),
                                                shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .vpn, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
             out.fetchPlans(backendFetch: false) { result in
@@ -1030,7 +1031,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.paymentMethodsStub.fixture = [PaymentMethod(type: "card")]
 
         // WHEN: we compute price presentation
-        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan,
+        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .left(servicePlan),
                                                shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .vpn, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
             out.fetchPlans(backendFetch: false) { result in
@@ -1069,7 +1070,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = [PresentedPriceTestingHelper.basicIAP, PresentedPriceTestingHelper.plusIAP]
         servicePlan.plansStub.fixture = [Plan.empty.updated(name: "vpnplus"), Plan.empty.updated(name: "vpnbasic")]
         servicePlan.updateServicePlansSuccessFailureStub.bodyIs { _, _, completion, _ in completion() }
-        let out = PaymentsUIViewModel(mode: .signup, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["vpnplus", "vpnbasic"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { result in
+        let out = PaymentsUIViewModel(mode: .signup, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["vpnplus", "vpnbasic"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { result in
             XCTAssertNil(result)
             expectation2.fulfill()
         }, extendSubscriptionHandler: { XCTFail() })
@@ -1143,7 +1144,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = [PresentedPriceTestingHelper.basicIAP, PresentedPriceTestingHelper.plusIAP]
         
         // WHEN: we compute price presentation
-        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .vpn, customPlansDescription: [:], planRefreshHandler: { currentPlanDetails in
+        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .vpn, customPlansDescription: [:], planRefreshHandler: { currentPlanDetails in
             XCTAssertNil(currentPlanDetails)
             expectation3.fulfill()
         }, extendSubscriptionHandler: {
@@ -1191,7 +1192,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = [PresentedPriceTestingHelper.basicIAP, PresentedPriceTestingHelper.plusIAP]
         servicePlan.availablePlansDetailsStub.fixture = [PresentedPriceTestingHelper.plusPlan, PresentedPriceTestingHelper.basicPlan]
         servicePlan.paymentMethodsStub.fixture = []
-        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         
         // WHEN: we compute plan presentation
         let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
@@ -1232,7 +1233,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.paymentMethodsStub.fixture = [PaymentMethod(type: "card")]
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = [PresentedPriceTestingHelper.basicIAP, PresentedPriceTestingHelper.plusIAP]
         servicePlan.availablePlansDetailsStub.fixture = [PresentedPriceTestingHelper.plusPlan, PresentedPriceTestingHelper.basicPlan]
-        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         
         // WHEN: we compute plan presentation
         let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
@@ -1275,7 +1276,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = [PresentedPriceTestingHelper.basicIAP, PresentedPriceTestingHelper.plusIAP]
         servicePlan.availablePlansDetailsStub.fixture = [PresentedPriceTestingHelper.plusPlan, PresentedPriceTestingHelper.basicPlan]
         servicePlan.paymentMethodsStub.fixture = []
-        let out = PaymentsUIViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        let out = PaymentsUIViewModel(mode: .update, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         
         // WHEN: we compute plan presentation
         let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
@@ -1314,7 +1315,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = [PresentedPriceTestingHelper.basicIAP, PresentedPriceTestingHelper.plusIAP]
         servicePlan.availablePlansDetailsStub.fixture = [PresentedPriceTestingHelper.plusPlan, PresentedPriceTestingHelper.basicPlan]
         servicePlan.paymentMethodsStub.fixture = [PaymentMethod(type: "card")]
-        let out = PaymentsUIViewModel(mode: .update, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        let out = PaymentsUIViewModel(mode: .update, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         
         // WHEN: we compute plan presentation
         let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
@@ -1353,7 +1354,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan.currentSubscriptionStub.fixture = Subscription.dummy
             .updated(planDetails: [PresentedPriceTestingHelper.plusPlan])
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = [PresentedPriceTestingHelper.basicIAP, PresentedPriceTestingHelper.plusIAP]
-        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, servicePlan: servicePlan, shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
         
         // WHEN: we compute plan presentation
         let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
@@ -1385,188 +1386,146 @@ final class PaymentsUIViewModelTests: XCTestCase {
     // MARK: - fetchCurrentPlan
     
     func test_fetchCurrentPlan_success() async throws {
-        // Given
-        let storeKitManager = StoreKitManagerMock()
-        storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
-        
-        let sut = PaymentsUIViewModel(
-            mode: .current,
-            storeKitManager: storeKitManager,
-            servicePlan: ServicePlanDataServiceMock(),
-            planDataSource: PlansDataSourceMock(),
-            shownPlanNames: ["vpnplus", "vpnbasic", "free"],
-            clientApp: .mail,
-            customPlansDescription: [:],
-            planRefreshHandler: { _ in XCTFail() },
-            extendSubscriptionHandler: { XCTFail() }
-        )
-        
-        // When
-        try await sut.fetchCurrentPlan()
-        
-        // Then
-        XCTAssertEqual(sut.currentPlan?.details.cycleDescription, "for 12 months")
-        XCTAssertEqual(sut.currentPlan?.details.description, "nice vpn")
-        XCTAssertEqual(sut.currentPlan?.details.title, "VPN Plus")
-    }
-    
-    func test_fetchCurrentPlan_withoutPlanDataSource_fails() async throws {
-        // Given
-        let sut = PaymentsUIViewModel(
-            mode: .current,
-            storeKitManager: StoreKitManagerMock(),
-            servicePlan: ServicePlanDataServiceMock(),
-            planDataSource: nil,
-            shownPlanNames: ["vpnplus", "vpnbasic", "free"],
-            clientApp: .mail,
-            customPlansDescription: [:],
-            planRefreshHandler: { _ in XCTFail() },
-            extendSubscriptionHandler: { XCTFail() }
-        )
-        
-        // When
-        try await sut.fetchCurrentPlan()
-        
-        // Then
-        XCTAssertNil(sut.currentPlan)
+        try await withFeatureSwitches([.dynamicPlans]) {
+            // Given
+            let storeKitManager = StoreKitManagerMock()
+            storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+            
+            let sut = PaymentsUIViewModel(
+                mode: .current,
+                storeKitManager: storeKitManager,
+                planService: .right(PlansDataSourceMock()),
+                clientApp: .mail,
+                customPlansDescription: [:],
+                planRefreshHandler:  { _ in XCTFail() },
+                extendSubscriptionHandler: { XCTFail() }
+            )
+            
+            // When
+            try await sut.fetchCurrentPlan()
+            
+            // Then
+            XCTAssertEqual(sut.currentPlan?.details.cycleDescription, "for 12 months")
+            XCTAssertEqual(sut.currentPlan?.details.description, "nice vpn")
+            XCTAssertEqual(sut.currentPlan?.details.title, "VPN Plus")
+        }
     }
     
     // MARK: - fetchAvailablePlans
     
     func test_fetchAvailablePlans_success() async throws {
-        // Given
-        let storeKitManager = StoreKitManagerMock()
-        storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
-        
-        let sut = PaymentsUIViewModel(
-            mode: .current,
-            storeKitManager: storeKitManager,
-            servicePlan: ServicePlanDataServiceMock(),
-            planDataSource: PlansDataSourceMock(),
-            shownPlanNames: ["vpnplus", "vpnbasic", "free"],
-            clientApp: .mail,
-            customPlansDescription: [:],
-            planRefreshHandler: { _ in XCTFail() },
-            extendSubscriptionHandler: { XCTFail() }
-        )
-        
-        // When
-        try await sut.fetchAvailablePlans()
-        
-        // Then
-        XCTAssertEqual(sut.availablePlans?[0].storeKitProductId, "ios_passplus_12_usd_non_renewing")
-        XCTAssertEqual(sut.availablePlans?[0].details.cycleDescription, "for 12 months")
-        XCTAssertEqual(sut.availablePlans?[0].details.description, "plan description")
-        XCTAssertEqual(sut.availablePlans?[0].details.title, "Pass Plus")
-        XCTAssertEqual(sut.availablePlans?[1].storeKitProductId, "ios_passplus_24_usd_non_renewing")
-        XCTAssertEqual(sut.availablePlans?[1].details.cycleDescription, "for 24 months")
-        XCTAssertEqual(sut.availablePlans?[1].details.description, "plan description")
-        XCTAssertEqual(sut.availablePlans?[1].details.title, "Pass Plus")
-    }
-    
-    func test_fetchAvailablePlans_withoutPlanDataSource_fails() async throws {
-        // Given
-        let sut = PaymentsUIViewModel(
-            mode: .current,
-            storeKitManager: storeKitManager,
-            servicePlan: ServicePlanDataServiceMock(),
-            planDataSource: nil,
-            shownPlanNames: ["vpnplus", "vpnbasic", "free"],
-            clientApp: .mail,
-            customPlansDescription: [:],
-            planRefreshHandler: { _ in XCTFail() },
-            extendSubscriptionHandler: { XCTFail() }
-        )
-        
-        // When
-        try await sut.fetchAvailablePlans()
-        
-        // Then
-        XCTAssertNil(sut.availablePlans)
+        try await withFeatureSwitches([.dynamicPlans]) {
+            // Given
+            let storeKitManager = StoreKitManagerMock()
+            storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+
+            let sut = PaymentsUIViewModel(
+                mode: .current,
+                storeKitManager: storeKitManager,
+                planService: .right(PlansDataSourceMock()),
+                clientApp: .mail,
+                customPlansDescription: [:],
+                planRefreshHandler:  { _ in XCTFail() },
+                extendSubscriptionHandler: { XCTFail() }
+            )
+
+            // When
+            try await sut.fetchAvailablePlans()
+
+            // Then
+            XCTAssertEqual(sut.availablePlans?[0].storeKitProductId, "ios_passplus_12_usd_non_renewing")
+            XCTAssertEqual(sut.availablePlans?[0].details.cycleDescription, "for 12 months")
+            XCTAssertEqual(sut.availablePlans?[0].details.description, "plan description")
+            XCTAssertEqual(sut.availablePlans?[0].details.title, "Pass Plus")
+            XCTAssertEqual(sut.availablePlans?[1].storeKitProductId, "ios_passplus_24_usd_non_renewing")
+            XCTAssertEqual(sut.availablePlans?[1].details.cycleDescription, "for 24 months")
+            XCTAssertEqual(sut.availablePlans?[1].details.description, "plan description")
+            XCTAssertEqual(sut.availablePlans?[1].details.title, "Pass Plus")
+        }
     }
     
     // MARK: - fetchIAPAvailability
     
     func test_fetchIAPAvailability_callsPlanDataSource() async throws {
-        // Given
-        let storeKitManager = StoreKitManagerMock()
-        storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
-        
-        let planDataSource = PlansDataSourceMock()
-        let sut = PaymentsUIViewModel(
-            mode: .current,
-            storeKitManager: storeKitManager,
-            servicePlan: ServicePlanDataServiceMock(),
-            planDataSource: planDataSource,
-            shownPlanNames: ["vpnplus", "vpnbasic", "free"],
-            clientApp: .mail,
-            customPlansDescription: [:],
-            planRefreshHandler: { _ in XCTFail() },
-            extendSubscriptionHandler: { XCTFail() }
-        )
-        
-        // When
-       try await sut.fetchIAPAvailability()
-        
-        // Then
-        XCTAssertTrue(planDataSource.fetchIAPAvailabilityWasCalled)
+        try await withFeatureSwitches([.dynamicPlans]) {
+            // Given
+            let storeKitManager = StoreKitManagerMock()
+            storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+
+            let planDataSource = PlansDataSourceMock()
+            let sut = PaymentsUIViewModel(
+                mode: .current,
+                storeKitManager: storeKitManager,
+                planService: .right(planDataSource),
+                clientApp: .mail,
+                customPlansDescription: [:],
+                planRefreshHandler:  { _ in XCTFail() },
+                extendSubscriptionHandler: { XCTFail() }
+            )
+
+            // When
+            try await sut.fetchIAPAvailability()
+
+            // Then
+            XCTAssertTrue(planDataSource.fetchIAPAvailabilityWasCalled)
+        }
     }
     
     // MARK: - fetchPaymentMethods
     
     func test_fetchPaymentMethods_callsPlanDataSource() async throws {
-        // Given
-        let storeKitManager = StoreKitManagerMock()
-        storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
-        
-        let planDataSource = PlansDataSourceMock()
-        let sut = PaymentsUIViewModel(
-            mode: .current,
-            storeKitManager: storeKitManager,
-            servicePlan: ServicePlanDataServiceMock(),
-            planDataSource: planDataSource,
-            shownPlanNames: ["vpnplus", "vpnbasic", "free"],
-            clientApp: .mail,
-            customPlansDescription: [:],
-            planRefreshHandler: { _ in XCTFail() },
-            extendSubscriptionHandler: { XCTFail() }
-        )
-        
-        // When
-       try await sut.fetchPaymentMethods()
-        
-        // Then
-        XCTAssertTrue(planDataSource.fetchPaymentMethodsWasCalled)
+        try await withFeatureSwitches([.dynamicPlans]) {
+            // Given
+            let storeKitManager = StoreKitManagerMock()
+            storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+
+            let planDataSource = PlansDataSourceMock()
+            let sut = PaymentsUIViewModel(
+                mode: .current,
+                storeKitManager: storeKitManager,
+                planService: .right(planDataSource),
+                clientApp: .mail,
+                customPlansDescription: [:],
+                planRefreshHandler:  { _ in XCTFail() },
+                extendSubscriptionHandler: { XCTFail() }
+            )
+
+            // When
+            try await sut.fetchPaymentMethods()
+
+            // Then
+            XCTAssertTrue(planDataSource.fetchPaymentMethodsWasCalled)
+        }
     }
     
     // MARK: dynamicPlans
     
     func test_dynamicPlans_isWellComposed() async throws {
-        // Given
-        let storeKitManager = StoreKitManagerMock()
-        storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
-        
-        let planDataSource = PlansDataSourceMock()
-        let sut = PaymentsUIViewModel(
-            mode: .current,
-            storeKitManager: storeKitManager,
-            servicePlan: ServicePlanDataServiceMock(),
-            planDataSource: planDataSource,
-            shownPlanNames: ["vpnplus", "vpnbasic", "free"],
-            clientApp: .mail,
-            customPlansDescription: [:],
-            planRefreshHandler: { _ in XCTFail() },
-            extendSubscriptionHandler: { XCTFail() }
-        )
-        
-        // When
-        try await sut.fetchCurrentPlan()
-        try await sut.fetchAvailablePlans()
-        
-        // Then
-        XCTAssertEqual(sut.dynamicPlans.count, 2)
-        XCTAssertEqual(sut.dynamicPlans[0].count, 1)
-        XCTAssertEqual(sut.dynamicPlans[1].count, 2)
+        try await withFeatureSwitches([.dynamicPlans]) {
+            // Given
+            let storeKitManager = StoreKitManagerMock()
+            storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+
+            let planDataSource = PlansDataSourceMock()
+            let sut = PaymentsUIViewModel(
+                mode: .current,
+                storeKitManager: storeKitManager,
+                planService: .right(planDataSource),
+                clientApp: .mail,
+                customPlansDescription: [:],
+                planRefreshHandler:  { _ in XCTFail() },
+                extendSubscriptionHandler: { XCTFail() }
+            )
+
+            // When
+            try await sut.fetchCurrentPlan()
+            try await sut.fetchAvailablePlans()
+
+            // Then
+            XCTAssertEqual(sut.dynamicPlans.count, 2)
+            XCTAssertEqual(sut.dynamicPlans[0].count, 1)
+            XCTAssertEqual(sut.dynamicPlans[1].count, 2)
+        }
     }
 }
 

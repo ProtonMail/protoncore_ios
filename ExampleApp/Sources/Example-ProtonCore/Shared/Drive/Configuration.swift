@@ -1,4 +1,5 @@
 import class Foundation.Bundle
+import ProtonCoreFeatureSwitch
 import ProtonCoreObfuscatedConstants
 import typealias ProtonCoreLogin.AccountType
 import typealias ProtonCorePayments.ListOfIAPIdentifiers
@@ -7,8 +8,8 @@ import enum ProtonCoreDataModel.ClientApp
 
 let clientApp: ClientApp = .drive
 
-let listOfIAPIdentifiers: ListOfIAPIdentifiers = ObfuscatedConstants.driveIAPIdentifiers
-let listOfShownPlanNames: ListOfShownPlanNames = ObfuscatedConstants.driveShownPlanNames
+let listOfIAPIdentifiers: ListOfIAPIdentifiers = FeatureFactory.shared.isEnabled(.dynamicPlans) ? [] : ObfuscatedConstants.driveIAPIdentifiers
+let listOfShownPlanNames: ListOfShownPlanNames = FeatureFactory.shared.isEnabled(.dynamicPlans) ? [] : ObfuscatedConstants.driveShownPlanNames
 
 let appVersionHeader = AppVersionHeader(appNamePrefix: "ios-drive@")
 

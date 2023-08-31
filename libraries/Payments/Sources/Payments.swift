@@ -22,6 +22,7 @@
 import Foundation
 import ProtonCoreFeatureSwitch
 import ProtonCoreServices
+import ProtonCoreUtilities
 
 typealias ListOfIAPIdentifiersGet = () -> ListOfIAPIdentifiers
 typealias ListOfIAPIdentifiersSet = (ListOfIAPIdentifiers) -> Void
@@ -47,13 +48,23 @@ public final class Payments {
         planService: planService, storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService
     )
 
-    public internal(set) lazy var planService: ServicePlanDataServiceProtocol = ServicePlanDataService(
-        inAppPurchaseIdentifiers: { [weak self] in self?.inAppPurchaseIdentifiers ?? [] },
-        paymentsApi: paymentsApi,
-        apiService: apiService,
-        localStorage: localStorage,
-        paymentsAlertManager: paymentsAlertManager
-    )
+    public internal(set) lazy var planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol> = {
+        if FeatureFactory.shared.isEnabled(.dynamicPlans) {
+            return .right(PlansDataSource(apiService: apiService,
+                                          storeKitDataSource: StoreKitDataSource(storeKitManager: storeKitManager)))
+        } else {
+            return .left(
+                ServicePlanDataService(
+                    inAppPurchaseIdentifiers: { [weak self] in self?.inAppPurchaseIdentifiers ?? [] },
+                    paymentsApi: paymentsApi,
+                    apiService: apiService,
+                    localStorage: localStorage,
+                    paymentsAlertManager: paymentsAlertManager
+                )
+            )
+        }
+
+    }()
 
     public internal(set) lazy var storeKitManager: StoreKitManagerProtocol = StoreKitManager(
         inAppPurchaseIdentifiersGet: { [weak self] in self?.inAppPurchaseIdentifiers ?? [] },

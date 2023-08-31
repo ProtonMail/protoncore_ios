@@ -32,15 +32,22 @@ import ProtonCoreTestingToolkit
 
 final class StoreKitDataSourceTests: XCTestCase {
 
+    var storeKitManager: StoreKitManagerIAPUpdateMock!
+
+    override func setUp() {
+        super.setUp()
+        storeKitManager = StoreKitManagerIAPUpdateMock()
+    }
+
     func testNoProductsAreAvailableAtTheBeginning() async throws {
-        let out = StoreKitDataSource { SKRequestMock(productIdentifiers: $0) }
+        let out = StoreKitDataSource(storeKitManager: storeKitManager) { SKRequestMock(productIdentifiers: $0) }
         XCTAssertEqual(out.availableProducts, [])
         XCTAssertEqual(out.unavailableProductsIdentifiers, [])
     }
 
     func testFetchingProductsCausesRequestConfigAndStartsTheAsyncOperationWhichEndsWithDelegateMethodBeingCalled() async throws {
         let request = SKRequestMock(productIdentifiers: [])
-        let out = StoreKitDataSource { _ in request }
+        let out = StoreKitDataSource(storeKitManager: storeKitManager) { _ in request }
 
         // run async task
         let task = Task {
@@ -59,7 +66,7 @@ final class StoreKitDataSourceTests: XCTestCase {
     }
 
     func testProductResponseIsParsed() async throws {
-        let out = StoreKitDataSource()
+        let out = StoreKitDataSource(storeKitManager: storeKitManager)
         let available: [SKProduct] = [
             .init(identifier: "unavailable1", price: "100", priceLocale: .autoupdatingCurrent),
             .init(identifier: "unavailable2", price: "200", priceLocale: .autoupdatingCurrent)
@@ -73,11 +80,13 @@ final class StoreKitDataSourceTests: XCTestCase {
             out.productsRequest(SKRequestMock(productIdentifiers: []), didReceive: response)
         }
         XCTAssertEqual(out.availableProducts, available)
+        XCTAssertTrue(storeKitManager.iapsWereFetchedStub.wasCalledExactlyOnce)
+        XCTAssertEqual(storeKitManager.iapsWereFetchedStub.lastArguments?.value, available)
         XCTAssertEqual(out.unavailableProductsIdentifiers, unavailable)
     }
 
     func testProductFetchErrorIsParsed() async throws {
-        let out = StoreKitDataSource()
+        let out = StoreKitDataSource(storeKitManager: storeKitManager)
         let available: [SKProduct] = [
             .init(identifier: "unavailable1", price: "100", priceLocale: .autoupdatingCurrent),
             .init(identifier: "unavailable2", price: "200", priceLocale: .autoupdatingCurrent)
@@ -97,6 +106,7 @@ final class StoreKitDataSourceTests: XCTestCase {
         } catch {
             guard .testError == error as? TestError else { XCTFail("wrong error thrown"); return }
             XCTAssertTrue(out.availableProducts.isEmpty)
+            XCTAssertTrue(storeKitManager.iapsWereFetchedStub.wasNotCalled)
             XCTAssertTrue(out.unavailableProductsIdentifiers.isEmpty)
         }
     }
