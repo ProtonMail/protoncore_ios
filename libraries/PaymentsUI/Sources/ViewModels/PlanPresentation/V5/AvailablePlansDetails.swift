@@ -21,7 +21,7 @@
 
 #if os(iOS)
 
-import Foundation
+import UIKit
 import ProtonCorePayments
 
 struct AvailablePlansDetails {
@@ -29,7 +29,7 @@ struct AvailablePlansDetails {
     let title: String // "VPN Plus"
     let description: String? // "Your privacy are our priority."
     let cycleDescription: String? // "for 1 year"
-    let price: String // "$71.88"
+    let price: String // "$72.88"
     let decorations: [Decoration]
     let entitlements: [Entitlement]
     
@@ -39,16 +39,17 @@ struct AvailablePlansDetails {
         case border(color: String)
     }
     
-    struct Entitlement {
+    struct Entitlement: Equatable {
         var text: String
-        var iconName: String
+        var icon: UIImage?
         var hint: String?
     }
     
     static func createPlan(from plan: AvailablePlans.AvailablePlan,
                            for instance: AvailablePlans.AvailablePlan.Instance? = nil,
                            iapPlan: InAppPurchasePlan? = nil,
-                           storeKitManager: StoreKitManagerProtocol? = nil) -> AvailablePlansDetails? {
+                           plansDataSource: PlansDataSourceProtocol?,
+                           storeKitManager: StoreKitManagerProtocol? = nil) async throws -> AvailablePlansDetails? {
         let decorations: [Decoration] = plan.decorations.map {
             switch $0 {
             case .border(let decoration):
@@ -58,13 +59,16 @@ struct AvailablePlansDetails {
             }
         }
         
-        let entitlements: [Entitlement] = plan.entitlements.map {
-            switch $0 {
+        var entitlements = [Entitlement]()
+        for entitlement in plan.entitlements {
+            switch entitlement {
             case .description(let entitlement):
-                return .init(
+                let iconData = try await plansDataSource?.fetchIcon(iconName: entitlement.iconName)
+                entitlements.append(.init(
                     text: entitlement.text,
-                    iconName: entitlement.iconName,
-                    hint: entitlement.hint)
+                    icon: nil /* iconData.flatMap { UIImage(data: $0) } */,
+                    hint: entitlement.hint
+                ))
             }
         }
         

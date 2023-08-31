@@ -545,43 +545,44 @@ final class PaymentsUIViewModel {
 extension PaymentsUIViewModel {
     func fetchCurrentPlan() async throws {
         // TODO: support purchase process with PlansDataSource object
-        guard FeatureFactory.shared.isEnabled(.dynamicPlans), case .right(let planDataSource) = planService else {
+        guard FeatureFactory.shared.isEnabled(.dynamicPlans), case .right(let plansDataSource) = planService else {
             assertionFailure("Dynamic plans must use the PlansDataSourceProtocol object")
             throw StoreKitManagerErrors.transactionFailedByUnknownReason
         }
 
-        try await planDataSource.fetchCurrentPlan()
-        guard let currentPlanSubscription = planDataSource.currentPlan?.subscriptions.first else {
+        try await plansDataSource.fetchCurrentPlan()
+        guard let currentPlanSubscription = plansDataSource.currentPlan?.subscriptions.first else {
             return
         }
         
-        currentPlan = CurrentPlanPresentation.createCurrentPlan(from: currentPlanSubscription)
+        currentPlan = try await CurrentPlanPresentation.createCurrentPlan(from: currentPlanSubscription, plansDataSource: plansDataSource)
     }
     
     func fetchAvailablePlans() async throws {
         // TODO: support purchase process with PlansDataSource object
-        guard FeatureFactory.shared.isEnabled(.dynamicPlans), case .right(let planDataSource) = planService else {
+        guard FeatureFactory.shared.isEnabled(.dynamicPlans), case .right(let plansDataSource) = planService else {
             assertionFailure("Dynamic plans must use the PlansDataSourceProtocol object")
             throw StoreKitManagerErrors.transactionFailedByUnknownReason
         }
 
-        try await planDataSource.fetchAvailablePlans()
+        try await plansDataSource.fetchAvailablePlans()
         
-        guard let availablePlansDataSource = planDataSource.availablePlans?.plans else {
+        guard let availablePlansDataSource = plansDataSource.availablePlans?.plans else {
             return
         }
         
         self.availablePlans = []
-        availablePlansDataSource.forEach { plan in
+        for plan in availablePlansDataSource {
             if plan.instances.isEmpty {
-                if let plan = AvailablePlansPresentation.createAvailablePlans(from: plan) {
+                if let plan = try await AvailablePlansPresentation.createAvailablePlans(from: plan, plansDataSource: plansDataSource) {
                     self.availablePlans?.append(plan)
                 }
             } else {
-                plan.instances.forEach { instance in
-                    if let plan = AvailablePlansPresentation.createAvailablePlans(
+                for instance in plan.instances {
+                    if let plan = try await AvailablePlansPresentation.createAvailablePlans(
                         from: plan,
                         for: instance,
+                        plansDataSource: plansDataSource,
                         storeKitManager: storeKitManager
                     ) {
                         self.availablePlans?.append(plan)
