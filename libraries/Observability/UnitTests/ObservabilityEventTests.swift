@@ -61,7 +61,8 @@ final class ObservabilityEventTests: XCTestCase {
                         "enum": [
                             "successful",
                             "failed",
-                            "apiMightBeBlocked"
+                            "apiMightBeBlocked",
+                            "notAvailable"
                         ]
                     }
                 },
@@ -295,7 +296,8 @@ final class ObservabilityEventTests: XCTestCase {
                         "enum": [
                             "successful",
                             "failed",
-                            "apiMightBeBlocked"
+                            "apiMightBeBlocked",
+                            "notAvailable"
                         ]
                     }
                 },
