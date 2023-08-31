@@ -29,6 +29,7 @@ import ProtonCoreUIFoundations
 import ProtonCoreObservability
 import ProtonCoreFoundations
 import ProtonCoreUtilities
+import ProtonCoreFeatureSwitch
 
 final class PaymentsUICoordinator {
     
@@ -82,20 +83,96 @@ final class PaymentsUICoordinator {
         self.viewController = viewController
         self.mode = .signup
         self.completionHandler = completionHandler
-        showPaymentsUI(servicePlan: planService, backendFetch: false)
+        if FeatureFactory.shared.isEnabled(.dynamicPlans) {
+            Task {
+                try await showPaymentsUI(servicePlan: planService)
+            }
+        } else {
+            showPaymentsUI(servicePlan: planService, backendFetch: false)
+        }
     }
     
     func start(presentationType: PaymentsUIPresentationType, mode: PaymentsUIMode, backendFetch: Bool, completionHandler: @escaping ((PaymentsUIResultReason) -> Void)) {
         self.presentationType = presentationType
         self.mode = mode
         self.completionHandler = completionHandler
-        showPaymentsUI(servicePlan: planService, backendFetch: backendFetch)
+        if FeatureFactory.shared.isEnabled(.dynamicPlans) {
+            Task {
+                try await showPaymentsUI(servicePlan: planService)
+            }
+        } else {
+            showPaymentsUI(servicePlan: planService, backendFetch: backendFetch)
+        }
     }
     
     // MARK: Private methods
     
-    private func showPaymentsUI(servicePlan: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>, backendFetch: Bool) {
+    private func showPaymentsUI(servicePlan: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>) async throws {
+        let paymentsUIViewController = await MainActor.run {
+            let paymentsUIViewController = UIStoryboard.instantiate(
+                PaymentsUIViewController.self, storyboardName: storyboardName, inAppTheme: customization.inAppTheme
+            )
+            paymentsUIViewController.delegate = self
+            paymentsUIViewController.onDohTroubleshooting = { [weak self] in
+                self?.onDohTroubleshooting()
+            }
+            return paymentsUIViewController
+        }
         
+        viewModel = PaymentsUIViewModel(
+            mode: mode,
+            storeKitManager: storeKitManager,
+            planService: planService,
+            shownPlanNames: shownPlanNames,
+            clientApp: clientApp,
+            customPlansDescription: customization.customPlansDescription,
+            planRefreshHandler: { [weak self] updatedPlan in
+                Task { [weak self] in
+                    await MainActor.run { [weak self] in
+                        self?.paymentsUIViewController?.reloadData()
+                        if updatedPlan != nil {
+                            self?.paymentsUIViewController?.showPurchaseSuccessBanner()
+                        }
+                    }
+                }
+            },
+            extendSubscriptionHandler: { [weak self] in
+                Task { [weak self] in
+                    await MainActor.run { [weak self] in
+                        self?.paymentsUIViewController?.extendSubscriptionSelection()
+                    }
+                }
+            }
+        )
+        
+        await MainActor.run {
+            self.paymentsUIViewController = paymentsUIViewController
+            paymentsUIViewController.viewModel = viewModel
+            paymentsUIViewController.mode = mode
+            
+            if mode != .signup {
+                showPlanViewController(paymentsViewController: paymentsUIViewController)
+            }
+        }
+        
+        do {
+            try await viewModel?.fetchPlans()
+            unfinishedPurchasePlan = purchaseManager.unfinishedPurchasePlan
+            await MainActor.run {
+                if mode == .signup {
+                    showPlanViewController(paymentsViewController: paymentsUIViewController)
+                } else {
+                    paymentsUIViewController.reloadData()
+                }
+            }
+        } catch (let error) {
+            await MainActor.run {
+                showError(error: error)
+            }
+        }
+    }
+    
+    private func showPaymentsUI(servicePlan: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>, backendFetch: Bool) {
         let paymentsUIViewController = UIStoryboard.instantiate(
             PaymentsUIViewController.self, storyboardName: storyboardName, inAppTheme: customization.inAppTheme
         )
@@ -122,7 +199,7 @@ final class PaymentsUICoordinator {
             }
         }
         self.paymentsUIViewController = paymentsUIViewController
-        paymentsUIViewController.model = viewModel
+        paymentsUIViewController.viewModel = viewModel
         paymentsUIViewController.mode = mode
         if mode != .signup {
             showPlanViewController(paymentsViewController: paymentsUIViewController)

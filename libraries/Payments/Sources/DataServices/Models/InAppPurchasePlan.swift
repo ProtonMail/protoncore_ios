@@ -154,7 +154,7 @@ public struct InAppPurchasePlan: Equatable, Hashable {
     }
     
     public init?(availablePlanInstance: AvailablePlans.AvailablePlan.Instance) {
-        guard let iapIdentifier = availablePlanInstance.vendors?.apple.ID else {
+        guard let iapIdentifier = availablePlanInstance.vendors?.apple.productID else {
             return nil
         }
         self.init(storeKitProductId: iapIdentifier)

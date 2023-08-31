@@ -55,12 +55,7 @@ public struct AvailablePlans: Decodable, Equatable {
                 public var apple: Vendor
                 
                 public struct Vendor: Decodable, Equatable {
-                    public var ID: String
-//                    public var ID: String { plans._12 }
-//                    public var plans: TemporaryWorkaroundUntilAPIIsFixed
-//                    public struct TemporaryWorkaroundUntilAPIIsFixed: Decodable, Equatable {
-//                        var _12: String
-//                    }
+                    public var productID: String
                 }
             }
         }
