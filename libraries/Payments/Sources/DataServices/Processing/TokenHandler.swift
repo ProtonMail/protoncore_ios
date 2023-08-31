@@ -105,7 +105,7 @@ final class TokenHandler {
             PMLog.debug("StoreKit: No proton token found")
             
             // Step 2. Exchange the receipt for a token that's worth product's Proton price amount of money
-            let tokenApi = dependencies.paymentsApiProtocol.paymentTokenRequest(
+            let tokenApi = dependencies.paymentsApiProtocol.paymentTokenOldRequest(
                 api: dependencies.apiService, amount: plan.amount, receipt: receipt
             )
             PMLog.debug("Making TokenRequest")
