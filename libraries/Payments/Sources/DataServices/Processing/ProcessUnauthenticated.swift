@@ -101,7 +101,7 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
             
             // Step 4. Exchange the receipt for a token that's worth product's Proton price amount of money
             PMLog.debug("Making TokenRequest")
-            let tokenApi = dependencies.paymentsApiProtocol.paymentTokenRequest(
+            let tokenApi = dependencies.paymentsApiProtocol.paymentTokenOldRequest(
                 api: dependencies.apiService, amount: plan.amount, receipt: receipt
             )
 
@@ -189,7 +189,7 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
             do {
                 
                 // Step 9. If the token is not available we effectively repeat step 4: we exchange the receipt for a token that's worth product's Proton price amount of money
-                let tokenApi = dependencies.paymentsApiProtocol.paymentTokenRequest(
+                let tokenApi = dependencies.paymentsApiProtocol.paymentTokenOldRequest(
                     api: dependencies.apiService, amount: plan.amount, receipt: receipt
                 )
 
