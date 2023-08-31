@@ -264,6 +264,10 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
     
     private func setupStoreKit(completion: @escaping (Error?) -> Void) {
         payments.activate(delegate: self, storeKitProductsFetched: completion)
+        if FeatureFactory.shared.isEnabled(.dynamicPlans) {
+            completion(nil)
+        }
+        
     }
     
     private func clearData() {

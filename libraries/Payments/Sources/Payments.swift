@@ -48,10 +48,11 @@ public final class Payments {
         planService: planService, storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService
     )
 
+    lazy var storeKitDataSource: StoreKitDataSource = StoreKitDataSource()
+
     public internal(set) lazy var planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol> = {
         if FeatureFactory.shared.isEnabled(.dynamicPlans) {
-            return .right(PlansDataSource(apiService: apiService,
-                                          storeKitDataSource: StoreKitDataSource(storeKitManager: storeKitManager)))
+            return .right(PlansDataSource(apiService: apiService, storeKitDataSource: storeKitDataSource))
         } else {
             return .left(
                 ServicePlanDataService(
@@ -66,17 +67,26 @@ public final class Payments {
 
     }()
 
-    public internal(set) lazy var storeKitManager: StoreKitManagerProtocol = StoreKitManager(
-        inAppPurchaseIdentifiersGet: { [weak self] in self?.inAppPurchaseIdentifiers ?? [] },
-        inAppPurchaseIdentifiersSet: { [weak self] in self?.inAppPurchaseIdentifiers = $0 },
-        planService: planService,
-        paymentsApi: paymentsApi,
-        apiService: apiService,
-        canExtendSubscription: canExtendSubscription,
-        paymentsAlertManager: paymentsAlertManager,
-        reportBugAlertHandler: reportBugAlertHandler,
-        refreshHandler: { _ in } // default refresh handler does nothing
-    )
+    public internal(set) lazy var storeKitManager: StoreKitManagerProtocol = {
+        let dataSource: StoreKitDataSource?
+        if FeatureFactory.shared.isEnabled(.dynamicPlans) {
+            dataSource = storeKitDataSource
+        } else {
+            dataSource = nil
+        }
+        return StoreKitManager(
+            inAppPurchaseIdentifiersGet: { [weak self] in self?.inAppPurchaseIdentifiers ?? [] },
+            inAppPurchaseIdentifiersSet: { [weak self] in self?.inAppPurchaseIdentifiers = $0 },
+            planService: planService,
+            storeKitDataSource: dataSource,
+            paymentsApi: paymentsApi,
+            apiService: apiService,
+            canExtendSubscription: canExtendSubscription,
+            paymentsAlertManager: paymentsAlertManager,
+            reportBugAlertHandler: reportBugAlertHandler,
+            refreshHandler: { _ in } // default refresh handler does nothing
+        )
+    }()
 
     public init(inAppPurchaseIdentifiers: ListOfIAPIdentifiers,
                 apiService: APIService,

@@ -59,7 +59,22 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     var errorRetryIn: Double = 2
     var alertViewDelay: Double = 1.0
     var receiptError: Error?
-    var availableProducts: [SKProduct] = []
+    var availableProducts: [SKProduct] {
+        get {
+            guard let storeKitDataSource else { return storedAvailableProducts }
+            return storeKitDataSource.availableProducts
+        }
+        set {
+            guard storeKitDataSource == nil else {
+                assertionFailure("The available products should never be set here if store kit data source is used")
+                return
+            }
+            storedAvailableProducts = newValue
+        }
+    }
+    var storedAvailableProducts: [SKProduct] = []
+
+    private let storeKitDataSource: StoreKitDataSource?
 
     // MARK: Private properties
     private lazy var processAuthenticated = ProcessAuthenticated(dependencies: self)
@@ -210,6 +225,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     init(inAppPurchaseIdentifiersGet: @escaping ListOfIAPIdentifiersGet,
          inAppPurchaseIdentifiersSet: @escaping ListOfIAPIdentifiersSet,
          planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>,
+         storeKitDataSource: StoreKitDataSource?,
          paymentsApi: PaymentsApiProtocol,
          apiService: APIService,
          canExtendSubscription: Bool,
@@ -220,6 +236,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
         self.inAppPurchaseIdentifiersGet = inAppPurchaseIdentifiersGet
         self.inAppPurchaseIdentifiersSet = inAppPurchaseIdentifiersSet
         self.planService = planService
+        self.storeKitDataSource = storeKitDataSource
         self.paymentsApi = paymentsApi
         self.apiService = apiService
         self.canExtendSubscription = canExtendSubscription
@@ -825,10 +842,4 @@ extension StoreKitManager: ProcessDependencies {
 
 extension StoreKitManager: ValidationManagerDependencies {
     var products: [SKProduct] { availableProducts }
-}
-
-extension StoreKitManager: StoreKitManagerIAPUpdateProtocol {
-    func iapsWereFetched(iaps: [SKProduct]) {
-        availableProducts = iaps
-    }
 }
