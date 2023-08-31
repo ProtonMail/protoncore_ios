@@ -141,7 +141,8 @@ protocol PaymentsApiProtocol {
     func plansRequest(api: APIService) -> PlansRequest
     func creditRequest(api: APIService, amount: Int, paymentAction: PaymentAction) -> CreditRequest
     func methodsRequest(api: APIService) -> MethodRequest
-    func paymentTokenRequest(api: APIService, amount: Int, receipt: String) -> PaymentTokenRequest
+    func paymentTokenOldRequest(api: APIService, amount: Int, receipt: String) -> PaymentTokenOldRequest
+    func paymentTokenRequest(api: APIService, amount: Int, receipt: String, transactionId: String, bundleId: String, productId: String) -> PaymentTokenRequest
     func paymentTokenStatusRequest(api: APIService, token: PaymentToken) -> PaymentTokenStatusRequest
     func validateSubscriptionRequest(api: APIService, protonPlanName: String, isAuthenticated: Bool) -> ValidateSubscriptionRequest
     func countriesCountRequest(api: APIService) -> CountriesCountRequest
@@ -198,8 +199,12 @@ class PaymentsApiImplementation: PaymentsApiProtocol {
         MethodRequest(api: api)
     }
 
-    func paymentTokenRequest(api: APIService, amount: Int, receipt: String) -> PaymentTokenRequest {
-        PaymentTokenRequest(api: api, amount: amount, receipt: receipt)
+    func paymentTokenOldRequest(api: APIService, amount: Int, receipt: String) -> PaymentTokenOldRequest {
+        PaymentTokenOldRequest(api: api, amount: amount, receipt: receipt)
+    }
+
+    func paymentTokenRequest(api: APIService, amount: Int, receipt: String, transactionId: String, bundleId: String, productId: String) -> PaymentTokenRequest {
+        PaymentTokenRequest(api: api, amount: amount, receipt: receipt, transactionId: transactionId, bundleId: bundleId, productId: productId)
     }
 
     func paymentTokenStatusRequest(api: APIService, token: PaymentToken) -> PaymentTokenStatusRequest {
