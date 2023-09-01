@@ -181,6 +181,18 @@ final class LoginViewController: UIViewController, AccessibleView {
             FeatureFactory.shared.disable(&.ssoSignIn)
         }
     }
+    
+    @IBAction func dynamicPlansAction(_ sender: Any) {
+        guard let switcher = sender as? UISwitch else {
+            return
+        }
+        
+        if switcher.isOn {
+            FeatureFactory.shared.enable(&.dynamicPlans)
+        } else {
+            FeatureFactory.shared.disable(&.dynamicPlans)
+        }
+    }
 
     @IBAction private func showLogin(_ sender: Any) {
         removePaymentsObserver()

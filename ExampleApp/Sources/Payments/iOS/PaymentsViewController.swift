@@ -36,6 +36,7 @@ class PaymentsViewController: UIViewController, AccessibleView {
     
     @IBOutlet weak var environmentSelector: EnvironmentSelector!
     @IBOutlet weak var testCardSwitch: UISwitch!
+    @IBOutlet weak var enableDynamicPlans: UISwitch!
     @IBOutlet weak var simulateIAPFailure: UISwitch!
     @IBOutlet weak var unfinishedTransactionsButton: UIButton!
 
@@ -66,6 +67,10 @@ class PaymentsViewController: UIViewController, AccessibleView {
             ProtonCorePayments.TemporaryHacks.testCardForPayments = nil
         }
         #endif
+    }
+    
+    @IBAction private func useEnableDynamicPlansSwitchValueChanged() {
+        FeatureFactory.shared.setEnabled(&.dynamicPlans, isEnable: enableDynamicPlans.isOn)
     }
     
     @IBAction private func simulateIAPFailureSwitchValueChanged() {

@@ -30,8 +30,6 @@ final class CurrentPlanCell: UITableViewCell, AccessibleCell {
     static let reuseIdentifier = "CurrentPlanCell"
     static let nib = UINib(nibName: "CurrentPlanCell", bundle: PaymentsUI.bundle)
 
-    var plan: PlanPresentation?
-
     // MARK: - Outlets
     
     @IBOutlet weak var mainView: UIView! {
@@ -95,7 +93,6 @@ final class CurrentPlanCell: UITableViewCell, AccessibleCell {
     }
     
     private func configureCurrentPlan(plan: PlanPresentation, currentPlanDetails: CurrentPlanDetails) {
-        self.plan = plan
         generateCellAccessibilityIdentifiers(currentPlanDetails.name)
         
         planNameLabel.text = currentPlanDetails.name
@@ -154,6 +151,53 @@ final class CurrentPlanCell: UITableViewCell, AccessibleCell {
     private func enableProgressView(enabled: Bool) {
         progressBarSpacerView.isHidden = !enabled
         progressBarView.isHidden = !enabled
+    }
+}
+
+// TODO: write snapshot tests: CP-6481
+// MARK: - Dynamic plans
+
+extension CurrentPlanCell {
+    func configurePlan(currentPlan: CurrentPlanPresentation) {
+        planDetailsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        generateCellAccessibilityIdentifiers(currentPlan.details.title)
+        
+        planNameLabel.text = currentPlan.details.title
+        planDescriptionLabel.text = PUITranslations.current_plan_title.l10n
+        
+        priceLabel.isHidden = false
+        priceDescriptionLabel.isHidden = false
+        priceLabel.text = currentPlan.details.price
+        priceDescriptionLabel.text = currentPlan.details.cycleDescription
+        
+        progressBarSpacerView.isHidden = true
+        progressBarView.isHidden = true
+        
+        for entitlement in currentPlan.details.entitlements {
+            switch entitlement {
+            case .progress(let progressEntitlement):
+                progressBarSpacerView.isHidden = false
+                progressBarView.isHidden = false
+                progressBarView.configure(
+                    usedSpaceDescription: progressEntitlement.text,
+                    usedSpace: Int64(progressEntitlement.current),
+                    maxSpace: Int64(progressEntitlement.max)
+                )
+            case .description(let descriptionEntitlement):
+                let detailView = PlanDetailView()
+                detailView.configure(icon: nil /*descriptionEntitlement.iconName*/, text: descriptionEntitlement.text)
+                planDetailsStackView.addArrangedSubview(detailView)
+            }
+        }
+
+        
+        if let endDate = currentPlan.details.endDate {
+            enableTimeView(enabled: true)
+            planTimeLabel.attributedText = endDate
+            planTimeLabel.font = .adjustedFont(forTextStyle: .footnote)
+        } else {
+            enableTimeView(enabled: false)
+        }
     }
 }
 

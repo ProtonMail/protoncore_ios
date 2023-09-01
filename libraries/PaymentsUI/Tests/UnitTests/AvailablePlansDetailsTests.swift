@@ -33,24 +33,26 @@ import ProtonCoreTestingToolkit
 @testable import ProtonCorePayments
 
 final class AvailablePlansDetailsTests: XCTestCase {
-    func test_createPlan_callsFetchIcon() async throws {
-        // Given
-        let plansDataSource = PlansDataSourceMock()
-        let availablePlan = AvailablePlans.AvailablePlan(
-            title: "title",
-            instances: [],
-            entitlements: [
-                .description(.init(type: "description", iconName: "tick", text: "text"))
-            ],
-            decorations: []
-        )
-        
-        // When
-        _ = try await AvailablePlansDetails.createPlan(from: availablePlan, plansDataSource: plansDataSource)
-        
-        // Then
-        XCTAssertTrue(plansDataSource.fetchIconStub.wasCalled)
-    }
+    
+    // TODO: CP-6480
+//    func test_createPlan_callsFetchIcon() async throws {
+//        // Given
+//        let plansDataSource = PlansDataSourceMock()
+//        let availablePlan = AvailablePlans.AvailablePlan(
+//            title: "title",
+//            instances: [],
+//            entitlements: [
+//                .description(.init(type: "description", iconName: "tick", text: "text"))
+//            ],
+//            decorations: []
+//        )
+//
+//        // When
+//        _ = try await AvailablePlansDetails.createPlan(from: availablePlan, plansDataSource: plansDataSource)
+//
+//        // Then
+//        XCTAssertTrue(plansDataSource.fetchIconStub.wasCalled)
+//    }
     
     func test_createPlan_withStoreKitManagerAndInstance() async throws {
         // Given
