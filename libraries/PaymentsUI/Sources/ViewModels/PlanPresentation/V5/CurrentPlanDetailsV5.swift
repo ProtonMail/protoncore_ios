@@ -21,7 +21,7 @@
 
 #if os(iOS)
 
-import Foundation
+import UIKit
 import ProtonCorePayments
 
 struct CurrentPlanDetailsV5 {
@@ -32,40 +32,44 @@ struct CurrentPlanDetailsV5 {
     let endDate: NSAttributedString? // "Current plan will expire on 10.10.24"
     let entitlements: [Entitlement]
     
-    enum Entitlement {
+    enum Entitlement: Equatable {
         case progress(ProgressEntitlement)
         case description(DescriptionEntitlement)
         
-        struct ProgressEntitlement: Decodable, Equatable {
+        struct ProgressEntitlement: Equatable {
             var text: String
             var min: Int
             var max: Int
             var current: Int
         }
         
-        struct DescriptionEntitlement: Decodable, Equatable {
+        struct DescriptionEntitlement: Equatable {
             var text: String
-            var iconName: String
+            var icon: UIImage?
             var hint: String?
         }
     }
     
-    static func createPlan(from details: CurrentPlan.Subscription) -> CurrentPlanDetailsV5 {
-        let entitlements = details.entitlements.map { entitlement -> CurrentPlanDetailsV5.Entitlement in
+    static func createPlan(from details: CurrentPlan.Subscription,
+                           plansDataSource: PlansDataSourceProtocol?) async throws -> CurrentPlanDetailsV5 {
+        var entitlements = [Entitlement]()
+        
+        for entitlement in details.entitlements {
             switch entitlement {
             case .progress(let entitlement):
-                return .progress(.init(
+                entitlements.append(.progress(.init(
                     text: entitlement.text,
                     min: entitlement.min,
                     max: entitlement.max,
                     current: entitlement.current
-                ))
+                )))
             case .description(let entitlement):
-                return .description(.init(
+                let iconData = try await plansDataSource?.fetchIcon(iconName: entitlement.iconName)
+                entitlements.append(.description(.init(
                     text: entitlement.text,
-                    iconName: entitlement.iconName,
+                    icon: nil /* iconData.flatMap { UIImage(data: $0) } */,
                     hint: entitlement.hint
-                ))
+                )))
             }
         }
         

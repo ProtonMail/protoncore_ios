@@ -43,33 +43,40 @@ class AvailablePlansPresentation {
     
     static func createAvailablePlans(from plan: AvailablePlans.AvailablePlan,
                                      for instance: AvailablePlans.AvailablePlan.Instance? = nil,
-                                     storeKitManager: StoreKitManagerProtocol? = nil) -> AvailablePlansPresentation? {
+                                     plansDataSource: PlansDataSourceProtocol?,
+                                     storeKitManager: StoreKitManagerProtocol? = nil) async throws -> AvailablePlansPresentation? {
         if let instance, let storeKitManager {
-            return createAvailablePlansWithInstance(from: plan, for: instance, storeKitManager: storeKitManager)
+            return try await createAvailablePlansWithInstance(from: plan, for: instance, plansDataSource: plansDataSource, storeKitManager: storeKitManager)
         } else {
-            return createAvailablePlansWithoutInstance(from: plan)
+            return try await createAvailablePlansWithoutInstance(from: plan, plansDataSource: plansDataSource)
         }
     }
     
     static func createAvailablePlansWithInstance(from plan: AvailablePlans.AvailablePlan,
                                                  for instance: AvailablePlans.AvailablePlan.Instance,
-                                                 storeKitManager: StoreKitManagerProtocol) -> AvailablePlansPresentation? {
+                                                 plansDataSource: PlansDataSourceProtocol?,
+                                                 storeKitManager: StoreKitManagerProtocol) async throws -> AvailablePlansPresentation? {
         guard let inAppPurchasePlan = InAppPurchasePlan(availablePlanInstance: instance) else {
             return nil
         }
         
-        guard let details = AvailablePlansDetails.createPlan(
+        guard let details = try await AvailablePlansDetails.createPlan(
             from: plan,
             for: instance,
             iapPlan: inAppPurchasePlan,
+            plansDataSource: plansDataSource,
             storeKitManager: storeKitManager
         ) else { return nil }
         
         return .init(availablePlan: inAppPurchasePlan, details: details)
     }
     
-    static func createAvailablePlansWithoutInstance(from plan: AvailablePlans.AvailablePlan) -> AvailablePlansPresentation? {
-        guard let details = AvailablePlansDetails.createPlan(from: plan) else { return nil }
+    static func createAvailablePlansWithoutInstance(from plan: AvailablePlans.AvailablePlan,
+                                                    plansDataSource: PlansDataSourceProtocol?) async throws -> AvailablePlansPresentation? {
+        guard let details = try await AvailablePlansDetails.createPlan(
+            from: plan,
+            plansDataSource: plansDataSource
+        ) else { return nil }
         return .init(availablePlan: nil, details: details)
     }
 }

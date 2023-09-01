@@ -30,8 +30,8 @@ class CurrentPlanPresentation {
         self.details = details
     }
     
-    static func createCurrentPlan(from currentPlanSubscription: CurrentPlan.Subscription) -> CurrentPlanPresentation? {
-        .init(details: CurrentPlanDetailsV5.createPlan(from: currentPlanSubscription))
+    static func createCurrentPlan(from currentPlanSubscription: CurrentPlan.Subscription, plansDataSource: PlansDataSourceProtocol?) async throws -> CurrentPlanPresentation? {
+        try await .init(details: CurrentPlanDetailsV5.createPlan(from: currentPlanSubscription, plansDataSource: plansDataSource))
     }
 }
 

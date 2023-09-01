@@ -34,7 +34,7 @@ public protocol PlansDataSourceProtocol {
     func fetchAvailablePlans() async throws
     func fetchCurrentPlan() async throws
     func fetchPaymentMethods() async throws
-
+    func fetchIcon(iconName: String) async throws -> Data?
 }
 
 class PlansDataSource: PlansDataSourceProtocol {
@@ -81,6 +81,12 @@ class PlansDataSource: PlansDataSourceProtocol {
         let paymentMethodsRequest = MethodRequest(api: apiService)
         let paymentMethodsResponse = try await paymentMethodsRequest.response(responseObject: MethodResponse())
         paymentMethods = paymentMethodsResponse.methods
+    }
+    
+    func fetchIcon(iconName: String) async throws -> Data? {
+        let iconRequest = PlanIconsRequest(api: apiService, iconName: iconName)
+        let iconResponse = try await iconRequest.response(responseObject: PlanIconsResponse())
+        return iconResponse.iconData
     }
     
     var willRenewAutomatically: Bool {
