@@ -35,12 +35,13 @@ import ProtonCoreTestingToolkit
 final class CurrentPlanPresentationTests: XCTestCase {
     var sut: CurrentPlanPresentation!
     
-    func test_createCurrentPlan_success() {
+    func test_createCurrentPlan_success() async throws {
         // Given
         let storeKitManager = StoreKitManagerMock()
         storeKitManager.priceLabelForProductStub.bodyIs { _, _ in
             (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs"))
         }
+        let plansDataSource = PlansDataSourceMock()
         
         let subscription = CurrentPlan.Subscription(
             title: "title",
@@ -50,7 +51,7 @@ final class CurrentPlanPresentationTests: XCTestCase {
         )
         
         // When
-        sut = CurrentPlanPresentation.createCurrentPlan(from: subscription)
+        sut = try await CurrentPlanPresentation.createCurrentPlan(from: subscription, plansDataSource: plansDataSource)
         
         // Then
         XCTAssertEqual(sut.details.title, "title")

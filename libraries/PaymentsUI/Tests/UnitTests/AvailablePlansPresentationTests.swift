@@ -35,12 +35,13 @@ import ProtonCoreTestingToolkit
 final class AvailablePlansPresentationTests: XCTestCase {
     var sut: AvailablePlansPresentation!
     
-    func test_createAvailablePlans_success() {
+    func test_createAvailablePlans_success() async throws {
         // Given
         let storeKitManager = StoreKitManagerMock()
         storeKitManager.priceLabelForProductStub.bodyIs { _, _ in
             (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs"))
         }
+        let plansDataSource = PlansDataSourceMock()
         
         let instance = AvailablePlans.AvailablePlan.Instance(
             ID: "id",
@@ -60,9 +61,10 @@ final class AvailablePlansPresentationTests: XCTestCase {
         )
 
         // When
-        sut = AvailablePlansPresentation.createAvailablePlans(
+        sut = try await AvailablePlansPresentation.createAvailablePlans(
             from: plan,
             for: instance,
+            plansDataSource: plansDataSource,
             storeKitManager: storeKitManager
         )
         
@@ -76,7 +78,7 @@ final class AvailablePlansPresentationTests: XCTestCase {
         XCTAssertFalse(sut.isExpanded)
     }
     
-    func test_createAvailablePlans_failure() {
+    func test_createAvailablePlans_failure() async throws {
         // Given
         let instance = AvailablePlans.AvailablePlan.Instance(
             ID: "id",
@@ -96,9 +98,10 @@ final class AvailablePlansPresentationTests: XCTestCase {
         )
         
         // When
-        sut = AvailablePlansPresentation.createAvailablePlans(
+        sut = try await AvailablePlansPresentation.createAvailablePlans(
             from: plan,
             for: instance,
+            plansDataSource: PlansDataSourceMock(),
             storeKitManager: StoreKitManagerMock()
         )
         
