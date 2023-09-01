@@ -61,6 +61,7 @@ final class SubscriptionRequestTests: XCTestCase {
         XCTAssertEqual(sut.parameters!["Amount"] as! Int, 123)
         XCTAssertEqual(sut.parameters!["Currency"] as! String, "USD")
         XCTAssertEqual((sut.parameters!["Payment"] as! [String: Any])["Type"] as! String, "apple")
+        XCTAssertEqual(sut.parameters!["External"] as! Int, 1)
     }
     
     func test_method() {
