@@ -48,7 +48,7 @@ final class SubscriptionRequest: BaseApiRequest<SubscriptionResponse> {
     override var path: String { super.path + "/v4/subscription" }
 
     override var parameters: [String: Any]? {
-        var params: [String: Any] = ["Amount": amount, "Currency": "USD", "PlanIDs": [planId: 1], "Cycle": 12]
+        var params: [String: Any] = ["Amount": amount, "Currency": "USD", "PlanIDs": [planId: 1], "Cycle": 12, "External": 1]
         guard amount != .zero, let paymentAction = paymentAction else {
             return params
         }
