@@ -25,6 +25,7 @@ import UIKit
 import ProtonCoreFoundations
 import ProtonCoreUIFoundations
 import ProtonCoreObservability
+import ProtonCoreFeatureSwitch
 
 protocol PaymentsUIViewControllerDelegate: AnyObject {
     func userDidCloseViewController()
@@ -34,6 +35,10 @@ protocol PaymentsUIViewControllerDelegate: AnyObject {
 }
 
 public final class PaymentsUIViewController: UIViewController, AccessibleView {
+    
+    private var isDynamicPlansEnabled: Bool {
+        FeatureFactory.shared.isEnabled(.dynamicPlans)
+    }
     
     // MARK: - Constants
     
@@ -369,12 +374,33 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     }
     
     private func showExpandButton() {
-        guard let model = viewModel else { return }
-        for section in model.plans.indices {
-            guard model.plans.indices.contains(section) else { continue }
-            for row in model.plans[section].indices {
+        if isDynamicPlansEnabled {
+            showExpandButtonForDynamicPlans()
+        } else {
+            showExpandButtonForStaticPlans()
+        }
+    }
+    
+    private func showExpandButtonForStaticPlans() {
+        guard let viewModel = viewModel else { return }
+        for section in viewModel.plans.indices {
+            guard viewModel.plans.indices.contains(section) else { continue }
+            for row in viewModel.plans[section].indices {
                 let indexPath = IndexPath(row: row, section: section)
-                if let cell = tableView.cellForRow(at: indexPath) as? PlanCell, model.shouldShowExpandButton {
+                if let cell = tableView.cellForRow(at: indexPath) as? PlanCell, viewModel.shouldShowExpandButton {
+                    cell.showExpandButton()
+                }
+            }
+        }
+    }
+    
+    private func showExpandButtonForDynamicPlans() {
+        guard let viewModel = viewModel else { return }
+        for section in viewModel.dynamicPlans.indices {
+            guard viewModel.dynamicPlans.indices.contains(section) else { continue }
+            for row in viewModel.dynamicPlans[section].indices {
+                let indexPath = IndexPath(row: row, section: section)
+                if let cell = tableView.cellForRow(at: indexPath) as? PlanCell, viewModel.shouldShowExpandButton {
                     cell.showExpandButton()
                 }
             }
@@ -385,14 +411,30 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
 extension PaymentsUIViewController: UITableViewDataSource {
     
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel?.plans.count ?? 0
+        if isDynamicPlansEnabled {
+            return viewModel?.dynamicPlans.count ?? 0
+        } else {
+            return viewModel?.plans.count ?? 0
+        }
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.plans[safeIndex: section]?.count ?? 0
+        if isDynamicPlansEnabled {
+            return viewModel?.dynamicPlans[safeIndex: section]?.count ?? 0
+        } else {
+            return viewModel?.plans[safeIndex: section]?.count ?? 0
+        }
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if isDynamicPlansEnabled {
+            return cellForDynamicConfig(tableView, cellForRowAt: indexPath)
+        } else {
+            return cellForStaticConfig(tableView, cellForRowAt: indexPath)
+        }
+    }
+    
+    private func cellForStaticConfig(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         guard let plan = viewModel?.plans[safeIndex: indexPath.section]?[safeIndex: indexPath.row] else { return cell }
         switch plan.planPresentationType {
@@ -410,6 +452,28 @@ extension PaymentsUIViewController: UITableViewDataSource {
             }
             cell.isUserInteractionEnabled = false
         }
+        return cell
+    }
+    
+    private func cellForDynamicConfig(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = UITableViewCell()
+        guard let plan = viewModel?.dynamicPlans[safeIndex: indexPath.section]?[safeIndex: indexPath.row] else { return cell }
+        switch plan {
+        case .left(let currentPlan):
+            cell = tableView.dequeueReusableCell(withIdentifier: CurrentPlanCell.reuseIdentifier, for: indexPath)
+            if let cell = cell as? CurrentPlanCell {
+                cell.configurePlan(currentPlan: currentPlan)
+            }
+            cell.isUserInteractionEnabled = false
+        case .right(let availablePlan):
+            cell = tableView.dequeueReusableCell(withIdentifier: PlanCell.reuseIdentifier, for: indexPath)
+            if let cell = cell as? PlanCell {
+                cell.delegate = self
+                cell.configurePlan(availablePlan: availablePlan, indexPath: indexPath, isSignup: mode == .signup, isExpandButtonHidden: viewModel?.isExpandButtonHidden ?? true)
+            }
+            cell.selectionStyle = .none
+        }
+        
         return cell
     }
     
@@ -435,10 +499,18 @@ extension PaymentsUIViewController: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let plan = viewModel?.plans[safeIndex: indexPath.section]?[safeIndex: indexPath.row] else { return }
-        if case .plan = plan.planPresentationType {
-            if let cell = tableView.cellForRow(at: indexPath) as? PlanCell {
+        if isDynamicPlansEnabled {
+            guard let plan = viewModel?.dynamicPlans[safeIndex: indexPath.section]?[safeIndex: indexPath.row] else { return }
+            if case .right = plan,
+               let cell = tableView.cellForRow(at: indexPath) as? PlanCell {
                 cell.selectCell()
+            }
+        } else {
+            guard let plan = viewModel?.plans[safeIndex: indexPath.section]?[safeIndex: indexPath.row] else { return }
+            if case .plan = plan.planPresentationType {
+                if let cell = tableView.cellForRow(at: indexPath) as? PlanCell {
+                    cell.selectCell()
+                }
             }
         }
     }

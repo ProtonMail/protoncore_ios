@@ -64,7 +64,8 @@ struct CurrentPlanDetailsV5 {
                     current: entitlement.current
                 )))
             case .description(let entitlement):
-                let iconData = try await plansDataSource?.fetchIcon(iconName: entitlement.iconName)
+                // TODO: CP-6480
+//                let iconData = try await plansDataSource?.fetchIcon(iconName: entitlement.iconName)
                 entitlements.append(.description(.init(
                     text: entitlement.text,
                     icon: nil /* iconData.flatMap { UIImage(data: $0) } */,
