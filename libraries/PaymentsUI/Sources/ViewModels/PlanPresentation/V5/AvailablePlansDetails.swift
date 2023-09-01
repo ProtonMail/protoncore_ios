@@ -29,7 +29,7 @@ struct AvailablePlansDetails {
     let title: String // "VPN Plus"
     let description: String? // "Your privacy are our priority."
     let cycleDescription: String? // "for 1 year"
-    let price: String // "$72.88"
+    let price: String // "$71.88"
     let decorations: [Decoration]
     let entitlements: [Entitlement]
     
@@ -63,7 +63,8 @@ struct AvailablePlansDetails {
         for entitlement in plan.entitlements {
             switch entitlement {
             case .description(let entitlement):
-                let iconData = try await plansDataSource?.fetchIcon(iconName: entitlement.iconName)
+                // TODO: CP-6480
+//                let iconData = try await plansDataSource?.fetchIcon(iconName: entitlement.iconName)
                 entitlements.append(.init(
                     text: entitlement.text,
                     icon: nil /* iconData.flatMap { UIImage(data: $0) } */,
