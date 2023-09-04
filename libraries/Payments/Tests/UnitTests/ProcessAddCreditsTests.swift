@@ -32,7 +32,6 @@ import ProtonCoreTestingToolkitUnitTestsFeatureSwitch
 import ProtonCoreNetworking
 @testable import ProtonCorePayments
 
-//
 final class ProcessAddCreditsTests: XCTestCase {
 
     let timeout = 1.0
