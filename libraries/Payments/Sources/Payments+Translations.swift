@@ -42,7 +42,7 @@ public enum PSTranslation: TranslationsExposing {
     case _error_apply_payment_on_registration_support
     case _error_unavailable_product
     case _error_invalid_purchase
-    case _error_reciept_lost
+    case _error_receipt_lost
     case _error_another_user_transaction
     case _error_backend_mismatch
     case _error_no_active_username_in_user_data_service
@@ -74,7 +74,7 @@ public enum PSTranslation: TranslationsExposing {
             return localized(key: "Failed to get list of available products from App Store.", comment: "Error message")
         case ._error_invalid_purchase:
             return localized(key: "Purchase is not possible.", comment: "Error message")
-        case ._error_reciept_lost:
+        case ._error_receipt_lost:
             return localized(key: "Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you.", comment: "Error message")
         case ._error_another_user_transaction:
             return localized(key: "Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then.", comment: "Error message")

@@ -23,5 +23,6 @@
 import ProtonCoreFeatureSwitch
 
 extension Feature {
+    // To be removed with CP-6369
     public static var subscriptions = Feature(name: "subscriptions", isEnable: false)
 }

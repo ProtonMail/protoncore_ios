@@ -58,7 +58,7 @@ final class TokenHandlerTests: XCTestCase {
         processDependencies.tokenStorageStub.fixture = paymentTokenStorageMock
     }
     
-    func testTokenSoredChargableTokenSuccess() {
+    func testTokenSoredChargeableTokenSuccess() {
         // Test scenario:
         // 1. Do getToken
         // Expected: tokenCompletion
@@ -97,8 +97,8 @@ final class TokenHandlerTests: XCTestCase {
         // then
         waitForExpectations(timeout: timeout)
     }
-    
-    func testTokenSoredPendingPendingChargableTokenSuccess() {
+
+    func testTokenSoredPendingPendingChargeableTokenSuccess() {
         // Test scenario:
         // 1. Do getToken
         // Expected: tokenCompletion
@@ -276,208 +276,431 @@ final class TokenHandlerTests: XCTestCase {
         // then
         waitForExpectations(timeout: timeout)
     }
-    
-    func testChargableTokenSuccess() {
-        // Test scenario:
-        // 1. Do getToken
-        // Expected: tokenCompletion
 
-        // given
-        let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
-        let out = TokenHandler(dependencies: processDependencies)
-        let expectation = self.expectation(description: "Completion block called")
-        let testToken = PaymentToken(token: "test token", status: .chargeable)
-        paymentTokenStorageMock.getStub.bodyIs { count in
-            if count > 1 {
-                return PaymentToken(token: "test token", status: .chargeable)
-            } else {
-                return nil
+    func testChargeableTokenSuccess() {
+        withFeatureSwitches([.subscriptions]) { // remove enclosure with CP-6369
+            // Test scenario:
+            // 1. Do getToken
+            // Expected: tokenCompletion
+
+            // given
+            let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
+            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
+            let out = TokenHandler(dependencies: processDependencies)
+            let expectation = self.expectation(description: "Completion block called")
+            let testToken = PaymentToken(token: "test token", status: .chargeable)
+            paymentTokenStorageMock.getStub.bodyIs { count in
+                if count > 1 {
+                    return PaymentToken(token: "test token", status: .chargeable)
+                } else {
+                    return nil
+                }
             }
-        }
-        
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
-            if path.contains("/tokens/") {
-                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
-            } else if path.contains("/tokens") {
-                completion(nil, .success(testToken.toSuccessfulResponse))
-            } else {
-                XCTFail()
-                completion(nil, .success([:]))
-            }
-        }
 
-        // when
-        queue.async {
-            try! out.getToken(transaction: transaction, plan: plan, completion: { status in
-                XCTFail()
-                expectation.fulfill()
-            }, finishCompletion: { result in
-                XCTFail()
-                expectation.fulfill()
-            }, tokenCompletion: { token in
-                XCTAssertEqual(token, testToken)
-                expectation.fulfill()
-            })
-        }
-
-        // then
-        waitForExpectations(timeout: timeout)
-        XCTAssertEqual(paymentTokenStorageMock.getStub.callCounter, 2)
-    }
-    
-    func testChargableTokenSandboxReceiptError() {
-        // Test scenario:
-        // 1. Do getToken
-        // Expected: finishCompletion isSandboxReceiptError
-
-        // given
-        let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
-        let out = TokenHandler(dependencies: processDependencies)
-        let expectation = self.expectation(description: "Completion block called")
-        paymentTokenStorageMock.getStub.bodyIs { count in
-            if count > 1 {
-                return PaymentToken(token: "test token", status: .chargeable)
-            } else {
-                return nil
-            }
-        }
-        
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
-            if path.contains("/tokens/") {
-                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
-            } else if path.contains("/tokens") {
-                completion(nil, .success(["Code": 22914]))
-            } else {
-                XCTFail()
-                completion(nil, .success([:]))
-            }
-        }
-
-        // when
-        queue.async {
-            try! out.getToken(transaction: transaction, plan: plan, completion: { status in
-                XCTFail()
-                expectation.fulfill()
-            }, finishCompletion: { result in
-                if case .erroredWithUnspecifiedError(let error) = result {
-                    XCTAssertEqual(error.responseCode, 22914)
+            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+                if path.contains("/tokens/") {
+                    completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
+                } else if path.contains("/tokens") {
+                    completion(nil, .success(testToken.toSuccessfulResponse))
                 } else {
                     XCTFail()
+                    completion(nil, .success([:]))
                 }
-                expectation.fulfill()
-            }, tokenCompletion: { token in
-                XCTFail()
-                expectation.fulfill()
-            })
-        }
-
-        // then
-        waitForExpectations(timeout: timeout)
-        XCTAssertEqual(paymentTokenStorageMock.getStub.callCounter, 1)
-    }
-    
-    func testChargableApplePaymentAlreadyRegisteredError() {
-        // Test scenario:
-        // 1. Do getToken
-        // Expected: finishCompletion isApplePaymentAlreadyRegisteredError
-
-        // given
-        let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
-        let out = TokenHandler(dependencies: processDependencies)
-        let expectation = self.expectation(description: "Completion block called")
-        paymentTokenStorageMock.getStub.bodyIs { count in
-            if count > 1 {
-                return PaymentToken(token: "test token", status: .chargeable)
-            } else {
-                return nil
             }
-        }
-        
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
-            if path.contains("/tokens/") {
-                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
-            } else if path.contains("/tokens") {
-                completion(nil, .success(["Code": 22916]))
-            } else {
-                XCTFail()
-                completion(nil, .success([:]))
-            }
-        }
 
-        // when
-        queue.async {
-            try! out.getToken(transaction: transaction, plan: plan, completion: { status in
-                XCTFail()
-                expectation.fulfill()
-            }, finishCompletion: { result in
-                if case .finished(.withPurchaseAlreadyProcessed) = result { } else {
-                    XCTFail()
-                }
-                expectation.fulfill()
-            }, tokenCompletion: { token in
-                XCTFail()
-                expectation.fulfill()
-            })
-        }
-
-        // then
-        waitForExpectations(timeout: timeout)
-        XCTAssertEqual(paymentTokenStorageMock.getStub.callCounter, 1)
-    }
-    
-    func testChargableUnhandledError() {
-        // Test scenario:
-        // 1. Do getToken
-        // Expected: catch unhandled error
-
-        // given
-        let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
-        let out = TokenHandler(dependencies: processDependencies)
-        let expectation = self.expectation(description: "Completion block called")
-        paymentTokenStorageMock.getStub.bodyIs { count in
-            if count > 1 {
-                return PaymentToken(token: "test token", status: .chargeable)
-            } else {
-                return nil
-            }
-        }
-        
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
-            if path.contains("/tokens/") {
-                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
-            } else if path.contains("/tokens") {
-                completion(nil, .success(["Code": 999]))
-            } else {
-                XCTFail()
-                completion(nil, .success([:]))
-            }
-        }
-
-        // when
-        queue.async {
-            do {
-                try out.getToken(transaction: transaction, plan: plan, completion: { _ in
+            // when
+            queue.async {
+                try! out.getToken(transaction: transaction, plan: plan, completion: { status in
                     XCTFail()
                     expectation.fulfill()
                 }, finishCompletion: { result in
                     XCTFail()
                     expectation.fulfill()
                 }, tokenCompletion: { token in
+                    XCTAssertEqual(token, testToken)
+                    expectation.fulfill()
+                })
+            }
+
+            // then
+            waitForExpectations(timeout: timeout)
+            XCTAssertEqual(paymentTokenStorageMock.getStub.callCounter, 2)
+        }
+    }
+
+    func testChargeableTokenSandboxReceiptError() {
+        withFeatureSwitches([.subscriptions]) { // remove enclosure with CP-6369
+            // Test scenario:
+            // 1. Do getToken
+            // Expected: finishCompletion isSandboxReceiptError
+
+            // given
+            let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
+            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
+            let out = TokenHandler(dependencies: processDependencies)
+            let expectation = self.expectation(description: "Completion block called")
+            paymentTokenStorageMock.getStub.bodyIs { count in
+                if count > 1 {
+                    return PaymentToken(token: "test token", status: .chargeable)
+                } else {
+                    return nil
+                }
+            }
+
+            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+                if path.contains("/tokens/") {
+                    completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
+                } else if path.contains("/tokens") {
+                    completion(nil, .success(["Code": 22914]))
+                } else {
+                    XCTFail()
+                    completion(nil, .success([:]))
+                }
+            }
+
+            // when
+            queue.async {
+                try! out.getToken(transaction: transaction, plan: plan, completion: { status in
+                    XCTFail()
+                    expectation.fulfill()
+                }, finishCompletion: { result in
+                    if case .erroredWithUnspecifiedError(let error) = result {
+                        XCTAssertEqual(error.responseCode, 22914)
+                    } else {
+                        XCTFail()
+                    }
+                    expectation.fulfill()
+                }, tokenCompletion: { token in
                     XCTFail()
                     expectation.fulfill()
                 })
-            } catch let error {
-                XCTAssertEqual(error.responseCode, 999)
-                expectation.fulfill()
             }
-        }
 
-        // then
-        waitForExpectations(timeout: timeout)
-        XCTAssertEqual(paymentTokenStorageMock.getStub.callCounter, 1)
+            // then
+            waitForExpectations(timeout: timeout)
+            XCTAssertEqual(paymentTokenStorageMock.getStub.callCounter, 1)
+        }
+    }
+
+    func testChargeableApplePaymentAlreadyRegisteredError() {
+        withFeatureSwitches([.subscriptions]) { // remove enclosure with CP-6369
+            // Test scenario:
+            // 1. Do getToken
+            // Expected: finishCompletion isApplePaymentAlreadyRegisteredError
+
+            // given
+            let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
+            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
+            let out = TokenHandler(dependencies: processDependencies)
+            let expectation = self.expectation(description: "Completion block called")
+            paymentTokenStorageMock.getStub.bodyIs { count in
+                if count > 1 {
+                    return PaymentToken(token: "test token", status: .chargeable)
+                } else {
+                    return nil
+                }
+            }
+
+            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+                if path.contains("/tokens/") {
+                    completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
+                } else if path.contains("/tokens") {
+                    completion(nil, .success(["Code": 22916]))
+                } else {
+                    XCTFail()
+                    completion(nil, .success([:]))
+                }
+            }
+
+            // when
+            queue.async {
+                try! out.getToken(transaction: transaction, plan: plan, completion: { status in
+                    XCTFail()
+                    expectation.fulfill()
+                }, finishCompletion: { result in
+                    if case .finished(.withPurchaseAlreadyProcessed) = result { } else {
+                        XCTFail()
+                    }
+                    expectation.fulfill()
+                }, tokenCompletion: { token in
+                    XCTFail()
+                    expectation.fulfill()
+                })
+            }
+
+            // then
+            waitForExpectations(timeout: timeout)
+            XCTAssertEqual(paymentTokenStorageMock.getStub.callCounter, 1)
+        }
+    }
+
+    func testChargeableUnhandledError() {
+        withFeatureSwitches([.subscriptions]) { // remove enclosure with CP-6369
+            // Test scenario:
+            // 1. Do getToken
+            // Expected: catch unhandled error
+
+            // given
+            let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
+            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
+            let out = TokenHandler(dependencies: processDependencies)
+            let expectation = self.expectation(description: "Completion block called")
+            paymentTokenStorageMock.getStub.bodyIs { count in
+                if count > 1 {
+                    return PaymentToken(token: "test token", status: .chargeable)
+                } else {
+                    return nil
+                }
+            }
+
+            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+                if path.contains("/tokens/") {
+                    completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
+                } else if path.contains("/tokens") {
+                    completion(nil, .success(["Code": 999]))
+                } else {
+                    XCTFail()
+                    completion(nil, .success([:]))
+                }
+            }
+
+            // when
+            queue.async {
+                do {
+                    try out.getToken(transaction: transaction, plan: plan, completion: { _ in
+                        XCTFail()
+                        expectation.fulfill()
+                    }, finishCompletion: { result in
+                        XCTFail()
+                        expectation.fulfill()
+                    }, tokenCompletion: { token in
+                        XCTFail()
+                        expectation.fulfill()
+                    })
+                } catch let error {
+                    XCTAssertEqual(error.responseCode, 999)
+                    expectation.fulfill()
+                }
+            }
+
+            // then
+            waitForExpectations(timeout: timeout)
+            XCTAssertEqual(paymentTokenStorageMock.getStub.callCounter, 1)
+        }
+    }
+
+    // Remove with CP-6369
+
+    func testChargeableTokenSuccessWithoutSubscriptionsFF() {
+        withFeatureSwitches([]) {
+            // Test scenario:
+            // 1. Do getToken
+            // Expected: tokenCompletion
+
+            // given
+            let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
+            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
+            let out = TokenHandler(dependencies: processDependencies)
+            let expectation = self.expectation(description: "Completion block called")
+            let testToken = PaymentToken(token: "test token", status: .chargeable)
+            paymentTokenStorageMock.getStub.bodyIs { count in
+                if count > 1 {
+                    return PaymentToken(token: "test token", status: .chargeable)
+                } else {
+                    return nil
+                }
+            }
+
+            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+                if path.contains("/tokens/") {
+                    completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
+                } else if path.contains("/tokens") {
+                    completion(nil, .success(testToken.toSuccessfulResponse))
+                } else {
+                    XCTFail()
+                    completion(nil, .success([:]))
+                }
+            }
+
+            // when
+            queue.async {
+                try! out.getToken(transaction: transaction, plan: plan, completion: { status in
+                    XCTFail()
+                    expectation.fulfill()
+                }, finishCompletion: { result in
+                    XCTFail()
+                    expectation.fulfill()
+                }, tokenCompletion: { token in
+                    XCTAssertEqual(token, testToken)
+                    expectation.fulfill()
+                })
+            }
+
+            // then
+            waitForExpectations(timeout: timeout)
+            XCTAssertEqual(paymentTokenStorageMock.getStub.callCounter, 2)
+        }
+    }
+
+    //
+    func testChargeableTokenSandboxReceiptErrorWithoutSubscriptionsFF() {
+        withFeatureSwitches([]) {
+            // Test scenario:
+            // 1. Do getToken
+            // Expected: finishCompletion isSandboxReceiptError
+
+            // given
+            let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
+            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
+            let out = TokenHandler(dependencies: processDependencies)
+            let expectation = self.expectation(description: "Completion block called")
+            paymentTokenStorageMock.getStub.bodyIs { count in
+                if count > 1 {
+                    return PaymentToken(token: "test token", status: .chargeable)
+                } else {
+                    return nil
+                }
+            }
+
+            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+                if path.contains("/tokens/") {
+                    completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
+                } else if path.contains("/tokens") {
+                    completion(nil, .success(["Code": 22914]))
+                } else {
+                    XCTFail()
+                    completion(nil, .success([:]))
+                }
+            }
+
+            // when
+            queue.async {
+                try! out.getToken(transaction: transaction, plan: plan, completion: { status in
+                    XCTFail()
+                    expectation.fulfill()
+                }, finishCompletion: { result in
+                    if case .erroredWithUnspecifiedError(let error) = result {
+                        XCTAssertEqual(error.responseCode, 22914)
+                    } else {
+                        XCTFail()
+                    }
+                    expectation.fulfill()
+                }, tokenCompletion: { token in
+                    XCTFail()
+                    expectation.fulfill()
+                })
+            }
+
+            // then
+            waitForExpectations(timeout: timeout)
+            XCTAssertEqual(paymentTokenStorageMock.getStub.callCounter, 1)
+        }
+    }
+
+    func testChargeableApplePaymentAlreadyRegisteredErrorWithoutSubscriptionsFF() {
+        withFeatureSwitches([]) {
+            // Test scenario:
+            // 1. Do getToken
+            // Expected: finishCompletion isApplePaymentAlreadyRegisteredError
+
+            // given
+            let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
+            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
+            let out = TokenHandler(dependencies: processDependencies)
+            let expectation = self.expectation(description: "Completion block called")
+            paymentTokenStorageMock.getStub.bodyIs { count in
+                if count > 1 {
+                    return PaymentToken(token: "test token", status: .chargeable)
+                } else {
+                    return nil
+                }
+            }
+
+            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+                if path.contains("/tokens/") {
+                    completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
+                } else if path.contains("/tokens") {
+                    completion(nil, .success(["Code": 22916]))
+                } else {
+                    XCTFail()
+                    completion(nil, .success([:]))
+                }
+            }
+
+            // when
+            queue.async {
+                try! out.getToken(transaction: transaction, plan: plan, completion: { status in
+                    XCTFail()
+                    expectation.fulfill()
+                }, finishCompletion: { result in
+                    if case .finished(.withPurchaseAlreadyProcessed) = result { } else {
+                        XCTFail()
+                    }
+                    expectation.fulfill()
+                }, tokenCompletion: { token in
+                    XCTFail()
+                    expectation.fulfill()
+                })
+            }
+
+            // then
+            waitForExpectations(timeout: timeout)
+            XCTAssertEqual(paymentTokenStorageMock.getStub.callCounter, 1)
+        }
+    }
+
+    func testChargeableUnhandledErrorWithoutSubscriptionsFF() {
+        withFeatureSwitches([]) {
+            // Test scenario:
+            // 1. Do getToken
+            // Expected: catch unhandled error
+
+            // given
+            let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
+            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
+            let out = TokenHandler(dependencies: processDependencies)
+            let expectation = self.expectation(description: "Completion block called")
+            paymentTokenStorageMock.getStub.bodyIs { count in
+                if count > 1 {
+                    return PaymentToken(token: "test token", status: .chargeable)
+                } else {
+                    return nil
+                }
+            }
+
+            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+                if path.contains("/tokens/") {
+                    completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
+                } else if path.contains("/tokens") {
+                    completion(nil, .success(["Code": 999]))
+                } else {
+                    XCTFail()
+                    completion(nil, .success([:]))
+                }
+            }
+
+            // when
+            queue.async {
+                do {
+                    try out.getToken(transaction: transaction, plan: plan, completion: { _ in
+                        XCTFail()
+                        expectation.fulfill()
+                    }, finishCompletion: { result in
+                        XCTFail()
+                        expectation.fulfill()
+                    }, tokenCompletion: { token in
+                        XCTFail()
+                        expectation.fulfill()
+                    })
+                } catch let error {
+                    XCTAssertEqual(error.responseCode, 999)
+                    expectation.fulfill()
+                }
+            }
+
+            // then
+            waitForExpectations(timeout: timeout)
+            XCTAssertEqual(paymentTokenStorageMock.getStub.callCounter, 1)
+        }
     }
 }

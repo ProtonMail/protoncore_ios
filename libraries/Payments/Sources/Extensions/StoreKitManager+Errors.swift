@@ -54,7 +54,7 @@ public enum StoreKitManagerErrors: LocalizedError {
         switch self {
         case .unavailableProduct: return PSTranslation._error_unavailable_product.l10n
         case .invalidPurchase: return PSTranslation._error_invalid_purchase.l10n
-        case .receiptLost: return PSTranslation._error_reciept_lost.l10n
+        case .receiptLost: return PSTranslation._error_receipt_lost.l10n
         case .haveTransactionOfAnotherUser: return PSTranslation._error_another_user_transaction.l10n
         case .alreadyPurchasedPlanDoesNotMatchBackend: return PSTranslation._error_backend_mismatch.l10n
         case .noActiveUsername: return PSTranslation._error_no_active_username_in_user_data_service.l10n

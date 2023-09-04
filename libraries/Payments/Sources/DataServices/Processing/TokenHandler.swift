@@ -21,10 +21,12 @@
 
 import Foundation
 import StoreKit
+import ProtonCoreFeatureSwitch
 import ProtonCoreLog
 import ProtonCoreNetworking
 import ProtonCoreServices
 import ProtonCoreObservability
+import ProtonCoreSubscriptions
 
 /*
 
@@ -38,6 +40,7 @@ import ProtonCoreObservability
 final class TokenHandler {
 
     unowned let dependencies: ProcessDependencies
+    let areSubscriptionsEnabled = FeatureFactory.shared.isEnabled(.subscriptions)
 
     init(dependencies: ProcessDependencies) {
         self.dependencies = dependencies
@@ -105,9 +108,29 @@ final class TokenHandler {
             PMLog.debug("StoreKit: No proton token found")
             
             // Step 2. Exchange the receipt for a token that's worth product's Proton price amount of money
-            let tokenApi = dependencies.paymentsApiProtocol.paymentTokenOldRequest(
-                api: dependencies.apiService, amount: plan.amount, receipt: receipt
-            )
+            let tokenApi: BaseApiRequest<TokenResponse>
+            if areSubscriptionsEnabled {
+                guard let transactionIdentifier = transaction.transactionIdentifier else {
+                    throw StoreKitManagerErrors.transactionFailedByUnknownReason
+                }
+                guard let bundleIdentifier = Bundle.main.bundleIdentifier else {
+                    assertionFailure("You shouldn't be running this outside an application bundle")
+                    throw StoreKitManagerErrors.notAllowed
+                }
+
+                tokenApi = dependencies.paymentsApiProtocol.paymentTokenRequest(
+                    api: dependencies.apiService,
+                    amount: plan.amount,
+                    receipt: receipt,
+                    transactionId: transactionIdentifier,
+                    bundleId: bundleIdentifier,
+                    productId: transaction.payment.productIdentifier
+                )
+            } else {
+                tokenApi = dependencies.paymentsApiProtocol.paymentTokenOldRequest(
+                    api: dependencies.apiService, amount: plan.amount, receipt: receipt
+                )
+            }
             PMLog.debug("Making TokenRequest")
             let tokenRes = try tokenApi.awaitResponse(responseObject: TokenResponse())
             if let tokenError = tokenRes.error {

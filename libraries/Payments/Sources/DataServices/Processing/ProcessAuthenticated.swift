@@ -109,9 +109,9 @@ final class ProcessAuthenticated: ProcessProtocol {
                 amountDue: plan.amountDue,
                 paymentAction: .token(token: token.token)
             )
-            let recieptRes = try request.awaitResponse(responseObject: SubscriptionResponse())
+            let receiptRes = try request.awaitResponse(responseObject: SubscriptionResponse())
             PMLog.debug("StoreKit: success (1)")
-            if let newSubscription = recieptRes.newSubscription {
+            if let newSubscription = receiptRes.newSubscription {
                 dependencies.updateCurrentSubscription { [weak self] in
                     self?.finish(transaction: transaction, result: .finished(.resolvingIAPToSubscription), completion: completion)
                     
