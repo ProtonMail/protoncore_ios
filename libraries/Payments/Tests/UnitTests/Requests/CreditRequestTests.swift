@@ -55,7 +55,7 @@ final class CreditRequestTests: XCTestCase {
     
     func test_appleParameters() {
         // Given
-        sut = CreditRequest(api: APIServiceMock(), amount: 123, paymentAction: .apple(reciept: "receipt"))
+        sut = CreditRequest(api: APIServiceMock(), amount: 123, paymentAction: .apple(receipt: "receipt"))
         
         // Then
         XCTAssertEqual(sut.parameters!["Amount"] as! Int, 123)

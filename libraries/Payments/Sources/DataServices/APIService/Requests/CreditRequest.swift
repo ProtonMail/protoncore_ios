@@ -25,7 +25,7 @@ import ProtonCoreNetworking
 import ProtonCoreServices
 
 public enum PaymentAction {
-    @available(*, deprecated) case apple(reciept: String)
+    @available(*, deprecated) case apple(receipt: String)
     case token(token: String)
 
     var getType: String {
@@ -44,7 +44,7 @@ public enum PaymentAction {
 
     var getValue: String {
         switch self {
-        case .apple(reciept: let reciept): return reciept
+        case .apple(receipt: let receipt): return receipt
         case .token(token: let token): return token
         }
     }
