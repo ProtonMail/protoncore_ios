@@ -1,6 +1,6 @@
 {
-    "go_version":"1.20.6",
-    "go_fork_branch":"fork/go1.20.6",
+    "go_version":"1.21.0",
+    "go_fork_branch":"fork/go1.21.0",
     "build_dir":"build",
     "out_dir":"out",
     "go_mobile_dir":"mobile",
@@ -21,7 +21,7 @@
             "module":
             {
                 "path":"github.com/ProtonMail/gopenpgp/v2",
-                "version":"v2.7.2-proton"
+                "version":"v2.7.3-proton"
             },
             "packages": ["crypto", "armor", "constants", "models", "subtle", "helper"]
         },
