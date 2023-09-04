@@ -1038,7 +1038,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
             paymentTokenStorageMock.getStub.bodyIs { counter in
                 switch counter {
                 case 1: return nil
-                case 2: return PaymentToken(token: "test token", status: .chargeable)
+                case 2...3: return PaymentToken(token: "test token", status: .chargeable)
                 default: XCTFail(); return nil
                 }
             }
@@ -1430,6 +1430,45 @@ final class ProcessUnauthenticatedTests: XCTestCase {
             XCTAssertTrue(paymentTokenStorageMock.addStub.wasCalledExactlyOnce)
             XCTAssertTrue(paymentTokenStorageMock.clearStub.wasCalledExactlyOnce)
             guard case .finished(.resolvingIAPToSubscription) = returnedResult else { XCTFail(); return }
+        }
+    }
+
+    func testExistingTokenIsChargableNoNewTokenIsFetched() {
+        withFeatureSwitches([.subscriptions]){
+            // Remove enclosure with CP-6369
+            // Test scenario:
+            // 1. Stored token is chargable
+            // 2. Existing token is used.
+            // Expected: No API call to get new token is made.
+
+            // given
+            let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
+            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
+            let out = ProcessUnauthenticated(dependencies: processDependencies)
+            paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "existing test token", status: .chargeable) }
+            let expectation = self.expectation(description: "Completion block called")
+            processDependencies.getReceiptStub.bodyIs { _ in "test receipt" }
+            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+                if path.contains("/tokens/") {
+                    completion(nil, .success(["Code": 22000]))
+                } else if path.contains("/tokens") {
+                    XCTFail("New token should not be fetched")
+                    completion(nil, .success(PaymentToken(token: "new test token", status: .chargeable).toSuccessfulResponse))
+                } else {
+                    XCTFail(); completion(nil, .success([:]))
+                }
+            }
+
+            // when
+            var returnedResult: ProcessCompletionResult?
+            queue.async {
+                try! out.process(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+            }
+
+            // then
+            waitForExpectations(timeout: timeout)
+            XCTAssertTrue(paymentTokenStorageMock.getStub.wasCalled)
+            guard case .finished(.withoutObtainingToken) = returnedResult else { XCTFail(); return }
         }
     }
 }
