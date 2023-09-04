@@ -290,7 +290,7 @@ end
 lane :build_LoginUI_all_variants do
   install_dependencies_from_gemfile
   ensure_obfuscated_constants_are_generated
-  build_subspec("LoginUI", "ios", default_test_podspecs, "ObfuscatedConstants")
+  build_subspec("LoginUI", "ios,macos", default_test_podspecs, "ObfuscatedConstants")
 end
 
 lane :build_LoginUI_single_basic_variant do
@@ -334,7 +334,7 @@ end
 lane :build_PaymentsUI_all_variants do
   install_dependencies_from_gemfile
   ensure_obfuscated_constants_are_generated
-  build_spec("PaymentsUI", "ios", default_test_podspecs, "ObfuscatedConstants", "Observability")
+  build_spec("PaymentsUI", "ios,macos", default_test_podspecs, "ObfuscatedConstants", "Observability")
 end
 
 lane :build_PaymentsUI_single_basic_variant do
@@ -384,7 +384,7 @@ end
 
 lane :build_TroubleShooting_all_variants do
   install_dependencies_from_gemfile
-  build_spec("TroubleShooting", "ios", default_test_podspecs)
+  build_spec("TroubleShooting", "ios,macos", default_test_podspecs)
 end
 
 lane :build_TroubleShooting_single_basic_variant do
