@@ -33,8 +33,12 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-Observability', $version
     s.dependency "ProtonCore-Payments", $version
     s.source_files = "libraries/PaymentsUI/Sources/**/*.swift"
-    s.resource_bundles = {
+
+    s.ios.resource_bundles = {
        'Resources-PaymentsUI' => "libraries/PaymentsUI/Resources/**/*.{xib,storyboard}",
+       'Translations-PaymentsUI' => ['libraries/PaymentsUI/Sources/Resources/Translations/*']
+    }
+    s.osx.resource_bundles = {
        'Translations-PaymentsUI' => ['libraries/PaymentsUI/Sources/Resources/Translations/*']
     }
 
