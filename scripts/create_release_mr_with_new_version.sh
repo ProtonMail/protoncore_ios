@@ -278,4 +278,4 @@ git push origin $RELEASE_BRANCH -o merge_request.create -o merge_request.target=
 
 # 9. Use Gitlab API to update CHANGELOG.md
 
-bash scripts/create_changelog_on_gitlab.sh $NEW_VERSION $RELEASE_BRANCH
+bash -x scripts/create_changelog_on_gitlab.sh $NEW_VERSION $RELEASE_BRANCH
