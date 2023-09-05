@@ -33,10 +33,14 @@ Pod::Spec.new do |s|
 
     s.source_files = 'libraries/TroubleShooting/Sources/**/*.{h,m,swift}'
     
-    s.resource_bundles = {
+    s.ios.resource_bundles = {
       'Resources-TroubleShooting' => [
         'libraries/TroubleShooting/Resources/**/*.{xib,storyboard,geojson}'
       ],
+      'Translations-TroubleShooting' => ['libraries/TroubleShooting/Sources/Resources/*']
+    }
+
+    s.osx.resource_bundles = {
       'Translations-TroubleShooting' => ['libraries/TroubleShooting/Sources/Resources/*']
     }
 
