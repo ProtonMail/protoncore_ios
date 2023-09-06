@@ -1,3 +1,3 @@
 [submodule "tools/gomobile-build-script"]
 	path = tools/gomobile-build-script
-	url = git@gitlab.protontech.ch:crypto/gomobile-build-script.git
+	url = https://github.com/ProtonMail/gomobile-build-tool.git
