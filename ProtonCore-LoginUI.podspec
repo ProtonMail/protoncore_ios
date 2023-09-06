@@ -48,10 +48,16 @@ Pod::Spec.new do |s|
 
     s.source_files = "libraries/LoginUI/Sources/**/*.swift"
     
-    s.resource_bundles = {
+    s.ios.resource_bundles = {
         'Resources-LoginUI' => [
             "libraries/LoginUI/Resources/**/*.{xib,storyboard,json}"
         ],
+        'Translations-LoginUI' => [
+            "libraries/LoginUI/Sources/Resources/Translations/*"
+        ]
+    }
+
+    s.osx.resource_bundles = {
         'Translations-LoginUI' => [
             "libraries/LoginUI/Sources/Resources/Translations/*"
         ]

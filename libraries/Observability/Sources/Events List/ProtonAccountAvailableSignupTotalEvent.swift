@@ -23,6 +23,7 @@ public enum ProtonAccountAvailableSignupStatus: String, Encodable, CaseIterable 
     case successful
     case failed
     case apiMightBeBlocked
+    case notAvailable
 }
 
 public struct ProtonAccountAvailableSignupLabels: Encodable, Equatable {
