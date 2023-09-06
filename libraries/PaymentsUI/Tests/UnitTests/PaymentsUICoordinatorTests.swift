@@ -107,8 +107,8 @@ final class PaymentsUICoordinatorTests: XCTestCase {
                 "PeriodEnd": 0,
                 "CouponCode": "test code",
                 "Cycle": 12,
-                "Plans": []
-            ]
+                "Plans": [String]()
+            ] as [String : Any]
         ]
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("subscription/check") {

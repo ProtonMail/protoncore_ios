@@ -21,8 +21,10 @@
 
 import Foundation
 import StoreKit
+import ProtonCoreFeatureSwitch
 import ProtonCoreLog
 import ProtonCoreObservability
+import ProtonCoreSubscriptions
 
 /*
 
@@ -70,6 +72,8 @@ import ProtonCoreObservability
 
 final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
 
+    let areSubscriptionsEnabled = FeatureFactory.shared.isEnabled(.subscriptions)
+
     unowned let dependencies: ProcessDependencies
 
     init(dependencies: ProcessDependencies) {
@@ -94,18 +98,38 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
             throw StoreKitManager.Errors.invalidPurchase
         }
         #endif
-        
         // Step 3. Obtain the StoreKit receipt that hopefully confirms the IAP purchase (we don't check this locally)
         let receipt = try dependencies.getReceipt()
         do {
             
             // Step 4. Exchange the receipt for a token that's worth product's Proton price amount of money
             PMLog.debug("Making TokenRequest")
-            let tokenApi = dependencies.paymentsApiProtocol.paymentTokenOldRequest(
-                api: dependencies.apiService, amount: plan.amount, receipt: receipt
-            )
+            let tokenApi: BaseApiRequest<TokenResponse>
+            if areSubscriptionsEnabled {
 
+                guard let transactionIdentifier = transaction.transactionIdentifier else {
+                    throw StoreKitManagerErrors.transactionFailedByUnknownReason
+                }
+                guard let bundleIdentifier = Bundle.main.bundleIdentifier else {
+                    assertionFailure("You shouldn't be running this outside an application bundle")
+                    throw StoreKitManagerErrors.notAllowed
+                }
+
+                tokenApi = dependencies.paymentsApiProtocol.paymentTokenRequest(
+                    api: dependencies.apiService,
+                    amount: plan.amount,
+                    receipt: receipt,
+                    transactionId: transactionIdentifier,
+                    bundleId: bundleIdentifier,
+                    productId: transaction.payment.productIdentifier
+                )
+            } else {
+                tokenApi = dependencies.paymentsApiProtocol.paymentTokenOldRequest(
+                    api: dependencies.apiService, amount: plan.amount, receipt: receipt
+                )
+            }
             let tokenRes = try tokenApi.awaitResponse(responseObject: TokenResponse())
+
             if let tokenError = tokenRes.error {
                 ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(error: tokenError))
             } else {
@@ -180,19 +204,36 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
             guard let self = self else { return }
             try self.retryAlertView(transaction: transaction, plan: plan, completion: completion)
         }
-
         // Step 9. Retrieve the token worth product's Proton price of money from the storage.
         guard let token = dependencies.tokenStorage.get() else {
             PMLog.debug("StoreKit: No proton token found")
             // Step 9. If the token is not available we effectively repeat step 3: we obtain the StoreKit receipt that hopefully confirms the IAP purchase (we don't check this locally)
             let receipt = try dependencies.getReceipt()
             do {
-                
                 // Step 9. If the token is not available we effectively repeat step 4: we exchange the receipt for a token that's worth product's Proton price amount of money
-                let tokenApi = dependencies.paymentsApiProtocol.paymentTokenOldRequest(
-                    api: dependencies.apiService, amount: plan.amount, receipt: receipt
-                )
+                let tokenApi: BaseApiRequest<TokenResponse>
+                if areSubscriptionsEnabled {
 
+                    guard let transactionIdentifier = transaction.transactionIdentifier else {
+                        PMLog.debug("No available transaction identifier to process")
+                        throw StoreKitManagerErrors.transactionFailedByUnknownReason
+                    }
+                    guard let bundleIdentifier = Bundle.main.bundleIdentifier else {
+                        assertionFailure("You shouldn't be running this outside an application bundle")
+                        throw StoreKitManagerErrors.notAllowed
+                    }
+
+                    tokenApi = dependencies.paymentsApiProtocol.paymentTokenRequest(api: dependencies.apiService,
+                                                                                        amount: plan.amount,
+                                                                                        receipt: receipt,
+                                                                                        transactionId: transactionIdentifier,
+                                                                                        bundleId: bundleIdentifier,
+                                                                                        productId: transaction.payment.productIdentifier)
+                } else {
+                    tokenApi = dependencies.paymentsApiProtocol.paymentTokenOldRequest(
+                        api: dependencies.apiService, amount: plan.amount, receipt: receipt
+                    )
+                }
                 let tokenRes = try tokenApi.awaitResponse(responseObject: TokenResponse())
                 if let tokenError = tokenRes.error {
                     ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(error: tokenError))
@@ -304,9 +345,9 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
                 amountDue: plan.amountDue,
                 paymentAction: .token(token: token.token)
             )
-            let recieptRes = try request.awaitResponse(responseObject: SubscriptionResponse())
+            let receiptRes = try request.awaitResponse(responseObject: SubscriptionResponse())
             PMLog.debug("StoreKit: success (2)")
-            if let newSubscription = recieptRes.newSubscription {
+            if let newSubscription = receiptRes.newSubscription {
                 // the error is ignored, because the current plan will be fetched regardless after the user is logged in
                 try? dependencies.updateSubscription(newSubscription)
                 // Step 13. Finish the IAP transaction
