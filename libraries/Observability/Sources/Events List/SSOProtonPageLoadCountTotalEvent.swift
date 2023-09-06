@@ -21,15 +21,8 @@
 
 import ProtonCoreNetworking
 
-public enum SSOProtonPageLoadStatus: String, Encodable, CaseIterable {
-    case http2xx
-    case http4xx
-    case http5xx
-    case unknown
-}
-
 public struct SSOProtonPageLoadLabels: Encodable, Equatable {
-    let status: SSOProtonPageLoadStatus
+    let status: HTTPResponseCodeStatus
 
     enum CodingKeys: String, CodingKey {
         case status
@@ -37,7 +30,7 @@ public struct SSOProtonPageLoadLabels: Encodable, Equatable {
 }
 
 extension ObservabilityEvent where Payload == PayloadWithLabels<SSOProtonPageLoadLabels> {
-    public static func ssoProtonPageLoadCountTotal(status: SSOProtonPageLoadStatus) -> Self {
+    public static func ssoProtonPageLoadCountTotal(status: HTTPResponseCodeStatus) -> Self {
         .init(name: "ios_core_login_ssoProton_pageLoad_total", labels: .init(status: status))
     }
     
