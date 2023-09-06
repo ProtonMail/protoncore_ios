@@ -317,6 +317,166 @@ final class ObservabilityEventTests: XCTestCase {
             XCTAssertEqual(issues, .noIssues)
         }
     }
+
+    // MARK: - Dynamic plans events
+
+    let ios_core_proton_current_plan_load_v1 = """
+    {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+            "Labels": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "enum": ["http2xx", "http4xx", "http5xx", "unknown"]
+                    }
+                },
+                "required": ["status"],
+                "additionalProperties": false
+            },
+            "Value": {
+                "type": "integer",
+                "minimum": 1
+            }
+        },
+        "required": ["Labels", "Value"],
+        "$id": "https://proton.me/ios_core_current_plan_load_v1.schema.json",
+        "title": "me.proton.core.observability.domain.metrics.CurrentPlanLoad",
+        "description": "Load the current plan from the API",
+        "additionalProperties": false
+    }
+    """
+
+    func testProtonCurrentPlanLoadEvent() throws {
+        try HTTPResponseCodeStatus.allCases.forEach { status in
+            let issues = try validatePayloadAccordingToSchema(
+                event: .currentPlanLoad(status: status),
+                schema: ios_core_proton_current_plan_load_v1
+            )
+            XCTAssertEqual(issues, .noIssues)
+        }
+    }
+
+    let ios_core_proton_current_plan_page_load_v1 = """
+    {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+            "Labels": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "enum": ["successful", "failed"]
+                    }
+                },
+                "required": ["status"],
+                "additionalProperties": false
+            },
+            "Value": {
+                "type": "integer",
+                "minimum": 1
+            }
+        },
+        "required": ["Labels", "Value"],
+        "$id": "https://proton.me/ios_core_current_plan_page_load_total_v1.schema.json",
+        "title": "me.proton.core.observability.domain.metrics.CurrentPlanPageLoadTotal",
+        "description": "Show the current plan view to the user.",
+        "additionalProperties": false
+    }
+
+    """
+
+    func testProtonCurrentPlanPageLoadEvent() throws {
+        try SuccessOrFailureStatus.allCases.forEach { status in
+            let issues = try validatePayloadAccordingToSchema(
+                event: .currentPlanPageLoad(status: status),
+                schema: ios_core_proton_current_plan_page_load_v1
+            )
+            XCTAssertEqual(issues, .noIssues)
+        }
+    }
+
+    let ios_core_proton_available_plans_load_v1 = """
+    {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+            "Labels": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "enum": ["http2xx", "http4xx", "http5xx", "unknown"]
+                    }
+                },
+                "required": ["status"],
+                "additionalProperties": false
+            },
+            "Value": {
+                "type": "integer",
+                "minimum": 1
+            }
+        },
+        "required": ["Labels", "Value"],
+        "$id": "https://proton.me/ios_core_ios_core_available_plans_load_v1.schema.json",
+        "title": "me.proton.core.observability.domain.metrics.AvailablePlansLoad",
+        "description": "Load available plans from the API.",
+        "additionalProperties": false
+    }
+    """
+
+    func testProtonAvailablePlansLoadEvent() throws {
+        try HTTPResponseCodeStatus.allCases.forEach { status in
+            let issues = try validatePayloadAccordingToSchema(
+                event: .availablePlansLoad(status: status),
+                schema: ios_core_proton_available_plans_load_v1
+            )
+            XCTAssertEqual(issues, .noIssues)
+        }
+    }
+
+    let ios_core_proton_available_plans_page_load_v1 = """
+    {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+            "Labels": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "enum": ["successful", "failed"]
+                    }
+                },
+                "required": ["status"],
+                "additionalProperties": false
+            },
+            "Value": {
+                "type": "integer",
+                "minimum": 1
+            }
+        },
+        "required": ["Labels", "Value"],
+        "$id": "https://proton.me/ios_core_available_plans_page_load_total_v1.schema.json",
+        "title": "me.proton.core.observability.domain.metrics.AvailablePlansPageLoadTotal",
+        "description": "Show available plans page to the user.",
+        "additionalProperties": false
+    }
+
+    """
+
+    func testProtonAvailablePlansPageLoadEvent() throws {
+        try SuccessOrFailureStatus.allCases.forEach { status in
+            let issues = try validatePayloadAccordingToSchema(
+                event: .availablePlansPageLoad(status: status),
+                schema: ios_core_proton_available_plans_page_load_v1
+            )
+            XCTAssertEqual(issues, .noIssues)
+        }
+    }
 }
 
 // MARK: - helpers
