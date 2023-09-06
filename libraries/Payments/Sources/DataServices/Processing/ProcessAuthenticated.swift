@@ -117,8 +117,13 @@ final class ProcessAuthenticated: ProcessProtocol {
                     
                 } failure: { [weak self] _ in
                     // if updateCurrentSubscription is failed for some reason, update subscription with newSubscription data
-                    self?.dependencies.updateSubscription(newSubscription)
-                    self?.finish(transaction: transaction, result: .finished(.resolvingIAPToSubscription), completion: completion)
+                    do {
+                        try self?.dependencies.updateSubscription(newSubscription)
+                        self?.finish(transaction: transaction, result: .finished(.resolvingIAPToSubscription), completion: completion)
+                    } catch {
+                        self?.finish(transaction: transaction, result: .errored(.noNewSubscriptionInSuccessfullResponse), completion: completion)
+                    }
+
                     
                 }
             } else {

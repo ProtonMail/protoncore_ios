@@ -27,6 +27,7 @@ import ProtonCoreTestingToolkitUnitTestsCore
 import ProtonCorePayments
 
 public final class PlansDataSourceMock: NSObject, PlansDataSourceProtocol {
+
     @PropertyStub(\PlansDataSourceProtocol.isIAPAvailable, initialGet: false) public var isIAPAvailableStub
     public var isIAPAvailable: Bool {
         isIAPAvailableStub()
@@ -50,6 +51,11 @@ public final class PlansDataSourceMock: NSObject, PlansDataSourceProtocol {
     @PropertyStub(\PlansDataSourceProtocol.willRenewAutomatically, initialGet: false) public var willRenewAutomaticallyStub
     public var willRenewAutomatically: Bool {
         willRenewAutomaticallyStub()
+    }
+
+    @PropertyStub(\PlansDataSourceProtocol.hasPaymentMethods, initialGet: false) public var hasPaymentMethodsStub
+    public var hasPaymentMethods: Bool {
+        hasPaymentMethodsStub()
     }
     
     @AsyncThrowingFuncStub(PlansDataSourceProtocol.fetchIAPAvailability) public var fetchIAPAvailabilityStub
@@ -75,5 +81,21 @@ public final class PlansDataSourceMock: NSObject, PlansDataSourceProtocol {
     @AsyncThrowingFuncStub(PlansDataSourceProtocol.fetchIcon(iconName:), initialReturn: nil) public var fetchIconStub
     public func fetchIcon(iconName: String) async throws -> Data? {
         try await fetchIconStub(iconName)
+    }
+
+    @FuncStub(PlansDataSourceProtocol.detailsOfAvailablePlanCorrespondingToIAP, initialReturn: nil)
+    public var detailsOfAvailablePlanCorrespondingToIAPStub
+    public func detailsOfAvailablePlanCorrespondingToIAP(
+        _ iap: ProtonCorePayments.InAppPurchasePlan
+    ) -> ProtonCorePayments.AvailablePlans.AvailablePlan? {
+        detailsOfAvailablePlanCorrespondingToIAPStub(iap)
+    }
+
+    @FuncStub(PlansDataSourceProtocol.detailsOfAvailablePlanInstanceCorrespondingToIAP, initialReturn: nil)
+    public var detailsOfAvailablePlanInstanceCorrespondingToIAPStub
+    public func detailsOfAvailablePlanInstanceCorrespondingToIAP(
+        _ iap: ProtonCorePayments.InAppPurchasePlan
+    ) -> ProtonCorePayments.AvailablePlans.AvailablePlan.Instance? {
+        detailsOfAvailablePlanInstanceCorrespondingToIAPStub(iap)
     }
 }

@@ -49,16 +49,18 @@ class ValidationManager {
             return .failure(StoreKitManager.Errors.unavailableProduct)
         }
 
-        // TODO: support purchase process with PlansDataSource object
-        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = dependencies.planService else {
-            assertionFailure("Purchase process with dynamic plans is not supported yet")
-            return .failure(StoreKitManager.Errors.transactionFailedByUnknownReason)
+        // TODO: test purchase process with PlansDataSource object
+        switch dependencies.planService {
+        case .left(let planService):
+            guard planService.currentSubscription?.hasExistingProtonSubscription == false else {
+                return .failure(StoreKitManager.Errors.invalidPurchase)
+            }
+            return .success(product)
+        case .right(let planDataSource):
+            guard planDataSource.currentPlan?.hasExistingProtonSubscription == false else {
+                return .failure(StoreKitManager.Errors.invalidPurchase)
+            }
+            return .success(product)
         }
-
-        guard planService.currentSubscription?.hasExistingProtonSubscription == false else {
-            return .failure(StoreKitManager.Errors.invalidPurchase)
-        }
-
-        return .success(product)
     }
 }

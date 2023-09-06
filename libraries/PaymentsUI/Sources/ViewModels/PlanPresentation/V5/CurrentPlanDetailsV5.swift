@@ -76,7 +76,7 @@ struct CurrentPlanDetailsV5 {
         
         var price: String
         if let amount = details.amount {
-            price = PriceFormatter.formatPlanPrice(price: Double(amount), locale: Locale.current)
+            price = PriceFormatter.formatPlanPrice(price: Double(amount) / 100, locale: Locale(identifier: "en-US"))
         } else {
             price = PriceFormatter.formatPlanPrice(price: 0, locale: Locale.current, maximumFractionDigits: 0)
         }
@@ -86,7 +86,7 @@ struct CurrentPlanDetailsV5 {
             description: details.description,
             cycleDescription: details.cycleDescription,
             price: price,
-            endDate: endDateString(date: details.periodEnd, renew: details.renew ?? false),
+            endDate: endDateString(date: details.periodEnd, renew: details.willRenew ?? false),
             entitlements: entitlements
         )
     }

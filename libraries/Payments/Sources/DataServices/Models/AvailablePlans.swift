@@ -28,6 +28,8 @@ public struct AvailablePlans: Decodable, Equatable {
     public var plans: [AvailablePlan]
     
     public struct AvailablePlan: Decodable, Equatable {
+        public var ID: String
+        public var name: String
         public var title: String
         public var description: String?
         public var instances: [Instance]
@@ -49,6 +51,7 @@ public struct AvailablePlans: Decodable, Equatable {
             public struct Price: Decodable, Equatable {
                 public var current: Int
                 public var `default`: Int // same as current if no offer, higher otherwise
+                public var currency: String
             }
             
             public struct Vendors: Decodable, Equatable {
