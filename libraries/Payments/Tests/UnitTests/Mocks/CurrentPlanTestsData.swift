@@ -32,7 +32,7 @@ var currentPlanResponse: [String: Any] {
             "Currency": "Currency",
             "Amount": 28788,
             "PeriodEnd": 1696938858,
-            "Renew": true,
+            "Renew": 1,
             "External": 1,
             "Entitlements": [
                 [
@@ -62,7 +62,7 @@ var currentPlanToCompare: CurrentPlan {
             currency: "Currency",
             amount: 28788,
             periodEnd: 1696938858,
-            renew: true,
+            renew: 1,
             external: .apple,
             entitlements: [
                 .progress(

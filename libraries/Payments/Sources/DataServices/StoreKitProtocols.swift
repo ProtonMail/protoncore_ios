@@ -174,7 +174,7 @@ protocol ProcessDependencies: AnyObject {
     var tokenStorage: PaymentTokenStorage { get }
     var paymentsApiProtocol: PaymentsApiProtocol { get }
     var alertManager: PaymentsAlertManager { get }
-    var updateSubscription: (Subscription) -> Void { get }
+    var updateSubscription: (Subscription) throws -> Void { get }
     func updateCurrentSubscription(success: @escaping () -> Void, failure: @escaping (Error) -> Void)
     var finishTransaction: (SKPaymentTransaction, (() -> Void)?) -> Void { get }
     var apiService: APIService { get }

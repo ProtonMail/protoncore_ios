@@ -348,7 +348,8 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
             let receiptRes = try request.awaitResponse(responseObject: SubscriptionResponse())
             PMLog.debug("StoreKit: success (2)")
             if let newSubscription = receiptRes.newSubscription {
-                dependencies.updateSubscription(newSubscription)
+                // the error is ignored, because the current plan will be fetched regardless after the user is logged in
+                try? dependencies.updateSubscription(newSubscription)
                 // Step 13. Finish the IAP transaction
                 finishWhenAuthenticated(transaction: transaction, result: .resolvingIAPToSubscription, completion: completion)
             } else {

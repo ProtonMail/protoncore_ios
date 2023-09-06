@@ -190,17 +190,27 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
                             }
                             self.loginStatusLabel.text = "Login status: OK"
                             self.clearData()
-                            // TODO: support purchase process with PlansDataSource object
-                            guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.payments.planService else {
-                                assertionFailure("Purchase process with dynamic plans is not supported yet")
-                                return
-                            }
-                            planService.updateServicePlans { [weak self] in
-                                guard let self = self else { return }
-                                self.currentSubscriptionButton.isEnabled = true
-                                self.processPossiblePlans()
-                            } failure: { error in
-                                PMLog.debug("Error: Update Service Plans error: \(error)")
+                            // TODO: test purchase process with PlansDataSource object
+                            switch payments.planService {
+                            case .left(let planService):
+                                planService.updateServicePlans { [weak self] in
+                                    guard let self = self else { return }
+                                    self.currentSubscriptionButton.isEnabled = true
+                                    self.processPossiblePlans()
+                                } failure: { error in
+                                    PMLog.debug("Error: Update Service Plans error: \(error)")
+                                }
+                            case .right(let planDataSource):
+                                Task { [weak self] in
+                                    do {
+                                        try await planDataSource.fetchAvailablePlans()
+                                        guard let self = self else { return }
+                                        self.currentSubscriptionButton.isEnabled = true
+                                        self.processPossiblePlans()
+                                    } catch {
+                                        PMLog.debug("Error: Update Service Plans error: \(error)")
+                                    }
+                                }
                             }
                         }
                     case .failure(let error):
@@ -237,20 +247,21 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
         availablePlans.removeAll()
         subscriptionSelector.removeAllSegments()
         inAppPurchases.compactMap(InAppPurchasePlan.init(storeKitProductId:)).forEach {
-            if let details = fetchDetails(accountPlan: $0), details.isPurchasable == true {
+            if let isPurchasable = checkIfIsPurchasable(accountPlan: $0), isPurchasable {
                 availablePlans.append($0)
             }
         }
         updateAvailablePlans()
     }
     
-    private func fetchDetails(accountPlan: InAppPurchasePlan) -> Plan? {
-        // TODO: support purchase process with PlansDataSource object
-        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.payments.planService else {
-            assertionFailure("Purchase process with dynamic plans is not supported yet")
-            return nil
+    private func checkIfIsPurchasable(accountPlan: InAppPurchasePlan) -> Bool? {
+        // TODO: test purchase process with PlansDataSource object
+        switch payments.planService {
+        case .left(let planService):
+            return planService.detailsOfPlanCorrespondingToIAP(accountPlan)?.isPurchasable
+        case .right(let planDataSource):
+            return planDataSource.detailsOfAvailablePlanInstanceCorrespondingToIAP(accountPlan) != nil
         }
-        return planService.detailsOfPlanCorrespondingToIAP(accountPlan)
     }
     
     private func updateAvailablePlans() {
@@ -294,24 +305,37 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
     }
     
     private func showSubscriptionData() {
-        // TODO: support purchase process with PlansDataSource object
-        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.payments.planService else {
-            assertionFailure("Purchase process with dynamic plans is not supported yet")
-            return
-        }
-        let planNames = planService.currentSubscription?.planDetails?
-            .filter { $0.isAPrimaryPlan }
-            .compactMap { $0.name } ?? [InAppPurchasePlan.freePlanName]
-        let plansStr = planNames.description.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")
-        let addonNames = planService.currentSubscription?.planDetails?.filter { $0.isAnAddOn }.compactMap { $0.name }
-        let addonsStr = addonNames?.description.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")
-        var addonsDispStr = addonsStr ?? "---"
-        if addonsDispStr == "" {
-            addonsDispStr = "---"
-        }
+        // TODO: test purchase process with PlansDataSource object
+        var plansStr = ""
+        var addonsDispStr = ""
         var cycle = "---"
-        if let servicePlanCycle = planService.currentSubscription?.cycle, servicePlanCycle > 0 {
-            cycle = String(servicePlanCycle) + " month(s)"
+        switch payments.planService {
+        case .left(let planService):
+            let planNames = planService.currentSubscription?.planDetails?
+                .filter { $0.isAPrimaryPlan }
+                .compactMap { $0.name } ?? [InAppPurchasePlan.freePlanName]
+            plansStr = planNames.description.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")
+            let addonNames = planService.currentSubscription?.planDetails?.filter { $0.isAnAddOn }.compactMap { $0.name }
+            let addonsStr = addonNames?.description.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")
+            addonsDispStr = addonsStr ?? "---"
+            if addonsDispStr == "" {
+                addonsDispStr = "---"
+            }
+            if let servicePlanCycle = planService.currentSubscription?.cycle, servicePlanCycle > 0 {
+                cycle = String(servicePlanCycle) + " month(s)"
+            }
+
+        case .right(let planDataSource):
+            plansStr = planDataSource.currentPlan?.subscriptions.first?.title ?? InAppPurchasePlan.freePlanName
+            let addonNames = planDataSource.currentPlan?.subscriptions.dropFirst().compactMap { $0.title }
+            let addonsStr = addonNames?.description.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")
+            addonsDispStr = addonsStr ?? "---"
+            if addonsDispStr == "" {
+                addonsDispStr = "---"
+            }
+            if let servicePlanCycle = planDataSource.currentPlan?.subscriptions.first?.cycle, servicePlanCycle > 0 {
+                cycle = String(servicePlanCycle) + " month(s)"
+            }
         }
         currentSubscriptionLabel.text = "Current subscriptions: \(plansStr)"
         currentAddonLabel.text = "Current addons: \(addonsDispStr)"
@@ -339,13 +363,16 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
         if self.isValid || self.forceSubscriptionButton.isOn {
             var title = "Purchase subscription"
             if self.isValid {
-                // TODO: support purchase process with PlansDataSource object
-                guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.payments.planService else {
-                    assertionFailure("Purchase process with dynamic plans is not supported yet")
-                    return
-                }
-                if planService.currentSubscription?.planDetails != nil {
-                    title = "Add credits"
+                // TODO: test purchase process with PlansDataSource object
+                switch payments.planService {
+                case .left(let planService):
+                    if planService.currentSubscription?.planDetails != nil {
+                        title = "Add credits"
+                    }
+                case .right(let planDataSource):
+                    if planDataSource.currentPlan?.subscriptions.isEmpty == false {
+                        title = "Add credits"
+                    }
                 }
             } else {
                 title = "Force purchase subscription"
@@ -432,15 +459,6 @@ extension PaymentsNewUserSubscriptionVC: StoreKitManagerDelegate {
     
     var userId: String? {
         return userInfo?.ID
-    }
-    
-    var servicePlanDataService: ServicePlanDataServiceProtocol? {
-        // TODO: support purchase process with PlansDataSource object
-        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.payments.planService else {
-            assertionFailure("Purchase process with dynamic plans is not supported yet")
-            return nil
-        }
-        return planService
     }
 }
 

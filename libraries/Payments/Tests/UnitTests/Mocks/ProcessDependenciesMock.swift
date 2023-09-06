@@ -45,7 +45,7 @@ final class ProcessDependenciesMock: ProcessDependencies {
     var alertManager: PaymentsAlertManager { alertManagerStub() }
 
     @PropertyStub(\ProcessDependencies.updateSubscription, initialGet: .crash) var updateSubscriptionStub
-    var updateSubscription: (Subscription) -> Void { updateSubscriptionStub() }
+    var updateSubscription: (Subscription) throws -> Void { updateSubscriptionStub() }
     
     @FuncStub(ProcessDependencies.updateCurrentSubscription) var updateCurrentSubscriptionStub
     func updateCurrentSubscription(success: @escaping () -> Void, failure: @escaping (Error) -> Void) { updateCurrentSubscriptionStub(success, failure) }

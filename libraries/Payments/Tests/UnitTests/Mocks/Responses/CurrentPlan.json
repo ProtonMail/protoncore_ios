@@ -7,7 +7,7 @@
         "Currency": "Currency",
         "Amount": 28788,
         "PeriodEnd": 1696938858,
-        "Renew": true,
+        "Renew": 1,
         "External": 1,
         "Entitlements": [
             {
