@@ -1977,7 +1977,7 @@ let package = Package(
             from: "2.0.0"
         ),
         .package(
-            url: "git@gitlab.protontech.ch:tpe/apple-fusion.git",
+            url: "https://github.com/ProtonMail/apple-fusion",
             from: "2.0.1"
         ),
         .package(
