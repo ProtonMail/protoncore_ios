@@ -115,23 +115,33 @@ final class PurchaseManager: PurchaseManagerProtocol {
             return
         }
 
-        // TODO: support purchase process with PlansDataSource object
-        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.planService else {
-            assertionFailure("Purchase process with dynamic plans is not supported yet")
-            finishCallback(.purchaseError(error: StoreKitManager.Errors.transactionFailedByUnknownReason))
-            return
-        }
+        // TODO: test purchase process with PlansDataSource object
+        let planName: String
+        let planId: String
+        switch planService {
+        case .left(let planService):
+            guard let details = planService.detailsOfPlanCorrespondingToIAP(plan),
+                  let id = planService.detailsOfPlanCorrespondingToIAP(plan)?.ID else {
+                // the plan details, including its id, are unknown, preventing us from doing any further operation
+                assertionFailure("Programmer's error: buy plan method must be called when the plan details are available")
+                throw StoreKitManagerErrors.transactionFailedByUnknownReason
+            }
+            planName = details.name
+            planId = id
 
-        guard let details = planService.detailsOfPlanCorrespondingToIAP(plan),
-              let planId = planService.detailsOfPlanCorrespondingToIAP(plan)?.ID else {
-            // the plan details, including its id, are unknown, preventing us from doing any further operation
-            assertionFailure("Programmer's error: buy plan method must be called when the plan details are available")
-            throw StoreKitManagerErrors.transactionFailedByUnknownReason
+        case .right(let planDataSource):
+            guard let availablePlan = planDataSource.detailsOfAvailablePlanCorrespondingToIAP(plan) else {
+                // the plan details, including its id, are unknown, preventing us from doing any further operation
+                assertionFailure("Programmer's error: buy plan method must be called when the plan details are available")
+                throw StoreKitManagerErrors.transactionFailedByUnknownReason
+            }
+            planName = availablePlan.name
+            planId = availablePlan.ID
         }
 
         var amountDue = 0
         if !addCredits {
-            amountDue = try fetchAmountDue(protonPlanName: details.name)
+            amountDue = try fetchAmountDue(protonPlanName: planName)
             guard amountDue != .zero else {
                 // backend indicated that plan can be bought for free — no need to initiate the IAP flow
                 try buyPlanWhenAmountDueIsZero(plan: plan, planId: planId, finishCallback: finishCallback)
@@ -169,20 +179,30 @@ final class PurchaseManager: PurchaseManagerProtocol {
         let subscriptionRequest = paymentsApi.buySubscriptionForZeroRequest(api: apiService, planId: planId)
         let subscriptionResponse = try subscriptionRequest.awaitResponse(responseObject: SubscriptionResponse())
         if let newSubscription = subscriptionResponse.newSubscription {
-            // TODO: support purchase process with PlansDataSource object
-            guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self.planService else {
-                assertionFailure("Purchase process with dynamic plans is not supported yet")
-                finishCallback(.purchaseError(error: StoreKitManager.Errors.transactionFailedByUnknownReason))
-                return
-            }
-            planService.updateCurrentSubscription { [weak self] in
-                finishCallback(.purchasedPlan(accountPlan: plan))
-                self?.storeKitManager.refreshHandler(.finished(.resolvingIAPToSubscription))
-            } failure: { [weak self] _ in
-                // if updateCurrentSubscription is failed for some reason, update subscription with newSubscription data
-                planService.currentSubscription = newSubscription
-                finishCallback(.purchasedPlan(accountPlan: plan))
-                self?.storeKitManager.refreshHandler(.finished(.resolvingIAPToSubscription))
+            // TODO: test purchase process with PlansDataSource object
+            switch planService {
+            case .left(let planService):
+                planService.updateCurrentSubscription { [weak self] in
+                    finishCallback(.purchasedPlan(accountPlan: plan))
+                    self?.storeKitManager.refreshHandler(.finished(.resolvingIAPToSubscription))
+                } failure: { [weak self] _ in
+                    // if updateCurrentSubscription is failed for some reason, update subscription with newSubscription data
+                    planService.currentSubscription = newSubscription
+                    finishCallback(.purchasedPlan(accountPlan: plan))
+                    self?.storeKitManager.refreshHandler(.finished(.resolvingIAPToSubscription))
+                }
+
+            case .right(let planDataSource):
+                Task { [weak self] in
+                    do {
+                        try await planDataSource.fetchCurrentPlan()
+                        finishCallback(.purchasedPlan(accountPlan: plan))
+                        self?.storeKitManager.refreshHandler(.finished(.resolvingIAPToSubscription))
+                    } catch {
+                        finishCallback(.purchasedPlan(accountPlan: plan))
+                        self?.storeKitManager.refreshHandler(.errored(StoreKitManagerErrors.noNewSubscriptionInSuccessfullResponse))
+                    }
+                }
             }
         } else {
             throw StoreKitManager.Errors.noNewSubscriptionInSuccessfullResponse

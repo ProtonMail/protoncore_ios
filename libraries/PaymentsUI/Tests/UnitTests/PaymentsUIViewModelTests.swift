@@ -25,6 +25,7 @@ import XCTest
 @testable import ProtonCorePayments
 import ProtonCoreServices
 #if canImport(ProtonCoreTestingToolkitUnitTestsPayments)
+import ProtonCoreTestingToolkitUnitTestsCore
 import ProtonCoreTestingToolkitUnitTestsPayments
 import ProtonCoreTestingToolkitUnitTestsFeatureSwitch
 #else
@@ -48,7 +49,9 @@ final class PaymentsUIViewModelTests: XCTestCase {
         plansDataSource = PlansDataSourceMock()
         
         plansDataSource.availablePlansStub.fixture = .init(plans: [
-            .init(title: "Pass Plus",
+            .init(ID: "ID",
+                  name: "passplus",
+                  title: "Pass Plus",
                   description: "plan description",
                   instances: [
                     .init(

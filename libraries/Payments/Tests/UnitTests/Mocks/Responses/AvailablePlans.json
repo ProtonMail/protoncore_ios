@@ -1,6 +1,7 @@
 {
     "Code": 1000,
     "Plans": [{
+        "ID": "ID",
         "Name": "mailpro2022",
         "Title": "Mail Essentials",
         "State": 1,
@@ -17,7 +18,8 @@
                 "Price": [
                     {
                         "Current": 499,
-                        "Default": 499
+                        "Default": 499,
+                        "Currency": "USD"
                     }
                 ],
                 "Vendors": {
