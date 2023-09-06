@@ -23,6 +23,7 @@ public enum ExternalAccountAvailableStatus: String, Encodable, CaseIterable {
     case successful
     case failed
     case apiMightBeBlocked
+    case notAvailable
 }
 
 public struct ExternalAccountAvailableLabels: Encodable, Equatable {

@@ -409,21 +409,30 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
             // this error is not user-facing
             return
         case .generic(let message, let code, _):
-            if isExternalEmail, code == APIErrorCode.humanVerificationAddressAlreadyTaken {
-                self.delegate?.hvEmailAlreadyExists(email: email)
-            } else if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
+            if code == APIErrorCode.humanVerificationAddressAlreadyTaken {
+                if isExternalEmail {
+                    ObservabilityEnv.report(.externalAccountAvailableSignupTotal(status: .notAvailable))
+                } else {
+                    ObservabilityEnv.report(.protonAccountAvailableSignupTotal(status: .notAvailable))
+                }
+            } else {
                 if isExternalEmail {
                     ObservabilityEnv.report(.externalAccountAvailableSignupTotal(status: .failed))
                 } else {
                     ObservabilityEnv.report(.protonAccountAvailableSignupTotal(status: .failed))
                 }
+            }
+
+            if isExternalEmail, code == APIErrorCode.humanVerificationAddressAlreadyTaken {
+                self.delegate?.hvEmailAlreadyExists(email: email)
+            } else if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
                 self.showError(message: message)
             }
         case .notAvailable(let message):
             if isExternalEmail {
-                ObservabilityEnv.report(.externalAccountAvailableSignupTotal(status: .successful))
+                ObservabilityEnv.report(.externalAccountAvailableSignupTotal(status: .notAvailable))
             } else {
-                ObservabilityEnv.report(.protonAccountAvailableSignupTotal(status: .successful))
+                ObservabilityEnv.report(.protonAccountAvailableSignupTotal(status: .notAvailable))
             }
             self.currentlyUsedTextField.isError = true
             if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {

@@ -181,7 +181,7 @@ final class SignupObservabilityTests: XCTestCase {
         // Given
         sut.signupAccountType = .internal
         sut.minimumAccountType = .internal
-        let expectedEvent: ObservabilityEvent = .protonAccountAvailableSignupTotal(status: .successful)
+        let expectedEvent: ObservabilityEvent = .protonAccountAvailableSignupTotal(status: .notAvailable)
         loginServiceMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(.notAvailable(message: "")))
         }
@@ -247,7 +247,7 @@ final class SignupObservabilityTests: XCTestCase {
         // Given
         sut.signupAccountType = .internal
         sut.minimumAccountType = .external
-        let expectedEvent: ObservabilityEvent = .protonAccountAvailableSignupTotal(status: .successful)
+        let expectedEvent: ObservabilityEvent = .protonAccountAvailableSignupTotal(status: .notAvailable)
         loginServiceMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(.notAvailable(message: "")))
         }
@@ -309,7 +309,7 @@ final class SignupObservabilityTests: XCTestCase {
     func test_onNextButtonTap_withExternalAccountType_reportsFailureIfNotAvailable() {
         // Given
         sut.signupAccountType = .external
-        let expectedEvent: ObservabilityEvent = .externalAccountAvailableSignupTotal(status: .successful)
+        let expectedEvent: ObservabilityEvent = .externalAccountAvailableSignupTotal(status: .notAvailable)
         loginServiceMock.checkAvailabilityForExternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(.notAvailable(message: "")))
         }
