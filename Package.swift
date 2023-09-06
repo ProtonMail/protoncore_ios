@@ -1341,7 +1341,8 @@ add(
                     .log,
                     .networking,
                     .services,
-                    .reachabilitySwift
+                    .reachabilitySwift,
+                    .subscriptions
                 ],
                 path: "libraries/Payments/Sources",
                 swiftSettings: .spm),
@@ -1425,8 +1426,10 @@ add(
 
         .testTarget(name: .paymentsUI + "Tests",
                     dependencies: [
+                        .featureSwitch,
                         .paymentsUI,
                         .obfuscatedConstants,
+                        .subscriptions,
                         .testingToolkitUnitTestsDataModel,
                         .testingToolkitUnitTestsObservability,
                         .testingToolkitUnitTestsPayments,
