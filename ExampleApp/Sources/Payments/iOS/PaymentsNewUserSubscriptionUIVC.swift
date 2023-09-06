@@ -71,7 +71,6 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        FeatureFactory.shared.enable(&.dynamicPlans)
         testApi = PMAPIService.createAPIService(environment: currentEnv,
                                                 sessionUID: "testSessionUID",
                                                 challengeParametersProvider: .forAPIService(clientApp: clientApp, challenge: PMChallenge()))

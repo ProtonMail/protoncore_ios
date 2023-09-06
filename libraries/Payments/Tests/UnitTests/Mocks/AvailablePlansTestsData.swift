@@ -26,6 +26,7 @@ var availablePlansResponse: [String: Any] {
     [
         "Plans": [
             [
+                "ID": "ID 1",
                 "Name": "name 1",
                 "Title": "title 1",
                 "State": 1,
@@ -40,7 +41,7 @@ var availablePlansResponse: [String: Any] {
                         "Description": "description 1",
                         "PeriodEnd": 1691915780,
                         "Price": [
-                            ["current": 1, "default": 1]
+                            ["current": 1, "default": 1, "currency": "USD"]
                         ],
                         "Vendors": [
                             "Apple": [
@@ -69,6 +70,7 @@ var availablePlansResponse: [String: Any] {
                 ]
             ],
             [
+                "ID": "ID 2",
                 "Name": "name 2",
                 "Title": "title 2",
                 "State": 2,
@@ -98,6 +100,8 @@ var availablePlansToCompare: AvailablePlans {
     .init(
         plans: [
             .init(
+                ID: "ID 1",
+                name: "name 1",
                 title: "title 1",
                 description: "description 1",
                 instances: [
@@ -106,7 +110,7 @@ var availablePlansToCompare: AvailablePlans {
                         cycle: 1,
                         description: "description 1",
                         periodEnd: 1691915780,
-                        price: [.init(current: 1, default: 1)],
+                        price: [.init(current: 1, default: 1, currency: "USD")],
                         vendors: .init(apple: .init(productID: "apple id 1"))
                     )
                 ],
@@ -132,6 +136,8 @@ var availablePlansToCompare: AvailablePlans {
                 ]
             ),
             .init(
+                ID: "ID 2",
+                name: "name 2",
                 title: "title 2",
                 description: "description 2",
                 instances: [
@@ -140,7 +146,7 @@ var availablePlansToCompare: AvailablePlans {
                         cycle: 2,
                         description: "description 2",
                         periodEnd: 1691915780,
-                        price: [.init(current: 2, default: 2)]
+                        price: [.init(current: 2, default: 2, currency: "USD")]
                     )
                 ],
                 entitlements: [],
