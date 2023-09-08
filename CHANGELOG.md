@@ -1,3 +1,15 @@
+## 11.0.0 (2023-09-05)
+
+###  (7 changes)
+
+- [feature(dynamic plans): Add UI](apple/shared/protoncore@74dc61faa871463f0dd343f05e798626416b90c8) ([merge request](apple/shared/protoncore!1409))
+- [feature(dynamic plans): fetch icons](apple/shared/protoncore@b9072b69013c3b2c5e2f049541ad1403067e0e7b) ([merge request](apple/shared/protoncore!1405))
+- [feature(dynamic plans): Update coordinator](apple/shared/protoncore@a799b42f0615157e1a4070057d8b804262c76e22) ([merge request](apple/shared/protoncore!1402))
+- [feature(dynamic plans): update model and presentation](apple/shared/protoncore@d5b5186d117df4c6fcee406859999d53a61fbe35) ([merge request](apple/shared/protoncore!1399))
+- [feature(dynamic plans): Move price formatter](apple/shared/protoncore@25fb4b35b8f016b117cdd657ac546117ed0a2cc6) ([merge request](apple/shared/protoncore!1398))
+- [feature(dynamic plans): remove vendor's name](apple/shared/protoncore@05a862f9e0ee04235ea0d071da1a82807d1fee54) ([merge request](apple/shared/protoncore!1394))
+- [feature(dynamic plans): update PaymentUI viewmodel](apple/shared/protoncore@694c74f6c6f73e19561f95d154c7fa05886099fc) ([merge request](apple/shared/protoncore!1391))
+
 ## 10.0.0 (2023-08-09)
 
 ###  (8 changes)
