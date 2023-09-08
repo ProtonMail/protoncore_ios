@@ -108,10 +108,10 @@ class NetworkingViewModel: ObservableObject {
             switch result {
             case .failure(Authenticator.Errors.networkingError(let error)): // error response returned by server
                 self.showingLoginError = true
-                PMLog.info("error)
+                PMLog.info("error")
             case .failure(Authenticator.Errors.apiMightBeBlocked(let message, _)): // error response returned by server
                 self.showingLoginError = true
-                PMLog.info("message)
+                PMLog.info("message")
             case .failure(Authenticator.Errors.emptyServerSrpAuth):
                 PMLog.info("")
             case .failure(Authenticator.Errors.emptyClientSrpAuth):
