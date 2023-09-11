@@ -273,9 +273,16 @@ test:unit:integration:
 # --- UI testing ---
 #
 
+# UI light tests are now temporarily disable because of flakiness. CP-6530
 test:ui:light:
   retry: 1
-  rules: *rules_mr
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: never
+    - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: never
   script:
     - fastlane build_ui_tests device_name:$DEVICE_NAME
     - bash scripts/run_ui_tests_on_ci.sh --light --device $DEVICE_NAME $DEVICE_OS --dynamic-domain ${DYNAMIC_DOMAIN}
