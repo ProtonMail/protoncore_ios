@@ -35,7 +35,7 @@ enum FooterType {
     case disabled
 }
 
-final class PaymentsUIViewModel {
+class PaymentsUIViewModel {
     private var isDynamicPlansEnabled: Bool {
         FeatureFactory.shared.isEnabled(.dynamicPlans)
     }
