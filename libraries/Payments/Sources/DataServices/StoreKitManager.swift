@@ -371,16 +371,16 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
                 errorCompletion(error)
             }
 
-        case .right(let planDataSource):
+        case .right(let plansDataSource):
             Task { [weak self] in
                 do {
-                    try await planDataSource.fetchAvailablePlans()
+                    try await plansDataSource.fetchAvailablePlans()
                     guard let self = self else {
                         errorCompletion(Errors.transactionFailedByUnknownReason)
                         return
                     }
-                    guard planDataSource.isIAPAvailable,
-                          planDataSource.detailsOfAvailablePlanInstanceCorrespondingToIAP(plan) != nil
+                    guard plansDataSource.isIAPAvailable,
+                          plansDataSource.detailsOfAvailablePlanInstanceCorrespondingToIAP(plan) != nil
                     else {
                         errorCompletion(Errors.unavailableProduct)
                         return
