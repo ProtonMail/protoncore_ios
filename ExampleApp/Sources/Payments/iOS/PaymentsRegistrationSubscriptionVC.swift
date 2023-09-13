@@ -293,7 +293,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
                                     .compactMap { $0.name } ?? [InAppPurchasePlan.freePlanName]
                                 let plansStr = planNames.description.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")
                                 self.currentSubscriptionLabel.text = "Current subscriptions: \(plansStr)"
-                                self.contunuePurchase()
+                                self.continuePurchase()
                             } failure: { error in
                                 PMLog.debug(error.localizedDescription)
                             }
@@ -311,7 +311,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
                                 let planNames = planDataSource.currentPlan?.subscriptions.first?.title ?? InAppPurchasePlan.freePlanName
                                 let plansStr = planNames.description.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")
                                 self.currentSubscriptionLabel.text = "Current subscriptions: \(plansStr)"
-                                self.contunuePurchase()
+                                self.continuePurchase()
                             }
                         } catch {
                             self.loginButton.isSelected = false
@@ -326,7 +326,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
         }
     }
 
-    private func contunuePurchase() {
+    private func continuePurchase() {
         // STEP 4: Continue purchase
         self.payments.storeKitManager.retryProcessingAllPendingTransactions() { [unowned self] in
             DispatchQueue.main.async { [unowned self] in

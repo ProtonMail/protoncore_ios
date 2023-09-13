@@ -65,6 +65,10 @@ public struct CurrentPlan: Decodable, Equatable {
             public var hint: String?
         }
     }
+
+    public init(subscriptions: [CurrentPlan.Subscription]) {
+        self.subscriptions = subscriptions
+    }
 }
 
 extension CurrentPlan.Subscription.Entitlement: Decodable {
