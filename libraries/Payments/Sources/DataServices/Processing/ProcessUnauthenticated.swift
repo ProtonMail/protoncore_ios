@@ -25,6 +25,7 @@ import ProtonCoreFeatureSwitch
 import ProtonCoreLog
 import ProtonCoreObservability
 import ProtonCoreSubscriptions
+import ProtonCoreUtilities
 
 /*
 
@@ -104,7 +105,8 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
             
             // Step 4. Exchange the receipt for a token that's worth product's Proton price amount of money
             PMLog.debug("Making TokenRequest")
-            let tokenApi: BaseApiRequest<TokenResponse>
+
+            let futureToken: Either<PaymentToken, BaseApiRequest<TokenResponse>>
             if areSubscriptionsEnabled {
 
                 guard let transactionIdentifier = transaction.transactionIdentifier else {
@@ -115,28 +117,30 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
                     throw StoreKitManagerErrors.notAllowed
                 }
 
-                tokenApi = dependencies.paymentsApiProtocol.paymentTokenRequest(
-                    api: dependencies.apiService,
-                    amount: plan.amount,
-                    receipt: receipt,
-                    transactionId: transactionIdentifier,
-                    bundleId: bundleIdentifier,
-                    productId: transaction.payment.productIdentifier
-                )
+                if let existingToken = dependencies.tokenStorage.get(), existingToken.status == .chargeable {
+                    futureToken = .left(existingToken)
+                } else {
+                    let tokenApi = dependencies.paymentsApiProtocol.paymentTokenRequest(
+                        api: dependencies.apiService,
+                        amount: plan.amount,
+                        receipt: receipt,
+                        transactionId: transactionIdentifier,
+                        bundleId: bundleIdentifier,
+                        productId: transaction.payment.productIdentifier
+                    )
+
+                    futureToken = .right(tokenApi)
+                }
+
             } else {
-                tokenApi = dependencies.paymentsApiProtocol.paymentTokenOldRequest(
+                let tokenApi = dependencies.paymentsApiProtocol.paymentTokenOldRequest(
                     api: dependencies.apiService, amount: plan.amount, receipt: receipt
                 )
-            }
-            let tokenRes = try tokenApi.awaitResponse(responseObject: TokenResponse())
-
-            if let tokenError = tokenRes.error {
-                ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(error: tokenError))
-            } else {
-                ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(status: .http2xx))
+                futureToken = .right(tokenApi)
             }
 
-            guard let token = tokenRes.paymentToken else { return }
+            guard let token = try obtainToken(futureToken: futureToken) else { return }
+
             PMLog.debug("StoreKit: payment token created for signup")
             dependencies.tokenStorage.add(token)
             processUnauthenticated(withToken: token, transaction: transaction, plan: plan, completion: completion)
@@ -211,11 +215,10 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
             let receipt = try dependencies.getReceipt()
             do {
                 // Step 9. If the token is not available we effectively repeat step 4: we exchange the receipt for a token that's worth product's Proton price amount of money
-                let tokenApi: BaseApiRequest<TokenResponse>
+                let futureToken: Either<PaymentToken, BaseApiRequest<TokenResponse>>
                 if areSubscriptionsEnabled {
 
                     guard let transactionIdentifier = transaction.transactionIdentifier else {
-                        PMLog.debug("No available transaction identifier to process")
                         throw StoreKitManagerErrors.transactionFailedByUnknownReason
                     }
                     guard let bundleIdentifier = Bundle.main.bundleIdentifier else {
@@ -223,25 +226,29 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
                         throw StoreKitManagerErrors.notAllowed
                     }
 
-                    tokenApi = dependencies.paymentsApiProtocol.paymentTokenRequest(api: dependencies.apiService,
-                                                                                        amount: plan.amount,
-                                                                                        receipt: receipt,
-                                                                                        transactionId: transactionIdentifier,
-                                                                                        bundleId: bundleIdentifier,
-                                                                                        productId: transaction.payment.productIdentifier)
+                    if let existingToken = dependencies.tokenStorage.get(), existingToken.status == .chargeable {
+                        futureToken = .left(existingToken)
+                    } else {
+                        let tokenApi = dependencies.paymentsApiProtocol.paymentTokenRequest(
+                            api: dependencies.apiService,
+                            amount: plan.amount,
+                            receipt: receipt,
+                            transactionId: transactionIdentifier,
+                            bundleId: bundleIdentifier,
+                            productId: transaction.payment.productIdentifier
+                        )
+
+                        futureToken = .right(tokenApi)
+                    }
+
                 } else {
-                    tokenApi = dependencies.paymentsApiProtocol.paymentTokenOldRequest(
+                    let tokenApi = dependencies.paymentsApiProtocol.paymentTokenOldRequest(
                         api: dependencies.apiService, amount: plan.amount, receipt: receipt
                     )
-                }
-                let tokenRes = try tokenApi.awaitResponse(responseObject: TokenResponse())
-                if let tokenError = tokenRes.error {
-                    ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(error: tokenError))
-                } else {
-                    ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(status: .http2xx))
+                    futureToken = .right(tokenApi)
                 }
 
-                guard let token = tokenRes.paymentToken else {
+                guard let token = try obtainToken(futureToken: futureToken) else {
                     throw StoreKitManager.Errors.transactionFailedByUnknownReason
                 }
                 dependencies.tokenStorage.add(token)
@@ -418,6 +425,22 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
             let receipt = try? self.dependencies.getReceipt()
             self.finishWhenAuthenticated(transaction: transaction, result: .cancelled, completion: completion)
             self.dependencies.bugAlertHandler?(receipt)
+        }
+    }
+
+    private func obtainToken(futureToken: Either<PaymentToken, BaseApiRequest<TokenResponse>>) throws -> PaymentToken? {
+        switch futureToken {
+        case let .left(token):
+            return token
+        case let .right(tokenApi):
+            let tokenRes = try tokenApi.awaitResponse(responseObject: TokenResponse())
+
+            if let tokenError = tokenRes.error {
+                ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(error: tokenError))
+            } else {
+                ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(status: .http2xx))
+            }
+            return tokenRes.paymentToken
         }
     }
 }
