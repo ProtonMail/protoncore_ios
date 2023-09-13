@@ -36,6 +36,7 @@ final class PurchaseManagerTests: XCTestCase {
     let timeout = 1.0
 
     var planServiceMock: ServicePlanDataServiceMock!
+    var plansDataSourceMock: PlansDataSourceMock!
     var storeKitManager: StoreKitManagerMock!
     var paymentsApi: PaymentsApiMock!
     var apiService: APIServiceMock!
@@ -43,6 +44,7 @@ final class PurchaseManagerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         planServiceMock = ServicePlanDataServiceMock()
+        plansDataSourceMock = PlansDataSourceMock()
         storeKitManager = StoreKitManagerMock()
         paymentsApi = PaymentsApiMock()
         apiService = APIServiceMock()
@@ -132,6 +134,44 @@ final class PurchaseManagerTests: XCTestCase {
         XCTAssertNil(failedPlan)
     }
 
+    func testShouldFetchAmountDueForDynamicPlanWithGivenIdAndReturnUnknownErrorOnLackOfResponse() {
+        // given
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
+                .dummy.updated(ID: "test_plan_id",
+                               name: "ios_test_12_usd_non_renewing",
+                               instances: [AvailablePlans.AvailablePlan.Instance(ID: "ble",
+                                                                                 cycle: 12,
+                                                                                 description: .empty,
+                                                                                 periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
+                                                                                 price: [AvailablePlans.AvailablePlan.Instance.Price(current: 10000, default: 10000, currency: "USD")])])
+
+        }
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success([:])) }
+        let expectation = expectation(description: "Should call completion block")
+
+        // when
+        var returnedError: Error?
+        var failedPlan: InAppPurchasePlan? = plan
+        out.buyPlan(plan: plan) { result in
+            switch result {
+            case let .purchaseError(error, processingPlan):
+                returnedError = error
+                failedPlan = processingPlan
+                expectation.fulfill()
+            default:
+                XCTFail()
+            }
+        }
+
+        // then
+        waitForExpectations(timeout: timeout)
+        XCTAssertTrue(paymentsApi.validateSubscriptionRequestStub.wasCalledExactlyOnce)
+        XCTAssertEqual(returnedError as? StoreKitManagerErrors, StoreKitManagerErrors.transactionFailedByUnknownReason)
+        XCTAssertNil(failedPlan)
+    }
+
     func testShouldFetchAmountDueForPlanWithGivenIdAndReturnNetworkErrorOnFailedRequest() {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
@@ -156,6 +196,70 @@ final class PurchaseManagerTests: XCTestCase {
         // then
         waitForExpectations(timeout: timeout)
         XCTAssertEqual((returnedError as? ResponseError)?.underlyingError, underlyingError)
+    }
+
+    func testShouldFetchAmountDueForDynamicPlanWithGivenIdAndReturnNetworkErrorOnFailedRequest() {
+        // given
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
+                .dummy.updated(ID: "test_plan_id",
+                               name: "ios_test_12_usd_non_renewing",
+                               instances: [AvailablePlans.AvailablePlan.Instance(ID: "ble",
+                                                                                 cycle: 12,
+                                                                                 description: .empty,
+                                                                                 periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
+                                                                                 price: [AvailablePlans.AvailablePlan.Instance.Price(current: 10000, default: 10000, currency: "USD")])])
+
+        }
+
+        let underlyingError = NSError(domain: "test_domain", code: 1234, userInfo: nil)
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .failure(underlyingError)) }
+        let expectation = expectation(description: "Should call completion block")
+
+        // when
+        var returnedError: Error?
+        out.buyPlan(plan: plan) { result in
+            switch result {
+            case let .purchaseError(error, _):
+                returnedError = error
+                expectation.fulfill()
+            default:
+                XCTFail()
+            }
+        }
+
+        // then
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual((returnedError as? ResponseError)?.underlyingError, underlyingError)
+    }
+
+    func testShouldNotCallStoreKitIfAmountDueIsZeroWithDynamicPlan() {
+        // given
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
+                .dummy.updated(ID: "test_plan_id",
+                               name: "ios_test_12_usd_non_renewing",
+                               instances: [AvailablePlans.AvailablePlan.Instance(ID: "ble",
+                                                                                 cycle: 12,
+                                                                                 description: .empty,
+                                                                                 periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
+                                                                                 price: [AvailablePlans.AvailablePlan.Instance.Price(current: 10000, default: 10000, currency: "USD")])])
+
+        }
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 0).toJsonDict)) }
+        let expectation = expectation(description: "Should call completion block")
+
+        // when
+        out.buyPlan(plan: plan) { result in
+            expectation.fulfill()
+        }
+
+        // then
+        waitForExpectations(timeout: timeout)
+        XCTAssertTrue(paymentsApi.buySubscriptionForZeroRequestStub.wasCalledExactlyOnce)
+        XCTAssertTrue(storeKitManager.purchaseProductStub.wasNotCalled)
     }
 
     func testShouldNotCallStoreKitIfAmountDueIsZero() {
@@ -194,8 +298,8 @@ final class PurchaseManagerTests: XCTestCase {
                 "PeriodEnd": 0,
                 "CouponCode": "test code",
                 "Cycle": 12,
-                "Plans": []
-            ]
+                "Plans": [String]()
+            ] as [String : Any]
         ]
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("subscription/check") {
@@ -227,6 +331,57 @@ final class PurchaseManagerTests: XCTestCase {
         XCTAssertTrue(storeKitManager.purchaseProductStub.wasNotCalled)
     }
 
+    func testShouldSuccessfullyBuySubscriptionForZeroUpdateSubscriptionSuccessWithDynamicPlans() {
+        let expectation1 = expectation(description: "Should call completion block")
+        let expectation2 = expectation(description: "Should call refresh handler")
+        // given
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
+                .dummy.updated(ID: "test_plan_id", name: "ios_test_12_usd_non_renewing")
+        }
+        plansDataSourceMock.currentPlanStub.fixture = .dummy
+        storeKitManager.refreshHandlerStub.fixture = { _ in expectation2.fulfill() }
+        let subscription: [String: Any] = [
+            "Code": 1000,
+            "Subscription": [
+                "PeriodStart": 0,
+                "PeriodEnd": 0,
+                "CouponCode": "test code",
+                "Cycle": 12,
+                "Plans": [String]()
+            ] as [String : Any]
+        ]
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+            if path.contains("subscription/check") {
+                completion(nil, .success(ValidateSubscription(amountDue: 0).toSuccessfulResponse))
+            } else if path.contains("subscription") {
+                completion(nil, .success(subscription))
+            } else {
+                XCTFail()
+            }
+        }
+
+        // when
+        var purchasedPlan: InAppPurchasePlan?
+        out.buyPlan(plan: plan) { result in
+            switch result {
+            case .purchasedPlan(let accountPlan):
+                purchasedPlan = accountPlan
+                expectation1.fulfill()
+            default:
+                XCTFail()
+            }
+        }
+
+        // then
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(purchasedPlan, plan)
+        XCTAssertTrue(paymentsApi.buySubscriptionForZeroRequestStub.wasCalledExactlyOnce)
+        XCTAssertTrue(storeKitManager.purchaseProductStub.wasNotCalled)
+    }
+
+
     func testShouldSuccessfullyBuySubscriptionForZeroUpdateSubscriptionError() {
         let expectation1 = expectation(description: "Should call completion block")
         let expectation2 = expectation(description: "Should call refresh handler")
@@ -244,8 +399,8 @@ final class PurchaseManagerTests: XCTestCase {
                 "PeriodEnd": 0,
                 "CouponCode": "test code",
                 "Cycle": 12,
-                "Plans": []
-            ]
+                "Plans": [String]()
+            ] as [String : Any]
         ]
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("subscription/check") {
@@ -276,12 +431,103 @@ final class PurchaseManagerTests: XCTestCase {
         XCTAssertTrue(paymentsApi.buySubscriptionForZeroRequestStub.wasCalledExactlyOnce)
         XCTAssertTrue(storeKitManager.purchaseProductStub.wasNotCalled)
     }
-    
+
+    func testShouldSuccessfullyBuySubscriptionForZeroUpdateSubscriptionErrorWithDynamicPlans() {
+        let expectation1 = expectation(description: "Should call completion block")
+        let expectation2 = expectation(description: "Should call refresh handler")
+
+        // given
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
+                .dummy.updated(ID: "test_plan_id", name: "ios_test_12_usd_non_renewing")
+        }
+        plansDataSourceMock.fetchCurrentPlanStub.bodyIs { _ in
+            throw NSError(domain: "test_domain", code: 1234, userInfo: nil)
+        }
+        storeKitManager.refreshHandlerStub.fixture = { _ in expectation2.fulfill() }
+        let subscription: [String: Any] = [
+            "Code": 1000,
+            "Subscription": [
+                "PeriodStart": 0,
+                "PeriodEnd": 0,
+                "CouponCode": "test code",
+                "Cycle": 12,
+                "Plans": [String]()
+            ] as [String : Any]
+        ]
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+            if path.contains("subscription/check") {
+                completion(nil, .success(ValidateSubscription(amountDue: 0).toSuccessfulResponse))
+            } else if path.contains("subscription") {
+                completion(nil, .success(subscription))
+            } else {
+                XCTFail()
+            }
+        }
+
+        // when
+        var purchasedPlan: InAppPurchasePlan?
+        out.buyPlan(plan: plan) { result in
+            switch result {
+            case .purchasedPlan(let accountPlan):
+                purchasedPlan = accountPlan
+                expectation1.fulfill()
+            default:
+                XCTFail()
+            }
+        }
+
+        // then
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(purchasedPlan, plan)
+        XCTAssertTrue(paymentsApi.buySubscriptionForZeroRequestStub.wasCalledExactlyOnce)
+        XCTAssertTrue(storeKitManager.purchaseProductStub.wasNotCalled)
+    }
+
     func testShouldPassProductPurchasingToStoreKitIfAmountDueNonZero() {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .left(planServiceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
+        storeKitManager.purchaseProductStub.bodyIs { _, _, _, completion, _, _ in completion(.resolvingIAPToSubscription) }
+        let expectation = expectation(description: "Should call completion block")
+
+        // when
+        var purchasedPlan: InAppPurchasePlan?
+        out.buyPlan(plan: plan) { result in
+            switch result {
+            case .purchasedPlan(let accountPlan):
+                purchasedPlan = accountPlan
+                expectation.fulfill()
+            default:
+                XCTFail()
+            }
+        }
+
+        // then
+        waitForExpectations(timeout: timeout)
+        XCTAssertTrue(storeKitManager.purchaseProductStub.wasCalledExactlyOnce)
+        XCTAssertEqual(purchasedPlan, plan)
+        XCTAssertEqual(storeKitManager.purchaseProductStub.lastArguments?.a1, plan)
+        XCTAssertEqual(storeKitManager.purchaseProductStub.lastArguments?.a2, 100)
+    }
+
+    func testShouldPassProductPurchasingToStoreKitIfAmountDueNonZeroWithDynamicPlans() {
+        // given
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
+                .dummy.updated(ID: "test_plan_id",
+                               name: "ios_test_12_usd_non_renewing",
+                               instances: [AvailablePlans.AvailablePlan.Instance(ID: "ble",
+                                                                                 cycle: 12,
+                                                                                 description: .empty,
+                                                                                 periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
+                                                                                 price: [AvailablePlans.AvailablePlan.Instance.Price(current: 10000, default: 10000, currency: "USD")])])
+
+        }
         apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
         storeKitManager.purchaseProductStub.bodyIs { _, _, _, completion, _, _ in completion(.resolvingIAPToSubscription) }
         let expectation = expectation(description: "Should call completion block")
@@ -332,6 +578,41 @@ final class PurchaseManagerTests: XCTestCase {
         XCTAssertEqual(returnedError as? NSError, NSError.protonMailError(APIErrorCode.potentiallyBlocked, localizedDescription: PSTranslation._core_api_might_be_blocked_message.l10n))
     }
 
+    func testShouldPassApiIsBlockedErrorWithDynamicPlans() {
+        // given
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
+                .dummy.updated(ID: "test_plan_id",
+                               name: "ios_test_12_usd_non_renewing",
+                               instances: [AvailablePlans.AvailablePlan.Instance(ID: "ble",
+                                                                                 cycle: 12,
+                                                                                 description: .empty,
+                                                                                 periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
+                                                                                 price: [AvailablePlans.AvailablePlan.Instance.Price(current: 10000, default: 10000, currency: "USD")])])
+
+        }
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
+        storeKitManager.purchaseProductStub.bodyIs { _, _, _, _, errorCompletion, _ in errorCompletion(StoreKitManagerErrors.apiMightBeBlocked(message: "test message", originalError: NSError.protonMailError(APIErrorCode.potentiallyBlocked, localizedDescription: PSTranslation._core_api_might_be_blocked_message.l10n))) }
+        let expectation = expectation(description: "Should call completion block")
+
+        // when
+        var returnedError: Error?
+        out.buyPlan(plan: plan) { result in
+            switch result {
+            case let .apiMightBeBlocked(_, originalError, _):
+                returnedError = originalError
+                expectation.fulfill()
+            default:
+                XCTFail()
+            }
+        }
+
+        // then
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(returnedError as? NSError, NSError.protonMailError(APIErrorCode.potentiallyBlocked, localizedDescription: PSTranslation._core_api_might_be_blocked_message.l10n))
+    }
+
     func testShouldPassErrorFromStoreKit() {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
@@ -358,11 +639,79 @@ final class PurchaseManagerTests: XCTestCase {
         XCTAssertEqual(returnedError as? StoreKitManagerErrors, StoreKitManagerErrors.haveTransactionOfAnotherUser)
     }
 
+    func testShouldPassErrorFromStoreKitWithDynamicPlans() {
+        // given
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
+                .dummy.updated(ID: "test_plan_id",
+                               name: "ios_test_12_usd_non_renewing",
+                               instances: [AvailablePlans.AvailablePlan.Instance(ID: "ble",
+                                                                                 cycle: 12,
+                                                                                 description: .empty,
+                                                                                 periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
+                                                                                 price: [AvailablePlans.AvailablePlan.Instance.Price(current: 10000, default: 10000, currency: "USD")])])
+
+        }
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
+        storeKitManager.purchaseProductStub.bodyIs { _, _, _, _, errorCompletion, _ in errorCompletion(StoreKitManagerErrors.haveTransactionOfAnotherUser) }
+        let expectation = expectation(description: "Should call completion block")
+
+        // when
+        var returnedError: Error?
+        out.buyPlan(plan: plan) { result in
+            switch result {
+            case let .purchaseError(error, _):
+                returnedError = error
+                expectation.fulfill()
+            default:
+                XCTFail()
+            }
+        }
+
+        // then
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual(returnedError as? StoreKitManagerErrors, StoreKitManagerErrors.haveTransactionOfAnotherUser)
+    }
+
+
     func testShouldPassCancellationFromStoreKit() {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .left(planServiceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
+        storeKitManager.purchaseProductStub.bodyIs { _, _, _, successCompletion, _, _ in successCompletion(.cancelled) }
+        let expectation = expectation(description: "Should call completion block")
+
+        // when
+        out.buyPlan(plan: plan) { result in
+            switch result {
+            case .purchaseCancelled:
+                expectation.fulfill()
+            default:
+                XCTFail()
+            }
+        }
+
+        // then
+        waitForExpectations(timeout: timeout)
+    }
+
+    func testShouldPassCancellationFromStoreKitWithDynamicPlans() {
+        // given
+        let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
+        let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
+                .dummy.updated(ID: "test_plan_id",
+                               name: "ios_test_12_usd_non_renewing",
+                               instances: [AvailablePlans.AvailablePlan.Instance(ID: "ble",
+                                                                                 cycle: 12,
+                                                                                 description: .empty,
+                                                                                 periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
+                                                                                 price: [AvailablePlans.AvailablePlan.Instance.Price(current: 10000, default: 10000, currency: "USD")])])
+
+        }
         apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
         storeKitManager.purchaseProductStub.bodyIs { _, _, _, successCompletion, _, _ in successCompletion(.cancelled) }
         let expectation = expectation(description: "Should call completion block")

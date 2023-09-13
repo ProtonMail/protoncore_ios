@@ -35,7 +35,18 @@ public struct AvailablePlans: Decodable, Equatable {
         public var instances: [Instance]
         public var entitlements: [Entitlement]
         public var decorations: [Decoration]
-        
+
+        public init(ID: String, name: String, title: String, description: String? = nil,
+                    instances: [Instance], entitlements: [Entitlement], decorations: [Decoration]) {
+            self.ID = ID
+            self.name = name
+            self.title = title
+            self.description = description
+            self.instances = instances
+            self.entitlements = entitlements
+            self.decorations = decorations
+        }
+
         public struct Instance: Decodable, Equatable {
             var ID: String
             public var cycle: Int // enum: 1, 12, 24
@@ -43,7 +54,17 @@ public struct AvailablePlans: Decodable, Equatable {
             var periodEnd: Int
             public var price: [Price]
             public var vendors: Vendors?
-            
+
+            public init(ID: String, cycle: Int, description: String, periodEnd: Int, price: [AvailablePlans.AvailablePlan.Instance.Price], vendors: AvailablePlans.AvailablePlan.Instance.Vendors? = nil) {
+                self.ID = ID
+                self.cycle = cycle
+                self.description = description
+                self.periodEnd = periodEnd
+                self.price = price
+                self.vendors = vendors
+            }
+
+
             /// `Price` is used to determine offers.
             /// If `default != current`, we need to show an offer
             /// percentage is calculate by the diff between `current` and `default`
@@ -52,6 +73,13 @@ public struct AvailablePlans: Decodable, Equatable {
                 public var current: Int
                 public var `default`: Int // same as current if no offer, higher otherwise
                 public var currency: String
+
+                public init(current: Int, `default`: Int, currency: String) {
+                    self.current = current
+                    self.`default` = `default`
+                    self.currency = currency
+                }
+
             }
             
             public struct Vendors: Decodable, Equatable {
