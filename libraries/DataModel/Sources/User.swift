@@ -135,7 +135,7 @@ public struct User: Codable, Equatable {
 }
 
 @objc(UserInfo)
-public final class UserInfo: NSObject {
+public final class UserInfo: NSObject, Codable {
     public var attachPublicKey: Int
     public var autoSaveContact: Int
     public var conversationToolbarActions: ToolbarActions
