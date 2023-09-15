@@ -21,7 +21,7 @@
 
 import Foundation
 
-public final class AuthCredential: NSObject, NSCoding {
+public final class AuthCredential: NSObject, NSCoding, Codable {
 
     struct Key {
         static let keychainStore = "keychainStoreKeyProtectedWithMainKey"
