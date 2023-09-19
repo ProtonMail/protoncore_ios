@@ -174,11 +174,27 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
             object: nil
         )
 
-        if mode == .signup {
+        sendObservabilityEvents()
+    }
+
+    private func sendObservabilityEvents() {
+        switch mode {
+        case .signup:
             ObservabilityEnv.report(.screenLoadCountTotal(screenName: .planSelection))
+            if isDynamicPlansEnabled {
+                ObservabilityEnv.report(.paymentScreenView(screenID: .dynamicPlanSelection))
+            }
+        case .current:
+            if isDynamicPlansEnabled {
+                ObservabilityEnv.report(.paymentScreenView(screenID: .dynamicPlansCurrentSubscription))
+            }
+        case .update:
+            if isDynamicPlansEnabled {
+                ObservabilityEnv.report(.paymentScreenView(screenID: .dynamicPlansUpgrade))
+            }
         }
     }
-    
+
     var banner: PMBanner?
     
     @objc private func informAboutIAPInProgress() {
