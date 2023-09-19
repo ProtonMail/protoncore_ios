@@ -22,6 +22,7 @@
 import Foundation
 import ProtonCoreServices
 import Network
+import ProtonCoreObservability
 
 public protocol PlansDataSourceProtocol {
     var isIAPAvailable: Bool { get }
@@ -63,7 +64,14 @@ class PlansDataSource: PlansDataSourceProtocol {
     
     func fetchAvailablePlans() async throws {
         let availablePlansRequest = AvailablePlansRequest(api: apiService)
-        let availablePlansResponse = try await availablePlansRequest.response(responseObject: AvailablePlansResponse())
+        let availablePlansResponse: AvailablePlansResponse
+        do {
+            availablePlansResponse = try await availablePlansRequest.response(responseObject: AvailablePlansResponse())
+            ObservabilityEnv.report(.availablePlansLoad(status: .http2xx))
+        } catch {
+            ObservabilityEnv.report(.availablePlansLoad(httpCode: error.httpCode))
+            throw error
+        }
         let backendAvailablePlans = availablePlansResponse.availablePlans
 
         guard let backendAvailablePlans else {
@@ -77,7 +85,14 @@ class PlansDataSource: PlansDataSourceProtocol {
     
     func fetchCurrentPlan() async throws {
         let currentPlanRequest = CurrentPlanRequest(api: apiService)
-        let currentPlanResponse = try await currentPlanRequest.response(responseObject: CurrentPlanResponse())
+        let currentPlanResponse: CurrentPlanResponse
+        do {
+            currentPlanResponse = try await currentPlanRequest.response(responseObject: CurrentPlanResponse())
+            ObservabilityEnv.report(.currentPlanLoad(status: .http2xx))
+        } catch {
+            ObservabilityEnv.report(.currentPlanLoad(httpCode: error.httpCode))
+            throw error
+        }
         currentPlan = currentPlanResponse.currentPlan
     }
     
