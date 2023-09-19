@@ -23,6 +23,9 @@
 public enum PaymentsScreenViewScreenID: String, Encodable, CaseIterable {
     case planSelection
     case aiapBilling
+    case dynamicPlanSelection
+    case dynamicPlansUpgrade
+    case dynamicPlansCurrentSubscription
 }
 
 public struct PaymentsScreenViewLabels: Encodable, Equatable {

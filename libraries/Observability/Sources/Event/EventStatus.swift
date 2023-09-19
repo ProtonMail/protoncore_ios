@@ -42,3 +42,12 @@ public enum HTTPResponseCodeStatus: String, Encodable, CaseIterable {
     case http5xx
     case unknown
 }
+
+public enum DynamicPlansHTTPResponseCodeStatus: String, Encodable, CaseIterable {
+    case http2xx
+    case http4xx
+    case http409
+    case http422
+    case http5xx
+    case unknown
+}

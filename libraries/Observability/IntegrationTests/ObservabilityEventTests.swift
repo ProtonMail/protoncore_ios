@@ -432,17 +432,8 @@ final class ObservabilityEventTests: IntegrationTestCase {
         let expectation = expectation(description: #function)
         let service = setupService(expectation: expectation, interval: 2.0)
         service.report(.currentPlanLoad(status: .http2xx))
-        [300, 400, 500, nil].forEach { (httpStatus: Int?) in
+        [300, 400, 500, nil, 600, 409, 422].forEach { (httpStatus: Int?) in
             service.report(.currentPlanLoad(httpCode: httpStatus))
-        }
-        wait(for: [expectation], timeout: expectationTimeout)
-    }
-
-    func test_currentPlanPageLoad_everyStatus_isValid() {
-        let expectation = expectation(description: #function)
-        let service = setupService(expectation: expectation, interval: 2.0)
-        SuccessOrFailureStatus.allCases.forEach {
-            service.report(.currentPlanPageLoad(status: $0))
         }
         wait(for: [expectation], timeout: expectationTimeout)
     }
@@ -451,17 +442,8 @@ final class ObservabilityEventTests: IntegrationTestCase {
         let expectation = expectation(description: #function)
         let service = setupService(expectation: expectation, interval: 2.0)
         service.report(.availablePlansLoad(status: .http2xx))
-        [300, 400, 500, nil].forEach { (httpStatus: Int?) in
+        [300, 400, 500, nil, 600, 409, 422].forEach { (httpStatus: Int?) in
             service.report(.availablePlansLoad(httpCode: httpStatus))
-        }
-        wait(for: [expectation], timeout: expectationTimeout)
-    }
-
-    func test_availablePlansPageLoad_everyStatus_isValid() {
-        let expectation = expectation(description: #function)
-        let service = setupService(expectation: expectation, interval: 2.0)
-        SuccessOrFailureStatus.allCases.forEach {
-            service.report(.availablePlansPageLoad(status: $0))
         }
         wait(for: [expectation], timeout: expectationTimeout)
     }
