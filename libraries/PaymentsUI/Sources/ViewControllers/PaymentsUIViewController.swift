@@ -28,6 +28,7 @@ import ProtonCoreObservability
 import ProtonCoreFeatureSwitch
 
 protocol PaymentsUIViewControllerDelegate: AnyObject {
+    func viewControllerWillAppear(isFirstAppearance: Bool)
     func userDidCloseViewController()
     func userDidDismissViewController()
     func userDidSelectPlan(plan: PlanPresentation, addCredits: Bool, completionHandler: @escaping () -> Void)
@@ -118,6 +119,8 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
     
     override public var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
+
+    private var controllerDidAlreadyAppear = false
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -163,6 +166,14 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
                          selector: #selector(preferredContentSizeChanged(_:)),
                          name: UIContentSizeCategory.didChangeNotification,
                          object: nil)
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(applicationWillEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
+
         if mode == .signup {
             ObservabilityEnv.report(.screenLoadCountTotal(screenName: .planSelection))
         }
@@ -202,6 +213,8 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ObservabilityEnv.report(.paymentScreenView(screenID: .planSelection))
+        delegate?.viewControllerWillAppear(isFirstAppearance: !controllerDidAlreadyAppear)
+        controllerDidAlreadyAppear = true
     }
     
     override public func viewDidLayoutSubviews() {
@@ -271,6 +284,10 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     
     public func planPurchaseError() {
         delegate?.planPurchaseError()
+    }
+
+    @objc func applicationWillEnterForeground() {
+        delegate?.viewControllerWillAppear(isFirstAppearance: false)
     }
 
     // MARK: - Actions
@@ -356,7 +373,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
         navigationItem.assignNavItemIndentifiers()
     }
     
-    private var isData = false
+    private(set) var isData = false
     
     private var isDataLoaded: Bool {
         return isData || mode == .signup
