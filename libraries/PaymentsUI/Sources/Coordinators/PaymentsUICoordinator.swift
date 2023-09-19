@@ -30,6 +30,7 @@ import ProtonCoreObservability
 import ProtonCoreFoundations
 import ProtonCoreUtilities
 import ProtonCoreFeatureSwitch
+import ProtonCoreLog
 
 final class PaymentsUICoordinator {
     
@@ -37,7 +38,7 @@ final class PaymentsUICoordinator {
     private var presentationType: PaymentsUIPresentationType = .modal
     private var mode: PaymentsUIMode = .signup
     private var completionHandler: ((PaymentsUIResultReason) -> Void)?
-    private var viewModel: PaymentsUIViewModel?
+    var viewModel: PaymentsUIViewModel?
     private var onDohTroubleshooting: () -> Void
     
     private let planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>
@@ -303,11 +304,31 @@ final class PaymentsUICoordinator {
         alertController.addAction(cancelAction)
         paymentsUIViewController?.present(alertController, animated: true, completion: nil)
     }
+
+    private func refreshPlans() async {
+        do {
+            try await viewModel?.fetchPlans()
+            Task { @MainActor in
+                paymentsUIViewController?.reloadData()
+            }
+        } catch {
+            PMLog.info("Failed to fetch plans when PaymentsUIViewController will appear: \(error)")
+        }
+    }
 }
 
 // MARK: PaymentsUIViewControllerDelegate
 
 extension PaymentsUICoordinator: PaymentsUIViewControllerDelegate {
+    func viewControllerWillAppear(isFirstAppearance: Bool) {
+        // Plan data should not be refreshed on first appear because at that time data are freshly loaded. Here must be covered situations when
+        // app goes from background for example.
+        guard !isFirstAppearance else { return }
+        Task {
+            await refreshPlans()
+        }
+    }
+
     func userDidCloseViewController() {
         if presentationType == .modal, mode != .signup {
             paymentsUIViewController?.dismiss(animated: true, completion: nil)

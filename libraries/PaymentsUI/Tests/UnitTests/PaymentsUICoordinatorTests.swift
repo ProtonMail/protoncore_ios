@@ -217,6 +217,90 @@ final class PaymentsUICoordinatorTests: XCTestCase {
         coordinator.userDidSelectPlan(plan: testPlan, addCredits: false) { }
         waitForExpectations(timeout: timeout)
     }
+
+    func testPlansAreRefreshedWhenPaymentsUIViewControllerAppears() {
+        let expectation = self.expectation(description: "API call called")
+
+        let viewModel = PaymentsUIViewModelMock() {
+            // This is not great solution but I didn't find any better. This expectation should be fullfiled after `paymentsUIViewController.reload()`
+            // is called. Inside the coordinator first `viewModel.fetchPlans()` is called on some thread. And at this point this mocked closure is
+            // called. After this finishes then `paymentsUIViewController.reload()` is called on main thread. And there is no easy way how to find
+            // out that `paymentsUIViewController.reload()` was called. No easy way how to find out from any mock. So if fulfill of expectation is
+            // little bit postponed in this closure then there is enough time for the main thread to call `paymentsUIViewController.reload()`.
+            DispatchQueue.global().asyncAfter(deadline: .now() + 0.1) {
+                expectation.fulfill()
+            }
+        }
+
+        let coordinator = PaymentsUICoordinator.init(
+            planService: .left(planServiceMock),
+            storeKitManager: storeKitManager,
+            purchaseManager: purchaseManager,
+            clientApp: .vpn,
+            shownPlanNames: ["free"],
+            customization: .empty,
+            alertManager: AlwaysDelegatingPaymentsUIAlertManager(delegatedAlertManager: alertManager)
+        ) { }
+
+        let paymentsUIViewController = UIStoryboard.instantiate(
+            storyboardName: "PaymentsUI",
+            controllerType: PaymentsUIViewController.self,
+            inAppTheme: { .default }
+        )
+        
+        paymentsUIViewController.viewModel = viewModel
+        coordinator.viewModel = viewModel
+        paymentsUIViewController.delegate = coordinator
+        coordinator.paymentsUIViewController = paymentsUIViewController
+
+        XCTAssertFalse(paymentsUIViewController.isData)
+
+        paymentsUIViewController.viewWillAppear(true)
+        paymentsUIViewController.viewWillAppear(true)
+
+        waitForExpectations(timeout: timeout)
+        XCTAssertTrue(paymentsUIViewController.isData)
+    }
+
+    func testPlansAreRefreshedWhenAppGoesToForeground() {
+        let expectation = self.expectation(description: "API call called")
+
+        let viewModel = PaymentsUIViewModelMock() {
+            // see above
+            DispatchQueue.global().asyncAfter(deadline: .now() + 0.1) {
+                expectation.fulfill()
+            }
+        }
+
+        let coordinator = PaymentsUICoordinator.init(
+            planService: .left(planServiceMock),
+            storeKitManager: storeKitManager,
+            purchaseManager: purchaseManager,
+            clientApp: .vpn,
+            shownPlanNames: ["free"],
+            customization: .empty,
+            alertManager: AlwaysDelegatingPaymentsUIAlertManager(delegatedAlertManager: alertManager)
+        ) { }
+
+        let paymentsUIViewController = UIStoryboard.instantiate(
+            storyboardName: "PaymentsUI",
+            controllerType: PaymentsUIViewController.self,
+            inAppTheme: { .default }
+        )
+        _ = paymentsUIViewController.view
+
+        paymentsUIViewController.viewModel = viewModel
+        coordinator.viewModel = viewModel
+        paymentsUIViewController.delegate = coordinator
+        coordinator.paymentsUIViewController = paymentsUIViewController
+
+        XCTAssertFalse(paymentsUIViewController.isData)
+
+        NotificationCenter.default.post(name: UIApplication.willEnterForegroundNotification, object: nil)
+
+        waitForExpectations(timeout: timeout)
+        XCTAssertTrue(paymentsUIViewController.isData)
+    }
 }
 
 #endif
