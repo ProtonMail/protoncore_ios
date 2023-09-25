@@ -33,27 +33,26 @@ import ProtonCoreTestingToolkit
 @testable import ProtonCorePayments
 
 final class AvailablePlansDetailsTests: XCTestCase {
-    
-    // TODO: CP-6480
-//    func test_createPlan_callsFetchIcon() async throws {
-//        // Given
-//        let plansDataSource = PlansDataSourceMock()
-//        let availablePlan = AvailablePlans.AvailablePlan(
-//            name: "name",
-//            title: "title",
-//            instances: [],
-//            entitlements: [
-//                .description(.init(type: "description", iconName: "tick", text: "text"))
-//            ],
-//            decorations: []
-//        )
-//
-//        // When
-//        _ = try await AvailablePlansDetails.createPlan(from: availablePlan, plansDataSource: plansDataSource)
-//
-//        // Then
-//        XCTAssertTrue(plansDataSource.fetchIconStub.wasCalled)
-//    }
+    func test_createPlan_callsCreateIconUrl() async throws {
+        // Given
+        let plansDataSource = PlansDataSourceMock()
+        let availablePlan = AvailablePlans.AvailablePlan(
+            ID: "id",
+            name: "name",
+            title: "title",
+            instances: [],
+            entitlements: [
+                .description(.init(type: "description", iconName: "tick", text: "text"))
+            ],
+            decorations: []
+        )
+
+        // When
+        _ = try await AvailablePlansDetails.createPlan(from: availablePlan, plansDataSource: plansDataSource)
+
+        // Then
+        XCTAssertTrue(plansDataSource.createIconURLStub.wasCalled)
+    }
     
     func test_createPlan_withStoreKitManagerAndInstance() async throws {
         // Given
@@ -70,8 +69,7 @@ final class AvailablePlansDetailsTests: XCTestCase {
             title: "title",
             description: "description",
             instances: [
-                .init(ID: "ID",
-                      cycle: 1,
+                .init(cycle: 1,
                       description: "12 months",
                       periodEnd: 123,
                       price: [
@@ -102,7 +100,7 @@ final class AvailablePlansDetailsTests: XCTestCase {
         XCTAssertEqual(plan?.description, "description")
         XCTAssertEqual(plan?.price, "$60.00")
         XCTAssertEqual(plan?.decorations.isEmpty, true)
-        XCTAssertEqual(plan?.entitlements[0], .init(text: "text", icon: nil))
+        XCTAssertEqual(plan?.entitlements[0], .init(text: "text", iconUrl: nil))
     }
     
     func test_createPlan_withoutStoreKitManagerNorInstance() async throws {
@@ -129,7 +127,7 @@ final class AvailablePlansDetailsTests: XCTestCase {
         XCTAssertNil(plan?.description)
         XCTAssertEqual(plan?.price, "$0")
         XCTAssertEqual(plan?.decorations.isEmpty, true)
-        XCTAssertEqual(plan?.entitlements[0], .init(text: "text", icon: nil))
+        XCTAssertEqual(plan?.entitlements[0], .init(text: "text", iconUrl: nil))
     }
 
 }

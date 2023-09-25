@@ -415,7 +415,7 @@ extension PlanCell {
         
         availablePlan.details.entitlements.forEach {
             let detailView = PlanDetailView()
-            detailView.configure(icon: $0.icon, text: $0.text)
+            detailView.configure(iconUrl: $0.iconUrl, text: $0.text)
             planDetailsStackView.addArrangedSubview(detailView)
         }
         drawView()
