@@ -35,7 +35,7 @@ public protocol PlansDataSourceProtocol {
     func fetchAvailablePlans() async throws
     func fetchCurrentPlan() async throws
     func fetchPaymentMethods() async throws
-    func fetchIcon(iconName: String) async throws -> Data?
+    func createIconURL(iconName: String) -> URL?
 
     func detailsOfAvailablePlanCorrespondingToIAP(_ iap: InAppPurchasePlan) -> AvailablePlans.AvailablePlan?
     func detailsOfAvailablePlanInstanceCorrespondingToIAP(_ iap: InAppPurchasePlan) -> AvailablePlans.AvailablePlan.Instance?
@@ -87,10 +87,10 @@ class PlansDataSource: PlansDataSourceProtocol {
         paymentMethods = paymentMethodsResponse.methods
     }
     
-    func fetchIcon(iconName: String) async throws -> Data? {
+    func createIconURL(iconName: String) -> URL? {
         let iconRequest = PlanIconsRequest(api: apiService, iconName: iconName)
-        let iconResponse = try await iconRequest.response(responseObject: PlanIconsResponse())
-        return iconResponse.iconData
+        let urlString = apiService.dohInterface.getCurrentlyUsedHostUrl() + iconRequest.path
+        return URL(string: urlString)
     }
     
     var willRenewAutomatically: Bool {

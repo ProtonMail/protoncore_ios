@@ -595,14 +595,16 @@ final class StoreKitManagerTests: XCTestCase {
         out.delegate = storeKitManagerDelegate
         out.paymentQueue = paymentsQueue
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
-        let planDetails = AvailablePlans.AvailablePlan.dummy.updated(name: "ios_test_12_usd_non_renewing",
-                                                                     title:"test",
-                                                                     instances: [AvailablePlans.AvailablePlan.Instance(ID: "ios_test_12_usd_non_renewing",
-                                                                                                                       cycle: 12,
-                                                                                                                       description: "",
-                                                                                                                       periodEnd: 12,
-                                                                                                                       price: [AvailablePlans.AvailablePlan.Instance.Price(
-                                                                                                                        current: 7900, default: 7900, currency: "USD")])]
+        let planDetails = AvailablePlans.AvailablePlan.dummy.updated(
+            name: "ios_test_12_usd_non_renewing",
+            title:"test",
+            instances: [
+                .init(cycle: 12,
+                      description: "",
+                      periodEnd: 12,
+                      price: [.init(current: 7900, default: 7900, currency: "USD")]
+                )
+            ]
         )
         plansDataSourceMock.fetchAvailablePlansStub.bodyIs { _ in }
         plansDataSourceMock.availablePlansStub.fixture = AvailablePlans(plans: [planDetails])
@@ -680,14 +682,12 @@ final class StoreKitManagerTests: XCTestCase {
         let planDetails = AvailablePlans.AvailablePlan.dummy.updated(
             ID: "test plan id",
             name: "ios_test_12_usd_non_renewing",
-            instances: [AvailablePlans.AvailablePlan.Instance(ID: "full",
-                                                              cycle: 12,
-                                                              description: "test",
-                                                              periodEnd: 100,
-                                                              price: [AvailablePlans.AvailablePlan.Instance.Price(
-                                                                current: 79, default: 79, currency: "USD"
-                                                              )]
-                                                             )
+            instances: [
+                .init(cycle: 12,
+                      description: "test",
+                      periodEnd: 100,
+                      price: [.init(current: 79, default: 79, currency: "USD")]
+                )
             ]
         )
         plansDataSourceMock.fetchAvailablePlansStub.bodyIs { _ in }

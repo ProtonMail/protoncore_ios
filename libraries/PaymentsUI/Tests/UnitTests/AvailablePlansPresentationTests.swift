@@ -44,7 +44,6 @@ final class AvailablePlansPresentationTests: XCTestCase {
         let plansDataSource = PlansDataSourceMock()
         
         let instance = AvailablePlans.AvailablePlan.Instance(
-            ID: "id",
             cycle: 1,
             description: "description",
             periodEnd: 1755445843,
@@ -83,7 +82,6 @@ final class AvailablePlansPresentationTests: XCTestCase {
     func test_createAvailablePlans_failure() async throws {
         // Given
         let instance = AvailablePlans.AvailablePlan.Instance(
-            ID: "id",
             cycle: 1,
             description: "description",
             periodEnd: 1755445843,

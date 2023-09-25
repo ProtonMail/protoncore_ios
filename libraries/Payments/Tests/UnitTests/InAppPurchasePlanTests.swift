@@ -29,7 +29,6 @@ final class InAppPurchasePlanTests: XCTestCase {
     func test_init_with_availablePlanInstance() {
         // Given
         let instance = AvailablePlans.AvailablePlan.Instance(
-            ID: "id",
             cycle: 12,
             description: "description",
             periodEnd: 1,

@@ -30,7 +30,7 @@ public struct CurrentPlan: Decodable, Equatable {
     public struct Subscription: Decodable, Equatable {
         public var title: String
         public var description: String
-        public var cycleDescription: String
+        public var cycleDescription: String?
         public var cycle: Int?
         public var currency: String?
         public var amount: Int?
