@@ -28,6 +28,7 @@ public struct User: Codable, Equatable {
     public let usedSpace: Double
     public let currency: String
     public let credit: Int
+    public let createTime: Double?
     public let maxSpace: Double
     public let maxUpload: Double
     public let role: Int
@@ -102,6 +103,7 @@ public struct User: Codable, Equatable {
                 usedSpace: Double,
                 currency: String,
                 credit: Int,
+                createTime: Double? = nil,
                 maxSpace: Double,
                 maxUpload: Double,
                 role: Int,
@@ -119,6 +121,7 @@ public struct User: Codable, Equatable {
         self.usedSpace = usedSpace
         self.currency = currency
         self.credit = credit
+        self.createTime = createTime
         self.maxSpace = maxSpace
         self.maxUpload = maxUpload
         self.role = role
@@ -142,6 +145,7 @@ public final class UserInfo: NSObject, Codable {
     public var crashReports: Int
     public var credit: Int
     public var currency: String
+    public var createTime: Int64
     public var defaultSignature: String
     public var delaySendSeconds: Int
     public var delinquent: Int
@@ -181,7 +185,7 @@ public final class UserInfo: NSObject, Codable {
         return .init(maxSpace: 0, usedSpace: 0, language: "",
                      maxUpload: 0, role: 0, delinquent: 0,
                      keys: nil, userId: "", linkConfirmation: 0,
-                     credit: 0, currency: "", subscribed: DefaultValue.subscribed)
+                     credit: 0, currency: "", createTime: 0, subscribed: DefaultValue.subscribed)
     }
 
     // init from cache
@@ -210,6 +214,7 @@ public final class UserInfo: NSObject, Codable {
         linkConfirmation: String?,
         credit: Int?,
         currency: String?,
+        createTime: Int64?,
         pwdMode: Int?,
         twoFA: Int?,
         enableFolderColor: Int?,
@@ -238,6 +243,7 @@ public final class UserInfo: NSObject, Codable {
         self.crashReports = crashReports ?? DefaultValue.crashReports
         self.credit = credit ?? DefaultValue.credit
         self.currency = currency ?? DefaultValue.currency
+        self.createTime = createTime ?? DefaultValue.createTime
         self.enableFolderColor = enableFolderColor ?? DefaultValue.enableFolderColor
         self.inheritParentFolderColor = inheritParentFolderColor ?? DefaultValue.inheritParentFolderColor
         self.notificationEmail = notificationEmail ?? DefaultValue.notificationEmail
@@ -285,6 +291,7 @@ public final class UserInfo: NSObject, Codable {
                          linkConfirmation: Int?,
                          credit: Int?,
                          currency: String?,
+                         createTime: Int64?,
                          subscribed: User.Subscribed?) {
         self.attachPublicKey = DefaultValue.attachPublicKey
         self.autoSaveContact = DefaultValue.autoSaveContact
@@ -292,6 +299,7 @@ public final class UserInfo: NSObject, Codable {
         self.crashReports = DefaultValue.crashReports
         self.credit = credit ?? DefaultValue.credit
         self.currency = currency ?? DefaultValue.currency
+        self.createTime = createTime ?? DefaultValue.createTime
         self.defaultSignature = DefaultValue.defaultSignature
         self.delaySendSeconds = DefaultValue.delaySendSeconds
         self.delinquent = delinquent ?? DefaultValue.delinquent
@@ -415,6 +423,7 @@ extension UserInfo {
         static let attachPublicKey: Int = 0
         static let autoSaveContact: Int = 0
         static let crashReports: Int = 1
+        static let createTime: Int64 = 0
         static let credit: Int = 0
         static let currency: String = "USD"
         static let defaultSignature: String = ""

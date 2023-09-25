@@ -101,6 +101,7 @@ public struct UserData {
                  linkConfirmation: nil,
                  credit: user.credit,
                  currency: user.currency,
+                 createTime: user.createTimeIntervalSince1970,
                  pwdMode: nil,
                  twoFA: nil,
                  enableFolderColor: nil,
@@ -116,6 +117,13 @@ public struct UserData {
                  listToolbarActions: nil,
                  referralProgram: nil
         )
+    }
+}
+
+private extension User {
+    var createTimeIntervalSince1970: Int64? {
+        guard let createTime else { return nil }
+        return Int64(createTime)
     }
 }
 

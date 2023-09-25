@@ -58,6 +58,7 @@ extension UserInfo: NSCoding {
 
         static let credit = "credit"
         static let currency = "currency"
+        static let createTime = "createTime"
         static let subscribed = "subscribed"
 
         static let pwdMode = "passwordMode"
@@ -112,6 +113,7 @@ extension UserInfo: NSCoding {
 
             credit: aDecoder.decodeInteger(forKey: CoderKey.credit),
             currency: aDecoder.string(forKey: CoderKey.currency),
+            createTime: aDecoder.decodeInt64IfPresent(forKey: CoderKey.createTime),
 
             pwdMode: aDecoder.decodeInteger(forKey: CoderKey.pwdMode),
             twoFA: aDecoder.decodeInteger(forKey: CoderKey.twoFA),
