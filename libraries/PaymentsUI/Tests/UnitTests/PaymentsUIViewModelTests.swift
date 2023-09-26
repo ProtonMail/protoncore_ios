@@ -55,7 +55,6 @@ final class PaymentsUIViewModelTests: XCTestCase {
                   description: "plan description",
                   instances: [
                     .init(
-                        ID: "ID",
                         cycle: 12,
                         description: "for 12 months",
                         periodEnd: 1234,
@@ -63,7 +62,6 @@ final class PaymentsUIViewModelTests: XCTestCase {
                         vendors: .init(apple: .init(productID: "ios_passplus_12_usd_non_renewing"))
                     ),
                     .init(
-                        ID: "ID",
                         cycle: 24,
                         description: "for 24 months",
                         periodEnd: 1234,

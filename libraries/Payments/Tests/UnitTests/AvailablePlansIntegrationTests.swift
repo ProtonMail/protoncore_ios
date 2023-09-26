@@ -67,7 +67,6 @@ final class AvailablePlansIntegrationTests: XCTestCase {
                 XCTAssertEqual(availablePlans.plans[0].title, "Mail Essentials")
                 XCTAssertEqual(availablePlans.plans[0].description, "Description")
                 XCTAssertEqual(availablePlans.plans[0].instances[0].vendors?.apple.productID, "apple_some_random_id")
-                XCTAssertEqual(availablePlans.plans[0].instances[0].ID, "hUcV0_EeNwUmXA6EoyNrtO-Z...==")
                 XCTAssertEqual(availablePlans.plans[0].instances[0].cycle, 1)
                 XCTAssertEqual(availablePlans.plans[0].instances[0].description, "for 1 month")
                 XCTAssertEqual(availablePlans.plans[0].instances[0].price[0].current, 499)

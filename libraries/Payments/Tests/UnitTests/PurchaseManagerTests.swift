@@ -139,14 +139,16 @@ final class PurchaseManagerTests: XCTestCase {
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
-                .dummy.updated(ID: "test_plan_id",
-                               name: "ios_test_12_usd_non_renewing",
-                               instances: [AvailablePlans.AvailablePlan.Instance(ID: "ble",
-                                                                                 cycle: 12,
-                                                                                 description: .empty,
-                                                                                 periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
-                                                                                 price: [AvailablePlans.AvailablePlan.Instance.Price(current: 10000, default: 10000, currency: "USD")])])
-
+                .dummy.updated(
+                    ID: "test_plan_id",
+                    name: "ios_test_12_usd_non_renewing",
+                    instances: [.init(cycle: 12,
+                                      description: .empty,
+                                      periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
+                                      price: [.init(current: 10000, default: 10000, currency: "USD")]
+                                     )
+                    ]
+                )
         }
         apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success([:])) }
         let expectation = expectation(description: "Should call completion block")
@@ -203,14 +205,17 @@ final class PurchaseManagerTests: XCTestCase {
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
-                .dummy.updated(ID: "test_plan_id",
-                               name: "ios_test_12_usd_non_renewing",
-                               instances: [AvailablePlans.AvailablePlan.Instance(ID: "ble",
-                                                                                 cycle: 12,
-                                                                                 description: .empty,
-                                                                                 periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
-                                                                                 price: [AvailablePlans.AvailablePlan.Instance.Price(current: 10000, default: 10000, currency: "USD")])])
-
+                .dummy.updated(
+                    ID: "test_plan_id",
+                    name: "ios_test_12_usd_non_renewing",
+                    instances: [
+                        .init(cycle: 12,
+                              description: .empty,
+                              periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
+                              price: [.init(current: 10000, default: 10000, currency: "USD")]
+                             )
+                    ]
+                )
         }
 
         let underlyingError = NSError(domain: "test_domain", code: 1234, userInfo: nil)
@@ -239,14 +244,17 @@ final class PurchaseManagerTests: XCTestCase {
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
-                .dummy.updated(ID: "test_plan_id",
-                               name: "ios_test_12_usd_non_renewing",
-                               instances: [AvailablePlans.AvailablePlan.Instance(ID: "ble",
-                                                                                 cycle: 12,
-                                                                                 description: .empty,
-                                                                                 periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
-                                                                                 price: [AvailablePlans.AvailablePlan.Instance.Price(current: 10000, default: 10000, currency: "USD")])])
-
+                .dummy.updated(
+                    ID: "test_plan_id",
+                    name: "ios_test_12_usd_non_renewing",
+                    instances: [
+                        .init(cycle: 12,
+                              description: .empty,
+                              periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
+                              price: [.init(current: 10000, default: 10000, currency: "USD")]
+                             )
+                    ]
+                )
         }
         apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 0).toJsonDict)) }
         let expectation = expectation(description: "Should call completion block")
@@ -519,14 +527,17 @@ final class PurchaseManagerTests: XCTestCase {
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
-                .dummy.updated(ID: "test_plan_id",
-                               name: "ios_test_12_usd_non_renewing",
-                               instances: [AvailablePlans.AvailablePlan.Instance(ID: "ble",
-                                                                                 cycle: 12,
-                                                                                 description: .empty,
-                                                                                 periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
-                                                                                 price: [AvailablePlans.AvailablePlan.Instance.Price(current: 10000, default: 10000, currency: "USD")])])
-
+                .dummy.updated(
+                    ID: "test_plan_id",
+                    name: "ios_test_12_usd_non_renewing",
+                    instances: [
+                        .init(cycle: 12,
+                              description: .empty,
+                              periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
+                              price: [.init(current: 10000, default: 10000, currency: "USD")]
+                             )
+                    ]
+                )
         }
         apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
         storeKitManager.purchaseProductStub.bodyIs { _, _, _, completion, _, _ in completion(.resolvingIAPToSubscription) }
@@ -583,14 +594,16 @@ final class PurchaseManagerTests: XCTestCase {
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
-                .dummy.updated(ID: "test_plan_id",
-                               name: "ios_test_12_usd_non_renewing",
-                               instances: [AvailablePlans.AvailablePlan.Instance(ID: "ble",
-                                                                                 cycle: 12,
-                                                                                 description: .empty,
-                                                                                 periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
-                                                                                 price: [AvailablePlans.AvailablePlan.Instance.Price(current: 10000, default: 10000, currency: "USD")])])
-
+                .dummy.updated(
+                    ID: "test_plan_id",
+                    name: "ios_test_12_usd_non_renewing",
+                    instances: [.init(cycle: 12,
+                                      description: .empty,
+                                      periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
+                                      price: [.init(current: 10000, default: 10000, currency: "USD")]
+                                     )
+                    ]
+                )
         }
         apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
         storeKitManager.purchaseProductStub.bodyIs { _, _, _, _, errorCompletion, _ in errorCompletion(StoreKitManagerErrors.apiMightBeBlocked(message: "test message", originalError: NSError.protonMailError(APIErrorCode.potentiallyBlocked, localizedDescription: PSTranslation._core_api_might_be_blocked_message.l10n))) }
@@ -644,14 +657,17 @@ final class PurchaseManagerTests: XCTestCase {
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
-                .dummy.updated(ID: "test_plan_id",
-                               name: "ios_test_12_usd_non_renewing",
-                               instances: [AvailablePlans.AvailablePlan.Instance(ID: "ble",
-                                                                                 cycle: 12,
-                                                                                 description: .empty,
-                                                                                 periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
-                                                                                 price: [AvailablePlans.AvailablePlan.Instance.Price(current: 10000, default: 10000, currency: "USD")])])
-
+                .dummy.updated(
+                    ID: "test_plan_id",
+                    name: "ios_test_12_usd_non_renewing",
+                    instances: [
+                        .init(cycle: 12,
+                              description: .empty,
+                              periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
+                              price: [.init(current: 10000, default: 10000, currency: "USD")]
+                             )
+                    ]
+                )
         }
         apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
         storeKitManager.purchaseProductStub.bodyIs { _, _, _, _, errorCompletion, _ in errorCompletion(StoreKitManagerErrors.haveTransactionOfAnotherUser) }
@@ -703,14 +719,17 @@ final class PurchaseManagerTests: XCTestCase {
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
-                .dummy.updated(ID: "test_plan_id",
-                               name: "ios_test_12_usd_non_renewing",
-                               instances: [AvailablePlans.AvailablePlan.Instance(ID: "ble",
-                                                                                 cycle: 12,
-                                                                                 description: .empty,
-                                                                                 periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
-                                                                                 price: [AvailablePlans.AvailablePlan.Instance.Price(current: 10000, default: 10000, currency: "USD")])])
-
+                .dummy.updated(
+                    ID: "test_plan_id",
+                    name: "ios_test_12_usd_non_renewing",
+                    instances: [
+                        .init(cycle: 12,
+                              description: .empty,
+                              periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
+                              price: [.init(current: 10000, default: 10000, currency: "USD")]
+                             )
+                    ]
+                )
         }
         apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
         storeKitManager.purchaseProductStub.bodyIs { _, _, _, successCompletion, _, _ in successCompletion(.cancelled) }

@@ -40,23 +40,22 @@ final class CurrentPlanDetailsV5Tests: XCTestCase {
         plansDataSource = .init()
     }
     
-    // TODO: CP-6480
-//    func test_createPlan_callsFetchIcon() async throws {
-//        // Given
-//        let subscription = CurrentPlan.Subscription(
-//            title: "title",
-//            description: "description",
-//            cycleDescription: "cycleDescription",
-//            entitlements: [.description(.init(type: "description", text: "text", iconName: "tick"))]
-//        )
-//
-//        // When
-//        let plan = try await CurrentPlanDetailsV5.createPlan(from: subscription, plansDataSource: plansDataSource)
-//
-//        // Then
-//        XCTAssertTrue(plansDataSource.fetchIconStub.wasCalled)
-//    }
-//
+    func test_createPlan_callsCreateIconUrl() async throws {
+        // Given
+        let subscription = CurrentPlan.Subscription(
+            title: "title",
+            description: "description",
+            cycleDescription: "cycleDescription",
+            entitlements: [.description(.init(type: "description", text: "text", iconName: "tick"))]
+        )
+
+        // When
+        let plan = try await CurrentPlanDetailsV5.createPlan(from: subscription, plansDataSource: plansDataSource)
+
+        // Then
+        XCTAssertTrue(plansDataSource.createIconURLStub.wasCalled)
+    }
+
     func test_createPlan() async throws {
         // Given
         let subscription = CurrentPlan.Subscription(

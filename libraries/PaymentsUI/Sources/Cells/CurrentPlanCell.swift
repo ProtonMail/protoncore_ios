@@ -185,7 +185,7 @@ extension CurrentPlanCell {
                 )
             case .description(let descriptionEntitlement):
                 let detailView = PlanDetailView()
-                detailView.configure(icon: nil /*descriptionEntitlement.iconName*/, text: descriptionEntitlement.text)
+                detailView.configure(iconUrl: descriptionEntitlement.iconUrl, text: descriptionEntitlement.text)
                 planDetailsStackView.addArrangedSubview(detailView)
             }
         }
