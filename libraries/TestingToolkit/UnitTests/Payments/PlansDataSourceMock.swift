@@ -78,9 +78,9 @@ public final class PlansDataSourceMock: NSObject, PlansDataSourceProtocol {
         try await fetchPaymentMethodsStub()
     }
     
-    @AsyncThrowingFuncStub(PlansDataSourceProtocol.fetchIcon(iconName:), initialReturn: nil) public var fetchIconStub
-    public func fetchIcon(iconName: String) async throws -> Data? {
-        try await fetchIconStub(iconName)
+    @FuncStub(PlansDataSourceProtocol.createIconURL(iconName:), initialReturn: nil) public var createIconURLStub
+    public func createIconURL(iconName: String) -> URL? {
+        createIconURLStub(iconName)
     }
 
     @FuncStub(PlansDataSourceProtocol.detailsOfAvailablePlanCorrespondingToIAP, initialReturn: nil)

@@ -24,6 +24,10 @@
 import UIKit
 import ProtonCoreUIFoundations
 
+#if canImport(SDWebImage)
+import SDWebImage
+#endif
+
 final class PlanDetailView: UIView {
 
     static let reuseIdentifier = "PlanDetailView"
@@ -77,6 +81,18 @@ final class PlanDetailView: UIView {
         detailLabel.text = text
     }
     
+    func configure(iconUrl: URL? = nil, text: String) {
+        iconImageView.sd_setImage(with: iconUrl) { [weak self] image, error, cacheType, url in
+            guard error == nil else {
+                self?.iconImageView.image = IconProvider.checkmark
+                return
+            }
+            
+            self?.iconImageView.image = self?.iconImageView.image?.withRenderingMode(.alwaysTemplate)
+        }
+        
+        detailLabel.text = text
+    }
 }
 
 #endif

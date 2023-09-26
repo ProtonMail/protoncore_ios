@@ -48,15 +48,13 @@ public struct AvailablePlans: Decodable, Equatable {
         }
 
         public struct Instance: Decodable, Equatable {
-            var ID: String
             public var cycle: Int // enum: 1, 12, 24
             public var description: String
             var periodEnd: Int
             public var price: [Price]
             public var vendors: Vendors?
 
-            public init(ID: String, cycle: Int, description: String, periodEnd: Int, price: [AvailablePlans.AvailablePlan.Instance.Price], vendors: AvailablePlans.AvailablePlan.Instance.Vendors? = nil) {
-                self.ID = ID
+            public init(cycle: Int, description: String, periodEnd: Int, price: [Price], vendors: Vendors? = nil) {
                 self.cycle = cycle
                 self.description = description
                 self.periodEnd = periodEnd

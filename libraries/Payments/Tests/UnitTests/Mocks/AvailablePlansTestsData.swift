@@ -36,7 +36,6 @@ var availablePlansResponse: [String: Any] {
                 "Layout": "default",
                 "Instances": [
                     [
-                        "ID": "id 1",
                         "Cycle": 1,
                         "Description": "description 1",
                         "PeriodEnd": 1691915780,
@@ -80,7 +79,6 @@ var availablePlansResponse: [String: Any] {
                 "Layout": "default",
                 "Instances": [
                     [
-                        "ID": "id 2",
                         "Cycle": 2,
                         "Description": "description 2",
                         "PeriodEnd": 1691915780,
@@ -106,7 +104,6 @@ var availablePlansToCompare: AvailablePlans {
                 description: "description 1",
                 instances: [
                     .init(
-                        ID: "id 1",
                         cycle: 1,
                         description: "description 1",
                         periodEnd: 1691915780,
@@ -142,7 +139,6 @@ var availablePlansToCompare: AvailablePlans {
                 description: "description 2",
                 instances: [
                     .init(
-                        ID: "id 2",
                         cycle: 2,
                         description: "description 2",
                         periodEnd: 1691915780,

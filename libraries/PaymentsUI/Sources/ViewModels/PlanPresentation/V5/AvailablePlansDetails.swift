@@ -41,7 +41,7 @@ struct AvailablePlansDetails {
     
     struct Entitlement: Equatable {
         var text: String
-        var icon: UIImage?
+        var iconUrl: URL?
         var hint: String?
     }
     
@@ -63,11 +63,9 @@ struct AvailablePlansDetails {
         for entitlement in plan.entitlements {
             switch entitlement {
             case .description(let entitlement):
-                // TODO: CP-6480
-//                let iconData = try await plansDataSource?.fetchIcon(iconName: entitlement.iconName)
                 entitlements.append(.init(
                     text: entitlement.text,
-                    icon: nil /* iconData.flatMap { UIImage(data: $0) } */,
+                    iconUrl: plansDataSource?.createIconURL(iconName: entitlement.iconName),
                     hint: entitlement.hint
                 ))
             }

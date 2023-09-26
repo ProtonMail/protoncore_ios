@@ -150,6 +150,7 @@ extension String {
     static let snapshotTesting: String = "SnapshotTesting"
     static let snapshotTestingPackage: String = "swift-snapshot-testing"
     static let trustKit: String = "TrustKit"
+    static let sdWebImage: String = "SDWebImage"
 
     // MARK: - Plugin names
 
@@ -263,6 +264,7 @@ extension Target.Dependency {
     static var swiftBCrypt: Target.Dependency { .product(name: .swiftBCrypt, package: .swiftBCrypt) }
     static var swiftOTP: Target.Dependency { .product(name: .swiftOTP, package: .swiftOTP) }
     static var trustKit: Target.Dependency { .product(name: .trustKit, package: .trustKit) }
+    static var sdWebImage: Target.Dependency { .product(name: .sdWebImage, package: .sdWebImage) }
     
     // MARK: - Helpers
     
@@ -1409,7 +1411,8 @@ add(
                     .uiFoundations,
                     .observability,
                     .payments,
-                    .paymentsUIResourcesiOS
+                    .paymentsUIResourcesiOS,
+                    .sdWebImage
                 ],
                 path: "libraries/PaymentsUI/Sources",
                 resources: [
@@ -2011,6 +2014,10 @@ let package = Package(
         .package(
             url: "https://github.com/tannerdsilva/SwiftBCrypt.git",
             from: "0.2.0"
+        ),
+        .package(
+            url: "https://github.com/SDWebImage/SDWebImage.git",
+            from: "5.16.0"
         )
     ],
     targets: targets + [
