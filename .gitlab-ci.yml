@@ -372,11 +372,13 @@ report:integration:code:coverage:
     - jq '"Line Coverage \(.lineCoverage * 100 |tostring | .[0:5])%"' fastlane/test_output/IntegrationTests.json
     # generate cobertura xml from coverage json
     - xcc generate fastlane/test_output/IntegrationTests.json fastlane/test_output cobertura-xml --verbose
+    # Split big cobertura file
+    - python3 scripts/split-by-package.py fastlane/test_output/cobertura.xml fastlane/test_output/
   artifacts:
     reports:
       coverage_report:
         coverage_format: cobertura
-        path: fastlane/test_output/cobertura.xml
+        path: fastlane/test_output/cobertura-*.xml
   variables:
     GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-4
   tags:
@@ -404,11 +406,13 @@ report:apphost:macos:code:coverage:
     - jq '"Line Coverage \(.lineCoverage * 100 |tostring | .[0:5])%"' fastlane/test_output/ProtonCore-Keymaker-macOS-AppHost.json
     # generate cobertura xml from coverage json
     - xcc generate fastlane/test_output/ProtonCore-Keymaker-macOS-AppHost.json fastlane/test_output cobertura-xml --verbose
+    # Split big cobertura file
+    - python3 scripts/split-by-package.py fastlane/test_output/cobertura.xml fastlane/test_output/
   artifacts:
     reports:
       coverage_report:
         coverage_format: cobertura
-        path: fastlane/test_output/cobertura.xml
+        path: fastlane/test_output/cobertura-*.xml
   variables:
     GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-6
   tags:
@@ -436,11 +440,13 @@ report:unit:macos:code:coverage:
     - jq '"Line Coverage \(.lineCoverage * 100 |tostring | .[0:5])%"' fastlane/test_output/UnitTests.json
     # generate cobertura xml from coverage json
     - xcc generate fastlane/test_output/UnitTests.json fastlane/test_output cobertura-xml --verbose
+    # Split big cobertura file
+    - python3 scripts/split-by-package.py fastlane/test_output/cobertura.xml fastlane/test_output/
   artifacts:
     reports:
       coverage_report:
         coverage_format: cobertura
-        path: fastlane/test_output/cobertura.xml
+        path: fastlane/test_output/cobertura-*.xml
   variables:
     GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-2
   tags:
@@ -468,11 +474,13 @@ report:unit:ios:code:coverage:
     - jq '"Line Coverage \(.lineCoverage * 100 |tostring | .[0:5])%"' fastlane/test_output/UnitTests.json
     # generate cobertura xml from coverage json
     - xcc generate fastlane/test_output/UnitTests.json fastlane/test_output cobertura-xml --verbose
+    # Split big cobertura file
+    - python3 scripts/split-by-package.py fastlane/test_output/cobertura.xml fastlane/test_output/
   artifacts:
     reports:
       coverage_report:
         coverage_format: cobertura
-        path: fastlane/test_output/cobertura.xml
+        path: fastlane/test_output/cobertura-*.xml
   variables:
     GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-1
   tags:
