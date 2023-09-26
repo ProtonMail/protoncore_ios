@@ -48,6 +48,7 @@ public extension UserInfo {
                  linkConfirmation: nil,
                  credit: nil,
                  currency: nil,
+                 createTime: nil,
                  pwdMode: nil,
                  twoFA: nil,
                  enableFolderColor: nil,
