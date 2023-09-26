@@ -40,7 +40,7 @@ var availablePlansResponse: [String: Any] {
                         "Description": "description 1",
                         "PeriodEnd": 1691915780,
                         "Price": [
-                            ["current": 1, "default": 1, "currency": "USD"]
+                            ["ID": "id", "current": 1, "currency": "USD"]
                         ],
                         "Vendors": [
                             "Apple": [
@@ -83,7 +83,7 @@ var availablePlansResponse: [String: Any] {
                         "Description": "description 2",
                         "PeriodEnd": 1691915780,
                         "Price": [
-                            ["currency": "USD", "current": 2, "default": 2]
+                            ["ID": "id", "currency": "USD", "current": 2]
                         ]
                     ]
                 ],
@@ -107,7 +107,7 @@ var availablePlansToCompare: AvailablePlans {
                         cycle: 1,
                         description: "description 1",
                         periodEnd: 1691915780,
-                        price: [.init(current: 1, default: 1, currency: "USD")],
+                        price: [.init(ID: "id", current: 1, currency: "USD")],
                         vendors: .init(apple: .init(productID: "apple id 1"))
                     )
                 ],
@@ -142,7 +142,7 @@ var availablePlansToCompare: AvailablePlans {
                         cycle: 2,
                         description: "description 2",
                         periodEnd: 1691915780,
-                        price: [.init(current: 2, default: 2, currency: "USD")]
+                        price: [.init(ID: "id", current: 2, currency: "USD")]
                     )
                 ],
                 entitlements: [],

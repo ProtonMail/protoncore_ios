@@ -62,22 +62,16 @@ public struct AvailablePlans: Decodable, Equatable {
                 self.vendors = vendors
             }
 
-
-            /// `Price` is used to determine offers.
-            /// If `default != current`, we need to show an offer
-            /// percentage is calculate by the diff between `current` and `default`
-            /// The percentage is displayed as a Decoration
             public struct Price: Decodable, Equatable {
+                public var ID: String
                 public var current: Int
-                public var `default`: Int // same as current if no offer, higher otherwise
                 public var currency: String
 
-                public init(current: Int, `default`: Int, currency: String) {
+                public init(ID: String, current: Int, currency: String) {
+                    self.ID = ID
                     self.current = current
-                    self.`default` = `default`
                     self.currency = currency
                 }
-
             }
             
             public struct Vendors: Decodable, Equatable {
@@ -103,15 +97,28 @@ public struct AvailablePlans: Decodable, Equatable {
         public enum Decoration: Equatable {
             case border(BorderDecoration)
             case starred(StarDecoration)
+            case badge(BadgeDecoration)
             
             public struct BorderDecoration: Decodable, Equatable {
-                public var type: String
+                var type: String
                 public var color: String
             }
             
             public struct StarDecoration: Decodable, Equatable {
-                public var type: String
+                var type: String
                 public var iconName: String
+            }
+            
+            public struct BadgeDecoration: Decodable, Equatable {
+                var type: String
+                public var anchor: Anchor
+                public var text: String
+                public var planID: String?
+                
+                public enum Anchor: String, Decodable, Equatable {
+                    case subtitle
+                    case title
+                }
             }
         }
     }
@@ -142,6 +149,7 @@ extension AvailablePlans.AvailablePlan.Decoration: Decodable {
     private enum EntitlementType: String, Decodable {
         case border
         case starred
+        case badge
     }
     
     enum CodingKeys: String, CodingKey {
@@ -158,6 +166,8 @@ extension AvailablePlans.AvailablePlan.Decoration: Decodable {
             self = .border(try .init(from: decoder))
         case .starred:
             self = .starred(try .init(from: decoder))
+        case .badge:
+            self = .badge(try .init(from: decoder))
         }
     }
 }
