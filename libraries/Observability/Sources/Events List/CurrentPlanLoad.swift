@@ -22,7 +22,7 @@
 import ProtonCoreNetworking
 
 public struct CurrentPlanLoadLabels: Encodable, Equatable {
-    let status: HTTPResponseCodeStatus
+    let status: DynamicPlansHTTPResponseCodeStatus
 
     enum CodingKeys: String, CodingKey {
         case status
@@ -31,10 +31,10 @@ public struct CurrentPlanLoadLabels: Encodable, Equatable {
 
 extension ObservabilityEvent where Payload == PayloadWithLabels<CurrentPlanLoadLabels> {
     private enum Constants {
-        static let eventName = "ios_core_current_plan_load_total"
+        static let eventName = "ios_core_checkout_dynamicPlans_getDynamicSubscription_total"
     }
 
-    public static func currentPlanLoad(status: HTTPResponseCodeStatus) -> Self {
+    public static func currentPlanLoad(status: DynamicPlansHTTPResponseCodeStatus) -> Self {
         ObservabilityEvent(name: Constants.eventName, labels: CurrentPlanLoadLabels(status: status))
     }
 
@@ -42,12 +42,16 @@ extension ObservabilityEvent where Payload == PayloadWithLabels<CurrentPlanLoadL
         let name = Constants.eventName
         if let httpCode {
             switch httpCode {
+            case 409:
+                return ObservabilityEvent(name: name, labels: CurrentPlanLoadLabels(status: .http409))
+            case 422:
+                return ObservabilityEvent(name: name, labels: CurrentPlanLoadLabels(status: .http422))
             case 400...499:
                 return ObservabilityEvent(name: name, labels: CurrentPlanLoadLabels(status: .http4xx))
             case 500...599:
                 return ObservabilityEvent(name: name, labels: CurrentPlanLoadLabels(status: .http5xx))
             default:
-                break
+                return ObservabilityEvent(name: name, labels: CurrentPlanLoadLabels(status: .unknown))
             }
         }
 
