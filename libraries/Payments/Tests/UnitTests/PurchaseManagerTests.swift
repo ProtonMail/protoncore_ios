@@ -145,7 +145,7 @@ final class PurchaseManagerTests: XCTestCase {
                     instances: [.init(cycle: 12,
                                       description: .empty,
                                       periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
-                                      price: [.init(current: 10000, default: 10000, currency: "USD")]
+                                      price: [.init(ID: "id", current: 10000, currency: "USD")]
                                      )
                     ]
                 )
@@ -212,7 +212,7 @@ final class PurchaseManagerTests: XCTestCase {
                         .init(cycle: 12,
                               description: .empty,
                               periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
-                              price: [.init(current: 10000, default: 10000, currency: "USD")]
+                              price: [.init(ID: "id", current: 10000, currency: "USD")]
                              )
                     ]
                 )
@@ -251,7 +251,7 @@ final class PurchaseManagerTests: XCTestCase {
                         .init(cycle: 12,
                               description: .empty,
                               periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
-                              price: [.init(current: 10000, default: 10000, currency: "USD")]
+                              price: [.init(ID: "id", current: 10000, currency: "USD")]
                              )
                     ]
                 )
@@ -534,7 +534,7 @@ final class PurchaseManagerTests: XCTestCase {
                         .init(cycle: 12,
                               description: .empty,
                               periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
-                              price: [.init(current: 10000, default: 10000, currency: "USD")]
+                              price: [.init(ID: "id", current: 10000, currency: "USD")]
                              )
                     ]
                 )
@@ -600,7 +600,7 @@ final class PurchaseManagerTests: XCTestCase {
                     instances: [.init(cycle: 12,
                                       description: .empty,
                                       periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
-                                      price: [.init(current: 10000, default: 10000, currency: "USD")]
+                                      price: [.init(ID: "id", current: 10000, currency: "USD")]
                                      )
                     ]
                 )
@@ -664,7 +664,7 @@ final class PurchaseManagerTests: XCTestCase {
                         .init(cycle: 12,
                               description: .empty,
                               periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
-                              price: [.init(current: 10000, default: 10000, currency: "USD")]
+                              price: [.init(ID: "id", current: 10000, currency: "USD")]
                              )
                     ]
                 )
@@ -726,7 +726,7 @@ final class PurchaseManagerTests: XCTestCase {
                         .init(cycle: 12,
                               description: .empty,
                               periodEnd: Int(Date.distantFuture.timeIntervalSince1970),
-                              price: [.init(current: 10000, default: 10000, currency: "USD")]
+                              price: [.init(ID: "id", current: 10000, currency: "USD")]
                              )
                     ]
                 )

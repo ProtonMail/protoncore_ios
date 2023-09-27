@@ -73,7 +73,7 @@ final class AvailablePlansDetailsTests: XCTestCase {
                       description: "12 months",
                       periodEnd: 123,
                       price: [
-                        .init(current: 123, default: 123, currency: "USD")
+                        .init(ID: "id matching for badge", current: 123, currency: "USD")
                       ],
                       vendors: .init(apple: .init(productID: "ioscore_core2023_12_usd_non_renewing")
                 ))
@@ -81,7 +81,12 @@ final class AvailablePlansDetailsTests: XCTestCase {
             entitlements: [
                 .description(.init(type: "description", iconName: "tick", text: "text"))
             ],
-            decorations: []
+            decorations: [
+                .badge(.init(type: "badge", anchor: .title, text: "text", planID: "id matching for badge")),
+                .badge(.init(type: "badge", anchor: .subtitle, text: "text", planID: "id NOT matching for badge")),
+                .border(.init(type: "border", color: "color")),
+                .starred(.init(type: "starred", iconName: "tick"))
+            ]
         )
         
         // When
@@ -99,7 +104,7 @@ final class AvailablePlansDetailsTests: XCTestCase {
         XCTAssertEqual(plan?.iapID, "ioscore_core2023_12_usd_non_renewing")
         XCTAssertEqual(plan?.description, "description")
         XCTAssertEqual(plan?.price, "$60.00")
-        XCTAssertEqual(plan?.decorations.isEmpty, true)
+        XCTAssertEqual(plan?.decorations.count, 3)
         XCTAssertEqual(plan?.entitlements[0], .init(text: "text", iconUrl: nil))
     }
     

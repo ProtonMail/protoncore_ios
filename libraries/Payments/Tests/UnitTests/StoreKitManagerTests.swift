@@ -602,7 +602,7 @@ final class StoreKitManagerTests: XCTestCase {
                 .init(cycle: 12,
                       description: "",
                       periodEnd: 12,
-                      price: [.init(current: 7900, default: 7900, currency: "USD")]
+                      price: [.init(ID: "id", current: 7900, currency: "USD")]
                 )
             ]
         )
@@ -686,7 +686,7 @@ final class StoreKitManagerTests: XCTestCase {
                 .init(cycle: 12,
                       description: "test",
                       periodEnd: 100,
-                      price: [.init(current: 79, default: 79, currency: "USD")]
+                      price: [.init(ID: "id", current: 79, currency: "USD")]
                 )
             ]
         )
