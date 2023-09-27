@@ -41,6 +41,7 @@ import ProtonCoreUIFoundations
 final class PaymentsUIScreenAppearTests: XCTestCase {
 
     var controllerWillAppearForFirstTime: Bool? = nil
+    var timeout: TimeInterval = 3
 
     override func setUp() {
         super.setUp()
@@ -76,6 +77,162 @@ final class PaymentsUIScreenAppearTests: XCTestCase {
         NotificationCenter.default.post(name: UIApplication.willEnterForegroundNotification, object: nil)
 
         XCTAssertEqual(controllerWillAppearForFirstTime, false)
+    }
+
+    func test_dynamicPlansEnabled_SignupModeIsUsedRightObservabilityEventIsSent() {
+        withFeatureSwitches([.dynamicPlans]) {
+            let expectation = self.expectation(description: "Event is sent")
+
+            let observeMock = ObservabilityServiceMock()
+            ObservabilityEnv.current.observabilityService = observeMock
+            observeMock.reportStub.bodyIs { _, event in
+                guard event.isSameAs(event: .paymentScreenView(screenID: .dynamicPlanSelection)) else {
+                    return
+                }
+                expectation.fulfill()
+            }
+
+            let paymentsUIViewController = UIStoryboard.instantiate(
+                storyboardName: "PaymentsUI",
+                controllerType: PaymentsUIViewController.self,
+                inAppTheme: { .default }
+            )
+            paymentsUIViewController.mode = .signup
+            _ = paymentsUIViewController.view
+
+            waitForExpectations(timeout: timeout)
+        }
+    }
+
+    func test_dynamicPlansEnabled_CurrentModeIsUsedRightObservabilityEventIsSent() {
+        withFeatureSwitches([.dynamicPlans]) {
+            let expectation = self.expectation(description: "Event is sent")
+
+            let observeMock = ObservabilityServiceMock()
+            ObservabilityEnv.current.observabilityService = observeMock
+            observeMock.reportStub.bodyIs { _, event in
+                guard event.isSameAs(event: .paymentScreenView(screenID: .dynamicPlansCurrentSubscription)) else {
+                    return
+                }
+                expectation.fulfill()
+            }
+
+            let paymentsUIViewController = UIStoryboard.instantiate(
+                storyboardName: "PaymentsUI",
+                controllerType: PaymentsUIViewController.self,
+                inAppTheme: { .default }
+            )
+            paymentsUIViewController.mode = .current
+            _ = paymentsUIViewController.view
+
+            waitForExpectations(timeout: timeout)
+        }
+    }
+
+    func test_dynamicPlansEnabled_UpdateModeIsUsedRightObservabilityEventIsSent() {
+        withFeatureSwitches([.dynamicPlans]) {
+            let expectation = self.expectation(description: "Event is sent")
+
+            let observeMock = ObservabilityServiceMock()
+            ObservabilityEnv.current.observabilityService = observeMock
+            observeMock.reportStub.bodyIs { _, event in
+                guard event.isSameAs(event: .paymentScreenView(screenID: .dynamicPlansUpgrade)) else {
+                    return
+                }
+                expectation.fulfill()
+            }
+
+            let paymentsUIViewController = UIStoryboard.instantiate(
+                storyboardName: "PaymentsUI",
+                controllerType: PaymentsUIViewController.self,
+                inAppTheme: { .default }
+            )
+            paymentsUIViewController.mode = .update
+            _ = paymentsUIViewController.view
+
+            waitForExpectations(timeout: timeout)
+        }
+    }
+
+    func test_dynamicPlansDisabled_SignupModeIsUsedNoDynamicPlanObservabilityEventIsSent() {
+        let expectation = self.expectation(description: "Event is sent")
+
+        let observeMock = ObservabilityServiceMock()
+        ObservabilityEnv.current.observabilityService = observeMock
+        observeMock.reportStub.bodyIs { _, event in
+            if event.isSameAs(event: .paymentScreenView(screenID: .dynamicPlanSelection)) {
+                XCTFail("This event shouldn't be sent when dynamic plans feature flag is disabled")
+            }
+        }
+
+        let paymentsUIViewController = UIStoryboard.instantiate(
+            storyboardName: "PaymentsUI",
+            controllerType: PaymentsUIViewController.self,
+            inAppTheme: { .default }
+        )
+        paymentsUIViewController.mode = .signup
+        _ = paymentsUIViewController.view
+
+        DispatchQueue.global(qos: .default).asyncAfter(deadline: .now() + timeout - 1) {
+            // Expect that controller loading and events sending will be handled fast.
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: timeout)
+    }
+
+    func test_dynamicPlansDisabled_CurrentModeIsUsedNoDynamicPlanObservabilityEventIsSent() {
+        let expectation = self.expectation(description: "Event is sent")
+
+        let observeMock = ObservabilityServiceMock()
+        ObservabilityEnv.current.observabilityService = observeMock
+        observeMock.reportStub.bodyIs { _, event in
+            if event.isSameAs(event: .paymentScreenView(screenID: .dynamicPlanSelection)) {
+                XCTFail("This event shouldn't be sent when dynamic plans feature flag is disabled")
+            }
+        }
+
+        let paymentsUIViewController = UIStoryboard.instantiate(
+            storyboardName: "PaymentsUI",
+            controllerType: PaymentsUIViewController.self,
+            inAppTheme: { .default }
+        )
+        paymentsUIViewController.mode = .current
+        _ = paymentsUIViewController.view
+
+        DispatchQueue.global(qos: .default).asyncAfter(deadline: .now() + timeout - 1) {
+            // Expect that controller loading and events sending will be handled fast.
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: timeout)
+    }
+
+    func test_dynamicPlansDisabled_UpdateModeIsUsedNoDynamicPlanObservabilityEventIsSent() {
+        let expectation = self.expectation(description: "Event is sent")
+
+        let observeMock = ObservabilityServiceMock()
+        ObservabilityEnv.current.observabilityService = observeMock
+        observeMock.reportStub.bodyIs { _, event in
+            if event.isSameAs(event: .paymentScreenView(screenID: .dynamicPlanSelection)) {
+                XCTFail("This event shouldn't be sent when dynamic plans feature flag is disabled")
+            }
+        }
+
+        let paymentsUIViewController = UIStoryboard.instantiate(
+            storyboardName: "PaymentsUI",
+            controllerType: PaymentsUIViewController.self,
+            inAppTheme: { .default }
+        )
+        paymentsUIViewController.mode = .update
+        _ = paymentsUIViewController.view
+
+        DispatchQueue.global(qos: .default).asyncAfter(deadline: .now() + timeout - 1) {
+            // Expect that controller loading and events sending will be handled fast.
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: timeout)
     }
 }
 
