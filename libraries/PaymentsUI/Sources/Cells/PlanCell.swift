@@ -385,23 +385,24 @@ extension PlanCell {
         generateCellAccessibilityIdentifiers(availablePlan.details.title)
         
         planNameLabel.text = availablePlan.details.title
+        
+        preferredImageView.isHidden = true
+        offerPercentageView.isHidden = true
+        offerDescriptionView.isHidden = true
+        
         for decoration in availablePlan.details.decorations {
             switch decoration {
             case .border:
-                preferredImageView.isHidden = true
-                offerPercentageView.isHidden = true
-                offerDescriptionView.isHidden = true
+                continue
             case .starred:
                 preferredImageView.isHidden = false
                 preferredImageView.tintColor = ColorProvider.InteractionNorm
                 preferredImageView.image = IconProvider.starFilled
-                offerPercentageView.isHidden = true
-                offerDescriptionView.isHidden = true
-            case let .percentage(percentage, description):
-                preferredImageView.isHidden = true
+            case .percentage(let percentage):
                 offerPercentageLabel.text = percentage
                 offerPercentageView.isHidden = false
-                offerDescriptionLabel.text = description
+            case .offer(let decriptionText):
+                offerDescriptionLabel.text = decriptionText
                 offerDescriptionView.isHidden = false
             }
         }

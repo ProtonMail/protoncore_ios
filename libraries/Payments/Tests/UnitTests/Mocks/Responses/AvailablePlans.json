@@ -16,6 +16,7 @@
                 "PeriodEnd": 1691915780,
                 "Price": [
                     {
+                        "ID": "id",
                         "Current": 499,
                         "Default": 499,
                         "Currency": "USD"
@@ -43,6 +44,17 @@
             {
                 "Type": "border",
                 "Color": "#xxx"
+            },
+            {
+                "Type": "badge",
+                "Anchor": "title",
+                "Text": "some text",
+                "PlanID": "some id"
+            },
+            {
+                "Type": "badge",
+                "Anchor": "subtitle",
+                "Text": "some text"
             }
         ]
     }]

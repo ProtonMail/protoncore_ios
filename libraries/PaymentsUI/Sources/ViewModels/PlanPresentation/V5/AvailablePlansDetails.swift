@@ -34,7 +34,8 @@ struct AvailablePlansDetails {
     let entitlements: [Entitlement]
     
     enum Decoration {
-        case percentage(percentage: String, decription: String)
+        case percentage(percentage: String)
+        case offer(decription: String)
         case starred(iconName: String)
         case border(color: String)
     }
@@ -50,12 +51,24 @@ struct AvailablePlansDetails {
                            iapPlan: InAppPurchasePlan? = nil,
                            plansDataSource: PlansDataSourceProtocol?,
                            storeKitManager: StoreKitManagerProtocol? = nil) async throws -> AvailablePlansDetails? {
-        let decorations: [Decoration] = plan.decorations.map {
+        let decorations: [Decoration] = plan.decorations.compactMap {
             switch $0 {
             case .border(let decoration):
                 return .border(color: decoration.color)
             case .starred(let decoration):
                 return .starred(iconName: decoration.iconName)
+            case .badge(let badge):
+                let doesPromoExist = instance?.price.first(where: { $0.ID == badge.planID }) != nil
+                if doesPromoExist {
+                    switch badge.anchor {
+                    case .title:
+                        return .percentage(percentage: badge.text)
+                    case .subtitle:
+                        return .offer(decription: badge.text)
+                    }
+                } else {
+                    return nil
+                }
             }
         }
         
