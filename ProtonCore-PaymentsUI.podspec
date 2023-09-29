@@ -45,6 +45,7 @@ Pod::Spec.new do |s|
     s.test_spec 'Tests' do |test_spec|
         test_spec.dependency "swift-snapshot-testing"
         test_spec.dependency "ProtonCore-Payments"
+        test_spec.dependency "ProtonCore-Subscriptions"
         test_spec.dependency "ProtonCore-ObfuscatedConstants", $version
         test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Observability", $version
         test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Payments", $version
