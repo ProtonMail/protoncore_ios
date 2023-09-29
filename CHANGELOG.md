@@ -1,3 +1,9 @@
+## 12.0.0 (2023-09-29)
+
+###  (1 change)
+
+- [feat (dynamic plans): Add badge decoration](apple/shared/protoncore@b5fe0cb96a16cdb502b85dbad63efffc367ffad1) ([merge request](apple/shared/protoncore!1436))
+
 ## 11.0.0 (2023-09-05)
 
 ###  (7 changes)
