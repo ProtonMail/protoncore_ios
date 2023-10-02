@@ -773,7 +773,8 @@ add(
                     dependencies: [
                         .featureSwitch,
                         .doh,
-                        .testingToolkitUnitTestsDoh
+                        .testingToolkitUnitTestsDoh,
+                        .testingToolkitUnitTestsFeatureSwitch
                     ],
                     path: "libraries/FeatureSwitch/Tests",
                     resources: [.process("Resources")],
@@ -1342,9 +1343,8 @@ add(
                     .hash,
                     .log,
                     .networking,
-                    .services,
                     .reachabilitySwift,
-                    .subscriptions
+                    .services
                 ],
                 path: "libraries/Payments/Sources",
                 swiftSettings: .spm),
@@ -1588,9 +1588,6 @@ add(
                         "Security/Presentation/__Snapshots__",
                         "Settings/Presentation/__Snapshots__"
                     ],
-//                    resources: [
-//                        .copy("Resources")
-//                    ],
                     swiftSettings: .spm)
     ]
 )
@@ -1601,9 +1598,15 @@ add(product: .subscriptions,
     targets: [
         .target(name: .subscriptions,
                 dependencies: [
-                    .featureSwitch
+                    .featureSwitch,
+                    .payments,
+                    .paymentsUI,
+                    .trustKit
                 ],
                 path: "libraries/Subscriptions/Sources",
+                resources: [
+                    .process("Resources")
+                ],
                 swiftSettings: .spm),
         .testTarget(name: .subscriptions + "Tests",
                     dependencies: [
