@@ -20,7 +20,6 @@
 import XCTest
 import ProtonCoreFeatureSwitch
 import ProtonCoreTestingToolkitUnitTestsFeatureSwitch
-import ProtonCoreSubscriptions
 
 final class SubscriptionsFeatureFlagTests: XCTestCase {
 
