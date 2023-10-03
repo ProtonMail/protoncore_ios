@@ -753,6 +753,21 @@ add(
     ]
 )
 
+// MARK: - Unleash Feature flags
+
+add(
+    product: "FeatureFlags",
+    targets: [
+        .target(name: "FeatureFlags",
+            dependencies: [
+                .services,
+                .networking
+            ],
+            path: "libraries/FeatureFlags/Sources",
+            swiftSettings: .spm)
+    ]
+)
+
 // MARK: FeatureSwitch
 
 add(
