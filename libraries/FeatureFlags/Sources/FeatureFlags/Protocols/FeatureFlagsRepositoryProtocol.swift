@@ -28,7 +28,7 @@ public protocol FeatureFlagsRepositoryProtocol: AnyObject {
     @discardableResult
     func refreshFlags() async throws -> FeatureFlags
 
-    func isFlagEnable(for key: any FeatureFlagTypeProtocol) async -> Bool
+    func isEnabled(for key: any FeatureFlagTypeProtocol) async -> Bool
 
     func resetFlags() async
     func resetFlags(for userId: String) async
