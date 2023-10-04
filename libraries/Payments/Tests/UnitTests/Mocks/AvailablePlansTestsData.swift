@@ -24,6 +24,7 @@
 
 var availablePlansResponse: [String: Any] {
     [
+        "DefaultCycle": 12,
         "Plans": [
             [
                 "ID": "ID 1",
@@ -148,6 +149,7 @@ var availablePlansToCompare: AvailablePlans {
                 entitlements: [],
                 decorations: []
             )
-        ]
+        ],
+        defaultCycle: 12
     )
 }

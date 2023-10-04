@@ -65,11 +65,13 @@ final class AvailablePlansPresentationTests: XCTestCase {
         sut = try await AvailablePlansPresentation.createAvailablePlans(
             from: plan,
             for: instance,
+            defaultCycle: 12,
             plansDataSource: plansDataSource,
             storeKitManager: storeKitManager
         )
         
         // Then
+        XCTAssertEqual(sut.details.defaultCycle, 12)
         XCTAssertEqual(sut.availablePlan?.storeKitProductId, "ioscore_core2023_testpromo_12_usd_non_renewing")
         XCTAssertEqual(sut.availablePlan?.protonName, "core2023")
         XCTAssertEqual(sut.availablePlan?.offer, "testpromo")
