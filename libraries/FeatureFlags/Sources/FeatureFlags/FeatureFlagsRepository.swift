@@ -94,7 +94,7 @@ public extension FeatureFlagsRepository {
      - Parameter key: The key representing the feature flag.
      - Returns: A boolean indicating whether the feature flag is enabled.
      */
-    func isFlagEnable(for key: any FeatureFlagTypeProtocol) async -> Bool {
+    func isEnabled(for key: any FeatureFlagTypeProtocol) async -> Bool {
         do {
             let flags = try await getFlags().flags
             return flags.first { $0.name == key.rawValue }?.enabled ?? false
