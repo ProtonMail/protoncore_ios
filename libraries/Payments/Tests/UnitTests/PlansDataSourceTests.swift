@@ -33,12 +33,18 @@ final class PlansDataSourceTests: XCTestCase {
     var sut: PlansDataSource!
     var apiServiceMock: APIServiceMock!
     var storeKitDataSourceMock: StoreKitDataSourceMock!
+    var servicePlanDataStorageMock: ServicePlanDataStorageMock!
     
     override func setUp() {
         super.setUp()
         apiServiceMock = .init()
         storeKitDataSourceMock = .init()
-        sut = .init(apiService: apiServiceMock, storeKitDataSource: storeKitDataSourceMock)
+        servicePlanDataStorageMock = .init()
+        sut = .init(
+            apiService: apiServiceMock,
+            storeKitDataSource: storeKitDataSourceMock,
+            localStorage: servicePlanDataStorageMock
+        )
     }
     
     // MARK: - fetchIAPAvailability
@@ -95,6 +101,34 @@ final class PlansDataSourceTests: XCTestCase {
         } catch {
             // successfully thrown an error
         }
+    }
+    
+    func test_isIAPAvailable_isTrueWhenSettingPaymentsBackendStatusAcceptsIAPToTrue() {
+        // Given
+        servicePlanDataStorageMock.paymentsBackendStatusAcceptsIAPStub.fixture = true
+        sut = .init(
+            apiService: apiServiceMock,
+            storeKitDataSource: storeKitDataSourceMock,
+            localStorage: servicePlanDataStorageMock
+        )
+        
+        // Then
+        XCTAssertTrue(sut.paymentsBackendStatusAcceptsIAP)
+        XCTAssertTrue(sut.isIAPAvailable)
+    }
+    
+    func test_isIAPAvailable_isFalseWhenSettingPaymentsBackendStatusAcceptsIAPToFalse() {
+        // Given
+        servicePlanDataStorageMock.paymentsBackendStatusAcceptsIAPStub.fixture = false
+        sut = .init(
+            apiService: apiServiceMock,
+            storeKitDataSource: storeKitDataSourceMock,
+            localStorage: servicePlanDataStorageMock
+        )
+        
+        // Then
+        XCTAssertFalse(sut.paymentsBackendStatusAcceptsIAP)
+        XCTAssertFalse(sut.isIAPAvailable)
     }
     
     // MARK: - fetchCurrentPlan

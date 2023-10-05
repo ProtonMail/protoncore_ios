@@ -1600,6 +1600,30 @@ final class PaymentsUIViewModelTests: XCTestCase {
         XCTAssertNil(sut.defaultCycle)
     }
 
+    // MARK: - fetchPlans
+    
+    func test_fetchPlans_setFooter_withPlansToBuy() async throws {
+        try await withFeatureSwitches([.dynamicPlans]) {
+            // Given
+            let storeKitManager = StoreKitManagerMock()
+            storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+            let sut = PaymentsUIViewModel(
+                mode: .current,
+                storeKitManager: storeKitManager,
+                planService: .right(plansDataSource),
+                clientApp: .mail,
+                customPlansDescription: [:],
+                planRefreshHandler:  { _ in XCTFail() },
+                extendSubscriptionHandler: { XCTFail() }
+            )
+            
+            // When
+            try await sut.fetchPlans()
+            
+            // Then
+            XCTAssertEqual(sut.footerType, .withPlansToBuy)
+        }
+    }
 }
 
 #endif
