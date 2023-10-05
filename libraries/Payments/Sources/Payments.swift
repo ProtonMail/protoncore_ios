@@ -52,7 +52,11 @@ public final class Payments {
 
     public internal(set) lazy var planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol> = {
         if FeatureFactory.shared.isEnabled(.dynamicPlans) {
-            return .right(PlansDataSource(apiService: apiService, storeKitDataSource: storeKitDataSource))
+            return .right(PlansDataSource(
+                apiService: apiService,
+                storeKitDataSource: storeKitDataSource,
+                localStorage: localStorage
+            ))
         } else {
             return .left(
                 ServicePlanDataService(
