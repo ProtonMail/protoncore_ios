@@ -2017,7 +2017,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/SDWebImage/SDWebImage.git",
-            from: "5.16.0"
+            "0.0.0"..<"5.16.0"
         )
     ],
     targets: targets + [
