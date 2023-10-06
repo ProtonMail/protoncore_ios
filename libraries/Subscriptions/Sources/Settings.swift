@@ -21,7 +21,6 @@
 //
 
 import Foundation
-import UIKit
 import StoreKit
 import ProtonCoreFeatureSwitch
 import ProtonCorePayments
