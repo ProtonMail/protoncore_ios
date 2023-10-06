@@ -100,6 +100,7 @@ var availablePlansToCompare: AvailablePlans {
         plans: [
             .init(
                 ID: "ID 1",
+                type: 1,
                 name: "name 1",
                 title: "title 1",
                 description: "description 1",
@@ -135,6 +136,7 @@ var availablePlansToCompare: AvailablePlans {
             ),
             .init(
                 ID: "ID 2",
+                type: 2,
                 name: "name 2",
                 title: "title 2",
                 description: "description 2",

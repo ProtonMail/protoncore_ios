@@ -52,6 +52,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         plansDataSource.availablePlansStub.fixture = .init(
             plans: [
                 .init(ID: "ID",
+                      type: nil,
                       name: "passplus",
                       title: "Pass Plus",
                       description: "plan description",

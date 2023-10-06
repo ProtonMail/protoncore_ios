@@ -38,6 +38,7 @@ final class AvailablePlansDetailsTests: XCTestCase {
         let plansDataSource = PlansDataSourceMock()
         let availablePlan = AvailablePlans.AvailablePlan(
             ID: "id",
+            type: nil,
             name: "name",
             title: "title",
             instances: [],
@@ -65,6 +66,7 @@ final class AvailablePlansDetailsTests: XCTestCase {
         
         let availablePlan = AvailablePlans.AvailablePlan(
             ID: "ID",
+            type: nil,
             name: "name",
             title: "title",
             description: "description",
@@ -115,6 +117,7 @@ final class AvailablePlansDetailsTests: XCTestCase {
         let plansDataSource = PlansDataSourceMock()
         let availablePlan = AvailablePlans.AvailablePlan(
             ID: "ID",
+            type: nil,
             name: "name",
             title: "title",
             instances: [],
