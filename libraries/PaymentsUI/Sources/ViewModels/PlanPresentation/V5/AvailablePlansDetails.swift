@@ -97,7 +97,7 @@ struct AvailablePlansDetails {
             
             return .init(
                 iapID: iapID,
-                isFreePlan: plan.type == nil,
+                isFreePlan: plan.isFreePlan,
                 title: plan.title,
                 description: plan.description,
                 cycleDescription: instance.description,
@@ -110,7 +110,7 @@ struct AvailablePlansDetails {
         } else {
             return .init(
                 iapID: nil,
-                isFreePlan: plan.type == nil,
+                isFreePlan: plan.isFreePlan,
                 title: plan.title,
                 description: plan.description,
                 cycleDescription: nil,
