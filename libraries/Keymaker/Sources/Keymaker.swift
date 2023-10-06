@@ -83,6 +83,10 @@ public class Keymaker: NSObject {
             }
         }
     }
+
+    public var isMainKeyInMemory: Bool {
+        _mainKey != nil
+    }
     
     // accessor for stored value; if stored value is nill - calls provokeMainKeyObtention() method
     
