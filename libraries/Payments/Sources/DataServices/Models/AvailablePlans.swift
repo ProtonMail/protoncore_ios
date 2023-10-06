@@ -174,3 +174,9 @@ extension AvailablePlans.AvailablePlan.Decoration: Decodable {
         }
     }
 }
+
+extension AvailablePlans.AvailablePlan {
+    public var isFreePlan: Bool {
+        type == nil
+    }
+}
