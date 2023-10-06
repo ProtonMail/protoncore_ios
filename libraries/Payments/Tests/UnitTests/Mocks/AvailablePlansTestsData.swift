@@ -31,7 +31,7 @@ var availablePlansResponse: [String: Any] {
                 "Name": "name 1",
                 "Title": "title 1",
                 "State": 1,
-                "Type": 1,
+                "Type": nil,
                 "Description": "description 1",
                 "Features": 1,
                 "Layout": "default",
@@ -100,6 +100,7 @@ var availablePlansToCompare: AvailablePlans {
         plans: [
             .init(
                 ID: "ID 1",
+                type: nil,
                 name: "name 1",
                 title: "title 1",
                 description: "description 1",
@@ -135,6 +136,7 @@ var availablePlansToCompare: AvailablePlans {
             ),
             .init(
                 ID: "ID 2",
+                type: 2,
                 name: "name 2",
                 title: "title 2",
                 description: "description 2",

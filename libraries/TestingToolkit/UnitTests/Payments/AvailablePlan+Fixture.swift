@@ -30,6 +30,7 @@ import ProtonCorePayments
 public extension AvailablePlans.AvailablePlan {
     static var dummy: AvailablePlans.AvailablePlan {
         AvailablePlans.AvailablePlan(ID: .empty,
+                                     type: nil,
                                      name: .empty,
                                      title: .empty,
                                      description: .empty,
@@ -38,6 +39,7 @@ public extension AvailablePlans.AvailablePlan {
                                      decorations: [])
     }
     func updated(ID: String? = nil,
+                 type: Int? = nil,
                  name: String? = nil,
                  title: String? = nil,
                  description: String? = nil,
@@ -45,6 +47,7 @@ public extension AvailablePlans.AvailablePlan {
                  entitlements: [Entitlement]? = nil,
                  decorations: [Decoration]? = nil) -> AvailablePlans.AvailablePlan {
         AvailablePlans.AvailablePlan(ID: ID ?? self.ID,
+                                     type: type ?? self.type,
                                      name: name ?? self.name,
                                      title: title ?? self.title,
                                      description: description ?? self.description,

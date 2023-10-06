@@ -26,6 +26,7 @@ import ProtonCorePayments
 
 struct AvailablePlansDetails {
     let iapID: String?
+    let isFreePlan: Bool
     let title: String // "VPN Plus"
     let description: String? // "Your privacy are our priority."
     let cycleDescription: String? // "for 1 year"
@@ -96,6 +97,7 @@ struct AvailablePlansDetails {
             
             return .init(
                 iapID: iapID,
+                isFreePlan: plan.isFreePlan,
                 title: plan.title,
                 description: plan.description,
                 cycleDescription: instance.description,
@@ -108,6 +110,7 @@ struct AvailablePlansDetails {
         } else {
             return .init(
                 iapID: nil,
+                isFreePlan: plan.isFreePlan,
                 title: plan.title,
                 description: plan.description,
                 cycleDescription: nil,
