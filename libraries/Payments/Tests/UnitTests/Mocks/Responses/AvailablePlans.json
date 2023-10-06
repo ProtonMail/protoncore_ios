@@ -1,5 +1,6 @@
 {
     "Code": 1000,
+    "DefaultCycle": 12,
     "Plans": [{
         "ID": "ID",
         "Name": "mailpro2022",
