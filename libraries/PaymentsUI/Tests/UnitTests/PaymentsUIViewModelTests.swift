@@ -36,6 +36,7 @@ import ProtonCoreTestingToolkit
 @available(iOS 13, *)
 final class PaymentsUIViewModelTests: XCTestCase {
 
+    let defaultCycle = 12
     let timeout = 1.0
 
     var storeKitManager: StoreKitManagerMock!
@@ -48,30 +49,33 @@ final class PaymentsUIViewModelTests: XCTestCase {
         servicePlan = ServicePlanDataServiceMock()
         plansDataSource = PlansDataSourceMock()
         
-        plansDataSource.availablePlansStub.fixture = .init(plans: [
-            .init(ID: "ID",
-                  name: "passplus",
-                  title: "Pass Plus",
-                  description: "plan description",
-                  instances: [
-                    .init(
-                        cycle: 12,
-                        description: "for 12 months",
-                        periodEnd: 1234,
-                        price: [],
-                        vendors: .init(apple: .init(productID: "ios_passplus_12_usd_non_renewing"))
-                    ),
-                    .init(
-                        cycle: 24,
-                        description: "for 24 months",
-                        periodEnd: 1234,
-                        price: [],
-                        vendors: .init(apple: .init(productID: "ios_passplus_24_usd_non_renewing"))
-                    )
-                  ],
-                  entitlements: [],
-                  decorations: [])
-        ])
+        plansDataSource.availablePlansStub.fixture = .init(
+            plans: [
+                .init(ID: "ID",
+                      name: "passplus",
+                      title: "Pass Plus",
+                      description: "plan description",
+                      instances: [
+                        .init(
+                            cycle: 12,
+                            description: "for 12 months",
+                            periodEnd: 1234,
+                            price: [],
+                            vendors: .init(apple: .init(productID: "ios_passplus_12_usd_non_renewing"))
+                        ),
+                        .init(
+                            cycle: 24,
+                            description: "for 24 months",
+                            periodEnd: 1234,
+                            price: [],
+                            vendors: .init(apple: .init(productID: "ios_passplus_24_usd_non_renewing"))
+                        )
+                      ],
+                      entitlements: [],
+                      decorations: [])
+            ],
+            defaultCycle: defaultCycle
+        )
         
         plansDataSource.currentPlanStub.fixture = .init(subscriptions: [
             .init(title: "VPN Plus",
@@ -102,6 +106,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
             try await sut.fetchPlans()
             
             XCTAssertNil(sut.currentPlan)
+            XCTAssertEqual(sut.defaultCycle, defaultCycle)
             XCTAssertEqual(sut.availablePlans?.count, 2)
             XCTAssertEqual(sut.availablePlans?[0].storeKitProductId, "ios_passplus_12_usd_non_renewing")
             XCTAssertEqual(sut.availablePlans?[0].details.cycleDescription, "for 12 months")
@@ -222,7 +227,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         if case .withPlansToBuy = returnedFooterType { } else { XCTFail() }
     }
 
-    // MARK: Current plan mode
+    // MARK: - Current plan mode
 
     func test_fetchPlans_currentMode() async throws {
         try await withFeatureSwitches([.dynamicPlans]) {
@@ -401,7 +406,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         if case .disabled = returnedFooterType { } else { XCTFail() }
     }
 
-    // MARK: Update plan mode
+    // MARK: - Update plan mode
 
     func test_fetchPlan_updateMode() async throws {
         try await withFeatureSwitches([.dynamicPlans]) {
@@ -737,6 +742,8 @@ final class PaymentsUIViewModelTests: XCTestCase {
         }
     }
 
+    // MARK: - CurrentPlan
+    
     func testCurrentPlan_PresentedPrice_Free_NoPaymentMethod() async {
         // GIVEN: user has no subscription and no payment methods
         storeKitManager.priceLabelForProductStub.bodyIs { PresentedPriceTestingHelper.priceLabelForProduct(id: $1) }
@@ -1530,7 +1537,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
         }
     }
     
-    // MARK: dynamicPlans
+    // MARK: - dynamicPlans
     
     func test_dynamicPlans_isWellComposed() async throws {
         try await withFeatureSwitches([.dynamicPlans]) {
@@ -1556,6 +1563,65 @@ final class PaymentsUIViewModelTests: XCTestCase {
             XCTAssertEqual(sut.dynamicPlans.count, 2)
             XCTAssertEqual(sut.dynamicPlans[0].count, 1)
             XCTAssertEqual(sut.dynamicPlans[1].count, 2)
+        }
+    }
+    
+    // MARK: - defaultCycle
+    
+    func test_defaultCycle_withPlansDataSource() {
+        // Given
+        let sut = PaymentsUIViewModel(
+            mode: .current,
+            storeKitManager: storeKitManager,
+            planService: .right(plansDataSource),
+            clientApp: .mail,
+            customPlansDescription: [:],
+            planRefreshHandler:  { _ in XCTFail() },
+            extendSubscriptionHandler: { XCTFail() }
+        )
+
+        // Then
+        XCTAssertEqual(sut.defaultCycle, defaultCycle)
+    }
+    
+    func test_defaultCycle_withServicePlan() {
+        // Given
+        let sut = PaymentsUIViewModel(
+            mode: .current,
+            storeKitManager: storeKitManager,
+            planService: .left(servicePlan),
+            clientApp: .mail,
+            customPlansDescription: [:],
+            planRefreshHandler:  { _ in XCTFail() },
+            extendSubscriptionHandler: { XCTFail() }
+        )
+
+        // Then
+        XCTAssertNil(sut.defaultCycle)
+    }
+
+    // MARK: - fetchPlans
+    
+    func test_fetchPlans_setFooter_withPlansToBuy() async throws {
+        try await withFeatureSwitches([.dynamicPlans]) {
+            // Given
+            let storeKitManager = StoreKitManagerMock()
+            storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+            let sut = PaymentsUIViewModel(
+                mode: .current,
+                storeKitManager: storeKitManager,
+                planService: .right(plansDataSource),
+                clientApp: .mail,
+                customPlansDescription: [:],
+                planRefreshHandler:  { _ in XCTFail() },
+                extendSubscriptionHandler: { XCTFail() }
+            )
+            
+            // When
+            try await sut.fetchPlans()
+            
+            // Then
+            XCTAssertEqual(sut.footerType, .withPlansToBuy)
         }
     }
 }

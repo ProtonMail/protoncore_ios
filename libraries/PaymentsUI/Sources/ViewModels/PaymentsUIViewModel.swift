@@ -28,7 +28,17 @@ import ProtonCorePayments
 import ProtonCoreUtilities
 import ProtonCoreFeatureSwitch
 
-enum FooterType {
+enum FooterType: Equatable {
+    static func == (lhs: FooterType, rhs: FooterType) -> Bool {
+        switch (lhs, rhs) {
+        case (.withPlansToBuy, .withPlansToBuy): return true
+        case (.withoutPlansToBuy, .withoutPlansToBuy): return true
+        case (.withExtendSubscriptionButton, .withExtendSubscriptionButton): return true
+        case (.disabled, .disabled): return true
+        default: return false
+        }
+    }
+    
     case withPlansToBuy
     case withoutPlansToBuy
     case withExtendSubscriptionButton(PlanPresentation)
@@ -86,6 +96,15 @@ class PaymentsUIViewModel {
     }
     private (set) var availablePlans: [AvailablePlansPresentation]?
     private (set) var currentPlan: CurrentPlanPresentation?
+    
+    var defaultCycle: Int? {
+        switch planService {
+        case .left:
+            return nil
+        case .right(let dataSource):
+            return dataSource.availablePlans?.defaultCycle
+        }
+    }
     
     var isExpandButtonHidden: Bool {
         if UIDevice.current.isIpad, UIDevice.current.orientation.isPortrait {
@@ -166,7 +185,6 @@ class PaymentsUIViewModel {
     }
     
     func fetchPlans() async throws {
-        footerType = .withoutPlansToBuy
         try await fetchIAPAvailability()
         switch mode {
         case .signup:
@@ -178,6 +196,16 @@ class PaymentsUIViewModel {
         case .update:
             try await fetchAvailablePlans()
             try await fetchPaymentMethods()
+            footerType = .withPlansToBuy
+        }
+        setFooterType()
+    }
+    
+    private func setFooterType() {
+        if !(availablePlans?.isEmpty ?? true) {
+            footerType = .withPlansToBuy
+        } else {
+            footerType = .withoutPlansToBuy
         }
     }
     
@@ -591,14 +619,18 @@ extension PaymentsUIViewModel {
         self.availablePlans = []
         for plan in availablePlansDataSource {
             if plan.instances.isEmpty {
-                if let plan = try await AvailablePlansPresentation.createAvailablePlans(from: plan, plansDataSource: plansDataSource) {
-                    self.availablePlans?.append(plan)
+                if let plan = try await AvailablePlansPresentation.createAvailablePlans(
+                    from: plan,
+                    defaultCycle: plansDataSource.availablePlans?.defaultCycle,
+                    plansDataSource: plansDataSource) {
+                        self.availablePlans?.append(plan)
                 }
             } else {
                 for instance in plan.instances {
                     if let plan = try await AvailablePlansPresentation.createAvailablePlans(
                         from: plan,
                         for: instance,
+                        defaultCycle: plansDataSource.availablePlans?.defaultCycle,
                         plansDataSource: plansDataSource,
                         storeKitManager: storeKitManager
                     ) {

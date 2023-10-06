@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
 
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
 
-    s.dependency 'ReachabilitySwift', '~> 5.0.0'
+    s.dependency 'SDWebImage', '~> 5.0'
     
     s.dependency 'ProtonCore-FeatureSwitch', $version
 
