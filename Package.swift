@@ -1432,7 +1432,6 @@ add(
                         .featureSwitch,
                         .paymentsUI,
                         .obfuscatedConstants,
-                        .subscriptions,
                         .testingToolkitUnitTestsDataModel,
                         .testingToolkitUnitTestsObservability,
                         .testingToolkitUnitTestsPayments,
