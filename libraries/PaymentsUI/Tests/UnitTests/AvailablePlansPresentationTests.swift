@@ -53,6 +53,7 @@ final class AvailablePlansPresentationTests: XCTestCase {
         
         let plan = AvailablePlans.AvailablePlan(
             ID: "ID",
+            type: 1,
             name: "name",
             title: "title",
             description: "description",
@@ -71,6 +72,7 @@ final class AvailablePlansPresentationTests: XCTestCase {
         )
         
         // Then
+        XCTAssertFalse(sut.details.isFreePlan)
         XCTAssertEqual(sut.details.defaultCycle, 12)
         XCTAssertEqual(sut.availablePlan?.storeKitProductId, "ioscore_core2023_testpromo_12_usd_non_renewing")
         XCTAssertEqual(sut.availablePlan?.protonName, "core2023")
@@ -93,6 +95,7 @@ final class AvailablePlansPresentationTests: XCTestCase {
         
         let plan = AvailablePlans.AvailablePlan(
             ID: "ID",
+            type: nil,
             name: "name",
             title: "title",
             description: "description",
@@ -111,6 +114,46 @@ final class AvailablePlansPresentationTests: XCTestCase {
         
         // Then
         XCTAssertNil(sut)
+    }
+    
+    func test_createFreePlan() async throws {
+        // Given
+        let storeKitManager = StoreKitManagerMock()
+        storeKitManager.priceLabelForProductStub.bodyIs { _, _ in
+            (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs"))
+        }
+        let plansDataSource = PlansDataSourceMock()
+        
+        let instance = AvailablePlans.AvailablePlan.Instance(
+            cycle: 1,
+            description: "description",
+            periodEnd: 1755445843,
+            price: [.init(ID: "id", current: 19176, currency: "USD")],
+            vendors: .init(apple: .init(productID: "ioscore_core2023_testpromo_12_usd_non_renewing"))
+        )
+        
+        let plan = AvailablePlans.AvailablePlan(
+            ID: "ID",
+            type: nil,
+            name: "name",
+            title: "title",
+            description: "description",
+            instances: [instance],
+            entitlements: [],
+            decorations: []
+        )
+
+        // When
+        sut = try await AvailablePlansPresentation.createAvailablePlans(
+            from: plan,
+            for: instance,
+            defaultCycle: 12,
+            plansDataSource: plansDataSource,
+            storeKitManager: storeKitManager
+        )
+        
+        // Then
+        XCTAssertTrue(sut.details.isFreePlan)
     }
 }
 
