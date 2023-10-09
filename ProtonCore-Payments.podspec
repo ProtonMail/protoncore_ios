@@ -31,7 +31,6 @@ Pod::Spec.new do |s|
     s.dependency "ProtonCore-Authentication", $version
     s.dependency "ProtonCore-Networking", $version
     s.dependency "ProtonCore-Services", $version
-    s.dependency "ProtonCore-Subscriptions", $version
     s.source_files = "libraries/Payments/Sources/**/*.swift", "libraries/Payments/Sources/*.swift"
 
     s.resource_bundles = {
