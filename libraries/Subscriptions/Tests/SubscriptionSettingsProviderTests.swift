@@ -19,10 +19,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+#if os(iOS)
 
 import XCTest
 import ProtonCorePayments
 import ProtonCoreSubscriptions
+
+
 
 final class SubscriptionSettingsProviderTests: XCTestCase {
 
@@ -62,3 +65,5 @@ final class SubscriptionSettingsProviderTests: XCTestCase {
     }
 
 }
+
+#endif
