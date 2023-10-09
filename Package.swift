@@ -71,7 +71,7 @@ extension String {
     static let doh: String = "ProtonCoreDoh"
     static let environment: String = "ProtonCoreEnvironment"
     static let features: String = "ProtonCoreFeatures"
-    static let featuresFlags: String =  "FeatureFlags"
+    static let featuresFlags: String = "FeatureFlags"
     static let featureSwitch: String = "ProtonCoreFeatureSwitch"
     static let forceUpgrade: String = "ProtonCoreForceUpgrade"
     static let foundations: String = "ProtonCoreFoundations"
@@ -766,7 +766,15 @@ add(
                 .networking
             ],
             path: "libraries/FeatureFlags/Sources",
-            swiftSettings: .spm)
+            swiftSettings: .spm),
+        
+        .testTarget(name: .featuresFlags + "Tests",
+                    dependencies: [
+                        .featureFlags,
+                    ],
+                    path: "libraries/FeatureFlags/Tests",
+                    resources: [.process("QueryResources")],
+                    swiftSettings: .spm)
     ]
 )
 

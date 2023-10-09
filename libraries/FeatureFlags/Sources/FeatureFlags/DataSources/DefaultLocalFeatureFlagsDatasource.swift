@@ -16,7 +16,7 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Proton Pass. If not, see https://www.gnu.org/licenses/.
+// along with Proton. If not, see https://www.gnu.org/licenses/.
 
 import Foundation
 
@@ -36,7 +36,7 @@ public actor DefaultLocalFeatureFlagsDatasource: LocalFeatureFlagsProtocol {
     }
 
     public func cleanAllFlags() async {
-        currentFlags = [:]
+        currentFlags.removeAll()
     }
 
     public func cleanFlags(for userId: String) async {

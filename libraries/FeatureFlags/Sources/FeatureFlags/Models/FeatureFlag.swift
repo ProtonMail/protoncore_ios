@@ -16,7 +16,7 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Proton Pass. If not, see https://www.gnu.org/licenses/.
+// along with Proton. If not, see https://www.gnu.org/licenses/.
 
 import Foundation
 
@@ -24,6 +24,12 @@ public struct FeatureFlag: Codable, Equatable, Hashable, Sendable {
     public let name: String
     public let enabled: Bool
     public let variant: FeatureFlagVariant?
+    
+    public init(name: String, enabled: Bool, variant: FeatureFlagVariant?) {
+        self.name = name
+        self.enabled = enabled
+        self.variant = variant
+    }
 }
 
 // MARK: - Variant
@@ -32,6 +38,12 @@ public struct FeatureFlagVariant: Codable, Equatable, Hashable, Sendable {
     public let name: String
     public let enabled: Bool
     public let payload: FeatureFlagVariantPayload?
+    
+    public init(name: String, enabled: Bool, payload: FeatureFlagVariantPayload?) {
+        self.name = name
+        self.enabled = enabled
+        self.payload = payload
+    }
 }
 
 // MARK: - Payload
@@ -39,6 +51,11 @@ public struct FeatureFlagVariant: Codable, Equatable, Hashable, Sendable {
 public struct FeatureFlagVariantPayload: Codable, Equatable, Hashable, Sendable {
     public let type: String
     public let value: FeatureFlagVariantPayloadValue
+    
+   public init(type: String, value: FeatureFlagVariantPayloadValue) {
+        self.type = type
+        self.value = value
+    }
 }
 
 // As we don't know the exact type of the payload from unleash we should update the following as explained in
