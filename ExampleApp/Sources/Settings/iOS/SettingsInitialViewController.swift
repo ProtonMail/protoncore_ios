@@ -12,7 +12,7 @@ import ProtonCoreKeymaker
 
 /// This class represents the coordinator/wireframe that controls the flow of the app.
 /// Notifications for `Keymaker`'s `MainKey` removal and creation are observed from here.
-/// Each app should put their code in the "right place" so that the app has the intened behaviour,
+/// Each app should put their code in the "right place" so that the app has the intended behaviour,
 /// this setup is completed by starting the autolock count everytime the app is sent to background,
 /// see `SceneDelegate`.
 final class SettingsInitialViewController: UIViewController {

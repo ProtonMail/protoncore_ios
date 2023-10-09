@@ -182,7 +182,7 @@ final class AccountDeletionViewController: NSViewController {
             alertController.alertStyle = .warning
             alertController.messageText = "Account deletion failure"
             alertController.informativeText = failure
-            alertController.addButton(withTitle: LUITranslation._core_api_might_be_blocked_button.l10n)
+            alertController.addButton(withTitle: ADTranslation.api_might_be_blocked_button.l10n)
             let response = alertController.runModal()
             switch response {
             case .alertFirstButtonReturn:
