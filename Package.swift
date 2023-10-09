@@ -1592,7 +1592,7 @@ add(
 )
 
 // MARK: Subscriptions
-#if(iOS)
+
 add(product: .subscriptions,
     targets: [
         .target(name: .subscriptions,
@@ -1617,7 +1617,6 @@ add(product: .subscriptions,
                     swiftSettings: .spm)
     ]
 )
-#endif
 
 // MARK: TestingToolkit
 
