@@ -19,6 +19,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+#if os(iOS)
 
 import XCTest
 import ProtonCoreSubscriptions
@@ -55,3 +56,4 @@ final class SubscriptionCTATests: XCTestCase {
         XCTAssertEqual("pmsettings-settings-system-settings-cannot-manage-subscription-description", cut.description)
     }
 }
+#endif
