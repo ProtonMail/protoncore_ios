@@ -21,6 +21,7 @@
 
 #if os(iOS)
 
+import ProtonCoreUIFoundations
 import UIKit
 
 class PMHostCell: UITableViewCell, PMContainerReloader, Reusable {
