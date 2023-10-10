@@ -23,25 +23,23 @@
 
 import UIKit
 
-public extension UITableView {
-    final func  register<T: UITableViewHeaderFooterView & Reusable>(cellType: T.Type) {
+extension UITableView {
+    public final func  register<T: UITableViewHeaderFooterView & Reusable>(cellType: T.Type) {
         register(cellType.self, forHeaderFooterViewReuseIdentifier: cellType.reuseIdentifier)
     }
 
-    final func register<T: UITableViewCell & Reusable>(cellType: T.Type) {
+    public final func register<T: UITableViewCell & Reusable>(cellType: T.Type) {
         register(cellType, forCellReuseIdentifier: cellType.reuseIdentifier)
     }
-}
 
-public extension UITableView {
-    final func dequeueReusableCell<T: UITableViewHeaderFooterView & Reusable>() -> T {
+    public final func dequeueReusableCell<T: UITableViewHeaderFooterView & Reusable>() -> T {
         guard let cell = dequeueReusableHeaderFooterView(withIdentifier: T.reuseIdentifier) as? T else {
             fatalError("Failed to dequeue reusable cell with identifier '\(T.reuseIdentifier)'.")
         }
         return cell
     }
 
-    final func dequeueReusableCell<T: UITableViewCell & Reusable>() -> T {
+    public final func dequeueReusableCell<T: UITableViewCell & Reusable>() -> T {
         guard let cell = dequeueReusableCell(withIdentifier: T.reuseIdentifier) as? T else {
             fatalError("Failed to dequeue reusable cell with identifier '\(T.reuseIdentifier)'.")
         }
