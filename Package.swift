@@ -1991,7 +1991,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/airbnb/lottie-ios",
-            exact: "3.4.3"
+            exact: "4.3.3"
         ),
         .package(
             url: "https://github.com/AliSoftware/OHHTTPStubs",
