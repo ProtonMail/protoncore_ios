@@ -24,14 +24,13 @@ import XCTest
 @testable import ProtonCoreKeymaker
 
 class KeymakerTests: XCTestCase {
-
+    var sut: Keymaker!
     var keychainMock: KeychainMock!
     var protectorMock: ProtectionStrategyMock!
-    var keymaker: Keymaker!
 
     override func setUp() async throws {
         keychainMock = KeychainMock(service: "whatever", accessGroup: "whatever")
-        keymaker = Keymaker(autolocker: nil, keychain: keychainMock)
+        sut = Keymaker(autolocker: nil, keychain: keychainMock)
         protectorMock = ProtectionStrategyMock()
         ProtectionStrategyMock.underlyingKeychainLabel = "whatever"
         protectorMock.keychain = keychainMock
@@ -40,7 +39,7 @@ class KeymakerTests: XCTestCase {
     }
 
     override func tearDown() async throws {
-        keymaker = nil
+        sut = nil
         try await super.tearDown()
     }
 
@@ -53,7 +52,7 @@ class KeymakerTests: XCTestCase {
         }
 
         do {
-            try await keymaker.verify(protector: protectorMock)
+            try await sut.verify(protector: protectorMock)
         } catch {
             XCTFail("Verification failed with: \(error)")
         }
@@ -63,7 +62,7 @@ class KeymakerTests: XCTestCase {
         keychainMock.dataForKeyClosure = { _ in return nil }
 
         do {
-            try await keymaker.verify(protector: protectorMock)
+            try await sut.verify(protector: protectorMock)
             XCTFail("Verification should throw error.")
         } catch {
             guard let err = error as? Keymaker.Errors, err == .cypherBitsIsNil else {
@@ -81,7 +80,7 @@ class KeymakerTests: XCTestCase {
         }
 
         do {
-            try await keymaker.verify(protector: protectorMock)
+            try await sut.verify(protector: protectorMock)
             XCTFail("Verification should throw error.")
         } catch {
             guard let err = error as? Keymaker.Errors, err == .cypherBitsIsNil else {
@@ -89,5 +88,14 @@ class KeymakerTests: XCTestCase {
                 return
             }
         }
+    }
+
+    func testIsMainKeyInMemory_whenItIsInMemory_itShouldReturnTrue() {
+        sut.forceInjectMainKey(NoneProtection.generateRandomValue(length: 32))
+        XCTAssertTrue(sut.isMainKeyInMemory)
+    }
+
+    func testIsMainKeyInMemory_whenItIsNotInMemory_itShouldReturnTrue() {
+        XCTAssertFalse(sut.isMainKeyInMemory)
     }
 }
