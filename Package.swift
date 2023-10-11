@@ -71,7 +71,7 @@ extension String {
     static let doh: String = "ProtonCoreDoh"
     static let environment: String = "ProtonCoreEnvironment"
     static let features: String = "ProtonCoreFeatures"
-    static let featuresFlags: String = "FeatureFlags"
+    static let featureFlags: String =  "ProtonCoreFeatureFlags"
     static let featureSwitch: String = "ProtonCoreFeatureSwitch"
     static let forceUpgrade: String = "ProtonCoreForceUpgrade"
     static let foundations: String = "ProtonCoreFoundations"
@@ -182,7 +182,7 @@ extension Target.Dependency {
     static var doh: Target.Dependency { .target(name: .doh) }
     static var environment: Target.Dependency { .target(name: .environment) }
     static var features: Target.Dependency { .target(name: .features) }
-    static var featureFlags: Target.Dependency { .target(name: .featuresFlags) }
+    static var featureFlags: Target.Dependency { .target(name: .featureFlags) }
     static var featureSwitch: Target.Dependency { .target(name: .featureSwitch) }
     static var forceUpgrade: Target.Dependency { .target(name: .forceUpgrade) }
     static var foundations: Target.Dependency { .target(name: .foundations) }
@@ -758,9 +758,9 @@ add(
 // MARK: - Unleash Feature flags
 
 add(
-    product: .featuresFlags,
+    product: .featureFlags,
     targets: [
-        .target(name: .featuresFlags,
+        .target(name: .featureFlags,
             dependencies: [
                 .services,
                 .networking
@@ -768,7 +768,7 @@ add(
             path: "libraries/FeatureFlags/Sources",
             swiftSettings: .spm),
         
-        .testTarget(name: .featuresFlags + "Tests",
+        .testTarget(name: .featureFlags + "Tests",
                     dependencies: [
                         .featureFlags,
                     ],

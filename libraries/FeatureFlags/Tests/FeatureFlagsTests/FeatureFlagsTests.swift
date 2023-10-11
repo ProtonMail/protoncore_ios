@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Proton. If not, see https://www.gnu.org/licenses/.
 
-@testable import FeatureFlags
+@testable import ProtonCoreFeatureFlags
 import XCTest
 
 enum TestFlagsType: String, FeatureFlagTypeProtocol {
