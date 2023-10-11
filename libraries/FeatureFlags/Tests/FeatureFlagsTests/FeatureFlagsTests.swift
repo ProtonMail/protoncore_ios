@@ -60,20 +60,24 @@ final class FeatureFlagsTests: XCTestCase {
         XCTAssertEqual(flag.name, "BlackFriday")
     }
     
-    func testGettingSpecificFlag_ShouldReturnnil() async throws {
+    func testGettingSpecificFlag_ShouldReturnNil() async throws {
         let optionalFlag = await sut.getFlag(for: TestFlagsType.notActivatedFlag)
         XCTAssertNil(optionalFlag)
     }
     
-//    func testCheckIfFlagIsEnabled_ShouldBeTrue() async throws {
-//        let isEnabled = await sut.isFlagEnabled(for: TestFlagsType.blackFriday)
-//        XCTAssertTrue(isEnabled)
-//    }
-//
-//    func testCheckIfFlagIsDisabled() async throws {
-//        let isEnabled = await sut.isFlagEnabled(for: TestFlagsType.primaryVault)
-//        XCTAssertFalse(isEnabled)
-//    }
+    func testCheckIfFlagIsEnabled_ShouldBeTrueFromRepoAndFlags() async throws {
+        let flags = try await sut.getFlags()
+        XCTAssertTrue(flags.isEnabled(for: TestFlagsType.blackFriday))
+        let isEnabled = await sut.isEnabled(for: TestFlagsType.blackFriday)
+        XCTAssertTrue(isEnabled)
+    }
+
+    func testCheckIfFlagIsDisabled() async throws {
+        let flags = try await sut.getFlags()
+        XCTAssertFalse(flags.isEnabled(for: TestFlagsType.primaryVault))
+        let isEnabled = await sut.isEnabled(for: TestFlagsType.primaryVault)
+        XCTAssertFalse(isEnabled)
+    }
     
     func testCheckUpdateAndRefreshOfFlags_ShouldReturnNewFlags() async throws {
         await sut.update(with: FeatureFlagsElementFactory.configuration2)
