@@ -18,7 +18,7 @@
 // along with Proton. If not, see https://www.gnu.org/licenses/.
 
 import Foundation
-@testable import FeatureFlags
+@testable import ProtonCoreFeatureFlags
 
 public class DefaultRemoteDatasourceMock: RemoteFeatureFlagsProtocol {
     public init() {}
