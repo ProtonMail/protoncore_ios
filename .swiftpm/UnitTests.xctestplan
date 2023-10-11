@@ -247,6 +247,13 @@
         "identifier" : "ProtonCoreSubscriptionsTests",
         "name" : "ProtonCoreSubscriptionsTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreFeatureFlagsTests",
+        "name" : "ProtonCoreFeatureFlagsTests"
+      }
     }
   ],
   "version" : 1
