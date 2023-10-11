@@ -773,7 +773,7 @@ add(
                         .featureFlags,
                     ],
                     path: "libraries/FeatureFlags/Tests",
-                    resources: [.process("QueryResources")],
+                    resources: [.process("FeatureFlagsTests/QueryResources")],
                     swiftSettings: .spm)
     ]
 )
