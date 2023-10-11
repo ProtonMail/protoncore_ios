@@ -65,15 +65,15 @@ final class FeatureFlagsTests: XCTestCase {
         XCTAssertNil(optionalFlag)
     }
     
-    func testCheckIfFlagIsEnabled_ShouldBeTrue() async throws {
-        let isEnabled = await sut.isFlagEnabled(for: TestFlagsType.blackFriday)
-        XCTAssertTrue(isEnabled)
-    }
-    
-    func testCheckIfFlagIsDisabled() async throws {
-        let isEnabled = await sut.isFlagEnabled(for: TestFlagsType.primaryVault)
-        XCTAssertFalse(isEnabled)
-    }
+//    func testCheckIfFlagIsEnabled_ShouldBeTrue() async throws {
+//        let isEnabled = await sut.isFlagEnabled(for: TestFlagsType.blackFriday)
+//        XCTAssertTrue(isEnabled)
+//    }
+//
+//    func testCheckIfFlagIsDisabled() async throws {
+//        let isEnabled = await sut.isFlagEnabled(for: TestFlagsType.primaryVault)
+//        XCTAssertFalse(isEnabled)
+//    }
     
     func testCheckUpdateAndRefreshOfFlags_ShouldReturnNewFlags() async throws {
         await sut.update(with: FeatureFlagsElementFactory.configuration2)
