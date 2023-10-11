@@ -21,7 +21,7 @@
 import XCTest
 
 enum TestFlagsType: String, FeatureFlagTypeProtocol {
-    case blackFirday = "BlackFriday"
+    case blackFriday = "BlackFriday"
     case primaryVault = "PassRemovePrimaryVault"
     case notActivatedFlag = "ShouldNotAppear"
 }
@@ -55,7 +55,7 @@ final class FeatureFlagsTests: XCTestCase {
     }
     
     func testGettingSpecificFlag_ShouldReturnAFlag() async throws {
-        let optionalFlag = await sut.getFlag(for: TestFlagsType.blackFirday)
+        let optionalFlag = await sut.getFlag(for: TestFlagsType.blackFriday)
         let flag = try XCTUnwrap(optionalFlag)
         XCTAssertEqual(flag.name, "BlackFriday")
     }
@@ -66,12 +66,12 @@ final class FeatureFlagsTests: XCTestCase {
     }
     
     func testCheckIfFlagIsEnabled_ShouldBeTrue() async throws {
-        let isEnabled = await sut.isFlagEnable(for: TestFlagsType.blackFirday)
+        let isEnabled = await sut.isFlagEnabled(for: TestFlagsType.blackFriday)
         XCTAssertTrue(isEnabled)
     }
     
     func testCheckIfFlagIsDisabled() async throws {
-        let isEnabled = await sut.isFlagEnable(for: TestFlagsType.primaryVault)
+        let isEnabled = await sut.isFlagEnabled(for: TestFlagsType.primaryVault)
         XCTAssertFalse(isEnabled)
     }
     
