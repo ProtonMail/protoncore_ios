@@ -31,6 +31,10 @@ public actor FeatureFlagsRepository: FeatureFlagsRepositoryProtocol {
     /// The configuration for feature flags.
     private var configuration: FeatureFlagsConfiguration
 
+    /// Shared instance.
+    /// It is an error to call it without initializing an instance first.
+    public internal(set) static var shared: FeatureFlagsRepository!
+
     /**
      Initializes a FeatureFlagsRepository instance.
 
@@ -45,6 +49,9 @@ public actor FeatureFlagsRepository: FeatureFlagsRepositoryProtocol {
         self.localDatasource = localDatasource
         self.remoteDatasource = remoteDatasource
         self.configuration = configuration
+        if Self.shared == nil {
+            Self.shared = self
+        }
     }
 }
 
