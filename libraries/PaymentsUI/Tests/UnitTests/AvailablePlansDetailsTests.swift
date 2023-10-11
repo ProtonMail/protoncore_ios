@@ -38,6 +38,7 @@ final class AvailablePlansDetailsTests: XCTestCase {
         let plansDataSource = PlansDataSourceMock()
         let availablePlan = AvailablePlans.AvailablePlan(
             ID: "id",
+            type: nil,
             name: "name",
             title: "title",
             instances: [],
@@ -48,7 +49,7 @@ final class AvailablePlansDetailsTests: XCTestCase {
         )
 
         // When
-        _ = try await AvailablePlansDetails.createPlan(from: availablePlan, plansDataSource: plansDataSource)
+        _ = try await AvailablePlansDetails.createPlan(from: availablePlan, defaultCycle: 12, plansDataSource: plansDataSource)
 
         // Then
         XCTAssertTrue(plansDataSource.createIconURLStub.wasCalled)
@@ -65,6 +66,7 @@ final class AvailablePlansDetailsTests: XCTestCase {
         
         let availablePlan = AvailablePlans.AvailablePlan(
             ID: "ID",
+            type: nil,
             name: "name",
             title: "title",
             description: "description",
@@ -93,12 +95,14 @@ final class AvailablePlansDetailsTests: XCTestCase {
         let plan = try await AvailablePlansDetails.createPlan(
             from: availablePlan,
             for: availablePlan.instances[0],
+            defaultCycle: 12,
             iapPlan: iapPlan,
             plansDataSource: plansDataSource,
             storeKitManager: storeKitManager
         )
         
         // Then
+        XCTAssertEqual(plan?.defaultCycle, 12)
         XCTAssertEqual(plan?.cycleDescription, "12 months")
         XCTAssertEqual(plan?.title, "title")
         XCTAssertEqual(plan?.iapID, "ioscore_core2023_12_usd_non_renewing")
@@ -113,6 +117,7 @@ final class AvailablePlansDetailsTests: XCTestCase {
         let plansDataSource = PlansDataSourceMock()
         let availablePlan = AvailablePlans.AvailablePlan(
             ID: "ID",
+            type: nil,
             name: "name",
             title: "title",
             instances: [],
@@ -123,9 +128,10 @@ final class AvailablePlansDetailsTests: XCTestCase {
         )
         
         // When
-        let plan = try await AvailablePlansDetails.createPlan(from: availablePlan, plansDataSource: plansDataSource)
+        let plan = try await AvailablePlansDetails.createPlan(from: availablePlan, defaultCycle: nil, plansDataSource: plansDataSource)
         
         // Then
+        XCTAssertNil(plan?.defaultCycle)
         XCTAssertNil(plan?.cycleDescription)
         XCTAssertEqual(plan?.title, "title")
         XCTAssertNil(plan?.iapID)

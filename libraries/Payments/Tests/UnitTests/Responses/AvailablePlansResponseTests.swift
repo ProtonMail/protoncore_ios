@@ -34,5 +34,7 @@ final class AvailablePlansResponseTests: XCTestCase {
     func test_availablePlansResponse() {
         XCTAssertTrue(sut.ParseResponse(availablePlansResponse))
         XCTAssertEqual(sut.availablePlans, availablePlansToCompare)
+        XCTAssertEqual(sut.availablePlans?.plans[0].isFreePlan, true)
+        XCTAssertEqual(sut.availablePlans?.plans[1].isFreePlan, false)
     }
 }

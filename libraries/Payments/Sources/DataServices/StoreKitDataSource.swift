@@ -70,6 +70,7 @@ final class StoreKitDataSource: NSObject, StoreKitDataSourceProtocol {
             }
             let updatedPlan = AvailablePlans.AvailablePlan(
                 ID: originalPlan.ID,
+                type: originalPlan.type,
                 name: originalPlan.name,
                 title: originalPlan.title,
                 description: originalPlan.description,
@@ -79,7 +80,7 @@ final class StoreKitDataSource: NSObject, StoreKitDataSourceProtocol {
             )
             return updatedPlan
         }
-        return AvailablePlans(plans: updatedPlans)
+        return AvailablePlans(plans: updatedPlans, defaultCycle: originalPlans.defaultCycle)
     }
 }
 

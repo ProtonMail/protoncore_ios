@@ -63,6 +63,7 @@ final class AvailablePlansIntegrationTests: XCTestCase {
                 
                 expectation.fulfill()
                 
+                XCTAssertEqual(availablePlans.defaultCycle, 12)
                 XCTAssertEqual(availablePlans.plans.count, 1)
                 XCTAssertEqual(availablePlans.plans[0].title, "Mail Essentials")
                 XCTAssertEqual(availablePlans.plans[0].description, "Description")
