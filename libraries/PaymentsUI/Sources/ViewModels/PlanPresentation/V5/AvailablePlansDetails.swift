@@ -26,9 +26,12 @@ import ProtonCorePayments
 
 struct AvailablePlansDetails {
     let iapID: String?
+    let isFreePlan: Bool
     let title: String // "VPN Plus"
     let description: String? // "Your privacy are our priority."
     let cycleDescription: String? // "for 1 year"
+    let defaultCycle: Int?
+    let cycle: Int?
     let price: String // "$71.88"
     let decorations: [Decoration]
     let entitlements: [Entitlement]
@@ -48,6 +51,7 @@ struct AvailablePlansDetails {
     
     static func createPlan(from plan: AvailablePlans.AvailablePlan,
                            for instance: AvailablePlans.AvailablePlan.Instance? = nil,
+                           defaultCycle: Int?,
                            iapPlan: InAppPurchasePlan? = nil,
                            plansDataSource: PlansDataSourceProtocol?,
                            storeKitManager: StoreKitManagerProtocol? = nil) async throws -> AvailablePlansDetails? {
@@ -93,9 +97,12 @@ struct AvailablePlansDetails {
             
             return .init(
                 iapID: iapID,
+                isFreePlan: plan.isFreePlan,
                 title: plan.title,
                 description: plan.description,
                 cycleDescription: instance.description,
+                defaultCycle: defaultCycle,
+                cycle: instance.cycle,
                 price: price,
                 decorations: decorations,
                 entitlements: entitlements
@@ -103,9 +110,12 @@ struct AvailablePlansDetails {
         } else {
             return .init(
                 iapID: nil,
+                isFreePlan: plan.isFreePlan,
                 title: plan.title,
                 description: plan.description,
                 cycleDescription: nil,
+                defaultCycle: defaultCycle,
+                cycle: nil,
                 price: PriceFormatter.formatPlanPrice(price: 0, locale: Locale.current, maximumFractionDigits: 0),
                 decorations: decorations,
                 entitlements: entitlements
