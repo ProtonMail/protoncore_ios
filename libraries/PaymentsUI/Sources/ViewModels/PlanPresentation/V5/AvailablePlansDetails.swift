@@ -116,7 +116,7 @@ struct AvailablePlansDetails {
                 cycleDescription: nil,
                 defaultCycle: defaultCycle,
                 cycle: nil,
-                price: PriceFormatter.formatPlanPrice(price: 0, locale: Locale.current, maximumFractionDigits: 0),
+                price: PUITranslations.plan_details_free_price.l10n,
                 decorations: decorations,
                 entitlements: entitlements
             )

@@ -22,10 +22,13 @@
 import Foundation
 
 enum PriceFormatter {
-    static func formatPlanPrice(price: Double, locale: Locale, maximumFractionDigits: Int = 2) -> String {
+    static func formatPlanPrice(price: Double, locale: Locale = Locale.current, currency: String? = nil, maximumFractionDigits: Int = 2) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.locale = locale
+        if let currency {
+            formatter.currencyCode = currency
+        }
         formatter.maximumFractionDigits = maximumFractionDigits
         let priceString = formatter.string(from: NSNumber(value: price)) ?? ""
         return priceString

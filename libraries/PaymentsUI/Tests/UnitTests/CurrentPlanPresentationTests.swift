@@ -57,7 +57,7 @@ final class CurrentPlanPresentationTests: XCTestCase {
         XCTAssertEqual(sut.details.title, "title")
         XCTAssertEqual(sut.details.description, "description")
         XCTAssertEqual(sut.details.cycleDescription, "cycleDescription")
-        XCTAssertEqual(sut.details.price, "$0")
+        XCTAssertEqual(sut.details.price, "Free")
         XCTAssertNil(sut.details.endDate)
         XCTAssertTrue(sut.details.entitlements.isEmpty)
     }

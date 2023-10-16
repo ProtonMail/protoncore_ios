@@ -72,7 +72,7 @@ final class CurrentPlanDetailsV5Tests: XCTestCase {
         XCTAssertEqual(plan.cycleDescription, "cycleDescription")
         XCTAssertEqual(plan.title, "title")
         XCTAssertEqual(plan.description, "description")
-        XCTAssertEqual(plan.price, "$0")
+        XCTAssertEqual(plan.price, "Free")
         XCTAssertNil(plan.endDate)
         XCTAssertEqual(plan.entitlements, [.description(.init(text: "text"))])
         
