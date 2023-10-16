@@ -74,9 +74,9 @@ struct CurrentPlanDetailsV5 {
         
         var price: String
         if let amount = details.amount {
-            price = PriceFormatter.formatPlanPrice(price: Double(amount) / 100, locale: Locale(identifier: "en-US"))
+            price = PriceFormatter.formatPlanPrice(price: Double(amount) / 100, currency: details.currency)
         } else {
-            price = PriceFormatter.formatPlanPrice(price: 0, locale: Locale.current, maximumFractionDigits: 0)
+            price = PUITranslations.plan_details_free_price.l10n
         }
         
         return .init(

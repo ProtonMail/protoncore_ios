@@ -136,7 +136,7 @@ final class AvailablePlansDetailsTests: XCTestCase {
         XCTAssertEqual(plan?.title, "title")
         XCTAssertNil(plan?.iapID)
         XCTAssertNil(plan?.description)
-        XCTAssertEqual(plan?.price, "$0")
+        XCTAssertEqual(plan?.price, "Free")
         XCTAssertEqual(plan?.decorations.isEmpty, true)
         XCTAssertEqual(plan?.entitlements[0], .init(text: "text", iconUrl: nil))
     }
