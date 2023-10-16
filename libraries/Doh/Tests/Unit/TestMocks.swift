@@ -104,13 +104,21 @@ let testProxyDomains = ["https://proxy.domain.com", "https://proxy2.domain.com"]
 
 func stubProductionHosts() {
     let emptyData = Data()
+
+    var pinningConfig: [String: DoH.PinningConfigurationEntry] = [:]
     for host in ProductionHosts.allCases {
         stub(condition: isHost(host.rawValue)) { _ in HTTPStubsResponse(data: emptyData, statusCode: 200, headers: [:]) }
+        pinningConfig[host.rawValue] = .init(allowSubdomains: false, allowIPs: false)
     }
 }
 
 func stubDoHProvidersSuccess() {
     let proxyDomains = testProxyDomains.map { $0.dropFirst(8) }
+
+    DoH.setPinningConfiguration(proxyDomains.reduce(into: [:], { partialResult, proxyDomain in
+        partialResult[String(proxyDomain)] = .init(allowSubdomains: false, allowIPs: false)
+    }))
+
     let response = """
     {
     "Status":0,"TC":false,"RD":true,"RA":true,"AD":false,"CD":false,
