@@ -2,9 +2,11 @@ include:
   - project: "proton/devops/atlas-deploy"
     ref: main
     file: "/scenarios/pipeline-env.yml"
+  
   - project: "translations/generator"
     ref: master
     file: "/jobs/sync-crowdin.gitlab-ci.yml"
+
   - project: "translations/generator"
     ref: master
     file: "/jobs/commit-locales.gitlab-ci.yml"
@@ -57,11 +59,14 @@ variables:
 workflow:
   rules:
     - if: $CI_PIPELINE_SOURCE == "schedule"
+    
     - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_BRANCH == "develop"
       variables:
         ATLAS_DEPLOY_ENV: "true"
+
     - if: $CI_OPEN_MERGE_REQUESTS
       when: never
+
     - if: $CI_COMMIT_BRANCH
       variables:
         TEST: "manual"
@@ -129,7 +134,13 @@ linting:code-quality:
   rules: &rules_mr_and_develop
     - if: $TEST == "manual"
       when: manual
+
+    # We do not want to run jobs if the schedule doesn't deploy 
+    - if: $CI_PIPELINE_SOURCE == "schedule" && $ATLAS_DEPLOY_ENV != "true"
+      when: never
+
     - when: on_success
+
   needs: []
   allow_failure: false
   interruptible: true
@@ -334,12 +345,11 @@ test:ui:smoke:
 # ui tests regression is run only on schedules
 test:ui:regression:
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    # We do not want to run the job if the schedule doesn't deploy 
+    - if: $CI_PIPELINE_SOURCE == "schedule" && $ATLAS_DEPLOY_ENV == "true"
       when: on_success
-    - if: "$CI_PIPELINE_SOURCE"
-      when: never
-    - if: "$CI_COMMIT_BRANCH"
-      when: never
+
+    - when: never
   timeout: 3 hours 30 minutes
   script:
     - fastlane build_ui_tests device_name:$DEVICE_NAME
