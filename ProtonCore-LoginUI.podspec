@@ -43,7 +43,7 @@ Pod::Spec.new do |s|
     s.dependency "ProtonCore-PaymentsUI", $version
     s.dependency "ProtonCore-HumanVerification", $version
 
-    s.dependency 'lottie-ios', '3.4.3'
+    s.dependency 'lottie-ios', '4.3.3'
     s.dependency 'TrustKit'
 
     s.source_files = "libraries/LoginUI/Sources/**/*.swift"
