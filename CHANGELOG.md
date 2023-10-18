@@ -1,3 +1,13 @@
+## 14.0.0 (2023-10-18)
+
+###  (1 change)
+
+- [feature(dynamicPlans): update crypto libraries](apple/shared/protoncore@4cbb02510448804d1cc381837d0e97f0cf2cbc78) ([merge request](apple/shared/protoncore!1473))
+
+### Changed (1 change)
+
+- [refactor: Remove Reusable duplicate, expose methods for reuse](apple/shared/protoncore@a90a43c18b2480b97a971336c263323b4d8ad790) ([merge request](apple/shared/protoncore!1454))
+
 ## 12.0.0 (2023-09-29)
 
 ###  (1 change)
