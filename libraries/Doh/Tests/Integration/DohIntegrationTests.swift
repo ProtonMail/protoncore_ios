@@ -20,7 +20,6 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import XCTest
-import ProtonCoreEnvironment
 import ProtonCoreFeatureSwitch
 import ProtonCoreServices
 #if canImport(ProtonCoreTestingToolkitUnitTestsCore)
@@ -31,6 +30,7 @@ import ProtonCoreTestingToolkit
 #endif
 
 @testable import ProtonCoreAuthentication
+@testable import ProtonCoreEnvironment // for TrustKit
 @testable import ProtonCoreDoh
 
 @available(iOS 15, *)
@@ -53,16 +53,28 @@ class DohIntegrationTests: XCTestCase {
         Environment.productions.forEach { $0.doh.clearCache() }
     }
 
-    override class func setUp() {
-        super.setUp()
+    override func invokeTest() {
+        let noTrustKit = PMAPIService.noTrustKit
+        let trustKit = PMAPIService.trustKit
+
         PMAPIService.noTrustKit = true
+        PMAPIService.trustKit = nil
+        TrustKitWrapper.current = nil
+
+        let dohPinningConfig = DoH.pinningConfiguration
+
+        TrustKitWrapper.updateDoHPinningConfiguration(
+            TrustKitWrapper.configuration(hardfail: true)
+        )
+
+        super.invokeTest()
+
+        PMAPIService.noTrustKit = noTrustKit
+        PMAPIService.trustKit = trustKit
+        TrustKitWrapper.current = trustKit
+        DoH.pinningConfiguration = dohPinningConfig
     }
 
-    override class func tearDown() {
-        super.tearDown()
-        PMAPIService.noTrustKit = false
-    }
-    
     func testDoHWorksForTXTDomains() async throws {
         // DoH must be run on prod, because there's no AR for atlas
         for environment in Environment.productions {
