@@ -44,10 +44,6 @@ class LoginUISnapshotTests: SnapshotTestCase {
 
     let defaultPrecision: Float = 0.98
     
-    override func tearDown() {
-        super.tearDown()
-    }
-    
     func testSignInScreen_withNav() {
         withFeatureSwitches([]) {
             let controller = loginViewController(for: .username, clientApp: .vpn)

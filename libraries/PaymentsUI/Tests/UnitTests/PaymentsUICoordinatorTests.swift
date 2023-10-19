@@ -108,7 +108,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
                 "CouponCode": "test code",
                 "Cycle": 12,
                 "Plans": [String]()
-            ] as [String : Any]
+            ] as [String: Any]
         ]
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("subscription/check") {
@@ -221,7 +221,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
     func testPlansAreRefreshedWhenPaymentsUIViewControllerAppears() {
         let expectation = self.expectation(description: "API call called")
 
-        let viewModel = PaymentsUIViewModelMock() {
+        let viewModel = PaymentsUIViewModelMock {
             // This is not great solution but I didn't find any better. This expectation should be fullfiled after `paymentsUIViewController.reload()`
             // is called. Inside the coordinator first `viewModel.fetchPlans()` is called on some thread. And at this point this mocked closure is
             // called. After this finishes then `paymentsUIViewController.reload()` is called on main thread. And there is no easy way how to find
@@ -265,7 +265,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
     func testPlansAreRefreshedWhenAppGoesToForeground() {
         let expectation = self.expectation(description: "API call called")
 
-        let viewModel = PaymentsUIViewModelMock() {
+        let viewModel = PaymentsUIViewModelMock {
             // see above
             DispatchQueue.global().asyncAfter(deadline: .now() + 0.1) {
                 expectation.fulfill()

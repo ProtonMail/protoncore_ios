@@ -40,7 +40,7 @@ import ProtonCoreUIFoundations
 
 final class PaymentsUIScreenAppearTests: XCTestCase {
 
-    var controllerWillAppearForFirstTime: Bool? = nil
+    var controllerWillAppearForFirstTime: Bool?
     var timeout: TimeInterval = 3
 
     override func setUp() {
@@ -249,4 +249,3 @@ extension PaymentsUIScreenAppearTests: PaymentsUIViewControllerDelegate {
 }
 
 #endif
-
