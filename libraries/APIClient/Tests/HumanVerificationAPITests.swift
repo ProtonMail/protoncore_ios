@@ -54,7 +54,7 @@ class HumanVerificationAPITests: XCTestCase {
             let resultBody: Data
             do {
                 let dict = try JSONSerialization.jsonObject(with: body, options: []) as! [String: Any]
-                if let value = dict["Type"] as? String, (value == "email" || value == "sms"), let dest = dict["Destination"] as? [String: Any] {
+                if let value = dict["Type"] as? String, value == "email" || value == "sms", let dest = dict["Destination"] as? [String: Any] {
                     if let address = dest["Address"] as? String {
                         if address == "test@test.ch" {
                             resultBody = self.responseStringSuccess.data(using: String.Encoding.utf8)!
@@ -113,6 +113,7 @@ class HumanVerificationAPITests: XCTestCase {
         func onDohTroubleshot() {
             // swiftlint:disable no_print
             PMLog.info("\(#file): \(#function)")
+            // swiftlint:enable no_print
         }
     }
     

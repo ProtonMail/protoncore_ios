@@ -307,7 +307,7 @@ final class PurchaseManagerTests: XCTestCase {
                 "CouponCode": "test code",
                 "Cycle": 12,
                 "Plans": [String]()
-            ] as [String : Any]
+            ] as [String: Any]
         ]
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("subscription/check") {
@@ -358,7 +358,7 @@ final class PurchaseManagerTests: XCTestCase {
                 "CouponCode": "test code",
                 "Cycle": 12,
                 "Plans": [String]()
-            ] as [String : Any]
+            ] as [String: Any]
         ]
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("subscription/check") {
@@ -389,7 +389,6 @@ final class PurchaseManagerTests: XCTestCase {
         XCTAssertTrue(storeKitManager.purchaseProductStub.wasNotCalled)
     }
 
-
     func testShouldSuccessfullyBuySubscriptionForZeroUpdateSubscriptionError() {
         let expectation1 = expectation(description: "Should call completion block")
         let expectation2 = expectation(description: "Should call refresh handler")
@@ -408,7 +407,7 @@ final class PurchaseManagerTests: XCTestCase {
                 "CouponCode": "test code",
                 "Cycle": 12,
                 "Plans": [String]()
-            ] as [String : Any]
+            ] as [String: Any]
         ]
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("subscription/check") {
@@ -462,7 +461,7 @@ final class PurchaseManagerTests: XCTestCase {
                 "CouponCode": "test code",
                 "Cycle": 12,
                 "Plans": [String]()
-            ] as [String : Any]
+            ] as [String: Any]
         ]
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("subscription/check") {
@@ -689,7 +688,6 @@ final class PurchaseManagerTests: XCTestCase {
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(returnedError as? StoreKitManagerErrors, StoreKitManagerErrors.haveTransactionOfAnotherUser)
     }
-
 
     func testShouldPassCancellationFromStoreKit() {
         // given

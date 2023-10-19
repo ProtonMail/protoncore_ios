@@ -259,11 +259,12 @@ public extension Error {
              NSURLErrorCannotFindHost,
              310,
              -1200,
-             8 // No internet
-             :
+             8: // no internet
             return true
         default:
             return false
         }
     }
 }
+
+// swiftlint:enable identifier_name todo
