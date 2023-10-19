@@ -28,14 +28,6 @@ import XCTest
 
 class ProtonRetryPolicyTests: XCTestCase {
 
-    override func setUp() {
-        super.setUp()
-    }
-
-    override func tearDown() {
-        super.tearDown()
-    }
-
     func testRetryLimit() {
         let sut = ProtonRetryPolicy(mode: .background, retryLimit: 2)
 

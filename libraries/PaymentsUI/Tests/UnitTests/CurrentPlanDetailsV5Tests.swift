@@ -31,7 +31,6 @@ import ProtonCoreTestingToolkitUnitTestsPayments
 import ProtonCoreTestingToolkit
 #endif
 
-
 final class CurrentPlanDetailsV5Tests: XCTestCase {
     var plansDataSource: PlansDataSourceMock!
     

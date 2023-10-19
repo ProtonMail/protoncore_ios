@@ -19,13 +19,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-
 import Foundation
 #if canImport(ProtonCoreTestingToolkitUnitTestsCore)
 import ProtonCoreTestingToolkitUnitTestsCore
 #endif
 import ProtonCorePayments
-
 
 public extension AvailablePlans.AvailablePlan {
     static var dummy: AvailablePlans.AvailablePlan {
@@ -57,4 +55,3 @@ public extension AvailablePlans.AvailablePlan {
     }
     
 }
-
