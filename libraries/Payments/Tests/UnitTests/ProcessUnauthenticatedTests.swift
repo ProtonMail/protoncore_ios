@@ -57,7 +57,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
                 "CouponCode": "test code",
                 "Cycle": 12,
                 "Plans": [String]()
-            ] as [String : Any]
+            ] as [String: Any]
         ]
     }
 

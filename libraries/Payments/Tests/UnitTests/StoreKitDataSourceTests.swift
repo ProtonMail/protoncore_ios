@@ -33,14 +33,14 @@ import ProtonCoreTestingToolkit
 final class StoreKitDataSourceTests: XCTestCase {
 
     func testNoProductsAreAvailableAtTheBeginning() async throws {
-        let out = StoreKitDataSource() { SKRequestMock(productIdentifiers: $0) }
+        let out = StoreKitDataSource { SKRequestMock(productIdentifiers: $0) }
         XCTAssertEqual(out.availableProducts, [])
         XCTAssertEqual(out.unavailableProductsIdentifiers, [])
     }
 
     func testFetchingProductsCausesRequestConfigAndStartsTheAsyncOperationWhichEndsWithDelegateMethodBeingCalled() async throws {
         let request = SKRequestMock(productIdentifiers: [])
-        let out = StoreKitDataSource() { _ in request }
+        let out = StoreKitDataSource { _ in request }
 
         // run async task
         let task = Task {

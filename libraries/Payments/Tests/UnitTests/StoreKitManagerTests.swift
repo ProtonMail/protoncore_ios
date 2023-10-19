@@ -463,7 +463,7 @@ final class StoreKitManagerTests: XCTestCase {
         plansDataSourceMock.currentPlanStub.fixture = .dummy
         let planDetails = AvailablePlans.AvailablePlan.dummy.updated(name: "ios_test_12_usd_non_renewing")
         plansDataSourceMock.isIAPAvailableStub.fixture = true
-        plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _,_  in planDetails }
+        plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _  in planDetails }
         let out = StoreKitManager(inAppPurchaseIdentifiersGet: { ["ios_test_12_usd_non_renewing"] },
                                   inAppPurchaseIdentifiersSet: { _ in },
                                   planService: .right(plansDataSourceMock),
@@ -554,7 +554,8 @@ final class StoreKitManagerTests: XCTestCase {
         let planDetails = Plan.empty.updated(name: "ios_test_12_usd_non_renewing", state: 1)
         planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in
-            planDetails }
+            planDetails 
+        }
         planServiceMock.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
 
@@ -562,7 +563,8 @@ final class StoreKitManagerTests: XCTestCase {
         let expectation = XCTestExpectation()
         out.purchaseProduct(plan: plan, amountDue: 100) { _ in
             XCTFail() } errorCompletion: { _ in
-                XCTFail() }
+                XCTFail() 
+        }
 
         wait(for: [expectation], timeout: 50)
         // then
@@ -570,7 +572,6 @@ final class StoreKitManagerTests: XCTestCase {
         XCTAssertEqual(paymentsQueue.payments.first?.quantity, 1)
         XCTAssertEqual(paymentsQueue.payments.first?.applicationUsername, "test user".sha256)
     }
-
 
     func disabledTestPurchaseIsAddedtoPaymentQueueWhenUserIsLoggedInWithDynamicPlans() throws {
         // Test scenario:
@@ -597,7 +598,7 @@ final class StoreKitManagerTests: XCTestCase {
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
         let planDetails = AvailablePlans.AvailablePlan.dummy.updated(
             name: "ios_test_12_usd_non_renewing",
-            title:"test",
+            title: "test",
             instances: [
                 .init(cycle: 12,
                       description: "",
@@ -609,7 +610,8 @@ final class StoreKitManagerTests: XCTestCase {
         plansDataSourceMock.fetchAvailablePlansStub.bodyIs { _ in }
         plansDataSourceMock.availablePlansStub.fixture = AvailablePlans(plans: [planDetails])
         plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _  in
-            planDetails }
+            planDetails 
+        }
         plansDataSourceMock.isIAPAvailableStub.fixture = true
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
 
@@ -691,7 +693,7 @@ final class StoreKitManagerTests: XCTestCase {
             ]
         )
         plansDataSourceMock.fetchAvailablePlansStub.bodyIs { _ in }
-        plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _,_  in planDetails }
+        plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _  in planDetails }
         out.subscribeToPaymentQueue()
         return out
     }
@@ -740,7 +742,8 @@ final class StoreKitManagerTests: XCTestCase {
         // when: purchase (2)
         out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail() }
             errorCompletion: { _ in XCTFail() }
-            deferredCompletion: { expectation.fulfill() } // swiftlint:disable:this closure_end_indentation
+            deferredCompletion: { expectation.fulfill() 
+        }
         paymentsQueue.fire = true
 
         // then
@@ -762,7 +765,8 @@ final class StoreKitManagerTests: XCTestCase {
         // when: purchase (2)
         out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail() }
             errorCompletion: { _ in XCTFail() }
-            deferredCompletion: { expectation.fulfill() } // swiftlint:disable:this closure_end_indentation
+            deferredCompletion: { expectation.fulfill() 
+        }
         paymentsQueue.fire = true
 
         // then
@@ -789,7 +793,8 @@ final class StoreKitManagerTests: XCTestCase {
             expectation.fulfill()
         }
             errorCompletion: { _ in XCTFail() }
-            deferredCompletion: { XCTFail() } // swiftlint:disable:this closure_end_indentation
+            deferredCompletion: { XCTFail()
+        }
         paymentsQueue.fire = true
 
         // then
@@ -818,7 +823,8 @@ final class StoreKitManagerTests: XCTestCase {
                 returnedError = error
                 expectation.fulfill()
             }
-            deferredCompletion: { XCTFail() } // swiftlint:disable:this closure_end_indentation
+            deferredCompletion: { XCTFail() 
+        }
         paymentsQueue.fire = true
 
         // then
@@ -902,7 +908,6 @@ final class StoreKitManagerTests: XCTestCase {
         // nothing should happen — the completion block was associated with the username
     }
 
-
     // Remove with CP-6369
     func testTransactionStatePurchasedNoHashedUsernameWithoutSubscriptionsFF() throws {
         withFeatureSwitches([]) {
@@ -926,7 +931,7 @@ final class StoreKitManagerTests: XCTestCase {
                     "CouponCode": "test code",
                     "Cycle": 12,
                     "Plans": [String]()
-                ] as [String : Any]
+                ] as [String: Any]
             ]
             let token = PaymentToken(token: "test token", status: .pending)
             storeKitManagerDelegate.tokenStorageStub.fixture = paymentTokenStorageMock
@@ -950,7 +955,8 @@ final class StoreKitManagerTests: XCTestCase {
             out.purchaseProduct(plan: plan, amountDue: 100) { result in
                 returnedResult = result
                 expectation1.fulfill()
-            } errorCompletion: { _ in XCTFail() } // swiftlint:disable:this closure_end_indentation
+            } errorCompletion: { _ in XCTFail() 
+            }
             //       Start processing transactions (2)
             paymentsQueue.fire = true
 
@@ -998,7 +1004,7 @@ final class StoreKitManagerTests: XCTestCase {
                     "CouponCode": "test code",
                     "Cycle": 12,
                     "Plans": [String]()
-                ] as [String : Any]
+                ] as [String: Any]
             ]
             let token = PaymentToken(token: "test token", status: .pending)
             storeKitManagerDelegate.tokenStorageStub.fixture = paymentTokenStorageMock
@@ -1022,7 +1028,8 @@ final class StoreKitManagerTests: XCTestCase {
             out.purchaseProduct(plan: plan, amountDue: 100) { result in
                 returnedResult = result
                 expectation1.fulfill()
-            } errorCompletion: { _ in XCTFail() } // swiftlint:disable:this closure_end_indentation
+            } errorCompletion: { _ in XCTFail() 
+            }
             //       Start processing transactions (2)
             paymentsQueue.fire = true
             
@@ -1068,7 +1075,7 @@ final class StoreKitManagerTests: XCTestCase {
                 "CouponCode": "test code",
                 "Cycle": 12,
                 "Plans": [String]()
-            ] as [String : Any]
+            ] as [String: Any]
         ]
         let token = PaymentToken(token: "test token", status: .pending)
         storeKitManagerDelegate.tokenStorageStub.fixture = paymentTokenStorageMock
@@ -1121,7 +1128,7 @@ final class StoreKitManagerTests: XCTestCase {
                 "CouponCode": "test code",
                 "Cycle": 12,
                 "Plans": [String]()
-            ] as [String : Any]
+            ] as [String: Any]
         ]
         let token = PaymentToken(token: "test token", status: .pending)
         storeKitManagerDelegate.tokenStorageStub.fixture = paymentTokenStorageMock

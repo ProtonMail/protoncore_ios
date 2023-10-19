@@ -84,7 +84,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
                   cycleDescription: "for 12 months",
                   entitlements: []
                  )
-            ]
+        ]
         )
     }
 
@@ -1439,7 +1439,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
                 planService: .right(plansDataSource),
                 clientApp: .mail,
                 customPlansDescription: [:],
-                planRefreshHandler:  { _ in XCTFail() },
+                planRefreshHandler: { _ in XCTFail() },
                 extendSubscriptionHandler: { XCTFail() }
             )
             
@@ -1467,7 +1467,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
                 planService: .right(plansDataSource),
                 clientApp: .mail,
                 customPlansDescription: [:],
-                planRefreshHandler:  { _ in XCTFail() },
+                planRefreshHandler: { _ in XCTFail() },
                 extendSubscriptionHandler: { XCTFail() }
             )
 
@@ -1500,7 +1500,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
                 planService: .right(plansDataSource),
                 clientApp: .mail,
                 customPlansDescription: [:],
-                planRefreshHandler:  { _ in XCTFail() },
+                planRefreshHandler: { _ in XCTFail() },
                 extendSubscriptionHandler: { XCTFail() }
             )
 
@@ -1526,7 +1526,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
                 planService: .right(plansDataSource),
                 clientApp: .mail,
                 customPlansDescription: [:],
-                planRefreshHandler:  { _ in XCTFail() },
+                planRefreshHandler: { _ in XCTFail() },
                 extendSubscriptionHandler: { XCTFail() }
             )
 
@@ -1552,7 +1552,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
                 planService: .right(plansDataSource),
                 clientApp: .mail,
                 customPlansDescription: [:],
-                planRefreshHandler:  { _ in XCTFail() },
+                planRefreshHandler: { _ in XCTFail() },
                 extendSubscriptionHandler: { XCTFail() }
             )
 
@@ -1577,7 +1577,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
             planService: .right(plansDataSource),
             clientApp: .mail,
             customPlansDescription: [:],
-            planRefreshHandler:  { _ in XCTFail() },
+            planRefreshHandler: { _ in XCTFail() },
             extendSubscriptionHandler: { XCTFail() }
         )
 
@@ -1593,7 +1593,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
             planService: .left(servicePlan),
             clientApp: .mail,
             customPlansDescription: [:],
-            planRefreshHandler:  { _ in XCTFail() },
+            planRefreshHandler: { _ in XCTFail() },
             extendSubscriptionHandler: { XCTFail() }
         )
 
@@ -1614,7 +1614,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
                 planService: .right(plansDataSource),
                 clientApp: .mail,
                 customPlansDescription: [:],
-                planRefreshHandler:  { _ in XCTFail() },
+                planRefreshHandler: { _ in XCTFail() },
                 extendSubscriptionHandler: { XCTFail() }
             )
             
