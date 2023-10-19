@@ -1,0 +1,28 @@
+
+"pmsettings-settings-title" = "설정";
+
+"pmsettings-settings-app-settings-section" = "앱 설정";
+
+"pmsettings-settings-system-settings-section" = "시스템 설정";
+
+"pmsettings-settings-system-settings-language-title" = "언어";
+
+"pmsettings-settings-system-settings-language-description" = "시스템 설정에서 선호하는 언어를 선택하실 수 있습니다.";
+
+"pmsettings-settings-system-settings-language-button" = "시스템 설정에서 언어 설정";
+
+"pmsettings-settings-system-settings-notifications-title" = "알림";
+
+"pmsettings-settings-system-settings-notifications-description" = "이 캘린더가 이벤트나 초대에 대한 최신 정보를 계속 알려줄 수 있습니다. 푸시 알림을 받으려면 시스템 설정을 변경해야 합니다.";
+
+"pmsettings-settings-system-settings-notifications-button" = "시스템 설정에서 권한 관리";
+
+"pmsettings-settings-about-section" = "정보";
+
+"pmsettings-settings-about-acknowledgements" = "승인서";
+
+"pmsettings-settings-about-privacy" = "개인 정보 정책";
+
+"pmsettings-settings-about-terms" = "서비스 이용약관";
+
+"pmsettings-settings-footer" = "앱 버전: %@";

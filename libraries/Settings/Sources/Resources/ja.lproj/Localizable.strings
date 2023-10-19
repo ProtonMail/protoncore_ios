@@ -1,0 +1,28 @@
+
+"pmsettings-settings-title" = "設定";
+
+"pmsettings-settings-app-settings-section" = "アプリ設定";
+
+"pmsettings-settings-system-settings-section" = "システム設定";
+
+"pmsettings-settings-system-settings-language-title" = "言語 / Language";
+
+"pmsettings-settings-system-settings-language-description" = "システム設定で言語を選択できます。";
+
+"pmsettings-settings-system-settings-language-button" = "システム設定で言語を設定する。";
+
+"pmsettings-settings-system-settings-notifications-title" = "通知";
+
+"pmsettings-settings-system-settings-notifications-description" = "このカレンダーは、イベントの開催や招待に関する最新情報をお知らせします。プッシュ通知を受け取りたい場合は、システム設定を変更する必要があります。";
+
+"pmsettings-settings-system-settings-notifications-button" = "システム設定で権限を管理する";
+
+"pmsettings-settings-about-section" = "アプリについて";
+
+"pmsettings-settings-about-acknowledgements" = "謝辞";
+
+"pmsettings-settings-about-privacy" = "プライバシーポリシー";
+
+"pmsettings-settings-about-terms" = "利用規約";
+
+"pmsettings-settings-footer" = "アプリのバージョン: %@";
