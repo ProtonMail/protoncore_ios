@@ -26,7 +26,6 @@ import UserNotifications
 // UNUserNotificationCenter is not instantiable without an application host.
 // In order to run the test as plain unit tests, we need to put a façade in front
 
-
 public protocol NotificationCenterProtocol {
     var delegate: UNUserNotificationCenterDelegate? { get set }
     func requestAuthorization(

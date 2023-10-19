@@ -84,7 +84,7 @@ final class UIFoundationsColorsViewController: UIFoundationsAppearanceStyleViewC
         
         ("Shade", [
             (ColorProvider.Shade100, { ColorProvider.Shade100 }, "Shade100"),
-            (ColorProvider.Shade80, { ColorProvider.Shade80 },"Shade80"),
+            (ColorProvider.Shade80, { ColorProvider.Shade80 }, "Shade80"),
             (ColorProvider.Shade60, { ColorProvider.Shade60 }, "Shade60"),
             (ColorProvider.Shade50, { ColorProvider.Shade50 }, "Shade50"),
             (ColorProvider.Shade40, { ColorProvider.Shade40 }, "Shade40"),
@@ -155,21 +155,21 @@ final class UIFoundationsColorsViewController: UIFoundationsAppearanceStyleViewC
             (ColorProvider.PurpleBase.computedStrongVariant, { ColorProvider.PurpleBase.computedStrongVariant }, "PurpleBase.computedStrongVariant"),
             (ColorProvider.PurpleBase.computedIntenseVariant, { ColorProvider.PurpleBase.computedIntenseVariant }, "PurpleBase.computedIntenseVariant"),
             
-            (ColorProvider.EnzianBase, { ColorProvider.EnzianBase} , "EnzianBase"),
+            (ColorProvider.EnzianBase, { ColorProvider.EnzianBase }, "EnzianBase"),
             (ColorProvider.EnzianBase.computedStrongVariant, { ColorProvider.EnzianBase.computedStrongVariant }, "EnzianBase.computedStrongVariant"),
             (ColorProvider.EnzianBase.computedIntenseVariant, { ColorProvider.EnzianBase.computedIntenseVariant }, "EnzianBase.computedIntenseVariant"),
             
-            (ColorProvider.PinkBase, { ColorProvider.PinkBase} , "PinkBase"),
+            (ColorProvider.PinkBase, { ColorProvider.PinkBase }, "PinkBase"),
             (ColorProvider.PinkBase.computedStrongVariant, { ColorProvider.PinkBase.computedStrongVariant }, "PinkBase.computedStrongVariant"),
             (ColorProvider.PinkBase.computedIntenseVariant, { ColorProvider.PinkBase.computedIntenseVariant }, "PinkBase.computedIntenseVariant"),
             
-            (ColorProvider.PlumBase, { ColorProvider.PlumBase} , "PlumBase"),
+            (ColorProvider.PlumBase, { ColorProvider.PlumBase }, "PlumBase"),
             (ColorProvider.PlumBase.computedStrongVariant, { ColorProvider.PlumBase.computedStrongVariant }, "PlumBase.computedStrongVariant"),
             (ColorProvider.PlumBase.computedIntenseVariant, { ColorProvider.PlumBase.computedIntenseVariant }, "PlumBase.computedIntenseVariant"),
             
             (ColorProvider.StrawberryBase, { ColorProvider.StrawberryBase }, "StrawberryBase"),
-            (ColorProvider.StrawberryBase.computedStrongVariant, { ColorProvider.StrawberryBase.computedStrongVariant },  "StrawberryBase.computedStrongVariant"),
-            (ColorProvider.StrawberryBase.computedIntenseVariant, { ColorProvider.StrawberryBase.computedIntenseVariant },  "StrawberryBase.computedIntenseVariant"),
+            (ColorProvider.StrawberryBase.computedStrongVariant, { ColorProvider.StrawberryBase.computedStrongVariant }, "StrawberryBase.computedStrongVariant"),
+            (ColorProvider.StrawberryBase.computedIntenseVariant, { ColorProvider.StrawberryBase.computedIntenseVariant }, "StrawberryBase.computedIntenseVariant"),
             
             (ColorProvider.CeriseBase, { ColorProvider.CeriseBase }, "CeriseBase"),
             (ColorProvider.CeriseBase.computedStrongVariant, { ColorProvider.CeriseBase.computedStrongVariant }, "CeriseBase.computedStrongVariant"),
@@ -192,16 +192,16 @@ final class UIFoundationsColorsViewController: UIFoundationsAppearanceStyleViewC
             (ColorProvider.SoilBase.computedIntenseVariant, { ColorProvider.SoilBase.computedIntenseVariant }, "SoilBase.computedIntenseVariant"),
             
             (ColorProvider.SlateblueBase, { ColorProvider.SlateblueBase }, "SlateblueBase"),
-            (ColorProvider.SlateblueBase.computedStrongVariant, { ColorProvider.SlateblueBase.computedStrongVariant },  "SlateblueBase.computedStrongVariant"),
-            (ColorProvider.SlateblueBase.computedIntenseVariant, { ColorProvider.SlateblueBase.computedIntenseVariant },  "SlateblueBase.computedIntenseVariant"),
+            (ColorProvider.SlateblueBase.computedStrongVariant, { ColorProvider.SlateblueBase.computedStrongVariant }, "SlateblueBase.computedStrongVariant"),
+            (ColorProvider.SlateblueBase.computedIntenseVariant, { ColorProvider.SlateblueBase.computedIntenseVariant }, "SlateblueBase.computedIntenseVariant"),
             
             (ColorProvider.CobaltBase, { ColorProvider.CobaltBase }, "CobaltBase"),
             (ColorProvider.CobaltBase.computedStrongVariant, { ColorProvider.CobaltBase.computedStrongVariant }, "CobaltBase.computedStrongVariant"),
             (ColorProvider.CobaltBase.computedIntenseVariant, { ColorProvider.CobaltBase.computedIntenseVariant }, "CobaltBase.computedIntenseVariant"),
             
             (ColorProvider.PacificBase, { ColorProvider.PacificBase }, "PacificBase"),
-            (ColorProvider.PacificBase.computedStrongVariant, { ColorProvider.PacificBase.computedStrongVariant },  "PacificBase.computedStrongVariant"),
-            (ColorProvider.PacificBase.computedIntenseVariant, { ColorProvider.PacificBase.computedIntenseVariant },  "PacificBase.computedIntenseVariant"),
+            (ColorProvider.PacificBase.computedStrongVariant, { ColorProvider.PacificBase.computedStrongVariant }, "PacificBase.computedStrongVariant"),
+            (ColorProvider.PacificBase.computedIntenseVariant, { ColorProvider.PacificBase.computedIntenseVariant }, "PacificBase.computedIntenseVariant"),
             
             (ColorProvider.OceanBase, { ColorProvider.OceanBase }, "OceanBase"),
             (ColorProvider.OceanBase.computedStrongVariant, { ColorProvider.OceanBase.computedStrongVariant }, "OceanBase.computedStrongVariant"),

@@ -103,7 +103,7 @@ class FeaturesViewController: UIViewController, TrustKitDelegate {
                 PMLog.info(String(describing: error))
             case .failure(AuthErrors.apiMightBeBlocked):
                 self.onDohTroubleshot()
-            case .failure,.success(.ask2FA), .success(.updatedCredential), .success(.ssoChallenge):
+            case .failure, .success(.ask2FA), .success(.updatedCredential), .success(.ssoChallenge):
                 break
             }
         }
@@ -163,7 +163,7 @@ class FeaturesViewController: UIViewController, TrustKitDelegate {
 
 extension FeaturesViewController: APIServiceDelegate {
     
-    var additionalHeaders: [String : String]? { nil }
+    var additionalHeaders: [String: String]? { nil }
 
     var locale: String { Locale.autoupdatingCurrent.identifier }
 

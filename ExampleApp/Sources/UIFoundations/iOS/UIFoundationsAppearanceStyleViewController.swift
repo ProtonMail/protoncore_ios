@@ -49,7 +49,6 @@ class UIFoundationsAppearanceStyleViewController: UIViewController {
 
 }
 
-
 class UIFoundationsAppearanceStyleTableViewController: UITableViewController {
 
     private lazy var darkModeButton: UIBarButtonItem = {

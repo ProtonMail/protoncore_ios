@@ -41,4 +41,3 @@ public struct SolidButton: ButtonStyle {
             .cornerRadius(8)
     }
 }
-

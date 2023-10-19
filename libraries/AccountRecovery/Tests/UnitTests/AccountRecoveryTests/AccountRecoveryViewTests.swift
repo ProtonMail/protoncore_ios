@@ -25,7 +25,6 @@ import XCTest
 @testable import ProtonCoreDataModel
 import ViewInspector
 
-
 final class AccountRecoveryViewTests: XCTestCase {
 
     @MainActor func testInitialState() throws {
@@ -47,7 +46,7 @@ final class AccountRecoveryViewTests: XCTestCase {
     @MainActor func testDefaultStateIsInactiveState() throws {
         // Given
         let viewModel = AccountRecoveryView.ViewModel()
-        viewModel.populateWithAccountRecoveryInfo(("janedoe",  "janedoe@protonmail.com", nil))
+        viewModel.populateWithAccountRecoveryInfo(("janedoe", "janedoe@protonmail.com", nil))
 
         // When
         let sut = AccountRecoveryView(viewModel: viewModel)
@@ -61,7 +60,6 @@ final class AccountRecoveryViewTests: XCTestCase {
         _ = try sut.inspect().find(InactiveRecoveryView.self)
 
     }
-
 
     @MainActor func testInactiveState() throws {
         // Given
@@ -84,7 +82,6 @@ final class AccountRecoveryViewTests: XCTestCase {
         XCTAssertThrowsError( try sut.inspect().find(ExpiredAccountRecoveryView.self))
         XCTAssertThrowsError( try sut.inspect().find(SkeletonView.self))
         _ = try sut.inspect().find(InactiveRecoveryView.self)
-
 
     }
 
@@ -119,7 +116,6 @@ final class AccountRecoveryViewTests: XCTestCase {
         })
         _ = try view.find(button: "Account_Recovery_Grace_View_Cancel_Button_CTA".l7d)
     }
-
 
     @MainActor func testUnsecuredState() throws {
         // Given

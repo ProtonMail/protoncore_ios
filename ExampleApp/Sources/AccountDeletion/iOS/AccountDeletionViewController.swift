@@ -161,7 +161,7 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
                     self?.hideLoadingIndicator()
                 }, completion: { [weak self] result in
                     switch result {
-                    case .failure(AccountDeletionError.closedByUser): break;
+                    case .failure(AccountDeletionError.closedByUser): break
                     case .failure(AccountDeletionError.apiMightBeBlocked(let message, _)): self?.handleApiMightBeBlocked(message)
                     case .failure(let error): self?.handleAccountDeletionFailure(error.userFacingMessageInAccountDeletion)
                     case .success(let result): self?.handleSuccessfulAccountDeletion(result)

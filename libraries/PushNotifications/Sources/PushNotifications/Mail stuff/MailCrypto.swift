@@ -65,4 +65,3 @@ class MailCrypto {
         return (passphrase, publicKey, privateKey)
     }
 }
-

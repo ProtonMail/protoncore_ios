@@ -48,7 +48,7 @@ struct ContentView: View {
             LoginAlertView(isShown: $isLoginPresented) { userName, password in
                 viewModel.humanVerificationAuthAction(userName: userName, password: password)
             }
-            .alert(isPresented:$viewModel.showingLoginError) {
+            .alert(isPresented: $viewModel.showingLoginError) {
                 Alert(title: Text("Error"), message: Text("Wrong login credentials"), dismissButton: .cancel(Text("OK")) {
                     viewModel.showingLoginError = false
                 })

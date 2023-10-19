@@ -41,7 +41,7 @@ class UIFoundationsActionSheetViewController: UIFoundationsAppearanceStyleViewCo
         "pan style v2 demo",
         "new sheet style sample"
     ]
-    private var functions: [() -> ()] = []
+    private var functions: [() -> Void] = []
 
     override func loadView() {
         let container = UIView(frame: .zero)
@@ -125,7 +125,7 @@ extension UIFoundationsActionSheetViewController {
                 markType: markType,
                 handler: { item in
                     print("Click \(item.userInfo ?? [:]) \(item.markType)")
-            })
+                })
             items.append(item)
         }
 
@@ -149,7 +149,7 @@ extension UIFoundationsActionSheetViewController {
                 markType: markType,
                 handler: { item in
                     print("Click \(item.userInfo ?? [:]) \(item.markType)")
-            })
+                })
             items.append(item)
         }
 
@@ -169,7 +169,8 @@ extension UIFoundationsActionSheetViewController {
                 userInfo: ["item": "Item \($0)"]
             ) { item in
             print("Click \(item.userInfo ?? [:])")
-        }}
+            }
+        }
         let group = PMActionSheetItemGroup(items: items, style: .clickable)
         sheet = PMActionSheet(headerView: nil, itemGroups: [group], enableBGTap: true, delegate: nil)
         sheet.presentAt(self, animated: true)
@@ -211,7 +212,7 @@ extension UIFoundationsActionSheetViewController {
             } rightItemHandler: {
                 print("Click right item")
                 sheet.dismiss(animated: true)
-            }
+        }
 
         let items = (0...5).map {
             PMActionSheetItem(
@@ -249,7 +250,7 @@ extension UIFoundationsActionSheetViewController {
             } rightItemHandler: {
                 print("Click right item")
                 sheet.dismiss(animated: true)
-            }
+        }
 
         let items = (0...5).map {
             PMActionSheetItem(
@@ -276,8 +277,7 @@ extension UIFoundationsActionSheetViewController {
             } rightItemHandler: {
                 print("Click right item")
                 sheet.dismiss(animated: true)
-            }
-
+        }
 
         let toggle = PMActionSheetItem(style: .toggle("Send to archive?", true)) { item in
             print("Toggle state has changed, new state is \(item.toggleState)")
@@ -384,7 +384,7 @@ extension UIFoundationsActionSheetViewController {
             leftItemHandler: nil,
             rightItemHandler: {
             sheet.dismiss(animated: true)
-        })
+            })
 
         let items = (0...15).map {
             PMActionSheetItem(

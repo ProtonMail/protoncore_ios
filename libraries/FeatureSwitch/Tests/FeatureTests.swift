@@ -34,4 +34,3 @@ class FeatureTests: XCTestCase {
         XCTAssertTrue(featureOne.featureFlags.contains(.remoteOverride))
     }
 }
-

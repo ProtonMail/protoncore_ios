@@ -14,11 +14,11 @@ import ProtonCoreTestingToolkitUITestsPaymentsUI
 import ProtonCoreTestingToolkit
 #endif
 
-fileprivate let titleLabelText = "Payments example"
-fileprivate let showPaymentsUIButtonLabelText = "New user subscription with UI"
-fileprivate let environmentBlackText = "black"
-fileprivate let environmentPaymentText = "payments"
-fileprivate let environmentCustomText = "custom"
+private let titleLabelText = "Payments example"
+private let showPaymentsUIButtonLabelText = "New user subscription with UI"
+private let environmentBlackText = "black"
+private let environmentPaymentText = "payments"
+private let environmentCustomText = "custom"
 
 public final class PaymentsSampleAppRobot: CoreElements {
     
@@ -76,4 +76,3 @@ public final class PaymentsSampleAppRobot: CoreElements {
         }
     }
 }
-

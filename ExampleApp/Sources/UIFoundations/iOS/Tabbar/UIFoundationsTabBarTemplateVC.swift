@@ -30,7 +30,7 @@ struct UIFoundationsTabbarHelper {
         let vc3 = board.instantiateViewController(withIdentifier: "vc3")
         let vc4 = board.instantiateViewController(withIdentifier: "vc4")
         
-        let barVC =  try! PMTabBarBuilder()
+        let barVC = try! PMTabBarBuilder()
             .setFloatingHeight(48)
             .addItem(PMTabBarItem(title: "Day" ), withController: vc1)
             .addItem(PMTabBarItem(title: "3 Day"), withController: vc2)
@@ -48,14 +48,6 @@ class UIFoundationsTabBarTemplateVC: UITableViewController {
     private lazy var darkModeButton: UIBarButtonItem = {
         return UIBarButtonItem(title: "Dark", style: .plain, target: self, action: #selector(toggleDarkMode))
     }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Doesn't like action bar
-        // It not easy to calculate suitable bottom inset for every sub viewcontrollers.
-        // So developer have to handle this by himself.
-//        self.tableView.contentInset.bottom = 96
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -75,7 +67,6 @@ class UIFoundationsTabBarTemplateVC: UITableViewController {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         darkModeButton.title = traitCollection.userInterfaceStyle == .dark ? "Light" : "Dark"
     }
-    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 30

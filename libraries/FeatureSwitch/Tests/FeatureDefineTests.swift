@@ -30,4 +30,3 @@ class FeatureDefineTests: XCTestCase {
         XCTAssertTrue(Feature.testFeature.featureFlags == [])
     }
 }
-

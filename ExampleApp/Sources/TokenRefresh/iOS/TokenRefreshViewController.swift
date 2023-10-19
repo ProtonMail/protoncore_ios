@@ -163,7 +163,7 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
     
     private func unbanUnjail(completion: @escaping () -> Void) {
         showLoadingIndicator()
-        quarkCommands.unban() { [weak self] result in
+        quarkCommands.unban { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success:

@@ -59,7 +59,7 @@ struct InsecureAccountRecoveryView_Previews: PreviewProvider {
     static var viewModel = {
         let vm = AccountRecoveryView.ViewModel()
         vm.email = "norbert@example.com"
-        vm.remainingTime = 3600*72
+        vm.remainingTime = 3600 * 72
         return vm
     }()
 

@@ -42,4 +42,3 @@ extension Feature {
     /// Feature switch that governs whether **Account Recovery** code is active
     public static var accountRecovery = Feature(name: "accountRecovery", isEnable: false)
 }
-

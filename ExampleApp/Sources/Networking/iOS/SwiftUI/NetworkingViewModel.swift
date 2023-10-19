@@ -31,7 +31,7 @@ import ProtonCoreServices
 class NetworkingViewModel: ObservableObject {
 
     private var testApi = PMAPIService.createAPIService(doh: BlackDoHMail.default, sessionUID: "testSessionUID")
-    private var testAuthCredential : AuthCredential? = nil
+    private var testAuthCredential: AuthCredential?
     private var humanVerificationDelegate: HumanVerifyDelegate?
 
     init() {
@@ -81,7 +81,7 @@ class NetworkingViewModel: ObservableObject {
                 func onUpdate(serverTime: Int64) {}
                 func isReachable() -> Bool { return true }
                 var appVersion: String = appVersionHeader.getVersionHeader()
-                var additionalHeaders: [String : String]?
+                var additionalHeaders: [String: String]?
                 var locale: String { Locale.autoupdatingCurrent.identifier }
             }
             return TestDelegate()
@@ -89,7 +89,7 @@ class NetworkingViewModel: ObservableObject {
         
         testApi.serviceDelegate = forceUpgradeServiceDelegate
         
-        //set the human verification delegation
+        // set the human verification delegation
         let url = URL(string: "itms-apps://itunes.apple.com/app/id979659905")!
         forceUpgradeDelegate = ForceUpgradeHelper(config: .mobile(url), responseDelegate: self)
         testApi.forceUpgradeDelegate = forceUpgradeDelegate
@@ -97,7 +97,7 @@ class NetworkingViewModel: ObservableObject {
         // TODO: update to a PMAuthentication version that depends on PMNetworking
         let authApi: Authenticator = Authenticator(api: testApi)
         authApi.authenticate(username: "test", password: "test") { result in
-            print (result)
+            print(result)
         }
     }
     
@@ -122,7 +122,7 @@ class NetworkingViewModel: ObservableObject {
                 PMLog.info("")
             case .failure(Authenticator.Errors.emptyAuthInfoResponse):
                 PMLog.info("")
-            case .failure(_): // network or parsing error
+            case .failure: // network or parsing error
                 PMLog.info("")
             case .success(.ask2FA(let context)): // success but need 2FA
                 PMLog.info(context)
@@ -149,7 +149,7 @@ class NetworkingViewModel: ObservableObject {
         testApi.serviceDelegate = self
         testApi.authDelegate = self
 
-        //set the human verification delegation
+        // set the human verification delegation
         let url = HVCommon.defaultSupportURL(clientApp: clientApp)
         humanVerificationDelegate = HumanCheckHelper(apiService: testApi, supportURL: url, viewController: nil, responseDelegate: self)
         testApi.humanDelegate = humanVerificationDelegate
@@ -169,7 +169,7 @@ extension NetworkingViewModel: AuthDelegate {
     func onRefresh(bySessionUID uid: String, complete: @escaping AuthRefreshComplete) {
         // must call complete - later will have a middle layer manager to handle this because all plantforms will be sharee the same logic
 
-        //steps:
+        // steps:
         // - find auth by uid
         // - double check if the auth ok
         // - call refresh token
@@ -188,7 +188,7 @@ extension NetworkingViewModel: AuthDelegate {
 
     // right now the logout and revoke do the same but they triggered by a different event. will try to unify this.
     func onLogout(sessionUID uid: String) {
-        //try to logout this user by uid
+        // try to logout this user by uid
     }
 
     func onForceUpgrade() {
@@ -198,7 +198,7 @@ extension NetworkingViewModel: AuthDelegate {
 
 extension NetworkingViewModel: APIServiceDelegate {
     
-    var additionalHeaders: [String : String]? { nil }
+    var additionalHeaders: [String: String]? { nil }
     
     var userAgent: String? { "" }
 
@@ -211,7 +211,7 @@ extension NetworkingViewModel: APIServiceDelegate {
 
 extension NetworkingViewModel: TrustKitUIDelegate {
     func onTrustKitValidationError(_ alert: UIAlertController) {
-        //pops up error alert
+        // pops up error alert
     }
 }
 
@@ -227,15 +227,15 @@ extension NetworkingViewModel: ForceUpgradeResponseDelegate {
 
 extension NetworkingViewModel: HumanVerifyResponseDelegate {
     func onHumanVerifyStart() {
-        print ("Human verify start")
+        print("Human verify start")
     }
 
     func onHumanVerifyEnd(result: HumanVerifyEndResult) {
         switch result {
         case .success:
-            print ("Human verify success")
+            print("Human verify success")
         case .cancel:
-            print ("Human verify cancel")
+            print("Human verify cancel")
         }
     }
 }

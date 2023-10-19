@@ -40,7 +40,6 @@ public enum CryptoGoMethodsImplementation: CryptoGoMethods {
         GoLibs.CryptoKey(fromArmored: armored)
     }
 
-
     public func CryptoNewKeyRing(_ key: ProtonCoreCryptoGoInterface.CryptoKey?, _ error: NSErrorPointer) -> ProtonCoreCryptoGoInterface.CryptoKeyRing? {
         GoLibs.CryptoNewKeyRing(key?.toGoLibsType, error)
     }
@@ -130,7 +129,7 @@ public enum CryptoGoMethodsImplementation: CryptoGoMethods {
     }
 
     public func SrpNewServerFromSigned(_ signedModulus: String?, _ verifier: Data?, _ bitLength: Int, _ error: NSErrorPointer) -> ProtonCoreCryptoGoInterface.SrpServer? {
-        let value: GoLibs.SrpServer? =  GoLibs.SrpNewServerFromSigned(signedModulus, verifier, bitLength, error)
+        let value: GoLibs.SrpServer? = GoLibs.SrpNewServerFromSigned(signedModulus, verifier, bitLength, error)
         return value
     }
 

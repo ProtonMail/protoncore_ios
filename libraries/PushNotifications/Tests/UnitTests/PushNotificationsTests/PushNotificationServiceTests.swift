@@ -99,7 +99,6 @@ final class PushNotificationServiceTests: XCTestCase {
      */
 }
 
-
 class FakeNotificationCenter: NotificationCenterProtocol {
     var isAuthorizationRequestSuccesful: Bool
     var authorizationRequestError: Error?

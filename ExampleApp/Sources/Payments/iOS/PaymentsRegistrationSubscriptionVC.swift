@@ -98,7 +98,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
         generateAccessibilityIdentifiers()
     }
     
-    private func reportBugAlertHandler(_ receipt: String?) -> Void {
+    private func reportBugAlertHandler(_ receipt: String?) {
         guard let alertWindow = self.alertWindow else { return }
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Report Bug Example", message: "Example", preferredStyle: .alert)
@@ -284,7 +284,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
                 case .left(let planService):
                     planService.updateServicePlans { [unowned self] in
                         if planService.isIAPAvailable {
-                            planService.updateCurrentSubscription() { [unowned self] in
+                            planService.updateCurrentSubscription { [unowned self] in
                                 let planNames = planService.currentSubscription?.planDetails?
                                     .filter { $0.isAPrimaryPlan }
                                     .compactMap { $0.name } ?? [InAppPurchasePlan.freePlanName]
@@ -325,7 +325,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
 
     private func continuePurchase() {
         // STEP 4: Continue purchase
-        self.payments.storeKitManager.retryProcessingAllPendingTransactions() { [unowned self] in
+        self.payments.storeKitManager.retryProcessingAllPendingTransactions { [unowned self] in
             DispatchQueue.main.async { [unowned self] in
                 self.loginButton.isSelected = false
                 self.statusAfterSignLabel.text = "Subscription status: Success"
@@ -362,7 +362,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
         testApi.serviceDelegate = self
         testApi.authDelegate = authHelper
 
-        //set the human verification delegation
+        // set the human verification delegation
         let url = HVCommon.defaultSupportURL(clientApp: clientApp)
         humanVerificationDelegate = HumanCheckHelper(apiService: testApi, supportURL: url, viewController: self, inAppTheme: { .default }, clientApp: clientApp)
         humanVerificationDelegate?.responseDelegateForLoginAndSignup = self
@@ -459,20 +459,19 @@ extension PaymentsRegistrationSubscriptionVC: APIServiceDelegate {
     }
 }
 
-
 // MARK: - HumanVerifyResponseDelegate
 
 extension PaymentsRegistrationSubscriptionVC: HumanVerifyResponseDelegate {
     func onHumanVerifyStart() {
-        print ("Human verify start")
+        print("Human verify start")
     }
     
     func onHumanVerifyEnd(result: HumanVerifyEndResult) {
         switch result {
         case .success:
-            print ("Human verify success")
+            print("Human verify success")
         case .cancel:
-            print ("Human verify cancel")
+            print("Human verify cancel")
         }
     }
     

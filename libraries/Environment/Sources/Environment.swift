@@ -64,7 +64,7 @@ extension Environment: Equatable {
 
 extension Environment {
     static var supported: [Environment] = [.black]
-    public static func setup(scopes: [Environment]) -> Void {
+    public static func setup(scopes: [Environment]) {
         supported = scopes
     }
     

@@ -184,7 +184,6 @@ extension PushNotificationService {
         await register(sessionUID: sessionID, token: deviceToken, encryptionKit: kit)
     }
 
-
     private func generateEncryptionKit() -> EncryptionKit? {
         do {
             let keyPair = try MailCrypto.generateRandomKeyPair()
@@ -218,7 +217,7 @@ extension PushNotificationService {
                                    onDataTaskCreated: { _ in }) { _, result in
                     continuation.resume(with: result)
                 }
-            }
+           }
         } catch {
             PMLog.error("Couldn't register APNS token: \(error.localizedDescription)")
         }
@@ -253,4 +252,3 @@ fileprivate extension String {
         "****\(suffix(6))"
     }
 }
-

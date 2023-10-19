@@ -16,7 +16,6 @@ import ProtonCoreServices
 import ProtonCoreSubscriptions
 import ProtonCoreChallenge
 
-
 final class SettingsViewController: UIViewController, SubscriptionTypePickerViewControllerDelegate {
     @IBOutlet var settings: UIButton!
     @IBOutlet var lock: UIButton!
@@ -45,14 +44,14 @@ final class SettingsViewController: UIViewController, SubscriptionTypePickerView
         keychain: SettingsDemoKeychain())
 
     @IBAction func presentSettings(_ sender: Any) {
-         appSettings  = PMSettingsSectionViewModel.appSettings(with: SettingsViewController.keymaker)
+         appSettings = PMSettingsSectionViewModel.appSettings(with: SettingsViewController.keymaker)
 
          about = PMSettingsSectionViewModel.about
             .amending()
             .prepend(row: PMAcknowledgementsConfiguration.acknowledgements(url: Self.url))
             .amend()
 
-            ///*
+            /// *
         newSection = PMSettingsSectionBuilder(bundle: Bundle(for: type(of: self)))
             .title("random-section-header")
             .footer("random-section-footer")
@@ -62,7 +61,7 @@ final class SettingsViewController: UIViewController, SubscriptionTypePickerView
         subscriptionPicker.delegate = self
         systemSettings = settings(for: .none)
 
-        vc = PMSettingsComposer.assemble(sections: [newSection, appSettings, systemSettings, about].compactMap {$0} )
+        vc = PMSettingsComposer.assemble(sections: [newSection, appSettings, systemSettings, about].compactMap { $0 })
         present(vc, animated: true, completion: nil)
     }
 
@@ -79,7 +78,7 @@ final class SettingsViewController: UIViewController, SubscriptionTypePickerView
     func typeDidChange(to subType: SubscriptionType) {
         systemSettings = settings(for: subType)
         if let settingsVC = (vc as? UINavigationController)?.viewControllers[0] as? PMSettingsViewController {
-            settingsVC.viewModel = PMSettingsViewModel(sections:  [newSection, appSettings, systemSettings, about].compactMap {$0},
+            settingsVC.viewModel = PMSettingsViewModel(sections: [newSection, appSettings, systemSettings, about].compactMap { $0 },
                                                        version: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")
             settingsVC.tableView.reloadData()
         }

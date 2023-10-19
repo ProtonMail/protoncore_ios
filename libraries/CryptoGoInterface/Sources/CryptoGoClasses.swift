@@ -208,7 +208,6 @@ public protocol CryptoPlainMessageMetadata {
     var modTime: Int64 { get set }
 }
 
-
 @objc public protocol CryptoMIMECallbacksProtocol {
     func onAttachment(_ headers: String?, data: Data?)
     func onBody(_ body: String?, mimetype: String?)
@@ -216,7 +215,6 @@ public protocol CryptoPlainMessageMetadata {
     func onError(_ err: Error?)
     func onVerified(_ verified: Int)
 }
-
 
 public protocol SrpAuth {
     var modulus: Data? { get set }

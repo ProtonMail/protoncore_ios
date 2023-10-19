@@ -35,4 +35,3 @@ final class MailCryptoTests: XCTestCase {
         XCTAssertEqual(message, decrypted)
     }
 }
-

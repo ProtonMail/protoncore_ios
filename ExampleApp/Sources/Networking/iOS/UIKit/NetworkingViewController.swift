@@ -35,8 +35,8 @@ import ProtonCoreEnvironment
 import ProtonCoreChallenge
 import ProtonCoreCryptoGoInterface
 
-///each user will have one api service  & you can create more than one unauthed apiService
-///session/auth data are controlled by a central manager. it needs to extend & implment the API service delegates.
+/// each user will have one api service  & you can create more than one unauthed apiService
+/// session/auth data are controlled by a central manager. it needs to extend & implment the API service delegates.
 
 // e.g. we use main view controller as a central manager. it could be any management class instance
 class NetworkingViewController: UIViewController {
@@ -222,7 +222,7 @@ class NetworkingViewController: UIViewController {
     }
     
     /// simulate the cache of auth credential
-    var testAuthCredential : AuthCredential? = nil
+    var testAuthCredential: AuthCredential?
     
     func testFramework(userName: String, password: String) {
         setupHumanVerification()
@@ -285,7 +285,7 @@ class NetworkingViewController: UIViewController {
         testApi.serviceDelegate = self
         testApi.authDelegate = authHelper
         
-        //set the human verification delegation
+        // set the human verification delegation
         let url = HVCommon.defaultSupportURL(clientApp: clientApp)
         humanVerificationDelegate = HumanCheckHelper(apiService: testApi, supportURL: url, viewController: self, inAppTheme: { .default }, clientApp: clientApp)
         humanVerificationDelegate?.responseDelegateForLoginAndSignup = self
@@ -372,7 +372,7 @@ class NetworkingViewController: UIViewController {
         // TODO: update to a PMAuthentication version that depends on PMNetworking
         let authApi: Authenticator = Authenticator(api: testApi)
         authApi.authenticate(username: "test", password: "test", challenge: nil) { result in
-            print (result)
+            print(result)
         }
     }
     
@@ -397,7 +397,7 @@ extension NetworkingViewController: EnvironmentSelectorDelegate {
     }
 }
 
-extension NetworkingViewController : APIServiceDelegate {
+extension NetworkingViewController: APIServiceDelegate {
     
     var additionalHeaders: [String: String]? { ["x-pm-core-ios-tests": "Testing header, please ignore"] }
     
@@ -440,15 +440,15 @@ extension NetworkingViewController: HumanVerifyPaymentDelegate {
 
 extension NetworkingViewController: HumanVerifyResponseDelegate {
     func onHumanVerifyStart() {
-        print ("Human verify start")
+        print("Human verify start")
     }
     
     func onHumanVerifyEnd(result: HumanVerifyEndResult) {
         switch result {
         case .success:
-            print ("Human verify success")
+            print("Human verify success")
         case .cancel:
-            print ("Human verify cancel")
+            print("Human verify cancel")
         }
     }
     

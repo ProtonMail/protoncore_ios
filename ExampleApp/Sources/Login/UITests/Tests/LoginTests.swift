@@ -184,7 +184,6 @@ class LoginTests: LoginBaseTestCase {
             .verify.suspendedErrorDialog()
     }
     
-    
     func testLoginWithOrgAdminUser() {
         let user = testData.orgAdminUser
         mainRobot.showLogin()
@@ -216,8 +215,7 @@ class LoginTests: LoginBaseTestCase {
             .verify.buttonLogoutVisible()
     }
     
-    
-    //TODO find out why private org members created via quark command are not required password change
+    // TODO find out why private org members created via quark command are not required password change
     
     //    func testLoginWithNewOrgPrivateUser() {
     //        let randomUsername = StringUtils.randomAlphanumericString()

@@ -38,9 +38,9 @@ final class LoginViewController: NSViewController {
     private let serviceDelegate = AnonymousServiceManager()
     private let authManager = AuthHelper()
     
-    private var loginService: LoginService? = nil
-    private var signupService: SignupService? = nil
-    private var humanDelegate: HumanVerifyDelegate? = nil
+    private var loginService: LoginService?
+    private var signupService: SignupService?
+    private var humanDelegate: HumanVerifyDelegate?
     
     @IBOutlet var environmentSelector: EnvironmentSelector!
     @IBOutlet var logoutButton: NSButton!
@@ -178,7 +178,7 @@ final class LoginViewController: NSViewController {
             case .failure(let error):
                 switch error {
                 case let .alreadyHaveInternalOrCustomDomainAddress(address):
-                    self?.createAccountKeys(address: address,  data: data)
+                    self?.createAccountKeys(address: address, data: data)
                 case .cannotCreateInternalAddress, .generic:
                     self?.handleCreateAddressFailure(error)
                 case .apiMightBeBlocked(let message, _):

@@ -216,7 +216,7 @@ final class AccountRecoveryViewModelTests: XCTestCase {
         repositoryMock.returnedInfo = Fixtures.cancelledStateInfo
 
         let secondExpectation = XCTestExpectation(description: "wait for data load")
-        let secondListener =  sut.$isLoaded.sink { loaded in
+        let secondListener = sut.$isLoaded.sink { loaded in
             if loaded { secondExpectation.fulfill() }
         }
 
@@ -243,7 +243,7 @@ final class AccountRecoveryViewModelTests: XCTestCase {
         repositoryMock.returnedInfo = Fixtures.cancelledStateInfo
 
         let secondExpectation = XCTestExpectation(description: "wait for data load")
-        let secondListener =  sut.$isLoaded.sink { loaded in
+        let secondListener = sut.$isLoaded.sink { loaded in
             if loaded { secondExpectation.fulfill() }
         }
 
@@ -272,7 +272,6 @@ final class AccountRecoveryViewModelTests: XCTestCase {
 
         await fulfillment(of: [expectation], timeout: 5)
 
-
         // When
 
         do {
@@ -283,7 +282,6 @@ final class AccountRecoveryViewModelTests: XCTestCase {
         }
     }
 }
-
 
 private class AccountRecoveryRepositoryMock: AccountRecoveryRepositoryProtocol {
     var accountRecoveryDatasource: AccountRecoveryDatasourceProtocol

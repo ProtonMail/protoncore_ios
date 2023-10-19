@@ -45,9 +45,6 @@ public class AccountRecoveryHandler: NotificationHandler {
     public init() {}
 }
 
-
-
-
 extension NotificationType {
     /// Signals the start of the Account Recovery process
     public static let accountRecoveryInitiated = "account_recovery_initiated"
@@ -66,4 +63,3 @@ extension NotificationType {
                                                              NotificationType.accountRecoveryExpired
                                                             ])
 }
-

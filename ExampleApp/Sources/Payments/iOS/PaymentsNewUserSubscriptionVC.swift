@@ -140,7 +140,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
         )
     }
     
-    private func reportBugAlertHandler(_ receipt: String?) -> Void {
+    private func reportBugAlertHandler(_ receipt: String?) {
         guard let alertWindow = self.alertWindow else { return }
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Report Bug Example", message: "Example", preferredStyle: .alert)

@@ -34,7 +34,7 @@ final class LoginMockingSetup {
             domainName = hostName
         }
         HTTPStubs.setEnabled(true)
-        HTTPStubs.onStubActivation() { request, descriptor, response in
+        HTTPStubs.onStubActivation { request, descriptor, response in
             PMLog.info("\(request.url!) stubbed by \(String(describing: descriptor.name)).")
         }
 
@@ -58,7 +58,7 @@ final class LoginMockingSetup {
         } else if shouldMockHumanVerification, ProcessInfo.processInfo.arguments.contains("UITests_MockHVInAuth") {
             weak var usersStub = stub(condition: isHost(domainName) && pathEndsWith("auth/v4") && isMethodPOST() && isFirstRequest()) { request in
                 let url = Bundle.main.url(forResource: "HumanVerificationFail", withExtension: "json")!
-                let headers = ["Content-Type" : "application/json;charset=utf-8"]
+                let headers = ["Content-Type": "application/json;charset=utf-8"]
                 requestCount += 1
                 return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: 200, headers: headers)
             }
@@ -66,7 +66,7 @@ final class LoginMockingSetup {
         } else if shouldMockHumanVerification {
             weak var usersStub = stub(condition: isHost(domainName) && pathEndsWith("users") && isMethodGET() && isFirstRequest()) { request in
                 let url = Bundle.main.url(forResource: "HumanVerificationFail", withExtension: "json")!
-                let headers = ["Content-Type" : "application/json;charset=utf-8"]
+                let headers = ["Content-Type": "application/json;charset=utf-8"]
                 requestCount += 1
                 return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: 200, headers: headers)
             }
@@ -78,7 +78,7 @@ final class LoginMockingSetup {
                 let response = """
                 { "Code": \(errorCode), "Error": "UI tests mocking External accounts not supported" }
                 """.data(using: .utf8)!
-                let headers = ["Content-Type" : "application/json;charset=utf-8"]
+                let headers = ["Content-Type": "application/json;charset=utf-8"]
                 return HTTPStubsResponse(data: response, statusCode: 404, headers: headers)
             }
         }

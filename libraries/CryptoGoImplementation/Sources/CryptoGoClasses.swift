@@ -126,8 +126,6 @@ extension ProtonCoreCryptoGoInterface.CryptoKeyRing {
     }
 }
 
-
-
 extension GoLibs.CryptoKeyRing: ProtonCoreCryptoGoInterface.CryptoKeyRing {
     public func decryptMIMEMessage(_ message: ProtonCoreCryptoGoInterface.CryptoPGPMessage?, verifyKey: ProtonCoreCryptoGoInterface.CryptoKeyRing?, callbacks: ProtonCoreCryptoGoInterface.CryptoMIMECallbacksProtocol?, verifyTime: Int64) {
         decryptMIMEMessage(
@@ -225,7 +223,6 @@ extension GoLibs.CryptoKeyRing: ProtonCoreCryptoGoInterface.CryptoKeyRing {
             verificationContext: verificationContext?.toGoLibsType
         )
     }
-
 
     public func decryptSessionKey(_ keyPacket: Data?) throws -> ProtonCoreCryptoGoInterface.CryptoSessionKey {
         let value: GoLibs.CryptoSessionKey = try decryptSessionKey(keyPacket)
@@ -461,7 +458,6 @@ extension ProtonCoreCryptoGoInterface.CryptoVerificationContext {
 }
 
 extension GoLibs.CryptoVerificationContext: ProtonCoreCryptoGoInterface.CryptoVerificationContext {}
-
 
 // MARK: - SrpAuth
 extension GoLibs.SrpAuth: ProtonCoreCryptoGoInterface.SrpAuth {

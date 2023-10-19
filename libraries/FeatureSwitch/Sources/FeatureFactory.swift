@@ -64,7 +64,7 @@ public class FeatureFactory {
                         }
                     }
                 } catch {
-                    //ignore
+                    // ignore
                 }
             }
         } 
@@ -92,7 +92,7 @@ public class FeatureFactory {
                 return false
             }
         } else if feature.featureFlags.contains(.availableInternal) {
-            if isInternal () {
+            if isInternal() {
                 isEnabled = feature.isEnable
             } else {
                 return false
@@ -134,7 +134,7 @@ public class FeatureFactory {
                 feature.isEnable = true
             }
         } else if feature.featureFlags.contains(.availableInternal) {
-            if isInternal () {
+            if isInternal() {
                 feature.isEnable = true
             }
         } else {
@@ -157,7 +157,7 @@ public class FeatureFactory {
                 feature.isEnable = false
             }
         } else if feature.featureFlags.contains(.availableInternal) {
-            if isInternal () {
+            if isInternal() {
                 feature.isEnable = false
             }
         } else {

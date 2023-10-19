@@ -32,7 +32,7 @@ final class ActiveAccountRecoveryViewTests: XCTestCase {
         let viewModel = AccountRecoveryView.ViewModel()
         viewModel.state = .grace
         viewModel.email = "janedoe@proton.me"
-        viewModel.remainingTime = 72*3600
+        viewModel.remainingTime = 72 * 3600
         viewModel.isLoaded = true
 
         // When
@@ -55,6 +55,5 @@ final class ActiveAccountRecoveryViewTests: XCTestCase {
         XCTAssertEqual("password-reset-period-start", try foundImage.name())
         XCTAssert(type(of: try foundButton.buttonStyle()) == SolidButton.self)
     }
-
   
 }

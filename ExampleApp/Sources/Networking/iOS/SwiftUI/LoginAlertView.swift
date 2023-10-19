@@ -26,7 +26,7 @@ struct LoginAlertView: View {
     @Binding var isShown: Bool
     @State private var userName: String = ""
     @State private var password: String = ""
-    var onDone: (String, String) -> Void = { _,_  in }
+    var onDone: (String, String) -> Void = { _, _  in }
     var onCancel: () -> Void = { }
     
     var body: some View {

@@ -45,11 +45,6 @@ class UIFoundationsMasterViewController: UIFoundationsAppearanceStyleTableViewCo
         rows.append((title: "Dynamic font size", viewController: UIFoundationsDFSViewController()))
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-//        clearsSelectionOnViewWillAppear = splitViewController?.isCollapsed
-        super.viewWillAppear(animated)
-    }
-
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

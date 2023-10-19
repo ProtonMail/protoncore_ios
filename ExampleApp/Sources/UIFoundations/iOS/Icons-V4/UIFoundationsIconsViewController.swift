@@ -168,5 +168,3 @@ final class IconCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-

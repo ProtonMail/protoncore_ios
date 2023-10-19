@@ -17,7 +17,6 @@ public final class SettingsDemoKeychain: Keychain {
     }
 }
 
-
 extension SettingsDemoKeychain: SettingsProvider {
     private static var LockTimeKey = "DemoKeychain.LockTimeKey"
 

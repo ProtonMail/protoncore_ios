@@ -25,8 +25,6 @@ import XCTest
 import ProtonCorePayments
 import ProtonCoreSubscriptions
 
-
-
 final class SubscriptionSettingsProviderTests: XCTestCase {
 
     var subscription: CurrentPlan.Subscription!

@@ -25,8 +25,8 @@ import TrustKit
 import ProtonCoreDoh
 
 public final class TrustKitWrapper {
-    public static private(set) weak var delegate: TrustKitDelegate?
-    public static internal(set) var current: TrustKit?
+    public private(set) static weak var delegate: TrustKitDelegate?
+    public internal(set) static var current: TrustKit?
 
     public static func updateDoHPinningConfiguration(_ trustKitConfiguration: [String: Any]) {
         guard let pinnedDomains = trustKitConfiguration[kTSKPinnedDomains] as? [String: Any] else {

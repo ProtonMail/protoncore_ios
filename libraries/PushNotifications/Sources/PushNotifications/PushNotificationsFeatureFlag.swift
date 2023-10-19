@@ -21,4 +21,3 @@ import ProtonCoreFeatureSwitch
 extension Feature {
     public static var pushNotifications = Feature(name: "pushNotifications", isEnable: false)
 }
-
