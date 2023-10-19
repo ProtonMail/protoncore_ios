@@ -1,0 +1,28 @@
+
+"pmsettings-settings-title" = "Параметри";
+
+"pmsettings-settings-app-settings-section" = "Параметри програми";
+
+"pmsettings-settings-system-settings-section" = "Налаштування системи";
+
+"pmsettings-settings-system-settings-language-title" = "Мова";
+
+"pmsettings-settings-system-settings-language-description" = "Ви можете вибрати бажану мову в налаштуваннях системи.";
+
+"pmsettings-settings-system-settings-language-button" = "Встановити мову в параметрах системи.";
+
+"pmsettings-settings-system-settings-notifications-title" = "Сповіщення";
+
+"pmsettings-settings-system-settings-notifications-description" = "Цей календар допоможе вам бути в курсі подій та реагувати на запрошення. Якщо ви хочете отримувати push-сповіщення, потрібно змінити параметри системи.";
+
+"pmsettings-settings-system-settings-notifications-button" = "Керуйте дозволами в параметрах системи";
+
+"pmsettings-settings-about-section" = "Про програму";
+
+"pmsettings-settings-about-acknowledgements" = "Подяки";
+
+"pmsettings-settings-about-privacy" = "Політика приватності";
+
+"pmsettings-settings-about-terms" = "Умови надання послуг";
+
+"pmsettings-settings-footer" = "Версія програми: %@";

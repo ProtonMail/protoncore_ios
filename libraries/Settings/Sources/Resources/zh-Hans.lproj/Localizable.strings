@@ -1,0 +1,28 @@
+
+"pmsettings-settings-title" = "设置";
+
+"pmsettings-settings-app-settings-section" = "应用设置";
+
+"pmsettings-settings-system-settings-section" = "系统设置";
+
+"pmsettings-settings-system-settings-language-title" = "语言";
+
+"pmsettings-settings-system-settings-language-description" = "您可以在系统设置中更改语言。";
+
+"pmsettings-settings-system-settings-language-button" = "在系统设置中更改语言。";
+
+"pmsettings-settings-system-settings-notifications-title" = "通知";
+
+"pmsettings-settings-system-settings-notifications-description" = "这个日历可以让您及时了解正在发生的事件或邀请。如果您想获得推送通知，则必须更改系统设置。";
+
+"pmsettings-settings-system-settings-notifications-button" = "在系统设置中管理权限";
+
+"pmsettings-settings-about-section" = "关于";
+
+"pmsettings-settings-about-acknowledgements" = "致谢";
+
+"pmsettings-settings-about-privacy" = "隐私协议";
+
+"pmsettings-settings-about-terms" = "服务条款";
+
+"pmsettings-settings-footer" = "程序版本：%@";

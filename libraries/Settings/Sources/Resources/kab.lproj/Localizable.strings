@@ -1,0 +1,28 @@
+
+"pmsettings-settings-title" = "Iɣewwaren";
+
+"pmsettings-settings-app-settings-section" = "Iɣewwaren n usnas";
+
+"pmsettings-settings-system-settings-section" = "Iɣewwaren n unagraw";
+
+"pmsettings-settings-system-settings-language-title" = "Tutlayt";
+
+"pmsettings-settings-system-settings-language-description" = "Tzemreḍ ad tferneḍ tutlayt deg yiɣewwaren n unagraw.";
+
+"pmsettings-settings-system-settings-language-button" = "Sbadu tutlayt deg yiɣewwaren n unagraw.";
+
+"pmsettings-settings-system-settings-notifications-title" = "Ilɣa";
+
+"pmsettings-settings-system-settings-notifications-description" = "This calendar can keep you updated about events happening or invites. If you want to get push notifications you have to change your system settings.";
+
+"pmsettings-settings-system-settings-notifications-button" = "Sefrek tisirag deg yiɣewwaren n unagraw";
+
+"pmsettings-settings-about-section" = "Ɣef";
+
+"pmsettings-settings-about-acknowledgements" = "Isnemmar";
+
+"pmsettings-settings-about-privacy" = "Tasertit n tbaḍnit";
+
+"pmsettings-settings-about-terms" = "Tiwtilin n useqdec";
+
+"pmsettings-settings-footer" = "Lqem n usnas: %@";

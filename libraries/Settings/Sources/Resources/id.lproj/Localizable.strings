@@ -1,0 +1,28 @@
+
+"pmsettings-settings-title" = "Pengaturan";
+
+"pmsettings-settings-app-settings-section" = "Pengaturan Aplikasi";
+
+"pmsettings-settings-system-settings-section" = "Pengaturan Sistem";
+
+"pmsettings-settings-system-settings-language-title" = "Bahasa";
+
+"pmsettings-settings-system-settings-language-description" = "Anda dapat memilih bahasa yang diinginkan pada pengaturan sistem Anda.";
+
+"pmsettings-settings-system-settings-language-button" = "Tentukan bahasa pada pengaturan sistem.";
+
+"pmsettings-settings-system-settings-notifications-title" = "Notifikasi";
+
+"pmsettings-settings-system-settings-notifications-description" = "Kalender ini dapat memberikan Anda informasi terkini seputar acara yang sedang berlangsung atau undangan yang masuk. Apabila Anda ingin memperoleh notifikasi push, Anda harus mengubah pengaturan sistem Anda.";
+
+"pmsettings-settings-system-settings-notifications-button" = "Kelola izin di pengaturan sistem";
+
+"pmsettings-settings-about-section" = "Tentang";
+
+"pmsettings-settings-about-acknowledgements" = "Ucapan terima kasih";
+
+"pmsettings-settings-about-privacy" = "Kebijakan privasi";
+
+"pmsettings-settings-about-terms" = "Ketentuan layanan";
+
+"pmsettings-settings-footer" = "Versi Aplikasi: %@";

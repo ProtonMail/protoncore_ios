@@ -1,0 +1,28 @@
+
+"pmsettings-settings-title" = "Налады";
+
+"pmsettings-settings-app-settings-section" = "Налады праграмы";
+
+"pmsettings-settings-system-settings-section" = "Сістэмныя налады";
+
+"pmsettings-settings-system-settings-language-title" = "Мова";
+
+"pmsettings-settings-system-settings-language-description" = "Вы можаце выбраць вашу мову ў сістэмных наладах.";
+
+"pmsettings-settings-system-settings-language-button" = "Задайце мову ў сістэмных наладах";
+
+"pmsettings-settings-system-settings-notifications-title" = "Апавяшчэнні";
+
+"pmsettings-settings-system-settings-notifications-description" = "Гэты каляндар можа трымаць вас у курсе падзей і запрашэнняў. Для атрымання push-апавяшчэнняў, вам спатрэбіцца ўнесці змены ў сістэмныя налады";
+
+"pmsettings-settings-system-settings-notifications-button" = "Кіруйце дазволамі ў сістэмных наладах";
+
+"pmsettings-settings-about-section" = "Аб праграме";
+
+"pmsettings-settings-about-acknowledgements" = "Падзякі";
+
+"pmsettings-settings-about-privacy" = "Палітыка прыватнасці";
+
+"pmsettings-settings-about-terms" = "Умовы абслугоўвання";
+
+"pmsettings-settings-footer" = "Версія праграмы: %@";
