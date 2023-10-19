@@ -31,8 +31,8 @@ func products(from newProduct: String) -> [Product] {
 }
 
 func add(products newProducts: [Product], targets newTargets: [Target]) {
-    products = products + newProducts
-    targets = targets + newTargets
+    products += newProducts
+    targets += newTargets
 }
 
 func add(product newProduct: String, targets newTargets: [Target]) {
@@ -559,18 +559,18 @@ add(
                 swiftSettings: .spm,
                 plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
 
-         .testTarget(name: .crypto + "Tests",
-                     dependencies: [
-                         .crypto,
-                         .cryptoGoUsedInTests,
-                         .utilities
-                     ],
-                     path: "libraries/Crypto/Tests",
-                     resources: [
-                         .process("Resources")
-                     ],
-                     swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+        .testTarget(name: .crypto + "Tests",
+                    dependencies: [
+                        .crypto,
+                        .cryptoGoUsedInTests,
+                        .utilities
+                    ],
+                    path: "libraries/Crypto/Tests",
+                    resources: [
+                        .process("Resources")
+                    ],
+                    swiftSettings: .spm,
+               plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
     ]
 )
 
@@ -620,44 +620,44 @@ add(
                 swiftSettings: .spm,
                 plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
 
-         .testTarget(name: .cryptoGoImplementation + "Tests",
-                     dependencies: [
-                         .goLibsCryptoGo,
-                         .cryptoGoImplementation,
-                         .cryptoGoInterface
-                     ],
-                     path: "libraries/CryptoGoImplementation/Tests-Crypto-Go",
-                     swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+        .testTarget(name: .cryptoGoImplementation + "Tests",
+                    dependencies: [
+                        .goLibsCryptoGo,
+                        .cryptoGoImplementation,
+                        .cryptoGoInterface
+                    ],
+                    path: "libraries/CryptoGoImplementation/Tests-Crypto-Go",
+                    swiftSettings: .spm,
+               plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
 
-         .testTarget(name: .cryptoPatchedGoImplementation + "Tests",
-                     dependencies: [
-                         .goLibsCryptoPatchedGo,
-                         .cryptoPatchedGoImplementation,
-                         .cryptoGoInterface
-                     ],
-                     path: "libraries/CryptoGoImplementation/Tests-Crypto-patched-Go",
-                     swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+        .testTarget(name: .cryptoPatchedGoImplementation + "Tests",
+                    dependencies: [
+                        .goLibsCryptoPatchedGo,
+                        .cryptoPatchedGoImplementation,
+                        .cryptoGoInterface
+                    ],
+                    path: "libraries/CryptoGoImplementation/Tests-Crypto-patched-Go",
+                    swiftSettings: .spm,
+               plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
 
-         .testTarget(name: .cryptoVPNPatchedGoImplementation + "Tests",
-                     dependencies: [
-                         .goLibsCryptoVPNPatchedGo,
-                         .cryptoVPNPatchedGoImplementation,
-                         .cryptoGoInterface
-                     ],
-                     path: "libraries/CryptoGoImplementation/Tests-Crypto+VPN-patched-Go",
-                     swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+        .testTarget(name: .cryptoVPNPatchedGoImplementation + "Tests",
+                    dependencies: [
+                        .goLibsCryptoVPNPatchedGo,
+                        .cryptoVPNPatchedGoImplementation,
+                        .cryptoGoInterface
+                    ],
+                    path: "libraries/CryptoGoImplementation/Tests-Crypto+VPN-patched-Go",
+                    swiftSettings: .spm,
+               plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
 
-         .testTarget(name: .cryptoSearchGoImplementation + "Tests",
-                     dependencies: [
-                         .goLibsCryptoSearchGo,
-                         .cryptoSearchGoImplementation,
-                         .cryptoGoInterface
-                     ],
-                     path: "libraries/CryptoGoImplementation/Tests-Crypto+Search-Go",
-                     swiftSettings: .spm)
+        .testTarget(name: .cryptoSearchGoImplementation + "Tests",
+                    dependencies: [
+                        .goLibsCryptoSearchGo,
+                        .cryptoSearchGoImplementation,
+                        .cryptoGoInterface
+                    ],
+                    path: "libraries/CryptoGoImplementation/Tests-Crypto+Search-Go",
+                    swiftSettings: .spm)
     ]
 )
 
@@ -822,7 +822,7 @@ add(
                 path: "libraries/FeatureSwitch",
                 exclude: ["Tests"],
                 sources: ["Sources"],
-                resources: [.process("Resources"),],
+                resources: [.process("Resources"), ],
                 swiftSettings: .spm,
                 plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
 
@@ -1227,13 +1227,13 @@ add(
                     swiftSettings: .spm,
                 plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
         
-            .testTarget(name: .loginUI + "LocalizationTests",
-                        dependencies: [
-                            .loginUI,
-                            .testingToolkitUnitTestsCore
-                        ],
-                        path: "libraries/LoginUI/Tests/LocalizationTests",
-                        swiftSettings: .spm)
+        .testTarget(name: .loginUI + "LocalizationTests",
+                    dependencies: [
+                        .loginUI,
+                        .testingToolkitUnitTestsCore
+                    ],
+                    path: "libraries/LoginUI/Tests/LocalizationTests",
+                    swiftSettings: .spm)
     ]
 )
 
@@ -1771,16 +1771,16 @@ add(
                 swiftSettings: .spm,
                 plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
         
-            .target(name: .testingToolkitUnitTestsAuthenticationKeyGeneration,
-                    dependencies: [
-                        .authenticationKeyGeneration,
-                        .testingToolkitUnitTestsAuthentication,
-                        .testingToolkitUnitTestsCore,
-                        .testingToolkitUnitTestsServices
-                    ],
-                    path: "libraries/TestingToolkit/UnitTests/Authentication-KeyGeneration",
-                    swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+        .target(name: .testingToolkitUnitTestsAuthenticationKeyGeneration,
+                dependencies: [
+                    .authenticationKeyGeneration,
+                    .testingToolkitUnitTestsAuthentication,
+                    .testingToolkitUnitTestsCore,
+                    .testingToolkitUnitTestsServices
+                ],
+                path: "libraries/TestingToolkit/UnitTests/Authentication-KeyGeneration",
+                swiftSettings: .spm,
+            plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
 
         .target(name: .testingToolkitUnitTestsCore,
                 dependencies: [
@@ -1819,30 +1819,30 @@ add(
                 swiftSettings: .spm,
                 plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
         
-            .target(name: .testingToolkitUnitTestsLogin,
-                    dependencies: [
-                        .login,
-                        .testingToolkitUnitTestsCore,
-                        .testingToolkitUnitTestsAuthentication,
-                        .testingToolkitUnitTestsDataModel,
-                        .testingToolkitUnitTestsServices
-                    ],
-                    path: "libraries/TestingToolkit/UnitTests/Login",
-                    swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
-        
-            .target(name: .testingToolkitUnitTestsLoginUI,
-                    dependencies: [
-                        .loginUI,
-                        .testingToolkitUnitTestsCore,
-                        .testingToolkitUnitTestsAuthentication,
-                        .testingToolkitUnitTestsDataModel,
-                        .testingToolkitUnitTestsLogin,
-                        .testingToolkitUnitTestsServices
-                    ],
-                    path: "libraries/TestingToolkit/UnitTests/LoginUI",
-                    swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+        .target(name: .testingToolkitUnitTestsLogin,
+                dependencies: [
+                    .login,
+                    .testingToolkitUnitTestsCore,
+                    .testingToolkitUnitTestsAuthentication,
+                    .testingToolkitUnitTestsDataModel,
+                    .testingToolkitUnitTestsServices
+                ],
+                path: "libraries/TestingToolkit/UnitTests/Login",
+                swiftSettings: .spm,
+            plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+
+        .target(name: .testingToolkitUnitTestsLoginUI,
+                dependencies: [
+                    .loginUI,
+                    .testingToolkitUnitTestsCore,
+                    .testingToolkitUnitTestsAuthentication,
+                    .testingToolkitUnitTestsDataModel,
+                    .testingToolkitUnitTestsLogin,
+                    .testingToolkitUnitTestsServices
+                ],
+                path: "libraries/TestingToolkit/UnitTests/LoginUI",
+                swiftSettings: .spm,
+            plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
 
         .target(name: .testingToolkitUnitTestsNetworking,
                 dependencies: [
