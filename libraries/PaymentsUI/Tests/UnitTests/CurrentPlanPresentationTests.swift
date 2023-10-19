@@ -35,7 +35,7 @@ import ProtonCoreTestingToolkit
 final class CurrentPlanPresentationTests: XCTestCase {
     var sut: CurrentPlanPresentation!
     
-    func test_createCurrentPlan_success() async throws {
+    func test_createCurrentPlan_free_success() async throws {
         // Given
         let storeKitManager = StoreKitManagerMock()
         storeKitManager.priceLabelForProductStub.bodyIs { _, _ in
@@ -60,6 +60,69 @@ final class CurrentPlanPresentationTests: XCTestCase {
         XCTAssertEqual(sut.details.price, "Free")
         XCTAssertNil(sut.details.endDate)
         XCTAssertTrue(sut.details.entitlements.isEmpty)
+        XCTAssertFalse(sut.details.hidePriceDetails)
+    }
+    
+    func test_createCurrentPlan_paidOnWeb_success() async throws {
+        // Given
+        let storeKitManager = StoreKitManagerMock()
+        storeKitManager.priceLabelForProductStub.bodyIs { _, _ in
+            (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs"))
+        }
+        let plansDataSource = PlansDataSourceMock()
+        
+        let subscription = CurrentPlan.Subscription(
+            title: "title",
+            description: "description",
+            cycleDescription: "cycleDescription",
+            currency: "USD",
+            amount: 123,
+            external: .web,
+            entitlements: []
+        )
+        
+        // When
+        sut = try await CurrentPlanPresentation.createCurrentPlan(from: subscription, plansDataSource: plansDataSource)
+        
+        // Then
+        XCTAssertEqual(sut.details.title, "title")
+        XCTAssertEqual(sut.details.description, "description")
+        XCTAssertEqual(sut.details.cycleDescription, "cycleDescription")
+        XCTAssertEqual(sut.details.price, "$1.23")
+        XCTAssertNil(sut.details.endDate)
+        XCTAssertTrue(sut.details.entitlements.isEmpty)
+        XCTAssertFalse(sut.details.hidePriceDetails)
+    }
+    
+    func test_createCurrentPlan_paidOnAppStore_success() async throws {
+        // Given
+        let storeKitManager = StoreKitManagerMock()
+        storeKitManager.priceLabelForProductStub.bodyIs { _, _ in
+            (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs"))
+        }
+        let plansDataSource = PlansDataSourceMock()
+        
+        let subscription = CurrentPlan.Subscription(
+            title: "title",
+            description: "description",
+            cycleDescription: "cycleDescription",
+            currency: "USD",
+            amount: 123,
+            external: .apple,
+            entitlements: []
+        )
+        
+        // When
+        sut = try await CurrentPlanPresentation.createCurrentPlan(from: subscription, plansDataSource: plansDataSource)
+        
+        // Then
+        XCTAssertEqual(sut.details.title, "title")
+        XCTAssertEqual(sut.details.description, "description")
+        XCTAssertEqual(sut.details.cycleDescription, "cycleDescription")
+        XCTAssertEqual(sut.details.price, "")
+        XCTAssertNil(sut.details.endDate)
+        XCTAssertTrue(sut.details.entitlements.isEmpty)
+        XCTAssertTrue(sut.details.hidePriceDetails)
     }
 }
 
