@@ -68,17 +68,14 @@ public final class SessionMock: Session {
     }
     
     @FuncStub(SessionMock.upload(with:keyPacket:dataPacket:signature:completion:uploadProgress:)) public var uploadJSONStub
-    // swiftlint:disable function_parameter_count
     public func upload(with request: SessionRequest, keyPacket: Data, dataPacket: Data, signature: Data?,
                        completion: @escaping JSONResponseCompletion, uploadProgress: ProgressCompletion?) {
         uploadJSONStub(request, keyPacket, dataPacket, signature, completion, uploadProgress)
     }
-    
-    // swiftlint:disable function_parameter_count
+
     private func uploadNoGenerics(with: SessionRequest, keyPacket: Data, dataPacket: Data, signature: Data?, jsonDecoder: JSONDecoder?,
                                   completion: @escaping AnyDecodableResponseCompletion, uploadProgress: ProgressCompletion?) {}
     @FuncStub(SessionMock.uploadNoGenerics(with:keyPacket:dataPacket:signature:jsonDecoder:completion:uploadProgress:)) public var uploadDecodableStub
-    // swiftlint:disable function_parameter_count
     public func upload<T>(with request: SessionRequest,
                           keyPacket: Data,
                           dataPacket: Data,
@@ -105,7 +102,6 @@ public final class SessionMock: Session {
     }
 
     @FuncStub(SessionMock.uploadFromFile(with:keyPacket:dataPacketSourceFileURL:signature:completion:uploadProgress:)) public var uploadFromFileJSONStub
-    // swiftlint:disable function_parameter_count
     public func uploadFromFile(with request: SessionRequest,
                                keyPacket: Data,
                                dataPacketSourceFileURL: URL,
@@ -119,7 +115,6 @@ public final class SessionMock: Session {
                                           jsonDecoder: JSONDecoder?, completion: @escaping AnyDecodableResponseCompletion,
                                           uploadProgress: ProgressCompletion?) {}
     @FuncStub(SessionMock.uploadFromFileNoGenerics(with:keyPacket:dataPacketSourceFileURL:signature:jsonDecoder:completion:uploadProgress:)) public var uploadFromFileDecodableStub
-    // swiftlint:disable function_parameter_count
     public func uploadFromFile<T>(with request: SessionRequest,
                                   keyPacket: Data,
                                   dataPacketSourceFileURL: URL,

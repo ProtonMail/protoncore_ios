@@ -49,7 +49,7 @@ extension Environment {
 }
 
 extension Environment: Equatable {
-    public static func ==(lhs: Environment, rhs: Environment) -> Bool {
+    public static func == (lhs: Environment, rhs: Environment) -> Bool {
         switch (lhs, rhs) {
         case (.mailProd, .mailProd), (.vpnProd, .vpnProd), (.driveProd, .driveProd), (.calendarProd, .calendarProd),
             (.black, .black), (.blackPayment, .blackPayment):

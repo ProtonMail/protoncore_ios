@@ -97,3 +97,5 @@ class PasswordViewModelTests: XCTestCase {
 }
 
 #endif
+
+// swiftlint:enable xctfail_message

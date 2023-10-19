@@ -70,7 +70,11 @@ public class ProtonButton: UIButton, AccessibleView {
         willSet {
             switch mode {
             case .solid, .outlined, .text:
-                newValue ? showLoading() : stopLoading()
+                if newValue {
+                    showLoading()
+                } else {
+                    stopLoading()
+                }
             case .image:
                 if isChevron {
                     animateChevron(isSelected: newValue, animated: true)

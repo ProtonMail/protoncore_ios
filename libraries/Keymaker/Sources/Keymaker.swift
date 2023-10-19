@@ -250,12 +250,20 @@ public class Keymaker: NSObject {
         
         self.controlThread.addOperation {
             guard self._mainKey == nil else {
-                isMainThread ? DispatchQueue.main.async { handler(self._mainKey) } : handler(self._mainKey)
+                if isMainThread {
+                    DispatchQueue.main.async { handler(self._mainKey) }
+                } else {
+                    handler(self._mainKey)
+                }
                 return
             }
             
             guard let cypherBits = protector.getCypherBits() else {
-                isMainThread ? DispatchQueue.main.async { handler(nil) } : handler(nil)
+                if isMainThread  {
+                    DispatchQueue.main.async { handler(nil) }
+                } else {
+                    handler(nil)
+                }
                 return
             }
             
@@ -269,7 +277,11 @@ public class Keymaker: NSObject {
                 self._mainKey = nil
             }
             
-            isMainThread ? DispatchQueue.main.async { handler(self._mainKey) } : handler(self._mainKey)
+            if isMainThread {
+                DispatchQueue.main.async { handler(self._mainKey) }
+            } else {
+                handler(self._mainKey)
+            }
         }
     }
 
@@ -302,7 +314,11 @@ public class Keymaker: NSObject {
             guard let mainKey = self.privatelyAccessibleMainKey,
                   (try? protector.lock(value: mainKey)) != nil else
             {
-                isMainThread ? DispatchQueue.main.async { completion(false) } : completion(false)
+                if isMainThread {
+                    DispatchQueue.main.async { completion(false) }
+                } else {
+                    completion(false)
+                }
                 return
             }
             
@@ -311,7 +327,11 @@ public class Keymaker: NSObject {
                 self.deactivate(NoneProtection(keychain: self.keychain))
             }
             
-            isMainThread ? DispatchQueue.main.async { completion(true) } : completion(true)
+            if isMainThread {
+                DispatchQueue.main.async { completion(true) }
+            } else {
+                completion(true)
+            }
         }
     }
     

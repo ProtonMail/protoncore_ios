@@ -301,8 +301,6 @@ extension Encryptor {
 
 extension Encryptor {
 
-    // swiftlint:disable function_parameter_count
-
     @available(*, deprecated, renamed: "encryptAndSignBinary(plainData:contentKeyPacket:privateKey:passphrase:addressKey:addressPassphrase:)")
     public static func encryptAndSignBinary(clearData: Data, contentKeyPacket: Data, privateKey: String, passphrase: String, addressKey: String, addressPassphrase: String) throws -> EncryptedBlock {
         try encryptAndSignBinary(plainData: clearData, contentKeyPacket: contentKeyPacket, privateKey: privateKey,

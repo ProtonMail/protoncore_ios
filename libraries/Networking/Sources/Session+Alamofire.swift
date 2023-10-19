@@ -273,8 +273,7 @@ extension AlamofireSession {
 // MARK: upload key data packets with signature
 
 extension AlamofireSession {
-    
-    // swiftlint:disable function_parameter_count
+
     public func upload(with request: SessionRequest,
                        keyPacket: Data,
                        dataPacket: Data,
@@ -292,8 +291,7 @@ extension AlamofireSession {
                                               dataPacket: dataPacket, signature: signature, uploadProgress: uploadProgress)
         finalizeJSONResponse(dataRequest: uploadRequest, taskOut: taskOut, completion: completion)
     }
-    
-    // swiftlint:disable function_parameter_count
+
     public func upload<T>(with request: SessionRequest,
                           keyPacket: Data,
                           dataPacket: Data,
@@ -312,8 +310,7 @@ extension AlamofireSession {
         
         finalizeDecodableResponse(dataRequest: uploadRequest, taskOut: taskOut, jsonDecoder: jsonDecoder, completion: completion)
     }
-    
-    // swiftlint:disable function_parameter_count
+
     private func upload(with alamofireRequest: AlamofireRequest,
                         parameters: [String: String],
                         keyPacket: Data,
@@ -419,8 +416,7 @@ extension AlamofireSession {
 // MARK: upload data packet from disk
 
 extension AlamofireSession {
-    
-    // swiftlint:disable function_parameter_count
+
     public func uploadFromFile(with request: SessionRequest,
                                keyPacket: Data,
                                dataPacketSourceFileURL: URL,
@@ -439,8 +435,7 @@ extension AlamofireSession {
         )
         finalizeJSONResponse(dataRequest: uploadRequest, taskOut: taskOut, completion: completion)
     }
-    
-    // swiftlint:disable function_parameter_count
+
     public func uploadFromFile<T>(with request: SessionRequest,
                                   keyPacket: Data,
                                   dataPacketSourceFileURL: URL,
@@ -461,7 +456,6 @@ extension AlamofireSession {
         finalizeDecodableResponse(dataRequest: uploadRequest, taskOut: taskOut, jsonDecoder: jsonDecoder, completion: completion)
     }
     
-    // swiftlint:disable function_parameter_count
     private func uploadFromFile(alamofireRequest: AlamofireRequest,
                                 parameters: [String: String],
                                 keyPacket: Data,

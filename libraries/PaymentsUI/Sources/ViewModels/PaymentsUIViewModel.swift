@@ -439,8 +439,6 @@ class PaymentsUIViewModel {
         }
     }
 
-    // static
-    // swiftlint:disable function_parameter_count
     private func createPlan(details baseDetails: Plan,
                             isSelectable: Bool,
                             isCurrent: Bool,

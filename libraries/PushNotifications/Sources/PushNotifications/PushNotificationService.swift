@@ -136,8 +136,8 @@ extension PushNotificationService: UNUserNotificationCenterDelegate {
 // More abstract methods for simpler testing
 extension PushNotificationService {
     func notificationCenter(_ center: NotificationCenterProtocol,
-                                       didReceive response: UNNotificationResponse,
-                                       withCompletionHandler completionHandler: @escaping () -> Void) {
+                            didReceive response: UNNotificationResponse,
+                            withCompletionHandler completionHandler: @escaping () -> Void) {
 
         processNotification(response.notification) { _ in
             completionHandler()
@@ -168,6 +168,7 @@ extension PushNotificationService {
     }
 
     private func registerIfPossible() {
+        // swiftlint:disable:next empty_string
         guard currentUID != "",
               let token = latestDeviceToken
         else { return }

@@ -29,7 +29,6 @@ import ProtonCoreServices
 public protocol AuthenticatorInterface {
     func authenticate(idpEmail: String, responseToken: SSOResponseToken, completion: @escaping Authenticator.Completion)
     
-    // swiftlint:disable:next function_parameter_count
     func authenticate(username: String, password: String, challenge: ChallengeProperties?, intent: Intent?, srpAuth: SrpAuth?, completion: @escaping Authenticator.Completion)
 
     func confirm2FA(_ twoFactorCode: String, context: TwoFactorContext, completion: @escaping Authenticator.Completion)

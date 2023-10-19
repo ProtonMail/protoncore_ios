@@ -269,3 +269,5 @@ class SignupViewModelTests: XCTestCase {
 }
 
 #endif
+
+// swiftlint:enable xctfail_message

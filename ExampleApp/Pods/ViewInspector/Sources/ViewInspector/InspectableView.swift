@@ -179,10 +179,9 @@ internal extension InspectableView where View: MultipleViewContent {
         }
         let child = try viewes.element(at: index)
         if !isTupleExtraction && Inspector.isTupleView(child.view) {
-            // swiftlint:disable line_length
+            // swiftlint:disable:next line_length
             throw InspectionError.notSupported(
                 "Please insert .tupleView(\(index)) after \(Inspector.typeName(type: View.self)) for inspecting its children at index \(index)")
-            // swiftlint:enable line_length
         }
         return child
     }

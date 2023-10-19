@@ -74,9 +74,8 @@ public extension InspectableView where View == ViewType.DisclosureGroup {
         } else {
             // @State mutation from outside is ignored by SwiftUI
             // try isExpandedState().wrappedValue = isExpanded
-            // swiftlint:disable line_length
+            // swiftlint:disable:next line_length
             throw InspectionError.notSupported("You need to enable programmatic expansion by using `DisclosureGroup(isExpanded:, content:, label:`")
-            // swiftlint:enable line_length
         }
     }
 }

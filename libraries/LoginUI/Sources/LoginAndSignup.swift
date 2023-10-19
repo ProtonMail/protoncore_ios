@@ -454,7 +454,6 @@ extension LoginAndSignupInterface {
     }
 
     @available(*, deprecated, message: "Please switch to variant taking LoginCustomizationOptions parameter")
-    // swiftlint:disable:next function_parameter_count
     func presentFlowFromWelcomeScreen(over viewController: UIViewController,
                                       welcomeScreen: WelcomeScreenVariant,
                                       username: String?,

@@ -32,7 +32,7 @@ public enum AccountRecoveryViewError: Error {
 extension AccountRecoveryView {
 
     /// The `ObservableObject` that holds the model data for this View
-    // @MainActor
+    /// @MainActor
     public final class ViewModel: ObservableObject, PasswordVerifierViewControllerDelegate {
 
         @Published var email: String = ""
@@ -81,7 +81,7 @@ extension AccountRecoveryView {
 
         /// Signals that the view requested that the **Account Recovery** process be aborted
         /// - Parameter completion: Closure called upon completion of the request, to allow the UI to be updated
-        // Limiting availability for now to iOS
+        /// Limiting availability for now to iOS
 #if os(iOS)
         @MainActor
         public func cancelPressed() async throws {

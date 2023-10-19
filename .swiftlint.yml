@@ -15,7 +15,7 @@ disabled_rules: # rule identifiers to exclude from running
   - opening_brace # https://realm.github.io/SwiftLint/opening_brace
   - nesting # https://realm.github.io/SwiftLint/nesting
   - function_parameter_count # https://realm.github.io/SwiftLint/function_parameter_count
-  - file_header
+  - for_where # https://realm.github.io/SwiftLint/for_where
 # these rules were temporarily disabled
   - force_try
   - empty_count
@@ -40,7 +40,6 @@ opt_in_rules: # some rules are only opt-in
   - prohibited_super_call # https://github.com/realm/SwiftLint/blob/master/Rules.md
   - sorted_first_last # https://github.com/realm/SwiftLint/blob/master/Rules.md
   - unavailable_condition # https://realm.github.io/SwiftLint/unavailable_condition.html
-  - file_header
 
 # Some rules that may be useful:
   # - file_types_order # https://realm.github.io/SwiftLint/file-types-order

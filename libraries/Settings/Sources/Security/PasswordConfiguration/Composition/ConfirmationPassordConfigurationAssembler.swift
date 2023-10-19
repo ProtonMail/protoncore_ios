@@ -19,11 +19,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+// swiftlint:disable type_name
+
 #if os(iOS)
 
 import UIKit
 
-// swiftlint:disable type_name
 final class ConfirmationPassordConfigurationAssembler {
     static func assemble(with selector: PasswordSelector, enabler: PinLockActivator, onSuccess: @escaping (Bool) -> Void) -> UIViewController {
         let viewController = PasswordConfigurationViewController()
@@ -50,3 +51,5 @@ final class ConfirmationPassordConfigurationAssembler {
 }
 
 #endif
+
+// swiftlint:enable type_name

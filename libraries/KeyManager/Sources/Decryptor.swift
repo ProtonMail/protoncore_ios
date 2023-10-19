@@ -393,7 +393,6 @@ extension Decryptor {
     /**
      If no signature is passed in, we count it as a verification failed
      */
-    // swiftlint:disable:next function_parameter_count
     public static func decryptAndVerifySignature(keyPacket: Data,
                                                  dataPacket: Data,
                                                  signature: String?,
@@ -418,7 +417,6 @@ extension Decryptor {
                                              signatureKeyRingIndex: &signatureKeyRingIndex)
     }
 
-    // swiftlint:disable:next function_parameter_count
     public static func decryptAndVerifySignature(keyPacket: Data,
                                                  dataPacket: Data,
                                                  signature: String?,

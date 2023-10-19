@@ -38,7 +38,9 @@ extension TrustKitWrapper {
         return propertiesForAllPlatforms.merging(platformSpecificConfiguration, uniquingKeysWith: { lhs, rhs in rhs })
     }
 
-    private static func pinnedDomains(hardfail: Bool) -> [String: [String: Any]] {
+    // swiftlint:disable:next function_body_length
+    private static func pinnedDomains(hardfail: Bool) ->
+      [String: [String: Any]] {
         let reportURIs: [String] = [
             "https://reports.proton.me/reports/tls"
         ]

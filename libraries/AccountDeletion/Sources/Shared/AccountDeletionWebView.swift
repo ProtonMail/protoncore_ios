@@ -69,7 +69,6 @@ final class AccountDeletionWebView: AccountDeletionViewController {
     var loader = NSProgressIndicator()
     #endif
     
-    // swiftlint:disable weak_delegate
     /// The delegate is being kept strongly so that the client doesn't have to care
     /// about keeping some object to receive the completion block.
     var stronglyKeptDelegate: AccountDeletionWebViewDelegate?

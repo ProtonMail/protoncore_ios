@@ -125,7 +125,6 @@ public class MailFeature {
         
     }
 
-    // swiftlint:disable function_parameter_count
     public func send(
         content: MessageContent,
         userKeys: [Key],

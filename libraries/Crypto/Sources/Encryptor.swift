@@ -69,7 +69,6 @@ public enum Encryptor {
         return try Crypto().encryptAndSign(plainRaw: Either.right(clearData), publicKey: publicKey, signingKey: signerKey, signatureContext: signatureContext)
     }
     
-    // swiftlint:disable function_parameter_count
     /// streaming encryption
     public static func encryptStreamHash(nodeKey: ArmoredKey, nodePassphase: Passphrase,
                                          contentKeyPacket: Data,

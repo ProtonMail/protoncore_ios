@@ -28,8 +28,6 @@ import ProtonCoreFoundations
 import ProtonCoreNetworking
 import ProtonCoreServices
 
-// swiftlint:disable function_parameter_count
-
 public typealias AnyAPIDecodableResponseCompletion = (_ task: URLSessionDataTask?, _ result: Result<Any, API.APIError>) -> Void
 
 public struct APIServiceMock: APIService {

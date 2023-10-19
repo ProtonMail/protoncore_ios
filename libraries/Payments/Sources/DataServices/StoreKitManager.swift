@@ -421,7 +421,6 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
                                            deferredCompletion: deferredCompletion)
     }
 
-    // swiftlint:disable function_parameter_count
     private func purchaseProductBeingAuthorized(plan: InAppPurchasePlan,
                                                 storeKitProduct: SKProduct,
                                                 amountDue: Int,

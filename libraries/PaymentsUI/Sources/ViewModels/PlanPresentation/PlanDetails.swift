@@ -80,7 +80,6 @@ let percentageNumberFormatter: NumberFormatter = {
 }()
 
 extension PlanDetails {
-    // swiftlint:disable function_parameter_count
     static func createPlan(from details: Plan,
                            plan: InAppPurchasePlan,
                            countriesCount: Int?,

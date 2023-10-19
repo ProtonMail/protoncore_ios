@@ -230,3 +230,5 @@ extension Plan {
         return pricing != defaultPricing
     }
 }
+
+// swiftlint:enable identifier_name

@@ -35,6 +35,7 @@ final class SecurityPasswordPolicy {
         let range = NSRange(location: .zero, length: password.utf16.count)
         return regex.firstMatch(in: password, options: [], range: range) != nil
     }
+    // swiftlint:enable identifier_name
 }
 
 extension NSRegularExpression {

@@ -79,3 +79,5 @@ class SRPTests: XCTestCase {
         }
     }
 }
+
+// swiftlint:enable xctfail_message

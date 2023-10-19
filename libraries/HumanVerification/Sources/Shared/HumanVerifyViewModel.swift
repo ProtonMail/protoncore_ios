@@ -135,7 +135,6 @@ class HumanVerifyViewModel {
                        completeHandler: completeHandler)
     }
     
-    // swiftlint:disable function_parameter_count
     private func processMessage(type: MessageType,
                                 json: [String: Any],
                                 notificationMessage: ((NotificationType, String) -> Void)?,

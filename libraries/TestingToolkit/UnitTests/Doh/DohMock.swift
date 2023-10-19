@@ -132,7 +132,6 @@ public struct DohInterfaceMock: DoHInterface, ServerConfig {
     public func resolveProxyDomainHostUrl(completion: @escaping (String?) -> Void) { resolveProxyDomainHostUrlStub(completion) }
     
     @FuncStub(DohInterfaceMock.handleErrorResolvingProxyDomainIfNeeded(host:requestHeaders:sessionId:error:callCompletionBlockUsing:completion:)) public var handleErrorResolvingProxyDomainIfNeededWithExecutorWithSessionIdStub
-    // swiftlint:disable function_parameter_count
     public func handleErrorResolvingProxyDomainIfNeeded(
         host: String,
         requestHeaders: [String: String],
@@ -145,7 +144,6 @@ public struct DohInterfaceMock: DoHInterface, ServerConfig {
     }
     
     @FuncStub(DohInterfaceMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(host:requestHeaders:sessionId:response:error:callCompletionBlockUsing:completion:)) public var handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub
-    // swiftlint:disable function_parameter_count
     public func handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(
         host: String,
         requestHeaders: [String: String],

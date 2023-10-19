@@ -155,8 +155,7 @@ public class Crypto {
         
         return try keyRing.encryptSessionKey(symKey)
     }
-    
-    // swiftlint:disable function_parameter_count
+
     internal func encryptStreamRetSha256(_ sessionKey: CryptoSessionKey,
                                          _ signKeyRing: CryptoKeyRing?,
                                          _ blockFile: FileHandle,
@@ -502,7 +501,6 @@ public class Crypto {
         return data
     }
     
-    // swiftlint:disable function_parameter_count
     internal func decryptStream(encryptedFile cyphertextUrl: URL,
                                 decryptedFile cleartextUrl: URL,
                                 decryptionKeys: [DecryptionKey],

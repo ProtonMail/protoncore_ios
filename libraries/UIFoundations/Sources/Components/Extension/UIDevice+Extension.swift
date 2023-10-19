@@ -73,3 +73,5 @@ public extension UIDevice {
 }
 
 #endif
+
+// swiftlint:enable identifier_name
