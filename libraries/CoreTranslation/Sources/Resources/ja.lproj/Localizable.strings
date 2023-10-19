@@ -1,0 +1,781 @@
+/* Title */
+
+"Human Verification" = "人間であることの検証";
+
+/* captha method name */
+"CAPTCHA" = "CAPTCHA";
+
+/* SMS method name */
+"SMS" = "SMS";
+
+/* email method name */
+"Email" = "メールアドレス";
+
+/* Help button */
+"Help" = "ヘルプ";
+
+/* OK button */
+"OK" = "OK";
+
+/* Cancel button */
+"Cancel" = "キャンセル";
+
+/* Enter email label */
+"Your email will only be used for this one-time verification." = "メールアドレスは、この一度限りの認証にのみ使用されます。";
+
+/* Verification button */
+"Get verification code" = "検証コードを取得";
+
+/* Enter SMS label */
+"Your phone number will only be used for this one-time verification." = "電話番号は、この一度限りの認証にのみ使用されます。";
+
+/* SMS label */
+"Phone number" = "電話番号";
+
+/* Search country placeholder */
+"Search country" = "国を検索";
+
+/* Enter sms code label */
+"Enter the verification code that was sent to %@" = "%@ に送信された認証コードを入力してください";
+
+/* Enter email code label */
+"Enter the verification code that was sent to %@. If you don't find the email in your inbox, please check your spam folder." = "%@ に送信された検証コードを入力してください。受信トレイにメールが見当たらない場合は、迷惑メールフォルダーを確認してください。";
+
+/* Verification code label */
+"Verification code" = "検証コード";
+
+/* Verification code hint label */
+"Enter the 6-digit code." = "6 桁のコードを入力します。";
+
+/* Verify button */
+"Verify" = "検証";
+
+/* Verifying button */
+"Verifying" = "検証中";
+
+/* Not receive code button */
+"Did not receive the code?" = "コードを受け取っていませんか?";
+
+/* alert title */
+"Invalid verification code" = "無効な検証コードです";
+
+/* alert message */
+"Would you like to receive a new verification code or use an alternative verification method?" = "新しい確認コードを受け取るか、他の検証方法を使用しますか？";
+
+/* resend alert button */
+"Resend" = "再送信";
+
+/* other method alert button */
+"Try other method" = "他の方法を試してください";
+
+/* alert title */
+"Request new code?" = "新しいコードをリクエスト?";
+
+/* alert message */
+"Get a replacement code sent to %@." = "代わりのコードを %@ に送信しました。";
+
+/* new code alert button */
+"Request new code" = "新しいコードをリクエスト";
+
+/* sent baner title */
+"Code sent to %@" = "コードを %@ に送信しました";
+
+/* help header title */
+"Need help with human verification?" = "人間ではないことの検証に助けが必要ですか?";
+
+/* request item title */
+"Request an invite" = "登録を申請する";
+
+/* request item message */
+"If you are having trouble creating your account, please request an invitation and we will respond within 1 business day." = "アカウントの作成に問題がある場合は、招待をリクエストしてください。1 営業日以内に対応します。";
+
+/* visit item title */
+"Visit our Help Center" = "ヘルプセンターを閲覧";
+
+/* visit item message */
+"Learn more about human verification and why we ask for it." = "人間であることの検証についてとなぜ必要なのかについての詳細";
+
+/* alert title */
+"Update required" = "アップデートが必要です。";
+
+/* learn more button */
+"Learn more" = "詳細";
+
+/* update button */
+"Update" = "更新";
+
+/* quit button */
+"Quit" = "終了";
+
+/* Login screen title */
+"Sign in" = "サインイン";
+
+/* Login screen subtitle */
+"Enter your Proton Account details." = "Proton アカウントの詳細を入力してください。";
+
+/* Username field title */
+"Proton email or username" = "Proton メールまたはユーザー名";
+
+/* Username field title */
+"Email or username" = "メールアドレスまたはユーザー名";
+
+/* Password field title */
+"Password" = "パスワード";
+
+/* Help button */
+"Need help?" = "お困りですか？";
+
+/* Sign in button when in SSO mode */
+"Sign in with password" = "パスワードでログイン";
+
+/* Sign in with SSO button */
+"Sign in with SSO" = "SSOでサインインする";
+
+/* Sign in with SSO screen title */
+"Sign in to your organization" = "組織にサインインする";
+
+/* Create account button */
+"Create an account" = "アカウントを作成";
+
+/* Login help screen title */
+"How can we help?" = "お困りですか?";
+
+/* Forgot username help button */
+"Forgot username" = "ユーザー名をお忘れですか？";
+
+/* Forgot password help button */
+"Forgot password" = "パスワードを忘れた";
+
+/* Other sign-in issues button */
+"Other sign-in issues" = "その他のサインインに関する問題";
+
+/* Customer support button */
+"Customer support" = "カスタマーサポート";
+
+/* Customer support button */
+"Still need help? Contact us directly." = "問題が解決しませんか? 直接お問い合わせる.";
+
+/* Invalid username hint */
+"Please enter your Proton Account email or username." = "Proton アカウントのメールアドレスまたはユーザー名を入力してください。";
+
+/* Invalid password hint */
+"Please enter your Proton Account password." = "Proton アカウントのパスワードを入力してください。";
+
+/* Title of a page asking to enter your password. */
+"Enter your password" = "パスワードを入力";
+
+/* Dialog button for missing keys error */
+"Complete Setup" = "セットアップが完了しました";
+
+/* Dialog text for missing keys error */
+"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "アカウントのキーが見つからないため、ウェブでサインインして必要なキーを自動生成してください。ウェブでサインインした後、アプリに戻ってサインインします。";
+
+/* /** */
+"Account setup required" = "アカウントのセットアップが必要です";
+
+/* Incorrect mailbox password error */
+"Incorrect mailbox password" = "無効なメールボックスのパスワードです";
+
+/* External accounts address required popup title */
+"Proton address required" = "Proton アドレスが必要です";
+
+/* External accounts not supported popup local desc */
+"Get a Proton Mail address linked to this account in your Proton web settings." = "Proton のウェブ設定でこのアカウントに紐付いた Proton Mail アドレスを取得してください。";
+
+/* Session expired info */
+"Your session has expired. Please log in again." = "セッションの有効期限が切れました。再度サインインしてください。";
+
+/* Generic error message when no better error can be displayed */
+"An error has occured" = "エラーが発生しました";
+
+/* Info about existing external Proton Mail address */
+"You need a Proton email address to use Proton Mail and Proton Calendar.\nYou’ll still be able to use %@ to sign in, and to recover your account." = "Proton Mail および Proton Calendar を使用するには Proton メールアドレスが必要です。\n%@ を使用してログインし、アカウントを回復することが可能です。";
+
+/* Username field title */
+"Username" = "ユーザー名";
+
+/* Action button title for picking Proton Mail username */
+"Continue" = "続行";
+
+/* Username field error message */
+"Please enter a username." = "名前を入力してください。";
+
+/* Mailbox unlock screen title */
+"Unlock your mailbox" = "メールボックスのロック解除";
+
+/* Mailbox password field title */
+"Mailbox password" = "メールボックスのパスワード";
+
+/* Mailbox unlock screen action button title */
+"Unlock" = "ロック解除";
+
+/* 2FA screen title */
+"Two-factor authentication" = "2 要素認証";
+
+/* 2FA screen action button title */
+"Authenticate" = "認証";
+
+/* 2FA screen field title */
+"Two-factor code" = "2 要素認証コード";
+
+/* 2FA screen recovery field title */
+"Recovery code" = "回復用コード";
+
+/* 2FA screen recovery button title */
+"Use recovery code" = "回復用コードを使用";
+
+/* 2FA screen 2FA button title */
+"Use two-factor code" = "2 要素認証コードを使用";
+
+/* 2FA screen recovery field info */
+"Enter an 8-character recovery code." = "8 文字の回復コードを入力してください。";
+
+/* Error alert title */
+"Error occured" = "エラーが発生しました";
+
+/* Title */
+"Warning" = "警告";
+
+/* Question is user wants to bypass username validation and activate plan for current username */
+"Do you want to activate the purchase for %@ address?" = "購読したプランをアドレス %@ に対して有効化しますか？";
+
+/* Warning message option to bypass validation and activate plan for current username */
+"Yes, activate it for " = "はい、有効化してください ";
+
+/* Warning message option when user want to relogin to another account */
+"No, for another Proton Mail account" = "いいえ、別のProton Mailのアカウント用です";
+
+/* Message shown to the user if we had to top up the account with credits instead of purchasing a plan */
+"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "選択したプランにアカウントをアップグレードできなかったため、お支払額をアカウントのクレジット残高に追加しました。アップグレードを完了するには、サポートにご連絡ください。";
+
+/* Confirmation for the credits applied popup, will result in showing customer support contact form */
+"Contact Support" = "サポートへ連絡";
+
+/* Cancellation for the credits applied popup */
+"Dismiss" = "却下";
+
+/* Error applying credit after registration alert */
+"Payment failed" = "支払いに失敗しました";
+
+/* Error applying credit after registration alert */
+"You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support." = "登録は完了しましたが、支払いが未完了です。支払い情報を再送するには【再試行】をタップしてください。重複して課金されることはありません。問題が発生した場合は、カスタマーサポートへご連絡ください。";
+
+/* Button in some alerts */
+"Retry" = "再試行";
+
+/* Error applying credit after registration alert */
+"Contact customer support" = "カスタマーサポートに連絡する";
+
+/* Error message */
+"Failed to get list of available products from App Store." = "App Store 上の利用可能製品の一覧の取得に失敗しました。";
+
+/* Error message */
+"Purchase is not possible." = "購入処理を進めることができません。";
+
+/* Error message */
+"Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you." = "Appleからサブスクリプションプランのアップグレードの通知を受けましたが、いくつかの技術情報が見当たりません。顧客サポートチームがご連絡しますので、バグ報告をお願いします。";
+
+/* Error message */
+"Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "Appleからサービスプランのアップグレードの通知を受けましたが、サインアウトしている事を検出しました。";
+
+/* Error message */
+"It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "あなたが購入したApp Storeの商品を、当社のサーバー上の製品に一致させることができませんでした。バグ報告に記入してくだされば、当社の顧客サポートチームからご連絡いたします。";
+
+/* Error message for beta users */
+"Sorry, we cannot process purchases in the beta version of the iOS app. Thank you for participating in our public beta!" = "申し訳ございませんがベータ版のiOSアプリからは課金ができません。
+パブリックベータにご参加頂きありがとうございます。";
+
+/* Error message */
+"We have been notified of an App Store purchase but cannot match the purchase with an account of yours." = "App Store の購入が確認できましたが、アカウントと照合できませんでした。";
+
+/* Error message */
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "購入手続きを完了するには、プランをアップグレードする Proton Mail アカウントにサインインしてください。";
+
+/* Error message */
+"Apple informed us they could not process the purchase." = "Appleが購入の手続きを進める事ができませんでした。";
+
+/* Error message */
+"We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "購読の有効化に成功しました。アプリの再起動をして新しいプランになっていることを確認してください。";
+
+/* Error message */
+"Please unlock the app to proceed with your service plan activation" = "サービスプランの有効化のために、アプリをロック解除してください。";
+
+/* Error message */
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "プランの有効化を完了するには、プランをアップグレードする Proton Mail アカウントにサインインしてください。";
+
+/* In App Purchase error */
+"Contact support@protonvpn.com to complete your purchase." = "support@protonvpn.com に連絡し、購入手続きを完了してください。";
+
+/* In App Purchase error */
+"Wrong payment token status. Please relaunch the app. If error persists, contact support." = "支払いトークンのステータスが間違っています。アプリを再起動してください。エラーが解決しない場合はサポートにお問い合わせください。";
+
+/* Dialog title for organization user first login */
+"Change your password" = "パスワードを変更";
+
+/* Dialog action button title for organization user first login */
+"Change password" = "パスワードの変更";
+
+/* Dialog message for organization user first login */
+"To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "組織のメンバーとして Proton アプリを使うと、初めにブラウザーから Proton にサインインしてパスワードを変更する必要があります。";
+
+/* Delete account screen title */
+"Delete account" = "アカウントを削除";
+
+/* Delete account explaination under button */
+"This will permanently delete your account and all of its data. You will not be able to reactivate this account." = "この操作により、アカウントとすべてのデータが完全に削除されます。削除後に、このアカウントを再度有効化することはできません。";
+
+/* Delete account success */
+"Account deleted.\nLogging out..." = "アカウントが削除されました。\nサインアウトしています...";
+
+/* A generic error message when we have no better message from the backend */
+"A networking error has occured" = "ネットワークエラーが発生しました";
+
+/* Button title shown when a error has occured, causes the screen to close */
+"Close" = "閉じる";
+
+/* */ */
+"switch to" = "切り替え: ";
+
+/* Title of account switcher */
+"Accounts" = "アカウント";
+
+/* Manage accounts button */
+"Manage accounts" = "アカウント管理";
+
+/* Section title of account manager */
+"Signed in to Proton Mail" = "Proton Mail にサインイン中";
+
+/* Section title of account manager */
+"Signed out of Proton Mail" = "Proton Mail からサインアウト済み";
+
+/* Sign out button/ title */
+"Sign out" = "サインアウト";
+
+/* Remove button */
+"Remove" = "削除";
+
+/* remove account button in account manager */
+"Remove account from this device" = "この端末からアカウントを削除";
+
+/* old value of remove account button in account manager */
+"Remove account" = "アカウントを削除";
+
+/* Alert message of remove account */
+"You will be signed out and all the data associated with this account will be removed from this device." = "サインアウトされこのアカウントに関連付けられているすべてのデータがこのデバイスから削除されます。";
+
+/* Alert message of sign out the email address */
+"Are you sure you want to sign out %@?" = "%@ からサインアウトしますか?";
+
+/* Button for dismissing account switcher */
+"Dismiss account switcher" = "アカウント変更を隠す";
+
+/* Button for signing into another account */
+"Sign in to another account" = "ほかのアカウントでサインイン";
+
+/* /** */
+"Create your Proton Account" = "Proton アカウントを作成";
+
+/* Signup main view description */
+"One account for all Proton services." = "1つのアカウントで全 Proton サービスを利用可能.";
+
+/* Next button */
+"Next" = "次へ";
+
+/* Email address button */
+"Use your current email instead" = "代わりに現在のメールアドレスを使用";
+
+/* Proton Mail address button */
+"Create a secure Proton Mail address instead" = "代わりに安全な Proton Mail アドレスを作成";
+
+/* Signup password view title */
+"Create your password" = "パスワードを作成";
+
+/* Password field hint about minimum length */
+"Password must contain at least 8 characters" = "パスワードは 8 文字以上必要です";
+
+/* Repeat password field title */
+"Repeat password" = "パスワードを再度入力";
+
+/* Title of domains bottom action sheet */
+"Domain" = "ドメイン";
+
+/* Recovery view description (old string, replaced) */
+"This will help you access your account in case you forget your password or get locked out of your account." = "パスワードを忘れたり、アカウントにアクセスできなくなった場合に、アカウントにアクセスできるようにします。";
+
+/* Recovery segmenet phone */
+"Phone" = "電話番号";
+
+/* Recovery email field title */
+"Recovery email" = "回復用メールアドレス";
+
+/* Recovery phone field title */
+"Recovery phone number" = "回復用の電話番号";
+
+/* Recovery terms and conditions description */
+"By clicking Next, you agree with Proton's Terms and Conditions" = "次へをクリックすると、Proton の利用規約に同意したことになります。";
+
+/* Recovery terms and conditions link */
+"Terms and Conditions" = "利用規約";
+
+/* Skip button */
+"Skip" = "スキップ";
+
+/* Recovery skip title */
+"Skip recovery method?" = "回復手段の設定をスキップしますか?";
+
+/* Recovery skip description */
+"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "パスワードを忘れたり、アカウントにアクセスできなくなった場合に、回復手段を使ってアカウントにアクセスできるようにします。";
+
+/* Set recovery method button */
+"Set recovery method" = "回復手段を設定";
+
+/* Complete view title */
+"Your account is being created" = "アカウントを作成しています…";
+
+/* Complete view description */
+"This should take no more than a minute." = "これにはそんなに時間はかかりません。";
+
+/* Signup complete progress step creation */
+"Creating your account" = "アカウントの作成中";
+
+/* Signup complete progress step address generation */
+"Generating your address" = "アドレスを生成しています";
+
+/* Signup complete progress step keys generation */
+"Securing your account" = "アカウントを安全にしています";
+
+/* Signup complete progress step payment verification */
+"Verifying your payment" = "支払いを検証中";
+
+/* Signup complete progress step payment validated */
+"Payment validated" = "支払いを検証しました";
+
+/* Email verification view title */
+"Account verification" = "アカウント認証";
+
+/* Email verification view description */
+"For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "セキュリティのため、入力したアドレスがあなたのアドレスであるか確認する必要があります。検証コードを %@ に送信しました。下記にコードを入力してください:";
+
+/* Did not receive code button */
+"Did not receive a code?" = "コードを受取っていませんか?";
+
+/* Invalid token request error */
+"Invalid token request" = "無効なトークンリクエストです";
+
+/* Invalid token error */
+"Invalid token error" = "無効なトークンです";
+
+/* Create user failed error */
+"Create user failed" = "ユーザーを作成できませんでした";
+
+/* Invalid hashed password error */
+"Invalid hashed password" = "無効なハッシュ化されたパスワードです";
+
+/* Password empty error */
+"Password can not be empty.\nPlease try again." = "パスワードを空にすることはできません。\n再度お試しください。";
+
+/* Password too short error */
+"Password must contain at least %@ characters." = "パスワードは %@ 文字以上必要です。";
+
+/* Password not equal error */
+"Passwords do not match.\nPlease try again." = "パスワードが一致しません。\n再度お試しください。";
+
+/* Email address already used error */
+"Email address already used." = "メールアドレスはすでに使用されています.";
+
+/* Sub-user configuration error */
+"Please ask your admin to configure your sub-user." = "管理者にサブユーザーの設定を依頼してください。";
+
+/* Invalid verification alert message */
+"Would you like to receive a new verification code or use an alternate email address?" = "新しい検証コードを受け取るか、別のメールアドレスを使用しますか?";
+
+/* Change email address button */
+"Change email address" = "メールアドレスを変更";
+
+/* Signup summary title */
+"Congratulations" = "おめでとうございます！";
+
+/* Signup summary free plan description */
+"Your Proton Free account was successfully created." = "Proton Free アカウントは正常に作成されました。";
+
+/* Signup summary free plan description replacement */
+"Proton Free" = "Proton Free";
+
+/* Signup summary paid plan description */
+"Your payment was confirmed and your %@ account successfully created." = "支払いが承認され %@ アカウントが正常に作成されました。";
+
+/* Signup summary no plan description */
+"Your Proton account was successfully created." = "Proton アカウントは正常に作成されました。";
+
+/* Signup summary welcome text */
+"Enjoy the world of privacy." = "プライバシーの世界を楽しもう。";
+
+/* Plan selection title */
+"Select a plan" = "プランを選択";
+
+/* Plan selection title */
+"Current plan" = "現在のプラン";
+
+/* Subscription title */
+"Subscription" = "サブスクリプション";
+
+/* Plan selection title */
+"Upgrade your plan" = "プランをアップグレード";
+
+/* Plan footer description */
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "モバイルアプリ内では、自動更新なしの年間サブスクリプションのみ利用できます。";
+
+/* Plan footer purchased description */
+"You cannot manage subscriptions inside the mobile application." = "モバイルアプリからサブスクリプションを管理することはできません。";
+
+/* Plan details renew automatically expired */
+"Your plan will automatically renew on %@" = "%@ にプランは自動的に更新されます";
+
+/* Plan details renew expired */
+"Current plan will expire on %@" = "現在のプランは %@ に期限を迎えます";
+
+/* Plan details unavailable contact administrator */
+"Contact an administrator to make changes to your Proton subscription." = "管理者に連絡して Proton サブスクリプションを変更する必要があります。";
+
+/* Plan details storage */
+"%@ storage" = "%@ ストレージ";
+
+/* Plan details storage per user */
+"%@ storage / user" = "%@ ストレージ / ユーザー";
+
+/* Plan details price time period without unit — we delegate the units formatting to the operating system. Example: for 1 year 3 months */
+"for %@" = "%@ 間";
+
+/* Plan details custom email addresses */
+"Custom email addresses" = "カスタムメールアドレス";
+
+/* Plan details priority customer support */
+"Priority customer support" = "優先カスタマーサポート";
+
+/* Plan details adblocker */
+"Adblocker (NetShield)" = "広告ブロッカー (NetShield)";
+
+/* Plan details streaming service support */
+"Streaming service support" = "ストリーミングサービス対応";
+
+/* Plan details high speed message */
+"High speed" = "高速";
+
+/* Plan details highest speed message */
+"Highest speed" = "最高速";
+
+/* Plan details multi-user support message */
+"Multi-user support" = "複数ユーザー対応";
+
+/* Plan details free description */
+"The basic for private and secure communications." = "プライベートで安全な会話のための基本機能。";
+
+/* Plan details plus description */
+"Full-featured mailbox with advanced protection." = "高度な保護を備えたフル機能のメールボックス。";
+
+/* Badge under plan name indicating a limited time offer (promo price) */
+"Limited time offer" = "期間限定キャンペーン";
+
+/* Unfinished operation error dialog title */
+"Complete payment?" = "支払いが完了しましたか?";
+
+/* Unfinished operation error dialog description */
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Proton バンドルプランの購入処理が進行中です。続けるを押すと、支払い処理を完了してアカウントを作成します";
+
+/* Unfinished operation error dialog retry button */
+"Complete payment" = "支払いが完了しました";
+
+/* Unfinished operation dialog description */
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "予期しないエラーによりアカウントセットアップを完了できませんでした。\n再度お試しください。";
+
+/* IAP in progress banner message */
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "アプリ内購入の処理が進行中です。Apple の指示に従って購入を完了またはキャンセルしてください。";
+
+/* Made by */
+"Made by" = "製作者";
+
+/* Networking connection error */
+"Network connection error" = "ネットワーク接続エラー";
+
+/* Message shown when we suspect that the Proton servers are blocked */
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Proton のサーバーに到達できません。原因として、誤ったネットワーク設定や Proton サーバーが稼働していない、あるいはブロックされているなどが考えられます";
+
+/* Button for the error banner shown when we suspect that the Proton servers are blocked */
+"Troubleshoot" = "トラブルシューティング";
+
+/* Networking insecure connection error */
+"The TLS certificate validation failed when trying to connect to the Proton API. Your current Internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again." = "Proton API への接続試行中に、TLS 証明書の検証に失敗しました。このインターネット接続は監視されている可能性があります。データを安全に保つため、アプリによる Proton API へのアクセスを中止しています。\nサインインまたはアカウントにアクセスするには、新しいネットワークに切り替えてから再度接続をお試しください。";
+
+/* network troubleshot view title */
+"support form" = "サポートフォーム";
+
+/* network troubleshot view title */
+"email" = "メール";
+
+/* network troubleshot view title */
+"Twitter" = "Twitter";
+
+/* network troubleshot view title */
+"TroubleShooting" = "トラブルシューティング";
+
+/* network troubleshot cell title */
+"Allow alternative routing" = "代替ルーティングを許可";
+
+/* network troubleshot cell title */
+"No internet connection" = "インターネット接続がありません";
+
+/* network troubleshot cell title */
+"Internet Service Provider (ISP) problem" = "インターネット サービス プロバイダー (ISP) の問題";
+
+/* network troubleshot cell title */
+"Government block" = "政府による検閲";
+
+/* network troubleshot cell title */
+"Antivirus interference" = "ウイルス対策ソフトウェアの干渉";
+
+/* network troubleshot cell title */
+"Proxy/Firewall interference" = "プロキシまたはファイアウォールの干渉";
+
+/* network troubleshot cell title */
+"Proton is down" = "Proton は現在利用できません";
+
+/* network troubleshot cell title */
+"Still can't find a solution" = "それでも問題が解決しない場合";
+
+/* alternative routing description */
+"In case Proton sites are blocked, this setting allows the app to try alternative network routing to reach Proton, which can be useful for bypassing firewalls or network issues. We recommend keeping this setting on for greater reliability. %1$@" = "Proton への接続がブロックされている場合、アプリは別のネットワーク経由で Proton へ接続を試みます。この設定は、ファイアウォールやネットワーク上の問題を回避するのに役立ちます。信頼性向上の観点から、この設定を有効にしておくことをおすすめします。%1$@";
+
+/* no internet connection description */
+"Please make sure that your internet connection is working." = "インターネットに接続されていることを確認してください。";
+
+/* ISP problem description */
+"Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "別のネットワークから Proton への接続を試してください (または %1$@ や %2$@ をお試しください)";
+
+/* Goverment blocking description */
+"Your country may be blocking access to Proton. Try using %1$@ (or any other VPN) or %2$@ to access Proton." = "あなたの国の政府が、Proton への接続をブロックしている可能性があります。Proton にアクセスするには %1$@ (または他社のVPN) もしくは %2$@ を使用してください。";
+
+/* Antivirus interference description. */
+"Temporarily disable or remove your antivirus software." = "ウイルス対策ソフトウェアを一時的に無効化または削除してください。";
+
+/* Firewall interference description. */
+"Disable any proxies or firewalls, or contact your network administrator." = "プロキシやファイアウォールを無効にするか、ネットワーク管理者にお問い合わせください。";
+
+/* Proton is down description. */
+"Check Proton Status for our system status." = "Proton Status でシステム状況を確認してください。";
+
+/* Name of the link of Proton Status */
+"Proton Status" = "Proton ステータス";
+
+/* No other solution description. */
+"Contact us directly through our support form, email (support@protonmail.zendesk.com), or Twitter." = "サポートフォーム、メール (support@protonmail.zendesk.com)、または Twitter から直接、お問い合わせください。";
+
+/* The subject of the email draft created in the network troubleshoot view. */
+"Subject..." = "件名...";
+
+/* The body of the email draft created in the network troubleshoot view. */
+"Please share your problem." = "問題をシェアしてください。";
+
+/* top left back button */
+"Back" = "戻る";
+
+/* Welcome screen footer label */
+"Privacy by default" = "常にプライバシーを重視";
+
+/* Plan selection title */
+"One plan for all Proton services" = "すべての Proton サービスのための 1 つのプラン";
+
+/* Plan details free description */
+"The no-cost starter account designed to empower everyone with privacy by default." = "すべての人にプライバシーを提供するための、無料のスタータープランです。";
+
+/* Plan details plus description */
+"The privacy-first email and calendar solution for your everyday communication needs." = "毎日のコミュニケーションに必要なプライバシーファーストのメールおよびカレンダーソリューション。";
+
+/* Plan details vpn plus description */
+"Your privacy and security are our priority." = "あなたのプライバシーとセキュリティは私たちの最優先事項です。";
+
+/* Plan details drive plus description */
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "ストレージに焦点を当てたプランで、ファイルをプライベートに保つための 200 GB のクラウドストレージを備えています。";
+
+/* Plan details bundle description */
+"The ultimate privacy pack with access to all premium Proton services." = "究極のプライバシーパックにはすべてのプレミアムな Proton サービスが含まれています。";
+
+/* Plan footer description */
+"Only non-renewing annual subscriptions are available via this app" = "このアプリでは、更新なしの年間サブスクリプションのみ利用できます";
+
+/* Plan details unlimited folders, labels, filters */
+"Unlimited folders, labels, and filters" = "制限なしのフォルダー、ラベル、フィルター";
+
+/* Plan details up to storage */
+"Up to %@ storage" = "最大 %@ のストレージ";
+
+/* Plan details VPN on a single device */
+"Free VPN on a single device" = "1 台のデバイスで無料 VPN";
+
+/* Plan details Highest VPN speed */
+"Highest VPN speed" = "最高速 VPN";
+
+/* Plan details ad-blocker */
+"Built-in ad-blocker (NetShield)" = "広告ブロッカー内蔵 (NetShield)";
+
+/* Plan details Access to streaming services globally */
+"Access to streaming services globally" = "世界中でストリーミングサービスにアクセス";
+
+/* Plan details Secure Core servers */
+"Secure Core servers" = "Secure Core サーバー";
+
+/* Plan details TOR over VPN */
+"TOR over VPN" = "Tor over VPN";
+
+/* Plan details P2P/BitTorrent */
+"P2P/BitTorrent" = "P2P/BitTorrent";
+
+/* Get plan button */
+"Get %@" = "%@ を入手";
+
+/* Get free plan button */
+"Get Proton for free" = "Proton を無料で入手";
+
+/* Extend subscription button */
+"Extend subscription" = "サブスクリプションを延長";
+
+/* Plan details used storage space */
+"%@ of %@" = "%@/%@";
+
+/* Plan connection error title */
+"Connection issues" = "接続の問題";
+
+/* Plan connection error description */
+"Check your internet connection" = "インターネット接続を確認してください";
+
+/* Plan details no logs policy */
+"Strict no-logs policy" = "厳格なノーログポリシー";
+
+/* Plan successfully upgraded banner message */
+"Plan successfully upgraded" = "プランは正常にアップグレードされました";
+
+/* Plan details `Integrated 2FA authenticator` message */
+"Integrated 2FA authenticator" = "統合された2FA認証機能";
+
+/* Plan details `Priority support` message */
+"Priority support" = "優先サポート";
+
+/* Plan details `Unlimited devices` message */
+"Unlimited devices" = "無制限のデバイス";
+
+/* Plan details number of email aliases message */
+"%@ email aliases" = "%@ メール エイリアス";
+
+/* Plan details `Unlimited email aliases` message */
+"Unlimited email aliases" = "無制限のメールエイリアス";
+
+/* Plan details `Unlimited logins and notes` message */
+"Unlimited logins and notes" = "無制限のログインとメモ";
+
+/* Plan details `Up to %@ forwarding mailboxes` message */
+"Up to %@ forwarding mailboxes" = "最大 %@ 個のメールボックスを転送します";
+
+/* Plan details `Custom fields` message */
+"Custom fields" = "カスタムフィールド";
+
+/* Description of the Pass plan */
+"For next-level password management and identity protection." = "次のレベルのパスワード管理とアイデンティティ保護のために。";

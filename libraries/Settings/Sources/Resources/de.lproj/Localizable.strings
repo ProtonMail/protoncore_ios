@@ -1,0 +1,28 @@
+
+"pmsettings-settings-title" = "Einstellungen";
+
+"pmsettings-settings-app-settings-section" = "App-Einstellungen";
+
+"pmsettings-settings-system-settings-section" = "Systemeinstellungen";
+
+"pmsettings-settings-system-settings-language-title" = "Sprache";
+
+"pmsettings-settings-system-settings-language-description" = "Du kannst deine bevorzugte Sprache in den Systemeinstellungen auswählen.";
+
+"pmsettings-settings-system-settings-language-button" = "Sprache in den Systemeinstellungen festlegen.";
+
+"pmsettings-settings-system-settings-notifications-title" = "Benachrichtigungen";
+
+"pmsettings-settings-system-settings-notifications-description" = "Dieser Kalender kann dich über aktuelle Ereignisse oder Einladungen auf dem Laufenden halten. Wenn du Push-Benachrichtigungen erhalten möchtest, musst du deine Systemeinstellungen ändern.";
+
+"pmsettings-settings-system-settings-notifications-button" = "Berechtigungen in den Systemeinstellungen verwalten";
+
+"pmsettings-settings-about-section" = "Über";
+
+"pmsettings-settings-about-acknowledgements" = "Danksagungen";
+
+"pmsettings-settings-about-privacy" = "Datenschutzerklärung";
+
+"pmsettings-settings-about-terms" = "Nutzungsbedingungen";
+
+"pmsettings-settings-footer" = "App-Version: %@";

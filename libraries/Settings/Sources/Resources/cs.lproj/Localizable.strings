@@ -1,0 +1,28 @@
+
+"pmsettings-settings-title" = "Nastavení";
+
+"pmsettings-settings-app-settings-section" = "Nastavení aplikace";
+
+"pmsettings-settings-system-settings-section" = "Systemová nastavení";
+
+"pmsettings-settings-system-settings-language-title" = "Jazyk";
+
+"pmsettings-settings-system-settings-language-description" = "Preferovaný jazyk můžete zvolit v nastavení systému.";
+
+"pmsettings-settings-system-settings-language-button" = "Nastavit jazyk v nastavení systému.";
+
+"pmsettings-settings-system-settings-notifications-title" = "Oznámení";
+
+"pmsettings-settings-system-settings-notifications-description" = "Tento kalendář vás může informovat o probíhajících akcích nebo pozvánkách. Pokud chcete dostávat vyskakovací oznámení, musíte změnit nastavení systému.";
+
+"pmsettings-settings-system-settings-notifications-button" = "Spravovat oprávnění v nastavení systému";
+
+"pmsettings-settings-about-section" = "O aplikaci";
+
+"pmsettings-settings-about-acknowledgements" = "Na vědomí vzaté";
+
+"pmsettings-settings-about-privacy" = "Zásady ochrany osobních údajů";
+
+"pmsettings-settings-about-terms" = "Podmínky použití";
+
+"pmsettings-settings-footer" = "Verze aplikace: %@";

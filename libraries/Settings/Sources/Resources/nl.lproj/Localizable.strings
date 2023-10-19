@@ -1,0 +1,28 @@
+
+"pmsettings-settings-title" = "Instellingen";
+
+"pmsettings-settings-app-settings-section" = "App Instellingen";
+
+"pmsettings-settings-system-settings-section" = "Systeeminstellingen";
+
+"pmsettings-settings-system-settings-language-title" = "Taal";
+
+"pmsettings-settings-system-settings-language-description" = "U kunt de voorkeurstaal kiezen in uw systeeminstellingen.";
+
+"pmsettings-settings-system-settings-language-button" = "Taal instellen in systeeminstellingen.";
+
+"pmsettings-settings-system-settings-notifications-title" = "Meldingen";
+
+"pmsettings-settings-system-settings-notifications-description" = "Deze kalender kan u op de hoogte houden van evenementen of uitnodigingen. Als u pushmeldingen wilt ontvangen, moet u uw systeeminstellingen wijzigen.";
+
+"pmsettings-settings-system-settings-notifications-button" = "Beheer machtigingen in systeeminstellingen";
+
+"pmsettings-settings-about-section" = "Over";
+
+"pmsettings-settings-about-acknowledgements" = "Met dank aan";
+
+"pmsettings-settings-about-privacy" = "Privacybeleid";
+
+"pmsettings-settings-about-terms" = "Servicevoorwaarden";
+
+"pmsettings-settings-footer" = "App versie: %@";

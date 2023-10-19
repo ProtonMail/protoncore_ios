@@ -1,0 +1,28 @@
+
+"pmsettings-settings-title" = "Ρυθμίσεις";
+
+"pmsettings-settings-app-settings-section" = "Ρυθμίσεις Εφαρμογής";
+
+"pmsettings-settings-system-settings-section" = "Ρυθμίσεις Συστήματος";
+
+"pmsettings-settings-system-settings-language-title" = "Γλώσσα";
+
+"pmsettings-settings-system-settings-language-description" = "Μπορείτε να επιλέξετε προτιμώμενη γλώσσα στις ρυθμίσεις συστήματος.";
+
+"pmsettings-settings-system-settings-language-button" = "Όρισε γλώσσα στις ρυθμίσεις συστήματος.";
+
+"pmsettings-settings-system-settings-notifications-title" = "Ειδοποιήσεις";
+
+"pmsettings-settings-system-settings-notifications-description" = "Αυτό το ημερολόγιο μπορεί να σας κρατά ενήμερους για συμβάντα ή προσκλήσεις. Εάν θέλετε να λαμβάνετε ειδοποιήσεις push, πρέπει να αλλάξετε τις ρυθμίσεις του συστήματός σας.";
+
+"pmsettings-settings-system-settings-notifications-button" = "Διαχειριστείτε τα δικαιώματα στις ρυθμίσεις συστήματος";
+
+"pmsettings-settings-about-section" = "Σχετικά";
+
+"pmsettings-settings-about-acknowledgements" = "Ευχαριστίες";
+
+"pmsettings-settings-about-privacy" = "Πολιτική απορρήτου";
+
+"pmsettings-settings-about-terms" = "Όροι χρήσης";
+
+"pmsettings-settings-footer" = "Έκδοση εφαρμογής: %@";

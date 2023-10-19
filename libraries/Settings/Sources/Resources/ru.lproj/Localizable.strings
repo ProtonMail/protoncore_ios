@@ -1,0 +1,28 @@
+
+"pmsettings-settings-title" = "Настройки";
+
+"pmsettings-settings-app-settings-section" = "Настройки приложения";
+
+"pmsettings-settings-system-settings-section" = "Системные настройки";
+
+"pmsettings-settings-system-settings-language-title" = "Язык";
+
+"pmsettings-settings-system-settings-language-description" = "Вы можете выбрать предпочтительный язык в настройках системы.";
+
+"pmsettings-settings-system-settings-language-button" = "Выберите язык в настройках системы.";
+
+"pmsettings-settings-system-settings-notifications-title" = "Уведомления";
+
+"pmsettings-settings-system-settings-notifications-description" = "Этот календарь может информировать вас о происходящих событиях или приглашениях. Чтобы получать push-уведомления, вам необходимо изменить настройки вашей системы.";
+
+"pmsettings-settings-system-settings-notifications-button" = "Управление разрешениями в настройках системы";
+
+"pmsettings-settings-about-section" = "О программе";
+
+"pmsettings-settings-about-acknowledgements" = "Благодарности";
+
+"pmsettings-settings-about-privacy" = "Политика конфиденциальности";
+
+"pmsettings-settings-about-terms" = "Условия использования";
+
+"pmsettings-settings-footer" = "Версия приложения: %@";

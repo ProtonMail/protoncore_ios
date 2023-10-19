@@ -1,0 +1,28 @@
+
+"pmsettings-settings-title" = "設定";
+
+"pmsettings-settings-app-settings-section" = "應用程式設定";
+
+"pmsettings-settings-system-settings-section" = "系統設定";
+
+"pmsettings-settings-system-settings-language-title" = "語言";
+
+"pmsettings-settings-system-settings-language-description" = "您可以在系統設置中選擇慣用語言。";
+
+"pmsettings-settings-system-settings-language-button" = "在系統設定中設定語言。";
+
+"pmsettings-settings-system-settings-notifications-title" = "通知";
+
+"pmsettings-settings-system-settings-notifications-description" = "此日曆可以讓您即時了解最新新聞、事件或邀請。如果您想獲得推送通知，請修改系統設定。";
+
+"pmsettings-settings-system-settings-notifications-button" = "在設定中啟用權限";
+
+"pmsettings-settings-about-section" = "關於";
+
+"pmsettings-settings-about-acknowledgements" = "致謝聲明";
+
+"pmsettings-settings-about-privacy" = "隱私權政策";
+
+"pmsettings-settings-about-terms" = "服務條款";
+
+"pmsettings-settings-footer" = "應用程式版本：%@";

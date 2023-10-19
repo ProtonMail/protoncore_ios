@@ -1,0 +1,28 @@
+
+"pmsettings-settings-title" = "Setări";
+
+"pmsettings-settings-app-settings-section" = "Setări aplicație";
+
+"pmsettings-settings-system-settings-section" = "Setări sistem";
+
+"pmsettings-settings-system-settings-language-title" = "Limba";
+
+"pmsettings-settings-system-settings-language-description" = "Puteți alege limba preferată în setările sistemului.";
+
+"pmsettings-settings-system-settings-language-button" = "Setați limba în setările sistemului.";
+
+"pmsettings-settings-system-settings-notifications-title" = "Notificări";
+
+"pmsettings-settings-system-settings-notifications-description" = "Acest calendar vă poate ține la curent cu evenimentele care se întâmplă sau invitații. Dacă doriți să obțineți notificări forțate, trebuie să schimbați setările sistemului.";
+
+"pmsettings-settings-system-settings-notifications-button" = "Gestionare permisiuni în setările sistemului";
+
+"pmsettings-settings-about-section" = "Despre";
+
+"pmsettings-settings-about-acknowledgements" = "Mulțumiri";
+
+"pmsettings-settings-about-privacy" = "Politica de confidențialitate";
+
+"pmsettings-settings-about-terms" = "Termenii serviciului";
+
+"pmsettings-settings-footer" = "Versiune aplicație: %@";
