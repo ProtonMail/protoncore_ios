@@ -1,0 +1,28 @@
+
+"pmsettings-settings-title" = "Preferències";
+
+"pmsettings-settings-app-settings-section" = "Preferències de l'aplicació";
+
+"pmsettings-settings-system-settings-section" = "Preferències del sistema";
+
+"pmsettings-settings-system-settings-language-title" = "Idioma";
+
+"pmsettings-settings-system-settings-language-description" = "Podeu triar l'idioma preferit a les preferències del vostre sistema.";
+
+"pmsettings-settings-system-settings-language-button" = "Definiu l'idioma a les preferències del sistema.";
+
+"pmsettings-settings-system-settings-notifications-title" = "Notificacions";
+
+"pmsettings-settings-system-settings-notifications-description" = "Aquest calendari us pot mantenir informat sobre els esdeveniments que s'estan produint o les invitacions. Si voleu rebre notificacions push, heu de canviar la configuració del vostre sistema.";
+
+"pmsettings-settings-system-settings-notifications-button" = "Gestiona els permisos a la configuració del sistema";
+
+"pmsettings-settings-about-section" = "Quant a";
+
+"pmsettings-settings-about-acknowledgements" = "Crèdits";
+
+"pmsettings-settings-about-privacy" = "Política de privacitat";
+
+"pmsettings-settings-about-terms" = "Condicions del servei";
+
+"pmsettings-settings-footer" = "Versió de l'aplicació: %@";

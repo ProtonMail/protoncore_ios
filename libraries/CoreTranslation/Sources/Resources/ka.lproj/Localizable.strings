@@ -1,0 +1,780 @@
+/* Title */
+
+"Human Verification" = "ადამიანის შემოწმება";
+
+/* captha method name */
+"CAPTCHA" = "CAPTCHA";
+
+/* SMS method name */
+"SMS" = "SMS";
+
+/* email method name */
+"Email" = "ელფოსტა";
+
+/* Help button */
+"Help" = "დახმარება";
+
+/* OK button */
+"OK" = "დიახ";
+
+/* Cancel button */
+"Cancel" = "გაუქმება";
+
+/* Enter email label */
+"Your email will only be used for this one-time verification." = "თქვენი ელფოსტა, მხოლოდ, ერთხელ შესამოწმებლად იქნება გამოყენებული.";
+
+/* Verification button */
+"Get verification code" = "შემოწმების კოდის მიღება";
+
+/* Enter SMS label */
+"Your phone number will only be used for this one-time verification." = "თქვენი ტელეფონის ნომერი, მხოლოდ, ერთხელ, შესამოწმებლად იქნება გამოყენებული.";
+
+/* SMS label */
+"Phone number" = "ტელეფონის ნომერი";
+
+/* Search country placeholder */
+"Search country" = "ქვეყნის ძებნა";
+
+/* Enter sms code label */
+"Enter the verification code that was sent to %@" = "შეიყვანეთ %@-ზე გამოგზავნილი შემოწმების კოდი";
+
+/* Enter email code label */
+"Enter the verification code that was sent to %@. If you don't find the email in your inbox, please check your spam folder." = "შეიყვანეთ შემოწმების კოდი, რომელიც %@-ზე გამოგიგზავნეთ. თუ შეტყობინებას საფოსტო ყუთში ვერ პოულობთ, სპამშიც ჩაიხედეთ.";
+
+/* Verification code label */
+"Verification code" = "შემოწმების კოდი";
+
+/* Verification code hint label */
+"Enter the 6-digit code." = "შეიყვანეთ 6-ციფრიანი კოდი.";
+
+/* Verify button */
+"Verify" = "გადამოწმება";
+
+/* Verifying button */
+"Verifying" = "შემოწმება";
+
+/* Not receive code button */
+"Did not receive the code?" = "კოდი არ მიგიღიათ?";
+
+/* alert title */
+"Invalid verification code" = "შემოწმების არასწორი კოდი";
+
+/* alert message */
+"Would you like to receive a new verification code or use an alternative verification method?" = "გნებავთ შემოწმების ახალი კოდის მიღება, თუ შემოწმების ალტერნატიულ მეთოდს გამოიყენებთ?";
+
+/* resend alert button */
+"Resend" = "თავიდან გაგზავნა";
+
+/* other method alert button */
+"Try other method" = "სხვა მეთოდის ცდა";
+
+/* alert title */
+"Request new code?" = "გამოვითხოვო ახალი კოდი?";
+
+/* alert message */
+"Get a replacement code sent to %@." = "მიიღეთ %@-ზე გაგზავნილი შეცვლის კოდი.";
+
+/* new code alert button */
+"Request new code" = "ახალი კოდის გამოთხოვა";
+
+/* sent baner title */
+"Code sent to %@" = "კოდი გაგზავნილია: %@";
+
+/* help header title */
+"Need help with human verification?" = "გჭირდებათ დახმარება ადამიანობის შემოწმებაში?";
+
+/* request item title */
+"Request an invite" = "მოსაწვევის მოთხოვნა";
+
+/* request item message */
+"If you are having trouble creating your account, please request an invitation and we will respond within 1 business day." = "თუ გექმნებათ ანგარიშის შექმნის პრობლემა, გამოითხოვეთ მოსაწვევი და ჩვენ 1 სამუშაო დღეში გიპასუხებთ.";
+
+/* visit item title */
+"Visit our Help Center" = "ეწვიეთ დახმარების ჩვენს ცენტრს";
+
+/* visit item message */
+"Learn more about human verification and why we ask for it." = "გაიგეთ მეტი ადამიანობის შემოწმებაზე და რატომ გთხოვთ ამას.";
+
+/* alert title */
+"Update required" = "აუცილებელია განახლება";
+
+/* learn more button */
+"Learn more" = "მეტის ნახვა";
+
+/* update button */
+"Update" = "განახლება";
+
+/* quit button */
+"Quit" = "გასვლა";
+
+/* Login screen title */
+"Sign in" = "შესვლა";
+
+/* Login screen subtitle */
+"Enter your Proton Account details." = "შეიყვანეთ თქვენი Proton-ის ანგარიშის დეტალები.";
+
+/* Username field title */
+"Proton email or username" = "Proton-ის ელფოსტა ან მომხმარებლის სახელი";
+
+/* Username field title */
+"Email or username" = "ელფოსტა ან მომხმარებლის სახელი";
+
+/* Password field title */
+"Password" = "პაროლი";
+
+/* Help button */
+"Need help?" = "დახმარება გჭირდებათ?";
+
+/* Sign in button when in SSO mode */
+"Sign in with password" = "პაროლით შესვლა";
+
+/* Sign in with SSO button */
+"Sign in with SSO" = "SSO-ით შესვლა";
+
+/* Sign in with SSO screen title */
+"Sign in to your organization" = "შედით თქვენს ორგანიზაციაში";
+
+/* Create account button */
+"Create an account" = "ანგარიშის შექმნა";
+
+/* Login help screen title */
+"How can we help?" = "როგორ შეგვიძლია, დაგეხმაროთ?";
+
+/* Forgot username help button */
+"Forgot username" = "დაგავიწყდათ თქვენი მომხმარებლის სახელი";
+
+/* Forgot password help button */
+"Forgot password" = "დაგავიწყდათ პაროლი";
+
+/* Other sign-in issues button */
+"Other sign-in issues" = "შესვლის სხვა პრობლემები";
+
+/* Customer support button */
+"Customer support" = "მხარდაჭერის გუნდი";
+
+/* Customer support button */
+"Still need help? Contact us directly." = "ჯერ კიდევ გჭირდებათ დახმარება? პირდაპირ დაგვიკავშირდით.";
+
+/* Invalid username hint */
+"Please enter your Proton Account email or username." = "შეიყვანეთ თქვენი Proton-ის ანგარიშის ელფოსტის ან მომხმარებლის სახელი.";
+
+/* Invalid password hint */
+"Please enter your Proton Account password." = "შეიყვანეთ თქვენი Proton-ის ანგარიშის პაროლი.";
+
+/* Title of a page asking to enter your password. */
+"Enter your password" = "შეიყვანეთ თქვენი პაროლი";
+
+/* Dialog button for missing keys error */
+"Complete Setup" = "მორგების დასრულება";
+
+/* Dialog text for missing keys error */
+"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "თქვენს ანგარიშს გასაღებები აკლია. გასაღებების ავტომატურად დასაგენერირებლად შედით ვებიდან. მას შემდეგ, რაც შეხვალთ ვებში, გთხოვთ, დაბრუნდეთ აპში და შეხვიდეთ.";
+
+/* /** */
+"Account setup required" = "საჭიროა ანგარიშის მორგება";
+
+/* Incorrect mailbox password error */
+"Incorrect mailbox password" = "საფოსტო ყუთის პაროლი არასწორია";
+
+/* External accounts address required popup title */
+"Proton address required" = "Proton-ის მისამართი აუცილებელია";
+
+/* External accounts not supported popup local desc */
+"Get a Proton Mail address linked to this account in your Proton web settings." = "მიიღეთ Proton Mail-ის მისამართი, მიბმული ამ ანგარიშთან, Proton-ის ვებ-პარამეტრებში.";
+
+/* Session expired info */
+"Your session has expired. Please log in again." = "თქვენს სესიას ვადა გაუვიდა. თავიდან შედით.";
+
+/* Generic error message when no better error can be displayed */
+"An error has occured" = "ნაპოვნია შეცდომა";
+
+/* Info about existing external Proton Mail address */
+"You need a Proton email address to use Proton Mail and Proton Calendar.\nYou’ll still be able to use %@ to sign in, and to recover your account." = "Proton Mail-ის და Proton Calendar-ის გამოსაყენებლად Proton-ის ელფოსტის მისამართი გჭირდებათ.\n%@-ის გამოყენება შესასვლელად და პაროლის აღსადგენად მაინც შეგიძლიათ.";
+
+/* Username field title */
+"Username" = "მომხმარებლის სახელი";
+
+/* Action button title for picking Proton Mail username */
+"Continue" = "გაგრძელება";
+
+/* Username field error message */
+"Please enter a username." = "შეიყვანეთ მომხმარებლის სახელი.";
+
+/* Mailbox unlock screen title */
+"Unlock your mailbox" = "განბლოკეთ თქვენი საფოსტო ყუთი";
+
+/* Mailbox password field title */
+"Mailbox password" = "საფოსტო ყუთის პაროლი";
+
+/* Mailbox unlock screen action button title */
+"Unlock" = "განბლოკვა";
+
+/* 2FA screen title */
+"Two-factor authentication" = "2FA";
+
+/* 2FA screen action button title */
+"Authenticate" = "ავთენტიკაცია";
+
+/* 2FA screen field title */
+"Two-factor code" = "2FA კოდი";
+
+/* 2FA screen recovery field title */
+"Recovery code" = "აღდგენის კოდი";
+
+/* 2FA screen recovery button title */
+"Use recovery code" = "აღდგენის კოდის გამოყენება";
+
+/* 2FA screen 2FA button title */
+"Use two-factor code" = "2FA კოდის გამოყენება";
+
+/* 2FA screen recovery field info */
+"Enter an 8-character recovery code." = "შეიყვანეთ აღდგენის 8-სიმბოლოიანი კოდი.";
+
+/* Error alert title */
+"Error occured" = "შეცდომა";
+
+/* Title */
+"Warning" = "გაფრთხილება";
+
+/* Question is user wants to bypass username validation and activate plan for current username */
+"Do you want to activate the purchase for %@ address?" = "გნებავთ %@ მისამართის შეძენის აქტივაცია?";
+
+/* Warning message option to bypass validation and activate plan for current username */
+"Yes, activate it for " = "დიახ, გაააქტიურეთ ";
+
+/* Warning message option when user want to relogin to another account */
+"No, for another Proton Mail account" = "არა, Proton Mail-ის სხვა ანგარიშისთვის";
+
+/* Message shown to the user if we had to top up the account with credits instead of purchasing a plan */
+"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "ჩვენ ვერ ავწიეთ თქვენი ანგარიშის სატარიფო გეგმა იქამდე, სადამდეც თქვენ მიუთითეთ, ასე რომ გადახდილი თანხა თქვენს ანგარიშს კრედიტებს სახით დაემატა. მეტი ინფორმაციის მისაღებად და სატარიფო გეგმის ასაწევად მხარდაჭერის გუნდს დაუკავშირდით.";
+
+/* Confirmation for the credits applied popup, will result in showing customer support contact form */
+"Contact Support" = "კონტაქტი მხარდაჭერის გუნდთან";
+
+/* Cancellation for the credits applied popup */
+"Dismiss" = "მოცილება";
+
+/* Error applying credit after registration alert */
+"Payment failed" = "გადახდის შეცდომა";
+
+/* Error applying credit after registration alert */
+"You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support." = "წარმატებით დარეგისტრირდით, მაგრამ თქვენი გადახდა არ დამუშავებულა. გადახდის ინფორმაციის თავიდან გადასაგზავნად დააწექით თავიდან ცდის ღილაკს. გადახდა, მხოლოდ, ერთხელ განხორციელდება. თუ პრობლემა კიდევ არ გაქრება, დაუკავშირდით მხარდაჭერის ჩვენს გუნდს.";
+
+/* Button in some alerts */
+"Retry" = "თავიდან";
+
+/* Error applying credit after registration alert */
+"Contact customer support" = "კონტაქტი მხარდაჭერის გუნდთან";
+
+/* Error message */
+"Failed to get list of available products from App Store." = "App Store-დან ხელმისაწვდომი პროდუქტების სიის მიღების პრობლემა.";
+
+/* Error message */
+"Purchase is not possible." = "შეძენა შეუძლებელია.";
+
+/* Error message */
+"Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you." = "Apple-მა შეგვატყობინა, რომ თქვენ ასწიეთ სატარიფო გეგმა, მაგრამ აკლდა ზოგიერთი ტექნიკური მონაცემი. გთხოვთ გადმოგვიგზავნოთ შეცდომის ანგარიში და მხარდაჭერის გუნდი მალევე დაგიკავშირდებათ.";
+
+/* Error message */
+"Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "Apple-მა შეგვატყობინა, რომ თქვენ სატარიფო გეგმა ასწიეთ, მაგრამ ანგარიშიდან უკვე გახვედით.";
+
+/* Error message */
+"It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "App Store-ზე შეძენილი პროდუქტები ჩვენს სერვერზე არსებულ არც ერთ პროდუქტს არ ემთხვევა. შეავსეთ შეცდომის ანგარიშის გადაგზავნის ფორმა და ჩვენი მხარდაჭერის გუნდი მალევე დაგიკავშირდებათ.";
+
+/* Error message for beta users */
+"Sorry, we cannot process purchases in the beta version of the iOS app. Thank you for participating in our public beta!" = "ჩვენ არ შეგვიძლია, შეძენა iOS-ის აპის ბეტა ვერსიაში. მადლობა, რომ მონაწილეობას იღებთ საჯარო ბეტაში!";
+
+/* Error message */
+"We have been notified of an App Store purchase but cannot match the purchase with an account of yours." = "ჩვენ მივიღეთ App Store-ში შეძენის შეტყობინება, მაგრამ მისი დაკავშირება თქვენს ანგარიშთან შეუძლებელია.";
+
+/* Error message */
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "შეძენის დასასრულებლად შედით Proton Mail-ის ანგარიშში, რომლის სერვისის ტარიფის განახლებასაც აპირებთ.";
+
+/* Error message */
+"Apple informed us they could not process the purchase." = "Apple-მა შეგვატყობინა, რომ თქვენს გადახდას ვერ დაამუშავებს.";
+
+/* Error message */
+"We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "თქვენი გამოწერა წარმატებით გააქტიურდა. სერვისის ახალი გეგმის გამოყენების დასაწყებად აპი თავიდან გაუშვით.";
+
+/* Error message */
+"Please unlock the app to proceed with your service plan activation" = "სერვისი გეგმის აქტივაციისთვის აპის განბლოკვაა საჭირო";
+
+/* Error message */
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "შედით Proton Mail-ის ანგარიშში, რომლის სატარიფო გეგმის აწევაც გსურთ.";
+
+/* In App Purchase error */
+"Contact support@protonvpn.com to complete your purchase." = "შეძენის დასასრულებლად დაუკავშირდით მხარდაჭერის გუნდს ელფოსტაზე support@protonvpn.com.";
+
+/* In App Purchase error */
+"Wrong payment token status. Please relaunch the app. If error persists, contact support." = "გადახდის კოდის არასწორი სტატუსი. სცადეთ თავიდან გაუშვათ აპი. თუ შეცდომა კიდევ გამოჩნდა, დაუკავშირდით მხარდაჭერის გუნდს.";
+
+/* Dialog title for organization user first login */
+"Change your password" = "შეცვალეთ თქვენი პაროლი";
+
+/* Dialog action button title for organization user first login */
+"Change password" = "პაროლის შეცვლა";
+
+/* Dialog message for organization user first login */
+"To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "Proton-ის აპის ორგანიზაციის წევრად გამოყენებისთვის ჯერ პაროლის შეცვლაა საჭირო. ამის გაკეთება Proton-ში ბრაუზერიდან შესვლით შეგიძლიათ.";
+
+/* Delete account screen title */
+"Delete account" = "ანგარიშის წაშლა";
+
+/* Delete account explaination under button */
+"This will permanently delete your account and all of its data. You will not be able to reactivate this account." = "თქვენი ანგარიში და მონაცემები სამუდამოდ წაიშლება. ანგარიშის რეაქტივაციას ვეღარ შეძლებთ.";
+
+/* Delete account success */
+"Account deleted.\nLogging out..." = "ანგარიში წაიშალა. \nგასვლა...";
+
+/* A generic error message when we have no better message from the backend */
+"A networking error has occured" = "დაფიქსირდა ქსელის შეცდომა";
+
+/* Button title shown when a error has occured, causes the screen to close */
+"Close" = "დახურვა";
+
+/* */ */
+"switch to" = "გადართვა";
+
+/* Title of account switcher */
+"Accounts" = "ანგარიშები";
+
+/* Manage accounts button */
+"Manage accounts" = "ანგარიშების მართვა";
+
+/* Section title of account manager */
+"Signed in to Proton Mail" = "შეხვედით Proton Mail-ში";
+
+/* Section title of account manager */
+"Signed out of Proton Mail" = "გამოხვედით Proton Mal-დან";
+
+/* Sign out button/ title */
+"Sign out" = "გასვლა";
+
+/* Remove button */
+"Remove" = "წაშლა";
+
+/* remove account button in account manager */
+"Remove account from this device" = "ამ მოწყობილობიდან ანგარიშის წაშლა";
+
+/* old value of remove account button in account manager */
+"Remove account" = "ანგარიშის წაშლა";
+
+/* Alert message of remove account */
+"You will be signed out and all the data associated with this account will be removed from this device." = "ახლა გახვალთ და ამ ანგარიშთან ასოცირებული მონაცემები სამუდამოდ წაიშლება ამ მოწყობილობიდან.";
+
+/* Alert message of sign out the email address */
+"Are you sure you want to sign out %@?" = "დარწმუნებული ბრძანდებით, რომ გნებავთ, გახვიდეთ %@-დან?";
+
+/* Button for dismissing account switcher */
+"Dismiss account switcher" = "ანგარიშის გადამრთველის მოცილება";
+
+/* Button for signing into another account */
+"Sign in to another account" = "სხვა ანგარიშში შესვლა";
+
+/* /** */
+"Create your Proton Account" = "Proton-ის თქვენი ანგარიშის შექმნა";
+
+/* Signup main view description */
+"One account for all Proton services." = "ერთი ანგარიში Proton-ის ყველა სერვისისთვის.";
+
+/* Next button */
+"Next" = "შემდეგი";
+
+/* Email address button */
+"Use your current email instead" = "გამოიყენეთ თქვენი მიმდინარე ელ-ფოსტის მისამართი";
+
+/* Proton Mail address button */
+"Create a secure Proton Mail address instead" = "სამაგიეროდ, შექმენით Proton Mail-ის დაცული მისამართი";
+
+/* Signup password view title */
+"Create your password" = "შექმენით თქვენი პაროლი";
+
+/* Password field hint about minimum length */
+"Password must contain at least 8 characters" = "პაროლი 8 სიმბოლოს მაინც უნდა შეიცავდეს";
+
+/* Repeat password field title */
+"Repeat password" = "გაიმეორეთ პაროლი";
+
+/* Title of domains bottom action sheet */
+"Domain" = "დომენი";
+
+/* Recovery view description (old string, replaced) */
+"This will help you access your account in case you forget your password or get locked out of your account." = "ეს დაგეხმარებათ თქვენს ანგარიშთან წვდომაში, თუ პაროლი დაგავიწყდათ ან ანგარიშის დაგებლოკათ.";
+
+/* Recovery segmenet phone */
+"Phone" = "ტელეფონი";
+
+/* Recovery email field title */
+"Recovery email" = "აღდგენის ელფოსტა";
+
+/* Recovery phone field title */
+"Recovery phone number" = "აღდგენის ტელეფონის ნომერი";
+
+/* Recovery terms and conditions description */
+"By clicking Next, you agree with Proton's Terms and Conditions" = "შემდეგ გვერდზე გადასვლით თქვენ ეთანხმებით Proton-ის წესებს და პირობებს";
+
+/* Recovery terms and conditions link */
+"Terms and Conditions" = "პირობები და წესები";
+
+/* Skip button */
+"Skip" = "გამოტოვება";
+
+/* Recovery skip title */
+"Skip recovery method?" = "გამოვტოვო აღდგენის მეთოდი?";
+
+/* Recovery skip description */
+"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "აღდგენის მეთოდი, რომელიც დაგეხმარებათ თქვენს ანგარიშთან წვდომაში, თუ პაროლი დაგავიწყდათ ან ანგარიშის დაგებლოკათ.";
+
+/* Set recovery method button */
+"Set recovery method" = "აღდგენის მეთოდის დაყენება";
+
+/* Complete view title */
+"Your account is being created" = "მიმდინარეობს თქვენი ანგარიშის შექმნა…";
+
+/* Complete view description */
+"This should take no more than a minute." = "წუთზე მეტი არ უნდა დასჭირდეს.";
+
+/* Signup complete progress step creation */
+"Creating your account" = "თქვენი ანგარიშის შექმნა";
+
+/* Signup complete progress step address generation */
+"Generating your address" = "თქვენი მისამართის გენერაცია";
+
+/* Signup complete progress step keys generation */
+"Securing your account" = "თქვენი ანგარიშის დაცვა";
+
+/* Signup complete progress step payment verification */
+"Verifying your payment" = "თქვენი გადახდის შემოწმება";
+
+/* Signup complete progress step payment validated */
+"Payment validated" = "გადახდა შემოწმდა";
+
+/* Email verification view title */
+"Account verification" = "ანგარიშის შემოწმება";
+
+/* Email verification view description */
+"For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "თქვენი უსაფრხოებისთვის უნდა გადავამოწმოთ, რომ მისამართი, რომელიც შეიყვანეთ, თქვენ გეკუთვნით. გადამოწმების კოდი გაგზავნილია %@-ზე. მიღებული კოდი შეიყვანეთ ქვემოთ:";
+
+/* Did not receive code button */
+"Did not receive a code?" = "კოდი არ მიგიღიათ?";
+
+/* Invalid token request error */
+"Invalid token request" = "კოდის არასწორი მოთხოვნა";
+
+/* Invalid token error */
+"Invalid token error" = "არასწორი კოდის სტატუსი";
+
+/* Create user failed error */
+"Create user failed" = "მომხმარებლის შექმნის შეცდომა";
+
+/* Invalid hashed password error */
+"Invalid hashed password" = "პაროლის ჰეში არასწორია";
+
+/* Password empty error */
+"Password can not be empty.\nPlease try again." = "პაროლი ცარიელი ვერ იქნება.\nთავიდან სცადეთ.";
+
+/* Password too short error */
+"Password must contain at least %@ characters." = "პაროლი %@ სიმბოლოს მაინც უნდა შეიცავდეს.";
+
+/* Password not equal error */
+"Passwords do not match.\nPlease try again." = "პაროლები არ ემთხვევა.\nთავიდან სცადეთ.";
+
+/* Email address already used error */
+"Email address already used." = "ელფოსტის მისამართი უკვე გამოიყენება.";
+
+/* Sub-user configuration error */
+"Please ask your admin to configure your sub-user." = "ქვემომხმრებლის კონფიგურაცია თქვენს ადმინისტრატორს უნდა სთხოვოთ.";
+
+/* Invalid verification alert message */
+"Would you like to receive a new verification code or use an alternate email address?" = "გნებავთ შემოწმების ახალი კოდის მიღება, თუ შემოწმების ალტერნატიულ ელფოსტას გამოიყენებთ?";
+
+/* Change email address button */
+"Change email address" = "ელფოსტის მისამართის შეცვლა";
+
+/* Signup summary title */
+"Congratulations" = "გილოცავთ!";
+
+/* Signup summary free plan description */
+"Your Proton Free account was successfully created." = "თქვენი Proton-ის უფასო ანგარიში წარმატებით შეიქმნა.";
+
+/* Signup summary free plan description replacement */
+"Proton Free" = "Proton Free";
+
+/* Signup summary paid plan description */
+"Your payment was confirmed and your %@ account successfully created." = "გადახდა დადასტურდა და თქვენი %@ ანგარიში წარმატებით შეიქმნა.";
+
+/* Signup summary no plan description */
+"Your Proton account was successfully created." = "Proton-ის თქვენი ანგარიში წარმატებით შეიქმნა.";
+
+/* Signup summary welcome text */
+"Enjoy the world of privacy." = "ისიამოვნეთ კონფიდენციალურობის სამყაროთი.";
+
+/* Plan selection title */
+"Select a plan" = "აირჩეთ გეგმა";
+
+/* Plan selection title */
+"Current plan" = "მიმდინარე ტარიფი";
+
+/* Subscription title */
+"Subscription" = "გამოწერა";
+
+/* Plan selection title */
+"Upgrade your plan" = "გააუმჯობესეთ თქვენი ტარიფი";
+
+/* Plan footer description */
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "მობილური აპლიკაციიდან წვდომადია, მხოლოდ, წლიური გამოწერები, ავტომატური განახლების გარეშე.";
+
+/* Plan footer purchased description */
+"You cannot manage subscriptions inside the mobile application." = "მობილური აპლიკაციიდან გამოწერებს ვერ მართავთ.";
+
+/* Plan details renew automatically expired */
+"Your plan will automatically renew on %@" = "თქვენი გეგმის ავტომატური განახლების თარიღი: %@";
+
+/* Plan details renew expired */
+"Current plan will expire on %@" = "მიმდინარე ტარიფის ამოწურვის ვადაა %@";
+
+/* Plan details unavailable contact administrator */
+"Contact an administrator to make changes to your Proton subscription." = "Proton-ის გამოწერის შესაცვლელად დაუკავშირდით ადმინისტრატორს.";
+
+/* Plan details storage */
+"%@ storage" = "%@ საცავი";
+
+/* Plan details storage per user */
+"%@ storage / user" = "%@ საცავი / მომხმარებელზე";
+
+/* Plan details price time period without unit — we delegate the units formatting to the operating system. Example: for 1 year 3 months */
+"for %@" = "%@-თვის";
+
+/* Plan details custom email addresses */
+"Custom email addresses" = "მორგებული ელ-ფოსტის მისამართები";
+
+/* Plan details priority customer support */
+"Priority customer support" = "მომხმარებლის პრიორიტეტული მხარდაჭერა";
+
+/* Plan details adblocker */
+"Adblocker (NetShield)" = "Adblocker (NetShield)";
+
+/* Plan details streaming service support */
+"Streaming service support" = "სტრიმინგის სერვერის მხარდაჭერა";
+
+/* Plan details high speed message */
+"High speed" = "მაღალი სიჩქარე";
+
+/* Plan details highest speed message */
+"Highest speed" = "უმაღლესი სიჩქარე";
+
+/* Plan details multi-user support message */
+"Multi-user support" = "მრავალმომხმარებლიანობის მხარდაჭერა";
+
+/* Plan details free description */
+"The basic for private and secure communications." = "საბაზისო ფუნქციები კონფიდენციალური და დაცული ურთიერთობისთვის.";
+
+/* Plan details plus description */
+"Full-featured mailbox with advanced protection." = "საფოსტო ყუთი ყველა ფუნქციითა და დამატებითი უსაფრთხოებით.";
+
+/* Badge under plan name indicating a limited time offer (promo price) */
+"Limited time offer" = "დროში შეზღუდული შეთავაზება";
+
+/* Unfinished operation error dialog title */
+"Complete payment?" = "დავასრულო შეძენა?";
+
+/* Unfinished operation error dialog description */
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Proton Bundle-ის ტარიფის გეგმის შეძენა უკვე დაწყებულია. დააწექით ღილაკს \"გაგრძელება\", რომ დაასრულოთ გადახდა და შექმნათ თქვენი ანგარიში";
+
+/* Unfinished operation error dialog retry button */
+"Complete payment" = "შეძენის დასრულება";
+
+/* Unfinished operation dialog description */
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "ანგარიშის მორგების პროცესის დასრულება შეუძლებელია გაუთვალისწინებელი შეცდომის გამო.\nთავიდან სცადეთ.";
+
+/* IAP in progress banner message */
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "IAP შეძენის პროცესი დაწყებულია. შეძენის დასასრულებლად ან გასაუქმებლად Apple-ის ინსტრუქციებს მიჰყევით.";
+
+/* Made by */
+"Made by" = "გაკეთებულია";
+
+/* Networking connection error */
+"Network connection error" = "ქსელთან შეერთების შეცდომა";
+
+/* Message shown when we suspect that the Proton servers are blocked */
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Proton-ის სერვერები ხელმიუწვდომელია. ეს შეიძლება, ქსელის არასწორი კონფიგურაციის, ან Proton-ის სერვერის ბრალი იყოს. ან Proton-ის სერვერები იბლოკება";
+
+/* Button for the error banner shown when we suspect that the Proton servers are blocked */
+"Troubleshoot" = "შეცდომების გასწორება";
+
+/* Networking insecure connection error */
+"The TLS certificate validation failed when trying to connect to the Proton API. Your current Internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again." = "Proton API-სთან დაკავშირების მცდელობისას TLS სერტიფიკატის ვალიდაცია ვერ მოხერხდა. თქვენს მიმდინარე ინტერნეტკავშირს შეიძლება თვალყურს ადევნებდნენ. თქვენი მონაცემების დაცულობის შესანარჩუნებლად ჩვენ ვუკრძალავთ აპს Proton API-ზე წვდომას.\nთქვენს ანგარიშში შესასვლელად ან წვდომისთვის, გადაერთეთ ახალ ქსელზე და სცადეთ ხელახლა დაკავშირება.";
+
+/* network troubleshot view title */
+"support form" = "მხარდაჭერის ფორმა";
+
+/* network troubleshot view title */
+"email" = "ელფოსტა";
+
+/* network troubleshot view title */
+"Twitter" = "Twitter";
+
+/* network troubleshot view title */
+"TroubleShooting" = "შეცდომების გასწორება";
+
+/* network troubleshot cell title */
+"Allow alternative routing" = "ალტერნატიული რაუტინგის ჩართვა";
+
+/* network troubleshot cell title */
+"No internet connection" = "ინტერნეტი არ გაქვთ";
+
+/* network troubleshot cell title */
+"Internet Service Provider (ISP) problem" = "ინტერნეტ სერვის პროვაიდერის (ISP) პრობლემა";
+
+/* network troubleshot cell title */
+"Government block" = "მთავრობის ბლოკი";
+
+/* network troubleshot cell title */
+"Antivirus interference" = "ანტივირუსის ჩარევა";
+
+/* network troubleshot cell title */
+"Proxy/Firewall interference" = "პროქსის/ბრანდმაუერის მიერ გამოწვეული პრობლემები";
+
+/* network troubleshot cell title */
+"Proton is down" = "Proton-ი გათიშულია";
+
+/* network troubleshot cell title */
+"Still can't find a solution" = "გადაწყვეტა ჯერ კიდევ ვერ ვიპოვე";
+
+/* alternative routing description */
+"In case Proton sites are blocked, this setting allows the app to try alternative network routing to reach Proton, which can be useful for bypassing firewalls or network issues. We recommend keeping this setting on for greater reliability. %1$@" = "იმ შემთხვევაში, თუ Proton-ის საიტები დაბლოკილია, ეს პარამეტრი აპს საშუალებას აძლევს, Proton-მდე მისასვლელად ქსელის ალტერნატიული რაუტინგი სცადოს, რაც შეიძლება, სასარგებლო იყოს ბრანდმაუერის ან ქსელის პრობლემების გვერდის ავლით. მეტი საიმედოობისთვის გირჩევთ, ჩართოთ ეს პარამეტრი. %1$@";
+
+/* no internet connection description */
+"Please make sure that your internet connection is working." = "დარწმუნდით, რომ ინტერნეტი გაქვთ.";
+
+/* ISP problem description */
+"Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "სცადეთ, მიუერთდეთ Proton-ს სხვა ქსელიდან (ან სცადეთ %1$@ ან %2$@).";
+
+/* Goverment blocking description */
+"Your country may be blocking access to Proton. Try using %1$@ (or any other VPN) or %2$@ to access Proton." = "შესაძლოა, თქვენს ქვეყანაში Proton-ზე წვდომა დაბლოკილია. Proton-ზე წვდომისთვის, სცადეთ, გამოიყენოთ %1$@ (ან ნებისმიერი სხვა VPN) ან %2$@.";
+
+/* Antivirus interference description. */
+"Temporarily disable or remove your antivirus software." = "დროებით გამორთეთ ან წაშალეთ ანტივირუსი.";
+
+/* Firewall interference description. */
+"Disable any proxies or firewalls, or contact your network administrator." = "გამორთეთ ყველა პროქსი ან ბრანდმაუერი ან დაუკავშირდით თქვენი ქსელის ადმინისტრატორს.";
+
+/* Proton is down description. */
+"Check Proton Status for our system status." = "ჩვენი სისტემის სტატუსის გასაგებად შეამოწმეთ Proton-ის მდგომარეობა.";
+
+/* Name of the link of Proton Status */
+"Proton Status" = "Proton-ის სტატუსი";
+
+/* No other solution description. */
+"Contact us directly through our support form, email (support@protonmail.zendesk.com), or Twitter." = "დაგვიკავშირდით, პირდაპირ, მხარდაჭერის ფორმით, ელფოსტით(support@protonmail.zendesk.com) ან ტვიტერით.";
+
+/* The subject of the email draft created in the network troubleshoot view. */
+"Subject..." = "საგანი...";
+
+/* The body of the email draft created in the network troubleshoot view. */
+"Please share your problem." = "გაგვიზიარეთ თქვენი პრობლემა.";
+
+/* top left back button */
+"Back" = "უკან";
+
+/* Welcome screen footer label */
+"Privacy by default" = "ნაგულისხმები კონფიდენციალობა";
+
+/* Plan selection title */
+"One plan for all Proton services" = "ერთი სატარიფო გეგმა Proton-ის ყველა სერვისისთვის";
+
+/* Plan details free description */
+"The no-cost starter account designed to empower everyone with privacy by default." = "დამწყების უფასო ანგარიში განკუთვნილია, მათთვის, ვისთვისაც კონფიდენციალობა მნიშვნელოვანია.";
+
+/* Plan details plus description */
+"The privacy-first email and calendar solution for your everyday communication needs." = "დაცული ელფოსტისა და კალენდრის გადაწყვეტილება თქვენი ყოველდღიური საჭიროებებისთვის.";
+
+/* Plan details vpn plus description */
+"Your privacy and security are our priority." = "თქვენი კონფიდენციალობა და უსაფრთხოება ჩვენი პრიორიტეტია.";
+
+/* Plan details drive plus description */
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "საცავზე-ფოკუსირებული ტარიფი 200გბ ღრუბლოვანი საცავით, თქვენი ფაილების კონფიდენციალურად შესანახად.";
+
+/* Plan details bundle description */
+"The ultimate privacy pack with access to all premium Proton services." = "მაქსიმალური ნაკრები Proton-ის ყველა ფასიან ფუნქციასთან წვდომის საშუალებით.";
+
+/* Plan footer description */
+"Only non-renewing annual subscriptions are available via this app" = "ამ აპიდან, მხოლოდ, არაგანმეორებადი წლიური გამოწერებია ხელმისაწვდომი";
+
+/* Plan details unlimited folders, labels, filters */
+"Unlimited folders, labels, and filters" = "ულიმიტო საქაღალდეები, ჭდეები და ფილტრები";
+
+/* Plan details up to storage */
+"Up to %@ storage" = "%@-მდე საცავი";
+
+/* Plan details VPN on a single device */
+"Free VPN on a single device" = "უფასო VPN-ი ერთ მოწყობილობაზე";
+
+/* Plan details Highest VPN speed */
+"Highest VPN speed" = "უსწრაფესი VPN";
+
+/* Plan details ad-blocker */
+"Built-in ad-blocker (NetShield)" = "ჩაშენებული Ad-blocker (NetShield)";
+
+/* Plan details Access to streaming services globally */
+"Access to streaming services globally" = "გლობალური წვდომა ვიდეოს გადაცემის სერვისებთან";
+
+/* Plan details Secure Core servers */
+"Secure Core servers" = "Secure Core-ის სერვერები";
+
+/* Plan details TOR over VPN */
+"TOR over VPN" = "Tor VPN-ის ზემოდან";
+
+/* Plan details P2P/BitTorrent */
+"P2P/BitTorrent" = "P2P/BitTorrent";
+
+/* Get plan button */
+"Get %@" = "%@-ის მიღება";
+
+/* Get free plan button */
+"Get Proton for free" = "მიიღეთ Proton-ი უფასოდ";
+
+/* Extend subscription button */
+"Extend subscription" = "გამოწერის გაგრძელება";
+
+/* Plan details used storage space */
+"%@ of %@" = "%@ %@-დან";
+
+/* Plan connection error title */
+"Connection issues" = "დაკავშირების პრობლემა";
+
+/* Plan connection error description */
+"Check your internet connection" = "შეამოწმეთ თქვენი შეერთება ინტერნეტთან";
+
+/* Plan details no logs policy */
+"Strict no-logs policy" = "ჩვენ არ ვინახავთ ჟურნალს";
+
+/* Plan successfully upgraded banner message */
+"Plan successfully upgraded" = "ტარიფი წარმატებით განახლდა";
+
+/* Plan details `Integrated 2FA authenticator` message */
+"Integrated 2FA authenticator" = "ჩაშენებული 2FA ავთენტიკატორი";
+
+/* Plan details `Priority support` message */
+"Priority support" = "პრიორიტეტული მხარდაჭერა";
+
+/* Plan details `Unlimited devices` message */
+"Unlimited devices" = "მოწყობილობების უსაზღვრო რაოდენობა";
+
+/* Plan details number of email aliases message */
+"%@ email aliases" = "%@ ელფოსტის მისამართი";
+
+/* Plan details `Unlimited email aliases` message */
+"Unlimited email aliases" = "განუსაზღვრელი რაოდენობის ელფოსტის მეტსახელები";
+
+/* Plan details `Unlimited logins and notes` message */
+"Unlimited logins and notes" = "მომხმარებლების და შენიშვნების უსაზღვრო რაოდენობა";
+
+/* Plan details `Up to %@ forwarding mailboxes` message */
+"Up to %@ forwarding mailboxes" = "%@-მდე გადაგზავნადი საფოსტო ყუთი";
+
+/* Plan details `Custom fields` message */
+"Custom fields" = "მორგებადი ველები";
+
+/* Description of the Pass plan */
+"For next-level password management and identity protection." = "პაროლების მართვისა და პირადი მონაცემების დაცვის შემდეგი დონე.";

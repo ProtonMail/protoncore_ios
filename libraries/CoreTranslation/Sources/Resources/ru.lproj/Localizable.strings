@@ -1,0 +1,780 @@
+/* Title */
+
+"Human Verification" = "Проверка пользователя";
+
+/* captha method name */
+"CAPTCHA" = "CAPTCHA";
+
+/* SMS method name */
+"SMS" = "СМС";
+
+/* email method name */
+"Email" = "Электронная почта";
+
+/* Help button */
+"Help" = "Помощь";
+
+/* OK button */
+"OK" = "OK";
+
+/* Cancel button */
+"Cancel" = "Отменить";
+
+/* Enter email label */
+"Your email will only be used for this one-time verification." = "Ваш адрес электронной почты будет использован только для этой разовой проверки.";
+
+/* Verification button */
+"Get verification code" = "Получить код подтверждения";
+
+/* Enter SMS label */
+"Your phone number will only be used for this one-time verification." = "Ваш номер телефона будет использован только для этой разовой проверки.";
+
+/* SMS label */
+"Phone number" = "Номер телефона";
+
+/* Search country placeholder */
+"Search country" = "Найти страну";
+
+/* Enter sms code label */
+"Enter the verification code that was sent to %@" = "Введите код подтверждения, отправленный на $%@";
+
+/* Enter email code label */
+"Enter the verification code that was sent to %@. If you don't find the email in your inbox, please check your spam folder." = "Введите код подтверждения, который был отправлен на $%@. Если вы не нашли его во Входящих, пожалуйста, проверьте Спам.";
+
+/* Verification code label */
+"Verification code" = "Код подтверждения";
+
+/* Verification code hint label */
+"Enter the 6-digit code." = "Введите код из шести цифр.";
+
+/* Verify button */
+"Verify" = "Проверить";
+
+/* Verifying button */
+"Verifying" = "Проверяем";
+
+/* Not receive code button */
+"Did not receive the code?" = "Не получили код?";
+
+/* alert title */
+"Invalid verification code" = "Неверный код подтверждения";
+
+/* alert message */
+"Would you like to receive a new verification code or use an alternative verification method?" = "Вы хотите получить новый код подтверждения или использовать другой способ проверки?";
+
+/* resend alert button */
+"Resend" = "Отправить заново";
+
+/* other method alert button */
+"Try other method" = "Попробуйте другой способ";
+
+/* alert title */
+"Request new code?" = "Запросить новый код?";
+
+/* alert message */
+"Get a replacement code sent to %@." = "Получить замену кода, отправленного на %@.";
+
+/* new code alert button */
+"Request new code" = "Запросить новый код";
+
+/* sent baner title */
+"Code sent to %@" = "Код отправлен на %@";
+
+/* help header title */
+"Need help with human verification?" = "Требуется ли вам помощь при проверке пользователя?";
+
+/* request item title */
+"Request an invite" = "Запросить приглашение";
+
+/* request item message */
+"If you are having trouble creating your account, please request an invitation and we will respond within 1 business day." = "Если у вас возникли проблемы с созданием аккаунта, запросите приглашение и мы ответим в течение одного рабочего дня.";
+
+/* visit item title */
+"Visit our Help Center" = "Посетить наш справочный центр";
+
+/* visit item message */
+"Learn more about human verification and why we ask for it." = "Подробнее о проверке \"Я не робот\" и зачем мы ее используем.";
+
+/* alert title */
+"Update required" = "Требуется обновление";
+
+/* learn more button */
+"Learn more" = "Узнать больше";
+
+/* update button */
+"Update" = "Обновить";
+
+/* quit button */
+"Quit" = "Выйти";
+
+/* Login screen title */
+"Sign in" = "Войти";
+
+/* Login screen subtitle */
+"Enter your Proton Account details." = "Введите информацию о вашем аккаунте Proton.";
+
+/* Username field title */
+"Proton email or username" = "Электронная почта или имя пользователя Proton";
+
+/* Username field title */
+"Email or username" = "Электронная почта или имя пользователя";
+
+/* Password field title */
+"Password" = "Пароль";
+
+/* Help button */
+"Need help?" = "Нужна помощь?";
+
+/* Sign in button when in SSO mode */
+"Sign in with password" = "Войти с помощью пароля";
+
+/* Sign in with SSO button */
+"Sign in with SSO" = "Войти с помощью системы единого входа";
+
+/* Sign in with SSO screen title */
+"Sign in to your organization" = "Войдите в вашу организацию";
+
+/* Create account button */
+"Create an account" = "Создать аккаунт";
+
+/* Login help screen title */
+"How can we help?" = "Как мы можем помочь?";
+
+/* Forgot username help button */
+"Forgot username" = "Забыли имя пользователя";
+
+/* Forgot password help button */
+"Forgot password" = "Забыли пароль";
+
+/* Other sign-in issues button */
+"Other sign-in issues" = "Другие проблемы с входом";
+
+/* Customer support button */
+"Customer support" = "Поддержка клиентов";
+
+/* Customer support button */
+"Still need help? Contact us directly." = "Все ещё нужна помощь? Свяжитесь с нами напрямую.";
+
+/* Invalid username hint */
+"Please enter your Proton Account email or username." = "Пожалуйста, введите электронную почту или имя пользователя вашего аккаунта Proton.";
+
+/* Invalid password hint */
+"Please enter your Proton Account password." = "Введите пароль вашего аккаунта Proton.";
+
+/* Title of a page asking to enter your password. */
+"Enter your password" = "Введите свой пароль";
+
+/* Dialog button for missing keys error */
+"Complete Setup" = "Завершить настройку";
+
+/* Dialog text for missing keys error */
+"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "В вашем аккаунте отсутствуют ключи, войдите в систему через браузер, чтобы автоматически сгенерировать необходимые ключи. После входа в систему через браузер вернитесь в приложение и войдите в систему.";
+
+/* /** */
+"Account setup required" = "Требуется настройка аккаунта";
+
+/* Incorrect mailbox password error */
+"Incorrect mailbox password" = "Неверный пароль почтового ящика";
+
+/* External accounts address required popup title */
+"Proton address required" = "Требуется адрес Proton";
+
+/* External accounts not supported popup local desc */
+"Get a Proton Mail address linked to this account in your Proton web settings." = "Получите адрес Proton Mail, привязанный к этому аккаунту в веб-настройках Proton.";
+
+/* Session expired info */
+"Your session has expired. Please log in again." = "Ваш сеанс истёк. Пожалуйста, войдите снова.";
+
+/* Generic error message when no better error can be displayed */
+"An error has occured" = "Произошла ошибка";
+
+/* Info about existing external Proton Mail address */
+"You need a Proton email address to use Proton Mail and Proton Calendar.\nYou’ll still be able to use %@ to sign in, and to recover your account." = "Чтобы использовать Proton Mail и Proton Calendar, вам нужна эл. почта Proton.\nВы также сможете использовать %@ для входа, и для восстановления вашей учетной записи.";
+
+/* Username field title */
+"Username" = "Имя пользователя";
+
+/* Action button title for picking Proton Mail username */
+"Continue" = "Продолжить";
+
+/* Username field error message */
+"Please enter a username." = "Введите имя пользователя.";
+
+/* Mailbox unlock screen title */
+"Unlock your mailbox" = "Разблокируйте свой почтовый ящик";
+
+/* Mailbox password field title */
+"Mailbox password" = "Пароль почтового ящика";
+
+/* Mailbox unlock screen action button title */
+"Unlock" = "Разблокировать";
+
+/* 2FA screen title */
+"Two-factor authentication" = "Двухфакторная аутентификация";
+
+/* 2FA screen action button title */
+"Authenticate" = "Аутентифицировать";
+
+/* 2FA screen field title */
+"Two-factor code" = "Код двухфакторной аутентификации";
+
+/* 2FA screen recovery field title */
+"Recovery code" = "Код восстановления";
+
+/* 2FA screen recovery button title */
+"Use recovery code" = "Использовать код восстановления";
+
+/* 2FA screen 2FA button title */
+"Use two-factor code" = "Использовать код двухфакторной аутентификации";
+
+/* 2FA screen recovery field info */
+"Enter an 8-character recovery code." = "Введите восьмизначный код восстановления.";
+
+/* Error alert title */
+"Error occured" = "Произошла ошибка";
+
+/* Title */
+"Warning" = "Предупреждение";
+
+/* Question is user wants to bypass username validation and activate plan for current username */
+"Do you want to activate the purchase for %@ address?" = "Вы хотите активировать покупку для адреса %@?";
+
+/* Warning message option to bypass validation and activate plan for current username */
+"Yes, activate it for " = "Да, активировать его для ";
+
+/* Warning message option when user want to relogin to another account */
+"No, for another Proton Mail account" = "Нет, для другого аккаунта Proton Mail";
+
+/* Message shown to the user if we had to top up the account with credits instead of purchasing a plan */
+"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "Мы не смогли обновить ваш аккаунт до выбранного вами тарифа, поэтому мы добавили ваш платеж в качестве кредита на вашу учетную запись. Для получения дополнительной информации и завершения обновления, пожалуйста, обратитесь в службу поддержки.";
+
+/* Confirmation for the credits applied popup, will result in showing customer support contact form */
+"Contact Support" = "Связаться с поддержкой";
+
+/* Cancellation for the credits applied popup */
+"Dismiss" = "Отклонить";
+
+/* Error applying credit after registration alert */
+"Payment failed" = "Сбой платежа";
+
+/* Error applying credit after registration alert */
+"You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support." = "Вы успешно зарегистрированы, но ваш платеж не был обработан. Чтобы повторно отправить платежную информацию, нажмите «Повторить». Плата взимается только один раз. Если проблема не устранена, обратитесь в службу поддержки.";
+
+/* Button in some alerts */
+"Retry" = "Повторить";
+
+/* Error applying credit after registration alert */
+"Contact customer support" = "Обратитесь в службу поддержки клиентов";
+
+/* Error message */
+"Failed to get list of available products from App Store." = "Не удалось получить список доступных продуктов из AppStore.";
+
+/* Error message */
+"Purchase is not possible." = "Невозможно совершить покупку.";
+
+/* Error message */
+"Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you." = "Apple сообщили, что вы улучшили тариф, но нам не хватает технических данных. Пожалуйста, заполните отчет об ошибке, и наша команда поддержки свяжется с вами.";
+
+/* Error message */
+"Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "Компания Apple уведомила нас, что вы улучшили свой тариф, но мы заметили, что после этого вы вышли из учётной записи.";
+
+/* Error message */
+"It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Не удалось сопоставить приобретенный вами продукт App Store с какими-либо продуктами на нашем сервере. Пожалуйста, заполните отчет об ошибке, и наша служба поддержки свяжется с вами.";
+
+/* Error message for beta users */
+"Sorry, we cannot process purchases in the beta version of the iOS app. Thank you for participating in our public beta!" = "Извините, мы не можем обрабатывать покупки в бета-версии приложения для iOS. Благодарим вас за участие в нашем публичном бета-тестировании!";
+
+/* Error message */
+"We have been notified of an App Store purchase but cannot match the purchase with an account of yours." = "Мы получили уведомление о покупке в App Store, но не можем связать ее с вашим аккаунтом.";
+
+/* Error message */
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Пожалуйста, войдите в аккаунт Proton Mail, тариф которого вы улучшаете, чтобы мы могли оформить покупку.";
+
+/* Error message */
+"Apple informed us they could not process the purchase." = "Apple проинформировал, что они не смогли обработать покупку.";
+
+/* Error message */
+"We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "Мы успешно активировали вашу подписку. Пожалуйста, перезапустите приложение, чтобы начать пользоваться новым тарифом на услуги.";
+
+/* Error message */
+"Please unlock the app to proceed with your service plan activation" = "Пожалуйста, разблокируйте приложение, чтобы продолжить активацию вашего тарифа";
+
+/* Error message */
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Пожалуйста, войдите в аккаунт Proton Mail, тариф которого вы улучшаете, чтобы мы могли завершить активацию обновленного тарифа обслуживания.";
+
+/* In App Purchase error */
+"Contact support@protonvpn.com to complete your purchase." = "Для завершения покупки свяжитесь с нами по адресу support@protonvpn.com.";
+
+/* In App Purchase error */
+"Wrong payment token status. Please relaunch the app. If error persists, contact support." = "Неправильное состояние токена оплаты. Пожалуйста, перезапустите приложение. Если ошибка повторится, обратитесь в службу поддержки.";
+
+/* Dialog title for organization user first login */
+"Change your password" = "Измените пароль";
+
+/* Dialog action button title for organization user first login */
+"Change password" = "Изменить пароль";
+
+/* Dialog message for organization user first login */
+"To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "Чтобы пользоваться приложением Proton в качестве участника организации, вам необходимо сначала поменять ваш пароль, войдя в Proton при помощи браузера.";
+
+/* Delete account screen title */
+"Delete account" = "Удалить аккаунт";
+
+/* Delete account explaination under button */
+"This will permanently delete your account and all of its data. You will not be able to reactivate this account." = "Это приведет к окончательному удалению вашего аккаунта и всех его данных. Вы не сможете повторно активировать этот аккаунт.";
+
+/* Delete account success */
+"Account deleted.\nLogging out..." = "Аккаунт удален.\nВыход из системы...";
+
+/* A generic error message when we have no better message from the backend */
+"A networking error has occured" = "Произошла ошибка сети";
+
+/* Button title shown when a error has occured, causes the screen to close */
+"Close" = "Закрыть";
+
+/* */ */
+"switch to" = "перейти к";
+
+/* Title of account switcher */
+"Accounts" = "Аккаунты";
+
+/* Manage accounts button */
+"Manage accounts" = "Управление учётными записями";
+
+/* Section title of account manager */
+"Signed in to Proton Mail" = "Выполнен вход в Proton Mail";
+
+/* Section title of account manager */
+"Signed out of Proton Mail" = "Выполнен выход из Proton Mail";
+
+/* Sign out button/ title */
+"Sign out" = "Выйти";
+
+/* Remove button */
+"Remove" = "Удалить";
+
+/* remove account button in account manager */
+"Remove account from this device" = "Удалить аккаунт с этого устройства";
+
+/* old value of remove account button in account manager */
+"Remove account" = "Удалить аккаунт";
+
+/* Alert message of remove account */
+"You will be signed out and all the data associated with this account will be removed from this device." = "Вы выйдете, и все данные, связанные с этим аккаунтом, будут удалены с этого устройства.";
+
+/* Alert message of sign out the email address */
+"Are you sure you want to sign out %@?" = "Вы уверены, что хотите выйти из %@?";
+
+/* Button for dismissing account switcher */
+"Dismiss account switcher" = "Отключить переключатель аккаунтов";
+
+/* Button for signing into another account */
+"Sign in to another account" = "Войти в другой аккаунт";
+
+/* /** */
+"Create your Proton Account" = "Создайте свой аккаунт Proton";
+
+/* Signup main view description */
+"One account for all Proton services." = "Один аккаунт для всех служб Proton.";
+
+/* Next button */
+"Next" = "Далее";
+
+/* Email address button */
+"Use your current email instead" = "Использовать ваш текущий адрес электронной почты";
+
+/* Proton Mail address button */
+"Create a secure Proton Mail address instead" = "Создать защищенный адрес Proton Mail";
+
+/* Signup password view title */
+"Create your password" = "Создайте пароль";
+
+/* Password field hint about minimum length */
+"Password must contain at least 8 characters" = "Пароль должен содержать хотя бы 8 символов";
+
+/* Repeat password field title */
+"Repeat password" = "Повторите пароль";
+
+/* Title of domains bottom action sheet */
+"Domain" = "Домен";
+
+/* Recovery view description (old string, replaced) */
+"This will help you access your account in case you forget your password or get locked out of your account." = "Это поможет вам получить доступ к аккаунту, если вы забудете пароль или он будет заблокирован.";
+
+/* Recovery segmenet phone */
+"Phone" = "Телефон";
+
+/* Recovery email field title */
+"Recovery email" = "Адрес резервной эл. почты";
+
+/* Recovery phone field title */
+"Recovery phone number" = "Номер телефона для восстановления доступа";
+
+/* Recovery terms and conditions description */
+"By clicking Next, you agree with Proton's Terms and Conditions" = "Нажимая кнопку Далее, вы соглашаетесь с условиями Proton";
+
+/* Recovery terms and conditions link */
+"Terms and Conditions" = "Условия";
+
+/* Skip button */
+"Skip" = "Пропустить";
+
+/* Recovery skip title */
+"Skip recovery method?" = "Пропустить способ восстановления?";
+
+/* Recovery skip description */
+"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "Метод восстановления поможет вам получить доступ к аккаунту, если вы забудете пароль или он будет заблокирован.";
+
+/* Set recovery method button */
+"Set recovery method" = "Установить способ восстановления";
+
+/* Complete view title */
+"Your account is being created" = "Создается ваша учетная запись…";
+
+/* Complete view description */
+"This should take no more than a minute." = "Обычно на это требуется менее минуты.";
+
+/* Signup complete progress step creation */
+"Creating your account" = "Создание аккаунта";
+
+/* Signup complete progress step address generation */
+"Generating your address" = "Генерирование вашего адреса";
+
+/* Signup complete progress step keys generation */
+"Securing your account" = "Защита вашей учетной записи";
+
+/* Signup complete progress step payment verification */
+"Verifying your payment" = "Подтверждение вашего платежа";
+
+/* Signup complete progress step payment validated */
+"Payment validated" = "Оплата подтверждена";
+
+/* Email verification view title */
+"Account verification" = "Проверка аккаунта";
+
+/* Email verification view description */
+"For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "Чтобы обеспечить вашу безопасность, нам нужно удостовериться, что введенный адрес принадлежит вам. Мы отправили код подтверждения на %@. Пожалуйста, введите этот код ниже:";
+
+/* Did not receive code button */
+"Did not receive a code?" = "Не получили код?";
+
+/* Invalid token request error */
+"Invalid token request" = "Недействительный запрос токена";
+
+/* Invalid token error */
+"Invalid token error" = "Ошибка недействительного токена";
+
+/* Create user failed error */
+"Create user failed" = "Не удалось создать пользователя";
+
+/* Invalid hashed password error */
+"Invalid hashed password" = "Неверный хешированный пароль";
+
+/* Password empty error */
+"Password can not be empty.\nPlease try again." = "Пароль не может быть пустым.\nПожалуйста, попробуйте еще раз.";
+
+/* Password too short error */
+"Password must contain at least %@ characters." = "Пароль должен содержать хотя бы $%@ символов.";
+
+/* Password not equal error */
+"Passwords do not match.\nPlease try again." = "Пароль и подтверждение не совпадают.\nПожалуйста, попробуйте еще раз.";
+
+/* Email address already used error */
+"Email address already used." = "Адрес электронной почты уже используется.";
+
+/* Sub-user configuration error */
+"Please ask your admin to configure your sub-user." = "Пожалуйста, попросите администратора настроить вашего субпользователя.";
+
+/* Invalid verification alert message */
+"Would you like to receive a new verification code or use an alternate email address?" = "Вы хотите получить новый код подтверждения или использовать другой адрес электронной почты?";
+
+/* Change email address button */
+"Change email address" = "Изменить адрес электронной почты";
+
+/* Signup summary title */
+"Congratulations" = "Поздравляем!";
+
+/* Signup summary free plan description */
+"Your Proton Free account was successfully created." = "Ваш аккаунт Proton Free был успешно создан.";
+
+/* Signup summary free plan description replacement */
+"Proton Free" = "Proton Free";
+
+/* Signup summary paid plan description */
+"Your payment was confirmed and your %@ account successfully created." = "Ваш платеж был подтвержден, а ваш аккаунт %@ успешно создан.";
+
+/* Signup summary no plan description */
+"Your Proton account was successfully created." = "Ваш аккаунт Proton был успешно создан.";
+
+/* Signup summary welcome text */
+"Enjoy the world of privacy." = "Пользуйтесь миром конфиденциальности.";
+
+/* Plan selection title */
+"Select a plan" = "Выбрать тариф";
+
+/* Plan selection title */
+"Current plan" = "Текущий тариф";
+
+/* Subscription title */
+"Subscription" = "Подписка";
+
+/* Plan selection title */
+"Upgrade your plan" = "Улучшить тариф";
+
+/* Plan footer description */
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "В мобильном приложении доступны только годовые подписки без автопродления.";
+
+/* Plan footer purchased description */
+"You cannot manage subscriptions inside the mobile application." = "Вы не можете управлять подписками внутри мобильного приложения.";
+
+/* Plan details renew automatically expired */
+"Your plan will automatically renew on %@" = "Ваша подписка будет обновлена автоматически %@";
+
+/* Plan details renew expired */
+"Current plan will expire on %@" = "Текущий тариф истекает %@";
+
+/* Plan details unavailable contact administrator */
+"Contact an administrator to make changes to your Proton subscription." = "Свяжитесь с администратором, чтобы внести изменения в подписку на Proton.";
+
+/* Plan details storage */
+"%@ storage" = "%@ хранилища";
+
+/* Plan details storage per user */
+"%@ storage / user" = "%@ хранилища на пользователя";
+
+/* Plan details price time period without unit — we delegate the units formatting to the operating system. Example: for 1 year 3 months */
+"for %@" = "за %@";
+
+/* Plan details custom email addresses */
+"Custom email addresses" = "Пользовательские адреса электронной почты";
+
+/* Plan details priority customer support */
+"Priority customer support" = "Приоритетная поддержка клиентов";
+
+/* Plan details adblocker */
+"Adblocker (NetShield)" = "Блокировщик рекламы (NetShield)";
+
+/* Plan details streaming service support */
+"Streaming service support" = "Поддержка стриминговых сервисов";
+
+/* Plan details high speed message */
+"High speed" = "Высокая скорость";
+
+/* Plan details highest speed message */
+"Highest speed" = "Наивысшая скорость";
+
+/* Plan details multi-user support message */
+"Multi-user support" = "Многопользовательская поддержка";
+
+/* Plan details free description */
+"The basic for private and secure communications." = "Основа для конфиденциальных и защищенных коммуникаций.";
+
+/* Plan details plus description */
+"Full-featured mailbox with advanced protection." = "Полнофункциональный почтовый ящик с расширенной защитой.";
+
+/* Badge under plan name indicating a limited time offer (promo price) */
+"Limited time offer" = "Ограниченное предложение";
+
+/* Unfinished operation error dialog title */
+"Complete payment?" = "Завершить оплату?";
+
+/* Unfinished operation error dialog description */
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Покупка тарифа Proton Bundle уже начата. Нажмите кнопку \"Продолжить\", чтобы завершить обработку платежа и создать свой аккаунт";
+
+/* Unfinished operation error dialog retry button */
+"Complete payment" = "Завершить оплату";
+
+/* Unfinished operation dialog description */
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Процесс настройки аккаунта не может быть завершен по причине непредвиденной ошибки.\nПожалуйста, попробуйте еще раз.";
+
+/* IAP in progress banner message */
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Процесс покупки IAP начался. Пожалуйста, следуйте инструкциям Apple, чтобы завершить или отменить покупку.";
+
+/* Made by */
+"Made by" = "Сделано";
+
+/* Networking connection error */
+"Network connection error" = "Ошибка подключения к сети";
+
+/* Message shown when we suspect that the Proton servers are blocked */
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Серверы Proton недоступны. Это может быть вызвано неправильной настройкой сети, сбоем серверов Proton или тем, что сервисы Proton были заблокированы";
+
+/* Button for the error banner shown when we suspect that the Proton servers are blocked */
+"Troubleshoot" = "Устранение неполадок";
+
+/* Networking insecure connection error */
+"The TLS certificate validation failed when trying to connect to the Proton API. Your current Internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again." = "Сбой проверки TLS-сертификата при попытке подключения к API Proton VPN. Возможно, ваше подключение к Интернету отслеживается. Чтобы сохранить ваши данные в безопасности, мы предотвратили доступ приложения к Proton API.\nДля входа в приложение или доступа к аккаунту подключитесь к другой сети и попробуйте снова.";
+
+/* network troubleshot view title */
+"support form" = "форма поддержки";
+
+/* network troubleshot view title */
+"email" = "электронная почта";
+
+/* network troubleshot view title */
+"Twitter" = "Twitter";
+
+/* network troubleshot view title */
+"TroubleShooting" = "Устранение неполадок";
+
+/* network troubleshot cell title */
+"Allow alternative routing" = "Разрешить альтернативную маршрутизацию";
+
+/* network troubleshot cell title */
+"No internet connection" = "Нет подключения к интернету";
+
+/* network troubleshot cell title */
+"Internet Service Provider (ISP) problem" = "Проблема с интернет-провайдером";
+
+/* network troubleshot cell title */
+"Government block" = "Правительственная блокировка";
+
+/* network troubleshot cell title */
+"Antivirus interference" = "Конфликт с антивирусом";
+
+/* network troubleshot cell title */
+"Proxy/Firewall interference" = "Конфликт с прокси-сервером/брандмауэром";
+
+/* network troubleshot cell title */
+"Proton is down" = "Proton не работает";
+
+/* network troubleshot cell title */
+"Still can't find a solution" = "Так и не нашлось решение";
+
+/* alternative routing description */
+"In case Proton sites are blocked, this setting allows the app to try alternative network routing to reach Proton, which can be useful for bypassing firewalls or network issues. We recommend keeping this setting on for greater reliability. %1$@" = "В случае блокировки сайтов Proton эта настройка позволяет приложению попробовать альтернативную сетевую маршрутизацию, чтобы достигнуть Proton, что может быть полезно для обхода брандмауэров или сетевых проблем. Для большей надёжности мы рекомендуем оставить эту настройку включённой. %1$@";
+
+/* no internet connection description */
+"Please make sure that your internet connection is working." = "Убедитесь, что работает ваше подключение к Интернету.";
+
+/* ISP problem description */
+"Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "Попробуйте подключиться к Proton из другой сети (или используйте %1$@ или %2$@).";
+
+/* Goverment blocking description */
+"Your country may be blocking access to Proton. Try using %1$@ (or any other VPN) or %2$@ to access Proton." = "Возможно, в вашей стране доступ к Proton заблокирован. Попробуйте использовать %1$@ (или любую другую VPN) либо %2$@ для доступа к Proton.";
+
+/* Antivirus interference description. */
+"Temporarily disable or remove your antivirus software." = "Временно отключите или удалите антивирус.";
+
+/* Firewall interference description. */
+"Disable any proxies or firewalls, or contact your network administrator." = "Отключите все прокси-серверы или брандмауэры или обратитесь к своему сетевому администратору.";
+
+/* Proton is down description. */
+"Check Proton Status for our system status." = "Проверьте состояние Proton, чтобы узнать состояние системы.";
+
+/* Name of the link of Proton Status */
+"Proton Status" = "Состояние Proton";
+
+/* No other solution description. */
+"Contact us directly through our support form, email (support@protonmail.zendesk.com), or Twitter." = "Свяжитесь с нами напрямую через форму поддержки, по электронной почте (support@protonmail.zendesk.com) или через Twitter.";
+
+/* The subject of the email draft created in the network troubleshoot view. */
+"Subject..." = "Тема...";
+
+/* The body of the email draft created in the network troubleshoot view. */
+"Please share your problem." = "Пожалуйста, опишите свою проблему.";
+
+/* top left back button */
+"Back" = "Назад";
+
+/* Welcome screen footer label */
+"Privacy by default" = "Конфиденциальность по умолчанию";
+
+/* Plan selection title */
+"One plan for all Proton services" = "Единый тариф для всех служб Proton";
+
+/* Plan details free description */
+"The no-cost starter account designed to empower everyone with privacy by default." = "Бесплатный стартовый аккаунт, созданный для предоставления всем конфиденциальности по умолчанию.";
+
+/* Plan details plus description */
+"The privacy-first email and calendar solution for your everyday communication needs." = "Решение для электронной почты и календаря, обеспечивающее конфиденциальность, для ваших повседневных целей коммуникации.";
+
+/* Plan details vpn plus description */
+"Your privacy and security are our priority." = "Наш приоритет — ваша конфиденциальность и безопасность.";
+
+/* Plan details drive plus description */
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Тариф, ориентированный на хранение данных, с 200 ГБ облачного хранилища для сохранения конфиденциальности ваших файлов.";
+
+/* Plan details bundle description */
+"The ultimate privacy pack with access to all premium Proton services." = "Максимальный набор конфиденциальности с доступом ко всем платным службам Proton.";
+
+/* Plan footer description */
+"Only non-renewing annual subscriptions are available via this app" = "Через это приложение доступны только непродлеваемые годовые подписки";
+
+/* Plan details unlimited folders, labels, filters */
+"Unlimited folders, labels, and filters" = "Неограниченное количество папок, ярлыков и фильтров";
+
+/* Plan details up to storage */
+"Up to %@ storage" = "До %@ хранилища";
+
+/* Plan details VPN on a single device */
+"Free VPN on a single device" = "Бесплатный VPN на одном устройстве";
+
+/* Plan details Highest VPN speed */
+"Highest VPN speed" = "Высочайшая скорость VPN";
+
+/* Plan details ad-blocker */
+"Built-in ad-blocker (NetShield)" = "Встроенный блокировщик рекламы (NetShield)";
+
+/* Plan details Access to streaming services globally */
+"Access to streaming services globally" = "Доступ к стриминговым сервисам по всему миру";
+
+/* Plan details Secure Core servers */
+"Secure Core servers" = "Серверы Secure Core";
+
+/* Plan details TOR over VPN */
+"TOR over VPN" = "Tor через VPN";
+
+/* Plan details P2P/BitTorrent */
+"P2P/BitTorrent" = "P2P/BitTorrent";
+
+/* Get plan button */
+"Get %@" = "Получить %@";
+
+/* Get free plan button */
+"Get Proton for free" = "Получить Proton бесплатно";
+
+/* Extend subscription button */
+"Extend subscription" = "Продлить подписку";
+
+/* Plan details used storage space */
+"%@ of %@" = "%@ из %@";
+
+/* Plan connection error title */
+"Connection issues" = "Проблемы с подключением";
+
+/* Plan connection error description */
+"Check your internet connection" = "Проверьте подключение к Интернету";
+
+/* Plan details no logs policy */
+"Strict no-logs policy" = "Строгая политика отсутствия журналов активности";
+
+/* Plan successfully upgraded banner message */
+"Plan successfully upgraded" = "Тариф успешно обновлен";
+
+/* Plan details `Integrated 2FA authenticator` message */
+"Integrated 2FA authenticator" = "Встроенный 2FA аутентификатор";
+
+/* Plan details `Priority support` message */
+"Priority support" = "Приоритетная поддержка";
+
+/* Plan details `Unlimited devices` message */
+"Unlimited devices" = "Неограниченное количество устройств";
+
+/* Plan details number of email aliases message */
+"%@ email aliases" = "%@ псевдоним(ов)";
+
+/* Plan details `Unlimited email aliases` message */
+"Unlimited email aliases" = "Неограниченное количество псевдонимов";
+
+/* Plan details `Unlimited logins and notes` message */
+"Unlimited logins and notes" = "Неограниченное количество имен пользователей и заметок";
+
+/* Plan details `Up to %@ forwarding mailboxes` message */
+"Up to %@ forwarding mailboxes" = "До %@ почтовых ящиков для пересылки";
+
+/* Plan details `Custom fields` message */
+"Custom fields" = "Настраиваемые поля";
+
+/* Description of the Pass plan */
+"For next-level password management and identity protection." = "Для нового уровня управления паролями и защиты личных данных.";

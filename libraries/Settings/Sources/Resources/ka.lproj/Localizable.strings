@@ -1,0 +1,28 @@
+
+"pmsettings-settings-title" = "მორგება";
+
+"pmsettings-settings-app-settings-section" = "აპის მორგება";
+
+"pmsettings-settings-system-settings-section" = "სისტემის მორგება";
+
+"pmsettings-settings-system-settings-language-title" = "ენა";
+
+"pmsettings-settings-system-settings-language-description" = "რჩეული ენა სისტემის პარამეტრებში შეგიძლიათ, აირჩიოთ.";
+
+"pmsettings-settings-system-settings-language-button" = "დააყენეთ ენა სისტემის პარამეტრებში.";
+
+"pmsettings-settings-system-settings-notifications-title" = "შეტყობინებები";
+
+"pmsettings-settings-system-settings-notifications-description" = "ამ კალენდარს შეუძლია, მოგაწოდოთ განახლებული ინფორმაცია მიმდინარე მოვლენებისა და მოსაწვევების შესახებ. თუ გნებავთ, პუშ გაფრთხილებებიც მიღოთ, ეს სისტემის პარამეტრებში უნდა ჩართოთ.";
+
+"pmsettings-settings-system-settings-notifications-button" = "მართეთ წვდომები სისტემის პარამეტრებში";
+
+"pmsettings-settings-about-section" = "შესახებ";
+
+"pmsettings-settings-about-acknowledgements" = "მადლიერება";
+
+"pmsettings-settings-about-privacy" = "კონფიდენციალობის პოლიტიკა";
+
+"pmsettings-settings-about-terms" = "მომსახურების პირობები";
+
+"pmsettings-settings-footer" = "აპის ვერსია: %@";

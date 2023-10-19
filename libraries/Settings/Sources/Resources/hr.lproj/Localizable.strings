@@ -1,0 +1,28 @@
+
+"pmsettings-settings-title" = "Postavke";
+
+"pmsettings-settings-app-settings-section" = "App Settings";
+
+"pmsettings-settings-system-settings-section" = "System Settings";
+
+"pmsettings-settings-system-settings-language-title" = "Jezik";
+
+"pmsettings-settings-system-settings-language-description" = "You can choose preferred language in your system settings.";
+
+"pmsettings-settings-system-settings-language-button" = "Set language in system settings.";
+
+"pmsettings-settings-system-settings-notifications-title" = "Obavijesti";
+
+"pmsettings-settings-system-settings-notifications-description" = "This calendar can keep you updated about events happening or invites. If you want to get push notifications you have to change your system settings.";
+
+"pmsettings-settings-system-settings-notifications-button" = "Manage permissions in system settings";
+
+"pmsettings-settings-about-section" = "O nama";
+
+"pmsettings-settings-about-acknowledgements" = "Acknowledgments";
+
+"pmsettings-settings-about-privacy" = "Pravila o privatnosti";
+
+"pmsettings-settings-about-terms" = "Terms of service";
+
+"pmsettings-settings-footer" = "App Version: %@";

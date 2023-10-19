@@ -1,0 +1,28 @@
+
+"pmsettings-settings-title" = "Beállítások";
+
+"pmsettings-settings-app-settings-section" = "Alkalmazás beállításai";
+
+"pmsettings-settings-system-settings-section" = "Rendszerbeállítások";
+
+"pmsettings-settings-system-settings-language-title" = "Nyelv";
+
+"pmsettings-settings-system-settings-language-description" = "A kívánt nyelvet a rendszerbeállításoknál választhatja ki.";
+
+"pmsettings-settings-system-settings-language-button" = "A nyelvet a rendszerbeállításoknál állíthatja be.";
+
+"pmsettings-settings-system-settings-notifications-title" = "Emlékeztetők";
+
+"pmsettings-settings-system-settings-notifications-description" = "Ez a naptár értesíti az eseményekről és meghívókról. Ha azonnali értesítéseket szeretne kapni, meg kell változtatnia a rendszerbeállításokat.";
+
+"pmsettings-settings-system-settings-notifications-button" = "A jogosultságokat a rendszerbeállításoknál kezelhetni.";
+
+"pmsettings-settings-about-section" = "Névjegy";
+
+"pmsettings-settings-about-acknowledgements" = "Közreműködők";
+
+"pmsettings-settings-about-privacy" = "Adatvédelmi irányelvek";
+
+"pmsettings-settings-about-terms" = "Szolgáltatási feltételek";
+
+"pmsettings-settings-footer" = "Alkalmazásverzió: %@";

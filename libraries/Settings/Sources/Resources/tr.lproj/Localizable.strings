@@ -1,0 +1,28 @@
+
+"pmsettings-settings-title" = "Ayarlar";
+
+"pmsettings-settings-app-settings-section" = "Uygulama ayarları";
+
+"pmsettings-settings-system-settings-section" = "Sistem ayarları";
+
+"pmsettings-settings-system-settings-language-title" = "Dil";
+
+"pmsettings-settings-system-settings-language-description" = "Kullanmak istediğiniz dili sistem ayarlarından seçebilirsiniz.";
+
+"pmsettings-settings-system-settings-language-button" = "Dili sistem ayarlarından seçin.";
+
+"pmsettings-settings-system-settings-notifications-title" = "Bildirimler";
+
+"pmsettings-settings-system-settings-notifications-description" = "Bu takvim, gerçekleşen etkinlikler ya da davetler hakkında size güncel bilgileri sağlar. Anında bildirimleri almak istiyorsanız, sistem ayarlarınızı değiştirmeniz gerekir.";
+
+"pmsettings-settings-system-settings-notifications-button" = "İzinleri sistem ayarlarından yönetin";
+
+"pmsettings-settings-about-section" = "Hakkında";
+
+"pmsettings-settings-about-acknowledgements" = "Teşekkürler";
+
+"pmsettings-settings-about-privacy" = "Gizlilik ilkesi";
+
+"pmsettings-settings-about-terms" = "Hizmet koşulları";
+
+"pmsettings-settings-footer" = "Uygulama sürümü: %@";

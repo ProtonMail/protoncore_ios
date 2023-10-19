@@ -1,0 +1,28 @@
+
+"pmsettings-settings-title" = "Configurações";
+
+"pmsettings-settings-app-settings-section" = "Configurações do aplicativo";
+
+"pmsettings-settings-system-settings-section" = "Configurações do sistema";
+
+"pmsettings-settings-system-settings-language-title" = "Idioma";
+
+"pmsettings-settings-system-settings-language-description" = "Você pode escolher o idioma de preferência nas configurações do sistema";
+
+"pmsettings-settings-system-settings-language-button" = "Defina o idioma nas configurações do sistema.";
+
+"pmsettings-settings-system-settings-notifications-title" = "Notificações";
+
+"pmsettings-settings-system-settings-notifications-description" = "Este calendário pode mantê-lo atualizado sobre eventos acontecendo ou convites. Se você deseja receber notificações push, altere as configurações do sistema.";
+
+"pmsettings-settings-system-settings-notifications-button" = "Gerenciar permissões nas configurações do sistema";
+
+"pmsettings-settings-about-section" = "Sobre";
+
+"pmsettings-settings-about-acknowledgements" = "Agradecimentos";
+
+"pmsettings-settings-about-privacy" = "Política de privacidade";
+
+"pmsettings-settings-about-terms" = "Termos de serviço";
+
+"pmsettings-settings-footer" = "Versão do aplicativo: %@";
