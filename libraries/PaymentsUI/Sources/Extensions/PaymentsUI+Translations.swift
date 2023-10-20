@@ -304,7 +304,7 @@ public enum PUITranslations: TranslationsExposing {
         case ._plan_details_devices_unlimited:
             return localized(key: "Unlimited devices", comment: "Plan details `Unlimited devices` message")
         case ._plan_details_email_aliases_number:
-            return localized(key: "%@ email aliases", comment: "Plan details number of email aliases message")
+            return localized(key: "%d email aliases", comment: "Plan details number of email aliases message")
         case ._plan_details_email_aliases_unlimited:
             return localized(key: "Unlimited email aliases", comment: "Plan details `Unlimited email aliases` message")
         case ._plan_details_logins_and_notes_unlimited:
