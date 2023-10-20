@@ -288,7 +288,7 @@ public enum PUITranslations: TranslationsExposing {
         case ._extend_subscription_button:
             return localized(key: "Extend subscription", comment: "Extend subscription button")
         case ._details_used_storage_space:
-            return localized(key: "%@ of %@", comment: "Plan details used storage space")
+            return localized(key: "%1$@ of %2$@", comment: "Plan details used storage space")
         case ._connection_error_title:
             return localized(key: "Connection issues", comment: "Plan connection error title")
         case ._connection_error_description:
