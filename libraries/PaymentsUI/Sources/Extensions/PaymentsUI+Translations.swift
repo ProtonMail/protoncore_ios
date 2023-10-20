@@ -160,7 +160,7 @@ public enum PUITranslations: TranslationsExposing {
         case .plan_details_storage_per_user:
             return localized(key: "%@ storage / user", comment: "Plan details storage per user")
         case .plan_details_price_time_period_no_unit:
-            return localized(key: "for %@", comment: "Plan details price time period without unit — we delegate the units formatting to the operating system. Example: for 1 year 3 months")
+            return localized(key: "for %@", comment: "Plan details price time period without unit — we delegate the units formatting to the operating system. Example: for 1 year 3 months.  Shown as a standalone sentence fragment below the plan name.")
         case .plan_details_custom_email:
             return localized(key: "Custom email addresses", comment: "Plan details custom email addresses")
         case .plan_details_priority_support:
