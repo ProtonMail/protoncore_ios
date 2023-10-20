@@ -451,5 +451,21 @@
 			<string>Medium VPN speed %d VPN connections</string>
 		</dict>
 	</dict>
+	<key>Up to %d forwarding mailboxes</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@VARIABLE@</string>
+		<key>VARIABLE</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Up to %d forwarding mailbox</string>
+			<key>other</key>
+			<string>Up to %d forwarding mailboxes</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

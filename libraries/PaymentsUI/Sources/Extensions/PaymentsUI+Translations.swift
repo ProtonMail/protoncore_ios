@@ -310,7 +310,7 @@ public enum PUITranslations: TranslationsExposing {
         case ._plan_details_logins_and_notes_unlimited:
             return localized(key: "Unlimited logins and notes", comment: "Plan details `Unlimited logins and notes` message")
         case ._plan_details_forwarding_mailboxes:
-            return localized(key: "Up to %@ forwarding mailboxes", comment: "Plan details `Up to %@ forwarding mailboxes` message")
+            return localized(key: "Up to %d forwarding mailboxes", comment: "Plan details `Up to %d forwarding mailboxes` message")
         case ._plan_details_custom_fields:
             return localized(key: "Custom fields", comment: "Plan details `Custom fields` message")
         case ._plan_pass_description:
