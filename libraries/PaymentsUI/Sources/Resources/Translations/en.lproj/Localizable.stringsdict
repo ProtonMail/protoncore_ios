@@ -242,7 +242,7 @@
 			<string>High-speed VPN on %d devices</string>
 		</dict>
 	</dict>
-	<key>%d+ servers in %d countries</key>
+	<key>%d+ servers in %f countries</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@SERVERS@ in %#@COUNTRIES@</string>
@@ -262,11 +262,11 @@
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
+			<string>f</string>
 			<key>one</key>
-			<string>%d country</string>
+			<string>%f country</string>
 			<key>other</key>
-			<string>%d countries</string>
+			<string>%f countries</string>
 		</dict>
 	</dict>
 	<key>%d servers in %f countries (US, NL, JP)</key>

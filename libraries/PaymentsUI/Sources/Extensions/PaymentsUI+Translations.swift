@@ -230,9 +230,9 @@ public enum PUITranslations: TranslationsExposing {
         case ._details_vpn_on_n_devices:
             return localized(key: "High-speed VPN on %d devices", comment: "Plan details VPN on n devices")
         case ._details_vpn_servers:
-            return localized(key: "%d+ servers in %d countries", comment: "Plan details n servers in m countries")
+            return localized(key: "%d+ servers in %f countries", comment: "Plan details n servers in m countries")
         case ._details_vpn_free_servers:
-            return localized(key: "%d servers in %d countries (US, NL, JP)", comment: "Plan details free n servers in m countries")
+            return localized(key: "%d servers in %f countries (US, NL, JP)", comment: "Plan details free n servers in m countries")
         case ._details_vpn_free_speed_n_connections:
             return localized(key: "Medium VPN speed %d VPN connections", comment: "Plan details free speed n VPN connections")
         case ._details_n_of_m_users:
