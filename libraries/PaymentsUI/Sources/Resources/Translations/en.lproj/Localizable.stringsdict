@@ -285,7 +285,7 @@
 			<string>%d countries</string>
 		</dict>
 	</dict>
-	<key>%d servers in %d countries (US, NL, JP)</key>
+	<key>%d servers in %f countries (US, NL, JP)</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@SERVERS@ in %#@COUNTRIES@</string>
@@ -305,14 +305,14 @@
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
+			<string>f</string>
 			<key>one</key>
-			<string>%d country (US, NL, JP)</string>
+			<string>%f country (US, NL, JP)</string>
 			<key>other</key>
-			<string>%d countries (US, NL, JP)</string>
+			<string>%f countries (US, NL, JP)</string>
 		</dict>
 	</dict>
-	<key>%d of %d users</key>
+	<key>%d of %f users</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@VARIABLE1@ of %#@VARIABLE2@</string>
@@ -330,14 +330,14 @@
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
+			<string>f</string>
 			<key>one</key>
-			<string>%d user</string>
+			<string>%f user</string>
 			<key>other</key>
-			<string>%d users</string>
+			<string>%f users</string>
 		</dict>
 	</dict>
-	<key>%d of %d email addresses</key>
+	<key>%d of %f email addresses</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@VARIABLE1@ of %#@VARIABLE2@</string>
@@ -355,14 +355,14 @@
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
+			<string>f</string>
 			<key>one</key>
-			<string>%d email address</string>
+			<string>%f email address</string>
 			<key>other</key>
-			<string>%d email addresses</string>
+			<string>%f email addresses</string>
 		</dict>
 	</dict>
-	<key>%d of %d calendars</key>
+	<key>%d of %f calendars</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@VARIABLE1@ of %#@VARIABLE2@</string>
@@ -380,11 +380,11 @@
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
+			<string>f</string>
 			<key>one</key>
-			<string>%d calendar</string>
+			<string>%f calendar</string>
 			<key>other</key>
-			<string>%d calendars</string>
+			<string>%f calendars</string>
 		</dict>
 	</dict>
 	<key>%d addresses per user</key>

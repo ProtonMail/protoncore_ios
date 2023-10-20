@@ -236,11 +236,11 @@ public enum PUITranslations: TranslationsExposing {
         case ._details_vpn_free_speed_n_connections:
             return localized(key: "Medium VPN speed %d VPN connections", comment: "Plan details free speed n VPN connections")
         case ._details_n_of_m_users:
-            return localized(key: "%d of %d users", comment: "Plan details n of m users")
+            return localized(key: "%d of %f users", comment: "Plan details n of m users")
         case ._details_n_of_m_addresses:
-            return localized(key: "%d of %d email addresses", comment: "Plan details n addresses")
+            return localized(key: "%d of %f email addresses", comment: "Plan details n addresses")
         case ._details_n_of_m_calendars:
-            return localized(key: "%d of %d calendars", comment: "Plan details n of m calendars")
+            return localized(key: "%d of %f calendars", comment: "Plan details n of m calendars")
         case ._details_n_addresses_per_user:
             return localized(key: "%d addresses per user", comment: "Plan details n addresses per user")
         case ._details_n_calendars_per_user:
