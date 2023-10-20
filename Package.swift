@@ -1011,7 +1011,8 @@ add(
                         .cryptoSwift
                     ],
                     path: "libraries/Keymaker/Tests",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
     ]
 )
 
