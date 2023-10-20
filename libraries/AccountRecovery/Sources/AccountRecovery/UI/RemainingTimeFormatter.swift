@@ -35,6 +35,6 @@ public extension TimeInterval {
         default: formatter.allowedUnits = [ .day ]
         }
 
-        return formatter.string(from: self) ?? LocalizedStrings.graceViewUndefinedTimeLeft
+        return formatter.string(from: self) ?? ARTranslation.graceViewUndefinedTimeLeft.l10n
     }
 }

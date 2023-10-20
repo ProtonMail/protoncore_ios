@@ -56,7 +56,7 @@ public struct ActiveAccountRecoveryView: View {
 #endif
                 } label: {
                     ZStack(alignment: .trailing) {
-                        Text(LocalizedStrings.graceViewCancelButtonCTA)
+                        Text(ARTranslation.graceViewCancelButtonCTA.l10n)
                             .frame(maxWidth: .infinity)
 
                         if isAnimating {
@@ -75,12 +75,12 @@ public struct ActiveAccountRecoveryView: View {
             .background(ColorProvider.BackgroundNorm as Color)
     }
 
-    let title = LocalizedStrings.graceViewTitle
+    let title = ARTranslation.graceViewTitle.l10n
 
-    let line1 = LocalizedStrings.graceViewLine1
-    let line2 = LocalizedStrings.graceViewLine2
+    let line1 = ARTranslation.graceViewLine1.l10n
+    let line2 = ARTranslation.graceViewLine2.l10n
     let period = "."
-    let line3 = LocalizedStrings.graceViewLine3
+    let line3 = ARTranslation.graceViewLine3.l10n
 
     public init(viewModel: AccountRecoveryView.ViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)

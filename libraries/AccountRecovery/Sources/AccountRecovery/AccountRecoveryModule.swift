@@ -29,7 +29,7 @@ public enum AccountRecoveryModule {
     /// Resource bundle for the Account Recovery module
     public static let resourceBundle = Bundle(path: Bundle(for: AccountRecoveryHandler.self).path(forResource: "Resources-AccountRecovery", ofType: "bundle")!)!
     /// Localized name of the settings item for Account Recovery
-    public static let settingsItem = LocalizedStrings.settingsItem
+    public static let settingsItem = ARTranslation.settingsItem.l10n
     /// `APIService`-accepting closure to obtain the Account Recovery View Controller in Settings
     public static let settingsViewController: (APIService) -> AccountRecoveryViewController = { apiService in
         let accountRepository = AccountRecoveryRepository(apiService: apiService)
