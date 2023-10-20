@@ -71,6 +71,7 @@ custom_rules:
     regex: "(^\\s*print\\()|(NSLog)"
     match_kinds:
       - identifier
+    excluded: ExampleApp/
 
 #file_header:
 #  severity: error

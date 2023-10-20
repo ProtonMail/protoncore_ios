@@ -84,7 +84,6 @@ final class AccountDeletionViewController: NSViewController {
             credentialsStackView.isHidden = false
         default:
             assertionFailure("Misconfiguration in \(#file), \(#function), \(#line)")
-            break
         }
     }
     

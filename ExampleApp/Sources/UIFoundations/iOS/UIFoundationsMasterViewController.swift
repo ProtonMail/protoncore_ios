@@ -19,6 +19,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+// swiftlint:disable inclusive_language
+
 import UIKit
 
 class UIFoundationsMasterViewController: UIFoundationsAppearanceStyleTableViewController {
@@ -82,3 +84,5 @@ class UIFoundationsMasterViewController: UIFoundationsAppearanceStyleTableViewCo
         return indexPath
     }
 }
+
+// swiftlint:enable inclusive_language

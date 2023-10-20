@@ -96,8 +96,7 @@ final class LoginViewController: NSViewController {
     }
     
     func getLoginResultCompletionBlock() -> (Result<LoginStatus, LoginError>) -> Void {
-        {
-            [weak self] (result: Result<LoginStatus, LoginError>) in
+        {[weak self] (result: Result<LoginStatus, LoginError>) in
             switch result {
             case .success(.finished(let loginData)):
                 self?.handleSuccessfulLogin(loginData)

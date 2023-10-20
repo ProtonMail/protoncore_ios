@@ -104,7 +104,6 @@ class NetworkingViewController: NSViewController {
             case .success(.newCredential(_, let passwordMode)): // success without 2FA
                 PMLog.info("pwd mode: \(passwordMode)")
                 self.showHumanVerification()
-                break
             case .success(.updatedCredential):
                 assert(false, "Should never happen in this flow")
             case .success(.ssoChallenge):

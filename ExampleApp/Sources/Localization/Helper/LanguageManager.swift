@@ -25,6 +25,7 @@ import Foundation
 extension ELanguage {
 
     var nativeDescription: String {
+        // swiftlint:disable:next implicit_getter
         get {
             switch self {
             case .english:
@@ -87,6 +88,7 @@ extension ELanguage {
 
     // This code needs to match the project language folder
     var code: String {
+        // swiftlint:disable:next implicit_getter
         get {
             switch self {
             case .english:

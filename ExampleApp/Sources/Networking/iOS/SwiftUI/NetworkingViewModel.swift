@@ -130,7 +130,6 @@ class NetworkingViewModel: ObservableObject {
                 self.testAuthCredential = AuthCredential(credential)
                 PMLog.info("pwd mode: \(passwordMode)")
                 self.processHumanVerifyTest()
-                break
             case .success(.updatedCredential):
                 assert(false, "Should never happen in this flow")
             }
@@ -183,7 +182,7 @@ extension NetworkingViewModel: AuthDelegate {
     }
 
     func onUpdate(auth: Credential) {
-        /// update your local cache
+        // update your local cache
     }
 
     // right now the logout and revoke do the same but they triggered by a different event. will try to unify this.

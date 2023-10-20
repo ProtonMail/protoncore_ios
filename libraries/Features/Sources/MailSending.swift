@@ -169,7 +169,7 @@ public class MailFeature {
     
     private let sendQueue = DispatchQueue(label: "ch.protonmail.ios.protoncore.features.send", attributes: [])
 
-    // swiftlint:disable cyclomatic_complexity
+    // swiftlint:disable:next cyclomatic_complexity function_body_length
     internal func send(
         content: MessageContent,
         userPrivKeys: [Key],

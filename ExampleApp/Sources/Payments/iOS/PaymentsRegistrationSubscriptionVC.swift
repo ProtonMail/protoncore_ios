@@ -232,7 +232,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
     private func login() {
         // STEP 2: login
         dismissKeyboard()
-        guard let username = usernameTextField.text, username != "", let password = passwordTextField.text, password != "" else {
+        guard let username = usernameTextField.text, !username.isEmpty, let password = passwordTextField.text, !password.isEmpty else {
             self.loginStatusLabel.text = "Login status: Wrong credentials"
             return
         }
@@ -261,14 +261,11 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
             case .success(.ask2FA):
                 self.loginButton.isSelected = false
                 self.loginStatusLabel.text = "Login status: Not supportd 2FA"
-                break
             case .success(.ssoChallenge):
                 self.loginButton.isSelected = false
                 self.loginStatusLabel.text = "Login status: Not supportd SSO Challenge"
-                break
             case .success(.updatedCredential):
                 self.loginButton.isSelected = false
-                break
                 // should not happen
             }
         }

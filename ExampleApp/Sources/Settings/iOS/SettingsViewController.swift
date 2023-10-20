@@ -33,6 +33,7 @@ final class SettingsViewController: UIViewController, SubscriptionTypePickerView
                                                    challengeParametersProvider: .forAPIService(clientApp: clientApp, challenge: PMChallenge()))
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         let payments = Payments(inAppPurchaseIdentifiers: [], apiService: apiService, localStorage: UserCachedStatus(), reportBugAlertHandler: { receipt in
             PMLog.error("Error from payments")
         })

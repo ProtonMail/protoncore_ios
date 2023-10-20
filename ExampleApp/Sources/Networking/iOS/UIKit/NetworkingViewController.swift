@@ -37,8 +37,7 @@ import ProtonCoreCryptoGoInterface
 
 /// each user will have one api service  & you can create more than one unauthed apiService
 /// session/auth data are controlled by a central manager. it needs to extend & implment the API service delegates.
-
-// e.g. we use main view controller as a central manager. it could be any management class instance
+/// e.g. we use main view controller as a central manager. it could be any management class instance
 class NetworkingViewController: UIViewController {
     
     @IBOutlet var environmentSelector: EnvironmentSelector!
@@ -255,7 +254,6 @@ class NetworkingViewController: UIViewController {
                 PMLog.info("pwd mode: \(passwordMode)")
                 self.testAccessToken(userName: userName)
                 self.showAlertView(title: "Success")
-                break
             case .success(.updatedCredential), .success(.ssoChallenge):
                 assert(false, "Should never happen in this flow")
             }
@@ -323,7 +321,6 @@ class NetworkingViewController: UIViewController {
                 self.testAuthCredential = AuthCredential(credential)
                 PMLog.info("pwd mode: \(passwordMode)")
                 self.processHumanVerifyTest()
-                break
             case .success(.updatedCredential), .success(.ssoChallenge):
                 assert(false, "Should never happen in this flow")
             }

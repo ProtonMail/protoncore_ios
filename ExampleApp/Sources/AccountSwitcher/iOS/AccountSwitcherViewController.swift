@@ -70,7 +70,7 @@ extension AccountSwitcherViewController: AccountSwitchDelegate {
     }
 
     func signinAccount(for mail: String, userID: String?) {
-        if mail == "" {
+        if mail.isEmpty {
             PMLog.info("Show signin view")
         } else {
             PMLog.info("Show signin view for \(mail)")

@@ -155,7 +155,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
         currentSubscriptionButton.isEnabled = false
         purchaseSubscriptionButton.isEnabled = false
         
-        guard let username = usernameTextField.text, username != "", let password = passwordTextField.text, password != "" else {
+        guard let username = usernameTextField.text, !username.isEmpty, let password = passwordTextField.text, !password.isEmpty else {
             loginStatusLabel.text = "Login status: Wrong credentials"
             return
         }
@@ -231,10 +231,8 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
                 self.loginStatusLabel.text = "Login status: Not OK"
             case .success(.ask2FA):
                 self.loginStatusLabel.text = "Login status: Not supportd 2FA"
-                break
             case .success(.ssoChallenge):
                 self.loginStatusLabel.text = "Login status: Not supportd SSO Challenge"
-                break
             case .success(.updatedCredential):
                 break
                 // should not happen
@@ -315,7 +313,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
             let addonNames = planService.currentSubscription?.planDetails?.filter { $0.isAnAddOn }.compactMap { $0.name }
             let addonsStr = addonNames?.description.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")
             addonsDispStr = addonsStr ?? "---"
-            if addonsDispStr == "" {
+            if addonsDispStr.isEmpty {
                 addonsDispStr = "---"
             }
             if let servicePlanCycle = planService.currentSubscription?.cycle, servicePlanCycle > 0 {
@@ -327,7 +325,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
             let addonNames = planDataSource.currentPlan?.subscriptions.dropFirst().compactMap { $0.title }
             let addonsStr = addonNames?.description.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")
             addonsDispStr = addonsStr ?? "---"
-            if addonsDispStr == "" {
+            if addonsDispStr.isEmpty {
                 addonsDispStr = "---"
             }
             if let servicePlanCycle = planDataSource.currentPlan?.subscriptions.first?.cycle, servicePlanCycle > 0 {
