@@ -42,7 +42,7 @@ def build_for_testing(folder, scheme, device, destination, arguments)
     derived_data_path: derived_data_path(folder),
     device: device,
     destination: destination,
-    xcargs: arguments[:xcargs],
+    xcargs: arguments[:xcargs] + "-skipPackagePluginValidation",
     build_for_testing: true,
     code_coverage: true,
     result_bundle: true
