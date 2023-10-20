@@ -226,22 +226,6 @@
 			<string>%d folders and labels</string>
 		</dict>
 	</dict>
-	<key>%d calendars</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@VARIABLE@</string>
-		<key>VARIABLE</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>%d calendar</string>
-			<key>other</key>
-			<string>%d calendars</string>
-		</dict>
-	</dict>
 	<key>High-speed VPN on %d devices</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
