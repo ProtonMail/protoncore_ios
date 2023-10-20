@@ -5,8 +5,8 @@
 	<key>%d email aliases</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@Variable@</string>
-		<key>Variable</key>
+		<string>%#@VARIABLE@</string>
+		<key>VARIABLE</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
