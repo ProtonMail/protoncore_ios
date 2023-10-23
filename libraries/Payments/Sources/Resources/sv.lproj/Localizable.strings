@@ -35,7 +35,7 @@
 
 "Dismiss" = "Avfärda";
 
-"Payment failed" = "Betalningen misslyckades";
+"Payment failed" = "Betalning misslyckades";
 
 "You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support." = "Du har registrerat dig men din betalning bearbetades inte. För att skicka din betalningsinformation igen, klicka på ”Försök igen”. Du kommer bara att debiteras en gång. Kontakta kundsupport om problemet kvarstår.";
 
