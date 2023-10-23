@@ -1,5 +1,5 @@
 
-"Account_Recovery_Settings_Item" = "Password reset";
+"Account_Recovery_Settings_Item" = "Restabliment de contrasenya";
 
 "Account_Recovery_Insecure_View_Title" = "Reset your password";
 
@@ -13,7 +13,7 @@
 
 "Account_Recovery_Insecure_View_line3" = "Please go the signed-in device (in the session where the request was initiated) to change your password.";
 
-"Account_Recovery_Grace_View_Cancel_Button_CTA" = "Cancel request";
+"Account_Recovery_Grace_View_Cancel_Button_CTA" = "Cancel·la la petició";
 
 "Account_Recovery_Grace_View_Undefined_Time_Left" = "a few hours";
 
