@@ -718,8 +718,8 @@ extension StoreKitManager: SKPaymentTransactionObserver {
             finishTransaction(transaction, nil)
             group.leave()
 
-        } catch Errors.noNewSubscriptionInSuccessfullResponse { // error on BE
-            callErrorCompletion(for: cacheKey, with: Errors.noNewSubscriptionInSuccessfullResponse)
+        } catch Errors.noNewSubscriptionInSuccessfulResponse { // error on BE
+            callErrorCompletion(for: cacheKey, with: Errors.noNewSubscriptionInSuccessfulResponse)
             finishTransaction(transaction, nil)
             group.leave()
 
@@ -893,7 +893,7 @@ extension StoreKitManager: ProcessDependencies {
     var updateSubscription: (Subscription) throws -> Void { { [weak self] in
         // TODO: test purchase process with PlansDataSource object
         guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self?.planService else {
-            throw StoreKitManagerErrors.noNewSubscriptionInSuccessfullResponse
+            throw StoreKitManagerErrors.noNewSubscriptionInSuccessfulResponse
         }
         planService.currentSubscription = $0
     } }
