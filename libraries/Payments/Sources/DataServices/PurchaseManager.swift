@@ -35,6 +35,7 @@ public enum PurchaseResult {
 }
 
 public protocol PurchaseManagerProtocol {
+    /// Plan corresponding to the first successful transaction pending to process, if any
     var unfinishedPurchasePlan: InAppPurchasePlan? { get }
 
     func buyPlan(plan: InAppPurchasePlan,
@@ -115,7 +116,6 @@ final class PurchaseManager: PurchaseManagerProtocol {
             return
         }
 
-        // TODO: test purchase process with PlansDataSource object
         let planName: String
         let planId: String
         switch planService {
@@ -181,7 +181,6 @@ final class PurchaseManager: PurchaseManagerProtocol {
         let subscriptionRequest = paymentsApi.buySubscriptionForZeroRequest(api: apiService, planId: planId)
         let subscriptionResponse = try subscriptionRequest.awaitResponse(responseObject: SubscriptionResponse())
         if let newSubscription = subscriptionResponse.newSubscription {
-            // TODO: test purchase process with PlansDataSource object
             switch planService {
             case .left(let planService):
                 planService.updateCurrentSubscription { [weak self] in

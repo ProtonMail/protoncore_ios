@@ -64,6 +64,7 @@ public protocol StoreKitManagerProtocol: NSObjectProtocol {
                          deferredCompletion: FinishCallback?)
     func retryProcessingAllPendingTransactions(finishHandler: FinishCallback?)
     func updateAvailableProductsList(completion: @escaping (Error?) -> Void)
+    /// Has transactions pending to process which are not .failed
     func hasUnfinishedPurchase() -> Bool
     func hasIAPInProgress() -> Bool
     func readReceipt() throws -> String

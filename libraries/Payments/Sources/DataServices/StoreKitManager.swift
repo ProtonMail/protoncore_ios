@@ -243,7 +243,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
         self.storeKitDataSource = storeKitDataSource
         self.paymentsApi = paymentsApi
         self.apiService = apiService
-        self.canExtendSubscription = canExtendSubscription
+        self.canExtendSubscription = canExtendSubscription && !FeatureFactory.shared.isEnabled(.dynamicPlans)
         self.paymentsAlertManager = paymentsAlertManager
         self.reportBugAlertHandler = reportBugAlertHandler
         self.refreshHandler = refreshHandler
@@ -284,6 +284,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
         return (product.price, product.priceLocale)
     }
 
+    /// first pending transaction which is .purchased or .restored
     public func currentTransaction() -> SKPaymentTransaction? {
         return paymentQueue.transactions.filter {
             $0.transactionState != .failed && $0.transactionState != .purchasing && $0.transactionState != .deferred
@@ -439,7 +440,6 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
         
         threadSafeCache.set(value: amountDue, for: amountDueCacheKey, in: \.amountDue)
 
-        // TODO: test purchase process with PlansDataSource object
         switch planService {
         case .left(let planService):
             planService.updateCurrentSubscription(callBlocksOnParticularQueue: nil) { [weak self] in

@@ -52,7 +52,7 @@ class PaymentsUIViewModel {
     private var planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>
 
     private var servicePlan: ServicePlanDataServiceProtocol? {
-        guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let servicePlan) = planService else {
+        guard !isDynamicPlansEnabled, case .left(let servicePlan) = planService else {
             assertionFailure("Non dynamic plans must use the ServicePlanDataServiceProtocol object")
             return nil
         }
