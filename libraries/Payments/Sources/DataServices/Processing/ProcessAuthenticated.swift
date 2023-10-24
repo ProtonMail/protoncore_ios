@@ -121,20 +121,20 @@ final class ProcessAuthenticated: ProcessProtocol {
                         try self?.dependencies.updateSubscription(newSubscription)
                         self?.finish(transaction: transaction, result: .finished(.resolvingIAPToSubscription), completion: completion)
                     } catch {
-                        self?.finish(transaction: transaction, result: .errored(.noNewSubscriptionInSuccessfullResponse), completion: completion)
+                        self?.finish(transaction: transaction, result: .errored(.noNewSubscriptionInSuccessfulResponse), completion: completion)
                     }
                     
                 }
             } else {
-                throw StoreKitManager.Errors.noNewSubscriptionInSuccessfullResponse
+                throw StoreKitManager.Errors.noNewSubscriptionInSuccessfulResponse
             }
 
-        } catch let error where error.isPaymentAmmountMismatchOrUnavailablePlanError {
+        } catch let error where error.isPaymentAmountMismatchOrUnavailablePlanError {
             PMLog.debug("StoreKit: amount mismatch")
             recoverByToppingUpCredits(plan: plan, token: token, transaction: transaction, completion: completion)
 
         } catch let error as ResponseError where error.toRequestErrors == RequestErrors.subscriptionDecode {
-            throw StoreKitManager.Errors.noNewSubscriptionInSuccessfullResponse
+            throw StoreKitManager.Errors.noNewSubscriptionInSuccessfulResponse
 
         } catch {
             completion(.erroredWithUnspecifiedError(error))

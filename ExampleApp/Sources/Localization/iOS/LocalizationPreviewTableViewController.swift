@@ -31,8 +31,8 @@ class LocalizationPreviewTableViewController: UITableViewController {
     
     var languageButton: UIBarButtonItem?
     
-    // tried to use refection-Mirror. but the swift refection doesnt work well with lazy var.
-    //  for saving time. manaually add string value first. improve in the future.
+    // tried to use refection-Mirror. but the swift refection doesn't work well with lazy var.
+    //  for saving time. manually add string value first. improve in the future.
     func buildString() {
         self.translationDict.removeAll()
         self.title = "Localization"

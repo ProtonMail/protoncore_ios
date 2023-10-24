@@ -201,12 +201,12 @@ final class PurchaseManager: PurchaseManagerProtocol {
                         self?.storeKitManager.refreshHandler(.finished(.resolvingIAPToSubscription))
                     } catch {
                         finishCallback(.purchasedPlan(accountPlan: plan))
-                        self?.storeKitManager.refreshHandler(.errored(StoreKitManagerErrors.noNewSubscriptionInSuccessfullResponse))
+                        self?.storeKitManager.refreshHandler(.errored(StoreKitManagerErrors.noNewSubscriptionInSuccessfulResponse))
                     }
                 }
             }
         } else {
-            throw StoreKitManager.Errors.noNewSubscriptionInSuccessfullResponse
+            throw StoreKitManager.Errors.noNewSubscriptionInSuccessfulResponse
         }
         return
     }
