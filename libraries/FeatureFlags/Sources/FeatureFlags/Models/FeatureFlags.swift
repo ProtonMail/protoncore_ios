@@ -31,7 +31,7 @@ public struct FeatureFlags: Hashable, Codable, Sendable {
         FeatureFlags(flags: [])
     }
 
-    public func isFlagEnabled(for key: any FeatureFlagTypeProtocol) -> Bool {
+    public func isEnabled(for key: any FeatureFlagTypeProtocol) -> Bool {
         flags.first { $0.name == key.rawValue }?.enabled ?? false
     }
 
