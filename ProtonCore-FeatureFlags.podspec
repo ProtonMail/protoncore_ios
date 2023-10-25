@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-Services', $version
     s.dependency 'ProtonCore-Networking', $version
 
-    s.source_files = 'libraries/FeatureFlags/Sources/*.swift'
+    s.source_files = 'libraries/FeatureFlags/Sources/**/*.swift'
 
     this_pod_does_not_have_subspecs(s)
 
