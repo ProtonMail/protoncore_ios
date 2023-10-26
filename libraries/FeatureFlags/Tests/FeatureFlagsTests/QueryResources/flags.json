@@ -11,6 +11,15 @@
             }
         },
         {
+            "name": "DynamicPlans",
+            "enabled": true,
+            "impressionData": false,
+            "variant": {
+                "name": "disabled",
+                "enabled": false
+            }
+        },
+        {
             "name": "BlackFriday",
             "enabled": true,
             "impressionData": false,

@@ -21,7 +21,7 @@
 
 import Foundation
 import StoreKit
-import ProtonCoreFeatureSwitch
+import ProtonCoreFeatureFlags
 import ProtonCoreLog
 import ProtonCoreNetworking
 import ProtonCoreServices
@@ -132,7 +132,7 @@ final class ProcessAuthenticated: ProcessProtocol {
 
         } catch let error where error.isPaymentAmountMismatchOrUnavailablePlanError {
             PMLog.debug("StoreKit: amount mismatch")
-            if FeatureFactory.shared.isEnabled(.dynamicPlans){
+            if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan){
                 // we no longer credit the account for this kind of mismatch.
                 finish(transaction: transaction, result: .errored(.noNewSubscriptionInSuccessfulResponse), completion: completion)
             } else {

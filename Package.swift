@@ -1033,7 +1033,8 @@ add(
                     .cryptoGoInterface,
                     .authentication,
                     .authenticationKeyGeneration,
-                    .trustKit
+                    .trustKit,
+                    .featureFlags
                 ],
                 path: "libraries/Login/Sources",
                 resources: [.process("Resources")],
@@ -1369,7 +1370,8 @@ add(
                     .log,
                     .networking,
                     .reachabilitySwift,
-                    .services
+                    .services,
+                    .featureFlags
                 ],
                 path: "libraries/Payments/Sources",
                 swiftSettings: .spm),
@@ -1437,7 +1439,8 @@ add(
                     .observability,
                     .payments,
                     .paymentsUIResourcesiOS,
-                    .sdWebImage
+                    .sdWebImage,
+                    .featureFlags
                 ],
                 path: "libraries/PaymentsUI/Sources",
                 resources: [
@@ -1593,7 +1596,8 @@ add(
     targets: [
         .target(name: .settings,
                 dependencies: [
-                    .uiFoundations
+                    .uiFoundations,
+                    .subscriptions
                 ],
                 path: "libraries/Settings/Sources",
                 resources: [
@@ -1733,6 +1737,7 @@ add(
 
         .target(name: .testingToolkitUnitTestsFeatureSwitch,
                 dependencies: [
+                    .featureFlags,
                     .featureSwitch,
                     .testingToolkitUnitTestsCore
                 ],

@@ -33,7 +33,7 @@ import ProtonCoreUIFoundations
 import ProtonCorePayments
 import ProtonCoreEnvironment
 import ProtonCoreChallenge
-import ProtonCoreFeatureSwitch
+import ProtonCoreFeatureFlags
 
 class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleView {
     
@@ -273,7 +273,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
     
     private func setupStoreKit(completion: @escaping (Error?) -> Void) {
         payments.activate(delegate: self, storeKitProductsFetched: completion)
-        if FeatureFactory.shared.isEnabled(.dynamicPlans) {
+        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             completion(nil)
         }
         

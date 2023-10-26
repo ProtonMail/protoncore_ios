@@ -61,6 +61,7 @@ def protoncore_ios
   pod "ProtonCore-TroubleShooting", :path => "../"
   pod "ProtonCore-Environment", :path => "../"
   pod "ProtonCore-FeatureSwitch", :path => "../"
+  pod "ProtonCore-FeatureFlags", :path => "../"
   pod "ProtonCore-Observability", :path => "../"
   pod "ProtonCore-MissingScopes", :path => "../"
   pod "ProtonCore-PasswordRequest", :path => "../"
@@ -90,6 +91,7 @@ def protoncore_unit_tests_ios
   pod "ProtonCore-TroubleShooting", :path => "../", :testspecs => ["Tests"]
   pod "ProtonCore-Environment", :path => "../", :testspecs => ["Tests"]
   pod "ProtonCore-FeatureSwitch", :path => "../", :testspecs => ["Tests"]
+  pod "ProtonCore-FeatureFlags", :path => "../", :testspecs => ["Tests"]
   pod "ProtonCore-Observability", :path => "../", :testspecs => ["UnitTests"]
   pod "ProtonCore-MissingScopes", :path => "../", :testspecs => ["Tests"]
   pod "ProtonCore-PasswordRequest", :path => "../", :testspecs => ["Tests"]
@@ -157,6 +159,7 @@ end
 def shared_uitests_dependencies
   protoncore_dependencies
   pod "ProtonCore-FeatureSwitch", :path => "../"
+  pod "ProtonCore-FeatureFlags", :path => "../"
   pod "fusion", :git => "git@gitlab.protontech.ch:tpe/apple-fusion.git", :commit => "04b8a422"
   pod "ProtonCore-Doh", :path => "../"
   pod "ProtonCore-ObfuscatedConstants", :path => "../"

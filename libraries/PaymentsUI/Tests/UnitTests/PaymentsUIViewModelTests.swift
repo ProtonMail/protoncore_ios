@@ -91,7 +91,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
     // MARK: - Signup mode
 
     func test_fetchPlans_signupMode() async throws {
-        try await withFeatureSwitches([.dynamicPlans]) {
+        try await withUnleashFeatureSwitches([.dynamicPlans]) {
             let storeKitManager = StoreKitManagerMock()
             storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
             let sut = PaymentsUIViewModel(
@@ -231,7 +231,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
     // MARK: - Current plan mode
 
     func test_fetchPlans_currentMode() async throws {
-        try await withFeatureSwitches([.dynamicPlans]) {
+        try await withUnleashFeatureSwitches([.dynamicPlans]) {
             let storeKitManager = StoreKitManagerMock()
             storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
             let sut = PaymentsUIViewModel(
@@ -410,7 +410,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
     // MARK: - Update plan mode
 
     func test_fetchPlan_updateMode() async throws {
-        try await withFeatureSwitches([.dynamicPlans]) {
+        try await withUnleashFeatureSwitches([.dynamicPlans]) {
             let storeKitManager = StoreKitManagerMock()
             storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
             let sut = PaymentsUIViewModel(
@@ -1270,7 +1270,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
     }
 
     func testCurrentPlan_CurrentMode_FetchCurrentPlans_DontExtendSubscription_FromiOS_withDynamicPlans() async {
-        await withFeatureSwitches([.dynamicPlans]) {
+        await withUnleashFeatureSwitches([.dynamicPlans]) {
             // GIVEN: user has has current subscription
             storeKitManager.canExtendSubscriptionStub.fixture = true
             servicePlan.currentSubscriptionStub.fixture = Subscription.dummy
@@ -1302,7 +1302,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
     }
 
     func testCurrentPlan_CurrentMode_FetchCurrentPlans_DontExtendSubscription_FromWeb_withDynamicPlans() async {
-        await withFeatureSwitches([.dynamicPlans]) {
+        await withUnleashFeatureSwitches([.dynamicPlans]) {
 
             // GIVEN: user has has current subscription
             storeKitManager.canExtendSubscriptionStub.fixture = true
@@ -1447,7 +1447,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
     // MARK: - fetchCurrentPlan
 
     func test_fetchCurrentPlan_success() async throws {
-        try await withFeatureSwitches([.dynamicPlans]) {
+        try await withUnleashFeatureSwitches([.dynamicPlans]) {
             // Given
             let storeKitManager = StoreKitManagerMock()
             storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
@@ -1475,7 +1475,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
     // MARK: - fetchAvailablePlans
 
     func test_fetchAvailablePlans_success() async throws {
-        try await withFeatureSwitches([.dynamicPlans]) {
+        try await withUnleashFeatureSwitches([.dynamicPlans]) {
             // Given
             let storeKitManager = StoreKitManagerMock()
             storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
@@ -1508,7 +1508,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
     // MARK: - fetchIAPAvailability
 
     func test_fetchIAPAvailability_callsPlanDataSource() async throws {
-        try await withFeatureSwitches([.dynamicPlans]) {
+        try await withUnleashFeatureSwitches([.dynamicPlans]) {
             // Given
             let storeKitManager = StoreKitManagerMock()
             storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
@@ -1534,7 +1534,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
     // MARK: - fetchPaymentMethods
 
     func test_fetchPaymentMethods_callsPlanDataSource() async throws {
-        try await withFeatureSwitches([.dynamicPlans]) {
+        try await withUnleashFeatureSwitches([.dynamicPlans]) {
             // Given
             let storeKitManager = StoreKitManagerMock()
             storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
@@ -1560,7 +1560,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
     // MARK: - dynamicPlans
 
     func test_dynamicPlans_isWellComposed() async throws {
-        try await withFeatureSwitches([.dynamicPlans]) {
+        try await withUnleashFeatureSwitches([.dynamicPlans]) {
             // Given
             let storeKitManager = StoreKitManagerMock()
             storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
@@ -1623,7 +1623,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
     // MARK: - fetchPlans
 
     func test_fetchPlans_setFooter_withPlansToBuy() async throws {
-        try await withFeatureSwitches([.dynamicPlans]) {
+        try await withUnleashFeatureSwitches([.dynamicPlans]) {
             // Given
             let storeKitManager = StoreKitManagerMock()
             storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }

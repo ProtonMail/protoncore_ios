@@ -25,7 +25,7 @@ import UIKit
 import ProtonCoreFoundations
 import ProtonCoreUIFoundations
 import ProtonCoreObservability
-import ProtonCoreFeatureSwitch
+import ProtonCoreFeatureFlags
 import ProtonCoreUtilities
 
 protocol PaymentsUIViewControllerDelegate: AnyObject {
@@ -42,7 +42,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     private lazy var selectedCycle = viewModel?.defaultCycle
     
     private var isDynamicPlansEnabled: Bool {
-        FeatureFactory.shared.isEnabled(.dynamicPlans)
+        FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan)
     }
     
     // MARK: - Constants
@@ -132,6 +132,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
                 tableView.indicatorStyle = .white
             }
         }
+        
         view.backgroundColor = ColorProvider.BackgroundNorm
         tableView.backgroundColor = ColorProvider.BackgroundNorm
         tableView.tableHeaderView?.backgroundColor = ColorProvider.BackgroundNorm
@@ -247,7 +248,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     }
     
     @IBAction func onExtendSubscriptionButtonTap(_ sender: ProtonButton) {
-        guard !FeatureFactory.shared.isEnabled(.dynamicPlans) else {
+        guard !FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) else {
             assertionFailure("Auto-renewing subscriptions (but governed with the Dynamic Plans FF) are not extensible")
             return
         }
@@ -356,7 +357,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
             tableFooterTextLabel.text = PUITranslations.plan_footer_desc_purchased.l10n
         case .withExtendSubscriptionButton:
             tableFooterTextLabel.text = PUITranslations.plan_footer_desc_purchased.l10n
-            hasExtendSubscriptionButton = !FeatureFactory.shared.isEnabled(.dynamicPlans)
+            hasExtendSubscriptionButton = !FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan)
         case .none:
             tableFooterTextLabel.text = PUITranslations.plan_footer_desc_purchased.l10n
         case .disabled:

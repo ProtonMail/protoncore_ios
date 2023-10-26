@@ -21,7 +21,7 @@
 
 import Foundation
 import ProtonCoreDataModel
-import ProtonCoreFeatureSwitch
+import ProtonCoreFeatureFlags
 import ProtonCoreLog
 import ProtonCoreServices
 
@@ -261,7 +261,7 @@ extension ServicePlanDataService {
             return false
         }
         
-        guard !FeatureFactory.shared.isEnabled(.dynamicPlans) else {
+        guard !FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) else {
             assertionFailure("You shouldn't be using plan data services with Dynamic Plans")
             return false
         }
