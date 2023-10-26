@@ -124,4 +124,57 @@ final class APIServiceErrorTests: XCTestCase {
         XCTAssertEqual(error.code, 123)
         XCTAssertEqual(error.localizedDescription, "test message")
     }
+    
+    func testResponseError_CarriesResponseDict() throws {
+        let originalResponseDict: [String: Any] = ["string": "test string", "number": 24]
+        let underlyingError = NSError(domain: "tests",
+                                      code: 42,
+                                      responseDictionary: originalResponseDict,
+                                      localizedDescription: "test localizedDescription")
+        let testError = ResponseError(httpCode: 200,
+                                      responseCode: 1000,
+                                      userFacingMessage: "test facing message",
+                                      underlyingError: underlyingError)
+        let passedResponseDict = try XCTUnwrap(testError.responseDictionary)
+        XCTAssertTrue((passedResponseDict as NSDictionary).isEqual(to: originalResponseDict))
+    }
+    
+    func testResponseError_RemovesResponseDictFromUnderlyingError() throws {
+        let underlyingError = NSError(domain: "tests",
+                                      code: 42,
+                                      responseDictionary: ["string": "test string", "number": 24],
+                                      localizedDescription: "test localizedDescription")
+        let testError = ResponseError(httpCode: 200,
+                                      responseCode: 1000,
+                                      userFacingMessage: "test facing message",
+                                      underlyingError: underlyingError)
+        let passedUnderlyingError = try XCTUnwrap(testError.underlyingError)
+        XCTAssertNotNil(underlyingError.userInfo[ResponseError.responseDictionaryUserInfoKey])
+        XCTAssertNil(passedUnderlyingError.userInfo[ResponseError.responseDictionaryUserInfoKey])
+    }
+    
+    func testResponseError_DoesNotIncludeResponseDictWhenPrinted() throws {
+        let testString = "test string"
+        let testNumber = 24
+        let underlyingError = NSError(domain: "tests",
+                                      code: 42,
+                                      responseDictionary: ["string": "test string", "number": 24],
+                                      localizedDescription: "test localizedDescription")
+        let testError = ResponseError(httpCode: 200,
+                                      responseCode: 1000,
+                                      userFacingMessage: nil,
+                                      underlyingError: underlyingError)
+        let interpolatedError = "\(testError)"
+        let errorDescription = testError.localizedDescription
+        let errorUserFacingMessage = testError.userFacingMessage ?? ""
+        let stringDescribingError = String(describing: testError)
+        XCTAssertFalse(interpolatedError.contains(testString))
+        XCTAssertFalse(interpolatedError.contains("\(testNumber)"))
+        XCTAssertFalse(errorDescription.contains(testString))
+        XCTAssertFalse(errorDescription.contains("\(testNumber)"))
+        XCTAssertFalse(errorUserFacingMessage.contains(testString))
+        XCTAssertFalse(errorUserFacingMessage.contains("\(testNumber)"))
+        XCTAssertFalse(stringDescribingError.contains(testString))
+        XCTAssertFalse(stringDescribingError.contains("\(testNumber)"))
+    }
 }
