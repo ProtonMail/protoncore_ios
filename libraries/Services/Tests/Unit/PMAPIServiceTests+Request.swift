@@ -156,6 +156,30 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertEqual(error.code, 404)
     }
     
+    func testRequestWithJSONReturnsResponseDictionaryInError() async throws {
+        let originalResponseDict: [String: Any] = ["Code": 4242, "string": "test string", "number": 24]
+        let service = testService
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+        }
+
+        sessionMock.requestJSONStub.bodyIs { _, _, _, completion in
+            completion(
+                URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 404)),
+                .success(originalResponseDict)
+            )
+        }
+
+        let result = await withCheckedContinuation { continuation in
+            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, authRetry: true,
+                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
+        }
+
+        let error = try XCTUnwrap(result.error)
+        let responseDictionary = try XCTUnwrap(error.responseDictionary)
+        XCTAssertTrue((responseDictionary as NSDictionary).isEqual(to: originalResponseDict))
+    }
+    
     // MARK: - Deprecated API
     
     @available(*, deprecated, message: "testing deprecated api")
