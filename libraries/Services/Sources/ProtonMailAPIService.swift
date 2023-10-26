@@ -291,12 +291,12 @@ public class PMAPIService: APIService {
     public func acquireSessionIfNeeded(completion: @escaping (Result<SessionAcquiringResult, APIError>) -> Void) {
         fetchExistingCredentialsOrAcquireNewUnauthCredentials(deviceFingerprints: deviceFingerprints) { result in
             switch result {
-            case .foundExisting:
-                completion(.success(.sessionAlreadyPresent))
+            case .foundExisting(let authCredential):
+                completion(.success(.sessionAlreadyPresent(authCredential)))
             case .triedAcquiringNew(.wrongConfigurationNoDelegate):
                 completion(.success(.sessionUnavailableAndNotFetched))
-            case .triedAcquiringNew(.acquired):
-                completion(.success(.sessionFetchedAndAvailable))
+            case .triedAcquiringNew(.acquired(let authCredential)):
+                completion(.success(.sessionFetchedAndAvailable(authCredential)))
             case .triedAcquiringNew(.acquiringError(let error)):
                 // no http code means the request failed because the servers are not reachable — we need to return the error
                 if error.httpCode == nil {

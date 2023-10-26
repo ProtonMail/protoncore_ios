@@ -26,7 +26,7 @@ import enum ProtonCoreDataModel.ClientApp
 import ProtonCoreUIFoundations
 import ProtonCorePayments
 import ProtonCoreUtilities
-import ProtonCoreFeatureSwitch
+import ProtonCoreFeatureFlags
 
 enum FooterType: Equatable {
     static func == (lhs: FooterType, rhs: FooterType) -> Bool {
@@ -47,7 +47,7 @@ enum FooterType: Equatable {
 
 class PaymentsUIViewModel {
     private var isDynamicPlansEnabled: Bool {
-        FeatureFactory.shared.isEnabled(.dynamicPlans)
+        FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan)
     }
     private var planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>
 
@@ -60,7 +60,7 @@ class PaymentsUIViewModel {
     }
 
     private var plansDataSource: PlansDataSourceProtocol? {
-        guard FeatureFactory.shared.isEnabled(.dynamicPlans), case .right(let plansDataSource) = planService else {
+        guard FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan), case .right(let plansDataSource) = planService else {
             assertionFailure("Dynamic plans must use the PlansDataSourceProtocol object")
             return nil
         }

@@ -1,7 +1,6 @@
 //
 //  PaymentsNewUserSubscriptionUIVC.swift
-//  Example-Payments - Created on 11/12/2020.
-//
+//  ProtonCore-ExampleApp - Created on 11/12/2020.
 //
 //  Copyright (c) 2020 Proton Technologies AG
 //
@@ -34,7 +33,7 @@ import ProtonCorePaymentsUI
 import ProtonCoreFoundations
 import ProtonCoreEnvironment
 import ProtonCoreChallenge
-import ProtonCoreFeatureSwitch
+import ProtonCoreFeatureFlags
 
 class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleView {
     
@@ -51,7 +50,7 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
     @IBOutlet weak var showUpdatePlansButton: ProtonButton!
     
     // MARK: - Payment credentials
-    private var payments: Payments!
+    private var payments: Payments?
     private var userCachedStatus: UserCachedStatus!
     
     // MARK: - Properties
@@ -169,7 +168,7 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
         navigationController?.navigationBar.shadowImage = nil
     }
     
-    private func reportBugAlertHandler(_ receipt: String?) -> Void {
+    private func reportBugAlertHandler(_ receipt: String?) {
         guard let alertWindow = self.alertWindow else { return }
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Report Bug Example", message: "Example", preferredStyle: .alert)
@@ -183,7 +182,7 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
         loginStatusLabel.text = "Login status:"
         showCurrentPlanButton.isEnabled = false
         showUpdatePlansButton.isEnabled = false
-        guard let username = usernameTextField.text, username != "", let password = passwordTextField.text, password != "" else {
+        guard let username = usernameTextField.text, !username.isEmpty, let password = passwordTextField.text, !password.isEmpty else {
             loginStatusLabel.text = "Login status: Wrong credentials"
             return
         }
@@ -205,6 +204,8 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
                     self.testApi.serviceDelegate = self.serviceDelegate
                     switch result {
                     case .success(let user):
+                        FeatureFlagsRepository.shared.setUserId(with: user.ID)
+                        FeatureFlagsRepository.shared.setApiService(with: self.testApi)
                         self.loginButton.isSelected = false
                         self.userInfo = user
                         self.loginStatusLabel.text = "Login status: OK"
@@ -234,14 +235,11 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
             case .success(.ask2FA):
                 self.loginStatusLabel.text = "Login status: Not supportd 2FA"
                 self.loginButton.isSelected = false
-                break
             case .success(.ssoChallenge):
                 self.loginStatusLabel.text = "Login status: Not supportd SSO Challenge"
                 self.loginButton.isSelected = false
-                break
             case .success(.updatedCredential):
                 self.loginButton.isSelected = false
-                break
                 // should not happen
             }
         }
@@ -264,26 +262,30 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
     
     private func setupPayments(completion: @escaping (Error?) -> Void) {
         userCachedStatus = UserCachedStatus()
-        payments = Payments(
+        let payments = Payments(
             inAppPurchaseIdentifiers: inAppPurchases,
             apiService: testApi,
             localStorage: userCachedStatus,
             canExtendSubscription: canExtendSubscriptionSwitch.isOn,
             reportBugAlertHandler: { [weak self] receipt in self?.reportBugAlertHandler(receipt) }
         )
+        self.payments = payments
         payments.activate(delegate: self, storeKitProductsFetched: completion)
         paymentsUI = PaymentsUI(
-            payments: payments, clientApp: clientApp, shownPlanNames: listOfShownPlanNames, customization: .empty
+            payments: payments,
+            clientApp: clientApp,
+            shownPlanNames: listOfShownPlanNames,
+            customization: .empty
         )
-        if FeatureFactory.shared.isEnabled(.dynamicPlans) {
+        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             completion(nil)
         }
     }
     
     private func cleanupStoreKit() {
         paymentsUI = nil
-        payments.storeKitManager.unsubscribeFromPaymentQueue()
-        payments.storeKitManager.delegate = nil
+        payments?.storeKitManager.unsubscribeFromPaymentQueue()
+        payments?.storeKitManager.delegate = nil
         payments = nil
     }
     

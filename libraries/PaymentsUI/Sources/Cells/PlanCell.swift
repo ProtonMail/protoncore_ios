@@ -24,7 +24,7 @@
 import UIKit
 import ProtonCoreUIFoundations
 import ProtonCoreFoundations
-import ProtonCoreFeatureSwitch
+import ProtonCoreFeatureFlags
 
 protocol PlanCellDelegate: AnyObject {
     func userPressedSelectPlanButton(plan: PlanPresentation, completionHandler: @escaping () -> Void)
@@ -35,7 +35,7 @@ protocol PlanCellDelegate: AnyObject {
 final class PlanCell: UITableViewCell, AccessibleCell {
 
     private var isDynamicPlansEnabled: Bool {
-        FeatureFactory.shared.isEnabled(.dynamicPlans)
+        FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan)
     }
     
     static let reuseIdentifier = "PlanCell"

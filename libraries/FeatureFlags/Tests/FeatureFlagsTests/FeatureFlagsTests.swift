@@ -1,23 +1,27 @@
 //
-// FeatureFlagsTests.swift
-// Proton - Created on 29/09/2023.
-// Copyright (c) 2023 Proton Technologies AG
+//  FeatureFlagsTests.swift
+//  ProtonCore-FeatureFlags - Created on 29.09.23.
 //
+//  Copyright (c) 2023 Proton Technologies AG
 //
-// Proton Pass is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+//  This file is part of Proton Technologies AG and ProtonCore.
 //
-// Proton Pass is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+//  ProtonCore is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
 //
-// You should have received a copy of the GNU General Public License
-// along with Proton. If not, see https://www.gnu.org/licenses/.
+//  ProtonCore is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
+//
 
 @testable import ProtonCoreFeatureFlags
+import ProtonCoreUtilities
 import XCTest
 
 enum TestFlagsType: String, FeatureFlagTypeProtocol {
@@ -40,58 +44,51 @@ enum FeatureFlagsElementFactory {
 final class FeatureFlagsTests: XCTestCase {
     let localDataSource = DefaultLocalFeatureFlagsDatasource()
     let remoteDataSource = DefaultRemoteDatasourceMock()
-    var sut: FeatureFlagsRepository!
-        
+    var sut = FeatureFlagsRepository.shared
+
     override func setUp() {
         super.setUp()
-        sut = FeatureFlagsRepository(configuration: FeatureFlagsElementFactory.configuration1,
-                                       localDatasource: localDataSource,
-                                       remoteDatasource: remoteDataSource)
-    }
-    
-    func testFilteringOfFeatureFlags_ShouldOnlyReturn2Flags() async throws {
-        let flags = try await sut.getFlags()
-        XCTAssertEqual(flags.flags.count, 2)
-    }
-    
-    func testGettingSpecificFlag_ShouldReturnAFlag() async throws {
-        let optionalFlag = await sut.getFlag(for: TestFlagsType.blackFriday)
-        let flag = try XCTUnwrap(optionalFlag)
-        XCTAssertEqual(flag.name, "BlackFriday")
-    }
-    
-    func testGettingSpecificFlag_ShouldReturnNil() async throws {
-        let optionalFlag = await sut.getFlag(for: TestFlagsType.notActivatedFlag)
-        XCTAssertNil(optionalFlag)
-    }
-    
-    func testCheckIfFlagIsEnabled_ShouldBeTrueFromRepoAndFlags() async throws {
-        let flags = try await sut.getFlags()
-        XCTAssertTrue(flags.isEnabled(for: TestFlagsType.blackFriday))
-        let isEnabled = await sut.isEnabled(for: TestFlagsType.blackFriday)
-        XCTAssertTrue(isEnabled)
+        sut.updateLocalDataSource(with: Atomic<LocalFeatureFlagsProtocol>(localDataSource))
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol>(remoteDataSource))
     }
 
-    func testCheckIfFlagIsDisabled() async throws {
-        let flags = try await sut.getFlags()
-        XCTAssertFalse(flags.isEnabled(for: TestFlagsType.primaryVault))
-        let isEnabled = await sut.isEnabled(for: TestFlagsType.primaryVault)
-        XCTAssertFalse(isEnabled)
+    func test_isEnabled_returnsTrueIfFlagisPresentAndEnabled() async throws {
+        // Given
+        sut.updateConfiguration(with: Atomic<FeatureFlagsConfiguration>(FeatureFlagsElementFactory.configuration1))
+
+        // When
+        try await sut.fetchFlags()
+
+        // Then
+        XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday))
     }
-    
-    func testCheckUpdateAndRefreshOfFlags_ShouldReturnNewFlags() async throws {
-        await sut.update(with: FeatureFlagsElementFactory.configuration2)
-        let flags = try await sut.refreshFlags()
-        XCTAssertEqual(flags.flags.count, 3)
-        let optionalFlag = await sut.getFlag(for: TestUpdatedFlagsType.editEmail)
-        let flag = try XCTUnwrap(optionalFlag)
-        XCTAssertEqual(flag.name, "EditEmailAddress")
+
+    func test_isEnabled_returnsTrueIfFlagisPresentAndDisabled() async throws {
+        // Given
+        sut.updateConfiguration(with: Atomic<FeatureFlagsConfiguration>(FeatureFlagsElementFactory.configuration1))
+
+        // When
+        try await sut.fetchFlags()
+
+        // Then
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.primaryVault))
     }
-    
-    func testResetAllFlags() async throws {
-        await sut.resetFlags()
-        let flagsUser1 = try await localDataSource.getFeatureFlags(userId: FeatureFlagsElementFactory.configuration2.userId)
-        let flagsUser2 = try await localDataSource.getFeatureFlags(userId: FeatureFlagsElementFactory.configuration1.userId)
+
+    func test_isEnabled_returnsTrueIfFlagisNotPresent() async throws {
+        // Given
+        sut.updateConfiguration(with: Atomic<FeatureFlagsConfiguration>(FeatureFlagsElementFactory.configuration1))
+
+        // When
+        try await sut.fetchFlags()
+
+        // Then
+        XCTAssertFalse(sut.isEnabled(TestUpdatedFlagsType.accountRecovery))
+    }
+
+    func testResetAllFlags() {
+        sut.resetFlags()
+        let flagsUser1 = localDataSource.getFeatureFlags(userId: FeatureFlagsElementFactory.configuration2.userId)
+        let flagsUser2 = localDataSource.getFeatureFlags(userId: FeatureFlagsElementFactory.configuration1.userId)
         XCTAssertNil(flagsUser1)
         XCTAssertNil(flagsUser2)
     }
