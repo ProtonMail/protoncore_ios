@@ -4,31 +4,39 @@
     "build_dir":"build",
     "out_dir":"out",
     "go_mobile_dir":"mobile",
-    "go_mobile_flags": [
+    "go_mobile_flags":[
         "-x",
         "-ldflags=\"-s -w\"",
         "-trimpath"
     ],
     "build_name":"GoLibs",
-    "commit_message": "Crypto build",
-    "upload_branch": "feature/crypto-update",
-    "destination_folder": "vendor/Crypto-Go",
-    "targets":["apple"],
-    "min_ios_version": "14.0",
-    "min_macos_version": "12.0",
-    "requirements": [
+    "commit_message":"Crypto build",
+    "upload_branch":"feature/crypto-update",
+    "destination_folder":"vendor/Crypto-Go",
+    "targets":[
+        "apple"
+    ],
+    "min_ios_version":"14.0",
+    "min_macos_version":"12.0",
+    "requirements":[
         {
-            "module":
-            {
+            "module":{
                 "path":"github.com/ProtonMail/gopenpgp/v2",
-                "version":"v2.7.3-proton"
+                "version":"v2.7.4-proton"
             },
-            "packages": ["crypto", "armor", "constants", "models", "subtle", "helper"]
+            "packages":[
+                "crypto",
+                "armor",
+                "constants",
+                "models",
+                "subtle",
+                "helper"
+            ]
         },
         {
             "module":{
                 "path":"github.com/ProtonMail/go-srp",
-                "version": "v0.0.7"
+                "version":"v0.0.7"
             }
         }
     ]
