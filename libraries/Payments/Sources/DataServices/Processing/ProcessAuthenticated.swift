@@ -21,6 +21,7 @@
 
 import Foundation
 import StoreKit
+import ProtonCoreFeatureSwitch
 import ProtonCoreLog
 import ProtonCoreNetworking
 import ProtonCoreServices
@@ -131,13 +132,20 @@ final class ProcessAuthenticated: ProcessProtocol {
 
         } catch let error where error.isPaymentAmountMismatchOrUnavailablePlanError {
             PMLog.debug("StoreKit: amount mismatch")
-            recoverByToppingUpCredits(plan: plan, token: token, transaction: transaction, completion: completion)
+            if FeatureFactory.shared.isEnabled(.dynamicPlans){
+                // we no longer credit the account for this kind of mismatch.
+                finish(transaction: transaction, result: .errored(.noNewSubscriptionInSuccessfulResponse), completion: completion)
+            } else {
+                recoverByToppingUpCredits(plan: plan, token: token, transaction: transaction, completion: completion)
+            }
 
         } catch let error as ResponseError where error.toRequestErrors == RequestErrors.subscriptionDecode {
             throw StoreKitManager.Errors.noNewSubscriptionInSuccessfulResponse
 
         } catch {
-            completion(.erroredWithUnspecifiedError(error))
+            finish(transaction: transaction,
+                   result: .erroredWithUnspecifiedError(error),
+                   completion: completion)
         }
     }
     

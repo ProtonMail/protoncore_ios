@@ -45,7 +45,9 @@ public enum PaymentSucceeded: Equatable {
     case withPurchaseAlreadyProcessed
     case withoutExchangingToken(token: PaymentToken)
     case resolvingIAPToSubscription
+    @available(*, deprecated, message: "Please stop using `resolvingIAPToCredits`. We no longer credit accounts")
     case resolvingIAPToCredits
+    @available(*, deprecated, message: "Please stop using `resolvingIAPToCreditsCausedByError`. We no longer credit accounts")
     case resolvingIAPToCreditsCausedByError
 }
 
@@ -136,6 +138,7 @@ protocol PaymentQueueProtocol {
 
 enum ProcessingType {
     case existingUserNewSubscription
+    @available(*, deprecated, message: "Adding credits is no longer supported on mobile. Please enable Auto-renewable Subscriptions")
     case existingUserAddCredits
     case registration
 }

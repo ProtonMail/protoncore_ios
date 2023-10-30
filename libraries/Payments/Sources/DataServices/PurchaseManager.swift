@@ -221,14 +221,15 @@ final class PurchaseManager: PurchaseManagerProtocol {
             } else if case .resolvingIAPToCredits = result,
                       !FeatureFactory.shared.isEnabled(.dynamicPlans) {
                 finishCallback(.toppedUpCredits)
-            } else if case .resolvingIAPToCreditsCausedByError = result {
+            } else if case .resolvingIAPToCreditsCausedByError = result,
+                      !FeatureFactory.shared.isEnabled(.dynamicPlans) {
                 finishCallback(.toppedUpCredits)
             } else {
                 finishCallback(.purchasedPlan(accountPlan: plan))
             }
         } errorCompletion: { [weak self] error in
             // ignored payment errors
-            if let error = error as? StoreKitManagerErrors, error == .notAllowed || error.isUnknown {
+            if let error = error as? StoreKitManagerErrors, error == .notAllowed || error.isUnknown || error == .alreadyPurchasedPlanDoesNotMatchBackend {
                 finishCallback(.purchaseCancelled)
             } else if let error = error as? StoreKitManagerErrors, case .apiMightBeBlocked(let message, let originalError) = error {
                 finishCallback(.apiMightBeBlocked(message: message, originalError: originalError, processingPlan: self?.unfinishedPurchasePlan))

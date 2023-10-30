@@ -875,6 +875,45 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         }
     }
 
+    func testPurchaseContinuationWhenSubscriptionFailsAmountMismatchCreditsAppliedErrorWithDynamicPlans() {
+        // Test scenario:
+        // 1. Continue transaction after signup
+        // 2. Fail subscription purchase with amount mismatch 22101
+        // 2. Fail credits call with random error
+        // Expected: Retry
+
+        withFeatureSwitches([.dynamicPlans]) {
+            // given
+            let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
+            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
+            let out = ProcessUnauthenticated(dependencies: processDependencies)
+            let expectation = self.expectation(description: "Completion block called")
+            paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
+            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+                if path.contains("/tokens/") {
+                    completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
+                } else if path.contains("/subscription") {
+                    completion(nil, .success(["Code": 22101]))
+                } else if path.contains("/credit") {
+                    completion(nil, .success(["Code": 424242]))
+                } else {
+                    XCTFail(); completion(nil, .success([:]))
+                }
+            }
+
+            alertManagerMock.showAlertStub.bodyIs { _, _, _ in
+                expectation.fulfill()
+            }
+
+            // when
+            queue.async {
+                try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { _ in XCTFail() }
+            }
+
+            // then
+            waitForExpectations(timeout: timeout)
+            XCTAssertEqual(apiService.requestJSONStub.callCounter, 2)
+        }
     }
 
     func testPurchaseContinuationWhenSubscriptionFailsPlanUnavailableCreditsAppliedSuccess() {
@@ -1004,7 +1043,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
     }
 
     func testPurchaseContinuationWithoutStoredTokenFailure() {
-        withFeatureSwitches([.subscriptions]){ // remove enclosure with CP-6369
+        withFeatureSwitches([.dynamicPlans]){ // remove enclosure with CP-6369
             // Test scenario:
             // 1. Continue transaction after signup without stored token
             // 2. Fail token request
@@ -1038,7 +1077,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
     }
 
     func testPurchaseContinuationWithoutStoredTokenSuccess() {
-        withFeatureSwitches([.subscriptions]){ // remove enclosure with CP-6369
+        withFeatureSwitches([.dynamicPlans]){ // remove enclosure with CP-6369
             // Test scenario:
             // 1. Continue transaction after signup without stored token
             // Expected: Success
