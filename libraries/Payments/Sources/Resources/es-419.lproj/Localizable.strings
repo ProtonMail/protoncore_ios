@@ -23,7 +23,7 @@
 
 "Wrong payment token status. Please relaunch the app. If error persists, contact support." = "Estado del token de pago incorrecto. Reinicie la aplicación. Si el error persiste, póngase en contacto con soporte al cliente.";
 
-"Do you want to activate the purchase for %@ address?" = "¿Desea activar la compra para la dirección %@?";
+"Do you want to activate the purchase for %@ address?" = "¿Quiere activar la compra para la dirección %@?";
 
 "Yes, activate it for " = "Sí, activarlo para ";
 

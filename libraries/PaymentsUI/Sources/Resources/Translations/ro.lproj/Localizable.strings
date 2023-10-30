@@ -25,7 +25,7 @@
 
 "%@ storage" = "%@ spațiu";
 
-"%@ storage / user" = "%@ spațiu / utilizator";
+"%@ storage / user" = "%@ spațiu/utilizator";
 
 "for %@" = "pentru %@";
 
@@ -89,7 +89,7 @@
 
 "TOR over VPN" = "Tor prin VPN";
 
-"P2P/BitTorrent" = "P2P / BitTorrent";
+"P2P/BitTorrent" = "P2P/BitTorrent";
 
 "Get %@" = "Luați %@";
 
