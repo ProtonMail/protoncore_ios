@@ -3,7 +3,7 @@
 
 "Account_Recovery_Insecure_View_Title" = "Restablecer su contraseña";
 
-"Account_Recovery_Grace_View_Title" = "¿Desea restablecer su contraseña?";
+"Account_Recovery_Grace_View_Title" = "¿Quiere restablecer su contraseña?";
 
 "Account_Recovery_Grace_View_line1" = "Hemos recibido una solicitud para restablecer la contraseña de ";
 

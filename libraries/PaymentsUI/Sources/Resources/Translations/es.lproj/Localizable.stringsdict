@@ -173,9 +173,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d bóveda</string>
+        <string>%d caja fuerte</string>
         <key>other</key>
-        <string>%d bóvedas</string>
+        <string>%d cajas fuertes</string>
       </dict>
     </dict>
     <key>Support for %d custom email domains</key>

@@ -1,0 +1,28 @@
+
+"pmsettings-settings-title" = "Nastavenia";
+
+"pmsettings-settings-app-settings-section" = "Nastavenia aplikácie";
+
+"pmsettings-settings-system-settings-section" = "Systemové nastavenia";
+
+"pmsettings-settings-system-settings-language-title" = "Jazyk";
+
+"pmsettings-settings-system-settings-language-description" = "Preferovaný jazyk si môžete vybrať v systémových nastaveniach.";
+
+"pmsettings-settings-system-settings-language-button" = "Nastavte jazyk v systémových nastaveniach.";
+
+"pmsettings-settings-system-settings-notifications-title" = "Notifikácie";
+
+"pmsettings-settings-system-settings-notifications-description" = "Tento kalendár vás môže informovať o prebiehajúcich udalostiach alebo pozvánkach. Ak chcete dostávať push notifikácie, musíte zmeniť nastavenia systému.";
+
+"pmsettings-settings-system-settings-notifications-button" = "Spravovať oprávnenia v systémových nastaveniach";
+
+"pmsettings-settings-about-section" = "O aplikácii";
+
+"pmsettings-settings-about-acknowledgements" = "Uznania";
+
+"pmsettings-settings-about-privacy" = "Zásady ochrany osobných údajov";
+
+"pmsettings-settings-about-terms" = "Podmienky používania";
+
+"pmsettings-settings-footer" = "Verzia aplikácie: %@";

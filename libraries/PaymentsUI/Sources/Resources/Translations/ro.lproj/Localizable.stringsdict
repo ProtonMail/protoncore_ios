@@ -49,11 +49,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d adresă de e-mail / utilizator</string>
+        <string>%d adresă de e-mail/utilizator</string>
         <key>few</key>
-        <string>%d adrese de e-mail / utilizator</string>
+        <string>%d adrese de e-mail/utilizator</string>
         <key>other</key>
-        <string>%d de adrese de e-mail / utilizator</string>
+        <string>%d de adrese de e-mail/utilizator</string>
       </dict>
     </dict>
     <key>%d calendars</key>
@@ -85,11 +85,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d folder / etichetă</string>
+        <string>%d folder/etichetă</string>
         <key>few</key>
-        <string>%d foldere / etichete</string>
+        <string>%d foldere/etichete</string>
         <key>other</key>
-        <string>%d de foldere / etichete</string>
+        <string>%d de foldere/etichete</string>
       </dict>
     </dict>
     <key>%d countries</key>
