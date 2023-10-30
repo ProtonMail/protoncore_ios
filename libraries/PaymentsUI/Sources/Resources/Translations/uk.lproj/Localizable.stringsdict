@@ -548,7 +548,7 @@
         <key>one</key>
         <string>Оплата за %d місяць</string>
         <key>few</key>
-        <string>Оплата за %d місяців</string>
+        <string>Оплата за %d місяці</string>
         <key>many</key>
         <string>Оплата за %d місяців</string>
         <key>other</key>

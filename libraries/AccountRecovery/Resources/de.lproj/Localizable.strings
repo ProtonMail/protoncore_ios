@@ -17,6 +17,6 @@
 
 "Account_Recovery_Grace_View_Undefined_Time_Left" = "ein paar Stunden";
 
-"Account_Recovery_Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+"Account_Recovery_Grace_View_line2" = ". Um dein Konto zu schützen, möchten wir sicherstellen, dass du wirklich versuchst, dein Passwort zurückzusetzen. Du kannst dein Passwort zurücksetzen unter ";
 
 "Account_Recovery_Grace_View_line3" = "Wenn du diese Anfrage nicht gestellt hast oder bei der Anmeldung keine Hilfe mehr brauchst, storniere sie bitte und ergreife Maßnahmen, um dein Konto zu sichern.";

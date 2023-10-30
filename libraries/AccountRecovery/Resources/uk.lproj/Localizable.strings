@@ -1,17 +1,17 @@
 
-"Account_Recovery_Settings_Item" = "Пароль скинуто";
+"Account_Recovery_Settings_Item" = "Скидання пароля";
 
-"Account_Recovery_Insecure_View_Title" = "Скинути ваш пароль";
+"Account_Recovery_Insecure_View_Title" = "Скинути пароль";
 
-"Account_Recovery_Grace_View_Title" = "Ви хочете скинути ваш пароль?";
+"Account_Recovery_Grace_View_Title" = "Ви хочете скинути свій пароль?";
 
-"Account_Recovery_Grace_View_line1" = "Ми отримали запит на скидання паролю для імені користувача ";
+"Account_Recovery_Grace_View_line1" = "Ми отримали запит на скидання пароля для імені користувача ";
 
-"Account_Recovery_Insecure_View_line1" = "Тепер ви можете змінити ваш пароль для облікового запису ";
+"Account_Recovery_Insecure_View_line1" = "Тепер ви можете змінити свій пароль для облікового запису ";
 
 "Account_Recovery_Insecure_View_line2" = " у будь-який час протягом ";
 
-"Account_Recovery_Insecure_View_line3" = "Перейдіть на авторизований пристрій (у сеансі якого був ініційований запит) для зміни вашого пароля.";
+"Account_Recovery_Insecure_View_line3" = "Щоб змінити пароль, перейдіть на авторизований пристрій, з якого було ініційовано запит.";
 
 "Account_Recovery_Grace_View_Cancel_Button_CTA" = "Скасувати запит";
 
@@ -19,4 +19,4 @@
 
 "Account_Recovery_Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
 
-"Account_Recovery_Grace_View_line3" = "Якщо ви не робили цей запит, або якщо вам більше не потрібна допомога з входом, будь ласка, скасуйте його та зробіть кроки для убезпечення вашого облікового запису.";
+"Account_Recovery_Grace_View_line3" = "Якщо ви не робили цей запит, або якщо вам більше не потрібна допомога з входом, скасуйте його та виконайте дії для захисту вашого облікового запису.";
