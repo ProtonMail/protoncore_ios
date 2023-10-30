@@ -36,6 +36,7 @@ import ProtonCoreLog
  
 */
 
+@available(*, deprecated, message: "Adding credits is no longer supported on mobile. Please enable Auto-renewable Subscriptions")
 final class ProcessAddCredits: ProcessProtocol {
 
     unowned let dependencies: ProcessDependencies

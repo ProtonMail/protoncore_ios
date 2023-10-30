@@ -199,16 +199,14 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     
     private var processingType: ProcessingType {
         guard applicationUserId() == nil else {
-            // TODO: test purchase process with PlansDataSource object
             switch planService {
             case .left(let planService):
                 if planService.currentSubscription?.endDate?.isFuture ?? false {
                     return .existingUserAddCredits
                 }
-            case .right(let planDataSource):
-                if planDataSource.currentPlan?.endDate?.isFuture ?? false {
-                    return .existingUserAddCredits
-                }
+            case .right:
+                // Dynamic plans don't allow for extension
+                break;
             }
             return .existingUserNewSubscription
         }
@@ -292,7 +290,6 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     }
 
     public func isValidPurchase(storeKitProductId: String, completion: @escaping (Bool) -> Void) {
-        // TODO: test purchase process with PlansDataSource object
         switch planService {
         case .left(let planService):
             planService.updateServicePlans(callBlocksOnParticularQueue: nil) { [weak self] in
@@ -336,7 +333,6 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
               let product = availableProducts.first(where: { $0.productIdentifier == storeKitProductId })
         else { return errorCompletion(Errors.unavailableProduct) }
 
-        // TODO: test purchase process with PlansDataSource object
         switch planService {
         case .left(let planService):
             planService.updateServicePlans(callBlocksOnParticularQueue: nil) { [weak self] in
@@ -738,7 +734,6 @@ extension StoreKitManager: SKPaymentTransactionObserver {
         guard let plan = InAppPurchasePlan(storeKitProductId: transaction.payment.productIdentifier)
         else { throw Errors.alreadyPurchasedPlanDoesNotMatchBackend }
 
-        // TODO: test purchase process with PlansDataSource object
         let planName: String
         let planAmount: Int
         let planIdentifier: String
@@ -807,6 +802,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
                     )
                 }
             case .existingUserAddCredits:
+                // only for static
                 try processAddCredits.process(transaction: transaction, plan: planToBeProcessed, completion: customCompletion)
             case .registration:
                 try processUnathenticated.process(
@@ -891,13 +887,13 @@ extension StoreKitManager: ProcessDependencies {
     var alertManager: PaymentsAlertManager { return paymentsAlertManager }
 
     var updateSubscription: (Subscription) throws -> Void { { [weak self] in
-        // TODO: test purchase process with PlansDataSource object
         guard !FeatureFactory.shared.isEnabled(.dynamicPlans), case .left(let planService) = self?.planService else {
             throw StoreKitManagerErrors.noNewSubscriptionInSuccessfulResponse
         }
         planService.currentSubscription = $0
     } }
 
+    /// Refreshes the current subscription details from BE
     func updateCurrentSubscription(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
         // TODO: test purchase process with PlansDataSource object
         switch planService {

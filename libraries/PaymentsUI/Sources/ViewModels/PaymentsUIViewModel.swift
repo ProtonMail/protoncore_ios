@@ -53,7 +53,7 @@ class PaymentsUIViewModel {
 
     private var servicePlan: ServicePlanDataServiceProtocol? {
         guard !isDynamicPlansEnabled, case .left(let servicePlan) = planService else {
-            assertionFailure("Non dynamic plans must use the ServicePlanDataServiceProtocol object")
+            assertionFailure("Dynamic plans can't use the ServicePlanDataServiceProtocol object")
             return nil
         }
         return servicePlan
@@ -304,6 +304,7 @@ class PaymentsUIViewModel {
 
     // MARK: Private methods - Update plans (current, update mode)
     
+    // static plans only
     private func fetchPlansToPresent(withCurrentPlan: Bool, backendFetch: Bool, completionHandler: ((Result<([[PlanPresentation]], FooterType), Error>) -> Void)? = nil) {
         if backendFetch {
             updateServicePlanDataService { result in
@@ -319,6 +320,7 @@ class PaymentsUIViewModel {
         }
     }
     
+    // static
     private func createPlanPresentations(withCurrentPlan: Bool, completionHandler: ((Result<([[PlanPresentation]], FooterType), Error>) -> Void)? = nil) {
         guard let servicePlan else {
             completionHandler?(.failure(StoreKitManagerErrors.transactionFailedByUnknownReason))
@@ -437,6 +439,7 @@ class PaymentsUIViewModel {
         }
     }
 
+    // static
     // swiftlint:disable function_parameter_count
     private func createPlan(details baseDetails: Plan,
                             isSelectable: Bool,
@@ -474,6 +477,7 @@ class PaymentsUIViewModel {
                                            price: price)
     }
     
+    // static
     private func updateServicePlans(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
         guard let servicePlan else {
             failure(StoreKitManagerErrors.transactionFailedByUnknownReason)

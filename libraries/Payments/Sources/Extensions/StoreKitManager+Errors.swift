@@ -29,8 +29,6 @@ public enum StoreKitManagerErrors: LocalizedError {
     case alreadyPurchasedPlanDoesNotMatchBackend
     case noActiveUsername
     case transactionFailedByUnknownReason
-    @available(*, deprecated, message: "Please use noNewSubscriptionInSuccessfulResponse")
-    case noNewSubscriptionInSuccessfullResponse
     case noNewSubscriptionInSuccessfulResponse
     case wrongTokenStatus(PaymentToken.Status)
     case notAllowed
@@ -61,7 +59,7 @@ public enum StoreKitManagerErrors: LocalizedError {
         case .alreadyPurchasedPlanDoesNotMatchBackend: return PSTranslation._error_backend_mismatch.l10n
         case .noActiveUsername: return PSTranslation._error_no_active_username_in_user_data_service.l10n
         case .transactionFailedByUnknownReason: return PSTranslation._error_transaction_failed_by_unknown_reason.l10n
-        case .noNewSubscriptionInSuccessfullResponse, .noNewSubscriptionInSuccessfulResponse: return PSTranslation._error_no_new_subscription_in_response.l10n
+        case .noNewSubscriptionInSuccessfulResponse: return PSTranslation._error_no_new_subscription_in_response.l10n
         case .appIsLocked: return PSTranslation._error_unlock_to_proceed_with_iap.l10n
         case .pleaseSignIn: return PSTranslation._error_please_sign_in_iap.l10n
         case .wrongTokenStatus: return PSTranslation._error_wrong_token_status.l10n
@@ -81,10 +79,7 @@ extension StoreKitManagerErrors: Equatable {
             (.alreadyPurchasedPlanDoesNotMatchBackend, .alreadyPurchasedPlanDoesNotMatchBackend),
             (.noActiveUsername, .noActiveUsername),
             (.transactionFailedByUnknownReason, .transactionFailedByUnknownReason),
-            (.noNewSubscriptionInSuccessfullResponse, .noNewSubscriptionInSuccessfullResponse),
             (.noNewSubscriptionInSuccessfulResponse, .noNewSubscriptionInSuccessfulResponse),
-            (.noNewSubscriptionInSuccessfullResponse, .noNewSubscriptionInSuccessfulResponse),
-            (.noNewSubscriptionInSuccessfulResponse, .noNewSubscriptionInSuccessfullResponse),
             (.notAllowed, .notAllowed),
             (.appIsLocked, .appIsLocked),
             (.pleaseSignIn, .pleaseSignIn):

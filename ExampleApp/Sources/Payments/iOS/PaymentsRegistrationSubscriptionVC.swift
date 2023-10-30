@@ -131,7 +131,6 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
     }
     
     private func updatePlans() {
-        // TODO: test purchase process with PlansDataSource object
         switch payments.planService {
         case .left(let planService):
             planService.updateServicePlans { [weak self] in
@@ -165,7 +164,6 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
     }
     
     private func checkIfIsPurchasable(accountPlan: InAppPurchasePlan) -> Bool? {
-        // TODO: test purchase process with PlansDataSource object
         switch payments.planService {
         case .left(let planService):
             return planService.detailsOfPlanCorrespondingToIAP(accountPlan)?.isPurchasable
@@ -282,7 +280,6 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
             switch result {
             case .success(let user):
                 self.userInfo = user
-                // TODO: test purchase process with PlansDataSource object
                 switch payments.planService {
                 case .left(let planService):
                     planService.updateServicePlans { [unowned self] in
@@ -334,7 +331,6 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
                 self.statusAfterSignLabel.text = "Subscription status: Success"
                 PMLog.debug("Subscription Success")
                 self.loginButton.isEnabled = false
-                // TODO: test purchase process with PlansDataSource object
                 switch payments.planService {
                 case .left(let planService):
                     let planNames = planService.currentSubscription?.planDetails?

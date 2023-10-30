@@ -35,6 +35,7 @@ public enum PaymentsUIResultReason {
     case open(vc: PaymentsUIViewController, opened: Bool)
     case close
     case purchasedPlan(accountPlan: InAppPurchasePlan)
+    @available(*, deprecated, message: "Please stop using `toppedUpCredits`. We no longer credit accounts")
     case toppedUpCredits
     case planPurchaseProcessingInProgress(accountPlan: InAppPurchasePlan)
     case purchaseError(error: Error)
