@@ -363,9 +363,13 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
             }
         } catch let error where error.isPaymentAmountMismatchOrUnavailablePlanError {
             PMLog.debug("StoreKit: amount mismatch")
-            try recoverByToppingUpCredits(
-                plan: plan, token: token, transaction: transaction, retryOnError: retryOnError, completion: completion
-            )
+            if FeatureFactory.shared.isEnabled(.dynamicPlans) {
+                try retryOnError()
+            } else {
+                try recoverByToppingUpCredits(
+                    plan: plan, token: token, transaction: transaction, retryOnError: retryOnError, completion: completion
+                )
+            }
         } catch {
             PMLog.debug("StoreKit: Buy plan failed: \(error.userFacingMessageInPayments)")
             try retryOnError()

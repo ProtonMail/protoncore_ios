@@ -552,7 +552,6 @@ class PaymentsUIViewModel {
             switch result {
             case .finished(let paymentSucceeded):
                 guard paymentSucceeded == .resolvingIAPToCredits ||
-                        paymentSucceeded == .resolvingIAPToCreditsCausedByError ||
                         paymentSucceeded == .resolvingIAPToSubscription else { return }
                 // refresh plans
                 if self?.isDynamicPlansEnabled == true {
