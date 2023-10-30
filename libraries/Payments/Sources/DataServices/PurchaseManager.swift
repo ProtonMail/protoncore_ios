@@ -218,7 +218,8 @@ final class PurchaseManager: PurchaseManagerProtocol {
         self.storeKitManager.purchaseProduct(plan: plan, amountDue: amountDue) { result in
             if case .cancelled = result {
                 finishCallback(.purchaseCancelled)
-            } else if case .resolvingIAPToCredits = result {
+            } else if case .resolvingIAPToCredits = result,
+                      !FeatureFactory.shared.isEnabled(.dynamicPlans) {
                 finishCallback(.toppedUpCredits)
             } else if case .resolvingIAPToCreditsCausedByError = result {
                 finishCallback(.toppedUpCredits)

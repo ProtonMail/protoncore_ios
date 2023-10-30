@@ -260,7 +260,9 @@ extension ServicePlanDataService {
         guard let subscription = currentSubscription else {
             return false
         }
+        
         guard !FeatureFactory.shared.isEnabled(.dynamicPlans) else {
+            assertionFailure("You shouldn't be using plan data services with Dynamic Plans")
             return false
         }
         // Special coupon that will extend subscription

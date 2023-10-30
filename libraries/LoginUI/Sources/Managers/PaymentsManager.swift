@@ -112,7 +112,6 @@ class PaymentsManager {
             case .close:
                 break
             case .toppedUpCredits:
-                // TODO: some popup?
                 completionHandler(.success(()))
             case .planPurchaseProcessingInProgress:
                 break
@@ -124,7 +123,6 @@ class PaymentsManager {
                               completionHandler: @escaping (Result<(InAppPurchasePlan?), Error>) -> Void) {
         self.loginData = loginData
         if selectedPlan != nil {
-            // TODO: test purchase process with PlansDataSource object
             switch payments.planService {
             case .left(let planService):
                 planService.updateCurrentSubscription { [weak self] in
@@ -179,7 +177,6 @@ class PaymentsManager {
     func planTitle(plan: InAppPurchasePlan?) -> String? {
         guard let plan else { return nil }
 
-        // TODO: test purchase process with PlansDataSource object
         switch self.payments.planService {
         case .left(let planService):
             return planService.detailsOfPlanCorrespondingToIAP(plan)?.titleDescription

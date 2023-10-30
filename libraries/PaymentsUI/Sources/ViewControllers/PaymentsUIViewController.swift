@@ -248,6 +248,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     
     @IBAction func onExtendSubscriptionButtonTap(_ sender: ProtonButton) {
         guard !FeatureFactory.shared.isEnabled(.dynamicPlans) else {
+            assertionFailure("Auto-renewing subscriptions (but governed with the Dynamic Plans FF) are not extensible")
             return
         }
         extendSubscriptionButton.isSelected = true
