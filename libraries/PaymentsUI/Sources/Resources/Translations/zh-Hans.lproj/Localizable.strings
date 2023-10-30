@@ -87,7 +87,7 @@
 
 "Secure Core servers" = "安全的核心服务器";
 
-"TOR over VPN" = "Tor + VPN";
+"TOR over VPN" = "通过 VPN 使用 Tor";
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
@@ -131,4 +131,4 @@
 
 "Pay every two years" = "每两年付费";
 
-"Free" = "Free";
+"Free" = "免费";
