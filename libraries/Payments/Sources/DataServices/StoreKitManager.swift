@@ -206,7 +206,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
                 }
             case .right:
                 // Dynamic plans don't allow for extension
-                break;
+                break
             }
             return .existingUserNewSubscription
         }
