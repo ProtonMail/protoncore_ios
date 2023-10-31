@@ -21,6 +21,7 @@
 
 import Foundation
 import ProtonCoreDataModel
+import ProtonCoreFeatureSwitch
 import ProtonCoreLog
 import ProtonCoreServices
 
@@ -257,6 +258,11 @@ extension ServicePlanDataService {
     
     func willRenewAutomatically(plan: InAppPurchasePlan) -> Bool {
         guard let subscription = currentSubscription else {
+            return false
+        }
+        
+        guard !FeatureFactory.shared.isEnabled(.dynamicPlans) else {
+            assertionFailure("You shouldn't be using plan data services with Dynamic Plans")
             return false
         }
         // Special coupon that will extend subscription

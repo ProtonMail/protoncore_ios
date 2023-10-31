@@ -359,13 +359,17 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
                 // Step 13. Finish the IAP transaction
                 finishWhenAuthenticated(transaction: transaction, result: .resolvingIAPToSubscription, completion: completion)
             } else {
-                throw StoreKitManager.Errors.noNewSubscriptionInSuccessfullResponse
+                throw StoreKitManager.Errors.noNewSubscriptionInSuccessfulResponse
             }
-        } catch let error where error.isPaymentAmmountMismatchOrUnavailablePlanError {
+        } catch let error where error.isPaymentAmountMismatchOrUnavailablePlanError {
             PMLog.debug("StoreKit: amount mismatch")
-            try recoverByToppingUpCredits(
-                plan: plan, token: token, transaction: transaction, retryOnError: retryOnError, completion: completion
-            )
+            if FeatureFactory.shared.isEnabled(.dynamicPlans) {
+                try retryOnError()
+            } else {
+                try recoverByToppingUpCredits(
+                    plan: plan, token: token, transaction: transaction, retryOnError: retryOnError, completion: completion
+                )
+            }
         } catch {
             PMLog.debug("StoreKit: Buy plan failed: \(error.userFacingMessageInPayments)")
             try retryOnError()

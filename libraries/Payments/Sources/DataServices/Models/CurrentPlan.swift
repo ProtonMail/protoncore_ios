@@ -35,6 +35,7 @@ public struct CurrentPlan: Decodable, Equatable {
         public var currency: String?
         public var amount: Int?
         public var periodEnd: Int?
+        /// whether this subscription is auto-renewable
         public var renew: Int?
         public var external: PaymentMethod?
         public var entitlements: [Entitlement]

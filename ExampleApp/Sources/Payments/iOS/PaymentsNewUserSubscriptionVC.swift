@@ -190,7 +190,6 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
                             }
                             self.loginStatusLabel.text = "Login status: OK"
                             self.clearData()
-                            // TODO: test purchase process with PlansDataSource object
                             switch payments.planService {
                             case .left(let planService):
                                 planService.updateServicePlans { [weak self] in
@@ -255,7 +254,6 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
     }
     
     private func checkIfIsPurchasable(accountPlan: InAppPurchasePlan) -> Bool? {
-        // TODO: test purchase process with PlansDataSource object
         switch payments.planService {
         case .left(let planService):
             return planService.detailsOfPlanCorrespondingToIAP(accountPlan)?.isPurchasable
@@ -305,7 +303,6 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
     }
     
     private func showSubscriptionData() {
-        // TODO: test purchase process with PlansDataSource object
         var plansStr = ""
         var addonsDispStr = ""
         var cycle = "---"
@@ -363,7 +360,6 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
         if self.isValid || self.forceSubscriptionButton.isOn {
             var title = "Purchase subscription"
             if self.isValid {
-                // TODO: test purchase process with PlansDataSource object
                 switch payments.planService {
                 case .left(let planService):
                     if planService.currentSubscription?.planDetails != nil {

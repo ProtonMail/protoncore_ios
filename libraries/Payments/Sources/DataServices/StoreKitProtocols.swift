@@ -45,7 +45,9 @@ public enum PaymentSucceeded: Equatable {
     case withPurchaseAlreadyProcessed
     case withoutExchangingToken(token: PaymentToken)
     case resolvingIAPToSubscription
+    @available(*, deprecated, message: "Please stop using `resolvingIAPToCredits`. We no longer credit accounts")
     case resolvingIAPToCredits
+    @available(*, deprecated, message: "Please stop using `resolvingIAPToCreditsCausedByError`. We no longer credit accounts")
     case resolvingIAPToCreditsCausedByError
 }
 
@@ -64,6 +66,7 @@ public protocol StoreKitManagerProtocol: NSObjectProtocol {
                          deferredCompletion: FinishCallback?)
     func retryProcessingAllPendingTransactions(finishHandler: FinishCallback?)
     func updateAvailableProductsList(completion: @escaping (Error?) -> Void)
+    /// Has transactions pending to process which are not .failed
     func hasUnfinishedPurchase() -> Bool
     func hasIAPInProgress() -> Bool
     func readReceipt() throws -> String
@@ -135,6 +138,7 @@ protocol PaymentQueueProtocol {
 
 enum ProcessingType {
     case existingUserNewSubscription
+    @available(*, deprecated, message: "Adding credits is no longer supported on mobile. Please enable Auto-renewable Subscriptions")
     case existingUserAddCredits
     case registration
 }
