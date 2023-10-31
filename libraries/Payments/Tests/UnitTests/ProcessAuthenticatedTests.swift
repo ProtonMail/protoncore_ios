@@ -288,7 +288,8 @@ final class ProcessAuthenticatedTests: XCTestCase {
         var returnedResult: ProcessCompletionResult?
         queue.async {
             try! out.process(transaction: transaction, plan: plan) { 
-                returnedResult = $0; expectation.fulfill() }
+                returnedResult = $0; expectation.fulfill() 
+            }
         }
 
         // then
@@ -887,7 +888,6 @@ final class ProcessAuthenticatedTests: XCTestCase {
             guard case .errored(.noNewSubscriptionInSuccessfulResponse) = processCompletionResult else { XCTFail(); return }
         }
     }
-
     
     func testBuyPlanSubscriptionAddCreditsOnPlanUnavailableAlreadyRegistered() {
         // Test scenario:

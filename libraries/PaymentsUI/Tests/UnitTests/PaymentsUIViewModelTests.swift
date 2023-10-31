@@ -1301,7 +1301,6 @@ final class PaymentsUIViewModelTests: XCTestCase {
         }
     }
 
-
     func testCurrentPlan_CurrentMode_FetchCurrentPlans_DontExtendSubscription_FromWeb_withDynamicPlans() async {
         await withFeatureSwitches([.dynamicPlans]) {
 
@@ -1312,7 +1311,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
             servicePlan.paymentMethodsStub.fixture = [PaymentMethod(type: "card")]
             storeKitManager.inAppPurchaseIdentifiersStub.fixture = [PresentedPriceTestingHelper.basicIAP, PresentedPriceTestingHelper.plusIAP]
             servicePlan.availablePlansDetailsStub.fixture = [PresentedPriceTestingHelper.plusPlan, PresentedPriceTestingHelper.basicPlan]
-            let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager,                                           planService: .right(plansDataSource),
+            let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .right(plansDataSource),
                                           shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
 
             // WHEN: we compute plan presentation
