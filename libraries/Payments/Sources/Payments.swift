@@ -106,7 +106,7 @@ public final class Payments {
         self.reportBugAlertHandler = reportBugAlertHandler
         self.apiService = apiService
         self.localStorage = localStorage
-        self.canExtendSubscription = canExtendSubscription
+        self.canExtendSubscription = canExtendSubscription && !FeatureFactory.shared.isEnabled(.dynamicPlans)
         paymentsAlertManager = PaymentsAlertManager(alertManager: alertManager ?? AlertManager())
         paymentsApi = PaymentsApiImplementation()
     }

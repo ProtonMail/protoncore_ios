@@ -34,7 +34,7 @@ import ProtonCoreNetworking
 final class ProcessUnauthenticatedTests: XCTestCase {
 
     let timeout = 1.0
-    
+
     let queue = DispatchQueue.global(qos: .userInitiated)
 
     var apiService: APIServiceMock!
@@ -710,7 +710,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(apiService.requestJSONStub.callCounter, 2)
     }
-    
+
     func testPurchaseContinuationWhenApiMightBeBlocked() {
         // Test scenario:
         // 1. Continue transaction after signup
@@ -745,48 +745,50 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         waitForExpectations(timeout: timeout)
         XCTAssertEqual(apiService.requestJSONStub.callCounter, 2)
     }
-    
+
     func testPurchaseContinuationWhenSubscriptionFailsAmountMismatchCreditsAppliedSuccess() {
         // Test scenario:
         // 1. Continue transaction after signup
         // 2. Fail subscription purchase with amount mismatch 22101
         // Expected: Success
 
-        // given
-        let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
-        let out = ProcessUnauthenticated(dependencies: processDependencies)
-        let expectation = self.expectation(description: "Completion block called")
-        paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
-            if path.contains("/tokens/") {
-                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
-            } else if path.contains("/subscription") {
-                completion(nil, .success(["Code": 22101]))
-            } else if path.contains("/credit") {
-                completion(nil, .success(["Code": 1000]))
-            } else {
-                XCTFail(); completion(nil, .success([:]))
+        withFeatureSwitches([]) {
+            // given
+            let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
+            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
+            let out = ProcessUnauthenticated(dependencies: processDependencies)
+            let expectation = self.expectation(description: "Completion block called")
+            paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
+            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+                if path.contains("/tokens/") {
+                    completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
+                } else if path.contains("/subscription") {
+                    completion(nil, .success(["Code": 22101]))
+                } else if path.contains("/credit") {
+                    completion(nil, .success(["Code": 1000]))
+                } else {
+                    XCTFail(); completion(nil, .success([:]))
+                }
             }
-        }
-        var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+            var returnedTransaction: SKPaymentTransaction?
+            processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
 
-        // when
-        var returnedResult: ProcessCompletionResult?
-        queue.async {
-            try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
-        }
+            // when
+            var returnedResult: ProcessCompletionResult?
+            queue.async {
+                try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+            }
 
-        // then
-        waitForExpectations(timeout: timeout)
-        XCTAssertEqual(apiService.requestJSONStub.callCounter, 3)
-        XCTAssertEqual(returnedTransaction, transaction)
-        XCTAssertTrue(processDependencies.removeTransactionsBeforeSignupStub.wasCalledExactlyOnce)
-        XCTAssertEqual(processDependencies.removeTransactionsBeforeSignupStub.lastArguments?.a1, transaction)
-        guard case .finished(.resolvingIAPToCreditsCausedByError) = returnedResult else { XCTFail(); return }
+            // then
+            waitForExpectations(timeout: timeout)
+            XCTAssertEqual(apiService.requestJSONStub.callCounter, 3)
+            XCTAssertEqual(returnedTransaction, transaction)
+            XCTAssertTrue(processDependencies.removeTransactionsBeforeSignupStub.wasCalledExactlyOnce)
+            XCTAssertEqual(processDependencies.removeTransactionsBeforeSignupStub.lastArguments?.a1, transaction)
+            guard case .finished(.resolvingIAPToCreditsCausedByError) = returnedResult else { XCTFail(); return }
+        }
     }
-    
+
     func testPurchaseContinuationWhenSubscriptionFailsAmountMismatchCreditsAppliedAlreadyPurchased() {
         // Test scenario:
         // 1. Continue transaction after signup
@@ -794,41 +796,44 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         // 3. Fail credits with already purchased 22916
         // Expected: Success
 
-        // given
-        let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
-        let out = ProcessUnauthenticated(dependencies: processDependencies)
-        let expectation = self.expectation(description: "Completion block called")
-        paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
-            if path.contains("/tokens/") {
-                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
-            } else if path.contains("/subscription") {
-                completion(nil, .success(["Code": 22101]))
-            } else if path.contains("/credit") {
-                completion(nil, .success(["Code": 22916]))
-            } else {
-                XCTFail(); completion(nil, .success([:]))
+        withFeatureSwitches([]) {
+            // given
+            let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
+            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
+            let out = ProcessUnauthenticated(dependencies: processDependencies)
+            let expectation = self.expectation(description: "Completion block called")
+            paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
+            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+                if path.contains("/tokens/") {
+                    completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
+                } else if path.contains("/subscription") {
+                    completion(nil, .success(["Code": 22101]))
+                } else if path.contains("/credit") {
+                    completion(nil, .success(["Code": 22916]))
+                } else {
+                    XCTFail(); completion(nil, .success([:]))
+                }
             }
-        }
-        var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+            var returnedTransaction: SKPaymentTransaction?
+            processDependencies.finishTransactionStub.fixture = {
+                returnedTransaction = $0; $1?() }
 
-        // when
-        var returnedResult: ProcessCompletionResult?
-        queue.async {
-            try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
-        }
+            // when
+            var returnedResult: ProcessCompletionResult?
+            queue.async {
+                try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+            }
 
-        // then
-        waitForExpectations(timeout: timeout)
-        XCTAssertEqual(apiService.requestJSONStub.callCounter, 3)
-        XCTAssertEqual(returnedTransaction, transaction)
-        XCTAssertTrue(processDependencies.removeTransactionsBeforeSignupStub.wasCalledExactlyOnce)
-        XCTAssertEqual(processDependencies.removeTransactionsBeforeSignupStub.lastArguments?.a1, transaction)
-        guard case .finished(.withPurchaseAlreadyProcessed) = returnedResult else { XCTFail(); return }
+            // then
+            waitForExpectations(timeout: timeout)
+            XCTAssertEqual(apiService.requestJSONStub.callCounter, 3)
+            XCTAssertEqual(returnedTransaction, transaction)
+            XCTAssertTrue(processDependencies.removeTransactionsBeforeSignupStub.wasCalledExactlyOnce)
+            XCTAssertEqual(processDependencies.removeTransactionsBeforeSignupStub.lastArguments?.a1, transaction)
+            guard case .finished(.withPurchaseAlreadyProcessed) = returnedResult else { XCTFail(); return }
+        }
     }
-    
+
     func testPurchaseContinuationWhenSubscriptionFailsAmountMismatchCreditsAppliedError() {
         // Test scenario:
         // 1. Continue transaction after signup
@@ -836,79 +841,125 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         // 2. Fail credits call with random error
         // Expected: Retry
 
-        // given
-        let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
-        let out = ProcessUnauthenticated(dependencies: processDependencies)
-        let expectation = self.expectation(description: "Completion block called")
-        paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
-            if path.contains("/tokens/") {
-                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
-            } else if path.contains("/subscription") {
-                completion(nil, .success(["Code": 22101]))
-            } else if path.contains("/credit") {
-                completion(nil, .success(["Code": 424242]))
-            } else {
-                XCTFail(); completion(nil, .success([:]))
+        withFeatureSwitches([]) {
+            // given
+            let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
+            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
+            let out = ProcessUnauthenticated(dependencies: processDependencies)
+            let expectation = self.expectation(description: "Completion block called")
+            paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
+            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+                if path.contains("/tokens/") {
+                    completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
+                } else if path.contains("/subscription") {
+                    completion(nil, .success(["Code": 22101]))
+                } else if path.contains("/credit") {
+                    completion(nil, .success(["Code": 424242]))
+                } else {
+                    XCTFail(); completion(nil, .success([:]))
+                }
             }
-        }
 
-        alertManagerMock.showAlertStub.bodyIs { _, _, _ in
-            expectation.fulfill()
-        }
+            alertManagerMock.showAlertStub.bodyIs { _, _, _ in
+                expectation.fulfill()
+            }
 
-        // when
-        queue.async {
-            try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { _ in XCTFail() }
-        }
+            // when
+            queue.async {
+                try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { _ in XCTFail() }
+            }
 
-        // then
-        waitForExpectations(timeout: timeout)
-        XCTAssertEqual(apiService.requestJSONStub.callCounter, 3)
+            // then
+            waitForExpectations(timeout: timeout)
+            XCTAssertEqual(apiService.requestJSONStub.callCounter, 3)
+        }
     }
-    
+
+    func testPurchaseContinuationWhenSubscriptionFailsAmountMismatchCreditsAppliedErrorWithDynamicPlans() {
+        // Test scenario:
+        // 1. Continue transaction after signup
+        // 2. Fail subscription purchase with amount mismatch 22101
+        // 2. Fail credits call with random error
+        // Expected: Retry
+
+        withFeatureSwitches([.dynamicPlans]) {
+            // given
+            let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
+            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
+            let out = ProcessUnauthenticated(dependencies: processDependencies)
+            let expectation = self.expectation(description: "Completion block called")
+            paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
+            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+                if path.contains("/tokens/") {
+                    completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
+                } else if path.contains("/subscription") {
+                    completion(nil, .success(["Code": 22101]))
+                } else if path.contains("/credit") {
+                    completion(nil, .success(["Code": 424242]))
+                } else {
+                    XCTFail(); completion(nil, .success([:]))
+                }
+            }
+
+            alertManagerMock.showAlertStub.bodyIs { _, _, _ in
+                expectation.fulfill()
+            }
+
+            // when
+            queue.async {
+                try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { _ in XCTFail() }
+            }
+
+            // then
+            waitForExpectations(timeout: timeout)
+            XCTAssertEqual(apiService.requestJSONStub.callCounter, 2)
+        }
+    }
+
     func testPurchaseContinuationWhenSubscriptionFailsPlanUnavailableCreditsAppliedSuccess() {
         // Test scenario:
         // 1. Continue transaction after signup
         // 2. Fail subscription purchase with plan unavailable 2001
         // Expected: Success
-
-        // given
-        let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
-        let out = ProcessUnauthenticated(dependencies: processDependencies)
-        let expectation = self.expectation(description: "Completion block called")
-        paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
-            if path.contains("/tokens/") {
-                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
-            } else if path.contains("/subscription") {
-                completion(nil, .success(["Code": 2001]))
-            } else if path.contains("/credit") {
-                completion(nil, .success(["Code": 1000]))
-            } else {
-                XCTFail(); completion(nil, .success([:]))
+        
+        withFeatureSwitches([]) {
+            
+            // given
+            let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
+            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
+            let out = ProcessUnauthenticated(dependencies: processDependencies)
+            let expectation = self.expectation(description: "Completion block called")
+            paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
+            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+                if path.contains("/tokens/") {
+                    completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
+                } else if path.contains("/subscription") {
+                    completion(nil, .success(["Code": 2001]))
+                } else if path.contains("/credit") {
+                    completion(nil, .success(["Code": 1000]))
+                } else {
+                    XCTFail(); completion(nil, .success([:]))
+                }
             }
+            var returnedTransaction: SKPaymentTransaction?
+            processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+            
+            // when
+            var returnedResult: ProcessCompletionResult?
+            queue.async {
+                try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
+            }
+            
+            // then
+            waitForExpectations(timeout: timeout)
+            XCTAssertEqual(apiService.requestJSONStub.callCounter, 3)
+            XCTAssertEqual(returnedTransaction, transaction)
+            XCTAssertTrue(processDependencies.removeTransactionsBeforeSignupStub.wasCalledExactlyOnce)
+            XCTAssertEqual(processDependencies.removeTransactionsBeforeSignupStub.lastArguments?.a1, transaction)
+            guard case .finished(.resolvingIAPToCreditsCausedByError) = returnedResult else { XCTFail(); return }
         }
-        var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
-
-        // when
-        var returnedResult: ProcessCompletionResult?
-        queue.async {
-            try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
-        }
-
-        // then
-        waitForExpectations(timeout: timeout)
-        XCTAssertEqual(apiService.requestJSONStub.callCounter, 3)
-        XCTAssertEqual(returnedTransaction, transaction)
-        XCTAssertTrue(processDependencies.removeTransactionsBeforeSignupStub.wasCalledExactlyOnce)
-        XCTAssertEqual(processDependencies.removeTransactionsBeforeSignupStub.lastArguments?.a1, transaction)
-        guard case .finished(.resolvingIAPToCreditsCausedByError) = returnedResult else { XCTFail(); return }
     }
-    
+
     func testPurchaseContinuationWhenSubscriptionFailsPlanUnavailableCreditsAppliedAlreadyPurchased() {
         // Test scenario:
         // 1. Continue transaction after signup
@@ -957,40 +1008,42 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         // 2. Fail subscription purchase with plan unavailable 2001
         // 2. Fail credits with random error
         // Expected: Retry
+        withFeatureSwitches([]) {
 
-        // given
-        let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
-        let out = ProcessUnauthenticated(dependencies: processDependencies)
-        let expectation = self.expectation(description: "Completion block called")
-        paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
-            if path.contains("/tokens/") {
-                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
-            } else if path.contains("/subscription") {
-                completion(nil, .success(["Code": 2001]))
-            } else if path.contains("/credit") {
-                completion(nil, .success(["Code": 424242]))
-            } else {
-                XCTFail(); completion(nil, .success([:]))
+            // given
+            let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
+            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
+            let out = ProcessUnauthenticated(dependencies: processDependencies)
+            let expectation = self.expectation(description: "Completion block called")
+            paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
+            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+                if path.contains("/tokens/") {
+                    completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
+                } else if path.contains("/subscription") {
+                    completion(nil, .success(["Code": 2001]))
+                } else if path.contains("/credit") {
+                    completion(nil, .success(["Code": 424242]))
+                } else {
+                    XCTFail(); completion(nil, .success([:]))
+                }
             }
-        }
-        alertManagerMock.showAlertStub.bodyIs { _, _, _ in
-            expectation.fulfill()
-        }
+            alertManagerMock.showAlertStub.bodyIs { _, _, _ in
+                expectation.fulfill()
+            }
 
-        // when
-        queue.async {
-            try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { _ in XCTFail() }
-        }
+            // when
+            queue.async {
+                try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { _ in XCTFail() }
+            }
 
-        // then
-        waitForExpectations(timeout: timeout)
-        XCTAssertEqual(apiService.requestJSONStub.callCounter, 3)
+            // then
+            waitForExpectations(timeout: timeout)
+            XCTAssertEqual(apiService.requestJSONStub.callCounter, 3)
+        }
     }
 
     func testPurchaseContinuationWithoutStoredTokenFailure() {
-        withFeatureSwitches([.subscriptions]){ // remove enclosure with CP-6369
+        withFeatureSwitches([.dynamicPlans]){ // remove enclosure with CP-6369
             // Test scenario:
             // 1. Continue transaction after signup without stored token
             // 2. Fail token request
@@ -1024,7 +1077,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
     }
 
     func testPurchaseContinuationWithoutStoredTokenSuccess() {
-        withFeatureSwitches([.subscriptions]){ // remove enclosure with CP-6369
+        withFeatureSwitches([.dynamicPlans]){ // remove enclosure with CP-6369
             // Test scenario:
             // 1. Continue transaction after signup without stored token
             // Expected: Success

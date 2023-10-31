@@ -247,6 +247,10 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     }
     
     @IBAction func onExtendSubscriptionButtonTap(_ sender: ProtonButton) {
+        guard !FeatureFactory.shared.isEnabled(.dynamicPlans) else {
+            assertionFailure("Auto-renewing subscriptions (but governed with the Dynamic Plans FF) are not extensible")
+            return
+        }
         extendSubscriptionButton.isSelected = true
         guard case .withExtendSubscriptionButton(let plan) = viewModel?.footerType else {
             extendSubscriptionButton.isSelected = false
@@ -352,7 +356,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
             tableFooterTextLabel.text = PUITranslations.plan_footer_desc_purchased.l10n
         case .withExtendSubscriptionButton:
             tableFooterTextLabel.text = PUITranslations.plan_footer_desc_purchased.l10n
-            hasExtendSubscriptionButton = true
+            hasExtendSubscriptionButton = !FeatureFactory.shared.isEnabled(.dynamicPlans)
         case .none:
             tableFooterTextLabel.text = PUITranslations.plan_footer_desc_purchased.l10n
         case .disabled:
