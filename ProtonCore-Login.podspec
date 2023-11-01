@@ -30,6 +30,7 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-Observability', $version
     s.dependency "ProtonCore-Crypto", $version
     s.dependency "ProtonCore-CryptoGoInterface", $version
+    s.dependency "ProtonCore-FeatureFlags", $version
     s.dependency "ProtonCore-Authentication", $version
     s.dependency "ProtonCore-Authentication-KeyGeneration", $version
     s.source_files = "libraries/Login/Sources/*.swift", "libraries/Login/Sources/**/*.swift"
