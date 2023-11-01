@@ -423,6 +423,7 @@ PODS:
     - ProtonCore-UIFoundations (= 14.0.0)
   - ProtonCore-Payments (14.0.0):
     - ProtonCore-Authentication (= 14.0.0)
+    - ProtonCore-FeatureFlags (= 14.0.0)
     - ProtonCore-Foundations (= 14.0.0)
     - ProtonCore-Hash (= 14.0.0)
     - ProtonCore-Log (= 14.0.0)
@@ -434,6 +435,7 @@ PODS:
     - ProtonCore-Challenge (= 14.0.0)
     - ProtonCore-DataModel (= 14.0.0)
     - ProtonCore-Doh (= 14.0.0)
+    - ProtonCore-FeatureFlags (= 14.0.0)
     - ProtonCore-Foundations (= 14.0.0)
     - ProtonCore-Hash (= 14.0.0)
     - ProtonCore-Log (= 14.0.0)
@@ -922,7 +924,7 @@ SPEC CHECKSUMS:
   ProtonCore-DataModel: 0c9b32fe0a4a75bb50a716887674bd14f7dc86a1
   ProtonCore-Doh: fff6fe3cd7fa74d53418ab2c22ed9ed3b2e73aee
   ProtonCore-Environment: 2608eb3c93ab9fed5a0605ede360038934508390
-  ProtonCore-FeatureFlags: d4c539c2b367f5dc1907945c342eb930bd11ae53
+  ProtonCore-FeatureFlags: 30233ac80e268c5c979f468e3c36cd36098a2699
   ProtonCore-Features: 035331215c0ec994ec35b28f09862757a6265c85
   ProtonCore-FeatureSwitch: 9a2a70a4ca61a7b72fb8b024a4ae772ecf98ba3a
   ProtonCore-ForceUpgrade: 03241e8043ef9f49802e7ee692638299e62c6aa6
@@ -940,7 +942,7 @@ SPEC CHECKSUMS:
   ProtonCore-ObfuscatedConstants: 197a161f1c80cbc08dc5d9b2493c4955f0a5d1d6
   ProtonCore-Observability: 795aae0b94e4862b1ed27bd55dc02cedbee04645
   ProtonCore-PasswordRequest: 3fa75704064618253d121d714c570f314327c1ed
-  ProtonCore-Payments: 1ffc905d63fa31a964a0073766fb85d24c364d7a
+  ProtonCore-Payments: f687018a6ce903ec0a0942acc7ab9e5ecac272b3
   ProtonCore-PaymentsUI: ef786b97f0cf544f7249477443cad290d7b4590c
   ProtonCore-PushNotifications: fac16b1e96311ac46b321514afe9f7bc612a7b65
   ProtonCore-QuarkCommands: a2aa28386452acbab02821d6649701747d8d3b67
@@ -962,4 +964,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: a38241ee243cf2e4d4a4711b632e7cdebcc1fe1c
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.14.2
