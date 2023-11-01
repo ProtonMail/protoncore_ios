@@ -20,7 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
-import ProtonCoreFeatureSwitch
+import ProtonCoreFeatureFlags
 import ProtonCoreServices
 import ProtonCoreObservability
 import ProtonCoreUtilities
@@ -219,10 +219,10 @@ final class PurchaseManager: PurchaseManagerProtocol {
             if case .cancelled = result {
                 finishCallback(.purchaseCancelled)
             } else if case .resolvingIAPToCredits = result,
-                      !FeatureFactory.shared.isEnabled(.dynamicPlans) {
+                      !FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
                 finishCallback(.toppedUpCredits)
             } else if case .resolvingIAPToCreditsCausedByError = result,
-                      !FeatureFactory.shared.isEnabled(.dynamicPlans) {
+                      !FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
                 finishCallback(.toppedUpCredits)
             } else {
                 finishCallback(.purchasedPlan(accountPlan: plan))

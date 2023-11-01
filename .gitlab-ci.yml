@@ -944,6 +944,11 @@ build_PasswordRequest_single_basic_variant:
     - fastlane build_PasswordRequest_single_basic_variant
   <<: *building_subspecs_lite
   
+build_FeatureFlags_single_basic_variant:
+  script:
+    - fastlane build_FeatureFlags_single_basic_variant
+  <<: *building_subspecs_lite
+  
 ### create pod build single variant place holder
 
 #
