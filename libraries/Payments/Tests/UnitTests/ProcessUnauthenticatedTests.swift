@@ -882,7 +882,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         // 2. Fail credits call with random error
         // Expected: Retry
 
-        withFeatureSwitches([.dynamicPlans]) {
+        withUnleashFeatureSwitches([.dynamicPlans]) {
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
             let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
@@ -1043,7 +1043,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
     }
 
     func testPurchaseContinuationWithoutStoredTokenFailure() {
-        withFeatureSwitches([.dynamicPlans]){ // remove enclosure with CP-6369
+        withUnleashFeatureSwitches([.dynamicPlans]){ // remove enclosure with CP-6369
             // Test scenario:
             // 1. Continue transaction after signup without stored token
             // 2. Fail token request
@@ -1077,7 +1077,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
     }
 
     func testPurchaseContinuationWithoutStoredTokenSuccess() {
-        withFeatureSwitches([.dynamicPlans]){ // remove enclosure with CP-6369
+        withUnleashFeatureSwitches([.dynamicPlans]){ // remove enclosure with CP-6369
             // Test scenario:
             // 1. Continue transaction after signup without stored token
             // Expected: Success

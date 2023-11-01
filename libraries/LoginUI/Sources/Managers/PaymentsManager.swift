@@ -23,7 +23,7 @@
 
 import UIKit
 import ProtonCoreDataModel
-import ProtonCoreFeatureSwitch
+import ProtonCoreFeatureFlags
 import ProtonCoreServices
 import ProtonCorePayments
 import ProtonCoreLogin
@@ -52,7 +52,7 @@ class PaymentsManager {
                                  reportBugAlertHandler: reportBugAlertHandler)
         storeExistingDelegate()
         payments.storeKitManager.delegate = self
-        if FeatureFactory.shared.isEnabled(.dynamicPlans) {
+        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             // In the dynamic plans, fetching available IAPs from StoreKit is done alongside fetching available plans
             self.payments.storeKitManager.subscribeToPaymentQueue()
         } else {
@@ -70,7 +70,7 @@ class PaymentsManager {
                              planShownHandler: (() -> Void)?,
                              completionHandler: @escaping (Result<(), Error>) -> Void) {
 
-        if FeatureFactory.shared.isEnabled(.dynamicPlans) {
+        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             // In the dynamic plans, fetching available IAPs from StoreKit is done alongside fetching available plans
             continuePaymentProcess(signupViewController: signupViewController,
                                    planShownHandler: planShownHandler,

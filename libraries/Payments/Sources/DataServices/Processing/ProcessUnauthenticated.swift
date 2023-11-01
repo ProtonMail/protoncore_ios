@@ -22,6 +22,7 @@
 import Foundation
 import StoreKit
 import ProtonCoreFeatureSwitch
+import ProtonCoreFeatureFlags
 import ProtonCoreLog
 import ProtonCoreObservability
 import ProtonCoreUtilities
@@ -363,7 +364,7 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
             }
         } catch let error where error.isPaymentAmountMismatchOrUnavailablePlanError {
             PMLog.debug("StoreKit: amount mismatch")
-            if FeatureFactory.shared.isEnabled(.dynamicPlans) {
+            if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
                 try retryOnError()
             } else {
                 try recoverByToppingUpCredits(

@@ -220,7 +220,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
     }
 
     func testPlansAreRefreshedWhenPaymentsUIViewControllerAppears() {
-        withFeatureSwitches([.dynamicPlans]) {
+        withUnleashFeatureSwitches([.dynamicPlans]) {
             let expectation = self.expectation(description: "API call called")
             
             let viewModel = PaymentsUIViewModelMock {
@@ -266,7 +266,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
     }
 
     func testPlansAreRefreshedWhenAppGoesToForeground() {
-        withFeatureSwitches([.dynamicPlans]) {
+        withUnleashFeatureSwitches([.dynamicPlans]) {
             let expectation = self.expectation(description: "API call called")
             
             let viewModel = PaymentsUIViewModelMock {

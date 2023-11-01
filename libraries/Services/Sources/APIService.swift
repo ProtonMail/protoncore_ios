@@ -374,8 +374,8 @@ public protocol AuthDelegate: AnyObject {
 public typealias AuthRefreshComplete = (_ auth: Credential?, _ hasError: AuthErrors?) -> Void
 
 public enum SessionAcquiringResult {
-    case sessionFetchedAndAvailable
-    case sessionAlreadyPresent
+    case sessionFetchedAndAvailable(AuthCredential)
+    case sessionAlreadyPresent(AuthCredential)
     case sessionUnavailableAndNotFetched
 }
 

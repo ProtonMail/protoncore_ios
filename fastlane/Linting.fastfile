@@ -448,6 +448,16 @@ lane :build_PasswordRequest_single_basic_variant do
   build_spec("PasswordRequest", "ios", no_test_podspecs)
 end
   
+lane :build_FeatureFlags_all_variants do
+  install_dependencies_from_gemfile
+  build_spec("FeatureFlags", "ios,macos", no_test_podspecs)
+end
+
+lane :build_FeatureFlags_single_basic_variant do
+  install_dependencies_from_gemfile
+  build_spec("FeatureFlags", "ios", no_test_podspecs)
+end
+  
 ### create pod add lane placeholder
 
 lane :build_all_subspecs_all_variants do
@@ -488,6 +498,7 @@ lane :build_all_subspecs_all_variants do
   build_VCard_all_variants
   # build_Observability_all_variants
   # build_MissingScopes_all_variants
+  # build_FeatureFlags_all_variants
   ### create pod all variant placeholder
 end
 
@@ -531,5 +542,6 @@ lane :build_all_subspecs_single_basic_variant do
   build_Observability_single_basic_variant
   build_MissingScopes_single_basic_variant
   build_PasswordRequest_single_basic_variant
+  build_FeatureFlags_single_basic_variant
   ### create pod single variant placeholder
 end

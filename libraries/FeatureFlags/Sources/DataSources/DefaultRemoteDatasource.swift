@@ -1,22 +1,24 @@
 //
-// DefaultRemoteDatasource.swift
-// Proton - Created on 29/09/2023.
-// Copyright (c) 2023 Proton Technologies AG
+//  DefaultRemoteDatasource.swift
+//  ProtonCore-FeatureFlags - Created on 29.09.23.
 //
-// This file is part of Proton.
+//  Copyright (c) 2023 Proton Technologies AG
 //
-// Proton Pass is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+//  This file is part of Proton Technologies AG and ProtonCore.
 //
-// Proton Pass is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+//  ProtonCore is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
 //
-// You should have received a copy of the GNU General Public License
-// along with Proton. If not, see https://www.gnu.org/licenses/.
+//  ProtonCore is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
+//
 
 import ProtonCoreNetworking
 import ProtonCoreServices

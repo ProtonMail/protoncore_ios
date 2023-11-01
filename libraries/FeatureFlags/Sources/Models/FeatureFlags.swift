@@ -1,5 +1,5 @@
 //
-//  DefaultRemoteDatasourceMock.swift
+//  FeatureFlags.swift
 //  ProtonCore-FeatureFlags - Created on 29.09.23.
 //
 //  Copyright (c) 2023 Proton Technologies AG
@@ -21,18 +21,27 @@
 //
 
 import Foundation
-@testable import ProtonCoreFeatureFlags
 
-public class DefaultRemoteDatasourceMock: RemoteFeatureFlagsProtocol {
-    public init() {}
+public struct FeatureFlags: Hashable, Codable, Sendable {
+    public let flags: [FeatureFlag]
 
-    public func getFlags() async throws -> [FeatureFlag] {
-        guard let url = Bundle.module.url(forResource: "flags", withExtension: "json"),
-              let data = try? Data(contentsOf: url, options: .mappedIfSafe),
-              let response = try? JSONDecoder().decode(FeatureFlagResponse.self, from: data)
-        else {
-            return []
-        }
-        return response.toggles
+    public init(flags: [FeatureFlag]) {
+        self.flags = flags
+    }
+
+    public static var `default`: FeatureFlags {
+        FeatureFlags(flags: [])
+    }
+    
+    public var isEmpty: Bool {
+        flags.isEmpty
+    }
+
+    public func isEnabled(for key: any FeatureFlagTypeProtocol) -> Bool {
+        flags.first { $0.name == key.rawValue }?.enabled ?? false
+    }
+
+    func getFlag(for key: any FeatureFlagTypeProtocol) -> FeatureFlag? {
+        flags.first { $0.name == key.rawValue }
     }
 }
