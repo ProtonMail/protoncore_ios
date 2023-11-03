@@ -49,4 +49,28 @@ final class InAppPurchasePlanTests: XCTestCase {
         XCTAssertNil(sut.offer)
         XCTAssertEqual(sut.period, "12")
     }
+
+    func test_init_with_autoRenewingAvailablePlanInstance() {
+        // Given
+        let instance = AvailablePlans.AvailablePlan.Instance(
+            cycle: 12,
+            description: "description",
+            periodEnd: 1,
+            price: [],
+            vendors: .init(
+                apple: .init(
+                    productID: "ioscore_core2023_12_usd_auto_renewing"
+                )
+            )
+        )
+
+        // When
+        sut = .init(availablePlanInstance: instance)
+
+        // Then
+        XCTAssertEqual(sut.storeKitProductId, "ioscore_core2023_12_usd_auto_renewing")
+        XCTAssertEqual(sut.protonName, "core2023")
+        XCTAssertNil(sut.offer)
+        XCTAssertEqual(sut.period, "12")
+    }
 }
