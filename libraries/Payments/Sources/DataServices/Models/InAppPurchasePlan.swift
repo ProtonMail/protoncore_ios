@@ -67,10 +67,10 @@ public struct InAppPurchasePlan: Equatable, Hashable {
 
     private static let regex: NSRegularExpression = {
         guard let instance = try? NSRegularExpression(
-            pattern: "^ios[^_]*_([^_]*)_?(.*)_(\\d+)_(\\w+)_non_renewing(?:_v\\d+)?$",
-            //                    ⬆      ⬆     ⬆     ⬆                    ⬆
-            //                   name   offer  cycle currency          version suffix (optional)
-            // range no.          1.      2.     3.     4.            this is not a capture group
+            pattern: "^ios[^_]*_([^_]*)_?(.*)_(\\d+)_(\\w+)_(?:non_|auto_)renewing(?:_v\\d+)?$",
+            //                    ⬆      ⬆     ⬆     ⬆       ⬆           ⬆
+            //                   name   offer  cycle currency  auto?   version suffix (optional)
+            // range no.          1.      2.     3.     4.     ⇖these are not capture groups⇗
             options: [.anchorsMatchLines]
         ) else {
             assertionFailure("The regular expression was not compiled right")
