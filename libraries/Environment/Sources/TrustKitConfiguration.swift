@@ -46,34 +46,8 @@ extension TrustKitWrapper {
         ]
 
         return [
-            "protonmail.ch": [
-                kTSKEnforcePinning: hardfail,
-                kTSKIncludeSubdomains: true,
-                kTSKForceSubdomainMatch: true,
-                kTSKNoSSLValidation: true,
-                kTSKDisableDefaultReportUri: true,
-                kTSKReportUris: reportURIs,
-                kTSKPublicKeyHashes: [
-                    // api.protonmail.ch certificate
-                    "drtmcR2kFkM8qJClsuWgUzxgBkePfRCkRpqUesyDmeE=", // Current
-                    "YRGlaY0jyJ4Jw2/4M8FIftwbDIQfh8Sdro96CeEel54=", // Hot backup
-                    "AfMENBVvOS8MnISprtvyPsjKlPooqh8nMB/pvCrpJpw=", // Cold backup
-                ]
-            ],
-            "protonvpn.ch": [
-                kTSKEnforcePinning: hardfail,
-                kTSKIncludeSubdomains: true,
-                kTSKForceSubdomainMatch: true,
-                kTSKNoSSLValidation: true,
-                kTSKDisableDefaultReportUri: true,
-                kTSKReportUris: reportURIs,
-                kTSKPublicKeyHashes: [
-                    // api.protonvpn.ch certificate
-                    "drtmcR2kFkM8qJClsuWgUzxgBkePfRCkRpqUesyDmeE=", // Current
-                    "YRGlaY0jyJ4Jw2/4M8FIftwbDIQfh8Sdro96CeEel54=", // Hot backup
-                    "AfMENBVvOS8MnISprtvyPsjKlPooqh8nMB/pvCrpJpw=", // Cold backup
-                ]
-            ],
+            "protonmail.ch": protonMainDomain(hardfail: hardfail),
+            "protonvpn.ch": protonMainDomain(hardfail: hardfail),
             "verify.protonmail.com": [
                 kTSKEnforcePinning: hardfail,
                 kTSKIncludeSubdomains: true,
@@ -217,4 +191,35 @@ extension TrustKitWrapper {
         ]
     }
 
+    private static func protonMainDomain(hardfail: Bool) -> [String: Any] {
+        [
+            kTSKEnforcePinning: hardfail,
+            kTSKIncludeSubdomains: true,
+            kTSKForceSubdomainMatch: true,
+            kTSKNoSSLValidation: true,
+            kTSKDisableDefaultReportUri: true,
+            kTSKReportUris: ["https://api.protonmail.ch/reports/tls"],
+            kTSKPublicKeyHashes: ProtonPublicKeyHashes.protonMainDomain
+        ]
+    }
+
+    private struct ProtonPublicKeyHashes {
+        let current: String
+        let hotBackup: String
+        let coldBackup: String
+
+        static var protonMainDomain: [String] {
+            let proton = ProtonPublicKeyHashes(
+                current: "drtmcR2kFkM8qJClsuWgUzxgBkePfRCkRpqUesyDmeE=",
+                hotBackup: "YRGlaY0jyJ4Jw2/4M8FIftwbDIQfh8Sdro96CeEel54=",
+                coldBackup: "AfMENBVvOS8MnISprtvyPsjKlPooqh8nMB/pvCrpJpw="
+            )
+
+            return proton.all
+        }
+
+        private var all: [String] {
+            [current, hotBackup, coldBackup]
+        }
+    }
 }
