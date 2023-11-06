@@ -17,6 +17,6 @@
 
 "Account_Recovery_Grace_View_Undefined_Time_Left" = "algunas horas";
 
-"Account_Recovery_Grace_View_line2" = ". Para mantener su cuenta segura, queremos asegurarnos de que realmente sea usted quien intenta restablecer su contraseña. Podrá restablecer su contraseña en ";
+"Account_Recovery_Grace_View_line2" = ". Para mantener su cuenta segura, queremos asegurarnos de que realmente es usted quien intenta restablecer su contraseña. Podrá restablecer su contraseña en ";
 
 "Account_Recovery_Grace_View_line3" = "Si no realizó esta solicitud o si ya no necesita ayuda para iniciar sesión, cancélela y tome medidas para proteger su cuenta.";

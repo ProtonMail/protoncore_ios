@@ -1,7 +1,7 @@
 
-"Account_Recovery_Settings_Item" = "Password reset";
+"Account_Recovery_Settings_Item" = "Nulstilling af adgangskode";
 
-"Account_Recovery_Insecure_View_Title" = "Reset your password";
+"Account_Recovery_Insecure_View_Title" = "Nulstil din adgangskode";
 
 "Account_Recovery_Grace_View_Title" = "Do you want to reset your password?";
 

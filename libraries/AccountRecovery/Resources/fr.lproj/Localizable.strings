@@ -17,6 +17,6 @@
 
 "Account_Recovery_Grace_View_Undefined_Time_Left" = "quelques heures.";
 
-"Account_Recovery_Grace_View_line2" = ". Pour garantir la sécurité de votre compte, nous voulons nous assurer que c'est bien vous qui essayez de réinitialiser votre mot de passe. Vous pourrez réinitialiser votre mot de passe dans ";
+"Account_Recovery_Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
 
 "Account_Recovery_Grace_View_line3" = "Si vous n'êtes pas à l'origine de cette demande ou si vous n'avez plus besoin d'aide pour vous connecter, veuillez l'annuler et faire le nécessaire pour sécuriser votre compte.";
