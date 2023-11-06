@@ -105,8 +105,8 @@
             }
         },
         {
-            "name": "ScheduledSubscriptions",
-            "enabled": true,
+            "name": "DisabledFlag",
+            "enabled": false,
             "impressionData": false,
             "variant": {
                 "name": "disabled",

@@ -22,74 +22,293 @@
 
 @testable import ProtonCoreFeatureFlags
 import ProtonCoreUtilities
+#if canImport(ProtonCoreTestingToolkitUnitTestsServices)
+import ProtonCoreTestingToolkitUnitTestsServices
+#else
+import ProtonCoreTestingToolkit
+#endif
 import XCTest
 
 enum TestFlagsType: String, FeatureFlagTypeProtocol {
     case blackFriday = "BlackFriday"
     case primaryVault = "PassRemovePrimaryVault"
     case notActivatedFlag = "ShouldNotAppear"
-}
-
-enum TestUpdatedFlagsType: String, FeatureFlagTypeProtocol {
-    case editEmail = "EditEmailAddress"
-    case accountRecovery = "SignedInAccountRecovery"
-    case pageSizeSettings = "WebMailPageSizeSetting"
-}
-
-enum FeatureFlagsElementFactory {
-    static let configuration1 = FeatureFlagsConfiguration(userId: "user", currentBUFlags: TestFlagsType.self)
-    static let configuration2 = FeatureFlagsConfiguration(userId: "user2", currentBUFlags: TestUpdatedFlagsType.self)
+    case fakeFlag = "fakeFlag"
+    case disabledFlag = "DisabledFlag"
 }
 
 final class FeatureFlagsTests: XCTestCase {
-    let localDataSource = DefaultLocalFeatureFlagsDatasource()
-    let remoteDataSource = DefaultRemoteDatasourceMock()
     var sut = FeatureFlagsRepository.shared
 
     override func setUp() {
         super.setUp()
-        sut.updateLocalDataSource(with: Atomic<LocalFeatureFlagsProtocol>(localDataSource))
-        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol>(remoteDataSource))
     }
 
-    func test_isEnabled_returnsTrueIfFlagisPresentAndEnabled() async throws {
+    override func tearDown() {
+        super.tearDown()
+        sut.setUserId(with: "")
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(nil))
+        sut.updateLocalDataSource(with: Atomic<LocalFeatureFlagsProtocol>(DefaultLocalFeatureFlagsDatasource()))
+    }
+
+    func test_updateLocalDataSource_updatesLocalDataSource() {
         // Given
-        sut.updateConfiguration(with: Atomic<FeatureFlagsConfiguration>(FeatureFlagsElementFactory.configuration1))
+        let featureFlags = FeatureFlags(flags: [.init(name: "flag", enabled: true, variant: nil)])
+        let localDataSource = Atomic<LocalFeatureFlagsProtocol>(
+            DefaultLocalFeatureFlagsDatasource(
+                currentFlags: Atomic<[String : FeatureFlags]>(
+                    ["test": featureFlags]
+                )
+            )
+        )
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
 
         // When
-        try await sut.fetchFlags()
+        sut.updateLocalDataSource(with: localDataSource)
 
         // Then
+        XCTAssertEqual(sut.localDatasource.value.getFeatureFlags(userId: "test"), featureFlags)
+    }
+
+    func test_updateRemoteDataSource_updatesRemoteDataSource() {
+        // Given
+        let remoteDataSource = DefaultRemoteDatasourceMock()
+        XCTAssertNil(sut.remoteDataSource.value)
+
+        // When
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(remoteDataSource))
+
+        // Then
+        XCTAssertNotNil(sut.remoteDataSource.value)
+    }
+
+    func test_setUserId_setsUserId() {
+        // Given
+        let userId = "userId"
+        XCTAssertTrue(sut.userId.value.isEmpty)
+
+        // When
+        sut.setUserId(with: userId)
+
+        // Then
+        XCTAssertEqual(sut.userId.value, userId)
+    }
+
+    func test_setApiService_setsApiService() {
+        // Given
+        let apiService = APIServiceMock()
+        XCTAssertNil(sut.remoteDataSource.value)
+
+        // When
+        sut.setApiService(with: apiService)
+
+        // Then
+        XCTAssertNotNil(sut.remoteDataSource.value)
+    }
+
+    // MARK: - isEnabled
+
+    func test_isEnabled_returnsTrueIfFlagIsPresentAndEnabled() {
+        // Given
+        let expectation = XCTestExpectation(description: "fetch flags")
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
+
+        // When
+        Task {
+            try await sut.fetchFlags()
+            expectation.fulfill()
+        }
+
+
+        // Then
+        wait(for: [expectation])
         XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday))
     }
 
-    func test_isEnabled_returnsTrueIfFlagisPresentAndDisabled() async throws {
+    func test_isEnabled_returnsFalsIfFlagIsNotPresent() {
         // Given
-        sut.updateConfiguration(with: Atomic<FeatureFlagsConfiguration>(FeatureFlagsElementFactory.configuration1))
+        let expectation = XCTestExpectation(description: "fetch flags")
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
+
+        // When
+        Task {
+            try await sut.fetchFlags()
+            expectation.fulfill()
+        }
+
+
+        // Then
+        wait(for: [expectation])
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.fakeFlag))
+    }
+
+    func test_isEnabled_returnsFalseIfFlagIsPresentAndDisabled() {
+        // Given
+        let expectation = XCTestExpectation(description: "fetch flags")
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
+
+        // When
+        Task {
+            try await sut.fetchFlags()
+            expectation.fulfill()
+        }
+
+
+        // Then
+        wait(for: [expectation])
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.disabledFlag))
+    }
+
+    func test_isEnabledForUser_returnsTrueIfFlagIsPresentAndEnabled() {
+        // Given
+        let expectation = XCTestExpectation(description: "fetch flags")
+        let userId = "userId"
+        let flagResponse = FeatureFlagResponse(
+            code: 1000,
+            toggles: [.init(
+                name: "BlackFriday",
+                enabled: true,
+                variant: nil
+            )]
+        )
+
+        let apiService = APIServiceMock()
+        apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(flagResponse))
+        }
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
+
+        // When
+        Task {
+            try await sut.fetchFlags(for: userId, with: apiService)
+            expectation.fulfill()
+        }
+
+
+        // Then
+        wait(for: [expectation])
+        XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
+    }
+
+    func test_isEnabledForUser_returnsFalsIfFlagIsNotPresent() {
+        // Given
+        let expectation = XCTestExpectation(description: "fetch flags")
+        let userId = "userId"
+        let flagResponse = FeatureFlagResponse(
+            code: 1000,
+            toggles: []
+        )
+
+        let apiService = APIServiceMock()
+        apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(flagResponse))
+        }
+
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
+
+        // When
+        Task {
+            try await sut.fetchFlags(for: userId, with: apiService)
+            expectation.fulfill()
+        }
+
+
+        // Then
+        wait(for: [expectation])
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.fakeFlag, for: userId))
+    }
+
+    func test_isEnabledForUser_returnsFalseIfFlagIsPresentAndDisabled() {
+        // Given
+        let expectation = XCTestExpectation(description: "fetch flags")
+        let userId = "userId"
+        let flagResponse = FeatureFlagResponse(
+            code: 1000,
+            toggles: [.init(
+                name: "DisabledFlag",
+                enabled: false,
+                variant: nil
+            )]
+        )
+
+        let apiService = APIServiceMock()
+        apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(flagResponse))
+        }
+
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
+
+        // When
+        Task {
+            try await sut.fetchFlags(for: userId, with: apiService)
+            expectation.fulfill()
+        }
+
+
+        // Then
+        wait(for: [expectation])
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.disabledFlag, for: userId))
+    }
+
+    // MARK: - fetchFlags
+
+    func test_fetchFlags_withoutUserId_returnsFlagForUnauthSession() async throws {
+        // Given
+        let emptyLocalFlags = try await sut.localDatasource.value.getFeatureFlags(userId: "")
+        XCTAssertNil(emptyLocalFlags)
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
 
         // When
         try await sut.fetchFlags()
 
         // Then
-        XCTAssertFalse(sut.isEnabled(TestFlagsType.primaryVault))
+        let localFlags = try await sut.localDatasource.value.getFeatureFlags(userId: "")
+        XCTAssertEqual(localFlags?.isEmpty, false)
     }
 
-    func test_isEnabled_returnsTrueIfFlagisNotPresent() async throws {
+    func test_fetchFlags_withUserId_returnsFlagForUserId() async throws {
         // Given
-        sut.updateConfiguration(with: Atomic<FeatureFlagsConfiguration>(FeatureFlagsElementFactory.configuration1))
+        let userId = "userId"
+        sut.setUserId(with: userId)
+
+        let emptyLocalFlags = try await sut.localDatasource.value.getFeatureFlags(userId: "")
+        XCTAssertNil(emptyLocalFlags)
+        
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
 
         // When
         try await sut.fetchFlags()
 
         // Then
-        XCTAssertFalse(sut.isEnabled(TestUpdatedFlagsType.accountRecovery))
+        let localFlags = try await sut.localDatasource.value.getFeatureFlags(userId: userId)
+        XCTAssertEqual(localFlags?.isEmpty, false)
     }
 
-    func testResetAllFlags() {
-        sut.resetFlags()
-        let flagsUser1 = localDataSource.getFeatureFlags(userId: FeatureFlagsElementFactory.configuration2.userId)
-        let flagsUser2 = localDataSource.getFeatureFlags(userId: FeatureFlagsElementFactory.configuration1.userId)
-        XCTAssertNil(flagsUser1)
-        XCTAssertNil(flagsUser2)
+    func test_fetchFlagsForUserId_withUserId_returnsFlagForUserId() async throws {
+        // Given
+        let userId = "userId"
+        let flagResponse = FeatureFlagResponse(
+            code: 1000,
+            toggles: [.init(
+                name: "BlackFriday",
+                enabled: true,
+                variant: nil
+            )]
+        )
+
+        let apiService = APIServiceMock()
+        apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(flagResponse))
+        }
+
+        let emptyLocalFlags = try await sut.localDatasource.value.getFeatureFlags(userId: "")
+        XCTAssertNil(emptyLocalFlags)
+
+        // When
+        try await sut.fetchFlags(for: userId, with: apiService)
+
+        // Then
+        let localFlags = try await sut.localDatasource.value.getFeatureFlags(userId: userId)
+        XCTAssertEqual(localFlags?.isEmpty, false)
     }
 }

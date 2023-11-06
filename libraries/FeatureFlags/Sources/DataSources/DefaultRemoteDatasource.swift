@@ -36,12 +36,17 @@ struct FeatureFlagRequest: Request {
 struct FeatureFlagResponse: Decodable {
     public let code: Int
     public let toggles: [FeatureFlag]
+
+    public init(code: Int, toggles: [FeatureFlag]) {
+        self.code = code
+        self.toggles = toggles
+    }
 }
 
 public class DefaultRemoteDatasource: RemoteFeatureFlagsProtocol {
     public let apiService: APIService
 
-    public init(apiService: APIService) {
+    init(apiService: APIService) {
         self.apiService = apiService
     }
 

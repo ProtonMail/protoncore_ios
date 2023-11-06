@@ -33,15 +33,15 @@ public class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol {
     private(set) var localDatasource: Atomic<LocalFeatureFlagsProtocol>
 
     /// The remote data source for feature flags.
-    private var remoteDatasource: Atomic<RemoteFeatureFlagsProtocol>
+    private(set) var remoteDataSource: Atomic<RemoteFeatureFlagsProtocol?>
 
     /// The configuration for feature flags.
-    private(set) var configuration: Atomic<FeatureFlagsConfiguration>
+    private(set) var userId: Atomic<String>
 
     public internal(set) static var shared: FeatureFlagsRepository = .init(
-        configuration: Atomic<FeatureFlagsConfiguration>(.init(userId: "", currentBUFlags: CoreFeatureFlagType.self)),
+        userId: Atomic<String>(""),
         localDatasource: Atomic<LocalFeatureFlagsProtocol>(DefaultLocalFeatureFlagsDatasource()),
-        remoteDatasource: Atomic<RemoteFeatureFlagsProtocol>(DummyRemoteFeatureFlag())
+        remoteDatasource: Atomic<RemoteFeatureFlagsProtocol?>(nil)
     )
 
     /**
@@ -52,80 +52,140 @@ public class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol {
        - localDatasource: The local data source for feature flags.
        - remoteDatasource: The remote data source for feature flags.
      */
-    private init(configuration: Atomic<FeatureFlagsConfiguration>,
+    private init(userId: Atomic<String>,
                  localDatasource: Atomic<LocalFeatureFlagsProtocol>,
-                 remoteDatasource: Atomic<RemoteFeatureFlagsProtocol>) {
+                 remoteDatasource: Atomic<RemoteFeatureFlagsProtocol?>) {
+        self.userId = userId
         self.localDatasource = localDatasource
-        self.remoteDatasource = remoteDatasource
-        self.configuration = configuration
+        self.remoteDataSource = remoteDatasource
     }
 
-    // MARK: - internal func for testing
+    // Internal func for testing
+    func updateRemoteDataSource(with remoteDatasource: Atomic<RemoteFeatureFlagsProtocol?>) {
+        self.remoteDataSource = remoteDatasource
+    }
+}
+
+// MARK: - For single user clients
+
+public extension FeatureFlagsRepository {
+    
+    /**
+     Updates the local data source conforming to the `LocalFeatureFlagsProtocol` protocol
+     */
     func updateLocalDataSource(with localDatasource: Atomic<LocalFeatureFlagsProtocol>) {
         self.localDatasource = localDatasource
     }
 
-    func updateRemoteDataSource(with remoteDatasource: Atomic<RemoteFeatureFlagsProtocol>) {
-        self.remoteDatasource = remoteDatasource
-    }
-
-    func updateConfiguration(with configuration: Atomic<FeatureFlagsConfiguration>) {
-        self.configuration = configuration
-    }
-}
-
-public extension FeatureFlagsRepository {
     /**
+     Only for single user clients.
+
      Sets the FeatureFlagsRepository configuration with the given user id.
 
      - Parameters:
        - userId: The user id used to initialize the configuration for feature flags.
      */
     func setUserId(with userId: String) {
-        self.configuration = Atomic<FeatureFlagsConfiguration>(.init(userId: userId, currentBUFlags: configuration.value.currentBUFlags))
+        self.userId = Atomic<String>(userId)
     }
 
     /**
+     Only for single user clients.
+
      Sets the FeatureFlagsRepository remote data source with the given api service.
 
      - Parameters:
        - apiService: The api service used to initialize the remote data source for feature flags.
      */
     func setApiService(with apiService: APIService) {
-        self.remoteDatasource = Atomic<RemoteFeatureFlagsProtocol>(DefaultRemoteDatasource(apiService: apiService))
+        self.remoteDataSource = Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasource(apiService: apiService))
     }
 
     /**
-     A Boolean function indicating if a feature flag is enabled or not.
-     The flag is fetched from the local data source. In case the local data source
-     is empty, we asynchronously fetch the remote flags.
+     For unauth sessions or single user clients.
 
-     - Parameters:
-       - flag: The flag we want to know the state of.
-     */
-    func isEnabled(_ flag: any FeatureFlagTypeProtocol) -> Bool {
-        let flags = localDatasource.value.getFeatureFlags(userId: configuration.value.userId)
-        return flags?.getFlag(for: flag)?.enabled ?? false
-    }
- 
-    /**
      Asynchronously fetches the feature flags from the remote data source and updates the local data source.
 
     - Throws: An error if the operation fails.
      */
     func fetchFlags() async throws {
-        let allflags = try await remoteDatasource.value.getFlags()
-        let flags = filterFlags(from: allflags, currentBUFlags: configuration.value.currentBUFlags)
-        localDatasource.value.upsertFlags(flags, userId: configuration.value.userId)
+        guard let remoteDataSource = remoteDataSource.value else {
+            assertionFailure("You need to set the apiService of the remoteDataSource by calling `setApiService` in order to fetch the feature flags.")
+            return
+        }
+        let flags = try await remoteDataSource.getFlags()
+        localDatasource.value.upsertFlags(.init(flags: flags), userId: userId.value)
     }
 
+    /**
+     For unauth sessions or single user clients.
+
+     A Boolean function indicating if a feature flag is enabled or not.
+     The flag is fetched from the local data source.
+
+     - Parameters:
+       - flag: The flag we want to know the state of.
+     */
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol) -> Bool {
+        let flags = localDatasource.value.getFeatureFlags(userId: userId.value)
+        return flags?.getFlag(for: flag)?.enabled ?? false
+    }
+
+    /**
+     For unauth sessions or single user clients.
+
+     An async Boolean function indicating if a feature flag is enabled or not.
+     The flag is fetched from the local data source.
+
+     - Parameters:
+       - flag: The flag we want to know the state of.
+     */
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol) async throws -> Bool {
+        let flags = try await localDatasource.value.getFeatureFlags(userId: userId.value)
+        return flags?.getFlag(for: flag)?.enabled ?? false
+    }
+}
+
+// - MARK: For multi users clients
+
+public extension FeatureFlagsRepository {
+    /**
+     Asynchronously fetches the feature flags for a specific apiService and a specific userId
+     from the remote data source and updates the local data source.
+
+    - Throws: An error if the operation fails.
+     */
+    func fetchFlags(for userId: String, with apiService: APIService) async throws {
+        let remoteDataSource = DefaultRemoteDatasource(apiService: apiService)
+        let flags = try await remoteDataSource.getFlags()
+        localDatasource.value.upsertFlags(.init(flags: flags), userId: userId)
+    }
+
+    /**
+     A Boolean function indicating if a feature flag is enabled or not for a specific user ID.
+     The flag is fetched from the local data source. In case the local data source
+     is empty, we asynchronously fetch the remote flags.
+
+     - Parameters:
+       - flag: The flag we want to know the state of.
+       - userId: The user id for which we want to check the flag value
+     */
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String) -> Bool {
+        let flags = localDatasource.value.getFeatureFlags(userId: userId)
+        return flags?.getFlag(for: flag)?.enabled ?? false
+    }
+}
+
+// MARK: - Commons
+
+public extension FeatureFlagsRepository {
     /**
      Resets all feature flags.
      */
     func resetFlags() {
         localDatasource.value.cleanAllFlags()
     }
-    
+
     /**
      Resets feature flags for a specific user.
 
@@ -135,21 +195,4 @@ public extension FeatureFlagsRepository {
     func resetFlags(for userId: String) {
         localDatasource.value.cleanFlags(for: userId)
     }
-}
-
-private extension FeatureFlagsRepository {
-    /// The new unleash feature flag endpoint doesn't filter flags on project base meaning we receive all proton flags
-    /// we want to filter only the ones that are linked to the current BU
-    /// The flag only appears if it is activated otherwise it it absent from the response
-    func filterFlags(from flags: [FeatureFlag],
-                     currentBUFlags: any FeatureFlagTypeProtocol.Type) -> FeatureFlags {
-        let currentFlags = flags.filter { element in
-            currentBUFlags.isPresent(rawValue: element.name)
-        }
-        return FeatureFlags(flags: currentFlags)
-    }
-}
-
-private class DummyRemoteFeatureFlag: RemoteFeatureFlagsProtocol {
-    func getFlags() async throws -> [FeatureFlag] { [] }
 }

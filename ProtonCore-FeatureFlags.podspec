@@ -30,6 +30,7 @@ Pod::Spec.new do |s|
 
     s.test_spec "Tests" do |test_spec|
         test_spec.source_files = "libraries/FeatureFlags/Tests/**/*.swift"
+        test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Services", $version
     end
 
     this_pod_does_not_have_subspecs(s)
