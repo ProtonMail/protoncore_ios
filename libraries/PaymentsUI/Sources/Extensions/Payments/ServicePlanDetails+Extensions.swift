@@ -273,7 +273,7 @@ extension Plan {
     }
 
     func forwardingMailboxesDescription(number: Int) -> String {
-        String(format: PUITranslations._plan_details_forwarding_mailboxes.l10n, "\(number)")
+        String(format: PUITranslations._plan_details_forwarding_mailboxes.l10n, number)
     }
     
     var customFieldsDescription: String {
@@ -285,7 +285,7 @@ extension Plan {
     }
 
     func numberOfEmailAliasesDescription(number: Int) -> String {
-        String(format: PUITranslations._plan_details_email_aliases_number.l10n, "\(number)")
+        String(format: PUITranslations._plan_details_email_aliases_number.l10n, number)
     }
 
 }
