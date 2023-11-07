@@ -771,6 +771,7 @@ add(
         .testTarget(name: .featureFlags + "Tests",
                     dependencies: [
                         .featureFlags,
+                        .testingToolkitUnitTestsServices
                     ],
                     path: "libraries/FeatureFlags/Tests",
                     resources: [.process("FeatureFlagsTests/QueryResources")],

@@ -20,10 +20,25 @@
 //  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
 //
 
-import Foundation
+import ProtonCoreServices
+import ProtonCoreUtilities
 
 public protocol FeatureFlagsRepositoryProtocol: AnyObject {
+  
+    func updateLocalDataSource(with localDatasource: Atomic<LocalFeatureFlagsProtocol>)
+
+    // MARK: - For single user clients
+    func setUserId(with userId: String)
+    func setApiService(with apiService: APIService)
+    func fetchFlags() async throws
     func isEnabled(_ flag: any FeatureFlagTypeProtocol) -> Bool
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol) async throws -> Bool
+
+    // - MARK: For multi users clients
+    func fetchFlags(for userId: String, with apiService: APIService) async throws
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String) -> Bool
+
+    // MARK: - Commons
     func resetFlags()
     func resetFlags(for userId: String)
 }

@@ -29,7 +29,7 @@ import ProtonCoreFeatureSwitch
 extension XCTestCase {
     public func withUnleashFeatureSwitches<T>(_ switches: [ProtonCoreFeatureFlags.FeatureFlag], perform block: () throws -> T) rethrows -> T {
         let currentLocalDataSource = FeatureFlagsRepository.shared.localDatasource
-        let currentUserId = FeatureFlagsRepository.shared.configuration.value.userId
+        let currentUserId = FeatureFlagsRepository.shared.userId.value
 
         defer {
             FeatureFlagsRepository.shared.updateLocalDataSource(with: currentLocalDataSource)
@@ -64,7 +64,7 @@ extension XCTestCase {
     @available(macOS 10.15, tvOS 13.0, watchOS 6.0, *)
     public func withUnleashFeatureSwitches<T>(_ switches: [ProtonCoreFeatureFlags.FeatureFlag], perform block: () async throws -> T) async rethrows -> T {
         let currentLocalDataSource = FeatureFlagsRepository.shared.localDatasource
-        let currentUserId = FeatureFlagsRepository.shared.configuration.value.userId
+        let currentUserId = FeatureFlagsRepository.shared.userId.value
 
         defer {
             FeatureFlagsRepository.shared.updateLocalDataSource(with: currentLocalDataSource)

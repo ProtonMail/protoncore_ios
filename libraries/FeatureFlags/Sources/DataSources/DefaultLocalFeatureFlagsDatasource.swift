@@ -33,6 +33,10 @@ public class DefaultLocalFeatureFlagsDatasource: LocalFeatureFlagsProtocol {
         currentFlags.value[userId]
     }
 
+    public func getFeatureFlags(userId: String) async throws -> FeatureFlags? {
+        currentFlags.value[userId]
+    }
+
     public func upsertFlags(_ flags: FeatureFlags, userId: String) {
         currentFlags.mutate { $0[userId] = flags }
     }
