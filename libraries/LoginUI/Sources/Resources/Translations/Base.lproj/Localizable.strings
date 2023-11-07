@@ -41,8 +41,6 @@
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"%1$@ of %2$@" = "%1$@ of %2$@";
-
 "Connection issues" = "Connection issues";
 
 "Check your internet connection" = "Check your internet connection";
