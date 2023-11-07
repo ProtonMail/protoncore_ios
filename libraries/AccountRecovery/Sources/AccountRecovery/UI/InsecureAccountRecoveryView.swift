@@ -41,14 +41,14 @@ public struct InsecureAccountRecoveryView: View {
 
         }
         .padding(16)
-        .navigationTitle(LocalizedStrings.insecureViewTitle)
+        .navigationTitle(ARTranslation.insecureViewTitle.l10n)
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    let line1 = LocalizedStrings.insecureViewLine1
-    let line2 = LocalizedStrings.insecureViewLine2
+    let line1 = ARTranslation.insecureViewLine1.l10n
+    let line2 = ARTranslation.insecureViewLine2.l10n
     let period = "."
-    let line3 = LocalizedStrings.insecureViewLine3
+    let line3 = ARTranslation.insecureViewLine3.l10n
 
     public init(viewModel: AccountRecoveryView.ViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)

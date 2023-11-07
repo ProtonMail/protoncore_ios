@@ -18,25 +18,56 @@
 
 import Foundation
 
-extension String {
-    var l7d: String { NSLocalizedString(self,
-                                        // TODO: use Bundle.module here when SPM
-                                        bundle: AccountRecoveryModule.resourceBundle ?? Bundle.main,
-                                        comment: self)
+private class Handler {}
+
+public enum ARTranslation: TranslationsExposing {
+
+    public static var bundle: Bundle {
+        #if SPM
+        return Bundle.module
+        #else
+        return Bundle(path: Bundle(for: Handler.self).path(forResource: "Translations-AccountRecovery", ofType: "bundle")!)!
+        #endif
     }
-}
 
-enum LocalizedStrings {
-    static let settingsItem = "Account_Recovery_Settings_Item".l7d
-    static let insecureViewTitle = "Account_Recovery_Insecure_View_Title".l7d
-    static let graceViewTitle = "Account_Recovery_Grace_View_Title".l7d
-    static let graceViewLine1 = "Account_Recovery_Grace_View_line1".l7d
-    static let insecureViewLine1 = "Account_Recovery_Insecure_View_line1".l7d
-    static let insecureViewLine2  = "Account_Recovery_Insecure_View_line2".l7d
-    static let insecureViewLine3 = "Account_Recovery_Insecure_View_line3".l7d
-    static let graceViewCancelButtonCTA = "Account_Recovery_Grace_View_Cancel_Button_CTA".l7d
-    static let graceViewUndefinedTimeLeft = "Account_Recovery_Grace_View_Undefined_Time_Left".l7d
-    static let graceViewLine2 = "Account_Recovery_Grace_View_line2".l7d
-    static let graceViewLine3 = "Account_Recovery_Grace_View_line3".l7d
+    public static var prefixForMissingValue: String = ""
 
+    case settingsItem
+    case insecureViewTitle
+    case graceViewTitle
+    case graceViewLine1
+    case insecureViewLine1
+    case insecureViewLine2
+    case insecureViewLine3
+    case graceViewCancelButtonCTA
+    case graceViewUndefinedTimeLeft
+    case graceViewLine2
+    case graceViewLine3
+    
+    public var l10n: String {
+        switch self {
+        case .settingsItem:
+            return localized(key: "Settings_Item", comment: "")
+        case .insecureViewTitle:
+            return localized(key: "Insecure_View_Title", comment: "")
+        case .graceViewTitle:
+            return localized(key: "Grace_View_Title", comment: "")
+        case .graceViewCancelButtonCTA:
+            return localized(key: "Grace_View_Cancel_Button_CTA", comment: "")
+        case .graceViewUndefinedTimeLeft:
+            return localized(key: "Grace_View_Undefined_Time_Left", comment: "")
+        case .graceViewLine1:
+            return localized(key: "Grace_View_line1", comment: "")
+        case .graceViewLine2:
+            return localized(key: "Grace_View_line2", comment: "")
+        case .graceViewLine3:
+            return localized(key: "Grace_View_line3", comment: "")
+        case .insecureViewLine1:
+            return localized(key: "Insecure_View_line1", comment: "")
+        case .insecureViewLine2:
+            return localized(key: "Insecure_View_line2", comment: "")
+        case .insecureViewLine3:
+            return localized(key: "Insecure_View_line3", comment: "")
+        }
+    }
 }
