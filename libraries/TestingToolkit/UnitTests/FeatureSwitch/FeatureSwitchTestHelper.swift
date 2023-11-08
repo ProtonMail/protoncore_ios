@@ -37,14 +37,13 @@ extension XCTestCase {
         }
 
         let testUserId = "testUserId"
+        let userDefaults = UserDefaults(suiteName: "withUnleashFeatureSwitches")!
+        userDefaults.setEncodableValue([testUserId: FeatureFlags(flags: switches)], forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+
         FeatureFlagsRepository.shared.setUserId(with: testUserId)
         FeatureFlagsRepository.shared.updateLocalDataSource(
             with: Atomic<LocalFeatureFlagsProtocol>(
-                DefaultLocalFeatureFlagsDatasource(
-                    currentFlags: Atomic<[String: FeatureFlags]>(
-                        [testUserId: .init(flags: switches)]
-                    )
-                )
+                DefaultLocalFeatureFlagsDatasource(userDefaults: userDefaults)
             )
         )
 
@@ -72,14 +71,13 @@ extension XCTestCase {
         }
 
         let testUserId = "testUserId"
+        let userDefaults = UserDefaults(suiteName: "withUnleashFeatureSwitchesAsync")!
+        userDefaults.setEncodableValue([testUserId: FeatureFlags(flags: switches)], forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+
         FeatureFlagsRepository.shared.setUserId(with: testUserId)
         FeatureFlagsRepository.shared.updateLocalDataSource(
             with: Atomic<LocalFeatureFlagsProtocol>(
-                DefaultLocalFeatureFlagsDatasource(
-                    currentFlags: Atomic<[String: FeatureFlags]>(
-                        [testUserId: .init(flags: switches)]
-                    )
-                )
+                DefaultLocalFeatureFlagsDatasource(userDefaults: userDefaults)
             )
         )
         return try await block()

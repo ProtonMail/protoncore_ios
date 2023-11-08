@@ -121,7 +121,8 @@ public extension FeatureFlagsRepository {
      For unauth sessions or single user clients.
 
      A Boolean function indicating if a feature flag is enabled or not.
-     The flag is fetched from the local data source.
+     The flag is fetched from the local data source and will always return
+     the value that is returned initally on the first call.
 
      - Parameters:
        - flag: The flag we want to know the state of.
@@ -135,7 +136,8 @@ public extension FeatureFlagsRepository {
      For unauth sessions or single user clients.
 
      An async Boolean function indicating if a feature flag is enabled or not.
-     The flag is fetched from the local data source.
+     The flag is fetched from the local data source and will always return
+     the value that is returned initally on the first call.
 
      - Parameters:
        - flag: The flag we want to know the state of.
@@ -163,8 +165,8 @@ public extension FeatureFlagsRepository {
 
     /**
      A Boolean function indicating if a feature flag is enabled or not for a specific user ID.
-     The flag is fetched from the local data source. In case the local data source
-     is empty, we asynchronously fetch the remote flags.
+     The flag is fetched from the local data source and will always return
+     the value that is returned initally on the first call.
 
      - Parameters:
        - flag: The flag we want to know the state of.

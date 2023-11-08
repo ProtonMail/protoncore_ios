@@ -20,32 +20,58 @@
 //  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
 //
 
+import Foundation
 import ProtonCoreUtilities
 
 public class DefaultLocalFeatureFlagsDatasource: LocalFeatureFlagsProtocol {
-    private var currentFlags: Atomic<[String: FeatureFlags]>
+    private let serialAccessQueue = DispatchQueue(label: "ch.proton.featureflags_queue")
+    
+    static let featureFlagsKey = "protoncore.featureflag"
 
-    public init(currentFlags: Atomic<[String: FeatureFlags]> = Atomic<[String: FeatureFlags]>([:])) {
-        self.currentFlags = currentFlags
+    private let userDefaults: UserDefaults
+    private var flagsForSession: [String: FeatureFlags]?
+
+    public init(userDefaults: UserDefaults = .standard) {
+        self.userDefaults = userDefaults
     }
 
     public func getFeatureFlags(userId: String) -> FeatureFlags? {
-        currentFlags.value[userId]
+        getLocalFeatureFlags(userId: userId)
     }
 
     public func getFeatureFlags(userId: String) async throws -> FeatureFlags? {
-        currentFlags.value[userId]
+        getLocalFeatureFlags(userId: userId)
+    }
+
+    private func getLocalFeatureFlags(userId: String)  -> FeatureFlags? {
+        serialAccessQueue.sync {
+            if let flagsForSession = flagsForSession {
+                return flagsForSession[userId]
+            }
+            flagsForSession = userDefaults.decodableValue(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey) ?? [:]
+            return flagsForSession?[userId]
+        }
     }
 
     public func upsertFlags(_ flags: FeatureFlags, userId: String) {
-        currentFlags.mutate { $0[userId] = flags }
+        serialAccessQueue.sync {
+            var flagsToUpdate: [String: FeatureFlags] = userDefaults.decodableValue(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey) ?? [:]
+            flagsToUpdate[userId] = flags
+            userDefaults.setEncodableValue(flagsToUpdate, forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+        }
     }
 
     public func cleanAllFlags() {
-        currentFlags.mutate { $0.removeAll() }
+        serialAccessQueue.sync {
+            userDefaults.removeObject(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+        }
     }
 
     public func cleanFlags(for userId: String) {
-        currentFlags.mutate { $0.removeValue(forKey: userId) }
+        serialAccessQueue.sync {
+            var flagsToClean: [String : FeatureFlags]? = userDefaults.decodableValue(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+            flagsToClean?[userId] = nil
+            userDefaults.set(flagsToClean, forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+        }
     }
 }
