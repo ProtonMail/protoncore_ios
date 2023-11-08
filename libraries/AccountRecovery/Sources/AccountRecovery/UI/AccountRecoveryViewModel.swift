@@ -23,6 +23,9 @@
 import Foundation
 import ProtonCoreDataModel
 import ProtonCorePasswordRequest
+#if os(iOS)
+import UIKit
+#endif
 
 public enum AccountRecoveryViewError: Error {
     case missingArguments
