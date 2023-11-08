@@ -17,23 +17,23 @@ import ProtonCoreObfuscatedConstants
 import ProtonCoreQuarkCommands
 
 class LoginExternalAccountsUpdateRequiredUITests: LoginBaseTestCase {
-    
+
     let mainRobot = LoginSampleAppRobot()
     lazy var quarkCommands = QuarkCommands(doh: doh)
-    
+
     override func setUp() {
         beforeSetUp(launchArguments: ["UITests_MockExternalAccountsUpdateRequiredInAuth"])
-        
+
         super.setUp()
         mainRobot
             .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
     }
-    
+
     func testExternalAccountsUpdateRequiredPopupIsClosable() {
         let randomEmail = randomEmail
         let randomPassword = randomPassword
         quarkCommands.createUser(externalEmail: randomEmail, password: randomPassword)
-        
+
         mainRobot
             .showLogin()
             .fillUsername(username: randomEmail)
@@ -44,12 +44,12 @@ class LoginExternalAccountsUpdateRequiredUITests: LoginBaseTestCase {
             .closeLoginScreen(to: LoginSampleAppRobot.self)
             .verify.buttonLogoutIsNotVisible()
     }
-    
+
     func testExternalAccountsUpdateRequiredPopupOpensLearnMorePage() {
         let randomEmail = randomEmail
         let randomPassword = randomPassword
         quarkCommands.createUser(externalEmail: randomEmail, password: randomPassword)
-        
+
         mainRobot
             .showLogin()
             .fillUsername(username: randomEmail)

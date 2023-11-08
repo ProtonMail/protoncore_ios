@@ -45,41 +45,41 @@ import ProtonCoreTestingToolkit
 #endif
 
 final class PlansDataSourceIntegrationTests: XCTestCase {
-    
+
     // MARK: - fetchIAPAvailability
-    
+
     func test_fetchIAPAvailability_parsesCorrectly() async throws {
         // Given
         let api = PMAPIService.createAPIServiceWithoutSession(doh: DohMock() as DoHInterface, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         mockPaymentStatus()
         let request = PaymentStatusRequest(api: api)
-        
+
         // When
         let paymentStatusResponse = try await request.response(responseObject: PaymentStatusResponse())
         guard let isAvailable = paymentStatusResponse.isAvailable else {
             XCTFail("Expected: payment status")
             return
         }
-        
+
         // Then
         XCTAssertTrue(isAvailable)
     }
-    
+
     // MARK: - fetchPaymentMethods
-    
+
     func test_fetchPaymentMethods_parsesCorrectly() async throws {
         // Given
         let api = PMAPIService.createAPIServiceWithoutSession(doh: DohMock() as DoHInterface, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         mockPaymentMethods()
         let request = MethodRequest(api: api)
-        
+
         // When
         let methodsResponse = try await request.response(responseObject: MethodResponse())
         guard let methods = methodsResponse.methods else {
             XCTFail("Expected: method response")
             return
         }
-        
+
         // Then
         XCTAssertEqual(methodsResponse.methods?.count, 1)
         XCTAssertEqual(methodsResponse.methods?[0].type, "card")
@@ -90,11 +90,11 @@ extension PlansDataSourceIntegrationTests {
     private func mockPaymentStatus() {
         mock(filename: "PaymentStatus", title: "Payment status /payment/v4/status mock", path: "/payments/v4/status")
     }
-    
+
     private func mockPaymentMethods() {
         mock(filename: "PaymentMethods", title: "Payment method /payment/v4/methods mock", path: "/payments/v4/methods")
     }
-    
+
     private func mock(filename: String, title: String, path: String, statusCode: Int32 = 200) {
         weak var usersStub = stub(condition: pathEndsWith(path)) { request in
             #if SPM
@@ -107,7 +107,7 @@ extension PlansDataSourceIntegrationTests {
             let headers = ["Content-Type": "application/json;charset=utf-8"]
             return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: statusCode, headers: headers)
         }
-        
+
         usersStub?.name = title
     }
 }

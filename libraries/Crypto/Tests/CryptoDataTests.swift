@@ -24,7 +24,7 @@ import ProtonCoreCryptoGoInterface
 import ProtonCoreCrypto
 
 class CryptoDataTests: CryptoTestBase {
-    
+
     func testUnarmorAndIsExpired() {
         do {
             let expiredKey = self.content(of: "expired_publickey")

@@ -28,9 +28,9 @@ import OHHTTPStubsSwift
 
 @available(iOS 15, *)
 class DoHProviderGoogleTests: XCTestCase {
-    
+
     var networkingEngine: DoHNetworkingEngine!
-    
+
     override func setUp() {
         super.setUp()
         // we use a real url session because the mocking is done on the urlsession level with HTTPStubs
@@ -44,14 +44,14 @@ class DoHProviderGoogleTests: XCTestCase {
         HTTPStubs.removeAllStubs()
         networkingEngine = nil
     }
- 
+
     func testGoogleProviderInit() {
         let google = Google(networkingEngine: networkingEngine)
         XCTAssertEqual(google.supported.count, 2)
         XCTAssert(google.supported.contains(DNSRecordType.txt))
         XCTAssert(google.supported.contains(DNSRecordType.a))
     }
-    
+
     func testGoogleUrl() {
         let google = Google(networkingEngine: networkingEngine)
         XCTAssertTrue(google.queryUrl.absoluteString.contains("dns.google.com"))
@@ -79,7 +79,7 @@ class DoHProviderGoogleTests: XCTestCase {
         }
         XCTAssertNil(dns)
     }
-    
+
     func testGoogleResponse() async {
         stubDoHProvidersSuccess()
         let google = Google(networkingEngine: networkingEngine)
@@ -88,7 +88,7 @@ class DoHProviderGoogleTests: XCTestCase {
         }
         XCTAssertNotNil(dns)
     }
-    
+
     func testGoogleBadResponse1() async {
         stub(condition: isHost("dns.google.com") && isMethodGET() && isPath("/resolve")) { request in
             var dict = [String: Any]()
@@ -108,7 +108,7 @@ class DoHProviderGoogleTests: XCTestCase {
         }
         XCTAssertNil(dns)
     }
-    
+
     func testGoogleBadResponse2() async {
         stub(condition: isHost("dns.google.com") && isMethodGET() && isPath("/resolve")) { request in
             var dict = [String: Any]()
@@ -128,7 +128,7 @@ class DoHProviderGoogleTests: XCTestCase {
         }
         XCTAssertNil(dns)
     }
-    
+
     func testGoogleBadResponse3() async {
         stub(condition: isHost("dns.google.com") && isMethodGET() && isPath("/resolve")) { request in
             var dict = [String: Any]()
@@ -148,7 +148,7 @@ class DoHProviderGoogleTests: XCTestCase {
         }
         XCTAssertNil(dns)
     }
-    
+
     func testGoogleBadResponse4() async {
         stub(condition: isHost("dns.google.com") && isMethodGET() && isPath("/resolve")) { request in
             var dict = [String: Any]()
@@ -176,7 +176,7 @@ class DoHProviderGoogleTests: XCTestCase {
         }
         XCTAssertNil(dns)
     }
-    
+
     func testGoogleBadResponse5() async {
         stub(condition: isHost("dns.google.com") && isMethodGET() && isPath("/resolve")) { request in
             var dict = [String: Any]()
@@ -204,7 +204,7 @@ class DoHProviderGoogleTests: XCTestCase {
         }
         XCTAssertNil(dns)
     }
-    
+
     func testGoogleGetQueryWithSessionID() {
         let google = Google(networkingEngine: networkingEngine)
         let sessionId = "Session123"

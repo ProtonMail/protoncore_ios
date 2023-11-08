@@ -51,7 +51,7 @@ import ProtonCoreTestingToolkit
 class SignupServiceTests: XCTestCase {
 
     let timeout = 1.0
-    
+
     override class func setUp() {
         super.setUp()
         injectDefaultCryptoImplementation()
@@ -100,7 +100,7 @@ class SignupServiceTests: XCTestCase {
 
     func testValidationTokenCheckOK() {
         let service = SignupService(api: apiService, clientApp: .mail)
-        
+
         mockValidationTokenCheckOK()
         let expect = expectation(description: "expectation1")
         service.checkValidationToken(email: "test@test.ch", token: "000000") { result in
@@ -120,7 +120,7 @@ class SignupServiceTests: XCTestCase {
 
     func testValidationTokenCheckInvalidVerificationCode() {
         let service = SignupService(api: apiService, clientApp: .mail)
-        
+
         mockValidationTokenCheckError12087()
         let expect = expectation(description: "expectation1")
         service.checkValidationToken(email: "test@test.ch", token: "000001") { result in
@@ -144,7 +144,7 @@ class SignupServiceTests: XCTestCase {
 
     func testValidationTokenCheckEmailAddressAlreadyUsed() {
         let service = SignupService(api: apiService, clientApp: .mail)
-        
+
         mockValidationTokenCheckError2500()
         let expect = expectation(description: "expectation1")
         service.checkValidationToken(email: "test2@test2.ch", token: "000000") { result in
@@ -164,7 +164,7 @@ class SignupServiceTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     // MARK: **** Create username account tests ****
 
     func testCreateNewUsernameAccountOk() {
@@ -189,7 +189,7 @@ class SignupServiceTests: XCTestCase {
 
     func testCreateNewUsernameAccountModulusError() {
         let service = SignupService(api: apiService, clientApp: .mail)
-        
+
         mockModulusError()
         let expect = expectation(description: "expectation1")
         service.createNewUsernameAccount(userName: "abc", password: "abc", email: nil, phoneNumber: nil) { result in
@@ -212,7 +212,7 @@ class SignupServiceTests: XCTestCase {
 
     func testCreateNewUsernameAccountUsersError() {
         let service = SignupService(api: apiService, clientApp: .mail)
-        
+
         mockCreateUsernameAccountError()
         let expect = expectation(description: "expectation1")
         service.createNewUsernameAccount(userName: "abc", password: "abc", email: nil, phoneNumber: nil) { result in
@@ -235,7 +235,7 @@ class SignupServiceTests: XCTestCase {
 
     func testCreateNewUsernameAccountUsernameAlreadyTaken() {
         let service = SignupService(api: apiService, clientApp: .mail)
-        
+
         mockCreateUsernameAccountError12081()
         let expect = expectation(description: "expectation1")
         service.createNewUsernameAccount(userName: "abc", password: "abc", email: nil, phoneNumber: nil) { result in
@@ -259,7 +259,7 @@ class SignupServiceTests: XCTestCase {
 
     func testCreateNewUsernameAccountInvalidInput() {
         let service = SignupService(api: apiService, clientApp: .mail)
-        
+
         mockCreateUsernameAccountError2001()
         let expect = expectation(description: "expectation1")
         service.createNewUsernameAccount(userName: "abc", password: "abc", email: nil, phoneNumber: nil) { result in
@@ -280,7 +280,7 @@ class SignupServiceTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     // MARK: **** Create internal account tests ****
 
     func testCreateNewInternalAccountOk() {
@@ -512,7 +512,7 @@ class SignupServiceTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testValidEmailSuccess() {
         let apiService = APIServiceMock()
         let service = SignupService(api: apiService, clientApp: .mail)
@@ -525,7 +525,7 @@ class SignupServiceTests: XCTestCase {
                 completion(nil, .success([:]))
             }
         }
-        
+
         let expect = expectation(description: "expectation1")
         service.validateEmailServerSide(email: "test@test.ch", completion: { result in
             switch result {
@@ -541,7 +541,7 @@ class SignupServiceTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testValidEmailInvalidInput() {
         let apiService = APIServiceMock()
         let service = SignupService(api: apiService, clientApp: .mail)
@@ -585,7 +585,7 @@ class SignupServiceTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testValidPhoneNumberSuccess() {
         let apiService = APIServiceMock()
         let service = SignupService(api: apiService, clientApp: .mail)
@@ -598,7 +598,7 @@ class SignupServiceTests: XCTestCase {
                 completion(nil, .success([:]))
             }
         }
-        
+
         let expect = expectation(description: "expectation1")
         service.validatePhoneNumberServerSide(number: "+4100000000", completion: { result in
             switch result {
@@ -614,7 +614,7 @@ class SignupServiceTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testValidPhoneNumberInvalidInput() {
         let apiService = APIServiceMock()
         let service = SignupService(api: apiService, clientApp: .mail)
@@ -640,7 +640,7 @@ class SignupServiceTests: XCTestCase {
         }
 
         let expect = expectation(description: "expectation1")
-        
+
         service.validatePhoneNumberServerSide(number: "invalid number", completion: { result in
             switch result {
             case .success:

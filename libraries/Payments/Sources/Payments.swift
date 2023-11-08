@@ -28,9 +28,9 @@ typealias ListOfIAPIdentifiersGet = () -> ListOfIAPIdentifiers
 typealias ListOfIAPIdentifiersSet = (ListOfIAPIdentifiers) -> Void
 
 public final class Payments {
-    
+
     public static let transactionFinishedNotification = Notification.Name("StoreKitManager.transactionFinished")
-    
+
     var inAppPurchaseIdentifiers: ListOfIAPIdentifiers
     var reportBugAlertHandler: BugAlertHandler
     let apiService: APIService
@@ -141,7 +141,7 @@ public final class Payments {
 
         storeKitManager.delegate = nil
     }
-    
+
     public func updateService(completion: @escaping (Result<(), Error>) -> Void) {
         switch planService {
         case .left(let planService):

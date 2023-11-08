@@ -31,13 +31,13 @@ final class PasswordAuth: Package {
     let ModulusID: String // encrypted id
     let salt: String // base64 encoded
     let verifer: String // base64 encoded
-    
+
     init(modulus_id: String, salt: String, verifer: String) {
         self.ModulusID = modulus_id
         self.salt = salt
         self.verifer = verifer
     }
-    
+
     var parameters: [String: Any]? {
         let out: [String: Any] = [
             "Version": self.AuthVersion,
@@ -86,12 +86,12 @@ final class ClearBodyPackage {
 
 /// message packages
 final class EOAddressPackage: AddressPackage {
-    
+
     let token: String!  // <random_token>
     let encToken: String! // <encrypted_random_token>
     let auth: PasswordAuth!
     let pwdHit: String?  // "PasswordHint": "Example hint", // optional
-    
+
     init(token: String, encToken: String,
          auth: PasswordAuth, pwdHit: String?,
          email: String,
@@ -100,15 +100,15 @@ final class EOAddressPackage: AddressPackage {
          attPackets: [AttachmentPackage] = [AttachmentPackage](),
          type: SendType = SendType.intl, // for base
          sign: Int = 0) {
-        
+
         self.token = token
         self.encToken = encToken
         self.auth = auth
         self.pwdHit = pwdHit
-        
+
         super.init(email: email, bodyKeyPacket: bodyKeyPacket, type: type, plainText: plainText, attPackets: attPackets, sign: sign)
     }
-    
+
     override var parameters: [String: Any]? {
         var out = super.parameters ?? [String: Any]()
         out["Token"] = self.token
@@ -124,7 +124,7 @@ final class EOAddressPackage: AddressPackage {
 class AddressPackage: AddressPackageBase {
     let bodyKeyPacket: String
     let attPackets: [AttachmentPackage]
-    
+
     init(email: String,
          bodyKeyPacket: String,
          type: SendType,
@@ -135,7 +135,7 @@ class AddressPackage: AddressPackageBase {
         self.attPackets = attPackets
         super.init(email: email, type: type, sign: sign, plainText: plainText)
     }
-    
+
     override var parameters: [String: Any]? {
         var out = super.parameters ?? [String: Any]()
         out["BodyKeyPacket"] = self.bodyKeyPacket
@@ -159,9 +159,9 @@ class AddressPackage: AddressPackageBase {
                 }
                 out["AttachmentKeyPackets"] = atts
             }
-            
+
         }
-        
+
         return out
     }
 }
@@ -175,28 +175,28 @@ class MimeAddressPackage: AddressPackageBase {
         self.bodyKeyPacket = bodyKeyPacket
         super.init(email: email, type: type, sign: -1, plainText: plainText)
     }
-    
+
     override var parameters: [String: Any]? {
         var out = super.parameters ?? [String: Any]()
-        out["BodyKeyPacket"] = self.bodyKeyPacket        
+        out["BodyKeyPacket"] = self.bodyKeyPacket
         return out
     }
 }
 
 class AddressPackageBase: Package {
-    
+
     let type: SendType!
     let sign: Int! // 0 or 1
     let email: String
     let plainText: Bool
-    
+
     init(email: String, type: SendType, sign: Int, plainText: Bool) {
         self.type = type
         self.sign = sign
         self.email = email
         self.plainText = plainText
     }
-    
+
     var parameters: [String: Any]? {
         var out: [String: Any] = [
             "Type": type.rawValue

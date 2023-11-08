@@ -46,7 +46,7 @@ final class ProcessDependenciesMock: ProcessDependencies {
 
     @PropertyStub(\ProcessDependencies.updateSubscription, initialGet: .crash) var updateSubscriptionStub
     var updateSubscription: (Subscription) throws -> Void { updateSubscriptionStub() }
-    
+
     @FuncStub(ProcessDependencies.updateCurrentSubscription) var updateCurrentSubscriptionStub
     func updateCurrentSubscription(success: @escaping () -> Void, failure: @escaping (Error) -> Void) { updateCurrentSubscriptionStub(success, failure) }
 
@@ -70,10 +70,10 @@ final class ProcessDependenciesMock: ProcessDependencies {
 
     @ThrowingFuncStub(ProcessDependencies.getReceipt, initialReturn: .empty) var getReceiptStub
     func getReceipt() throws -> String { try getReceiptStub() }
-    
+
     @PropertyStub(\ProcessDependencies.bugAlertHandler, initialGet: nil) public var bugAlertHandlerStub
     public var bugAlertHandler: BugAlertHandler { return bugAlertHandlerStub() }
-    
+
     @PropertyStub(\ProcessDependencies.refreshCompletionHandler, initialGet: .crash) public var refreshCompletionHandlerStub
     public var refreshCompletionHandler: (ProcessCompletionResult) -> Void { return refreshCompletionHandlerStub() }
 }

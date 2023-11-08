@@ -47,17 +47,17 @@ import ProtonCoreTestingToolkit
 final class CurrentPlanIntegrationTests: XCTestCase {
     func test_currentPlan_parsesCorrectly() async throws {
         let api = PMAPIService.createAPIServiceWithoutSession(doh: DohMock() as DoHInterface, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
-        
+
         mockCurrentPlan()
 
         let request = CurrentPlanRequest(api: api)
-        
+
         let currentPlanResponse = try await request.response(responseObject: CurrentPlanResponse())
         guard let currentPlan = currentPlanResponse.currentPlan else {
             XCTFail("Expected: current plan")
             return
         }
-                
+
         XCTAssertEqual(currentPlan.subscriptions.first!.title, "Title")
         XCTAssertEqual(currentPlan.subscriptions.first!.description, "Description")
         XCTAssertEqual(currentPlan.subscriptions.first!.cycleDescription, "CycleDescription")
@@ -66,7 +66,7 @@ final class CurrentPlanIntegrationTests: XCTestCase {
         XCTAssertEqual(currentPlan.subscriptions.first!.periodEnd, 1696938858)
         XCTAssertEqual(currentPlan.subscriptions.first!.renew, 1)
         XCTAssertEqual(currentPlan.subscriptions.first!.external, .apple)
-        
+
         XCTAssertEqual(currentPlan.subscriptions.first!.entitlements.count, 2)
         XCTAssertEqual(currentPlan.subscriptions.first!.entitlements[0], .progress(.init(type: "progress", text: "19.55 MB of 15 GB", min: 0, max: 1024, current: 512)))
         XCTAssertEqual(currentPlan.subscriptions.first!.entitlements[1], .description(.init(type: "description", text: "500 GB storage", iconName: "http://.../blah.svg", hint: "You win a lot of storage")))
@@ -77,7 +77,7 @@ extension CurrentPlanIntegrationTests {
     private func mockCurrentPlan() {
         mock(filename: "CurrentPlan", title: "current plan /payment/v5/subscription mock", path: "/payments/v5/subscription")
     }
-    
+
     private func mock(filename: String, title: String, path: String, statusCode: Int32 = 200) {
         weak var usersStub = stub(condition: pathEndsWith(path)) { request in
             #if SPM
@@ -90,7 +90,7 @@ extension CurrentPlanIntegrationTests {
             let headers = ["Content-Type": "application/json;charset=utf-8"]
             return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: statusCode, headers: headers)
         }
-        
+
         usersStub?.name = title
     }
 }

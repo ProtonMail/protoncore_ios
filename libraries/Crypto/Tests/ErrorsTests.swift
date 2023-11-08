@@ -24,7 +24,7 @@ import ProtonCoreCryptoGoInterface
 @testable import ProtonCoreCrypto
 
 class ErrorsTests: CryptoTestBase {
-    
+
     private func throwingSessionErrors(index: Int) throws {
         switch index {
         case 0:
@@ -35,7 +35,7 @@ class ErrorsTests: CryptoTestBase {
             return
         }
     }
-    
+
     private func throwingArmoredErrors(index: Int) throws {
         switch index {
         case 0:
@@ -46,7 +46,7 @@ class ErrorsTests: CryptoTestBase {
             return
         }
     }
-    
+
     private func throwingSignatureVerifyErrors(code: Int, message: String) throws {
         throw SignatureVerifyError(code: code, message: message)
     }
@@ -61,7 +61,7 @@ class ErrorsTests: CryptoTestBase {
             XCTAssertEqual(errorCheck.message, testMsg)
         }
     }
-    
+
     func testArmoredError() {
         XCTAssertThrowsError(try throwingArmoredErrors(index: 0)) { error in
             XCTAssertEqual(error.localizedDescription, ArmoredError.noKeyPacket.localizedDescription)
@@ -70,7 +70,7 @@ class ErrorsTests: CryptoTestBase {
             XCTAssertEqual(error.localizedDescription, ArmoredError.noDataPacket.localizedDescription)
         }
     }
-    
+
     func testSessionError() {
         XCTAssertThrowsError(try throwingSessionErrors(index: 0)) { error in
             XCTAssertEqual(error.localizedDescription, SessionError.unSupportedAlgorithm.localizedDescription)

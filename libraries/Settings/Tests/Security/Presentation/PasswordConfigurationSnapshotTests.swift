@@ -32,14 +32,14 @@ import ProtonCoreUIFoundations
 
 @available(iOS 13, *)
 final class PasswordConfigurationSnapshotTests: SnapshotTestCase {
-    
+
     func testTelemetrySection() {
         let viewController = PasswordConfigurationViewController()
         let router = ConfirmationPasswordConfigurationRouter(view: viewController) { _ in }
         let viewModel = InitialPasswordConfigurationViewModel(passwordSelector: SecurityPasswordSelector(), router: router)
         viewController.viewModel = viewModel
         let navigationViewController = DarkModeAwareNavigationViewController(rootViewController: viewController, style: NavigationBarStyles.sheet)
-        
+
         checkSnapshots(controller: navigationViewController, perceptualPrecision: 0.98)
     }
 }

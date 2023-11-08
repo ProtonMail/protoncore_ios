@@ -28,13 +28,13 @@ import ProtonCoreTestingToolkit
 @testable import ProtonCoreLoginUI
 
 final class LoginUILocalizationTests: XCTestCase {
- 
+
     func testAllSubstitutionsAreFollowingTheExpectedFormat() {
         testAllSubstitutionsAreValid(for: LUITranslation.self)
     }
-    
+
     func testAllTranslationsAreDefinedForAllLanguages() {
         testAllLocalizationsAreDefined(for: LUITranslation.self, prefixForMissingValue: #function)
     }
-    
+
 }

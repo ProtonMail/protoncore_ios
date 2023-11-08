@@ -40,9 +40,9 @@ final class PMSettingsSnapshotTests: SnapshotTestCase {
         let sections: [PMSettingsSectionViewModel] = [settingsSectionViewModel]
         let viewModel = PMSettingsViewModel(sections: sections, version: "1.123")
         viewController.viewModel = viewModel
-        
+
         let navigationViewController = DarkModeAwareNavigationViewController(rootViewController: viewController, style: NavigationBarStyles.sheet)
-        
+
         checkSnapshots(controller: navigationViewController, perceptualPrecision: 0.98)
     }
 }

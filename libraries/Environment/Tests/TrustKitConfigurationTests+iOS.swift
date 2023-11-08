@@ -26,7 +26,7 @@ import XCTest
 @testable import ProtonCoreEnvironment
 
 final class TrustKitConfigurationTests: XCTestCase {
-    
+
     func testIgnorePinningForUserDefinedTrustAnchorsIsIgnored() {
         let configuration1 = TrustKitWrapper.configuration(hardfail: true, ignoreMacUserDefinedTrustAnchors: true)
         let configuration2 = TrustKitWrapper.configuration(hardfail: true, ignoreMacUserDefinedTrustAnchors: false)

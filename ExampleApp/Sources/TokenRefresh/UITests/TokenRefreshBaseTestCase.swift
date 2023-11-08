@@ -31,7 +31,7 @@ import ProtonCoreTestingToolkit
 #endif
 
 class TokenRefreshBaseTestCase: ProtonCoreBaseTestCase {
-    
+
     let entryRobot = CoreExampleMainRobot()
     var appRobot: TokenRefreshSampleAppRobot!
 

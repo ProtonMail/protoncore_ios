@@ -46,13 +46,13 @@ import ProtonCoreCryptoVPNPatchedGoImplementation
 class RecoveryViewModelTests: XCTestCase {
 
     var signupServiceMock: SignupServiceMock!
-    
+
     override func setUpWithError() throws {
         try super.setUpWithError()
         injectDefaultCryptoImplementation()
         signupServiceMock = SignupServiceMock()
     }
-    
+
     func testPhoneNumberValidation() throws {
         let viewModel = RecoveryViewModel(signupService: signupServiceMock, initialCountryCode: 0, challenge: PMChallenge())
         XCTAssertEqual(viewModel.isValidPhoneNumber(number: ""), false)

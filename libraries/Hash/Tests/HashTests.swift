@@ -24,45 +24,45 @@ import XCTest
 @testable import ProtonCoreHash
 
 final class HashTests: XCTestCase {
-    
+
     func testStringHashMD5() {
         // expected generated with $ echo -n "test string" | md5
         XCTAssertEqual("test string".md5, "6f8db599de986fab7a21625b7916589c")
     }
-    
+
     func testStringHashMD5Byte() {
         // expected generated with $ echo -n "test string" | md5 and split into ints
         XCTAssertEqual("test string".md5_byte,
                        Data([0x6f, 0x8d, 0xb5, 0x99, 0xde, 0x98, 0x6f, 0xab, 0x7a, 0x21, 0x62, 0x5b, 0x79, 0x16, 0x58, 0x9c]))
     }
-    
+
     func testStringHashSHA1() {
         // expected generated with $ echo -n "test string" | shasum -a 1
         XCTAssertEqual("test string".sha1, "661295c9cbf9d6b2f6428414504a8deed3020641")
     }
-    
+
     func testStringHashSHA224() {
         // expected generated with $ echo -n "test string" | shasum -a 224
         XCTAssertEqual("test string".sha224, "dd8a1f5793f157323ccb28fe953bb8abb659bd61b7e9fae10be26f7a")
     }
-    
+
     func testStringHashSHA256() {
         // expected generated with $ echo -n "test string" | shasum -a 256
         XCTAssertEqual("test string".sha256, "d5579c46dfcc7f18207013e65b44e4cb4e2c2298f4ac457ba8f82743f31e930b")
     }
-    
+
     func testStringHashSHA384() {
         // expected generated with $ echo -n "test string" | shasum -a 384
         XCTAssertEqual("test string".sha384,
                        "e213dccb3221e0b8fdd995dcc1d04e218fc649981038bfac81abc98932369bac0efb758b92eccd80321df8eb64efae87")
     }
-    
+
     func testStringHashSHA512() {
         // expected generated with $ echo -n "test string" | shasum -a 512
         XCTAssertEqual("test string".sha512,
                        "10e6d647af44624442f388c2c14a787ff8b17e6165b83d767ec047768d8cbcb71a1a3226e7cc7816bc79c0427d94a9da688c41a3992c7bf5e4d7cc3e0be5dbac")
     }
-    
+
     func testStringHashSHA512Bytes() {
         // expected generated with $ echo -n "test string" | shasum -a 512 and split into ints
         XCTAssertEqual("test string".sha512_byte,
@@ -71,7 +71,7 @@ final class HashTests: XCTestCase {
                              0x1a, 0x1a, 0x32, 0x26, 0xe7, 0xcc, 0x78, 0x16, 0xbc, 0x79, 0xc0, 0x42, 0x7d, 0x94, 0xa9, 0xda,
                              0x68, 0x8c, 0x41, 0xa3, 0x99, 0x2c, 0x7b, 0xf5, 0xe4, 0xd7, 0xcc, 0x3e, 0x0b, 0xe5, 0xdb, 0xac]))
     }
-    
+
     func testDataHashSHA512Bytes() {
         // expected generated with $ echo -n "test string" | shasum -a 512 and split into ints
         XCTAssertEqual("test string".data(using: .utf8)!.sha512_byte,

@@ -28,9 +28,9 @@ import ProtonCoreServices
 @testable import ProtonCorePayments
 
 public final class PaymentsApiMock: PaymentsApiProtocol {
-    
+
     public init() { }
-    
+
     @FuncStub(PaymentsApiProtocol.paymentStatusRequest, initialReturn: { PaymentStatusRequest(api: $0) }) public var paymentStatusRequestStub
     public func paymentStatusRequest(api: APIService) -> PaymentStatusRequest {
         paymentStatusRequestStub(api)
@@ -60,7 +60,7 @@ public final class PaymentsApiMock: PaymentsApiProtocol {
     public func creditRequest(api: APIService, amount: Int, paymentAction: PaymentAction) -> CreditRequest {
         creditRequestStub(api, amount, paymentAction)
     }
-    
+
     @FuncStub(PaymentsApiProtocol.methodsRequest, initialReturn: { MethodRequest(api: $0) }) public var methodsRequestStub
     public func methodsRequest(api: APIService) -> MethodRequest { methodsRequestStub(api) }
 
@@ -77,7 +77,7 @@ public final class PaymentsApiMock: PaymentsApiProtocol {
     public func validateSubscriptionRequest(api: APIService, protonPlanName: String, isAuthenticated: Bool) -> ValidateSubscriptionRequest {
         validateSubscriptionRequestStub(api, protonPlanName, isAuthenticated)
     }
-    
+
     @FuncStub(PaymentsApiProtocol.countriesCountRequest, initialReturn: { CountriesCountRequest(api: $0) }) public var countriesCountRequestStub
     public func countriesCountRequest(api: APIService) -> CountriesCountRequest {
         countriesCountRequestStub(api)

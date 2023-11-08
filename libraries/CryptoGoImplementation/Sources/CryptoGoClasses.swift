@@ -234,7 +234,7 @@ extension GoLibs.CryptoKeyRing: ProtonCoreCryptoGoInterface.CryptoKeyRing {
                                                          privateKey: privateKey?.toGoLibsType)
         return value
     }
-    
+
     public func encrypt(withCompression message: ProtonCoreCryptoGoInterface.CryptoPlainMessage?, privateKey: ProtonCoreCryptoGoInterface.CryptoKeyRing?) throws -> ProtonCoreCryptoGoInterface.CryptoPGPMessage {
         let value: GoLibs.CryptoPGPMessage = try encrypt(withCompression: message?.toGoLibsType,
                                                          privateKey: privateKey?.toGoLibsType)

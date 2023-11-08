@@ -28,9 +28,9 @@ import ProtonCoreTestingToolkitUnitTestsCore
 #endif
 
 public struct AccountDeletionWebViewDelegateMock: AccountDeletionWebViewDelegate {
-    
+
     public init() {}
-    
+
     @FuncStub(AccountDeletionWebViewDelegateMock.shouldCloseWebView) public var shouldCloseWebViewStub
     public func shouldCloseWebView(_ viewController: AccountDeletionViewController, completion: @escaping () -> Void) {
         shouldCloseWebViewStub(viewController, completion)
@@ -42,7 +42,7 @@ public struct AccountDeletionWebViewDelegateMock: AccountDeletionWebViewDelegate
 import AppKit
 
 public final class AccountDeletionMock: AccountDeletion {
-    
+
     @FuncStub(AccountDeletionMock.initiateAccountDeletionProcess) public var initiateAccountDeletionProcessStub
     public func initiateAccountDeletionProcess(
         over viewController: NSViewController,
@@ -62,7 +62,7 @@ public final class AccountDeletionMock: AccountDeletion {
 import UIKit
 
 public final class AccountDeletionMock: AccountDeletion {
-    
+
     @FuncStub(AccountDeletionMock.initiateAccountDeletionProcess) public var initiateAccountDeletionProcessStub
     public func initiateAccountDeletionProcess(
         over viewController: UIViewController,

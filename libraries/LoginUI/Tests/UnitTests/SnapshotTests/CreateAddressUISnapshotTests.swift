@@ -80,39 +80,39 @@ final class CreateAddressUISnapshotTests: SnapshotTestCase {
             mailboxPassword: "mailboxPassword",
             passwordMode: .one
         )
-        
+
         let authDelegate = AuthHelper()
         let serviceDelegate = AnonymousServiceManager()
         let api = PMAPIService.createAPIService(doh: DohMock() as DoHInterface, sessionUID: "test session ID", challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         api.authDelegate = authDelegate
         api.serviceDelegate = serviceDelegate
         let login = LoginService(api: api, clientApp: .other(named: "core"), minimumAccountType: .internal)
-        
+
         return CreateAddressViewModel(data: createAddressData, login: login, defaultUsername: defaultUsername)
     }
-    
+
     private func createViewController(defaultUsername: String? = nil, email: String, inAppTheme: InAppTheme = .default) -> UIViewController {
         let viewModel = createViewModel(defaultUsername: defaultUsername, email: email)
         let createAddressViewController = UIStoryboard.instantiate(storyboardName: "PMLogin", controllerType: CreateAddressViewController.self, inAppTheme: { inAppTheme })
         createAddressViewController.viewModel = viewModel
         return createAddressViewController
     }
-    
+
     func testCreateAddressViewControllerWithUsername() {
         let controller = createViewController(defaultUsername: "testUserTest", email: "test.test@test.com")
         checkSnapshots(controller: controller, perceptualPrecision: 0.98)
     }
-    
+
     func testCreateAddressViewControllerWithoutUsername() {
         let controller = createViewController(email: "test.test@test.com")
         checkSnapshots(controller: controller, perceptualPrecision: 0.98)
     }
-    
+
     func testCreateAddressViewControllerEnforceLightMode() {
         let controller = createViewController(defaultUsername: "testUserTest", email: "test.test@test.com", inAppTheme: .light)
         checkSnapshots(controller: controller, perceptualPrecision: 0.98)
     }
-    
+
     func testCreateAddressViewControllerEnforceDarkMode() {
         let controller = createViewController(defaultUsername: "testUserTest", email: "test.test@test.com", inAppTheme: .dark)
         checkSnapshots(controller: controller, perceptualPrecision: 0.98)

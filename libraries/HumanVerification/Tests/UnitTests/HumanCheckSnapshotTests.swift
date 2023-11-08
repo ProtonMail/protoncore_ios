@@ -34,7 +34,7 @@ import ProtonCoreServices
 
 @available(iOS 13, *)
 class HumanCheckSnapshotTests: SnapshotTestCase {
-    
+
     func testHumanVerificationScreen() {
         let viewController = UIStoryboard.instantiate(storyboardName: "HumanVerify", controllerType: HumanVerifyViewController.self, name: "HumanVerifyViewController")
         let dohMock = DohMock()
@@ -42,15 +42,15 @@ class HumanCheckSnapshotTests: SnapshotTestCase {
                                                                      challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         let viewModel = HumanVerifyViewModel(api: apiService, startToken: nil, methods: nil, clientApp: .mail)
         viewController.viewModel = viewModel
-        
+
         dohMock.getHumanVerificationV3HostStub.bodyIs { _ in "test.proton.test" }
         dohMock.getHumanVerificationV3HeadersStub.bodyIs { _ in [:] }
-        
+
         let navigationViewController = DarkModeAwareNavigationViewController()
         navigationViewController.modalPresentationStyle = .fullScreen
         navigationViewController.viewControllers = [viewController]
         navigationViewController.hideBackground()
-        
+
         checkSnapshots(controller: navigationViewController, perceptualPrecision: 0.98)
     }
 }

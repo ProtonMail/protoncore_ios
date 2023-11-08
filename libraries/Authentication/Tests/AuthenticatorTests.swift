@@ -47,32 +47,32 @@ import ProtonCoreDataModel
 @testable import ProtonCoreAuthentication
 
 class AuthenticatorTests: XCTestCase {
-    
+
     enum TestCodingKeys: CodingKey { case code }
     let decodingError = DecodingError.keyNotFound(TestCodingKeys.code, .init(codingPath: [TestCodingKeys.code], debugDescription: "Test decoding error"))
-    
+
     let apiBlockedError = NSError.protonMailError(APIErrorCode.potentiallyBlocked, localizedDescription: SRTranslations._core_api_might_be_blocked_message.l10n)
     lazy var apiBlockedResponseError = ResponseError(httpCode: nil, responseCode: nil, userFacingMessage: apiBlockedError.localizedDescription, underlyingError: apiBlockedError)
-    
+
     var apiService: APIServiceMock!
     var srpAuthMock: SrpAuthMock!
-    
+
     static let exampleServerProof = "1234"
     let timeout = 1.0
     static let emptyReponse: [String: Any] = [:]
-    
+
     override class func setUp() {
         super.setUp()
         injectDefaultCryptoImplementation()
     }
-    
+
     override func setUp() {
         apiService = APIServiceMock()
         apiService.fetchAuthCredentialsStub.bodyIs { _, completion in completion(.wrongConfigurationNoDelegate) }
         srpAuthMock = SrpAuthMock()
         super.setUp()
     }
-    
+
     let authInfoResponse = AuthInfoResponse(
         modulus: "test",
         serverEphemeral: "test",
@@ -80,7 +80,7 @@ class AuthenticatorTests: XCTestCase {
         salt: "test",
         srpSession: "test"
     )
-    
+
     var srpProofs: SrpProofsMock {
         let srpProofs = SrpProofsMock()
         srpProofs.clientProof = Data()
@@ -88,27 +88,27 @@ class AuthenticatorTests: XCTestCase {
         srpProofs.expectedServerProof = Data(base64Encoded: AuthenticatorTests.exampleServerProof)
         return srpProofs
     }
-    
+
     struct Response: Codable {
         public var code: Int
     }
-    
+
     func authRouteResponse(twoFA: TwoFA) -> AuthService.AuthRouteResponse {
         return AuthService.AuthRouteResponse(accessToken: "accessToken", tokenType: "tokenType", refreshToken: "refreshToken", scopes: ["Scope"], UID: "UID", userID: "userID", eventID: "eventID", serverProof: AuthenticatorTests.exampleServerProof, passwordMode: PasswordMode.one, _2FA: twoFA)
     }
-    
+
     // MARK: Authenticate with SSO
-    
+
     func test_authenticate_withSSO_success() {
         // Given
         let sut = Authenticator(api: apiService)
         let expectation = XCTestExpectation(description: "success expected")
         let authRouteResponse = AuthService.AuthRouteResponse(accessToken: "", tokenType: "", refreshToken: "refreshToken", scopes: .empty, UID: "", userID: "", eventID: "", serverProof: "", passwordMode: .one, _2FA: .init(enabled: .off))
-        
+
         apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(authRouteResponse))
         }
-        
+
         // When
         sut.authenticate(idpEmail: "test@protonhub.org", responseToken: .init(token: "token", uid: "uid")) { result in
             switch result {
@@ -122,15 +122,15 @@ class AuthenticatorTests: XCTestCase {
             expectation.fulfill()
         }
     }
-    
+
     func test_authenticate_withSSO_fails() {
         // Given
         let sut = Authenticator(api: apiService)
         let expectation = XCTestExpectation(description: "success expected")
         apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-            completion(nil, .failure(.badResponse()))   
+            completion(nil, .failure(.badResponse()))
         }
-        
+
         // When
         sut.authenticate(idpEmail: "test@protonhub.org", responseToken: .init(token: "token", uid: "uid")) { result in
             switch result {
@@ -142,9 +142,9 @@ class AuthenticatorTests: XCTestCase {
             expectation.fulfill()
         }
     }
-    
+
     // MARK: Authenticate
-    
+
     func testAuthenticateSuccessNewCredential() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
@@ -162,7 +162,7 @@ class AuthenticatorTests: XCTestCase {
         srpAuthMock.generateProofsStub.bodyIs { _, _  in
             return self.srpProofs
         }
-        
+
         let username = "username"
         manager.authenticate(username: username, password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
@@ -185,7 +185,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testAuthenticateSuccess2FAOn() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
@@ -203,7 +203,7 @@ class AuthenticatorTests: XCTestCase {
         srpAuthMock.generateProofsStub.bodyIs { _, _  in
             return self.srpProofs
         }
-        
+
         let username = "username"
         manager.authenticate(username: username, password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
@@ -226,7 +226,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testAuthenticateSuccess2FAWebAuthn() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
@@ -244,7 +244,7 @@ class AuthenticatorTests: XCTestCase {
         srpAuthMock.generateProofsStub.bodyIs { _, _  in
             return self.srpProofs
         }
-        
+
         manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(AuthErrors.notImplementedYet(let string)):
@@ -258,7 +258,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testAuthenticateSuccessTryingToAuthenticateInContextOfUnauthSession() {
         let manager = Authenticator(api: apiService)
         let unauthSessionCredentials = AuthCredential(sessionID: "test session",
@@ -283,7 +283,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         srpAuthMock.generateProofsStub.bodyIs { _, _  in self.srpProofs }
-        
+
         let username = "username"
         manager.authenticate(username: username, password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
@@ -299,7 +299,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testAuthenticateSuccessTryingToReauthenticateInContextOfAuthenticatedUser() {
         let manager = Authenticator(api: apiService)
         let username = "username"
@@ -325,7 +325,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         srpAuthMock.generateProofsStub.bodyIs { _, _  in self.srpProofs }
-        
+
         manager.authenticate(username: username, password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .success(Authenticator.Status.newCredential(let credential, _)):
@@ -340,7 +340,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testAuthenticateErrorTryingToAuthenticateInContextOfDifferentAlreadyAuthenticatedUser() {
         let manager = Authenticator(api: apiService)
         let username = "username"
@@ -359,7 +359,7 @@ class AuthenticatorTests: XCTestCase {
         apiService.acquireSessionIfNeededStub.bodyIs { _, completion in
             completion(.success(.sessionUnavailableAndNotFetched))
         }
-        
+
         let expect = expectation(description: "AuthInfo + Auth")
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
@@ -372,7 +372,7 @@ class AuthenticatorTests: XCTestCase {
             }
         }
         srpAuthMock.generateProofsStub.bodyIs { _, _  in self.srpProofs }
-        
+
         manager.authenticate(username: username, password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure:
@@ -389,7 +389,7 @@ class AuthenticatorTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.wasCalledExactlyOnce)
         XCTAssertTrue(apiService.acquireSessionIfNeededStub.wasCalledExactlyOnce)
     }
-    
+
     func testAuthenticateErrorUserInfoNetworkingError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
@@ -402,9 +402,9 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
-            switch result { 
+            switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
                 let resp = responseError.underlyingError as? AuthErrors
                 if case .networkingError(let error) = resp {
@@ -433,7 +433,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         manager.authenticate(username: "username", password: "password", challenge: nil) { result in
             switch result {
             case .failure(let error):
@@ -451,7 +451,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testAuthenticateErrorEmptyClientSrpAuthException() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
@@ -467,7 +467,7 @@ class AuthenticatorTests: XCTestCase {
             // throw exception here
             throw AuthErrors.notImplementedYet("generateProofs error")
         }
-        
+
         manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(AuthErrors.parsingError(let error)):
@@ -486,7 +486,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testAuthenticateErrorEmptyClientSrpAuthEmptyClientProof() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
@@ -506,7 +506,7 @@ class AuthenticatorTests: XCTestCase {
             srpProofs.expectedServerProof = Data(base64Encoded: AuthenticatorTests.exampleServerProof)
             return srpProofs
         }
-        
+
         manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(let error):
@@ -544,7 +544,7 @@ class AuthenticatorTests: XCTestCase {
             srpProofs.expectedServerProof = Data(base64Encoded: AuthenticatorTests.exampleServerProof)
             return srpProofs
         }
-        
+
         manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(let error):
@@ -562,7 +562,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testAuthenticateErrorEmptyClientSrpAuthEmptyExpectedServerProof() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
@@ -582,7 +582,7 @@ class AuthenticatorTests: XCTestCase {
             srpProofs.expectedServerProof = nil
             return srpProofs
         }
-        
+
         manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(let error):
@@ -620,7 +620,7 @@ class AuthenticatorTests: XCTestCase {
             srpProofs.expectedServerProof = Data(base64Encoded: "Wrong data")
             return srpProofs
         }
-        
+
         manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(let error):
@@ -638,7 +638,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testAuthenticateErrorAuthNetworkingError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
@@ -656,7 +656,7 @@ class AuthenticatorTests: XCTestCase {
         srpAuthMock.generateProofsStub.bodyIs { _, _  in
             return self.srpProofs
         }
-        
+
         manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
@@ -675,7 +675,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testAuthenticateErrorAPIMightBeBlocked() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
@@ -692,7 +692,7 @@ class AuthenticatorTests: XCTestCase {
         srpAuthMock.generateProofsStub.bodyIs { _, _  in
             return self.srpProofs
         }
-        
+
         manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(AuthErrors.apiMightBeBlocked(let message, let originalError)):
@@ -707,7 +707,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testAuthenticateErrorAuthPerseError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
@@ -738,7 +738,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testAuthenticateErrorWrongServerProof() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "AuthInfo + Auth")
@@ -758,7 +758,7 @@ class AuthenticatorTests: XCTestCase {
             srpProofs.expectedServerProof = Data(base64Encoded: "1239")
             return srpProofs
         }
-        
+
         manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .failure(let error):
@@ -776,7 +776,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     // MARK: Confirm2FA
 
     func testConfirm2FASucess() {
@@ -791,7 +791,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope1", "Scope2"])
         let context = TwoFactorContext(credential: testCredential, passwordMode: .one)
         manager.confirm2FA("code", context: context) { result in
@@ -814,7 +814,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testConfirm2FAErrorResponseParseError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "2fa")
@@ -842,7 +842,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testConfirm2FAErrorResponseNetworkingError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "2fa")
@@ -855,7 +855,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         let context = TwoFactorContext(credential: testCredential, passwordMode: .one)
         manager.confirm2FA("code", context: context) { result in
@@ -876,7 +876,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testConfirm2FAApiMightBeBlockedError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "2fa")
@@ -888,7 +888,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         let context = TwoFactorContext(credential: testCredential, passwordMode: .one)
         manager.confirm2FA("code", context: context) { result in
@@ -905,9 +905,9 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     // MARK: refreshCredential
-    
+
     func testRefreshCredentialSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "refreshCredential")
@@ -923,7 +923,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.refreshCredential(testCredential) { result in
             switch result {
@@ -944,7 +944,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testRefreshCredentialErrorResponseParseError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "refreshCredential")
@@ -971,7 +971,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-        
+
     func testRefreshCredentialErrorNetworkingError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "refreshCredential")
@@ -984,7 +984,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.refreshCredential(testCredential) { result in
             switch result {
@@ -1004,7 +1004,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testRefreshCredentialApiMightBeBlockedError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "refreshCredential")
@@ -1016,7 +1016,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.refreshCredential(testCredential) { result in
             switch result {
@@ -1032,9 +1032,9 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     // MARK: checkAvailable
-    
+
     func testCheckAvailableWithinDomainSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "checkAvailable")
@@ -1050,7 +1050,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         manager.checkAvailableUsernameWithinDomain(userName, domain: domain) { result in
             switch result {
             case .success:
@@ -1064,7 +1064,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testCheckAvailableWithinDomainErrorUsernameAlreadyUsed() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "checkAvailable")
@@ -1081,7 +1081,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         manager.checkAvailableUsernameWithinDomain(userName, domain: domain) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
@@ -1100,7 +1100,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testCheckAvailableWithoutDomainSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "checkAvailable")
@@ -1115,7 +1115,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         manager.checkAvailableUsernameWithoutSpecifyingDomain(userName) { result in
             switch result {
             case .success:
@@ -1129,7 +1129,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testCheckAvailableWithoutDomainAvailableErrorUsernameAlreadyUsed() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "checkAvailable")
@@ -1145,7 +1145,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         manager.checkAvailableUsernameWithoutSpecifyingDomain(userName) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
@@ -1164,9 +1164,9 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     // MARK: setUsername
-    
+
     func testSetUsernameSuccess() {
         let manager = Authenticator(api: apiService)
         let expect1 = expectation(description: "setUsername")
@@ -1180,7 +1180,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.setUsername(testCredential, username: "username") { result in
             switch result {
@@ -1191,7 +1191,7 @@ class AuthenticatorTests: XCTestCase {
             }
             expect1.fulfill()
         }
-        
+
         manager.setUsername(nil, username: "username") { result in
             switch result {
             case .success:
@@ -1205,7 +1205,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testSetUsernameNetworkingError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "setUsername")
@@ -1218,7 +1218,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         manager.setUsername(nil, username: "username") { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
@@ -1237,7 +1237,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testSetUsernameApiMightBeBlockedError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "setUsername")
@@ -1249,7 +1249,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         manager.setUsername(nil, username: "username") { result in
             switch result {
             case .failure(.apiMightBeBlocked(let message, let originalError)):
@@ -1264,9 +1264,9 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     // MARK: createAddress
-    
+
     func testCreateAddressSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createAddress")
@@ -1281,7 +1281,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.createAddress(testCredential, domain: "domain", displayName: "displayName", signature: "signature") { result in
             switch result {
@@ -1292,12 +1292,12 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testCreateAddressParseError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createAddress")
@@ -1325,7 +1325,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testCreateAddressNetworkingError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createAddress")
@@ -1338,7 +1338,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.createAddress(testCredential, domain: "domain", displayName: "displayName", signature: "signature") { result in
             switch result {
@@ -1354,12 +1354,12 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testCreateAddressApiMightBeBlockedError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createAddress")
@@ -1371,7 +1371,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.createAddress(testCredential, domain: "domain", displayName: "displayName", signature: "signature") { result in
             switch result {
@@ -1383,14 +1383,14 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     // MARK: createUser without domain
-    
+
     func testCreateUserSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createUser")
@@ -1404,7 +1404,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let userParameters = UserParameters(userName: "userName", email: "email@email.ch", phone: "1234", modulusID: "modulusID", salt: "salt", verifer: "verifer", productPrefix: "mail", domain: nil)
         manager.createUser(userParameters: userParameters) { result in
             switch result {
@@ -1415,12 +1415,12 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testCreateUserNetworkingError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createUser")
@@ -1434,7 +1434,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let userParameters = UserParameters(userName: "userName", email: "email@email.ch", phone: "1234", modulusID: "modulusID", salt: "salt", verifer: "verifer", productPrefix: "mail", domain: nil)
         manager.createUser(userParameters: userParameters) { result in
             switch result {
@@ -1450,12 +1450,12 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testCreateUserApiMightBeBlockedError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createUser")
@@ -1468,7 +1468,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let userParameters = UserParameters(userName: "userName", email: "email@email.ch", phone: "1234", modulusID: "modulusID", salt: "salt", verifer: "verifer", productPrefix: "mail", domain: nil)
         manager.createUser(userParameters: userParameters) { result in
             switch result {
@@ -1480,14 +1480,14 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     // MARK: createUser
-    
+
     func testCreateUserWithDomainSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createUser")
@@ -1501,7 +1501,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let userParameters = UserParameters(userName: "userName", email: "email@email.ch", phone: "1234", modulusID: "modulusID", salt: "salt", verifer: "verifer", productPrefix: "mail", domain: "proton.test")
         manager.createUser(userParameters: userParameters) { result in
             switch result {
@@ -1512,12 +1512,12 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testCreateUserWithDomainNetworkingError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createUser")
@@ -1531,7 +1531,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let userParameters = UserParameters(userName: "userName", email: "email@email.ch", phone: "1234", modulusID: "modulusID", salt: "salt", verifer: "verifer", productPrefix: "mail", domain: "proton.test")
         manager.createUser(userParameters: userParameters) { result in
             switch result {
@@ -1547,12 +1547,12 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testCreateUserWithDomainApiMightBeBlockedError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createUser")
@@ -1565,7 +1565,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let userParameters = UserParameters(userName: "userName", email: "email@email.ch", phone: "1234", modulusID: "modulusID", salt: "salt", verifer: "verifer", productPrefix: "mail", domain: "proton.test")
         manager.createUser(userParameters: userParameters) { result in
             switch result {
@@ -1577,12 +1577,12 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     // MARK: createExternalUser
 
     func testCreateExternalUserSuccess() {
@@ -1597,7 +1597,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let externalUserParameters = ExternalUserParameters(email: "email@email.ch", modulusID: "modulusID", salt: "salt", verifer: "verifer", challenge: [["challenge": "challenge"]], verifyToken: "verifyToken", tokenType: "test", productPrefix: "mail")
         manager.createExternalUser(externalUserParameters: externalUserParameters) { result in
             switch result {
@@ -1608,12 +1608,12 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testCreateExternalUserNetworkingError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createExternalUser")
@@ -1626,7 +1626,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let externalUserParameters = ExternalUserParameters(email: "email@email.ch", modulusID: "modulusID", salt: "salt", verifer: "verifer", challenge: [["challenge": "challenge"]], verifyToken: "verifyToken", tokenType: "test", productPrefix: "mail")
         manager.createExternalUser(externalUserParameters: externalUserParameters) { result in
             switch result {
@@ -1642,12 +1642,12 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testCreateExternalUserApiMightBeBlockedError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createExternalUser")
@@ -1659,7 +1659,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let externalUserParameters = ExternalUserParameters(email: "email@email.ch", modulusID: "modulusID", salt: "salt", verifer: "verifer", challenge: [["challenge": "challenge"]], verifyToken: "verifyToken", tokenType: "test", productPrefix: "mail")
         manager.createExternalUser(externalUserParameters: externalUserParameters) { result in
             switch result {
@@ -1671,14 +1671,14 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     // MARK: getUserInfo
-    
+
     func testGetUserInfoSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getUserInfo")
@@ -1710,7 +1710,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let credential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.getUserInfo(credential) { result in
             switch result {
@@ -1721,12 +1721,12 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testGetUserInfoParseError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getUserInfo")
@@ -1767,7 +1767,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let credential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.getUserInfo(credential) { result in
             switch result {
@@ -1783,12 +1783,12 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testGetUserInfoApiMightBeBlockedError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getUserInfo")
@@ -1800,7 +1800,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let credential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.getUserInfo(credential) { result in
             switch result {
@@ -1812,14 +1812,14 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     // MARK: getAddresses
-    
+
     func testGetAddressesSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getAddresses")
@@ -1837,7 +1837,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.getAddresses(testCredential) { result in
             switch result {
@@ -1848,12 +1848,12 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testGetAddressesParseError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getAddresses")
@@ -1894,7 +1894,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.getAddresses(testCredential) { result in
             switch result {
@@ -1910,12 +1910,12 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testGetAddressesApiMightBeBlockedError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getAddresses")
@@ -1927,7 +1927,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.getAddresses(testCredential) { result in
             switch result {
@@ -1939,14 +1939,14 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     // MARK: getKeySalts
-    
+
     func testGetKeySaltsSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getKeySalts")
@@ -1962,7 +1962,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.getKeySalts(testCredential) { result in
             switch result {
@@ -1973,12 +1973,12 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testGetKeySaltsParseError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getKeySalts")
@@ -2019,7 +2019,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.getKeySalts(testCredential) { result in
             switch result {
@@ -2035,12 +2035,12 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testGetKeySaltsApiMightBeBlockedError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getKeySalts")
@@ -2052,7 +2052,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.getKeySalts(testCredential) { result in
             switch result {
@@ -2064,14 +2064,14 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     // MARK: closeSession
-    
+
     func testCloseSessionSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "closeSession")
@@ -2084,7 +2084,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.closeSession(testCredential) { result in
             switch result {
@@ -2095,12 +2095,12 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testCloseSessionNetworkingError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "closeSession")
@@ -2113,7 +2113,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.closeSession(testCredential) { result in
             switch result {
@@ -2129,12 +2129,12 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testCloseSessionApiMightBeBlockedError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "closeSession")
@@ -2146,7 +2146,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         manager.closeSession(testCredential) { result in
             switch result {
@@ -2158,14 +2158,14 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     // MARK: getRandomSRPModulus
-    
+
     func testGetRandomSRPModulusSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getRandomSRPModulus")
@@ -2178,7 +2178,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         manager.getRandomSRPModulus { result in
             switch result {
             case .success(let response):
@@ -2188,12 +2188,12 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testGetRandomSRPModulusParseError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getRandomSRPModulus")
@@ -2220,7 +2220,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testGetRandomSRPModulusNetworkingError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getRandomSRPModulus")
@@ -2233,7 +2233,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         manager.getRandomSRPModulus { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
@@ -2248,12 +2248,12 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testGetRandomSRPModulusApiMightBeBlockedError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "getRandomSRPModulus")
@@ -2265,7 +2265,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         manager.getRandomSRPModulus { result in
             switch result {
             case .failure(.apiMightBeBlocked(let message, let originalError)):
@@ -2276,7 +2276,7 @@ class AuthenticatorTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }

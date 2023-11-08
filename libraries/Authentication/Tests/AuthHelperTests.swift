@@ -39,14 +39,14 @@ import ProtonCoreDataModel
 
 @available(iOS 13.0.0, *)
 class AuthHelperTests: XCTestCase {
-    
+
     let initialCredential = Credential(UID: "test session", accessToken: "test access", refreshToken: "test refresh", userName: "test user name", userID: "test user id", scopes: ["test scope"])
     let initialAuthCredential: AuthCredential = {
         let authCredential = AuthCredential(sessionID: "test session", accessToken: "test access", refreshToken: "test refresh", userName: "test user name", userID: "test user id", privateKey: "test private key", passwordKeySalt: "test salt")
         authCredential.udpate(password: "test password")
         return authCredential
     }()
-    
+
     /// TODO: validation tests???
 
     /// * that returns initial credentials
@@ -58,9 +58,9 @@ class AuthHelperTests: XCTestCase {
         XCTAssertEqual(fetchedCredential, initialCredential)
         XCTAssertTrue(AuthCredential.areEqualFieldwise(fetchedAuthCredential, AuthCredential(initialCredential)))
     }
-    
+
     /// * that returns initial auth credentials
-    
+
     func testAuthHelperReturnsInitialAuthCredential() throws {
         let out = AuthHelper(authCredential: initialAuthCredential)
         let fetchedCredential = try XCTUnwrap(out.credential(sessionUID: "test session"))
@@ -68,9 +68,9 @@ class AuthHelperTests: XCTestCase {
         XCTAssertEqual(fetchedCredential, Credential(initialAuthCredential))
         XCTAssertEqual(fetchedAuthCredential, initialAuthCredential)
     }
-    
+
     /// * that returns initial both credentials
-    
+
     func testAuthHelperReturnsInitialBothCredentials() throws {
         let out = try XCTUnwrap(AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential)))
         let fetchedCredential = try XCTUnwrap(out.credential(sessionUID: "test session"))
@@ -78,17 +78,17 @@ class AuthHelperTests: XCTestCase {
         XCTAssertEqual(fetchedCredential, initialCredential)
         XCTAssertEqual(fetchedAuthCredential, initialAuthCredential)
     }
-    
+
     /// * that returns nil if initiated with nil
-    
+
     func testAuthHelperReturnsNilIfInitiatedWithNil() throws {
         let out = AuthHelper()
         XCTAssertNil(out.credential(sessionUID: "test session"))
         XCTAssertNil(out.authCredential(sessionUID: "test session"))
     }
-    
+
     /// * that returns nil if initiated with not matching credentials nil
-    
+
     func testAuthHelperReturnsNilIfInitiatedWithNotMatchingCredentials() throws {
         let out1 = AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential.updated(UID: "wrong session")))
         XCTAssertNil(out1)
@@ -101,26 +101,26 @@ class AuthHelperTests: XCTestCase {
         let out5 = AuthHelper(initialBothCredentials: (initialAuthCredential.updated(userID: "wrong user id"), initialCredential))
         XCTAssertNil(out5)
     }
-    
+
     /// * that returns nil if asked with wrong session
-    
+
     func testAuthHelperReturnsNilIfAskedForWrongSession() throws {
         let out = try XCTUnwrap(AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential)))
         XCTAssertNil(out.credential(sessionUID: "wrong session"))
         XCTAssertNil(out.authCredential(sessionUID: "wrong session"))
     }
-    
+
     /// * that clears on logout with right session
-    
+
     func testAuthHelperClearsCredentialsOnLogout() throws {
         let out = try XCTUnwrap(AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential)))
         out.onAuthenticatedSessionInvalidated(sessionUID: "test session")
         XCTAssertNil(out.credential(sessionUID: "test session"))
         XCTAssertNil(out.authCredential(sessionUID: "test session"))
     }
-    
+
     /// * that doesn't clear on logout with wrong session
-    
+
     func testAuthHelperDoesNotClearCredentialsOnLogoutForWrongSession() throws {
         let out = try XCTUnwrap(AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential)))
         out.onAuthenticatedSessionInvalidated(sessionUID: "wrong session")
@@ -129,54 +129,54 @@ class AuthHelperTests: XCTestCase {
         XCTAssertEqual(fetchedCredential, initialCredential)
         XCTAssertEqual(fetchedAuthCredential, initialAuthCredential)
     }
-    
+
     /// * that sets credentials on authentication if no previous credentials
-    
+
     func testAuthHelperSetsCredentialsIfNoPreviousCredentialsWereSet() throws {
         let out = AuthHelper()
         let newCredentials: Credential = .init(UID: "other session", accessToken: "other token", refreshToken: "other refresh", userName: "other username", userID: "other userID", scopes: ["other"])
-        
+
         out.onSessionObtaining(credential: newCredentials)
-        
+
         let fetchedCredential = try XCTUnwrap(out.credential(sessionUID: newCredentials.UID))
         let fetchedAuthCredential = try XCTUnwrap(out.authCredential(sessionUID: newCredentials.UID))
         XCTAssertEqual(fetchedCredential, newCredentials)
         XCTAssertTrue(AuthCredential.areEqualFieldwise(fetchedAuthCredential, AuthCredential(newCredentials)))
     }
-    
+
     /// * that sets credentials on authentication if previous credentials of different session
-    
+
     func testAuthHelperSetsCredentialsIfPreviousCredentialsWereWithDifferentSession() throws {
         let out = try XCTUnwrap(AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential)))
         let newCredentials: Credential = .init(UID: "other session", accessToken: "other token", refreshToken: "other refresh", userName: "other username", userID: "other userID", scopes: ["other"])
-        
+
         out.onSessionObtaining(credential: newCredentials)
-        
+
         XCTAssertNil(out.credential(sessionUID: initialCredential.UID))
         XCTAssertNil(out.authCredential(sessionUID: initialAuthCredential.sessionID))
-        
+
         let fetchedCredential = try XCTUnwrap(out.credential(sessionUID: newCredentials.UID))
         let fetchedAuthCredential = try XCTUnwrap(out.authCredential(sessionUID: newCredentials.UID))
         XCTAssertEqual(fetchedCredential, newCredentials)
         XCTAssertTrue(AuthCredential.areEqualFieldwise(fetchedAuthCredential, AuthCredential(newCredentials)))
     }
-    
+
     /// * that sets credentials on authentication if previous credentials of same session
-    
+
     func testAuthHelperSetsCredentialsIfPreviousCredentialsWereWithSameSession() throws {
         let out = try XCTUnwrap(AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential)))
         let newCredentials: Credential = .init(UID: initialCredential.UID, accessToken: "other token", refreshToken: "other refresh", userName: "other username", userID: "other userID", scopes: ["other"])
-        
+
         out.onSessionObtaining(credential: newCredentials)
-        
+
         let fetchedCredential = try XCTUnwrap(out.credential(sessionUID: initialCredential.UID))
         let fetchedAuthCredential = try XCTUnwrap(out.authCredential(sessionUID: initialCredential.UID))
         XCTAssertEqual(fetchedCredential, newCredentials)
         XCTAssertTrue(AuthCredential.areEqualFieldwise(fetchedAuthCredential, AuthCredential(newCredentials)))
     }
-    
+
     /// * that updates if no previous credentials
-    
+
     func testAuthHelperUpdatesCredentialsIfNoneWereAvailable() throws {
         let out = AuthHelper()
         out.onUpdate(credential: initialCredential, sessionUID: "test session")
@@ -185,9 +185,9 @@ class AuthHelperTests: XCTestCase {
         XCTAssertEqual(fetchedCredential, initialCredential)
         XCTAssertTrue(AuthCredential.areEqualFieldwise(fetchedAuthCredential, AuthCredential(initialCredential)))
     }
-    
+
     /// * that doesn't update if previous credentials but wrong session
-    
+
     func testAuthHelperDoesNotUpdateCredentialsIfWrongSession() throws {
         let out = try XCTUnwrap(AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential)))
         out.onUpdate(credential: initialCredential, sessionUID: "wrong session")
@@ -196,9 +196,9 @@ class AuthHelperTests: XCTestCase {
         XCTAssertEqual(fetchedCredential, initialCredential)
         XCTAssertEqual(fetchedAuthCredential, initialAuthCredential)
     }
-    
+
     /// * that updates if previous credentials and right session
-    
+
     func testAuthHelperUpdatesCredentialsIfRightSession() throws {
         let newCredentials = Credential(UID: "test session", accessToken: "new access token", refreshToken: "new refresh token", userName: "new username", userID: "new password", scopes: ["new scope"])
         let out = try XCTUnwrap(AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential)))
@@ -208,9 +208,9 @@ class AuthHelperTests: XCTestCase {
         XCTAssertEqual(fetchedCredential, newCredentials)
         XCTAssertTrue(AuthCredential.areEqualFieldwise(fetchedAuthCredential, initialAuthCredential.updatedKeepingKeyAndPasswordDataIntact(credential: newCredentials)))
     }
-    
+
     /// * that doesn't update scopes if none provided
-    
+
     func testAuthHelperDoesNotClearScopesOnUpdate() throws {
         let newCredentials = Credential(UID: "test session", accessToken: "new access token", refreshToken: "new refresh token", userName: "new username", userID: "new password", scopes: [])
         let out = AuthHelper(credential: initialCredential)
@@ -219,9 +219,9 @@ class AuthHelperTests: XCTestCase {
         XCTAssertEqual(fetchedCredential.accessToken, "new access token")
         XCTAssertEqual(fetchedCredential.scopes, ["test scope"])
     }
-    
+
     /// * that doesn't update key and password
-    
+
     func testAuthHelperDoesNotUpdateKeyAndPassword() throws {
         let newCredentials = Credential(UID: "test session", accessToken: "new access token", refreshToken: "new refresh token", userName: "new username", userID: "new password", scopes: [])
         let out = AuthHelper(authCredential: initialAuthCredential)
@@ -232,9 +232,9 @@ class AuthHelperTests: XCTestCase {
         XCTAssertEqual(fetchedAuthCredential.privateKey, "test private key")
         XCTAssertEqual(fetchedAuthCredential.passwordKeySalt, "test salt")
     }
-    
+
     /// * that updates password, salt, private key
-    
+
     func testAuthHelperDoesUpdateKeyAndPassword() throws {
         let out = AuthHelper(authCredential: initialAuthCredential)
         out.onAdditionalCredentialsInfoObtained(sessionUID: "test session", password: "new password", salt: "new salt", privateKey: "new private key")
@@ -243,9 +243,9 @@ class AuthHelperTests: XCTestCase {
         XCTAssertEqual(fetchedAuthCredential.privateKey, "new private key")
         XCTAssertEqual(fetchedAuthCredential.passwordKeySalt, "new salt")
     }
-    
+
     /// * that doesn't update password, salt, private key if wrong session
-    
+
     func testAuthHelperDoesNotUpdateKeyAndPasswordIfWrongSession() throws {
         let out = AuthHelper(authCredential: initialAuthCredential)
         out.onAdditionalCredentialsInfoObtained(sessionUID: "wrong session", password: "new password", salt: "new salt", privateKey: "new private key")
@@ -254,17 +254,17 @@ class AuthHelperTests: XCTestCase {
         XCTAssertEqual(fetchedAuthCredential.privateKey, "test private key")
         XCTAssertEqual(fetchedAuthCredential.passwordKeySalt, "test salt")
     }
-    
+
     /// * that doesn't update password, salt, private key if no previous credentials
-    
+
     func testAuthHelperDoesNotUpdateKeyAndPasswordIfNoPreviousCredentials() throws {
         let out = AuthHelper()
         out.onAdditionalCredentialsInfoObtained(sessionUID: "wrong session", password: "new password", salt: "new salt", privateKey: "new private key")
         XCTAssertNil(out.authCredential(sessionUID: "test session"))
     }
-    
+
     /// * delegate is called if credentials are cleared
-    
+
     func testAuthHelperCallsDelegateIfCredentialsAreCleared() throws {
         let delegate = AuthHelperDelegateMock()
         let out = try XCTUnwrap(AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential)))
@@ -275,9 +275,9 @@ class AuthHelperTests: XCTestCase {
         XCTAssertEqual(delegate.sessionWasInvalidatedStub.lastArguments?.first, "test session")
         XCTAssertEqual(delegate.sessionWasInvalidatedStub.lastArguments?.second, true)
     }
-    
+
     /// * delegate is called if credentials are updated
-    
+
     func testAuthHelperCallsDelegateIfCredentialsAreUpdated() throws {
         let delegate = AuthHelperDelegateMock()
         let newCredentials = Credential(UID: "test session", accessToken: "new access token", refreshToken: "new refresh token", userName: "new username", userID: "new password", scopes: ["new scope"])
@@ -289,7 +289,7 @@ class AuthHelperTests: XCTestCase {
         XCTAssertEqual(delegate.credentialsWereUpdatedStub.lastArguments?.a2, newCredentials)
         XCTAssertEqual(delegate.credentialsWereUpdatedStub.lastArguments?.a3, "test session")
     }
-    
+
     func testAuthHelperCallsDelegateIfAuthIsUpdated() throws {
         let delegate = AuthHelperDelegateMock()
         let out = try XCTUnwrap(AuthHelper(initialBothCredentials: (initialAuthCredential, initialCredential)))
@@ -302,9 +302,9 @@ class AuthHelperTests: XCTestCase {
         XCTAssertEqual(delegate.credentialsWereUpdatedStub.lastArguments?.a1.privateKey, "new private key")
         XCTAssertEqual(delegate.credentialsWereUpdatedStub.lastArguments?.a3, "test session")
     }
-    
+
     /// TODO: multithreading tests!
-    
+
     func testConcurrentFetching() async throws {
         let out = AuthHelper(authCredential: initialAuthCredential)
         let results: [AuthCredential?] = await performConcurrentlySettingExpectations(amount: 100) { _, continuation in
@@ -313,7 +313,7 @@ class AuthHelperTests: XCTestCase {
         }
         XCTAssertEqual(results.compactMap { $0 }, Array(repeating: initialAuthCredential, count: 100))
     }
-    
+
     func testConcurrentClearing() async throws {
         let delegate = AuthHelperDelegateMock()
         let out = AuthHelper(authCredential: initialAuthCredential)
@@ -325,7 +325,7 @@ class AuthHelperTests: XCTestCase {
         XCTAssertTrue(delegate.sessionWasInvalidatedStub.wasCalledExactlyOnce)
         XCTAssertTrue(delegate.credentialsWereUpdatedStub.wasNotCalled)
     }
-    
+
     #if !(SPM && os(macOS))
     func testConcurrentUpdating() async throws {
         let delegate = AuthHelperDelegateMock()

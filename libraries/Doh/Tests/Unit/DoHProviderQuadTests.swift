@@ -28,9 +28,9 @@ import OHHTTPStubsSwift
 
 @available(iOS 15, *)
 class DoHProviderQuadTests: XCTestCase {
-    
+
     var networkingEngine: DoHNetworkingEngine!
-    
+
     override func setUp() {
         super.setUp()
         // we use a real url session because the mocking is done on the urlsession level with HTTPStubs
@@ -44,14 +44,14 @@ class DoHProviderQuadTests: XCTestCase {
         HTTPStubs.removeAllStubs()
         networkingEngine = nil
     }
- 
+
     func testQuad9ProviderInit() {
         let quad9 = Quad9(networkingEngine: networkingEngine)
         XCTAssertEqual(quad9.supported.count, 2)
         XCTAssert(quad9.supported.contains(DNSRecordType.txt))
         XCTAssert(quad9.supported.contains(DNSRecordType.a))
     }
-    
+
     func testQuad9Url() {
         let quad9 = Quad9(networkingEngine: networkingEngine)
         XCTAssertTrue(quad9.queryUrl.absoluteString.contains("dns11.quad9.net"))
@@ -79,7 +79,7 @@ class DoHProviderQuadTests: XCTestCase {
         }
         XCTAssertNil(dns)
     }
-    
+
     func testQuad9Response() async {
         stubDoHProvidersSuccess()
         let quad9 = Quad9(networkingEngine: networkingEngine)
@@ -88,7 +88,7 @@ class DoHProviderQuadTests: XCTestCase {
         }
         XCTAssertNotNil(dns)
     }
-    
+
     func testQuad9BadResponse1() async {
         stub(condition: isHost("dns11.quad9.net") && isMethodGET() && isPath("/dns-query")) { request in
             let dbody = "".data(using: String.Encoding.utf8)!
@@ -100,7 +100,7 @@ class DoHProviderQuadTests: XCTestCase {
         }
         XCTAssertNil(dns)
     }
-    
+
     func testQuad9BadResponse2() async {
         stub(condition: isHost("dns11.quad9.net") && isMethodGET() && isPath("/dns-query")) { request in
             let dbody = "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":true,\"CD\":false,\"Question\":[{\"name\":\"test.host.name.\",\"type\":16}],\"Authority\":[{\"name\":\".\",\"type\":6,\"TTL\":86394,\"data\":\"a.root-servers.net. nstld.verisign-grs.com. 2021071901 1800 900 604800 86400\"}]}".data(using: String.Encoding.utf8)!
@@ -112,7 +112,7 @@ class DoHProviderQuadTests: XCTestCase {
         }
         XCTAssertNil(dns)
     }
-    
+
     func testQuad9BadResponse3() async {
         stub(condition: isHost("dns11.quad9.net") && isMethodGET() && isPath("/dns-query")) { request in
             let dbody = "[\"Ford\", \"BMW\", \"Fiat\", \"Tonka\"]".data(using: String.Encoding.utf8)!
@@ -124,7 +124,7 @@ class DoHProviderQuadTests: XCTestCase {
         }
         XCTAssertNil(dns)
     }
-    
+
     func testQuad9BadResponse4() async {
         stub(condition: isHost("dns11.quad9.net") && isMethodGET() && isPath("/dns-query")) { request in
             var dict = [String: Any]()
@@ -152,7 +152,7 @@ class DoHProviderQuadTests: XCTestCase {
         }
         XCTAssertNil(dns)
     }
-    
+
     func testQuad9BadResponse5() async {
         stub(condition: isHost("dns11.quad9.net") && isMethodGET() && isPath("/dns-query")) { request in
             var dict = [String: Any]()
@@ -180,7 +180,7 @@ class DoHProviderQuadTests: XCTestCase {
         }
         XCTAssertNil(dns)
     }
-    
+
     func testQuad9GetQueryWithSessionID() {
         let quad9 = Quad9(networkingEngine: networkingEngine)
         let sessionId = "Session123"

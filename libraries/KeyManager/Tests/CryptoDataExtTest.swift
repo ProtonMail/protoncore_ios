@@ -25,9 +25,9 @@ import ProtonCoreDataModel
 @testable import ProtonCoreKeyManager
 
 class CryptoDataExtTest: TestCaseBase {
-    
+
     // MARK: test data extension
-    
+
     func testDecryptAttachment() {
         let userkey = content(of: "data1_user_key")
         let userPassphrase = content(of: "data1_user_passphrse")
@@ -37,14 +37,14 @@ class CryptoDataExtTest: TestCaseBase {
         let calEncPass = content(of: "data1_calendar_enc_pass")
         let calClearPass = content(of: "data1_calendar_clear_pass")
         let splited = try! calEncPass.split()
-        
+
         let keyPacket = splited?.getBinaryKeyPacket()
         let dataPacket = splited?.getBinaryDataPacket()
-        
+
         let key = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
                            privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: addrTokenSignature,
                            activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
-        
+
         do{
             let data = try dataPacket!.decryptAttachmentNonOptional(keyPackage: keyPacket!,
                                                                userKeys: [userkey.unArmor!],
@@ -52,7 +52,7 @@ class CryptoDataExtTest: TestCaseBase {
                                                                keys: [key])
             let str = String.init(data: data, encoding: .utf8)
             XCTAssertTrue(str == calClearPass)
-            
+
         } catch {
             XCTFail("Error: \(error)")
         }
@@ -69,11 +69,11 @@ class CryptoDataExtTest: TestCaseBase {
         } catch {
             XCTFail("Error: \(error)")
         }
-        
+
     }
-    
+
     func testGetSessionFromPubKeyPackage() throws {
-        
+
         let userkey = content(of: "data1_user_key")
         let userPassphrase = content(of: "data1_user_passphrse")
         let addrPriv = content(of: "data1_address_key")
@@ -81,24 +81,24 @@ class CryptoDataExtTest: TestCaseBase {
         let addrTokenSignature = content(of: "data1_address_key_token_sign")
         let calEncPass = content(of: "data1_calendar_enc_pass")
         let splited = try! calEncPass.split()
-        
+
         let keyPacket = splited?.getBinaryKeyPacket()
-        
+
         let key = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
                            privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: addrTokenSignature,
                            activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
-        
+
         let session = try keyPacket!.getSessionFromPubKeyPackageNonOptional(userKeys: [userkey.unArmor!],
                                                                                 passphrase: userPassphrase,
                                                                                 keys: [key])
         XCTAssertNotNil(session)
         XCTAssertTrue(!session.algo.isEmpty)
         XCTAssertNotNil(session.key)
-        
+
         let key1 = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
                             privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: addrTokenSignature,
                             activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
-        
+
         let session1 = try keyPacket!.getSessionFromPubKeyPackageNonOptional(userKeys: [userkey.unArmor!],
                                                                                  passphrase: userPassphrase,
                                                                                  keys: [key1])

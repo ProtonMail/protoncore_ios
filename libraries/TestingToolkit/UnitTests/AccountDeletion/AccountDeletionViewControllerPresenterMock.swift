@@ -28,9 +28,9 @@ import ProtonCoreTestingToolkitUnitTestsCore
 
 #if canImport(AppKit)
 public struct AccountDeletionViewControllerPresenterMock: AccountDeletionViewControllerPresenter {
-    
+
     public init() {}
-    
+
     @FuncStub(AccountDeletionViewControllerPresenterMock.presentAsModalWindow) public var presentAsModalWindowStub
     public func presentAsModalWindow(_ vc: NSViewController) {
         presentAsModalWindowStub(vc)
@@ -40,9 +40,9 @@ public struct AccountDeletionViewControllerPresenterMock: AccountDeletionViewCon
 #elseif canImport(UIKit)
 
 public struct AccountDeletionViewControllerPresenterMock: AccountDeletionViewControllerPresenter {
-    
+
     public init() {}
-    
+
     @FuncStub(AccountDeletionViewControllerPresenterMock.present) public var presentStub
     public func present(_ vc: UIViewController, animated: Bool, completion: (() -> Void)?) {
         presentStub(vc, animated, completion)

@@ -25,10 +25,10 @@ import ProtonCoreTestingToolkitUnitTestsCore
 #endif
 
 public class ServicePlansMock {
-    
+
     public init() {
     }
-    
+
     public var statusAnswer = """
     {
         "Paypal" : true,
@@ -39,7 +39,7 @@ public class ServicePlansMock {
         "Apple" : true
     }
     """
-    
+
     public var plansAnswer = """
     {
         "Plans" : [
@@ -299,7 +299,7 @@ public class ServicePlansMock {
         "Code" : 1000
       }
     """
-    
+
     public var defaultPlansAnswer = """
     {
       "Plans" : [
@@ -339,13 +339,13 @@ public class ServicePlansMock {
       "Code" : 1000
     }
     """
-    
+
     public var freeSubscriptionAnswer = """
     {
       "Code" : 22110
     }
     """
-    
+
     public var mailSubscriptionAnswer = """
     {
       "Code" : 1000,
@@ -381,7 +381,7 @@ public class ServicePlansMock {
       }
     }
     """
-    
+
     public var appleAnswer = """
     {
       "Proceeds" : "49.00",

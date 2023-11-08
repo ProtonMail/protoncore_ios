@@ -17,10 +17,10 @@ import ProtonCoreObfuscatedConstants
 import ProtonCoreQuarkCommands
 
 class CreateAddressTests: LoginBaseTestCase {
-    
+
     let mainRobot = LoginSampleAppRobot()
     var createAddressTestCases: CreateAddressTestCases!
-    
+
     override func setUp() {
         super.setUp()
         createAddressTestCases = CreateAddressTestCases(doh: doh)
@@ -28,25 +28,25 @@ class CreateAddressTests: LoginBaseTestCase {
             .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
             .showLogin()
     }
-    
+
     func testShowCreateAddressSuccessfulCreation() {
         createAddressTestCases.testShowCreateAddressSuccessfulCreation(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testShowCreateAddressNewNameSuccessfulCreation() {
         createAddressTestCases.testShowCreateAddressNewNameSuccessfulCreation(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testShowCreateAddressCancelButton() {
         createAddressTestCases.testShowCreateAddressCancelButton()
     }
-    
+
     func testShowCreateAddressBackButton() {
         createAddressTestCases.testShowCreateAddressBackButton()
     }
-    
+
     func testShowCreateAddressInvalidCharacter() {
         createAddressTestCases.testShowCreateAddressInvalidCharacter()
     }

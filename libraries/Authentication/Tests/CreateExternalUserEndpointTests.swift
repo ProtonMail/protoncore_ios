@@ -48,7 +48,7 @@ final class CreateExternalUserEndpointTests: XCTestCase {
             )
         )
     }
-    
+
     func testCreateExternalUserEndpointContainsHVNonEmailHeadersIfAvailable() {
         let parameters = ExternalUserParameters(
             email: "email@tests.unit",
@@ -68,7 +68,7 @@ final class CreateExternalUserEndpointTests: XCTestCase {
             )
         )
     }
-    
+
     func testCreateExternalUserEndpointHasNoHVHeadersIfHVTokenNotAvailable() {
         let parameters = ExternalUserParameters(
             email: "email@tests.unit",
@@ -82,7 +82,7 @@ final class CreateExternalUserEndpointTests: XCTestCase {
         let endpoint = AuthService.CreateExternalUserEndpoint(externalUserParameters: parameters)
         XCTAssertTrue(areEqual(endpoint.header, [:]))
     }
-    
+
     func testCreateExternalUserEndpointHasNoHVHeadersIfHVTypeNotAvailable() {
         let parameters = ExternalUserParameters(
             email: "email@tests.unit",
@@ -96,5 +96,5 @@ final class CreateExternalUserEndpointTests: XCTestCase {
         let endpoint = AuthService.CreateExternalUserEndpoint(externalUserParameters: parameters)
         XCTAssertTrue(areEqual(endpoint.header, [:]))
     }
-    
+
 }

@@ -53,9 +53,9 @@ public typealias CustomPlansDescription = [String: (purchasable: PurchasablePlan
 public struct PaymentsUICustomizationOptions {
     let inAppTheme: () -> InAppTheme
     let customPlansDescription: CustomPlansDescription
-    
+
     public static let empty: PaymentsUICustomizationOptions = .init()
-    
+
     public init(inAppTheme: @escaping () -> InAppTheme = { .default },
                 customPlansDescription: CustomPlansDescription = [:]) {
         self.inAppTheme = inAppTheme
@@ -67,7 +67,7 @@ public final class PaymentsUI {
 
     private let coordinator: PaymentsUICoordinator
     private let paymentsUIAlertManager: PaymentsUIAlertManager
-    
+
     public init(payments: Payments,
                 clientApp: ClientApp,
                 shownPlanNames: ListOfShownPlanNames,
@@ -91,19 +91,19 @@ public final class PaymentsUI {
             payments?.executeDohTroubleshootMethodFromApiDelegate()
         })
     }
-    
+
     // MARK: Public interface
-    
+
     public func showSignupPlans(viewController: UIViewController, completionHandler: @escaping ((PaymentsUIResultReason) -> Void)) {
         coordinator.start(viewController: viewController, completionHandler: completionHandler)
     }
-    
+
     public func showCurrentPlan(presentationType: PaymentsUIPresentationType,
                                 backendFetch: Bool,
                                 completionHandler: @escaping ((PaymentsUIResultReason) -> Void)) {
         coordinator.start(presentationType: presentationType, mode: .current, backendFetch: backendFetch, completionHandler: completionHandler)
     }
-    
+
     public func showUpgradePlan(presentationType: PaymentsUIPresentationType,
                                 backendFetch: Bool,
                                 completionHandler: @escaping ((PaymentsUIResultReason) -> Void)) {

@@ -38,27 +38,27 @@ final class InfoEndpointTests: XCTestCase {
     func testParameterGeneration() {
         XCTAssertEqual(["Username": "dummy"], cut.calculatedParameters as! [String: String])
     }
-    
+
     func testParameterGeneration_sso() {
         // Given
         cut = AuthService.InfoEndpoint(username: "dummy", intent: .sso)
-        
+
         // Then
         XCTAssertEqual(["Username": "dummy", "Intent": "SSO"], cut.calculatedParameters as! [String: String])
     }
-    
+
     func testParameterGeneration_auto() {
         // Given
         cut = AuthService.InfoEndpoint(username: "dummy", intent: .auto)
-        
+
         // Then
         XCTAssertEqual(["Username": "dummy", "Intent": "Auto"], cut.calculatedParameters as! [String: String])
     }
-    
+
     func testParameterGeneration_proton() {
         // Given
         cut = AuthService.InfoEndpoint(username: "dummy", intent: .proton)
-        
+
         // Then
         XCTAssertEqual(["Username": "dummy", "Intent": "Proton"], cut.calculatedParameters as! [String: String])
     }

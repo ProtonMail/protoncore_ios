@@ -26,7 +26,7 @@ public extension TimeInterval {
     func asRemainingTimeString(allowingDays: Bool = false) -> String {
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .full
-        
+
         switch (allowingDays, self) {
         case (_, 0...59): formatter.allowedUnits = [ .second ]
         case (_, 60...3599): formatter.allowedUnits = [ .minute ]

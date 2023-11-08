@@ -28,27 +28,27 @@ import XCTest
 final class PMSwitchSecurityCellConfigurationTelemetryTests: XCTestCase {
     private var delegate: TelemetrySettingsDelegateMock!
     private var service: TelemetrySettingsServiceMock!
-    
+
     override func setUp() {
         super.setUp()
         delegate = TelemetrySettingsDelegateMock()
         service = TelemetrySettingsServiceMock()
     }
-    
+
     func test_telemetry_retursCorrectConfiguration() {
         let result = PMSwitchSecurityCellConfiguration.telemetry(
             delegate: delegate,
             telemetrySettingsService: service
         )
-        
+
         XCTAssertEqual(result.title, "Telemetry")
         XCTAssertTrue(result.switcher.isActive)
     }
-    
+
     class TelemetrySettingsDelegateMock: TelemetrySettingsDelegate {
         func didSetTelemetry(isEnabled: Bool) {}
     }
-    
+
     class TelemetrySettingsServiceMock: TelemetrySettingsServiceProtocol {
         func setIsTelemetryEnabled(state: Bool) {}
         var isTelemetryEnabled: Bool = true

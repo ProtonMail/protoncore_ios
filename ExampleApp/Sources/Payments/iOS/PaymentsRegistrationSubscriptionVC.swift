@@ -39,7 +39,7 @@ import ProtonCoreFeatureFlags
 import TrustKit
 
 class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, AccessibleView {
-    
+
     // MARK: - Outlets
     @IBOutlet weak var subscriptionSelector: UISegmentedControl!
     @IBOutlet weak var purchaseSubscriptionButton: ProtonButton!
@@ -53,25 +53,25 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
     @IBOutlet weak var currentSubscriptionLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var scrollBottomPaddingConstraint: NSLayoutConstraint!
-    
+
     // MARK: - Properties
     var currentEnv: Environment!
 
     var inAppPurchases: ListOfIAPIdentifiers!
     var serviceDelegate: APIServiceDelegate!
     var testPicker: PaymentsTestUserPickerData?
-    
+
     // MARK: - Private auth properties
     private var testApi: PMAPIService!
     private var authHelper: AuthHelper?
     private var userInfo: User?
-    
+
     // MARK: - Private payment credentials
     private var payments: Payments!
     private var userCachedStatus: UserCachedStatus!
 
     private var availablePlans: [InAppPurchasePlan] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         testApi = PMAPIService.createAPIService(environment: currentEnv,
@@ -97,7 +97,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
         updatePlans()
         generateAccessibilityIdentifiers()
     }
-    
+
     private func reportBugAlertHandler(_ receipt: String?) {
         guard let alertWindow = self.alertWindow else { return }
         DispatchQueue.main.async {
@@ -106,30 +106,30 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
             alertWindow.rootViewController?.present(alert, animated: true, completion: nil)
         }
     }
-    
+
     private func setupStoreKit(completion: @escaping (Error?) -> Void) {
         payments.activate(delegate: self, storeKitProductsFetched: completion)
         if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             completion(nil)
         }
     }
-    
+
     @IBAction func onPurchaseSubscriptionButtonTap(_ sender: Any) {
         buyPlan()
     }
-    
+
     @IBAction func onLoginButtonTap(_ sender: Any) {
         login()
     }
-    
+
     @IBAction func onHumanVerificationButtonTap(_ sender: ProtonButton) {
         humanVerification()
     }
-    
+
     @IBAction func tapAction(_ sender: UITapGestureRecognizer) {
         dismissKeyboard()
     }
-    
+
     private func updatePlans() {
         switch payments.planService {
         case .left(let planService):
@@ -151,7 +151,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
             }
         }
     }
-    
+
     private func processPossiblePlans() {
         availablePlans.removeAll()
         subscriptionSelector.removeAllSegments()
@@ -162,7 +162,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
         }
         updateAvailablePlans()
     }
-    
+
     private func checkIfIsPurchasable(accountPlan: InAppPurchasePlan) -> Bool? {
         switch payments.planService {
         case .left(let planService):
@@ -171,7 +171,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
             return planDataSource.detailsOfAvailablePlanInstanceCorrespondingToIAP(accountPlan) != nil
         }
     }
-    
+
     private func updateAvailablePlans() {
         for (index, planData) in availablePlans.enumerated() {
             subscriptionSelector.insertSegment(withTitle: planData.protonName, at: index, animated: false)
@@ -180,7 +180,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
             subscriptionSelector.selectedSegmentIndex = 0
         }
     }
-    
+
     private func buyPlan() {
         // STEP 1: buy plan and store payment token
         authHelper = AuthHelper()
@@ -270,7 +270,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
             }
         }
     }
-    
+
     private func userInfoAndUpdatePlans(authApi: Authenticator, credential: Credential) {
         // STEP 3: Get user info and current plan
         authApi.getUserInfo(credential) { [unowned self] (result: Result<User, AuthErrors>) in
@@ -343,18 +343,18 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
             }
         }
     }
-        
+
     @objc private func finish() {
         PMLog.debug("Subscription Success notification")
     }
-    
+
     private func humanVerification() {
         setupHumanVerification()
         processHumanVerifyTest()
     }
-    
+
     var humanVerificationDelegate: HumanVerifyDelegate?
-    
+
     private func setupHumanVerification() {
         testApi.serviceDelegate = self
         testApi.authDelegate = authHelper
@@ -366,7 +366,7 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
         humanVerificationDelegate?.paymentDelegateForLoginAndSignup = self
         testApi.humanDelegate = humanVerificationDelegate
     }
-    
+
     private func processHumanVerifyTest() {
         // Human Verify request with empty token just to provoke human verification error
         let client = TestApiClient(api: self.testApi)
@@ -391,42 +391,42 @@ extension PaymentsRegistrationSubscriptionVC: StoreKitManagerDelegate {
     var apiService: APIService? {
         return testApi
     }
-    
+
     var tokenStorage: PaymentTokenStorage? {
         return TokenStorage.default
     }
-    
+
     var isUnlocked: Bool {
         return true
     }
-    
+
     var isSignedIn: Bool {
         return true
     }
-    
+
     var activeUsername: String? {
         return nil
     }
-    
+
     var userId: String? {
         return userInfo?.ID
     }
 }
 
 extension PaymentsRegistrationSubscriptionVC {
-    
+
     class TokenStorage: PaymentTokenStorage {
         public static var `default` = TokenStorage()
         var token: PaymentToken?
-        
+
         func add(_ token: PaymentToken) {
             self.token = token
         }
-        
+
         func get() -> PaymentToken? {
             return token
         }
-        
+
         func clear() {
             self.token = nil
         }
@@ -436,21 +436,21 @@ extension PaymentsRegistrationSubscriptionVC {
 // MARK: - HumanVerifyResponseDelegate
 
 extension PaymentsRegistrationSubscriptionVC: APIServiceDelegate {
-    
+
     var additionalHeaders: [String: String]? { nil }
-    
+
     var locale: String { Locale.autoupdatingCurrent.identifier }
-    
+
     var userAgent: String? { "" }
-    
+
     func isReachable() -> Bool { true }
-    
+
     var appVersion: String { appVersionHeader.getVersionHeader() }
-    
+
     func onUpdate(serverTime: Int64) {
         CryptoGo.CryptoUpdateTime(serverTime)
     }
-    
+
     func onDohTroubleshot() {
         PMLog.info("\(#file): \(#function)")
     }
@@ -462,7 +462,7 @@ extension PaymentsRegistrationSubscriptionVC: HumanVerifyResponseDelegate {
     func onHumanVerifyStart() {
         print("Human verify start")
     }
-    
+
     func onHumanVerifyEnd(result: HumanVerifyEndResult) {
         switch result {
         case .success:
@@ -471,7 +471,7 @@ extension PaymentsRegistrationSubscriptionVC: HumanVerifyResponseDelegate {
             print("Human verify cancel")
         }
     }
-    
+
     func humanVerifyToken(token: String?, tokenType: String?) {
         PMLog.info("Human verify token: \(String(describing: token)), type: \(String(describing: tokenType))")
     }
@@ -481,7 +481,7 @@ extension PaymentsRegistrationSubscriptionVC: HumanVerifyPaymentDelegate {
     var paymentToken: String? {
         return TokenStorage.default.get()?.token
     }
-    
+
     func paymentTokenStatusChanged(status: PaymentTokenStatusResult) {
         PMLog.info("Human verification token status changed to: \(status)")
     }

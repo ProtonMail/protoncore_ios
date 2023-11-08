@@ -35,14 +35,14 @@ import ProtonCoreServices
 class AuthAPITests: XCTestCase {
 
     var apiService: APIServiceMock!
-    
+
     private let timeout = 1.0
     private let modulus = "testModulus"
     private let serverEphemeral = "testServerEphemeral"
     private let salt = "0cNmaaFTYxDdFA=="
     private let srpSession = "b7953c6a26d97a8f7a673afb79e6e9ce"
     private let version = 1
-    
+
     private var authInfoResponse: AuthInfoResponse {
         .init(
             modulus: modulus,
@@ -52,7 +52,7 @@ class AuthAPITests: XCTestCase {
             srpSession: srpSession
         )
     }
-    
+
     override func setUp() {
         super.setUp()
         apiService = APIServiceMock()
@@ -80,12 +80,12 @@ class AuthAPITests: XCTestCase {
             XCTAssertEqual(response.version, self.version)
             expectation.fulfill()
         }
-        
+
         self.waitForExpectations(timeout: timeout) { expectationError -> Void in
             XCTAssertNil(expectationError)
         }
     }
-    
+
     func testAuthInfo_decodableStub() {
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
@@ -94,7 +94,7 @@ class AuthAPITests: XCTestCase {
                 XCTFail()
             }
         }
-        
+
         let expectation = self.expectation(description: "Success completion block called")
         let authInfoOK1 = AuthAPI.Router.info(username: "ok")
         apiService.perform(request: authInfoOK1) { (task, result: Result<AuthInfoResponse, ResponseError>) in
@@ -160,7 +160,7 @@ class AuthAPITests: XCTestCase {
         XCTAssertEqual(response3.srpSession, srpSession)
         XCTAssertEqual(response3.version, version)
     }
-    
+
     func testAuthModulus() {
         let modulus = "testModulus"
         let modulusID = "testModulusID"

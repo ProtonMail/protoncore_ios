@@ -25,7 +25,7 @@ import ProtonCoreUtilities
 
 public func testAllLocalizationsAreDefined<T>(for: T.Type, prefixForMissingValue: String) where T: TranslationsExposing {
     T.prefixForMissingValue = prefixForMissingValue
-    
+
     T.allCases.forEach { l10n in
         XCTContext.runActivity(named: "\(l10n)") { activity in
             let value = l10n.l10n
@@ -34,7 +34,7 @@ public func testAllLocalizationsAreDefined<T>(for: T.Type, prefixForMissingValue
             }
         }
     }
-    
+
     T.prefixForMissingValue = .empty
 }
 

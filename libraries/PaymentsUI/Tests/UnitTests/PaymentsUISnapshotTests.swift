@@ -46,43 +46,43 @@ extension UITraitCollection {
 
 @available(iOS 13, *)
 final class PaymentsUISnapshotTests: XCTestCase {
-    
+
     let subscriptionStartDate = Date(timeIntervalSince1970: 4818489600)
     let existingPaymentsMethods = [PaymentMethod(type: "test method")]
-    
+
     let reRecordEverything = false
-    
+
     var storeKitManager: StoreKitManagerMock!
     var servicePlan: ServicePlanDataServiceMock!
 
     let perceptualPrecision: Float = 0.98
-    
+
     override func setUp() {
         super.setUp()
         storeKitManager = StoreKitManagerMock()
         servicePlan = ServicePlanDataServiceMock()
     }
-    
+
     override func tearDown() {
         servicePlan = nil
         storeKitManager = nil
         super.tearDown()
     }
-    
+
     enum MockData {
-        
+
         enum Plans: CaseIterable, Equatable {
-            
+
             case mail2022
             case vpn2022
             case drive2022
             case bundle2022
             case pass2023
-            
+
             case free
-            
+
             // these plans are unavailable for purchase on iOS, but users can have them if they subscribed through web
-            
+
             case mailpro2022
             case bundlepro2022
             case enterprise2022
@@ -92,16 +92,16 @@ final class PaymentsUISnapshotTests: XCTestCase {
 
             case unknownTestPlan
             case imaginaryOffer
-            
+
             static var allPlans: [Plan] { allCases.map(\.plan) }
-            
+
             static var mailPaidPlans: [Plan] { [Plans.bundle2022, .mail2022].map(\.plan) }
             static var mailPaidPlanAndImaginaryOffer: [Plan] { [Plans.imaginaryOffer, .mail2022].map(\.plan) }
             static var vpnPaidPlans: [Plan] { [Plans.bundle2022, .vpn2022].map(\.plan) }
             static var drivePaidPlans: [Plan] { [Plans.bundle2022, .drive2022].map(\.plan) }
             static var calendarPaidPlans: [Plan] { [Plans.bundle2022, .mail2022].map(\.plan) }
             static var passPaidPlans: [Plan] { [Plans.bundle2022, .pass2023].map(\.plan) }
-            
+
             var plan: Plan {
                 switch self {
                 case .free:
@@ -119,7 +119,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                         maxCalendars: 1,
                         state: 1
                     )
-                    
+
                 case .mail2022:
                     return Plan.empty.updated(
                         name: "mail2022",
@@ -137,7 +137,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                         state: 1,
                         cycle: 12
                     )
-                    
+
                 case .vpn2022:
                     return Plan.empty.updated(
                         name: "vpn2022",
@@ -155,7 +155,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                         state: 1,
                         cycle: 12
                     )
-                    
+
                 case .drive2022:
                     return Plan.empty.updated(
                         name: "drive2022",
@@ -191,7 +191,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                         state: 1,
                         cycle: 12
                     )
-                    
+
                 case .bundle2022:
                     return Plan.empty.updated(
                         name: "bundle2022",
@@ -209,7 +209,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                         state: 1,
                         cycle: 12
                     )
-                    
+
                 case .mailpro2022:
                     return Plan.empty.updated(
                         name: "mailpro2022",
@@ -227,7 +227,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                         state: 1,
                         cycle: 12
                     )
-                    
+
                 case .bundlepro2022:
                     return Plan.empty.updated(
                         name: "bundlepro2022",
@@ -245,7 +245,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                         state: 1,
                         cycle: 12
                     )
-                    
+
                 case .enterprise2022:
                     return Plan.empty.updated(
                         name: "enterprise2022",
@@ -263,7 +263,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                         state: 1,
                         cycle: 12
                     )
-                    
+
                 case .visionary2022:
                     return Plan.empty.updated(
                         name: "visionary2022",
@@ -378,7 +378,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             )
         ]
     }
-    
+
     @MainActor
     // swiftlint:disable:next function_body_length
     private func snapshotSubscriptionScreen(mode: PaymentsUIMode,
@@ -424,7 +424,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         case .other:
             fatalError("misconfiguration")
         }
-        
+
         servicePlan.paymentMethodsStub.fixture = paymentMethods
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = iapIdentifiers
         storeKitManager.priceLabelForProductStub.bodyIs { _, iapIdentifier in
@@ -463,7 +463,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         let maxSpace = Double(max(currentSubscriptionPlan?.maxSpace ?? 0, MockData.Plans.free.plan.maxSpace))
         servicePlan.userStub.fixture = User.dummy.updated(usedSpace: maxSpace * 0.6, maxSpace: maxSpace)
         storeKitManager.canExtendSubscriptionStub.fixture = true
-        
+
         let viewModel = PaymentsUIViewModel(mode: mode,
                                         storeKitManager: storeKitManager,
                                         planService: .left(servicePlan),
@@ -472,7 +472,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                         customPlansDescription: customPlansDescription,
                                         planRefreshHandler: { _ in XCTFail() },
                                         extendSubscriptionHandler: { XCTFail() })
-        
+
         let paymentsUIViewController = UIStoryboard.instantiate(storyboardName: "PaymentsUI",
                                                                 controllerType: PaymentsUIViewController.self,
                                                                 inAppTheme: { .default })
@@ -483,7 +483,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                 continuation.resume()
             }
         }
-        
+
         let imageSize: CGSize
         switch mode {
         case .signup,
@@ -492,9 +492,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
         case .update, .current:
             imageSize = CGSize(width: 320, height: 750)
         }
-        
+
         let traits: UITraitCollection = .iPhoneSe(.portrait)
-        
+
         paymentsUIViewController.modalPresentation = modalPresentation
         let viewController: UIViewController
         if paymentsUIViewController.modalPresentation {
@@ -502,7 +502,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         } else {
             viewController = paymentsUIViewController
         }
-        
+
         assertSnapshot(matching: viewController,
                        as: .image(on: ViewImageConfig(safeArea: .zero, size: imageSize, traits: traits.updated(to: .light)),
                                   perceptualPrecision: perceptualPrecision,
@@ -511,7 +511,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                        file: file,
                        testName: "\(name)-Light",
                        line: line)
-        
+
         assertSnapshot(matching: viewController,
                        as: .image(on: ViewImageConfig(safeArea: .zero, size: imageSize, traits: traits.updated(to: .dark)),
                                   perceptualPrecision: perceptualPrecision,
@@ -521,9 +521,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
                        testName: "\(name)-Dark",
                        line: line)
     }
-    
+
     // MARK: - Test current subscription screen
-    
+
     private func snapshotCurrentSubscriptionScreen(currentSubscriptionPlan: Plan?,
                                                    paymentMethods: [PaymentMethod],
                                                    name: String = #function,
@@ -546,7 +546,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
     }
 
     // free
-    
+
     func testCurrentSubscription_Free_InMail() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: nil,
@@ -570,7 +570,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .pass
         )
     }
-    
+
     func testCurrentSubscription_Free_ImaginaryOffer() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: nil,
@@ -578,9 +578,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .other(named: "imaginaryOffer")
         )
     }
-    
+
     // mail2022
-    
+
     func testCurrentSubscription_Mail2022_1() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.mail2022.plan.updated(cycle: 1),
@@ -588,7 +588,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testCurrentSubscription_Mail2022_12() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.mail2022.plan,
@@ -596,7 +596,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testCurrentSubscription_Mail2022_24() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.mail2022.plan.updated(cycle: 24),
@@ -604,9 +604,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     // vpn2022
-    
+
     func testCurrentSubscription_VPN2022_1() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.vpn2022.plan.updated(cycle: 1),
@@ -614,7 +614,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .vpn
         )
     }
-    
+
     func testCurrentSubscription_VPN2022_12() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.vpn2022.plan.updated(cycle: 12),
@@ -622,7 +622,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .vpn
         )
     }
-    
+
     func testCurrentSubscription_VPN2022_15() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.vpn2022.plan.updated(cycle: 15),
@@ -630,7 +630,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .vpn
         )
     }
-    
+
     func testCurrentSubscription_VPN2022_24() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.vpn2022.plan.updated(cycle: 24),
@@ -638,7 +638,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .vpn
         )
     }
-    
+
     func testCurrentSubscription_VPN2022_30() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.vpn2022.plan.updated(cycle: 30),
@@ -646,9 +646,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .vpn
         )
     }
-    
+
     // bundle2022 in mail
-    
+
     func testCurrentSubscription_Bundle2022_1_InMail() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundle2022.plan.updated(cycle: 1),
@@ -656,7 +656,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testCurrentSubscription_Bundle2022_12_InMail() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundle2022.plan.updated(cycle: 12),
@@ -664,7 +664,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testCurrentSubscription_Bundle2022_24_InMail() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundle2022.plan.updated(cycle: 24),
@@ -698,9 +698,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .pass
         )
     }
-    
+
     // drive2022
-    
+
     func testCurrentSubscription_Drive2022_1() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.drive2022.plan.updated(cycle: 1),
@@ -708,7 +708,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .drive
         )
     }
-    
+
     func testCurrentSubscription_Drive2022_12() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.drive2022.plan.updated(cycle: 12),
@@ -716,7 +716,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .drive
         )
     }
-    
+
     func testCurrentSubscription_Drive2022_24() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.drive2022.plan.updated(cycle: 24),
@@ -750,9 +750,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .pass
         )
     }
-    
+
     // mailpro2022
-    
+
     func testCurrentSubscription_MailPro2022_1() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.mailpro2022.plan.updated(cycle: 1),
@@ -760,7 +760,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testCurrentSubscription_MailPro2022_12() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.mailpro2022.plan.updated(cycle: 12),
@@ -768,7 +768,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testCurrentSubscription_MailPro2022_24() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.mailpro2022.plan.updated(cycle: 24),
@@ -776,9 +776,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     // bundlepro2022
-    
+
     func testCurrentSubscription_BundlePro2022_1() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundlepro2022.plan.updated(cycle: 1),
@@ -786,7 +786,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testCurrentSubscription_BundlePro2022_12() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundlepro2022.plan.updated(cycle: 12),
@@ -794,7 +794,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testCurrentSubscription_BundlePro2022_24() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundlepro2022.plan.updated(cycle: 24),
@@ -802,9 +802,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     // enterprise2022
-    
+
     func testCurrentSubscription_Enterprise2022_1() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.enterprise2022.plan.updated(cycle: 1),
@@ -812,7 +812,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testCurrentSubscription_Enterprise2022_12() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.enterprise2022.plan.updated(cycle: 12),
@@ -820,7 +820,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testCurrentSubscription_Enterprise2022_24() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.enterprise2022.plan.updated(cycle: 24),
@@ -828,7 +828,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testCurrentSubscription_Free_ModalPresentation() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: nil,
@@ -837,9 +837,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
             modalPresentation: true
         )
     }
-    
+
     // visionary2022
-    
+
     func testCurrentSubscription_Visionary2022_1() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.visionary2022.plan.updated(cycle: 1),
@@ -847,7 +847,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testCurrentSubscription_Visionary2022_12() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.visionary2022.plan.updated(cycle: 12),
@@ -855,7 +855,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testCurrentSubscription_Visionary2022_24() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.visionary2022.plan.updated(cycle: 24),
@@ -914,9 +914,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
             customPlansDescription: MockData.customPlansDescription
         )
     }
-    
+
     // MARK: - Test upgrade subscription screen
-    
+
     private func snapshotUpdateSubscriptionScreen(currentSubscriptionPlan: Plan?,
                                                   paymentMethods: [PaymentMethod],
                                                   name: String = #function,
@@ -935,7 +935,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
     }
 
     // free
-    
+
     func testUpdateSubscription_Free_InMail() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: nil,
@@ -959,7 +959,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .pass
         )
     }
-    
+
     func testUpdateSubscription_Free_ImaginaryOffer() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: nil,
@@ -967,9 +967,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .other(named: "imaginaryOffer")
         )
     }
-    
+
     // mail2022
-    
+
     func testUpdateSubscription_Mail_2022_1() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.mail2022.plan.updated(cycle: 1),
@@ -977,7 +977,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testUpdateSubscription_Mail2022_12() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.mail2022.plan,
@@ -985,7 +985,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testUpdateSubscription_Mail2022_24() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.mail2022.plan.updated(cycle: 24),
@@ -993,9 +993,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     // vpn2022
-    
+
     func testUpdateSubscription_VPN2022_1() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.vpn2022.plan.updated(cycle: 1),
@@ -1003,7 +1003,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .vpn
         )
     }
-    
+
     func testUpdateSubscription_VPN2022_12() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.vpn2022.plan.updated(cycle: 12),
@@ -1011,7 +1011,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .vpn
         )
     }
-    
+
     func testUpdateSubscription_VPN2022_15() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.vpn2022.plan.updated(cycle: 15),
@@ -1019,7 +1019,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .vpn
         )
     }
-    
+
     func testUpdateSubscription_VPN2022_24() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.vpn2022.plan.updated(cycle: 24),
@@ -1027,7 +1027,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .vpn
         )
     }
-    
+
     func testUpdateSubscription_VPN2022_30() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.vpn2022.plan.updated(cycle: 30),
@@ -1035,9 +1035,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .vpn
         )
     }
-    
+
     // bundle2022
-    
+
     func testUpdateSubscription_Bundle2022_1_InMail() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundle2022.plan.updated(cycle: 1),
@@ -1045,7 +1045,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testUpdateSubscription_Bundle2022_12_InMail() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundle2022.plan.updated(cycle: 12),
@@ -1053,7 +1053,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testUpdateSubscription_Bundle2022_24_InMail() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundle2022.plan.updated(cycle: 24),
@@ -1111,9 +1111,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .pass
         )
     }
-    
+
     // drive2022
-    
+
     func testUpdateSubscription_Drive2022_1() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.drive2022.plan.updated(cycle: 1),
@@ -1121,7 +1121,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .drive
         )
     }
-    
+
     func testUpdateSubscription_Drive2022_12() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.drive2022.plan.updated(cycle: 12),
@@ -1129,7 +1129,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .drive
         )
     }
-    
+
     func testUpdateSubscription_Drive2022_24() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.drive2022.plan.updated(cycle: 24),
@@ -1137,9 +1137,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .drive
         )
     }
-    
+
     // mailpro2022
-    
+
     func testUpdateSubscription_MailPro2022_1() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.mailpro2022.plan.updated(cycle: 1),
@@ -1147,7 +1147,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testUpdateSubscription_MailPro2022_12() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.mailpro2022.plan.updated(cycle: 12),
@@ -1155,7 +1155,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testUpdateSubscription_MailPro2022_24() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.mailpro2022.plan.updated(cycle: 24),
@@ -1163,9 +1163,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     // bundlepro2022
-    
+
     func testUpdateSubscription_BundlePro2022_1() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundlepro2022.plan.updated(cycle: 1),
@@ -1173,7 +1173,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testUpdateSubscription_BundlePro2022_12() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundlepro2022.plan.updated(cycle: 12),
@@ -1181,7 +1181,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testUpdateSubscription_BundlePro2022_24() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundlepro2022.plan.updated(cycle: 24),
@@ -1189,9 +1189,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     // enterprise2022
-    
+
     func testUpdateSubscription_Enterprise2022_1() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.enterprise2022.plan.updated(cycle: 1),
@@ -1199,7 +1199,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testUpdateSubscription_Enterprise2022_12() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.enterprise2022.plan.updated(cycle: 12),
@@ -1207,7 +1207,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testUpdateSubscription_Enterprise2022_24() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.enterprise2022.plan.updated(cycle: 24),
@@ -1215,9 +1215,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     // visionary2022
-    
+
     func testUpdateSubscription_Visionary2022_1() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.visionary2022.plan.updated(cycle: 1),
@@ -1225,7 +1225,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testUpdateSubscription_Visionary2022_12() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.visionary2022.plan.updated(cycle: 12),
@@ -1233,7 +1233,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testUpdateSubscription_Visionary2022_24() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.visionary2022.plan.updated(cycle: 24),
@@ -1283,7 +1283,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-    
+
     func testUpdateSubscription_Free_ModalPresentation() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: nil,
@@ -1302,9 +1302,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
             modalPresentation: true
         )
     }
-    
+
     // MARK: - Test signup subscription screen
-    
+
     private func snapshotSignupSubscriptionScreen(name: String = #function,
                                                   clientApp: ClientApp,
                                                   customPlansDescription: CustomPlansDescription = [:],
@@ -1317,19 +1317,19 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                          customPlansDescription: customPlansDescription,
                                          record: record)
     }
-    
+
     func testSignupSubscription_Mail() async {
         await snapshotSignupSubscriptionScreen(clientApp: .mail)
     }
-    
+
     func testSignupSubscription_VPN() async {
         await snapshotSignupSubscriptionScreen(clientApp: .vpn)
     }
-    
+
     func testSignupSubscription_Drive() async {
         await snapshotSignupSubscriptionScreen(clientApp: .drive)
     }
-    
+
     func testSignupSubscription_Calendar() async {
         await snapshotSignupSubscriptionScreen(clientApp: .calendar)
     }
@@ -1337,7 +1337,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
     func testSignupSubscription_Pass() async {
         await snapshotSignupSubscriptionScreen(clientApp: .pass)
     }
-    
+
     func testSignupSubscription_Free_ImaginaryOffer() async {
         await snapshotSignupSubscriptionScreen(
             clientApp: .other(named: "imaginaryOffer")

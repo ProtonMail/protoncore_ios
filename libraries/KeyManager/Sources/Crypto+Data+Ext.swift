@@ -27,7 +27,7 @@ typealias CoreDecryptor = ProtonCoreCrypto.Decryptor
 import ProtonCoreDataModel
 
 extension Data {
-    
+
     @available(*, deprecated, message: "Please use the non-optional variant")
     public func decryptAttachment(keyPackage: Data, userKeys: [Data], passphrase: String, keys: [Key]) throws -> Data? {
         do {
@@ -38,7 +38,7 @@ extension Data {
             throw error
         }
     }
-    
+
     public func decryptAttachmentNonOptional(keyPackage: Data, userKeys: [Data], passphrase: String, keys: [Key]) throws -> Data {
         var firstError: Error?
         for key in keys {
@@ -60,7 +60,7 @@ extension Data {
         }
         throw CryptoError.attachmentCouldNotBeDecrypted
     }
-    
+
     @available(*, deprecated, message: "Please use the non-optional variant")
     public func getSessionFromPubKeyPackage(userKeys: [Data], passphrase: String, keys: [Key]) throws -> SymmetricKey? {
         do {
@@ -71,7 +71,7 @@ extension Data {
             throw error
         }
     }
-    
+
     @available(*, deprecated, message: "Plase use ProtonCore-Crypto find a replacement Decryptor")
     public func getSessionFromPubKeyPackageNonOptional(userKeys: [Data], passphrase: String, keys: [Key]) throws -> SymmetricKey {
         var firstError: Error?

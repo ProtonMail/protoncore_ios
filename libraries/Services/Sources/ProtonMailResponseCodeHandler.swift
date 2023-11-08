@@ -55,16 +55,16 @@ class ProtonMailResponseCodeHandler {
             }
         }
     }
-    
+
     private func isMissingScopeError(response: Either<JSONDictionary, ResponseError>) -> Bool {
         if case let .right(error) = response, case .missingScopes = error.details {
             return true
         }
-       
+
         if case let .left(error) = response, case .missingScopes = error.details {
             return true
         }
-        
+
         return false
     }
 }

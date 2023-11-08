@@ -35,13 +35,13 @@ final class SendMessage: Request {
     var body: String
     let messageID: String
     let expirationTime: Int32
-    
+
     var clearBody: ClearBodyPackage?
     var clearAtts: [ClearAttachmentPackage]?
-    
+
     var mimeDataPacket: String
     var clearMimeBody: ClearBodyPackage?
-    
+
     var plainTextDataPacket: String
     var clearPlainTextBody: ClearBodyPackage?
 
@@ -57,39 +57,39 @@ final class SendMessage: Request {
         self.expirationTime = expirationTime ?? 0
         self.clearBody = clearBody
         self.clearAtts = clearAtts
-        
+
         self.mimeDataPacket = mimeDataPacket
         self.clearMimeBody = clearMimeBody
-        
+
         self.plainTextDataPacket = plainTextDataPacket
         self.clearPlainTextBody = clearPlainTextBody
-        
+
         self.auth = authCredential
     }
-    
+
     let auth: AuthCredential?
     var authCredential: AuthCredential? {
         return self.auth
     }
-    
+
     var parameters: [String: Any]? {
         var out: [String: Any] = [String: Any]()
-        
+
         if self.expirationTime > 0 {
             out["ExpiresIn"] = self.expirationTime
         }
         // optional this will override app setting
         // out["AutoSaveContacts"] = "\(0 / 1)"
-        
+
         let normalPackage = messagePackage.filter { $0.type.rawValue < 10 }
         let mimePackage = messagePackage.filter { $0.type.rawValue > 10 }
 
         let plainTextPackage = normalPackage.filter { $0.plainText == true }
         let htmlPackage = normalPackage.filter { $0.plainText == false }
-        
+
         // packages object
         var packages: [Any] = [Any]()
-        
+
         // plaintext
         if plainTextPackage.count > 0 {
             // not mime
@@ -105,7 +105,7 @@ final class SendMessage: Request {
             plainTextAddress["Type"] = type.rawValue
             plainTextAddress["Body"] = self.plainTextDataPacket
             plainTextAddress["MIMEType"] = "text/plain"
-            
+
             if let cb = self.clearPlainTextBody {
                 // Include only if cleartext recipients
                 plainTextAddress["BodyKey"] = [
@@ -113,7 +113,7 @@ final class SendMessage: Request {
                     "Algorithm": cb.algo
                 ]
             }
-            
+
             if let cAtts = clearAtts {
                 // Only include if cleartext recipients, optional if no attachments
                 var atts: [String: Any] = [String: Any]()
@@ -143,7 +143,7 @@ final class SendMessage: Request {
             htmlAddress["Type"] = type.rawValue
             htmlAddress["Body"] = self.body
             htmlAddress["MIMEType"] = "text/html"
-            
+
             if let cb = clearBody {
                 // Include only if cleartext recipients
                 htmlAddress["BodyKey"] = [
@@ -151,7 +151,7 @@ final class SendMessage: Request {
                     "Algorithm": cb.algo
                 ]
             }
-            
+
             if let cAtts = clearAtts {
                 // Only include if cleartext recipients, optional if no attachments
                 var atts: [String: Any] = [String: Any]()
@@ -165,11 +165,11 @@ final class SendMessage: Request {
             }
             packages.append(htmlAddress)
         }
-        
+
         if mimePackage.count > 0 {
             // mime
             var mimeAddress: [String: Any] = [String: Any]()
-            
+
             var addrs = [String: Any]()
             var mimeType = SendType()
             for mp in mimePackage {
@@ -180,7 +180,7 @@ final class SendMessage: Request {
             mimeAddress["Type"] = mimeType.rawValue // 16|32 MIME sending cannot share packages with inline sending
             mimeAddress["Body"] = mimeDataPacket
             mimeAddress["MIMEType"] = "multipart/mixed"
-            
+
             if let cb = clearMimeBody {
                 // Include only if cleartext MIME recipients
                 mimeAddress["BodyKey"] = [
@@ -195,11 +195,11 @@ final class SendMessage: Request {
         // PMLog.D( "API toDict done" )
         return out
     }
-    
+
     var path: String {
         return MessageAPI.path + "/" + self.messageID
     }
-    
+
     var method: HTTPMethod {
         return .post
     }
@@ -207,7 +207,7 @@ final class SendMessage: Request {
 
 final class SendResponse: Response {
     var responseDict: [String: Any] = [:]
-    
+
     override func ParseResponse(_ response: [String: Any]) -> Bool {
         self.responseDict = response
         return super.ParseResponse(response)
@@ -221,21 +221,21 @@ final class SendCalEvent: Request {
     var bodyData: String
     // let messageID: String
     let expirationTime: Int32
-    
+
     //// new
     let subject: String
     let senderName: String
     let senderAddr: String
     let recipients: [String]
     let atts: [AttachmentContent]
-    
+
     ///
     var clearBody: ClearBodyPackage?
     var clearAtts: [ClearAttachmentPackage]?
-    
+
     var mimeDataPacket: String
     var clearMimeBody: ClearBodyPackage?
-    
+
     var plainTextDataPacket: String
     var clearPlainTextBody: ClearBodyPackage?
 
@@ -246,7 +246,7 @@ final class SendCalEvent: Request {
          senderAddr: String,
          recipients: [String],
          atts: [AttachmentContent],
-         
+
          messagePackage: [AddressPackageBase],
          clearBody: ClearBodyPackage?,
          clearAtts: [ClearAttachmentPackage]?,
@@ -262,40 +262,40 @@ final class SendCalEvent: Request {
         self.recipients = recipients
         self.atts = atts
         self.bodyData = bodyData
-        
+
         self.messagePackage = messagePackage
         self.expirationTime = 0
         self.clearBody = clearBody
         self.clearAtts = clearAtts
-        
+
         self.mimeDataPacket = mimeDataPacket
         self.clearMimeBody = clearMimeBody
-        
+
         self.plainTextDataPacket = plainTextDataPacket
         self.clearPlainTextBody = clearPlainTextBody
-        
+
         self.auth = authCredential
     }
-    
+
     let auth: AuthCredential?
     var authCredential: AuthCredential? {
         return self.auth
     }
-    
+
     var parameters: [String: Any]? {
         var out: [String: Any] = [String: Any]()
-        
+
         /// messages
         var messsageDict: [String: Any] = [
             "Body": self.body,
             "Subject": self.subject
         ]
-        
+
         messsageDict["Sender"] = [
             "Name": self.senderName,
             "Address": self.senderAddr
         ]
-        
+
         var toList: [[String: String]] = []
         for email in self.recipients {
             let to: [String: String] = [
@@ -304,12 +304,12 @@ final class SendCalEvent: Request {
             ]
             toList.append(to)
         }
-        
+
         messsageDict["ToList"] = toList
         messsageDict["CCList"] = [String]()
         messsageDict["BCCList"] = [String]()
         messsageDict["MIMEType"] = "text/plain"
-        
+
         var attsDict: [[String: String]] = []
         for att in atts {
             let attDict: [String: String] = [
@@ -321,7 +321,7 @@ final class SendCalEvent: Request {
         }
         messsageDict["Attachments"] = attsDict
 //        let messageOut: [String: Any] = ["Message": messsageDict]
-        
+
 //        if let orginalMsgID = message.orginalMessageID {
 //            if !orginalMsgID.isEmpty {
 //                out["ParentID"] = message.orginalMessageID
@@ -349,14 +349,14 @@ final class SendCalEvent: Request {
 //            }
 //            out["AttachmentKeyPackets"] = atts
 //        }
-        
+
         if self.atts.count > 0 {
             if let packet = atts.first?.keyPacket {
                 out["AttachmentKeys"] = packet
             }
-            
+
         }
-        
+
         out["Message"] = messsageDict
 
         if self.expirationTime > 0 {
@@ -364,16 +364,16 @@ final class SendCalEvent: Request {
         }
         // optional this will override app setting
         // out["AutoSaveContacts"] = "\(0 / 1)"
-        
+
         let normalPackage = messagePackage.filter { $0.type.rawValue < 10 }
         let mimePackage = messagePackage.filter { $0.type.rawValue > 10 }
 
         let plainTextPackage = normalPackage.filter { $0.plainText == true }
         let htmlPackage = normalPackage.filter { $0.plainText == false }
-        
+
         // packages object
         var packages: [Any] = [Any]()
-        
+
         // plaintext
         if plainTextPackage.count > 0 {
             // not mime
@@ -389,7 +389,7 @@ final class SendCalEvent: Request {
             plainTextAddress["Type"] = type.rawValue
             plainTextAddress["Body"] = self.plainTextDataPacket
             plainTextAddress["MIMEType"] = "text/plain"
-            
+
             if let cb = self.clearPlainTextBody {
                 // Include only if cleartext recipients
                 plainTextAddress["BodyKey"] = [
@@ -397,7 +397,7 @@ final class SendCalEvent: Request {
                     "Algorithm": cb.algo
                 ]
             }
-            
+
             if let cAtts = clearAtts {
                 // Only include if cleartext recipients, optional if no attachments
                 var atts: [String: Any] = [String: Any]()
@@ -427,7 +427,7 @@ final class SendCalEvent: Request {
             htmlAddress["Type"] = type.rawValue
             htmlAddress["Body"] = self.bodyData
             htmlAddress["MIMEType"] = "text/html"
-            
+
             if let cb = clearBody {
                 // Include only if cleartext recipients
                 htmlAddress["BodyKey"] = [
@@ -442,7 +442,7 @@ final class SendCalEvent: Request {
                     hasID = false
                     break
                 }
-                
+
                 if hasID {
                     // Only include if cleartext recipients, optional if no attachments
                     var atts: [String: Any] = [String: Any]()
@@ -467,11 +467,11 @@ final class SendCalEvent: Request {
             }
             packages.append(htmlAddress)
         }
-        
+
         if mimePackage.count > 0 {
             // mime
             var mimeAddress: [String: Any] = [String: Any]()
-            
+
             var addrs = [String: Any]()
             var mimeType = SendType()
             for mp in mimePackage {
@@ -482,7 +482,7 @@ final class SendCalEvent: Request {
             mimeAddress["Type"] = mimeType.rawValue // 16|32 MIME sending cannot share packages with inline sending
             mimeAddress["Body"] = mimeDataPacket
             mimeAddress["MIMEType"] = "multipart/mixed"
-            
+
             if let cb = clearMimeBody {
                 // Include only if cleartext MIME recipients
                 mimeAddress["BodyKey"] = [
@@ -497,11 +497,11 @@ final class SendCalEvent: Request {
         // PMLog.D( "API toDict done" )
         return out
     }
-    
+
     var path: String {
         return MessageAPI.path + "/send/direct"
     }
-    
+
     var method: HTTPMethod {
         return .post
     }

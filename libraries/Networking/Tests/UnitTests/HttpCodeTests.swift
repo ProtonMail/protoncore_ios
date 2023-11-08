@@ -30,26 +30,26 @@ import OHHTTPStubsSwift
 
 @available(iOS 13.0.0, *)
 class HttpCodeTests: XCTestCase {
-    
+
     struct TestResponse: APIResponse, APIDecodableResponse, Equatable {
         var code: Int?
         var error: String?
         var details: APIResponseDetails?
     }
-    
+
     let jsonDecoder: JSONDecoder = .decapitalisingFirstLetter
-    
+
     override func setUp() {
         super.setUp()
         HTTPStubs.setEnabled(true)
         HTTPStubs.onStubActivation { request, descriptor, response in }
     }
-    
+
     override func tearDown() {
         super.tearDown()
         HTTPStubs.removeAllStubs()
     }
-    
+
     func defaultRequest() async -> (URLSessionDataTask?, Result<TestResponse, SessionResponseError>) {
         let session = AlamofireSession()
         let request = AlamofireRequest(parameters: nil, urlString: "https://www.example.com/error", method: .post, timeout: 30, retryPolicy: .background)
@@ -59,18 +59,18 @@ class HttpCodeTests: XCTestCase {
             }
         }
     }
-    
+
     func setupstub(httpCode: Int32, code: Int? = 1000, error: String? = nil, details: DetailsType = .empty) {
         stub(condition: isHost("www.example.com") && isPath("/error")) { request in
             var ret: [String: Any] = [:]
             if let code = code {
                 ret["Code"] = code
             }
-            
+
             if let error = error {
                 ret["Error"] = error
             }
-            
+
             switch details {
             case .humanVerification:
                 ret["Details"] = [
@@ -88,20 +88,20 @@ class HttpCodeTests: XCTestCase {
             case .empty:
                 break
             }
-            
+
             return HTTPStubsResponse(jsonObject: ret, statusCode: httpCode, headers: ["Content-Type": "application/json"])
         }
     }
-    
+
     enum DetailsType {
         case humanVerification
         case deviceVerification
         case missingScopes
         case empty
     }
-    
+
     // MARK: - 2xx tests
-    
+
     // 200    OK    Successful request 
     func testHTTP200CODE1000() async throws {
         setupstub(httpCode: 200)
@@ -111,7 +111,7 @@ class HttpCodeTests: XCTestCase {
         XCTAssertEqual(httpURLResponse.statusCode, 200)
         XCTAssertEqual(response, TestResponse(code: 1000))
     }
-    
+
     func testHTTP200CODE9001() async throws {
         setupstub(httpCode: 200, code: 9001, details: .humanVerification)
         let result = await defaultRequest()
@@ -129,7 +129,7 @@ class HttpCodeTests: XCTestCase {
             XCTFail("Expected: human verification details")
         }
     }
-    
+
     func testHTTP200CODE9002() async throws {
         setupstub(httpCode: 200, code: 9002, details: .deviceVerification)
         let result = await defaultRequest()
@@ -146,14 +146,14 @@ class HttpCodeTests: XCTestCase {
             XCTFail("Expected: human verification details")
         }
     }
-    
+
     func testHTTP200Details() async throws {
         stub(condition: isHost("www.example.com") && isPath("/error")) { request in
             let ret: [String: Any] = ["Code": 1000,
                                       "Details": ["test": "usless"]]
             return HTTPStubsResponse(jsonObject: ret, statusCode: 200, headers: ["Content-Type": "application/json"])
         }
-        
+
         let result = await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
@@ -166,7 +166,7 @@ class HttpCodeTests: XCTestCase {
             break
         }
     }
-    
+
     // 201    CREATED    Display success
     func testHTTP201CODE1000() async throws {
         setupstub(httpCode: 201)
@@ -188,7 +188,7 @@ class HttpCodeTests: XCTestCase {
     }
 
     // MARK: - 4xx tests
-    
+
     // 403    Missing scope
     func testHTTP403CODE403() async throws {
         setupstub(httpCode: 403, code: 403, details: .missingScopes)
@@ -204,7 +204,7 @@ class HttpCodeTests: XCTestCase {
             XCTFail("Expected: missing scopes details")
         }
     }
-    
+
     // 400    BAD REQUEST
     func testHTTP400() async throws {
         let msg = "Display error text"
@@ -228,7 +228,7 @@ class HttpCodeTests: XCTestCase {
         XCTAssertEqual(response, TestResponse(code: nil, error: msg))
         XCTAssertEqual(msg, response.error)
     }
-    
+
     // 403    FORBIDDEN
     func testHTTP403() async throws {
         let msg = "Ask for re-authentication for scopes"
@@ -240,7 +240,7 @@ class HttpCodeTests: XCTestCase {
         XCTAssertEqual(response, TestResponse(code: nil, error: msg))
         XCTAssertEqual(msg, response.error)
     }
-    
+
     // 404    NOT FOUND
     func testHTTP404() async throws {
         let msg = "Display error text"
@@ -252,7 +252,7 @@ class HttpCodeTests: XCTestCase {
         XCTAssertEqual(response, TestResponse(code: nil, error: msg))
         XCTAssertEqual(msg, response.error)
     }
-    
+
     // 409    CONFLICT
     func testHTTP409() async throws {
         let msg = "username already existing or invoice already being processed."
@@ -265,7 +265,7 @@ class HttpCodeTests: XCTestCase {
         XCTAssertEqual(responseError.responseCode, 33101)
         XCTAssertEqual(responseError.userFacingMessage, msg)
     }
-    
+
     // 410    GONE
     func testHTTP410() async throws {
         let msg = "Display error text"
@@ -277,7 +277,7 @@ class HttpCodeTests: XCTestCase {
         XCTAssertEqual(response, TestResponse(code: nil, error: msg))
         XCTAssertEqual(msg, response.error)
     }
-    
+
     // 422    UNPROCESSABLE ENTITY
     func testHTTP422() async throws {
         let msg = "Display error text"
@@ -289,7 +289,7 @@ class HttpCodeTests: XCTestCase {
         XCTAssertEqual(responseError.responseCode, 2001)
         XCTAssertEqual(responseError.userFacingMessage, msg)
     }
-    
+
     // 408    REQUEST TIMEOUT
     func testHTTP408() async throws {
         let exceptionCheck = self.expectation(description: "Success completion block called")
@@ -319,7 +319,7 @@ class HttpCodeTests: XCTestCase {
         XCTAssertEqual(responseError.userFacingMessage, msg)
         XCTAssertEqual(exceptionCount, 2)
     }
-    
+
     // 429    TOO MANY REQUESTS
     func testHTTP429() async throws {
         let exceptionCheck = self.expectation(description: "Success completion block called")
@@ -335,7 +335,7 @@ class HttpCodeTests: XCTestCase {
             }
             return HTTPStubsResponse(jsonObject: ret, statusCode: 429, headers: ["Content-Type": "application/json", "Retry-After": "5"])
         }
-        
+
         let session = AlamofireSession()
         let request = AlamofireRequest(parameters: nil, urlString: "https://www.example.com/error", method: .post, timeout: 30, retryPolicy: .background )
         let result = await withCheckedContinuation { continuation in
@@ -354,7 +354,7 @@ class HttpCodeTests: XCTestCase {
     }
 
     // MARK: - 5xx tests
-    
+
     // 500    INTERNAL SERVER ERROR
     func testHTTP500() async throws {
         let msg = "Display error text"
@@ -366,7 +366,7 @@ class HttpCodeTests: XCTestCase {
         XCTAssertEqual(response, TestResponse(code: nil, error: msg))
         XCTAssertEqual(msg, response.error)
     }
-    
+
     // 501    NOT IMPLEMENTED
     func testHTTP501() async throws {
         let msg = "Display error text"
@@ -378,7 +378,7 @@ class HttpCodeTests: XCTestCase {
         XCTAssertEqual(response, TestResponse(code: nil, error: msg))
         XCTAssertEqual(msg, response.error)
     }
-    
+
     // 502    BAD GATEWAY
     func testHTTP502() async throws {
         let exceptionCheck = self.expectation(description: "Success completion block called")
@@ -408,7 +408,7 @@ class HttpCodeTests: XCTestCase {
         XCTAssertEqual(responseError.userFacingMessage, msg)
         XCTAssertEqual(exceptionCount, 2)
     }
-    
+
     // 503    SERVICE UNAVAILABLE
     func testHTTP503() async throws {
         let exceptionCheck = self.expectation(description: "Success completion block called")
@@ -424,7 +424,7 @@ class HttpCodeTests: XCTestCase {
             }
             return HTTPStubsResponse(jsonObject: ret, statusCode: 503, headers: ["Content-Type": "application/json", "Retry-After": "6"])
         }
-        
+
         let session = AlamofireSession()
         let request = AlamofireRequest(parameters: nil, urlString: "https://www.example.com/error", method: .post, timeout: 30, retryPolicy: .background )
         let result = await withCheckedContinuation { continuation in

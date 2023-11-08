@@ -33,12 +33,12 @@ import ProtonCoreServices
 import ProtonCoreAuthentication
 
 class DoHProviderRequestTests: XCTestCase {
-    
+
     // swiftlint:disable:next weak_delegate
     var authDelegate: TestAuthDelegate!
     var authDelegate2: TestAuthDelegate!
     let timeout = 3.0
-    
+
     override func setUp() {
         authDelegate = TestAuthDelegate(sessionID: "testSessionID")
         authDelegate2 = TestAuthDelegate(sessionID: "testSessionID_2")
@@ -46,12 +46,12 @@ class DoHProviderRequestTests: XCTestCase {
         stubProductionHosts()
         super.setUp()
     }
-    
+
     override func tearDown() {
         super.tearDown()
         HTTPStubs.removeAllStubs()
     }
-    
+
     class TestAuthDelegate: AuthDelegate {
         func onSessionObtaining(credential: Credential) {}
         func onAdditionalCredentialsInfoObtained(sessionUID: String, password: String?, salt: String?, privateKey: String?) {}
@@ -73,13 +73,13 @@ class DoHProviderRequestTests: XCTestCase {
             self.sessionID = sessionID
         }
     }
-    
+
     struct GenericRequest: Request {
         let path: String
         let isAuth: Bool
         let authCredential: AuthCredential?
         let retryPolicy: ProtonRetryPolicy.RetryMode
-        
+
         init(path: String, isAuth: Bool, authCredential: AuthCredential? = nil, retryPolicy: ProtonRetryPolicy.RetryMode = .userInitiated) {
             self.path = path
             self.isAuth = isAuth
@@ -87,15 +87,15 @@ class DoHProviderRequestTests: XCTestCase {
             self.retryPolicy = retryPolicy
         }
     }
-    
+
     let urlSuffix = ProductionHosts.mailAPI.dohHost
-    
+
     func testNotAuthRequestAuthCredentialPassedByAuthDelegate_NoSessionID() {
         authDelegate = TestAuthDelegate(sessionID: "")
         let expectation1 = self.expectation(description: "Success completion block called from provider 1")
         let expectation2 = self.expectation(description: "Success completion block called from provider 2")
         let expectation3 = self.expectation(description: "Success completion block called from provider 3")
-        
+
         let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { result in
             if let urlString = result.url?.absoluteString, urlString.contains("google.com") {
                 XCTAssertTrue(urlString.contains("name=\(self.urlSuffix)"))
@@ -111,11 +111,11 @@ class DoHProviderRequestTests: XCTestCase {
         let request = GenericRequest(path: "/users/testPath", isAuth: false)
         doh.status = .forceAlternativeRouting
         apiService.authDelegate = authDelegate
-        
+
         apiService.perform(request: request, response: AuthResponse()) { task, response in
             expectation3.fulfill()
         }
-        
+
         self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
             XCTAssertNil(expectationError)
         }
@@ -125,7 +125,7 @@ class DoHProviderRequestTests: XCTestCase {
         let expectation1 = self.expectation(description: "Success completion block called from provider 1")
         let expectation2 = self.expectation(description: "Success completion block called from provider 2")
         let expectation3 = self.expectation(description: "Success completion block called from provider 3")
-        
+
         let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { result in
             if let urlString = result.url?.absoluteString, urlString.contains("google.com") {
                 XCTAssertTrue(urlString.contains("name=\(self.urlSuffix)"))
@@ -140,11 +140,11 @@ class DoHProviderRequestTests: XCTestCase {
                                                                      challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         let request = GenericRequest(path: "/users/testPath", isAuth: false)
         doh.status = .forceAlternativeRouting
-        
+
         apiService.perform(request: request, response: AuthResponse()) { (task, response: AuthResponse) in
             expectation3.fulfill()
         }
-        
+
         self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
             XCTAssertNil(expectationError)
         }
@@ -154,7 +154,7 @@ class DoHProviderRequestTests: XCTestCase {
         let expectation1 = self.expectation(description: "Success completion block called from provider 1")
         let expectation2 = self.expectation(description: "Success completion block called from provider 2")
         let expectation3 = self.expectation(description: "Success completion block called from provider 3")
-        
+
         let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { [self] result in
             if let urlString = result.url?.absoluteString, urlString.contains("google.com") {
                 XCTAssertTrue(urlString.contains("name=testSessionID.\(self.urlSuffix)"))
@@ -170,21 +170,21 @@ class DoHProviderRequestTests: XCTestCase {
         let request = GenericRequest(path: "/users/testPath", isAuth: true)
         doh.status = .forceAlternativeRouting
         apiService.authDelegate = authDelegate
-        
+
         apiService.perform(request: request, response: AuthResponse()) { (task, response: AuthResponse) in
             expectation3.fulfill()
         }
-        
+
         self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
             XCTAssertNil(expectationError)
         }
     }
-    
+
     func testAuthRequestOwnSessionIDPassesByAPIService_SessionID() {
         let expectation1 = self.expectation(description: "Success completion block called from provider 1")
         let expectation2 = self.expectation(description: "Success completion block called from provider 2")
         let expectation3 = self.expectation(description: "Success completion block called from provider 3")
-        
+
         let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { [self] result in
             if let urlString = result.url?.absoluteString, urlString.contains("google.com") {
                 XCTAssertTrue(urlString.contains("name=testSessionID.\(self.urlSuffix)"))
@@ -201,11 +201,11 @@ class DoHProviderRequestTests: XCTestCase {
         let request = GenericRequest(path: "/users/testPath", isAuth: true)
         doh.status = .forceAlternativeRouting
         apiService.authDelegate = authDelegate
-        
+
         apiService.perform(request: request, response: AuthResponse()) { (task, response: AuthResponse) in
             expectation3.fulfill()
         }
-        
+
         self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
             XCTAssertNil(expectationError)
         }
@@ -215,7 +215,7 @@ class DoHProviderRequestTests: XCTestCase {
         let expectation1 = self.expectation(description: "Success completion block called from provider 1")
         let expectation2 = self.expectation(description: "Success completion block called from provider 2")
         let expectation3 = self.expectation(description: "Success completion block called from provider 3")
-        
+
         let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { [self] result in
             if let urlString = result.url?.absoluteString, urlString.contains("google.com") {
                 XCTAssertTrue(urlString.contains("name=testSessionID.\(self.urlSuffix)"))
@@ -231,21 +231,21 @@ class DoHProviderRequestTests: XCTestCase {
         let request = GenericRequest(path: "/users/testPath", isAuth: true, authCredential: authDelegate.authCredential)
         doh.status = .forceAlternativeRouting
         apiService.authDelegate = authDelegate
-        
+
         apiService.perform(request: request, response: AuthResponse()) { (task, response: AuthResponse) in
             expectation3.fulfill()
         }
-        
+
         self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
             XCTAssertNil(expectationError)
         }
     }
-    
+
     func testAuthRequestAuthCredentailPassedByAuthDelegateAndRequest_SessionID() {
         let expectation1 = self.expectation(description: "Success completion block called from provider 1")
         let expectation2 = self.expectation(description: "Success completion block called from provider 2")
         let expectation3 = self.expectation(description: "Success completion block called from provider 3")
-        
+
         let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { [self] result in
             if let urlString = result.url?.absoluteString, urlString.contains("google.com") {
                 XCTAssertTrue(urlString.contains("name=testSessionID_2.\(self.urlSuffix)"))
@@ -261,21 +261,21 @@ class DoHProviderRequestTests: XCTestCase {
         let request = GenericRequest(path: "/users/testPath", isAuth: true, authCredential: authDelegate2.authCredential)
         doh.status = .forceAlternativeRouting
         apiService.authDelegate = authDelegate
-        
+
         apiService.perform(request: request, response: AuthResponse()) { (task, response: AuthResponse) in
             expectation3.fulfill()
         }
-        
+
         self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
             XCTAssertNil(expectationError)
         }
     }
-    
+
     func testAuthRequestAuthCredentialPassesByAuthDelegateAndRequestANDAPIService_SessionID() {
         let expectation1 = self.expectation(description: "Success completion block called from provider 1")
         let expectation2 = self.expectation(description: "Success completion block called from provider 2")
         let expectation3 = self.expectation(description: "Success completion block called from provider 3")
-        
+
         let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { [self] result in
             if let urlString = result.url?.absoluteString, urlString.contains("google.com") {
                 XCTAssertTrue(urlString.contains("name=testSessionID_2.\(self.urlSuffix)"))
@@ -292,11 +292,11 @@ class DoHProviderRequestTests: XCTestCase {
         let request = GenericRequest(path: "/users/testPath", isAuth: true, authCredential: authDelegate2.authCredential)
         doh.status = .forceAlternativeRouting
         apiService.authDelegate = authDelegate
-        
+
         apiService.perform(request: request, response: AuthResponse()) { (task, response: AuthResponse) in
             expectation3.fulfill()
         }
-        
+
         self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
             XCTAssertNil(expectationError)
         }

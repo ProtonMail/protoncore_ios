@@ -37,37 +37,37 @@ import WebKit
 @testable import ProtonCoreHumanVerification
 
 class HumanVerifyViewModelTests: XCTestCase {
-    
+
     var dohMock: DohMock!
     var model: HumanVerifyViewModel?
-    
+
     override func setUp() {
         super.setUp()
         dohMock = DohMock()
         let apiService = PMAPIService.createAPIServiceWithoutSession(doh: dohMock, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         model = HumanVerifyViewModel(api: apiService, startToken: nil, methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email), VerifyMethod(predefinedMethod: .sms)], clientApp: .mail)
     }
-    
+
     enum TokenType: String {
         case captcha
         case email
         case sms
     }
-    
+
     func successBody(token: String, type: TokenType) -> String {
         return """
             {"type":"\(MessageType.human_verification_success.rawValue)","payload":{"token":"\(token)","type":"\(type.rawValue)"}}
         """
     }
-    
+
     func notificationBody(text: String, type: NotificationType) -> String {
         return """
             {"type":"\(MessageType.notification.rawValue)","payload":{"type":"\(type.rawValue)","text":"\(text)"}}
         """
     }
-    
+
     // MARK: Test getURL
-    
+
     func testGetURL() {
         dohMock.getHumanVerificationV3HostStub.bodyIs { _ in "test.proton.test" }
         let url = model?.getURLRequest.url
@@ -79,9 +79,9 @@ class HumanVerifyViewModelTests: XCTestCase {
         XCTAssertNotNil(getParamValue(components: components, item: "defaultCountry"))
         XCTAssertEqual(getParamValue(components: components, item: "embed"), "true")
     }
-    
+
     // MARK: Test interpretMessage
-    
+
     func testInterpretSuccessCaptchaMessage() {
         let expectation = self.expectation(description: "expectation1")
         let testBody = successBody(token: "testToken", type: .captcha)
@@ -102,7 +102,7 @@ class HumanVerifyViewModelTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testInterpretSuccessEmailMessage() {
         let expectation = self.expectation(description: "expectation1")
         let testBody = successBody(token: "test@test.ch:123456", type: .email)
@@ -123,7 +123,7 @@ class HumanVerifyViewModelTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testInterpretSuccessSmsMessage() {
         let expectation = self.expectation(description: "expectation1")
         let testBody = successBody(token: "+41000000000:123456", type: .sms)
@@ -144,7 +144,7 @@ class HumanVerifyViewModelTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testInterpretErrorSmsMessage() {
         let expectation1 = self.expectation(description: "expectation1")
         let expectation2 = self.expectation(description: "expectation2")
@@ -171,7 +171,7 @@ class HumanVerifyViewModelTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testInterpretNotificationSuccess() {
         let expectation = self.expectation(description: "expectation1")
         let testBody = notificationBody(text: "test", type: .success)
@@ -189,7 +189,7 @@ class HumanVerifyViewModelTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testInterpretNotificationError() {
         let expectation = self.expectation(description: "expectation1")
         let testBody = notificationBody(text: "Error X", type: .error)
@@ -205,9 +205,9 @@ class HumanVerifyViewModelTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     // MARK: Private methods
-    
+
     private func getParamValue(components: URLComponents?, item: String) -> String? {
         for component in components!.queryItems! where component.name == item {
             return component.value

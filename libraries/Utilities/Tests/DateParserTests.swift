@@ -24,7 +24,7 @@ import XCTest
 @testable import ProtonCoreUtilities
 
 class DateParserTests: XCTestCase {
-    
+
     func testSucess() {
         let testString1 = "Thu, 29 Jul 2021 03:00:37 GMT"
         let date1 = DateParser.parse(time: testString1)

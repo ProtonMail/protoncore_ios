@@ -31,7 +31,7 @@ import ProtonCoreTestingToolkit
 #endif
 
 class AccountDeletionBaseTestCase: ProtonCoreBaseTestCase {
-    
+
     let entryRobot = CoreExampleMainRobot()
     var appRobot: AccountDeletionSampleAppRobot!
 

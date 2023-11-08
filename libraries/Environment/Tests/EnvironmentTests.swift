@@ -25,11 +25,11 @@ import ProtonCoreDoh
 @testable import ProtonCoreEnvironment
 
 class EnvironmentTests: XCTestCase {
-    
+
     func testPrebuildCount() {
        XCTAssertTrue(Environment.prebuild.count == 7)
     }
-    
+
     func testEqualable() {
         XCTAssertTrue(Environment.vpnProd == .vpnProd)
         XCTAssertTrue(Environment.mailProd == .mailProd)
@@ -38,7 +38,7 @@ class EnvironmentTests: XCTestCase {
         XCTAssertFalse(Environment.custom("domain.com") == .custom("domain.net"))
         XCTAssertTrue(Environment.custom("domain.com") == .custom("domain.com"))
     }
-    
+
     func testStatusUpdate() {
         Environment.prebuild.forEach { env in
             XCTAssertTrue(env.doh.status == .off)
@@ -48,7 +48,7 @@ class EnvironmentTests: XCTestCase {
             XCTAssertTrue(env.doh.status == .forceAlternativeRouting)
         }
     }
-    
+
     func testValueCheck() {
         [
             (Environment.mailProd, Environment.productionMail),
@@ -66,7 +66,7 @@ class EnvironmentTests: XCTestCase {
             XCTAssertTrue(env.doh.captchaHost == doh.captchaHost)
         }
     }
-    
+
     func testModifiableCheck() {
         let env: Environment = .mailProd
         XCTAssertTrue(env.doh.signupDomain == Environment.productionMail.signupDomain)

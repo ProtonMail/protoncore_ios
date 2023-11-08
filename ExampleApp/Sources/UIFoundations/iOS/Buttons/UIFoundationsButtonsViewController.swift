@@ -33,24 +33,24 @@ class UIFoundationsButtonsViewController: UIFoundationsAppearanceStyleViewContro
     @IBOutlet weak var buttonTextFieldChevron: ProtonButton!
     @IBOutlet weak var buttonTextFieldChevronDisabled: ProtonButton!
     @IBOutlet weak var buttonChevron: ProtonButton!
-    
+
     var brandButton: UIBarButtonItem?
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     init() {
         super.init(nibName: "UIFoundationsButtonsViewController", bundle: nil)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         title = "Buttons"
-        
+
         ColorProvider.brand = .proton
-        
+
         brandButton = UIBarButtonItem(title: "VPN", style: .plain, target: self, action: #selector(brandAction))
         guard let darkLightButton = navigationItem.rightBarButtonItem else { return }
         navigationItem.rightBarButtonItems = [darkLightButton, brandButton!]
@@ -58,36 +58,36 @@ class UIFoundationsButtonsViewController: UIFoundationsAppearanceStyleViewContro
         view.backgroundColor = ColorProvider.BackgroundNorm
         setupButtons()
     }
-    
+
     func setupButtons() {
         buttonSolid.setMode(mode: .solid)
         buttonSolid.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        
+
         buttonSolidDisabled.setMode(mode: .solid)
         buttonSolidDisabled.isEnabled = false
-        
+
         buttonOutlined.setMode(mode: .outlined)
         buttonOutlined.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        
+
         buttonOutlinedDisabled.setMode(mode: .outlined)
         buttonOutlinedDisabled.isEnabled = false
-        
+
         buttonText.setMode(mode: .text)
         buttonText.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        
+
         buttonTextDisabled.setMode(mode: .text)
         buttonTextDisabled.isEnabled = false
-        
+
         buttonTextFieldChevron.setMode(mode: .image(type: .textWithChevron))
         buttonTextFieldChevron.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        
+
         buttonTextFieldChevronDisabled.setMode(mode: .image(type: .textWithChevron))
         buttonTextFieldChevronDisabled.isEnabled = false
-        
+
         buttonChevron.setMode(mode: .image(type: .chevron))
         buttonChevron.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
     }
-    
+
     @objc func buttonAction(sender: ProtonButton!) {
         sender.isSelected = true
         sender.isUserInteractionEnabled = false
@@ -96,13 +96,13 @@ class UIFoundationsButtonsViewController: UIFoundationsAppearanceStyleViewContro
             sender.isUserInteractionEnabled = true
         }
     }
-    
+
     @objc func brandAction(sender: UIBarButtonItem!) {
         switch ColorProvider.brand {
         case .proton:
             ColorProvider.brand = .vpn
             brandButton?.title = "Pass"
-            
+
         case .vpn:
             ColorProvider.brand = .pass
             brandButton?.title = "Proton"

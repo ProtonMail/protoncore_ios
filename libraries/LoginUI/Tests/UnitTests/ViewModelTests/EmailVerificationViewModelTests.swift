@@ -51,7 +51,7 @@ class EmailVerificationViewModelTests: XCTestCase {
 
     var viewModel: EmailVerificationViewModel!
     var signupServiceMock: SignupServiceMock!
-    
+
     override func setUpWithError() throws {
         try super.setUpWithError()
         injectDefaultCryptoImplementation()
@@ -66,7 +66,7 @@ class EmailVerificationViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.isValidCodeFormat(code: "1234567"), false)
         XCTAssertEqual(viewModel.isValidCodeFormat(code: "123456"), true)
     }
-    
+
     func testRequestValidationTokenSuccess() throws {
         signupServiceMock.requestValidationTokenResult = .success(())
         let expect = expectation(description: "expectation1")
@@ -102,7 +102,7 @@ class EmailVerificationViewModelTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testCheckValidationTokenSuccess() throws {
         signupServiceMock.checkValidationTokenResult = .success(())
         let expect = expectation(description: "expectation1")

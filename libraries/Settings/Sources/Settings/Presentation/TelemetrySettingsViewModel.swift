@@ -29,10 +29,10 @@ class TelemetrySettingsViewModel: ObservableObject, PMSwitcher {
         isActive = value
         success(value)
     }
-    
+
     weak var delegate: TelemetrySettingsDelegate?
     private let telemetrySettingsService: TelemetrySettingsServiceProtocol
-    
+
     @Published var isActive: Bool {
         didSet {
             guard isActive != oldValue else { return }
@@ -40,7 +40,7 @@ class TelemetrySettingsViewModel: ObservableObject, PMSwitcher {
             delegate?.didSetTelemetry(isEnabled: isActive)
         }
     }
-    
+
     init(delegate: TelemetrySettingsDelegate?, telemetrySettingsService: TelemetrySettingsServiceProtocol) {
         self.telemetrySettingsService = telemetrySettingsService
         self.isActive = telemetrySettingsService.isTelemetryEnabled

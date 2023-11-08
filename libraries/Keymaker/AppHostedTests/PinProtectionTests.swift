@@ -28,7 +28,7 @@ class PinProtectionTests: XCTestCase {
     let keychain = KeychainWrapper(service: "ch.protonmail", accessGroup: "xxxxxxx.ch.protonmail.PMKeymaker")
     let mainKey = PinProtection.generateRandomValue(length: 32)
     let pinCode = "123"
-    
+
     override func setUp() {
         super.setUp()
         let ret = self.keychain.removeEverything()
@@ -37,12 +37,12 @@ class PinProtectionTests: XCTestCase {
     func testStaticEnum() {
        XCTAssertTrue( PinProtection.keychainLabel == "\(PinProtection.self)")
     }
-    
+
     func testLockUnlockV1() throws {
         let pinProtechion = PinProtection(pin: pinCode, keychain: keychain)
         XCTAssertNotNil(pinProtechion)
         try pinProtechion.lock(value: mainKey)
-        
+
         let byte = pinProtechion.getCypherBits()
         XCTAssertNotNil(byte)
         let clear = try pinProtechion.unlock(cypherBits: byte!)

@@ -28,11 +28,11 @@ import ProtonCoreTestingToolkit
 #endif
 
 class NetworkingLocalizationTests: XCTestCase {
-    
+
     func testAllSubstitutionsAreFollowingTheExpectedFormat() {
         testAllSubstitutionsAreValid(for: NWTranslation.self)
     }
-    
+
     func testAllTranslationsAreDefinedForAllLanguages() {
         testAllLocalizationsAreDefined(for: NWTranslation.self, prefixForMissingValue: #function)
     }

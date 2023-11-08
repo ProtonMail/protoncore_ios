@@ -148,7 +148,7 @@ extension ELanguage {
             }
         }
     }
-    
+
     static func allItems() -> [ELanguage] {
         return [
             .catalan,

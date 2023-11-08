@@ -25,7 +25,7 @@ import ProtonCoreUtilities
 private class Handler {}
 
 public enum PUITranslations: TranslationsExposing {
-    
+
     public static var bundle: Bundle {
         #if SPM
         return Bundle.module
@@ -33,9 +33,9 @@ public enum PUITranslations: TranslationsExposing {
         return Bundle(path: Bundle(for: Handler.self).path(forResource: "Translations-PaymentsUI", ofType: "bundle")!)!
         #endif
     }
-    
+
     public static var prefixForMissingValue: String = ""
-    
+
     case _core_ok_button
     case _core_cancel_button
     case _payments_warning
@@ -128,7 +128,7 @@ public enum PUITranslations: TranslationsExposing {
     case _plan_details_forwarding_mailboxes
     case _plan_details_custom_fields
     case _plan_pass_description
-    
+
     public var l10n: String {
         switch self {
         case ._core_ok_button:

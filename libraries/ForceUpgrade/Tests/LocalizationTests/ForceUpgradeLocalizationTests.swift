@@ -32,7 +32,7 @@ class ForceUpgradeLocalizationTests: XCTestCase {
     func testAllSubstitutionsAreFollowingTheExpectedFormat() {
         testAllSubstitutionsAreValid(for: FUTranslation.self)
     }
-    
+
     func testAllTranslationsAreDefinedForAllLanguages() {
         testAllLocalizationsAreDefined(for: FUTranslation.self, prefixForMissingValue: #function)
     }

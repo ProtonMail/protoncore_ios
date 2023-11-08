@@ -47,7 +47,7 @@ let successfulAlertButton = "OK"
 let environmentPaymentsBlackText = "payments"
 
 final class AccountDeletionSampleAppRobot: CoreElements {
-    
+
     let verify = Verify()
 
     final class Verify: CoreElements {
@@ -56,20 +56,20 @@ final class AccountDeletionSampleAppRobot: CoreElements {
             button(createAccountButton).waitUntilExists().checkExists()
             return AccountDeletionSampleAppRobot()
         }
-        
+
         @discardableResult
         func successAlertIsDisplayed() -> AccountDeletionSampleAppRobot {
             alert(successfulAlertText).waitUntilExists().checkExists()
             return AccountDeletionSampleAppRobot()
         }
-        
+
         @discardableResult
         func failureAlertIsDisplayed() -> AccountDeletionSampleAppRobot {
             alert(failureAlertText).waitUntilExists().checkExists()
             return AccountDeletionSampleAppRobot()
         }
     }
-    
+
     func createAccount() -> (AccountDeletionButtonRobot, String, String, String) {
         button(createAccountButton).tap()
         guard let detailsString = staticText(accountDetailsLabel).waitUntilExists().checkExists().label() else {
@@ -91,23 +91,23 @@ final class AccountDeletionSampleAppRobot: CoreElements {
         let idString = detailsString[idRange].dropFirst(14)
         return (AccountDeletionButtonRobot(), String(passwordString), String(nameString), String(idString))
     }
-    
+
     func createPaidAccount() -> AccountDeletionButtonRobot {
         button(createAccountButton).tap()
         return AccountDeletionButtonRobot()
     }
-    
+
     @discardableResult
     public func changeEnvironmentToPaymentsBlack() -> AccountDeletionSampleAppRobot {
         button(environmentPaymentsBlackText).tap()
         return self
     }
-    
+
     func switchPickerToAccount(_ account: AccountAvailableForCreation) -> AccountDeletionSampleAppRobot {
         pickerWheel().byIndex(0).adjust(to: account.description).checkHasValue(account.description)
         return self
     }
-    
+
     func fillInCustomCredentials(
         username: String = "", password: String = "",
         ownerId: String = "", ownerPassword: String = "",
@@ -121,55 +121,55 @@ final class AccountDeletionSampleAppRobot: CoreElements {
         if !plan.isEmpty { insertPlan(plan) }
         return self
     }
-    
+
     @discardableResult
     func switchToCustomCredentials() -> AccountDeletionSampleAppRobot {
         button(useCredentialsButton).tap()
         return self
     }
-    
+
     @discardableResult
     func insertUsername(_ name: String) -> AccountDeletionSampleAppRobot {
         textField(credentialsUsernameTextField).tap().typeText(name).typeText(XCUIKeyboardKey.return.rawValue)
         return self
     }
-    
+
     @discardableResult
     func insertPassword(_ password: String) -> AccountDeletionSampleAppRobot {
         textField(credentialsPasswordTextField).tap().typeText(password).typeText(XCUIKeyboardKey.return.rawValue)
         return self
     }
-    
+
     @discardableResult
     func insertOwnerId(_ ownerId: String) -> AccountDeletionSampleAppRobot {
         textField(credentialsOwnerIdTextField).tap().typeText(ownerId).typeText(XCUIKeyboardKey.return.rawValue)
         return self
     }
-    
+
     @discardableResult
     func insertOwnerPassword(_ ownerPassword: String) -> AccountDeletionSampleAppRobot {
         textField(credentialsOwnerPasswordTextField).tap().typeText(ownerPassword).typeText(XCUIKeyboardKey.return.rawValue)
         return self
     }
-    
+
     @discardableResult
     func insertPlan(_ plan: String) -> AccountDeletionSampleAppRobot {
         textField(planTextField).tap().typeText(plan).typeText(XCUIKeyboardKey.return.rawValue)
         return self
     }
-    
+
     func confirmPopup() -> AccountDeletionSampleAppRobot {
         button(successfulAlertButton).tap()
         return self
     }
-    
+
     func verifyAccountDeletionWasSuccessful() {
         self
             .verify.successAlertIsDisplayed()
             .confirmPopup()
             .verify.sampleAppScreenIsDisplayed()
     }
-    
+
     func verifyAccountDeletionFailed() {
         self
             .verify.failureAlertIsDisplayed()

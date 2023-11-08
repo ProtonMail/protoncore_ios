@@ -43,7 +43,7 @@ public enum ARTranslation: TranslationsExposing {
     case graceViewUndefinedTimeLeft
     case graceViewLine2
     case graceViewLine3
-    
+
     public var l10n: String {
         switch self {
         case .settingsItem:

@@ -29,11 +29,11 @@ import ProtonCoreTestingToolkit
 
 @available(iOS 13.0.0, *)
 final class AccountDeletionLocalizationTests: XCTestCase {
-    
+
     func testAllSubstitutionsAreFollowingTheExpectedFormat() {
         testAllSubstitutionsAreValid(for: ADTranslation.self)
     }
-    
+
     func testAllTranslationsAreDefinedForAllLanguages() {
         testAllLocalizationsAreDefined(for: ADTranslation.self, prefixForMissingValue: #function)
     }

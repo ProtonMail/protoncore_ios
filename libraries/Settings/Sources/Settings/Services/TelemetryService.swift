@@ -29,7 +29,7 @@ public protocol TelemetrySettingsServiceProtocol {
 public class TelemetrySettingsService: TelemetrySettingsServiceProtocol {
     private let userDefaults: UserDefaults
     private let telemetryKey = "telemetry.settings.key"
-    
+
     public private(set) var isTelemetryEnabled: Bool {
         get {
             userDefaults.bool(forKey: telemetryKey)
@@ -38,11 +38,11 @@ public class TelemetrySettingsService: TelemetrySettingsServiceProtocol {
             userDefaults.set(newValue, forKey: telemetryKey)
         }
     }
-    
+
     public init(userDefaults: UserDefaults = .standard) {
         self.userDefaults = userDefaults
     }
-    
+
     public func setIsTelemetryEnabled(state: Bool) {
         self.isTelemetryEnabled = state
     }

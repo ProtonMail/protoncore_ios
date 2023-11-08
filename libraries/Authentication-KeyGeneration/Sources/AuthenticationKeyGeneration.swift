@@ -110,7 +110,7 @@ extension Authenticator: AuthenticatorKeyGenerationInterface {
                     } catch {
                         completion(.failure(.addressKeySetupError(error)))
                     }
-                    
+
                 }
             case let .failure(error):
                 completion(.failure(error))
@@ -169,7 +169,7 @@ extension Authenticator: AuthenticatorKeyGenerationInterface {
                             completion(.failure(.addressKeySetupError(error)))
                         }
                     }
-                    
+
                 }
             case let .failure(error):
                 completion(.failure(error))

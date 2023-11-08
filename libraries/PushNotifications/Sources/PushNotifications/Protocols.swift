@@ -38,7 +38,7 @@ public protocol PushNotificationServiceProtocol: AnyObject {
     func didLoginWithUID(_ uid: String)
 }
 
-public struct NotificationType { 
+public struct NotificationType {
     public static let unknown = ""
 }
 

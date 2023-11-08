@@ -24,22 +24,22 @@
 import XCTest
 
 class AddressKey_v2Tests: XCTestCase {
-    
+
     var jsonDecoder: JSONDecoder!
-    
+
     override func setUp() {
         super.setUp()
         jsonDecoder = .init()
     }
-    
+
     override func tearDown() {
         jsonDecoder = nil
         super.tearDown()
     }
-    
+
     func testParseAddressKeyCorrectly() throws {
         let sut = try jsonDecoder.decode(AddressKey_v2.self, from: .addressKeyJSONData())
-        
+
         XCTAssertEqual(sut, .init(
             id: "po3wnqUjlYZ4L7N02HUq7eqC2nmrbUBWsGuqbA_0IUv5crXeMJyCuVHwxwfIOkCpyxKwHt_3giLkVXF_uZ0zKQ==",
             version: 3,
@@ -51,10 +51,10 @@ class AddressKey_v2Tests: XCTestCase {
             flags: .init(rawValue: 0)
         ))
     }
-    
+
     func testParseAddressKeyWithPrimaryAndActiveDisabled() throws {
         let sut = try jsonDecoder.decode(AddressKey_v2.self, from: .addressKeyJSONData(primary: 0, active: 0))
-        
+
         XCTAssertEqual(sut, .init(
             id: "po3wnqUjlYZ4L7N02HUq7eqC2nmrbUBWsGuqbA_0IUv5crXeMJyCuVHwxwfIOkCpyxKwHt_3giLkVXF_uZ0zKQ==",
             version: 3,
@@ -66,37 +66,37 @@ class AddressKey_v2Tests: XCTestCase {
             flags: .init(rawValue: 0)
         ))
     }
-    
+
     func testParseAddressKeyWithFlags0_ItHas0Flags() throws {
         let sut = try jsonDecoder.decode(AddressKey_v2.self, from: .addressKeyJSONData(flags: 0))
-        
+
         XCTAssertEqual(sut.flags, .init(rawValue: 0))
     }
-    
+
     func testParseAddressKeyWithFlags1_ItHasVerifySignatureFlag() throws {
         let sut = try jsonDecoder.decode(AddressKey_v2.self, from: .addressKeyJSONData(flags: 1))
-        
+
         XCTAssertEqual(sut.flags, .verifySignatures)
     }
-    
+
     func testParseAddressKeyWithFlags2_ItHasEncryptNewDataFlag() throws {
         let sut = try jsonDecoder.decode(AddressKey_v2.self, from: .addressKeyJSONData(flags: 2))
-        
+
         XCTAssertEqual(sut.flags, .encryptNewData)
     }
-    
+
     func testParseAddressKeyWithFlags3_ItHasVerifySignatureAndEncryptNewDataFlags() throws {
         let sut = try jsonDecoder.decode(AddressKey_v2.self, from: .addressKeyJSONData(flags: 3))
-        
+
         XCTAssertEqual(sut.flags, [.verifySignatures, .encryptNewData])
     }
-    
+
     func testParseAddressKeyWithFlags12_ItHasBelongsToExternalAddressFlag() throws {
         let sut = try jsonDecoder.decode(AddressKey_v2.self, from: .addressKeyJSONData(flags: 12))
-        
+
         XCTAssertEqual(sut.flags, .signifyingExternalAddress)
     }
-    
+
     func testParseAddressKeyWithActive2_ItThrowsDecodingError() throws {
         XCTAssertThrowsError(try jsonDecoder.decode(AddressKey_v2.self, from: .addressKeyJSONData(active: 2))) { error in
             assertDecodingError(
@@ -106,7 +106,7 @@ class AddressKey_v2Tests: XCTestCase {
             )
         }
     }
-    
+
     func testParseAddressKeyWithPrimary77_ItThrowsDecodingError() throws {
         XCTAssertThrowsError(try jsonDecoder.decode(AddressKey_v2.self, from: .addressKeyJSONData(primary: 77))) { error in
             assertDecodingError(
@@ -116,11 +116,11 @@ class AddressKey_v2Tests: XCTestCase {
             )
         }
     }
-    
+
 }
 
 private extension Data {
-    
+
     static func addressKeyJSONData(primary: Int = 1, active: Int = 1, flags: Int = 0) -> Self {
         let json = """
             {
@@ -141,8 +141,8 @@ private extension Data {
                 "Token" : "-----BEGIN PGP TOKEN-----..."
             }
         """
-        
+
         return json.data(using: .utf8)!
     }
-    
+
 }

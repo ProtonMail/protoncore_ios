@@ -35,7 +35,7 @@ import ProtonCoreChallenge
 import ProtonCoreFeatureSwitch
 
 final class AccountDeletionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, AccessibleView {
-    
+
     @IBOutlet private var activityIndicatorView: UIView!
     @IBOutlet private var accountDeletionStackView: UIStackView!
     @IBOutlet private var passwordTextField: UITextField!
@@ -52,17 +52,17 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
     @IBOutlet private var planTextField: UITextField!
     @IBOutlet private var pickerView: UIPickerView!
     @IBOutlet var environmentSelector: EnvironmentSelector!
-    
+
     private var selectedAccountForCreation: ((String?, String?, String, String, String) -> AccountAvailableForCreation)?
     private var createdAccountDetails: CreatedAccountDetails? {
         didSet {
             accountDeletionStackView.isHidden = createdAccountDetails == nil
         }
     }
-    
+
     private let authManager = AuthHelper()
     private let serviceDelegate = ExampleAPIServiceDelegate()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if let dynamicDomain = ProcessInfo.processInfo.environment["DYNAMIC_DOMAIN"] {
@@ -80,7 +80,7 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
         credentialsOwnerPasswordTextField.delegate = self
         planTextField.delegate = self
     }
-    
+
     @IBAction func onCredentialsChanged(_ sender: Any) {
         switch credentialsSelector.selectedSegmentIndex {
         case 0:
@@ -91,7 +91,7 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
             assertionFailure("Misconfiguration in \(#file), \(#function), \(#line)")
         }
     }
- 
+
     @IBAction func createAccount(_ sender: Any) {
         let username: String?
         let password: String?
@@ -125,7 +125,7 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
                 self.userNameTextField.text = details.account.username
                 UIPasteboard.general.string = details.account.password
                 self.accountDetailsLabel.text = details.details
-                
+
                 PMLog.debug("""
                 [Create Account Successed]
                 Details: \(details.details)
@@ -138,7 +138,7 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
             }
         }
     }
-    
+
     @IBAction func deleteAccount(_ sender: Any) {
         guard let createdAccountDetails = createdAccountDetails else { return }
         let env = environmentSelector.currentEnvironment
@@ -169,19 +169,19 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
             }
         }
     }
-    
+
     private func showLoadingIndicator() {
         DispatchQueue.main.async {
             self.activityIndicatorView.isHidden = false
         }
     }
-    
+
     private func hideLoadingIndicator() {
         DispatchQueue.main.async {
             self.activityIndicatorView.isHidden = true
         }
     }
-    
+
     private func handleSuccessfulAccountDeletion(_ success: AccountDeletionSuccess) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Account deletion success", message: "", preferredStyle: .alert)
@@ -190,7 +190,7 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
             self.accountDeletionStackView.isHidden = true
         }
     }
-    
+
     private func handleAccountDeletionFailure(_ failure: String) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Account deletion failure", message: "\(failure)", preferredStyle: .alert)
@@ -200,7 +200,7 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
             self.hideLoadingIndicator()
         }
     }
-    
+
     private func handleApiMightBeBlocked(_ failure: String) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Account deletion failure", message: "\(failure)", preferredStyle: .alert)
@@ -212,7 +212,7 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
             self.hideLoadingIndicator()
         }
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
         label.text = accountsAvailableForCreation[row](nil, nil, "", "", "").description
@@ -221,17 +221,17 @@ final class AccountDeletionViewController: UIViewController, UIPickerViewDataSou
         label.font = .systemFont(ofSize: UIFont.labelFontSize)
         return label
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         UIFont.labelFontSize * 3
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         accountsAvailableForCreation.count
     }
-    
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
-    
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedAccountForCreation = accountsAvailableForCreation[row]
     }

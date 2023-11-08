@@ -32,7 +32,7 @@ final class PasswordRequestLocalizationTests: XCTestCase {
     func testAllSubstitutionsAreFollowingTheExpectedFormat() {
         testAllSubstitutionsAreValid(for: PRTranslations.self)
     }
-    
+
     func testAllTranslationsAreDefinedForAllLanguages() {
         testAllLocalizationsAreDefined(for: PRTranslations.self, prefixForMissingValue: #function)
     }

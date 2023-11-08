@@ -32,7 +32,7 @@ public class AccountRecoveryHandler: NotificationHandler {
     /// - Parameter notification: The content of the notification to be processed
     public func handle(notification: UNNotificationContent) {
         // Each client app has a different mechanism for navigating to views, so this needs to be filled in
-        guard let message = notification.userInfo["unencryptedMessage"] as? [String: Any], let type = message["type"] as? String, 
+        guard let message = notification.userInfo["unencryptedMessage"] as? [String: Any], let type = message["type"] as? String,
               NotificationType.allAccountRecoveryTypes.contains(type)
         else { return }
 

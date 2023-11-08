@@ -47,12 +47,12 @@ import ProtonCoreTestingToolkit
 final class AvailablePlansIntegrationTests: XCTestCase {
     func test_availablePlans_parsesCorrectly() {
         let api = PMAPIService.createAPIServiceWithoutSession(doh: DohMock() as DoHInterface, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
-        
+
         mockAvailablePlans()
 
         let expectation = expectation(description: "test_availablePlans_parseCorrectly")
         let request = AvailablePlansRequest(api: api)
-        
+
         Task {
             do {
                 let availablePlansResponse = try await request.response(responseObject: AvailablePlansResponse())
@@ -60,9 +60,9 @@ final class AvailablePlansIntegrationTests: XCTestCase {
                     XCTFail("Expected: available plans")
                     return
                 }
-                
+
                 expectation.fulfill()
-                
+
                 XCTAssertEqual(availablePlans.defaultCycle, 12)
                 XCTAssertEqual(availablePlans.plans.count, 1)
                 XCTAssertEqual(availablePlans.plans[0].title, "Mail Essentials")
@@ -82,7 +82,7 @@ final class AvailablePlansIntegrationTests: XCTestCase {
                 XCTFail("Expected: available plans")
             }
         }
-        
+
         wait(for: [expectation], timeout: 1)
     }
 }
@@ -91,7 +91,7 @@ extension AvailablePlansIntegrationTests {
     private func mockAvailablePlans() {
         mock(filename: "AvailablePlans", title: "available plans /payment/v5/plans mock", path: "/payments/v5/plans")
     }
-    
+
     private func mock(filename: String, title: String, path: String, statusCode: Int32 = 200) {
         weak var usersStub = stub(condition: pathEndsWith(path)) { request in
             #if SPM
@@ -104,7 +104,7 @@ extension AvailablePlansIntegrationTests {
             let headers = ["Content-Type": "application/json;charset=utf-8"]
             return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: statusCode, headers: headers)
         }
-        
+
         usersStub?.name = title
     }
 }

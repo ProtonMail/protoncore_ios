@@ -53,7 +53,7 @@ class SignupViewModelTests: XCTestCase {
     var viewModel: SignupViewModel!
     var signupServiceMock: SignupServiceMock!
     var loginMock: LoginMock!
-    
+
     override func setUpWithError() throws {
         try super.setUpWithError()
         injectDefaultCryptoImplementation()
@@ -97,7 +97,7 @@ class SignupViewModelTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testUpdateAvailableDomainWhenMultipleDomains() {
         loginMock.updateAvailableDomainStub.bodyIs { _, _, result in
             result(["test", "test2", "test3"])
@@ -132,7 +132,7 @@ class SignupViewModelTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testCheckUsernameWithDomainSuccess() {
         loginMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
             completion(.success)

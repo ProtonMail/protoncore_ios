@@ -43,7 +43,7 @@ extension UInt8 {
 
 /// Quoted printable encoder and decoder
 public class QuotedPrintable {
-    
+
     /// Encode a string in quoted printable encoding
     ///
     /// - parameter string: String to encode
@@ -51,10 +51,10 @@ public class QuotedPrintable {
     public class func encode(string: String) -> String {
         var gen = string.utf8.makeIterator()
         var charCount = 0
-        
+
         var result = ""
         result.reserveCapacity(string.count)
-        
+
         while let c = gen.next() {
             switch c {
             case 32...60, 62...126:
@@ -79,16 +79,16 @@ public class QuotedPrintable {
                 result.append(c.hexString().uppercased())
                 charCount += 3
             }
-            
+
             if charCount == 75 {
                 charCount = 0
                 result.append("=\r\n")
             }
         }
-        
+
         return result
     }
-    
+
     /// Decode a quoted printable encoded string
     ///
     /// - parameter string: String to decode
@@ -96,15 +96,15 @@ public class QuotedPrintable {
     public class func decode(string: String) -> String {
         var state = QuotedPrintableState.Text
         var gen = string.utf8.makeIterator()
-        
+
         // reserve space
         var decodedString = ""
         decodedString.reserveCapacity(string.count)
-        
+
         // main parse loop
         while let c = gen.next() {
             var result: (c: UnicodeScalar?, state: QuotedPrintableState) = (c: nil, state: state)
-            
+
             switch state {
             case .Text:
                 result = self.parseText(c: c)
@@ -113,24 +113,24 @@ public class QuotedPrintable {
             case .EqualsSecondDigit:
                 result = self.parseEqualsSecondDigit(c: c, state: state)
             }
-            
+
             state = result.state
             if let cOut = result.c {
                 decodedString.append(String(cOut))
             }
         }
-        
+
         return decodedString
     }
-    
+
     // MARK: - State machine parser for quoted printable
-    
+
     private enum QuotedPrintableState {
         case Text
         case Equals
         case EqualsSecondDigit(firstDigit: UInt8)
     }
-    
+
     private class func parseText(c: UInt8) -> (c: UnicodeScalar?, state: QuotedPrintableState) {
         switch c {
         case 61:
@@ -139,7 +139,7 @@ public class QuotedPrintable {
             return (c: UnicodeScalar(c), state: .Text)
         }
     }
-    
+
     private class func parseEquals(c: UInt8) -> (c: UnicodeScalar?, state: QuotedPrintableState) {
         switch c {
         case 13:
@@ -152,7 +152,7 @@ public class QuotedPrintable {
             return (c: UnicodeScalar(c), state: .Text)
         }
     }
-    
+
     private class func parseEqualsSecondDigit(c: UInt8, state: QuotedPrintableState) -> (c: UnicodeScalar?, state: QuotedPrintableState) {
         switch c {
         case 48...57, 65...70, 97...102:
@@ -165,7 +165,7 @@ public class QuotedPrintable {
                 } else {
                     result = (c0 - 97 + 10) << 4
                 }
-                
+
                 if c <= 57 {
                     result += c - 48
                 } else if c <= 70 {
@@ -173,7 +173,7 @@ public class QuotedPrintable {
                 } else {
                     result += c - 97 + 10
                 }
-                
+
                 return (c: UnicodeScalar(result), state: .Text)
             }
             return (c: nil, state: .Text)

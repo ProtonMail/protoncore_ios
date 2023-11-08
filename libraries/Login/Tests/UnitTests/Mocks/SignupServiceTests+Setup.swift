@@ -111,14 +111,14 @@ extension SignupServiceTests {
         mock(filename: "ModulusOK", title: "Modulus ok mock", path: "/auth/modulus")
         mock(filename: "CreateUserError2001", title: "users put error 12081 mock", path: "/users", method: isMethodPOST())
     }
-    
+
     func mockModulusErrorWithParseDomain(username: String, domain: String) {
         mock(filename: "UsersAvailableOK", title: "user is available", path: "/users/available", requestValidator: { request in
             request.url!.absoluteString.contains("?ParseDomain=1&Name=\(username)%40\(domain)")
         })
         mock(filename: "ModulusError", title: "Modulus error mock", path: "/auth/modulus")
     }
-    
+
     func mockCreateInternalAccountOK(username: String, domain: String) {
         mock(filename: "UsersAvailableOK", title: "user is available", path: "/users/available", requestValidator: { request in
             request.url!.absoluteString.contains("?ParseDomain=1&Name=\(username)%40\(domain)")
@@ -194,7 +194,7 @@ extension SignupServiceTests {
     }
 
     private func mock(filename: String, differentOnSecondRequestFilename: String? = nil, title: String, path: String, statusCode: Int32 = 200, params: [String: String?]? = nil, body: [String: String?]? = nil, method: @escaping HTTPStubsTestBlock = isMethodGET(), requestValidator: @escaping (URLRequest) -> Bool = { _ in true }) {
-        
+
         let queryParams = params != nil ? containsQueryParams(params!) : { _ in true }
         weak var usersStub = stub(condition: pathEndsWith(path) && queryParams && method) { request in
             if requestValidator(request) == false {

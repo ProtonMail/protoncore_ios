@@ -25,9 +25,9 @@ private let modalVCSwitchId = "PaymentsNewUserSubscriptionUIVC.modalVCSwitch"
 private let extendSubscriptionSwitchId = "PaymentsNewUserSubscriptionUIVC.canExtendSubscriptionSwitch"
 
 public final class PaymentsNewUserSubscriptionUIRobot: CoreElements {
-    
+
     public let verify = Verify()
-    
+
     public class Verify: CoreElements {
         @discardableResult
         public func newUserSubscriptionUIScreenIsShown() -> PaymentsNewUserSubscriptionUIRobot {
@@ -35,42 +35,42 @@ public final class PaymentsNewUserSubscriptionUIRobot: CoreElements {
             return PaymentsNewUserSubscriptionUIRobot()
         }
     }
-    
+
     public func insertUsername(name: String) -> PaymentsNewUserSubscriptionUIRobot {
         textField(usernameTextField).tap().typeText(name)
         return self
     }
-    
+
     public func insertPassword(password: String) -> PaymentsNewUserSubscriptionUIRobot {
         textField(passwordTextField).tap().typeText(password)
         return self
     }
-    
+
     public func backendFetchSwitchTap() -> PaymentsNewUserSubscriptionUIRobot {
         swittch(backendFetchSwitchId).tap()
         return self
     }
-    
+
     public func modalVCSwitchTap() -> PaymentsNewUserSubscriptionUIRobot {
         swittch(modalVCSwitchId).tap()
         return self
     }
-    
+
     public func extendSunscriptionSwitchTap() -> PaymentsNewUserSubscriptionUIRobot {
         swittch(extendSubscriptionSwitchId).tap()
         return self
     }
-    
+
     public func loginButtonTap() -> PaymentsNewUserSubscriptionUIRobot {
         button(loginButtonId).waitUntilExists().isEnabled().tap()
         return self
     }
-    
+
     public func showCurrentPlanButtonTap() -> PaymentsUIRobot {
         button(showCurrentPlanButtonId).waitUntilExists().isEnabled().doubleTap()
         return PaymentsUIRobot()
     }
-    
+
     public func showUpdatePlansButtonTap() -> PaymentsUIRobot {
         button(showUpdatePlansButtonId).waitUntilExists().tap()
         return PaymentsUIRobot()

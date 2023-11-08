@@ -35,7 +35,7 @@ class HumanCheckHelperMock: HumanVerifyDelegate {
     weak var responseDelegateForLoginAndSignup: HumanVerifyResponseDelegate?
 
     weak var paymentDelegateForLoginAndSignup: HumanVerifyPaymentDelegate?
-    
+
     init(apiService: APIService, resultSuccess: Bool, resultHeaders: [[String: Any]]? = nil, delay: TimeInterval = 0, resultClosure: ((@escaping(Bool) -> Void) -> Void)? = nil) {
         self.resultSuccess = resultSuccess
         self.resultHeaders = resultHeaders
@@ -47,7 +47,7 @@ class HumanCheckHelperMock: HumanVerifyDelegate {
         let verificationBlock: SendVerificationCodeBlock = { (res, error, finish) in
            finish?()
         }
-        
+
         func execute() {
             if resultSuccess {
                 if let resultHeaders = resultHeaders {
@@ -65,7 +65,7 @@ class HumanCheckHelperMock: HumanVerifyDelegate {
                 }
             }
         }
-        
+
         if let resultClosure = resultClosure {
             resultClosure({ res in
                 if res == true {
@@ -76,11 +76,11 @@ class HumanCheckHelperMock: HumanVerifyDelegate {
             execute()
         }
     }
-    
+
     func onDeviceVerify(parameters: ProtonCoreNetworking.DeviceVerifyParameters) -> String? {
         nil
     }
-    
+
     func getSupportURL() -> URL {
         return URL(string: "www.protonmail.com")!
     }

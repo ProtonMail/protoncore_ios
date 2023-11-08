@@ -45,12 +45,12 @@ class SKPaymentQueueMock: SKPaymentQueue {
         }
     }
     var lock = false
-    
+
     func continueWithOtherState(state: SKPaymentTransactionState) {
         transactionState = state
         block?()
     }
-    
+
     override func add(_ payment: SKPayment) {
         payments.append(payment)
         block = {
@@ -66,9 +66,9 @@ class SKPaymentQueueMock: SKPaymentQueue {
             block?()
         }
     }
-    
+
     private var mockTransactions: [SKPaymentTransaction] = []
-    
+
     override var transactions: [SKPaymentTransaction] {
         get {
             return mockTransactions

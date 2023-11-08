@@ -22,26 +22,26 @@
 import Foundation
 
 public class LoginStorage {
-    
+
     private static let migrationKey = "migratedTo"
-    
+
     private static let standardDefaults = UserDefaults.standard
     private static var specifiedDefaults: UserDefaults?
-    
+
     public static func setSpecificDefaults(defaults: UserDefaults) {
         if !defaults.bool(forKey: LoginStorage.migrationKey) {
             // Move any compatible data from old defaults to the new one
             LoginStorage.standardDefaults.dictionaryRepresentation().forEach { (key, value) in
                 defaults.set(value, forKey: key)
             }
-            
+
             defaults.setValue(true, forKey: LoginStorage.migrationKey)
             defaults.synchronize()
         }
-        
+
         LoginStorage.specifiedDefaults = defaults
     }
-    
+
     public static func userDefaults() -> UserDefaults {
         if let specifiedDefaults = specifiedDefaults {
             return specifiedDefaults
@@ -49,11 +49,11 @@ public class LoginStorage {
             return LoginStorage.standardDefaults
         }
     }
-    
+
     public static func setValue(_ value: Any?, forKey key: String) {
         LoginStorage.userDefaults().setValue(value, forKey: key)
     }
-    
+
     public static func contains(_ key: String) -> Bool {
         return LoginStorage.userDefaults().object(forKey: key) != nil
     }

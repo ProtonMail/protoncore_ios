@@ -28,13 +28,13 @@ import ProtonCoreTestingToolkit
 #endif
 
 final class PaymentsTranslationsTests: XCTestCase {
-    
+
     func testAllSubstitutionsAreFollowingTheExpectedFormat() {
         testAllSubstitutionsAreValid(for: PSTranslation.self)
     }
-    
+
     func testAllTranslationsAreDefinedForAllLanguages() {
         testAllLocalizationsAreDefined(for: PSTranslation.self, prefixForMissingValue: #function)
     }
-    
+
 }

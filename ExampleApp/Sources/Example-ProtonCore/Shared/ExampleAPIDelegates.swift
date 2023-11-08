@@ -11,7 +11,7 @@ import ProtonCoreNetworking
 import ProtonCoreServices
 
 final class ExampleAPIServiceDelegate: APIServiceDelegate {
-    
+
     var additionalHeaders: [String: String]?
 
     func onUpdate(serverTime: Int64) {

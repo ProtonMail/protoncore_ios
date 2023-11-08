@@ -25,9 +25,9 @@ import fusion
 import XCTest
 
 public final class SafariRobot: CoreElements {
-    
+
     public let verify = Verify()
-    
+
     public final class Verify: CoreElements {
         @discardableResult
         public func isOutsideOfApplication() -> SafariRobot {

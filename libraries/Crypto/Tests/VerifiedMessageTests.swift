@@ -32,7 +32,7 @@ class VerifiedMessageTests: CryptoTestBase {
         let vstringError = VerifiedString.unverified(check, SignatureVerifyError.init(code: 3, message: "error"))
         XCTAssertEqual(check, vstringError.content)
     }
-    
+
     func testVerifiedData() {
         let check = random(length: 10)
         let vData = VerifiedData.verified(check)

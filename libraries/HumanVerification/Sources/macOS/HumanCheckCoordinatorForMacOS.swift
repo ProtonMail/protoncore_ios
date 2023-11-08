@@ -58,13 +58,13 @@ final class HumanCheckCoordinator {
         self.apiService = apiService
         self.clientApp = clientApp
         self.title = parameters.title
-        
+
         self.humanVerifyViewModel = HumanVerifyViewModel(api: apiService, startToken: parameters.startToken, methods: parameters.methods, clientApp: clientApp)
         self.humanVerifyViewModel.onVerificationCodeBlock = { [weak self] verificationCodeBlock in
             guard let self = self else { return }
             self.delegate?.verificationCode(tokenType: self.humanVerifyViewModel.getToken(), verificationCodeBlock: verificationCodeBlock)
         }
-        
+
         if NSClassFromString("XCTest") == nil {
             if parameters.methods.count == 0 {
                 self.initialHelpViewController = getHelpViewController
@@ -79,7 +79,7 @@ final class HumanCheckCoordinator {
     }
 
     // MARK: - Private methods
-    
+
     private func instantiateViewController() {
         self.initialViewController = instantiateVC(type: HumanVerifyViewController.self,
                                                    identifier: "HumanVerifyViewController")
@@ -96,7 +96,7 @@ final class HumanCheckCoordinator {
             NSApplication.shared.keyWindow?.contentViewController?.presentAsModalWindow(viewController)
         }
     }
-    
+
     private func showHelp() {
         guard let initialViewController = initialViewController else { return }
         initialViewController.present(getHelpViewController,
@@ -105,7 +105,7 @@ final class HumanCheckCoordinator {
                                       preferredEdge: .maxX,
                                       behavior: .transient)
     }
-    
+
     private var getHelpViewController: HVHelpViewController {
         let helpViewController = instantiateVC(type: HVHelpViewController.self,
                                                identifier: "HumanCheckHelpViewController")
@@ -126,19 +126,19 @@ extension HumanCheckCoordinator: HumanVerifyViewControllerDelegate {
         instantiateViewController()
         showHumanVerification()
     }
-    
+
     func didDismissViewController() {
         delegate?.close()
     }
-    
+
     func didShowHelpViewController() {
         showHelp()
     }
-    
+
     func didDismissWithError(code: Int, description: String) {
         // TODO: Missing implmenetation
     }
-    
+
     func emailAddressAlreadyTakenWithError(code: Int, description: String) {
         // TODO: Missing implmenetation
     }

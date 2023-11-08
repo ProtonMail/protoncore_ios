@@ -49,7 +49,7 @@ public struct AccountRecoveryView: View {
     public init(viewModel: ViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
-  
+
 }
 
 struct AccountRecoveryView_Previews: PreviewProvider {

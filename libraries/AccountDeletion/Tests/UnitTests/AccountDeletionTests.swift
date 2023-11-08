@@ -44,12 +44,12 @@ let navigation = WKNavigation()
 
 @available(iOS 13.0.0, *)
 final class AccountDeletionTests: XCTestCase {
-    
+
     var apiMock: APIServiceMock!
     var dohMock: DohMock!
     var viewModelMock: AccountDeletionViewModelMock!
     var webViewDelegateMock: AccountDeletionWebViewDelegateMock!
-    
+
     override func setUp() {
         super.setUp()
         apiMock = APIServiceMock()
@@ -57,17 +57,17 @@ final class AccountDeletionTests: XCTestCase {
         viewModelMock = AccountDeletionViewModelMock()
         webViewDelegateMock = AccountDeletionWebViewDelegateMock()
     }
-    
+
     func testAccountDeletionTranslationsAreDefinedForEnglish() {
         testAllLocalizationsAreDefined(for: ADTranslation.self, prefixForMissingValue: #function)
     }
-    
+
     func testAllSubstitutionsAreFollowingTheExpectedFormatForEnglish() {
         testAllSubstitutionsAreValid(for: ADTranslation.self)
     }
-    
+
     // MARK: - AccountDeletionService tests
-    
+
     func testAccountDeletionOperationFailsIfBackendDoesntConfirmUserIsDeletable() async throws {
         let presenterMock = AccountDeletionViewControllerPresenterMock()
         let out = AccountDeletionService(api: apiMock, doh: dohMock)
@@ -81,12 +81,12 @@ final class AccountDeletionTests: XCTestCase {
         let result = await withCheckedContinuation { continuation in
             out.initiateAccountDeletionProcess(presenter: presenterMock, completion: continuation.resume(returning:))
         }
-        
+
         XCTAssertTrue(apiMock.requestJSONStub.wasCalledExactlyOnce)
         guard case .failure(.cannotDeleteYourself(let responseError)) = result else { XCTFail(); return }
         XCTAssertEqual(responseError.underlyingError, NSError(domain: NSURLErrorDomain, code: 444))
     }
-    
+
     func testAccountDeletionOperationFailsIfSessionForkingFail() async throws {
         let presenterMock = AccountDeletionViewControllerPresenterMock()
         let out = AccountDeletionService(api: apiMock, doh: dohMock)
@@ -115,7 +115,7 @@ final class AccountDeletionTests: XCTestCase {
         guard case .failure(.sessionForkingError(let message)) = result else { XCTFail(); return }
         XCTAssertEqual(message, "session forking failed")
     }
-    
+
     @MainActor
     func testAccountDeletionPresentsAccountDeletionWebViewWithRightSelectorIfForkingSucceeds() async throws {
         let presenterMock = AccountDeletionViewControllerPresenterMock()
@@ -135,7 +135,7 @@ final class AccountDeletionTests: XCTestCase {
                 completion(nil, .success([:]))
             }
         }
-        
+
         presenterMock.presentStub.bodyIs { _, viewController, _, _ in
             guard let navigationController = viewController as? UINavigationController,
                   let webView = navigationController.topViewController as? AccountDeletionWebView else { XCTFail(); return }
@@ -145,7 +145,7 @@ final class AccountDeletionTests: XCTestCase {
         let result = await withCheckedContinuation { continuation in
             out.initiateAccountDeletionProcess(presenter: presenterMock, completion: continuation.resume(returning:))
         }
-        
+
         XCTAssertTrue(presenterMock.presentStub.wasCalledExactlyOnce)
         guard case .failure(.closedByUser) = result else { XCTFail(); return }
         guard let navigationController = presenterMock.presentStub.lastArguments?.first as? UINavigationController,
@@ -153,54 +153,54 @@ final class AccountDeletionTests: XCTestCase {
         XCTAssertEqual(webView.viewModel.getURLRequest.url?.absoluteString,
                        "https://proton.unittests/account/lite?action=delete-account&language=en_US#selector=happy_test_selector")
     }
-    
+
     // MARK: - AccountDeletionWebView tests
-    
+
     func testAccountDeletionWebViewDoNotPassMessageToViewModelIfNotForiOS() {
         let webView = AccountDeletionWebView(viewModel: viewModelMock)
         let message = WKScriptMessageMock(name: "test name", body: "test body")
         webView.userContentController(WKUserContentController(), didReceive: message)
         XCTAssertTrue(viewModelMock.interpretMessageStub.wasNotCalled)
     }
-    
+
     func testAccountDeletionWebViewDoPassMessageToViewModelIfForiOS() {
         let webView = AccountDeletionWebView(viewModel: viewModelMock)
         let message = WKScriptMessageMock(name: "iOS", body: "test body")
         webView.userContentController(WKUserContentController(), didReceive: message)
         XCTAssertTrue(viewModelMock.interpretMessageStub.wasCalled)
     }
-    
+
     func testAccountDeletionWebViewPresentsLoadingOnLoadingMessage() {
         let webView = AccountDeletionWebView(viewModel: viewModelMock)
         webView.loader.startAnimating()
         viewModelMock.interpretMessageStub.bodyIs { _, _, loading, _, _, _ in loading() }
         let message = WKScriptMessageMock(name: "iOS", body: "test body")
         webView.userContentController(WKUserContentController(), didReceive: message)
-        
+
         XCTAssertFalse(webView.loader.isAnimating)
     }
-    
+
     func testAccountDeletionWebViewPresentsBannerOnNotification() throws {
         let webView = AccountDeletionWebView(viewModel: viewModelMock)
         viewModelMock.getURLRequestStub.fixture = try URLRequest(url: "https://example.com", method: .get)
         viewModelMock.interpretMessageStub.bodyIs { _, _, _, notification, _, _ in notification(.info, "test message") }
         let message = WKScriptMessageMock(name: "iOS", body: "test body")
         webView.userContentController(WKUserContentController(), didReceive: message)
-        
+
         XCTAssertEqual(webView.banner?.style as? PMBannerNewStyle, .info)
         XCTAssertEqual(webView.banner?.message, "test message")
     }
-    
+
     func testAccountDeletionWebViewPresentsBannerOnSuccess() throws {
         let webView = AccountDeletionWebView(viewModel: viewModelMock)
         viewModelMock.getURLRequestStub.fixture = try URLRequest(url: "https://example.com", method: .get)
         viewModelMock.interpretMessageStub.bodyIs { _, _, _, _, success, _ in success() }
         let message = WKScriptMessageMock(name: "iOS", body: "test body")
         webView.userContentController(WKUserContentController(), didReceive: message)
-        
+
         XCTAssertEqual(webView.banner?.message, ADTranslation.delete_account_success.l10n)
     }
-    
+
     func testAccountDeletionWebViewClosesOnCloseMessage() throws {
         let webView = AccountDeletionWebView(viewModel: viewModelMock)
         webView.stronglyKeptDelegate = webViewDelegateMock
@@ -210,54 +210,54 @@ final class AccountDeletionTests: XCTestCase {
         viewModelMock.interpretMessageStub.bodyIs { _, _, _, _, _, close in close(completionBlock) }
         let message = WKScriptMessageMock(name: "iOS", body: "test body")
         webView.userContentController(WKUserContentController(), didReceive: message)
-        
+
         XCTAssertFalse(completionBlockWasCalled)
         XCTAssertTrue(webViewDelegateMock.shouldCloseWebViewStub.wasCalledExactlyOnce)
         webViewDelegateMock.shouldCloseWebViewStub.lastArguments?.second()
         XCTAssertTrue(completionBlockWasCalled)
     }
-    
+
     func testAccountDeletionPassesWebLoadingErrorToViewModelAfterLoadingStarted() throws {
         let webView = AccountDeletionWebView(viewModel: viewModelMock)
         viewModelMock.getURLRequestStub.fixture = try URLRequest(url: "https://example.com", method: .get)
-        
+
         _ = webView.view
-        
+
         enum LoadingError: Error, Equatable { case someError }
         webView.webView(WKWebView(), didFail: navigation, withError: LoadingError.someError)
 
         XCTAssertTrue(viewModelMock.shouldRetryFailedLoadingStub.wasCalledExactlyOnce)
         XCTAssertEqual(viewModelMock.shouldRetryFailedLoadingStub.lastArguments?.second as? LoadingError, LoadingError.someError)
     }
-    
+
     func testAccountDeletionDoesNotPassWebLoadingErrorToViewModelBeforeLoadingStarted() throws {
         let webView = AccountDeletionWebView(viewModel: viewModelMock)
         viewModelMock.getURLRequestStub.fixture = try URLRequest(url: "https://example.com", method: .get)
-        
+
         enum LoadingError: Error, Equatable { case someError }
         webView.webView(WKWebView(), didFail: navigation, withError: LoadingError.someError)
 
         XCTAssertTrue(viewModelMock.shouldRetryFailedLoadingStub.wasNotCalled)
     }
-    
+
     func testAccountDeletionSetupsWebViewConfigurationBeforeLoading() throws {
         let webView = AccountDeletionWebView(viewModel: viewModelMock)
         viewModelMock.getURLRequestStub.fixture = try URLRequest(url: "https://example.com", method: .get)
 
         _ = webView.view
-        
+
         XCTAssertTrue(viewModelMock.setupStub.wasCalledExactlyOnce)
     }
-    
+
     func testAccountDeletionClosesScreenAndCompletesWithErrorOnUnretriedLoadingError() throws {
         let webView = AccountDeletionWebView(viewModel: viewModelMock)
         webView.stronglyKeptDelegate = webViewDelegateMock
         viewModelMock.getURLRequestStub.fixture = try URLRequest(url: "https://example.com", method: .get)
         viewModelMock.shouldRetryFailedLoadingStub.bodyIs { _, _, _, completion in completion(.dontRetry) }
         webViewDelegateMock.shouldCloseWebViewStub.bodyIs { _, _, completion in completion() }
-        
+
         _ = webView.view
-        
+
         enum LoadingError: Error, Equatable { case someError }
         webView.webView(WKWebView(), didFail: navigation, withError: LoadingError.someError)
 
@@ -267,9 +267,9 @@ final class AccountDeletionTests: XCTestCase {
         XCTAssertTrue(viewModelMock.deleteAccountDidErrorOutStub.wasCalledExactlyOnce)
         XCTAssertEqual(viewModelMock.deleteAccountDidErrorOutStub.lastArguments?.value, LoadingError.someError.localizedDescription)
     }
-    
+
     // MARK: - AccountDeletionViewModel tests
-    
+
     func testAccountDeletionViewModelSetsSchemesInWKWebViewConfiguration() {
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
@@ -281,7 +281,7 @@ final class AccountDeletionTests: XCTestCase {
             XCTAssertTrue(configuration.urlSchemeHandler(forURLScheme: custom) is AlternativeRoutingRequestInterceptor)
         }
     }
-    
+
     func testAccountDeletionViewModelCallCompletionOnClosed() async {
         let result: Result<AccountDeletionSuccess, AccountDeletionError> = await withCheckedContinuation { continuation in
             let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
@@ -292,7 +292,7 @@ final class AccountDeletionTests: XCTestCase {
         }
         guard case .failure(.closedByUser) = result else { XCTFail(); return }
     }
-    
+
     func testAccountDeletionViewModelCallCompletionOnError() async {
         let result: Result<AccountDeletionSuccess, AccountDeletionError> = await withCheckedContinuation { continuation in
             let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
@@ -303,7 +303,7 @@ final class AccountDeletionTests: XCTestCase {
         }
         guard case .failure(.deletionFailure("test message")) = result else { XCTFail(); return }
     }
-    
+
     func testAccountDeletionViewModelPassesErrorToDoH() async {
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
@@ -316,13 +316,13 @@ final class AccountDeletionTests: XCTestCase {
             XCTAssertEqual((error as? NSError)?.code, 444)
             completion(true)
         }
-        
+
         let result: AccountDeletionRetryCheckResult = await withCheckedContinuation { continuation in
             viewModel.shouldRetryFailedLoading(host: "https://proton.unittests",
                                                error: NSError(domain: NSURLErrorDomain, code: 444),
                                                shouldReloadWebView: continuation.resume(returning:))
         }
-        
+
         XCTAssertEqual(result, .retry)
     }
 
@@ -344,7 +344,7 @@ final class AccountDeletionTests: XCTestCase {
                                                  completion: { _ in })
         XCTAssert(viewModel.getURLRequest.url!.absoluteString.contains("language=en_US"))
     }
-    
+
     func testAccountDeletionDoesNotCallAnyBlockIfMessageInvalid() {
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
@@ -357,14 +357,14 @@ final class AccountDeletionTests: XCTestCase {
                                    successPresentation: { XCTFail() },
                                    closeWebView: { _ in XCTFail() })
     }
-    
+
     func testAccountDeletionCallLoadedBlockIfLoadedMessage() async {
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
                                                  callCompletionBlockUsing: .immediateExecutor,
                                                  completion: { _ in })
         let message = WKScriptMessageMock(name: "test name", body: "{\"type\":\"LOADED\"}")
-        
+
         let _: Void = await withCheckedContinuation { continuation in
             viewModel.interpretMessage(message,
                                        loadedPresentation: continuation.resume,
@@ -373,7 +373,7 @@ final class AccountDeletionTests: XCTestCase {
                                        closeWebView: { _ in XCTFail() })
         }
     }
-    
+
     func testAccountDeletionCallCloseBlockIfCloseMessage() async {
         let completionExpectation = expectation(description: "should call completion block")
         var result: Result<AccountDeletionSuccess, AccountDeletionError>?
@@ -382,7 +382,7 @@ final class AccountDeletionTests: XCTestCase {
                                                  callCompletionBlockUsing: .immediateExecutor,
                                                  completion: { completionExpectation.fulfill(); result = $0 })
         let message = WKScriptMessageMock(name: "test name", body: "{\"type\":\"CLOSE\"}")
-        
+
         let _: () -> Void = await withCheckedContinuation { continuation in
             viewModel.interpretMessage(message,
                                        loadedPresentation: { XCTFail() },
@@ -393,7 +393,7 @@ final class AccountDeletionTests: XCTestCase {
         wait(for: [completionExpectation], timeout: 1.0)
         guard case .failure(.closedByUser) = result else { XCTFail(); return }
     }
-    
+
     func testAccountDeletionCausesCompletionWithNetworkingErrorIfNoErrorMessageInPayload() async {
         let message = WKScriptMessageMock(name: "test name", body: "{\"type\":\"ERROR\"}")
         var result: Result<AccountDeletionSuccess, AccountDeletionError>?
@@ -401,7 +401,7 @@ final class AccountDeletionTests: XCTestCase {
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
                                                  callCompletionBlockUsing: .immediateExecutor,
                                                  completion: { result = $0 })
-        
+
         let _: () -> Void = await withCheckedContinuation { continuation in
             viewModel.interpretMessage(message,
                                        loadedPresentation: { XCTFail() },
@@ -409,20 +409,20 @@ final class AccountDeletionTests: XCTestCase {
                                        successPresentation: { XCTFail() },
                                        closeWebView: { $0(); continuation.resume(returning: $0) })
         }
-        
+
         guard case .failure(.deletionFailure(message: ADTranslation.delete_network_error.l10n)) = result else { XCTFail(); return }
     }
-    
+
     func testAccountDeletionCallErrorBlockWithMessageFromPayload() async {
         let message = WKScriptMessageMock(name: "test name",
                                           body: "{\"type\":\"ERROR\", \"payload\": { \"message\": \"error message\" }}")
-        
+
         var result: Result<AccountDeletionSuccess, AccountDeletionError>?
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
                                                  callCompletionBlockUsing: .immediateExecutor,
                                                  completion: { result = $0 })
-        
+
         let _: () -> Void = await withCheckedContinuation { continuation in
             viewModel.interpretMessage(message,
                                        loadedPresentation: { XCTFail() },
@@ -432,16 +432,16 @@ final class AccountDeletionTests: XCTestCase {
         }
         guard case .failure(.deletionFailure("error message")) = result else { XCTFail(); return }
     }
-    
+
     func testAccountDeletionCallNotificationBlockOnNotificationMessage() async {
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
                                                  callCompletionBlockUsing: .immediateExecutor,
                                                  completion: { _ in })
-        
+
         let message = WKScriptMessageMock(name: "test name",
                                           body: "{\"type\":\"NOTIFICATION\", \"payload\": { \"type\": \"info\", \"text\": \"notification message\" }}")
-        
+
         let result: (NotificationType, String) = await withCheckedContinuation { continuation in
             viewModel.interpretMessage(message,
                                        loadedPresentation: { XCTFail() },
@@ -449,20 +449,20 @@ final class AccountDeletionTests: XCTestCase {
                                        successPresentation: { XCTFail() },
                                        closeWebView: { _ in XCTFail() })
         }
-        
+
         XCTAssertEqual(result.0, .info)
         XCTAssertEqual(result.1, "notification message")
     }
-    
+
     func testAccountDeletionCallNotificationBlockDefaultsToWarningIfNothingSpecified() async {
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
                                                  callCompletionBlockUsing: .immediateExecutor,
                                                  completion: { _ in })
-        
+
         let message = WKScriptMessageMock(name: "test name",
                                           body: "{\"type\":\"NOTIFICATION\", \"payload\": { \"text\": \"notification message\" }}")
-        
+
         let result: (NotificationType, String) = await withCheckedContinuation { continuation in
             viewModel.interpretMessage(message,
                                        loadedPresentation: { XCTFail() },
@@ -470,27 +470,27 @@ final class AccountDeletionTests: XCTestCase {
                                        successPresentation: { XCTFail() },
                                        closeWebView: { _ in XCTFail() })
         }
-        
+
         XCTAssertEqual(result.0, .warning)
         XCTAssertEqual(result.1, "notification message")
     }
-    
+
     func testAccountDeletionCallNotificationBlockNotCalledIfNoMessage() async {
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
                                                  callCompletionBlockUsing: .immediateExecutor,
                                                  completion: { _ in })
-        
+
         let message = WKScriptMessageMock(name: "test name",
                                           body: "{\"type\":\"NOTIFICATION\", \"payload\": { \"type\": \"info\" }}")
-        
+
         viewModel.interpretMessage(message,
                                    loadedPresentation: { XCTFail() },
                                    notificationPresentation: { _, _ in XCTFail() },
                                    successPresentation: { XCTFail() },
                                    closeWebView: { _ in XCTFail() })
     }
-    
+
     func testAccountDeletionCallSuccessBlockOnSuccessMessage() async {
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
@@ -498,7 +498,7 @@ final class AccountDeletionTests: XCTestCase {
                                                  completion: { _ in })
         let message = WKScriptMessageMock(name: "test name",
                                           body: "{\"type\":\"SUCCESS\", \"payload\": { \"message\": \"error message\" }}")
-        
+
         let _: Void = await withCheckedContinuation { continuation in
             viewModel.interpretMessage(message,
                                        loadedPresentation: { XCTFail() },
@@ -507,7 +507,7 @@ final class AccountDeletionTests: XCTestCase {
                                        closeWebView: { _ in XCTFail() })
         }
     }
-    
+
     func testAccountDeletionDoesNotCallSuccessBlockOnSecondSuccessMessage() async {
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },
@@ -515,7 +515,7 @@ final class AccountDeletionTests: XCTestCase {
                                                  completion: { _ in })
         let message = WKScriptMessageMock(name: "test name",
                                           body: "{\"type\":\"SUCCESS\", \"payload\": { \"message\": \"error message\" }}")
-        
+
         let _: Void = await withCheckedContinuation { continuation in
             viewModel.interpretMessage(message,
                                        loadedPresentation: { XCTFail() },
@@ -523,25 +523,25 @@ final class AccountDeletionTests: XCTestCase {
                                        successPresentation: continuation.resume,
                                        closeWebView: { _ in XCTFail() })
         }
-        
+
         viewModel.interpretMessage(message,
                                    loadedPresentation: { XCTFail() },
                                    notificationPresentation: { _, _ in XCTFail() },
                                    successPresentation: { XCTFail() },
                                    closeWebView: { _ in XCTFail() })
     }
-    
+
     func testAccountDeletionCallPerformBeforeClosingAccountDeletionScreenOnSuccessMessage() async {
         let message = WKScriptMessageMock(name: "test name",
                                           body: "{\"type\":\"SUCCESS\", \"payload\": { \"message\": \"error message\" }}")
-        
+
         let _: () -> Void = await withCheckedContinuation { continuation in
-            
+
             let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                      performBeforeClosingAccountDeletionScreen: continuation.resume(returning:),
                                                      callCompletionBlockUsing: .immediateExecutor,
                                                      completion: { _ in })
-            
+
             viewModel.interpretMessage(message,
                                        loadedPresentation: { XCTFail() },
                                        notificationPresentation: { _, _ in XCTFail() },
@@ -549,7 +549,7 @@ final class AccountDeletionTests: XCTestCase {
                                        closeWebView: { _ in XCTFail() })
         }
     }
-    
+
 }
 
 #endif

@@ -44,7 +44,7 @@ import ProtonCoreUIFoundations
 class ExampleAppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
+
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         injectDefaultCryptoImplementation()
@@ -60,7 +60,7 @@ class ExampleAppDelegate: UIResponder, UIApplicationDelegate {
                      options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         return UISceneConfiguration(name: "DefaultConfiguration", sessionRole: connectingSceneSession.role)
     }
-    
+
     private func setUpCrashReporting() {
         SentrySDK.start { options in
             options.dsn = ObfuscatedConstants.sentryDSN

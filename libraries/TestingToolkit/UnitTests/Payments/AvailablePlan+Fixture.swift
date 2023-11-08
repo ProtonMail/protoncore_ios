@@ -53,5 +53,5 @@ public extension AvailablePlans.AvailablePlan {
                                      entitlements: entitlements ?? self.entitlements,
                                      decorations: decorations ?? self.decorations)
     }
-    
+
 }

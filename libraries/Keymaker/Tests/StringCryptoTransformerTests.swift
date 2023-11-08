@@ -34,11 +34,11 @@ class StringCryptoTransformerTests: XCTestCase {
         }
         return key
     }
-    
+
     func testStringExample() {
         let transformer = StringCryptoTransformer(key: self.makeKey())
         let name = "Santa Blanca"
-        
+
         guard let encrypted = transformer.transformedValue(name) as? NSData else {
             XCTFail()
             return
@@ -47,14 +47,14 @@ class StringCryptoTransformerTests: XCTestCase {
             XCTFail()
             return
         }
-        
+
         XCTAssertEqual(decrypted, name)
     }
-    
+
     func testEmptyExample() {
         let transformer = StringCryptoTransformer(key: self.makeKey())
         let name = ""
-        
+
         guard let encrypted = transformer.transformedValue(name) as? NSData else {
             XCTFail()
             return
@@ -63,7 +63,7 @@ class StringCryptoTransformerTests: XCTestCase {
             XCTFail()
             return
         }
-        
+
         XCTAssertEqual(decrypted, name)
     }
 

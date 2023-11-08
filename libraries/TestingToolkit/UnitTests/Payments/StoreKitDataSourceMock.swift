@@ -34,22 +34,22 @@ public final class StoreKitDataSourceMock: NSObject, StoreKitDataSourceProtocol 
     public var availableProducts: [SKProduct] {
         availableProductsStub()
     }
-    
+
     @PropertyStub(\StoreKitDataSourceProtocol.unavailableProductsIdentifiers, initialGet: .crash) public var unavailableProductsIdentifiersStub
     public var unavailableProductsIdentifiers: [String] {
         unavailableProductsIdentifiersStub()
     }
-    
+
     @AsyncThrowingFuncStub(StoreKitDataSourceProtocol.fetchAvailableProducts(availablePlans:)) public var fetchAvailableProductsForPlansStub
     public func fetchAvailableProducts(availablePlans: AvailablePlans) async throws {
         try await fetchAvailableProductsForPlansStub(availablePlans)
     }
-    
+
     @AsyncThrowingFuncStub(StoreKitDataSourceProtocol.fetchAvailableProducts(productIdentifiers:)) public var fetchAvailableProductsForIdentifiersStub
     public func fetchAvailableProducts(productIdentifiers: Set<String>) async throws {
         try await fetchAvailableProductsForIdentifiersStub(productIdentifiers)
     }
-    
+
     @FuncStub(StoreKitDataSourceProtocol.filterAccordingToAvailableProducts, initialReturn: .crash) public var filterAccordingToAvailableProductsStub
     public func filterAccordingToAvailableProducts(availablePlans: AvailablePlans) -> AvailablePlans {
         filterAccordingToAvailableProductsStub(availablePlans)

@@ -14,7 +14,7 @@ func products(from newProduct: String) -> [Product] {
     let products: [Product] = [
         .library(name: newProduct, targets: [newProduct])
     ]
-    
+
     let binaryFrameworksNotSupportingDynamicLibrary: [String] = [
         .goLibsCryptoGo,
         .goLibsCryptoSearchGo,
@@ -22,7 +22,7 @@ func products(from newProduct: String) -> [Product] {
         .goLibsCryptoVPNPatchedGo,
         .vCard
     ]
-    
+
     guard binaryFrameworksNotSupportingDynamicLibrary.contains(newProduct) == false else {
         return products
     }
@@ -165,7 +165,7 @@ extension String {
 }
 
 extension Target.Dependency {
-    
+
     // MARK: - Core module targets
 
     static var accountDeletion: Target.Dependency { .target(name: .accountDeletion) }
@@ -238,14 +238,14 @@ extension Target.Dependency {
     static var testingToolkitUnitTestsObservability: Target.Dependency { .target(name: .testingToolkitUnitTestsObservability) }
     static var testingToolkitUnitTestsPayments: Target.Dependency { .target(name: .testingToolkitUnitTestsPayments) }
     static var testingToolkitUnitTestsServices: Target.Dependency { .target(name: .testingToolkitUnitTestsServices) }
-    
+
     static var testingToolkitUITestsAccountDeletion: Target.Dependency { .target(name: .testingToolkitUITestsAccountDeletion) }
     static var testingToolkitUITestsAccountSwitcher: Target.Dependency { .target(name: .testingToolkitUITestsAccountSwitcher) }
     static var testingToolkitUITestsCore: Target.Dependency { .target(name: .testingToolkitUITestsCore) }
     static var testingToolkitUITestsHumanVerification: Target.Dependency { .target(name: .testingToolkitUITestsHumanVerification) }
     static var testingToolkitUITestsLogin: Target.Dependency { .target(name: .testingToolkitUITestsLogin) }
     static var testingToolkitUITestsPaymentsUI: Target.Dependency { .target(name: .testingToolkitUITestsPaymentsUI) }
-    
+
     static var troubleShooting: Target.Dependency { .target(name: .troubleShooting) }
     static var troubleShootingResourcesiOS: Target.Dependency { .target(name: .troubleShootingResourcesiOS,
                                                                         condition: .when(platforms: [.iOS])) }
@@ -256,7 +256,7 @@ extension Target.Dependency {
                                                                         condition: .when(platforms: [.macOS])) }
     static var utilities: Target.Dependency { .target(name: .utilities) }
     static var vCard: Target.Dependency { .target(name: .vCard) }
-    
+
     // MARK: - Dependencies targets
 
     static var alamofire: Target.Dependency { .product(name: .alamofire, package: .alamofire) }
@@ -273,9 +273,9 @@ extension Target.Dependency {
     static var swiftOTP: Target.Dependency { .product(name: .swiftOTP, package: .swiftOTP) }
     static var trustKit: Target.Dependency { .product(name: .trustKit, package: .trustKit) }
     static var sdWebImage: Target.Dependency { .product(name: .sdWebImage, package: .sdWebImage) }
-    
+
     // MARK: - Helpers
-    
+
     static var cryptoGoUsedInTests: Target.Dependency { .cryptoPatchedGoImplementation }
 }
 
@@ -525,7 +525,7 @@ add(
                 path: "libraries/Challenge/Sources",
                 swiftSettings: .spm,
                 plugins: plugins),
-        
+
         .testTarget(name: .challenge + "Tests",
                     dependencies: [
                         .challenge
@@ -694,7 +694,7 @@ add(
                 path: "libraries/DataModel/Sources",
                 swiftSettings: .spm,
                 plugins: plugins),
-        
+
         .testTarget(name: .dataModel + "Tests",
                     dependencies: [
                         .dataModel,
@@ -720,7 +720,7 @@ add(
             path: "libraries/DoH/Sources",
             swiftSettings: .spm,
             plugins: plugins),
-        
+
         .testTarget(name: .doh + "UnitTests",
                     dependencies: [
                         .doh,
@@ -811,7 +811,7 @@ add(
             path: "libraries/FeatureFlags/Sources",
             swiftSettings: .spm,
             plugins: plugins),
-        
+
         .testTarget(name: .featureFlags + "Tests",
                     dependencies: [
                         .featureFlags,
@@ -936,7 +936,7 @@ add(
                 plugins: plugins),
 
         .testTarget(name: .hash + "Tests",
-                dependencies: [ 
+                dependencies: [
                     .hash
                 ],
                 path: "libraries/Hash/Tests",
@@ -998,7 +998,7 @@ add(
                     exclude: ["__Snapshots__"],
                     swiftSettings: .spm,
                 plugins: plugins),
-        
+
         .testTarget(name: .humanVerification + "LocalizationTests",
                     dependencies: [
                         .humanVerification,
@@ -1105,7 +1105,7 @@ add(
                 resources: [.process("Resources")],
                 swiftSettings: .spm,
                 plugins: plugins),
-        
+
         .testTarget(name: .login + "UnitTests",
                     dependencies: [
                         .login,
@@ -1129,7 +1129,7 @@ add(
                     ],
                     swiftSettings: .spm,
                     plugins: plugins),
-        
+
         .testTarget(name: .login + "IntegrationTests",
                     dependencies: [
                         .login,
@@ -1144,7 +1144,7 @@ add(
                     path: "libraries/Login/Tests/IntegrationTests",
                     swiftSettings: .spm,
                     plugins: plugins),
-        
+
         .testTarget(name: .login + "LocalizationTests",
                     dependencies: [
                         .login,
@@ -1197,7 +1197,7 @@ add(
                 ],
                 swiftSettings: .spm,
                 plugins: plugins),
-        
+
         .testTarget(name: .loginUI + "UnitTests",
                     dependencies: [
                         .loginUI,
@@ -1228,7 +1228,7 @@ add(
                     ],
                     swiftSettings: .spm,
                     plugins: plugins),
-        
+
         .testTarget(name: .loginUI + "IntegrationTests",
                     dependencies: [
                         .loginUI,
@@ -1250,7 +1250,7 @@ add(
                     path: "libraries/LoginUI/Tests/IntegrationTests",
                     swiftSettings: .spm,
                     plugins: plugins),
-        
+
         .testTarget(name: .loginUI + "LocalizationTests",
                     dependencies: [
                         .loginUI,
@@ -1319,7 +1319,7 @@ add(
                     path: "libraries/Networking/Tests/UnitTests",
                     swiftSettings: .spm,
                     plugins: plugins),
-        
+
         .testTarget(name: .networking + "LocalizationTests",
                     dependencies: [
                         .networking,
@@ -1378,7 +1378,7 @@ add(
                     path: "libraries/Observability/UnitTests",
                     swiftSettings: .spm,
                     plugins: plugins),
-        
+
         .testTarget(name: .observability + "IntegrationTests",
                     dependencies: [
                         .observability,
@@ -1413,7 +1413,7 @@ add(
                 ],
                 swiftSettings: .spm,
                 plugins: plugins),
-        
+
         .testTarget(name: .passwordRequest + "UnitTests",
                     dependencies: [
                         .authentication,
@@ -1429,7 +1429,7 @@ add(
                     path: "libraries/PasswordRequest/Tests/UnitTests",
                     swiftSettings: .spm,
                     plugins: plugins),
-        
+
         .testTarget(name: .passwordRequest + "LocalizationTests",
                     dependencies: [
                         .passwordRequest,
@@ -1502,7 +1502,7 @@ add(
                     path: "libraries/Payments/Tests/IntegrationTests",
                     swiftSettings: .spm,
                     plugins: plugins),
-        
+
         .testTarget(name: .payments + "LocalizationTests",
                     dependencies: [
                         .payments,
@@ -1664,7 +1664,7 @@ add(
                     path: "libraries/Services/Tests/Unit",
                     swiftSettings: .spm,
                 plugins: plugins),
-        
+
         .testTarget(name: .services + "IntegrationTests",
                     dependencies: [
                         .services,
@@ -1677,7 +1677,7 @@ add(
                     path: "libraries/Services/Tests/Integration",
                     swiftSettings: .spm,
                 plugins: plugins),
-        
+
         .testTarget(name: .services + "LocalizationTests",
                     dependencies: [
                         .services,
@@ -1769,7 +1769,7 @@ add(
         .testingToolkitUnitTestsObservability,
         .testingToolkitUnitTestsPayments,
         .testingToolkitUnitTestsServices,
-        
+
         .testingToolkitUITestsAccountDeletion,
         .testingToolkitUITestsAccountSwitcher,
         .testingToolkitUITestsCore,
@@ -1807,7 +1807,7 @@ add(
                 path: "libraries/TestingToolkit/UnitTests/Authentication",
                 swiftSettings: .spm,
                 plugins: plugins),
-        
+
         .target(name: .testingToolkitUnitTestsAuthenticationKeyGeneration,
                 dependencies: [
                     .authenticationKeyGeneration,
@@ -1855,7 +1855,7 @@ add(
                 path: "libraries/TestingToolkit/UnitTests/FeatureSwitch",
                 swiftSettings: .spm,
                 plugins: plugins),
-        
+
         .target(name: .testingToolkitUnitTestsLogin,
                 dependencies: [
                     .login,
@@ -1921,7 +1921,7 @@ add(
                 path: "libraries/TestingToolkit/UnitTests/Services",
                 swiftSettings: .spm,
                 plugins: plugins),
-        
+
         .target(name: .testingToolkitUITestsAccountDeletion,
                 dependencies: [
                     .accountDeletion,
@@ -1932,7 +1932,7 @@ add(
                 path: "libraries/TestingToolkit/UITests/AccountDeletion",
                 swiftSettings: .spm,
                 plugins: plugins),
-        
+
         .target(name: .testingToolkitUITestsAccountSwitcher,
                 dependencies: [
                     .accountSwitcher,
@@ -1943,7 +1943,7 @@ add(
                 path: "libraries/TestingToolkit/UITests/AccountSwitcher",
                 swiftSettings: .spm,
                 plugins: plugins),
-        
+
         .target(name: .testingToolkitUITestsCore,
                 dependencies: [
                     .doh,
@@ -1954,7 +1954,7 @@ add(
                 path: "libraries/TestingToolkit/UITests/Core",
                 swiftSettings: .spm,
                 plugins: plugins),
-        
+
         .target(name: .testingToolkitUITestsHumanVerification,
                 dependencies: [
                     .humanVerification,
@@ -1965,7 +1965,7 @@ add(
                 path: "libraries/TestingToolkit/UITests/HumanVerification",
                 swiftSettings: .spm,
                 plugins: plugins),
-        
+
         .target(name: .testingToolkitUITestsLogin,
                 dependencies: [
                     .humanVerification,
@@ -1978,7 +1978,7 @@ add(
                 path: "libraries/TestingToolkit/UITests/Login",
                 swiftSettings: .spm,
                 plugins: plugins),
-    
+
         .target(name: .testingToolkitUITestsPaymentsUI,
                 dependencies: [
                     .paymentsUI,
@@ -2032,7 +2032,7 @@ add(
                     exclude: ["__Snapshots__"],
                     swiftSettings: .spm,
                     plugins: plugins),
-        
+
         .testTarget(name: .troubleShooting + "LocalizationTests",
                     dependencies: [
                         .troubleShooting,
@@ -2129,7 +2129,7 @@ let package = Package(
     defaultLocalization: "en",
     platforms: [.iOS(.v14), .macOS(.v11)],
     products: products + [
-        .plugin(name: .obfuscatedConstantsGenerationPlugin, 
+        .plugin(name: .obfuscatedConstantsGenerationPlugin,
                 targets: [.obfuscatedConstantsGenerationPlugin]),
     ],
     dependencies: [

@@ -23,7 +23,7 @@ import XCTest
 @testable import ProtonCoreAuthentication
 
 class EndSessionEndpointTests: XCTestCase {
-    
+
     func testEndSessionEndpoint_request() {
         let endSessionEndpoint = AuthService.EndSessionEndpoint()
         XCTAssertEqual(endSessionEndpoint.method, .delete)

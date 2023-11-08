@@ -26,14 +26,14 @@ import SwiftOTP
 import ProtonCoreLog
 
 public class TestUser {
-    
+
     public var email: String
     public var password: String
     public var mailboxPassword: String
     public var twoFASecurityKey: String
     public var username: String
     public var pmMeEmail: String
-    
+
     public init(email: String, password: String, mailboxPassword: String, twoFASecurityKey: String) {
         self.email = email
         self.password = password
@@ -42,7 +42,7 @@ public class TestUser {
         self.username = String(email.split(separator: "@")[0])
         self.pmMeEmail = "\(username)@pm.me"
     }
-    
+
     public init(user: String) {
         let userData = user.split(separator: ",")
         self.email = String(userData[0])
@@ -55,7 +55,7 @@ public class TestUser {
 
     public func generateCode() -> String {
         let totp = TOTP(secret: base32DecodeToData(twoFASecurityKey)!)
-        
+
         if let res = totp?.generate(time: Date()) {
             return res
         }

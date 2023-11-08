@@ -29,7 +29,7 @@ struct UIFoundationsTabbarHelper {
         let vc2 = board.instantiateViewController(withIdentifier: "vc2")
         let vc3 = board.instantiateViewController(withIdentifier: "vc3")
         let vc4 = board.instantiateViewController(withIdentifier: "vc4")
-        
+
         let barVC = try! PMTabBarBuilder()
             .setFloatingHeight(48)
             .addItem(PMTabBarItem(title: "Day" ), withController: vc1)
@@ -38,7 +38,7 @@ struct UIFoundationsTabbarHelper {
             .addItem(PMTabBarItem(icon: UIImage(named: "times")!), withController: vc4)
             .setSelectedIndex(2)
             .build()
-        
+
         return barVC
     }
 }
@@ -48,7 +48,7 @@ class UIFoundationsTabBarTemplateVC: UITableViewController {
     private lazy var darkModeButton: UIBarButtonItem = {
         return UIBarButtonItem(title: "Dark", style: .plain, target: self, action: #selector(toggleDarkMode))
     }()
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationItem.rightBarButtonItem = darkModeButton
@@ -57,21 +57,21 @@ class UIFoundationsTabBarTemplateVC: UITableViewController {
     @objc func toggleDarkMode() {
         view.window?.overrideUserInterfaceStyle = traitCollection.userInterfaceStyle == .dark ? .light : .dark
     }
-    
+
     deinit {
         UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .unspecified
     }
-    
+
     // MARK: - Appearance
-    
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         darkModeButton.title = traitCollection.userInterfaceStyle == .dark ? "Light" : "Dark"
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 30
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "CELL")
         if cell == nil {

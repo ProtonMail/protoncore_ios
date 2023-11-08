@@ -26,14 +26,14 @@ import ProtonCoreTestingToolkitUnitTestsCore
 import StoreKit
 
 public class SKPaymentTransactionMock: SKPaymentTransaction {
-    
+
     public var mockError: Error?
     public var mockOriginal: SKPaymentTransaction?
     public var mockPayment: SKPayment
     public var mockTransactionDate: Date?
     public var mockTransactionIdentifier: String?
     public var mockTransactionState: SKPaymentTransactionState
-    
+
     public init(error: Error? = nil, original: SKPaymentTransaction? = nil, payment: SKPayment, transactionDate: Date?, transactionIdentifier: String?, transactionState: SKPaymentTransactionState) {
         self.mockError = error
         self.mockOriginal = original
@@ -42,7 +42,7 @@ public class SKPaymentTransactionMock: SKPaymentTransaction {
         self.mockTransactionIdentifier = transactionIdentifier
         self.mockTransactionState = transactionState
     }
-    
+
     // Only set if state is SKPaymentTransactionFailed
     override public var error: Error? {
         get {
@@ -62,7 +62,7 @@ public class SKPaymentTransactionMock: SKPaymentTransaction {
             mockOriginal = newValue
         }
     }
-    
+
     override public var payment: SKPayment {
         get {
             return mockPayment
@@ -81,7 +81,7 @@ public class SKPaymentTransactionMock: SKPaymentTransaction {
             mockTransactionDate = newValue
         }
     }
-    
+
     // The unique server-provided identifier.  Only valid if state is SKPaymentTransactionStatePurchased or SKPaymentTransactionStateRestored.
     override public var transactionIdentifier: String? {
         get {
@@ -91,7 +91,7 @@ public class SKPaymentTransactionMock: SKPaymentTransaction {
             mockTransactionIdentifier = newValue
         }
     }
-    
+
     override public var transactionState: SKPaymentTransactionState {
         get {
             return mockTransactionState

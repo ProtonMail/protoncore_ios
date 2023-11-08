@@ -25,7 +25,7 @@ import XCTest
 
 final class InAppPurchasePlanTests: XCTestCase {
     var sut: InAppPurchasePlan!
-    
+
     func test_init_with_availablePlanInstance() {
         // Given
         let instance = AvailablePlans.AvailablePlan.Instance(
@@ -39,10 +39,10 @@ final class InAppPurchasePlanTests: XCTestCase {
                 )
             )
         )
-        
+
         // When
         sut = .init(availablePlanInstance: instance)
-        
+
         // Then
         XCTAssertEqual(sut.storeKitProductId, "ioscore_core2023_12_usd_non_renewing")
         XCTAssertEqual(sut.protonName, "core2023")

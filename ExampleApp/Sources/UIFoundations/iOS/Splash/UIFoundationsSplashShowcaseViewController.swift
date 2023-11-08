@@ -10,9 +10,9 @@ import ProtonCoreLoginUI
 import ProtonCoreUIFoundations
 
 final class UIFoundationsSplashShowcaseViewController: UIFoundationsAppearanceStyleViewController {
-    
+
     var splashViewController: UIViewController?
-    
+
     override var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
 
     private func button(title: String, action: Selector) -> UIButton {
@@ -68,19 +68,19 @@ final class UIFoundationsSplashShowcaseViewController: UIFoundationsAppearanceSt
         self.splashViewController = splash
         present(splash, animated: false)
     }
-    
+
     @objc private func goToMailWelcomeView() {
         presentViewControllers(variant: WelcomeScreenVariant.mail(WelcomeScreenTexts(body: "Please Mister Postman, look and see! Is there's a letter in your bag for me?")))
     }
-    
+
     @objc private func goToDriveWelcomeView() {
         presentViewControllers(variant: WelcomeScreenVariant.drive(WelcomeScreenTexts(body: "Drive me to the moon and let me play among the stars. Let me see what spring is like on Jupiter and Mars")))
     }
-    
+
     @objc private func goToCalendarWelcomeView() {
         presentViewControllers(variant: WelcomeScreenVariant.calendar(WelcomeScreenTexts(body: "I don't care if Monday's blue. Tuesday's grey and Wednesday too. Thursday, I don't care about you. It's Friday, I'm in love")))
     }
-    
+
     @objc private func goToVPNWelcomeView() {
         presentViewControllers(variant: WelcomeScreenVariant.vpn(WelcomeScreenTexts(body: "I know you've been hurt by someone else. I can tell by the way you carry yourself. But if you let me, here's what I'll do: I'll take care of you")))
     }
@@ -88,9 +88,9 @@ final class UIFoundationsSplashShowcaseViewController: UIFoundationsAppearanceSt
     @objc private func goToPassWelcomeView() {
         presentViewControllers(variant: WelcomeScreenVariant.pass(WelcomeScreenTexts(body: "Heaven smiles above me. What a gift here below. But no one knows. A gift that you give to me. No one knows")))
     }
-    
+
     var welcomeViewCoordinator: WelcomeViewCoordinator?
-    
+
     private func presentViewControllers(variant: WelcomeScreenVariant) {
         let vc = WelcomeViewController(
             variant: variant, delegate: self, username: nil, signupAvailable: true
@@ -98,7 +98,7 @@ final class UIFoundationsSplashShowcaseViewController: UIFoundationsAppearanceSt
         vc.modalPresentationStyle = .fullScreen
         navigationController?.presentedViewController?.present(vc, animated: false)
     }
-    
+
     @objc private func showMailSplash() {
         present(splash: .mail)
     }
@@ -124,11 +124,11 @@ extension UIFoundationsSplashShowcaseViewController: WelcomeViewCoordinatorDeleg
     func userWantsToLogIn(username: String?) {
         dismiss()
     }
-    
+
     func userWantsToSignUp() {
         dismiss()
     }
-    
+
     private func dismiss() {
         dismissWelcomeViewController()
     }

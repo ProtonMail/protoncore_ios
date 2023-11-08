@@ -34,7 +34,7 @@ class KeyManagerKeyExtTests: TestCaseBase {
         let binKeys = [key].binPrivKeys
         XCTAssertTrue(binKeys.count > 0)
     }
-    
+
     func testKeysBinPrivKeyArray() {
         let addrPriv = content(of: "data1_address_key")
         let addrToken = content(of: "data1_address_key_token")
@@ -44,7 +44,7 @@ class KeyManagerKeyExtTests: TestCaseBase {
         let binKeys = [key].binPrivKeysArray
         XCTAssertTrue(!binKeys.isEmpty)
     }
-    
+
     func testKeyBinPrivKeys() {
         let addrPriv = content(of: "data1_address_key")
         let addrToken = content(of: "data1_address_key_token")
@@ -54,7 +54,7 @@ class KeyManagerKeyExtTests: TestCaseBase {
         let binKey = key.binPrivKeys
         XCTAssertTrue(!binKey.isEmpty)
     }
-    
+
     func testKeyPublicKey() {
         let addrPriv = content(of: "data1_address_key")
         let addrToken = content(of: "data1_address_key_token")
@@ -64,7 +64,7 @@ class KeyManagerKeyExtTests: TestCaseBase {
         let pubKey = key.publicKey
         XCTAssertTrue(pubKey.contains("-----BEGIN PGP PUBLIC KEY BLOCK-----"))
     }
-    
+
     func testKeyFingerprint() {
         let addrPriv = content(of: "data1_address_key")
         let addrToken = content(of: "data1_address_key_token")
@@ -84,7 +84,7 @@ class KeyManagerKeyExtTests: TestCaseBase {
         let fingerprint = key.shortFingerprint
         XCTAssertFalse(fingerprint.isEmpty)
     }
-    
+
     func testKeyDecPassphraseMigrated() {
         let addrPriv = content(of: "data1_address_key")
         let addrToken = content(of: "data1_address_key_token")
@@ -92,15 +92,15 @@ class KeyManagerKeyExtTests: TestCaseBase {
         let key = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
                            privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: addrTokenSignature,
                            activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
-        
+
         let userkey = content(of: "data1_user_key")
         let userPassphrase = content(of: "data1_user_passphrse")
         let addrClearPwd = content(of: "data1_address_key_clear_pass")
-        
+
         let addrPwd = try? key.passphrase(userBinKeys: [userkey.unArmor!], mailboxPassphrase: userPassphrase)
         XCTAssertTrue(addrPwd == addrClearPwd)
     }
-    
+
     func testKeyDecPassphraseMigratedWrongSig() {
         let addrPriv = content(of: "data1_address_key")
         let addrToken = content(of: "data1_address_key_token")
@@ -108,14 +108,14 @@ class KeyManagerKeyExtTests: TestCaseBase {
         let key = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
                            privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: addrTokenSignatureFake,
                            activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
-        
+
         let userkey = content(of: "data1_user_key")
         let userPassphrase = content(of: "data1_user_passphrse")
         XCTAssertThrowsError(try key.passphrase(userBinKeys: [userkey.unArmor!], mailboxPassphrase: userPassphrase)){ error in
             XCTAssertEqual(error as! Key.Errors, Key.Errors.tokenSignatureVerificationFailed)
         }
     }
-    
+
     func testKeyDecPassphraseMigratedWrongCiphertext() {
         let addrPriv = content(of: "data1_address_key")
         let addrToken = "fake token"
@@ -123,27 +123,27 @@ class KeyManagerKeyExtTests: TestCaseBase {
         let key = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
                            privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: addrTokenSignature,
                            activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
-        
+
         let userkey = content(of: "data1_user_key")
         let userPassphrase = content(of: "data1_user_passphrse")
         XCTAssertThrowsError(try key.passphrase(userBinKeys: [userkey.unArmor!], mailboxPassphrase: userPassphrase)){ error in
             XCTAssertEqual(error as! Key.Errors, Key.Errors.tokenDecryptionFailed)
         }
     }
-    
+
     func testKeyDecPassphraseNonMigrated() {
         let addrPriv = content(of: "data1_address_key")
         let key = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
                            privateKey: addrPriv, keyFlags: 3, token: nil, signature: nil,
                            activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
-        
+
         let userkey = content(of: "data1_user_key")
         let userPassphrase = content(of: "data1_user_passphrse")
-        
+
         let addrPwd = try? key.passphrase(userBinKeys: [userkey.unArmor!], mailboxPassphrase: userPassphrase)
         XCTAssertTrue(addrPwd == userPassphrase)
     }
-    
+
     func testKeyDecryptMessage() throws {
         let addrPriv = content(of: "data1_address_key")
         let addrToken = content(of: "data1_address_key_token")
@@ -151,14 +151,14 @@ class KeyManagerKeyExtTests: TestCaseBase {
         let key = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
                            privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: addrTokenSignature,
                            activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
-        
+
         let userkey = content(of: "data1_user_key")
         let userPassphrase = content(of: "data1_user_passphrse")
         let addrClearPwd = content(of: "data1_address_key_clear_pass")
-        
+
         let addrPwd = try? key.passphrase(userBinKeys: [userkey.unArmor!], mailboxPassphrase: userPassphrase)
         XCTAssertTrue(addrPwd == addrClearPwd)
-        
+
         let test = "test"
         let encrypted = try test.encryptNonOptional(withPubKey: addrPriv.publicKey, privateKey: addrPriv, passphrase: addrPwd!)
         let out = try key.decryptMessageNonOptional(encrypted: encrypted, userBinKeys: [userkey.unArmor!], passphrase: userPassphrase)

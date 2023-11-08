@@ -35,7 +35,7 @@ public protocol Signup {
 
     func requestValidationToken(email: String, completion: @escaping (Result<Void, SignupError>) -> Void)
     func checkValidationToken(email: String, token: String, completion: @escaping (Result<Void, SignupError>) -> Void)
-    
+
     func createNewUsernameAccount(userName: String, password: String, email: String?, phoneNumber: String?, completion: @escaping (Result<(), SignupError>) -> Void)
     func createNewInternalAccount(userName: String, password: String, email: String?, phoneNumber: String?, domain: String, completion: @escaping (Result<(), SignupError>) -> Void)
     func createNewExternalAccount(email: String, password: String, verifyToken: String?, tokenType: String?, completion: @escaping (Result<(), SignupError>) -> Void)
@@ -105,7 +105,7 @@ public class SignupService: Signup {
             }
         }
     }
-    
+
     public func createNewUsernameAccount(userName: String, password: String, email: String?, phoneNumber: String?, completion: @escaping (Result<(), SignupError>) -> Void) {
         getRandomSRPModulus { result in
             switch result {
@@ -116,7 +116,7 @@ public class SignupService: Signup {
             }
         }
     }
-    
+
     public func createNewInternalAccount(userName: String, password: String, email: String?, phoneNumber: String?, domain: String, completion: @escaping (Result<(), SignupError>) -> Void) {
         getRandomSRPModulus { result in
             switch result {
@@ -138,7 +138,7 @@ public class SignupService: Signup {
             }
         }
     }
-    
+
     public func validateEmailServerSide(email: String, completion: @escaping (Result<Void, SignupError>) -> Void) {
         let route = UserAPI.Router.validateEmail(email: email)
         apiService.perform(request: route, response: Response()) { (_, response) in

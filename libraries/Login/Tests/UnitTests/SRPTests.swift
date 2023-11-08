@@ -45,12 +45,12 @@ import ProtonCoreCryptoGoImplementation
 #endif
 
 class SRPTests: XCTestCase {
-    
+
     override class func setUp() {
         super.setUp()
         injectDefaultCryptoImplementation()
     }
-    
+
     func testSrpServerClientVerify() {
         let bits = 2048
         let password: String = LoginTestUser.defaultUser.password

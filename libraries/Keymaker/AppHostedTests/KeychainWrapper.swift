@@ -24,25 +24,25 @@ import Foundation
 @testable import ProtonCoreKeymaker
 
 internal class KeychainWrapper: Keychain {
-    
+
     var dict: [String: Any] = [String: Any]()
-    
+
     override init(service: String, accessGroup: String) {
         super.init(service: service, accessGroup: accessGroup)
     }
-    
+
     override func set(_ data: Data, forKey key: String) {
         dict[key] = data
     }
-    
+
     override func set(_ string: String, forKey key: String) {
         dict[key] = string
     }
-    
+
     override func data(forKey key: String) -> Data? {
         return dict[key] as? Data
     }
-    
+
     override func string(forKey key: String) -> String? {
         return dict[key] as? String
     }
@@ -50,10 +50,10 @@ internal class KeychainWrapper: Keychain {
     override func remove(forKey key: String) {
         dict.removeValue(forKey: key)
     }
-    
+
     override func removeEverything() -> Bool {
         dict.removeAll()
         return true
     }
-    
+
 }

@@ -53,5 +53,5 @@ final class PreviewProviderTests: XCTestCase {
     func testPreviewsForInsecureAccountRecoveryView() {
         XCTAssertNotNil(InsecureAccountRecoveryView_Previews.previews)
     }
-    
+
 }

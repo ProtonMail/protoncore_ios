@@ -36,37 +36,37 @@ import ProtonCoreNetworking
 
 final class CreditRequestTests: XCTestCase {
     var sut: CreditRequest!
-    
+
     override func setUp() {
         super.setUp()
         sut = CreditRequest(api: APIServiceMock(), amount: 123, paymentAction: .token(token: "token"))
     }
-    
+
     func test_tokenParameters() {
         // Given
         let token = "thisIsAToken"
         sut = CreditRequest(api: APIServiceMock(), amount: 123, paymentAction: .token(token: token))
-        
+
         // Then
         XCTAssertEqual(sut.parameters!["Amount"] as! Int, 123)
         XCTAssertEqual(sut.parameters!["Currency"] as! String, "USD")
         XCTAssertEqual(sut.parameters!["PaymentToken"] as! String, token)
     }
-    
+
     func test_appleParameters() {
         // Given
         sut = CreditRequest(api: APIServiceMock(), amount: 123, paymentAction: .apple(receipt: "receipt"))
-        
+
         // Then
         XCTAssertEqual(sut.parameters!["Amount"] as! Int, 123)
         XCTAssertEqual(sut.parameters!["Currency"] as! String, "USD")
         XCTAssertEqual((sut.parameters!["Payment"] as! [String: Any])["Type"] as! String, "apple")
     }
-    
+
     func test_method() {
         XCTAssertEqual(sut.method, .post)
     }
-    
+
     func test_path() {
         XCTAssertEqual(sut.path, "/payments/v4/credit")
     }

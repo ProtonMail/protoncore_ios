@@ -25,7 +25,7 @@ import XCTest
 
 final class SSOResponseTokenTests: XCTestCase {
     var sut: SSOResponseToken!
-    
+
     func test_init() {
         sut = .init(token: "token", uid: "uid")
         XCTAssertEqual(sut.token, "token")

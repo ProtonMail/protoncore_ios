@@ -31,9 +31,9 @@ public enum Environment {
     case passProd
     case black
     case blackPayment
-    
+
     case custom(String)
-    
+
     static let productionMail = ProductionMail()
     static let productionVPN = ProductionVPN()
     static let productionDrive = ProductionDrive()
@@ -67,7 +67,7 @@ extension Environment {
     public static func setup(scopes: [Environment]) {
         supported = scopes
     }
-    
+
     public func updateDohStatus(to status: DoHStatus) {
         switch self {
         case .mailProd:
@@ -88,7 +88,7 @@ extension Environment {
             assertionFailure("Cannot set doH status of custom black environment via this method")
         }
     }
-        
+
     public var doh: DoH & ServerConfig {
         switch self {
         case .mailProd:
@@ -109,7 +109,7 @@ extension Environment {
             return Environment.buildCustomDoh(customDomain: customDomain)
         }
     }
-    
+
     public var dohModifiable: DoH & VerificationModifiable {
         switch self {
         case .mailProd:
@@ -126,7 +126,7 @@ extension Environment {
             fatalError("Invalid index")
         }
     }
-    
+
     static func buildCustomDoh(customDomain: String) -> CustomServerConfigDoH {
         return CustomServerConfigDoH.build(
             signupDomain: customDomain,
@@ -145,11 +145,11 @@ extension Environment {
         TrustKitWrapper.setUp(delegate: delegate, customConfiguration: customConfiguration)
         return TrustKitWrapper.current
     }
-    
+
     public static var trustKit: TrustKit? {
         TrustKitWrapper.current
     }
-    
+
     public static func pinningConfigs(hardfail: Bool) -> Configuration {
         return TrustKitWrapper.configuration(hardfail: hardfail)
     }

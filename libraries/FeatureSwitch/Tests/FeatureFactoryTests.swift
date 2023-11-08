@@ -31,21 +31,21 @@ import ProtonCoreTestingToolkit
 
 class FeatureFactoryMock: FeatureFactory {
     override init() { super.init() }
-    
+
     @FuncStub(FeatureFactoryMock.isCoreInternal, initialReturn: .crash) public var isCoreInternalStub
     override func isCoreInternal() -> Bool { isCoreInternalStub() }
-    
+
     @FuncStub(FeatureFactoryMock.isInternal, initialReturn: .crash) public var isInternalStub
     override func isInternal() -> Bool { isInternalStub() }
 }
 
 class FeatureFactoryTests: XCTestCase {
-    
+
     override class func setUp() {
         super.setUp()
         FeatureFactory.shared.clear()
     }
-    
+
     func testFeatures() {
         var testfeatureOne = Feature.init(name: "testfeatureOne", isEnable: false, flags: [])
         XCTAssertFalse(FeatureFactory.shared.isEnabled(testfeatureOne))
@@ -57,7 +57,7 @@ class FeatureFactoryTests: XCTestCase {
         XCTAssertTrue(testfeatureOne.isEnabled)
         testfeatureOne.disable()
         XCTAssertFalse(testfeatureOne.isEnabled)
-        
+
         #if !SPM
         // TODO: enable back the test once you find a way to build with DEBUG_CORE_INTERNAL in tests
         var testfeatureTwo = Feature.init(name: "testfeatureTwo", isEnable: false, flags: [.availableCoreInternal])
@@ -72,7 +72,7 @@ class FeatureFactoryTests: XCTestCase {
         XCTAssertFalse(testfeatureTwo.isEnabled)
         #endif
     }
-    
+
     func testFeaturesDisibleCoreInternal() {
         let sharedMock = FeatureFactoryMock.init()
         sharedMock.isCoreInternalStub.bodyIs { _ in
@@ -81,14 +81,14 @@ class FeatureFactoryTests: XCTestCase {
         sharedMock.isInternalStub.bodyIs { _ in
             return false
         }
-        
+
         var testfeatureTwo = Feature.init(name: "testfeatureTwo", isEnable: true, flags: [.availableCoreInternal])
         XCTAssertFalse(sharedMock.isEnabled(testfeatureTwo))
         sharedMock.enable(&testfeatureTwo)
         XCTAssertFalse(sharedMock.isEnabled(testfeatureTwo))
         sharedMock.disable(&testfeatureTwo)
         XCTAssertFalse(sharedMock.isEnabled(testfeatureTwo))
-        
+
         var testfeatureOne = Feature.init(name: "testfeatureOne", isEnable: true, flags: [])
         XCTAssertTrue(sharedMock.isEnabled(testfeatureOne))
         sharedMock.disable(&testfeatureOne)
@@ -96,7 +96,7 @@ class FeatureFactoryTests: XCTestCase {
         sharedMock.enable(&testfeatureOne)
         XCTAssertTrue(sharedMock.isEnabled(testfeatureOne))
     }
-    
+
     func testFeaturesDisibleInternal() {
         let sharedMock = FeatureFactoryMock.init()
         sharedMock.isCoreInternalStub.bodyIs { _ in
@@ -105,14 +105,14 @@ class FeatureFactoryTests: XCTestCase {
         sharedMock.isInternalStub.bodyIs { _ in
             return false
         }
-        
+
         var testfeatureTwo = Feature.init(name: "testfeatureTwo", isEnable: true, flags: [.availableInternal])
         XCTAssertFalse(sharedMock.isEnabled(testfeatureTwo))
         sharedMock.enable(&testfeatureTwo)
         XCTAssertFalse(sharedMock.isEnabled(testfeatureTwo))
         sharedMock.disable(&testfeatureTwo)
         XCTAssertFalse(sharedMock.isEnabled(testfeatureTwo))
-        
+
         var testfeatureOne = Feature.init(name: "testfeatureOne", isEnable: true, flags: [])
         XCTAssertTrue(sharedMock.isEnabled(testfeatureOne))
         sharedMock.disable(&testfeatureOne)
@@ -120,7 +120,7 @@ class FeatureFactoryTests: XCTestCase {
         sharedMock.enable(&testfeatureOne)
         XCTAssertTrue(sharedMock.isEnabled(testfeatureOne))
     }
-    
+
     func testFeaturesEnableCoreInternal() {
         let sharedMock = FeatureFactoryMock.init()
         sharedMock.isCoreInternalStub.bodyIs { _ in
@@ -129,7 +129,7 @@ class FeatureFactoryTests: XCTestCase {
         sharedMock.isInternalStub.bodyIs { _ in
             return false
         }
-        
+
         var testfeatureTwo = Feature.init(name: "testfeatureTwo", isEnable: true, flags: [.availableCoreInternal])
         XCTAssertTrue(sharedMock.isEnabled(testfeatureTwo))
         sharedMock.disable(&testfeatureTwo)
@@ -137,7 +137,7 @@ class FeatureFactoryTests: XCTestCase {
         sharedMock.enable(&testfeatureTwo)
         XCTAssertTrue(sharedMock.isEnabled(testfeatureTwo))
     }
-    
+
     func testFeaturesEnableInternal() {
         let sharedMock = FeatureFactoryMock.init()
         sharedMock.isCoreInternalStub.bodyIs { _ in
@@ -146,7 +146,7 @@ class FeatureFactoryTests: XCTestCase {
         sharedMock.isInternalStub.bodyIs { _ in
             return true
         }
-        
+
         var testfeatureTwo = Feature.init(name: "testfeatureTwo", isEnable: true, flags: [.availableInternal])
         XCTAssertTrue(sharedMock.isEnabled(testfeatureTwo))
         sharedMock.disable(&testfeatureTwo)
@@ -154,7 +154,7 @@ class FeatureFactoryTests: XCTestCase {
         sharedMock.enable(&testfeatureTwo)
         XCTAssertTrue(sharedMock.isEnabled(testfeatureTwo))
     }
-    
+
     func testFeaturesDisibleCoreInternalEnableInternal() {
         let sharedMock = FeatureFactoryMock.init()
         sharedMock.isCoreInternalStub.bodyIs { _ in
@@ -163,7 +163,7 @@ class FeatureFactoryTests: XCTestCase {
         sharedMock.isInternalStub.bodyIs { _ in
             return true
         }
-        
+
         var testfeatureTwo = Feature.init(name: "testfeatureTwo", isEnable: true, flags: [.availableInternal, .availableCoreInternal])
         XCTAssertFalse(sharedMock.isEnabled(testfeatureTwo))
         sharedMock.enable(&testfeatureTwo)
@@ -171,7 +171,7 @@ class FeatureFactoryTests: XCTestCase {
         sharedMock.disable(&testfeatureTwo)
         XCTAssertFalse(sharedMock.isEnabled(testfeatureTwo))
     }
-    
+
     func testFeaturesEnalbeCoreInternalDisibleInternal() {
         let sharedMock = FeatureFactoryMock.init()
         sharedMock.isCoreInternalStub.bodyIs { _ in
@@ -180,7 +180,7 @@ class FeatureFactoryTests: XCTestCase {
         sharedMock.isInternalStub.bodyIs { _ in
             return false
         }
-        
+
         var testfeatureTwo = Feature.init(name: "testfeatureTwo", isEnable: true, flags: [.availableInternal, .availableCoreInternal])
         XCTAssertTrue(sharedMock.isEnabled(testfeatureTwo))
         sharedMock.disable(&testfeatureTwo)

@@ -449,7 +449,7 @@ extension UIFoundationsActionSheetViewController: UITableViewDataSource, UITable
 
 extension UIFoundationsActionSheetViewController: PMActionSheetEventsListener {
     func willPresent() {
-        
+
     }
 
     func willDismiss() {

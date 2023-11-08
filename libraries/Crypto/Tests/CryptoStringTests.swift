@@ -24,34 +24,34 @@ import ProtonCoreCryptoGoInterface
 @testable import ProtonCoreCrypto
 
 class CryptoStringTests: CryptoTestBase {
-    
+
     let passphrase = "hello world"
     let passphrase2 = "123"
     let plaintext = "short message\nnext line\n한국어/조선말"
     let password1 = "I am a password"
     let password2 = "I am another password"
-    
+
     // MARK: testing genernal crypto func wrapper
-    
+
     func testPublicKeySucessed() {
         let privateKey = self.content(of: "testdata_privatekey")
         let pubkey = privateKey.publicKey
         XCTAssertTrue(pubkey.contains("-----BEGIN PGP PUBLIC KEY BLOCK-----"))
         XCTAssertTrue(pubkey.fingerprint == privateKey.fingerprint)
     }
-    
+
     func testPublicKeyFailedOne() {
         let privateKey = "bad"
         let pubkey = privateKey.publicKey
         XCTAssertTrue(pubkey.isEmpty)
     }
-    
+
     func testFingerprint() {
         let privateKey = self.content(of: "testdata_privatekey")
         let fingerprint = privateKey.fingerprint
         XCTAssertTrue(fingerprint.isEmpty == false)
     }
-    
+
     func testSHA256Fingerprint() {
         let privateKey = self.content(of: "testdata_privatekey")
         let fingerprint = privateKey.sha256Fingerprint
@@ -59,54 +59,54 @@ class CryptoStringTests: CryptoTestBase {
         XCTAssertTrue(fingerprint[0] == "d94dce8fd130d22bed5790ebf7f0d2817ca3033dd0ebed1292c8f925a0b52558")
         XCTAssertTrue(fingerprint[1] == "8476a4c3478e5af08a0e4654583c42a0d4643041f54bc0783096197e71c2e2fe")
     }
-    
+
     func testFingerprintBad() {
         let privateKey = "self.content(of: testdata_privatekey)"
         let fingerprint = privateKey.fingerprint
         XCTAssertTrue(fingerprint.isEmpty)
     }
-    
+
     func testUnarmor() {
         let privateKey = self.content(of: "testdata_privatekey")
         let rawData = privateKey.unArmor
         XCTAssertTrue(rawData != nil)
     }
-    
+
     func testGetSignature() {
         let signature = self.content(of: "testdata_signed_message")
         let signedMessage = try! signature.getSignature()
         XCTAssertFalse(signedMessage!.isEmpty)
     }
-    
+
     func testGetSignatureFail() {
         let signature = self.content(of: "testdata_signed_message_bad")
         XCTAssertThrowsError(try signature.getSignature())
     }
-    
+
     func testSplit() {
         let message = content(of: "testdata_pgp_message")
         XCTAssertNoThrow(try message.split())
     }
-    
+
     func testSplitBad() {
         let message = "wrong_message"
         XCTAssertThrowsError(try message.split())
     }
-    
+
     func testCheckPassword() {
         let privateKey = content(of: "testdata_privatekey")
         let check = privateKey.check(passphrase: self.passphrase)
         XCTAssertTrue(check)
     }
-    
+
     func testCheckPasswordWrong() {
         let privateKey = content(of: "testdata_privatekey")
         let check = privateKey.check(passphrase: self.password1)
         XCTAssertFalse(check)
     }
-    
+
     // MARK: test string extension part
-    
+
     func testDecryptMessage() {
         let privateKey = content(of: "testdata_privatekey")
         let corruptedMessage = content(of: "testdata_message_no_mdc")
@@ -116,20 +116,20 @@ class CryptoStringTests: CryptoTestBase {
         } catch {
             XCTAssertEqual(error as! CryptoError, CryptoError.messageCouldNotBeDecrypted)
         }
-        
+
         let encrypted = try! self.plaintext.encryptNonOptional(withPrivKey: privateKey, mailbox_pwd: self.passphrase)
         let clearText = try! encrypted.decryptMessageNonOptional(binKeys: [rawKey], passphrase: self.passphrase)
-        
+
         XCTAssertEqual(clearText, self.plaintext)
     }
-    
+
     func testDecryptMessageWithSinglKeyException() {
         let privateKey = content(of: "testdata_privatekey")
         let corruptedMessage = content(of: "testdata_message_no_mdc")
         XCTAssertThrowsError(try corruptedMessage.decryptMessageWithSingleKeyNonOptional(ArmoredKey.init(value: privateKey),
                                                                                          passphrase: Passphrase.init(value: self.passphrase)))
     }
-    
+
     func testDecryptMessageWithSinglKey() {
         let privateKey = content(of: "testdata_privatekey2")
         let publicKey = privateKey.publicKey
@@ -147,19 +147,19 @@ class CryptoStringTests: CryptoTestBase {
                                                                               passphrase: Passphrase.init(value: self.passphrase2))
         XCTAssertEqual(clearText, self.plaintext)
     }
-    
+
     func testDecryptMessageWithSinglKeyWrongSignPassphrase() {
         let privateKey = content(of: "testdata_privatekey2")
         let publicKey = privateKey.publicKey
         XCTAssertThrowsError(try self.plaintext.encryptNonOptional(withPubKey: publicKey, privateKey: privateKey, passphrase: ""))
     }
-    
+
     func testDecryptMessageWithSinglKeyBad() {
         let privateKey = content(of: "testdata_privatekey2")
         let publicKey = privateKey.publicKey
         XCTAssertThrowsError(try self.plaintext.encryptNonOptional(withPubKey: publicKey, privateKey: "privateKeys", passphrase: self.passphrase2))
     }
-    
+
     func testEcryptWithPassword() {
         let encrypted = try! self.plaintext.encryptNonOptional(password: self.password2)
         let clearText = try! encrypted.decryptNonOptional(password: self.password2)

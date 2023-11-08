@@ -31,13 +31,13 @@ import ProtonCoreTestingToolkit
 final class CurrentPlanRequestTests: XCTestCase {
     var sut: CurrentPlanRequest!
     var apiService: APIServiceMock!
-    
+
     override func setUp() {
         super.setUp()
         apiService = .init()
         sut = .init(api: apiService)
     }
-    
+
     func test_availablePlans_path() {
         XCTAssertEqual(sut.path, "/payments/v5/subscription")
     }

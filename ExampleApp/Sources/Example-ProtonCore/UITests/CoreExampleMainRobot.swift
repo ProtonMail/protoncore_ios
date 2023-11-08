@@ -42,18 +42,18 @@ final class CoreExampleMainRobot: CoreElements {
     }
 
     let appVersionTextField = "ExampleViewController.appVersionTextField"
-    
+
     func tap<T: CoreElements>(_ buttonToTap: Buttons, to robot: T.Type) -> T {
         button(buttonToTap.rawValue).tap()
         return T()
     }
-    
+
     func changeAppVersion(version: String) -> CoreExampleMainRobot {
         button(Buttons.appVersionReset.rawValue).tap()
         textField(appVersionTextField).tap().typeText(version).typeText(XCUIKeyboardKey.return.rawValue)
         return CoreExampleMainRobot()
     }
-    
+
     @discardableResult
     func changeAlternativeRoutingSwitch(name: String) -> CoreExampleMainRobot {
         button(name).tap()

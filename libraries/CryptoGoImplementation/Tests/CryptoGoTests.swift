@@ -26,7 +26,7 @@ import ProtonCoreCryptoGoInterface
 @testable import ProtonCoreCryptoPatchedGoImplementation
 
 class CryptoDataExtTest: XCTestCase {
-    
+
     func testCryptoGoClassesToGoLibsClassesConversion() {
         XCTAssertNotNil(CryptoKey().toGoLibsType)
         XCTAssertNotNil(CryptoSessionKey().toGoLibsType)
@@ -50,10 +50,10 @@ class CryptoDataExtTest: XCTestCase {
         XCTAssertNotNil(CryptoPlainMessageMetadata().toGoLibsType)
         XCTAssertNotNil(CryptoPlainMessageReader().toGoLibsType)
     }
-    
+
     func testGoLibsProtocolsToCryptoGoProtocolsConversion() {
         XCTAssertNotNil(CryptoWriteCloser().toCryptoGoType)
         XCTAssertNotNil(CryptoWriteCloser().toCryptoGoType.toGoLibsType)
     }
-    
+
 }

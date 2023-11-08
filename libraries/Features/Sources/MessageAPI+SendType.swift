@@ -23,9 +23,9 @@ import Foundation
 
 struct SendType: OptionSet {
     let rawValue: Int
-    
+
     // address package one
-    
+
     // internal email
     static let intl    = SendType(rawValue: 1 << 0)
     // encrypt outside
@@ -34,12 +34,12 @@ struct SendType: OptionSet {
     static let cinln   = SendType(rawValue: 1 << 2)
     // inline pgp
     static let inlnpgp = SendType(rawValue: 1 << 3)
-    
+
     // address package two MIME
-    
+
     // pgp mime
     static let pgpmime = SendType(rawValue: 1 << 4)
     // clear text mime
     static let cmime   = SendType(rawValue: 1 << 5)
-    
+
 }

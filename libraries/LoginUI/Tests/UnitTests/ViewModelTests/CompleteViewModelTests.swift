@@ -58,9 +58,9 @@ class CompleteViewModelTests: XCTestCase {
         super.setUp()
         injectDefaultCryptoImplementation()
     }
-    
+
     // MARK: - Create new username user
-    
+
     func test_createNewUsernameAccount_isSuccessful() {
         let (viewModel, authDelegate, serviceDelegate) = createViewModel(doh: DohMock(), type: .username)
         _ = (authDelegate, serviceDelegate)
@@ -110,7 +110,7 @@ class CompleteViewModelTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func test_createNewUsernameAccount_withNonExistingUser_failsWithInvalidCredentialsError() {
         let (viewModel, authDelegate, serviceDelegate) = createViewModel(doh: DohMock(), type: .username)
         _ = (authDelegate, serviceDelegate)
@@ -170,7 +170,7 @@ class CompleteViewModelTests: XCTestCase {
     }
 
     // MARK: - Create new internal user
-    
+
     func test_createNewInternalAccount_isSuccessful() {
         let (viewModel, authDelegate, serviceDelegate) = createViewModel(doh: DohMock(), type: .internal)
         _ = (authDelegate, serviceDelegate)
@@ -220,7 +220,7 @@ class CompleteViewModelTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func test_createNewInternalAccount_withNonExistingUser_failsWithInvalidCredentialsError() {
         let (viewModel, authDelegate, serviceDelegate) = createViewModel(doh: DohMock(), type: .internal)
         _ = (authDelegate, serviceDelegate)
@@ -280,7 +280,7 @@ class CompleteViewModelTests: XCTestCase {
     }
 
     // MARK: - Create new external user
-    
+
     func test_createNewExternalAccount_isSuccessful() {
         let (viewModel, authDelegate, serviceDelegate) = createViewModel(doh: DohMock(), type: .external)
         _ = (authDelegate, serviceDelegate)

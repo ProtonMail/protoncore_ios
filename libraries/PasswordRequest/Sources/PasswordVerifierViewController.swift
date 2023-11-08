@@ -38,21 +38,21 @@ public final class PasswordVerifierViewController: UIViewController {
     private let passwordTextField = PMTextField(frame: .zero)
     private let submitButton = ProtonButton(frame: .zero)
     private let scrollView = UIScrollView(frame: .zero)
-    
+
     public var viewModel: PasswordVerifier?
     public weak var delegate: PasswordVerifierViewControllerDelegate?
-    
+
     override public func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupButton()
     }
-    
+
     override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         _ = passwordTextField.becomeFirstResponder()
     }
-    
+
     private func setupUI() {
         titleLabel.lineBreakMode = .byWordWrapping
         titleLabel.numberOfLines = 0
@@ -60,17 +60,17 @@ public final class PasswordVerifierViewController: UIViewController {
         titleLabel.tintColor = ColorProvider.TextNorm
         titleLabel.textAlignment = .center
         titleLabel.font = .adjustedFont(forTextStyle: .body, weight: .bold)
-        
+
         passwordTextField.title = PRTranslations.password_field_title.l10n
         passwordTextField.placeholder = PRTranslations.password_field_title.l10n
         passwordTextField.isPassword = true
         passwordTextField.textContentType = .password
-        
+
         submitButton.setTitle(PRTranslations.create_address_button_title.l10n, for: .normal)
-        
+
         view.backgroundColor = ColorProvider.BackgroundNorm
         view.addSubview(scrollView)
-        
+
         scrollView.addConstraints {
             [
                 $0.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -79,11 +79,11 @@ public final class PasswordVerifierViewController: UIViewController {
                 $0.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ]
         }
-        
+
         let containerView = UIView(frame: .zero)
         containerView.addSubviews(titleLabel, passwordTextField, submitButton)
         scrollView.addSubview(containerView)
-        
+
         containerView.addConstraints {
             [
                 $0.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
@@ -93,7 +93,7 @@ public final class PasswordVerifierViewController: UIViewController {
                 $0.topAnchor.constraint(equalTo: scrollView.topAnchor)
             ]
         }
-        
+
         titleLabel.addConstraints {
             [
                 $0.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 12),
@@ -102,7 +102,7 @@ public final class PasswordVerifierViewController: UIViewController {
                 $0.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16)
             ]
         }
-        
+
         passwordTextField.addConstraints {
             [
                 $0.bottomAnchor.constraint(equalTo: submitButton.topAnchor, constant: -12),
@@ -110,7 +110,7 @@ public final class PasswordVerifierViewController: UIViewController {
                 $0.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16)
             ]
         }
-        
+
         submitButton.addConstraints {
             [
                 $0.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
@@ -119,23 +119,23 @@ public final class PasswordVerifierViewController: UIViewController {
             ]
         }
     }
-    
+
     private func setupButton() {
         submitButton.addTarget(self, action: #selector(verifyPasswordWithAuth), for: .touchUpInside)
         let image: UIImage = IconProvider.cross
         navigationItem.leftBarButtonItem = .button(on: self, action: #selector(dissmissTapped), image: image)
     }
-    
+
     @objc private func dissmissTapped() {
         dismiss(animated: true, completion: delegate?.didCloseVerifyPassword)
     }
-    
+
     @objc private func verifyPasswordWithAuth() {
         let password = passwordTextField.value
         passwordTextField.isEnabled = false
         passwordTextField.isError = false
         submitButton.isSelected = true
-        
+
         if let authInfo = viewModel?.authInfo {
             verifyPassword(password: password, authInfo: authInfo)
         } else {
@@ -149,7 +149,7 @@ public final class PasswordVerifierViewController: UIViewController {
             }
         }
     }
-    
+
     private func verifyPassword(password: String, authInfo: AuthInfoResponse) {
         viewModel?.verifyPassword(password: password, authInfo: authInfo) { [weak self] result in
             DispatchQueue.main.async {
@@ -167,7 +167,7 @@ public final class PasswordVerifierViewController: UIViewController {
             }
         }
     }
-    
+
     private func handleAuthError(error: AuthErrors) {
         submitButton.isSelected = false
         passwordTextField.isEnabled = true

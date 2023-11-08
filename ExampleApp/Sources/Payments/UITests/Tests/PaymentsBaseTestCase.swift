@@ -16,9 +16,9 @@ import ProtonCoreTestingToolkit
 import ProtonCoreObfuscatedConstants
 
 class PaymentsBaseTestCase: ProtonCoreBaseTestCase {
-    
+
     let testData = TestData()
-    
+
     var doh: DoHInterface {
         if let customDomain = dynamicDomain.map({ "\($0)" }) {
             return CustomServerConfigDoH(
@@ -42,14 +42,13 @@ class PaymentsBaseTestCase: ProtonCoreBaseTestCase {
             )
         }
     }
-    
+
     let entryRobot = CoreExampleMainRobot()
     var appRobot: PaymentsSampleAppRobot!
-        
+
     override func setUp() {
         beforeSetUp(bundleIdentifier: "ch.protontech.core.ios.Example-Payments-UITests")
         super.setUp()
         appRobot = entryRobot.tap(.payments, to: PaymentsSampleAppRobot.self)
     }
 }
-    

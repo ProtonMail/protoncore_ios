@@ -28,11 +28,11 @@ import ProtonCoreServices
 
 extension Array where Element: Request {
     func performConcurrentlyAndWaitForResults<T: Response>(api: APIService, response: T.Type) -> [Result<T, Error>] {
-        
+
         assert(Thread.isMainThread == false, "This is a blocking call, should never be called from the main thread")
-        
+
         let group = DispatchGroup()
-        
+
         var results: [(UUID, Result<T, Error>)] = []
         let requests = map { (UUID(), $0) }
         let uuids = requests.map(\.0)
@@ -49,7 +49,7 @@ extension Array where Element: Request {
             }
         }
         group.wait()
-        
+
         return results.sorted { lhs, rhs in
             guard let lhIndex = uuids.firstIndex(of: lhs.0), let rhIndex = uuids.firstIndex(of: rhs.0) else {
                 assertionFailure("Should never happen — the UUIDs associated with requests must not be changed")
@@ -68,21 +68,21 @@ struct KeysAPI {
 /// KeysResponse
 final class UserEmailPubKeys: Request {
     let email: String
-    
+
     init(email: String, authCredential: AuthCredential? = nil) {
         self.email = email
         self.auth = authCredential
     }
-    
+
     var parameters: [String: Any]? {
         let out: [String: Any] = ["Email": self.email]
         return out
     }
-    
+
     var path: String {
         return KeysAPI.path
     }
-    
+
     // custom auth credentical
     let auth: AuthCredential?
     var authCredential: AuthCredential? { auth }
@@ -92,7 +92,7 @@ final class KeyResponse {
     // TODO:: change to bitmap later
     var flags: Int = 0 // bitmap: 1 = can be used to verify, 2 = can be used to encrypt
     var publicKey: String?
-   
+
     init(flags: Int, pubkey: String?) {
         self.flags = flags
         self.publicKey = pubkey
@@ -106,7 +106,7 @@ final class KeysResponse: Response {
     override func ParseResponse(_ response: [String: Any]!) -> Bool {
         self.recipientType = response["RecipientType"] as? Int ?? 1
         self.mimeType = response["MIMEType"] as? String
-        
+
         if let keyRes = response["Keys"] as? [[String: Any]] {
             for keyDict in keyRes {
                 let flags = keyDict["Flags"] as? Int ?? 0
@@ -116,7 +116,7 @@ final class KeysResponse: Response {
         }
         return true
     }
-    
+
     func firstKey () -> String? {
         for k in keys {
             if k.flags == 2 || k.flags == 3 {
@@ -125,7 +125,7 @@ final class KeysResponse: Response {
         }
         return nil
     }
-    
+
     // TODO:: change to filter later.
     func getCompromisedKeys() -> Data?  {
         var pubKeys: Data?
@@ -144,7 +144,7 @@ final class KeysResponse: Response {
         }
         return pubKeys
     }
-    
+
     func getVerifyKeys() -> Data? {
         var pubKeys: Data?
         for k in keys {

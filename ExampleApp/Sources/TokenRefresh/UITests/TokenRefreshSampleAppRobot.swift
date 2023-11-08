@@ -37,29 +37,29 @@ let expireSessionAndRefreshTokenButton = "TokenRefreshViewController.expireSessi
 let activityIndicatorView = "TokenRefreshViewController.activityIndicatorView"
 
 final class TokenRefreshSampleAppRobot: CoreElements {
-    
+
     public let verify = Verify()
 
     public final class Verify: CoreElements {
-        
+
         @discardableResult
         public func createAccountMessageIsDisplayed() -> TokenRefreshSampleAppRobot {
             staticText(TokenRefreshStrings.createAccountSuccessfully).waitUntilExists().checkExists()
             return .init()
         }
-        
+
         @discardableResult
         public func loggedInMessageIsDisplayed() -> TokenRefreshSampleAppRobot {
             staticText(TokenRefreshStrings.loggedInSuccessfully).waitUntilExists().checkExists()
             return .init()
         }
-        
+
         @discardableResult
         public func expiredSessionMessageIsDisplayed() -> TokenRefreshSampleAppRobot {
             staticText(TokenRefreshStrings.expiredSessionSuccessfully).waitUntilExists().checkExists()
             return .init()
         }
-        
+
         @discardableResult
         public func getUserMessageIsDisplayed() -> TokenRefreshSampleAppRobot {
             staticText(TokenRefreshStrings.getUserSuccessfully).waitUntilExists().checkExists()
@@ -77,22 +77,22 @@ final class TokenRefreshSampleAppRobot: CoreElements {
         button(createAccountButton).tap()
         return .init()
     }
-    
+
     func logIn() -> TokenRefreshSampleAppRobot {
         button(logInButton).tap()
         return .init()
     }
-    
+
     func getUser() -> TokenRefreshSampleAppRobot {
         button(getUserButton).tap()
         return .init()
     }
-    
+
     func expireSession() -> TokenRefreshSampleAppRobot {
         button(expireSessionButton).tap()
         return .init()
     }
-    
+
     func expireSessionAndRefreshToken() -> TokenRefreshSampleAppRobot {
         button(expireSessionAndRefreshTokenButton).tap()
         return .init()

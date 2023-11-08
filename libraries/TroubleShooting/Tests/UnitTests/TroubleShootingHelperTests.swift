@@ -48,14 +48,14 @@ class TroubleShootingHelperTests: XCTestCase {
 
         try super.tearDownWithError()
     }
-    
+
     func testStatusHelper() {
         let exceptionCheck = self.expectation(description: "Success completion block called")
-        
+
         let helper = DohStatusHelper(doh: dohMock as DoHInterface)
         dohMock.statusStub.fixture = .on
         XCTAssertTrue(helper.status == .on)
-        
+
         helper.onChanged = { newStatus in
             XCTAssertTrue(newStatus == .off)
             exceptionCheck.fulfill()

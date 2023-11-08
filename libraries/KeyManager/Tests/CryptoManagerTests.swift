@@ -31,17 +31,17 @@ class CryptoManagerTests: TestCaseBase {
         let keyRing = try? CryptoManager.generateCryptoKeyRing(key: userkey, passphrase: userPassphrase)
         XCTAssertNotNil(keyRing)
     }
-  
+
     func testDecryptString() {
         let userkey = content(of: "data1_user_key")
         let userPassphrase = content(of: "data1_user_passphrse")
         let addrToken = content(of: "data1_address_key_token")
         let addrClear = content(of: "data1_address_key_clear_pass")
-        
+
         let splited = try! addrToken.split()
         let keyPacket = splited?.getBinaryKeyPacket()
         let dataPacket = splited?.getBinaryDataPacket()
-        
+
         var error: NSError?
         let keyRing = try? CryptoManager.generateCryptoKeyRing(key: userkey, passphrase: userPassphrase)
         let clear = CryptoManager.decryptString(keyPacket: keyPacket!,
@@ -49,7 +49,7 @@ class CryptoManagerTests: TestCaseBase {
                                                 keyRing: keyRing!, error: &error)
         XCTAssertTrue(addrClear == clear)
     }
-  
+
     func testVerifyDetached() {
         let addrPriv = content(of: "data1_address_key")
         let addrClear = content(of: "data1_address_key_clear_pass")

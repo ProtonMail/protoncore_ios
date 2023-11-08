@@ -26,7 +26,7 @@ public struct FeatureFlag: Codable, Equatable, Hashable, Sendable {
     public let name: String
     public let enabled: Bool
     public let variant: FeatureFlagVariant?
-    
+
     public init(name: String, enabled: Bool, variant: FeatureFlagVariant?) {
         self.name = name
         self.enabled = enabled
@@ -40,7 +40,7 @@ public struct FeatureFlagVariant: Codable, Equatable, Hashable, Sendable {
     public let name: String
     public let enabled: Bool
     public let payload: FeatureFlagVariantPayload?
-    
+
     public init(name: String, enabled: Bool, payload: FeatureFlagVariantPayload?) {
         self.name = name
         self.enabled = enabled
@@ -53,7 +53,7 @@ public struct FeatureFlagVariant: Codable, Equatable, Hashable, Sendable {
 public struct FeatureFlagVariantPayload: Codable, Equatable, Hashable, Sendable {
     public let type: String
     public let value: FeatureFlagVariantPayloadValue
-    
+
    public init(type: String, value: FeatureFlagVariantPayloadValue) {
         self.type = type
         self.value = value

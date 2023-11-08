@@ -39,56 +39,56 @@ class FeatureSwitchViewController: UIViewController {
     @IBOutlet weak var thirdSwitch: UISwitch!
     @IBOutlet weak var secondSwitch: UISwitch!
     @IBOutlet weak var firstSwitch: UISwitch!
-    
+
     @IBOutlet weak var thirdButton: UIButton!
     @IBOutlet weak var debugTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         /// #2 think this is the appDelegate function you can start FeatureFactory and fetch configs.
         FeatureFactory.shared.setup(env: "") // this env will change to the real environment later.
         ///  load from UserShared.
         /// FeatureFactory.shared.fetchFeature(local: FeatureProvider)
         /// FeatureFactory.shared.fetchFeature(remote: FeatureProvider)
-        
+
         /// #3 you are all set now to use the myFirstFeature,mySecondFeature, myThirdFeature in your logic
-    
+
         firstSwitch.isHidden = true
         secondSwitch.isHidden = true
         thirdSwitch.isHidden = true
-        
+
         firstButton.isHidden = true
         secondButton.isHidden = true
         thirdButton.isHidden = true
-        
+
         let checkOne = FeatureFactory.shared.isEnabled(.myFirstFeature)
         let checkTwo = FeatureFactory.shared.isEnabled(.mySecondFeature)
-        
+
         debugTextView.text = """
         firstSwitch is \(checkOne ? "on" : "off").
         secondSwitch is \(checkTwo ? "on" : "off").
         """
         // FeatureFactory.shared.reload()
     }
-    
+
     @IBAction func switchAction(_ sender: UISwitch) {
         if sender == firstSwitch {
             FeatureFactory.shared.setEnabled(&.myFirstFeature, isEnable: sender.isOn)
         } else if sender == secondSwitch {
             FeatureFactory.shared.setEnabled(&.mySecondFeature, isEnable: sender.isOn)
         }
-        
+
         let checkOne = FeatureFactory.shared.isEnabled(.myFirstFeature)
         let checkTwo = FeatureFactory.shared.isEnabled(.mySecondFeature)
-        
+
         firstButton.isHidden = !checkOne
         secondButton.isHidden = !checkTwo
         thirdButton.isHidden = true
-        
+
         debugTextView.text = """
         firstSwitch is \(checkOne ? "on" : "off") by default.
         secondSwitch is \(checkTwo ? "on" : "off") by default. can change only when defined DEBUG_CORE_INTERNAL
         """
     }
-    
+
 }

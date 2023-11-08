@@ -28,7 +28,7 @@ class RandomPinProtectionTests: XCTestCase {
     let keychain = KeychainWrapper(service: "ch.protonmail", accessGroup: "xxxxxxx.ch.protonmail.PMKeymaker")
     let mainKey = RandomPinProtection.generateRandomValue(length: 32)
     let pinCode = "123"
-    
+
     override func setUp() {
         super.setUp()
         let ret = self.keychain.removeEverything()
@@ -37,18 +37,18 @@ class RandomPinProtectionTests: XCTestCase {
     func testStaticEnum() {
        XCTAssertTrue( RandomPinProtection.keychainLabel == "\(RandomPinProtection.self)")
     }
-    
+
     func testLockUnlockV1() throws {
         let randomProtechion = RandomPinProtection(pin: pinCode, keychain: keychain)
         XCTAssertNotNil(randomProtechion)
         try randomProtechion.lock(value: mainKey)
-        
+
         let byte = randomProtechion.getCypherBits()
         XCTAssertNotNil(byte)
         let clear = try randomProtechion.unlock(cypherBits: byte!)
         XCTAssertEqual(clear, mainKey)
     }
-    
+
     // TODO: this is testing the lagcy encrypt data. but right now we lost the logic to creat the lagcy data. need wait to fix this
     //    func testLockUnlockV0() throws {
     //        let randomProtechion = RandomPinProtection(pin: pinCode, keychain: keychain, version: .lagcy)

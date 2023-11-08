@@ -36,12 +36,12 @@ import XCTest
 final class SignupCoordinatorTests: XCTestCase {
     var signupAccountTypeManager: SignupAccountTypeManagerMock!
     let controller = LoginNavigationViewController(rootViewController: UIViewController())
-    
+
     override func setUp() {
         super.setUp()
         signupAccountTypeManager = SignupAccountTypeManagerMock()
     }
-    
+
     private func setupCoordinator(minimumAccountType: AccountType, featureFlagEnabled: Bool) -> (SignupCoordinator, Container) {
         let signupParameters = signupParameters()
         let signupAvailability = SignupAvailability.available(parameters: signupParameters)
@@ -61,54 +61,54 @@ final class SignupCoordinatorTests: XCTestCase {
                                             signupAccountTypeManager: signupAccountTypeManager)
         return (coordinator, container)
     }
-    
+
     private func signupParameters() -> SignupParameters {
         SignupParameters(separateDomainsButton: true, passwordRestrictions: .default, summaryScreenVariant: .noSummaryScreen)
     }
-    
+
     func test_start_withSignupAvailableAndSignupModeInternalAndFFDisabled_setsSignupAccountTypeToInternal() {
         // Given
         let (out, _) = setupCoordinator(minimumAccountType: .internal, featureFlagEnabled: false)
 
         // When
         out.start(kind: .inside(controller))
-        
+
         // Then
         XCTAssertEqual(signupAccountTypeManager.accountType, .internal)
         XCTAssertEqual(signupAccountTypeManager.setSignupAccountTypeCallCount, 1)
     }
-    
+
     func test_start_withSignupAvailableAndSignupModeExternalAndFFDisabled_setsSignupAccountTypeToInternal() {
         // Given
         let (out, _) = setupCoordinator(minimumAccountType: .internal, featureFlagEnabled: false)
 
         // When
         out.start(kind: .inside(controller))
-        
+
         // Then
         XCTAssertEqual(signupAccountTypeManager.accountType, .internal)
         XCTAssertEqual(signupAccountTypeManager.setSignupAccountTypeCallCount, 1)
     }
-    
+
     func test_start_withSignupAvailableAndSignupModeInternalAndFFEnabled_setsSignupAccountTypeToInternal() {
         // Given
         let (out, _) = setupCoordinator(minimumAccountType: .internal, featureFlagEnabled: true)
 
         // When
         out.start(kind: .inside(controller))
-        
+
         // Then
         XCTAssertEqual(signupAccountTypeManager.accountType, .internal)
         XCTAssertEqual(signupAccountTypeManager.setSignupAccountTypeCallCount, 1)
     }
-    
+
     func test_start_withSignupAvailableAndSignupModeExternalAndFFEnabled_setsSignupAccountTypeToExternal() {
         // Given
         let (out, _) = setupCoordinator(minimumAccountType: .internal, featureFlagEnabled: true)
 
         // When
         out.start(kind: .inside(controller))
-        
+
         // Then
         XCTAssertEqual(signupAccountTypeManager.accountType, .internal)
         XCTAssertEqual(signupAccountTypeManager.setSignupAccountTypeCallCount, 1)
@@ -183,7 +183,7 @@ final class SignupCoordinatorTests: XCTestCase {
 class SignupAccountTypeManagerMock: SignupAccountTypeManagerProtocol {
     var accountType: SignupAccountType = .internal
     var setSignupAccountTypeCallCount = 0
-    
+
     func setSignupAccountType(type: SignupAccountType) {
         accountType = type
         setSignupAccountTypeCallCount += 1

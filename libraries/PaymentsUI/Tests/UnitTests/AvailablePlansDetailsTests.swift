@@ -54,7 +54,7 @@ final class AvailablePlansDetailsTests: XCTestCase {
         // Then
         XCTAssertTrue(plansDataSource.createIconURLStub.wasCalled)
     }
-    
+
     func test_createPlan_withStoreKitManagerAndInstance() async throws {
         // Given
         let iapPlan = InAppPurchasePlan(storeKitProductId: "ioscore_core2023_12_usd_non_renewing")
@@ -63,7 +63,7 @@ final class AvailablePlansDetailsTests: XCTestCase {
         storeKitManager.priceLabelForProductStub.bodyIs { _, _ in
             (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs"))
         }
-        
+
         let availablePlan = AvailablePlans.AvailablePlan(
             ID: "ID",
             type: nil,
@@ -90,7 +90,7 @@ final class AvailablePlansDetailsTests: XCTestCase {
                 .starred(.init(type: "starred", iconName: "tick"))
             ]
         )
-        
+
         // When
         let plan = try await AvailablePlansDetails.createPlan(
             from: availablePlan,
@@ -100,7 +100,7 @@ final class AvailablePlansDetailsTests: XCTestCase {
             plansDataSource: plansDataSource,
             storeKitManager: storeKitManager
         )
-        
+
         // Then
         XCTAssertEqual(plan?.defaultCycle, 12)
         XCTAssertEqual(plan?.cycleDescription, "12 months")
@@ -111,7 +111,7 @@ final class AvailablePlansDetailsTests: XCTestCase {
         XCTAssertEqual(plan?.decorations.count, 3)
         XCTAssertEqual(plan?.entitlements[0], .init(text: "text", iconUrl: nil))
     }
-    
+
     func test_createPlan_withoutStoreKitManagerNorInstance() async throws {
         // Given
         let plansDataSource = PlansDataSourceMock()
@@ -126,10 +126,10 @@ final class AvailablePlansDetailsTests: XCTestCase {
             ],
             decorations: []
         )
-        
+
         // When
         let plan = try await AvailablePlansDetails.createPlan(from: availablePlan, defaultCycle: nil, plansDataSource: plansDataSource)
-        
+
         // Then
         XCTAssertNil(plan?.defaultCycle)
         XCTAssertNil(plan?.cycleDescription)

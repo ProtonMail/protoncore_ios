@@ -26,7 +26,7 @@ import ProtonCoreUtilities
 private class Handler {}
 
 public enum PRTranslations: TranslationsExposing {
-    
+
     public static var bundle: Bundle {
         #if SPM
         return Bundle.module
@@ -34,14 +34,14 @@ public enum PRTranslations: TranslationsExposing {
         return Bundle(path: Bundle(for: Handler.self).path(forResource: "Translations-PasswordRequest", ofType: "bundle")!)!
         #endif
     }
-    
+
     public static var prefixForMissingValue: String = ""
-    
+
     case validation_invalid_password
     case validation_enter_password
     case create_address_button_title
     case password_field_title
-    
+
     public var l10n: String {
         switch self {
         case .validation_invalid_password:

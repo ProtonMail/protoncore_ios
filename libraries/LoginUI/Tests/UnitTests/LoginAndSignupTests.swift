@@ -45,15 +45,15 @@ final class LoginAndSignupTests: XCTestCase {
         PMAPIService.createAPIServiceWithoutSession(environment: .custom("test env"),
                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
     }
-    
+
     func testAccountDeletionTranslationsAreDefinedForEnglish() {
         testAllLocalizationsAreDefined(for: LUITranslation.self, prefixForMissingValue: #function)
     }
-    
+
     func testAllSubstitutionsAreFollowingTheExpectedFormatForEnglish() {
         testAllSubstitutionsAreValid(for: LUITranslation.self)
     }
-    
+
     func testTrustKitInstanceGivenToLoginAndSignupIsPassedToSession_RecommendedInitializer() throws {
         let trustKit = TrustKit()
         PMAPIService.trustKit = trustKit
@@ -109,7 +109,7 @@ final class LoginAndSignupTests: XCTestCase {
         XCTAssertNotNil(challenge.getInterceptor(textField: signupViewController.externalEmailTextField.textField))
         XCTAssertIdentical(loginAndSignup.container.challenge, challenge)
     }
-    
+
     @available(*, deprecated)
     func testTrustKitInstanceGivenToLoginAndSignupIsPassedToSession_DeprecatedInitializer1() throws {
         let trustKit = TrustKit()
@@ -126,7 +126,7 @@ final class LoginAndSignupTests: XCTestCase {
         let session = try XCTUnwrap((out.container.api as? PMAPIService)?.getSession() as? AlamofireSession)
         XCTAssertTrue(session.sessionChallenge.trustKit === trustKit)
     }
-    
+
     @available(*, deprecated)
     func testTrustKitInstanceGivenToLoginAndSignupIsPassedToSession_DeprecatedInitializer2() throws {
         let trustKit = TrustKit()
@@ -143,7 +143,7 @@ final class LoginAndSignupTests: XCTestCase {
         let session = try XCTUnwrap((out.container.api as? PMAPIService)?.getSession() as? AlamofireSession)
         XCTAssertTrue(session.sessionChallenge.trustKit === trustKit)
     }
-    
+
     @available(*, deprecated)
     func testTrustKitInstanceGivenToLoginAndSignupIsPassedToSession_DeprecatedInitializer3() throws {
         let trustKit = TrustKit()

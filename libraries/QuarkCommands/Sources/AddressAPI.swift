@@ -28,7 +28,7 @@ public enum AddAccountEmailError: Error {
     case cannotDecodeResponseBody
     case responseError(String)
     case actualError(Error)
-    
+
     public var userFacingMessageInQuarkCommands: String {
         switch self {
         case .cannotConstructUrl: return "cannot construct url"
@@ -51,7 +51,7 @@ extension QuarkCommands {
             urlString.append("&--gen-keys=None")
         }
         guard let url = URL(string: urlString) else { completion(.failure(.cannotConstructUrl)); return }
-        
+
         let completion: (Result<Bool, AddAccountEmailError>) -> Void = { result in
             callCompletionBlockOn.async { completion(result) }
         }

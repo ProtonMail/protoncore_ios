@@ -51,7 +51,7 @@ final class ObservabilityEventTests: IntegrationTestCase {
     let serviceDelegate = TestServiceDelegate()
     let expectationTimeout: TimeInterval = 60
     var authHelper: AuthHelper!
-    
+
     override class func setUp() {
         super.setUp()
         PMAPIService.noTrustKit = true
@@ -71,14 +71,14 @@ final class ObservabilityEventTests: IntegrationTestCase {
         PMAPIService.noTrustKit = false
         super.tearDown()
     }
-    
+
     private func setupService(expectation: XCTestExpectation,
                               interval: TimeInterval = 0.5,
                               expectedHTTPResponse: Int = 200) -> ObservabilityServiceImpl {
         let apiService = PMAPIService.createAPIServiceWithoutSession(environment: environment, challengeParametersProvider: .empty)
         apiService.serviceDelegate = serviceDelegate
         apiService.authDelegate = authHelper
-        
+
         return ObservabilityServiceImpl(
             requestPerformer: apiService,
             timer: ObservabilityTimerImpl(interval: interval),
@@ -93,14 +93,14 @@ final class ObservabilityEventTests: IntegrationTestCase {
             }
         )
     }
-    
+
     let testResponses = [
         ResponseError(httpCode: 400, responseCode: nil, userFacingMessage: nil, underlyingError: nil),
         ResponseError(httpCode: 500, responseCode: nil, userFacingMessage: nil, underlyingError: nil)
     ]
-    
+
     // MARK: - Test SSO auth schema
-    
+
     func test_ssoAuth_everyStatus_isValid() {
         let expectation = expectation(description: #function)
         let service = setupService(expectation: expectation, interval: 2.0)
@@ -112,9 +112,9 @@ final class ObservabilityEventTests: IntegrationTestCase {
             .forEach(service.report)
         wait(for: [expectation], timeout: expectationTimeout)
     }
-    
+
     // MARK: - Test SSO obtain challenge token schema
-    
+
     func test_ssoObtainChallengeToken_everyStatus_isValid() {
         let expectation = expectation(description: #function)
         let service = setupService(expectation: expectation, interval: 2.0)
@@ -126,9 +126,9 @@ final class ObservabilityEventTests: IntegrationTestCase {
             .forEach(service.report)
         wait(for: [expectation], timeout: expectationTimeout)
     }
-    
+
     // MARK: - Test SSO identity provider login schema
-    
+
     func test_ssoIdentityProviderLogin_everyStatus_isValid() {
         let expectation = expectation(description: #function)
         let service = setupService(expectation: expectation, interval: 2.0)
@@ -137,9 +137,9 @@ final class ObservabilityEventTests: IntegrationTestCase {
             .forEach(service.report)
         wait(for: [expectation], timeout: expectationTimeout)
     }
-    
+
     // MARK: - Test SSO page load count schema
-    
+
     func test_ssoPageLoadCountTotal_everyStatus_isValid() {
         let expectation = expectation(description: #function)
         let service = setupService(expectation: expectation, interval: 2.0)
@@ -159,9 +159,9 @@ final class ObservabilityEventTests: IntegrationTestCase {
             }
         wait(for: [expectation], timeout: expectationTimeout)
     }
-    
+
     // MARK: - Test SSO IDP page load count schema
-    
+
     func test_ssoIDPPageLoadCountTotal_everyStatus_isValid() {
         let expectation = expectation(description: #function)
         let service = setupService(expectation: expectation, interval: 2.0)
@@ -173,9 +173,9 @@ final class ObservabilityEventTests: IntegrationTestCase {
             .forEach(service.report)
         wait(for: [expectation], timeout: expectationTimeout)
     }
-    
+
     // MARK: - Test SSO proton page load count schema
-    
+
     func test_ssoProtonPageLoadCountTotal_everyStatus_isValid() {
         let expectation = expectation(description: #function)
         let service = setupService(expectation: expectation, interval: 2.0)
@@ -187,9 +187,9 @@ final class ObservabilityEventTests: IntegrationTestCase {
             .forEach(service.report)
         wait(for: [expectation], timeout: expectationTimeout)
     }
-    
+
     // MARK: - Test external account available schema
-    
+
     func test_externalAccountAvailable_everyStatus_isValid() {
         let expectation = expectation(description: #function)
         let service = setupService(expectation: expectation, interval: 1.0)
@@ -198,9 +198,9 @@ final class ObservabilityEventTests: IntegrationTestCase {
             .forEach { service.report($0) }
         wait(for: [expectation], timeout: expectationTimeout)
     }
-    
+
     // MARK: - Test proton account available schema
-    
+
     func test_protonAccountAvailable_everyStatus_isValid() {
         let expectation = expectation(description: #function)
         let service = setupService(expectation: expectation, interval: 1.0)
@@ -338,12 +338,12 @@ final class ObservabilityEventTests: IntegrationTestCase {
         service.report(.tokenRefreshFailureTotal(authState: .unauthenticated))
         wait(for: [expectation], timeout: expectationTimeout)
     }
-    
+
     // MARK: test invalid event
-    
+
     func test_invalidEventIsRejected() {
         struct InvalidData: Encodable, Equatable {}
-        
+
         let event = ObservabilityEvent<PayloadWithLabels<InvalidData>>.init(
             name: "invalid_name",
             version: .v1,

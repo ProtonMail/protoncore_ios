@@ -412,7 +412,7 @@ final class StoreKitManagerTests: XCTestCase {
         // then
         XCTAssertEqual(returnedError as? StoreKitManagerErrors, StoreKitManagerErrors.invalidPurchase)
     }
-    
+
     func testPurchaseWhenThereIsAlreadyActiveSubscription_CanAddCredits_WillNotRenewAutomatically() throws {
         // Test scenario:
         // 1. User has subscription
@@ -554,7 +554,7 @@ final class StoreKitManagerTests: XCTestCase {
         let planDetails = Plan.empty.updated(name: "ios_test_12_usd_non_renewing", state: 1)
         planServiceMock.updateServicePlansSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in
-            planDetails 
+            planDetails
         }
         planServiceMock.updateCurrentSubscriptionSuccessFailureStub.bodyIs { _, _, successCallback, _ in successCallback() }
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
@@ -563,7 +563,7 @@ final class StoreKitManagerTests: XCTestCase {
         let expectation = XCTestExpectation()
         out.purchaseProduct(plan: plan, amountDue: 100) { _ in
             XCTFail() } errorCompletion: { _ in
-                XCTFail() 
+                XCTFail()
         }
 
         wait(for: [expectation], timeout: 50)
@@ -610,7 +610,7 @@ final class StoreKitManagerTests: XCTestCase {
         plansDataSourceMock.fetchAvailablePlansStub.bodyIs { _ in }
         plansDataSourceMock.availablePlansStub.fixture = AvailablePlans(plans: [planDetails])
         plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _  in
-            planDetails 
+            planDetails
         }
         plansDataSourceMock.isIAPAvailableStub.fixture = true
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
@@ -742,7 +742,7 @@ final class StoreKitManagerTests: XCTestCase {
         // when: purchase (2)
         out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail() }
             errorCompletion: { _ in XCTFail() }
-            deferredCompletion: { expectation.fulfill() 
+            deferredCompletion: { expectation.fulfill()
         }
         paymentsQueue.fire = true
 
@@ -765,7 +765,7 @@ final class StoreKitManagerTests: XCTestCase {
         // when: purchase (2)
         out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail() }
             errorCompletion: { _ in XCTFail() }
-            deferredCompletion: { expectation.fulfill() 
+            deferredCompletion: { expectation.fulfill()
         }
         paymentsQueue.fire = true
 
@@ -823,7 +823,7 @@ final class StoreKitManagerTests: XCTestCase {
                 returnedError = error
                 expectation.fulfill()
             }
-            deferredCompletion: { XCTFail() 
+            deferredCompletion: { XCTFail()
         }
         paymentsQueue.fire = true
 
@@ -955,7 +955,7 @@ final class StoreKitManagerTests: XCTestCase {
             out.purchaseProduct(plan: plan, amountDue: 100) { result in
                 returnedResult = result
                 expectation1.fulfill()
-            } errorCompletion: { _ in XCTFail() 
+            } errorCompletion: { _ in XCTFail()
             }
             //       Start processing transactions (2)
             paymentsQueue.fire = true
@@ -990,7 +990,7 @@ final class StoreKitManagerTests: XCTestCase {
             // 3. Change user Id
             // 4. Start processing transactions again
             // Expected: Seccess: Purchased product
-            
+
             // given
             let out = setupMocksToSimulateOngoingPurchase(expectRefreshHandler: nil)
             paymentsQueue.transactionState = .purchased
@@ -1021,25 +1021,25 @@ final class StoreKitManagerTests: XCTestCase {
                     XCTFail()
                 }
             }
-            
+
             // when: Do purchase for unauthorized (1)
             var returnedResult: PaymentSucceeded? = .none
             paymentTokenStorageMock.getStub.bodyIs { _ in token }
             out.purchaseProduct(plan: plan, amountDue: 100) { result in
                 returnedResult = result
                 expectation1.fulfill()
-            } errorCompletion: { _ in XCTFail() 
+            } errorCompletion: { _ in XCTFail()
             }
             //       Start processing transactions (2)
             paymentsQueue.fire = true
-            
+
             // then
             waitForExpectations(timeout: timeout)
             guard case .withoutExchangingToken(let returnedToken) = returnedResult else { XCTFail(); return }
             XCTAssertEqual(returnedToken.token, token.token)
             XCTAssertTrue(paymentTokenStorageMock.addStub.wasCalledExactlyOnce)
             XCTAssertEqual(paymentTokenStorageMock.addStub.lastArguments?.a1.token, token.token)
-            
+
             //       Change user Id (3)
             storeKitManagerDelegate.userIdStub.fixture = "test user"
             //       Start processing transactions again (4)
@@ -1047,7 +1047,7 @@ final class StoreKitManagerTests: XCTestCase {
             out.retryProcessingAllPendingTransactions {
                 expectation2.fulfill()
             }
-            
+
             // then
             waitForExpectations(timeout: timeout)
             XCTAssertTrue(paymentTokenStorageMock.clearStub.wasCalledExactlyOnce)

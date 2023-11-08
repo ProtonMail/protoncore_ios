@@ -24,24 +24,24 @@
 import XCTest
 
 class Address_v2Tests: XCTestCase {
-    
+
     var jsonDecoder: JSONDecoder!
-    
+
     override func setUp() {
         super.setUp()
         jsonDecoder = .init()
     }
-    
+
     override func tearDown() {
         jsonDecoder = nil
         super.tearDown()
     }
-    
+
     func testParseTwoAddressesCorrectly() throws {
         let sut = try jsonDecoder.decode([Address_v2].self, from: .addressesJSONData)
-        
+
         XCTAssertEqual(sut.count, 2)
-        
+
         let firstAddress = try XCTUnwrap(sut[safe: 0])
         let secondAddress = try XCTUnwrap(sut[safe: 1])
 
@@ -94,63 +94,63 @@ class Address_v2Tests: XCTestCase {
             ]
         ))
     }
-    
+
     func testParseAddressWithStatus0_ItHasDisabledStatus() throws {
         let sut = try jsonDecoder.decode(Address_v2.self, from: .addressJSONData(status: 0))
-        
+
         XCTAssertEqual(sut.status, .disabled)
     }
-    
+
     func testParseAddressWithStatus1_ItHasEnabledStatus() throws {
         let sut = try jsonDecoder.decode(Address_v2.self, from: .addressJSONData(status: 1))
-        
+
         XCTAssertEqual(sut.status, .enabled)
     }
-    
+
     func testParseAddressWithStatus2_ItHasDeletingStatus() throws {
         let sut = try jsonDecoder.decode(Address_v2.self, from: .addressJSONData(status: 2))
-        
+
         XCTAssertEqual(sut.status, .deleting)
     }
-    
+
     func testParseAddressWithStatus3_ItThrowsDecodingError() throws {
         XCTAssertThrowsError(try jsonDecoder.decode(Address_v2.self, from: .addressJSONData(status: 3)))
     }
-    
+
     func testParseAddressWithType1_ItHasProtonDomainType() throws {
         let sut = try jsonDecoder.decode(Address_v2.self, from: .addressJSONData(type: 1))
-        
+
         XCTAssertEqual(sut.type, .protonDomain)
     }
-    
+
     func testParseAddressWithType2_ItHasProtonAliasType() throws {
         let sut = try jsonDecoder.decode(Address_v2.self, from: .addressJSONData(type: 2))
-        
+
         XCTAssertEqual(sut.type, .protonAlias)
     }
-    
+
     func testParseAddressWithType3_ItHasCustomDomainType() throws {
         let sut = try jsonDecoder.decode(Address_v2.self, from: .addressJSONData(type: 3))
-        
+
         XCTAssertEqual(sut.type, .customDomain)
     }
-    
+
     func testParseAddressWithType4_ItHasPremiumDomainType() throws {
         let sut = try jsonDecoder.decode(Address_v2.self, from: .addressJSONData(type: 4))
-        
+
         XCTAssertEqual(sut.type, .premiumDomain)
     }
-    
+
     func testParseAddressWithType5_ItHasExternalDomainType() throws {
         let sut = try jsonDecoder.decode(Address_v2.self, from: .addressJSONData(type: 5))
-        
+
         XCTAssertEqual(sut.type, .externalDomain)
     }
-    
+
     func testParseAddressWithType0_ItThrowsDecodingError() throws {
         XCTAssertThrowsError(try jsonDecoder.decode(Address_v2.self, from: .addressJSONData(type: 0)))
     }
-    
+
     func testParseAddressWithSend99_ItThrowsDecodingError() throws {
         XCTAssertThrowsError(try jsonDecoder.decode(Address_v2.self, from: .addressJSONData(send: 99))) { error in
             assertDecodingError(
@@ -160,7 +160,7 @@ class Address_v2Tests: XCTestCase {
             )
         }
     }
-    
+
     func testParseAddressWithReceive5_ItThrowsDecodingError() throws {
         XCTAssertThrowsError(try jsonDecoder.decode(Address_v2.self, from: .addressJSONData(receive: 5))) { error in
             assertDecodingError(
@@ -170,7 +170,7 @@ class Address_v2Tests: XCTestCase {
             )
         }
     }
-    
+
     func testKeyFlags() {
         XCTAssertTrue(KeyFlags.signupKeyFlags.rawValue == 3)
         XCTAssertTrue(KeyFlags.verifySignatures.rawValue == 1)
@@ -181,7 +181,7 @@ class Address_v2Tests: XCTestCase {
         XCTAssertTrue(KeyFlags.signupExternalKeyFlags.rawValue == 15)
         XCTAssertTrue(KeyFlags.all.rawValue == 15)
     }
-    
+
 }
 
 extension Collection {
@@ -193,7 +193,7 @@ extension Collection {
 }
 
 private extension Data {
-    
+
     static func addressJSONData(
         send: Int = 1,
         receive: Int = 1,
@@ -242,7 +242,7 @@ private extension Data {
                 "HasKeys" : 1
             }
         """
-        
+
         return json.data(using: .utf8)!
     }
 

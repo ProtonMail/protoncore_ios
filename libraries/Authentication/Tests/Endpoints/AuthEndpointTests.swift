@@ -31,23 +31,23 @@ import ProtonCoreNetworking
 import ProtonCoreFeatureSwitch
 
 class AuthEndpointTests: XCTestCase {
-    
+
     let headerExternal = "X-Accept-ExtAcc"
     let parametersUsername = "Username"
     let parametersEphemeral = "ClientEphemeral"
     let parametersProof = "ClientProof"
     let parametersSrp = "SRPSession"
     let parametersChallenge = "Payload"
-    
+
     let username = "username"
     let prefix = "core"
     let ephemeralData = "ephemeral".utf8!
     let proofData = "proof".utf8!
     let srpSession = "srpSession"
-    
+
     private let ephemeral = Data(capacity: 1)
     private let proof = Data(capacity: 1)
-    
+
     func testAuthEndpoint_request_header_internel_noChallenge() {
         withFeatureSwitches([]) {
             let authEndpoint = AuthService.AuthEndpoint(data: .left(.init(username: username,
@@ -67,7 +67,7 @@ class AuthEndpointTests: XCTestCase {
             XCTAssertEqual(authEndpoint.isAuth, false)
         }
     }
-    
+
     func testAuthEndpoint_request_header_external() {
         let authEndpoint = AuthService.AuthEndpoint(data: .left(.init(username: username,
                                                                       ephemeral: Data(),
@@ -77,7 +77,7 @@ class AuthEndpointTests: XCTestCase {
 
         XCTAssertEqual(authEndpoint.header[headerExternal] as? Bool, true)
     }
-    
+
     func testAuthEndpointAllFingerprint() {
         let allDict = try! JSONSerialization.jsonObject(with: FingerprintMocks.allFignerprints.utf8!,
                                                         options: []) as! [[String: Any]]
@@ -104,7 +104,7 @@ class AuthEndpointTests: XCTestCase {
         XCTAssertEqual(dict![parametersProof] as! String, proofData.base64EncodedString())
         XCTAssertEqual(dict![parametersSrp] as! String, srpSession)
     }
-    
+
     func testAuthEndpointDeviceFingerprint() {
         let deviceDict = try! JSONSerialization.jsonObject(with: FingerprintMocks.deviceFignerprints.utf8!,
                                                            options: []) as! [[String: Any]]
@@ -135,7 +135,7 @@ class AuthEndpointTests: XCTestCase {
     func test_endpoint_withoutSSOResponseToken() {
         // Given
         let sut = AuthService.AuthEndpoint(data: .left(.init(username: "username", ephemeral: ephemeral, proof: proof, srpSession: "srpSession", challenge: nil)))
-        
+
         // Then
         XCTAssertEqual(sut.parameters as? [String: String], [
             "Username": "username",
@@ -144,11 +144,11 @@ class AuthEndpointTests: XCTestCase {
             "SRPSession": "srpSession"]
         )
     }
-    
+
     func test_endpoint_withSSOResponseToken() {
         // Given
         let sut = AuthService.AuthEndpoint(data: .right(.init(ssoResponseToken: "ssoResponseToken")))
-        
+
         // Then
         XCTAssertEqual(sut.parameters as? [String: String], [
             "SSOResponseToken": "ssoResponseToken"]

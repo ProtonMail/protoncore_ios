@@ -25,11 +25,11 @@ import ProtonCoreCryptoGoInterface
 @available(*, deprecated, message: "please to use ProtonCore-Crypto module FileMobileWriter")
 class FileMobileWriter: NSObject, CryptoWriterProtocol {
     var file: FileHandle
-    
+
     init(file: FileHandle) {
         self.file = file
     }
-    
+
     func write(_ b: Data?, n: UnsafeMutablePointer<Int>?) throws {
         if b == nil {
             n?.pointee = 0

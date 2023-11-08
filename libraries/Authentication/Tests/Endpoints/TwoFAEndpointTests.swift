@@ -23,9 +23,9 @@ import XCTest
 @testable import ProtonCoreAuthentication
 
 class TwoFAEndpointTests: XCTestCase {
-    
+
     let parameters2FACodes = "TwoFactorCode"
-    
+
     func testPath() {
         let twoFAEndpoint = AuthService.TwoFAEndpoint(code: "code")
         XCTAssertEqual(twoFAEndpoint.method, .post)

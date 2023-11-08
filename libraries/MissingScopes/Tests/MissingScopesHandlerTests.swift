@@ -36,7 +36,7 @@ final class MissingScopesHandlerTests: XCTestCase {
     var apiService: APIServiceMock!
     var coordinator: MissingScopesCoordinatorMock!
     var responseHandlerData: PMResponseHandlerData!
-    
+
     override func setUp() {
         super.setUp()
         coordinator = MissingScopesCoordinatorMock()
@@ -56,15 +56,15 @@ final class MissingScopesHandlerTests: XCTestCase {
             missingScopesCoordinator: coordinator
         )
     }
-    
+
     // MARK: - onMissingScopesHandling
-    
+
     func test_onMissingScopesHandling_callsShowAskPassword() {
         // When
         sut.onMissingScopesHandling(
             username: "username",
             responseHandlerData: responseHandlerData) { _ in }
-        
+
         // Then
         XCTAssertTrue(coordinator.showAskPasswordCalled)
     }

@@ -33,13 +33,13 @@ import ProtonCoreServices
 @testable import ProtonCoreAPIClient
 
 class UserAPITests: XCTestCase {
-    
+
     var apiService: APIServiceMock!
 
     struct Response: Codable {
         public var code: Int
     }
-    
+
     override func setUp() {
         super.setUp()
         apiService = APIServiceMock()
@@ -84,7 +84,7 @@ class UserAPITests: XCTestCase {
                 completion(nil, .success([:]))
             }
         }
-        
+
         let expectation1 = self.expectation(description: "Success completion block called")
         let checkNameOk = UserAPI.Router.checkUsername("ok")
         apiService.perform(request: checkNameOk, response: ProtonCoreNetworking.Response()) { (task, response) in
@@ -92,7 +92,7 @@ class UserAPITests: XCTestCase {
             XCTAssert(response.error == nil)
             expectation1.fulfill()
         }
-        
+
         let expectation2 = self.expectation(description: "Success completion block called")
         let checkNameInvalidChar = UserAPI.Router.checkUsername("InvalidCharacters")
         apiService.perform(request: checkNameInvalidChar, response: ProtonCoreNetworking.Response()) { (task, response) in
@@ -101,7 +101,7 @@ class UserAPITests: XCTestCase {
             XCTAssert(response.error != nil)
             expectation2.fulfill()
         }
-        
+
         let expectation3 = self.expectation(description: "Success completion block called")
         let startSpecialCharacter = UserAPI.Router.checkUsername("StartSpecialCharacter")
         apiService.perform(request: startSpecialCharacter, response: ProtonCoreNetworking.Response()) { (task, response) in
@@ -110,7 +110,7 @@ class UserAPITests: XCTestCase {
             XCTAssert(response.error != nil)
             expectation3.fulfill()
         }
-        
+
         let expectation4 = self.expectation(description: "Success completion block called")
         let endSpecialCharacter = UserAPI.Router.checkUsername("EndSpecialCharacter")
         apiService.perform(request: endSpecialCharacter, response: ProtonCoreNetworking.Response()) { (task, response) in
@@ -128,7 +128,7 @@ class UserAPITests: XCTestCase {
             XCTAssert(response.error != nil)
             expectation5.fulfill()
         }
-        
+
         let expectation6 = self.expectation(description: "Success completion block called")
         let usernameAlreadyUsed = UserAPI.Router.checkUsername("UsernameAlreadyUsed")
         apiService.perform(request: usernameAlreadyUsed, response: ProtonCoreNetworking.Response()) { (task, response) in

@@ -17,9 +17,9 @@ import ProtonCoreTestingToolkit
 import ProtonCoreObfuscatedConstants
 
 class LoginBaseTestCase: ProtonCoreBaseTestCase {
-    
+
     let testData = TestData()
-    
+
     var doh: DoHInterface {
         if let customDomain = dynamicDomain.map({ "\($0)" }) {
             return CustomServerConfigDoH(
@@ -43,10 +43,10 @@ class LoginBaseTestCase: ProtonCoreBaseTestCase {
             )
         }
     }
-    
+
     let entryRobot = CoreExampleMainRobot()
     var appRobot: LoginSampleAppRobot!
-        
+
     override func setUp() {
         beforeSetUp(bundleIdentifier: "ch.protontech.core.ios.Example-Login-UITests")
         super.setUp()

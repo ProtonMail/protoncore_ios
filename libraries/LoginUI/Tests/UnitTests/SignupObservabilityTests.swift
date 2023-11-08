@@ -40,7 +40,7 @@ final class SignupObservabilityTests: XCTestCase {
     var sut: SignupViewController!
     var serviceMock: ObservabilityServiceMock!
     var loginServiceMock: LoginMock!
-    
+
     override func setUp() {
         super.setUp()
         setupMock()
@@ -55,15 +55,15 @@ final class SignupObservabilityTests: XCTestCase {
             challenge: .init()
         )
     }
-    
+
     private func setupMock() {
         serviceMock = ObservabilityServiceMock()
         loginServiceMock = LoginMock()
         ObservabilityEnv.current.observabilityService = serviceMock
     }
-    
+
     // MARK: - signupAccountType = .internal / minimumAccountType = .username
-    
+
     func test_onNextButtonTap_withSignupAccountTypeInternalAndUsernameAccountType_reportsSuccessful() {
         // Given
         sut.signupAccountType = .internal
@@ -73,14 +73,14 @@ final class SignupObservabilityTests: XCTestCase {
         loginServiceMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
             completion(.success(()))
         }
-        
+
         // When
         sut.onNextButtonTap(.init())
-        
+
         // Then
         XCTAssertTrue(serviceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
-    
+
     func test_onNextButtonTap_withSignupAccountTypeInternalAndUsernameAccountType_reportsGenericFailure() {
         // Given
         sut.signupAccountType = .internal
@@ -89,14 +89,14 @@ final class SignupObservabilityTests: XCTestCase {
         loginServiceMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(.generic(message: "", code: 0, originalError: AnyError())))
         }
-        
+
         // When
         sut.onNextButtonTap(.init())
-        
+
         // Then
         XCTAssertTrue(serviceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
-    
+
     func test_onNextButtonTap_withSignupAccountTypeInternalAndUsernameAccountType_reportsAPIFailure() {
         // Given
         sut.signupAccountType = .internal
@@ -105,13 +105,13 @@ final class SignupObservabilityTests: XCTestCase {
         loginServiceMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(.apiMightBeBlocked(message: "", originalError: AnyError())))
         }
-        
+
         // When
         sut.onNextButtonTap(.init())
-        
+
         // Then
         XCTAssertTrue(serviceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))    }
-    
+
     func test_onNextButtonTap_withSignupAccountTypeInternalAndUsernameAccountType_reportsNoErrorIfNotAvailable() {
         // Given
         sut.signupAccountType = .internal
@@ -120,15 +120,15 @@ final class SignupObservabilityTests: XCTestCase {
         loginServiceMock.checkAvailabilityForUsernameAccountStub.bodyIs { _, _, completion in
             completion(.failure(.notAvailable(message: "")))
         }
-        
+
         // When
         sut.onNextButtonTap(.init())
-        
+
         // Then
         XCTAssertTrue(serviceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))    }
-    
+
     // MARK: - signupAccountType = .internal / minimumAccountType = .internal
-    
+
     func test_onNextButtonTap_withSignupAccountTypeInternalAndInternalAccountType_reportsSuccessful() {
         // Given
         sut.signupAccountType = .internal
@@ -137,14 +137,14 @@ final class SignupObservabilityTests: XCTestCase {
         loginServiceMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
             completion(.success(()))
         }
-        
+
         // When
         sut.onNextButtonTap(.init())
-        
+
         // Then
         XCTAssertTrue(serviceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
-    
+
     func test_onNextButtonTap_withSignupAccountTypeInternalAndInternalAccountType_reportsGenericFailure() {
         // Given
         sut.signupAccountType = .internal
@@ -153,14 +153,14 @@ final class SignupObservabilityTests: XCTestCase {
         loginServiceMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(.generic(message: "", code: 0, originalError: AnyError())))
         }
-        
+
         // When
         sut.onNextButtonTap(.init())
-        
+
         // Then
         XCTAssertTrue(serviceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
-    
+
     func test_onNextButtonTap_withSignupAccountTypeInternalAndInternalAccountType_reportsAPIFailure() {
         // Given
         sut.signupAccountType = .internal
@@ -169,14 +169,14 @@ final class SignupObservabilityTests: XCTestCase {
         loginServiceMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(.apiMightBeBlocked(message: "", originalError: AnyError())))
         }
-        
+
         // When
         sut.onNextButtonTap(.init())
-        
+
         // Then
         XCTAssertTrue(serviceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
-    
+
     func test_onNextButtonTap_withSignupAccountTypeInternalAndInternalAccountType_reportsFailureIfNotAvailable() {
         // Given
         sut.signupAccountType = .internal
@@ -185,16 +185,16 @@ final class SignupObservabilityTests: XCTestCase {
         loginServiceMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(.notAvailable(message: "")))
         }
-        
+
         // When
         sut.onNextButtonTap(.init())
-        
+
         // Then
         XCTAssertTrue(serviceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
-    
+
     // MARK: - signupAccountType = .internal / minimumAccountType = .external
-    
+
     func test_onNextButtonTap_withSignupAccountTypeInternalAndExternaldAccountType_reportsSuccessful() {
         // Given
         sut.signupAccountType = .internal
@@ -203,14 +203,14 @@ final class SignupObservabilityTests: XCTestCase {
         loginServiceMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
             completion(.success(()))
         }
-        
+
         // When
         sut.onNextButtonTap(.init())
-        
+
         // Then
         XCTAssertTrue(serviceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
-    
+
     func test_onNextButtonTap_withSignupAccountTypeInternalAndExternaldAccountType_reportsGenericFailure() {
         // Given
         sut.signupAccountType = .internal
@@ -219,14 +219,14 @@ final class SignupObservabilityTests: XCTestCase {
         loginServiceMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(.generic(message: "", code: 0, originalError: AnyError())))
         }
-        
+
         // When
         sut.onNextButtonTap(.init())
-        
+
         // Then
         XCTAssertTrue(serviceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
-    
+
     func test_onNextButtonTap_withSignupAccountTypeInternalAndExternaldAccountType_reportsAPIFailure() {
         // Given
         sut.signupAccountType = .internal
@@ -235,14 +235,14 @@ final class SignupObservabilityTests: XCTestCase {
         loginServiceMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(.apiMightBeBlocked(message: "", originalError: AnyError())))
         }
-        
+
         // When
         sut.onNextButtonTap(.init())
-        
+
         // Then
         XCTAssertTrue(serviceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
-    
+
     func test_onNextButtonTap_withSignupAccountTypeInternalAndExternalAccountType_reportsFailureIfNotAvailable() {
         // Given
         sut.signupAccountType = .internal
@@ -251,16 +251,16 @@ final class SignupObservabilityTests: XCTestCase {
         loginServiceMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(.notAvailable(message: "")))
         }
-        
+
         // When
         sut.onNextButtonTap(.init())
-        
+
         // Then
         XCTAssertTrue(serviceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
-    
+
     // MARK: - signupAccountType = .external
-    
+
     func test_onNextButtonTap_withSignupAccountTypeExternal_reportsSuccessful() {
         // Given
         sut.signupAccountType = .external
@@ -268,14 +268,14 @@ final class SignupObservabilityTests: XCTestCase {
         loginServiceMock.checkAvailabilityForExternalAccountStub.bodyIs { _, _, completion in
             completion(.success(()))
         }
-        
+
         // When
         sut.onNextButtonTap(.init())
-        
+
         // Then
         XCTAssertTrue(serviceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
-    
+
     func test_onNextButtonTap_withSignupAccountTypeExternal_reportsGenericFailure() {
         // Given
         sut.signupAccountType = .external
@@ -283,14 +283,14 @@ final class SignupObservabilityTests: XCTestCase {
         loginServiceMock.checkAvailabilityForExternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(.generic(message: "", code: 0, originalError: AnyError())))
         }
-        
+
         // When
         sut.onNextButtonTap(.init())
-        
+
         // Then
         XCTAssertTrue(serviceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
-    
+
     func test_onNextButtonTap_withSignupAccountTypeExternal_reportsAPIFailure() {
         // Given
         sut.signupAccountType = .external
@@ -298,14 +298,14 @@ final class SignupObservabilityTests: XCTestCase {
         loginServiceMock.checkAvailabilityForExternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(.apiMightBeBlocked(message: "", originalError: AnyError())))
         }
-        
+
         // When
         sut.onNextButtonTap(.init())
-        
+
         // Then
         XCTAssertTrue(serviceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
-    
+
     func test_onNextButtonTap_withExternalAccountType_reportsFailureIfNotAvailable() {
         // Given
         sut.signupAccountType = .external
@@ -313,10 +313,10 @@ final class SignupObservabilityTests: XCTestCase {
         loginServiceMock.checkAvailabilityForExternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(.notAvailable(message: "")))
         }
-        
+
         // When
         sut.onNextButtonTap(.init())
-        
+
         // Then
         XCTAssertTrue(serviceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }

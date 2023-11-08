@@ -65,9 +65,9 @@ public let accountsAvailableForCreation: [(String?, String?, String, String, Str
 ]
 
 final class LoginCreatedUser {
-    
+
     static let defaultErrorCode = 42
-    
+
     let api: PMAPIService
     let authManager: AuthHelper
     let login: LoginService
@@ -77,7 +77,7 @@ final class LoginCreatedUser {
         self.authManager = authManager
         login = LoginService(api: api, clientApp: clientApp, minimumAccountType: .username)
     }
-    
+
     func login(account: CreatedAccountDetails, completion: @escaping (Result<Credential, LoginError>) -> Void) {
         let login = login
         func createCompletionBlock() -> (Result<LoginStatus, LoginError>) -> Void {

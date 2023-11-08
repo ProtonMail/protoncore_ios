@@ -26,7 +26,7 @@ import XCTest
 class NoneProtectionTests: XCTestCase {
     let keychain = KeychainWrapper(service: "ch.protonmail", accessGroup: "xxxxxxx.ch.protonmail.PMKeymaker")
     let mainKey = NoneProtection.generateRandomValue(length: 32)
-    
+
     override func setUp() {
         super.setUp()
         let ret = self.keychain.removeEverything()
@@ -35,12 +35,12 @@ class NoneProtectionTests: XCTestCase {
     func testStaticEnum() {
        XCTAssertTrue( NoneProtection.keychainLabel == "\(NoneProtection.self)")
     }
-    
+
     func testLockUnlock() throws {
         let noneProtechion = NoneProtection(keychain: keychain)
         XCTAssertNotNil(noneProtechion)
         try noneProtechion.lock(value: mainKey)
-        
+
         let byte = noneProtechion.getCypherBits()
         XCTAssertNotNil(byte)
         XCTAssertTrue(byte!.count == 32)

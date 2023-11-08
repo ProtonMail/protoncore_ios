@@ -111,7 +111,7 @@ class WelcomeScreenSnapshotTests: SnapshotTestCase {
         let body = "This is a test message for the welcome screen snapshot tests of the Pass screen variant"
         welcomeScreenSnapshotTests(variant: .pass(WelcomeScreenTexts(body: body)))
     }
-    
+
     func testMailWelcomeScreenEnforceLightTheme() {
         let body = "This is a test message for the welcome screen snapshot tests of the Mail screen variant"
         welcomeScreenSnapshotTests(variant: .mail(WelcomeScreenTexts(body: body)), inAppTheme: .light)
@@ -136,7 +136,7 @@ class WelcomeScreenSnapshotTests: SnapshotTestCase {
         let body = "This is a test message for the welcome screen snapshot tests of the Pass screen variant"
         welcomeScreenSnapshotTests(variant: .pass(WelcomeScreenTexts(body: body)), inAppTheme: .light)
     }
-    
+
     func testMailWelcomeScreenEnforceDarkTheme() {
         let body = "This is a test message for the welcome screen snapshot tests of the Mail screen variant"
         welcomeScreenSnapshotTests(variant: .mail(WelcomeScreenTexts(body: body)), inAppTheme: .dark)

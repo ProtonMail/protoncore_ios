@@ -24,9 +24,9 @@ import Foundation
 import ProtonCoreLogin
 
 public class SignupServiceMock: Signup {
-    
+
     public init() {}
-    
+
     public var requestValidationTokenResult: (Result<Void, SignupError>) = .success(())
     public var checkValidationTokenResult: (Result<Void, SignupError>) = .success(())
     public var createNewUsernameAccountResult: (Result<Void, SignupError>) = .success(())
@@ -34,31 +34,31 @@ public class SignupServiceMock: Signup {
     public var createNewInternalAccountResult: (Result<Void, SignupError>) = .success(())
     public var validEmailResult: (Result<Void, SignupError>) = .success(())
     public var validPhoneNumberResult: (Result<Void, SignupError>) = .success(())
-    
+
     public func requestValidationToken(email: String, completion: @escaping (Result<Void, SignupError>) -> Void) {
         completion(requestValidationTokenResult)
     }
-    
+
     public func checkValidationToken(email: String, token: String, completion: @escaping (Result<Void, SignupError>) -> Void) {
         completion(checkValidationTokenResult)
     }
-    
+
     public func createNewUsernameAccount(userName: String, password: String, email: String?, phoneNumber: String?, completion: @escaping (Result<(), SignupError>) -> Void) {
         completion(createNewUsernameAccountResult)
     }
-    
+
     public func createNewExternalAccount(email: String, password: String, verifyToken: String?, tokenType: String?, completion: @escaping (Result<(), SignupError>) -> Void) {
         completion(createNewExternalAccountResult)
     }
-    
+
     public func createNewInternalAccount(userName: String, password: String, email: String?, phoneNumber: String?, domain: String, completion: @escaping (Result<(), SignupError>) -> Void) {
         completion(createNewInternalAccountResult)
     }
-    
+
     public func validateEmailServerSide(email: String, completion: @escaping (Result<Void, SignupError>) -> Void) {
         completion(validEmailResult)
     }
-    
+
     public func validatePhoneNumberServerSide(number: String, completion: @escaping (Result<Void, SignupError>) -> Void) {
         completion(validPhoneNumberResult)
     }

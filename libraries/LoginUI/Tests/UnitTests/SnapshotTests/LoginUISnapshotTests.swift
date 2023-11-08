@@ -43,7 +43,7 @@ import SnapshotTesting
 class LoginUISnapshotTests: SnapshotTestCase {
 
     let defaultPrecision: Float = 0.98
-    
+
     func testSignInScreen_withNav() {
         withFeatureSwitches([]) {
             let controller = loginViewController(for: .username, clientApp: .vpn)
@@ -57,14 +57,14 @@ class LoginUISnapshotTests: SnapshotTestCase {
             checkSnapshots(controller: controller, device: .iPhone12, perceptualPrecision: defaultPrecision)
         }
     }
-    
+
     func testSignInScreenWithSSO_withNav_iPadMiniLandscape() {
         withFeatureSwitches([.ssoSignIn]) {
             let controller = loginViewController(for: .username, clientApp: .vpn)
             checkSnapshots(controller: controller, device: .iPadMini(.landscape), perceptualPrecision: defaultPrecision)
         }
     }
-    
+
     private func createHelpViewController(inAppTheme: InAppTheme = .default) -> UIViewController {
         let controller = UIStoryboard.instantiate(storyboardName: "PMLogin",
                                                   controllerType: HelpViewController.self,
@@ -92,17 +92,17 @@ class LoginUISnapshotTests: SnapshotTestCase {
         controller.viewModel = HelpViewModel(helpDecorator: getHelpDecorator)
         return controller
     }
-    
+
     func testHelpViewControllerScreen() {
         let controller = createHelpViewController()
         checkSnapshots(controller: controller, perceptualPrecision: defaultPrecision)
     }
-    
+
     func testHelpViewControllerScreenEnforcingLight() {
         let controller = createHelpViewController(inAppTheme: .light)
         checkSnapshots(controller: controller, perceptualPrecision: defaultPrecision)
     }
-    
+
     func testHelpViewControllerScreenEnforcingDark() {
         let controller = createHelpViewController(inAppTheme: .dark)
         checkSnapshots(controller: controller, perceptualPrecision: defaultPrecision)
@@ -115,7 +115,7 @@ class LoginUISnapshotTests: SnapshotTestCase {
         let apiService = APIServiceMock()
         apiService.dohInterfaceStub.fixture = Environment.black.doh
         apiService.challengeParametersProviderStub.fixture = .forAPIService(clientApp: clientApp, challenge: PMChallenge())
-        
+
         let customization: LoginCustomizationOptions
         if let inAppTheme {
             customization = .init(inAppTheme: { inAppTheme })
@@ -169,7 +169,7 @@ class LoginUISnapshotTests: SnapshotTestCase {
         let controller = signupViewController(for: .internal)
         checkSnapshots(controller: controller, perceptualPrecision: defaultPrecision)
     }
-    
+
     func loginViewController(for accountType: AccountType,
                              clientApp: ClientApp = .other(named: "test"),
                              inAppTheme: InAppTheme? = nil) -> UIViewController {
@@ -177,7 +177,7 @@ class LoginUISnapshotTests: SnapshotTestCase {
         apiService.authDelegateStub.fixture = nil
         apiService.dohInterfaceStub.fixture = Environment.black.doh
         apiService.challengeParametersProviderStub.fixture = .forAPIService(clientApp: clientApp, challenge: PMChallenge())
-        
+
         let customization: LoginCustomizationOptions
         if let inAppTheme {
             customization = .init(inAppTheme: { inAppTheme })
@@ -194,17 +194,17 @@ class LoginUISnapshotTests: SnapshotTestCase {
 
         return coordinator.start(.unmanaged)
     }
-    
+
     func testLoginScreenEnforcingLight() {
         let controller = loginViewController(for: .internal, inAppTheme: .light)
         checkSnapshots(controller: controller, perceptualPrecision: defaultPrecision)
     }
-    
+
     func testLoginScreenEnforcingDark() {
         let controller = loginViewController(for: .internal, inAppTheme: .dark)
         checkSnapshots(controller: controller, perceptualPrecision: defaultPrecision)
     }
-    
+
     func testLoginScreenMatchingSystemTheme() {
         let controller = loginViewController(for: .internal, inAppTheme: .matchSystem)
         checkSnapshots(controller: controller, perceptualPrecision: defaultPrecision)

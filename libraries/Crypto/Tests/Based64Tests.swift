@@ -24,14 +24,14 @@ import ProtonCoreCryptoGoInterface
 import ProtonCoreCrypto
 
 class Based64Tests: CryptoTestBase {
-    
+
     func testEncodeString() {
         let check = "jlksdjfkljasdflkjlsdf"
         let encoded = Based64.encode(value: check)
         let decoded = Based64.decode(based64: encoded)
         XCTAssertEqual(String(data: decoded, encoding: .utf8), check)
     }
-    
+
     func testEncodeData() {
         let check = self.random(length: 32)
         let encoded = Based64.encode(raw: check)

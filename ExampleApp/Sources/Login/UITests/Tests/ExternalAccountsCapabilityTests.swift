@@ -27,13 +27,13 @@ import ProtonCoreTestingToolkit
 #endif
 
 final class ExternalAccountsCapabilityTests: LoginBaseTestCase {
-    
+
     let mainRobot = LoginSampleAppRobot()
-    
+
     // sign in capability test helpers
     let commonSigninTests = SigninExternalAccountsCapability()
     let commonSignupTests = SignupExternalAccountsCapability()
-    
+
     override func setUp() {
         super.setUp()
         mainRobot
@@ -257,7 +257,7 @@ final class ExternalAccountsCapabilityTests: LoginBaseTestCase {
     }
 
     // MARK: - Helpers
-    
+
     private func createAccountForTest(accountToBeCreated: AccountAvailableForCreation, at function: String = #function) -> Bool {
         let expectQuarkCommandToFinish = expectation(description: "Quark command should finish")
         var quarkCommandResult: Result<CreatedAccountDetails, CreateAccountError>?
@@ -292,5 +292,5 @@ final class ExternalAccountsCapabilityTests: LoginBaseTestCase {
         let randomUsername = randomName
         return (.freeNoAddressNoKeys(username: randomUsername, password: randomPassword), randomUsername, randomPassword)
     }
-    
+
 }

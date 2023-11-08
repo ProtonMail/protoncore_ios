@@ -71,7 +71,7 @@ extension AccountRecoveryView {
 
             Task { @MainActor in
                 do {
-                    let info = try await accountRepository.fetchRecoveryState() 
+                    let info = try await accountRepository.fetchRecoveryState()
                     populateWithAccountRecoveryInfo(info)
                 } catch {
                     isLoaded = false

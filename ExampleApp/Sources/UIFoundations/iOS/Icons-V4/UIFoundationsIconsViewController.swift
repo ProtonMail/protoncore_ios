@@ -24,15 +24,15 @@ import UIKit
 import ProtonCoreUIFoundations
 
 final class UIFoundationsIconsViewController: UIFoundationsAppearanceStyleViewController {
-    
+
     private let layout = UICollectionViewFlowLayout()
     private var collectionView: UICollectionView!
-    
+
     override func loadView() {
         collectionView = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
         view = collectionView
     }
-    
+
     override func viewDidLoad() {
         title = "Icons"
         view.backgroundColor = ColorProvider.BackgroundNorm
@@ -47,7 +47,7 @@ final class UIFoundationsIconsViewController: UIFoundationsAppearanceStyleViewCo
         collectionView.dataSource = self
         collectionView.reloadData()
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         layout.itemSize = CGSize(width: collectionView.bounds.width - 128, height: 120)
@@ -55,12 +55,12 @@ final class UIFoundationsIconsViewController: UIFoundationsAppearanceStyleViewCo
         layout.minimumLineSpacing = 32
         collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
     }
-    
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         collectionView.reloadData()
     }
-    
+
     let data: [(String, [(UIImage, String)])] = [
         ("Icons", [
             (IconProvider.arrowLeft, "arrowLeft"),
@@ -93,19 +93,19 @@ final class UIFoundationsIconsViewController: UIFoundationsAppearanceStyleViewCo
 }
 
 extension UIFoundationsIconsViewController: UICollectionViewDelegateFlowLayout {
-    
+
 }
 
 extension UIFoundationsIconsViewController: UICollectionViewDataSource {
-    
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         data.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         data[section].1.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "UIFoundationsIconsViewController.icon", for: indexPath
@@ -115,7 +115,7 @@ extension UIFoundationsIconsViewController: UICollectionViewDataSource {
         iconCell.text = "\(data[indexPath.section].1[indexPath.row].1)"
         return iconCell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
@@ -126,27 +126,27 @@ extension UIFoundationsIconsViewController: UICollectionViewDataSource {
         label.text = data[indexPath.section].0
         return label
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         CGSize(width: collectionView.bounds.size.width, height: 50.0)
     }
 }
 
 final class IconCollectionViewCell: UICollectionViewCell {
-    
+
     private let image = UIImageView()
     private let label = UILabel()
-    
+
     var text: String? {
         get { label.text }
         set { label.text = newValue }
     }
-    
+
     var icon: UIImage? {
         get { image.image }
         set { image.image = newValue }
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: .zero)
         backgroundColor = ColorProvider.BackgroundNorm
@@ -163,7 +163,7 @@ final class IconCollectionViewCell: UICollectionViewCell {
         label.backgroundColor = ColorProvider.BackgroundNorm
         label.font = UIFont.preferredFont(forTextStyle: .caption1)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

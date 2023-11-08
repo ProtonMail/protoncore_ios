@@ -38,17 +38,17 @@ class NetworkingViewModel: ObservableObject {
         TrustKitWrapper.start(delegate: self)
         setupEnv()
     }
-    
+
     var env = ["Black env.", "Dalton env.", "Lysenko", "Prod env."]
     var selectedIndex: Int = 0 { didSet { setupEnv() } }
     @Published var showingLoginError = false
-    
+
     private func setupEnv() {
         testApi = PMAPIService.createAPIService(doh: currentEnv, sessionUID: "testSessionUID")
         testApi.authDelegate = self
         testApi.serviceDelegate = self
     }
-    
+
     private var currentEnv: DoHInterface {
         switch selectedIndex {
         case 0: return BlackDoHMail.default
@@ -61,11 +61,11 @@ class NetworkingViewModel: ObservableObject {
 
     private var forceUpgradeServiceDelegate: APIServiceDelegate?
     private var forceUpgradeDelegate: ForceUpgradeDelegate?
-    
+
     func humanVerificationAuthAction(userName: String, password: String) {
         humanVerification(userName: userName, password: password)
     }
-    
+
     func humanVerificationUnauthAction() {
         humanVerification()
     }
@@ -73,7 +73,7 @@ class NetworkingViewModel: ObservableObject {
     func forceUpgradeAction() {
         forceUpgrade()
     }
-    
+
     private func forceUpgrade() {
         forceUpgradeServiceDelegate = {
             class TestDelegate: APIServiceDelegate {
@@ -86,21 +86,21 @@ class NetworkingViewModel: ObservableObject {
             }
             return TestDelegate()
         }()
-        
+
         testApi.serviceDelegate = forceUpgradeServiceDelegate
-        
+
         // set the human verification delegation
         let url = URL(string: "itms-apps://itunes.apple.com/app/id979659905")!
         forceUpgradeDelegate = ForceUpgradeHelper(config: .mobile(url), responseDelegate: self)
         testApi.forceUpgradeDelegate = forceUpgradeDelegate
-        
+
         // TODO: update to a PMAuthentication version that depends on PMNetworking
         let authApi: Authenticator = Authenticator(api: testApi)
         authApi.authenticate(username: "test", password: "test") { result in
             print(result)
         }
     }
-    
+
     private func humanVerification(userName: String, password: String) {
         setupHumanVerification()
         let authApi: Authenticator = Authenticator(api: testApi)
@@ -136,12 +136,12 @@ class NetworkingViewModel: ObservableObject {
             PMLog.info(result)
         }
     }
-    
+
     private func humanVerification() {
         setupHumanVerification()
         processHumanVerifyTest()
     }
-    
+
     private func setupHumanVerification() {
         testAuthCredential = nil
         currentEnv.status = .off
@@ -196,9 +196,9 @@ extension NetworkingViewModel: AuthDelegate {
 }
 
 extension NetworkingViewModel: APIServiceDelegate {
-    
+
     var additionalHeaders: [String: String]? { nil }
-    
+
     var userAgent: String? { "" }
 
     func isReachable() -> Bool { true }

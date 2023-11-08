@@ -35,7 +35,7 @@ import ProtonCoreDataModel
 @testable import ProtonCoreAuthentication
 
 class AuthenticatorMockTests: XCTestCase {
-    
+
     var authenticatorMock: AuthenticatorMock!
 
     let testCredential = Credential(UID: "testUID", accessToken: "testAccessToken", refreshToken: "testRefreshToken", userName: "testUserName", userID: "testUserID", scopes: ["testScope"])
@@ -64,12 +64,12 @@ class AuthenticatorMockTests: XCTestCase {
         super.setUp()
         authenticatorMock = AuthenticatorMock()
     }
-    
+
     func testAuthSuccess() {
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
         }
-        
+
         let expect = expectation(description: "AuthInfo + Auth")
         authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, intent: nil, srpAuth: nil) { result in
             switch result {
@@ -85,13 +85,13 @@ class AuthenticatorMockTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testAuthNetworkingError() {
         let testResponseError = ResponseError(httpCode: 123, responseCode: 567, userFacingMessage: "testError", underlyingError: nil)
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, _, completion in
             completion(.failure(AuthErrors.networkingError(testResponseError)))
         }
-        
+
         let expect = expectation(description: "AuthInfo + Auth")
         authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, intent: nil, srpAuth: nil) { result in
             switch result {
@@ -106,7 +106,7 @@ class AuthenticatorMockTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testAuthUnauth() {
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
@@ -114,14 +114,14 @@ class AuthenticatorMockTests: XCTestCase {
         authenticatorMock.closeSessionStub.bodyIs { _, _, completion in
             completion(.success(AuthService.EndSessionResponse(code: 1000)))
         }
-        
+
         let expect = expectation(description: "AuthInfo + Auth + Logout")
         authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, intent: nil, srpAuth: nil) { result in
             switch result {
             case .failure:
                 XCTFail("Auth flow failed")
                 expect.fulfill()
-            case .success(let stage): 
+            case .success(let stage):
                 guard case Authenticator.Status.newCredential(let credential, let passwordMode) = stage else {
                     XCTFail("No credential in auth flow")
                     return expect.fulfill()
@@ -144,7 +144,7 @@ class AuthenticatorMockTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testAuthUnauthNetworkingError() {
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
@@ -153,14 +153,14 @@ class AuthenticatorMockTests: XCTestCase {
         authenticatorMock.closeSessionStub.bodyIs { _, _, completion in
             completion(.failure(AuthErrors.networkingError(testResponseError)))
         }
-        
+
         let expect = expectation(description: "AuthInfo + Auth + Logout")
         authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, intent: nil, srpAuth: nil) { result in
             switch result {
             case .failure:
                 XCTFail("Auth flow failed")
                 expect.fulfill()
-            case .success(let stage): 
+            case .success(let stage):
                 guard case Authenticator.Status.newCredential(let credential, let passwordMode) = stage else {
                     XCTFail("No credential in auth flow")
                     return expect.fulfill()
@@ -196,7 +196,7 @@ class AuthenticatorMockTests: XCTestCase {
             switch result {
             case .success(let status):
                 switch status {
-                case .updatedCredential, .newCredential: 
+                case .updatedCredential, .newCredential:
                     XCTFail()
                     expect.fulfill()
                 case let .ask2FA(context):
@@ -228,7 +228,7 @@ class AuthenticatorMockTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testAuthRefresh() {
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
@@ -266,7 +266,7 @@ class AuthenticatorMockTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testAuthRefreshNetworkingError() {
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
@@ -302,7 +302,7 @@ class AuthenticatorMockTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testUserInfo() {
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
@@ -310,7 +310,7 @@ class AuthenticatorMockTests: XCTestCase {
         authenticatorMock.getUserInfoStub.bodyIs { _, _, completion in
             completion(.success(self.testUser))
         }
-        
+
         let expect = expectation(description: "AuthInfo + Auth + UserInfo")
         authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, intent: nil, srpAuth: nil) { result in
             switch result {
@@ -326,7 +326,7 @@ class AuthenticatorMockTests: XCTestCase {
                     case .success(let userInfo):
                         XCTAssertEqual(userInfo.email, self.testUser.email)
                     }
-                    
+
                     expect.fulfill()
                 }
             case .failure:
@@ -338,7 +338,7 @@ class AuthenticatorMockTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testUserInfoNetworkingError() {
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
@@ -347,7 +347,7 @@ class AuthenticatorMockTests: XCTestCase {
         authenticatorMock.getUserInfoStub.bodyIs { _, _, completion in
             completion(.failure(AuthErrors.networkingError(testResponseError)))
         }
-        
+
         let expect = expectation(description: "AuthInfo + Auth + UserInfo")
         authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, intent: nil, srpAuth: nil) { result in
             switch result {
@@ -363,7 +363,7 @@ class AuthenticatorMockTests: XCTestCase {
                     default:
                         XCTFail("GetUserInfo failed")
                     }
-                    
+
                     expect.fulfill()
                 }
             case .failure:
@@ -375,7 +375,7 @@ class AuthenticatorMockTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testUserInfoAndAddressForExternalAccount() {
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
@@ -386,7 +386,7 @@ class AuthenticatorMockTests: XCTestCase {
         authenticatorMock.getAddressesStub.bodyIs { _, _, completion in
             completion(.success([self.testExternalAddress]))
         }
-        
+
         let expect = expectation(description: "AuthInfo + Auth + Addresses")
         authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, intent: nil, srpAuth: nil) { result in
             switch result {
@@ -422,7 +422,7 @@ class AuthenticatorMockTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testUserInfoAndAddressForExternalAccountNetworkingError() {
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
@@ -434,7 +434,7 @@ class AuthenticatorMockTests: XCTestCase {
         authenticatorMock.getAddressesStub.bodyIs { _, _, completion in
             completion(.failure(AuthErrors.networkingError(testResponseError)))
         }
-        
+
         let expect = expectation(description: "AuthInfo + Auth + Addresses")
         authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, intent: nil, srpAuth: nil) { result in
             switch result {
@@ -470,7 +470,7 @@ class AuthenticatorMockTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testAddresses() {
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
@@ -478,7 +478,7 @@ class AuthenticatorMockTests: XCTestCase {
         authenticatorMock.getAddressesStub.bodyIs { _, _, completion in
             completion(.success([self.testExternalAddress]))
         }
-        
+
         let expect = expectation(description: "AuthInfo + Auth + Addresses")
         authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, intent: nil, srpAuth: nil) { result in
             switch result {
@@ -497,7 +497,7 @@ class AuthenticatorMockTests: XCTestCase {
                     }
                     expect.fulfill()
                 }
-                
+
             case .failure:
                 XCTFail("Auth flow failed")
                 expect.fulfill()
@@ -507,7 +507,7 @@ class AuthenticatorMockTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testAddressesNetworkingError() {
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
@@ -516,7 +516,7 @@ class AuthenticatorMockTests: XCTestCase {
         authenticatorMock.getAddressesStub.bodyIs { _, _, completion in
             completion(.failure(AuthErrors.networkingError(testResponseError)))
         }
-        
+
         let expect = expectation(description: "AuthInfo + Auth + Addresses")
         authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, intent: nil, srpAuth: nil) { result in
             switch result {
@@ -534,7 +534,7 @@ class AuthenticatorMockTests: XCTestCase {
                     }
                     expect.fulfill()
                 }
-                
+
             case .failure:
                 XCTFail("Auth flow failed")
                 expect.fulfill()
@@ -544,7 +544,7 @@ class AuthenticatorMockTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testKeySalts() {
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
@@ -553,7 +553,7 @@ class AuthenticatorMockTests: XCTestCase {
             let keySalt = KeySalt(ID: "123", keySalt: "KeySalt")
             completion(.success([keySalt]))
         }
-        
+
         let expect = expectation(description: "AuthInfo + Auth + KeySalts")
         authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, intent: nil, srpAuth: nil) { result in
             switch result {
@@ -569,7 +569,7 @@ class AuthenticatorMockTests: XCTestCase {
                     case .success(let salts):
                         XCTAssertFalse(salts.isEmpty)
                     }
-                    
+
                     expect.fulfill()
                 }
             case .failure:
@@ -581,7 +581,7 @@ class AuthenticatorMockTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testKeySaltsNetworkingError() {
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
@@ -590,7 +590,7 @@ class AuthenticatorMockTests: XCTestCase {
         authenticatorMock.getKeySaltsStub.bodyIs { _, _, completion in
             completion(.failure(AuthErrors.networkingError(testResponseError)))
         }
-        
+
         let expect = expectation(description: "AuthInfo + Auth + KeySalts")
         authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, intent: nil, srpAuth: nil) { result in
             switch result {
@@ -606,7 +606,7 @@ class AuthenticatorMockTests: XCTestCase {
                     default:
                         XCTFail("GetKeySalts failed")
                     }
-                    
+
                     expect.fulfill()
                 }
             case .failure:
@@ -618,7 +618,7 @@ class AuthenticatorMockTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testUsernameUnavailable() {
         authenticatorMock.checkAvailableUsernameWithoutSpecifyingDomainStub.bodyIs { _, _, completion in
             completion(.failure(AuthErrors.networkingError(ResponseError(httpCode: nil, responseCode: 2500, userFacingMessage: nil, underlyingError: nil))))
@@ -638,13 +638,13 @@ class AuthenticatorMockTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testUsernameAvailable() {
         authenticatorMock.checkAvailableUsernameWithoutSpecifyingDomainStub.bodyIs { _, username, completion in
             XCTAssertEqual(username, "userName")
             completion(.success(()))
         }
-        
+
         let expect = expectation(description: "UserAvailable")
         authenticatorMock.checkAvailableUsernameWithoutSpecifyingDomain("userName") { result in
             switch result {
@@ -659,7 +659,7 @@ class AuthenticatorMockTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testInternalUnavailable() {
         authenticatorMock.checkAvailableUsernameWithinDomainStub.bodyIs { _, _, _, completion in
             completion(.failure(AuthErrors.networkingError(ResponseError(httpCode: nil, responseCode: 2500, userFacingMessage: nil, underlyingError: nil))))
@@ -679,14 +679,14 @@ class AuthenticatorMockTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testInternalAvailable() {
         authenticatorMock.checkAvailableUsernameWithinDomainStub.bodyIs { _, username, domain, completion in
             XCTAssertEqual(username, "userName")
             XCTAssertEqual(domain, "proton.tests")
             completion(.success(()))
         }
-        
+
         let expect = expectation(description: "UserAvailable")
         authenticatorMock.checkAvailableUsernameWithinDomain("userName", domain: "proton.tests") { result in
             switch result {
@@ -701,7 +701,7 @@ class AuthenticatorMockTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testGettingRandomModulus() {
         authenticatorMock.getRandomSRPModulusStub.bodyIs { _, completion in
             let modulusEndpointResponse = AuthService.ModulusEndpointResponse(modulus: "test", modulusID: "test")
@@ -719,12 +719,12 @@ class AuthenticatorMockTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testGettingRandomModulusNetworkingError() {
         let testResponseError = ResponseError(httpCode: 123, responseCode: 567, userFacingMessage: "testError", underlyingError: nil)
         authenticatorMock.getRandomSRPModulusStub.bodyIs { _, completion in
@@ -741,7 +741,7 @@ class AuthenticatorMockTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }

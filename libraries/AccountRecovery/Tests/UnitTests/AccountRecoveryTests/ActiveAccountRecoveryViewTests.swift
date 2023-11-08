@@ -53,5 +53,5 @@ final class ActiveAccountRecoveryViewTests: XCTestCase {
         XCTAssertEqual("password-reset-period-start", try foundImage.name())
         XCTAssert(type(of: try foundButton.buttonStyle()) == SolidButton.self)
     }
-  
+
 }

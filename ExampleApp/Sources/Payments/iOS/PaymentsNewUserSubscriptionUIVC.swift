@@ -36,7 +36,7 @@ import ProtonCoreChallenge
 import ProtonCoreFeatureFlags
 
 class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleView {
-    
+
     // MARK: - Outlets
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -48,26 +48,26 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
     @IBOutlet weak var modalVCSwitch: UISwitch!
     @IBOutlet weak var showCurrentPlanButton: ProtonButton!
     @IBOutlet weak var showUpdatePlansButton: ProtonButton!
-    
+
     // MARK: - Payment credentials
     private var payments: Payments?
     private var userCachedStatus: UserCachedStatus!
-    
+
     // MARK: - Properties
     var currentEnv: Environment!
 
     var inAppPurchases: ListOfIAPIdentifiers!
     var serviceDelegate: APIServiceDelegate!
-    
+
     var testPicker: PaymentsTestUserPickerData?
-    
+
     private var paymentsUI: PaymentsUI?
-    
+
     // MARK: - Auth properties
     private var testApi: PMAPIService!
     private var authHelper: AuthHelper?
     private var userInfo: User?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         testApi = PMAPIService.createAPIService(environment: currentEnv,
@@ -83,11 +83,11 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
         }
         generateAccessibilityIdentifiers()
     }
-    
+
     @IBAction func onLoginButtonTap(_ sender: Any) {
         login()
     }
-    
+
     @IBAction func onShowCurrentPlanButtonTap(_ sender: Any) {
         showCurrentPlanButton.isSelected = true
         configurePayments { [weak self] in
@@ -121,7 +121,7 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
 
         }
     }
-    
+
     @IBAction func onShowUpdatePlansButtonTap(_ sender: Any) {
         showUpdatePlansButton.isSelected = true
         configurePayments { [weak self] in
@@ -153,21 +153,21 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
             })
         }
     }
-    
+
     @IBAction func tapAction(_ sender: UITapGestureRecognizer) {
         dismissKeyboard()
     }
-    
+
     private func adjustNavigationController() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
     }
-    
+
     private func restoreNavigationController() {
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
     }
-    
+
     private func reportBugAlertHandler(_ receipt: String?) {
         guard let alertWindow = self.alertWindow else { return }
         DispatchQueue.main.async {
@@ -176,7 +176,7 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
             alertWindow.rootViewController?.present(alert, animated: true, completion: nil)
         }
     }
-    
+
     private func login() {
         dismissKeyboard()
         loginStatusLabel.text = "Login status:"
@@ -259,7 +259,7 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
             completion()
         }
     }
-    
+
     private func setupPayments(completion: @escaping (Error?) -> Void) {
         userCachedStatus = UserCachedStatus()
         let payments = Payments(
@@ -281,14 +281,14 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
             completion(nil)
         }
     }
-    
+
     private func cleanupStoreKit() {
         paymentsUI = nil
         payments?.storeKitManager.unsubscribeFromPaymentQueue()
         payments?.storeKitManager.delegate = nil
         payments = nil
     }
-    
+
     private func dismissKeyboard() {
         _ = usernameTextField.resignFirstResponder()
         _ = passwordTextField.resignFirstResponder()
@@ -296,42 +296,42 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
 }
 
 extension PaymentsNewUserSubscriptionUIVC: StoreKitManagerDelegate {
-    
+
     var tokenStorage: PaymentTokenStorage? {
         return TokenStorage.default
     }
-    
+
     var isUnlocked: Bool {
         return true
     }
-    
+
     var isSignedIn: Bool {
         return true
     }
-    
+
     var activeUsername: String? {
         return usernameTextField.text
     }
-    
+
     var userId: String? {
         return userInfo?.ID
     }
 }
 
 extension PaymentsNewUserSubscriptionUIVC {
-    
+
     class TokenStorage: PaymentTokenStorage {
         public static var `default` = TokenStorage()
         var token: PaymentToken?
-        
+
         func add(_ token: PaymentToken) {
             self.token = token
         }
-        
+
         func get() -> PaymentToken? {
             return token
         }
-        
+
         func clear() {
             self.token = nil
         }

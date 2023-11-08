@@ -34,7 +34,7 @@ import ProtonCoreTestingToolkit
 
 final class AvailablePlansPresentationTests: XCTestCase {
     var sut: AvailablePlansPresentation!
-    
+
     func test_createAvailablePlans_success() async throws {
         // Given
         let storeKitManager = StoreKitManagerMock()
@@ -42,7 +42,7 @@ final class AvailablePlansPresentationTests: XCTestCase {
             (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs"))
         }
         let plansDataSource = PlansDataSourceMock()
-        
+
         let instance = AvailablePlans.AvailablePlan.Instance(
             cycle: 1,
             description: "description",
@@ -50,7 +50,7 @@ final class AvailablePlansPresentationTests: XCTestCase {
             price: [.init(ID: "id", current: 19176, currency: "USD")],
             vendors: .init(apple: .init(productID: "ioscore_core2023_testpromo_12_usd_non_renewing"))
         )
-        
+
         let plan = AvailablePlans.AvailablePlan(
             ID: "ID",
             type: 1,
@@ -70,7 +70,7 @@ final class AvailablePlansPresentationTests: XCTestCase {
             plansDataSource: plansDataSource,
             storeKitManager: storeKitManager
         )
-        
+
         // Then
         XCTAssertFalse(sut.details.isFreePlan)
         XCTAssertEqual(sut.details.defaultCycle, 12)
@@ -82,7 +82,7 @@ final class AvailablePlansPresentationTests: XCTestCase {
         XCTAssertFalse(sut.isCurrentlyProcessed)
         XCTAssertFalse(sut.isExpanded)
     }
-    
+
     func test_createAvailablePlans_failure() async throws {
         // Given
         let instance = AvailablePlans.AvailablePlan.Instance(
@@ -92,7 +92,7 @@ final class AvailablePlansPresentationTests: XCTestCase {
             price: [.init(ID: "id", current: 19176, currency: "USD")],
             vendors: .init(apple: .init(productID: "bad id"))
         )
-        
+
         let plan = AvailablePlans.AvailablePlan(
             ID: "ID",
             type: nil,
@@ -103,7 +103,7 @@ final class AvailablePlansPresentationTests: XCTestCase {
             entitlements: [],
             decorations: []
         )
-        
+
         // When
         sut = try await AvailablePlansPresentation.createAvailablePlans(
             from: plan,
@@ -111,11 +111,11 @@ final class AvailablePlansPresentationTests: XCTestCase {
             plansDataSource: PlansDataSourceMock(),
             storeKitManager: StoreKitManagerMock()
         )
-        
+
         // Then
         XCTAssertNil(sut)
     }
-    
+
     func test_createFreePlan() async throws {
         // Given
         let storeKitManager = StoreKitManagerMock()
@@ -123,7 +123,7 @@ final class AvailablePlansPresentationTests: XCTestCase {
             (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs"))
         }
         let plansDataSource = PlansDataSourceMock()
-        
+
         let instance = AvailablePlans.AvailablePlan.Instance(
             cycle: 1,
             description: "description",
@@ -131,7 +131,7 @@ final class AvailablePlansPresentationTests: XCTestCase {
             price: [.init(ID: "id", current: 19176, currency: "USD")],
             vendors: .init(apple: .init(productID: "ioscore_core2023_testpromo_12_usd_non_renewing"))
         )
-        
+
         let plan = AvailablePlans.AvailablePlan(
             ID: "ID",
             type: nil,
@@ -151,7 +151,7 @@ final class AvailablePlansPresentationTests: XCTestCase {
             plansDataSource: plansDataSource,
             storeKitManager: storeKitManager
         )
-        
+
         // Then
         XCTAssertTrue(sut.details.isFreePlan)
     }

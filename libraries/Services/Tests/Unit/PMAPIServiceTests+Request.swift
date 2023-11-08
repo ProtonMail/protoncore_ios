@@ -72,9 +72,9 @@ func optionalContinuation(
 
 @available(iOS 13.0.0, *)
 final class PMAPIServiceRequestTests: XCTestCase {
-    
+
     let numberOfRequests: UInt = 50
-    
+
     var dohMock: DohMock! = nil
     var sessionUID: String! = nil
     var cacheToClearMock: URLCacheMock! = nil
@@ -92,7 +92,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
                                       trustKitProvider: trustKitProviderMock,
                                       challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
     }
-    
+
     override func setUp() {
         super.setUp()
         let mock = DohMock()
@@ -113,9 +113,9 @@ final class PMAPIServiceRequestTests: XCTestCase {
         apiServiceDelegateMock = APIServiceDelegateMock()
         authDelegateMock = AuthDelegateMock()
     }
-    
+
     // MARK: - Error propagation
-    
+
     func testRequestWithJSONPassesServerErrorCodeInsteadOfHttpCode() async throws {
         let service = testService
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
@@ -135,7 +135,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         let error = try XCTUnwrap(result.error)
         XCTAssertEqual(error.code, 2222)
     }
-    
+
     func testRequestWithJSONPassesHttpErrorCode() async throws {
         let service = testService
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
@@ -155,7 +155,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         let error = try XCTUnwrap(result.error)
         XCTAssertEqual(error.code, 404)
     }
-    
+
     func testRequestWithJSONReturnsResponseDictionaryInError() async throws {
         let originalResponseDict: [String: Any] = ["Code": 4242, "string": "test string", "number": 24]
         let service = testService
@@ -179,9 +179,9 @@ final class PMAPIServiceRequestTests: XCTestCase {
         let responseDictionary = try XCTUnwrap(error.responseDictionary)
         XCTAssertTrue((responseDictionary as NSDictionary).isEqual(to: originalResponseDict))
     }
-    
+
     // MARK: - Deprecated API
-    
+
     @available(*, deprecated, message: "testing deprecated api")
     func testDeprecatedRequestMethods_Variant1() async throws {
         let service = testService
@@ -198,7 +198,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertTrue(try XCTUnwrap(result.response).isEmpty)
         XCTAssertNil(result.error)
     }
-    
+
     @available(*, deprecated, message: "testing deprecated api")
     func testDeprecatedRequestMethods_Variant2() async throws {
         let service = testService
@@ -236,9 +236,9 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertEqual(try result.response?.serializedToData(), try ["Code": 1000].serializedToData())
         XCTAssertNil(result.error)
     }
-    
+
     // MARK: - Part 1 — logic before network operation
-    
+
     /*
      
      What to test:
@@ -247,7 +247,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
      [+] if customAuthCredential, request is created with access token from customAuthCredential
      
     */
-    
+
     private func noFetchingHappensWhenCustomAuthCredentials(authenticated: Bool) async throws {
         // GIVEN
         let service = testService
@@ -502,9 +502,9 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertTrue(sessionMock.requestJSONStub.wasNotCalled)
         XCTAssertEqual(result.error, TestError.testError as NSError)
     }
-    
+
     // MARK: - Part 2 — logic after network operation, around DoH
-    
+
     /*
      
      What to test:
@@ -517,7 +517,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
      [+] if handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded returns no shouldRetry and error is DoH, delegate is notified
      
     */
-    
+
     func testOperationFailsIfNetworkOperationThrows() async throws {
         // GIVEN
         let service = testService
@@ -544,7 +544,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertEqual(result.error, TestError.testError as NSError)
     }
-    
+
     func testServerTimeIsUpdatedAccordingToResponse() async throws {
         // GIVEN
         let service = testService
@@ -571,7 +571,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertTrue(apiServiceDelegateMock.onUpdateStub.wasCalledExactlyOnce)
         XCTAssertEqual(apiServiceDelegateMock.onUpdateStub.lastArguments?.value, date)
     }
-    
+
     func testTLSErrorIsPassedToDoHIfFailsTLS() async throws {
         // GIVEN
         let service = testService
@@ -596,7 +596,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         let error = try XCTUnwrap(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.capturedArguments.last?.a5)
         XCTAssertEqual(error.localizedDescription, "test TLS error description")
     }
-    
+
 func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded() async throws {
         // GIVEN
         let service = testService
@@ -725,7 +725,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         XCTAssertIdentical(createdTask, completedTask)
         XCTAssertIdentical(task, completedTask)
     }
-    
+
     func testAPIMightBeBlockedIsReturnedIfNoRetryAndDoHError() async throws {
         // GIVEN
         let service = testService
@@ -755,7 +755,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         XCTAssertTrue(sessionMock.requestJSONStub.wasCalledExactlyOnce)
         XCTAssertTrue(dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.wasCalledExactlyOnce)
     }
-    
+
     // MARK: - Part 3 — credential refreshing logic
 
     /*
@@ -1102,7 +1102,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
                 XCTFail(); return
             }
         }
-        
+
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
             SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
@@ -1250,7 +1250,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
                 let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: httpCode))
                 completion(task, .failure(.networkingEngineError(underlyingError: underlyingError)))
                 return
-                
+
             }
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
             let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: httpCode))
@@ -1301,7 +1301,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
             .updated(UID: "test sessionUID", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in oldCredentials }
-        
+
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
             SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
@@ -1363,9 +1363,9 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
     func test401WithCredentialsErrorsIfUnauthenticateSessionAndRefreshCredentialsErrorsWith422AndSessionAcquisitionSuccedAndRetryCallErrors() async {
         await ensure401WithCredentialsErrorsIfUnauthenticateSessionAndRefreshCredentialsErrorsAndSessionAcquisitionSuccedAndRetryCallErrors(httpCode: 422)
     }
-    
+
     // MARK: - Part 4 — concurrent tests with token in-memory persistance
-    
+
     func testOnlyOneRefreshHappensEvenIfMultipleRequestsGet401() async {
         // GIVEN
         let service = testService
@@ -1418,7 +1418,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         XCTAssertEqual(sessionMock.requestJSONStub.callCounter, numberOfRequests * 2)
         XCTAssertEqual(results.count, Int(numberOfRequests))
     }
-    
+
     func testOnlyOneRefreshHappensEvenIfMultipleRequestsGet401AndAuthIsUpdatedInPlace() async {
         // GIVEN
         let service = testService

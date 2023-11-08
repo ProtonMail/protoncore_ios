@@ -34,24 +34,24 @@ import XCTest
 @available(iOS 13.0, *)
 final class ObservabilityAggregatorTests: XCTestCase {
     var sut: ObservabilityAggregatorImpl!
-    
+
     override func setUp() {
         super.setUp()
         sut = ObservabilityAggregatorImpl()
     }
-    
+
     func test_aggregate_addsEventsToArray() {
         // Given
         XCTAssertEqual(sut.aggregatedEvents.value.count, 0)
-        
+
         // When
         sut.aggregate(event: .dummyEvent(status: .successful))
         sut.aggregate(event: .dummyEvent(status: .failed))
-        
+
         // Then
         XCTAssertEqual(sut.aggregatedEvents.value.count, 2)
     }
-    
+
     func test_aggregate_aggregatesSimilarEvents() {
         // Given
         let expectedEvent = ObservabilityEvent(name: "dummy_event_name", value: 3, labels: DummyLabels.init(status: .successful))
@@ -59,24 +59,24 @@ final class ObservabilityAggregatorTests: XCTestCase {
         sut.aggregate(event: .dummyEvent(status: .successful))
         sut.aggregate(event: .dummyEvent(status: .successful))
         sut.aggregate(event: .dummyEvent(status: .successful))
-        
+
         // Then
         XCTAssertEqual(sut.aggregatedEvents.value.count, 1)
         XCTAssertTrue(sut.aggregatedEvents.value[0].isSameAs(event: expectedEvent))
     }
-    
+
     func test_clear_removesAllElementsFromAggregatedEvents() {
         // Given
         sut.aggregate(event: .dummyEvent(status: .successful))
         sut.aggregate(event: .dummyEvent(status: .failed))
-        
+
         // When
         sut.clear()
-        
+
         // Then
         XCTAssertEqual(sut.aggregatedEvents.value.count, 0)
     }
-    
+
     func test_aggregateIsThreadSafe() async {
         _ = await performConcurrentlySettingExpectations(amount: 100) { [weak self] _, continuation in
             guard let self else { XCTFail("self is nil"); return }

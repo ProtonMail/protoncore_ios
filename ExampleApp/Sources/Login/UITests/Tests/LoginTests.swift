@@ -17,40 +17,40 @@ import ProtonCoreObfuscatedConstants
 import ProtonCoreQuarkCommands
 
 class LoginTests: LoginBaseTestCase {
-    
+
     let mainRobot = LoginSampleAppRobot()
     let loginRobot = LoginRobot()
     let twoFaRobot = TwoFaRobot()
     let needHelpRobot = NeedHelpRobot()
     let createProtonmailRobot = CreateProtonmailRobot()
-    
+
     let password = ObfuscatedConstants.password
     let emailVerificationCode = ObfuscatedConstants.emailVerificationCode
-    
+
     override func setUp() {
         super.setUp()
-        
+
         mainRobot
             .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
     }
-    
+
     func testSignInScreenElements() {
         mainRobot.showLogin()
             .signInElementsDisplayed()
     }
-    
+
     func testCloseLoginScreen() {
         mainRobot.showLogin()
             .closeLoginScreen(to: LoginSampleAppRobot.self)
             .verify.buttonLoginVisible()
     }
-    
+
     func testSwitchToCreateAccount() {
         mainRobot.showLogin()
             .switchToCreateAccount()
             .verify.signupScreenIsShown()
     }
-    
+
     func testNeedHelpClosed() {
         mainRobot.showLogin()
             .needHelp()
@@ -58,7 +58,7 @@ class LoginTests: LoginBaseTestCase {
             .closeNeedHelpScreen()
             .verify.loginScreenIsShown()
     }
-    
+
     func testNeedHelpOptionsLink() {
         mainRobot.showLogin()
             .needHelp().needHelpOptionsDisplayed()
@@ -66,9 +66,9 @@ class LoginTests: LoginBaseTestCase {
             .goBackToSampleApp(app: app).forgotPasswordLink()
             .goBackToSampleApp(app: app).otherSignInIssuesLink()
             .goBackToSampleApp(app: app).customerSupportLink()
-        
+
     }
-    
+
     func testLoginWithOnePassUser() {
         let user = testData.onePassUser
         mainRobot.showLogin()
@@ -77,7 +77,7 @@ class LoginTests: LoginBaseTestCase {
             .signIn(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testLogoutUserWithOnePass() {
         let user = testData.onePassUser
         mainRobot.showLogin()
@@ -88,7 +88,7 @@ class LoginTests: LoginBaseTestCase {
             .verify.dialogLogoutShown()
             .verify.buttonLogoutIsNotVisible()
     }
-    
+
     func testLoginWithTwoPassUser() {
         let user = testData.twoPassUser
         mainRobot.showLogin()
@@ -99,10 +99,10 @@ class LoginTests: LoginBaseTestCase {
             .unlock(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testLoginWithTwoFAUser() {
         let user = testData.onePassUserWith2Fa
-        
+
         mainRobot
             // switching to username here because the onePassUserWith2Fa user account doesn't have addresses
             .changeAccountTypeToUsername()
@@ -114,7 +114,7 @@ class LoginTests: LoginBaseTestCase {
             .confirm2FA(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testLoginWithTwoPassAnd2FAUser() {
         let user = testData.twoPassUserWith2Fa
         mainRobot
@@ -128,7 +128,7 @@ class LoginTests: LoginBaseTestCase {
             .unlock(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testLoginWithInvalidPassword() {
         let user = testData.onePassUser
         let invalidPassword = " " + user.password
@@ -138,7 +138,7 @@ class LoginTests: LoginBaseTestCase {
             .signIn(robot: LoginRobot.self)
             .verify.incorrectCredentialsErrorDialog()
     }
-    
+
     func  testLoginWithInvalidMailboxPassword() {
         let user = testData.twoPassUser
         let invalidMailboxPassword = " " + user.mailboxPassword
@@ -150,7 +150,7 @@ class LoginTests: LoginBaseTestCase {
             .unlock(robot: MailboxPasswordRobot.self)
             .verify.incorrectMailboxPasswordErrorDialog()
     }
-    
+
     func testLoginWithIncorrectTwoFACodeUser() {
         let user = testData.onePassUserWith2Fa
         let invalidTwoFACode = ObfuscatedConstants.invalidTwoFACode
@@ -162,7 +162,7 @@ class LoginTests: LoginBaseTestCase {
             .confirm2FA(robot: TwoFaRobot.self)
             .verify.incorrectCredentialsErrorDialog()
     }
-    
+
     func testLoginWithTwoPassUserInvalidTwoFACode() {
         let user = testData.twoPassUserWith2Fa
         let invalidTwoFACode = ObfuscatedConstants.invalidTwoFACode
@@ -174,7 +174,7 @@ class LoginTests: LoginBaseTestCase {
             .confirm2FA(robot: TwoFaRobot.self)
             .verify.incorrectCredentialsErrorDialog()
     }
-    
+
     func testLoginWithDisabledUser() {
         let user = testData.disabledUser
         mainRobot.showLogin()
@@ -183,7 +183,7 @@ class LoginTests: LoginBaseTestCase {
             .signIn(robot: LoginRobot.self)
             .verify.suspendedErrorDialog()
     }
-    
+
     func testLoginWithOrgAdminUser() {
         let user = testData.orgAdminUser
         mainRobot.showLogin()
@@ -192,7 +192,7 @@ class LoginTests: LoginBaseTestCase {
             .signIn(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testLoginWithOrgPublicUser() {
         let randomUsername = StringUtils.randomAlphanumericString()
         let (username, password) = createOrgUser(host: doh.getCurrentlyUsedHostUrl(), username: randomUsername, password: ObfuscatedConstants.password, createPrivateUser: false)
@@ -203,7 +203,7 @@ class LoginTests: LoginBaseTestCase {
             .signIn(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testLoginWithOrgPrivateUser() {
         let randomUsername = StringUtils.randomAlphanumericString()
         let (username, password) = createOrgUser(host: doh.getCurrentlyUsedHostUrl(), username: randomUsername, password: ObfuscatedConstants.password, createPrivateUser: true)
@@ -214,9 +214,9 @@ class LoginTests: LoginBaseTestCase {
             .signIn(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     // TODO find out why private org members created via quark command are not required password change
-    
+
     //    func testLoginWithNewOrgPrivateUser() {
     //        let randomUsername = StringUtils.randomAlphanumericString()
     //        let (username, password) = createOrgUser(host: host, username: randomUsername, password: ObfuscatedConstants.password)
@@ -230,7 +230,7 @@ class LoginTests: LoginBaseTestCase {
     //            .verify.changePasswordCancel()
     //            .verify.changePasswordConfirm()
     //    }
-    
+
     func testLoginNewExtAccountSuccessInternalAccType() {
         let randomEmail = self.randomEmail
         mainRobot
@@ -256,7 +256,7 @@ class LoginTests: LoginBaseTestCase {
             .pressCreateAddress(to: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testLoginNewExtAccountSuccessExternalAccType() {
         let randomEmail = self.randomEmail
         mainRobot.changeAccountTypeToExternal()
@@ -279,7 +279,7 @@ class LoginTests: LoginBaseTestCase {
             .signIn(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testLoginNewExtAccountSuccessUsernameAccType() {
         let randomEmail = self.randomEmail
         mainRobot.changeAccountTypeToUsername()
@@ -302,17 +302,17 @@ class LoginTests: LoginBaseTestCase {
             .signIn(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testLoginWithVPNOnlyFreeUser() {
         let user = testData.usernameVpnFreeUser
         mainRobot.changeAccountTypeToUsername().showLogin()
             .fillUsername(username: user.username)
             .fillpassword(password: user.password)
-        
+
             .signIn(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testLoginWithVPNOnlyFreeUserInternal() {
         let randomUsername = StringUtils.randomAlphanumericString()
         let (username, password) = createVPNUser(host: doh.getCurrentlyUsedHostUrl(), username: randomUsername, password: ObfuscatedConstants.password)
@@ -322,7 +322,7 @@ class LoginTests: LoginBaseTestCase {
             .signIn(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testLoginWithVPNOnlyFreeUserExternal() {
         let randomUsername = StringUtils.randomAlphanumericString()
         let (username, password) = createVPNUser(host: doh.getCurrentlyUsedHostUrl(), username: randomUsername, password: ObfuscatedConstants.password)
@@ -332,7 +332,7 @@ class LoginTests: LoginBaseTestCase {
             .signIn(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testLoginWithAddressNoKeysInternalAccType() {
         let randomUsername = StringUtils.randomAlphanumericString()
         let (username, password) = createUserWithAddressNoKeys(host: doh.getCurrentlyUsedHostUrl(), username: randomUsername, password: ObfuscatedConstants.password)
@@ -342,7 +342,7 @@ class LoginTests: LoginBaseTestCase {
             .signIn(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testLoginWithAddressNoKeysExternalAccType() {
         let randomUsername = StringUtils.randomAlphanumericString()
         let (username, password) = createUserWithAddressNoKeys(host: doh.getCurrentlyUsedHostUrl(), username: randomUsername, password: ObfuscatedConstants.password)
@@ -352,7 +352,7 @@ class LoginTests: LoginBaseTestCase {
             .signIn(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testLoginWithAppInBackground() {
         let user = testData.onePassUser
         mainRobot.showLogin()

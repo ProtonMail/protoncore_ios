@@ -33,7 +33,7 @@ import ProtonCoreNetworking
 final class TokenHandlerTests: XCTestCase {
 
     let timeout = 1.0
-    
+
     let queue = DispatchQueue.global(qos: .userInitiated)
 
     var apiService: APIServiceMock!
@@ -57,7 +57,7 @@ final class TokenHandlerTests: XCTestCase {
         processDependencies.storeKitDelegateStub.fixture = storeKitManagerDelegate
         processDependencies.tokenStorageStub.fixture = paymentTokenStorageMock
     }
-    
+
     func testTokenSoredChargeableTokenSuccess() {
         // Test scenario:
         // 1. Do getToken
@@ -70,7 +70,7 @@ final class TokenHandlerTests: XCTestCase {
         let expectation = self.expectation(description: "Completion block called")
         let testToken = PaymentToken(token: "test token", status: .chargeable)
         paymentTokenStorageMock.getStub.bodyIs { _ in testToken }
-        
+
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
                 completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
@@ -110,7 +110,7 @@ final class TokenHandlerTests: XCTestCase {
         let expectation = self.expectation(description: "Completion block called")
         let testToken = PaymentToken(token: "test token", status: .chargeable)
         paymentTokenStorageMock.getStub.bodyIs { _ in testToken }
-        
+
         apiService.requestJSONStub.bodyIs { count, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
                 if count < 3 {
@@ -141,7 +141,7 @@ final class TokenHandlerTests: XCTestCase {
         // then
         waitForExpectations(timeout: timeout)
     }
- 
+
     func testTokenSoredFailedWrongTokenStatus() {
         // Test scenario:
         // 1. Do getToken
@@ -154,7 +154,7 @@ final class TokenHandlerTests: XCTestCase {
         let expectation = self.expectation(description: "Completion block called")
         let testToken = PaymentToken(token: "test token", status: .chargeable)
         paymentTokenStorageMock.getStub.bodyIs { _ in testToken }
-        
+
         apiService.requestJSONStub.bodyIs { count, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
                 completion(nil, .success(PaymentTokenStatus(status: .failed).toSuccessfulResponse))
@@ -186,7 +186,7 @@ final class TokenHandlerTests: XCTestCase {
         // then
         waitForExpectations(timeout: timeout)
     }
-    
+
     func testTokenSoredNotSupporteddWrongTokenStatus() {
         // Test scenario:
         // 1. Do getToken
@@ -199,7 +199,7 @@ final class TokenHandlerTests: XCTestCase {
         let expectation = self.expectation(description: "Completion block called")
         let testToken = PaymentToken(token: "test token", status: .chargeable)
         paymentTokenStorageMock.getStub.bodyIs { _ in testToken }
-        
+
         apiService.requestJSONStub.bodyIs { count, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
                 completion(nil, .success(PaymentTokenStatus(status: .notSupported).toSuccessfulResponse))
@@ -244,7 +244,7 @@ final class TokenHandlerTests: XCTestCase {
         let expectation = self.expectation(description: "Completion block called")
         let testToken = PaymentToken(token: "test token", status: .chargeable)
         paymentTokenStorageMock.getStub.bodyIs { _ in testToken }
-        
+
         apiService.requestJSONStub.bodyIs { count, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens/") {
                 completion(nil, .success(PaymentTokenStatus(status: .consumed).toSuccessfulResponse))

@@ -32,16 +32,16 @@ class UIFoundationsShadowViewController: UIFoundationsAppearanceStyleViewControl
     @IBOutlet var shadowNormBox: UIView!
     @IBOutlet var shadowRaisedBox: UIView!
     @IBOutlet var shadowLiftedBox: UIView!
-    
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         applyShadows()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         applyShadows()
     }
-    
+
     func applyShadows() {
         self.shadowNormBox.apply(shadows: .shadowNorm)
         self.shadowRaisedBox.apply(shadows: .shadowRaised)

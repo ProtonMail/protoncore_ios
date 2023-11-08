@@ -32,7 +32,7 @@ final class HumanVerifyLocalizationTests: XCTestCase {
     func testAllSubstitutionsAreFollowingTheExpectedFormat() {
         testAllSubstitutionsAreValid(for: HVTranslation.self)
     }
-    
+
     func testAllTranslationsAreDefinedForAllLanguages() {
         testAllLocalizationsAreDefined(for: HVTranslation.self, prefixForMissingValue: #function)
     }

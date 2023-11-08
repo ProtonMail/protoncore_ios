@@ -25,7 +25,7 @@ import ProtonCoreUtilities
 
 public class DefaultLocalFeatureFlagsDatasource: LocalFeatureFlagsProtocol {
     private let serialAccessQueue = DispatchQueue(label: "ch.proton.featureflags_queue")
-    
+
     static let featureFlagsKey = "protoncore.featureflag"
 
     private let userDefaults: UserDefaults
@@ -43,7 +43,7 @@ public class DefaultLocalFeatureFlagsDatasource: LocalFeatureFlagsProtocol {
         getLocalFeatureFlags(userId: userId)
     }
 
-    private func getLocalFeatureFlags(userId: String)  -> FeatureFlags? {
+    private func getLocalFeatureFlags(userId: String) -> FeatureFlags? {
         serialAccessQueue.sync {
             if let flagsForSession = flagsForSession {
                 return flagsForSession[userId]
@@ -69,7 +69,7 @@ public class DefaultLocalFeatureFlagsDatasource: LocalFeatureFlagsProtocol {
 
     public func cleanFlags(for userId: String) {
         serialAccessQueue.sync {
-            var flagsToClean: [String : FeatureFlags]? = userDefaults.decodableValue(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+            var flagsToClean: [String: FeatureFlags]? = userDefaults.decodableValue(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
             flagsToClean?[userId] = nil
             userDefaults.set(flagsToClean, forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
         }

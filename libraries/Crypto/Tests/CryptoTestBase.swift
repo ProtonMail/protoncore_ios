@@ -35,19 +35,19 @@ import ProtonCoreCryptoGoImplementation
 #endif
 
 class CryptoTestBase: XCTestCase {
-    
+
     var testBundle: Bundle!
     func content(of name: String) -> String {
         let url = testBundle.url(forResource: name, withExtension: "txt")!
         let content = try! String.init(contentsOf: url)
         return content
     }
-    
+
     func url(of name: String) -> URL {
         let url = testBundle.url(forResource: name, withExtension: "txt")!
         return url
     }
-    
+
     override func setUp() {
         super.setUp()
         injectDefaultCryptoImplementation()
@@ -66,7 +66,7 @@ class CryptoTestBase: XCTestCase {
         self.testBundle = Bundle(for: type(of: self))
         #endif
     }
-    
+
     func random(length: Int) -> Data {
         var error: NSError?
         guard let check = CryptoGo.CryptoRandomToken(length, &error) else {

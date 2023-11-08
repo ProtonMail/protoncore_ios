@@ -22,10 +22,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+
     @ObservedObject var viewModel = NetworkingViewModel()
     @State private var isLoginPresented: Bool = false
-    
+
     var body: some View {
         ZStack {
             VStack {

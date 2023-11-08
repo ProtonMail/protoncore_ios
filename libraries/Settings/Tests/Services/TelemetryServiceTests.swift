@@ -25,13 +25,13 @@ import ProtonCoreSettings
 final class TelemetryServiceTests: XCTestCase {
 
     private var testUserDefaults: UserDefaults!
-    
+
     override func setUp() {
         testUserDefaults = UserDefaults(suiteName: #file)
         testUserDefaults.removePersistentDomain(forName: #file)
         super.setUp()
     }
-    
+
     func testTelemetryService() {
         let service = TelemetrySettingsService(userDefaults: testUserDefaults)
         XCTAssertFalse(service.isTelemetryEnabled)

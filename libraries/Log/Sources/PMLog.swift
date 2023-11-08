@@ -129,7 +129,7 @@ public class PMLog {
             printToConsole(error.localizedDescription)
         }
     }
-    
+
     private static func storeLogs(log: String, url: URL) {
         let dataToLog = Data("\(log)\n".utf8)
         do {

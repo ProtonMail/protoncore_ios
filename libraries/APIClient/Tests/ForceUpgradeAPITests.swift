@@ -33,10 +33,10 @@ import ProtonCoreServices
 @testable import ProtonCoreAPIClient
 
 class ForceUpgradeAPITests: XCTestCase {
-    
+
     var apiService: APIServiceMock!
     let timeout = 1.0
-    
+
     var authInfoResponse: AuthInfoResponse {
         let modulus = "testModulus"
         let serverEphemeral = "testServerEphemeral"
@@ -51,12 +51,12 @@ class ForceUpgradeAPITests: XCTestCase {
             srpSession: srpSession
         )
     }
-    
+
     override func setUp() {
         super.setUp()
         apiService = APIServiceMock()
     }
-    
+
     func testBadAppVersion() {
         // backend answer when there is no verification token
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
@@ -79,7 +79,7 @@ class ForceUpgradeAPITests: XCTestCase {
             XCTAssertNil(expectationError)
         }
     }
-    
+
     func testBadApiVersion() {
         // backend answer when there is no verification token
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
@@ -90,7 +90,7 @@ class ForceUpgradeAPITests: XCTestCase {
                 completion(nil, .success([:]))
             }
         }
-        
+
         let expectation = self.expectation(description: "Success completion block called")
         let authInfoOK = AuthAPI.Router.info(username: "user1")
         apiService.perform(request: authInfoOK, response: authInfoResponse) { (task, response: AuthInfoResponse) in

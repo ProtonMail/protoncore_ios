@@ -40,7 +40,7 @@ public class MissingScopesCoordinator: MissingScopesCoordinatorDelegate {
     private let responseHandlerData: PMResponseHandlerData
     private let completion: (MissingScopesFinishReason) -> Void
     private var passwordVerifierViewController: PasswordVerifierViewController?
-    
+
     init(apiService: APIService,
          username: String,
          inAppTheme: @escaping () -> InAppTheme = { .default },
@@ -53,15 +53,15 @@ public class MissingScopesCoordinator: MissingScopesCoordinatorDelegate {
         self.responseHandlerData = responseHandlerData
         self.completion = completion
     }
-    
+
     public func showAskPassword() {
         let passwordVerifierViewController = setupPasswordVerifierViewController()
         self.passwordVerifierViewController = passwordVerifierViewController
-        
+
         let nav = DarkModeAwareNavigationViewController()
         nav.overrideUserInterfaceStyle = inAppTheme().userInterfaceStyle
         nav.viewControllers = [passwordVerifierViewController]
-        
+
         var topViewController: UIViewController?
         let keyWindow = UIApplication.firstKeyWindow
         if var top = keyWindow?.rootViewController {
@@ -70,10 +70,10 @@ public class MissingScopesCoordinator: MissingScopesCoordinatorDelegate {
             }
             topViewController = top
         }
-        
+
         topViewController?.present(nav, animated: true)
     }
-    
+
     private func setupPasswordVerifierViewController() -> PasswordVerifierViewController {
         let passwordVerifierViewController = PasswordVerifierViewController()
         passwordVerifierViewController.delegate = self
@@ -92,11 +92,11 @@ extension MissingScopesCoordinator: PasswordVerifierViewControllerDelegate {
     public func userUnlocked() {
         completion(.unlocked)
     }
-    
+
     public func didCloseVerifyPassword() {
         completion(.closed)
     }
-    
+
     public func didCloseWithError(code: Int, description: String) {
         completion(.closedWithError(code: code, description: description))
     }

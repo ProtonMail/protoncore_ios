@@ -32,7 +32,7 @@ public struct FeatureFlags: Hashable, Codable, Sendable {
     public static var `default`: FeatureFlags {
         FeatureFlags(flags: [])
     }
-    
+
     public var isEmpty: Bool {
         flags.isEmpty
     }

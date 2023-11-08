@@ -60,13 +60,13 @@ class SignerTests: CryptoTestBase {
             XCTFail("Should not happen: \(error)")
         }
     }
-    
+
     func testSignDataDetached() {
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
         let clearText = "testing sign binary. detached signature."
         let clearData = clearText.data(using: .utf8)!
-        
+
         let pubKey = privKey.publicKey
         do {
             let signingKey = SigningKey.init(privateKey: ArmoredKey.init(value: privKey),
@@ -78,15 +78,15 @@ class SignerTests: CryptoTestBase {
             XCTFail("Should not happen: \(error)")
         }
     }
-    
+
     func testSignDataWithKeysDetached() {
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
         let clearText = "testing sign binary. detached signature."
         let clearData = clearText.data(using: .utf8)!
-        
+
         let privKey1 = self.content(of: "user_b_privatekey")
-        
+
         let pubKey = privKey.publicKey
         let pubKey2 = privKey1.publicKey
         do {
@@ -102,7 +102,7 @@ class SignerTests: CryptoTestBase {
             XCTFail("Should not happen: \(error)")
         }
     }
-    
+
     func testSignStringDetachedVerifyUnArmoredSignatureWithTrimming() {
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
@@ -225,7 +225,7 @@ class SignerTests: CryptoTestBase {
             XCTFail("Should not happen: \(error)")
         }
     }
-    
+
     func testSignDataWithCriticalContext() throws {
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
@@ -236,9 +236,9 @@ class SignerTests: CryptoTestBase {
         let clearText = "testing sign binary. detached signature."
         let clearData = clearText.data(using: .utf8)!
         let verificationContext = VerificationContext(value: "testcontext", required: .always)
-        
+
         let signature = try Sign.signDetached(signingKey: signingKey, plainData: clearData, signatureContext: context)
-        
+
         XCTAssertFalse(
             try Sign.verifyDetached(signature: signature, plainData: clearData, verifierKey: .init(value: pubKey))
         )
@@ -246,7 +246,7 @@ class SignerTests: CryptoTestBase {
             try Sign.verifyDetached(signature: signature, plainData: clearData, verifierKey: .init(value: pubKey), verificationContext: verificationContext)
         )
     }
-    
+
     func testSignDataWithNonCriticalContext() throws {
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
@@ -257,9 +257,9 @@ class SignerTests: CryptoTestBase {
         let clearText = "testing sign binary. detached signature."
         let clearData = clearText.data(using: .utf8)!
         let verificationContext = VerificationContext(value: "testcontext", required: .always)
-        
+
         let signature = try Sign.signDetached(signingKey: signingKey, plainData: clearData, signatureContext: context)
-        
+
         XCTAssertTrue(
             try Sign.verifyDetached(signature: signature, plainData: clearData, verifierKey: .init(value: pubKey))
         )
@@ -267,16 +267,16 @@ class SignerTests: CryptoTestBase {
             try Sign.verifyDetached(signature: signature, plainData: clearData, verifierKey: .init(value: pubKey), verificationContext: verificationContext)
         )
     }
-    
+
     func testVerifySignatureWithMissingContext() throws {
         let pubKey = self.content(of: "signature_context_public_key")
         let contextVal = "test-context"
-        
+
         let clearText = "Hello world!"
         let clearData = clearText.data(using: .utf8)!
         let signature = self.content(of: "signature_context_missing")
         let signatureCreationTime = 1678104846
-        
+
         XCTAssertTrue(
             try Sign.verifyDetached(signature: .init(value: signature), plainData: clearData, verifierKey: .init(value: pubKey))
         )
@@ -293,16 +293,16 @@ class SignerTests: CryptoTestBase {
             try Sign.verifyDetached(signature: .init(value: signature), plainData: clearData, verifierKey: .init(value: pubKey), verificationContext: .init(value: contextVal, required: .after(unixTime: Int64(signatureCreationTime + 100_000))))
         )
     }
-    
+
     func testVerifySignatureWithCriticalContext() throws {
         let pubKey = self.content(of: "signature_context_public_key")
         let contextVal = "test-context"
-        
+
         let clearText = "Hello world!"
         let clearData = clearText.data(using: .utf8)!
         let signature = self.content(of: "signature_context_critical")
         let signatureCreationTime = 1678104846
-        
+
         XCTAssertFalse(
             try Sign.verifyDetached(signature: .init(value: signature), plainData: clearData, verifierKey: .init(value: pubKey))
         )
@@ -322,16 +322,16 @@ class SignerTests: CryptoTestBase {
             try Sign.verifyDetached(signature: .init(value: signature), plainData: clearData, verifierKey: .init(value: pubKey), verificationContext: .init(value: contextVal + "other", required: .always))
         )
     }
-    
+
     func testVerifySignatureWithNonCriticalContext() throws {
         let pubKey = self.content(of: "signature_context_public_key")
         let contextVal = "test-context"
-        
+
         let clearText = "Hello world!"
         let clearData = clearText.data(using: .utf8)!
         let signature = self.content(of: "signature_context_non_critical")
         let signatureCreationTime = 1678104846
-        
+
         XCTAssertTrue(
             try Sign.verifyDetached(signature: .init(value: signature), plainData: clearData, verifierKey: .init(value: pubKey))
         )
@@ -351,5 +351,5 @@ class SignerTests: CryptoTestBase {
             try Sign.verifyDetached(signature: .init(value: signature), plainData: clearData, verifierKey: .init(value: pubKey), verificationContext: .init(value: contextVal + "other", required: .always))
         )
     }
-    
+
 }

@@ -35,7 +35,7 @@ public class MissingScopesHandler: MissingScopesDelegate {
     private let authService: AuthService
     private let queue: CompletionBlockExecutor
     private var missingScopesCoordinator: MissingScopesCoordinatorDelegate?
-    
+
     public init(apiService: APIService,
                 inAppTheme: @escaping () -> InAppTheme = { .default },
                 queue: CompletionBlockExecutor = .asyncMainExecutor,
@@ -46,7 +46,7 @@ public class MissingScopesHandler: MissingScopesDelegate {
         self.missingScopesCoordinator = missingScopesCoordinator
         self.authService = .init(api: apiService)
     }
-    
+
     public func onMissingScopesHandling(username: String, responseHandlerData: PMResponseHandlerData, completion: @escaping (MissingScopesFinishReason) -> Void) {
         queue.execute {
             if self.missingScopesCoordinator == nil {
@@ -65,7 +65,7 @@ public class MissingScopesHandler: MissingScopesDelegate {
             self.missingScopesCoordinator?.showAskPassword()
         }
     }
-    
+
     public func showAlert(title: String, message: String?) {
         queue.execute {
             let topViewController = UIViewController.topVC

@@ -45,16 +45,16 @@ class HumanCheckHelperTests: XCTestCase {
         super.setUp()
         injectDefaultCryptoImplementation()
     }
-    
+
     func testHumanCheckHelperClose() {
         let expectationDelegateStart = self.expectation(description: "Delegate call")
         let expectationDelegateEnd = self.expectation(description: "Delegate call")
         let expectation1 = self.expectation(description: "Success send code completion block called")
-        
+
         let delegate = HumanVerifyResponseDelegateMock()
         delegate.onHumanVerifyStartStub.bodyIs { _ in expectationDelegateStart.fulfill() }
         delegate.onHumanVerifyEndStub.bodyIs { _, _ in expectationDelegateEnd.fulfill() }
-        
+
         let apiService = PMAPIService.createAPIServiceWithoutSession(doh: DohMock(), challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         let humanUrl = URL(string: "https://proton.me/support/human-verification")!
         // also test pass in v2. work as v3
@@ -73,23 +73,23 @@ class HumanCheckHelperTests: XCTestCase {
             case .closeWithError: XCTFail()
             }
         }
-        
+
         XCTAssertEqual(humanCheckHelper.getSupportURL(), URL(string: "https://proton.me/support/human-verification")!)
         wait(for: [expectationDelegateStart, expectation1, expectationDelegateEnd], timeout: 3, enforceOrder: true)
 
         XCTAssertTrue(delegate.humanVerifyTokenStub.wasNotCalled)
     }
-    
+
     func testHumanCheckHelperFinalToken() {
         let expectationDelegateStart = self.expectation(description: "Delegate call")
         let expectationDelegateEnd = self.expectation(description: "Delegate call")
         let expectation1 = self.expectation(description: "Success send code completion block called")
         let expectation2 = self.expectation(description: "Success send code completion block called")
-        
+
         let delegate = HumanVerifyResponseDelegateMock()
         delegate.onHumanVerifyStartStub.bodyIs { _ in expectationDelegateStart.fulfill() }
         delegate.onHumanVerifyEndStub.bodyIs { _, _ in expectationDelegateEnd.fulfill() }
-        
+
         let apiService = PMAPIService.createAPIServiceWithoutSession(doh: DohMock(), challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         let humanUrl = URL(string: "https://proton.me/support/human-verification")!
         let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl,
@@ -104,7 +104,7 @@ class HumanCheckHelperTests: XCTestCase {
                 expectation1.fulfill()
             })
         }
-        
+
         humanCheckHelper.onHumanVerify(parameters: HumanVerifyParameters(methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email)], startToken: ""), currentURL: nil) { reason in
             switch reason {
             case .verification(let header, let verificationCodeBlock):
@@ -119,24 +119,24 @@ class HumanCheckHelperTests: XCTestCase {
                 XCTFail()
             }
         }
-        
+
         XCTAssertEqual(humanCheckHelper.getSupportURL(), URL(string: "https://proton.me/support/human-verification")!)
-        
+
         wait(for: [expectationDelegateStart, expectation1, expectationDelegateEnd, expectation2], timeout: 3, enforceOrder: true)
 
         XCTAssertTrue(delegate.humanVerifyTokenStub.wasCalledExactlyOnce)
         XCTAssertEqual(delegate.humanVerifyTokenStub.lastArguments?.first, "666666")
         XCTAssertEqual(delegate.humanVerifyTokenStub.lastArguments?.second, "email")
     }
-    
+
     func testHumanCheckHelperFinalError() {
         let expectationDelegateStart = self.expectation(description: "Delegate call")
         let expectation1 = self.expectation(description: "Success send code completion block called")
         let expectation2 = self.expectation(description: "Success send code completion block called")
-        
+
         let delegate = HumanVerifyResponseDelegateMock()
         delegate.onHumanVerifyStartStub.bodyIs { _ in expectationDelegateStart.fulfill() }
-        
+
         let apiService = PMAPIService.createAPIServiceWithoutSession(doh: DohMock(), challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         let humanUrl = URL(string: "https://proton.me/support/human-verification")!
         let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, inAppTheme: { .default }, clientApp: .mail)
@@ -152,7 +152,7 @@ class HumanCheckHelperTests: XCTestCase {
                 expectation1.fulfill()
             })
         }
-        
+
         humanCheckHelper.onHumanVerify(parameters: HumanVerifyParameters(methods: [VerifyMethod(predefinedMethod: .captcha), VerifyMethod(predefinedMethod: .email)], startToken: ""), currentURL: nil) { reason in
             switch reason {
             case .verification(let header, let verificationCodeBlock):
@@ -168,9 +168,9 @@ class HumanCheckHelperTests: XCTestCase {
                 XCTFail()
             }
         }
-        
+
         XCTAssertEqual(humanCheckHelper.getSupportURL(), URL(string: "https://proton.me/support/human-verification")!)
-        
+
         wait(for: [expectationDelegateStart, expectation1, expectation2], timeout: 3, enforceOrder: true)
 
         XCTAssertTrue(delegate.humanVerifyTokenStub.wasCalledExactlyOnce)
@@ -282,7 +282,7 @@ class HumanCheckHelperTests: XCTestCase {
         XCTAssertTrue(paymentDelegate.paymentTokenStatusChangedStub.wasCalledExactlyOnce)
         XCTAssertEqual(paymentDelegate.paymentTokenStatusChangedStub.lastArguments?.value, .fail)
     }
-    
+
     func testHumanCheckHelperOnDeviceVerifySuccess() {
         let apiService = PMAPIService.createAPIServiceWithoutSession(doh: DohMock(),
                                                                      challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"),
@@ -291,7 +291,7 @@ class HumanCheckHelperTests: XCTestCase {
         let humanCheckHelper = HumanCheckHelper(apiService: apiService, supportURL: humanUrl, inAppTheme: { .default }, clientApp: .mail)
         var parameters = DeviceVerifyParameters(challengeType: .Argon2,
                                                 challengePayload: "qbYJSn07JQGfol0u8MJTZ16fDRyFo2AR6phcgqlZCr44RBpz/odJc17EROMfMOpz2dE8oHW2JHeqoRax2ha4bpGusDBkEySSWJU+cmuWePzUC58fTY+VJMLBMDLhdqV9QKvozeqKcoPzqDoHZZYmyWQf4DIAKfgaha/WwzMikQMBAAAAIAAAAOEQAAABAAAA")
-        
+
         let argon2Solved = humanCheckHelper.onDeviceVerify(parameters: parameters)
         XCTAssertNotNil(argon2Solved)
         XCTAssertTrue(argon2Solved!.contains("ewAAAAAAAABXe+n/4g0Hfz40eEw7h5d3XeiKdWilfCJvz0izj7p0YA=="))
@@ -301,7 +301,7 @@ class HumanCheckHelperTests: XCTestCase {
         XCTAssertNotNil(ECDLPSolved)
         XCTAssertTrue(ECDLPSolved!.contains("ngAAAAAAAAAczZrEZLqS9+TGdB7vNex1HzvPpFJD7Qd4+yPEgGduDw=="))
     }
-    
+
     func testHumanCheckHelperOnDeviceVerifyError() {
         let apiService = PMAPIService.createAPIServiceWithoutSession(doh: DohMock(),
                                                                      challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"),

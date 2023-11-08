@@ -29,19 +29,19 @@ import ProtonCoreTestingToolkit
 #endif
 
 class SrpAuthMock: SrpAuth {
-    
+
     init() {}
-    
+
     var modulus: Data?
     var serverEphemeral: Data?
     var hashedPassword: Data?
     var version: Int = 0
-    
+
     @ThrowingFuncStub(SrpAuthMock.generateVerifier, initialReturn: Data()) public var generateVerifierStub
     func generateVerifier(_ bitLength: Int) throws -> Data {
         try generateVerifierStub(bitLength)
     }
-    
+
     @ThrowingFuncStub(SrpAuthMock.generateProofs, initialReturn: CryptoGo.SrpProofs()) public var generateProofsStub
     func generateProofs(_ bitLength: Int) throws -> SrpProofs {
         try generateProofsStub(bitLength)

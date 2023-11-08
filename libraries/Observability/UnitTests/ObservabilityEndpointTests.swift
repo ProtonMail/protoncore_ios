@@ -25,40 +25,40 @@ import XCTest
 
 final class ObservabilityEndpointTests: XCTestCase {
     var sut: ObservabilityEndpoint!
-    
+
     override func setUp() {
         super.setUp()
         sut = ObservabilityEndpoint()
     }
-    
+
     func test_path() {
         XCTAssertEqual(sut.path, "/data/v1/metrics")
     }
-    
+
     func test_method() {
         XCTAssertEqual(sut.method, .post)
     }
-    
+
     func test_headers() {
         XCTAssertEqual(sut.headers as? [String: Int], ["x-msg-priority": 6])
     }
-    
+
     func test_isAuth() {
         XCTAssertFalse(sut.isAuth)
     }
-    
+
     func test_authCredential() {
         XCTAssertNil(sut.authCredential)
     }
-    
+
     func test_retryPolicy() {
         XCTAssertEqual(sut.retryPolicy, .background)
     }
-    
+
     func test_nonDefaultTimeout() {
         XCTAssertNil(sut.nonDefaultTimeout)
     }
-    
+
     func test_authRetry() {
         XCTAssertTrue(sut.authRetry)
     }
