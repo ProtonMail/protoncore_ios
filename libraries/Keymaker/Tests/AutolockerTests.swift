@@ -49,7 +49,7 @@ class MockTimeProvider: TimeProvider {
 class AutolockerTests: XCTestCase {
     private var sut: Autolocker!
     private var mockTimeProvider: MockTimeProvider!
-    
+
     private let autolockTimeInMinutes: Int = 5
     private var autolockTimeInSeconds: Int {
         autolockTimeInMinutes * 60
@@ -59,18 +59,18 @@ class AutolockerTests: XCTestCase {
         super.setUp()
         mockTimeProvider = MockTimeProvider(date: Date(), uptime: 1)
     }
-    
+
     override func tearDown() {
         super.tearDown()
         sut = nil
         mockTimeProvider = nil
     }
-    
+
     private func createSUT(autolockTimeout: AutolockTimeout) {
         let mockSettingsProvider = MockSettingsProvider(lockTime: autolockTimeout)
         sut = Autolocker(lockTimeProvider: mockSettingsProvider, timeProvider: mockTimeProvider)
     }
-    
+
     func testShouldAutolockNow_lockTime_always_whenCountdownStarted() {
         createSUT(autolockTimeout: .always)
         sut.startCountdown()
@@ -97,7 +97,7 @@ class AutolockerTests: XCTestCase {
         createSUT(autolockTimeout: .minutes(autolockTimeInMinutes))
         XCTAssert(sut.shouldAutolockNow() == false)
     }
-    
+
     func testShouldAutolockNow_lockTime_minutes_whenCountdownReleased() {
         createSUT(autolockTimeout: .minutes(autolockTimeInMinutes))
         sut.startCountdown()

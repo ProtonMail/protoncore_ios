@@ -24,15 +24,15 @@ import UIKit
 import ProtonCoreUIFoundations
 
 final class UIFoundationsColorsViewController: UIFoundationsAppearanceStyleViewController {
-    
+
     private let layout = UICollectionViewFlowLayout()
     private var collectionView: UICollectionView!
-    
+
     override func loadView() {
         collectionView = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
         view = collectionView
     }
-    
+
     override func viewDidLoad() {
         title = "Colors"
         view.backgroundColor = ColorProvider.BackgroundNorm
@@ -47,7 +47,7 @@ final class UIFoundationsColorsViewController: UIFoundationsAppearanceStyleViewC
         collectionView.dataSource = self
         collectionView.reloadData()
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         layout.itemSize = CGSize(width: collectionView.bounds.width - 128, height: 120)
@@ -55,12 +55,12 @@ final class UIFoundationsColorsViewController: UIFoundationsAppearanceStyleViewC
         layout.minimumLineSpacing = 32
         collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
     }
-    
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         collectionView.reloadData()
     }
-    
+
     let data: [(String, [(UIColor, String)])] = [
         ("Brand", [
             (ColorProvider.BrandDarken40, "BrandDarken40"),
@@ -69,20 +69,20 @@ final class UIFoundationsColorsViewController: UIFoundationsAppearanceStyleViewC
             (ColorProvider.BrandLighten20, "BrandLighten20"),
             (ColorProvider.BrandLighten40, "BrandLighten40")
         ]),
-        
+
         ("Notification", [
             (ColorProvider.NotificationError, "NotificationError"),
             (ColorProvider.NotificationWarning, "NotificationWarning"),
             (ColorProvider.NotificationSuccess, "NotificationSuccess"),
             (ColorProvider.NotificationNorm, "NotificationNorm")
         ]),
-        
+
         ("Interaction norm", [
             (ColorProvider.InteractionNorm, "InteractionNorm"),
             (ColorProvider.InteractionNormPressed, "InteractionNormPressed"),
             (ColorProvider.InteractionNormDisabled, "InteractionNormDisabled")
         ]),
-        
+
         ("Shade", [
             (ColorProvider.Shade100, "Shade100"),
             (ColorProvider.Shade80, "Shade80"),
@@ -93,7 +93,7 @@ final class UIFoundationsColorsViewController: UIFoundationsAppearanceStyleViewC
             (ColorProvider.Shade10, "Shade10"),
             (ColorProvider.Shade0, "Shade0")
         ]),
-        
+
         ("Text", [
             (ColorProvider.TextNorm, "TextNorm"),
             (ColorProvider.TextWeak, "TextWeak"),
@@ -101,7 +101,7 @@ final class UIFoundationsColorsViewController: UIFoundationsAppearanceStyleViewC
             (ColorProvider.TextDisabled, "TextDisabled"),
             (ColorProvider.TextInverted, "TextInverted")
         ]),
-        
+
         ("Icon", [
             (ColorProvider.IconNorm, "IconNorm"),
             (ColorProvider.IconWeak, "IconWeak"),
@@ -109,7 +109,7 @@ final class UIFoundationsColorsViewController: UIFoundationsAppearanceStyleViewC
             (ColorProvider.IconDisabled, "IconDisabled"),
             (ColorProvider.IconInverted, "IconInverted")
         ]),
-        
+
         ("Interaction", [
             (ColorProvider.InteractionWeak, "InteractionWeak"),
             (ColorProvider.InteractionWeakPressed, "InteractionWeakPressed"),
@@ -117,22 +117,22 @@ final class UIFoundationsColorsViewController: UIFoundationsAppearanceStyleViewC
             (ColorProvider.InteractionStrong, "InteractionStrong"),
             (ColorProvider.InteractionStrongPressed, "InteractionStrongPressed")
         ]),
-        
+
         ("Floaty", [
             (ColorProvider.FloatyBackground, "FloatyBackground"),
             (ColorProvider.FloatyPressed, "FloatyPressed"),
             (ColorProvider.FloatyText, "FloatyText")
         ]),
-        
+
         ("Background", [
             (ColorProvider.BackgroundNorm, "BackgroundNorm"),
             (ColorProvider.BackgroundSecondary, "BackgroundSecondary")
         ]),
-        
+
         ("Separator", [
             (ColorProvider.SeparatorNorm, "SeparatorNorm")
         ]),
-        
+
         ("Sidebar", [
             (ColorProvider.SidebarBackground, "SidebarBackground"),
             (ColorProvider.SidebarInteractionWeakNorm, "SidebarInteractionWeakNorm"),
@@ -144,7 +144,7 @@ final class UIFoundationsColorsViewController: UIFoundationsAppearanceStyleViewC
             (ColorProvider.SidebarIconWeak, "SidebarIconWeak"),
             (ColorProvider.SidebarInteractionPressed, "SidebarInteractionPressed")
         ]),
-        
+
         ("Blenders", [
             (ColorProvider.BlenderNorm, "BlenderNorm")
         ])
@@ -152,19 +152,19 @@ final class UIFoundationsColorsViewController: UIFoundationsAppearanceStyleViewC
 }
 
 extension UIFoundationsColorsViewController: UICollectionViewDelegateFlowLayout {
-    
+
 }
 
 extension UIFoundationsColorsViewController: UICollectionViewDataSource {
-    
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         data.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         data[section].1.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UIFoundationsColorsViewController.color",
                                                       for: indexPath)
@@ -173,7 +173,7 @@ extension UIFoundationsColorsViewController: UICollectionViewDataSource {
         colorCell.text = data[indexPath.section].1[indexPath.row].1
         return colorCell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
@@ -184,27 +184,27 @@ extension UIFoundationsColorsViewController: UICollectionViewDataSource {
         label.text = data[indexPath.section].0
         return label
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         CGSize(width: collectionView.bounds.size.width, height: 50.0)
     }
 }
 
 final class LabelReusableView: UICollectionReusableView {
-    
+
     private let label = UILabel()
     private let effect = UIVisualEffectView()
-    
+
     var text: String? {
         get { label.text }
         set { label.text = newValue }
     }
-    
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         setEffectEffect()
     }
-    
+
     private func setEffectEffect() {
         if #available(iOS 12.0, *) {
             effect.effect = traitCollection.userInterfaceStyle == .dark ? UIBlurEffect(style: .dark) : UIBlurEffect(style: .extraLight)
@@ -214,7 +214,7 @@ final class LabelReusableView: UICollectionReusableView {
             effect.effect = UIBlurEffect(style: .extraLight)
         }
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setEffectEffect()
@@ -224,21 +224,21 @@ final class LabelReusableView: UICollectionReusableView {
         label.fillSuperview()
         label.font = UIFont.preferredFont(forTextStyle: .title1)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 final class ColorCollectionViewCell: UICollectionViewCell {
-    
+
     private let label = UILabel()
-    
+
     var text: String? {
         get { label.text }
         set { label.text = newValue }
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: .zero)
         addSubview(label)
@@ -249,7 +249,7 @@ final class ColorCollectionViewCell: UICollectionViewCell {
         label.backgroundColor = ColorProvider.BackgroundNorm
         label.font = UIFont.preferredFont(forTextStyle: .body)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

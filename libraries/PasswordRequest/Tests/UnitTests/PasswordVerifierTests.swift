@@ -38,7 +38,7 @@ final class PasswordVerifierTests: XCTestCase {
     var apiService: APIServiceMock!
     var responseHandlerData: PMResponseHandlerData!
     var srpBuilder: SRPBuilderProtocolMock!
-    
+
     override func setUp() {
         super.setUp()
         setupMocks()
@@ -50,11 +50,11 @@ final class PasswordVerifierTests: XCTestCase {
             srpBuilder: srpBuilder
         )
     }
-    
+
     private func setupMocks() {
         apiService = .init()
         srpBuilder = .init()
-        
+
         responseHandlerData = .init(
             method: .put,
             path: "path",
@@ -65,9 +65,9 @@ final class PasswordVerifierTests: XCTestCase {
             onDataTaskCreated: { _ in }
         )
     }
-    
+
     // MARK: - Lock
-    
+
     func test_lock_callsCorrectAPI() {
         // Given
         let expectation = XCTestExpectation(description: "")
@@ -76,18 +76,18 @@ final class PasswordVerifierTests: XCTestCase {
             XCTAssertEqual(path, "/users/lock")
             completion(nil, .success(.init()))
         }
-        
+
         // When
         sut.lock { result in
             expectation.fulfill()
         }
-        
+
         // Then
         wait(for: [expectation], timeout: 0.3)
     }
-    
+
     // MARK: - Call correct endpoint() {
-    
+
     func test_verifyPassword_callsPassedEndpoint() {
         // Given
         let expectation = XCTestExpectation(description: "")
@@ -100,7 +100,7 @@ final class PasswordVerifierTests: XCTestCase {
             XCTAssertEqual(path, "myPath")
             completion(nil, .success(.init()))
         }
-        
+
         sut = .init(
             apiService: apiService,
             username: "username",
@@ -108,18 +108,18 @@ final class PasswordVerifierTests: XCTestCase {
             responseHandlerData: responseHandlerData,
             srpBuilder: srpBuilder
         )
-        
+
         // When
         sut.verifyPassword(password: "", authInfo: .init()) { _ in
             expectation.fulfill()
         }
-        
+
         // Then
         wait(for: [expectation], timeout: 0.3)
     }
-    
+
     // MARK: - fetchAuthInfo
-    
+
     func test_fetchAuthInfo_isSuccessful() {
         // Given
         let expectation = XCTestExpectation(description: "expect success")
@@ -127,7 +127,7 @@ final class PasswordVerifierTests: XCTestCase {
         apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(authInfoResponse))
         }
-        
+
         // When
         sut.fetchAuthInfo { result in
             switch result {
@@ -138,11 +138,11 @@ final class PasswordVerifierTests: XCTestCase {
             }
             expectation.fulfill()
         }
-        
+
         // Then
         wait(for: [expectation], timeout: 0.3)
     }
-    
+
     func test_fetchAuthInfo_failed() {
         // Given
         let expectation = XCTestExpectation(description: "expect failure")
@@ -150,7 +150,7 @@ final class PasswordVerifierTests: XCTestCase {
         apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .failure(responseError as NSError))
         }
-        
+
         // When
         sut.fetchAuthInfo { result in
             switch result {
@@ -161,29 +161,29 @@ final class PasswordVerifierTests: XCTestCase {
             }
             expectation.fulfill()
         }
-        
+
         // Then
         wait(for: [expectation], timeout: 0.3)
     }
-    
+
     // MARK: - verifyPassword
-    
+
     func test_verifyPassword_callsSrpBuilder() {
         // When
         sut.verifyPassword(password: "", authInfo: .init()) { _ in }
-        
+
         // Then
         XCTAssertTrue(srpBuilder.buildSRPStub.wasCalledExactlyOnce)
     }
-    
+
     func test_verifyPassword_callsService_onSuccessfulPassword() {
         // When
         sut.verifyPassword(password: "", authInfo: .init()) { _ in }
-        
+
         // Then
         XCTAssertTrue(apiService.requestJSONStub.wasCalledExactlyOnce)
     }
-    
+
     func test_verifyPassword_failsOnBadPassword() {
         // Given
         apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
@@ -200,17 +200,17 @@ final class PasswordVerifierTests: XCTestCase {
             srpBuilder: srpBuilder
         )
         let expectation = XCTestExpectation(description: "expect failure")
-        
+
         // When
         sut.verifyPassword(password: "", authInfo: .init()) { response in
             expectation.fulfill()
             XCTAssertEqual(response, .failure(.wrongPassword))
         }
-        
+
         // Then
         wait(for: [expectation], timeout: 0.3)
     }
-    
+
     func test_verifyPassword_completeOnSuccessfulAPICall() {
         // Given
         let expectation = XCTestExpectation(description: "expect success")
@@ -219,14 +219,14 @@ final class PasswordVerifierTests: XCTestCase {
             expectation.fulfill()
             completion(nil, .success(.init()))
         }
-        
+
         // When
         sut.verifyPassword(password: "", authInfo: .init()) { _ in }
-        
+
         // Then
         wait(for: [expectation], timeout: 0.1)
     }
-    
+
     func test_verifyPassword_completeOnFailure_wrongPassword() {
         // Given
         let expectation = XCTestExpectation(description: "expects failure")
@@ -234,7 +234,7 @@ final class PasswordVerifierTests: XCTestCase {
             expectation.fulfill()
             completion(nil, .failure(.init(domain: "", code: 8002)))
         }
-        
+
         // When
         sut.verifyPassword(password: "", authInfo: .init()) { result in
             switch result {
@@ -244,18 +244,18 @@ final class PasswordVerifierTests: XCTestCase {
                 XCTAssertEqual(error, .wrongPassword)
             }
         }
-        
+
         // Then
         wait(for: [expectation], timeout: 0.1)
     }
-    
+
     func test_verifyPassword_completesOnFailure() {
         // Given
         let expectation = XCTestExpectation(description: "expects failure")
         apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .failure(.init(domain: "failure", code: 1234)))
         }
-        
+
         // When
         sut.verifyPassword(password: "", authInfo: .init()) { result in
             switch result {
@@ -266,11 +266,11 @@ final class PasswordVerifierTests: XCTestCase {
             }
             expectation.fulfill()
         }
-        
+
         // Then
         wait(for: [expectation], timeout: 0.1)
     }
-    
+
     func test_verifyPassword_completeOnFailure_parsingError() {
         // Given
         let error: NSError = .init(domain: "", code: 1234)
@@ -279,7 +279,7 @@ final class PasswordVerifierTests: XCTestCase {
             expectation.fulfill()
             completion(nil, .failure(error))
         }
-        
+
         // When
         sut.verifyPassword(password: "", authInfo: .init()) { result in
             switch result {
@@ -289,7 +289,7 @@ final class PasswordVerifierTests: XCTestCase {
                 XCTAssertEqual(error, .parsingError(error))
             }
         }
-        
+
         // Then
         wait(for: [expectation], timeout: 0.1)
     }

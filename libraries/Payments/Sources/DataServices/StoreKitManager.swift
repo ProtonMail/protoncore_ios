@@ -163,7 +163,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     private func callErrorCompletion(for cache: UserInitiatedPurchaseCache, with error: Error) {
         threadSafeCache.removeValue(for: cache, in: \.errorCompletion, defaultValue: defaultErrorCallback) { $0?(error) }
     }
-    
+
     private func getSuccessCompletion(for cache: UserInitiatedPurchaseCache, completion: @escaping (SuccessCallback?) -> Void) {
         threadSafeCache.removeValue(for: cache, in: \.successCompletion, completion: completion)
     }
@@ -171,7 +171,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     private func getErrorCompletion(for cache: UserInitiatedPurchaseCache, completion: @escaping (ErrorCallback?) -> Void) {
         threadSafeCache.removeValue(for: cache, in: \.errorCompletion, defaultValue: defaultErrorCallback, completion: completion)
     }
-    
+
     private lazy var defaultSuccessCallback: SuccessCallback = { [weak self] result in
         guard let self = self else { return }
         DispatchQueue.main.asyncAfter(deadline: .now() + self.alertViewDelay) { [weak self] in
@@ -196,7 +196,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
             self?.confirmUserValidationAlertView(error: error, userName: currentUsername, completion: completion)
         }
     }
-    
+
     private var processingType: ProcessingType {
         guard applicationUserId() == nil else {
             switch planService {
@@ -212,9 +212,9 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
         }
         return .registration
     }
-    
+
     private var removedTransactions: (([SKPaymentTransaction]) -> Void)?
-    
+
     private func finishTransaction(transaction: SKPaymentTransaction, finishCallback: (() -> Void)?) {
         paymentQueue.finishTransaction(transaction)
         removedTransactions = { transactions in
@@ -260,7 +260,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
         unsubscribeFromPaymentQueue()
         paymentQueue.add(self)
     }
-    
+
     public func unsubscribeFromPaymentQueue() {
         paymentQueue.remove(self)
     }
@@ -432,7 +432,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
         let hashedUserId = hash(userId: userId)
 
         let amountDueCacheKey = UserInitiatedPurchaseCache(storeKitProductId: storeKitProduct.productIdentifier, hashedUserId: hashedUserId)
-        
+
         threadSafeCache.set(value: amountDue, for: amountDueCacheKey, in: \.amountDue)
 
         switch planService {
@@ -520,7 +520,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     public func hasUnfinishedPurchase() -> Bool {
         return !paymentQueue.transactions.filter { $0.transactionState != .failed }.isEmpty
     }
-    
+
     public func hasIAPInProgress() -> Bool {
         return paymentQueue.transactions.filter {
             $0.transactionState == .purchasing || $0.transactionState == .deferred
@@ -592,7 +592,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue, removedTransactions transactions: [SKPaymentTransaction]) {
         removedTransactions?(transactions)
     }
-    
+
     private func processAllStoreKitTransactionsCurrentlyFoundInThePaymentQueue(finishHandler: FinishCallback?) {
         self.transactionsQueue.cancelAllOperations()
 
@@ -846,7 +846,7 @@ extension StoreKitManager {
             throw Errors.haveTransactionOfAnotherUser
         }
     }
-    
+
     private func successCompletionAlertView(result: PaymentSucceeded) {
         guard case .resolvingIAPToCreditsCausedByError = result else { return }
         paymentsAlertManager.creditsAppliedAlert { [weak self] in
@@ -909,11 +909,11 @@ extension StoreKitManager: ProcessDependencies {
             }
         }
     }
-    
+
     var finishTransaction: (SKPaymentTransaction, (() -> Void)?) -> Void { {
         self.finishTransaction(transaction: $0, finishCallback: $1)
     } }
-    
+
     func addTransactionsBeforeSignup(transaction: SKPaymentTransaction) {
         // TODO: should it be thread safe?
         transactionsMadeBeforeSignup.append(transaction)

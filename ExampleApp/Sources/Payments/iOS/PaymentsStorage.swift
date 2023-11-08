@@ -24,26 +24,26 @@ import Foundation
 import ProtonCorePayments
 
 public class PaymentsStorage {
-    
+
     private static let migrationKey = "migratedTo"
-    
+
     private static let standardDefaults = UserDefaults.standard
     private static var specifiedDefaults: UserDefaults?
-    
+
     public static func setSpecificDefaults(defaults: UserDefaults) {
         if !defaults.bool(forKey: PaymentsStorage.migrationKey) {
             // Move any compatible data from old defaults to the new one
             PaymentsStorage.standardDefaults.dictionaryRepresentation().forEach { (key, value) in
                 defaults.set(value, forKey: key)
             }
-            
+
             defaults.setValue(true, forKey: PaymentsStorage.migrationKey)
             defaults.synchronize()
         }
-        
+
         PaymentsStorage.specifiedDefaults = defaults
     }
-    
+
     public static func userDefaults() -> UserDefaults {
         if let specifiedDefaults = specifiedDefaults {
             return specifiedDefaults
@@ -51,11 +51,11 @@ public class PaymentsStorage {
             return PaymentsStorage.standardDefaults
         }
     }
-    
+
     public static func setValue(_ value: Any?, forKey key: String) {
         PaymentsStorage.userDefaults().setValue(value, forKey: key)
     }
-    
+
     public static func contains(_ key: String) -> Bool {
         return PaymentsStorage.userDefaults().object(forKey: key) != nil
     }
@@ -64,7 +64,7 @@ public class PaymentsStorage {
 final class UserCachedStatus: ServicePlanDataStorage {
     var updateSubscriptionBlock: ((Subscription?) -> Void)?
     var updateUserInfoBlock: ((Credits?) -> Void)?
-    
+
     init(updateSubscriptionBlock: ((Subscription?) -> Void)? = nil, updateUserInfoBlock: ((Credits?) -> Void)? = nil) {
         self.updateSubscriptionBlock = updateSubscriptionBlock
         self.updateUserInfoBlock = updateUserInfoBlock
@@ -82,7 +82,7 @@ final class UserCachedStatus: ServicePlanDataStorage {
             PaymentsStorage.setValue(data, forKey: "servicePlansDetails")
         }
     }
-    
+
     var defaultPlanDetails: Plan? {
         get {
             guard let data = PaymentsStorage.userDefaults().data(forKey: "defaultPlanDetails") else {
@@ -95,7 +95,7 @@ final class UserCachedStatus: ServicePlanDataStorage {
             PaymentsStorage.setValue(data, forKey: "defaultPlanDetails")
         }
     }
-    
+
     var currentSubscription: Subscription? {
         get {
             guard let data = PaymentsStorage.userDefaults().data(forKey: "currentSubscription") else {
@@ -109,7 +109,7 @@ final class UserCachedStatus: ServicePlanDataStorage {
             self.updateSubscriptionBlock?(newValue)
         }
     }
-    
+
     var paymentsBackendStatusAcceptsIAP: Bool {
         get {
             return PaymentsStorage.userDefaults().bool(forKey: "paymentsBackendStatusAcceptsIAP")
@@ -124,7 +124,7 @@ final class UserCachedStatus: ServicePlanDataStorage {
             self.updateUserInfoBlock?(credits)
         }
     }
-    
+
     var paymentMethods: [PaymentMethod]? {
         get {
             guard let data = PaymentsStorage.userDefaults().data(forKey: "paymentMethods") else { return nil }

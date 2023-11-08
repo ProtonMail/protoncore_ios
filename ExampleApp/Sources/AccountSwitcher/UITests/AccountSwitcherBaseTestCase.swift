@@ -30,7 +30,7 @@ import ProtonCoreTestingToolkit
 #endif
 
 class AccountSwitcherBaseTestCase: ProtonCoreBaseTestCase {
-    
+
     let entryRobot = CoreExampleMainRobot()
     var appRobot: AccountSwitcherSampleAppRobot!
 

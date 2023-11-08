@@ -59,23 +59,23 @@ public enum WelcomeScreenMode {
 }
 
 public final class LoginSampleAppRobot: CoreElements {
-    
+
     @discardableResult
     public func showLogin() -> LoginRobot {
         button(showLoginButtonLabelText).waitUntilExists().tap()
         return LoginRobot()
     }
-    
+
     public func showWelcomeScreen() -> WelcomeRobot {
         button(showLoginButtonLabelText).waitUntilExists().tap()
         return WelcomeRobot()
     }
-    
+
     public func showSignup() -> SignupRobot {
         button(showSignupButtonLabelText).tap()
         return SignupRobot()
     }
-    
+
     // TODO to migrate to pmtools
     public func backgroundApp<T: CoreElements>(app: XCUIApplication, robot _: T.Type) -> T {
         XCUIDevice.shared.press(.home)
@@ -83,28 +83,28 @@ public final class LoginSampleAppRobot: CoreElements {
         XCTAssertTrue(background)
         return T()
     }
-    
+
     public func activateApp<T: CoreElements>(app: XCUIApplication, robot _: T.Type) -> T {
         app.activate()
         XCTAssertTrue(app.state == .runningForeground)
         return T()
     }
-    
+
     public func activateAppWithSiri<T: CoreElements>(robot _: T.Type) -> T {
         XCUIDevice.shared.siriService.activate(voiceRecognitionText: "Open \(mailApp)")
         return T()
     }
-    
+
     public func launchApp<T: CoreElements>(app: XCUIApplication, robot _: T.Type) -> T {
         app.launch()
         return T()
     }
-    
+
     public func terminateApp<T: CoreElements>(app: XCUIApplication, robot _: T.Type) -> T {
         app.terminate()
         return T()
     }
-    
+
     @discardableResult
     public func changeEnvironmentToCustomIfDomainHereBlackOtherwise(_ dynamicDomainAvailable: Bool) -> LoginSampleAppRobot {
         if dynamicDomainAvailable {
@@ -114,46 +114,46 @@ public final class LoginSampleAppRobot: CoreElements {
         }
         return self
     }
-    
+
     @discardableResult
     public func changeEnvironmentToProd() -> LoginSampleAppRobot {
         button(environmentProdText).tap()
         return self
     }
-    
+
     @discardableResult
     public func changeEnvironmentToPaymentsBlack() -> LoginSampleAppRobot {
         button(environmentPaymentsBlackText).tap()
         return self
     }
-    
+
     @discardableResult
     public func changeEnvironmentToFosseyBlack() -> LoginSampleAppRobot {
         button(environmentFosseyBlackText).tap()
         return self
     }
-    
+
     public func changeAccountTypeToExternal() -> LoginSampleAppRobot {
         button(accountExternal).tap()
         return self
     }
-    
+
     public func changeAccountTypeToInternal() -> LoginSampleAppRobot {
         button(accountInternal).tap()
         return self
     }
-    
+
     public func changeAccountTypeToUsername() -> LoginSampleAppRobot {
         button(accountTypeUsername).tap()
         return self
     }
-    
+
     @discardableResult
     public func logoutButtonTap() -> LoginSampleAppRobot {
         button(logoutButtonLabelText).waitUntilExists(time: 180).tap()
         return self
     }
-    
+
     @discardableResult
     public func changeWelcomeScreenMode(to mode: WelcomeScreenMode) -> LoginSampleAppRobot {
         switch mode {
@@ -165,59 +165,59 @@ public final class LoginSampleAppRobot: CoreElements {
         }
         return self
     }
-    
+
     @discardableResult
     public func closeSwitchTap() -> LoginSampleAppRobot {
         swittch(closeSwitchText).tap()
         return self
     }
-    
+
     @discardableResult
     public func planSelectorSwitchTap() -> LoginSampleAppRobot {
         swittch(planSelectorSwitchText).tap()
         return self
     }
-    
+
     @discardableResult
     public func humanVerificationSwitchTap() -> LoginSampleAppRobot {
         swittch(humanVerificationSwitch).tap()
         return self
     }
-    
+
     @discardableResult
     public func showDeleteAccount() -> LoginSampleAppRobot {
         button(deleteAccountButtonLabelText).waitUntilExists().tap()
         return self
     }
-    
+
     public let verify = Verify()
     public let verifyDeleteAccount = VerifyDeleteAccount()
-    
+
     public class Verify: CoreElements {
         public func buttonLogoutVisible() {
             button(logoutButtonLabelText).waitUntilExists(time: 90).checkExists()
         }
-        
+
         public func buttonLogoutIsNotVisible() {
             button(logoutButtonLabelText).waitUntilGone()
         }
-        
+
         public func dialogLogoutShown() -> LoginSampleAppRobot {
             staticText(logoutDialogText).waitUntilExists(time: 20).checkExists()
             return LoginSampleAppRobot()
         }
-        
+
         public func buttonLoginVisible() {
             button(showLoginButtonLabelText).waitUntilExists().checkExists()
         }
-        
+
         @discardableResult
         public func buttonDeleAccountVisible() -> LoginSampleAppRobot {
             button(deleteAccountButtonLabelText).waitUntilExists(time: 90).checkExists()
             return LoginSampleAppRobot()
         }
     }
-    
+
     public class VerifyDeleteAccount: CoreElements {
         public func deleteAccountShown() {
             button(deleteAccountDeleteButton).waitUntilExists(time: 30).checkExists()
@@ -225,7 +225,7 @@ public final class LoginSampleAppRobot: CoreElements {
             staticText(deleteAccountWarning).checkExists()
         }
     }
-    
+
     @discardableResult
     public func updateFeatures(featureEnv: String) -> LoginSampleAppRobot {
         XCUIApplication().launchEnvironment = ["FeatureSwitch": featureEnv]

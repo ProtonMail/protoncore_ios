@@ -38,7 +38,7 @@ import ProtonCoreTestingToolkit
 import ProtonCoreObfuscatedConstants
 @testable import ProtonCoreLoginUI
 
-class InputValidationTests: XCTestCase {    
+class InputValidationTests: XCTestCase {
     let data = CreateAddressData(email: "test@spam.la", credential: AuthCredential(LoginTestUser.credential), user: LoginTestUser.user, mailboxPassword: "123", passwordMode: .one)
 
     func testEmptyLoginPassword() {

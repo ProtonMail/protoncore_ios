@@ -27,7 +27,7 @@ import Foundation
 import UIKit
 
 public extension UIDevice {
-    
+
     var isIpad: Bool {
         return UIDevice.current.userInterfaceIdiom == .pad
     }

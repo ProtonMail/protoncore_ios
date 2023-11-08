@@ -28,13 +28,13 @@ import ProtonCoreTestingToolkit
 @testable import ProtonCoreServices
 
 final class ServicesLocalizationTests: XCTestCase {
- 
+
     func testAllSubstitutionsAreFollowingTheExpectedFormat() {
         testAllSubstitutionsAreValid(for: SRTranslations.self)
     }
-    
+
     func testAllTranslationsAreDefinedForAllLanguages() {
         testAllLocalizationsAreDefined(for: SRTranslations.self, prefixForMissingValue: #function)
     }
-    
+
 }

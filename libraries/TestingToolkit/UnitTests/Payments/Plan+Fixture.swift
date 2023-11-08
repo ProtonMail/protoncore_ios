@@ -26,7 +26,7 @@ import ProtonCoreTestingToolkitUnitTestsCore
 import ProtonCorePayments
 
 public extension Plan {
-    
+
     static var dummy: Plan {
         Plan(name: .empty, ID: nil, maxAddresses: .zero, maxMembers: .zero, pricing: nil, defaultPricing: nil, vendors: nil, offer: nil,
              maxDomains: .zero, maxSpace: .zero, maxRewardsSpace: nil, type: .zero, title: .empty, maxVPN: .zero, maxTier: nil,

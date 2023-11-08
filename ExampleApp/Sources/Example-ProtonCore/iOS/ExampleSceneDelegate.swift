@@ -25,12 +25,12 @@ import SwiftUI
 final class ExampleSceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    
+
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
     }
-    
+
     func sceneDidEnterBackground(_ scene: UIScene) {
         if UIApplication.shared.applicationState == .background ||
             nil == UIApplication.shared.openSessions.compactMap({ $0.scene }).first(where: { $0.activationState != .background })

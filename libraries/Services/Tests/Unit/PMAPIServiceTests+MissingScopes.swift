@@ -48,12 +48,12 @@ final class PMAPIServiceMissingScopesTests: XCTestCase {
     var missingScopesDelegateMock: MissingScopesDelegateMock!
     var authInfo: AuthInfoResponse!
     var responseHandlerData: PMResponseHandlerData!
-    
+
     override func setUp() {
         super.setUp()
         setupMocks()
     }
-    
+
     private func setupMocks() {
         let dohMock = DohMock()
         dohMock.statusStub.fixture = .on
@@ -68,7 +68,7 @@ final class PMAPIServiceMissingScopesTests: XCTestCase {
         sessionMock = sessionMockInstance
         sessionFactoryMock = SessionFactoryMock()
         sessionFactoryMock.createSessionInstanceStub.bodyIs { _, _ in return sessionMockInstance }
-        
+
         trustKitProviderMock = TrustKitProviderMock()
         missingScopesDelegateMock = MissingScopesDelegateMock()
         authInfo = .init(
@@ -88,7 +88,7 @@ final class PMAPIServiceMissingScopesTests: XCTestCase {
             onDataTaskCreated: { _ in }
         )
     }
-    
+
     func testMissingScopesHandlerOnClosedWithErrorCallsCompletion() {
         // Given
         let expectationOnClosedWithError = XCTestExpectation(description: "on .closedWithError")
@@ -105,18 +105,18 @@ final class PMAPIServiceMissingScopesTests: XCTestCase {
                                                     trustKitProvider: trustKitProviderMock,
                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         service.missingScopesDelegate = missingScopesDelegateMock
-        
+
         // When
         service.missingScopesHandler(
             username: "username",
             responseHandler: responseHandlerData,
             completion: completion
         )
-        
+
         // Then
         wait(for: [expectationOnClosedWithError], timeout: 0.1)
     }
-    
+
     func testMissingScopesHandlerOnUnlockRestartRequest() {
         // Given
         let expectationOnUnlock = XCTestExpectation(description: "on .unlock")
@@ -144,14 +144,14 @@ final class PMAPIServiceMissingScopesTests: XCTestCase {
                                                     trustKitProvider: trustKitProviderMock,
                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         service.missingScopesDelegate = missingScopesDelegateMock
-        
+
         // When
         service.missingScopesHandler(
             username: "username",
             responseHandler: responseHandlerData,
             completion: completion
         )
-        
+
         // Then
         wait(for: [expectationOnUnlock], timeout: 0.1)
     }

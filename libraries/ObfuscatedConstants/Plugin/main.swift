@@ -24,7 +24,7 @@ import PackagePlugin
 
 @main
 struct GenerateObfuscatedConstants: CommandPlugin {
-        
+
     func performCommand(context: PackagePlugin.PluginContext, arguments: [String]) async throws {
         guard let obfuscated = context.package.targets.first(where: { $0.name == "ProtonCore-ObfuscatedConstants" })
         else { return }

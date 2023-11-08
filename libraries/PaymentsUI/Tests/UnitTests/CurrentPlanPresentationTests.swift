@@ -34,7 +34,7 @@ import ProtonCoreTestingToolkit
 
 final class CurrentPlanPresentationTests: XCTestCase {
     var sut: CurrentPlanPresentation!
-    
+
     func test_createCurrentPlan_free_success() async throws {
         // Given
         let storeKitManager = StoreKitManagerMock()
@@ -42,17 +42,17 @@ final class CurrentPlanPresentationTests: XCTestCase {
             (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs"))
         }
         let plansDataSource = PlansDataSourceMock()
-        
+
         let subscription = CurrentPlan.Subscription(
             title: "title",
             description: "description",
             cycleDescription: "cycleDescription",
             entitlements: []
         )
-        
+
         // When
         sut = try await CurrentPlanPresentation.createCurrentPlan(from: subscription, plansDataSource: plansDataSource)
-        
+
         // Then
         XCTAssertEqual(sut.details.title, "title")
         XCTAssertEqual(sut.details.description, "description")
@@ -62,7 +62,7 @@ final class CurrentPlanPresentationTests: XCTestCase {
         XCTAssertTrue(sut.details.entitlements.isEmpty)
         XCTAssertFalse(sut.details.hidePriceDetails)
     }
-    
+
     func test_createCurrentPlan_paidOnWeb_success() async throws {
         // Given
         let storeKitManager = StoreKitManagerMock()
@@ -70,7 +70,7 @@ final class CurrentPlanPresentationTests: XCTestCase {
             (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs"))
         }
         let plansDataSource = PlansDataSourceMock()
-        
+
         let subscription = CurrentPlan.Subscription(
             title: "title",
             description: "description",
@@ -80,10 +80,10 @@ final class CurrentPlanPresentationTests: XCTestCase {
             external: .web,
             entitlements: []
         )
-        
+
         // When
         sut = try await CurrentPlanPresentation.createCurrentPlan(from: subscription, plansDataSource: plansDataSource)
-        
+
         // Then
         XCTAssertEqual(sut.details.title, "title")
         XCTAssertEqual(sut.details.description, "description")
@@ -93,7 +93,7 @@ final class CurrentPlanPresentationTests: XCTestCase {
         XCTAssertTrue(sut.details.entitlements.isEmpty)
         XCTAssertFalse(sut.details.hidePriceDetails)
     }
-    
+
     func test_createCurrentPlan_paidOnAppStore_success() async throws {
         // Given
         let storeKitManager = StoreKitManagerMock()
@@ -101,7 +101,7 @@ final class CurrentPlanPresentationTests: XCTestCase {
             (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs"))
         }
         let plansDataSource = PlansDataSourceMock()
-        
+
         let subscription = CurrentPlan.Subscription(
             title: "title",
             description: "description",
@@ -111,10 +111,10 @@ final class CurrentPlanPresentationTests: XCTestCase {
             external: .apple,
             entitlements: []
         )
-        
+
         // When
         sut = try await CurrentPlanPresentation.createCurrentPlan(from: subscription, plansDataSource: plansDataSource)
-        
+
         // Then
         XCTAssertEqual(sut.details.title, "title")
         XCTAssertEqual(sut.details.description, "description")

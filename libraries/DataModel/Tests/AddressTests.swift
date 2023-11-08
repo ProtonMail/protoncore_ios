@@ -24,7 +24,7 @@ import XCTest
 @testable import ProtonCoreDataModel
 
 class AddressTests: XCTestCase {
-    
+
     func testAddressesDecode() {
         let json = """
         [
@@ -93,7 +93,7 @@ class AddressTests: XCTestCase {
             XCTAssertNil(expectationError)
         }
     }
-    
+
     func testKeyDecodeMissingKeys() {
         let json = """
         {
@@ -126,7 +126,7 @@ class AddressTests: XCTestCase {
         XCTAssertEqual(object.primary, 1)
         XCTAssertEqual(object.active, 1)
     }
-    
+
     func testAddressArchive() {
         let json = """
         {
@@ -161,14 +161,14 @@ class AddressTests: XCTestCase {
             let decoder = JSONDecoder.decapitalisingFirstLetter
             let object = try decoder.decode(Address.self, from: json.data(using: .utf8)!)
             XCTAssertNotNil(object)
-            
+
             let outData = object.archive()
             let outKey = Address.unarchive(outData)
             XCTAssertEqual(object, outKey)
-            
+
             let outKey1 = Address.unarchive(nil)
             XCTAssertEqual(outKey1, nil)
-            
+
             expectation.fulfill()
         } catch let error {
             XCTFail(error.localizedDescription)
@@ -176,9 +176,9 @@ class AddressTests: XCTestCase {
         self.waitForExpectations(timeout: 30) { (expectationError) -> Void in
             XCTAssertNil(expectationError)
         }
-        
+
     }
-    
+
     func testConvertFirstAddressToAddress_v2() {
         let address = Address(
             addressID: "<test_address_id_1>",
@@ -207,7 +207,7 @@ class AddressTests: XCTestCase {
                 )
             ]
         )
-        
+
         XCTAssertEqual(address.toAddress_v2, .init(
             id: "<test_address_id_1>",
             domainID: "<test_domain_id_1>",
@@ -233,7 +233,7 @@ class AddressTests: XCTestCase {
             ])
         )
     }
-    
+
     func testConvertSecondAddressToAddress_v2() {
         let address = Address(
             addressID: "<test_address_id_2>",
@@ -262,7 +262,7 @@ class AddressTests: XCTestCase {
                 )
             ]
         )
-        
+
         XCTAssertEqual(address.toAddress_v2, .init(
             id: "<test_address_id_2>",
             domainID: "<test_domain_id_2>",

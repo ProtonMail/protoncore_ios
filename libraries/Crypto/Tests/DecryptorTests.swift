@@ -33,7 +33,7 @@ class DecryptorTests: CryptoTestBase {
         do {
             let armoredMessage: ArmoredMessage = try Encryptor.encrypt(publicKey: ArmoredKey.init(value: pubKey),
                                                                         cleartext: clearText)
-            
+
             let decryptionKey = DecryptionKey.init(privateKey: ArmoredKey.init(value: privKey),
                                                    passphrase: Passphrase.init(value: privKeyPassphrase))
             let plainText: String = try Decryptor.decrypt(decryptionKeys: [decryptionKey], encrypted: armoredMessage)
@@ -42,7 +42,7 @@ class DecryptorTests: CryptoTestBase {
             XCTFail("Should not happen: \(error)")
         }
     }
-    
+
     func testDecryptDataNoVerify() {
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
@@ -51,7 +51,7 @@ class DecryptorTests: CryptoTestBase {
         do {
             let armoredMessage: ArmoredMessage = try Encryptor.encrypt(publicKey: ArmoredKey.init(value: pubKey),
                                                                         clearData: clearData)
-            
+
             let decryptionKey = DecryptionKey.init(privateKey: ArmoredKey.init(value: privKey),
                                                    passphrase: Passphrase.init(value: privKeyPassphrase))
             let plainData: Data = try Decryptor.decrypt(decryptionKeys: [decryptionKey], encrypted: armoredMessage)
@@ -60,7 +60,7 @@ class DecryptorTests: CryptoTestBase {
             XCTFail("Should not happen: \(error)")
         }
     }
-    
+
     func testDecryptSplitData() {
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
@@ -70,20 +70,20 @@ class DecryptorTests: CryptoTestBase {
             let encryptMsg: ArmoredMessage = try Encryptor.encrypt(publicKey: ArmoredKey.init(value: pubKey),
                                                                        cleartext: clearText)
             let split = try encryptMsg.split()
-            
+
             let decryptionKey = DecryptionKey.init(privateKey: ArmoredKey.init(value: privKey),
                                                    passphrase: Passphrase.init(value: privKeyPassphrase))
-            
+
             let plainData: Data = try Decryptor.decrypt(decryptionKeys: [decryptionKey], split: split)
-            
+
             let plainString = String(data: plainData, encoding: .utf8)
-            
+
             XCTAssertEqual(clearText, plainString)
         } catch let error {
             XCTFail("Should not happen: \(error)")
         }
     }
-    
+
     func testDecryptKeyPacket() {
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
@@ -102,7 +102,7 @@ class DecryptorTests: CryptoTestBase {
             XCTFail("Should not happen: \(error)")
         }
     }
-    
+
     func testDecryptKeyPacketVerify() {
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
@@ -114,10 +114,10 @@ class DecryptorTests: CryptoTestBase {
             let encryptMsg: ArmoredMessage = try Encryptor.encrypt(publicKey: ArmoredKey.init(value: pubKey),
                                                                        cleartext: clearText, signerKey: signerKey)
             let split = try encryptMsg.split()
-            
+
             let decryptionKey = DecryptionKey.init(privateKey: ArmoredKey.init(value: privKey),
                                                    passphrase: Passphrase.init(value: privKeyPassphrase))
-            
+
             let sessionKey: SessionKey = try Decryptor.decryptSessionKey(decryptionKeys: [decryptionKey], keyPacket: split.keyPacket)
             XCTAssertTrue(sessionKey.sessionKey.count > 0)
             XCTAssertTrue(sessionKey.algo == .AES256)

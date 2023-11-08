@@ -57,7 +57,7 @@ public struct PreContact: Equatable {
     public let isEncrypted: Bool
     public let hasMime: Bool
     public let isPlainText: Bool
-    
+
     public init(
         email: String,
         pubKey: Data?,
@@ -78,7 +78,7 @@ public struct PreContact: Equatable {
 }
 
 extension Array where Element == PreContact {
-    
+
     func find(email: String) -> PreContact? {
         for c in self where c.email == email {
             return c
@@ -126,9 +126,9 @@ final class PreAttachment {
     /// clear session key
     let Session: Data
     let Algo: String
-    
+
     let att: AttachmentContent
-    
+
     /// initial
     ///
     /// - Parameters:
@@ -152,84 +152,84 @@ class SendBuilder {
     var bodyDataPacket: Data!
     var bodySession: Data!
     var bodySessionAlgo: String!
-    
+
     var preAddresses: [PreAddress] = [PreAddress]()
     var preAttachments: [PreAttachment] = [PreAttachment]()
     var password: String!
     var hit: String?
-    
+
     var mimeSession: Data!
     var mimeSessionAlgo: String!
     var mimeDataPackage: String!
-    
+
     var clearBody: String!
-    
+
     var plainTextSession: Data!
     var plainTextSessionAlgo: String!
     var plainTextDataPackage: String!
-    
+
     var clearPlainTextBody: String!
-    
+
     init() { }
-    
+
     func update(bodyData data: Data, bodySession: Data, algo: String) {
         self.bodyDataPacket = data
         self.bodySession = bodySession
         self.bodySessionAlgo = algo
     }
-    
+
     func set(pwd password: String, hit: String?) {
         self.password = password
         self.hit = hit
     }
-    
+
     func set(clear clearBody: String) {
         self.clearBody = clearBody
     }
-    
+
     func add(addr address: PreAddress) {
         preAddresses.append(address)
     }
-    
+
     func add(att attachment: PreAttachment) {
         self.preAttachments.append(attachment)
     }
-    
+
     var clearBodyPackage: ClearBodyPackage? {
         if self.contains(type: .cinln) || self.contains(type: .cmime) {
             return ClearBodyPackage(key: self.encodedSession, algo: self.bodySessionAlgo)
         }
         return nil
     }
-    
+
     var clearMimeBodyPackage: ClearBodyPackage? {
         if self.contains(type: .cmime) {
             return ClearBodyPackage(key: self.mimeSession.encodeBase64(), algo: self.mimeSessionAlgo)
         }
         return nil
     }
-    
+
     var clearPlainBodyPackage: ClearBodyPackage? {
         if hasPlainText && (self.contains(type: .cinln) || self.contains(type: .cmime)) {
             return ClearBodyPackage(key: self.plainTextSession.encodeBase64(), algo: self.plainTextSessionAlgo)
         }
         return nil
     }
-    
+
     var mimeBody: String {
         if self.hasMime {
            return mimeDataPackage
         }
         return ""
     }
-    
+
     var plainBody: String {
         if self.hasPlainText {
             return plainTextDataPackage
         }
         return ""
     }
-    
+
     var clearAtts: [ClearAttachmentPackage]? {
         if self.contains(type: .cinln) || self.contains(type: .cmime) {
             var atts = [ClearAttachmentPackage]()
@@ -257,7 +257,7 @@ class SendBuilder {
         if rt == 2 && !pgpencrypt && eo {
             return .eo
         }
-        
+
         // pgp mime clear
         if rt == 2 && mime {
             return .cmime
@@ -266,12 +266,12 @@ class SendBuilder {
         if rt == 2 && pgpkey && pgpencrypt {
             return .inlnpgp
         }
-        
+
         // seems this check is useless 
         if rt == 2 && eo {
             return .eo
         }
-        
+
         return .cinln
     }
 
@@ -289,7 +289,7 @@ class SendBuilder {
         } catch {
             // ignore
         }
-        
+
         let typeMessage = "Content-Type: multipart/related; boundary=\"\(boundaryMsg)\""
         signbody.append(contentsOf: typeMessage + "\r\n")
         signbody.append(contentsOf: "\r\n")
@@ -302,7 +302,7 @@ class SendBuilder {
         signbody.append(contentsOf: "\r\n")
         signbody.append(contentsOf: "\r\n")
         signbody.append(contentsOf: "\r\n")
-        
+
         for attachment in self.preAttachments {
             let att = attachment.att
             signbody.append(contentsOf: "--\(boundaryMsg)" + "\r\n")
@@ -320,7 +320,7 @@ class SendBuilder {
                 // ignore
             }
             signbody.append(contentsOf: "Content-ID: <\(contentID)>\r\n")
-            
+
             signbody.append(contentsOf: "\r\n")
             signbody.append(contentsOf: att.fileData + "\r\n")
         }
@@ -335,7 +335,7 @@ class SendBuilder {
         self.mimeSession = session?.key
         self.mimeSessionAlgo = session?.algo
         self.mimeDataPackage = spilted?.dataPacket?.base64EncodedString()
-        
+
         return self
     }
 
@@ -352,16 +352,16 @@ class SendBuilder {
         let session = newSchema ?
             try spilted?.keyPacket?.getSessionFromPubKeyPackageNonOptional(userKeys: userKeys, passphrase: passphrase, keys: keys) :
             try spilted?.keyPacket?.getSessionFromPubKeyPackageNonOptional(addrPrivKey: senderKey.privateKey, passphrase: passphrase)
-        
+
         self.plainTextSession = session?.key
         self.plainTextSessionAlgo = session?.algo
         self.plainTextDataPackage = spilted?.dataPacket?.base64EncodedString()
-        
+
         self.clearPlainTextBody = plainText
-        
+
         return self
     }
-    
+
     var builders: [PackageBuilder] {
         var out: [PackageBuilder] = [PackageBuilder]()
         for pre in preAddresses {
@@ -400,7 +400,7 @@ class SendBuilder {
         }
         return out
     }
-    
+
     var hasMime: Bool { self.contains(type: .pgpmime) || self.contains(type: .cmime) }
 
     var hasPlainText: Bool {
@@ -409,7 +409,7 @@ class SendBuilder {
         }
         return false
     }
-    
+
     func contains(type: SendType) -> Bool {
         for pre in preAddresses {
             let buildType = self.build(type: pre.recipintType, eo: pre.eo,
@@ -420,13 +420,13 @@ class SendBuilder {
         }
         return false
     }
-    
+
     func buildAddressPackages() -> [Result<AddressPackageBase, Error>] {
-        
+
         assert(Thread.isMainThread == false, "This is a blocking call, should never be called from the main thread")
-        
+
         let group = DispatchGroup()
-        
+
         var results: [(UUID, Result<AddressPackageBase, Error>)] = []
         let requests = builders.map { (UUID(), $0) }
         let uuids = requests.map(\.0)
@@ -438,7 +438,7 @@ class SendBuilder {
             }
         }
         group.wait()
-        
+
         return results.sorted { lhs, rhs in
             guard let lhIndex = uuids.firstIndex(of: lhs.0), let rhIndex = uuids.firstIndex(of: rhs.0) else {
                 assertionFailure("Should never happen — the UUIDs associated with requests must not be changed")
@@ -447,15 +447,15 @@ class SendBuilder {
             return lhIndex < rhIndex
         }.map { $0.1 }
     }
-    
+
     var encodedBody: String {
         bodyDataPacket.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
     }
-    
+
     var encodedSession: String {
         bodySession.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
     }
-    
+
     var outSideUser: Bool {
         for pre in preAddresses where pre.recipintType == 2 {
             return true
@@ -475,14 +475,14 @@ class PackageBuilder: IPackageBuilder {
     func build(completion: @escaping (Result<AddressPackageBase, Error>) -> Void) {
         fatalError("This method must be overridden")
     }
-    
+
     let sendType: SendType!
-    
+
     init(type: SendType, addr: PreAddress) {
         self.sendType = type
         self.preAddress = addr
     }
-    
+
 }
 
 /// Encrypt outside address builder
@@ -491,10 +491,10 @@ class EOAddressBuilder: PackageBuilder {
     let hit: String?
     let session: Data
     let algo: String
-    
+
     /// prepared attachment list
     let preAttachments: [PreAttachment]
-    
+
     init(type: SendType, addr: PreAddress, session: Data, algo: String, password: String, atts: [PreAttachment], hit: String?) {
         self.session = session
         self.algo = algo
@@ -503,7 +503,7 @@ class EOAddressBuilder: PackageBuilder {
         self.hit = hit
         super.init(type: type, addr: addr)
     }
-    
+
     override func build(completion: @escaping (Result<AddressPackageBase, Error>) -> Void) {
         fatalError("This method must be overridden")
     }
@@ -514,10 +514,10 @@ class PGPAddressBuilder: PackageBuilder {
     /// message body session key
     let session: Data
     let algo: String
-    
+
     /// prepared attachment list
     let preAttachments: [PreAttachment]
-    
+
     /// Initial
     ///
     /// - Parameters:
@@ -531,7 +531,7 @@ class PGPAddressBuilder: PackageBuilder {
         self.preAttachments = atts
         super.init(type: type, addr: addr)
     }
-    
+
     override func build(completion: @escaping (Result<AddressPackageBase, Error>) -> Void) {
         builderQueue.async {
             do {
@@ -542,7 +542,7 @@ class PGPAddressBuilder: PackageBuilder {
                     let attPacket = AttachmentPackage(attID: att.ID, attKey: newKeyPack)
                     attPackages.append(attPacket)
                 }
-                
+
                 // if plainText
                 let newKeypacket = try self.session.getKeyPackage(publicKey: self.preAddress.pgpKey!, algo: self.algo)
                 let newEncodedKey = newKeypacket?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
@@ -571,13 +571,13 @@ class MimeAddressBuilder: PackageBuilder {
         self.algo = algo
         super.init(type: type, addr: addr)
     }
-    
+
     override func build(completion: @escaping (Result<AddressPackageBase, Error>) -> Void) {
         builderQueue.async {
             do {
                 let newKeypacket = try self.session.getKeyPackage(publicKey: self.preAddress.pgpKey!, algo: self.algo)
                 let newEncodedKey = newKeypacket?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
-                
+
                 let addr = MimeAddressPackage(email: self.preAddress.email, bodyKeyPacket: newEncodedKey, type: self.sendType, plainText: self.preAddress.isPlainText)
                 completion(.success(addr))
             } catch {
@@ -589,7 +589,7 @@ class MimeAddressBuilder: PackageBuilder {
 
 /// Address Builder for building the packages
 class ClearMimeAddressBuilder: PackageBuilder {
-    
+
     /// Initial
     ///
     /// - Parameters:
@@ -598,7 +598,7 @@ class ClearMimeAddressBuilder: PackageBuilder {
     override init(type: SendType, addr: PreAddress) {
         super.init(type: type, addr: addr)
     }
-    
+
     override func build(completion: @escaping (Result<AddressPackageBase, Error>) -> Void) {
         builderQueue.async {
             let addr = AddressPackageBase(email: self.preAddress.email, type: self.sendType, sign: self.preAddress.isSigned ? 1 : 0, plainText: self.preAddress.isPlainText)
@@ -612,10 +612,10 @@ class AddressBuilder: PackageBuilder {
     /// message body session key
     let session: Data
     let algo: String
-    
+
     /// prepared attachment list
     let preAttachments: [PreAttachment]
-    
+
     /// Initial
     ///
     /// - Parameters:
@@ -629,7 +629,7 @@ class AddressBuilder: PackageBuilder {
         self.preAttachments = atts
         super.init(type: type, addr: addr)
     }
-    
+
     override func build(completion: @escaping (Result<AddressPackageBase, Error>) -> Void) {
         builderQueue.async {
             do {
@@ -642,7 +642,7 @@ class AddressBuilder: PackageBuilder {
                         attPackages.append(attPacket)
                     }
                 }
-                
+
                 // TODO::will remove from here debuging or merge this class with PGPAddressBuildr
                 if let pk = self.preAddress.pgpKey {
                     let newKeypacket = try self.session.getKeyPackage(publicKey: pk, algo: self.algo)

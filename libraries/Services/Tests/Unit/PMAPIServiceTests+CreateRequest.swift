@@ -38,7 +38,7 @@ import ProtonCoreUtilities
 @testable import ProtonCoreNetworking
 
 final class PMAPIServiceCreateRequestTests: XCTestCase {
-    
+
     var dohMock: DohMock! = nil
     var sessionUID: String! = nil
     var cacheToClearMock: URLCacheMock! = nil
@@ -47,7 +47,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
     var trustKitProviderMock: TrustKitProviderMock! = nil
     var apiServiceDelegateMock: APIServiceDelegateMock! = nil
     var authDelegateMock: AuthDelegateMock! = nil
-    
+
     override func setUp() {
         super.setUp()
         dohMock = DohMock()
@@ -60,7 +60,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
         apiServiceDelegateMock = APIServiceDelegateMock()
         authDelegateMock = AuthDelegateMock()
     }
-    
+
     func testTimeoutTimeoutDohOFF() throws {
         let hostUrl = "proton.unittests"
         let sessionMockInstance = sessionMock!
@@ -111,7 +111,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
         XCTAssertTrue( sessionTest.request?.timeoutInterval == -100)
         XCTAssertTrue( sessionTest.request?.method == .put)
     }
-    
+
     func testCreateRequestTimeoutDohOn() throws {
         let hostUrl = "proton.unittests"
         let sessionMockInstance = sessionMock!
@@ -152,7 +152,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
                                           accessToken: "")
         XCTAssertTrue( sessionTest.request?.timeoutInterval == 100)
         XCTAssertTrue( sessionTest.request?.method == .post)
-        
+
         // don't konw if the -100 need to fail or pass
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .delete,
@@ -164,7 +164,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
         XCTAssertTrue( sessionTest.request?.timeoutInterval == -100)
         XCTAssertTrue( sessionTest.request?.method == .delete)
     }
-    
+
     func testCreateRequestAdditionalHeaders() throws {
         let hostUrl = "proton.unittests"
         let sessionMockInstance = sessionMock!
@@ -202,7 +202,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
         XCTAssertTrue( sessionTest.hasHeader(key: "b"))
         XCTAssertFalse( sessionTest.hasHeader(key: "c"))
     }
-    
+
     func testCreateRequestCustomHeaders() throws {
         let hostUrl = "proton.unittests"
         let sessionMockInstance = sessionMock!
@@ -238,7 +238,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
         XCTAssertFalse( sessionTest.hasHeader(key: "a"))
         XCTAssertFalse( sessionTest.hasHeader(key: "b"))
         XCTAssertFalse( sessionTest.hasHeader(key: "c"))
-        
+
         let testHeaders = ["a": "av", "b": "bc"]
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
@@ -255,7 +255,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
         XCTAssertTrue( sessionTest.hasHeader(key: "b"))
         XCTAssertFalse( sessionTest.hasHeader(key: "c"))
     }
-    
+
     func testCreateRequestAccessToken() throws {
         let hostUrl = "proton.unittests"
         let sessionMockInstance = sessionMock!
@@ -308,7 +308,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
         XCTAssertFalse( sessionTest.hasHeader(key: "c"))
         XCTAssertTrue( sessionTest.hasHeader(key: "Authorization"))
     }
-    
+
     func testCreateRequestUserID() throws {
         let hostUrl = "proton.unittests"
         let sessionMockInstance = sessionMock!
@@ -360,7 +360,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
         XCTAssertFalse( sessionTest.hasHeader(key: "b"))
         XCTAssertFalse( sessionTest.hasHeader(key: "x-pm-uid"))
         XCTAssertTrue( sessionTest.hasHeader(key: "Authorization"))
-        
+
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
                                           parameters: nil,
@@ -377,7 +377,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
         XCTAssertTrue( sessionTest.hasHeader(key: "x-pm-uid"))
         XCTAssertTrue( sessionTest.hasHeader(key: "Authorization"))
     }
-    
+
     func testCreateRequestAppLocal() throws {
         let hostUrl = "proton.unittests"
         let sessionMockInstance = sessionMock!
@@ -415,7 +415,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
         XCTAssertFalse( sessionTest.hasHeader(key: "x-pm-uid"))
         XCTAssertFalse( sessionTest.hasHeader(key: "Authorization"))
         XCTAssertTrue( sessionTest.matches(key: "x-pm-locale", value: "en_US"))
-        
+
         apiServiceDelegateMock.localeStub.fixture = "us"
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
@@ -434,7 +434,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
         XCTAssertFalse( sessionTest.hasHeader(key: "Authorization"))
         XCTAssertTrue( sessionTest.matches(key: "x-pm-locale", value: "us"))
     }
-    
+
     func testCreateRequestAppVersion() throws {
         let hostUrl = "proton.unittests"
         let sessionMockInstance = sessionMock!
@@ -472,7 +472,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
         XCTAssertFalse( sessionTest.hasHeader(key: "x-pm-uid"))
         XCTAssertFalse( sessionTest.hasHeader(key: "Authorization"))
         XCTAssertTrue( sessionTest.hasHeader(key: "x-pm-appversion"))
-        
+
         let appVersion = "iOS_0.1.0"
         apiServiceDelegateMock.appVersionStub.fixture = appVersion
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
@@ -491,7 +491,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
         XCTAssertFalse( sessionTest.hasHeader(key: "x-pm-uid"))
         XCTAssertFalse( sessionTest.hasHeader(key: "Authorization"))
         XCTAssertTrue( sessionTest.matches(key: "x-pm-appversion", value: appVersion))
-        
+
         apiServiceDelegateMock.appVersionStub.fixture = ""
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
@@ -512,7 +512,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
         XCTAssertNotNil(testValue)
         XCTAssertFalse(testValue!.isEmpty)
     }
-    
+
     func testCreateRequestUserAgent() throws {
         let hostUrl = "proton.unittests"
         let sessionMockInstance = sessionMock!
@@ -550,7 +550,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
         XCTAssertFalse( sessionTest.hasHeader(key: "x-pm-uid"))
         XCTAssertFalse( sessionTest.hasHeader(key: "Authorization"))
         XCTAssertTrue( sessionTest.hasHeader(key: "x-pm-appversion"))
-        
+
         let agent = "iOS_Simulator_12_23_567890"
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,
@@ -586,7 +586,7 @@ final class PMAPIServiceCreateRequestTests: XCTestCase {
         let userAgent = sessionTest.value(key: "User-Agent")
         XCTAssertNotNil(userAgent)
         XCTAssertFalse(userAgent!.isEmpty)
-        
+
         apiServiceDelegateMock.userAgentStub.fixture = agent
         _ = try testService.createRequest(url: "proton.unittests/unit/tests",
                                           method: .get,

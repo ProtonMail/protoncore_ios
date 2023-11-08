@@ -22,7 +22,7 @@ struct InactiveRecoveryView: View {
     var body: some View {
         VStack(spacing: 24) {
             Text("Currently there is no account recovery in process. Please go to a session on the web application to recover your password.")
-            
+
         }
         .padding(16)
         .navigationTitle("Recovery process cancelled")

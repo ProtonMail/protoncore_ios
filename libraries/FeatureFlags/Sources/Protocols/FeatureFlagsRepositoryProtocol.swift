@@ -24,7 +24,7 @@ import ProtonCoreServices
 import ProtonCoreUtilities
 
 public protocol FeatureFlagsRepositoryProtocol: AnyObject {
-  
+
     func updateLocalDataSource(with localDatasource: Atomic<LocalFeatureFlagsProtocol>)
 
     // MARK: - For single user clients

@@ -26,7 +26,7 @@ class UIFoundationsAppearanceStyleViewController: UIViewController {
     private lazy var darkModeButton: UIBarButtonItem = {
         return UIBarButtonItem(title: "Dark", style: .plain, target: self, action: #selector(toggleDarkMode))
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,13 +36,13 @@ class UIFoundationsAppearanceStyleViewController: UIViewController {
     @objc func toggleDarkMode() {
         view.window?.overrideUserInterfaceStyle = traitCollection.userInterfaceStyle == .dark ? .light : .dark
     }
-    
+
     deinit  {
         UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .unspecified
     }
-    
+
     // MARK: - Appearance
-    
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         darkModeButton.title = traitCollection.userInterfaceStyle == .dark ? "Light" : "Dark"
     }
@@ -54,7 +54,7 @@ class UIFoundationsAppearanceStyleTableViewController: UITableViewController {
     private lazy var darkModeButton: UIBarButtonItem = {
         return UIBarButtonItem(title: "Dark", style: .plain, target: self, action: #selector(toggleDarkMode))
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -64,13 +64,13 @@ class UIFoundationsAppearanceStyleTableViewController: UITableViewController {
     @objc func toggleDarkMode() {
         view.window?.overrideUserInterfaceStyle = traitCollection.userInterfaceStyle == .dark ? .light : .dark
     }
-    
+
     deinit {
         UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .unspecified
     }
-    
+
     // MARK: - Appearance
-    
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         darkModeButton.title = traitCollection.userInterfaceStyle == .dark ? "Light" : "Dark"
     }

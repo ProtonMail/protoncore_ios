@@ -58,7 +58,7 @@ extension CompleteViewModelTests {
     }
 
     func createViewModel(doh: DoHInterface, type minimumAccountType: AccountType) -> (CompleteViewModel, AuthDelegate, APIServiceDelegate) {
-        
+
         let authDelegate = AuthHelper()
         let serviceDelegate = AnonymousServiceManager()
         let api = PMAPIService.createAPIService(doh: doh, sessionUID: "test session ID", challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
@@ -97,7 +97,7 @@ extension CompleteViewModelTests {
         mock(filenames: ["CreateUserKeysSetup"], title: "keys/setup mock", path: "/keys/setup")
         mock(filenames: ["CreateUserKeysSalts"], title: "keys/salts mock", path: "/keys/salts")
     }
-    
+
     func mockCreateUserInvalidLoginCredentials() {
         mock(filenames: ["UsersAvailableOK"], title: "user is available", path: "/users/available")
         // signup
@@ -191,7 +191,7 @@ extension CompleteViewModelTests {
     private func mock(filenames: [String], title: String, path: String, statusCode: Int32 = 200, params: [String: String?]? = nil) {
         // get code stub
         var counter = 0
-        
+
         // params
         let queryParams = params != nil ? containsQueryParams(params!) : { _ in true }
         guard filenames.count > 0 else {
@@ -237,21 +237,21 @@ extension CompleteViewModelTests {
                 self.authInfoRequestData = (try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)) as? [String: Any]
                 self.authInfoRequestData?["Modulus"] = ObfuscatedConstants.modulus
                 self.authInfoRequestData?["Salt"] = ObfuscatedConstants.srpAuthSalt
-                
+
                 guard let verifier = Data(base64Encoded: ObfuscatedConstants.srpAuthVerifier), !verifier.isEmpty else {
                     return HTTPStubsResponse(data: data, statusCode: statusCode, headers: headers)
                 }
 
                 let bits = 2048
-                
+
                 self.server = CryptoGo.SrpNewServerFromSigned(ObfuscatedConstants.modulus, verifier, bits, nil)!
                 let challenge = try! self.server!.generateChallenge() // this is the serverEphemeral
-                
+
                 self.authInfoRequestData?["Modulus"] = ObfuscatedConstants.modulus
                 self.authInfoRequestData?["ServerEphemeral"] = challenge.base64EncodedString()
-                
+
                 let response = try! JSONSerialization.data(withJSONObject: self.authInfoRequestData!, options: JSONSerialization.WritingOptions.fragmentsAllowed)
-                
+
                 return HTTPStubsResponse(data: response, statusCode: statusCode, headers: headers)
             }
 

@@ -27,20 +27,20 @@ import ProtonCoreTestingToolkitUnitTestsCore
 import WebKit
 
 public final class AccountDeletionViewModelMock: AccountDeletionViewModelInterface {
-    
+
     public init() {}
-    
+
     @PropertyStub(\AccountDeletionViewModelMock.getURLRequest, initialGet: .crash) public var getURLRequestStub
     public var getURLRequest: URLRequest { getURLRequestStub() }
-    
+
     @FuncStub(AccountDeletionViewModelMock.setup) public var setupStub
     public func setup(webViewConfiguration: WKWebViewConfiguration) { setupStub(webViewConfiguration) }
-    
+
     @FuncStub(AccountDeletionViewModelMock.shouldRetryFailedLoading) public var shouldRetryFailedLoadingStub
     public func shouldRetryFailedLoading(host: String, error: Error, shouldReloadWebView: @escaping (AccountDeletionRetryCheckResult) -> Void) {
         shouldRetryFailedLoadingStub(host, error, shouldReloadWebView)
     }
-    
+
     @FuncStub(AccountDeletionViewModelMock.interpretMessage) public var interpretMessageStub
     public func interpretMessage(_ message: WKScriptMessage,
                                  loadedPresentation: @escaping () -> Void,
@@ -49,13 +49,13 @@ public final class AccountDeletionViewModelMock: AccountDeletionViewModelInterfa
                                  closeWebView: @escaping (@escaping () -> Void) -> Void) {
         interpretMessageStub(message, loadedPresentation, notificationPresentation, successPresentation, closeWebView)
     }
-    
+
     @FuncStub(AccountDeletionViewModelMock.deleteAccountWasClosed) public var deleteAccountWasClosedStub
     public func deleteAccountWasClosed() { deleteAccountWasClosedStub() }
-    
+
     @FuncStub(AccountDeletionViewModelMock.deleteAccountDidErrorOut) public var deleteAccountDidErrorOutStub
     public func deleteAccountDidErrorOut(message: String) { deleteAccountDidErrorOutStub(message) }
-    
+
     @FuncStub(AccountDeletionViewModelMock.deleteAccountFailedBecauseApiMightBeBlocked) public var deleteAccountFailedBecauseApiMightBeBlockedStub
     public func deleteAccountFailedBecauseApiMightBeBlocked(message: String, originalError: Error) {
         deleteAccountFailedBecauseApiMightBeBlockedStub(message, originalError)

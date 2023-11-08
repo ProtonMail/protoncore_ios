@@ -35,18 +35,18 @@ import ProtonCoreUIFoundations
 @available(iOS 13, *)
 class TroubleShootingSnapshotTests: SnapshotTestCase {
     var sut: TroubleShootingViewController!
-    
+
     override func tearDown() {
         sut = nil
         super.tearDown()
     }
-    
+
     private func setupSut() {
         let dohStatusHelper = DohStatusHelper.init(doh: Environment.black.doh)
         let viewModel = TroubleShootingViewModel.init(doh: dohStatusHelper)
         sut = TroubleShootingViewController.init(viewModel: viewModel)
     }
-    
+
     func testTroubleShootingSnapshot() {
         // setup
         setupSut()

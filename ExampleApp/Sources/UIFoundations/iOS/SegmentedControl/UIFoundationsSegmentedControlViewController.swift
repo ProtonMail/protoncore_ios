@@ -29,20 +29,20 @@ class UIFoundationsSegmentedControlViewController: UIFoundationsAppearanceStyleV
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     init() {
         super.init(nibName: "UIFoundationsSegmentedControlViewController", bundle: nil)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         title = "Segmented control"
 
         view.backgroundColor = ColorProvider.BackgroundNorm
         setupSegmnentedControl()
     }
-    
+
     func setupSegmnentedControl() {
         segmentedControl.setImage(image: IconProvider.userCircle, withText: "Second", forSegmentAt: 1)
     }

@@ -47,12 +47,12 @@ import ProtonCoreCryptoGoImplementation
 
 class CryptoTests: XCTestCase {
     public typealias Key = [UInt8]
-    
+
     override class func setUp() {
         super.setUp()
         injectDefaultCryptoImplementation()
     }
-    
+
     private func makeKey(_ length: Int = 32) -> Key {
         var key = [UInt8](repeating: 0, count: length)
         let status = SecRandomCopyBytes(kSecRandomDefault, key.count, &key)
@@ -61,31 +61,31 @@ class CryptoTests: XCTestCase {
         }
         return key
     }
-    
+
 #if canImport(CryptoSwift)
     func testCryptoSwiftEncrypt() {
         let key = self.makeKey(32)
         let clearValue = self.longMessage.data(using: .utf8)!
-        
+
         self.measure {
             do {
                 // encrypt
                 let aesLock = try AES(key: key, blockMode: ECB())
                 let cypherBytes = try aesLock.encrypt(clearValue.bytes)
                 XCTAssertNotEqual(clearValue, Data(cypherBytes))
-                
+
                 // decrypt
                 let aesUnlock = try AES(key: key, blockMode: ECB())
                 let clearBytes = try aesUnlock.decrypt(cypherBytes)
                 let unlockedValue = Data(clearBytes)
-                
+
                 XCTAssertEqual(clearValue, unlockedValue)
             } catch let error {
                 XCTFail(error.localizedDescription)
             }
         }
     }
-    
+
     func testCryptoSwiftDerive() {
         let secret = "Z1ON0101"
         let salt = Data(self.makeKey(8)).bytes
@@ -105,26 +105,26 @@ class CryptoTests: XCTestCase {
         let key = Data(self.makeKey(32))
         let iv = Data(self.makeKey(16))
         let clearValue = self.longMessage.data(using: .utf8)!
-        
+
         self.measure {
             var error: NSError?
-            
+
             // encrypt
             let cypherData = CryptoGo.SubtleEncryptWithoutIntegrity(key, clearValue, iv, &error)
             XCTAssertNil(error, "Failed to encrypt the data: \(error!.localizedDescription)")
             XCTAssertNotEqual(clearValue, cypherData)
-            
+
             // decrypt
             let unlockedValue = CryptoGo.SubtleDecryptWithoutIntegrity(key, cypherData, iv, &error)
             XCTAssertNil(error, "Failed to decrypt the data: \(error!.localizedDescription)")
             XCTAssertEqual(clearValue, unlockedValue)
         }
     }
-    
+
     func testCryptoDerive() {
         let secret = "Z1ON0101"
         let salt = Data(self.makeKey(8))
-            
+
         self.measure {
             var error: NSError?
             // 32768 is PinProtection.numberOfIterations
@@ -133,7 +133,7 @@ class CryptoTests: XCTestCase {
             XCTAssertNotNil(derivedKey)
         }
     }
-    
+
     lazy var longMessage = """
     WELL, PRINCE, so Genoa and Lucca are now
     just family estates of the Buonapartes. But I

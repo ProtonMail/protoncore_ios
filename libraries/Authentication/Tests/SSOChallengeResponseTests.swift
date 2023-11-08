@@ -24,16 +24,16 @@ import XCTest
 
 class SSOChallengeResponseTests: XCTestCase {
     var sut: SSOChallengeResponse!
-    
+
     override func setUp() {
         super.setUp()
         sut = .init(ssoChallengeToken: "token")
     }
-    
+
     func test_ssoResponseTokenChallenge() {
         XCTAssertEqual(sut.ssoChallengeToken, "token")
     }
-    
+
     func test_codingKeys() {
         XCTAssertEqual(SSOChallengeResponse.CodingKeys.ssoChallengeToken.rawValue, "SSOChallengeToken")
     }

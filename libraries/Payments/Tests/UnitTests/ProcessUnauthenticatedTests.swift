@@ -921,9 +921,9 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         // 1. Continue transaction after signup
         // 2. Fail subscription purchase with plan unavailable 2001
         // Expected: Success
-        
+
         withFeatureSwitches([]) {
-            
+
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
             let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
@@ -943,13 +943,13 @@ final class ProcessUnauthenticatedTests: XCTestCase {
             }
             var returnedTransaction: SKPaymentTransaction?
             processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
-            
+
             // when
             var returnedResult: ProcessCompletionResult?
             queue.async {
                 try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
             }
-            
+
             // then
             waitForExpectations(timeout: timeout)
             XCTAssertEqual(apiService.requestJSONStub.callCounter, 3)
@@ -1001,7 +1001,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         XCTAssertEqual(processDependencies.removeTransactionsBeforeSignupStub.lastArguments?.a1, transaction)
         guard case .finished(.withPurchaseAlreadyProcessed) = returnedResult else { XCTFail(); return }
     }
-    
+
     func testPurchaseContinuationWhenSubscriptionFailsPlanUnavailableCreditsAppliedError() {
         // Test scenario:
         // 1. Continue transaction after signup

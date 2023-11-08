@@ -51,7 +51,7 @@ final class ProcessAuthenticated: ProcessProtocol {
     }
 
     let queue = DispatchQueue(label: "ProcessAuthenticated async queue", qos: .userInitiated)
-    
+
     func process(transaction: SKPaymentTransaction,
                  plan: PlanToBeProcessed,
                  completion: @escaping ProcessCompletionCallback) throws {
@@ -60,14 +60,14 @@ final class ProcessAuthenticated: ProcessProtocol {
             assertionFailure("This is a blocking network request, should never be called from main thread")
             throw AwaitInternalError.synchronousCallPerformedFromTheMainThread
         }
-        
+
         #if DEBUG_CORE_INTERNALS
         guard TemporaryHacks.simulateBackendPlanPurchaseFailure == false else {
             TemporaryHacks.simulateBackendPlanPurchaseFailure = false
             throw StoreKitManager.Errors.invalidPurchase
         }
         #endif
-        
+
         // Step 3. Get the payment token
         try tokenHandler?.getToken(transaction: transaction, plan: plan, completion: completion, finishCompletion: { [weak self] result in
             self?.finish(transaction: transaction, result: result, completion: completion)
@@ -86,17 +86,17 @@ final class ProcessAuthenticated: ProcessProtocol {
             )
             _ = try serverUpdateApi.awaitResponse(responseObject: CreditResponse())
             finish(transaction: transaction, result: .finished(.resolvingIAPToCreditsCausedByError), completion: completion)
-            
+
         } catch let error where error.isApplePaymentAlreadyRegisteredError {
             PMLog.debug("StoreKit: apple payment already registered")
             finish(transaction: transaction, result: .finished(.withPurchaseAlreadyProcessed), completion: completion)
-            
+
         } catch {
             completion(.erroredWithUnspecifiedError(error))
-            
+
         }
     }
-    
+
     private func buySubscription(transaction: SKPaymentTransaction,
                                  plan: PlanToBeProcessed,
                                  token: PaymentToken,
@@ -115,7 +115,7 @@ final class ProcessAuthenticated: ProcessProtocol {
             if let newSubscription = receiptRes.newSubscription {
                 dependencies.updateCurrentSubscription { [weak self] in
                     self?.finish(transaction: transaction, result: .finished(.resolvingIAPToSubscription), completion: completion)
-                    
+
                 } failure: { [weak self] _ in
                     // if updateCurrentSubscription is failed for some reason, update subscription with newSubscription data
                     do {
@@ -124,7 +124,7 @@ final class ProcessAuthenticated: ProcessProtocol {
                     } catch {
                         self?.finish(transaction: transaction, result: .errored(.noNewSubscriptionInSuccessfulResponse), completion: completion)
                     }
-                    
+
                 }
             } else {
                 throw StoreKitManager.Errors.noNewSubscriptionInSuccessfulResponse
@@ -148,7 +148,7 @@ final class ProcessAuthenticated: ProcessProtocol {
                    completion: completion)
         }
     }
-    
+
     private func finish(transaction: SKPaymentTransaction, result: ProcessCompletionResult, completion: @escaping ProcessCompletionCallback) {
         // Step 6. Finish the IAP transaction
         dependencies.finishTransaction(transaction) { [weak self] in

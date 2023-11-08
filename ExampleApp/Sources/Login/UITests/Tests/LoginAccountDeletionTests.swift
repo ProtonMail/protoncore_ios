@@ -16,15 +16,15 @@ import ProtonCoreTestingToolkit
 import ProtonCoreObfuscatedConstants
 
 class LoginAccountDeletionTests: ProtonCoreBaseTestCase {
-    
+
     let entryRobot = CoreExampleMainRobot()
-    
+
     enum AlternaviteRouting: String {
         case off = "Off"
         case on = "On"
         case force = "Force"
     }
-    
+
     override func setUp() {
         beforeSetUp(bundleIdentifier: "ch.protontech.core.ios.Example-LoginAccountDeletion-UITests")
         super.setUp()
@@ -41,7 +41,7 @@ class LoginAccountDeletionTests: ProtonCoreBaseTestCase {
             .showDeleteAccount()
             .verifyDeleteAccount.deleteAccountShown()
     }
-    
+
     func testLoginWithAccountDeletionAlternativeRoutingCheck() {
         entryRobot.changeAlternativeRoutingSwitch(name: AlternaviteRouting.force.rawValue)
             .tap(.login, to: LoginSampleAppRobot.self)

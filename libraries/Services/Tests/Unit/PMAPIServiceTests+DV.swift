@@ -40,11 +40,11 @@ import ProtonCoreUtilities
 
 @available(iOS 13.0.0, *)
 final class PMAPIServiceDVTests: XCTestCase {
-    
+
     struct EmptyTestResponse: APIDecodableResponse, Equatable {}
-    
+
     struct DataTestResponse: APIDecodableResponse, Equatable { let string: String; let number: Int }
-    
+
     let deviceVerificationResponse: HTTPURLResponse = .init(statusCode: 444)
     let deviceVerificationResponseJSON: JSONDictionary = [
         "Code": 9002,
@@ -65,7 +65,7 @@ final class PMAPIServiceDVTests: XCTestCase {
     let successfulResponse: HTTPURLResponse = .init(statusCode: 200)
     let successfulResponseJSON: JSONDictionary = ["Code": 1000, "String": "some successful string", "Number": 42]
     lazy var successfulResponseData: Data = try! JSONSerialization.data(withJSONObject: successfulResponseJSON)
-    
+
     var dohMock: DoHInterface! = nil
     var sessionUID: String! = nil
     var cacheToClearMock: URLCacheMock! = nil
@@ -75,7 +75,7 @@ final class PMAPIServiceDVTests: XCTestCase {
     var apiServiceDelegateMock: APIServiceDelegateMock! = nil
     var authDelegateMock: AuthDelegateMock! = nil
     var humanDelegateMock: HumanVerifyDelegateMock! = nil
-    
+
     override func setUp() {
         super.setUp()
         let dohMock = DohMock()
@@ -97,9 +97,9 @@ final class PMAPIServiceDVTests: XCTestCase {
         authDelegateMock = AuthDelegateMock()
         humanDelegateMock = HumanVerifyDelegateMock()
     }
-    
+
     // MARK: - JSON response tests
-    
+
     func testDeviceVerificationIsLaunchedForJSONResponse_DV_Error() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
                                                     sessionUID: "test sessionUID",
@@ -109,7 +109,7 @@ final class PMAPIServiceDVTests: XCTestCase {
                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
-        
+
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
             SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
@@ -120,7 +120,7 @@ final class PMAPIServiceDVTests: XCTestCase {
             ""
         }
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        
+
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
@@ -128,14 +128,14 @@ final class PMAPIServiceDVTests: XCTestCase {
                             nonDefaultTimeout: nil, retryPolicy: .userInitiated,
                             jsonCompletion: { task, result in continuation.resume(returning: (task, result)) })
         }
-        
+
         // THEN
         XCTAssertTrue(humanDelegateMock.onDeviceVerifyStub.wasCalledExactlyOnce)
         let value = try XCTUnwrap(result.1.error as? ResponseError)
         XCTAssertEqual(value.responseCode, 9002)
         XCTAssertEqual(value.error, "device verification in required test")
     }
-    
+
     func testDeviceVerificationIsLaunchedForJSONResponse_ErrorInRetriedRequest() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
                                                     sessionUID: "test sessionUID",
@@ -145,7 +145,7 @@ final class PMAPIServiceDVTests: XCTestCase {
                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
-        
+
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
             SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
@@ -157,7 +157,7 @@ final class PMAPIServiceDVTests: XCTestCase {
             }
         }
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        
+
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
@@ -165,7 +165,7 @@ final class PMAPIServiceDVTests: XCTestCase {
                             nonDefaultTimeout: nil, retryPolicy: .userInitiated,
                             jsonCompletion: { task, result in continuation.resume(returning: (task, result)) })
         }
-        
+
         // THEN
         let error = try XCTUnwrap(result.1.error)
         XCTAssertEqual(error.code, 1234)

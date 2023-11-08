@@ -32,7 +32,7 @@ extension APIResponseDetails: Codable, Equatable {
         default: return false
         }
     }
-    
+
     public func encode(to encoder: Encoder) throws {
         switch self {
         case .humanVerification(let details):
@@ -51,7 +51,7 @@ extension APIResponseDetails: Codable, Equatable {
             break
         }
     }
-    
+
     public init(from decoder: Decoder) throws {
         if let humanVerificationDetails = try? HumanVerificationDetails(from: decoder) {
             self = .humanVerification(humanVerificationDetails)

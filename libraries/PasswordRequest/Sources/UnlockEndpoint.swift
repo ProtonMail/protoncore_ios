@@ -25,6 +25,6 @@ import ProtonCoreNetworking
 public struct UnlockEndpoint: Request {
     public var path: String { "/users/unlock" }
     public var method: HTTPMethod { .put }
-    
+
     public init() {}
 }

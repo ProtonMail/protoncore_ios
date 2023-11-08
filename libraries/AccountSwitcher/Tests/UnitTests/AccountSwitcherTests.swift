@@ -32,7 +32,7 @@ class AccountSwitcherTests: XCTestCase {
     func testAccountDeletionTranslationsAreDefinedForEnglish() {
         testAllLocalizationsAreDefined(for: ASTranslation.self, prefixForMissingValue: #function)
     }
-    
+
     func testAllSubstitutionsAreFollowingTheExpectedFormatForEnglish() {
         testAllSubstitutionsAreValid(for: ASTranslation.self)
     }

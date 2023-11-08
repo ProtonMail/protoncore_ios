@@ -23,7 +23,7 @@ import Foundation
 
 public class TestData {
     public init() { }
-    
+
     public var onePassUser = TestUser(email: ObfuscatedConstants.onePassUserUsername, password: ObfuscatedConstants.onePassUserPassword, mailboxPassword: "", twoFASecurityKey: "")
     public var twoPassUser = TestUser(email: ObfuscatedConstants.twoPassUserUsername, password: ObfuscatedConstants.twoPassUserPassword, mailboxPassword: ObfuscatedConstants.twoPassUserMailboxPassword, twoFASecurityKey: "")
     public var onePassUserWith2Fa = TestUser(email: ObfuscatedConstants.onePassUserWith2FaUsername, password: ObfuscatedConstants.onePassUserWith2FaPassword, mailboxPassword: "", twoFASecurityKey: ObfuscatedConstants.onePassUserWith2FatwoFASecurityKey)

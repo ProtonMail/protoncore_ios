@@ -17,10 +17,10 @@ import ProtonCoreTestingToolkit
 final class LoginWelcomeTests: LoginBaseTestCase {
 
     let mainRobot = LoginSampleAppRobot()
-    
+
     override func setUp() {
         super.setUp()
-        
+
         mainRobot
             .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
     }

@@ -123,5 +123,5 @@ class DohIntegrationTests: XCTestCase {
             XCTAssertNil(request.value(forHTTPHeaderField: "x-pm-doh-host"))
         }
     }
-    
+
 }

@@ -33,7 +33,7 @@ import ProtonCoreFeatureSwitch
 import StoreKit
 
 class PaymentsViewController: UIViewController, AccessibleView {
-    
+
     @IBOutlet weak var environmentSelector: EnvironmentSelector!
     @IBOutlet weak var testCardSwitch: UISwitch!
     @IBOutlet weak var enableDynamicPlans: UISwitch!
@@ -51,7 +51,7 @@ class PaymentsViewController: UIViewController, AccessibleView {
         testCardSwitch.isOn = ProtonCorePayments.TemporaryHacks.testCardForPayments != nil
         generateAccessibilityIdentifiers()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         #if DEBUG_CORE_INTERNALS
@@ -68,11 +68,11 @@ class PaymentsViewController: UIViewController, AccessibleView {
         }
         #endif
     }
-    
+
     @IBAction private func useEnableDynamicPlansSwitchValueChanged() {
         FeatureFactory.shared.setEnabled(&.dynamicPlans, isEnable: enableDynamicPlans.isOn)
     }
-    
+
     @IBAction private func simulateIAPFailureSwitchValueChanged() {
         #if !SPM && DEBUG_CORE_INTERNALS
         ProtonCorePayments.TemporaryHacks.simulateBackendPlanPurchaseFailure = simulateIAPFailure.isOn

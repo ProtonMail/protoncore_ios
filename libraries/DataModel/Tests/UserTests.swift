@@ -36,7 +36,7 @@ class UserTests: XCTestCase {
             "Signature": null,
             "Activation": null,
             "Primary": 1,
-            "Active": 1                 
+            "Active": 1
         }
         """
         let expectation = self.expectation(description: "Success completion block called")
@@ -54,13 +54,13 @@ class UserTests: XCTestCase {
             XCTAssertEqual(object.active, 1)
             expectation.fulfill()
         } catch {
-            
+
         }
         self.waitForExpectations(timeout: 30) { (expectationError) -> Void in
             XCTAssertNil(expectationError)
         }
     }
-    
+
     func testKeyDecodeMissingKeys() {
         let json = """
         {

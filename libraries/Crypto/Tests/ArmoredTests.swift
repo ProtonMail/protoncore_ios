@@ -24,45 +24,45 @@ import ProtonCoreCryptoGoInterface
 import ProtonCoreCrypto
 
 class ArmoredTests: CryptoTestBase {
-    
+
     func testArmoredKey() {
         XCTAssertNotEqual("\(ArmoredKey.self)", "\(String.self)")
         XCTAssertNotEqual("\(ArmoredMessage.self)", "\(String.self)")
         XCTAssertNotEqual("\(ArmoredSignature.self)", "\(String.self)")
-        
+
         XCTAssertEqual("\(ArmoredKey.self)", "\(Armored<ArmoredType.Key>.self)")
         XCTAssertEqual("\(ArmoredMessage.self)", "\(Armored<ArmoredType.Message>.self)")
         XCTAssertEqual("\(ArmoredSignature.self)", "\(Armored<ArmoredType.Signature>.self)")
-        
+
         let check = "Test"
         let armoredKey: ArmoredKey = ArmoredKey.init(value: check)
         XCTAssertEqual(check, armoredKey.value)
     }
-    
+
     func testUnArmoredKey() {
         XCTAssertNotEqual("\(UnArmoredKey.self)", "\(Data.self)")
         XCTAssertEqual("\(UnArmoredKey.self)", "\(UnArmored<UnArmoredType.Key>.self)")
-        
+
         let check = random(length: 32)
         let unarmored: UnArmoredKey = UnArmoredKey.init(value: check)
         XCTAssertEqual(check, unarmored.value)
     }
-    
+
     func testArmoredExtensionSplit() {
         let testMessage = content(of: "testdata_pgp_message")
         let armoredMessage = ArmoredMessage.init(value: testMessage)
         XCTAssertNoThrow( try armoredMessage.split() )
     }
-    
+
     func testExtensionEncryptPrivateKey() {
-        
+
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
         let clearText = "testing Armored<Key> extension. encrypt clear text. no signature."
         do {
             let armoredKey = ArmoredKey.init(value: privKey)
             let armoredMessage: ArmoredMessage = try armoredKey.encrypt(clearText: clearText)
-            
+
             let decryptionKey = DecryptionKey.init(privateKey: armoredKey,
                                                    passphrase: Passphrase.init(value: privKeyPassphrase))
             let check: String = try Decryptor.decrypt(decryptionKeys: [decryptionKey], encrypted: armoredMessage)
@@ -71,9 +71,9 @@ class ArmoredTests: CryptoTestBase {
             XCTFail("Should not happen: \(error)")
         }
     }
-    
+
     func testExtensionEncryptPublicKey() {
-        
+
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
         let clearText = "testing Armored<Key> extension. encrypt clear text. no signature."
@@ -81,7 +81,7 @@ class ArmoredTests: CryptoTestBase {
         do {
             let armoredKey = ArmoredKey.init(value: pubKey)
             let armoredMessage: ArmoredMessage = try armoredKey.encrypt(clearText: clearText)
-            
+
             let decryptionKey = DecryptionKey.init(privateKey: ArmoredKey.init(value: privKey),
                                                    passphrase: Passphrase.init(value: privKeyPassphrase))
             let check: String = try Decryptor.decrypt(decryptionKeys: [decryptionKey], encrypted: armoredMessage)

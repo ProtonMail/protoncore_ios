@@ -39,7 +39,7 @@ enum TestFlagsType: String, FeatureFlagTypeProtocol {
 
 final class FeatureFlagsTests: XCTestCase {
     var sut = FeatureFlagsRepository.shared
-    
+
     private var featureFlagUserDefaults: UserDefaults!
     private let suiteName = "FeatureFlagsTests"
     override func setUp() {
@@ -121,7 +121,6 @@ final class FeatureFlagsTests: XCTestCase {
             expectation.fulfill()
         }
 
-
         // Then
         wait(for: [expectation])
         XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday))
@@ -138,7 +137,6 @@ final class FeatureFlagsTests: XCTestCase {
             expectation.fulfill()
         }
 
-
         // Then
         wait(for: [expectation])
         XCTAssertFalse(sut.isEnabled(TestFlagsType.fakeFlag))
@@ -154,7 +152,6 @@ final class FeatureFlagsTests: XCTestCase {
             try await sut.fetchFlags()
             expectation.fulfill()
         }
-
 
         // Then
         wait(for: [expectation])
@@ -186,7 +183,6 @@ final class FeatureFlagsTests: XCTestCase {
             expectation.fulfill()
         }
 
-
         // Then
         wait(for: [expectation])
         XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
@@ -213,7 +209,6 @@ final class FeatureFlagsTests: XCTestCase {
             try await sut.fetchFlags(for: userId, with: apiService)
             expectation.fulfill()
         }
-
 
         // Then
         wait(for: [expectation])
@@ -245,7 +240,6 @@ final class FeatureFlagsTests: XCTestCase {
             try await sut.fetchFlags(for: userId, with: apiService)
             expectation.fulfill()
         }
-
 
         // Then
         wait(for: [expectation])

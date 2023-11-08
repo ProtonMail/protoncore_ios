@@ -34,12 +34,12 @@ import XCTest
 final class ObservabilityEnvTests: XCTestCase {
     private var sut: ObservabilityEnv!
     private let apiServiceMock = APIServiceMock()
-    
+
     override func setUp() {
         super.setUp()
         sut = ObservabilityEnv.current
     }
-    
+
     func test_setupWorld_setsAPIService() {
         // Given
         XCTAssertNil(sut.observabilityService)

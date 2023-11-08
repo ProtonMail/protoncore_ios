@@ -26,9 +26,9 @@ import OHHTTPStubs
 @testable import ProtonCoreNetworking
 
 class ErrorResponseTests: XCTestCase {
-    
+
     let jsonDecoder: JSONDecoder = .decapitalisingFirstLetter
-    
+
     func decodeErrorResponse(from: String) throws -> ErrorResponse {
         try JSONDecoder.decapitalisingFirstLetter.decode(ErrorResponse.self, from: from.data(using: .utf8)!)
     }
@@ -39,14 +39,14 @@ class ErrorResponseTests: XCTestCase {
         """
         XCTAssertThrowsError(try decodeErrorResponse(from: response))
     }
-    
+
     func testDecodingErrorResponseWithOnlyErrorFails() {
         let response = """
         {"Error":"Username already used"}
         """
         XCTAssertThrowsError(try decodeErrorResponse(from: response))
     }
-    
+
     func testDecodingErrorResponseWithCodeAndErrorSucceeds() throws {
         let response = """
         {"Code":2500,"Error":"Username already used"}
@@ -55,7 +55,7 @@ class ErrorResponseTests: XCTestCase {
         XCTAssertEqual(errorResponse.code, 2500)
         XCTAssertEqual(errorResponse.error, "Username already used")
     }
-    
+
     func testDecodingErrorResponseWithCodeAndErrorAndDetailsSucceeds() throws {
         let response = """
         {"Code":2500,"Error":"Username already used","Details":{"Suggestions":["kris691","kris582","kris628"]}}
@@ -64,7 +64,7 @@ class ErrorResponseTests: XCTestCase {
         XCTAssertEqual(errorResponse.code, 2500)
         XCTAssertEqual(errorResponse.error, "Username already used")
     }
-    
+
     func testDecodingErrorResponseWithCodeAndErrorAndExceptionStringSucceeds() throws {
         let response = """
         {"Code":2500,"Error":"Username already used","Exception":"<xml><xml><xml>"}
@@ -74,7 +74,7 @@ class ErrorResponseTests: XCTestCase {
         XCTAssertEqual(errorResponse.error, "Username already used")
         XCTAssertEqual(errorResponse.errorDescription, "<xml><xml><xml>")
     }
-    
+
     func testDecodingErrorResponseWithCodeAndErrorAndExceptionDictionarySucceeds() throws {
         let response = """
         {"Code":2500,"Error":"Username already used","Exception":{"Suggestions":["kris691","kris582","kris628"]}}
@@ -84,7 +84,7 @@ class ErrorResponseTests: XCTestCase {
         XCTAssertEqual(errorResponse.error, "Username already used")
         XCTAssertNil(errorResponse.errorDescription)
     }
-    
+
     func testDecodingErrorResponseWithCodeAndErrorAndDetailsAndExceptionDictionarySucceeds() throws {
         let response = """
         {"Code":2500,"Error":"Username already used","Details":{"Suggestions":["kris691","kris582","kris628"]},"Exception":{"Suggestions":["kris691","kris582","kris628"]}}
@@ -94,7 +94,7 @@ class ErrorResponseTests: XCTestCase {
         XCTAssertEqual(errorResponse.error, "Username already used")
         XCTAssertNil(errorResponse.errorDescription)
     }
-    
+
     func testDecodingErrorResponseWithCodeAndErrorAndErrorDescriptionSucceeds() throws {
         let response = """
         {"Code":2500,"Error":"Username already used","ErrorDescription":"no idea"}
@@ -104,7 +104,7 @@ class ErrorResponseTests: XCTestCase {
         XCTAssertEqual(errorResponse.error, "Username already used")
         XCTAssertEqual(errorResponse.errorDescription, "no idea")
     }
-    
+
     func testDecodingErrorResponseWithCodeAndErrorAndErrorDescriptionDictionarySucceeds() throws {
         let response = """
         {"Code":2500,"Error":"Username already used","ErrorDescription":{"Suggestions":["kris691","kris582","kris628"]}}
@@ -114,7 +114,7 @@ class ErrorResponseTests: XCTestCase {
         XCTAssertEqual(errorResponse.error, "Username already used")
         XCTAssertNil(errorResponse.errorDescription)
     }
-    
+
     func testDecodingErrorResponseWithCodeAndErrorAndDetailsAndErrorDescriptionSucceeds() throws {
         let response = """
         {"Code":2500,"Error":"Username already used","Details":{"Suggestions":["kris691","kris582","kris628"]},"ErrorDescription":"xml"}

@@ -29,13 +29,13 @@ import ProtonCoreObfuscatedConstants
 import ProtonCoreQuarkCommands
 
 final class AccountDeletionViewController: NSViewController {
-    
+
     @IBOutlet var chooseAccountButton: NSPopUpButton!
     @IBOutlet var createAccountButton: NSButton!
     @IBOutlet var accountDetailsLabel: NSTextField!
     @IBOutlet var deleteAccountButton: NSButton!
     @IBOutlet var environmentSelector: EnvironmentSelector!
-    
+
     @IBOutlet private var credentialsSelector: NSSegmentedControl!
     @IBOutlet private var credentialsStackView: NSStackView!
     @IBOutlet private var credentialsUsernameTextField: NSTextField!
@@ -43,17 +43,17 @@ final class AccountDeletionViewController: NSViewController {
     @IBOutlet private var credentialsOwnerIdTextField: NSTextField!
     @IBOutlet private var credentialsOwnerPasswordTextField: NSTextField!
     @IBOutlet private var credentialsPlanTextField: NSTextField!
-    
+
     private let authManager = AuthHelper()
     private let serviceDelegate = ExampleAPIServiceDelegate()
-    
+
     private var selectedAccountForCreation: ((String?, String?, String, String, String) -> AccountAvailableForCreation)?
     private var createdAccountDetails: CreatedAccountDetails? {
         didSet {
             deleteAccountButton.isHidden = createdAccountDetails == nil
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         chooseAccountButton.addItems(
@@ -64,7 +64,7 @@ final class AccountDeletionViewController: NSViewController {
         selectedAccountForCreation = accountsAvailableForCreation.first
         deleteAccountButton.title = AccountDeletionService.defaultButtonName
     }
-    
+
     override func viewDidAppear() {
         super.viewDidAppear()
         view.window?.styleMask = [.closable, .titled, .resizable]
@@ -75,7 +75,7 @@ final class AccountDeletionViewController: NSViewController {
             display: true
         )
     }
-    
+
     @IBAction func onCredentialsChanged(_ sender: Any) {
         switch credentialsSelector.indexOfSelectedItem {
         case 0:
@@ -86,11 +86,11 @@ final class AccountDeletionViewController: NSViewController {
             assertionFailure("Misconfiguration in \(#file), \(#function), \(#line)")
         }
     }
-    
+
     @IBAction func onAccountSelectionChanged(_ sender: Any) {
         selectedAccountForCreation = accountsAvailableForCreation[chooseAccountButton.indexOfSelectedItem]
     }
-    
+
     @IBAction func createAccount(_ sender: Any) {
         let username: String?
         let password: String?
@@ -126,7 +126,7 @@ final class AccountDeletionViewController: NSViewController {
             }
         }
     }
-    
+
     @IBAction func deleteAccount(_ sender: Any) {
         guard let createdAccountDetails = createdAccountDetails else { return }
         let env = environmentSelector.currentEnvironment
@@ -151,7 +151,7 @@ final class AccountDeletionViewController: NSViewController {
             }
         }
     }
-    
+
     private func handleSuccessfulAccountDeletion(_ success: AccountDeletionSuccess) {
         DispatchQueue.main.async {
             let alertController = NSAlert()
@@ -162,7 +162,7 @@ final class AccountDeletionViewController: NSViewController {
             self.deleteAccountButton.isHidden = true
         }
     }
-    
+
     private func handleAccountDeletionFailure(_ failure: String) {
         DispatchQueue.main.async {
             let alertController = NSAlert()
@@ -174,7 +174,7 @@ final class AccountDeletionViewController: NSViewController {
             self.deleteAccountButton.isHidden = false
         }
     }
-    
+
     private func handleApiMightBeBlocked(_ failure: String) {
         DispatchQueue.main.async {
             let alertController = NSAlert()
@@ -192,5 +192,5 @@ final class AccountDeletionViewController: NSViewController {
             self.deleteAccountButton.isHidden = false
         }
     }
-    
+
 }

@@ -36,13 +36,13 @@ public enum StoreKitManagerErrors: LocalizedError {
     case appIsLocked
     case pleaseSignIn
     case apiMightBeBlocked(message: String, originalError: Error)
-    
+
     @available(*, deprecated, message: "This is never returned anymore — the success callback with `.resolvingIAPToCreditsCausedByError` is returned instead")
     static var creditsApplied: StoreKitManagerErrors { .transactionFailedByUnknownReason }
-    
+
     @available(*, deprecated, message: "This is never returned anymore — the success callback with `.cancelled` is returned instead")
     static var cancelled: StoreKitManagerErrors { .transactionFailedByUnknownReason }
-    
+
     var isUnknown: Bool {
         switch self {
         case .unknown: return true

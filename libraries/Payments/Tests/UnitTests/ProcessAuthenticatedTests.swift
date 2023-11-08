@@ -34,7 +34,7 @@ import ProtonCoreNetworking
 final class ProcessAuthenticatedTests: XCTestCase {
 
     let timeout = 1.0
-    
+
     let queue = DispatchQueue.global(qos: .userInitiated)
 
     var apiService: APIServiceMock!
@@ -178,7 +178,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
         }
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
-        
+
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
                 completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
@@ -204,7 +204,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
         guard case .finished(.resolvingIAPToSubscription) = returnedResult else { XCTFail(); return }
         guard case .finished(.resolvingIAPToSubscription) = processCompletionResult else { XCTFail(); return }
     }
-    
+
     func testBuyChargeableWhenAmountDueIsTheSameAsAmountUpdateSubscriptionFailed() {
         // Test scenario:
         // 1. Do purchase chargeable token when amountDue is amount, but updateCurrentSubscription fails
@@ -221,7 +221,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
             let error = NSError(domain: "error", code: 2500, userInfo: nil)
             return fail(error)
         }
-        
+
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
                 completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
@@ -237,7 +237,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
         processDependencies.updateSubscriptionStub.fixture = { returnedSubscription = $0 }
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
-        
+
         // when
         var returnedResult: ProcessCompletionResult?
         queue.async {
@@ -287,8 +287,8 @@ final class ProcessAuthenticatedTests: XCTestCase {
         // when
         var returnedResult: ProcessCompletionResult?
         queue.async {
-            try! out.process(transaction: transaction, plan: plan) { 
-                returnedResult = $0; expectation.fulfill() 
+            try! out.process(transaction: transaction, plan: plan) {
+                returnedResult = $0; expectation.fulfill()
             }
         }
 
@@ -606,7 +606,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
         guard case .erroredWithUnspecifiedError(let error) = returnedResult else { XCTFail(); return }
         XCTAssertEqual((error as? ResponseError)?.responseCode, 22000)
     }
-    
+
     func testBuyPlanSubscriptionApiIsBlockedError() {
         // Test scenario:
         // 1. SubscriptionAnswer set error
@@ -750,13 +750,13 @@ final class ProcessAuthenticatedTests: XCTestCase {
             }
             var returnedTransaction: SKPaymentTransaction?
             processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
-            
+
             // when
             var returnedResult: ProcessCompletionResult?
             queue.async {
                 try! out.process(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
             }
-            
+
             // then
             waitForExpectations(timeout: timeout)
             XCTAssertEqual(returnedTransaction, transaction)
@@ -764,7 +764,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
             guard case .finished(.withPurchaseAlreadyProcessed) = processCompletionResult else { XCTFail(); return }
         }
     }
-    
+
     func testBuyPlanSubscriptionCreditErrorAmountMismatchErrorRegisteredWithDynamicPlans() {
         // Test scenario:
         // 1. ValidateSubscription amountDue set to more than 4800
@@ -812,7 +812,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
         // 3. Do purchase
         // 4. CreditAnswer - success
         // Expected: Success .resolvingIAPToCreditsCausedByError
-        
+
         withFeatureSwitches([]) {
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
@@ -833,13 +833,13 @@ final class ProcessAuthenticatedTests: XCTestCase {
             }
             var returnedTransaction: SKPaymentTransaction?
             processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
-            
+
             // when
             var returnedResult: ProcessCompletionResult?
             queue.async {
                 try! out.process(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
             }
-            
+
             // then
             waitForExpectations(timeout: timeout)
             XCTAssertEqual(returnedTransaction, transaction)
@@ -888,7 +888,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
             guard case .errored(.noNewSubscriptionInSuccessfulResponse) = processCompletionResult else { XCTFail(); return }
         }
     }
-    
+
     func testBuyPlanSubscriptionAddCreditsOnPlanUnavailableAlreadyRegistered() {
         // Test scenario:
         // 1. ValidateSubscription amountDue set to more than 4800
@@ -896,7 +896,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
         // 3. Do purchase
         // 4. CreditAnswer - errorAlredyRegistered (22916)
         // Expected: success .withPurchaseAlreadyProcessed
- 
+
         withFeatureSwitches([]) {
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
@@ -906,7 +906,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
             paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
             var processCompletionResult: ProcessCompletionResult?
             processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
-            
+
             apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
                 if path.contains("/tokens") {
                     completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
@@ -918,13 +918,13 @@ final class ProcessAuthenticatedTests: XCTestCase {
             }
             var returnedTransaction: SKPaymentTransaction?
             processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
-            
+
             // when
             var returnedResult: ProcessCompletionResult?
             queue.async {
                 try! out.process(transaction: transaction, plan: plan) { returnedResult = $0; expectation.fulfill() }
             }
-            
+
             // then
             waitForExpectations(timeout: timeout)
             XCTAssertEqual(returnedTransaction, transaction)

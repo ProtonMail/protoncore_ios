@@ -39,7 +39,7 @@ class UserAgentTests: XCTestCase {
         }
     }
 #endif
-    
+
     func testDarwinVersion() {
         let dv = UserAgent.default.DarwinVersion()
         XCTAssertFalse(dv.isEmpty)

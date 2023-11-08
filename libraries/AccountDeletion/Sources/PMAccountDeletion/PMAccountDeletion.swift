@@ -26,12 +26,12 @@ import PMCommon
 import TrustKit
 
 public struct PMAccountDeletionConfiguration {
-    
+
     let accountHost: String
     let accountHeaders: [String: String]
     let backImage: UIImage?
     let closeImage: UIImage?
-    
+
     var deleteAccountWebviewTitle: String
     var accountDeletionSucceddedMessage: String
     var genericNetworkError: String
@@ -54,13 +54,13 @@ public struct PMAccountDeletionConfiguration {
         self.genericNetworkError = genericNetworkError
         self.genericNetworkErrorBannerCloseButton = genericNetworkErrorBannerCloseButton
     }
-    
+
 }
 
 private var pmAccountDeletionConfiguration: PMAccountDeletionConfiguration! = nil
 
 extension AccountDeletionService {
-    
+
     public convenience init(api: APIService, configuration: PMAccountDeletionConfiguration) {
         pmAccountDeletionConfiguration = configuration
         self.init(api: api, doh: api.doh as! (DoH & ServerConfig))
@@ -90,13 +90,13 @@ extension AuthService {
         public let code: Int
         public let selector: String
     }
-    
+
     struct ForkSessionEndpoint: Request {
 
         var path: String {
             return "/auth/v4/sessions/forks"
         }
-        
+
         var method: HTTPMethod {
             return .post
         }
@@ -104,17 +104,17 @@ extension AuthService {
             "ChildClientID": "WebAccountLite",
             "Independent": 1,
         ] }
-      
+
         var isAuth: Bool {
             return true
         }
-        
+
         var authRetry: Bool {
             return false
         }
-        
+
         var authCredential: AuthCredential?
-        
+
         init(auth: AuthCredential?) {
             self.authCredential = auth
         }
@@ -131,15 +131,15 @@ extension Authenticator {
 }
 
 extension DoH {
-    
+
     public func getAccountHost() -> String {
         pmAccountDeletionConfiguration.accountHost
     }
-    
+
     public func getAccountHeaders() -> [String: String] {
         pmAccountDeletionConfiguration.accountHeaders
     }
-    
+
     public func handleErrorResolvingProxyDomainIfNeeded(
         host: String, error: Error?,
         callCompletionBlockOn possibleCompletionBlock: DispatchQueue? = nil,
@@ -170,7 +170,7 @@ public func handleAuthenticationChallenge(
         }
         let credential = URLCredential(trust: trust)
         challengeCompletionHandler(.useCredential, credential)
-        
+
     } else if let tk = trustKit {
         let wrappedCompletionHandler: (URLSession.AuthChallengeDisposition, URLCredential?) -> Void = { disposition, credential in
             trustKitCompletionHandler(disposition, credential, challengeCompletionHandler)
@@ -181,10 +181,10 @@ public func handleAuthenticationChallenge(
             challengeCompletionHandler(.performDefaultHandling, nil)
             return
         }
-        
+
     } else {
         assertionFailure("TrustKit not initialized correctly")
         challengeCompletionHandler(.performDefaultHandling, nil)
-        
+
     }
 }

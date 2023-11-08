@@ -32,7 +32,7 @@ final class TroubleShootingLocalizationTests: XCTestCase {
     func testAllSubstitutionsAreFollowingTheExpectedFormat() {
         testAllSubstitutionsAreValid(for: TSTranslation.self)
     }
-    
+
     func testAllTranslationsAreDefinedForAllLanguages() {
         testAllLocalizationsAreDefined(for: TSTranslation.self, prefixForMissingValue: #function)
     }

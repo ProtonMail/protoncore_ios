@@ -21,20 +21,20 @@ import ProtonCoreEnvironment
 import ProtonCoreChallenge
 
 class FeaturesViewController: UIViewController, TrustKitDelegate {
-    
+
     @IBOutlet var usernameTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var receipientTextField: UITextField!
-    
+
     private var authHelper: AuthHelper?
     private var user: User?
     private var addresses: [Address]?
     var liveApi = PMAPIService.createAPIService(environment: clientApp == .vpn ? .vpnProd : .mailProd,
                                                 sessionUID: "testSessionUID",
                                                 challengeParametersProvider: .forAPIService(clientApp: clientApp, challenge: PMChallenge()))
-    
+
     private var keypassphrase = ""
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         liveApi.getSession()?.setChallenge(noTrustKit: false, trustKit: Environment.trustKit)
@@ -81,15 +81,15 @@ class FeaturesViewController: UIViewController, TrustKitDelegate {
                                         guard let salt = salts.first?.keySalt else {
                                             return
                                         }
-                                        
+
                                         let keysalt: Data = salt.decodeBase64()
-                                        
+
                                         self.keypassphrase = PasswordHash.hashPassword(password, salt: keysalt)
                                         self.testSendEvent(emails: emails)
                                     case .failure:
                                         break
                                     }
-                                    
+
                                 }
                             case .failure:
                                 break
@@ -123,12 +123,12 @@ class FeaturesViewController: UIViewController, TrustKitDelegate {
         guard let address = self.addresses?.first else {
             return
         }
-        
+
         // this should be the first valid key
         guard let firstKey = address.keys.first else {
             return
         }
-        
+
         let encrypted = try! plainData.encryptAttachmentNonOptional(fileName: "invite.ics",
                                                                     pubKey: firstKey.privateKey.publicKey)
         let emails = emails
@@ -138,11 +138,11 @@ class FeaturesViewController: UIViewController, TrustKitDelegate {
         let attData = NSMutableData()
         attData.append(encrypted.keyPacket!)
         attData.append(encrypted.dataPacket!)
-        
+
         let att = AttachmentContent.init(fileName: "invite.ics", mimeType: "text/calendar",
                                          keyPacket: encrypted.keyPacket!.encodeBase64(), dataPacket: encrypted.dataPacket!,
                                          fileData: (attData as Data).encodeBase64())
-        
+
         let msgContent = MessageContent(recipients: emails, subject: "Invitation for an event starting on Mar 8, 2021, 2:30 PM (GMT-8) Testing", body: body, attachments: [att])
         features.send(content: msgContent,
                       userKeys: self.user!.keys,
@@ -157,22 +157,22 @@ class FeaturesViewController: UIViewController, TrustKitDelegate {
     }
 
     func onTrustKitValidationError(_ error: TrustKitError) {
-        
+
     }
 }
 
 extension FeaturesViewController: APIServiceDelegate {
-    
+
     var additionalHeaders: [String: String]? { nil }
 
     var locale: String { Locale.autoupdatingCurrent.identifier }
 
     var userAgent: String? { "" }
-    
+
     func isReachable() -> Bool { true }
-    
+
     var appVersion: String { appVersionHeader.getVersionHeader() }
-    
+
     func onUpdate(serverTime: Int64) {
         CryptoGo.CryptoUpdateTime(serverTime)
     }

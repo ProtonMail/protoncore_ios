@@ -24,7 +24,7 @@ import XCTest
 @testable import ProtonCoreFeatureSwitch
 
 class FeatureCommonTests: XCTestCase {
-    
+
     func testFileWithoutCommon() {
         let url = Bundle.main.url(forResource: "testFeature", withExtension: "json")
         XCTAssertNil(url)
@@ -33,7 +33,7 @@ class FeatureCommonTests: XCTestCase {
         let url2 = Bundle(for: type(of: self)).url(forResource: "testFeature", withExtension: "json")
         XCTAssertNil(url2)
     }
-    
+
     func testFileWithCommon() {
         let url = FeatureCommon.bundle.url(forResource: "testFeature", withExtension: "json")
         XCTAssertNotNil(url)
@@ -41,7 +41,7 @@ class FeatureCommonTests: XCTestCase {
         #if SPM
         bundle = Bundle.module
         #else
-        bundle = Bundle(for: type(of: self)) 
+        bundle = Bundle(for: type(of: self))
         #endif
         let url1 = bundle.url(forResource: "testLocalFeature", withExtension: "json")
         XCTAssertNotNil(url1)

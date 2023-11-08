@@ -37,12 +37,12 @@ import ProtonCoreTestingToolkit
 @available(iOS 13, *)
 class SignupViewControllerSnapshotTests: SnapshotTestCase {
     var sut: SignupViewController!
-    
+
     override func tearDown() {
         sut = nil
         super.tearDown()
     }
-    
+
     private func setupSut() {
         sut = UIStoryboard.instantiate(
             storyboardName: "PMSignup",
@@ -55,13 +55,13 @@ class SignupViewControllerSnapshotTests: SnapshotTestCase {
             challenge: PMChallenge()
         )
     }
-    
+
     func testSignUpScreen_withExternalAccountType_ffEnabled() {
         // Given
         setupSut()
         sut.signupAccountType = .external
         sut.minimumAccountType = .external
-        
+
         // Then
         checkSnapshots(controller: sut, perceptualPrecision: 0.98)
     }

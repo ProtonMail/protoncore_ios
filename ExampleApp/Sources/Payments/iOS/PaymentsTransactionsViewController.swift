@@ -28,13 +28,13 @@ import ProtonCoreUIFoundations
 import CoreGraphics
 
 final class PaymentsTransactionsViewController: UIViewController {
-    
+
     @IBOutlet var tableView: UITableView!
     @IBOutlet var restoreCompletedTransactions: UIButton!
-    
+
     private let paymentQueue = SKPaymentQueue.default()
     private var data: Set<SKPaymentTransaction> = []
-    
+
     private var sortedData: [SKPaymentTransaction] = []
 
     override func viewDidLoad() {
@@ -44,22 +44,22 @@ final class PaymentsTransactionsViewController: UIViewController {
         self.tableView.estimatedRowHeight = 100
         self.tableView.rowHeight = UITableView.automaticDimension
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        handleTransactions(transactions: paymentQueue.transactions) 
+        handleTransactions(transactions: paymentQueue.transactions)
         addPaymentObserver()
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         removePaymentsObserver()
     }
-    
+
     @IBAction func restorePreviousPurchases() {
         paymentQueue.restoreCompletedTransactions()
     }
-    
+
     private func addPaymentObserver() {
         paymentQueue.add(self)
     }
@@ -67,7 +67,7 @@ final class PaymentsTransactionsViewController: UIViewController {
     private func removePaymentsObserver() {
         paymentQueue.remove(self)
     }
-    
+
     private func handleTransactions(transactions: [SKPaymentTransaction]) {
         transactions.forEach { data.insert($0) }
         sortedData = data.sorted { lhs, rhs in
@@ -82,11 +82,11 @@ extension PaymentsTransactionsViewController: SKPaymentTransactionObserver {
         PMLog.debug(#function)
         handleTransactions(transactions: transactions)
     }
-    
+
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         PMLog.debug(#function)
     }
-    
+
     func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
         PMLog.debug(#function)
         PMLog.debug("\(error)")
@@ -108,7 +108,7 @@ extension PaymentsTransactionsViewController: UITableViewDataSource, UITableView
                 as? PaymentsTransactionsTableViewCell else {
             return UITableViewCell(style: .subtitle, reuseIdentifier: "PaymentsTransactionsViewController.cell")
         }
-        
+
         cell.setUp(with: sortedData[indexPath.row], in: paymentQueue)
         return cell
     }
@@ -116,7 +116,7 @@ extension PaymentsTransactionsViewController: UITableViewDataSource, UITableView
 }
 
 final class PaymentsTransactionsTableViewCell: UITableViewCell {
-    
+
     private static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.calendar = .autoupdatingCurrent
@@ -124,13 +124,13 @@ final class PaymentsTransactionsTableViewCell: UITableViewCell {
         formatter.dateFormat = "YYYY/MM/dd HH:mm:ss"
         return formatter
     }()
-    
+
     private let label = UILabel()
     private let button = UIButton()
-    
+
     private var transaction: SKPaymentTransaction?
     private var queue: SKPaymentQueue?
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         let stackView = UIStackView(arrangedSubviews: [label, button])
@@ -145,11 +145,11 @@ final class PaymentsTransactionsTableViewCell: UITableViewCell {
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func setUp(with transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
         let date = transaction.transactionDate.map(PaymentsTransactionsTableViewCell.dateFormatter.string(from:))
         label.text = """
@@ -179,7 +179,7 @@ final class PaymentsTransactionsTableViewCell: UITableViewCell {
         self.transaction = transaction
         self.queue = queue
     }
-    
+
     @objc private func finishTransaction() {
         guard let queue = queue, let transaction = transaction else { return }
         queue.finishTransaction(transaction)

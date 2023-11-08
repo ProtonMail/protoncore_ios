@@ -36,7 +36,7 @@ extension UserInfo {
         }
         return out
     }
-    
+
     var firstUserPublicKey: String? {
         if userKeys.count > 0 {
             for k in userKeys {

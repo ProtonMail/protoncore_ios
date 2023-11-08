@@ -26,16 +26,16 @@ import XCTest
 import ProtonCoreLog
 
 open class ProtonCoreBaseTestCase: CoreTestCase {
-    
+
     public let app = XCUIApplication()
     public var bundleIdentifier: String = "ch.protontech.core.ios.testing-toolkit.uitests"
     public var launchArguments: [String] = []
     public var launchEnvironment: [String: String] = [:]
-    
+
     public var uiTestBundle: Bundle? {
         Bundle.allBundles.first(where: { $0.bundleIdentifier == bundleIdentifier })
     }
-    
+
     public var dynamicDomain: String? {
         uiTestBundle?.object(forInfoDictionaryKey: "DYNAMIC_DOMAIN").flatMap { domain in
             guard let dynamicDomain = domain as? String, !dynamicDomain.isEmpty
@@ -43,11 +43,11 @@ open class ProtonCoreBaseTestCase: CoreTestCase {
             return dynamicDomain
         }
     }
-    
+
     public var dynamicDomainAvailable: Bool { dynamicDomain != nil }
-    
+
     open var host: String? { dynamicDomain.map { "https://\($0)" } }
-    
+
     public func beforeSetUp(bundleIdentifier: String? = nil,
                             launchArguments: [String]? = nil,
                             launchEnvironment: [String: String]? = nil) {
@@ -55,7 +55,7 @@ open class ProtonCoreBaseTestCase: CoreTestCase {
         self.launchArguments = launchArguments ?? self.launchArguments
         self.launchEnvironment = launchEnvironment ?? self.launchEnvironment
     }
-        
+
     override open func setUp() {
         super.setUp()
         PMLog.info("UI TEST START")
@@ -84,11 +84,11 @@ public extension ProtonCoreBaseTestCase {
     var randomName: String {
         StringUtils.randomAlphanumericString(length: 8)
     }
-    
+
     var randomPassword: String {
         StringUtils.randomAlphanumericString(length: 8)
     }
-        
+
     var randomEmail: String {
         let username = StringUtils.randomAlphanumericString(length: 8)
         // Randomly generated domain doesn't pass login form email validation.

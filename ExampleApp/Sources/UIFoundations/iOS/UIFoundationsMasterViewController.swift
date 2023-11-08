@@ -24,13 +24,13 @@
 import UIKit
 
 class UIFoundationsMasterViewController: UIFoundationsAppearanceStyleTableViewController {
-    
+
     private var rows = [(title: String, viewController: UIViewController)]()
     private var selectedRow = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         rows.append((title: "Buttons", viewController: UIFoundationsButtonsViewController()))
         rows.append((title: "Action sheet", viewController: UIFoundationsActionSheetViewController()))
         rows.append((title: "ActionBar", viewController: UIFoundationsActionBarViewController()))
@@ -53,11 +53,11 @@ class UIFoundationsMasterViewController: UIFoundationsAppearanceStyleTableViewCo
         guard let detailNavController = segue.destination as? UINavigationController else {
             fatalError("Something went wrong with the segue")
         }
-        
+
         let detailViewController = rows[selectedRow].viewController
         detailViewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         detailViewController.navigationItem.leftItemsSupplementBackButton = true
-        
+
         detailNavController.setViewControllers([detailViewController], animated: false)
     }
 
@@ -75,10 +75,10 @@ class UIFoundationsMasterViewController: UIFoundationsAppearanceStyleTableViewCo
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let title = rows[indexPath.row].title
         cell.textLabel!.text = title
-        
+
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         selectedRow = indexPath.row
         return indexPath

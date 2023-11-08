@@ -33,20 +33,20 @@ import ProtonCoreObfuscatedConstants
 import ProtonCoreLoginUI
 
 class NetworkingViewController: NSViewController {
-    
+
     private let sessionId = "macos example networking session id"
-    
+
     private var testApi: PMAPIService!
     private var authHelper: AuthHelper!
     private var humanVerificationDelegate: HumanVerifyDelegate?
-    
+
     @IBOutlet var environmentSelector: EnvironmentSelector!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         createTestApi()
     }
-    
+
     func createTestApi() {
         testApi = PMAPIService.createAPIService(environment: environmentSelector.currentEnvironment, sessionUID: sessionId, challengeParametersProvider: .empty)
         authHelper = AuthHelper()
@@ -58,14 +58,14 @@ class NetworkingViewController: NSViewController {
         humanVerificationDelegate?.paymentDelegateForLoginAndSignup = self
         testApi.humanDelegate = humanVerificationDelegate
     }
-        
+
     @IBAction func humanVerificationAuthAction(_ sender: Any) {
         createTestApi()
         getCredentialsAlertView { userName, password in
             self.humanVerification(userName: userName, password: password)
         }
     }
-    
+
     func humanVerification(userName: String, password: String) {
         let authApi: Authenticator = Authenticator(api: testApi)
         authApi.authenticate(username: userName, password: password, challenge: nil) { result in
@@ -112,12 +112,12 @@ class NetworkingViewController: NSViewController {
             PMLog.info(String(describing: result))
         }
     }
-    
+
     @IBAction func humanVerificationUnauthAction(_ sender: Any) {
         createTestApi()
         showHumanVerification()
     }
-    
+
     func showHumanVerification() {
         let client = TestApiClient(api: self.testApi)
         client.triggerHumanVerify(isAuth: false) { (_, response) in
@@ -128,7 +128,7 @@ class NetworkingViewController: NSViewController {
             alert.runModal()
         }
     }
-    
+
     @IBAction func humanVerificationHelpAction(_ sender: Any) {
         createTestApi()
         let storyboard = NSStoryboard.init(name: "HumanVerify", bundle: HVCommon.bundle)
@@ -138,7 +138,7 @@ class NetworkingViewController: NSViewController {
         helpViewController.viewModel = HelpViewModel(url: testApi.humanDelegate?.getSupportURL(), clientApp: clientApp)
         presentAsModalWindow(helpViewController)
     }
-    
+
     func getCredentialsAlertView(result: @escaping (String, String) -> Void) {
         let alertController = NSAlert()
         alertController.addButton(withTitle: "Log in")
@@ -173,19 +173,19 @@ class NetworkingViewController: NSViewController {
 }
 
 extension NetworkingViewController: APIServiceDelegate {
-    
+
     var additionalHeaders: [String: String]? { nil }
-    
+
     var locale: String { Locale.autoupdatingCurrent.identifier }
 
     var userAgent: String? { "" }
-    
+
     func isReachable() -> Bool { true }
-    
+
     var appVersion: String { appVersionHeader.getVersionHeader() }
-    
+
     func onUpdate(serverTime: Int64) {}
-    
+
     func onDohTroubleshot() {
         PMLog.info("\(#file) \(#function)")
     }
@@ -198,9 +198,9 @@ extension NetworkingViewController: HumanVerifyPaymentDelegate {
 
 extension NetworkingViewController: HumanVerifyResponseDelegate {
     func onHumanVerifyStart() {
-        
+
     }
-    
+
     func onHumanVerifyEnd(result: HumanVerifyEndResult) {
         DispatchQueue.main.async {
             let alert = NSAlert()
@@ -215,8 +215,8 @@ extension NetworkingViewController: HumanVerifyResponseDelegate {
             alert.runModal()
         }
     }
-    
+
     func humanVerifyToken(token: String?, tokenType: String?) {
-        
+
     }
 }

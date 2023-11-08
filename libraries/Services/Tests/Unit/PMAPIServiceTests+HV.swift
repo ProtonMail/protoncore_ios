@@ -40,11 +40,11 @@ import ProtonCoreUtilities
 
 @available(iOS 13.0.0, *)
 final class PMAPIServiceHVTests: XCTestCase {
-    
+
     struct EmptyTestResponse: APIDecodableResponse, Equatable {}
-    
+
     struct DataTestResponse: APIDecodableResponse, Equatable { let string: String; let number: Int }
-    
+
     let humanVerificationResponse: HTTPURLResponse = .init(statusCode: 444)
     let humanVerificationResponseJSON: JSONDictionary = [
         "Code": 9001,
@@ -57,16 +57,16 @@ final class PMAPIServiceHVTests: XCTestCase {
     ]
     lazy var humanVerificationResponseData: Data = try! JSONSerialization.data(withJSONObject: humanVerificationResponseJSON)
     lazy var humanVerificationSessionError: SessionResponseError = .responseBodyIsNotADecodableObject(body: humanVerificationResponseData, response: humanVerificationResponse)
-    
+
     let someOtherErrorResponse: HTTPURLResponse = .init(statusCode: 400)
     let someOtherErrorResponseJSON: JSONDictionary = ["Code": 1234, "Error": "some other error in tests"]
     lazy var someOtherErrorResponseData: Data = try! JSONSerialization.data(withJSONObject: someOtherErrorResponseJSON)
     lazy var someOtherSessionError: SessionResponseError = .responseBodyIsNotADecodableObject(body: someOtherErrorResponseData, response: someOtherErrorResponse)
-    
+
     let successfulResponse: HTTPURLResponse = .init(statusCode: 200)
     let successfulResponseJSON: JSONDictionary = ["Code": 1000, "String": "some successful string", "Number": 42]
     lazy var successfulResponseData: Data = try! JSONSerialization.data(withJSONObject: successfulResponseJSON)
-    
+
     var dohMock: DoHInterface! = nil
     var sessionUID: String! = nil
     var cacheToClearMock: URLCacheMock! = nil
@@ -76,7 +76,7 @@ final class PMAPIServiceHVTests: XCTestCase {
     var apiServiceDelegateMock: APIServiceDelegateMock! = nil
     var authDelegateMock: AuthDelegateMock! = nil
     var humanDelegateMock: HumanVerifyDelegateMock! = nil
-    
+
     override func setUp() {
         super.setUp()
         let dohMock = DohMock()
@@ -98,9 +98,9 @@ final class PMAPIServiceHVTests: XCTestCase {
         authDelegateMock = AuthDelegateMock()
         humanDelegateMock = HumanVerifyDelegateMock()
     }
-    
+
     // MARK: - JSON response tests
-    
+
     func testHumanVerificationIsLaunchedForJSONResponse_HVClose() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
                                                     sessionUID: "test sessionUID",
@@ -110,7 +110,7 @@ final class PMAPIServiceHVTests: XCTestCase {
                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
-        
+
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
             SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
@@ -120,9 +120,9 @@ final class PMAPIServiceHVTests: XCTestCase {
         humanDelegateMock.onHumanVerifyStub.bodyIs { _, _, _, completion in
             completion(.close)
         }
-        
+
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        
+
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
@@ -130,14 +130,14 @@ final class PMAPIServiceHVTests: XCTestCase {
                             nonDefaultTimeout: nil, retryPolicy: .userInitiated,
                             jsonCompletion: { task, result in continuation.resume(returning: (task, result)) })
         }
-        
+
         // THEN
         XCTAssertTrue(humanDelegateMock.onHumanVerifyStub.wasCalledExactlyOnce)
         let value = try XCTUnwrap(result.1.error as? ResponseError)
         XCTAssertEqual(value.responseCode, 9001)
         XCTAssertEqual(value.error, "human verification in tests")
     }
-    
+
     func testHumanVerificationIsLaunchedForJSONResponse_HVError() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
                                                     sessionUID: "test sessionUID",
@@ -147,7 +147,7 @@ final class PMAPIServiceHVTests: XCTestCase {
                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
-        
+
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
             SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
@@ -157,9 +157,9 @@ final class PMAPIServiceHVTests: XCTestCase {
         humanDelegateMock.onHumanVerifyStub.bodyIs { _, _, _, completion in
             completion(.closeWithError(code: 1234, description: "Test error"))
         }
-        
+
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        
+
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
@@ -167,13 +167,13 @@ final class PMAPIServiceHVTests: XCTestCase {
                             nonDefaultTimeout: nil, retryPolicy: .userInitiated,
                             jsonCompletion: { task, result in continuation.resume(returning: (task, result)) })
         }
-        
+
         // THEN
         let value = try XCTUnwrap(result.1.error as? ResponseError)
         XCTAssertEqual(value.responseCode, 1234)
         XCTAssertEqual(value.userFacingMessage, "Test error")
     }
-    
+
     func testHumanVerificationIsLaunchedForJSONResponse_ErrorInRetriedRequest() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
                                                     sessionUID: "test sessionUID",
@@ -183,7 +183,7 @@ final class PMAPIServiceHVTests: XCTestCase {
                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
-        
+
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
             SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
@@ -197,9 +197,9 @@ final class PMAPIServiceHVTests: XCTestCase {
         humanDelegateMock.onHumanVerifyStub.bodyIs { _, _, _, completion in
             completion(.verification(header: [:], verificationCodeBlock: { isSuccessful, responseError, blockFinish in blockFinish?() }))
         }
-        
+
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        
+
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
@@ -207,13 +207,13 @@ final class PMAPIServiceHVTests: XCTestCase {
                             nonDefaultTimeout: nil, retryPolicy: .userInitiated,
                             jsonCompletion: { task, result in continuation.resume(returning: (task, result)) })
         }
-        
+
         // THEN
         let error = try XCTUnwrap(result.1.error)
         XCTAssertEqual(error.code, 1234)
         XCTAssertEqual(error.localizedDescription, "some other error in tests")
     }
-    
+
     func testHumanVerificationIsLaunchedForJSONResponse_HVSuccess() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
                                                     sessionUID: "test sessionUID",
@@ -223,7 +223,7 @@ final class PMAPIServiceHVTests: XCTestCase {
                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
-        
+
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
             SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
@@ -237,9 +237,9 @@ final class PMAPIServiceHVTests: XCTestCase {
         humanDelegateMock.onHumanVerifyStub.bodyIs { _, _, _, completion in
             completion(.verification(header: [:], verificationCodeBlock: { isSuccessful, responseError, blockFinish in blockFinish?() }))
         }
-        
+
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        
+
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
@@ -247,15 +247,15 @@ final class PMAPIServiceHVTests: XCTestCase {
                             nonDefaultTimeout: nil, retryPolicy: .userInitiated,
                             jsonCompletion: { task, result in continuation.resume(returning: (task, result)) })
         }
-        
+
         // THEN
         let value = try XCTUnwrap(result.1.value)
         XCTAssertEqual(try JSONSerialization.data(withJSONObject: value),
                        try JSONSerialization.data(withJSONObject: self.successfulResponseJSON))
     }
-    
+
     // MARK: - Codable empty response tests
-    
+
     func testHumanVerificationIsLaunchedForCodableEmptyResponse_HVClose() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
                                                     sessionUID: "test sessionUID",
@@ -265,7 +265,7 @@ final class PMAPIServiceHVTests: XCTestCase {
                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
-        
+
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
             SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
@@ -275,9 +275,9 @@ final class PMAPIServiceHVTests: XCTestCase {
         humanDelegateMock.onHumanVerifyStub.bodyIs { _, _, _, completion in
             completion(.close)
         }
-        
+
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        
+
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
@@ -287,12 +287,12 @@ final class PMAPIServiceHVTests: XCTestCase {
                 continuation.resume(returning: (task, result))
             })
         }
-        
+
         // THEN
         let value = try XCTUnwrap(result.1.error as? ResponseError)
         XCTAssertEqual(value, ResponseError(httpCode: 444, responseCode: 9001, userFacingMessage: "human verification in tests", underlyingError: nil))
     }
-    
+
     func testHumanVerificationIsLaunchedForCodableEmptyResponse_HVError() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
                                                     sessionUID: "test sessionUID",
@@ -302,7 +302,7 @@ final class PMAPIServiceHVTests: XCTestCase {
                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
-        
+
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
             SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
@@ -312,9 +312,9 @@ final class PMAPIServiceHVTests: XCTestCase {
         humanDelegateMock.onHumanVerifyStub.bodyIs { _, _, _, completion in
             completion(.closeWithError(code: 1234, description: "test error"))
         }
-        
+
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        
+
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
@@ -324,12 +324,12 @@ final class PMAPIServiceHVTests: XCTestCase {
                 continuation.resume(returning: (task, result))
             })
         }
-        
+
         // THEN
         let value = try XCTUnwrap(result.1.error as? ResponseError)
         XCTAssertEqual(value, ResponseError(httpCode: 444, responseCode: 1234, userFacingMessage: "test error", underlyingError: nil))
     }
-    
+
     func testHumanVerificationIsLaunchedForCodableEmptyResponse_ErrorInRetriedRequest() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
                                                     sessionUID: "test sessionUID",
@@ -339,7 +339,7 @@ final class PMAPIServiceHVTests: XCTestCase {
                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
-        
+
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
             SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
@@ -349,14 +349,14 @@ final class PMAPIServiceHVTests: XCTestCase {
             case 1: completion(URLSessionDataTaskMock(response: self.someOtherErrorResponse), .failure(self.someOtherSessionError))
             default: XCTFail("Stub shouldn't be called more than twice")
             }
-            
+
         }
         humanDelegateMock.onHumanVerifyStub.bodyIs { _, _, _, completion in
             completion(.verification(header: [:], verificationCodeBlock: { isSuccessful, responseError, blockFinish in blockFinish?() }))
         }
-        
+
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        
+
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
@@ -366,13 +366,13 @@ final class PMAPIServiceHVTests: XCTestCase {
                 continuation.resume(returning: (task, result))
             })
         }
-        
+
         // THEN
         let value = try XCTUnwrap(result.1.error as? ResponseError)
         XCTAssertEqual(value, ResponseError(httpCode: 400, responseCode: 1234, userFacingMessage: "some other error in tests",
                                             underlyingError: SessionResponseError.responseBodyIsNotADecodableObject(body: someOtherErrorResponseData, response: nil).underlyingError))
     }
-    
+
     func testHumanVerificationIsLaunchedForCodableEmptyResponse_HVSuccess() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
                                                     sessionUID: "test sessionUID",
@@ -382,7 +382,7 @@ final class PMAPIServiceHVTests: XCTestCase {
                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
-        
+
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
             SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
@@ -395,14 +395,14 @@ final class PMAPIServiceHVTests: XCTestCase {
             )
             default: XCTFail("Stub shouldn't be called more than twice")
             }
-            
+
         }
         humanDelegateMock.onHumanVerifyStub.bodyIs { _, _, _, completion in
             completion(.verification(header: [:], verificationCodeBlock: { isSuccessful, responseError, blockFinish in blockFinish?() }))
         }
-        
+
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        
+
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
@@ -412,13 +412,13 @@ final class PMAPIServiceHVTests: XCTestCase {
                 continuation.resume(returning: (task, result))
             })
         }
-        
+
         // THEN
         _ = try XCTUnwrap(result.1.value)
     }
-    
+
     // MARK: - Codable data response tests
-    
+
     func testHumanVerificationIsLaunchedForCodableDataResponse_HVClose() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
                                                     sessionUID: "test sessionUID",
@@ -428,7 +428,7 @@ final class PMAPIServiceHVTests: XCTestCase {
                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
-        
+
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
             SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
@@ -438,9 +438,9 @@ final class PMAPIServiceHVTests: XCTestCase {
         humanDelegateMock.onHumanVerifyStub.bodyIs { _, _, _, completion in
             completion(.close)
         }
-        
+
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        
+
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
@@ -450,12 +450,12 @@ final class PMAPIServiceHVTests: XCTestCase {
                 continuation.resume(returning: (task, result))
             })
         }
-        
+
         // THEN
         let value = try XCTUnwrap(result.1.error as? ResponseError)
         XCTAssertEqual(value, ResponseError(httpCode: 444, responseCode: 9001, userFacingMessage: "human verification in tests", underlyingError: nil))
     }
-    
+
     func testHumanVerificationIsLaunchedForCodableDataResponse_HVError() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
                                                     sessionUID: "test sessionUID",
@@ -465,7 +465,7 @@ final class PMAPIServiceHVTests: XCTestCase {
                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
-        
+
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
             SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
@@ -475,9 +475,9 @@ final class PMAPIServiceHVTests: XCTestCase {
         humanDelegateMock.onHumanVerifyStub.bodyIs { _, _, _, completion in
             completion(.closeWithError(code: 1234, description: "test error"))
         }
-        
+
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        
+
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
@@ -487,12 +487,12 @@ final class PMAPIServiceHVTests: XCTestCase {
                 continuation.resume(returning: (task, result))
             })
         }
-        
+
         // THEN
         let value = try XCTUnwrap(result.1.error as? ResponseError)
         XCTAssertEqual(value, ResponseError(httpCode: 444, responseCode: 1234, userFacingMessage: "test error", underlyingError: nil))
     }
-    
+
     func testHumanVerificationIsLaunchedForCodableDataResponse_ErrorInRetriedRequest() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
                                                     sessionUID: "test sessionUID",
@@ -502,7 +502,7 @@ final class PMAPIServiceHVTests: XCTestCase {
                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
-        
+
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
             SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
@@ -512,14 +512,14 @@ final class PMAPIServiceHVTests: XCTestCase {
             case 1: completion(URLSessionDataTaskMock(response: self.someOtherErrorResponse), .failure(self.someOtherSessionError))
             default: XCTFail("Stub shouldn't be called more than twice")
             }
-            
+
         }
         humanDelegateMock.onHumanVerifyStub.bodyIs { _, _, _, completion in
             completion(.verification(header: [:], verificationCodeBlock: { isSuccessful, responseError, blockFinish in blockFinish?() }))
         }
-        
+
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        
+
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
@@ -529,13 +529,13 @@ final class PMAPIServiceHVTests: XCTestCase {
                 continuation.resume(returning: (task, result))
             })
         }
-        
+
         // THEN
         let value = try XCTUnwrap(result.1.error as? ResponseError)
         XCTAssertEqual(value, ResponseError(httpCode: 400, responseCode: 1234, userFacingMessage: "some other error in tests",
                                             underlyingError: SessionResponseError.responseBodyIsNotADecodableObject(body: someOtherErrorResponseData, response: nil).underlyingError))
     }
-    
+
     func testHumanVerificationIsLaunchedForCodableDataResponse_HVSuccess() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
                                                     sessionUID: "test sessionUID",
@@ -545,7 +545,7 @@ final class PMAPIServiceHVTests: XCTestCase {
                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
-        
+
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
             SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
@@ -558,14 +558,14 @@ final class PMAPIServiceHVTests: XCTestCase {
             )
             default: XCTFail("Stub shouldn't be called more than twice")
             }
-            
+
         }
         humanDelegateMock.onHumanVerifyStub.bodyIs { _, _, _, completion in
             completion(.verification(header: [:], verificationCodeBlock: { isSuccessful, responseError, blockFinish in blockFinish?() }))
         }
-        
+
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        
+
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
@@ -575,15 +575,15 @@ final class PMAPIServiceHVTests: XCTestCase {
                 continuation.resume(returning: (task, result))
             })
         }
-        
+
         // THEN
         let response = try XCTUnwrap(result.1.value)
         XCTAssertEqual(response.string, "some successful string")
         XCTAssertEqual(response.number, 42)
     }
-    
+
     // MARK: - POST /auth tests
-    
+
     func testHumanVerificationIsLaunchedForPOSTAuth_HVSuccess() async throws {
         let service = PMAPIService.createAPIService(doh: dohMock,
                                                     sessionUID: "test sessionUID",
@@ -593,7 +593,7 @@ final class PMAPIServiceHVTests: XCTestCase {
                                                     challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         service.authDelegate = authDelegateMock
         service.humanDelegate = humanDelegateMock
-        
+
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
             SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
@@ -615,14 +615,14 @@ final class PMAPIServiceHVTests: XCTestCase {
             )
             default: XCTFail("Stub shouldn't be called more than twice")
             }
-            
+
         }
         humanDelegateMock.onHumanVerifyStub.bodyIs { _, _, _, completion in
             completion(.verification(header: [:], verificationCodeBlock: { isSuccessful, responseError, blockFinish in blockFinish?() }))
         }
-        
+
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
-        
+
         // WHEN
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
@@ -632,7 +632,7 @@ final class PMAPIServiceHVTests: XCTestCase {
                 continuation.resume(returning: (task, result))
             })
         }
-        
+
         // THEN
         let response = try XCTUnwrap(result.1.value)
         XCTAssertEqual(response.accessToken, "test access token")
@@ -644,7 +644,7 @@ final class PMAPIServiceHVTests: XCTestCase {
         XCTAssertEqual(response.eventID, "test event id")
         XCTAssertEqual(response.serverProof, "test server proof")
         XCTAssertEqual(response.passwordMode, .one)
-        XCTAssertEqual(response._2FA.enabled, .off)    
+        XCTAssertEqual(response._2FA.enabled, .off)
     }
 }
 

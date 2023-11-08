@@ -130,7 +130,7 @@ final class PaymentsTestUserPickerData: NSObject {
         (ObfuscatedConstants.plansTHDescription, ObfuscatedConstants.plansTHUsername),
         (ObfuscatedConstants.plansTIDescription, ObfuscatedConstants.plansTIUsername)
     ]
-    
+
     lazy var plansData: [(name: String, user: String, password: String)] = plansDataRaw
         .map { (name: $0, user: $1, password: ObfuscatedConstants.plansPassword) }
 

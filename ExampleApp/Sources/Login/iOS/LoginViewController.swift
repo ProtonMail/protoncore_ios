@@ -81,7 +81,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBOutlet private weak var welcomeSegmentedControl: UISegmentedControl!
     @IBOutlet private weak var keyMigrationVersionSeg: UISegmentedControl!
     @IBOutlet private weak var inAppThemeSegmentedControl: UISegmentedControl!
-    
+
     private var getInAppTheme: () -> InAppTheme {
         switch inAppThemeSegmentedControl.selectedSegmentIndex {
         case 0: return { .light }
@@ -90,9 +90,9 @@ final class LoginViewController: UIViewController, AccessibleView {
         default: return { .default }
         }
     }
-    
+
     // MARK: - Properties
-    
+
     private var data: LoginData? {
         didSet {
             logoutButton.isHidden = data == nil
@@ -118,7 +118,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             verificationEndpointSegmented.selectedSegmentIndex = newValue.rawValue
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if let dynamicDomain = ProcessInfo.processInfo.environment["DYNAMIC_DOMAIN"] {
@@ -138,18 +138,18 @@ final class LoginViewController: UIViewController, AccessibleView {
         generateAccessibilityIdentifiers()
         separateDomainsButtonView.isHidden = false
         setupDefaultValues()
-        
+
         // pre enable features for testing.
         FeatureFactory.shared.loadEnv()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         #if DEBUG_CORE_INTERNALS
         simulateIAPFailure.isOn = ProtonCorePayments.TemporaryHacks.simulateBackendPlanPurchaseFailure
         #endif
     }
-    
+
     private func setupDefaultValues() {
         keyMigrationVersionSeg.selectedSegmentIndex = 1
     }
@@ -167,26 +167,26 @@ final class LoginViewController: UIViewController, AccessibleView {
     private func updateVerificationEndpointEnabledness(with env: Environment) {
         verificationEndpointSegmented.isEnabled = env == .mailProd || env == .vpnProd
     }
-    
+
     // MARK: - Actions
 
     @IBAction func ssoAction(_ sender: Any) {
         guard let switcher = sender as? UISwitch else {
             return
         }
-        
+
         if switcher.isOn {
             FeatureFactory.shared.enable(&.ssoSignIn)
         } else {
             FeatureFactory.shared.disable(&.ssoSignIn)
         }
     }
-    
+
     @IBAction func dynamicPlansAction(_ sender: Any) {
         guard let switcher = sender as? UISwitch else {
             return
         }
-        
+
         if switcher.isOn {
             FeatureFactory.shared.enable(&.dynamicPlans)
         } else {
@@ -227,7 +227,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         guard let appName = appNameTextField.text, !appName.isEmpty else {
             return
         }
-        
+
         self.setupKeyPhase()
         let apiService = PMAPIService.createAPIServiceWithoutSession(environment: environmentSelector.currentEnvironment,
                                                                      challengeParametersProvider: ChallengeParametersProvider.forAPIService(clientApp: clientApp, challenge: PMChallenge()))
@@ -300,9 +300,9 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBAction private func showSignup(_ sender: Any) {
 
         removePaymentsObserver()
-        
+
         let env: Environment = clientApp == .vpn ? .vpnProd : .mailProd
-        
+
         var prodDoH: DoH & VerificationModifiable = env.dohModifiable
         prodDoH = prodDoH.replacingHumanVerificationV3Host(with: selectedVerificationEndpoint.urlString)
 
@@ -328,13 +328,13 @@ final class LoginViewController: UIViewController, AccessibleView {
             }
         }
     }
-    
+
     private func showSignup() {
         self.data = nil
         guard let appName = appNameTextField.text, !appName.isEmpty else {
             return
         }
-    
+
         self.setupKeyPhase()
         let apiService = PMAPIService.createAPIServiceWithoutSession(environment: environmentSelector.currentEnvironment,
                                                                      challengeParametersProvider: ChallengeParametersProvider.forAPIService(clientApp: clientApp, challenge: PMChallenge()))
@@ -358,7 +358,7 @@ final class LoginViewController: UIViewController, AccessibleView {
                 : .notAvailable,
             signupAvailability: getSignupAvailability
         )
-        
+
         login?.presentSignupFlow(
             over: self,
             customization: LoginCustomizationOptions(performBeforeFlow: getAdditionalWork,
@@ -384,7 +384,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             }
         }
     }
-    
+
     private func reportBugAlertHandler(_ receipt: String?) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Report Bug Example", message: "Example", preferredStyle: .alert)
@@ -414,7 +414,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         alertWindow?.makeKeyAndVisible()
         return alertWindow
     }()
-    
+
     private var currentAuthCredential: AuthCredential? {
         data?.credential
     }
@@ -422,7 +422,7 @@ final class LoginViewController: UIViewController, AccessibleView {
     @IBAction private func logout(_ sender: Any) {
         guard let authCredential = currentAuthCredential else { return }
         guard let appName = appNameTextField.text, !appName.isEmpty else { return }
-        
+
         self.setupKeyPhase()
         let apiService = PMAPIService.createAPIServiceWithoutSession(environment: environmentSelector.currentEnvironment,
                                                                      challengeParametersProvider: ChallengeParametersProvider.forAPIService(clientApp: clientApp, challenge: PMChallenge()))
@@ -475,7 +475,7 @@ final class LoginViewController: UIViewController, AccessibleView {
                         helper.showTroubleShooting(over: self)
                         // option #2
                         // self.present(doh: self.environmentSelector.currentDoh)
-                        
+
                     }))
                 } else {
                     alert = UIAlertController(title: "Logout", message: error.localizedDescription
@@ -488,7 +488,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             }
         }
     }
-    
+
     @IBAction private func deleteAccount(_ sender: Any) {
         guard let credential = data?.getCredential else { return }
         let api = PMAPIService.createAPIService(environment: environmentSelector.currentEnvironment,
@@ -511,7 +511,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             }
         }
     }
-    
+
     private func handleSuccessfulAccountDeletion(_ success: AccountDeletionSuccess) {
         let alert = UIAlertController(title: "Account deletion", message: "Everything OK", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -519,7 +519,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         logoutButton.isHidden = true
         deleteAccountButton.isHidden = true
     }
-    
+
     private func handleAccountDeletionFailure(_ failure: AccountDeletionError) {
         let alert = UIAlertController(title: "Account deletion failure", message: "\(failure.userFacingMessageInAccountDeletion)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -532,7 +532,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         guard let appName = appNameTextField.text, !appName.isEmpty else {
             return
         }
-        
+
         self.setupKeyPhase()
         let apiService = PMAPIService.createAPIServiceWithoutSession(environment: environmentSelector.currentEnvironment,
                                                                      challengeParametersProvider: ChallengeParametersProvider.forAPIService(clientApp: clientApp, challenge: PMChallenge()))
@@ -560,7 +560,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             }
         }
     }
-    
+
     @IBAction private func clearCookies(_ sender: Any) {
         let cookieStorage = HTTPCookieStorage.shared
         if let allCookies = cookieStorage.cookies {
@@ -603,12 +603,12 @@ final class LoginViewController: UIViewController, AccessibleView {
             loginButton.isEnabled = false
         }
     }
-    
+
     private func setupKeyPhase() {
         let isKeyPhaseV2on = keyMigrationVersionSeg.selectedSegmentIndex == 1
         FeatureFactory.shared.setEnabled(&.useKeymigrationPhaseV2, isEnable: isKeyPhaseV2on)
     }
-    
+
     private var getMinimumAccountType: AccountType {
         let minimumAccountType: AccountType
         switch typeSegmentedControl.selectedSegmentIndex {
@@ -625,7 +625,7 @@ final class LoginViewController: UIViewController, AccessibleView {
                                 shouldMockHumanVerification: humanVerificationSwitch.isOn)
         return minimumAccountType
     }
-    
+
     private func setMinimumAccountType(accountType: AccountType?) {
         guard let accountType = accountType else { return }
         switch accountType {
@@ -637,7 +637,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             typeSegmentedControl.selectedSegmentIndex = 2
         }
     }
-    
+
     private var getSignupAvailability: SignupAvailability {
         let signupAvailability: SignupAvailability
         let summaryScreenVariant: SummaryScreenVariant = showSignupSummaryScreenSwitch.isOn ? signupSummaryScreenVariant : .noSummaryScreen
@@ -680,12 +680,12 @@ final class LoginViewController: UIViewController, AccessibleView {
         default: fatalError("no more clients expected")
         }
     }
-    
+
     private var getCustomErrorPresenter: LoginErrorPresenter? {
         guard alternativeErrorPresenterSwitch.isOn else { return nil }
         return AlternativeLoginErrorPresenter()
     }
-    
+
     private var getHelpDecorator: ([[HelpItem]]) -> [[HelpItem]] {
         guard veryStrangeHelpScreenSwitch.isOn else { return { $0 } }
         return { [weak self] _ in
@@ -716,7 +716,7 @@ final class LoginViewController: UIViewController, AccessibleView {
             ]
         }
     }
-    
+
     func showAlert(
         title: String,
         message: String,
@@ -731,7 +731,7 @@ final class LoginViewController: UIViewController, AccessibleView {
         }))
         over.present(alert, animated: true, completion: nil)
     }
-    
+
     @IBAction private func simulateBackendPlanPurchaseFailureSwitchValueChanged(_ sender: UISwitch) {
         #if !SPM && DEBUG_CORE_INTERNALS
         ProtonCorePayments.TemporaryHacks.simulateBackendPlanPurchaseFailure = sender.isOn
@@ -772,7 +772,7 @@ extension LoginViewController: HumanVerifyResponseDelegate {
             PMLog.info("Human verify cancel")
         }
     }
-    
+
     func humanVerifyToken(token: String?, tokenType: String?) {
         PMLog.info("Human verify token: \(String(describing: token)), type: \(String(describing: tokenType))")
     }
@@ -817,7 +817,7 @@ extension LoginViewController: EnvironmentSelectorDelegate {
 struct SomeVeryObscureInternalError: Error {}
 
 final class AlternativeLoginErrorPresenter: LoginErrorPresenter {
-    
+
     func showAlert(message: String, over: UIViewController) {
         let alert = UIAlertController(title: "The magnificent alternative error presenter proudly presents", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Well, that's a shame", style: .cancel, handler: { action in
@@ -825,7 +825,7 @@ final class AlternativeLoginErrorPresenter: LoginErrorPresenter {
         }))
         over.present(alert, animated: true, completion: nil)
     }
-    
+
     func willPresentError(error: LoginError, from viewController: UIViewController) -> Bool {
         if case .generic(_, _, let originalError) = error, originalError is SomeVeryObscureInternalError {
             showAlert(message: "Internal error coming from additional work closure", over: viewController)
@@ -834,7 +834,7 @@ final class AlternativeLoginErrorPresenter: LoginErrorPresenter {
         showAlert(message: error.userFacingMessageInLogin, over: viewController)
         return true
     }
-    
+
     func willPresentError(error: SignupError, from viewController: UIViewController) -> Bool {
         if case .generic(_, _, let originalError) = error, originalError is SomeVeryObscureInternalError {
             showAlert(message: "Internal error coming from additional work closure", over: viewController)
@@ -843,7 +843,7 @@ final class AlternativeLoginErrorPresenter: LoginErrorPresenter {
         showAlert(message: error.userFacingMessageInLogin, over: viewController)
         return true
     }
-    
+
     func willPresentError(error: AvailabilityError, from viewController: UIViewController) -> Bool {
         if case .generic(_, _, let originalError) = error, originalError is SomeVeryObscureInternalError {
             showAlert(message: "Internal error coming from additional work closure", over: viewController)
@@ -852,7 +852,7 @@ final class AlternativeLoginErrorPresenter: LoginErrorPresenter {
         showAlert(message: error.localizedDescription, over: viewController)
         return true
     }
-    
+
     func willPresentError(error: SetUsernameError, from viewController: UIViewController) -> Bool {
         if case .generic(_, _, let originalError) = error, originalError is SomeVeryObscureInternalError {
             showAlert(message: "Internal error coming from additional work closure", over: viewController)
@@ -861,7 +861,7 @@ final class AlternativeLoginErrorPresenter: LoginErrorPresenter {
         showAlert(message: error.userFacingMessageInLogin, over: viewController)
         return true
     }
-    
+
     func willPresentError(error: CreateAddressError, from viewController: UIViewController) -> Bool {
         if case .generic(_, _, let originalError) = error, originalError is SomeVeryObscureInternalError {
             showAlert(message: "Internal error coming from additional work closure", over: viewController)
@@ -870,7 +870,7 @@ final class AlternativeLoginErrorPresenter: LoginErrorPresenter {
         showAlert(message: error.userFacingMessageInLogin, over: viewController)
         return true
     }
-    
+
     func willPresentError(error: CreateAddressKeysError, from viewController: UIViewController) -> Bool {
         if case .generic(_, _, let originalError) = error, originalError is SomeVeryObscureInternalError {
             showAlert(message: "Internal error coming from additional work closure", over: viewController)
@@ -879,7 +879,7 @@ final class AlternativeLoginErrorPresenter: LoginErrorPresenter {
         showAlert(message: error.userFacingMessageInLogin, over: viewController)
         return true
     }
-    
+
     func willPresentError(error: StoreKitManagerErrors, from viewController: UIViewController) -> Bool {
         if case .unknown(_, let originalError) = error, originalError is SomeVeryObscureInternalError {
             showAlert(message: "Internal error coming from additional work closure", over: viewController)
@@ -888,7 +888,7 @@ final class AlternativeLoginErrorPresenter: LoginErrorPresenter {
         showAlert(message: error.userFacingMessageInPayments, over: viewController)
         return true
     }
-    
+
     func willPresentError(error: ResponseError, from viewController: UIViewController) -> Bool {
         if error.underlyingError is SomeVeryObscureInternalError {
             showAlert(message: "Internal error coming from additional work closure", over: viewController)
@@ -897,7 +897,7 @@ final class AlternativeLoginErrorPresenter: LoginErrorPresenter {
         showAlert(message: error.localizedDescription, over: viewController)
         return true
     }
-    
+
     func willPresentError(error: Error, from viewController: UIViewController) -> Bool {
         if error is SomeVeryObscureInternalError {
             showAlert(message: "Internal error coming from additional work closure", over: viewController)

@@ -32,9 +32,9 @@ public final class PasswordVerifier {
     private let username: String
     private let srpBuilder: SRPBuilderProtocol
     private let endpoint: Request
-    
+
     public let authInfo: AuthInfoResponse?
-    
+
     /// Initialize the PasswordVerifier object
     ///
     /// - Parameters:
@@ -58,7 +58,7 @@ public final class PasswordVerifier {
         self.srpBuilder = srpBuilder
         authService = .init(api: apiService)
     }
-    
+
     /// A method to retrieve authInfo for the user.
     public func fetchAuthInfo(completion: @escaping (Result<AuthInfoResponse, AuthErrors>) -> Void) {
         authService.info(username: username, intent: nil) { response in
@@ -75,7 +75,7 @@ public final class PasswordVerifier {
             }
         }
     }
-    
+
     /// A method to verify the user's password.
     ///
     /// - Parameters:
@@ -126,7 +126,7 @@ public final class PasswordVerifier {
             "ClientProof": srpClientInfo.clientProof.base64EncodedString(),
             "SRPSession": srpSession
         ]
-        
+
         apiService.request(
             method: endpoint.method,
             path: endpoint.path,

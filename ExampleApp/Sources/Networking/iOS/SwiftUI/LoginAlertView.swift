@@ -28,9 +28,9 @@ struct LoginAlertView: View {
     @State private var password: String = ""
     var onDone: (String, String) -> Void = { _, _  in }
     var onCancel: () -> Void = { }
-    
+
     var body: some View {
-    
+
         VStack(spacing: 20) {
             Text("Log in")
                 .font(.headline)
@@ -68,7 +68,7 @@ struct LoginAlertView: View {
         .offset(y: isShown ? 0 : screenSize.height)
         .animation(.spring())
     }
-    
+
     func removeCredentials() {
         userName = ""
         password = ""

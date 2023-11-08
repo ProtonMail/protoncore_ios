@@ -64,7 +64,7 @@ class KeySetupV1Tests: XCTestCase {
             XCTFail(error.localizedDescription)
         }
     }
-    
+
     func testAddressKeyGenerationFail() {
         let keySetup = AddressKeySetupV1()
         do {

@@ -34,7 +34,7 @@ public protocol AccountDeletionViewControllerPresenter {
 extension NSViewController: AccountDeletionViewControllerPresenter {}
 
 extension AccountDeletionService: AccountDeletion {
-    
+
     public func initiateAccountDeletionProcess(
         over viewController: NSViewController,
         inAppTheme: @escaping () -> InAppTheme = { .default },
@@ -51,30 +51,30 @@ extension AccountDeletionService: AccountDeletion {
 }
 
 extension AccountDeletionWebView {
-    
+
     override func loadView() {
         view = NSView(frame: NSRect(x: 0.0, y: 0.0, width: 600.0, height: 800.0))
         view.window?.styleMask = [.closable, .titled, .resizable]
         view.window?.minSize = NSSize(width: 600, height: 800)
         view.window?.maxSize = NSSize(width: 1000, height: 1000)
     }
-    
+
     func styleUI() {
-        
+
     }
-    
+
     func presentSuccessfulLoading() {
         webView?.animator().alphaValue = 0
         webView?.isHidden = false
         loader.isHidden = true
         loader.stopAnimation(nil)
-        
+
         NSAnimationContext.runAnimationGroup { [weak self] context in
             context.duration = 1
             self?.webView?.animator().alphaValue = 1
         }
     }
-    
+
     func presentSuccessfulAccountDeletion() {
         NSAnimationContext.runAnimationGroup { [weak self] context in
             context.duration = 1
@@ -89,7 +89,7 @@ extension AccountDeletionWebView {
         alert.alertStyle = .informational
         alert.runModal()
     }
-    
+
     func presentNotification(type: NotificationType, message: String) {
         // TODO: consult the macOS notification presentation with designers
         let alert = NSAlert()
@@ -102,7 +102,7 @@ extension AccountDeletionWebView {
         }
         alert.runModal()
     }
-    
+
     func openUrl(_ url: URL) {
         NSWorkspace.shared.open(url)
     }
@@ -115,7 +115,7 @@ extension AccountDeletionWebView: NSWindowDelegate {
 }
 
 extension AccountDeletionService: AccountDeletionWebViewDelegate {
-    
+
     public func shouldCloseWebView(_ viewController: AccountDeletionViewController, completion: @escaping () -> Void) {
         viewController.presentingViewController?.dismiss(viewController)
         completion()

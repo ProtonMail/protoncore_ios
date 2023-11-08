@@ -24,11 +24,11 @@ import AppKit
 import ProtonCoreUIFoundations
 
 final class UIFoundationsColorsViewController: NSViewController {
-    
+
     @IBOutlet weak var collectionView: NSCollectionView!
-    
+
     private var appearanceObserver: NSKeyValueObservation?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Colors"
@@ -36,12 +36,12 @@ final class UIFoundationsColorsViewController: NSViewController {
             ColorCollectionViewCell.self,
             forItemWithIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ColorCollectionViewCell")
         )
-        
+
         view.wantsLayer = true
         view.makeBackingLayer()
         view.layer?.backgroundColor = ColorProvider.BackgroundNorm
         collectionView.backgroundColors = [ColorProvider.BackgroundNorm]
-        
+
         if #available(macOS 10.14, *) {
             appearanceObserver = NSApp.observe(\.effectiveAppearance) { [weak self] _, _ in
                 self?.collectionView.reloadData()
@@ -52,7 +52,7 @@ final class UIFoundationsColorsViewController: NSViewController {
             // Fallback on earlier versions
         }
     }
-    
+
     override func viewDidAppear() {
         super.viewDidAppear()
         view.window?.styleMask = [.closable, .titled, .resizable]
@@ -61,7 +61,7 @@ final class UIFoundationsColorsViewController: NSViewController {
             display: true
         )
     }
-    
+
     override func viewDidLayout() {
         super.viewDidLayout()
         if let layout = collectionView.collectionViewLayout as? NSCollectionViewFlowLayout {
@@ -71,7 +71,7 @@ final class UIFoundationsColorsViewController: NSViewController {
             layout.minimumInteritemSpacing = 8
         }
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -80,18 +80,18 @@ final class UIFoundationsColorsViewController: NSViewController {
         ("Backdrop", [
             ({ ColorProvider.BackdropNorm }, ColorProvider.BackdropNorm, "ProtonCarbonBackdropNorm")
         ]),
-        
+
         ("Background", [
             ({ ColorProvider.BackgroundNorm }, ColorProvider.BackgroundNorm, "ProtonCarbonBackgroundNorm"),
             ({ ColorProvider.BackgroundStrong }, ColorProvider.BackgroundStrong, "ProtonCarbonBackgroundStrong"),
             ({ ColorProvider.BackgroundWeak }, ColorProvider.BackgroundWeak, "ProtonCarbonBackgroundWeak")
         ]),
-        
+
         ("Border", [
             ({ ColorProvider.BorderNorm }, ColorProvider.BorderNorm, "ProtonCarbonBorderNorm"),
             ({ ColorProvider.BorderWeak }, ColorProvider.BorderWeak, "ProtonCarbonBorderWeak")
         ]),
-        
+
         ("Field", [
             ({ ColorProvider.FieldDisabled }, ColorProvider.FieldDisabled, "ProtonCarbonFieldDisabled"),
             ({ ColorProvider.FieldFocus }, ColorProvider.FieldFocus, "ProtonCarbonFieldFocus"),
@@ -100,7 +100,7 @@ final class UIFoundationsColorsViewController: NSViewController {
             ({ ColorProvider.FieldHover }, ColorProvider.FieldHover, "ProtonCarbonFieldHover"),
             ({ ColorProvider.FieldNorm }, ColorProvider.FieldNorm, "ProtonCarbonFieldNorm")
         ]),
-        
+
         ("Interaction", [
             ({ ColorProvider.InteractionDefault }, ColorProvider.InteractionDefault, "ProtonCarbonInteractionDefault"),
             ({ ColorProvider.InteractionDefaultActive }, ColorProvider.InteractionDefaultActive, "ProtonCarbonInteractionDefaultActive"),
@@ -112,17 +112,17 @@ final class UIFoundationsColorsViewController: NSViewController {
             ({ ColorProvider.InteractionWeakActive }, ColorProvider.InteractionWeakActive, "ProtonCarbonInteractionWeakActive"),
             ({ ColorProvider.InteractionWeakHover }, ColorProvider.InteractionWeakHover, "ProtonCarbonInteractionWeakHover")
         ]),
-        
+
         ("Link", [
             ({ ColorProvider.LinkActive }, ColorProvider.LinkActive, "ProtonCarbonLinkActive"),
             ({ ColorProvider.LinkHover }, ColorProvider.LinkHover, "ProtonCarbonLinkHover"),
             ({ ColorProvider.LinkNorm }, ColorProvider.LinkNorm, "ProtonCarbonLinkNorm")
         ]),
-        
+
         ("Primary", [
             ({ ColorProvider.Primary }, ColorProvider.Primary, "ProtonCarbonPrimary")
         ]),
-        
+
         ("Shade", [
             ({ ColorProvider.Shade0 }, ColorProvider.Shade0, "ProtonCarbonShade0"),
             ({ ColorProvider.Shade10 }, ColorProvider.Shade10, "ProtonCarbonShade10"),
@@ -133,12 +133,12 @@ final class UIFoundationsColorsViewController: NSViewController {
             ({ ColorProvider.Shade80 }, ColorProvider.Shade80, "ProtonCarbonShade80"),
             ({ ColorProvider.Shade100 }, ColorProvider.Shade100, "ProtonCarbonShade100")
         ]),
-        
+
         ("Shadow", [
             ({ ColorProvider.ShadowLifted }, ColorProvider.ShadowLifted, "ProtonCarbonShadowLifted"),
             ({ ColorProvider.ShadowNorm }, ColorProvider.ShadowNorm, "ProtonCarbonShadowNorm")
         ]),
-        
+
         ("Signal", [
             ({ ColorProvider.SignalDanger }, ColorProvider.SignalDanger, "ProtonCarbonSignalDanger"),
             ({ ColorProvider.SignalDangerActive }, ColorProvider.SignalDangerActive, "ProtonCarbonSignalDangerActive"),
@@ -153,7 +153,7 @@ final class UIFoundationsColorsViewController: NSViewController {
             ({ ColorProvider.SignalWarningActive }, ColorProvider.SignalWarningActive, "ProtonCarbonSignalWarningActive"),
             ({ ColorProvider.SignalWarningHover }, ColorProvider.SignalWarningHover, "ProtonCarbonSignalWarningHover")
         ]),
-        
+
         ("Text", [
             ({ ColorProvider.TextDisabled }, ColorProvider.TextDisabled, "ProtonCarbonTextDisabled"),
             ({ ColorProvider.TextHint }, ColorProvider.TextHint, "ProtonCarbonTextHint"),
@@ -161,84 +161,84 @@ final class UIFoundationsColorsViewController: NSViewController {
             ({ ColorProvider.TextNorm }, ColorProvider.TextNorm, "ProtonCarbonTextNorm"),
             ({ ColorProvider.TextWeak }, ColorProvider.TextWeak, "ProtonCarbonTextWeak")
         ]),
-        
+
         ("Accent", [
             ({ ColorProvider.PurpleBase }, ColorProvider.PurpleBase, "PurpleBase"),
             ({ ColorProvider.PurpleBase.computedStrongVariant }, ColorProvider.PurpleBase.computedStrongVariant, "PurpleBase.computedStrongVariant"),
             ({ ColorProvider.PurpleBase.computedIntenseVariant }, ColorProvider.PurpleBase.computedIntenseVariant, "PurpleBase.computedIntenseVariant"),
-            
+
             ({ ColorProvider.EnzianBase }, ColorProvider.EnzianBase, "EnzianBase"),
             ({ ColorProvider.EnzianBase.computedStrongVariant }, ColorProvider.EnzianBase.computedStrongVariant, "EnzianBase.computedStrongVariant"),
             ({ ColorProvider.EnzianBase.computedIntenseVariant }, ColorProvider.EnzianBase.computedIntenseVariant, "EnzianBase.computedIntenseVariant"),
-            
+
             ({ ColorProvider.PinkBase }, ColorProvider.PinkBase, "PinkBase"),
             ({ ColorProvider.PinkBase.computedStrongVariant }, ColorProvider.PinkBase.computedStrongVariant, "PinkBase.computedStrongVariant"),
             ({ ColorProvider.PinkBase.computedIntenseVariant }, ColorProvider.PinkBase.computedIntenseVariant, "PinkBase.computedIntenseVariant"),
-            
+
             ({ ColorProvider.PlumBase }, ColorProvider.PlumBase, "PlumBase"),
             ({ ColorProvider.PlumBase.computedStrongVariant }, ColorProvider.PlumBase.computedStrongVariant, "PlumBase.computedStrongVariant"),
             ({ ColorProvider.PlumBase.computedIntenseVariant }, ColorProvider.PlumBase.computedIntenseVariant, "PlumBase.computedIntenseVariant"),
-            
+
             ({ ColorProvider.StrawberryBase }, ColorProvider.StrawberryBase, "StrawberryBase"),
             ({ ColorProvider.StrawberryBase.computedStrongVariant }, ColorProvider.StrawberryBase.computedStrongVariant, "StrawberryBase.computedStrongVariant"),
             ({ ColorProvider.StrawberryBase.computedIntenseVariant }, ColorProvider.StrawberryBase.computedIntenseVariant, "StrawberryBase.computedIntenseVariant"),
-            
+
             ({ ColorProvider.CeriseBase }, ColorProvider.CeriseBase, "CeriseBase"),
             ({ ColorProvider.CeriseBase.computedStrongVariant }, ColorProvider.CeriseBase.computedStrongVariant, "CeriseBase.computedStrongVariant"),
             ({ ColorProvider.CeriseBase.computedIntenseVariant }, ColorProvider.CeriseBase.computedIntenseVariant, "CeriseBase.computedIntenseVariant"),
-            
+
             ({ ColorProvider.CarrotBase }, ColorProvider.CarrotBase, "CarrotBase"),
             ({ ColorProvider.CarrotBase.computedStrongVariant }, ColorProvider.CarrotBase.computedStrongVariant, "CarrotBase.computedStrongVariant"),
             ({ ColorProvider.CarrotBase.computedIntenseVariant }, ColorProvider.CarrotBase.computedIntenseVariant, "CarrotBase.computedIntenseVariant"),
-            
+
             ({ ColorProvider.CopperBase }, ColorProvider.CopperBase, "CopperBase"),
             ({ ColorProvider.CopperBase.computedStrongVariant }, ColorProvider.CopperBase.computedStrongVariant, "CopperBase.computedStrongVariant"),
             ({ ColorProvider.CopperBase.computedIntenseVariant }, ColorProvider.CopperBase.computedIntenseVariant, "CopperBase.computedIntenseVariant"),
-            
+
             ({ ColorProvider.SaharaBase }, ColorProvider.SaharaBase, "SaharaBase"),
             ({ ColorProvider.SaharaBase.computedStrongVariant }, ColorProvider.SaharaBase.computedStrongVariant, "SaharaBase.computedStrongVariant"),
             ({ ColorProvider.SaharaBase.computedIntenseVariant }, ColorProvider.SaharaBase.computedIntenseVariant, "SaharaBase.computedIntenseVariant"),
-            
+
             ({ ColorProvider.SoilBase }, ColorProvider.SoilBase, "SoilBase"),
             ({ ColorProvider.SoilBase.computedStrongVariant }, ColorProvider.SoilBase.computedStrongVariant, "SoilBase.computedStrongVariant"),
             ({ ColorProvider.SoilBase.computedIntenseVariant }, ColorProvider.SoilBase.computedIntenseVariant, "SoilBase.computedIntenseVariant"),
-            
+
             ({ ColorProvider.SlateblueBase }, ColorProvider.SlateblueBase, "SlateblueBase"),
             ({ ColorProvider.SlateblueBase.computedStrongVariant }, ColorProvider.SlateblueBase.computedStrongVariant, "SlateblueBase.computedStrongVariant"),
             ({ ColorProvider.SlateblueBase.computedIntenseVariant }, ColorProvider.SlateblueBase.computedIntenseVariant, "SlateblueBase.computedIntenseVariant"),
-            
+
             ({ ColorProvider.CobaltBase }, ColorProvider.CobaltBase, "CobaltBase"),
             ({ ColorProvider.CobaltBase.computedStrongVariant }, ColorProvider.CobaltBase.computedStrongVariant, "CobaltBase.computedStrongVariant"),
             ({ ColorProvider.CobaltBase.computedIntenseVariant }, ColorProvider.CobaltBase.computedIntenseVariant, "CobaltBase.computedIntenseVariant"),
-            
+
             ({ ColorProvider.PacificBase }, ColorProvider.PacificBase, "PacificBase"),
             ({ ColorProvider.PacificBase.computedStrongVariant }, ColorProvider.PacificBase.computedStrongVariant, "PacificBase.computedStrongVariant"),
             ({ ColorProvider.PacificBase.computedIntenseVariant }, ColorProvider.PacificBase.computedIntenseVariant, "PacificBase.computedIntenseVariant"),
-            
+
             ({ ColorProvider.OceanBase }, ColorProvider.OceanBase, "OceanBase"),
             ({ ColorProvider.OceanBase.computedStrongVariant }, ColorProvider.OceanBase.computedStrongVariant, "OceanBase.computedStrongVariant"),
             ({ ColorProvider.OceanBase.computedIntenseVariant }, ColorProvider.OceanBase.computedIntenseVariant, "OceanBase.computedIntenseVariant"),
-            
+
             ({ ColorProvider.ReefBase }, ColorProvider.ReefBase, "ReefBase"),
             ({ ColorProvider.ReefBase.computedStrongVariant }, ColorProvider.ReefBase.computedStrongVariant, "ReefBase.computedStrongVariant"),
             ({ ColorProvider.ReefBase.computedIntenseVariant }, ColorProvider.ReefBase.computedIntenseVariant, "ReefBase.computedIntenseVariant"),
-            
+
             ({ ColorProvider.PineBase }, ColorProvider.PineBase, "PineBase"),
             ({ ColorProvider.PineBase.computedStrongVariant }, ColorProvider.PineBase.computedStrongVariant, "PineBase.computedStrongVariant"),
             ({ ColorProvider.PineBase.computedIntenseVariant }, ColorProvider.PineBase.computedIntenseVariant, "PineBase.computedIntenseVariant"),
-            
+
             ({ ColorProvider.FernBase }, ColorProvider.FernBase, "FernBase"),
             ({ ColorProvider.FernBase.computedStrongVariant }, ColorProvider.FernBase.computedStrongVariant, "FernBase.computedStrongVariant"),
             ({ ColorProvider.FernBase.computedIntenseVariant }, ColorProvider.FernBase.computedIntenseVariant, "FernBase.computedIntenseVariant"),
-            
+
             ({ ColorProvider.ForestBase }, ColorProvider.ForestBase, "ForestBase"),
             ({ ColorProvider.ForestBase.computedStrongVariant }, ColorProvider.ForestBase.computedStrongVariant, "ForestBase.computedStrongVariant"),
             ({ ColorProvider.ForestBase.computedIntenseVariant }, ColorProvider.ForestBase.computedIntenseVariant, "ForestBase.computedIntenseVariant"),
-            
+
             ({ ColorProvider.OliveBase }, ColorProvider.OliveBase, "OliveBase"),
             ({ ColorProvider.OliveBase.computedStrongVariant }, ColorProvider.OliveBase.computedStrongVariant, "OliveBase.computedStrongVariant"),
             ({ ColorProvider.OliveBase.computedIntenseVariant }, ColorProvider.OliveBase.computedIntenseVariant, "OliveBase.computedIntenseVariant"),
-            
+
             ({ ColorProvider.PickleBase }, ColorProvider.PickleBase, "PickleBase"),
             ({ ColorProvider.PickleBase.computedStrongVariant }, ColorProvider.PickleBase.computedStrongVariant, "PickleBase.computedStrongVariant"),
             ({ ColorProvider.PickleBase.computedIntenseVariant }, ColorProvider.PickleBase.computedIntenseVariant, "PickleBase.computedIntenseVariant")
@@ -247,15 +247,15 @@ final class UIFoundationsColorsViewController: NSViewController {
 }
 
 extension UIFoundationsColorsViewController: NSCollectionViewDataSource {
-    
+
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         data.count
     }
-    
+
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         data[section].1.count
     }
-    
+
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(
             withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ColorCollectionViewCell"),
@@ -274,11 +274,11 @@ extension UIFoundationsColorsViewController: NSCollectionViewDataSource {
 }
 
 extension UIFoundationsColorsViewController: NSCollectionViewDelegate {
-    
+
 }
 
 final class ColorCollectionViewCell: NSCollectionViewItem {
-    
+
     private let label = NSTextField()
     private let container = NSStackView()
     let leftView = NSView()
@@ -316,9 +316,9 @@ final class ColorCollectionViewCell: NSCollectionViewItem {
             label.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
+
     func setText(_ text: String) {
         label.stringValue = text
     }
-    
+
 }

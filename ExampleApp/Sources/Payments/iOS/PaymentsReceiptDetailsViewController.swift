@@ -53,13 +53,13 @@ final class PaymentsReceiptDetailsViewController: UIViewController {
         }
         self.receipt = receipt
         title = "Receipt details"
-        
+
         receiptLabel.text = "\(receipt.bundleIdentifier) \(receipt.appVersion)"
 
         tableView.rowHeight = UITableView.automaticDimension
         tableView.reloadData()
     }
-    
+
     @IBAction private func shareReceiptTapped() {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd-HH-mm-ss"

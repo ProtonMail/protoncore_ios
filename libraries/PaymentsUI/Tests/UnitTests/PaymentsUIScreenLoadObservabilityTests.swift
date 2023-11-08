@@ -39,7 +39,7 @@ import ProtonCoreUIFoundations
 @testable import ProtonCorePaymentsUI
 
 final class PaymentsUIScreenLoadObservabilityTests: XCTestCase {
-    
+
     func testPlanSelectionScreenLoadEventIsSentInSignup() {
         let stub = ObservabilityServiceMock()
         ObservabilityEnv.current.observabilityService = stub

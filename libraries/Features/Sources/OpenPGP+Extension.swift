@@ -30,17 +30,17 @@ extension Data {
     func getSessionFromPubKeyPackageNonOptional(_ passphrase: String, privKeys: [Data]) throws -> SymmetricKey {
         return try Crypto().getSessionNonOptional(keyPacket: self, privateKeys: privKeys, passphrase: passphrase)
     }
-    
+
     @available(*, deprecated, renamed: "getSession")
     func getSessionFromPubKeyPackageNonOptional(addrPrivKey: String, passphrase: String) throws -> SymmetricKey {
         return try Crypto().getSessionNonOptional(keyPacket: self, privateKey: addrPrivKey, passphrase: passphrase)
     }
-    
+
     /// added after crypto refactor
     func getSession(addrPrivKey: String, passphrase: String) throws -> SessionKey {
         let decryptionKey = DecryptionKey.init(privateKey: ArmoredKey.init(value: addrPrivKey),
                                                passphrase: Passphrase.init(value: passphrase))
         return try Decryptor.decryptSessionKey(decryptionKeys: [decryptionKey], keyPacket: self)
     }
-    
+
 }

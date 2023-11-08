@@ -24,7 +24,7 @@ import ProtonCoreCrypto
 import ProtonCoreDataModel
 
 extension String {
-    
+
     @available(*, deprecated, message: "Please use the non-optional variant")
     public func verifyMessage(verifier: [Data],
                               userKeys: [Data],
@@ -39,7 +39,7 @@ extension String {
             throw error
         }
     }
-    
+
     public func verifyMessageNonOptional(verifier: [Data],
                                          userKeys: [Data],
                                          keys: [Key],

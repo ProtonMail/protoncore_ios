@@ -28,10 +28,10 @@ import OHHTTPStubsSwift
 
 @available(iOS 13.0, *)
 class DoHCookiesSynchronizerTests: XCTestCase {
-    
+
     var doh: DoH!
     var storage = HTTPCookieStorage.shared
-    
+
     override func setUp() {
         super.setUp()
         HTTPStubs.setEnabled(true)
@@ -47,11 +47,11 @@ class DoHCookiesSynchronizerTests: XCTestCase {
         HTTPStubs.removeAllStubs()
         storage.removeCookies(since: .distantPast)
     }
-    
+
     func cookieHeader(domain: String) -> [String: String] { [
         "Set-Cookie": "Session-Id=Best-Session-Eva111; Domain=\(domain); Path=/; HttpOnly; Secure; Max-Age=7776000, Version=test; Path=/; Secure; Max-Age=7776000, Tag=test; Path=/; Secure; Max-Age=7776000"
     ] }
-    
+
     func testNothingIsBeingSetIfNoProxyDomains_SynchronizerAPI() async {
         XCTAssertTrue(storage.cookies?.isEmpty == true)
         let synchronizer = DoHCookieSynchronizer(cookieStorage: storage, doh: doh)
@@ -63,7 +63,7 @@ class DoHCookiesSynchronizerTests: XCTestCase {
         }
         XCTAssertTrue(storage.cookies?.isEmpty == true)
     }
-    
+
     func testNothingIsBeingSetIfNoProxyDomains_DOHAPI() async {
         XCTAssertTrue(storage.cookies?.isEmpty == true)
         doh.setUpCookieSynchronization(storage: storage)
@@ -94,7 +94,7 @@ class DoHCookiesSynchronizerTests: XCTestCase {
             }
         XCTAssertTrue(storage.cookies?.isEmpty == true)
     }
-    
+
     func testCookiesAreBeingProperlySetForProxyDomains_SynchronizerAPI() async {
         XCTAssertTrue(storage.cookies?.isEmpty == true)
         let synchronizer = DoHCookieSynchronizer(cookieStorage: storage, doh: doh)
@@ -124,7 +124,7 @@ class DoHCookiesSynchronizerTests: XCTestCase {
             XCTAssertTrue(cookiesForDomain.contains(where: { $0.name == "Session-Id" && $0.value == "Best-Session-Eva111" }))
         }
     }
-    
+
     func testCookiesAreBeingProperlySetForProxyDomainsWhenOriginatingFromProductionDomain() async {
         XCTAssertTrue(storage.cookies?.isEmpty == true)
         doh.setUpCookieSynchronization(storage: storage)
@@ -155,7 +155,7 @@ class DoHCookiesSynchronizerTests: XCTestCase {
             XCTAssertTrue(cookiesForDomain.contains(where: { $0.name == "Session-Id" && $0.value == "Best-Session-Eva111" }))
         }
     }
-    
+
     func testCookiesAreBeingProperlySetForProxyDomainsWhenOriginatingFromProxyDomain() async {
         XCTAssertTrue(storage.cookies?.isEmpty == true)
         doh.setUpCookieSynchronization(storage: storage)
@@ -193,7 +193,7 @@ class DoHCookiesSynchronizerTests: XCTestCase {
             XCTAssertTrue(cookiesForDomain.contains(where: { $0.name == "Session-Id" && $0.value == "Best-Session-Eva111" }))
         }
     }
-    
+
     func testCookiesAreNotBeingSetForProxyDomainsWhenNoHeaders() async {
         XCTAssertTrue(storage.cookies?.isEmpty == true)
         doh.setUpCookieSynchronization(storage: storage)
@@ -207,7 +207,7 @@ class DoHCookiesSynchronizerTests: XCTestCase {
         }
         XCTAssertTrue(storage.cookies?.isEmpty == true)
     }
-    
+
     func testCookiesAreBeingProperlySetForProxyDomainsWhenUsingOtherMethodWhenOriginatedFromProductionHost() async {
         XCTAssertTrue(storage.cookies?.isEmpty == true)
         doh.setUpCookieSynchronization(storage: storage)

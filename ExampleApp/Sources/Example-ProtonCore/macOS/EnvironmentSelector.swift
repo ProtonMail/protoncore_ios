@@ -30,18 +30,18 @@ protocol EnvironmentSelectorDelegate: AnyObject {
 }
 
 final class EnvironmentSelector: NSView {
-    
+
     weak var delegate: EnvironmentSelectorDelegate?
-    
+
     @IBOutlet private var selector: NSSegmentedControl!
     @IBOutlet private var customDomainStackView: NSStackView!
     @IBOutlet private var customDomain: NSTextField!
-    
+
     @IBAction private func environmentChanged(_ sender: Any!) {
         customDomainStackView.isHidden = selector.selectedSegment != 3
         delegate?.environmentChanged(to: currentEnvironment)
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         var objects: NSArray?
@@ -60,7 +60,7 @@ final class EnvironmentSelector: NSView {
             view.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
-    
+
     var currentEnvironment: Environment {
         let env: Environment
         switch selector.selectedSegment {
@@ -81,14 +81,14 @@ final class EnvironmentSelector: NSView {
             }
         case 1: env = .black
         case 2: env = .blackPayment
-        case 3: 
+        case 3:
             let customDomain = customDomain.stringValue
             env = .custom(customDomain)
         default: fatalError("Invalid index")
         }
         return env
     }
-    
+
     func switchToCustomDomain(value: String) {
         customDomain.stringValue = value
         selector.setSelected(true, forSegment: 3)

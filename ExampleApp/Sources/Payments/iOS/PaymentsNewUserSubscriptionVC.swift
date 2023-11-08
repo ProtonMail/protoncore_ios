@@ -36,7 +36,7 @@ import ProtonCoreChallenge
 import ProtonCoreFeatureFlags
 
 class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleView {
-    
+
     // MARK: - Outlets
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -66,16 +66,16 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
     private var testApi: PMAPIService!
     private var authHelper: AuthHelper?
     private var userInfo: User?
-    
+
     // MARK: - Payment credentials
     private var payments: Payments!
     private var userCachedStatus: UserCachedStatus!
-    
+
     // MARK: - Payment data
     private var isValid = false { didSet { self.showVerify() } }
 
     private var availablePlans: [InAppPurchasePlan] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         testApi = PMAPIService.createAPIService(environment: currentEnv,
@@ -95,27 +95,27 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
         }
         generateAccessibilityIdentifiers()
     }
-    
+
     @IBAction func onLoginButtonTap(_ sender: Any) {
         login()
     }
-    
+
     @IBAction func onCurrentSurscriptionButtonTap(_ sender: Any) {
         currentSubscription()
     }
-    
+
     @IBAction func onPurchaseSubscriptionButtonTap(_ sender: ProtonButton) {
         self.buyPlan()
     }
-    
+
     @IBAction func tapAction(_ sender: UITapGestureRecognizer) {
         dismissKeyboard()
     }
-    
+
     @IBAction func canExtendSubscriptionAction(_ sender: Any) {
         setupPayments()
     }
-    
+
     private func storeKitSetup() {
         // setup StoreKitManager
         userCachedStatus = UserCachedStatus(updateSubscriptionBlock: { [weak self] newSubscription in
@@ -129,7 +129,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
         })
         setupPayments()
     }
-    
+
     private func setupPayments() {
         payments = Payments(
             inAppPurchaseIdentifiers: inAppPurchases,
@@ -139,7 +139,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
             reportBugAlertHandler: { [weak self] receipt in self?.reportBugAlertHandler(receipt) }
         )
     }
-    
+
     private func reportBugAlertHandler(_ receipt: String?) {
         guard let alertWindow = self.alertWindow else { return }
         DispatchQueue.main.async {
@@ -148,13 +148,13 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
             alertWindow.rootViewController?.present(alert, animated: true, completion: nil)
         }
     }
-    
+
     private func login() {
         dismissKeyboard()
         loginStatusLabel.text = "Login status:"
         currentSubscriptionButton.isEnabled = false
         purchaseSubscriptionButton.isEnabled = false
-        
+
         guard let username = usernameTextField.text, !username.isEmpty, let password = passwordTextField.text, !password.isEmpty else {
             loginStatusLabel.text = "Login status: Wrong credentials"
             return
@@ -239,7 +239,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
             }
         }
     }
-    
+
     private func processPossiblePlans() {
         availablePlans.removeAll()
         subscriptionSelector.removeAllSegments()
@@ -250,7 +250,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
         }
         updateAvailablePlans()
     }
-    
+
     private func checkIfIsPurchasable(accountPlan: InAppPurchasePlan) -> Bool? {
         switch payments.planService {
         case .left(let planService):
@@ -259,7 +259,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
             return planDataSource.detailsOfAvailablePlanInstanceCorrespondingToIAP(accountPlan) != nil
         }
     }
-    
+
     private func updateAvailablePlans() {
         for (index, planData) in availablePlans.enumerated() {
             subscriptionSelector.insertSegment(withTitle: planData.protonName, at: index, animated: false)
@@ -268,15 +268,15 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
             subscriptionSelector.selectedSegmentIndex = 0
         }
     }
-    
+
     private func setupStoreKit(completion: @escaping (Error?) -> Void) {
         payments.activate(delegate: self, storeKitProductsFetched: completion)
         if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             completion(nil)
         }
-        
+
     }
-    
+
     private func clearData() {
         currentSubscriptionLabel.text = "Current subscriptions:"
         currentTimePeriodLabel.text = "Current time period:"
@@ -287,7 +287,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
         purchaseSubscriptionButton.setTitle("Purchase subscription / add credits", for: .normal)
         purchaseSubscriptionButton.isEnabled = false
     }
-    
+
     private func currentSubscription() {
         currentSubscriptionButton.isSelected = true
         clearData()
@@ -299,7 +299,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
             }
         }
     }
-    
+
     private func showSubscriptionData() {
         var plansStr = ""
         var addonsDispStr = ""
@@ -336,7 +336,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
         currentAddonLabel.text = "Current addons: \(addonsDispStr)"
         currentTimePeriodLabel.text = "Current time period: \(cycle)"
     }
-    
+
     private func showCreditsData(credits: Credits?) {
         var creditStr = "---"
         if let credits = credits {
@@ -344,7 +344,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
         }
         currentCreditLabel.text = "Current credit: \(creditStr)"
     }
-    
+
     private func verifyPurchase(completion: @escaping (Bool) -> Void) {
         guard let storeKitProductId = availablePlans[subscriptionSelector.selectedSegmentIndex].storeKitProductId else {
             completion(false)
@@ -352,7 +352,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
         }
         payments.storeKitManager.isValidPurchase(storeKitProductId: storeKitProductId, completion: completion)
     }
-    
+
     private func showVerify() {
         self.purchaseSubscriptionButton.isEnabled = isValid || self.forceSubscriptionButton.isOn
         if self.isValid || self.forceSubscriptionButton.isOn {
@@ -377,7 +377,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
             self.subscriptionToPurchaseLabel.text = "Subscription to purchase: ---"
         }
     }
-    
+
     private func buyPlan() {
         self.statusLabel.text = "Status:"
         guard !payments.storeKitManager.hasUnfinishedPurchase(), userInfo?.ID.isEmpty == false else {
@@ -423,7 +423,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
             }
         }
     }
-    
+
     private func dismissKeyboard() {
         _ = usernameTextField.resignFirstResponder()
         _ = passwordTextField.resignFirstResponder()
@@ -434,23 +434,23 @@ extension PaymentsNewUserSubscriptionVC: StoreKitManagerDelegate {
     var apiService: APIService? {
         return testApi
     }
-    
+
     var tokenStorage: PaymentTokenStorage? {
         return TokenStorage.default
     }
-    
+
     var isUnlocked: Bool {
         return true
     }
-    
+
     var isSignedIn: Bool {
         return true
     }
-    
+
     var activeUsername: String? {
         return usernameTextField.text
     }
-    
+
     var userId: String? {
         return userInfo?.ID
     }
@@ -460,15 +460,15 @@ extension PaymentsNewUserSubscriptionVC {
     class TokenStorage: PaymentTokenStorage {
         public static var `default` = TokenStorage()
         var token: PaymentToken?
-        
+
         func add(_ token: PaymentToken) {
             self.token = token
         }
-        
+
         func get() -> PaymentToken? {
             return token
         }
-        
+
         func clear() {
             self.token = nil
         }

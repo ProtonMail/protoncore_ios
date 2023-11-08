@@ -34,7 +34,7 @@ import ProtonCoreChallenge
 import ProtonCoreFeatureSwitch
 
 final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, AccessibleView, AuthDelegate {
-    
+
     @IBOutlet private var activityIndicatorView: UIView!
     @IBOutlet private var messageLabel: UILabel!
     @IBOutlet private var tokenRefreshStackView: UIStackView!
@@ -50,20 +50,20 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
     @IBOutlet private var credentialsUsernameTextField: UITextField!
     @IBOutlet private var credentialsPasswordTextField: UITextField!
     @IBOutlet var environmentSelector: EnvironmentSelector!
-    
+
     private var selectedAccountForCreation: ((String?, String?, String, String, String) -> AccountAvailableForCreation)?
     private var createdAccountDetails: CreatedAccountDetails? {
         didSet {
             tokenRefreshStackView.isHidden = createdAccountDetails == nil
         }
     }
-    
+
     private var credential: Credential?
     weak var authSessionInvalidatedDelegateForLoginAndSignup: AuthSessionInvalidatedDelegate?
-    
+
     private let serviceDelegate = ExampleAPIServiceDelegate()
     private var quarkCommands: QuarkCommands { QuarkCommands(env: environmentSelector.currentEnvironment) }
-    
+
     private lazy var authenticator: Authenticator = {
         let env = environmentSelector.currentEnvironment
         let api = PMAPIService.createAPIService(environment: env,
@@ -73,9 +73,9 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
         api.serviceDelegate = self.serviceDelegate
         return .init(api: api)
     }()
-    
+
     private let createUserFirst = "Create user first"
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if let dynamicDomain = ProcessInfo.processInfo.environment["DYNAMIC_DOMAIN"] {
@@ -87,7 +87,7 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
         selectedAccountForCreation = accountsAvailableForCreation.first
         generateAccessibilityIdentifiers()
     }
-    
+
     @IBAction func onCredentialsChanged(_ sender: Any) {
         switch credentialsSelector.selectedSegmentIndex {
         case 0:
@@ -98,7 +98,7 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
             assertionFailure("Misconfiguration in \(#file), \(#function), \(#line)")
         }
     }
-    
+
     @IBAction func createAccount(_ sender: Any) {
         let username: String?
         let password: String?
@@ -133,13 +133,13 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
             }
         }
     }
-    
+
     @IBAction func logIn() {
         guard let createdAccountDetails = createdAccountDetails else {
             display(message: createUserFirst)
             return
         }
-        
+
         unbanUnjail { [weak self] in
             guard let self = self else { return }
             self.authenticator.authenticate(username: createdAccountDetails.account.username,
@@ -159,7 +159,7 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
             }
         }
     }
-    
+
     private func unbanUnjail(completion: @escaping () -> Void) {
         showLoadingIndicator()
         quarkCommands.unban { [weak self] result in
@@ -183,7 +183,7 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
             }
         }
     }
-    
+
     @IBAction func getUser() {
         guard let credential = credential else {
             display(message: "Log in first")
@@ -201,7 +201,7 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
             }
         }
     }
-    
+
     @IBAction func expireSession() {
         guard let createdAccountDetails = createdAccountDetails else {
             display(message: createUserFirst)
@@ -219,7 +219,7 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
             }
         }
     }
-    
+
     @IBAction func expireSessionAndRefreshToken() {
         guard let createdAccountDetails = createdAccountDetails else {
             display(message: createUserFirst)
@@ -239,26 +239,26 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
             }
         }
     }
-    
+
     private func showLoadingIndicator() {
         DispatchQueue.main.async {
             self.messageLabel.text = nil
             self.activityIndicatorView.isHidden = false
         }
     }
-    
+
     private func hideLoadingIndicator() {
         DispatchQueue.main.async {
             self.activityIndicatorView.isHidden = true
         }
     }
-    
+
     private func display(message: String) {
         DispatchQueue.main.async {
             self.messageLabel.text = message
         }
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
         label.text = accountsAvailableForCreation[row](nil, nil, "", "", "").description
@@ -267,30 +267,30 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
         label.font = .systemFont(ofSize: UIFont.labelFontSize)
         return label
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         UIFont.labelFontSize * 3
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         accountsAvailableForCreation.count
     }
-    
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
-    
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedAccountForCreation = accountsAvailableForCreation[row]
     }
-    
+
     // MARK: - AuthDelegate
     func authCredential(sessionUID: String) -> AuthCredential? {
         credential.map(AuthCredential.init)
     }
-    
+
     func credential(sessionUID: String) -> Credential? {
         credential
     }
-    
+
     func onAuthenticatedSessionInvalidated(sessionUID uid: String) {
         credential = nil
     }
@@ -298,7 +298,7 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
     func onUnauthenticatedSessionInvalidated(sessionUID: String) {
         credential = nil
     }
-    
+
     func onUpdate(credential: Credential, sessionUID: String) {
         self.credential = credential
     }
@@ -308,7 +308,7 @@ final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource
     }
 
     func onAdditionalCredentialsInfoObtained(sessionUID: String, password: String?, salt: String?, privateKey: String?) {
-        
+
     }
 
     var delegate: AuthHelperDelegate?

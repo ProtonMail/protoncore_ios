@@ -33,21 +33,21 @@ import ProtonCoreHumanVerification
 import ProtonCoreUIFoundations
 
 final class LoginViewController: NSViewController {
-    
+
     private let sessionId = "macos example login session id"
     private let serviceDelegate = AnonymousServiceManager()
     private let authManager = AuthHelper()
-    
+
     private var loginService: LoginService?
     private var signupService: SignupService?
     private var humanDelegate: HumanVerifyDelegate?
-    
+
     @IBOutlet var environmentSelector: EnvironmentSelector!
     @IBOutlet var logoutButton: NSButton!
     @IBOutlet var deleteAccountButton: NSButton!
     @IBOutlet var accountTypeSegmentedControl: NSSegmentedControl!
     @IBOutlet var signupTypeSegmentedControl: NSSegmentedControl!
-    
+
     private var getAccountType: AccountType {
         switch accountTypeSegmentedControl.selectedSegment {
         case 0: return .username
@@ -56,12 +56,12 @@ final class LoginViewController: NSViewController {
         default: fatalError("Invalid index")
         }
     }
-    
+
     override func viewWillAppear() {
         super.viewWillAppear()
         deleteAccountButton.title = AccountDeletionService.defaultButtonName
     }
-    
+
     private func createAPIService(sessionId: String) -> APIService {
         let service = PMAPIService.createAPIService(environment: environmentSelector.currentEnvironment, sessionUID: sessionId, challengeParametersProvider: .empty)
         service.serviceDelegate = serviceDelegate
@@ -73,9 +73,9 @@ final class LoginViewController: NSViewController {
         service.humanDelegate = humanDelegate
         return service
     }
-    
+
     // MARK: - Login flow
-    
+
     @IBAction func login(_ sender: Any?) {
         loginService = LoginService(api: createAPIService(sessionId: sessionId),
                                     clientApp: clientApp,
@@ -90,11 +90,11 @@ final class LoginViewController: NSViewController {
             }
         }
     }
-    
+
     private func performLogin(_ username: String, _ password: String) {
         loginService?.login(username: username, password: password, challenge: nil, completion: getLoginResultCompletionBlock())
     }
-    
+
     func getLoginResultCompletionBlock() -> (Result<LoginStatus, LoginError>) -> Void {
         {[weak self] (result: Result<LoginStatus, LoginError>) in
             switch result {
@@ -113,7 +113,7 @@ final class LoginViewController: NSViewController {
             }
         }
     }
-    
+
     private func handleSuccessfulLogin(_ loginData: LoginData) {
         let alertController = NSAlert()
         alertController.alertStyle = .informational
@@ -122,14 +122,14 @@ final class LoginViewController: NSViewController {
         logoutButton.isHidden = false
         deleteAccountButton.isHidden = false
     }
-    
+
     private func handle2FARequest() {
         get2FAAlert { [weak self] twoFA in
             guard let completion = self?.getLoginResultCompletionBlock() else { return }
             self?.loginService?.provide2FACode(twoFA, completion: completion)
         }
     }
-    
+
     private func handleSecondPasswordRequest() {
         getSecondPasswordAlert { [weak self] secondPassword in
             guard let completion = self?.getLoginResultCompletionBlock() else { return }
@@ -137,7 +137,7 @@ final class LoginViewController: NSViewController {
             self?.loginService?.finishLoginFlow(mailboxPassword: secondPassword, passwordMode: .two, completion: completion)
         }
     }
-    
+
     private func handleChooseUsernameRequest(_ addressData: CreateAddressData) {
         getUsernameAlert { [weak self] username in
             self?.loginService?.checkAvailabilityForInternalAccount(username: username) { [weak self] result in
@@ -150,7 +150,7 @@ final class LoginViewController: NSViewController {
             }
         }
     }
-    
+
     private func handleAvailableUsername(_ username: String, _ data: CreateAddressData) {
         loginService?.setUsername(username: username) { [weak self] result in
             switch result {
@@ -168,7 +168,7 @@ final class LoginViewController: NSViewController {
             }
         }
     }
-    
+
     private func createAddress(data: CreateAddressData) {
         loginService?.createAddress { [weak self] result in
             switch result {
@@ -186,7 +186,7 @@ final class LoginViewController: NSViewController {
             }
         }
     }
-    
+
     private func createAccountKeys(address: Address, data: CreateAddressData) {
         loginService?.createAccountKeysIfNeeded(user: data.user, addresses: nil, mailboxPassword: data.mailboxPassword) { [weak self] result in
             switch result {
@@ -197,7 +197,7 @@ final class LoginViewController: NSViewController {
             }
         }
     }
-    
+
     private func generateKeys(user: User, address: Address, mailboxPassword: String, passwordMode: PasswordMode) {
         loginService?.createAddressKeys(user: user, address: address, mailboxPassword: mailboxPassword) { [weak self] result in
             switch result {
@@ -215,15 +215,15 @@ final class LoginViewController: NSViewController {
             }
         }
     }
-    
+
     private func handleCompletion(mailboxPassword: String, passwordMode: PasswordMode) {
         let completion = getLoginResultCompletionBlock()
-        
+
         loginService?.finishLoginFlow(
             mailboxPassword: mailboxPassword, passwordMode: passwordMode, completion: completion
         )
     }
-    
+
     private func handleFailedLogin(_ loginError: LoginError) {
         switch loginError {
         case .apiMightBeBlocked(let message, _):
@@ -232,9 +232,9 @@ final class LoginViewController: NSViewController {
             handleFailure(loginError.userFacingMessageInLogin)
         }
     }
-    
+
     // MARK: - Signup flow
-    
+
     @IBAction func signup(_ sender: Any?) {
         let service = createAPIService(sessionId: sessionId)
 
@@ -242,7 +242,7 @@ final class LoginViewController: NSViewController {
         if signupTypeSegmentedControl.selectedSegment == 1, accountType == .internal {
             accountType = .external
         }
-        
+
         loginService = LoginService(api: service,
                                     clientApp: clientApp,
                                     minimumAccountType: accountType)
@@ -253,7 +253,7 @@ final class LoginViewController: NSViewController {
         default: fatalError("Invalid index")
         }
     }
-    
+
     private func handleFailedSignup(_ signupError: SignupError) {
         switch signupError {
         case .apiMightBeBlocked(let message, _):
@@ -262,7 +262,7 @@ final class LoginViewController: NSViewController {
             handleFailure(signupError.userFacingMessageInLogin)
         }
     }
-    
+
     private func handleFailedAvailabilityCheck(_ availabilityError: AvailabilityError) {
         switch availabilityError {
         case .apiMightBeBlocked(let message, _):
@@ -271,7 +271,7 @@ final class LoginViewController: NSViewController {
             handleFailure(availabilityError.localizedDescription)
         }
     }
-    
+
     private func handleSetUsernameFailure(_ setUsernameError: SetUsernameError) {
         switch setUsernameError {
         case .apiMightBeBlocked(let message, _):
@@ -280,7 +280,7 @@ final class LoginViewController: NSViewController {
             handleFailure(setUsernameError.userFacingMessageInLogin)
         }
     }
-    
+
     private func handleCreateAddressFailure(_ createAddressError: CreateAddressError) {
         switch createAddressError {
         case .apiMightBeBlocked(let message, _):
@@ -289,7 +289,7 @@ final class LoginViewController: NSViewController {
             handleFailure(createAddressError.userFacingMessageInLogin)
         }
     }
-    
+
     private func handleCreateAccountKeysFailure(_ createAccountKeysError: LoginError) {
         switch createAccountKeysError {
         case .apiMightBeBlocked(let message, _):
@@ -298,7 +298,7 @@ final class LoginViewController: NSViewController {
             handleFailure(createAccountKeysError.userFacingMessageInLogin)
         }
     }
-    
+
     private func handleCreateAddressKeysFailure(_ createAddressKeysError: CreateAddressKeysError) {
         switch createAddressKeysError {
         case .apiMightBeBlocked(let message, _):
@@ -307,7 +307,7 @@ final class LoginViewController: NSViewController {
             handleFailure(createAddressKeysError.userFacingMessageInLogin)
         }
     }
-    
+
     private func handleFailure(_ message: String) {
         let alertController = NSAlert()
         alertController.alertStyle = .critical
@@ -315,7 +315,7 @@ final class LoginViewController: NSViewController {
         alertController.informativeText = message
         alertController.runModal()
     }
-    
+
     private func handleApiMightBeBlocked(_ message: String) {
         let alertController = NSAlert()
         alertController.alertStyle = .critical
@@ -329,7 +329,7 @@ final class LoginViewController: NSViewController {
         default: return
         }
     }
-    
+
     private func handleInternalUserSignup() {
         getSignupCredentialsAlert { [weak self] username, password in
             self?.loginService?.updateAllAvailableDomains(type: .signup) { [weak self] _ in
@@ -344,7 +344,7 @@ final class LoginViewController: NSViewController {
             }
         }
     }
-    
+
     private func handleExternalUserSignup() {
         getEmailAlert { [weak self] email in
             self?.signupService?.requestValidationToken(email: email) { [weak self] result in
@@ -357,7 +357,7 @@ final class LoginViewController: NSViewController {
             }
         }
     }
-    
+
     private func handleValidationTokenRequest(_ email: String) {
         getValidationTokenAlert { [weak self] verifyToken in
             self?.signupService?.checkValidationToken(email: email, token: verifyToken) { [weak self] result in
@@ -370,7 +370,7 @@ final class LoginViewController: NSViewController {
             }
         }
     }
-    
+
     private func handleValidationResponse(_ email: String, _ verifyToken: String) {
         getPasswordAlert { [weak self] password in
             self?.signupService?.createNewExternalAccount(
@@ -385,57 +385,57 @@ final class LoginViewController: NSViewController {
             }
         }
     }
-    
+
     // MARK: - Login and signup flow UI
-    
+
     private func getLoginCredentialsAlert(result: @escaping (String, String) -> Void) {
         showTwoTextfieldsAlert(
             message: "Provide login credentials", confirmButton: "Log in", cancelButton: "Cancel", firstPlaceholder: "username", secondPlaceholder: "password", result: result
         )
     }
-    
+
     private func get2FAAlert(result: @escaping (String) -> Void) {
         showSingleTextfieldAlert(
             message: "Provide 2FA text", confirmButton: "Send 2FA", cancelButton: "Cancel", placeholder: "2FA", result: result
         )
     }
-    
+
     private func getSecondPasswordAlert(result: @escaping (String) -> Void) {
         showSingleTextfieldAlert(
             message: "Provide second password", confirmButton: "Send second password", cancelButton: "Cancel", placeholder: "Second password", result: result
         )
     }
-    
+
     private func getUsernameAlert(result: @escaping (String) -> Void) {
         showSingleTextfieldAlert(
             message: "Provide username", confirmButton: "Choose username", cancelButton: "Cancel", placeholder: "username", result: result
         )
     }
-    
+
     private func getSignupCredentialsAlert(result: @escaping (String, String) -> Void) {
         showTwoTextfieldsAlert(
             message: "Provide new account credentials", confirmButton: "Sign up", cancelButton: "Cancel", firstPlaceholder: "username", secondPlaceholder: "password", result: result
         )
     }
-    
+
     private func getEmailAlert(result: @escaping (String) -> Void) {
         showSingleTextfieldAlert(
             message: "Provide external email", confirmButton: "Choose email", cancelButton: "Cancel", placeholder: "email", result: result
         )
     }
-    
+
     private func getValidationTokenAlert(result: @escaping (String) -> Void) {
         showSingleTextfieldAlert(
             message: "Provide validation code", confirmButton: "Send validation code", cancelButton: "Cancel", placeholder: "validation code", result: result
         )
     }
-    
+
     private func getPasswordAlert(result: @escaping (String) -> Void) {
         showSingleTextfieldAlert(
             message: "Provide password for the new account", confirmButton: "Choose password", cancelButton: "Cancel", placeholder: "password", result: result
         )
     }
-    
+
     private func showTwoTextfieldsAlert(
         message: String, confirmButton: String, cancelButton: String, firstPlaceholder: String, secondPlaceholder: String, result: @escaping (String, String) -> Void
     ) {
@@ -469,7 +469,7 @@ final class LoginViewController: NSViewController {
         default: return
         }
     }
-    
+
     private func showSingleTextfieldAlert(
         message: String, confirmButton: String, cancelButton: String, placeholder: String, result: @escaping (String) -> Void
     ) {
@@ -489,11 +489,11 @@ final class LoginViewController: NSViewController {
         default: return
         }
     }
-    
+
     // MARK: - Logout flow
-    
+
     @IBAction func logout(_ sender: Any?) {
-        
+
         guard let credential = authManager.authCredential(sessionUID: sessionId) else {
             assertionFailure("No credentials in auth manager indicates a misconfiguration")
             return
@@ -509,14 +509,14 @@ final class LoginViewController: NSViewController {
             }
         }
     }
-    
+
     private func handleSuccessfulLogout() {
         let alertController = NSAlert()
         alertController.alertStyle = .informational
         alertController.messageText = "Log out successful"
         alertController.runModal()
     }
-    
+
     private func handleLogoutFailure(error: Error) {
         let alertController = NSAlert()
         alertController.alertStyle = .warning
@@ -524,9 +524,9 @@ final class LoginViewController: NSViewController {
         alertController.informativeText = error.messageForTheUser
         alertController.runModal()
     }
-    
+
     // MARK: - Delete account flow
-    
+
     @IBAction func deleteAccount(_ sender: Any?) {
         guard let credential = authManager.authCredential(sessionUID: sessionId) else {
             assertionFailure("No credentials in auth manager indicates a misconfiguration")
@@ -543,7 +543,7 @@ final class LoginViewController: NSViewController {
             }
         }
     }
-    
+
     private func handleSuccessfulAccountDeletion(_ success: AccountDeletionSuccess) {
         let alertController = NSAlert()
         alertController.alertStyle = .informational
@@ -552,7 +552,7 @@ final class LoginViewController: NSViewController {
         logoutButton.isHidden = true
         deleteAccountButton.isHidden = true
     }
-    
+
     private func handleAccountDeletionFailure(_ failure: AccountDeletionError) {
         switch failure {
         case .apiMightBeBlocked(let message, _):

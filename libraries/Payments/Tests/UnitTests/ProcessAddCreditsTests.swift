@@ -35,7 +35,7 @@ import ProtonCoreNetworking
 final class ProcessAddCreditsTests: XCTestCase {
 
     let timeout = 1.0
-    
+
     let queue = DispatchQueue.global(qos: .userInitiated)
 
     var apiService: APIServiceMock!
@@ -72,7 +72,7 @@ final class ProcessAddCreditsTests: XCTestCase {
         processDependencies.storeKitDelegateStub.fixture = storeKitManagerDelegate
         processDependencies.tokenStorageStub.fixture = paymentTokenStorageMock
     }
-    
+
     func testBuyCreditSuccess() {
         // Test scenario:
         // 1. Do purchase chargeable token
@@ -87,7 +87,7 @@ final class ProcessAddCreditsTests: XCTestCase {
         processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in return success() }
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
-        
+
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
                 completion(nil, .success(PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse))
@@ -115,7 +115,7 @@ final class ProcessAddCreditsTests: XCTestCase {
         guard case .finished(.resolvingIAPToCredits) = returnedResult else { XCTFail(); return }
         guard case .finished(.resolvingIAPToCredits) = processCompletionResult else { XCTFail(); return }
     }
-    
+
     func testBuyCreditSuccessWithSubscriptionError() {
         // Test scenario:
         // 1. Do purchase chargeable token with subscription error
@@ -126,7 +126,7 @@ final class ProcessAddCreditsTests: XCTestCase {
         let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
         let out = ProcessAddCredits(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
-        
+
         processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in return success() }
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
@@ -165,21 +165,21 @@ final class ProcessAddCreditsTests: XCTestCase {
             // Test scenario:
             // 1. Do purchase with get token error answer
             // Expected: Success
-            
+
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
             let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
             let out = ProcessAddCredits(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in return success() }
-            
+
             apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
                 if path.contains("/tokens") {
                     completion(nil, .success(["Code": 22000]))
                 } else {
                     XCTFail(); completion(nil, .success([:])) }
             }
-            
+
             // when
             var returnedError: Error?
             queue.async {
@@ -190,7 +190,7 @@ final class ProcessAddCreditsTests: XCTestCase {
                     expectation.fulfill()
                 }
             }
-            
+
             // then
             waitForExpectations(timeout: timeout)
             XCTAssertEqual((returnedError as? ResponseError)?.responseCode, 22000)
@@ -248,7 +248,7 @@ final class ProcessAddCreditsTests: XCTestCase {
         processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in return success() }
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
-        
+
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
                 completion(nil, .success(PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse))
@@ -274,7 +274,7 @@ final class ProcessAddCreditsTests: XCTestCase {
         guard case .finished(.withPurchaseAlreadyProcessed) = returnedResult else { XCTFail(); return }
         guard case .finished(.withPurchaseAlreadyProcessed) = processCompletionResult else { XCTFail(); return }
     }
-    
+
     func testBuyCreditErrorSandboxReceiptError() {
         // Test scenario:
         // 1. Do purchase with payment already registered error
@@ -287,7 +287,7 @@ final class ProcessAddCreditsTests: XCTestCase {
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
         processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in return success() }
-        
+
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
                 completion(nil, .success(PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse))
@@ -312,7 +312,7 @@ final class ProcessAddCreditsTests: XCTestCase {
             return
         }
     }
-    
+
     func testBuyCreditError() {
         // Test scenario:
         // 1. Do purchase with cretit answer error
@@ -325,7 +325,7 @@ final class ProcessAddCreditsTests: XCTestCase {
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
         processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in return success() }
-        
+
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
                 completion(nil, .success(PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse))
@@ -349,7 +349,7 @@ final class ProcessAddCreditsTests: XCTestCase {
             XCTFail()
         }
     }
-    
+
     func testBuyCreditErrorApiMightBeBlocked() {
         // Test scenario:
         // 1. Do purchase with cretit answer error
@@ -362,7 +362,7 @@ final class ProcessAddCreditsTests: XCTestCase {
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
         processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in return success() }
-        
+
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
                 completion(nil, .success(PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse))

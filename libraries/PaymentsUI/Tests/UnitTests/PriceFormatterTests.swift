@@ -28,7 +28,7 @@ final class PriceFormatterTests: XCTestCase {
         let price = PriceFormatter.formatPlanPrice(price: 12, locale: Locale(identifier: "en_US"))
         XCTAssertEqual(price, "$12.00")
     }
-    
+
     func test_priceFormatter_noDecimal() {
         // Given
         let price = PriceFormatter.formatPlanPrice(price: 0, locale: Locale(identifier: "en_US"), maximumFractionDigits: 0)

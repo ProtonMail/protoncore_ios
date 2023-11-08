@@ -31,21 +31,21 @@ protocol EnvironmentSelectorDelegate: AnyObject {
 }
 
 final class EnvironmentSelector: UIView {
-    
+
     weak var delegate: EnvironmentSelectorDelegate?
-    
+
     @IBOutlet private var selector: UISegmentedControl!
     @IBOutlet private var customDomain: UITextField!
-    
+
     private static let paymentsIndex = 2
     private static let customDomainIndex = 4
-    
+
     @IBAction private func environmentChanged(_ sender: Any!) {
         customDomain.isHidden = selector.selectedSegmentIndex != EnvironmentSelector.customDomainIndex
         delegate?.environmentChanged(to: currentEnvironment)
         ensureEnvironmentSwitchWillBeSentAlongsideCrashReport()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         guard let objects = Bundle.main.loadNibNamed(
@@ -64,13 +64,13 @@ final class EnvironmentSelector: UIView {
         ])
         ensureEnvironmentSwitchWillBeSentAlongsideCrashReport()
     }
-    
+
     private func ensureEnvironmentSwitchWillBeSentAlongsideCrashReport() {
         let breadcrumb = Breadcrumb(level: .debug, category: "environment")
         breadcrumb.message = currentEnvironment.doh.getCurrentlyUsedHostUrl()
         SentrySDK.addBreadcrumb(crumb: breadcrumb)
     }
-    
+
     var currentEnvironment: Environment {
         let env: Environment
         switch selector.selectedSegmentIndex {
@@ -101,7 +101,7 @@ final class EnvironmentSelector: UIView {
         }
         return env
     }
-    
+
     func switchToCustomDomain(value: String) {
         customDomain.text = value
         selector.selectedSegmentIndex = EnvironmentSelector.customDomainIndex

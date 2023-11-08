@@ -95,15 +95,15 @@ public extension StoreKitManagerProtocol {
                         errorCompletion: errorCompletion,
                         deferredCompletion: nil)
     }
-    
+
     @available(*, deprecated, renamed: "retryProcessingAllPendingTransactions")
     func continueRegistrationPurchase(finishHandler: FinishCallback?) {
         retryProcessingAllPendingTransactions(finishHandler: finishHandler)
     }
-    
+
     @available(*, deprecated, message: "Please use SuccessCallback")
     typealias OldDeprecatedSuccessCallback = (PaymentToken?) -> Void
-    
+
     @available(*, deprecated, message: "Switch to variant using the SuccessCallback")
     func purchaseProduct(plan: InAppPurchasePlan,
                          amountDue: Int,

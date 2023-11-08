@@ -4,7 +4,6 @@ disabled_rules: # rule identifiers to exclude from running
   - type_name # https://realm.github.io/SwiftLint/type-name
   - type_body_length # https://realm.github.io/SwiftLint/type-body-length
   - identifier_name # https://realm.github.io/SwiftLint/identifier-name
-  - trailing_whitespace # https://realm.github.io/SwiftLint/trailing-whitespace
   - notification_center_detachment # https://realm.github.io/SwiftLint/notification-center-detachment
   - trailing_comma # https://realm.github.io/SwiftLint/trailing-comma
   - multiline_arguments # https://realm.github.io/SwiftLint/multiline-arguments
@@ -53,6 +52,7 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
   - ExampleApp/Pods
   - fastlane
   - third-party
+
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji, sonarqube, markdown)
 
 cyclomatic_complexity:

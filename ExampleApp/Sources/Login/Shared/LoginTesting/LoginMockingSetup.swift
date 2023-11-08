@@ -22,7 +22,7 @@ final class LoginMockingSetup {
         guard let url = URL(string: hostUrl), let hostName = url.host  else {
             fatalError("Cannot get host from URL")
         }
-        
+
         stop()
 
         let subStrings = hostName.components(separatedBy: ".")
@@ -72,7 +72,7 @@ final class LoginMockingSetup {
             }
             usersStub?.name = "Users HumanVerificationFail stub"
         }
-        
+
         func mockExternalAccountsAddressRequired(errorCode: Int) {
             stub(condition: isHost(domainName) && pathEndsWith("auth/v4") && isMethodPOST()) { request in
                 let response = """
@@ -82,6 +82,6 @@ final class LoginMockingSetup {
                 return HTTPStubsResponse(data: response, statusCode: 404, headers: headers)
             }
         }
-        
+
     }
 }

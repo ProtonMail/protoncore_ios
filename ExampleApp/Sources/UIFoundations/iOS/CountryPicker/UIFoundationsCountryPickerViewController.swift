@@ -23,7 +23,7 @@ import UIKit
 import ProtonCoreUIFoundations
 
 class UIFoundationsCountryPickerViewController: UIFoundationsAppearanceStyleViewController {
-    
+
     let countryPicker = PMCountryPicker(searchBarPlaceholderText: "Search country")
 
     @IBOutlet weak var countryLabel: UILabel!
@@ -46,19 +46,19 @@ class UIFoundationsCountryPickerViewController: UIFoundationsAppearanceStyleView
         viewController.delegate = self
         present(viewController, animated: true)
     }
-    
+
 }
 
 extension UIFoundationsCountryPickerViewController: CountryPickerViewControllerDelegate {
     func didCountryPickerClose() {
         countryLabel.text = "Country:"
     }
-    
+
     func didSelectCountryCode(countryCode: CountryCode) {
         countryLabel.text = "Country: \(countryCode.country_en), code: +\(countryCode.phone_code)"
     }
-    
+
     func didCountryPickerDissmised() {
-    
+
     }
 }

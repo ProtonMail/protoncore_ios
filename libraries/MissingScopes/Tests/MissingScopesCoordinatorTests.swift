@@ -38,12 +38,12 @@ final class MissingScopesCoordinatorTests: XCTestCase {
     var apiService: APIServiceMock!
     var responseHandlerData: PMResponseHandlerData!
     var authInfo: AuthInfoResponse!
-    
+
     override func setUp() {
         super.setUp()
         setupMocks()
     }
-    
+
     private func setupMocks() {
         apiService = APIServiceMock()
         responseHandlerData = .init(
@@ -56,7 +56,7 @@ final class MissingScopesCoordinatorTests: XCTestCase {
             onDataTaskCreated: { _ in }
         )
     }
-    
+
     func test_didCloseVerifyPassword_completeWithClosedReason() {
         // Given
         let closedExpectation = XCTestExpectation(description: "verified expected")
@@ -73,14 +73,14 @@ final class MissingScopesCoordinatorTests: XCTestCase {
                 }
             }
         )
-        
+
         // When
         sut.didCloseVerifyPassword()
-        
+
         // Then
         wait(for: [closedExpectation], timeout: 0.1)
     }
-    
+
     func test_didCloseWithError_completeWithClosedWithError() {
         // Given
         let closedWithErrorExpectation = XCTestExpectation(description: "verified expected")
@@ -99,10 +99,10 @@ final class MissingScopesCoordinatorTests: XCTestCase {
                 }
             }
         )
-        
+
         // When
         sut.didCloseWithError(code: 123, description: "error")
-        
+
         // Then
         wait(for: [closedWithErrorExpectation], timeout: 0.1)
     }

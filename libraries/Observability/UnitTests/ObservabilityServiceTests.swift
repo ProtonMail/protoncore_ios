@@ -37,14 +37,14 @@ import XCTest
 @available(iOS 13.0, *)
 final class ObservabilityServiceTests: XCTestCase {
     private var sut: ObservabilityServiceImpl!
-    
+
     private var apiService: APIServiceMock!
     private var mockTimer: ObservabilityTimerMock!
     private var mockQueue: CompletionBlockExecutor!
     private var aggregatorMock: ObservabilityAggregatorMock!
     private var completionMock: ((URLSessionDataTask?, Result<JSONDictionary, PMAPIService.APIError>) -> Void)?
     private var completionBlockCalled = false
-    
+
     override func setUp() {
         super.setUp()
         setupMock()
@@ -56,7 +56,7 @@ final class ObservabilityServiceTests: XCTestCase {
             completion: completionMock
         )
     }
-    
+
     private func setupMock() {
         apiService = APIServiceMock()
         mockTimer = ObservabilityTimerMock()
@@ -74,7 +74,7 @@ final class ObservabilityServiceTests: XCTestCase {
         // Then
         XCTAssertEqual(aggregatorMock.aggregateCallCount, 1)
     }
-    
+
     func test_report_registersTimerExactlyOnce() {
         // When
         sut.report(.dummyEvent(status: .successful))
@@ -82,7 +82,7 @@ final class ObservabilityServiceTests: XCTestCase {
         // Then
         XCTAssertEqual(mockTimer.registerCallCount, 1)
     }
-    
+
     func test_report_startsTimerExactlyOnce() {
         // When
         sut.report(.dummyEvent(status: .successful))
@@ -90,7 +90,7 @@ final class ObservabilityServiceTests: XCTestCase {
         // Then
         XCTAssertEqual(mockTimer.startCallCount, 1)
     }
-    
+
     func test_report_multipleCallsOnlyStartTimerOnce() {
         // When
         sut.report(.dummyEvent(status: .successful))
@@ -100,7 +100,7 @@ final class ObservabilityServiceTests: XCTestCase {
         // Then
         XCTAssertEqual(mockTimer.startCallCount, 1)
     }
-    
+
     func test_report_multipleCallsOnlyRegisterTimerOnce() {
         // When
         sut.report(.dummyEvent(status: .successful))
@@ -110,7 +110,7 @@ final class ObservabilityServiceTests: XCTestCase {
         // Then
         XCTAssertEqual(mockTimer.registerCallCount, 1)
     }
-    
+
     func test_clearsAggregatedEventsAfterXSeconds() async {
         // Given
         let aggregator = ObservabilityAggregatorMock()
@@ -134,7 +134,7 @@ final class ObservabilityServiceTests: XCTestCase {
         // Then
         wait(for: [expectation], timeout: 2)
     }
-    
+
     func test_apiRequestAfterXSeconds() async {
         // Given
         let service = setupService()
@@ -157,7 +157,7 @@ final class ObservabilityServiceTests: XCTestCase {
         // Then
         wait(for: [expectation], timeout: 2)
     }
-    
+
     func test_reportingEventsIsThreadSafe() async {
         // Given
         let sut = ObservabilityServiceImpl(
@@ -173,7 +173,7 @@ final class ObservabilityServiceTests: XCTestCase {
             continuation.resume()
         }
     }
-    
+
     func test_reportEventIsDoneInAQueue() {
         // Given
         let expectation = expectation(description: "test_reportEventIsDoneInAQueue")
@@ -205,7 +205,7 @@ final class ObservabilityServiceTests: XCTestCase {
         sut.report(.dummyEvent(status: .successful))
         wait(for: [expectation], timeout: 2)
     }
-    
+
     private func setupService() -> APIServiceMock {
         let service = APIServiceMock()
         service.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
@@ -227,17 +227,17 @@ extension ObservabilityEvent where Payload == PayloadWithLabels<DummyLabels> {
 
 final class ObservabilityAggregatorMock: ObservabilityAggregator {
     var aggregatedEvents: Atomic<[AggregableObservabilityEvent]> = Atomic([])
-    
+
     var aggregateCallCount = 0
     var clearCallCount = 0
-    
+
     func aggregate<Labels>(event: ObservabilityEvent<PayloadWithLabels<Labels>>) where Labels: Encodable, Labels: Equatable {
         aggregatedEvents.mutate { events in
             events.append(.init(event: event))
         }
         aggregateCallCount += 1
     }
-    
+
     func clear() {
         aggregatedEvents.mutate { events in
             events.removeAll()
@@ -250,15 +250,15 @@ final class ObservabilityTimerMock: ObservabilityTimer {
     var registerCallCount = 0
     var startCallCount = 0
     var stopCallCount = 0
-    
+
     func register(_ ticker: @escaping ProtonCoreObservability.Ticker) {
         registerCallCount += 1
     }
-    
+
     func start() {
         startCallCount += 1
     }
-    
+
     func stop() {
         stopCallCount += 1
     }

@@ -34,7 +34,7 @@ final class PlansDataSourceTests: XCTestCase {
     var apiServiceMock: APIServiceMock!
     var storeKitDataSourceMock: StoreKitDataSourceMock!
     var servicePlanDataStorageMock: ServicePlanDataStorageMock!
-    
+
     override func setUp() {
         super.setUp()
         apiServiceMock = .init()
@@ -46,54 +46,54 @@ final class PlansDataSourceTests: XCTestCase {
             localStorage: servicePlanDataStorageMock
         )
     }
-    
+
     // MARK: - fetchIAPAvailability
-    
+
     func test_fetchIAPAvailability_succeeds() async throws {
         // Given
         apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(["Apple": true]))
         }
-        
+
         // When
         try await sut.fetchIAPAvailability()
-        
+
         // Then
         XCTAssertTrue(sut.isIAPAvailable)
     }
-    
+
     func test_fetchIAPAvailability_fails_onFalse() async throws {
         // Given
         apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(["Apple": false]))
         }
-        
+
         // When
         try await sut.fetchIAPAvailability()
-        
+
         // Then
         XCTAssertFalse(sut.isIAPAvailable)
     }
-    
+
     func test_fetchIAPAvailability_fails_onBadJSON() async throws {
         // Given
         apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(["bad": "json"]))
         }
-        
+
         // When
         try await sut.fetchIAPAvailability()
-        
+
         // Then
         XCTAssertFalse(sut.isIAPAvailable)
     }
-    
+
     func test_fetchIAPAvailability_throws() async throws {
         // Given
         apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .failure(.badResponse()))
         }
-        
+
         // When
         do {
             try await sut.fetchIAPAvailability()
@@ -102,7 +102,7 @@ final class PlansDataSourceTests: XCTestCase {
             // successfully thrown an error
         }
     }
-    
+
     func test_isIAPAvailable_isTrueWhenSettingPaymentsBackendStatusAcceptsIAPToTrue() {
         // Given
         servicePlanDataStorageMock.paymentsBackendStatusAcceptsIAPStub.fixture = true
@@ -111,12 +111,12 @@ final class PlansDataSourceTests: XCTestCase {
             storeKitDataSource: storeKitDataSourceMock,
             localStorage: servicePlanDataStorageMock
         )
-        
+
         // Then
         XCTAssertTrue(sut.paymentsBackendStatusAcceptsIAP)
         XCTAssertTrue(sut.isIAPAvailable)
     }
-    
+
     func test_isIAPAvailable_isFalseWhenSettingPaymentsBackendStatusAcceptsIAPToFalse() {
         // Given
         servicePlanDataStorageMock.paymentsBackendStatusAcceptsIAPStub.fixture = false
@@ -125,46 +125,46 @@ final class PlansDataSourceTests: XCTestCase {
             storeKitDataSource: storeKitDataSourceMock,
             localStorage: servicePlanDataStorageMock
         )
-        
+
         // Then
         XCTAssertFalse(sut.paymentsBackendStatusAcceptsIAP)
         XCTAssertFalse(sut.isIAPAvailable)
     }
-    
+
     // MARK: - fetchCurrentPlan
-    
+
     func test_fetchCurrentPlan_succeeds() async throws {
         // Given
         apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(currentPlanResponse))
         }
-        
+
         // When
         try await sut.fetchCurrentPlan()
-        
+
         // Then
         XCTAssertEqual(sut.currentPlan, currentPlanToCompare)
     }
-    
+
     func test_fetchCurrentPlan_fails() async throws {
         // Given
         apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success([:]))
         }
-        
+
         // When
         try await sut.fetchCurrentPlan()
-        
+
         // Then
         XCTAssertNil(sut.currentPlan)
     }
-    
+
     func test_fetchCurrentPlan_throws() async throws {
         // Given
         apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .failure(.badResponse()))
         }
-        
+
         // When
         do {
             try await sut.fetchCurrentPlan()
@@ -173,9 +173,9 @@ final class PlansDataSourceTests: XCTestCase {
             // successfully thrown an error
         }
     }
-    
+
     // MARK: - fetchAvailablePlans
-    
+
     func test_fetchAvailablePlans_succeeds() async throws {
         // Given
         apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
@@ -212,28 +212,28 @@ final class PlansDataSourceTests: XCTestCase {
         XCTAssertTrue(storeKitDataSourceMock.fetchAvailableProductsForPlansStub.wasCalledExactlyOnce)
         XCTAssertTrue(storeKitDataSourceMock.filterAccordingToAvailableProductsStub.wasCalledExactlyOnce)
     }
-    
+
     func test_fetchAvailablePlans_fails() async throws {
         // Given
         apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success([:]))
         }
-        
+
         // When
         try await sut.fetchAvailablePlans()
-        
+
         // Then
         XCTAssertNil(sut.availablePlans)
         XCTAssertTrue(storeKitDataSourceMock.fetchAvailableProductsForPlansStub.wasNotCalled)
         XCTAssertTrue(storeKitDataSourceMock.filterAccordingToAvailableProductsStub.wasNotCalled)
     }
-    
+
     func test_fetchAvailablePlans_throws() async throws {
         // Given
         apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .failure(.badResponse()))
         }
-        
+
         // When
         do {
             try await sut.fetchAvailablePlans()
@@ -243,41 +243,41 @@ final class PlansDataSourceTests: XCTestCase {
             XCTAssertTrue(storeKitDataSourceMock.filterAccordingToAvailableProductsStub.wasNotCalled)
         }
     }
-    
+
     // MARK: - fetchPaymentMethods
-    
+
     func test_fetchPaymentMethods_succeeds() async throws {
         // Given
         apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(paymentMethodsResponse))
         }
-        
+
         // When
         try await sut.fetchPaymentMethods()
-        
+
         // Then
         XCTAssertEqual(sut.paymentMethods, paymentMethodsToCompare)
     }
-    
+
     func test_fetchPaymentMethods_fails() async throws {
         // Given
         apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success([:]))
         }
-        
+
         // When
         try await sut.fetchPaymentMethods()
-        
+
         // Then
         XCTAssertNil(sut.paymentMethods)
     }
-    
+
     func test_fetchPaymentMethods_throws() async throws {
         // Given
         apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .failure(.badResponse()))
         }
-        
+
         // When
         do {
             try await sut.fetchPaymentMethods()
@@ -286,31 +286,31 @@ final class PlansDataSourceTests: XCTestCase {
             // successfully thrown an error
         }
     }
-    
+
     // MARK: - willRenewAutomatically
-    
+
     func test_willRenewAutomatically_isTrue() async throws {
         // Given
         apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(currentPlanResponse))
         }
-        
+
         // When
         try await sut.fetchCurrentPlan()
-        
+
         // Then
         XCTAssertTrue(sut.willRenewAutomatically)
     }
-    
+
     func test_willRenewAutomatically_isFalse() async throws {
         // Given
         apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success([:]))
         }
-        
+
         // When
         try await sut.fetchCurrentPlan()
-        
+
         // Then
         XCTAssertFalse(sut.willRenewAutomatically)
     }

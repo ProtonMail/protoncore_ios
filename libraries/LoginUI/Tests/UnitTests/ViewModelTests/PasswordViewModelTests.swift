@@ -50,7 +50,7 @@ class PasswordViewModelTests: XCTestCase {
             XCTFail()
         }
     }
-    
+
     func testPasswordEmpty() throws {
         let viewModel = PasswordViewModel()
         let result = viewModel.passwordValidationResult(for: .notEmpty, password: "", repeatParrword: "")

@@ -25,24 +25,24 @@ import ProtonCoreFeatureSwitch
 
 final class SSOEndpointTests: XCTestCase {
     var sut: AuthService.SSOEndpoint!
-    
+
     override func setUp() {
         super.setUp()
         sut = .init(ssoResponseToken: .init(token: "token", uid: "uid"))
     }
-    
+
     func test_path() {
         XCTAssertEqual(sut.path, "/auth/v4")
     }
-    
+
     func test_method() {
         XCTAssertEqual(sut.method, .post)
     }
-    
+
     func test_parameters() {
         XCTAssertEqual(sut.parameters as? [String: String], ["SSOResponseToken": "token"])
     }
-    
+
     func test_isAuth() {
         XCTAssertFalse(sut.isAuth)
     }

@@ -58,7 +58,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
             ]
         ]
     }
-    
+
     var testCountriesCountDict: [String: Any] {
         [
             "Code": 1000,
@@ -78,7 +78,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
             ]
         ]
     }
-    
+
     let testUser = User(
         ID: "12345",
         name: "test",
@@ -182,12 +182,12 @@ final class ServicePlanDataServiceTests: XCTestCase {
         // plansRequest
         // defaultPlanRequest
         // Expected result: only matched plans with a period of 12 should be mapped to the output availablePlansDetails
-        
+
         let priceVpn2022 = 105
         let priceBundle2022 = 150
         let yearlySubscriptionCycleReturnedByBE = 12
         let yearlySubscriptionCyclePresentedToUser = 12
-        
+
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("/status") {
                 completion(nil, .success(["Code": 1000, "Apple": true]))
@@ -218,7 +218,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
         XCTAssertEqual(out.availablePlansDetails, [Plan.empty.updated(name: "bundle2022", pricing: [String(yearlySubscriptionCyclePresentedToUser): priceBundle2022], cycle: yearlySubscriptionCyclePresentedToUser)])
         XCTAssertEqual(out.defaultPlanDetails, Plan.empty.updated(name: "free"))
     }
-    
+
     func testUpdateCurrentSubscriptionExists() {
         let out = ServicePlanDataService(inAppPurchaseIdentifiers: { ["ios_test_12_usd_non_renewing"] },
                                          paymentsApi: paymentsApi,
@@ -306,7 +306,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
         XCTAssertTrue(out.currentSubscription!.isEmptyBecauseOfUnsufficientScopeToFetchTheDetails)
         XCTAssertNil(out.credits)
     }
-    
+
     func testupdateCreditsSuccess() {
         let out = ServicePlanDataService(inAppPurchaseIdentifiers: { ["ios_test_12_usd_non_renewing"] },
                                          paymentsApi: paymentsApi,
@@ -324,7 +324,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
         }
         waitForExpectations(timeout: timeout)
     }
-    
+
     func testUpdateCountriesCountSuccess() {
         let out = ServicePlanDataService(inAppPurchaseIdentifiers: { ["ios_test_12_usd_non_renewing"] },
                                          paymentsApi: paymentsApi,
@@ -354,7 +354,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
         }
         waitForExpectations(timeout: timeout)
     }
-    
+
     func testUpdateCountriesCountNoData() {
         let out = ServicePlanDataService(inAppPurchaseIdentifiers: { ["ios_test_12_usd_non_renewing"] },
                                          paymentsApi: paymentsApi,

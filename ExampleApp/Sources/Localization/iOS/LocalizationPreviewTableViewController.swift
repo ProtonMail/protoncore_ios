@@ -28,9 +28,9 @@ class LocalizationPreviewTableViewController: UITableViewController {
 
     private var translationDict: [String] = []
     private var transPluralsDict: [String: String] = [:]
-    
+
     var languageButton: UIBarButtonItem?
-    
+
     // tried to use refection-Mirror. but the swift refection doesn't work well with lazy var.
     //  for saving time. manually add string value first. improve in the future.
     func buildString() {
@@ -39,52 +39,52 @@ class LocalizationPreviewTableViewController: UITableViewController {
         self.translationDict.append(LUITranslation._ls_welcome_footer.l10n)
 
         self.translationDict.append(PUITranslations._select_plan_description.l10n)
-        
+
         self.translationDict.append(PUITranslations._plan_details_free_description.l10n)
-        
+
         self.translationDict.append(PUITranslations._plan_details_plus_description.l10n)
-        
+
         self.translationDict.append(PUITranslations._plan_details_vpn_plus_description.l10n)
-        
+
         self.translationDict.append(PUITranslations._plan_details_bundle_description.l10n)
-    
+
         self.translationDict.append(PUITranslations._plan_footer_desc.l10n)
-        
+
         self.translationDict.append(PUITranslations._details_unlimited_folders_labels_filters.l10n)
-        
+
         self.translationDict.append(PUITranslations._details_up_to_storage.l10n)
-        
+
         self.translationDict.append(PUITranslations._details_vpn_on_single_device.l10n)
-        
+
         self.translationDict.append(PUITranslations._details_highest_VPN_speed.l10n)
-        
+
         self.translationDict.append(PUITranslations._detailsblocker.l10n)
-        
+
         self.translationDict.append(PUITranslations._details_access_streaming_services.l10n)
-        
+
         self.translationDict.append(PUITranslations._details_secure_core_servers.l10n)
-        
+
         self.translationDict.append(PUITranslations._details_tor_over_vpn.l10n)
-        
+
         self.translationDict.append(PUITranslations._details_p2p.l10n)
-        
+
         self.translationDict.append(PUITranslations._get_plan_button.l10n)
-        
+
         self.translationDict.append(PUITranslations._get_free_plan_button.l10n)
-        
+
         self.translationDict.append(PUITranslations._details_used_storage_space.l10n)
-        
+
         self.translationDict.append(PUITranslations._connection_error_title.l10n)
-        
+
         self.translationDict.append(PUITranslations._connection_error_description.l10n)
-        
+
         self.translationDict.append(PUITranslations._details_no_logs_policy.l10n)
-        
+
         self.translationDict.append(PUITranslations._plan_successfully_upgraded.l10n)
-        
+
         self.translationDict.append(PUITranslations._extend_subscription_button.l10n)
     }
-    
+
     private func inAppLanguage() {
         let languages: [ELanguage] = ELanguage.allItems()
         let current_language = LanguageManager.currentLanguageEnum()
@@ -103,19 +103,19 @@ class LocalizationPreviewTableViewController: UITableViewController {
         alertController.popoverPresentationController?.sourceRect = self.view.frame
         present(alertController, animated: true, completion: nil)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         LanguageManager.setupCurrentLanguage()
-        
+
         languageButton = UIBarButtonItem(title: "Language", style: .plain, target: self, action: #selector(brandAction))
 
         navigationItem.rightBarButtonItem = languageButton
-        
+
         self.buildString()
     }
-    
+
     @objc func brandAction(sender: UIBarButtonItem!) {
         inAppLanguage()
     }

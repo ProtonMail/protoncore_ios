@@ -69,7 +69,7 @@ final class ServicePlanDataServiceExtensionsTests: XCTestCase {
         let end = out.endDateString(plan: plan)
         XCTAssertEqual(end?.string, String(format: PUITranslations.plan_details_renew_auto_expired.l10n, endData.endDateString))
     }
-    
+
     func testEndDateStringSubscriptionRenewingBecauseOfCredits() {
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = ServicePlanDataServiceMock()

@@ -24,11 +24,11 @@ import AppKit
 import ProtonCoreUIFoundations
 
 final class UIFoundationsIconsViewController: NSViewController {
-    
+
     @IBOutlet weak var collectionView: NSCollectionView!
-    
+
     private var appearanceObserver: NSKeyValueObservation?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Icons"
@@ -36,12 +36,12 @@ final class UIFoundationsIconsViewController: NSViewController {
             ImageCollectionViewCell.self,
             forItemWithIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ImageCollectionViewCell")
         )
-        
+
         view.wantsLayer = true
         view.makeBackingLayer()
         view.layer?.backgroundColor = ColorProvider.BackgroundNorm
         collectionView.backgroundColors = [ColorProvider.BackgroundNorm]
-        
+
         if #available(macOS 10.14, *) {
             appearanceObserver = NSApp.observe(\.effectiveAppearance) { [weak self] _, _ in
                 self?.collectionView.reloadData()
@@ -52,7 +52,7 @@ final class UIFoundationsIconsViewController: NSViewController {
             // Fallback on earlier versions
         }
     }
-    
+
     override func viewDidAppear() {
         super.viewDidAppear()
         view.window?.styleMask = [.closable, .titled, .resizable]
@@ -61,7 +61,7 @@ final class UIFoundationsIconsViewController: NSViewController {
             display: true
         )
     }
-    
+
     override func viewDidLayout() {
         super.viewDidLayout()
         if let layout = collectionView.collectionViewLayout as? NSCollectionViewFlowLayout {
@@ -71,7 +71,7 @@ final class UIFoundationsIconsViewController: NSViewController {
             layout.minimumInteritemSpacing = 8
         }
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -381,15 +381,15 @@ final class UIFoundationsIconsViewController: NSViewController {
 }
 
 extension UIFoundationsIconsViewController: NSCollectionViewDataSource {
-    
+
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         data.count
     }
-    
+
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         data[section].1.count
     }
-    
+
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(
             withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ImageCollectionViewCell"),
@@ -402,11 +402,11 @@ extension UIFoundationsIconsViewController: NSCollectionViewDataSource {
 }
 
 extension UIFoundationsIconsViewController: NSCollectionViewDelegate {
-    
+
 }
 
 final class ImageCollectionViewCell: NSCollectionViewItem {
-    
+
     private let image = NSImageView()
     private let label = NSTextField()
 
@@ -414,35 +414,35 @@ final class ImageCollectionViewCell: NSCollectionViewItem {
         view = NSView(frame: NSRect(origin: .zero, size: NSSize(width: 300, height: 300)))
         view.wantsLayer = true
         view.makeBackingLayer()
-        
+
         view.addSubview(image)
         image.translatesAutoresizingMaskIntoConstraints = false
         image.imageScaling = .scaleProportionallyUpOrDown
-        
+
         view.addSubview(label)
         label.isEditable = false
         label.isSelectable = true
         label.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             image.heightAnchor.constraint(equalTo: image.widthAnchor),
             image.widthAnchor.constraint(equalTo: view.widthAnchor),
             image.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             image.topAnchor.constraint(equalTo: view.topAnchor),
             image.bottomAnchor.constraint(equalTo: label.topAnchor, constant: -32),
-            
+
             label.widthAnchor.constraint(equalTo: view.widthAnchor),
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             label.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
+
     func setImage(_ image: NSImage) {
         self.image.image = image
     }
-    
+
     func setText(_ text: String) {
         label.stringValue = text
     }
-    
+
 }

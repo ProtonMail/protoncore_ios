@@ -33,12 +33,12 @@ import ProtonCoreTestingToolkit
 
 final class CurrentPlanDetailsV5Tests: XCTestCase {
     var plansDataSource: PlansDataSourceMock!
-    
+
     override func setUp() {
         super.setUp()
         plansDataSource = .init()
     }
-    
+
     func test_createPlan_callsCreateIconUrl() async throws {
         // Given
         let subscription = CurrentPlan.Subscription(
@@ -63,10 +63,10 @@ final class CurrentPlanDetailsV5Tests: XCTestCase {
             cycleDescription: "cycleDescription",
             entitlements: [.description(.init(type: "description", text: "text", iconName: "tick"))]
         )
-        
+
         // When
         let plan = try await CurrentPlanDetailsV5.createPlan(from: subscription, plansDataSource: plansDataSource)
-        
+
         // Then
         XCTAssertEqual(plan.cycleDescription, "cycleDescription")
         XCTAssertEqual(plan.title, "title")
@@ -74,7 +74,7 @@ final class CurrentPlanDetailsV5Tests: XCTestCase {
         XCTAssertEqual(plan.price, "Free")
         XCTAssertNil(plan.endDate)
         XCTAssertEqual(plan.entitlements, [.description(.init(text: "text"))])
-        
+
     }
 }
 

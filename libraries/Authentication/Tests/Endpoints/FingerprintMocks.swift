@@ -95,7 +95,7 @@ enum FingerprintMocks {
       }
     ]
     """
-    
+
     static let deviceFignerprints =
     """
     [
@@ -114,7 +114,7 @@ enum FingerprintMocks {
         "deviceName" : 328599075,
         "preferredContentSize" : "UICTContentSizeCategoryM",
         "cellulars" : [
-    
+
         ],
         "appLang" : "en",
         "isJailbreak" : false,
@@ -136,7 +136,7 @@ enum FingerprintMocks {
         "deviceName" : 328599075,
         "preferredContentSize" : "UICTContentSizeCategoryM",
         "cellulars" : [
-    
+
         ],
         "appLang" : "en",
         "isJailbreak" : false,
@@ -145,5 +145,5 @@ enum FingerprintMocks {
       }
     ]
     """
-    
+
 }

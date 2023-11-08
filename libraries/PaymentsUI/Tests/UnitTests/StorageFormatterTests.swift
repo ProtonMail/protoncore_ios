@@ -32,27 +32,27 @@ final class StorageFormatterTests: XCTestCase {
         try super.setUpWithError()
         storageFormatter = StorageFormatter()
     }
-    
+
     func getString(value: Int64) -> String {
         var formattedString = storageFormatter.format(value: value)
         formattedString.removeAll { $0.isPunctuation }
         return formattedString
     }
-    
+
     func testKBFormatting() {
         XCTAssertEqual(getString(value: 1024), "1 KB")
         XCTAssertEqual(getString(value: 1024 * 3), "3 KB")
         XCTAssertEqual(getString(value: 1024 * 10), "10 KB")
         XCTAssertEqual(getString(value: 1024 * 100), "100 KB")
     }
-    
+
     func testMBFormatting() {
         XCTAssertEqual(getString(value: 1024 * 1024), "1 MB")
         XCTAssertEqual(getString(value: 1024 * 1024 * 10), "10 MB")
         XCTAssertEqual(getString(value: 1024 * 1024 * 100), "100 MB")
         XCTAssertEqual(getString(value: 1024 * 1024 * 500), "500 MB")
     }
-    
+
     func testGBFormatting() {
         XCTAssertEqual(getString(value: 1024 * 1024 * 1024), "1 GB")
         XCTAssertEqual(getString(value: 1024 * 1024 * 1024 * 10), "10 GB")

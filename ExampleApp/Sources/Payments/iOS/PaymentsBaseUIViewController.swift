@@ -41,7 +41,7 @@ class PaymentsBaseUIViewController: UIViewController {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeKeyboardObserver(self)
     }
-    
+
     var windowScene: UIWindowScene? {
         UIApplication.getInstance()?.connectedScenes.first { $0.activationState == .foregroundActive && $0 is UIWindowScene } as? UIWindowScene
     }
@@ -82,9 +82,9 @@ extension PaymentsBaseUIViewController: NSNotificationCenterKeyboardObserverProt
 }
 
 final class PaymentsAuthServiceDelegate: APIServiceDelegate {
-    
+
     var additionalHeaders: [String: String]?
-    
+
     func onUpdate(serverTime: Int64) {
         CryptoGo.CryptoUpdateTime(serverTime)
     }

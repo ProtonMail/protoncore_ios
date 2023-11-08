@@ -18,12 +18,12 @@ class LoginPaymentsSignupPlanSelectorTests: LoginBaseTestCase {
 
     let mainRobot = LoginSampleAppRobot()
     let completeRobot = CompleteRobot()
-    
+
     let emailVerificationCode = ObfuscatedConstants.emailVerificationCode
-    
+
     let password = ObfuscatedConstants.password
     let paymentPassword = ObfuscatedConstants.sandboxPaymentAccountPassword
-    
+
     override func setUp() {
         super.setUp()
         mainRobot
@@ -32,7 +32,7 @@ class LoginPaymentsSignupPlanSelectorTests: LoginBaseTestCase {
     }
 
     /// Free internal account creation
-    
+
     func testSignupNewIntAccountWithFreePlanSuccess() {
         mainRobot
             .showSignup()
@@ -55,7 +55,7 @@ class LoginPaymentsSignupPlanSelectorTests: LoginBaseTestCase {
             .startUsingAppTap(robot: LoginSampleAppRobot.self)
             .logoutButtonTap()
     }
-    
+
     func testSignupNewIntFreePlanWithAppInBackground() {
         mainRobot
             .showSignup()
@@ -80,11 +80,11 @@ class LoginPaymentsSignupPlanSelectorTests: LoginBaseTestCase {
             .startUsingAppTap(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testSignupNewIntFreePlanAndAppTermination() {
         let name = randomName
         let password = password
-        
+
         mainRobot
             .showSignup()
             .verify.signupScreenIsShown()
@@ -111,9 +111,9 @@ class LoginPaymentsSignupPlanSelectorTests: LoginBaseTestCase {
             .signIn(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     /// Plus plan internal account creation
-    
+
     func testSignupNewIntAccountWithPlusPlanSuccess() {
         mainRobot
             .showSignup()
@@ -135,7 +135,7 @@ class LoginPaymentsSignupPlanSelectorTests: LoginBaseTestCase {
             .proceed(email: randomEmail, code: ObfuscatedConstants.emailVerificationCode, to: LoginSampleAppRobot.self)
             .logoutButtonTap()
     }
-    
+
     func testSignupNewIntAccountWithPlusPlanSuccessAppInBackground() {
         mainRobot
             .showSignup()
@@ -159,7 +159,7 @@ class LoginPaymentsSignupPlanSelectorTests: LoginBaseTestCase {
             .activateApp(app: app, robot: LoginSampleAppRobot.self)
             .logoutButtonTap()
     }
-    
+
     func testSignupNewIntAccountWithPlusPlanSuccessAppTermination() {
         mainRobot
             .showSignup()
@@ -204,9 +204,9 @@ class LoginPaymentsSignupPlanSelectorTests: LoginBaseTestCase {
             .proceed(email: randomEmail, code: ObfuscatedConstants.emailVerificationCode, to: LoginSampleAppRobot.self)
             .logoutButtonTap()
     }
-    
+
     /// Free external account creation
-    
+
     func testSignupNewExtAccountWithFreePlanSuccess() {
         mainRobot
             .showSignup()
@@ -230,7 +230,7 @@ class LoginPaymentsSignupPlanSelectorTests: LoginBaseTestCase {
             .startUsingAppTap(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testSignupWithFreePlanWithAppInBackground() {
         mainRobot
             .showSignup()
@@ -256,9 +256,9 @@ class LoginPaymentsSignupPlanSelectorTests: LoginBaseTestCase {
             .startUsingAppTap(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     /// Plus plan external account creation
-    
+
     func testSignupNewExtAccountWithPlusPlanSuccess() {
         mainRobot
             .showSignup()

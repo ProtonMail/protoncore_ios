@@ -25,16 +25,16 @@ import XCTest
 
 final class LockEndpointTests: XCTestCase {
     var sut: LockEndpoint!
-    
+
     override func setUp() {
         super.setUp()
         sut = .init()
     }
-    
+
     func test_path() {
         XCTAssertEqual(sut.path, "/users/lock")
     }
-    
+
     func test_method() {
         XCTAssertEqual(sut.method, .put)
     }

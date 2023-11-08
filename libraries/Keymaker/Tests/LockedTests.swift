@@ -37,12 +37,12 @@ import ProtonCoreCryptoGoImplementation
 
 class LockedTests: XCTestCase {
     let message = "Santa does not exhist"
-    
+
     override class func setUp() {
         super.setUp()
         injectDefaultCryptoImplementation()
     }
-    
+
     private func makeKey(_ length: Int = 32) -> MainKey {
         var key = [UInt8](repeating: 0, count: length)
         let status = SecRandomCopyBytes(kSecRandomDefault, key.count, &key)
@@ -51,10 +51,10 @@ class LockedTests: XCTestCase {
         }
         return key
     }
-    
+
     func testCodableLockUnlock() {
         let key = self.makeKey()
-        
+
         do {
             let locked = try Locked<[String]>.init(clearValue: [message], with: key)
             let unlocked = try locked.unlock(with: key)
@@ -63,15 +63,15 @@ class LockedTests: XCTestCase {
             XCTAssertNil(error)
         }
     }
-    
+
     func testDataLockUnlock() {
         let key = self.makeKey()
         let data = message.data(using: .utf8)!
-        
+
         do {
             let locked = try Locked<Data>.init(clearValue: data, with: key)
             let unlocked = try locked.unlock(with: key)
-            
+
             XCTAssertEqual(message, String(data: unlocked, encoding: .utf8))
         } catch let error {
             XCTAssertNil(error)
@@ -91,7 +91,7 @@ class LockedTests: XCTestCase {
             }
             return cleartext
         }
-        
+
         do {
             let locked = try Locked<String>(clearValue: message, with: locker)
             let unlocked = try locked.unlock(with: unlocker)
@@ -100,12 +100,12 @@ class LockedTests: XCTestCase {
             XCTAssertNil(error)
         }
     }
-    
+
     // Maximum key length supported by CryptoSwift - for AES256
     func testPerformanceCryptoSwift32b() {
         let key = self.makeKey(32)
         let data = self.longMessage.data(using: .utf8)!
-        
+
         self.measure {
             do {
                 let locked = try Locked<Data>.init(clearValue: data, with: key)
@@ -116,7 +116,7 @@ class LockedTests: XCTestCase {
             }
         }
     }
-    
+
     lazy var longMessage = """
     WELL, PRINCE, so Genoa and Lucca are now
     just family estates of the Buonapartes. But I

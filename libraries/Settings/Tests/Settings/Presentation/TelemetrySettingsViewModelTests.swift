@@ -26,13 +26,13 @@ import XCTest
 
 @available(iOS 13.0, *)
 final class TelemetrySettingsViewModelTests: XCTestCase {
-    
+
     var sut: TelemetrySettingsViewModel!
-   
+
     private var testUserDefaults: UserDefaults!
     private var telemetryDelegate: TelemetrySettingsDelegateMock!
     private var telemetrySettingsService: TelemetrySettingsService!
-    
+
     override func setUp() {
         super.setUp()
         setupMocks()
@@ -41,22 +41,22 @@ final class TelemetrySettingsViewModelTests: XCTestCase {
             telemetrySettingsService: telemetrySettingsService
         )
     }
-    
+
     private func setupMocks() {
         testUserDefaults = UserDefaults(suiteName: #file)
         testUserDefaults.removePersistentDomain(forName: #file)
         telemetrySettingsService = TelemetrySettingsService(userDefaults: testUserDefaults)
         telemetryDelegate = TelemetrySettingsDelegateMock()
     }
-    
+
     func test_setIsActive_callsDidSetTelemetry() {
         // Given
         XCTAssertEqual(telemetryDelegate.didSetTelemetryCallCount, 0)
-        
+
         // When
         sut.isActive = true
         sut.isActive = false
-        
+
         // Then
         XCTAssertEqual(telemetryDelegate.didSetTelemetryCallCount, 2)
     }
@@ -72,43 +72,43 @@ final class TelemetrySettingsViewModelTests: XCTestCase {
         // Then
         XCTAssertEqual(telemetryDelegate.didSetTelemetryCallCount, 1)
     }
-    
+
     func test_changeValue_setsIsActive() {
         // Given
         XCTAssertFalse(sut.isActive)
-        
+
         // When
         sut.changeValue(to: true, success: { _ in })
-        
+
         // Then
         XCTAssertTrue(sut.isActive)
     }
-    
+
     func test_changeValue_callsSuccess() {
         // Given
         var successCalled = false
-        
+
         // When
         sut.changeValue(to: true, success: { result in
             successCalled = true
         })
-        
+
         // Then
         XCTAssertTrue(successCalled)
     }
 
     class TelemetrySettingsDelegateMock: TelemetrySettingsDelegate {
         var didSetTelemetryCallCount: Int
-        
+
         init() {
             didSetTelemetryCallCount = 0
         }
-        
+
         func didSetTelemetry(isEnabled: Bool) {
             didSetTelemetryCallCount += 1
         }
     }
-    
+
 }
 
 #endif

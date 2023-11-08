@@ -45,14 +45,14 @@ final class UIFoundationsTextFieldViewController: UIFoundationsAppearanceStyleVi
 extension UIFoundationsTextFieldViewController: PMTextFieldComboDelegate {
     func didChangeValue(_ textField: PMTextFieldCombo, value: String) {
     }
-    
+
     func didEndEditing(textField: PMTextFieldCombo) {
     }
-    
+
     func textFieldShouldReturn(_ textField: PMTextFieldCombo) -> Bool {
         return true
     }
-    
+
     func userDidRequestDataSelection(button: UIButton) {
         button.isSelected = true
         button.isUserInteractionEnabled = false

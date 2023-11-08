@@ -45,7 +45,7 @@ class UniquelyMergeableArrayTests: XCTestCase {
             XCTAssertEqual(original, uniqued, "The order of unique elements should be preserved.")
         }
     }
-    
+
     func testUniquingRemovesDuplicateElements() {
         let original = [2, 3, 1, 5, 3, 2]
 
@@ -60,7 +60,7 @@ class UniquelyMergeableArrayTests: XCTestCase {
         let empty: [Int] = []
 
         let merged = empty.uniquelyMerging(with: empty)
-        
+
         XCTAssertEqual(merged, [], "Merging empty arrays should result in an empty array.")
     }
 

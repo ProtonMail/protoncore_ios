@@ -20,9 +20,9 @@ import SwiftUI
 import ProtonCoreUIFoundations
 
 public struct InsecureAccountRecoveryView: View {
-    
+
     @StateObject var viewModel: AccountRecoveryView.ViewModel
-    
+
     public var body: some View {
         VStack(spacing: 24) {
             Image(AccountRecovery.ImageNames.passwordResetPeriodEnd,

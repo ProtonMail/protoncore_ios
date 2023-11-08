@@ -31,7 +31,7 @@ final class PaymentsUILocalizationTests: XCTestCase {
     func testAccountDeletionTranslationsAreDefinedForEnglish() {
         testAllLocalizationsAreDefined(for: PUITranslations.self, prefixForMissingValue: #function)
     }
-    
+
     func testAllSubstitutionsAreFollowingTheExpectedFormatForEnglish() {
         testAllSubstitutionsAreValid(for: PUITranslations.self)
     }

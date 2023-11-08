@@ -25,13 +25,13 @@ import ProtonCoreCryptoGoInterface
 import ProtonCoreUtilities
 
 class CryptoFileTests: CryptoTestBase {
-    
+
     #if !(SPM && os(macOS))
     func testWriteAndRead() {
         do {
             let url = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             let fileToWrite = url.appendingPathComponent("write.dat")
-            
+
             if FileManager.default.fileExists(atPath: fileToWrite.path) {
                 try FileManager.default.removeItem(at: fileToWrite)
             }

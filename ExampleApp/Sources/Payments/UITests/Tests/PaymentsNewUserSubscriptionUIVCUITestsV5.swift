@@ -18,10 +18,10 @@ import ProtonCoreQuarkCommands
 import Alamofire
 
 class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
-    
+
     lazy var quarkCommands = QuarkCommands(doh: doh)
     let mainRobot = PaymentsSampleAppRobot()
-    
+
     override func setUp() {
         super.setUp()
         quarkCommands.unban()
@@ -29,12 +29,12 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
         mainRobot
             .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
     }
-    
+
     /// Test current plans
     func testCurrentFreePlan() {
         let randomUsername = StringUtils.randomAlphanumericString()
         quarkCommands.createUser(username: randomUsername, password: ObfuscatedConstants.password, protonPlanName: "free")
-        
+
         mainRobot
             .showPaymentsUI()
             .verify.newUserSubscriptionUIScreenIsShown()
@@ -49,10 +49,10 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .verifyNumberOfCells(number: 1)
             .verifyPlanV5(plan: .free)
     }
-    
+
     func testCurrentVisionaryPlan() {
         let user = testData.visionaryUser
-        
+
         mainRobot
             .showPaymentsUI()
             .verify.newUserSubscriptionUIScreenIsShown()
@@ -102,13 +102,13 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .verifyNumberOfCells(number: 1)
             .verifyPlanV5(plan: .free)
     }
-    
+
     /// Update to plus plan
-    
+
     func testUpdatePlusPlanSuccess() {
            let randomUsername = StringUtils.randomAlphanumericString()
            quarkCommands.createUser(username: randomUsername, password: ObfuscatedConstants.password, protonPlanName: "free")
-           
+
            mainRobot
                .showPaymentsUI()
                .verify.newUserSubscriptionUIScreenIsShown()
@@ -128,11 +128,11 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
                .verifyExpirationTime()
                .verifyPlanV5(plan: .mail2022)
        }
-       
+
        func testUpdatePlusPlanSuccessAppTermination() {
            let randomUsername = StringUtils.randomAlphanumericString()
            quarkCommands.createUser(username: randomUsername, password: ObfuscatedConstants.password, protonPlanName: "free")
-           
+
            mainRobot
                .showPaymentsUI()
                .verify.newUserSubscriptionUIScreenIsShown()
@@ -162,10 +162,10 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
                .verifyPlanV5(plan: .mail2022)
        }
     /// Test update plans
-    
+
     func testUpdateVisionaryPlan() {
         let user = testData.visionaryUser
-        
+
         mainRobot
             .showPaymentsUI()
             .verify.newUserSubscriptionUIScreenIsShown()
@@ -180,7 +180,7 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .verifyNumberOfCells(number: 1)
             .verifyPlanV5(plan: .visionary)
     }
-    
+
     func testUpdateVpnPlusPlan() {
         let user = testData.vpnPlusUser
 
@@ -215,11 +215,11 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
             .verifyNumberOfCells(number: 1)
             .verifyPlanV5(plan: .free)
     }
-    
+
     func testUpdatePlusPlanSuccessExtendSubscriptionSuccess() {
         let randomUsername = StringUtils.randomAlphanumericString()
         quarkCommands.createUser(username: randomUsername, password: ObfuscatedConstants.password, protonPlanName: "free")
-           
+
         mainRobot
            .showPaymentsUI()
            .verify.newUserSubscriptionUIScreenIsShown()
@@ -248,11 +248,11 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
            .verifyNumberOfCells(number: 1)
            .verifyRenewTime()
        }
-    
+
     func testUpdatePlusPlanSuccessExtendSubscriptionSuccessAppTermination() {
         let randomUsername = StringUtils.randomAlphanumericString()
         quarkCommands.createUser(username: randomUsername, password: ObfuscatedConstants.password, protonPlanName: "free")
-           
+
         mainRobot
            .showPaymentsUI()
            .verify.newUserSubscriptionUIScreenIsShown()

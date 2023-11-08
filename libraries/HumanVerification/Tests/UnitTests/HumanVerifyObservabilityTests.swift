@@ -43,7 +43,7 @@ final class HumanVerifyObservabilityTests: XCTestCase {
     var observabilityService: ObservabilityServiceMock!
     var dohMock: DohInterfaceMock!
     private var wkNavigation: WKNavigationMock!
-    
+
     override func setUp() {
         super.setUp()
         setUpMock()
@@ -54,7 +54,7 @@ final class HumanVerifyObservabilityTests: XCTestCase {
         )
         sut.viewModel = .init(api: apiService, startToken: "", methods: nil, clientApp: .drive)
     }
-    
+
     private func setUpMock() {
         wkNavigation = WKNavigationMock()
         observabilityService = ObservabilityServiceMock()
@@ -73,49 +73,49 @@ final class HumanVerifyObservabilityTests: XCTestCase {
         apiService.dohInterfaceStub.fixture = dohMock
         apiService.sessionUIDStub.fixture = "ID"
     }
-    
+
     // MARK: - HV Canceled
-    
+
     func test_closeAction_reportsHVCanceled() {
         // Given
         let expectedEvent: ObservabilityEvent = .humanVerificationOutcomeTotal(status: .canceled)
-        
+
         // When
         sut.closeAction(SenderMock())
-        
+
         // Then
         XCTAssertTrue(observabilityService.reportStub.wasCalledExactlyOnce)
         XCTAssertTrue(observabilityService.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
-    
+
     // MARK: - HV Failed
-    
+
     func test_webViewDidFailProvisionalNavigation_reportsHVFailed() {
         // Given
         let expectedEvent: ObservabilityEvent = .humanVerificationScreenLoadTotal(status: .failed)
         _ = sut.view
-        
+
         // When
         sut.webView(sut.webView, didFailProvisionalNavigation: wkNavigation, withError: AnyError())
-        
+
         // Then
         XCTAssertTrue(observabilityService.reportStub.wasCalledExactlyOnce)
         XCTAssertTrue(observabilityService.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
-    
+
     func test_webViewDidFail_reportsHVFailed() {
         // Given
         let expectedEvent: ObservabilityEvent = .humanVerificationScreenLoadTotal(status: .failed)
         _ = sut.view
-        
+
         // When
         sut.webView(sut.webView, didFail: wkNavigation, withError: AnyError())
-        
+
         // Then
         XCTAssertTrue(observabilityService.reportStub.wasCalledExactlyOnce)
         XCTAssertTrue(observabilityService.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
-    
+
     func test_userContentController_loaded_reportsHVSuccessfullyLoaded() {
         // Given
         let expectedEvent: ObservabilityEvent = .humanVerificationScreenLoadTotal(status: .successful)
@@ -123,15 +123,15 @@ final class HumanVerifyObservabilityTests: XCTestCase {
             {"type": "LOADED"}
         """
         _ = sut.view
-        
+
         // When
         sut.userContentController(WKUserContentController(), didReceive: WKScriptMessageMock(name: "iOS", body: messageBody))
-        
+
         // Then
         XCTAssertTrue(observabilityService.reportStub.wasCalledExactlyOnce)
         XCTAssertTrue(observabilityService.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
-    
+
     func test_userContentController_humanVerificationSuccess_reportsHVOutcomeSuccessful() {
         // Given
         let expectedEvent: ObservabilityEvent = .humanVerificationOutcomeTotal(status: .successful)
@@ -148,15 +148,15 @@ final class HumanVerifyObservabilityTests: XCTestCase {
             completion(true, nil, {})
         }
         _ = sut.view
-        
+
         // When
         sut.userContentController(WKUserContentController(), didReceive: WKScriptMessageMock(name: "iOS", body: messageBody))
-        
+
         // Then
         XCTAssertTrue(observabilityService.reportStub.wasCalledExactlyOnce)
         XCTAssertTrue(observabilityService.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
-    
+
     func test_userContentController_close_reportsHVOutcomeFailed() {
         // Given
         let expectedEvent: ObservabilityEvent = .humanVerificationOutcomeTotal(status: .failed)
@@ -165,15 +165,15 @@ final class HumanVerifyObservabilityTests: XCTestCase {
         """
         sut.dispatchQueue = .immediateExecutor
         _ = sut.view
-        
+
         // When
         sut.userContentController(WKUserContentController(), didReceive: WKScriptMessageMock(name: "iOS", body: messageBody))
-        
+
         // Then
         XCTAssertTrue(observabilityService.reportStub.wasCalledExactlyOnce)
         XCTAssertTrue(observabilityService.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
-    
+
     func test_userContentController_error_reportsHVOutcomeFailed() {
         // Given
         let expectedEvent: ObservabilityEvent = .humanVerificationOutcomeTotal(status: .failed)
@@ -187,15 +187,15 @@ final class HumanVerifyObservabilityTests: XCTestCase {
         """
         sut.dispatchQueue = .immediateExecutor
         _ = sut.view
-        
+
         // When
         sut.userContentController(WKUserContentController(), didReceive: WKScriptMessageMock(name: "iOS", body: messageBody))
-        
+
         // Then
         XCTAssertTrue(observabilityService.reportStub.wasCalledExactlyOnce)
         XCTAssertTrue(observabilityService.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
-    
+
     func test_userContentController_humanVerificationAddressAlreadyTaken_doesReportsHVOutcomeFailed() {
         // Given
         let messageBody = """
@@ -212,14 +212,14 @@ final class HumanVerifyObservabilityTests: XCTestCase {
             completion(false, ResponseError(httpCode: nil, responseCode: 2001, userFacingMessage: nil, underlyingError: nil), {})
         }
         _ = sut.view
-        
+
         // When
         sut.userContentController(WKUserContentController(), didReceive: WKScriptMessageMock(name: "iOS", body: messageBody))
-        
+
         // Then
         XCTAssertTrue(observabilityService.reportStub.wasCalled)
     }
-    
+
     func test_userContentController_invalidVerificationCode_doesReportsHVOutcomeFailed() {
         // Given
         let messageBody = """
@@ -236,10 +236,10 @@ final class HumanVerifyObservabilityTests: XCTestCase {
             completion(false, ResponseError(httpCode: nil, responseCode: 12087, userFacingMessage: nil, underlyingError: nil), {})
         }
         _ = sut.view
-        
+
         // When
         sut.userContentController(WKUserContentController(), didReceive: WKScriptMessageMock(name: "iOS", body: messageBody))
-        
+
         // Then
         XCTAssertTrue(observabilityService.reportStub.wasCalled)
     }

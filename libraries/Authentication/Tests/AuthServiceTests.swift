@@ -36,7 +36,7 @@ class AuthServiceTests: XCTestCase {
     var sut: AuthService!
     var api: APIServiceMock!
     var observabilityServiceMock: ObservabilityServiceMock!
-    
+
     override func setUp() {
         super.setUp()
         api = .init()
@@ -45,7 +45,7 @@ class AuthServiceTests: XCTestCase {
         observabilityServiceMock = ObservabilityServiceMock()
         ObservabilityEnv.current.observabilityService = observabilityServiceMock
     }
-    
+
     func test_ssoAuthentication_success_tracksSuccess() {
         // Given
         let expectation = XCTestExpectation()
@@ -55,17 +55,17 @@ class AuthServiceTests: XCTestCase {
         api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(authRouteResponse))
         }
-        
+
         // When
         sut.ssoAuthentication(ssoResponseToken: ssoResponseToken) { _ in
             XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
             expectation.fulfill()
         }
-        
+
         // Then
         wait(for: [expectation], timeout: 0.1)
     }
-    
+
     func test_ssoAuthentication_fails_tracksFailure() {
         // Given
         let expectation = XCTestExpectation()
@@ -74,27 +74,27 @@ class AuthServiceTests: XCTestCase {
         api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .failure(ResponseError(httpCode: 500, responseCode: 123, userFacingMessage: "error", underlyingError: nil) as NSError))
         }
-        
+
         // When
         sut.ssoAuthentication(ssoResponseToken: ssoResponseToken) { _ in
             XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
             expectation.fulfill()
         }
-        
+
         // Then
         wait(for: [expectation], timeout: 0.1)
     }
-    
+
     func test_ssoAuthentication_success() {
         // Given
         let expectation = XCTestExpectation(description: "success expected")
         let ssoResponseToken = SSOResponseToken(token: "token", uid: "uid")
         let authRouteResponse = AuthService.AuthRouteResponse(accessToken: "", tokenType: "", refreshToken: "", scopes: .empty, UID: "", userID: "", eventID: "", serverProof: "", passwordMode: .one, _2FA: .init(enabled: .off))
-        
+
         api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(authRouteResponse))
         }
-        
+
         // When
         sut.ssoAuthentication(ssoResponseToken: ssoResponseToken) { response in
             switch response {
@@ -105,10 +105,10 @@ class AuthServiceTests: XCTestCase {
             }
             expectation.fulfill()
         }
-        
+
         wait(for: [expectation], timeout: 0.1)
     }
-    
+
     func test_ssoAuthentication_fails() {
         // Given
         let expectation = XCTestExpectation(description: "failure expected")
@@ -116,7 +116,7 @@ class AuthServiceTests: XCTestCase {
         api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .failure(.badResponse()))
         }
-        
+
         // When
         sut.ssoAuthentication(ssoResponseToken: ssoResponseToken) { response in
             switch response {
@@ -127,10 +127,10 @@ class AuthServiceTests: XCTestCase {
             }
             expectation.fulfill()
         }
-        
+
         wait(for: [expectation], timeout: 0.1)
     }
-    
+
     func test_info_withAutoIntent_trackSuccessful() {
         withFeatureSwitches([.ssoSignIn]) {
             // Given
@@ -143,17 +143,17 @@ class AuthServiceTests: XCTestCase {
             api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
                 completion(nil, .failure(BadPerformError()))
             }
-            
+
             // When
             sut.info(username: username, intent: .auto) { response in
                 XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
                 expectation.fulfill()
             }
-            
+
             wait(for: [expectation], timeout: 0.1)
         }
     }
-    
+
     func test_info_withSSOIntent_trackSuccessful() {
         withFeatureSwitches([.ssoSignIn]) {
             // Given
@@ -167,17 +167,17 @@ class AuthServiceTests: XCTestCase {
             api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
                 completion(nil, .failure(BadPerformError()))
             }
-            
+
             // When
             sut.info(username: username, intent: .sso) { response in
                 XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
                 expectation.fulfill()
             }
-            
+
             wait(for: [expectation], timeout: 0.1)
         }
     }
-    
+
     func test_info_withSSOIntent_trackFails() {
         withFeatureSwitches([.ssoSignIn]) {
             // Given
@@ -190,17 +190,17 @@ class AuthServiceTests: XCTestCase {
             api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
                 completion(nil, .failure(BadPerformError()))
             }
-            
+
             // When
             sut.info(username: username, intent: .sso) { response in
                 XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
                 expectation.fulfill()
             }
-            
+
             wait(for: [expectation], timeout: 0.1)
         }
     }
-    
+
     func test_info_withSSOIntent() {
         withFeatureSwitches([.ssoSignIn]) {
             // Given
@@ -213,7 +213,7 @@ class AuthServiceTests: XCTestCase {
             api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
                 completion(nil, .failure(BadPerformError()))
             }
-            
+
             // When
             sut.info(username: username, intent: .sso) { response in
                 switch response {
@@ -224,11 +224,11 @@ class AuthServiceTests: XCTestCase {
                 }
                 expectation.fulfill()
             }
-            
+
             wait(for: [expectation], timeout: 0.1)
         }
     }
-    
+
     func test_info_withProtonIntent() {
         withFeatureSwitches([.ssoSignIn]) {
             // Given
@@ -238,7 +238,7 @@ class AuthServiceTests: XCTestCase {
             api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
                 completion(nil, .success(response))
             }
-            
+
             // When
             sut.info(username: username, intent: .proton) { response in
                 switch response {
@@ -253,11 +253,11 @@ class AuthServiceTests: XCTestCase {
                 }
                 expectation.fulfill()
             }
-            
+
             wait(for: [expectation], timeout: 0.1)
         }
     }
-    
+
     func test_info_withAutoIntent_ssoExpected() {
         withFeatureSwitches([.ssoSignIn]) {
             // Given
@@ -268,7 +268,7 @@ class AuthServiceTests: XCTestCase {
             api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
                 completion(nil, .failure(BadPerformError()))
             }
-            
+
             // When
             sut.info(username: "username", intent: .auto) { response in
                 switch response {
@@ -279,11 +279,11 @@ class AuthServiceTests: XCTestCase {
                 }
                 expectation.fulfill()
             }
-            
+
             wait(for: [expectation], timeout: 0.1)
         }
     }
-    
+
     func test_info_withAutoIntent_AuthInfoExpected() {
         withFeatureSwitches([.ssoSignIn]) {
             // Given
@@ -302,7 +302,7 @@ class AuthServiceTests: XCTestCase {
             api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
                 completion(nil, .failure(BadPerformError()))
             }
-            
+
             // When
             sut.info(username: "username", intent: .auto) { response in
                 switch response {
@@ -317,11 +317,11 @@ class AuthServiceTests: XCTestCase {
                 }
                 expectation.fulfill()
             }
-            
+
             wait(for: [expectation], timeout: 0.1)
         }
     }
-    
+
     func test_info_withAutoIntent_badJSONExpectsError() {
         withFeatureSwitches([.ssoSignIn]) {
             // Given
@@ -332,7 +332,7 @@ class AuthServiceTests: XCTestCase {
             api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
                 completion(nil, .failure(BadPerformError()))
             }
-            
+
             // When
             sut.info(username: "username", intent: .auto) { response in
                 switch response {
@@ -343,11 +343,11 @@ class AuthServiceTests: XCTestCase {
                 }
                 expectation.fulfill()
             }
-            
+
             wait(for: [expectation], timeout: 0.1)
         }
     }
-    
+
     func test_info_withoutIntent() {
         // Given
         let expectation = XCTestExpectation(description: "success with authInfo response expected")
@@ -355,7 +355,7 @@ class AuthServiceTests: XCTestCase {
         api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(AuthInfoResponse()))
         }
-        
+
         // When
         sut.info(username: username, intent: nil) { response in
             switch response {
@@ -366,10 +366,10 @@ class AuthServiceTests: XCTestCase {
             }
             expectation.fulfill()
         }
-        
+
         wait(for: [expectation], timeout: 0.1)
     }
-    
+
     private class BadPerformError: NSError {
         override var localizedDescription: String {
             "JSON Decodable request expected"

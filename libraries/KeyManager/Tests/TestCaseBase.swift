@@ -41,7 +41,7 @@ class TestCaseBase: XCTestCase {
         let content = try! String.init(contentsOf: url)
         return content.trimmingCharacters(in: .newlines)
     }
-    
+
     override func setUp() {
         super.setUp()
         injectDefaultCryptoImplementation()
@@ -51,5 +51,5 @@ class TestCaseBase: XCTestCase {
         self.testBundle = Bundle(for: type(of: self))
         #endif
     }
-    
+
 }

@@ -46,11 +46,11 @@ import XCTest
 class ClockTests: XCTestCase {
 
     func testClock() throws {
-        
+
         let time = try Clock.deviceUptime()
-        
+
         XCTAssertTrue(time.tv_nsec != 0)
-        
+
     }
 
 }

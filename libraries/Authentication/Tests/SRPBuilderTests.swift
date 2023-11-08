@@ -28,19 +28,19 @@ import ProtonCoreServices
 final class SRPBuilderTests: XCTestCase {
     var sut: SRPBuilder!
     var srpAuth: SrpAuthMock!
-    
+
     override func setUp() {
         super.setUp()
         srpAuth = SrpAuthMock()
         sut = SRPBuilder()
     }
-    
+
     func test_buildSRP() throws {
         // Given
         let clientProof = Data(count: 1)
         let clientEphemeral = Data(count: 2)
         let expectedServerProof = Data(base64Encoded: AuthenticatorTests.exampleServerProof)
-        
+
         var srpProofs: SrpProofsMock {
             let srpProofs = SrpProofsMock()
             srpProofs.clientProof = clientProof
@@ -48,11 +48,11 @@ final class SRPBuilderTests: XCTestCase {
             srpProofs.expectedServerProof = expectedServerProof
             return srpProofs
         }
-        
+
         srpAuth.generateProofsStub.bodyIs { _, _  in
             return srpProofs
         }
-        
+
         let authInfo = AuthInfoResponse(
             modulus: "modulus",
             serverEphemeral: "serverEphemeral",
@@ -60,10 +60,10 @@ final class SRPBuilderTests: XCTestCase {
             salt: "0cNmaaFTYxDdFA==",
             srpSession: "b7953c6a26d97a8f7a673afb79e6e9ce"
         )
-        
+
         // When
         let srpBuildResult = try sut.buildSRP(username: "username", password: "oiejf0294nriu", authInfo: authInfo, srpAuth: srpAuth)
-        
+
         // Then
         switch srpBuildResult {
         case .failure:

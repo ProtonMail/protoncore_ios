@@ -21,14 +21,14 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
     lazy var quarkCommands = QuarkCommands(doh: doh)
     let mainRobot = LoginSampleAppRobot()
     let completeRobot = CompleteRobot()
-    
+
     let emailVerificationCode = ObfuscatedConstants.emailVerificationCode
-    
+
     let password = ObfuscatedConstants.password
     let paymentPassword = ObfuscatedConstants.sandboxPaymentAccountPassword
     let existingEmail = "\(ObfuscatedConstants.externalUserUsername)@me.com"
     let existingEmailPassword = ObfuscatedConstants.externalUserPassword
-    
+
     override func setUp() {
         super.setUp()
         mainRobot
@@ -37,7 +37,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
     }
 
     /// Free internal account creation
-    
+
     func testSignupNewIntAccountWithFreeHV3PlanSuccess() {
         mainRobot
             .showSignup()
@@ -60,7 +60,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .startUsingAppTap(robot: LoginSampleAppRobot.self)
             .logoutButtonTap()
     }
-    
+
     func testSignupNewIntFreePlanWithAppInBackground() {
         mainRobot
             .showSignup()
@@ -85,11 +85,11 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .startUsingAppTap(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testSignupNewIntFreePlanAndAppTermination() {
         let name = randomName
         let password = password
-        
+
         mainRobot
             .showSignup()
             .verify.signupScreenIsShown()
@@ -117,9 +117,9 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .signIn(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     /// Plus plan internal account creation
-    
+
     func testSignupNewIntAccountWithPlusPlanSuccess() {
         mainRobot
             .showSignup()
@@ -142,7 +142,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .startUsingAppTap(robot: LoginSampleAppRobot.self)
             .logoutButtonTap()
     }
-    
+
     func testSignupNewIntAccountWithPlusPlanSuccessAppInBackground() {
         mainRobot
             .showSignup()
@@ -167,7 +167,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .activateApp(app: app, robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     /// Free external account creation
 
     func testSignupNewExtAccountWithFreePlanSuccess() {
@@ -193,7 +193,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .startUsingAppTap(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testSignupWithExtAccountFreePlanWithAppInBackground() {
         mainRobot
             .showSignup()
@@ -219,9 +219,9 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
             .startUsingAppTap(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     /// Plus plan external account creation
-    
+
     func testSignupNewExtAccountWithPlusPlanSuccess() {
         mainRobot
             .showSignup()
@@ -272,7 +272,7 @@ class LoginSignupPlanSelectorTests: LoginBaseTestCase {
 }
 
 extension LoginSignupPlanSelectorTests {
-    
+
     /// Free external account creation with HV v3
     func testSignupNewExtAccountWithFreeHV3PlanSuccess() {
         mainRobot
@@ -297,7 +297,7 @@ extension LoginSignupPlanSelectorTests {
             .startUsingAppTap(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testSignupNewExtAccountWithFreeHV3PlanResendEmailSuccess() {
         let email = randomEmail
         mainRobot
@@ -326,7 +326,7 @@ extension LoginSignupPlanSelectorTests {
             .startUsingAppTap(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testSignupNewExtAccountWithPlusHV3PlanSuccess() {
         mainRobot
             .changeEnvironmentToFosseyBlack()
@@ -351,7 +351,7 @@ extension LoginSignupPlanSelectorTests {
             .startUsingAppTap(robot: LoginSampleAppRobot.self)
             .verify.buttonLogoutVisible()
     }
-    
+
     func testSignupExistingExtAccountHV3() {
         mainRobot
             .changeEnvironmentToFosseyBlack()
@@ -370,7 +370,7 @@ extension LoginSignupPlanSelectorTests {
             .signInButtonTapAfterEmailError(to: CreateProtonmailRobot.self)
             .createPMAddressIsShown()
     }
-    
+
     func testSignupNewExtAccountEditEmailHV3() {
         mainRobot
             .changeEnvironmentToFosseyBlack()

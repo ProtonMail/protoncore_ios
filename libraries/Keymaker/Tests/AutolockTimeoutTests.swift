@@ -24,43 +24,43 @@ import XCTest
 @testable import ProtonCoreKeymaker
 
 class AutolockTimeoutTests: XCTestCase {
-    
+
     func testInitial() throws {
         let testOne = AutolockTimeout(rawValue: -10000)
         XCTAssertTrue(testOne == .never)
         XCTAssertFalse(testOne == .always)
         XCTAssertFalse(testOne == .minutes(2929))
-        
+
         let testTwo = AutolockTimeout(rawValue: -1)
         XCTAssertTrue(testTwo == .never)
         XCTAssertFalse(testTwo == .always)
         XCTAssertFalse(testTwo == .minutes(2929))
-        
+
         let testThree = AutolockTimeout(rawValue: 0)
         XCTAssertTrue(testThree == .always)
         XCTAssertFalse(testThree == .never)
         XCTAssertFalse(testThree == .minutes(2929))
-        
+
         let testFour = AutolockTimeout(rawValue: 1)
         XCTAssertTrue(testFour == .minutes(1))
         XCTAssertFalse(testFour == .always)
         XCTAssertFalse(testFour == .never)
         XCTAssertFalse(testFour == .minutes(2929))
-        
+
         let testFive = AutolockTimeout(rawValue: 100)
         XCTAssertTrue(testFive == .minutes(100))
         XCTAssertFalse(testFive == .never)
         XCTAssertFalse(testFive == .always)
         XCTAssertFalse(testFive == .minutes(2929))
     }
-    
+
     func testValues() throws {
         let testOne: AutolockTimeout = .never
         let testTwo: AutolockTimeout = .always
         let testThree: AutolockTimeout = .minutes(100)
         let testFour: AutolockTimeout = AutolockTimeout(rawValue: -1000)
         let testFive: AutolockTimeout = .minutes(1)
-        
+
         XCTAssertTrue(testOne.rawValue == -1)
         XCTAssertTrue(testTwo.rawValue == 0)
         XCTAssertTrue(testThree.rawValue == 100)

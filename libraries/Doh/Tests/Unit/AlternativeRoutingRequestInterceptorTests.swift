@@ -41,21 +41,21 @@ class AlternativeRoutingRequestInterceptorTests: XCTestCase {
         let configuration = WKWebViewConfiguration()
 
         sut.setup(webViewConfiguration: configuration)
-        
+
         XCTAssert(configuration.urlSchemeHandler(forURLScheme: "coreios") is AlternativeRoutingRequestInterceptor)
         XCTAssert(configuration.urlSchemeHandler(forURLScheme: "coreios") is AlternativeRoutingRequestInterceptor)
         XCTAssertEqual(2, AlternativeRoutingRequestInterceptor.schemeMapping.count, "Please update this test to reflect new scheme handlers")
-        
+
     }
-    
+
     func testResponseRewriting() async {
         let url = URL(string: ObfuscatedConstants.testLiveAccountHost + "/lite?action=delete-account")!
         let request = URLRequest(url: url)
         let task = SchemeTaskStub(request: request)
         let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: "1.1", headerFields: responseHeadersWithFontSourceInCSP())!
-        
+
         await sut.transformAndProcessResponse(response, [:], nil, task)
-        
+
         XCTAssertNotNil(task.receivedResponse)
         let processedResponse = task.receivedResponse as! HTTPURLResponse
         XCTAssertNil(processedResponse.url?.absoluteString.range(of: "-api"))
@@ -120,18 +120,18 @@ class AlternativeRoutingRequestInterceptorTests: XCTestCase {
 private class SchemeTaskStub: NSObject, WKURLSchemeTask {
     var request: URLRequest
     var receivedResponse: URLResponse?
-    
+
     init(request: URLRequest) {
         self.request = request
     }
-    
+
     func didReceive(_ response: URLResponse) {
         receivedResponse = response
     }
-    
+
     func didReceive(_ data: Data) {}
-    
+
     func didFinish() {}
-    
+
     func didFailWithError(_ error: Error) {}
 }

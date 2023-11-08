@@ -29,12 +29,12 @@ import ProtonCoreTestingToolkit
 @testable import ProtonCorePayments
 
 final class IAPtoPlanMappingTests: XCTestCase {
-    
+
     var paymentsApi: PaymentsApiMock!
     var apiService: APIServiceMock!
     var paymentsAlertMock: PaymentsAlertManager!
     var servicePlanDataStorageMock: ServicePlanDataStorageMock!
-    
+
     override func setUp() {
         super.setUp()
         paymentsApi = PaymentsApiMock()
@@ -50,7 +50,7 @@ final class IAPtoPlanMappingTests: XCTestCase {
         XCTAssertNil(iap.offer)
         XCTAssertEqual(iap.period, "12")
     }
-    
+
     func testIAPPlanIsParsedFromIAPIdentifier_Failure() throws {
         // plan name missing
         XCTAssertNil(InAppPurchasePlan(storeKitProductId: "ioscore_12_usd_non_renewing"))
@@ -72,7 +72,7 @@ final class IAPtoPlanMappingTests: XCTestCase {
         XCTAssertNil(InAppPurchasePlan(storeKitProductId: "isocore_core2023_12_non_renewing"))
         XCTAssertNil(InAppPurchasePlan(storeKitProductId: "isocore_core2023_12__non_renewing"))
     }
-    
+
     func testIAPOfferIsParsedFromIAPIdentifier_Success() throws {
         let iap = try XCTUnwrap(InAppPurchasePlan(storeKitProductId: "ioscore_core2023_testpromo_12_usd_non_renewing"))
         XCTAssertNotNil(iap.storeKitProductId, "ioscore_core2023_12_usd_non_renewing")
@@ -80,41 +80,41 @@ final class IAPtoPlanMappingTests: XCTestCase {
         XCTAssertEqual(iap.offer, "testpromo")
         XCTAssertEqual(iap.period, "12")
     }
-    
+
     func testIAPOfferIsParsedFromIAPIdentifier_Failure() throws {
         let iap1 = try XCTUnwrap(InAppPurchasePlan(storeKitProductId: "ioscore_core2023_12_usd_non_renewing"))
         XCTAssertNil(iap1.offer)
         let iap2 = try XCTUnwrap(InAppPurchasePlan(storeKitProductId: "ioscore_core2023__12_usd_non_renewing"))
         XCTAssertNil(iap2.offer)
     }
-    
+
     func testIAPPlanIsObtainedFromPlanWithoutOfferAndVendors_Success() throws {
         let plan = Plan.dummy.updated(name: "core2023")
         XCTAssertNotNil(InAppPurchasePlan(protonPlan: plan, listOfIAPIdentifiers: ["ioscore_core2023_12_usd_non_renewing"]))
     }
-    
+
     func testIAPPlanIsObtainedFromPlanWithoutOfferAndVendors_Failure() throws {
         let plan = Plan.dummy.updated(name: "notcore2023")
         let iap = try XCTUnwrap(InAppPurchasePlan(protonPlan: plan, listOfIAPIdentifiers: ["ioscore_core2023_12_usd_non_renewing"]))
         XCTAssertNil(iap.storeKitProductId)
     }
-    
+
     func testIAPPlanIsObtainedFromPlanWithOffer_Success() throws {
         let plan = Plan.dummy.updated(name: "core2023", offer: "testpromo")
         XCTAssertNotNil(InAppPurchasePlan(protonPlan: plan, listOfIAPIdentifiers: ["ioscore_core2023_testpromo_12_usd_non_renewing"]))
     }
-    
+
     func testIAPPlanIsObtainedFromPlanWithOffer_Failure() throws {
         let plan = Plan.dummy.updated(name: "core2023", offer: "testpromo")
         let iap = try XCTUnwrap(InAppPurchasePlan(protonPlan: plan, listOfIAPIdentifiers: ["ioscore_core2023_12_usd_non_renewing"]))
         XCTAssertNil(iap.storeKitProductId)
     }
-    
+
     func testIAPPlanIsObtainedFromPlanWithVendors_Success() throws {
         let plan = Plan.dummy.updated(name: "core2023", vendors: .init(apple: .init(plans: ["12": "ioscore_core2023_12_usd_non_renewing"])))
         XCTAssertNotNil(InAppPurchasePlan(protonPlan: plan, listOfIAPIdentifiers: ["ioscore_core2023_12_usd_non_renewing"]))
     }
-    
+
     func testIAPPlanIsObtainedFromPlanWithVendors_Failure() throws {
         // wrong cycle
         let plan1 = Plan.dummy.updated(name: "core2023", vendors: .init(apple: .init(plans: ["1": "ioscore_core2023_12_usd_non_renewing"])))
@@ -123,7 +123,7 @@ final class IAPtoPlanMappingTests: XCTestCase {
         let plan2 = Plan.dummy.updated(name: "core2023", vendors: .init(apple: .init(plans: ["12": "ioscore_notcore2023_12_usd_non_renewing"])))
         XCTAssertNil(InAppPurchasePlan(protonPlan: plan2, listOfIAPIdentifiers: ["ioscore_core2023_12_usd_non_renewing"]))
     }
-    
+
     func testServicePlanProvidesPlanDetailsCorrespondingToIAP_FindingByName_Success() throws {
         let out = ServicePlanDataService(inAppPurchaseIdentifiers: { [] },
                                          paymentsApi: paymentsApi,
@@ -138,7 +138,7 @@ final class IAPtoPlanMappingTests: XCTestCase {
         let plan = try XCTUnwrap(out.detailsOfPlanCorrespondingToIAP(iap))
         XCTAssertTrue(plan.ID == "test regular plan")
     }
-    
+
     func testServicePlanProvidesPlanDetailsCorrespondingToIAP_FindingByName_Failure() throws {
         let out = ServicePlanDataService(inAppPurchaseIdentifiers: { [] },
                                          paymentsApi: paymentsApi,
@@ -152,12 +152,12 @@ final class IAPtoPlanMappingTests: XCTestCase {
         // wrong plan name
         let iap1 = try XCTUnwrap(InAppPurchasePlan(storeKitProductId: "ioscore_noncore2023_12_usd_non_renewing"))
         XCTAssertNil(out.detailsOfPlanCorrespondingToIAP(iap1))
-        
+
         // wrong promo name
         let iap2 = try XCTUnwrap(InAppPurchasePlan(storeKitProductId: "ioscore_core2023_someotherpromo_12_usd_non_renewing"))
         XCTAssertNil(out.detailsOfPlanCorrespondingToIAP(iap2))
     }
-    
+
     func testServicePlanProvidesPlanDetailsCorrespondingToIAP_FindingByNameAndOffer_Success() throws {
         let out = ServicePlanDataService(inAppPurchaseIdentifiers: { [] },
                                          paymentsApi: paymentsApi,
@@ -172,7 +172,7 @@ final class IAPtoPlanMappingTests: XCTestCase {
         let plan = try XCTUnwrap(out.detailsOfPlanCorrespondingToIAP(iap))
         XCTAssertTrue(plan.ID == "test promo plan")
     }
-    
+
     func testServicePlanProvidesPlanDetailsCorrespondingToIAP_FindingByNameAndOffer_Failure() throws {
         let out = ServicePlanDataService(inAppPurchaseIdentifiers: { [] },
                                          paymentsApi: paymentsApi,
@@ -186,19 +186,19 @@ final class IAPtoPlanMappingTests: XCTestCase {
         // wrong plan name
         let iap1 = try XCTUnwrap(InAppPurchasePlan(storeKitProductId: "ioscore_noncore2023_testpromo_12_usd_non_renewing"))
         XCTAssertNil(out.detailsOfPlanCorrespondingToIAP(iap1))
-        
+
         // wrong promo name
         let iap2 = try XCTUnwrap(InAppPurchasePlan(storeKitProductId: "ioscore_core2023_someotherpromo_12_usd_non_renewing"))
         XCTAssertNil(out.detailsOfPlanCorrespondingToIAP(iap2))
     }
-    
+
     func testServicePlanProvidesPlanDetailsCorrespondingToIAP_FindingByVendors_Success() throws {
         let out = ServicePlanDataService(inAppPurchaseIdentifiers: { [] },
                                          paymentsApi: paymentsApi,
                                          apiService: apiService,
                                          localStorage: servicePlanDataStorageMock,
                                          paymentsAlertManager: paymentsAlertMock)
-        
+
         // all data match
         out.availablePlansDetails = [
             Plan.dummy.updated(name: "core2023", iD: "test regular plan"),
@@ -208,7 +208,7 @@ final class IAPtoPlanMappingTests: XCTestCase {
         let iap1 = try XCTUnwrap(InAppPurchasePlan(storeKitProductId: "ioscore_core2023_testpromo_12_usd_non_renewing"))
         let plan1 = try XCTUnwrap(out.detailsOfPlanCorrespondingToIAP(iap1))
         XCTAssertTrue(plan1.ID == "test promo plan")
-        
+
         // plan name can differ from name in IAP identifier
         out.availablePlansDetails = [
             Plan.dummy.updated(name: "noncore2023", iD: "test regular plan"),
@@ -219,14 +219,14 @@ final class IAPtoPlanMappingTests: XCTestCase {
         let plan2 = try XCTUnwrap(out.detailsOfPlanCorrespondingToIAP(iap2))
         XCTAssertTrue(plan2.ID == "test promo plan")
     }
-    
+
     func testServicePlanProvidesPlanDetailsCorrespondingToIAP_FindingByVendors_Failure() throws {
         let out = ServicePlanDataService(inAppPurchaseIdentifiers: { [] },
                                          paymentsApi: paymentsApi,
                                          apiService: apiService,
                                          localStorage: servicePlanDataStorageMock,
                                          paymentsAlertManager: paymentsAlertMock)
-        
+
         // wrong period
         out.availablePlansDetails = [
             Plan.dummy.updated(name: "core2023", iD: "test regular plan"),
@@ -235,7 +235,7 @@ final class IAPtoPlanMappingTests: XCTestCase {
         ]
         let iap1 = try XCTUnwrap(InAppPurchasePlan(storeKitProductId: "ioscore_core2023_testpromo_12_usd_non_renewing"))
         XCTAssertNil(out.detailsOfPlanCorrespondingToIAP(iap1))
-        
+
         // wrong IAP identifier
         out.availablePlansDetails = [
             Plan.dummy.updated(name: "core2023", iD: "test regular plan"),
@@ -245,5 +245,5 @@ final class IAPtoPlanMappingTests: XCTestCase {
         let iap2 = try XCTUnwrap(InAppPurchasePlan(storeKitProductId: "ioscore_core2023_testpromo_12_usd_non_renewing"))
         XCTAssertNil(out.detailsOfPlanCorrespondingToIAP(iap2))
     }
-    
+
 }

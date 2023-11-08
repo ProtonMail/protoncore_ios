@@ -25,12 +25,12 @@ import XCTest
 
 final class AvailablePlansResponseTests: XCTestCase {
     var sut: AvailablePlansResponse!
-    
+
     override func setUp() {
         super.setUp()
         sut = .init()
     }
-    
+
     func test_availablePlansResponse() {
         XCTAssertTrue(sut.ParseResponse(availablePlansResponse))
         XCTAssertEqual(sut.availablePlans, availablePlansToCompare)

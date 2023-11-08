@@ -69,7 +69,7 @@ final class UnauthSessionIntegrationTests: IntegrationTestCase {
     }
 
     // MARK: Tests for obtaining session due to backend issuing 401 on unauthenticated call
-    
+
     func testUnauthSessionIsObtainedDueToBackendRequirements() async throws {
         // GIVEN
         let service = PMAPIService.createAPIServiceWithoutSession(environment: environment, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))

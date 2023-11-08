@@ -24,17 +24,17 @@ import ProtonCoreLog
 import ProtonCoreUIFoundations
 
 class UIFoundationsActionBarViewController: UIFoundationsAppearanceStyleViewController {
-    
+
     @IBOutlet var tableView: UITableView!
-    
+
     init() {
         super.init(nibName: "UIFoundationsActionBarViewController", bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "ActionBar"
@@ -45,7 +45,7 @@ class UIFoundationsActionBarViewController: UIFoundationsAppearanceStyleViewCont
         // sample 3
         self.addActionBar_3()
     }
-    
+
     private func addActionBar() {
         var actionbar: PMActionBar!
         let trashItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: ColorProvider.FloatyText) { (_) in
@@ -57,12 +57,12 @@ class UIFoundationsActionBarViewController: UIFoundationsAppearanceStyleViewCont
             PMLog.info("click reply, \(item.userInfo ?? [:])")
             actionbar.dismiss()
         }
-        
+
         let moreItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: ColorProvider.FloatyText) { (_) in
             PMLog.info("click more")
             actionbar.dismiss()
         }
-        
+
         actionbar = PMActionBar(items: [trashItem, labelItem, replyItem, moreItem])
         actionbar.show(at: self)
     }
@@ -78,7 +78,7 @@ class UIFoundationsActionBarViewController: UIFoundationsAppearanceStyleViewCont
         actionbar = PMActionBar(items: [trashItem, labelItem], width: .fit)
         actionbar.show(at: self)
     }
-    
+
     private func addActionBar_3() {
         var actionbar: PMActionBar!
         let text = PMActionBarItem(text: "Attending", alignment: .center, itemColor: ColorProvider.FloatyText, backgroundColor: ColorProvider.FloatyBackground)
@@ -103,11 +103,11 @@ class UIFoundationsActionBarViewController: UIFoundationsAppearanceStyleViewCont
                 })
             })
         }).setShouldSpin()
-        
+
         actionbar = PMActionBar(items: [text, yes, no, maybe])
         actionbar.show(at: self)
     }
-    
+
     private func addActionBar_4() {
         var actionbar: PMActionBar!
         let trashItem = PMActionBarItem(icon: UIImage(named: "trash")!, text: "Move to Inbox", itemColor: ColorProvider.FloatyText, backgroundColor: ColorProvider.FloatyBackground) { (_) in
@@ -120,12 +120,12 @@ class UIFoundationsActionBarViewController: UIFoundationsAppearanceStyleViewCont
             PMLog.info("click reply, \(item.userInfo ?? [:])")
             actionbar.dismiss()
         }
-        
+
         let moreItem = PMActionBarItem(icon: UIImage(named: "trash")!, itemColor: ColorProvider.FloatyText) { (_) in
             PMLog.info("click more")
             actionbar.dismiss()
         }
-        
+
         actionbar = PMActionBar(items: [trashItem, separator, labelItem, replyItem, moreItem])
         actionbar.show(at: self)
     }
@@ -135,7 +135,7 @@ extension UIFoundationsActionBarViewController: UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 30
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "CELL")
         if cell == nil {
@@ -144,7 +144,7 @@ extension UIFoundationsActionBarViewController: UITableViewDelegate, UITableView
         cell!.textLabel?.text = "\(indexPath.row)"
         return cell!
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let row = indexPath.row

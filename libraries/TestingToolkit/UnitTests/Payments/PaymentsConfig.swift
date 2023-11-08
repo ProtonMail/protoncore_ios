@@ -55,7 +55,7 @@ class TestStoreKitManagerDelegate: StoreKitManagerDelegate {
     var _isSignedIn: Bool = true
     var _activeUsername: String?
     var _userId: String?
-    
+
     init (api: APIService, tokenStorage: PaymentTokenStorage, servicePlanDataService: ServicePlanDataServiceProtocol) {
         self.api = api
         self.paymentTokenStorage = tokenStorage
@@ -74,7 +74,7 @@ class TestStoreKitManagerDelegate: StoreKitManagerDelegate {
 class TokenStorage: PaymentTokenStorage {
     public static var `default` = TokenStorage()
     var token: PaymentToken?
-    
+
     func add(_ token: PaymentToken) { self.token = token }
     func get() -> PaymentToken? { return token }
     func clear() { self.token = nil }

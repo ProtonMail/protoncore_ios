@@ -25,16 +25,16 @@ import XCTest
 
 final class UnlockEndpointTests: XCTestCase {
     var sut: UnlockEndpoint!
-    
+
     override func setUp() {
         super.setUp()
         sut = .init()
     }
-    
+
     func test_path() {
         XCTAssertEqual(sut.path, "/users/unlock")
     }
-    
+
     func test_method() {
         XCTAssertEqual(sut.method, .put)
     }

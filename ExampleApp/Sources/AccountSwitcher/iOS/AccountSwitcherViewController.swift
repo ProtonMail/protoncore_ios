@@ -64,7 +64,7 @@ class AccountSwitcherViewController: UIViewController, AccessibleView {
 }
 
 extension AccountSwitcherViewController: AccountSwitchDelegate {
-    
+
     func switchTo(userID: String) {
         PMLog.info("Want to switch to \(userID)")
     }
@@ -89,19 +89,19 @@ extension AccountSwitcherViewController: AccountSwitchDelegate {
         self.list = self.list.filter({ $0.userID != userID })
         viewModel.updateAccountList(list: self.list)
     }
-    
+
     func switcherWillAppear() {
         PMLog.info("switcherWillAppear")
     }
-    
+
     func switcherWillDisappear() {
         PMLog.info("switcherWillDisappear")
     }
-    
+
     func accountManagerWillAppear() {
         PMLog.info("accountManagerWillAppear")
     }
-    
+
     func accountManagerWillDisappear() {
         PMLog.info("accountManagerWillDisappear")
     }

@@ -28,28 +28,28 @@ import XCTest
 final class PMSettingsSectionViewModelTests: XCTestCase {
     private var delegate: TelemetrySettingsDelegateMock!
     private var service: TelemetrySettingsServiceMock!
-    
+
     override func setUp() {
         super.setUp()
         delegate = TelemetrySettingsDelegateMock()
         service = TelemetrySettingsServiceMock()
     }
-    
+
     func test_telemetry_returnsPMSettingsSectionViewModel() {
         let result = PMSettingsSectionViewModel.telemetry(
             delegate: delegate,
             telemetrySettingsService: service
         )
-        
+
         XCTAssertEqual(result.title, "Telemetry")
         XCTAssertEqual(result.rows.count, 1)
         XCTAssertNil(result.footer)
     }
-    
+
     class TelemetrySettingsDelegateMock: TelemetrySettingsDelegate {
         func didSetTelemetry(isEnabled: Bool) {}
     }
-    
+
     class TelemetrySettingsServiceMock: TelemetrySettingsServiceProtocol {
         func setIsTelemetryEnabled(state: Bool) {}
         var isTelemetryEnabled: Bool = false

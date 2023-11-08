@@ -32,7 +32,7 @@ import ProtonCoreUIFoundations
 
 @available(iOS 13, *)
 class AccountSwitcherSnapshotTests: SnapshotTestCase {
-        
+
     func testAccountSwitcherScreen() {
         let list: [AccountSwitcher.AccountData] = [
             .init(userID: "userID_a", name: "", mail: "ooo@pm.me", isSignin: true, unread: 100),
@@ -41,7 +41,7 @@ class AccountSwitcherSnapshotTests: SnapshotTestCase {
             .init(userID: "userID_d", name: "", mail: "user_c@protonmail.com", isSignin: true, unread: 1000),
             .init(userID: "userID_e", name: "😂 a", mail: "user_c@protonmail.com", isSignin: true, unread: 1000)
         ]
-        
+
         let viewController = AccountManagerVC.instance()
         let viewModel = AccountManagerViewModel(accounts: list, uiDelegate: viewController)
         viewController.set(viewModel: viewModel)

@@ -71,12 +71,12 @@ extension LoginServiceTests {
         mock(filename: "AuthInfoInvalidCredentials", title: "Invalid credentials /auth/info mock", path: "/auth/info")
         mock(filename: "AuthExtAccountsNotSupportedError5099", title: "Auth external accounts not supported mock", path: "/auth/v4")
     }
-    
+
     func mockAuthExtAccountsNotSupportedLoginError5098() {
         mock(filename: "AuthInfoInvalidCredentials", title: "Invalid credentials /auth/info mock", path: "/auth/info")
         mock(filename: "AuthExtAccountsNotSupportedError5098", title: "Auth external accounts not supported mock", path: "/auth/v4")
     }
-    
+
     func mockNonExistentUserLogin() {
         mock(filename: "AuthInfoNonExistentUser", title: "Non existent user /auth/info mock", path: "/auth/info")
         mock(filename: "AuthNonExistentUser", title: "Non existent user /auth mock", path: "/auth/v4")
@@ -93,7 +93,7 @@ extension LoginServiceTests {
     func mockSSOUserLogin() {
         mock(filename: "AuthInfoUserWithSSO", title: "sso user /auth/info mock", path: "/auth/info")
     }
-    
+
     func mockOnePasswordWith2FAUserLogin() {
         mock(filename: "AuthInfoOnePasswordUserWith2FA", title: "One password user /auth/info mock", path: "/auth/info")
         mock(filename: "AuthOnePasswordUserWith2FA", title: "One password user /auth mock", path: "/auth/v4")
@@ -122,11 +122,11 @@ extension LoginServiceTests {
     func mockUsernameAccountNotAvailable() {
         mock(filename: "UsersAvailableError", title: "User not available mock", path: "/users/available")
     }
-    
+
     func mockInternalAccountNotAvailable(encodedEmail: String) {
         mock(filename: "UsersAvailableError", title: "User not available mock", path: "/users/available")
     }
-    
+
     func mockInternalAccountError12087() {
         mock(filename: "ValidationTokenCheckError12087", title: "Error 12087 mock", path: "/users/available")
     }
@@ -134,7 +134,7 @@ extension LoginServiceTests {
     func mockEmailNotAvailable() {
         mock(filename: "UsersAvailableError", title: "User not available mock", path: "/users/availableExternal")
     }
-    
+
     func mockExternalUser() {
         mock(filename: "AuthInfoOnePasswordUser", title: "One password user /auth/info mock", path: "/auth/info")
         mock(filename: "AuthOnePasswordUser", title: "One password user /auth mock", path: "/auth/v4")
@@ -146,13 +146,13 @@ extension LoginServiceTests {
     func mockUsernameAccountAvailable() {
         mock(filename: "UsersAvailableOK", title: "User available mock", path: "/users/available")
     }
-    
+
     func mockInternalAccountAvailable(encodedEmail: String) {
         mock(filename: "UsersAvailableOK", title: "User available mock", path: "/users/available", requestValidator: { request in
             request.url!.absoluteString.contains("?ParseDomain=1&Name=\(encodedEmail)")
         })
     }
-    
+
     func mockEmailAvailable() {
         mock(filename: "UsersAvailableOK", title: "User available mock", path: "/users/availableExternal")
     }
@@ -213,7 +213,7 @@ extension LoginServiceTests {
                       requestValidator: @escaping (URLRequest) -> Bool = { _ in true }) {
         // get code stub
         var counter = 0
-        
+
         // params
         let queryParams = params != nil ? containsQueryParams(params!) : { _ in true }
         weak var usersStub = stub(condition: pathEndsWith(path) && queryParams) { request in
@@ -254,7 +254,7 @@ extension LoginServiceTests {
                 guard let serverProof = try? self.server!.verifyProofs(Data(base64Encoded: clientEphemeral), clientProofBytes: Data(base64Encoded: clientProof)) else {
                     return unmodified()
                 }
-                
+
                 json["ServerProof"] = serverProof.base64EncodedString()
                 let response = try! JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.fragmentsAllowed)
                 return HTTPStubsResponse(data: response, statusCode: statusCode, headers: headers)
@@ -265,21 +265,21 @@ extension LoginServiceTests {
                 self.authInfoRequestData = (try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)) as? [String: Any]
                 self.authInfoRequestData?["Modulus"] = ObfuscatedConstants.modulus
                 self.authInfoRequestData?["Salt"] = ObfuscatedConstants.srpAuthSalt
-                
+
                 guard let verifier = Data(base64Encoded: ObfuscatedConstants.srpAuthVerifier), !verifier.isEmpty else {
                     return HTTPStubsResponse(data: data, statusCode: statusCode, headers: headers)
                 }
 
                 let bits = 2048
-                
+
                 self.server = CryptoGo.SrpNewServerFromSigned(ObfuscatedConstants.modulus, verifier, bits, nil)!
                 let challenge = try! self.server!.generateChallenge() // this is the serverEphemeral
-                
+
                 self.authInfoRequestData?["Modulus"] = ObfuscatedConstants.modulus
                 self.authInfoRequestData?["ServerEphemeral"] = challenge.base64EncodedString()
-                
+
                 let response = try! JSONSerialization.data(withJSONObject: self.authInfoRequestData!, options: JSONSerialization.WritingOptions.fragmentsAllowed)
-                
+
                 return HTTPStubsResponse(data: response, statusCode: statusCode, headers: headers)
             }
 

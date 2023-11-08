@@ -39,7 +39,7 @@ protocol HumanVerifyViewControllerDelegate: AnyObject {
 }
 
 final class HumanVerifyViewController: NSViewController {
-    
+
     // MARK: Outlets
 
     var webView: WKWebView!
@@ -51,45 +51,45 @@ final class HumanVerifyViewController: NSViewController {
     @IBOutlet weak var bannerButton: NSButton!
 
     // MARK: Properties
-    
+
     private var appearanceObserver: NSKeyValueObservation?
     let userContentController = WKUserContentController()
     weak var delegate: HumanVerifyViewControllerDelegate?
     var viewModel: HumanVerifyViewModel!
     var viewTitle: String?
     var dispatchQueue: CompletionBlockExecutor = .asyncMainExecutor
-    
+
     // MARK: View controller life cycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupObservers()
         configureUI()
         loadWebContent()
     }
-    
+
     override func viewDidAppear() {
         super.viewDidAppear()
         view.window?.styleMask = [.closable, .titled, .resizable]
         view.window?.minSize = NSSize(width: 400, height: 520)
         view.window?.maxSize = NSSize(width: 800, height: 800)
     }
-    
+
     deinit {
         userContentController.removeAllUserScripts()
         NotificationCenter.default.removeObserver(self)
     }
-    
+
     // MARK: Actions
-    
+
     @IBAction func helpAction(_ sender: Any) {
         delegate?.didShowHelpViewController()
     }
-    
+
     @IBAction func bannerButtonPressed(_ sender: Any) {
         hideBannerView()
     }
-    
+
     // MARK: Private interface
 
     private func configureUI() {
@@ -97,7 +97,7 @@ final class HumanVerifyViewController: NSViewController {
         startActivityIndicator()
         setupWebView()
     }
-    
+
     private func setupWebView() {
         userContentController.add(WeaklyProxingScriptHandler(self), name: viewModel.scriptName)
         let webViewConfiguration = WKWebViewConfiguration()
@@ -112,7 +112,7 @@ final class HumanVerifyViewController: NSViewController {
         webView.uiDelegate = self
         webView.isHidden = true
         view.subviews.insert(webView, at: 0)
-        
+
         webView.translatesAutoresizingMaskIntoConstraints = false
         if #available(macOS 11, *) {
             let layoutGuide = view.safeAreaLayoutGuide
@@ -127,7 +127,7 @@ final class HumanVerifyViewController: NSViewController {
             webView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         }
     }
-    
+
     private var lastLoadingURL: String?
 
     private func loadWebContent() {
@@ -137,17 +137,17 @@ final class HumanVerifyViewController: NSViewController {
         webView.customUserAgent = "ipad"
         webView.load(requestObj)
     }
-    
+
     private func startActivityIndicator() {
         activityIndicator?.startAnimation(self)
         activityIndicator?.isHidden = false
     }
-    
+
     private func stopActivityIndicator() {
         activityIndicator?.stopAnimation(self)
         activityIndicator?.isHidden = true
     }
-    
+
     private func setupObservers() {
         if #available(macOS 10.14, *) {
             appearanceObserver = NSApp.observe(\.effectiveAppearance) { [weak self] _, _ in
@@ -170,7 +170,7 @@ extension HumanVerifyViewController: WKNavigationDelegate {
     }
 
     func webView(_ webview: WKWebView, didFinish nav: WKNavigation!) {
-        
+
         func updateWebViewBackground(_ webView: WKWebView) {
             if let color = ColorProvider.BackgroundNorm.usingColorSpace(.sRGB) {
                 let hexColor = String(format: "#%02lX%02lX%02lX%02lX",
@@ -181,7 +181,7 @@ extension HumanVerifyViewController: WKNavigationDelegate {
                 webView.evaluateJavaScript("document.body.style.background = '\(hexColor)';")
             }
         }
-        
+
         webView.evaluateJavaScript("document.body.style.background = 'none';")
         if #available(macOS 11.0, *) {
             NSApp.effectiveAppearance.performAsCurrentDrawingAppearance {
@@ -199,7 +199,7 @@ extension HumanVerifyViewController: WKNavigationDelegate {
     func webView(_ webview: WKWebView, didCommit nav: WKNavigation!) {
         startActivityIndicator()
     }
-    
+
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         handleFailedRequest(error: error)
     }
@@ -207,7 +207,7 @@ extension HumanVerifyViewController: WKNavigationDelegate {
     func webView(_ webview: WKWebView, didFail _: WKNavigation!, withError error: Error) {
         handleFailedRequest(error: error)
     }
-    
+
     func handleFailedRequest(error: Error) {
         ObservabilityEnv.report(.humanVerificationScreenLoadTotal(status: .failed))
         webView.isHidden = false
@@ -221,7 +221,7 @@ extension HumanVerifyViewController: WKNavigationDelegate {
             }
         }
     }
-    
+
     func webView(_ webView: WKWebView,
                  didReceive challenge: URLAuthenticationChallenge,
                  completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
@@ -283,7 +283,7 @@ extension HumanVerifyViewController: WKScriptMessageHandler {
             }
         }
     }
-    
+
     private func presentNotification(type: NotificationType, message: String) {
         let backgroundColor: NSColor
         let textColor: NSColor
@@ -309,7 +309,7 @@ extension HumanVerifyViewController: WKScriptMessageHandler {
                                                           attributes: [.foregroundColor: textColor])
         showBannerView()
     }
-    
+
     private func showBannerView() {
         NSAnimationContext.runAnimationGroup { [weak self] context in
             context.allowsImplicitAnimation = true
@@ -318,7 +318,7 @@ extension HumanVerifyViewController: WKScriptMessageHandler {
             self?.bannerView.animator().alphaValue = 1
         }
     }
-    
+
     private func hideBannerView() {
         NSAnimationContext.runAnimationGroup { [weak self] context in
             context.allowsImplicitAnimation = true

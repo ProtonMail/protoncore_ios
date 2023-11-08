@@ -35,7 +35,7 @@ import ProtonCoreAuthentication
 @testable import ProtonCoreAPIClient
 
 class ReportAPITests: XCTestCase {
-    
+
     var authenticatorMock: AuthenticatorMock!
     var apiService: APIServiceMock!
     let timeout = 1.0
@@ -43,7 +43,7 @@ class ReportAPITests: XCTestCase {
     private var testBundle: Bundle!
 
     let testCredential = Credential(UID: "testUID", accessToken: "testAccessToken", refreshToken: "testRefreshToken", userName: "testUserName", userID: "testUserID", scopes: ["testScope"])
-    
+
     let bug = ReportBug.init(os: "Mac OS", osVersion: "10.15.7",
                              client: "Web Mail", clientVersion: "iOS_1.12.0",
                              clientType: 1, title: "[V4] [Web Mail] Bug [/archive] Sign up problem",
@@ -55,7 +55,7 @@ class ReportAPITests: XCTestCase {
         let content = try! String.init(contentsOf: url)
         return content
     }
-    
+
     override func setUp() {
         super.setUp()
         authenticatorMock = AuthenticatorMock()
@@ -66,7 +66,7 @@ class ReportAPITests: XCTestCase {
         self.testBundle = Bundle(for: type(of: self))
         #endif
     }
-    
+
     func testUploadAndProgressSuccess() {
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, _, completion  in
             completion(.success(.newCredential(self.testCredential, .one)))
@@ -114,7 +114,7 @@ class ReportAPITests: XCTestCase {
         let result = XCTWaiter.wait(for: [expect1, expect2], timeout: timeout)
         XCTAssertTrue(result == .completed)
     }
-    
+
     func testUploadAndProgressNetworkingError() {
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))

@@ -25,12 +25,12 @@ import ProtonCoreServices
 @testable import ProtonCoreAuthentication
 
 class RefreshEndpointTests: XCTestCase {
-    
+
     let parametersResponseType = "ResponseType"
     let parametersGrantType = "GrantType"
     let parametersRefreshToken = "RefreshToken"
     let parametersRedirect = "RedirectURI"
-    
+
     func testRefreshEndpoint_request() {
         let authCredential = AuthCredential(sessionID: "sessionID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", privateKey: nil, passwordKeySalt: nil)
         let refreshEndpoint = RefreshEndpoint(authCredential: authCredential)

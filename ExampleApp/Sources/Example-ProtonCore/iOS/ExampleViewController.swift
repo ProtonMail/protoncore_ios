@@ -35,9 +35,9 @@ import ProtonCoreObfuscatedConstants
 import Sentry
 
 final class ExampleViewController: UIViewController, AccessibleView {
-    
+
     @IBOutlet var targetLabel: UILabel!
-    
+
     @IBOutlet var accountDeletionButton: UIButton!
     @IBOutlet var accountSwitcherButton: UIButton!
     @IBOutlet var featuresButton: UIButton!
@@ -53,42 +53,42 @@ final class ExampleViewController: UIViewController, AccessibleView {
     @IBOutlet var scenarioPicker: UIPickerView!
     @IBOutlet var scenarioButton: UIButton!
     @IBOutlet var appVersionResetButton: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         ColorProvider.brand = clientApp == .vpn ? .vpn : .proton
 
         /// Move this to Core
         PMAPIService.trustKit = Environment.setUpTrustKit(delegate: self)
         PMAPIService.noTrustKit = true
-        
+
         appVersionTextField.delegate = self
         appVersionTextField.placeholder = appVersionHeader.getDefaultVersion()
         updateAppVersion()
-        
+
         targetLabel.text = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String
         setupAlertControllerAppearance()
         generateAccessibilityIdentifiers()
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         dismissKeyboard()
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if clientApp == .vpn {
             UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
         }
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ColorProvider.brand = clientApp == .vpn ? .vpn : .proton
     }
-    
+
     @IBAction private func alternativeRoutingSetupChanged(_ sender: Any?) {
         dismissKeyboard()
         switch alternativeRoutingSegmentedControl.selectedSegmentIndex {
@@ -116,7 +116,7 @@ final class ExampleViewController: UIViewController, AccessibleView {
         default: return
         }
     }
-    
+
     @IBAction func trustKitSetupChanged(_ sender: UISegmentedControl) {
         dismissKeyboard()
         switch trustKitSegmentedControl.selectedSegmentIndex {
@@ -125,37 +125,37 @@ final class ExampleViewController: UIViewController, AccessibleView {
         default: return
         }
     }
-    
+
     @IBAction func appVersionEditingChanged(_ sender: UITextField) {
         appVersionHeader.setVersion(version: sender.text)
     }
-    
+
     @IBAction func appVersionResetTap(_ sender: UIButton) {
         dismissKeyboard()
         appVersionHeader.resetVersion()
         updateAppVersion()
     }
-    
+
     @IBAction func tapAction(_ sender: UITapGestureRecognizer) {
         dismissKeyboard()
     }
-    
+
     private func dismissKeyboard() {
         _ = appVersionTextField.resignFirstResponder()
     }
-    
+
     private func updateAppVersion() {
         appVersionTextField.text = appVersionHeader.getVersion()
     }
-    
+
     let authManager = AuthHelper()
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? LoginViewController {
             vc.authManager = authManager
         }
     }
-    
+
     private func setupAlertControllerAppearance() {
         let view = UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self])
         view.tintColor = ColorProvider.BrandNorm
@@ -164,7 +164,7 @@ final class ExampleViewController: UIViewController, AccessibleView {
 
 extension ExampleViewController: TrustKitDelegate {
     func onTrustKitValidationError(_ error: TrustKitError) {
-        
+
     }
 }
 
@@ -184,26 +184,26 @@ extension ExampleViewController {
         SentryLog.log(withMessage: message, andLevel: .error)
         fatalError("ExampleViewController.crashWithFatalError")
     }
-    
+
     @IBAction func crashWithAssertion(_ sender: Any) {
         let message = "Crashed with assertion on \(Date()) in \(#function) in \(#file)"
         SentryLog.log(withMessage: message, andLevel: .error)
         assertionFailure("ExampleViewController.crashWithAssertion")
     }
-    
+
     @IBAction func crashWithForceUnwrap(_ sender: Any) {
         let message = "Crashed with force unwrap on \(Date()) in \(#function) in \(#file)"
         SentryLog.log(withMessage: message, andLevel: .error)
         let kaboom: Int? = nil
         _ = kaboom!
     }
-    
+
     @IBAction func crashWithSentryCrash(_ sender: Any) {
         let message = "Crashed with SentrySDK.crash on \(Date()) in \(#function) in \(#file)"
         SentryLog.log(withMessage: message, andLevel: .error)
         SentrySDK.crash()
     }
-    
+
     @IBAction func noCrashJustEvent(_ sender: Any) {
         let message = "Didn't crash, just sent a test event on \(Date()) in \(#function) in \(#file)"
         let event = Event(level: .error)

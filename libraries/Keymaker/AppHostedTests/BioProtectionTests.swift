@@ -25,25 +25,25 @@ import XCTest
 
 #if !targetEnvironment(simulator)
 class BioProtectionTests: XCTestCase {
-    
+
     let keychain = Keychain(service: "ch.protonmail", accessGroup: "2SB5Z68H26.ch.protonmail.PMKeymaker")
     let mainKey = NoneProtection.generateRandomValue(length: 32)
-    
+
     override func setUp() {
         super.setUp()
         let ret = self.keychain.removeEverything()
         XCTAssertTrue(ret)
     }
-    
+
     func testStaticEnum() {
        XCTAssertTrue( BioProtection.keychainLabel == "\(BioProtection.self)")
     }
-    
+
     func testLockUnlock() throws {
         let bioProtechion = BioProtection(keychain: keychain)
         XCTAssertNotNil(bioProtechion)
         try bioProtechion.lock(value: mainKey)
-        
+
         let byte = bioProtechion.getCypherBits()
         XCTAssertNotNil(byte)
         let clear = try bioProtechion.unlock(cypherBits: byte!)

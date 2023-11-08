@@ -24,9 +24,9 @@ import XCTest
 @testable import ProtonCoreDataModel
 
 class AddressExtensionsTests: XCTestCase {
-    
+
     private var interfaceJson: String!
-    
+
     override func setUp() {
         super.setUp()
         self.interfaceJson = """
@@ -98,7 +98,7 @@ class AddressExtensionsTests: XCTestCase {
         ]
         """
     }
-    
+
     func testGetDefaultAddressFound() {
         let json = """
         [
@@ -164,11 +164,11 @@ class AddressExtensionsTests: XCTestCase {
             let found = object.defaultAddress()
             XCTAssertNotNil(found)
             XCTAssertEqual(found!.addressID, "qmhrlFYb8h3JhOOykKv8ZsuTH8X_SrUZSg==")
-            
+
             let foundSend = object.defaultSendAddress()
             XCTAssertNotNil(foundSend)
             XCTAssertEqual(foundSend!.addressID, "qmhrlFYb8h3JhOOykKv8ZsuTH8X_SrUZSg==")
-            
+
             expectation.fulfill()
         } catch let error {
             XCTFail(error.localizedDescription)
@@ -177,7 +177,7 @@ class AddressExtensionsTests: XCTestCase {
             XCTAssertNil(expectationError)
         }
     }
-    
+
     func testGetDefaultAddressNil() {
         let json = """
         [
@@ -238,7 +238,7 @@ class AddressExtensionsTests: XCTestCase {
             XCTAssertNil(expectationError)
         }
     }
-    
+
     func testLookupAddressByID() {
         let expectation = self.expectation(description: "Success completion block called")
         do {
@@ -247,10 +247,10 @@ class AddressExtensionsTests: XCTestCase {
             XCTAssertTrue(objects.count == 4)
             let found = objects.address(byID: "qmhrlFYb8h3JhOOykKv8Zs11uTH8X_SrUZSg==")
             XCTAssertNotNil(found)
-            
+
             let notFound = objects.address(byID: "UZSg==")
             XCTAssertNil(notFound)
-            
+
             expectation.fulfill()
         } catch let error {
             XCTFail(error.localizedDescription)
@@ -259,7 +259,7 @@ class AddressExtensionsTests: XCTestCase {
             XCTAssertNil(expectationError)
         }
     }
-    
+
     func testGetAddressOrder() {
         let expectation = self.expectation(description: "Success completion block called")
         do {
@@ -279,7 +279,7 @@ class AddressExtensionsTests: XCTestCase {
             XCTAssertNil(expectationError)
         }
     }
-    
+
     func testGetOrderInt() {
         let expectation = self.expectation(description: "Success completion block called")
         do {
@@ -296,9 +296,9 @@ class AddressExtensionsTests: XCTestCase {
             XCTAssertNil(expectationError)
         }
     }
-    
+
     func testToKeys() {
-        
+
         let expectation = self.expectation(description: "Success completion block called")
         do {
             let decoder = JSONDecoder.decapitalisingFirstLetter

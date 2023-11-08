@@ -42,7 +42,7 @@ import ProtonCoreDoh
 
 @available(iOS 13.0.0, *)
 final class PMAPIServiceLoggingTests: XCTestCase {
-    
+
     var dohMock: DohMock!
     var doh: DoHInterface!
     var cacheToClearMock: URLCacheMock!
@@ -52,7 +52,7 @@ final class PMAPIServiceLoggingTests: XCTestCase {
     var apiServiceDelegateMock: APIServiceDelegateMock!
     var authDelegateMock: AuthDelegateMock!
     var loggingDelegateMock: APIServiceLoggingDelegateMock!
-    
+
     func testService(challenge: PMChallenge) -> (PMAPIService, ChallengeProperties) {
         let challengeParameterProvider = ChallengeParametersProvider.forAPIService(clientApp: .other(named: "core"), challenge: challenge)
         let service = PMAPIService.createAPIService(doh: doh,
@@ -67,7 +67,7 @@ final class PMAPIServiceLoggingTests: XCTestCase {
                                                       productPrefix: challengeParameterProvider.prefix)
         return (service, challengeProperties)
     }
-    
+
     override func setUp() {
         super.setUp()
         dohMock = DohMock()
@@ -83,86 +83,86 @@ final class PMAPIServiceLoggingTests: XCTestCase {
         authDelegateMock = AuthDelegateMock()
         loggingDelegateMock = APIServiceLoggingDelegateMock()
     }
-    
+
     // MARK: - Access token refresh logging
-    
+
     func testAccessTokenRefreshLogging_NoAuthDelegate() async {
         // GIVEN
         let (service, challengeProperties) = testService(challenge: PMChallenge())
         let rottenCredentials = AuthCredential(Credential.dummy
             .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", scopes: ["full"])
         )
-        
+
         // WHEN
         service.authDelegate = nil
         _ = await withCheckedContinuation { continuation in
             service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
-        
+
         // THEN
         XCTAssertTrue(loggingDelegateMock.accessTokenRefreshDidStartStub.wasCalledExactlyOnce)
         XCTAssertTrue(loggingDelegateMock.accessTokenRefreshDidFailStub.wasCalledExactlyOnce)
         guard case .noAuthDelegate = loggingDelegateMock.accessTokenRefreshDidFailStub.lastArguments?.third
         else { XCTFail(); return }
     }
-    
+
     func testTokenRefreshCallsDoesNotRefreshIfThereAreNoCurrentCredentials() async {
         // GIVEN
         let (service, challengeProperties) = testService(challenge: PMChallenge())
-        
+
         let rottenCredentials = AuthCredential(Credential.dummy
             .updated(UID: "test_session_uid", accessToken: "test access token", refreshToken: "test refresh token", scopes: ["full"])
         )
-        
+
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in nil }
-        
+
         // WHEN
         _ = await withCheckedContinuation { continuation in
             service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
-        
+
         // THEN
         XCTAssertTrue(loggingDelegateMock.accessTokenRefreshDidStartStub.wasCalledExactlyOnce)
         XCTAssertTrue(loggingDelegateMock.accessTokenRefreshDidFailStub.wasCalledExactlyOnce)
         guard case .noAccessTokenToBeRefreshed = loggingDelegateMock.accessTokenRefreshDidFailStub.lastArguments?.third
         else { XCTFail(); return }
     }
-    
+
     func testTokenRefreshDoesNotRefreshIfCurrentCredentialsAreDifferentThan401Credentials() async {
         // GIVEN
         let (service, challengeProperties) = testService(challenge: PMChallenge())
-        
+
         let rottenCredentials = AuthCredential(Credential.dummy
             .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
         )
-        
+
         let currentCredentials = AuthCredential(Credential.dummy
             .updated(UID: "test_session_uid", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
         )
-        
+
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in currentCredentials }
-        
+
         // WHEN
         _ = await withCheckedContinuation { continuation in
             service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
-        
+
         // THEN
         XCTAssertTrue(loggingDelegateMock.accessTokenRefreshDidStartStub.wasCalledExactlyOnce)
         XCTAssertTrue(loggingDelegateMock.accessTokenRefreshDidSucceedStub.wasCalledExactlyOnce)
         guard case .freshAccessTokenAlreadyAvailable = loggingDelegateMock.accessTokenRefreshDidSucceedStub.lastArguments?.third
         else { XCTFail(); return }
     }
-    
+
     func testTokenRefreshCallSuccess() async {
         // GIVEN
         let (service, challengeProperties) = testService(challenge: PMChallenge())
-        
+
         let rottenCredentials = AuthCredential(Credential.dummy
             .updated(UID: "test_session_uid", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
-        
+
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
             SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
@@ -173,12 +173,12 @@ final class PMAPIServiceLoggingTests: XCTestCase {
             let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 200))
             completion(task, .success(response))
         }
-        
+
         // WHEN
         _ = await withCheckedContinuation { continuation in
             service.refreshAuthCredential(credentialsCausing401: rottenCredentials, withoutSupportForUnauthenticatedSessions: false, deviceFingerprints: challengeProperties, completion: continuation.resume(returning:))
         }
-        
+
         // THEN
         XCTAssertTrue(loggingDelegateMock.accessTokenRefreshDidStartStub.wasCalledExactlyOnce)
         XCTAssertTrue(loggingDelegateMock.accessTokenRefreshDidSucceedStub.wasCalledExactlyOnce)
@@ -224,7 +224,7 @@ final class PMAPIServiceLoggingTests: XCTestCase {
     func testTokenRefreshCallWhenHttpError400_AuthenticatedSession() async {
         await ensureLogoutHappensForAuthenticatedSession(for: 400)
     }
-    
+
     private func ensureTokenRefreshForSuccessfulSessionAcquisitionForUnauthenticatedSession(for code: Int) async {
         // GIVEN
         let (service, challengeProperties) = testService(challenge: PMChallenge())

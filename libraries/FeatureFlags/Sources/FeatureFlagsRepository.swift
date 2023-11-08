@@ -69,7 +69,7 @@ public class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol {
 // MARK: - For single user clients
 
 public extension FeatureFlagsRepository {
-    
+
     /**
      Updates the local data source conforming to the `LocalFeatureFlagsProtocol` protocol
      */

@@ -39,12 +39,12 @@ import ProtonCoreAuthentication
 @testable import ProtonCoreAuthenticationKeyGeneration
 
 class HelperHashTests: XCTestCase {
-    
+
     override class func setUp() {
         super.setUp()
         injectDefaultCryptoImplementation()
     }
-    
+
     func testSrpRandomBitsRandom() throws {
         measure {
             for _ in 0 ..< 1000 {
@@ -56,7 +56,7 @@ class HelperHashTests: XCTestCase {
             }
         }
     }
-    
+
     func testCryptoRandom() {
         measure {
             for _ in 0 ..< 1000 {
@@ -68,7 +68,7 @@ class HelperHashTests: XCTestCase {
     func testCryptoBCrypt() throws {
         let testpassword = "this is a test password"
         let randomSalt = try PasswordHash.random(bits: 128)
-        
+
         let byteArray = NSMutableData()
         byteArray.append(randomSalt)
         let source = NSData(data: byteArray as Data) as Data
@@ -80,7 +80,7 @@ class HelperHashTests: XCTestCase {
             }
         }
     }
-    
+
     func testAutoAuthRefreshRaceCondition() throws {
         let testpassword = "this is a test password"
         let randomSalt = try PasswordHash.random(bits: 128)

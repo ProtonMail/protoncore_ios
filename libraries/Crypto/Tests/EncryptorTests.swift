@@ -34,23 +34,23 @@ class EncryptorTests: CryptoTestBase {
             let armoredMessageA: ArmoredMessage = try Encryptor.encrypt(publicKey: ArmoredKey.init(value: pubKey),
                                                                         cleartext: clearText,
                                                                         signerKey: nil)
-            
+
             let armoredMessageB: ArmoredMessage = try Encryptor.encrypt(publicKey: ArmoredKey.init(value: privKey),
                                                                         cleartext: clearText,
                                                                         signerKey: nil)
-            
+
             let decryptionKey = DecryptionKey.init(privateKey: ArmoredKey.init(value: privKey),
                                                    passphrase: Passphrase.init(value: privKeyPassphrase))
             let checkA: String = try Decryptor.decrypt(decryptionKeys: [decryptionKey], encrypted: armoredMessageA)
             let checkB: String = try Decryptor.decrypt(decryptionKeys: [decryptionKey], encrypted: armoredMessageB)
-            
+
             XCTAssertEqual(checkA, checkB)
             XCTAssertEqual(checkB, clearText)
         } catch let error {
             XCTFail("Should not happen: \(error)")
         }
     }
-    
+
     func testEncryptNoSignWithWrongPassword() {
         let failed = expectation(description: "should call completion block")
         let privKey = self.content(of: "user_a_privatekey")
@@ -71,30 +71,30 @@ class EncryptorTests: CryptoTestBase {
         }
         wait(for: [failed], timeout: 1.0)
     }
-    
+
     func testEncryptSign() {
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
         let clearText = "testing encryption & sign"
         let pubKey = privKey.publicKey
-        
+
         let privKeyB = self.content(of: "user_b_privatekey")
         let privKeyPassphraseB = self.content(of: "user_b_privatekey_passphrase")
-        
+
         let signingKey = SigningKey.init(privateKey: ArmoredKey.init(value: privKeyB),
                                          passphrase: Passphrase.init(value: privKeyPassphraseB))
         do {
             let armoredMessage: ArmoredMessage = try Encryptor.encrypt(publicKey: ArmoredKey.init(value: pubKey),
                                                                        cleartext: clearText,
                                                                        signerKey: signingKey)
-            
+
             let decryptionKey = DecryptionKey.init(privateKey: ArmoredKey.init(value: privKey),
                                                    passphrase: Passphrase.init(value: privKeyPassphrase))
-            
+
             let verifyKey = ArmoredKey.init(value: privKeyB.publicKey)
             let verifiedString: VerifiedString = try Decryptor.decryptAndVerify(decryptionKeys: [decryptionKey],
                                                                                 value: armoredMessage, verificationKeys: [verifyKey])
-            
+
             switch verifiedString {
             case .unverified(let value, let error):
                 XCTFail("Should not happen: \(value) : \(error)")
@@ -105,31 +105,31 @@ class EncryptorTests: CryptoTestBase {
             XCTFail("Should not happen: \(error)")
         }
     }
-    
+
     func testEncryptSignWrongVerify() {
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
         let clearText = "testing encryption and sign. verify with a wrong public key"
         let pubKey = privKey.publicKey
-        
+
         let privKeyB = self.content(of: "user_b_privatekey")
         let privKeyPassphraseB = self.content(of: "user_b_privatekey_passphrase")
-        
+
         let signingKey = SigningKey.init(privateKey: ArmoredKey.init(value: privKeyB),
                                          passphrase: Passphrase.init(value: privKeyPassphraseB))
         do {
             let armoredMessage: ArmoredMessage = try Encryptor.encrypt(publicKey: ArmoredKey.init(value: pubKey),
                                                                        cleartext: clearText,
                                                                        signerKey: signingKey)
-            
+
             let decryptionKey = DecryptionKey.init(privateKey: ArmoredKey.init(value: privKey),
                                                    passphrase: Passphrase.init(value: privKeyPassphrase))
-            
+
             let verifyKey = ArmoredKey.init(value: pubKey)
             let verifiedString: VerifiedString = try Decryptor.decryptAndVerify(decryptionKeys: [decryptionKey],
                                                                                 value: armoredMessage,
                                                                                 verificationKeys: [verifyKey])
-            
+
             switch verifiedString {
             case .unverified(let value, let error):
                 XCTAssertEqual(value, clearText)
@@ -141,7 +141,7 @@ class EncryptorTests: CryptoTestBase {
             XCTFail("Should not happen: \(error)")
         }
     }
-    
+
     func testEncryptDataNoSign() {
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
@@ -151,23 +151,23 @@ class EncryptorTests: CryptoTestBase {
             let armoredMessageA: ArmoredMessage = try Encryptor.encrypt(publicKey: ArmoredKey.init(value: pubKey),
                                                                         clearData: clearData,
                                                                         signerKey: nil)
-            
+
             let armoredMessageB: ArmoredMessage = try Encryptor.encrypt(publicKey: ArmoredKey.init(value: privKey),
                                                                         clearData: clearData,
                                                                         signerKey: nil)
-            
+
             let decryptionKey = DecryptionKey.init(privateKey: ArmoredKey.init(value: privKey),
                                                    passphrase: Passphrase.init(value: privKeyPassphrase))
             let checkA: Data = try Decryptor.decrypt(decryptionKeys: [decryptionKey], encrypted: armoredMessageA)
             let checkB: Data = try Decryptor.decrypt(decryptionKeys: [decryptionKey], encrypted: armoredMessageB)
-            
+
             XCTAssertEqual(checkA, checkB)
             XCTAssertEqual(checkB, clearData)
         } catch let error {
             XCTFail("Should not happen: \(error)")
         }
     }
-    
+
     func testEncryptDataNoSignWithWrongPassword() {
         let failed = expectation(description: "should call completion block")
         let privKey = self.content(of: "user_a_privatekey")
@@ -188,26 +188,26 @@ class EncryptorTests: CryptoTestBase {
         }
         wait(for: [failed], timeout: 1.0)
     }
-    
+
     func testEncryptDataSign() {
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
         let clearData = self.random(length: 200)
         let pubKey = privKey.publicKey
-        
+
         let privKeyB = self.content(of: "user_b_privatekey")
         let privKeyPassphraseB = self.content(of: "user_b_privatekey_passphrase")
-        
+
         let signingKey = SigningKey.init(privateKey: ArmoredKey.init(value: privKeyB),
                                          passphrase: Passphrase.init(value: privKeyPassphraseB))
         do {
             let armoredMessage: ArmoredMessage = try Encryptor.encrypt(publicKey: ArmoredKey.init(value: pubKey),
                                                                        clearData: clearData,
                                                                        signerKey: signingKey)
-            
+
             let decryptionKey = DecryptionKey.init(privateKey: ArmoredKey.init(value: privKey),
                                                    passphrase: Passphrase.init(value: privKeyPassphrase))
-            
+
             let verifyKey = ArmoredKey.init(value: privKeyB.publicKey)
             let verifiedData: VerifiedData = try Decryptor.decryptAndVerify(decryptionKeys: [decryptionKey],
                                                                             value: armoredMessage, verificationKeys: [verifyKey])
@@ -221,31 +221,31 @@ class EncryptorTests: CryptoTestBase {
             XCTFail("Should not happen: \(error)")
         }
     }
-    
+
     func testEncryptDataSignWrongVerify() {
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
         let clearData = self.random(length: 200)
         let pubKey = privKey.publicKey
-        
+
         let privKeyB = self.content(of: "user_b_privatekey")
         let privKeyPassphraseB = self.content(of: "user_b_privatekey_passphrase")
-        
+
         let signingKey = SigningKey.init(privateKey: ArmoredKey.init(value: privKeyB),
                                          passphrase: Passphrase.init(value: privKeyPassphraseB))
         do {
             let armoredMessage: ArmoredMessage = try Encryptor.encrypt(publicKey: ArmoredKey.init(value: pubKey),
                                                                        clearData: clearData,
                                                                        signerKey: signingKey)
-            
+
             let decryptionKey = DecryptionKey.init(privateKey: ArmoredKey.init(value: privKey),
                                                    passphrase: Passphrase.init(value: privKeyPassphrase))
-            
+
             let verifyKey = ArmoredKey.init(value: pubKey)
             let verifiedData: VerifiedData = try Decryptor.decryptAndVerify(decryptionKeys: [decryptionKey],
                                                                                 value: armoredMessage,
                                                                                 verificationKeys: [verifyKey])
-            
+
             switch verifiedData {
             case .unverified(let value, let error):
                 XCTAssertEqual(value, clearData)
@@ -257,31 +257,31 @@ class EncryptorTests: CryptoTestBase {
             XCTFail("Should not happen: \(error)")
         }
     }
-    
+
     func testEncryptDataSignSplit() {
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
         let clearData = self.random(length: 200)
         let pubKey = privKey.publicKey
-        
+
         let privKeyB = self.content(of: "user_b_privatekey")
         let privKeyPassphraseB = self.content(of: "user_b_privatekey_passphrase")
-        
+
         let signingKey = SigningKey.init(privateKey: ArmoredKey.init(value: privKeyB),
                                          passphrase: Passphrase.init(value: privKeyPassphraseB))
         do {
             let splitMessage: SplitPacket = try Encryptor.encryptSplit(publicKey: ArmoredKey.init(value: pubKey),
                                                                        clearData: clearData,
                                                                        signerKey: signingKey)
-            
+
             let decryptionKey = DecryptionKey.init(privateKey: ArmoredKey.init(value: privKey),
                                                    passphrase: Passphrase.init(value: privKeyPassphrase))
-            
+
             let verifyKey = ArmoredKey.init(value: privKeyB.publicKey)
             let verifiedString: VerifiedData = try Decryptor.decryptAndVerify(decryptionKeys: [decryptionKey],
                                                                               value: splitMessage,
                                                                               verificationKeys: [verifyKey])
-            
+
             switch verifiedString {
             case .unverified(let value, let error):
                 XCTFail("Should not happen. \(value) : \(error)")
@@ -292,21 +292,21 @@ class EncryptorTests: CryptoTestBase {
             XCTFail("Should not happen: \(error)")
         }
     }
-    
+
     func testEncryptSessionKey() {
         let privKey = self.content(of: "user_a_privatekey")
         let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
         let random = self.random(length: 32)
         let pubKey = privKey.publicKey
         do {
-            
+
             let sessionKeyCheck = SessionKey.init(sessionKey: random, algo: Algorithm.AES256)
             let based64KeyPacket = try Encryptor.encryptSession(publicKey: ArmoredKey.init(value: pubKey),
                                                                 sessionKey: sessionKeyCheck)
-            
+
             let decryptionKey = DecryptionKey.init(privateKey: ArmoredKey.init(value: privKey),
                                                    passphrase: Passphrase.init(value: privKeyPassphrase))
-            
+
             let sessionKey = try Decryptor.decryptSessionKey(decryptionKeys: [decryptionKey],
                                                              keyPacket: based64KeyPacket.decode)
             XCTAssertEqual(sessionKey.sessionKey, sessionKeyCheck.sessionKey)
@@ -315,20 +315,20 @@ class EncryptorTests: CryptoTestBase {
             XCTFail("Should not happen: \(error)")
         }
     }
-    
+
     #if !(SPM && os(macOS))
     func testEncryptStream() {
         do {
             let cleartextUrl = self.url(of: "user_a_clear_message")
             let clear = try String(contentsOf: cleartextUrl)
-            
+
             /// on simulator unit tests the document directory is not created by default. call this first if you are looking for  documentDirectory
             let url = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             let cyphertextUrl = url.appendingPathComponent("test.dat")
             let privKey = self.content(of: "user_a_privatekey")
             let privKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
             let pubKey = privKey.publicKey
-            
+
             let keyPacket = try Encryptor.encryptStream(publicKey: ArmoredKey.init(value: pubKey),
                                                         clearFile: cleartextUrl,
                                                         cyphertextFile: cyphertextUrl, chunkSize: 2_000_000)
@@ -337,22 +337,22 @@ class EncryptorTests: CryptoTestBase {
             let dataPacket = try Data(contentsOf: cyphertextUrl)
             XCTAssertNotNil(dataPacket)
             XCTAssertTrue(!keyPacket.isEmpty)
-            
+
             let decryptionKey = DecryptionKey.init(privateKey: ArmoredKey.init(value: privKey),
                                                    passphrase: Passphrase.init(value: privKeyPassphrase))
             let clearData: Data = try Decryptor.decrypt(decryptionKeys: [decryptionKey],
                                                         split: SplitPacket.init(dataPacket: dataPacket, keyPacket: keyPacket))
-            
+
             let strClear = String(data: clearData, encoding: .utf8)
-            
+
             XCTAssertTrue(clear == strClear)
-            
+
         } catch let error {
             XCTFail("Should not happen: \(error)")
         }
     }
     #endif
-    
+
     func testEncryptSignWithCriticalContext() throws {
         let signKey = self.content(of: "user_a_privatekey")
         let signKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
@@ -397,7 +397,7 @@ class EncryptorTests: CryptoTestBase {
             XCTFail()
         }
     }
-    
+
     func testEncryptSignWithNonCriticalContext() throws {
         let signKey = self.content(of: "user_a_privatekey")
         let signKeyPassphrase = self.content(of: "user_a_privatekey_passphrase")
@@ -442,5 +442,5 @@ class EncryptorTests: CryptoTestBase {
             XCTFail()
         }
     }
-    
+
 }

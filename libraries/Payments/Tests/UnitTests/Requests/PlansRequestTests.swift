@@ -31,14 +31,14 @@ import ProtonCoreTestingToolkit
 @testable import ProtonCorePayments
 
 final class PlansRequestTests: XCTestCase {
-    
+
     var apiService: APIServiceMock!
-    
+
     override func setUp() {
         super.setUp()
         apiService = APIServiceMock()
     }
-    
+
     func testPlansRequestCycle() {
         let numberOfMonths = 12
         let request = PlansRequest(api: apiService)

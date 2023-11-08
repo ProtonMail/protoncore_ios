@@ -128,9 +128,9 @@ extension UIFoundationsBannerTableViewController {
         }
         banner.show(at: .bottom, on: self)
     }
-    
+
     private func attributedSample_top() {
-        
+
         let foregroundColor: UIColor = ColorProvider.TextInverted
         let linkStr = NSAttributedString(string: "Apple link", attributes: [.link: URL(string: "https://apple.com/")!, .font: UIFont.systemFont(ofSize: 15)])
         let attr = NSMutableAttributedString(string: "Hello there ", attributes: [
@@ -151,27 +151,27 @@ extension UIFoundationsBannerTableViewController {
         }
         banner.show(at: .top, on: self)
     }
-    
+
     private func attributedSample2_top() {
         let para = NSMutableParagraphStyle()
         para.alignment = .center
         let foregroundColor: UIColor = ColorProvider.TextInverted
-        
+
         let attr = NSMutableAttributedString(string: "Something wet wrong: email or password or both", attributes: [
             .font: UIFont.systemFont(ofSize: 15),
             .foregroundColor: foregroundColor,
             .paragraphStyle: para
         ])
-        
+
         let banner = PMBanner(message: attr, style: PMBannerNewStyle.error)
         banner.show(at: .top, on: self)
     }
-    
+
     private func errorNoButton() {
         let banner = PMBanner(message: "A COVID-19 vaccine could be available earlier than expected if ongoing clinical trials produce overwhelmingly positive results", style: PMBannerNewStyle.error)
         banner.show(at: .top, on: self)
     }
-    
+
     private func errorButton() {
         let banner = PMBanner(message: "This account has been suspended due to a potential policy violation. If you believe this is in error, please contact us at abuse@protonmail.com", style: PMBannerNewStyle.error, dismissDuration: Double.infinity)
         banner.addButton(text: "OK") { banner in
@@ -180,7 +180,7 @@ extension UIFoundationsBannerTableViewController {
         }
         banner.show(at: .top, on: self)
     }
-    
+
     private func errorButtonIcon() {
         let banner = PMBanner(message: "This account has been suspended due to a potential policy violation. If you believe this is in error, please contact us at abuse@protonmail.com", style: PMBannerNewStyle.error, dismissDuration: Double.infinity)
         banner.addButton(icon: IconProvider.arrowsRotate) { banner in
@@ -189,12 +189,12 @@ extension UIFoundationsBannerTableViewController {
         }
         banner.show(at: .top, on: self)
     }
-    
+
     private func successNoButton() {
         let banner = PMBanner(message: "Success message", style: PMBannerNewStyle.success)
         banner.show(at: .top, on: self)
     }
-    
+
     private func successButton() {
         let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.success, dismissDuration: Double.infinity)
         banner.addButton(text: "Button") { _ in
@@ -203,7 +203,7 @@ extension UIFoundationsBannerTableViewController {
         }
         banner.show(at: .top, on: self)
     }
-    
+
     private func successButtonIcon() {
         let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.success, dismissDuration: Double.infinity)
         banner.addButton(icon: IconProvider.arrowsRotate) { banner in
@@ -212,12 +212,12 @@ extension UIFoundationsBannerTableViewController {
         }
         banner.show(at: .top, on: self)
     }
-    
+
     private func warningNoButton() {
         let banner = PMBanner(message: "Warning message", style: PMBannerNewStyle.warning)
         banner.show(at: .top, on: self)
     }
-    
+
     private func warningButton() {
         let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.warning, dismissDuration: Double.infinity)
         banner.addButton(text: "Button") { banner in
@@ -226,7 +226,7 @@ extension UIFoundationsBannerTableViewController {
         }
         banner.show(at: .top, on: self)
     }
-    
+
     private func warningButtonIcon() {
         let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.warning, dismissDuration: Double.infinity)
         banner.addButton(icon: IconProvider.arrowsRotate) { banner in
@@ -235,12 +235,12 @@ extension UIFoundationsBannerTableViewController {
         }
         banner.show(at: .top, on: self)
     }
-    
+
     private func infoNoButton() {
         let banner = PMBanner(message: "Warning message", style: PMBannerNewStyle.info)
         banner.show(at: .top, on: self)
     }
-    
+
     private func infoButton() {
         let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.info, dismissDuration: Double.infinity)
         banner.addButton(text: "Button") { banner in
@@ -249,7 +249,7 @@ extension UIFoundationsBannerTableViewController {
         }
         banner.show(at: .top, on: self)
     }
-    
+
     private func infoButtonIcon() {
         let banner = PMBanner(message: "Lorem ipsum dolor sit amet adipisic elit, consectetur sed", style: PMBannerNewStyle.info, dismissDuration: Double.infinity)
         banner.addButton(icon: IconProvider.arrowsRotate) { banner in
@@ -270,15 +270,15 @@ extension UIFoundationsBannerTableViewController {
         let view = PMHeaderView(title: "Banner sample", fontSize: 22, titleColor: ColorProvider.TextNorm, titleLeft: 40, titleBottom: 0, background: ColorProvider.BackgroundNorm)
         return view
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 56
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return samples.count
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "bannerCell")
         if cell == nil {
@@ -289,7 +289,7 @@ extension UIFoundationsBannerTableViewController {
         cell?.textLabel?.text = samples[indexPath.row]
         return cell!
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         self.functions[indexPath.row]()

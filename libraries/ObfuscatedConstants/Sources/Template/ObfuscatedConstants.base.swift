@@ -29,14 +29,14 @@ public enum ObfuscatedConstants {
     public static subscript(dynamicMember dynamicMember: String) -> String {
         dynamicMember.localizedCaseInsensitiveContains("Host") ? "example.com" : ""
     }
-    
+
     public static let paymentsCard: [String: String] = [:]
-    
+
     public static let mailIAPIdentifiers: Set<String> = []
     public static let vpnIAPIdentifiers: Set<String> = []
     public static let driveIAPIdentifiers: Set<String> = []
     public static let calendarIAPIdentifiers: Set<String> = []
-    
+
     public static func samplePinningConfiguration(hardfail: Bool) -> [String: Any] { [:] }
 
 }

@@ -28,7 +28,7 @@ import ProtonCoreTestingToolkit
 #endif
 
 final class TokenRefreshTests: TokenRefreshBaseTestCase {
-    
+
     func testLogInGetUserSuccess() throws {
         let robot = appRobot.createAccount()
         robot
@@ -37,7 +37,7 @@ final class TokenRefreshTests: TokenRefreshBaseTestCase {
             .getUser()
             .verify.getUserMessageIsDisplayed()
     }
-    
+
     func testLogInExpireSessionGetUserRefreshTokenSuccess() {
         let robot = appRobot.createAccount()
         robot
@@ -48,7 +48,7 @@ final class TokenRefreshTests: TokenRefreshBaseTestCase {
             .getUser()
             .verify.getUserMessageIsDisplayed()
     }
-    
+
     func testLogInExpireSessionAndRefreshTokenGetUserRefreshTokenFailure() {
         let robot = appRobot.createAccount()
         robot

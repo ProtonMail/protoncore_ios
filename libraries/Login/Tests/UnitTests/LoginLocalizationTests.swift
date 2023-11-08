@@ -32,7 +32,7 @@ final class LoginLocalizationTests: XCTestCase {
     func testAccountDeletionTranslationsAreDefinedForEnglish() {
         testAllLocalizationsAreDefined(for: LSTranslation.self, prefixForMissingValue: #function)
     }
-    
+
     func testAllSubstitutionsAreFollowingTheExpectedFormatForEnglish() {
         testAllSubstitutionsAreValid(for: LSTranslation.self)
     }

@@ -59,7 +59,7 @@ class LoginServiceTests: XCTestCase {
     var sut: LoginService!
     var api: APIServiceMock!
     var observabilityServiceMock: ObservabilityServiceMock!
-    
+
     override class func setUp() {
         super.setUp()
         injectDefaultCryptoImplementation()
@@ -76,9 +76,9 @@ class LoginServiceTests: XCTestCase {
         api.dohInterfaceStub.fixture = dohInterface
         sut = LoginService(api: api, clientApp: .vpn, minimumAccountType: .external)
     }
-    
+
     // MARK: - handleValidCredentials
-    
+
     func test_handleValidCredentials_isSSO_succeed() {
         // Given
         setupSUT()
@@ -87,7 +87,7 @@ class LoginServiceTests: XCTestCase {
         api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(AuthService.UserResponse(user: .dummy)))
         }
-        
+
         // When
         sut.handleValidCredentials(credential: credential, passwordMode: .one, mailboxPassword: nil, isSSO: true) { (result: Result<LoginStatus, LoginError>) in
             switch result {
@@ -98,10 +98,10 @@ class LoginServiceTests: XCTestCase {
             }
             expectation.fulfill()
         }
-        
+
         wait(for: [expectation], timeout: 0.1)
     }
-    
+
     func test_handleValidCredentialsWithoutPasswordMode_callsFailureInvalidState() {
         setupSUT()
         let credential = Credential(UID: "", accessToken: "", refreshToken: "", userName: "", userID: "", scopes: .empty)
@@ -109,7 +109,7 @@ class LoginServiceTests: XCTestCase {
         api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(AuthService.UserResponse(user: .dummy)))
         }
-        
+
         sut.handleValidCredentials(credential: credential, passwordMode: .one, mailboxPassword: nil) { (result: Result<LoginStatus, LoginError>) in
             switch result {
             case .failure(.invalidState):
@@ -119,40 +119,40 @@ class LoginServiceTests: XCTestCase {
             }
             expectation.fulfill()
         }
-        
+
         wait(for: [expectation], timeout: 0.1)
     }
-    
+
     // MARK: - processResponseToken
-    
+
     func test_processResponseToken_callsAuthenticate() {
         // Given
         setupSUT()
-        
+
         // When
         sut.processResponseToken(idpEmail: "test@protonhub.org", responseToken: .init(token: "token", uid: "sessionUID")) { _ in }
-        
+
         // Then
         XCTAssertTrue(api.requestDecodableStub.wasCalledExactlyOnce)
     }
-    
+
     // MARK: - getSSORequest
-    
+
     func test_getSSORequest_authCredentialsNotFound() async {
         // Given
         setupSUT()
         api.fetchAuthCredentialsStub.bodyIs { _, completion in
             completion(.notFound)
         }
-        
+
         // When
         let ssoResult = await sut.getSSORequest(challenge: .init(ssoChallengeToken: "ssoChallengeToken"))
-        
+
         // Then
         XCTAssertNil(ssoResult.request)
         XCTAssertEqual(ssoResult.error, "Empty token")
     }
-    
+
     func test_getSSORequest_authCredentialsWrongConfigurationNoDelegate() async {
         // Given
         setupSUT()
@@ -162,30 +162,30 @@ class LoginServiceTests: XCTestCase {
 
         // When
         let ssoResult = await sut.getSSORequest(challenge: .init(ssoChallengeToken: "ssoChallengeToken"))
-        
+
         // Then
         XCTAssertNil(ssoResult.request)
         XCTAssertEqual(ssoResult.error, "AuthDelegate is required")
     }
-    
+
     func test_getSSORequest_authCredentialsFound() async {
         // Given
         setupSUT()
         api.fetchAuthCredentialsStub.bodyIs { _, completion in
             completion(.found(credentials: .init(Credential(UID: "", accessToken: "accessToken", refreshToken: "", userName: "", userID: "", scopes: .empty))))
         }
-        
+
         // When
         let ssoResult = await sut.getSSORequest(challenge: .init(ssoChallengeToken: "ssoChallengeToken"))
-        
+
         // Then
         XCTAssertNil(ssoResult.error)
         XCTAssertEqual(ssoResult.request?.url, URL(string: "http://proton.black/api/auth/sso/ssoChallengeToken"))
         XCTAssertEqual(ssoResult.request?.headers.dictionary, ["x-pm-uid": "sessionUID", "Authorization": "accessToken"])
     }
-    
+
     // MARK: - Login
-    
+
     func testLoginWithWrongPassword_failsWithInvalidCredentialsError() {
         let (api, authDelegate) = apiService
         _ = authDelegate
@@ -247,7 +247,7 @@ class LoginServiceTests: XCTestCase {
 
         let expect = expectation(description: "testLoginIsSuccessful")
         let service = LoginService(api: api, clientApp: .other(named: "core"), minimumAccountType: .internal)
-        
+
         service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, challenge: nil) { result in
             switch result {
             case let .success(status):
@@ -273,7 +273,7 @@ class LoginServiceTests: XCTestCase {
             let apiService = APIServiceMock()
             apiService.authDelegateStub.fixture = authDelegate
             apiService.fetchAuthCredentialsStub.bodyIs { $1(.wrongConfigurationNoDelegate) }
-            
+
             mockSSOUserLogin()
             apiService.requestDecodableStub.bodyIs { count, _, _, _, _, _, _, _, _, _, _, completion in
                 completion(nil, .success(SSOChallengeResponse(ssoChallengeToken: "b7953c6a26d97a8f7a673afb79e6e9ce")))
@@ -300,14 +300,14 @@ class LoginServiceTests: XCTestCase {
             }
         }
     }
-    
+
     func testLoginWithSSO_fails() {
         withFeatureSwitches([.ssoSignIn]) {
             let authDelegate = AuthHelper()
             let apiService = APIServiceMock()
             apiService.authDelegateStub.fixture = authDelegate
             apiService.fetchAuthCredentialsStub.bodyIs { $1(.wrongConfigurationNoDelegate) }
-            
+
             mockSSOUserLogin()
             apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
                 completion(nil, .failure(.badResponse()))
@@ -329,7 +329,7 @@ class LoginServiceTests: XCTestCase {
             }
         }
     }
-    
+
     func testLoginWithSSO_fails_tracksFailure() {
         withFeatureSwitches([.ssoSignIn]) {
             observabilityServiceMock = ObservabilityServiceMock()
@@ -339,7 +339,7 @@ class LoginServiceTests: XCTestCase {
             apiService.authDelegateStub.fixture = authDelegate
             apiService.fetchAuthCredentialsStub.bodyIs { $1(.wrongConfigurationNoDelegate) }
             let expectedEvent: ObservabilityEvent = .ssoObtainChallengeToken(status: .ssoDomainNotFound)
-            
+
             mockSSOUserLogin()
             apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
                 completion(nil, .failure(ResponseError(httpCode: 422, responseCode: 8101, userFacingMessage: "Email domain not found, please sign in with a password", underlyingError: nil) as NSError))
@@ -357,7 +357,7 @@ class LoginServiceTests: XCTestCase {
             }
         }
     }
-    
+
     func testLoginWith2FACode_isSuccessful() {
         let (api, authDelegate) = apiService
         _ = authDelegate
@@ -549,22 +549,22 @@ class LoginServiceTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testLoginUpdatesCredentialsEvenIfTheCredentialsAreAlreadyThere() throws {
         let (api, authDelegate) = apiService
         _ = authDelegate
-        
+
         // setup api and auth delegate as if unauth session is already fetched
         let alreadyExistingCredentials = Credential(UID: "session from \(#function)", accessToken: "token from \(#function)", refreshToken: "refresh from \(#function)", userName: .empty, userID: .empty, scopes: ["\(#function)"])
         api.setSessionUID(uid: alreadyExistingCredentials.UID)
         authDelegate.onUpdate(credential: alreadyExistingCredentials, sessionUID: alreadyExistingCredentials.UID)
         XCTAssertNotNil(authDelegate.credential(sessionUID: alreadyExistingCredentials.UID))
-        
+
         mockOnePasswordUserLogin()
-        
+
         let expect = expectation(description: "testLogin")
         let service = LoginService(api: api, clientApp: .other(named: "core"), minimumAccountType: .internal)
-        
+
         service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, challenge: nil) { result in
             switch result {
             case let .success(status):
@@ -579,11 +579,11 @@ class LoginServiceTests: XCTestCase {
             }
             expect.fulfill()
         }
-        
+
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
-        
+
         XCTAssertNil(authDelegate.credential(sessionUID: alreadyExistingCredentials.UID))
         let fetchedCredentials = try XCTUnwrap(authDelegate.credential(sessionUID: "test session ID"))
         XCTAssertEqual(fetchedCredentials.UID, "test session ID")
@@ -629,7 +629,7 @@ class LoginServiceTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testUsernameAccountAvailable_isSuccessful() {
         let (api, authDelegate) = apiService
         _ = authDelegate
@@ -721,7 +721,7 @@ class LoginServiceTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testExternalEmailAvailable_isSuccessful() {
         let (api, authDelegate) = apiService
         _ = authDelegate
@@ -743,7 +743,7 @@ class LoginServiceTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testExternalEmailNotAvailable_isFailure() {
         let (api, authDelegate) = apiService
         _ = authDelegate
@@ -944,7 +944,7 @@ class LoginServiceTests: XCTestCase {
 
         waitForExpectations(timeout: 0.1) { (error) in XCTAssertNil(error, String(describing: error)) }
     }
-    
+
     func testLoginWithNonPrivateUserWithOnlyCustomDomainAddress_failsWithMissingSubUserConfiguration() {
 
         let (api, authDelegate) = apiService
@@ -1124,7 +1124,7 @@ class LoginServiceTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     /// TODO:: fix me, the test function name deon't match with the logic
     func testAvailableDomainSignupError401() {
         let (api, authDelegate) = apiService
@@ -1249,11 +1249,11 @@ class LoginServiceTests: XCTestCase {
         XCTAssertEqual(result, ["proton.first", "proton.second", "proton.third"])
         XCTAssertEqual(service.allSignUpDomains, ["proton.first", "proton.second", "proton.third"])
         XCTAssertEqual(service.currentlyChosenSignUpDomain, "proton.second")
-        
+
         service.currentlyChosenSignUpDomain = service.defaultSignUpDomain
         XCTAssertEqual(service.currentlyChosenSignUpDomain, "proton.second")
     }
-    
+
     func testLoginWithAuthExtAccountsNotSupported_error5099() {
         let (api, authDelegate) = apiService
         _ = authDelegate
@@ -1283,7 +1283,7 @@ class LoginServiceTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testLoginWithAuthExtAccountsNotSupported_error5098() {
         let (api, authDelegate) = apiService
         _ = authDelegate
@@ -1390,7 +1390,7 @@ class LoginServiceTests: XCTestCase {
         XCTAssertEqual(originalError.responseCode, 5098)
         XCTAssertEqual(originalError.localizedDescription, userFacingMessage)
     }
-    
+
     func testAvailableUsernameForExternalAccountEmail_isSuccessful() {
         let (api, authDelegate) = apiService
         _ = authDelegate
@@ -1414,7 +1414,7 @@ class LoginServiceTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testUsernameForExternalAccountEmailNotAvailableEmail_isSuccessful() {
         let (api, authDelegate) = apiService
         _ = authDelegate
@@ -1438,7 +1438,7 @@ class LoginServiceTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testUsernameForExternalAccountEmailError12087_shouldFail() {
         let (api, authDelegate) = apiService
         _ = authDelegate

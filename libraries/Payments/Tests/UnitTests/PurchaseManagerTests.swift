@@ -392,7 +392,7 @@ final class PurchaseManagerTests: XCTestCase {
     func testShouldSuccessfullyBuySubscriptionForZeroUpdateSubscriptionError() {
         let expectation1 = expectation(description: "Should call completion block")
         let expectation2 = expectation(description: "Should call refresh handler")
-        
+
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .left(planServiceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
@@ -561,7 +561,7 @@ final class PurchaseManagerTests: XCTestCase {
         XCTAssertEqual(storeKitManager.purchaseProductStub.lastArguments?.a1, plan)
         XCTAssertEqual(storeKitManager.purchaseProductStub.lastArguments?.a2, 100)
     }
-    
+
     func testShouldPassApiIsBlockedError() {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!

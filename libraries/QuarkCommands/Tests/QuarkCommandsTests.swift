@@ -33,13 +33,13 @@ import ProtonCoreTestingToolkit
 @testable import ProtonCoreQuarkCommands
 
 final class QuarkCommandsTests: XCTestCase {
-    
+
     var dohMock: DohMock!
-    
+
     override func setUp() {
         super.setUp()
         dohMock = DohMock()
-        
+
         HTTPStubs.setEnabled(true)
         HTTPStubs.onStubActivation { request, descriptor, response in
             // ...
@@ -75,9 +75,9 @@ final class QuarkCommandsTests: XCTestCase {
         waitForExpectations(timeout: 10) { (expectationError) -> Void in
             XCTAssertNil(expectationError)
         }
-        
+
     }
-    
+
     func testCreateUserExternalOnlyFailed() {
         // mock response
         /*let sub = */stub(condition: isHost("test.quark.commands.url")) { request in
@@ -94,7 +94,7 @@ final class QuarkCommandsTests: XCTestCase {
 
         // mock url
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in "https://test.quark.commands.url" }
-        
+
         let quarkCommand = QuarkCommands(doh: dohMock)
         quarkCommand.createUser(externalEmail: "quarkcommand@test.quark.commands.url",
                                 password: "123456789") { result in

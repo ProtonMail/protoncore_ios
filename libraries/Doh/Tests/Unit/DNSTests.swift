@@ -24,7 +24,7 @@ import XCTest
 @testable import ProtonCoreDoh
 
 class DNSTests: XCTestCase {
-    
+
     func testDnsStruct() {
         let url = "test_url"
         let ttl = 60
@@ -32,7 +32,7 @@ class DNSTests: XCTestCase {
         XCTAssertEqual(dns.host, url)
         XCTAssertEqual(dns.ttl, ttl)
     }
-    
+
     func testDNSRecordType() {
         let type1 = DNSRecordType(rawValue: 10)
         XCTAssertNil(type1)

@@ -24,7 +24,7 @@ import ProtonCoreCryptoGoInterface
 import ProtonCoreCrypto
 
 class SessionTests: CryptoTestBase {
-    
+
     func testAlgo() {
         let des3Check = "3des"
         guard let des3 = Algorithm.init(rawValue: des3Check) else {
@@ -32,46 +32,46 @@ class SessionTests: CryptoTestBase {
             return
         }
         XCTAssertEqual(des3Check, des3.value)
-        
+
         let tripledesCheck = "tripledes"
         guard let tripledes = Algorithm.init(rawValue: tripledesCheck) else {
             XCTFail("nil")
             return
         }
         XCTAssertEqual(tripledesCheck, tripledes.value)
-        
+
         let cast5check = "cast5"
         guard let cast5 = Algorithm.init(rawValue: cast5check) else {
             XCTFail("nil")
             return
         }
         XCTAssertEqual(cast5check, cast5.value)
-        
+
         let aes128check = "aes128"
         guard let aes128 = Algorithm.init(rawValue: aes128check) else {
             XCTFail("nil")
             return
         }
         XCTAssertEqual(aes128check, aes128.value)
-        
+
         let aes192check = "aes192"
         guard let aes192 = Algorithm.init(rawValue: aes192check) else {
             XCTFail("nil")
             return
         }
         XCTAssertEqual(aes192check, aes192.value)
-        
+
         let aes256check = "aes256"
         guard let aes256 = Algorithm.init(rawValue: aes256check) else {
             XCTFail("nil")
             return
         }
         XCTAssertEqual(aes256check, aes256.value)
-        
+
         let nilcheck = Algorithm.init(rawValue: "aaaa")
         XCTAssertNil(nilcheck)
     }
-    
+
     func testSessionKey() {
         let aes256check = "aes256"
         guard let aes256 = Algorithm.init(rawValue: aes256check) else {
@@ -79,7 +79,7 @@ class SessionTests: CryptoTestBase {
             return
         }
         XCTAssertEqual(aes256check, aes256.value)
-        
+
         var error: NSError?
         let length = 32
         guard let check = CryptoGo.CryptoRandomToken(length, &error) else {
@@ -87,9 +87,9 @@ class SessionTests: CryptoTestBase {
             return
         }
         let sessionKey = SessionKey.init(sessionKey: check, algo: aes256)
-        
+
         XCTAssertTrue(sessionKey.algo.value == aes256check)
         XCTAssertEqual(sessionKey.sessionKey, check)
     }
-    
+
 }

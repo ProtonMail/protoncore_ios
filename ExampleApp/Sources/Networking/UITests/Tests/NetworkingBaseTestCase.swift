@@ -14,7 +14,7 @@ import ProtonCoreTestingToolkit
 #endif
 
 class NetworkingBaseTestCase: ProtonCoreBaseTestCase {
-    
+
     let entryRobot = CoreExampleMainRobot()
     var appRobot: NetworkingSampleAppRobot!
 

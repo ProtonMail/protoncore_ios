@@ -24,7 +24,7 @@ import XCTest
 @testable import ProtonCoreUtilities
 
 class StringExtensionsTests: XCTestCase {
-    
+
     func testToutf8Ext() {
         let test = "��"
         let data = test.utf8
@@ -44,7 +44,7 @@ class StringExtensionsTests: XCTestCase {
         let n7 = "Thomas Anderson (@neo)"
         XCTAssertEqual(n7.initials(), "TA")
     }
-    
+
     func testSubscript() {
         XCTAssertEqual("test"[0], "t")
         XCTAssertEqual("test"[1], "e")

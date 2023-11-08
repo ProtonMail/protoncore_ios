@@ -41,9 +41,9 @@ final class DohMock: DoH, ServerConfig {
     var accountHost: String = MockData.accountHost.urlString
     var signupDomain: String = "local.protoncore.unittests"
     var timeout: TimeInterval = 1
-    
+
     private init() {}
-    
+
     override private init(networkingEngine: DoHNetworkingEngine,
                           executor: CompletionBlockExecutor?,
                           currentTimeProvider: (() -> Date)?) {
@@ -58,12 +58,12 @@ final class DohMock: DoH, ServerConfig {
         }
         status = .on
     }
-    
+
     static func mockWithUrlSession(currentTimeProvider: @escaping () -> Date = Date.init) -> DohMock {
         // we use a real url session because the network request stubing is done on the urlsession level with HTTPStubs
         DohMock(networkingEngine: URLSession.shared, executor: nil, currentTimeProvider: currentTimeProvider)
     }
-    
+
     static func mockWithMockNetworkingEngine(data: Data?, response: URLResponse?, error: Error) -> DohMock {
         DohMock(
             networkingEngine: NetworkingEngineMock(data: data, response: response, error: error, requestCompletionHandler: nil),
@@ -71,11 +71,11 @@ final class DohMock: DoH, ServerConfig {
             currentTimeProvider: nil
         )
     }
-    
+
     static func mockWithMockNetworkingEngine(networkingEngine: DoHNetworkingEngine) -> DohMock {
         DohMock(networkingEngine: networkingEngine, executor: nil, currentTimeProvider: Date.init)
     }
-    
+
 }
 
 struct DoHNetworkOperationMock: DoHNetworkOperation {
@@ -84,12 +84,12 @@ struct DoHNetworkOperationMock: DoHNetworkOperation {
 }
 
 struct NetworkingEngineMock: DoHNetworkingEngine {
-    
+
     let data: Data?
     let response: URLResponse?
     let error: Error?
     let requestCompletionHandler: ((URLRequest) -> Void)?
-    
+
     func networkRequest(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> DoHNetworkOperation {
         requestCompletionHandler?(request)
         return DoHNetworkOperationMock { completionHandler(data, response, error) }

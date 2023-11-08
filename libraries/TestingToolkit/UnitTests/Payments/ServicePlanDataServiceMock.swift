@@ -36,13 +36,13 @@ public final class ServicePlanDataServiceMock: ServicePlanDataServiceProtocol {
 
     @PropertyStub(\ServicePlanDataServiceProtocol.credits, initialGet: nil) public var creditsStub
     public var credits: Credits? { creditsStub() }
-    
+
     @PropertyStub(\ServicePlanDataServiceProtocol.countriesCount, initialGet: nil) public var countriesCountStub
     public var countriesCount: [Countries]? { countriesCountStub() }
-    
+
     @PropertyStub(\ServicePlanDataServiceProtocol.user, initialGet: nil) public var userStub
     public var user: User? { userStub() }
-    
+
     @PropertyStub(\ServicePlanDataServiceProtocol.paymentMethods, initialGet: nil) public var paymentMethodsStub
     public var paymentMethods: [PaymentMethod]? { get { paymentMethodsStub() } set { paymentMethodsStub(newValue) } }
 
@@ -70,7 +70,7 @@ public final class ServicePlanDataServiceMock: ServicePlanDataServiceProtocol {
     public func updateServicePlans() throws {
         try updateServicePlansStub()
     }
-    
+
     @FuncStub(ServicePlanDataServiceProtocol.updateServicePlans(callBlocksOnParticularQueue:success:failure:)) public var updateServicePlansSuccessFailureStub
     public func updateServicePlans(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
         updateServicePlansSuccessFailureStub(callBlocksOnParticularQueue, success, failure)
@@ -83,13 +83,13 @@ public final class ServicePlanDataServiceMock: ServicePlanDataServiceProtocol {
 
     @FuncStub(ServicePlanDataServiceProtocol.updateCredits) public var updateCreditsStub
     public func updateCredits(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void) { updateCreditsStub(callBlocksOnParticularQueue, success, failure) }
-    
+
     @FuncStub(ServicePlanDataServiceProtocol.updateCountriesCount) public var updateCountriesCountStub
     public func updateCountriesCount(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void) { updateCountriesCountStub(callBlocksOnParticularQueue, success, failure) }
 
     @PropertyStub(\ServicePlanDataServiceProtocol.service, initialGet: .crash) public var serviceStub
     public var service: APIService { serviceStub() }
-    
+
     @FuncStub(ServicePlanDataServiceProtocol.willRenewAutomatically, initialReturn: false) public var willRenewAutomaticallyStub
     public func willRenewAutomatically(plan: InAppPurchasePlan) -> Bool {
         willRenewAutomaticallyStub(plan) }

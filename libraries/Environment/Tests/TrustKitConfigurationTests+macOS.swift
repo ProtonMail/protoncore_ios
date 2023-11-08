@@ -27,7 +27,7 @@ import TrustKit
 @testable import ProtonCoreEnvironment
 
 final class TrustKitConfigurationTests: XCTestCase {
-    
+
     func testIgnorePinningForUserDefinedTrustAnchorsIfFalseByDefault() {
         let configuration = TrustKitWrapper.configuration(hardfail: true)
         XCTAssertFalse(configuration[kTSKIgnorePinningForUserDefinedTrustAnchors] as! Bool)

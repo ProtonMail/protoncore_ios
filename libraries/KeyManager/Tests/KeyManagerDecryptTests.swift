@@ -24,7 +24,7 @@ import ProtonCoreDataModel
 @testable import ProtonCoreKeyManager
 
 class KeyManagerDecryptTests: TestCaseBase {
-    
+
     func testDecryptAttachment() {
         let userkey = content(of: "data1_user_key")
         let userPassphrase = content(of: "data1_user_passphrse")
@@ -34,14 +34,14 @@ class KeyManagerDecryptTests: TestCaseBase {
         let calEncPass = content(of: "data1_calendar_enc_pass")
         let calClearPass = content(of: "data1_calendar_clear_pass")
         let splited = try! calEncPass.split()
-        
+
         let keyPacket = splited?.getBinaryKeyPacket()
         let dataPacket = splited?.getBinaryDataPacket()
-        
+
         let key = Key.init(keyID: "RURLmXOKy9onIRPIIztVh0mZaFLZjWkOrd5H-_jEZzCwmmEgYLXxtwpx0xUTk9nYvbDh9sG_P_KeeyRBCDgCIQ==",
                            privateKey: addrPriv, keyFlags: 3, token: addrToken, signature: addrTokenSignature,
                            activation: nil, active: 0, version: 3, primary: 1, isUpdated: false)
-       
+
         let data = try? decryptAttachmentNonOptional(dataPackage: dataPacket!,
                                                      keyPackage: keyPacket!,
                                                      addrKeys: [key],

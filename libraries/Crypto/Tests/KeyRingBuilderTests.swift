@@ -33,58 +33,58 @@ final class KeyRingBuilderTests: CryptoTestBase {
     private let privateKeyPassphrase = Passphrase(value: "hello world")
     private let privateKeyPassphrase2 = Passphrase(value: "123")
     private let wrongPassphrase = Passphrase(value: "wrong password")
-    
+
     override func setUpWithError() throws {
         try super.setUpWithError()
         privateKey = ArmoredKey(value: content(of: "testdata_privatekey"))
         privateKey2 = ArmoredKey(value: content(of: "testdata_privatekey2"))
         sut = KeyRingBuilder()
     }
-    
+
     func testBuildPrivateKeyRingUnlockAllKeys() throws {
         let decryptionKeys: [DecryptionKey] = [.init(privateKey: privateKey, passphrase: privateKeyPassphrase), .init(privateKey: privateKey2, passphrase: privateKeyPassphrase2)]
         let privateKeyRing = try sut.buildPrivateKeyRingUnlock(privateKeys: decryptionKeys)
         XCTAssertEqual(2, privateKeyRing.countEntities())
     }
-    
+
     func testBuildPrivateKeyRingKeepAllKeysThatCanUnlock() throws {
         let decryptionKeys: [DecryptionKey] = [.init(privateKey: privateKey, passphrase: privateKeyPassphrase), .init(privateKey: privateKey2, passphrase: wrongPassphrase)]
         let privateKeyRing = try sut.buildPrivateKeyRingUnlock(privateKeys: decryptionKeys)
         XCTAssertEqual(1, privateKeyRing.countEntities())
     }
-    
+
     func testBuildPrivateKeyRingFailsIfNoKeyCanBeUnlocked() {
         let decryptionKeys: [DecryptionKey] = [.init(privateKey: privateKey, passphrase: wrongPassphrase), .init(privateKey: privateKey2, passphrase: wrongPassphrase)]
         XCTAssertThrowsError(
             _ = try sut.buildPrivateKeyRingUnlock(privateKeys: decryptionKeys)
         )
     }
-    
+
     func testBuildPrivateKeyRingKeepAllKeysThatCanParse() throws {
         let decryptionKeys: [DecryptionKey] = [.init(privateKey: privateKey, passphrase: privateKeyPassphrase), .init(privateKey: wrongKey, passphrase: privateKeyPassphrase)]
         let privateKeyRing = try sut.buildPrivateKeyRingUnlock(privateKeys: decryptionKeys)
         XCTAssertEqual(1, privateKeyRing.countEntities())
     }
-    
+
     func testBuildPrivateKeyRingFailsIfNoKeyCanBeParsed() {
         let decryptionKeys: [DecryptionKey] = [.init(privateKey: wrongKey, passphrase: privateKeyPassphrase), .init(privateKey: wrongKey, passphrase: privateKeyPassphrase)]
         XCTAssertThrowsError(
             _ = try sut.buildPrivateKeyRingUnlock(privateKeys: decryptionKeys)
         )
     }
-    
+
     func testBuildPublicKeyRingParsesAllKeys() throws {
         let armoredKeys: [ArmoredKey] = [privateKey, privateKey2]
         let publicKeyRing = try sut.buildPublicKeyRing(armoredKeys: armoredKeys)
         XCTAssertEqual(2, publicKeyRing.countEntities())
     }
-    
+
     func testBuildPublicKeyRingKeepsAllKeysThatCanParse() throws {
         let armoredKeys: [ArmoredKey] = [privateKey, wrongKey]
         let publicKeyRing = try sut.buildPublicKeyRing(armoredKeys: armoredKeys)
         XCTAssertEqual(1, publicKeyRing.countEntities())
     }
-    
+
     func testBuildPublicKeyRingFailsIfNoKeyCanBeParsed() {
         let armoredKeys: [ArmoredKey] = [wrongKey, wrongKey]
         XCTAssertThrowsError(

@@ -46,7 +46,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
     var alertManager: AlertManagerMock!
     var purchaseManager: PurchaseManager!
     let timeout: TimeInterval = 10
-    
+
     override func setUp() {
         super.setUp()
         planServiceMock = ServicePlanDataServiceMock()
@@ -60,19 +60,19 @@ final class PaymentsUICoordinatorTests: XCTestCase {
                                           paymentsApi: paymentsApi,
                                           apiService: apiService )
     }
-    
+
     func testObservabilityEnvPlanSelectorFreePlan() {
         let expectation = self.expectation(description: "Success completion block called")
         let observeMock = ObservabilityServiceMock()
         ObservabilityEnv.current.observabilityService = observeMock
-        
+
         observeMock.reportStub.bodyIs { _, event in
             guard event.isSameAs(event: .planSelectionCheckoutTotal(status: .successful, plan: .free)) else {
                 return
             }
             expectation.fulfill()
         }
-        
+
         let plan = InAppPurchasePlan.freePlan
         let testPlan = PlanPresentation(accountPlan: plan, planPresentationType: .current(.unavailable))
         let coordinator = PaymentsUICoordinator.init(planService: .left(planServiceMock),
@@ -85,7 +85,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
         coordinator.userDidSelectPlan(plan: testPlan, addCredits: false) { }
         waitForExpectations(timeout: timeout)
     }
-    
+
     func testObservabilityEnvPlanSelectorPaidPlan() {
         let expectation = self.expectation(description: "Success completion block called")
         let expectation2 = self.expectation(description: "Should call refresh handler")
@@ -132,19 +132,19 @@ final class PaymentsUICoordinatorTests: XCTestCase {
         coordinator.userDidSelectPlan(plan: testPlan, addCredits: false) { }
         waitForExpectations(timeout: timeout)
     }
-    
+
     func testObservabilityEnvPlanSelectorPaidPlanFailed() {
         let expectation = self.expectation(description: "Success completion block called")
         let observeMock = ObservabilityServiceMock()
         ObservabilityEnv.current.observabilityService = observeMock
-        
+
         observeMock.reportStub.bodyIs { _, event in
             guard event.isSameAs(event: .planSelectionCheckoutTotal(status: .failed, plan: .paid)) else {
                 return
             }
             expectation.fulfill()
         }
-        
+
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
         planServiceMock.currentSubscriptionStub.fixture = .dummy.updated(couponCode: "test code")
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
@@ -162,7 +162,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
         coordinator.userDidSelectPlan(plan: testPlan, addCredits: false) { }
         waitForExpectations(timeout: timeout)
     }
-    
+
     func testObservabilityEnvPlanSelectorUnknownToFree() {
         let expectation = self.expectation(description: "Success completion block called")
         let observeMock = ObservabilityServiceMock()
@@ -173,7 +173,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
             }
             expectation.fulfill()
         }
-        
+
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
         planServiceMock.currentSubscriptionStub.fixture = .dummy.updated(couponCode: "test code")
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
@@ -191,7 +191,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
         coordinator.userDidSelectPlan(plan: testPlan, addCredits: false) { }
         waitForExpectations(timeout: timeout)
     }
-    
+
     func testObservabilityEnvPlanSelectorPaidPlanApiBlocked() {
         let expectation = self.expectation(description: "Success completion block called")
         let observeMock = ObservabilityServiceMock()
@@ -205,7 +205,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
         apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
         storeKitManager.purchaseProductStub.bodyIs { _, _, _, _, errorCompletion, _ in errorCompletion(StoreKitManagerErrors.apiMightBeBlocked(message: "test message", originalError: NSError.protonMailError(APIErrorCode.potentiallyBlocked, localizedDescription: "api_might_be_blocked_message"))) }
-        
+
         let plan = InAppPurchasePlan(protonPlan: .dummy.updated(name: "mail_plus"), listOfIAPIdentifiers: ["ios_test_12_usd_non_renewing"])!
         let testPlan = PlanPresentation(accountPlan: plan, planPresentationType: .current(.unavailable))
         let coordinator = PaymentsUICoordinator.init(planService: .left(planServiceMock),
@@ -222,7 +222,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
     func testPlansAreRefreshedWhenPaymentsUIViewControllerAppears() {
         withUnleashFeatureSwitches([.dynamicPlans]) {
             let expectation = self.expectation(description: "API call called")
-            
+
             let viewModel = PaymentsUIViewModelMock {
                 // This is not great solution but I didn't find any better. This expectation should be fullfiled after `paymentsUIViewController.reload()`
                 // is called. Inside the coordinator first `viewModel.fetchPlans()` is called on some thread. And at this point this mocked closure is
@@ -233,7 +233,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
                     expectation.fulfill()
                 }
             }
-            
+
             let coordinator = PaymentsUICoordinator.init(
                 planService: .left(planServiceMock),
                 storeKitManager: storeKitManager,
@@ -243,23 +243,23 @@ final class PaymentsUICoordinatorTests: XCTestCase {
                 customization: .empty,
                 alertManager: AlwaysDelegatingPaymentsUIAlertManager(delegatedAlertManager: alertManager)
             ) { }
-            
+
             let paymentsUIViewController = UIStoryboard.instantiate(
                 storyboardName: "PaymentsUI",
                 controllerType: PaymentsUIViewController.self,
                 inAppTheme: { .default }
             )
-            
+
             paymentsUIViewController.viewModel = viewModel
             coordinator.viewModel = viewModel
             paymentsUIViewController.delegate = coordinator
             coordinator.paymentsUIViewController = paymentsUIViewController
-            
+
             XCTAssertFalse(paymentsUIViewController.isData)
-            
+
             paymentsUIViewController.viewWillAppear(true)
             paymentsUIViewController.viewWillAppear(true)
-            
+
             waitForExpectations(timeout: timeout)
             XCTAssertTrue(paymentsUIViewController.isData)
         }
@@ -268,14 +268,14 @@ final class PaymentsUICoordinatorTests: XCTestCase {
     func testPlansAreRefreshedWhenAppGoesToForeground() {
         withUnleashFeatureSwitches([.dynamicPlans]) {
             let expectation = self.expectation(description: "API call called")
-            
+
             let viewModel = PaymentsUIViewModelMock {
                 // see above
                 DispatchQueue.global().asyncAfter(deadline: .now() + 0.1) {
                     expectation.fulfill()
                 }
             }
-            
+
             let coordinator = PaymentsUICoordinator.init(
                 planService: .left(planServiceMock),
                 storeKitManager: storeKitManager,
@@ -285,23 +285,23 @@ final class PaymentsUICoordinatorTests: XCTestCase {
                 customization: .empty,
                 alertManager: AlwaysDelegatingPaymentsUIAlertManager(delegatedAlertManager: alertManager)
             ) { }
-            
+
             let paymentsUIViewController = UIStoryboard.instantiate(
                 storyboardName: "PaymentsUI",
                 controllerType: PaymentsUIViewController.self,
                 inAppTheme: { .default }
             )
             _ = paymentsUIViewController.view
-            
+
             paymentsUIViewController.viewModel = viewModel
             coordinator.viewModel = viewModel
             paymentsUIViewController.delegate = coordinator
             coordinator.paymentsUIViewController = paymentsUIViewController
-            
+
             XCTAssertFalse(paymentsUIViewController.isData)
-            
+
             NotificationCenter.default.post(name: UIApplication.willEnterForegroundNotification, object: nil)
-            
+
             waitForExpectations(timeout: timeout)
             XCTAssertTrue(paymentsUIViewController.isData)
         }

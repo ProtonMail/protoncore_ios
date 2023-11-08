@@ -34,9 +34,9 @@ import ProtonCoreTestingToolkit
 
 @available(iOS 13, *)
 final class PasswordVerifierViewControllerSnapshotTests: SnapshotTestCase {
-    
+
     let defaultPrecision: Float = 0.98
-    
+
     func testPasswordVerifierView() {
         let controller = PasswordVerifierViewController()
         checkSnapshots(controller: controller, perceptualPrecision: defaultPrecision)

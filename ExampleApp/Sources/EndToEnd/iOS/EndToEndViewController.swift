@@ -41,7 +41,7 @@ enum EndToEndTest: CaseIterable {
             return "Send device fingerprints on POST Session call"
         }
     }
-    
+
     static var allCases: [EndToEndTest] {
         return [.deviceFingerprintsOnPostSession]
     }
@@ -51,7 +51,7 @@ final class EndToEndViewController: UIViewController,
                                     UIPickerViewDataSource,
                                     UIPickerViewDelegate,
                                     AccessibleView, AuthDelegate {
-    
+
     @IBOutlet private var activityIndicatorView: UIView!
     @IBOutlet private var tokenRefreshStackView: UIStackView!
     @IBOutlet private var accountDetailsLabel: UILabel!
@@ -63,20 +63,20 @@ final class EndToEndViewController: UIViewController,
     @IBOutlet private var credentialsUsernameTextField: UITextField!
     @IBOutlet private var credentialsPasswordTextField: UITextField!
     @IBOutlet var environmentSelector: EnvironmentSelector!
-    
+
     private var selectedTest: EndToEndTest?
     private var createdAccountDetails: CreatedAccountDetails? {
         didSet {
             tokenRefreshStackView.isHidden = createdAccountDetails == nil
         }
     }
-    
+
     private var credential: Credential?
     var authSessionInvalidatedDelegateForLoginAndSignup: AuthSessionInvalidatedDelegate?
-    
+
     private let serviceDelegate = ExampleAPIServiceDelegate()
     private var quarkCommands: QuarkCommands { QuarkCommands(env: environmentSelector.currentEnvironment) }
-    
+
     private lazy var authenticator: Authenticator = {
         let env = environmentSelector.currentEnvironment
         let api = PMAPIService.createAPIServiceWithoutSession(environment: env,
@@ -85,7 +85,7 @@ final class EndToEndViewController: UIViewController,
         api.serviceDelegate = self.serviceDelegate
         return .init(api: api)
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if let dynamicDomain = ProcessInfo.processInfo.environment["DYNAMIC_DOMAIN"] {
@@ -97,7 +97,7 @@ final class EndToEndViewController: UIViewController,
         selectedTest = EndToEndTest.allCases.first
         generateAccessibilityIdentifiers()
     }
-    
+
     @IBAction func onCredentialsChanged(_ sender: Any) {
         switch credentialsSelector.selectedSegmentIndex {
         case 0:
@@ -108,14 +108,14 @@ final class EndToEndViewController: UIViewController,
             assertionFailure("Misconfiguration in \(#file), \(#function), \(#line)")
         }
     }
-    
+
     @IBAction func runTests(_ sender: Any) {
         testDeviceFingerprintsOnPostSession()
     }
-    
+
     func testDeviceFingerprintsOnPostSession() {
         let env = environmentSelector.currentEnvironment
-        let api = PMAPIService.createAPIServiceWithoutSession(environment: env, 
+        let api = PMAPIService.createAPIServiceWithoutSession(environment: env,
                                                               challengeParametersProvider: .forAPIService(clientApp: clientApp, challenge: PMChallenge()))
         api.authDelegate = self
         api.serviceDelegate = self.serviceDelegate
@@ -150,35 +150,35 @@ final class EndToEndViewController: UIViewController,
             self.display(message: output)
         }
     }
-    
+
     @IBAction func copyLog() {
         let log = self.accountDetailsLabel.text
         UIPasteboard.general.string = log
     }
-    
+
     @IBAction func clearLog() {
         self.accountDetailsLabel.text = ""
     }
-    
+
     private func showLoadingIndicator() {
         DispatchQueue.main.async {
             self.accountDetailsLabel.text = ""
             self.activityIndicatorView.isHidden = false
         }
     }
-    
+
     private func hideLoadingIndicator() {
         DispatchQueue.main.async {
             self.activityIndicatorView.isHidden = true
         }
     }
-    
+
     private func display(message: String) {
         DispatchQueue.main.async {
             self.accountDetailsLabel.text = message
         }
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
         label.text = EndToEndTest.allCases[row].description
@@ -187,30 +187,30 @@ final class EndToEndViewController: UIViewController,
         label.font = .systemFont(ofSize: UIFont.labelFontSize)
         return label
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         UIFont.labelFontSize * 3
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         EndToEndTest.allCases.count
     }
-    
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
-    
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedTest = EndToEndTest.allCases[row]
     }
-    
+
     // MARK: - AuthDelegate
     func authCredential(sessionUID: String) -> AuthCredential? {
         credential.map(AuthCredential.init)
     }
-    
+
     func credential(sessionUID: String) -> Credential? {
         credential
     }
-    
+
     func onAuthenticatedSessionInvalidated(sessionUID uid: String) {
         credential = nil
     }
@@ -218,7 +218,7 @@ final class EndToEndViewController: UIViewController,
     func onUnauthenticatedSessionInvalidated(sessionUID: String) {
         credential = nil
     }
-    
+
     func onUpdate(credential: Credential, sessionUID: String) {
         self.credential = credential
     }
@@ -228,7 +228,7 @@ final class EndToEndViewController: UIViewController,
     }
 
     func onAdditionalCredentialsInfoObtained(sessionUID: String, password: String?, salt: String?, privateKey: String?) {
-        
+
     }
 
     var delegate: AuthHelperDelegate?
@@ -239,7 +239,7 @@ extension Data {
         guard let object = try? JSONSerialization.jsonObject(with: self, options: []),
               let data = try? JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted]),
               let prettyPrintedString = String(data: data, encoding: .utf8) else { return nil }
-        
+
         return prettyPrintedString
     }
 }

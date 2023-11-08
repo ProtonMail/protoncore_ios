@@ -26,7 +26,7 @@ import SwiftUI
 @available(iOS 13.0, *)
 public struct TelemetrySection: View {
     @ObservedObject private var viewModel: TelemetrySettingsViewModel
-    
+
     public init(delegate: TelemetrySettingsDelegate?,
                 telemetrySettingsService: TelemetrySettingsService) {
         viewModel = TelemetrySettingsViewModel(delegate: delegate, telemetrySettingsService: telemetrySettingsService)

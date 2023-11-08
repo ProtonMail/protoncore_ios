@@ -31,12 +31,12 @@ import ProtonCoreQuarkCommands
 import ProtonCoreObfuscatedConstants
 
 final class AccountDeletionTests: AccountDeletionBaseTestCase {
-    
+
     let defaultTestOwnerID = ObfuscatedConstants.orgAdminUserId
     let defaultTestOwnerPassword = ObfuscatedConstants.orgAdminUserPassword
-    
+
     // MARK: - Deletion flow is available
-    
+
     func testAccountDeletionCanBeClosed() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.freeNoAddressNoKeys())
@@ -49,7 +49,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .tapCancelButton(to: AccountDeletionButtonRobot.self)
             .verify.accountDeletionButtonIsDisplayed(type: .button)
     }
-    
+
     func testAccountDeletionIsClosableEvenWhenValidationFails() throws {
         let (robot, password, _, _) = appRobot
             .switchPickerToAccount(.freeNoAddressNoKeys())
@@ -63,7 +63,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .tapBackButton(to: AccountDeletionButtonRobot.self)
             .verify.accountDeletionButtonIsDisplayed(type: .button)
     }
-    
+
     func testAccountDeletionNeedsConfirmation() throws {
         let (robot, password, _, _) = appRobot
             .switchPickerToAccount(.freeNoAddressNoKeys())
@@ -80,7 +80,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .tapDeleteAccountButton(to: AccountDeletionButtonRobot.self)
             .verify.accountDeletionButtonIsNotShown(type: .button)
     }
-    
+
     func testAccountDeletionNeedsReason() throws {
         let (robot, password, _, _) = appRobot
             .switchPickerToAccount(.freeNoAddressNoKeys())
@@ -97,7 +97,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .tapDeleteAccountButton(to: AccountDeletionButtonRobot.self)
             .verify.accountDeletionButtonIsNotShown(type: .button)
     }
-    
+
     func testAccountDeletionNeedsExplaination() throws {
         let (robot, password, _, _) = appRobot
             .switchPickerToAccount(.freeNoAddressNoKeys())
@@ -114,7 +114,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .tapDeleteAccountButton(to: AccountDeletionButtonRobot.self)
             .verify.accountDeletionButtonIsNotShown(type: .button)
     }
-    
+
     func testAccountDeletionNeedsEmail() throws {
         let (robot, password, _, _) = appRobot
             .switchPickerToAccount(.freeNoAddressNoKeys())
@@ -131,7 +131,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .tapDeleteAccountButton(to: AccountDeletionButtonRobot.self)
             .verify.accountDeletionButtonIsNotShown(type: .button)
     }
-    
+
     func testAccountDeletionNeedsPassword() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.freeNoAddressNoKeys())
@@ -149,9 +149,9 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .tapDeleteAccountButton(to: AccountDeletionButtonRobot.self)
             .verify.accountDeletionButtonIsNotShown(type: .button)
     }
-    
+
     // MARK: - Deletion works when it should work
-    
+
     //    public static func freeNoAddressNoKeys(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -159,7 +159,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              password: password ?? .random,
     //              description: "Free account with no address nor keys")
     //    }
-    
+
     func testAccountIsDeleted_FreeNoAddressNoKeys() throws {
         let (robot, password, _, _) = appRobot
             .switchPickerToAccount(.freeNoAddressNoKeys())
@@ -168,7 +168,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .performAccountDeletion(password: password, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionWasSuccessful()
     }
-    
+
     //    public static func freeWithAddressButWithoutKeys(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -177,7 +177,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressButNoKeys,
     //              description: "Free with address but without keys")
     //    }
-    
+
     func testAccountIsDeleted_FreeWithAddressButWithoutKeys() throws {
         let (robot, password, _, _) = appRobot
             .switchPickerToAccount(.freeWithAddressButWithoutKeys())
@@ -186,7 +186,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .performAccountDeletion(password: password, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionWasSuccessful()
     }
-    
+
     //    public static func freeWithAddressAndKeys(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -195,7 +195,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Free with address and keys")
     //    }
-    
+
     func testAccountIsDeleted_FreeWithAddressAndKeys() throws {
         let (robot, password, _, _) = appRobot
             .switchPickerToAccount(.freeWithAddressAndKeys())
@@ -204,7 +204,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .performAccountDeletion(password: password, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionWasSuccessful()
     }
-    
+
     //    public static func freeWithAddressAndMailboxPassword(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -214,7 +214,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              mailboxPassword: .random,
     //              description: "Free account with mailbox password")
     //    }
-    
+
     func testAccountIsDeleted_FreeWithAddressAndMailboxPassword() throws {
         let (robot, password, _, _) = appRobot
             .switchPickerToAccount(.freeWithAddressAndMailboxPassword())
@@ -223,7 +223,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .performAccountDeletion(password: password, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionWasSuccessful()
     }
-    
+
 //    public static func externalNoKeys(
 //        email: String? = nil, password: String? = nil
 //    ) -> AccountAvailableForCreation {
@@ -232,7 +232,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
 //              password: password ?? .random,
 //              description: "External account with no keys")
 //    }
-    
+
     func testAccountIsDeleted_External() throws {
         let (robot, password, _, _) = appRobot
             .switchPickerToAccount(.external())
@@ -241,7 +241,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .performAccountDeletion(password: password, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionWasSuccessful()
     }
-    
+
     //    public static func paid(
     //        plan: String, username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -250,7 +250,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              password: password ?? .random,
     //              description: "Paid with plan \(plan)")
     //    }
-    
+
     func testAccountIsDeleted_Paid_Plus() throws {
         let password = randomPassword
         appRobot
@@ -260,7 +260,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .performAccountDeletion(password: password, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionWasSuccessful()
     }
-    
+
     func testAccountIsDeleted_Paid_VPNBasic() throws {
         let password = randomPassword
         appRobot
@@ -270,7 +270,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .performAccountDeletion(password: password, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionWasSuccessful()
     }
-    
+
     func testAccountIsDeleted_Paid_VPNPlus() throws {
         let password = randomPassword
         appRobot
@@ -280,7 +280,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .performAccountDeletion(password: password, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionWasSuccessful()
     }
-    
+
     func testAccountIsDeleted_Paid_Professional() throws {
         let password = randomPassword
         appRobot
@@ -290,7 +290,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .performAccountDeletion(password: password, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionWasSuccessful()
     }
-    
+
     func testAccountIsDeleted_Paid_Visionary() throws {
         let password = randomPassword
         appRobot
@@ -300,7 +300,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .performAccountDeletion(password: password, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionWasSuccessful()
     }
-    
+
     //    public static func vpnAdminWithAddressAndKeys(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -310,7 +310,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "VPN admin account with address and keys")
     //    }
-    
+
     func testAccountIsDeleted_VpnAdminWithAddressAndKeys() throws {
         let (robot, password, _, _) = appRobot
             .switchPickerToAccount(.vpnAdminWithAddressAndKeys())
@@ -319,7 +319,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .performAccountDeletion(password: password, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionWasSuccessful()
     }
-    
+
     //    public static func adminWithAddressAndKeys(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -329,7 +329,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Admin account with address and keys")
     //    }
-    
+
     func testAccountIsDeleted_AdminWithAddressAndKeys() throws {
         let (robot, password, _, _) = appRobot
             .switchPickerToAccount(.adminWithAddressAndKeys())
@@ -338,7 +338,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .performAccountDeletion(password: password, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionWasSuccessful()
     }
-    
+
     //    public static func superWithAddressAndKeys(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -348,7 +348,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Super account with address and keys")
     //    }
-    
+
     func testAccountIsDeleted_SuperWithAddressAndKeys() throws {
         let (robot, password, _, _) = appRobot
             .switchPickerToAccount(.superWithAddressAndKeys())
@@ -357,9 +357,9 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .performAccountDeletion(password: password, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionWasSuccessful()
     }
-    
+
     // MARK: - Deletion doesn't works when it should not work
-    
+
     //    public static func deletedWithAddressAndKeys(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -369,7 +369,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Deleted account with address and keys")
     //    }
-    
+
     func testAccountDeletionFails_DeletedWithAddressAndKeys() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.deletedWithAddressAndKeys())
@@ -379,7 +379,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func disabledWithAddressAndKeys(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -389,7 +389,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Disabled account with address and keys")
     //    }
-    
+
     func testAccountDeletionFails_DisabledWithAddressAndKeys() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.disabledWithAddressAndKeys())
@@ -399,7 +399,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func subuserPublic(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -409,20 +409,20 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Subuser public account")
     //    }
-    
+
     func testAccountDeletionFails_SubuserPublic() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.subuserPublic(ownerUserId: "", ownerUserPassword: ""))
             .fillInCustomCredentials(username: randomName, password: randomPassword,
                                      ownerId: defaultTestOwnerID, ownerPassword: defaultTestOwnerPassword)
             .createAccount()
-        
+
         robot
             .verify.accountDeletionButtonIsDisplayed(type: .button)
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func subuserPrivate(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -432,7 +432,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Subuser private account")
     //    }
-    
+
     func testAccountDeletionFails_SubuserPrivate() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.subuserPrivate(ownerUserId: "", ownerUserPassword: ""))
@@ -444,7 +444,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func deletedSubuserPrivate(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -454,7 +454,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Subuser deleted private account")
     //    }
-    
+
     func testAccountDeletionFails_DeletedSubuserPrivate() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.deletedSubuserPrivate(ownerUserId: "", ownerUserPassword: ""))
@@ -466,7 +466,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func disabledSubuserPrivate(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -476,7 +476,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Subuser disabled private account")
     //    }
-    
+
     func testAccountDeletionFails_DisabledSubuserPrivate() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.disabledSubuserPrivate(ownerUserId: "", ownerUserPassword: ""))
@@ -488,7 +488,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func baseAdminSubuserPrivate(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -498,7 +498,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Subuser baseAdmin private account")
     //    }
-    
+
     func testAccountDeletionFails_BaseAdminSubuserPrivate() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.baseAdminSubuserPrivate(ownerUserId: "", ownerUserPassword: ""))
@@ -510,7 +510,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func adminSubuserPrivate(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -520,7 +520,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Subuser admin private account")
     //    }
-    
+
     func testAccountDeletionFails_AdminSubuserPrivate() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.adminSubuserPrivate(ownerUserId: "", ownerUserPassword: ""))
@@ -532,7 +532,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func superSubuserPrivate(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -542,7 +542,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Subuser super private account")
     //    }
-    
+
     func testAccountDeletionFails_SuperSubuserPrivate() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.superSubuserPrivate(ownerUserId: "", ownerUserPassword: ""))
@@ -554,7 +554,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func abuserSubuserPrivate(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -564,7 +564,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Subuser abuser private account")
     //    }
-    
+
     func testAccountDeletionFails_AbuserSubuserPrivate() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.abuserSubuserPrivate(ownerUserId: "", ownerUserPassword: ""))
@@ -576,7 +576,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func restrictedSubuserPrivate(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -586,7 +586,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Subuser restricted private account")
     //    }
-    
+
     func testAccountDeletionFails_RestrictedSubuserPrivate() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.restrictedSubuserPrivate(ownerUserId: "", ownerUserPassword: ""))
@@ -598,7 +598,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func bulkSenderSubuserPrivate(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -608,7 +608,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Subuser bulkSender private account")
     //    }
-    
+
     func testAccountDeletionFails_BulkSenderSubuserPrivate() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.bulkSenderSubuserPrivate(ownerUserId: "", ownerUserPassword: ""))
@@ -620,7 +620,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func ransomwareSubuserPrivate(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -630,7 +630,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Subuser ransomware private account")
     //    }
-    
+
     func testAccountDeletionFails_RansomwareSubuserPrivate() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.ransomwareSubuserPrivate(ownerUserId: "", ownerUserPassword: ""))
@@ -642,7 +642,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func compromisedSubuserPrivate(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -652,7 +652,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Subuser compromised private account")
     //    }
-    
+
     func testAccountDeletionFails_CompromisedSubuserPrivate() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.compromisedSubuserPrivate(ownerUserId: "", ownerUserPassword: ""))
@@ -664,7 +664,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func bulkSignupSubuserPrivate(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -674,7 +674,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Subuser bulkSignup private account")
     //    }
-    
+
     func testAccountDeletionFails_BulkSignupSubuserPrivate() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.bulkSignupSubuserPrivate(ownerUserId: "", ownerUserPassword: ""))
@@ -686,7 +686,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func bulkDisabledSubuserPrivate(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -696,7 +696,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Subuser bulkDisabled private account")
     //    }
-    
+
     func testAccountDeletionFails_BulkDisabledSubuserPrivate() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.bulkDisabledSubuserPrivate(ownerUserId: "", ownerUserPassword: ""))
@@ -708,7 +708,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func criminalSubuserPrivate(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -718,7 +718,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Subuser criminal private account")
     //    }
-    
+
     func testAccountDeletionFails_CriminalSubuserPrivate() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.criminalSubuserPrivate(ownerUserId: "", ownerUserPassword: ""))
@@ -730,7 +730,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func chargeBackSubuserPrivate(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -740,7 +740,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Subuser chargeBack private account")
     //    }
-    
+
     func testAccountDeletionFails_ChargeBackSubuserPrivate() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.chargeBackSubuserPrivate(ownerUserId: "", ownerUserPassword: ""))
@@ -752,7 +752,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func inactiveSubuserPrivate(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -762,7 +762,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Subuser inactive private account")
     //    }
-    
+
     func testAccountDeletionFails_InactiveSubuserPrivate() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.inactiveSubuserPrivate(ownerUserId: "", ownerUserPassword: ""))
@@ -774,7 +774,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func forcePasswordChangeSubuserPrivate(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -784,7 +784,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Subuser forcePasswordChange private account")
     //    }
-    
+
     func testAccountDeletionFails_ForcePasswordChangeSubuserPrivate() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.forcePasswordChangeSubuserPrivate(ownerUserId: "", ownerUserPassword: ""))
@@ -796,7 +796,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func selfDeletedSubuserPrivate(
     //        username: String? = nil, password: String? = nil
     //    ) -> AccountAvailableForCreation {
@@ -806,7 +806,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Subuser selfDeleted private account")
     //    }
-    
+
     func testAccountDeletionFails_SelfDeletedSubuserPrivate() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.selfDeletedSubuserPrivate(ownerUserId: "", ownerUserPassword: ""))
@@ -818,7 +818,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func csaSubuserPrivate(
     //        username: String?, password: String?
     //    ) -> AccountAvailableForCreation {
@@ -828,7 +828,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Subuser csa private account")
     //    }
-    
+
     func testAccountDeletionFails_CsaSubuserPrivate() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.csaSubuserPrivate(ownerUserId: "", ownerUserPassword: ""))
@@ -840,7 +840,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .openAccountDeletionWebView(type: .button, to: AccountDeletionSampleAppRobot.self)
             .verifyAccountDeletionFailed()
     }
-    
+
     //    public static func spammerSubuserPrivate(
     //        username: String?, password: String?
     //    ) -> AccountAvailableForCreation {
@@ -850,7 +850,7 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
     //              address: .addressWithKeys(type: .curve25519),
     //              description: "Subuser spammer private account")
     //    }
-    
+
     func testAccountDeletionFails_SpammerSubuserPrivate() throws {
         let (robot, _, _, _) = appRobot
             .switchPickerToAccount(.spammerSubuserPrivate(ownerUserId: "", ownerUserPassword: ""))

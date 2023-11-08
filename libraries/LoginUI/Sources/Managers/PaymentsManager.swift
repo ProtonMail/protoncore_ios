@@ -38,7 +38,7 @@ class PaymentsManager {
     private(set) var selectedPlan: InAppPurchasePlan?
     private var loginData: LoginData?
     private weak var existingDelegate: StoreKitManagerDelegate?
-    
+
     init(apiService: APIService,
          iaps: ListOfIAPIdentifiers,
          shownPlanNames: ListOfShownPlanNames,
@@ -65,7 +65,7 @@ class PaymentsManager {
             payments: payments, clientApp: clientApp, shownPlanNames: shownPlanNames, customization: customization
         )
     }
-    
+
     func startPaymentProcess(signupViewController: SignupViewController,
                              planShownHandler: (() -> Void)?,
                              completionHandler: @escaping (Result<(), Error>) -> Void) {
@@ -118,7 +118,7 @@ class PaymentsManager {
             }
         })
     }
-    
+
     func finishPaymentProcess(loginData: LoginData,
                               completionHandler: @escaping (Result<(InAppPurchasePlan?), Error>) -> Void) {
         self.loginData = loginData
@@ -169,11 +169,11 @@ class PaymentsManager {
     private func storeExistingDelegate() {
         existingDelegate = payments.storeKitManager.delegate
     }
-    
+
     private func restoreExistingDelegate() {
         payments.storeKitManager.delegate = existingDelegate
     }
-    
+
     func planTitle(plan: InAppPurchasePlan?) -> String? {
         guard let plan else { return nil }
 
@@ -207,20 +207,20 @@ extension PaymentsManager: StoreKitManagerDelegate {
 class TokenStorageImp: PaymentTokenStorage {
     public static var `default` = TokenStorageImp()
     var token: PaymentToken?
-    
+
     func add(_ token: PaymentToken) {
         self.token = token
     }
-    
+
     func get() -> PaymentToken? {
         return token
     }
-    
+
     func clear() {
         self.token = nil
     }
 }
-    
+
 class DataStorageImpl: ServicePlanDataStorage {
     var servicePlansDetails: [Plan]?
     var defaultPlanDetails: Plan?
@@ -246,7 +246,7 @@ extension PaymentErrorCapable {
             showBanner(message: errorDescription)
         }
     }
-    
+
     func showBanner(message: String, button: String? = nil, action: (() -> Void)? = nil) {
         showBanner(message: message, button: button, action: action, position: bannerPosition)
     }

@@ -39,9 +39,9 @@ class NSCoderExtTests: XCTestCase {
             var test3: String? = "Test3"
             var test4: String? = "Test4"
             var test5: String?
-            
+
             override init() { }
-            
+
             required init?(coder: NSCoder) {
                 self.test1 = coder.string(forKey: "Key1")
                 self.test2 = coder.string(forKey: "Key2")
@@ -49,7 +49,7 @@ class NSCoderExtTests: XCTestCase {
                 self.test4 = coder.string(forKey: "Key4")
                 self.test5 = coder.string(forKey: "Key5")
             }
-            
+
             func encode(with coder: NSCoder) {
                 coder.encode(test1, forKey: "Key1")
                 coder.encode(test2, forKey: "Key2")
@@ -61,7 +61,7 @@ class NSCoderExtTests: XCTestCase {
 
         let test = Test()
         let archivedData = NSKeyedArchiver.archivedData(withRootObject: test)
-        
+
         // load tasks
         let outTest = NSKeyedUnarchiver.unarchiveObject(with: archivedData) as? Test
         XCTAssertNotNil(outTest)

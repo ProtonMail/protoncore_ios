@@ -15,7 +15,7 @@ import ProtonCoreTestingToolkit
 #endif
 
 class HumanVerificationTests: NetworkingBaseTestCase {
-    
+
     func testHumanVerificationV2IsClosable() {
         appRobot
             .humanVerificationUnauthShow()

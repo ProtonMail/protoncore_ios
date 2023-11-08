@@ -28,11 +28,11 @@ class FileMobileReader: NSObject, HelperMobileReaderProtocol {
         case failedToCreateCryptoHelper
     }
     let file: FileHandle
-    
+
     init(file: FileHandle) {
         self.file = file
     }
-    
+
     func read(_ max: Int) throws -> HelperMobileReadResult {
         let data = self.file.readData(ofLength: max)
         guard let helper = CryptoGo.HelperMobileReadResult(data.count, eof: data.isEmpty, data: data) else {

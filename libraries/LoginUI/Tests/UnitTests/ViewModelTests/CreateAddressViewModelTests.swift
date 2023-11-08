@@ -59,11 +59,11 @@ class CreateAddressViewModelTests: XCTestCase {
     var viewModel: CreateAddressViewModel!
     var loginMock: LoginMock!
     var api: PMAPIService!
-    
+
     let key1 = Key(keyID: "keyID1", privateKey: "privateKey")
     let key2 = Key(keyID: "keyID2", privateKey: "privateKey")
     let credential = AuthCredential(LoginTestUser.credential)
-    
+
     override func setUpWithError() throws {
         try super.setUpWithError()
         injectDefaultCryptoImplementation()
@@ -74,7 +74,7 @@ class CreateAddressViewModelTests: XCTestCase {
         api.authDelegate = authDelegate
         api.serviceDelegate = serviceDelegate
     }
-    
+
     func testSetUsernameUsernameAlreadyUsed() {
         loginMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
             completion(.failure(AvailabilityError.notAvailable(message: "Username already used")))
@@ -125,7 +125,7 @@ class CreateAddressViewModelTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     func testSetUsernameSetUsernameGenericError() {
         loginMock.checkAvailabilityForInternalAccountStub.bodyIs { _, _, completion in
             completion(.success)

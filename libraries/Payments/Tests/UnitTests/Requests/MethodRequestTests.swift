@@ -41,18 +41,18 @@ import ProtonCoreNetworking
 @testable import ProtonCorePayments
 
 final class MethodRequestTests: XCTestCase {
-    
+
     override func setUpWithError() throws {
         try super.setUpWithError()
         HTTPStubs.setEnabled(true)
     }
-        
+
     override func tearDown() {
         super.tearDown()
         HTTPStubs.removeAllStubs()
         PMLog.callback = nil
     }
-    
+
     class TestAPIServiceDelegate: APIServiceDelegate {
         var locale: String { return "en_US" }
         func isReachable() -> Bool { return true }
@@ -65,7 +65,7 @@ final class MethodRequestTests: XCTestCase {
             PMLog.info("\(#file): \(#function)")
         }
     }
-    
+
     class TestAuthDelegate: AuthDelegate {
         func onSessionObtaining(credential: Credential) {}
         func onAdditionalCredentialsInfoObtained(sessionUID: String, password: String?, salt: String?, privateKey: String?) {}
@@ -82,7 +82,7 @@ final class MethodRequestTests: XCTestCase {
             AuthCredential(sessionID: "sessionID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", privateKey: nil, passwordKeySalt: nil)
         }
     }
-    
+
     var responsePaymentMethods: String {
         return """
             {
@@ -107,12 +107,12 @@ final class MethodRequestTests: XCTestCase {
             }
         """
     }
-    
+
     func testPaymentMethodsLog() {
         let queue = DispatchQueue.global(qos: .userInitiated)
         let expectation1 = self.expectation(description: "Success completion block called")
         let expectation2 = self.expectation(description: "Log callback")
-        
+
         stub(condition: isMethodGET() && isPath("/api/payments/v4/methods")) { request in
             let body = self.responsePaymentMethods.data(using: String.Encoding.utf8)!
             let headers = ["Content-Type": "application/json;charset=utf-8"]

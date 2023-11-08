@@ -35,7 +35,7 @@ public enum SubscriptionCTA: TranslationsExposing {
         assertionFailure("You're not supposed to localize this enum directly. Please use the title, description, buttonText properties instead.")
         return ""
     }
-    
+
     public static var bundle: Bundle {
 #if SPM
         return Bundle.module
@@ -45,7 +45,7 @@ public enum SubscriptionCTA: TranslationsExposing {
     }
 
     public static var prefixForMissingValue: String = ""
-    
+
     /// the user can upgrade to a paid subscription
     case upgrade
     /// the user can cancel the current IAP subscription

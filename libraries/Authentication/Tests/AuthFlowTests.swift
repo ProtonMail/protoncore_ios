@@ -34,21 +34,21 @@ import ProtonCoreDataModel
 @testable import ProtonCoreAuthentication
 
 class AuthFlowTests: XCTestCase {
-    
+
     var authenticatorMock: AuthenticatorMock!
 
     let testCredential = Credential(UID: "testUID", accessToken: "testAccessToken", refreshToken: "testRefreshToken", userName: "testUserName", userID: "testUserID", scopes: ["testScope"])
     let refreshCredential = Credential(UID: "testUID", accessToken: "testAccessTokenRefresh", refreshToken: "testRefreshTokenRefresh", userName: "testUserName", userID: "testUserID", scopes: ["testScope"])
     let testExternalAddress = Address(addressID: "123456", domainID: "test", email: "test@user.ch", send: .active, receive: .active, status: .enabled, type: .externalAddress, order: 0, displayName: "TEST", signature: "", hasKeys: 0, keys: [])
     let timeout = 1.0
-    
+
     override func setUp() {
         super.setUp()
         authenticatorMock = AuthenticatorMock()
     }
-    
+
     var authCredential: AuthCredential?
-    
+
     func testAutoAuthRefresh() {
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
@@ -62,7 +62,7 @@ class AuthFlowTests: XCTestCase {
         authenticatorMock.closeSessionStub.bodyIs { _, _, completion in
             completion(.success(AuthService.EndSessionResponse(code: 1000)))
         }
-        
+
         let expect = expectation(description: "AuthInfo + Auth")
         authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, intent: nil, srpAuth: nil) { result in
             switch result {
@@ -134,7 +134,7 @@ class AuthFlowTests: XCTestCase {
         let result = XCTWaiter.wait(for: [expect], timeout: timeout)
         XCTAssertTrue( result == .completed )
     }
-    
+
     func testAutoAuthRefreshRaceCondition() {
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, _, completion in
             completion(.success(.newCredential(self.testCredential, .one)))
@@ -207,13 +207,13 @@ class AuthFlowTests: XCTestCase {
         let result = XCTWaiter.wait(for: [expect0, expect1, expect2], timeout: timeout)
         XCTAssertTrue( result == .completed )
     }
-    
+
     func testAuthInvalidAccessTokenError() {
         let underlyingError = NSError(domain: "ProtonCore-Networking", code: 10013, localizedDescription: "Invalid refresh token")
         let error = AuthErrors.networkingError(.init(httpCode: 401, responseCode: nil, userFacingMessage: nil, underlyingError: underlyingError))
         XCTAssertTrue(error.isInvalidAccessToken)
     }
-    
+
     func testAuthNetworkingNotInvalidAccessTokenError() {
         let underlyingError = NSError(domain: "ProtonCore-Networking", code: 100, localizedDescription: "test")
         let error = AuthErrors.networkingError(.init(httpCode: 300, responseCode: nil, userFacingMessage: nil, underlyingError: underlyingError))
