@@ -137,12 +137,12 @@ public enum LoginResult {
 // API that returns data as soon as possible
 public enum LoginState {
     case dataIsAvailable(LoginData)
-    case loginFinished
+    case loginFinished(LoginData)
 }
 
 public enum SignupState {
     case dataIsAvailable(LoginData)
-    case signupFinished
+    case signupFinished(LoginData?)
 }
 
 public enum LoginAndSignupResult {
