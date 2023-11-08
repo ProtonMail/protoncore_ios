@@ -4,6 +4,11 @@ import PackageDescription
 
 var products: [Product] = []
 var targets: [Target] = []
+var plugins: [Target.PluginUsage] = []
+
+#if os(iOS) // SwiftLint is only supported on macOS 12.0+
+plugins = [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]
+#endif
 
 func products(from newProduct: String) -> [Product] {
     let products: [Product] = [
@@ -302,7 +307,7 @@ add(
                     .process("Shared/Resources")
                 ],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .accountDeletion + "Tests",
                     dependencies: [
@@ -314,7 +319,7 @@ add(
                     ],
                     path: "libraries/AccountDeletion/Tests/UnitTests",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                    plugins: plugins),
 
         .testTarget(name: .accountDeletion + "LocalizationTests",
                     dependencies: [
@@ -323,7 +328,7 @@ add(
                     ],
                     path: "libraries/AccountDeletion/Tests/LocalizationTests",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -346,7 +351,7 @@ add(
                 path: "libraries/AccountRecovery/Sources",
                 resources: [.process("Resources")],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .accountRecovery + "Tests",
                     dependencies: [
@@ -355,7 +360,7 @@ add(
                     path: "libraries/AccountRecovery/Tests",
                     resources: [.process("Resources")],
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -376,7 +381,7 @@ add(
                     .process("Resources")
                 ],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .target(name: .accountSwitcherResourcesiOS,
                 path: "libraries/AccountSwitcher/Resources-iOS",
@@ -384,7 +389,7 @@ add(
                     .process("Resources")
                 ],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .accountSwitcher + "Tests",
                     dependencies: [
@@ -394,7 +399,7 @@ add(
                     path: "libraries/AccountSwitcher/Tests/UnitTests",
                     exclude: ["__Snapshots__"],
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                    plugins: plugins),
 
         .testTarget(name: .accountSwitcher + "LocalizationTests",
                     dependencies: [
@@ -403,7 +408,7 @@ add(
                     ],
                     path: "libraries/AccountSwitcher/Tests/LocalizationTests",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -420,7 +425,7 @@ add(
                 ],
                 path: "libraries/APIClient/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .apiClient + "Tests",
                     dependencies: [
@@ -438,7 +443,7 @@ add(
                     path: "libraries/APIClient/Tests",
                     resources: [.process("TestData")],
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -457,7 +462,7 @@ add(
                 ],
                 path: "libraries/Authentication-KeyGeneration/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .authenticationKeyGeneration + "Tests",
                     dependencies: [
@@ -470,7 +475,7 @@ add(
                     path: "libraries/Authentication-KeyGeneration/Tests",
                     resources: [.process("TestData")],
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -489,7 +494,7 @@ add(
                 ],
                 path: "libraries/Authentication/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .authentication + "Tests",
                     dependencies: [
@@ -502,7 +507,7 @@ add(
                     ],
                     path: "libraries/Authentication/Tests",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -519,7 +524,7 @@ add(
                 ],
                 path: "libraries/Challenge/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
         
         .testTarget(name: .challenge + "Tests",
                     dependencies: [
@@ -527,7 +532,7 @@ add(
                     ],
                     path: "libraries/Challenge/Tests",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -544,7 +549,7 @@ add(
                 ],
                 path: "libraries/Common/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                plugins: plugins)
     ]
 )
 
@@ -560,7 +565,7 @@ add(
                 ],
                 path: "libraries/Crypto/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .crypto + "Tests",
                     dependencies: [
@@ -573,7 +578,7 @@ add(
                         .process("Resources")
                     ],
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                    plugins: plugins),
     ]
 )
 
@@ -594,7 +599,7 @@ add(
                 ],
                 path: "libraries/CryptoGoImplementation/Crypto-Go",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .target(name: .cryptoPatchedGoImplementation,
                 dependencies: [
@@ -603,7 +608,7 @@ add(
                 ],
                 path: "libraries/CryptoGoImplementation/Crypto-patched-Go",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .target(name: .cryptoVPNPatchedGoImplementation,
                 dependencies: [
@@ -612,7 +617,7 @@ add(
                 ],
                 path: "libraries/CryptoGoImplementation/Crypto+VPN-patched-Go",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .target(name: .cryptoSearchGoImplementation,
                 dependencies: [
@@ -621,7 +626,7 @@ add(
                 ],
                 path: "libraries/CryptoGoImplementation/Crypto+Search-Go",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .cryptoGoImplementation + "Tests",
                     dependencies: [
@@ -631,7 +636,7 @@ add(
                     ],
                     path: "libraries/CryptoGoImplementation/Tests-Crypto-Go",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                    plugins: plugins),
 
         .testTarget(name: .cryptoPatchedGoImplementation + "Tests",
                     dependencies: [
@@ -641,7 +646,7 @@ add(
                     ],
                     path: "libraries/CryptoGoImplementation/Tests-Crypto-patched-Go",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                    plugins: plugins),
 
         .testTarget(name: .cryptoVPNPatchedGoImplementation + "Tests",
                     dependencies: [
@@ -651,7 +656,7 @@ add(
                     ],
                     path: "libraries/CryptoGoImplementation/Tests-Crypto+VPN-patched-Go",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                    plugins: plugins),
 
         .testTarget(name: .cryptoSearchGoImplementation + "Tests",
                     dependencies: [
@@ -661,7 +666,7 @@ add(
                     ],
                     path: "libraries/CryptoGoImplementation/Tests-Crypto+Search-Go",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -673,7 +678,7 @@ add(
         .target(name: .cryptoGoInterface,
                 path: "libraries/CryptoGoInterface/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                plugins: plugins)
     ]
 )
 
@@ -688,7 +693,7 @@ add(
                 ],
                 path: "libraries/DataModel/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
         
         .testTarget(name: .dataModel + "Tests",
                     dependencies: [
@@ -697,7 +702,7 @@ add(
                     ],
                     path: "libraries/DataModel/Tests",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -714,7 +719,7 @@ add(
             ],
             path: "libraries/DoH/Sources",
             swiftSettings: .spm,
-            plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+            plugins: plugins),
         
         .testTarget(name: .doh + "UnitTests",
                     dependencies: [
@@ -728,7 +733,7 @@ add(
                     ],
                     path: "libraries/Doh/Tests/Unit",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                    plugins: plugins),
 
         .testTarget(name: .doh + "IntegrationTests",
                     dependencies: [
@@ -742,7 +747,7 @@ add(
                     ],
                     path: "libraries/Doh/Tests/Integration",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -758,7 +763,7 @@ add(
             ],
             path: "libraries/Environment/Sources",
             swiftSettings: .spm,
-            plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+            plugins: plugins),
 
         .testTarget(name: .environment + "Tests",
                     dependencies: [
@@ -768,7 +773,7 @@ add(
                     ],
                     path: "libraries/Environment/Tests",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -789,7 +794,7 @@ add(
             ],
             path: "libraries/Features/Sources",
             swiftSettings: .spm,
-            plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+            plugins: plugins)
     ]
 )
 
@@ -805,7 +810,7 @@ add(
             ],
             path: "libraries/FeatureFlags/Sources",
             swiftSettings: .spm,
-            plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+            plugins: plugins),
         
         .testTarget(name: .featureFlags + "Tests",
                     dependencies: [
@@ -815,7 +820,7 @@ add(
                     path: "libraries/FeatureFlags/Tests",
                     resources: [.process("FeatureFlagsTests/QueryResources")],
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -834,7 +839,7 @@ add(
                 sources: ["Sources"],
                 resources: [.process("Resources"), ],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .featureSwitch + "Tests",
                     dependencies: [
@@ -846,7 +851,7 @@ add(
                     path: "libraries/FeatureSwitch/Tests",
                     resources: [.process("Resources")],
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -865,7 +870,7 @@ add(
                     .process("Shared/Resources")
                 ],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .forceUpgrade + "Tests",
                     dependencies: [
@@ -874,7 +879,7 @@ add(
                     ],
                     path: "libraries/ForceUpgrade/Tests/UnitTests",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                    plugins: plugins),
 
         .testTarget(name: .forceUpgrade + "LocalizationTests",
                     dependencies: [
@@ -883,7 +888,7 @@ add(
                     ],
                     path: "libraries/ForceUpgrade/Tests/LocalizationTests",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
 
     ]
 )
@@ -899,7 +904,7 @@ add(
                 ],
                 path: "libraries/Foundations/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                plugins: plugins)
     ]
 )
 
@@ -928,7 +933,7 @@ add(
         .target(name: .hash,
                 path: "libraries/Hash/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .hash + "Tests",
                 dependencies: [ 
@@ -936,7 +941,7 @@ add(
                 ],
                 path: "libraries/Hash/Tests",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                plugins: plugins)
     ]
 )
 
@@ -961,7 +966,7 @@ add(
                 ],
                 path: "libraries/HumanVerification/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .target(name: .humanVerificationResourcesiOS,
                 path: "libraries/HumanVerification/Resources-iOS",
@@ -969,7 +974,7 @@ add(
                     .process("Resources-iOS")
                 ],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .target(name: .humanVerificationResourcesmacOS,
                 path: "libraries/HumanVerification/Resources-macOS",
@@ -977,7 +982,7 @@ add(
                     .process("Resources-macOS")
                 ],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .humanVerification + "Tests",
                     dependencies: [
@@ -992,7 +997,7 @@ add(
                     path: "libraries/HumanVerification/Tests/UnitTests",
                     exclude: ["__Snapshots__"],
                     swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
         
         .testTarget(name: .humanVerification + "LocalizationTests",
                     dependencies: [
@@ -1001,7 +1006,7 @@ add(
                     ],
                     path: "libraries/HumanVerification/Tests/LocalizationTests",
                     swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                plugins: plugins)
     ]
 )
 
@@ -1017,7 +1022,7 @@ add(
                 ],
                 path: "libraries/Keymaker/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .keymaker + "Tests",
                     dependencies: [
@@ -1027,7 +1032,7 @@ add(
                     ],
                     path: "libraries/Keymaker/Tests",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -1044,7 +1049,7 @@ add(
                 ],
                 path: "libraries/KeyManager/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .keyManager + "Tests",
                     dependencies: [
@@ -1054,7 +1059,7 @@ add(
                     path: "libraries/KeyManager/Tests",
                     resources: [.process("TestData")],
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -1066,7 +1071,7 @@ add(
         .target(name: .log,
                 path: "libraries/Log/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .log + "Tests",
                     dependencies: [
@@ -1074,7 +1079,7 @@ add(
                     ],
                     path: "libraries/Log/Tests",
                     swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                plugins: plugins)
     ]
 )
 
@@ -1099,7 +1104,7 @@ add(
                 path: "libraries/Login/Sources",
                 resources: [.process("Resources")],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
         
         .testTarget(name: .login + "UnitTests",
                     dependencies: [
@@ -1123,7 +1128,7 @@ add(
                         .process("Mocks/Responses")
                     ],
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                    plugins: plugins),
         
         .testTarget(name: .login + "IntegrationTests",
                     dependencies: [
@@ -1138,7 +1143,7 @@ add(
                     ],
                     path: "libraries/Login/Tests/IntegrationTests",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                    plugins: plugins),
         
         .testTarget(name: .login + "LocalizationTests",
                     dependencies: [
@@ -1147,7 +1152,7 @@ add(
                     ],
                     path: "libraries/Login/Tests/LocalizationTests",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -1183,7 +1188,7 @@ add(
                     .process("Resources/Translations")
                 ],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .target(name: .loginUIResourcesiOS,
                 path: "libraries/LoginUI/Resources",
@@ -1191,7 +1196,7 @@ add(
                     .process("Resources-iOS")
                 ],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
         
         .testTarget(name: .loginUI + "UnitTests",
                     dependencies: [
@@ -1222,7 +1227,7 @@ add(
                         .process("Mocks/Responses")
                     ],
                     swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                    plugins: plugins),
         
         .testTarget(name: .loginUI + "IntegrationTests",
                     dependencies: [
@@ -1244,7 +1249,7 @@ add(
                     ],
                     path: "libraries/LoginUI/Tests/IntegrationTests",
                     swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                    plugins: plugins),
         
         .testTarget(name: .loginUI + "LocalizationTests",
                     dependencies: [
@@ -1253,7 +1258,7 @@ add(
                     ],
                     path: "libraries/LoginUI/Tests/LocalizationTests",
                     swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -1272,7 +1277,7 @@ add(
                 ],
                 path: "libraries/MissingScopes/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .missingScopes + "Tests",
                     dependencies: [
@@ -1283,7 +1288,7 @@ add(
                     path: "libraries/MissingScopes/Tests",
                     exclude: ["SnapshotTests/__Snapshots__"],
                     swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -1302,7 +1307,7 @@ add(
                 ],
                 path: "libraries/Networking/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .networking + "Tests",
                     dependencies: [
@@ -1313,7 +1318,7 @@ add(
                     ],
                     path: "libraries/Networking/Tests/UnitTests",
                     swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                    plugins: plugins),
         
         .testTarget(name: .networking + "LocalizationTests",
                     dependencies: [
@@ -1322,7 +1327,7 @@ add(
                     ],
                     path: "libraries/Networking/Tests/LocalizationTests",
                     swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -1342,7 +1347,7 @@ add(
                 path: "libraries/ObfuscatedConstants/Sources",
                 exclude: ["Template"],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                plugins: plugins)
     ]
 )
 
@@ -1358,7 +1363,7 @@ add(
                 ],
                 path: "libraries/Observability/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .observability + "UnitTests",
                     dependencies: [
@@ -1372,7 +1377,7 @@ add(
                     ],
                     path: "libraries/Observability/UnitTests",
                     swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                    plugins: plugins),
         
         .testTarget(name: .observability + "IntegrationTests",
                     dependencies: [
@@ -1386,7 +1391,7 @@ add(
                     ],
                     path: "libraries/Observability/IntegrationTests",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -1407,7 +1412,7 @@ add(
                     .process("Resources")
                 ],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
         
         .testTarget(name: .passwordRequest + "UnitTests",
                     dependencies: [
@@ -1423,7 +1428,7 @@ add(
                     ],
                     path: "libraries/PasswordRequest/Tests/UnitTests",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                    plugins: plugins),
         
         .testTarget(name: .passwordRequest + "LocalizationTests",
                     dependencies: [
@@ -1432,7 +1437,7 @@ add(
                     ],
                     path: "libraries/PasswordRequest/Tests/LocalizationTests",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -1454,7 +1459,7 @@ add(
                 ],
                 path: "libraries/Payments/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .payments + "Tests",
                     dependencies: [
@@ -1477,7 +1482,7 @@ add(
                         .process("Mocks/Responses")
                     ],
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                    plugins: plugins),
 
         .testTarget(name: .payments + "IntegrationTests",
                     dependencies: [
@@ -1496,7 +1501,7 @@ add(
                     ],
                     path: "libraries/Payments/Tests/IntegrationTests",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                    plugins: plugins),
         
         .testTarget(name: .payments + "LocalizationTests",
                     dependencies: [
@@ -1505,7 +1510,7 @@ add(
                     ],
                     path: "libraries/Payments/Tests/LocalizationTests",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -1530,7 +1535,7 @@ add(
                     .process("Resources/Translations")
                 ],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .target(name: .paymentsUIResourcesiOS,
                 path: "libraries/PaymentsUI/Resources",
@@ -1538,7 +1543,7 @@ add(
                     .process("Resources-iOS")
                 ],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .paymentsUI + "Tests",
                     dependencies: [
@@ -1553,7 +1558,7 @@ add(
                     path: "libraries/PaymentsUI/Tests/UnitTests",
                     exclude: ["__Snapshots__"],
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                    plugins: plugins),
 
         .testTarget(name: .paymentsUI + "LocalizationTests",
                     dependencies: [
@@ -1562,7 +1567,7 @@ add(
                     ],
                     path: "libraries/PaymentsUI/Tests/LocalizationTests",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -1584,7 +1589,7 @@ add(
                 ],
                 path: "libraries/PushNotifications/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .pushNotifications + "Tests",
                     dependencies: [
@@ -1593,7 +1598,7 @@ add(
                     ],
                     path: "libraries/PushNotifications/Tests",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -1612,7 +1617,7 @@ add(
                 ],
                 path: "libraries/QuarkCommands/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .quarkCommands + "Tests",
                     dependencies: [
@@ -1623,7 +1628,7 @@ add(
                     path: "libraries/QuarkCommands/Tests",
                     resources: [.process("Mocks")],
                     swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                plugins: plugins)
     ]
 )
 
@@ -1642,7 +1647,7 @@ add(
                     .process("Resources")
                 ],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .services + "UnitTests",
                     dependencies: [
@@ -1658,7 +1663,7 @@ add(
                     ],
                     path: "libraries/Services/Tests/Unit",
                     swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
         
         .testTarget(name: .services + "IntegrationTests",
                     dependencies: [
@@ -1671,7 +1676,7 @@ add(
                     ],
                     path: "libraries/Services/Tests/Integration",
                     swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
         
         .testTarget(name: .services + "LocalizationTests",
                     dependencies: [
@@ -1680,7 +1685,7 @@ add(
                     ],
                     path: "libraries/Services/Tests/Localization",
                     swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                plugins: plugins)
     ]
 )
 
@@ -1699,7 +1704,7 @@ add(
                     .process("Resources")
                 ],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .settings + "Tests",
                     dependencies: [
@@ -1713,7 +1718,7 @@ add(
                         "Settings/Presentation/__Snapshots__"
                     ],
                     swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                plugins: plugins)
     ]
 )
 
@@ -1733,7 +1738,7 @@ add(product: .subscriptions,
                     .process("Resources")
                 ],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
         .testTarget(name: .subscriptions + "Tests",
                     dependencies: [
                         .subscriptions,
@@ -1742,7 +1747,7 @@ add(product: .subscriptions,
                     ],
                     path: "libraries/Subscriptions/Tests",
                     swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                plugins: plugins)
     ]
 )
 
@@ -1781,7 +1786,7 @@ add(
                 ],
                 path: "libraries/TestingToolkit/TestData",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .target(name: .testingToolkitUnitTestsAccountDeletion,
                 dependencies: [
@@ -1791,7 +1796,7 @@ add(
                 ],
                 path: "libraries/TestingToolkit/UnitTests/AccountDeletion",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .target(name: .testingToolkitUnitTestsAuthentication,
                 dependencies: [
@@ -1801,7 +1806,7 @@ add(
                 ],
                 path: "libraries/TestingToolkit/UnitTests/Authentication",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
         
         .target(name: .testingToolkitUnitTestsAuthenticationKeyGeneration,
                 dependencies: [
@@ -1812,7 +1817,7 @@ add(
                 ],
                 path: "libraries/TestingToolkit/UnitTests/Authentication-KeyGeneration",
                 swiftSettings: .spm,
-            plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+            plugins: plugins),
 
         .target(name: .testingToolkitUnitTestsCore,
                 dependencies: [
@@ -1821,7 +1826,7 @@ add(
                 ],
                 path: "libraries/TestingToolkit/UnitTests/Core",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .target(name: .testingToolkitUnitTestsDataModel,
                 dependencies: [
@@ -1830,7 +1835,7 @@ add(
                 ],
                 path: "libraries/TestingToolkit/UnitTests/DataModel",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .target(name: .testingToolkitUnitTestsDoh,
                 dependencies: [
@@ -1839,7 +1844,7 @@ add(
                 ],
                 path: "libraries/TestingToolkit/UnitTests/Doh",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .target(name: .testingToolkitUnitTestsFeatureSwitch,
                 dependencies: [
@@ -1849,7 +1854,7 @@ add(
                 ],
                 path: "libraries/TestingToolkit/UnitTests/FeatureSwitch",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
         
         .target(name: .testingToolkitUnitTestsLogin,
                 dependencies: [
@@ -1861,7 +1866,7 @@ add(
                 ],
                 path: "libraries/TestingToolkit/UnitTests/Login",
                 swiftSettings: .spm,
-            plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+            plugins: plugins),
 
         .target(name: .testingToolkitUnitTestsLoginUI,
                 dependencies: [
@@ -1874,7 +1879,7 @@ add(
                 ],
                 path: "libraries/TestingToolkit/UnitTests/LoginUI",
                 swiftSettings: .spm,
-            plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+            plugins: plugins),
 
         .target(name: .testingToolkitUnitTestsNetworking,
                 dependencies: [
@@ -1883,7 +1888,7 @@ add(
                 ],
                 path: "libraries/TestingToolkit/UnitTests/Networking",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .target(name: .testingToolkitUnitTestsObservability,
                 dependencies: [
@@ -1892,7 +1897,7 @@ add(
                 ],
                 path: "libraries/TestingToolkit/UnitTests/Observability",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .target(name: .testingToolkitUnitTestsPayments,
                 dependencies: [
@@ -1902,7 +1907,7 @@ add(
                 ],
                 path: "libraries/TestingToolkit/UnitTests/Payments",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .target(name: .testingToolkitUnitTestsServices,
                 dependencies: [
@@ -1915,7 +1920,7 @@ add(
                 ],
                 path: "libraries/TestingToolkit/UnitTests/Services",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
         
         .target(name: .testingToolkitUITestsAccountDeletion,
                 dependencies: [
@@ -1926,7 +1931,7 @@ add(
                 ],
                 path: "libraries/TestingToolkit/UITests/AccountDeletion",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
         
         .target(name: .testingToolkitUITestsAccountSwitcher,
                 dependencies: [
@@ -1937,7 +1942,7 @@ add(
                 ],
                 path: "libraries/TestingToolkit/UITests/AccountSwitcher",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
         
         .target(name: .testingToolkitUITestsCore,
                 dependencies: [
@@ -1948,7 +1953,7 @@ add(
                 ],
                 path: "libraries/TestingToolkit/UITests/Core",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
         
         .target(name: .testingToolkitUITestsHumanVerification,
                 dependencies: [
@@ -1959,7 +1964,7 @@ add(
                 ],
                 path: "libraries/TestingToolkit/UITests/HumanVerification",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
         
         .target(name: .testingToolkitUITestsLogin,
                 dependencies: [
@@ -1972,7 +1977,7 @@ add(
                 ],
                 path: "libraries/TestingToolkit/UITests/Login",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
     
         .target(name: .testingToolkitUITestsPaymentsUI,
                 dependencies: [
@@ -1983,7 +1988,7 @@ add(
                 ],
                 path: "libraries/TestingToolkit/UITests/PaymentsUI",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                plugins: plugins)
     ]
 )
 
@@ -2005,7 +2010,7 @@ add(
                     .process("Resources")
                 ],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .target(name: .troubleShootingResourcesiOS,
                 path: "libraries/TroubleShooting/Resources",
@@ -2013,7 +2018,7 @@ add(
                     .process("Resources-iOS")
                 ],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .troubleShooting + "Tests",
                     dependencies: [
@@ -2026,7 +2031,7 @@ add(
                     path: "libraries/TroubleShooting/Tests/UnitTests",
                     exclude: ["__Snapshots__"],
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                    plugins: plugins),
         
         .testTarget(name: .troubleShooting + "LocalizationTests",
                     dependencies: [
@@ -2035,7 +2040,7 @@ add(
                     ],
                     path: "libraries/TroubleShooting/Tests/LocalizationTests",
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -2054,7 +2059,7 @@ add(
                 ],
                 path: "libraries/UIFoundations/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .target(name: .uiFoundationsResourcesiOS,
                 path: "libraries/UIFoundations/Resources-iOS",
@@ -2063,7 +2068,7 @@ add(
                     .process("Resources-Shared")
                 ],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .target(name: .uiFoundationsResourcesmacOS,
                 path: "libraries/UIFoundations/Resources-macOS",
@@ -2071,7 +2076,7 @@ add(
                     .process("Resources-Shared")
                 ],
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .uiFoundations + "Tests",
                     dependencies: [
@@ -2081,7 +2086,7 @@ add(
                     path: "libraries/UIFoundations/Tests",
                     exclude: ["__Snapshots__"],
                     swiftSettings: .spm,
-                    plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
@@ -2096,7 +2101,7 @@ add(
                 ],
                 path: "libraries/Utilities/Sources",
                 swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]),
+                plugins: plugins),
 
         .testTarget(name: .utilities + "Tests",
                     dependencies: [
@@ -2104,7 +2109,7 @@ add(
                     ],
                     path: "libraries/Utilities/Tests",
                     swiftSettings: .spm,
-                plugins: [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)])
+                    plugins: plugins)
     ]
 )
 
