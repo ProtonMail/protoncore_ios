@@ -243,7 +243,6 @@ class SendBuilder {
         return nil
     }
 
-    // swiftlint:disable function_parameter_count
     private func build(type rt: Int, eo: Bool, pgpkey: Bool, pgpencrypt: Bool, mime: Bool, sign: Bool) -> SendType {
         if rt == 1 {
             return .intl

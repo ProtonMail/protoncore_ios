@@ -37,7 +37,6 @@ import UIKit
 import Sentry
 
 import CommonCrypto
-import ProtonCoreCryptoGoInterface
 import CryptoKit
 import ProtonCoreUIFoundations
 

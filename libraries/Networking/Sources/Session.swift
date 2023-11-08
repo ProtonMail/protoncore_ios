@@ -147,15 +147,13 @@ public protocol Session {
                   destinationDirectoryURL: URL,
                   completion: @escaping DownloadCompletion)
 
-    // swiftlint:disable function_parameter_count
     func upload(with request: SessionRequest,
                 keyPacket: Data,
                 dataPacket: Data,
                 signature: Data?,
                 completion: @escaping JSONResponseCompletion,
                 uploadProgress: ProgressCompletion?)
-    
-    // swiftlint:disable function_parameter_count
+
     func upload<T>(with request: SessionRequest,
                    keyPacket: Data,
                    dataPacket: Data,
@@ -175,15 +173,13 @@ public protocol Session {
                    completion: @escaping DecodableResponseCompletion<T>,
                    uploadProgress: ProgressCompletion?) where T: SessionDecodableResponse
 
-    // swiftlint:disable function_parameter_count
     func uploadFromFile(with request: SessionRequest,
                         keyPacket: Data,
                         dataPacketSourceFileURL: URL,
                         signature: Data?,
                         completion: @escaping JSONResponseCompletion,
                         uploadProgress: ProgressCompletion?)
-    
-    // swiftlint:disable function_parameter_count
+
     func uploadFromFile<T>(with request: SessionRequest,
                            keyPacket: Data,
                            dataPacketSourceFileURL: URL,
@@ -240,7 +236,6 @@ public extension Session {
     }
 
     @available(*, deprecated, message: "Please use the variant returning either DecodableResponseCompletion or JSONResponseCompletion")
-    // swiftlint:disable function_parameter_count
     func upload(with request: SessionRequest,
                 keyPacket: Data, dataPacket: Data, signature: Data?,
                 completion: @escaping ResponseCompletion,
@@ -292,7 +287,6 @@ public extension Session {
     }
 
     @available(*, deprecated, message: "Please use the variant returning either DecodableResponseCompletion or JSONResponseCompletion")
-    // swiftlint:disable function_parameter_count
     func uploadFromFile(with request: SessionRequest,
                         keyPacket: Data,
                         dataPacketSourceFileURL: URL,

@@ -24,7 +24,7 @@ public final class DeviceRegistrationEndpoint: Request {
 
     public let method: HTTPMethod = .post
 
-    public let parameters: [String : Any]?
+    public let parameters: [String: Any]?
 
     public let isAuth = true
 

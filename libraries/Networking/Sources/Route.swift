@@ -159,3 +159,5 @@ public extension RequestPerforming {
                             jsonCompletion: jsonCompletion)
     }
 }
+
+// swiftlint:enable identifier_name

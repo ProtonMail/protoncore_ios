@@ -39,7 +39,6 @@ public struct AuthenticatorMock: AuthenticatorInterface {
     }
     
     @FuncStub(AuthenticatorMock.authenticate(username:password:challenge:intent:srpAuth:completion:)) public var authenticateStub
-    // swiftlint:disable:next function_parameter_count
     public func authenticate(username: String, password: String, challenge: ChallengeProperties?, intent: Intent?, srpAuth: SrpAuth?, completion: @escaping Authenticator.Completion) {
         authenticateStub(username, password, challenge, intent, srpAuth, completion)
     }

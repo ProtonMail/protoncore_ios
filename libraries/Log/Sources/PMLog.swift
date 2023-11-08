@@ -153,3 +153,5 @@ public class PMLog {
         }
     }
 }
+
+// swiftlint:enable no_print

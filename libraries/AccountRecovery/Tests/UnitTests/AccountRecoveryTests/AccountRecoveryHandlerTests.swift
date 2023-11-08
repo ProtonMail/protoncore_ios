@@ -27,8 +27,6 @@ import ProtonCorePushNotifications
 
 final class AccountRecoveryHandlerTests: XCTestCase {
 
-
-
     func testHandling() {
         let content = UNMutableNotificationContent()
         content.userInfo = ["unencryptedMessage": NotificationType.accountRecoveryInitiated]

@@ -20,6 +20,8 @@
 //  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
 //
 
+// swiftlint:disable empty_xctest_method
+
 import XCTest
 
 final class Example_UnitTests_macOS: XCTestCase {
@@ -48,3 +50,5 @@ final class Example_UnitTests_macOS: XCTestCase {
     }
 
 }
+
+// swiftlint:enable empty_xctest_method

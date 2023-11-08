@@ -46,7 +46,7 @@ public final class CustomServerConfigDoH: DoH, ServerConfig {
     }
     
     static var `default`: CustomServerConfigDoH!
-    // swiftlint:disable function_parameter_count
+
     public static func build(signupDomain: String,
                              captchaHost: String,
                              humanVerificationV3Host: String,

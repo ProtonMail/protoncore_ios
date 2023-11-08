@@ -183,13 +183,11 @@ public protocol DoHInterface {
     func setUpCookieSynchronization(storage: HTTPCookieStorage?)
     func synchronizeCookies(with response: URLResponse?, requestHeaders: [String: String]) async
 
-    // swiftlint:disable function_parameter_count
     func handleErrorResolvingProxyDomainIfNeeded(
         host: String, requestHeaders: [String: String], sessionId: String?, error: Error?,
         callCompletionBlockUsing: CompletionBlockExecutor, completion: @escaping (Bool) -> Void
     )
     
-    // swiftlint:disable function_parameter_count
     func handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeeded(
         host: String, requestHeaders: [String: String], sessionId: String?, response: URLResponse?, error: Error?,
         callCompletionBlockUsing: CompletionBlockExecutor, completion: @escaping (Bool) -> Void

@@ -12,7 +12,7 @@ import ProtonCoreServices
 
 final class ExampleAPIServiceDelegate: APIServiceDelegate {
     
-    var additionalHeaders: [String : String]?
+    var additionalHeaders: [String: String]?
 
     func onUpdate(serverTime: Int64) {
         CryptoGo.CryptoUpdateTime(serverTime)
@@ -30,7 +30,7 @@ final class ExampleAPIServiceDelegate: APIServiceDelegate {
         Locale.autoupdatingCurrent.identifier
     }
 
-    var userAgent: String? = nil
+    var userAgent: String?
 
     func onDohTroubleshot() {
         PMLog.info("\(#file): \(#function)")

@@ -84,6 +84,7 @@ final class PMDrillDownCell: PMSettingsBaseCell {
         previewLabel.text = vm.preview
         addSeparatorIfNeeded(hasSeparator)
     }
+    // swiftlint:enable identifier_name
 }
 
 private extension UIImageView {

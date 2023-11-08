@@ -15,35 +15,35 @@ import ProtonCoreTestingToolkitUITestsLogin
 import ProtonCoreTestingToolkit
 #endif
 
-fileprivate let showLoginButtonLabelText = "Show login"
-fileprivate let showSignupButtonLabelText = "Show signup"
-fileprivate let logoutButtonLabelText = "Logout"
-fileprivate let environmentBlackText = "black"
-fileprivate let environmentProdText = "prod"
-fileprivate let environmentPaymentsBlackText = "payments"
-fileprivate let environmentFosseyBlackText = "fossey"
-fileprivate let environmentCustomText = "custom"
-fileprivate let accountExternal = "external"
-fileprivate let accountInternal = "internal"
+private let showLoginButtonLabelText = "Show login"
+private let showSignupButtonLabelText = "Show signup"
+private let logoutButtonLabelText = "Logout"
+private let environmentBlackText = "black"
+private let environmentProdText = "prod"
+private let environmentPaymentsBlackText = "payments"
+private let environmentFosseyBlackText = "fossey"
+private let environmentCustomText = "custom"
+private let accountExternal = "external"
+private let accountInternal = "internal"
 
-fileprivate let welcomeScreenNoneText = "no screen"
-fileprivate let welcomeScreenMailText = "mail"
-fileprivate let welcomeScreenVpnText = "vpn"
-fileprivate let welcomeScreenDriveText = "drive"
-fileprivate let welcomeScreenCalendarText = "calendar"
+private let welcomeScreenNoneText = "no screen"
+private let welcomeScreenMailText = "mail"
+private let welcomeScreenVpnText = "vpn"
+private let welcomeScreenDriveText = "drive"
+private let welcomeScreenCalendarText = "calendar"
 
-fileprivate let closeSwitchText = "LoginViewController.closeButtonSwitch"
-fileprivate let planSelectorSwitchText = "LoginViewController.planSelectorSwitch"
-fileprivate let humanVerificationSwitch = "LoginViewController.humanVerificationSwitch"
-fileprivate let logoutDialogText = "Logout"
-fileprivate let accountTypeUsername = "username"
-fileprivate let mailApp = "Login-Mail-AppStoreIAP"
-fileprivate let hv3LabelText = "v3"
+private let closeSwitchText = "LoginViewController.closeButtonSwitch"
+private let planSelectorSwitchText = "LoginViewController.planSelectorSwitch"
+private let humanVerificationSwitch = "LoginViewController.humanVerificationSwitch"
+private let logoutDialogText = "Logout"
+private let accountTypeUsername = "username"
+private let mailApp = "Login-Mail-AppStoreIAP"
+private let hv3LabelText = "v3"
 
-fileprivate let deleteAccountButtonLabelText = "Delete account"
-fileprivate let deleteAccountDeleteButton = "Delete"
-fileprivate let deleteAccountCancelButton = "Cancel"
-fileprivate let deleteAccountWarning = "Yes, I want to permanently delete this account and all its data."
+private let deleteAccountButtonLabelText = "Delete account"
+private let deleteAccountDeleteButton = "Delete"
+private let deleteAccountCancelButton = "Cancel"
+private let deleteAccountWarning = "Yes, I want to permanently delete this account and all its data."
 
 public enum SignupInitialMode {
     case `internal`
@@ -76,7 +76,7 @@ public final class LoginSampleAppRobot: CoreElements {
         return SignupRobot()
     }
     
-    //TODO to migrate to pmtools
+    // TODO to migrate to pmtools
     public func backgroundApp<T: CoreElements>(app: XCUIApplication, robot _: T.Type) -> T {
         XCUIDevice.shared.press(.home)
         let background = app.wait(for: .runningBackground, timeout: 5)
@@ -228,7 +228,7 @@ public final class LoginSampleAppRobot: CoreElements {
     
     @discardableResult
     public func updateFeatures(featureEnv: String) -> LoginSampleAppRobot {
-        XCUIApplication().launchEnvironment = ["FeatureSwitch" : featureEnv]
+        XCUIApplication().launchEnvironment = ["FeatureSwitch": featureEnv]
         return self
     }
 }

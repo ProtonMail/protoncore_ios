@@ -103,3 +103,5 @@ class InputValidationTests: XCTestCase {
 }
 
 #endif
+
+// swiftlint:enable xctfail_message

@@ -65,6 +65,7 @@ public final class PMSettingsSectionViewModelAmendor {
         self.title = vm.titleRaw
         self.footer = vm.footerRaw
     }
+    // swiftlint:enable identifier_name
 
     public func title(_ title: KeyInBundle?) -> PMSettingsSectionViewModelAmendor {
         self.title = title

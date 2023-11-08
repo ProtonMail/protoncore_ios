@@ -41,4 +41,3 @@ class TokenRefreshBaseTestCase: ProtonCoreBaseTestCase {
         appRobot = entryRobot.tap(.tokenRefresh, to: TokenRefreshSampleAppRobot.self)
     }
 }
-

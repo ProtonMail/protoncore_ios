@@ -26,15 +26,13 @@ extension InspectableView: Sequence where View: MultipleViewContent {
     }
 
     public func makeIterator() -> Iterator {
-        // swiftlint:disable force_try
+        // swiftlint:disable:next force_try
         return .init(try! View.children(content), view: self)
-        // swiftlint:enable force_try
     }
 
     public var underestimatedCount: Int {
-        // swiftlint:disable force_try
+        // swiftlint:disable:next force_try
         return try! View.children(content).count
-        // swiftlint:enable force_try
     }
 }
 

@@ -385,7 +385,7 @@ extension LoginSignupPlanSelectorTests {
             .verify.signupScreenIsShown()
     }
 
-    //Atm can be run only on payments.proton.black
+    // Atm can be run only on payments.proton.black
     func testSignupNewIntAccountWithUnlimitedPlanSuccess() {
             mainRobot
                 .showSignup()

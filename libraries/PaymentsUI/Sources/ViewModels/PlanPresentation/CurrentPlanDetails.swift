@@ -55,7 +55,6 @@ struct CurrentPlanDetails {
 }
 
 extension CurrentPlanDetails {
-    // swiftlint:disable function_parameter_count
     static func createPlan(from details: Plan,
                            plan: InAppPurchasePlan,
                            servicePlan: ServicePlanDataServiceProtocol,

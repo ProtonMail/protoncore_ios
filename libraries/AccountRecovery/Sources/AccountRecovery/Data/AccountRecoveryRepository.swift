@@ -53,8 +53,8 @@ public struct AccountRecoveryRepository: AccountRecoveryRepositoryProtocol {
 
     public let accountRecoveryDatasource: AccountRecoveryDatasourceProtocol
 
-    public init(accountRecoveryDatasource: AccountRecoveryDatasourceProtocol
-                , authService: AuthService) {
+    public init(accountRecoveryDatasource: AccountRecoveryDatasourceProtocol,
+                authService: AuthService) {
         self.accountRecoveryDatasource = accountRecoveryDatasource
         self.authService = authService
     }

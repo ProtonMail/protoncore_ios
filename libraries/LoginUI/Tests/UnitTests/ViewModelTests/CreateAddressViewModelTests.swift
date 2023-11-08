@@ -360,3 +360,5 @@ extension UserData: Equatable {
 }
 
 #endif
+
+// swiftlint:enable xctfail_message

@@ -26,9 +26,8 @@ import XCTest
 class FeatureFlagTests: XCTestCase {
     func testFeatureFlags() {
         XCTAssertTrue(FeatureFlag.availableCoreInternal.rawValue == 1)
-        XCTAssertTrue(FeatureFlag.availableInternal.rawValue     == 2)
-        XCTAssertTrue(FeatureFlag.localOverride.rawValue         == 4)
-        XCTAssertTrue(FeatureFlag.remoteOverride.rawValue        == 8)
+        XCTAssertTrue(FeatureFlag.availableInternal.rawValue == 2)
+        XCTAssertTrue(FeatureFlag.localOverride.rawValue == 4)
+        XCTAssertTrue(FeatureFlag.remoteOverride.rawValue == 8)
     }
 }
-

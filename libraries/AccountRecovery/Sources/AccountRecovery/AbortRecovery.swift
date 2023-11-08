@@ -32,4 +32,3 @@ public final class AbortRecoveryEndpoint: Request {
 
     public var method: HTTPMethod { .post }
 }
-

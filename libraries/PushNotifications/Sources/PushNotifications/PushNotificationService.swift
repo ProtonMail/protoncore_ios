@@ -136,8 +136,8 @@ extension PushNotificationService: UNUserNotificationCenterDelegate {
 // More abstract methods for simpler testing
 extension PushNotificationService {
     func notificationCenter(_ center: NotificationCenterProtocol,
-                                       didReceive response: UNNotificationResponse,
-                                       withCompletionHandler completionHandler: @escaping () -> Void) {
+                            didReceive response: UNNotificationResponse,
+                            withCompletionHandler completionHandler: @escaping () -> Void) {
 
         processNotification(response.notification) { _ in
             completionHandler()
@@ -168,6 +168,7 @@ extension PushNotificationService {
     }
 
     private func registerIfPossible() {
+        // swiftlint:disable:next empty_string
         guard currentUID != "",
               let token = latestDeviceToken
         else { return }
@@ -183,7 +184,6 @@ extension PushNotificationService {
 
         await register(sessionUID: sessionID, token: deviceToken, encryptionKit: kit)
     }
-
 
     private func generateEncryptionKit() -> EncryptionKit? {
         do {
@@ -218,7 +218,7 @@ extension PushNotificationService {
                                    onDataTaskCreated: { _ in }) { _, result in
                     continuation.resume(with: result)
                 }
-            }
+           }
         } catch {
             PMLog.error("Couldn't register APNS token: \(error.localizedDescription)")
         }
@@ -253,4 +253,3 @@ fileprivate extension String {
         "****\(suffix(6))"
     }
 }
-

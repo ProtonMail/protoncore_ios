@@ -26,8 +26,6 @@ import ProtonCoreNetworking
 import ProtonCoreObservability
 import ProtonCoreUtilities
 
-// swiftlint:disable function_parameter_count
-
 // MARK: - Fetching and refreshing credentials
 
 extension PMAPIService {

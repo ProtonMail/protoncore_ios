@@ -19,13 +19,14 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+// swiftlint:disable type_name
+
 #if os(iOS)
 
 import UIKit
 import Foundation
 import ProtonCoreUIFoundations
 
-// swiftlint:disable type_name
 final class ConfirmationPasswordConfigurationViewModel: PasswordConfigurationViewModel {
     private let router: SecurityPasswordRouter
     private let passwordSelector: PasswordSelector
@@ -97,3 +98,5 @@ final class ConfirmationPasswordConfigurationViewModel: PasswordConfigurationVie
 }
 
 #endif
+
+// swiftlint:enable type_name

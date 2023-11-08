@@ -25,7 +25,6 @@ public struct ActiveAccountRecoveryView: View {
     @StateObject var viewModel: AccountRecoveryView.ViewModel
     @State var isAnimating: Bool = false
 
-
     public var body: some View {
         VStack(spacing: 24) {
             Image(AccountRecovery.ImageNames.passwordResetPeriodStart,
@@ -69,7 +68,7 @@ public struct ActiveAccountRecoveryView: View {
                 }
                 .buttonStyle(SolidButton())
                 .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
-            }
+        }
             .padding(16)
             .frame(maxHeight: .infinity)
             .background(ColorProvider.BackgroundNorm as Color)
@@ -87,13 +86,12 @@ public struct ActiveAccountRecoveryView: View {
     }
 }
 
-
 #if DEBUG
 struct ActiveAccountRecoveryView_Previews: PreviewProvider {
     static var viewModel = {
         let vm = AccountRecoveryView.ViewModel()
         vm.email = "norbert@example.com"
-        vm.remainingTime = 3600*72
+        vm.remainingTime = 3600 * 72
         vm.state = .grace
         return vm
     }()
@@ -103,4 +101,3 @@ struct ActiveAccountRecoveryView_Previews: PreviewProvider {
     }
 }
 #endif
-

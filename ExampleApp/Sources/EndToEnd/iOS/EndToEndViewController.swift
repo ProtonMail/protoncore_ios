@@ -35,7 +35,7 @@ import ProtonCoreChallenge
 
 enum EndToEndTest: CaseIterable {
     case deviceFingerprintsOnPostSession
-    var description:  String {
+    var description: String {
         switch self {
         case .deviceFingerprintsOnPostSession:
             return "Send device fingerprints on POST Session call"
@@ -106,7 +106,6 @@ final class EndToEndViewController: UIViewController,
             credentialsStackView.isHidden = false
         default:
             assertionFailure("Misconfiguration in \(#file), \(#function), \(#line)")
-            break
         }
     }
     
@@ -114,7 +113,7 @@ final class EndToEndViewController: UIViewController,
         testDeviceFingerprintsOnPostSession()
     }
     
-    private func testDeviceFingerprintsOnPostSession() {
+    func testDeviceFingerprintsOnPostSession() {
         let env = environmentSelector.currentEnvironment
         let api = PMAPIService.createAPIServiceWithoutSession(environment: env, 
                                                               challengeParametersProvider: .forAPIService(clientApp: clientApp, challenge: PMChallenge()))

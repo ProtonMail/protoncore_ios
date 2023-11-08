@@ -49,7 +49,6 @@ public struct AccountRecoveryView: View {
     public init(viewModel: ViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
-
   
 }
 
@@ -58,7 +57,7 @@ struct AccountRecoveryView_Previews: PreviewProvider {
     static var viewModel = {
         let vm = AccountRecoveryView.ViewModel()
         vm.email = "norbert@example.com"
-        vm.remainingTime = 3600*72
+        vm.remainingTime = 3600 * 72
         vm.state = .grace
         return vm
     }()

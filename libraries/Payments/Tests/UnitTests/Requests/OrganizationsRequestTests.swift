@@ -61,7 +61,7 @@ final class OrganizationsRequestTests: XCTestCase {
         var appVersion: String { return "ios-mail@4.2.0-dev" }
         var additionalHeaders: [String: String]?
         func onDohTroubleshot() {
-            // swiftlint:disable no_print
+            // swiftlint:disable:next no_print
             PMLog.info("\(#file): \(#function)")
         }
     }

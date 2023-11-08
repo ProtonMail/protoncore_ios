@@ -45,7 +45,6 @@ public enum SubscriptionCTA: TranslationsExposing {
     }
 
     public static var prefixForMissingValue: String = ""
-
     
     /// the user can upgrade to a paid subscription
     case upgrade
@@ -118,9 +117,6 @@ public enum SubscriptionCTA: TranslationsExposing {
         paymentWrapper.showUpgradePlan(presentationType: .modal, backendFetch: true) { _ in }
     }
 }
-
-
-
 
 /// Provides descriptions and actions for implementing subscription management in the settings section
 public class SubscriptionSettingsProvider {

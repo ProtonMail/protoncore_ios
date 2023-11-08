@@ -268,7 +268,7 @@ extension PMChallenge {
         func asDictionary() throws -> [String: Any] {
             let data = try JSONEncoder().encode(self)
             guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: [String: Any]] else {
-                throw NSError()
+                throw NSError(domain: "PMChalleng", code: 0)
             }
             return dictionary
                 .reduce([String: Any]()) { emptyDict, tuple in
@@ -403,3 +403,5 @@ extension PMChallenge {
 }
 
 #endif
+
+// swiftlint:enable identifier_name

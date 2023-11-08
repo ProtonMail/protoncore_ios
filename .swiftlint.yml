@@ -15,6 +15,7 @@ disabled_rules: # rule identifiers to exclude from running
   - opening_brace # https://realm.github.io/SwiftLint/opening_brace
   - nesting # https://realm.github.io/SwiftLint/nesting
   - function_parameter_count # https://realm.github.io/SwiftLint/function_parameter_count
+  - for_where # https://realm.github.io/SwiftLint/for_where
 # these rules were temporarily disabled
   - force_try
   - empty_count
@@ -39,7 +40,6 @@ opt_in_rules: # some rules are only opt-in
   - prohibited_super_call # https://github.com/realm/SwiftLint/blob/master/Rules.md
   - sorted_first_last # https://github.com/realm/SwiftLint/blob/master/Rules.md
   - unavailable_condition # https://realm.github.io/SwiftLint/unavailable_condition.html
-  - file_header
 
 # Some rules that may be useful:
   # - file_types_order # https://realm.github.io/SwiftLint/file-types-order
@@ -48,49 +48,11 @@ opt_in_rules: # some rules are only opt-in
 
 # More rules can be found here: https://github.com/realm/SwiftLint/blob/master/Rules.md
 
-included: # paths to include during linting. `--path` is ignored if present.
-  - libraries/AccountDeletion
-  - libraries/AccountSwitcher
-  - libraries/APIClient
-  - libraries/Authentication
-  - libraries/Authentication-KeyGeneration
-  - libraries/Challenge
-  - libraries/Common
-  - libraries/CoreTranslation
-  - libraries/Crypto
-  - libraries/DataModel
-  - libraries/Doh
-  - libraries/ErrorWarningEmittingDefaultSubspec
-  - libraries/Features
-  - libraries/ForceUpgrade
-  - libraries/Foundations
-  - libraries/Hash
-  - libraries/HumanVerification
-  - libraries/Keymaker
-  - libraries/KeyManager
-  - libraries/Log
-  - libraries/Login
-  - libraries/LoginUI
-  - libraries/Networking
-  - libraries/ObfuscatedConstants
-  - libraries/Payments
-  - libraries/PaymentsUI
-  - libraries/QuarkCommands
-  - libraries/Services
-  - libraries/Settings
-  - libraries/TroubleShooting
-  - libraries/TestingToolkit
-  - libraries/UIFoundations
-  - libraries/Utilities
-  - libraries/Observability
-  - libraries/MissingScopes
-  - libraries/PasswordRequest
-  - libraries/FeatureFlags
-  ### create pod add library placeholder
-  # - ExampleApp
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods
-  - Package.swift
+  - ExampleApp/Pods
+  - fastlane
+  - third-party
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji, sonarqube, markdown)
 
 cyclomatic_complexity:
@@ -109,28 +71,29 @@ custom_rules:
     regex: "(^\\s*print\\()|(NSLog)"
     match_kinds:
       - identifier
+    excluded: ExampleApp/
 
-file_header:
-  severity: error
-  required_pattern: |
-                    \/\/
-                    \/\/  .*?\.swift
-                    \/\/  ProtonCore.* - Created on \d{1,4}.\d{1,2}.\d{2,4}.?
-                    \/\/
-                    \/\/  Copyright \(c\) \d{4} Proton (Technologies )?AG
-                    \/\/
-                    \/\/  This file is part of (Proton Technologies AG and )?ProtonCore\.
-                    \/\/
-                    \/\/  ProtonCore is free software: you can redistribute it and\/or modify
-                    \/\/  it under the terms of the GNU General Public License as published by
-                    \/\/  the Free Software Foundation, either version 3 of the License, or
-                    \/\/  \(at your option\) any later version\.
-                    \/\/
-                    \/\/  ProtonCore is distributed in the hope that it will be useful,
-                    \/\/  but WITHOUT ANY WARRANTY; without even the implied warranty of
-                    \/\/  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE\..? See the
-                    \/\/  GNU General Public License for more details\.
-                    \/\/
-                    \/\/  You should have received a copy of the GNU General Public License
-                    \/\/  along with ProtonCore\..? If not, see <?https:\/\/www\.gnu\.org\/licenses\/>?\.
+#file_header:
+#  severity: error
+#  required_pattern: |
+#                    \/\/
+#                    \/\/  .*?\.swift
+#                    \/\/  ProtonCore.* - Created on \d{1,4}.\d{1,2}.\d{2,4}.?
+#                    \/\/
+#                    \/\/  Copyright \(c\) \d{4} Proton (Technologies )?AG
+#                    \/\/
+#                    \/\/  This file is part of (Proton Technologies AG and )?ProtonCore\.
+#                    \/\/
+#                    \/\/  ProtonCore is free software: you can redistribute it and\/or modify
+#                    \/\/  it under the terms of the GNU General Public License as published by
+#                    \/\/  the Free Software Foundation, either version 3 of the License, or
+#                    \/\/  \(at your option\) any later version\.
+#                    \/\/
+#                    \/\/  ProtonCore is distributed in the hope that it will be useful,
+#                    \/\/  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#                    \/\/  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE\..? See the
+#                    \/\/  GNU General Public License for more details\.
+#                    \/\/
+#                    \/\/  You should have received a copy of the GNU General Public License
+#                    \/\/  along with ProtonCore\..? If not, see <?https:\/\/www\.gnu\.org\/#dlicenses\/>?\.
           

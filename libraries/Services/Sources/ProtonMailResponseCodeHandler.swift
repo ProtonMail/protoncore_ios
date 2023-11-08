@@ -25,7 +25,6 @@ import ProtonCoreNetworking
 import ProtonCoreUtilities
 
 class ProtonMailResponseCodeHandler {
-    // swiftlint:disable:next function_parameter_count
     func handleProtonResponseCode<T>(
         responseHandlerData: PMResponseHandlerData,
         response: Either<JSONDictionary, ResponseError>,

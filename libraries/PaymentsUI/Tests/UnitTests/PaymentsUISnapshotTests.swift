@@ -379,8 +379,8 @@ final class PaymentsUISnapshotTests: XCTestCase {
         ]
     }
     
-    // swiftlint:disable function_parameter_count
     @MainActor
+    // swiftlint:disable:next function_body_length
     private func snapshotSubscriptionScreen(mode: PaymentsUIMode,
                                             currentSubscriptionPlan: Plan?,
                                             paymentMethods: [PaymentMethod],

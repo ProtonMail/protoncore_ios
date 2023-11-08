@@ -39,7 +39,6 @@ public enum AddAccountEmailError: Error {
     }
 }
 extension QuarkCommands {
-    // swiftlint:disable function_parameter_count
     public static func addEmailToAccount(currentlyUsedHostUrl host: String,
                                          userID: String,
                                          password: String,

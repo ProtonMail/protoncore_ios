@@ -70,7 +70,7 @@ extension AccountSwitcherViewController: AccountSwitchDelegate {
     }
 
     func signinAccount(for mail: String, userID: String?) {
-        if mail == "" {
+        if mail.isEmpty {
             PMLog.info("Show signin view")
         } else {
             PMLog.info("Show signin view for \(mail)")
@@ -78,7 +78,7 @@ extension AccountSwitcherViewController: AccountSwitchDelegate {
     }
 
     func signoutAccount(userID: String, viewModel: AccountManagerVMDataSource) {
-        guard let idx = self.list.firstIndex(where: {$0.userID == userID}) else {return}
+        guard let idx = self.list.firstIndex(where: { $0.userID == userID }) else {return}
         let oldData = self.list[idx]
         let data: AccountSwitcher.AccountData = .init(userID: oldData.userID, name: oldData.name, mail: oldData.mail, isSignin: false, unread: oldData.unread)
         self.list[idx] = data
@@ -86,7 +86,7 @@ extension AccountSwitcherViewController: AccountSwitchDelegate {
     }
 
     func removeAccount(userID: String, viewModel: AccountManagerVMDataSource) {
-        self.list = self.list.filter({$0.userID != userID})
+        self.list = self.list.filter({ $0.userID != userID })
         viewModel.updateAccountList(list: self.list)
     }
     

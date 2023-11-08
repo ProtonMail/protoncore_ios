@@ -662,3 +662,5 @@ class SignupServiceTests: XCTestCase {
 }
 
 #endif
+
+// swiftlint:enable xctfail_message

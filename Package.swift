@@ -4,6 +4,11 @@ import PackageDescription
 
 var products: [Product] = []
 var targets: [Target] = []
+var plugins: [Target.PluginUsage] = []
+
+#if os(iOS) // SwiftLint is only supported on macOS 12.0+
+plugins = [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]
+#endif
 
 func products(from newProduct: String) -> [Product] {
     let products: [Product] = [
@@ -31,8 +36,8 @@ func products(from newProduct: String) -> [Product] {
 }
 
 func add(products newProducts: [Product], targets newTargets: [Target]) {
-    products = products + newProducts
-    targets = targets + newTargets
+    products += newProducts
+    targets += newTargets
 }
 
 func add(product newProduct: String, targets newTargets: [Target]) {
@@ -71,7 +76,7 @@ extension String {
     static let doh: String = "ProtonCoreDoh"
     static let environment: String = "ProtonCoreEnvironment"
     static let features: String = "ProtonCoreFeatures"
-    static let featureFlags: String =  "ProtonCoreFeatureFlags"
+    static let featureFlags: String = "ProtonCoreFeatureFlags"
     static let featureSwitch: String = "ProtonCoreFeatureSwitch"
     static let forceUpgrade: String = "ProtonCoreForceUpgrade"
     static let foundations: String = "ProtonCoreFoundations"
@@ -155,7 +160,8 @@ extension String {
 
     // MARK: - Plugin names
 
-    static let obfuscatedConstantsGenerationPlugin = "ObfuscatedConstantsGenerationPlugin"
+    static let obfuscatedConstantsGenerationPlugin: String = "ObfuscatedConstantsGenerationPlugin"
+    static let swiftLintPlugin: String = "SwiftLintPlugin"
 }
 
 extension Target.Dependency {
@@ -300,7 +306,8 @@ add(
                 resources: [
                     .process("Shared/Resources")
                 ],
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .accountDeletion + "Tests",
                     dependencies: [
@@ -311,15 +318,17 @@ add(
                         .testingToolkitUnitTestsServices
                     ],
                     path: "libraries/AccountDeletion/Tests/UnitTests",
-                    swiftSettings: .spm),
-        
+                    swiftSettings: .spm,
+                    plugins: plugins),
+
         .testTarget(name: .accountDeletion + "LocalizationTests",
                     dependencies: [
                         .accountDeletion,
                         .testingToolkitUnitTestsCore
                     ],
                     path: "libraries/AccountDeletion/Tests/LocalizationTests",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -341,7 +350,8 @@ add(
                 ],
                 path: "libraries/AccountRecovery/Sources",
                 resources: [.process("Resources")],
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .accountRecovery + "Tests",
                     dependencies: [
@@ -349,7 +359,8 @@ add(
                     ],
                     path: "libraries/AccountRecovery/Tests",
                     resources: [.process("Resources")],
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -369,14 +380,16 @@ add(
                 resources: [
                     .process("Resources")
                 ],
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .target(name: .accountSwitcherResourcesiOS,
                 path: "libraries/AccountSwitcher/Resources-iOS",
                 resources: [
                     .process("Resources")
                 ],
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .accountSwitcher + "Tests",
                     dependencies: [
@@ -385,15 +398,17 @@ add(
                     ],
                     path: "libraries/AccountSwitcher/Tests/UnitTests",
                     exclude: ["__Snapshots__"],
-                    swiftSettings: .spm),
-        
+                    swiftSettings: .spm,
+                    plugins: plugins),
+
         .testTarget(name: .accountSwitcher + "LocalizationTests",
                     dependencies: [
                         .accountSwitcher,
                         .testingToolkitUnitTestsCore
                     ],
                     path: "libraries/AccountSwitcher/Tests/LocalizationTests",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -409,7 +424,8 @@ add(
                     .services
                 ],
                 path: "libraries/APIClient/Sources",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .apiClient + "Tests",
                     dependencies: [
@@ -426,7 +442,8 @@ add(
                     ],
                     path: "libraries/APIClient/Tests",
                     resources: [.process("TestData")],
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -444,8 +461,9 @@ add(
                     .authentication
                 ],
                 path: "libraries/Authentication-KeyGeneration/Sources",
-                swiftSettings: .spm),
-        
+                swiftSettings: .spm,
+                plugins: plugins),
+
         .testTarget(name: .authenticationKeyGeneration + "Tests",
                     dependencies: [
                         .swiftBCrypt,
@@ -456,7 +474,8 @@ add(
                     ],
                     path: "libraries/Authentication-KeyGeneration/Tests",
                     resources: [.process("TestData")],
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -474,8 +493,9 @@ add(
                     .services
                 ],
                 path: "libraries/Authentication/Sources",
-                swiftSettings: .spm),
-        
+                swiftSettings: .spm,
+                plugins: plugins),
+
         .testTarget(name: .authentication + "Tests",
                     dependencies: [
                         .authentication,
@@ -486,7 +506,8 @@ add(
                         .ohhttpStubs
                     ],
                     path: "libraries/Authentication/Tests",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -502,14 +523,16 @@ add(
                     .uiFoundations
                 ],
                 path: "libraries/Challenge/Sources",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
         
         .testTarget(name: .challenge + "Tests",
                     dependencies: [
                         .challenge
                     ],
                     path: "libraries/Challenge/Tests",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -525,7 +548,8 @@ add(
                     .uiFoundations
                 ],
                 path: "libraries/Common/Sources",
-                swiftSettings: .spm)
+                swiftSettings: .spm,
+                plugins: plugins)
     ]
 )
 
@@ -540,19 +564,21 @@ add(
                     .dataModel
                 ],
                 path: "libraries/Crypto/Sources",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
-         .testTarget(name: .crypto + "Tests",
-                     dependencies: [
-                         .crypto,
-                         .cryptoGoUsedInTests,
-                         .utilities
-                     ],
-                     path: "libraries/Crypto/Tests",
-                     resources: [
-                         .process("Resources")
-                     ],
-                     swiftSettings: .spm),
+        .testTarget(name: .crypto + "Tests",
+                    dependencies: [
+                        .crypto,
+                        .cryptoGoUsedInTests,
+                        .utilities
+                    ],
+                    path: "libraries/Crypto/Tests",
+                    resources: [
+                        .process("Resources")
+                    ],
+                    swiftSettings: .spm,
+                    plugins: plugins),
     ]
 )
 
@@ -572,7 +598,8 @@ add(
                     .cryptoGoInterface,
                 ],
                 path: "libraries/CryptoGoImplementation/Crypto-Go",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .target(name: .cryptoPatchedGoImplementation,
                 dependencies: [
@@ -580,7 +607,8 @@ add(
                     .cryptoGoInterface
                 ],
                 path: "libraries/CryptoGoImplementation/Crypto-patched-Go",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .target(name: .cryptoVPNPatchedGoImplementation,
                 dependencies: [
@@ -588,7 +616,8 @@ add(
                     .cryptoGoInterface
                 ],
                 path: "libraries/CryptoGoImplementation/Crypto+VPN-patched-Go",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .target(name: .cryptoSearchGoImplementation,
                 dependencies: [
@@ -596,43 +625,48 @@ add(
                     .cryptoGoInterface
                 ],
                 path: "libraries/CryptoGoImplementation/Crypto+Search-Go",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
-         .testTarget(name: .cryptoGoImplementation + "Tests",
-                     dependencies: [
-                         .goLibsCryptoGo,
-                         .cryptoGoImplementation,
-                         .cryptoGoInterface
-                     ],
-                     path: "libraries/CryptoGoImplementation/Tests-Crypto-Go",
-                     swiftSettings: .spm),
+        .testTarget(name: .cryptoGoImplementation + "Tests",
+                    dependencies: [
+                        .goLibsCryptoGo,
+                        .cryptoGoImplementation,
+                        .cryptoGoInterface
+                    ],
+                    path: "libraries/CryptoGoImplementation/Tests-Crypto-Go",
+                    swiftSettings: .spm,
+                    plugins: plugins),
 
-         .testTarget(name: .cryptoPatchedGoImplementation + "Tests",
-                     dependencies: [
-                         .goLibsCryptoPatchedGo,
-                         .cryptoPatchedGoImplementation,
-                         .cryptoGoInterface
-                     ],
-                     path: "libraries/CryptoGoImplementation/Tests-Crypto-patched-Go",
-                     swiftSettings: .spm),
+        .testTarget(name: .cryptoPatchedGoImplementation + "Tests",
+                    dependencies: [
+                        .goLibsCryptoPatchedGo,
+                        .cryptoPatchedGoImplementation,
+                        .cryptoGoInterface
+                    ],
+                    path: "libraries/CryptoGoImplementation/Tests-Crypto-patched-Go",
+                    swiftSettings: .spm,
+                    plugins: plugins),
 
-         .testTarget(name: .cryptoVPNPatchedGoImplementation + "Tests",
-                     dependencies: [
-                         .goLibsCryptoVPNPatchedGo,
-                         .cryptoVPNPatchedGoImplementation,
-                         .cryptoGoInterface
-                     ],
-                     path: "libraries/CryptoGoImplementation/Tests-Crypto+VPN-patched-Go",
-                     swiftSettings: .spm),
+        .testTarget(name: .cryptoVPNPatchedGoImplementation + "Tests",
+                    dependencies: [
+                        .goLibsCryptoVPNPatchedGo,
+                        .cryptoVPNPatchedGoImplementation,
+                        .cryptoGoInterface
+                    ],
+                    path: "libraries/CryptoGoImplementation/Tests-Crypto+VPN-patched-Go",
+                    swiftSettings: .spm,
+                    plugins: plugins),
 
-         .testTarget(name: .cryptoSearchGoImplementation + "Tests",
-                     dependencies: [
-                         .goLibsCryptoSearchGo,
-                         .cryptoSearchGoImplementation,
-                         .cryptoGoInterface
-                     ],
-                     path: "libraries/CryptoGoImplementation/Tests-Crypto+Search-Go",
-                     swiftSettings: .spm)
+        .testTarget(name: .cryptoSearchGoImplementation + "Tests",
+                    dependencies: [
+                        .goLibsCryptoSearchGo,
+                        .cryptoSearchGoImplementation,
+                        .cryptoGoInterface
+                    ],
+                    path: "libraries/CryptoGoImplementation/Tests-Crypto+Search-Go",
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -643,7 +677,8 @@ add(
     targets: [
         .target(name: .cryptoGoInterface,
                 path: "libraries/CryptoGoInterface/Sources",
-                swiftSettings: .spm)
+                swiftSettings: .spm,
+                plugins: plugins)
     ]
 )
 
@@ -657,7 +692,8 @@ add(
                     .utilities
                 ],
                 path: "libraries/DataModel/Sources",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
         
         .testTarget(name: .dataModel + "Tests",
                     dependencies: [
@@ -665,7 +701,8 @@ add(
                         .testingToolkitUnitTestsDataModel
                     ],
                     path: "libraries/DataModel/Tests",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -681,7 +718,8 @@ add(
                 .utilities
             ],
             path: "libraries/DoH/Sources",
-            swiftSettings: .spm),
+            swiftSettings: .spm,
+            plugins: plugins),
         
         .testTarget(name: .doh + "UnitTests",
                     dependencies: [
@@ -694,8 +732,9 @@ add(
                         .ohhttpStubs
                     ],
                     path: "libraries/Doh/Tests/Unit",
-                    swiftSettings: .spm),
-        
+                    swiftSettings: .spm,
+                    plugins: plugins),
+
         .testTarget(name: .doh + "IntegrationTests",
                     dependencies: [
                         .doh,
@@ -707,7 +746,8 @@ add(
                         .testingToolkitUnitTestsFeatureSwitch
                     ],
                     path: "libraries/Doh/Tests/Integration",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -722,7 +762,8 @@ add(
                 .trustKit
             ],
             path: "libraries/Environment/Sources",
-            swiftSettings: .spm),
+            swiftSettings: .spm,
+            plugins: plugins),
 
         .testTarget(name: .environment + "Tests",
                     dependencies: [
@@ -731,7 +772,8 @@ add(
                         .ohhttpStubs
                     ],
                     path: "libraries/Environment/Tests",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -751,7 +793,8 @@ add(
                 .networking
             ],
             path: "libraries/Features/Sources",
-            swiftSettings: .spm)
+            swiftSettings: .spm,
+            plugins: plugins)
     ]
 )
 
@@ -766,7 +809,8 @@ add(
                 .networking
             ],
             path: "libraries/FeatureFlags/Sources",
-            swiftSettings: .spm),
+            swiftSettings: .spm,
+            plugins: plugins),
         
         .testTarget(name: .featureFlags + "Tests",
                     dependencies: [
@@ -775,7 +819,8 @@ add(
                     ],
                     path: "libraries/FeatureFlags/Tests",
                     resources: [.process("FeatureFlagsTests/QueryResources")],
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -792,8 +837,9 @@ add(
                 path: "libraries/FeatureSwitch",
                 exclude: ["Tests"],
                 sources: ["Sources"],
-                resources: [.process("Resources"),],
-                swiftSettings: .spm),
+                resources: [.process("Resources"), ],
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .featureSwitch + "Tests",
                     dependencies: [
@@ -804,7 +850,8 @@ add(
                     ],
                     path: "libraries/FeatureSwitch/Tests",
                     resources: [.process("Resources")],
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -822,24 +869,27 @@ add(
                 resources: [
                     .process("Shared/Resources")
                 ],
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .forceUpgrade + "Tests",
-                dependencies: [
-                    .forceUpgrade,
-                    .testingToolkitUnitTestsCore
-                ],
-                path: "libraries/ForceUpgrade/Tests/UnitTests",
-                swiftSettings: .spm),
-        
+                    dependencies: [
+                        .forceUpgrade,
+                        .testingToolkitUnitTestsCore
+                    ],
+                    path: "libraries/ForceUpgrade/Tests/UnitTests",
+                    swiftSettings: .spm,
+                    plugins: plugins),
+
         .testTarget(name: .forceUpgrade + "LocalizationTests",
                     dependencies: [
                         .forceUpgrade,
                         .testingToolkitUnitTestsCore
                     ],
                     path: "libraries/ForceUpgrade/Tests/LocalizationTests",
-                    swiftSettings: .spm)
-        
+                    swiftSettings: .spm,
+                    plugins: plugins)
+
     ]
 )
 
@@ -853,7 +903,8 @@ add(
                     .log
                 ],
                 path: "libraries/Foundations/Sources",
-                swiftSettings: .spm)
+                swiftSettings: .spm,
+                plugins: plugins)
     ]
 )
 
@@ -881,14 +932,16 @@ add(
     targets: [
         .target(name: .hash,
                 path: "libraries/Hash/Sources",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .hash + "Tests",
                 dependencies: [ 
                     .hash
                 ],
                 path: "libraries/Hash/Tests",
-                swiftSettings: .spm)
+                swiftSettings: .spm,
+                plugins: plugins)
     ]
 )
 
@@ -912,21 +965,24 @@ add(
                     .humanVerificationResourcesmacOS
                 ],
                 path: "libraries/HumanVerification/Sources",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .target(name: .humanVerificationResourcesiOS,
                 path: "libraries/HumanVerification/Resources-iOS",
                 resources: [
                     .process("Resources-iOS")
                 ],
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .target(name: .humanVerificationResourcesmacOS,
                 path: "libraries/HumanVerification/Resources-macOS",
                 resources: [
                     .process("Resources-macOS")
                 ],
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .humanVerification + "Tests",
                     dependencies: [
@@ -940,7 +996,8 @@ add(
                     ],
                     path: "libraries/HumanVerification/Tests/UnitTests",
                     exclude: ["__Snapshots__"],
-                    swiftSettings: .spm),
+                    swiftSettings: .spm,
+                plugins: plugins),
         
         .testTarget(name: .humanVerification + "LocalizationTests",
                     dependencies: [
@@ -948,7 +1005,8 @@ add(
                         .testingToolkitUnitTestsCore
                     ],
                     path: "libraries/HumanVerification/Tests/LocalizationTests",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                plugins: plugins)
     ]
 )
 
@@ -963,7 +1021,8 @@ add(
                     .ellipticCurveKeyPair
                 ],
                 path: "libraries/Keymaker/Sources",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .keymaker + "Tests",
                     dependencies: [
@@ -972,7 +1031,8 @@ add(
                         .cryptoSwift
                     ],
                     path: "libraries/Keymaker/Tests",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -988,7 +1048,8 @@ add(
                     .dataModel
                 ],
                 path: "libraries/KeyManager/Sources",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .keyManager + "Tests",
                     dependencies: [
@@ -997,7 +1058,8 @@ add(
                     ],
                     path: "libraries/KeyManager/Tests",
                     resources: [.process("TestData")],
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -1008,14 +1070,16 @@ add(
     targets: [
         .target(name: .log,
                 path: "libraries/Log/Sources",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .log + "Tests",
                     dependencies: [
                         .log
                     ],
                     path: "libraries/Log/Tests",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                plugins: plugins)
     ]
 )
 
@@ -1039,7 +1103,8 @@ add(
                 ],
                 path: "libraries/Login/Sources",
                 resources: [.process("Resources")],
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
         
         .testTarget(name: .login + "UnitTests",
                     dependencies: [
@@ -1062,7 +1127,8 @@ add(
                     resources: [
                         .process("Mocks/Responses")
                     ],
-                    swiftSettings: .spm),
+                    swiftSettings: .spm,
+                    plugins: plugins),
         
         .testTarget(name: .login + "IntegrationTests",
                     dependencies: [
@@ -1076,7 +1142,8 @@ add(
                         .trustKit
                     ],
                     path: "libraries/Login/Tests/IntegrationTests",
-                    swiftSettings: .spm),
+                    swiftSettings: .spm,
+                    plugins: plugins),
         
         .testTarget(name: .login + "LocalizationTests",
                     dependencies: [
@@ -1084,7 +1151,8 @@ add(
                         .testingToolkitUnitTestsCore
                     ],
                     path: "libraries/Login/Tests/LocalizationTests",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -1119,14 +1187,16 @@ add(
                 resources: [
                     .process("Resources/Translations")
                 ],
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .target(name: .loginUIResourcesiOS,
                 path: "libraries/LoginUI/Resources",
                 resources: [
                     .process("Resources-iOS")
                 ],
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
         
         .testTarget(name: .loginUI + "UnitTests",
                     dependencies: [
@@ -1156,7 +1226,8 @@ add(
                     resources: [
                         .process("Mocks/Responses")
                     ],
-                    swiftSettings: .spm),
+                    swiftSettings: .spm,
+                    plugins: plugins),
         
         .testTarget(name: .loginUI + "IntegrationTests",
                     dependencies: [
@@ -1177,15 +1248,17 @@ add(
                         .trustKit
                     ],
                     path: "libraries/LoginUI/Tests/IntegrationTests",
-                    swiftSettings: .spm),
+                    swiftSettings: .spm,
+                    plugins: plugins),
         
-            .testTarget(name: .loginUI + "LocalizationTests",
-                        dependencies: [
-                            .loginUI,
-                            .testingToolkitUnitTestsCore
-                        ],
-                        path: "libraries/LoginUI/Tests/LocalizationTests",
-                        swiftSettings: .spm)
+        .testTarget(name: .loginUI + "LocalizationTests",
+                    dependencies: [
+                        .loginUI,
+                        .testingToolkitUnitTestsCore
+                    ],
+                    path: "libraries/LoginUI/Tests/LocalizationTests",
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -1203,7 +1276,8 @@ add(
                     .passwordRequest
                 ],
                 path: "libraries/MissingScopes/Sources",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .missingScopes + "Tests",
                     dependencies: [
@@ -1213,7 +1287,8 @@ add(
                     ],
                     path: "libraries/MissingScopes/Tests",
                     exclude: ["SnapshotTests/__Snapshots__"],
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -1231,7 +1306,8 @@ add(
                     .trustKit
                 ],
                 path: "libraries/Networking/Sources",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .networking + "Tests",
                     dependencies: [
@@ -1241,7 +1317,8 @@ add(
                         .trustKit
                     ],
                     path: "libraries/Networking/Tests/UnitTests",
-                    swiftSettings: .spm),
+                    swiftSettings: .spm,
+                    plugins: plugins),
         
         .testTarget(name: .networking + "LocalizationTests",
                     dependencies: [
@@ -1249,7 +1326,8 @@ add(
                         .testingToolkitUnitTestsCore
                     ],
                     path: "libraries/Networking/Tests/LocalizationTests",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -1268,7 +1346,8 @@ add(
                 ],
                 path: "libraries/ObfuscatedConstants/Sources",
                 exclude: ["Template"],
-                swiftSettings: .spm)
+                swiftSettings: .spm,
+                plugins: plugins)
     ]
 )
 
@@ -1283,7 +1362,8 @@ add(
                     .utilities
                 ],
                 path: "libraries/Observability/Sources",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .observability + "UnitTests",
                     dependencies: [
@@ -1296,7 +1376,8 @@ add(
                         .jsonSchema
                     ],
                     path: "libraries/Observability/UnitTests",
-                    swiftSettings: .spm),
+                    swiftSettings: .spm,
+                    plugins: plugins),
         
         .testTarget(name: .observability + "IntegrationTests",
                     dependencies: [
@@ -1309,7 +1390,8 @@ add(
                         .testingToolkitUnitTestsObservability
                     ],
                     path: "libraries/Observability/IntegrationTests",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -1329,8 +1411,8 @@ add(
                 resources: [
                     .process("Resources")
                 ],
-                swiftSettings: .spm
-        ),
+                swiftSettings: .spm,
+                plugins: plugins),
         
         .testTarget(name: .passwordRequest + "UnitTests",
                     dependencies: [
@@ -1345,8 +1427,8 @@ add(
                         .testingToolkitUnitTestsServices
                     ],
                     path: "libraries/PasswordRequest/Tests/UnitTests",
-                    swiftSettings: .spm
-        ),
+                    swiftSettings: .spm,
+                    plugins: plugins),
         
         .testTarget(name: .passwordRequest + "LocalizationTests",
                     dependencies: [
@@ -1354,7 +1436,8 @@ add(
                         .testingToolkitUnitTestsCore
                     ],
                     path: "libraries/PasswordRequest/Tests/LocalizationTests",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -1375,7 +1458,8 @@ add(
                     .featureFlags
                 ],
                 path: "libraries/Payments/Sources",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .payments + "Tests",
                     dependencies: [
@@ -1397,7 +1481,8 @@ add(
                         .process("AppStoreLocalTest"),
                         .process("Mocks/Responses")
                     ],
-                    swiftSettings: .spm),
+                    swiftSettings: .spm,
+                    plugins: plugins),
 
         .testTarget(name: .payments + "IntegrationTests",
                     dependencies: [
@@ -1415,7 +1500,8 @@ add(
                         .testingToolkitUnitTestsServices
                     ],
                     path: "libraries/Payments/Tests/IntegrationTests",
-                    swiftSettings: .spm),
+                    swiftSettings: .spm,
+                    plugins: plugins),
         
         .testTarget(name: .payments + "LocalizationTests",
                     dependencies: [
@@ -1423,7 +1509,8 @@ add(
                         .testingToolkitUnitTestsCore
                     ],
                     path: "libraries/Payments/Tests/LocalizationTests",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -1447,14 +1534,16 @@ add(
                 resources: [
                     .process("Resources/Translations")
                 ],
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .target(name: .paymentsUIResourcesiOS,
                 path: "libraries/PaymentsUI/Resources",
                 resources: [
                     .process("Resources-iOS")
                 ],
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .paymentsUI + "Tests",
                     dependencies: [
@@ -1468,15 +1557,17 @@ add(
                     ],
                     path: "libraries/PaymentsUI/Tests/UnitTests",
                     exclude: ["__Snapshots__"],
-                    swiftSettings: .spm),
-        
+                    swiftSettings: .spm,
+                    plugins: plugins),
+
         .testTarget(name: .paymentsUI + "LocalizationTests",
                     dependencies: [
                         .paymentsUI,
                         .testingToolkitUnitTestsCore
                     ],
                     path: "libraries/PaymentsUI/Tests/LocalizationTests",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -1497,7 +1588,8 @@ add(
                     .services
                 ],
                 path: "libraries/PushNotifications/Sources",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .pushNotifications + "Tests",
                     dependencies: [
@@ -1505,7 +1597,8 @@ add(
                         .testingToolkitUnitTestsCore
                     ],
                     path: "libraries/PushNotifications/Tests",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -1523,7 +1616,8 @@ add(
                     .services
                 ],
                 path: "libraries/QuarkCommands/Sources",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .quarkCommands + "Tests",
                     dependencies: [
@@ -1533,14 +1627,15 @@ add(
                     ],
                     path: "libraries/QuarkCommands/Tests",
                     resources: [.process("Mocks")],
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                plugins: plugins)
     ]
 )
 
 // MARK: Services
 
 add(
-    product:. services,
+    product: . services,
     targets: [
         .target(name: .services,
                 dependencies: [
@@ -1551,7 +1646,8 @@ add(
                 resources: [
                     .process("Resources")
                 ],
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .services + "UnitTests",
                     dependencies: [
@@ -1566,7 +1662,8 @@ add(
                         .testingToolkitUnitTestsServices
                     ],
                     path: "libraries/Services/Tests/Unit",
-                    swiftSettings: .spm),
+                    swiftSettings: .spm,
+                plugins: plugins),
         
         .testTarget(name: .services + "IntegrationTests",
                     dependencies: [
@@ -1578,7 +1675,8 @@ add(
                         .testingToolkitUnitTestsFeatureSwitch
                     ],
                     path: "libraries/Services/Tests/Integration",
-                    swiftSettings: .spm),
+                    swiftSettings: .spm,
+                plugins: plugins),
         
         .testTarget(name: .services + "LocalizationTests",
                     dependencies: [
@@ -1586,7 +1684,8 @@ add(
                         .testingToolkitUnitTestsCore
                     ],
                     path: "libraries/Services/Tests/Localization",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                plugins: plugins)
     ]
 )
 
@@ -1604,7 +1703,8 @@ add(
                 resources: [
                     .process("Resources")
                 ],
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .settings + "Tests",
                     dependencies: [
@@ -1617,7 +1717,8 @@ add(
                         "Security/Presentation/__Snapshots__",
                         "Settings/Presentation/__Snapshots__"
                     ],
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                plugins: plugins)
     ]
 )
 
@@ -1636,7 +1737,8 @@ add(product: .subscriptions,
                 resources: [
                     .process("Resources")
                 ],
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
         .testTarget(name: .subscriptions + "Tests",
                     dependencies: [
                         .subscriptions,
@@ -1644,7 +1746,8 @@ add(product: .subscriptions,
                         .testingToolkitUnitTestsFeatureSwitch
                     ],
                     path: "libraries/Subscriptions/Tests",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                plugins: plugins)
     ]
 )
 
@@ -1682,7 +1785,8 @@ add(
                     .cryptoSwift
                 ],
                 path: "libraries/TestingToolkit/TestData",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .target(name: .testingToolkitUnitTestsAccountDeletion,
                 dependencies: [
@@ -1691,7 +1795,8 @@ add(
                     .testingToolkitUnitTestsNetworking
                 ],
                 path: "libraries/TestingToolkit/UnitTests/AccountDeletion",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .target(name: .testingToolkitUnitTestsAuthentication,
                 dependencies: [
@@ -1700,17 +1805,19 @@ add(
                     .testingToolkitUnitTestsServices
                 ],
                 path: "libraries/TestingToolkit/UnitTests/Authentication",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
         
-            .target(name: .testingToolkitUnitTestsAuthenticationKeyGeneration,
-                    dependencies: [
-                        .authenticationKeyGeneration,
-                        .testingToolkitUnitTestsAuthentication,
-                        .testingToolkitUnitTestsCore,
-                        .testingToolkitUnitTestsServices
-                    ],
-                    path: "libraries/TestingToolkit/UnitTests/Authentication-KeyGeneration",
-                    swiftSettings: .spm),
+        .target(name: .testingToolkitUnitTestsAuthenticationKeyGeneration,
+                dependencies: [
+                    .authenticationKeyGeneration,
+                    .testingToolkitUnitTestsAuthentication,
+                    .testingToolkitUnitTestsCore,
+                    .testingToolkitUnitTestsServices
+                ],
+                path: "libraries/TestingToolkit/UnitTests/Authentication-KeyGeneration",
+                swiftSettings: .spm,
+            plugins: plugins),
 
         .target(name: .testingToolkitUnitTestsCore,
                 dependencies: [
@@ -1718,7 +1825,8 @@ add(
                     .snapshotTesting
                 ],
                 path: "libraries/TestingToolkit/UnitTests/Core",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .target(name: .testingToolkitUnitTestsDataModel,
                 dependencies: [
@@ -1726,7 +1834,8 @@ add(
                     .testingToolkitUnitTestsCore
                 ],
                 path: "libraries/TestingToolkit/UnitTests/DataModel",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .target(name: .testingToolkitUnitTestsDoh,
                 dependencies: [
@@ -1734,7 +1843,8 @@ add(
                     .testingToolkitUnitTestsCore
                 ],
                 path: "libraries/TestingToolkit/UnitTests/Doh",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .target(name: .testingToolkitUnitTestsFeatureSwitch,
                 dependencies: [
@@ -1743,30 +1853,33 @@ add(
                     .testingToolkitUnitTestsCore
                 ],
                 path: "libraries/TestingToolkit/UnitTests/FeatureSwitch",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
         
-            .target(name: .testingToolkitUnitTestsLogin,
-                    dependencies: [
-                        .login,
-                        .testingToolkitUnitTestsCore,
-                        .testingToolkitUnitTestsAuthentication,
-                        .testingToolkitUnitTestsDataModel,
-                        .testingToolkitUnitTestsServices
-                    ],
-                    path: "libraries/TestingToolkit/UnitTests/Login",
-                    swiftSettings: .spm),
-        
-            .target(name: .testingToolkitUnitTestsLoginUI,
-                    dependencies: [
-                        .loginUI,
-                        .testingToolkitUnitTestsCore,
-                        .testingToolkitUnitTestsAuthentication,
-                        .testingToolkitUnitTestsDataModel,
-                        .testingToolkitUnitTestsLogin,
-                        .testingToolkitUnitTestsServices
-                    ],
-                    path: "libraries/TestingToolkit/UnitTests/LoginUI",
-                    swiftSettings: .spm),
+        .target(name: .testingToolkitUnitTestsLogin,
+                dependencies: [
+                    .login,
+                    .testingToolkitUnitTestsCore,
+                    .testingToolkitUnitTestsAuthentication,
+                    .testingToolkitUnitTestsDataModel,
+                    .testingToolkitUnitTestsServices
+                ],
+                path: "libraries/TestingToolkit/UnitTests/Login",
+                swiftSettings: .spm,
+            plugins: plugins),
+
+        .target(name: .testingToolkitUnitTestsLoginUI,
+                dependencies: [
+                    .loginUI,
+                    .testingToolkitUnitTestsCore,
+                    .testingToolkitUnitTestsAuthentication,
+                    .testingToolkitUnitTestsDataModel,
+                    .testingToolkitUnitTestsLogin,
+                    .testingToolkitUnitTestsServices
+                ],
+                path: "libraries/TestingToolkit/UnitTests/LoginUI",
+                swiftSettings: .spm,
+            plugins: plugins),
 
         .target(name: .testingToolkitUnitTestsNetworking,
                 dependencies: [
@@ -1774,7 +1887,8 @@ add(
                     .testingToolkitUnitTestsCore
                 ],
                 path: "libraries/TestingToolkit/UnitTests/Networking",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .target(name: .testingToolkitUnitTestsObservability,
                 dependencies: [
@@ -1782,7 +1896,8 @@ add(
                     .testingToolkitUnitTestsCore
                 ],
                 path: "libraries/TestingToolkit/UnitTests/Observability",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .target(name: .testingToolkitUnitTestsPayments,
                 dependencies: [
@@ -1791,7 +1906,8 @@ add(
                     .ohhttpStubs
                 ],
                 path: "libraries/TestingToolkit/UnitTests/Payments",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .target(name: .testingToolkitUnitTestsServices,
                 dependencies: [
@@ -1803,7 +1919,8 @@ add(
                     .testingToolkitUnitTestsNetworking
                 ],
                 path: "libraries/TestingToolkit/UnitTests/Services",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
         
         .target(name: .testingToolkitUITestsAccountDeletion,
                 dependencies: [
@@ -1813,7 +1930,8 @@ add(
                     .fusion
                 ],
                 path: "libraries/TestingToolkit/UITests/AccountDeletion",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
         
         .target(name: .testingToolkitUITestsAccountSwitcher,
                 dependencies: [
@@ -1823,7 +1941,8 @@ add(
                     .fusion
                 ],
                 path: "libraries/TestingToolkit/UITests/AccountSwitcher",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
         
         .target(name: .testingToolkitUITestsCore,
                 dependencies: [
@@ -1833,7 +1952,8 @@ add(
                     .fusion
                 ],
                 path: "libraries/TestingToolkit/UITests/Core",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
         
         .target(name: .testingToolkitUITestsHumanVerification,
                 dependencies: [
@@ -1843,7 +1963,8 @@ add(
                     .fusion
                 ],
                 path: "libraries/TestingToolkit/UITests/HumanVerification",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
         
         .target(name: .testingToolkitUITestsLogin,
                 dependencies: [
@@ -1855,7 +1976,8 @@ add(
                     .fusion,
                 ],
                 path: "libraries/TestingToolkit/UITests/Login",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
     
         .target(name: .testingToolkitUITestsPaymentsUI,
                 dependencies: [
@@ -1865,7 +1987,8 @@ add(
                     .fusion
                 ],
                 path: "libraries/TestingToolkit/UITests/PaymentsUI",
-                swiftSettings: .spm)
+                swiftSettings: .spm,
+                plugins: plugins)
     ]
 )
 
@@ -1886,14 +2009,16 @@ add(
                 resources: [
                     .process("Resources")
                 ],
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .target(name: .troubleShootingResourcesiOS,
                 path: "libraries/TroubleShooting/Resources",
                 resources: [
                     .process("Resources-iOS")
                 ],
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .troubleShooting + "Tests",
                     dependencies: [
@@ -1905,7 +2030,8 @@ add(
                     ],
                     path: "libraries/TroubleShooting/Tests/UnitTests",
                     exclude: ["__Snapshots__"],
-                    swiftSettings: .spm),
+                    swiftSettings: .spm,
+                    plugins: plugins),
         
         .testTarget(name: .troubleShooting + "LocalizationTests",
                     dependencies: [
@@ -1913,7 +2039,8 @@ add(
                         .testingToolkitUnitTestsCore
                     ],
                     path: "libraries/TroubleShooting/Tests/LocalizationTests",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -1931,7 +2058,8 @@ add(
                     .uiFoundationsResourcesmacOS
                 ],
                 path: "libraries/UIFoundations/Sources",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .target(name: .uiFoundationsResourcesiOS,
                 path: "libraries/UIFoundations/Resources-iOS",
@@ -1939,14 +2067,16 @@ add(
                     .process("Resources-iOS"),
                     .process("Resources-Shared")
                 ],
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .target(name: .uiFoundationsResourcesmacOS,
                 path: "libraries/UIFoundations/Resources-macOS",
                 resources: [
                     .process("Resources-Shared")
                 ],
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .uiFoundations + "Tests",
                     dependencies: [
@@ -1955,7 +2085,8 @@ add(
                     ],
                     path: "libraries/UIFoundations/Tests",
                     exclude: ["__Snapshots__"],
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -1969,14 +2100,16 @@ add(
                     .log
                 ],
                 path: "libraries/Utilities/Sources",
-                swiftSettings: .spm),
+                swiftSettings: .spm,
+                plugins: plugins),
 
         .testTarget(name: .utilities + "Tests",
                     dependencies: [
                         .utilities
                     ],
                     path: "libraries/Utilities/Tests",
-                    swiftSettings: .spm)
+                    swiftSettings: .spm,
+                    plugins: plugins)
     ]
 )
 
@@ -1997,12 +2130,16 @@ let package = Package(
     platforms: [.iOS(.v14), .macOS(.v11)],
     products: products + [
         .plugin(name: .obfuscatedConstantsGenerationPlugin, 
-                targets: [.obfuscatedConstantsGenerationPlugin])
+                targets: [.obfuscatedConstantsGenerationPlugin]),
     ],
     dependencies: [
         .package(
             url: "https://github.com/Alamofire/Alamofire",
             exact: "5.4.4"
+        ),
+        .package(
+            url: "https://github.com/ProtonMail/apple-fusion",
+            "2.0.1"..<"3.0.0"
         ),
         .package(
             url: "https://github.com/krzyzanowskim/CryptoSwift",
@@ -2011,10 +2148,6 @@ let package = Package(
         .package(
             url: "https://github.com/agens-no/EllipticCurveKeyPair",
             from: "2.0.0"
-        ),
-        .package(
-            url: "https://github.com/ProtonMail/apple-fusion",
-            "2.0.1"..<"3.0.0"
         ),
         .package(
             url: "https://github.com/kylef/JSONSchema.swift",
@@ -2041,17 +2174,19 @@ let package = Package(
             from: "1.10.0"
         ),
         .package(
-            url: "https://github.com/ProtonMail/TrustKit",
-            exact: "1.0.3"
-        ),
-        .package(
             url: "https://github.com/tannerdsilva/SwiftBCrypt.git",
             from: "0.2.0"
         ),
+        .package(url: "https://github.com/realm/SwiftLint",
+                 from: "0.53.0"),
         .package(
             url: "https://github.com/SDWebImage/SDWebImage.git",
             "0.0.0"..<"5.16.0"
-        )
+        ),
+        .package(
+            url: "https://github.com/ProtonMail/TrustKit",
+            exact: "1.0.3"
+        ),
     ],
     targets: targets + [
         .plugin(name: .obfuscatedConstantsGenerationPlugin,

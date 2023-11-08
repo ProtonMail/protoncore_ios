@@ -27,7 +27,6 @@ import UserNotifications
 // We'll need to add stand-alone micro-projects for running these
 
 final class PushNotificationServiceTests: XCTestCase {
- 
 
     func testSetupSetsNotificationCenterDelegate() {
 

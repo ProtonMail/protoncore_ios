@@ -25,8 +25,6 @@ import ProtonCoreDataModel
 import ProtonCoreNetworking
 import ProtonCoreFeatureSwitch
 
-// swiftlint:disable function_parameter_count
-
 public protocol AuthenticatorKeyGenerationInterface {
 
   func createAddressKey(_ credential: Credential?,

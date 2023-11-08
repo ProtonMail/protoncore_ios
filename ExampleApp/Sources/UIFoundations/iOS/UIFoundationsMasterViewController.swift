@@ -19,6 +19,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+// swiftlint:disable inclusive_language
+
 import UIKit
 
 class UIFoundationsMasterViewController: UIFoundationsAppearanceStyleTableViewController {
@@ -43,11 +45,6 @@ class UIFoundationsMasterViewController: UIFoundationsAppearanceStyleTableViewCo
         rows.append((title: "Colors", viewController: UIFoundationsColorsViewController()))
         rows.append((title: "Icons", viewController: UIFoundationsIconsViewController()))
         rows.append((title: "Dynamic font size", viewController: UIFoundationsDFSViewController()))
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-//        clearsSelectionOnViewWillAppear = splitViewController?.isCollapsed
-        super.viewWillAppear(animated)
     }
 
     // MARK: - Segues
@@ -87,3 +84,5 @@ class UIFoundationsMasterViewController: UIFoundationsAppearanceStyleTableViewCo
         return indexPath
     }
 }
+
+// swiftlint:enable inclusive_language

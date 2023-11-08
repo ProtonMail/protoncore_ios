@@ -48,7 +48,7 @@ class UIFoundationsBannerTableViewController: UIFoundationsAppearanceStyleTableV
         "info with button icon",
         "Custom bottom padding banner"
     ]
-    private var functions: [()->()] = []
+    private var functions: [() -> Void] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         self.functions = [
@@ -283,7 +283,7 @@ extension UIFoundationsBannerTableViewController {
         var cell = tableView.dequeueReusableCell(withIdentifier: "bannerCell")
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: "bannerCell")
-            cell?.backgroundColor =  ColorProvider.BackgroundNorm
+            cell?.backgroundColor = ColorProvider.BackgroundNorm
             cell?.textLabel?.textColor = ColorProvider.TextNorm
         }
         cell?.textLabel?.text = samples[indexPath.row]

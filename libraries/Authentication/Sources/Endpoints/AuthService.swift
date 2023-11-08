@@ -111,7 +111,6 @@ public class AuthService: Client {
         }
     }
     
-    // swiftlint:disable function_parameter_count
     func auth(username: String,
               ephemeral: Data,
               proof: Data,

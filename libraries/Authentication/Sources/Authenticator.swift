@@ -97,7 +97,6 @@ public class Authenticator: NSObject, AuthenticatorInterface {
         }
     }
     
-    // swiftlint:disable:next function_parameter_count
     private func handleAuthInfoResponse(username: String,
                                         password: String,
                                         challenge: ChallengeProperties?,

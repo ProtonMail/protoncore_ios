@@ -196,7 +196,7 @@ class AuthenticatorMockTests: XCTestCase {
             switch result {
             case .success(let status):
                 switch status {
-                case .updatedCredential, .newCredential, .ssoChallenge: 
+                case .updatedCredential, .newCredential: 
                     XCTFail()
                     expect.fulfill()
                 case let .ask2FA(context):
@@ -747,3 +747,5 @@ class AuthenticatorMockTests: XCTestCase {
         }
     }
 }
+
+// swiftlint:enable xctfail_message

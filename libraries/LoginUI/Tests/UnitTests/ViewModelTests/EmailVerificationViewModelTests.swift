@@ -149,3 +149,5 @@ class EmailVerificationViewModelTests: XCTestCase {
 }
 
 #endif
+
+// swiftlint:enable xctfail_message

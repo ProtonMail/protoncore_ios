@@ -189,4 +189,3 @@ class FeatureFactoryTests: XCTestCase {
         XCTAssertTrue(sharedMock.isEnabled(testfeatureTwo))
     }
 }
-

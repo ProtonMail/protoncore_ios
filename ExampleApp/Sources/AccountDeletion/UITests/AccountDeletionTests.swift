@@ -50,7 +50,6 @@ final class AccountDeletionTests: AccountDeletionBaseTestCase {
             .verify.accountDeletionButtonIsDisplayed(type: .button)
     }
     
-    
     func testAccountDeletionIsClosableEvenWhenValidationFails() throws {
         let (robot, password, _, _) = appRobot
             .switchPickerToAccount(.freeNoAddressNoKeys())

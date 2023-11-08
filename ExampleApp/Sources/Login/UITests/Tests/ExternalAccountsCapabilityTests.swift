@@ -42,7 +42,7 @@ final class ExternalAccountsCapabilityTests: LoginBaseTestCase {
 
     // MARK: - Sign in tests
 
-    // MARK: --- Sign in with internal account requirement (Mail, Calendar)
+    // MARK: - Sign in with internal account requirement (Mail, Calendar)
 
     func testSignInInternalAccountWithInternalAccountRequirement() {
         let (account, randomUsername, randomPassword) = internalAccount()
@@ -84,7 +84,7 @@ final class ExternalAccountsCapabilityTests: LoginBaseTestCase {
         .verify.buttonLogoutIsNotVisible()
     }
 
-    // MARK: --- Sign in with external account requirement (Drive)
+    // MARK: - Sign in with external account requirement (Drive)
 
     func testSignInInternalAccountWithExternalAccountRequirement() {
         let (account, randomUsername, randomPassword) = internalAccount()
@@ -128,7 +128,7 @@ final class ExternalAccountsCapabilityTests: LoginBaseTestCase {
         .verify.buttonLogoutIsNotVisible()
     }
 
-    // MARK: --- Sign in with username account requirement (VPN)
+    // MARK: - Sign in with username account requirement (VPN)
 
     func testSignInWithInternalAccountWithUsernameAccountRequirement() {
         let (account, randomUsername, randomPassword) = internalAccount()
@@ -171,7 +171,7 @@ final class ExternalAccountsCapabilityTests: LoginBaseTestCase {
 
     // MARK: - Sign up tests
 
-    // MARK: --- Sign up with internal account requirement (Mail, Calendar)
+    // MARK: - Sign up with internal account requirement (Mail, Calendar)
 
     func testSignUpInternalAccountWithInternalAccountRequirement() {
         let signupRobot = mainRobot.showSignup()
@@ -194,7 +194,7 @@ final class ExternalAccountsCapabilityTests: LoginBaseTestCase {
             .verify.otherAccountExtButtonIsNotShown()
     }
 
-    // MARK: --- Sign up with external account requirement (Drive)
+    // MARK: - Sign up with external account requirement (Drive)
 
     func testSignUpInternalAccountWithExternalAccountRequirement() {
         let signupRobot = mainRobot.changeAccountTypeToExternal().showSignup().otherAccountButtonTap()
@@ -225,7 +225,7 @@ final class ExternalAccountsCapabilityTests: LoginBaseTestCase {
         .verify.buttonLogoutIsNotVisible()
     }
 
-    // MARK: --- Sign up with username account requirement (VPN)
+    // MARK: - Sign up with username account requirement (VPN)
 
     func testSignUpInternalAccountWithUsernameAccountRequirement() {
         let signupRobot = mainRobot.changeAccountTypeToUsername().showSignup().otherAccountButtonTap()

@@ -159,7 +159,7 @@ public class AnonymousServiceManager: APIServiceDelegate {
     }
     public func isReachable() -> Bool { return true }
     public func onDohTroubleshot() {
-        // swiftlint:disable no_print
+        // swiftlint:disable:next no_print
         PMLog.info("\(#file): \(#function)")
     }
 }

@@ -29,7 +29,6 @@ extension Encryptor {
         case invalidPrivateKey
     }
 
-    // swiftlint:disable function_parameter_count
     public static func encryptStream(_ cleartextUrl: URL,
                                      _ cyphertextUrl: URL,
                                      _ nodeKey: String,
@@ -102,14 +101,12 @@ extension Encryptor {
 }
 
 extension Encryptor {
-    // swiftlint:disable function_parameter_count
     private static func encryptBinaryStream(_ sessionKey: CryptoSessionKey,
                                             _ signKeyRing: CryptoKeyRing?,
                                             _ blockFile: FileHandle,
                                             _ ciphertextFile: FileHandle,
                                             _ totalSize: Int,
                                             _ bufferSize: Int ) throws -> Data
-    // swiftlint:enable function_parameter_count
     {
         
         let ciphertextWriter = CryptoGo.HelperMobile2GoWriterWithSHA256(FileMobileWriter(file: ciphertextFile))!

@@ -71,7 +71,7 @@ final class PMAcknowledgementsViewController: UIViewController {
     var viewModel: PMAcknowledgementsViewModel
     lazy var textView = UITextView()
 
-    // swiftlint:disable identifier_name
+    // swiftlint:disable:next identifier_name
     init(vm: PMAcknowledgementsViewModel) {
         self.viewModel = vm
         super.init(nibName: nil, bundle: nil)

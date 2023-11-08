@@ -31,9 +31,7 @@ final class TimeFormattingTests: XCTestCase {
 
     let expectedResultsUsingDays = [ "2 days", "3 days", "3 days", "13 days", "14 days", "14 days" ]
 
-
     let expectedResultsNotUsingDays = [ "71 hours", "72 hours", "72 hours", "335 hours", "336 hours", "336 hours" ]
-
 
     func testAllowingDays() {
         let results = intervals.map { $0.asRemainingTimeString(allowingDays: true) }
@@ -47,7 +45,6 @@ final class TimeFormattingTests: XCTestCase {
         let results = intervals.map { $0.asRemainingTimeString(allowingDays: false) }
 
         let allExpectedResultsNotUsingDays = expectedResults.appending(expectedResultsNotUsingDays)
-
 
         XCTAssertEqual(allExpectedResultsNotUsingDays, results)
     }}

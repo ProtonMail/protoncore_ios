@@ -119,10 +119,6 @@ class LocalizationPreviewTableViewController: UITableViewController {
     @objc func brandAction(sender: UIBarButtonItem!) {
         inAppLanguage()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {

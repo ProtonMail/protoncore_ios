@@ -68,3 +68,5 @@ class StringCryptoTransformerTests: XCTestCase {
     }
 
 }
+
+// swiftlint:enable xctfail_message

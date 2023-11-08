@@ -193,7 +193,6 @@ public final class AccountDeletionService {
         }
     }
     
-    // swiftlint:disable:next function_parameter_count
     private func handleSuccessfullyForkedSession(
         selector: String,
         over: AccountDeletionViewControllerPresenter,

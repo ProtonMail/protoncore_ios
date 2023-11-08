@@ -44,11 +44,9 @@ extension String {
         return false
     }
     
-    /**
-     String extension check is email valid use the basic regex
-     
-     :returns: true | false
-     */
+    /// String extension check is email valid use the basic regex
+    ///
+    /// :returns: true | false
     static let emailRegEx = "(?:[a-zA-Z0-9!#$%\\&‘*+/=?\\^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%\\&'*+/=?\\^_`{|}" +
     "~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\" +
     "x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-" +
@@ -120,32 +118,10 @@ extension String {
     func lr2lrln() -> String {
         return  self.replacingOccurrences(of: "\r", with: "\r\n")
     }
-    
-    /**
-     String extension formating the Json format contact for forwarding email.
-     
-     :returns: String
-     */
-//    func formatJsonContact(_ mailto : Bool = false) -> String {
-//        var lists: [String] = []
-//        
-//        if let recipients : [[String : Any]] = self.parseJson() {
-//            for dict:[String : Any] in recipients {
-//                if mailto {
-//                    lists.append(dict.getName() + " &lt;<a href=\"mailto:\(dict.getAddress())\" class=\"\">\(dict.getAddress())</a>&gt;")
-//                } else {
-//                    lists.append(dict.getName() + "&lt;\(dict.getAddress())&gt;")
-//                }
-//            }
-//        }
-//        return lists.joined(separator: ",")
-//    }
-    
-    /**
-     String extension decode some encoded htme tags
-     
-     :returns: String
-     */
+
+    /// String extension decode some encoded htme tags
+    ///
+    /// :returns: String
     func decodeHtml() -> String {
         var result = self.replacingOccurrences(of: "&amp;", with: "&", options: NSString.CompareOptions.caseInsensitive, range: nil)
         result = result.replacingOccurrences(of: "&quot;", with: "\"", options: NSString.CompareOptions.caseInsensitive, range: nil)

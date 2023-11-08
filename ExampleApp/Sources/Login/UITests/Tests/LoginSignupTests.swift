@@ -57,11 +57,6 @@ class LoginSignupTests: LoginBaseTestCase {
         return nil
     }
     
-    override func tearDown() {
-        super.tearDown()
-    }
-    
-    
     func testCloseButtonExists() {
         let signupRobot = mainRobot.showSignup()
         signupTestCases.testCloseButtonExists(signupRobot: signupRobot)

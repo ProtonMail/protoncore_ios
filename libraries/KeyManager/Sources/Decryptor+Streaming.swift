@@ -27,8 +27,7 @@ import ProtonCoreUtilities
 extension Decryptor {
     
     // Marin: Adding this method defeats the point of giving the session key and key rings directly. Which were used to avoid decrypting and building the objects for each block
-    
-    // swiftlint:disable function_parameter_count
+
     @available(*, deprecated, renamed: "Decryptor.decryptStream(encryptedFile:decryptedFile:decryptionKeys:keyPacket:verificationKeys:signature:chunckSize:removeClearTextFileIfAlreadyExists:)")
     public static func decryptStream(_ cyphertextUrl: URL,
                                      _ cleartextUrl: URL,
@@ -55,7 +54,6 @@ extension Decryptor {
                                      signature: String,
                                      chunckSize: Int,
                                      removeClearTextFileIfAlreadyExists: Bool = false) throws
-    // swiftlint:enable function_parameter_count
     {
         // prepare files
         if FileManager.default.fileExists(atPath: cleartextUrl.path) {

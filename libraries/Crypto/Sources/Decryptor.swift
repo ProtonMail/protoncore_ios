@@ -191,8 +191,7 @@ public enum Decryptor {
                                              encrypted: encPasspharse, signature: detachedSign,
                                              verificationKeys: verificationKeys, verifyTime: verifyTime, verificationContext: verificationContext)
     }
-    
-    // swiftlint:disable function_parameter_count
+
     /// decrypt a file using the streaming api and verify the signature
     /// - Parameters:
     ///   - encryptedFile: The file containing the encrypted data
@@ -222,7 +221,6 @@ public enum Decryptor {
                                    chunckSize: chunckSize, removeClearTextFileIfAlreadyExists: removeClearTextFileIfAlreadyExists, verificationContext: verificationContext)
     }
     
-    // swiftlint:disable function_parameter_count
     /// decrypt a file using the streaming api and verify the signature
     /// - Parameters:
     ///   - encryptedFile: The file containing the encrypted data

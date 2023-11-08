@@ -14,8 +14,7 @@ import ProtonCoreTestingToolkitUITestsHumanVerification
 import ProtonCoreTestingToolkit
 #endif
 
-
-fileprivate let humanVerificationUnauthButton = "Human Verification unauth test"
+private let humanVerificationUnauthButton = "Human Verification unauth test"
 
 public final class NetworkingSampleAppRobot: CoreElements {
     

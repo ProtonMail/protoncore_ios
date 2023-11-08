@@ -77,7 +77,7 @@ final class PMSwitchCell: PMSettingsBaseCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // swiftlint:disable identifier_name
+    // swiftlint:disable:next identifier_name
     func configure(with vm: PMSwitchCellViewModel, hasSeparator: Bool) {
         self.viewModel = vm
         titleLabel.text = vm.title

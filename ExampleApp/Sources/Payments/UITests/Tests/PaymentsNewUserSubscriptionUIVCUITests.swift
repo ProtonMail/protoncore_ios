@@ -145,7 +145,7 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
                .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
                .showPaymentsUI()
                .verify.newUserSubscriptionUIScreenIsShown()
-               .insertUsername(name:randomUsername)
+               .insertUsername(name: randomUsername)
                .insertPassword(password: ObfuscatedConstants.password)
                .loginButtonTap()
                .modalVCSwitchTap()

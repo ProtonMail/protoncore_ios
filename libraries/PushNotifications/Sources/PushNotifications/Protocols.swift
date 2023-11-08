@@ -47,7 +47,6 @@ public protocol NotificationHandler {
     func handle(notification: UNNotificationContent) // for now, decoded type later
 }
 
-
 public protocol PushNotificationServiceFactory {
     func makePushNotificationService() -> PushNotificationServiceProtocol
 }

@@ -97,17 +97,16 @@ class NetworkingViewController: NSViewController {
                 PMLog.info("")
             case .failure(Authenticator.Errors.emptyAuthInfoResponse):
                 PMLog.info("")
-            case .failure(_): // network or parsing error
+            case .failure: // network or parsing error
                 PMLog.info("")
             case .success(.ask2FA(let context)): // success but need 2FA
                 PMLog.info(String(describing: context))
             case .success(.newCredential(_, let passwordMode)): // success without 2FA
                 PMLog.info("pwd mode: \(passwordMode)")
                 self.showHumanVerification()
-                break
             case .success(.updatedCredential):
                 assert(false, "Should never happen in this flow")
-            case .success(.ssoChallenge(_)):
+            case .success(.ssoChallenge):
                 assert(false, "Should never happen in this flow")
             }
             PMLog.info(String(describing: result))
@@ -173,9 +172,9 @@ class NetworkingViewController: NSViewController {
     }
 }
 
-extension NetworkingViewController : APIServiceDelegate {
+extension NetworkingViewController: APIServiceDelegate {
     
-    var additionalHeaders: [String : String]? { nil }
+    var additionalHeaders: [String: String]? { nil }
     
     var locale: String { Locale.autoupdatingCurrent.identifier }
 

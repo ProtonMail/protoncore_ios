@@ -32,7 +32,7 @@ final class ActiveAccountRecoveryViewTests: XCTestCase {
         let viewModel = AccountRecoveryView.ViewModel()
         viewModel.state = .grace
         viewModel.email = "janedoe@proton.me"
-        viewModel.remainingTime = 72*3600
+        viewModel.remainingTime = 72 * 3600
         viewModel.isLoaded = true
 
         // When
@@ -40,12 +40,10 @@ final class ActiveAccountRecoveryViewTests: XCTestCase {
 
         // Then
         let foundImage = try sut.inspect().find(ViewType.Image.self).actualImage()
-        _ = try sut.inspect().find(textWhere: {
-            string, _ -> Bool in
+        _ = try sut.inspect().find(textWhere: {string, _ -> Bool in
             string.contains("janedoe@proton.me")
         })
-        _ = try sut.inspect().find(textWhere: {
-            string, _ -> Bool in
+        _ = try sut.inspect().find(textWhere: {string, _ -> Bool in
             string.contains("72 hours")
         })
         let foundButton = try sut.inspect().find(ViewType.Button.self)
@@ -55,6 +53,5 @@ final class ActiveAccountRecoveryViewTests: XCTestCase {
         XCTAssertEqual("password-reset-period-start", try foundImage.name())
         XCTAssert(type(of: try foundButton.buttonStyle()) == SolidButton.self)
     }
-
   
 }
