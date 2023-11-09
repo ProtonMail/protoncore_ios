@@ -6,9 +6,9 @@ var products: [Product] = []
 var targets: [Target] = []
 var plugins: [Target.PluginUsage] = []
 
-#if os(iOS) // SwiftLint is only supported on macOS 12.0+
-plugins = [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]
-#endif
+//#if os(iOS) // SwiftLint is only supported on macOS 12.0+
+//plugins = [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]
+//#endif
 
 func products(from newProduct: String) -> [Product] {
     let products: [Product] = [
