@@ -402,7 +402,7 @@ final class SignupCoordinator {
             switch self.signupParameters?.summaryScreenVariant {
             case .noSummaryScreen:
                 self.completeSignupFlow(signupState: .dataIsAvailable(data))
-                self.completeSignupFlow(signupState: .signupFinished(data))
+                self.completeSignupFlow(signupState: .signupFinished)
             case .screenVariant:
                 self.completeSignupFlow(signupState: .dataIsAvailable(data))
                 self.showSummaryViewController(data: data, purchasedPlan: purchasedPlan)
@@ -695,7 +695,7 @@ extension SignupCoordinator: EmailVerificationViewControllerDelegate {
 
 extension SignupCoordinator: SummaryViewControllerDelegate {
     func startButtonTap() {
-        completeSignupFlow(signupState: .signupFinished(nil))
+        completeSignupFlow(signupState: .signupFinished)
     }
 }
 
