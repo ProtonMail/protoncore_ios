@@ -139,7 +139,7 @@ extension String {
     static let payments: String = "ProtonCorePayments"
     static let paymentsUI: String = "ProtonCorePaymentsUI"
     static let paymentsUIResourcesiOS: String = "ProtonCorePaymentsUIResourcesiOS"
-    static let pushNotifications: String = "ProtonPushNotifications"
+    static let pushNotifications: String = "ProtonCorePushNotifications"
     static let quarkCommands: String = "ProtonCoreQuarkCommands"
     static let services: String = "ProtonCoreServices"
     static let settings: String = "ProtonCoreSettings"
