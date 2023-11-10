@@ -71,7 +71,7 @@ public class DefaultLocalFeatureFlagsDatasource: LocalFeatureFlagsProtocol {
         serialAccessQueue.sync {
             var flagsToClean: [String: FeatureFlags]? = userDefaults.decodableValue(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
             flagsToClean?[userId] = nil
-            userDefaults.set(flagsToClean, forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+            userDefaults.setEncodableValue(flagsToClean, forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
         }
     }
 }

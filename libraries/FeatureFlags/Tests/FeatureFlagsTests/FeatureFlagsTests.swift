@@ -410,4 +410,87 @@ final class FeatureFlagsTests: XCTestCase {
         // Then BlackFriday flag is returned and true, but isEnabled still returns the first returned value
         XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
     }
+
+    func test_resetFlagsForUserId_resetsFlagsForuserId() async throws {
+        // Given
+        let userId1 = "userId1"
+        let flagResponse1 = FeatureFlagResponse(
+            code: 1000,
+            toggles: [.init(
+                name: "BlackFriday",
+                enabled: true,
+                variant: nil
+            )]
+        )
+
+        let userId2 = "userId2"
+        let flagResponse2 = FeatureFlagResponse(
+            code: 1000,
+            toggles: [.init(
+                name: "BlackFriday",
+                enabled: true,
+                variant: nil
+            )]
+        )
+
+        let apiService = APIServiceMock()
+        apiService.requestDecodableStub.bodyIs { count, _, _, _, _, _, _, _, _, _, _, completion in
+            if count == 1 {
+                completion(nil, .success(flagResponse1))
+            } else {
+                completion(nil, .success(flagResponse2))
+            }
+        }
+
+        // When
+        try await sut.fetchFlags(for: userId1, with: apiService)
+        try await sut.fetchFlags(for: userId2, with: apiService)
+
+
+        // Then
+        let flags = try await sut.localDatasource.value.getFeatureFlags(userId: userId1)
+        XCTAssertEqual(flags, FeatureFlags(flags: flagResponse1.toggles))
+
+        // When
+        sut.resetFlags(for: userId1)
+
+        // Then
+        let emptyFlags: [String: FeatureFlags]? = featureFlagUserDefaults.decodableValue(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+        XCTAssertNil(emptyFlags?[userId1])
+        XCTAssertNotNil(emptyFlags?[userId2])
+    }
+
+    func test_resetFlags_resetsFlags() async throws {
+        // Given
+        let userId = "userId"
+        let flagResponse = FeatureFlagResponse(
+            code: 1000,
+            toggles: [.init(
+                name: "BlackFriday",
+                enabled: true,
+                variant: nil
+            )]
+        )
+
+        let apiService = APIServiceMock()
+        apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(flagResponse))
+        }
+
+        // When
+        try await sut.fetchFlags(for: userId, with: apiService)
+
+
+        // Then
+        let flags = try await sut.localDatasource.value.getFeatureFlags(userId: userId)
+        XCTAssertEqual(flags, FeatureFlags(flags: flagResponse.toggles))
+
+        // When
+        sut.resetFlags()
+
+        // Then
+        let emptyFlags: [String: FeatureFlags]? = featureFlagUserDefaults.decodableValue(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+        XCTAssertNil(emptyFlags)
+    }
+
 }
