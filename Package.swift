@@ -6,10 +6,6 @@ var products: [Product] = []
 var targets: [Target] = []
 var plugins: [Target.PluginUsage] = []
 
-//#if os(iOS) // SwiftLint is only supported on macOS 12.0+
-//plugins = [.plugin(name: .swiftLintPlugin, package: .swiftLintPlugin)]
-//#endif
-
 func products(from newProduct: String) -> [Product] {
     let products: [Product] = [
         .library(name: newProduct, targets: [newProduct])
@@ -26,12 +22,7 @@ func products(from newProduct: String) -> [Product] {
     guard binaryFrameworksNotSupportingDynamicLibrary.contains(newProduct) == false else {
         return products
     }
-    // adding dynamic and static variant of the libraries.
-    // commented out for now because I'm not sure if the clients will indeed need that
-//    products.append(contentsOf: [
-//        .library(name: newProduct + "-Dynamic", type: .dynamic, targets: [newProduct]),
-//        .library(name: newProduct + "-Static", type: .static, targets: [newProduct])
-//    ])
+
     return products
 }
 
@@ -198,7 +189,6 @@ extension String {
     // MARK: - Plugin names
 
     static let obfuscatedConstantsGenerationPlugin: String = "ObfuscatedConstantsGenerationPlugin"
-    static let swiftLintPlugin: String = "SwiftLintPlugin"
 }
 
 extension Target.Dependency {
@@ -1955,8 +1945,6 @@ let package = Package(
             url: "https://github.com/tannerdsilva/SwiftBCrypt.git",
             from: "0.2.0"
         ),
-        .package(url: "https://github.com/realm/SwiftLint",
-                 from: "0.53.0"),
         .package(
             url: "https://github.com/SDWebImage/SDWebImage.git",
             "0.0.0"..<"5.16.0"

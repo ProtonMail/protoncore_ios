@@ -23,7 +23,6 @@
 #if os(iOS)
 
 import XCTest
-import SnapshotTesting
 @testable import ProtonCorePasswordRequest
 
 #if canImport(ProtonCoreTestingToolkitUnitTestsCore)

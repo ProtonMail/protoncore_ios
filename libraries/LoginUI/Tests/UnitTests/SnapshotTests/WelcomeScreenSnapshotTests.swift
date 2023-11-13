@@ -38,7 +38,7 @@ import ProtonCoreLogin
 import SnapshotTesting
 
 @available(iOS 13, *)
-class WelcomeScreenSnapshotTests: SnapshotTestCase {
+class WelcomeScreenSnapshotTests: ProtonCoreTestingToolkitUnitTestsCore.SnapshotTestCase {
 
     let defaultPrecision: Float = 0.98
 
