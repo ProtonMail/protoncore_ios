@@ -1,0 +1,21 @@
+"Settings_Item" = "პაროლის ჩამოყრა";
+
+"Insecure_View_Title" = "თქვენი პაროლის ჩამოყრა";
+
+"Grace_View_Title" = "მართლა გნებავთ თქვენი პაროლის ჩამოყრა?";
+
+"Grace_View_line1" = "We received a request to reset your password for ";
+
+"Insecure_View_line1" = "You can now change your password for the account ";
+
+"Insecure_View_line2" = " freely during ";
+
+"Insecure_View_line3" = "Please go the signed-in device (in the session where the request was initiated) to change your password.";
+
+"Grace_View_Cancel_Button_CTA" = "მოთხოვნის გაუქმება";
+
+"Grace_View_Undefined_Time_Left" = "a few hours";
+
+"Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+
+"Grace_View_line3" = "თუ ეს მოთხოვნა თქვენ არ გამოგიგზავნიათ, ან შესვლაზე დახმარება აღარ გჭირდებათ, გააუქმეთ ის და გაიარეთ ნაბიჯები, რათა თქვენი ანგარიში უკეთ დაიცვათ.";

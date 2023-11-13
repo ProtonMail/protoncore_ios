@@ -1,0 +1,21 @@
+"Settings_Item" = "Wachtwoordreset";
+
+"Insecure_View_Title" = "Uw wachtwoord opnieuw instellen";
+
+"Grace_View_Title" = "Wilt u uw wachtwoord resetten?";
+
+"Grace_View_line1" = "We received a request to reset your password for ";
+
+"Insecure_View_line1" = "You can now change your password for the account ";
+
+"Insecure_View_line2" = " freely during ";
+
+"Insecure_View_line3" = "Please go the signed-in device (in the session where the request was initiated) to change your password.";
+
+"Grace_View_Cancel_Button_CTA" = "Aanvraag annuleren";
+
+"Grace_View_Undefined_Time_Left" = "a few hours";
+
+"Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+
+"Grace_View_line3" = "Als u deze aanvraag niet deed, of niet langer hulp nodig heeft bij het inloggen, annuleer de aanvraag en onderneem stappen om uw account te beveiligen.";

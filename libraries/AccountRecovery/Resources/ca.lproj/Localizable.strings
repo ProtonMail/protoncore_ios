@@ -1,0 +1,21 @@
+"Settings_Item" = "Restabliment de contrasenya";
+
+"Insecure_View_Title" = "Restableix la contrasenya";
+
+"Grace_View_Title" = "Do you want to reset your password?";
+
+"Grace_View_line1" = "Hem rebut una sol·licitud per restablir la vostra contrasenya per ";
+
+"Insecure_View_line1" = "You can now change your password for the account ";
+
+"Insecure_View_line2" = " lliurement durant ";
+
+"Insecure_View_line3" = "Please go the signed-in device (in the session where the request was initiated) to change your password.";
+
+"Grace_View_Cancel_Button_CTA" = "Cancel·la la petició";
+
+"Grace_View_Undefined_Time_Left" = "unes poques hores";
+
+"Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+
+"Grace_View_line3" = "If you didn't make this request, or if you no longer need help signing in, please cancel it and take steps to secure your account.";

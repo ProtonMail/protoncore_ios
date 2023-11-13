@@ -1,0 +1,21 @@
+"Settings_Item" = "Reimpostazione della password";
+
+"Insecure_View_Title" = "Reimposta la tua password";
+
+"Grace_View_Title" = "Vuoi reimpostare la tua password?";
+
+"Grace_View_line1" = "Abbiamo ricevuto una richiesta di reimpostazione della password per ";
+
+"Insecure_View_line1" = "Ora puoi cambiare la tua password per l'account ";
+
+"Insecure_View_line2" = " liberamente per ";
+
+"Insecure_View_line3" = "Per cambiare la tua password, usa il dispositivo in cui hai effettuato l'accesso (nella sessione in cui è stata iniziata la richiesta).";
+
+"Grace_View_Cancel_Button_CTA" = "Annulla la richiesta";
+
+"Grace_View_Undefined_Time_Left" = "qualche ora";
+
+"Grace_View_line2" = ". Per proteggere il tuo account, vogliamo essere sicuri che sia davvero tu a tentare di reimpostare la password. Potrai reimpostare la tua password tra ";
+
+"Grace_View_line3" = "Se non hai fatto tu questa richiesta, o se non hai più bisogno di aiuto per accedere, annullala e intervieni per proteggere il tuo account.";

@@ -1,0 +1,21 @@
+"Settings_Item" = "Passwort zurücksetzen";
+
+"Insecure_View_Title" = "Passwort zurücksetzen";
+
+"Grace_View_Title" = "Möchtest du dein Passwort zurücksetzen?";
+
+"Grace_View_line1" = "We received a request to reset your password for ";
+
+"Insecure_View_line1" = "You can now change your password for the account ";
+
+"Insecure_View_line2" = " freely during ";
+
+"Insecure_View_line3" = "Bitte gehe zu dem angemeldeten Gerät, von dem aus die Anfrage zur Passwortänderung gestartet wurde, um dein Passwort zu ändern.";
+
+"Grace_View_Cancel_Button_CTA" = "Anfrage abbrechen";
+
+"Grace_View_Undefined_Time_Left" = "a few hours";
+
+"Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+
+"Grace_View_line3" = "Wenn du diese Anfrage nicht gestellt hast oder bei der Anmeldung keine Hilfe mehr brauchst, storniere sie bitte und ergreife Maßnahmen, um dein Konto zu sichern.";
