@@ -37,7 +37,6 @@ import ProtonCoreDataModel
 import ProtonCoreLogin
 import ProtonCoreFeatureSwitch
 @testable import ProtonCoreLoginUI
-import SnapshotTesting
 
 @available(iOS 13, *)
 class LoginUISnapshotTests: SnapshotTestCase {

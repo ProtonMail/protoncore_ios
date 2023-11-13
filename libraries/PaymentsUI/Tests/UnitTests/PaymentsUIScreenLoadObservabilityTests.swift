@@ -32,7 +32,6 @@ import ProtonCoreTestingToolkitUnitTestsObservability
 import ProtonCoreTestingToolkit
 #endif
 import ProtonCoreObfuscatedConstants
-import SnapshotTesting
 import ProtonCoreUIFoundations
 @testable import ProtonCoreObservability
 @testable import ProtonCorePayments
