@@ -143,6 +143,7 @@ extension String {
     static let testingToolkitUnitTestsCore: String = "ProtonCoreTestingToolkitUnitTestsCore"
     static let testingToolkitUnitTestsDataModel: String = "ProtonCoreTestingToolkitUnitTestsDataModel"
     static let testingToolkitUnitTestsDoh: String = "ProtonCoreTestingToolkitUnitTestsDoh"
+    static let testingToolkitUnitTestsFeatureFlag: String = "ProtonCoreTestingToolkitUnitTestsFeatureFlag"
     static let testingToolkitUnitTestsFeatureSwitch: String = "ProtonCoreTestingToolkitUnitTestsFeatureSwitch"
     static let testingToolkitUnitTestsLogin: String = "ProtonCoreTestingToolkitUnitTestsLogin"
     static let testingToolkitUnitTestsLoginUI: String = "ProtonCoreTestingToolkitUnitTestsLoginUI"
@@ -258,6 +259,7 @@ extension Target.Dependency {
     static var testingToolkitUnitTestsCore: Target.Dependency { .target(name: .testingToolkitUnitTestsCore) }
     static var testingToolkitUnitTestsDataModel: Target.Dependency { .target(name: .testingToolkitUnitTestsDataModel) }
     static var testingToolkitUnitTestsDoh: Target.Dependency { .target(name: .testingToolkitUnitTestsDoh) }
+    static var testingToolkitUnitTestsFeatureFlag: Target.Dependency { .target(name: .testingToolkitUnitTestsFeatureFlag) }
     static var testingToolkitUnitTestsFeatureSwitch: Target.Dependency { .target(name: .testingToolkitUnitTestsFeatureSwitch) }
     static var testingToolkitUnitTestsLogin: Target.Dependency { .target(name: .testingToolkitUnitTestsLogin) }
     static var testingToolkitUnitTestsLoginUI: Target.Dependency { .target(name: .testingToolkitUnitTestsLoginUI) }
@@ -501,6 +503,7 @@ add(
                            .cryptoGoInterface,
                            .cryptoGoUsedInTests,
                            .testingToolkitUnitTestsAuthentication,
+                           .testingToolkitUnitTestsFeatureFlag,
                            .testingToolkitUnitTestsObservability,
                            .ohhttpStubs
                        ],
@@ -1026,6 +1029,7 @@ add(
                            .obfuscatedConstants,
                            .testingToolkitTestData,
                            .testingToolkitUnitTestsAuthenticationKeyGeneration,
+                           .testingToolkitUnitTestsFeatureFlag,
                            .testingToolkitUnitTestsLogin,
                            .testingToolkitUnitTestsObservability,
                            .ohhttpStubs,
@@ -1044,7 +1048,7 @@ add(
                            .cryptoGoUsedInTests,
                            .quarkCommands,
                            .testingToolkitUnitTestsCore,
-                           .testingToolkitUnitTestsFeatureSwitch,
+                           .testingToolkitUnitTestsFeatureFlag,
                            .trustKit
                        ],
                        path: "libraries/Login/Tests/IntegrationTests"),
@@ -1140,6 +1144,7 @@ add(
                            .paymentsUI,
                            .testingToolkitTestData,
                            .testingToolkitUnitTestsCore,
+                           .testingToolkitUnitTestsFeatureFlag,
                            .testingToolkitUnitTestsLoginUI,
                            .trustKit
                        ],
@@ -1338,6 +1343,7 @@ add(
                            .payments,
                            .services,
                            .testingToolkitTestData,
+                           .testingToolkitUnitTestsFeatureFlag,
                            .testingToolkitUnitTestsPayments,
                            .testingToolkitUnitTestsServices,
                            .ohhttpStubs
@@ -1407,6 +1413,7 @@ add(
                            .paymentsUI,
                            .obfuscatedConstants,
                            .testingToolkitUnitTestsDataModel,
+                           .testingToolkitUnitTestsFeatureFlag,
                            .testingToolkitUnitTestsObservability,
                            .testingToolkitUnitTestsPayments,
                            .testingToolkitUnitTestsServices
@@ -1479,7 +1486,7 @@ add(
 // MARK: Services
 
 add(
-    product: . services,
+    product: .services,
     targets: [
         coreTarget(name: .services,
                    dependencies: [
@@ -1590,6 +1597,7 @@ add(
         .testingToolkitUnitTestsCore,
         .testingToolkitUnitTestsDataModel,
         .testingToolkitUnitTestsDoh,
+        .testingToolkitUnitTestsFeatureFlag,
         .testingToolkitUnitTestsFeatureSwitch,
         .testingToolkitUnitTestsLogin,
         .testingToolkitUnitTestsLoginUI,
@@ -1660,9 +1668,15 @@ add(
                    ],
                    path: "libraries/TestingToolkit/UnitTests/Doh"),
 
-        coreTarget(name: .testingToolkitUnitTestsFeatureSwitch,
+        coreTarget(name: .testingToolkitUnitTestsFeatureFlag,
                    dependencies: [
                        .featureFlags,
+                       .testingToolkitUnitTestsCore
+                   ],
+                   path: "libraries/TestingToolkit/UnitTests/FeatureFlag"),
+
+        coreTarget(name: .testingToolkitUnitTestsFeatureSwitch,
+                   dependencies: [
                        .featureSwitch,
                        .testingToolkitUnitTestsCore
                    ],

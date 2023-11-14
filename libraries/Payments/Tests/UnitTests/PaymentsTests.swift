@@ -25,7 +25,7 @@ import ProtonCoreFeatureSwitch
 import ProtonCoreServices
 import ProtonCoreNetworking
 #if canImport(ProtonCoreTestingToolkitUnitTestsPayments)
-import ProtonCoreTestingToolkitUnitTestsFeatureSwitch
+import ProtonCoreTestingToolkitUnitTestsFeatureFlag
 import ProtonCoreTestingToolkitUnitTestsPayments
 import ProtonCoreTestingToolkitUnitTestsServices
 #else

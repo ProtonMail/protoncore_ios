@@ -20,32 +20,61 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-import Foundation
 import XCTest
-import ProtonCoreFeatureFlag
+import ProtonCoreUtilities
+@testable import ProtonCoreFeatureFlags
 
 /// Performs the included closure in a separate environment in which only the specified flags are enabled
 extension XCTestCase {
-    public func withFeatureFlags<T>(_ flags: [FeatureFlag], perform block: () throws -> T) rethrows -> T {
-        let emptyRepo = FeatureFlagsRepository(configuration: .init(userId: "testuser",
-                                                                    currentBUFlags: [FeatureFlag]),
-                                               localDatasource: DefaultLocalFeatureFlagsDatasource(),
-                                               remoteDatasource: MockFlagsDatasource(flags: [FeatureFlag]))
+    public func withUnleashFeatureSwitches<T>(_ switches: [ProtonCoreFeatureFlags.FeatureFlag], perform block: () throws -> T) rethrows -> T {
+        let currentLocalDataSource = FeatureFlagsRepository.shared.localDatasource
+        let currentUserId = FeatureFlagsRepository.shared.userId.value
 
-        FeatureFlagsRepository.shared = emptyRepo
+        defer {
+            FeatureFlagsRepository.shared.updateLocalDataSource(with: currentLocalDataSource)
+            FeatureFlagsRepository.shared.setUserId(with: currentUserId)
+        }
+
+        let testUserId = "testUserId"
+        let userDefaults = UserDefaults(suiteName: "withUnleashFeatureSwitches")!
+        userDefaults.setEncodableValue([testUserId: FeatureFlags(flags: switches)], forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+
+        FeatureFlagsRepository.shared.setUserId(with: testUserId)
+        FeatureFlagsRepository.shared.updateLocalDataSource(
+            with: Atomic<LocalFeatureFlagsProtocol>(
+                DefaultLocalFeatureFlagsDatasource(userDefaults: userDefaults)
+            )
+        )
 
         return try block()
     }
-
+    
     @available(macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    public func withFeatureFlags<T>(_ flags: [FeatureFlag], perform block: () async throws -> T) rethrows -> T {
-        let emptyRepo = FeatureFlagsRepository(configuration: .init(userId: "testuser",
-                                                                    currentBUFlags: [FeatureFlag]),
-                                               localDatasource: DefaultLocalFeatureFlagsDatasource(),
-                                               remoteDatasource: MockFlagsDatasource(flags: [FeatureFlag]))
+    public func withUnleashFeatureSwitches<T>(_ switches: [ProtonCoreFeatureFlags.FeatureFlag], perform block: () async throws -> T) async rethrows -> T {
+        let currentLocalDataSource = FeatureFlagsRepository.shared.localDatasource
+        let currentUserId = FeatureFlagsRepository.shared.userId.value
 
-        FeatureFlagsRepository.shared = emptyRepo
+        defer {
+            FeatureFlagsRepository.shared.updateLocalDataSource(with: currentLocalDataSource)
+            FeatureFlagsRepository.shared.setUserId(with: currentUserId)
+        }
 
+        let testUserId = "testUserId"
+        let userDefaults = UserDefaults(suiteName: "withUnleashFeatureSwitchesAsync")!
+        userDefaults.setEncodableValue([testUserId: FeatureFlags(flags: switches)], forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+
+        FeatureFlagsRepository.shared.setUserId(with: testUserId)
+        FeatureFlagsRepository.shared.updateLocalDataSource(
+            with: Atomic<LocalFeatureFlagsProtocol>(
+                DefaultLocalFeatureFlagsDatasource(userDefaults: userDefaults)
+            )
+        )
         return try await block()
+    }
+}
+
+public extension ProtonCoreFeatureFlags.FeatureFlag {
+    static var dynamicPlans: Self {
+        .init(name: "DynamicPlan", enabled: true, variant: nil)
     }
 }

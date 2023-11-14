@@ -26,6 +26,7 @@ import XCTest
 import ProtonCoreDataModel
 import ProtonCoreServices
 #if canImport(ProtonCoreTestingToolkitUnitTestsPayments)
+import ProtonCoreTestingToolkitUnitTestsFeatureFlag
 import ProtonCoreTestingToolkitUnitTestsPayments
 import ProtonCoreTestingToolkitUnitTestsObservability
 #else

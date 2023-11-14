@@ -23,6 +23,7 @@ import XCTest
 import StoreKit
 import ProtonCoreServices
 #if canImport(ProtonCoreTestingToolkitUnitTestsPayments)
+import ProtonCoreTestingToolkitUnitTestsFeatureFlag
 import ProtonCoreTestingToolkitUnitTestsPayments
 import ProtonCoreTestingToolkitUnitTestsServices
 #else
