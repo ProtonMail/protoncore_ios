@@ -1,0 +1,21 @@
+"Settings_Item" = "Parola sıfırlama";
+
+"Insecure_View_Title" = "Parolanızı sıfırlayın";
+
+"Grace_View_Title" = "Parolanızı sıfırlamak istiyor musunuz?";
+
+"Grace_View_line1" = "We received a request to reset your password for ";
+
+"Insecure_View_line1" = "You can now change your password for the account ";
+
+"Insecure_View_line2" = " freely during ";
+
+"Insecure_View_line3" = "Please go the signed-in device (in the session where the request was initiated) to change your password.";
+
+"Grace_View_Cancel_Button_CTA" = "İsteği iptal et";
+
+"Grace_View_Undefined_Time_Left" = "a few hours";
+
+"Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+
+"Grace_View_line3" = "Bu isteği siz yapmadıysanız ya da artık oturum açmanıza gerek yoksa lütfen parola değiştirme işlemini iptal edin ve hesabınızın güvenliğini sağlayacak adımları uygulayın.";

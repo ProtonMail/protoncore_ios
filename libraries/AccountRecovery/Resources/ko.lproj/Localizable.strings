@@ -1,0 +1,21 @@
+"Settings_Item" = "비밀번호 재설정";
+
+"Insecure_View_Title" = "비밀번호를 재설정하세요.";
+
+"Grace_View_Title" = "비밀번호를 재설정하시겠습니까?";
+
+"Grace_View_line1" = "We received a request to reset your password for ";
+
+"Insecure_View_line1" = "You can now change your password for the account ";
+
+"Insecure_View_line2" = " freely during ";
+
+"Insecure_View_line3" = "Please go the signed-in device (in the session where the request was initiated) to change your password.";
+
+"Grace_View_Cancel_Button_CTA" = "요청 취소";
+
+"Grace_View_Undefined_Time_Left" = "a few hours";
+
+"Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+
+"Grace_View_line3" = "만일 이 요청을 하지 않았거나 로그인 지원이 더 이상 필요하지 않으시다면, 계정 보호 위해를 위해 취소 및 일부 절차를 진행해 주세요.";

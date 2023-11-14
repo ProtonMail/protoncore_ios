@@ -1,0 +1,21 @@
+"Settings_Item" = "Resetare parolă";
+
+"Insecure_View_Title" = "Resetați-vă parola";
+
+"Grace_View_Title" = "Doriți să vă resetați parola?";
+
+"Grace_View_line1" = "We received a request to reset your password for ";
+
+"Insecure_View_line1" = "You can now change your password for the account ";
+
+"Insecure_View_line2" = " freely during ";
+
+"Insecure_View_line3" = "Please go the signed-in device (in the session where the request was initiated) to change your password.";
+
+"Grace_View_Cancel_Button_CTA" = "Anulare solicitare";
+
+"Grace_View_Undefined_Time_Left" = "a few hours";
+
+"Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+
+"Grace_View_line3" = "Dacă nu ați făcut această solicitare sau dacă nu mai aveți nevoie de ajutor pentru autentificare, anulați-o și luați măsuri pentru a vă securiza contul.";

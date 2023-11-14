@@ -1,4 +1,3 @@
-
 "OK" = "OK";
 
 "Cancel" = "Zrušiť";
@@ -22,6 +21,8 @@
 "Current plan will expire on %@" = "Váš plán vyprší dňa %@";
 
 "Contact an administrator to make changes to your Proton subscription." = "Ak chcete vykonať zmeny vo vašom predplatnom Proton, kontaktujte správcu.";
+
+"%1$@ of %2$@" = "%1$@ of %2$@";
 
 "%@ storage" = "%@ úložisko";
 
@@ -113,13 +114,9 @@
 
 "Unlimited devices" = "Neobmedzený počet zariadení";
 
-"%@ email aliases" = "%@ emailové aliasy";
-
 "Unlimited email aliases" = "Neobmedzený počet emailových aliasov";
 
 "Unlimited logins and notes" = "Neobmedzený počet prihlásení a poznámok";
-
-"Up to %@ forwarding mailboxes" = "Až %@ presmerovaných poštových schránok";
 
 "Custom fields" = "Vlastné polia";
 

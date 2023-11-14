@@ -1,4 +1,3 @@
-
 "Privacy by default" = "Privacy by default";
 
 "Proton address required" = "Proton address required";
@@ -131,9 +130,9 @@
 
 "Set recovery method" = "Stilltu endurheimtuaðferð";
 
-"Set recovery method (optional)" = "Stilltu endurheimtuaðferð (valfrjálst)";
+"Set recovery method (optional)" = "Stilla endurheimtuaðferð (valfrjálst)";
 
-"We will send recovery instructions to this email or phone number if you get locked out of your account." = "We will send recovery instructions to this email or phone number if you get locked out of your account.";
+"We will send recovery instructions to this email or phone number if you get locked out of your account." = "Við munum senda endurheimtarleiðbeiningar á þetta netfang eða símanúmer ef þú læsist úti á reikningnum þínum.";
 
 "Email" = "Tölvupóstfang";
 
