@@ -170,18 +170,6 @@ final class LoginViewController: UIViewController, AccessibleView {
 
     // MARK: - Actions
 
-    @IBAction func ssoAction(_ sender: Any) {
-        guard let switcher = sender as? UISwitch else {
-            return
-        }
-
-        if switcher.isOn {
-            FeatureFactory.shared.enable(&.ssoSignIn)
-        } else {
-            FeatureFactory.shared.disable(&.ssoSignIn)
-        }
-    }
-
     @IBAction func dynamicPlansAction(_ sender: Any) {
         guard let switcher = sender as? UISwitch else {
             return

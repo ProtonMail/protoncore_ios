@@ -24,7 +24,7 @@ import ProtonCoreServices
 import ProtonCoreAPIClient
 import ProtonCoreDataModel
 import ProtonCoreNetworking
-import ProtonCoreFeatureSwitch
+import ProtonCoreFeatureFlags
 import ProtonCoreUtilities
 import ProtonCoreObservability
 import ProtonCoreLog
@@ -52,7 +52,8 @@ public class AuthService: Client {
     public func info(username: String, intent: Intent?, complete: @escaping(_ response: Result<Either<AuthInfoResponse, SSOChallengeResponse>, ResponseError>) -> Void) {
         var endpoint: InfoEndpoint
 
-        if FeatureFactory.shared.isEnabled(.ssoSignIn), let intent = intent {
+        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.externalSSO),
+           let intent = intent {
             switch intent {
             case .sso:
                 endpoint = InfoEndpoint(username: username, intent: .sso)

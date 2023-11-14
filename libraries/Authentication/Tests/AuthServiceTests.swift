@@ -133,7 +133,7 @@ class AuthServiceTests: XCTestCase {
     }
 
     func test_info_withAutoIntent_trackSuccessful() {
-        withFeatureSwitches([.ssoSignIn]) {
+        withFeatureFlags([.externalSSO]) {
             // Given
             let expectation = XCTestExpectation(description: "success with sso response expected")
             let username = "username"
@@ -156,7 +156,7 @@ class AuthServiceTests: XCTestCase {
     }
 
     func test_info_withSSOIntent_trackSuccessful() {
-        withFeatureSwitches([.ssoSignIn]) {
+        withFeatureFlags([.externalSSO]) {
             // Given
             let expectation = XCTestExpectation(description: "success with sso response expected")
             let username = "username"
@@ -180,7 +180,7 @@ class AuthServiceTests: XCTestCase {
     }
 
     func test_info_withSSOIntent_trackFails() {
-        withFeatureSwitches([.ssoSignIn]) {
+        withFeatureFlags([.externalSSO]) {
             // Given
             let expectation = XCTestExpectation(description: "success with sso response expected")
             let username = "username"
@@ -203,7 +203,7 @@ class AuthServiceTests: XCTestCase {
     }
 
     func test_info_withSSOIntent() {
-        withFeatureSwitches([.ssoSignIn]) {
+        withFeatureFlags([.externalSSO]) {
             // Given
             let expectation = XCTestExpectation(description: "success with sso response expected")
             let username = "username"
@@ -231,7 +231,7 @@ class AuthServiceTests: XCTestCase {
     }
 
     func test_info_withProtonIntent() {
-        withFeatureSwitches([.ssoSignIn]) {
+        withFeatureFlags([.externalSSO]) {
             // Given
             let expectation = XCTestExpectation(description: "success with sso response expected")
             let username = "username"
@@ -260,7 +260,7 @@ class AuthServiceTests: XCTestCase {
     }
 
     func test_info_withAutoIntent_ssoExpected() {
-        withFeatureSwitches([.ssoSignIn]) {
+        withFeatureFlags([.externalSSO]) {
             // Given
             let expectation = XCTestExpectation(description: "success with sso response expected")
             api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
@@ -286,7 +286,7 @@ class AuthServiceTests: XCTestCase {
     }
 
     func test_info_withAutoIntent_AuthInfoExpected() {
-        withFeatureSwitches([.ssoSignIn]) {
+        withFeatureFlags([.externalSSO]) {
             // Given
             let expectation = XCTestExpectation(description: "success with auth info response expected")
             api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
@@ -324,7 +324,7 @@ class AuthServiceTests: XCTestCase {
     }
 
     func test_info_withAutoIntent_badJSONExpectsError() {
-        withFeatureSwitches([.ssoSignIn]) {
+        withFeatureFlags([.externalSSO]) {
             // Given
             let expectation = XCTestExpectation(description: "failure with response error expected")
             api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in

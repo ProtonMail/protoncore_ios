@@ -268,7 +268,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testLoginWithSSO_isSuccessful() {
-        withFeatureSwitches([.ssoSignIn]) {
+        withFeatureFlags([.externalSSO]) {
             let authDelegate = AuthHelper()
             let apiService = APIServiceMock()
             apiService.authDelegateStub.fixture = authDelegate
@@ -302,7 +302,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testLoginWithSSO_fails() {
-        withFeatureSwitches([.ssoSignIn]) {
+        withFeatureFlags([.externalSSO]) {
             let authDelegate = AuthHelper()
             let apiService = APIServiceMock()
             apiService.authDelegateStub.fixture = authDelegate
@@ -331,7 +331,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testLoginWithSSO_fails_tracksFailure() {
-        withFeatureSwitches([.ssoSignIn]) {
+        withFeatureFlags([.externalSSO]) {
             observabilityServiceMock = ObservabilityServiceMock()
             ObservabilityEnv.current.observabilityService = observabilityServiceMock
             let authDelegate = AuthHelper()
