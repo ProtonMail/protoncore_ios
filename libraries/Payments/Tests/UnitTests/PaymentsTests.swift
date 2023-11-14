@@ -25,7 +25,7 @@ import ProtonCoreFeatureSwitch
 import ProtonCoreServices
 import ProtonCoreNetworking
 #if canImport(ProtonCoreTestingToolkitUnitTestsPayments)
-import ProtonCoreTestingToolkitUnitTestsFeatureSwitch
+import ProtonCoreTestingToolkitUnitTestsFeatureFlag
 import ProtonCoreTestingToolkitUnitTestsPayments
 import ProtonCoreTestingToolkitUnitTestsServices
 #else
@@ -51,7 +51,7 @@ final class PaymentsTestsTests: XCTestCase {
     }
 
     func testPaymentsActivation_DynamicPlans() async throws {
-        withUnleashFeatureSwitches([.dynamicPlans]) {
+        withFeatureFlags([.dynamicPlans]) {
             let payments = Payments(inAppPurchaseIdentifiers: [],
                                     apiService: apiService,
                                     localStorage: storageMock,

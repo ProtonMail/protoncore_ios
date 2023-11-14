@@ -24,6 +24,7 @@
 import XCTest
 #if canImport(ProtonCoreTestingToolkitUnitTestsPayments)
 import ProtonCoreTestingToolkitUnitTestsDataModel
+import ProtonCoreTestingToolkitUnitTestsFeatureFlag
 import ProtonCoreTestingToolkitUnitTestsObservability
 import ProtonCoreTestingToolkitUnitTestsPayments
 import ProtonCoreTestingToolkitUnitTestsServices
@@ -220,7 +221,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
     }
 
     func testPlansAreRefreshedWhenPaymentsUIViewControllerAppears() {
-        withUnleashFeatureSwitches([.dynamicPlans]) {
+        withFeatureFlags([.dynamicPlans]) {
             let expectation = self.expectation(description: "API call called")
 
             let viewModel = PaymentsUIViewModelMock {
@@ -266,7 +267,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
     }
 
     func testPlansAreRefreshedWhenAppGoesToForeground() {
-        withUnleashFeatureSwitches([.dynamicPlans]) {
+        withFeatureFlags([.dynamicPlans]) {
             let expectation = self.expectation(description: "API call called")
 
             let viewModel = PaymentsUIViewModelMock {
