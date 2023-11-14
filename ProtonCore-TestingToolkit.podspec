@@ -58,6 +58,7 @@ Pod::Spec.new do |s|
         unit_tests.subspec 'Authentication' do |authentication|
             authentication.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
             authentication.dependency "ProtonCore-Authentication", $version
+            authentication.dependency 'ProtonCore-TestingToolkit/UnitTests/FeatureFlag', $version
             authentication.dependency "ProtonCore-TestingToolkit/UnitTests/Services", $version
             authentication.source_files = "libraries/TestingToolkit/UnitTests/Authentication/**/*.swift"
         end # Authentication
@@ -87,11 +88,18 @@ Pod::Spec.new do |s|
             switch.source_files = "libraries/TestingToolkit/UnitTests/FeatureSwitch/**/*.swift"
         end # Feature Switch
 
+        unit_tests.subspec 'FeatureFlag' do |switch|
+            switch.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
+            switch.dependency 'ProtonCore-FeatureFlags', $version
+            switch.source_files = "libraries/TestingToolkit/UnitTests/FeatureFlag/**/*.swift"
+        end # Feature Flag
+
         unit_tests.subspec 'Login' do |login|
             login.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
             login.dependency 'ProtonCore-TestingToolkit/UnitTests/DataModel', $version
             login.dependency "ProtonCore-TestingToolkit/UnitTests/Authentication", $version
             login.dependency "ProtonCore-Login", $version
+            login.dependency 'ProtonCore-TestingToolkit/UnitTests/FeatureFlag', $version
             login.dependency "ProtonCore-TestingToolkit/UnitTests/Services", $version
             login.source_files = "libraries/TestingToolkit/UnitTests/Login/**/*.swift"
         end # Login
@@ -101,6 +109,7 @@ Pod::Spec.new do |s|
             loginui.dependency 'ProtonCore-TestingToolkit/UnitTests/DataModel', $version
             loginui.dependency "ProtonCore-TestingToolkit/UnitTests/Authentication", $version
             loginui.dependency "ProtonCore-LoginUI", $version
+            loginui.dependency 'ProtonCore-TestingToolkit/UnitTests/FeatureFlag', $version
             loginui.dependency "ProtonCore-TestingToolkit/UnitTests/Login", $version
             loginui.dependency "ProtonCore-TestingToolkit/UnitTests/Services", $version
             loginui.source_files = "libraries/TestingToolkit/UnitTests/LoginUI/**/*.swift"
@@ -130,6 +139,7 @@ Pod::Spec.new do |s|
 
         unit_tests.subspec 'Payments' do |payments|
             payments.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
+            payments.dependency 'ProtonCore-TestingToolkit/UnitTests/FeatureFlag', $version
             payments.dependency "ProtonCore-Payments", $version
             payments.dependency 'OHHTTPStubs/Swift'
             payments.source_files = "libraries/TestingToolkit/UnitTests/Payments/**/*.swift"
@@ -171,6 +181,7 @@ Pod::Spec.new do |s|
 
         ui_tests.subspec 'PaymentsUI' do |payments_ui|
             payments_ui.dependency 'ProtonCore-PaymentsUI', $version
+            payments_ui.dependency 'ProtonCore-TestingToolkit/UnitTests/FeatureFlag', $version
             payments_ui.source_files = "libraries/TestingToolkit/UITests/PaymentsUI/**/*.swift"
         end # PaymentsUI
     end # UITests
