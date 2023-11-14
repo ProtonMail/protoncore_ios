@@ -26,7 +26,7 @@ import ProtonCoreUtilities
 
 /// Performs the included closure in a separate environment in which only the specified flags are enabled
 extension XCTestCase {
-    public func withUnleashFeatureSwitches<T>(_ switches: [ProtonCoreFeatureFlags.FeatureFlag], perform block: () throws -> T) rethrows -> T {
+    public func withFeatureFlags<T>(_ flags: [ProtonCoreFeatureFlags.FeatureFlag], perform block: () throws -> T) rethrows -> T {
         let currentLocalDataSource = FeatureFlagsRepository.shared.localDatasource
         let currentUserId = FeatureFlagsRepository.shared.userId.value
 
@@ -37,7 +37,7 @@ extension XCTestCase {
 
         let testUserId = "testUserId"
         let userDefaults = UserDefaults(suiteName: "withUnleashFeatureSwitches")!
-        userDefaults.setEncodableValue([testUserId: FeatureFlags(flags: switches)], forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+        userDefaults.setEncodableValue([testUserId: FeatureFlags(flags: flags)], forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
 
         FeatureFlagsRepository.shared.setUserId(with: testUserId)
         FeatureFlagsRepository.shared.updateLocalDataSource(
@@ -50,7 +50,7 @@ extension XCTestCase {
     }
     
     @available(macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    public func withUnleashFeatureSwitches<T>(_ switches: [ProtonCoreFeatureFlags.FeatureFlag], perform block: () async throws -> T) async rethrows -> T {
+    public func withFeatureFlags<T>(_ flags: [ProtonCoreFeatureFlags.FeatureFlag], perform block: () async throws -> T) async rethrows -> T {
         let currentLocalDataSource = FeatureFlagsRepository.shared.localDatasource
         let currentUserId = FeatureFlagsRepository.shared.userId.value
 
@@ -61,7 +61,7 @@ extension XCTestCase {
 
         let testUserId = "testUserId"
         let userDefaults = UserDefaults(suiteName: "withUnleashFeatureSwitchesAsync")!
-        userDefaults.setEncodableValue([testUserId: FeatureFlags(flags: switches)], forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+        userDefaults.setEncodableValue([testUserId: FeatureFlags(flags: flags)], forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
 
         FeatureFlagsRepository.shared.setUserId(with: testUserId)
         FeatureFlagsRepository.shared.updateLocalDataSource(

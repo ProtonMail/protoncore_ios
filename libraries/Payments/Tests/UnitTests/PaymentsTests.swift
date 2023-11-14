@@ -51,7 +51,7 @@ final class PaymentsTestsTests: XCTestCase {
     }
 
     func testPaymentsActivation_DynamicPlans() async throws {
-        withUnleashFeatureSwitches([.dynamicPlans]) {
+        withFeatureFlags([.dynamicPlans]) {
             let payments = Payments(inAppPurchaseIdentifiers: [],
                                     apiService: apiService,
                                     localStorage: storageMock,

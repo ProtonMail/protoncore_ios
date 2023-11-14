@@ -80,7 +80,7 @@ final class PaymentsUIScreenAppearTests: XCTestCase {
     }
 
     func test_dynamicPlansEnabled_SignupModeIsUsedRightObservabilityEventIsSent() {
-        withUnleashFeatureSwitches([.dynamicPlans]) {
+        withFeatureFlags([.dynamicPlans]) {
             let expectation = self.expectation(description: "Event is sent")
 
             let observeMock = ObservabilityServiceMock()
@@ -105,7 +105,7 @@ final class PaymentsUIScreenAppearTests: XCTestCase {
     }
 
     func test_dynamicPlansEnabled_CurrentModeIsUsedRightObservabilityEventIsSent() {
-        withUnleashFeatureSwitches([.dynamicPlans]) {
+        withFeatureFlags([.dynamicPlans]) {
             let expectation = self.expectation(description: "Event is sent")
 
             let observeMock = ObservabilityServiceMock()
@@ -130,7 +130,7 @@ final class PaymentsUIScreenAppearTests: XCTestCase {
     }
 
     func test_dynamicPlansEnabled_UpdateModeIsUsedRightObservabilityEventIsSent() {
-        withUnleashFeatureSwitches([.dynamicPlans]) {
+        withFeatureFlags([.dynamicPlans]) {
             let expectation = self.expectation(description: "Event is sent")
 
             let observeMock = ObservabilityServiceMock()

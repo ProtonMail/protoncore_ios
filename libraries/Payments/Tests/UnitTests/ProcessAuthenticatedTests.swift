@@ -690,7 +690,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
         // 2. Do purchase
         // Expected: Success .resolvingIAPToCreditsCausedByError
 
-        withUnleashFeatureSwitches([.dynamicPlans]) {
+        withFeatureFlags([.dynamicPlans]) {
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
             let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
@@ -773,7 +773,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
         // 3. Do purchase
         // 4. CreditAnswer - errorAlredyRegistered (22916)
         // Expected: Success .withPurchaseAlreadyProcessed
-        withUnleashFeatureSwitches([.dynamicPlans]) {
+        withFeatureFlags([.dynamicPlans]) {
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
             let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
@@ -857,7 +857,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
         // 4. CreditAnswer - success
         // Expected: error
 
-        withUnleashFeatureSwitches([.dynamicPlans]) {
+        withFeatureFlags([.dynamicPlans]) {
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
             let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
@@ -942,7 +942,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
         // 4. CreditAnswer - errorAlredyRegistered (22916)
         // Expected: success .withPurchaseAlreadyProcessed
 
-        withUnleashFeatureSwitches([.dynamicPlans]) {
+        withFeatureFlags([.dynamicPlans]) {
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
             let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
@@ -1028,7 +1028,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
         // Expected: success .resolvingIAPToCreditsCausedByError
 
         // given
-        withUnleashFeatureSwitches([.dynamicPlans]) {
+        withFeatureFlags([.dynamicPlans]) {
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
             let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100)
             let out = ProcessAuthenticated(dependencies: processDependencies)
