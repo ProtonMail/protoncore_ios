@@ -492,7 +492,7 @@ add(
                        .apiClient,
                        .crypto,
                        .cryptoGoInterface,
-                       .featureSwitch,
+                       .featureFlags,
                        .services
                    ],
                    path: "libraries/Authentication/Sources"),
@@ -1115,6 +1115,7 @@ add(
                            .paymentsUI,
                            .testingToolkitTestData,
                            .testingToolkitUnitTestsCore,
+                           .testingToolkitUnitTestsFeatureFlag,
                            .testingToolkitUnitTestsLoginUI,
                            .testingToolkitUnitTestsObservability,
                            .ohhttpStubs,

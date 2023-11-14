@@ -36,7 +36,6 @@ import ProtonCoreUIFoundations
 import ProtonCoreEnvironment
 import ProtonCoreDataModel
 import ProtonCoreLogin
-import ProtonCoreFeatureSwitch
 @testable import ProtonCoreLoginUI
 
 @available(iOS 13, *)
@@ -45,21 +44,21 @@ class LoginUISnapshotTests: SnapshotTestCase {
     let defaultPrecision: Float = 0.98
 
     func testSignInScreen_withNav() {
-        withFeatureSwitches([]) {
+        withFeatureFlags([]) {
             let controller = loginViewController(for: .username, clientApp: .vpn)
             checkSnapshots(controller: controller, device: .iPhone12, perceptualPrecision: defaultPrecision)
         }
     }
 
     func testSignInScreenWithSSO_withNav_iPhone12() {
-        withFeatureSwitches([.ssoSignIn]) {
+        withFeatureFlags([.externalSSO]) {
             let controller = loginViewController(for: .username, clientApp: .vpn)
             checkSnapshots(controller: controller, device: .iPhone12, perceptualPrecision: defaultPrecision)
         }
     }
 
     func testSignInScreenWithSSO_withNav_iPadMiniLandscape() {
-        withFeatureSwitches([.ssoSignIn]) {
+        withFeatureFlags([.externalSSO]) {
             let controller = loginViewController(for: .username, clientApp: .vpn)
             checkSnapshots(controller: controller, device: .iPadMini(.landscape), perceptualPrecision: defaultPrecision)
         }

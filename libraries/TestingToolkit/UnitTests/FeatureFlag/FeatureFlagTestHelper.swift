@@ -36,7 +36,7 @@ extension XCTestCase {
         }
 
         let testUserId = "testUserId"
-        let userDefaults = UserDefaults(suiteName: "withUnleashFeatureSwitches")!
+        let userDefaults = UserDefaults(suiteName: "withFeatureFlags")!
         userDefaults.setEncodableValue([testUserId: FeatureFlags(flags: flags)], forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
 
         FeatureFlagsRepository.shared.setUserId(with: testUserId)
@@ -60,7 +60,7 @@ extension XCTestCase {
         }
 
         let testUserId = "testUserId"
-        let userDefaults = UserDefaults(suiteName: "withUnleashFeatureSwitchesAsync")!
+        let userDefaults = UserDefaults(suiteName: "withFeatureFlagsAsync")!
         userDefaults.setEncodableValue([testUserId: FeatureFlags(flags: flags)], forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
 
         FeatureFlagsRepository.shared.setUserId(with: testUserId)
@@ -76,5 +76,9 @@ extension XCTestCase {
 public extension ProtonCoreFeatureFlags.FeatureFlag {
     static var dynamicPlans: Self {
         .init(name: "DynamicPlan", enabled: true, variant: nil)
+    }
+
+    static var externalSSO: Self {
+        .init(name: "ExternalSSO", enabled: true, variant: nil)
     }
 }
