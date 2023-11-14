@@ -365,7 +365,7 @@ end
 
 lane :build_Services_all_variants do
   install_dependencies_from_gemfile
-  build_spec("Services", "macos,ios", default_test_podspecs, "Hash", "Authentication-KeyGeneration", "APIClient", "Challenge", "Authentication", "Login", "UIFoundations", "Foundations", "Observability", "DataModel", "Crypto", "CryptoGoInterface", "CryptoGoImplementation", "GoLibs")
+  build_spec("Services", "macos,ios", default_test_podspecs, "Hash", "Authentication-KeyGeneration", "APIClient", "Challenge", "Authentication", "Login", "UIFoundations", "Foundations", "FeatureFlags", "Observability", "DataModel", "Crypto", "CryptoGoInterface", "CryptoGoImplementation", "GoLibs")
 end
 
 lane :build_Services_single_basic_variant do

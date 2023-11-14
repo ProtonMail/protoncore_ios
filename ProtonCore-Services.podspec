@@ -42,7 +42,6 @@ Pod::Spec.new do |s|
 
     s.test_spec "IntegrationTests" do |test_spec|
         test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Core", $version
-        test_spec.dependency 'ProtonCore-TestingToolkit/UnitTests/FeatureSwitch', $version
         test_spec.source_files = "libraries/Services/Tests/Integration/*.swift"
         test_spec.dependency 'ProtonCore-Challenge', $version
         test_spec.dependency 'ProtonCore-Authentication', $version

@@ -68,7 +68,6 @@ Pod::Spec.new do |s|
             test_spec.dependency "ProtonCore-CryptoGoImplementation/#{crypto_subspec(crypto)}", $version
             test_spec.dependency "ProtonCore-QuarkCommands", $version
             test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Core", $version
-            test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/FeatureSwitch", $version
             test_spec.dependency "TrustKit"
             test_spec.source_files = 'libraries/Login/Tests/IntegrationTests/*.swift', 'libraries/Login/Tests/IntegrationTests/**/*.swift'
             
