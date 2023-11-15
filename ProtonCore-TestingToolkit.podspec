@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
 
     s.pod_target_xcconfig = { 
         "ENABLE_TESTING_SEARCH_PATHS" => "YES", # Required for Xcode 12.5
-        "APPLICATION_EXTENSION_API_ONLY" => "NO" 
+        "APPLICATION_EXTENSION_API_ONLY" => "NO"
     }
 
     s.framework = 'XCTest'

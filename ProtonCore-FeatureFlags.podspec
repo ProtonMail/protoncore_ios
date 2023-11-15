@@ -21,7 +21,10 @@ Pod::Spec.new do |s|
     
     s.swift_versions = $swift_versions
 
-    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
+    s.pod_target_xcconfig = {
+        "APPLICATION_EXTENSION_API_ONLY" => "YES",
+        "ENABLE_TESTABILITY" => "YES"
+    }
 
     s.dependency 'ProtonCore-Services', $version
     s.dependency 'ProtonCore-Networking', $version
