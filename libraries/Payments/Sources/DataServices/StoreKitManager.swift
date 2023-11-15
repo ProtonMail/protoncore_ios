@@ -74,7 +74,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     }
     var storedAvailableProducts: [SKProduct] = []
 
-    private let storeKitDataSource: StoreKitDataSource?
+    private let storeKitDataSource: StoreKitDataSourceProtocol?
 
     // MARK: Private properties
     private lazy var processAuthenticated = ProcessAuthenticated(dependencies: self)
@@ -227,7 +227,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     init(inAppPurchaseIdentifiersGet: @escaping ListOfIAPIdentifiersGet,
          inAppPurchaseIdentifiersSet: @escaping ListOfIAPIdentifiersSet,
          planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>,
-         storeKitDataSource: StoreKitDataSource?,
+         storeKitDataSource: StoreKitDataSourceProtocol?,
          paymentsApi: PaymentsApiProtocol,
          apiService: APIService,
          canExtendSubscription: Bool,
@@ -541,6 +541,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
         return receipt
     }
 
+    // FIXME: should not be called in main thread
     private func networkReachable() {
         processAllStoreKitTransactionsCurrentlyFoundInThePaymentQueue(finishHandler: transactionsFinishHandler)
     }
@@ -720,6 +721,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
 
         } catch let error { // other errors
             callErrorCompletion(for: cacheKey, with: error)
+            // should we call finishTransaction here, to avoid leaving transactions for the next run?
             group.leave()
         }
 
@@ -731,7 +733,9 @@ extension StoreKitManager: SKPaymentTransactionObserver {
                                                               completion: @escaping ProcessCompletionCallback) throws {
 
         guard let plan = InAppPurchasePlan(storeKitProductId: transaction.payment.productIdentifier)
-        else { throw Errors.alreadyPurchasedPlanDoesNotMatchBackend }
+        else {
+            throw Errors.alreadyPurchasedPlanDoesNotMatchBackend
+        }
 
         let planName: String
         let planAmount: Int
@@ -745,7 +749,9 @@ extension StoreKitManager: SKPaymentTransactionObserver {
             guard let details = planService.detailsOfPlanCorrespondingToIAP(plan),
                   let amount = details.pricing(for: plan.period),
                   let protonIdentifier = details.ID
-            else { throw Errors.alreadyPurchasedPlanDoesNotMatchBackend }
+            else { 
+                throw Errors.alreadyPurchasedPlanDoesNotMatchBackend
+            }
 
             planName = details.name
             planAmount = amount
@@ -757,7 +763,9 @@ extension StoreKitManager: SKPaymentTransactionObserver {
                   let price = instance.price.first(where: { $0.currency.lowercased() == plan.currency?.lowercased() }),
                   let name = details.name,
                   let id = details.ID
-            else { throw Errors.alreadyPurchasedPlanDoesNotMatchBackend }
+            else {
+                throw Errors.alreadyPurchasedPlanDoesNotMatchBackend
+            }
 
             planName = name
             planAmount = price.current

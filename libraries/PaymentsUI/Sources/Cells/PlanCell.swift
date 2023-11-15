@@ -270,7 +270,7 @@ final class PlanCell: UITableViewCell, AccessibleCell {
         planDetailsStackView.isHidden = !dynamicPlan.canBePurchasedNow || !dynamicPlan.isExpanded
         expandButton.isSelected = dynamicPlan.isExpanded
 
-        if dynamicPlan.availablePlan?.isFreePlan ?? true {
+        if dynamicPlan.details.isFreePlan {
             selectPlanButton.setTitle(PUITranslations._get_free_plan_button.l10n, for: .normal)
         } else {
             selectPlanButton.setTitle(String(format: PUITranslations._get_plan_button.l10n, dynamicPlan.details.title), for: .normal)

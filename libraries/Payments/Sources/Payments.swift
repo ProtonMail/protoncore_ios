@@ -2,6 +2,7 @@
 //  Payments.swift
 //  ProtonCore-Payments - Created on 16/08/2021.
 //
+//
 //  Copyright (c) 2022 Proton Technologies AG
 //
 //  This file is part of Proton Technologies AG and ProtonCore.
@@ -48,7 +49,7 @@ public final class Payments {
         planService: planService, storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService
     )
 
-    lazy var storeKitDataSource: StoreKitDataSource = StoreKitDataSource()
+    lazy var storeKitDataSource: StoreKitDataSourceProtocol = StoreKitDataSource()
 
     private enum FeatureFlagError: Error {
         case wrongConfiguration
@@ -76,7 +77,7 @@ public final class Payments {
     }()
 
     public internal(set) lazy var storeKitManager: StoreKitManagerProtocol = {
-        let dataSource: StoreKitDataSource?
+        let dataSource: StoreKitDataSourceProtocol?
         if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             dataSource = storeKitDataSource
         } else {
@@ -119,15 +120,21 @@ public final class Payments {
         // If there are no transactions, nothing will happen
         // If there are transactions, they will be processed
         // Part of the processing will be fetching the available plans from the BE
-        storeKitManager.subscribeToPaymentQueue()
 
         if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
-            // No-op by design
             // In the dynamic plans, fetching available IAPs from StoreKit is not a prerequisite.
             // It is done alongside fetching available plans
+            Task {
+                if case let .right(plansDataSource) = planService {
+                    try await plansDataSource.fetchAvailablePlans()
+                    storeKitManager.subscribeToPaymentQueue()
+                    storeKitProductsFetched(nil)
+                }
+            }
         } else {
             // Before dynamic plans, to be ready to present the available plans, we must fetch the available IAPs from StoreKit
             storeKitManager.updateAvailableProductsList(completion: storeKitProductsFetched)
+            storeKitManager.subscribeToPaymentQueue()
         }
     }
 

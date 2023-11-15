@@ -22,32 +22,61 @@
 
 import XCTest
 @testable import ProtonCorePayments
+import ProtonCoreFeatureFlagsTests
 
 final class InAppPurchasePlanTests: XCTestCase {
     var sut: InAppPurchasePlan!
 
     func test_init_with_availablePlanInstance() {
-        // Given
-        let instance = AvailablePlans.AvailablePlan.Instance(
-            cycle: 12,
-            description: "description",
-            periodEnd: 1,
-            price: [],
-            vendors: .init(
-                apple: .init(
-                    productID: "ioscore_core2023_12_usd_non_renewing"
+        withFeatureFlags([]) {
+            // Given
+            let instance = AvailablePlans.AvailablePlan.Instance(
+                cycle: 12,
+                description: "description",
+                periodEnd: 1,
+                price: [],
+                vendors: .init(
+                    apple: .init(
+                        productID: "ioscore_core2023_12_usd_non_renewing"
+                    )
                 )
             )
-        )
+            
+            // When
+            sut = .init(availablePlanInstance: instance)
+            
+            // Then
+            XCTAssertEqual(sut.storeKitProductId, "ioscore_core2023_12_usd_non_renewing")
+            XCTAssertEqual(sut.protonName, "core2023")
+            XCTAssertNil(sut.offer)
+            XCTAssertEqual(sut.period, "12")
+        }
+    }
 
-        // When
-        sut = .init(availablePlanInstance: instance)
+    func test_init_with_availablePlanInstanceWithDynamicPlans() {
+        withFeatureFlags([.dynamicPlans]) {
+            // Given
+            let instance = AvailablePlans.AvailablePlan.Instance(
+                cycle: 12,
+                description: "description",
+                periodEnd: 1,
+                price: [],
+                vendors: .init(
+                    apple: .init(
+                        productID: "ioscore_core2023_12_usd_non_renewing"
+                    )
+                )
+            )
 
-        // Then
-        XCTAssertEqual(sut.storeKitProductId, "ioscore_core2023_12_usd_non_renewing")
-        XCTAssertEqual(sut.protonName, "core2023")
-        XCTAssertNil(sut.offer)
-        XCTAssertEqual(sut.period, "12")
+            // When
+            sut = .init(availablePlanInstance: instance)
+
+            // Then
+            XCTAssertEqual(sut.storeKitProductId, "ioscore_core2023_12_usd_non_renewing")
+            XCTAssertEqual(sut.protonName, "ioscore_core2023_12_usd_non_renewing")
+            XCTAssertNil(sut.offer)
+            XCTAssertEqual(sut.period, "12")
+        }
     }
 
     func test_init_with_autoRenewingAvailablePlanInstance() {

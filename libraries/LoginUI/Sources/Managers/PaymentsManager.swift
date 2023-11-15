@@ -54,7 +54,12 @@ class PaymentsManager {
         payments.storeKitManager.delegate = self
         if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             // In the dynamic plans, fetching available IAPs from StoreKit is done alongside fetching available plans
-            self.payments.storeKitManager.subscribeToPaymentQueue()
+            Task {
+                if case let .right(plansDataSource) = payments.planService {
+                    try await plansDataSource.fetchAvailablePlans()
+                    payments.storeKitManager.subscribeToPaymentQueue()
+                }
+            }
         } else {
             // Before dynamic plans, to be ready to present the available plans, we must fetch the available IAPs from StoreKit
             payments.storeKitManager.updateAvailableProductsList { [weak self] error in
@@ -145,14 +150,14 @@ class PaymentsManager {
                     do {
                         try await planDataSource.fetchCurrentPlan()
                         self?.payments.storeKitManager.retryProcessingAllPendingTransactions { [weak self] in
-                            var result: InAppPurchasePlan?
+                            var possiblyPurchasedPlan: InAppPurchasePlan?
                             if planDataSource.currentPlan?.hasExistingProtonSubscription ?? false {
-                                result = self?.selectedPlan
+                                possiblyPurchasedPlan = self?.selectedPlan
                             }
 
                             self?.restoreExistingDelegate()
                             self?.payments.storeKitManager.unsubscribeFromPaymentQueue()
-                            completionHandler(.success(result))
+                            completionHandler(.success(possiblyPurchasedPlan))
                         }
                     } catch {
                         completionHandler(.failure(error))

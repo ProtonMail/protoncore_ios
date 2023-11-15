@@ -34,6 +34,8 @@ public protocol PlansDataSourceProtocol {
 
     func fetchIAPAvailability() async throws
     func fetchAvailablePlans() async throws
+
+    /// Refreshes from BE the plan the user currently has, if any
     func fetchCurrentPlan() async throws
     func fetchPaymentMethods() async throws
     func createIconURL(iconName: String) -> URL?
@@ -129,7 +131,7 @@ class PlansDataSource: PlansDataSourceProtocol {
         guard let identifier = iap.storeKitProductId else { return nil }
         return availablePlans?.plans.first(where: { plan in
             plan.instances.contains { instance in
-                instance.vendors?.apple.productID == identifier && instance.cycle == iap.period.flatMap(Int.init)
+                instance.vendors?.apple.productID == identifier 
             }
         })
     }
@@ -137,7 +139,7 @@ class PlansDataSource: PlansDataSourceProtocol {
     func detailsOfAvailablePlanInstanceCorrespondingToIAP(_ iap: InAppPurchasePlan) -> AvailablePlans.AvailablePlan.Instance? {
         guard let identifier = iap.storeKitProductId else { return nil }
         return availablePlans?.plans.flatMap(\.instances).first(where: { instance in
-            instance.vendors?.apple.productID == identifier && instance.cycle == iap.period.flatMap(Int.init)
+            instance.vendors?.apple.productID == identifier 
         })
     }
 
