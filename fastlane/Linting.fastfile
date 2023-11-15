@@ -474,6 +474,7 @@ lane :build_all_subspecs_all_variants do
   # build_Crypto_VPN_all_variants
   build_DataModel_all_variants
   # build_Doh_all_variants
+  # build_FeatureFlags_all_variants
   build_Features_all_variants
   build_ForceUpgrade_all_variants
   build_Foundations_all_variants
@@ -484,8 +485,10 @@ lane :build_all_subspecs_all_variants do
   build_Log_all_variants
   # build_Login_all_variants
   # build_LoginUI_all_variants
+  # build_MissingScopes_all_variants
   build_Networking_all_variants
   # build_ObfuscatedConstants_all_variants
+  # build_Observability_all_variants
   # build_Payments_all_variants
   # build_PaymentsUI_all_variants
   # build_QuarkCommands_all_variants
@@ -496,9 +499,6 @@ lane :build_all_subspecs_all_variants do
   build_UIFoundations_all_variants
   build_Utilities_all_variants
   build_VCard_all_variants
-  # build_Observability_all_variants
-  # build_MissingScopes_all_variants
-  # build_FeatureFlags_all_variants
   ### create pod all variant placeholder
 end
 
@@ -516,6 +516,7 @@ lane :build_all_subspecs_single_basic_variant do
   build_Crypto_VPN_single_basic_variant
   build_DataModel_single_basic_variant
   build_Doh_single_basic_variant
+  build_FeatureFlags_single_basic_variant
   build_Features_single_basic_variant
   build_ForceUpgrade_single_basic_variant
   build_Foundations_single_basic_variant
@@ -526,9 +527,11 @@ lane :build_all_subspecs_single_basic_variant do
   build_Log_single_basic_variant
   build_Login_single_basic_variant
   build_LoginUI_single_basic_variant
+  build_MissingScopes_single_basic_variant
   build_Networking_single_basic_variant
   build_ObfuscatedConstants_single_basic_variant
-
+  build_Observability_single_basic_variant
+  build_PasswordRequest_single_basic_variant
   build_Payments_single_basic_variant
   build_PaymentsUI_single_basic_variant
   build_PushNotifications_single_basic_variant
@@ -539,9 +542,5 @@ lane :build_all_subspecs_single_basic_variant do
   build_UIFoundations_single_basic_variant
   build_Utilities_single_basic_variant
   build_VCard_single_basic_variant
-  build_Observability_single_basic_variant
-  build_MissingScopes_single_basic_variant
-  build_PasswordRequest_single_basic_variant
-  build_FeatureFlags_single_basic_variant
   ### create pod single variant placeholder
 end
