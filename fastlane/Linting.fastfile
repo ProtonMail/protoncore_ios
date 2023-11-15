@@ -73,13 +73,13 @@ end
 
 lane :build_AccountDeletion_all_variants do
   install_dependencies_from_gemfile
-  build_spec("AccountDeletion", "ios,macos", default_test_podspecs)
-end 
+  build_spec("AccountDeletion", "ios,macos", default_test_podspecs, "FeatureFlags")
+end
 
 lane :build_AccountDeletion_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("AccountDeletion", "ios", default_test_podspecs)
-end 
+  build_spec("AccountDeletion", "ios", default_test_podspecs, "FeatureFlags")
+end
 
 lane :build_AccountRecovery_all_variants do
   install_dependencies_from_gemfile
@@ -102,22 +102,22 @@ end
 
 lane :build_APIClient_all_variants do
   install_dependencies_from_gemfile
-  build_spec("APIClient", "ios,macos", default_test_podspecs, "Authentication", "Crypto", "CryptoGoInterface", "CryptoGoImplementation", "GoLibs")
+  build_spec("APIClient", "ios,macos", default_test_podspecs, "Authentication", "Crypto", "CryptoGoInterface", "CryptoGoImplementation", "GoLibs", "FeatureFlags")
 end
 
 lane :build_APIClient_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("APIClient", "ios", default_test_podspecs, "Authentication", "Crypto", "CryptoGoInterface", "CryptoGoImplementation", "GoLibs")
+  build_spec("APIClient", "ios", default_test_podspecs, "Authentication", "Crypto", "CryptoGoInterface", "CryptoGoImplementation", "GoLibs", "FeatureFlags")
 end
 
 lane :build_Authentication_all_variants do
   install_dependencies_from_gemfile
-  build_spec("Authentication", "ios,macos", default_test_podspecs, "Crypto", "CryptoGoInterface", "CryptoGoImplementation", "GoLibs")
+  build_spec("Authentication", "ios,macos", default_test_podspecs, "Crypto", "CryptoGoInterface", "CryptoGoImplementation", "GoLibs", "FeatureFlags")
 end
 
 lane :build_Authentication_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("Authentication", "ios", default_test_podspecs, "Crypto", "CryptoGoInterface", "CryptoGoImplementation", "GoLibs")
+  build_spec("Authentication", "ios", default_test_podspecs, "Crypto", "CryptoGoInterface", "CryptoGoImplementation", "GoLibs", "FeatureFlags")
 end
 
 lane :build_Authentication_KeyGeneration_all_variants do
@@ -185,12 +185,12 @@ end
 
 lane :build_Features_all_variants do
   install_dependencies_from_gemfile
-  build_spec("Features", "ios,macos", no_test_podspecs)
+  build_spec("Features", "ios,macos", no_test_podspecs, "FeatureFlags")
 end
 
 lane :build_Features_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("Features", "ios", no_test_podspecs)
+  build_spec("Features", "ios", no_test_podspecs, "FeatureFlags")
 end
 
 lane :build_ForceUpgrade_all_variants do
@@ -370,7 +370,7 @@ end
 
 lane :build_Services_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("Services", "ios", default_test_podspecs, "Hash", "Authentication-KeyGeneration", "APIClient", "Challenge", "Authentication", "Login", "UIFoundations", "Foundations", "Observability", "Crypto", "CryptoGoInterface", "CryptoGoImplementation", "GoLibs")
+  build_spec("Services", "ios", default_test_podspecs, "Hash", "Authentication-KeyGeneration", "APIClient", "Challenge", "Authentication", "Login", "UIFoundations", "Foundations", "FeatureFlags", "Observability", "Crypto", "CryptoGoInterface", "CryptoGoImplementation", "GoLibs")
 end
 
 lane :build_Settings_all_variants do

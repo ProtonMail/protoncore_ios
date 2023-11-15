@@ -51,6 +51,7 @@ Pod::Spec.new do |s|
         unit_tests.subspec 'AccountDeletion' do |account_deletion|
             account_deletion.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
             account_deletion.dependency "ProtonCore-AccountDeletion", $version
+            account_deletion.dependency 'ProtonCore-TestingToolkit/UnitTests/FeatureFlag', $version
             account_deletion.dependency "ProtonCore-TestingToolkit/UnitTests/Networking", $version
             account_deletion.source_files = "libraries/TestingToolkit/UnitTests/AccountDeletion/**/*.swift"
         end # AccountDeletion
@@ -88,10 +89,10 @@ Pod::Spec.new do |s|
             switch.source_files = "libraries/TestingToolkit/UnitTests/FeatureSwitch/**/*.swift"
         end # Feature Switch
 
-        unit_tests.subspec 'FeatureFlag' do |switch|
-            switch.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
-            switch.dependency 'ProtonCore-FeatureFlags', $version
-            switch.source_files = "libraries/TestingToolkit/UnitTests/FeatureFlag/**/*.swift"
+        unit_tests.subspec 'FeatureFlag' do |flag|
+            flag.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
+            flag.dependency 'ProtonCore-FeatureFlags', $version
+            flag.source_files = "libraries/TestingToolkit/UnitTests/FeatureFlag/**/*.swift"
         end # Feature Flag
 
         unit_tests.subspec 'Login' do |login|
@@ -132,6 +133,7 @@ Pod::Spec.new do |s|
             services.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
             services.dependency 'ProtonCore-TestingToolkit/UnitTests/DataModel', $version
             services.dependency 'ProtonCore-TestingToolkit/UnitTests/Doh', $version
+            services.dependency 'ProtonCore-TestingToolkit/UnitTests/FeatureFlag', $version
             services.dependency 'ProtonCore-TestingToolkit/UnitTests/FeatureSwitch', $version
             services.dependency "ProtonCore-TestingToolkit/UnitTests/Networking", $version
             services.source_files = "libraries/TestingToolkit/UnitTests/Services/**/*.swift"
