@@ -1,29 +1,3 @@
-## 15.0.0 (2023-11-14)
-
-###  (13 changes)
-
-- [feature(dynamicPlans): remove swiftlint package](apple/shared/protoncore@7d658f496888acddc52662b4ae5132d893508cd2)([merge request](apple/shared/protoncore!1519))
-- [fix(unleash): Fix a bug in cleaning the flags](apple/shared/protoncore@a4683aaaaa2a565f733f822ab8227b7a39c98826)([merge request](apple/shared/protoncore!1516))
-- [feature(dynamicPlans): Remove swiftlint from package](apple/shared/protoncore@577dfaa39c8e619e8016b20c0f377fd0eb3b9bec)([merge request](apple/shared/protoncore!1515))
-- [feature(dynamicPlans): feature flags fetched in core](apple/shared/protoncore@f51d856dc273a72cbaeb04d72125a75d3d96160d)([merge request](apple/shared/protoncore!1514))
-- [feature(dynamicPlans): return login data](apple/shared/protoncore@addba067ff986af323f857eab124a1fbb1d00803)([merge request](apple/shared/protoncore!1512))
-- [feature(unleash): Persist user feature flags](apple/shared/protoncore@cda9a80b44590a4fe2b4fc9e5956799127690879)([merge request](apple/shared/protoncore!1507))
-- [feature(dynamicPlans): update unleash library](apple/shared/protoncore@aafbd4f7a887bbb3abd5aa675f21ab5a9b931875)([merge request](apple/shared/protoncore!1505))
-- [feature(dynamicPlans): Update podfile](apple/shared/protoncore@83a1dc5cdeabe25734ebdf86a6a09450a3490f00)([merge request](apple/shared/protoncore!1501))
-- [feature(unleash): Update library](apple/shared/protoncore@599e93979b53456a078cc7f26516fb1afc08296e)([merge request](apple/shared/protoncore!1499))
-- [bugfix(dynamicPlans): Fixes a crash](apple/shared/protoncore@99f04085cc1cb499deabf7604223e7f313daca25)([merge request](apple/shared/protoncore!1498))
-- [feature(dynamicPlans): update crypto library](apple/shared/protoncore@0b93fd88beb311d3f5b17f43b5544c3ff0436d2d)([merge request](apple/shared/protoncore!1487))
-- [i18n: Upgrade translations from crowdin (e017a58a).](apple/shared/protoncore@c5684594c6864e0e10aef00cab2142ceceb507a5)([merge request](apple/shared/protoncore!1483))
-- [feature(dynamicPlans): Hide amount for apple price](apple/shared/protoncore@4ed824de41c489be42031bcf9c854c7c9971b993)([merge request](apple/shared/protoncore!1478))
-
-### added (1 change)
-
-- [Update the VCard library to support the anniversary field in contact](apple/shared/protoncore@99bf8cf986b699eeb5fc743a06091c561885a249)([merge request](apple/shared/protoncore!1500))
-
-### fixed (1 change)
-
-- [fix (crypto): Update gopenpgp to v2.7.4](apple/shared/protoncore@4ba5adf491cac994b831e8d6e368882a56f96014)([merge request](apple/shared/protoncore!1495))
-
 ## 14.0.0 (2023-10-18)
 
 ###  (1 change)
