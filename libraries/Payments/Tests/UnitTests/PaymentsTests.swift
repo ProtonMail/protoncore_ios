@@ -33,13 +33,14 @@ import ProtonCoreTestingToolkit
 #endif
 @testable import ProtonCorePayments
 
-final class PaymentsTestsTests: XCTestCase {
+final class PaymentsTests: XCTestCase {
 
     var storageMock: ServicePlanDataStorageMock!
     var storeKitManager: StoreKitManagerMock!
     var storeKitDelegate: StoreKitManagerDelegateMock!
     var apiService: APIServiceMock!
     var alertManagerMock: AlertManagerMock!
+    var plansDataSourceMock: PlansDataSourceMock!
 
     override func setUp() {
         super.setUp()
@@ -48,17 +49,38 @@ final class PaymentsTestsTests: XCTestCase {
         storeKitDelegate = StoreKitManagerDelegateMock()
         apiService = APIServiceMock()
         alertManagerMock = AlertManagerMock()
+        plansDataSourceMock = PlansDataSourceMock()
     }
 
-    func testPaymentsActivation_DynamicPlans() async throws {
+    override func tearDown() {
+        storageMock = nil
+        storeKitManager = nil
+        storeKitDelegate = nil
+        apiService = nil
+        alertManagerMock = nil
+        plansDataSourceMock = nil
+        super.tearDown()
+    }
+
+    func testPaymentsActivation_DynamicPlans() throws {
         withFeatureFlags([.dynamicPlans]) {
             let payments = Payments(inAppPurchaseIdentifiers: [],
                                     apiService: apiService,
                                     localStorage: storageMock,
                                     alertManager: alertManagerMock,
                                     reportBugAlertHandler: { _ in })
+
+            plansDataSourceMock.fetchAvailablePlansStub.bodyIs { _ in }
             payments.storeKitManager = storeKitManager
-            payments.activate(delegate: storeKitDelegate) { _ in XCTFail("Should never be called") }
+
+            payments.planService = .right(plansDataSourceMock)
+
+            let expectation = XCTestExpectation(description: "Allow time for fetching plans")
+
+            payments.activate(delegate: storeKitDelegate) { _ in expectation.fulfill() }
+
+
+            wait(for: [expectation], timeout: 0.1)
 
             XCTAssertTrue(storeKitManager.updateAvailableProductsListStub.wasNotCalled)
             XCTAssertTrue(storeKitManager.subscribeToPaymentQueueStub.wasCalledExactlyOnce)
@@ -68,7 +90,7 @@ final class PaymentsTestsTests: XCTestCase {
     }
 
     func testPaymentsActivation_WithoutDynamicPlans_Success() async throws {
-        try await withFeatureSwitches([]) {
+        try await withFeatureFlags([]) {
             let payments = Payments(inAppPurchaseIdentifiers: [],
                                     apiService: apiService,
                                     localStorage: storageMock,
@@ -97,7 +119,7 @@ final class PaymentsTestsTests: XCTestCase {
     }
 
     func testPaymentsActivation_WithoutDynamicPlans_Failure() async throws {
-        await withFeatureSwitches([]) {
+        await withFeatureFlags([]) {
             let payments = Payments(inAppPurchaseIdentifiers: [],
                                     apiService: apiService,
                                     localStorage: storageMock,

@@ -44,7 +44,7 @@ final class AvailablePlansPresentationTests: XCTestCase {
         let plansDataSource = PlansDataSourceMock()
 
         let instance = AvailablePlans.AvailablePlan.Instance(
-            cycle: 1,
+            cycle: 12,
             description: "description",
             periodEnd: 1755445843,
             price: [.init(ID: "id", current: 19176, currency: "USD")],

@@ -92,9 +92,9 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
         showCurrentPlanButton.isSelected = true
         configurePayments { [weak self] in
             guard let self = self else { return }
-            self.paymentsUI?.showCurrentPlan(presentationType: self.modalVCSwitch.isOn ? .modal : .none, backendFetch: self.backendFetchSwitch.isOn, completionHandler: { [weak self] result in
+            self.paymentsUI?.showCurrentPlan(presentationType: self.modalVCSwitch.isOn ? .modal : .none, backendFetch: self.backendFetchSwitch.isOn, completionHandler: { [weak self] reason in
                 guard let self = self else { return }
-                switch result {
+                switch reason {
                 case .open(let vc, let opened):
                     self.showCurrentPlanButton.isSelected = false
                     if !opened {
@@ -126,9 +126,9 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
         showUpdatePlansButton.isSelected = true
         configurePayments { [weak self] in
             guard let self = self else { return }
-            self.paymentsUI?.showUpgradePlan(presentationType: self.modalVCSwitch.isOn ? .modal : .none, backendFetch: self.backendFetchSwitch.isOn, completionHandler: { [weak self] result in
+            self.paymentsUI?.showUpgradePlan(presentationType: self.modalVCSwitch.isOn ? .modal : .none, backendFetch: self.backendFetchSwitch.isOn, completionHandler: { [weak self] reason in
                 guard let self = self else { return }
-                switch result {
+                switch reason {
                 case .open(let vc, let opened):
                     self.showUpdatePlansButton.isSelected = false
                     if !opened {
