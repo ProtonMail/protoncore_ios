@@ -48,7 +48,7 @@ extension XCTestCase {
 
         return try block()
     }
-    
+
     @available(macOS 10.15, tvOS 13.0, watchOS 6.0, *)
     public func withFeatureFlags<T>(_ flags: [ProtonCoreFeatureFlags.FeatureFlag], perform block: () async throws -> T) async rethrows -> T {
         let currentLocalDataSource = FeatureFlagsRepository.shared.localDatasource

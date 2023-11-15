@@ -41,10 +41,10 @@ final class InAppPurchasePlanTests: XCTestCase {
                     )
                 )
             )
-            
+
             // When
             sut = .init(availablePlanInstance: instance)
-            
+
             // Then
             XCTAssertEqual(sut.storeKitProductId, "ioscore_core2023_12_usd_non_renewing")
             XCTAssertEqual(sut.protonName, "core2023")

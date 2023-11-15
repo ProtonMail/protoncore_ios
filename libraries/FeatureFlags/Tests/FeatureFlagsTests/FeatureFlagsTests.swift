@@ -446,7 +446,6 @@ final class FeatureFlagsTests: XCTestCase {
         try await sut.fetchFlags(for: userId1, with: apiService)
         try await sut.fetchFlags(for: userId2, with: apiService)
 
-
         // Then
         let flags = try await sut.localDatasource.value.getFeatureFlags(userId: userId1)
         XCTAssertEqual(flags, FeatureFlags(flags: flagResponse1.toggles))
@@ -479,7 +478,6 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         try await sut.fetchFlags(for: userId, with: apiService)
-
 
         // Then
         let flags = try await sut.localDatasource.value.getFeatureFlags(userId: userId)
