@@ -231,7 +231,7 @@ git add . -A
 echo "$LOG_PREFIX $ git commit -m \"[$NEW_VERSION] Releasing core version $NEW_VERSION\""
 git commit -m "[$NEW_VERSION] Releasing core version $NEW_VERSION"
 
-echo "$LOG_PREFIX $ git push origin $RELEASE_BRANCH -o merge_request.create -o merge_request.target=$TARGET_BRANCH -o merge_request.remove_source_branch -o merge_request.assign=\"ksiejkow\" -o merge_request.assign=\"vjalencas\" -o merge_request.assign=\"crolland\" -o merge_request.assign=\"eackerma\""
+echo "$LOG_PREFIX $ git push origin $RELEASE_BRANCH -o merge_request.create -o merge_request.target=$TARGET_BRANCH -o merge_request.remove_source_branch -o merge_request.assign=\"vjalencas\" -o merge_request.assign=\"crolland\" -o merge_request.assign=\"eackerma\""
 git push origin $RELEASE_BRANCH -o merge_request.create -o merge_request.target=$TARGET_BRANCH -o merge_request.remove_source_branch -o merge_request.assign="ksiejkow" -o merge_request.assign="vjalencas" -o merge_request.assign="crolland"  -o merge_request.assign="eackerma"
 
 echo "$LOG_PREFIX $ git checkout develop"
