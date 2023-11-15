@@ -802,6 +802,11 @@ verify:Doh:
     - fastlane build_Doh_single_basic_variant
   <<: *building_subspecs_lite
 
+verify:FeatureFlags:
+  script:
+    - fastlane build_FeatureFlags_single_basic_variant
+  <<: *building_subspecs_lite
+
 verify:Features:
   before_script:
     - bash scripts/generate_obfuscated_constants.sh
@@ -862,6 +867,11 @@ verify:LoginUI:
     - fastlane build_LoginUI_single_basic_variant
   <<: *building_subspecs_lite
 
+verify:MissingScopes:
+  script:
+    - fastlane build_MissingScopes_single_basic_variant
+  <<: *building_subspecs_lite
+
 verify:Networking:
   before_script:
     - bash scripts/generate_obfuscated_constants.sh
@@ -874,6 +884,16 @@ verify:ObfuscatedConstants:
     - bash scripts/generate_obfuscated_constants.sh
   script:
     - fastlane build_ObfuscatedConstants_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:Observability:
+  script:
+    - fastlane build_Observability_single_basic_variant
+  <<: *building_subspecs_lite
+
+verify:PasswordRequest:
+  script:
+    - fastlane build_PasswordRequest_single_basic_variant
   <<: *building_subspecs_lite
 
 verify:Payments:
@@ -927,26 +947,6 @@ verify:Utilities:
 verify:VCard:
   script:
     - fastlane build_VCard_single_basic_variant
-  <<: *building_subspecs_lite
-
-verify:Observability:
-  script:
-    - fastlane build_Observability_single_basic_variant
-  <<: *building_subspecs_lite
-
-build_MissingScopes_single_basic_variant:
-  script:
-    - fastlane build_MissingScopes_single_basic_variant
-  <<: *building_subspecs_lite
-
-build_PasswordRequest_single_basic_variant:
-  script:
-    - fastlane build_PasswordRequest_single_basic_variant
-  <<: *building_subspecs_lite
-  
-build_FeatureFlags_single_basic_variant:
-  script:
-    - fastlane build_FeatureFlags_single_basic_variant
   <<: *building_subspecs_lite
   
 ### create pod build single variant place holder
