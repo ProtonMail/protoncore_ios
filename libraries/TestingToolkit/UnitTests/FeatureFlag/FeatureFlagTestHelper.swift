@@ -54,10 +54,6 @@ extension XCTestCase {
         let currentLocalDataSource = FeatureFlagsRepository.shared.localDatasource
         let currentUserId = FeatureFlagsRepository.shared.userId.value
 
-        defer {
-            FeatureFlagsRepository.shared.updateLocalDataSource(with: currentLocalDataSource)
-            FeatureFlagsRepository.shared.setUserId(with: currentUserId)
-        }
 
         let testUserId = "testUserId"
         let userDefaults = UserDefaults(suiteName: "withFeatureFlagsAsync")!
@@ -69,7 +65,12 @@ extension XCTestCase {
                 DefaultLocalFeatureFlagsDatasource(userDefaults: userDefaults)
             )
         )
-        return try await block()
+        let returnValue = try! await block()
+
+        FeatureFlagsRepository.shared.updateLocalDataSource(with: currentLocalDataSource)
+        FeatureFlagsRepository.shared.setUserId(with: currentUserId)
+
+        return  returnValue
     }
 }
 
