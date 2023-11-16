@@ -383,7 +383,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
     }
 
     func testBuyPlanSubscriptionTokenErrorSandbox() {
-        withFeatureSwitches([.subscriptions]) { // Remove enclosure with CP-6369
+        withFeatureFlags([.dynamicPlans]) { // Remove enclosure with CP-6369
             // Test scenario:
             // 1. Token answer - errorSandboxReceipt
             // 2. Do purchase
@@ -461,7 +461,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
     }
 
     func testBuyPlanSubscriptionTokenErrorAlreadyRegistered() {
-        withFeatureSwitches([.subscriptions]){ // Remove enclosure with CP-6369
+        withFeatureFlags([.dynamicPlans]) { // Remove enclosure with CP-6369
             // Test scenario:
             // 1. Token answer - errorAlreadyRegistered
             // 2. Do purchase
@@ -535,7 +535,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
     }
 
     func testBuyPlanSubscriptionTokenError() {
-        withFeatureSwitches([.subscriptions]){ // remove enclosure with CP-6369
+        withFeatureFlags([.dynamicPlans]) { // remove enclosure with CP-6369
             // Test scenario:
             // 1. Token answer - error
             // 2. Do purchase

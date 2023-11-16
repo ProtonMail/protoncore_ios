@@ -22,6 +22,7 @@
 import Foundation
 import ProtonCoreServices
 import Network
+import ProtonCoreFeatureFlags
 import ProtonCoreObservability
 
 public protocol PlansDataSourceProtocol {
@@ -47,7 +48,11 @@ public protocol PlansDataSourceProtocol {
 class PlansDataSource: PlansDataSourceProtocol {
     var isIAPAvailable: Bool {
         guard paymentsBackendStatusAcceptsIAP else { return false }
-        return true
+        guard FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) else {
+            assertionFailure("You need Dynamic Plans enabled to use PlansDataSource")
+            return true
+        }
+        return localStorage.credits?.credit.isZero ?? true
     }
 
     var paymentsBackendStatusAcceptsIAP: Bool {

@@ -198,7 +198,7 @@ final class ProcessAddCreditsTests: XCTestCase {
     }
 
     func testBuyCreditTokenError() throws {
-        withFeatureSwitches([.subscriptions]) { // remove enclosure with CP-6369
+        withFeatureFlags([.dynamicPlans]) { // remove enclosure with CP-6369
             // Test scenario:
             // 1. Do purchase with get token error answer
             // Expected: Success

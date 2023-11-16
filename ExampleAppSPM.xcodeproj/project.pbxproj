@@ -1564,17 +1564,11 @@
 		6691E4C3274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6691E4C0274B89AA00132DC0 /* EnvironmentSelector.swift */; };
 		6691E4C4274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6691E4C0274B89AA00132DC0 /* EnvironmentSelector.swift */; };
 		6691E4C9274B89AA00132DC0 /* EnvironmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6691E4C0274B89AA00132DC0 /* EnvironmentSelector.swift */; };
-		66968F1A2A6055A800AA67D2 /* fusion in Frameworks */ = {isa = PBXBuildFile; productRef = 66968F192A6055A800AA67D2 /* fusion */; };
 		66968F1D2A6055CA00AA67D2 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 66968F1C2A6055CA00AA67D2 /* SnapshotTesting */; };
-		66968F2B2A6055FF00AA67D2 /* fusion in Frameworks */ = {isa = PBXBuildFile; productRef = 66968F2A2A6055FF00AA67D2 /* fusion */; };
 		66968F2D2A6055FF00AA67D2 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 66968F2C2A6055FF00AA67D2 /* SnapshotTesting */; };
-		66968F3F2A60563300AA67D2 /* fusion in Frameworks */ = {isa = PBXBuildFile; productRef = 66968F3E2A60563300AA67D2 /* fusion */; };
 		66968F412A60563300AA67D2 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 66968F402A60563300AA67D2 /* SnapshotTesting */; };
-		66968F512A60564E00AA67D2 /* fusion in Frameworks */ = {isa = PBXBuildFile; productRef = 66968F502A60564E00AA67D2 /* fusion */; };
 		66968F532A60564E00AA67D2 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 66968F522A60564E00AA67D2 /* SnapshotTesting */; };
-		66968F632A60566A00AA67D2 /* fusion in Frameworks */ = {isa = PBXBuildFile; productRef = 66968F622A60566A00AA67D2 /* fusion */; };
 		66968F652A60566A00AA67D2 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 66968F642A60566A00AA67D2 /* SnapshotTesting */; };
-		66968F732A60568E00AA67D2 /* fusion in Frameworks */ = {isa = PBXBuildFile; productRef = 66968F722A60568E00AA67D2 /* fusion */; };
 		66968F752A60568E00AA67D2 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 66968F742A60568E00AA67D2 /* SnapshotTesting */; };
 		669F074C27E3874500FCC2CF /* UIFoundationsIconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669F074B27E3874500FCC2CF /* UIFoundationsIconsViewController.swift */; };
 		669F074D27E3874500FCC2CF /* UIFoundationsIconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669F074B27E3874500FCC2CF /* UIFoundationsIconsViewController.swift */; };
@@ -2086,7 +2080,6 @@
 				6633C3362A6FD206004023A7 /* ProtonCoreTestingToolkitUITestsAccountSwitcher in Frameworks */,
 				66968F2D2A6055FF00AA67D2 /* SnapshotTesting in Frameworks */,
 				6633C3382A6FD206004023A7 /* ProtonCoreTestingToolkitUITestsCore in Frameworks */,
-				66968F2B2A6055FF00AA67D2 /* fusion in Frameworks */,
 				6633C32E2A6FD206004023A7 /* ProtonCoreFeatureSwitch in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2100,7 +2093,6 @@
 				6633C3422A6FD229004023A7 /* ProtonCoreTestingToolkitTestData in Frameworks */,
 				6633C33C2A6FD229004023A7 /* ProtonCoreFeatureSwitch in Frameworks */,
 				6633C3462A6FD229004023A7 /* ProtonCoreTestingToolkitUITestsPaymentsUI in Frameworks */,
-				66968F3F2A60563300AA67D2 /* fusion in Frameworks */,
 				6633C33E2A6FD229004023A7 /* ProtonCoreObfuscatedConstants in Frameworks */,
 				6633C34A2A6FD23E004023A7 /* ProtonCoreTestingToolkitUITestsHumanVerification in Frameworks */,
 				6633C3442A6FD229004023A7 /* ProtonCoreTestingToolkitUITestsCore in Frameworks */,
@@ -2113,7 +2105,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66968F632A60566A00AA67D2 /* fusion in Frameworks */,
 				6633C35A2A6FD27F004023A7 /* ProtonCoreDoh in Frameworks */,
 				6633C3642A6FD27F004023A7 /* ProtonCoreTestingToolkitUITestsCore in Frameworks */,
 				6633C35E2A6FD27F004023A7 /* ProtonCoreObfuscatedConstants in Frameworks */,
@@ -2536,7 +2527,6 @@
 				6633C36E2A6FD295004023A7 /* ProtonCoreQuarkCommands in Frameworks */,
 				6633C3722A6FD295004023A7 /* ProtonCoreTestingToolkitUITestsCore in Frameworks */,
 				66968F752A60568E00AA67D2 /* SnapshotTesting in Frameworks */,
-				66968F732A60568E00AA67D2 /* fusion in Frameworks */,
 				6633C3682A6FD295004023A7 /* ProtonCoreDoh in Frameworks */,
 				6633C36C2A6FD295004023A7 /* ProtonCoreObfuscatedConstants in Frameworks */,
 			);
@@ -2761,7 +2751,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66968F1A2A6055A800AA67D2 /* fusion in Frameworks */,
 				6633C31E2A6FD1C9004023A7 /* ProtonCoreDoh in Frameworks */,
 				6633C3282A6FD1DF004023A7 /* ProtonCoreTestingToolkitUITestsAccountDeletion in Frameworks */,
 				6633C3262A6FD1DF004023A7 /* ProtonCoreTestingToolkitTestData in Frameworks */,
@@ -2777,7 +2766,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66968F512A60564E00AA67D2 /* fusion in Frameworks */,
 				6633C34C2A6FD264004023A7 /* ProtonCoreDoh in Frameworks */,
 				6633C3562A6FD264004023A7 /* ProtonCoreTestingToolkitUITestsCore in Frameworks */,
 				6633C3502A6FD264004023A7 /* ProtonCoreObfuscatedConstants in Frameworks */,
@@ -3808,7 +3796,6 @@
 			);
 			name = "Example-AccountSwitcher-UITests";
 			packageProductDependencies = (
-				66968F2A2A6055FF00AA67D2 /* fusion */,
 				66968F2C2A6055FF00AA67D2 /* SnapshotTesting */,
 				6633C32B2A6FD206004023A7 /* ProtonCoreDoh */,
 				6633C32D2A6FD206004023A7 /* ProtonCoreFeatureSwitch */,
@@ -3837,7 +3824,6 @@
 			);
 			name = "Example-Login-UITests";
 			packageProductDependencies = (
-				66968F3E2A60563300AA67D2 /* fusion */,
 				66968F402A60563300AA67D2 /* SnapshotTesting */,
 				6633C3392A6FD229004023A7 /* ProtonCoreDoh */,
 				6633C33B2A6FD229004023A7 /* ProtonCoreFeatureSwitch */,
@@ -3868,7 +3854,6 @@
 			);
 			name = "Example-Payments-UITests";
 			packageProductDependencies = (
-				66968F622A60566A00AA67D2 /* fusion */,
 				66968F642A60566A00AA67D2 /* SnapshotTesting */,
 				6633C3592A6FD27F004023A7 /* ProtonCoreDoh */,
 				6633C35B2A6FD27F004023A7 /* ProtonCoreFeatureSwitch */,
@@ -4395,7 +4380,6 @@
 			);
 			name = "Example-TokenRefresh-UITests";
 			packageProductDependencies = (
-				66968F722A60568E00AA67D2 /* fusion */,
 				66968F742A60568E00AA67D2 /* SnapshotTesting */,
 				6633C3672A6FD295004023A7 /* ProtonCoreDoh */,
 				6633C3692A6FD295004023A7 /* ProtonCoreFeatureSwitch */,
@@ -4709,7 +4693,6 @@
 			);
 			name = "Example-AccountDeletion-UITests";
 			packageProductDependencies = (
-				66968F192A6055A800AA67D2 /* fusion */,
 				66968F1C2A6055CA00AA67D2 /* SnapshotTesting */,
 				6633C31D2A6FD1C9004023A7 /* ProtonCoreDoh */,
 				6633C31F2A6FD1C9004023A7 /* ProtonCoreFeatureSwitch */,
@@ -4738,7 +4721,6 @@
 			);
 			name = "Example-Networking-UITests";
 			packageProductDependencies = (
-				66968F502A60564E00AA67D2 /* fusion */,
 				66968F522A60564E00AA67D2 /* SnapshotTesting */,
 				6633C34B2A6FD264004023A7 /* ProtonCoreDoh */,
 				6633C34D2A6FD264004023A7 /* ProtonCoreFeatureSwitch */,
@@ -4817,7 +4799,6 @@
 				66420FE22A57438300A28F11 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */,
 				66420FE72A5743E600A28F11 /* XCRemoteSwiftPackageReference "TPInAppReceipt" */,
 				66420FEC2A57450200A28F11 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
-				66968F182A6055A800AA67D2 /* XCRemoteSwiftPackageReference "apple-fusion" */,
 				66968F1B2A6055CA00AA67D2 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 25232F3E270DDCB0009446AF /* Products */;
@@ -8180,14 +8161,6 @@
 				version = 5.2.2;
 			};
 		};
-		66968F182A6055A800AA67D2 /* XCRemoteSwiftPackageReference "apple-fusion" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@gitlab.protontech.ch:tpe/apple-fusion.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 		66968F1B2A6055CA00AA67D2 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
@@ -10847,60 +10820,30 @@
 			package = 66420FEC2A57450200A28F11 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
 			productName = Sentry;
 		};
-		66968F192A6055A800AA67D2 /* fusion */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66968F182A6055A800AA67D2 /* XCRemoteSwiftPackageReference "apple-fusion" */;
-			productName = fusion;
-		};
 		66968F1C2A6055CA00AA67D2 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 66968F1B2A6055CA00AA67D2 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
-		};
-		66968F2A2A6055FF00AA67D2 /* fusion */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66968F182A6055A800AA67D2 /* XCRemoteSwiftPackageReference "apple-fusion" */;
-			productName = fusion;
 		};
 		66968F2C2A6055FF00AA67D2 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 66968F1B2A6055CA00AA67D2 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
 		};
-		66968F3E2A60563300AA67D2 /* fusion */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66968F182A6055A800AA67D2 /* XCRemoteSwiftPackageReference "apple-fusion" */;
-			productName = fusion;
-		};
 		66968F402A60563300AA67D2 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 66968F1B2A6055CA00AA67D2 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
-		};
-		66968F502A60564E00AA67D2 /* fusion */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66968F182A6055A800AA67D2 /* XCRemoteSwiftPackageReference "apple-fusion" */;
-			productName = fusion;
 		};
 		66968F522A60564E00AA67D2 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 66968F1B2A6055CA00AA67D2 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
 		};
-		66968F622A60566A00AA67D2 /* fusion */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66968F182A6055A800AA67D2 /* XCRemoteSwiftPackageReference "apple-fusion" */;
-			productName = fusion;
-		};
 		66968F642A60566A00AA67D2 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 66968F1B2A6055CA00AA67D2 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
-		};
-		66968F722A60568E00AA67D2 /* fusion */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66968F182A6055A800AA67D2 /* XCRemoteSwiftPackageReference "apple-fusion" */;
-			productName = fusion;
 		};
 		66968F742A60568E00AA67D2 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;

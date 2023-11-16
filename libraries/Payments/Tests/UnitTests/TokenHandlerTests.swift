@@ -278,7 +278,7 @@ final class TokenHandlerTests: XCTestCase {
     }
 
     func testChargeableTokenSuccess() {
-        withFeatureSwitches([.subscriptions]) { // remove enclosure with CP-6369
+        withFeatureFlags([.dynamicPlans]) { // remove enclosure with CP-6369
             // Test scenario:
             // 1. Do getToken
             // Expected: tokenCompletion
@@ -329,7 +329,7 @@ final class TokenHandlerTests: XCTestCase {
     }
 
     func testChargeableTokenSandboxReceiptError() {
-        withFeatureSwitches([.subscriptions]) { // remove enclosure with CP-6369
+        withFeatureFlags([.dynamicPlans]) { // remove enclosure with CP-6369
             // Test scenario:
             // 1. Do getToken
             // Expected: finishCompletion isSandboxReceiptError
@@ -383,7 +383,7 @@ final class TokenHandlerTests: XCTestCase {
     }
 
     func testChargeableApplePaymentAlreadyRegisteredError() {
-        withFeatureSwitches([.subscriptions]) { // remove enclosure with CP-6369
+        withFeatureFlags([.dynamicPlans]) { // remove enclosure with CP-6369
             // Test scenario:
             // 1. Do getToken
             // Expected: finishCompletion isApplePaymentAlreadyRegisteredError
@@ -435,7 +435,7 @@ final class TokenHandlerTests: XCTestCase {
     }
 
     func testChargeableUnhandledError() {
-        withFeatureSwitches([.subscriptions]) { // remove enclosure with CP-6369
+        withFeatureFlags([.dynamicPlans]) { // remove enclosure with CP-6369
             // Test scenario:
             // 1. Do getToken
             // Expected: catch unhandled error
