@@ -749,7 +749,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
             guard let details = planService.detailsOfPlanCorrespondingToIAP(plan),
                   let amount = details.pricing(for: plan.period),
                   let protonIdentifier = details.ID
-            else { 
+            else {
                 throw Errors.alreadyPurchasedPlanDoesNotMatchBackend
             }
 

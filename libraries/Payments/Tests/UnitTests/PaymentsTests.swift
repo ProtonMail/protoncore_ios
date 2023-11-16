@@ -79,7 +79,6 @@ final class PaymentsTests: XCTestCase {
 
             payments.activate(delegate: storeKitDelegate) { _ in expectation.fulfill() }
 
-
             wait(for: [expectation], timeout: 0.1)
 
             XCTAssertTrue(storeKitManager.updateAvailableProductsListStub.wasNotCalled)

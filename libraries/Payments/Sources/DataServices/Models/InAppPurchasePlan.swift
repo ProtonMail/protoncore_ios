@@ -151,7 +151,7 @@ public struct InAppPurchasePlan: Equatable, Hashable {
         let iapPlan = InAppPurchasePlan(protonPlanName: name, offer: offer, listOfIAPIdentifiers: identifiers)
         return iapPlan.storeKitProductId != nil && iapPlan.period == cycle.map(String.init) && iapPlan.currency?.lowercased() == currency?.lowercased()
     }
-    
+
     /// Given a Plan and a list of App Store product ids,
     /// it will create an InAppPurchasePlan whose cycle
     /// coincides with the one in the Plan if there's a
@@ -176,7 +176,7 @@ public struct InAppPurchasePlan: Equatable, Hashable {
             self.init(protonPlanName: protonPlan.name, offer: protonPlan.offer, listOfIAPIdentifiers: listOfIAPIdentifiers)
         }
     }
-    
+
     /// Creates an InAppPurchasePlan from the corresponding components in the product id:
     /// plan name, offer, period and currency
     public init?(storeKitProductId: ProductId) {
@@ -195,7 +195,7 @@ public struct InAppPurchasePlan: Equatable, Hashable {
                       currency: matchingPlanDetails.currency)
         }
     }
-    
+
     /// Creates an InAppPurchasePlan from an Instance's Product Id corresponding components
     public init?(availablePlanInstance: AvailablePlans.AvailablePlan.Instance) {
         guard let iapIdentifier = availablePlanInstance.vendors?.apple.productID else {

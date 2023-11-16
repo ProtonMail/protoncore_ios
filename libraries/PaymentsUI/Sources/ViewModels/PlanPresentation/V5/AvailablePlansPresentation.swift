@@ -40,7 +40,7 @@ class AvailablePlansPresentation {
         self.isCurrentlyProcessed = isCurrentlyProcessed
         self.isExpanded = isExpanded
     }
-    
+
     static func createAvailablePlans(from plan: AvailablePlans.AvailablePlan,
                                      for instance: AvailablePlans.AvailablePlan.Instance? = nil,
                                      defaultCycle: Int? = nil,

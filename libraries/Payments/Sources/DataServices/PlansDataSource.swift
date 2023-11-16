@@ -136,7 +136,7 @@ class PlansDataSource: PlansDataSourceProtocol {
         guard let identifier = iap.storeKitProductId else { return nil }
         return availablePlans?.plans.first(where: { plan in
             plan.instances.contains { instance in
-                instance.vendors?.apple.productID == identifier 
+                instance.vendors?.apple.productID == identifier
             }
         })
     }
@@ -144,7 +144,7 @@ class PlansDataSource: PlansDataSourceProtocol {
     func detailsOfAvailablePlanInstanceCorrespondingToIAP(_ iap: InAppPurchasePlan) -> AvailablePlans.AvailablePlan.Instance? {
         guard let identifier = iap.storeKitProductId else { return nil }
         return availablePlans?.plans.flatMap(\.instances).first(where: { instance in
-            instance.vendors?.apple.productID == identifier 
+            instance.vendors?.apple.productID == identifier
         })
     }
 
