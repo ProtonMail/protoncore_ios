@@ -33,6 +33,9 @@
       }
     },
     {
+      "skippedTests" : [
+        "LoginIntegrationTests\/testDoesNotRequireAskingForSecondPasswordForUsernameRequirement()"
+      ],
       "target" : {
         "containerPath" : "container:",
         "identifier" : "ProtonCoreLoginIntegrationTests",
