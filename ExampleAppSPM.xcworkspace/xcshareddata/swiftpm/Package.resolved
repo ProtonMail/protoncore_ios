@@ -12,7 +12,7 @@
     {
       "identity" : "apple-fusion",
       "kind" : "remoteSourceControl",
-      "location" : "git@gitlab.protontech.ch:tpe/apple-fusion.git",
+      "location" : "https://github.com/ProtonMail/apple-fusion",
       "state" : {
         "revision" : "cd3db46940c5d64beb616f0a080ff65a920dd5fa",
         "version" : "2.0.1"

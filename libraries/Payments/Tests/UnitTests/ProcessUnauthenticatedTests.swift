@@ -79,7 +79,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
     }
 
     func testSubscriptionSuccess() {
-        withFeatureSwitches([.subscriptions]){ // remove enclosure with CP-6369
+        withFeatureFlags([.dynamicPlans]) { // remove enclosure with CP-6369
             // Test scenario:
             // 1. Process transaction
             // Expected: transaction added to transactionsBeforeSignupStub and payment token returned
@@ -154,7 +154,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
     }
 
     func testSubscriptionTokenRequestFail() {
-        withFeatureSwitches([.subscriptions]){ // remove enclosure with CP-6369
+        withFeatureFlags([.dynamicPlans]) { // remove enclosure with CP-6369
             // Test scenario:
             // 1. Process transaction
             // 2. Fail token request
@@ -189,7 +189,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
     }
 
     func testSubscriptionTokenStatusRequestFail() {
-        withFeatureSwitches([.subscriptions]){ // remove enclosure with CP-6369
+        withFeatureFlags([.dynamicPlans]) { // remove enclosure with CP-6369
             // Test scenario:
             // 1. Process transaction
             // 2. Fail token status request
@@ -227,7 +227,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
     }
 
     func testSubscriptionTokenStatusConsumed() {
-        withFeatureSwitches([.subscriptions]){ // remove enclosure with CP-6369
+        withFeatureFlags([.dynamicPlans]) { // remove enclosure with CP-6369
             // Test scenario:
             // 1. Process transaction
             // 2. Return token status consumed
@@ -265,7 +265,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
     }
 
     func testSubscriptionTokenStatusFailed() {
-        withFeatureSwitches([.subscriptions]){ // remove enclosure with CP-6369
+        withFeatureFlags([.dynamicPlans]) { // remove enclosure with CP-6369
             // Test scenario:
             // 1. Process transaction
             // 2. Return token status failed
@@ -303,7 +303,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
     }
 
     func testSubscriptionTokenStatusNotSupported() {
-        withFeatureSwitches([.subscriptions]){ // remove enclosure with CP-6369
+        withFeatureFlags([.dynamicPlans]) { // remove enclosure with CP-6369
             // Test scenario:
             // 1. Process transaction
             // 2. Return token status failed
@@ -341,7 +341,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
     }
 
     func testSubscriptionTokenStatusPending() {
-        withFeatureSwitches([.subscriptions]){ // remove enclosure with CP-6369
+        withFeatureFlags([.dynamicPlans]) { // remove enclosure with CP-6369
             // Test scenario:
             // 1. Process transaction
             // 2. Return token status pending
@@ -1488,7 +1488,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
     }
 
     func testExistingTokenIsChargableNoNewTokenIsFetched() {
-        withFeatureSwitches([.subscriptions]){
+        withFeatureFlags([.dynamicPlans]) {
             // Remove enclosure with CP-6369
             // Test scenario:
             // 1. Stored token is chargable

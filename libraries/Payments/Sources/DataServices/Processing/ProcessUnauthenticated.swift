@@ -21,7 +21,6 @@
 
 import Foundation
 import StoreKit
-import ProtonCoreFeatureSwitch
 import ProtonCoreFeatureFlags
 import ProtonCoreLog
 import ProtonCoreObservability
@@ -73,7 +72,7 @@ import ProtonCoreUtilities
 
 final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
 
-    let areSubscriptionsEnabled = FeatureFactory.shared.isEnabled(.subscriptions)
+    let areSubscriptionsEnabled = FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan)
 
     unowned let dependencies: ProcessDependencies
 

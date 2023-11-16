@@ -681,18 +681,19 @@ final class StoreKitManagerTests: XCTestCase {
         out.paymentQueue = paymentsQueue
         out.delegate = storeKitManagerDelegate
         out.availableProducts = [SKProduct(identifier: "ios_test_12_usd_non_renewing", price: "0.0", priceLocale: Locale(identifier: "en_US"))]
+        let instance = AvailablePlans.AvailablePlan.Instance(
+            cycle: 12,
+            description: "test",
+            periodEnd: 100,
+            price: [.init(ID: "id", current: 79, currency: "USD")]
+        )
         let planDetails = AvailablePlans.AvailablePlan.dummy.updated(
             ID: "test plan id",
             name: "ios_test_12_usd_non_renewing",
-            instances: [
-                .init(cycle: 12,
-                      description: "test",
-                      periodEnd: 100,
-                      price: [.init(ID: "id", current: 79, currency: "USD")]
-                )
-            ]
+            instances: [ instance ]
         )
         plansDataSourceMock.fetchAvailablePlansStub.bodyIs { _ in }
+        plansDataSourceMock.detailsOfAvailablePlanInstanceCorrespondingToIAPStub.bodyIs { _, _ in instance }
         plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _  in planDetails }
         out.subscribeToPaymentQueue()
         return out
@@ -910,7 +911,7 @@ final class StoreKitManagerTests: XCTestCase {
 
     // Remove with CP-6369
     func testTransactionStatePurchasedNoHashedUsernameWithoutSubscriptionsFF() throws {
-        withFeatureSwitches([]) {
+        withFeatureFlags([]) {
             // Test scenario:
             // 1. Do purchase for unauthorized
             // 2. Start processing transactions
@@ -983,16 +984,16 @@ final class StoreKitManagerTests: XCTestCase {
     }
 
     func testTransactionStatePurchasedNoHashedUsername() throws {
-        withFeatureSwitches([.subscriptions]){ // remove enclosure with CP-6369
+        withFeatureFlags([.dynamicPlans]) { // remove enclosure with CP-6369
             // Test scenario:
-            // 1. Do purchase for unauthorized
+            // 1. Do purchase for unauthenticated
             // 2. Start processing transactions
             // 3. Change user Id
             // 4. Start processing transactions again
             // Expected: Seccess: Purchased product
 
             // given
-            let out = setupMocksToSimulateOngoingPurchase(expectRefreshHandler: nil)
+            let out = setupMocksToSimulateOngoingPurchaseWithDynamicPlans(expectRefreshHandler: nil)
             paymentsQueue.transactionState = .purchased
             let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
             let expectation1 = expectation(description: "Should call error completion block")
@@ -1007,6 +1008,7 @@ final class StoreKitManagerTests: XCTestCase {
                 ] as [String: Any]
             ]
             let token = PaymentToken(token: "test token", status: .pending)
+            plansDataSourceMock.isIAPAvailableStub.fixture = true
             storeKitManagerDelegate.tokenStorageStub.fixture = paymentTokenStorageMock
             apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
                 if path.contains("subscription/check") {
@@ -1035,7 +1037,9 @@ final class StoreKitManagerTests: XCTestCase {
 
             // then
             waitForExpectations(timeout: timeout)
-            guard case .withoutExchangingToken(let returnedToken) = returnedResult else { XCTFail(); return }
+            guard case .withoutExchangingToken(let returnedToken) = returnedResult else {
+                XCTFail(); return
+            }
             XCTAssertEqual(returnedToken.token, token.token)
             XCTAssertTrue(paymentTokenStorageMock.addStub.wasCalledExactlyOnce)
             XCTAssertEqual(paymentTokenStorageMock.addStub.lastArguments?.a1.token, token.token)
@@ -1051,7 +1055,6 @@ final class StoreKitManagerTests: XCTestCase {
             // then
             waitForExpectations(timeout: timeout)
             XCTAssertTrue(paymentTokenStorageMock.clearStub.wasCalledExactlyOnce)
-            XCTAssertEqual(planServiceMock.currentSubscriptionStub.setLastArguments?.a1?.couponCode, "test code")
         }
     }
 

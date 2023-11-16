@@ -51,28 +51,32 @@ final class PlansDataSourceTests: XCTestCase {
 
     func test_fetchIAPAvailability_succeeds() async throws {
         // Given
-        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-            completion(nil, .success(["Apple": true]))
+        try await withFeatureFlags([.dynamicPlans]) {
+            apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+                completion(nil, .success(["Apple": true]))
+            }
+
+            // When
+            try await sut.fetchIAPAvailability()
+
+            // Then
+            XCTAssertTrue(sut.isIAPAvailable)
         }
-
-        // When
-        try await sut.fetchIAPAvailability()
-
-        // Then
-        XCTAssertTrue(sut.isIAPAvailable)
     }
 
     func test_fetchIAPAvailability_fails_onFalse() async throws {
         // Given
-        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-            completion(nil, .success(["Apple": false]))
+        try await withFeatureFlags([.dynamicPlans]) {
+            apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+                completion(nil, .success(["Apple": false]))
+            }
+
+            // When
+            try await sut.fetchIAPAvailability()
+
+            // Then
+            XCTAssertFalse(sut.isIAPAvailable)
         }
-
-        // When
-        try await sut.fetchIAPAvailability()
-
-        // Then
-        XCTAssertFalse(sut.isIAPAvailable)
     }
 
     func test_fetchIAPAvailability_fails_onBadJSON() async throws {
@@ -105,32 +109,51 @@ final class PlansDataSourceTests: XCTestCase {
 
     func test_isIAPAvailable_isTrueWhenSettingPaymentsBackendStatusAcceptsIAPToTrue() {
         // Given
-        servicePlanDataStorageMock.paymentsBackendStatusAcceptsIAPStub.fixture = true
-        sut = .init(
-            apiService: apiServiceMock,
-            storeKitDataSource: storeKitDataSourceMock,
-            localStorage: servicePlanDataStorageMock
-        )
+        withFeatureFlags([.dynamicPlans]) {
+            servicePlanDataStorageMock.paymentsBackendStatusAcceptsIAPStub.fixture = true
+            sut = .init(
+                apiService: apiServiceMock,
+                storeKitDataSource: storeKitDataSourceMock,
+                localStorage: servicePlanDataStorageMock
+            )
 
-        // Then
-        XCTAssertTrue(sut.paymentsBackendStatusAcceptsIAP)
-        XCTAssertTrue(sut.isIAPAvailable)
+            // Then
+            XCTAssertTrue(sut.paymentsBackendStatusAcceptsIAP)
+            XCTAssertTrue(sut.isIAPAvailable)
+        }
     }
 
     func test_isIAPAvailable_isFalseWhenSettingPaymentsBackendStatusAcceptsIAPToFalse() {
         // Given
-        servicePlanDataStorageMock.paymentsBackendStatusAcceptsIAPStub.fixture = false
-        sut = .init(
-            apiService: apiServiceMock,
-            storeKitDataSource: storeKitDataSourceMock,
-            localStorage: servicePlanDataStorageMock
-        )
+        withFeatureFlags([.dynamicPlans]) {
+            servicePlanDataStorageMock.paymentsBackendStatusAcceptsIAPStub.fixture = false
+            sut = .init(
+                apiService: apiServiceMock,
+                storeKitDataSource: storeKitDataSourceMock,
+                localStorage: servicePlanDataStorageMock
+            )
 
-        // Then
-        XCTAssertFalse(sut.paymentsBackendStatusAcceptsIAP)
-        XCTAssertFalse(sut.isIAPAvailable)
+            // Then
+            XCTAssertFalse(sut.paymentsBackendStatusAcceptsIAP)
+            XCTAssertFalse(sut.isIAPAvailable)
+        }
     }
 
+    func test_isIAPAvailable_isFalseWhenCreditsAreAvailable() {
+        // Given
+        withFeatureFlags([.dynamicPlans]) {
+            servicePlanDataStorageMock.paymentsBackendStatusAcceptsIAPStub.fixture = true
+            servicePlanDataStorageMock.creditsStub.fixture = Credits(credit: 50, currency: "USD")
+            sut = .init(
+                apiService: apiServiceMock,
+                storeKitDataSource: storeKitDataSourceMock,
+                localStorage: servicePlanDataStorageMock
+            )
+
+            // Then
+            XCTAssertFalse(sut.isIAPAvailable)
+        }
+    }
     // MARK: - fetchCurrentPlan
 
     func test_fetchCurrentPlan_succeeds() async throws {

@@ -125,7 +125,12 @@ final class ServicePlanDataService: ServicePlanDataServiceProtocol {
     public weak var currentSubscriptionChangeDelegate: CurrentSubscriptionChangeDelegate?
 
     public var isIAPAvailable: Bool {
+        guard !FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) else {
+            assertionFailure("ServicePlanDataService should never be called with Dynamic Plans FF enabled")
+            return false
+        }
         guard paymentsBackendStatusAcceptsIAP else { return false }
+
         return true
     }
 
