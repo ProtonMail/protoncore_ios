@@ -1,5 +1,5 @@
 //
-//  PaymentsUIViewModelTests.swift
+//  PaymentsUISnapshotTests.swift
 //  ProtonCore-PaymentsUI-Tests - Created on 25/06/2021.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -24,10 +24,13 @@
 import UIKit
 import XCTest
 import ProtonCoreDataModel
+import ProtonCoreFeatureFlags
 import ProtonCoreServices
+import ProtonCoreUtilities
 #if canImport(ProtonCoreTestingToolkitUnitTestsPayments)
 import ProtonCoreTestingToolkitUnitTestsPayments
 import ProtonCoreTestingToolkitUnitTestsCore
+import ProtonCoreTestingToolkitUnitTestsFeatureFlag
 #else
 import ProtonCoreTestingToolkit
 #endif
@@ -50,10 +53,11 @@ final class PaymentsUISnapshotTests: XCTestCase {
     let subscriptionStartDate = Date(timeIntervalSince1970: 4818489600)
     let existingPaymentsMethods = [PaymentMethod(type: "test method")]
 
-    let reRecordEverything = false
+    let reRecordEverything = true
 
     var storeKitManager: StoreKitManagerMock!
     var servicePlan: ServicePlanDataServiceMock!
+    var plansDataSource: PlansDataSourceMock!
 
     let perceptualPrecision: Float = 0.98
 
@@ -61,11 +65,13 @@ final class PaymentsUISnapshotTests: XCTestCase {
         super.setUp()
         storeKitManager = StoreKitManagerMock()
         servicePlan = ServicePlanDataServiceMock()
-    }
+        plansDataSource = PlansDataSourceMock()
+   }
 
     override func tearDown() {
         servicePlan = nil
         storeKitManager = nil
+        plansDataSource = nil
         super.tearDown()
     }
 
@@ -91,12 +97,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
             // this is a unknown test plan that we use only for verifying our code works even if some new plan is introduced on the backend
 
             case unknownTestPlan
-            case imaginaryOffer
+            case arbitraryOffer
 
             static var allPlans: [Plan] { allCases.map(\.plan) }
 
             static var mailPaidPlans: [Plan] { [Plans.bundle2022, .mail2022].map(\.plan) }
-            static var mailPaidPlanAndImaginaryOffer: [Plan] { [Plans.imaginaryOffer, .mail2022].map(\.plan) }
+            static var mailPaidPlanAndArbitraryOffer: [Plan] { [Plans.arbitraryOffer, .mail2022].map(\.plan) }
             static var vpnPaidPlans: [Plan] { [Plans.bundle2022, .vpn2022].map(\.plan) }
             static var drivePaidPlans: [Plan] { [Plans.bundle2022, .drive2022].map(\.plan) }
             static var calendarPaidPlans: [Plan] { [Plans.bundle2022, .mail2022].map(\.plan) }
@@ -298,14 +304,14 @@ final class PaymentsUISnapshotTests: XCTestCase {
                         state: 1,
                         cycle: 12
                     )
-                case .imaginaryOffer:
+                case .arbitraryOffer:
                     return Plan.empty.updated(
                         name: "bundle2022",
                         maxAddresses: 15,
                         maxMembers: 1,
                         pricing: ["1": 1199 / 2, "12": 11988 / 2, "24": 19176 / 2],
                         defaultPricing: ["1": 1199, "12": 11988, "24": 19176],
-                        vendors: Plan.Vendors(apple: Plan.Vendor(plans: ["12": "iosimaginary_bundle2022_offer_12_usd_non_renewing"])),
+                        vendors: Plan.Vendors(apple: Plan.Vendor(plans: ["12": "iosarbitrary_bundle2022_offer_12_usd_non_renewing"])),
                         maxDomains: 3,
                         maxSpace: 536870912000,
                         type: 1,
@@ -320,6 +326,126 @@ final class PaymentsUISnapshotTests: XCTestCase {
                 }
             }
         }
+
+        static let availablePlansList = [AvailablePlans.AvailablePlan(ID: "app_bundle2022_12_usd_auto_renewing",
+                                                                      type: 0,
+                                                                      name: "Bundle2022", title: "Bundle Title", instances: [.init(cycle: 12, description: "description", periodEnd: 12, price: [.init(ID: "price", current: 1299, currency: "CHF")])], entitlements:
+                                                                        [.description(.init(type: "description", iconName: "tick", text: "text", hint: "hint"))],
+                                                                      decorations: [.starred(.init(type: "starred", iconName: "tick"))]
+                                                                     )
+        ]
+
+
+        static let availablePlans: AvailablePlans = .init(plans: MockData.availablePlansList, defaultCycle: 12) // dynamic plan
+        static let currentPlan: CurrentPlan = .init(subscriptions: [.init(title: "Current Subscription", // dynamic plan
+                                                                          description: "Description", 
+                                                                          periodEnd: 1665360000,
+                                                                          entitlements: [
+                                                                            .description(.init(type: "description",
+                                                                                               text: "text", 
+                                                                                               iconName: "tick",
+                                                                                               hint: "hint")),
+
+                                                                            ]
+                                                                          )
+                                                                    ])
+        enum DynamicPlans {
+
+            static let mailFree: CurrentPlan = .init(subscriptions: [
+                .init(title: "Mail Free",
+                      description: "Free encrypted email and calendar for everyone",
+                      periodEnd: 1665360000,
+                      entitlements: [.progress(.init(type: "progress",
+                                                     text: "402MB of 1 GB total storage",
+                                                     min: 0, max: 10, current: 4)),
+                                     .description(.description(text: "1 GB total storage", iconName: "disk")),
+                                     .description(.description(text: "1 free email address", iconName: "mail")),
+                                     .description(.description(text: "150 messages per day", iconName: "mail"))]
+                     )])
+            static let vpnFree: CurrentPlan = .init(subscriptions: [
+                .init(title: "VPN Free",
+                      description: "High-speed Swiss VPN that protects your privacy",
+                      periodEnd: 1665360000,
+                      entitlements: [.description(.description(text: "249 servers in 5 countries", iconName: "servers")),
+                                     .description(.description(text: "No ads", iconName:"rocket")),
+                                     .description(.description(text: "Unlimited volume/bandwidth", iconName: "infinite"))
+                      ]
+                     )])
+            static let passFree: CurrentPlan = .init(subscriptions: [
+                .init(title: "Pass Free",
+                      description: "Encrypted password manager that also protects your identity",
+                      periodEnd: 1665360000,
+                      entitlements: [.description(.description(text: "Unlimited logins and notes", iconName: "infinite")),
+                                     .description(.description(text: "Unlimited devices", iconName: "infinite")),
+                                     .description(.description(text: "10 hide-my-email aliases", iconName: "alias")),
+                                     .description(.description(text: "Vault sharing (up to 3 people)", iconName: "vault"))
+                      ])
+            ])
+            static let arbitraryFree: CurrentPlan = .init(subscriptions: [
+                .init(title: "Blue Moon Free",
+                      description: "Keep your satellites secure",
+                      periodEnd: 1665360000,
+                      entitlements: [.description(.description(text: "Aliases!", iconName: "alias")),
+                                     .description(.description(text: "Arrows and Switches!", iconName: "arrows-switch"))
+                      ])
+            ])
+            static var mail2022: CurrentPlan = .init(subscriptions: [
+                .init(title: "Mail Plus",
+                      description: "Encrypted email with premium features and free VPN",
+                      periodEnd: 1665360000,
+                      entitlements: [
+                        .progress(.init(type: "progress", text: "1.2GB of 15GB", min: 0, max: 150, current: 12)),
+                        .description(.description(text: "15 GB total storage", iconName: "disk")),
+                        .description(.description(text: "10 email addresses", iconName: "email")),
+                        .description(.description(text: "Unlimited messages", iconName: "infinite")),
+                        .description(.description(text: "Support for 1 custom email domain", iconName: "globe")),
+                        .description(.description(text: "25 Calendars", iconName: "calendar")),
+                        .description(.description(text: "Calendar sharing", iconName: "calendar")),
+                        .description(.description(text: "1 medium-speed VPN connection", iconName: "globe"))
+                      ])
+            ])
+            static var vpn2022: CurrentPlan = .init(subscriptions: [
+                .init(title: "VPN Plus",
+                      description: "Encrypted email with premium features and free VPN",
+                      periodEnd: 1665360000,
+                      entitlements: [
+                        .description(.description(text: "Highest VPN speed", iconName: "vpn")),
+                        .description(.description(text: "Protect 10 devices at a time", iconName: "vpn")),
+                        .description(.description(text: "Available on all platforms", iconName: "vpn")),
+                        .description(.description(text: "Ad-blocker and malware protection", iconName: "vpn")),
+                        .description(.description(text: "High-speed streaming", iconName: "vpn")),
+                        .description(.description(text: "Priority support & live chat", iconName: "vpn")),
+                        .description(.description(text: "Advanced VPN customizations", iconName: "vpn"))
+                      ])
+            ])
+            static var bundle2022: CurrentPlan = .init(subscriptions: [
+                .init(title: "Proton Unlimited",
+                      description: "Acces to all Proton apps and premium features",
+                      periodEnd: 1665360000,
+                      entitlements: [
+                        .progress(.init(type: "progress", text: "1.2GB of 500GB", min: 0, max: 5000, current: 12)),
+                        .description(.description(text: "500 GB total storage")),
+                        .description(.description(text: "15 email addresses")),
+                        .description(.description(text: "Unlimited messages")),
+                        .description(.description(text: "Support for 3 custom email domains")),
+                        .description(.description(text: "Unlimited folders, labels and filters")),
+                        .description(.description(text: "Unlimited hide-my-email aliases"))
+                      ])
+            ])
+            static var drive2022: CurrentPlan = .init(subscriptions: [
+                .init(title: "Drive Plus",
+                     description: "Secure your files with end-to-end encryption",
+                      periodEnd: 1665360000,
+                      entitlements: [
+                        .progress(.init(type: "progress", text: "1.2GB of 200GB", min: 0, max: 2000, current: 12)),
+                        .description(.description(text: "200GB total storage")),
+                        .description(.description(text: "End-to-end encryption")),
+                        .description(.description(text: "Share with up to 10 others")),
+                        .description(.description(text: "Version history"))
+                      ])
+            ])
+        }
+
 
         static var customPlansDescription: CustomPlansDescription = [
             "free": (
@@ -415,12 +541,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
             shownPlanNames = ObfuscatedConstants.passShownPlanNames
             iapIdentifiers = ObfuscatedConstants.passIAPIdentifiers
             paidPlans = MockData.Plans.passPaidPlans
-        case .other("imaginaryOffer"):
+        case .other("arbitraryOffer"):
             shownPlanNames = ObfuscatedConstants.mailShownPlanNames
             var identifiers = ObfuscatedConstants.mailIAPIdentifiers
             identifiers.insert("iosimaginary_bundle2022_offer_12_usd_non_renewing")
             iapIdentifiers = identifiers
-            paidPlans = MockData.Plans.mailPaidPlanAndImaginaryOffer
+            paidPlans = MockData.Plans.mailPaidPlanAndArbitraryOffer
         case .other:
             fatalError("misconfiguration")
         }
@@ -428,8 +554,8 @@ final class PaymentsUISnapshotTests: XCTestCase {
         servicePlan.paymentMethodsStub.fixture = paymentMethods
         storeKitManager.inAppPurchaseIdentifiersStub.fixture = iapIdentifiers
         storeKitManager.priceLabelForProductStub.bodyIs { _, iapIdentifier in
-            if iapIdentifier == MockData.Plans.imaginaryOffer.plan.vendors?.apple.plans.values.first {
-                guard let price = MockData.Plans.imaginaryOffer.plan.pricing(for: InAppPurchasePlan.defaultCycle) else { return nil }
+            if iapIdentifier == MockData.Plans.arbitraryOffer.plan.vendors?.apple.plans.values.first {
+                guard let price = MockData.Plans.arbitraryOffer.plan.pricing(for: InAppPurchasePlan.defaultCycle) else { return nil }
                 return (NSDecimalNumber(value: Double(price) / 100.0), Locale.autoupdatingCurrent)
             }
             guard let iap = InAppPurchasePlan(storeKitProductId: iapIdentifier),
@@ -439,6 +565,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         }
         servicePlan.defaultPlanDetailsStub.fixture = MockData.Plans.free.plan
         servicePlan.availablePlansDetailsStub.fixture = paidPlans
+
         servicePlan.plansStub.fixture = (currentSubscriptionPlan.map { [$0] } ?? []) + paidPlans + [MockData.Plans.free.plan]
         servicePlan.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, iap in MockData.Plans.allPlans.first { $0.name == iap.protonName } }
         servicePlan.currentSubscriptionStub.fixture = currentSubscriptionPlan.map {
@@ -465,24 +592,28 @@ final class PaymentsUISnapshotTests: XCTestCase {
         storeKitManager.canExtendSubscriptionStub.fixture = true
 
         let viewModel = PaymentsUIViewModel(mode: mode,
-                                        storeKitManager: storeKitManager,
-                                        planService: .left(servicePlan),
-                                        shownPlanNames: shownPlanNames,
-                                        clientApp: clientApp,
-                                        customPlansDescription: customPlansDescription,
-                                        planRefreshHandler: { _ in XCTFail() },
-                                        extendSubscriptionHandler: { XCTFail() })
+                                            storeKitManager: storeKitManager,
+                                            planService: .left(servicePlan),
+                                            shownPlanNames: shownPlanNames,
+                                            clientApp: clientApp,
+                                            customPlansDescription: customPlansDescription,
+                                            planRefreshHandler: { _ in XCTFail() },
+                                            extendSubscriptionHandler: { XCTFail() })
 
         let paymentsUIViewController = UIStoryboard.instantiate(storyboardName: "PaymentsUI",
                                                                 controllerType: PaymentsUIViewController.self,
                                                                 inAppTheme: { .default })
         paymentsUIViewController.viewModel = viewModel
+
+
+
         _ = await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
             viewModel.fetchPlans(backendFetch: false) { _ in
                 viewModel.plans.flatMap { $0 }.forEach { $0.isExpanded = true }
                 continuation.resume()
             }
         }
+
 
         let imageSize: CGSize
         switch mode {
@@ -522,6 +653,105 @@ final class PaymentsUISnapshotTests: XCTestCase {
                        line: line)
     }
 
+    @MainActor
+    private func snapshotDynamicPlanSubscriptionScreen(mode: PaymentsUIMode,
+                                                       currentPlan: CurrentPlan = MockData.currentPlan,
+                                                       name: String,
+                                                       clientApp: ClientApp,
+                                                       modalPresentation: Bool = false,
+                                                       record: Bool,
+                                                       file: StaticString = #filePath,
+                                                       line: UInt = #line) async {
+        let availablePlans: AvailablePlans = MockData.availablePlans
+        let shownPlanNames: Set<String> = planNamesFor(client: clientApp)
+
+        //    plansDataSource.paymentMethodsStub.fixture = paymentMethods
+        plansDataSource.availablePlansStub.fixture = availablePlans
+        plansDataSource.currentPlanStub.fixture = currentPlan
+        //    storeKitManager.inAppPurchaseIdentifiersStub.fixture = iapIdentifiers
+
+        storeKitManager.priceLabelForProductStub.bodyIs { _, iapIdentifier in
+            if iapIdentifier == MockData.Plans.arbitraryOffer.plan.vendors?.apple.plans.values.first {
+                guard let price = MockData.Plans.arbitraryOffer.plan.pricing(for: InAppPurchasePlan.defaultCycle) else { return nil }
+                return (NSDecimalNumber(value: Double(price) / 100.0), Locale.autoupdatingCurrent)
+            }
+            guard let iap = InAppPurchasePlan(storeKitProductId: iapIdentifier),
+                  let plan = MockData.Plans.allPlans.first(where: { $0.name == iap.protonName }),
+                  let price = plan.pricing(for: iap.period) else { return nil }
+            return (NSDecimalNumber(value: Double(price) / 100.0), Locale.autoupdatingCurrent)
+        }
+        storeKitManager.canExtendSubscriptionStub.fixture = true
+
+        let viewModel = PaymentsUIViewModel(mode: mode,
+                                            storeKitManager: storeKitManager,
+                                            planService: .right(plansDataSource),
+                                            shownPlanNames: shownPlanNames,
+                                            clientApp: clientApp,
+                                            customPlansDescription: [:],
+                                            planRefreshHandler: { _ in XCTFail() },
+                                            extendSubscriptionHandler: { XCTFail() })
+        viewModel.currentPlan = try! await .createCurrentPlan(from: currentPlan.subscriptions.first!, plansDataSource: plansDataSource)
+
+        let paymentsUIViewController = UIStoryboard.instantiate(storyboardName: "PaymentsUI",
+                                                                controllerType: PaymentsUIViewController.self,
+                                                                inAppTheme: { .default })
+        paymentsUIViewController.viewModel = viewModel
+
+        let imageSize: CGSize
+        switch mode {
+        case .signup:
+            imageSize = CGSize(width: 320, height: 1500)
+        case .update, .current:
+            imageSize = CGSize(width: 320, height: 750)
+        }
+
+        let traits: UITraitCollection = .iPhoneSe(.portrait)
+
+        paymentsUIViewController.modalPresentation = modalPresentation
+        let viewController: UIViewController
+        if paymentsUIViewController.modalPresentation {
+            viewController = LoginNavigationViewController(rootViewController: paymentsUIViewController)
+        } else {
+            viewController = paymentsUIViewController
+        }
+
+        assertSnapshot(matching: viewController,
+                       as: .image(on: ViewImageConfig(safeArea: .zero, size: imageSize, traits: traits.updated(to: .light)),
+                                  perceptualPrecision: perceptualPrecision,
+                                  size: imageSize),
+                       record: reRecordEverything || record,
+                       file: file,
+                       testName: "\(name)-Light",
+                       line: line)
+
+        assertSnapshot(matching: viewController,
+                       as: .image(on: ViewImageConfig(safeArea: .zero, size: imageSize, traits: traits.updated(to: .dark)),
+                                  perceptualPrecision: perceptualPrecision,
+                                  size: imageSize),
+                       record: reRecordEverything || record,
+                       file: file,
+                       testName: "\(name)-Dark",
+                       line: line)
+    }
+
+    private func planNamesFor(client: ClientApp) -> Set<String> {
+        switch client {
+        case .mail:
+            return ObfuscatedConstants.mailShownPlanNames.union(["free"])
+        case .vpn:
+            return ObfuscatedConstants.vpnShownPlanNames
+        case .drive:
+            return ObfuscatedConstants.driveShownPlanNames
+        case .calendar:
+            return ObfuscatedConstants.calendarShownPlanNames
+        case .pass:
+            return ObfuscatedConstants.passShownPlanNames
+        case .other("arbitraryOffer"):
+            return ObfuscatedConstants.mailShownPlanNames
+        case .other:
+            fatalError("misconfiguration")
+        }
+    }
     // MARK: - Test current subscription screen
 
     private func snapshotCurrentSubscriptionScreen(currentSubscriptionPlan: Plan?,
@@ -533,6 +763,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                                    record: Bool = false,
                                                    file: StaticString = #filePath,
                                                    line: UInt = #line) async {
+
         await snapshotSubscriptionScreen(mode: .current,
                                          currentSubscriptionPlan: currentSubscriptionPlan,
                                          paymentMethods: paymentMethods,
@@ -543,6 +774,25 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                          record: record,
                                          file: file,
                                          line: line)
+
+    }
+
+    private func snapshotCurrentDynamicSubscriptionScreen(currentPlan: CurrentPlan,
+                                                          name: String = #function,
+                                                          clientApp: ClientApp,
+                                                          customPlansDescription: CustomPlansDescription = [:],
+                                                          modalPresentation: Bool = false,
+                                                          record: Bool = false,
+                                                          file: StaticString = #filePath,
+                                                          line: UInt = #line) async {
+
+        await snapshotDynamicPlanSubscriptionScreen(mode: .current,
+                                                    currentPlan: currentPlan,
+                                                    name: name,
+                                                    clientApp: clientApp,
+                                                    record: record,
+                                                    file: file,
+                                                    line: line)
     }
 
     // free
@@ -555,6 +805,15 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
+    func testCurrentDynamicSubscription_Free_InMail() async {
+        await withFeatureFlags([.dynamicPlans]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.DynamicPlans.mailFree,
+                clientApp: .mail
+            )
+        }
+    }
+
     func testCurrentSubscription_Free_InVPN() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: nil,
@@ -562,6 +821,16 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .vpn
         )
     }
+
+    func testCurrentDynamicSubscription_Free_InVPN() async {
+        await withFeatureFlags([.dynamicPlans]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.DynamicPlans.vpnFree,
+                clientApp: .vpn
+            )
+        }
+    }
+
 
     func testCurrentSubscription_Free_InPass() async {
         await snapshotCurrentSubscriptionScreen(
@@ -571,12 +840,30 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentSubscription_Free_ImaginaryOffer() async {
+    func testCurrentDynamicSubscription_Free_InPass() async {
+        await withFeatureFlags([.dynamicPlans]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.DynamicPlans.passFree,
+                clientApp: .pass
+            )
+        }
+    }
+
+    func testCurrentSubscription_Free_ArbitraryOffer() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: nil,
             paymentMethods: existingPaymentsMethods,
-            clientApp: .other(named: "imaginaryOffer")
+            clientApp: .other(named: "arbitraryOffer")
         )
+    }
+
+    func testCurrentDynamicSubscription_Free_ArbitraryOffer() async {
+        await withFeatureFlags([.dynamicPlans]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.DynamicPlans.arbitraryFree,
+                clientApp: .other(named: "arbitraryOffer")
+            )
+        }
     }
 
     // mail2022
@@ -589,12 +876,31 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
+    func testCurrentDynamicSubscription_Mail2022_1() async {
+        await withFeatureFlags([.dynamicPlans]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.DynamicPlans.mail2022.updated(cycle: 1, cycleDescription: "every month", currency: "EUR", amount: 499),
+                clientApp: .mail
+            )
+        }
+    }
+
     func testCurrentSubscription_Mail2022_12() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.mail2022.plan,
             paymentMethods: .empty,
             clientApp: .mail
         )
+    }
+
+    func testCurrentDynamicSubscription_Mail2022_12() async {
+        await withFeatureFlags([.dynamicPlans]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.DynamicPlans.mail2022.updated(cycle: 12, cycleDescription: "every year",
+                                                                    currency: "EUR", amount: 4788),
+                clientApp: .mail
+            )
+        }
     }
 
     func testCurrentSubscription_Mail2022_24() async {
@@ -604,6 +910,16 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
+
+    func testCurrentDynamicSubscription_Mail2022_24() async {
+        await withFeatureFlags([.dynamicPlans]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.DynamicPlans.mail2022.updated(cycle: 24, cycleDescription: "every 2 years", currency: "EUR", amount: 8376),
+                clientApp: .mail
+            )
+        }
+    }
+
 
     // vpn2022
 
@@ -615,12 +931,30 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
+    func testCurrentDynamicSubscription_VPN2022_1() async {
+        await withFeatureFlags([.dynamicPlans]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.DynamicPlans.vpn2022.updated(cycle: 1, cycleDescription: "every month", currency: "CHF", amount: 999),
+                clientApp: .vpn
+            )
+        }
+    }
+
     func testCurrentSubscription_VPN2022_12() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.vpn2022.plan.updated(cycle: 12),
             paymentMethods: .empty,
             clientApp: .vpn
         )
+    }
+
+    func testCurrentDynamicSubscription_VPN2022_12() async {
+        await withFeatureFlags([.dynamicPlans]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.DynamicPlans.vpn2022.updated(cycle: 12, cycleDescription: "every year", currency: "CHF", amount: 7188),
+                clientApp: .vpn
+            )
+        }
     }
 
     func testCurrentSubscription_VPN2022_15() async {
@@ -631,12 +965,30 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
+    func testCurrentDynamicSubscription_VPN2022_15() async {
+        await withFeatureFlags([.dynamicPlans]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.DynamicPlans.vpn2022.updated(cycle: 1, cycleDescription: "every 1.5 years", currency: "CHF", amount: 7485),
+                clientApp: .vpn
+            )
+        }
+    }
+
     func testCurrentSubscription_VPN2022_24() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.vpn2022.plan.updated(cycle: 24),
             paymentMethods: existingPaymentsMethods,
             clientApp: .vpn
         )
+    }
+
+    func testCurrentDynamicSubscription_VPN2022_24() async {
+        await withFeatureFlags([.dynamicPlans]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.DynamicPlans.vpn2022.updated(cycle: 1, cycleDescription: "every 2 years", currency: "CHF", amount: 11976),
+                clientApp: .vpn
+            )
+        }
     }
 
     func testCurrentSubscription_VPN2022_30() async {
@@ -647,6 +999,14 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
+    func testCurrentDynamicSubscription_VPN2022_30() async {
+        await withFeatureFlags([.dynamicPlans]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.DynamicPlans.vpn2022.updated(cycle: 1, cycleDescription: "every 2.5 years", currency: "CHF", amount: 14900),
+                clientApp: .vpn
+            )
+        }
+    }
     // bundle2022 in mail
 
     func testCurrentSubscription_Bundle2022_1_InMail() async {
@@ -657,6 +1017,16 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
+    func testCurrentDynamicSubscription_Bundle2022_1_InMail() async {
+        await withFeatureFlags([.dynamicPlans]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.DynamicPlans.bundle2022.updated(cycle: 1, cycleDescription: "every month",
+                                                                      currency: "USD", amount: 1299),
+                clientApp: .mail
+            )
+        }
+    }
+
     func testCurrentSubscription_Bundle2022_12_InMail() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundle2022.plan.updated(cycle: 12),
@@ -665,12 +1035,32 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
+        func testCurrentDynamicSubscription_Bundle2022_12_InMail() async {
+            await withFeatureFlags([.dynamicPlans]) {
+                await snapshotCurrentDynamicSubscriptionScreen(
+                    currentPlan: MockData.DynamicPlans.bundle2022.updated(cycle: 12, cycleDescription: "every year",
+                                                                          currency: "USD", amount: 11988),
+                    clientApp: .mail
+                )
+            }
+        }
+
     func testCurrentSubscription_Bundle2022_24_InMail() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundle2022.plan.updated(cycle: 24),
             paymentMethods: existingPaymentsMethods,
             clientApp: .mail
         )
+    }
+
+    func testCurrentDynamicSubscription_Bundle2022_24_InMail() async {
+        await withFeatureFlags([.dynamicPlans]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.DynamicPlans.bundle2022.updated(cycle: 24, cycleDescription: "every 2 years",
+                                                                      currency: "USD", amount: 19176),
+                clientApp: .mail
+            )
+        }
     }
 
     // bundle2022 in pass
@@ -683,6 +1073,16 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
+    func testCurrentDynamicSubscription_Bundle2022_1_InPass() async {
+        await withFeatureFlags([.dynamicPlans]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.DynamicPlans.bundle2022.updated(cycle: 1, cycleDescription: "every month",
+                                                                      currency: "USD", amount: 1299),
+                clientApp: .pass
+            )
+        }
+    }
+
     func testCurrentSubscription_Bundle2022_12_InPass() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundle2022.plan.updated(cycle: 12),
@@ -691,12 +1091,34 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
+
+    func testCurrentDynamicSubscription_Bundle2022_12_InPass() async {
+        await withFeatureFlags([.dynamicPlans]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.DynamicPlans.bundle2022.updated(cycle: 12, cycleDescription: "every year",
+                                                                      currency: "USD", amount: 11988),
+                clientApp: .pass
+            )
+        }
+    }
+
     func testCurrentSubscription_Bundle2022_24_InPass() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundle2022.plan.updated(cycle: 24),
             paymentMethods: existingPaymentsMethods,
             clientApp: .pass
         )
+    }
+
+
+    func testCurrentDynamicSubscription_Bundle2022_24_InPass() async {
+        await withFeatureFlags([.dynamicPlans]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.DynamicPlans.bundle2022.updated(cycle: 24, cycleDescription: "every 2 years",
+                                                                      currency: "USD", amount: 19176),
+                clientApp: .pass
+            )
+        }
     }
 
     // drive2022
@@ -709,6 +1131,16 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
+    func testCurrentDynamicSubscription_Drive2022_1() async {
+        await withFeatureFlags([.dynamicPlans]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.DynamicPlans.drive2022.updated(cycle: 1, cycleDescription: "every month",
+                                                                      currency: "USD", amount: 499),
+                clientApp: .drive
+            )
+        }
+    }
+
     func testCurrentSubscription_Drive2022_12() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.drive2022.plan.updated(cycle: 12),
@@ -717,12 +1149,32 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
+    func testCurrentDynamicSubscription_Drive2022_12() async {
+        await withFeatureFlags([.dynamicPlans]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.DynamicPlans.drive2022.updated(cycle: 1, cycleDescription: "every year",
+                                                                      currency: "USD", amount: 4788),
+                clientApp: .drive
+            )
+        }
+    }
+
     func testCurrentSubscription_Drive2022_24() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.drive2022.plan.updated(cycle: 24),
             paymentMethods: existingPaymentsMethods,
             clientApp: .drive
         )
+    }
+
+    func testCurrentDynamicSubscription_Drive2022_24() async {
+        await withFeatureFlags([.dynamicPlans]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.DynamicPlans.drive2022.updated(cycle: 1, cycleDescription: "every 2 years",
+                                                                      currency: "USD", amount: 8376),
+                clientApp: .drive
+            )
+        }
     }
 
     // pass2023
@@ -960,11 +1412,11 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testUpdateSubscription_Free_ImaginaryOffer() async {
+    func testUpdateSubscription_Free_ArbitraryOffer() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: nil,
             paymentMethods: .empty,
-            clientApp: .other(named: "imaginaryOffer")
+            clientApp: .other(named: "arbitraryOffer")
         )
     }
 
@@ -1309,13 +1761,20 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                                   clientApp: ClientApp,
                                                   customPlansDescription: CustomPlansDescription = [:],
                                                   record: Bool = false) async {
-        await snapshotSubscriptionScreen(mode: .signup,
-                                         currentSubscriptionPlan: nil,
-                                         paymentMethods: .empty,
-                                         name: name,
-                                         clientApp: clientApp,
-                                         customPlansDescription: customPlansDescription,
-                                         record: record)
+        if try! await FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+            await snapshotDynamicPlanSubscriptionScreen(mode: .signup,
+                                                        name: name,
+                                                        clientApp: clientApp,
+                                                        record: record)
+        } else {
+            await snapshotSubscriptionScreen(mode: .signup,
+                                             currentSubscriptionPlan: nil,
+                                             paymentMethods: .empty,
+                                             name: name,
+                                             clientApp: clientApp,
+                                             customPlansDescription: customPlansDescription,
+                                             record: record)
+        }
     }
 
     func testSignupSubscription_Mail() async {
@@ -1338,14 +1797,42 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await snapshotSignupSubscriptionScreen(clientApp: .pass)
     }
 
-    func testSignupSubscription_Free_ImaginaryOffer() async {
+    func testSignupSubscription_Free_ArbitraryOffer() async {
         await snapshotSignupSubscriptionScreen(
-            clientApp: .other(named: "imaginaryOffer")
+            clientApp: .other(named: "arbitraryOffer")
         )
     }
 
     func testSignupSubscription_CustomDescription() async {
         await snapshotSignupSubscriptionScreen(clientApp: .pass, customPlansDescription: MockData.customPlansDescription)
+    }
+}
+
+extension CurrentPlan.Subscription.DescriptionEntitlement {
+    static func description(text: String, iconName: String = "") -> Self {
+        .init(type: "description", text: text, iconName: iconName)
+    }
+}
+
+extension CurrentPlan {
+    func updated(cycle: Int? = nil, cycleDescription: String? = nil, currency: String? = nil, amount: Int? = nil) -> CurrentPlan {
+        Self(subscriptions: self.subscriptions.map { $0.updated(cycle: cycle,
+                                                                cycleDescription: cycleDescription,
+                                                                currency: currency,
+                                                                amount: amount) })
+    }
+}
+
+extension CurrentPlan.Subscription {
+    func updated(cycle: Int?, cycleDescription: String?, currency: String?, amount: Int?) -> Self {
+        Self(title: self.title,
+             description: self.description,
+             cycleDescription: cycleDescription ?? self.cycleDescription,
+             cycle: cycle ?? self.cycle,
+             currency: currency ?? self.currency,
+             amount: amount ?? self.amount,
+             periodEnd: self.periodEnd,
+             entitlements: self.entitlements)
     }
 }
 
