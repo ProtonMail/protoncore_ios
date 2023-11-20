@@ -189,23 +189,16 @@ class PaymentsUIViewModel {
         switch mode {
         case .signup:
             try await fetchAvailablePlans()
+            footerType = .disabled
         case .current:
             try await fetchCurrentPlan()
             try await fetchAvailablePlans()
             try await fetchPaymentMethods()
+            footerType = .withoutPlansToBuy
         case .update:
             try await fetchAvailablePlans()
             try await fetchPaymentMethods()
             footerType = .withPlansToBuy
-        }
-        setFooterType()
-    }
-
-    private func setFooterType() {
-        if !(availablePlans?.isEmpty ?? true) {
-            footerType = .withPlansToBuy
-        } else {
-            footerType = .withoutPlansToBuy
         }
     }
 
