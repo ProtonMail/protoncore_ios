@@ -1623,7 +1623,54 @@ final class PaymentsUIViewModelTests: XCTestCase {
 
     // MARK: - fetchPlans
 
-    func test_fetchPlans_setFooter_withPlansToBuy() async throws {
+    func test_fetchPlans_forUpdateMode_setFooter_withPlansToBuy() async throws {
+        try await withFeatureFlags([.dynamicPlans]) {
+            // Given
+            let storeKitManager = StoreKitManagerMock()
+            storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+            let sut = PaymentsUIViewModel(
+                mode: .update,
+                storeKitManager: storeKitManager,
+                planService: .right(plansDataSource),
+                clientApp: .mail,
+                customPlansDescription: [:],
+                planRefreshHandler: { _ in XCTFail() },
+                extendSubscriptionHandler: { XCTFail() }
+            )
+
+            // When
+            try await sut.fetchPlans()
+
+            // Then
+            XCTAssertEqual(sut.footerType, .withPlansToBuy)
+        }
+    }
+
+
+    func test_fetchPlans_forSignupMode_setFooter_disabled() async throws {
+        try await withFeatureFlags([.dynamicPlans]) {
+            // Given
+            let storeKitManager = StoreKitManagerMock()
+            storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+            let sut = PaymentsUIViewModel(
+                mode: .signup,
+                storeKitManager: storeKitManager,
+                planService: .right(plansDataSource),
+                clientApp: .mail,
+                customPlansDescription: [:],
+                planRefreshHandler: { _ in XCTFail() },
+                extendSubscriptionHandler: { XCTFail() }
+            )
+
+            // When
+            try await sut.fetchPlans()
+
+            // Then
+            XCTAssertEqual(sut.footerType, .disabled)
+        }
+    }
+
+    func test_fetchPlans_forCurrentMode_setFooter_withoutPlansToBuy() async throws {
         try await withFeatureFlags([.dynamicPlans]) {
             // Given
             let storeKitManager = StoreKitManagerMock()
@@ -1642,7 +1689,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
             try await sut.fetchPlans()
 
             // Then
-            XCTAssertEqual(sut.footerType, .withPlansToBuy)
+            XCTAssertEqual(sut.footerType, .withoutPlansToBuy)
         }
     }
 }
