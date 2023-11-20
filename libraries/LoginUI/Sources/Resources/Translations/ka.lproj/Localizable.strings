@@ -188,8 +188,6 @@
 
 "Password can not be empty.\nPlease try again." = "პაროლი ცარიელი ვერ იქნება.\nთავიდან სცადეთ.";
 
-"Password must contain at least %@ characters." = "პაროლი %@ სიმბოლოს მაინც უნდა შეიცავდეს.";
-
 "Passwords do not match.\nPlease try again." = "პაროლები არ ემთხვევა.\nთავიდან სცადეთ.";
 
 "Email address already used." = "ელფოსტის მისამართი უკვე გამოიყენება.";

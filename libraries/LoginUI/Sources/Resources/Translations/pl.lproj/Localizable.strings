@@ -188,8 +188,6 @@
 
 "Password can not be empty.\nPlease try again." = "Hasło nie może być puste.\nSpróbuj ponownie.";
 
-"Password must contain at least %@ characters." = "Password must contain at least %@ characters.";
-
 "Passwords do not match.\nPlease try again." = "Hasła nie pasują do siebie.\nSpróbuj ponownie.";
 
 "Email address already used." = "Adres e-mail został już wykorzystany.";

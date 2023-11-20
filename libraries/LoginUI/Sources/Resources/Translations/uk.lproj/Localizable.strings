@@ -188,8 +188,6 @@
 
 "Password can not be empty.\nPlease try again." = "Потрібно ввести пароль.\nБудь ласка, спробуйте знову.";
 
-"Password must contain at least %@ characters." = "Пароль повинен містити принаймні %@ символів.";
-
 "Passwords do not match.\nPlease try again." = "Паролі відрізняються.\nПовторіть спробу.";
 
 "Email address already used." = "Ця адреса вже використовується.";

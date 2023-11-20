@@ -188,8 +188,6 @@
 
 "Password can not be empty.\nPlease try again." = "密碼不能為空白。\n請再試一次。";
 
-"Password must contain at least %@ characters." = "密碼必須包含至少 %@ 個字元。";
-
 "Passwords do not match.\nPlease try again." = "密碼不同。\n請再試一次。";
 
 "Email address already used." = "電子郵件已被使用。";

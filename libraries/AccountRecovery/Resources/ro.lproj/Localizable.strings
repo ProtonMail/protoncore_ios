@@ -4,18 +4,18 @@
 
 "Grace_View_Title" = "Doriți să vă resetați parola?";
 
-"Grace_View_line1" = "We received a request to reset your password for ";
+"Grace_View_line1" = "Am primit o cerere de resetare a parolei pentru ";
 
-"Insecure_View_line1" = "You can now change your password for the account ";
+"Insecure_View_line1" = "Acum vă puteți reseta parola pentru contul ";
 
-"Insecure_View_line2" = " freely during ";
+"Insecure_View_line2" = " timp de ";
 
-"Insecure_View_line3" = "Please go the signed-in device (in the session where the request was initiated) to change your password.";
+"Insecure_View_line3" = "Accesați dispozitivul conectat (în sesiunea de unde a fost inițiată solicitarea) pentru a vă schimba parola.";
 
 "Grace_View_Cancel_Button_CTA" = "Anulare solicitare";
 
-"Grace_View_Undefined_Time_Left" = "a few hours";
+"Grace_View_Undefined_Time_Left" = "câteva ore";
 
-"Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+"Grace_View_line2" = ". Pentru a vă păstra contul în siguranță, trebuie să ne asigurăm sunteți titularul contului când încercați să vă resetați parola. Veți putea să vă resetați parola peste ";
 
 "Grace_View_line3" = "Dacă nu ați făcut această solicitare sau dacă nu mai aveți nevoie de ajutor pentru autentificare, anulați-o și luați măsuri pentru a vă securiza contul.";

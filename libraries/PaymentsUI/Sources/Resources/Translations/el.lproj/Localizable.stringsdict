@@ -13,9 +13,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d email alias</string>
+        <string>%d ψευδώνυμο ηλεκτρονικού ταχυδρομείου</string>
         <key>other</key>
-        <string>%d email aliases</string>
+        <string>%d ψευδώνυμα ηλεκτρονικού ταχυδρομείου</string>
       </dict>
     </dict>
     <key>&lt;n&gt; users</key>
@@ -29,9 +29,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d user</string>
+        <string>%d χρήστης</string>
         <key>other</key>
-        <string>%d users</string>
+        <string>%d χρήστες</string>
       </dict>
     </dict>
     <key>&lt;n&gt; email addresses</key>
@@ -45,9 +45,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d email address</string>
+        <string>%d διεύθυνση ηλεκτρονικού ταχυδρομείου</string>
         <key>other</key>
-        <string>%d email addresses</string>
+        <string>%d διευθύνσεις ηλεκτρονικού ταχυδρομείου</string>
       </dict>
     </dict>
     <key>&lt;n&gt; email addresses / user</key>
@@ -61,9 +61,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d email address / user</string>
+        <string>%d διεύθυνση ηλεκτρονικού ταχυδρομείου / χρήστη</string>
         <key>other</key>
-        <string>%d email addresses / user</string>
+        <string>%d διευθύνσεις ηλεκτρονικού ταχυδρομείου / χρήστη</string>
       </dict>
     </dict>
     <key>&lt;n&gt; calendars</key>
@@ -77,9 +77,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d calendar</string>
+        <string>%d ημερολόγιο</string>
         <key>other</key>
-        <string>%d calendars</string>
+        <string>%d ημερολόγια</string>
       </dict>
     </dict>
     <key>&lt;n&gt; folders / labels</key>
@@ -93,9 +93,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d folder / label</string>
+        <string>%d φάκελος / ετικέτα</string>
         <key>other</key>
-        <string>%d folders / labels</string>
+        <string>%d φάκελοι / ετικέτες</string>
       </dict>
     </dict>
     <key>&lt;n&gt; countries</key>
@@ -109,9 +109,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d country</string>
+        <string>%d χώρα</string>
         <key>other</key>
-        <string>%d countries</string>
+        <string>%d χώρες</string>
       </dict>
     </dict>
     <key>&lt;n&gt; connections</key>
@@ -125,9 +125,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d connection</string>
+        <string>%d σύνδεση</string>
         <key>other</key>
-        <string>%d connections</string>
+        <string>%d συνδέσεις</string>
       </dict>
     </dict>
     <key>&lt;n&gt; VPN connections</key>
@@ -141,9 +141,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d VPN connection</string>
+        <string>%d σύνδεση VPN</string>
         <key>other</key>
-        <string>%d VPN connections</string>
+        <string>%d συνδέσεις VPN</string>
       </dict>
     </dict>
     <key>&lt;n&gt; high-speed VPN connections</key>
@@ -157,9 +157,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d high-speed VPN connection</string>
+        <string>%d σύνδεση VPN υψηλής ταχύτητας</string>
         <key>other</key>
-        <string>%d high-speed VPN connections</string>
+        <string>%d συνδέσεις VPN υψηλής ταχύτητας</string>
       </dict>
     </dict>
     <key>&lt;n&gt; custom domains</key>
@@ -173,9 +173,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d custom domain</string>
+        <string>%d προσαρμοσμένος τομέας</string>
         <key>other</key>
-        <string>%d custom domains</string>
+        <string>%d προσαρμοσμένοι τομείς</string>
       </dict>
     </dict>
     <key>&lt;n&gt; vaults</key>
@@ -189,9 +189,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d vault</string>
+        <string>%d κρύπτη</string>
         <key>other</key>
-        <string>%d vaults</string>
+        <string>%d κρύπτες</string>
       </dict>
     </dict>
     <key>Support for &lt;n&gt; custom email domains</key>
@@ -205,9 +205,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Support for %d custom email domain</string>
+        <string>Υποστήριξη για %d παραμετροποιημένο τομέα ηλεκτρονικού ταχυδρομείου</string>
         <key>other</key>
-        <string>Support for %d custom email domains</string>
+        <string>Υποστήριξη για %d παραμετροποιημένους τομείς ηλεκτρονικού ταχυδρομείου</string>
       </dict>
     </dict>
     <key>&lt;n&gt; folders and labels</key>
@@ -221,9 +221,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d folder and label</string>
+        <string>%d φάκελος και ετικέτα</string>
         <key>other</key>
-        <string>%d folders and labels</string>
+        <string>%d φάκελοι και ετικέτες</string>
       </dict>
     </dict>
     <key>High-speed VPN on &lt;n&gt; devices</key>
@@ -237,15 +237,15 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>High-speed VPN on %d device</string>
+        <string>VPN υψηλής ταχύτητας σε %d συσκευή</string>
         <key>other</key>
-        <string>High-speed VPN on %d devices</string>
+        <string>VPN υψηλής ταχύτητας σε %d συσκευές</string>
       </dict>
     </dict>
     <key>&lt;n&gt;+ servers in &lt;m&gt; countries</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>%#@SERVERS@ in %#@COUNTRIES@</string>
+      <string>%#@SERVERS@ σε %#@COUNTRIES@</string>
       <key>SERVERS</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -253,9 +253,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d+ server</string>
+        <string>%d+ διακομιστής</string>
         <key>other</key>
-        <string>%d+ servers</string>
+        <string>%d+ διακομιστές</string>
       </dict>
       <key>COUNTRIES</key>
       <dict>
@@ -264,15 +264,15 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d country</string>
+        <string>%d χώρα</string>
         <key>other</key>
-        <string>%d countries</string>
+        <string>%d χώρες</string>
       </dict>
     </dict>
     <key>&lt;n&gt; servers in &lt;m&gt; countries (US, NL, JP)</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>%#@SERVERS@ in %#@COUNTRIES@</string>
+      <string>%#@SERVERS@ σε %#@COUNTRIES@</string>
       <key>SERVERS</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -280,9 +280,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d server</string>
+        <string>%d διακομιστής</string>
         <key>other</key>
-        <string>%d servers</string>
+        <string>%d διακομιστές</string>
       </dict>
       <key>COUNTRIES</key>
       <dict>
@@ -291,15 +291,15 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d country (US, NL, JP)</string>
+        <string>%d χώρα (US, NL, JP)</string>
         <key>other</key>
-        <string>%d countries (US, NL, JP)</string>
+        <string>%d χώρες (US, NL, JP)</string>
       </dict>
     </dict>
     <key>&lt;n&gt; of &lt;m&gt; users</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>%#@VARIABLE1@ of %#@VARIABLE2@</string>
+      <string>%#@VARIABLE1@ από %#@VARIABLE2@</string>
       <key>VARIABLE1</key>
       <dict>
         <key>one</key>
@@ -318,15 +318,15 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d user</string>
+        <string>%d χρήστης</string>
         <key>other</key>
-        <string>%d users</string>
+        <string>%d χρήστες</string>
       </dict>
     </dict>
     <key>&lt;n&gt; of &lt;m&gt; email addresses</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>%#@VARIABLE1@ of %#@VARIABLE2@</string>
+      <string>%#@VARIABLE1@ από %#@VARIABLE2@</string>
       <key>VARIABLE1</key>
       <dict>
         <key>one</key>
@@ -345,15 +345,15 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d email address</string>
+        <string>%d διεύθυνση ηλεκτρονικού ταχυδρομείου</string>
         <key>other</key>
-        <string>%d email addresses</string>
+        <string>%d διευθύνσεις ηλεκτρονικού ταχυδρομείου</string>
       </dict>
     </dict>
     <key>&lt;n&gt; of &lt;m&gt; calendars</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>%#@VARIABLE1@ of %#@VARIABLE2@</string>
+      <string>%#@VARIABLE1@ από %#@VARIABLE2@</string>
       <key>VARIABLE1</key>
       <dict>
         <key>one</key>
@@ -372,9 +372,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d calendar</string>
+        <string>%d ημερολόγιο</string>
         <key>other</key>
-        <string>%d calendars</string>
+        <string>%d ημερολόγια</string>
       </dict>
     </dict>
     <key>&lt;n&gt; addresses per user</key>
@@ -388,9 +388,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d address per user</string>
+        <string>%d διεύθυνση ανά χρήστη</string>
         <key>other</key>
-        <string>%d addresses per user</string>
+        <string>%d διευθύνσεις ανά χρήστη</string>
       </dict>
     </dict>
     <key>&lt;n&gt; calendars per user</key>
@@ -404,9 +404,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d calendar per user</string>
+        <string>%d ημερολόγιο ανά χρήστη</string>
         <key>other</key>
-        <string>%d calendars per user</string>
+        <string>%d ημερολόγια ανά χρήστη</string>
       </dict>
     </dict>
     <key>&lt;n&gt; VPN connections per user</key>
@@ -420,9 +420,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d VPN connection per user</string>
+        <string>%d σύνδεση VPN ανά χρήστη</string>
         <key>other</key>
-        <string>%d VPN connections per user</string>
+        <string>%d συνδέσεις VPN ανά χρήστη</string>
       </dict>
     </dict>
     <key>Pay for &lt;n&gt; months</key>
@@ -434,9 +434,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Pay for %d month</string>
+        <string>Πληρωμή για %d μήνα</string>
         <key>other</key>
-        <string>Pay for %d months</string>
+        <string>Πληρωμή για %d μήνες</string>
       </dict>
       <key>NSStringLocalizedFormatKey</key>
       <string>%#@VARIABLE@</string>
@@ -452,9 +452,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Medium VPN speed %d VPN connection</string>
+        <string>Μέτρια ταχύτητα VPN %d σύνδεση VPN</string>
         <key>other</key>
-        <string>Medium VPN speed %d VPN connections</string>
+        <string>Μέτρια ταχύτητα VPN %d συνδέσεις VPN</string>
       </dict>
     </dict>
     <key>Up to &lt;n&gt; forwarding mailboxes</key>
@@ -468,9 +468,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Up to %d forwarding mailbox</string>
+        <string>Έως και %d προωθούμενο γραμματοκιβώτιο</string>
         <key>other</key>
-        <string>Up to %d forwarding mailboxes</string>
+        <string>Έως και %d προωθούμενα γραμματοκιβώτια</string>
       </dict>
     </dict>
   </dict>

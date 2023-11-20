@@ -1,21 +1,21 @@
-"Settings_Item" = "Password reset";
+"Settings_Item" = "重置密码";
 
-"Insecure_View_Title" = "Reset your password";
+"Insecure_View_Title" = "重置您的密码";
 
-"Grace_View_Title" = "Do you want to reset your password?";
+"Grace_View_Title" = "您想要重置密码吗?";
 
-"Grace_View_line1" = "We received a request to reset your password for ";
+"Grace_View_line1" = "我们收到了重置密码的请求，原因是 ";
 
-"Insecure_View_line1" = "You can now change your password for the account ";
+"Insecure_View_line1" = "现在您可以修改账户密码 ";
 
-"Insecure_View_line2" = " freely during ";
+"Insecure_View_line2" = " 期间自由 ";
 
-"Insecure_View_line3" = "Please go the signed-in device (in the session where the request was initiated) to change your password.";
+"Insecure_View_line3" = "请前往已登录的设备（在发起请求的会话中）修改您的密码。";
 
-"Grace_View_Cancel_Button_CTA" = "Cancel request";
+"Grace_View_Cancel_Button_CTA" = "取消请求";
 
-"Grace_View_Undefined_Time_Left" = "a few hours";
+"Grace_View_Undefined_Time_Left" = "几个小时";
 
-"Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+"Grace_View_line2" = "为了确保您的账户安全，我们希望确保确实是您在尝试重置密码。您可以在以下位置重置您的密码 ";
 
-"Grace_View_line3" = "If you didn't make this request, or if you no longer need help signing in, please cancel it and take steps to secure your account.";
+"Grace_View_line3" = "如果您没有提出此请求，或者您不再需要登录方面的帮助，请取消该请求并采取措施保护您的账户。";

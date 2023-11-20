@@ -188,8 +188,6 @@
 
 "Password can not be empty.\nPlease try again." = "La contrasenya no es pot deixar buida.\nTorneu-ho a provar.";
 
-"Password must contain at least %@ characters." = "La contrasenya ha de tenir com a mínim %@ caràcters.";
-
 "Passwords do not match.\nPlease try again." = "Les contrasenyes no coincideixen.\nTorneu-ho a provar.";
 
 "Email address already used." = "L'adreça de correu electrònic ja està en ús.";
