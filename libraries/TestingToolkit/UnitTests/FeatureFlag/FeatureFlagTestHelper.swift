@@ -54,7 +54,6 @@ extension XCTestCase {
         let currentLocalDataSource = FeatureFlagsRepository.shared.localDatasource
         let currentUserId = FeatureFlagsRepository.shared.userId.value
 
-
         let testUserId = "testUserId"
         let userDefaults = UserDefaults(suiteName: "withFeatureFlagsAsync")!
         userDefaults.setEncodableValue([testUserId: FeatureFlags(flags: flags)], forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
