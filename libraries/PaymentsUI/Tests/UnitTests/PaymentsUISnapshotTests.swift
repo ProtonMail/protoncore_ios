@@ -359,8 +359,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                                      min: 0, max: 10, current: 4)),
                                      .description(.description(text: "1 GB total storage", iconName: "disk")),
                                      .description(.description(text: "1 free email address", iconName: "mail")),
-                                     .description(.description(text: "150 messages per day", iconName: "mail"))]
-            )
+                                     .description(.description(text: "150 messages per day", iconName: "mail"))
+                                    ])
+            ])
             static let vpnFree: CurrentPlan = .init(subscriptions: [
                 .init(title: "VPN Free",
                       description: "High-speed Swiss VPN that protects your privacy",
@@ -368,8 +369,8 @@ final class PaymentsUISnapshotTests: XCTestCase {
                       entitlements: [.description(.description(text: "249 servers in 5 countries", iconName: "servers")),
                                      .description(.description(text: "No ads", iconName: "rocket")),
                                      .description(.description(text: "Unlimited volume/bandwidth", iconName: "infinite"))
-                      ]
-            )
+                      ])
+            ])
             static let passFree: CurrentPlan = .init(subscriptions: [
                 .init(title: "Pass Free",
                       description: "Encrypted password manager that also protects your identity",
