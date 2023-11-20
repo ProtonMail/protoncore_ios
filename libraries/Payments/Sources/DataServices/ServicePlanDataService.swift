@@ -25,6 +25,7 @@ import ProtonCoreFeatureFlags
 import ProtonCoreLog
 import ProtonCoreServices
 
+// Static plan data service
 public protocol ServicePlanDataServiceProtocol: Service, AnyObject {
 
     var isIAPAvailable: Bool { get }

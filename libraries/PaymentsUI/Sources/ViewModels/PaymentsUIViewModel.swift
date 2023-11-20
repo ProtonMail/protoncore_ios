@@ -60,7 +60,7 @@ class PaymentsUIViewModel {
     }
 
     private var plansDataSource: PlansDataSourceProtocol? {
-        guard FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan), case .right(let plansDataSource) = planService else {
+        guard isDynamicPlansEnabled, case .right(let plansDataSource) = planService else {
             assertionFailure("Dynamic plans must use the PlansDataSourceProtocol object")
             return nil
         }
@@ -95,7 +95,7 @@ class PaymentsUIViewModel {
          ].filter { !$0.isEmpty }
     }
     private (set) var availablePlans: [AvailablePlansPresentation]?
-    private (set) var currentPlan: CurrentPlanPresentation?
+    var currentPlan: CurrentPlanPresentation?
 
     var defaultCycle: Int? {
         switch planService {

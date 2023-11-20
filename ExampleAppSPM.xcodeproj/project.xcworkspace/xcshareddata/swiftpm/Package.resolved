@@ -1,15 +1,6 @@
 {
   "pins" : [
     {
-      "identity" : "apple-fusion",
-      "kind" : "remoteSourceControl",
-      "location" : "git@gitlab.protontech.ch:tpe/apple-fusion.git",
-      "state" : {
-        "revision" : "cd3db46940c5d64beb616f0a080ff65a920dd5fa",
-        "version" : "2.0.1"
-      }
-    },
-    {
       "identity" : "asn1swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/tikhop/ASN1Swift",
