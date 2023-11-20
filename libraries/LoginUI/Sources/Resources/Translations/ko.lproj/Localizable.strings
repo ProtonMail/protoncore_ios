@@ -188,8 +188,6 @@
 
 "Password can not be empty.\nPlease try again." = "비밀번호는 비울 수 없습니다.\n다시 시도해 주세요.";
 
-"Password must contain at least %@ characters." = "비밀번호는 최소 %@자 이상이어야 합니다.";
-
 "Passwords do not match.\nPlease try again." = "비밀번호가 일치하지 않습니다.\n다시 시도해주세요.";
 
 "Email address already used." = "이 이메일 주소는 이미 사용되었습니다.";

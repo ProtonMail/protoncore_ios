@@ -188,8 +188,6 @@
 
 "Password can not be empty.\nPlease try again." = "Parola boş olamaz.\nLütfen yeniden deneyin.";
 
-"Password must contain at least %@ characters." = "Parola en az %@ karakter uzunluğunda olmalıdır.";
-
 "Passwords do not match.\nPlease try again." = "Parola ile onayı aynı değil.\nLütfen yeniden deneyin.";
 
 "Email address already used." = "E-posta adresi zaten kullanılıyor.";

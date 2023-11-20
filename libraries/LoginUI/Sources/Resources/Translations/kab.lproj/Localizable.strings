@@ -188,8 +188,6 @@
 
 "Password can not be empty.\nPlease try again." = "Awal uffir ur ilaq ara ad yili d ilem.\nTtxil-k ɛreḍ tikkelt niḍen.";
 
-"Password must contain at least %@ characters." = "Awal uffir ilaq ad isɛu ma drus %@ n yisekkilen.";
-
 "Passwords do not match.\nPlease try again." = "Awalen uffiren ur mṣadan ara.\nTtxil-k ɛreḍ tikkelt niḍen";
 
 "Email address already used." = "Tans-a n yimayl tettuseqdec yakan.";

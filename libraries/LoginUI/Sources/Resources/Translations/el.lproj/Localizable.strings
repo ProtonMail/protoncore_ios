@@ -188,8 +188,6 @@
 
 "Password can not be empty.\nPlease try again." = "Ο κωδικός πρόσβασης δεν μπορεί να είναι κενός.\nΠαρακαλούμε προσπαθήστε ξανά.";
 
-"Password must contain at least %@ characters." = "Ο κωδικός πρόσβασης πρέπει να περιέχει τουλάχιστον %@ χαρακτήρες.";
-
 "Passwords do not match.\nPlease try again." = "Οι κωδικοί πρόσβασης δεν ταιριάζουν.\nΠαρακαλούμε προσπαθήστε ξανά.";
 
 "Email address already used." = "Το e-mail χρησιμοποιείται ήδη.";

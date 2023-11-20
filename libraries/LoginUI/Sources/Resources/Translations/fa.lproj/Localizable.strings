@@ -188,8 +188,6 @@
 
 "Password can not be empty.\nPlease try again." = "گذرواژه نمیتواند خالی باشد. \nلطفا دوباره تلاش کنید.";
 
-"Password must contain at least %@ characters." = "گذرواژه باید حداقل %@ نویسه داشته باشد.";
-
 "Passwords do not match.\nPlease try again." = "گذرواژه ها یکسان نیستند. \nلطفا دوباره تلاش کنید.";
 
 "Email address already used." = "این رایانامه پیشتر استفاده شده است.";

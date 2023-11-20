@@ -13,9 +13,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d email alias</string>
+        <string>%d alias ​​de e-mail</string>
         <key>other</key>
-        <string>%d email aliases</string>
+        <string>%d aliases de e-mail</string>
       </dict>
     </dict>
     <key>&lt;n&gt; users</key>
@@ -468,9 +468,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Up to %d forwarding mailbox</string>
+        <string>Até %d endereço de encaminhamento</string>
         <key>other</key>
-        <string>Up to %d forwarding mailboxes</string>
+        <string>Até %d endereços de encaminhamento</string>
       </dict>
     </dict>
   </dict>

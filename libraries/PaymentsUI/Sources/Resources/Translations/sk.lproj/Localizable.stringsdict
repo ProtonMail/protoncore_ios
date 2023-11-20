@@ -13,13 +13,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d email alias</string>
+        <string>%d emailový alias</string>
         <key>few</key>
-        <string>%d email aliases</string>
+        <string>%d emailové aliasy</string>
         <key>many</key>
-        <string>%d email aliases</string>
+        <string>%d emailových aliasov</string>
         <key>other</key>
-        <string>%d email aliases</string>
+        <string>%d emailových aliasov</string>
       </dict>
     </dict>
     <key>&lt;n&gt; users</key>
@@ -33,13 +33,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d user</string>
+        <string>%d používateľ</string>
         <key>few</key>
-        <string>%d users</string>
+        <string>%d používatelia</string>
         <key>many</key>
-        <string>%d users</string>
+        <string>%d používateľov</string>
         <key>other</key>
-        <string>%d users</string>
+        <string>%d používateľov</string>
       </dict>
     </dict>
     <key>&lt;n&gt; email addresses</key>
@@ -53,13 +53,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d email address</string>
+        <string>%d emailová adresa</string>
         <key>few</key>
-        <string>%d email addresses</string>
+        <string>%d emailové adresy</string>
         <key>many</key>
-        <string>%d email addresses</string>
+        <string>%d emailových adries</string>
         <key>other</key>
-        <string>%d email addresses</string>
+        <string>%d emailových adries</string>
       </dict>
     </dict>
     <key>&lt;n&gt; email addresses / user</key>
@@ -73,13 +73,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d email address / user</string>
+        <string>%d emailová adresa / používateľa</string>
         <key>few</key>
-        <string>%d email addresses / user</string>
+        <string>%d emailové adresy / používateľa</string>
         <key>many</key>
-        <string>%d email addresses / user</string>
+        <string>%d emailových adries / používateľa</string>
         <key>other</key>
-        <string>%d email addresses / user</string>
+        <string>%d emailových adries / používateľa</string>
       </dict>
     </dict>
     <key>&lt;n&gt; calendars</key>
@@ -93,13 +93,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d calendar</string>
+        <string>%d kalendár</string>
         <key>few</key>
-        <string>%d calendars</string>
+        <string>%d kalendáre</string>
         <key>many</key>
-        <string>%d calendars</string>
+        <string>%d kalendárov</string>
         <key>other</key>
-        <string>%d calendars</string>
+        <string>%d kalendárov</string>
       </dict>
     </dict>
     <key>&lt;n&gt; folders / labels</key>
@@ -113,13 +113,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d folder / label</string>
+        <string>%d priečinok / štítok</string>
         <key>few</key>
-        <string>%d folders / labels</string>
+        <string>%d priečinky / štítky</string>
         <key>many</key>
-        <string>%d folders / labels</string>
+        <string>%d priečinkov / štítkov</string>
         <key>other</key>
-        <string>%d folders / labels</string>
+        <string>%d priečinkov / štítkov</string>
       </dict>
     </dict>
     <key>&lt;n&gt; countries</key>
@@ -133,13 +133,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d country</string>
+        <string>%d krajina</string>
         <key>few</key>
-        <string>%d countries</string>
+        <string>%d krajiny</string>
         <key>many</key>
-        <string>%d countries</string>
+        <string>%d krajín</string>
         <key>other</key>
-        <string>%d countries</string>
+        <string>%d krajín</string>
       </dict>
     </dict>
     <key>&lt;n&gt; connections</key>
@@ -153,13 +153,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d connection</string>
+        <string>%d pripojenie</string>
         <key>few</key>
-        <string>%d connections</string>
+        <string>%d pripojenia</string>
         <key>many</key>
-        <string>%d connections</string>
+        <string>%d pripojení</string>
         <key>other</key>
-        <string>%d connections</string>
+        <string>%d pripojení</string>
       </dict>
     </dict>
     <key>&lt;n&gt; VPN connections</key>
@@ -173,13 +173,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d VPN connection</string>
+        <string>%d VPN pripojenie</string>
         <key>few</key>
-        <string>%d VPN connections</string>
+        <string>%d VPN pripojenia</string>
         <key>many</key>
-        <string>%d VPN connections</string>
+        <string>%d VPN pripojení</string>
         <key>other</key>
-        <string>%d VPN connections</string>
+        <string>%d VPN pripojení</string>
       </dict>
     </dict>
     <key>&lt;n&gt; high-speed VPN connections</key>
@@ -193,13 +193,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d high-speed VPN connection</string>
+        <string>%d vysoko rýchlostné VPN pripojenie</string>
         <key>few</key>
-        <string>%d high-speed VPN connections</string>
+        <string>%d vysoko rýchlostné VPN pripojenia</string>
         <key>many</key>
-        <string>%d high-speed VPN connections</string>
+        <string>%d vysoko rýchlostných VPN pripojení</string>
         <key>other</key>
-        <string>%d high-speed VPN connections</string>
+        <string>%d vysoko rýchlostných VPN pripojení</string>
       </dict>
     </dict>
     <key>&lt;n&gt; custom domains</key>
@@ -213,13 +213,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d custom domain</string>
+        <string>%d vlastná doména</string>
         <key>few</key>
-        <string>%d custom domains</string>
+        <string>%d vlastné domény</string>
         <key>many</key>
-        <string>%d custom domains</string>
+        <string>%d vlastných domén</string>
         <key>other</key>
-        <string>%d custom domains</string>
+        <string>%d vlastných domén</string>
       </dict>
     </dict>
     <key>&lt;n&gt; vaults</key>
@@ -233,13 +233,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d vault</string>
+        <string>%d trezor</string>
         <key>few</key>
-        <string>%d vaults</string>
+        <string>%d trezory</string>
         <key>many</key>
-        <string>%d vaults</string>
+        <string>%d trezorov</string>
         <key>other</key>
-        <string>%d vaults</string>
+        <string>%d trezorov</string>
       </dict>
     </dict>
     <key>Support for &lt;n&gt; custom email domains</key>
@@ -253,13 +253,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Support for %d custom email domain</string>
+        <string>Podpora pre %d vlastnú emailovú doménu</string>
         <key>few</key>
-        <string>Support for %d custom email domains</string>
+        <string>Podpora pre %d vlastné emailové domény</string>
         <key>many</key>
-        <string>Support for %d custom email domains</string>
+        <string>Podpora pre %d vlastných emailových domén</string>
         <key>other</key>
-        <string>Support for %d custom email domains</string>
+        <string>Podpora pre %d vlastných emailových domén</string>
       </dict>
     </dict>
     <key>&lt;n&gt; folders and labels</key>
@@ -273,13 +273,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d folder and label</string>
+        <string>%d priečinok a štítok</string>
         <key>few</key>
-        <string>%d folders and labels</string>
+        <string>%d priečinky a štítky</string>
         <key>many</key>
-        <string>%d folders and labels</string>
+        <string>%d priečinkov a štítkov</string>
         <key>other</key>
-        <string>%d folders and labels</string>
+        <string>%d priečinkov a štítkov</string>
       </dict>
     </dict>
     <key>High-speed VPN on &lt;n&gt; devices</key>
@@ -293,19 +293,19 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>High-speed VPN on %d device</string>
+        <string>Vysoko rýchlostná sieť VPN na %d zariadení</string>
         <key>few</key>
-        <string>High-speed VPN on %d devices</string>
+        <string>Vysoko rýchlostná sieť VPN na %d zariadeniach</string>
         <key>many</key>
-        <string>High-speed VPN on %d devices</string>
+        <string>Vysoko rýchlostná sieť VPN na %d zariadeniach</string>
         <key>other</key>
-        <string>High-speed VPN on %d devices</string>
+        <string>Vysoko rýchlostná sieť VPN na %d zariadeniach</string>
       </dict>
     </dict>
     <key>&lt;n&gt;+ servers in &lt;m&gt; countries</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>%#@SERVERS@ in %#@COUNTRIES@</string>
+      <string>%#@SERVERS@ v %#@COUNTRIES@</string>
       <key>SERVERS</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -315,11 +315,11 @@
         <key>one</key>
         <string>%d+ server</string>
         <key>few</key>
-        <string>%d+ servers</string>
+        <string>%d+ servery</string>
         <key>many</key>
-        <string>%d+ servers</string>
+        <string>%d+ serverov</string>
         <key>other</key>
-        <string>%d+ servers</string>
+        <string>%d+ serverov</string>
       </dict>
       <key>COUNTRIES</key>
       <dict>
@@ -328,19 +328,19 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d country</string>
+        <string>%d krajina</string>
         <key>few</key>
-        <string>%d countries</string>
+        <string>%d krajiny</string>
         <key>many</key>
-        <string>%d countries</string>
+        <string>%d krajín</string>
         <key>other</key>
-        <string>%d countries</string>
+        <string>%d krajín</string>
       </dict>
     </dict>
     <key>&lt;n&gt; servers in &lt;m&gt; countries (US, NL, JP)</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>%#@SERVERS@ in %#@COUNTRIES@</string>
+      <string>%#@SERVERS@ v %#@COUNTRIES@</string>
       <key>SERVERS</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -350,11 +350,11 @@
         <key>one</key>
         <string>%d server</string>
         <key>few</key>
-        <string>%d servers</string>
+        <string>%d servery</string>
         <key>many</key>
-        <string>%d servers</string>
+        <string>%d serverov</string>
         <key>other</key>
-        <string>%d servers</string>
+        <string>%d serverov</string>
       </dict>
       <key>COUNTRIES</key>
       <dict>
@@ -363,19 +363,19 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d country (US, NL, JP)</string>
+        <string>%d krajina (US, NL, JP)</string>
         <key>few</key>
-        <string>%d countries (US, NL, JP)</string>
+        <string>%d krajiny (US, NL, JP)</string>
         <key>many</key>
-        <string>%d countries (US, NL, JP)</string>
+        <string>%d krajín (US, NL, JP)</string>
         <key>other</key>
-        <string>%d countries (US, NL, JP)</string>
+        <string>%d krajín (US, NL, JP)</string>
       </dict>
     </dict>
     <key>&lt;n&gt; of &lt;m&gt; users</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>%#@VARIABLE1@ of %#@VARIABLE2@</string>
+      <string>%#@VARIABLE1@ z %#@VARIABLE2@</string>
       <key>VARIABLE1</key>
       <dict>
         <key>one</key>
@@ -398,19 +398,19 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d user</string>
+        <string>%d používateľ</string>
         <key>few</key>
-        <string>%d users</string>
+        <string>%d používatelia</string>
         <key>many</key>
-        <string>%d users</string>
+        <string>%d používateľov</string>
         <key>other</key>
-        <string>%d users</string>
+        <string>%d používateľov</string>
       </dict>
     </dict>
     <key>&lt;n&gt; of &lt;m&gt; email addresses</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>%#@VARIABLE1@ of %#@VARIABLE2@</string>
+      <string>%#@VARIABLE1@ z %#@VARIABLE2@</string>
       <key>VARIABLE1</key>
       <dict>
         <key>one</key>
@@ -433,19 +433,19 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d email address</string>
+        <string>%d emailová adresa</string>
         <key>few</key>
-        <string>%d email addresses</string>
+        <string>%d emailové adresy</string>
         <key>many</key>
-        <string>%d email addresses</string>
+        <string>%d emailových adries</string>
         <key>other</key>
-        <string>%d email addresses</string>
+        <string>%d emailových adries</string>
       </dict>
     </dict>
     <key>&lt;n&gt; of &lt;m&gt; calendars</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>%#@VARIABLE1@ of %#@VARIABLE2@</string>
+      <string>%#@VARIABLE1@ z %#@VARIABLE2@</string>
       <key>VARIABLE1</key>
       <dict>
         <key>one</key>
@@ -468,13 +468,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d calendar</string>
+        <string>%d kalendár</string>
         <key>few</key>
-        <string>%d calendars</string>
+        <string>%d kalendáre</string>
         <key>many</key>
-        <string>%d calendars</string>
+        <string>%d kalendárov</string>
         <key>other</key>
-        <string>%d calendars</string>
+        <string>%d kalendárov</string>
       </dict>
     </dict>
     <key>&lt;n&gt; addresses per user</key>
@@ -488,13 +488,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d address per user</string>
+        <string>%d emailová adresa na používateľa</string>
         <key>few</key>
-        <string>%d addresses per user</string>
+        <string>%d emailové adresy na používateľa</string>
         <key>many</key>
-        <string>%d addresses per user</string>
+        <string>%d emailových adries na používateľa</string>
         <key>other</key>
-        <string>%d addresses per user</string>
+        <string>%d emailových adries na používateľa</string>
       </dict>
     </dict>
     <key>&lt;n&gt; calendars per user</key>
@@ -508,13 +508,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d calendar per user</string>
+        <string>%d kalendár na používateľa</string>
         <key>few</key>
-        <string>%d calendars per user</string>
+        <string>%d kalendáre na používateľa</string>
         <key>many</key>
-        <string>%d calendars per user</string>
+        <string>%d kalendárov na používateľa</string>
         <key>other</key>
-        <string>%d calendars per user</string>
+        <string>%d kalendárov na používateľa</string>
       </dict>
     </dict>
     <key>&lt;n&gt; VPN connections per user</key>
@@ -528,13 +528,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d VPN connection per user</string>
+        <string>%d VPN pripojenie na používateľa</string>
         <key>few</key>
-        <string>%d VPN connections per user</string>
+        <string>%d VPN pripojenia na používateľa</string>
         <key>many</key>
-        <string>%d VPN connections per user</string>
+        <string>%d VPN pripojení na používateľa</string>
         <key>other</key>
-        <string>%d VPN connections per user</string>
+        <string>%d VPN pripojení na používateľa</string>
       </dict>
     </dict>
     <key>Pay for &lt;n&gt; months</key>
@@ -546,13 +546,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Pay for %d month</string>
+        <string>Platba za %d mesiac</string>
         <key>few</key>
-        <string>Pay for %d months</string>
+        <string>Platba za %d mesiace</string>
         <key>many</key>
-        <string>Pay for %d months</string>
+        <string>Platba za %d mesiacov</string>
         <key>other</key>
-        <string>Pay for %d months</string>
+        <string>Platba za %d mesiacov</string>
       </dict>
       <key>NSStringLocalizedFormatKey</key>
       <string>%#@VARIABLE@</string>
@@ -568,13 +568,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Medium VPN speed %d VPN connection</string>
+        <string>Stredná rýchlosť VPN %d VPN pripojenie</string>
         <key>few</key>
-        <string>Medium VPN speed %d VPN connections</string>
+        <string>Stredná rýchlosť VPN %d VPN pripojenia</string>
         <key>many</key>
-        <string>Medium VPN speed %d VPN connections</string>
+        <string>Stredná rýchlosť VPN %d VPN pripojení</string>
         <key>other</key>
-        <string>Medium VPN speed %d VPN connections</string>
+        <string>Stredná rýchlosť VPN %d VPN pripojení</string>
       </dict>
     </dict>
     <key>Up to &lt;n&gt; forwarding mailboxes</key>
@@ -588,13 +588,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Up to %d forwarding mailbox</string>
+        <string>%d presmerovaná poštová schránka</string>
         <key>few</key>
-        <string>Up to %d forwarding mailboxes</string>
+        <string>Až %d presmerované poštové schránky</string>
         <key>many</key>
-        <string>Up to %d forwarding mailboxes</string>
+        <string>Až %d presmerovaných poštových schránok</string>
         <key>other</key>
-        <string>Up to %d forwarding mailboxes</string>
+        <string>Až %d presmerovaných poštových schránok</string>
       </dict>
     </dict>
   </dict>

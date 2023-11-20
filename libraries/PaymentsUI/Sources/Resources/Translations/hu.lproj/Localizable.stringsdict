@@ -61,9 +61,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d email address / user</string>
+        <string>%d e-mail cím felhasználónként</string>
         <key>other</key>
-        <string>%d email addresses / user</string>
+        <string>%d e-mail cím felhasználónként</string>
       </dict>
     </dict>
     <key>&lt;n&gt; calendars</key>
@@ -77,9 +77,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d calendar</string>
+        <string>%d naptár</string>
         <key>other</key>
-        <string>%d calendars</string>
+        <string>%d naptár</string>
       </dict>
     </dict>
     <key>&lt;n&gt; folders / labels</key>
@@ -93,9 +93,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d folder / label</string>
+        <string>%d mappa és címke</string>
         <key>other</key>
-        <string>%d folders / labels</string>
+        <string>%d mappa és címke</string>
       </dict>
     </dict>
     <key>&lt;n&gt; countries</key>
@@ -109,7 +109,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d country</string>
+        <string>%d országban</string>
         <key>other</key>
         <string>%d countries</string>
       </dict>
@@ -141,9 +141,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d VPN connection</string>
+        <string>%d VPN kapcsolat</string>
         <key>other</key>
-        <string>%d VPN connections</string>
+        <string>%d VPN kapcsolat</string>
       </dict>
     </dict>
     <key>&lt;n&gt; high-speed VPN connections</key>
@@ -189,9 +189,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d vault</string>
+        <string>%d tároló</string>
         <key>other</key>
-        <string>%d vaults</string>
+        <string>%d tároló</string>
       </dict>
     </dict>
     <key>Support for &lt;n&gt; custom email domains</key>
@@ -237,9 +237,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>High-speed VPN on %d device</string>
+        <string>Nagysebességű VPN %d eszközön</string>
         <key>other</key>
-        <string>High-speed VPN on %d devices</string>
+        <string>Nagysebességű VPN %d eszközön</string>
       </dict>
     </dict>
     <key>&lt;n&gt;+ servers in &lt;m&gt; countries</key>
@@ -291,9 +291,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d country (US, NL, JP)</string>
+        <string>%d ország (US, NL, JP)</string>
         <key>other</key>
-        <string>%d countries (US, NL, JP)</string>
+        <string>%d ország (US, NL, JP)</string>
       </dict>
     </dict>
     <key>&lt;n&gt; of &lt;m&gt; users</key>
@@ -347,7 +347,7 @@
         <key>one</key>
         <string>%d e-mail cím</string>
         <key>other</key>
-        <string>%d email addresses</string>
+        <string>%d e-mail cím</string>
       </dict>
     </dict>
     <key>&lt;n&gt; of &lt;m&gt; calendars</key>
@@ -404,9 +404,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d calendar per user</string>
+        <string>%d naptár felhasználónként</string>
         <key>other</key>
-        <string>%d calendars per user</string>
+        <string>%d naptár felhasználónként</string>
       </dict>
     </dict>
     <key>&lt;n&gt; VPN connections per user</key>
@@ -420,9 +420,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d VPN connection per user</string>
+        <string>%d VPN kapcsolat felhasználónként</string>
         <key>other</key>
-        <string>%d VPN connections per user</string>
+        <string>%d VPN kapcsolat felhasználónként</string>
       </dict>
     </dict>
     <key>Pay for &lt;n&gt; months</key>
@@ -436,7 +436,7 @@
         <key>one</key>
         <string>Pay for %d month</string>
         <key>other</key>
-        <string>Pay for %d months</string>
+        <string>Fizetés %d hónapra</string>
       </dict>
       <key>NSStringLocalizedFormatKey</key>
       <string>%#@VARIABLE@</string>

@@ -188,8 +188,6 @@
 
 "Password can not be empty.\nPlease try again." = "Lösenord kan inte vara tomt.\nFörsök igen.";
 
-"Password must contain at least %@ characters." = "Lösenordet måste innehålla minst %@ tecken.";
-
 "Passwords do not match.\nPlease try again." = "Lösenorden matchar inte.\nFörsök igen.";
 
 "Email address already used." = "E-postadressen har redan använts.";

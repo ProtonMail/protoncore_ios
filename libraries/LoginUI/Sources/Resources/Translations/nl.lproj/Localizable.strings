@@ -188,8 +188,6 @@
 
 "Password can not be empty.\nPlease try again." = "Wachtwoord kan niet leeg zijn.\nProbeer opnieuw.";
 
-"Password must contain at least %@ characters." = "Wachtwoord moet ten minste %@ tekens bevatten.";
-
 "Passwords do not match.\nPlease try again." = "De wachtwoorden komen niet overeen.\nProbeer opnieuw.";
 
 "Email address already used." = "E-mailadres al in gebruik.";

@@ -93,7 +93,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d календар</string>
+        <string>%d каляндар</string>
         <key>few</key>
         <string>%d календары</string>
         <key>many</key>
@@ -328,13 +328,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d краіна</string>
+        <string>%d краіне</string>
         <key>few</key>
-        <string>%d краіны</string>
+        <string>%d краінах</string>
         <key>many</key>
-        <string>%d краін</string>
+        <string>%d краінах</string>
         <key>other</key>
-        <string>%d краін</string>
+        <string>%d краінах</string>
       </dict>
     </dict>
     <key>&lt;n&gt; servers in &lt;m&gt; countries (US, NL, JP)</key>

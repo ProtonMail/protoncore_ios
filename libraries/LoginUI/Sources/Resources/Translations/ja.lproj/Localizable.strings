@@ -188,8 +188,6 @@
 
 "Password can not be empty.\nPlease try again." = "パスワードを空にすることはできません。\n再度お試しください。";
 
-"Password must contain at least %@ characters." = "パスワードは %@ 文字以上必要です。";
-
 "Passwords do not match.\nPlease try again." = "パスワードが一致しません。\n再度お試しください。";
 
 "Email address already used." = "メールアドレスはすでに使用されています.";

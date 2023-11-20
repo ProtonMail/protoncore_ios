@@ -188,8 +188,6 @@
 
 "Password can not be empty.\nPlease try again." = "Heslo nemôže byť prázdne.\nSkúste to znova, prosím.";
 
-"Password must contain at least %@ characters." = "Heslo musí obsahovať aspoň %@ znakov.";
-
 "Passwords do not match.\nPlease try again." = "Heslá sa nezhodujú.\nSkúste to znova, prosím.";
 
 "Email address already used." = "Emailová adresa bola už použitá.";

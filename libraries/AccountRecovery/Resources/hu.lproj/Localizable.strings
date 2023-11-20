@@ -1,4 +1,4 @@
-"Settings_Item" = "Password reset";
+"Settings_Item" = "Jelszó visszaállítás";
 
 "Insecure_View_Title" = "Állítsa vissza a jelszavát";
 
@@ -10,9 +10,9 @@
 
 "Insecure_View_line2" = " freely during ";
 
-"Insecure_View_line3" = "Please go the signed-in device (in the session where the request was initiated) to change your password.";
+"Insecure_View_line3" = "A jelszó megváltoztatásához használja a bejelentkezett eszközt (abban a munkamenetben, ahol a kérés indult).";
 
-"Grace_View_Cancel_Button_CTA" = "Cancel request";
+"Grace_View_Cancel_Button_CTA" = "Kérelem törlése";
 
 "Grace_View_Undefined_Time_Left" = "a few hours";
 
