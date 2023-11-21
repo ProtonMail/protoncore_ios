@@ -33,9 +33,9 @@ extension AuthService {
     }
 
     struct ChildSessionRequest: Request {
-        
+
         private let selector: String
-        
+
         init(selector: String) {
             self.selector = selector
         }
@@ -43,15 +43,15 @@ extension AuthService {
         var path: String {
             return "/auth/v4/sessions/forks/\(selector)"
         }
-        
+
         var method: HTTPMethod {
             return .get
         }
-      
+
         var isAuth: Bool {
             return true
         }
-        
+
         var auth: AuthCredential?
         var authCredential: AuthCredential? {
             return self.auth

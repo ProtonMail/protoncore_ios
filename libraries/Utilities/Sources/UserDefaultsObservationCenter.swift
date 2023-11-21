@@ -23,7 +23,7 @@
 import Foundation
 
 public final class UserDefaultsObservationCenter {
-    
+
     private class Observation {
         weak var observer: AnyObject?
         let keyValueObservation: NSKeyValueObservation

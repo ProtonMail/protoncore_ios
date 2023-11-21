@@ -23,21 +23,21 @@ import Foundation
 import ProtonCoreNetworking
 
 extension AuthService {
-    
+
     public enum ForkSessionScenario {
         case forAccountDeletion
         case forChildClientID(String, independent: Bool)
     }
-    
+
     public struct ForkSessionResponse: APIDecodableResponse, Encodable, Equatable {
         public let selector: String
     }
 
     struct ForkSessionEndpoint: Request {
-        
+
         private let childClientId: String
         private let independent: Int
-        
+
         init(scenario: ForkSessionScenario) {
             switch scenario {
             case .forAccountDeletion:

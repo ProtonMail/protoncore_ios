@@ -62,11 +62,11 @@ public protocol AuthenticatorInterface {
     func forkSession(_ credential: Credential?,
                      scenario: AuthService.ForkSessionScenario,
                      completion: @escaping (Result<AuthService.ForkSessionResponse, AuthErrors>) -> Void)
-    
+
     func obtainChildSession(_ credential: Credential?,
                             selector: String,
                             completion: @escaping (Result<AuthService.ChildSessionResponse, AuthErrors>) -> Void)
-    
+
     func performForkingAndObtainChildSession(_ credential: Credential,
                                              scenario: AuthService.ForkSessionScenario,
                                              completion: @escaping (Result<Credential, AuthErrors>) -> Void)

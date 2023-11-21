@@ -306,7 +306,7 @@ public class Authenticator: NSObject, AuthenticatorInterface {
         }
         self.apiService.perform(request: route, decodableCompletion: mapError(completion))
     }
-    
+
     public func obtainChildSession(_ credential: Credential? = nil,
                                    selector: String,
                                    completion: @escaping (Result<AuthService.ChildSessionResponse, AuthErrors>) -> Void) {
@@ -316,7 +316,7 @@ public class Authenticator: NSObject, AuthenticatorInterface {
         }
         self.apiService.perform(request: route, decodableCompletion: mapError(completion))
     }
-    
+
     public func performForkingAndObtainChildSession(_ credential: Credential,
                                                     scenario: AuthService.ForkSessionScenario,
                                                     completion: @escaping (Result<Credential, AuthErrors>) -> Void) {
