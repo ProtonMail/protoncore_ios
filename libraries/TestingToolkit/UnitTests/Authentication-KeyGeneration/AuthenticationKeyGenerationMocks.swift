@@ -99,8 +99,23 @@ public struct AuthenticatorWithKeyGenerationMock: AuthenticatorInterface, Authen
 
     @FuncStub(Self.forkSession) public var forkSessionStub
     public func forkSession(_ credential: Credential?,
+                            scenario: AuthService.ForkSessionScenario,
                             completion: @escaping (Result<AuthService.ForkSessionResponse, AuthErrors>) -> Void) {
-        forkSessionStub(credential, completion)
+        forkSessionStub(credential, scenario, completion)
+    }
+
+    @FuncStub(Self.obtainChildSession) public var obtainChildSessionStub
+    public func obtainChildSession(_ credential: Credential?,
+                                   selector: String,
+                                   completion: @escaping (Result<AuthService.ChildSessionResponse, AuthErrors>) -> Void) {
+        obtainChildSessionStub(credential, selector, completion)
+    }
+
+    @FuncStub(Self.performForkingAndObtainChildSession) public var performForkingAndObtainChildSessionStub
+    public func performForkingAndObtainChildSession(_ credential: Credential,
+                                                    scenario: AuthService.ForkSessionScenario,
+                                                    completion: @escaping (Result<Credential, AuthErrors>) -> Void) {
+        performForkingAndObtainChildSessionStub(credential, scenario, completion)
     }
 
     @FuncStub(Self.closeSession) public var closeSessionStub
