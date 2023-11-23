@@ -39,9 +39,9 @@ enum FooterType: Equatable {
         }
     }
 
-    case withPlansToBuy
+    case withPlansToBuy // only used pre-Dynamic Plans
     case withoutPlansToBuy
-    case withExtendSubscriptionButton(PlanPresentation)
+    case withExtendSubscriptionButton(PlanPresentation) // only used pre-Dynamic Plans
     case disabled
 }
 
@@ -198,7 +198,7 @@ class PaymentsUIViewModel {
         case .update:
             try await fetchAvailablePlans()
             try await fetchPaymentMethods()
-            footerType = .withPlansToBuy
+            footerType = isDynamicPlansEnabled ? .disabled : .withPlansToBuy
         }
     }
 
@@ -257,7 +257,7 @@ class PaymentsUIViewModel {
         if localPlans.count > 0 {
             self.plans.append(localPlans)
         }
-        footerType = .withPlansToBuy
+        footerType = isDynamicPlansEnabled ? .disabled : .withPlansToBuy
         completionHandler?(.success((self.plans, footerType)))
     }
 
@@ -357,7 +357,11 @@ class PaymentsUIViewModel {
             if !plansToShow.isEmpty {
                 plans.append(plansToShow)
             }
-            footerType = plansToShow.isEmpty ? .withoutPlansToBuy : .withPlansToBuy
+            if isDynamicPlansEnabled {
+                footerType = .disabled
+            } else {
+                footerType = plansToShow.isEmpty ? .withoutPlansToBuy : .withPlansToBuy
+            }
             self.plans = plans
             completionHandler?(.success((self.plans, footerType)))
 
@@ -385,9 +389,11 @@ class PaymentsUIViewModel {
                 let isExtensionPlanAvailable = servicePlan.availablePlansDetails.first { $0.name == accountPlan.protonName } != nil
 
                 self.plans = plans
+                // `storeKitManager.canExtendSubscription` is never true with DynamicPlans enabled
                 if storeKitManager.canExtendSubscription, !servicePlan.hasPaymentMethods, isExtensionPlanAvailable, !servicePlan.willRenewAutomatically(plan: accountPlan) {
                     footerType = .withExtendSubscriptionButton(plan)
                 } else {
+                    // this is always the case when DynamicPlans is enabled
                     footerType = .withoutPlansToBuy
                 }
                 completionHandler?(.success((self.plans, footerType)))
