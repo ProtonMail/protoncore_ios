@@ -257,7 +257,6 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     }
 
     public func subscribeToPaymentQueue() {
-        unsubscribeFromPaymentQueue()
         paymentQueue.add(self)
     }
 
