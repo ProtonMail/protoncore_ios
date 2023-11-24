@@ -1623,7 +1623,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
 
     // MARK: - fetchPlans
 
-    func test_fetchPlans_forUpdateMode_setFooter_withPlansToBuy() async throws {
+    func test_fetchPlans_forUpdateMode_setFooter_disabled() async throws {
         try await withFeatureFlags([.dynamicPlans]) {
             // Given
             let storeKitManager = StoreKitManagerMock()
@@ -1642,10 +1642,9 @@ final class PaymentsUIViewModelTests: XCTestCase {
             try await sut.fetchPlans()
 
             // Then
-            XCTAssertEqual(sut.footerType, .withPlansToBuy)
+            XCTAssertEqual(sut.footerType, .disabled)
         }
     }
-
 
     func test_fetchPlans_forSignupMode_setFooter_disabled() async throws {
         try await withFeatureFlags([.dynamicPlans]) {
