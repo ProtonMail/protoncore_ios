@@ -1954,7 +1954,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/pointfreeco/swift-snapshot-testing",
-            from: "1.10.0"
+            from: "1.15.0"
         ),
         .package(
             url: "https://github.com/tannerdsilva/SwiftBCrypt.git",
