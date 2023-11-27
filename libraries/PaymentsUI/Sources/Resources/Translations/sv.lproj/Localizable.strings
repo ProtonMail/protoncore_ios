@@ -74,6 +74,8 @@
 
 "Only non-renewing annual subscriptions are available via this app" = "Endast icke-förnyande årsprenumerationer är tillgängliga via denna app";
 
+"Your subscription cannot be managed inside the mobile app." = "Din prenumeration kan inte hanteras i mobilappen.";
+
 "Unlimited folders, labels, and filters" = "Obegränsade mappar, etiketter och filter";
 
 "Up to %@ storage" = "Upp till %@ lagringsutrymme";

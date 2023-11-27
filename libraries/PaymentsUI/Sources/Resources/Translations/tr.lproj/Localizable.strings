@@ -74,6 +74,8 @@
 
 "Only non-renewing annual subscriptions are available via this app" = "Bu uygulamada yalnızca yenilenmeyen yıllık abonelikler bulunur";
 
+"Your subscription cannot be managed inside the mobile app." = "Aboneliğiniz mobil uygulama içinden yönetilemez.";
+
 "Unlimited folders, labels, and filters" = "Sınırsız sayıda klasör, etiket ve süzgeç";
 
 "Up to %@ storage" = "%@ boyutuna kadar depolama alanı";

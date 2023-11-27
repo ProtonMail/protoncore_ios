@@ -74,6 +74,8 @@
 
 "Only non-renewing annual subscriptions are available via this app" = "Somente assinaturas anuais sem renovação estão disponíveis neste app";
 
+"Your subscription cannot be managed inside the mobile app." = "Não é possível gerenciar sua assinatura no aplicativo móvel.";
+
 "Unlimited folders, labels, and filters" = "Pastas, marcadores e filtros ilimitados";
 
 "Up to %@ storage" = "Até %@ de armazenamento";
@@ -124,7 +126,7 @@
 
 "Pay monthly" = "Pagar mensalmente";
 
-"Pay annually" = "Pagar anualmente";
+"Pay annually" = "Pagamento anual";
 
 "Pay every two years" = "Pagar a cada dois anos";
 

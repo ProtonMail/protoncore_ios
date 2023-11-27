@@ -74,6 +74,8 @@
 
 "Only non-renewing annual subscriptions are available via this app" = "ამ აპიდან, მხოლოდ, არაგანმეორებადი წლიური გამოწერებია ხელმისაწვდომი";
 
+"Your subscription cannot be managed inside the mobile app." = "გამოწერის მართვა მობილური აპიდან შეუძლებელია.";
+
 "Unlimited folders, labels, and filters" = "ულიმიტო საქაღალდეები, ჭდეები და ფილტრები";
 
 "Up to %@ storage" = "%@-მდე საცავი";

@@ -74,6 +74,8 @@
 
 "Only non-renewing annual subscriptions are available via this app" = "Az alkalmazásból csak éves, nem automatikusan megújuló előfizetés érhető el";
 
+"Your subscription cannot be managed inside the mobile app." = "Your subscription cannot be managed inside the mobile app.";
+
 "Unlimited folders, labels, and filters" = "Korlátlan számú mappa, címke és szűrő";
 
 "Up to %@ storage" = "Akár %@ tárhely";

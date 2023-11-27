@@ -74,6 +74,8 @@
 
 "Only non-renewing annual subscriptions are available via this app" = "Über diese App sind nur nicht verlängerbare Jahresabonnements verfügbar.";
 
+"Your subscription cannot be managed inside the mobile app." = "Dein Abonnement kann nicht in der App verwaltet werden";
+
 "Unlimited folders, labels, and filters" = "Unbegrenzte Anzahl an Ordnern, Kategorien und Filtern.";
 
 "Up to %@ storage" = "Bis zu %@ Speicherplatz";

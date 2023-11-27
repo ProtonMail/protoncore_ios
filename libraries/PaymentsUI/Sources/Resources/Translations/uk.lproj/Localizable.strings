@@ -22,7 +22,7 @@
 
 "Contact an administrator to make changes to your Proton subscription." = "Зверніться до адміністратора для зміни вашої передплати Proton.";
 
-"%1$@ of %2$@" = "%1$@ of %2$@";
+"%1$@ of %2$@" = "%1$@ з %2$@";
 
 "%@ storage" = "%@ сховища";
 
@@ -73,6 +73,8 @@
 "The ultimate privacy pack with access to all premium Proton services." = "Максимальний набір усіх послуг Proton для забезпечення вашої приватності.";
 
 "Only non-renewing annual subscriptions are available via this app" = "У цій програмі доступні лише річні передплати без поновлення";
+
+"Your subscription cannot be managed inside the mobile app." = "Вашою передплатою не можна керувати в програмі для мобільних пристроїв.";
 
 "Unlimited folders, labels, and filters" = "Необмежена кількість тек, міток і фільтрів";
 

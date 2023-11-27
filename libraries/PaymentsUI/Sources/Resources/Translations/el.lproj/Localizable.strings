@@ -74,6 +74,8 @@
 
 "Only non-renewing annual subscriptions are available via this app" = "Μόνο οι ετήσιες συνδρομές μη αυτόματης ανανέωσης είναι διαθέσιμες μέσω αυτής της εφαρμογής";
 
+"Your subscription cannot be managed inside the mobile app." = "Δεν είναι δυνατή η διαχείριση της συνδρομής σας εντός της εφαρμογής για κινητές συσκευές.";
+
 "Unlimited folders, labels, and filters" = "Απεριόριστοι φάκελοι, ετικέτες, και φίλτρα";
 
 "Up to %@ storage" = "Έως και %@ αποθηκευτικού χώρου";
