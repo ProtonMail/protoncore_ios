@@ -257,7 +257,10 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     }
 
     public func subscribeToPaymentQueue() {
-        paymentQueue.add(self)
+        // Adding a containment check to avoid double additions which may trigger unwanted side effects
+        if !paymentQueue.transactionObservers.contains(where: { $0.isEqual(self) }) {
+            paymentQueue.add(self)
+        }
     }
 
     public func unsubscribeFromPaymentQueue() {
