@@ -66,7 +66,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         storeKitManager = StoreKitManagerMock()
         servicePlan = ServicePlanDataServiceMock()
         plansDataSource = PlansDataSourceMock()
-   }
+    }
 
     override func tearDown() {
         servicePlan = nil
@@ -338,7 +338,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         static let availablePlans: AvailablePlans = .init(plans: MockData.availablePlansList, defaultCycle: 12) // dynamic plan
         static let currentPlan: CurrentPlan = .init(subscriptions: [.init(title: "Current Subscription", // dynamic plan
                                                                           description: "Description",
-                                                                          periodEnd: 1665360000,
+                                                                          periodEnd: 1965360000,
                                                                           entitlements: [
                                                                             .description(.init(type: "description",
                                                                                                text: "text",
@@ -346,14 +346,14 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                                                                                hint: "hint")),
 
                                                                           ]
-                                                                          )
-                                                                    ])
+                                                                         )
+        ])
         enum DynamicPlans {
 
             static let mailFree: CurrentPlan = .init(subscriptions: [
                 .init(title: "Mail Free",
                       description: "Free encrypted email and calendar for everyone",
-                      periodEnd: 1665360000,
+                      periodEnd: 1965360000,
                       entitlements: [.progress(.init(type: "progress",
                                                      text: "402MB of 1 GB total storage",
                                                      min: 0, max: 10, current: 4)),
@@ -365,7 +365,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             static let vpnFree: CurrentPlan = .init(subscriptions: [
                 .init(title: "VPN Free",
                       description: "High-speed Swiss VPN that protects your privacy",
-                      periodEnd: 1665360000,
+                      periodEnd: 1965360000,
                       entitlements: [.description(.description(text: "249 servers in 5 countries", iconName: "servers")),
                                      .description(.description(text: "No ads", iconName: "rocket")),
                                      .description(.description(text: "Unlimited volume/bandwidth", iconName: "infinite"))
@@ -374,7 +374,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             static let passFree: CurrentPlan = .init(subscriptions: [
                 .init(title: "Pass Free",
                       description: "Encrypted password manager that also protects your identity",
-                      periodEnd: 1665360000,
+                      periodEnd: 1965360000,
                       entitlements: [.description(.description(text: "Unlimited logins and notes", iconName: "infinite")),
                                      .description(.description(text: "Unlimited devices", iconName: "infinite")),
                                      .description(.description(text: "10 hide-my-email aliases", iconName: "alias")),
@@ -384,7 +384,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             static let arbitraryFree: CurrentPlan = .init(subscriptions: [
                 .init(title: "Blue Moon Free",
                       description: "Keep your satellites secure",
-                      periodEnd: 1665360000,
+                      periodEnd: 1965360000,
                       entitlements: [.description(.description(text: "Aliases!", iconName: "alias")),
                                      .description(.description(text: "Arrows and Switches!", iconName: "arrows-switch"))
                       ])
@@ -392,7 +392,8 @@ final class PaymentsUISnapshotTests: XCTestCase {
             static var mail2022: CurrentPlan = .init(subscriptions: [
                 .init(title: "Mail Plus",
                       description: "Encrypted email with premium features and free VPN",
-                      periodEnd: 1665360000,
+                      periodEnd: 1965360000,
+                      renew: 0,
                       entitlements: [
                         .progress(.init(type: "progress", text: "1.2GB of 15GB", min: 0, max: 150, current: 12)),
                         .description(.description(text: "15 GB total storage", iconName: "disk")),
@@ -407,7 +408,8 @@ final class PaymentsUISnapshotTests: XCTestCase {
             static var vpn2022: CurrentPlan = .init(subscriptions: [
                 .init(title: "VPN Plus",
                       description: "Encrypted email with premium features and free VPN",
-                      periodEnd: 1665360000,
+                      periodEnd: 1965360000,
+                      renew: 0,
                       entitlements: [
                         .description(.description(text: "Highest VPN speed", iconName: "vpn")),
                         .description(.description(text: "Protect 10 devices at a time", iconName: "vpn")),
@@ -421,7 +423,8 @@ final class PaymentsUISnapshotTests: XCTestCase {
             static var bundle2022: CurrentPlan = .init(subscriptions: [
                 .init(title: "Proton Unlimited",
                       description: "Acces to all Proton apps and premium features",
-                      periodEnd: 1665360000,
+                      periodEnd: 1965360000,
+                      renew: 0,
                       entitlements: [
                         .progress(.init(type: "progress", text: "1.2GB of 500GB", min: 0, max: 5000, current: 12)),
                         .description(.description(text: "500 GB total storage")),
@@ -434,8 +437,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
             ])
             static var drive2022: CurrentPlan = .init(subscriptions: [
                 .init(title: "Drive Plus",
-                     description: "Secure your files with end-to-end encryption",
-                      periodEnd: 1665360000,
+                      description: "Secure your files with end-to-end encryption",
+                      periodEnd: 1965360000,
+                      renew: 0,
                       entitlements: [
                         .progress(.init(type: "progress", text: "1.2GB of 200GB", min: 0, max: 2000, current: 12)),
                         .description(.description(text: "200GB total storage")),
@@ -447,8 +451,9 @@ final class PaymentsUISnapshotTests: XCTestCase {
 
             static var pass2023: CurrentPlan = .init(subscriptions: [
                 .init(title: "Pass Plus",
-                     description: "Encrypted password manager that also protects your identity",
-                      periodEnd: 1665360000,
+                      description: "Encrypted password manager that also protects your identity",
+                      periodEnd: 1965360000,
+                      renew: 0,
                       entitlements: [
                         .description(.description(text: "Unlimited logins and notes")),
                         .description(.description(text: "Unlimited devices")),
@@ -462,7 +467,8 @@ final class PaymentsUISnapshotTests: XCTestCase {
             static var mailpro2022: CurrentPlan = .init(subscriptions: [
                 .init(title: "Mail Essentials",
                       description: "Secure email and calendar for professionals and businesses.",
-                      periodEnd: 1665360000,
+                      periodEnd: 1965360000,
+                      renew: 0,
                       entitlements: [
                         .description(.description(text: "10 email addresses per user", iconName: "email")),
                         .description(.description(text: "Unlimited folders, labels and filters", iconName: "infinite")),
@@ -477,7 +483,8 @@ final class PaymentsUISnapshotTests: XCTestCase {
             static var bundlepro2022: CurrentPlan = .init(subscriptions: [
                 .init(title: "Business",
                       description: "Privacy and security suite for businesses, including all premium Proton services.",
-                      periodEnd: 1665360000,
+                      periodEnd: 1965360000,
+                      renew: 0,
                       entitlements: [
                         .description(.description(text: "15 email addresses per user", iconName: "email")),
                         .description(.description(text: "Unlimited folders, labels and filters", iconName: "infinite")),
@@ -491,7 +498,8 @@ final class PaymentsUISnapshotTests: XCTestCase {
             static var enterprise2022: CurrentPlan = .init(subscriptions: [
                 .init(title: "Enterprise",
                       description: "All premium Proton services with more storage for your business.",
-                      periodEnd: 1665360000,
+                      periodEnd: 1965360000,
+                      renew: 0,
                       entitlements: [
                         .description(.description(text: "Everything business", iconName: "email")),
                         .description(.description(text: "Tailored to your needs", iconName: "infinite")),
@@ -502,7 +510,8 @@ final class PaymentsUISnapshotTests: XCTestCase {
             static var visionary2022: CurrentPlan = .init(subscriptions: [
                 .init(title: "Visionary",
                       description: "Our exclusive plan for early supporters.",
-                      periodEnd: 1665360000,
+                      periodEnd: 1965360000,
+                      renew: 0,
                       entitlements: [
                         .description(.description(text: "6 users", iconName: "email")),
                         .description(.description(text: "100 email addresses per user", iconName: "email")),
@@ -853,8 +862,17 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                                           line: UInt = #line) async {
 
         await snapshotDynamicPlanSubscriptionScreen(mode: .current,
-                                                    currentPlan: currentPlan,
-                                                    name: name,
+                                                    currentPlan: currentPlan.updated(renew: 0),
+                                                    name: name.appending("expiring"),
+                                                    clientApp: clientApp,
+                                                    modalPresentation: modalPresentation,
+                                                    record: record,
+                                                    file: file,
+                                                    line: line)
+
+        await snapshotDynamicPlanSubscriptionScreen(mode: .current,
+                                                    currentPlan: currentPlan.updated(renew: 1),
+                                                    name: name.appending("renewing"),
                                                     clientApp: clientApp,
                                                     modalPresentation: modalPresentation,
                                                     record: record,
@@ -1198,7 +1216,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotCurrentDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.drive2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                      currency: "USD", amount: 499),
+                                                                     currency: "USD", amount: 499),
                 clientApp: .drive
             )
         }
@@ -1216,7 +1234,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotCurrentDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.drive2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                      currency: "USD", amount: 4788),
+                                                                     currency: "USD", amount: 4788),
                 clientApp: .drive
             )
         }
@@ -1234,7 +1252,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotCurrentDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.drive2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                      currency: "USD", amount: 8376),
+                                                                     currency: "USD", amount: 8376),
                 clientApp: .drive
             )
         }
@@ -1272,7 +1290,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotCurrentDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.pass2023.updated(cycle: 12, cycleDescription: "every year",
-                                                                      currency: "CHF", amount: 4788),
+                                                                    currency: "CHF", amount: 4788),
                 clientApp: .pass
             )
         }
@@ -1290,7 +1308,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotCurrentDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.pass2023.updated(cycle: 1, cycleDescription: "every 2 years",
-                                                                      currency: "CHF", amount: 3588),
+                                                                    currency: "CHF", amount: 3588),
                 clientApp: .pass
             )
         }
@@ -1310,7 +1328,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotCurrentDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.mailpro2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                      currency: "CHF", amount: 799),
+                                                                       currency: "CHF", amount: 799),
                 clientApp: .mail
             )
         }
@@ -1328,7 +1346,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotCurrentDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.mailpro2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                      currency: "CHF", amount: 8388),
+                                                                       currency: "CHF", amount: 8388),
                 clientApp: .mail
             )
         }
@@ -1346,7 +1364,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotCurrentDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.mailpro2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                      currency: "CHF", amount: 7788),
+                                                                       currency: "CHF", amount: 7788),
                 clientApp: .mail
             )
         }
@@ -1366,7 +1384,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotCurrentDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.bundlepro2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                      currency: "CHF", amount: 1299),
+                                                                         currency: "CHF", amount: 1299),
                 clientApp: .mail
             )
         }
@@ -1384,7 +1402,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotCurrentDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.bundlepro2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                      currency: "CHF", amount: 13188),
+                                                                         currency: "CHF", amount: 13188),
                 clientApp: .mail
             )
         }
@@ -1402,7 +1420,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotCurrentDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.bundlepro2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                      currency: "CHF", amount: 23976),
+                                                                         currency: "CHF", amount: 23976),
                 clientApp: .mail
             )
         }
@@ -1422,7 +1440,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotCurrentDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.bundlepro2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                      currency: "CHF", amount: 1599),
+                                                                         currency: "CHF", amount: 1599),
                 clientApp: .mail
             )
         }
@@ -1440,7 +1458,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotCurrentDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.bundlepro2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                      currency: "CHF", amount: 16788),
+                                                                         currency: "CHF", amount: 16788),
                 clientApp: .mail
             )
         }
@@ -1458,7 +1476,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotCurrentDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.enterprise2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                      currency: "CHF", amount: 31176),
+                                                                          currency: "CHF", amount: 31176),
                 clientApp: .mail
             )
         }
@@ -1497,7 +1515,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotCurrentDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.visionary2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                      currency: "CHF", amount: 2999),
+                                                                         currency: "CHF", amount: 2999),
                 clientApp: .mail
             )
         }
@@ -1515,7 +1533,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotCurrentDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.visionary2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                      currency: "CHF", amount: 28788),
+                                                                         currency: "CHF", amount: 28788),
                 clientApp: .mail
             )
         }
@@ -1533,7 +1551,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotCurrentDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.visionary2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                      currency: "CHF", amount: 47976),
+                                                                         currency: "CHF", amount: 47976),
                 clientApp: .mail
             )
         }
@@ -1613,12 +1631,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
     }
 
     private func snapshotUpdateDynamicSubscriptionScreen(currentPlan: CurrentPlan,
-                                                             name: String = #function,
-                                                             clientApp: ClientApp,
+                                                         name: String = #function,
+                                                         clientApp: ClientApp,
 
-                                                             modalPresentation: Bool = false,
-                                                             record: Bool = false,
-                                                             file: StaticString = #filePath,
+                                                         modalPresentation: Bool = false,
+                                                         record: Bool = false,
+                                                         file: StaticString = #filePath,
                                                          line: UInt = #line) async {
         await snapshotDynamicPlanSubscriptionScreen(mode: .update,
                                                     currentPlan: currentPlan,
@@ -1982,7 +2000,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotUpdateDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.pass2023.updated(cycle: 12, cycleDescription: "every year",
-                                                                      currency: "CHF", amount: 4788),
+                                                                    currency: "CHF", amount: 4788),
                 clientApp: .pass
             )
         }
@@ -2000,7 +2018,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotUpdateDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.pass2023.updated(cycle: 1, cycleDescription: "every 2 years",
-                                                                      currency: "CHF", amount: 3588),
+                                                                    currency: "CHF", amount: 3588),
                 clientApp: .pass
             )
         }
@@ -2019,7 +2037,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotUpdateDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.drive2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                      currency: "USD", amount: 499),
+                                                                     currency: "USD", amount: 499),
                 clientApp: .drive
             )
         }
@@ -2037,7 +2055,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotUpdateDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.drive2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                      currency: "USD", amount: 4788),
+                                                                     currency: "USD", amount: 4788),
                 clientApp: .drive
             )
         }
@@ -2055,7 +2073,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotUpdateDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.drive2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                      currency: "USD", amount: 8376),
+                                                                     currency: "USD", amount: 8376),
                 clientApp: .drive
             )
         }
@@ -2074,7 +2092,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotUpdateDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.mailpro2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                      currency: "CHF", amount: 799),
+                                                                       currency: "CHF", amount: 799),
                 clientApp: .mail
             )
         }
@@ -2092,7 +2110,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotUpdateDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.mailpro2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                      currency: "CHF", amount: 8388),
+                                                                       currency: "CHF", amount: 8388),
                 clientApp: .mail
             )
         }
@@ -2110,7 +2128,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotUpdateDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.mailpro2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                      currency: "CHF", amount: 7788),
+                                                                       currency: "CHF", amount: 7788),
                 clientApp: .mail
             )
         }
@@ -2130,7 +2148,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotUpdateDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.bundlepro2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                      currency: "CHF", amount: 1299),
+                                                                         currency: "CHF", amount: 1299),
                 clientApp: .mail
             )
         }
@@ -2148,7 +2166,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotUpdateDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.bundlepro2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                      currency: "CHF", amount: 13188),
+                                                                         currency: "CHF", amount: 13188),
                 clientApp: .mail
             )
         }
@@ -2166,7 +2184,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotUpdateDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.bundlepro2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                      currency: "CHF", amount: 23976),
+                                                                         currency: "CHF", amount: 23976),
                 clientApp: .mail
             )
         }
@@ -2185,7 +2203,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotUpdateDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.bundlepro2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                      currency: "CHF", amount: 1599),
+                                                                         currency: "CHF", amount: 1599),
                 clientApp: .mail
             )
         }
@@ -2203,7 +2221,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotUpdateDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.bundlepro2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                      currency: "CHF", amount: 16788),
+                                                                         currency: "CHF", amount: 16788),
                 clientApp: .mail
             )
         }
@@ -2221,7 +2239,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotUpdateDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.enterprise2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                      currency: "CHF", amount: 31176),
+                                                                          currency: "CHF", amount: 31176),
                 clientApp: .mail
             )
         }
@@ -2241,7 +2259,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotUpdateDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.visionary2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                      currency: "CHF", amount: 2999),
+                                                                         currency: "CHF", amount: 2999),
                 clientApp: .mail
             )
         }
@@ -2259,7 +2277,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotUpdateDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.visionary2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                      currency: "CHF", amount: 28788),
+                                                                         currency: "CHF", amount: 28788),
                 clientApp: .mail
             )
         }
@@ -2277,7 +2295,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans]) {
             await snapshotUpdateDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.visionary2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                      currency: "CHF", amount: 47976),
+                                                                         currency: "CHF", amount: 47976),
                 clientApp: .mail
             )
         }
@@ -2443,17 +2461,18 @@ extension CurrentPlan.Subscription.DescriptionEntitlement {
 }
 
 extension CurrentPlan {
-    func updated(cycle: Int? = nil, cycleDescription: String? = nil, currency: String? = nil, amount: Int? = nil) -> CurrentPlan {
+    func updated(cycle: Int? = nil, cycleDescription: String? = nil, currency: String? = nil, amount: Int? = nil, renew: Int? = nil) -> CurrentPlan {
         Self(subscriptions: self.subscriptions.map { $0.updated(cycle: cycle,
                                                                 cycleDescription: cycleDescription,
                                                                 currency: currency,
-                                                                amount: amount)
+                                                                amount: amount,
+                                                                renew: renew)
         })
     }
 }
 
 extension CurrentPlan.Subscription {
-    func updated(cycle: Int?, cycleDescription: String?, currency: String?, amount: Int?) -> Self {
+    func updated(cycle: Int?, cycleDescription: String?, currency: String?, amount: Int?, renew: Int?) -> Self {
         Self(title: self.title,
              description: self.description,
              cycleDescription: cycleDescription ?? self.cycleDescription,
@@ -2461,6 +2480,7 @@ extension CurrentPlan.Subscription {
              currency: currency ?? self.currency,
              amount: amount ?? self.amount,
              periodEnd: self.periodEnd,
+             renew: renew ?? self.renew,
              entitlements: self.entitlements)
     }
 }
