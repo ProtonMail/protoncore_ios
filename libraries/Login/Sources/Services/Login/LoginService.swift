@@ -107,20 +107,22 @@ public final class LoginService: Login {
 
     public func refreshCredentials(completion: @escaping (Result<Credential, LoginError>) -> Void) {
         withAuthDelegateAvailable(completion) { authManager in
-            guard let old = authManager.credential(sessionUID: self.sessionId) else {
-                completion(.failure(.invalidState))
-                return
-            }
-            manager.refreshCredential(old) { result in
-                switch result {
-                case .failure(let error):
-                    completion(.failure(error.asLoginError()))
-                case .success(.ask2FA), .success(.ssoChallenge):
+            Task {
+                guard let old = await authManager.credential(sessionUID: self.sessionId) else {
                     completion(.failure(.invalidState))
-                case .success(.newCredential(let credential, _)), .success(.updatedCredential(let credential)):
-                    authManager.onUpdate(credential: credential, sessionUID: self.sessionId)
-                    self.apiService.setSessionUID(uid: credential.UID)
-                    completion(.success(credential))
+                    return
+                }
+                manager.refreshCredential(old) { result in
+                    switch result {
+                    case .failure(let error):
+                        completion(.failure(error.asLoginError()))
+                    case .success(.ask2FA), .success(.ssoChallenge):
+                        completion(.failure(.invalidState))
+                    case .success(.newCredential(let credential, _)), .success(.updatedCredential(let credential)):
+                        authManager.onUpdate(credential: credential, sessionUID: self.sessionId)
+                        self.apiService.setSessionUID(uid: credential.UID)
+                        completion(.success(credential))
+                    }
                 }
             }
         }
@@ -128,12 +130,14 @@ public final class LoginService: Login {
 
     public func refreshUserInfo(completion: @escaping (Result<User, LoginError>) -> Void) {
         withAuthDelegateAvailable(completion) { authManager in
-            guard let credential = authManager.credential(sessionUID: sessionId) else {
-                completion(.failure(.invalidState))
-                return
-            }
-            manager.getUserInfo(credential) {
-                completion($0.mapError { $0.asLoginError() })
+            Task { [weak self, sessionId] in
+                guard let credential = await authManager.credential(sessionUID: sessionId) else {
+                    completion(.failure(.invalidState))
+                    return
+                }
+                self?.manager.getUserInfo(credential) {
+                    completion($0.mapError { $0.asLoginError() })
+                }
             }
         }
     }

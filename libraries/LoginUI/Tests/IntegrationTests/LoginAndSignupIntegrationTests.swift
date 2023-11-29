@@ -98,7 +98,7 @@ final class LoginAndSignupIntegrationTests: IntegrationTestCase {
     func testLoginAndSignupObtainsUnauthSession() async throws {
         let api = createAPIService()
         _ = LoginAndSignup(appName: "Mail", clientApp: .mail, apiService: api, minimumAccountType: .internal, paymentsAvailability: .notAvailable)
-        let credentials = try await waitForResultOfOptionalOperation { api.authDelegate?.credential(sessionUID: api.sessionUID) }
+        let credentials = try await waitForResultOfOptionalOperation { await api.authDelegate?.credential(sessionUID: api.sessionUID) }
         XCTAssertTrue(credentials.userID.isEmpty)
         XCTAssertTrue(credentials.userName.isEmpty)
     }
@@ -106,10 +106,10 @@ final class LoginAndSignupIntegrationTests: IntegrationTestCase {
     func testLoginAndSignupDoesNotObtainsUnauthSessionButSessionAlreadyExists() async throws {
         let api = createAPIService()
         _ = LoginAndSignup(appName: "Mail", clientApp: .mail, apiService: api, minimumAccountType: .internal, paymentsAvailability: .notAvailable)
-        let credentials = try await waitForResultOfOptionalOperation { api.authDelegate?.credential(sessionUID: api.sessionUID) }
+        let credentials = try await waitForResultOfOptionalOperation { await api.authDelegate?.credential(sessionUID: api.sessionUID) }
         _ = LoginAndSignup(appName: "Mail", clientApp: .mail, apiService: api, minimumAccountType: .internal, paymentsAvailability: .notAvailable)
         let result = try await waitForOptionalOperation(iterations: 5, period: 1_000_000_000) {
-            api.authDelegate?.credential(sessionUID: api.sessionUID) == credentials ? nil : true
+            await api.authDelegate?.credential(sessionUID: api.sessionUID) == credentials ? nil : true
         }
         XCTAssertNil(result)
     }

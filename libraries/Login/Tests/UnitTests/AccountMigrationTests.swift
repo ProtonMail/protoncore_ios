@@ -88,12 +88,15 @@ final class AccountMigrationTests: XCTestCase {
         authManager.onUpdate(credential: .dummy.updated(UID: login.sessionId, scopes: ["scope for \(#function)"]),
                              sessionUID: login.sessionId)
         var credential: Credential?
+        let expectation = XCTestExpectation()
         login.getAccountDataPerformingAccountMigrationIfNeeded(user: .dummy.updated(name: "test user"),
                                                                mailboxPassword: "test password",
                                                                passwordMode: .one) { result in
             guard case .success(.finished(let loginData)) = result else { XCTFail("login should succeed"); return }
             credential = loginData.getCredential
+            expectation.fulfill()
         }
+        wait(for: [expectation], timeout: 0.1)
         XCTAssertEqual(login.sessionId, credential?.UID)
         XCTAssertEqual(Credential.dummy.accessToken, credential?.accessToken)
         XCTAssertEqual(Credential.dummy.refreshToken, credential?.refreshToken)
