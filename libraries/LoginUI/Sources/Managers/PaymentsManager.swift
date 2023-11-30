@@ -35,6 +35,7 @@ class PaymentsManager {
     private let api: APIService
     private let payments: Payments
     private var paymentsUI: PaymentsUI?
+    private let featureFlagsRepository: FeatureFlagsRepositoryProtocol
     private(set) var selectedPlan: InAppPurchasePlan?
     private var loginData: LoginData?
     private weak var existingDelegate: StoreKitManagerDelegate?
@@ -44,15 +45,17 @@ class PaymentsManager {
          shownPlanNames: ListOfShownPlanNames,
          clientApp: ClientApp,
          customization: PaymentsUICustomizationOptions,
-         reportBugAlertHandler: BugAlertHandler) {
+         reportBugAlertHandler: BugAlertHandler,
+         featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared) {
         self.api = apiService
+        self.featureFlagsRepository = featureFlagsRepository
         self.payments = Payments(inAppPurchaseIdentifiers: iaps,
                                  apiService: api,
                                  localStorage: DataStorageImpl(),
                                  reportBugAlertHandler: reportBugAlertHandler)
         storeExistingDelegate()
         payments.storeKitManager.delegate = self
-        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             // In the dynamic plans, fetching available IAPs from StoreKit is done alongside fetching available plans
             Task {
                 if case let .right(plansDataSource) = payments.planService {
@@ -75,7 +78,7 @@ class PaymentsManager {
                              planShownHandler: (() -> Void)?,
                              completionHandler: @escaping (Result<(), Error>) -> Void) {
 
-        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             // In the dynamic plans, fetching available IAPs from StoreKit is done alongside fetching available plans
             continuePaymentProcess(signupViewController: signupViewController,
                                    planShownHandler: planShownHandler,

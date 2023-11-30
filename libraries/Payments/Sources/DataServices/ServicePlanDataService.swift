@@ -120,13 +120,14 @@ final class ServicePlanDataService: ServicePlanDataServiceProtocol {
 
     private let paymentsApi: PaymentsApiProtocol
     private let localStorage: ServicePlanDataStorage
+    private let featureFlagsRepository: FeatureFlagsRepositoryProtocol
 
     let listOfIAPIdentifiers: ListOfIAPIdentifiersGet
 
     public weak var currentSubscriptionChangeDelegate: CurrentSubscriptionChangeDelegate?
 
     public var isIAPAvailable: Bool {
-        guard !FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) else {
+        guard !featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) else {
             assertionFailure("ServicePlanDataService should never be called with Dynamic Plans FF enabled")
             return false
         }
@@ -180,7 +181,8 @@ final class ServicePlanDataService: ServicePlanDataServiceProtocol {
          paymentsApi: PaymentsApiProtocol,
          apiService: APIService,
          localStorage: ServicePlanDataStorage,
-         paymentsAlertManager: PaymentsAlertManager) {
+         paymentsAlertManager: PaymentsAlertManager,
+         featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared) {
         self.localStorage = localStorage
         self.availablePlansDetails = localStorage.servicePlansDetails ?? []
         self.paymentsBackendStatusAcceptsIAP = localStorage.paymentsBackendStatusAcceptsIAP
@@ -189,6 +191,7 @@ final class ServicePlanDataService: ServicePlanDataServiceProtocol {
         self.paymentsApi = paymentsApi
         self.service = apiService
         self.listOfIAPIdentifiers = inAppPurchaseIdentifiers
+        self.featureFlagsRepository = featureFlagsRepository
     }
 
     public func detailsOfPlanCorrespondingToIAP(_ plan: InAppPurchasePlan) -> Plan? {
@@ -267,7 +270,7 @@ extension ServicePlanDataService {
             return false
         }
 
-        guard !FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) else {
+        guard !featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) else {
             assertionFailure("You shouldn't be using plan data services with Dynamic Plans")
             return false
         }

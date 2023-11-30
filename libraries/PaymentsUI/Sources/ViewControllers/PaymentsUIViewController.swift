@@ -42,7 +42,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     private lazy var selectedCycle = viewModel?.defaultCycle
 
     private var isDynamicPlansEnabled: Bool {
-        FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan)
+        featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)
     }
 
     // MARK: - Constants
@@ -112,6 +112,7 @@ public final class PaymentsUIViewController: UIViewController, AccessibleView {
     // MARK: - Properties
 
     weak var delegate: PaymentsUIViewControllerDelegate?
+    var featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared
     var viewModel: PaymentsUIViewModel?
     var mode: PaymentsUIMode = .signup
     var modalPresentation = false

@@ -72,12 +72,13 @@ import ProtonCoreUtilities
 
 final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
 
-    let areSubscriptionsEnabled = FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan)
+    let areSubscriptionsEnabled: Bool
 
     unowned let dependencies: ProcessDependencies
 
-    init(dependencies: ProcessDependencies) {
+    init(dependencies: ProcessDependencies, featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared) {
         self.dependencies = dependencies
+        self.areSubscriptionsEnabled = featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)
     }
 
     let queue = DispatchQueue(label: "ProcessUnauthenticated async queue", qos: .userInitiated)
@@ -363,7 +364,7 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
             }
         } catch let error where error.isPaymentAmountMismatchOrUnavailablePlanError {
             PMLog.debug("StoreKit: amount mismatch")
-            if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+            if areSubscriptionsEnabled {
                 try retryOnError()
             } else {
                 try recoverByToppingUpCredits(

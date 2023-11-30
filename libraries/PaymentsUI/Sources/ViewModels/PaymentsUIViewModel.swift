@@ -47,7 +47,7 @@ enum FooterType: Equatable {
 
 class PaymentsUIViewModel {
     private var isDynamicPlansEnabled: Bool {
-        FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan)
+        featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)
     }
     private var planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>
 
@@ -76,6 +76,7 @@ class PaymentsUIViewModel {
     private let clientApp: ClientApp
     private let shownPlanNames: ListOfShownPlanNames
     private let customPlansDescription: CustomPlansDescription
+    private let featureFlagsRepository: FeatureFlagsRepositoryProtocol
 
     // MARK: Public properties
 
@@ -164,6 +165,7 @@ class PaymentsUIViewModel {
          shownPlanNames: ListOfShownPlanNames = [],
          clientApp: ClientApp,
          customPlansDescription: CustomPlansDescription,
+         featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared,
          planRefreshHandler: @escaping (CurrentPlanDetails?) -> Void,
          extendSubscriptionHandler: @escaping () -> Void) {
         self.mode = mode
@@ -172,6 +174,7 @@ class PaymentsUIViewModel {
         self.shownPlanNames = shownPlanNames
         self.clientApp = clientApp
         self.customPlansDescription = customPlansDescription
+        self.featureFlagsRepository = featureFlagsRepository
         self.planRefreshHandler = planRefreshHandler
         self.extendSubscriptionHandler = extendSubscriptionHandler
         registerRefreshHandler()

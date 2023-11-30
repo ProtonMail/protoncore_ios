@@ -60,12 +60,14 @@ final class PaymentsUISnapshotTests: XCTestCase {
     var plansDataSource: PlansDataSourceMock!
 
     let perceptualPrecision: Float = 0.98
+    var featureFlagsRepository: FeatureFlagsRepositoryProtocol!
 
     override func setUp() {
         super.setUp()
         storeKitManager = StoreKitManagerMock()
         servicePlan = ServicePlanDataServiceMock()
         plansDataSource = PlansDataSourceMock()
+        featureFlagsRepository = FeatureFlagsRepository.shared
     }
 
     override func tearDown() {
@@ -2368,7 +2370,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                                   clientApp: ClientApp,
                                                   customPlansDescription: CustomPlansDescription = [:],
                                                   record: Bool = false) async {
-        if try! await FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+        if try! await featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             await snapshotDynamicPlanSubscriptionScreen(mode: .signup,
                                                         currentPlan: MockData.DynamicPlans.mailFree,
                                                         name: name,
