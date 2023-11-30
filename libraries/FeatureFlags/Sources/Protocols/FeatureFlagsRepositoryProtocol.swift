@@ -33,7 +33,12 @@ public protocol FeatureFlagsRepositoryProtocol: AnyObject {
     func setUserId(_ userId: String)
     func setApiService(_ apiService: APIService)
     func fetchFlags(for sessionType: SessionType, using apiService: APIService?) async throws
-    func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String?, reloadingValue: Bool) -> Bool
+
+    // MARK: - For single-user clients
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, reloadValue: Bool) -> Bool
+
+    // MARK: - For multi-user clients
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String?, reloadValue: Bool) -> Bool
 
     // MARK: - Commons
     func resetFlags()
@@ -42,8 +47,13 @@ public protocol FeatureFlagsRepositoryProtocol: AnyObject {
 
 public extension FeatureFlagsRepositoryProtocol {
 
-    // MARK: - For single-user clients
-    func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String? = nil, reloadingValue: Bool = false) -> Bool {
-        isEnabled(flag, for: userId, reloadingValue: reloadingValue)
+    /// For single-user clients
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, reloadValue: Bool = false) -> Bool {
+        isEnabled(flag, reloadValue: reloadValue)
+    }
+
+    /// For multi-user clients
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String? = nil, reloadValue: Bool = false) -> Bool {
+        isEnabled(flag, for: userId, reloadValue: reloadValue)
     }
 }
