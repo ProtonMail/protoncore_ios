@@ -201,10 +201,11 @@ final class PlanCell: UITableViewCell, AccessibleCell {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         if isDynamicPlansEnabled {
             guard let dynamicPlan = dynamicPlan else { return }
-            configureMainViewForDynamicPlans(isSelectable: dynamicPlan.canBePurchasedNow)
+            configureMainView(isSelectable: dynamicPlan.canBePurchasedNow, isExpanded: dynamicPlan.isExpanded)
         } else {
-            guard let plan = plan, case PlanPresentationType.plan(let planDetails) = plan.planPresentationType else { return }
-            configureMainViewForStaticPlans(isSelectable: planDetails.isSelectable)
+            guard let plan = plan, case PlanPresentationType.plan(let planDetails) =
+                    plan.planPresentationType else { return }
+            configureMainView(isSelectable: planDetails.isSelectable, isExpanded: plan.isExpanded)
         }
     }
 
@@ -260,7 +261,7 @@ final class PlanCell: UITableViewCell, AccessibleCell {
         } else {
             priceLabel.font = UIFont.systemFont(ofSize: 13.0, weight: .semibold)
         }
-        configureMainViewForStaticPlans(isSelectable: planDetails.isSelectable)
+        configureMainView(isSelectable: planDetails.isSelectable, isExpanded: plan.isExpanded)
     }
 
     private func drawViewForDynamicPlan() {
@@ -281,29 +282,12 @@ final class PlanCell: UITableViewCell, AccessibleCell {
         } else {
             priceLabel.font = UIFont.systemFont(ofSize: 13.0, weight: .semibold)
         }
-        configureMainViewForDynamicPlans(isSelectable: dynamicPlan.canBePurchasedNow)
+        configureMainView(isSelectable: dynamicPlan.canBePurchasedNow, isExpanded: dynamicPlan.isExpanded)
     }
 
-    private func configureMainViewForStaticPlans(isSelectable: Bool) {
-        guard let plan = plan else { return }
+    private func configureMainView(isSelectable: Bool, isExpanded: Bool) {
         if isSelectable {
-            if plan.isExpanded {
-                mainView.layer.borderWidth = 1.0
-                mainView.layer.borderColor = ColorProvider.InteractionNorm
-            } else {
-                mainView.layer.borderWidth = 0.0
-            }
-            mainView.backgroundColor = ColorProvider.BackgroundSecondary
-        } else {
-            mainView.layer.borderWidth = 1.0
-            mainView.layer.borderColor = ColorProvider.SeparatorNorm
-        }
-    }
-
-    private func configureMainViewForDynamicPlans(isSelectable: Bool) {
-        guard let dynamicPlan = dynamicPlan else { return }
-        if isSelectable {
-            if dynamicPlan.isExpanded {
+            if isExpanded {
                 mainView.layer.borderWidth = 1.0
                 mainView.layer.borderColor = ColorProvider.InteractionNorm
             } else {
