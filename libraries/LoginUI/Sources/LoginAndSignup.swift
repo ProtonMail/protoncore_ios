@@ -213,7 +213,7 @@ public final class LoginAndSignup {
         case .loginStateChanged(.dataIsAvailable(let data)), .signupStateChanged(.dataIsAvailable(let data)):
             FeatureFlagsRepository.shared.setUserId(data.user.ID)
             Task {
-                try await FeatureFlagsRepository.shared.fetchFlags(for: .unauth)
+                try await FeatureFlagsRepository.shared.fetchFlags(for: .auth(userId: data.user.ID))
             }
         default: break
         }

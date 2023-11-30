@@ -28,7 +28,7 @@ public class DefaultLocalFeatureFlagsDatasource: LocalFeatureFlagsProtocol {
 
     static let featureFlagsKey = "protoncore.featureflag"
     static let userIdKey = "protoncore.featureflag.userId"
-    
+
     private let userDefaults: UserDefaults
     private var flagsForSession: [String: FeatureFlags]?
     private var userIdForSession: String?
@@ -38,7 +38,7 @@ public class DefaultLocalFeatureFlagsDatasource: LocalFeatureFlagsProtocol {
     }
 
     // MARK: - Get flags
-    
+
     public func getFeatureFlags(userId: String, reloadFromUserDefaults: Bool) -> FeatureFlags? {
         serialAccessQueue.sync {
             if reloadFromUserDefaults {
@@ -73,6 +73,26 @@ public class DefaultLocalFeatureFlagsDatasource: LocalFeatureFlagsProtocol {
             var flagsToClean: [String: FeatureFlags]? = userDefaults.decodableValue(forKey: Self.featureFlagsKey)
             flagsToClean?[userId] = nil
             userDefaults.setEncodableValue(flagsToClean, forKey: Self.featureFlagsKey)
+        }
+    }
+
+    // MARK: - User ID
+
+    public var userIdForActiveSession: String? {
+        serialAccessQueue.sync {
+            userDefaults.object(forKey: Self.userIdKey) as? String
+        }
+    }
+
+    public func setUserIdForActiveSession(_ userId: String) {
+        serialAccessQueue.sync {
+            userDefaults.set(userId, forKey: Self.userIdKey)
+        }
+    }
+
+    public func clearUserId(_ userId: String) {
+        serialAccessQueue.sync {
+            userDefaults.removeObject(forKey: Self.userIdKey)
         }
     }
 }

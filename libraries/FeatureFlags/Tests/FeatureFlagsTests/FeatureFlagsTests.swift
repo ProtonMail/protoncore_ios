@@ -40,13 +40,15 @@ enum TestFlagsType: String, FeatureFlagTypeProtocol {
 final class FeatureFlagsTests: XCTestCase {
     var sut: FeatureFlagsRepository!
 
+    private var localDataSource: LocalFeatureFlagsProtocol!
     private var featureFlagUserDefaults: UserDefaults!
     private let suiteName = "FeatureFlagsTests"
 
     override func setUp() {
         super.setUp()
         featureFlagUserDefaults = UserDefaults(suiteName: suiteName)!
-        sut = .init(userId: Atomic<String>(""), localDatasource: Atomic<LocalFeatureFlagsProtocol>(DefaultLocalFeatureFlagsDatasource(userDefaults: featureFlagUserDefaults)),
+        localDataSource = DefaultLocalFeatureFlagsDatasource(userDefaults: featureFlagUserDefaults)
+        sut = .init(localDatasource: Atomic<LocalFeatureFlagsProtocol>(localDataSource),
                     remoteDatasource: Atomic<RemoteFeatureFlagsProtocol?>(nil))
     }
 
@@ -95,6 +97,45 @@ final class FeatureFlagsTests: XCTestCase {
         // Then
         XCTAssertNotNil(sut.remoteDataSource.value)
     }
+
+    // MARK: - Set user id
+
+    func test_userIdIsInitializedWithUserDefaultValue() {
+        // Given
+        let userId = "newUserId"
+        let featureFlagUserDefaults = UserDefaults(suiteName: #function)!
+        featureFlagUserDefaults.set(userId, forKey: DefaultLocalFeatureFlagsDatasource.userIdKey)
+        sut = .init(localDatasource: Atomic<LocalFeatureFlagsProtocol>(DefaultLocalFeatureFlagsDatasource(userDefaults: featureFlagUserDefaults)),
+                    remoteDatasource: Atomic<RemoteFeatureFlagsProtocol?>(nil)
+        )
+
+        // When accessing userId
+        _ = sut.userId
+
+        // Then
+        XCTAssertEqual(sut.userId, userId)
+        featureFlagUserDefaults.removePersistentDomain(forName: #function)
+    }
+
+    func test_setUserId_saveUserIdInUserDefault() {
+        // Given
+        let userId = "userId"
+
+        // When
+        sut.setUserId(userId)
+
+        // Then
+        XCTAssertEqual(sut.localDatasource.value.userIdForActiveSession, userId)
+    }
+
+    func test_userIdIsEmptyByDefault() {
+        // When
+        _ = sut.userId
+
+        // Then
+        XCTAssertTrue(sut.userId.isEmpty)
+    }
+
 
     // MARK: - isEnabled
 
@@ -535,6 +576,8 @@ final class FeatureFlagsTests: XCTestCase {
         XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
     }
 
+    // MARK: - Reset
+
     func test_resetFlagsForUserId_resetsFlagsForuserId() async throws {
         // Given
         let userId1 = "userId1"
@@ -613,5 +656,21 @@ final class FeatureFlagsTests: XCTestCase {
         // Then
         let emptyFlags: [String: FeatureFlags]? = featureFlagUserDefaults.decodableValue(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
         XCTAssertNil(emptyFlags)
+    }
+
+    func test_clearUserId_clearsUserId() {
+        // Given
+        let userId = "userId"
+        localDataSource.setUserIdForActiveSession(userId)
+        XCTAssertEqual(localDataSource.userIdForActiveSession, userId)
+        sut = .init(localDatasource: Atomic<LocalFeatureFlagsProtocol>(localDataSource),
+                    remoteDatasource: Atomic<RemoteFeatureFlagsProtocol?>(nil))
+        XCTAssertEqual(sut.userId, userId)
+
+        // When
+        sut.clearUserId(userId)
+
+        // Then
+        XCTAssertNil(localDataSource.userIdForActiveSession)
     }
 }
