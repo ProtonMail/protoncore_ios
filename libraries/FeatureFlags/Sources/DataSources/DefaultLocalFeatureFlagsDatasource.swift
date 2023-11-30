@@ -38,48 +38,41 @@ public class DefaultLocalFeatureFlagsDatasource: LocalFeatureFlagsProtocol {
     }
 
     // MARK: - Get flags
+    
     public func getFeatureFlags(userId: String, reloadFromUserDefaults: Bool) -> FeatureFlags? {
-        getLocalFeatureFlags(userId: userId, reloadFromUserDefaults: reloadFromUserDefaults)
-    }
-
-    public func getFeatureFlags(userId: String, reloadFromUserDefaults: Bool) async throws -> FeatureFlags? {
-        getLocalFeatureFlags(userId: userId, reloadFromUserDefaults: reloadFromUserDefaults)
-    }
-
-    private func getLocalFeatureFlags(userId: String, reloadFromUserDefaults: Bool) -> FeatureFlags? {
         serialAccessQueue.sync {
             if reloadFromUserDefaults {
-                let dynamicFlags: [String: FeatureFlags]? = userDefaults.decodableValue(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+                let dynamicFlags: [String: FeatureFlags]? = userDefaults.decodableValue(forKey: Self.featureFlagsKey)
                 return dynamicFlags?[userId]
             } else if let flagsForSession, let userIdForSession {
                 return flagsForSession[userIdForSession]
             }
 
             userIdForSession = userId
-            flagsForSession = userDefaults.decodableValue(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey) ?? [:]
+            flagsForSession = userDefaults.decodableValue(forKey: Self.featureFlagsKey) ?? [:]
             return flagsForSession?[userId]
         }
     }
 
     public func upsertFlags(_ flags: FeatureFlags, userId: String) {
         serialAccessQueue.sync {
-            var flagsToUpdate: [String: FeatureFlags] = userDefaults.decodableValue(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey) ?? [:]
+            var flagsToUpdate: [String: FeatureFlags] = userDefaults.decodableValue(forKey: Self.featureFlagsKey) ?? [:]
             flagsToUpdate[userId] = flags
-            userDefaults.setEncodableValue(flagsToUpdate, forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+            userDefaults.setEncodableValue(flagsToUpdate, forKey: Self.featureFlagsKey)
         }
     }
 
     public func cleanAllFlags() {
         serialAccessQueue.sync {
-            userDefaults.removeObject(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+            userDefaults.removeObject(forKey: Self.featureFlagsKey)
         }
     }
 
     public func cleanFlags(for userId: String) {
         serialAccessQueue.sync {
-            var flagsToClean: [String: FeatureFlags]? = userDefaults.decodableValue(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+            var flagsToClean: [String: FeatureFlags]? = userDefaults.decodableValue(forKey: Self.featureFlagsKey)
             flagsToClean?[userId] = nil
-            userDefaults.setEncodableValue(flagsToClean, forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+            userDefaults.setEncodableValue(flagsToClean, forKey: Self.featureFlagsKey)
         }
     }
 }
