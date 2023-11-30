@@ -33,7 +33,7 @@ final class PaymentTokenOldRequest: BaseApiRequest<TokenResponse> {
           amount: Int,
           receipt: String,
           featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared) {
-        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false) {
             assertionFailure("When using Dynamic Plans/Subscriptions, you should be using PaymentTokenRequest")
         }
         self.amount = amount
@@ -78,7 +78,7 @@ final class PaymentTokenRequest: BaseApiRequest<TokenResponse> {
          bundleId: String,
          productId: String,
          featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared) {
-        if !featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+        if !featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false) {
             assertionFailure("When not using Dynamic Plans/Subscriptions, you should be using PaymentTokenOldRequest")
         }
         self.amount = amount

@@ -2370,7 +2370,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                                   clientApp: ClientApp,
                                                   customPlansDescription: CustomPlansDescription = [:],
                                                   record: Bool = false) async {
-        if try! await featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+        if try! await featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false) {
             await snapshotDynamicPlanSubscriptionScreen(mode: .signup,
                                                         currentPlan: MockData.DynamicPlans.mailFree,
                                                         name: name,

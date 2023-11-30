@@ -48,7 +48,7 @@ public protocol PlansDataSourceProtocol {
 class PlansDataSource: PlansDataSourceProtocol {
     var isIAPAvailable: Bool {
         guard paymentsBackendStatusAcceptsIAP else { return false }
-        guard featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) else {
+        guard featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false) else {
             assertionFailure("You need Dynamic Plans enabled to use PlansDataSource")
             return true
         }

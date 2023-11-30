@@ -75,7 +75,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable {
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
     private var webView: SSOViewController?
     private var isSSOEnabled: Bool {
-        FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.externalSSO) &&
+        FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.externalSSO, isFlagValueDynamic: false) &&
             viewModel.clientApp == .vpn
     }
 

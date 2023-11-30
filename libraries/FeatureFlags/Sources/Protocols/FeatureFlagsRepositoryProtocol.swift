@@ -30,13 +30,12 @@ public protocol FeatureFlagsRepositoryProtocol: AnyObject {
     // MARK: - For single user clients
     func setUserId(with userId: String)
     func setApiService(with apiService: APIService)
-    func fetchFlags() async throws
-    func isEnabled(_ flag: any FeatureFlagTypeProtocol) -> Bool
-    func isEnabled(_ flag: any FeatureFlagTypeProtocol) async throws -> Bool
+    func fetchFlags(for userId: String, with apiService: APIService?) async throws
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, isFlagValueDynamic: Bool) -> Bool
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, isFlagValueDynamic: Bool) async throws -> Bool
 
     // - MARK: For multi users clients
-    func fetchFlags(for userId: String, with apiService: APIService) async throws
-    func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String) -> Bool
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String, isFlagValueDynamic: Bool) -> Bool
 
     // MARK: - Commons
     func resetFlags()

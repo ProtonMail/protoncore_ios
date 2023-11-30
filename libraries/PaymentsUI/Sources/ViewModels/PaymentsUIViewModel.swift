@@ -47,7 +47,7 @@ enum FooterType: Equatable {
 
 class PaymentsUIViewModel {
     private var isDynamicPlansEnabled: Bool {
-        featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)
+        featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false)
     }
     private var planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>
 

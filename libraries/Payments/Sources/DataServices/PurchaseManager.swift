@@ -226,10 +226,10 @@ final class PurchaseManager: PurchaseManagerProtocol {
             if case .cancelled = result {
                 finishCallback(.purchaseCancelled)
             } else if case .resolvingIAPToCredits = result,
-                      !self.featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+                      !self.featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false) {
                 finishCallback(.toppedUpCredits)
             } else if case .resolvingIAPToCreditsCausedByError = result,
-                      !self.featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+                      !self.featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false) {
                 finishCallback(.toppedUpCredits)
             } else {
                 finishCallback(.purchasedPlan(accountPlan: plan))

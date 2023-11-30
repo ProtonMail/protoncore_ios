@@ -134,7 +134,7 @@ final class ProcessAuthenticated: ProcessProtocol {
 
         } catch let error where error.isPaymentAmountMismatchOrUnavailablePlanError {
             PMLog.debug("StoreKit: amount mismatch")
-            if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan){
+            if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false){
                 // we no longer credit the account for this kind of mismatch.
                 finish(transaction: transaction, result: .errored(.noNewSubscriptionInSuccessfulResponse), completion: completion)
             } else {

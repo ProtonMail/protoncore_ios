@@ -57,7 +57,7 @@ public final class Payments {
     }
 
     public internal(set) lazy var planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol> = {
-        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false) {
             return .right(PlansDataSource(
                 apiService: apiService,
                 storeKitDataSource: storeKitDataSource,
@@ -79,7 +79,7 @@ public final class Payments {
 
     public internal(set) lazy var storeKitManager: StoreKitManagerProtocol = {
         let dataSource: StoreKitDataSourceProtocol?
-        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false) {
             dataSource = storeKitDataSource
         } else {
             dataSource = nil
@@ -109,7 +109,7 @@ public final class Payments {
         self.reportBugAlertHandler = reportBugAlertHandler
         self.apiService = apiService
         self.localStorage = localStorage
-        self.canExtendSubscription = canExtendSubscription && !featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)
+        self.canExtendSubscription = canExtendSubscription && !featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false)
         paymentsAlertManager = PaymentsAlertManager(alertManager: alertManager ?? AlertManager())
         paymentsApi = PaymentsApiImplementation()
         self.featureFlagsRepository = featureFlagsRepository
@@ -124,7 +124,7 @@ public final class Payments {
         // If there are transactions, they will be processed
         // Part of the processing will be fetching the available plans from the BE
 
-        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false) {
             // In the dynamic plans, fetching available IAPs from StoreKit is not a prerequisite.
             // It is done alongside fetching available plans
             Task {

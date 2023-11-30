@@ -38,16 +38,16 @@ enum TestFlagsType: String, FeatureFlagTypeProtocol {
 }
 
 final class FeatureFlagsTests: XCTestCase {
-    var sut = FeatureFlagsRepository.shared
+    var sut: FeatureFlagsRepository!
 
     private var featureFlagUserDefaults: UserDefaults!
     private let suiteName = "FeatureFlagsTests"
+
     override func setUp() {
         super.setUp()
         featureFlagUserDefaults = UserDefaults(suiteName: suiteName)!
-        sut.setUserId(with: "")
-        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(nil))
-        sut.updateLocalDataSource(with: Atomic<LocalFeatureFlagsProtocol>(DefaultLocalFeatureFlagsDatasource(userDefaults: featureFlagUserDefaults)))
+        sut = .init(userId: Atomic<String>(""), localDatasource: Atomic<LocalFeatureFlagsProtocol>(DefaultLocalFeatureFlagsDatasource(userDefaults: featureFlagUserDefaults)),
+                    remoteDatasource: Atomic<RemoteFeatureFlagsProtocol?>(nil))
     }
 
     override func tearDown() {
@@ -69,7 +69,7 @@ final class FeatureFlagsTests: XCTestCase {
         sut.updateLocalDataSource(with: localDataSource)
 
         // Then
-        XCTAssertEqual(sut.localDatasource.value.getFeatureFlags(userId: userId), featureFlags)
+        XCTAssertEqual(sut.localDatasource.value.getStaticFeatureFlags(userId: userId), featureFlags)
     }
 
     func test_updateRemoteDataSource_updatesRemoteDataSource() {
@@ -84,18 +84,6 @@ final class FeatureFlagsTests: XCTestCase {
         XCTAssertNotNil(sut.remoteDataSource.value)
     }
 
-    func test_setUserId_setsUserId() {
-        // Given
-        let userId = "userId"
-        XCTAssertTrue(sut.userId.value.isEmpty)
-
-        // When
-        sut.setUserId(with: userId)
-
-        // Then
-        XCTAssertEqual(sut.userId.value, userId)
-    }
-
     func test_setApiService_setsApiService() {
         // Given
         let apiService = APIServiceMock()
@@ -108,9 +96,9 @@ final class FeatureFlagsTests: XCTestCase {
         XCTAssertNotNil(sut.remoteDataSource.value)
     }
 
-    // MARK: - isEnabled
+    // MARK: - isStaticFlagEnabled
 
-    func test_isEnabled_returnsTrueIfFlagIsPresentAndEnabled() {
+    func test_isStaticFlagEnabled_returnsTrueIfFlagIsPresentAndEnabled() {
         // Given
         let expectation = XCTestExpectation(description: "fetch flags")
         sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
@@ -123,10 +111,10 @@ final class FeatureFlagsTests: XCTestCase {
 
         // Then
         wait(for: [expectation])
-        XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday))
+        XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, isFlagValueDynamic: false))
     }
 
-    func test_isEnabled_returnsFalsIfFlagIsNotPresent() {
+    func test_isStaticFlagEnabled_returnsFalsIfFlagIsNotPresent() {
         // Given
         let expectation = XCTestExpectation(description: "fetch flags")
         sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
@@ -139,10 +127,10 @@ final class FeatureFlagsTests: XCTestCase {
 
         // Then
         wait(for: [expectation])
-        XCTAssertFalse(sut.isEnabled(TestFlagsType.fakeFlag))
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.fakeFlag, isFlagValueDynamic: false))
     }
 
-    func test_isEnabled_returnsFalseIfFlagIsPresentAndDisabled() {
+    func test_isStaticFlagEnabled_returnsFalseIfFlagIsPresentAndDisabled() {
         // Given
         let expectation = XCTestExpectation(description: "fetch flags")
         sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
@@ -155,10 +143,10 @@ final class FeatureFlagsTests: XCTestCase {
 
         // Then
         wait(for: [expectation])
-        XCTAssertFalse(sut.isEnabled(TestFlagsType.disabledFlag))
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.disabledFlag, isFlagValueDynamic: false))
     }
 
-    func test_isEnabledForUser_returnsTrueIfFlagIsPresentAndEnabled() {
+    func test_isStaticFlagEnabledForUser_returnsTrueIfFlagIsPresentAndEnabled() {
         // Given
         let expectation = XCTestExpectation(description: "fetch flags")
         let userId = "userId"
@@ -185,10 +173,10 @@ final class FeatureFlagsTests: XCTestCase {
 
         // Then
         wait(for: [expectation])
-        XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
+        XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, for: userId, isFlagValueDynamic: false))
     }
 
-    func test_isEnabledForUser_returnsFalsIfFlagIsNotPresent() {
+    func test_isStaticFlagEnabledForUser_returnsFalsIfFlagIsNotPresent() {
         // Given
         let expectation = XCTestExpectation(description: "fetch flags")
         let userId = "userId"
@@ -212,10 +200,10 @@ final class FeatureFlagsTests: XCTestCase {
 
         // Then
         wait(for: [expectation])
-        XCTAssertFalse(sut.isEnabled(TestFlagsType.fakeFlag, for: userId))
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.fakeFlag, for: userId, isFlagValueDynamic: false))
     }
 
-    func test_isEnabledForUser_returnsFalseIfFlagIsPresentAndDisabled() {
+    func test_isStaticFlagEnabledForUser_returnsFalseIfFlagIsPresentAndDisabled() {
         // Given
         let expectation = XCTestExpectation(description: "fetch flags")
         let userId = "userId"
@@ -243,35 +231,171 @@ final class FeatureFlagsTests: XCTestCase {
 
         // Then
         wait(for: [expectation])
-        XCTAssertFalse(sut.isEnabled(TestFlagsType.disabledFlag, for: userId))
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.disabledFlag, for: userId, isFlagValueDynamic: false))
+    }
+
+    // MARK: - isDynamicFlagEnabled
+
+    func test_isDynamicFlagEnabled_returnsTrueIfFlagIsPresentAndEnabled() {
+        // Given
+        let expectation = XCTestExpectation(description: "fetch flags")
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
+
+        // When
+        Task {
+            try await sut.fetchFlags()
+            expectation.fulfill()
+        }
+
+        // Then
+        wait(for: [expectation])
+        XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, isFlagValueDynamic: true))
+    }
+
+    func test_isDynamicFlagEnabled_returnsFalsIfFlagIsNotPresent() {
+        // Given
+        let expectation = XCTestExpectation(description: "fetch flags")
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
+
+        // When
+        Task {
+            try await sut.fetchFlags()
+            expectation.fulfill()
+        }
+
+        // Then
+        wait(for: [expectation])
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.fakeFlag, isFlagValueDynamic: true))
+    }
+
+    func test_isDynamicFlagEnabled_returnsFalseIfFlagIsPresentAndDisabled() {
+        // Given
+        let expectation = XCTestExpectation(description: "fetch flags")
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
+
+        // When
+        Task {
+            try await sut.fetchFlags()
+            expectation.fulfill()
+        }
+
+        // Then
+        wait(for: [expectation])
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.disabledFlag, isFlagValueDynamic: true))
+    }
+
+    func test_isDynamicFlagEnabledForUser_returnsTrueIfFlagIsPresentAndEnabled() {
+        // Given
+        let expectation = XCTestExpectation(description: "fetch flags")
+        let userId = "userId"
+        let flagResponse = FeatureFlagResponse(
+            code: 1000,
+            toggles: [.init(
+                name: "BlackFriday",
+                enabled: true,
+                variant: nil
+            )]
+        )
+
+        let apiService = APIServiceMock()
+        apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(flagResponse))
+        }
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
+
+        // When
+        Task {
+            try await sut.fetchFlags(for: userId, with: apiService)
+            expectation.fulfill()
+        }
+
+        // Then
+        wait(for: [expectation])
+        XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, for: userId, isFlagValueDynamic: true))
+    }
+
+    func test_isDynamicFlagEnabledForUser_returnsFalsIfFlagIsNotPresent() {
+        // Given
+        let expectation = XCTestExpectation(description: "fetch flags")
+        let userId = "userId"
+        let flagResponse = FeatureFlagResponse(
+            code: 1000,
+            toggles: []
+        )
+
+        let apiService = APIServiceMock()
+        apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(flagResponse))
+        }
+
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
+
+        // When
+        Task {
+            try await sut.fetchFlags(for: userId, with: apiService)
+            expectation.fulfill()
+        }
+
+        // Then
+        wait(for: [expectation])
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.fakeFlag, for: userId, isFlagValueDynamic: true))
+    }
+
+    func test_isDynamicFlagEnabledForUser_returnsFalseIfFlagIsPresentAndDisabled() {
+        // Given
+        let expectation = XCTestExpectation(description: "fetch flags")
+        let userId = "userId"
+        let flagResponse = FeatureFlagResponse(
+            code: 1000,
+            toggles: [.init(
+                name: "DisabledFlag",
+                enabled: false,
+                variant: nil
+            )]
+        )
+
+        let apiService = APIServiceMock()
+        apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(flagResponse))
+        }
+
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
+
+        // When
+        Task {
+            try await sut.fetchFlags(for: userId, with: apiService)
+            expectation.fulfill()
+        }
+
+        // Then
+        wait(for: [expectation])
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.disabledFlag, for: userId, isFlagValueDynamic: true))
     }
 
     // MARK: - fetchFlags
 
     func test_fetchFlags_withoutUserId_returnsFlagForUnauthSession() async throws {
         // Given
-        XCTAssertTrue(sut.userId.value.isEmpty)
         sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
 
         // When
         try await sut.fetchFlags()
 
         // Then
-        let localFlags = try await sut.localDatasource.value.getFeatureFlags(userId: "")
+        let localFlags = try await sut.localDatasource.value.getDynamicFeatureFlags(userId: "")
         XCTAssertEqual(localFlags?.isEmpty, false)
     }
 
     func test_fetchFlags_withUserId_returnsFlagForUserId() async throws {
         // Given
         let userId = "userId"
-        sut.setUserId(with: userId)
         sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
 
         // When
-        try await sut.fetchFlags()
+        try await sut.fetchFlags(for: userId)
 
         // Then
-        let localFlags = try await sut.localDatasource.value.getFeatureFlags(userId: userId)
+        let localFlags = try await sut.localDatasource.value.getDynamicFeatureFlags(userId: userId)
         XCTAssertEqual(localFlags?.isEmpty, false)
     }
 
@@ -296,11 +420,11 @@ final class FeatureFlagsTests: XCTestCase {
         try await sut.fetchFlags(for: userId, with: apiService)
 
         // Then
-        let localFlags = try await sut.localDatasource.value.getFeatureFlags(userId: userId)
+        let localFlags = try await sut.localDatasource.value.getDynamicFeatureFlags(userId: userId)
         XCTAssertEqual(localFlags?.isEmpty, false)
     }
 
-    func test_isEnabledAlwaysReturnsSameValueForOneInstance() async throws {
+    func test_isStaticFlagEnabledAlwaysReturnsSameValueForOneInstance() async throws {
         // Given
         let userId = "userId"
         let flagResponse1 = FeatureFlagResponse(
@@ -333,16 +457,16 @@ final class FeatureFlagsTests: XCTestCase {
         try await sut.fetchFlags(for: userId, with: apiService)
 
         // Then BlackFriday flag is true is isEnabled returns true
-        XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
+        XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, for: userId, isFlagValueDynamic: false))
 
         // When fetching a second time
         try await sut.fetchFlags(for: userId, with: apiService)
 
         // Then BlackFriday flag is false but isEnabled still returns the first returned value
-        XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
+        XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, for: userId, isFlagValueDynamic: false))
     }
 
-    func test_isEnabledReturnsSameValueEventIfEmptyTheFirstTime() async throws {
+    func test_isStaticFlagEnabledReturnsSameValueEventIfEmptyTheFirstTime() async throws {
         // Given
         let userId = "userId"
         let flagResponse1 = FeatureFlagResponse(
@@ -375,13 +499,13 @@ final class FeatureFlagsTests: XCTestCase {
         try await sut.fetchFlags(for: userId, with: apiService)
 
         // Then BlackFriday flag is not returned and is isEnabled returns false
-        XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday, for: userId, isFlagValueDynamic: false))
 
         // When fetching a second time
         try await sut.fetchFlags(for: userId, with: apiService)
 
         // Then BlackFriday flag is returned and true, but isEnabled still returns the first returned value
-        XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday, for: userId, isFlagValueDynamic: false))
     }
 
     func test_fetchingFlagsWhenUserDefaultAreEmptyShouldAlwaysReturnFalse() async throws {
@@ -402,13 +526,13 @@ final class FeatureFlagsTests: XCTestCase {
         }
 
         // Then BlackFriday flag is not returned and is isEnabled returns false
-        XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday, for: userId, isFlagValueDynamic: false))
 
         // When fetching the first time
         try await sut.fetchFlags(for: userId, with: apiService)
 
         // Then BlackFriday flag is returned and true, but isEnabled still returns the first returned value
-        XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday, for: userId, isFlagValueDynamic: false))
     }
 
     func test_resetFlagsForUserId_resetsFlagsForuserId() async throws {
@@ -447,7 +571,7 @@ final class FeatureFlagsTests: XCTestCase {
         try await sut.fetchFlags(for: userId2, with: apiService)
 
         // Then
-        let flags = try await sut.localDatasource.value.getFeatureFlags(userId: userId1)
+        let flags = try await sut.localDatasource.value.getDynamicFeatureFlags(userId: userId1)
         XCTAssertEqual(flags, FeatureFlags(flags: flagResponse1.toggles))
 
         // When
@@ -480,7 +604,7 @@ final class FeatureFlagsTests: XCTestCase {
         try await sut.fetchFlags(for: userId, with: apiService)
 
         // Then
-        let flags = try await sut.localDatasource.value.getFeatureFlags(userId: userId)
+        let flags = try await sut.localDatasource.value.getDynamicFeatureFlags(userId: userId)
         XCTAssertEqual(flags, FeatureFlags(flags: flagResponse.toggles))
 
         // When
@@ -490,5 +614,4 @@ final class FeatureFlagsTests: XCTestCase {
         let emptyFlags: [String: FeatureFlags]? = featureFlagUserDefaults.decodableValue(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
         XCTAssertNil(emptyFlags)
     }
-
 }
