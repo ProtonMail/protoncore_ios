@@ -27,18 +27,29 @@ public protocol FeatureFlagsRepositoryProtocol: AnyObject {
 
     func updateLocalDataSource(with localDatasource: Atomic<LocalFeatureFlagsProtocol>)
 
-    // MARK: - For single user clients
+    // MARK: - For single-user clients
     func setUserId(with userId: String)
     func setApiService(with apiService: APIService)
-    func fetchFlags() async throws
-    func isEnabled(_ flag: any FeatureFlagTypeProtocol) -> Bool
-    func isEnabled(_ flag: any FeatureFlagTypeProtocol) async throws -> Bool
+    func fetchFlags(for userId: String, with apiService: APIService?) async throws
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, reloadValue: Bool) -> Bool
 
-    // - MARK: For multi users clients
-    func fetchFlags(for userId: String, with apiService: APIService) async throws
-    func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String) -> Bool
+    // - MARK: For multi-users clients
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String, reloadValue: Bool) -> Bool
 
     // MARK: - Commons
     func resetFlags()
     func resetFlags(for userId: String)
+}
+
+public extension FeatureFlagsRepositoryProtocol {
+
+    // MARK: - For single-user clients
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, reloadValue: Bool = false) -> Bool {
+        isEnabled(flag, reloadValue: reloadValue)
+    }
+
+    // - MARK: For multi-user clients
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String, reloadValue: Bool = false) -> Bool {
+        isEnabled(flag, for: userId, reloadValue: reloadValue)
+    }
 }

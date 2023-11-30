@@ -23,8 +23,7 @@
 import Foundation
 
 public protocol LocalFeatureFlagsProtocol {
-    func getFeatureFlags(userId: String) -> FeatureFlags?
-    func getFeatureFlags(userId: String) async throws -> FeatureFlags?
+    func getFeatureFlags(userId: String, reloadFromUserDefaults: Bool) -> FeatureFlags?
     func upsertFlags(_ flags: FeatureFlags, userId: String)
     func cleanAllFlags()
     func cleanFlags(for userId: String)

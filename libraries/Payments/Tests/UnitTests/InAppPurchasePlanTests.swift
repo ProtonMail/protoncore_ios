@@ -22,7 +22,7 @@
 
 import XCTest
 @testable import ProtonCorePayments
-import ProtonCoreFeatureFlagsTests
+import ProtonCoreFeatureFlags
 
 final class InAppPurchasePlanTests: XCTestCase {
     var sut: InAppPurchasePlan!

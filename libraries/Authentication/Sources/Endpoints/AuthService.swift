@@ -31,8 +31,11 @@ import ProtonCoreLog
 
 public class AuthService: Client {
     public var apiService: APIService
-    public init(api: APIService) {
+    private let featureFlagsRepository: FeatureFlagsRepositoryProtocol
+
+    public init(api: APIService, featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared) {
         self.apiService = api
+        self.featureFlagsRepository = featureFlagsRepository
     }
 
     func ssoAuthentication(ssoResponseToken: SSOResponseToken, complete: @escaping(_ response: Result<AuthService.AuthRouteResponse, ResponseError>) -> Void) {
@@ -52,7 +55,7 @@ public class AuthService: Client {
     public func info(username: String, intent: Intent?, complete: @escaping(_ response: Result<Either<AuthInfoResponse, SSOChallengeResponse>, ResponseError>) -> Void) {
         var endpoint: InfoEndpoint
 
-        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.externalSSO),
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.externalSSO),
            let intent = intent {
             switch intent {
             case .sso:
