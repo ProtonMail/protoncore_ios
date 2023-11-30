@@ -44,7 +44,7 @@ final class TokenHandler {
 
     init(dependencies: ProcessDependencies, featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared) {
         self.dependencies = dependencies
-        self.areSubscriptionsEnabled = featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false)
+        self.areSubscriptionsEnabled = featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)
     }
 
     let queue = DispatchQueue(label: "TokenHandler async queue", qos: .userInitiated)

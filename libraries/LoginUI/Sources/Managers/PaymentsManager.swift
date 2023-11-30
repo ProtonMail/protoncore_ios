@@ -55,7 +55,7 @@ class PaymentsManager {
                                  reportBugAlertHandler: reportBugAlertHandler)
         storeExistingDelegate()
         payments.storeKitManager.delegate = self
-        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             // In the dynamic plans, fetching available IAPs from StoreKit is done alongside fetching available plans
             Task {
                 if case let .right(plansDataSource) = payments.planService {
@@ -78,7 +78,7 @@ class PaymentsManager {
                              planShownHandler: (() -> Void)?,
                              completionHandler: @escaping (Result<(), Error>) -> Void) {
 
-        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             // In the dynamic plans, fetching available IAPs from StoreKit is done alongside fetching available plans
             continuePaymentProcess(signupViewController: signupViewController,
                                    planShownHandler: planShownHandler,

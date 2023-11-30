@@ -66,7 +66,7 @@ public class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol {
     }
 }
 
-// MARK: - For single user clients
+// MARK: - For single-user clients
 
 public extension FeatureFlagsRepository {
 
@@ -78,7 +78,7 @@ public extension FeatureFlagsRepository {
     }
 
     /**
-     Only for single user clients.
+     Only for single-user clients.
 
      Sets the FeatureFlagsRepository configuration with the given user id.
 
@@ -90,7 +90,7 @@ public extension FeatureFlagsRepository {
     }
 
     /**
-     Only for single user clients.
+     Only for single-user clients.
 
      Sets the FeatureFlagsRepository remote data source with the given api service.
 
@@ -102,7 +102,7 @@ public extension FeatureFlagsRepository {
     }
 
     /**
-     For unauth sessions or single user clients.
+     For unauth sessions or single-user clients.
 
      Asynchronously fetches the feature flags from the remote data source and updates the local data source.
 
@@ -130,7 +130,7 @@ public extension FeatureFlagsRepository {
     }
 
     /**
-     For unauth sessions or single user clients.
+     For unauth sessions or single-user clients.
 
      A Boolean function indicating if a feature flag is enabled or not.
      The flag is fetched from the local data source and will always return
@@ -138,21 +138,15 @@ public extension FeatureFlagsRepository {
 
      - Parameters:
        - flag: The flag we want to know the state of.
-       - isFlagValueDynamic: set `true` if you want the latest stored value for the flag. set `false` if  you want the static value, which is always the same as the first returned.
+       - reloadValue: set `true` if you want the latest stored value for the flag. set `false` if  you want the static value, which is always the same as the first returned.
      */
-    func isEnabled(_ flag: any FeatureFlagTypeProtocol, isFlagValueDynamic: Bool) -> Bool {
-        let flags: FeatureFlags?
-        if isFlagValueDynamic {
-            flags = localDatasource.value.getDynamicFeatureFlags(userId: userId.value)
-        } else {
-            flags = localDatasource.value.getStaticFeatureFlags(userId: userId.value)
-        }
-
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, reloadValue: Bool) -> Bool {
+        let flags = localDatasource.value.getFeatureFlags(userId: userId.value, reloadFromUserDefaults: reloadValue)
         return flags?.getFlag(for: flag)?.enabled ?? false
     }
 
     /**
-     For unauth sessions or single user clients.
+     For unauth sessions or single-user clients.
 
      An async Boolean function indicating if a feature flag is enabled or not.
      The flag is fetched from the local data source and will always return
@@ -160,21 +154,15 @@ public extension FeatureFlagsRepository {
 
      - Parameters:
        - flag: The flag we want to know the state of.
-       - isFlagValueDynamic: set `true` if you want the latest stored value for the flag. set `false` if you want the static value, which is always the same as the first returned.
+       - reloadValue: set `true` if you want the latest stored value for the flag. set `false` if you want the static value, which is always the same as the first returned.
      */
-    func isEnabled(_ flag: any FeatureFlagTypeProtocol, isFlagValueDynamic: Bool) async throws -> Bool {
-        let flags: FeatureFlags?
-        if isFlagValueDynamic {
-            flags = try await localDatasource.value.getDynamicFeatureFlags(userId: userId.value)
-        } else {
-            flags = localDatasource.value.getStaticFeatureFlags(userId: userId.value)
-        }
-
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, reloadValue: Bool) async throws -> Bool {
+        let flags = try await localDatasource.value.getFeatureFlags(userId: userId.value, reloadFromUserDefaults: reloadValue)
         return flags?.getFlag(for: flag)?.enabled ?? false
     }
 }
 
-// - MARK: For multi users clients
+// - MARK: For multi-users clients
 
 public extension FeatureFlagsRepository {
 
@@ -186,16 +174,10 @@ public extension FeatureFlagsRepository {
      - Parameters:
        - flag: The flag we want to know the state of.
        - userId: The user id for which we want to check the flag value
-       - isFlagValueDynamic: set `true` if you want the latest stored value for the flag. set `false` if you want the static value, which is always the same as the first returned.
+       - reloadValue: set `true` if you want the latest stored value for the flag. set `false` if you want the static value, which is always the same as the first returned.
      */
-    func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String, isFlagValueDynamic: Bool) -> Bool {
-        let flags: FeatureFlags?
-        if isFlagValueDynamic {
-            flags = localDatasource.value.getDynamicFeatureFlags(userId: userId)
-        } else {
-            flags = localDatasource.value.getStaticFeatureFlags(userId: userId)
-        }
-
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String, reloadValue: Bool) -> Bool {
+        let flags = localDatasource.value.getFeatureFlags(userId: userId, reloadFromUserDefaults: reloadValue)
         return flags?.getFlag(for: flag)?.enabled ?? false
     }
 }

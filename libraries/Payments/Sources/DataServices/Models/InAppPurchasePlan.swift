@@ -54,7 +54,7 @@ public struct InAppPurchasePlan: Equatable, Hashable {
 
     // FIXME: these checks are possibly too coupled to plan name, and betray too much knowledge
     public static func isThisAFreePlan(protonName: String, featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared) -> Bool {
-        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             return protonName == freePlanName || protonName.containsIgnoringCase(check: "vpnfree") || protonName.containsIgnoringCase(check: "drivefree")
         } else {
             return protonName == freePlanName || protonName == "vpnfree" || protonName == "drivefree"
@@ -181,7 +181,7 @@ public struct InAppPurchasePlan: Equatable, Hashable {
     /// plan name, offer, period and currency
     public init?(storeKitProductId: ProductId,
                  featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared) {
-        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false)  {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)  {
             self.init(storeKitProductId: storeKitProductId,
                       protonName: storeKitProductId, // only used for observability to find if it's the free plan
                       offer: nil,

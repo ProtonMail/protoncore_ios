@@ -35,7 +35,7 @@ protocol PlanCellDelegate: AnyObject {
 final class PlanCell: UITableViewCell, AccessibleCell {
 
     private var isDynamicPlansEnabled: Bool {
-        featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false)
+        featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)
     }
 
     static let reuseIdentifier = "PlanCell"

@@ -30,7 +30,7 @@ public class DefaultLocalFeatureFlagsDatasource: LocalFeatureFlagsProtocol {
     static let userIdKey = "protoncore.featureflag.userId"
     
     private let userDefaults: UserDefaults
-    private var staticFlagsForSession: [String: FeatureFlags]?
+    private var flagsForSession: [String: FeatureFlags]?
     private var userIdForSession: String?
 
     public init(userDefaults: UserDefaults = .standard) {
@@ -38,31 +38,26 @@ public class DefaultLocalFeatureFlagsDatasource: LocalFeatureFlagsProtocol {
     }
 
     // MARK: - Get flags
+    public func getFeatureFlags(userId: String, reloadFromUserDefaults: Bool) -> FeatureFlags? {
+        getLocalFeatureFlags(userId: userId, reloadFromUserDefaults: reloadFromUserDefaults)
+    }
 
-    public func getStaticFeatureFlags(userId: String) -> FeatureFlags? {
+    public func getFeatureFlags(userId: String, reloadFromUserDefaults: Bool) async throws -> FeatureFlags? {
+        getLocalFeatureFlags(userId: userId, reloadFromUserDefaults: reloadFromUserDefaults)
+    }
+
+    private func getLocalFeatureFlags(userId: String, reloadFromUserDefaults: Bool) -> FeatureFlags? {
         serialAccessQueue.sync {
-            if let staticFlagsForSession, let userIdForSession {
-                return staticFlagsForSession[userIdForSession]
+            if reloadFromUserDefaults {
+                let dynamicFlags: [String: FeatureFlags]? = userDefaults.decodableValue(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+                return dynamicFlags?[userId]
+            } else if let flagsForSession, let userIdForSession {
+                return flagsForSession[userIdForSession]
             }
 
             userIdForSession = userId
-            staticFlagsForSession = userDefaults.decodableValue(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey) ?? [:]
-            return staticFlagsForSession?[userId]
-        }
-    }
-
-    public func getDynamicFeatureFlags(userId: String) -> FeatureFlags? {
-        getDynamicLocalFeatureFlags(userId: userId)
-    }
-
-    public func getDynamicFeatureFlags(userId: String) async throws -> FeatureFlags? {
-        getDynamicLocalFeatureFlags(userId: userId)
-    }
-
-    private func getDynamicLocalFeatureFlags(userId: String) -> FeatureFlags? {
-        serialAccessQueue.sync {
-            let dynamicFlags: [String: FeatureFlags]? = userDefaults.decodableValue(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
-            return dynamicFlags?[userId]
+            flagsForSession = userDefaults.decodableValue(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey) ?? [:]
+            return flagsForSession?[userId]
         }
     }
 

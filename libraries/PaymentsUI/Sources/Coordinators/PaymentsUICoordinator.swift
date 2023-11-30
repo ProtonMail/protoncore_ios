@@ -86,7 +86,7 @@ final class PaymentsUICoordinator {
         self.viewController = viewController
         self.mode = .signup
         self.completionHandler = completionHandler
-        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             Task {
                 try await showPaymentsUI(servicePlan: planService)
             }
@@ -99,7 +99,7 @@ final class PaymentsUICoordinator {
         self.presentationType = presentationType
         self.mode = mode
         self.completionHandler = completionHandler
-        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             Task {
                 try await showPaymentsUI(servicePlan: planService)
             }
@@ -326,7 +326,7 @@ extension PaymentsUICoordinator: PaymentsUIViewControllerDelegate {
         // Plan data should not be refreshed on first appear because at that time data are freshly loaded. Here must be covered situations when
         // app goes from background for example.
         guard !isFirstAppearance else { return }
-        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             Task {
                 await refreshPlans()
             }

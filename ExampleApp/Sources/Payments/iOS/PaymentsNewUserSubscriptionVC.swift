@@ -243,7 +243,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
     private func processPossiblePlans() {
         availablePlans.removeAll()
         subscriptionSelector.removeAllSegments()
-        inAppPurchases.compactMap(InAppPurchasePlan.init(storeKitProductId:)).forEach {
+        inAppPurchases.compactMap { InAppPurchasePlan.init(storeKitProductId: $0) }.forEach {
             if let isPurchasable = checkIfIsPurchasable(accountPlan: $0), isPurchasable {
                 availablePlans.append($0)
             }

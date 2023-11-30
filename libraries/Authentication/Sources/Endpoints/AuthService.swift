@@ -55,7 +55,7 @@ public class AuthService: Client {
     public func info(username: String, intent: Intent?, complete: @escaping(_ response: Result<Either<AuthInfoResponse, SSOChallengeResponse>, ResponseError>) -> Void) {
         var endpoint: InfoEndpoint
 
-        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.externalSSO, isFlagValueDynamic: false),
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.externalSSO),
            let intent = intent {
             switch intent {
             case .sso:

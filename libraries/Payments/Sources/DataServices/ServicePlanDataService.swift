@@ -127,7 +127,7 @@ final class ServicePlanDataService: ServicePlanDataServiceProtocol {
     public weak var currentSubscriptionChangeDelegate: CurrentSubscriptionChangeDelegate?
 
     public var isIAPAvailable: Bool {
-        guard !featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false) else {
+        guard !featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) else {
             assertionFailure("ServicePlanDataService should never be called with Dynamic Plans FF enabled")
             return false
         }
@@ -270,7 +270,7 @@ extension ServicePlanDataService {
             return false
         }
 
-        guard !featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false) else {
+        guard !featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) else {
             assertionFailure("You shouldn't be using plan data services with Dynamic Plans")
             return false
         }

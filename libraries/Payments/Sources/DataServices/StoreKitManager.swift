@@ -244,7 +244,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
         self.storeKitDataSource = storeKitDataSource
         self.paymentsApi = paymentsApi
         self.apiService = apiService
-        self.canExtendSubscription = canExtendSubscription && !featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false)
+        self.canExtendSubscription = canExtendSubscription && !featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)
         self.paymentsAlertManager = paymentsAlertManager
         self.reportBugAlertHandler = reportBugAlertHandler
         self.refreshHandler = refreshHandler
@@ -273,7 +273,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
 
     public func updateAvailableProductsList(completion: @escaping (Error?) -> Void) {
         // This is just for early detection of programmers errors and to indicate what can be removed when we remove the feature flag
-        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             assertionFailure("This method should never be called with dynamic plans. The StoreKitDataSource object fetches the SKProducts")
         }
         updateAvailableProductsListCompletionBlock = { error in DispatchQueue.main.async { completion(error) } }
@@ -556,7 +556,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
 extension StoreKitManager: SKProductsRequestDelegate {
     public func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         // This is just for early detection of programmers errors and to indicate what can be removed when we remove the feature flag
-        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             assertionFailure("This method should never be called with dynamic plans. The StoreKitDataSource object fetches the SKProducts")
         }
         if !response.invalidProductIdentifiers.isEmpty {
@@ -572,7 +572,7 @@ extension StoreKitManager: SKProductsRequestDelegate {
 
     func request(_: SKRequest, didFailWithError error: Error) {
         // This is just for early detection of programmers errors and to indicate what can be removed when we remove the feature flag
-        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             assertionFailure("This method should never be called with dynamic plans. The StoreKitDataSource object fetches the SKProducts")
         }
         #if targetEnvironment(simulator)
@@ -901,7 +901,7 @@ extension StoreKitManager: ProcessDependencies {
 
     var updateSubscription: (Subscription) throws -> Void { { [weak self] in
         guard let self else { return }
-        guard !self.featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan, isFlagValueDynamic: false), case .left(let planService) = self.planService else {
+        guard !self.featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan), case .left(let planService) = self.planService else {
             throw StoreKitManagerErrors.noNewSubscriptionInSuccessfulResponse
         }
         planService.currentSubscription = $0
