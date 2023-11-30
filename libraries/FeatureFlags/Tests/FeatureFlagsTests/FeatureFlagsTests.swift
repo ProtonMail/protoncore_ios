@@ -249,7 +249,7 @@ final class FeatureFlagsTests: XCTestCase {
 
         // Then
         wait(for: [expectation])
-        XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, reloadingValue: true))
+        XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, reloadValue: true))
     }
 
     func test_isEnabled_reloadFromUserDefaults_returnsFalseIfFlagIsNotPresent() {
@@ -265,7 +265,7 @@ final class FeatureFlagsTests: XCTestCase {
 
         // Then
         wait(for: [expectation])
-        XCTAssertFalse(sut.isEnabled(TestFlagsType.fakeFlag, reloadingValue: true))
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.fakeFlag, reloadValue: true))
     }
 
     func test_isEnabled_reloadFromUserDefaults_returnsFalseIfFlagIsPresentAndDisabled() {
@@ -281,7 +281,7 @@ final class FeatureFlagsTests: XCTestCase {
 
         // Then
         wait(for: [expectation])
-        XCTAssertFalse(sut.isEnabled(TestFlagsType.disabledFlag, reloadingValue: true))
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.disabledFlag, reloadValue: true))
     }
 
     func test_isEnabledForUser_reloadFromUserDefaults_returnsTrueIfFlagIsPresentAndEnabled() {
@@ -311,7 +311,7 @@ final class FeatureFlagsTests: XCTestCase {
 
         // Then
         wait(for: [expectation])
-        XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, for: userId, reloadingValue: true))
+        XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, for: userId, reloadValue: true))
     }
 
     func test_isEnabledForUser_reloadFromUserDefaults_returnsFalseIfFlagIsNotPresent() {
@@ -338,7 +338,7 @@ final class FeatureFlagsTests: XCTestCase {
 
         // Then
         wait(for: [expectation])
-        XCTAssertFalse(sut.isEnabled(TestFlagsType.fakeFlag, for: userId, reloadingValue: true))
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.fakeFlag, for: userId, reloadValue: true))
     }
 
     func test_isEnabledForUser_reloadFromUserDefaults_returnsFalseIfFlagIsPresentAndDisabled() {
@@ -369,7 +369,7 @@ final class FeatureFlagsTests: XCTestCase {
 
         // Then
         wait(for: [expectation])
-        XCTAssertFalse(sut.isEnabled(TestFlagsType.disabledFlag, for: userId, reloadingValue: true))
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.disabledFlag, for: userId, reloadValue: true))
     }
 
     // MARK: - fetchFlags

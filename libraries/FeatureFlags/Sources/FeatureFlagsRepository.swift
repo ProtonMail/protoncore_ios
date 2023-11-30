@@ -135,21 +135,34 @@ public extension FeatureFlagsRepository {
 
     /**
      A Boolean function indicating if a feature flag is enabled or not.
-     The flag is fetched from the local data source and will always return
-     the value that is returned initally on the first call.
+     The flag is fetched from the local data source and is intended for use in a single-user context.
 
      - Parameters:
        - flag: The flag we want to know the state of.
-       - userId: The user id for which we want to check the flag value. If the userId is `nil`, the last set userId will be used.
-       - reloadingValue: set `true` if you want the latest stored value for the flag. set `false` if  you want the "static" value, which is always the same as the first returned.
+       - reloadValue: Pass `true` if you want the latest stored value for the flag. Pass `false` if  you want the "static" value, which is always the same as the first returned.
      */
-    func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String? = nil, reloadingValue: Bool) -> Bool {
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, reloadValue: Bool) -> Bool {
+        let flags = localDatasource.value.getFeatureFlags(userId: self.userId.value, 
+                                                          reloadFromUserDefaults: reloadValue)
+        return flags?.getFlag(for: flag)?.enabled ?? false
+    }
+
+    /**
+     A Boolean function indicating if a feature flag is enabled or not.
+     The flag is fetched from the local data source and is intended for use in multi-user contexts.
+
+     - Parameters:
+       - flag: The flag we want to know the state of.
+       - userId: The user id for which we want to check the flag value. If the userId is `nil`, the first-set userId will be used.  See ``setUserId(_)``.
+       - reloadValue: Pass `true` if you want the latest stored value for the flag. Pass `false` if  you want the "static" value, which is always the same as the first returned.
+     */
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String?, reloadValue: Bool) -> Bool {
         let flags: FeatureFlags?
 
         if let userId {
-            flags = localDatasource.value.getFeatureFlags(userId: userId, reloadFromUserDefaults: reloadingValue)
+            flags = localDatasource.value.getFeatureFlags(userId: userId, reloadFromUserDefaults: reloadValue)
         } else {
-            flags = localDatasource.value.getFeatureFlags(userId: self.userId.value, reloadFromUserDefaults: reloadingValue)
+            flags = localDatasource.value.getFeatureFlags(userId: self.userId.value, reloadFromUserDefaults: reloadValue)
         }
 
         return flags?.getFlag(for: flag)?.enabled ?? false
