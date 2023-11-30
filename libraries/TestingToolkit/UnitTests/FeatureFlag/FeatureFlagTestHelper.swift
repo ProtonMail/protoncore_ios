@@ -31,17 +31,17 @@ extension XCTestCase {
         let currentUserId = FeatureFlagsRepository.shared.userId.value
 
         defer {
-            FeatureFlagsRepository.shared.updateLocalDataSource(with: currentLocalDataSource)
-            FeatureFlagsRepository.shared.setUserId(with: currentUserId)
+            FeatureFlagsRepository.shared.updateLocalDataSource(currentLocalDataSource)
+            FeatureFlagsRepository.shared.setUserId(currentUserId)
         }
 
         let testUserId = "testUserId"
         let userDefaults = UserDefaults(suiteName: "withFeatureFlags")!
         userDefaults.setEncodableValue([testUserId: FeatureFlags(flags: flags)], forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
 
-        FeatureFlagsRepository.shared.setUserId(with: testUserId)
+        FeatureFlagsRepository.shared.setUserId(testUserId)
         FeatureFlagsRepository.shared.updateLocalDataSource(
-            with: Atomic<LocalFeatureFlagsProtocol>(
+            Atomic<LocalFeatureFlagsProtocol>(
                 DefaultLocalFeatureFlagsDatasource(userDefaults: userDefaults)
             )
         )
@@ -58,16 +58,16 @@ extension XCTestCase {
         let userDefaults = UserDefaults(suiteName: "withFeatureFlagsAsync")!
         userDefaults.setEncodableValue([testUserId: FeatureFlags(flags: flags)], forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
 
-        FeatureFlagsRepository.shared.setUserId(with: testUserId)
+        FeatureFlagsRepository.shared.setUserId(testUserId)
         FeatureFlagsRepository.shared.updateLocalDataSource(
-            with: Atomic<LocalFeatureFlagsProtocol>(
+            Atomic<LocalFeatureFlagsProtocol>(
                 DefaultLocalFeatureFlagsDatasource(userDefaults: userDefaults)
             )
         )
         let returnValue = try! await block()
 
-        FeatureFlagsRepository.shared.updateLocalDataSource(with: currentLocalDataSource)
-        FeatureFlagsRepository.shared.setUserId(with: currentUserId)
+        FeatureFlagsRepository.shared.updateLocalDataSource(currentLocalDataSource)
+        FeatureFlagsRepository.shared.setUserId(currentUserId)
 
         return  returnValue
     }

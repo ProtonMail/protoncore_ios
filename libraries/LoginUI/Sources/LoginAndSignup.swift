@@ -211,9 +211,9 @@ public final class LoginAndSignup {
     private func fetchFlags(for result: LoginAndSignupResult) {
         switch result {
         case .loginStateChanged(.dataIsAvailable(let data)), .signupStateChanged(.dataIsAvailable(let data)):
-            FeatureFlagsRepository.shared.setUserId(with: data.user.ID)
+            FeatureFlagsRepository.shared.setUserId(data.user.ID)
             Task {
-                try await FeatureFlagsRepository.shared.fetchFlags()
+                try await FeatureFlagsRepository.shared.fetchFlags(for: .unauth)
             }
         default: break
         }

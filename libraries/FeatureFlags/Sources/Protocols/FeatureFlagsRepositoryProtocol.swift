@@ -23,18 +23,17 @@
 import ProtonCoreServices
 import ProtonCoreUtilities
 
+public enum SessionType {
+    case unauth
+    case auth(userId: String)
+}
+
 public protocol FeatureFlagsRepositoryProtocol: AnyObject {
-
-    func updateLocalDataSource(with localDatasource: Atomic<LocalFeatureFlagsProtocol>)
-
-    // MARK: - For single-user clients
-    func setUserId(with userId: String)
-    func setApiService(with apiService: APIService)
-    func fetchFlags(for userId: String, with apiService: APIService?) async throws
-    func isEnabled(_ flag: any FeatureFlagTypeProtocol, reloadValue: Bool) -> Bool
-
-    // - MARK: For multi-users clients
-    func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String, reloadValue: Bool) -> Bool
+    func updateLocalDataSource(_ localDatasource: Atomic<LocalFeatureFlagsProtocol>)
+    func setUserId(_ userId: String)
+    func setApiService(_ apiService: APIService)
+    func fetchFlags(for sessionType: SessionType, using apiService: APIService?) async throws
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String?, reloadingValue: Bool) -> Bool
 
     // MARK: - Commons
     func resetFlags()
@@ -44,12 +43,7 @@ public protocol FeatureFlagsRepositoryProtocol: AnyObject {
 public extension FeatureFlagsRepositoryProtocol {
 
     // MARK: - For single-user clients
-    func isEnabled(_ flag: any FeatureFlagTypeProtocol, reloadValue: Bool = false) -> Bool {
-        isEnabled(flag, reloadValue: reloadValue)
-    }
-
-    // - MARK: For multi-user clients
-    func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String, reloadValue: Bool = false) -> Bool {
-        isEnabled(flag, for: userId, reloadValue: reloadValue)
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String? = nil, reloadingValue: Bool = false) -> Bool {
+        isEnabled(flag, for: userId, reloadingValue: reloadingValue)
     }
 }

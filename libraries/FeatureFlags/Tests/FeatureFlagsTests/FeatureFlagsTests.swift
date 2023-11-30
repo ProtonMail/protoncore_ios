@@ -66,7 +66,7 @@ final class FeatureFlagsTests: XCTestCase {
         sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
 
         // When
-        sut.updateLocalDataSource(with: localDataSource)
+        sut.updateLocalDataSource(localDataSource)
 
         // Then
         XCTAssertEqual(sut.localDatasource.value.getFeatureFlags(userId: userId, reloadFromUserDefaults: false), featureFlags)
@@ -90,7 +90,7 @@ final class FeatureFlagsTests: XCTestCase {
         XCTAssertNil(sut.remoteDataSource.value)
 
         // When
-        sut.setApiService(with: apiService)
+        sut.setApiService(apiService)
 
         // Then
         XCTAssertNotNil(sut.remoteDataSource.value)
@@ -105,7 +105,7 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         Task {
-            try await sut.fetchFlags()
+            try await sut.fetchFlags(for: .unauth)
             expectation.fulfill()
         }
 
@@ -121,7 +121,7 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         Task {
-            try await sut.fetchFlags()
+            try await sut.fetchFlags(for: .unauth)
             expectation.fulfill()
         }
 
@@ -137,7 +137,7 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         Task {
-            try await sut.fetchFlags()
+            try await sut.fetchFlags(for: .unauth)
             expectation.fulfill()
         }
 
@@ -167,7 +167,7 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         Task {
-            try await sut.fetchFlags(for: userId, with: apiService)
+            try await sut.fetchFlags(for: .auth(userId: userId), using: apiService)
             expectation.fulfill()
         }
 
@@ -194,7 +194,7 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         Task {
-            try await sut.fetchFlags(for: userId, with: apiService)
+            try await sut.fetchFlags(for: .auth(userId: userId), using: apiService)
             expectation.fulfill()
         }
 
@@ -225,7 +225,7 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         Task {
-            try await sut.fetchFlags(for: userId, with: apiService)
+            try await sut.fetchFlags(for: .auth(userId: userId), using: apiService)
             expectation.fulfill()
         }
 
@@ -243,13 +243,13 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         Task {
-            try await sut.fetchFlags()
+            try await sut.fetchFlags(for: .unauth)
             expectation.fulfill()
         }
 
         // Then
         wait(for: [expectation])
-        XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, reloadValue: true))
+        XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, reloadingValue: true))
     }
 
     func test_isEnabled_reloadFromUserDefaults_returnsFalseIfFlagIsNotPresent() {
@@ -259,13 +259,13 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         Task {
-            try await sut.fetchFlags()
+            try await sut.fetchFlags(for: .unauth)
             expectation.fulfill()
         }
 
         // Then
         wait(for: [expectation])
-        XCTAssertFalse(sut.isEnabled(TestFlagsType.fakeFlag, reloadValue: true))
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.fakeFlag, reloadingValue: true))
     }
 
     func test_isEnabled_reloadFromUserDefaults_returnsFalseIfFlagIsPresentAndDisabled() {
@@ -275,13 +275,13 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         Task {
-            try await sut.fetchFlags()
+            try await sut.fetchFlags(for: .unauth)
             expectation.fulfill()
         }
 
         // Then
         wait(for: [expectation])
-        XCTAssertFalse(sut.isEnabled(TestFlagsType.disabledFlag, reloadValue: true))
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.disabledFlag, reloadingValue: true))
     }
 
     func test_isEnabledForUser_reloadFromUserDefaults_returnsTrueIfFlagIsPresentAndEnabled() {
@@ -305,13 +305,13 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         Task {
-            try await sut.fetchFlags(for: userId, with: apiService)
+            try await sut.fetchFlags(for: .auth(userId: userId), using: apiService)
             expectation.fulfill()
         }
 
         // Then
         wait(for: [expectation])
-        XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, for: userId, reloadValue: true))
+        XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, for: userId, reloadingValue: true))
     }
 
     func test_isEnabledForUser_reloadFromUserDefaults_returnsFalseIfFlagIsNotPresent() {
@@ -332,13 +332,13 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         Task {
-            try await sut.fetchFlags(for: userId, with: apiService)
+            try await sut.fetchFlags(for: .auth(userId: userId), using: apiService)
             expectation.fulfill()
         }
 
         // Then
         wait(for: [expectation])
-        XCTAssertFalse(sut.isEnabled(TestFlagsType.fakeFlag, for: userId, reloadValue: true))
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.fakeFlag, for: userId, reloadingValue: true))
     }
 
     func test_isEnabledForUser_reloadFromUserDefaults_returnsFalseIfFlagIsPresentAndDisabled() {
@@ -363,13 +363,13 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         Task {
-            try await sut.fetchFlags(for: userId, with: apiService)
+            try await sut.fetchFlags(for: .auth(userId: userId), using: apiService)
             expectation.fulfill()
         }
 
         // Then
         wait(for: [expectation])
-        XCTAssertFalse(sut.isEnabled(TestFlagsType.disabledFlag, for: userId, reloadValue: true))
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.disabledFlag, for: userId, reloadingValue: true))
     }
 
     // MARK: - fetchFlags
@@ -379,10 +379,10 @@ final class FeatureFlagsTests: XCTestCase {
         sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
 
         // When
-        try await sut.fetchFlags()
+        try await sut.fetchFlags(for: .unauth)
 
         // Then
-        let localFlags = try await sut.localDatasource.value.getFeatureFlags(userId: "", reloadFromUserDefaults: true)
+        let localFlags = sut.localDatasource.value.getFeatureFlags(userId: "", reloadFromUserDefaults: true)
         XCTAssertEqual(localFlags?.isEmpty, false)
     }
 
@@ -392,10 +392,10 @@ final class FeatureFlagsTests: XCTestCase {
         sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
 
         // When
-        try await sut.fetchFlags(for: userId)
+        try await sut.fetchFlags(for: .auth(userId: userId))
 
         // Then
-        let localFlags = try await sut.localDatasource.value.getFeatureFlags(userId: userId, reloadFromUserDefaults: true)
+        let localFlags = sut.localDatasource.value.getFeatureFlags(userId: userId, reloadFromUserDefaults: true)
         XCTAssertEqual(localFlags?.isEmpty, false)
     }
 
@@ -417,10 +417,10 @@ final class FeatureFlagsTests: XCTestCase {
         }
 
         // When
-        try await sut.fetchFlags(for: userId, with: apiService)
+        try await sut.fetchFlags(for: .auth(userId: userId), using: apiService)
 
         // Then
-        let localFlags = try await sut.localDatasource.value.getFeatureFlags(userId: userId, reloadFromUserDefaults: true)
+        let localFlags = sut.localDatasource.value.getFeatureFlags(userId: userId, reloadFromUserDefaults: true)
         XCTAssertEqual(localFlags?.isEmpty, false)
     }
 
@@ -454,13 +454,13 @@ final class FeatureFlagsTests: XCTestCase {
         }
 
         // When fetching the first time
-        try await sut.fetchFlags(for: userId, with: apiService)
+        try await sut.fetchFlags(for: .auth(userId: userId), using: apiService)
 
         // Then BlackFriday flag is true is isEnabled returns true
         XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
 
         // When fetching a second time
-        try await sut.fetchFlags(for: userId, with: apiService)
+        try await sut.fetchFlags(for: .auth(userId: userId), using: apiService)
 
         // Then BlackFriday flag is false but isEnabled still returns the first returned value
         XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
@@ -496,13 +496,13 @@ final class FeatureFlagsTests: XCTestCase {
         }
 
         // When fetching the first time
-        try await sut.fetchFlags(for: userId, with: apiService)
+        try await sut.fetchFlags(for: .auth(userId: userId), using: apiService)
 
         // Then BlackFriday flag is not returned and is isEnabled returns false
         XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
 
         // When fetching a second time
-        try await sut.fetchFlags(for: userId, with: apiService)
+        try await sut.fetchFlags(for: .auth(userId: userId), using: apiService)
 
         // Then BlackFriday flag is returned and true, but isEnabled still returns the first returned value
         XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
@@ -529,7 +529,7 @@ final class FeatureFlagsTests: XCTestCase {
         XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
 
         // When fetching the first time
-        try await sut.fetchFlags(for: userId, with: apiService)
+        try await sut.fetchFlags(for: .auth(userId: userId), using: apiService)
 
         // Then BlackFriday flag is returned and true, but isEnabled still returns the first returned value
         XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
@@ -567,11 +567,11 @@ final class FeatureFlagsTests: XCTestCase {
         }
 
         // When
-        try await sut.fetchFlags(for: userId1, with: apiService)
-        try await sut.fetchFlags(for: userId2, with: apiService)
+        try await sut.fetchFlags(for: .auth(userId: userId1), using: apiService)
+        try await sut.fetchFlags(for: .auth(userId: userId2), using: apiService)
 
         // Then
-        let flags = try await sut.localDatasource.value.getFeatureFlags(userId: userId1, reloadFromUserDefaults: true)
+        let flags = sut.localDatasource.value.getFeatureFlags(userId: userId1, reloadFromUserDefaults: true)
         XCTAssertEqual(flags, FeatureFlags(flags: flagResponse1.toggles))
 
         // When
@@ -601,10 +601,10 @@ final class FeatureFlagsTests: XCTestCase {
         }
 
         // When
-        try await sut.fetchFlags(for: userId, with: apiService)
+        try await sut.fetchFlags(for: .auth(userId: userId), using: apiService)
 
         // Then
-        let flags = try await sut.localDatasource.value.getFeatureFlags(userId: userId, reloadFromUserDefaults: true)
+        let flags = sut.localDatasource.value.getFeatureFlags(userId: userId, reloadFromUserDefaults: true)
         XCTAssertEqual(flags, FeatureFlags(flags: flagResponse.toggles))
 
         // When
