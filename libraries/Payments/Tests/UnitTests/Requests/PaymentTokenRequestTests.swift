@@ -34,12 +34,14 @@ final class PaymentTokenRequestTests: XCTestCase {
     override func setUp() {
         // Given
         super.setUp()
-        sut = PaymentTokenRequest(api: APIServiceMock(),
-                                  amount: 1295,
-                                  receipt: "Receipt",
-                                  transactionId: "TID",
-                                  bundleId: "BID",
-                                  productId: "PID")
+        withFeatureFlags([.dynamicPlans]) {
+            sut = PaymentTokenRequest(api: APIServiceMock(),
+                                      amount: 1295,
+                                      receipt: "Receipt",
+                                      transactionId: "TID",
+                                      bundleId: "BID",
+                                      productId: "PID")
+        }
     }
 
     func testParameters() {
@@ -49,7 +51,7 @@ final class PaymentTokenRequestTests: XCTestCase {
 
         XCTAssertEqual(1295, sut.parameters!["Amount"] as! Int)
         XCTAssertEqual("USD", sut.parameters!["Currency"] as! String)
-        XCTAssertEqual("apple", payment["Type"] as! String)
+        XCTAssertEqual("apple-recurring", payment["Type"] as! String)
         XCTAssertEqual("TID", details["TransactionID"])
         XCTAssertEqual("BID", details["BundleID"])
         XCTAssertEqual("PID", details["ProductID"])

@@ -26,6 +26,7 @@ import ProtonCoreLog
 import ProtonCoreNetworking
 import ProtonCoreServices
 import ProtonCoreObservability
+import ProtonCoreFeatureFlags
 
 /*
 
@@ -39,7 +40,7 @@ import ProtonCoreObservability
 final class TokenHandler {
 
     unowned let dependencies: ProcessDependencies
-    let areSubscriptionsEnabled = FeatureFactory.shared.isEnabled(.subscriptions)
+    let areSubscriptionsEnabled = FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan)
 
     init(dependencies: ProcessDependencies) {
         self.dependencies = dependencies
