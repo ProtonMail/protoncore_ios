@@ -49,7 +49,7 @@ final class PaymentsUICoordinator {
     private let alertManager: PaymentsUIAlertManager
     private let clientApp: ClientApp
     private let storyboardName: String
-
+    private let featureFlagsRepository: FeatureFlagsRepositoryProtocol
     private var unfinishedPurchasePlan: InAppPurchasePlan? {
         didSet {
             guard let unfinishedPurchasePlan = unfinishedPurchasePlan else { return }
@@ -68,7 +68,8 @@ final class PaymentsUICoordinator {
          shownPlanNames: ListOfShownPlanNames,
          customization: PaymentsUICustomizationOptions,
          alertManager: PaymentsUIAlertManager,
-         onDohTroubleshooting: @escaping () -> Void) {
+         onDohTroubleshooting: @escaping () -> Void,
+         featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared) {
         self.planService = planService
         self.storeKitManager = storeKitManager
         self.purchaseManager = purchaseManager
@@ -78,13 +79,14 @@ final class PaymentsUICoordinator {
         self.customization = customization
         self.storyboardName = "PaymentsUI"
         self.onDohTroubleshooting = onDohTroubleshooting
+        self.featureFlagsRepository = featureFlagsRepository
     }
 
     func start(viewController: UIViewController?, completionHandler: @escaping ((PaymentsUIResultReason) -> Void)) {
         self.viewController = viewController
         self.mode = .signup
         self.completionHandler = completionHandler
-        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             Task {
                 try await showPaymentsUI(servicePlan: planService)
             }
@@ -97,7 +99,7 @@ final class PaymentsUICoordinator {
         self.presentationType = presentationType
         self.mode = mode
         self.completionHandler = completionHandler
-        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             Task {
                 try await showPaymentsUI(servicePlan: planService)
             }
@@ -324,7 +326,7 @@ extension PaymentsUICoordinator: PaymentsUIViewControllerDelegate {
         // Plan data should not be refreshed on first appear because at that time data are freshly loaded. Here must be covered situations when
         // app goes from background for example.
         guard !isFirstAppearance else { return }
-        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             Task {
                 await refreshPlans()
             }

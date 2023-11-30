@@ -48,7 +48,7 @@ public protocol PlansDataSourceProtocol {
 class PlansDataSource: PlansDataSourceProtocol {
     var isIAPAvailable: Bool {
         guard paymentsBackendStatusAcceptsIAP else { return false }
-        guard FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) else {
+        guard featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) else {
             assertionFailure("You need Dynamic Plans enabled to use PlansDataSource")
             return true
         }
@@ -66,13 +66,16 @@ class PlansDataSource: PlansDataSourceProtocol {
     private let apiService: APIService
     private let storeKitDataSource: StoreKitDataSourceProtocol
     private let localStorage: ServicePlanDataStorage
-
+    private let featureFlagsRepository: FeatureFlagsRepositoryProtocol
+    
     init(apiService: APIService,
          storeKitDataSource: StoreKitDataSourceProtocol,
-         localStorage: ServicePlanDataStorage) {
+         localStorage: ServicePlanDataStorage,
+         featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared) {
         self.apiService = apiService
         self.storeKitDataSource = storeKitDataSource
         self.localStorage = localStorage
+        self.featureFlagsRepository = featureFlagsRepository
         paymentsBackendStatusAcceptsIAP = localStorage.paymentsBackendStatusAcceptsIAP
     }
 

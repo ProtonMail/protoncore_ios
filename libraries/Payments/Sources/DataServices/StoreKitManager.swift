@@ -55,6 +55,8 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     private(set) var request: SKProductsRequest?
     private var updateAvailableProductsListCompletionBlock: ((Error?) -> Void)?
 
+    private let featureFlagsRepository: FeatureFlagsRepositoryProtocol
+
     var pendingRetryIn: Double = 30
     var errorRetryIn: Double = 2
     var alertViewDelay: Double = 1.0
@@ -234,18 +236,20 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
          paymentsAlertManager: PaymentsAlertManager,
          reportBugAlertHandler: BugAlertHandler,
          refreshHandler: @escaping (ProcessCompletionResult) -> Void,
-         reachability: Reachability? = try? Reachability()) {
+         reachability: Reachability? = try? Reachability(),
+         featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared) {
         self.inAppPurchaseIdentifiersGet = inAppPurchaseIdentifiersGet
         self.inAppPurchaseIdentifiersSet = inAppPurchaseIdentifiersSet
         self.planService = planService
         self.storeKitDataSource = storeKitDataSource
         self.paymentsApi = paymentsApi
         self.apiService = apiService
-        self.canExtendSubscription = canExtendSubscription && !FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan)
+        self.canExtendSubscription = canExtendSubscription && !featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)
         self.paymentsAlertManager = paymentsAlertManager
         self.reportBugAlertHandler = reportBugAlertHandler
         self.refreshHandler = refreshHandler
         self.reachability = reachability
+        self.featureFlagsRepository = featureFlagsRepository
         super.init()
         reachability?.whenReachable = { [weak self] _ in self?.networkReachable() }
         try? reachability?.startNotifier()
@@ -269,7 +273,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
 
     public func updateAvailableProductsList(completion: @escaping (Error?) -> Void) {
         // This is just for early detection of programmers errors and to indicate what can be removed when we remove the feature flag
-        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             assertionFailure("This method should never be called with dynamic plans. The StoreKitDataSource object fetches the SKProducts")
         }
         updateAvailableProductsListCompletionBlock = { error in DispatchQueue.main.async { completion(error) } }
@@ -552,7 +556,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
 extension StoreKitManager: SKProductsRequestDelegate {
     public func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         // This is just for early detection of programmers errors and to indicate what can be removed when we remove the feature flag
-        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             assertionFailure("This method should never be called with dynamic plans. The StoreKitDataSource object fetches the SKProducts")
         }
         if !response.invalidProductIdentifiers.isEmpty {
@@ -568,7 +572,7 @@ extension StoreKitManager: SKProductsRequestDelegate {
 
     func request(_: SKRequest, didFailWithError error: Error) {
         // This is just for early detection of programmers errors and to indicate what can be removed when we remove the feature flag
-        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             assertionFailure("This method should never be called with dynamic plans. The StoreKitDataSource object fetches the SKProducts")
         }
         #if targetEnvironment(simulator)
@@ -896,7 +900,8 @@ extension StoreKitManager: ProcessDependencies {
     var alertManager: PaymentsAlertManager { return paymentsAlertManager }
 
     var updateSubscription: (Subscription) throws -> Void { { [weak self] in
-        guard !FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan), case .left(let planService) = self?.planService else {
+        guard let self else { return }
+        guard !self.featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan), case .left(let planService) = self.planService else {
             throw StoreKitManagerErrors.noNewSubscriptionInSuccessfulResponse
         }
         planService.currentSubscription = $0

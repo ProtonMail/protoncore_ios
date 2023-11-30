@@ -51,12 +51,13 @@ public final class Payments {
 
     lazy var storeKitDataSource: StoreKitDataSourceProtocol = StoreKitDataSource()
 
+    private let featureFlagsRepository: FeatureFlagsRepositoryProtocol
     private enum FeatureFlagError: Error {
         case wrongConfiguration
     }
 
     public internal(set) lazy var planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol> = {
-        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             return .right(PlansDataSource(
                 apiService: apiService,
                 storeKitDataSource: storeKitDataSource,
@@ -78,7 +79,7 @@ public final class Payments {
 
     public internal(set) lazy var storeKitManager: StoreKitManagerProtocol = {
         let dataSource: StoreKitDataSourceProtocol?
-        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             dataSource = storeKitDataSource
         } else {
             dataSource = nil
@@ -102,14 +103,16 @@ public final class Payments {
                 localStorage: ServicePlanDataStorage,
                 alertManager: AlertManagerProtocol? = nil,
                 canExtendSubscription: Bool = false,
-                reportBugAlertHandler: BugAlertHandler) {
+                reportBugAlertHandler: BugAlertHandler,
+                featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared) {
         self.inAppPurchaseIdentifiers = inAppPurchaseIdentifiers
         self.reportBugAlertHandler = reportBugAlertHandler
         self.apiService = apiService
         self.localStorage = localStorage
-        self.canExtendSubscription = canExtendSubscription && !FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan)
+        self.canExtendSubscription = canExtendSubscription && !featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)
         paymentsAlertManager = PaymentsAlertManager(alertManager: alertManager ?? AlertManager())
         paymentsApi = PaymentsApiImplementation()
+        self.featureFlagsRepository = featureFlagsRepository
     }
 
     public func activate(delegate: StoreKitManagerDelegate, storeKitProductsFetched: @escaping (Error?) -> Void = { _ in }) {
@@ -121,7 +124,7 @@ public final class Payments {
         // If there are transactions, they will be processed
         // Part of the processing will be fetching the available plans from the BE
 
-        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             // In the dynamic plans, fetching available IAPs from StoreKit is not a prerequisite.
             // It is done alongside fetching available plans
             Task {

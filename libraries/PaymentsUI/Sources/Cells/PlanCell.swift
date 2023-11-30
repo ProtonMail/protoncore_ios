@@ -35,13 +35,14 @@ protocol PlanCellDelegate: AnyObject {
 final class PlanCell: UITableViewCell, AccessibleCell {
 
     private var isDynamicPlansEnabled: Bool {
-        FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.dynamicPlan)
+        featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)
     }
 
     static let reuseIdentifier = "PlanCell"
     static let nib = UINib(nibName: "PlanCell", bundle: PaymentsUI.bundle)
 
     weak var delegate: PlanCellDelegate?
+    var featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared
     var plan: PlanPresentation?
     var dynamicPlan: AvailablePlansPresentation?
     var indexPath: IndexPath?
