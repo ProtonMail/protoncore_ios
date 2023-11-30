@@ -155,8 +155,8 @@ public final class LoginService: Login {
                 switch result {
                 case .success(let user):
                     if isSSO {
-                        FeatureFlagsRepository.shared.setApiService(with: self.apiService)
-                        FeatureFlagsRepository.shared.setUserId(with: user.ID)
+                        FeatureFlagsRepository.shared.setApiService(self.apiService)
+                        FeatureFlagsRepository.shared.setUserId(user.ID)
                         var ssoCredential = credential
                         ssoCredential.userName = user.name ?? ""
                         completion(.success(.finished(UserData(credential: .init(ssoCredential), user: user, salts: [], passphrases: [:], addresses: [], scopes: credential.scopes))))
