@@ -36,10 +36,19 @@ public class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol {
     private(set) var remoteDataSource: Atomic<RemoteFeatureFlagsProtocol?>
 
     /// The configuration for feature flags.
-    private(set) var userId: Atomic<String>
+    private(set) var userId: String {
+        get {
+            return _userId ?? ""
+        }
+        set {
+            _userId = newValue
+            localDatasource.value.setUserIdForActiveSession(newValue)
+        }
+    }
+
+    private var _userId: String?
 
     public internal(set) static var shared: FeatureFlagsRepository = .init(
-        userId: Atomic<String>(""),
         localDatasource: Atomic<LocalFeatureFlagsProtocol>(DefaultLocalFeatureFlagsDatasource()),
         remoteDatasource: Atomic<RemoteFeatureFlagsProtocol?>(nil)
     )
@@ -52,12 +61,11 @@ public class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol {
        - localDatasource: The local data source for feature flags.
        - remoteDatasource: The remote data source for feature flags.
      */
-    init(userId: Atomic<String>,
-         localDatasource: Atomic<LocalFeatureFlagsProtocol>,
+    init(localDatasource: Atomic<LocalFeatureFlagsProtocol>,
          remoteDatasource: Atomic<RemoteFeatureFlagsProtocol?>) {
-        self.userId = userId
         self.localDatasource = localDatasource
         self.remoteDataSource = remoteDatasource
+        self._userId = localDatasource.value.userIdForActiveSession
     }
 
     // Internal func for testing
@@ -84,7 +92,7 @@ public extension FeatureFlagsRepository {
        - userId: The user id used to initialize the configuration for feature flags.
      */
     func setUserId(_ userId: String) {
-        self.userId = Atomic<String>(userId)
+        self.userId = userId
     }
 
     /**
@@ -129,7 +137,7 @@ public extension FeatureFlagsRepository {
          case .auth(let authUserId):
              userId = authUserId
          }
-        
+
         localDatasource.value.upsertFlags(.init(flags: flags), userId: userId)
     }
 
@@ -142,8 +150,10 @@ public extension FeatureFlagsRepository {
        - reloadValue: Pass `true` if you want the latest stored value for the flag. Pass `false` if  you want the "static" value, which is always the same as the first returned.
      */
     func isEnabled(_ flag: any FeatureFlagTypeProtocol, reloadValue: Bool) -> Bool {
-        let flags = localDatasource.value.getFeatureFlags(userId: self.userId.value, 
-                                                          reloadFromUserDefaults: reloadValue)
+        let flags = localDatasource.value.getFeatureFlags(
+            userId: self.userId,
+            reloadFromUserDefaults: reloadValue
+        )
         return flags?.getFlag(for: flag)?.enabled ?? false
     }
 
@@ -160,9 +170,15 @@ public extension FeatureFlagsRepository {
         let flags: FeatureFlags?
 
         if let userId {
-            flags = localDatasource.value.getFeatureFlags(userId: userId, reloadFromUserDefaults: reloadValue)
+            flags = localDatasource.value.getFeatureFlags(
+                userId: userId,
+                reloadFromUserDefaults: reloadValue
+            )
         } else {
-            flags = localDatasource.value.getFeatureFlags(userId: self.userId.value, reloadFromUserDefaults: reloadValue)
+            flags = localDatasource.value.getFeatureFlags(
+                userId: self.userId,
+                reloadFromUserDefaults: reloadValue
+            )
         }
 
         return flags?.getFlag(for: flag)?.enabled ?? false
@@ -187,5 +203,12 @@ public extension FeatureFlagsRepository {
      */
     func resetFlags(for userId: String) {
         localDatasource.value.cleanFlags(for: userId)
+    }
+
+    /**
+     Resets userId.
+     */
+    func clearUserId(_ userId: String) {
+        localDatasource.value.clearUserId(userId)
     }
 }

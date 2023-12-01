@@ -27,4 +27,8 @@ public protocol LocalFeatureFlagsProtocol {
     func upsertFlags(_ flags: FeatureFlags, userId: String)
     func cleanAllFlags()
     func cleanFlags(for userId: String)
+
+    var userIdForActiveSession: String? { get }
+    func setUserIdForActiveSession(_ userId: String)
+    func clearUserId(_ userId: String)
 }

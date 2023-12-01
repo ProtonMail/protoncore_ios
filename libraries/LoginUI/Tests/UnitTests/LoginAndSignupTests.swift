@@ -212,7 +212,7 @@ final class LoginAndSignupTests: XCTestCase {
 
         // Then
         XCTAssertTrue(dummyRemoteDataSource.didGetFlags)
-        XCTAssertEqual(FeatureFlagsRepository.shared.userId.value, "test")
+        XCTAssertEqual(FeatureFlagsRepository.shared.userId, "test")
     }
 
     func testLoginFlowUnregistersHVDelegatesOnFinish() {

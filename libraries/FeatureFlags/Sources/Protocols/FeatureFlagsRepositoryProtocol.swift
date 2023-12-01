@@ -43,6 +43,7 @@ public protocol FeatureFlagsRepositoryProtocol: AnyObject {
     // MARK: - Commons
     func resetFlags()
     func resetFlags(for userId: String)
+    func clearUserId(_ userId: String)
 }
 
 public extension FeatureFlagsRepositoryProtocol {
@@ -53,7 +54,7 @@ public extension FeatureFlagsRepositoryProtocol {
     }
 
     /// For multi-user clients
-    func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String? = nil, reloadValue: Bool = false) -> Bool {
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String?, reloadValue: Bool = false) -> Bool {
         isEnabled(flag, for: userId, reloadValue: reloadValue)
     }
 }
