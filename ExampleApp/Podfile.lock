@@ -19,643 +19,643 @@ PODS:
   - OHHTTPStubs/OHPathHelpers (9.1.0)
   - OHHTTPStubs/Swift (9.1.0):
     - OHHTTPStubs/Default
-  - ProtonCore-AccountDeletion (15.0.0):
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-Doh (= 15.0.0)
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
-    - ProtonCore-Utilities (= 15.0.0)
-  - ProtonCore-AccountDeletion/Tests (15.0.0):
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-Doh (= 15.0.0)
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/AccountDeletion (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Doh (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Networking (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Services (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
-    - ProtonCore-Utilities (= 15.0.0)
-  - ProtonCore-AccountRecovery (15.0.0):
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-DataModel (= 15.0.0)
-    - ProtonCore-FeatureSwitch (= 15.0.0)
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-PasswordRequest (= 15.0.0)
-    - ProtonCore-PushNotifications (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
-  - ProtonCore-AccountRecovery/Tests (15.0.0):
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-DataModel (= 15.0.0)
-    - ProtonCore-FeatureSwitch (= 15.0.0)
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-PasswordRequest (= 15.0.0)
-    - ProtonCore-PushNotifications (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-    - ProtonCore-TestingToolkit (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
+  - ProtonCore-AccountDeletion (16.0.0):
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-Doh (= 16.0.0)
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
+    - ProtonCore-Utilities (= 16.0.0)
+  - ProtonCore-AccountDeletion/Tests (16.0.0):
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-Doh (= 16.0.0)
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/AccountDeletion (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Doh (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Networking (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Services (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
+    - ProtonCore-Utilities (= 16.0.0)
+  - ProtonCore-AccountRecovery (16.0.0):
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-DataModel (= 16.0.0)
+    - ProtonCore-FeatureSwitch (= 16.0.0)
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-PasswordRequest (= 16.0.0)
+    - ProtonCore-PushNotifications (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
+  - ProtonCore-AccountRecovery/Tests (16.0.0):
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-DataModel (= 16.0.0)
+    - ProtonCore-FeatureSwitch (= 16.0.0)
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-PasswordRequest (= 16.0.0)
+    - ProtonCore-PushNotifications (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+    - ProtonCore-TestingToolkit (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
     - ViewInspector
-  - ProtonCore-AccountSwitcher (15.0.0):
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
-    - ProtonCore-Utilities (= 15.0.0)
-  - ProtonCore-AccountSwitcher/Tests (15.0.0):
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
-    - ProtonCore-Utilities (= 15.0.0)
-  - ProtonCore-APIClient (15.0.0):
-    - ProtonCore-DataModel (= 15.0.0)
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-  - ProtonCore-APIClient/Tests-Crypto-Go (15.0.0):
+  - ProtonCore-AccountSwitcher (16.0.0):
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
+    - ProtonCore-Utilities (= 16.0.0)
+  - ProtonCore-AccountSwitcher/Tests (16.0.0):
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
+    - ProtonCore-Utilities (= 16.0.0)
+  - ProtonCore-APIClient (16.0.0):
+    - ProtonCore-DataModel (= 16.0.0)
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+  - ProtonCore-APIClient/Tests-Crypto-Go (16.0.0):
     - OHHTTPStubs/Swift
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-Crypto (= 15.0.0)
-    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-DataModel (= 15.0.0)
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Authentication (= 15.0.0)
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-Crypto (= 16.0.0)
+    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-DataModel (= 16.0.0)
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Authentication (= 16.0.0)
     - TrustKit
-  - ProtonCore-Authentication (15.0.0):
-    - ProtonCore-APIClient (= 15.0.0)
-    - ProtonCore-Crypto (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-FeatureFlags (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-  - ProtonCore-Authentication-KeyGeneration (15.0.0):
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-Crypto (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-FeatureSwitch (= 15.0.0)
-    - ProtonCore-Hash (= 15.0.0)
-  - ProtonCore-Authentication-KeyGeneration/Tests-Crypto-Go (15.0.0):
+  - ProtonCore-Authentication (16.0.0):
+    - ProtonCore-APIClient (= 16.0.0)
+    - ProtonCore-Crypto (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-FeatureFlags (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+  - ProtonCore-Authentication-KeyGeneration (16.0.0):
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-Crypto (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-FeatureSwitch (= 16.0.0)
+    - ProtonCore-Hash (= 16.0.0)
+  - ProtonCore-Authentication-KeyGeneration/Tests-Crypto-Go (16.0.0):
     - OHHTTPStubs/Swift
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-Crypto (= 15.0.0)
-    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-FeatureSwitch (= 15.0.0)
-    - ProtonCore-Hash (= 15.0.0)
-    - ProtonCore-ObfuscatedConstants (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration (= 15.0.0)
-  - ProtonCore-Authentication/Tests-Crypto-Go (15.0.0):
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-Crypto (= 16.0.0)
+    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-FeatureSwitch (= 16.0.0)
+    - ProtonCore-Hash (= 16.0.0)
+    - ProtonCore-ObfuscatedConstants (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration (= 16.0.0)
+  - ProtonCore-Authentication/Tests-Crypto-Go (16.0.0):
     - OHHTTPStubs/Swift
-    - ProtonCore-APIClient (= 15.0.0)
-    - ProtonCore-Crypto (= 15.0.0)
-    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-FeatureFlags (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Authentication (= 15.0.0)
+    - ProtonCore-APIClient (= 16.0.0)
+    - ProtonCore-Crypto (= 16.0.0)
+    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-FeatureFlags (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Authentication (= 16.0.0)
     - ProtonCore-TestingToolkit/UnitTests/Observability
-  - ProtonCore-Challenge (15.0.0):
-    - ProtonCore-DataModel (= 15.0.0)
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
-  - ProtonCore-Challenge/Tests (15.0.0):
-    - ProtonCore-DataModel (= 15.0.0)
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
-  - ProtonCore-Crypto (15.0.0):
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-DataModel (= 15.0.0)
-  - ProtonCore-Crypto/Tests-Crypto-Go (15.0.0):
-    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-DataModel (= 15.0.0)
-  - ProtonCore-CryptoGoImplementation/Crypto-Go (15.0.0):
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-GoLibs/Crypto-Go (= 15.0.0)
-  - ProtonCore-CryptoGoImplementation/Crypto-patched-Go (15.0.0):
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-GoLibs/Crypto-patched-Go (= 15.0.0)
-  - ProtonCore-CryptoGoInterface (15.0.0)
-  - ProtonCore-DataModel (15.0.0):
-    - ProtonCore-Utilities (= 15.0.0)
-  - ProtonCore-DataModel/Tests (15.0.0):
-    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 15.0.0)
-    - ProtonCore-Utilities (= 15.0.0)
-  - ProtonCore-Doh (15.0.0):
-    - ProtonCore-FeatureSwitch (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-Utilities (= 15.0.0)
-  - ProtonCore-Doh/IntegrationTests (15.0.0):
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-Environment (= 15.0.0)
-    - ProtonCore-FeatureSwitch (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-Observability (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/FeatureSwitch (= 15.0.0)
-    - ProtonCore-Utilities (= 15.0.0)
-  - ProtonCore-Doh/UnitTests (15.0.0):
+  - ProtonCore-Challenge (16.0.0):
+    - ProtonCore-DataModel (= 16.0.0)
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
+  - ProtonCore-Challenge/Tests (16.0.0):
+    - ProtonCore-DataModel (= 16.0.0)
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
+  - ProtonCore-Crypto (16.0.0):
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-DataModel (= 16.0.0)
+  - ProtonCore-Crypto/Tests-Crypto-Go (16.0.0):
+    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-DataModel (= 16.0.0)
+  - ProtonCore-CryptoGoImplementation/Crypto-Go (16.0.0):
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-GoLibs/Crypto-Go (= 16.0.0)
+  - ProtonCore-CryptoGoImplementation/Crypto-patched-Go (16.0.0):
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-GoLibs/Crypto-patched-Go (= 16.0.0)
+  - ProtonCore-CryptoGoInterface (16.0.0)
+  - ProtonCore-DataModel (16.0.0):
+    - ProtonCore-Utilities (= 16.0.0)
+  - ProtonCore-DataModel/Tests (16.0.0):
+    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 16.0.0)
+    - ProtonCore-Utilities (= 16.0.0)
+  - ProtonCore-Doh (16.0.0):
+    - ProtonCore-FeatureSwitch (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-Utilities (= 16.0.0)
+  - ProtonCore-Doh/IntegrationTests (16.0.0):
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-Environment (= 16.0.0)
+    - ProtonCore-FeatureSwitch (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-Observability (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/FeatureSwitch (= 16.0.0)
+    - ProtonCore-Utilities (= 16.0.0)
+  - ProtonCore-Doh/UnitTests (16.0.0):
     - OHHTTPStubs/Swift
-    - ProtonCore-FeatureSwitch (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-ObfuscatedConstants (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Doh (= 15.0.0)
-    - ProtonCore-Utilities (= 15.0.0)
-  - ProtonCore-Environment (15.0.0):
-    - ProtonCore-Doh (= 15.0.0)
+    - ProtonCore-FeatureSwitch (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-ObfuscatedConstants (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Doh (= 16.0.0)
+    - ProtonCore-Utilities (= 16.0.0)
+  - ProtonCore-Environment (16.0.0):
+    - ProtonCore-Doh (= 16.0.0)
     - TrustKit
-  - ProtonCore-Environment/Tests (15.0.0):
+  - ProtonCore-Environment/Tests (16.0.0):
     - OHHTTPStubs/Swift
-    - ProtonCore-Doh (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Doh (= 15.0.0)
+    - ProtonCore-Doh (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Doh (= 16.0.0)
     - TrustKit
-  - ProtonCore-FeatureFlags (15.0.0):
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-  - ProtonCore-FeatureFlags/Tests (15.0.0):
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Services (= 15.0.0)
-  - ProtonCore-Features (15.0.0):
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-Crypto (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-DataModel (= 15.0.0)
-    - ProtonCore-Hash (= 15.0.0)
-    - ProtonCore-KeyManager (= 15.0.0)
-    - ProtonCore-Networking (= 15.0.0)
-  - ProtonCore-FeatureSwitch (15.0.0):
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-Utilities (= 15.0.0)
-  - ProtonCore-FeatureSwitch/Tests (15.0.0):
-    - ProtonCore-Doh (= 15.0.0)
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Doh (= 15.0.0)
-    - ProtonCore-Utilities (= 15.0.0)
-  - ProtonCore-ForceUpgrade (15.0.0):
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
-  - ProtonCore-Foundations (15.0.0):
-    - ProtonCore-Log (= 15.0.0)
-  - ProtonCore-GoLibs/Crypto-Go (15.0.0)
-  - ProtonCore-GoLibs/Crypto-patched-Go (15.0.0)
-  - ProtonCore-Hash (15.0.0)
-  - ProtonCore-Hash/Tests (15.0.0)
-  - ProtonCore-HumanVerification (15.0.0):
-    - ProtonCore-APIClient (= 15.0.0)
-    - ProtonCore-Crypto (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-Observability (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
-    - ProtonCore-Utilities (= 15.0.0)
-  - ProtonCore-HumanVerification/Tests-Crypto-Go (15.0.0):
-    - ProtonCore-APIClient (= 15.0.0)
-    - ProtonCore-Crypto (= 15.0.0)
-    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-Observability (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Observability (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
-    - ProtonCore-Utilities (= 15.0.0)
-  - ProtonCore-Keymaker (15.0.0):
+  - ProtonCore-FeatureFlags (16.0.0):
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+  - ProtonCore-FeatureFlags/Tests (16.0.0):
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Services (= 16.0.0)
+  - ProtonCore-Features (16.0.0):
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-Crypto (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-DataModel (= 16.0.0)
+    - ProtonCore-Hash (= 16.0.0)
+    - ProtonCore-KeyManager (= 16.0.0)
+    - ProtonCore-Networking (= 16.0.0)
+  - ProtonCore-FeatureSwitch (16.0.0):
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-Utilities (= 16.0.0)
+  - ProtonCore-FeatureSwitch/Tests (16.0.0):
+    - ProtonCore-Doh (= 16.0.0)
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Doh (= 16.0.0)
+    - ProtonCore-Utilities (= 16.0.0)
+  - ProtonCore-ForceUpgrade (16.0.0):
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
+  - ProtonCore-Foundations (16.0.0):
+    - ProtonCore-Log (= 16.0.0)
+  - ProtonCore-GoLibs/Crypto-Go (16.0.0)
+  - ProtonCore-GoLibs/Crypto-patched-Go (16.0.0)
+  - ProtonCore-Hash (16.0.0)
+  - ProtonCore-Hash/Tests (16.0.0)
+  - ProtonCore-HumanVerification (16.0.0):
+    - ProtonCore-APIClient (= 16.0.0)
+    - ProtonCore-Crypto (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-Observability (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
+    - ProtonCore-Utilities (= 16.0.0)
+  - ProtonCore-HumanVerification/Tests-Crypto-Go (16.0.0):
+    - ProtonCore-APIClient (= 16.0.0)
+    - ProtonCore-Crypto (= 16.0.0)
+    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-Observability (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Observability (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
+    - ProtonCore-Utilities (= 16.0.0)
+  - ProtonCore-Keymaker (16.0.0):
     - EllipticCurveKeyPair (~> 2.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-  - ProtonCore-Keymaker/AppHostedTests (15.0.0):
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+  - ProtonCore-Keymaker/AppHostedTests (16.0.0):
     - EllipticCurveKeyPair (~> 2.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
     - ProtonCore-Keymaker/iOS-AppHost
     - ProtonCore-Keymaker/macOS-AppHost
-  - ProtonCore-Keymaker/macOS-AppHost (15.0.0):
+  - ProtonCore-Keymaker/macOS-AppHost (16.0.0):
     - EllipticCurveKeyPair (~> 2.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-  - ProtonCore-Keymaker/Tests-Crypto-Go (15.0.0):
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+  - ProtonCore-Keymaker/Tests-Crypto-Go (16.0.0):
     - EllipticCurveKeyPair (~> 2.0)
-    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-  - ProtonCore-Keymaker/Tests-Crypto-patched-Go (15.0.0):
+    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+  - ProtonCore-Keymaker/Tests-Crypto-patched-Go (16.0.0):
     - EllipticCurveKeyPair (~> 2.0)
-    - ProtonCore-CryptoGoImplementation/Crypto-patched-Go (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-  - ProtonCore-KeyManager (15.0.0):
-    - ProtonCore-Crypto (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-DataModel (= 15.0.0)
-  - ProtonCore-KeyManager/Tests-Crypto-Go (15.0.0):
-    - ProtonCore-Crypto (= 15.0.0)
-    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-DataModel (= 15.0.0)
-  - ProtonCore-Log (15.0.0)
-  - ProtonCore-Log/Tests (15.0.0)
-  - ProtonCore-Login (15.0.0):
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-Authentication-KeyGeneration (= 15.0.0)
-    - ProtonCore-Crypto (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-DataModel (= 15.0.0)
-    - ProtonCore-FeatureFlags (= 15.0.0)
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-Observability (= 15.0.0)
+    - ProtonCore-CryptoGoImplementation/Crypto-patched-Go (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+  - ProtonCore-KeyManager (16.0.0):
+    - ProtonCore-Crypto (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-DataModel (= 16.0.0)
+  - ProtonCore-KeyManager/Tests-Crypto-Go (16.0.0):
+    - ProtonCore-Crypto (= 16.0.0)
+    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-DataModel (= 16.0.0)
+  - ProtonCore-Log (16.0.0)
+  - ProtonCore-Log/Tests (16.0.0)
+  - ProtonCore-Login (16.0.0):
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-Authentication-KeyGeneration (= 16.0.0)
+    - ProtonCore-Crypto (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-DataModel (= 16.0.0)
+    - ProtonCore-FeatureFlags (= 16.0.0)
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-Observability (= 16.0.0)
     - TrustKit
-  - ProtonCore-Login/IntegrationTests-Crypto-Go (15.0.0):
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-Authentication-KeyGeneration (= 15.0.0)
-    - ProtonCore-Crypto (= 15.0.0)
-    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-DataModel (= 15.0.0)
-    - ProtonCore-FeatureFlags (= 15.0.0)
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-Observability (= 15.0.0)
-    - ProtonCore-QuarkCommands (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
+  - ProtonCore-Login/IntegrationTests-Crypto-Go (16.0.0):
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-Authentication-KeyGeneration (= 16.0.0)
+    - ProtonCore-Crypto (= 16.0.0)
+    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-DataModel (= 16.0.0)
+    - ProtonCore-FeatureFlags (= 16.0.0)
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-Observability (= 16.0.0)
+    - ProtonCore-QuarkCommands (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
     - TrustKit
-  - ProtonCore-Login/UnitTests-Crypto-Go (15.0.0):
+  - ProtonCore-Login/UnitTests-Crypto-Go (16.0.0):
     - OHHTTPStubs/Swift
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-Authentication-KeyGeneration (= 15.0.0)
-    - ProtonCore-Crypto (= 15.0.0)
-    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-DataModel (= 15.0.0)
-    - ProtonCore-FeatureFlags (= 15.0.0)
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-ObfuscatedConstants (= 15.0.0)
-    - ProtonCore-Observability (= 15.0.0)
-    - ProtonCore-TestingToolkit/TestData (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Login (= 15.0.0)
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-Authentication-KeyGeneration (= 16.0.0)
+    - ProtonCore-Crypto (= 16.0.0)
+    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-DataModel (= 16.0.0)
+    - ProtonCore-FeatureFlags (= 16.0.0)
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-ObfuscatedConstants (= 16.0.0)
+    - ProtonCore-Observability (= 16.0.0)
+    - ProtonCore-TestingToolkit/TestData (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Login (= 16.0.0)
     - TrustKit
-  - ProtonCore-LoginUI (15.0.0):
+  - ProtonCore-LoginUI (16.0.0):
     - lottie-ios (= 4.3.3)
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-Authentication-KeyGeneration (= 15.0.0)
-    - ProtonCore-Challenge (= 15.0.0)
-    - ProtonCore-Crypto (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-DataModel (= 15.0.0)
-    - ProtonCore-Environment (= 15.0.0)
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-HumanVerification (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-Login (= 15.0.0)
-    - ProtonCore-Observability (= 15.0.0)
-    - ProtonCore-Payments (= 15.0.0)
-    - ProtonCore-PaymentsUI (= 15.0.0)
-    - ProtonCore-TroubleShooting (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-Authentication-KeyGeneration (= 16.0.0)
+    - ProtonCore-Challenge (= 16.0.0)
+    - ProtonCore-Crypto (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-DataModel (= 16.0.0)
+    - ProtonCore-Environment (= 16.0.0)
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-HumanVerification (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-Login (= 16.0.0)
+    - ProtonCore-Observability (= 16.0.0)
+    - ProtonCore-Payments (= 16.0.0)
+    - ProtonCore-PaymentsUI (= 16.0.0)
+    - ProtonCore-TroubleShooting (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
     - TrustKit
-  - ProtonCore-LoginUI/IntegrationTests-Crypto-Go (15.0.0):
+  - ProtonCore-LoginUI/IntegrationTests-Crypto-Go (16.0.0):
     - lottie-ios (= 4.3.3)
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-Authentication-KeyGeneration (= 15.0.0)
-    - ProtonCore-Challenge (= 15.0.0)
-    - ProtonCore-Crypto (= 15.0.0)
-    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-DataModel (= 15.0.0)
-    - ProtonCore-Environment (= 15.0.0)
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-HumanVerification (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-Login (= 15.0.0)
-    - ProtonCore-ObfuscatedConstants (= 15.0.0)
-    - ProtonCore-Observability (= 15.0.0)
-    - ProtonCore-Payments (= 15.0.0)
-    - ProtonCore-PaymentsUI (= 15.0.0)
-    - ProtonCore-TestingToolkit/TestData (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/LoginUI (= 15.0.0)
-    - ProtonCore-TroubleShooting (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-Authentication-KeyGeneration (= 16.0.0)
+    - ProtonCore-Challenge (= 16.0.0)
+    - ProtonCore-Crypto (= 16.0.0)
+    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-DataModel (= 16.0.0)
+    - ProtonCore-Environment (= 16.0.0)
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-HumanVerification (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-Login (= 16.0.0)
+    - ProtonCore-ObfuscatedConstants (= 16.0.0)
+    - ProtonCore-Observability (= 16.0.0)
+    - ProtonCore-Payments (= 16.0.0)
+    - ProtonCore-PaymentsUI (= 16.0.0)
+    - ProtonCore-TestingToolkit/TestData (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/LoginUI (= 16.0.0)
+    - ProtonCore-TroubleShooting (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
     - TrustKit
-  - ProtonCore-LoginUI/UnitTests-Crypto-Go (15.0.0):
+  - ProtonCore-LoginUI/UnitTests-Crypto-Go (16.0.0):
     - lottie-ios (= 4.3.3)
     - OHHTTPStubs/Swift
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-Authentication-KeyGeneration (= 15.0.0)
-    - ProtonCore-Challenge (= 15.0.0)
-    - ProtonCore-Crypto (= 15.0.0)
-    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-DataModel (= 15.0.0)
-    - ProtonCore-Environment (= 15.0.0)
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-HumanVerification (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-Login (= 15.0.0)
-    - ProtonCore-ObfuscatedConstants (= 15.0.0)
-    - ProtonCore-Observability (= 15.0.0)
-    - ProtonCore-Payments (= 15.0.0)
-    - ProtonCore-PaymentsUI (= 15.0.0)
-    - ProtonCore-TestingToolkit/TestData (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/LoginUI (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Observability (= 15.0.0)
-    - ProtonCore-TroubleShooting (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-Authentication-KeyGeneration (= 16.0.0)
+    - ProtonCore-Challenge (= 16.0.0)
+    - ProtonCore-Crypto (= 16.0.0)
+    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-DataModel (= 16.0.0)
+    - ProtonCore-Environment (= 16.0.0)
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-HumanVerification (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-Login (= 16.0.0)
+    - ProtonCore-ObfuscatedConstants (= 16.0.0)
+    - ProtonCore-Observability (= 16.0.0)
+    - ProtonCore-Payments (= 16.0.0)
+    - ProtonCore-PaymentsUI (= 16.0.0)
+    - ProtonCore-TestingToolkit/TestData (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/LoginUI (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Observability (= 16.0.0)
+    - ProtonCore-TroubleShooting (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
     - TrustKit
-  - ProtonCore-MissingScopes (15.0.0):
-    - ProtonCore-APIClient (= 15.0.0)
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-PasswordRequest (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
-  - ProtonCore-MissingScopes/Tests (15.0.0):
-    - ProtonCore-APIClient (= 15.0.0)
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-PasswordRequest (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Networking (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
-  - ProtonCore-Networking (15.0.0):
+  - ProtonCore-MissingScopes (16.0.0):
+    - ProtonCore-APIClient (= 16.0.0)
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-PasswordRequest (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
+  - ProtonCore-MissingScopes/Tests (16.0.0):
+    - ProtonCore-APIClient (= 16.0.0)
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-PasswordRequest (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Networking (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
+  - ProtonCore-Networking (16.0.0):
     - Alamofire (= 5.4.4)
-    - ProtonCore-Environment (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-Utilities (= 15.0.0)
+    - ProtonCore-Environment (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-Utilities (= 16.0.0)
     - TrustKit
-  - ProtonCore-Networking/Tests (15.0.0):
+  - ProtonCore-Networking/Tests (16.0.0):
     - Alamofire (= 5.4.4)
     - OHHTTPStubs/Swift
-    - ProtonCore-Doh (= 15.0.0)
-    - ProtonCore-Environment (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Networking (= 15.0.0)
-    - ProtonCore-Utilities (= 15.0.0)
+    - ProtonCore-Doh (= 16.0.0)
+    - ProtonCore-Environment (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Networking (= 16.0.0)
+    - ProtonCore-Utilities (= 16.0.0)
     - TrustKit
-  - ProtonCore-ObfuscatedConstants (15.0.0):
+  - ProtonCore-ObfuscatedConstants (16.0.0):
     - CryptoSwift (= 1.3.1)
-    - ProtonCore-DataModel (= 15.0.0)
-    - ProtonCore-Networking (= 15.0.0)
+    - ProtonCore-DataModel (= 16.0.0)
+    - ProtonCore-Networking (= 16.0.0)
     - SwiftOTP (~> 2.0)
     - TrustKit
-  - ProtonCore-Observability (15.0.0):
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-Utilities (= 15.0.0)
-  - ProtonCore-Observability/IntegrationTests (15.0.0):
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/FeatureSwitch (= 15.0.0)
-    - ProtonCore-Utilities (= 15.0.0)
-  - ProtonCore-Observability/UnitTests (15.0.0):
+  - ProtonCore-Observability (16.0.0):
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-Utilities (= 16.0.0)
+  - ProtonCore-Observability/IntegrationTests (16.0.0):
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/FeatureSwitch (= 16.0.0)
+    - ProtonCore-Utilities (= 16.0.0)
+  - ProtonCore-Observability/UnitTests (16.0.0):
     - JSONSchema
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Networking (= 15.0.0)
-    - ProtonCore-Utilities (= 15.0.0)
-  - ProtonCore-PasswordRequest (15.0.0):
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
-  - ProtonCore-PasswordRequest/Tests (15.0.0):
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Networking (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
-  - ProtonCore-Payments (15.0.0):
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-FeatureFlags (= 15.0.0)
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-Hash (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Networking (= 16.0.0)
+    - ProtonCore-Utilities (= 16.0.0)
+  - ProtonCore-PasswordRequest (16.0.0):
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
+  - ProtonCore-PasswordRequest/Tests (16.0.0):
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Networking (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
+  - ProtonCore-Payments (16.0.0):
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-FeatureFlags (= 16.0.0)
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-Hash (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
     - ReachabilitySwift (~> 5.0.0)
-  - ProtonCore-Payments/Tests (15.0.0):
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-Challenge (= 15.0.0)
-    - ProtonCore-DataModel (= 15.0.0)
-    - ProtonCore-Doh (= 15.0.0)
-    - ProtonCore-FeatureFlags (= 15.0.0)
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-Hash (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-Login (= 15.0.0)
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Payments (= 15.0.0)
+  - ProtonCore-Payments/Tests (16.0.0):
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-Challenge (= 16.0.0)
+    - ProtonCore-DataModel (= 16.0.0)
+    - ProtonCore-Doh (= 16.0.0)
+    - ProtonCore-FeatureFlags (= 16.0.0)
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-Hash (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-Login (= 16.0.0)
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Payments (= 16.0.0)
     - ReachabilitySwift (~> 5.0.0)
-  - ProtonCore-PaymentsUI (15.0.0):
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-Observability (= 15.0.0)
-    - ProtonCore-Payments (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
+  - ProtonCore-PaymentsUI (16.0.0):
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-Observability (= 16.0.0)
+    - ProtonCore-Payments (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
     - SDWebImage
-  - ProtonCore-PaymentsUI/Tests (15.0.0):
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-ObfuscatedConstants (= 15.0.0)
-    - ProtonCore-Observability (= 15.0.0)
-    - ProtonCore-Payments (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Observability (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Payments (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
+  - ProtonCore-PaymentsUI/Tests (16.0.0):
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-ObfuscatedConstants (= 16.0.0)
+    - ProtonCore-Observability (= 16.0.0)
+    - ProtonCore-Payments (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Observability (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Payments (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
     - SDWebImage
     - swift-snapshot-testing
-  - ProtonCore-PushNotifications (15.0.0):
-    - ProtonCore-Crypto (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-DataModel (= 15.0.0)
-    - ProtonCore-FeatureSwitch (= 15.0.0)
-    - ProtonCore-Keymaker (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-  - ProtonCore-PushNotifications/Tests-Crypto-Go (15.0.0):
-    - ProtonCore-Crypto (= 15.0.0)
-    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-DataModel (= 15.0.0)
-    - ProtonCore-FeatureSwitch (= 15.0.0)
-    - ProtonCore-Keymaker (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-    - ProtonCore-TestingToolkit (= 15.0.0)
-  - ProtonCore-PushNotifications/Tests-Crypto-patched-Go (15.0.0):
-    - ProtonCore-Crypto (= 15.0.0)
-    - ProtonCore-CryptoGoImplementation/Crypto-patched-Go (= 15.0.0)
-    - ProtonCore-CryptoGoInterface (= 15.0.0)
-    - ProtonCore-DataModel (= 15.0.0)
-    - ProtonCore-FeatureSwitch (= 15.0.0)
-    - ProtonCore-Keymaker (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-    - ProtonCore-TestingToolkit (= 15.0.0)
-  - ProtonCore-QuarkCommands (15.0.0):
-    - ProtonCore-Doh (= 15.0.0)
-    - ProtonCore-Environment (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-  - ProtonCore-QuarkCommands/Tests (15.0.0):
+  - ProtonCore-PushNotifications (16.0.0):
+    - ProtonCore-Crypto (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-DataModel (= 16.0.0)
+    - ProtonCore-FeatureSwitch (= 16.0.0)
+    - ProtonCore-Keymaker (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+  - ProtonCore-PushNotifications/Tests-Crypto-Go (16.0.0):
+    - ProtonCore-Crypto (= 16.0.0)
+    - ProtonCore-CryptoGoImplementation/Crypto-Go (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-DataModel (= 16.0.0)
+    - ProtonCore-FeatureSwitch (= 16.0.0)
+    - ProtonCore-Keymaker (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+    - ProtonCore-TestingToolkit (= 16.0.0)
+  - ProtonCore-PushNotifications/Tests-Crypto-patched-Go (16.0.0):
+    - ProtonCore-Crypto (= 16.0.0)
+    - ProtonCore-CryptoGoImplementation/Crypto-patched-Go (= 16.0.0)
+    - ProtonCore-CryptoGoInterface (= 16.0.0)
+    - ProtonCore-DataModel (= 16.0.0)
+    - ProtonCore-FeatureSwitch (= 16.0.0)
+    - ProtonCore-Keymaker (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+    - ProtonCore-TestingToolkit (= 16.0.0)
+  - ProtonCore-QuarkCommands (16.0.0):
+    - ProtonCore-Doh (= 16.0.0)
+    - ProtonCore-Environment (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+  - ProtonCore-QuarkCommands/Tests (16.0.0):
     - OHHTTPStubs/Swift
-    - ProtonCore-Doh (= 15.0.0)
-    - ProtonCore-Environment (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-Services (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Doh (= 15.0.0)
-  - ProtonCore-Services (15.0.0):
-    - ProtonCore-Observability (= 15.0.0)
-  - ProtonCore-Services/IntegrationTests (15.0.0):
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-Challenge (= 15.0.0)
-    - ProtonCore-Login (= 15.0.0)
-    - ProtonCore-Observability (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
-  - ProtonCore-Services/UnitTests (15.0.0):
-    - ProtonCore-Observability (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Networking (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Observability (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Services (= 15.0.0)
-  - ProtonCore-Settings (15.0.0):
-    - ProtonCore-UIFoundations (= 15.0.0)
-  - ProtonCore-Settings/Tests (15.0.0):
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
-  - ProtonCore-TestingToolkit (15.0.0):
-    - ProtonCore-TestingToolkit/ErrorWarningEmittingDefaultSubspec (= 15.0.0)
-  - ProtonCore-TestingToolkit/ErrorWarningEmittingDefaultSubspec (15.0.0)
-  - ProtonCore-TestingToolkit/TestData (15.0.0):
+    - ProtonCore-Doh (= 16.0.0)
+    - ProtonCore-Environment (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-Services (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Doh (= 16.0.0)
+  - ProtonCore-Services (16.0.0):
+    - ProtonCore-Observability (= 16.0.0)
+  - ProtonCore-Services/IntegrationTests (16.0.0):
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-Challenge (= 16.0.0)
+    - ProtonCore-Login (= 16.0.0)
+    - ProtonCore-Observability (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
+  - ProtonCore-Services/UnitTests (16.0.0):
+    - ProtonCore-Observability (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Networking (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Observability (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Services (= 16.0.0)
+  - ProtonCore-Settings (16.0.0):
+    - ProtonCore-UIFoundations (= 16.0.0)
+  - ProtonCore-Settings/Tests (16.0.0):
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
+  - ProtonCore-TestingToolkit (16.0.0):
+    - ProtonCore-TestingToolkit/ErrorWarningEmittingDefaultSubspec (= 16.0.0)
+  - ProtonCore-TestingToolkit/ErrorWarningEmittingDefaultSubspec (16.0.0)
+  - ProtonCore-TestingToolkit/TestData (16.0.0):
     - CryptoSwift (= 1.3.1)
-    - ProtonCore-DataModel (= 15.0.0)
-    - ProtonCore-Networking (= 15.0.0)
-  - ProtonCore-TestingToolkit/UITests/AccountDeletion (15.0.0):
+    - ProtonCore-DataModel (= 16.0.0)
+    - ProtonCore-Networking (= 16.0.0)
+  - ProtonCore-TestingToolkit/UITests/AccountDeletion (16.0.0):
     - fusion
-    - ProtonCore-AccountDeletion (= 15.0.0)
-    - ProtonCore-Doh (= 15.0.0)
-    - ProtonCore-QuarkCommands (= 15.0.0)
-  - ProtonCore-TestingToolkit/UITests/AccountSwitcher (15.0.0):
+    - ProtonCore-AccountDeletion (= 16.0.0)
+    - ProtonCore-Doh (= 16.0.0)
+    - ProtonCore-QuarkCommands (= 16.0.0)
+  - ProtonCore-TestingToolkit/UITests/AccountSwitcher (16.0.0):
     - fusion
-    - ProtonCore-AccountSwitcher (= 15.0.0)
-    - ProtonCore-Doh (= 15.0.0)
-    - ProtonCore-QuarkCommands (= 15.0.0)
-  - ProtonCore-TestingToolkit/UITests/Core (15.0.0):
+    - ProtonCore-AccountSwitcher (= 16.0.0)
+    - ProtonCore-Doh (= 16.0.0)
+    - ProtonCore-QuarkCommands (= 16.0.0)
+  - ProtonCore-TestingToolkit/UITests/Core (16.0.0):
     - fusion
-    - ProtonCore-Doh (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-QuarkCommands (= 15.0.0)
-  - ProtonCore-TestingToolkit/UITests/HumanVerification (15.0.0):
+    - ProtonCore-Doh (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-QuarkCommands (= 16.0.0)
+  - ProtonCore-TestingToolkit/UITests/HumanVerification (16.0.0):
     - fusion
-    - ProtonCore-Doh (= 15.0.0)
-    - ProtonCore-HumanVerification (= 15.0.0)
-    - ProtonCore-QuarkCommands (= 15.0.0)
-  - ProtonCore-TestingToolkit/UITests/Login (15.0.0):
+    - ProtonCore-Doh (= 16.0.0)
+    - ProtonCore-HumanVerification (= 16.0.0)
+    - ProtonCore-QuarkCommands (= 16.0.0)
+  - ProtonCore-TestingToolkit/UITests/Login (16.0.0):
     - fusion
-    - ProtonCore-Doh (= 15.0.0)
-    - ProtonCore-HumanVerification (= 15.0.0)
-    - ProtonCore-LoginUI (= 15.0.0)
-    - ProtonCore-PaymentsUI (= 15.0.0)
-    - ProtonCore-QuarkCommands (= 15.0.0)
-  - ProtonCore-TestingToolkit/UITests/PaymentsUI (15.0.0):
+    - ProtonCore-Doh (= 16.0.0)
+    - ProtonCore-HumanVerification (= 16.0.0)
+    - ProtonCore-LoginUI (= 16.0.0)
+    - ProtonCore-PaymentsUI (= 16.0.0)
+    - ProtonCore-QuarkCommands (= 16.0.0)
+  - ProtonCore-TestingToolkit/UITests/PaymentsUI (16.0.0):
     - fusion
-    - ProtonCore-Doh (= 15.0.0)
-    - ProtonCore-PaymentsUI (= 15.0.0)
-    - ProtonCore-QuarkCommands (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/FeatureFlag (= 15.0.0)
-  - ProtonCore-TestingToolkit/UnitTests/AccountDeletion (15.0.0):
-    - ProtonCore-AccountDeletion (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/FeatureFlag (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Networking (= 15.0.0)
-  - ProtonCore-TestingToolkit/UnitTests/Authentication (15.0.0):
-    - ProtonCore-Authentication (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/FeatureFlag (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Services (= 15.0.0)
-  - ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration (15.0.0):
-    - ProtonCore-Authentication-KeyGeneration (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Services (= 15.0.0)
-  - ProtonCore-TestingToolkit/UnitTests/Core (15.0.0):
-    - ProtonCore-Utilities (= 15.0.0)
+    - ProtonCore-Doh (= 16.0.0)
+    - ProtonCore-PaymentsUI (= 16.0.0)
+    - ProtonCore-QuarkCommands (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/FeatureFlag (= 16.0.0)
+  - ProtonCore-TestingToolkit/UnitTests/AccountDeletion (16.0.0):
+    - ProtonCore-AccountDeletion (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/FeatureFlag (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Networking (= 16.0.0)
+  - ProtonCore-TestingToolkit/UnitTests/Authentication (16.0.0):
+    - ProtonCore-Authentication (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/FeatureFlag (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Services (= 16.0.0)
+  - ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration (16.0.0):
+    - ProtonCore-Authentication-KeyGeneration (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Services (= 16.0.0)
+  - ProtonCore-TestingToolkit/UnitTests/Core (16.0.0):
+    - ProtonCore-Utilities (= 16.0.0)
     - swift-snapshot-testing
-  - ProtonCore-TestingToolkit/UnitTests/DataModel (15.0.0):
-    - ProtonCore-DataModel (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
-  - ProtonCore-TestingToolkit/UnitTests/Doh (15.0.0):
-    - ProtonCore-Doh (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
-  - ProtonCore-TestingToolkit/UnitTests/FeatureFlag (15.0.0):
-    - ProtonCore-FeatureFlags (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
-  - ProtonCore-TestingToolkit/UnitTests/FeatureSwitch (15.0.0):
-    - ProtonCore-FeatureSwitch (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
-  - ProtonCore-TestingToolkit/UnitTests/Login (15.0.0):
-    - ProtonCore-Login (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Authentication (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/FeatureFlag (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Services (= 15.0.0)
-  - ProtonCore-TestingToolkit/UnitTests/LoginUI (15.0.0):
-    - ProtonCore-LoginUI (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Authentication (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/FeatureFlag (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Login (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Services (= 15.0.0)
-  - ProtonCore-TestingToolkit/UnitTests/Networking (15.0.0):
-    - ProtonCore-Networking (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
-  - ProtonCore-TestingToolkit/UnitTests/Observability (15.0.0):
-    - ProtonCore-Observability (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
-  - ProtonCore-TestingToolkit/UnitTests/Payments (15.0.0):
+  - ProtonCore-TestingToolkit/UnitTests/DataModel (16.0.0):
+    - ProtonCore-DataModel (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
+  - ProtonCore-TestingToolkit/UnitTests/Doh (16.0.0):
+    - ProtonCore-Doh (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
+  - ProtonCore-TestingToolkit/UnitTests/FeatureFlag (16.0.0):
+    - ProtonCore-FeatureFlags (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
+  - ProtonCore-TestingToolkit/UnitTests/FeatureSwitch (16.0.0):
+    - ProtonCore-FeatureSwitch (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
+  - ProtonCore-TestingToolkit/UnitTests/Login (16.0.0):
+    - ProtonCore-Login (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Authentication (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/FeatureFlag (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Services (= 16.0.0)
+  - ProtonCore-TestingToolkit/UnitTests/LoginUI (16.0.0):
+    - ProtonCore-LoginUI (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Authentication (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/FeatureFlag (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Login (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Services (= 16.0.0)
+  - ProtonCore-TestingToolkit/UnitTests/Networking (16.0.0):
+    - ProtonCore-Networking (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
+  - ProtonCore-TestingToolkit/UnitTests/Observability (16.0.0):
+    - ProtonCore-Observability (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
+  - ProtonCore-TestingToolkit/UnitTests/Payments (16.0.0):
     - OHHTTPStubs/Swift
-    - ProtonCore-Payments (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/FeatureFlag (= 15.0.0)
-  - ProtonCore-TestingToolkit/UnitTests/Services (15.0.0):
-    - ProtonCore-Services (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Doh (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/FeatureFlag (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/FeatureSwitch (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Networking (= 15.0.0)
-  - ProtonCore-TroubleShooting (15.0.0):
-    - ProtonCore-Doh (= 15.0.0)
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
-    - ProtonCore-Utilities (= 15.0.0)
-  - ProtonCore-TroubleShooting/Tests (15.0.0):
-    - ProtonCore-Doh (= 15.0.0)
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Doh (= 15.0.0)
-    - ProtonCore-UIFoundations (= 15.0.0)
-    - ProtonCore-Utilities (= 15.0.0)
-  - ProtonCore-UIFoundations (15.0.0):
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-Utilities (= 15.0.0)
-  - ProtonCore-UIFoundations/Tests (15.0.0):
-    - ProtonCore-Foundations (= 15.0.0)
-    - ProtonCore-Log (= 15.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 15.0.0)
-    - ProtonCore-Utilities (= 15.0.0)
-  - ProtonCore-Utilities (15.0.0):
-    - ProtonCore-Log (= 15.0.0)
-  - ProtonCore-Utilities/Tests (15.0.0):
-    - ProtonCore-Log (= 15.0.0)
-  - ProtonCore-VCard (15.0.0)
+    - ProtonCore-Payments (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/FeatureFlag (= 16.0.0)
+  - ProtonCore-TestingToolkit/UnitTests/Services (16.0.0):
+    - ProtonCore-Services (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/DataModel (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Doh (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/FeatureFlag (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/FeatureSwitch (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Networking (= 16.0.0)
+  - ProtonCore-TroubleShooting (16.0.0):
+    - ProtonCore-Doh (= 16.0.0)
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
+    - ProtonCore-Utilities (= 16.0.0)
+  - ProtonCore-TroubleShooting/Tests (16.0.0):
+    - ProtonCore-Doh (= 16.0.0)
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Doh (= 16.0.0)
+    - ProtonCore-UIFoundations (= 16.0.0)
+    - ProtonCore-Utilities (= 16.0.0)
+  - ProtonCore-UIFoundations (16.0.0):
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-Utilities (= 16.0.0)
+  - ProtonCore-UIFoundations/Tests (16.0.0):
+    - ProtonCore-Foundations (= 16.0.0)
+    - ProtonCore-Log (= 16.0.0)
+    - ProtonCore-TestingToolkit/UnitTests/Core (= 16.0.0)
+    - ProtonCore-Utilities (= 16.0.0)
+  - ProtonCore-Utilities (16.0.0):
+    - ProtonCore-Log (= 16.0.0)
+  - ProtonCore-Utilities/Tests (16.0.0):
+    - ProtonCore-Log (= 16.0.0)
+  - ProtonCore-VCard (16.0.0)
   - ReachabilitySwift (5.0.0)
   - SDWebImage (5.18.3):
     - SDWebImage/Core (= 5.18.3)
@@ -923,48 +923,48 @@ SPEC CHECKSUMS:
   JSONSchema: 2fcb0c33de01b60afa07701b395732d66dfbd936
   lottie-ios: 25e7b2675dad5c3ddad369ac9baab03560c5bfdd
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
-  ProtonCore-AccountDeletion: 44968d2bcf385ee0379d8c640343e2be52224c9d
-  ProtonCore-AccountRecovery: 0f550b0452776d9a1d554e249ed743b8a8b63697
-  ProtonCore-AccountSwitcher: 5918a5cb9636478239a407a802b471be3eb54ea7
-  ProtonCore-APIClient: 4f3d737009414351df5ef60d8a6ff1cbfe3e316d
-  ProtonCore-Authentication: 9c1fef8fa3bb0233dfac4b861c01e42d6297d0f2
-  ProtonCore-Authentication-KeyGeneration: d4661314958aecea02ec8040a2a0bbaa06eb5963
-  ProtonCore-Challenge: 6b98a133d99db424ebc7eb64225b892228117ae8
-  ProtonCore-Crypto: 00d11266d4a4826cf29bc9475a2903d66d64e292
-  ProtonCore-CryptoGoImplementation: a98fb1496b22cdcb52d4c269a076e2ce87a8221f
-  ProtonCore-CryptoGoInterface: 5068c5e830809acdb5e12e3f98ff5ba5342b9d2c
-  ProtonCore-DataModel: 3f33fc77c1d2aefbb36bf30392b0c88be5d93cbd
-  ProtonCore-Doh: b7f2df1bd6f93620dff18e1a52011cf161d27039
-  ProtonCore-Environment: 40bc8d25254b0fc6444a04e217287c4b6809c47a
-  ProtonCore-FeatureFlags: fd88b67adf0b9e3c8deb613c6d00fd4a9d8d43b8
-  ProtonCore-Features: 718180d4503cf2a2aefdb8344c56eeb9c2a7a9cc
-  ProtonCore-FeatureSwitch: 0770a92e0381539e48f7f60e8164ef205730ad57
-  ProtonCore-ForceUpgrade: 2a75ddc19a38945f48736d5bdcc1ecfbe91daa2a
-  ProtonCore-Foundations: 0391ccef26d0211583187382872671a87913a893
-  ProtonCore-GoLibs: 0a298677642ec2d095523b24e0ad444928cbe382
-  ProtonCore-Hash: 759a4a1ab0c82d7320a0681b830135bb295d535c
-  ProtonCore-HumanVerification: 2f85fc7c2cc20de78c33467145a63bcc2b09351a
-  ProtonCore-Keymaker: b4b00dbfc4787e34f5afd6c9c4b0af404604e28b
-  ProtonCore-KeyManager: d27dbe5dd1954ee2a9b1d0ff37265341cdda1546
-  ProtonCore-Log: ee712ac13a1001a2881bfbab4b08bf32dabcdad0
-  ProtonCore-Login: 7b858aa9c2e307ff7d0644f3d5b44c899d8efa0e
-  ProtonCore-LoginUI: 78c8421b9af67a24888af45ee61d380a44e63582
-  ProtonCore-MissingScopes: a34f6723f715b02139f6548349acce47caf737c3
-  ProtonCore-Networking: 7211c06067654390c5f9a7a218b4f61946327e7f
-  ProtonCore-ObfuscatedConstants: d22aeffe9afe689bc3a8373f7537a93251244739
-  ProtonCore-Observability: 92a232998488ab978c3cf07229d4f06e7172b499
-  ProtonCore-PasswordRequest: be904c112f4870d48cf2e4e51d59df7143dad90a
-  ProtonCore-Payments: 389f2ff26fbea59807ecfbf311ab1de82a6c63f3
-  ProtonCore-PaymentsUI: f64140784d15d7a377901b78c1ec62d986b14eca
-  ProtonCore-PushNotifications: 529ba48d080dc14832f6f4a501f782f570d5882f
-  ProtonCore-QuarkCommands: f3b1d43a9db3a2ea864f99cfbab75f124571d2a9
-  ProtonCore-Services: 2ce32d02480bee1f894e0d12f14d26b5e8fb0107
-  ProtonCore-Settings: e3f7b2f575f2ceffb5b53914ec918da49639e80f
-  ProtonCore-TestingToolkit: 14ce30406d6665fe8cd57717eecfba4fc5522717
-  ProtonCore-TroubleShooting: fff1688b9c244ddf49de742219165dcd41db3586
-  ProtonCore-UIFoundations: c621b5fa7cfc598d68be64f4e58f5cd89c270cdd
-  ProtonCore-Utilities: bd1e97847f1d3b8d48921dde716400489f84f87b
-  ProtonCore-VCard: 196ec56072c9487e8d8f2f4c63e178874ee1fd04
+  ProtonCore-AccountDeletion: cd422c89882f5472fafc48887deaa6b9165d4d9c
+  ProtonCore-AccountRecovery: 2c1a06de0e72a79c60ade3f5c9cba6f86da712f7
+  ProtonCore-AccountSwitcher: cfc220aea4fab3e729ff4d51ac6f56b75aefdd26
+  ProtonCore-APIClient: 3ccd4d0e6cf80ceb677918044650bbd7785eda4b
+  ProtonCore-Authentication: 4755053dec77ca2b9d31cf77b24791242563e194
+  ProtonCore-Authentication-KeyGeneration: e3a31c512f43f3488bb999b9f8f023ff3deb01f6
+  ProtonCore-Challenge: d16c0882b2d327a78b008365dca2c039c7f88fdf
+  ProtonCore-Crypto: d69f0aba698748fedefdc7cb2f5383bf0c404f97
+  ProtonCore-CryptoGoImplementation: 1d9331fd0cb5deb35dabd533079380c36e6fd4a9
+  ProtonCore-CryptoGoInterface: c6999028cdfb84e7658bc9da090c4d46355a7f13
+  ProtonCore-DataModel: dfec1dad0ba033f774f34551b41797b9aad2fc1b
+  ProtonCore-Doh: c51485b89dae53364b6c5aadb52b942d80f9a9d4
+  ProtonCore-Environment: 922acf181815436de036c0bc2163fd5163d1d97f
+  ProtonCore-FeatureFlags: 155e2253ff5f1539edaaf27d187193a5c1786e74
+  ProtonCore-Features: 2f0f70753bd2c6012516f38bcbc2865b1ebcfa44
+  ProtonCore-FeatureSwitch: 0baffa13d29cf9e6c81d18dc808d6845b4d79b4d
+  ProtonCore-ForceUpgrade: 410e3a62a87bb9103bc4d8957cce345c8d7f2a3f
+  ProtonCore-Foundations: 1a3a3c1fadf2dd75a3427286b84b9e71fa17387a
+  ProtonCore-GoLibs: df97ebc69d377b10ad84db917fbb1cb58cb73944
+  ProtonCore-Hash: 34264a2b420e30bc09cf6323fc2e9fb8cc954c8c
+  ProtonCore-HumanVerification: c865f790ca2b418d1522d0e5f67242a633a93a83
+  ProtonCore-Keymaker: b5f43655e3d38847721f5cc162717df0a1211106
+  ProtonCore-KeyManager: 5f019404a4fe4c5185508cf170bb5439efcc28c1
+  ProtonCore-Log: c422a3482b304301fb2e0ca9faa7bc0041d50928
+  ProtonCore-Login: 357aee776dd22913e0df2f347374f45202d321b4
+  ProtonCore-LoginUI: 995efac9c4f2325185ee185fc420e2adf481b6bb
+  ProtonCore-MissingScopes: 2d16d47d7ff5461749389cdb536195ef62d22e26
+  ProtonCore-Networking: 9e41bfd0730b90c598eb2b846e1003e3abe863cb
+  ProtonCore-ObfuscatedConstants: 65734e2360952b16e49bc6bf4a1760853554dbc7
+  ProtonCore-Observability: 6e0b41bb6c5d5bab3722e9a785c78f3317934a73
+  ProtonCore-PasswordRequest: 170f32d6c3a0fd9f2136fefbfa94dcf42281caf9
+  ProtonCore-Payments: bd4e4dbb4fb145d2bc1dfbb0581741cfe5d36736
+  ProtonCore-PaymentsUI: 9ec8224baeddb4a06ab8cd0ab78693736457f4e3
+  ProtonCore-PushNotifications: c080392777ce585d6e52ca284edf0a01b4cfea26
+  ProtonCore-QuarkCommands: 6a0081f8f26649e421724dbffbac2d9055be3ba7
+  ProtonCore-Services: 418557a258a86b88d2ca0887315bd7db713c4ed6
+  ProtonCore-Settings: c9597e7e3a16ade06c4e1777b054b418ef039a9e
+  ProtonCore-TestingToolkit: b5c7506e1ce421ba9106fb5df137f5e66a1715bd
+  ProtonCore-TroubleShooting: 75ef74382820bcc508b8e520ddaeccfb785bb527
+  ProtonCore-UIFoundations: 28a4fa3bb8d124d29b5b46e99ecc289039969bc3
+  ProtonCore-Utilities: a87ee7c1599944e729807b7a7c5dc5113f950521
+  ProtonCore-VCard: 1bee5012893871698903e5a0acd8c6e81a1051b7
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SDWebImage: 96e0c18ef14010b7485210e92fac888587ebb958
   Sentry: 8fa58a051237554f22507fb483b9a1de0171a2dc
@@ -976,4 +976,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: a38241ee243cf2e4d4a4711b632e7cdebcc1fe1c
 
-COCOAPODS: 1.14.2
+COCOAPODS: 1.12.1
