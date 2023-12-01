@@ -29,6 +29,8 @@ import ProtonCoreServices
 import ProtonCoreObservability
 import ProtonCoreUtilities
 
+/// Class responsible for initiating purchases on App Store and forwarding
+/// confirmations to Payments backend
 final class StoreKitManager: NSObject, StoreKitManagerProtocol {
 
     typealias Errors = StoreKitManagerErrors
@@ -226,6 +228,22 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
         }
     }
 
+    /// Initializer for StoreKitManager
+    /// - Parameters:
+    ///   - inAppPurchaseIdentifiersGet: closure to obtain the preset list of StoreKit product ids to manage (typically depends on the client)
+    ///   - inAppPurchaseIdentifiersSet: closure to call when a new list of StoreKit products is obtained from the App Store
+    ///   - planService: Source of truth for the plans offered. `ServicePlanDataServiceProtocol` refers to the
+    ///   static, one-time purchase plans that will be retired. `PlansDataSourceProtocol` refers to the dynamic,
+    ///    auto-renewing plans that will replace them.
+    ///   - storeKitDataSource: Wrapper around the StoreKit API
+    ///   - paymentsApi: Façade for the Payments API
+    ///   - apiService: Generic Proton API service
+    ///   - canExtendSubscription: _(non-renewing only)_ Whether it is allowed to purchase 1-time plans to
+    ///   append at the end of the current one
+    ///   - reportBugAlertHandler: Handler that allows to report a problem to support
+    ///   - refreshHandler: Handler to update data after a purchase
+    ///   - reachability: A `Reachability` instance to trigger payment queue processing after recovering connectivity
+    ///   - featureFlagsRepository: a DI injection point to obtain feature flags
     init(inAppPurchaseIdentifiersGet: @escaping ListOfIAPIdentifiersGet,
          inAppPurchaseIdentifiersSet: @escaping ListOfIAPIdentifiersSet,
          planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>,
@@ -329,6 +347,13 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
         }
     }
 
+    /// Initiates plan purchase
+    /// - Parameters:
+    ///   - plan: the IAP plan to purchase
+    ///   - amountDue: purchase amount, expressed in cents of normalized currency
+    ///   - successCompletion: success handler
+    ///   - errorCompletion: failure handler
+    ///   - deferredCompletion: optional handler for purchases in progress or deferred to later
     public func purchaseProduct(plan: InAppPurchasePlan,
                                 amountDue: Int,
                                 successCompletion: @escaping SuccessCallback,
@@ -390,7 +415,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
                     }
 
                     guard let userId = self.applicationUserId() else {
-                        self.purchaseProductWithoutAnAuthorizedUser(storeKitProduct: product,
+                       self.purchaseProductWithoutAnAuthorizedUser(storeKitProduct: product,
                                                                     amountDue: amountDue,
                                                                     successCompletion: successCompletion,
                                                                     errorCompletion: errorCompletion,
@@ -442,14 +467,14 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
         threadSafeCache.set(value: amountDue, for: amountDueCacheKey, in: \.amountDue)
 
         switch planService {
-        case .left(let planService):
-            planService.updateCurrentSubscription(callBlocksOnParticularQueue: nil) { [weak self] in
+        case .left(let servicePlanDataService):
+            servicePlanDataService.updateCurrentSubscription(callBlocksOnParticularQueue: nil) { [weak self] in
                 guard let self = self else {
                     errorCompletion(Errors.transactionFailedByUnknownReason)
                     return
                 }
 
-                guard planService.currentSubscription?.hasExistingProtonSubscription == false || (!planService.hasPaymentMethods && planService.currentSubscription?.hasExistingProtonSubscription == true && self.canExtendSubscription && !planService.willRenewAutomatically(plan: plan)) else {
+                guard servicePlanDataService.currentSubscription?.hasExistingProtonSubscription == false || (!servicePlanDataService.hasPaymentMethods && servicePlanDataService.currentSubscription?.hasExistingProtonSubscription == true && self.canExtendSubscription && !servicePlanDataService.willRenewAutomatically(plan: plan)) else {
                     errorCompletion(Errors.invalidPurchase)
                     return
                 }
@@ -472,7 +497,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
                         return
                     }
 
-                    guard planDataSource.currentPlan?.hasExistingProtonSubscription == false || (!planDataSource.hasPaymentMethods && planDataSource.currentPlan?.hasExistingProtonSubscription == true && self.canExtendSubscription && !planDataSource.willRenewAutomatically) else {
+                    guard (planDataSource.currentPlan?.hasExistingProtonSubscription ?? false) == false else {
                         errorCompletion(Errors.invalidPurchase)
                         return
                     }

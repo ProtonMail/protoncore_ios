@@ -319,6 +319,7 @@ extension ServicePlanDataService {
         }
     }
 
+    /// Updates the subscription information about the current user
     private func updateCurrentSubscription() throws {
         guard Thread.isMainThread == false else {
             assertionFailure("This is a blocking network request, should never be called from main thread")

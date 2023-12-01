@@ -154,7 +154,7 @@ extension PMAPIService {
                 self?.finalize(result: .noCredentialsToBeRefreshed, continuation: continuation, completion: completion)
                 return
             }
-            
+
             guard currentCredentials.accessToken == credentialsCausing401.accessToken else {
                 loggingDelegate?.accessTokenRefreshDidSucceed(for: sessionUID,
                                                               sessionType: .from(currentCredentials),
@@ -165,7 +165,7 @@ extension PMAPIService {
                                completion: completion)
                 return
             }
-            
+
             guard refreshCounter > 0 else {
                 loggingDelegate?.accessTokenRefreshDidFail(for: sessionUID,
                                                            sessionType: .from(credentialsCausing401),
@@ -173,7 +173,7 @@ extension PMAPIService {
                 self?.finalize(result: .tooManyRefreshingAttempts, continuation: continuation, completion: completion)
                 return
             }
-            
+
             self?.onRefreshCredential(credential: currentCredentials) { result in
                 self?.fetchAuthCredentialCompletionBlockBackgroundQueue.async { [weak self] in
                     if withoutSupportForUnauthenticatedSessions {

@@ -28,7 +28,7 @@ public class DefaultLocalFeatureFlagsDatasource: LocalFeatureFlagsProtocol {
 
     static let featureFlagsKey = "protoncore.featureflag"
     static let userIdKey = "protoncore.featureflag.userId"
-    
+
     private let userDefaults: UserDefaults
     private var flagsForSession: [String: FeatureFlags]?
     private var userIdForSession: String?
@@ -38,7 +38,7 @@ public class DefaultLocalFeatureFlagsDatasource: LocalFeatureFlagsProtocol {
     }
 
     // MARK: - Get flags
-    
+
     public func getFeatureFlags(userId: String, reloadFromUserDefaults: Bool) -> FeatureFlags? {
         serialAccessQueue.sync {
             if reloadFromUserDefaults {
