@@ -1,3 +1,24 @@
+## 16.0.0 (2023-12-01)
+
+### added (9 changes)
+
+- [feat(dynamicPlans): Persist userId in user defaults](apple/shared/protoncore@7ed6cdef2a1190c785f191e9676783e3eb647b0c) ([merge request](apple/shared/protoncore!1559))
+- [feat(dynamicPlans)!: Merge single and multi-users functions](apple/shared/protoncore@7fd85ce17e2d3c6d17a76947a1e850d019b04425) ([merge request](apple/shared/protoncore!1558))
+- [feat(dynamicPlans): manage static and dynamic value for flag](apple/shared/protoncore@39d912ffc2b24be8c9b08537704e171cdcbee4de) ([merge request](apple/shared/protoncore!1556))
+- [[CP-6916] Simplify function to configure main view of PlanCell between static and dynamic plans.](apple/shared/protoncore@b9b5986132471840462744e876d3fe10f234385a) ([merge request](apple/shared/protoncore!1557))
+- [feature(dynamicPlans): Add dependency injection for FF singleton](apple/shared/protoncore@a2f4c09e6df86be7d088d5b11982fcee9c0fe73a) ([merge request](apple/shared/protoncore!1555))
+- [feature(dynamicPlans): Fix footer copy for dynamic plans](apple/shared/protoncore@8c57542e22b3e12eea4b74e24e1809f3d321824f) ([merge request](apple/shared/protoncore!1544))
+- [refactor: Allow the credentials dependent functions to be async.](apple/shared/protoncore@2a6609158869c663a1d742b2b59877f07f117641) ([merge request](apple/shared/protoncore!1553))
+- [test (payments): ensure current plan snapshots show expiration message CP-6912](apple/shared/protoncore@51213d890803e957d1ceb723a2cbb7c4fd0b3279) ([merge request](apple/shared/protoncore!1552))
+- [Feature: Add snapshot tests for Dynamic plans CP-6481](apple/shared/protoncore@46f0552c85635569dd2d26f8869e8c9d33d9c285) ([merge request](apple/shared/protoncore!1543))
+
+### fixed (4 changes)
+
+- [Fix (payments): Ensure Token Requests have the correct Type and use the correct FF CP-6948](apple/shared/protoncore@739fa77b6133fa7b75f42643392119e32bd68155) ([merge request](apple/shared/protoncore!1554))
+- [Fix (payments): Make check to avoid observer removals and redundant observer additions](apple/shared/protoncore@3b7c3b24abee09824c11a44ad110c31544156c38) ([merge request](apple/shared/protoncore!1551))
+- [fix (payments): Avoid re-triggering a queue process with existing process in flight CP-6913](apple/shared/protoncore@015f64c9f97d3c5ddabb3383f5800035c149bef9) ([merge request](apple/shared/protoncore!1549))
+- [[CP-6856] Re-enable disabled test](apple/shared/protoncore@b3dab56913bd9c80c70c7e688949d4b71fbfd3ce) ([merge request](apple/shared/protoncore!1541))
+
 ## 15.0.0 (2023-11-16)
 
 ### changed (14 changes)
