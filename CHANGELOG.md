@@ -1,3 +1,13 @@
+## 16.0.1 (2023-12-04)
+
+### fixed (1 change)
+
+- [fix (payments tests): Fix a couple of auto-renewing purchase cases and update...](apple/shared/protoncore@96a8e47fcfb049e5bb50cc1232376d6d23fe7909) ([merge request](apple/shared/protoncore!1563))
+
+###  (1 change)
+
+- [[16.0.0] Releasing core version 16.0.0](apple/shared/protoncore@b5d503616b5f4522d77a3bcb4d8095cf89913aa7) ([merge request](apple/shared/protoncore!1561))
+
 ## 16.0.0 (2023-12-01)
 
 ### added (9 changes)
