@@ -23,7 +23,7 @@ import Foundation
 #if canImport(ProtonCoreTestingToolkitUnitTestsCore)
 import ProtonCoreTestingToolkitUnitTestsCore
 #endif
-import ProtonCorePayments
+@testable import ProtonCorePayments
 
 public extension AvailablePlans.AvailablePlan {
     static var dummy: AvailablePlans.AvailablePlan {
@@ -32,7 +32,13 @@ public extension AvailablePlans.AvailablePlan {
                                      name: .empty,
                                      title: .empty,
                                      description: .empty,
-                                     instances: [],
+                                     instances: [.init(cycle: 12,
+                                                       description: "plan",
+                                                       periodEnd: 15,
+                                                       price: [ .init(ID: "a", current: 1200, currency: "USD")],
+                                                       vendors: .init(apple: .init(productID: "ios_test_12_usd_auto_renewing"))
+                                                      )
+                                     ],
                                      entitlements: [],
                                      decorations: [])
     }

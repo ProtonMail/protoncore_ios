@@ -67,7 +67,7 @@ class PlansDataSource: PlansDataSourceProtocol {
     private let storeKitDataSource: StoreKitDataSourceProtocol
     private let localStorage: ServicePlanDataStorage
     private let featureFlagsRepository: FeatureFlagsRepositoryProtocol
-    
+
     init(apiService: APIService,
          storeKitDataSource: StoreKitDataSourceProtocol,
          localStorage: ServicePlanDataStorage,

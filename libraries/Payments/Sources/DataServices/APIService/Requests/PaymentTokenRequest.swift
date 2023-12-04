@@ -116,7 +116,7 @@ final class PaymentTokenRequest: BaseApiRequest<TokenResponse> {
     }
 }
 
-final class 
+final class
 TokenResponse: Response {
     var paymentToken: PaymentToken?
 
