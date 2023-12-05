@@ -41,4 +41,18 @@ final class AvailablePlansRequestTests: XCTestCase {
     func test_availablePlans_path() {
         XCTAssertEqual(sut.path, "/payments/v5/plans")
     }
+
+    func test_vendorIsApple() {
+        guard let requestParams = sut.parameters else {
+            XCTFail("AvailablePlansRequest does not contain any parameters.")
+            return
+        }
+
+        guard let vendorParam = requestParams["Vendor"] as? String else {
+            XCTFail("AvailablePlansRequest is missing a 'Vendor' parameter.")
+            return
+        }
+
+        XCTAssertEqual(vendorParam, "apple")
+    }
 }
