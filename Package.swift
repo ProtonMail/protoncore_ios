@@ -362,7 +362,7 @@ add(
     targets: [
         coreTarget(name: .accountRecovery,
                    dependencies: [
-                       .featureSwitch,
+                       .featureFlags,
                        .pushNotifications,
                        .services,
                        .authentication,
@@ -1444,7 +1444,7 @@ add(
                        .networking,
                        .crypto,
                        .cryptoGoInterface,
-                       .featureSwitch,
+                       .featureFlags,
                        .services
                    ],
                    path: "libraries/PushNotifications/Sources"),
