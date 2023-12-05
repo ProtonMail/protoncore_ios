@@ -1,4 +1,7 @@
 {
     "Code": 1000,
-    "Apple": true
+    "Paypal": 0,
+    "Card": 0,
+    "Bitcoin": 0,
+    "InApp": 1
 }
