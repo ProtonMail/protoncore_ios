@@ -74,6 +74,8 @@
 
 "Only non-renewing annual subscriptions are available via this app" = "此应用内仅支持开通年费账户";
 
+"Your subscription cannot be managed inside the mobile app." = "您的订阅无法在移动应用中管理。";
+
 "Unlimited folders, labels, and filters" = "不限量文件夹、标签和筛选规则";
 
 "Up to %@ storage" = "最大容量达到%@";

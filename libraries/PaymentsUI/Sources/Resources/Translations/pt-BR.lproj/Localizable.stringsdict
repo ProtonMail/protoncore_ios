@@ -15,7 +15,7 @@
         <key>one</key>
         <string>%d alias ​​de e-mail</string>
         <key>other</key>
-        <string>%d aliases de e-mail</string>
+        <string>%d apelidos para o e-mail</string>
       </dict>
     </dict>
     <key>&lt;n&gt; users</key>
@@ -93,9 +93,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d pasta / marcador</string>
+        <string>%d pasta / etiqueta</string>
         <key>other</key>
-        <string>%d pastas / marcadores</string>
+        <string>%d pastas / etiquetas</string>
       </dict>
     </dict>
     <key>&lt;n&gt; countries</key>
@@ -223,7 +223,7 @@
         <key>one</key>
         <string>%d pasta e marcador</string>
         <key>other</key>
-        <string>%d pastas e marcadores</string>
+        <string>%d pastas e etiquetas</string>
       </dict>
     </dict>
     <key>High-speed VPN on &lt;n&gt; devices</key>
@@ -282,7 +282,7 @@
         <key>one</key>
         <string>%d servidor</string>
         <key>other</key>
-        <string>%d servidor</string>
+        <string>%d servidores</string>
       </dict>
       <key>COUNTRIES</key>
       <dict>
@@ -452,7 +452,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>VPN de média velocidade %d conexão VPN</string>
+        <string>VPN de média velocidade %d de conexão VPN</string>
         <key>other</key>
         <string>VPN de média velocidade %d conexões VPN</string>
       </dict>

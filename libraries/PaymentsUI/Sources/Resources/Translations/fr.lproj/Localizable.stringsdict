@@ -157,9 +157,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d connexion VPN ultra rapide</string>
+        <string>%d connexion VPN ultra-rapide</string>
         <key>other</key>
-        <string>%d connexions VPN ultra rapides</string>
+        <string>%d connexions VPN ultra-rapides</string>
       </dict>
     </dict>
     <key>&lt;n&gt; custom domains</key>
@@ -237,9 +237,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>VPN ultra rapide sur %d appareil</string>
+        <string>VPN ultra-rapide sur %d appareil</string>
         <key>other</key>
-        <string>VPN ultra rapide sur %d appareils</string>
+        <string>VPN ultra-rapide sur %d appareils</string>
       </dict>
     </dict>
     <key>&lt;n&gt;+ servers in &lt;m&gt; countries</key>

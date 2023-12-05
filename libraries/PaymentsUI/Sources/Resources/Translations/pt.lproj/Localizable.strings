@@ -22,7 +22,7 @@
 
 "Contact an administrator to make changes to your Proton subscription." = "Contacte um administrador para alterar a sua assinatura Proton.";
 
-"%1$@ of %2$@" = "%1$@ of %2$@";
+"%1$@ of %2$@" = "%1$@ de %2$@";
 
 "%@ storage" = "%@ de armazenamento";
 
@@ -73,6 +73,8 @@
 "The ultimate privacy pack with access to all premium Proton services." = "O derradeiro pacote de privacidade com acesso a todos os serviços premium da Proton.";
 
 "Only non-renewing annual subscriptions are available via this app" = "Apenas estão disponíveis assinaturas anuais não renováveis através desta aplicação.";
+
+"Your subscription cannot be managed inside the mobile app." = "A sua subscrição não pode ser gerida na aplicação móvel.";
 
 "Unlimited folders, labels, and filters" = "Pastas, etiquetas e filtros ilimitados";
 

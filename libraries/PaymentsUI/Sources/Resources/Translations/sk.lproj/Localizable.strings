@@ -74,6 +74,8 @@
 
 "Only non-renewing annual subscriptions are available via this app" = "Prostredníctvom tejto aplikácie je k dispozícii iba neobnovujúce sa ročné predplatné";
 
+"Your subscription cannot be managed inside the mobile app." = "Vaše predplatné nie je možné spravovať v mobilnej aplikácii.";
+
 "Unlimited folders, labels, and filters" = "Neobmedzený počet priečinkov, štítkov a filtrov";
 
 "Up to %@ storage" = "Až do %@ úložtného priestoru";

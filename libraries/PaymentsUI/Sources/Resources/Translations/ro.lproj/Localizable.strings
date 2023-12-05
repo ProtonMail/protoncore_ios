@@ -74,6 +74,8 @@
 
 "Only non-renewing annual subscriptions are available via this app" = "Prin intermediul acestei aplicații sunt disponibile doar abonamentele anuale care nu sunt reînnoite.";
 
+"Your subscription cannot be managed inside the mobile app." = "Abonamentul nu poate fi gestionat din aplicația mobilă.";
+
 "Unlimited folders, labels, and filters" = "Foldere, etichete și filtre nelimitate";
 
 "Up to %@ storage" = "Până la %@ spațiu";

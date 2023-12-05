@@ -74,6 +74,8 @@
 
 "Only non-renewing annual subscriptions are available via this app" = "이 앱을 통해 갱신되지 않는 연간 구독만 사용할 수 있습니다.";
 
+"Your subscription cannot be managed inside the mobile app." = "모바일 앱에서 구독을 관리할 수 없습니다.";
+
 "Unlimited folders, labels, and filters" = "무제한 폴더, 라벨, 필터";
 
 "Up to %@ storage" = "최대 %@ 저장공간";
