@@ -53,7 +53,7 @@ final class PlansDataSourceTests: XCTestCase {
         // Given
         try await withFeatureFlags([.dynamicPlans]) {
             apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-                completion(nil, .success(["Apple": true]))
+                completion(nil, .success(["InApp": 1]))
             }
 
             // When
@@ -68,7 +68,7 @@ final class PlansDataSourceTests: XCTestCase {
         // Given
         try await withFeatureFlags([.dynamicPlans]) {
             apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-                completion(nil, .success(["Apple": false]))
+                completion(nil, .success(["InApp": 0]))
             }
 
             // When

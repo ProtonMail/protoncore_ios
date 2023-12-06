@@ -1,6 +1,6 @@
 //
-//  PaymentStatusRequest.swift
-//  ProtonCore-Payments - Created on 2/12/2020.
+//  PaymentStatusRequestTests.swift
+//  ProtonCore-Payments-Tests - Created on 05/12/2023.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -19,28 +19,30 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import Foundation
+import XCTest
+import OHHTTPStubs
+#if canImport(ProtonCoreTestingToolkitUnitTestsPayments)
+import ProtonCoreTestingToolkitUnitTestsCore
+import ProtonCoreTestingToolkitUnitTestsPayments
+import ProtonCoreTestingToolkitUnitTestsServices
+#else
+import ProtonCoreTestingToolkit
+#endif
+import ProtonCoreDoh
 import ProtonCoreLog
-import ProtonCoreNetworking
 import ProtonCoreServices
+import ProtonCoreNetworking
+@testable import ProtonCorePayments
 
-final class PaymentStatusRequest: BaseApiRequest<PaymentStatusResponse> {
+final class PaymentStatusRequestTests: XCTestCase {
+    var sut: PaymentStatusRequest!
 
-    override init(api: APIService) {
-        super.init(api: api)
+    override func setUp() {
+        super.setUp()
+        sut = PaymentStatusRequest(api: APIServiceMock())
     }
 
-    override var path: String { super.path + "/v4/status/apple" }
-
-    override var isAuth: Bool { false }
-}
-
-final class PaymentStatusResponse: Response {
-    var isAvailable: Bool?
-
-    override func ParseResponse(_ response: [String: Any]!) -> Bool {
-        PMLog.debug(response.json(prettyPrinted: true))
-        self.isAvailable = response["InApp"].map { $0 as? Int == 1 }
-        return true
+    func test_path() {
+        XCTAssertEqual(sut.path, "/payments/v4/status/apple")
     }
 }

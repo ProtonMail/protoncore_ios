@@ -88,7 +88,7 @@ final class PlansDataSourceIntegrationTests: XCTestCase {
 
 extension PlansDataSourceIntegrationTests {
     private func mockPaymentStatus() {
-        mock(filename: "PaymentStatus", title: "Payment status /payment/v4/status mock", path: "/payments/v4/status")
+        mock(filename: "PaymentStatus", title: "Payment status /payment/v4/status/apple mock", path: "/payments/v4/status/apple")
     }
 
     private func mockPaymentMethods() {
