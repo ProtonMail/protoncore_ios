@@ -109,7 +109,7 @@ public extension FeatureFlagsRepository {
      Asynchronously fetches the feature flags from the remote data source and updates the local data source.
 
      - Parameters:
-        - userId: The type user ID to fetch flags for.  If `nil`, user the previously set user ID, if available.  See ``setUserId(_)``.
+        - userId: The user ID to fetch flags for.  If `nil`, uses the previously set user ID, if available.  See ``setUserId(_)``.
         - apiService: A specific apiService tied to a userId, for multiple users app.
 
      - Throws: An error if the operation fails.
