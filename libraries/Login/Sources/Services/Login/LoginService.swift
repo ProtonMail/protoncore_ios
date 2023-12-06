@@ -154,9 +154,14 @@ public final class LoginService: Login {
                 guard let self else { return }
                 switch result {
                 case .success(let user):
+                    FeatureFlagsRepository.shared.setApiService(self.apiService)
+                    FeatureFlagsRepository.shared.setUserId(user.ID)
+                    
+                    Task {
+                        try await FeatureFlagsRepository.shared.fetchFlags()
+                    }
+
                     if isSSO {
-                        FeatureFlagsRepository.shared.setApiService(self.apiService)
-                        FeatureFlagsRepository.shared.setUserId(user.ID)
                         var ssoCredential = credential
                         ssoCredential.userName = user.name ?? ""
                         completion(.success(.finished(UserData(credential: .init(ssoCredential), user: user, salts: [], passphrases: [:], addresses: [], scopes: credential.scopes))))
