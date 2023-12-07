@@ -59,6 +59,7 @@ class LoginServiceTests: XCTestCase {
     var sut: LoginService!
     var api: APIServiceMock!
     var observabilityServiceMock: ObservabilityServiceMock!
+    var featureFlagsRepositoryMock = FeatureFlagsRepositoryMock()
 
     override class func setUp() {
         super.setUp()
@@ -74,10 +75,47 @@ class LoginServiceTests: XCTestCase {
         }
         api.sessionUIDStub.fixture = "sessionUID"
         api.dohInterfaceStub.fixture = dohInterface
-        sut = LoginService(api: api, clientApp: .vpn, minimumAccountType: .external)
+        sut = LoginService(api: api,
+                           clientApp: .vpn,
+                           minimumAccountType: .external,
+                           featureFlagsRepository: featureFlagsRepositoryMock)
     }
 
     // MARK: - handleValidCredentials
+
+    func test_handleValidCredentials_fetchesFeatureFlagsOnSuccess() {
+        // Given
+        setupSUT()
+        let userId = "test_user_id"
+        let expectation = XCTestExpectation(description: "success expected")
+        let credential = Credential(UID: "",
+                                    accessToken: "",
+                                    refreshToken: "",
+                                    userName: "",
+                                    userID: userId,
+                                    scopes: .empty)
+        api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(AuthService.UserResponse(user: .dummy.updated(ID: userId))))
+        }
+
+        // When
+        sut.handleValidCredentials(credential: credential, passwordMode: .one, mailboxPassword: nil, isSSO: true) { (result: Result<LoginStatus, LoginError>) in
+            switch result {
+            case .success(.finished):
+                break
+            default:
+                XCTFail()
+            }
+
+            XCTAssertTrue(self.featureFlagsRepositoryMock.setApiServiceWasCalled)
+            XCTAssertTrue(self.featureFlagsRepositoryMock.setUserIdWasCalled)
+            XCTAssertTrue(self.featureFlagsRepositoryMock.fetchFlagsWasCalled)
+            XCTAssertEqual(self.featureFlagsRepositoryMock.userId, userId)
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 0.1)
+    }
 
     func test_handleValidCredentials_isSSO_succeed() {
         // Given

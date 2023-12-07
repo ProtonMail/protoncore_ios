@@ -109,12 +109,12 @@ public extension FeatureFlagsRepository {
      Asynchronously fetches the feature flags from the remote data source and updates the local data source.
 
      - Parameters:
-        - sessionType: The type of session we want the flags for.
+        - userId: The user ID to fetch flags for.  If `nil`, uses the previously set user ID, if available.  See ``setUserId(_)``.
         - apiService: A specific apiService tied to a userId, for multiple users app.
 
      - Throws: An error if the operation fails.
      */
-    func fetchFlags(for sessionType: SessionType, using apiService: APIService? = nil) async throws {
+    func fetchFlags(for userId: String? = nil, using apiService: APIService? = nil) async throws {
         let remoteDataSource: RemoteFeatureFlagsProtocol?
 
         if let apiService {
@@ -129,16 +129,9 @@ public extension FeatureFlagsRepository {
         }
         let flags = try await remoteDataSource.getFlags()
 
-        let userId: String
-
-         switch sessionType {
-         case .unauth:
-             userId = ""
-         case .auth(let authUserId):
-             userId = authUserId
-         }
-
-        localDatasource.value.upsertFlags(.init(flags: flags), userId: userId)
+        // Fetch flags for the supplied userId parameter, if non-nil, otherwise fetch flags
+        // for self.userId.
+        localDatasource.value.upsertFlags(.init(flags: flags), userId: userId ?? self.userId)
     }
 
     /**

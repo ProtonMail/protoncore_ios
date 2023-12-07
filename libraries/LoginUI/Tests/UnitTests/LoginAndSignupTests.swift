@@ -185,36 +185,6 @@ final class LoginAndSignupTests: XCTestCase {
         XCTAssertIdentical(humanDelegate.paymentDelegateForLoginAndSignupStub.setLastArguments?.value, out.container)
     }
 
-    func testCompleteLoginFlowFetchesFeatureFlags() {
-        // Given
-        let mockService = APIServiceMock()
-        mockService.dohInterfaceStub.fixture = DohInterfaceMock()
-        let challenge = PMChallenge()
-        mockService.challengeParametersProviderStub.fixture = .forAPIService(clientApp: .other(named: "core"), challenge: challenge)
-        let out = LoginAndSignup(appName: "test app",
-                                 clientApp: .other(named: "core"),
-                                 apiService: mockService,
-                                 minimumAccountType: .username,
-                                 isCloseButtonAvailable: true,
-                                 paymentsAvailability: .notAvailable,
-                                 signupAvailability: .notAvailable)
-        let humanDelegate = HumanVerifyDelegateMock()
-        mockService.humanDelegateStub.fixture = humanDelegate
-        let authDelegate = AuthDelegateMock()
-        mockService.authDelegateStub.fixture = authDelegate
-        let vc = UIViewController()
-        let dummyRemoteDataSource = DummyRemoteDataSource()
-        FeatureFlagsRepository.shared.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(dummyRemoteDataSource))
-
-        // When
-        out.presentLoginFlow(over: vc) { result in }
-        out.loginCoordinatorDidFinish(loginCoordinator: out.loginCoordinator!, data: .dummy.updated(user: .dummy.updated(ID: "test")))
-
-        // Then
-        XCTAssertTrue(dummyRemoteDataSource.didGetFlags)
-        XCTAssertEqual(FeatureFlagsRepository.shared.userId, "test")
-    }
-
     func testLoginFlowUnregistersHVDelegatesOnFinish() {
         let mockService = APIServiceMock()
         mockService.dohInterfaceStub.fixture = DohInterfaceMock()

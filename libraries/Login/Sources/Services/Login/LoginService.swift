@@ -44,6 +44,8 @@ public final class LoginService: Login {
     public private(set) var minimumAccountType: AccountType
     var username: String?
 
+    let featureFlagsRepository: FeatureFlagsRepositoryProtocol
+
     var defaultSignUpDomain = "proton.me"
     var updatedSignUpDomains: [String]?
     var chosenSignUpDomain: String?
@@ -63,10 +65,15 @@ public final class LoginService: Login {
     public var startGeneratingAddress: (() -> Void)?
     public var startGeneratingKeys: (() -> Void)?
 
-    public init(api: APIService, clientApp: ClientApp, minimumAccountType: AccountType, authenticator: AuthenticationManager? = nil) {
+    public init(api: APIService, 
+                clientApp: ClientApp,
+                minimumAccountType: AccountType,
+                authenticator: AuthenticationManager? = nil,
+                featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared) {
         self.apiService = api
         self.minimumAccountType = minimumAccountType
         self.clientApp = clientApp
+        self.featureFlagsRepository = featureFlagsRepository
         manager = authenticator ?? Authenticator(api: api)
     }
 
@@ -154,9 +161,17 @@ public final class LoginService: Login {
                 guard let self else { return }
                 switch result {
                 case .success(let user):
+                    self.featureFlagsRepository.setApiService(self.apiService)
+
+                    if !user.ID.isEmpty {
+                        self.featureFlagsRepository.setUserId(user.ID)
+                    }
+
+                    Task {
+                        try await self.featureFlagsRepository.fetchFlags(for: user.ID, using: self.apiService)
+                    }
+
                     if isSSO {
-                        FeatureFlagsRepository.shared.setApiService(self.apiService)
-                        FeatureFlagsRepository.shared.setUserId(user.ID)
                         var ssoCredential = credential
                         ssoCredential.userName = user.name ?? ""
                         completion(.success(.finished(UserData(credential: .init(ssoCredential), user: user, salts: [], passphrases: [:], addresses: [], scopes: credential.scopes))))

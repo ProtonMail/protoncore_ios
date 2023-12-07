@@ -23,16 +23,11 @@
 import ProtonCoreServices
 import ProtonCoreUtilities
 
-public enum SessionType {
-    case unauth
-    case auth(userId: String)
-}
-
 public protocol FeatureFlagsRepositoryProtocol: AnyObject {
     func updateLocalDataSource(_ localDatasource: Atomic<LocalFeatureFlagsProtocol>)
     func setUserId(_ userId: String)
     func setApiService(_ apiService: APIService)
-    func fetchFlags(for sessionType: SessionType, using apiService: APIService?) async throws
+    func fetchFlags(for userId: String?, using apiService: APIService?) async throws
 
     // MARK: - For single-user clients
     func isEnabled(_ flag: any FeatureFlagTypeProtocol, reloadValue: Bool) -> Bool
