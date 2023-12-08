@@ -136,7 +136,6 @@ final class FeatureFlagsTests: XCTestCase {
         XCTAssertTrue(sut.userId.isEmpty)
     }
 
-
     // MARK: - isEnabled
 
     func test_isEnabled_returnsTrueIfFlagIsPresentAndEnabled() {
