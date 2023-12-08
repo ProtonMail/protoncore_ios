@@ -25,9 +25,9 @@
 var paymentStatusResponse: [String: Any] {
     [
         "Code": 1000,
-        "Paypal" : 0,
-        "Card" : 0,
-        "Bitcoin" : 0,
-        "InApp" : 1
+        "Paypal": 0,
+        "Card": 0,
+        "Bitcoin": 0,
+        "InApp": 1
     ]
 }

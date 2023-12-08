@@ -65,7 +65,7 @@ public final class LoginService: Login {
     public var startGeneratingAddress: (() -> Void)?
     public var startGeneratingKeys: (() -> Void)?
 
-    public init(api: APIService, 
+    public init(api: APIService,
                 clientApp: ClientApp,
                 minimumAccountType: AccountType,
                 authenticator: AuthenticationManager? = nil,
