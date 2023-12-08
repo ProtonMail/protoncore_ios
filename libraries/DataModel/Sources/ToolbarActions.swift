@@ -28,7 +28,7 @@ public final class ToolbarActions: NSObject, NSCoding, Codable {
     /// The list of actions of the toolbar
     public var actions: [String]
 
-    init(isCustom: Bool, actions: [String]) {
+    public init(isCustom: Bool, actions: [String]) {
         self.isCustom = isCustom
         self.actions = actions
     }
