@@ -131,8 +131,8 @@ public final class Payments {
                 if case let .right(plansDataSource) = planService {
                     try await plansDataSource.fetchAvailablePlans()
                     storeKitManager.subscribeToPaymentQueue()
-                    storeKitProductsFetched(nil)
                 }
+                storeKitProductsFetched(nil)
             }
         } else {
             // Before dynamic plans, to be ready to present the available plans, we must fetch the available IAPs from StoreKit
