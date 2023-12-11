@@ -1,0 +1,27 @@
+"pmsettings-settings-title" = "Innstillinger";
+
+"pmsettings-settings-app-settings-section" = "App-innstillinger";
+
+"pmsettings-settings-system-settings-section" = "Systeminnstillinger";
+
+"pmsettings-settings-system-settings-language-title" = "Språk";
+
+"pmsettings-settings-system-settings-language-description" = "Du kan velge foretrukket språk i dine systeminnstillinger.";
+
+"pmsettings-settings-system-settings-language-button" = "Angi språk i systeminnstillinger.";
+
+"pmsettings-settings-system-settings-notifications-title" = "Varsler";
+
+"pmsettings-settings-system-settings-notifications-description" = "Denne kalenderen kan holde deg oppdatert om hendelser som skjer eller invitasjoner. Ønsker du å få push-varsler må du endre dine systeminnstillinger.";
+
+"pmsettings-settings-system-settings-notifications-button" = "Administrer tillatelser i systeminnstillinger";
+
+"pmsettings-settings-about-section" = "Om";
+
+"pmsettings-settings-about-acknowledgements" = "Anerkjennelser";
+
+"pmsettings-settings-about-privacy" = "Personvernerklæring";
+
+"pmsettings-settings-about-terms" = "Brukervilkår";
+
+"pmsettings-settings-footer" = "App-versjon: %@";

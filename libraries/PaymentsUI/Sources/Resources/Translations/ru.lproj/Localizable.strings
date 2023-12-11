@@ -22,7 +22,7 @@
 
 "Contact an administrator to make changes to your Proton subscription." = "Свяжитесь с администратором, чтобы внести изменения в подписку на Proton.";
 
-"%1$@ of %2$@" = "%1$@ of %2$@";
+"%1$@ of %2$@" = "%1$@ из %2$@";
 
 "%@ storage" = "%@ хранилища";
 
@@ -124,10 +124,10 @@
 
 "For next-level password management and identity protection." = "Для нового уровня управления паролями и защиты личных данных.";
 
-"Pay monthly" = "Pay monthly";
+"Pay monthly" = "Платить ежемесячно";
 
-"Pay annually" = "Pay annually";
+"Pay annually" = "Платить ежегодно";
 
 "Pay every two years" = "Pay every two years";
 
-"Free" = "Free";
+"Free" = "Бесплатно";
