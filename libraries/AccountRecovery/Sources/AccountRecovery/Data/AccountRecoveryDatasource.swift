@@ -51,7 +51,7 @@ class AccountRecoveryDatasource: AccountRecoveryDatasourceProtocol {
                 switch result {
                 case .success(let user):
                     let email = user.email
-                    let username = user.name
+                    let username = user.name ?? user.email
                     let recovery = user.accountRecovery
                     continuation.resume(returning: RecoveryInfo(username, email, recovery))
                 case .failure(let error):
