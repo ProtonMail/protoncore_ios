@@ -48,7 +48,7 @@ public enum ARTranslation: TranslationsExposing {
     public var l10n: String {
         switch self {
         case .settingsItem:
-            return localized(key: "Settings_Item", comment: "account recovery settings item")
+            return localized(key: "Settings_Item", comment: "")
         case .insecureViewTitle:
             return localized(key: "Insecure_View_Title", comment: "")
         case .graceViewTitle:
