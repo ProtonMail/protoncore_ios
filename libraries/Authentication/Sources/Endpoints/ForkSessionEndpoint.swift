@@ -24,7 +24,7 @@ import ProtonCoreNetworking
 
 extension AuthService {
 
-    public enum ForkSessionScenario {
+    public enum ForkSessionUseCase {
         case forAccountDeletion
         case forChildClientID(String, independent: Bool)
     }
@@ -38,8 +38,8 @@ extension AuthService {
         private let childClientId: String
         private let independent: Int
 
-        init(scenario: ForkSessionScenario) {
-            switch scenario {
+        init(useCase: ForkSessionUseCase) {
+            switch useCase {
             case .forAccountDeletion:
                 self.childClientId = "WebAccountLite"
                 self.independent = 1

@@ -298,16 +298,16 @@ public class Authenticator: NSObject, AuthenticatorInterface {
     }
 
     public func forkSession(_ credential: Credential? = nil,
-                            scenario: AuthService.ForkSessionScenario,
+                            useCase: AuthService.ForkSessionUseCase,
                             completion: @escaping (Result<AuthService.ForkSessionResponse, AuthErrors>) -> Void) {
-        var route = AuthService.ForkSessionEndpoint(scenario: scenario)
+        var route = AuthService.ForkSessionEndpoint(useCase: useCase)
         if let auth = credential {
             route.auth = AuthCredential(auth)
         }
         self.apiService.perform(request: route, decodableCompletion: mapError(completion))
     }
 
-    public func obtainChildSession(_ credential: Credential? = nil,
+    private func obtainChildSession(_ credential: Credential? = nil,
                                    selector: String,
                                    completion: @escaping (Result<AuthService.ChildSessionResponse, AuthErrors>) -> Void) {
         var route = AuthService.ChildSessionRequest(selector: selector)
@@ -318,9 +318,9 @@ public class Authenticator: NSObject, AuthenticatorInterface {
     }
 
     public func performForkingAndObtainChildSession(_ credential: Credential,
-                                                    scenario: AuthService.ForkSessionScenario,
+                                                    useCase: AuthService.ForkSessionUseCase,
                                                     completion: @escaping (Result<Credential, AuthErrors>) -> Void) {
-        forkSession(credential, scenario: scenario) { [weak self] result in
+        forkSession(credential, useCase: useCase) { [weak self] result in
             guard let self else { return }
             switch result {
             case .success(let response):
@@ -328,6 +328,8 @@ public class Authenticator: NSObject, AuthenticatorInterface {
                     guard let self else { return }
                     switch result {
                     case .success(let childSessionResponse):
+                        // According to the (documentation)[https://confluence.protontech.ch/pages/viewpage.action?pageId=11865449],
+                        // the credentials obtained from forking session must be refreshed to be usable
                         let childSessionPartialCredentials = Credential(UID: childSessionResponse.UID,
                                                                         accessToken: childSessionResponse.accessToken,
                                                                         refreshToken: childSessionResponse.refreshToken,

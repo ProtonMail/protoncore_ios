@@ -2069,6 +2069,268 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
+    
+    // MARK: fork session
+    func testForkSessionSuccess() async throws {
+        // given
+        let testClientId = "test child client ID"
+        let testIndependence = false
+        let testSelector = "test selector"
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
+        let manager = Authenticator(api: apiService)
+        
+        apiService.requestDecodableStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
+            if path.contains("/auth/v4/sessions/forks"),
+                let params = parameters as? [String: Any],
+                let childClientID = params["ChildClientID"] as? String,
+                let independence = params["Independent"] as? Int,
+                childClientID == testClientId,
+                independence == (testIndependence ? 1 : 0) {
+                completion(nil, .success(AuthService.ForkSessionResponse(selector: testSelector)))
+            } else {
+                XCTFail()
+                completion(nil, .success(AuthenticatorTests.emptyReponse))
+            }
+        }
+        
+        // when
+        let response = try await withCheckedThrowingContinuation { continuation in
+            manager.forkSession(testCredential,
+                                useCase: .forChildClientID(testClientId, independent: testIndependence),
+                                completion: continuation.resume(with:))
+        }
+        
+        // then
+        XCTAssertEqual(response.selector, testSelector)
+    }
+    
+    func testForkSessionError() async {
+        // given
+        let testClientId = "test child client ID"
+        let testIndependence = false
+        let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
+        let manager = Authenticator(api: apiService)
+        
+        apiService.requestDecodableStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
+            if path.contains("/auth/v4/sessions/forks"),
+                let params = parameters as? [String: Any],
+                let childClientID = params["ChildClientID"] as? String,
+                let independence = params["Independent"] as? Int,
+                childClientID == testClientId,
+                independence == (testIndependence ? 1 : 0) {
+                completion(nil, .failure(.badResponse()))
+            } else {
+                XCTFail()
+                completion(nil, .success(AuthenticatorTests.emptyReponse))
+            }
+        }
+        
+        // when
+        do {
+            _ = try await withCheckedThrowingContinuation { continuation in
+                manager.forkSession(testCredential,
+                                    useCase: .forChildClientID(testClientId, independent: testIndependence),
+                                    completion: continuation.resume(with:))
+            }
+            XCTFail()
+        } catch {
+            // then
+            guard case .networkingError(let responseError) = error as? AuthErrors,
+                    let underlyingError = responseError.underlyingError else {
+                XCTFail()
+                return
+            }
+            XCTAssertEqual(underlyingError, .badResponse())
+        }
+    }
+    
+    // MARK: fork and obtain child session
+    func testObtainChildSessionSuccess() async throws {
+        // given
+        let testClientId = "test child client ID"
+        let testIndependence = false
+        let testSelector = "test selector"
+        let testCredential = Credential(
+            UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"]
+        )
+        let manager = Authenticator(api: apiService)
+        
+        let refreshResponse = RefreshResponse(accessToken: "active accessToken",
+                                              tokenType: "active tokenType",
+                                              scopes: ["active scope"],
+                                              refreshToken: "active refreshToken")
+        
+        apiService.requestDecodableStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
+            if path.contains("/auth/v4/sessions/forks"),
+                let params = parameters as? [String: Any],
+                let childClientID = params["ChildClientID"] as? String,
+                let independence = params["Independent"] as? Int,
+                childClientID == testClientId,
+                independence == (testIndependence ? 1 : 0) {
+                completion(nil, .success(AuthService.ForkSessionResponse(selector: testSelector)))
+            } else if path.contains("/auth/v4/sessions/forks/\(testSelector)") {
+                completion(nil, .success(AuthService.ChildSessionResponse(
+                    UID: "test UID", refreshToken: "inactive refresh token", accessToken: "inactive access token", userID: "test user ID", scopes: ["inactive scope"]
+                )))
+            } else if path.contains("/auth/v4/refresh") {
+                completion(nil, .success(refreshResponse))
+            } else {
+                XCTFail()
+                completion(nil, .success(AuthenticatorTests.emptyReponse))
+            }
+        }
+        
+        // when
+        let response = try await withCheckedThrowingContinuation { continuation in
+            manager.performForkingAndObtainChildSession(testCredential,
+                                                        useCase: .forChildClientID(testClientId, independent: testIndependence),
+                                                        completion: continuation.resume(with:))
+        }
+        
+        // then
+        XCTAssertEqual(response.UID, "test UID")
+        XCTAssertEqual(response.accessToken, refreshResponse.accessToken)
+        XCTAssertEqual(response.refreshToken, refreshResponse.refreshToken)
+        XCTAssertEqual(response.userID, "test user ID")
+        XCTAssertEqual(response.userName, "userName")
+        XCTAssertEqual(response.scopes, refreshResponse.scopes)
+    }
+    
+    func testObtainChildSessionFailureOnForking() async {
+        // given
+        let testClientId = "test child client ID"
+        let testIndependence = false
+        let testCredential = Credential(
+            UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"]
+        )
+        let manager = Authenticator(api: apiService)
+        
+        apiService.requestDecodableStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
+            if path.contains("/auth/v4/sessions/forks"),
+               let params = parameters as? [String: Any],
+               let childClientID = params["ChildClientID"] as? String,
+               let independence = params["Independent"] as? Int,
+               childClientID == testClientId,
+               independence == (testIndependence ? 1 : 0) {
+                completion(nil, .failure(.badResponse()))
+            } else {
+                XCTFail()
+                completion(nil, .success(AuthenticatorTests.emptyReponse))
+            }
+        }
+        
+        // when
+        do {
+            _ = try await withCheckedThrowingContinuation { continuation in
+                manager.performForkingAndObtainChildSession(testCredential,
+                                                            useCase: .forChildClientID(testClientId, independent: testIndependence),
+                                                            completion: continuation.resume(with:))
+            }
+            XCTFail()
+        } catch {
+            // then
+            guard case .networkingError(let responseError) = error as? AuthErrors,
+                    let underlyingError = responseError.underlyingError else {
+                XCTFail()
+                return
+            }
+            XCTAssertEqual(underlyingError, .badResponse())
+        }
+    }
+    
+    func testObtainChildSessionFailureOnSelectorExchange() async {
+        // given
+        let testClientId = "test child client ID"
+        let testIndependence = false
+        let testSelector = "test selector"
+        let testCredential = Credential(
+            UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"]
+        )
+        let manager = Authenticator(api: apiService)
+        
+        apiService.requestDecodableStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
+            if path.contains("/auth/v4/sessions/forks"),
+                let params = parameters as? [String: Any],
+                let childClientID = params["ChildClientID"] as? String,
+                let independence = params["Independent"] as? Int,
+                childClientID == testClientId,
+                independence == (testIndependence ? 1 : 0) {
+                completion(nil, .success(AuthService.ForkSessionResponse(selector: testSelector)))
+            } else if path.contains("/auth/v4/sessions/forks/\(testSelector)") {
+                completion(nil, .failure(.badResponse()))
+            } else {
+                XCTFail()
+                completion(nil, .success(AuthenticatorTests.emptyReponse))
+            }
+        }
+        
+        // when
+        do {
+            _ = try await withCheckedThrowingContinuation { continuation in
+                manager.performForkingAndObtainChildSession(testCredential,
+                                                            useCase: .forChildClientID(testClientId, independent: testIndependence),
+                                                            completion: continuation.resume(with:))
+            }
+            XCTFail()
+        } catch {
+            // then
+            guard case .networkingError(let responseError) = error as? AuthErrors,
+                    let underlyingError = responseError.underlyingError else {
+                XCTFail()
+                return
+            }
+            XCTAssertEqual(underlyingError, .badResponse())
+        }
+    }
+    
+    func testObtainChildSessionFailureOnRefresh() async {
+        // given
+        let testClientId = "test child client ID"
+        let testIndependence = false
+        let testSelector = "test selector"
+        let testCredential = Credential(
+            UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"]
+        )
+        let manager = Authenticator(api: apiService)
+        
+        apiService.requestDecodableStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
+            if path.contains("/auth/v4/sessions/forks"),
+                let params = parameters as? [String: Any],
+                let childClientID = params["ChildClientID"] as? String,
+                let independence = params["Independent"] as? Int,
+                childClientID == testClientId,
+                independence == (testIndependence ? 1 : 0) {
+                completion(nil, .success(AuthService.ForkSessionResponse(selector: testSelector)))
+            } else if path.contains("/auth/v4/sessions/forks/\(testSelector)") {
+                completion(nil, .success(AuthService.ChildSessionResponse(
+                    UID: "test UID", refreshToken: "inactive refresh token", accessToken: "inactive access token", userID: "test user ID", scopes: ["inactive scope"]
+                )))
+            } else if path.contains("/auth/v4/refresh") {
+                completion(nil, .failure(.badResponse()))
+            } else {
+                XCTFail()
+                completion(nil, .success(AuthenticatorTests.emptyReponse))
+            }
+        }
+        
+        // when
+        do {
+            _ = try await withCheckedThrowingContinuation { continuation in
+                manager.performForkingAndObtainChildSession(testCredential,
+                                                            useCase: .forChildClientID(testClientId, independent: testIndependence),
+                                                            completion: continuation.resume(with:))
+            }
+            XCTFail()
+        } catch {
+            // then
+            guard case .networkingError(let responseError) = error as? AuthErrors,
+                    let underlyingError = responseError.underlyingError else {
+                XCTFail()
+                return
+            }
+            XCTAssertEqual(underlyingError, .badResponse())
+        }
+    }
 
     // MARK: closeSession
 
