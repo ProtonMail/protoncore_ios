@@ -87,25 +87,28 @@ extension AccountRecoveryView {
         /// Limiting availability for now to iOS
 #if os(iOS)
         @MainActor
-        public func cancelPressed() async throws {
-            guard let accountRepository, let username else {
-                throw AccountRecoveryViewError.missingArguments
-                return
-            }
+        public func cancelPressed() async {
+            do {
+                guard let accountRepository, let username else {
+                    throw AccountRecoveryViewError.missingArguments
+                }
 
-            let verifier = PasswordVerifier(apiService: accountRepository.authService.apiService,
-                                            username: username,
-                                            endpoint: AbortRecoveryEndpoint()
-            )
-            async let viewController = PasswordVerifierViewController()
-            await viewController.viewModel = verifier
-            await viewController.delegate = self
+                let verifier = PasswordVerifier(apiService: accountRepository.authService.apiService,
+                                                username: username,
+                                                endpoint: AbortRecoveryEndpoint()
+                )
+                async let viewController = PasswordVerifierViewController()
+                await viewController.viewModel = verifier
+                await viewController.delegate = self
 
-            guard let rootVC = UIApplication.shared.topMostViewController else {
-                throw AccountRecoveryViewError.couldNotPresentPasswordUI
-                return
+                guard let rootVC = UIApplication.shared.topMostViewController else {
+                    throw AccountRecoveryViewError.couldNotPresentPasswordUI
+                }
+                await rootVC.present(viewController, animated: true) {}
+            } catch {
+                // error state
+                isLoaded = false
             }
-            await rootVC.present(viewController, animated: true) {}
         }
 #endif
 
