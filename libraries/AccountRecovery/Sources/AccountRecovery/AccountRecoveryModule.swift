@@ -27,7 +27,7 @@ public enum AccountRecoveryModule {
     /// Feature switch that governs whether Account Recovery code is active
     public static let feature = Feature.accountRecovery
     /// Resource bundle for the Account Recovery module
-    public static let resourceBundle = Bundle(path: Bundle(for: AccountRecoveryHandler.self).path(forResource: "Resources-AccountRecovery", ofType: "bundle")!)!
+    public static let resourceBundle = Bundle.module
     /// Localized name of the settings item for Account Recovery
     public static let settingsItem = ARTranslation.settingsItem.l10n
     /// `APIService`-accepting closure to obtain the Account Recovery View Controller in Settings
