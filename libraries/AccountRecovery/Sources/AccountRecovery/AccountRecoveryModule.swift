@@ -16,7 +16,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
 
-import ProtonCoreFeatureSwitch
+import ProtonCoreFeatureFlags
 import ProtonCoreServices
 import SwiftUI
 
@@ -25,7 +25,7 @@ public typealias AccountRecoveryViewController = UIHostingController<AccountReco
 /// Usefult parameters to have handy
 public enum AccountRecoveryModule {
     /// Feature switch that governs whether Account Recovery code is active
-    public static let feature = Feature.accountRecovery
+    public static let feature = CoreFeatureFlagType.accountRecovery
     /// Resource bundle for the Account Recovery module
     public static let resourceBundle = Bundle.module
     /// Localized name of the settings item for Account Recovery
@@ -36,9 +36,4 @@ public enum AccountRecoveryModule {
         let viewModel = AccountRecoveryView.ViewModel(accountRepository: accountRepository)
         return UIHostingController(rootView: AccountRecoveryView(viewModel: viewModel))
     }
-}
-
-extension Feature {
-    /// Feature switch that governs whether **Account Recovery** code is active
-    public static var accountRecovery = Feature(name: "accountRecovery", isEnable: false)
 }

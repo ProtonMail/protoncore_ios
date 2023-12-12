@@ -204,8 +204,8 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
                     self.testApi.serviceDelegate = self.serviceDelegate
                     switch result {
                     case .success(let user):
-                        FeatureFlagsRepository.shared.setUserId(with: user.ID)
-                        FeatureFlagsRepository.shared.setApiService(with: self.testApi)
+                        FeatureFlagsRepository.shared.setUserId(user.ID)
+                        FeatureFlagsRepository.shared.setApiService(self.testApi)
                         self.loginButton.isSelected = false
                         self.userInfo = user
                         self.loginStatusLabel.text = "Login status: OK"
