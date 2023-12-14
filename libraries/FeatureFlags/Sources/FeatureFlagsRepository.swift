@@ -201,7 +201,7 @@ public extension FeatureFlagsRepository {
     /**
      Resets userId.
      */
-    func clearUserId(_ userId: String) {
-        localDatasource.value.clearUserId(userId)
+    func clearUserId() {
+        localDatasource.value.clearUserId()
     }
 }

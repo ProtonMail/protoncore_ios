@@ -90,7 +90,7 @@ public class DefaultLocalFeatureFlagsDatasource: LocalFeatureFlagsProtocol {
         }
     }
 
-    public func clearUserId(_ userId: String) {
+    public func clearUserId() {
         serialAccessQueue.sync {
             userDefaults.removeObject(forKey: Self.userIdKey)
         }

@@ -38,7 +38,7 @@ public protocol FeatureFlagsRepositoryProtocol: AnyObject {
     // MARK: - Commons
     func resetFlags()
     func resetFlags(for userId: String)
-    func clearUserId(_ userId: String)
+    func clearUserId()
 }
 
 public extension FeatureFlagsRepositoryProtocol {
