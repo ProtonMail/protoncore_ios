@@ -145,7 +145,7 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         Task {
-            try await sut.fetchFlags(for: nil)
+            try await sut.fetchFlags()
             expectation.fulfill()
         }
 
@@ -161,7 +161,7 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         Task {
-            try await sut.fetchFlags(for: nil)
+            try await sut.fetchFlags()
             expectation.fulfill()
         }
 
@@ -177,7 +177,7 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         Task {
-            try await sut.fetchFlags(for: nil)
+            try await sut.fetchFlags()
             expectation.fulfill()
         }
 
@@ -283,7 +283,7 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         Task {
-            try await sut.fetchFlags(for: nil)
+            try await sut.fetchFlags()
             expectation.fulfill()
         }
 
@@ -299,7 +299,7 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         Task {
-            try await sut.fetchFlags(for: nil)
+            try await sut.fetchFlags()
             expectation.fulfill()
         }
 
@@ -315,7 +315,7 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         Task {
-            try await sut.fetchFlags(for: nil)
+            try await sut.fetchFlags()
             expectation.fulfill()
         }
 
@@ -419,7 +419,7 @@ final class FeatureFlagsTests: XCTestCase {
         sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsProtocol?>(DefaultRemoteDatasourceMock()))
 
         // When
-        try await sut.fetchFlags(for: nil)
+        try await sut.fetchFlags()
 
         // Then
         let localFlags = sut.localDatasource.value.getFeatureFlags(userId: "", reloadFromUserDefaults: true)
