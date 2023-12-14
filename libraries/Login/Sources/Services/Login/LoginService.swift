@@ -168,7 +168,7 @@ public final class LoginService: Login {
                     }
 
                     Task {
-                        try await self.featureFlagsRepository.fetchFlags(for: user.ID, using: self.apiService)
+                        try await self.featureFlagsRepository.fetchFlags()
                     }
 
                     if isSSO {
