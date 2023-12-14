@@ -37,6 +37,7 @@ public protocol AccountRecoveryRepositoryProtocol {
     /// - Returns: Tuple consisting of the current username, email and Account Recovery state.
     func fetchRecoveryState() async throws -> RecoveryInfo
 
+    func accountRecoveryStatus() async -> User.AccountRecovery?
 }
 
 public extension AccountRecoveryRepositoryProtocol {
@@ -62,5 +63,9 @@ public struct AccountRecoveryRepository: AccountRecoveryRepositoryProtocol {
     public init(apiService: APIService) {
         self.init(accountRecoveryDatasource: AccountRecoveryDatasource(apiService: apiService),
              authService: AuthService(api: apiService))
+    }
+
+    public func accountRecoveryStatus() async -> User.AccountRecovery? {
+        return await accountRecoveryDatasource.accountRecoveryStatus()
     }
 }
