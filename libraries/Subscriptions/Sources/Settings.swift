@@ -90,12 +90,12 @@ public enum SubscriptionCTA: TranslationsExposing {
     public var action: ((PaymentsUI) -> Void) {
         switch self {
         case .upgrade: return upgradeSubscription
-        case .manageSubscription: return manageSusbcriptions
+        case .manageSubscription: return manageSubscriptions
         case .cannotManageSubscription: return { _ in }
         }
     }
 
-    private func manageSusbcriptions(paymentWrapper: (PaymentsUI)) {
+    private func manageSubscriptions(paymentWrapper: (PaymentsUI)) {
         guard !ProcessInfo.processInfo.isiOSAppOnMac else {
             return
         }
