@@ -1,21 +1,21 @@
-"Settings_Item" = "Password reset";
+"Settings_Item" = "Сбросить пароль";
 
-"Insecure_View_Title" = "Reset your password";
+"Insecure_View_Title" = "Сбросить пароль";
 
-"Grace_View_Title" = "Do you want to reset your password?";
+"Grace_View_Title" = "Вы хотите восстановить свой пароль?";
 
-"Grace_View_line1" = "We received a request to reset your password for ";
+"Grace_View_line1" = "Мы получили запрос на сброс вашего пароля ";
 
-"Insecure_View_line1" = "You can now change your password for the account ";
+"Insecure_View_line1" = "Теперь вы можете изменить пароль для аккаунта ";
 
 "Insecure_View_line2" = " freely during ";
 
-"Insecure_View_line3" = "Please go the signed-in device (in the session where the request was initiated) to change your password.";
+"Insecure_View_line3" = "Чтобы сменить пароль, перейдите на устройство, на котором вы зарегистрировались (в сеансе, в котором был инициирован запрос).";
 
-"Grace_View_Cancel_Button_CTA" = "Cancel request";
+"Grace_View_Cancel_Button_CTA" = "Отменить запрос";
 
 "Grace_View_Undefined_Time_Left" = "a few hours";
 
-"Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+"Grace_View_line2" = "Чтобы обезопасить ваш аккаунт, мы хотим убедиться, что вы действительно пытаетесь сбросить пароль. Вы сможете сбросить пароль in ";
 
-"Grace_View_line3" = "If you didn't make this request, or if you no longer need help signing in, please cancel it and take steps to secure your account.";
+"Grace_View_line3" = "Если вы не делали этого запроса или если вам больше не нужна помощь при входе в систему, отмените его и примите меры для защиты своего аккаунта.";

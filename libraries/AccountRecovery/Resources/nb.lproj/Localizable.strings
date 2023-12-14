@@ -1,0 +1,21 @@
+"Settings_Item" = "Tilbakestilling av passord";
+
+"Insecure_View_Title" = "Tilbakestill passordet ditt";
+
+"Grace_View_Title" = "Ønsker du å tilbakestille passordet ditt?";
+
+"Grace_View_line1" = "Vi har mottatt en forespørsel om å tilbakestille passordet ditt for ";
+
+"Insecure_View_line1" = "Du kan nå endre passordet for kontoen ";
+
+"Insecure_View_line2" = " fritt i løpet av ";
+
+"Insecure_View_line3" = "Vennligst gå til den påloggede enheten (i sesjonen hvor forespørselen ble igangsatt) for å endre passordet ditt.";
+
+"Grace_View_Cancel_Button_CTA" = "Avbryt forespørsel";
+
+"Grace_View_Undefined_Time_Left" = "noen timer";
+
+"Grace_View_line2" = ". For å holde kontoen din trygg vil vi forsikre oss om at det virkelig er du som prøver å tilbakestille passordet. Du kan tilbakestille passordet ditt om ";
+
+"Grace_View_line3" = "Hvis du ikke sendte denne forespørselen, eller hvis du ikke lenger trenger hjelp til å logge på, kan du avbryte den og iverksette tiltak for å sikre kontoen din.";

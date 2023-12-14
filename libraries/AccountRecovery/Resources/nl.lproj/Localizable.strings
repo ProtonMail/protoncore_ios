@@ -4,13 +4,13 @@
 
 "Grace_View_Title" = "Wilt u uw wachtwoord resetten?";
 
-"Grace_View_line1" = "We received a request to reset your password for ";
+"Grace_View_line1" = "We hebben een verzoek ontvangen om uw wachtwoord te resetten voor ";
 
-"Insecure_View_line1" = "You can now change your password for the account ";
+"Insecure_View_line1" = "U kan nu uw wachtwoord veranderen voor account ";
 
 "Insecure_View_line2" = " vrijelijk gedurende ";
 
-"Insecure_View_line3" = "Please go the signed-in device (in the session where the request was initiated) to change your password.";
+"Insecure_View_line3" = "Ga naar het ingelogde apparaat (in de sessie waarin de aanvraag is gestart) om uw wachtwoord te wijzigen.";
 
 "Grace_View_Cancel_Button_CTA" = "Aanvraag annuleren";
 

@@ -1,4 +1,4 @@
-"Settings_Item" = "Password reset";
+"Settings_Item" = "Poništavanje lozinke";
 
 "Insecure_View_Title" = "Reset your password";
 
@@ -12,7 +12,7 @@
 
 "Insecure_View_line3" = "Please go the signed-in device (in the session where the request was initiated) to change your password.";
 
-"Grace_View_Cancel_Button_CTA" = "Cancel request";
+"Grace_View_Cancel_Button_CTA" = "Poništi zahtjev";
 
 "Grace_View_Undefined_Time_Left" = "a few hours";
 

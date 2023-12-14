@@ -12,7 +12,7 @@
 
 "pmsettings-settings-system-settings-notifications-title" = "Notificações";
 
-"pmsettings-settings-system-settings-notifications-description" = "Este calendário pode mantê-lo atualizado sobre eventos acontecendo ou convites. Se você deseja receber notificações push, altere as configurações do sistema.";
+"pmsettings-settings-system-settings-notifications-description" = "Este calendário pode mantê-lo atualizado sobre eventos ou convites. Se quiser receber notificações push, você deve alterar as configurações do sistema.";
 
 "pmsettings-settings-system-settings-notifications-button" = "Gerenciar permissões nas configurações do sistema";
 
