@@ -1669,9 +1669,36 @@ final class PaymentsUIViewModelTests: XCTestCase {
         }
     }
 
+    func test_fetchPlans_forCurrentMode_setFooter_disabled() async throws {
+        try await withFeatureFlags([.dynamicPlans]) {
+            // Given
+            let storeKitManager = StoreKitManagerMock()
+            storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+            let sut = PaymentsUIViewModel(
+                mode: .current,
+                storeKitManager: storeKitManager,
+                planService: .right(plansDataSource),
+                clientApp: .mail,
+                customPlansDescription: [:],
+                planRefreshHandler: { _ in XCTFail() },
+                extendSubscriptionHandler: { XCTFail() }
+            )
+
+            // When
+            try await sut.fetchPlans()
+
+            // Then
+            XCTAssertEqual(sut.footerType, .disabled)
+        }
+    }
+
     func test_fetchPlans_forCurrentMode_setFooter_withoutPlansToBuy() async throws {
         try await withFeatureFlags([.dynamicPlans]) {
             // Given
+            plansDataSource.availablePlansStub.fixture = .init(
+                plans: [],
+                defaultCycle: defaultCycle
+            )
             let storeKitManager = StoreKitManagerMock()
             storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
             let sut = PaymentsUIViewModel(

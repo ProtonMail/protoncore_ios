@@ -197,11 +197,11 @@ class PaymentsUIViewModel {
             try await fetchCurrentPlan()
             try await fetchAvailablePlans()
             try await fetchPaymentMethods()
-            footerType = .withoutPlansToBuy
+            footerType = availablePlans?.count ?? 0 > 0 ? .disabled : .withoutPlansToBuy
         case .update:
             try await fetchAvailablePlans()
             try await fetchPaymentMethods()
-            footerType = isDynamicPlansEnabled ? .disabled : .withPlansToBuy
+            footerType = .disabled
         }
     }
 
@@ -360,11 +360,7 @@ class PaymentsUIViewModel {
             if !plansToShow.isEmpty {
                 plans.append(plansToShow)
             }
-            if isDynamicPlansEnabled {
-                footerType = .disabled
-            } else {
-                footerType = plansToShow.isEmpty ? .withoutPlansToBuy : .withPlansToBuy
-            }
+            footerType = plansToShow.isEmpty ? .withoutPlansToBuy : .withPlansToBuy
             self.plans = plans
             completionHandler?(.success((self.plans, footerType)))
 
@@ -396,7 +392,6 @@ class PaymentsUIViewModel {
                 if storeKitManager.canExtendSubscription, !servicePlan.hasPaymentMethods, isExtensionPlanAvailable, !servicePlan.willRenewAutomatically(plan: accountPlan) {
                     footerType = .withExtendSubscriptionButton(plan)
                 } else {
-                    // this is always the case when DynamicPlans is enabled
                     footerType = .withoutPlansToBuy
                 }
                 completionHandler?(.success((self.plans, footerType)))
@@ -549,12 +544,13 @@ class PaymentsUIViewModel {
 
     private func registerRefreshHandler() {
         storeKitManager.refreshHandler = { [weak self] result in
+            guard let self else { return }
             switch result {
             case .finished(let paymentSucceeded):
                 guard paymentSucceeded == .resolvingIAPToCredits ||
                         paymentSucceeded == .resolvingIAPToSubscription else { return }
                 // refresh plans
-                if self?.isDynamicPlansEnabled == true {
+                if isDynamicPlansEnabled {
                     Task { [weak self] in
                         do {
                             try await self?.fetchPlans()
@@ -564,15 +560,15 @@ class PaymentsUIViewModel {
                         }
                     }
                 } else {
-                    self?.createPlanPresentations(withCurrentPlan: self?.mode == .current)
-                    self?.planRefreshHandler(self?.getCurrentPlan)
+                    self.createPlanPresentations(withCurrentPlan: self.mode == .current)
+                    self.planRefreshHandler(self.getCurrentPlan)
                 }
             case .errored, .erroredWithUnspecifiedError:
-                if self?.isDynamicPlansEnabled == true {
-                    self?.planRefreshHandler(nil)
+                if isDynamicPlansEnabled {
+                    self.planRefreshHandler(nil)
                 } else {
                     // update credits
-                    self?.updateCredits { [weak self] in self?.planRefreshHandler(nil) }
+                    self.updateCredits { [weak self] in self?.planRefreshHandler(nil) }
                 }
             }
         }
