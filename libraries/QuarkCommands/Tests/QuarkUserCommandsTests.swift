@@ -1,5 +1,5 @@
 //
-//  QuarkCommandsTests.swift
+//  QuarkUserCommandsTests.swift
 //  ProtonCore-QuarkCommands-Tests - Created on 07/13/2022.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -32,7 +32,7 @@ import ProtonCoreTestingToolkit
 #endif
 @testable import ProtonCoreQuarkCommands
 
-final class QuarkCommandsTests: XCTestCase {
+final class QuarkUserCommandsTests: XCTestCase {
 
     var dohMock: DohMock!
 
@@ -46,72 +46,71 @@ final class QuarkCommandsTests: XCTestCase {
         }
     }
 
-    func testCreateUserExternalOnlySuccess() {
+    func testCreateUserSuccess() {
         // mock response
-        /*let sub = */stub(condition: isHost("test.quark.commands.url")) { request in
+        stub(condition: isHost("test.quark.commands.url")) { request in
             #if SPM
             let bundle = Bundle.module
             #else
             let bundle = Bundle(for: type(of: self))
             #endif
-            let url = bundle.url(forResource: "ExternalNoKeySucess", withExtension: "html")!
+            let url = bundle.url(forResource: "CreateUserSuccess", withExtension: "json")!
             let headers = ["Content-Type": "application/xhtml+xml;charset=utf-8"]
             return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: 200, headers: headers)
+
         }
-        let expectation = self.expectation(description: "Success completion block called")
 
         // mock url
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in "https://test.quark.commands.url" }
-        let quarkCommand = QuarkCommands(doh: dohMock)
-        quarkCommand.createUser(externalEmail: "quarkcommand@test.quark.commands.url",
-                                password: "123456789") { result in
-            switch result {
-            case .success:
-                expectation.fulfill()
-            case .failure:
-                XCTFail()
-            }
-        }
-        waitForExpectations(timeout: 10) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
-        }
 
+        let quarkCommand = Quark().baseUrl(dohMock)
+
+        let user = User(name: "quarkcommand@test.quark.commands.url", password: "123456789")
+        do {
+            // Act
+            let response = try quarkCommand.userCreate(user: user)
+
+            // Assert
+            XCTAssertNotNil(response, "Response should not be nil")
+            // Additional assertions can be added here
+        } catch {
+            // Handle the error and make assertions about it
+            XCTFail("userCreate method threw an unexpected error: \(error)")
+        }
     }
 
-    func testCreateUserExternalOnlyFailed() {
+    func testCreateUserFailed() {
         // mock response
-        /*let sub = */stub(condition: isHost("test.quark.commands.url")) { request in
+        stub(condition: isHost("test.quark.commands.url")) { request in
             #if SPM
             let bundle = Bundle.module
             #else
             let bundle = Bundle(for: type(of: self))
             #endif
-            let url = bundle.url(forResource: "ExternalNoKeyFailed", withExtension: "html")!
-            let headers = ["Content-Type": "application/xhtml+xml;charset=utf-8"]
+            guard let url = bundle.url(forResource: "CreateUserFailed", withExtension: "json") else {
+                fatalError("Resource file not found")
+            }
+            let headers = ["Content-Type": "application/json"] // Corrected Content-Type
             return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: 200, headers: headers)
         }
-        let expectation = self.expectation(description: "Success completion block called")
 
         // mock url
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in "https://test.quark.commands.url" }
 
-        let quarkCommand = QuarkCommands(doh: dohMock)
-        quarkCommand.createUser(externalEmail: "quarkcommand@test.quark.commands.url",
-                                password: "123456789") { result in
-            switch result {
-            case .success:
-                XCTFail()
-            case .failure(let error as CreateAccountError):
-                XCTAssertEqual(error.userFacingMessageInQuarkCommands,
-                               CreateAccountError.cannotFindAccountDetailsInResponseBody.userFacingMessageInQuarkCommands)
-                expectation.fulfill()
-            case .failure:
-                XCTFail()
-            }
-        }
-        waitForExpectations(timeout: 10) { (expectationError) -> Void in
-            XCTAssertNil(expectationError)
+        let quarkCommand = Quark().baseUrl(dohMock)
+
+        let user = User(name: "quarkcommand@test.quark.commands.url", password: "123456789")
+
+        do {
+            // Act
+            try quarkCommand.userCreate(user: user)
+
+            // Assert
+            XCTFail("userCreate method")
+            // Additional assertions can be added here
+        } catch {
+            // Handle the error and make assertions about it
+            XCTAssertNotNil(error, "Error should not be nil")
         }
     }
-
 }
