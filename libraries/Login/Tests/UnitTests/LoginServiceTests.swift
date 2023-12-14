@@ -59,7 +59,7 @@ class LoginServiceTests: XCTestCase {
     var sut: LoginService!
     var api: APIServiceMock!
     var observabilityServiceMock: ObservabilityServiceMock!
-    var featureFlagsRepositoryMock = FeatureFlagsRepositoryMock()
+    var featureFlagsRepositoryMock: FeatureFlagsRepositoryMock!
 
     override class func setUp() {
         super.setUp()
@@ -67,6 +67,7 @@ class LoginServiceTests: XCTestCase {
     }
 
     private func setupSUT() {
+        featureFlagsRepositoryMock = FeatureFlagsRepositoryMock()
         api = APIServiceMock()
         api.authDelegateStub.fixture = AuthDelegateMock()
         let dohInterface = DohInterfaceMock()

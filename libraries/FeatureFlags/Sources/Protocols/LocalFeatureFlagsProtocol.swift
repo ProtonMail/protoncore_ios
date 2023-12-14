@@ -30,5 +30,5 @@ public protocol LocalFeatureFlagsProtocol {
 
     var userIdForActiveSession: String? { get }
     func setUserIdForActiveSession(_ userId: String)
-    func clearUserId(_ userId: String)
+    func clearUserId()
 }

@@ -60,7 +60,7 @@ public final class FeatureFlagsRepositoryMock: FeatureFlagsRepositoryProtocol {
 
     }
 
-    public func clearUserId(_ userId: String) {
+    public func clearUserId() {
 
     }
 }

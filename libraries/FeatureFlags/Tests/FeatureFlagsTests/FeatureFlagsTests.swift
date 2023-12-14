@@ -667,7 +667,7 @@ final class FeatureFlagsTests: XCTestCase {
         XCTAssertEqual(sut.userId, userId)
 
         // When
-        sut.clearUserId(userId)
+        sut.clearUserId()
 
         // Then
         XCTAssertNil(localDataSource.userIdForActiveSession)
