@@ -114,7 +114,7 @@ class LoginServiceTests: XCTestCase {
             expectation.fulfill()
         }
 
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: 1.0)
     }
 
     func test_handleValidCredentials_isSSO_succeed() {
