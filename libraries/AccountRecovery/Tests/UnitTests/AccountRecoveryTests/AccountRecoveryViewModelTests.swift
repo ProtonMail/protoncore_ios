@@ -143,7 +143,6 @@ final class AccountRecoveryViewModelTests: XCTestCase {
         // Given
         let sut = AccountRecoveryView.ViewModel()
         XCTAssertFalse(sut.isLoaded)
-        let currentTimeInterval = Date().timeIntervalSince1970
         let recoveryInfo = Fixtures.expiredStateInfo
 
         // When
@@ -160,7 +159,6 @@ final class AccountRecoveryViewModelTests: XCTestCase {
     func testDataLoading() async {
         // Given
         let repositoryMock = AccountRecoveryRepositoryMock()
-        let currentTimeInterval = Date().timeIntervalSince1970
         repositoryMock.returnedInfo = Fixtures.gracePeriodInfo
 
         // When
