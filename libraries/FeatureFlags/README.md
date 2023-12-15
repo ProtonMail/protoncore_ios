@@ -37,18 +37,10 @@ import FeatureFlags
 import ProtonCoreNetworking
 import ProtonCoreServices
 
-enum SpecificBUFeatureFlags: String, FeatureFlagTypeProtocol {
-    case thisIsOneFlag = "NameOfTheUnleashFlag"
-    case thisIsASecondFlag = "NameOfTheSecondUnleashFlag"
-}
-
-let config = FeatureFlagsConfiguration(userId: XXXXXX, currentBUFlags: SpecificBUFeatureFlags.self)
-
 let apiService: APIService = YourNetworkService()
 
-let repo = FeatureFlagsRepository(configuration: config,
-                                   localDatasource: DefaultLocalFeatureFlagsDatasource(),
-                                   remoteDatasource: DefaultRemoteDatasource(apiService: apiService))
+let repo = FeatureFlagsRepository(localDataSource: DefaultLocalFeatureFlagsDataSource(),
+                                  remoteDataSource: DefaultRemoteFeatureFlagsDataSource(apiService: apiService))
             
 ```
 You can now use the repo to `get`, `refresh`, `clean` the feature flags.
@@ -67,8 +59,8 @@ You can now use the repo to `get`, `refresh`, `clean` the feature flags.
     let flags = try await repo.getFlags()
 ```
 
-### Get one flags
+### Get one flag
 
 ```swift
-    let value = try await repo.getFlag(for: SpecificBUFeatureFlags.thisIsOneFlag)
+    let value = try await repo.getFlag(for: .thisIsOneFlag)
 ```

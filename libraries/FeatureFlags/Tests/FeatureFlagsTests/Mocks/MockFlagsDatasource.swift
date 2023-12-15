@@ -24,7 +24,7 @@ import Foundation
 @testable import ProtonCoreFeatureFlags
 
 /// Remote flags datasource used for mocking, it always returns a predefined set of feature flags.
-public class MockFlagsDatasource: RemoteFeatureFlagsProtocol {
+public class MockFlagsDatasource: RemoteFeatureFlagsDataSourceProtocol {
     private var flags: [FeatureFlag]
 
     init(flags: [FeatureFlag]) {

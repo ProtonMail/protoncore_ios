@@ -24,7 +24,7 @@ import ProtonCoreServices
 import ProtonCoreUtilities
 
 public protocol FeatureFlagsRepositoryProtocol: AnyObject {
-    func updateLocalDataSource(_ localDatasource: Atomic<LocalFeatureFlagsProtocol>)
+    func updateLocalDataSource(_ localDataSource: Atomic<LocalFeatureFlagsDataSourceProtocol>)
     func setUserId(_ userId: String)
     func setApiService(_ apiService: APIService)
     func fetchFlags(for userId: String?, using apiService: APIService?) async throws

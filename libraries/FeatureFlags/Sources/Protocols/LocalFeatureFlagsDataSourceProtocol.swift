@@ -1,5 +1,5 @@
 //
-//  DefaultRemoteDatasourceMock.swift
+//  LocalFeatureFlagsProtocol.swift
 //  ProtonCore-FeatureFlags - Created on 29.09.23.
 //
 //  Copyright (c) 2023 Proton Technologies AG
@@ -21,18 +21,14 @@
 //
 
 import Foundation
-@testable import ProtonCoreFeatureFlags
 
-public class DefaultRemoteDatasourceMock: RemoteFeatureFlagsProtocol {
-    public init() {}
+public protocol LocalFeatureFlagsDataSourceProtocol {
+    func getFeatureFlags(userId: String, reloadFromUserDefaults: Bool) -> FeatureFlags?
+    func upsertFlags(_ flags: FeatureFlags, userId: String)
+    func cleanAllFlags()
+    func cleanFlags(for userId: String)
 
-    public func getFlags() async throws -> [FeatureFlag] {
-        guard let url = Bundle.module.url(forResource: "flags", withExtension: "json"),
-              let data = try? Data(contentsOf: url, options: .mappedIfSafe),
-              let response = try? JSONDecoder().decode(FeatureFlagResponse.self, from: data)
-        else {
-            return []
-        }
-        return response.toggles
-    }
+    var userIdForActiveSession: String? { get }
+    func setUserIdForActiveSession(_ userId: String)
+    func clearUserId()
 }

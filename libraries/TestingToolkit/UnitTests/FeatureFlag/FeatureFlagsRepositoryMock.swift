@@ -35,7 +35,7 @@ public final class FeatureFlagsRepositoryMock: FeatureFlagsRepositoryProtocol {
     public var setApiServiceWasCalled = false
     public var fetchFlagsWasCalled = false
 
-    public func updateLocalDataSource(_ localDatasource: ProtonCoreUtilities.Atomic<ProtonCoreFeatureFlags.LocalFeatureFlagsProtocol>) {
+    public func updateLocalDataSource(_ localDataSource: ProtonCoreUtilities.Atomic<ProtonCoreFeatureFlags.LocalFeatureFlagsDataSourceProtocol>) {
 
     }
 
