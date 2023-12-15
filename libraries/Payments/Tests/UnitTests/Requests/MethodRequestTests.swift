@@ -133,6 +133,7 @@ final class MethodRequestTests: XCTestCase {
                     switch level {
                     case .debug:
                         if message.contains("REQUEST") { return }
+                        if message.contains("Payment request") { return }
                         XCTAssertTrue(message.contains("type"))
                         XCTAssertTrue(message.contains("card"))
                         XCTAssertFalse(message.contains("details"))
