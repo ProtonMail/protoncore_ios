@@ -29,7 +29,9 @@ final class AccountRecoveryHandlerTests: XCTestCase {
 
     func testHandling() {
         let content = UNMutableNotificationContent()
-        content.userInfo = ["unencryptedMessage": NotificationType.accountRecoveryInitiated]
+        content.userInfo = ["unencryptedMessage": [
+            "type": NotificationType.accountRecoveryInitiated
+        ]]
 
         let expectation = XCTestExpectation(description: "Handler is called")
 
