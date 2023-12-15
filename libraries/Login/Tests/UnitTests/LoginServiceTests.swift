@@ -107,15 +107,15 @@ class LoginServiceTests: XCTestCase {
             default:
                 XCTFail()
             }
-
-            XCTAssertTrue(self.featureFlagsRepositoryMock.setApiServiceWasCalled)
-            XCTAssertTrue(self.featureFlagsRepositoryMock.setUserIdWasCalled)
-            XCTAssertTrue(self.featureFlagsRepositoryMock.fetchFlagsWasCalled)
-            XCTAssertEqual(self.featureFlagsRepositoryMock.userId, userId)
+            
             expectation.fulfill()
         }
 
-        wait(for: [expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 0.1)
+        XCTAssertTrue(self.featureFlagsRepositoryMock.setApiServiceWasCalled)
+        XCTAssertTrue(self.featureFlagsRepositoryMock.setUserIdWasCalled)
+        XCTAssertTrue(self.featureFlagsRepositoryMock.fetchFlagsWasCalled)
+        XCTAssertEqual(self.featureFlagsRepositoryMock.userId, userId)
     }
 
     func test_handleValidCredentials_isSSO_succeed() {
