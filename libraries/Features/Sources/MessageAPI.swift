@@ -29,182 +29,6 @@ struct MessageAPI {
     static let path: String = "/mail/v4/messages"
 }
 
-/// send message reuqest -- SendResponse
-final class SendMessage: Request {
-    var messagePackage: [AddressPackageBase]  // message package
-    var body: String
-    let messageID: String
-    let expirationTime: Int32
-
-    var clearBody: ClearBodyPackage?
-    var clearAtts: [ClearAttachmentPackage]?
-
-    var mimeDataPacket: String
-    var clearMimeBody: ClearBodyPackage?
-
-    var plainTextDataPacket: String
-    var clearPlainTextBody: ClearBodyPackage?
-
-    init(messageID: String, expirationTime: Int32?,
-         messagePackage: [AddressPackageBase]!, body: String,
-         clearBody: ClearBodyPackage?, clearAtts: [ClearAttachmentPackage]?,
-         mimeDataPacket: String, clearMimeBody: ClearBodyPackage?,
-         plainTextDataPacket: String, clearPlainTextBody: ClearBodyPackage?,
-         authCredential: AuthCredential?) {
-        self.messageID = messageID
-        self.messagePackage = messagePackage
-        self.body = body
-        self.expirationTime = expirationTime ?? 0
-        self.clearBody = clearBody
-        self.clearAtts = clearAtts
-
-        self.mimeDataPacket = mimeDataPacket
-        self.clearMimeBody = clearMimeBody
-
-        self.plainTextDataPacket = plainTextDataPacket
-        self.clearPlainTextBody = clearPlainTextBody
-
-        self.auth = authCredential
-    }
-
-    let auth: AuthCredential?
-    var authCredential: AuthCredential? {
-        return self.auth
-    }
-
-    var parameters: [String: Any]? {
-        var out: [String: Any] = [String: Any]()
-
-        if self.expirationTime > 0 {
-            out["ExpiresIn"] = self.expirationTime
-        }
-        // optional this will override app setting
-        // out["AutoSaveContacts"] = "\(0 / 1)"
-
-        let normalPackage = messagePackage.filter { $0.type.rawValue < 10 }
-        let mimePackage = messagePackage.filter { $0.type.rawValue > 10 }
-
-        let plainTextPackage = normalPackage.filter { $0.plainText == true }
-        let htmlPackage = normalPackage.filter { $0.plainText == false }
-
-        // packages object
-        var packages: [Any] = [Any]()
-
-        // plaintext
-        if plainTextPackage.count > 0 {
-            // not mime
-            var plainTextAddress: [String: Any] = [String: Any]()
-            var addrs = [String: Any]()
-            var type = SendType()
-            for mp in plainTextPackage {
-                addrs[mp.email] = mp.parameters!
-                type.insert(mp.type)
-            }
-            plainTextAddress["Addresses"] = addrs
-            // "Type": 15, // 8|4|2|1, all types sharing this package, a bitmask
-            plainTextAddress["Type"] = type.rawValue
-            plainTextAddress["Body"] = self.plainTextDataPacket
-            plainTextAddress["MIMEType"] = "text/plain"
-
-            if let cb = self.clearPlainTextBody {
-                // Include only if cleartext recipients
-                plainTextAddress["BodyKey"] = [
-                    "Key": cb.key,
-                    "Algorithm": cb.algo
-                ]
-            }
-
-            if let cAtts = clearAtts {
-                // Only include if cleartext recipients, optional if no attachments
-                var atts: [String: Any] = [String: Any]()
-                for it in cAtts {
-                    atts[it.ID] = [
-                        "Key": it.encodedSession,
-                        "Algorithm": it.algo == "3des" ? "tripledes" : it.algo
-                    ]
-                }
-                plainTextAddress["AttachmentKeys"] = atts
-            }
-            packages.append(plainTextAddress)
-        }
-
-        // html text
-        if htmlPackage.count > 0 {
-            // not mime
-            var htmlAddress: [String: Any] = [String: Any]()
-            var addrs = [String: Any]()
-            var type = SendType()
-            for mp in htmlPackage {
-                addrs[mp.email] = mp.parameters!
-                type.insert(mp.type)
-            }
-            htmlAddress["Addresses"] = addrs
-            // "Type": 15, // 8|4|2|1, all types sharing this package, a bitmask
-            htmlAddress["Type"] = type.rawValue
-            htmlAddress["Body"] = self.body
-            htmlAddress["MIMEType"] = "text/html"
-
-            if let cb = clearBody {
-                // Include only if cleartext recipients
-                htmlAddress["BodyKey"] = [
-                    "Key": cb.key,
-                    "Algorithm": cb.algo
-                ]
-            }
-
-            if let cAtts = clearAtts {
-                // Only include if cleartext recipients, optional if no attachments
-                var atts: [String: Any] = [String: Any]()
-                for it in cAtts {
-                    atts[it.ID] = [
-                        "Key": it.encodedSession,
-                        "Algorithm": it.algo == "3des" ? "tripledes" : it.algo
-                    ]
-                }
-                htmlAddress["AttachmentKeys"] = atts
-            }
-            packages.append(htmlAddress)
-        }
-
-        if mimePackage.count > 0 {
-            // mime
-            var mimeAddress: [String: Any] = [String: Any]()
-
-            var addrs = [String: Any]()
-            var mimeType = SendType()
-            for mp in mimePackage {
-                addrs[mp.email] = mp.parameters!
-                mimeType.insert(mp.type)
-            }
-            mimeAddress["Addresses"] = addrs
-            mimeAddress["Type"] = mimeType.rawValue // 16|32 MIME sending cannot share packages with inline sending
-            mimeAddress["Body"] = mimeDataPacket
-            mimeAddress["MIMEType"] = "multipart/mixed"
-
-            if let cb = clearMimeBody {
-                // Include only if cleartext MIME recipients
-                mimeAddress["BodyKey"] = [
-                    "Key": cb.key,
-                    "Algorithm": cb.algo
-                ]
-            }
-            packages.append(mimeAddress)
-        }
-        out["Packages"] = packages
-        // PMLog.D( out.json(prettyPrinted: true) )
-        // PMLog.D( "API toDict done" )
-        return out
-    }
-
-    var path: String {
-        return MessageAPI.path + "/" + self.messageID
-    }
-
-    var method: HTTPMethod {
-        return .post
-    }
-}
-
 final class SendResponse: Response {
     var responseDict: [String: Any] = [:]
 
@@ -320,35 +144,6 @@ final class SendCalEvent: Request {
             attsDict.append(attDict)
         }
         messsageDict["Attachments"] = attsDict
-//        let messageOut: [String: Any] = ["Message": messsageDict]
-
-//        if let orginalMsgID = message.orginalMessageID {
-//            if !orginalMsgID.isEmpty {
-//                out["ParentID"] = message.orginalMessageID
-//                out["Action"] = message.action ?? "0"  //{0|1|2} // Optional, reply = 0, reply all = 1, forward = 2 m
-//            }
-//        }
-//        if let attachments = self.message.attachments.allObjects as? [Attachment] {
-//            var atts: [String: String] = [:]
-//            for att in attachments {
-//                if att.keyChanged {
-//                    atts[att.attachmentID] = att.keyPacket
-//                }
-//            }
-//            out["AttachmentKeyPackets"] = atts
-//        }
-//        if self.atts.count > 0 {
-//            for att in self.atts {
-//                
-//            }
-//            var atts: [String: String] = [:]
-//            for att in attachments {
-//                if att.keyChanged {
-//                    atts[att.attachmentID] = att.keyPacket
-//                }
-//            }
-//            out["AttachmentKeyPackets"] = atts
-//        }
 
         if self.atts.count > 0 {
             if let packet = atts.first?.keyPacket {
@@ -398,16 +193,16 @@ final class SendCalEvent: Request {
                 ]
             }
 
-            if let cAtts = clearAtts {
+            if let clearAttachments = clearAtts, clearAttachments.count > 0 {
                 // Only include if cleartext recipients, optional if no attachments
-                var atts: [String: Any] = [String: Any]()
-                for it in cAtts {
-                    atts[it.ID] = [
-                        "Key": it.encodedSession,
-                        "Algorithm": it.algo == "3des" ? "tripledes" : it.algo
-                    ]
+                var attachments: [[String: Any]] = [[String: Any]]()
+                for attachment in clearAttachments {
+                    attachments.append([
+                        "Key": attachment.encodedSession,
+                        "Algorithm": attachment.algo == "3des" ? "tripledes" : attachment.algo
+                    ])
                 }
-                plainTextAddress["AttachmentKeys"] = atts
+                plainTextAddress["AttachmentKeys"] = attachments
             }
             packages.append(plainTextAddress)
         }
@@ -436,34 +231,15 @@ final class SendCalEvent: Request {
                 ]
             }
 
-            if let cAtts = clearAtts, cAtts.count > 0 {
-                var hasID = true
-                for it in cAtts where it.ID.isEmpty {
-                    hasID = false
-                    break
+            if let clearAttachments = clearAtts, clearAttachments.count > 0 {
+                var attachments: [[String: Any]] = [[String: Any]]()
+                for attachment in clearAttachments {
+                    attachments.append([
+                        "Key": attachment.encodedSession,
+                        "Algorithm": attachment.algo == "3des" ? "tripledes" : attachment.algo
+                    ])
                 }
-
-                if hasID {
-                    // Only include if cleartext recipients, optional if no attachments
-                    var atts: [String: Any] = [String: Any]()
-                    for it in cAtts {
-                        atts[it.ID] = [
-                            "Key": it.encodedSession,
-                            "Algorithm": it.algo == "3des" ? "tripledes" : it.algo
-                        ]
-                    }
-                    htmlAddress["AttachmentKeys"] = atts
-                } else {
-                    // Only include if cleartext recipients, optional if no attachments
-                    var atts: [[String: Any]] = [[String: Any]]()
-                    for it in cAtts {
-                        atts.append( [
-                            "Key": it.encodedSession,
-                            "Algorithm": it.algo == "3des" ? "tripledes" : it.algo
-                        ])
-                    }
-                    htmlAddress["AttachmentKeys"] = atts
-                }
+                htmlAddress["AttachmentKeys"] = attachments
             }
             packages.append(htmlAddress)
         }
