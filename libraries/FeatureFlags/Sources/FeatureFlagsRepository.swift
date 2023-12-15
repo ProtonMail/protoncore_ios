@@ -144,7 +144,7 @@ public extension FeatureFlagsRepository {
     func isEnabled(_ flag: any FeatureFlagTypeProtocol, reloadValue: Bool) -> Bool {
         let flags = localDataSource.value.getFeatureFlags(
             userId: self.userId,
-            reloadFromUserDefaults: reloadValue
+            reloadFromLocalDataSource: reloadValue
         )
         return flags?.getFlag(for: flag)?.enabled ?? false
     }
@@ -164,12 +164,12 @@ public extension FeatureFlagsRepository {
         if let userId {
             flags = localDataSource.value.getFeatureFlags(
                 userId: userId,
-                reloadFromUserDefaults: reloadValue
+                reloadFromLocalDataSource: reloadValue
             )
         } else {
             flags = localDataSource.value.getFeatureFlags(
                 userId: self.userId,
-                reloadFromUserDefaults: reloadValue
+                reloadFromLocalDataSource: reloadValue
             )
         }
 

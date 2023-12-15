@@ -39,9 +39,9 @@ public class DefaultLocalFeatureFlagsDatasource: LocalFeatureFlagsDataSourceProt
 
     // MARK: - Get flags
 
-    public func getFeatureFlags(userId: String, reloadFromUserDefaults: Bool) -> FeatureFlags? {
+    public func getFeatureFlags(userId: String, reloadFromLocalDataSource: Bool) -> FeatureFlags? {
         serialAccessQueue.sync {
-            if reloadFromUserDefaults {
+            if reloadFromLocalDataSource {
                 let dynamicFlags: [String: FeatureFlags]? = userDefaults.decodableValue(forKey: Self.featureFlagsKey)
                 return dynamicFlags?[userId]
             } else if let flagsForSession, let userIdForSession {
