@@ -249,14 +249,13 @@ public class MailFeature {
                             // compare the key if doesn't match
                             sendBuilder.add(addr: PreAddress(email: req.email, pubKey: value.firstKey(), pgpKey: contact.firstPgpKey, recipintType: value.recipientType, eo: isEO, hasMime: false, isSigned: true, isPgpEncrypted: false, isPlainText: contact.isPlainText))
                         } else {
-                            // sendBuilder.add(addr: PreAddress(email: req.email, pubKey: nil, pgpKey: contact.pgpKey, recipintType: value.recipientType, eo: isEO, mime: true))
                             sendBuilder.add(addr: PreAddress(email: req.email, pubKey: nil, pgpKey: contact.firstPgpKey, recipintType: value.recipientType, eo: isEO, hasMime: contact.hasMime, isSigned: contact.isSigned, isPgpEncrypted: contact.isEncrypted, isPlainText: contact.isPlainText))
                         }
                     } else {
                         if sign == 1 {
-                            sendBuilder.add(addr: PreAddress(email: req.email, pubKey: value.firstKey(), pgpKey: nil, recipintType: value.recipientType, eo: isEO, hasMime: true, isSigned: true, isPgpEncrypted: false, isPlainText: false))
+                            sendBuilder.add(addr: PreAddress(email: req.email, pubKey: value.firstKey(), pgpKey: nil, recipintType: value.recipientType, eo: isEO, hasMime: true, isSigned: true, isPgpEncrypted: false, isPlainText: true))
                         } else {
-                            sendBuilder.add(addr: PreAddress(email: req.email, pubKey: value.firstKey(), pgpKey: nil, recipintType: value.recipientType, eo: isEO, hasMime: false, isSigned: false, isPgpEncrypted: false, isPlainText: false))
+                            sendBuilder.add(addr: PreAddress(email: req.email, pubKey: value.firstKey(), pgpKey: nil, recipintType: value.recipientType, eo: isEO, hasMime: false, isSigned: false, isPgpEncrypted: false, isPlainText: true))
                         }
                     }
                 }
