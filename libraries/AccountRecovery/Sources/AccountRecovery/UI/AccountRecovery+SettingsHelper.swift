@@ -23,7 +23,7 @@ import ProtonCoreUIFoundations
 
 extension User.AccountRecovery {
     public var shouldShowSettingsItem: Bool {
-        if state == .none { return false }
+        if state == .none || state == .expired { return false }
         // the user cancelled manually, so they already know
         if state == .cancelled && reason == .cancelled { return false }
         // otherwise, true
@@ -36,14 +36,14 @@ extension User.AccountRecovery {
         case .grace: return ARTranslation.graceState.l10n
         case .cancelled: return ARTranslation.cancelledState.l10n
         case .insecure: return ARTranslation.insecureState.l10n
-        case .expired: return ARTranslation.expiredState.l10n
+        case .expired: return ""
         }
     }
 
     public var imageForSettingsItem: UIImage? {
         switch state {
-        case .none: return nil
-        case .grace, .cancelled, .expired: return IconProvider.exclamationCircle
+        case .none, .expired: return nil
+        case .grace, .cancelled: return IconProvider.exclamationCircle
         case .insecure: return IconProvider.checkmarkCircle
         }
     }
