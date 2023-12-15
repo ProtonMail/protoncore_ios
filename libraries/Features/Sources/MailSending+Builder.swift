@@ -342,12 +342,7 @@ class SendBuilder {
     func buildPlainText(senderKey: Key, passphrase: String, userKeys: [Data], keys: [Key], newSchema: Bool) throws -> SendBuilder {
         // TODO:: fix all ?
         let messageBody = self.clearBody ?? ""
-        // TODO:: need improve replace part
-        let plainText = messageBody.html2String.preg_replace("\n", replaceto: "\r\n")
-        // PMLog.D(plainText)
-        let encrypted = try plainText.encrypt(withKey: senderKey,
-                                              userKeys: userKeys,
-                                              mailbox_pwd: passphrase)
+        let encrypted = try messageBody.encrypt(withKey: senderKey, userKeys: userKeys, mailbox_pwd: passphrase)
         let spilted = try encrypted?.split()
         let session = newSchema ?
             try spilted?.keyPacket?.getSessionFromPubKeyPackageNonOptional(userKeys: userKeys, passphrase: passphrase, keys: keys) :
@@ -357,7 +352,7 @@ class SendBuilder {
         self.plainTextSessionAlgo = session?.algo
         self.plainTextDataPackage = spilted?.dataPacket?.base64EncodedString()
 
-        self.clearPlainTextBody = plainText
+        self.clearPlainTextBody = messageBody
 
         return self
     }
