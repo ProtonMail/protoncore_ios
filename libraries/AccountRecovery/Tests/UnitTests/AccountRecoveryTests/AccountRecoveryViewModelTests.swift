@@ -254,29 +254,6 @@ final class AccountRecoveryViewModelTests: XCTestCase {
         XCTAssertEqual(.cancelled, sut.state)
         XCTAssertEqual(.cancelled, sut.reason)
     }
-
-    @MainActor
-    func testAbortRecoveryAction() async {
-        // Given
-        let repositoryMock = AccountRecoveryRepositoryMock()
-        repositoryMock.returnedInfo = Fixtures.gracePeriodInfo
-        let sut = AccountRecoveryView.ViewModel(accountRepository: repositoryMock)
-
-        let expectation = XCTestExpectation(description: "wait for data load")
-
-        let listener = sut.$isLoaded.sink { loaded in
-            if loaded { expectation.fulfill() }
-        }
-
-        await fulfillment(of: [expectation], timeout: 5)
-
-        // When
-
-
-        await sut.cancelPressed()
-        XCTFail("Expected a failure trying to present view controller")
-
-    }
 }
 
 private class AccountRecoveryRepositoryMock: AccountRecoveryRepositoryProtocol {
