@@ -114,7 +114,7 @@ final class AccountRecoveryViewTests: XCTestCase {
         _ = try view.find(textWhere: { string, _ -> Bool in
             string.contains("69 hours")
         })
-        _ = try view.find(button: "Account_Recovery_Grace_View_Cancel_Button_CTA".l7d)
+        _ = try view.find(button: ARTranslation.graceViewCancelButtonCTA.l10n)
     }
 
     @MainActor func testUnsecuredState() throws {

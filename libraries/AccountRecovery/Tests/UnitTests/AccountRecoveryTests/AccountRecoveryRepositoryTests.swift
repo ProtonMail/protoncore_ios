@@ -22,9 +22,13 @@
 
 import XCTest
 @testable import ProtonCoreAccountRecovery
-import ProtonCoreTestingToolkit
 @testable import ProtonCoreDataModel
 @testable import ProtonCoreAuthentication
+#if canImport(ProtonCoreTestingToolkitUnitTestsServices)
+import ProtonCoreTestingToolkitUnitTestsServices
+#else
+import ProtonCoreTestingToolkit
+#endif
 
 final class AccountRecoveryRepositoryTests: XCTestCase {
 

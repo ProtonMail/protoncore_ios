@@ -24,7 +24,11 @@ import XCTest
 @testable import ProtonCoreAccountRecovery
 @testable import ProtonCoreDataModel
 import ProtonCoreAuthentication
+#if canImport(ProtonCoreTestingToolkitUnitTestsServices)
+import ProtonCoreTestingToolkitUnitTestsServices
+#else
 import ProtonCoreTestingToolkit
+#endif
 
 private enum Fixtures {
     // We fix the start time for all tests, so the comparisons further down
@@ -307,5 +311,9 @@ private class AccountRecoveryRepositoryMock: AccountRecoveryRepositoryProtocol {
         }
 
         return returnedInfo
+    }
+
+    func accountRecoveryStatus() async -> ProtonCoreDataModel.User.AccountRecovery? {
+        returnedInfo?.recovery
     }
 }

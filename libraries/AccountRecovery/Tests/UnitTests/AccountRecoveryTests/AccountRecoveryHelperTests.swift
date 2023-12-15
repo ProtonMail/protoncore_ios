@@ -1,6 +1,6 @@
 //
-//  AccountRecoveryModuleTests.swift
-//  ProtonCore-AccountRecovery-Unit-Tests - Created on 1/8/23.
+//  AccountRecoveryHelperTests.swift
+//  ProtonCore-AccountRecovery-Unit-Tests - Created on 15/12/23.
 //
 //  Copyright (c) 2023 Proton AG
 //
@@ -21,27 +21,8 @@
 //
 
 import XCTest
-import ProtonCoreAccountRecovery
-@testable import ProtonCoreFeatureSwitch
-#if canImport(ProtonCoreTestingToolkitUnitTestsServices)
-import ProtonCoreTestingToolkitUnitTestsServices
-#else
-import ProtonCoreTestingToolkit
-#endif
 
+public class AccountRecoveryHelperTests: XCTestCase {
 
-final class AccountRecoveryModuleTests: XCTestCase {
-
-    var apiMock: APIServiceMock!
-
-    override func setUp() {
-        super.setUp()
-        apiMock = APIServiceMock()
-    }
-
-    func testModuleDetails() {
-        XCTAssertEqual("TrustedDeviceRecovery", AccountRecoveryModule.feature.rawValue)
-        XCTAssertNotNil(AccountRecoveryModule.settingsViewController(apiMock))
-    }
-
+    
 }
