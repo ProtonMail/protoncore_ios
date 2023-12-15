@@ -113,11 +113,13 @@ extension AccountRecoveryView {
 #endif
 
         public func userUnlocked() {
+            isLoaded = false
             loadData()
         }
 
         public func didCloseVerifyPassword() {
             // nothing to do. We refresh data just in case something has changed backend-side
+            isLoaded = false
             loadData()
         }
 

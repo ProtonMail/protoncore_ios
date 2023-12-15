@@ -212,21 +212,18 @@ final class AccountRecoveryViewModelTests: XCTestCase {
         let repositoryMock = AccountRecoveryRepositoryMock()
         repositoryMock.returnedInfo = Fixtures.gracePeriodInfo
         let sut = AccountRecoveryView.ViewModel(accountRepository: repositoryMock)
-        let expectation = XCTestExpectation(description: "wait for data load")
+        var expectation = XCTestExpectation(description: "wait for data load")
         let listener = sut.$isLoaded.sink { loaded in
             if loaded { expectation.fulfill() }
         }
         await fulfillment(of: [expectation], timeout: 5)
-        repositoryMock.returnedInfo = Fixtures.cancelledStateInfo
 
-        let secondExpectation = XCTestExpectation(description: "wait for data load")
-        let secondListener = sut.$isLoaded.sink { loaded in
-            if loaded { secondExpectation.fulfill() }
-        }
+        repositoryMock.returnedInfo = Fixtures.cancelledStateInfo
+        expectation = XCTestExpectation(description: "wait for second load")
 
         // When
         sut.userUnlocked()
-        await fulfillment(of: [secondExpectation], timeout: 5)
+        await fulfillment(of: [expectation], timeout: 5)
 
         // Then
         XCTAssert(sut.isLoaded)
@@ -239,21 +236,18 @@ final class AccountRecoveryViewModelTests: XCTestCase {
         let repositoryMock = AccountRecoveryRepositoryMock()
         repositoryMock.returnedInfo = Fixtures.gracePeriodInfo
         let sut = AccountRecoveryView.ViewModel(accountRepository: repositoryMock)
-        let expectation = XCTestExpectation(description: "wait for data load")
+        var expectation = XCTestExpectation(description: "wait for data load")
         let listener = sut.$isLoaded.sink { loaded in
             if loaded { expectation.fulfill() }
         }
         await fulfillment(of: [expectation], timeout: 5)
         repositoryMock.returnedInfo = Fixtures.cancelledStateInfo
 
-        let secondExpectation = XCTestExpectation(description: "wait for data load")
-        let secondListener = sut.$isLoaded.sink { loaded in
-            if loaded { secondExpectation.fulfill() }
-        }
+        expectation = XCTestExpectation(description: "wait for second load")
 
         // When
         sut.didCloseVerifyPassword()
-        await fulfillment(of: [secondExpectation], timeout: 5)
+        await fulfillment(of: [expectation], timeout: 5)
 
         // Then
         XCTAssert(sut.isLoaded)
@@ -278,12 +272,10 @@ final class AccountRecoveryViewModelTests: XCTestCase {
 
         // When
 
-        do {
-            try await sut.cancelPressed()
-            XCTFail("Expected a failure trying to present view controller")
-        } catch {
-            // This failure is to be expected in a non UI test
-        }
+
+        await sut.cancelPressed()
+        XCTFail("Expected a failure trying to present view controller")
+
     }
 }
 
