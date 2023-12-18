@@ -14,9 +14,9 @@
 
 "Government block" = "Regjeringen blokkerer";
 
-"Antivirus interference" = "Antivirus innblanding";
+"Antivirus interference" = "Antivirus-forstyrrelser";
 
-"Proxy/Firewall interference" = "Proxy/Brannmur innblanding";
+"Proxy/Firewall interference" = "Proxy-/brannmurforstyrrelser";
 
 "Proton is down" = "Proton er nede";
 
@@ -32,7 +32,7 @@
 
 "Your country may be blocking access to Proton. Try using %1$@ (or any other VPN) or %2$@ to access Proton." = "Kan hende landet ditt blokkerer tilgang til Proton. Prøv å bruke %1$@ (eller hvilken som helst annet VPN) eller %2$@ for å få tilgang til Proton.";
 
-"Temporarily disable or remove your antivirus software." = "Midlertidig deaktiver eller fjern din Antivirus programvarepakke.";
+"Temporarily disable or remove your antivirus software." = "Deaktiver eller fjern antivirusprogramvaren midlertidig.";
 
 "Disable any proxies or firewalls, or contact your network administrator." = "Deaktiver alle proxyer eller brannmurer, eller kontakt din nettverksadministrator.";
 
