@@ -16,6 +16,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
 
+#if os(iOS)
 import SwiftUI
 import ProtonCoreUIFoundations
 
@@ -46,13 +47,11 @@ public struct ActiveAccountRecoveryView: View {
                 }
 
                 Button {
-#if os(iOS) // limiting to iOS only for now
                     isAnimating.toggle()
                     Task { @MainActor in
                         try await viewModel.cancelPressed()
                         isAnimating.toggle()
                     }
-#endif
                 } label: {
                     ZStack(alignment: .trailing) {
                         Text(ARTranslation.graceViewCancelButtonCTA.l10n)
@@ -100,4 +99,5 @@ struct ActiveAccountRecoveryView_Previews: PreviewProvider {
         ActiveAccountRecoveryView(viewModel: Self.viewModel)
     }
 }
+#endif
 #endif

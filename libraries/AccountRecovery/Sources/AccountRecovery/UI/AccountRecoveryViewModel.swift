@@ -20,12 +20,11 @@
 //  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
 //
 
+#if os(iOS)
 import Foundation
 import ProtonCoreDataModel
 import ProtonCorePasswordRequest
-#if os(iOS)
 import UIKit
-#endif
 
 public enum AccountRecoveryViewError: Error {
     case missingArguments
@@ -85,7 +84,6 @@ extension AccountRecoveryView {
         /// Signals that the view requested that the **Account Recovery** process be aborted
         /// - Parameter completion: Closure called upon completion of the request, to allow the UI to be updated
         /// Limiting availability for now to iOS
-#if os(iOS)
         @MainActor
         public func cancelPressed() async {
             do {
@@ -110,7 +108,6 @@ extension AccountRecoveryView {
                 isLoaded = false
             }
         }
-#endif
 
         public func userUnlocked() {
             isLoaded = false
@@ -128,3 +125,4 @@ extension AccountRecoveryView {
         }
     }
 }
+#endif

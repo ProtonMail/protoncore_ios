@@ -20,6 +20,7 @@
 //  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
 //
 
+#if os(iOS)
 import XCTest
 import ProtonCoreDataModel
 import ProtonCoreUIFoundations
@@ -76,3 +77,4 @@ public class AccountRecoveryHelperTests: XCTestCase {
     }
 
 }
+#endif
