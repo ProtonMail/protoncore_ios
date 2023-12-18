@@ -226,6 +226,9 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable {
                         self?.webView?.loadRequest(request: request)
                     }
                 }
+            case .switchToSSOLogin(let info):
+                self?.showBanner(message: info, style: .info)
+                self?.signInWithSSO()
             }
         }
         viewModel.isLoading.bind { [weak self] isLoading in
