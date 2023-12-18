@@ -19,12 +19,16 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
 //
-
+#if os(iOS)
 import XCTest
 @testable import ProtonCoreAccountRecovery
-import ProtonCoreTestingToolkit
 @testable import ProtonCoreDataModel
 @testable import ProtonCoreAuthentication
+#if canImport(ProtonCoreTestingToolkitUnitTestsServices)
+import ProtonCoreTestingToolkitUnitTestsServices
+#else
+import ProtonCoreTestingToolkit
+#endif
 
 final class AccountRecoveryRepositoryTests: XCTestCase {
 
@@ -132,4 +136,42 @@ final class AccountRecoveryRepositoryTests: XCTestCase {
         XCTAssertEqual("jdoe@protonmail.com", email)
         XCTAssertEqual(.none, try XCTUnwrap(accountRecovery?.state))
     }
+
+    func testAccountRecoveryStatus() async {
+        // Given
+        let recovery = User.AccountRecovery(state: .none,
+                                            reason: User.RecoveryReason.none,
+                                            startTime: .zero,
+                                            endTime: .zero,
+                                            UID: "5cigpml2LD_iUk_3DkV29oojTt3eA==")
+        let user = User(ID: "5cigpml2LD_iUk_3DkV29oojTt3eA==",
+                        name: nil,
+                        usedSpace: 1,
+                        currency: "EUR",
+                        credit: 0,
+                        maxSpace: 2,
+                        maxUpload: 3,
+                        role: 2,
+                        private: 1,
+                        subscribed: .drive,
+                        services: 5,
+                        delinquent: 0,
+                        orgPrivateKey: nil,
+                        email: "jdoe@protonmail.com",
+                        displayName: "Jane D",
+                        keys: [],
+                        accountRecovery: recovery)
+        apiMock.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, decodableCompletion  in
+            if path == "/users" {
+                decodableCompletion(nil, .success(AuthService.UserResponse(user: user)))
+            } else {
+                XCTFail("Unexpected request")
+            }
+        }
+
+        let status = await sut.accountRecoveryStatus()
+
+        XCTAssertEqual(recovery, status)
+    }
 }
+#endif

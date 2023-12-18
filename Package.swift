@@ -180,12 +180,13 @@ extension String {
     static let ohhttpStubsPackage: String = "OHHTTPStubs"
     static let reachabilitySwift: String = "Reachability"
     static let reachabilitySwiftPackage: String = "Reachability.swift"
+    static let sdWebImage: String = "SDWebImage"
     static let swiftBCrypt: String = "SwiftBCrypt"
     static let swiftOTP: String = "SwiftOTP"
     static let snapshotTesting: String = "SnapshotTesting"
     static let snapshotTestingPackage: String = "swift-snapshot-testing"
     static let trustKit: String = "TrustKit"
-    static let sdWebImage: String = "SDWebImage"
+    static let viewInspector: String = "ViewInspector"
 
     // MARK: - Plugin names
 
@@ -302,6 +303,7 @@ extension Target.Dependency {
     static var swiftOTP: Target.Dependency { .product(name: .swiftOTP, package: .swiftOTP) }
     static var trustKit: Target.Dependency { .product(name: .trustKit, package: .trustKit) }
     static var sdWebImage: Target.Dependency { .product(name: .sdWebImage, package: .sdWebImage) }
+    static var viewInspector: Target.Dependency { .product(name: .viewInspector, package: .viewInspector)}
 
     // MARK: - Helpers
 
@@ -377,6 +379,8 @@ add(
         coreTestTarget(name: .accountRecovery + "Tests",
                        dependencies: [
                            .accountRecovery,
+                           .testingToolkitUnitTestsServices,
+                           .viewInspector,
                        ],
                        path: "libraries/AccountRecovery/Tests",
                        resources: [.process("Resources")])
@@ -1968,6 +1972,10 @@ let package = Package(
             url: "https://github.com/ProtonMail/TrustKit",
             exact: "1.0.3"
         ),
+        .package(
+            url: "https://github.com/nalexn/ViewInspector.git",
+            .upToNextMajor(from: "0.9.9")
+            ),
     ],
     targets: targets + [
         .plugin(name: .obfuscatedConstantsGenerationPlugin,

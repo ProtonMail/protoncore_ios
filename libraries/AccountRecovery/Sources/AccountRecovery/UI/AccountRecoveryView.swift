@@ -18,7 +18,7 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
-
+#if os(iOS)
 import SwiftUI
 
 /// A View for showing the current status of an ongoing **Account Recovery** process, if any
@@ -66,3 +66,4 @@ struct AccountRecoveryView_Previews: PreviewProvider {
         AccountRecoveryView(viewModel: Self.viewModel)
     }
 }
+#endif

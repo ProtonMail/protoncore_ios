@@ -4800,6 +4800,7 @@
 				66420FE72A5743E600A28F11 /* XCRemoteSwiftPackageReference "TPInAppReceipt" */,
 				66420FEC2A57450200A28F11 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 				66968F1B2A6055CA00AA67D2 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				579771BD2B2CBA48004ADB85 /* XCRemoteSwiftPackageReference "ViewInspector" */,
 			);
 			productRefGroup = 25232F3E270DDCB0009446AF /* Products */;
 			projectDirPath = "";
@@ -8137,6 +8138,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		579771BD2B2CBA48004ADB85 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nalexn/ViewInspector.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.9;
+			};
+		};
 		66420FE22A57438300A28F11 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AliSoftware/OHHTTPStubs";

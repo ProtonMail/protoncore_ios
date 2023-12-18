@@ -254,6 +254,13 @@
         "identifier" : "ProtonCoreFeatureFlagsTests",
         "name" : "ProtonCoreFeatureFlagsTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreAccountRecoveryTests",
+        "name" : "ProtonCoreAccountRecoveryTests"
+      }
     }
   ],
   "version" : 1

@@ -19,7 +19,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
 //
-
+#if os(iOS)
 import XCTest
 @testable import ProtonCoreAccountRecovery
 import ViewInspector
@@ -47,7 +47,7 @@ final class ActiveAccountRecoveryViewTests: XCTestCase {
             string.contains("72 hours")
         })
         let foundButton = try sut.inspect().find(ViewType.Button.self)
-        _ = try foundButton.find(text: "Account_Recovery_Grace_View_Cancel_Button_CTA".l7d)
+        _ = try foundButton.find(text: ARTranslation.graceViewCancelButtonCTA.l10n)
 
         XCTAssertThrowsError(try sut.inspect().find(ViewType.ProgressView.self))
         XCTAssertEqual("password-reset-period-start", try foundImage.name())
@@ -55,3 +55,4 @@ final class ActiveAccountRecoveryViewTests: XCTestCase {
     }
 
 }
+#endif

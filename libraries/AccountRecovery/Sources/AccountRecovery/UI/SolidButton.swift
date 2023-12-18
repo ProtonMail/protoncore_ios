@@ -19,7 +19,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
 //
-
+#if os(iOS)
 import SwiftUI
 import ProtonCoreUIFoundations
 
@@ -41,3 +41,4 @@ public struct SolidButton: ButtonStyle {
             .cornerRadius(8)
     }
 }
+#endif

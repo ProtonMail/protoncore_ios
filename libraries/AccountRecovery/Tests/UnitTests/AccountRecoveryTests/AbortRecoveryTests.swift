@@ -20,6 +20,7 @@
 //  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
 //
 
+#if os(iOS)
 import XCTest
 @testable import ProtonCoreAccountRecovery
 
@@ -32,3 +33,4 @@ final class AbortRecoveryTests: XCTestCase {
         XCTAssertEqual(.post, sut.method)
     }
 }
+#endif

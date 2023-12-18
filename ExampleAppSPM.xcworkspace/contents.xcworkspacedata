@@ -7,4 +7,7 @@
    <FileRef
       location = "container:ExampleAppSPM.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:../ProtonCoreAccountRecovery.xctestplan">
+   </FileRef>
 </Workspace>

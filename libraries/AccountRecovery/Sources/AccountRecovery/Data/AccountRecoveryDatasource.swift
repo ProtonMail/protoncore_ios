@@ -30,6 +30,8 @@ public protocol AccountRecoveryDatasourceProtocol {
     var apiService: APIService { get }
 
     func fetchAccountRecoveryInfo() async throws -> RecoveryInfo
+
+    func accountRecoveryStatus() async -> User.AccountRecovery?
 }
 
 /// username, email and account recovery details
@@ -59,5 +61,9 @@ class AccountRecoveryDatasource: AccountRecoveryDatasourceProtocol {
                 }
             }
         }
+    }
+
+    func accountRecoveryStatus() async -> User.AccountRecovery? {
+            return try? await fetchAccountRecoveryInfo().recovery
     }
 }

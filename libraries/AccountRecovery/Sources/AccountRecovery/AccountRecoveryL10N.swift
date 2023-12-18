@@ -44,6 +44,10 @@ public enum ARTranslation: TranslationsExposing {
     case graceViewUndefinedTimeLeft
     case graceViewLine2
     case graceViewLine3
+    case cancelledState
+    case expiredState
+    case graceState
+    case insecureState
 
     public var l10n: String {
         switch self {
@@ -69,6 +73,12 @@ public enum ARTranslation: TranslationsExposing {
             return localized(key: "Insecure_View_line2", comment: "")
         case .insecureViewLine3:
             return localized(key: "Insecure_View_line3", comment: "")
+
+        case .cancelledState: return localized(key: "Settings_Item_Value_Cancelled", comment: "account recovery settings item value for cancelled state")
+        case .expiredState: return localized(key: "Settings_Item_Value_Expired", comment: "account recovery settings item value for cancelled state")
+        case .graceState: return localized(key: "Settings_Item_Value_Grace", comment: "account recovery settings item value for grace state")
+        case .insecureState: return localized(key: "Settings_Item_Value_Insecure", comment: "account recovery settings item value for insecure state")
         }
+
     }
 }

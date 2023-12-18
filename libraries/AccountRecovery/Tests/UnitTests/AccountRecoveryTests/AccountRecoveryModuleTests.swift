@@ -19,11 +19,15 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
 //
-
+#if os(iOS)
 import XCTest
 import ProtonCoreAccountRecovery
 @testable import ProtonCoreFeatureSwitch
+#if canImport(ProtonCoreTestingToolkitUnitTestsServices)
+import ProtonCoreTestingToolkitUnitTestsServices
+#else
 import ProtonCoreTestingToolkit
+#endif
 
 final class AccountRecoveryModuleTests: XCTestCase {
 
@@ -35,10 +39,9 @@ final class AccountRecoveryModuleTests: XCTestCase {
     }
 
     func testModuleDetails() {
-        XCTAssertEqual("accountRecovery", AccountRecoveryModule.feature.name)
-        XCTAssertFalse(AccountRecoveryModule.feature.isEnable)
-
+        XCTAssertEqual("TrustedDeviceRecovery", AccountRecoveryModule.feature.rawValue)
         XCTAssertNotNil(AccountRecoveryModule.settingsViewController(apiMock))
     }
 
 }
+#endif

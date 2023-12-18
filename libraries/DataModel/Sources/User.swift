@@ -71,6 +71,15 @@ public struct User: Codable, Equatable, CustomDebugStringConvertible {
         public let startTime: TimeInterval
         public let endTime: TimeInterval
         public let UID: String
+
+        public init(state: User.RecoveryState, reason: User.RecoveryReason? = nil, startTime: TimeInterval, endTime: TimeInterval, UID: String) {
+            self.state = state
+            self.reason = reason
+            self.startTime = startTime
+            self.endTime = endTime
+            self.UID = UID
+        }
+
     }
 
     public enum RecoveryState: Int, Codable {

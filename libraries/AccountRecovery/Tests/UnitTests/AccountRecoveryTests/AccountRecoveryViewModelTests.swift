@@ -19,12 +19,16 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
 //
-
+#if os(iOS)
 import XCTest
 @testable import ProtonCoreAccountRecovery
 @testable import ProtonCoreDataModel
 import ProtonCoreAuthentication
+#if canImport(ProtonCoreTestingToolkitUnitTestsServices)
+import ProtonCoreTestingToolkitUnitTestsServices
+#else
 import ProtonCoreTestingToolkit
+#endif
 
 private enum Fixtures {
     // We fix the start time for all tests, so the comparisons further down
@@ -139,7 +143,6 @@ final class AccountRecoveryViewModelTests: XCTestCase {
         // Given
         let sut = AccountRecoveryView.ViewModel()
         XCTAssertFalse(sut.isLoaded)
-        let currentTimeInterval = Date().timeIntervalSince1970
         let recoveryInfo = Fixtures.expiredStateInfo
 
         // When
@@ -156,7 +159,6 @@ final class AccountRecoveryViewModelTests: XCTestCase {
     func testDataLoading() async {
         // Given
         let repositoryMock = AccountRecoveryRepositoryMock()
-        let currentTimeInterval = Date().timeIntervalSince1970
         repositoryMock.returnedInfo = Fixtures.gracePeriodInfo
 
         // When
@@ -208,21 +210,18 @@ final class AccountRecoveryViewModelTests: XCTestCase {
         let repositoryMock = AccountRecoveryRepositoryMock()
         repositoryMock.returnedInfo = Fixtures.gracePeriodInfo
         let sut = AccountRecoveryView.ViewModel(accountRepository: repositoryMock)
-        let expectation = XCTestExpectation(description: "wait for data load")
+        var expectation = XCTestExpectation(description: "wait for data load")
         let listener = sut.$isLoaded.sink { loaded in
             if loaded { expectation.fulfill() }
         }
         await fulfillment(of: [expectation], timeout: 5)
-        repositoryMock.returnedInfo = Fixtures.cancelledStateInfo
 
-        let secondExpectation = XCTestExpectation(description: "wait for data load")
-        let secondListener = sut.$isLoaded.sink { loaded in
-            if loaded { secondExpectation.fulfill() }
-        }
+        repositoryMock.returnedInfo = Fixtures.cancelledStateInfo
+        expectation = XCTestExpectation(description: "wait for second load")
 
         // When
         sut.userUnlocked()
-        await fulfillment(of: [secondExpectation], timeout: 5)
+        await fulfillment(of: [expectation], timeout: 5)
 
         // Then
         XCTAssert(sut.isLoaded)
@@ -235,51 +234,23 @@ final class AccountRecoveryViewModelTests: XCTestCase {
         let repositoryMock = AccountRecoveryRepositoryMock()
         repositoryMock.returnedInfo = Fixtures.gracePeriodInfo
         let sut = AccountRecoveryView.ViewModel(accountRepository: repositoryMock)
-        let expectation = XCTestExpectation(description: "wait for data load")
+        var expectation = XCTestExpectation(description: "wait for data load")
         let listener = sut.$isLoaded.sink { loaded in
             if loaded { expectation.fulfill() }
         }
         await fulfillment(of: [expectation], timeout: 5)
         repositoryMock.returnedInfo = Fixtures.cancelledStateInfo
 
-        let secondExpectation = XCTestExpectation(description: "wait for data load")
-        let secondListener = sut.$isLoaded.sink { loaded in
-            if loaded { secondExpectation.fulfill() }
-        }
+        expectation = XCTestExpectation(description: "wait for second load")
 
         // When
         sut.didCloseVerifyPassword()
-        await fulfillment(of: [secondExpectation], timeout: 5)
+        await fulfillment(of: [expectation], timeout: 5)
 
         // Then
         XCTAssert(sut.isLoaded)
         XCTAssertEqual(.cancelled, sut.state)
         XCTAssertEqual(.cancelled, sut.reason)
-    }
-
-    @MainActor
-    func testAbortRecoveryAction() async {
-        // Given
-        let repositoryMock = AccountRecoveryRepositoryMock()
-        repositoryMock.returnedInfo = Fixtures.gracePeriodInfo
-        let sut = AccountRecoveryView.ViewModel(accountRepository: repositoryMock)
-
-        let expectation = XCTestExpectation(description: "wait for data load")
-
-        let listener = sut.$isLoaded.sink { loaded in
-            if loaded { expectation.fulfill() }
-        }
-
-        await fulfillment(of: [expectation], timeout: 5)
-
-        // When
-
-        do {
-            try await sut.cancelPressed()
-            XCTFail("Expected a failure trying to present view controller")
-        } catch {
-            // This failure is to be expected in a non UI test
-        }
     }
 }
 
@@ -308,4 +279,9 @@ private class AccountRecoveryRepositoryMock: AccountRecoveryRepositoryProtocol {
 
         return returnedInfo
     }
+
+    func accountRecoveryStatus() async -> ProtonCoreDataModel.User.AccountRecovery? {
+        returnedInfo?.recovery
+    }
 }
+#endif

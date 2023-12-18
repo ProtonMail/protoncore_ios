@@ -20,6 +20,7 @@ import ProtonCoreFeatureFlags
 import ProtonCoreServices
 import SwiftUI
 
+#if os(iOS)
 public typealias AccountRecoveryViewController = UIHostingController<AccountRecoveryView>
 
 /// Usefult parameters to have handy
@@ -37,3 +38,4 @@ public enum AccountRecoveryModule {
         return UIHostingController(rootView: AccountRecoveryView(viewModel: viewModel))
     }
 }
+#endif
