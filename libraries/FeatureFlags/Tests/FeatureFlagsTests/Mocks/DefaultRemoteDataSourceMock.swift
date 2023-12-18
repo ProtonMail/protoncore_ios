@@ -1,5 +1,5 @@
 //
-//  DefaultRemoteDatasourceMock.swift
+//  DefaultRemoteFeatureFlagsDataSourceMock.swift
 //  ProtonCore-FeatureFlags - Created on 29.09.23.
 //
 //  Copyright (c) 2023 Proton Technologies AG
@@ -23,7 +23,7 @@
 import Foundation
 @testable import ProtonCoreFeatureFlags
 
-public class DefaultRemoteDatasourceMock: RemoteFeatureFlagsProtocol {
+public class DefaultRemoteFeatureFlagsDataSourceMock: RemoteFeatureFlagsDataSourceProtocol {
     public init() {}
 
     public func getFlags() async throws -> [FeatureFlag] {

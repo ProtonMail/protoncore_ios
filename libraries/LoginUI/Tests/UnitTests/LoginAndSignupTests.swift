@@ -260,7 +260,7 @@ final class LoginAndSignupTests: XCTestCase {
     }
 }
 
-private class DummyRemoteDataSource: RemoteFeatureFlagsProtocol {
+private class DummyRemoteDataSource: RemoteFeatureFlagsDataSourceProtocol {
     var didGetFlags = false
     func getFlags() async throws -> [FeatureFlag] {
         didGetFlags = true

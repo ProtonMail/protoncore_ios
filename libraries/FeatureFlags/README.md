@@ -23,52 +23,117 @@ Otherwise you can pull the gitlab endpoint.
 Select `Xcode`>`File`> `Swift Packages`>`Add Package Dependency...`  
 and add `https://git@github.com:ProtonMail/protoncore_ios.git`.
 
-### Feature flags usage
+## Setup
 
-The be able to fetch your business unit feature flags you will need to create a configuration to instantiate the `FeatureFlagRepository`.
-The configuration is composed of the current id of the user and a list of the flags you want to monitor. This list must conform to  the `FeatureFlagTypeProtocol`.
-This list must be provided to filter out unwanted flags as `unleash` endpoint return all existing flags.
-The package offers a default implementation for the local and remote data sources. 
-Feel free to use them or implement your own.
-The following code is an generic example of how you could implement this tool.
+Import the following:
 
 ```swift
 import FeatureFlags
-import ProtonCoreNetworking
 import ProtonCoreServices
+```
 
-enum SpecificBUFeatureFlags: String, FeatureFlagTypeProtocol {
-    case thisIsOneFlag = "NameOfTheUnleashFlag"
-    case thisIsASecondFlag = "NameOfTheSecondUnleashFlag"
+In the startup sequence of your app, setup the `FeatureFlagsRepository` singleton:
+
+```swift
+// Set the API service
+let apiService = YouAPIService()
+FeatureFlagsRepository.shared.setApiService(apiService)
+
+// Set the user ID as soon as you have it (likely in the session refresh steps on app start, and after login)
+// Important: setting an empty-string for userId will fetch features flags for an unauthenticated session.
+if !userID.isEmpty {
+    FeatureFlagsRepository.shared.setUserId(userID)
 }
 
-let config = FeatureFlagsConfiguration(userId: XXXXXX, currentBUFlags: SpecificBUFeatureFlags.self)
-
-let apiService: APIService = YourNetworkService()
-
-let repo = FeatureFlagsRepository(configuration: config,
-                                   localDatasource: DefaultLocalFeatureFlagsDatasource(),
-                                   remoteDatasource: DefaultRemoteDatasource(apiService: apiService))
-            
+// Fetch updated feature flag values for the logged-in user (or unauthenticated session)
+Task {
+    try await FeatureFlagsRepository.shared.fetchFlags()
+}
 ```
-You can now use the repo to `get`, `refresh`, `clean` the feature flags.
+
+Alternatively, you can create you own implementation for the local data source of feature flags by 
+implementing `LocalFeatureFlagsDataSourceProtocol`.
+
+In this case, you can set your local data source with:
+
+```swift
+    let customLocalFeatureFlagsDataSource = MyDataSource()
+
+    FeatureFlagsRepository.shared.updateLocalDataSource(customLocalFeatureFlagsDataSource)
+```
+
+You can now use the shared `FeatureFlagsRepository` to fetch and check the value of feature flags.
+
+## Defining you Feature Flag values
+
+### Get the Flag name from Unleash
+
+Go to your project's Unleash dashboard and get the name of your desired feature ("MyFeature" in the example below).
+
+Create an enum conforming to `FeatureFlagTypeProtocol` like:
+
+```swift
+public enum MyFlagType: String, FeatureFlagTypeProtocol {
+    case myFeature = "MyFeature"
+}
+```
 
 ## Actions
 
-### Refresh flags
+### Fetch flags
+
+This updates the local feature flag data source:
 
 ```swift
-   let newFlags = try await repo.refreshFlags()
+    try await FeatureFlagsRepository.shared.fetchFlags()
 ```
 
-### Get all current flags
+`fetchFlags()` implicitly uses the `userId` and `apiService` set with `setUserId(_:)` and `setApiService(_:)` respectively.
+
+In a multi-user context, you can use:
 
 ```swift
-    let flags = try await repo.getFlags()
+    try await FeatureFlagsRepository.shared.fetchFlags(for: userId1, using: apiService)
+```
+ 
+ This will update the local feature flag data source with feature flag values for user with user ID `userId1`.
+
+### Check the value of a feature flag
+
+To check the value of a given feature flag, use:
+
+```swift
+    let isMyFeatureEnabled: Bool = FeatureFlagRepository.shared.isEnabled(MyFlagType.myFeature)
 ```
 
-### Get one flags
+`isEnabled()` implicitly uses the `userId` and `apiService` set with `setUserId(_:)` and `setApiService(_:)` respectively.
+
+To check the value for a given user, call:
 
 ```swift
-    let value = try await repo.getFlag(for: SpecificBUFeatureFlags.thisIsOneFlag)
+    let isMyFeatureEnabled: Bool = FeatureFlagRepository.shared.isEnabled(MyFlagType.myFeature, for: userId)
+```
+
+where `userId` is the user ID of the logged-in user (useful in multi-user contexts).
+
+IMPORTANT: by default, calls to `isEnabled()` will return the same value for a given user for the duration of 
+the app lifecycle.  That is, subsequent calls to update the local data source (`fetchFlags()`) will by default 
+not change the value returned from `isEnabled()`.  This is by design to protect against internal inconsistency.
+
+If you wish to read the latest value fetched for a given feature flag and user, call
+
+```swift
+    let isMyFeatureEnabled: Bool = FeatureFlagRepository.shared.isEnabled(MyFlagType.myFeature, 
+                                                                          for: userId,
+                                                                          reloadValue: true)
+```
+
+
+## Logout
+
+On logout, clear the feature flags for that user, and also the user ID set on the shared `FeatureFlagsRepository`.
+
+```Swift
+    FeatureFlagsRepository.shared.resetFlags(for: userId)
+    FeatureFlagsRepository.shared.clearUserId(userId)
 ```
