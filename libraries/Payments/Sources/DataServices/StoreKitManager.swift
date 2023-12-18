@@ -753,7 +753,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
         } catch Errors.alreadyPurchasedPlanDoesNotMatchBackend {
             callErrorCompletion(for: cacheKey, with: Errors.alreadyPurchasedPlanDoesNotMatchBackend)
 
-            if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) && 
+            if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) &&
                 transaction.payment.productIdentifier.hasSuffix("_non_renewing") {
                 // If dynamic plans are enabled, but there is a pending transaction for a non-renewing plan,
                 // finalize the transaction here.

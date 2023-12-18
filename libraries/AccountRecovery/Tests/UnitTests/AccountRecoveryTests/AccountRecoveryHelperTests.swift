@@ -35,21 +35,21 @@ public class AccountRecoveryHelperTests: XCTestCase {
                                            startTime: Date.distantPast.timeIntervalSince1970,
                                            endTime: Date.distantFuture.timeIntervalSince1970,
                                            UID: "UUID")
-    var automaticallyCancelled =  User.AccountRecovery(state: .cancelled,
+    var automaticallyCancelled = User.AccountRecovery(state: .cancelled,
                                                        reason: .authentication,
                                                        startTime: Date.distantPast.timeIntervalSince1970,
                                                        endTime: Date.distantFuture.timeIntervalSince1970,
                                                        UID: "UUID")
-    var explicitlyCancelled =  User.AccountRecovery(state: .cancelled,
+    var explicitlyCancelled = User.AccountRecovery(state: .cancelled,
                                                     reason: .cancelled,
                                                     startTime: Date.distantPast.timeIntervalSince1970,
                                                     endTime: Date.distantFuture.timeIntervalSince1970,
                                                     UID: "UUID")
-    var insecureState =  User.AccountRecovery(state: .insecure,
+    var insecureState = User.AccountRecovery(state: .insecure,
                                               startTime: Date.distantPast.timeIntervalSince1970,
                                               endTime: Date.distantFuture.timeIntervalSince1970,
                                               UID: "UUID")
-    var expired =  User.AccountRecovery(state: .expired,
+    var expired = User.AccountRecovery(state: .expired,
                                         startTime: Date.distantPast.timeIntervalSince1970,
                                         endTime: Date.distantFuture.timeIntervalSince1970,
                                         UID: "UUID")
@@ -74,6 +74,5 @@ public class AccountRecoveryHelperTests: XCTestCase {
         XCTAssertEqual(IconProvider.exclamationCircle.imageAsset, automaticallyCancelled.imageForSettingsItem?.imageAsset)
         XCTAssertEqual(IconProvider.checkmarkCircle.imageAsset, insecureState.imageForSettingsItem?.imageAsset)
     }
-
 
 }

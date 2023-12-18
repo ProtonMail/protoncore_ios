@@ -29,7 +29,6 @@ import ProtonCoreTestingToolkitUnitTestsServices
 import ProtonCoreTestingToolkit
 #endif
 
-
 final class AccountRecoveryModuleTests: XCTestCase {
 
     var apiMock: APIServiceMock!

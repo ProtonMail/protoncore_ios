@@ -43,7 +43,7 @@ public protocol FeatureFlagsRepositoryProtocol: AnyObject {
 
 public extension FeatureFlagsRepositoryProtocol {
 
-    func fetchFlags(for userId: String? = nil, 
+    func fetchFlags(for userId: String? = nil,
                     using apiService: APIService? = nil) async throws {
         try await self.fetchFlags(for: userId, using: apiService)
     }
