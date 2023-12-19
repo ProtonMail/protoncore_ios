@@ -28,21 +28,21 @@ private let usersDelete = "quark/raw::user:delete"
 private let usersSubscription = "quark/raw::user:create:subscription"
 private let usersCreateSubUser = "quark/raw::user:create:subuser"
 
-extension Quark {
+public extension Quark {
 
     @discardableResult
     func userCreate(user: User, createAddress: CreateAddress = .withKey(genKeys: .Curve25519)) throws -> CreateUserQuarkResponse? {
         let args = [
-            "-e=\(user.isExternal ? "true" : "")",
-            "-em=\(user.isExternal ? user.email : "")",
-            "-N=\(user.name)",
-            "-p=\(user.password)",
-            "-m=\(user.passphrase)",
-            "-r=\(user.recoveryEmail)",
-            "-c=\(createAddress == .noKey ? "true" : "")",
-            "-k=\((createAddress == .withKey(genKeys: .Curve25519) ? GenKeys.Curve25519.rawValue : ""))",
+            "--name=\(user.name)",
+            "--password=\(user.password)",
+            createAddress == .noKey ? "--create-address=true" : nil,
+            createAddress == .withKey(genKeys: .Curve25519) ? "--gen-keys=\(GenKeys.Curve25519.rawValue)" : nil,
+            user.passphrase.isEmpty ? nil : "--mailbox-pass=\(user.passphrase)",
+            user.recoveryEmail.isEmpty ? nil : "--recovery=\(user.recoveryEmail)",
+            user.isExternal ? "--external=true" : nil,
+            user.isExternal ? "--external-email=\(user.email)" : nil,
             "--format=json"
-        ]
+        ].compactMap { $0 }
 
         let request = try route(usersCreate)
             .args(args)

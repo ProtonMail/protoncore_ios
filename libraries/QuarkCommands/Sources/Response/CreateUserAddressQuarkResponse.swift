@@ -21,17 +21,16 @@
 
 import Foundation
 
-struct CreateUserAddressQuarkResponse: Codable {
-    enum CodingKeys: String, CodingKey {
+public struct CreateUserAddressQuarkResponse: Codable {
+    public enum CodingKeys: String, CodingKey {
         case addressID = "AddressID"
         case email = "Email"
         case type = "Type"
         case status = "Status"
     }
 
-    let addressID: Int
-    let email: String
-    let type: Int
-    let status: Int
-
+    public let addressID: Int
+    public let email: String
+    public let type: Int
+    public let status: Int
 }

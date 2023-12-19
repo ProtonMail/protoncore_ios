@@ -14,27 +14,32 @@ import Alamofire
 
 class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
 
-    lazy var quarkCommands = QuarkCommands(doh: doh)
+    lazy var quarkCommands = Quark().baseUrl(doh)
     let mainRobot = PaymentsSampleAppRobot()
+
+    override func setUpWithError() throws {
+        try super.setUpWithError()
+
+        try quarkCommands.jailUnban()
+        try quarkCommands.systemEnv(variable: "JAILS_ENABLED", value: "0")
+    }
 
     override func setUp() {
         super.setUp()
-        quarkCommands.unban()
-        quarkCommands.disableJail()
         mainRobot
             .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
     }
 
     /// Test current plans
-    func testCurrentFreePlan() {
-        let randomUsername = StringUtils.randomAlphanumericString()
-        quarkCommands.createUser(username: randomUsername, password: ObfuscatedConstants.password, protonPlanName: "free")
+    func testCurrentFreePlan() throws {
+        let user = User(name: StringUtils.randomAlphanumericString(), password: ObfuscatedConstants.password)
+        try quarkCommands.userCreate(user: user)
 
         mainRobot
             .showPaymentsUI()
             .verify.newUserSubscriptionUIScreenIsShown()
-            .insertUsername(name: randomUsername)
-            .insertPassword(password: ObfuscatedConstants.password)
+            .insertUsername(name: user.name)
+            .insertPassword(password: user.password)
             .loginButtonTap()
             .modalVCSwitchTap()
             .showCurrentPlanButtonTap()
@@ -100,62 +105,62 @@ class PaymentsNewUserSubscriptionUIVCUITests: PaymentsBaseTestCase {
 
     /// Update to plus plan
 
-    func testUpdatePlusPlanSuccess() {
-           let randomUsername = StringUtils.randomAlphanumericString()
-           quarkCommands.createUser(username: randomUsername, password: ObfuscatedConstants.password, protonPlanName: "free")
+    func testUpdatePlusPlanSuccess() throws {
+        let user = User(name: StringUtils.randomAlphanumericString(), password: ObfuscatedConstants.password)
+        try quarkCommands.userCreate(user: user)
 
-           mainRobot
-               .showPaymentsUI()
-               .verify.newUserSubscriptionUIScreenIsShown()
-               .insertUsername(name: randomUsername)
-               .insertPassword(password: ObfuscatedConstants.password)
-               .loginButtonTap()
-               .modalVCSwitchTap()
-               .showCurrentPlanButtonTap()
-               .selectPlanCell(plan: .mail2022)
-               .planButtonTap(plan: .mail2022)
-               .verifyPayment(robot: PaymentsUIRobot.self, password: nil)
-               .wait(timeInterval: 5)
-               .selectPlanCell(plan: .mail2022)
-               .planButtonDoesNotExist(plan: .mail2022)
-               .wait(timeInterval: 2)
-               .verifyNumberOfCells(number: 1)
-               .verifyExpirationTime()
-               .verifyPlan(plan: .mail2022)
-       }
+        mainRobot
+            .showPaymentsUI()
+            .verify.newUserSubscriptionUIScreenIsShown()
+            .insertUsername(name: user.name)
+            .insertPassword(password: user.password)
+            .loginButtonTap()
+            .modalVCSwitchTap()
+            .showCurrentPlanButtonTap()
+            .selectPlanCell(plan: .mail2022)
+            .planButtonTap(plan: .mail2022)
+            .verifyPayment(robot: PaymentsUIRobot.self, password: nil)
+            .wait(timeInterval: 5)
+            .selectPlanCell(plan: .mail2022)
+            .planButtonDoesNotExist(plan: .mail2022)
+            .wait(timeInterval: 2)
+            .verifyNumberOfCells(number: 1)
+            .verifyExpirationTime()
+            .verifyPlan(plan: .mail2022)
+    }
 
-       func testUpdatePlusPlanSuccessAppTermination() {
-           let randomUsername = StringUtils.randomAlphanumericString()
-           quarkCommands.createUser(username: randomUsername, password: ObfuscatedConstants.password, protonPlanName: "free")
+    func testUpdatePlusPlanSuccessAppTermination() throws {
+        let user = User(name: StringUtils.randomAlphanumericString(), password: ObfuscatedConstants.password)
+        try quarkCommands.userCreate(user: user)
 
-           mainRobot
-               .showPaymentsUI()
-               .verify.newUserSubscriptionUIScreenIsShown()
-               .insertUsername(name: randomUsername)
-               .insertPassword(password: ObfuscatedConstants.password)
-               .loginButtonTap()
-               .modalVCSwitchTap()
-               .showCurrentPlanButtonTap()
-               .selectPlanCell(plan: .mail2022)
-               .planButtonTap(plan: .mail2022)
-               .verifyPayment(robot: PaymentsUIRobot.self, password: nil)
-               .terminateApp(app: app, robot: PaymentsSampleAppRobot.self)
-               .activateApp(app: app, robot: CoreExampleMainRobot.self)
-               .tap(.payments, to: PaymentsSampleAppRobot.self)
-               .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
-               .showPaymentsUI()
-               .verify.newUserSubscriptionUIScreenIsShown()
-               .insertUsername(name: randomUsername)
-               .insertPassword(password: ObfuscatedConstants.password)
-               .loginButtonTap()
-               .modalVCSwitchTap()
-               .showCurrentPlanButtonTap()
-               .selectPlanCell(plan: .mail2022)
-               .planButtonDoesNotExist(plan: .mail2022)
-               .verifyNumberOfCells(number: 1)
-               .verifyExpirationTime()
-               .verifyPlan(plan: .mail2022)
-       }
+        mainRobot
+            .showPaymentsUI()
+            .verify.newUserSubscriptionUIScreenIsShown()
+            .insertUsername(name: user.name)
+            .insertPassword(password: user.password)
+            .loginButtonTap()
+            .modalVCSwitchTap()
+            .showCurrentPlanButtonTap()
+            .selectPlanCell(plan: .mail2022)
+            .planButtonTap(plan: .mail2022)
+            .verifyPayment(robot: PaymentsUIRobot.self, password: nil)
+            .terminateApp(app: app, robot: PaymentsSampleAppRobot.self)
+            .activateApp(app: app, robot: CoreExampleMainRobot.self)
+            .tap(.payments, to: PaymentsSampleAppRobot.self)
+            .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
+            .showPaymentsUI()
+            .verify.newUserSubscriptionUIScreenIsShown()
+            .insertUsername(name: randomUsername)
+            .insertPassword(password: ObfuscatedConstants.password)
+            .loginButtonTap()
+            .modalVCSwitchTap()
+            .showCurrentPlanButtonTap()
+            .selectPlanCell(plan: .mail2022)
+            .planButtonDoesNotExist(plan: .mail2022)
+            .verifyNumberOfCells(number: 1)
+            .verifyExpirationTime()
+            .verifyPlan(plan: .mail2022)
+    }
     /// Test update plans
 
     func testUpdateVisionaryPlan() {

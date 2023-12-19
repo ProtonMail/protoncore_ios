@@ -23,7 +23,7 @@ import Foundation
 
 private let coreSettingsUpdate: String = "quark/raw::core:user:settings:update"
 
-extension Quark {
+public extension Quark {
 
     @discardableResult
     func enableEarlyAccess(username: String) throws -> (data: Data, response: URLResponse) {

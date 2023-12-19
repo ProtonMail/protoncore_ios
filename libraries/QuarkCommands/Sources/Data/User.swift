@@ -19,7 +19,7 @@
 
 import Foundation
 
-struct Settings: Decodable {
+public struct Settings: Decodable {
     let flags: Flags?
 
     enum CodingKeys: String, CodingKey {
@@ -27,7 +27,7 @@ struct Settings: Decodable {
     }
 }
 
-struct Flags: Decodable {
+public struct Flags: Decodable {
     let welcomed: String
 
     enum CodingKeys: String, CodingKey {
@@ -35,7 +35,7 @@ struct Flags: Decodable {
     }
 }
 
-struct SubscriptionHistory: Decodable {
+public struct SubscriptionHistory: Decodable {
     let subscriptionHistory: String
 
     enum CodingKeys: String, CodingKey {
@@ -43,34 +43,32 @@ struct SubscriptionHistory: Decodable {
     }
 }
 
-struct User: Decodable {
-    var name: String
-    var password: String
-    var settings: Settings? = nil
-    var subscriptionHistory: String? = ""
+public struct User: Decodable {
+    public var name: String
+    public var password: String
+    public var settings: Settings? = nil
+    public var subscriptionHistory: String? = ""
 
-    var email: String {
-        return "\(name)@"
-    }
+    public var email: String
 
-    var pmMeEmail: String {
+    public var pmMeEmail: String {
         return "\(name)@pm.me"
     }
 
     // additional properties...
-    var mailboxPassword: String
-    var twoFASecurityKey: String
-    var displayName: String
-    var id: Int?
-    var userPlan: UserPlan?
-    var twoFARecoveryCodes: [String]?
-    var numberOfImportedMails: Int?
-    var quarkURL: URL?
-    var isExternal: Bool = false
-    var passphrase: String = ""
-    var recoveryEmail: String = ""
+    public var mailboxPassword: String
+    public var twoFASecurityKey: String
+    public var displayName: String
+    public var id: Int?
+    public var userPlan: UserPlan?
+    public var twoFARecoveryCodes: [String]?
+    public var numberOfImportedMails: Int?
+    public var quarkURL: URL?
+    public var isExternal: Bool = false
+    public var passphrase: String = ""
+    public var recoveryEmail: String = ""
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case name = "UserName"
         case password = "Password"
         case settings = "Settings"
@@ -78,21 +76,33 @@ struct User: Decodable {
         // add more coding keys as per your properties...
     }
 
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.name = try container.decode(String.self, forKey: .name)
         self.password = try container.decode(String.self, forKey: .password)
         self.mailboxPassword = ""
         self.twoFASecurityKey = ""
         self.displayName = name
+        self.email = name
     }
 
-    init(name: String, password: String, mailboxPassword: String = "", twoFASecurityKey: String = "") {
+    public init(name: String, password: String, mailboxPassword: String = "", twoFASecurityKey: String = "") {
         self.name = name
         self.password = password
         self.mailboxPassword = mailboxPassword
         self.twoFASecurityKey = twoFASecurityKey
         self.displayName = name
+        self.email = name
+    }
+
+    public init(email: String, name: String, password: String, isExternal: Bool = false) {
+        self.name = name
+        self.password = password
+        self.email = email
+        self.displayName = name
+        self.isExternal = isExternal
+        self.mailboxPassword = ""
+        self.twoFASecurityKey = ""
     }
 
     init(user: String) {
@@ -102,5 +112,6 @@ struct User: Decodable {
         self.mailboxPassword = userData.count > 2 ? String(userData[2]) : ""
         self.twoFASecurityKey = userData.count > 3 ? String(userData[3]) : ""
         self.displayName = name
+        self.email = name
     }
 }

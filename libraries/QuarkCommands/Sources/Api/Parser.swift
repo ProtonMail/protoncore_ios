@@ -20,9 +20,11 @@
 // along with Proton Mail. If not, see https://www.gnu.org/licenses/.
 
 import Foundation
+import ProtonCoreLog
 
-func parseQuarkCommandJsonResponse<T: Decodable>(jsonData: Data, type: T.Type) throws -> T? {
+public func parseQuarkCommandJsonResponse<T: Decodable>(jsonData: Data, type: T.Type) throws -> T? {
     let decoder = JSONDecoder()
+    PMLog.info("jsonData: \(String(data: jsonData, encoding: .utf8) ?? "")")
 
     do {
         let response = try decoder.decode(type, from: jsonData)
@@ -44,7 +46,7 @@ func parseQuarkCommandJsonResponse<T: Decodable>(jsonData: Data, type: T.Type) t
     }
 }
 
-func makeQuarkCommandTextToJson(data: Data) throws -> Data? {
+public func makeQuarkCommandTextToJson(data: Data) throws -> Data? {
     let inputString = String(data: data, encoding: .utf8)
     guard let lines = inputString?.split(separator: "\n") else {
        return nil
@@ -64,11 +66,11 @@ func makeQuarkCommandTextToJson(data: Data) throws -> Data? {
     return try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted)
 }
 
-struct QuarkError: Error, LocalizedError {
+public struct QuarkError: Error, LocalizedError {
     let urlResponse: URLResponse
     let message: String
 
-    var errorDescription: String? {
+    public var errorDescription: String? {
         """
         url: \(urlResponse)
         message: \(message)
@@ -76,10 +78,10 @@ struct QuarkError: Error, LocalizedError {
     }
 }
 
-struct ParseError: Error, LocalizedError {
+public struct ParseError: Error, LocalizedError {
     let message: String
 
-    var errorDescription: String? {
+    public var errorDescription: String? {
         """
         \(message)
         """

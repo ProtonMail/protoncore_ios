@@ -21,10 +21,9 @@
 
 import Foundation
 
-struct CreateUserQuarkResponse: Codable {
-    enum CodingKeys: String, CodingKey {
+public struct CreateUserQuarkResponse: Codable {
+    public enum CodingKeys: String, CodingKey {
         case userId = "ID"
-        case decryptedUserId = "Dec_ID"
         case name = "Name"
         case password = "Password"
         case status = "Status"
@@ -33,18 +32,27 @@ struct CreateUserQuarkResponse: Codable {
         case authVersion = "AuthVersion"
         case email = "Email"
         case addressID = "AddressID"
+        case decryptedAddressId = "AddressID (decrypt)"
+        case keySalt = "KeySalt"
+        case keyFingerprint = "KeyFingerprint"
+        case mailboxPassword = "MailboxPassword"
+        case decryptedUserId = "Dec_ID"
         case statusInfo = "StatusInfo"
     }
 
-    let userId: String
-    let decryptedUserId: Int
-    let name: String?
-    let password: String
-    let status: Int
-    let recovery: String
-    let recoveryPhone: String
-    let authVersion: Int
-    let email: String?
-    let addressID: String?
-    let statusInfo: String
+    public let userId: String
+    public let name: String?
+    public let password: String
+    public let status: Int
+    public let recovery: String?
+    public let recoveryPhone: String?
+    public let authVersion: Int
+    public let email: String?
+    public let addressID: String?
+    public let decryptedAddressId: Int?
+    public let keySalt: String?
+    public let keyFingerprint: String?
+    public let mailboxPassword: String?
+    public let decryptedUserId: Int
+    public let statusInfo: String
 }

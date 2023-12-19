@@ -23,7 +23,7 @@ import Foundation
 
 private let jailCommand = "quark/raw::jail:unban"
 
-extension Quark {
+public extension Quark {
 
     @discardableResult
     func jailUnban() throws -> (data: Data, response: URLResponse) {

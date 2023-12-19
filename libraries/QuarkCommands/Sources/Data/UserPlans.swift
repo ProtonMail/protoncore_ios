@@ -18,7 +18,7 @@
 // along with Proton Mail. If not, see https://www.gnu.org/licenses/.
 import Foundation
 
-enum UserPlan: String {
+public enum UserPlan: String {
 
     case free = "free"
     case mail2022 = "mail2022"

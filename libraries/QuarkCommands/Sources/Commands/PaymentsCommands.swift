@@ -25,7 +25,7 @@ private let seedSubscriber = "quark/raw::payments:seed-subscriber"
 private let seedPaymentMethod = "quark/raw::payments:seed-payment-method"
 private let makeDelinquent = "quark/raw::payments:make-delinquent"
 
-extension Quark {
+public extension Quark {
 
     enum DelinquentState: Int {
         case paid = 0

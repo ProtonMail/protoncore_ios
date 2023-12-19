@@ -23,7 +23,7 @@ import Foundation
 
 private let drivePopulate: String = "quark/raw::drive:populate"
 
-extension Quark {
+public extension Quark {
 
     @discardableResult
     func drivePopulateUser(user: User, scenario: Int, hasPhotos: Bool) throws -> (data: Data, response: URLResponse) {

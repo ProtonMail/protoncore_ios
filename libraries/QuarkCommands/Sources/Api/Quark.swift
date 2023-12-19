@@ -50,6 +50,9 @@ public class Quark {
     private var httpClientWriteTimeout: TimeInterval = 30
     private var onResponse: OnQuarkResponse?
 
+    public init() {
+    }
+
     /**
      * The HTTP client used to send requests.
      */
@@ -135,6 +138,19 @@ public class Quark {
     @discardableResult
     public func onResponse(_ responseBlock: @escaping OnQuarkResponse) -> Quark {
         self.onResponse = responseBlock
+        return self
+    }
+
+    /**
+     Configures the timeout settings for HTTP requests.
+     - Parameters:
+       - request
+       - resource
+     * - Returns: The Quark instance with response handling set
+     */
+    public func configureTimeouts(request: TimeInterval, resource: TimeInterval) -> Quark {
+        httpClientTimeout = request
+        httpClientReadTimeout = resource
         return self
     }
 

@@ -23,7 +23,7 @@ import Foundation
 
 private let systemEnvRoute: String = "system/env"
 
-extension Quark {
+public extension Quark {
 
     @discardableResult
     func systemEnv(variable: String, value: String) throws -> (data: Data, response: URLResponse) {

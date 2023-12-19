@@ -13,13 +13,11 @@ import ProtonCoreTestingToolkitUITestsLogin
 import ProtonCoreTestingToolkit
 #endif
 import ProtonCoreObfuscatedConstants
-import ProtonCoreQuarkCommands
 import ProtonCoreFeatureSwitch
 import Alamofire
 
 class LoginSignupTests: LoginBaseTestCase {
 
-    lazy var quarkCommands = QuarkCommands(doh: doh)
     let mainRobot = LoginSampleAppRobot()
 
     let password = ObfuscatedConstants.password
