@@ -36,14 +36,11 @@ public enum ARTranslation: TranslationsExposing {
     case settingsItem
     case insecureViewTitle
     case graceViewTitle
-    case graceViewLine1
     case insecureViewLine1
     case insecureViewLine2
     case insecureViewLine3
     case graceViewCancelButtonCTA
     case graceViewUndefinedTimeLeft
-    case graceViewLine2
-    case graceViewLine3
     case cancelledState
     case expiredState
     case graceState
