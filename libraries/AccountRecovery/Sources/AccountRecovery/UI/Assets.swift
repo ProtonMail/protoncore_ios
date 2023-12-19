@@ -22,5 +22,6 @@ enum AccountRecovery {
     enum ImageNames {
         static let passwordResetPeriodStart = "password-reset-period-start"
         static let passwordResetPeriodEnd = "password-reset-period-end"
+        static let passwordResetLockClock = "password-reset-lock-clock"
     }
 }

@@ -5,7 +5,7 @@
 
 "Grace_View_Title" = "Do you want to reset your password?";
 
-"Grace_View_line1" = "We received a request to reset your password for ";
+"We received a password reset request for **%@**." = "We received a password reset request for **%@**";
 
 "Insecure_View_line1" = "You can now change your password for the account ";
 

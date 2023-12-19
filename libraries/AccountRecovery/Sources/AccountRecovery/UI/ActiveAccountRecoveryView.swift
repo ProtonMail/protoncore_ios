@@ -21,6 +21,7 @@ import SwiftUI
 import ProtonCoreUIFoundations
 
 /// View shown for the Grace period state of the **Account Recovery** process
+@available(iOS 15, *)
 public struct ActiveAccountRecoveryView: View {
 
     @StateObject var viewModel: AccountRecoveryView.ViewModel
@@ -28,23 +29,29 @@ public struct ActiveAccountRecoveryView: View {
 
     public var body: some View {
         VStack(spacing: 24) {
-            Image(AccountRecovery.ImageNames.passwordResetPeriodStart,
-                      bundle: AccountRecoveryModule.resourceBundle
-                )
-            Text(title)
-                    .font(.largeTitle)
-                    .multilineTextAlignment(.center)
+            HStack(alignment: .top, spacing: 10) {
+                IconProvider.exclamationCircle
+                Text("We received a password reset request for **\(viewModel.email)**.",
+                     bundle: AccountRecoveryModule.resourceBundle,
+                     comment: "Grace period intro, with interpolated email")
+            }
+            HStack(spacing: 12) {
+                Image(AccountRecovery.ImageNames.passwordResetLockClock,
+                      bundle: AccountRecoveryModule.resourceBundle)
                 VStack(alignment: .leading) {
-                    Text(line1) +
-                    Text(viewModel.email)
-                        .fontWeight(.bold) +
-                    Text(line2) +
-                    Text(viewModel.remainingTime.asRemainingTimeString())
-                        .fontWeight(.bold) +
-                    Text(period)
-
-                    Text(line3)
+                    Text("Password reset requested", comment: "heading")
+                        .font(.title3)
+                    Text("You can change your password in \(viewModel.remainingTime.asRemainingTimeString()).")
                 }
+            }
+            .padding(12)
+            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+            .background(ColorProvider.BackgroundNorm)
+            .cornerRadius(12)
+
+            Text("To make sure it's really you trying to reset your password, we wait \(viewModel.remainingTime.asRemainingTimeString()) before approving requests.")
+
+            Text("If you didn't ask to reset your password, **cancel this request now**.")
 
                 Button {
                     isAnimating.toggle()
@@ -70,12 +77,12 @@ public struct ActiveAccountRecoveryView: View {
         }
             .padding(16)
             .frame(maxHeight: .infinity)
-            .background(ColorProvider.BackgroundNorm as Color)
+            .background(ColorProvider.SidebarBackground as Color)
     }
 
     let title = ARTranslation.graceViewTitle.l10n
 
-    let line1 = ARTranslation.graceViewLine1.l10n
+    let line1 = try! AttributedString(markdown: ARTranslation.graceViewLine1.l10n) 
     let line2 = ARTranslation.graceViewLine2.l10n
     let period = "."
     let line3 = ARTranslation.graceViewLine3.l10n

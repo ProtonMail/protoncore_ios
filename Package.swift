@@ -1914,7 +1914,7 @@ add(
 let package = Package(
     name: "ProtonCore",
     defaultLocalization: "en",
-    platforms: [.iOS(.v14), .macOS(.v11)],
+    platforms: [.iOS(.v15), .macOS(.v11)],
     products: products + [
         .plugin(name: .obfuscatedConstantsGenerationPlugin,
                 targets: [.obfuscatedConstantsGenerationPlugin]),
