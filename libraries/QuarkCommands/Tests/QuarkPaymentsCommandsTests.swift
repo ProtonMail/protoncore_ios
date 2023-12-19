@@ -74,6 +74,4 @@ final class QuarkPaymentsCommandsTests: XCTestCase {
             XCTFail("seedUserWithCreditCard method threw an unexpected error: \(error)")
         }
     }
-
-   
 }
