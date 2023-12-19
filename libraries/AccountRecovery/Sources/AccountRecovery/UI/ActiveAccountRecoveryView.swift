@@ -32,7 +32,7 @@ public struct ActiveAccountRecoveryView: View {
                 IconProvider.exclamationCircle
                 Text(key1,
                      bundle: AccountRecoveryModule.resourceBundle,
-                     comment: "Grace period intro, with interpolated email")
+                     comment: "Grace period intro, with interpolated email, and in bold")
             }
             HStack(spacing: 12) {
                 Image(AccountRecovery.ImageNames.passwordResetLockClock,

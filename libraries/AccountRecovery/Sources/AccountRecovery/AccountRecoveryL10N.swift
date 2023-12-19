@@ -61,12 +61,7 @@ public enum ARTranslation: TranslationsExposing {
             return localized(key: "Grace_View_Cancel_Button_CTA", comment: "")
         case .graceViewUndefinedTimeLeft:
             return localized(key: "Grace_View_Undefined_Time_Left", comment: "")
-        case .graceViewLine1:
-            return localized(key: "Grace_View_line1", comment: "First line, interpolating user's email")
-        case .graceViewLine2:
-            return localized(key: "Grace_View_line2", comment: "")
-        case .graceViewLine3:
-            return localized(key: "Grace_View_line3", comment: "")
+   
         case .insecureViewLine1:
             return localized(key: "Insecure_View_line1", comment: "")
         case .insecureViewLine2:
