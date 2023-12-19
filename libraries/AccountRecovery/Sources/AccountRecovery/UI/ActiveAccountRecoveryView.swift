@@ -21,7 +21,6 @@ import SwiftUI
 import ProtonCoreUIFoundations
 
 /// View shown for the Grace period state of the **Account Recovery** process
-@available(iOS 15, *)
 public struct ActiveAccountRecoveryView: View {
 
     @StateObject var viewModel: AccountRecoveryView.ViewModel
@@ -31,7 +30,7 @@ public struct ActiveAccountRecoveryView: View {
         VStack(spacing: 24) {
             HStack(alignment: .top, spacing: 10) {
                 IconProvider.exclamationCircle
-                Text("We received a password reset request for **\(viewModel.email)**.",
+                Text(key1,
                      bundle: AccountRecoveryModule.resourceBundle,
                      comment: "Grace period intro, with interpolated email")
             }
@@ -39,8 +38,9 @@ public struct ActiveAccountRecoveryView: View {
                 Image(AccountRecovery.ImageNames.passwordResetLockClock,
                       bundle: AccountRecoveryModule.resourceBundle)
                 VStack(alignment: .leading) {
-                    Text("Password reset requested", comment: "heading")
+                    Text("Password reset requested", comment: "heading for callout block")
                         .font(.title3)
+                        .foregroundColor(ColorProvider.TextNorm)
                     Text("You can change your password in \(viewModel.remainingTime.asRemainingTimeString()).")
                 }
             }
@@ -51,12 +51,12 @@ public struct ActiveAccountRecoveryView: View {
 
             Text("To make sure it's really you trying to reset your password, we wait \(viewModel.remainingTime.asRemainingTimeString()) before approving requests.")
 
-            Text("If you didn't ask to reset your password, **cancel this request now**.")
+            Text(key2)
 
                 Button {
                     isAnimating.toggle()
                     Task { @MainActor in
-                        try await viewModel.cancelPressed()
+                        await viewModel.cancelPressed()
                         isAnimating.toggle()
                     }
                 } label: {
@@ -75,20 +75,39 @@ public struct ActiveAccountRecoveryView: View {
                 .buttonStyle(SolidButton())
                 .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
         }
+        .foregroundColor(ColorProvider.TextWeak)
             .padding(16)
             .frame(maxHeight: .infinity)
-            .background(ColorProvider.SidebarBackground as Color)
+            .background(ColorProvider.BackgroundDeep)
     }
 
     let title = ARTranslation.graceViewTitle.l10n
 
-    let line1 = try! AttributedString(markdown: ARTranslation.graceViewLine1.l10n) 
-    let line2 = ARTranslation.graceViewLine2.l10n
-    let period = "."
-    let line3 = ARTranslation.graceViewLine3.l10n
+
+    var key1: LocalizedStringKey { 
+        var key = "We received a password reset request for **\(viewModel.email)**."
+        if #unavailable(iOS 15) {
+            key = key
+                .replacingOccurrences(of: "**", with: "")
+        }
+        return LocalizedStringKey(key)
+    }
+
+    var key2: LocalizedStringKey {
+        var key = "If you didn't ask to reset your password, **cancel this request now**."
+        if #unavailable(iOS 15) {
+            key = key
+                .replacingOccurrences(of: "**", with: "")
+        }
+        return LocalizedStringKey(key)
+    }
 
     public init(viewModel: AccountRecoveryView.ViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
+    }
+
+    private func makeKeyDroppingMarkdownIfNeeded(_ value: String) -> LocalizedStringKey {
+        LocalizedStringKey(value)
     }
 }
 
