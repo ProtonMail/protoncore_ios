@@ -37,4 +37,29 @@ public extension TimeInterval {
 
         return formatter.string(from: self) ?? ARTranslation.graceViewUndefinedTimeLeft.l10n
     }
+
+    func asRemainingTimeStringAndDate(allowingDays: Bool = false) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .full
+
+        switch (allowingDays, self) {
+        case (_, 0...59): formatter.allowedUnits = [ .second ]
+        case (_, 60...3599): formatter.allowedUnits = [ .minute ]
+        case (_, 3600...86399): formatter.allowedUnits = [ .hour ]
+        case (false, _): formatter.allowedUnits = [ .hour ]
+        default: formatter.allowedUnits = [ .day ]
+        }
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale.current
+        let dateToShow = dateFormatter.string(from: Date().addingTimeInterval(self))
+
+        guard let hours = formatter.string(from: self) else {
+            return ARTranslation.graceViewUndefinedTimeLeft.l10n
+        }
+
+        return "\(hours) (\(dateToShow))"
+    }
 }

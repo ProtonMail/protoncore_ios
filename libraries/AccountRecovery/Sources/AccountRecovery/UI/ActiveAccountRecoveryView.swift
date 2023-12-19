@@ -41,7 +41,7 @@ public struct ActiveAccountRecoveryView: View {
                     Text("Password reset requested", comment: "heading for callout block")
                         .font(.title3)
                         .foregroundColor(ColorProvider.TextNorm)
-                    Text("You can change your password in \(viewModel.remainingTime.asRemainingTimeString()).")
+                    Text("You can change your password in \(viewModel.remainingTime.asRemainingTimeStringAndDate()).")
                 }
             }
             .padding(12)
