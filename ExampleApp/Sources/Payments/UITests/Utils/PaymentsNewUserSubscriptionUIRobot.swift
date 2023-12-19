@@ -67,12 +67,12 @@ public final class PaymentsNewUserSubscriptionUIRobot: CoreElements {
     }
 
     public func showCurrentPlanButtonTap() -> PaymentsUIRobot {
-        button(showCurrentPlanButtonId).waitUntilExists().isEnabled().doubleTap()
+        button(showCurrentPlanButtonId).waitForEnabled(time: 30).checkEnabled().doubleTap()
         return PaymentsUIRobot()
     }
 
     public func showUpdatePlansButtonTap() -> PaymentsUIRobot {
-        button(showUpdatePlansButtonId).waitUntilExists().tap()
+        button(showUpdatePlansButtonId).waitForEnabled(time: 30).checkEnabled().tap()
         return PaymentsUIRobot()
     }
 }

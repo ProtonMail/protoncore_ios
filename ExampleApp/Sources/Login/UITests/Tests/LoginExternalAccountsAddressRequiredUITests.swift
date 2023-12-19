@@ -19,7 +19,7 @@ import ProtonCoreQuarkCommands
 class LoginExternalAccountsAddressRequiredUITests: LoginBaseTestCase {
 
     let mainRobot = LoginSampleAppRobot()
-    lazy var quarkCommands = QuarkCommands(doh: doh)
+    lazy var quarkCommands = Quark().baseUrl(doh)
 
     override func setUp() {
         beforeSetUp(launchArguments: ["UITests_MockExternalAccountsAddressRequiredInAuth"])
@@ -29,15 +29,14 @@ class LoginExternalAccountsAddressRequiredUITests: LoginBaseTestCase {
             .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)
     }
 
-    func testExternalAccountsAddressRequiredPopupIsClosable() {
-        let randomEmail = randomEmail
-        let randomPassword = randomPassword
-        quarkCommands.createUser(externalEmail: randomEmail, password: randomPassword)
+    func testExternalAccountsAddressRequiredPopupIsClosable() throws {
+        let user = User(email: randomEmail, name: randomName, password: randomPassword, isExternal: true)
+        try quarkCommands.userCreate(user: user)
 
         mainRobot
             .showLogin()
-            .fillUsername(username: randomEmail)
-            .fillpassword(password: randomPassword)
+            .fillUsername(username: user.email)
+            .fillpassword(password: user.password)
             .signIn(robot: ExternalAccountsNotSupportedDialogRobot.self)
             .verify.externalAccountsNotSupportedDialog()
             .tapClose(to: LoginRobot.self)
@@ -45,15 +44,14 @@ class LoginExternalAccountsAddressRequiredUITests: LoginBaseTestCase {
             .verify.buttonLogoutIsNotVisible()
     }
 
-    func testExternalAccountsAddressRequiredPopupOpensLearnMorePage() {
-        let randomEmail = randomEmail
-        let randomPassword = randomPassword
-        quarkCommands.createUser(externalEmail: randomEmail, password: randomPassword)
+    func testExternalAccountsAddressRequiredPopupOpensLearnMorePage() throws {
+        let user = User(email: randomEmail, name: randomName, password: randomPassword, isExternal: true)
+        try quarkCommands.userCreate(user: user)
 
         mainRobot
             .showLogin()
-            .fillUsername(username: randomEmail)
-            .fillpassword(password: randomPassword)
+            .fillUsername(username: user.email)
+            .fillpassword(password: user.password)
             .signIn(robot: ExternalAccountsNotSupportedDialogRobot.self)
             .verify.externalAccountsNotSupportedDialog()
             .verify.isInsideTheApplication()

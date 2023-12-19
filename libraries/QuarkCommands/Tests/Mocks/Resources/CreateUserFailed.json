@@ -1,0 +1,20 @@
+
+In ExceptionConverter.php line 70:
+
+  An exception occurred in the driver: SQLSTATE[23000]: Integrity constraint
+  violation: 1062 Duplicate entry 'proton73' for key 'User.Name_UNIQUE'
+
+
+In Exception.php line 21:
+
+  SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'prot
+  on73' for key 'User.Name_UNIQUE'
+
+
+In PDOStatementDecorator.php line 180:
+
+  SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'prot
+  on73' for key 'User.Name_UNIQUE'
+
+
+user:create [-N|--name [NAME]] [-p|--password [PASSWORD]] [-r|--recovery [RECOVERY]] [-ts|--totp-secret [TOTP-SECRET]] [-rp|--recovery-phone [RECOVERY-PHONE]] [-s|--status [STATUS]] [-a|--auth [AUTH]] [-f|--format [FORMAT]] [-c|--create-address] [-k|--gen-keys [GEN-KEYS]] [--legacy-keys] [-m|--mailbox-pass [MAILBOX-PASS]] [-e|--external] [-em|--external-email [EXTERNAL-EMAIL]] [-vs|--vpn-settings]
