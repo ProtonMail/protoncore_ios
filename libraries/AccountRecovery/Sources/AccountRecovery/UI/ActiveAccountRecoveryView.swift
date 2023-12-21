@@ -48,7 +48,7 @@ public struct ActiveAccountRecoveryView: View {
             }
             .padding(12)
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-            .background(ColorProvider.BackgroundNorm)
+            .background(ColorProvider.BackgroundSecondary)
             .cornerRadius(12)
 
             Text("To make sure it's really you trying to reset your password, we wait \(viewModel.remainingTime.asRemainingTimeString()) before approving requests.")
@@ -83,7 +83,7 @@ public struct ActiveAccountRecoveryView: View {
         }
         .foregroundColor(ColorProvider.TextWeak)
         .padding(16)
-        .background(ColorProvider.BackgroundDeep)
+        .background(ColorProvider.BackgroundNorm)
         .frame(maxHeight: .infinity)
         .navigationTitle(ARTranslation.graceViewTitle.l10n)
 
