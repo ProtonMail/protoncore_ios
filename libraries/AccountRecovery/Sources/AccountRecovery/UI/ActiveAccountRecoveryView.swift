@@ -30,9 +30,11 @@ public struct ActiveAccountRecoveryView: View {
         VStack(spacing: 24) {
             HStack(alignment: .top, spacing: 10) {
                 IconProvider.exclamationCircle
-                Text(key1,
+                Text(passwordResetReceivedL10nStringKey,
                      bundle: AccountRecoveryModule.resourceBundle,
-                     comment: "Grace period intro, with interpolated email, and in bold")
+                     comment: "Request received intro. Variable is an email, with ** delimiters for bold type")
+                .frame(maxWidth: .infinity)
+
             }
             HStack(spacing: 12) {
                 Image(AccountRecovery.ImageNames.passwordResetLockClock,
@@ -50,8 +52,10 @@ public struct ActiveAccountRecoveryView: View {
             .cornerRadius(12)
 
             Text("To make sure it's really you trying to reset your password, we wait \(viewModel.remainingTime.asRemainingTimeString()) before approving requests.")
+                .frame(maxWidth: .infinity)
 
-            Text(key2)
+            Text(callToActionIfUnexpectedL10nStringKey)
+                .frame(maxWidth: .infinity)
 
                 Button {
                     isAnimating.toggle()
@@ -88,22 +92,22 @@ public struct ActiveAccountRecoveryView: View {
     let title = ARTranslation.graceViewTitle.l10n
 
 
-    var key1: LocalizedStringKey { 
-        var key = "We received a password reset request for **\(viewModel.email)**."
+    var passwordResetReceivedL10nStringKey: LocalizedStringKey { 
+        var value = "We received a password reset request for **\(viewModel.email)**."
         if #unavailable(iOS 15) {
-            key = key
+            value = value
                 .replacingOccurrences(of: "**", with: "")
         }
-        return LocalizedStringKey(key)
+        return LocalizedStringKey(value)
     }
 
-    var key2: LocalizedStringKey {
-        var key = "If you didn't ask to reset your password, **cancel this request now**."
+    var callToActionIfUnexpectedL10nStringKey: LocalizedStringKey {
+        var value = "If you didn't ask to reset your password, **cancel this request now**."
         if #unavailable(iOS 15) {
-            key = key
+            value = value
                 .replacingOccurrences(of: "**", with: "")
         }
-        return LocalizedStringKey(key)
+        return LocalizedStringKey(value)
     }
 
     public init(viewModel: AccountRecoveryView.ViewModel) {
