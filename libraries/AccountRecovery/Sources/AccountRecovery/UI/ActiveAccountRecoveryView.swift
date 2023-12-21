@@ -33,17 +33,21 @@ public struct ActiveAccountRecoveryView: View {
                 Text(passwordResetReceivedL10nStringKey,
                      bundle: AccountRecoveryModule.resourceBundle,
                      comment: "Request received intro. Variable is an email, with ** delimiters for bold type")
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: .infinity, alignment: .leading)
 
             }
             HStack(spacing: 12) {
                 Image(AccountRecovery.ImageNames.passwordResetLockClock,
                       bundle: AccountRecoveryModule.resourceBundle)
                 VStack(alignment: .leading) {
-                    Text("Password reset requested", comment: "heading for callout block")
-                        .font(.title3)
+                    Text("Password reset requested", 
+                         bundle: AccountRecoveryModule.resourceBundle,
+                         comment: "heading for password reset requested callout")
+                    .font(.system(size: 17))
                         .foregroundColor(ColorProvider.TextNorm)
-                    Text("You can change your password in \(viewModel.remainingTime.asRemainingTimeStringAndDate()).")
+                    Text("You can change your password in \(viewModel.remainingTime.asRemainingTimeStringAndDate()).",
+                         bundle: AccountRecoveryModule.resourceBundle,
+                         comment: "variable contains the time remaining, and date, before changing the password")
                 }
             }
             .padding(12)
@@ -51,7 +55,10 @@ public struct ActiveAccountRecoveryView: View {
             .background(ColorProvider.BackgroundSecondary)
             .cornerRadius(12)
 
-            Text("To make sure it's really you trying to reset your password, we wait \(viewModel.remainingTime.asRemainingTimeString()) before approving requests.")
+            Text("To make sure it's really you trying to reset your password, we wait \(viewModel.remainingTime.asRemainingTimeString()) before approving requests.",
+                 bundle: AccountRecoveryModule.resourceBundle,
+                 comment: "variable contains the time remaining before changing the password"
+            )
                 .frame(maxWidth: .infinity)
 
             Text(callToActionIfUnexpectedL10nStringKey)
@@ -81,6 +88,7 @@ public struct ActiveAccountRecoveryView: View {
             Spacer()
 
         }
+        .font(.system(size: 14))
         .foregroundColor(ColorProvider.TextWeak)
         .padding(16)
         .background(ColorProvider.BackgroundNorm)
