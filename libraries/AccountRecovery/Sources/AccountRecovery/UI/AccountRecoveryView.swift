@@ -59,6 +59,7 @@ struct AccountRecoveryView_Previews: PreviewProvider {
         vm.email = "norbert@example.com"
         vm.remainingTime = 3600 * 72
         vm.state = .grace
+        vm.isLoaded = true
         return vm
     }()
 

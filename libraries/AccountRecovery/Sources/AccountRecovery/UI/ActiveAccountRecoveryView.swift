@@ -57,27 +57,27 @@ public struct ActiveAccountRecoveryView: View {
             Text(callToActionIfUnexpectedL10nStringKey)
                 .frame(maxWidth: .infinity)
 
-                Button {
+            Button {
+                isAnimating.toggle()
+                Task { @MainActor in
+                    await viewModel.cancelPressed()
                     isAnimating.toggle()
-                    Task { @MainActor in
-                        await viewModel.cancelPressed()
-                        isAnimating.toggle()
-                    }
-                } label: {
-                    ZStack(alignment: .trailing) {
-                        Text(ARTranslation.graceViewCancelButtonCTA.l10n)
-                            .frame(maxWidth: .infinity)
-
-                        if isAnimating {
-                            ProgressView()
-                                .padding(.trailing, 16)
-                        }
-                    }.frame(minWidth: 0,
-                            maxWidth: .infinity,
-                            minHeight: 48)
                 }
-                .buttonStyle(SolidButton())
-                .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+            } label: {
+                ZStack(alignment: .trailing) {
+                    Text(ARTranslation.graceViewCancelButtonCTA.l10n)
+                        .frame(maxWidth: .infinity)
+
+                    if isAnimating {
+                        ProgressView()
+                            .padding(.trailing, 16)
+                    }
+                }.frame(minWidth: 0,
+                        maxWidth: .infinity,
+                        minHeight: 48)
+            }
+            .buttonStyle(SolidButton())
+            .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
             Spacer()
 
         }
@@ -86,13 +86,14 @@ public struct ActiveAccountRecoveryView: View {
         .background(ColorProvider.BackgroundNorm)
         .frame(maxHeight: .infinity)
         .navigationTitle(ARTranslation.graceViewTitle.l10n)
+        .navigationBarTitleDisplayMode(.inline)
 
     }
 
     let title = ARTranslation.graceViewTitle.l10n
 
 
-    var passwordResetReceivedL10nStringKey: LocalizedStringKey { 
+    var passwordResetReceivedL10nStringKey: LocalizedStringKey {
         var value = "We received a password reset request for **\(viewModel.email)**."
         if #unavailable(iOS 15) {
             value = value
