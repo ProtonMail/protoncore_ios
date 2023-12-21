@@ -78,9 +78,11 @@ public struct ActiveAccountRecoveryView: View {
 
         }
         .foregroundColor(ColorProvider.TextWeak)
-            .padding(16)
-            .frame(maxHeight: .infinity)
-            .background(ColorProvider.BackgroundDeep)
+        .padding(16)
+        .background(ColorProvider.BackgroundDeep)
+        .frame(maxHeight: .infinity)
+        .navigationTitle(ARTranslation.graceViewTitle.l10n)
+
     }
 
     let title = ARTranslation.graceViewTitle.l10n

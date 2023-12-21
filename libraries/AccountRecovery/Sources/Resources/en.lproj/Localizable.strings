@@ -1,9 +1,11 @@
 
 "Settings_Item" = "Password reset";
 
-"Insecure_View_Title" = "Reset your password";
+"Insecure_View_Title" = "Password reset";
 
-"Grace_View_Title" = "Do you want to reset your password?";
+"Cancelled_View_Title" = "Password reset";
+
+"Grace_View_Title" = "Password reset";
 
 "We received a password reset request for **%@**." = "We received a password reset request for **%@**";
 

@@ -32,7 +32,7 @@ public struct CancelledAccountRecoveryView: View {
             Text(viewModel.reason.localizableDescription)
         }
         .padding(16)
-        .navigationTitle("Recovery process cancelled")
+        .navigationTitle(ARTranslation.cancelledViewTitle.l10n)
         .navigationBarTitleDisplayMode(.inline)
     }
 }

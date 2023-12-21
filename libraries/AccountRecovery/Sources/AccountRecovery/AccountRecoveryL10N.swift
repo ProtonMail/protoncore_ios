@@ -31,10 +31,11 @@ public enum ARTranslation: TranslationsExposing {
         #endif
     }
 
-    public static var prefixForMissingValue: String = ""
+    public static var prefixForMissingValue: String = "zzz"
 
     case settingsItem
     case insecureViewTitle
+    case cancelledViewTitle
     case graceViewTitle
     case insecureViewLine1
     case insecureViewLine2
@@ -50,10 +51,12 @@ public enum ARTranslation: TranslationsExposing {
         switch self {
         case .settingsItem:
             return localized(key: "Settings_Item", comment: "")
+        case .cancelledViewTitle:
+            return localized(key: "Cancelled_View_Title", comment: "Title for cancelled state")
         case .insecureViewTitle:
-            return localized(key: "Insecure_View_Title", comment: "")
+            return localized(key: "Insecure_View_Title", comment: "Title for insecure state")
         case .graceViewTitle:
-            return localized(key: "Grace_View_Title", comment: "")
+            return localized(key: "Grace_View_Title", comment: "Title for grace period state")
         case .graceViewCancelButtonCTA:
             return localized(key: "Grace_View_Cancel_Button_CTA", comment: "")
         case .graceViewUndefinedTimeLeft:
@@ -74,3 +77,4 @@ public enum ARTranslation: TranslationsExposing {
 
     }
 }
+
