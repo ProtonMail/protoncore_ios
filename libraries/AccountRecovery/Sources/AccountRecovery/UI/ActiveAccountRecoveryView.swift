@@ -74,6 +74,8 @@ public struct ActiveAccountRecoveryView: View {
                 }
                 .buttonStyle(SolidButton())
                 .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+            Spacer()
+
         }
         .foregroundColor(ColorProvider.TextWeak)
             .padding(16)
