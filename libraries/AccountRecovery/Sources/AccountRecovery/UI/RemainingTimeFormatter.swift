@@ -62,4 +62,14 @@ public extension TimeInterval {
 
         return "\(hours) (\(dateToShow))"
     }
+
+    func asDateFromNow() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale.current
+
+        return dateFormatter.string(from: Date().addingTimeInterval(self))
+    }
+
 }

@@ -1,5 +1,5 @@
 //
-//  SolidButton.swift
+//  ButtonStyles.swift
 //  ProtonCore-AccountRecovery - Created on 31/7/23.
 //
 //  Copyright (c) 2023 Proton AG
@@ -39,6 +39,19 @@ public struct SolidButton: ButtonStyle {
                     .isPressed ? interactionNormPressed : interactionNorm
             )
             .cornerRadius(8)
+    }
+}
+
+/// This style is used to represent a Link button
+/// - Reference: (see Proton Mobile iOS design document)
+public struct LinkButton: ButtonStyle {
+
+    let interactionNorm: Color = ColorProvider.InteractionNorm
+
+    public func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.system(size: 17))
+            .foregroundColor(interactionNorm)
     }
 }
 #endif

@@ -35,6 +35,7 @@ public enum ARTranslation: TranslationsExposing {
 
     case settingsItem
     case insecureViewTitle
+    case insecureViewCancelButtonCTA
     case cancelledViewTitle
     case graceViewTitle
     case insecureViewLine1
@@ -55,6 +56,8 @@ public enum ARTranslation: TranslationsExposing {
             return localized(key: "Cancelled_View_Title", comment: "Title for cancelled state")
         case .insecureViewTitle:
             return localized(key: "Insecure_View_Title", comment: "Title for insecure state")
+        case .insecureViewCancelButtonCTA:
+            return localized(key: "Insecure_View_Cancel_Button_CTA", comment: "Button for cancelling reset during insecure state")
         case .graceViewTitle:
             return localized(key: "Grace_View_Title", comment: "Title for grace period state")
         case .graceViewCancelButtonCTA:

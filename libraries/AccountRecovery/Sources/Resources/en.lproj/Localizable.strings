@@ -34,3 +34,5 @@
 "Settings_Item_Value_Cancelled" = "Cancelled";
 
 "Settings_Item_Value_Insecure" = "Available";
+
+"Insecure_View_Cancel_Button_CTA" = "Cancel reset";

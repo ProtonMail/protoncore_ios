@@ -23,5 +23,6 @@ enum AccountRecovery {
         static let passwordResetPeriodStart = "password-reset-period-start"
         static let passwordResetPeriodEnd = "password-reset-period-end"
         static let passwordResetLockClock = "password-reset-lock-clock"
+        static let passwordResetLockCheck = "password-reset-lock-check"
     }
 }
