@@ -17,7 +17,7 @@
 
 "You can change your password in %@." = "You can change your password in %@.";
 
-"To make sure it's really you trying to reset your password, we wait %@ before approving requests." = "To make sure it's really you trying to reset your password, we wait %@ before approving requests.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.";
 
 "Insecure_View_line2" = " freely during ";
 

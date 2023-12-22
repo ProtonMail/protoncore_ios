@@ -55,9 +55,9 @@ public struct ActiveAccountRecoveryView: View {
             .background(ColorProvider.BackgroundSecondary)
             .cornerRadius(12)
 
-            Text("To make sure it's really you trying to reset your password, we wait \(viewModel.remainingTime.asRemainingTimeString()) before approving requests.",
+            Text("To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.",
                  bundle: AccountRecoveryModule.resourceBundle,
-                 comment: "variable contains the time remaining before changing the password"
+                 comment: "explain why the user has to wait 72h"
             )
                 .frame(maxWidth: .infinity)
 
