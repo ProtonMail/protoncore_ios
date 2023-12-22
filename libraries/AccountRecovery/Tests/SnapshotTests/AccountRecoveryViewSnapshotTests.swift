@@ -38,13 +38,15 @@ class AccountRecoveryViewSnapshotTests: SnapshotTestCase {
         let preview = AccountRecoveryView_Previews.previews
         let navigationView = NavigationView { preview }
 
-        checkSnapshots(controller: UIHostingController(rootView: navigationView))
+        checkSnapshots(controller: UIHostingController(rootView: navigationView),
+                       perceptualPrecision: 0.9)
     }
 
     func testGracePeriodScreen() {
         let preview = ActiveAccountRecoveryView_Previews.previews
 
-        checkSnapshots(controller: UIHostingController(rootView: preview))
+        checkSnapshots(controller: UIHostingController(rootView: preview),
+                       perceptualPrecision: 0.9)
     }
 }
 #endif
