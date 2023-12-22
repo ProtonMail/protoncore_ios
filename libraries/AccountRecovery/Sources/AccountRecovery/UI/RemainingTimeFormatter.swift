@@ -64,12 +64,20 @@ public extension TimeInterval {
     }
 
     func asDateFromNow() -> String {
+        var today = Date()
+        #if DEBUG
+        if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
+             // Fix the date for snapshot tests
+            today = Date(timeIntervalSince1970: 1694954664)
+        }
+        #endif
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         dateFormatter.locale = Locale.current
 
-        return dateFormatter.string(from: Date().addingTimeInterval(self))
+        return dateFormatter.string(from: today.addingTimeInterval(self))
     }
 
 }
