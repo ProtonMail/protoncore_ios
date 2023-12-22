@@ -202,5 +202,6 @@ public extension FeatureFlagsRepository {
      */
     func clearUserId() {
         localDataSource.value.clearUserId()
+        _userId = ""
     }
 }
