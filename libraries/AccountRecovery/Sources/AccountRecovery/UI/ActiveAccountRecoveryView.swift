@@ -28,60 +28,103 @@ public struct ActiveAccountRecoveryView: View {
 
     public var body: some View {
         VStack(spacing: 24) {
-            Image(AccountRecovery.ImageNames.passwordResetPeriodStart,
-                      bundle: AccountRecoveryModule.resourceBundle
-                )
-            Text(title)
-                    .font(.largeTitle)
-                    .multilineTextAlignment(.center)
+            HStack(alignment: .top, spacing: 10) {
+                IconProvider.exclamationCircle
+                Text(passwordResetReceivedL10nStringKey,
+                     bundle: AccountRecoveryModule.resourceBundle,
+                     comment: "Request received intro. Variable is an email, with ** delimiters for bold type")
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+            }
+            HStack(spacing: 12) {
+                Image(AccountRecovery.ImageNames.passwordResetLockClock,
+                      bundle: AccountRecoveryModule.resourceBundle)
                 VStack(alignment: .leading) {
-                    Text(line1) +
-                    Text(viewModel.email)
-                        .fontWeight(.bold) +
-                    Text(line2) +
-                    Text(viewModel.remainingTime.asRemainingTimeString())
-                        .fontWeight(.bold) +
-                    Text(period)
-
-                    Text(line3)
+                    Text("Password reset requested", 
+                         bundle: AccountRecoveryModule.resourceBundle,
+                         comment: "heading for password reset requested callout")
+                    .font(.system(size: 17))
+                        .foregroundColor(ColorProvider.TextNorm)
+                    Text("You can change your password in \(viewModel.remainingTime.asRemainingTimeStringAndDate()).",
+                         bundle: AccountRecoveryModule.resourceBundle,
+                         comment: "variable contains the time remaining, and date, before changing the password")
                 }
+            }
+            .padding(12)
+            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+            .background(ColorProvider.BackgroundSecondary)
+            .cornerRadius(12)
 
-                Button {
+            Text("To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.",
+                 bundle: AccountRecoveryModule.resourceBundle,
+                 comment: "explain why the user has to wait 72h"
+            )
+                .frame(maxWidth: .infinity)
+
+            Text(callToActionIfUnexpectedL10nStringKey)
+                .frame(maxWidth: .infinity)
+
+            Button {
+                isAnimating.toggle()
+                Task { @MainActor in
+                    await viewModel.cancelPressed()
                     isAnimating.toggle()
-                    Task { @MainActor in
-                        try await viewModel.cancelPressed()
-                        isAnimating.toggle()
-                    }
-                } label: {
-                    ZStack(alignment: .trailing) {
-                        Text(ARTranslation.graceViewCancelButtonCTA.l10n)
-                            .frame(maxWidth: .infinity)
-
-                        if isAnimating {
-                            ProgressView()
-                                .padding(.trailing, 16)
-                        }
-                    }.frame(minWidth: 0,
-                            maxWidth: .infinity,
-                            minHeight: 48)
                 }
-                .buttonStyle(SolidButton())
-                .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+            } label: {
+                ZStack(alignment: .trailing) {
+                    Text(ARTranslation.graceViewCancelButtonCTA.l10n)
+                        .frame(maxWidth: .infinity)
+
+                    if isAnimating {
+                        ProgressView()
+                            .padding(.trailing, 16)
+                    }
+                }.frame(minWidth: 0,
+                        maxWidth: .infinity,
+                        minHeight: 48)
+            }
+            .buttonStyle(SolidButton())
+            .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+            Spacer()
+
         }
-            .padding(16)
-            .frame(maxHeight: .infinity)
-            .background(ColorProvider.BackgroundNorm as Color)
+        .font(.system(size: 14))
+        .foregroundColor(ColorProvider.TextWeak)
+        .padding(16)
+        .background(ColorProvider.BackgroundNorm)
+        .frame(maxHeight: .infinity)
+        .navigationTitle(ARTranslation.graceViewTitle.l10n)
+        .navigationBarTitleDisplayMode(.inline)
+
     }
 
     let title = ARTranslation.graceViewTitle.l10n
 
-    let line1 = ARTranslation.graceViewLine1.l10n
-    let line2 = ARTranslation.graceViewLine2.l10n
-    let period = "."
-    let line3 = ARTranslation.graceViewLine3.l10n
+
+    var passwordResetReceivedL10nStringKey: LocalizedStringKey {
+        var value = "We received a password reset request for **\(viewModel.email)**."
+        if #unavailable(iOS 15) {
+            value = value
+                .replacingOccurrences(of: "**", with: "")
+        }
+        return LocalizedStringKey(value)
+    }
+
+    var callToActionIfUnexpectedL10nStringKey: LocalizedStringKey {
+        var value = "If you didn't ask to reset your password, **cancel this request now**."
+        if #unavailable(iOS 15) {
+            value = value
+                .replacingOccurrences(of: "**", with: "")
+        }
+        return LocalizedStringKey(value)
+    }
 
     public init(viewModel: AccountRecoveryView.ViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
+    }
+
+    private func makeKeyDroppingMarkdownIfNeeded(_ value: String) -> LocalizedStringKey {
+        LocalizedStringKey(value)
     }
 }
 

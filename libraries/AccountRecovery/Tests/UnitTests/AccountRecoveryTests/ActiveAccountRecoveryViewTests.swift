@@ -39,7 +39,7 @@ final class ActiveAccountRecoveryViewTests: XCTestCase {
         let sut = ActiveAccountRecoveryView(viewModel: viewModel)
 
         // Then
-        let foundImage = try sut.inspect().find(ViewType.Image.self).actualImage()
+        let foundImages = try sut.inspect().findAll(ViewType.Image.self).map { try! $0.actualImage() }
         _ = try sut.inspect().find(textWhere: {string, _ -> Bool in
             string.contains("janedoe@proton.me")
         })
@@ -50,7 +50,7 @@ final class ActiveAccountRecoveryViewTests: XCTestCase {
         _ = try foundButton.find(text: ARTranslation.graceViewCancelButtonCTA.l10n)
 
         XCTAssertThrowsError(try sut.inspect().find(ViewType.ProgressView.self))
-        XCTAssertEqual("password-reset-period-start", try foundImage.name())
+        XCTAssertEqual(["ic-exclamation-circle", "password-reset-lock-clock"], foundImages.map { try! $0.name() })
         XCTAssert(type(of: try foundButton.buttonStyle()) == SolidButton.self)
     }
 

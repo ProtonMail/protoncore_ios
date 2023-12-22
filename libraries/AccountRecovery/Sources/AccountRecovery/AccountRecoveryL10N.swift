@@ -31,19 +31,17 @@ public enum ARTranslation: TranslationsExposing {
         #endif
     }
 
-    public static var prefixForMissingValue: String = ""
+    public static var prefixForMissingValue: String = "zzz"
 
     case settingsItem
     case insecureViewTitle
+    case cancelledViewTitle
     case graceViewTitle
-    case graceViewLine1
     case insecureViewLine1
     case insecureViewLine2
     case insecureViewLine3
     case graceViewCancelButtonCTA
     case graceViewUndefinedTimeLeft
-    case graceViewLine2
-    case graceViewLine3
     case cancelledState
     case expiredState
     case graceState
@@ -53,20 +51,17 @@ public enum ARTranslation: TranslationsExposing {
         switch self {
         case .settingsItem:
             return localized(key: "Settings_Item", comment: "")
+        case .cancelledViewTitle:
+            return localized(key: "Cancelled_View_Title", comment: "Title for cancelled state")
         case .insecureViewTitle:
-            return localized(key: "Insecure_View_Title", comment: "")
+            return localized(key: "Insecure_View_Title", comment: "Title for insecure state")
         case .graceViewTitle:
-            return localized(key: "Grace_View_Title", comment: "")
+            return localized(key: "Grace_View_Title", comment: "Title for grace period state")
         case .graceViewCancelButtonCTA:
             return localized(key: "Grace_View_Cancel_Button_CTA", comment: "")
         case .graceViewUndefinedTimeLeft:
             return localized(key: "Grace_View_Undefined_Time_Left", comment: "")
-        case .graceViewLine1:
-            return localized(key: "Grace_View_line1", comment: "")
-        case .graceViewLine2:
-            return localized(key: "Grace_View_line2", comment: "")
-        case .graceViewLine3:
-            return localized(key: "Grace_View_line3", comment: "")
+   
         case .insecureViewLine1:
             return localized(key: "Insecure_View_line1", comment: "")
         case .insecureViewLine2:
@@ -82,3 +77,4 @@ public enum ARTranslation: TranslationsExposing {
 
     }
 }
+

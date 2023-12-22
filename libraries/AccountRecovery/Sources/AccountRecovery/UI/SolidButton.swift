@@ -32,12 +32,12 @@ public struct SolidButton: ButtonStyle {
 
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
+            .font(.system(size: 17))
+            .foregroundColor(ColorProvider.White)
             .background(
                 configuration
-                    .isPressed ? ColorProvider.InteractionNormPressed :
-                    ColorProvider.InteractionNorm
+                    .isPressed ? interactionNormPressed : interactionNorm
             )
-            .foregroundColor(ColorProvider.TextInverted)
             .cornerRadius(8)
     }
 }
