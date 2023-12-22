@@ -55,5 +55,12 @@ class AccountRecoveryViewSnapshotTests: SnapshotTestCase {
         checkSnapshots(controller: UIHostingController(rootView: preview),
                        perceptualPrecision: 0.9)
     }
+
+    func testCancelledStateScreen() {
+        let preview = CancelledAccountRecoveryView_Previews.previews
+
+        checkSnapshots(controller: UIHostingController(rootView: preview),
+                       perceptualPrecision: 0.9)
+    }
 }
 #endif
