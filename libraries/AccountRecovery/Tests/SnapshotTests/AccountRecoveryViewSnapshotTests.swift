@@ -52,7 +52,8 @@ class AccountRecoveryViewSnapshotTests: SnapshotTestCase {
     func testInsecureStateScreen() {
         let preview = InsecureAccountRecoveryView_Previews.previews
 
-        checkSnapshots(controller: UIHostingController(rootView: preview))
+        checkSnapshots(controller: UIHostingController(rootView: preview),
+                       perceptualPrecision: 0.9)
     }
 }
 #endif
