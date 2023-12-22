@@ -20,6 +20,8 @@
 //  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
 //
 
+#if os(iOS)
+
 import Foundation
 @testable import ProtonCoreAccountRecovery
 import XCTest
@@ -45,3 +47,4 @@ class AccountRecoveryViewSnapshotTests: SnapshotTestCase {
         checkSnapshots(controller: UIHostingController(rootView: preview))
     }
 }
+#endif
