@@ -1,4 +1,4 @@
-"Settings_Item" = "Password reset";
+"Settings_Item" = "Endurstilling lykilorðd";
 
 "Insecure_View_Title" = "Endurstilltu lykilorðið þitt";
 
@@ -12,9 +12,9 @@
 
 "Insecure_View_line3" = "Vinsamlegast farðu í innskráða tækið (í lotunni þar sem beiðnin var sett af stað) til að breyta lykilorðinu þínu.";
 
-"Grace_View_Cancel_Button_CTA" = "Cancel request";
+"Grace_View_Cancel_Button_CTA" = "Hætta við beiðni";
 
-"Grace_View_Undefined_Time_Left" = "a few hours";
+"Grace_View_Undefined_Time_Left" = "nokkrar klukkustundir";
 
 "Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
 

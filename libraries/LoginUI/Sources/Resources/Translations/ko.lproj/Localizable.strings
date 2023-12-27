@@ -168,7 +168,7 @@
 
 "Account verification" = "계정 인증";
 
-"For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "사용자의 안전을 위해, 입력한 주소가 자신의 소유인 이메일인지 확인해야 합니다. %@으로 인증 코드를 전송하였습니다. 해당 코드를 입력해 주세요:";
+"For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:";
 
 "Verification code" = "인증 코드";
 

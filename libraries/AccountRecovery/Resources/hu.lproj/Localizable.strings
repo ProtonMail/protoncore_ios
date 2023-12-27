@@ -2,7 +2,7 @@
 
 "Insecure_View_Title" = "Állítsa vissza a jelszavát";
 
-"Grace_View_Title" = "Do you want to reset your password?";
+"Grace_View_Title" = "Szeretné visszaállítani a jelszavát?";
 
 "Grace_View_line1" = "We received a request to reset your password for ";
 
@@ -18,4 +18,4 @@
 
 "Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
 
-"Grace_View_line3" = "If you didn't make this request, or if you no longer need help signing in, please cancel it and take steps to secure your account.";
+"Grace_View_line3" = "Ha nem ön kérte, vagy ha már nincs szüksége segítségre a bejelentkezéshez, kérjük, törölje, és tegye fiókját biztonságosabbá.";

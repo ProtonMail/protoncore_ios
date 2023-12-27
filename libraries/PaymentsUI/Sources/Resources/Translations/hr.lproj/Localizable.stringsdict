@@ -175,11 +175,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d high-speed VPN connection</string>
+        <string>%d VPN veza visoke brzine</string>
         <key>few</key>
-        <string>%d high-speed VPN connections</string>
+        <string>%d VPN veze visoke brzine</string>
         <key>other</key>
-        <string>%d high-speed VPN connections</string>
+        <string>%d VPN veza visoke brzine</string>
       </dict>
     </dict>
     <key>&lt;n&gt; custom domains</key>
