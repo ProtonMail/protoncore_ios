@@ -14,8 +14,8 @@
 
 "Grace_View_Cancel_Button_CTA" = "Скасувати запит";
 
-"Grace_View_Undefined_Time_Left" = "a few hours";
+"Grace_View_Undefined_Time_Left" = "кілька годин";
 
-"Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+"Grace_View_line2" = ". Щоб захистити ваш обліковий запис, ми хочемо переконатися, що саме ви намагаєтеся скинути пароль. Ви зможете скинути свій пароль за ";
 
 "Grace_View_line3" = "Якщо ви не робили цей запит, або якщо вам більше не потрібна допомога з входом, скасуйте його та виконайте дії для захисту вашого облікового запису.";

@@ -13,13 +13,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d email alias</string>
+        <string>%d псевдоним</string>
         <key>few</key>
-        <string>%d псевдоним(ов)</string>
+        <string>%d псевдонима</string>
         <key>many</key>
-        <string>%d псевдоним(ов)</string>
+        <string>%d псевдонимов</string>
         <key>other</key>
-        <string>%d псевдоним(ов)</string>
+        <string>%d псевдонимов</string>
       </dict>
     </dict>
     <key>&lt;n&gt; users</key>
@@ -588,7 +588,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Up to %d forwarding mailbox</string>
+        <string>До %d почтового ящика для пересылки</string>
         <key>few</key>
         <string>До %d почтовых ящиков для пересылки</string>
         <key>many</key>

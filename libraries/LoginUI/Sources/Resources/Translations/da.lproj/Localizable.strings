@@ -182,7 +182,7 @@
 
 "Invalid token error" = "Ugyldigt token fejl";
 
-"Create user failed" = "Create user failed";
+"Create user failed" = "Brugeroprettelse mislykkedes";
 
 "Invalid hashed password" = "Ugyldig hashet adgangskode";
 

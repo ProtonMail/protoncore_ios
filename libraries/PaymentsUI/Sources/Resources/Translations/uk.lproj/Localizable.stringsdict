@@ -13,13 +13,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d email alias</string>
+        <string>%d псевдонім е-пошти</string>
         <key>few</key>
-        <string>%d псевдонімів електронної пошти</string>
+        <string>%d псевдоніми е-пошти</string>
         <key>many</key>
-        <string>%d псевдонімів електронної пошти</string>
+        <string>%d псевдонімів е-пошти</string>
         <key>other</key>
-        <string>%d псевдонімів електронної пошти</string>
+        <string>%d псевдонімів е-пошти</string>
       </dict>
     </dict>
     <key>&lt;n&gt; users</key>
