@@ -93,6 +93,7 @@ final class LoginViewModel {
                 } else {
                     self?.error.publish(error)
                 }
+                self?.isLoading.value = false
             case let .success(status):
                 switch status {
                 case let .finished(data):
