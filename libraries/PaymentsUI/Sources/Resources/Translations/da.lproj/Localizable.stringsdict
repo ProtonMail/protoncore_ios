@@ -13,7 +13,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d email alias</string>
+        <string>%d e-mail-alias</string>
         <key>other</key>
         <string>%d e-mail-aliasser</string>
       </dict>
@@ -468,7 +468,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Up to %d forwarding mailbox</string>
+        <string>Op til %d postkasse til videresendelse</string>
         <key>other</key>
         <string>Op til %d postkasser til videresendelse</string>
       </dict>
