@@ -52,7 +52,7 @@ public struct InsecureAccountRecoveryView: View {
                              bundle: AccountRecoveryModule.resourceBundle,
                              comment: "")
                             .foregroundColor(ColorProvider.TextNorm)
-                        Text("To reset your password, go back to your active session on **Mac computer**.",
+                        Text("To reset your password, go back to your active session on **the originating device**.",
                              bundle: AccountRecoveryModule.resourceBundle,
                              comment: "Session name appears in **bold**")
                             .font(Font.system(size: 13))
