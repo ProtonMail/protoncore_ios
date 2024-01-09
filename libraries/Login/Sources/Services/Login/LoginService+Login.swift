@@ -58,15 +58,19 @@ extension LoginService {
         }
 
         let host = apiService.dohInterface.getCurrentlyUsedHostUrl()
+        let accountHost = apiService.dohInterface.getAccountHost()
         let sessionUID = apiService.sessionUID
 
         var urlComponents = URLComponents(string: "\(host)/auth/sso/\(ssoChallengeResponse.ssoChallengeToken)")!
 
         #if os(macOS)
-        if let callbackScheme = self.ssoCallbackScheme {
-            let modifiedHost = host.replacingOccurrences(of: "https", with: callbackScheme)
+        if let callbackScheme = self.ssoCallbackScheme,
+            let accountHostUrl = URL(string: accountHost),
+            let accountHostScheme = accountHostUrl.scheme {
+
+            let modifiedAccountHost = accountHost.replacingOccurrences(of: accountHostScheme, with: callbackScheme)
             let finalRedirectBaseURLQueryParameter = URLQueryItem(name: "FinalRedirectBaseUrl",
-                                                                 value: "\(modifiedHost)")
+                                                                 value: "\(modifiedAccountHost)")
 
             urlComponents.queryItems = [finalRedirectBaseURLQueryParameter]
         }
