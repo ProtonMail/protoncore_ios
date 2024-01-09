@@ -21,7 +21,7 @@ import ProtonCoreUIFoundations
 
 public struct InsecureAccountRecoveryView: View {
 
-    @StateObject var viewModel: AccountRecoveryView.ViewModel
+    @ObservedObject var viewModel: AccountRecoveryView.ViewModel
 
     public var body: some View {
         VStack(alignment: .leading, spacing: 24) {
@@ -102,7 +102,7 @@ If you didn't ask to reset your password, cancel the request now.
     }
 
     public init(viewModel: AccountRecoveryView.ViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
+        _viewModel = ObservedObject(wrappedValue: viewModel)
     }
 }
 

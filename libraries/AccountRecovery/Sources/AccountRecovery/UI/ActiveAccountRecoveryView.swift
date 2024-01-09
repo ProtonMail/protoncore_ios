@@ -23,7 +23,7 @@ import ProtonCoreUIFoundations
 /// View shown for the Grace period state of the **Account Recovery** process
 public struct ActiveAccountRecoveryView: View {
 
-    @StateObject var viewModel: AccountRecoveryView.ViewModel
+    @ObservedObject var viewModel: AccountRecoveryView.ViewModel
     @State var isAnimating: Bool = false
 
     public var body: some View {
@@ -122,7 +122,7 @@ public struct ActiveAccountRecoveryView: View {
     }
 
     public init(viewModel: AccountRecoveryView.ViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
+        _viewModel = ObservedObject(wrappedValue: viewModel)
     }
 
     private func makeKeyDroppingMarkdownIfNeeded(_ value: String) -> LocalizedStringKey {
