@@ -74,6 +74,9 @@ class LoginServiceTests: XCTestCase {
         dohInterface.getCurrentlyUsedHostUrlStub.bodyIs { _ in
             "http://proton.black/api"
         }
+        dohInterface.getAccountHostStub.bodyIs { _ in
+            "http://account.proton.black"
+        }
         api.sessionUIDStub.fixture = "sessionUID"
         api.dohInterfaceStub.fixture = dohInterface
         sut = LoginService(api: api,
@@ -304,6 +307,20 @@ class LoginServiceTests: XCTestCase {
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
+    }
+
+    func testSettingSSOCallbackScheme() {
+        setupSUT()
+        XCTAssertNil(sut.ssoCallbackScheme)
+
+        let testScheme = "testScheme"
+
+        sut = LoginService(api: api,
+                           clientApp: .vpn,
+                           minimumAccountType: .external,
+                           ssoCallbackScheme: testScheme)
+
+        XCTAssertEqual(sut.ssoCallbackScheme, testScheme)
     }
 
     func testLoginWithSSO_isSuccessful() {
