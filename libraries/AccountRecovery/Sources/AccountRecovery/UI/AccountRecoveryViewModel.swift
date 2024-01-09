@@ -121,7 +121,8 @@ extension AccountRecoveryView {
         }
 
         public func didCloseWithError(code: Int, description: String) {
-// TODO: change state to error and inform the user
+            isLoaded = false
+            loadData()
         }
     }
 }
