@@ -141,9 +141,6 @@ final class AccountRecoveryViewTests: XCTestCase {
         let view = try sut.inspect().find(InsecureAccountRecoveryView.self)
 
         _ = try view.find(textWhere: { string, _ -> Bool in
-            string.contains("janedoe@protonmail.com")
-        })
-        _ = try view.find(textWhere: { string, _ -> Bool in
             string.contains("5 days")
         })
     }

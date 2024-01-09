@@ -21,19 +21,62 @@
 //
 #if os(iOS)
 import SwiftUI
+import ProtonCoreUIFoundations
 
 public struct CancelledAccountRecoveryView: View {
 
     @StateObject var viewModel: AccountRecoveryView.ViewModel
 
     public var body: some View {
-        VStack(spacing: 24) {
-            Text("The account recovery process was ") +
-            Text(viewModel.reason.localizableDescription)
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(spacing: 12) {
+                Image(AccountRecovery.ImageNames.passwordResetLockExclamation,
+                      bundle: AccountRecoveryModule.resourceBundle)
+                VStack(alignment: .leading) {
+                    Text("Password reset cancelled",
+                         bundle: AccountRecoveryModule.resourceBundle,
+                         comment: "Reset cancelled Heading")
+                    .frame(alignment: .leading)
+                    .font(.system(size: 17))
+                    .foregroundColor(ColorProvider.TextNorm)
+                    Text(LocalizedStringKey(viewModel.reason.localizableDescription),
+                         bundle: AccountRecoveryModule.resourceBundle,
+                         comment: "Reason for cancellation"
+                    )
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+            }
+            .padding(12)
+            .background(ColorProvider.BackgroundSecondary)
+            .cornerRadius(12)
+
+            Text(changePasswordAdviceL10nStrongKey,
+                 bundle: AccountRecoveryModule.resourceBundle,
+                 comment: "Advise the user to change password. Second phrase is in bold (**)"
+            )
+            .frame(maxWidth: .infinity)
+
+            Spacer()
         }
+        .font(.system(size: 14))
+        .foregroundColor(ColorProvider.TextWeak)
         .padding(16)
+        .background(ColorProvider.BackgroundNorm)
+        .frame(maxHeight: .infinity)
         .navigationTitle(ARTranslation.cancelledViewTitle.l10n)
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+
+    var changePasswordAdviceL10nStrongKey: LocalizedStringKey {
+        var value = """
+If you never made a password reset request, someone else could have access to your account. **Change your password now**.
+"""
+        if #unavailable(iOS 15) {
+            value = value
+                .replacingOccurrences(of: "**", with: "")
+        }
+        return LocalizedStringKey(value)
     }
 }
 
@@ -43,7 +86,7 @@ struct CancelledAccountRecoveryView_Previews: PreviewProvider {
         vm.email = "norbert@example.com"
         vm.remainingTime = 3600 * 72
         vm.state = .cancelled
-        vm.reason = .cancelled
+        vm.reason = .authentication
         return vm
     }()
 

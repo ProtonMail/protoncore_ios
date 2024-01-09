@@ -1,8 +1,8 @@
 //
-//  SolidButton.swift
-//  ProtonCore-AccountRecovery - Created on 31/7/23.
+//  LinkButton.swift
+//  ProtonCore-AccountRecovery - Created on 9/1/24.
 //
-//  Copyright (c) 2023 Proton AG
+//  Copyright (c) 2024 Proton AG
 //
 //  This file is part of ProtonCore.
 //
@@ -23,22 +23,16 @@
 import SwiftUI
 import ProtonCoreUIFoundations
 
-/// This style is used to represent a Solid button
+/// This style is used to represent a Link button
 /// - Reference: (see Proton Mobile iOS design document)
-public struct SolidButton: ButtonStyle {
+public struct LinkButton: ButtonStyle {
 
     let interactionNorm: Color = ColorProvider.InteractionNorm
-    let interactionNormPressed: Color = ColorProvider.InteractionNormPressed
 
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(.system(size: 17))
-            .foregroundColor(ColorProvider.White)
-            .background(
-                configuration
-                    .isPressed ? interactionNormPressed : interactionNorm
-            )
-            .cornerRadius(8)
+            .foregroundColor(interactionNorm)
     }
 }
 

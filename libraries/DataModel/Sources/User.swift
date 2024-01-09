@@ -98,9 +98,9 @@ public struct User: Codable, Equatable, CustomDebugStringConvertible {
         public var localizableDescription: String {
             switch self {
             case .cancelled:
-        return "cancelled by the user"
+                return "Cancelled by the user"
             case .authentication:
-                return "authenticated in another session"
+                return "Authenticated in another session"
             case .none:
                 return "none"
             }
