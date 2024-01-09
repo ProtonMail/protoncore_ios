@@ -65,15 +65,19 @@ public final class LoginService: Login {
     public var startGeneratingAddress: (() -> Void)?
     public var startGeneratingKeys: (() -> Void)?
 
+    public var ssoCallbackScheme: String?
+
     public init(api: APIService,
                 clientApp: ClientApp,
                 minimumAccountType: AccountType,
                 authenticator: AuthenticationManager? = nil,
-                featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared) {
+                featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared,
+                ssoCallbackScheme: String? = nil) {
         self.apiService = api
         self.minimumAccountType = minimumAccountType
         self.clientApp = clientApp
         self.featureFlagsRepository = featureFlagsRepository
+        self.ssoCallbackScheme = ssoCallbackScheme
         manager = authenticator ?? Authenticator(api: api)
     }
 
