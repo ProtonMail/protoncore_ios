@@ -9,7 +9,11 @@
 
 "We received a password reset request for **%@**." = "We received a password reset request for **%@**";
 
+"We received a password reset request for %@." = "We received a password reset request for %@";
+
 "If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
 
 "Password reset requested" = "Password reset requested";
 
@@ -36,3 +40,44 @@
 "Settings_Item_Value_Insecure" = "Available";
 
 "Insecure_View_Cancel_Button_CTA" = "Cancel reset";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+
+"We received a password reset request for **%@**." = "We received a password reset request for **%@**.";
+
+"We received a password reset request for %@." = "We received a password reset request for %@.";
+
+"Password reset cancelled" = "Password reset cancelled";
+
+"Cancelled by the user" = "Cancelled by the user";
+
+"Authenticated in another session" = "Authenticated in another session";
+
+"none" = "none";
+
+"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "If you never made a password reset request, someone else could have access to your account. **Change your password now**";
+
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "If you never made a password reset request, someone else could have access to your account. Change your password now";
+
+"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+
+"Recovery process cancelled" = "Recovery process cancelled";
+
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
+
+"You can now reset your password" = "You can now reset your password";
+
+"Reset available until %@." = "Reset available until %@.";
+
+"Change device to continue" = "Change device to continue";
+
+"To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
+
+"To reset your password, go back to your active session on the originating device." = "To reset your password, go back to your active session on the originating device.";
+
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now.";
+
