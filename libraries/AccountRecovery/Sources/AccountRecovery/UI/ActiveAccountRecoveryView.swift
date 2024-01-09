@@ -32,7 +32,7 @@ public struct ActiveAccountRecoveryView: View {
                 IconProvider.exclamationCircle
                 Text(passwordResetReceivedL10nStringKey,
                      bundle: AccountRecoveryModule.resourceBundle,
-                     comment: "Request received intro. Variable is an email, with ** delimiters for bold type")
+                     comment: "Request received intro. Variable is an email, with ** delimiters for bold type (we have a replica without delimiters for older iOS versions")
                 .frame(maxWidth: .infinity, alignment: .leading)
 
             }
@@ -47,7 +47,7 @@ public struct ActiveAccountRecoveryView: View {
                         .foregroundColor(ColorProvider.TextNorm)
                     Text("You can change your password in \(viewModel.remainingTime.asRemainingTimeStringAndDate()).",
                          bundle: AccountRecoveryModule.resourceBundle,
-                         comment: "variable contains the time remaining, and date, before changing the password")
+                         comment: "variable contains the time remaining, and date, before being able to change the password")
                 }
             }
             .padding(12)
@@ -61,7 +61,9 @@ public struct ActiveAccountRecoveryView: View {
             )
                 .frame(maxWidth: .infinity)
 
-            Text(callToActionIfUnexpectedL10nStringKey)
+            Text(callToActionIfUnexpectedL10nStringKey,
+                 bundle: AccountRecoveryModule.resourceBundle,
+                 comment: "Advise in case the reset is unexpected, with ** delimiters for bold type (we have a replica without delimiters for older iOS versions")
                 .frame(maxWidth: .infinity)
 
             Button {

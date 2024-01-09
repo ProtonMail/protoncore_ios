@@ -37,7 +37,7 @@ public struct InsecureAccountRecoveryView: View {
                             .foregroundColor(ColorProvider.TextNorm)
                         Text(dateLimitL10nStringKey,
                              bundle: AccountRecoveryModule.resourceBundle,
-                             comment: "Date limit for reset")
+                             comment: "Interpolated date limit for reset")
                             .font(Font.system(size: 13))
 
                     }
