@@ -21,7 +21,7 @@ import ProtonCoreUIFoundations
 
 public struct InsecureAccountRecoveryView: View {
 
-    @StateObject var viewModel: AccountRecoveryView.ViewModel
+    @ObservedObject var viewModel: AccountRecoveryView.ViewModel
 
     public var body: some View {
         VStack(alignment: .leading, spacing: 24) {
@@ -37,7 +37,7 @@ public struct InsecureAccountRecoveryView: View {
                             .foregroundColor(ColorProvider.TextNorm)
                         Text(dateLimitL10nStringKey,
                              bundle: AccountRecoveryModule.resourceBundle,
-                             comment: "Date limit for reset")
+                             comment: "Interpolated date limit for reset")
                             .font(Font.system(size: 13))
 
                     }
@@ -52,7 +52,7 @@ public struct InsecureAccountRecoveryView: View {
                              bundle: AccountRecoveryModule.resourceBundle,
                              comment: "")
                             .foregroundColor(ColorProvider.TextNorm)
-                        Text("To reset your password, go back to your active session on **Mac computer**.",
+                        Text("To reset your password, go back to your active session on **the originating device**.",
                              bundle: AccountRecoveryModule.resourceBundle,
                              comment: "Session name appears in **bold**")
                             .font(Font.system(size: 13))
@@ -102,7 +102,7 @@ If you didn't ask to reset your password, cancel the request now.
     }
 
     public init(viewModel: AccountRecoveryView.ViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
+        _viewModel = ObservedObject(wrappedValue: viewModel)
     }
 }
 

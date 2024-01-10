@@ -25,7 +25,7 @@ import ProtonCoreUIFoundations
 
 public struct CancelledAccountRecoveryView: View {
 
-    @StateObject var viewModel: AccountRecoveryView.ViewModel
+    @ObservedObject var viewModel: AccountRecoveryView.ViewModel
 
     public var body: some View {
         VStack(alignment: .leading, spacing: 12) {
