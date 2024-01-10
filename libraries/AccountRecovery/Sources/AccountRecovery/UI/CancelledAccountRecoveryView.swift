@@ -35,13 +35,13 @@ public struct CancelledAccountRecoveryView: View {
                 VStack(alignment: .leading) {
                     Text("Password reset cancelled",
                          bundle: AccountRecoveryModule.resourceBundle,
-                         comment: "Reset cancelled Heading")
+                         comment: "In Cancelled Account Recovery state screen. Reset cancelled heading.")
                     .frame(alignment: .leading)
                     .font(.system(size: 17))
                     .foregroundColor(ColorProvider.TextNorm)
                     Text(LocalizedStringKey(viewModel.reason.localizableDescription),
                          bundle: AccountRecoveryModule.resourceBundle,
-                         comment: "Reason for cancellation"
+                         comment: "In Cancelled Account Recovery state screen. Reason for cancellation."
                     )
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
@@ -52,7 +52,7 @@ public struct CancelledAccountRecoveryView: View {
 
             Text(changePasswordAdviceL10nStrongKey,
                  bundle: AccountRecoveryModule.resourceBundle,
-                 comment: "Advise the user to change password. Second phrase is in bold (**)"
+                 comment: "In Cancelled Account Recovery state screen. Advice the user to change password. The call to action is surrounded in bold delimiters (**), with a replica without them for older iOS versions."
             )
             .frame(maxWidth: .infinity)
 

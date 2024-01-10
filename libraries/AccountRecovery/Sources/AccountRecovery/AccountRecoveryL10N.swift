@@ -34,13 +34,12 @@ public enum ARTranslation: TranslationsExposing {
     public static var prefixForMissingValue: String = "zzz"
 
     case settingsItem
+    case expiredViewTitle
+    case inactiveViewTitle
     case insecureViewTitle
     case insecureViewCancelButtonCTA
     case cancelledViewTitle
     case graceViewTitle
-    case insecureViewLine1
-    case insecureViewLine2
-    case insecureViewLine3
     case graceViewCancelButtonCTA
     case graceViewUndefinedTimeLeft
     case cancelledState
@@ -51,9 +50,13 @@ public enum ARTranslation: TranslationsExposing {
     public var l10n: String {
         switch self {
         case .settingsItem:
-            return localized(key: "Settings_Item", comment: "")
+            return localized(key: "Settings_Item", comment: "Settings item for opening the Account Recovery screen")
         case .cancelledViewTitle:
             return localized(key: "Cancelled_View_Title", comment: "Title for cancelled state")
+        case .expiredViewTitle:
+            return localized(key: "Recovery process expired", comment: "Title for expired recovery process")
+        case .inactiveViewTitle:
+            return localized(key: "Recovery process cancelled", comment: "Title for no password reset in progress")
         case .insecureViewTitle:
             return localized(key: "Insecure_View_Title", comment: "Title for insecure state")
         case .insecureViewCancelButtonCTA:
@@ -61,23 +64,14 @@ public enum ARTranslation: TranslationsExposing {
         case .graceViewTitle:
             return localized(key: "Grace_View_Title", comment: "Title for grace period state")
         case .graceViewCancelButtonCTA:
-            return localized(key: "Grace_View_Cancel_Button_CTA", comment: "")
+            return localized(key: "Grace_View_Cancel_Button_CTA", comment: "Button for cancelling reset during grace period (active) state")
         case .graceViewUndefinedTimeLeft:
-            return localized(key: "Grace_View_Undefined_Time_Left", comment: "")
-   
-        case .insecureViewLine1:
-            return localized(key: "Insecure_View_line1", comment: "")
-        case .insecureViewLine2:
-            return localized(key: "Insecure_View_line2", comment: "")
-        case .insecureViewLine3:
-            return localized(key: "Insecure_View_line3", comment: "")
-
+            return localized(key: "Grace_View_Undefined_Time_Left", comment: "Text for undefined time left, used as fallback if it can't be calculated")
         case .cancelledState: return localized(key: "Settings_Item_Value_Cancelled", comment: "account recovery settings item value for cancelled state")
         case .expiredState: return localized(key: "Settings_Item_Value_Expired", comment: "account recovery settings item value for cancelled state")
         case .graceState: return localized(key: "Settings_Item_Value_Grace", comment: "account recovery settings item value for grace state")
         case .insecureState: return localized(key: "Settings_Item_Value_Insecure", comment: "account recovery settings item value for insecure state")
         }
-
     }
 }
 

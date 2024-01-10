@@ -33,11 +33,11 @@ public struct InsecureAccountRecoveryView: View {
                     VStack(alignment: .leading) {
                         Text("You can now reset your password",
                              bundle: AccountRecoveryModule.resourceBundle,
-                             comment: "Insecure state heading")
+                             comment: "Insecure state screen heading")
                             .foregroundColor(ColorProvider.TextNorm)
                         Text(dateLimitL10nStringKey,
                              bundle: AccountRecoveryModule.resourceBundle,
-                             comment: "Interpolated date limit for reset")
+                             comment: "In insecure state screen, date limit for the reset, with the date interpolated at %@.")
                             .font(Font.system(size: 13))
 
                     }
@@ -50,13 +50,12 @@ public struct InsecureAccountRecoveryView: View {
                     VStack(alignment: .leading) {
                         Text("Change device to continue",
                              bundle: AccountRecoveryModule.resourceBundle,
-                             comment: "")
+                             comment: "In insecure state screen, instructions for how to carry out the password reset.")
                             .foregroundColor(ColorProvider.TextNorm)
                         Text("To reset your password, go back to your active session on **the originating device**.",
                              bundle: AccountRecoveryModule.resourceBundle,
-                             comment: "Session name appears in **bold**")
+                             comment: "In insecure state screen, instructions for how to carry out the password reset. Part of it is formatted in **bold**")
                             .font(Font.system(size: 13))
-
                     }
                 }
             }
@@ -66,7 +65,7 @@ public struct InsecureAccountRecoveryView: View {
 
             Text(timeRemainingAndInstructionsL10nStringKey,
                  bundle: AccountRecoveryModule.resourceBundle,
-                 comment: "instructions for resetting the password. Separated with new lines")
+                 comment: "In insecure state screen, steps for resetting the password. Separated with new lines. The remaining time is interpolated at %@.")
 
             Button {
                 Task { @MainActor in
@@ -120,6 +119,4 @@ struct InsecureAccountRecoveryView_Previews: PreviewProvider {
         InsecureAccountRecoveryView(viewModel: Self.viewModel)
     }
 }
-
-
 #endif

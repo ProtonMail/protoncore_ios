@@ -32,7 +32,7 @@ public struct ActiveAccountRecoveryView: View {
                 IconProvider.exclamationCircle
                 Text(passwordResetReceivedL10nStringKey,
                      bundle: AccountRecoveryModule.resourceBundle,
-                     comment: "Request received intro. Variable is an email, with ** delimiters for bold type (we have a replica without delimiters for older iOS versions")
+                     comment: "In Active Account Recovery state screen (the grace period), Request received intro. Variable is an email, interpolated at %@, with ** delimiters for bold type (we have a replica without delimiters for older iOS versions).")
                 .frame(maxWidth: .infinity, alignment: .leading)
 
             }
@@ -42,12 +42,12 @@ public struct ActiveAccountRecoveryView: View {
                 VStack(alignment: .leading) {
                     Text("Password reset requested", 
                          bundle: AccountRecoveryModule.resourceBundle,
-                         comment: "heading for password reset requested callout")
+                         comment: "In Active Account Recovery state screen, heading for password reset requested callout.")
                     .font(.system(size: 17))
                         .foregroundColor(ColorProvider.TextNorm)
                     Text("You can change your password in \(viewModel.remainingTime.asRemainingTimeStringAndDate()).",
                          bundle: AccountRecoveryModule.resourceBundle,
-                         comment: "variable contains the time remaining, and date, before being able to change the password")
+                         comment: "In Active Account Recovery state screen, text explaining how long remaining, and also date, before being able to change the password. Both values are interpolated as a single string at %@.")
                 }
             }
             .padding(12)
@@ -57,13 +57,13 @@ public struct ActiveAccountRecoveryView: View {
 
             Text("To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.",
                  bundle: AccountRecoveryModule.resourceBundle,
-                 comment: "explain why the user has to wait 72h"
+                 comment: "In Active Account Recovery state screen, explain why the user has to wait 72h before being able to change the password."
             )
                 .frame(maxWidth: .infinity)
 
             Text(callToActionIfUnexpectedL10nStringKey,
                  bundle: AccountRecoveryModule.resourceBundle,
-                 comment: "Advise in case the reset is unexpected, with ** delimiters for bold type (we have a replica without delimiters for older iOS versions")
+                 comment: "In Active Account Recovery state screen, advice in case the reset is unexpected for the user. The call to action is delimited with ** for bold type (we have a replica without delimiters for older iOS versions).")
                 .frame(maxWidth: .infinity)
 
             Button {
@@ -97,11 +97,7 @@ public struct ActiveAccountRecoveryView: View {
         .frame(maxHeight: .infinity)
         .navigationTitle(ARTranslation.graceViewTitle.l10n)
         .navigationBarTitleDisplayMode(.inline)
-
     }
-
-    let title = ARTranslation.graceViewTitle.l10n
-
 
     var passwordResetReceivedL10nStringKey: LocalizedStringKey {
         var value = "We received a password reset request for **\(viewModel.email)**."

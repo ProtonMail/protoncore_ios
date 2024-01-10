@@ -25,10 +25,13 @@ import SwiftUI
 public struct ExpiredAccountRecoveryView: View {
     public var body: some View {
         VStack(spacing: 24) {
-            Text("The account recovery process expired due to inaction ")
+            Text("The account recovery process expired due to inaction.",
+                 bundle: AccountRecoveryModule.resourceBundle,
+                 comment: "In Expired Account Recovery state screen. Explanation of how this state was reached."
+            )
         }
         .padding(16)
-        .navigationTitle("Recovery process cancelled")
+        .navigationTitle(ARTranslation.expiredViewTitle.l10n)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
