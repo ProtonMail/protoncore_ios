@@ -39,6 +39,8 @@ public struct AccountRecoveryView: View {
         case (_, .expired):
              ExpiredAccountRecoveryView()
         default:
+            // This combo is not expected in the current MVP flow,
+            // but we're adding it for exhaustiveness and for  future-proofing.
              InactiveRecoveryView()
         }
 

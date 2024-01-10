@@ -21,11 +21,13 @@ import SwiftUI
 struct InactiveRecoveryView: View {
     var body: some View {
         VStack(spacing: 24) {
-            Text("Currently there is no account recovery in process. Please go to a session on the web application to recover your password.")
+            Text("Currently there is no account recovery in process. Please go to a session on the web application to recover your password.",
+                 bundle: AccountRecoveryModule.resourceBundle,
+                 comment: "In the Account Recovery screen, text shown when there's no recovery process ongoing.")
 
         }
         .padding(16)
-        .navigationTitle("Recovery process cancelled")
+        .navigationTitle(ARTranslation.inactiveViewTitle.l10n)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
