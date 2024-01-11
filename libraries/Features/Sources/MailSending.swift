@@ -247,9 +247,10 @@ public class MailFeature {
                         if value.recipientType == 1 {
                             // if type is internal check is key match with contact key
                             // compare the key if doesn't match
-                            sendBuilder.add(addr: PreAddress(email: req.email, pubKey: value.firstKey(), pgpKey: contact.firstPgpKey, recipintType: value.recipientType, eo: isEO, hasMime: false, isSigned: true, isPgpEncrypted: false, isPlainText: contact.isPlainText))
+                            sendBuilder.add(addr: PreAddress(email: req.email, pubKey: value.firstKey(), pgpKey: contact.firstPgpKey, recipintType: value.recipientType, eo: isEO, hasMime: false, isSigned: true, isPgpEncrypted: false, isPlainText: true))
                         } else {
-                            sendBuilder.add(addr: PreAddress(email: req.email, pubKey: nil, pgpKey: contact.firstPgpKey, recipintType: value.recipientType, eo: isEO, hasMime: contact.hasMime, isSigned: contact.isSigned, isPgpEncrypted: contact.isEncrypted, isPlainText: contact.isPlainText))
+                            let areKeysEmpty = value.keys.isEmpty
+                            sendBuilder.add(addr: PreAddress(email: req.email, pubKey: nil, pgpKey: areKeysEmpty ? nil : contact.firstPgpKey, recipintType: value.recipientType, eo: isEO, hasMime: areKeysEmpty ? false : contact.hasMime, isSigned: contact.isSigned, isPgpEncrypted: contact.isEncrypted, isPlainText: true))
                         }
                     } else {
                         if sign == 1 {
