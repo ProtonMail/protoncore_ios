@@ -158,6 +158,7 @@ final class LoginViewModelTests: XCTestCase {
         }
         apiService.dohInterfaceStub.fixture = dohMock
         apiService.sessionUIDStub.fixture = "testSessionUID"
+        dohMock.getAccountHostStub.bodyIs { _ in "https://proton.unittests/account" }
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in
             "http://account.proton.test/api"
         }
