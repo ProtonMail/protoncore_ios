@@ -167,9 +167,9 @@ final class PurchaseManager: PurchaseManagerProtocol {
 
         let validationResponse = try validateSubscriptionRequest.awaitResponse(responseObject: ValidateSubscriptionResponse())
         if let validationError = validationResponse.error {
-            ObservabilityEnv.report(.paymentValidatePlanTotal(error: validationError))
+            ObservabilityEnv.report(.paymentValidatePlanTotal(error: validationError, isDynamic: featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)))
         } else {
-            ObservabilityEnv.report(.paymentValidatePlanTotal(status: .http2xx))
+            ObservabilityEnv.report(.paymentValidatePlanTotal(status: .http2xx, isDynamic: featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)))
         }
 
         guard let amountDue = validationResponse.validateSubscription?.amountDue

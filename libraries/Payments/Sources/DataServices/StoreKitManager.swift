@@ -592,7 +592,7 @@ extension StoreKitManager: SKProductsRequestDelegate {
         updateAvailableProductsListCompletionBlock?(nil)
         updateAvailableProductsListCompletionBlock = nil
         self.request = nil
-        ObservabilityEnv.report(.paymentQuerySubscriptionsTotal(status: .successful))
+        ObservabilityEnv.report(.paymentQuerySubscriptionsTotal(status: .successful, isDynamic: featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)))
     }
 
     func request(_: SKRequest, didFailWithError error: Error) {
@@ -611,7 +611,7 @@ extension StoreKitManager: SKProductsRequestDelegate {
         #endif
         updateAvailableProductsListCompletionBlock = nil
         self.request = nil
-        ObservabilityEnv.report(.paymentQuerySubscriptionsTotal(status: .failed))
+        ObservabilityEnv.report(.paymentQuerySubscriptionsTotal(status: .failed, isDynamic: featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)))
     }
 }
 
@@ -828,13 +828,15 @@ extension StoreKitManager: SKPaymentTransactionObserver {
 
         let planToBeProcessed = PlanToBeProcessed(protonIdentifier: planIdentifier, amount: planAmount, amountDue: amountDue)
 
+        let isDynamic = featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)
+
         do {
             let customCompletion: ProcessCompletionCallback = { result in
                 switch result {
                 case .finished:
-                    ObservabilityEnv.report(.paymentSubscribeTotal(status: .successful))
+                    ObservabilityEnv.report(.paymentSubscribeTotal(status: .successful, isDynamic: isDynamic))
                 case .errored, .erroredWithUnspecifiedError:
-                    ObservabilityEnv.report(.paymentSubscribeTotal(status: .failed))
+                    ObservabilityEnv.report(.paymentSubscribeTotal(status: .failed, isDynamic: isDynamic))
                 }
                 completion(result)
             }
@@ -859,7 +861,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
                 )
             }
         } catch {
-            ObservabilityEnv.report(.paymentSubscribeTotal(status: .failed))
+            ObservabilityEnv.report(.paymentSubscribeTotal(status: .failed, isDynamic: isDynamic))
             throw error
         }
     }
