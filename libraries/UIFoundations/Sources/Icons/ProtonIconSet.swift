@@ -142,6 +142,8 @@ public struct ProtonIconSet {
 
     public let calendarDay = ProtonIcon(name: "ic-calendar-day")
 
+    public let calendarThreeDays = ProtonIcon(name: "ic-calendar-3day")
+
     public let calendarWeek = ProtonIcon(name: "ic-calendar-week")
 
     public let calendarGrid = ProtonIcon(name: "ic-calendar-grid")
