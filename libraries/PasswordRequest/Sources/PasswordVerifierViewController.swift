@@ -35,6 +35,7 @@ public protocol PasswordVerifierViewControllerDelegate: AnyObject {
 
 public final class PasswordVerifierViewController: UIViewController {
     private let titleLabel = UILabel(frame: .zero)
+    private let headerLabel = UILabel(frame: .zero)
     private let passwordTextField = PMTextField(frame: .zero)
     private let submitButton = ProtonButton(frame: .zero)
     private let scrollView = UIScrollView(frame: .zero)
@@ -56,17 +57,21 @@ public final class PasswordVerifierViewController: UIViewController {
     private func setupUI() {
         titleLabel.lineBreakMode = .byWordWrapping
         titleLabel.numberOfLines = 0
-        titleLabel.text = PRTranslations.validation_enter_password.l10n
         titleLabel.tintColor = ColorProvider.TextNorm
         titleLabel.textAlignment = .center
         titleLabel.font = .adjustedFont(forTextStyle: .body, weight: .bold)
 
-        passwordTextField.title = PRTranslations.password_field_title.l10n
+        headerLabel.lineBreakMode = .byWordWrapping
+        headerLabel.numberOfLines = 0
+        headerLabel.tintColor = ColorProvider.TextWeak
+        headerLabel.textAlignment = .left
+        headerLabel.font = .adjustedFont(forTextStyle: .footnote, weight: .light)
+
         passwordTextField.placeholder = PRTranslations.password_field_title.l10n
         passwordTextField.isPassword = true
         passwordTextField.textContentType = .password
 
-        submitButton.setTitle(PRTranslations.create_address_button_title.l10n, for: .normal)
+        setTitles(isAccountRecoveryEnabled: viewModel?.missingScopeMode == .accountRecovery)
 
         view.backgroundColor = ColorProvider.BackgroundNorm
         view.addSubview(scrollView)
@@ -81,7 +86,7 @@ public final class PasswordVerifierViewController: UIViewController {
         }
 
         let containerView = UIView(frame: .zero)
-        containerView.addSubviews(titleLabel, passwordTextField, submitButton)
+        containerView.addSubviews(titleLabel, headerLabel, passwordTextField, submitButton)
         scrollView.addSubview(containerView)
 
         containerView.addConstraints {
@@ -97,6 +102,14 @@ public final class PasswordVerifierViewController: UIViewController {
         titleLabel.addConstraints {
             [
                 $0.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 12),
+                $0.bottomAnchor.constraint(equalTo: headerLabel.topAnchor, constant: -12),
+                $0.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+                $0.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16)
+            ]
+        }
+
+        headerLabel.addConstraints {
+            [
                 $0.bottomAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: -12),
                 $0.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
                 $0.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16)
@@ -117,6 +130,21 @@ public final class PasswordVerifierViewController: UIViewController {
                 $0.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
                 $0.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -8)
             ]
+        }
+    }
+
+    private func setTitles(isAccountRecoveryEnabled: Bool) {
+        if isAccountRecoveryEnabled {
+            titleLabel.text = NSLocalizedString("Cancel password reset?", comment: "")
+            submitButton.setTitle(NSLocalizedString("Cancel password reset", comment: "Button cancelling the password request"), for: .normal)
+            headerLabel.text = NSLocalizedString("Enter your current password to cancel the password reset process. No other changes will take effect.", comment: "")
+            headerLabel.isHidden = false
+            passwordTextField.title = NSLocalizedString("Current password", comment: "")
+        } else {
+            titleLabel.text = PRTranslations.validation_enter_password.l10n
+            submitButton.setTitle(PRTranslations.create_address_button_title.l10n, for: .normal)
+            headerLabel.isHidden = true
+            passwordTextField.title = PRTranslations.password_field_title.l10n
         }
     }
 

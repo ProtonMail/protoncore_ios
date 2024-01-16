@@ -34,7 +34,8 @@ public final class PasswordVerifier {
     private let endpoint: Request
 
     public let authInfo: AuthInfoResponse?
-
+    public let missingScopeMode: MissingScopeMode
+    
     /// Initialize the PasswordVerifier object
     ///
     /// - Parameters:
@@ -47,6 +48,7 @@ public final class PasswordVerifier {
     public init(apiService: APIService,
                 username: String,
                 endpoint: Request,
+                missingScopeMode: MissingScopeMode,
                 responseHandlerData: PMResponseHandlerData? = nil,
                 authInfo: AuthInfoResponse? = nil,
                 srpBuilder: SRPBuilderProtocol = SRPBuilder()) {
@@ -54,6 +56,7 @@ public final class PasswordVerifier {
         self.responseHandlerData = responseHandlerData
         self.username = username
         self.endpoint = endpoint
+        self.missingScopeMode = missingScopeMode
         self.authInfo = authInfo
         self.srpBuilder = srpBuilder
         authService = .init(api: apiService)
