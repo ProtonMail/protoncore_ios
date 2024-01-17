@@ -24,4 +24,5 @@ public enum CoreFeatureFlagType: String, FeatureFlagTypeProtocol {
     case accountRecovery = "TrustedDeviceRecovery"
     case dynamicPlan = "DynamicPlan"
     case externalSSO = "ExternalSSO"
+    case splitStorage = "SplitStorage"
 }
