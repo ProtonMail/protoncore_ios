@@ -91,9 +91,11 @@ extension AccountRecoveryView {
                     throw AccountRecoveryViewError.missingArguments
                 }
 
-                let verifier = PasswordVerifier(apiService: accountRepository.authService.apiService,
-                                                username: username,
-                                                endpoint: AbortRecoveryEndpoint()
+                let verifier = PasswordVerifier(
+                    apiService: accountRepository.authService.apiService,
+                    username: username,
+                    endpoint: AbortRecoveryEndpoint(),
+                    missingScopeMode: .accountRecovery
                 )
                 async let viewController = PasswordVerifierViewController()
                 await viewController.viewModel = verifier

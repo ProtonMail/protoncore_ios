@@ -62,6 +62,18 @@ final class MissingScopesHandlerTests: XCTestCase {
     func test_onMissingScopesHandling_callsShowAskPassword() {
         // When
         sut.onMissingScopesHandling(
+            missingScopeMode: .default,
+            username: "username",
+            responseHandlerData: responseHandlerData) { _ in }
+
+        // Then
+        XCTAssertTrue(coordinator.showAskPasswordCalled)
+    }
+
+    func test_onMissingScopesHandling_callsShowAskPassword_forAccountRecovery() {
+        // When
+        sut.onMissingScopesHandling(
+            missingScopeMode: .accountRecovery,
             username: "username",
             responseHandlerData: responseHandlerData) { _ in }
 

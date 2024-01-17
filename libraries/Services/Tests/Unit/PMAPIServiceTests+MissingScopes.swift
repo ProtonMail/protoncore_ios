@@ -92,7 +92,7 @@ final class PMAPIServiceMissingScopesTests: XCTestCase {
     func testMissingScopesHandlerOnClosedWithErrorCallsCompletion() {
         // Given
         let expectationOnClosedWithError = XCTestExpectation(description: "on .closedWithError")
-        missingScopesDelegateMock.onMissingScopesHandlingStub.bodyIs { _, _, _, completion in
+        missingScopesDelegateMock.onMissingScopesHandlingStub.bodyIs { _, _, _, _, completion in
             completion(.closedWithError(code: 1, description: ""))
         }
         let completion: PMAPIService.APIResponseCompletion<PMAPIService.DummyAPIDecodableResponseOnlyForSatisfyingGenericsResolving> = .right { _, _ in
@@ -108,6 +108,7 @@ final class PMAPIServiceMissingScopesTests: XCTestCase {
 
         // When
         service.missingScopesHandler(
+            missingScopeMode: .default,
             username: "username",
             responseHandler: responseHandlerData,
             completion: completion
@@ -120,7 +121,7 @@ final class PMAPIServiceMissingScopesTests: XCTestCase {
     func testMissingScopesHandlerOnUnlockRestartRequest() {
         // Given
         let expectationOnUnlock = XCTestExpectation(description: "on .unlock")
-        missingScopesDelegateMock.onMissingScopesHandlingStub.bodyIs { _, _, _, completion in
+        missingScopesDelegateMock.onMissingScopesHandlingStub.bodyIs { _, _, _, _, completion in
             completion(.unlocked)
         }
 
@@ -147,6 +148,7 @@ final class PMAPIServiceMissingScopesTests: XCTestCase {
 
         // When
         service.missingScopesHandler(
+            missingScopeMode: .default,
             username: "username",
             responseHandler: responseHandlerData,
             completion: completion

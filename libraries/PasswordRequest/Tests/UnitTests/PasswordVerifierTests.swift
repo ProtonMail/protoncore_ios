@@ -46,6 +46,7 @@ final class PasswordVerifierTests: XCTestCase {
             apiService: apiService,
             username: "username",
             endpoint: UnlockEndpoint(),
+            missingScopeMode: .default,
             responseHandlerData: responseHandlerData,
             srpBuilder: srpBuilder
         )
@@ -105,6 +106,38 @@ final class PasswordVerifierTests: XCTestCase {
             apiService: apiService,
             username: "username",
             endpoint: TestEndpoint(),
+            missingScopeMode: .default,
+            responseHandlerData: responseHandlerData,
+            srpBuilder: srpBuilder
+        )
+
+        // When
+        sut.verifyPassword(password: "", authInfo: .init()) { _ in
+            expectation.fulfill()
+        }
+
+        // Then
+        wait(for: [expectation], timeout: 0.3)
+    }
+
+    func test_verifyPassword_callsPassedEndpoint_forAccountRecovery() {
+        // Given
+        let expectation = XCTestExpectation(description: "")
+        struct TestEndpoint: Request {
+            var path: String { "myPath" }
+            var method: HTTPMethod { .get }
+        }
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+            XCTAssertEqual(method, .get)
+            XCTAssertEqual(path, "myPath")
+            completion(nil, .success(.init()))
+        }
+
+        sut = .init(
+            apiService: apiService,
+            username: "username",
+            endpoint: TestEndpoint(),
+            missingScopeMode: .accountRecovery,
             responseHandlerData: responseHandlerData,
             srpBuilder: srpBuilder
         )
@@ -196,6 +229,7 @@ final class PasswordVerifierTests: XCTestCase {
             apiService: apiService,
             username: "username",
             endpoint: UnlockEndpoint(),
+            missingScopeMode: .default,
             responseHandlerData: responseHandlerData,
             srpBuilder: srpBuilder
         )
@@ -210,6 +244,35 @@ final class PasswordVerifierTests: XCTestCase {
         // Then
         wait(for: [expectation], timeout: 0.3)
     }
+
+    func test_verifyPassword_failsOnBadPassword_forAccountRecovery() {
+        // Given
+        apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(AuthInfoResponse()))
+        }
+        srpBuilder.buildSRPStub.bodyIs { _, _, _, _, _ in
+            .failure(AuthErrors.wrongPassword)
+        }
+        sut = .init(
+            apiService: apiService,
+            username: "username",
+            endpoint: UnlockEndpoint(),
+            missingScopeMode: .accountRecovery,
+            responseHandlerData: responseHandlerData,
+            srpBuilder: srpBuilder
+        )
+        let expectation = XCTestExpectation(description: "expect failure")
+
+        // When
+        sut.verifyPassword(password: "", authInfo: .init()) { response in
+            expectation.fulfill()
+            XCTAssertEqual(response, .failure(.wrongPassword))
+        }
+
+        // Then
+        wait(for: [expectation], timeout: 0.3)
+    }
+
 
     func test_verifyPassword_completeOnSuccessfulAPICall() {
         // Given

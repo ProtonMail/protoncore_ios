@@ -63,6 +63,7 @@ final class MissingScopesCoordinatorTests: XCTestCase {
         sut = MissingScopesCoordinator(
             apiService: apiService,
             username: "username",
+            missingScopeMode: .default,
             responseHandlerData: responseHandlerData,
             completion: { reason in
                 switch reason {
@@ -87,6 +88,59 @@ final class MissingScopesCoordinatorTests: XCTestCase {
         sut = MissingScopesCoordinator(
             apiService: apiService,
             username: "username",
+            missingScopeMode: .default,
+            responseHandlerData: responseHandlerData,
+            completion: { reason in
+                switch reason {
+                case .closedWithError(let code, let description):
+                    closedWithErrorExpectation.fulfill()
+                    XCTAssertEqual(code, 123)
+                    XCTAssertEqual(description, "error")
+                default:
+                    XCTFail("expected closed reason")
+                }
+            }
+        )
+
+        // When
+        sut.didCloseWithError(code: 123, description: "error")
+
+        // Then
+        wait(for: [closedWithErrorExpectation], timeout: 0.1)
+    }
+
+    func test_didCloseVerifyPassword_completeWithClosedReason_forAccountRecovery() {
+        // Given
+        let closedExpectation = XCTestExpectation(description: "verified expected")
+        sut = MissingScopesCoordinator(
+            apiService: apiService,
+            username: "username",
+            missingScopeMode: .accountRecovery,
+            responseHandlerData: responseHandlerData,
+            completion: { reason in
+                switch reason {
+                case .closed:
+                    closedExpectation.fulfill()
+                default:
+                    XCTFail("expected closed reason")
+                }
+            }
+        )
+
+        // When
+        sut.didCloseVerifyPassword()
+
+        // Then
+        wait(for: [closedExpectation], timeout: 0.1)
+    }
+
+    func test_didCloseWithError_completeWithClosedWithError_forAccountRecovery() {
+        // Given
+        let closedWithErrorExpectation = XCTestExpectation(description: "verified expected")
+        sut = MissingScopesCoordinator(
+            apiService: apiService,
+            username: "username",
+            missingScopeMode: .accountRecovery,
             responseHandlerData: responseHandlerData,
             completion: { reason in
                 switch reason {

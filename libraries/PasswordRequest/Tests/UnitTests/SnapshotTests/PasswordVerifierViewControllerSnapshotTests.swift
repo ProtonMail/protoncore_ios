@@ -27,6 +27,7 @@ import XCTest
 
 #if canImport(ProtonCoreTestingToolkitUnitTestsCore)
 import ProtonCoreTestingToolkitUnitTestsCore
+import ProtonCoreTestingToolkitUnitTestsServices
 #else
 import ProtonCoreTestingToolkit
 #endif
@@ -38,6 +39,12 @@ final class PasswordVerifierViewControllerSnapshotTests: SnapshotTestCase {
 
     func testPasswordVerifierView() {
         let controller = PasswordVerifierViewController()
+        checkSnapshots(controller: controller, perceptualPrecision: defaultPrecision)
+    }
+
+    func testPasswordVerifierView_forAccountRecovery() {
+        let controller = PasswordVerifierViewController()
+        controller.viewModel = .init(apiService: APIServiceMock(), username: "", endpoint: UnlockEndpoint(), missingScopeMode: .accountRecovery)
         checkSnapshots(controller: controller, perceptualPrecision: defaultPrecision)
     }
 }

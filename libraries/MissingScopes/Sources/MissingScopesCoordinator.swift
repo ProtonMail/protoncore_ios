@@ -36,6 +36,7 @@ public protocol MissingScopesCoordinatorDelegate: AnyObject {
 public class MissingScopesCoordinator: MissingScopesCoordinatorDelegate {
     private let apiService: APIService
     private let username: String
+    private let missingScopeMode: MissingScopeMode
     private let inAppTheme: () -> InAppTheme
     private let responseHandlerData: PMResponseHandlerData
     private let completion: (MissingScopesFinishReason) -> Void
@@ -43,12 +44,14 @@ public class MissingScopesCoordinator: MissingScopesCoordinatorDelegate {
 
     init(apiService: APIService,
          username: String,
+         missingScopeMode: MissingScopeMode,
          inAppTheme: @escaping () -> InAppTheme = { .default },
          responseHandlerData: PMResponseHandlerData,
          completion: @escaping (MissingScopesFinishReason) -> Void
     ) {
         self.apiService = apiService
         self.username = username
+        self.missingScopeMode = missingScopeMode
         self.inAppTheme = inAppTheme
         self.responseHandlerData = responseHandlerData
         self.completion = completion
@@ -81,6 +84,7 @@ public class MissingScopesCoordinator: MissingScopesCoordinatorDelegate {
             apiService: apiService,
             username: username,
             endpoint: UnlockEndpoint(),
+            missingScopeMode: missingScopeMode,
             responseHandlerData: responseHandlerData
         )
         passwordVerifierViewController.overrideUserInterfaceStyle = inAppTheme().userInterfaceStyle
