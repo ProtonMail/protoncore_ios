@@ -25,12 +25,16 @@ public struct User: Codable, Equatable, CustomDebugStringConvertible {
 
     public let ID: String
     public let name: String?
-    public let usedSpace: Double
+    public let usedSpace: Int64
+    public let usedBaseSpace: Int64?
+    public let usedDriveSpace: Int64?
     public let currency: String
     public let credit: Int
     public let createTime: Double?
-    public let maxSpace: Double
-    public let maxUpload: Double
+    public let maxSpace: Int64
+    public let maxBaseSpace: Int64?
+    public let maxDriveSpace: Int64?
+    public let maxUpload: Int64
     public let role: Int
     public let `private`: Int
     public let subscribed: Subscribed
@@ -109,12 +113,16 @@ public struct User: Codable, Equatable, CustomDebugStringConvertible {
 
     public init(ID: String,
                 name: String?,
-                usedSpace: Double,
+                usedSpace: Int64,
+                usedBaseSpace: Int64?,
+                usedDriveSpace: Int64?,
                 currency: String,
                 credit: Int,
                 createTime: Double? = nil,
-                maxSpace: Double,
-                maxUpload: Double,
+                maxSpace: Int64,
+                maxBaseSpace: Int64?,
+                maxDriveSpace: Int64?,
+                maxUpload: Int64,
                 role: Int,
                 private: Int,
                 subscribed: Subscribed,
@@ -128,10 +136,14 @@ public struct User: Codable, Equatable, CustomDebugStringConvertible {
         self.ID = ID
         self.name = name
         self.usedSpace = usedSpace
+        self.usedBaseSpace = usedBaseSpace
+        self.usedDriveSpace = usedDriveSpace
         self.currency = currency
         self.credit = credit
         self.createTime = createTime
         self.maxSpace = maxSpace
+        self.maxBaseSpace = maxBaseSpace
+        self.maxDriveSpace = maxDriveSpace
         self.maxUpload = maxUpload
         self.role = role
         self.private = `private`
@@ -196,6 +208,8 @@ public final class UserInfo: NSObject, Codable {
     public var linkConfirmation: LinkOpeningMode
     public var listToolbarActions: ToolbarActions
     public var maxSpace: Int64
+    public var maxBaseSpace: Int64?
+    public var maxDriveSpace: Int64?
     public var maxUpload: Int64
     public var messageToolbarActions: ToolbarActions
     public var notificationEmail: String
@@ -211,13 +225,16 @@ public final class UserInfo: NSObject, Codable {
     public var telemetry: Int
     public var twoFactor: Int
     public var usedSpace: Int64
+    public var usedBaseSpace: Int64?
+    public var usedDriveSpace: Int64?
     public var userAddresses: [Address]
     public var userId: String
     public var userKeys: [Key]
     public var weekStart: Int
 
     public static func getDefault() -> UserInfo {
-        return .init(maxSpace: 0, usedSpace: 0, language: "",
+        return .init(maxSpace: 0, maxBaseSpace: 0, maxDriveSpace: 0, usedSpace: 0,
+                     usedBaseSpace: 0, usedDriveSpace: 0, language: "",
                      maxUpload: 0, role: 0, delinquent: 0,
                      keys: nil, userId: "", linkConfirmation: 0,
                      credit: 0, currency: "", createTime: 0, subscribed: DefaultValue.subscribed)
@@ -230,9 +247,13 @@ public final class UserInfo: NSObject, Codable {
         hideRemoteImages: Int?,
         imageProxy: Int?,
         maxSpace: Int64?,
+        maxBaseSpace: Int64?,
+        maxDriveSpace: Int64?,
         notificationEmail: String?,
         signature: String?,
         usedSpace: Int64?,
+        usedBaseSpace: Int64?,
+        usedDriveSpace: Int64?,
         userAddresses: [Address]?,
         autoSC: Int?,
         language: String?,
@@ -266,7 +287,11 @@ public final class UserInfo: NSObject, Codable {
         referralProgram: ReferralProgram?)
     {
         self.maxSpace = maxSpace ?? DefaultValue.maxSpace
+        self.maxBaseSpace = maxBaseSpace ?? DefaultValue.maxBaseSpace
+        self.maxDriveSpace = maxDriveSpace ?? DefaultValue.maxDriveSpace
         self.usedSpace = usedSpace ?? DefaultValue.usedSpace
+        self.usedBaseSpace = usedBaseSpace ?? DefaultValue.usedBaseSpace
+        self.usedDriveSpace = usedDriveSpace ?? DefaultValue.usedDriveSpace
         self.language = language ?? DefaultValue.language
         self.maxUpload = maxUpload ?? DefaultValue.maxUpload
         self.role = role ?? DefaultValue.role
@@ -316,7 +341,11 @@ public final class UserInfo: NSObject, Codable {
 
     // init from api
     public required init(maxSpace: Int64?,
+                         maxBaseSpace: Int64?,
+                         maxDriveSpace: Int64?,
                          usedSpace: Int64?,
+                         usedBaseSpace: Int64?,
+                         usedDriveSpace: Int64?,
                          language: String?,
                          maxUpload: Int64?,
                          role: Int?,
@@ -349,6 +378,8 @@ public final class UserInfo: NSObject, Codable {
         self.linkConfirmation = linkConfirmation == 0 ? .openAtWill : DefaultValue.linkConfirmation
         self.listToolbarActions = DefaultValue.listToolbarActions
         self.maxSpace = maxSpace ?? DefaultValue.maxSpace
+        self.maxBaseSpace = maxBaseSpace ?? DefaultValue.maxBaseSpace
+        self.maxDriveSpace = maxDriveSpace ?? DefaultValue.maxDriveSpace
         self.maxUpload = maxUpload ?? DefaultValue.maxUpload
         self.messageToolbarActions = DefaultValue.messageToolbarActions
         self.notificationEmail = DefaultValue.notificationEmail
@@ -362,6 +393,8 @@ public final class UserInfo: NSObject, Codable {
         self.telemetry = DefaultValue.telemetry
         self.twoFactor = DefaultValue.twoFactor
         self.usedSpace = usedSpace ?? DefaultValue.usedSpace
+        self.usedBaseSpace = usedBaseSpace ?? DefaultValue.usedBaseSpace
+        self.usedDriveSpace = usedDriveSpace ?? DefaultValue.usedDriveSpace
         self.userAddresses = DefaultValue.userAddresses
         self.userId = userId ?? DefaultValue.userId
         self.userKeys = keys ?? DefaultValue.userKeys
@@ -387,6 +420,8 @@ public final class UserInfo: NSObject, Codable {
         self.role = userinfo.role
         self.subscribed = userinfo.subscribed
         self.usedSpace = userinfo.usedSpace
+        self.usedBaseSpace = userinfo.usedBaseSpace
+        self.usedDriveSpace = userinfo.usedDriveSpace
         self.userId = userinfo.userId
         self.userKeys = userinfo.userKeys
     }
@@ -474,6 +509,8 @@ extension UserInfo {
         static let language: String = "en_US"
         static let linkConfirmation: LinkOpeningMode = .confirmationAlert
         static let maxSpace: Int64 = 0
+        static let maxBaseSpace: Int64 = 0
+        static let maxDriveSpace: Int64 = 0
         static let maxUpload: Int64 = 0
         static let notificationEmail: String = ""
         static let notify: Int = 0
@@ -486,6 +523,8 @@ extension UserInfo {
         static let telemetry: Int = 1
         static let twoFactor: Int = 0
         static let usedSpace: Int64 = 0
+        static let usedBaseSpace: Int64 = 0
+        static let usedDriveSpace: Int64 = 0
         static let userAddresses: [Address] = []
         static let userId: String = ""
         static let userKeys: [Key] = []

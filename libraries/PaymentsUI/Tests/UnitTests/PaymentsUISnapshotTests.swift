@@ -668,8 +668,8 @@ final class PaymentsUISnapshotTests: XCTestCase {
                 usedDomains: 1, usedAddresses: 1, usedSpace: 1, usedMembers: 1, usedCalendars: 1
             )
         }
-        let maxSpace = Double(max(currentSubscriptionPlan?.maxSpace ?? 0, MockData.Plans.free.plan.maxSpace))
-        servicePlan.userStub.fixture = User.dummy.updated(usedSpace: maxSpace * 0.6, maxSpace: maxSpace)
+        let maxSpace = Int64(max(currentSubscriptionPlan?.maxSpace ?? 0, MockData.Plans.free.plan.maxSpace))
+        servicePlan.userStub.fixture = User.dummy.updated(usedSpace: Int64(Double(maxSpace) * 0.6), maxSpace: maxSpace)
         storeKitManager.canExtendSubscriptionStub.fixture = true
 
         let viewModel = PaymentsUIViewModel(mode: mode,
