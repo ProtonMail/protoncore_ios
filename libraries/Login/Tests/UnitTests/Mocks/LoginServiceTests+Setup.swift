@@ -197,15 +197,15 @@ extension LoginServiceTests {
     }
 
     func mockAvailableDomainsSignupOK() {
-        mock(filename: "AvailableDomainsSignupOK", title: "Available domains ok mock", path: "/domains/available", params: ["Type": "signup"])
+        mock(filename: "AvailableDomainsSignupOK", title: "Available domains ok mock", path: "/core/v4/domains/available", params: ["Type": "signup"])
     }
 
     func mockAvailableDomainsLoginOK() {
-        mock(filename: "AvailableDomainsLoginOK", title: "Available domains ok mock", path: "/domains/available", params: ["Type": "login"])
+        mock(filename: "AvailableDomainsLoginOK", title: "Available domains ok mock", path: "/core/v4/domains/available", params: ["Type": "login"])
     }
 
     func mockAvailableDomainsSignupError() {
-        mock(filename: "AvailableDomainsSignupError", title: "Available domains error 401 mock", path: "/domains/available", params: ["Type": "signup"])
+        mock(filename: "AvailableDomainsSignupError", title: "Available domains error 401 mock", path: "/core/v4/domains/available", params: ["Type": "signup"])
     }
 
     private func mock(filename: String, differentOnSecondRequestFilename: String? = nil,

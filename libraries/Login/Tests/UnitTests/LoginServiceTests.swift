@@ -1207,7 +1207,7 @@ class LoginServiceTests: XCTestCase {
         api.fetchAuthCredentialsStub.bodyIs { $1(.wrongConfigurationNoDelegate) }
         let service = LoginService(api: api, clientApp: .other(named: "core"), minimumAccountType: .internal)
         api.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
-            if path.contains("/domains/available") {
+            if path.contains("/core/v4/domains/available") {
                 completion(nil, .success(AvailableDomainResponse.from(["Code": 1000, "Domains": []])))
             } else {
                 XCTFail()
@@ -1228,7 +1228,7 @@ class LoginServiceTests: XCTestCase {
         api.fetchAuthCredentialsStub.bodyIs { $1(.wrongConfigurationNoDelegate) }
         let service = LoginService(api: api, clientApp: .other(named: "core"), minimumAccountType: .internal)
         api.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
-            if path.contains("/domains/available") {
+            if path.contains("/core/v4/domains/available") {
                 completion(nil, .success(AvailableDomainResponse.from(["Code": 1000, "Domains": ["proton.first"]])))
             } else {
                 XCTFail()
@@ -1249,7 +1249,7 @@ class LoginServiceTests: XCTestCase {
         api.fetchAuthCredentialsStub.bodyIs { $1(.wrongConfigurationNoDelegate) }
         let service = LoginService(api: api, clientApp: .other(named: "core"), minimumAccountType: .internal)
         api.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
-            if path.contains("/domains/available") {
+            if path.contains("/core/v4/domains/available") {
                 completion(nil, .success(AvailableDomainResponse.from(["Code": 1000, "Domains": ["proton.first", "proton.second", "proton.third"]])))
             } else {
                 XCTFail()
@@ -1270,7 +1270,7 @@ class LoginServiceTests: XCTestCase {
         api.fetchAuthCredentialsStub.bodyIs { $1(.wrongConfigurationNoDelegate) }
         let service = LoginService(api: api, clientApp: .other(named: "core"), minimumAccountType: .internal)
         api.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
-            if path.contains("/domains/available") {
+            if path.contains("/core/v4/domains/available") {
                 completion(nil, .success(AvailableDomainResponse.from(["Code": 1000, "Domains": ["proton.first", "proton.second", "proton.third"]])))
             } else {
                 XCTFail()
@@ -1292,7 +1292,7 @@ class LoginServiceTests: XCTestCase {
         api.fetchAuthCredentialsStub.bodyIs { $1(.wrongConfigurationNoDelegate) }
         let service = LoginService(api: api, clientApp: .other(named: "core"), minimumAccountType: .internal)
         api.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
-            if path.contains("/domains/available") {
+            if path.contains("/core/v4/domains/available") {
                 completion(nil, .success(AvailableDomainResponse.from(["Code": 1000, "Domains": ["proton.first", "proton.second", "proton.third"]])))
             } else {
                 XCTFail()
