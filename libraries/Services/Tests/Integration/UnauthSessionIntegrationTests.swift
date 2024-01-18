@@ -82,7 +82,7 @@ final class UnauthSessionIntegrationTests: IntegrationTestCase {
 
         // WHEN
         let (task, _) = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/domains/available?Type=login", parameters: nil, headers: nil, authenticated: false, authRetry: true,
+            service.request(method: .get, path: "/core/v4/domains/available?Type=login", parameters: nil, headers: nil, authenticated: false, authRetry: true,
                             customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .background) { (task, result: Result<AvailableDomainResponse, API.APIError>) in
                 continuation.resume(returning: (task, result))
             }

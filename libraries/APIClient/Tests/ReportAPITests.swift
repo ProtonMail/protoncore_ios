@@ -73,7 +73,7 @@ class ReportAPITests: XCTestCase {
         }
         apiService.uploadFilesDecodableStub.bodyIs { _, path, _, _, _, _, _, _, _, progress, completion in
             progress?(Progress())
-            if path.contains("/reports/bug") {
+            if path.contains("/core/v4/reports/bug") {
                 let response = ReportsBugsResponse(code: 1000)
                 completion(nil, .success(response))
             } else {
