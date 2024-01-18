@@ -269,7 +269,6 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
         self.reachability = reachability
         self.featureFlagsRepository = featureFlagsRepository
         super.init()
-        reachability?.whenReachable = { [weak self] _ in self?.networkReachable() }
         try? reachability?.startNotifier()
     }
 
@@ -570,11 +569,6 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
               let receipt = try? Data(contentsOf: receiptUrl).base64EncodedString()
         else { throw Errors.receiptLost }
         return receipt
-    }
-
-    // FIXME: should not be called in main thread
-    private func networkReachable() {
-        processAllStoreKitTransactionsCurrentlyFoundInThePaymentQueue(finishHandler: transactionsFinishHandler)
     }
 }
 
