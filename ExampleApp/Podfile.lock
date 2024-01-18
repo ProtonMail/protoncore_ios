@@ -660,9 +660,6 @@ PODS:
   - SDWebImage (5.18.3):
     - SDWebImage/Core (= 5.18.3)
   - SDWebImage/Core (5.18.3)
-  - Sentry (5.2.2):
-    - Sentry/Core (= 5.2.2)
-  - Sentry/Core (5.2.2)
   - swift-snapshot-testing (1.10.0)
   - SwiftOTP (2.0.3):
     - CryptoSwift (>= 1.0.0)
@@ -781,7 +778,6 @@ DEPENDENCIES:
   - ProtonCore-Utilities (from `../`)
   - ProtonCore-Utilities/Tests (from `../`)
   - ProtonCore-VCard (from `../`)
-  - Sentry (from `https://github.com/getsentry/sentry-cocoa.git`, tag `5.2.2`)
   - swift-snapshot-testing (from `../`)
   - SwiftOTP (~> 2.0)
   - TPInAppReceipt
@@ -891,9 +887,6 @@ EXTERNAL SOURCES:
     :path: "../"
   ProtonCore-VCard:
     :path: "../"
-  Sentry:
-    :git: https://github.com/getsentry/sentry-cocoa.git
-    :tag: 5.2.2
   swift-snapshot-testing:
     :path: "../"
   TrustKit:
@@ -907,9 +900,6 @@ CHECKOUT OPTIONS:
   JSONSchema:
     :commit: 8c7ec156dde09715d8d2ed83cc8fe6b1ba90648c
     :git: https://github.com/kylef/JSONSchema.swift
-  Sentry:
-    :git: https://github.com/getsentry/sentry-cocoa.git
-    :tag: 5.2.2
   TrustKit:
     :commit: d107d7cc825f38ae2d6dc7c54af71d58145c3506
     :git: https://github.com/ProtonMail/TrustKit.git
@@ -967,13 +957,12 @@ SPEC CHECKSUMS:
   ProtonCore-VCard: 1bee5012893871698903e5a0acd8c6e81a1051b7
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SDWebImage: 96e0c18ef14010b7485210e92fac888587ebb958
-  Sentry: 8fa58a051237554f22507fb483b9a1de0171a2dc
   swift-snapshot-testing: ebfa37f887218b4444812aa10e0ba0b5eb85eaf9
   SwiftOTP: ce98ded1ab42e4e66c39228fcad6b0c07b98e494
   TPInAppReceipt: 75ff97f2484a463cf46c172fe7f94225612aeda1
   TrustKit: f830ff5af0a8cbad5178aef1d0951389b096d312
   ViewInspector: c36e7652c499549d3eb1d16ef67e5c8676edf9f3
 
-PODFILE CHECKSUM: a38241ee243cf2e4d4a4711b632e7cdebcc1fe1c
+PODFILE CHECKSUM: 466028660d310d15d0459b5b9eb0bf4b7c5a5da1
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.14.3

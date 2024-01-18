@@ -1334,59 +1334,45 @@
 		66420FE42A57438300A28F11 /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = 66420FE32A57438300A28F11 /* OHHTTPStubs */; };
 		66420FE62A57438300A28F11 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 66420FE52A57438300A28F11 /* OHHTTPStubsSwift */; };
 		66420FE92A5743E600A28F11 /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = 66420FE82A5743E600A28F11 /* TPInAppReceipt */; };
-		66420FEE2A57450300A28F11 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 66420FED2A57450300A28F11 /* Sentry */; };
 		664210422A57EFAF00A28F11 /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = 664210412A57EFAF00A28F11 /* OHHTTPStubs */; };
 		664210442A57EFAF00A28F11 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 664210432A57EFAF00A28F11 /* OHHTTPStubsSwift */; };
 		664210462A57EFAF00A28F11 /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = 664210452A57EFAF00A28F11 /* TPInAppReceipt */; };
-		664210482A57EFAF00A28F11 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 664210472A57EFAF00A28F11 /* Sentry */; };
 		6642109A2A57EFC900A28F11 /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = 664210992A57EFC900A28F11 /* OHHTTPStubs */; };
 		6642109C2A57EFC900A28F11 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6642109B2A57EFC900A28F11 /* OHHTTPStubsSwift */; };
 		6642109E2A57EFC900A28F11 /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = 6642109D2A57EFC900A28F11 /* TPInAppReceipt */; };
-		664210A02A57EFC900A28F11 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 6642109F2A57EFC900A28F11 /* Sentry */; };
 		664210F22A57EFE000A28F11 /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = 664210F12A57EFE000A28F11 /* OHHTTPStubs */; };
 		664210F42A57EFE000A28F11 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 664210F32A57EFE000A28F11 /* OHHTTPStubsSwift */; };
 		664210F62A57EFE000A28F11 /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = 664210F52A57EFE000A28F11 /* TPInAppReceipt */; };
-		664210F82A57EFE100A28F11 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 664210F72A57EFE100A28F11 /* Sentry */; };
 		6642114A2A57EFFC00A28F11 /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = 664211492A57EFFC00A28F11 /* OHHTTPStubs */; };
 		6642114C2A57EFFC00A28F11 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6642114B2A57EFFC00A28F11 /* OHHTTPStubsSwift */; };
 		6642114E2A57EFFC00A28F11 /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = 6642114D2A57EFFC00A28F11 /* TPInAppReceipt */; };
-		664211502A57EFFC00A28F11 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 6642114F2A57EFFC00A28F11 /* Sentry */; };
 		664211A22A57F01900A28F11 /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = 664211A12A57F01900A28F11 /* OHHTTPStubs */; };
 		664211A42A57F01900A28F11 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 664211A32A57F01900A28F11 /* OHHTTPStubsSwift */; };
 		664211A62A57F01900A28F11 /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = 664211A52A57F01900A28F11 /* TPInAppReceipt */; };
-		664211A82A57F01900A28F11 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 664211A72A57F01900A28F11 /* Sentry */; };
 		664211FC2A57F03900A28F11 /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = 664211FB2A57F03900A28F11 /* OHHTTPStubs */; };
 		664211FE2A57F03900A28F11 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 664211FD2A57F03900A28F11 /* OHHTTPStubsSwift */; };
 		664212002A57F03900A28F11 /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = 664211FF2A57F03900A28F11 /* TPInAppReceipt */; };
-		664212022A57F03900A28F11 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 664212012A57F03900A28F11 /* Sentry */; };
 		664212542A57F05200A28F11 /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = 664212532A57F05200A28F11 /* OHHTTPStubs */; };
 		664212562A57F05200A28F11 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 664212552A57F05200A28F11 /* OHHTTPStubsSwift */; };
 		664212582A57F05200A28F11 /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = 664212572A57F05200A28F11 /* TPInAppReceipt */; };
-		6642125A2A57F05200A28F11 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 664212592A57F05200A28F11 /* Sentry */; };
 		664212AC2A57F06C00A28F11 /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = 664212AB2A57F06C00A28F11 /* OHHTTPStubs */; };
 		664212AE2A57F06C00A28F11 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 664212AD2A57F06C00A28F11 /* OHHTTPStubsSwift */; };
 		664212B02A57F06C00A28F11 /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = 664212AF2A57F06C00A28F11 /* TPInAppReceipt */; };
-		664212B22A57F06C00A28F11 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 664212B12A57F06C00A28F11 /* Sentry */; };
 		664213042A57F09700A28F11 /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = 664213032A57F09700A28F11 /* OHHTTPStubs */; };
 		664213062A57F09700A28F11 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 664213052A57F09700A28F11 /* OHHTTPStubsSwift */; };
 		664213082A57F09700A28F11 /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = 664213072A57F09700A28F11 /* TPInAppReceipt */; };
-		6642130A2A57F09700A28F11 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 664213092A57F09700A28F11 /* Sentry */; };
 		6642135C2A57F0AD00A28F11 /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = 6642135B2A57F0AD00A28F11 /* OHHTTPStubs */; };
 		6642135E2A57F0AD00A28F11 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6642135D2A57F0AD00A28F11 /* OHHTTPStubsSwift */; };
 		664213602A57F0AD00A28F11 /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = 6642135F2A57F0AD00A28F11 /* TPInAppReceipt */; };
-		664213622A57F0AD00A28F11 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 664213612A57F0AD00A28F11 /* Sentry */; };
 		664213B42A57F0C300A28F11 /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = 664213B32A57F0C300A28F11 /* OHHTTPStubs */; };
 		664213B62A57F0C300A28F11 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 664213B52A57F0C300A28F11 /* OHHTTPStubsSwift */; };
 		664213B82A57F0C300A28F11 /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = 664213B72A57F0C300A28F11 /* TPInAppReceipt */; };
-		664213BA2A57F0C400A28F11 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 664213B92A57F0C400A28F11 /* Sentry */; };
 		6642140C2A57F0DC00A28F11 /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = 6642140B2A57F0DC00A28F11 /* OHHTTPStubs */; };
 		6642140E2A57F0DC00A28F11 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6642140D2A57F0DC00A28F11 /* OHHTTPStubsSwift */; };
 		664214102A57F0DC00A28F11 /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = 6642140F2A57F0DC00A28F11 /* TPInAppReceipt */; };
-		664214122A57F0DC00A28F11 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 664214112A57F0DC00A28F11 /* Sentry */; };
 		664214642A57F0EE00A28F11 /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = 664214632A57F0EE00A28F11 /* OHHTTPStubs */; };
 		664214662A57F0EE00A28F11 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 664214652A57F0EE00A28F11 /* OHHTTPStubsSwift */; };
 		664214682A57F0EE00A28F11 /* TPInAppReceipt in Frameworks */ = {isa = PBXBuildFile; productRef = 664214672A57F0EE00A28F11 /* TPInAppReceipt */; };
-		6642146A2A57F0EE00A28F11 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 664214692A57F0EE00A28F11 /* Sentry */; };
 		664237DA2A6977C20056776D /* BioProtectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664237D42A6977C10056776D /* BioProtectionTests.swift */; };
 		664237DB2A6977C20056776D /* NoneProtectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664237D52A6977C10056776D /* NoneProtectionTests.swift */; };
 		664237DC2A6977C20056776D /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664237D62A6977C10056776D /* KeychainWrapper.swift */; };
@@ -1987,7 +1973,6 @@
 				661BCD1E2A6ED9E70005FD6D /* ProtonCoreUIFoundations in Frameworks */,
 				664212B02A57F06C00A28F11 /* TPInAppReceipt in Frameworks */,
 				661BCD1A2A6ED9E70005FD6D /* ProtonCoreSettings in Frameworks */,
-				664212B22A57F06C00A28F11 /* Sentry in Frameworks */,
 				661BCCEC2A6ED9E60005FD6D /* ProtonCoreDoh in Frameworks */,
 				661BCCD22A6ED9E50005FD6D /* GoLibsCryptoPatchedGo in Frameworks */,
 				661BCCE82A6ED9E60005FD6D /* ProtonCoreCryptoPatchedGoImplementation in Frameworks */,
@@ -2037,7 +2022,6 @@
 				661BCEB82A6EDA820005FD6D /* ProtonCoreUIFoundations in Frameworks */,
 				664214682A57F0EE00A28F11 /* TPInAppReceipt in Frameworks */,
 				661BCEB42A6EDA820005FD6D /* ProtonCoreSettings in Frameworks */,
-				6642146A2A57F0EE00A28F11 /* Sentry in Frameworks */,
 				661BCE862A6EDA810005FD6D /* ProtonCoreDoh in Frameworks */,
 				661BCE6C2A6EDA800005FD6D /* GoLibsCryptoPatchedGo in Frameworks */,
 				661BCE822A6EDA810005FD6D /* ProtonCoreCryptoPatchedGoImplementation in Frameworks */,
@@ -2137,7 +2121,6 @@
 				661BCA8A2A6ECD530005FD6D /* ProtonCoreSettings in Frameworks */,
 				66420FE92A5743E600A28F11 /* TPInAppReceipt in Frameworks */,
 				661BCA5C2A6ECD520005FD6D /* ProtonCoreDoh in Frameworks */,
-				66420FEE2A57450300A28F11 /* Sentry in Frameworks */,
 				66420FE42A57438300A28F11 /* OHHTTPStubs in Frameworks */,
 				661BCA462A6ECD520005FD6D /* ProtonCoreAccountSwitcher in Frameworks */,
 				661BCA722A6ECD520005FD6D /* ProtonCoreLogin in Frameworks */,
@@ -2187,7 +2170,6 @@
 				661BCADC2A6ED8FB0005FD6D /* ProtonCoreSettings in Frameworks */,
 				664210462A57EFAF00A28F11 /* TPInAppReceipt in Frameworks */,
 				661BCAAE2A6ED8FA0005FD6D /* ProtonCoreDoh in Frameworks */,
-				664210482A57EFAF00A28F11 /* Sentry in Frameworks */,
 				661BCA982A6ED8FA0005FD6D /* ProtonCoreAccountSwitcher in Frameworks */,
 				664210442A57EFAF00A28F11 /* OHHTTPStubsSwift in Frameworks */,
 				661BCAC42A6ED8FA0005FD6D /* ProtonCoreLogin in Frameworks */,
@@ -2238,7 +2220,6 @@
 				6642109A2A57EFC900A28F11 /* OHHTTPStubs in Frameworks */,
 				661BCB002A6ED9200005FD6D /* ProtonCoreDoh in Frameworks */,
 				6642109E2A57EFC900A28F11 /* TPInAppReceipt in Frameworks */,
-				664210A02A57EFC900A28F11 /* Sentry in Frameworks */,
 				661BCAEA2A6ED91F0005FD6D /* ProtonCoreAccountSwitcher in Frameworks */,
 				661BCB162A6ED9200005FD6D /* ProtonCoreLogin in Frameworks */,
 				661BCB0C2A6ED9200005FD6D /* ProtonCoreHash in Frameworks */,
@@ -2285,7 +2266,6 @@
 				661BCB842A6ED9420005FD6D /* ProtonCoreUIFoundations in Frameworks */,
 				664210F62A57EFE000A28F11 /* TPInAppReceipt in Frameworks */,
 				661BCB802A6ED9420005FD6D /* ProtonCoreSettings in Frameworks */,
-				664210F82A57EFE100A28F11 /* Sentry in Frameworks */,
 				661BCB522A6ED9410005FD6D /* ProtonCoreDoh in Frameworks */,
 				661BCB382A6ED9410005FD6D /* GoLibsCryptoPatchedGo in Frameworks */,
 				661BCB4E2A6ED9410005FD6D /* ProtonCoreCryptoPatchedGoImplementation in Frameworks */,
@@ -2337,7 +2317,6 @@
 				661BCBD22A6ED9620005FD6D /* ProtonCoreSettings in Frameworks */,
 				6642114E2A57EFFC00A28F11 /* TPInAppReceipt in Frameworks */,
 				661BCBA42A6ED9620005FD6D /* ProtonCoreDoh in Frameworks */,
-				664211502A57EFFC00A28F11 /* Sentry in Frameworks */,
 				6642114C2A57EFFC00A28F11 /* OHHTTPStubsSwift in Frameworks */,
 				661BCB8E2A6ED9620005FD6D /* ProtonCoreAccountSwitcher in Frameworks */,
 				661BCBBA2A6ED9620005FD6D /* ProtonCoreLogin in Frameworks */,
@@ -2388,7 +2367,6 @@
 				661BCC242A6ED9860005FD6D /* ProtonCoreSettings in Frameworks */,
 				664211A62A57F01900A28F11 /* TPInAppReceipt in Frameworks */,
 				661BCBF62A6ED9850005FD6D /* ProtonCoreDoh in Frameworks */,
-				664211A82A57F01900A28F11 /* Sentry in Frameworks */,
 				661BCBE02A6ED9850005FD6D /* ProtonCoreAccountSwitcher in Frameworks */,
 				664211A42A57F01900A28F11 /* OHHTTPStubsSwift in Frameworks */,
 				661BCC0C2A6ED9850005FD6D /* ProtonCoreLogin in Frameworks */,
@@ -2438,7 +2416,6 @@
 				661BCC762A6ED9A60005FD6D /* ProtonCoreSettings in Frameworks */,
 				664211FE2A57F03900A28F11 /* OHHTTPStubsSwift in Frameworks */,
 				661BCC482A6ED9A50005FD6D /* ProtonCoreDoh in Frameworks */,
-				664212022A57F03900A28F11 /* Sentry in Frameworks */,
 				664212002A57F03900A28F11 /* TPInAppReceipt in Frameworks */,
 				661BCC322A6ED9A50005FD6D /* ProtonCoreAccountSwitcher in Frameworks */,
 				661BCC5E2A6ED9A60005FD6D /* ProtonCoreLogin in Frameworks */,
@@ -2486,7 +2463,6 @@
 				661BCCCC2A6ED9C70005FD6D /* ProtonCoreUIFoundations in Frameworks */,
 				664212582A57F05200A28F11 /* TPInAppReceipt in Frameworks */,
 				661BCCC82A6ED9C60005FD6D /* ProtonCoreSettings in Frameworks */,
-				6642125A2A57F05200A28F11 /* Sentry in Frameworks */,
 				661BCC9A2A6ED9C60005FD6D /* ProtonCoreDoh in Frameworks */,
 				661BCC802A6ED9C50005FD6D /* GoLibsCryptoPatchedGo in Frameworks */,
 				661BCC962A6ED9C60005FD6D /* ProtonCoreCryptoPatchedGoImplementation in Frameworks */,
@@ -2567,7 +2543,6 @@
 				661BCD6C2A6EDA030005FD6D /* ProtonCoreSettings in Frameworks */,
 				664213082A57F09700A28F11 /* TPInAppReceipt in Frameworks */,
 				661BCD3E2A6EDA030005FD6D /* ProtonCoreDoh in Frameworks */,
-				6642130A2A57F09700A28F11 /* Sentry in Frameworks */,
 				664213062A57F09700A28F11 /* OHHTTPStubsSwift in Frameworks */,
 				661BCD282A6EDA020005FD6D /* ProtonCoreAccountSwitcher in Frameworks */,
 				661BCD542A6EDA030005FD6D /* ProtonCoreLogin in Frameworks */,
@@ -2618,7 +2593,6 @@
 				664213B42A57F0C300A28F11 /* OHHTTPStubs in Frameworks */,
 				661BCDE22A6EDA3B0005FD6D /* ProtonCoreDoh in Frameworks */,
 				664213B82A57F0C300A28F11 /* TPInAppReceipt in Frameworks */,
-				664213BA2A57F0C400A28F11 /* Sentry in Frameworks */,
 				661BCDCC2A6EDA3B0005FD6D /* ProtonCoreAccountSwitcher in Frameworks */,
 				661BCDF82A6EDA3B0005FD6D /* ProtonCoreLogin in Frameworks */,
 				661BCDEE2A6EDA3B0005FD6D /* ProtonCoreHash in Frameworks */,
@@ -2667,7 +2641,6 @@
 				661BCDBE2A6EDA210005FD6D /* ProtonCoreSettings in Frameworks */,
 				664213602A57F0AD00A28F11 /* TPInAppReceipt in Frameworks */,
 				661BCD902A6EDA200005FD6D /* ProtonCoreDoh in Frameworks */,
-				664213622A57F0AD00A28F11 /* Sentry in Frameworks */,
 				661BCD7A2A6EDA1F0005FD6D /* ProtonCoreAccountSwitcher in Frameworks */,
 				6642135E2A57F0AD00A28F11 /* OHHTTPStubsSwift in Frameworks */,
 				661BCDA62A6EDA200005FD6D /* ProtonCoreLogin in Frameworks */,
@@ -2715,7 +2688,6 @@
 				661BCE662A6EDA670005FD6D /* ProtonCoreUIFoundations in Frameworks */,
 				664214102A57F0DC00A28F11 /* TPInAppReceipt in Frameworks */,
 				661BCE622A6EDA670005FD6D /* ProtonCoreSettings in Frameworks */,
-				664214122A57F0DC00A28F11 /* Sentry in Frameworks */,
 				661BCE342A6EDA660005FD6D /* ProtonCoreDoh in Frameworks */,
 				661BCE1A2A6EDA660005FD6D /* GoLibsCryptoPatchedGo in Frameworks */,
 				661BCE302A6EDA660005FD6D /* ProtonCoreCryptoPatchedGoImplementation in Frameworks */,
@@ -3674,7 +3646,6 @@
 				664212AB2A57F06C00A28F11 /* OHHTTPStubs */,
 				664212AD2A57F06C00A28F11 /* OHHTTPStubsSwift */,
 				664212AF2A57F06C00A28F11 /* TPInAppReceipt */,
-				664212B12A57F06C00A28F11 /* Sentry */,
 				661BCCD12A6ED9E50005FD6D /* GoLibsCryptoPatchedGo */,
 				661BCCD32A6ED9E60005FD6D /* ProtonCoreAccountDeletion */,
 				661BCCD52A6ED9E60005FD6D /* ProtonCoreAccountSwitcher */,
@@ -3736,7 +3707,6 @@
 				664214632A57F0EE00A28F11 /* OHHTTPStubs */,
 				664214652A57F0EE00A28F11 /* OHHTTPStubsSwift */,
 				664214672A57F0EE00A28F11 /* TPInAppReceipt */,
-				664214692A57F0EE00A28F11 /* Sentry */,
 				661BCE6B2A6EDA800005FD6D /* GoLibsCryptoPatchedGo */,
 				661BCE6D2A6EDA800005FD6D /* ProtonCoreAccountDeletion */,
 				661BCE6F2A6EDA800005FD6D /* ProtonCoreAccountSwitcher */,
@@ -3884,7 +3854,6 @@
 				66420FE32A57438300A28F11 /* OHHTTPStubs */,
 				66420FE52A57438300A28F11 /* OHHTTPStubsSwift */,
 				66420FE82A5743E600A28F11 /* TPInAppReceipt */,
-				66420FED2A57450300A28F11 /* Sentry */,
 				661BCA412A6ECD520005FD6D /* GoLibsCryptoSearchGo */,
 				661BCA432A6ECD520005FD6D /* ProtonCoreAccountDeletion */,
 				661BCA452A6ECD520005FD6D /* ProtonCoreAccountSwitcher */,
@@ -3947,7 +3916,6 @@
 				664210412A57EFAF00A28F11 /* OHHTTPStubs */,
 				664210432A57EFAF00A28F11 /* OHHTTPStubsSwift */,
 				664210452A57EFAF00A28F11 /* TPInAppReceipt */,
-				664210472A57EFAF00A28F11 /* Sentry */,
 				661BCA932A6ED8FA0005FD6D /* GoLibsCryptoVPNPatchedGo */,
 				661BCA952A6ED8FA0005FD6D /* ProtonCoreAccountDeletion */,
 				661BCA972A6ED8FA0005FD6D /* ProtonCoreAccountSwitcher */,
@@ -4009,7 +3977,6 @@
 				664210992A57EFC900A28F11 /* OHHTTPStubs */,
 				6642109B2A57EFC900A28F11 /* OHHTTPStubsSwift */,
 				6642109D2A57EFC900A28F11 /* TPInAppReceipt */,
-				6642109F2A57EFC900A28F11 /* Sentry */,
 				661BCAE52A6ED91F0005FD6D /* GoLibsCryptoGo */,
 				661BCAE72A6ED91F0005FD6D /* ProtonCoreAccountDeletion */,
 				661BCAE92A6ED91F0005FD6D /* ProtonCoreAccountSwitcher */,
@@ -4071,7 +4038,6 @@
 				664210F12A57EFE000A28F11 /* OHHTTPStubs */,
 				664210F32A57EFE000A28F11 /* OHHTTPStubsSwift */,
 				664210F52A57EFE000A28F11 /* TPInAppReceipt */,
-				664210F72A57EFE100A28F11 /* Sentry */,
 				661BCB372A6ED9410005FD6D /* GoLibsCryptoPatchedGo */,
 				661BCB392A6ED9410005FD6D /* ProtonCoreAccountDeletion */,
 				661BCB3B2A6ED9410005FD6D /* ProtonCoreAccountSwitcher */,
@@ -4133,7 +4099,6 @@
 				664211492A57EFFC00A28F11 /* OHHTTPStubs */,
 				6642114B2A57EFFC00A28F11 /* OHHTTPStubsSwift */,
 				6642114D2A57EFFC00A28F11 /* TPInAppReceipt */,
-				6642114F2A57EFFC00A28F11 /* Sentry */,
 				661BCB892A6ED9610005FD6D /* GoLibsCryptoSearchGo */,
 				661BCB8B2A6ED9620005FD6D /* ProtonCoreAccountDeletion */,
 				661BCB8D2A6ED9620005FD6D /* ProtonCoreAccountSwitcher */,
@@ -4195,7 +4160,6 @@
 				664211A12A57F01900A28F11 /* OHHTTPStubs */,
 				664211A32A57F01900A28F11 /* OHHTTPStubsSwift */,
 				664211A52A57F01900A28F11 /* TPInAppReceipt */,
-				664211A72A57F01900A28F11 /* Sentry */,
 				661BCBDB2A6ED9850005FD6D /* GoLibsCryptoVPNPatchedGo */,
 				661BCBDD2A6ED9850005FD6D /* ProtonCoreAccountDeletion */,
 				661BCBDF2A6ED9850005FD6D /* ProtonCoreAccountSwitcher */,
@@ -4258,7 +4222,6 @@
 				664211FB2A57F03900A28F11 /* OHHTTPStubs */,
 				664211FD2A57F03900A28F11 /* OHHTTPStubsSwift */,
 				664211FF2A57F03900A28F11 /* TPInAppReceipt */,
-				664212012A57F03900A28F11 /* Sentry */,
 				661BCC2D2A6ED9A50005FD6D /* GoLibsCryptoGo */,
 				661BCC2F2A6ED9A50005FD6D /* ProtonCoreAccountDeletion */,
 				661BCC312A6ED9A50005FD6D /* ProtonCoreAccountSwitcher */,
@@ -4320,7 +4283,6 @@
 				664212532A57F05200A28F11 /* OHHTTPStubs */,
 				664212552A57F05200A28F11 /* OHHTTPStubsSwift */,
 				664212572A57F05200A28F11 /* TPInAppReceipt */,
-				664212592A57F05200A28F11 /* Sentry */,
 				661BCC7F2A6ED9C50005FD6D /* GoLibsCryptoPatchedGo */,
 				661BCC812A6ED9C50005FD6D /* ProtonCoreAccountDeletion */,
 				661BCC832A6ED9C50005FD6D /* ProtonCoreAccountSwitcher */,
@@ -4447,7 +4409,6 @@
 				664213032A57F09700A28F11 /* OHHTTPStubs */,
 				664213052A57F09700A28F11 /* OHHTTPStubsSwift */,
 				664213072A57F09700A28F11 /* TPInAppReceipt */,
-				664213092A57F09700A28F11 /* Sentry */,
 				661BCD232A6EDA020005FD6D /* GoLibsCryptoSearchGo */,
 				661BCD252A6EDA020005FD6D /* ProtonCoreAccountDeletion */,
 				661BCD272A6EDA020005FD6D /* ProtonCoreAccountSwitcher */,
@@ -4509,7 +4470,6 @@
 				664213B32A57F0C300A28F11 /* OHHTTPStubs */,
 				664213B52A57F0C300A28F11 /* OHHTTPStubsSwift */,
 				664213B72A57F0C300A28F11 /* TPInAppReceipt */,
-				664213B92A57F0C400A28F11 /* Sentry */,
 				661BCDC72A6EDA3B0005FD6D /* GoLibsCryptoGo */,
 				661BCDC92A6EDA3B0005FD6D /* ProtonCoreAccountDeletion */,
 				661BCDCB2A6EDA3B0005FD6D /* ProtonCoreAccountSwitcher */,
@@ -4571,7 +4531,6 @@
 				6642135B2A57F0AD00A28F11 /* OHHTTPStubs */,
 				6642135D2A57F0AD00A28F11 /* OHHTTPStubsSwift */,
 				6642135F2A57F0AD00A28F11 /* TPInAppReceipt */,
-				664213612A57F0AD00A28F11 /* Sentry */,
 				661BCD752A6EDA1F0005FD6D /* GoLibsCryptoVPNPatchedGo */,
 				661BCD772A6EDA1F0005FD6D /* ProtonCoreAccountDeletion */,
 				661BCD792A6EDA1F0005FD6D /* ProtonCoreAccountSwitcher */,
@@ -4633,7 +4592,6 @@
 				6642140B2A57F0DC00A28F11 /* OHHTTPStubs */,
 				6642140D2A57F0DC00A28F11 /* OHHTTPStubsSwift */,
 				6642140F2A57F0DC00A28F11 /* TPInAppReceipt */,
-				664214112A57F0DC00A28F11 /* Sentry */,
 				661BCE192A6EDA660005FD6D /* GoLibsCryptoPatchedGo */,
 				661BCE1B2A6EDA660005FD6D /* ProtonCoreAccountDeletion */,
 				661BCE1D2A6EDA660005FD6D /* ProtonCoreAccountSwitcher */,
@@ -4798,7 +4756,6 @@
 			packageReferences = (
 				66420FE22A57438300A28F11 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */,
 				66420FE72A5743E600A28F11 /* XCRemoteSwiftPackageReference "TPInAppReceipt" */,
-				66420FEC2A57450200A28F11 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 				66968F1B2A6055CA00AA67D2 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 				579771BD2B2CBA48004ADB85 /* XCRemoteSwiftPackageReference "ViewInspector" */,
 			);
@@ -8162,14 +8119,6 @@
 				minimumVersion = 3.0.0;
 			};
 		};
-		66420FEC2A57450200A28F11 /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/getsentry/sentry-cocoa";
-			requirement = {
-				kind = exactVersion;
-				version = 5.2.2;
-			};
-		};
 		66968F1B2A6055CA00AA67D2 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
@@ -10564,11 +10513,6 @@
 			package = 66420FE72A5743E600A28F11 /* XCRemoteSwiftPackageReference "TPInAppReceipt" */;
 			productName = TPInAppReceipt;
 		};
-		66420FED2A57450300A28F11 /* Sentry */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66420FEC2A57450200A28F11 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = Sentry;
-		};
 		664210412A57EFAF00A28F11 /* OHHTTPStubs */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 66420FE22A57438300A28F11 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
@@ -10583,11 +10527,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 66420FE72A5743E600A28F11 /* XCRemoteSwiftPackageReference "TPInAppReceipt" */;
 			productName = TPInAppReceipt;
-		};
-		664210472A57EFAF00A28F11 /* Sentry */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66420FEC2A57450200A28F11 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = Sentry;
 		};
 		664210992A57EFC900A28F11 /* OHHTTPStubs */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -10604,11 +10543,6 @@
 			package = 66420FE72A5743E600A28F11 /* XCRemoteSwiftPackageReference "TPInAppReceipt" */;
 			productName = TPInAppReceipt;
 		};
-		6642109F2A57EFC900A28F11 /* Sentry */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66420FEC2A57450200A28F11 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = Sentry;
-		};
 		664210F12A57EFE000A28F11 /* OHHTTPStubs */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 66420FE22A57438300A28F11 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
@@ -10623,11 +10557,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 66420FE72A5743E600A28F11 /* XCRemoteSwiftPackageReference "TPInAppReceipt" */;
 			productName = TPInAppReceipt;
-		};
-		664210F72A57EFE100A28F11 /* Sentry */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66420FEC2A57450200A28F11 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = Sentry;
 		};
 		664211492A57EFFC00A28F11 /* OHHTTPStubs */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -10644,11 +10573,6 @@
 			package = 66420FE72A5743E600A28F11 /* XCRemoteSwiftPackageReference "TPInAppReceipt" */;
 			productName = TPInAppReceipt;
 		};
-		6642114F2A57EFFC00A28F11 /* Sentry */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66420FEC2A57450200A28F11 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = Sentry;
-		};
 		664211A12A57F01900A28F11 /* OHHTTPStubs */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 66420FE22A57438300A28F11 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
@@ -10663,11 +10587,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 66420FE72A5743E600A28F11 /* XCRemoteSwiftPackageReference "TPInAppReceipt" */;
 			productName = TPInAppReceipt;
-		};
-		664211A72A57F01900A28F11 /* Sentry */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66420FEC2A57450200A28F11 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = Sentry;
 		};
 		664211FB2A57F03900A28F11 /* OHHTTPStubs */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -10684,11 +10603,6 @@
 			package = 66420FE72A5743E600A28F11 /* XCRemoteSwiftPackageReference "TPInAppReceipt" */;
 			productName = TPInAppReceipt;
 		};
-		664212012A57F03900A28F11 /* Sentry */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66420FEC2A57450200A28F11 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = Sentry;
-		};
 		664212532A57F05200A28F11 /* OHHTTPStubs */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 66420FE22A57438300A28F11 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
@@ -10703,11 +10617,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 66420FE72A5743E600A28F11 /* XCRemoteSwiftPackageReference "TPInAppReceipt" */;
 			productName = TPInAppReceipt;
-		};
-		664212592A57F05200A28F11 /* Sentry */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66420FEC2A57450200A28F11 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = Sentry;
 		};
 		664212AB2A57F06C00A28F11 /* OHHTTPStubs */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -10724,11 +10633,6 @@
 			package = 66420FE72A5743E600A28F11 /* XCRemoteSwiftPackageReference "TPInAppReceipt" */;
 			productName = TPInAppReceipt;
 		};
-		664212B12A57F06C00A28F11 /* Sentry */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66420FEC2A57450200A28F11 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = Sentry;
-		};
 		664213032A57F09700A28F11 /* OHHTTPStubs */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 66420FE22A57438300A28F11 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
@@ -10743,11 +10647,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 66420FE72A5743E600A28F11 /* XCRemoteSwiftPackageReference "TPInAppReceipt" */;
 			productName = TPInAppReceipt;
-		};
-		664213092A57F09700A28F11 /* Sentry */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66420FEC2A57450200A28F11 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = Sentry;
 		};
 		6642135B2A57F0AD00A28F11 /* OHHTTPStubs */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -10764,11 +10663,6 @@
 			package = 66420FE72A5743E600A28F11 /* XCRemoteSwiftPackageReference "TPInAppReceipt" */;
 			productName = TPInAppReceipt;
 		};
-		664213612A57F0AD00A28F11 /* Sentry */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66420FEC2A57450200A28F11 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = Sentry;
-		};
 		664213B32A57F0C300A28F11 /* OHHTTPStubs */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 66420FE22A57438300A28F11 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
@@ -10783,11 +10677,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 66420FE72A5743E600A28F11 /* XCRemoteSwiftPackageReference "TPInAppReceipt" */;
 			productName = TPInAppReceipt;
-		};
-		664213B92A57F0C400A28F11 /* Sentry */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66420FEC2A57450200A28F11 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = Sentry;
 		};
 		6642140B2A57F0DC00A28F11 /* OHHTTPStubs */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -10804,11 +10693,6 @@
 			package = 66420FE72A5743E600A28F11 /* XCRemoteSwiftPackageReference "TPInAppReceipt" */;
 			productName = TPInAppReceipt;
 		};
-		664214112A57F0DC00A28F11 /* Sentry */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66420FEC2A57450200A28F11 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = Sentry;
-		};
 		664214632A57F0EE00A28F11 /* OHHTTPStubs */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 66420FE22A57438300A28F11 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
@@ -10823,11 +10707,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 66420FE72A5743E600A28F11 /* XCRemoteSwiftPackageReference "TPInAppReceipt" */;
 			productName = TPInAppReceipt;
-		};
-		664214692A57F0EE00A28F11 /* Sentry */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66420FEC2A57450200A28F11 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = Sentry;
 		};
 		66968F1C2A6055CA00AA67D2 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;

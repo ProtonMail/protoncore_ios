@@ -32,7 +32,6 @@ import ProtonCoreLogin
 import ProtonCoreTroubleShooting
 import ProtonCoreEnvironment
 import ProtonCoreObfuscatedConstants
-import Sentry
 
 final class ExampleViewController: UIViewController, AccessibleView {
 
@@ -174,41 +173,3 @@ extension ExampleViewController: UITextFieldDelegate {
         return true
     }
 }
-
-#if canImport(SentryLog)
-// Crash reporting testing
-extension ExampleViewController {
-
-    @IBAction func crashWithFatalError(_ sender: Any) {
-        let message = "Crashed with fatalError on \(Date()) in \(#function) in \(#file)"
-        SentryLog.log(withMessage: message, andLevel: .error)
-        fatalError("ExampleViewController.crashWithFatalError")
-    }
-
-    @IBAction func crashWithAssertion(_ sender: Any) {
-        let message = "Crashed with assertion on \(Date()) in \(#function) in \(#file)"
-        SentryLog.log(withMessage: message, andLevel: .error)
-        assertionFailure("ExampleViewController.crashWithAssertion")
-    }
-
-    @IBAction func crashWithForceUnwrap(_ sender: Any) {
-        let message = "Crashed with force unwrap on \(Date()) in \(#function) in \(#file)"
-        SentryLog.log(withMessage: message, andLevel: .error)
-        let kaboom: Int? = nil
-        _ = kaboom!
-    }
-
-    @IBAction func crashWithSentryCrash(_ sender: Any) {
-        let message = "Crashed with SentrySDK.crash on \(Date()) in \(#function) in \(#file)"
-        SentryLog.log(withMessage: message, andLevel: .error)
-        SentrySDK.crash()
-    }
-
-    @IBAction func noCrashJustEvent(_ sender: Any) {
-        let message = "Didn't crash, just sent a test event on \(Date()) in \(#function) in \(#file)"
-        let event = Event(level: .error)
-        event.message = message
-        SentrySDK.capture(event: event)
-    }
-}
-#endif
