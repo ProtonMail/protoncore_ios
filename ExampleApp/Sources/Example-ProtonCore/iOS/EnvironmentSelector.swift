@@ -24,7 +24,6 @@ import UIKit
 import ProtonCoreDoh
 import ProtonCoreObfuscatedConstants
 import ProtonCoreEnvironment
-import Sentry
 
 protocol EnvironmentSelectorDelegate: AnyObject {
     func environmentChanged(to env: Environment)
@@ -43,7 +42,6 @@ final class EnvironmentSelector: UIView {
     @IBAction private func environmentChanged(_ sender: Any!) {
         customDomain.isHidden = selector.selectedSegmentIndex != EnvironmentSelector.customDomainIndex
         delegate?.environmentChanged(to: currentEnvironment)
-        ensureEnvironmentSwitchWillBeSentAlongsideCrashReport()
     }
 
     required init?(coder: NSCoder) {
@@ -62,13 +60,6 @@ final class EnvironmentSelector: UIView {
             view.leadingAnchor.constraint(equalTo: leadingAnchor),
             view.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
-        ensureEnvironmentSwitchWillBeSentAlongsideCrashReport()
-    }
-
-    private func ensureEnvironmentSwitchWillBeSentAlongsideCrashReport() {
-        let breadcrumb = Breadcrumb(level: .debug, category: "environment")
-        breadcrumb.message = currentEnvironment.doh.getCurrentlyUsedHostUrl()
-        SentrySDK.addBreadcrumb(crumb: breadcrumb)
     }
 
     var currentEnvironment: Environment {

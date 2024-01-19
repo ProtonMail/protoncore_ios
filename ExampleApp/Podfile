@@ -169,10 +169,6 @@ def shared_uitests_dependencies
   pod "swift-snapshot-testing", :path => "../"
 end
 
-def crash_reporting_and_analytics
-  pod "Sentry", :git => "https://github.com/getsentry/sentry-cocoa.git", :tag => "5.2.2"
-end
-
 abstract_target "iOS" do
 
   platform :ios, "14.0"
@@ -182,7 +178,6 @@ abstract_target "iOS" do
 
     protoncore_dependencies
     protoncore_ios
-    crash_reporting_and_analytics
   end
 
   target "Example-iOS-Mail-AppStoreIAP" do
@@ -190,7 +185,6 @@ abstract_target "iOS" do
 
     protoncore_dependencies
     protoncore_ios
-    crash_reporting_and_analytics
   end
 
   target "Example-iOS-Mail-LocalIAP" do
@@ -198,7 +192,6 @@ abstract_target "iOS" do
 
     protoncore_dependencies
     protoncore_ios
-    crash_reporting_and_analytics
   end
 
   target "Example-iOS-VPN-AppStoreIAP" do
@@ -206,7 +199,6 @@ abstract_target "iOS" do
 
     protoncore_dependencies
     protoncore_ios
-    crash_reporting_and_analytics
   end
 
   target "Example-iOS-VPN-LocalIAP" do
@@ -214,7 +206,6 @@ abstract_target "iOS" do
 
     protoncore_dependencies
     protoncore_ios
-    crash_reporting_and_analytics
   end
   
   target "Example-iOS-Calendar-AppStoreIAP" do
@@ -222,7 +213,6 @@ abstract_target "iOS" do
 
     protoncore_dependencies
     protoncore_ios
-    crash_reporting_and_analytics
   end
 
   target "Example-iOS-Calendar-LocalIAP" do
@@ -230,7 +220,6 @@ abstract_target "iOS" do
 
     protoncore_dependencies
     protoncore_ios
-    crash_reporting_and_analytics
   end
 
   target "Example-iOS-Drive-AppStoreIAP" do
@@ -238,7 +227,6 @@ abstract_target "iOS" do
 
     protoncore_dependencies
     protoncore_ios
-    crash_reporting_and_analytics
   end
 
   target "Example-iOS-Drive-LocalIAP" do
@@ -246,7 +234,6 @@ abstract_target "iOS" do
 
     protoncore_dependencies
     protoncore_ios
-    crash_reporting_and_analytics
   end
 
   target "Example-UnitTests" do
