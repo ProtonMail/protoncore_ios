@@ -180,6 +180,8 @@ extension String {
     static let ohhttpStubsPackage: String = "OHHTTPStubs"
     static let reachabilitySwift: String = "Reachability"
     static let reachabilitySwiftPackage: String = "Reachability.swift"
+    static let sentry: String = "Sentry"
+    static let sentryPackage: String = "sentry-cocoa"
     static let sdWebImage: String = "SDWebImage"
     static let swiftBCrypt: String = "SwiftBCrypt"
     static let swiftOTP: String = "SwiftOTP"
@@ -298,6 +300,7 @@ extension Target.Dependency {
     static var lottie: Target.Dependency { .product(name: .lottie, package: .lottiePackage) }
     static var ohhttpStubs: Target.Dependency { .product(name: .ohhttpStubs, package: .ohhttpStubsPackage) }
     static var reachabilitySwift: Target.Dependency { .product(name: .reachabilitySwift, package: .reachabilitySwiftPackage) }
+    static var sentry: Target.Dependency { .product(name: .sentry, package: .sentryPackage) }
     static var snapshotTesting: Target.Dependency { .product(name: .snapshotTesting, package: .snapshotTestingPackage) }
     static var swiftBCrypt: Target.Dependency { .product(name: .swiftBCrypt, package: .swiftBCrypt) }
     static var swiftOTP: Target.Dependency { .product(name: .swiftOTP, package: .swiftOTP) }
@@ -990,13 +993,18 @@ add(
 add(
     product: .log,
     targets: [
-        coreTarget(name: .log, path: "libraries/Log/Sources"),
-
-        coreTestTarget(name: .log + "Tests",
-                       dependencies: [
-                           .log
-                       ],
-                       path: "libraries/Log/Tests")
+        coreTarget(
+            name: .log,
+            dependencies:  [.sentry],
+            path: "libraries/Log/Sources"
+        ),
+        coreTestTarget(
+            name: .log + "Tests",
+            dependencies: [
+                .log
+            ],
+            path: "libraries/Log/Tests"
+        )
     ]
 )
 
@@ -1975,7 +1983,11 @@ let package = Package(
         .package(
             url: "https://github.com/nalexn/ViewInspector.git",
             .upToNextMajor(from: "0.9.9")
-            ),
+        ),
+        .package(
+            url: "https://github.com/getsentry/sentry-cocoa.git",
+            .upToNextMajor(from: "8.16.1")
+        )
     ],
     targets: targets + [
         .plugin(name: .obfuscatedConstantsGenerationPlugin,

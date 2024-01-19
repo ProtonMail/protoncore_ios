@@ -579,7 +579,7 @@ extension StoreKitManager: SKProductsRequestDelegate {
             assertionFailure("This method should never be called with dynamic plans. The StoreKitDataSource object fetches the SKProducts")
         }
         if !response.invalidProductIdentifiers.isEmpty {
-            PMLog.error("Some IAP identifiers are reported as invalid by the AppStore: \(response.invalidProductIdentifiers)")
+            PMLog.error("Some IAP identifiers are reported as invalid by the AppStore: \(response.invalidProductIdentifiers)", sendToExternal: true)
         }
         inAppPurchaseIdentifiersSet(Set(response.products.map(\.productIdentifier)))
         availableProducts = response.products

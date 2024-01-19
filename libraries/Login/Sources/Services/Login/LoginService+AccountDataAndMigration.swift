@@ -77,7 +77,7 @@ extension LoginService {
         manager.getAddresses { [weak self] result in
             switch result {
             case .failure(let error):
-                PMLog.error("Cannot fetch addresses for user")
+                PMLog.error("Cannot fetch addresses for user", sendToExternal: true)
                 completion(.failure(error.asLoginError()))
 
             case .success(let addresses):
@@ -315,7 +315,7 @@ extension LoginService {
                 case let .failure(.apiMightBeBlocked(message, originalError)):
                     completion(.failure(.apiMightBeBlocked(message: message, originalError: originalError)))
                 case let .failure(error):
-                    PMLog.debug("Fetching user info with \(error)")
+                    PMLog.error("Fetching user info with \(error)", sendToExternal: true)
                     completion(.failure(.generic(message: error.userFacingMessageInLogin, code: error.codeInLogin, originalError: error)))
                 }
             }
@@ -358,10 +358,10 @@ extension LoginService {
                     PMLog.debug("Address keys already created, moving on")
                     fetchUserDataAndRetryFetchingAddressesAndEncryptionData()
                 case let .generic(message, code, originalError):
-                    PMLog.error("Cannot fetch addresses for user")
+                    PMLog.error("Cannot fetch addresses for user", sendToExternal: true)
                     completion(.failure(.generic(message: message, code: code, originalError: originalError)))
                 case let .apiMightBeBlocked(message, originalError):
-                    PMLog.error("Cannot fetch addresses for user")
+                    PMLog.error("Cannot fetch addresses for user", sendToExternal: true)
                     completion(.failure(.apiMightBeBlocked(message: message, originalError: originalError)))
                 }
             }
@@ -419,7 +419,7 @@ extension LoginService {
             case let .success(salts):
                 self?.makesPassphrasesAndValidateMailboxPassword(addresses: addresses, user: user, mailboxPassword: mailboxPassword, salts: salts, completion: completion)
             case let .failure(error):
-                PMLog.debug("Fetching key salts failed with \(error)")
+                PMLog.error("Fetching key salts failed with \(error)", sendToExternal: true)
                 completion(.failure(error.asLoginError()))
             }
         }
@@ -463,7 +463,7 @@ extension LoginService {
                 }
 
             case let .failure(error):
-                PMLog.debug("Making passphrases failed with \(error)")
+                PMLog.error("Making passphrases failed with \(error)", sendToExternal: true)
                 completion(.failure(.generic(message: error.localizedDescription,
                                              code: error.bestShotAtReasonableErrorCode,
                                              originalError: error)))

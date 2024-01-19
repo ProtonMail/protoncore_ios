@@ -198,7 +198,7 @@ public final class LoginService: Login {
                         user: user, mailboxPassword: mailboxPassword, passwordMode: passwordMode, completion: completion
                     )
                 case let .failure(error):
-                    PMLog.debug("Getting user info failed with \(error)")
+                    PMLog.error("Getting user info failed with \(error)", sendToExternal: true)
                     completion(.failure(error.asLoginError()))
                 }
             }

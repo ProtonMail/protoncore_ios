@@ -289,7 +289,7 @@ extension Response {
             return (true, object)
         } catch let decodingError {
             error = errorToReturn.toResponseError(updating: error)
-            PMLog.debug("Failed to parse \(T.self): \(decodingError)")
+            PMLog.error("Failed to parse \(T.self): \(decodingError)", sendToExternal: true)
             return (false, nil)
         }
     }

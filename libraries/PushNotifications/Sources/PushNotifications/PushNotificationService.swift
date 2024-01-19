@@ -78,7 +78,7 @@ public class PushNotificationService: NSObject, PushNotificationServiceProtocol 
     private func registerForRemoteNotifications() {
         NotificationCenterFactory.current.requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
             guard granted else {
-                PMLog.error("User didn't grant permission")
+                PMLog.error("User didn't grant permission", sendToExternal: true)
                 return
             }
             DispatchQueue.main.async {
@@ -102,7 +102,7 @@ public class PushNotificationService: NSObject, PushNotificationServiceProtocol 
 
     public func didFailToRegisterForRemoteNotifications(withError error: Error) {
         registrationState = .failed
-        PMLog.error("Failed to register for remote notifications. \(error.localizedDescription)")
+        PMLog.error("Failed to register for remote notifications. \(error.localizedDescription)", sendToExternal: true)
     }
 
     public func registerHandler(_ handler: NotificationHandler, forType type: String) {
@@ -150,13 +150,13 @@ extension PushNotificationService {
 
         guard let message = userInfo?["unencryptedMessage"] as? [String: Any],
               let type = message["type"] as? String else {
-            PMLog.error("Unknown message format, ignoring…")
+            PMLog.error("Unknown message format, ignoring…", sendToExternal: true)
             completion([])
             return
         }
 
         guard let handler = handlers[type] else {
-            PMLog.error("Unknown message type \(type), possibly from the future")
+            PMLog.error("Unknown message type \(type), possibly from the future", sendToExternal: true)
             completion([])
             return
         }
@@ -220,7 +220,7 @@ extension PushNotificationService {
                 }
            }
         } catch {
-            PMLog.error("Couldn't register APNS token: \(error.localizedDescription)")
+            PMLog.error("Couldn't register APNS token: \(error.localizedDescription)", sendToExternal: true)
         }
     }
 
