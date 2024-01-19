@@ -42,6 +42,26 @@ open class Keychain {
             }
         }
     }
+    
+    public enum AccessError: LocalizedError {
+        case readFailed(key: String, error: OSStatus)
+        case writeFailed(key: String, error: OSStatus)
+        case updateFailed(key: String, error: OSStatus)
+        case deleteFailed(key: String, error: OSStatus)
+        
+        public var errorDescription: String? {
+            switch self {
+            case let .readFailed(key, code):
+                return "Keychain.AccessError.readFailed(\(key), \(code))"
+            case let .writeFailed(key, code):
+                return "Keychain.AccessError.writeFailed(\(key), \(code))"
+            case let .updateFailed(key, code):
+                return "Keychain.AccessError.updateFailed(\(key), \(code))"
+            case let .deleteFailed(key, code):
+                return "Keychain.AccessError.deleteFailed(\(key), \(code))"
+            }
+        }
+    }
 
     internal var accessibility: Accessibility
     internal var authenticationPolicy: AccessControl
@@ -62,32 +82,90 @@ open class Keychain {
         self.authenticationPolicy = .none
     }
 
+    // this method returns regardless of whether:
+    // * the value was successfully added or updated in the keychain
+    // * keychain update failed because of the keychain access error
     public func set(_ data: Data, forKey key: String) {
         self.add(data: data, forKey: key)
     }
 
+    // this method returns regardless of whether:
+    // * the value was successfully added or updated in the keychain
+    // * keychain update failed because of the keychain access error
     public func set(_ string: String, forKey key: String) {
         self.add(data: string.data(using: .utf8)!, forKey: key)
     }
+    
+    // this method:
+    // * returns if the value was successfully added or updated in the keychain
+    // * throws the error if keychain update failed because of the keychain access error
+    public func setOrError(_ data: Data, forKey key: String) throws {
+        try self.addOrError(data: data, forKey: key)
+    }
 
+    // this method:
+    // * returns if the value was successfully added or updated in the keychain
+    // * throws the error if keychain update failed because of the keychain access error
+    public func setOrError(_ string: String, forKey key: String) throws {
+        try self.addOrError(data: string.data(using: .utf8)!, forKey: key)
+    }
+
+    // this method:
+    // * returns the value if it was found in the keychain,
+    // * returns nil if there was no value in the keychain OR the keychain read failed because of the keychain access error
     public func data(forKey key: String) -> Data? {
         return self.getData(forKey: key)
     }
 
+    // this method:
+    // * returns the value if it was found in the keychain,
+    // * returns nil if there was no value in the keychain OR the keychain read failed because of the keychain access error
     public func string(forKey key: String) -> String? {
         guard let data = self.getData(forKey: key) else {
             return nil
         }
         return String(data: data, encoding: .utf8)
     }
+    
+    // this method:
+    // * returns the value if it was found in the keychain,
+    // * returns nil if there was no value in the keychain,
+    // * throws the error if keychain read failed because of the keychain access error
+    public func dataOrError(forKey key: String) throws -> Data? {
+        try self.getDataOrError(forKey: key)
+    }
 
+    // this method:
+    // * returns the value if it was found in the keychain,
+    // * returns nil if there was no value in the keychain,
+    // * throws the error if keychain read failed because of the keychain access error
+    public func stringOrError(forKey key: String) throws -> String? {
+        guard let data = try self.getDataOrError(forKey: key) else { return nil }
+        return String(data: data, encoding: .utf8)
+    }
+
+    // this method returns regardless of whether:
+    // * keychain delete succeeded
+    // * there was nothing to remove
+    // * keychain delete failed because of the keychain access error
     public func remove(forKey key: String) {
         _ = self.remove(key)
     }
+    
+    // this method:
+    // * returns if keychain delete succeeds or if there was nothing to remove,
+    // * throws if keychain delete failed because of the keychain access error
+    public func removeOrError(forKey key: String) throws {
+        try self.removeOrError(key)
+    }
 
     // Private - internal for unit tests
-
+    
     internal func getData(forKey key: String) -> Data? {
+        try? getDataOrError(forKey: key)
+    }
+
+    internal func getDataOrError(forKey key: String) throws -> Data? {
         var query: [String: AnyObject] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: self.service as AnyObject,
@@ -107,14 +185,20 @@ open class Keychain {
             query[kSecAttrAccessControl as String] = accessControl
         }
 
-        return  keychainQueue.sync {
+        return try keychainQueue.sync {
             var result: AnyObject?
             let code = withUnsafeMutablePointer(to: &result) {
                 SecItemCopyMatching(query as CFDictionary, UnsafeMutablePointer($0))
             }
 
             guard code == noErr, let data = result as? Data else {
-                return nil
+                if code == errSecItemNotFound {
+                    // data not found in the keychain, return nil
+                    return nil
+                } else {
+                    // reading from keychain errored out, return the error
+                    throw Keychain.AccessError.readFailed(key: key, error: code)
+                }
             }
 
             return data
@@ -123,6 +207,15 @@ open class Keychain {
 
     @discardableResult
     internal func remove(_ key: String) -> Bool {
+        do {
+            try removeOrError(key)
+            return true
+        } catch {
+            return false
+        }
+    }
+
+    internal func removeOrError(_ key: String) throws -> Void {
         var query: [String: AnyObject] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: self.service as AnyObject,
@@ -134,19 +227,26 @@ open class Keychain {
             query[kSecUseDataProtectionKeychain as String] = kCFBooleanTrue
         }
 
-        return keychainQueue.sync(flags: .barrier) {
+        return try keychainQueue.sync(flags: .barrier) {
             let code = SecItemDelete(query as CFDictionary)
 
-            guard code == noErr else {
-                return false
+            guard code == noErr || code == errSecItemNotFound else {
+                throw Keychain.AccessError.deleteFailed(key: key, error: code)
             }
-
-            return true
         }
     }
 
     @discardableResult
     internal func add(data value: Data, forKey key: String) -> Bool {
+        do {
+            try addOrError(data: value, forKey: key)
+            return true
+        } catch {
+            return false
+        }
+    }
+
+    internal func addOrError(data value: Data, forKey key: String) throws -> Void {
         // search for existing
         var query: [String: AnyObject] = [
             kSecClass as String: kSecClassGenericPassword,
@@ -163,7 +263,7 @@ open class Keychain {
         if #unavailable(macOS 11.0, iOS 15.0, macCatalyst 15.0) {
             queryForSearch[kSecUseAuthenticationUI as String] = kSecUseAuthenticationUIFail
         }
-        return keychainQueue.sync(flags: .barrier) {
+        return try keychainQueue.sync(flags: .barrier) {
             let codeExisting = SecItemCopyMatching(queryForSearch as CFDictionary, nil)
 
             // update
@@ -175,8 +275,10 @@ open class Keychain {
                 self.injectAccessControlAttributes(into: &updateAttributes)
 
                 let codeUpdate = SecItemUpdate(query as CFDictionary, updateAttributes as CFDictionary)
-                assert(codeUpdate == noErr, "Error updating \(key) to Keychain: \(codeUpdate)")
-                return codeUpdate == noErr
+                guard codeUpdate == noErr else {
+                    throw Keychain.AccessError.updateFailed(key: key, error: codeUpdate)
+                }
+                return
             }
 
             // add new
@@ -186,8 +288,10 @@ open class Keychain {
             self.injectAccessControlAttributes(into: &newAttributes)
 
             let code = SecItemAdd(newAttributes as CFDictionary, nil)
-            assert(code == noErr, "Error saving \(key) to Keychain: \(code)")
-            return code == noErr
+            guard code == noErr else {
+                throw Keychain.AccessError.writeFailed(key: key, error: code)
+            }
+            return
         }
     }
 
@@ -216,7 +320,7 @@ open class Keychain {
         return keychainQueue.sync(flags: .barrier) {
             let code = SecItemDelete(query as CFDictionary)
 
-            guard code == noErr else {
+            guard code == noErr || code == errSecItemNotFound else {
                 return false
             }
 
