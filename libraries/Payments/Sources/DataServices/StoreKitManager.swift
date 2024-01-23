@@ -648,7 +648,18 @@ extension StoreKitManager: SKPaymentTransactionObserver {
         case .purchased:
             // Flatten async calls inside `proceed()`
             let group = DispatchGroup()
-            group.enter()
+            group.enter()            
+
+            guard transaction.original == nil 
+                    || transaction.transactionIdentifier == transaction.original?.transactionIdentifier else {
+                // This is not the first purchase.
+                // Caveat: Apple says original is undefined for transactionStates other than .restored,
+                // but we found this holds true as well for .purchased. So far. Proceed with caution.
+                finishTransaction(transaction, nil)
+                callSuccessCompletion(for: cacheKey, with: .autoRenewal)
+                group.leave()
+                return
+            }
 
             processPurchasedStoreKitTransaction(
                 transaction, cacheKey: cacheKey, shouldVerifyPurchaseWasForSameAccount: shouldVerify, group: group
@@ -667,7 +678,11 @@ extension StoreKitManager: SKPaymentTransactionObserver {
         case .deferred, .purchasing:
             callDeferredCompletion(for: cacheKey)
         case .restored:
-            break // never happens in our flow
+            // Never happens in our flow, but should it happen from flows from a
+            // future app on a separate device,
+            // we need to do something to avoid the transaction
+            // reappearing on every run
+            callSuccessCompletion(for: cacheKey, with: .withPurchaseAlreadyProcessed)
         @unknown default:
             break
         }

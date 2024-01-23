@@ -49,6 +49,8 @@ public enum PaymentSucceeded: Equatable {
     case resolvingIAPToCredits
     @available(*, deprecated, message: "Please stop using `resolvingIAPToCreditsCausedByError`. We no longer credit accounts")
     case resolvingIAPToCreditsCausedByError
+    /// Case for repeated payments of an existing subscription
+    case autoRenewal
 }
 
 public protocol StoreKitManagerProtocol: NSObjectProtocol {
@@ -114,7 +116,7 @@ public extension StoreKitManagerProtocol {
             switch result {
             case .withoutExchangingToken(let token):
                 successCompletion(token)
-            case .cancelled, .withoutIAP, .withoutObtainingToken, .withPurchaseAlreadyProcessed, .resolvingIAPToSubscription, .resolvingIAPToCredits, .resolvingIAPToCreditsCausedByError:
+            case .cancelled, .withoutIAP, .withoutObtainingToken, .withPurchaseAlreadyProcessed, .resolvingIAPToSubscription, .resolvingIAPToCredits, .resolvingIAPToCreditsCausedByError, .autoRenewal:
                 successCompletion(nil)
             }
         }, errorCompletion: errorCompletion, deferredCompletion: deferredCompletion)
