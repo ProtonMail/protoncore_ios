@@ -65,7 +65,7 @@
 
 "The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
 
-"Recovery process cancelled" = "Recovery process cancelled";
+"Recovery process not started" = "Recovery process not started";
 
 "Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
 

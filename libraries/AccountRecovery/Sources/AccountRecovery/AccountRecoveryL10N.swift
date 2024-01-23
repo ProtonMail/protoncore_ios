@@ -27,11 +27,13 @@ public enum ARTranslation: TranslationsExposing {
         #if SPM
         return Bundle.module
         #else
-        return Bundle(path: Bundle(for: Handler.self).path(forResource: "Translations-AccountRecovery", ofType: "bundle")!)!
+        return Bundle(path: Bundle(for: Handler.self).path(forResource: "Resources-AccountRecovery", ofType: "bundle")!)!
         #endif
     }
 
+    #if DEBUG
     public static var prefixForMissingValue: String = "zzz"
+    #endif
 
     case settingsItem
     case expiredViewTitle
@@ -56,7 +58,7 @@ public enum ARTranslation: TranslationsExposing {
         case .expiredViewTitle:
             return localized(key: "Recovery process expired", comment: "Title for expired recovery process")
         case .inactiveViewTitle:
-            return localized(key: "Recovery process cancelled", comment: "Title for no password reset in progress")
+            return localized(key: "Recovery process not started", comment: "Title for no password reset in progress. This is screen is currently only shown in development, as a placeholder")
         case .insecureViewTitle:
             return localized(key: "Insecure_View_Title", comment: "Title for insecure state")
         case .insecureViewCancelButtonCTA:

@@ -28,7 +28,20 @@ public enum AccountRecoveryModule {
     /// Feature switch that governs whether Account Recovery code is active
     public static let feature = CoreFeatureFlagType.accountRecovery
     /// Resource bundle for the Account Recovery module
-    public static let resourceBundle = Bundle.module
+    public static var resourceBundle: Bundle {
+        #if SWIFT_PACKAGE
+        let resourceBundle = Bundle.module
+        return resourceBundle
+        #else
+        let podBundle = Bundle(for: AccountRecoveryClass.self)
+        if let bundleURL = podBundle.url(forResource: "Resources-AccountRecovery", withExtension: "bundle") {
+            if let bundle = Bundle(url: bundleURL) {
+                return bundle
+            }
+        }
+        return podBundle
+        #endif
+    }
     /// Localized name of the settings item for Account Recovery
     public static let settingsItem = ARTranslation.settingsItem.l10n
     /// `APIService`-accepting closure to obtain the Account Recovery View Controller in Settings
@@ -39,3 +52,5 @@ public enum AccountRecoveryModule {
     }
 }
 #endif
+
+private class AccountRecoveryClass {}

@@ -17,9 +17,11 @@
 //  along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
-import ProtonCorePushNotifications
 import NotificationCenter
 import UserNotifications
+
+#if canImport(ProtonCorePushNotifications)
+import ProtonCorePushNotifications
 
 public enum AccountRecoveryHandlingError: Error {
     case notificationTypeNotRecognized
@@ -63,3 +65,4 @@ extension NotificationType {
                                                              NotificationType.accountRecoveryExpired
                                                             ])
 }
+#endif
