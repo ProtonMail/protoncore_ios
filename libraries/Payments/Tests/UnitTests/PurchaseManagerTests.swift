@@ -138,6 +138,9 @@ final class PurchaseManagerTests: XCTestCase {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        plansDataSourceMock.detailsOfAvailablePlanInstanceCorrespondingToIAPStub.bodyIs { _, _ in
+                .init(cycle: 12, description: "description", periodEnd: 123456, price: [.init(ID: "ID", current: 999, currency: "USD")])
+        }
         plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
                 .dummy.updated(
                     ID: "test_plan_id",
@@ -204,6 +207,9 @@ final class PurchaseManagerTests: XCTestCase {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        plansDataSourceMock.detailsOfAvailablePlanInstanceCorrespondingToIAPStub.bodyIs { _, _ in
+                .init(cycle: 12, description: "description", periodEnd: 123456, price: [.init(ID: "ID", current: 999, currency: "USD")])
+        }
         plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
                 .dummy.updated(
                     ID: "test_plan_id",
@@ -243,6 +249,9 @@ final class PurchaseManagerTests: XCTestCase {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        plansDataSourceMock.detailsOfAvailablePlanInstanceCorrespondingToIAPStub.bodyIs { _, _ in
+                .init(cycle: 12, description: "description", periodEnd: 123456, price: [.init(ID: "ID", current: 999, currency: "USD")])
+        }
         plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
                 .dummy.updated(
                     ID: "test_plan_id",
@@ -345,6 +354,9 @@ final class PurchaseManagerTests: XCTestCase {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        plansDataSourceMock.detailsOfAvailablePlanInstanceCorrespondingToIAPStub.bodyIs { _, _ in
+                .init(cycle: 12, description: "description", periodEnd: 123456, price: [.init(ID: "ID", current: 999, currency: "USD")])
+        }
         plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
                 .dummy.updated(ID: "test_plan_id", name: "ios_test_12_usd_non_renewing")
         }
@@ -446,6 +458,9 @@ final class PurchaseManagerTests: XCTestCase {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        plansDataSourceMock.detailsOfAvailablePlanInstanceCorrespondingToIAPStub.bodyIs { _, _ in
+                .init(cycle: 12, description: "description", periodEnd: 123456, price: [.init(ID: "ID", current: 999, currency: "USD")])
+        }
         plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
                 .dummy.updated(ID: "test_plan_id", name: "ios_test_12_usd_non_renewing")
         }
@@ -525,6 +540,9 @@ final class PurchaseManagerTests: XCTestCase {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        plansDataSourceMock.detailsOfAvailablePlanInstanceCorrespondingToIAPStub.bodyIs { _, _ in
+                .init(cycle: 12, description: "description", periodEnd: 123456, price: [.init(ID: "ID", current: 999, currency: "USD")])
+        }
         plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
                 .dummy.updated(
                     ID: "test_plan_id",
@@ -592,6 +610,9 @@ final class PurchaseManagerTests: XCTestCase {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        plansDataSourceMock.detailsOfAvailablePlanInstanceCorrespondingToIAPStub.bodyIs { _, _ in
+                .init(cycle: 12, description: "description", periodEnd: 123456, price: [.init(ID: "ID", current: 999, currency: "USD")])
+        }
         plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
                 .dummy.updated(
                     ID: "test_plan_id",
@@ -655,6 +676,9 @@ final class PurchaseManagerTests: XCTestCase {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        plansDataSourceMock.detailsOfAvailablePlanInstanceCorrespondingToIAPStub.bodyIs { _, _ in
+                .init(cycle: 12, description: "description", periodEnd: 123456, price: [.init(ID: "ID", current: 999, currency: "USD")])
+        }
         plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
                 .dummy.updated(
                     ID: "test_plan_id",
@@ -716,6 +740,9 @@ final class PurchaseManagerTests: XCTestCase {
         // given
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .right(plansDataSourceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
+        plansDataSourceMock.detailsOfAvailablePlanInstanceCorrespondingToIAPStub.bodyIs { _, _ in
+                .init(cycle: 12, description: "description", periodEnd: 123456, price: [.init(ID: "ID", current: 999, currency: "USD")])
+        }
         plansDataSourceMock.detailsOfAvailablePlanCorrespondingToIAPStub.bodyIs { _, _ in
                 .dummy.updated(
                     ID: "test_plan_id",

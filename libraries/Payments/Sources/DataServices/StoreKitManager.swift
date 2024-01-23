@@ -791,6 +791,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
         let planName: String
         let planAmount: Int
         let planIdentifier: String
+        let cycle: Int
         switch planService {
         case .left(let planService):
             if planService.detailsOfPlanCorrespondingToIAP(plan) == nil {
@@ -807,6 +808,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
             planName = details.name
             planAmount = amount
             planIdentifier = protonIdentifier
+            cycle = 12
 
         case .right(let planDataSource):
             guard let details = planDataSource.detailsOfAvailablePlanCorrespondingToIAP(plan),
@@ -821,6 +823,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
             planName = name
             planAmount = price.current
             planIdentifier = id
+            cycle = instance.cycle
         }
 
         let amountDue: Int
@@ -828,7 +831,10 @@ extension StoreKitManager: SKPaymentTransactionObserver {
             amountDue = cachedAmountDue
         } else {
             let validateSubscriptionRequest = paymentsApi.validateSubscriptionRequest(
-                api: apiService, protonPlanName: planName, isAuthenticated: applicationUserId() != nil
+                api: apiService,
+                protonPlanName: planName,
+                isAuthenticated: applicationUserId() != nil,
+                cycle: cycle
             )
             let response = try? validateSubscriptionRequest.awaitResponse(responseObject: ValidateSubscriptionResponse())
             let fetchedAmountDue = response?.validateSubscription?.amountDue
