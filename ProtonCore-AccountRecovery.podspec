@@ -25,21 +25,21 @@ Pod::Spec.new do |s|
 
     # s.framework = 'UIKit'
 
-    s.dependency 'ProtonCore-FeatureSwitch', $version
-    s.dependency 'ProtonCore-PushNotifications', $version
+    s.dependency 'ProtonCore-FeatureFlags', $version
     s.dependency 'ProtonCore-Services', $version
     s.dependency 'ProtonCore-Authentication', $version
     s.dependency 'ProtonCore-DataModel', $version
     s.dependency 'ProtonCore-UIFoundations', $version
     s.dependency 'ProtonCore-Networking', $version
     s.dependency 'ProtonCore-PasswordRequest', $version
+    s.dependency 'ProtonCore-MissingScopes', $version
         
     this_pod_does_not_have_subspecs(s)
 
     s.source_files = "libraries/AccountRecovery/Sources/**/*.swift"
     
     s.resource_bundles = {
-      "Resources-AccountRecovery" => ['libraries/AccountRecovery/Resources/**/*']
+      "Resources-AccountRecovery" => ['libraries/AccountRecovery/Sources/Resources/**/*']
     }
 
 
