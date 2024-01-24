@@ -73,9 +73,9 @@ public final class PaymentsApiMock: PaymentsApiProtocol {
     @FuncStub(PaymentsApiProtocol.paymentTokenStatusRequest, initialReturn: { PaymentTokenStatusRequest(api: $0.0, token: $0.1) }) public var paymentTokenStatusRequestStub
     public func paymentTokenStatusRequest(api: APIService, token: PaymentToken) -> PaymentTokenStatusRequest { paymentTokenStatusRequestStub(api, token) }
 
-    @FuncStub(PaymentsApiProtocol.validateSubscriptionRequest, initialReturn: { ValidateSubscriptionRequest(api: $0.0, protonPlanName: $0.1, isAuthenticated: $0.2) }) public var validateSubscriptionRequestStub
-    public func validateSubscriptionRequest(api: APIService, protonPlanName: String, isAuthenticated: Bool) -> ValidateSubscriptionRequest {
-        validateSubscriptionRequestStub(api, protonPlanName, isAuthenticated)
+    @FuncStub(PaymentsApiProtocol.validateSubscriptionRequest, initialReturn: { ValidateSubscriptionRequest(api: $0.0, protonPlanName: $0.1, isAuthenticated: $0.2, cycle: $0.3) }) public var validateSubscriptionRequestStub
+    public func validateSubscriptionRequest(api: APIService, protonPlanName: String, isAuthenticated: Bool, cycle: Int) -> ValidateSubscriptionRequest {
+        validateSubscriptionRequestStub(api, protonPlanName, isAuthenticated, cycle)
     }
 
     @FuncStub(PaymentsApiProtocol.countriesCountRequest, initialReturn: { CountriesCountRequest(api: $0) }) public var countriesCountRequestStub
