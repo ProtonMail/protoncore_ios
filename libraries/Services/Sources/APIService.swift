@@ -721,7 +721,7 @@ public extension APIService {
         // wait operations
         _ = sema.wait(timeout: DispatchTime.distantFuture)
         if let e = ret_error {
-            PMLog.debug(e.localizedDescription)
+            PMLog.error(e.localizedDescription, sendToExternal: true)
         }
         return ret_res
     }

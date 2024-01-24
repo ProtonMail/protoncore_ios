@@ -50,6 +50,7 @@ class ExampleAppDelegate: UIResponder, UIApplicationDelegate {
         if let logsDirectory = ProcessInfo.processInfo.environment["UITestsLogsDirectory"] {
             PMLog.logsDirectory = URL(fileURLWithPath: logsDirectory, isDirectory: true)
         }
+        PMLog.setEnvironment(environment: "black")
         return true
     }
 

@@ -141,7 +141,7 @@ public class AuthService: Client {
                                 According to the best of Account iOS team knowledge, POST /auth call must not happen in context of auth session of different user.
                                 Calling it in this scenario is like logging another user inside the session of already logged in user.
                                 This is programmer's error and must be investigated.
-                                """)
+                                """, sendToExternal: true)
                     // we invalidate both authenticated and unauthenticated session
                     // if POST /auth is called within the context of auth session,
                     // because we want to clear the session completely and start from the clean slate

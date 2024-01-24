@@ -142,8 +142,16 @@
                                                     <segue destination="BD3-1h-jNf" kind="push" id="ZBq-kW-hBd"/>
                                                 </connections>
                                             </button>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFd-Wv-mu2">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TtQ-Aj-EqF">
                                                 <rect key="frame" x="0.0" y="588.33333333333337" width="311" height="34.333333333333371"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Test PMLog - Sentry"/>
+                                                <connections>
+                                                    <action selector="testPMLogSentry:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="gPM-2b-6wl"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFd-Wv-mu2">
+                                                <rect key="frame" x="0.0" y="638.66666666666663" width="311" height="34.333333333333371"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App version " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Gc-pV-o1h">
                                                         <rect key="frame" x="0.0" y="0.0" width="141" height="34.333333333333336"/>

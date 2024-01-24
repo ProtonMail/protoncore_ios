@@ -101,7 +101,7 @@ extension StoreKitDataSource: SKProductsRequestDelegate {
     }
 
     func request(_: SKRequest, didFailWithError error: Error) {
-        PMLog.error("SKProduct fetch failed with error \(error)")
+        PMLog.error("SKProduct fetch failed with error \(error)", sendToExternal: true)
         request = nil
         ObservabilityEnv.report(.paymentQuerySubscriptionsTotal(status: .failed, isDynamic: false))
 

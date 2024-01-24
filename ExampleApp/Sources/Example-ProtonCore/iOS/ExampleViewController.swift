@@ -139,6 +139,10 @@ final class ExampleViewController: UIViewController, AccessibleView {
         dismissKeyboard()
     }
 
+    @IBAction func testPMLogSentry(_ sender: Any) {
+        PMLog.error("This is a test from ExampleApp", sendToExternal: true)
+    }
+
     private func dismissKeyboard() {
         _ = appVersionTextField.resignFirstResponder()
     }
