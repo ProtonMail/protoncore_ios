@@ -1,12 +1,35 @@
-## 16.0.1 (2023-12-04)
+## 17.0.0 (2024-01-24)
 
-### fixed (1 change)
+### added (7 changes)
 
-- [fix (payments tests): Fix a couple of auto-renewing purchase cases and update...](apple/shared/protoncore@96a8e47fcfb049e5bb50cc1232376d6d23fe7909) ([merge request](apple/shared/protoncore!1563))
+- [[CP-7216] feat(sentry): Send Sentry event when PMLog.error is called](apple/shared/protoncore@d090cfe2771735fd8065ed3b0cc176222bfe680d) ([merge request](apple/shared/protoncore!1624))
+- [[CALIOS-2598] Add week view and 3 days view icons to the ProtonIconSet](apple/shared/protoncore@ac03dc9ab8d5f651187b802259f298a50e3624e4) ([merge request](apple/shared/protoncore!1615))
+- [[CP-7169] Report Observability event when making queries to app store for dynamic plans](apple/shared/protoncore@458035139428382f0ff8f16c21a3f864a5486bb3) ([merge request](apple/shared/protoncore!1613))
+- [[CP-7168] Send static or dynamic version of payment events](apple/shared/protoncore@3c13ef62ff56f9ef1df36b4f2427899a1427ddbe) ([merge request](apple/shared/protoncore!1612))
+- [Add SSO callback scheme to LoginService.  Pass as parameter for macOS SSO requests.](apple/shared/protoncore@b9b856c29347b77926652aacf407ac11f5c64455) ([merge request](apple/shared/protoncore!1609))
+- [[CP-6518] New design for Grace period view](apple/shared/protoncore@a770eae1cc9086bee1827740644ba1a87dc3e99d) ([merge request](apple/shared/protoncore!1596))
+- [[CP-7046] Make Account Recovery settings item dynamic and according with newest designs](apple/shared/protoncore@41c6a7a27658c4fcec07c26fe2228c82de986ef7) ([merge request](apple/shared/protoncore!1591))
 
-###  (1 change)
+### changed (11 changes)
 
+- [[CP-7016] Podify AccountRecovery](apple/shared/protoncore@9bc6f93cb048e221fc12cf4b223b1c6b0c8e3026) ([merge request](apple/shared/protoncore!1623))
+- [[L10N-2671] Improve comments for translators](apple/shared/protoncore@5074644398518ece0eb9a0edbc7c6b41f95e00b5) ([merge request](apple/shared/protoncore!1610))
+- [[CP-7049] Update insecure state view](apple/shared/protoncore@077d33c5d8b5feccbf34b51490c1ba9fc35dc8bd) ([merge request](apple/shared/protoncore!1598))
+- [[CP-7048] Update design for Cancelled state of account recovery](apple/shared/protoncore@0945f85871e13fb0bde198d98679446fb9806813) ([merge request](apple/shared/protoncore!1600))
+- [[CP-7001] Migrate Account Recovery from FeatureSwitch to FeatureFlags](apple/shared/protoncore@a87f1de4a8e00d193c79c93c900872fb709a3a97) ([merge request](apple/shared/protoncore!1574))
+- [feat(AccountRecovery): Update password request screen](apple/shared/protoncore@c6518e09aeeca48d8a1d0f2adc63e49be3eeab6a) ([merge request](apple/shared/protoncore!1616))
+- [Remove token from log](apple/shared/protoncore@44e6e76fb5066ed7cac2b0b8590815e79d364d5d) ([merge request](apple/shared/protoncore!1597))
+- [TPE-481 - Update quark commands](apple/shared/protoncore@a34cf0cbccd2cdada35cb1d3eb15d31454593a28) ([merge request](apple/shared/protoncore!1584))
+- [[CP-6749]: Auto switch to sso login upon detection of sso login attempt](apple/shared/protoncore@024f80ceafcf54072d106ce19f0a8fc5c4e8ae2c) ([merge request](apple/shared/protoncore!1595))
+- [[CP-6387] Expose default initializer on DefaultRemoteDatasource.](apple/shared/protoncore@34fdae0011bf9d8dd2d9f90b43b21c3d31e0e4eb) ([merge request](apple/shared/protoncore!1588))
 - [[16.0.0] Releasing core version 16.0.0](apple/shared/protoncore@b5d503616b5f4522d77a3bcb4d8095cf89913aa7) ([merge request](apple/shared/protoncore!1561))
+
+### fixed (4 changes)
+
+- [Run UI related code in main queue](apple/shared/protoncore@f009e3ed8aa0da8814e6ee2e61813ae0b667c030) ([merge request](apple/shared/protoncore!1608))
+- [[CP-7016] use SPM provided way to refer to current module's resource bundle](apple/shared/protoncore@94753520ade0f5752148675ef24fed285706c3f0) ([merge request](apple/shared/protoncore!1576))
+- [Fix (account recovery): Fix account recovery status screen CP-7002](apple/shared/protoncore@efa6767c976ab0ac3e5416ff81ce219501296f12) ([merge request](apple/shared/protoncore!1575))
+- [fix (payments tests): Fix a couple of auto-renewing purchase cases and update...](apple/shared/protoncore@96a8e47fcfb049e5bb50cc1232376d6d23fe7909) ([merge request](apple/shared/protoncore!1563))
 
 ## 16.0.0 (2023-12-01)
 
