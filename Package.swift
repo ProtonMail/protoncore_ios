@@ -1986,7 +1986,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/getsentry/sentry-cocoa.git",
-            .upToNextMajor(from: "8.16.1")
+            exact: "8.18.0"
         )
     ],
     targets: targets + [
