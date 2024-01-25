@@ -38,6 +38,8 @@ struct CurrentPlanDetailsV5 {
         case description(DescriptionEntitlement)
 
         struct ProgressEntitlement: Equatable {
+            var title: String?
+            var iconUrl: URL?
             var text: String
             var min: Int
             var max: Int
@@ -59,6 +61,8 @@ struct CurrentPlanDetailsV5 {
             switch entitlement {
             case .progress(let entitlement):
                 entitlements.append(.progress(.init(
+                    title: entitlement.title,
+                    iconUrl: entitlement.iconName.flatMap { plansDataSource?.createIconURL(iconName: $0) },
                     text: entitlement.text,
                     min: entitlement.min,
                     max: entitlement.max,
