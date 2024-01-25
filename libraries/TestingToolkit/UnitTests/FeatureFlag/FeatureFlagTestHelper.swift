@@ -81,4 +81,8 @@ public extension ProtonCoreFeatureFlags.FeatureFlag {
     static var externalSSO: Self {
         .init(name: "ExternalSSO", enabled: true, variant: nil)
     }
+
+    static var splitStorage: Self {
+        .init(name: "SplitStorage", enabled: true, variant: nil)
+    }
 }
