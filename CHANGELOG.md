@@ -1,3 +1,14 @@
+## 18.0.0 (2024-01-25)
+
+### fix (1 change)
+
+- [fix: Bump Sentry version to 8.18.0](apple/shared/protoncore@6c0d1b1814040937ccc8bd5241e4bb33117c9435) ([merge request](apple/shared/protoncore!1634))
+
+### fixed (1 change)
+
+- [[CP-7201] fix: Remove hard-coded cycle in purchase request, made it parameterizable](apple/shared/protoncore@0c10572c061d43dd6baedcd2b19e855fa4319445) ([merge request](apple/shared/protoncore!1632))
+- [feat(dynamicPlans): Dynamic cycle in Validate subscription request](apple/shared/protoncore@749cb65d022e754b3143071f1ea9d4aad35a8d19) ([merge request](apple/shared/protoncore!1631))
+
 ## 17.0.0 (2024-01-24)
 
 ### added (7 changes)
