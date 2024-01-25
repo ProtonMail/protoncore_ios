@@ -133,7 +133,7 @@ protocol PaymentsApiProtocol {
     /// Get the status of any vendor
     func paymentStatusRequest(api: APIService) -> PaymentStatusRequest
     func buySubscriptionRequest(
-        api: APIService, planId: String, amount: Int, amountDue: Int, paymentAction: PaymentAction
+        api: APIService, planId: String, amount: Int, amountDue: Int, cycle: Int, paymentAction: PaymentAction
     ) throws -> SubscriptionRequest
     func buySubscriptionForZeroRequest(api: APIService, planId: String) -> SubscriptionRequest
     /// Get current subscription
@@ -158,20 +158,20 @@ class PaymentsApiImplementation: PaymentsApiProtocol {
         PaymentStatusRequest(api: api)
     }
 
-    func buySubscriptionRequest(api: APIService, planId: String, amount: Int, amountDue: Int, paymentAction: PaymentAction) throws -> SubscriptionRequest {
+    func buySubscriptionRequest(api: APIService, planId: String, amount: Int, amountDue: Int, cycle: Int, paymentAction: PaymentAction) throws -> SubscriptionRequest {
             guard Thread.isMainThread == false else {
                 assertionFailure("This is a blocking network request, should never be called from main thread")
                 throw AwaitInternalError.synchronousCallPerformedFromTheMainThread
             }
             if amountDue == amount {
                 // if amountDue is equal to amount, request subscription
-                return SubscriptionRequest(api: api, planId: planId, amount: amount, paymentAction: paymentAction)
+                return SubscriptionRequest(api: api, planId: planId, amount: amount, cycle: cycle, paymentAction: paymentAction)
             } else {
                 // if amountDue is not equal to amount, request credit for a full amount
                 let creditReq = creditRequest(api: api, amount: amount, paymentAction: paymentAction)
                 _ = try creditReq.awaitResponse(responseObject: CreditResponse())
                 // then request subscription for amountDue = 0
-                return SubscriptionRequest(api: api, planId: planId, amount: 0, paymentAction: paymentAction)
+                return SubscriptionRequest(api: api, planId: planId, amount: 0, cycle: cycle, paymentAction: paymentAction)
             }
     }
 
