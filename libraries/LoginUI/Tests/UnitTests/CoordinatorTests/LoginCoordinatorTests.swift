@@ -63,38 +63,34 @@ final class LoginCoordinatorTests: XCTestCase {
         return (authDelegateMock, navigationVC, rootVC, out)
     }
 
-    @MainActor
-    func testLoginCoordinatorClearSessionOnUserComingBackToRootViewController_SingleVC() async {
+    func testLoginCoordinatorClearSessionOnUserComingBackToRootViewController_SingleVC() {
         let (authDelegateMock, navigationVC, rootVC, out) = setUpStack()
         XCTAssertIdentical(navigationVC.viewControllers.first!, rootVC)
-        await out.userDidGoBack()
+        out.userDidGoBack()
         XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasCalledExactlyOnce)
         XCTAssertTrue(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.wasNotCalled)
     }
 
-    @MainActor
-    func testLoginCoordinatorClearSessionOnUserComingBackToRootViewController_TwoVC() async {
+    func testLoginCoordinatorClearSessionOnUserComingBackToRootViewController_TwoVC() {
         let (authDelegateMock, navigationVC, rootVC, out) = setUpStack()
         navigationVC.setViewControllers([rootVC, UIViewController()], animated: false)
-        await out.userDidGoBack()
+        out.userDidGoBack()
         XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasCalledExactlyOnce)
         XCTAssertTrue(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.wasNotCalled)
     }
 
-    @MainActor
-    func testLoginCoordinatorClearSessionOnUserComingBackToRootViewController_ThreeVC() async {
+    func testLoginCoordinatorClearSessionOnUserComingBackToRootViewController_ThreeVC() {
         let (authDelegateMock, navigationVC, rootVC, out) = setUpStack()
         navigationVC.setViewControllers([rootVC, TwoFactorViewController(), UIViewController()], animated: false)
-        await out.userDidGoBack()
+        out.userDidGoBack()
         XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasCalledExactlyOnce)
         XCTAssertTrue(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.wasNotCalled)
     }
 
-    @MainActor
-    func testLoginCoordinatorDoesNotClearSessionOnUserPoppingToPreviousViewController_ThreeVC() async {
+    func testLoginCoordinatorDoesNotClearSessionOnUserPoppingToPreviousViewController_ThreeVC() {
         let (authDelegateMock, navigationVC, rootVC, out) = setUpStack()
         navigationVC.setViewControllers([rootVC, UIViewController(), UIViewController()], animated: false)
-        await out.userDidGoBack()
+        out.userDidGoBack()
         XCTAssertTrue(authDelegateMock.onAuthenticatedSessionInvalidatedStub.wasNotCalled)
         XCTAssertTrue(authDelegateMock.onUnauthenticatedSessionInvalidatedStub.wasNotCalled)
     }
