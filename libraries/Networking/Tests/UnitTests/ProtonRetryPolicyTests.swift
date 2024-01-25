@@ -31,17 +31,17 @@ class ProtonRetryPolicyTests: XCTestCase {
     func testRetryLimit() {
         let sut = ProtonRetryPolicy(mode: .background, retryLimit: 2)
 
-        let e = expectation(description: "test \(999) retry limit")
+        let e = expectation(description: "test \(500) retry limit")
         e.assertForOverFulfill = true
         e.expectedFulfillmentCount = 1
-        sut.retry(statusCode: 999,
+        sut.retry(statusCode: 500,
                   retryCount: 1,
                   headers: nil) { retryResult in
             if case .retryWithDelay = retryResult {
                 e.fulfill()
             }
         }
-        sut.retry(statusCode: 999,
+        sut.retry(statusCode: 500,
                   retryCount: 2,
                   headers: nil) { retryResult in
             if case .retryWithDelay = retryResult {
