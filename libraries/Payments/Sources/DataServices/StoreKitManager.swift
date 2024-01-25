@@ -657,6 +657,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
                 // but we found this holds true as well for .purchased. So far. Proceed with caution.
                 finishTransaction(transaction, nil)
                 callSuccessCompletion(for: cacheKey, with: .autoRenewal)
+                PMLog.debug("Ignoring and finishing transaction corresponding to renewal cycle.")
                 group.leave()
                 return
             }
@@ -841,7 +842,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
             amountDue = fetchedAmountDue ?? planAmount
         }
 
-        let planToBeProcessed = PlanToBeProcessed(protonIdentifier: planIdentifier, amount: planAmount, amountDue: amountDue)
+        let planToBeProcessed = PlanToBeProcessed(protonIdentifier: planIdentifier, amount: planAmount, amountDue: amountDue, cycle: cycle)
 
         let isDynamic = featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)
 

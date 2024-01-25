@@ -38,8 +38,8 @@ public final class PaymentsApiMock: PaymentsApiProtocol {
 
     @ThrowingFuncStub(PaymentsApiProtocol.buySubscriptionRequest, initialReturn: { SubscriptionRequest(api: $0.0, planId: $0.1) }) public var buySubscriptionRequestStub
     public func buySubscriptionRequest(
-        api: APIService, planId: String, amount: Int, amountDue: Int, paymentAction: PaymentAction
-    ) throws -> SubscriptionRequest { try buySubscriptionRequestStub(api, planId, amount, amountDue, paymentAction) }
+        api: APIService, planId: String, amount: Int, amountDue: Int, cycle: Int, paymentAction: PaymentAction
+    ) throws -> SubscriptionRequest { try buySubscriptionRequestStub(api, planId, amount, amountDue, cycle, paymentAction) }
 
     @FuncStub(PaymentsApiProtocol.buySubscriptionForZeroRequest, initialReturn: { SubscriptionRequest(api: $0.0, planId: $0.1) }) public var buySubscriptionForZeroRequestStub
     public func buySubscriptionForZeroRequest(api: APIService, planId: String) -> SubscriptionRequest { buySubscriptionForZeroRequestStub(api, planId) }

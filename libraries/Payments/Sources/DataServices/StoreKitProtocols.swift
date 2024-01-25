@@ -158,6 +158,7 @@ struct PlanToBeProcessed {
     let protonIdentifier: String
     let amount: Int
     let amountDue: Int
+    let cycle: Int
 }
 
 protocol ProcessProtocol: AnyObject {
