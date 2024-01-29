@@ -63,19 +63,19 @@ open class Keychain {
     }
 
     public func set(_ data: Data, forKey key: String, attributes: [CFString: Any]? = nil) {
-        self.add(data: data, forKey: key)
+        self.add(data: data, forKey: key, attributes: attributes)
     }
 
     public func set(_ string: String, forKey key: String, attributes: [CFString: Any]? = nil) {
-        self.add(data: string.data(using: .utf8)!, forKey: key)
+        self.add(data: string.data(using: .utf8)!, forKey: key, attributes: attributes)
     }
 
     public func data(forKey key: String, attributes: [CFString: Any]? = nil) -> Data? {
-        return self.getData(forKey: key)
+        return self.getData(forKey: key, attributes: attributes)
     }
 
     public func string(forKey key: String, attributes: [CFString: Any]? = nil) -> String? {
-        guard let data = self.getData(forKey: key) else {
+        guard let data = self.getData(forKey: key, attributes: attributes) else {
             return nil
         }
         return String(data: data, encoding: .utf8)

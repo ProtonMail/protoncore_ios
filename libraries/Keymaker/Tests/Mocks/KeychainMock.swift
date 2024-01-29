@@ -24,7 +24,7 @@ import Foundation
 
 final class KeychainMock: Keychain {
     var dataForKeyClosure: ((String) -> Data?)!
-    override func data(forKey key: String) -> Data? {
+    override func data(forKey key: String, attributes: [CFString: Any]? = nil) -> Data? {
         return dataForKeyClosure(key)
     }
 }
