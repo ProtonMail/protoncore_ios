@@ -22,6 +22,13 @@
 import Foundation
 import Security
 
+public protocol SecItemMethodsProvider {
+    func SecItemCopyMatching(_ query: CFDictionary, _ result: UnsafeMutablePointer<CFTypeRef?>?) -> OSStatus
+    func SecItemAdd(_ attributes: CFDictionary, _ result: UnsafeMutablePointer<CFTypeRef?>?) -> OSStatus
+    func SecItemUpdate(_ query: CFDictionary, _ attributesToUpdate: CFDictionary) -> OSStatus
+    func SecItemDelete(_ query: CFDictionary) -> OSStatus
+}
+
 open class Keychain {
     internal enum Accessibility {
         case afterFirstUnlockThisDeviceOnly
@@ -68,99 +75,152 @@ open class Keychain {
     internal let accessGroup: String
     internal let service: String
     internal let keychainQueue = DispatchQueue(label: "me.proton.account.keychain.queue", attributes: .concurrent)
+    
+    private let secItemMethodsProvider: SecItemMethodsProvider
 
     internal func switchAccessibilitySettings(_ accessibility: Accessibility, authenticationPolicy: AccessControl) {
         self.accessibility = accessibility
         self.authenticationPolicy = authenticationPolicy
     }
 
-    public init(service: String, accessGroup: String) {
+    public init(service: String, accessGroup: String, secItemMethodsProvider: SecItemMethodsProvider? = nil) {
         self.service = service
         self.accessGroup = accessGroup
+        
+        self.secItemMethodsProvider = secItemMethodsProvider ?? SystemSecurityFrameworkSecItemMethodsProvider.instance
 
         self.accessibility = .afterFirstUnlockThisDeviceOnly
         self.authenticationPolicy = .none
     }
-
-    // this method returns regardless of whether:
-    // * the value was successfully added or updated in the keychain
-    // * keychain update failed because of the keychain access error
+    
+    /// Adds or updates the value in the keychain.
+    ///
+    /// This method returns regardless of whether:
+    /// * the value was successfully added or updated in the keychain
+    /// * keychain update failed because of the keychain access error
+    /// - Parameters:
+    ///   - data: data to be added / updated in keychain
+    ///   - key: key under which the data should be added / updated
+    @available(*, deprecated, message: "Please use the throwing alternative: setOrError(:forKey:) and handle the error")
     public func set(_ data: Data, forKey key: String) {
         self.add(data: data, forKey: key)
     }
 
-    // this method returns regardless of whether:
-    // * the value was successfully added or updated in the keychain
-    // * keychain update failed because of the keychain access error
+    /// Adds or updates the value in the keychain.
+    ///
+    /// This method returns regardless of whether:
+    /// * the value was successfully added or updated in the keychain
+    /// * keychain update failed because of the keychain access error
+    /// - Parameters:
+    ///   - string: string to be added / updated in keychain
+    ///   - key: key under which the string should be added / updated
+    @available(*, deprecated, message: "Please use the throwing alternative: setOrError(:forKey:) and handle the error")
     public func set(_ string: String, forKey key: String) {
         self.add(data: string.data(using: .utf8)!, forKey: key)
     }
     
-    // this method:
-    // * returns if the value was successfully added or updated in the keychain
-    // * throws the error if keychain update failed because of the keychain access error
+    /// Adds or updates the value in the keychain.
+    ///
+    /// This method:
+    /// * returns if the value was successfully added or updated in the keychain
+    /// * throws the error if keychain update failed because of the keychain access error
+    /// - Parameters:
+    ///   - data: data to be added / updated in keychain
+    ///   - key: key under which the data should be added / updated
     public func setOrError(_ data: Data, forKey key: String) throws {
         try self.addOrError(data: data, forKey: key)
     }
 
-    // this method:
-    // * returns if the value was successfully added or updated in the keychain
-    // * throws the error if keychain update failed because of the keychain access error
+    /// Adds or updates the value in the keychain.
+    ///
+    /// This method:
+    /// * returns if the value was successfully added or updated in the keychain
+    /// * throws the error if keychain update failed because of the keychain access error
+    /// - Parameters:
+    ///   - string: string to be added / updated in keychain
+    ///   - key: key under which the string should be added / updated
     public func setOrError(_ string: String, forKey key: String) throws {
         try self.addOrError(data: string.data(using: .utf8)!, forKey: key)
     }
 
-    // this method:
-    // * returns the value if it was found in the keychain,
-    // * returns nil if there was no value in the keychain OR the keychain read failed because of the keychain access error
+    /// Fetches the value from the keychain.
+    ///
+    /// This method:
+    /// * returns the value if it was found in the keychain,
+    /// * returns nil if there was no value in the keychain OR the keychain read failed because of the keychain access
+    /// - Parameters:
+    ///   - forKey: key under which the value is stored in keychain
+    @available(*, deprecated, message: "Please use the throwing alternative: dataOrError(forKey:) and handle the error")
     public func data(forKey key: String) -> Data? {
         return self.getData(forKey: key)
     }
 
-    // this method:
-    // * returns the value if it was found in the keychain,
-    // * returns nil if there was no value in the keychain OR the keychain read failed because of the keychain access error
+    /// Fetches the value from the keychain.
+    ///
+    /// This method:
+    /// * returns the value if it was found in the keychain,
+    /// * returns nil if there was no value in the keychain OR the keychain read failed because of the keychain access
+    /// - Parameters:
+    ///   - forKey: key under which the value is stored in keychain
+    @available(*, deprecated, message: "Please use the throwing alternative: stringOrError(forKey:) and handle the error")
     public func string(forKey key: String) -> String? {
         guard let data = self.getData(forKey: key) else {
             return nil
         }
         return String(data: data, encoding: .utf8)
     }
-    
-    // this method:
-    // * returns the value if it was found in the keychain,
-    // * returns nil if there was no value in the keychain,
-    // * throws the error if keychain read failed because of the keychain access error
+
+    /// Fetches the value from the keychain.
+    ///
+    /// This method:
+    /// * returns the value if it was found in the keychain,
+    /// * returns nil if there was no value in the keychain,
+    /// * throws the error if keychain read failed because of the keychain access error
+    /// - Parameters:
+    ///   - forKey: key under which the value is stored in keychain
     public func dataOrError(forKey key: String) throws -> Data? {
         try self.getDataOrError(forKey: key)
     }
 
-    // this method:
-    // * returns the value if it was found in the keychain,
-    // * returns nil if there was no value in the keychain,
-    // * throws the error if keychain read failed because of the keychain access error
+    /// Fetches the value from the keychain.
+    ///
+    /// This method:
+    /// * returns the value if it was found in the keychain,
+    /// * returns nil if there was no value in the keychain,
+    /// * throws the error if keychain read failed because of the keychain access error
+    /// - Parameters:
+    ///   - forKey: key under which the value is stored in keychain
     public func stringOrError(forKey key: String) throws -> String? {
         guard let data = try self.getDataOrError(forKey: key) else { return nil }
         return String(data: data, encoding: .utf8)
     }
 
-    // this method returns regardless of whether:
-    // * keychain delete succeeded
-    // * there was nothing to remove
-    // * keychain delete failed because of the keychain access error
+    /// Removes the value from the keychain.
+    ///
+    /// This method returns regardless of whether:
+    /// * keychain delete succeeded
+    /// * there was nothing to remove
+    /// * keychain delete failed because of the keychain access error
+    /// - Parameters:
+    ///   - forKey: key under which the value should be removed from the keychain
+    @available(*, deprecated, message: "Please use the throwing alternative: removeOrError(forKey:) and handle the error")
     public func remove(forKey key: String) {
         _ = self.remove(key)
     }
     
-    // this method:
-    // * returns if keychain delete succeeds or if there was nothing to remove,
-    // * throws if keychain delete failed because of the keychain access error
+    /// Removes the value from the keychain.
+    ///
+    /// This method:
+    /// * returns if keychain delete succeeds or if there was nothing to remove,
+    /// * throws if keychain delete failed because of the keychain access error
+    /// - Parameters:
+    ///   - forKey: key under which the value should be removed from the keychain
     public func removeOrError(forKey key: String) throws {
         try self.removeOrError(key)
     }
 
     // Private - internal for unit tests
-    
+    @available(*, deprecated, message: "Please use the throwing alternative: getDataOrError(forKey:) and handle the error")
     internal func getData(forKey key: String) -> Data? {
         try? getDataOrError(forKey: key)
     }
@@ -184,11 +244,13 @@ open class Keychain {
         {
             query[kSecAttrAccessControl as String] = accessControl
         }
+        
+        let secItem = secItemMethodsProvider
 
         return try keychainQueue.sync {
             var result: AnyObject?
             let code = withUnsafeMutablePointer(to: &result) {
-                SecItemCopyMatching(query as CFDictionary, UnsafeMutablePointer($0))
+                secItem.SecItemCopyMatching(query as CFDictionary, UnsafeMutablePointer($0))
             }
 
             guard code == noErr, let data = result as? Data else {
@@ -206,6 +268,7 @@ open class Keychain {
     }
 
     @discardableResult
+    @available(*, deprecated, message: "Please use the throwing alternative: removeOrError(:) and handle the error")
     internal func remove(_ key: String) -> Bool {
         do {
             try removeOrError(key)
@@ -226,9 +289,11 @@ open class Keychain {
         if #available(macOS 10.15, tvOS 13.0, watchOS 6.0, macCatalyst 13.0, *) {
             query[kSecUseDataProtectionKeychain as String] = kCFBooleanTrue
         }
+        
+        let secItem = secItemMethodsProvider
 
         return try keychainQueue.sync(flags: .barrier) {
-            let code = SecItemDelete(query as CFDictionary)
+            let code = secItem.SecItemDelete(query as CFDictionary)
 
             guard code == noErr || code == errSecItemNotFound else {
                 throw Keychain.AccessError.deleteFailed(key: key, error: code)
@@ -237,6 +302,7 @@ open class Keychain {
     }
 
     @discardableResult
+    @available(*, deprecated, message: "Please use the throwing alternative: addOrError(data:forKey:) and handle the error")
     internal func add(data value: Data, forKey key: String) -> Bool {
         do {
             try addOrError(data: value, forKey: key)
@@ -263,8 +329,11 @@ open class Keychain {
         if #unavailable(macOS 11.0, iOS 15.0, macCatalyst 15.0) {
             queryForSearch[kSecUseAuthenticationUI as String] = kSecUseAuthenticationUIFail
         }
+        
+        let secItem = secItemMethodsProvider
+        
         return try keychainQueue.sync(flags: .barrier) {
-            let codeExisting = SecItemCopyMatching(queryForSearch as CFDictionary, nil)
+            let codeExisting = secItem.SecItemCopyMatching(queryForSearch as CFDictionary, nil)
 
             // update
             guard codeExisting == errSecItemNotFound else {
@@ -274,7 +343,7 @@ open class Keychain {
                 ]
                 self.injectAccessControlAttributes(into: &updateAttributes)
 
-                let codeUpdate = SecItemUpdate(query as CFDictionary, updateAttributes as CFDictionary)
+                let codeUpdate = secItem.SecItemUpdate(query as CFDictionary, updateAttributes as CFDictionary)
                 guard codeUpdate == noErr else {
                     throw Keychain.AccessError.updateFailed(key: key, error: codeUpdate)
                 }
@@ -287,7 +356,7 @@ open class Keychain {
             newAttributes[kSecValueData as String] = value as AnyObject
             self.injectAccessControlAttributes(into: &newAttributes)
 
-            let code = SecItemAdd(newAttributes as CFDictionary, nil)
+            let code = secItem.SecItemAdd(newAttributes as CFDictionary, nil)
             guard code == noErr else {
                 throw Keychain.AccessError.writeFailed(key: key, error: code)
             }
@@ -316,9 +385,11 @@ open class Keychain {
         if #available(macOS 10.15, tvOS 13.0, watchOS 6.0, macCatalyst 13.0, *) {
             query[kSecUseDataProtectionKeychain as String] = kCFBooleanTrue
         }
+        
+        let secItem = secItemMethodsProvider
 
         return keychainQueue.sync(flags: .barrier) {
-            let code = SecItemDelete(query as CFDictionary)
+            let code = secItem.SecItemDelete(query as CFDictionary)
 
             guard code == noErr || code == errSecItemNotFound else {
                 return false
@@ -326,5 +397,26 @@ open class Keychain {
 
             return true
         }
+    }
+}
+
+private enum SystemSecurityFrameworkSecItemMethodsProvider: SecItemMethodsProvider {
+    
+    case instance
+    
+    func SecItemCopyMatching(_ query: CFDictionary, _ result: UnsafeMutablePointer<CFTypeRef?>?) -> OSStatus {
+        Security.SecItemCopyMatching(query, result)
+    }
+    
+    func SecItemAdd(_ attributes: CFDictionary, _ result: UnsafeMutablePointer<CFTypeRef?>?) -> OSStatus {
+        Security.SecItemAdd(attributes, result)
+    }
+    
+    func SecItemUpdate(_ query: CFDictionary, _ attributesToUpdate: CFDictionary) -> OSStatus {
+        Security.SecItemUpdate(query, attributesToUpdate)
+    }
+    
+    func SecItemDelete(_ query: CFDictionary) -> OSStatus {
+        Security.SecItemDelete(query)
     }
 }

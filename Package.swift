@@ -959,6 +959,7 @@ add(
                        dependencies: [
                            .keymaker,
                            .cryptoGoUsedInTests,
+                           .testingToolkitUnitTestsCore,
                            .cryptoSwift
                        ],
                        path: "libraries/Keymaker/Tests")
