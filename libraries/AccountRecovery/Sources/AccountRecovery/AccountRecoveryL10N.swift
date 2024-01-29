@@ -33,6 +33,8 @@ public enum ARTranslation: TranslationsExposing {
 
     #if DEBUG
     public static var prefixForMissingValue: String = "zzz"
+    #else
+    public static var prefixForMissingValue: String = ""
     #endif
 
     case settingsItem
