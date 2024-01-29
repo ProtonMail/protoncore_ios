@@ -1,8 +1,8 @@
 //
 //  ForkSessionEndpoint.swift
-//  ProtonCore-Authentication - Created on 05/05/2020.
+//  ProtonCore-Authentication - Created on 21.11.2023.
 //
-//  Copyright (c) 2022 Proton Technologies AG
+//  Copyright (c) 2023 Proton Technologies AG
 //
 //  This file is part of Proton Technologies AG and ProtonCore.
 //
@@ -24,43 +24,28 @@ import ProtonCoreNetworking
 
 extension AuthService {
 
-    public enum ForkSessionUseCase {
-        case forAccountDeletion
-        case forChildClientID(String, independent: Bool)
+    public struct ChildSessionResponse: APIDecodableResponse, Encodable, Equatable {
+        public let UID: String
+        public let refreshToken: String
+        public let accessToken: String
+        public let userID: String
+        public let scopes: [String]
     }
 
-    public struct ForkSessionResponse: APIDecodableResponse, Encodable, Equatable {
-        public let selector: String
-    }
+    struct ChildSessionRequest: Request {
 
-    struct ForkSessionEndpoint: Request {
+        private let selector: String
 
-        private let childClientId: String
-        private let independent: Int
-
-        init(useCase: ForkSessionUseCase) {
-            switch useCase {
-            case .forAccountDeletion:
-                self.childClientId = "WebAccountLite"
-                self.independent = 1
-            case .forChildClientID(let childClientId, let independent):
-                self.childClientId = childClientId
-                self.independent = independent ? 1 : 0
-            }
+        init(selector: String) {
+            self.selector = selector
         }
 
         var path: String {
-            return "/auth/v4/sessions/forks"
+            return "/auth/v4/sessions/forks/\(selector)"
         }
 
         var method: HTTPMethod {
-            return .post
-        }
-        var parameters: [String: Any]? {
-            [
-                "ChildClientID": childClientId,
-                "Independent": independent
-            ]
+            return .get
         }
 
         var isAuth: Bool {
