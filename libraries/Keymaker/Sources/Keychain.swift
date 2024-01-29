@@ -62,19 +62,19 @@ open class Keychain {
         self.authenticationPolicy = .none
     }
 
-    public func set(_ data: Data, forKey key: String) {
+    public func set(_ data: Data, forKey key: String, attributes: [CFString: Any]? = nil) {
         self.add(data: data, forKey: key)
     }
 
-    public func set(_ string: String, forKey key: String) {
+    public func set(_ string: String, forKey key: String, attributes: [CFString: Any]? = nil) {
         self.add(data: string.data(using: .utf8)!, forKey: key)
     }
 
-    public func data(forKey key: String) -> Data? {
+    public func data(forKey key: String, attributes: [CFString: Any]? = nil) -> Data? {
         return self.getData(forKey: key)
     }
 
-    public func string(forKey key: String) -> String? {
+    public func string(forKey key: String, attributes: [CFString: Any]? = nil) -> String? {
         guard let data = self.getData(forKey: key) else {
             return nil
         }
@@ -87,7 +87,7 @@ open class Keychain {
 
     // Private - internal for unit tests
 
-    internal func getData(forKey key: String) -> Data? {
+    internal func getData(forKey key: String, attributes: [CFString: Any]? = nil) -> Data? {
         var query: [String: AnyObject] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: self.service as AnyObject,
@@ -105,6 +105,12 @@ open class Keychain {
             let accessControl = SecAccessControlCreateWithFlags(kCFAllocatorDefault, self.accessibility.cfString, auth, nil)
         {
             query[kSecAttrAccessControl as String] = accessControl
+        }
+        
+        if let attributes {
+            for(key, value) in attributes {
+                query[key as String] = value as AnyObject
+            }
         }
 
         return  keychainQueue.sync {
@@ -146,7 +152,7 @@ open class Keychain {
     }
 
     @discardableResult
-    internal func add(data value: Data, forKey key: String) -> Bool {
+    internal func add(data value: Data, forKey key: String, attributes: [CFString: Any]? = nil) -> Bool {
         // search for existing
         var query: [String: AnyObject] = [
             kSecClass as String: kSecClassGenericPassword,
@@ -157,6 +163,12 @@ open class Keychain {
         ]
         if #available(macOS 10.15, tvOS 13.0, watchOS 6.0, macCatalyst 13.0, *) {
             query[kSecUseDataProtectionKeychain as String] = kCFBooleanTrue
+        }
+        
+        if let attributes {
+            for(key, value) in attributes {
+                query[key as String] = value as AnyObject
+            }
         }
 
         var queryForSearch = query
