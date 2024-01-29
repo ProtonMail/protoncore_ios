@@ -5,3 +5,11 @@
 "Continue" = "Продовжити";
 
 "Password" = "Пароль";
+
+"Enter your current password to cancel the password reset process. No other changes will take effect." = "Enter your current password to cancel the password reset process. No other changes will take effect.";
+
+"Current password" = "Поточний пароль";
+
+"Cancel password reset" = "Скасувати скидання пароля";
+
+"Cancel password reset?" = "Скасувати скидання пароля?";

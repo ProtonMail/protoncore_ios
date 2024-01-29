@@ -1,0 +1,21 @@
+"Settings_Item" = "重置密码";
+
+"Insecure_View_Title" = "重置您的密码";
+
+"Grace_View_Title" = "您想要重置密码吗?";
+
+"Grace_View_line1" = "我们收到了重置密码的请求，原因是 ";
+
+"Insecure_View_line1" = "现在您可以修改账户密码 ";
+
+"Insecure_View_line2" = " 期间自由 ";
+
+"Insecure_View_line3" = "请前往已登录的设备（在发起请求的会话中）修改您的密码。";
+
+"Grace_View_Cancel_Button_CTA" = "取消请求";
+
+"Grace_View_Undefined_Time_Left" = "几个小时";
+
+"Grace_View_line2" = "为了确保您的账户安全，我们希望确保确实是您在尝试重置密码。您可以在以下位置重置您的密码 ";
+
+"Grace_View_line3" = "如果您没有提出此请求，或者您不再需要登录方面的帮助，请取消该请求并采取措施保护您的账户。";

@@ -5,3 +5,11 @@
 "Continue" = "გაგრძელება";
 
 "Password" = "პაროლი";
+
+"Enter your current password to cancel the password reset process. No other changes will take effect." = "პაროლის შეცვლის პროცესის გასაუქმებლად, შეიყვანეთ მიმდინარე თქვენი პაროლი. სხვა ცვლილებები ძალაში არ შევა.";
+
+"Current password" = "მიმდინარე პაროლი";
+
+"Cancel password reset" = "პაროლის შეცვლის გაუქმება";
+
+"Cancel password reset?" = "გავაუქმო პაროლის შეცვლა?";

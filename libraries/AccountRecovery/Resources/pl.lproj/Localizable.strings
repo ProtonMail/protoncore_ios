@@ -1,0 +1,21 @@
+"Settings_Item" = "Resetowanie hasła";
+
+"Insecure_View_Title" = "Resetowanie hasła";
+
+"Grace_View_Title" = "Czy chcesz zresetować hasło?";
+
+"Grace_View_line1" = "Otrzymaliśmy żądanie zresetowanie hasła konta ";
+
+"Insecure_View_line1" = "Możesz zmienić hasło konta ";
+
+"Insecure_View_line2" = " przez ";
+
+"Insecure_View_line3" = "Przejdź do zalogowanego urządzenia, na którym zainicjowano żądanie zmiany hasła.";
+
+"Grace_View_Cancel_Button_CTA" = "Anuluj żądanie";
+
+"Grace_View_Undefined_Time_Left" = "kilka godzin";
+
+"Grace_View_line2" = ". Aby zabezpieczyć konto, musimy sprawdzić, czy to Ty próbujesz zresetować hasło. Hasło możesz zmienić za ";
+
+"Grace_View_line3" = "Jeśli żądanie nie zostało wysłane przez Ciebie lub nie potrzebujesz już pomocy, anuluj je i zabezpiecz konto.";
