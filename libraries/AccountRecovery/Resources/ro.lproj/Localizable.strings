@@ -1,0 +1,21 @@
+"Settings_Item" = "Resetare parolă";
+
+"Insecure_View_Title" = "Resetați-vă parola";
+
+"Grace_View_Title" = "Doriți să vă resetați parola?";
+
+"Grace_View_line1" = "Am primit o cerere de resetare a parolei pentru ";
+
+"Insecure_View_line1" = "Acum vă puteți reseta parola pentru contul ";
+
+"Insecure_View_line2" = " timp de ";
+
+"Insecure_View_line3" = "Accesați dispozitivul conectat (în sesiunea de unde a fost inițiată solicitarea) pentru a vă schimba parola.";
+
+"Grace_View_Cancel_Button_CTA" = "Anulare solicitare";
+
+"Grace_View_Undefined_Time_Left" = "câteva ore";
+
+"Grace_View_line2" = ". Pentru a vă păstra contul în siguranță, trebuie să ne asigurăm sunteți titularul contului când încercați să vă resetați parola. Veți putea să vă resetați parola peste ";
+
+"Grace_View_line3" = "Dacă nu ați făcut această solicitare sau dacă nu mai aveți nevoie de ajutor pentru autentificare, anulați-o și luați măsuri pentru a vă securiza contul.";

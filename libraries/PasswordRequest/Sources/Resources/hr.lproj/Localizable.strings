@@ -5,3 +5,11 @@
 "Continue" = "Nastavi";
 
 "Password" = "Lozinka";
+
+"Enter your current password to cancel the password reset process. No other changes will take effect." = "Enter your current password to cancel the password reset process. No other changes will take effect.";
+
+"Current password" = "Trenutna lozinka";
+
+"Cancel password reset" = "Poništi ponovno postavljanje lozinke";
+
+"Cancel password reset?" = "Poništiti ponovno postavljanje lozinke?";

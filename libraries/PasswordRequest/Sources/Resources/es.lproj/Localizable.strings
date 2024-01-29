@@ -5,3 +5,11 @@
 "Continue" = "Continuar";
 
 "Password" = "Contraseña";
+
+"Enter your current password to cancel the password reset process. No other changes will take effect." = "Introduce tu contraseña actual para cancelar el proceso de restablecimiento. No se aplicará ningún otro cambio.";
+
+"Current password" = "Contraseña actual";
+
+"Cancel password reset" = "Cancelar el restablecimiento de contraseña";
+
+"Cancel password reset?" = "¿Cancelar el restablecimiento de contraseña?";

@@ -5,3 +5,11 @@
 "Continue" = "Pokračovať";
 
 "Password" = "Heslo";
+
+"Enter your current password to cancel the password reset process. No other changes will take effect." = "Zadaním aktuálneho hesla zrušíte proces obnovenia hesla. Žiadne ďalšie zmeny sa neuskutočnia.";
+
+"Current password" = "Aktuálne heslo";
+
+"Cancel password reset" = "Zrušiť obnovenie hesla";
+
+"Cancel password reset?" = "Zrušiť obnovenie hesla?";

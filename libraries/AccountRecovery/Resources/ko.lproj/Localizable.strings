@@ -1,0 +1,21 @@
+"Settings_Item" = "비밀번호 재설정";
+
+"Insecure_View_Title" = "비밀번호를 재설정하세요";
+
+"Grace_View_Title" = "비밀번호를 재설정하시겠습니까?";
+
+"Grace_View_line1" = "다음으로 부터 비밀번호 재설정 요청을 수신받았습니다: ";
+
+"Insecure_View_line1" = "해당 계정의 비밀번호를 이제 변경할 수 있습니다: ";
+
+"Insecure_View_line2" = " 해당 기간 사이 - ";
+
+"Insecure_View_line3" = "비밀번호 재설정의 요청이 시작된 로그인 장치로 이동하십시오.";
+
+"Grace_View_Cancel_Button_CTA" = "요청 취소";
+
+"Grace_View_Undefined_Time_Left" = "수 시간";
+
+"Grace_View_line2" = "계정의 보안을 위하여, 정말 본인이 비밀번호를 재설정하고자 하는지 확인하고자 합니다. 초기화가 가능해지는 것은 ";
+
+"Grace_View_line3" = "이 요청을 하지 않았거나 로그인 지원이 더 이상 필요하지 않으시다면, 요청을 취소하고 계정 보안을 위한 조치를 취하세요.";
