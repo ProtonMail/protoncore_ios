@@ -35,7 +35,7 @@ public final class PasswordVerifier {
 
     public let authInfo: AuthInfoResponse?
     public let missingScopeMode: MissingScopeMode
-    
+
     /// Initialize the PasswordVerifier object
     ///
     /// - Parameters:

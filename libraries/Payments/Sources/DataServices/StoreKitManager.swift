@@ -648,9 +648,9 @@ extension StoreKitManager: SKPaymentTransactionObserver {
         case .purchased:
             // Flatten async calls inside `proceed()`
             let group = DispatchGroup()
-            group.enter()            
+            group.enter()
 
-            guard transaction.original == nil 
+            guard transaction.original == nil
                     || transaction.transactionIdentifier == transaction.original?.transactionIdentifier else {
                 // This is not the first purchase.
                 // Caveat: Apple says original is undefined for transactionStates other than .restored,

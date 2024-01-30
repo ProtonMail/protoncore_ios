@@ -195,7 +195,7 @@ extension PMAPIService {
                 """)
             }
             #endif
-            
+
             let sessionRequestCall: (@escaping (URLSessionDataTask?, ResponseFromSession<T>) -> Void) -> Void
             switch completion {
             case .left:
