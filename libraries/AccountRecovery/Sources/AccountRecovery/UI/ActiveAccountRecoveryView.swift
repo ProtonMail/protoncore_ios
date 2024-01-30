@@ -40,7 +40,7 @@ public struct ActiveAccountRecoveryView: View {
                 Image(AccountRecovery.ImageNames.passwordResetLockClock,
                       bundle: AccountRecoveryModule.resourceBundle)
                 VStack(alignment: .leading) {
-                    Text("Password reset requested", 
+                    Text("Password reset requested",
                          bundle: AccountRecoveryModule.resourceBundle,
                          comment: "In Active Account Recovery state screen, heading for password reset requested callout.")
                     .font(.system(size: 17))

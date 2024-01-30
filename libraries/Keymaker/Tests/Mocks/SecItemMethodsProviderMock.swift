@@ -24,22 +24,22 @@ import ProtonCoreKeymaker
 import ProtonCoreTestingToolkitUnitTestsCore
 
 public final class SecItemMethodsProviderMock: SecItemMethodsProvider {
-    
+
     @FuncStub(SecItemMethodsProviderMock.SecItemCopyMatching, initialReturn: .crash) public var SecItemCopyMatchingStub
     public func SecItemCopyMatching(_ query: CFDictionary, _ result: UnsafeMutablePointer<CFTypeRef?>?) -> OSStatus {
         SecItemCopyMatchingStub(query, result)
     }
-    
+
     @FuncStub(SecItemMethodsProviderMock.SecItemAdd, initialReturn: .crash) public var SecItemAddStub
     public func SecItemAdd(_ attributes: CFDictionary, _ result: UnsafeMutablePointer<CFTypeRef?>?) -> OSStatus {
         SecItemAddStub(attributes, result)
     }
-    
+
     @FuncStub(SecItemMethodsProviderMock.SecItemUpdate, initialReturn: .crash) public var SecItemUpdateStub
     public func SecItemUpdate(_ query: CFDictionary, _ attributesToUpdate: CFDictionary) -> OSStatus {
         SecItemUpdateStub(query, attributesToUpdate)
     }
-    
+
     @FuncStub(SecItemMethodsProviderMock.SecItemDelete, initialReturn: .crash) public var SecItemDeleteStub
     public func SecItemDelete(_ query: CFDictionary) -> OSStatus {
         SecItemDeleteStub(query)

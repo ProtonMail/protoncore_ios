@@ -59,7 +59,7 @@ public class StringCryptoTransformer: CryptoTransformer {
 
 open class CryptoTransformer: ValueTransformer {
     public private(set) var key: MainKey
-    
+
     public init(key: MainKey) {
         self.key = key
     }

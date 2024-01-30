@@ -67,7 +67,6 @@ public struct CancelledAccountRecoveryView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 
-
     var changePasswordAdviceL10nStrongKey: LocalizedStringKey {
         var value = """
 If you never made a password reset request, someone else could have access to your account. **Change your password now**.

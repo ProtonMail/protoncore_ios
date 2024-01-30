@@ -102,8 +102,6 @@ struct CurrentPlanDetailsV5 {
             price = PUITranslations.plan_details_free_price.l10n
         }
 
-
-
         return .init(
             title: details.title,
             description: details.description,

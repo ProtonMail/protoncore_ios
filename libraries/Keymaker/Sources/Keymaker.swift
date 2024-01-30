@@ -96,7 +96,7 @@ open class Keymaker: NSObject {
     public var mainKey: MainKey? {
         privatelyAccessibleMainKey
     }
-    
+
     // the main difference between mainKeyOrError and mainKey is that
     // the mainKey will regenerate the main key in case of keychain access error,
     // and mainKeyOrError will throw the keychain error
@@ -232,7 +232,7 @@ open class Keymaker: NSObject {
                 fatalError(error.localizedDescription)
             }
         }
-        
+
         logging("provokeMainKeyObtentionOrError -> generating a new main key")
         // otherwise there is no saved mainKey at all, so we should generate a new one with default protection
         let newKey = try self.generateNewMainKeyWithDefaultProtectionOrError()
@@ -425,7 +425,7 @@ open class Keymaker: NSObject {
         }
         return newMainKey
     }
-    
+
     private func generateNewMainKeyWithDefaultProtectionOrError() throws -> MainKey {
         logging("generateNewMainKeyWithDefaultProtectionOrError -> wiping a main key")
         try self.wipeMainKeyOrError() // get rid of all old protected mainKeys

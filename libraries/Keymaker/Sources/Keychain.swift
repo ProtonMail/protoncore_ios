@@ -49,13 +49,13 @@ open class Keychain {
             }
         }
     }
-    
+
     public enum AccessError: LocalizedError {
         case readFailed(key: String, error: OSStatus)
         case writeFailed(key: String, error: OSStatus)
         case updateFailed(key: String, error: OSStatus)
         case deleteFailed(key: String, error: OSStatus)
-        
+
         public var errorDescription: String? {
             switch self {
             case let .readFailed(key, code):
@@ -75,7 +75,7 @@ open class Keychain {
     internal let accessGroup: String
     internal let service: String
     internal let keychainQueue = DispatchQueue(label: "me.proton.account.keychain.queue", attributes: .concurrent)
-    
+
     private let secItemMethodsProvider: SecItemMethodsProvider
 
     internal func switchAccessibilitySettings(_ accessibility: Accessibility, authenticationPolicy: AccessControl) {
@@ -86,13 +86,13 @@ open class Keychain {
     public init(service: String, accessGroup: String, secItemMethodsProvider: SecItemMethodsProvider? = nil) {
         self.service = service
         self.accessGroup = accessGroup
-        
+
         self.secItemMethodsProvider = secItemMethodsProvider ?? SystemSecurityFrameworkSecItemMethodsProvider.instance
 
         self.accessibility = .afterFirstUnlockThisDeviceOnly
         self.authenticationPolicy = .none
     }
-    
+
     /// Adds or updates the value in the keychain.
     ///
     /// This method returns regardless of whether:
@@ -118,7 +118,7 @@ open class Keychain {
     public func set(_ string: String, forKey key: String) {
         self.add(data: string.data(using: .utf8)!, forKey: key)
     }
-    
+
     /// Adds or updates the value in the keychain.
     ///
     /// This method:
@@ -207,7 +207,7 @@ open class Keychain {
     public func remove(forKey key: String) {
         _ = self.remove(key)
     }
-    
+
     /// Removes the value from the keychain.
     ///
     /// This method:
@@ -244,7 +244,7 @@ open class Keychain {
         {
             query[kSecAttrAccessControl as String] = accessControl
         }
-        
+
         let secItem = secItemMethodsProvider
 
         return try keychainQueue.sync {
@@ -278,7 +278,7 @@ open class Keychain {
         }
     }
 
-    internal func removeOrError(_ key: String) throws -> Void {
+    internal func removeOrError(_ key: String) throws {
         var query: [String: AnyObject] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: self.service as AnyObject,
@@ -289,7 +289,7 @@ open class Keychain {
         if #available(macOS 10.15, tvOS 13.0, watchOS 6.0, macCatalyst 13.0, *) {
             query[kSecUseDataProtectionKeychain as String] = kCFBooleanTrue
         }
-        
+
         let secItem = secItemMethodsProvider
 
         return try keychainQueue.sync(flags: .barrier) {
@@ -312,7 +312,7 @@ open class Keychain {
         }
     }
 
-    internal func addOrError(data value: Data, forKey key: String) throws -> Void {
+    internal func addOrError(data value: Data, forKey key: String) throws {
         // search for existing
         var query: [String: AnyObject] = [
             kSecClass as String: kSecClassGenericPassword,
@@ -329,9 +329,9 @@ open class Keychain {
         if #unavailable(macOS 11.0, iOS 15.0, macCatalyst 15.0) {
             queryForSearch[kSecUseAuthenticationUI as String] = kSecUseAuthenticationUIFail
         }
-        
+
         let secItem = secItemMethodsProvider
-        
+
         return try keychainQueue.sync(flags: .barrier) {
             let codeExisting = secItem.SecItemCopyMatching(queryForSearch as CFDictionary, nil)
 
@@ -385,7 +385,7 @@ open class Keychain {
         if #available(macOS 10.15, tvOS 13.0, watchOS 6.0, macCatalyst 13.0, *) {
             query[kSecUseDataProtectionKeychain as String] = kCFBooleanTrue
         }
-        
+
         let secItem = secItemMethodsProvider
 
         return keychainQueue.sync(flags: .barrier) {
@@ -401,21 +401,21 @@ open class Keychain {
 }
 
 private enum SystemSecurityFrameworkSecItemMethodsProvider: SecItemMethodsProvider {
-    
+
     case instance
-    
+
     func SecItemCopyMatching(_ query: CFDictionary, _ result: UnsafeMutablePointer<CFTypeRef?>?) -> OSStatus {
         Security.SecItemCopyMatching(query, result)
     }
-    
+
     func SecItemAdd(_ attributes: CFDictionary, _ result: UnsafeMutablePointer<CFTypeRef?>?) -> OSStatus {
         Security.SecItemAdd(attributes, result)
     }
-    
+
     func SecItemUpdate(_ query: CFDictionary, _ attributesToUpdate: CFDictionary) -> OSStatus {
         Security.SecItemUpdate(query, attributesToUpdate)
     }
-    
+
     func SecItemDelete(_ query: CFDictionary) -> OSStatus {
         Security.SecItemDelete(query)
     }

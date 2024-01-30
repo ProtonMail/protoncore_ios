@@ -55,7 +55,7 @@ public class PMLog {
     private static let maxLogLines = 2000
     private static let numberOfOldestLinesToTrimInOneGo = 500
     private static let queue = DispatchQueue(label: "ch.proton.core.log")
-    
+
     public static var externalLog: ExternalLogProtocol?
 
     public static var logFile: URL? {

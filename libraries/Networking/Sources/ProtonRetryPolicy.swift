@@ -50,8 +50,8 @@ public final class ProtonRetryPolicy {
                       retryCount: Int,
                       headers: HTTPHeaders?,
                       completion: @escaping (RetryResult) -> Void) {
-        guard mode == .background, 
-                retryCount < retryLimit, 
+        guard mode == .background,
+                retryCount < retryLimit,
                 let statusCode,
               RetryPolicy.defaultRetryableHTTPStatusCodes.union([429]).contains(statusCode) else {
             completion(.doNotRetry)

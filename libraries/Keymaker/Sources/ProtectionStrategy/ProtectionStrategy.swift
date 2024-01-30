@@ -47,7 +47,7 @@ public extension ProtectionStrategy {
     static func getCypherBits(from keychain: Keychain) -> Data? {
         return keychain.data(forKey: self.keychainLabel)
     }
-    
+
     static func getCypherBitsOrError(from keychain: Keychain) throws -> Data? {
         try keychain.dataOrError(forKey: self.keychainLabel)
     }

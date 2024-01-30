@@ -273,7 +273,6 @@ final class PasswordVerifierTests: XCTestCase {
         wait(for: [expectation], timeout: 0.3)
     }
 
-
     func test_verifyPassword_completeOnSuccessfulAPICall() {
         // Given
         let expectation = XCTestExpectation(description: "expect success")
