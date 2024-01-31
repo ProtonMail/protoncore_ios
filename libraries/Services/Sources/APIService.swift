@@ -401,6 +401,7 @@ public protocol APIService: API, RequestPerforming {
 
     // session and credentials management
     var sessionUID: String { get }
+    func getSession() -> Session?
     func setSessionUID(uid: String)
     func acquireSessionIfNeeded(completion: @escaping (Result<SessionAcquiringResult, APIError>) -> Void)
     func fetchAuthCredentials(completion: @escaping (AuthCredentialFetchingResult) -> Void)
