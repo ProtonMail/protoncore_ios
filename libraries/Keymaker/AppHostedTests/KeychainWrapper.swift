@@ -27,8 +27,8 @@ internal class KeychainWrapper: Keychain {
 
     var dict: [String: Any] = [String: Any]()
 
-    override init(service: String, accessGroup: String) {
-        super.init(service: service, accessGroup: accessGroup)
+    override init(service: String, accessGroup: String, secItemMethodsProvider: SecItemMethodsProvider? = nil) {
+        super.init(service: service, accessGroup: accessGroup, secItemMethodsProvider: secItemMethodsProvider)
     }
 
     override func set(_ data: Data, forKey key: String, attributes: [CFString: Any]? = nil) {

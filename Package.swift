@@ -959,6 +959,7 @@ add(
                        dependencies: [
                            .keymaker,
                            .cryptoGoUsedInTests,
+                           .testingToolkitUnitTestsCore,
                            .cryptoSwift
                        ],
                        path: "libraries/Keymaker/Tests")
@@ -995,7 +996,7 @@ add(
     targets: [
         coreTarget(
             name: .log,
-            dependencies:  [.sentry],
+            dependencies: [.sentry],
             path: "libraries/Log/Sources"
         ),
         coreTestTarget(

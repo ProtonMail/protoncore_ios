@@ -32,6 +32,7 @@ struct CurrentPlanDetailsV5 {
     let endDate: NSAttributedString? // "Current plan will expire on 10.10.24"
     let entitlements: [Entitlement]
     let hidePriceDetails: Bool
+    let shouldDisplayStorageFullAlert: Bool
 
     enum Entitlement: Equatable {
         case progress(ProgressEntitlement)
@@ -56,10 +57,21 @@ struct CurrentPlanDetailsV5 {
     static func createPlan(from details: CurrentPlan.Subscription,
                            plansDataSource: PlansDataSourceProtocol?) async throws -> CurrentPlanDetailsV5 {
         var entitlements = [Entitlement]()
+        var shouldDisplayStorageFullAlert = false
 
         for entitlement in details.entitlements {
             switch entitlement {
             case .progress(let entitlement):
+                let factor: CGFloat
+                if entitlement.max > 0 {
+                    factor = CGFloat(entitlement.current) / CGFloat(entitlement.max)
+                } else {
+                    factor = 0
+                }
+
+                let multiplier = factor < 0.01 ? 0.01 : factor
+                shouldDisplayStorageFullAlert = multiplier > 0.9
+
                 entitlements.append(.progress(.init(
                     title: entitlement.title,
                     iconUrl: entitlement.iconName.flatMap { plansDataSource?.createIconURL(iconName: $0) },
@@ -97,7 +109,8 @@ struct CurrentPlanDetailsV5 {
             price: price,
             endDate: endDateString(date: details.periodEnd, renew: details.willRenew ?? false),
             entitlements: entitlements,
-            hidePriceDetails: hidePriceDetails
+            hidePriceDetails: hidePriceDetails,
+            shouldDisplayStorageFullAlert: shouldDisplayStorageFullAlert
         )
     }
 

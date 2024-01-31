@@ -101,7 +101,6 @@ public extension Quark {
         return try executeQuarkRequest(request)
     }
 
-
     @discardableResult
     func seedUserWithCreditCard(user: User) throws -> (data: Data, response: URLResponse) {
 

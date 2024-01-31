@@ -110,7 +110,7 @@ class LoginServiceTests: XCTestCase {
             default:
                 XCTFail()
             }
-            
+
             expectation.fulfill()
         }
 

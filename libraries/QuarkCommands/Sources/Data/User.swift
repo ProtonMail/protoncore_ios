@@ -46,7 +46,7 @@ public struct SubscriptionHistory: Decodable {
 public struct User: Decodable {
     public var name: String
     public var password: String
-    public var settings: Settings? = nil
+    public var settings: Settings?
     public var subscriptionHistory: String? = ""
 
     public var email: String

@@ -1,0 +1,21 @@
+"Settings_Item" = "Restablecimiento de contraseña";
+
+"Insecure_View_Title" = "Restablecer su contraseña";
+
+"Grace_View_Title" = "¿Desea restablecer su contraseña?";
+
+"Grace_View_line1" = "Hemos recibido una solicitud para restablecer la contraseña de ";
+
+"Insecure_View_line1" = "Ahora puede cambiar la contraseña para la cuenta ";
+
+"Insecure_View_line2" = " libremente durante ";
+
+"Insecure_View_line3" = "Vaya al dispositivo en el que inició sesión y donde se realizó la solicitud para cambiar su contraseña.";
+
+"Grace_View_Cancel_Button_CTA" = "Cancelar la solicitud";
+
+"Grace_View_Undefined_Time_Left" = "algunas horas";
+
+"Grace_View_line2" = ". Para mantener su cuenta segura, queremos asegurarnos de que realmente es usted quien intenta restablecer su contraseña. Podrá restablecer su contraseña en ";
+
+"Grace_View_line3" = "Si no realizó esta solicitud o si ya no necesita ayuda para iniciar sesión, cancélela y tome medidas para proteger su cuenta.";

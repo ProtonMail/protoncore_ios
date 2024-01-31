@@ -34,6 +34,7 @@ Pod::Spec.new do |s|
   make_unit_tests_subspec = ->(spec, crypto) {
       spec.test_spec "#{crypto_test_subspec(crypto)}" do |test_spec|
           test_spec.dependency "ProtonCore-CryptoGoImplementation/#{crypto_subspec(crypto)}", $version
+          test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Core", $version
           test_spec.source_files = 'libraries/Keymaker/Tests/**/*'
       end
   }
