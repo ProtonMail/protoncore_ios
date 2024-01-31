@@ -44,7 +44,7 @@ final class AlertBoxCellSnapshotTests: XCTestCase {
 
     func testAlertBoxCell() {
         let view = AlertBoxCell(frame: .zero)
-        view.configure(with: AlertBoxViewModel())
+        view.configure(with: AlertBoxViewModel(), action: {})
         snapshot(view: view.contentView)
     }
 
