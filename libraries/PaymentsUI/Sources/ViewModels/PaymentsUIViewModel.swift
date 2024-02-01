@@ -566,7 +566,7 @@ class PaymentsUIViewModel {
                 guard paymentSucceeded == .resolvingIAPToCredits ||
                         paymentSucceeded == .resolvingIAPToSubscription else { return }
                 // refresh plans
-                if isDynamicPlansEnabled {
+                if self.isDynamicPlansEnabled {
                     Task { [weak self] in
                         do {
                             try await self?.fetchPlans()
@@ -580,7 +580,7 @@ class PaymentsUIViewModel {
                     self.planRefreshHandler(self.getCurrentPlan)
                 }
             case .errored, .erroredWithUnspecifiedError:
-                if isDynamicPlansEnabled {
+                if self.isDynamicPlansEnabled {
                     self.planRefreshHandler(nil)
                 } else {
                     // update credits
