@@ -31,11 +31,11 @@ public protocol AccountRecoveryDatasourceProtocol {
 
     func fetchAccountRecoveryInfo() async throws -> RecoveryInfo
 
-    func accountRecoveryStatus() async -> User.AccountRecovery?
+    func accountRecoveryStatus() async -> AccountRecovery?
 }
 
 /// username, email and account recovery details
-public typealias RecoveryInfo = (username: String?, email: String?, recovery: User.AccountRecovery?)
+public typealias RecoveryInfo = (username: String?, email: String?, recovery: AccountRecovery?)
 
 class AccountRecoveryDatasource: AccountRecoveryDatasourceProtocol {
 
@@ -63,7 +63,7 @@ class AccountRecoveryDatasource: AccountRecoveryDatasourceProtocol {
         }
     }
 
-    func accountRecoveryStatus() async -> User.AccountRecovery? {
+    func accountRecoveryStatus() async -> AccountRecovery? {
             return try? await fetchAccountRecoveryInfo().recovery
     }
 }

@@ -38,32 +38,32 @@ private enum Fixtures {
     static let email = "janedoe@protonmail.com"
     static let uid = "5cigpml2LD_iUk_3DkV29oojTt3eA=="
     static let gracePeriodInfo: RecoveryInfo = (username, email,
-                                                User.AccountRecovery(state: .grace,
+                                                AccountRecovery(state: .grace,
                                                                      reason: nil,
                                                                      startTime: currentTimeInterval - 3600 * 2,
                                                                      endTime: currentTimeInterval + 3600 * 70,
                                                                      UID: uid))
     static let defaultStateInfo: RecoveryInfo = (username, email,
-                                                 User.AccountRecovery(state: .none,
+                                                 AccountRecovery(state: .none,
                                                                       reason: nil,
                                                                       startTime: .zero,
                                                                       endTime: .zero,
                                                                       UID: uid))
     static let insecureStateInfo: RecoveryInfo = (username, email,
-                                                  User.AccountRecovery(state: .insecure,
+                                                  AccountRecovery(state: .insecure,
                                                                        reason: nil,
                                                                        startTime: currentTimeInterval - 3600 * 2,
                                                                        endTime: currentTimeInterval + 3600 * 70,
                                                                        UID: uid))
 
     static let cancelledStateInfo: RecoveryInfo = (username, email,
-                                                   User.AccountRecovery(state: .cancelled,
+                                                   AccountRecovery(state: .cancelled,
                                                                         reason: .cancelled,
                                                                         startTime: .zero,
                                                                         endTime: .zero,
                                                                         UID: uid))
     static let expiredStateInfo: RecoveryInfo = (username, email,
-                                                 User.AccountRecovery(state: .expired,
+                                                 AccountRecovery(state: .expired,
                                                                       reason: nil,
                                                                       startTime: currentTimeInterval - 3600 * 2,
                                                                       endTime: currentTimeInterval + 3600 * 70,
@@ -280,7 +280,7 @@ private class AccountRecoveryRepositoryMock: AccountRecoveryRepositoryProtocol {
         return returnedInfo
     }
 
-    func accountRecoveryStatus() async -> ProtonCoreDataModel.User.AccountRecovery? {
+    func accountRecoveryStatus() async -> ProtonCoreDataModel.AccountRecovery? {
         returnedInfo?.recovery
     }
 }

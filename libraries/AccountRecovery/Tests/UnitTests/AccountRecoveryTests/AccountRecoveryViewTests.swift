@@ -65,7 +65,7 @@ final class AccountRecoveryViewTests: XCTestCase {
         // Given
         let viewModel = AccountRecoveryView.ViewModel()
         let recoveryInfo = ("janedoe", "janedoe@protonmail.com",
-                            User.AccountRecovery(state: .none,
+                            AccountRecovery(state: .none,
                                                  reason: nil,
                                                  startTime: .zero,
                                                  endTime: .zero,
@@ -90,7 +90,7 @@ final class AccountRecoveryViewTests: XCTestCase {
         let viewModel = AccountRecoveryView.ViewModel()
         let currentTimeInterval = Date().timeIntervalSince1970
         let recoveryInfo = ("janedoe", "janedoe@protonmail.com",
-                            User.AccountRecovery(state: .grace,
+                            AccountRecovery(state: .grace,
                                                  reason: nil,
                                                  startTime: currentTimeInterval - 3600 * 2,
                                                  endTime: currentTimeInterval + 3600 * 70,
@@ -122,7 +122,7 @@ final class AccountRecoveryViewTests: XCTestCase {
         let viewModel = AccountRecoveryView.ViewModel()
         let currentTimeInterval = Date().timeIntervalSince1970
         let recoveryInfo = ("janedoe", "janedoe@protonmail.com",
-                            User.AccountRecovery(state: .insecure,
+                            AccountRecovery(state: .insecure,
                                                  reason: nil,
                                                  startTime: currentTimeInterval - 3600 * 2,
                                                  endTime: currentTimeInterval + 3600 * 142,
@@ -149,7 +149,7 @@ final class AccountRecoveryViewTests: XCTestCase {
         // Given
         let viewModel = AccountRecoveryView.ViewModel()
         let recoveryInfo = ("janedoe", "janedoe@protonmail.com",
-                            User.AccountRecovery(state: .cancelled,
+                            AccountRecovery(state: .cancelled,
                                                  reason: nil,
                                                  startTime: .zero,
                                                  endTime: .zero,
@@ -173,7 +173,7 @@ final class AccountRecoveryViewTests: XCTestCase {
         // Given
         let viewModel = AccountRecoveryView.ViewModel()
         let recoveryInfo = ("janedoe", "janedoe@protonmail.com",
-                            User.AccountRecovery(state: .expired,
+                            AccountRecovery(state: .expired,
                                                  reason: nil,
                                                  startTime: .zero,
                                                  endTime: .zero,

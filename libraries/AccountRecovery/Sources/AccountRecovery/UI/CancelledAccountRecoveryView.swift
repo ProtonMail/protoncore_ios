@@ -30,7 +30,7 @@ public struct CancelledAccountRecoveryView: View {
     public var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 12) {
-                Image(AccountRecovery.ImageNames.passwordResetLockExclamation,
+                Image(AccountRecoveryConstants.ImageNames.passwordResetLockExclamation,
                       bundle: AccountRecoveryModule.resourceBundle)
                 VStack(alignment: .leading) {
                     Text("Password reset cancelled",

@@ -18,7 +18,7 @@
 
 import Foundation
 
-enum AccountRecovery {
+public enum AccountRecoveryConstants {
     enum ImageNames {
         static let passwordResetLockClock = "password-reset-lock-clock"
         static let passwordResetLockCheck = "password-reset-lock-check"
