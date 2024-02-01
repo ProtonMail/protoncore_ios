@@ -31,19 +31,19 @@ internal class KeychainWrapper: Keychain {
         super.init(service: service, accessGroup: accessGroup, secItemMethodsProvider: secItemMethodsProvider)
     }
 
-    override func set(_ data: Data, forKey key: String) {
+    override func set(_ data: Data, forKey key: String, attributes: [CFString: Any]? = nil) {
         dict[key] = data
     }
 
-    override func set(_ string: String, forKey key: String) {
+    override func set(_ string: String, forKey key: String, attributes: [CFString: Any]? = nil) {
         dict[key] = string
     }
 
-    override func data(forKey key: String) -> Data? {
+    override func data(forKey key: String, attributes: [CFString: Any]? = nil) -> Data? {
         return dict[key] as? Data
     }
 
-    override func string(forKey key: String) -> String? {
+    override func string(forKey key: String, attributes: [CFString: Any]? = nil) -> String? {
         return dict[key] as? String
     }
 
