@@ -1,3 +1,9 @@
+## 19.0.0 (2024-02-01)
+
+### changed (1 change)
+
+- [CP-5969 Refactor AccountRecovery to smooth integration work](apple/shared/protoncore@c0447fa1759bbbd22e51703270321cf833d5e597) ([merge request](apple/shared/protoncore!1627))
+
 ## 18.0.0 (2024-01-25)
 
 ### fix (1 change)
