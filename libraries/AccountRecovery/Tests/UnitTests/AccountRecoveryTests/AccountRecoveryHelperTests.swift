@@ -28,29 +28,29 @@ import UIKit
 
 public class AccountRecoveryHelperTests: XCTestCase {
 
-    var noRecovery = User.AccountRecovery(state: .none,
+    var noRecovery = AccountRecovery(state: .none,
                                           startTime: Date.distantPast.timeIntervalSince1970,
                                           endTime: Date.distantFuture.timeIntervalSince1970,
                                           UID: "UUID")
-    var gracePeriod = User.AccountRecovery(state: .grace,
+    var gracePeriod = AccountRecovery(state: .grace,
                                            startTime: Date.distantPast.timeIntervalSince1970,
                                            endTime: Date.distantFuture.timeIntervalSince1970,
                                            UID: "UUID")
-    var automaticallyCancelled = User.AccountRecovery(state: .cancelled,
+    var automaticallyCancelled = AccountRecovery(state: .cancelled,
                                                        reason: .authentication,
                                                        startTime: Date.distantPast.timeIntervalSince1970,
                                                        endTime: Date.distantFuture.timeIntervalSince1970,
                                                        UID: "UUID")
-    var explicitlyCancelled = User.AccountRecovery(state: .cancelled,
+    var explicitlyCancelled = AccountRecovery(state: .cancelled,
                                                     reason: .cancelled,
                                                     startTime: Date.distantPast.timeIntervalSince1970,
                                                     endTime: Date.distantFuture.timeIntervalSince1970,
                                                     UID: "UUID")
-    var insecureState = User.AccountRecovery(state: .insecure,
+    var insecureState = AccountRecovery(state: .insecure,
                                               startTime: Date.distantPast.timeIntervalSince1970,
                                               endTime: Date.distantFuture.timeIntervalSince1970,
                                               UID: "UUID")
-    var expired = User.AccountRecovery(state: .expired,
+    var expired = AccountRecovery(state: .expired,
                                         startTime: Date.distantPast.timeIntervalSince1970,
                                         endTime: Date.distantFuture.timeIntervalSince1970,
                                         UID: "UUID")

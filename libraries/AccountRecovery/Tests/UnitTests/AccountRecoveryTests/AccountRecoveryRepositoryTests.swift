@@ -102,8 +102,8 @@ final class AccountRecoveryRepositoryTests: XCTestCase {
 
     func testFetchingRecoveryState() async throws {
         // Given
-        let recovery = User.AccountRecovery(state: .none,
-                                            reason: User.RecoveryReason.none,
+        let recovery = AccountRecovery(state: .none,
+                                            reason: RecoveryReason.none,
                                             startTime: .zero,
                                             endTime: .zero,
                                             UID: "5cigpml2LD_iUk_3DkV29oojTt3eA==")
@@ -147,8 +147,8 @@ final class AccountRecoveryRepositoryTests: XCTestCase {
 
     func testAccountRecoveryStatus() async {
         // Given
-        let recovery = User.AccountRecovery(state: .none,
-                                            reason: User.RecoveryReason.none,
+        let recovery = AccountRecovery(state: .none,
+                                            reason: RecoveryReason.none,
                                             startTime: .zero,
                                             endTime: .zero,
                                             UID: "5cigpml2LD_iUk_3DkV29oojTt3eA==")

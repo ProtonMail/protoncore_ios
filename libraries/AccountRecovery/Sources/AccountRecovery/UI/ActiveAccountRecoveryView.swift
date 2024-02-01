@@ -37,7 +37,7 @@ public struct ActiveAccountRecoveryView: View {
 
             }
             HStack(spacing: 12) {
-                Image(AccountRecovery.ImageNames.passwordResetLockClock,
+                Image(AccountRecoveryConstants.ImageNames.passwordResetLockClock,
                       bundle: AccountRecoveryModule.resourceBundle)
                 VStack(alignment: .leading) {
                     Text("Password reset requested",

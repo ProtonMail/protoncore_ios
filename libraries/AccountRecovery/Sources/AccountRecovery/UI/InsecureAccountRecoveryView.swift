@@ -27,7 +27,7 @@ public struct InsecureAccountRecoveryView: View {
         VStack(alignment: .leading, spacing: 24) {
             VStack(alignment: .leading) {
                 HStack {
-                    Image(AccountRecovery.ImageNames.passwordResetLockCheck,
+                    Image(AccountRecoveryConstants.ImageNames.passwordResetLockCheck,
                           bundle: AccountRecoveryModule.resourceBundle
                     )
                     VStack(alignment: .leading) {

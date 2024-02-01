@@ -22,9 +22,17 @@ import UIKit
 #endif
 
 #if os(iOS)
-extension UIApplication {
+extension UIWindow {
     var topMostViewController: UIViewController? {
-        UIApplication.firstKeyWindow?.rootViewController
+        var topController = self.rootViewController
+        while let presentedViewController = topController?.presentedViewController
+            ?? (topController as? UINavigationController)?.topViewController {
+            if presentedViewController is UIAlertController {
+                break
+            }
+            topController = presentedViewController
+        }
+        return topController
     }
 }
 #endif

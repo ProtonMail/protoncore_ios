@@ -39,8 +39,8 @@ final class AccountRecoveryModuleTests: XCTestCase {
     }
 
     func testModuleDetails() {
-        XCTAssertEqual("TrustedDeviceRecovery", AccountRecoveryModule.feature.rawValue)
-        XCTAssertNotNil(AccountRecoveryModule.settingsViewController(apiMock))
+        XCTAssertEqual("SignedInAccountRecovery", AccountRecoveryModule.feature.rawValue)
+        XCTAssertNotNil(AccountRecoveryModule.settingsViewController(apiMock, { _ in }))
     }
 
 }

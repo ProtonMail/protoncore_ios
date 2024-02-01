@@ -19,6 +19,7 @@
 import ProtonCoreFeatureFlags
 import ProtonCoreServices
 import SwiftUI
+import ProtonCoreDataModel
 
 #if os(iOS)
 public typealias AccountRecoveryViewController = UIHostingController<AccountRecoveryView>
@@ -44,10 +45,12 @@ public enum AccountRecoveryModule {
     }
     /// Localized name of the settings item for Account Recovery
     public static let settingsItem = ARTranslation.settingsItem.l10n
-    /// `APIService`-accepting closure to obtain the Account Recovery View Controller in Settings
-    public static let settingsViewController: (APIService) -> AccountRecoveryViewController = { apiService in
+    /// closure to obtain the Account Recovery View Controller in Settings
+    /// which accepts an APIService and another closure to update the Account Recovery state with the latest fetched value
+    public static let settingsViewController: (APIService, ((AccountRecovery) -> Void)?) -> AccountRecoveryViewController = { apiService, externalSetter in
         let accountRepository = AccountRecoveryRepository(apiService: apiService)
         let viewModel = AccountRecoveryView.ViewModel(accountRepository: accountRepository)
+        viewModel.externalAccountRecoverySetter = externalSetter
         return UIHostingController(rootView: AccountRecoveryView(viewModel: viewModel))
     }
 }

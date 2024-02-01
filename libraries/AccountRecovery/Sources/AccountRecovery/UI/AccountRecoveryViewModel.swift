@@ -39,12 +39,15 @@ extension AccountRecoveryView {
 
         @Published var email: String = ""
         @Published var remainingTime: TimeInterval = 0
-        @Published var state: User.RecoveryState = .none
-        @Published var reason: User.RecoveryReason = .none
+        @Published var state: RecoveryState = .none
+        @Published var reason: RecoveryReason = .none
         @Published var isLoaded = false
 
         private var username: String?
         private let accountRepository: AccountRecoveryRepositoryProtocol?
+
+        /// closure used to update externally held state (for settings items, for example)
+        public var externalAccountRecoverySetter: ((AccountRecovery) -> Void)?
 
         public init(accountRepository: AccountRecoveryRepositoryProtocol? = nil) {
             self.accountRepository = accountRepository
@@ -59,6 +62,8 @@ extension AccountRecoveryView {
                 isLoaded = true
                 return
             }
+
+            externalAccountRecoverySetter?(recovery)
 
             state = recovery.state
             reason = recovery.reason ?? .none
@@ -101,7 +106,7 @@ extension AccountRecoveryView {
                 await viewController.viewModel = verifier
                 await viewController.delegate = self
 
-                guard let rootVC = UIApplication.shared.topMostViewController else {
+                guard let rootVC = UIApplication.firstKeyWindow?.topMostViewController else {
                     throw AccountRecoveryViewError.couldNotPresentPasswordUI
                 }
                 await rootVC.present(viewController, animated: true) {}

@@ -21,7 +21,7 @@ import UIKit
 import ProtonCoreDataModel
 import ProtonCoreUIFoundations
 
-extension User.AccountRecovery {
+extension AccountRecovery {
     public var shouldShowSettingsItem: Bool {
         if state == .none || state == .expired { return false }
         // the user cancelled manually, so they already know
