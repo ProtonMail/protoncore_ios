@@ -240,15 +240,11 @@ SentrySystemEventBreadcrumbs ()
     NSInteger offset = SentryDependencyContainer.sharedInstance.dateProvider.timezoneOffset;
 
     crumb.type = @"system";
-
-    NSMutableDictionary *dataDict =
-        [@{ @"action" : @"TIMEZONE_CHANGE", @"current_seconds_from_gmt" : @(offset) } mutableCopy];
-
-    if (storedTimezoneOffset != nil) {
-        dataDict[@"previous_seconds_from_gmt"] = storedTimezoneOffset;
-    }
-
-    crumb.data = dataDict;
+    crumb.data = @{
+        @"action" : @"TIMEZONE_CHANGE",
+        @"previous_seconds_from_gmt" : storedTimezoneOffset,
+        @"current_seconds_from_gmt" : @(offset)
+    };
     [_delegate addBreadcrumb:crumb];
 
     [self updateStoredTimezone];

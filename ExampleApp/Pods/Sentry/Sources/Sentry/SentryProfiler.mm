@@ -12,7 +12,6 @@
 #    import "SentryDispatchFactory.h"
 #    import "SentryDispatchSourceWrapper.h"
 #    import "SentryEnvelope.h"
-#    import "SentryEnvelopeItemHeader.h"
 #    import "SentryEnvelopeItemType.h"
 #    import "SentryEvent+Private.h"
 #    import "SentryFormatter.h"
@@ -61,20 +60,6 @@ using namespace sentry::profiling;
 
 std::mutex _gProfilerLock;
 SentryProfiler *_Nullable _gCurrentProfiler;
-
-BOOL
-threadSanitizerIsPresent(void)
-{
-#    if defined(__has_feature)
-#        if __has_feature(thread_sanitizer)
-    return YES;
-#            pragma clang diagnostic push
-#            pragma clang diagnostic ignored "-Wunreachable-code"
-#        endif // __has_feature(thread_sanitizer)
-#    endif // defined(__has_feature)
-
-    return NO;
-}
 
 NSString *
 profilerTruncationReasonName(SentryProfilerTruncationReason reason)
@@ -336,7 +321,7 @@ serializedProfileData(
 
 #    pragma mark - Public
 
-+ (BOOL)startWithTracer:(SentryId *)traceId
++ (void)startWithTracer:(SentryId *)traceId
 {
     std::lock_guard<std::mutex> l(_gProfilerLock);
 
@@ -345,17 +330,16 @@ serializedProfileData(
         trackProfilerForTracer(_gCurrentProfiler, traceId);
         // record a new metric sample for every concurrent span start
         [_gCurrentProfiler->_metricProfiler recordMetrics];
-        return YES;
+        return;
     }
 
     _gCurrentProfiler = [[SentryProfiler alloc] init];
     if (_gCurrentProfiler == nil) {
         SENTRY_LOG_WARN(@"Profiler was not initialized, will not proceed.");
-        return NO;
+        return;
     }
 
     trackProfilerForTracer(_gCurrentProfiler, traceId);
-    return YES;
 }
 
 + (BOOL)isCurrentlyProfiling
@@ -378,7 +362,7 @@ serializedProfileData(
 {
     const auto payload = [self collectProfileBetween:transaction.startSystemTime
                                                  and:transaction.endSystemTime
-                                            forTrace:transaction.trace.internalID
+                                            forTrace:transaction.trace.traceId
                                                onHub:transaction.trace.hub];
     if (payload == nil) {
         return nil;
@@ -478,7 +462,7 @@ serializedProfileData(
         return;
     }
 
-    SENTRY_LOG_DEBUG(@"Stopping profiler %@ due to app moving to background.", self);
+    SENTRY_LOG_DEBUG(@"Stopping profiler %@ due to timeout.", self);
     [self stopForReason:SentryProfilerTruncationReasonAppMovedToBackground];
 }
 
@@ -513,10 +497,17 @@ serializedProfileData(
 
 - (void)start
 {
-    if (threadSanitizerIsPresent()) {
-        SENTRY_LOG_DEBUG(@"Disabling profiling when running with TSAN");
-        return;
-    }
+// Disable profiling when running with TSAN because it produces a TSAN false
+// positive, similar to the situation described here:
+// https://github.com/envoyproxy/envoy/issues/2561
+#    if defined(__has_feature)
+#        if __has_feature(thread_sanitizer)
+    SENTRY_LOG_DEBUG(@"Disabling profiling when running with TSAN");
+    return;
+#            pragma clang diagnostic push
+#            pragma clang diagnostic ignored "-Wunreachable-code"
+#        endif // __has_feature(thread_sanitizer)
+#    endif // defined(__has_feature)
 
     if (_profiler != nullptr) {
         // This theoretically shouldn't be possible as long as we're checking for nil and running

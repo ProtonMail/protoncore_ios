@@ -21,7 +21,6 @@ SentrySDK ()
 + (nullable SentryAppStartMeasurement *)getAppStartMeasurement;
 
 @property (nonatomic, class) NSUInteger startInvocations;
-@property (nullable, nonatomic, class) NSDate *startTimestamp;
 
 + (SentryHub *)currentHub;
 

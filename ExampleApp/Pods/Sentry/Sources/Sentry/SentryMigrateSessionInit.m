@@ -1,6 +1,5 @@
 #import "SentryMigrateSessionInit.h"
 #import "SentryEnvelope.h"
-#import "SentryEnvelopeItemHeader.h"
 #import "SentryEnvelopeItemType.h"
 #import "SentryLog.h"
 #import "SentrySerialization.h"

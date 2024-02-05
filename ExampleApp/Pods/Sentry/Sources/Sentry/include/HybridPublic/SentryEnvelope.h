@@ -1,4 +1,9 @@
 #import "PrivatesHeader.h"
+#if __has_include(<Sentry/SentryEnvelopeItemHeader.h>)
+#    import <Sentry/SentryEnvelopeItemHeader.h>
+#else
+#    import "SentryEnvelopeItemHeader.h"
+#endif
 
 #if COCOAPODS
 @class SentrySdkInfo, SentryTraceContext;

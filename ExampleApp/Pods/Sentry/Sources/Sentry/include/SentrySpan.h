@@ -6,10 +6,6 @@ NS_ASSUME_NONNULL_BEGIN
 @class SentryTracer, SentryId, SentrySpanId, SentryFrame, SentrySpanContext;
 @protocol SentrySerializable;
 
-#if SENTRY_HAS_UIKIT
-@class SentryFramesTracker;
-#endif // SENTRY_HAS_UIKIT
-
 @interface SentrySpan : NSObject <SentrySpan, SentrySerializable>
 SENTRY_NO_INIT
 
@@ -89,22 +85,13 @@ SENTRY_NO_INIT
  * @param transaction The @c SentryTracer managing the transaction this span is associated with.
  * @param context This span context information.
  */
-- (instancetype)initWithTracer:(SentryTracer *)transaction
-                       context:(SentrySpanContext *)context
-#if SENTRY_HAS_UIKIT
-                 framesTracker:(nullable SentryFramesTracker *)framesTracker;
-#endif // SENTRY_HAS_UIKIT
-;
+- (instancetype)initWithTracer:(SentryTracer *)transaction context:(SentrySpanContext *)context;
 
 /**
  * Init a @c SentrySpan with given context.
  * @param context This span context information.
  */
-- (instancetype)initWithContext:(SentrySpanContext *)context
-#if SENTRY_HAS_UIKIT
-                  framesTracker:(nullable SentryFramesTracker *)framesTracker;
-#endif // SENTRY_HAS_UIKIT
-;
+- (instancetype)initWithContext:(SentrySpanContext *)context;
 
 - (void)setExtraValue:(nullable id)value forKey:(NSString *)key DEPRECATED_ATTRIBUTE;
 @end

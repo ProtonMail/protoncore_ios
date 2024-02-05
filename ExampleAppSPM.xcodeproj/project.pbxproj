@@ -683,15 +683,6 @@
 		3E6F1EA7291CA15F0041B124 /* UIFoundationsDFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F1EA0291C9F5C0041B124 /* UIFoundationsDFSViewController.swift */; };
 		3E6F1EA8291CA1600041B124 /* UIFoundationsDFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F1EA0291C9F5C0041B124 /* UIFoundationsDFSViewController.swift */; };
 		3E6F1EA9291CA1610041B124 /* UIFoundationsDFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F1EA0291C9F5C0041B124 /* UIFoundationsDFSViewController.swift */; };
-		5701FC832AC588A8000820BA /* SubscriptionTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5701FC822AC588A8000820BA /* SubscriptionTypePickerViewController.swift */; };
-		5701FC842AC588A8000820BA /* SubscriptionTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5701FC822AC588A8000820BA /* SubscriptionTypePickerViewController.swift */; };
-		5701FC852AC588A8000820BA /* SubscriptionTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5701FC822AC588A8000820BA /* SubscriptionTypePickerViewController.swift */; };
-		5701FC862AC588A8000820BA /* SubscriptionTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5701FC822AC588A8000820BA /* SubscriptionTypePickerViewController.swift */; };
-		5701FC872AC588A8000820BA /* SubscriptionTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5701FC822AC588A8000820BA /* SubscriptionTypePickerViewController.swift */; };
-		5701FC882AC588A8000820BA /* SubscriptionTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5701FC822AC588A8000820BA /* SubscriptionTypePickerViewController.swift */; };
-		5701FC892AC588A8000820BA /* SubscriptionTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5701FC822AC588A8000820BA /* SubscriptionTypePickerViewController.swift */; };
-		5701FC8A2AC588A8000820BA /* SubscriptionTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5701FC822AC588A8000820BA /* SubscriptionTypePickerViewController.swift */; };
-		5701FC8B2AC588A8000820BA /* SubscriptionTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5701FC822AC588A8000820BA /* SubscriptionTypePickerViewController.swift */; };
 		571CACE32874873F004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD9E2840943D009EF6FA /* LanguageManager.swift */; };
 		571CACE428748740004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD9E2840943D009EF6FA /* LanguageManager.swift */; };
 		571CACE528748740004B8238 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD9E2840943D009EF6FA /* LanguageManager.swift */; };
@@ -1869,7 +1860,6 @@
 		3E092B842754A0740064DFE3 /* UIFoundationsShadowViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIFoundationsShadowViewController.xib; sourceTree = "<group>"; };
 		3E15F00D299E138C00651809 /* UIFoundationsActionSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFoundationsActionSheetViewController.swift; sourceTree = "<group>"; };
 		3E6F1EA0291C9F5C0041B124 /* UIFoundationsDFSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFoundationsDFSViewController.swift; sourceTree = "<group>"; };
-		5701FC822AC588A8000820BA /* SubscriptionTypePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionTypePickerViewController.swift; sourceTree = "<group>"; };
 		574F178B2885C8AE008B0ABF /* LoginMockingSetupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMockingSetupTests.swift; sourceTree = "<group>"; };
 		57C2419C2886FBD100D0D02B /* VerificationModifiableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationModifiableTests.swift; sourceTree = "<group>"; };
 		66219CA927CFCD4C00449F2D /* Example-UIFoundations.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Example-UIFoundations.storyboard"; sourceTree = "<group>"; };
@@ -2849,7 +2839,6 @@
 				2559CCFE2710A39200D3048A /* SampleAppLogoutManager.swift */,
 				2559CD002710A39200D3048A /* SettingsDemoKeychain.swift */,
 				31495B4A2A0BFBC600162FE2 /* SettingsTitleValueViewModel.swift */,
-				5701FC822AC588A8000820BA /* SubscriptionTypePickerViewController.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -5324,7 +5313,6 @@
 				31495B532A0BFBC600162FE2 /* SettingsTitleValueViewModel.swift in Sources */,
 				25AAB532270F3BB500CEA95A /* LoginStorage.swift in Sources */,
 				663535A527C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
-				5701FC8B2AC588A8000820BA /* SubscriptionTypePickerViewController.swift in Sources */,
 				2559CD352710AB4B00D3048A /* SettingsViewController.swift in Sources */,
 				3784A05527AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDFBFF2714275B001BB254 /* Configuration.swift in Sources */,
@@ -5440,7 +5428,6 @@
 				25BDF945271424B3001BB254 /* FeaturesViewController.swift in Sources */,
 				6656EE5F280E952600835E6D /* PaymentsTransactionsViewController.swift in Sources */,
 				6673F1D12765614F00B1EE7A /* EnvironmentSelector.swift in Sources */,
-				5701FC832AC588A8000820BA /* SubscriptionTypePickerViewController.swift in Sources */,
 				25BDF946271424B3001BB254 /* ExampleAppDelegate.swift in Sources */,
 				75C8AD95284091A8009EF6FA /* NSBundle+Language.m in Sources */,
 				25BDF947271424B3001BB254 /* PaymentsViewController.swift in Sources */,
@@ -5533,7 +5520,6 @@
 				31495B4C2A0BFBC600162FE2 /* SettingsTitleValueViewModel.swift in Sources */,
 				25BDF9AF271424FE001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDF9B1271424FE001BB254 /* LoginStorage.swift in Sources */,
-				5701FC842AC588A8000820BA /* SubscriptionTypePickerViewController.swift in Sources */,
 				6635359E27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
 				3784A04E27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDF9B4271424FE001BB254 /* SettingsViewController.swift in Sources */,
@@ -5603,7 +5589,6 @@
 				31495B4D2A0BFBC600162FE2 /* SettingsTitleValueViewModel.swift in Sources */,
 				25BDFA0727142508001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFA0927142508001BB254 /* LoginStorage.swift in Sources */,
-				5701FC852AC588A8000820BA /* SubscriptionTypePickerViewController.swift in Sources */,
 				6635359F27C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
 				3784A04F27AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDFA0C27142508001BB254 /* SettingsViewController.swift in Sources */,
@@ -5673,7 +5658,6 @@
 				31495B4E2A0BFBC600162FE2 /* SettingsTitleValueViewModel.swift in Sources */,
 				25BDFA5F27142510001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFA6127142510001BB254 /* LoginStorage.swift in Sources */,
-				5701FC862AC588A8000820BA /* SubscriptionTypePickerViewController.swift in Sources */,
 				663535A027C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
 				3784A05027AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDFA6427142510001BB254 /* SettingsViewController.swift in Sources */,
@@ -5743,7 +5727,6 @@
 				31495B4F2A0BFBC600162FE2 /* SettingsTitleValueViewModel.swift in Sources */,
 				25BDFAB72714251B001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFAB92714251B001BB254 /* LoginStorage.swift in Sources */,
-				5701FC872AC588A8000820BA /* SubscriptionTypePickerViewController.swift in Sources */,
 				663535A127C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
 				3784A05127AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDFABC2714251B001BB254 /* SettingsViewController.swift in Sources */,
@@ -5813,7 +5796,6 @@
 				31495B502A0BFBC600162FE2 /* SettingsTitleValueViewModel.swift in Sources */,
 				25BDFB0F27142526001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFB1127142526001BB254 /* LoginStorage.swift in Sources */,
-				5701FC882AC588A8000820BA /* SubscriptionTypePickerViewController.swift in Sources */,
 				663535A227C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
 				3784A05227AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDFB1427142526001BB254 /* SettingsViewController.swift in Sources */,
@@ -5883,7 +5865,6 @@
 				31495B512A0BFBC600162FE2 /* SettingsTitleValueViewModel.swift in Sources */,
 				25BDFB6727142534001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFB6927142534001BB254 /* LoginStorage.swift in Sources */,
-				5701FC892AC588A8000820BA /* SubscriptionTypePickerViewController.swift in Sources */,
 				663535A327C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
 				3784A05327AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDFB6C27142534001BB254 /* SettingsViewController.swift in Sources */,
@@ -5953,7 +5934,6 @@
 				31495B522A0BFBC600162FE2 /* SettingsTitleValueViewModel.swift in Sources */,
 				25BDFBBF2714253B001BB254 /* UIFoundationsSplashShowcaseViewController.swift in Sources */,
 				25BDFBC12714253B001BB254 /* LoginStorage.swift in Sources */,
-				5701FC8A2AC588A8000820BA /* SubscriptionTypePickerViewController.swift in Sources */,
 				663535A427C013CD006FB9C6 /* UIFoundationsColorsViewController.swift in Sources */,
 				3784A05427AD7C6A00DE92DE /* AppVersionHeader.swift in Sources */,
 				25BDFBC42714253B001BB254 /* SettingsViewController.swift in Sources */,

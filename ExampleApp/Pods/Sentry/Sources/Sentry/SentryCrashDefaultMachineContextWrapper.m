@@ -41,11 +41,11 @@ SentryCrashThread mainThreadID;
     return thread;
 }
 
-- (BOOL)getThreadName:(const SentryCrashThread)thread
+- (void)getThreadName:(const SentryCrashThread)thread
             andBuffer:(char *const)buffer
          andBufLength:(int)bufLength;
 {
-    return sentrycrashthread_getThreadName(thread, buffer, bufLength) == true;
+    sentrycrashthread_getThreadName(thread, buffer, bufLength);
 }
 
 - (BOOL)isMainThread:(SentryCrashThread)thread

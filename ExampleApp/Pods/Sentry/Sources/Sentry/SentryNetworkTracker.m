@@ -23,7 +23,6 @@
 #import "SentryTraceHeader.h"
 #import "SentryTraceOrigins.h"
 #import "SentryTracer.h"
-#import "SentryUser.h"
 #import <objc/runtime.h>
 @import SentryPrivate;
 
@@ -217,12 +216,7 @@ SentryNetworkTracker ()
 - (void)addTraceWithoutTransactionToTask:(NSURLSessionTask *)sessionTask
 {
     SentryPropagationContext *propagationContext = SentrySDK.currentHub.scope.propagationContext;
-    SentryTraceContext *traceContext =
-        [[SentryTraceContext alloc] initWithTraceId:propagationContext.traceId
-                                            options:SentrySDK.currentHub.client.options
-                                        userSegment:SentrySDK.currentHub.scope.userObject.segment];
-
-    [self addBaggageHeader:[traceContext toBaggage]
+    [self addBaggageHeader:[[propagationContext traceContext] toBaggage]
                traceHeader:[propagationContext traceHeader]
                  toRequest:sessionTask];
 }
@@ -340,12 +334,10 @@ SentryNetworkTracker ()
 
 - (void)captureFailedRequests:(NSURLSessionTask *)sessionTask
 {
-    @synchronized(self) {
-        if (!self.isCaptureFailedRequestsEnabled) {
-            SENTRY_LOG_DEBUG(
-                @"captureFailedRequestsEnabled is disabled, not capturing HTTP Client errors.");
-            return;
-        }
+    if (!self.isCaptureFailedRequestsEnabled) {
+        SENTRY_LOG_DEBUG(
+            @"captureFailedRequestsEnabled is disabled, not capturing HTTP Client errors.");
+        return;
     }
 
     // if request or response are null, we can't raise the event

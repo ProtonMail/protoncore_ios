@@ -7,7 +7,6 @@
 #import "SentryDispatchQueueWrapper.h"
 #import "SentryDsn.h"
 #import "SentryEnvelope.h"
-#import "SentryEnvelopeItemHeader.h"
 #import "SentryError.h"
 #import "SentryEvent.h"
 #import "SentryFileContents.h"
@@ -239,15 +238,13 @@ SentryFileManager ()
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error = nil;
     @synchronized(self) {
+        SENTRY_LOG_DEBUG(@"Deleting %@", path);
+
         if (![fileManager removeItemAtPath:path error:&error]) {
-            if (error.code == NSFileNoSuchFileError) {
-                SENTRY_LOG_DEBUG(@"No file to delete at %@", path);
-            } else {
-                SENTRY_LOG_ERROR(
-                    @"Error occurred while deleting file at %@ because of %@", path, error);
+            // We don't want to log an error if the file doesn't exist.
+            if (error.code != NSFileNoSuchFileError) {
+                SENTRY_LOG_ERROR(@"Couldn't delete file %@: %@", path, error);
             }
-        } else {
-            SENTRY_LOG_DEBUG(@"Successfully deleted file at %@", path);
         }
     }
 }
@@ -255,10 +252,10 @@ SentryFileManager ()
 - (NSString *)storeEnvelope:(SentryEnvelope *)envelope
 {
     NSData *envelopeData = [SentrySerialization dataWithEnvelope:envelope error:nil];
+    NSString *path =
+        [self.envelopesPath stringByAppendingPathComponent:[self uniqueAscendingJsonName]];
 
     @synchronized(self) {
-        NSString *path =
-            [self.envelopesPath stringByAppendingPathComponent:[self uniqueAscendingJsonName]];
         SENTRY_LOG_DEBUG(@"Writing envelope to path: %@", path);
 
         if (![self writeData:envelopeData toPath:path]) {
@@ -641,7 +638,8 @@ SentryFileManager ()
 
 - (void)createPathsWithOptions:(SentryOptions *_Nonnull)options
 {
-    NSString *cachePath = options.cacheDirectoryPath;
+    NSString *cachePath
+        = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject;
 
     SENTRY_LOG_DEBUG(@"SentryFileManager.cachePath: %@", cachePath);
 

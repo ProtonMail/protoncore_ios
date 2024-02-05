@@ -28,8 +28,6 @@
 #import "SentryCrashReportFilter.h"
 #import "SentryCrashReportWriter.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 /**
  * Crash system installation which handles backend-specific details.
  *
@@ -50,7 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 /** Install this installation. Call this instead of -[SentryCrash install] to
  * install with everything needed for your particular backend.
  */
-- (void)install:(NSString *)customCacheDirectory;
+- (void)install;
 
 /**
  * Call this instead of `-[SentryCrash uninstall]`.
@@ -66,7 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @param onCompletion Called when sending is complete (nil = ignore).
  */
-- (void)sendAllReportsWithCompletion:(nullable SentryCrashReportFilterCompletion)onCompletion;
+- (void)sendAllReportsWithCompletion:(SentryCrashReportFilterCompletion)onCompletion;
 
 /** Add a filter that gets executed before all normal filters.
  * Prepended filters will be executed in the order in which they were added.
@@ -76,5 +74,3 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addPreFilter:(id<SentryCrashReportFilter>)filter;
 
 @end
-
-NS_ASSUME_NONNULL_END

@@ -11,11 +11,9 @@
 #import "SentryRandom.h"
 #import "SentrySysctl.h"
 #import "SentrySystemWrapper.h"
-#import "SentryThreadInspector.h"
 #import "SentryUIDeviceWrapper.h"
 #import <SentryAppStateManager.h>
 #import <SentryClient+Private.h>
-#import <SentryCrash.h>
 #import <SentryCrashWrapper.h>
 #import <SentryDebugImageProvider.h>
 #import <SentryDependencyContainer.h>
@@ -26,7 +24,6 @@
 #import <SentrySwizzleWrapper.h>
 #import <SentrySysctl.h>
 #import <SentryThreadWrapper.h>
-#import <SentryTracer.h>
 
 #if SENTRY_HAS_UIKIT
 #    import "SentryFramesTracker.h"
@@ -63,12 +60,6 @@ static NSObject *sentryDependencyContainerLock;
 
 + (void)reset
 {
-#if !TARGET_OS_WATCH
-    if (instance) {
-        [instance->_reachability removeAllObservers];
-    }
-#endif // !TARGET_OS_WATCH
-
     instance = [[SentryDependencyContainer alloc] init];
 }
 
@@ -123,19 +114,6 @@ static NSObject *sentryDependencyContainerLock;
     return _crashWrapper;
 }
 
-- (SentryCrash *)crashReporter
-{
-    if (_crashReporter == nil) {
-        @synchronized(sentryDependencyContainerLock) {
-            if (_crashReporter == nil) {
-                SentryOptions *options = [[[SentrySDK currentHub] getClient] options];
-                _crashReporter = [[SentryCrash alloc] initWithBasePath:options.cacheDirectoryPath];
-            }
-        }
-    }
-    return _crashReporter;
-}
-
 - (SentrySysctl *)sysctlWrapper
 {
     if (_sysctlWrapper == nil) {
@@ -146,19 +124,6 @@ static NSObject *sentryDependencyContainerLock;
         }
     }
     return _sysctlWrapper;
-}
-
-- (SentryThreadInspector *)threadInspector
-{
-    if (_threadInspector == nil) {
-        @synchronized(sentryDependencyContainerLock) {
-            if (_threadInspector == nil) {
-                SentryOptions *options = [[[SentrySDK currentHub] getClient] options];
-                _threadInspector = [[SentryThreadInspector alloc] initWithOptions:options];
-            }
-        }
-    }
-    return _threadInspector;
 }
 
 - (SentryExtraContextProvider *)extraContextProvider
@@ -269,9 +234,7 @@ static NSObject *sentryDependencyContainerLock;
         @synchronized(sentryDependencyContainerLock) {
             if (_framesTracker == nil) {
                 _framesTracker = [[SentryFramesTracker alloc]
-                    initWithDisplayLinkWrapper:[[SentryDisplayLinkWrapper alloc] init]
-                                  dateProvider:self.dateProvider
-                     keepDelayedFramesDuration:SENTRY_AUTO_TRANSACTION_MAX_DURATION];
+                    initWithDisplayLinkWrapper:[[SentryDisplayLinkWrapper alloc] init]];
             }
         }
     }

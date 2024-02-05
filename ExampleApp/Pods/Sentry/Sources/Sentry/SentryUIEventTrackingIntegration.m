@@ -2,12 +2,12 @@
 
 #if SENTRY_HAS_UIKIT
 
+#    import <SentryDependencyContainer.h>
 #    import <SentryLog.h>
 #    import <SentryNSDataSwizzling.h>
 #    import <SentryOptions+Private.h>
 #    import <SentryOptions.h>
 #    import <SentryUIEventTracker.h>
-#    import <SentryUIEventTrackerTransactionMode.h>
 
 @interface
 SentryUIEventTrackingIntegration ()
@@ -24,10 +24,10 @@ SentryUIEventTrackingIntegration ()
         return NO;
     }
 
-    SentryUIEventTrackerTransactionMode *mode =
-        [[SentryUIEventTrackerTransactionMode alloc] initWithIdleTimeout:options.idleTimeout];
-
-    self.uiEventTracker = [[SentryUIEventTracker alloc] initWithMode:mode];
+    SentryDependencyContainer *dependencies = [SentryDependencyContainer sharedInstance];
+    self.uiEventTracker =
+        [[SentryUIEventTracker alloc] initWithDispatchQueueWrapper:dependencies.dispatchQueueWrapper
+                                                       idleTimeout:options.idleTimeout];
 
     [self.uiEventTracker start];
 

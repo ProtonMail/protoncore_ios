@@ -5,7 +5,6 @@
 #    import "SentryProfilingConditionals.h"
 
 @class SentryOptions, SentryDisplayLinkWrapper, SentryScreenFrames;
-@class SentryCurrentDateProvider;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -13,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol SentryFramesTrackerListener
 
-- (void)framesTrackerHasNewFrame:(NSDate *)newFrameDate;
+- (void)framesTrackerHasNewFrame;
 
 @end
 
@@ -22,9 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface SentryFramesTracker : NSObject
 
-- (instancetype)initWithDisplayLinkWrapper:(SentryDisplayLinkWrapper *)displayLinkWrapper
-                              dateProvider:(SentryCurrentDateProvider *)dateProvider
-                 keepDelayedFramesDuration:(CFTimeInterval)keepDelayedFramesDuration;
+- (instancetype)initWithDisplayLinkWrapper:(SentryDisplayLinkWrapper *)displayLinkWrapper;
 
 @property (nonatomic, assign, readonly) SentryScreenFrames *currentFrames;
 @property (nonatomic, assign, readonly) BOOL isRunning;
@@ -37,21 +34,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)start;
 - (void)stop;
 
-/*
- * Returns the frames delay for the passed time period. If the method can't calculate the frames
- * delay, it returns -1.
- */
-- (CFTimeInterval)getFramesDelay:(uint64_t)startSystemTimestamp
-              endSystemTimestamp:(uint64_t)endSystemTimestamp;
-
 - (void)addListener:(id<SentryFramesTrackerListener>)listener;
 
 - (void)removeListener:(id<SentryFramesTrackerListener>)listener;
 
 @end
-
-BOOL sentryShouldAddSlowFrozenFramesData(
-    NSInteger totalFrames, NSInteger slowFrames, NSInteger frozenFrames);
 
 NS_ASSUME_NONNULL_END
 

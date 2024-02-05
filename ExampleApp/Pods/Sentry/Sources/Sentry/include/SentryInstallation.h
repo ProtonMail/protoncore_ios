@@ -6,7 +6,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SentryInstallation : NSObject
 
-+ (NSString *)idWithCacheDirectoryPath:(NSString *)cacheDirectoryPath;
++ (NSString *)id;
 
 @end
 

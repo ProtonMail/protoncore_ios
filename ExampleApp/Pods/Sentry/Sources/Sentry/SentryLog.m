@@ -12,19 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 static BOOL isDebug = YES;
 static SentryLevel diagnosticLevel = kSentryLevelError;
 static SentryLogOutput *logOutput;
-static NSObject *logConfigureLock;
-
-+ (void)initialize
-{
-    logConfigureLock = [[NSObject alloc] init];
-}
 
 + (void)configure:(BOOL)debug diagnosticLevel:(SentryLevel)level
 {
-    @synchronized(logConfigureLock) {
-        isDebug = debug;
-        diagnosticLevel = level;
-    }
+    isDebug = debug;
+    diagnosticLevel = level;
 }
 
 + (void)logWithMessage:(NSString *)message andLevel:(SentryLevel)level
@@ -41,9 +33,7 @@ static NSObject *logConfigureLock;
 
 + (BOOL)willLogAtLevel:(SentryLevel)level
 {
-    @synchronized(logConfigureLock) {
-        return isDebug && level != kSentryLevelNone && level >= diagnosticLevel;
-    }
+    return isDebug && level != kSentryLevelNone && level >= diagnosticLevel;
 }
 
 // Internal and only needed for testing.

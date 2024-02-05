@@ -192,17 +192,6 @@ NS_SWIFT_NAME(Options)
 @property (nonatomic, assign) BOOL enableAutoPerformanceTracing;
 
 /**
- * @warning This is an experimental feature and may still have bugs.
- *
- * Sentry works on reworking the whole performance offering with the code Mobile Starfish, which
- * aims to provide better insights into the performance of mobile apps and highlight clear actions
- * to improve app performance to developers. This feature flag enables experimental features that
- * impact the v1 performance offering and would require a major version update. Sentry aims to
- * include most features in the next major by default.
- */
-@property (nonatomic, assign) BOOL enablePerformanceV2;
-
-/**
  * A block that configures the initial scope when starting the SDK.
  * @discussion The block receives a suggested default scope. You can either
  * configure and return this, or create your own scope instead.
@@ -254,12 +243,11 @@ NS_SWIFT_NAME(Options)
  * @note The default is 3 seconds.
  */
 @property (nonatomic, assign) NSTimeInterval idleTimeout;
-
 /**
- * Report pre-warmed app starts by dropping the first app start spans if pre-warming paused
+ * @warning This is an experimental feature and may still have bugs.
+ * @brief Report pre-warmed app starts by dropping the first app start spans if pre-warming paused
  * during these steps. This approach will shorten the app start duration, but it represents the
  * duration a user has to wait after clicking the app icon until the app is responsive.
- *
  * @note You can filter for different app start types in Discover with
  * @c app_start_type:cold.prewarmed ,
  * @c app_start_type:warm.prewarmed , @c app_start_type:cold , and @c app_start_type:warm .
@@ -506,23 +494,11 @@ NS_SWIFT_NAME(Options)
 @property (nonatomic) BOOL enableTimeToFullDisplayTracing;
 
 /**
- * This feature is only available from Xcode 13 and from macOS 12.0, iOS 15.0, tvOS 15.0,
- * watchOS 8.0.
- *
  * @warning This is an experimental feature and may still have bugs.
  * @brief Stitches the call to Swift Async functions in one consecutive stack trace.
  * @note Default value is @c NO .
  */
 @property (nonatomic, assign) BOOL swiftAsyncStacktraces;
-
-/**
- * The path to store SDK data, like events, transactions, profiles, raw crash data, etc. We
- recommend only changing this when the default, e.g., in security environments, can't be accessed.
- *
- * @note The default is `NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask,
- YES)`.
- */
-@property (nonatomic, copy) NSString *cacheDirectoryPath;
 @end
 
 NS_ASSUME_NONNULL_END

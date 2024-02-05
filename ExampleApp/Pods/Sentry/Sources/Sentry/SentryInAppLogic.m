@@ -4,6 +4,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@interface
+SentryInAppLogic ()
+
+@property (nonatomic, copy, readonly) NSArray<NSString *> *inAppIncludes;
+@property (nonatomic, copy, readonly) NSArray<NSString *> *inAppExcludes;
+
+@end
+
 @implementation SentryInAppLogic
 
 - (instancetype)initWithInAppIncludes:(NSArray<NSString *> *)inAppIncludes
@@ -24,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
     }
 
     for (NSString *inAppInclude in self.inAppIncludes) {
-        if ([SentryInAppLogic isImageNameInApp:imageName inAppInclude:inAppInclude])
+        if ([imageName.lastPathComponent.lowercaseString hasPrefix:inAppInclude.lowercaseString])
             return YES;
     }
 
@@ -44,11 +52,6 @@ NS_ASSUME_NONNULL_BEGIN
 
     NSString *classImageName = [NSString stringWithCString:imageName encoding:NSUTF8StringEncoding];
     return [self isInApp:classImageName];
-}
-
-+ (BOOL)isImageNameInApp:(NSString *)imageName inAppInclude:(NSString *)inAppInclude
-{
-    return [imageName.lastPathComponent.lowercaseString hasPrefix:inAppInclude.lowercaseString];
 }
 
 @end

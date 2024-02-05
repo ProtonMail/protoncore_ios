@@ -33,7 +33,6 @@
 #import "SentryCrashJSONCodecObjC.h"
 #import "SentryCrashLogger.h"
 #import "SentryCrashReportFilterBasic.h"
-#import "SentryDependencyContainer.h"
 #import <objc/runtime.h>
 
 /** Max number of properties that can be defined for writing to the report */
@@ -176,7 +175,7 @@ SentryCrashInstallation ()
 
 - (void)dealloc
 {
-    SentryCrash *handler = SentryDependencyContainer.sharedInstance.crashReporter;
+    SentryCrash *handler = [SentryCrash sharedInstance];
     @synchronized(handler) {
         if (g_crashHandlerData == self.crashHandlerData) {
             g_crashHandlerData = NULL;
@@ -259,11 +258,10 @@ SentryCrashInstallation ()
     }
 }
 
-- (void)install:(NSString *)customCacheDirectory
+- (void)install
 {
-    SentryCrash *handler = SentryDependencyContainer.sharedInstance.crashReporter;
+    SentryCrash *handler = [SentryCrash sharedInstance];
     @synchronized(handler) {
-        handler.basePath = customCacheDirectory;
         g_crashHandlerData = self.crashHandlerData;
         handler.onCrash = crashCallback;
         [handler install];
@@ -272,7 +270,7 @@ SentryCrashInstallation ()
 
 - (void)uninstall
 {
-    SentryCrash *handler = SentryDependencyContainer.sharedInstance.crashReporter;
+    SentryCrash *handler = [SentryCrash sharedInstance];
     @synchronized(handler) {
         if (g_crashHandlerData == self.crashHandlerData) {
             g_crashHandlerData = NULL;
@@ -304,7 +302,7 @@ SentryCrashInstallation ()
 
     sink = [SentryCrashReportFilterPipeline filterWithFilters:self.prependedFilters, sink, nil];
 
-    SentryCrash *handler = SentryDependencyContainer.sharedInstance.crashReporter;
+    SentryCrash *handler = [SentryCrash sharedInstance];
     handler.sink = sink;
     [handler sendAllReportsWithCompletion:onCompletion];
 }

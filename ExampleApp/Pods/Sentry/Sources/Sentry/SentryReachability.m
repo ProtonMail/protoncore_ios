@@ -24,8 +24,8 @@
 // THE SOFTWARE.
 //
 
-#import "SentryReachability.h"
 #import "SentryLog.h"
+#import "SentryReachability+Private.h"
 
 #if !TARGET_OS_WATCH
 
@@ -39,17 +39,6 @@ static dispatch_queue_t sentry_reachability_queue;
 NSString *const SentryConnectivityCellular = @"cellular";
 NSString *const SentryConnectivityWiFi = @"wifi";
 NSString *const SentryConnectivityNone = @"none";
-
-#    if TEST || TESTCI
-static BOOL sentry_reachability_ignore_actual_callback = NO;
-
-void
-SentrySetReachabilityIgnoreActualCallback(BOOL value)
-{
-    SENTRY_LOG_DEBUG(@"Setting ignore actual callback to %@", value ? @"YES" : @"NO");
-    sentry_reachability_ignore_actual_callback = value;
-}
-#    endif // TEST || TESTCI
 
 /**
  * Check whether the connectivity change should be noted or ignored.
@@ -95,12 +84,21 @@ SentryConnectivityFlagRepresentation(SCNetworkReachabilityFlags flags)
 #    endif // SENTRY_HAS_UIKIT
 }
 
+/**
+ * Callback invoked by @c SCNetworkReachability, which calls an Objective-C block
+ * that handles the connection change.
+ */
 void
-SentryConnectivityCallback(SCNetworkReachabilityFlags flags)
+SentryConnectivityCallback(
+    __unused SCNetworkReachabilityRef target, SCNetworkReachabilityFlags flags, __unused void *info)
 {
+    SENTRY_LOG_DEBUG(
+        @"SentryConnectivityCallback called with target: %@; flags: %u", target, flags);
+
     @synchronized(sentry_reachability_observers) {
         SENTRY_LOG_DEBUG(
-            @"Entered synchronized region of SentryConnectivityCallback with flags: %u", flags);
+            @"Entered synchronized region of SentryConnectivityCallback with target: %@; flags: %u",
+            target, flags);
 
         if (sentry_reachability_observers.count == 0) {
             SENTRY_LOG_DEBUG(@"No reachability observers registered. Nothing to do.");
@@ -126,33 +124,6 @@ SentryConnectivityCallback(SCNetworkReachabilityFlags flags)
     }
 }
 
-/**
- * Callback invoked by @c SCNetworkReachability, which calls an Objective-C block
- * that handles the connection change.
- */
-void
-SentryConnectivityActualCallback(
-    __unused SCNetworkReachabilityRef target, SCNetworkReachabilityFlags flags, __unused void *info)
-{
-    SENTRY_LOG_DEBUG(
-        @"SentryConnectivityCallback called with target: %@; flags: %u", target, flags);
-#    if TEST || TESTCI
-    if (sentry_reachability_ignore_actual_callback) {
-        SENTRY_LOG_DEBUG(@"Ignoring actual callback.");
-        return;
-    }
-#    endif // TEST || TESTCI
-
-    SentryConnectivityCallback(flags);
-}
-
-@interface
-SentryReachability ()
-
-@property SCNetworkReachabilityRef sentry_reachability_ref;
-
-@end
-
 @implementation SentryReachability
 
 + (void)initialize
@@ -162,18 +133,14 @@ SentryReachability ()
     }
 }
 
-#    if TEST || TESTCI
-
 - (instancetype)init
 {
     if (self = [super init]) {
-        self.skipRegisteringActualCallbacks = NO;
+        self.setReachabilityCallback = YES;
     }
 
     return self;
 }
-
-#    endif // TEST || TESTCI
 
 - (void)addObserver:(id<SentryReachabilityObserver>)observer;
 {
@@ -191,12 +158,10 @@ SentryReachability ()
             return;
         }
 
-#    if TEST || TESTCI
-        if (self.skipRegisteringActualCallbacks) {
-            SENTRY_LOG_DEBUG(@"Skip registering actual callbacks");
+        if (!self.setReachabilityCallback) {
+            SENTRY_LOG_DEBUG(@"Skipping setting reachability callback.");
             return;
         }
-#    endif // TEST || TESTCI
 
         sentry_reachability_queue
             = dispatch_queue_create("io.sentry.cocoa.connectivity", DISPATCH_QUEUE_SERIAL);
@@ -211,7 +176,7 @@ SentryReachability ()
 
         SENTRY_LOG_DEBUG(@"registering callback for reachability ref %@", _sentry_reachability_ref);
         SCNetworkReachabilitySetCallback(
-            _sentry_reachability_ref, SentryConnectivityActualCallback, NULL);
+            _sentry_reachability_ref, SentryConnectivityCallback, NULL);
         SCNetworkReachabilitySetDispatchQueue(_sentry_reachability_ref, sentry_reachability_queue);
     }
 }
@@ -241,12 +206,6 @@ SentryReachability ()
 
 - (void)unsetReachabilityCallback
 {
-#    if TEST || TESTCI
-    if (self.skipRegisteringActualCallbacks) {
-        SENTRY_LOG_DEBUG(@"Skip unsetting actual callbacks");
-    }
-#    endif // TEST || TESTCI
-
     sentry_current_reachability_state = kSCNetworkReachabilityFlagsUninitialized;
 
     if (_sentry_reachability_ref != nil) {

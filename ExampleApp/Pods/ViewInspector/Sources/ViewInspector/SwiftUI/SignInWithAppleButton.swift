@@ -149,9 +149,10 @@ public extension ASAuthorizationAppleIDCredential {
         AMoAzADOANAA0gDXAN0A3gDjAO4A9QD2APgA/QEIAREBGQEcAAAAAAAAAgEAAAAAAAAAJgAAAA\
         AAAAAAAAAAAAAAASU=
         """)
-        // swiftlint:disable:next force_try
+        // swiftlint:disable force_try
         let decoder = try! NSKeyedUnarchiver(forReadingFrom: data!)
         self.init(coder: decoder)!
+        // swiftlint:enable force_try
         setValue(user, forKey: "user")
         setValue(email, forKey: "email")
         setValue(fullName, forKey: "fullName")

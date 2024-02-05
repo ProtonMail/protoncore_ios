@@ -11,7 +11,6 @@ NS_SWIFT_NAME(Transaction)
 SENTRY_NO_INIT
 
 @property (nonatomic, strong) SentryTracer *trace;
-@property (nonatomic, copy, nullable) NSArray<NSString *> *viewNames;
 
 - (instancetype)initWithTrace:(SentryTracer *)trace children:(NSArray<id<SentrySpan>> *)children;
 

@@ -202,24 +202,17 @@ getStackEntriesFromThread(SentryCrashThread thread, struct SentryCrashMachineCon
     return threads;
 }
 
-- (nullable NSString *)getThreadName:(SentryCrashThread)thread
+- (NSString *)getThreadName:(SentryCrashThread)thread
 {
-    int bufferLength = 128;
-    char buffer[bufferLength];
+    char buffer[128];
     char *const pBuffer = buffer;
+    [self.machineContextWrapper getThreadName:thread andBuffer:pBuffer andBufLength:128];
 
-    BOOL didGetThreadNameSucceed = [self.machineContextWrapper getThreadName:thread
-                                                                   andBuffer:pBuffer
-                                                                andBufLength:bufferLength];
-
-    if (didGetThreadNameSucceed == YES) {
-        NSString *threadName = [NSString stringWithCString:pBuffer encoding:NSUTF8StringEncoding];
-        if (threadName.length > 0) {
-            return threadName;
-        }
+    NSString *threadName = [NSString stringWithCString:pBuffer encoding:NSUTF8StringEncoding];
+    if (nil == threadName) {
+        threadName = @"";
     }
-
-    return nil;
+    return threadName;
 }
 
 @end
