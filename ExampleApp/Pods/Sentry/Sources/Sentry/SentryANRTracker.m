@@ -71,8 +71,6 @@ SentryANRTracker ()
     NSInteger reportThreshold = 5;
     NSTimeInterval sleepInterval = self.timeoutInterval / reportThreshold;
 
-    SentryCurrentDateProvider *dateProvider = SentryDependencyContainer.sharedInstance.dateProvider;
-
     // Canceling the thread can take up to sleepInterval.
     while (YES) {
         @synchronized(threadLock) {
@@ -81,7 +79,8 @@ SentryANRTracker ()
             }
         }
 
-        NSDate *blockDeadline = [[dateProvider date] dateByAddingTimeInterval:self.timeoutInterval];
+        NSDate *blockDeadline = [[SentryDependencyContainer.sharedInstance.dateProvider date]
+            dateByAddingTimeInterval:self.timeoutInterval];
 
         atomic_fetch_add_explicit(&ticksSinceUiUpdate, 1, memory_order_relaxed);
 
@@ -108,7 +107,8 @@ SentryANRTracker ()
         // an ANR. If the app gets suspended this thread could sleep and wake up again. To avoid
         // false positives, we don't report ANRs if the delta is too big.
         NSTimeInterval deltaFromNowToBlockDeadline =
-            [[dateProvider date] timeIntervalSinceDate:blockDeadline];
+            [[SentryDependencyContainer.sharedInstance.dateProvider date]
+                timeIntervalSinceDate:blockDeadline];
 
         if (deltaFromNowToBlockDeadline >= self.timeoutInterval) {
             SENTRY_LOG_DEBUG(
@@ -165,8 +165,8 @@ SentryANRTracker ()
     @synchronized(self.listeners) {
         [self.listeners addObject:listener];
 
-        @synchronized(threadLock) {
-            if (self.listeners.count > 0 && state == kSentryANRTrackerNotRunning) {
+        if (self.listeners.count > 0 && state == kSentryANRTrackerNotRunning) {
+            @synchronized(threadLock) {
                 if (state == kSentryANRTrackerNotRunning) {
                     state = kSentryANRTrackerStarting;
                     [NSThread detachNewThreadSelector:@selector(detectANRs)

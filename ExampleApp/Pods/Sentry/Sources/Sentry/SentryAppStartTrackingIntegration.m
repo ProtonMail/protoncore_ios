@@ -33,9 +33,7 @@ SentryAppStartTrackingIntegration ()
     self.tracker = [[SentryAppStartTracker alloc]
           initWithDispatchQueueWrapper:[[SentryDispatchQueueWrapper alloc] init]
                        appStateManager:appStateManager
-                         framesTracker:SentryDependencyContainer.sharedInstance.framesTracker
-        enablePreWarmedAppStartTracing:options.enablePreWarmedAppStartTracing
-                   enablePerformanceV2:options.enablePerformanceV2];
+        enablePreWarmedAppStartTracing:options.enablePreWarmedAppStartTracing];
     [self.tracker start];
 
     return YES;

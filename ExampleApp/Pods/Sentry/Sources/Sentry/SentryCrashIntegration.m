@@ -86,7 +86,7 @@ SentryCrashIntegration ()
     self.scopeObserver =
         [[SentryCrashScopeObserver alloc] initWithMaxBreadcrumbs:options.maxBreadcrumbs];
 
-    [self startCrashHandler:options.cacheDirectoryPath];
+    [self startCrashHandler];
 
     [self configureScope];
 
@@ -98,7 +98,7 @@ SentryCrashIntegration ()
     return kIntegrationOptionEnableCrashHandler;
 }
 
-- (void)startCrashHandler:(NSString *)cacheDirectory
+- (void)startCrashHandler
 {
     void (^block)(void) = ^{
         BOOL canSendReports = NO;
@@ -115,7 +115,7 @@ SentryCrashIntegration ()
             canSendReports = YES;
         }
 
-        [installation install:cacheDirectory];
+        [installation install];
 
         // We need to send the crashed event together with the crashed session in the same envelope
         // to have proper statistics in release health. To achieve this we need both synchronously
@@ -185,7 +185,7 @@ SentryCrashIntegration ()
         userInfo[@"release"] = self.options.releaseName;
         userInfo[@"dist"] = self.options.dist;
 
-        [SentryDependencyContainer.sharedInstance.crashReporter setUserInfo:userInfo];
+        [SentryCrash.sharedInstance setUserInfo:userInfo];
 
         [outerScope addObserver:self.scopeObserver];
     }];
@@ -209,8 +209,6 @@ SentryCrashIntegration ()
     [osData setValue:@"tvOS" forKey:@"name"];
 #elif TARGET_OS_WATCH
     [osData setValue:@"watchOS" forKey:@"name"];
-#elif TARGET_OS_VISION
-    [osData setValue:@"visionOS" forKey:@"name"];
 #endif
 
     // For MacCatalyst the UIDevice returns the current version of MacCatalyst and not the
@@ -273,8 +271,7 @@ SentryCrashIntegration ()
     NSString *locale = [[NSLocale autoupdatingCurrentLocale] objectForKey:NSLocaleIdentifier];
     [deviceData setValue:locale forKey:LOCALE_KEY];
 
-// The UIWindowScene is unavailable on visionOS
-#if SENTRY_HAS_UIKIT && !TARGET_OS_VISION
+#if SENTRY_HAS_UIKIT
 
     NSArray<UIWindow *> *appWindows = SentryDependencyContainer.sharedInstance.application.windows;
     if ([appWindows count] > 0) {

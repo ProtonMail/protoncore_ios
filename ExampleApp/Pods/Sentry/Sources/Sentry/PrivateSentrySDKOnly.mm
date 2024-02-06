@@ -63,7 +63,7 @@ static BOOL _framesTrackingMeasurementHybridSDKMode = NO;
 
 + (NSString *)installationID
 {
-    return [SentryInstallation idWithCacheDirectoryPath:self.options.cacheDirectoryPath];
+    return [SentryInstallation id];
 }
 
 + (SentryOptions *)options
@@ -129,9 +129,9 @@ static BOOL _framesTrackingMeasurementHybridSDKMode = NO;
     return SentryDependencyContainer.sharedInstance.dateProvider.systemTime;
 }
 
-+ (nullable NSMutableDictionary<NSString *, id> *)collectProfileBetween:(uint64_t)startSystemTime
-                                                                    and:(uint64_t)endSystemTime
-                                                               forTrace:(SentryId *)traceId;
++ (nullable NSDictionary<NSString *, id> *)collectProfileBetween:(uint64_t)startSystemTime
+                                                             and:(uint64_t)endSystemTime
+                                                        forTrace:(SentryId *)traceId;
 {
     NSMutableDictionary<NSString *, id> *payload =
         [SentryProfiler collectProfileBetween:startSystemTime

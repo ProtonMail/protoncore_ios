@@ -19,8 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)dispatchSyncOnMainQueue:(void (^)(void))block;
 
-- (BOOL)dispatchSyncOnMainQueue:(void (^)(void))block timeout:(NSTimeInterval)timeout;
-
 - (void)dispatchAfter:(NSTimeInterval)interval block:(dispatch_block_t)block;
 
 - (void)dispatchCancel:(dispatch_block_t)block;

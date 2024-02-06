@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
     s.dependency 'ProtonCore-Networking', $version
     s.dependency "ProtonCore-Crypto", $version
     s.dependency "ProtonCore-CryptoGoInterface", $version
-    s.dependency 'ProtonCore-FeatureSwitch', $version
+    s.dependency 'ProtonCore-FeatureFlags', $version
     s.dependency 'ProtonCore-Services', $version
 
 

@@ -3,7 +3,6 @@
 @class SentryANRTracker;
 @class SentryAppStateManager;
 @class SentryBinaryImageCache;
-@class SentryCrash;
 @class SentryCrashWrapper;
 @class SentryCurrentDateProvider;
 @class SentryDebugImageProvider;
@@ -18,7 +17,6 @@
 @class SentrySysctl;
 @class SentrySystemWrapper;
 @class SentryThreadWrapper;
-@class SentryThreadInspector;
 @protocol SentryRandom;
 
 #if SENTRY_HAS_METRIC_KIT
@@ -55,7 +53,6 @@ SENTRY_NO_INIT
 @property (nonatomic, strong) SentryFileManager *fileManager;
 @property (nonatomic, strong) SentryAppStateManager *appStateManager;
 @property (nonatomic, strong) SentryCrashWrapper *crashWrapper;
-@property (nonatomic, strong) SentryCrash *crashReporter;
 @property (nonatomic, strong) SentryThreadWrapper *threadWrapper;
 @property (nonatomic, strong) id<SentryRandom> random;
 @property (nonatomic, strong) SentrySwizzleWrapper *swizzleWrapper;
@@ -71,7 +68,6 @@ SENTRY_NO_INIT
 @property (nonatomic, strong) SentryBinaryImageCache *binaryImageCache;
 @property (nonatomic, strong) SentryExtraContextProvider *extraContextProvider;
 @property (nonatomic, strong) SentrySysctl *sysctlWrapper;
-@property (nonatomic, strong) SentryThreadInspector *threadInspector;
 
 #if SENTRY_UIKIT_AVAILABLE
 @property (nonatomic, strong) SentryFramesTracker *framesTracker;

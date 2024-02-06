@@ -249,22 +249,22 @@ end
 
 lane :build_Keymaker_all_variants do
   install_dependencies_from_gemfile
-  build_spec("Keymaker", "ios,macos", no_test_podspecs, "DataModel", "Utilities", "Log", "Crypto", "CryptoGoInterface", "CryptoGoImplementation", "GoLibs")
+  build_spec("Keymaker", "ios,macos", default_test_podspecs, "DataModel", "Utilities", "Log", "Crypto", "CryptoGoInterface", "CryptoGoImplementation", "GoLibs")
 end
 
 lane :build_Keymaker_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("Keymaker", "ios", no_test_podspecs, "DataModel", "Utilities", "Log", "Crypto", "CryptoGoInterface", "CryptoGoImplementation", "GoLibs")
+  build_spec("Keymaker", "ios", default_test_podspecs, "DataModel", "Utilities", "Log", "Crypto", "CryptoGoInterface", "CryptoGoImplementation", "GoLibs")
 end
 
 lane :build_KeyManager_all_variants do
   install_dependencies_from_gemfile
-  build_spec("KeyManager", "ios,macos", no_test_podspecs, "Crypto", "CryptoGoInterface", "CryptoGoImplementation", "GoLibs")
+  build_spec("KeyManager", "ios,macos", default_test_podspecs, "Crypto", "CryptoGoInterface", "CryptoGoImplementation", "GoLibs")
 end
 
 lane :build_KeyManager_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("KeyManager", "ios", no_test_podspecs, "Crypto", "CryptoGoInterface", "CryptoGoImplementation", "GoLibs")
+  build_spec("KeyManager", "ios", default_test_podspecs, "Crypto", "CryptoGoInterface", "CryptoGoImplementation", "GoLibs")
 end
 
 lane :build_Log_all_variants do

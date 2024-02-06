@@ -25,7 +25,7 @@ static NSMutableDictionary</* SentryProfiler.profileId */ NSString *,
     /* number of in-flight tracers */ NSNumber *> *_gProfilersToTracers;
 
 /** provided for fast access to a profiler given a tracer */
-static NSMutableDictionary</* SentryTracer.internalTraceId */ NSString *, SentryProfiler *>
+static NSMutableDictionary</* SentryTracer.tracerId */ NSString *, SentryProfiler *>
     *_gTracersToProfilers;
 
 namespace {
@@ -54,12 +54,12 @@ _unsafe_cleanUpProfiler(SentryProfiler *profiler, NSString *tracerKey)
 std::mutex _gStateLock;
 
 void
-trackProfilerForTracer(SentryProfiler *profiler, SentryId *internalTraceId)
+trackProfilerForTracer(SentryProfiler *profiler, SentryId *traceId)
 {
     std::lock_guard<std::mutex> l(_gStateLock);
 
     const auto profilerKey = profiler.profilerId.sentryIdString;
-    const auto tracerKey = internalTraceId.sentryIdString;
+    const auto tracerKey = traceId.sentryIdString;
 
     SENTRY_LOG_DEBUG(
         @"Tracking relationship between profiler id %@ and tracer id %@", profilerKey, tracerKey);
@@ -73,7 +73,7 @@ trackProfilerForTracer(SentryProfiler *profiler, SentryId *internalTraceId)
             /* number of in-flight tracers */ NSNumber *>
             dictionary];
         _gTracersToProfilers =
-            [NSMutableDictionary</* SentryTracer.internalTraceId */ NSString *, SentryProfiler *>
+            [NSMutableDictionary</* SentryTracer.tracerId */ NSString *, SentryProfiler *>
                 dictionary];
     }
 
@@ -82,14 +82,14 @@ trackProfilerForTracer(SentryProfiler *profiler, SentryId *internalTraceId)
 }
 
 void
-discardProfilerForTracer(SentryId *internalTraceId)
+discardProfilerForTracer(SentryId *traceId)
 {
     std::lock_guard<std::mutex> l(_gStateLock);
 
     SENTRY_CASSERT(_gTracersToProfilers != nil && _gProfilersToTracers != nil,
         @"Structures should have already been initialized by the time they are being queried");
 
-    const auto tracerKey = internalTraceId.sentryIdString;
+    const auto tracerKey = traceId.sentryIdString;
     const auto profiler = _gTracersToProfilers[tracerKey];
 
     if (profiler == nil) {
@@ -105,14 +105,14 @@ discardProfilerForTracer(SentryId *internalTraceId)
 #    endif // SENTRY_HAS_UIKIT
 }
 
-SentryProfiler *_Nullable profilerForFinishedTracer(SentryId *internalTraceId)
+SentryProfiler *_Nullable profilerForFinishedTracer(SentryId *traceId)
 {
     std::lock_guard<std::mutex> l(_gStateLock);
 
     SENTRY_CASSERT(_gTracersToProfilers != nil && _gProfilersToTracers != nil,
         @"Structures should have already been initialized by the time they are being queried");
 
-    const auto tracerKey = internalTraceId.sentryIdString;
+    const auto tracerKey = traceId.sentryIdString;
     const auto profiler = _gTracersToProfilers[tracerKey];
 
     if (!SENTRY_CASSERT_RETURN(profiler != nil,

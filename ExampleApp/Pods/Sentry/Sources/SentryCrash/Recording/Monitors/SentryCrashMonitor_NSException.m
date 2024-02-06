@@ -31,7 +31,6 @@
 #include "SentryCrashMonitorContext.h"
 #import "SentryCrashStackCursor_Backtrace.h"
 #include "SentryCrashThread.h"
-#import "SentryDependencyContainer.h"
 
 // #define SentryCrashLogger_LocalLevel TRACE
 #import "SentryCrashLogger.h"
@@ -129,8 +128,7 @@ setEnabled(bool isEnabled)
 
             SentryCrashLOG_DEBUG(@"Setting new handler.");
             NSSetUncaughtExceptionHandler(&handleUncaughtException);
-            SentryDependencyContainer.sharedInstance.crashReporter.uncaughtExceptionHandler
-                = &handleUncaughtException;
+            SentryCrash.sharedInstance.uncaughtExceptionHandler = &handleUncaughtException;
         } else {
             SentryCrashLOG_DEBUG(@"Restoring original handler.");
             NSSetUncaughtExceptionHandler(g_previousUncaughtExceptionHandler);

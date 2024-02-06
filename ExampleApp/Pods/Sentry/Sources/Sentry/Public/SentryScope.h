@@ -2,7 +2,7 @@
 #import "SentrySerializable.h"
 #import "SentrySpanProtocol.h"
 
-@class SentryUser, SentryOptions, SentryBreadcrumb, SentryAttachment;
+@class SentryUser, SentrySession, SentryOptions, SentryBreadcrumb, SentryAttachment;
 
 NS_ASSUME_NONNULL_BEGIN
 

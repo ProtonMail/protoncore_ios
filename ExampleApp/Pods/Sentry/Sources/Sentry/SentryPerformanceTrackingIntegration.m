@@ -41,8 +41,7 @@ SentryPerformanceTrackingIntegration ()
              dispatchQueue:dispatchQueue
         objcRuntimeWrapper:[SentryDefaultObjCRuntimeWrapper sharedInstance]
             subClassFinder:subClassFinder
-        processInfoWrapper:[SentryDependencyContainer.sharedInstance processInfoWrapper]
-          binaryImageCache:[SentryDependencyContainer.sharedInstance binaryImageCache]];
+        processInfoWrapper:[SentryDependencyContainer.sharedInstance processInfoWrapper]];
 
     [self.swizzling start];
     SentryUIViewControllerPerformanceTracker.shared.enableWaitForFullDisplay
