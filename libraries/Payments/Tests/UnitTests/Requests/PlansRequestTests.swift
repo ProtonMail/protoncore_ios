@@ -39,9 +39,15 @@ final class PlansRequestTests: XCTestCase {
         apiService = APIServiceMock()
     }
 
-    func testPlansRequestCycle() {
+    func testV4PlansRequestCycle() {
         let numberOfMonths = 12
-        let request = PlansRequest(api: apiService)
+        let request = V4PlansRequest(api: apiService)
+        XCTAssertEqual(request.calculatedParameters?["Cycle"] as? Int, numberOfMonths)
+    }
+
+    func testV5PlansRequestCycle() {
+        let numberOfMonths = 12
+        let request = V5PlansRequest(api: apiService)
         XCTAssertEqual(request.calculatedParameters?["Cycle"] as? Int, numberOfMonths)
     }
 }

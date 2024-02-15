@@ -1,5 +1,5 @@
 //
-//  PaymentStatusRequest.swift
+//  PaymentTokenStatusRequest.swift
 //  ProtonCore-Payments - Created on 2/12/2020.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -24,23 +24,41 @@ import ProtonCoreLog
 import ProtonCoreNetworking
 import ProtonCoreServices
 
-final class PaymentStatusRequest: BaseApiRequest<PaymentStatusResponse> {
+typealias PaymentTokenStatusRequest = BaseApiRequest<TokenStatusResponse>
 
-    override init(api: APIService) {
+final class V4PaymentTokenStatusRequest: PaymentTokenStatusRequest {
+    private let token: PaymentToken
+
+    init (api: APIService, token: PaymentToken) {
+        self.token = token
         super.init(api: api)
     }
 
-    override var path: String { super.path + "/v4/status/apple" }
-
     override var isAuth: Bool { false }
+
+    override var path: String { super.path + "/v4/tokens/" + token.token }
 }
 
-final class PaymentStatusResponse: Response {
-    var isAvailable: Bool?
+final class V5PaymentTokenStatusRequest: PaymentTokenStatusRequest {
+    private let token: PaymentToken
+
+    init (api: APIService, token: PaymentToken) {
+        self.token = token
+        super.init(api: api)
+    }
+
+    override var isAuth: Bool { false }
+
+    override var path: String { super.path + "/v5/tokens/" + token.token }
+}
+
+final class TokenStatusResponse: Response {
+    var paymentTokenStatus: PaymentTokenStatus?
 
     override func ParseResponse(_ response: [String: Any]!) -> Bool {
         PMLog.debug(response.json(prettyPrinted: true))
-        self.isAvailable = response["InApp"].map { $0 as? Int == 1 }
-        return true
+        let (result, tokenStatus) = decodeResponse(response as Any, to: PaymentTokenStatus.self, errorToReturn: .tokenStatusDecode)
+        self.paymentTokenStatus = tokenStatus
+        return result
     }
 }

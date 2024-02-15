@@ -64,7 +64,7 @@ final class PaymentTokenRequestTests: XCTestCase {
 
     func testPath() {
         // Then
-        XCTAssertEqual("/payments/v4/tokens", sut.path)
+        XCTAssertEqual("/payments/v5/tokens", sut.path)
     }
 
     func testAuth() {

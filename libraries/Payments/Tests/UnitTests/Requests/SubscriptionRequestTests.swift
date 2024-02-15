@@ -34,18 +34,18 @@ import ProtonCoreServices
 import ProtonCoreNetworking
 @testable import ProtonCorePayments
 
-final class SubscriptionRequestTests: XCTestCase {
+final class V4SubscriptionRequestTests: XCTestCase {
     var sut: SubscriptionRequest!
 
     override func setUp() {
         super.setUp()
-        sut = SubscriptionRequest(api: APIServiceMock(), planId: "planId", amount: 123, cycle: 12, paymentAction: .token(token: "token"))
+        sut = V4SubscriptionRequest(api: APIServiceMock(), planId: "planId", amount: 123, cycle: 12, paymentAction: .token(token: "token"))
     }
 
     func test_tokenParameters() {
         // Given
         let token = "thisIsAToken"
-        sut = SubscriptionRequest(api: APIServiceMock(), planId: "planId", amount: 123, cycle: 13, paymentAction: .token(token: token))
+        sut = V4SubscriptionRequest(api: APIServiceMock(), planId: "planId", amount: 123, cycle: 13, paymentAction: .token(token: token))
 
         // Then
         XCTAssertEqual(sut.parameters!["Amount"] as! Int, 123)
@@ -56,7 +56,7 @@ final class SubscriptionRequestTests: XCTestCase {
 
     func test_appleParameters() {
         // Given
-        sut = SubscriptionRequest(api: APIServiceMock(), planId: "planId", amount: 123, cycle: 11, paymentAction: .apple(receipt: "receipt"))
+        sut = V4SubscriptionRequest(api: APIServiceMock(), planId: "planId", amount: 123, cycle: 11, paymentAction: .apple(receipt: "receipt"))
 
         // Then
         XCTAssertEqual(sut.parameters!["Amount"] as! Int, 123)
@@ -72,5 +72,46 @@ final class SubscriptionRequestTests: XCTestCase {
 
     func test_path() {
         XCTAssertEqual(sut.path, "/payments/v4/subscription")
+    }
+}
+
+final class V5SubscriptionRequestTests: XCTestCase {
+    var sut: V5SubscriptionRequest!
+
+    override func setUp() {
+        super.setUp()
+        sut = V5SubscriptionRequest(api: APIServiceMock(), planId: "planId", amount: 123, cycle: 12, paymentAction: .token(token: "token"))
+    }
+
+    func test_tokenParameters() {
+        // Given
+        let token = "thisIsAToken"
+        sut = V5SubscriptionRequest(api: APIServiceMock(), planId: "planId", amount: 123, cycle: 13, paymentAction: .token(token: token))
+
+        // Then
+        XCTAssertEqual(sut.parameters!["Amount"] as! Int, 123)
+        XCTAssertEqual(sut.parameters!["Currency"] as! String, "USD")
+        XCTAssertEqual(sut.parameters!["PaymentToken"] as! String, token)
+        XCTAssertEqual(sut.parameters!["Cycle"] as! Int, 13)
+    }
+
+    func test_appleParameters() {
+        // Given
+        sut = V5SubscriptionRequest(api: APIServiceMock(), planId: "planId", amount: 123, cycle: 11, paymentAction: .apple(receipt: "receipt"))
+
+        // Then
+        XCTAssertEqual(sut.parameters!["Amount"] as! Int, 123)
+        XCTAssertEqual(sut.parameters!["Currency"] as! String, "USD")
+        XCTAssertEqual((sut.parameters!["Payment"] as! [String: Any])["Type"] as! String, "apple")
+        XCTAssertEqual(sut.parameters!["External"] as! Int, 1)
+        XCTAssertEqual(sut.parameters!["Cycle"] as! Int, 11)
+}
+
+    func test_method() {
+        XCTAssertEqual(sut.method, .post)
+    }
+
+    func test_path() {
+        XCTAssertEqual(sut.path, "/payments/v5/subscription")
     }
 }

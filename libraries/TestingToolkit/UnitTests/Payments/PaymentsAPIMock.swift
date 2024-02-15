@@ -28,32 +28,31 @@ import ProtonCoreServices
 @testable import ProtonCorePayments
 
 public final class PaymentsApiMock: PaymentsApiProtocol {
-
     public init() { }
 
-    @FuncStub(PaymentsApiProtocol.paymentStatusRequest, initialReturn: { PaymentStatusRequest(api: $0) }) public var paymentStatusRequestStub
+    @FuncStub(PaymentsApiProtocol.paymentStatusRequest, initialReturn: { V5PaymentStatusRequest(api: $0) }) public var paymentStatusRequestStub
     public func paymentStatusRequest(api: APIService) -> PaymentStatusRequest {
         paymentStatusRequestStub(api)
     }
 
-    @ThrowingFuncStub(PaymentsApiProtocol.buySubscriptionRequest, initialReturn: { SubscriptionRequest(api: $0.0, planId: $0.1) }) public var buySubscriptionRequestStub
+    @ThrowingFuncStub(PaymentsApiProtocol.buySubscriptionRequest, initialReturn: { V5SubscriptionRequest(api: $0.0, planId: $0.1) }) public var buySubscriptionRequestStub
     public func buySubscriptionRequest(
         api: APIService, planId: String, amount: Int, amountDue: Int, cycle: Int, paymentAction: PaymentAction, isCreditingAllowed: Bool
     ) throws -> SubscriptionRequest { try buySubscriptionRequestStub(api, planId, amount, amountDue, cycle, paymentAction, isCreditingAllowed) }
 
-    @FuncStub(PaymentsApiProtocol.buySubscriptionForZeroRequest, initialReturn: { SubscriptionRequest(api: $0.0, planId: $0.1) }) public var buySubscriptionForZeroRequestStub
+    @FuncStub(PaymentsApiProtocol.buySubscriptionForZeroRequest, initialReturn: { V5SubscriptionRequest(api: $0.0, planId: $0.1) }) public var buySubscriptionForZeroRequestStub
     public func buySubscriptionForZeroRequest(api: APIService, planId: String) -> SubscriptionRequest { buySubscriptionForZeroRequestStub(api, planId) }
 
-    @FuncStub(PaymentsApiProtocol.getSubscriptionRequest, initialReturn: { GetSubscriptionRequest(api: $0) }) public var getSubscriptionRequestStub
+    @FuncStub(PaymentsApiProtocol.getSubscriptionRequest, initialReturn: { V5GetSubscriptionRequest(api: $0) }) public var getSubscriptionRequestStub
     public func getSubscriptionRequest(api: APIService) -> GetSubscriptionRequest { getSubscriptionRequestStub(api) }
 
     @FuncStub(PaymentsApiProtocol.organizationsRequest, initialReturn: { OrganizationsRequest(api: $0) }) public var organizationsRequestStub
     public func organizationsRequest(api: APIService) -> OrganizationsRequest { organizationsRequestStub(api) }
 
-    @FuncStub(PaymentsApiProtocol.defaultPlanRequest, initialReturn: { DefaultPlanRequest(api: $0) }) public var defaultPlanRequestStub
+    @FuncStub(PaymentsApiProtocol.defaultPlanRequest, initialReturn: { V5DefaultPlanRequest(api: $0) }) public var defaultPlanRequestStub
     public func defaultPlanRequest(api: APIService) -> DefaultPlanRequest { defaultPlanRequestStub(api) }
 
-    @FuncStub(PaymentsApiProtocol.plansRequest, initialReturn: { PlansRequest(api: $0) }) public var plansRequestStub
+    @FuncStub(PaymentsApiProtocol.plansRequest, initialReturn: { V5PlansRequest(api: $0) }) public var plansRequestStub
     public func plansRequest(api: APIService) -> PlansRequest { plansRequestStub(api) }
 
     @FuncStub(PaymentsApiProtocol.creditRequest, initialReturn: { CreditRequest(api: $0.0, amount: $0.1, paymentAction: $0.2) }) public var creditRequestStub
@@ -61,7 +60,7 @@ public final class PaymentsApiMock: PaymentsApiProtocol {
         creditRequestStub(api, amount, paymentAction)
     }
 
-    @FuncStub(PaymentsApiProtocol.methodsRequest, initialReturn: { MethodRequest(api: $0) }) public var methodsRequestStub
+    @FuncStub(PaymentsApiProtocol.methodsRequest, initialReturn: { V5MethodRequest(api: $0) }) public var methodsRequestStub
     public func methodsRequest(api: APIService) -> MethodRequest { methodsRequestStub(api) }
 
     @FuncStub(PaymentsApiProtocol.paymentTokenOldRequest, initialReturn: { PaymentTokenOldRequest(api: $0.0, amount: $0.1, receipt: $0.2) }) public var paymentTokenOldRequestStub
@@ -70,10 +69,10 @@ public final class PaymentsApiMock: PaymentsApiProtocol {
     @FuncStub(PaymentsApiProtocol.paymentTokenRequest, initialReturn: { PaymentTokenRequest(api: $0.0, amount: $0.1, receipt: $0.2, transactionId: $0.3, bundleId: $0.4, productId: $0.5) }) public var paymentTokenRequestStub
     public func paymentTokenRequest(api: APIService, amount: Int, receipt: String, transactionId: String, bundleId: String, productId: String) -> PaymentTokenRequest { paymentTokenRequestStub(api, amount, receipt, transactionId, bundleId, productId) }
 
-    @FuncStub(PaymentsApiProtocol.paymentTokenStatusRequest, initialReturn: { PaymentTokenStatusRequest(api: $0.0, token: $0.1) }) public var paymentTokenStatusRequestStub
+    @FuncStub(PaymentsApiProtocol.paymentTokenStatusRequest, initialReturn: { V5PaymentTokenStatusRequest(api: $0.0, token: $0.1) }) public var paymentTokenStatusRequestStub
     public func paymentTokenStatusRequest(api: APIService, token: PaymentToken) -> PaymentTokenStatusRequest { paymentTokenStatusRequestStub(api, token) }
 
-    @FuncStub(PaymentsApiProtocol.validateSubscriptionRequest, initialReturn: { ValidateSubscriptionRequest(api: $0.0, protonPlanName: $0.1, isAuthenticated: $0.2, cycle: $0.3) }) public var validateSubscriptionRequestStub
+    @FuncStub(PaymentsApiProtocol.validateSubscriptionRequest, initialReturn: { V5ValidateSubscriptionRequest(api: $0.0, protonPlanName: $0.1, isAuthenticated: $0.2, cycle: $0.3) }) public var validateSubscriptionRequestStub
     public func validateSubscriptionRequest(api: APIService, protonPlanName: String, isAuthenticated: Bool, cycle: Int) -> ValidateSubscriptionRequest {
         validateSubscriptionRequestStub(api, protonPlanName, isAuthenticated, cycle)
     }

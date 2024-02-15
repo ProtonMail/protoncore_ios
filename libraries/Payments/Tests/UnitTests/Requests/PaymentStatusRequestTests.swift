@@ -34,15 +34,28 @@ import ProtonCoreServices
 import ProtonCoreNetworking
 @testable import ProtonCorePayments
 
-final class PaymentStatusRequestTests: XCTestCase {
-    var sut: PaymentStatusRequest!
+final class V4PaymentStatusRequestTests: XCTestCase {
+    var sut: V4PaymentStatusRequest!
 
     override func setUp() {
         super.setUp()
-        sut = PaymentStatusRequest(api: APIServiceMock())
+        sut = V4PaymentStatusRequest(api: APIServiceMock())
     }
 
     func test_path() {
         XCTAssertEqual(sut.path, "/payments/v4/status/apple")
+    }
+}
+
+final class V5PaymentStatusRequestTests: XCTestCase {
+    var sut: V5PaymentStatusRequest!
+
+    override func setUp() {
+        super.setUp()
+        sut = V5PaymentStatusRequest(api: APIServiceMock())
+    }
+
+    func test_path() {
+        XCTAssertEqual(sut.path, "/payments/v5/status/apple")
     }
 }

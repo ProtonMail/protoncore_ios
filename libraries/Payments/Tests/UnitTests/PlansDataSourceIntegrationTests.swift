@@ -52,7 +52,7 @@ final class PlansDataSourceIntegrationTests: XCTestCase {
         // Given
         let api = PMAPIService.createAPIServiceWithoutSession(doh: DohMock() as DoHInterface, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         mockPaymentStatus()
-        let request = PaymentStatusRequest(api: api)
+        let request = V5PaymentStatusRequest(api: api)
 
         // When
         let paymentStatusResponse = try await request.response(responseObject: PaymentStatusResponse())
@@ -71,7 +71,7 @@ final class PlansDataSourceIntegrationTests: XCTestCase {
         // Given
         let api = PMAPIService.createAPIServiceWithoutSession(doh: DohMock() as DoHInterface, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         mockPaymentMethods()
-        let request = MethodRequest(api: api)
+        let request = V5MethodRequest(api: api)
 
         // When
         let methodsResponse = try await request.response(responseObject: MethodResponse())
@@ -88,11 +88,11 @@ final class PlansDataSourceIntegrationTests: XCTestCase {
 
 extension PlansDataSourceIntegrationTests {
     private func mockPaymentStatus() {
-        mock(filename: "PaymentStatus", title: "Payment status /payment/v4/status/apple mock", path: "/payments/v4/status/apple")
+        mock(filename: "PaymentStatus", title: "Payment status /payment/v5/status/apple mock", path: "/payments/v5/status/apple")
     }
 
     private func mockPaymentMethods() {
-        mock(filename: "PaymentMethods", title: "Payment method /payment/v4/methods mock", path: "/payments/v4/methods")
+        mock(filename: "PaymentMethods", title: "Payment method /payment/v5/methods mock", path: "/payments/v5/methods")
     }
 
     private func mock(filename: String, title: String, path: String, statusCode: Int32 = 200) {
