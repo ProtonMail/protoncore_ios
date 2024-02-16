@@ -528,6 +528,48 @@ final class PaymentsUISnapshotTests: XCTestCase {
 
         }
 
+        enum StorageSplit {
+
+            static let mailFree: CurrentPlan = .init(subscriptions: [
+                .init(title: "Mail Free",
+                      description: "Free encrypted email and calendar for everyone",
+                      periodEnd: 1965360000,
+                      entitlements: [.progress(.init(type: "progress",
+                                                     title: "Mail storage",
+                                                     text: "402 MB of 500",
+                                                     min: 0, max: 5, current: 4)),
+                                     .progress(.init(type: "progress",
+                                                     title: "Drive storage",
+                                                     text: "0.00 B of 2 GB",
+                                                     min: 0, max: 2, current: 0)),
+                                     .description(.description(text: "1 of 1 user", iconName: "user")),
+                                     .description(.description(text: "1 of 1 address", iconName: "email")),
+                                     .description(.description(text: "0 of 3 calendars", iconName: "calendar")),
+                                     .description(.description(text: "Free VPN on a single device", iconName: "vpn")),
+                                     .description(.description(text: "And the free features of all other Proton products!", iconName: "tick"))
+                                    ])
+            ])
+            static let driveFree: CurrentPlan = .init(subscriptions: [
+                .init(title: "Drive Free",
+                      description: "Free encrypted storage for everyone",
+                      periodEnd: 1965360000,
+                      entitlements: [.progress(.init(type: "progress",
+                                                     title: "Mail storage",
+                                                     text: "402 MB of 500",
+                                                     min: 0, max: 5, current: 4)),
+                                     .progress(.init(type: "progress",
+                                                     title: "Drive storage",
+                                                     text: "0.00 B of 2 GB",
+                                                     min: 0, max: 2, current: 0)),
+                                     .description(.description(text: "1 of 1 user", iconName: "user")),
+                                     .description(.description(text: "1 of 1 address", iconName: "email")),
+                                     .description(.description(text: "0 of 3 calendars", iconName: "calendar")),
+                                     .description(.description(text: "Free VPN on a single device", iconName: "vpn")),
+                                     .description(.description(text: "And the free features of all other Proton products!", iconName: "tick"))
+                                    ])
+            ])
+        }
+
         static var customPlansDescription: CustomPlansDescription = [
             "free": (
                 purchasable: PurchasablePlanDescription(
@@ -901,6 +943,15 @@ final class PaymentsUISnapshotTests: XCTestCase {
         }
     }
 
+    func testCurrentDynamicSubscription_Free_InMail_StorageSplit() async {
+        await withFeatureFlags([.dynamicPlans, .splitStorage]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.StorageSplit.mailFree,
+                clientApp: .mail
+            )
+        }
+    }
+
     func testCurrentSubscription_Free_InVPN() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: nil,
@@ -931,6 +982,15 @@ final class PaymentsUISnapshotTests: XCTestCase {
             await snapshotCurrentDynamicSubscriptionScreen(
                 currentPlan: MockData.DynamicPlans.passFree,
                 clientApp: .pass
+            )
+        }
+    }
+
+    func testCurrentDynamicSubscription_Free_InDrive_StorageSplit() async {
+        await withFeatureFlags([.dynamicPlans, .splitStorage]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.StorageSplit.driveFree,
+                clientApp: .drive
             )
         }
     }
