@@ -65,7 +65,7 @@ final class QuarkUserCommandsTests: XCTestCase {
 
         let quarkCommand = Quark().baseUrl(dohMock)
 
-        let user = User(name: "quarkcommand@test.quark.commands.url", password: "123456789")
+        let user = User(name: "quarkcommand@test.quark.commands.url", password: "123456789", mailboxPassword: "123")
         do {
             // Act
             let response = try quarkCommand.userCreate(user: user)
