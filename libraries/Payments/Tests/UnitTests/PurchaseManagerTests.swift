@@ -265,7 +265,7 @@ final class PurchaseManagerTests: XCTestCase {
                     ]
                 )
         }
-        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 0).toJsonDict)) }
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amount:0, amountDue: 0).toJsonDict)) }
         let expectation = expectation(description: "Should call completion block")
 
         // when
@@ -284,7 +284,7 @@ final class PurchaseManagerTests: XCTestCase {
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .left(planServiceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
-        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 0).toJsonDict)) }
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amount: 0, amountDue: 0).toJsonDict)) }
         let expectation = expectation(description: "Should call completion block")
 
         // when
@@ -320,7 +320,7 @@ final class PurchaseManagerTests: XCTestCase {
         ]
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("subscription/check") {
-                completion(nil, .success(ValidateSubscription(amountDue: 0).toSuccessfulResponse))
+                completion(nil, .success(ValidateSubscription(amount:0, amountDue: 0).toSuccessfulResponse))
             } else if path.contains("subscription") {
                 completion(nil, .success(subscription))
             } else {
@@ -374,7 +374,7 @@ final class PurchaseManagerTests: XCTestCase {
         ]
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("subscription/check") {
-                completion(nil, .success(ValidateSubscription(amountDue: 0).toSuccessfulResponse))
+                completion(nil, .success(ValidateSubscription(amount: 0, amountDue: 0).toSuccessfulResponse))
             } else if path.contains("subscription") {
                 completion(nil, .success(subscription))
             } else {
@@ -423,7 +423,7 @@ final class PurchaseManagerTests: XCTestCase {
         ]
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("subscription/check") {
-                completion(nil, .success(ValidateSubscription(amountDue: 0).toSuccessfulResponse))
+                completion(nil, .success(ValidateSubscription(amount: 0, amountDue: 0).toSuccessfulResponse))
             } else if path.contains("subscription") {
                 completion(nil, .success(subscription))
             } else {
@@ -480,7 +480,7 @@ final class PurchaseManagerTests: XCTestCase {
         ]
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("subscription/check") {
-                completion(nil, .success(ValidateSubscription(amountDue: 0).toSuccessfulResponse))
+                completion(nil, .success(ValidateSubscription(amount: 0, amountDue: 0).toSuccessfulResponse))
             } else if path.contains("subscription") {
                 completion(nil, .success(subscription))
             } else {
@@ -512,7 +512,7 @@ final class PurchaseManagerTests: XCTestCase {
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .left(planServiceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
-        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amount: 100, amountDue: 100).toJsonDict)) }
         storeKitManager.purchaseProductStub.bodyIs { _, _, _, completion, _, _ in completion(.resolvingIAPToSubscription) }
         let expectation = expectation(description: "Should call completion block")
 
@@ -556,7 +556,7 @@ final class PurchaseManagerTests: XCTestCase {
                     ]
                 )
         }
-        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amount: 100, amountDue: 100).toJsonDict)) }
         storeKitManager.purchaseProductStub.bodyIs { _, _, _, completion, _, _ in completion(.resolvingIAPToSubscription) }
         let expectation = expectation(description: "Should call completion block")
 
@@ -585,7 +585,7 @@ final class PurchaseManagerTests: XCTestCase {
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .left(planServiceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
-        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amount: 100, amountDue: 100).toJsonDict)) }
         storeKitManager.purchaseProductStub.bodyIs { _, _, _, _, errorCompletion, _ in errorCompletion(StoreKitManagerErrors.apiMightBeBlocked(message: "test message", originalError: NSError.protonMailError(APIErrorCode.potentiallyBlocked, localizedDescription: PSTranslation._core_api_might_be_blocked_message.l10n))) }
         let expectation = expectation(description: "Should call completion block")
 
@@ -625,7 +625,7 @@ final class PurchaseManagerTests: XCTestCase {
                     ]
                 )
         }
-        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amount: 100, amountDue: 100).toJsonDict)) }
         storeKitManager.purchaseProductStub.bodyIs { _, _, _, _, errorCompletion, _ in errorCompletion(StoreKitManagerErrors.apiMightBeBlocked(message: "test message", originalError: NSError.protonMailError(APIErrorCode.potentiallyBlocked, localizedDescription: PSTranslation._core_api_might_be_blocked_message.l10n))) }
         let expectation = expectation(description: "Should call completion block")
 
@@ -651,7 +651,7 @@ final class PurchaseManagerTests: XCTestCase {
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .left(planServiceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
-        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amount: 100, amountDue: 100).toJsonDict)) }
         storeKitManager.purchaseProductStub.bodyIs { _, _, _, _, errorCompletion, _ in errorCompletion(StoreKitManagerErrors.haveTransactionOfAnotherUser) }
         let expectation = expectation(description: "Should call completion block")
 
@@ -692,7 +692,7 @@ final class PurchaseManagerTests: XCTestCase {
                     ]
                 )
         }
-        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amount: 100, amountDue: 100).toJsonDict)) }
         storeKitManager.purchaseProductStub.bodyIs { _, _, _, _, errorCompletion, _ in errorCompletion(StoreKitManagerErrors.haveTransactionOfAnotherUser) }
         let expectation = expectation(description: "Should call completion block")
 
@@ -718,7 +718,7 @@ final class PurchaseManagerTests: XCTestCase {
         let plan = InAppPurchasePlan(storeKitProductId: "ios_test_12_usd_non_renewing")!
         let out = PurchaseManager(planService: .left(planServiceMock), storeKitManager: storeKitManager, paymentsApi: paymentsApi, apiService: apiService)
         planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_non_renewing", iD: "test_plan_id") }
-        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amount: 100, amountDue: 100).toJsonDict)) }
         storeKitManager.purchaseProductStub.bodyIs { _, _, _, successCompletion, _, _ in successCompletion(.cancelled) }
         let expectation = expectation(description: "Should call completion block")
 
@@ -756,7 +756,7 @@ final class PurchaseManagerTests: XCTestCase {
                     ]
                 )
         }
-        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amountDue: 100).toJsonDict)) }
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amount: 100, amountDue: 100).toJsonDict)) }
         storeKitManager.purchaseProductStub.bodyIs { _, _, _, successCompletion, _, _ in successCompletion(.cancelled) }
         let expectation = expectation(description: "Should call completion block")
 

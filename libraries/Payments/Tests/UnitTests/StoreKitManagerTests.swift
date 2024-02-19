@@ -660,7 +660,7 @@ final class StoreKitManagerTests: XCTestCase {
             storeKitManagerDelegate.tokenStorageStub.fixture = paymentTokenStorageMock
             apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
                 if path.contains("subscription/check") {
-                    completion(nil, .success(ValidateSubscription(amountDue: 0).toSuccessfulResponse))
+                    completion(nil, .success(ValidateSubscription(amount: 0, amountDue: 0).toSuccessfulResponse))
                 } else if path.contains("tokens/") {
                     completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
                 } else if path.contains("/tokens") {
@@ -733,7 +733,7 @@ final class StoreKitManagerTests: XCTestCase {
         storeKitManagerDelegate.tokenStorageStub.fixture = paymentTokenStorageMock
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("subscription/check") {
-                completion(nil, .success(ValidateSubscription(amountDue: 0).toSuccessfulResponse))
+                completion(nil, .success(ValidateSubscription(amount: 0, amountDue: 0).toSuccessfulResponse))
             } else if path.contains("tokens/") {
                 completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/tokens") {
@@ -1335,7 +1335,7 @@ final class StoreKitManagerTests: XCTestCase {
             storeKitManagerDelegate.tokenStorageStub.fixture = paymentTokenStorageMock
             apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
                 if path.contains("subscription/check") {
-                    completion(nil, .success(ValidateSubscription(amountDue: 0).toSuccessfulResponse))
+                    completion(nil, .success(ValidateSubscription(amount: 0, amountDue: 0).toSuccessfulResponse))
                 } else if path.contains("tokens/") {
                     completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
                 } else if path.contains("/tokens") {
@@ -1410,7 +1410,7 @@ final class StoreKitManagerTests: XCTestCase {
         storeKitManagerDelegate.tokenStorageStub.fixture = paymentTokenStorageMock
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("subscription/check") {
-                completion(nil, .success(ValidateSubscription(amountDue: 0).toSuccessfulResponse))
+                completion(nil, .success(ValidateSubscription(amount: 0, amountDue: 0).toSuccessfulResponse))
             } else if path.contains("tokens/") {
                 completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/tokens") {
