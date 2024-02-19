@@ -333,7 +333,10 @@ class PaymentsApiV5Implementation: PaymentsApiProtocol {
         V5PaymentTokenStatusRequest(api: api, token: token)
     }
     
-    func validateSubscriptionRequest(api: ProtonCoreServices.APIService, protonPlanName: String, isAuthenticated: Bool, cycle: Int) -> ValidateSubscriptionRequest {
+    func validateSubscriptionRequest(api: ProtonCoreServices.APIService, 
+                                     protonPlanName: String,
+                                     isAuthenticated: Bool,
+                                     cycle: Int) -> ValidateSubscriptionRequest {
         V5ValidateSubscriptionRequest(
             api: api,
             protonPlanName: protonPlanName,
