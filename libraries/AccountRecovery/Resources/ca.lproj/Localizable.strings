@@ -6,7 +6,7 @@
 
 "Grace_View_line1" = "Hem rebut una sol·licitud per restablir la vostra contrasenya per ";
 
-"Insecure_View_line1" = "You can now change your password for the account ";
+"Insecure_View_line1" = "Ara pot canviar la contrasenya del compte ";
 
 "Insecure_View_line2" = " lliurement durant ";
 
@@ -16,6 +16,6 @@
 
 "Grace_View_Undefined_Time_Left" = "unes poques hores";
 
-"Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+"Grace_View_line2" = ". Per mantenir segur el seu compte, colem assegurar-nos que és realment vostè qui està intentant restablir la seva contrasenya a ";
 
-"Grace_View_line3" = "If you didn't make this request, or if you no longer need help signing in, please cancel it and take steps to secure your account.";
+"Grace_View_line3" = "Si no ha fet aquesta sol·licitud o si ja no necessita ajuda per iniciar la sessió, si us plau, cancel·li-la i prengui mesures per assegurar el seu compte.";
