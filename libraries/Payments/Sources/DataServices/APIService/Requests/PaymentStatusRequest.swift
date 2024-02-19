@@ -54,9 +54,10 @@ final class V5PaymentStatusRequest: PaymentStatusRequest {
 final class PaymentStatusResponse: Response {
     var isAvailable: Bool?
 
-    override func ParseResponse(_ response: [String: Any]!) -> Bool {
+    override func ParseResponse(_ response: [String: Any]) -> Bool {
         PMLog.debug(response.json(prettyPrinted: true))
-        self.isAvailable = response["InApp"].map { $0 as? Int == 1 }
+        let states = response["VendorStates"] as? [String: Any] ?? response
+        self.isAvailable = states["InApp"].map { $0 as? Int == 1 }
         return true
     }
 }
