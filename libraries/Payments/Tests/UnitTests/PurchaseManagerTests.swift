@@ -265,7 +265,7 @@ final class PurchaseManagerTests: XCTestCase {
                     ]
                 )
         }
-        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amount:0, amountDue: 0).toJsonDict)) }
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in completion(nil, .success(ValidateSubscription(amount: 0, amountDue: 0).toJsonDict)) }
         let expectation = expectation(description: "Should call completion block")
 
         // when
@@ -320,7 +320,7 @@ final class PurchaseManagerTests: XCTestCase {
         ]
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("subscription/check") {
-                completion(nil, .success(ValidateSubscription(amount:0, amountDue: 0).toSuccessfulResponse))
+                completion(nil, .success(ValidateSubscription(amount: 0, amountDue: 0).toSuccessfulResponse))
             } else if path.contains("subscription") {
                 completion(nil, .success(subscription))
             } else {

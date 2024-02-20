@@ -21,7 +21,6 @@
 
 import XCTest
 import ProtonCoreAuthentication
-import ProtonCoreFeatureSwitch
 import ProtonCoreEnvironment
 import ProtonCoreNetworking
 import ProtonCoreServices

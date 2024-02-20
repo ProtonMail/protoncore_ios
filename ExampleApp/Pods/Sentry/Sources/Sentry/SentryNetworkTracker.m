@@ -23,6 +23,7 @@
 #import "SentryTraceHeader.h"
 #import "SentryTraceOrigins.h"
 #import "SentryTracer.h"
+#import "SentryUser.h"
 #import <objc/runtime.h>
 @import SentryPrivate;
 
@@ -216,7 +217,12 @@ SentryNetworkTracker ()
 - (void)addTraceWithoutTransactionToTask:(NSURLSessionTask *)sessionTask
 {
     SentryPropagationContext *propagationContext = SentrySDK.currentHub.scope.propagationContext;
-    [self addBaggageHeader:[[propagationContext traceContext] toBaggage]
+    SentryTraceContext *traceContext =
+        [[SentryTraceContext alloc] initWithTraceId:propagationContext.traceId
+                                            options:SentrySDK.currentHub.client.options
+                                        userSegment:SentrySDK.currentHub.scope.userObject.segment];
+
+    [self addBaggageHeader:[traceContext toBaggage]
                traceHeader:[propagationContext traceHeader]
                  toRequest:sessionTask];
 }
@@ -233,11 +239,12 @@ SentryNetworkTracker ()
     NSString *baggageHeader = @"";
 
     if (baggage != nil) {
-        baggageHeader =
-            [baggage toHTTPHeaderWithOriginalBaggage:
-                         [SentrySerialization
-                             decodeBaggage:sessionTask.currentRequest
-                                               .allHTTPHeaderFields[SENTRY_BAGGAGE_HEADER]]];
+        NSDictionary *originalBaggage = [SentrySerialization
+            decodeBaggage:sessionTask.currentRequest.allHTTPHeaderFields[SENTRY_BAGGAGE_HEADER]];
+
+        if (originalBaggage[@"sentry-trace_id"] == nil) {
+            baggageHeader = [baggage toHTTPHeaderWithOriginalBaggage:originalBaggage];
+        }
     }
 
     // First we check if the current request is mutable, so we could easily add a new
@@ -245,7 +252,10 @@ SentryNetworkTracker ()
     // header.
     if ([sessionTask.currentRequest isKindOfClass:[NSMutableURLRequest class]]) {
         NSMutableURLRequest *currentRequest = (NSMutableURLRequest *)sessionTask.currentRequest;
-        [currentRequest setValue:traceHeader.value forHTTPHeaderField:SENTRY_TRACE_HEADER];
+
+        if ([currentRequest valueForHTTPHeaderField:SENTRY_TRACE_HEADER] == nil) {
+            [currentRequest setValue:traceHeader.value forHTTPHeaderField:SENTRY_TRACE_HEADER];
+        }
 
         if (baggageHeader.length > 0) {
             [currentRequest setValue:baggageHeader forHTTPHeaderField:SENTRY_BAGGAGE_HEADER];
@@ -259,7 +269,9 @@ SentryNetworkTracker ()
         if ([sessionTask respondsToSelector:setCurrentRequestSelector]) {
             NSMutableURLRequest *newRequest = [sessionTask.currentRequest mutableCopy];
 
-            [newRequest setValue:traceHeader.value forHTTPHeaderField:SENTRY_TRACE_HEADER];
+            if ([newRequest valueForHTTPHeaderField:SENTRY_TRACE_HEADER] == nil) {
+                [newRequest setValue:traceHeader.value forHTTPHeaderField:SENTRY_TRACE_HEADER];
+            }
 
             if (baggageHeader.length > 0) {
                 [newRequest setValue:baggageHeader forHTTPHeaderField:SENTRY_BAGGAGE_HEADER];
@@ -334,10 +346,12 @@ SentryNetworkTracker ()
 
 - (void)captureFailedRequests:(NSURLSessionTask *)sessionTask
 {
-    if (!self.isCaptureFailedRequestsEnabled) {
-        SENTRY_LOG_DEBUG(
-            @"captureFailedRequestsEnabled is disabled, not capturing HTTP Client errors.");
-        return;
+    @synchronized(self) {
+        if (!self.isCaptureFailedRequestsEnabled) {
+            SENTRY_LOG_DEBUG(
+                @"captureFailedRequestsEnabled is disabled, not capturing HTTP Client errors.");
+            return;
+        }
     }
 
     // if request or response are null, we can't raise the event

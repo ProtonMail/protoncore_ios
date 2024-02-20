@@ -27,7 +27,6 @@ import ProtonCoreFoundations
 #if canImport(ProtonCoreTestingToolkitUnitTestsNetworking)
 import ProtonCoreTestingToolkitUnitTestsCore
 import ProtonCoreTestingToolkitUnitTestsDoh
-import ProtonCoreTestingToolkitUnitTestsFeatureSwitch
 import ProtonCoreTestingToolkitUnitTestsNetworking
 import ProtonCoreTestingToolkitUnitTestsObservability
 import ProtonCoreTestingToolkitUnitTestsServices
@@ -36,7 +35,6 @@ import ProtonCoreTestingToolkit
 #endif
 import ProtonCoreUtilities
 import ProtonCoreDoh
-import ProtonCoreFeatureSwitch
 
 @testable import ProtonCoreServices
 @testable import ProtonCoreNetworking

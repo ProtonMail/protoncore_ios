@@ -2,7 +2,6 @@
 
 #if SENTRY_HAS_UIKIT
 
-#    import "SentryFramesTracker.h"
 #    import "SentryHub.h"
 #    import "SentryLog.h"
 #    import "SentryPerformanceTracker.h"
@@ -183,7 +182,7 @@ SentryUIViewControllerPerformanceTracker ()
 
         SentryTimeToDisplayTracker *ttdTracker
             = objc_getAssociatedObject(controller, &SENTRY_UI_PERFORMANCE_TRACKER_TTD_TRACKER);
-        [ttdTracker reportReadyToDisplay];
+        [ttdTracker reportInitialDisplay];
     };
 
     [self limitOverride:@"viewWillAppear"

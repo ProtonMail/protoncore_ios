@@ -50,6 +50,7 @@ internal extension ViewSearch {
             ViewType.Menu.self,
             ViewType.MenuButton.self,
             ViewType.MultiDatePicker.self,
+            ViewType.NavigationDestination.self,
             ViewType.NavigationLink.self,
             ViewType.NavigationView.self,
             ViewType.NavigationSplitView.self,
@@ -318,11 +319,7 @@ private extension Content {
 internal extension ViewType.Overlay.API {
     
     static var viewSearchModifierIdentities: [ViewSearch.ModifierIdentity] {
-        let apiToSearch: [ViewType.Overlay.API] = [
-            .overlayPreferenceValue, .backgroundPreferenceValue,
-            .overlay, .overlayStyle, .background, .backgroundStyle
-        ]
-        return apiToSearch
+        return ViewType.Overlay.API.allCases
             .map { api in
                 .init(name: api.modifierName, builder: { parent, index in
                     try parent.content.overlay(parent: parent, api: api, index: index)
@@ -342,11 +339,20 @@ internal extension ViewSearch {
         .init(name: ViewType.ConfirmationDialog.typePrefix, builder: { parent, index in
             try parent.content.confirmationDialog(parent: parent, index: index)
         }),
+        .init(name: ViewType.NavigationDestination.typePrefix, builder: { parent, index in
+            try parent.content.navigationDestination(parent: parent, index: index)
+        }),
         .init(name: ViewType.SafeAreaInset.typePrefix, builder: { parent, index in
             try parent.content.safeAreaInset(parent: parent, index: index)
         }),
         .init(name: ViewType.Popover.standardModifierName, builder: { parent, index in
             try parent.content.popover(parent: parent, index: index)
+        }),
+        .init(name: ViewType.HelpView.Container.name, builder: { parent, index in
+            try parent.content.help(parent: parent, index: index)
+        }),
+        .init(name: "_TooltipModifier", builder: { parent, index in
+            try parent.content.help(parent: parent, index: index)
         }),
         .init(name: "_MaskEffect", builder: { parent, index in
             try parent.content.mask(parent: parent, index: index)

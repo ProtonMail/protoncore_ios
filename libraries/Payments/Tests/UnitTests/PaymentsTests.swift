@@ -21,7 +21,6 @@
 
 import XCTest
 import StoreKit
-import ProtonCoreFeatureSwitch
 import ProtonCoreServices
 import ProtonCoreNetworking
 #if canImport(ProtonCoreTestingToolkitUnitTestsPayments)

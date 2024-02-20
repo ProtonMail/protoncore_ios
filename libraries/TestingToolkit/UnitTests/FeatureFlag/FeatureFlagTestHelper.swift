@@ -74,6 +74,10 @@ extension XCTestCase {
 }
 
 public extension ProtonCoreFeatureFlags.FeatureFlag {
+    static var accountRecovery: Self {
+        .init(name: "SignedInAccountRecovery", enabled: true, variant: nil)
+    }
+
     static var dynamicPlans: Self {
         .init(name: "DynamicPlan", enabled: true, variant: nil)
     }

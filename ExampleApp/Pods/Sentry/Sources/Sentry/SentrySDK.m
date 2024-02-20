@@ -7,6 +7,7 @@
 #import "SentryClient+Private.h"
 #import "SentryCrash.h"
 #import "SentryCrashWrapper.h"
+#import "SentryCurrentDateProvider.h"
 #import "SentryDependencyContainer.h"
 #import "SentryDispatchQueueWrapper.h"
 #import "SentryFileManager.h"
@@ -42,6 +43,7 @@ static NSObject *sentrySDKappStartMeasurementLock;
  * reenable the integrations.
  */
 static NSUInteger startInvocations;
+static NSDate *_Nullable startTimestamp = nil;
 
 + (void)initialize
 {
@@ -135,30 +137,53 @@ static NSUInteger startInvocations;
     startInvocations = value;
 }
 
+/**
+ * Not public, only for internal use.
+ */
++ (nullable NSDate *)startTimestamp
+{
+    return startTimestamp;
+}
+
+/**
+ * Only needed for testing.
+ */
++ (void)setStartTimestamp:(NSDate *)value
+{
+    startTimestamp = value;
+}
+
 + (void)startWithOptions:(SentryOptions *)options
 {
+    [SentryLog configure:options.debug diagnosticLevel:options.diagnosticLevel];
+
     // We accept the tradeoff that the SDK might not be fully initialized directly after
     // initializing it on a background thread because scheduling the init synchronously on the main
     // thread could lead to deadlocks.
+    SENTRY_LOG_DEBUG(@"Starting SDK...");
+
+    startInvocations++;
+    startTimestamp = [SentryDependencyContainer.sharedInstance.dateProvider date];
+
+    SentryClient *newClient = [[SentryClient alloc] initWithOptions:options];
+    [newClient.fileManager moveAppStateToPreviousAppState];
+    [newClient.fileManager moveBreadcrumbsToPreviousBreadcrumbs];
+
+    SentryScope *scope
+        = options.initialScope([[SentryScope alloc] initWithMaxBreadcrumbs:options.maxBreadcrumbs]);
+    // The Hub needs to be initialized with a client so that closing a session
+    // can happen.
+    [SentrySDK setCurrentHub:[[SentryHub alloc] initWithClient:newClient andScope:scope]];
+    SENTRY_LOG_DEBUG(@"SDK initialized! Version: %@", SentryMeta.versionString);
+
+    SENTRY_LOG_DEBUG(@"Dispatching init work required to run on main thread.");
     [SentryThreadWrapper onMainThread:^{
-        startInvocations++;
-
-        [SentryLog configure:options.debug diagnosticLevel:options.diagnosticLevel];
-
-        SentryClient *newClient = [[SentryClient alloc] initWithOptions:options];
-        [newClient.fileManager moveAppStateToPreviousAppState];
-        [newClient.fileManager moveBreadcrumbsToPreviousBreadcrumbs];
-
-        SentryScope *scope = options.initialScope(
-            [[SentryScope alloc] initWithMaxBreadcrumbs:options.maxBreadcrumbs]);
-        // The Hub needs to be initialized with a client so that closing a session
-        // can happen.
-        [SentrySDK setCurrentHub:[[SentryHub alloc] initWithClient:newClient andScope:scope]];
-        SENTRY_LOG_DEBUG(@"SDK initialized! Version: %@", SentryMeta.versionString);
-        [SentrySDK installIntegrations];
+        SENTRY_LOG_DEBUG(@"SDK main thread init started...");
 
         [SentryCrashWrapper.sharedInstance startBinaryImageCache];
         [SentryDependencyContainer.sharedInstance.binaryImageCache start];
+
+        [SentrySDK installIntegrations];
 #if TARGET_OS_IOS && SENTRY_HAS_UIKIT
         [SentryDependencyContainer.sharedInstance.uiDeviceWrapper start];
 #endif // TARGET_OS_IOS && SENTRY_HAS_UIKIT
@@ -333,7 +358,7 @@ static NSUInteger startInvocations;
 
 + (BOOL)crashedLastRun
 {
-    return SentryCrash.sharedInstance.crashedLastLaunch;
+    return SentryDependencyContainer.sharedInstance.crashReporter.crashedLastLaunch;
 }
 
 + (void)startSession
@@ -395,6 +420,8 @@ static NSUInteger startInvocations;
 + (void)close
 {
     SENTRY_LOG_DEBUG(@"Starting to close SDK.");
+
+    startTimestamp = nil;
 
     SentryHub *hub = SentrySDK.currentHub;
     [hub removeAllIntegrations];

@@ -26,7 +26,6 @@ Pod::Spec.new do |s|
     this_pod_does_not_have_subspecs(s)
 
     s.dependency 'ProtonCore-Hash', $version
-    s.dependency 'ProtonCore-FeatureSwitch', $version
     s.dependency "ProtonCore-Crypto", $version
     s.dependency "ProtonCore-CryptoGoInterface", $version
     s.dependency "ProtonCore-Authentication", $version

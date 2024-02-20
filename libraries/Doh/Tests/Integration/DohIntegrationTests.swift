@@ -20,11 +20,9 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import XCTest
-import ProtonCoreFeatureSwitch
 import ProtonCoreServices
 #if canImport(ProtonCoreTestingToolkitUnitTestsCore)
 import ProtonCoreTestingToolkitUnitTestsCore
-import ProtonCoreTestingToolkitUnitTestsFeatureSwitch
 #elseif canImport(ProtonCoreTestingToolkit)
 import ProtonCoreTestingToolkit
 #endif
@@ -96,31 +94,6 @@ class DohIntegrationTests: XCTestCase {
             XCTAssertFalse(url.absoluteString.localizedStandardContains(environment.doh.defaultHost))
             guard let request = task?.currentRequest, let host = URL(string: environment.doh.defaultHost)?.host else { XCTFail(); return }
             XCTAssertEqual(request.value(forHTTPHeaderField: "x-pm-doh-host"), host)
-        }
-    }
-
-    func testDoHDoesntWorkForADomains() async throws {
-        try await withFeatureSwitches([.dohARecordQueries]) {
-            // GIVEN
-            // only vpn AR supports A record queries right now
-            let environment = Environment.vpnProd
-            environment.updateDohStatus(to: .forceAlternativeRouting)
-            let authDelegate = AuthHelper()
-            let service = PMAPIService.createAPIServiceWithoutSession(environment: environment, challengeParametersProvider: .empty)
-            service.serviceDelegate = serviceDelegate
-            service.authDelegate = authDelegate
-            let request = AuthService.UserAvailableWithoutSpecifyingDomainEndpoint(username: "doh_fanboy")
-
-            // WHEN
-            let (task, _): (URLSessionTask?, AuthService.UserAvailableResponse) = try await service.perform(request: request)
-
-            // THEN
-            guard let response = task?.response as? HTTPURLResponse, let url = response.url else { XCTFail(); return }
-            XCTAssertFalse(environment.doh.isCurrentlyUsingProxyDomain)
-            XCTAssertEqual(environment.doh.defaultHost, environment.doh.getCurrentlyUsedHostUrl())
-            XCTAssertTrue(url.absoluteString.localizedStandardContains(environment.doh.defaultHost))
-            guard let request = task?.currentRequest else { XCTFail(); return }
-            XCTAssertNil(request.value(forHTTPHeaderField: "x-pm-doh-host"))
         }
     }
 

@@ -29,7 +29,6 @@ import ProtonCorePayments
 import ProtonCoreObfuscatedConstants
 import ProtonCoreUIFoundations
 import ProtonCoreChallenge
-import ProtonCoreFeatureSwitch
 import StoreKit
 
 class PaymentsViewController: UIViewController, AccessibleView {
@@ -67,10 +66,6 @@ class PaymentsViewController: UIViewController, AccessibleView {
             ProtonCorePayments.TemporaryHacks.testCardForPayments = nil
         }
         #endif
-    }
-
-    @IBAction private func useEnableDynamicPlansSwitchValueChanged() {
-        FeatureFactory.shared.setEnabled(&.dynamicPlans, isEnable: enableDynamicPlans.isOn)
     }
 
     @IBAction private func simulateIAPFailureSwitchValueChanged() {

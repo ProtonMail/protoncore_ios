@@ -44,7 +44,6 @@ import ProtonCorePayments
 import ProtonCorePaymentsUI
 import ProtonCoreObfuscatedConstants
 import ProtonCoreQuarkCommands
-import ProtonCoreFeatureSwitch
 import ProtonCoreAuthenticationKeyGeneration
 import ProtonCoreTroubleShooting
 import ProtonCoreEnvironment
@@ -138,9 +137,6 @@ final class LoginViewController: UIViewController, AccessibleView {
         generateAccessibilityIdentifiers()
         separateDomainsButtonView.isHidden = false
         setupDefaultValues()
-
-        // pre enable features for testing.
-        FeatureFactory.shared.loadEnv()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -169,18 +165,6 @@ final class LoginViewController: UIViewController, AccessibleView {
     }
 
     // MARK: - Actions
-
-    @IBAction func dynamicPlansAction(_ sender: Any) {
-        guard let switcher = sender as? UISwitch else {
-            return
-        }
-
-        if switcher.isOn {
-            FeatureFactory.shared.enable(&.dynamicPlans)
-        } else {
-            FeatureFactory.shared.disable(&.dynamicPlans)
-        }
-    }
 
     @IBAction private func showLogin(_ sender: Any) {
         removePaymentsObserver()
@@ -216,7 +200,6 @@ final class LoginViewController: UIViewController, AccessibleView {
             return
         }
 
-        self.setupKeyPhase()
         let apiService = PMAPIService.createAPIServiceWithoutSession(environment: environmentSelector.currentEnvironment,
                                                                      challengeParametersProvider: ChallengeParametersProvider.forAPIService(clientApp: clientApp, challenge: PMChallenge()))
         self.apiService = apiService
@@ -323,7 +306,6 @@ final class LoginViewController: UIViewController, AccessibleView {
             return
         }
 
-        self.setupKeyPhase()
         let apiService = PMAPIService.createAPIServiceWithoutSession(environment: environmentSelector.currentEnvironment,
                                                                      challengeParametersProvider: ChallengeParametersProvider.forAPIService(clientApp: clientApp, challenge: PMChallenge()))
         self.apiService = apiService
@@ -411,7 +393,6 @@ final class LoginViewController: UIViewController, AccessibleView {
         guard let authCredential = currentAuthCredential else { return }
         guard let appName = appNameTextField.text, !appName.isEmpty else { return }
 
-        self.setupKeyPhase()
         let apiService = PMAPIService.createAPIServiceWithoutSession(environment: environmentSelector.currentEnvironment,
                                                                      challengeParametersProvider: ChallengeParametersProvider.forAPIService(clientApp: clientApp, challenge: PMChallenge()))
         self.apiService = apiService
@@ -521,7 +502,6 @@ final class LoginViewController: UIViewController, AccessibleView {
             return
         }
 
-        self.setupKeyPhase()
         let apiService = PMAPIService.createAPIServiceWithoutSession(environment: environmentSelector.currentEnvironment,
                                                                      challengeParametersProvider: ChallengeParametersProvider.forAPIService(clientApp: clientApp, challenge: PMChallenge()))
         self.apiService = apiService
@@ -590,11 +570,6 @@ final class LoginViewController: UIViewController, AccessibleView {
         } else {
             loginButton.isEnabled = false
         }
-    }
-
-    private func setupKeyPhase() {
-        let isKeyPhaseV2on = keyMigrationVersionSeg.selectedSegmentIndex == 1
-        FeatureFactory.shared.setEnabled(&.useKeymigrationPhaseV2, isEnable: isKeyPhaseV2on)
     }
 
     private var getMinimumAccountType: AccountType {

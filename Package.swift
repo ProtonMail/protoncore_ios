@@ -105,7 +105,6 @@ extension String {
     static let environment: String = "ProtonCoreEnvironment"
     static let features: String = "ProtonCoreFeatures"
     static let featureFlags: String = "ProtonCoreFeatureFlags"
-    static let featureSwitch: String = "ProtonCoreFeatureSwitch"
     static let forceUpgrade: String = "ProtonCoreForceUpgrade"
     static let foundations: String = "ProtonCoreFoundations"
     static let goLibsCryptoGo: String = "GoLibsCryptoGo"
@@ -144,7 +143,6 @@ extension String {
     static let testingToolkitUnitTestsDataModel: String = "ProtonCoreTestingToolkitUnitTestsDataModel"
     static let testingToolkitUnitTestsDoh: String = "ProtonCoreTestingToolkitUnitTestsDoh"
     static let testingToolkitUnitTestsFeatureFlag: String = "ProtonCoreTestingToolkitUnitTestsFeatureFlag"
-    static let testingToolkitUnitTestsFeatureSwitch: String = "ProtonCoreTestingToolkitUnitTestsFeatureSwitch"
     static let testingToolkitUnitTestsLogin: String = "ProtonCoreTestingToolkitUnitTestsLogin"
     static let testingToolkitUnitTestsLoginUI: String = "ProtonCoreTestingToolkitUnitTestsLoginUI"
     static let testingToolkitUnitTestsNetworking: String = "ProtonCoreTestingToolkitUnitTestsNetworking"
@@ -220,7 +218,6 @@ extension Target.Dependency {
     static var environment: Target.Dependency { .target(name: .environment) }
     static var features: Target.Dependency { .target(name: .features) }
     static var featureFlags: Target.Dependency { .target(name: .featureFlags) }
-    static var featureSwitch: Target.Dependency { .target(name: .featureSwitch) }
     static var forceUpgrade: Target.Dependency { .target(name: .forceUpgrade) }
     static var foundations: Target.Dependency { .target(name: .foundations) }
     static var goLibsCryptoGo: Target.Dependency { .target(name: .goLibsCryptoGo) }
@@ -263,7 +260,6 @@ extension Target.Dependency {
     static var testingToolkitUnitTestsDataModel: Target.Dependency { .target(name: .testingToolkitUnitTestsDataModel) }
     static var testingToolkitUnitTestsDoh: Target.Dependency { .target(name: .testingToolkitUnitTestsDoh) }
     static var testingToolkitUnitTestsFeatureFlag: Target.Dependency { .target(name: .testingToolkitUnitTestsFeatureFlag) }
-    static var testingToolkitUnitTestsFeatureSwitch: Target.Dependency { .target(name: .testingToolkitUnitTestsFeatureSwitch) }
     static var testingToolkitUnitTestsLogin: Target.Dependency { .target(name: .testingToolkitUnitTestsLogin) }
     static var testingToolkitUnitTestsLoginUI: Target.Dependency { .target(name: .testingToolkitUnitTestsLoginUI) }
     static var testingToolkitUnitTestsNetworking: Target.Dependency { .target(name: .testingToolkitUnitTestsNetworking) }
@@ -468,21 +464,22 @@ add(
     targets: [
         coreTarget(name: .authenticationKeyGeneration,
                    dependencies: [
-                       .hash,
-                       .featureSwitch,
+                       .authentication,
                        .crypto,
                        .cryptoGoInterface,
-                       .authentication
+                       .hash,
+                       .utilities
                    ],
                    path: "libraries/Authentication-KeyGeneration/Sources"),
 
         coreTestTarget(name: .authenticationKeyGeneration + "Tests",
                        dependencies: [
-                           .swiftBCrypt,
                            .authenticationKeyGeneration,
-                           .obfuscatedConstants,
                            .cryptoGoUsedInTests,
-                           .ohhttpStubs
+                           .hash,
+                           .obfuscatedConstants,
+                           .ohhttpStubs,
+                           .swiftBCrypt
                        ],
                        path: "libraries/Authentication-KeyGeneration/Tests",
                        resources: [.process("TestData")])
@@ -500,6 +497,7 @@ add(
                        .crypto,
                        .cryptoGoInterface,
                        .featureFlags,
+                       .foundations,
                        .services
                    ],
                    path: "libraries/Authentication/Sources"),
@@ -688,7 +686,6 @@ add(
     targets: [
         coreTarget(name: .doh,
                    dependencies: [
-                       .featureSwitch,
                        .log,
                        .utilities
                    ],
@@ -699,6 +696,7 @@ add(
                            .doh,
                            .authentication,
                            .challenge,
+                           .foundations,
                            .services,
                            .obfuscatedConstants,
                            .testingToolkitUnitTestsDoh,
@@ -709,12 +707,12 @@ add(
         coreTestTarget(name: .doh + "IntegrationTests",
                        dependencies: [
                            .doh,
-                           .environment,
                            .authentication,
+                           .environment,
+                           .foundations,
                            .observability,
                            .services,
-                           .testingToolkitUnitTestsCore,
-                           .testingToolkitUnitTestsFeatureSwitch
+                           .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/Doh/Tests/Integration")
     ]
@@ -768,45 +766,20 @@ add(
     targets: [
         coreTarget(name: .featureFlags,
                    dependencies: [
+                       .log,
+                       .networking,
                        .services,
-                       .networking
                    ],
                    path: "libraries/FeatureFlags/Sources"),
 
         coreTestTarget(name: .featureFlags + "Tests",
                        dependencies: [
                            .featureFlags,
+                           .utilities,
                            .testingToolkitUnitTestsServices
                        ],
                        path: "libraries/FeatureFlags/Tests",
                        resources: [.process("FeatureFlagsTests/QueryResources")])
-    ]
-)
-
-// MARK: FeatureSwitch
-
-add(
-    product: .featureSwitch,
-    targets: [
-        coreTarget(name: .featureSwitch,
-                   dependencies: [
-                       .foundations,
-                       .utilities
-                   ],
-                   path: "libraries/FeatureSwitch",
-                   exclude: ["Tests"],
-                   sources: ["Sources"],
-                   resources: [.process("Resources"), ]),
-
-        coreTestTarget(name: .featureSwitch + "Tests",
-                       dependencies: [
-                           .featureSwitch,
-                           .doh,
-                           .testingToolkitUnitTestsDoh,
-                           .testingToolkitUnitTestsFeatureSwitch
-                       ],
-                       path: "libraries/FeatureSwitch/Tests",
-                       resources: [.process("Resources")])
     ]
 )
 
@@ -928,6 +901,7 @@ add(
                            .cryptoGoUsedInTests,
                            .testingToolkitUnitTestsCore,
                            .testingToolkitUnitTestsDoh,
+                           .testingToolkitUnitTestsFeatureFlag,
                            .testingToolkitUnitTestsObservability,
                            .testingToolkitUnitTestsServices
                        ],
@@ -1037,6 +1011,7 @@ add(
                            .crypto,
                            .cryptoGoInterface,
                            .cryptoGoUsedInTests,
+                           .hash,
                            .authentication,
                            .authenticationKeyGeneration,
                            .obfuscatedConstants,
@@ -1194,8 +1169,7 @@ add(
                            .testingToolkitUnitTestsNetworking,
                            .testingToolkitUnitTestsServices
                        ],
-                       path: "libraries/MissingScopes/Tests",
-                       exclude: ["SnapshotTests/__Snapshots__"])
+                       path: "libraries/MissingScopes/Tests")
     ]
 )
 
@@ -1239,9 +1213,9 @@ add(
     targets: [
         coreTarget(name: .obfuscatedConstants,
                    dependencies: [
+                       .cryptoSwift,
                        .dataModel,
                        .networking,
-                       .cryptoSwift,
                        .swiftOTP,
                        .trustKit
                    ],
@@ -1265,8 +1239,10 @@ add(
         coreTestTarget(name: .observability + "UnitTests",
                        dependencies: [
                            .observability,
+                           .challenge,
+                           .foundations,
                            .testingToolkitUnitTestsCore,
-                           .testingToolkitUnitTestsFeatureSwitch,
+                           .testingToolkitUnitTestsFeatureFlag,
                            .testingToolkitUnitTestsNetworking,
                            .testingToolkitUnitTestsObservability,
                            .testingToolkitUnitTestsServices,
@@ -1278,10 +1254,10 @@ add(
                        dependencies: [
                            .observability,
                            .authentication,
+                           .foundations,
                            .networking,
                            .services,
                            .testingToolkitUnitTestsCore,
-                           .testingToolkitUnitTestsFeatureSwitch,
                            .testingToolkitUnitTestsObservability
                        ],
                        path: "libraries/Observability/IntegrationTests")
@@ -1312,7 +1288,6 @@ add(
                            .networking,
                            .services,
                            .testingToolkitUnitTestsCore,
-                           .testingToolkitUnitTestsFeatureSwitch,
                            .testingToolkitUnitTestsNetworking,
                            .testingToolkitUnitTestsAuthentication,
                            .testingToolkitUnitTestsServices
@@ -1423,7 +1398,6 @@ add(
 
         coreTestTarget(name: .paymentsUI + "Tests",
                        dependencies: [
-                           .featureSwitch,
                            .paymentsUI,
                            .obfuscatedConstants,
                            .testingToolkitUnitTestsDataModel,
@@ -1489,6 +1463,7 @@ add(
         coreTestTarget(name: .quarkCommands + "Tests",
                        dependencies: [
                            .quarkCommands,
+                           .foundations,
                            .testingToolkitUnitTestsDoh,
                            .ohhttpStubs,
                        ],
@@ -1514,12 +1489,11 @@ add(
 
         coreTestTarget(name: .services + "UnitTests",
                        dependencies: [
+                           .services,
                            .authentication,
                            .challenge,
-                           .services,
                            .testingToolkitUnitTestsCore,
                            .testingToolkitUnitTestsDoh,
-                           .testingToolkitUnitTestsFeatureSwitch,
                            .testingToolkitUnitTestsNetworking,
                            .testingToolkitUnitTestsObservability,
                            .testingToolkitUnitTestsServices
@@ -1532,14 +1506,14 @@ add(
                            .authentication,
                            .challenge,
                            .login,
-                           .testingToolkitUnitTestsCore,
-                           .testingToolkitUnitTestsFeatureSwitch
+                           .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/Services/Tests/Integration"),
 
         coreTestTarget(name: .services + "LocalizationTests",
                        dependencies: [
                            .services,
+                           .challenge,
                            .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/Services/Tests/Localization")
@@ -1609,7 +1583,6 @@ add(
         .testingToolkitUnitTestsDataModel,
         .testingToolkitUnitTestsDoh,
         .testingToolkitUnitTestsFeatureFlag,
-        .testingToolkitUnitTestsFeatureSwitch,
         .testingToolkitUnitTestsLogin,
         .testingToolkitUnitTestsLoginUI,
         .testingToolkitUnitTestsNetworking,
@@ -1686,13 +1659,6 @@ add(
                    ],
                    path: "libraries/TestingToolkit/UnitTests/FeatureFlag"),
 
-        coreTarget(name: .testingToolkitUnitTestsFeatureSwitch,
-                   dependencies: [
-                       .featureSwitch,
-                       .testingToolkitUnitTestsCore
-                   ],
-                   path: "libraries/TestingToolkit/UnitTests/FeatureSwitch"),
-
         coreTarget(name: .testingToolkitUnitTestsLogin,
                    dependencies: [
                        .login,
@@ -1739,10 +1705,12 @@ add(
         coreTarget(name: .testingToolkitUnitTestsServices,
                    dependencies: [
                        .services,
+                       .doh,
+                       .foundations,
+                       .networking,
                        .testingToolkitUnitTestsCore,
                        .testingToolkitUnitTestsDataModel,
                        .testingToolkitUnitTestsDoh,
-                       .testingToolkitUnitTestsFeatureSwitch,
                        .testingToolkitUnitTestsNetworking
                    ],
                    path: "libraries/TestingToolkit/UnitTests/Services"),
@@ -1813,10 +1781,10 @@ add(
         coreTarget(name: .troubleShooting,
                    dependencies: [
                        .foundations,
-                       .uiFoundations,
                        .doh,
-                       .utilities,
-                       .troubleShootingResourcesiOS
+                       .troubleShootingResourcesiOS,
+                       .uiFoundations,
+                       .utilities
                    ],
                    path: "libraries/TroubleShooting/Sources",
                    resources: [

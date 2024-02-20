@@ -25,7 +25,6 @@ import ProtonCoreNetworking
 import ProtonCoreServices
 #if canImport(ProtonCoreTestingToolkitUnitTestsCore)
 import ProtonCoreTestingToolkitUnitTestsCore
-import ProtonCoreTestingToolkitUnitTestsFeatureSwitch
 import ProtonCoreTestingToolkitUnitTestsNetworking
 import ProtonCoreTestingToolkitUnitTestsServices
 #else

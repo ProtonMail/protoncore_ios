@@ -944,7 +944,6 @@
 		661BCC482A6ED9A50005FD6D /* ProtonCoreDoh in Frameworks */ = {isa = PBXBuildFile; productRef = 661BCC472A6ED9A50005FD6D /* ProtonCoreDoh */; };
 		661BCC4A2A6ED9A50005FD6D /* ProtonCoreEnvironment in Frameworks */ = {isa = PBXBuildFile; productRef = 661BCC492A6ED9A50005FD6D /* ProtonCoreEnvironment */; };
 		661BCC4C2A6ED9A60005FD6D /* ProtonCoreFeatures in Frameworks */ = {isa = PBXBuildFile; productRef = 661BCC4B2A6ED9A60005FD6D /* ProtonCoreFeatures */; };
-		661BCC4E2A6ED9A60005FD6D /* ProtonCoreFeatureSwitch in Frameworks */ = {isa = PBXBuildFile; productRef = 661BCC4D2A6ED9A60005FD6D /* ProtonCoreFeatureSwitch */; };
 		661BCC502A6ED9A60005FD6D /* ProtonCoreForceUpgrade in Frameworks */ = {isa = PBXBuildFile; productRef = 661BCC4F2A6ED9A60005FD6D /* ProtonCoreForceUpgrade */; };
 		661BCC522A6ED9A60005FD6D /* ProtonCoreFoundations in Frameworks */ = {isa = PBXBuildFile; productRef = 661BCC512A6ED9A60005FD6D /* ProtonCoreFoundations */; };
 		661BCC542A6ED9A60005FD6D /* ProtonCoreHash in Frameworks */ = {isa = PBXBuildFile; productRef = 661BCC532A6ED9A60005FD6D /* ProtonCoreHash */; };
@@ -1656,24 +1655,6 @@
 		75C8ADA52840943D009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD9E2840943D009EF6FA /* LanguageManager.swift */; };
 		75C8ADA62840943D009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD9E2840943D009EF6FA /* LanguageManager.swift */; };
 		75C8ADA72840943D009EF6FA /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8AD9E2840943D009EF6FA /* LanguageManager.swift */; };
-		75D3241928DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D3241628DD7B2500BB0064 /* Example-FeatureSwitch.storyboard */; };
-		75D3241A28DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D3241628DD7B2500BB0064 /* Example-FeatureSwitch.storyboard */; };
-		75D3241B28DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D3241628DD7B2500BB0064 /* Example-FeatureSwitch.storyboard */; };
-		75D3241C28DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D3241628DD7B2500BB0064 /* Example-FeatureSwitch.storyboard */; };
-		75D3241D28DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D3241628DD7B2500BB0064 /* Example-FeatureSwitch.storyboard */; };
-		75D3241E28DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D3241628DD7B2500BB0064 /* Example-FeatureSwitch.storyboard */; };
-		75D3241F28DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D3241628DD7B2500BB0064 /* Example-FeatureSwitch.storyboard */; };
-		75D3242028DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D3241628DD7B2500BB0064 /* Example-FeatureSwitch.storyboard */; };
-		75D3242128DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D3241628DD7B2500BB0064 /* Example-FeatureSwitch.storyboard */; };
-		75D3242228DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3241828DD7B2500BB0064 /* FeatureSwitchViewController.swift */; };
-		75D3242328DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3241828DD7B2500BB0064 /* FeatureSwitchViewController.swift */; };
-		75D3242428DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3241828DD7B2500BB0064 /* FeatureSwitchViewController.swift */; };
-		75D3242528DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3241828DD7B2500BB0064 /* FeatureSwitchViewController.swift */; };
-		75D3242628DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3241828DD7B2500BB0064 /* FeatureSwitchViewController.swift */; };
-		75D3242728DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3241828DD7B2500BB0064 /* FeatureSwitchViewController.swift */; };
-		75D3242828DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3241828DD7B2500BB0064 /* FeatureSwitchViewController.swift */; };
-		75D3242928DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3241828DD7B2500BB0064 /* FeatureSwitchViewController.swift */; };
-		75D3242A28DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3241828DD7B2500BB0064 /* FeatureSwitchViewController.swift */; };
 		75D4434229654707000DF714 /* Example-UITests-light.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 75D4434129654706000DF714 /* Example-UITests-light.xctestplan */; };
 		82323A9F29633FC800E049E0 /* isExternalSignupFeatureEnabled.json in Resources */ = {isa = PBXBuildFile; fileRef = 82323A9E29633FC800E049E0 /* isExternalSignupFeatureEnabled.json */; };
 /* End PBXBuildFile section */
@@ -1871,7 +1852,6 @@
 		663535A627C013DE006FB9C6 /* UIFoundationsIconsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFoundationsIconsViewController.swift; sourceTree = "<group>"; };
 		66378B372A5FF852008C1FA9 /* UITests-smoke.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = "UITests-smoke.xctestplan"; path = ".swiftpm/UITests-smoke.xctestplan"; sourceTree = "<group>"; };
 		664144DC28F57C080045694A /* LoginHumanVerificationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginHumanVerificationTests.swift; sourceTree = "<group>"; };
-		66420FEB2A5743F000A28F11 /* protoncore-second */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "protoncore-second"; sourceTree = "<group>"; };
 		664237B52A6975F00056776D /* ProtonCore-Keymaker-macOS-AppHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ProtonCore-Keymaker-macOS-AppHost.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		664237C42A69763F0056776D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = libraries/Keymaker/AppHosts/macOS/main.m; sourceTree = "<group>"; };
 		664237C62A6976910056776D /* KeymakerAppHostedTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = KeymakerAppHostedTests.xctestplan; path = .swiftpm/KeymakerAppHostedTests.xctestplan; sourceTree = "<group>"; };
@@ -1938,8 +1918,6 @@
 		75C8AD8B284091A7009EF6FA /* NSBundle+Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Language.h"; sourceTree = "<group>"; };
 		75C8AD9E2840943D009EF6FA /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		75C8ADA828409736009EF6FA /* Example-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Example-Bridging-Header.h"; path = "../../Example-ProtonCore/iOS/Example-Bridging-Header.h"; sourceTree = "<group>"; };
-		75D3241728DD7B2500BB0064 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Example-FeatureSwitch.storyboard"; sourceTree = "<group>"; };
-		75D3241828DD7B2500BB0064 /* FeatureSwitchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureSwitchViewController.swift; sourceTree = "<group>"; };
 		75D4434129654706000DF714 /* Example-UITests-light.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Example-UITests-light.xctestplan"; sourceTree = "<group>"; };
 		82323A9E29633FC800E049E0 /* isExternalSignupFeatureEnabled.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = isExternalSignupFeatureEnabled.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2420,7 +2398,6 @@
 				661BCC682A6ED9A60005FD6D /* ProtonCoreObservability in Frameworks */,
 				661BCC6E2A6ED9A60005FD6D /* ProtonCorePayments in Frameworks */,
 				661BCC522A6ED9A60005FD6D /* ProtonCoreFoundations in Frameworks */,
-				661BCC4E2A6ED9A60005FD6D /* ProtonCoreFeatureSwitch in Frameworks */,
 				661BCC562A6ED9A60005FD6D /* ProtonCoreHumanVerification in Frameworks */,
 				661BCC6C2A6ED9A60005FD6D /* ProtonCorePasswordRequest in Frameworks */,
 				661BCC462A6ED9A50005FD6D /* ProtonCoreDataModel in Frameworks */,
@@ -3375,7 +3352,6 @@
 		66420FEA2A5743F000A28F11 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				66420FEB2A5743F000A28F11 /* protoncore-second */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -3481,7 +3457,6 @@
 			isa = PBXGroup;
 			children = (
 				755DEA41294C59D200BE2206 /* EndToEnd */,
-				75D3241428DD7B2500BB0064 /* FeatureSwitch */,
 				75C8AD7028403A8B009EF6FA /* Localization */,
 				6673F17327639EF500B1EE7A /* AccountDeletion */,
 				25AAB467270EE1B500CEA95A /* AccountSwitcher */,
@@ -3596,23 +3571,6 @@
 				75C8AD9E2840943D009EF6FA /* LanguageManager.swift */,
 			);
 			path = Helper;
-			sourceTree = "<group>";
-		};
-		75D3241428DD7B2500BB0064 /* FeatureSwitch */ = {
-			isa = PBXGroup;
-			children = (
-				75D3241528DD7B2500BB0064 /* iOS */,
-			);
-			path = FeatureSwitch;
-			sourceTree = "<group>";
-		};
-		75D3241528DD7B2500BB0064 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				75D3241628DD7B2500BB0064 /* Example-FeatureSwitch.storyboard */,
-				75D3241828DD7B2500BB0064 /* FeatureSwitchViewController.swift */,
-			);
-			path = iOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -4226,7 +4184,6 @@
 				661BCC472A6ED9A50005FD6D /* ProtonCoreDoh */,
 				661BCC492A6ED9A50005FD6D /* ProtonCoreEnvironment */,
 				661BCC4B2A6ED9A60005FD6D /* ProtonCoreFeatures */,
-				661BCC4D2A6ED9A60005FD6D /* ProtonCoreFeatureSwitch */,
 				661BCC4F2A6ED9A60005FD6D /* ProtonCoreForceUpgrade */,
 				661BCC512A6ED9A60005FD6D /* ProtonCoreFoundations */,
 				661BCC532A6ED9A60005FD6D /* ProtonCoreHash */,
@@ -4805,7 +4762,6 @@
 				25AAB535270F3C4200CEA95A /* HumanVerificationFail.json in Resources */,
 				2559CD572710BA6600D3048A /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25AAB47E270EE1B500CEA95A /* Example-AccountSwitcher.storyboard in Resources */,
-				75D3242128DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */,
 				66B461B629EDAA9B0056B2BE /* VPNLaunchScreen.storyboard in Resources */,
 				666624502869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				25AAB5C42710581100CEA95A /* Example-Networking.storyboard in Resources */,
@@ -4888,7 +4844,6 @@
 				25BDF986271424B3001BB254 /* HumanVerificationFail.json in Resources */,
 				25BDF987271424B3001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDF988271424B3001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
-				75D3241928DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */,
 				666624482869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				25BDF989271424B3001BB254 /* Example-Networking.storyboard in Resources */,
 				66B461B729EDAA9B0056B2BE /* DriveLaunchScreen.storyboard in Resources */,
@@ -4926,7 +4881,6 @@
 				25BDF9DE271424FE001BB254 /* HumanVerificationFail.json in Resources */,
 				25BDF9DF271424FE001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDF9E0271424FE001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
-				75D3241A28DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */,
 				66B461AF29EDAA9B0056B2BE /* VPNLaunchScreen.storyboard in Resources */,
 				666624492869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				25BDF9E1271424FE001BB254 /* Example-Networking.storyboard in Resources */,
@@ -4964,7 +4918,6 @@
 				25BDFA3627142508001BB254 /* HumanVerificationFail.json in Resources */,
 				25BDFA3727142508001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDFA3827142508001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
-				75D3241B28DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */,
 				66B461B029EDAA9B0056B2BE /* VPNLaunchScreen.storyboard in Resources */,
 				6666244A2869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				25BDFA3927142508001BB254 /* Example-Networking.storyboard in Resources */,
@@ -5002,7 +4955,6 @@
 				25BDFA8E27142510001BB254 /* HumanVerificationFail.json in Resources */,
 				25BDFA8F27142510001BB254 /* UIFoundationsTextFieldViewController.xib in Resources */,
 				25BDFA9027142510001BB254 /* Example-AccountSwitcher.storyboard in Resources */,
-				75D3241C28DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */,
 				66B461B129EDAA9B0056B2BE /* VPNLaunchScreen.storyboard in Resources */,
 				6666244B2869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
 				25BDFA9127142510001BB254 /* Example-Networking.storyboard in Resources */,
@@ -5043,7 +4995,6 @@
 				75C8AD7828403A8C009EF6FA /* (null) in Resources */,
 				66B461C429EDAA9B0056B2BE /* CalendarLaunchScreen.storyboard in Resources */,
 				6666244C2869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
-				75D3241D28DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */,
 				354EE0C92840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */,
 				66B461BB29EDAA9B0056B2BE /* DriveLaunchScreen.storyboard in Resources */,
 				25BDFAE92714251B001BB254 /* Example-Networking.storyboard in Resources */,
@@ -5083,7 +5034,6 @@
 				75C8AD7928403A8C009EF6FA /* (null) in Resources */,
 				66B461C529EDAA9B0056B2BE /* CalendarLaunchScreen.storyboard in Resources */,
 				6666244D2869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
-				75D3241E28DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */,
 				354EE0CA2840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */,
 				66B461BC29EDAA9B0056B2BE /* DriveLaunchScreen.storyboard in Resources */,
 				25BDFB4127142526001BB254 /* Example-Networking.storyboard in Resources */,
@@ -5123,7 +5073,6 @@
 				75C8AD7A28403A8C009EF6FA /* (null) in Resources */,
 				66B461C629EDAA9B0056B2BE /* CalendarLaunchScreen.storyboard in Resources */,
 				6666244E2869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
-				75D3241F28DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */,
 				354EE0CB2840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */,
 				66B461BD29EDAA9B0056B2BE /* DriveLaunchScreen.storyboard in Resources */,
 				25BDFB9927142534001BB254 /* Example-Networking.storyboard in Resources */,
@@ -5163,7 +5112,6 @@
 				75C8AD7B28403A8C009EF6FA /* (null) in Resources */,
 				66B461C729EDAA9B0056B2BE /* CalendarLaunchScreen.storyboard in Resources */,
 				6666244F2869B6EB00C7737B /* Example-Localization.storyboard in Resources */,
-				75D3242028DD7B2600BB0064 /* Example-FeatureSwitch.storyboard in Resources */,
 				354EE0CC2840F89D00DC2002 /* Example-TokenRefresh.storyboard in Resources */,
 				66B461BE29EDAA9B0056B2BE /* DriveLaunchScreen.storyboard in Resources */,
 				25BDFBF12714253B001BB254 /* Example-Networking.storyboard in Resources */,
@@ -5321,7 +5269,6 @@
 				25BDFC0227142AD8001BB254 /* ExampleAPIDelegates.swift in Sources */,
 				3E15F016299E138C00651809 /* UIFoundationsActionSheetViewController.swift in Sources */,
 				3E6F1EA9291CA1610041B124 /* UIFoundationsDFSViewController.swift in Sources */,
-				75D3242A28DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				35B49D052837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				2559CD2E2710AB4B00D3048A /* SettingsInitialViewController.swift in Sources */,
 				25AAB608271082AC00CEA95A /* PaymentsStorage.swift in Sources */,
@@ -5459,7 +5406,6 @@
 				25BDF95F271424B3001BB254 /* SettingsInitialViewController.swift in Sources */,
 				3E15F00E299E138C00651809 /* UIFoundationsActionSheetViewController.swift in Sources */,
 				3E6F1EA1291C9F5C0041B124 /* UIFoundationsDFSViewController.swift in Sources */,
-				75D3242228DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				35B49CFD2837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDF960271424B3001BB254 /* PaymentsStorage.swift in Sources */,
 				25BDF962271424B3001BB254 /* ExampleSceneDelegate.swift in Sources */,
@@ -5528,7 +5474,6 @@
 				25BDF9B7271424FE001BB254 /* SettingsInitialViewController.swift in Sources */,
 				3E15F00F299E138C00651809 /* UIFoundationsActionSheetViewController.swift in Sources */,
 				3E6F1EA2291CA15C0041B124 /* UIFoundationsDFSViewController.swift in Sources */,
-				75D3242328DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				35B49CFE2837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDF9B8271424FE001BB254 /* PaymentsStorage.swift in Sources */,
 				25BDF9BA271424FE001BB254 /* ExampleSceneDelegate.swift in Sources */,
@@ -5597,7 +5542,6 @@
 				25BDFA0F27142508001BB254 /* SettingsInitialViewController.swift in Sources */,
 				3E15F010299E138C00651809 /* UIFoundationsActionSheetViewController.swift in Sources */,
 				3E6F1EA3291CA15C0041B124 /* UIFoundationsDFSViewController.swift in Sources */,
-				75D3242428DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				35B49CFF2837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDFA1027142508001BB254 /* PaymentsStorage.swift in Sources */,
 				25BDFA1227142508001BB254 /* ExampleSceneDelegate.swift in Sources */,
@@ -5666,7 +5610,6 @@
 				25BDFA6727142510001BB254 /* SettingsInitialViewController.swift in Sources */,
 				3E15F011299E138C00651809 /* UIFoundationsActionSheetViewController.swift in Sources */,
 				3E6F1EA4291CA15D0041B124 /* UIFoundationsDFSViewController.swift in Sources */,
-				75D3242528DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				35B49D002837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDFA6827142510001BB254 /* PaymentsStorage.swift in Sources */,
 				25BDFA6A27142510001BB254 /* ExampleSceneDelegate.swift in Sources */,
@@ -5735,7 +5678,6 @@
 				25BDFABF2714251B001BB254 /* SettingsInitialViewController.swift in Sources */,
 				3E15F012299E138C00651809 /* UIFoundationsActionSheetViewController.swift in Sources */,
 				3E6F1EA5291CA15E0041B124 /* UIFoundationsDFSViewController.swift in Sources */,
-				75D3242628DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				35B49D012837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDFAC02714251B001BB254 /* PaymentsStorage.swift in Sources */,
 				25BDFAC22714251B001BB254 /* ExampleSceneDelegate.swift in Sources */,
@@ -5804,7 +5746,6 @@
 				25BDFB1727142526001BB254 /* SettingsInitialViewController.swift in Sources */,
 				3E15F013299E138C00651809 /* UIFoundationsActionSheetViewController.swift in Sources */,
 				3E6F1EA6291CA15F0041B124 /* UIFoundationsDFSViewController.swift in Sources */,
-				75D3242728DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				35B49D022837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDFB1827142526001BB254 /* PaymentsStorage.swift in Sources */,
 				25BDFB1A27142526001BB254 /* ExampleSceneDelegate.swift in Sources */,
@@ -5873,7 +5814,6 @@
 				25BDFB6F27142534001BB254 /* SettingsInitialViewController.swift in Sources */,
 				3E15F014299E138C00651809 /* UIFoundationsActionSheetViewController.swift in Sources */,
 				3E6F1EA7291CA15F0041B124 /* UIFoundationsDFSViewController.swift in Sources */,
-				75D3242828DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				35B49D032837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDFB7027142534001BB254 /* PaymentsStorage.swift in Sources */,
 				25BDFB7227142534001BB254 /* ExampleSceneDelegate.swift in Sources */,
@@ -5942,7 +5882,6 @@
 				25BDFBC72714253B001BB254 /* SettingsInitialViewController.swift in Sources */,
 				3E15F015299E138C00651809 /* UIFoundationsActionSheetViewController.swift in Sources */,
 				3E6F1EA8291CA1600041B124 /* UIFoundationsDFSViewController.swift in Sources */,
-				75D3242928DD7B2600BB0064 /* FeatureSwitchViewController.swift in Sources */,
 				35B49D042837E61600744D78 /* TokenRefreshStrings.swift in Sources */,
 				25BDFBC82714253B001BB254 /* PaymentsStorage.swift in Sources */,
 				25BDFBCA2714253B001BB254 /* ExampleSceneDelegate.swift in Sources */,
@@ -6255,14 +6194,6 @@
 				755DEA47294C59D200BE2206 /* Base */,
 			);
 			name = "Example-EndToEnd.storyboard";
-			sourceTree = "<group>";
-		};
-		75D3241628DD7B2500BB0064 /* Example-FeatureSwitch.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				75D3241728DD7B2500BB0064 /* Base */,
-			);
-			name = "Example-FeatureSwitch.storyboard";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -9113,10 +9044,6 @@
 		661BCC4B2A6ED9A60005FD6D /* ProtonCoreFeatures */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ProtonCoreFeatures;
-		};
-		661BCC4D2A6ED9A60005FD6D /* ProtonCoreFeatureSwitch */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = ProtonCoreFeatureSwitch;
 		};
 		661BCC4F2A6ED9A60005FD6D /* ProtonCoreForceUpgrade */ = {
 			isa = XCSwiftPackageProductDependency;

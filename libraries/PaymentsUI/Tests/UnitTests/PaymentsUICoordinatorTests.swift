@@ -35,7 +35,6 @@ import ProtonCoreServices
 @testable import ProtonCoreObservability
 @testable import ProtonCorePayments
 @testable import ProtonCorePaymentsUI
-import ProtonCoreFeatureSwitch
 
 final class PaymentsUICoordinatorTests: XCTestCase {
 

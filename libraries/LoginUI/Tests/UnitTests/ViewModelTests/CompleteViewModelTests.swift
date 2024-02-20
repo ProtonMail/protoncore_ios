@@ -37,7 +37,6 @@ import ProtonCoreTestingToolkit
 import ProtonCoreLog
 import ProtonCoreLogin
 import ProtonCoreServices
-import ProtonCoreFeatureSwitch
 import ProtonCoreCryptoGoInterface
 #if canImport(ProtonCoreCryptoPatchedGoImplementation)
 import ProtonCoreCryptoPatchedGoImplementation

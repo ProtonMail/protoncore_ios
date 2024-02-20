@@ -26,7 +26,6 @@ import XCTest
 import ProtonCoreAuthentication
 #if canImport(ProtonCoreTestingToolkitUnitTestsCore)
 import ProtonCoreTestingToolkitUnitTestsCore
-import ProtonCoreTestingToolkitUnitTestsFeatureSwitch
 #elseif canImport(ProtonCoreTestingToolkit)
 import ProtonCoreTestingToolkit
 #endif

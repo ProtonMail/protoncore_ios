@@ -24,7 +24,6 @@ import UIKit
 import ProtonCoreAuthentication
 import ProtonCoreDataModel
 import ProtonCoreNetworking
-import ProtonCoreFeatureSwitch
 import ProtonCoreObfuscatedConstants
 import ProtonCoreQuarkCommands
 import ProtonCoreFoundations

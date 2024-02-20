@@ -2073,7 +2073,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertNil(error, String(describing: error))
         }
     }
-    
+
     // MARK: fork session
     func testForkSessionSuccess() async throws {
         // given
@@ -2082,7 +2082,7 @@ class AuthenticatorTests: XCTestCase {
         let testSelector = "test selector"
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         let manager = Authenticator(api: apiService)
-        
+
         apiService.requestDecodableStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/v4/sessions/forks"),
                 let params = parameters as? [String: Any],
@@ -2096,25 +2096,25 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         // when
         let response = try await withCheckedThrowingContinuation { continuation in
             manager.forkSession(testCredential,
                                 useCase: .forChildClientID(testClientId, independent: testIndependence),
                                 completion: continuation.resume(with:))
         }
-        
+
         // then
         XCTAssertEqual(response.selector, testSelector)
     }
-    
+
     func testForkSessionError() async {
         // given
         let testClientId = "test child client ID"
         let testIndependence = false
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
         let manager = Authenticator(api: apiService)
-        
+
         apiService.requestDecodableStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/v4/sessions/forks"),
                 let params = parameters as? [String: Any],
@@ -2128,7 +2128,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         // when
         do {
             _ = try await withCheckedThrowingContinuation { continuation in
@@ -2147,7 +2147,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertEqual(underlyingError, .badResponse())
         }
     }
-    
+
     // MARK: fork and obtain child session
     func testObtainChildSessionSuccess() async throws {
         // given
@@ -2158,12 +2158,12 @@ class AuthenticatorTests: XCTestCase {
             UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"]
         )
         let manager = Authenticator(api: apiService)
-        
+
         let refreshResponse = RefreshResponse(accessToken: "active accessToken",
                                               tokenType: "active tokenType",
                                               scopes: ["active scope"],
                                               refreshToken: "active refreshToken")
-        
+
         apiService.requestDecodableStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/v4/sessions/forks"),
                 let params = parameters as? [String: Any],
@@ -2183,14 +2183,14 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         // when
         let response = try await withCheckedThrowingContinuation { continuation in
             manager.performForkingAndObtainChildSession(testCredential,
                                                         useCase: .forChildClientID(testClientId, independent: testIndependence),
                                                         completion: continuation.resume(with:))
         }
-        
+
         // then
         XCTAssertEqual(response.UID, "test UID")
         XCTAssertEqual(response.accessToken, refreshResponse.accessToken)
@@ -2199,7 +2199,7 @@ class AuthenticatorTests: XCTestCase {
         XCTAssertEqual(response.userName, "userName")
         XCTAssertEqual(response.scopes, refreshResponse.scopes)
     }
-    
+
     func testObtainChildSessionFailureOnForking() async {
         // given
         let testClientId = "test child client ID"
@@ -2208,7 +2208,7 @@ class AuthenticatorTests: XCTestCase {
             UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"]
         )
         let manager = Authenticator(api: apiService)
-        
+
         apiService.requestDecodableStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/v4/sessions/forks"),
                let params = parameters as? [String: Any],
@@ -2222,7 +2222,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         // when
         do {
             _ = try await withCheckedThrowingContinuation { continuation in
@@ -2241,7 +2241,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertEqual(underlyingError, .badResponse())
         }
     }
-    
+
     func testObtainChildSessionFailureOnSelectorExchange() async {
         // given
         let testClientId = "test child client ID"
@@ -2251,7 +2251,7 @@ class AuthenticatorTests: XCTestCase {
             UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"]
         )
         let manager = Authenticator(api: apiService)
-        
+
         apiService.requestDecodableStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/v4/sessions/forks"),
                 let params = parameters as? [String: Any],
@@ -2267,7 +2267,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         // when
         do {
             _ = try await withCheckedThrowingContinuation { continuation in
@@ -2286,7 +2286,7 @@ class AuthenticatorTests: XCTestCase {
             XCTAssertEqual(underlyingError, .badResponse())
         }
     }
-    
+
     func testObtainChildSessionFailureOnRefresh() async {
         // given
         let testClientId = "test child client ID"
@@ -2296,7 +2296,7 @@ class AuthenticatorTests: XCTestCase {
             UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"]
         )
         let manager = Authenticator(api: apiService)
-        
+
         apiService.requestDecodableStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/v4/sessions/forks"),
                 let params = parameters as? [String: Any],
@@ -2316,7 +2316,7 @@ class AuthenticatorTests: XCTestCase {
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
         }
-        
+
         // when
         do {
             _ = try await withCheckedThrowingContinuation { continuation in

@@ -20,10 +20,6 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import XCTest
-import ProtonCoreFeatureSwitch
-#if canImport(ProtonCoreTestingToolkitUnitTestsFeatureSwitch)
-import ProtonCoreTestingToolkitUnitTestsFeatureSwitch
-#endif
 @testable import ProtonCoreAuthentication
 
 final class InfoEndpointTests: XCTestCase {
@@ -75,7 +71,7 @@ final class InfoEndpointTests: XCTestCase {
         XCTAssertFalse(cut.isAuth)
     }
 
-    func testHeaderWithFeatureSwitch() {
+    func testHeader() {
         XCTAssertEqual(["X-Accept-ExtAcc": true], cut.header as! [String: Bool])
     }
 }

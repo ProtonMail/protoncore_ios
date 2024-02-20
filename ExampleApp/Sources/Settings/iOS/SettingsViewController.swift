@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import ProtonCoreFeatureSwitch
 import ProtonCoreLog
 import ProtonCoreKeymaker
 import ProtonCorePayments

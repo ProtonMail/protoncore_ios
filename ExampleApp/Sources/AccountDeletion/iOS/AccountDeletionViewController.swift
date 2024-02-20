@@ -32,7 +32,6 @@ import ProtonCoreLogin
 import ProtonCoreServices
 import ProtonCoreLog
 import ProtonCoreChallenge
-import ProtonCoreFeatureSwitch
 
 final class AccountDeletionViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, AccessibleView {
 
