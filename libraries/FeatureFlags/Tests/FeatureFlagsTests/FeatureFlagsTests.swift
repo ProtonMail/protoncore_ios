@@ -506,7 +506,7 @@ final class FeatureFlagsTests: XCTestCase {
         XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
     }
 
-    func test_isEnabledReturnsSameValueEventIfEmptyTheFirstTime() async throws {
+    func test_isEnabledReturnsSameValueEvenIfEmptyTheFirstTime() async throws {
         // Given
         let userId = "userId"
         let flagResponse1 = FeatureFlagResponse(
@@ -544,7 +544,8 @@ final class FeatureFlagsTests: XCTestCase {
         // When fetching a second time
         try await sut.fetchFlags(for: userId, using: apiService)
 
-        // Then BlackFriday flag is returned and true, but isEnabled still returns the first returned value
+        // Then BlackFriday flag is returned and true, but isEnabled still returns
+        // the first-returned value (false)
         XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
     }
 
@@ -573,6 +574,68 @@ final class FeatureFlagsTests: XCTestCase {
 
         // Then BlackFriday flag is returned and true, but isEnabled still returns the first returned value
         XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
+    }
+
+    func test_fetchFlags_removesFlagsNotPresentInResponseFromLocalDataSource() async throws {
+        // Given
+        let userId = "userId"
+        let flagResponse1 = FeatureFlagResponse(
+            code: 1000,
+            toggles: [
+                .init(
+                    name: "BlackFriday",
+                    enabled: true,
+                    variant: nil
+                ),
+                .init(
+                    name: "ShouldNotAppear",
+                    enabled: true,
+                    variant: nil
+                )
+            ]
+        )
+
+        let flagResponse2 = FeatureFlagResponse(
+            code: 1000,
+            toggles: [.init(
+                name: "BlackFriday",
+                enabled: true,
+                variant: nil
+            )]
+        )
+
+        let apiService = APIServiceMock()
+        apiService.requestDecodableStub.bodyIs { count, _, _, _, _, _, _, _, _, _, _, completion in
+            if count == 1 {
+                completion(nil, .success(flagResponse1))
+            } else {
+                completion(nil, .success(flagResponse2))
+            }
+        }
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(DefaultRemoteFeatureFlagsDataSourceMock()))
+
+        sut.setUserId(userId)
+
+        // When flags are fetched the first time
+        try await sut.fetchFlags(for: userId, using: apiService)
+
+        // Then 2 flags should be returned
+        let localFlags1 = sut.localDataSource.value.getFeatureFlags(
+            userId: userId,
+            reloadFromLocalDataSource: true)
+        XCTAssertEqual(localFlags1?.flags.count, 2)
+        XCTAssertTrue(sut.isEnabled(TestFlagsType.notActivatedFlag, reloadValue: true))
+
+        // When fetched the second time
+        try await sut.fetchFlags(for: userId, using: apiService)
+
+        // Then only one flag should be returned, and the deleted FF should
+        // no longer be in the local data source.
+        let localFlags2 = sut.localDataSource.value.getFeatureFlags(
+            userId: userId,
+            reloadFromLocalDataSource: true)
+        XCTAssertEqual(localFlags2?.flags.count, 1)
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.notActivatedFlag, reloadValue: true))
     }
 
     // MARK: - Reset
