@@ -357,7 +357,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                       description: "Free encrypted email and calendar for everyone",
                       periodEnd: 1965360000,
                       entitlements: [.progress(.init(type: "progress",
-                                                     text: "402MB of 1 GB total storage",
+                                                     text: "402 MB of 1 GB total storage",
                                                      min: 0, max: 10, current: 4)),
                                      .description(.description(text: "1 GB total storage", iconName: "disk")),
                                      .description(.description(text: "1 free email address", iconName: "mail")),
@@ -397,7 +397,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                       periodEnd: 1965360000,
                       renew: 0,
                       entitlements: [
-                        .progress(.init(type: "progress", text: "1.2GB of 15GB", min: 0, max: 150, current: 12)),
+                        .progress(.init(type: "progress", text: "1.2 GB of 15 GB", min: 0, max: 150, current: 12)),
                         .description(.description(text: "15 GB total storage", iconName: "disk")),
                         .description(.description(text: "10 email addresses", iconName: "email")),
                         .description(.description(text: "Unlimited messages", iconName: "infinite")),
@@ -428,7 +428,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                       periodEnd: 1965360000,
                       renew: 0,
                       entitlements: [
-                        .progress(.init(type: "progress", text: "1.2GB of 500GB", min: 0, max: 5000, current: 12)),
+                        .progress(.init(type: "progress", text: "1.2 GB of 500 GB", min: 0, max: 5000, current: 12)),
                         .description(.description(text: "500 GB total storage")),
                         .description(.description(text: "15 email addresses")),
                         .description(.description(text: "Unlimited messages")),
@@ -443,8 +443,8 @@ final class PaymentsUISnapshotTests: XCTestCase {
                       periodEnd: 1965360000,
                       renew: 0,
                       entitlements: [
-                        .progress(.init(type: "progress", text: "1.2GB of 200GB", min: 0, max: 2000, current: 12)),
-                        .description(.description(text: "200GB total storage")),
+                        .progress(.init(type: "progress", text: "1.2 GB of 200 GB", min: 0, max: 2000, current: 12)),
+                        .description(.description(text: "200 GB total storage")),
                         .description(.description(text: "End-to-end encryption")),
                         .description(.description(text: "Share with up to 10 others")),
                         .description(.description(text: "Version history"))
@@ -478,7 +478,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                         .description(.description(text: "Calendar sharing", iconName: "calendar")),
                         .description(.description(text: "Contact groups management", iconName: "calendar")),
                         .description(.description(text: "1 free VPN connection per user", iconName: "globe")),
-                        .description(.description(text: "15 GB storager per user"))
+                        .description(.description(text: "15 GB storage per user"))
                       ])
             ])
 
@@ -494,7 +494,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                         .description(.description(text: "Calendar sharing", iconName: "calendar")),
                         .description(.description(text: "Contact groups management", iconName: "calendar")),
                         .description(.description(text: "10 VPN connections per user", iconName: "globe")),
-                        .description(.description(text: "500 GB storager per user"))
+                        .description(.description(text: "500 GB storage per user"))
                       ])
             ])
             static var enterprise2022: CurrentPlan = .init(subscriptions: [
@@ -522,7 +522,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                         .description(.description(text: "Calendar sharing", iconName: "calendar")),
                         .description(.description(text: "Contact groups management", iconName: "calendar")),
                         .description(.description(text: "10 VPN connections per user", iconName: "globe")),
-                        .description(.description(text: "6 TB storager per user"))
+                        .description(.description(text: "6 TB storage per user"))
                       ])
             ])
 
@@ -536,7 +536,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                       periodEnd: 1965360000,
                       entitlements: [.progress(.init(type: "progress",
                                                      title: "Mail storage",
-                                                     text: "402 MB of 500",
+                                                     text: "402 MB of 500 MB",
                                                      min: 0, max: 5, current: 4)),
                                      .progress(.init(type: "progress",
                                                      title: "Drive storage",
@@ -555,12 +555,50 @@ final class PaymentsUISnapshotTests: XCTestCase {
                       periodEnd: 1965360000,
                       entitlements: [.progress(.init(type: "progress",
                                                      title: "Mail storage",
-                                                     text: "402 MB of 500",
+                                                     text: "402 MB of 500 MB",
                                                      min: 0, max: 5, current: 4)),
                                      .progress(.init(type: "progress",
                                                      title: "Drive storage",
                                                      text: "0.00 B of 2 GB",
                                                      min: 0, max: 2, current: 0)),
+                                     .description(.description(text: "1 of 1 user", iconName: "user")),
+                                     .description(.description(text: "1 of 1 address", iconName: "email")),
+                                     .description(.description(text: "0 of 3 calendars", iconName: "calendar")),
+                                     .description(.description(text: "Free VPN on a single device", iconName: "vpn")),
+                                     .description(.description(text: "And the free features of all other Proton products!", iconName: "tick"))
+                                    ])
+            ])
+            static let mailFreeDeliquent: CurrentPlan = .init(subscriptions: [
+                .init(title: "Mail Free",
+                      description: "Free encrypted email and calendar for everyone",
+                      periodEnd: 1965360000,
+                      entitlements: [.progress(.init(type: "progress",
+                                                     title: "Mail storage",
+                                                     text: "450 MB of 500 MB",
+                                                     min: 0, max: 50, current: 45)),
+                                     .progress(.init(type: "progress",
+                                                     title: "Drive storage",
+                                                     text: "0.00 B of 2 GB",
+                                                     min: 0, max: 2, current: 0)),
+                                     .description(.description(text: "1 of 1 user", iconName: "user")),
+                                     .description(.description(text: "1 of 1 address", iconName: "email")),
+                                     .description(.description(text: "0 of 3 calendars", iconName: "calendar")),
+                                     .description(.description(text: "Free VPN on a single device", iconName: "vpn")),
+                                     .description(.description(text: "And the free features of all other Proton products!", iconName: "tick"))
+                                    ])
+            ])
+            static let driveFreeDeliquent: CurrentPlan = .init(subscriptions: [
+                .init(title: "Drive Free",
+                      description: "Free encrypted storage for everyone",
+                      periodEnd: 1965360000,
+                      entitlements: [.progress(.init(type: "progress",
+                                                     title: "Mail storage",
+                                                     text: "402 MB of 500 MB",
+                                                     min: 0, max: 5, current: 4)),
+                                     .progress(.init(type: "progress",
+                                                     title: "Drive storage",
+                                                     text: "1.9 GB of 2 GB",
+                                                     min: 0, max: 20, current: 19)),
                                      .description(.description(text: "1 of 1 user", iconName: "user")),
                                      .description(.description(text: "1 of 1 address", iconName: "email")),
                                      .description(.description(text: "0 of 3 calendars", iconName: "calendar")),
@@ -952,6 +990,15 @@ final class PaymentsUISnapshotTests: XCTestCase {
         }
     }
 
+    func testCurrentDynamicSubscription_Free_InMail_StorageSplit_Deliquent() async {
+        await withFeatureFlags([.dynamicPlans, .splitStorage]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.StorageSplit.mailFreeDeliquent,
+                clientApp: .mail
+            )
+        }
+    }
+
     func testCurrentSubscription_Free_InVPN() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: nil,
@@ -990,6 +1037,15 @@ final class PaymentsUISnapshotTests: XCTestCase {
         await withFeatureFlags([.dynamicPlans, .splitStorage]) {
             await snapshotCurrentDynamicSubscriptionScreen(
                 currentPlan: MockData.StorageSplit.driveFree,
+                clientApp: .drive
+            )
+        }
+    }
+
+    func testCurrentDynamicSubscription_Free_InDrive_StorageSplit_Delinquent() async {
+        await withFeatureFlags([.dynamicPlans, .splitStorage]) {
+            await snapshotCurrentDynamicSubscriptionScreen(
+                currentPlan: MockData.StorageSplit.driveFreeDeliquent,
                 clientApp: .drive
             )
         }
