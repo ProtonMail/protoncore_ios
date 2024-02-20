@@ -1,3 +1,11 @@
+## 19.0.4 (2024-02-20)
+
+### Changed (2 changes)
+
+- [[CP-7473] Use full amount to request subscriptions](apple/shared/protoncore@ac741d932babbfb1cc136c9c628cc7b7c25059d8) ([merge request](apple/shared/protoncore!1664))
+- [fix: adjust to payments status response in v5](apple/shared/protoncore@830a3cde3273c003edbb63c8e288476f35315b48) ([merge request](apple/shared/protoncore!1662))
+- [refactor: Unfold Payments API into v4/v5 routes](apple/shared/protoncore@1f3e97e10396cbe1aa216c2036ea15556db2f3f4) ([merge request](apple/shared/protoncore!1659))
+
 ## 19.0.0 (2024-02-01)
 
 ### changed (1 change)
