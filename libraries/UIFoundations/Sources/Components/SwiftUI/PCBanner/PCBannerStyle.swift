@@ -25,7 +25,7 @@ import SwiftUI
 
 @MainActor
 public class PCBannerStyle {
-    var style: Style
+    public var style: Style
 
     public enum Style {
         case success
@@ -34,7 +34,7 @@ public class PCBannerStyle {
         case info
     }
 
-    init(style: Style) {
+    public init(style: Style) {
         self.style = style
     }
 

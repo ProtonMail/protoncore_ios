@@ -19,6 +19,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+#if os(iOS)
+
 import Foundation
 import ProtonCoreNetworking
 import ProtonCoreServices
@@ -28,7 +30,7 @@ import ProtonCoreAPIClient
 import ProtonCoreAuthentication
 import ProtonCoreAuthenticationKeyGeneration
 
-class PasswordChangeService {
+public class PasswordChangeService {
     private let apiService: APIService
 
     // MARK: Public interface
@@ -37,11 +39,11 @@ class PasswordChangeService {
         self.apiService = api
     }
 
-    func updatePassword(auth currentAuth: AuthCredential,
-                        userInfo: UserInfo,
-                        loginPassword: String,
-                        newPassword: Passphrase,
-                        twoFACode: String?) async throws {
+    public func updateLoginPassword(auth currentAuth: AuthCredential,
+                                    userInfo: UserInfo,
+                                    loginPassword: String,
+                                    newPassword: Passphrase,
+                                    twoFACode: String?) async throws {
 
         let username = userInfo.userAddresses.defaultAddress()?.email ?? ""
 
@@ -64,26 +66,29 @@ class PasswordChangeService {
         guard let clientEphemeral = srpClient.clientEphemeral, let clientProof = srpClient.clientProof else {
             throw UpdatePasswordError.cantGenerateSRPClient
         }
+
+        let passwordChangeRequest = PasswordChangeRequest(clientEphemeral: clientEphemeral.encodeBase64(),
+                                                          clientProof: clientProof.encodeBase64(),
+                                                          srpSession: info.srpSession,
+                                                          twoFACode: twoFACode,
+                                                          modulusID: passwordAuth.ModulusID,
+                                                          salt: passwordAuth.salt,
+                                                          verifier: passwordAuth.verifier)
+
         let (_, updatePasswordResponse): (URLSessionDataTask?, DefaultResponse) = try await self.apiService.perform(
-            request: PasswordChangeRequest(clientEphemeral: clientEphemeral.encodeBase64(),
-                                           clientProof: clientProof.encodeBase64(),
-                                           srpSession: info.srpSession,
-                                           twoFACode: twoFACode,
-                                           modulusID: passwordAuth.ModulusID,
-                                           salt: passwordAuth.salt,
-                                           verifier: passwordAuth.verifier)
+            request: passwordChangeRequest
         )
         guard updatePasswordResponse.responseCode == 1000 else {
             throw UpdatePasswordError.default
         }
     }
 
-    func updateMailboxPassword(auth currentAuth: AuthCredential,
-                               userInfo: UserInfo,
-                               loginPassword: String,
-                               newPassword: Passphrase,
-                               twoFACode: String?,
-                               buildAuth: Bool) async throws {
+    public func updateUserPassword(auth currentAuth: AuthCredential,
+                                   userInfo: UserInfo,
+                                   loginPassword: String,
+                                   newPassword: Passphrase,
+                                   twoFACode: String?,
+                                   buildAuth: Bool) async throws {
 
         let oldPassword = Passphrase(value: currentAuth.mailboxpassword)
         let username = userInfo.userAddresses.defaultAddress()?.email ?? ""
@@ -114,38 +119,25 @@ class PasswordChangeService {
         }
         let srpClient = try auth.generateProofs(2048)
 
-        guard let clientEphemeral = srpClient.clientEphemeral, let clientProof = srpClient.clientProof else {
+        guard let clientEphemeral = srpClient.clientEphemeral, 
+              let clientProof = srpClient.clientProof else {
             throw UpdatePasswordError.cantGenerateSRPClient
         }
 
-        let updatePrivateKeyRequest: UpdatePrivateKeyRequest
-        if userInfo.isKeyV2 {
-            updatePrivateKeyRequest = UpdatePrivateKeyRequest(
-                clientEphemeral: clientEphemeral.encodeBase64(),
-                clientProof: clientProof.encodeBase64(),
-                SRPSession: authInfo.srpSession,
-                keySalt: resultOfKeyUpdate.saltOfNewPassword.encodeBase64(),
-                tfaCode: twoFACode,
-                orgKey: newOrganizationKey?.value,
-                userKeys: resultOfKeyUpdate.updatedUserKeys,
-                auth: passwordAuth,
-                authCredential: currentAuth
-            )
-        } else {
-            updatePrivateKeyRequest = UpdatePrivateKeyRequest(
-                clientEphemeral: clientEphemeral.encodeBase64(),
-                clientProof: clientProof.encodeBase64(),
-                SRPSession: authInfo.srpSession,
-                keySalt: resultOfKeyUpdate.saltOfNewPassword.encodeBase64(),
-                userlevelKeys: resultOfKeyUpdate.updatedUserKeys,
-                addressKeys: resultOfKeyUpdate.updatedAddresses?.toKeys() ?? [],
-                tfaCode: twoFACode,
-                orgKey: newOrganizationKey?.value,
-                userKeys: resultOfKeyUpdate.updatedUserKeys,
-                auth: passwordAuth,
-                authCredential: currentAuth
-            )
-        }
+        let updatePrivateKeyRequest = UpdatePrivateKeyRequest(
+            clientEphemeral: clientEphemeral.encodeBase64(),
+            clientProof: clientProof.encodeBase64(),
+            SRPSession: authInfo.srpSession,
+            keySalt: resultOfKeyUpdate.saltOfNewPassword.encodeBase64(),
+            userlevelKeys: userInfo.isKeyV2 ? [] : resultOfKeyUpdate.updatedUserKeys,
+            addressKeys: userInfo.isKeyV2 ? [] : resultOfKeyUpdate.updatedAddresses?.toKeys() ?? [],
+            tfaCode: twoFACode,
+            orgKey: newOrganizationKey?.value,
+            userKeys: resultOfKeyUpdate.updatedUserKeys,
+            auth: passwordAuth,
+            authCredential: currentAuth
+        )
+
 
         let (_, updatePrivateKeyResponse): (URLSessionDataTask?, DefaultResponse) = try await apiService.perform(request: updatePrivateKeyRequest)
 
@@ -229,3 +221,5 @@ class PasswordChangeService {
                                            newPassphrase: newPassphrase)
     }
 }
+
+#endif
