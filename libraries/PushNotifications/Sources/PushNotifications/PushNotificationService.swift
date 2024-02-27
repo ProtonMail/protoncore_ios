@@ -69,7 +69,7 @@ public class PushNotificationService: NSObject, PushNotificationServiceProtocol 
     /// Sets the shared instance as delegate for the `UNUserNotificationCenter`,
     /// and tries to register the device
     public func setup() {
-        guard FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.accountRecovery) else { return }
+        guard FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.pushNotifications) else { return }
 
         NotificationCenterFactory.current.delegate = Self.shared
         registerForRemoteNotifications()
