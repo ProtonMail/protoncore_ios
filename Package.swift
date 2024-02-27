@@ -378,6 +378,7 @@ add(
         coreTestTarget(name: .accountRecovery + "Tests",
                        dependencies: [
                            .accountRecovery,
+                           .testingToolkitUnitTestsFeatureFlag,
                            .testingToolkitUnitTestsServices,
                            .viewInspector,
                        ],
@@ -464,7 +465,7 @@ add(
     targets: [
         coreTarget(name: .authenticationKeyGeneration,
                    dependencies: [
-                       .hash,
+                       .authentication,
                        .crypto,
                        .cryptoGoInterface,
                        .hash,
@@ -1243,6 +1244,7 @@ add(
                            .foundations,
                            .testingToolkitUnitTestsCore,
                            .testingToolkitUnitTestsFeatureFlag,
+                           .testingToolkitUnitTestsObservability,
                            .testingToolkitUnitTestsNetworking,
                            .testingToolkitUnitTestsServices,
                            .jsonSchema
