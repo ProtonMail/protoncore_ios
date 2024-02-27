@@ -464,7 +464,7 @@ add(
     targets: [
         coreTarget(name: .authenticationKeyGeneration,
                    dependencies: [
-                       .authentication,
+                       .hash,
                        .crypto,
                        .cryptoGoInterface,
                        .hash,
@@ -1244,7 +1244,6 @@ add(
                            .testingToolkitUnitTestsCore,
                            .testingToolkitUnitTestsFeatureFlag,
                            .testingToolkitUnitTestsNetworking,
-                           .testingToolkitUnitTestsObservability,
                            .testingToolkitUnitTestsServices,
                            .jsonSchema
                        ],
