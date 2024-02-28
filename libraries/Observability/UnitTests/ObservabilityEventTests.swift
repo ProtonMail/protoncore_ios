@@ -218,6 +218,95 @@ final class ObservabilityEventTests: XCTestCase {
         }
     }
 
+    let ios_core_accountRecovery_screenView_total_v1 = """
+    {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+            "Labels": {
+                "type": "object",
+                "properties": {
+                    "screen_id": {
+                        "type": "string",
+                        "enum": [
+                            "gracePeriodInfo",
+                            "cancelResetPassword",
+                            "passwordChangeInfo",
+                            "recoveryCancelledInfo",
+                            "recoveryExpiredInfo"
+                        ]
+                    }
+                },
+                "required": ["screen_id"],
+                "additionalProperties": false
+            },
+            "Value": {
+                "type": "integer",
+                "minimum": 1
+            }
+        },
+        "required": ["Labels", "Value"],
+        "$id": "https://proton.me/ios_core_accountRecovery_screenView_total_v1.schema.json",
+        "title": "me.proton.core.observability.domain.metrics.AccountRecoveryScreenViewTotal",
+        "description": "Screen views for account recovery",
+        "additionalProperties": false
+    }
+    """
+
+    func testAccountRecoveryScreenViewEvent() throws {
+        try AccountRecoveryScreenViewScreenID.allCases.forEach { screenName in
+            let issues = try validatePayloadAccordingToSchema(
+                event: .accountRecoveryScreenView(screenID: screenName),
+                schema: ios_core_accountRecovery_screenView_total_v1
+            )
+            XCTAssertEqual(issues, .noIssues)
+        }
+    }
+
+    let ios_core_accountRecovery_cancellation_total_v1 = """
+    {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+            "Labels": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "http2xx",
+                            "http4xx",
+                            "http5xx",
+                            "unknown"
+                        ]
+                    }
+                },
+                "required": ["status"],
+                "additionalProperties": false
+            },
+            "Value": {
+                "type": "integer",
+                "minimum": 1
+            }
+        },
+        "required": ["Labels", "Value"],
+        "$id": "https://proton.me/ios_core_accountRecovery_cancellation_total_v1.schema.json",
+        "title": "me.proton.core.observability.domain.metrics.AccountRecoveryCancellationTotal",
+        "description": "Cancel an account recovery attempt.",
+        "additionalProperties": false
+    }
+    """
+
+    func testAccountRecoveryCancellationTotalEvent() throws {
+        try HTTPResponseCodeStatus.allCases.forEach { status in
+            let issues = try validatePayloadAccordingToSchema(
+                event: .accountRecoveryCancellationTotal(status: status),
+                schema: ios_core_accountRecovery_cancellation_total_v1
+            )
+            XCTAssertEqual(issues, .noIssues)
+        }
+    }
+
     // MARK: - planSelectionCheckout event
 
     let ios_core_plan_selection_checkout_total_v2 = """
