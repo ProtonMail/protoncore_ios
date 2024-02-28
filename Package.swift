@@ -134,6 +134,7 @@ extension String {
     static let quarkCommands: String = "ProtonCoreQuarkCommands"
     static let services: String = "ProtonCoreServices"
     static let settings: String = "ProtonCoreSettings"
+    static let telemetry: String = "ProtonCoreTelemetry"
     static let testingToolkit: String = "ProtonCoreTestingToolkit"
     static let testingToolkitTestData: String = "ProtonCoreTestingToolkitTestData"
     static let testingToolkitUnitTestsAccountDeletion: String = "ProtonCoreTestingToolkitUnitTestsAccountDeletion"
@@ -252,6 +253,7 @@ extension Target.Dependency {
     static var quarkCommands: Target.Dependency { .target(name: .quarkCommands) }
     static var services: Target.Dependency { .target(name: .services) }
     static var settings: Target.Dependency { .target(name: .settings) }
+    static var telemetry: Target.Dependency { .target(name: .telemetry) }
     static var testingToolkit: Target.Dependency { .target(name: .testingToolkit) }
     static var testingToolkitTestData: Target.Dependency { .target(name: .testingToolkitTestData) }
     static var testingToolkitUnitTestsAccountDeletion: Target.Dependency { .target(name: .testingToolkitUnitTestsAccountDeletion) }
@@ -1569,6 +1571,29 @@ add(
                            "Security/Presentation/__Snapshots__",
                            "Settings/Presentation/__Snapshots__"
                        ])
+    ]
+)
+
+// MARK: Telemetry
+
+add(
+    product: .telemetry,
+    targets: [
+        coreTarget(name: .telemetry,
+                   dependencies: [
+                       .networking,
+                       .services
+                   ],
+                   path: "libraries/Telemetry/Sources"),
+
+        coreTestTarget(name: .telemetry + "Tests",
+                       dependencies: [
+                           .telemetry,
+                           .testingToolkitUnitTestsCore,
+                           .testingToolkitUnitTestsNetworking,
+                           .testingToolkitUnitTestsServices
+                       ],
+                       path: "libraries/Telemetry/Tests")
     ]
 )
 
