@@ -438,6 +438,51 @@ final class PaymentsUIViewModelTests: XCTestCase {
             XCTAssertEqual(sut.availablePlans?[1].details.title, "Pass Plus")
         }
     }
+        
+    func test_fetchPlan_updateMode_withNoAvailablePlans_showsCurrentPlan() async throws {
+        try await withFeatureFlags([.dynamicPlans]) {
+            let storeKitManager = StoreKitManagerMock()
+            storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+            plansDataSource.availablePlansStub.fixture = .init(plans: [])
+            let sut = PaymentsUIViewModel(
+                mode: .update,
+                storeKitManager: storeKitManager,
+                planService: .right(plansDataSource),
+                clientApp: .mail,
+                customPlansDescription: [:],
+                planRefreshHandler: { _ in XCTFail() },
+                extendSubscriptionHandler: { XCTFail() }
+            )
+
+            try await sut.fetchPlans()
+
+            XCTAssertNotNil(sut.currentPlan)
+            XCTAssertEqual("VPN Plus", sut.currentPlan?.details.title)
+            XCTAssertEqual(sut.availablePlans?.count, 0)
+        }
+    }
+
+    func test_fetchPlan_signupMode_withNoAvailablePlans_showsNotCurrentPlan() async throws {
+        try await withFeatureFlags([.dynamicPlans]) {
+            let storeKitManager = StoreKitManagerMock()
+            storeKitManager.priceLabelForProductStub.bodyIs { _, name in (NSDecimalNumber(value: 60.0), Locale(identifier: "en_US@currency=USDs")) }
+            plansDataSource.availablePlansStub.fixture = .init(plans: [])
+            let sut = PaymentsUIViewModel(
+                mode: .signup,
+                storeKitManager: storeKitManager,
+                planService: .right(plansDataSource),
+                clientApp: .mail,
+                customPlansDescription: [:],
+                planRefreshHandler: { _ in XCTFail() },
+                extendSubscriptionHandler: { XCTFail() }
+            )
+
+            try await sut.fetchPlans()
+
+            XCTAssertNil(sut.currentPlan)
+            XCTAssertEqual(sut.availablePlans?.count, 0)
+        }
+    }
 
     func testFetchUpdatePlansNoBackendFetch() {
         let expectation = self.expectation(description: "Success completion block called")
