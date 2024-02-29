@@ -23,15 +23,31 @@ import Foundation
 import ProtonCoreLog
 import ProtonCoreServices
 
-protocol TelemetryServiceProtocol: AnyObject {
+public protocol TelemetryServiceProtocol: AnyObject {
+    var isTelemetrySettingOn: Bool { get }
+
     func setApiService(apiService: APIService)
     func report(event: any TelemetryEventProtocol) async
+    func setTelemetrySetting(isOn: Bool)
 }
 
 public class TelemetryService: TelemetryServiceProtocol {
     public static let shared = TelemetryService()
 
+    private let telemetrySettingsService: TelemetrySettingsServiceProtocol
     private var apiService: APIService?
+    
+    public init(
+        telemetrySettingsService: TelemetrySettingsServiceProtocol = TelemetrySettingsService(),
+        apiService: APIService? = nil
+    ) {
+        self.telemetrySettingsService = telemetrySettingsService
+        self.apiService = apiService
+    }
+
+    public var isTelemetrySettingOn: Bool {
+        telemetrySettingsService.isTelemetryEnabled
+    }
 
     public func setApiService(apiService: APIService) {
         self.apiService = apiService
@@ -42,11 +58,16 @@ public class TelemetryService: TelemetryServiceProtocol {
             assertionFailure("APIService not initialized")
             return
         }
+        guard isTelemetrySettingOn else { return }
         let request = TelemetryRequest(event: event)
         do {
             _ = try await apiService.perform(request: request)
         } catch {
             PMLog.error(error, sendToExternal:true)
         }
+    }
+
+    public func setTelemetrySetting(isOn: Bool) {
+        telemetrySettingsService.setIsTelemetryEnabled(state: isOn)
     }
 }
