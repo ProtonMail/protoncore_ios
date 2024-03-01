@@ -26,8 +26,8 @@ import ProtonCoreTestingToolkitUnitTestsCore
 final class TelemetrySettingsServiceMock: TelemetrySettingsServiceProtocol {
     init() { }
 
-    func setIsTelemetryEnabled(state: Bool) {
-        underlyingIsTelemetryEnabled = state
+    func setTelemetryEnabled(_ enabled: Bool) {
+        underlyingIsTelemetryEnabled = enabled
     }
 
     private var underlyingIsTelemetryEnabled: Bool!

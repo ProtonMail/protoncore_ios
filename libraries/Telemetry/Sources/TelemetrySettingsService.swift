@@ -22,8 +22,8 @@
 import Foundation
 
 public protocol TelemetrySettingsServiceProtocol {
-    func setIsTelemetryEnabled(state: Bool)
     var isTelemetryEnabled: Bool { get }
+    func setTelemetryEnabled(_ enabled: Bool)
 }
 
 public class TelemetrySettingsService: TelemetrySettingsServiceProtocol {
@@ -43,7 +43,7 @@ public class TelemetrySettingsService: TelemetrySettingsServiceProtocol {
         self.userDefaults = userDefaults
     }
 
-    public func setIsTelemetryEnabled(state: Bool) {
-        self.isTelemetryEnabled = state
+    public func setTelemetryEnabled(_ enabled: Bool) {
+        self.isTelemetryEnabled = enabled
     }
 }
