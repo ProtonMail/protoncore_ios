@@ -955,7 +955,7 @@ verify:VCard:
 # --- Translation related tasks ---
 #
 
-i18n:crowdin-sync:
+i18n-crowdin-sync:
   stage: i18n
   needs: []
   variables:
@@ -963,7 +963,7 @@ i18n:crowdin-sync:
   extends: .i18n-sync-crowdin-shared-apple
 
 
-i18n:commit-locales:
+i18n-commit-locales:
   stage: i18n
   needs: []
   variables:
