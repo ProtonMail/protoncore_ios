@@ -33,7 +33,7 @@ import ProtonCoreUIFoundations
 @available(iOS 13, *)
 final class PMSettingsSnapshotTests: SnapshotTestCase {
 
-    func testTelemetrySection() {
+    func testPMSettingsSection() {
         let viewController = PMSettingsViewController()
         let cellSuplier = PMSelectableConfiguration(title: "test", isSelected: true, action: nil)
         let settingsSectionViewModel = PMSettingsSectionViewModel(title: nil, rows: [cellSuplier])

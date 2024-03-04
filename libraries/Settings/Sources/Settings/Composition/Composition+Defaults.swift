@@ -47,16 +47,6 @@ public extension PMSettingsSectionViewModel {
             .appendRow(PMAboutConfiguration.terms)
             .build()
     }
-
-    static func telemetry(delegate: TelemetrySettingsDelegate, telemetrySettingsService: TelemetrySettingsServiceProtocol) -> PMSettingsSectionViewModel {
-        PMSettingsSectionBuilder(bundle: PMSettings.bundle)
-            .title("Telemetry")
-            .appendRow(PMSwitchSecurityCellConfiguration.telemetry(
-                delegate: delegate,
-                telemetrySettingsService: telemetrySettingsService
-            ))
-            .build()
-    }
 }
 
 public extension PMPinFaceIDDrillDownCellConfiguration {

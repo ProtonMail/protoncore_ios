@@ -1,8 +1,8 @@
 //
-//  PMTelemetryConfiguration+Defaults.swift
-//  ProtonCore-Settings - Created on 08.11.22.
+//  TelemetryServiceTests.swift
+//  ProtonCore-Telemetry - Created on 26.02.2024.
 //
-//  Copyright (c) 2022 Proton Technologies AG
+//  Copyright (c) 2024 Proton Technologies AG
 //
 //  This file is part of Proton Technologies AG and ProtonCore.
 //
@@ -19,19 +19,22 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-#if os(iOS)
+import Foundation
+import ProtonCoreTelemetry
+import ProtonCoreTestingToolkitUnitTestsCore
 
-import UIKit
+final class TelemetrySettingsServiceMock: TelemetrySettingsServiceProtocol {
+    init() { }
 
-@available(iOS 13.0, *)
-extension PMSwitchSecurityCellConfiguration {
-    public static func telemetry(delegate: TelemetrySettingsDelegate, telemetrySettingsService: TelemetrySettingsServiceProtocol) -> PMSwitchSecurityCellConfiguration {
-        let switcher = TelemetrySettingsViewModel(delegate: delegate, telemetrySettingsService: telemetrySettingsService)
-        return PMSwitchSecurityCellConfiguration(
-            title: "Telemetry",
-            switcher: switcher
-        )
+    func setTelemetryEnabled(_ enabled: Bool) {
+        underlyingIsTelemetryEnabled = enabled
+    }
+
+    private var underlyingIsTelemetryEnabled: Bool!
+    var isTelemetryEnabled: Bool {
+        get { underlyingIsTelemetryEnabled }
+        set { underlyingIsTelemetryEnabled = newValue }
     }
 }
 
-#endif
+

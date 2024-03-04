@@ -29,17 +29,21 @@ import ProtonCoreTestingToolkitUnitTestsNetworking
 final class TelemetryServiceTests: XCTestCase {
 
     var apiService: APIServiceMock!
+    var telemetrySettings: TelemetrySettingsServiceMock!
     var sut: TelemetryService!
+
+    let measurementGroup = "account.test.event"
 
     override func setUp() {
         super.setUp()
+        telemetrySettings = TelemetrySettingsServiceMock()
         apiService = APIServiceMock()
-        sut = TelemetryService()
+        sut = TelemetryService(telemetrySettingsService: telemetrySettings)
         sut.setApiService(apiService: apiService)
     }
 
-    func test_WhenReportEvent_ApiServiceIsCalled() async {
-        let measurementGroup = "account.test.event"
+    func test_GivenTelemetrySettingsIsEnabled_WhenReportEvent_ApiServiceIsCalled() async {
+        telemetrySettings.isTelemetryEnabled = true
         let testEvent = TelemetryEvent(
             source: .user,
             screen: .welcome,
@@ -50,7 +54,7 @@ final class TelemetryServiceTests: XCTestCase {
         apiService.requestJSONStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
             if path.contains("/data/v1/stats") {
                 let params = parameters as! [String: Any]
-                XCTAssertTrue((params["MeasurementGroup"] as! String) == measurementGroup)
+                XCTAssertTrue((params["MeasurementGroup"] as! String) == self.measurementGroup)
                 XCTAssertTrue((params["Event"] as! String) == "user.welcome.clicked")
                 completion(nil, .success([:]))
             } else {
@@ -62,5 +66,31 @@ final class TelemetryServiceTests: XCTestCase {
         await sut.report(event: testEvent)
 
         XCTAssertTrue(apiService.requestJSONStub.wasCalled)
+    }
+
+    func test_GivenTelemetrySettingsIsDisabled_WhenReportEvent_ApiServiceIsNotCalled() async {
+        telemetrySettings.isTelemetryEnabled = false
+        let testEvent = TelemetryEvent(
+            source: .user,
+            screen: .welcome,
+            action: .clicked,
+            measurementGroup: measurementGroup
+        )
+
+        apiService.requestJSONStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
+            if path.contains("/data/v1/stats") {
+                let params = parameters as! [String: Any]
+                XCTAssertTrue((params["MeasurementGroup"] as! String) == self.measurementGroup)
+                XCTAssertTrue((params["Event"] as! String) == "user.welcome.clicked")
+                completion(nil, .success([:]))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+
+        await sut.report(event: testEvent)
+
+        XCTAssertFalse(apiService.requestJSONStub.wasCalled)
     }
 }

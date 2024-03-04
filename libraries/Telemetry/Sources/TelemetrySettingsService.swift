@@ -1,5 +1,5 @@
 //
-//  TelemetryServiceTests.swift
+//  TelemetrySettingsService.swift
 //  ProtonCore-Settings - Created on 09.11.2022.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -19,25 +19,31 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import XCTest
-import ProtonCoreSettings
+import Foundation
 
-final class TelemetryServiceTests: XCTestCase {
+public protocol TelemetrySettingsServiceProtocol {
+    var isTelemetryEnabled: Bool { get }
+    func setTelemetryEnabled(_ enabled: Bool)
+}
 
-    private var testUserDefaults: UserDefaults!
+public class TelemetrySettingsService: TelemetrySettingsServiceProtocol {
+    private let userDefaults: UserDefaults
+    private let telemetryKey = "telemetry.settings.key"
 
-    override func setUp() {
-        testUserDefaults = UserDefaults(suiteName: #file)
-        testUserDefaults.removePersistentDomain(forName: #file)
-        super.setUp()
+    public private(set) var isTelemetryEnabled: Bool {
+        get {
+            userDefaults.bool(forKey: telemetryKey)
+        }
+        set {
+            userDefaults.set(newValue, forKey: telemetryKey)
+        }
     }
 
-    func testTelemetryService() {
-        let service = TelemetrySettingsService(userDefaults: testUserDefaults)
-        XCTAssertFalse(service.isTelemetryEnabled)
-        service.setIsTelemetryEnabled(state: true)
-        XCTAssertTrue(service.isTelemetryEnabled)
-        service.setIsTelemetryEnabled(state: false)
-        XCTAssertFalse(service.isTelemetryEnabled)
+    public init(userDefaults: UserDefaults = .standard) {
+        self.userDefaults = userDefaults
+    }
+
+    public func setTelemetryEnabled(_ enabled: Bool) {
+        self.isTelemetryEnabled = enabled
     }
 }
