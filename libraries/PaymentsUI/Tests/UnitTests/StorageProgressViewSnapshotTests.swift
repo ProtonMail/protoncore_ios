@@ -91,6 +91,15 @@ final class StorageProgressViewSnapshotTests: XCTestCase {
         }
     }
 
+    func testStorageProgressView_above100pct_error() {
+        withFeatureFlags([.splitStorage]) {
+            let view = StorageProgressView(frame: .zero)
+            view.configure(title: "Mail storage", usedSpaceDescription: "4 GB of 2 GB", usedSpace: 2*maxSpace, maxSpace: maxSpace)
+            view.statusIconView.image = IconProvider.exclamationCircle
+            snapshot(view: view)
+        }
+    }
+
     private func snapshot(view: UIView) {
         let imageSize = CGSize(width: 320, height: 150)
         let viewController = CustomViewController(existingView: view)
