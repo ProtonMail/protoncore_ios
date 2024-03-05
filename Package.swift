@@ -1022,7 +1022,8 @@ add(
                            .testingToolkitUnitTestsLogin,
                            .testingToolkitUnitTestsObservability,
                            .ohhttpStubs,
-                           .trustKit
+                           .trustKit,
+                           .telemetry
                        ],
                        path: "libraries/Login/Tests/UnitTests",
                        resources: [
@@ -1076,7 +1077,8 @@ add(
                        .humanVerification,
                        .loginUIResourcesiOS,
                        .lottie,
-                       .trustKit
+                       .trustKit,
+                       .telemetry
                    ],
                    path: "libraries/LoginUI/Sources",
                    resources: [
