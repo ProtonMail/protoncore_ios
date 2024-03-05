@@ -28,6 +28,8 @@ import ProtonCoreFoundations
 import ProtonCoreUIFoundations
 import ProtonCoreFeatureFlags
 import ProtonCoreObservability
+import ProtonCoreServices
+import ProtonCoreTelemetry
 
 protocol LoginStepsDelegate: AnyObject {
     func requestTwoFactorCode(username: String, password: String)
@@ -45,7 +47,13 @@ protocol LoginViewControllerDelegate: LoginStepsDelegate {
     func loginViewControllerDidFinish(endLoading: @escaping () -> Void, data: LoginData)
 }
 
-final class LoginViewController: UIViewController, AccessibleView, Focusable {
+final class LoginViewController: UIViewController, AccessibleView, Focusable, ProductMetricsMeasurable {
+    var productMetrics: ProductMetrics = .init(
+        group: TelemetryMeasurementGroup.signUp.rawValue,
+        flow: TelemetryFlow.signUpFull.rawValue,
+        screen: .signin
+    )
+
 
     // MARK: - Outlets
 
@@ -106,6 +114,11 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable {
         super.viewDidLayoutSubviews()
         navigationBarAdjuster.setUp(for: scrollView, shouldAdjustNavigationBar: showCloseButton, parent: parent)
         scrollView.adjust(forKeyboardVisibilityNotification: nil)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        measureOnViewDisplayed()
     }
 
     // MARK: - Setup
@@ -184,10 +197,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable {
 
     private func setupBinding() {
         viewModel.error.bind { [weak self] error in
-            guard let self = self else {
-                return
-            }
-
+            guard let self = self else { return }
             switch error {
             case .invalidCredentials:
                 self.setError(textField: self.passwordTextField, error: nil)
@@ -196,11 +206,13 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable {
             default:
                 if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else { self.showError(error: error) }
             }
+            measureLoginFailure(httpCode: error.codeInLogin)
         }
         viewModel.finished.bind { [weak self] result in
             switch result {
             case let .done(data):
                 self?.delegate?.loginViewControllerDidFinish(endLoading: { [weak self] in self?.viewModel.isLoading.value = false }, data: data)
+                self?.measureLoginSuccess()
             case .twoFactorCodeNeeded:
                 guard
                     let username = self?.loginTextField.value,
@@ -210,10 +222,13 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable {
                 // To eliminate KeyChain auto remember prompt
                 self?.clearAccount()
                 self?.delegate?.requestTwoFactorCode(username: username, password: password)
+                self?.measureLoginSuccess()
             case .mailboxPasswordNeeded:
                 self?.delegate?.mailboxPasswordNeeded()
+                self?.measureLoginSuccess()
             case let .createAddressNeeded(data, defaultUsername):
                 self?.delegate?.createAddressNeeded(data: data, defaultUsername: defaultUsername)
+                self?.measureLoginSuccess()
             case .ssoChallenge(let ssoChallengeResponse):
                 self?.webView = self?.showWebView()
                 Task {
@@ -226,9 +241,11 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable {
                         self?.webView?.loadRequest(request: request)
                     }
                 }
+                self?.measureLoginSuccess()
             case .switchToSSOLogin(let info):
                 self?.showBanner(message: info, style: .info)
                 self?.signInWithSSO()
+                self?.measureLoginFailure(httpCode: APIErrorCode.switchToSSOError)
             }
         }
         viewModel.isLoading.bind { [weak self] isLoading in
@@ -289,16 +306,19 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable {
         cancelFocus()
         clearAccount()
         delegate?.userDidRequestSignup()
+        measureOnViewClicked(item: "sign_up")
     }
 
     @objc private func needHelpPressed() {
         cancelFocus()
         delegate?.userDidRequestHelp()
+        measureOnViewClicked(item: "help")
     }
 
     @objc private func closePressed(_ sender: Any) {
         cancelFocus()
         delegate?.userDidDismissLoginViewController()
+        measureOnViewClosed()
     }
 
     @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
@@ -388,7 +408,16 @@ extension LoginViewController: PMTextFieldDelegate {
         return true
     }
 
-    func didBeginEditing(textField: PMTextField) {}
+    func didBeginEditing(textField: PMTextField) {
+        switch textField {
+        case loginTextField:
+            measureOnViewFocused(item: "username")
+        case passwordTextField:
+            measureOnViewFocused(item: "password")
+        default:
+            break
+        }
+    }
 
     func didEndEditing(textField: PMTextField) {
         switch textField {
@@ -457,4 +486,28 @@ extension LoginViewController: LoginErrorCapable {
     var bannerPosition: PMBannerPosition { .top }
 }
 
+// MARK: - Product Metrics
+
+extension LoginViewController {
+    private func measureLoginSuccess() {
+        measureAPIResult(
+            action: .auth,
+            additionalDimensions: [
+                .result("success"),
+                .hostType(viewModel.isCurrentlyUsingProxyDomain ? "alternative" : "standard")
+            ]
+        )
+    }
+
+    private func measureLoginFailure(httpCode: Int) {
+        measureAPIResult(
+            action: .auth,
+            additionalValues: [.httpCode(httpCode)],
+            additionalDimensions: [
+                .result("failure"),
+                .hostType(viewModel.isCurrentlyUsingProxyDomain ? "alternative" : "standard")
+            ]
+        )
+    }
+}
 #endif

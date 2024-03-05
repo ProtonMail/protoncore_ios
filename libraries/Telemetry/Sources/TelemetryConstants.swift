@@ -31,11 +31,14 @@ public enum TelemetryFlow: String {
 
 public enum TelemetryValue {
     case timestamp(Float)
+    case httpCode(Int)
 
     public var value: [String: Float] {
         switch self {
         case .timestamp(let value):
             return ["timestamp": value]
+        case .httpCode(let value):
+            return ["http_code": Float(value)]
         }
     }
 }
@@ -44,6 +47,8 @@ public enum TelemetryDimension {
     case flow(String)
     case accountType(String)
     case item(String)
+    case result(String)
+    case hostType(String)
 
     public var value: [String: String] {
         switch self {
@@ -53,6 +58,10 @@ public enum TelemetryDimension {
             return ["account_type": value]
         case .item(let value):
             return ["item": value]
+        case .result(let value):
+            return ["result": value]
+        case .hostType(let value):
+            return ["host_type": value]
         }
     }
 }

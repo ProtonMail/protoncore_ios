@@ -22,13 +22,33 @@ public protocol ProductMetricsMeasurable {
     var productMetrics: ProductMetrics { get }
 
     func measureOnViewDisplayed()
+    func measureOnViewClosed()
     func measureOnViewClicked(item: String)
+    func measureAPIResult(
+        action: TelemetryEventAction,
+        additionalValues: [TelemetryValue],
+        additionalDimensions: [TelemetryDimension]
+    )
 }
 
 public extension ProductMetricsMeasurable {
     func measureOnViewDisplayed() {
         let event = TelemetryEvent(
             source: .fe, screen: productMetrics.screen, action: .displayed,
+            measurementGroup: productMetrics.group,
+            values: [
+                .timestamp(Float(Date().timeIntervalSince1970))
+            ],
+            dimensions: [
+                .flow(productMetrics.flow)
+            ]
+        )
+        reportEvent(event: event)
+    }
+
+    func measureOnViewClosed() {
+        let event = TelemetryEvent(
+            source: .user, screen: productMetrics.screen, action: .closed,
             measurementGroup: productMetrics.group,
             values: [
                 .timestamp(Float(Date().timeIntervalSince1970))
@@ -51,6 +71,39 @@ public extension ProductMetricsMeasurable {
                 .flow(productMetrics.flow),
                 .item(item)
             ]
+        )
+        reportEvent(event: event)
+    }
+
+    func measureOnViewFocused(item: String) {
+        let event = TelemetryEvent(
+            source: .user, screen: productMetrics.screen, action: .focused,
+            measurementGroup: productMetrics.group,
+            values: [
+                .timestamp(Float(Date().timeIntervalSince1970))
+            ],
+            dimensions: [
+                .flow(productMetrics.flow),
+                .item(item)
+            ]
+        )
+        reportEvent(event: event)
+    }
+
+    func measureAPIResult(
+        action: TelemetryEventAction,
+        additionalValues: [TelemetryValue] = [],
+        additionalDimensions: [TelemetryDimension] = []
+    ) {
+        let event = TelemetryEvent(
+            source: .be, screen: productMetrics.screen, action: action,
+            measurementGroup: productMetrics.group,
+            values: [
+                .timestamp(Float(Date().timeIntervalSince1970))
+            ] + additionalValues,
+            dimensions: [
+                .flow(productMetrics.flow)
+            ] + additionalDimensions
         )
         reportEvent(event: event)
     }

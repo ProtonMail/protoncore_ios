@@ -289,7 +289,7 @@ public final class DohMock: DoH, ServerConfig {
     override public var status: DoHStatus { get { statusStub() } set { statusStub(newValue) } }
 
     @PropertyStub(\DohInterfaceMock.isCurrentlyUsingProxyDomain, initialGet: .crash) public var isCurrentlyUsingProxyDomainStub
-    public var isCurrentlyUsingProxyDomain: Bool { isCurrentlyUsingProxyDomainStub() }
+    public override var isCurrentlyUsingProxyDomain: Bool { isCurrentlyUsingProxyDomainStub() }
 
     @FuncStub(DohInterfaceMock.resolveProxyDomainHostUrl) public var resolveProxyDomainHostUrlStub
     public func resolveProxyDomainHostUrl(completion: @escaping (String?) -> Void) { resolveProxyDomainHostUrlStub(completion) }
