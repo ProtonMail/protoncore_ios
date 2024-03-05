@@ -96,8 +96,7 @@ class PaymentsUIViewModel {
          [
             {
                 guard isSplitStorageEnabled,
-                      let shouldDisplayStorageFullAlert = currentPlan?.details.shouldDisplayStorageFullAlert,
-                      shouldDisplayStorageFullAlert,
+                      currentPlan?.details.shouldDisplayStorageFullAlert ?? false,
                       currentPlan != nil else { return [] }
                 return  [.alert(AlertBoxViewModel())]
             }(),

@@ -568,14 +568,14 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                      .description(.description(text: "And the free features of all other Proton products!", iconName: "tick"))
                                     ])
             ])
-            static let mailFreeDeliquent: CurrentPlan = .init(subscriptions: [
+            static let mailFreeDelinquent: CurrentPlan = .init(subscriptions: [
                 .init(title: "Mail Free",
                       description: "Free encrypted email and calendar for everyone",
                       periodEnd: 1965360000,
                       entitlements: [.progress(.init(type: "progress",
                                                      title: "Mail storage",
-                                                     text: "450 MB of 500 MB",
-                                                     min: 0, max: 50, current: 45)),
+                                                     text: "495 MB of 500 MB",
+                                                     min: 0, max: 500, current: 495)),
                                      .progress(.init(type: "progress",
                                                      title: "Drive storage",
                                                      text: "0.00 B of 2 GB",
@@ -587,7 +587,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                      .description(.description(text: "And the free features of all other Proton products!", iconName: "tick"))
                                     ])
             ])
-            static let driveFreeDeliquent: CurrentPlan = .init(subscriptions: [
+            static let driveFreeDelinquent: CurrentPlan = .init(subscriptions: [
                 .init(title: "Drive Free",
                       description: "Free encrypted storage for everyone",
                       periodEnd: 1965360000,
@@ -597,8 +597,8 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                                      min: 0, max: 5, current: 4)),
                                      .progress(.init(type: "progress",
                                                      title: "Drive storage",
-                                                     text: "1.9 GB of 2 GB",
-                                                     min: 0, max: 20, current: 19)),
+                                                     text: "1.98 GB of 2 GB",
+                                                     min: 0, max: 200, current: 198)),
                                      .description(.description(text: "1 of 1 user", iconName: "user")),
                                      .description(.description(text: "1 of 1 address", iconName: "email")),
                                      .description(.description(text: "0 of 3 calendars", iconName: "calendar")),
@@ -990,10 +990,10 @@ final class PaymentsUISnapshotTests: XCTestCase {
         }
     }
 
-    func testCurrentDynamicSubscription_Free_InMail_StorageSplit_Deliquent() async {
+    func testCurrentDynamicSubscription_Free_InMail_StorageSplit_Delinquent() async {
         await withFeatureFlags([.dynamicPlans, .splitStorage]) {
             await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.StorageSplit.mailFreeDeliquent,
+                currentPlan: MockData.StorageSplit.mailFreeDelinquent,
                 clientApp: .mail
             )
         }
@@ -1045,7 +1045,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
     func testCurrentDynamicSubscription_Free_InDrive_StorageSplit_Delinquent() async {
         await withFeatureFlags([.dynamicPlans, .splitStorage]) {
             await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.StorageSplit.driveFreeDeliquent,
+                currentPlan: MockData.StorageSplit.driveFreeDelinquent,
                 clientApp: .drive
             )
         }
