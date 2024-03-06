@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (5.4.4)
-  - ASN1Swift (1.2.3)
+  - ASN1Swift (1.2.5)
   - CryptoSwift (1.3.1)
   - EllipticCurveKeyPair (2.0)
   - fusion (2.0.1)
@@ -95,7 +95,6 @@ PODS:
     - ProtonCore-Authentication (= 19.0.0)
     - ProtonCore-Crypto (= 19.0.0)
     - ProtonCore-CryptoGoInterface (= 19.0.0)
-    - ProtonCore-FeatureSwitch (= 19.0.0)
     - ProtonCore-Hash (= 19.0.0)
   - ProtonCore-Authentication-KeyGeneration/Tests-Crypto-Go (19.0.0):
     - OHHTTPStubs/Swift
@@ -103,7 +102,6 @@ PODS:
     - ProtonCore-Crypto (= 19.0.0)
     - ProtonCore-CryptoGoImplementation/Crypto-Go (= 19.0.0)
     - ProtonCore-CryptoGoInterface (= 19.0.0)
-    - ProtonCore-FeatureSwitch (= 19.0.0)
     - ProtonCore-Hash (= 19.0.0)
     - ProtonCore-ObfuscatedConstants (= 19.0.0)
     - ProtonCore-TestingToolkit/UnitTests/Authentication-KeyGeneration (= 19.0.0)
@@ -145,22 +143,18 @@ PODS:
     - ProtonCore-TestingToolkit/UnitTests/DataModel (= 19.0.0)
     - ProtonCore-Utilities (= 19.0.0)
   - ProtonCore-Doh (19.0.0):
-    - ProtonCore-FeatureSwitch (= 19.0.0)
     - ProtonCore-Log (= 19.0.0)
     - ProtonCore-Utilities (= 19.0.0)
   - ProtonCore-Doh/IntegrationTests (19.0.0):
     - ProtonCore-Authentication (= 19.0.0)
     - ProtonCore-Environment (= 19.0.0)
-    - ProtonCore-FeatureSwitch (= 19.0.0)
     - ProtonCore-Log (= 19.0.0)
     - ProtonCore-Observability (= 19.0.0)
     - ProtonCore-Services (= 19.0.0)
     - ProtonCore-TestingToolkit/UnitTests/Core (= 19.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/FeatureSwitch (= 19.0.0)
     - ProtonCore-Utilities (= 19.0.0)
   - ProtonCore-Doh/UnitTests (19.0.0):
     - OHHTTPStubs/Swift
-    - ProtonCore-FeatureSwitch (= 19.0.0)
     - ProtonCore-Log (= 19.0.0)
     - ProtonCore-ObfuscatedConstants (= 19.0.0)
     - ProtonCore-TestingToolkit/UnitTests/Doh (= 19.0.0)
@@ -188,14 +182,6 @@ PODS:
     - ProtonCore-Hash (= 19.0.0)
     - ProtonCore-KeyManager (= 19.0.0)
     - ProtonCore-Networking (= 19.0.0)
-  - ProtonCore-FeatureSwitch (19.0.0):
-    - ProtonCore-Foundations (= 19.0.0)
-    - ProtonCore-Utilities (= 19.0.0)
-  - ProtonCore-FeatureSwitch/Tests (19.0.0):
-    - ProtonCore-Doh (= 19.0.0)
-    - ProtonCore-Foundations (= 19.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Doh (= 19.0.0)
-    - ProtonCore-Utilities (= 19.0.0)
   - ProtonCore-ForceUpgrade (19.0.0):
     - ProtonCore-Networking (= 19.0.0)
     - ProtonCore-UIFoundations (= 19.0.0)
@@ -410,7 +396,6 @@ PODS:
     - ProtonCore-Networking (= 19.0.0)
     - ProtonCore-Services (= 19.0.0)
     - ProtonCore-TestingToolkit/UnitTests/Core (= 19.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/FeatureSwitch (= 19.0.0)
     - ProtonCore-Utilities (= 19.0.0)
   - ProtonCore-Observability/UnitTests (19.0.0):
     - JSONSchema
@@ -598,9 +583,6 @@ PODS:
   - ProtonCore-TestingToolkit/UnitTests/FeatureFlag (19.0.0):
     - ProtonCore-FeatureFlags (= 19.0.0)
     - ProtonCore-TestingToolkit/UnitTests/Core (= 19.0.0)
-  - ProtonCore-TestingToolkit/UnitTests/FeatureSwitch (19.0.0):
-    - ProtonCore-FeatureSwitch (= 19.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/Core (= 19.0.0)
   - ProtonCore-TestingToolkit/UnitTests/Login (19.0.0):
     - ProtonCore-Login (= 19.0.0)
     - ProtonCore-TestingToolkit/UnitTests/Authentication (= 19.0.0)
@@ -633,7 +615,6 @@ PODS:
     - ProtonCore-TestingToolkit/UnitTests/DataModel (= 19.0.0)
     - ProtonCore-TestingToolkit/UnitTests/Doh (= 19.0.0)
     - ProtonCore-TestingToolkit/UnitTests/FeatureFlag (= 19.0.0)
-    - ProtonCore-TestingToolkit/UnitTests/FeatureSwitch (= 19.0.0)
     - ProtonCore-TestingToolkit/UnitTests/Networking (= 19.0.0)
   - ProtonCore-TroubleShooting (19.0.0):
     - ProtonCore-Doh (= 19.0.0)
@@ -661,24 +642,24 @@ PODS:
     - ProtonCore-Log (= 19.0.0)
   - ProtonCore-VCard (19.0.0)
   - ReachabilitySwift (5.0.0)
-  - SDWebImage (5.18.3):
-    - SDWebImage/Core (= 5.18.3)
-  - SDWebImage/Core (5.18.3)
-  - Sentry (8.14.2):
-    - Sentry/Core (= 8.14.2)
-    - SentryPrivate (= 8.14.2)
-  - Sentry/Core (8.14.2):
-    - SentryPrivate (= 8.14.2)
-  - SentryPrivate (8.14.2)
+  - SDWebImage (5.18.11):
+    - SDWebImage/Core (= 5.18.11)
+  - SDWebImage/Core (5.18.11)
+  - Sentry (8.20.0):
+    - Sentry/Core (= 8.20.0)
+    - SentryPrivate (= 8.20.0)
+  - Sentry/Core (8.20.0):
+    - SentryPrivate (= 8.20.0)
+  - SentryPrivate (8.20.0)
   - swift-snapshot-testing (1.10.0)
   - SwiftOTP (2.0.3):
     - CryptoSwift (>= 1.0.0)
-  - TPInAppReceipt (3.3.4):
-    - TPInAppReceipt/Core (= 3.3.4)
-  - TPInAppReceipt/Core (3.3.4):
-    - ASN1Swift (~> 1.2.3)
+  - TPInAppReceipt (3.4.0):
+    - TPInAppReceipt/Core (= 3.4.0)
+  - TPInAppReceipt/Core (3.4.0):
+    - ASN1Swift (~> 1.2.5)
   - TrustKit (2.0.0)
-  - ViewInspector (0.9.8)
+  - ViewInspector (0.9.10)
 
 DEPENDENCIES:
   - CryptoSwift (= 1.3.1)
@@ -714,8 +695,6 @@ DEPENDENCIES:
   - ProtonCore-FeatureFlags (from `../`)
   - ProtonCore-FeatureFlags/Tests (from `../`)
   - ProtonCore-Features (from `../`)
-  - ProtonCore-FeatureSwitch (from `../`)
-  - ProtonCore-FeatureSwitch/Tests (from `../`)
   - ProtonCore-ForceUpgrade (from `../`)
   - ProtonCore-Foundations (from `../`)
   - ProtonCore-GoLibs/Crypto-Go (from `../`)
@@ -845,8 +824,6 @@ EXTERNAL SOURCES:
     :path: "../"
   ProtonCore-Features:
     :path: "../"
-  ProtonCore-FeatureSwitch:
-    :path: "../"
   ProtonCore-ForceUpgrade:
     :path: "../"
   ProtonCore-Foundations:
@@ -918,7 +895,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
-  ASN1Swift: 73ba94f1d97c1c1d059d180708ad42845aeac4f9
+  ASN1Swift: be676fe8c6cd753dbc402ec68b28544d53aa0c26
   CryptoSwift: f12f037f6d0fcd6d48c96db0071b653de64e6c4d
   EllipticCurveKeyPair: 8c69e5238a6e47243a10a48fbd41dfb19110b22e
   fusion: 4ce692b0bd8030d952dde9b4ceae3ab9fd3d2b72
@@ -930,17 +907,16 @@ SPEC CHECKSUMS:
   ProtonCore-AccountSwitcher: b755812999e422e54f7bb0a8d3c03105ef821438
   ProtonCore-APIClient: e66a8b673c5641a2385cabeb30f4b8ec492025d2
   ProtonCore-Authentication: 35455c610b04bd8bdea7a1ebff479feb5889c1ed
-  ProtonCore-Authentication-KeyGeneration: c7ac58dcbe33760c9c8a73c80aefc7d13d4a42ec
+  ProtonCore-Authentication-KeyGeneration: c6ea9ad23e6362dc1a8373bdfbb827ee052369a4
   ProtonCore-Challenge: 3d0e05799cda7586b94be2a9c50ce337ae57bf1c
   ProtonCore-Crypto: b57da6298ceb25c624de422e7745c637af79b9b4
   ProtonCore-CryptoGoImplementation: 5b7a6f5486bbf9e606e9603a9c8460cb6c0e3c51
   ProtonCore-CryptoGoInterface: e6fd82221d812f0ac53b58d4c2d8721f3056c452
   ProtonCore-DataModel: b41283eb6c8da364cd0d4d78a767ebf8e365f151
-  ProtonCore-Doh: 6c989faa73d28b0a41f06ede5c580088bab8a90a
+  ProtonCore-Doh: a61dcebaf953cbeb7d3fb1ec1462356b1933c978
   ProtonCore-Environment: cedff00df27547eae9bff6cb45bb5b2c7aa5db2d
   ProtonCore-FeatureFlags: 14d28540826e4ba9c74a6f356acd1b1b2a2fb766
   ProtonCore-Features: b85276c7fc8633f722ecfff3ea8770d274cb5e64
-  ProtonCore-FeatureSwitch: 36ace4325a7ccd7d1e0998dfb073c9dfb89d61cf
   ProtonCore-ForceUpgrade: 2b4da26cf792aa09743cf637a525a26271314771
   ProtonCore-Foundations: df704f309125e42f72380e07167cae995c4ab85f
   ProtonCore-GoLibs: 9e1c1839514605f29f8f24f22407f4bbf16fde76
@@ -954,29 +930,29 @@ SPEC CHECKSUMS:
   ProtonCore-MissingScopes: 48021262d536435462c3bd9c3c1f5c5fb730c221
   ProtonCore-Networking: 0d16e3ed0b1e157b813ec8f5d93cd6af56b42e51
   ProtonCore-ObfuscatedConstants: b3acc5b2052c3f366f906413b0d774b3a51ae4c1
-  ProtonCore-Observability: 37b48bcd8010aa95c3f1d4e2f07b9c6f4bf083ae
+  ProtonCore-Observability: 09ee00b4676cc3235d57a5676e0042c4543b7ba2
   ProtonCore-PasswordRequest: d454accfbb026438ec17a3db9b0ee2ba07ec69e5
   ProtonCore-Payments: 2a88488f8ddcdb583dc85980688dfa2a601dfc71
   ProtonCore-PaymentsUI: d633a2d81ec09d198916b745ad888d55107a516f
   ProtonCore-PushNotifications: 5d25f3553cbb9406b15a435226f2e7c079ee9023
-  ProtonCore-QuarkCommands: f8d9e71ecc16c74d2e2081e8feec128903017c5e
+  ProtonCore-QuarkCommands: 19e0e70c6aab64012cec7a714786c4df7b88d28b
   ProtonCore-Services: 5ad9d71d85c92b1dfb46dd6e917e835df5d94f00
   ProtonCore-Settings: 32ea049b9c42d26266c715175142c82c7be9f6e8
-  ProtonCore-TestingToolkit: 8e5ee488af0afba3ea6aa8558ffbe07ec6d34344
+  ProtonCore-TestingToolkit: c686f1c033da163bdbb42479cd0e7a0d8bf1d3f8
   ProtonCore-TroubleShooting: 08d93a258c7e5f99757aa30651a8a35ef3127525
   ProtonCore-UIFoundations: 3d14b1209bae32686677fb0acc0e3d5e8f1502fc
   ProtonCore-Utilities: eeec23f03a2e716d4c1b28c9708f492cb44b7b72
   ProtonCore-VCard: d1c0301e86e0d0b5cdb5495026253feeba4c4aa2
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  SDWebImage: 96e0c18ef14010b7485210e92fac888587ebb958
-  Sentry: e0ea366f95ebb68f26d6030d8c22d6b2e6d23dd0
-  SentryPrivate: 949a21fa59872427edc73b524c3ec8456761d97f
+  SDWebImage: a3ba0b8faac7228c3c8eadd1a55c9c9fe5e16457
+  Sentry: a8d7b373b9f9868442b02a0c425192f693103cbf
+  SentryPrivate: 006b24af16828441f70e2ab6adf241bd0a8ad130
   swift-snapshot-testing: ebfa37f887218b4444812aa10e0ba0b5eb85eaf9
   SwiftOTP: ce98ded1ab42e4e66c39228fcad6b0c07b98e494
-  TPInAppReceipt: 75ff97f2484a463cf46c172fe7f94225612aeda1
+  TPInAppReceipt: 43196f444b7287a7d228184b9df7eae5598c1940
   TrustKit: f830ff5af0a8cbad5178aef1d0951389b096d312
-  ViewInspector: 36399ac43f76170693c41499e9035499926171cb
+  ViewInspector: 36573675ac86c191f7540fe3161cfb4f8f8a32b6
 
-PODFILE CHECKSUM: 466028660d310d15d0459b5b9eb0bf4b7c5a5da1
+PODFILE CHECKSUM: 17dd294e2798d7ad4f4ceafb07f0b047ae7103b9
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.14.3

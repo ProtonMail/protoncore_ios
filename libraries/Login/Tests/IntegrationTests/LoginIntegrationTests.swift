@@ -27,7 +27,6 @@ import ProtonCoreServices
 import ProtonCoreAuthentication
 #if canImport(ProtonCoreTestingToolkitUnitTestsCore)
 import ProtonCoreTestingToolkitUnitTestsCore
-import ProtonCoreTestingToolkitUnitTestsFeatureSwitch
 #else
 import ProtonCoreTestingToolkit
 #endif

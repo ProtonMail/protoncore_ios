@@ -41,7 +41,6 @@ Pod::Spec.new do |s|
         test_spec.dependency "ProtonCore-Services", $version
         test_spec.dependency "ProtonCore-Authentication", $version
         test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Core", $version
-        test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/FeatureSwitch", $version
         test_spec.source_files = "libraries/Observability/IntegrationTests/**/*.swift"
 
         add_dynamic_domain_to_info_plist(test_spec)

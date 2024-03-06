@@ -83,12 +83,6 @@ Pod::Spec.new do |s|
             doh.source_files = "libraries/TestingToolkit/UnitTests/Doh/**/*.swift"
         end # Doh
 
-        unit_tests.subspec 'FeatureSwitch' do |switch|
-            switch.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
-            switch.dependency 'ProtonCore-FeatureSwitch', $version
-            switch.source_files = "libraries/TestingToolkit/UnitTests/FeatureSwitch/**/*.swift"
-        end # Feature Switch
-
         unit_tests.subspec 'FeatureFlag' do |flag|
             flag.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
             flag.dependency 'ProtonCore-FeatureFlags', $version
@@ -134,7 +128,6 @@ Pod::Spec.new do |s|
             services.dependency 'ProtonCore-TestingToolkit/UnitTests/DataModel', $version
             services.dependency 'ProtonCore-TestingToolkit/UnitTests/Doh', $version
             services.dependency 'ProtonCore-TestingToolkit/UnitTests/FeatureFlag', $version
-            services.dependency 'ProtonCore-TestingToolkit/UnitTests/FeatureSwitch', $version
             services.dependency "ProtonCore-TestingToolkit/UnitTests/Networking", $version
             services.source_files = "libraries/TestingToolkit/UnitTests/Services/**/*.swift"
         end # Services

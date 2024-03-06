@@ -49,6 +49,6 @@ lane :macos_unit_test_reports do
     workspace: '.swiftpm/xcode/package.xcworkspace',
     xccov_file_direct_path: 'fastlane/test_output/UnitTests.xcresult',
     exclude_targets: excluded_targets_for_macos_unit_tests.join(","),
-    minimum_coverage_percentage: 51.0
+    minimum_coverage_percentage: 50.0
   )
 end

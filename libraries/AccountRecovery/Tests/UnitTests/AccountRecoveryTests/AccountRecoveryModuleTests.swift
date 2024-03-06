@@ -22,7 +22,6 @@
 #if os(iOS)
 import XCTest
 import ProtonCoreAccountRecovery
-@testable import ProtonCoreFeatureSwitch
 #if canImport(ProtonCoreTestingToolkitUnitTestsServices)
 import ProtonCoreTestingToolkitUnitTestsServices
 #else

@@ -26,9 +26,6 @@ F[" Foundation"] --> LOG[ProtonCore-Log]
 %% Translation
 F --> TR[ProtonCore-CoreTranslation] 
 
-%% Feature-Switch
-F --> FS[ProtonCore-FeatureSwitch] 
-
 NET --> OBS[ProtonCore-Observability]
 FS & U --> OBS
 ```

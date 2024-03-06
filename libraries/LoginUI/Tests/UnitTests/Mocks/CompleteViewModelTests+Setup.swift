@@ -40,7 +40,6 @@ import ProtonCoreTestingToolkitUnitTestsLogin
 #elseif canImport(ProtonCoreTestingToolkit)
 import ProtonCoreTestingToolkit
 #endif
-import ProtonCoreFeatureSwitch
 @testable import ProtonCoreLoginUI
 
 extension CompleteViewModelTests {

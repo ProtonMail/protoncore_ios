@@ -48,7 +48,6 @@ import ProtonCoreCryptoGoImplementation
 import ProtonCoreDataModel
 import ProtonCoreNetworking
 import ProtonCoreObfuscatedConstants
-import ProtonCoreFeatureSwitch
 @testable import ProtonCoreServices
 @testable import ProtonCoreLogin
 @testable import ProtonCoreObservability

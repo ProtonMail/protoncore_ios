@@ -23,7 +23,6 @@
 @testable import ProtonCoreObservability
 #if canImport(ProtonCoreTestingToolkitUnitTestsCore)
 import ProtonCoreTestingToolkitUnitTestsCore
-import ProtonCoreTestingToolkitUnitTestsFeatureSwitch
 import ProtonCoreTestingToolkitUnitTestsNetworking
 import ProtonCoreTestingToolkitUnitTestsServices
 #else

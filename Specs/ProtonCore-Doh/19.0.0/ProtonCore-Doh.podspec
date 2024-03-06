@@ -42,7 +42,6 @@ Pod::Spec.new do |s|
 
     s.test_spec 'IntegrationTests' do |doh_tests|
       doh_tests.dependency "ProtonCore-TestingToolkit/UnitTests/Core", $version
-      doh_tests.dependency 'ProtonCore-TestingToolkit/UnitTests/FeatureSwitch', $version
       doh_tests.dependency "ProtonCore-Environment", $version
       doh_tests.dependency "ProtonCore-Authentication", $version
       doh_tests.dependency "ProtonCore-Observability", $version

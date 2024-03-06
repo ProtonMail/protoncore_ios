@@ -13,7 +13,6 @@ import ProtonCoreTestingToolkitUITestsLogin
 import ProtonCoreTestingToolkit
 #endif
 import ProtonCoreObfuscatedConstants
-import ProtonCoreFeatureSwitch
 import Alamofire
 
 class LoginSignupTests: LoginBaseTestCase {
@@ -33,11 +32,8 @@ class LoginSignupTests: LoginBaseTestCase {
     let existingEmail = "\(ObfuscatedConstants.externalUserUsername)@me.com"
     let existingEmailPassword = ObfuscatedConstants.externalUserPassword
 
-    var currentFeatures: [Feature] = []
-
     let signupTestCases = SignupUITestCases()
     override func setUp() {
-        launchEnvironment = ["FeatureSwitch": "isExternalSignupFeatureEnabled"]
         super.setUp()
         mainRobot
             .changeEnvironmentToCustomIfDomainHereBlackOtherwise(dynamicDomainAvailable)

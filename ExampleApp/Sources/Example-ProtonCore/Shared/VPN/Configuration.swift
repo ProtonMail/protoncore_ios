@@ -1,5 +1,4 @@
 import class Foundation.Bundle
-import ProtonCoreFeatureSwitch
 import ProtonCoreObfuscatedConstants
 import typealias ProtonCoreLogin.AccountType
 import typealias ProtonCorePayments.ListOfIAPIdentifiers
@@ -8,8 +7,8 @@ import enum ProtonCoreDataModel.ClientApp
 
 let clientApp: ClientApp = .vpn
 
-let listOfIAPIdentifiers: ListOfIAPIdentifiers = FeatureFactory.shared.isEnabled(.dynamicPlans) ? [] : ObfuscatedConstants.vpnIAPIdentifiers
-let listOfShownPlanNames: ListOfShownPlanNames = FeatureFactory.shared.isEnabled(.dynamicPlans) ? [] : ObfuscatedConstants.vpnShownPlanNames
+let listOfIAPIdentifiers: ListOfIAPIdentifiers = ObfuscatedConstants.vpnIAPIdentifiers
+let listOfShownPlanNames: ListOfShownPlanNames = ObfuscatedConstants.vpnShownPlanNames
 
 let appVersionHeader = AppVersionHeader(appNamePrefix: "ios-vpn@")
 

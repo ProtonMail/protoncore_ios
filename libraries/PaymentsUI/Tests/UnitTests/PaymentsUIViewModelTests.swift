@@ -28,7 +28,6 @@ import ProtonCoreServices
 import ProtonCoreTestingToolkitUnitTestsCore
 import ProtonCoreTestingToolkitUnitTestsFeatureFlag
 import ProtonCoreTestingToolkitUnitTestsPayments
-import ProtonCoreTestingToolkitUnitTestsFeatureSwitch
 #else
 import ProtonCoreTestingToolkit
 #endif
@@ -1273,45 +1272,43 @@ final class PaymentsUIViewModelTests: XCTestCase {
     /* Extend subscription tests */
 
     func testCurrentPlan_CurrentMode_FetchCurrentPlans_ExtendSubscription_FromiOS_withoutDynamicPlans() async {
-        await withFeatureSwitches([]) {
-            // GIVEN: user has has current subscription
-            storeKitManager.canExtendSubscriptionStub.fixture = true
-            servicePlan.currentSubscriptionStub.fixture = Subscription.dummy
-                .updated(planDetails: [PresentedPriceTestingHelper.plusPlan])
-            storeKitManager.inAppPurchaseIdentifiersStub.fixture = [PresentedPriceTestingHelper.basicIAP, PresentedPriceTestingHelper.plusIAP]
-            servicePlan.availablePlansDetailsStub.fixture = [PresentedPriceTestingHelper.plusPlan, PresentedPriceTestingHelper.basicPlan]
-            servicePlan.paymentMethodsStub.fixture = []
-            let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
+        // GIVEN: user has has current subscription
+        storeKitManager.canExtendSubscriptionStub.fixture = true
+        servicePlan.currentSubscriptionStub.fixture = Subscription.dummy
+            .updated(planDetails: [PresentedPriceTestingHelper.plusPlan])
+        storeKitManager.inAppPurchaseIdentifiersStub.fixture = [PresentedPriceTestingHelper.basicIAP, PresentedPriceTestingHelper.plusIAP]
+        servicePlan.availablePlansDetailsStub.fixture = [PresentedPriceTestingHelper.plusPlan, PresentedPriceTestingHelper.basicPlan]
+        servicePlan.paymentMethodsStub.fixture = []
+        let out = PaymentsUIViewModel(mode: .current, storeKitManager: storeKitManager, planService: .left(servicePlan), shownPlanNames: ["vpnplus", "vpnbasic", "free"], clientApp: .mail, customPlansDescription: [:], planRefreshHandler: { _ in XCTFail() }, extendSubscriptionHandler: { XCTFail() })
 
-            // WHEN: we compute plan presentation
-            let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
-                out.fetchPlans(backendFetch: false) { result in
-                    switch result {
-                    case .failure: XCTFail()
-                    case let .success((plans, _)):
-                        continuation.resume(returning: plans)
-                    }
+        // WHEN: we compute plan presentation
+        let planPresentations: [[PlanPresentation]] = await withCheckedContinuation { continuation in
+            out.fetchPlans(backendFetch: false) { result in
+                switch result {
+                case .failure: XCTFail()
+                case let .success((plans, _)):
+                    continuation.resume(returning: plans)
                 }
             }
+        }
 
-            // THEN: we should show current plan with ExtendSubscription button
-            XCTAssertEqual(planPresentations.count, 1)
-            switch planPresentations.first?.first?.planPresentationType {
-            case .current(let currentPlanPresentationType):
-                switch currentPlanPresentationType {
-                case .details(let details):
-                    XCTAssertEqual(details.name, "Plus")
-                default:
-                    XCTFail()
-                }
+        // THEN: we should show current plan with ExtendSubscription button
+        XCTAssertEqual(planPresentations.count, 1)
+        switch planPresentations.first?.first?.planPresentationType {
+        case .current(let currentPlanPresentationType):
+            switch currentPlanPresentationType {
+            case .details(let details):
+                XCTAssertEqual(details.name, "Plus")
             default:
                 XCTFail()
             }
-            if case .withExtendSubscriptionButton(let plan) = out.footerType {
-                XCTAssertEqual(planPresentations.first?.first?.storeKitProductId, plan.storeKitProductId)
-            } else {
-                XCTFail()
-            }
+        default:
+            XCTFail()
+        }
+        if case .withExtendSubscriptionButton(let plan) = out.footerType {
+            XCTAssertEqual(planPresentations.first?.first?.storeKitProductId, plan.storeKitProductId)
+        } else {
+            XCTFail()
         }
     }
 

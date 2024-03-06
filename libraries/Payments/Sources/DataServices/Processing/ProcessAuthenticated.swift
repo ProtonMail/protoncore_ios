@@ -113,7 +113,7 @@ final class ProcessAuthenticated: ProcessProtocol {
                 cycle: plan.cycle,
                 paymentAction: .token(token: token.token),
                 isCreditingAllowed: !areSubscriptionsEnabled
-            ) 
+            )
             let receiptRes = try request.awaitResponse(responseObject: SubscriptionResponse())
             PMLog.debug("StoreKit: success (1)")
             if let newSubscription = receiptRes.newSubscription {

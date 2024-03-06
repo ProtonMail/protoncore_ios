@@ -31,7 +31,6 @@ import ProtonCoreLog
 import ProtonCoreLogin
 import ProtonCoreServices
 import ProtonCoreChallenge
-import ProtonCoreFeatureSwitch
 
 final class TokenRefreshViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, AccessibleView, AuthDelegate {
 

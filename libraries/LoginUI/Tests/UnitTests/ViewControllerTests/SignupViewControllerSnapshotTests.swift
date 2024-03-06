@@ -24,7 +24,6 @@
 import UIKit
 import XCTest
 import ProtonCoreChallenge
-import ProtonCoreFeatureSwitch
 import ProtonCoreServices
 #if canImport(ProtonCoreTestingToolkitUnitTestsCore)
 import ProtonCoreTestingToolkitUnitTestsCore

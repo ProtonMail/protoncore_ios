@@ -20,7 +20,6 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import XCTest
-import ProtonCoreFeatureSwitch
 @testable import ProtonCoreAuthentication
 
 final class SSOEndpointTests: XCTestCase {

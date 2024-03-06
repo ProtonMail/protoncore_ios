@@ -47,7 +47,6 @@ import ProtonCoreCryptoGoImplementation
 import ProtonCoreDataModel
 import ProtonCoreNetworking
 import ProtonCoreServices
-import ProtonCoreFeatureSwitch
 @testable import ProtonCoreLogin
 
 final class AccountMigrationTests: XCTestCase {

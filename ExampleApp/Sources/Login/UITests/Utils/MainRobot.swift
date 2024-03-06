@@ -7,7 +7,6 @@
 
 import fusion
 import XCTest
-import ProtonCoreFeatureSwitch
 #if canImport(ProtonCoreTestingToolkitUITestsCore)
 import ProtonCoreTestingToolkitUITestsCore
 import ProtonCoreTestingToolkitUITestsLogin
@@ -224,11 +223,5 @@ public final class LoginSampleAppRobot: CoreElements {
             button(deleteAccountCancelButton).checkExists()
             staticText(deleteAccountWarning).checkExists()
         }
-    }
-
-    @discardableResult
-    public func updateFeatures(featureEnv: String) -> LoginSampleAppRobot {
-        XCUIApplication().launchEnvironment = ["FeatureSwitch": featureEnv]
-        return self
     }
 }

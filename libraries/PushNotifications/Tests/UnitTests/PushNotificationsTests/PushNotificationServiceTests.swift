@@ -23,8 +23,11 @@
 import Foundation
 import XCTest
 import ProtonCoreCryptoGoImplementation
-import ProtonCoreFeatureSwitch
+#if canImport(ProtonCoreTestingToolkitUnitTestsFeatureFlag)
+import ProtonCoreTestingToolkitUnitTestsFeatureFlag
+#else
 import ProtonCoreTestingToolkit
+#endif
 @testable import ProtonCorePushNotifications
 
 final class PushNotificationServiceTests: XCTestCase {
@@ -38,25 +41,23 @@ final class PushNotificationServiceTests: XCTestCase {
 
     }
 
-    func testSettingUpWithFeatureSwitchDisabled() {
+    func testSettingUpWithFeatureFlagDisabled() {
         let fakeCenter = FakeNotificationCenter(isAuthorizationRequestSuccesful: false, authorizationRequestError: nil)
         NotificationCenterFactory.theCurrent = fakeCenter
 
-        withFeatureSwitches([]) {
-            let sut = PushNotificationService(apiService: apiMock)
+        let sut = PushNotificationService(apiService: apiMock)
 
-            sut.setup()
+        sut.setup()
 
-            XCTAssertNil(NotificationCenterFactory.current.delegate)
-            XCTAssertFalse(fakeCenter.didRequestAuthorization)
-        }
+        XCTAssertNil(NotificationCenterFactory.current.delegate)
+        XCTAssertFalse(fakeCenter.didRequestAuthorization)
     }
 
     func testSettingUp() {
         let fakeCenter = FakeNotificationCenter(isAuthorizationRequestSuccesful: true, authorizationRequestError: nil)
         NotificationCenterFactory.theCurrent = fakeCenter
 
-        withFeatureSwitches([.pushNotifications]) {
+        withFeatureFlags([.accountRecovery]) {
             let sut = PushNotificationService(apiService: apiMock)
 
             sut.setup()
@@ -73,7 +74,7 @@ final class PushNotificationServiceTests: XCTestCase {
         let fakeCenter = FakeNotificationCenter(isAuthorizationRequestSuccesful: true, authorizationRequestError: nil)
         NotificationCenterFactory.theCurrent = fakeCenter
 
-        withFeatureSwitches([.pushNotifications]) {
+        withFeatureFlags([.accountRecovery]) {
             let sut = PushNotificationService(apiService: apiMock)
 
             sut.didRegisterForRemoteNotifications(withDeviceToken: Data(repeating: 130, count: 15))
@@ -85,7 +86,7 @@ final class PushNotificationServiceTests: XCTestCase {
         let fakeCenter = FakeNotificationCenter(isAuthorizationRequestSuccesful: true, authorizationRequestError: nil)
         NotificationCenterFactory.theCurrent = fakeCenter
 
-        withFeatureSwitches([.pushNotifications]) {
+        withFeatureFlags([.accountRecovery]) {
             let sut = PushNotificationService(apiService: apiMock)
 
             sut.didFailToRegisterForRemoteNotifications(withError: NSError(domain: "Test", code: 666))

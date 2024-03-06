@@ -20,15 +20,14 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import XCTest
-#if canImport(ProtonCoreTestingToolkitUnitTestsFeatureSwitch)
-import ProtonCoreTestingToolkitUnitTestsFeatureSwitch
+#if canImport(ProtonCoreTestingToolkitUnitTestsFeatureFlag)
+import ProtonCoreTestingToolkitUnitTestsFeatureFlag
 #else
 import ProtonCoreTestingToolkit
 #endif
 @testable import ProtonCoreAuthentication
 import ProtonCoreUtilities
 import ProtonCoreNetworking
-import ProtonCoreFeatureSwitch
 
 class AuthEndpointTests: XCTestCase {
 
@@ -49,23 +48,21 @@ class AuthEndpointTests: XCTestCase {
     private let proof = Data(capacity: 1)
 
     func testAuthEndpoint_request_header_internel_noChallenge() {
-        withFeatureSwitches([]) {
-            let authEndpoint = AuthService.AuthEndpoint(data: .left(.init(username: username,
-                                                                          ephemeral: ephemeralData,
-                                                                          proof: proofData,
-                                                                          srpSession: srpSession,
-                                                                          challenge: nil)))
-            XCTAssertEqual(authEndpoint.method, .post)
-            XCTAssertEqual(authEndpoint.path, "/auth/v4")
-            XCTAssertEqual(authEndpoint.method, .post)
-            XCTAssertEqual(authEndpoint.header as? [String: Bool], ["X-Accept-ExtAcc": true])
-            XCTAssertEqual(authEndpoint.parameters?[parametersUsername] as? String, username)
-            XCTAssertEqual(authEndpoint.parameters?[parametersEphemeral] as? String, ephemeralData.base64EncodedString())
-            XCTAssertEqual(authEndpoint.parameters?[parametersProof] as? String, proofData.base64EncodedString())
-            XCTAssertEqual(authEndpoint.parameters?[parametersSrp] as? String, srpSession)
-            XCTAssertNil(authEndpoint.parameters?[parametersChallenge])
-            XCTAssertEqual(authEndpoint.isAuth, false)
-        }
+        let authEndpoint = AuthService.AuthEndpoint(data: .left(.init(username: username,
+                                                                      ephemeral: ephemeralData,
+                                                                      proof: proofData,
+                                                                      srpSession: srpSession,
+                                                                      challenge: nil)))
+        XCTAssertEqual(authEndpoint.method, .post)
+        XCTAssertEqual(authEndpoint.path, "/auth/v4")
+        XCTAssertEqual(authEndpoint.method, .post)
+        XCTAssertEqual(authEndpoint.header as? [String: Bool], ["X-Accept-ExtAcc": true])
+        XCTAssertEqual(authEndpoint.parameters?[parametersUsername] as? String, username)
+        XCTAssertEqual(authEndpoint.parameters?[parametersEphemeral] as? String, ephemeralData.base64EncodedString())
+        XCTAssertEqual(authEndpoint.parameters?[parametersProof] as? String, proofData.base64EncodedString())
+        XCTAssertEqual(authEndpoint.parameters?[parametersSrp] as? String, srpSession)
+        XCTAssertNil(authEndpoint.parameters?[parametersChallenge])
+        XCTAssertEqual(authEndpoint.isAuth, false)
     }
 
     func testAuthEndpoint_request_header_external() {

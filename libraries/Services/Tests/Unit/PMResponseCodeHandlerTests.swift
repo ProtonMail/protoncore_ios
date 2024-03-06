@@ -20,7 +20,6 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import XCTest
-import ProtonCoreFeatureSwitch
 import ProtonCoreNetworking
 import ProtonCoreUtilities
 @testable import ProtonCoreServices
@@ -54,11 +53,6 @@ final class PMResponseCodeHandlerTests: XCTestCase {
         hvCalled = false
         missingScopesCalled = false
         forceUpgradeCalled = false
-    }
-
-    override func tearDown() {
-        FeatureFactory.shared.setEnabled(&.missingScopes, isEnable: false)
-        super.tearDown()
     }
 
     // MARK: - Human verification
@@ -115,7 +109,6 @@ final class PMResponseCodeHandlerTests: XCTestCase {
     }
 
     func test_handler_callsMissingScopesHandlerWhenMissingScopesError_forRightResponse() {
-        FeatureFactory.shared.setEnabled(&.missingScopes, isEnable: true)
         handleResponse(response: .right(missingScopesError), errorCode: 403, completion: .left({ _, _ in }))
         XCTAssertTrue(missingScopesCalled)
     }

@@ -83,12 +83,12 @@ end
 
 lane :build_AccountRecovery_all_variants do
   install_dependencies_from_gemfile
-  build_spec("AccountRecovery", "ios,macos", default_test_podspecs, "FeatureSwitch", "PushNotifications", "Services", "Authentication", "DataModel", "UIFoundations", "Networking", "PasswordRequest")
+  build_spec("AccountRecovery", "ios,macos", default_test_podspecs, "PushNotifications", "Services", "Authentication", "DataModel", "UIFoundations", "Networking", "PasswordRequest")
 end 
 
 lane :build_AccountRecovery_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("AccountRecovery", "ios", default_test_podspecs, "FeatureSwitch", "PushNotifications", "Services", "Authentication", "DataModel", "UIFoundations", "Networking", "PasswordRequest")
+  build_spec("AccountRecovery", "ios", default_test_podspecs, "PushNotifications", "Services", "Authentication", "DataModel", "UIFoundations", "Networking", "PasswordRequest")
 end
 
 lane :build_AccountSwitcher_all_variants do
@@ -301,12 +301,12 @@ end
 
 lane :build_Networking_all_variants do
   install_dependencies_from_gemfile
-  build_spec("Networking", "ios,macos", default_test_podspecs, "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel", "FeatureSwitch", "Foundations", "Observability")
+  build_spec("Networking", "ios,macos", default_test_podspecs, "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel", "Foundations", "Observability")
 end
 
 lane :build_Networking_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("Networking", "ios", default_test_podspecs, "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel", "FeatureSwitch", "Foundations")
+  build_spec("Networking", "ios", default_test_podspecs, "Utilities", "Doh", "Services", "APIClient", "Log", "DataModel", "Foundations")
 end
 
 lane :build_ObfuscatedConstants_all_variants do
@@ -345,12 +345,12 @@ end
 
 lane :build_PushNotifications_all_variants do
   install_dependencies_from_gemfile
-  build_spec("PushNotifications", "ios,macos", default_test_podspecs, "Log", "DataModel", "Keymaker", "Networking", "Crypto", "CryptoGoInterface", "FeatureSwitch", "Services")
+  build_spec("PushNotifications", "ios,macos", default_test_podspecs, "Log", "DataModel", "Keymaker", "Networking", "Crypto", "CryptoGoInterface", "Services")
 end 
 
 lane :build_PushNotifications_single_basic_variant do
   install_dependencies_from_gemfile
-  build_spec("PushNotifications", "ios", default_test_podspecs, "Log", "DataModel", "Keymaker", "Networking", "Crypto", "CryptoGoInterface", "FeatureSwitch", "Services")
+  build_spec("PushNotifications", "ios", default_test_podspecs, "Log", "DataModel", "Keymaker", "Networking", "Crypto", "CryptoGoInterface", "Services")
 end 
 
 lane :build_QuarkCommands_all_variants do
@@ -424,13 +424,13 @@ end
 lane :build_Observability_all_variants do
   install_dependencies_from_gemfile
   ensure_obfuscated_constants_are_generated
-  build_spec("Observability", "ios,macos", default_test_podspecs, "ObfuscatedConstants", "DataModel", "Networking", "CoreTranslation", "Log", "Utilities", "Environment", "Authentication", "Services", "Doh", "Networking", "FeatureSwitch", "Foundations")
+  build_spec("Observability", "ios,macos", default_test_podspecs, "ObfuscatedConstants", "DataModel", "Networking", "CoreTranslation", "Log", "Utilities", "Environment", "Authentication", "Services", "Doh", "Networking", "Foundations")
 end
 
 lane :build_Observability_single_basic_variant do
   install_dependencies_from_gemfile
   ensure_obfuscated_constants_are_generated
-  build_spec("Observability", "ios", default_test_podspecs, "ObfuscatedConstants", "DataModel", "Networking", "CoreTranslation", "Log", "Utilities", "Environment", "Authentication", "Services", "Doh", "Networking", "FeatureSwitch", "Foundations")
+  build_spec("Observability", "ios", default_test_podspecs, "ObfuscatedConstants", "DataModel", "Networking", "CoreTranslation", "Log", "Utilities", "Environment", "Authentication", "Services", "Doh", "Networking", "Foundations")
 end
   
 lane :build_MissingScopes_all_variants do

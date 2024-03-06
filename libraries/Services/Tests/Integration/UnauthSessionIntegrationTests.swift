@@ -29,10 +29,8 @@ import ProtonCoreChallenge
 import ProtonCoreEnvironment
 import ProtonCoreUtilities
 import ProtonCoreDoh
-import ProtonCoreFeatureSwitch
 #if canImport(ProtonCoreTestingToolkitUnitTestsCore)
 import ProtonCoreTestingToolkitUnitTestsCore
-import ProtonCoreTestingToolkitUnitTestsFeatureSwitch
 #else
 import ProtonCoreTestingToolkit
 #endif

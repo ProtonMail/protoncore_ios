@@ -1,5 +1,4 @@
 import class Foundation.Bundle
-import ProtonCoreFeatureSwitch
 import ProtonCoreObfuscatedConstants
 import typealias ProtonCoreLogin.AccountType
 import typealias ProtonCorePayments.ListOfIAPIdentifiers
@@ -8,8 +7,8 @@ import enum ProtonCoreDataModel.ClientApp
 
 let clientApp: ClientApp = .mail
 
-let listOfIAPIdentifiers: ListOfIAPIdentifiers = FeatureFactory.shared.isEnabled(.dynamicPlans) ? [] : ObfuscatedConstants.mailIAPIdentifiers
-let listOfShownPlanNames: ListOfShownPlanNames = FeatureFactory.shared.isEnabled(.dynamicPlans) ? [] : ObfuscatedConstants.mailShownPlanNames
+let listOfIAPIdentifiers: ListOfIAPIdentifiers = ObfuscatedConstants.mailIAPIdentifiers
+let listOfShownPlanNames: ListOfShownPlanNames = ObfuscatedConstants.mailShownPlanNames
 
 let appVersionHeader = AppVersionHeader(appNamePrefix: "ios-mail@")
 

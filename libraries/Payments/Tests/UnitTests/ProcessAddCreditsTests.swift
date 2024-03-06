@@ -28,7 +28,6 @@ import ProtonCoreTestingToolkitUnitTestsServices
 #else
 import ProtonCoreTestingToolkit
 #endif
-import ProtonCoreTestingToolkitUnitTestsFeatureSwitch
 import ProtonCoreNetworking
 @testable import ProtonCorePayments
 
@@ -161,40 +160,38 @@ final class ProcessAddCreditsTests: XCTestCase {
 
     // To be removed with CP-6369
     func testBuyCreditOldTokenError() throws {
-        withFeatureSwitches([]) {
-            // Test scenario:
-            // 1. Do purchase with get token error answer
-            // Expected: Success
+        // Test scenario:
+        // 1. Do purchase with get token error answer
+        // Expected: Success
 
-            // given
-            let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 15)
-            let out = ProcessAddCredits(dependencies: processDependencies)
-            let expectation = self.expectation(description: "Completion block called")
-            processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in return success() }
+        // given
+        let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
+        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 15)
+        let out = ProcessAddCredits(dependencies: processDependencies)
+        let expectation = self.expectation(description: "Completion block called")
+        processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in return success() }
 
-            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
-                if path.contains("/tokens") {
-                    completion(nil, .success(["Code": 22000]))
-                } else {
-                    XCTFail(); completion(nil, .success([:])) }
-            }
-
-            // when
-            var returnedError: Error?
-            queue.async {
-                do {
-                    try out.process(transaction: transaction, plan: plan) { _ in XCTFail() }
-                } catch {
-                    returnedError = error
-                    expectation.fulfill()
-                }
-            }
-
-            // then
-            waitForExpectations(timeout: timeout)
-            XCTAssertEqual((returnedError as? ResponseError)?.responseCode, 22000)
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+            if path.contains("/tokens") {
+                completion(nil, .success(["Code": 22000]))
+            } else {
+                XCTFail(); completion(nil, .success([:])) }
         }
+
+        // when
+        var returnedError: Error?
+        queue.async {
+            do {
+                try out.process(transaction: transaction, plan: plan) { _ in XCTFail() }
+            } catch {
+                returnedError = error
+                expectation.fulfill()
+            }
+        }
+
+        // then
+        waitForExpectations(timeout: timeout)
+        XCTAssertEqual((returnedError as? ResponseError)?.responseCode, 22000)
     }
 
     func testBuyCreditTokenError() throws {
