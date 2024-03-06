@@ -378,6 +378,7 @@ add(
         coreTestTarget(name: .accountRecovery + "Tests",
                        dependencies: [
                            .accountRecovery,
+                           .testingToolkitUnitTestsFeatureFlag,
                            .testingToolkitUnitTestsServices,
                            .viewInspector,
                        ],
@@ -1243,8 +1244,8 @@ add(
                            .foundations,
                            .testingToolkitUnitTestsCore,
                            .testingToolkitUnitTestsFeatureFlag,
-                           .testingToolkitUnitTestsNetworking,
                            .testingToolkitUnitTestsObservability,
+                           .testingToolkitUnitTestsNetworking,
                            .testingToolkitUnitTestsServices,
                            .jsonSchema
                        ],

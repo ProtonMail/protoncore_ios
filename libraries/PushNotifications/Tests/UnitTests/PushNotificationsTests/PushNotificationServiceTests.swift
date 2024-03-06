@@ -57,7 +57,7 @@ final class PushNotificationServiceTests: XCTestCase {
         let fakeCenter = FakeNotificationCenter(isAuthorizationRequestSuccesful: true, authorizationRequestError: nil)
         NotificationCenterFactory.theCurrent = fakeCenter
 
-        withFeatureFlags([.accountRecovery]) {
+        withFeatureFlags([.pushNotifications]) {
             let sut = PushNotificationService(apiService: apiMock)
 
             sut.setup()
@@ -74,7 +74,7 @@ final class PushNotificationServiceTests: XCTestCase {
         let fakeCenter = FakeNotificationCenter(isAuthorizationRequestSuccesful: true, authorizationRequestError: nil)
         NotificationCenterFactory.theCurrent = fakeCenter
 
-        withFeatureFlags([.accountRecovery]) {
+        withFeatureFlags([.pushNotifications]) {
             let sut = PushNotificationService(apiService: apiMock)
 
             sut.didRegisterForRemoteNotifications(withDeviceToken: Data(repeating: 130, count: 15))
@@ -86,7 +86,7 @@ final class PushNotificationServiceTests: XCTestCase {
         let fakeCenter = FakeNotificationCenter(isAuthorizationRequestSuccesful: true, authorizationRequestError: nil)
         NotificationCenterFactory.theCurrent = fakeCenter
 
-        withFeatureFlags([.accountRecovery]) {
+        withFeatureFlags([.pushNotifications]) {
             let sut = PushNotificationService(apiService: apiMock)
 
             sut.didFailToRegisterForRemoteNotifications(withError: NSError(domain: "Test", code: 666))

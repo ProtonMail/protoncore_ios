@@ -86,9 +86,14 @@ public extension ProtonCoreFeatureFlags.FeatureFlag {
         .init(name: "ExternalSSO", enabled: true, variant: nil)
     }
 
+    static var pushNotifications: Self {
+        .init(name: "PushNotifications", enabled: true, variant: nil)
+    }
+
     static var splitStorage: Self {
         .init(name: "SplitStorage", enabled: true, variant: nil)
     }
+
     static var telemetrySignUpMetrics: Self {
         .init(name: "IOSTelemetrySignUpMetrics", enabled: true, variant: nil)
     }

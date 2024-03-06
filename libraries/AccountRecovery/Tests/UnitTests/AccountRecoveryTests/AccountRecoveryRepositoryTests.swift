@@ -26,6 +26,7 @@ import XCTest
 @testable import ProtonCoreAuthentication
 #if canImport(ProtonCoreTestingToolkitUnitTestsServices)
 import ProtonCoreTestingToolkitUnitTestsServices
+import ProtonCoreTestingToolkitUnitTestsFeatureFlag
 #else
 import ProtonCoreTestingToolkit
 #endif
@@ -41,44 +42,46 @@ final class AccountRecoveryRepositoryTests: XCTestCase {
         sut = AccountRecoveryRepository(apiService: apiMock)
     }
 
-    func testFetchingRecoveryStateWithDisabledFeatureSwitch() async throws {
-        // Given
-        let user = User(ID: "5cigpml2LD_iUk_3DkV29oojTt3eA==",
-                        name: "Jane Doe",
-                        usedSpace: 1,
-                        usedBaseSpace: 1,
-                        usedDriveSpace: 0,
-                        currency: "EUR",
-                        credit: 0,
-                        maxSpace: 2,
-                        maxBaseSpace: 2,
-                        maxDriveSpace: 0,
-                        maxUpload: 3,
-                        role: 2,
-                        private: 1,
-                        subscribed: .drive,
-                        services: 5,
-                        delinquent: 0,
-                        orgPrivateKey: nil,
-                        email: "jdoe@protonmail.com",
-                        displayName: "Jane D",
-                        keys: [],
-                        accountRecovery: nil)
-        apiMock.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, decodableCompletion  in
-            if path == "/users" {
-                decodableCompletion(nil, .success(AuthService.UserResponse(user: user)))
-            } else {
-                XCTFail("Unexpected request")
+    func testFetchingRecoveryStateWithDisabledFeatureFlag() async throws {
+        try await withFeatureFlags([]) {
+            // Given
+            let user = User(ID: "5cigpml2LD_iUk_3DkV29oojTt3eA==",
+                            name: "Jane Doe",
+                            usedSpace: 1,
+                            usedBaseSpace: 1,
+                            usedDriveSpace: 0,
+                            currency: "EUR",
+                            credit: 0,
+                            maxSpace: 2,
+                            maxBaseSpace: 2,
+                            maxDriveSpace: 0,
+                            maxUpload: 3,
+                            role: 2,
+                            private: 1,
+                            subscribed: .drive,
+                            services: 5,
+                            delinquent: 0,
+                            orgPrivateKey: nil,
+                            email: "jdoe@protonmail.com",
+                            displayName: "Jane D",
+                            keys: [],
+                            accountRecovery: nil)
+            apiMock.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, decodableCompletion  in
+                if path == "/users" {
+                    decodableCompletion(nil, .success(AuthService.UserResponse(user: user)))
+                } else {
+                    XCTFail("Unexpected request")
+                }
             }
+
+            // When
+            let (username, email, recovery) = try await sut.fetchRecoveryState()
+
+            // Then
+            XCTAssertEqual("Jane Doe", username)
+            XCTAssertEqual("jdoe@protonmail.com", email)
+            XCTAssertNil(recovery)
         }
-
-        // When
-        let (username, email, recovery) = try await sut.fetchRecoveryState()
-
-        // Then
-        XCTAssertEqual("Jane Doe", username)
-        XCTAssertEqual("jdoe@protonmail.com", email)
-        XCTAssertNil(recovery)
     }
 
     func testFetchingRecoveryStateThrowingError() async throws {
