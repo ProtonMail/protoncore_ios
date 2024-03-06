@@ -1,6 +1,48 @@
+## 20.0.0 (2024-03-06)
+
+### fixed (6 changes)
+
+- [fix: fix version of Checkout Observability event [CP-7611]](apple/shared/protoncore@7ee77734a9d26cffd4d04d61ea3de8972b38bd0d) ([merge request](apple/shared/protoncore!1682))
+- [fix: In .update mode, display current plan when there are no available plans [CP-7390]](apple/shared/protoncore@4f50e3e4f26a3f87bcf6fbb9691cb431f0b7cee2) ([merge request](apple/shared/protoncore!1673))
+- [fix: CP-7608 [iOS] Free users see in Mail seeing \"Drive storage\" for storage entitlement title](apple/shared/protoncore@e712fcc9431349051a978422c329ccc0c490af0f) ([merge request](apple/shared/protoncore!1681))
+- [fix: CP-7588 [iOS] Incorrect padding on the PaymentsUI screen](apple/shared/protoncore@d035b52a82d0a4db8beb4bef3aa32e2f5d99688d) ([merge request](apple/shared/protoncore!1679))
+- [fix: update country flags resources that were incorrect](apple/shared/protoncore@6c504c6751733d6eacbe2fa028dc0ba25b7c8b10) ([merge request](apple/shared/protoncore!1675))
+- [[CP-7618] In clients other than Mail or Drive, ignore delinquent storage.](apple/shared/protoncore@a6e6456c50efc6e9c75b2bc6a1cecbf8bfb7d51d) ([merge request](apple/shared/protoncore!1685))
+
+### added (1 change)
+
+- [feat(telemetry): CP-7539 [iOS] Create interface in Telemetry module to update user preference](apple/shared/protoncore@f696f0eedc8707f43a11722d11f80c69d0ce8817) ([merge request](apple/shared/protoncore!1677))
+
+### changed (2 change)
+
+- [feat: Change threshold for displaying storage full alert to 98%.](apple/shared/protoncore@fed2cfc5c2fe65f74dbbcc5ffe4d05c901e3e713) ([merge request](apple/shared/protoncore!1683))
+- [Update quark userCreate command](apple/shared/protoncore@bb53fbee316f6346d3160999b0c0e39ddbb30750) ([merge request](apple/shared/protoncore!1684))
+
+### removed (1 change)
+- [[CP-6894, CP-7550] Remove FeatureSwitch](apple/shared/protoncore@98fa04ed67ece1d6480f012ceaacd951da781f45) ([merge request](apple/shared/protoncore!1669))
+
+## 19.1.0 (2024-02-29)
+
+### fixed (3 changes)
+
+- [Fix rendering of progress bar corners at ends of progress bar.](apple/shared/protoncore@aaceb1708fc86f2deed91fbbc4804a98eb23535c) ([merge request](apple/shared/protoncore!1667))
+- [fix(dynamicPlans): Unlock UI freeze](apple/shared/protoncore@bae6c3ebf37bccf77366d2cfba61c8aca999b3a5) ([merge request](apple/shared/protoncore!1670))
+- [fix: In .update mode, display current plan when there are no available plans [CP-7390]](apple/shared/protoncore@4f50e3e4f26a3f87bcf6fbb9691cb431f0b7cee2) ([merge request](apple/shared/protoncore!1673))
+
+### added (4 changes)
+
+- [Add test checking for removal of old FFs from local data source](apple/shared/protoncore@87991ece2365d373871b9b674caf1671cc1864c7) ([merge request](apple/shared/protoncore!1668))
+- [feat(telemetry): CP-7488 Create “Mobile Sign Up - Product Metrics” Unleash feature flag](apple/shared/protoncore@9f356d477a2816c4ca5c683f7096feefc5176e4f) ([merge request](apple/shared/protoncore!1672))
+- [feat(accountRecovery): add account recovery observability methods](apple/shared/protoncore@c9461204aac7835b84940ee29f852166f01e83cc) ([merge request](apple/shared/protoncore!1676))
+- [feat(telemetry): CP-7489 [iOS] Create a Telemetry manager implementation in Core](apple/shared/protoncore@1d9b0b8b310b231d6d83649cb62ef9cd490bea3b) ([merge request](apple/shared/protoncore!1674))
+
+### changed (1 change)
+
+- [i18n: Upgrade translations from crowdin (aaceb170).](apple/shared/protoncore@5e625a946172b122e0a9a99f9b0676963608236e) ([merge request](apple/shared/protoncore!1671))
+
 ## 19.0.4 (2024-02-20)
 
-### Changed (2 changes)
+### changed (2 changes)
 
 - [[CP-7473] Use full amount to request subscriptions](apple/shared/protoncore@ac741d932babbfb1cc136c9c628cc7b7c25059d8) ([merge request](apple/shared/protoncore!1664))
 - [fix: adjust to payments status response in v5](apple/shared/protoncore@830a3cde3273c003edbb63c8e288476f35315b48) ([merge request](apple/shared/protoncore!1662))
@@ -14,14 +56,11 @@
 
 ## 18.0.0 (2024-01-25)
 
-### fix (1 change)
-
-- [fix: Bump Sentry version to 8.18.0](apple/shared/protoncore@6c0d1b1814040937ccc8bd5241e4bb33117c9435) ([merge request](apple/shared/protoncore!1634))
-
-### fixed (1 change)
+### fixed (3 changes)
 
 - [[CP-7201] fix: Remove hard-coded cycle in purchase request, made it parameterizable](apple/shared/protoncore@0c10572c061d43dd6baedcd2b19e855fa4319445) ([merge request](apple/shared/protoncore!1632))
 - [feat(dynamicPlans): Dynamic cycle in Validate subscription request](apple/shared/protoncore@749cb65d022e754b3143071f1ea9d4aad35a8d19) ([merge request](apple/shared/protoncore!1631))
+- [fix: Bump Sentry version to 8.18.0](apple/shared/protoncore@6c0d1b1814040937ccc8bd5241e4bb33117c9435) ([merge request](apple/shared/protoncore!1634))
 
 ## 17.0.0 (2024-01-24)
 
