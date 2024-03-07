@@ -1481,7 +1481,8 @@ add(
         coreTarget(name: .services,
                    dependencies: [
                        .observability,
-                       .utilities
+                       .utilities,
+                       .foundations
                    ],
                    path: "libraries/Services/Sources",
                    resources: [
