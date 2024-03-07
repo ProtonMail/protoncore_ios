@@ -37,6 +37,12 @@ public enum RegistrationState {
     case failed
 }
 
+enum PushNotificationError: Error {
+    case unrecognizedMessageFormat
+    case unhandledType
+    case unavailableDelegate
+}
+
 public class PushNotificationService: NSObject, PushNotificationServiceProtocol {
     enum Key {
         static let subscription = "pushNotificationSubscription"
@@ -58,6 +64,7 @@ public class PushNotificationService: NSObject, PushNotificationServiceProtocol 
     }
     private let apiService: APIService
     public var registrationState: RegistrationState = .unregistered
+    public var fallbackDelegate: UNUserNotificationCenterDelegate?
 
     var currentUID: String {
         apiService.sessionUID
@@ -71,6 +78,7 @@ public class PushNotificationService: NSObject, PushNotificationServiceProtocol 
     public func setup() {
         guard FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.pushNotifications) else { return }
 
+        fallbackDelegate = NotificationCenterFactory.current.delegate
         NotificationCenterFactory.current.delegate = Self.shared
         registerForRemoteNotifications()
     }
@@ -111,9 +119,10 @@ public class PushNotificationService: NSObject, PushNotificationServiceProtocol 
 
     public func didLoginWithUID(_ uid: String) {
         registerIfPossible()
-
     }
 }
+
+// MARK: Notification Handling
 
 extension PushNotificationService: UNUserNotificationCenterDelegate {
     /// Method called when receiving a Push Notification while app is in the foreground
@@ -121,15 +130,28 @@ extension PushNotificationService: UNUserNotificationCenterDelegate {
                                        willPresent notification: UNNotification,
                                        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
 
-        processNotification(notification) { options in
-            completionHandler(options)
+        do {
+            try processNotification(notification)
+            completionHandler([.alert, .sound, .badge])
+        } catch {
+            guard let delegate = fallbackDelegate else {
+                PMLog.error("Undefined fallback delegate for handling Push Notifications")
+                completionHandler([.alert, .sound, .badge])
+                return
+            }
+            delegate.userNotificationCenter?(center as! UNUserNotificationCenter,
+                                            willPresent: notification,
+                                            withCompletionHandler: completionHandler)
         }
     }
 
+    /// Asks the delegate to process the user's response to a delivered notification.
     public func userNotificationCenter(_ center: UNUserNotificationCenter,
                                        didReceive response: UNNotificationResponse,
                                        withCompletionHandler completionHandler: @escaping () -> Void) {
-        notificationCenter(center as NotificationCenterProtocol, didReceive: response, withCompletionHandler: completionHandler)
+        notificationCenter(center as NotificationCenterProtocol, 
+                           didReceive: response,
+                           withCompletionHandler: completionHandler)
     }
 }
 
@@ -139,33 +161,42 @@ extension PushNotificationService {
                             didReceive response: UNNotificationResponse,
                             withCompletionHandler completionHandler: @escaping () -> Void) {
 
-        processNotification(response.notification) { _ in
+        do {
+            try processNotification(response.notification)
             completionHandler()
+        } catch {
+            guard let delegate = fallbackDelegate else {
+                PMLog.error("Undefined fallback delegate for handling Push Notifications")
+                completionHandler()
+                return
+            }
+            delegate.userNotificationCenter?(center as! UNUserNotificationCenter,
+                                            didReceive: response,
+                                            withCompletionHandler: completionHandler)
         }
     }
 
-    private func processNotification(_ notification: UNNotification, completion: @escaping (UNNotificationPresentationOptions) -> Void) {
+    // Central method for handling notifications from background and foreground,
+    // the difference being the options in the completion handler
+    private func processNotification(_ notification: UNNotification) throws {
         let content = notification.request.content
         let userInfo = content.userInfo as? [String: Any]
 
         guard let message = userInfo?["unencryptedMessage"] as? [String: Any],
               let type = message["type"] as? String else {
-            PMLog.error("Unknown message format, ignoring…", sendToExternal: true)
-            completion([])
-            return
+            PMLog.debug("Unknown message format, forwarding…", sendToExternal: true)
+            throw PushNotificationError.unrecognizedMessageFormat
         }
 
         guard let handler = handlers[type] else {
             PMLog.error("Unknown message type \(type), possibly from the future", sendToExternal: true)
-            completion([])
-            return
+            throw PushNotificationError.unhandledType
         }
 
         handler.handle(notification: notification.request.content)
-
-        completion([.badge, .sound, .list])
-
     }
+
+    // MARK: TOKEN REGISTRATION
 
     private func registerIfPossible() {
         // swiftlint:disable:next empty_string
