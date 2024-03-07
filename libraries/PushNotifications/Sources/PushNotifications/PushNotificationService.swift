@@ -243,7 +243,6 @@ private extension PushNotificationService {
 extension APIErrorCode {
     static let resourceDoesNotExist = 2501
     static let deviceTokenIsInvalid = 11210
-
 }
 
 fileprivate extension String {
