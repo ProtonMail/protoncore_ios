@@ -26,6 +26,7 @@ Pod::Spec.new do |s|
     # s.framework = 'UIKit'
 
     s.dependency 'ProtonCore-FeatureFlags', $version
+    s.dependency 'ProtonCore-PushNotifications', $version
     s.dependency 'ProtonCore-Services', $version
     s.dependency 'ProtonCore-Authentication', $version
     s.dependency 'ProtonCore-DataModel', $version

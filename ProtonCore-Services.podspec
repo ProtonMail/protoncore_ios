@@ -24,6 +24,8 @@ Pod::Spec.new do |s|
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
 
     s.dependency "ProtonCore-Observability", $version
+    s.dependency "ProtonCore-Utilities", $version
+    s.dependency "ProtonCore-Foundations", $version
 
     this_pod_does_not_have_subspecs(s)
 
