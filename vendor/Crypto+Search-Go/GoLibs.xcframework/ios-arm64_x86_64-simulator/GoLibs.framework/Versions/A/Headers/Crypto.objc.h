@@ -886,6 +886,7 @@ or if the message hasn't been read entirely.
 
 - (nonnull instancetype)initWithRef:(_Nonnull id)ref;
 - (nullable instancetype)initFromToken:(NSData* _Nullable)token algo:(NSString* _Nullable)algo;
+@property (nonatomic) BOOL v6;
 /**
  * The decrypted binary session key.
  */
