@@ -45,15 +45,15 @@ public struct TelemetryEvent: TelemetryEventProtocol {
         screen: TelemetryEventScreen,
         action: TelemetryEventAction,
         measurementGroup: String,
-        values: [String : Float] = [:],
-        dimensions: [String : String] = [:]
+        values: [TelemetryValue] = [],
+        dimensions: [TelemetryDimension] = []
     ) {
         self.source = source
         self.screen = screen
         self.action = action
         self.measurementGroup = measurementGroup
-        self.values = values
-        self.dimensions = dimensions
+        self.values = Dictionary(uniqueKeysWithValues: values.flatMap{ $0.value })
+        self.dimensions = Dictionary(uniqueKeysWithValues: dimensions.flatMap{ $0.value })
     }
 }
 

@@ -48,7 +48,13 @@ final class TelemetryServiceTests: XCTestCase {
             source: .user,
             screen: .welcome,
             action: .clicked,
-            measurementGroup: measurementGroup
+            measurementGroup: measurementGroup,
+            values: [
+                .timestamp(1234)
+            ],
+            dimensions: [
+                .flow("flow_item")
+            ]
         )
 
         apiService.requestJSONStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
@@ -56,6 +62,8 @@ final class TelemetryServiceTests: XCTestCase {
                 let params = parameters as! [String: Any]
                 XCTAssertTrue((params["MeasurementGroup"] as! String) == self.measurementGroup)
                 XCTAssertTrue((params["Event"] as! String) == "user.welcome.clicked")
+                XCTAssertTrue((params["Values"] as! [String: Float])["timestamp"] == 1234 )
+                XCTAssertTrue((params["Dimensions"] as! [String: String])["flow"] == "flow_item" )
                 completion(nil, .success([:]))
             } else {
                 XCTFail()

@@ -42,6 +42,7 @@ Pod::Spec.new do |s|
     s.dependency "ProtonCore-Payments", $version
     s.dependency "ProtonCore-PaymentsUI", $version
     s.dependency "ProtonCore-HumanVerification", $version
+    s.dependency "ProtonCore-Telemetry", $version
 
     s.dependency 'lottie-ios', '4.3.3'
     s.dependency 'TrustKit'

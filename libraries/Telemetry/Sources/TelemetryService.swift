@@ -55,7 +55,7 @@ public class TelemetryService: TelemetryServiceProtocol {
 
     public func report(event: any TelemetryEventProtocol) async {
         guard let apiService = apiService else {
-            assertionFailure("APIService not initialized")
+            PMLog.error("APIService not initialized")
             return
         }
         guard isTelemetryEnabled else { return }
@@ -63,7 +63,7 @@ public class TelemetryService: TelemetryServiceProtocol {
         do {
             _ = try await apiService.perform(request: request)
         } catch {
-            PMLog.error(error, sendToExternal:true)
+            PMLog.error(error, sendToExternal: true)
         }
     }
 
