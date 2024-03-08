@@ -500,6 +500,150 @@ final class ObservabilityEventTests: XCTestCase {
             XCTAssertEqual(issues, .noIssues)
         }
     }
+
+    // MARK: - Push notifications events
+
+    let ios_core_pushNotifications_permission_requested_total_v1 = """
+    {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+            "Labels": {
+                "type": "object",
+                "properties": {
+                    "result": {
+                        "type": "string",
+                        "enum": ["accepted", "rejected"]
+                    }
+                },
+                "required": ["result"],
+                "additionalProperties": false
+            },
+            "Value": {
+                "type": "integer",
+                "minimum": 1
+            }
+        },
+        "required": ["Labels", "Value"],
+        "$id": "https://proton.me/ios_core_pushNotifications_permission_requested_total_v1.schema.json",
+        "title": "me.proton.core.observability.domain.metrics.PushNotificationsPermissionRequestedTotal",
+        "description": "Count of requests for push notifications permissions on the client.",
+        "additionalProperties": false
+    }
+    """
+
+    func testPushNotificationsPermissionRequestedEvent() throws {
+        try PushNotificationsPermissionsResponse.allCases.forEach { result in
+            let issues = try validatePayloadAccordingToSchema(
+                event: .pushNotificationsPermissionsRequested(result: result),
+                schema: ios_core_pushNotifications_permission_requested_total_v1
+            )
+            XCTAssertEqual(issues, .noIssues)
+        }
+    }
+
+    let ios_core_pushNotifications_received_total_v1 = """
+    {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+            "Labels": {
+                "type": "object",
+                "properties": {
+                    "result": {
+                        "type": "string",
+                        "enum": ["handled", "ignored"]
+                    },
+                    "application_status": {
+                        "type": "string",
+                        "enum": ["active", "inactive"]
+                    }
+                },
+                "required": ["result", "application_status"],
+                "additionalProperties": false
+            },
+            "Value": {
+                "type": "integer",
+                "minimum": 1
+            }
+        },
+        "required": ["Labels", "Value"],
+        "$id": "https://proton.me/ios_core_pushNotifications_received_total_v1.schema.json",
+        "title": "me.proton.core.observability.domain.metrics.PushNotificationsReceivedTotal",
+        "description": "Count of incoming push notifications.",
+        "additionalProperties": false
+    }
+    """
+
+    func testPushNotificationsReceivedEvent() throws {
+        try PushNotificationsReceivedResult.allCases.forEach { result in
+            try ApplicationStatus.allCases.forEach { applicationStatus in
+                let issues = try validatePayloadAccordingToSchema(
+                    event: .pushNotificationsReceived(result: result,
+                                                      applicationStatus: applicationStatus),
+                    schema: ios_core_pushNotifications_received_total_v1
+                )
+                XCTAssertEqual(issues, .noIssues)
+            }
+        }
+    }
+
+    let ios_core_pushNotifications_token_registration_total_v1 = """
+    {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+            "Labels": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "http1xx",
+                            "http200",
+                            "http2xx",
+                            "http3xx",
+                            "http400",
+                            "http401",
+                            "http403",
+                            "http408",
+                            "http421",
+                            "http422",
+                            "http4xx",
+                            "http500",
+                            "http503",
+                            "http5xx",
+                            "connectionError",
+                            "sslError",
+                            "unknown"
+                        ]
+                    }
+                },
+                "required": ["status"],
+                "additionalProperties": false
+            },
+            "Value": {
+                "type": "integer",
+                "minimum": 1
+            }
+        },
+        "required": ["Labels", "Value"],
+        "$id": "https://proton.me/ios_core_pushNotifications_token_registration_total_v1.schema.json",
+        "title": "me.proton.core.observability.domain.metrics.PushNotificationsTokenRegistrationTotal",
+        "description": "Count of device registrations with APNS tokens to Proton backend.",
+        "additionalProperties": false
+    }
+    """
+
+    func testPushNotificationsTokenRegistrationEvent() throws {
+        try PushNotificationsHTTPResponseCodeStatus.allCases.forEach { status in
+            let issues = try validatePayloadAccordingToSchema(
+                event: .pushNotificationsTokenRegistered(status: status),
+                schema: ios_core_pushNotifications_token_registration_total_v1
+            )
+            XCTAssertEqual(issues, .noIssues)
+        }
+    }
 }
 
 // MARK: - helpers
