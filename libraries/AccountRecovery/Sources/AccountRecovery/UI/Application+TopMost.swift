@@ -23,7 +23,7 @@ import UIKit
 
 #if os(iOS)
 extension UIWindow {
-    var topMostViewController: UIViewController? {
+    public var topMostViewController: UIViewController? {
         var topController = self.rootViewController
         while let presentedViewController = topController?.presentedViewController
             ?? (topController as? UINavigationController)?.topViewController {
