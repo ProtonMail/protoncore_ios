@@ -66,6 +66,7 @@ public enum TelemetryEventSource: String, Encodable {
 public enum TelemetryEventScreen: String, Encodable {
     case welcome
     case signin
+    case signup
 }
 
 public enum TelemetryEventAction: String, Encodable {
@@ -76,4 +77,5 @@ public enum TelemetryEventAction: String, Encodable {
     case closed
     case verify
     case validate
+    case createUser = "create_user"
 }
