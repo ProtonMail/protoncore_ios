@@ -4,7 +4,7 @@
 
 "Grace_View_Title" = "パスワードをリセットしますか？";
 
-"Grace_View_line1" = "パスワード再設定リクエストを受け取りました。 ";
+"Grace_View_line1" = "パスワード再設定リクエストを受け取りました。";
 
 "Insecure_View_line1" = "アカウントのパスワードを変更できます。 ";
 
@@ -16,6 +16,6 @@
 
 "Grace_View_Undefined_Time_Left" = "数時間";
 
-"Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+"Grace_View_line2" = "アカウントを安全に保つため、パスワードをリセットしようとしていることを確認します。 パスワードをリセットすることができます。";
 
 "Grace_View_line3" = "このリクエストを行っていない場合、またはサインインのサポートが必要なくなった場合は、リクエストをキャンセルし、アカウントを保護するための措置を講じてください。";
