@@ -185,7 +185,7 @@ open class DoH: DoHInterface {
 
     // MARK: - Caching
 
-    var isCurrentlyUsingProxyDomain: Bool {
+    open var isCurrentlyUsingProxyDomain: Bool {
         cacheQueue.sync {
             !caches.values.flatMap { $0 }.isEmpty
         }

@@ -176,7 +176,7 @@ public protocol DoHInterface {
     func errorIndicatesDoHSolvableProblem(error: Error?) -> Bool
 
     func getSignUpString() -> String
-
+    var isCurrentlyUsingProxyDomain: Bool { get }
     var status: DoHStatus { get set }
 
     var currentlyUsedCookiesStorage: HTTPCookieStorage? { get }
