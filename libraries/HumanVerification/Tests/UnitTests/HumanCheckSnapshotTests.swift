@@ -45,6 +45,7 @@ class HumanCheckSnapshotTests: SnapshotTestCase {
 
         dohMock.getHumanVerificationV3HostStub.bodyIs { _ in "test.proton.test" }
         dohMock.getHumanVerificationV3HeadersStub.bodyIs { _ in [:] }
+        dohMock.isCurrentlyUsingProxyDomainStub.fixture = false
 
         let navigationViewController = DarkModeAwareNavigationViewController()
         navigationViewController.modalPresentationStyle = .fullScreen

@@ -54,6 +54,12 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
         screen: .signin
     )
 
+    enum MeasureConstants {
+        static let resultFailure = "failure"
+        static let resultSuccess = "success"
+        static let hostAlternative = "alternative"
+        static let hostStandard = "standard"
+    }
 
     // MARK: - Outlets
 
@@ -493,8 +499,8 @@ extension LoginViewController {
         measureAPIResult(
             action: .auth,
             additionalDimensions: [
-                .result("success"),
-                .hostType(viewModel.isCurrentlyUsingProxyDomain ? "alternative" : "standard")
+                .result(MeasureConstants.resultSuccess),
+                .hostType(viewModel.isCurrentlyUsingProxyDomain ? MeasureConstants.hostAlternative : MeasureConstants.hostStandard)
             ]
         )
     }
@@ -504,8 +510,8 @@ extension LoginViewController {
             action: .auth,
             additionalValues: [.httpCode(httpCode)],
             additionalDimensions: [
-                .result("failure"),
-                .hostType(viewModel.isCurrentlyUsingProxyDomain ? "alternative" : "standard")
+                .result(MeasureConstants.resultFailure),
+                .hostType(viewModel.isCurrentlyUsingProxyDomain ? MeasureConstants.hostAlternative : MeasureConstants.hostStandard)
             ]
         )
     }

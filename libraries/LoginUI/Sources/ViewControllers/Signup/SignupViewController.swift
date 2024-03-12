@@ -50,6 +50,10 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
         screen: .signup
     )
 
+    enum MeasureConstants {
+        static let resultFailure = "failure"
+        static let resultSuccess = "success"
+    }
 
     weak var delegate: SignupViewControllerDelegate?
     var viewModel: SignupViewModel!
@@ -387,7 +391,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
                 self.measureAPIResult(
                     action: .createUser,
                     additionalDimensions: [
-                        .result("success"),
+                        .result(MeasureConstants.resultSuccess),
                         .accountType(self.signupAccountType.rawValue)
                     ]
                 )
@@ -409,7 +413,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
                 self.measureAPIResult(
                     action: .createUser,
                     additionalDimensions: [
-                        .result("success"),
+                        .result(MeasureConstants.resultSuccess),
                         .accountType(self.signupAccountType.rawValue)
                     ]
                 )
@@ -431,7 +435,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
                 self.measureAPIResult(
                     action: .createUser,
                     additionalDimensions: [
-                        .result("success"),
+                        .result(MeasureConstants.resultSuccess),
                         .accountType(self.signupAccountType.rawValue)
                     ]
                 )
@@ -469,7 +473,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
                 } else {
                     ObservabilityEnv.report(.protonAccountAvailableSignupTotal(status: .failed))
                 }
-                measureFailureAPIResult(httpCode: code, resultValue: "failure")
+                measureFailureAPIResult(httpCode: code, resultValue: MeasureConstants.resultFailure)
             }
 
             if isExternalEmail, code == APIErrorCode.humanVerificationAddressAlreadyTaken {
@@ -500,7 +504,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
                     self?.onDohTroubleshooting()
                 }
             }
-            measureFailureAPIResult(httpCode: originalError.httpCode, resultValue: "failure")
+            measureFailureAPIResult(httpCode: originalError.httpCode, resultValue: MeasureConstants.resultFailure)
         }
     }
 

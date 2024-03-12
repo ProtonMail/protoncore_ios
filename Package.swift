@@ -878,6 +878,7 @@ add(
                        .cryptoGoInterface,
                        .dataModel,
                        .networking,
+                       .telemetry,
                        .humanVerificationResourcesiOS,
                        .humanVerificationResourcesmacOS
                    ],
