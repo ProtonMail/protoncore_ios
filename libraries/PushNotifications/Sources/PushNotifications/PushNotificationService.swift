@@ -29,6 +29,7 @@ import UserNotifications
 import ProtonCoreFeatureFlags
 import ProtonCoreServices
 import ProtonCoreNetworking
+import ProtonCoreObservability
 import ProtonCoreLog
 
 public enum RegistrationState {
@@ -132,14 +133,16 @@ extension PushNotificationService: UNUserNotificationCenterDelegate {
 
         do {
             try processNotification(notification)
-            completionHandler([.alert, .sound, .badge])
+            completionHandler([.banner, .sound, .badge])
+            ObservabilityEnv.report(.pushNotificationsReceived(result: .handled, applicationStatus: .active))
         } catch {
+            ObservabilityEnv.report(.pushNotificationsReceived(result: .ignored, applicationStatus: .active))
             guard let delegate = fallbackDelegate else {
                 PMLog.error("Undefined fallback delegate for handling Push Notifications")
-                completionHandler([.alert, .sound, .badge])
+                completionHandler([.banner, .sound, .badge])
                 return
             }
-            delegate.userNotificationCenter?(center as! UNUserNotificationCenter,
+            delegate.userNotificationCenter?(center,
                                             willPresent: notification,
                                             withCompletionHandler: completionHandler)
         }
@@ -164,7 +167,9 @@ extension PushNotificationService {
         do {
             try processNotification(response.notification)
             completionHandler()
+            ObservabilityEnv.report(.pushNotificationsReceived(result: .handled, applicationStatus: .inactive))
         } catch {
+            ObservabilityEnv.report(.pushNotificationsReceived(result: .ignored, applicationStatus: .inactive))
             guard let delegate = fallbackDelegate else {
                 PMLog.error("Undefined fallback delegate for handling Push Notifications")
                 completionHandler()
@@ -246,7 +251,28 @@ extension PushNotificationService {
                                    customAuthCredential: request.authCredential,
                                    nonDefaultTimeout: request.nonDefaultTimeout,
                                    retryPolicy: request.retryPolicy,
-                                   onDataTaskCreated: { _ in }) { _, result in
+                                   onDataTaskCreated: { _ in }) { task, result in
+                    if let httpResponse = task?.response as? HTTPURLResponse {
+                        let statusCode = httpResponse.statusCode
+                        let status: PushNotificationsHTTPResponseCodeStatus
+                        switch statusCode {
+                        case 200: status = .http200
+                        case 201...299: status = .http2xx
+                        case 300...399: status = .http3xx
+                        case 400: status = .http400
+                        case 401: status = .http401
+                        case 403: status = .http403
+                        case 408: status = .http408
+                        case 421: status = .http421
+                        case 422: status = .http422
+                        case 402, 404...407, 409...420, 423...499: status = .http4xx
+                        case 500: status = .http500
+                        case 503: status = .http503
+                        case 501, 502, 504...599: status = .http5xx
+                        default: status = .unknown
+                        }
+                        ObservabilityEnv.report(.pushNotificationsTokenRegistered(status: status))
+                    }
                     continuation.resume(with: result)
                 }
            }
