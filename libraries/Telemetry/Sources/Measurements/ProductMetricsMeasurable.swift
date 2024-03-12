@@ -36,6 +36,10 @@ public protocol ProductMetricsMeasurable {
         additionalValues: [TelemetryValue],
         additionalDimensions: [TelemetryDimension]
     )
+    func measureOnViewAction(
+        action: TelemetryEventAction,
+        additionalDimensions: [TelemetryDimension]
+    )
 }
 
 public extension ProductMetricsMeasurable {
@@ -114,6 +118,23 @@ public extension ProductMetricsMeasurable {
             values: [
                 .timestamp(Float(Date().timeIntervalSince1970))
             ] + additionalValues,
+            dimensions: [
+                .flow(productMetrics.flow)
+            ] + additionalDimensions
+        )
+        reportEvent(event: event)
+    }
+
+    func measureOnViewAction(
+        action: TelemetryEventAction,
+        additionalDimensions: [TelemetryDimension] = []
+    ) {
+        let event = TelemetryEvent(
+            source: .fe, screen: productMetrics.screen, action: action,
+            measurementGroup: productMetrics.group,
+            values: [
+                .timestamp(Float(Date().timeIntervalSince1970))
+            ],
             dimensions: [
                 .flow(productMetrics.flow)
             ] + additionalDimensions

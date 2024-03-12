@@ -25,6 +25,7 @@ import UIKit
 import ProtonCoreFoundations
 import ProtonCoreUIFoundations
 import ProtonCoreObservability
+import ProtonCoreTelemetry
 
 protocol PasswordViewControllerDelegate: AnyObject {
     func passwordIsShown()
@@ -32,7 +33,13 @@ protocol PasswordViewControllerDelegate: AnyObject {
     func passwordBackButtonPressed()
 }
 
-class PasswordViewController: UIViewController, AccessibleView, Focusable {
+class PasswordViewController: UIViewController, AccessibleView, Focusable, ProductMetricsMeasurable {
+    var productMetrics: ProductMetrics = .init(
+        group: TelemetryMeasurementGroup.signUp.rawValue,
+        flow: TelemetryFlow.signUpFull.rawValue,
+        screen: .signupPassword
+    )
+
 
     weak var delegate: PasswordViewControllerDelegate?
     var viewModel: PasswordViewModel!
@@ -101,6 +108,7 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         focusOnce(view: passwordTextField)
+        measureOnViewDisplayed()
     }
 
     override func viewDidLayoutSubviews() {
@@ -116,10 +124,12 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable {
     @IBAction func onNextButtonTap(_ sender: ProtonButton) {
         PMBanner.dismissAll(on: self)
         validatePassword()
+        measureOnViewClicked(item: "next")
     }
 
     @objc func onBackButtonTap(_ sender: UIButton) {
         delegate?.passwordBackButtonPressed()
+        measureOnViewClosed()
     }
 
     // MARK: Private methods
@@ -134,7 +144,12 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable {
                                                         repeatParrword: repeatPasswordTextField.value)
         switch result {
         case .failure(let error):
-            if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else { self.showError(error: error) }
+            if let willPresentError = customErrorPresenter?.willPresentError(error: error, from: self),
+               willPresentError {
+                self.measureOnViewAction(action: .validate, additionalDimensions: [.result("failure")])
+            } else {
+                self.showError(error: error)
+            }
         case .success:
             nextButton.isSelected = true
             lockUI()
@@ -142,6 +157,7 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable {
                 self.nextButton.isSelected = false
                 self.unlockUI()
             }
+            measureOnViewAction(action: .validate, additionalDimensions: [.result("success")])
         }
     }
 
@@ -214,6 +230,14 @@ extension PasswordViewController: PMTextFieldDelegate {
     func didBeginEditing(textField: PMTextField) {
         passwordTextField.isError = false
         repeatPasswordTextField.isError = false
+        switch textField {
+        case passwordTextField:
+            measureOnViewFocused(item: "password")
+        case repeatPasswordTextField:
+            measureOnViewFocused(item: "confirmation")
+        default:
+            break
+        }
     }
 }
 
@@ -230,9 +254,11 @@ extension PasswordViewController: SignUpErrorCapable, LoginErrorCapable {
             if restrictions.failedRestrictions(for: repeatPasswordTextField.value).isEmpty == false {
                 repeatPasswordTextField.isError = true
             }
+            measureOnViewAction(action: .validate, additionalDimensions: [.result("password_too_weak")])
         case .notEqual:
             passwordTextField.isError = true
             repeatPasswordTextField.isError = true
+            measureOnViewAction(action: .validate, additionalDimensions: [.result("password_mismatch")])
         }
     }
 }
