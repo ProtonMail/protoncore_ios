@@ -52,6 +52,24 @@ public enum DynamicPlansHTTPResponseCodeStatus: String, Encodable, CaseIterable 
     case unknown
 }
 
+public enum AcccountRecoveryCancellationHTTPResponseCodeStatus: String, Encodable, CaseIterable {
+    case cancellation
+    case connectionError
+    case http1xx
+    case http200
+    case http2xx
+    case http3xx
+    case http400
+    case http4xx
+    case http5xx
+    case notConnected
+    case parseError
+    case sslError
+    case unknown
+    case wrongPassword
+    case tooManyRequests
+}
+
 public enum PushNotificationsHTTPResponseCodeStatus: String, Encodable, CaseIterable {
     case http1xx
     case http200

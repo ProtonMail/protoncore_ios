@@ -274,9 +274,20 @@ final class ObservabilityEventTests: XCTestCase {
                     "status": {
                         "type": "string",
                         "enum": [
+                            "http1xx",
+                            "http200",
                             "http2xx",
+                            "http3xx",
+                            "http400",
                             "http4xx",
                             "http5xx",
+                            "connectionError",
+                            "notConnected",
+                            "parseError",
+                            "sslError",
+                            "wrongPassword",
+                            "cancellation",
+                            "tooManyRequests",
                             "unknown"
                         ]
                     }
@@ -298,7 +309,7 @@ final class ObservabilityEventTests: XCTestCase {
     """
 
     func testAccountRecoveryCancellationTotalEvent() throws {
-        try HTTPResponseCodeStatus.allCases.forEach { status in
+        try AcccountRecoveryCancellationHTTPResponseCodeStatus.allCases.forEach { status in
             let issues = try validatePayloadAccordingToSchema(
                 event: .accountRecoveryCancellationTotal(status: status),
                 schema: ios_core_accountRecovery_cancellation_total_v1
