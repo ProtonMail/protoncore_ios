@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
     s.dependency "ProtonCore-FeatureFlags", $version
     s.dependency "ProtonCore-Authentication", $version
     s.dependency "ProtonCore-Authentication-KeyGeneration", $version
-    s.dependency "ProtonCore-Telemetry", $version
+
     s.source_files = "libraries/Login/Sources/*.swift", "libraries/Login/Sources/**/*.swift"
     s.resource_bundles = {
        'Resources-Login' => ["libraries/Login/Tests/UnitTests/Mocks/Responses/**/*.json"],

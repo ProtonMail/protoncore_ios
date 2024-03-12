@@ -197,7 +197,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
 
     private func setupBinding() {
         viewModel.error.bind { [weak self] error in
-            guard let self = self else { return }
+            guard let self else { return }
             switch error {
             case .invalidCredentials:
                 self.setError(textField: self.passwordTextField, error: nil)

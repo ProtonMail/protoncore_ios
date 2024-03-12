@@ -21,9 +21,16 @@ import Foundation
 public protocol ProductMetricsMeasurable {
     var productMetrics: ProductMetrics { get }
 
-    func measureOnViewDisplayed()
+    func measureOnViewDisplayed(additionalDimensions: [TelemetryDimension])
     func measureOnViewClosed()
-    func measureOnViewClicked(item: String)
+    func measureOnViewClicked(
+        item: String,
+        additionalDimensions: [TelemetryDimension]
+    )
+    func measureOnViewFocused(
+        item: String,
+        additionalDimensions: [TelemetryDimension]
+    )
     func measureAPIResult(
         action: TelemetryEventAction,
         additionalValues: [TelemetryValue],
@@ -32,7 +39,7 @@ public protocol ProductMetricsMeasurable {
 }
 
 public extension ProductMetricsMeasurable {
-    func measureOnViewDisplayed() {
+    func measureOnViewDisplayed(additionalDimensions: [TelemetryDimension] = []) {
         let event = TelemetryEvent(
             source: .fe, screen: productMetrics.screen, action: .displayed,
             measurementGroup: productMetrics.group,
@@ -41,7 +48,7 @@ public extension ProductMetricsMeasurable {
             ],
             dimensions: [
                 .flow(productMetrics.flow)
-            ]
+            ] + additionalDimensions
         )
         reportEvent(event: event)
     }
@@ -60,7 +67,10 @@ public extension ProductMetricsMeasurable {
         reportEvent(event: event)
     }
 
-    func measureOnViewClicked(item: String) {
+    func measureOnViewClicked(
+        item: String,
+        additionalDimensions: [TelemetryDimension] = []
+    ) {
         let event = TelemetryEvent(
             source: .user, screen: productMetrics.screen, action: .clicked,
             measurementGroup: productMetrics.group,
@@ -70,12 +80,15 @@ public extension ProductMetricsMeasurable {
             dimensions: [
                 .flow(productMetrics.flow),
                 .item(item)
-            ]
+            ] + additionalDimensions
         )
         reportEvent(event: event)
     }
 
-    func measureOnViewFocused(item: String) {
+    func measureOnViewFocused(
+        item: String,
+        additionalDimensions: [TelemetryDimension] = []
+    ) {
         let event = TelemetryEvent(
             source: .user, screen: productMetrics.screen, action: .focused,
             measurementGroup: productMetrics.group,
@@ -85,7 +98,7 @@ public extension ProductMetricsMeasurable {
             dimensions: [
                 .flow(productMetrics.flow),
                 .item(item)
-            ]
+            ] + additionalDimensions
         )
         reportEvent(event: event)
     }

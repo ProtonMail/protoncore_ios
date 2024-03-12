@@ -28,8 +28,9 @@ import ProtonCoreLogin
 import ProtonCoreServices
 import ProtonCoreUIFoundations
 import ProtonCoreObservability
+import ProtonCoreTelemetry
 
-enum SignupAccountType {
+enum SignupAccountType: String {
     case `internal`
     case external
 }
@@ -42,7 +43,13 @@ protocol SignupViewControllerDelegate: AnyObject {
     func hvEmailAlreadyExists(email: String)
 }
 
-class SignupViewController: UIViewController, AccessibleView, Focusable {
+class SignupViewController: UIViewController, AccessibleView, Focusable, ProductMetricsMeasurable {
+    var productMetrics: ProductMetrics = .init(
+        group: TelemetryMeasurementGroup.signUp.rawValue,
+        flow: TelemetryFlow.signUpFull.rawValue,
+        screen: .signup
+    )
+
 
     weak var delegate: SignupViewControllerDelegate?
     var viewModel: SignupViewModel!
@@ -184,10 +191,20 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         scrollView.adjust(forKeyboardVisibilityNotification: nil)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        measureOnViewDisplayed(additionalDimensions: [.accountType(signupAccountType.rawValue)])
+    }
+
     // MARK: Actions
 
     @IBAction func onOtherAccountButtonTap(_ sender: ProtonButton) {
         switchSignupAccountFlow(prefilledUsernameOrEmail: nil)
+        let switchingAccountType = signupAccountType == .internal ? "switch_external" : "switch_internal"
+        measureOnViewClicked(
+            item: switchingAccountType,
+            additionalDimensions: [.accountType(signupAccountType.rawValue)]
+        )
     }
 
     @IBAction func onNextButtonTap(_ sender: ProtonButton) {
@@ -200,6 +217,10 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         } else {
             checkEmail(email: currentlyUsedTextField.value)
         }
+        measureOnViewClicked(
+            item: "next",
+            additionalDimensions: [.accountType(signupAccountType.rawValue)]
+        )
     }
 
     @IBAction func onSignInButtonTap(_ sender: ProtonButton) {
@@ -236,11 +257,16 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         sheet = PMActionSheet(headerView: header, itemGroups: [itemGroup])
         sheet?.eventsListener = self
         sheet?.presentAt(self, animated: true)
+        measureOnViewClicked(
+            item: "domain",
+            additionalDimensions: [.accountType(signupAccountType.rawValue)]
+        )
     }
 
     @objc func onCloseButtonTap(_ sender: UIButton) {
         cancelFocus()
         delegate?.signupCloseButtonPressed()
+        measureOnViewClosed()
     }
 
     // MARK: Private methods
@@ -358,6 +384,13 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
             case .success:
                 ObservabilityEnv.report(.protonAccountAvailableSignupTotal(status: .successful))
                 self.delegate?.validatedName(name: userName, signupAccountType: self.signupAccountType)
+                self.measureAPIResult(
+                    action: .createUser,
+                    additionalDimensions: [
+                        .result("success"),
+                        .accountType(self.signupAccountType.rawValue)
+                    ]
+                )
             case .failure(let error):
                 self.handleCheckFailure(error: error)
             }
@@ -373,6 +406,13 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
             case .success:
                 ObservabilityEnv.report(.protonAccountAvailableSignupTotal(status: .successful))
                 self.delegate?.validatedName(name: userName, signupAccountType: self.signupAccountType)
+                self.measureAPIResult(
+                    action: .createUser,
+                    additionalDimensions: [
+                        .result("success"),
+                        .accountType(self.signupAccountType.rawValue)
+                    ]
+                )
             case .failure(let error):
                 self.handleCheckFailure(error: error)
             }
@@ -388,6 +428,13 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
             case .success:
                 ObservabilityEnv.report(.externalAccountAvailableSignupTotal(status: .successful))
                 self.delegate?.validatedEmail(email: email, signupAccountType: self.signupAccountType)
+                self.measureAPIResult(
+                    action: .createUser,
+                    additionalDimensions: [
+                        .result("success"),
+                        .accountType(self.signupAccountType.rawValue)
+                    ]
+                )
             case .failure(let error):
                 self.handleCheckFailure(error: error, email: email, isExternalEmail: true)
             }
@@ -406,6 +453,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
         switch error {
         case .protonDomainUsedForExternalAccount:
             // this error is not user-facing
+            measureFailureAPIResult(resultValue: "domain_invalid")
             return
         case .generic(let message, let code, _):
             if code == APIErrorCode.humanVerificationAddressAlreadyTaken {
@@ -414,12 +462,14 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
                 } else {
                     ObservabilityEnv.report(.protonAccountAvailableSignupTotal(status: .notAvailable))
                 }
+                measureFailureAPIResult(httpCode: code, resultValue: "username_used")
             } else {
                 if isExternalEmail {
                     ObservabilityEnv.report(.externalAccountAvailableSignupTotal(status: .failed))
                 } else {
                     ObservabilityEnv.report(.protonAccountAvailableSignupTotal(status: .failed))
                 }
+                measureFailureAPIResult(httpCode: code, resultValue: "failure")
             }
 
             if isExternalEmail, code == APIErrorCode.humanVerificationAddressAlreadyTaken {
@@ -437,7 +487,8 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
             if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else {
                 self.showError(message: message)
             }
-        case let .apiMightBeBlocked(message, _):
+            measureFailureAPIResult(resultValue: "username_invalid")
+        case let .apiMightBeBlocked(message, originalError):
             if isExternalEmail {
                 ObservabilityEnv.report(.externalAccountAvailableSignupTotal(status: .apiMightBeBlocked))
             } else {
@@ -449,7 +500,23 @@ class SignupViewController: UIViewController, AccessibleView, Focusable {
                     self?.onDohTroubleshooting()
                 }
             }
+            measureFailureAPIResult(httpCode: originalError.httpCode, resultValue: "failure")
         }
+    }
+
+    private func measureFailureAPIResult(httpCode: Int? = nil, resultValue: String) {
+        var additionalValues: [TelemetryValue] = []
+        if let httpCode {
+            additionalValues = [.httpCode(httpCode)]
+        }
+        measureAPIResult(
+            action: .createUser,
+            additionalValues: additionalValues,
+            additionalDimensions: [
+                .accountType(signupAccountType.rawValue),
+                .result(resultValue)
+            ]
+        )
     }
 
     private func showError(message: String, button: String? = nil, action: (() -> Void)? = nil) {
@@ -499,7 +566,20 @@ extension SignupViewController: PMTextFieldDelegate {
     }
 
     func didBeginEditing(textField: PMTextField) {
-
+        switch textField {
+        case internalNameTextField:
+            measureOnViewFocused(
+                item: "username",
+                additionalDimensions: [.accountType(signupAccountType.rawValue)]
+            )
+        case externalEmailTextField:
+            measureOnViewFocused(
+                item: "email",
+                additionalDimensions: [.accountType(signupAccountType.rawValue)]
+            )
+        default:
+            break
+        }
     }
 }
 

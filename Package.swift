@@ -1022,8 +1022,7 @@ add(
                            .testingToolkitUnitTestsLogin,
                            .testingToolkitUnitTestsObservability,
                            .ohhttpStubs,
-                           .trustKit,
-                           .telemetry
+                           .trustKit
                        ],
                        path: "libraries/Login/Tests/UnitTests",
                        resources: [
