@@ -30,16 +30,9 @@ import ProtonCoreUIFoundations
 import ProtonCoreObservability
 import ProtonCoreTelemetry
 
-enum SignupAccountType {
+enum SignupAccountType: String {
     case `internal`
     case external
-
-    var identifier: String {
-        switch self {
-        case .internal: return "internal"
-        case .external: return "external"
-        }
-    }
 }
 
 protocol SignupViewControllerDelegate: AnyObject {
@@ -200,7 +193,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        measureOnViewDisplayed(additionalDimensions: [.accountType(signupAccountType.identifier)])
+        measureOnViewDisplayed(additionalDimensions: [.accountType(signupAccountType.rawValue)])
     }
 
     // MARK: Actions
@@ -210,7 +203,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
         let switchingAccountType = signupAccountType == .internal ? "switch_external" : "switch_internal"
         measureOnViewClicked(
             item: switchingAccountType,
-            additionalDimensions: [.accountType(signupAccountType.identifier)]
+            additionalDimensions: [.accountType(signupAccountType.rawValue)]
         )
     }
 
@@ -226,7 +219,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
         }
         measureOnViewClicked(
             item: "next",
-            additionalDimensions: [.accountType(signupAccountType.identifier)]
+            additionalDimensions: [.accountType(signupAccountType.rawValue)]
         )
     }
 
@@ -266,7 +259,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
         sheet?.presentAt(self, animated: true)
         measureOnViewClicked(
             item: "domain",
-            additionalDimensions: [.accountType(signupAccountType.identifier)]
+            additionalDimensions: [.accountType(signupAccountType.rawValue)]
         )
     }
 
@@ -395,7 +388,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
                     action: .createUser,
                     additionalDimensions: [
                         .result("success"),
-                        .accountType(self.signupAccountType.identifier)
+                        .accountType(self.signupAccountType.rawValue)
                     ]
                 )
             case .failure(let error):
@@ -417,7 +410,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
                     action: .createUser,
                     additionalDimensions: [
                         .result("success"),
-                        .accountType(self.signupAccountType.identifier)
+                        .accountType(self.signupAccountType.rawValue)
                     ]
                 )
             case .failure(let error):
@@ -439,7 +432,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
                     action: .createUser,
                     additionalDimensions: [
                         .result("success"),
-                        .accountType(self.signupAccountType.identifier)
+                        .accountType(self.signupAccountType.rawValue)
                     ]
                 )
             case .failure(let error):
@@ -520,7 +513,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
             action: .createUser,
             additionalValues: additionalValues,
             additionalDimensions: [
-                .accountType(signupAccountType.identifier),
+                .accountType(signupAccountType.rawValue),
                 .result(resultValue)
             ]
         )
@@ -577,12 +570,12 @@ extension SignupViewController: PMTextFieldDelegate {
         case internalNameTextField:
             measureOnViewFocused(
                 item: "username",
-                additionalDimensions: [.accountType(signupAccountType.identifier)]
+                additionalDimensions: [.accountType(signupAccountType.rawValue)]
             )
         case externalEmailTextField:
             measureOnViewFocused(
                 item: "email",
-                additionalDimensions: [.accountType(signupAccountType.identifier)]
+                additionalDimensions: [.accountType(signupAccountType.rawValue)]
             )
         default:
             break
