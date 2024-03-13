@@ -69,6 +69,7 @@ public enum TelemetryEventScreen: String, Encodable {
     case signup
     case signupPassword = "signup_password"
     case hv
+    case recoveryMethod = "recovery_method"
 }
 
 public enum TelemetryEventAction: String, Encodable {
