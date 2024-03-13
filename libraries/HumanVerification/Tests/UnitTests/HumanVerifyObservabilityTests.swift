@@ -70,6 +70,7 @@ final class HumanVerifyObservabilityTests: XCTestCase {
         dohMock.handleErrorResolvingProxyDomainIfNeededWithExecutorWithSessionIdStub.bodyIs { _, _, _, _, _, _, completion in
             completion(true)
         }
+        dohMock.isCurrentlyUsingProxyDomainStub.fixture = false
         apiService.dohInterfaceStub.fixture = dohMock
         apiService.sessionUIDStub.fixture = "ID"
     }

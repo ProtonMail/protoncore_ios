@@ -31,6 +31,7 @@ Pod::Spec.new do |s|
    s.dependency 'ProtonCore-Utilities', $version
    s.dependency 'ProtonCore-APIClient', $version
    s.dependency 'ProtonCore-Observability', $version
+   s.dependency "ProtonCore-Telemetry", $version
 
    s.dependency "ProtonCore-Crypto", $version
    s.dependency "ProtonCore-CryptoGoInterface", $version

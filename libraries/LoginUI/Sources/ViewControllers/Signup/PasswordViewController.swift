@@ -40,6 +40,10 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable, Produ
         screen: .signupPassword
     )
 
+    enum MeasureConstants {
+        static let resultFailure = "failure"
+        static let resultSuccess = "success"
+    }
 
     weak var delegate: PasswordViewControllerDelegate?
     var viewModel: PasswordViewModel!
@@ -146,7 +150,7 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable, Produ
         case .failure(let error):
             if let willPresentError = customErrorPresenter?.willPresentError(error: error, from: self),
                willPresentError {
-                self.measureOnViewAction(action: .validate, additionalDimensions: [.result("failure")])
+                self.measureOnViewAction(action: .validate, additionalDimensions: [.result(MeasureConstants.resultFailure)])
             } else {
                 self.showError(error: error)
             }
@@ -157,7 +161,7 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable, Produ
                 self.nextButton.isSelected = false
                 self.unlockUI()
             }
-            measureOnViewAction(action: .validate, additionalDimensions: [.result("success")])
+            measureOnViewAction(action: .validate, additionalDimensions: [.result(MeasureConstants.resultSuccess)])
         }
     }
 
