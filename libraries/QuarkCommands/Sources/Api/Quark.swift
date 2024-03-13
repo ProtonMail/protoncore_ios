@@ -49,6 +49,7 @@ public class Quark {
     private var httpClientReadTimeout: TimeInterval = 30
     private var httpClientWriteTimeout: TimeInterval = 30
     private var onResponse: OnQuarkResponse?
+    private var httpMethod: String = "GET"
 
     public init() {
     }
@@ -119,6 +120,17 @@ public class Quark {
     }
 
     /**
+     * Sets the http method for the request.
+     * - Parameter method: the http method as a string (POST, GET...)
+     * - Returns: the Quark instance for chaining
+     */
+    @discardableResult
+    public func httpMethod(_ method: String) -> Quark {
+        self.httpMethod = method
+        return self
+    }
+
+    /**
      * Customizes the request using a builder block.
      * - Parameter requestBuilderBlock: the block with custom request configuration
      * - Returns: the Quark instance for chaining
@@ -144,8 +156,8 @@ public class Quark {
     /**
      Configures the timeout settings for HTTP requests.
      - Parameters:
-       - request
-       - resource
+     - request
+     - resource
      * - Returns: The Quark instance with response handling set
      */
     public func configureTimeouts(request: TimeInterval, resource: TimeInterval) -> Quark {
@@ -170,6 +182,7 @@ public class Quark {
 
         var request = URLRequest(url: URL(string: "https://dummy")!) // Using a dummy URL, internalUrl will replace it
         request.internalUrl(baseUrl: baseUrl, route: route, args: self.args)
+        request.httpMethod = self.httpMethod
 
         onRequestBuilder?(&request)
 
