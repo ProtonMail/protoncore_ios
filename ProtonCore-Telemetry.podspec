@@ -17,10 +17,11 @@ Pod::Spec.new do |s|
     s.source           = $source
 
     s.ios.deployment_target = $ios_deployment_target
+    s.osx.deployment_target = $macos_deployment_target
 
     s.swift_versions = $swift_versions
 
-    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
+    s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
 
     this_pod_does_not_have_subspecs(s)
 
