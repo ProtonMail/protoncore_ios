@@ -46,6 +46,9 @@ extension UIFoundationsTextFieldViewController: PMTextFieldComboDelegate {
     func didChangeValue(_ textField: PMTextFieldCombo, value: String) {
     }
 
+    func didBeginEditing(textField: PMTextFieldCombo) {
+    }
+
     func didEndEditing(textField: PMTextFieldCombo) {
     }
 

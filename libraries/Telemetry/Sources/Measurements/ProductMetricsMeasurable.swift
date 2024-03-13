@@ -38,6 +38,7 @@ public protocol ProductMetricsMeasurable {
     )
     func measureOnViewAction(
         action: TelemetryEventAction,
+        additionalValues: [TelemetryValue],
         additionalDimensions: [TelemetryDimension]
     )
 }
@@ -127,6 +128,7 @@ public extension ProductMetricsMeasurable {
 
     func measureOnViewAction(
         action: TelemetryEventAction,
+        additionalValues: [TelemetryValue] = [],
         additionalDimensions: [TelemetryDimension] = []
     ) {
         let event = TelemetryEvent(
