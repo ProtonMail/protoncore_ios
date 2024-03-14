@@ -130,12 +130,12 @@ public final class LoginRobot: CoreElements {
     }
 
     public func fillEmail(email: String) -> LoginRobot {
-        textField(loginTextFieldId).tap().typeText(email)
+        textField(loginTextFieldId).forceKeyboardFocus().typeText(email)
         return self
     }
 
     public func fillpassword(password: String) -> LoginRobot {
-        secureTextField(passwordTextFieldId).tap().waitUntilExists().typeText(password)
+        secureTextField(passwordTextFieldId).forceKeyboardFocus().typeText(password)
         return self
     }
 
