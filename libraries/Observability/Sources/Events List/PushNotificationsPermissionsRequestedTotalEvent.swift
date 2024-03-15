@@ -31,6 +31,6 @@ public struct PushNotificationsPermissionsRequestedTotalLabels: Encodable, Equat
 
 extension ObservabilityEvent where Payload == PayloadWithLabels<PushNotificationsPermissionsRequestedTotalLabels> {
     public static func pushNotificationsPermissionsRequested(result: PushNotificationsPermissionsResponse) -> Self {
-        .init(name: "ios_core_pushNotifications_permission_requested_total_v1", labels: .init(result: result))
+        .init(name: "ios_core_pushNotifications_permission_requested_total", labels: .init(result: result))
     }
 }

@@ -31,7 +31,7 @@ public struct PushNotificationsTokenRegistrationTotalLabels: Encodable, Equatabl
 
 extension ObservabilityEvent where Payload == PayloadWithLabels<PushNotificationsTokenRegistrationTotalLabels> {
     public static func pushNotificationsTokenRegistered(status: PushNotificationsHTTPResponseCodeStatus) -> Self {
-        .init(name: "ios_core_pushNotifications_token_registration_total_v1", labels: .init(status: status))
+        .init(name: "ios_core_pushNotifications_token_registration_total", labels: .init(status: status))
     }
 }
 
