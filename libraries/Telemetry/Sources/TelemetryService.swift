@@ -22,6 +22,7 @@
 import Foundation
 import ProtonCoreLog
 import ProtonCoreServices
+import ProtonCoreFeatureFlags
 
 public protocol TelemetryServiceProtocol: AnyObject {
     var isTelemetryEnabled: Bool { get }
@@ -46,7 +47,8 @@ public class TelemetryService: TelemetryServiceProtocol {
     }
 
     public var isTelemetryEnabled: Bool {
-        telemetrySettingsService.isTelemetryEnabled
+        FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.telemetrySignUpMetrics)
+        && telemetrySettingsService.isTelemetryEnabled
     }
 
     public func setApiService(apiService: APIService) {

@@ -1560,7 +1560,8 @@ add(
         coreTarget(name: .telemetry,
                    dependencies: [
                        .networking,
-                       .services
+                       .services,
+                       .featureFlags
                    ],
                    path: "libraries/Telemetry/Sources"),
 
@@ -1569,7 +1570,8 @@ add(
                            .telemetry,
                            .testingToolkitUnitTestsCore,
                            .testingToolkitUnitTestsNetworking,
-                           .testingToolkitUnitTestsServices
+                           .testingToolkitUnitTestsServices,
+                           .testingToolkitUnitTestsFeatureFlag
                        ],
                        path: "libraries/Telemetry/Tests")
     ]
