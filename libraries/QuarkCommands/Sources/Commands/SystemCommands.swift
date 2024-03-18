@@ -34,7 +34,25 @@ public extension Quark {
             .args([args])
             .httpMethod("POST")
             .build()
+        
+        return try executeQuarkRequest(request)
+    }
 
+    @discardableResult
+    func systemEnvVariableAsJson(variable: String, value: String) throws -> (data: Data, response: URLResponse) {
+
+        let jsonData = [
+            "env": "\(variable)=\"\(value)\""
+        ] as [String : Any]
+        let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
+
+        // Build the URLRequest with the necessary configurations.
+        let request = try route(systemEnvRoute)
+            .httpMethod("POST")
+            .setRawData(data) // This assumes `setRawData` properly sets the HTTP body.
+            .build()
+
+        // Execute the request and return the response.
         return try executeQuarkRequest(request)
     }
 }
