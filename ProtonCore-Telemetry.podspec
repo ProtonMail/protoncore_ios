@@ -27,6 +27,7 @@ Pod::Spec.new do |s|
 
     s.dependency "ProtonCore-Networking", $version
     s.dependency "ProtonCore-Services", $version
+    s.dependency "ProtonCore-FeatureFlags", $version
 
     s.source_files = 'libraries/Telemetry/Sources/**/*.swift'
 
@@ -34,6 +35,7 @@ Pod::Spec.new do |s|
         test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Core", $version
         test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Networking", $version
         test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Services", $version
+        test_spec.dependency 'ProtonCore-TestingToolkit/UnitTests/FeatureFlag', $version
         test_spec.source_files = 'libraries/Telemetry/Tests/**/*.swift'
     end
 end
