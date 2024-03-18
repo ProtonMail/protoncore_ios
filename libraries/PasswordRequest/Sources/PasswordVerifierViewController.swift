@@ -57,7 +57,9 @@ public final class PasswordVerifierViewController: UIViewController {
     override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         _ = passwordTextField.becomeFirstResponder()
-        ObservabilityEnv.report(.accountRecoveryScreenView(screenID: .cancelResetPassword))
+        if isAccountRecoveryMode {
+            ObservabilityEnv.report(.accountRecoveryScreenView(screenID: .cancelResetPassword))
+        }
     }
 
     private func setupUI() {

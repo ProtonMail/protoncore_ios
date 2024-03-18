@@ -86,6 +86,7 @@ public class PushNotificationService: NSObject, PushNotificationServiceProtocol 
 
     private func registerForRemoteNotifications() {
         NotificationCenterFactory.current.requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+            ObservabilityEnv.report(.pushNotificationsPermissionsRequested(result: granted ? .accepted : .rejected))
             guard granted else {
                 PMLog.error("User didn't grant permission", sendToExternal: true)
                 return
