@@ -80,7 +80,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 12)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 12)
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
@@ -113,7 +113,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 12)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 12)
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
@@ -141,7 +141,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 1)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 1)
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
@@ -169,7 +169,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 18)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 18)
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         let testSubscriptionDict = self.testSubscriptionDict
@@ -213,7 +213,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 15)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 15)
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         let testSubscriptionDict = self.testSubscriptionDict
@@ -261,7 +261,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 80, cycle: 24)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 80, cycle: 24)
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         let testSubscriptionDict = self.testSubscriptionDict
@@ -309,7 +309,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 80, cycle: 6)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 80, cycle: 6)
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .pending) }
@@ -351,7 +351,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 3)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 3)
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
@@ -389,7 +389,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
 
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 12)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 12)
             let out = ProcessAuthenticated(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
@@ -428,7 +428,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 18)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 18)
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
@@ -465,7 +465,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
 
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 30)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 30)
             let out = ProcessAuthenticated(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
@@ -503,7 +503,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 36)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 36)
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
@@ -537,7 +537,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
 
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 1)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 1)
             let out = ProcessAuthenticated(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
@@ -571,7 +571,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 3)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 3)
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
@@ -610,7 +610,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 6)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 6)
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
@@ -644,7 +644,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
         // Expected: Success .resolvingIAPToCreditsCausedByError
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 2)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 2)
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
@@ -685,7 +685,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
         withFeatureFlags([.dynamicPlans]) {
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 2)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 2)
             let out = ProcessAuthenticated(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
@@ -725,7 +725,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 6)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 6)
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
@@ -766,7 +766,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
         withFeatureFlags([.dynamicPlans]) {
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 12)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 12)
             let out = ProcessAuthenticated(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
@@ -806,7 +806,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 1)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 1)
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
@@ -848,7 +848,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
         withFeatureFlags([.dynamicPlans]) {
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 15)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 15)
             let out = ProcessAuthenticated(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
@@ -888,7 +888,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 10)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 10)
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
@@ -931,7 +931,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
         withFeatureFlags([.dynamicPlans]) {
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 5)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 5)
             let out = ProcessAuthenticated(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
@@ -972,7 +972,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 12)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 12)
         let out = ProcessAuthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
@@ -1014,7 +1014,7 @@ final class ProcessAuthenticatedTests: XCTestCase {
         // given
         withFeatureFlags([.dynamicPlans]) {
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 2)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 2)
             let out = ProcessAuthenticated(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }

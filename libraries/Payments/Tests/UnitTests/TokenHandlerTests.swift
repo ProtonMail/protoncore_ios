@@ -65,7 +65,7 @@ final class TokenHandlerTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 1)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 1)
         let out = TokenHandler(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         let testToken = PaymentToken(token: "test token", status: .chargeable)
@@ -105,7 +105,7 @@ final class TokenHandlerTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 12)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 12)
         let out = TokenHandler(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         let testToken = PaymentToken(token: "test token", status: .chargeable)
@@ -149,7 +149,7 @@ final class TokenHandlerTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 2)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 2)
         let out = TokenHandler(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         let testToken = PaymentToken(token: "test token", status: .chargeable)
@@ -194,7 +194,7 @@ final class TokenHandlerTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 6)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 6)
         let out = TokenHandler(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         let testToken = PaymentToken(token: "test token", status: .chargeable)
@@ -239,7 +239,7 @@ final class TokenHandlerTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 12)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 12)
         let out = TokenHandler(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         let testToken = PaymentToken(token: "test token", status: .chargeable)
@@ -285,7 +285,7 @@ final class TokenHandlerTests: XCTestCase {
 
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 3)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 3)
             let out = TokenHandler(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             let testToken = PaymentToken(token: "test token", status: .chargeable)
@@ -336,7 +336,7 @@ final class TokenHandlerTests: XCTestCase {
 
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 1)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 1)
             let out = TokenHandler(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             paymentTokenStorageMock.getStub.bodyIs { count in
@@ -390,7 +390,7 @@ final class TokenHandlerTests: XCTestCase {
 
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 2)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 2)
             let out = TokenHandler(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             paymentTokenStorageMock.getStub.bodyIs { count in
@@ -442,7 +442,7 @@ final class TokenHandlerTests: XCTestCase {
 
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 4)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 4)
             let out = TokenHandler(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             paymentTokenStorageMock.getStub.bodyIs { count in
@@ -498,7 +498,7 @@ final class TokenHandlerTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 1)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 1)
         let out = TokenHandler(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         let testToken = PaymentToken(token: "test token", status: .chargeable)
@@ -548,7 +548,7 @@ final class TokenHandlerTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 6)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 6)
         let out = TokenHandler(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { count in
@@ -600,7 +600,7 @@ final class TokenHandlerTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 6)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 6)
         let out = TokenHandler(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { count in
@@ -650,7 +650,7 @@ final class TokenHandlerTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "test", amount: 100, amountDue: 100, cycle: 2)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 2)
         let out = TokenHandler(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { count in
