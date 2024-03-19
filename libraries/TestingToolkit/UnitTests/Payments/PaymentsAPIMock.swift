@@ -35,13 +35,17 @@ public final class PaymentsApiMock: PaymentsApiProtocol {
         paymentStatusRequestStub(api)
     }
 
-    @ThrowingFuncStub(PaymentsApiProtocol.buySubscriptionRequest, initialReturn: { V5SubscriptionRequest(api: $0.0, planId: $0.1) }) public var buySubscriptionRequestStub
+    @ThrowingFuncStub(PaymentsApiProtocol.buySubscriptionRequest, initialReturn: { 
+        V5SubscriptionRequest(api: $0.0, planName: $0.1.planName)
+    }) public var buySubscriptionRequestStub
     public func buySubscriptionRequest(
-        api: APIService, planId: String, amount: Int, amountDue: Int, cycle: Int, paymentAction: PaymentAction, isCreditingAllowed: Bool
-    ) throws -> SubscriptionRequest { try buySubscriptionRequestStub(api, planId, amount, amountDue, cycle, paymentAction, isCreditingAllowed) }
+        api: APIService, plan: PlanToBeProcessed, amountDue: Int, paymentAction: PaymentAction, isCreditingAllowed: Bool
+    ) throws -> SubscriptionRequest { try buySubscriptionRequestStub(api, plan, amountDue, paymentAction, isCreditingAllowed) }
 
-    @FuncStub(PaymentsApiProtocol.buySubscriptionForZeroRequest, initialReturn: { V5SubscriptionRequest(api: $0.0, planId: $0.1) }) public var buySubscriptionForZeroRequestStub
-    public func buySubscriptionForZeroRequest(api: APIService, planId: String) -> SubscriptionRequest { buySubscriptionForZeroRequestStub(api, planId) }
+    @FuncStub(PaymentsApiProtocol.buySubscriptionForZeroRequest, initialReturn: {
+        V5SubscriptionRequest(api: $0.0, planName: $0.1.planName)
+    }) public var buySubscriptionForZeroRequestStub
+    public func buySubscriptionForZeroRequest(api: APIService, plan: PlanToBeProcessed) -> SubscriptionRequest { buySubscriptionForZeroRequestStub(api, plan) }
 
     @FuncStub(PaymentsApiProtocol.getSubscriptionRequest, initialReturn: { V5GetSubscriptionRequest(api: $0) }) public var getSubscriptionRequestStub
     public func getSubscriptionRequest(api: APIService) -> GetSubscriptionRequest { getSubscriptionRequestStub(api) }

@@ -80,13 +80,13 @@ final class V5SubscriptionRequestTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        sut = V5SubscriptionRequest(api: APIServiceMock(), planId: "planId", amount: 123, cycle: 12, paymentAction: .token(token: "token"))
+        sut = V5SubscriptionRequest(api: APIServiceMock(), planName: "testName", amount: 123, cycle: 12, paymentAction: .token(token: "token"))
     }
 
     func test_tokenParameters() {
         // Given
         let token = "thisIsAToken"
-        sut = V5SubscriptionRequest(api: APIServiceMock(), planId: "planId", amount: 123, cycle: 13, paymentAction: .token(token: token))
+        sut = V5SubscriptionRequest(api: APIServiceMock(), planName: "testName", amount: 123, cycle: 13, paymentAction: .token(token: token))
 
         // Then
         XCTAssertEqual(sut.parameters!["Amount"] as! Int, 123)
@@ -97,7 +97,7 @@ final class V5SubscriptionRequestTests: XCTestCase {
 
     func test_appleParameters() {
         // Given
-        sut = V5SubscriptionRequest(api: APIServiceMock(), planId: "planId", amount: 123, cycle: 11, paymentAction: .apple(receipt: "receipt"))
+        sut = V5SubscriptionRequest(api: APIServiceMock(), planName: "testName", amount: 123, cycle: 11, paymentAction: .apple(receipt: "receipt"))
 
         // Then
         XCTAssertEqual(sut.parameters!["Amount"] as! Int, 123)

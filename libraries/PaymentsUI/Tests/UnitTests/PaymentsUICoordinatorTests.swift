@@ -108,7 +108,7 @@ final class PaymentsUICoordinatorTests: XCTestCase {
                 "PeriodEnd": 0,
                 "CouponCode": "test code",
                 "Cycle": 12,
-                "Plans": [String]()
+                "Plans": [String](),
             ] as [String: Any]
         ]
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
@@ -120,13 +120,15 @@ final class PaymentsUICoordinatorTests: XCTestCase {
                 XCTFail()
             }
         }
-        let plan = InAppPurchasePlan(protonPlan: .dummy.updated(name: "mail_plus"), listOfIAPIdentifiers: ["ios_test_12_usd_non_renewing"])!
+        let plan = InAppPurchasePlan(protonPlan: .dummy.updated(name: "mailplus",
+                                                                vendors: .init(apple: .init(plans: ["12": "ios_mailplus_12_usd_non_renewing"]))),
+                                     listOfIAPIdentifiers: ["ios_mailplus_12_usd_non_renewing"])!
         let testPlan = PlanPresentation(accountPlan: plan, planPresentationType: .current(.unavailable))
         let coordinator = PaymentsUICoordinator.init(planService: .left(planServiceMock),
                                                      storeKitManager: storeKitManager,
                                                      purchaseManager: purchaseManager,
                                                      clientApp: .vpn,
-                                                     shownPlanNames: ["free", "test"],
+                                                     shownPlanNames: ["free", "mailplus"],
                                                      customization: .empty,
                                                      alertManager: AlwaysDelegatingPaymentsUIAlertManager(delegatedAlertManager: alertManager)) { }
         coordinator.userDidSelectPlan(plan: testPlan, addCredits: false) { }
