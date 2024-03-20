@@ -27,14 +27,14 @@ private let driveUsedSpace: String = "quark/raw::drive:quota:set-used-space"
 public extension Quark {
 
     @discardableResult
-    func drivePopulateUser(user: User, scenario: Int, hasPhotos: Bool, device: Bool = false) throws -> (data: Data, response: URLResponse) {
+    func drivePopulateUser(user: User, scenario: Int, hasPhotos: Bool, withDevice: Bool = false) throws -> (data: Data, response: URLResponse) {
 
         let args = [
             "-u=\(user.name)",
             "-p=\(user.password)",
             "-S=\(scenario)",
             hasPhotos ? "--photo=\(hasPhotos)" : nil,
-            device ? "--device=\(device)" : nil,
+            withDevice ? "--device=\(withDevice)" : nil,
         ].compactMap { $0 }
 
         let request = try route(drivePopulate)

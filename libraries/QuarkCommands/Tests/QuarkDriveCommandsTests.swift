@@ -1,6 +1,6 @@
 //
-//  QuarkPaymentsCommandsTests.swift
-//  ProtonCore-QuarkCommands-Tests - Created on 07/13/2022.
+//  QuarkDriveCommandsTests.swift
+//  ProtonCore-QuarkCommands-Tests - Created on 03/20/2024.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -57,18 +57,16 @@ final class QuarkDriveCommandsTests: XCTestCase {
         }
         // mock url
         dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in "https://test.quark.commands.url" }
-
-
     }
 
-    func testDrivePopule() {
+    func testDrivePopuleQuarkCommand() {
         // mock response
         let quarkCommand = Quark().baseUrl(dohMock)
 
         let user = User(name: "quarkcommand@test.quark.commands.url", password: "123456789")
         do {
             // Act
-            let (data, response) = try quarkCommand.drivePopulateUser(user: user, scenario: 4, hasPhotos: false, device: false)
+            let (_, response) = try quarkCommand.drivePopulateUser(user: user, scenario: 4, hasPhotos: false, withDevice: false)
 
             // Assert
             XCTAssertEqual(response.url?.absoluteString, "https://test.quark.commands.url/quark/raw::drive:populate?-u=quarkcommand@test.quark.commands.url&-p=123456789&-S=4")
@@ -77,14 +75,14 @@ final class QuarkDriveCommandsTests: XCTestCase {
         }
     } 
 
-    func testDrivePopuleWithPhotosAndDevice() {
+    func testDrivePopuleQuarkCommandWithPhotosAndDevice() {
         let quarkCommand = Quark().baseUrl(dohMock)
 
         let user = User(name: "quarkcommand@test.quark.commands.url", password: "123456789")
 
         do {
             // Act
-            let (data, response) = try quarkCommand.drivePopulateUser(user: user, scenario: 4, hasPhotos: true, device: true)
+            let (_, response) = try quarkCommand.drivePopulateUser(user: user, scenario: 4, hasPhotos: true, withDevice: true)
 
             // Assert
             XCTAssertEqual(response.url?.absoluteString, "https://test.quark.commands.url/quark/raw::drive:populate?-u=quarkcommand@test.quark.commands.url&-p=123456789&-S=4&--photo=true&--device=true")
