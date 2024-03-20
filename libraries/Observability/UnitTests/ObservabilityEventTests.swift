@@ -197,7 +197,10 @@ final class ObservabilityEventTests: XCTestCase {
                             "email_verification",
                             "congratulation",
                             "create_proton_account_with_current_email",
-                            "plan_selection"
+                            "plan_selection",
+                            "change_password",
+                            "change_mailbox_password",
+                            "change_password_2fa"
                         ]
                     }
                 },
@@ -373,6 +376,94 @@ final class ObservabilityEventTests: XCTestCase {
             }
         }
     }
+
+    // MARK: - changePasswordUpdateLoginPassword event
+
+    let ios_core_changePassword_updateLoginPassword_total_v1 = """
+    {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+            "Labels": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "enum": ["http2xx", "http4xx", "http5xx", "unknown"]
+                    },
+                    "twoFactorMode": {
+                        "type": "string",
+                        "enum": ["enabled", "disabled"]
+                    }
+                },
+                "required": ["status", "twoFactorMode"],
+                "additionalProperties": false
+            },
+            "Value": {
+                "type": "integer",
+                "minimum": 1
+            }
+        },
+        "required": ["Labels", "Value"],
+        "$id": "https://proton.me/ios_core_changePassword_updateLoginPassword_total_v1.schema.json",
+        "title": "me.proton.core.observability.domain.metrics.ChangePasswordUpdateLoginPasswordTotal",
+        "description": "Upgrade password request.",
+        "additionalProperties": false
+    }
+
+    """
+
+    func testChangePasswordUpdateLoginPasswordEvent() throws {
+        try HTTPResponseCodeStatus.allCases.forEach { status in
+            let issues = try validatePayloadAccordingToSchema(event: .updateLoginPassword(status: status, twoFactorMode: .enabled),
+                                                              schema: ios_core_changePassword_updateLoginPassword_total_v1)
+            XCTAssertEqual(issues, .noIssues)
+        }
+    }
+
+    // MARK: - changePasswordUpdateMailboxPassword event
+
+    let ios_core_changePassword_updateMailboxPassword_total_v1 = """
+    {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+            "Labels": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "enum": ["http2xx", "http4xx", "http5xx", "unknown"]
+                    },
+                    "twoFactorMode": {
+                        "type": "string",
+                        "enum": ["enabled", "disabled"]
+                    }
+                },
+                "required": ["status", "twoFactorMode"],
+                "additionalProperties": false
+            },
+            "Value": {
+                "type": "integer",
+                "minimum": 1
+            }
+        },
+        "required": ["Labels", "Value"],
+        "$id": "https://proton.me/ios_core_changePassword_updateMailboxPassword_total_v1.schema.json",
+        "title": "me.proton.core.observability.domain.metrics.ChangePasswordUpdateMailboxPasswordTotal",
+        "description": "Updating user keys for password change request.",
+        "additionalProperties": false
+    }
+    """
+
+    func testChangePasswordUpdateMailboxPasswordEvent() throws {
+        try HTTPResponseCodeStatus.allCases.forEach { status in
+            let issues = try validatePayloadAccordingToSchema(event: .updateMailboxPassword(status: status, twoFactorMode: .enabled),
+                                                              schema: ios_core_changePassword_updateMailboxPassword_total_v1)
+            XCTAssertEqual(issues, .noIssues)
+        }
+    }
+
 
     // MARK: - protonAccountAvailableSignup event
 

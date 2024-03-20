@@ -104,3 +104,8 @@ public enum ApplicationStatus: String, Encodable, CaseIterable {
     case active
     case inactive
 }
+
+public enum TwoFactorMode: String, Encodable, CaseIterable {
+    case enabled
+    case disabled
+}
