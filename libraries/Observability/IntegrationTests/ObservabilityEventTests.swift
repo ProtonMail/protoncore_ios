@@ -41,7 +41,7 @@ final class ObservabilityEventTests: IntegrationTestCase {
         var appVersion: String { "ios-mail@4.2.0-dev" }
         var userAgent: String? { nil }
         var locale: String { "en_US" }
-        var additionalHeaders: [String: String]? { nil }
+        var additionalHeaders: [String: String]? { ["X-Enforce-UnauthSession": "true"] }
         func onUpdate(serverTime: Int64) { }
         func isReachable() -> Bool { true }
         func onDohTroubleshot() { }
