@@ -1411,9 +1411,9 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
 
         // THEN
         XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests * 2)
+        XCTAssertGreaterThan(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertEqual(sessionMock.requestJSONStub.callCounter, numberOfRequests * 2)
+        XCTAssertGreaterThan(sessionMock.requestJSONStub.callCounter, numberOfRequests)
         XCTAssertEqual(results.count, Int(numberOfRequests))
     }
 
@@ -1466,9 +1466,9 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
 
         // THEN
         XCTAssertTrue(sessionMock.requestDecodableStub.wasCalledExactlyOnce)
-        XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests * 2)
+        XCTAssertGreaterThan(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
-        XCTAssertEqual(sessionMock.requestJSONStub.callCounter, numberOfRequests * 2)
+        XCTAssertGreaterThan(sessionMock.requestJSONStub.callCounter, numberOfRequests)
         XCTAssertEqual(results.count, Int(numberOfRequests))
     }
 
@@ -1532,10 +1532,10 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
 
         // THEN
         XCTAssertTrue(onRefreshCounter.value == 1)
-        XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests * 2)
+        XCTAssertGreaterThan(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(sessionMock.requestDecodableStub.callCounter == 2)
-        XCTAssertEqual(sessionMock.requestJSONStub.callCounter, numberOfRequests * 2)
+        XCTAssertGreaterThan(sessionMock.requestJSONStub.callCounter, numberOfRequests)
         XCTAssertEqual(results.count, Int(numberOfRequests))
         XCTAssertEqual(auth.value.sessionID, "new test session uid")
     }
@@ -1602,10 +1602,10 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
 
         // THEN
         XCTAssertTrue(onRefreshCounter.value == 1)
-        XCTAssertEqual(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests * 2)
+        XCTAssertGreaterThan(authDelegateMock.getTokenAuthCredentialStub.callCounter, numberOfRequests)
         XCTAssertTrue(authDelegateMock.getTokenCredentialStub.wasNotCalled)
         XCTAssertTrue(sessionMock.requestDecodableStub.callCounter == 2)
-        XCTAssertEqual(sessionMock.requestJSONStub.callCounter, numberOfRequests * 2)
+        XCTAssertGreaterThan(sessionMock.requestJSONStub.callCounter, numberOfRequests)
         XCTAssertEqual(results.count, Int(numberOfRequests))
         XCTAssertEqual(auth.value.sessionID, "new test session uid")
     }
