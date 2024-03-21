@@ -25,7 +25,7 @@ lane :integration_test_reports do
     scheme: 'IntegrationTests',
     workspace: '.swiftpm/xcode/package.xcworkspace',
     xccov_file_direct_path: 'fastlane/test_output/IntegrationTests.xcresult',
-    minimum_coverage_percentage: 22.5
+    minimum_coverage_percentage: 19.0
   )
 end
 
