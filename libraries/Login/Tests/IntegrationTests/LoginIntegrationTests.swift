@@ -83,21 +83,22 @@ final class LoginIntegrationTests: IntegrationTestCase {
         super.tearDown()
     }
 
-    private func createAccountAndLogin(accountToCreate: AccountAvailableForCreation,
-                                       minimumAccountType: AccountType) async throws -> Result<LoginStatus, LoginError> {
-        let account = try await QuarkCommands.create(account: accountToCreate, currentlyUsedHostUrl: environment.doh.getCurrentlyUsedHostUrl()).get().account
+    private func createAccountAndLogin(user: User, minimumAccountType: AccountType) async throws -> Result<LoginStatus, LoginError> {
+        let quarkCommands = Quark().baseUrl(environment.doh)
+        try quarkCommands.userCreate(user: user)
+
         let apiService = PMAPIService.createAPIServiceWithoutSession(environment: environment, challengeParametersProvider: .empty)
         apiService.authDelegate = authHelper
         apiService.serviceDelegate = serviceDelegate
         let loginService = LoginService(api: apiService, clientApp: .vpn, minimumAccountType: minimumAccountType)
         return await withCheckedContinuation { continuation in
-            loginService.login(username: account.username, password: account.password, challenge: nil, completion: continuation.resume(returning:))
+            loginService.login(username: user.name, password: user.password, challenge: nil, completion: continuation.resume(returning:))
         }
     }
 
     func testExternalAccountWithoutKeysGetsKeysGeneratedIfRequiredAccountIsUsername() async throws {
-        let loginResult = try await createAccountAndLogin(accountToCreate: .external(),
-                                                          minimumAccountType: .username)
+        let user = User(email: randomEmail, name: randomEmail, password: randomPassword, isExternal: true)
+        let loginResult = try await createAccountAndLogin(user: user, minimumAccountType: .username)
 
         guard case let .success(.finished(userData)) = loginResult else { XCTFail(); return }
         XCTAssertFalse(userData.user.keys.isEmpty)
@@ -107,9 +108,9 @@ final class LoginIntegrationTests: IntegrationTestCase {
     }
 
     func testDoesNotRequireAskingForSecondPasswordForUsernameRequirement() async throws {
-        let loginResult = try await createAccountAndLogin(accountToCreate: .freeWithAddressAndMailboxPassword(),
-                                                          minimumAccountType: .username)
-
+        let user = User(name: randomName, password: randomPassword, mailboxPassword: "456")
+        let loginResult = try await createAccountAndLogin(user: user, minimumAccountType: .username)
+       
         guard case let .success(.finished(userData)) = loginResult else { XCTFail(); return }
         XCTAssertFalse(userData.user.keys.isEmpty)
         let address = try XCTUnwrap(userData.addresses.first)
@@ -118,16 +119,17 @@ final class LoginIntegrationTests: IntegrationTestCase {
     }
 
     func testRequiresAskingForSecondPasswordForExternalRequirement() async throws {
-        let loginResult = try await createAccountAndLogin(accountToCreate: .freeWithAddressAndMailboxPassword(),
-                                                          minimumAccountType: .external)
-
+        var user = User(name: randomEmail, password: randomPassword, mailboxPassword: "456")
+        user.email = randomEmail
+        user.isExternal = true
+        let loginResult = try await createAccountAndLogin(user: user, minimumAccountType: .external)
         guard case .success(.askSecondPassword) = loginResult else { XCTFail(); return }
     }
 
     func testRequiresAskingForSecondPasswordForInternalRequirement() async throws {
-        let loginResult = try await createAccountAndLogin(accountToCreate: .freeWithAddressAndMailboxPassword(),
-                                                          minimumAccountType: .internal)
-
+        let user = User(name: randomName, password: randomPassword, mailboxPassword: "456")
+        let loginResult = try await createAccountAndLogin(user: user, minimumAccountType: .internal)
+        
         guard case .success(.askSecondPassword) = loginResult else { XCTFail(); return }
     }
 
