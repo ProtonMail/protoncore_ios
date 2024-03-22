@@ -50,9 +50,9 @@ class HttpCodeTests: XCTestCase {
         HTTPStubs.removeAllStubs()
     }
 
-    func defaultRequest() async -> (URLSessionDataTask?, Result<TestResponse, SessionResponseError>) {
+    func defaultRequest() async throws -> (URLSessionDataTask?, Result<TestResponse, SessionResponseError>) {
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://www.example.com/error", method: .post, timeout: 30, retryPolicy: .background)
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://www.example.com/error", method: .post, timeout: 30, retryPolicy: .background)
         return await withCheckedContinuation { continuation in
             session.request(with: request, jsonDecoder: jsonDecoder) { (task, result: Result<TestResponse, SessionResponseError>) in
                 continuation.resume(returning: (task, result))
@@ -105,7 +105,7 @@ class HttpCodeTests: XCTestCase {
     // 200    OK    Successful request 
     func testHTTP200CODE1000() async throws {
         setupstub(httpCode: 200)
-        let result = await defaultRequest()
+        let result = try await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
         XCTAssertEqual(httpURLResponse.statusCode, 200)
@@ -114,7 +114,7 @@ class HttpCodeTests: XCTestCase {
 
     func testHTTP200CODE9001() async throws {
         setupstub(httpCode: 200, code: 9001, details: .humanVerification)
-        let result = await defaultRequest()
+        let result = try await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
         XCTAssertEqual(httpURLResponse.statusCode, 200)
@@ -132,7 +132,7 @@ class HttpCodeTests: XCTestCase {
 
     func testHTTP200CODE9002() async throws {
         setupstub(httpCode: 200, code: 9002, details: .deviceVerification)
-        let result = await defaultRequest()
+        let result = try await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
         XCTAssertEqual(httpURLResponse.statusCode, 200)
@@ -154,7 +154,7 @@ class HttpCodeTests: XCTestCase {
             return HTTPStubsResponse(jsonObject: ret, statusCode: 200, headers: ["Content-Type": "application/json"])
         }
 
-        let result = await defaultRequest()
+        let result = try await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
         XCTAssertEqual(httpURLResponse.statusCode, 200)
@@ -170,7 +170,7 @@ class HttpCodeTests: XCTestCase {
     // 201    CREATED    Display success
     func testHTTP201CODE1000() async throws {
         setupstub(httpCode: 201)
-        let result = await defaultRequest()
+        let result = try await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
         XCTAssertEqual(httpURLResponse.statusCode, 201)
@@ -180,7 +180,7 @@ class HttpCodeTests: XCTestCase {
     // 204    NO CONTENT    Display success
     func testHTTP204CODE1000() async throws {
         setupstub(httpCode: 204)
-        let result = await defaultRequest()
+        let result = try await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
         XCTAssertEqual(httpURLResponse.statusCode, 204)
@@ -192,7 +192,7 @@ class HttpCodeTests: XCTestCase {
     // 403    Missing scope
     func testHTTP403CODE403() async throws {
         setupstub(httpCode: 403, code: 403, details: .missingScopes)
-        let result = await defaultRequest()
+        let result = try await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
         XCTAssertEqual(httpURLResponse.statusCode, 403)
@@ -209,7 +209,7 @@ class HttpCodeTests: XCTestCase {
     func testHTTP400() async throws {
         let msg = "Display error text"
         setupstub(httpCode: 400, code: nil, error: msg)
-        let result = await defaultRequest()
+        let result = try await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
         XCTAssertEqual(httpURLResponse.statusCode, 400)
@@ -221,7 +221,7 @@ class HttpCodeTests: XCTestCase {
     func testHTTP401() async throws {
         let msg = "Hold requests, refresh oauth"
         setupstub(httpCode: 401, code: nil, error: msg)
-        let result = await defaultRequest()
+        let result = try await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
         XCTAssertEqual(httpURLResponse.statusCode, 401)
@@ -233,7 +233,7 @@ class HttpCodeTests: XCTestCase {
     func testHTTP403() async throws {
         let msg = "Ask for re-authentication for scopes"
         setupstub(httpCode: 403, code: nil, error: msg)
-        let result = await defaultRequest()
+        let result = try await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
         XCTAssertEqual(httpURLResponse.statusCode, 403)
@@ -245,7 +245,7 @@ class HttpCodeTests: XCTestCase {
     func testHTTP404() async throws {
         let msg = "Display error text"
         setupstub(httpCode: 400, code: nil, error: msg)
-        let result = await defaultRequest()
+        let result = try await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
         XCTAssertEqual(httpURLResponse.statusCode, 400)
@@ -257,7 +257,7 @@ class HttpCodeTests: XCTestCase {
     func testHTTP409() async throws {
         let msg = "username already existing or invoice already being processed."
         setupstub(httpCode: 409, code: 33101, error: msg)
-        let result = await defaultRequest()
+        let result = try await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let responseError = try XCTUnwrap(result.1.error?.underlyingError as? ResponseError)
         XCTAssertEqual(httpURLResponse.statusCode, 409)
@@ -270,7 +270,7 @@ class HttpCodeTests: XCTestCase {
     func testHTTP410() async throws {
         let msg = "Display error text"
         setupstub(httpCode: 410, code: nil, error: msg)
-        let result = await defaultRequest()
+        let result = try await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
         XCTAssertEqual(httpURLResponse.statusCode, 410)
@@ -282,7 +282,7 @@ class HttpCodeTests: XCTestCase {
     func testHTTP422() async throws {
         let msg = "Display error text"
         setupstub(httpCode: 422, code: 2001, error: msg)
-        let result = await defaultRequest()
+        let result = try await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let responseError = try XCTUnwrap(result.1.error?.underlyingError as? ResponseError)
         XCTAssertEqual(httpURLResponse.statusCode, 422)
@@ -305,7 +305,7 @@ class HttpCodeTests: XCTestCase {
             return HTTPStubsResponse(jsonObject: ret, statusCode: 408, headers: ["Content-Type": "application/json", "Retry-After": "5"])
         }
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://www.example.com/error", method: .post, timeout: 30, retryPolicy: .background )
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://www.example.com/error", method: .post, timeout: 30, retryPolicy: .background )
         let result = await withCheckedContinuation { continuation in
             session.request(with: request, jsonDecoder: jsonDecoder) { (task, result: Result<TestResponse, SessionResponseError>) in
                 continuation.resume(returning: (task, result))
@@ -337,7 +337,7 @@ class HttpCodeTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://www.example.com/error", method: .post, timeout: 30, retryPolicy: .background )
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://www.example.com/error", method: .post, timeout: 30, retryPolicy: .background )
         let result = await withCheckedContinuation { continuation in
             session.request(with: request, jsonDecoder: jsonDecoder) { (task, result: Result<TestResponse, SessionResponseError>) in
                 continuation.resume(returning: (task, result))
@@ -359,7 +359,7 @@ class HttpCodeTests: XCTestCase {
     func testHTTP500() async throws {
         let msg = "Display error text"
         setupstub(httpCode: 500, code: nil, error: msg)
-        let result = await defaultRequest()
+        let result = try await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
         XCTAssertEqual(httpURLResponse.statusCode, 500)
@@ -371,7 +371,7 @@ class HttpCodeTests: XCTestCase {
     func testHTTP501() async throws {
         let msg = "Display error text"
         setupstub(httpCode: 501, code: nil, error: msg)
-        let result = await defaultRequest()
+        let result = try await defaultRequest()
         let httpURLResponse = try XCTUnwrap(result.0?.response as? HTTPURLResponse)
         let response = try XCTUnwrap(result.1.get())
         XCTAssertEqual(httpURLResponse.statusCode, 501)
@@ -394,7 +394,7 @@ class HttpCodeTests: XCTestCase {
             return HTTPStubsResponse(jsonObject: ret, statusCode: 502, headers: ["Content-Type": "application/json", "Retry-After": "2"])
         }
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://www.example.com/error", method: .post, timeout: 30, retryPolicy: .background )
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://www.example.com/error", method: .post, timeout: 30, retryPolicy: .background )
         let result = await withCheckedContinuation { continuation in
             session.request(with: request, jsonDecoder: jsonDecoder) { (task, result: Result<TestResponse, SessionResponseError>) in
                 continuation.resume(returning: (task, result))
@@ -426,7 +426,7 @@ class HttpCodeTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://www.example.com/error", method: .post, timeout: 30, retryPolicy: .background )
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://www.example.com/error", method: .post, timeout: 30, retryPolicy: .background )
         let result = await withCheckedContinuation { continuation in
             session.request(with: request, jsonDecoder: jsonDecoder) { (task, result: Result<TestResponse, SessionResponseError>) in
                 continuation.resume(returning: (task, result))

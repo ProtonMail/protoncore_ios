@@ -117,7 +117,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
     func testRequestWithJSONPassesServerErrorCodeInsteadOfHttpCode() async throws {
         let service = testService
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
 
         sessionMock.requestJSONStub.bodyIs { _, _, _, completion in
@@ -137,7 +137,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
     func testRequestWithJSONPassesHttpErrorCode() async throws {
         let service = testService
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
 
         sessionMock.requestJSONStub.bodyIs { _, _, _, completion in
@@ -158,7 +158,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         let originalResponseDict: [String: Any] = ["Code": 4242, "string": "test string", "number": 24]
         let service = testService
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
 
         sessionMock.requestJSONStub.bodyIs { _, _, _, completion in
@@ -184,7 +184,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
     func testDeprecatedRequestMethods_Variant1() async throws {
         let service = testService
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestJSONStub.bodyIs { _, _, _, completion in completion(nil, .success([:])) }
 
@@ -201,7 +201,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
     func testDeprecatedRequestMethods_Variant2() async throws {
         let service = testService
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestJSONStub.bodyIs { _, _, _, completion in completion(nil, .success([:])) }
 
@@ -218,7 +218,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
     func testDeprecatedUploadMethods_Variant6() async throws {
         let service = testService
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
 
         sessionMock.uploadWithFilesJSONStub.bodyIs { _, _, _, completion, _ in
@@ -252,7 +252,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         service.authDelegate = authDelegateMock
 
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestJSONStub.bodyIs { _, _, _, completion in completion(nil, .success([:])) }
 
@@ -288,7 +288,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         let service = testService
         service.authDelegate = authDelegateMock
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { _, _, _, completion in completion(nil, .success([:])) }
 
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
@@ -322,7 +322,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         let service = testService
         service.authDelegate = authDelegateMock
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { _, _, _, completion in completion(nil, .success([:])) }
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
@@ -365,7 +365,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         // GIVEN
         let service = testService
         service.authDelegate = authDelegateMock
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { _, _, _, completion in completion(nil, .success([:])) }
 
         // WHEN
@@ -411,7 +411,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { _, _, _, completion in completion(nil, .success([:])) }
 
         // WHEN
@@ -448,7 +448,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
 
         let task = URLSessionDataTaskMock(response: .init(statusCode: 200))
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { _, _, taskCreated, completion in
             taskCreated(task)
             completion(task, .success([:]))
@@ -523,7 +523,9 @@ final class PMAPIServiceRequestTests: XCTestCase {
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+        }
 
         enum TestError: Error { case testError }
         sessionMock.requestJSONStub.bodyIs { _, _, _, completion in completion(nil, .failure(SessionResponseError.networkingEngineError(underlyingError: TestError.testError as NSError))) }
@@ -552,7 +554,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         let task = URLSessionDataTaskMock()
         task.responseStub.fixture = HTTPURLResponse(url: URL(string: "https://unit.test")!, statusCode: 0, httpVersion: nil,
                                                     headerFields: ["Date": "Fri, 13 May 2022 09:42:00 +02:00"])
@@ -577,7 +579,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { _, _, _, completion in completion(nil, .success([:])) }
         sessionMock.failsTLSStub.bodyIs { _, _ in "test TLS error description" }
 
@@ -602,7 +604,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         enum TestError: Error, Equatable { case testError }
         sessionMock.requestJSONStub.bodyIs { _, _, _, completion in completion(nil, .failure(.networkingEngineError(underlyingError: TestError.testError as NSError))) }
 
@@ -625,7 +627,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { _, _, _, completion in completion(nil, .success([:])) }
 
         dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, _, _, _, _, _, executor, completion in
@@ -657,7 +659,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { _, _, _, completion in completion(nil, .success([:])) }
 
         dohMock.handleErrorResolvingProxyDomainAndSynchronizingCookiesIfNeededWithSessionIdStub.bodyIs { counter, _, _, _, _, _, executor, completion in
@@ -690,7 +692,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
 
         let task = URLSessionDataTaskMock(response: .init(statusCode: 200))
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { _, _, taskCreated, completion in
             taskCreated(task)
             completion(task, .success([:]))
@@ -732,7 +734,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in authCredential }
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { _, _, _, completion in completion(nil, .success([:])) }
 
         dohMock.errorIndicatesDoHSolvableProblemStub.bodyIs { _, _ in true }
@@ -772,7 +774,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         service.serviceDelegate = apiServiceDelegateMock
         service.authDelegate = authDelegateMock
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { _, request, _, completion in
             guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
             let response = HTTPURLResponse(statusCode: 401)
@@ -805,7 +807,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         service.serviceDelegate = apiServiceDelegateMock
         service.authDelegate = authDelegateMock
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { counter, request, _, completion in
             if counter == 1 {
                 guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
@@ -823,7 +825,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         }
 
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
@@ -859,7 +861,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         service.serviceDelegate = apiServiceDelegateMock
         service.authDelegate = authDelegateMock
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { counter, request, _, completion in
             if counter == 1 {
                 guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
@@ -877,7 +879,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         }
 
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
@@ -929,7 +931,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
             .updated(UID: "test sessionUID", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in oldCredentials }
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { counter, request, _, completion in
             if counter == 1 {
                 guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
@@ -947,7 +949,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         }
 
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
@@ -988,7 +990,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
             .updated(UID: "test sessionUID", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in oldCredentials }
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { counter, request, _, completion in
             if counter == 1 || counter == 2 {
                 guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
@@ -1001,7 +1003,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         }
 
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }
@@ -1042,7 +1044,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
             .updated(UID: "test sessionUID", accessToken: "test access token old", refreshToken: "test refresh token old", scopes: ["full"])
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in oldCredentials }
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { counter, request, _, completion in
             if counter == 1 {
                 guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
@@ -1054,7 +1056,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
             }
         }
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             if let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") {
@@ -1089,7 +1091,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in oldCredentials }
 
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { counter, request, _, completion in
             if counter == 1 {
                 guard request.urlString.hasSuffix("/unit/tests") else { XCTFail(); return }
@@ -1102,7 +1104,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         }
 
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }
@@ -1156,10 +1158,10 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in oldCredentials }
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         let onRefreshCounter: Atomic<UInt> = .init(0) // only tracking refresh calls
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
@@ -1236,7 +1238,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         )
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in oldCredentials }
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         let onRefreshCounter: Atomic<UInt> = .init(0) // only tracking refresh calls
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
@@ -1301,7 +1303,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, _ in oldCredentials }
 
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         let onRefreshCounter: Atomic<UInt> = .init(0) // only tracking refresh calls
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
@@ -1375,7 +1377,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         authDelegateMock.onUpdateStub.bodyIs { _, credentials, _ in
             auth.mutate { $0 = AuthCredential(credentials) }
         }
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { counter, request, _, completion in
             if request.value(key: "Authorization") == "Bearer test accessToken old" {
                 completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401))))
@@ -1385,7 +1387,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         }
 
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }
@@ -1430,7 +1432,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
                 $0.udpate(sessionID: credentials.UID, accessToken: credentials.accessToken, refreshToken: credentials.refreshToken)
             }
         }
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { counter, request, _, completion in
             if request.value(key: "Authorization") == "Bearer test accessToken old" {
                 completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401))))
@@ -1440,7 +1442,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         }
 
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }
@@ -1486,7 +1488,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         authDelegateMock.onUpdateStub.bodyIs { _, credentials, _ in
             auth.mutate { $0 = AuthCredential(credentials) }
         }
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { counter, request, _, completion in
             if request.value(key: "Authorization") == "Bearer test accessToken old" {
                 completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401))))
@@ -1496,7 +1498,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         }
 
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         let onRefreshCounter: Atomic<UInt> = .init(0) // only tracking refresh calls
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
@@ -1556,7 +1558,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
                 $0.udpate(sessionID: credentials.UID, accessToken: credentials.accessToken, refreshToken: credentials.refreshToken)
             }
         }
-        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy) }
         sessionMock.requestJSONStub.bodyIs { counter, request, _, completion in
             if request.value(key: "Authorization") == "Bearer test accessToken old" {
                 completion(nil, .failure(.networkingEngineError(underlyingError: NSError(domain: NSURLErrorDomain, code: 401))))
@@ -1566,7 +1568,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         }
 
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         let onRefreshCounter: Atomic<UInt> = .init(0) // only tracking refresh calls
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
@@ -1650,7 +1652,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         let service = testService
         service.authDelegate = authDelegateMock
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
@@ -1689,7 +1691,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         let service = testService
         service.authDelegate = authDelegateMock
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
         }
         var capturedRequest: SessionRequest?
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
@@ -1731,7 +1733,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         let service = testService
         service.authDelegate = authDelegateMock
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
@@ -1757,7 +1759,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         let service = testService
         service.authDelegate = authDelegateMock
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
@@ -1785,7 +1787,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         let service = testService
         service.authDelegate = authDelegateMock
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { counter, request, decoder, _, completion in
             guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
@@ -1839,7 +1841,7 @@ func testSessionAcquireCallFailsSilentlyIfSessionAcquireCallFailsAndARRetryFails
         let service = testService
         service.authDelegate = authDelegateMock
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { counter, request, decoder, _, completion in
             guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
@@ -1881,7 +1883,7 @@ func testSessionAcquireCallFailsSilentlyIfSessionAcquireCallFailsAndARRetryFails
         let service = testService
         service.authDelegate = authDelegateMock
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 1.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { counter, request, decoder, _, completion in
             guard request.urlString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
