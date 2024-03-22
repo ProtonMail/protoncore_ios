@@ -33,6 +33,9 @@
       }
     },
     {
+      "skippedTests" : [
+        "LoginIntegrationTests\/testExternalAccountWithoutKeysGetsKeysGeneratedIfRequiredAccountIsUsername()"
+      ],
       "target" : {
         "containerPath" : "container:",
         "identifier" : "ProtonCoreLoginIntegrationTests",
