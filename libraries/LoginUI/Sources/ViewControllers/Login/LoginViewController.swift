@@ -212,7 +212,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
             default:
                 if self.customErrorPresenter?.willPresentError(error: error, from: self) == true { } else { self.showError(error: error) }
             }
-            measureLoginFailure(httpCode: error.codeInLogin)
+            self.measureLoginFailure(httpCode: error.codeInLogin)
         }
         viewModel.finished.bind { [weak self] result in
             switch result {
