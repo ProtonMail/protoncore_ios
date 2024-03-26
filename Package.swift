@@ -125,6 +125,7 @@ extension String {
     static let networking: String = "ProtonCoreNetworking"
     static let obfuscatedConstants: String = "ProtonCoreObfuscatedConstants"
     static let observability: String = "ProtonCoreObservability"
+    static let passwordChange: String = "ProtonCorePasswordChange"
     static let passwordRequest: String = "ProtonCorePasswordRequest"
     static let payments: String = "ProtonCorePayments"
     static let paymentsUI: String = "ProtonCorePaymentsUI"
@@ -241,6 +242,7 @@ extension Target.Dependency {
     static var networking: Target.Dependency { .target(name: .networking) }
     static var obfuscatedConstants: Target.Dependency { .target(name: .obfuscatedConstants) }
     static var observability: Target.Dependency { .target(name: .observability) }
+    static var passwordChange: Target.Dependency { .target(name: .passwordChange) }
     static var passwordRequest: Target.Dependency { .target(name: .passwordRequest) }
     static var payments: Target.Dependency { .target(name: .payments) }
     static var paymentsUI: Target.Dependency { .target(name: .paymentsUI) }
@@ -1264,6 +1266,40 @@ add(
                            .testingToolkitUnitTestsObservability
                        ],
                        path: "libraries/Observability/IntegrationTests")
+    ]
+)
+
+// MARK: Password Change
+
+add(
+    product: .passwordChange,
+    targets: [
+        coreTarget(name: .passwordChange,
+                   dependencies: [
+                       .authentication,
+                       .authenticationKeyGeneration,
+                       .networking,
+                       .services,
+                       .uiFoundations
+                   ],
+                   path: "libraries/PasswordChange/Sources"),
+
+        coreTestTarget(name: .passwordChange + "Tests",
+                       dependencies: [
+                           .authentication,
+                           .authenticationKeyGeneration,
+                           .crypto,
+                           .cryptoGoInterface,
+                           .cryptoGoUsedInTests,
+                           .passwordChange,
+                           .networking,
+                           .services,
+                           .testingToolkitUnitTestsCore,
+                           .testingToolkitUnitTestsNetworking,
+                           .testingToolkitUnitTestsAuthentication,
+                           .testingToolkitUnitTestsServices
+                       ],
+                       path: "libraries/PasswordChange/Tests")
     ]
 )
 
