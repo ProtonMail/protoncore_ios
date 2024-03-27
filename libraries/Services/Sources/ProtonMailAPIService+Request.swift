@@ -697,8 +697,6 @@ extension PMAPIService {
             request.setValue(header: "x-pm-uid", sessionUID)
         }
 
-        request.setValue(header: "X-Enforce-UnauthSession", "true")
-
         var appversion = "iOS_\(Bundle.main.majorVersion)"
         if let delegateAppVersion = serviceDelegate?.appVersion, !delegateAppVersion.isEmpty {
             appversion = delegateAppVersion

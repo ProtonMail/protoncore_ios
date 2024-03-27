@@ -60,7 +60,7 @@ func coreTarget(name: String,
             publicHeadersPath: nil,
             cSettings: nil,
             cxxSettings: nil,
-            swiftSettings: .spm,
+            swiftSettings: [.spm],
             linkerSettings: nil,
             plugins: plugins)
 }
@@ -77,9 +77,13 @@ func coreTestTarget(name: String,
                 resources: resources,
                 cSettings: nil,
                 cxxSettings: nil,
-                swiftSettings: .spm,
+                swiftSettings: [.spm],
                 linkerSettings: nil,
                 plugins: plugins)
+}
+
+extension SwiftSetting {
+    static let spm: SwiftSetting = .define("SPM")
 }
 
 extension String {
@@ -309,10 +313,6 @@ extension Target.Dependency {
     // MARK: - Helpers
 
     static var cryptoGoUsedInTests: Target.Dependency { .cryptoPatchedGoImplementation }
-}
-
-extension Array where Element == SwiftSetting {
-    static let spm: [SwiftSetting] = [.define("SPM")]
 }
 
 // MARK: - Module definitions
