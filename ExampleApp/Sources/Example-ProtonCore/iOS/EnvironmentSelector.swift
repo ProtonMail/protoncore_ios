@@ -77,6 +77,8 @@ final class EnvironmentSelector: UIView {
                 env = .calendarProd
             case .pass:
                 env = .passProd
+            case .wallet:
+                env = .walletProd
             case .other:
                 env = .mailProd
             }
