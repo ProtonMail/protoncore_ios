@@ -88,6 +88,12 @@ Pod::Spec.new do |s|
             flag.dependency 'ProtonCore-FeatureFlags', $version
             flag.source_files = "libraries/TestingToolkit/UnitTests/FeatureFlag/**/*.swift"
         end # Feature Flag
+        
+        unit_tests.subspec 'CryptoGoInterface' do |flag|
+            flag.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version
+            flag.dependency 'ProtonCore-CryptoGoInterface', $version
+            flag.source_files = "libraries/TestingToolkit/UnitTests/CryptoGoInterface/**/*.swift"
+        end # CryptoGoInterface
 
         unit_tests.subspec 'Login' do |login|
             login.dependency 'ProtonCore-TestingToolkit/UnitTests/Core', $version

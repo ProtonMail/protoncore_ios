@@ -145,6 +145,7 @@ extension String {
     static let testingToolkitUnitTestsAuthentication: String = "ProtonCoreTestingToolkitUnitTestsAuthentication"
     static let testingToolkitUnitTestsAuthenticationKeyGeneration: String = "ProtonCoreTestingToolkitUnitTestsAuthenticationKeyGeneration"
     static let testingToolkitUnitTestsCore: String = "ProtonCoreTestingToolkitUnitTestsCore"
+    static let testingToolkitUnitTestsCryptoGoInterface: String = "ProtonCoreTestingToolkitUnitTestsCryptoGoInterface"
     static let testingToolkitUnitTestsDataModel: String = "ProtonCoreTestingToolkitUnitTestsDataModel"
     static let testingToolkitUnitTestsDoh: String = "ProtonCoreTestingToolkitUnitTestsDoh"
     static let testingToolkitUnitTestsFeatureFlag: String = "ProtonCoreTestingToolkitUnitTestsFeatureFlag"
@@ -263,6 +264,7 @@ extension Target.Dependency {
     static var testingToolkitUnitTestsAuthentication: Target.Dependency { .target(name: .testingToolkitUnitTestsAuthentication) }
     static var testingToolkitUnitTestsAuthenticationKeyGeneration: Target.Dependency { .target(name: .testingToolkitUnitTestsAuthenticationKeyGeneration) }
     static var testingToolkitUnitTestsCore: Target.Dependency { .target(name: .testingToolkitUnitTestsCore) }
+    static var testingToolkitUnitTestsCryptoGoInterface: Target.Dependency { .target(name: .testingToolkitUnitTestsCryptoGoInterface) }
     static var testingToolkitUnitTestsDataModel: Target.Dependency { .target(name: .testingToolkitUnitTestsDataModel) }
     static var testingToolkitUnitTestsDoh: Target.Dependency { .target(name: .testingToolkitUnitTestsDoh) }
     static var testingToolkitUnitTestsFeatureFlag: Target.Dependency { .target(name: .testingToolkitUnitTestsFeatureFlag) }
@@ -1622,6 +1624,7 @@ add(
         .testingToolkitUnitTestsAuthentication,
         .testingToolkitUnitTestsAuthenticationKeyGeneration,
         .testingToolkitUnitTestsCore,
+        .testingToolkitUnitTestsCryptoGoInterface,
         .testingToolkitUnitTestsDataModel,
         .testingToolkitUnitTestsDoh,
         .testingToolkitUnitTestsFeatureFlag,
@@ -1679,6 +1682,13 @@ add(
                        .snapshotTesting
                    ],
                    path: "libraries/TestingToolkit/UnitTests/Core"),
+        
+        coreTarget(name: .testingToolkitUnitTestsCryptoGoInterface,
+                   dependencies: [
+                       .cryptoGoInterface,
+                       .testingToolkitUnitTestsCore
+                   ],
+                   path: "libraries/TestingToolkit/UnitTests/CryptoGoInterface"),
 
         coreTarget(name: .testingToolkitUnitTestsDataModel,
                    dependencies: [
