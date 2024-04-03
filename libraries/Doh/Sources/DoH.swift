@@ -98,6 +98,10 @@ open class DoH: DoHInterface {
         getCurrentlyUsedUrl(defaultingTo: config.defaultHost) + config.defaultPath
     }
 
+    open func getProxyToken() -> String? {
+        return config.proxyToken
+    }
+
     private func getCurrentlyUsedUrl(defaultingTo defaultHost: String) -> String {
         guard doHProxyDomainsMechanismIsActive() else { return defaultHost }
 

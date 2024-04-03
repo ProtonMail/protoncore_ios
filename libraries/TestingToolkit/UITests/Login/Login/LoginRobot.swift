@@ -135,7 +135,7 @@ public final class LoginRobot: CoreElements {
     }
 
     public func fillpassword(password: String) -> LoginRobot {
-        secureTextField(passwordTextFieldId).forceKeyboardFocus().typeText(password)
+        secureTextField(passwordTextFieldId).forceKeyboardFocus().waitForFocused().typeText(password)
         return self
     }
 
@@ -181,13 +181,13 @@ public final class ExternalAccountsNotSupportedDialogRobot: CoreElements {
     public final class Verify: CoreElements {
         @discardableResult
         public func externalAccountsNotSupportedDialog() -> ExternalAccountsNotSupportedDialogRobot {
-            alert(externalAccountsNotSupportedText).wait(time: 20).checkExists()
+            alert(externalAccountsNotSupportedText).waitUntilExists(time: 20).checkExists()
             return ExternalAccountsNotSupportedDialogRobot()
         }
 
         @discardableResult
         public func externalAccountsUpdateRequireddDialog() -> ExternalAccountsNotSupportedDialogRobot {
-            alert(externalAccountsUpdateRequiredText).wait(time: 20).checkExists()
+            alert(externalAccountsUpdateRequiredText).waitUntilExists(time: 20).checkExists()
             return ExternalAccountsNotSupportedDialogRobot()
         }
 

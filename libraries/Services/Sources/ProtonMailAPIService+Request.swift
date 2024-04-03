@@ -683,6 +683,10 @@ extension PMAPIService {
             }
         }
 
+        if let proxyToken = dohInterface.getProxyToken() {
+            request.setValue(header: "x-atlas-secret", proxyToken)
+        }
+
         if let header = headers {
             for (k, v) in header {
                 request.setValue(header: k, "\(v)")
