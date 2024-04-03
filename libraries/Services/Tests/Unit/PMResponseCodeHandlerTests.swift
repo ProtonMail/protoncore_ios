@@ -153,7 +153,7 @@ final class PMResponseCodeHandlerTests: XCTestCase {
             deviceVerificationHandler: { _, _, _ in
                 dvCalled = true
             },
-            missingScopesHandler: { _, _, _, _  in
+            missingScopesHandler: { _, _, _  in
                 missingScopesCalled = true
             },
             forceUpgradeHandler: { _ in
