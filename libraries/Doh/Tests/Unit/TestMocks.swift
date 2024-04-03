@@ -41,6 +41,7 @@ final class DohMock: DoH, ServerConfig {
     var accountHost: String = MockData.accountHost.urlString
     var signupDomain: String = "local.protoncore.unittests"
     var timeout: TimeInterval = 1
+    var proxyToken: String? = "test.token.1234"
 
     private init() {}
 

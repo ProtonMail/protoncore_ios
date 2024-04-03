@@ -168,6 +168,11 @@ public struct DohInterfaceMock: DoHInterface, ServerConfig {
     @PropertyStub(\DohInterfaceMock.currentlyUsedCookiesStorage, initialGet: nil) public var currentlyUsedCookiesStorageStub
     public var currentlyUsedCookiesStorage: HTTPCookieStorage? { currentlyUsedCookiesStorageStub() }
 
+    @PropertyStub(\DohInterfaceMock.proxyToken, initialGet: nil) public var proxyTokenStub
+    public var proxyToken: String? { proxyTokenStub() }
+
+    @FuncStub(DohInterfaceMock.getProxyToken, initialReturn: nil) public var getProxyTokenStub
+    public func getProxyToken() -> String? { getSignUpStringStub() }
 }
 
 public final class DohMock: DoH, ServerConfig {
@@ -302,4 +307,10 @@ public final class DohMock: DoH, ServerConfig {
 
     @FuncStub(DohInterfaceMock.setUpCookieSynchronization) public var setUpCookieSynchronizationStub
     override public func setUpCookieSynchronization(storage: HTTPCookieStorage?) { setUpCookieSynchronizationStub(storage) }
+    
+    @PropertyStub(\DohInterfaceMock.proxyToken, initialGet: nil) public var proxyTokenStub
+    public var proxyToken: String? { proxyTokenStub() }
+
+    @FuncStub(DohInterfaceMock.getProxyToken, initialReturn: nil) public var getProxyTokenStub
+    override public func getProxyToken() -> String? { getSignUpStringStub() }
 }

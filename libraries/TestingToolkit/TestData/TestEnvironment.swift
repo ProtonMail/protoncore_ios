@@ -30,5 +30,6 @@ public class TestDoH: DoH, ServerConfig {
     public var apiHost: String = "abcabcabcabcabcabcabcabcabcabcabcabc.xyz"
     public var defaultPath: String = "/api"
     public var signupDomain: String = "test.xyz"
+    public var proxyToken: String? = "test.token.1234"
     public static let `default` = TestDoH()
 }

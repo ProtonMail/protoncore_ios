@@ -29,7 +29,8 @@ class LoginBaseTestCase: ProtonCoreBaseTestCase {
                 accountHost: "https://account.\(customDomain)",
                 defaultHost: "https://\(customDomain)",
                 apiHost: ObfuscatedConstants.blackApiHost,
-                defaultPath: ObfuscatedConstants.blackDefaultPath
+                defaultPath: ObfuscatedConstants.blackDefaultPath,
+                proxyToken: nil
             )
         } else {
             return CustomServerConfigDoH(
@@ -39,7 +40,8 @@ class LoginBaseTestCase: ProtonCoreBaseTestCase {
                 accountHost: ObfuscatedConstants.blackAccountHost,
                 defaultHost: ObfuscatedConstants.blackDefaultHost,
                 apiHost: ObfuscatedConstants.blackApiHost,
-                defaultPath: ObfuscatedConstants.blackDefaultPath
+                defaultPath: ObfuscatedConstants.blackDefaultPath,
+                proxyToken: nil
             )
         }
     }
