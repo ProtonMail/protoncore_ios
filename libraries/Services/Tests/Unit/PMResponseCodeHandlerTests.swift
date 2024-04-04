@@ -33,15 +33,22 @@ final class PMResponseCodeHandlerTests: XCTestCase {
     let dict: JSONDictionary = [:]
     let responseError = ResponseError(httpCode: nil, responseCode: nil, userFacingMessage: nil, underlyingError: nil)
 
+    func responseErrorWithResponseCode(_ responseCode: Int?) -> ResponseError {
+        ResponseError(httpCode: 403,
+                      responseCode: responseCode,
+                      userFacingMessage: "",
+                      underlyingError: nil)
+    }
+
     var missingScopesError: ResponseError {
         .init(
             httpCode: 403,
-            responseCode: 403,
+            responseCode: APIErrorCode.lockedScopeRequired,
             userFacingMessage: "Error: Missing Scopes",
-            underlyingError: SessionResponseError.responseBodyIsNotADecodableObject(body: underlyingErrorData!, response: nil) as NSError
+            underlyingError: SessionResponseError.responseBodyIsNotADecodableObject(body: underlyingMissingScopesErrorData!, response: nil) as NSError
         )
     }
-    var underlyingErrorData: Data? {
+    var underlyingMissingScopesErrorData: Data? {
         let dict = ["Details": ["MissingScopes": ["password"]]]
         let encoder = JSONEncoder()
         return try? encoder.encode(dict)
@@ -58,77 +65,96 @@ final class PMResponseCodeHandlerTests: XCTestCase {
     // MARK: - Human verification
 
     func test_handler_callsHVWhenHVRequired_forLeftResponseLeftCompletion() {
-        handleResponse(response: .left(dict), errorCode: APIErrorCode.humanVerificationRequired, completion: .left({ _, _ in }))
+        handleResponse(response: .left(["Code" : APIErrorCode.humanVerificationRequired]),
+                       completion: .left({ _, _ in }))
         XCTAssertTrue(hvCalled)
     }
 
     func test_handler_callsHVWhenHVRequired_forRightResponseLeftCompletion() {
-        handleResponse(response: .right(responseError), errorCode: APIErrorCode.humanVerificationRequired, completion: .left({ _, _ in }))
+        handleResponse(response: .right(responseErrorWithResponseCode(APIErrorCode.humanVerificationRequired)),
+                       completion: .left({ _, _ in }))
         XCTAssertTrue(hvCalled)
     }
 
     func test_handler_callsHVWhenHVRequired_forLeftResponseRightCompletion() {
-        handleResponse(response: .left(dict), errorCode: APIErrorCode.humanVerificationRequired, completion: .right({ _, _ in }))
+        handleResponse(response: .left(["Code" : APIErrorCode.humanVerificationRequired]),
+                       completion: .right({ _, _ in }))
         XCTAssertTrue(hvCalled)
     }
 
     func test_handler_callsHVWhenHVRequired_forRightResponseRightCompletion() {
-        handleResponse(response: .right(responseError), errorCode: APIErrorCode.humanVerificationRequired, completion: .right({ _, _ in }))
+        handleResponse(response: .right(responseErrorWithResponseCode(APIErrorCode.humanVerificationRequired)),
+                       completion: .right({ _, _ in }))
         XCTAssertTrue(hvCalled)
     }
 
     // MARK: - Bad app version
 
-    func test_handler_callsForceUpdadeWhenBadAppVersion_forLeftResponseLeftCompletion() {
-        handleResponse(response: .left(dict), errorCode: APIErrorCode.badAppVersion, completion: .left({ _, _ in }))
+    func test_handler_callsForceUpgradeWhenBadAppVersion_forLeftResponseLeftCompletion() {
+        handleResponse(response: .left(["Code": APIErrorCode.badAppVersion]),
+                       completion: .left({ _, _ in }))
         XCTAssertTrue(forceUpgradeCalled)
     }
 
-    func test_handler_callsForceUpdadeWhenBadAppVersion_forRightResponseRightCompletion() {
-        handleResponse(response: .right(responseError), errorCode: APIErrorCode.badAppVersion, completion: .right({ _, _ in }))
+    func test_handler_callsForceUpgradeWhenBadAppVersion_forRightResponseRightCompletion() {
+        handleResponse(response: .right(responseErrorWithResponseCode(APIErrorCode.badAppVersion)),
+                       completion: .right({ _, _ in }))
         XCTAssertTrue(forceUpgradeCalled)
     }
 
     // MARK: - Bad API version
 
-    func test_handler_callsForceUpdadeWhenBadApiVersion_forLeftResponseLeftCompletion() {
-        handleResponse(response: .left(dict), errorCode: APIErrorCode.badApiVersion, completion: .left({ _, _ in }))
+    func test_handler_callsForceUpgradeWhenBadApiVersion_forLeftResponseLeftCompletion() {
+        handleResponse(response: .left(["Code": APIErrorCode.badApiVersion]),
+                           completion: .left({ _, _ in }))
         XCTAssertTrue(forceUpgradeCalled)
     }
 
-    func test_handler_callsForceUpdadeWhenBadApiVersion_forRightResponseRightCompletion() {
-        handleResponse(response: .right(responseError), errorCode: APIErrorCode.badApiVersion, completion: .right({ _, _ in }))
+    func test_handler_callsForceUpgradeWhenBadApiVersion_forRightResponseRightCompletion() {
+        handleResponse(response: .right(responseErrorWithResponseCode(APIErrorCode.badApiVersion)),
+                       completion: .right({ _, _ in }))
         XCTAssertTrue(forceUpgradeCalled)
     }
 
     // MARK: - Missing scopes error
 
-    func test_handler_doesNotCallMissingScopesHandlerWhenMissingScopesError_forLeftResponse() {
-        handleResponse(response: .left(dict), errorCode: 403, completion: .left({ _, _ in }))
+    func test_handler_doesNotCallMissingScopesHandlerWhenGenericError_forLeftResponse() {
+            handleResponse(response: .right(responseError), completion: .left({ _, _ in }))
         XCTAssertFalse(missingScopesCalled)
     }
 
-    func test_handler_callsMissingScopesHandlerWhenMissingScopesError_forRightResponse() {
-        handleResponse(response: .right(missingScopesError), errorCode: 403, completion: .left({ _, _ in }))
+    func test_handler_doesNotCallMissingScopesHandlerWhenGenericError_forRightResponse() {
+            handleResponse(response: .right(responseError), completion: .right({ _, _ in }))
+        XCTAssertFalse(missingScopesCalled)
+    }
+
+    func test_handler_callsMissingScopesHandlerWhenMissingScopesError_forLeftCompletion() {
+        handleResponse(response: .right(missingScopesError), completion: .left({ _, _ in }))
+        XCTAssertTrue(missingScopesCalled)
+    }
+
+    func test_handler_callsMissingScopesHandlerWhenMissingScopesError_forRightCompletion() {
+        handleResponse(response: .right(missingScopesError), completion: .right({ _, _ in }))
         XCTAssertTrue(missingScopesCalled)
     }
 
     // MARK: - Other error
 
-    func test_handler_callsForceUpdadeWhenOtherError_forLeftResponseLeftCompletion() {
-        handleResponse(response: .left(dict), errorCode: APIErrorCode.HTTP504, completion: .left({ _, _ in }))
+    func test_handler_callsForceUpgradeWhenOtherError_forLeftResponseLeftCompletion() {
+        handleResponse(response: .left(["Code": APIErrorCode.HTTP504]),
+                       completion: .left({ _, _ in }))
         XCTAssertFalse(hvCalled)
         XCTAssertFalse(forceUpgradeCalled)
     }
 
-    func test_handler_callsForceUpdadeWhenOtherError_forRightResponseRightCompletion() {
-        handleResponse(response: .right(responseError), errorCode: APIErrorCode.HTTP504, completion: .right({ _, _ in }))
+    func test_handler_callsForceUpgradeWhenOtherError_forRightResponseRightCompletion() {
+        handleResponse(response: .right(responseErrorWithResponseCode(APIErrorCode.HTTP504)),
+                       completion: .right({ _, _ in }))
         XCTAssertFalse(hvCalled)
         XCTAssertFalse(forceUpgradeCalled)
     }
 
     private func handleResponse(response: Either<JSONDictionary, ResponseError>,
-                                errorCode: Int,
                                 completion: PMAPIService.APIResponseCompletion<PMAPIService.DummyAPIDecodableResponseOnlyForSatisfyingGenericsResolving>) {
         let credential: AuthCredential = .init(sessionID: "sessionID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", privateKey: nil, passwordKeySalt: nil)
         let responseHandlerData: PMResponseHandlerData = .init(
@@ -145,7 +171,7 @@ final class PMResponseCodeHandlerTests: XCTestCase {
         sut.handleProtonResponseCode(
             responseHandlerData: responseHandlerData,
             response: response,
-            responseCode: errorCode,
+            responseCode: response.code ?? 0,
             completion: completion,
             humanVerificationHandler: { _, _, _ in
                 hvCalled = true
