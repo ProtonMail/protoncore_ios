@@ -67,6 +67,9 @@ workflow:
     - if: $CI_OPEN_MERGE_REQUESTS
       when: never
 
+    - if: $CI_PIPELINE_SOURCE == "push"
+      when: never
+
     - if: $CI_COMMIT_BRANCH
       variables:
         TEST: "manual"
@@ -132,6 +135,7 @@ linting:code-quality:
     - env
     - tools/portable_swiftlint/swiftlint --config .swiftlint.yml --reporter junit > swiftlint.xml
   rules: &rules_mr_and_develop
+    - if: $CI_PIPELINE_SOURCE == "push"
     - if: $TEST == "manual"
       when: manual
 
@@ -969,4 +973,3 @@ i18n-commit-locales:
   variables:
     I18N_COMMIT_CROWDIN_PROJECT: "apple-core"
   extends: .i18n-commit-locales-shared-apple
-
