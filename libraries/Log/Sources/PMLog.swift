@@ -121,7 +121,8 @@ public class PMLog {
         printToConsole(log)
         callback?(message, level)
         if sendToExternal {
-            sendExternalLog(level: level, log: log)
+            let externalLogMessage = "\(message) - \((file as NSString).lastPathComponent) : \(function) : Line: \(line) : Col: \(column)"
+            sendExternalLog(level: level, log: externalLogMessage)
         }
 
         guard let logUrl = logFile else { return }
