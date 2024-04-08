@@ -1,0 +1,21 @@
+"Settings_Item" = "Ponastavitev gesla";
+
+"Insecure_View_Title" = "Ponastavi geslo";
+
+"Grace_View_Title" = "Želite ponastaviti geslo?";
+
+"Grace_View_line1" = "Prejeli smo zahtevo za ponastavitev vašega gesla za ";
+
+"Insecure_View_line1" = "Zdaj lahko spremenite vaše geslo za račun ";
+
+"Insecure_View_line2" = " kadarkoli v naslednjih ";
+
+"Insecure_View_line3" = "Za spremembo gesla, vas prosimo, da uporabite prijavljeno napravo (v sejo, kjer je bila zahteva za spremembo gesla začeta).";
+
+"Grace_View_Cancel_Button_CTA" = "Prekliči zahtevo";
+
+"Grace_View_Undefined_Time_Left" = "nekaj urah";
+
+"Grace_View_line2" = "Zaradi varnosti vašega računa se želimo prepričati, da res poskušate ponastaviti geslo. Geslo boste lahko ponastavili v ";
+
+"Grace_View_line3" = "Če niste sprožili te zahteve ali ne potrebujete več pomoči pri vpisu, prosimo, prekličite zahtevo in ukrepajte za zaščito vašega računa.";
