@@ -25,12 +25,12 @@ import SwiftUI
 
 @MainActor
 public class PCBannerContent {
-    var message: String
+    public var message: String
 
-    var buttonTitle: String?
-    var buttonAction: (() -> Void)?
+    public var buttonTitle: String?
+    public var buttonAction: (() -> Void)?
 
-    init(
+    public init(
         message: String,
         buttonTitle: String? = nil,
         buttonAction: (() -> Void)? = nil

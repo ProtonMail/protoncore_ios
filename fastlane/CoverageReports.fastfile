@@ -2,6 +2,7 @@
 
 excluded_targets_for_macos_unit_tests = [
   'ProtonCoreAccountDeletionTests',
+  'ProtonCoreAccountRecoveryTests',
   'ProtonCoreAccountSwitcherTests',
   'ProtonCoreChallengeTests',
   'ProtonCorePasswordRequestUnitTests',

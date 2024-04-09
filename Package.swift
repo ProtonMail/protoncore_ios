@@ -1280,11 +1280,15 @@ add(
                    dependencies: [
                        .authentication,
                        .authenticationKeyGeneration,
+                       .featureFlags,
                        .networking,
+                       .observability,
                        .services,
-                       .uiFoundations
+                       .uiFoundations,
+                       .utilities
                    ],
-                   path: "libraries/PasswordChange/Sources"),
+                   path: "libraries/PasswordChange/Sources",
+                   resources: [.process("Resources")]),
 
         coreTestTarget(name: .passwordChange + "Tests",
                        dependencies: [
@@ -1301,7 +1305,8 @@ add(
                            .testingToolkitUnitTestsAuthentication,
                            .testingToolkitUnitTestsServices
                        ],
-                       path: "libraries/PasswordChange/Tests")
+                       path: "libraries/PasswordChange/Tests",
+                       exclude: ["__Snapshots__"])
     ]
 )
 

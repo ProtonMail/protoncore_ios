@@ -23,13 +23,21 @@ Pod::Spec.new do |s|
 
     s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
 
-    s.source_files = 'libraries/PasswordChange/Sources/**/*.swift'
+
 
     s.dependency "ProtonCore-Authentication", $version
     s.dependency "ProtonCore-Authentication-KeyGeneration", $version
+    s.dependency "ProtonCore-FeatureFlags", $version
     s.dependency "ProtonCore-Networking", $version
+    s.dependency "ProtonCore-Observability", $version
     s.dependency "ProtonCore-Services", $version
     s.dependency "ProtonCore-UIFoundations", $version
+    s.dependency "ProtonCore-Utilities", $version
+
+    s.source_files = 'libraries/PasswordChange/Sources/**/*.swift'
+    s.resource_bundles = {
+       'Translations-PasswordChange' => ["libraries/PasswordChange/Resources/*"]
+    }
 
     make_unit_test_subspec = ->(spec, crypto) {
         spec.test_spec "Unit#{crypto_test_subspec(crypto)}" do |test_spec|
