@@ -24,7 +24,7 @@
 import SwiftUI
 
 @MainActor
-public class PCTextFieldStyle {
+public struct PCTextFieldStyle {
     public var mode: TextFieldMode
     public enum TextFieldMode {
         case idle

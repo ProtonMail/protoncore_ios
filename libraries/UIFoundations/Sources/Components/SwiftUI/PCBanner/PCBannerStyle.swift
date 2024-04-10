@@ -24,7 +24,7 @@
 import SwiftUI
 
 @MainActor
-public class PCBannerStyle {
+public struct PCBannerStyle {
     public var style: Style
 
     public enum Style {

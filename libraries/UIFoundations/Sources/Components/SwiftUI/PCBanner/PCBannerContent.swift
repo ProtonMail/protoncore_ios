@@ -24,7 +24,7 @@
 import SwiftUI
 
 @MainActor
-public class PCBannerContent {
+public struct PCBannerContent {
     public var message: String
 
     public var buttonTitle: String?

@@ -20,3 +20,27 @@
 "Don't know your current password?" = "Don't know your current password?";
 
 "Proton's encryption technology means that nobody can access your password - not even us. Make sure you add a recovery method so that you can get back into your account if you forget your password. [Learn more](https://proton.me)" = "Proton's encryption technology means that nobody can access your password - not even us. Make sure you add a recovery method so that you can get back into your account if you forget your password. [Learn more](https://proton.me)";
+
+"Two-factor authentication" = "Two-factor authentication";
+
+"Two-factor code" = "Two-factor code";
+
+"Enter the 6-digit code." = "Enter the 6-digit code.";
+
+"Authenticate" = "Authenticate";
+
+"Invalid username!" = "Invalid username!";
+
+"Can't get a Modulus ID!" = "Can't get a Modulus ID!";
+
+"Can't get a Modulus!" = "Can't get a Modulus!";
+
+"Invalid hashed password!" = "Invalid hashed password!";
+
+"Can't create an SRP verifier!" = "Can't create an SRP verifier!";
+
+"Can't create an SRP Client" = "Can't create an SRP Client";
+
+"The private key update failed." = "The private key update failed.";
+
+"Password update failed" = "Password update failed";

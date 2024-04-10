@@ -22,13 +22,15 @@
 #if os(iOS)
 
 import Foundation
-import ProtonCoreNetworking
-import ProtonCoreServices
-import ProtonCoreDataModel
-import ProtonCoreCrypto
+
 import ProtonCoreAPIClient
 import ProtonCoreAuthentication
 import ProtonCoreAuthenticationKeyGeneration
+import ProtonCoreCrypto
+import ProtonCoreDataModel
+import ProtonCoreLog
+import ProtonCoreNetworking
+import ProtonCoreServices
 
 public class PasswordChangeService {
     private let apiService: APIService
@@ -79,6 +81,9 @@ public class PasswordChangeService {
             request: passwordChangeRequest
         )
         guard updatePasswordResponse.responseCode == 1000 else {
+            let responseCode = updatePasswordResponse.responseCode ?? 0
+            let errorMessage = updatePasswordResponse.error?.localizedDescription ?? "Unknown"
+            PMLog.error("\(responseCode): \(errorMessage)")
             throw UpdatePasswordError.default
         }
     }
@@ -142,6 +147,9 @@ public class PasswordChangeService {
         let (_, updatePrivateKeyResponse): (URLSessionDataTask?, DefaultResponse) = try await apiService.perform(request: updatePrivateKeyRequest)
 
         guard updatePrivateKeyResponse.responseCode == 1000 else {
+            let responseCode = updatePrivateKeyResponse.responseCode ?? 0
+            let errorMessage = updatePrivateKeyResponse.error?.localizedDescription ?? "Unknown"
+            PMLog.error("\(responseCode): \(errorMessage)")
             throw UpdatePasswordError.default
         }
 

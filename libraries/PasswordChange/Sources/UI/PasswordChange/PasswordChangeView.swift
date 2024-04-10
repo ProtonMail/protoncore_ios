@@ -28,6 +28,14 @@ import ProtonCoreObservability
 public struct PasswordChangeView: View {
     @ObservedObject public var viewModel: ViewModel
 
+    @State var saveButtonIsEnabled = false
+
+    var textFieldContents: [String] {[
+        viewModel.currentPasswordFieldContent.text,
+        viewModel.newPasswordFieldContent.text,
+        viewModel.confirmNewPasswordFieldContent.text
+    ]}
+
     /// Constructor taking a view model and where to connect it to
     /// - Parameter viewModel: The ViewModel that holds the data for this view
     public init(viewModel: ViewModel) {
@@ -63,6 +71,7 @@ public struct PasswordChangeView: View {
                         style: .constant(.init(mode: .solid)),
                         content: .constant(.init(
                             title: PCTranslation.savePassword.l10n,
+                            isEnabled: saveButtonIsEnabled,
                             isAnimating: viewModel.savePasswordIsLoading,
                             action: { viewModel.savePasswordTapped() }
                         ))
@@ -71,11 +80,16 @@ public struct PasswordChangeView: View {
             }
             .padding()
             .frame(maxHeight: .infinity)
+            .keyboardDismissible()
             .navigationTitle(PCTranslation.accountPassword.l10n)
             .navigationBarTitleDisplayMode(.inline)
         }
         .bannerDisplayable(bannerState: $viewModel.bannerState, configuration: .default())
+        .onChange(of: textFieldContents) { _ in
+            saveButtonIsEnabled = textFieldContents.first(where: { $0.isEmpty }) == nil
+        }
         .onAppear() {
+            viewModel.currentPasswordFieldContent.focus()
             ObservabilityEnv.report(.screenLoadCountTotal(screenName: viewModel.screenLoadObservabilityEvent))
         }
     }
@@ -84,8 +98,7 @@ public struct PasswordChangeView: View {
 struct PasswordChangeView_Previews: PreviewProvider {
 
     static var viewModel = {
-        let vm = PasswordChangeView.ViewModel(mode: .loginPassword)
-        return vm
+        return PasswordChangeView.ViewModel(mode: .loginPassword)
     }()
 
     static var previews: some View {

@@ -50,12 +50,26 @@ public enum PCTranslation: TranslationsExposing {
     case passwordRecoveryButton
     case protonPasswordDescription
 
+    case tfaTitle
+    case tfaCode
+    case enterDigitsCode
+    case authenticate
+
+    case errorInvalidUsername
+    case errorInvalidModulusID
+    case errorInvalidModulus
+    case errorCantHashPassword
+    case errorCantGenerateVerifier
+    case errorCantGenerateSRPClient
+    case errorKeyUpdateFailed
+    case errorUpdatePasswordDefault
+
     public var l10n: String {
         switch self {
         case .settingsItem:
             return localized(key: "Account password", comment: "Settings item cell title")
         case .accountPassword:
-            return localized(key: "Account password", comment: "Settings item cell title")
+            return localized(key: "Account password", comment: "Screen title")
         case .currentPassword:
             return localized(key: "Current sign-in password", comment: "TextField title")
         case .newSignInPassword:
@@ -78,6 +92,30 @@ public enum PCTranslation: TranslationsExposing {
             return localized(key: "Don't know your current password?", comment: "Action button")
         case .protonPasswordDescription:
             return localized(key: "Proton's encryption technology means that nobody can access your password - not even us. Make sure you add a recovery method so that you can get back into your account if you forget your password. [Learn more](https://proton.me)", comment: "Password view description")
+        case .tfaTitle:
+            return localized(key: "Two-factor authentication", comment: "Screen title")
+        case .tfaCode:
+            return localized(key: "Two-factor code", comment: "Textfield title")
+        case .enterDigitsCode:
+            return localized(key: "Enter the 6-digit code.", comment: "Textfield footnote")
+        case .authenticate:
+            return localized(key: "Authenticate", comment: "Action button")
+        case .errorInvalidUsername:
+            return localized(key: "Invalid username!", comment: "Error message")
+        case .errorInvalidModulusID:
+            return localized(key: "Can't get a Modulus ID!", comment: "Error message")
+        case .errorInvalidModulus:
+            return localized(key: "Can't get a Modulus!", comment: "Error message")
+        case .errorCantHashPassword:
+            return localized(key: "Invalid hashed password!", comment: "Error message")
+        case .errorCantGenerateVerifier:
+            return localized(key: "Can't create an SRP verifier!", comment: "Error message")
+        case .errorCantGenerateSRPClient:
+            return localized(key: "Can't create an SRP Client", comment: "Error message")
+        case .errorKeyUpdateFailed:
+            return localized(key: "The private key update failed.", comment: "Error message")
+        case .errorUpdatePasswordDefault:
+            return localized(key: "Password update failed", comment: "Error message")
         }
     }
 }
