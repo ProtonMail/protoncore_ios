@@ -1,0 +1,27 @@
+"pmsettings-settings-title" = "Nastavitve";
+
+"pmsettings-settings-app-settings-section" = "Nastavitve aplikacije";
+
+"pmsettings-settings-system-settings-section" = "Sistemske nastavitve";
+
+"pmsettings-settings-system-settings-language-title" = "Jezik";
+
+"pmsettings-settings-system-settings-language-description" = "V nastavitvah sistema lahko izberete želeni jezik.";
+
+"pmsettings-settings-system-settings-language-button" = "Nastavite jezik v sistemskih nastavitvah.";
+
+"pmsettings-settings-system-settings-notifications-title" = "Obvestila";
+
+"pmsettings-settings-system-settings-notifications-description" = "Ta koledar vam omogoča, da ste obveščeni o dogodkih in vabilih. Če želite prejemati potisna sporočila, morate spremeniti nastavitve svojega sistema.";
+
+"pmsettings-settings-system-settings-notifications-button" = "Upravljajte dovoljenja v nastavitvah sistema.";
+
+"pmsettings-settings-about-section" = "O programu";
+
+"pmsettings-settings-about-acknowledgements" = "Zasluge";
+
+"pmsettings-settings-about-privacy" = "Pravilnik o zasebnosti";
+
+"pmsettings-settings-about-terms" = "Pogoji uporabe";
+
+"pmsettings-settings-footer" = "Različica aplikacije: %@";
