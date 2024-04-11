@@ -32,6 +32,11 @@ extension UserInfo {
             }
         }
         let subscribed = response["Subscribed"] as? UInt8
+        var lockedFlags: LockedFlags? = nil
+        if let lockedFlagsRes = response["LockedFlags"] as? Int8 {
+            lockedFlags = LockedFlags(rawValue: lockedFlagsRes)
+        }
+        
         self.init(
             maxSpace: response["MaxSpace"] as? Int64,
             maxBaseSpace: response["MaxBaseSpace"] as? Int64,
@@ -50,7 +55,8 @@ extension UserInfo {
             currency: response["Currency"] as? String,
             createTime: response["CreateTime"] as? Int64,
             subscribed: subscribed.map(User.Subscribed.init(rawValue:)),
-            accountRecovery: UserInfo.parse(accountRecovery: response["AccountRecovery"] as? [String: Any])
+            accountRecovery: UserInfo.parse(accountRecovery: response["AccountRecovery"] as? [String: Any]),
+            lockedFlags: lockedFlags
         )
     }
 
