@@ -66,8 +66,8 @@ class SessionTests: XCTestCase {
 
 // MARK: - General tests
 
-    func testHeaderUpdate() {
-        let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .background)
+    func testHeaderUpdate() throws {
+        let request = try AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .background)
         request.setValue(header: "a", "a_v")
         request.setValue(header: "a", "a_v")
         request.setValue(header: "a", "a_v")
@@ -85,7 +85,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://proton.unittests/redirect", method: .get, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://proton.unittests/redirect", method: .get, timeout: 30, retryPolicy: .userInitiated)
         let result = await withCheckedContinuation { continuation in
             session.request(with: request) {
                 continuation.resume(returning: ($0, $1))
@@ -103,7 +103,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
         let result = await withCheckedContinuation { continuation in
             session.request(with: request) { task, result in
                 continuation.resume(returning: (task, result))
@@ -122,7 +122,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
         let result = await withCheckedContinuation { continuation in
             session.request(with: request) { task, result in
                 continuation.resume(returning: (task, result))
@@ -142,7 +142,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
         let result = await withCheckedContinuation { continuation in
             session.request(with: request) { task, result in
                 continuation.resume(returning: (task, result))
@@ -161,7 +161,7 @@ class SessionTests: XCTestCase {
         stub(condition: isHost("example.com")) { _ in .init(error: TestError(message: #function)) }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
         let result = await withCheckedContinuation { continuation in
             session.request(with: request) { task, result in
                 continuation.resume(returning: (task, result))
@@ -182,7 +182,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
         let result = await withCheckedContinuation { continuation in
             var dataTask: URLSessionDataTask?
             session.request(with: request,
@@ -201,7 +201,7 @@ class SessionTests: XCTestCase {
         stub(condition: isHost("example.com")) { _ in .init(error: TestError(message: #function)) }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
         let result = await withCheckedContinuation { continuation in
             var dataTask: URLSessionDataTask?
             session.request(with: request,
@@ -223,7 +223,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
         let result = await withCheckedContinuation { continuation in
             session.request(with: request, jsonDecoder: jsonDecoder) { (task, result: Result<TestResponse, SessionResponseError>) in
                 continuation.resume(returning: (task, result))
@@ -242,7 +242,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
         let result = await withCheckedContinuation { continuation in
             session.request(with: request, jsonDecoder: jsonDecoder) { (task, result: Result<TestResponse, SessionResponseError>) in
                 continuation.resume(returning: (task, result))
@@ -266,7 +266,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
         let result = await withCheckedContinuation { continuation in
             session.request(with: request, jsonDecoder: jsonDecoder) { (task, result: Result<TestResponse, SessionResponseError>) in
                 continuation.resume(returning: (task, result))
@@ -302,7 +302,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
         let result = await withCheckedContinuation { continuation in
             session.request(with: request, jsonDecoder: jsonDecoder) { (task, result: Result<TestResponse, SessionResponseError>) in
                 continuation.resume(returning: (task, result))
@@ -340,7 +340,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
         let result = await withCheckedContinuation { continuation in
             session.request(with: request, jsonDecoder: jsonDecoder) { (task, result: Result<TestResponse, SessionResponseError>) in
                 continuation.resume(returning: (task, result))
@@ -365,7 +365,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
         let result = await withCheckedContinuation { continuation in
             session.request(with: request, jsonDecoder: jsonDecoder) { (task, result: Result<TestResponse, SessionResponseError>) in
                 continuation.resume(returning: (task, result))
@@ -384,7 +384,7 @@ class SessionTests: XCTestCase {
         stub(condition: isHost("example.com")) { _ in .init(error: TestError(message: #function)) }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
         let result = await withCheckedContinuation { continuation in
             session.request(with: request, jsonDecoder: jsonDecoder) { (task, result: Result<TestResponse, SessionResponseError>) in
                 continuation.resume(returning: (task, result))
@@ -407,7 +407,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
         let result = await withCheckedContinuation { continuation in
             session.request(with: request) { task, response, error in
                 continuation.resume(returning: (task, response, error))
@@ -427,7 +427,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
         let result = await withCheckedContinuation { continuation in
             session.request(with: request) { task, response, error in
                 continuation.resume(returning: (task, response, error))
@@ -448,7 +448,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
         let result = await withCheckedContinuation { continuation in
             session.request(with: request) { task, response, error in
                 continuation.resume(returning: (task, response, error))
@@ -468,7 +468,7 @@ class SessionTests: XCTestCase {
         stub(condition: isHost("example.com")) { _ in .init(error: TestError(message: #function)) }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
         let result = await withCheckedContinuation { continuation in
             session.request(with: request) { task, response, error in
                 continuation.resume(returning: (task, response, error))
@@ -488,7 +488,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .background)
+        let request = try AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .background)
 
         let key: Data = "this is a test key".data(using: .utf8)!
         let data: Data = "this is a test data".data(using: .utf8)!
@@ -513,7 +513,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .background)
+        let request = try AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .background)
 
         let key: Data = "this is a test key".data(using: .utf8)!
         let data: Data = "this is a test data".data(using: .utf8)!
@@ -538,7 +538,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .userInitiated)
 
         let key: Data = "this is a test key".data(using: .utf8)!
         let data: Data = "this is a test data".data(using: .utf8)!
@@ -564,7 +564,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .userInitiated)
 
         let key: Data = "this is a test key".data(using: .utf8)!
         let data: Data = "this is a test data".data(using: .utf8)!
@@ -591,7 +591,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .background)
+        let request = try AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .background)
 
         let key: Data = "this is a test key".data(using: .utf8)!
         let data: Data = "this is a test data".data(using: .utf8)!
@@ -616,7 +616,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .background)
+        let request = try AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .background)
 
         let key: Data = "this is a test key".data(using: .utf8)!
         let data: Data = "this is a test data".data(using: .utf8)!
@@ -643,7 +643,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .background)
+        let request = try AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .background)
 
         let key: Data = "this is a test key".data(using: .utf8)!
         let data: Data = "this is a test data".data(using: .utf8)!
@@ -675,7 +675,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .userInitiated)
 
         let key: Data = "this is a test key".data(using: .utf8)!
         let data: Data = "this is a test data".data(using: .utf8)!
@@ -702,7 +702,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .userInitiated)
 
         let key: Data = "this is a test key".data(using: .utf8)!
         let data: Data = "this is a test data".data(using: .utf8)!
@@ -730,7 +730,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .background)
+        let request = try AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .background)
 
         let key: Data = "this is a test key".data(using: .utf8)!
         let data: Data = "this is a test data".data(using: .utf8)!
@@ -755,7 +755,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .background)
+        let request = try AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .background)
 
         let key: Data = "this is a test key".data(using: .utf8)!
         let data: Data = "this is a test data".data(using: .utf8)!
@@ -780,7 +780,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .userInitiated)
 
         let key: Data = "this is a test key".data(using: .utf8)!
         let data: Data = "this is a test data".data(using: .utf8)!
@@ -806,7 +806,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: ["test": "test"], urlString: "https://www.example.com/upload", method: .post, timeout: 30, retryPolicy: .userInitiated)
 
         let key: Data = "this is a test key".data(using: .utf8)!
         let data: Data = "this is a test data".data(using: .utf8)!
@@ -834,7 +834,7 @@ class SessionTests: XCTestCase {
         }
 
         let session = AlamofireSession()
-        let request = AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
+        let request = try AlamofireRequest(parameters: nil, urlString: "https://example.com", method: .get, timeout: 30, retryPolicy: .userInitiated)
         let result = await withCheckedContinuation { continuation in
             session.download(with: request, destinationDirectoryURL: URL(string: "unwritable")!) { continuation.resume(returning: ($0, $1, $2)) }
         }

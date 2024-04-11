@@ -125,7 +125,7 @@ final class PMAPIServiceMissingScopesTests: XCTestCase {
         }
 
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             let task = URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 400))

@@ -112,7 +112,7 @@ final class PMAPIServiceHVTests: XCTestCase {
         service.humanDelegate = humanDelegateMock
 
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestJSONStub.bodyIs { _, _, _, completion in
             completion(URLSessionDataTaskMock(response: self.humanVerificationResponse), .success(self.humanVerificationResponseJSON))
@@ -149,7 +149,7 @@ final class PMAPIServiceHVTests: XCTestCase {
         service.humanDelegate = humanDelegateMock
 
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestJSONStub.bodyIs { _, _, _, completion in
             completion(URLSessionDataTaskMock(response: self.humanVerificationResponse), .success(self.humanVerificationResponseJSON))
@@ -185,7 +185,7 @@ final class PMAPIServiceHVTests: XCTestCase {
         service.humanDelegate = humanDelegateMock
 
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestJSONStub.bodyIs { counter, _, _, completion in
             switch counter {
@@ -225,7 +225,7 @@ final class PMAPIServiceHVTests: XCTestCase {
         service.humanDelegate = humanDelegateMock
 
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestJSONStub.bodyIs { counter, _, _, completion in
             switch counter {
@@ -267,7 +267,7 @@ final class PMAPIServiceHVTests: XCTestCase {
         service.humanDelegate = humanDelegateMock
 
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, _, _, _, completion in
             completion(URLSessionDataTaskMock(response: self.humanVerificationResponse), .failure(self.humanVerificationSessionError))
@@ -304,7 +304,7 @@ final class PMAPIServiceHVTests: XCTestCase {
         service.humanDelegate = humanDelegateMock
 
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, _, _, _, completion in
             completion(URLSessionDataTaskMock(response: self.humanVerificationResponse), .failure(self.humanVerificationSessionError))
@@ -341,7 +341,7 @@ final class PMAPIServiceHVTests: XCTestCase {
         service.humanDelegate = humanDelegateMock
 
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { counter, _, _, _, completion in
             switch counter {
@@ -384,7 +384,7 @@ final class PMAPIServiceHVTests: XCTestCase {
         service.humanDelegate = humanDelegateMock
 
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { counter, _, _, _, completion in
             switch counter {
@@ -430,7 +430,7 @@ final class PMAPIServiceHVTests: XCTestCase {
         service.humanDelegate = humanDelegateMock
 
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, _, _, _, completion in
             completion(URLSessionDataTaskMock(response: self.humanVerificationResponse), .failure(self.humanVerificationSessionError))
@@ -467,7 +467,7 @@ final class PMAPIServiceHVTests: XCTestCase {
         service.humanDelegate = humanDelegateMock
 
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, _, _, _, completion in
             completion(URLSessionDataTaskMock(response: self.humanVerificationResponse), .failure(self.humanVerificationSessionError))
@@ -504,7 +504,7 @@ final class PMAPIServiceHVTests: XCTestCase {
         service.humanDelegate = humanDelegateMock
 
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { counter, _, _, _, completion in
             switch counter {
@@ -547,7 +547,7 @@ final class PMAPIServiceHVTests: XCTestCase {
         service.humanDelegate = humanDelegateMock
 
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { counter, _, _, _, completion in
             switch counter {
@@ -595,7 +595,7 @@ final class PMAPIServiceHVTests: XCTestCase {
         service.humanDelegate = humanDelegateMock
 
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
-            SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { counter, _, _, _, completion in
             switch counter {

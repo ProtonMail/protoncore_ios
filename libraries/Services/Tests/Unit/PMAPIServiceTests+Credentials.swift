@@ -125,7 +125,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.serviceDelegate = apiServiceDelegateMock
         var request: SessionRequest?
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestJSONStub.bodyIs { _, requestParameter, _, completion in
             request = requestParameter
@@ -147,7 +147,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.serviceDelegate = apiServiceDelegateMock
         var request: SessionRequest?
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestJSONStub.bodyIs { _, requestParameter, _, completion in
             request = requestParameter
@@ -170,7 +170,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.serviceDelegate = apiServiceDelegateMock
         var request: SessionRequest?
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout ?? 0.0, retryPolicy: retryPolicy)
         }
         sessionMock.requestJSONStub.bodyIs { _, requestParameter, _, completion in
             request = requestParameter
@@ -354,7 +354,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
 
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
@@ -399,7 +399,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         service.authDelegate = authDelegateMock
 
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, _, _, completion in
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/sessions") else { XCTFail(); return }
@@ -530,7 +530,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters,
+            try SessionFactory.instance.createSessionRequest(parameters: parameters,
                                                          urlString: path, method: method,
                                                          timeout: timeout!, retryPolicy: retryPolicy)
         }
@@ -577,7 +577,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
             .updated(UID: "test_session_uid", accessToken: "test access token new",
                      refreshToken: "test refresh token new", scopes: ["full"])
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }
@@ -628,7 +628,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test description")
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }
@@ -675,7 +675,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test description")
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         let onRefreshCounter: Atomic<UInt> = .init(0) // only tracking refresh calls
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
@@ -742,7 +742,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test description")
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         let onRefreshCounter: Atomic<UInt> = .init(0) // only tracking refresh calls
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
@@ -802,7 +802,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         let underlyingError = NSError(domain: NSURLErrorDomain, code: code, localizedDescription: "test description")
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }
@@ -842,7 +842,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         let underlyingError = NSError(domain: NSURLErrorDomain, code: 500, localizedDescription: "test description")
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }
@@ -881,7 +881,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         let underlyingError = NSError(domain: "unit tests", code: APIErrorCode.AuthErrorCode.localCacheBad,
                                       localizedDescription: "test description")
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { count, request, decoder, _, completion in
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }
@@ -936,7 +936,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         let freshCredential = Credential.dummy.updated(UID: "test_session_uid", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
         let underlyingError = NSError(domain: "unit tests", code: APIErrorCode.AuthErrorCode.localCacheBad, localizedDescription: "test description")
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { count, request, decoder, _, completion in
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }
@@ -1048,7 +1048,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in nil }
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters,
+            try SessionFactory.instance.createSessionRequest(parameters: parameters,
                                                          urlString: path, method: method,
                                                          timeout: timeout!, retryPolicy: retryPolicy)
         }
@@ -1087,7 +1087,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         authDelegateMock.getTokenAuthCredentialStub.bodyIs { _, sessionId in rottenCredentials }
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters,
+            try SessionFactory.instance.createSessionRequest(parameters: parameters,
                                                          urlString: path, method: method,
                                                          timeout: timeout!, retryPolicy: retryPolicy)
         }
@@ -1131,7 +1131,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         let freshCredential = Credential.dummy
             .updated(UID: "test_session_uid", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }
@@ -1184,7 +1184,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test description")
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }
@@ -1225,7 +1225,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test description")
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         let onRefreshCounter: Atomic<UInt> = .init(0) // only tracking refresh calls
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
@@ -1288,7 +1288,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test description")
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         let onRefreshCounter: Atomic<UInt> = .init(0) // only tracking refresh calls
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
@@ -1341,7 +1341,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test description")
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }
@@ -1382,7 +1382,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test description")
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         let onRefreshCounter: Atomic<UInt> = .init(0) // only tracking refresh calls
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
@@ -1447,7 +1447,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         let underlyingError = NSError(domain: "unit tests", code: 4242, localizedDescription: "test description")
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         let onRefreshCounter: Atomic<UInt> = .init(0) // only tracking refresh calls
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
@@ -1500,7 +1500,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         let underlyingError = NSError(domain: NSURLErrorDomain, code: 500, localizedDescription: "test description")
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }
@@ -1543,7 +1543,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
 
         let underlyingError = NSError(domain: NSURLErrorDomain, code: 500, localizedDescription: "test description")
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { _, request, decoder, _, completion in
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }
@@ -1590,7 +1590,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
                                                        scopes: ["full"])
         let underlyingError = NSError(domain: "unit tests", code: APIErrorCode.AuthErrorCode.localCacheBad, localizedDescription: "test description")
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { count, request, decoder, _, completion in
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }
@@ -1649,7 +1649,7 @@ final class PMAPIServiceCredentialsTests: XCTestCase {
         let freshCredential = Credential.dummy.updated(UID: "test_session_uid", accessToken: "test access token new", refreshToken: "test refresh token new", scopes: ["full"])
         let underlyingError = NSError(domain: "unit tests", code: APIErrorCode.AuthErrorCode.localCacheBad, localizedDescription: "test description")
         sessionMock.generateStub.bodyIs { _, method, path, parameters, timeout, retryPolicy in
-            SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
+            try SessionFactory.instance.createSessionRequest(parameters: parameters, urlString: path, method: method, timeout: timeout!, retryPolicy: retryPolicy)
         }
         sessionMock.requestDecodableStub.bodyIs { count, request, decoder, _, completion in
             guard let url = request.request?.url, url.absoluteString.hasSuffix("/auth/v4/refresh") else { XCTFail(); return }

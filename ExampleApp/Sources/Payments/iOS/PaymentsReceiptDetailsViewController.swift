@@ -79,11 +79,12 @@ final class PaymentsReceiptDetailsViewController: UIViewController {
 
     @IBAction private func validateReceiptTapped() {
         guard let receipt = receipt else { return }
-        let request = SessionFactory.createSessionRequest(parameters: ["receipt-data": receipt.base64],
-                                                          urlString: "https://sandbox.itunes.apple.com/verifyReceipt",
-                                                          method: .post,
-                                                          timeout: 30.0,
-                                                          retryPolicy: .userInitiated)
+        guard let request = try? SessionFactory.createSessionRequest(parameters: ["receipt-data": receipt.base64],
+                                                                     urlString: "https://sandbox.itunes.apple.com/verifyReceipt",
+                                                                     method: .post,
+                                                                     timeout: 30.0,
+                                                                     retryPolicy: .userInitiated)
+        else { return }
         testApi.getSession()?.request(with: request) { task, result in
             DispatchQueue.main.async {
                 let controller = UIViewController()
