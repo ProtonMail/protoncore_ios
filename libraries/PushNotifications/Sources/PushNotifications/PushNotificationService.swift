@@ -139,7 +139,7 @@ extension PushNotificationService: UNUserNotificationCenterDelegate {
         } catch {
             ObservabilityEnv.report(.pushNotificationsReceived(result: .ignored, applicationStatus: .active))
             guard let delegate = fallbackDelegate else {
-                PMLog.error("Undefined fallback delegate for handling Push Notifications")
+                PMLog.info("Undefined fallback delegate for handling an unrecognized Push Notification")
                 completionHandler([.banner, .sound, .badge])
                 return
             }
@@ -164,7 +164,6 @@ extension PushNotificationService {
     func notificationCenter(_ center: NotificationCenterProtocol,
                             didReceive response: UNNotificationResponse,
                             withCompletionHandler completionHandler: @escaping () -> Void) {
-
         do {
             try processNotification(response.notification)
             completionHandler()
@@ -172,11 +171,26 @@ extension PushNotificationService {
         } catch {
             ObservabilityEnv.report(.pushNotificationsReceived(result: .ignored, applicationStatus: .inactive))
             guard let delegate = fallbackDelegate else {
-                PMLog.error("Undefined fallback delegate for handling Push Notifications")
+                PMLog.info("Undefined fallback delegate for handling an unrecognized Push Notification")
                 completionHandler()
                 return
             }
-            delegate.userNotificationCenter?(center as! UNUserNotificationCenter,
+
+            /*
+             We use `NotificationCenterProtocol` to allow spying on the notification mechanism, as
+             there is no public constructor for `UNUserNotificationCenter` to subclass and mock.
+             But to forward the call to a different delegate which may not be instrumented for testing,
+             the notification needs to come from a real `UNUserNotificationCenter`, as that is the signature
+             that they implement. The following cast would therefore only fail during testing with
+             a mock – which is ok, as we already know and we don't want to pass a Mock to something that
+             doesn't expect it.
+             */
+
+            guard let center = center as? UNUserNotificationCenter else {
+                completionHandler()
+                return
+            }
+            delegate.userNotificationCenter?(center,
                                             didReceive: response,
                                             withCompletionHandler: completionHandler)
         }
