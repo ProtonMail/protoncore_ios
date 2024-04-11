@@ -21,13 +21,14 @@
 
 #if os(iOS)
 import Foundation
+import UIKit
+import SwiftUI
 import ProtonCoreDataModel
 import ProtonCoreLog
 import ProtonCoreNetworking
 import ProtonCoreObservability
 import ProtonCoreUIFoundations
 import ProtonCoreUtilities
-import UIKit
 
 public enum PasswordChangeViewError: Error {
     case passwordMinimumLength
@@ -43,7 +44,6 @@ extension PasswordChangeView {
         private let passwordChangeService: PasswordChangeService?
         private let authCredential: AuthCredential?
         private let userInfo: UserInfo?
-
         private let mode: PasswordChangeModule.PasswordChangeMode
 
         @Published var currentPasswordFieldContent: PCTextFieldContent!
@@ -55,6 +55,11 @@ extension PasswordChangeView {
         @Published var savePasswordIsLoading = false
 
         @Published var bannerState: BannerState = .none
+
+        var needs2FA: Bool {
+            guard let userInfo else { return false }
+            return userInfo.twoFactor > 0
+        }
 
         public init(
             mode: PasswordChangeModule.PasswordChangeMode,
@@ -98,25 +103,53 @@ extension PasswordChangeView {
         }
 
         func savePasswordTapped() {
+            do {
+                try validate(
+                    for: .default,
+                    password: newPasswordFieldContent.text,
+                    confirmPassword: confirmNewPasswordFieldContent.text
+                )
+                if needs2FA {
+                    present2FA()
+                } else {
+                    updatePassword()
+                }
+            } catch let error as PasswordValidationError {
+                displayPasswordError(error: error)
+            } catch {
+                PMLog.error(error)
+                bannerState = .error(content: .init(message: error.localizedDescription))
+            }
+        }
+
+        private func present2FA() {
+            let viewModel = PasswordChange2FAView.ViewModel(
+                mode: mode,
+                passwordChangeService: passwordChangeService,
+                authCredential: authCredential,
+                userInfo: userInfo,
+                loginPassword: currentPasswordFieldContent.text,
+                newPassword: newPasswordFieldContent.text
+            )
+            let viewController = UIHostingController(rootView: PasswordChange2FAView(viewModel: viewModel))
+            viewController.view.backgroundColor = ColorProvider.BackgroundNorm
+            PasswordChangeModule.initialViewController?.navigationController?.show(viewController, sender: self)
+        }
+
+        private func updatePassword() {
             Task { @MainActor in
+                PasswordChangeModule.initialViewController?.lockUI()
                 savePasswordIsLoading.toggle()
                 resetTextFieldsErrors()
                 do {
-                    try validate(
-                        for: .default,
-                        password: newPasswordFieldContent.text,
-                        confirmPassword: confirmNewPasswordFieldContent.text
-                    )
                     try await updatePasswordRequest()
                     observabilityPasswordChangeSuccess()
-                } catch let error as PasswordValidationError {
-                    displayPasswordError(error: error)
                 } catch {
                     PMLog.error(error)
                     bannerState = .error(content: .init(message: error.localizedDescription))
                     observabilityPasswordChangeError(error: error)
                 }
-
+                PasswordChangeModule.initialViewController?.unlockUI()
                 savePasswordIsLoading = false
             }
         }
@@ -124,6 +157,7 @@ extension PasswordChangeView {
         private func updatePasswordRequest() async throws {
             guard let passwordChangeService, let authCredential, let userInfo else {
                 PMLog.error("PasswordChangeService, AuthCredential and UserInfo is needed")
+                assertionFailure()
                 return
             }
             switch mode {

@@ -24,7 +24,7 @@
 import SwiftUI
 
 @MainActor
-public class PCButtonContent {
+public struct PCButtonContent {
     public var title: String
     public var isEnabled: Bool
     public var isAnimating: Bool

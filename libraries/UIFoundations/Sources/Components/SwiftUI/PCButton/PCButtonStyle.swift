@@ -24,7 +24,7 @@
 import SwiftUI
 
 @MainActor
-public class PCButtonStyle {
+public struct PCButtonStyle {
     public var mode: ButtonMode
     public enum ButtonMode {
         case solid

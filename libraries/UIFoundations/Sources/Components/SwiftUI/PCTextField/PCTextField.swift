@@ -23,6 +23,7 @@
 
 import SwiftUI
 
+@MainActor
 public struct PCTextField: View {
     @Binding public var style: PCTextFieldStyle
     @Binding public var content: PCTextFieldContent
@@ -43,17 +44,24 @@ public struct PCTextField: View {
                 if content.isSecureEntry && !content.isSecureEntryDisplayed {
                     SecureField(content.placeholder, text: $content.text)
                         .padding(.vertical)
+                        .keyboardType(content.keyboardType)
                 } else {
                     TextField(content.placeholder, text: $content.text)
                         .padding(.vertical)
+                        .keyboardType(content.keyboardType)
                 }
                 if content.isSecureEntry {
                     secureEntryDisplayButton
+                } else if content.showClearButton
+                            && !content.text.isEmpty {
+                    clearFieldButton
                 }
             }
+            .focused(currentFocus: $content.currentFocus, focusID: content.focusID)
             .padding(.horizontal)
             .background(ColorProvider.BackgroundSecondary)
             .cornerRadius(8.0)
+            .onTapGesture { content.focus() }
             .overlay(
                 RoundedRectangle(cornerRadius: 8.0)
                     .stroke(textFieldBorderColor, lineWidth: 1)
@@ -69,7 +77,6 @@ public struct PCTextField: View {
         }
     }
 
-    @MainActor
     private var titleFontColor: Color {
         switch style.mode {
         case .idle: return ColorProvider.TextNorm
@@ -77,15 +84,14 @@ public struct PCTextField: View {
         }
     }
 
-    @MainActor
     private var textFieldBorderColor: Color {
         switch style.mode {
-        case .idle: return ColorProvider.BackgroundSecondary
+        case .idle where content.isFocused: return ColorProvider.InteractionNorm
         case .error: return ColorProvider.NotificationError
+        default: return ColorProvider.BackgroundSecondary
         }
     }
 
-    @MainActor
     private var footnoteFontColor: Color {
         switch style.mode {
         case .idle: return ColorProvider.TextWeak
@@ -93,12 +99,60 @@ public struct PCTextField: View {
         }
     }
 
-    @MainActor
     private var secureEntryDisplayButton: some View {
-        Button(action: { content.isSecureEntryDisplayed.toggle() }, label: {
+        Button(action: {
+            let inputWasFocused = content.isFocused
+            content.isSecureEntryDisplayed.toggle()
+            if inputWasFocused {
+                withAnimation { content.focus() }
+            }
+        }, label: {
             Image(uiImage: content.isSecureEntryDisplayed ? IconProvider.eyeSlash : IconProvider.eye)
                 .foregroundColor(ColorProvider.IconHint)
         })
+    }
+
+    private var clearFieldButton: some View {
+        Button(action: { content.text = "" }, label: {
+            Image(uiImage: IconProvider.crossCircleFilled)
+                .foregroundColor(ColorProvider.IconHint)
+        })
+    }
+}
+
+@available(iOS 15.0, *)
+private struct TextFieldFocused: ViewModifier {
+
+    @FocusState private var focusState: String?
+
+    @Binding private var currentFocus: String?
+    private var focusID: String
+
+    init(currentFocus: Binding<String?>, focusID: String) {
+        self._currentFocus = currentFocus
+        self.focusID = focusID
+    }
+
+    func body(content: Content) -> some View {
+        content
+            .focused($focusState, equals: focusID)
+            .onChange(of: focusState, perform: { _ in
+                currentFocus = focusState
+            })
+            .onChange(of: currentFocus, perform: { _ in
+                focusState = currentFocus
+            })
+    }
+}
+
+extension View {
+    @ViewBuilder
+    func focused(currentFocus: Binding<String?>, focusID: String) -> some View {
+        if #available(iOS 15.0, *) {
+            self.modifier(TextFieldFocused(currentFocus: currentFocus, focusID: focusID))
+        } else {
+            self
+        }
     }
 }
 #endif

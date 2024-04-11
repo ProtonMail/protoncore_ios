@@ -41,5 +41,13 @@ final class PasswordChangeViewSnapshotTests: SnapshotTestCase {
         checkSnapshots(controller: UIHostingController(rootView: navigationView),
                        perceptualPrecision: 0.9)
     }
+
+    func test_PasswordChange2FAView_idle() {
+        let preview = PasswordChange2FAView_Previews.previews
+        let navigationView = NavigationView { preview }
+
+        checkSnapshots(controller: UIHostingController(rootView: navigationView),
+                       perceptualPrecision: 0.9)
+    }
 }
 #endif

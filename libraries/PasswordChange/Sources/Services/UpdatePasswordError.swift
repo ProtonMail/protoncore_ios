@@ -21,26 +21,37 @@
 
 import Foundation
 
-// code start at 0x110000
 enum UpdatePasswordError: Int, Error {
-    case invalidUserName = 0x110001
-    case invalidModulusID = 0x110002
-    case invalidModulus = 0x110003
-    case cantHashPassword = 0x110004
-    case cantGenerateVerifier = 0x110005
-    case cantGenerateSRPClient = 0x110006
+    case invalidUserName
+    case invalidModulusID
+    case invalidModulus
+    case cantHashPassword
+    case cantGenerateVerifier
+    case cantGenerateSRPClient
+    case keyUpdateFailed
 
-    // mailbox password part
-    case currentPasswordWrong = 0x110008
-    case newNotMatch = 0x110009
-    case passwordEmpty = 0x110010
-    case keyUpdateFailed = 0x110011
+    case `default`
+}
 
-    case minimumLengthError = 0x110012
-
-    case `default` = 0x110000
-
-    var code: Int {
-        return self.rawValue
+extension UpdatePasswordError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .invalidUserName:
+            return PCTranslation.errorInvalidUsername.l10n
+        case .invalidModulusID:
+            return PCTranslation.errorInvalidModulusID.l10n
+        case .invalidModulus:
+            return PCTranslation.errorInvalidModulus.l10n
+        case .cantHashPassword:
+            return PCTranslation.errorCantHashPassword.l10n
+        case .cantGenerateVerifier:
+            return PCTranslation.errorCantGenerateVerifier.l10n
+        case .cantGenerateSRPClient:
+            return PCTranslation.errorCantGenerateSRPClient.l10n
+        case .keyUpdateFailed:
+            return PCTranslation.errorKeyUpdateFailed.l10n
+        case .default:
+            return PCTranslation.errorUpdatePasswordDefault.l10n
+        }
     }
 }

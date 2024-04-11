@@ -51,7 +51,7 @@ public enum PasswordChangeModule {
         let resourceBundle = Bundle.module
         return resourceBundle
         #else
-        let podBundle = Bundle(for: AccountRecoveryClass.self)
+        let podBundle = Bundle(for: PasswordChangeClass.self)
         if let bundleURL = podBundle.url(forResource: "Resources-PasswordChange", withExtension: "bundle") {
             if let bundle = Bundle(url: bundleURL) {
                 return bundle
@@ -88,7 +88,12 @@ public enum PasswordChangeModule {
         )
         let viewController = UIHostingController(rootView: PasswordChangeView(viewModel: viewModel))
         viewController.view.backgroundColor = ColorProvider.BackgroundNorm
+        Self.initialViewController = viewController
         return viewController
     }
+
+    weak static var initialViewController: UIViewController?
 }
+
+private class PasswordChangeClass {}
 #endif

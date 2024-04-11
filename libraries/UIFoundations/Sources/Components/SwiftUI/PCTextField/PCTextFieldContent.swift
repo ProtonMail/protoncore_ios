@@ -24,26 +24,50 @@
 import SwiftUI
 
 @MainActor
-public class PCTextFieldContent {
+public struct PCTextFieldContent {
     public var title: String
     public var text: String
     public var placeholder: String
     public var isSecureEntry: Bool
     public var isSecureEntryDisplayed: Bool = false
+    public var showClearButton: Bool
     public var footnote: String
+    public var keyboardType: UIKeyboardType
+
+    var currentFocus: String?
+    private var baseFocusID: String = UUID().uuidString
+    var focusID: String {
+        if isSecureEntry && !isSecureEntryDisplayed {
+            return baseFocusID.appending("_secure")
+        } else {
+            return baseFocusID.appending("_plain")
+        }
+    }
 
     public init(
         title: String,
         text: String = "",
         placeholder: String = "",
         isSecureEntry: Bool = false,
-        footnote: String = ""
+        showClearButton: Bool = true,
+        footnote: String = "",
+        keyboardType: UIKeyboardType = .default
     ) {
         self.title = title
         self.text = text
         self.placeholder = placeholder
         self.isSecureEntry = isSecureEntry
+        self.showClearButton = showClearButton
         self.footnote = footnote
+        self.keyboardType = keyboardType
+    }
+
+    public var isFocused: Bool {
+        currentFocus == focusID
+    }
+
+    mutating public func focus() {
+        self.currentFocus = focusID
     }
 }
 

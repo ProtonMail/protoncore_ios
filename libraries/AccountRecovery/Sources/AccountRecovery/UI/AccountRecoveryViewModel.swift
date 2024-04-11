@@ -26,6 +26,7 @@ import ProtonCoreDataModel
 import ProtonCoreObservability
 import ProtonCorePasswordRequest
 import UIKit
+import ProtonCoreUtilities
 
 public enum AccountRecoveryViewError: Error {
     case missingArguments
