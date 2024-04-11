@@ -167,6 +167,149 @@ class UserInfoTests: XCTestCase {
         XCTAssertEqual(userInfo.lockedFlags, LockedFlags.orgIssueForPrimaryAdmin)
     }
 
+    func testInitializeUserInfoFromResponseWithNilAccountRecovery() throws {
+        let json = """
+        {
+         "ToMigrate" : 0,
+         "Currency" : "EUR",
+         "Email" : "recoveco4@proton.black",
+         "MaxUpload" : 26214400,
+         "Type" : 1,
+         "UsedBaseSpace" : 1062250,
+         "ChargebeeUser" : 1,
+         "Subscribed" : 0,
+         "Flags" : {
+         "has-temporary-password" : false,
+         "protected" : false,
+         "onboard-checklist-storage-granted" : false,
+         "drive-early-access" : false,
+         "test-account" : false,
+         "no-login" : false,
+         "recovery-attempt" : false,
+         "sso" : false,
+         "no-proton-address" : false
+         },
+         "MaxSpace" : 524288000,
+         "MaxBaseSpace" : 524288000,
+         "Role" : 0,
+         "Private" : 1,
+         "DisplayName" : "",
+         "CreateTime" : 1712838979,
+         "Keys" : [
+         {
+         "Active" : 1,
+         "Version" : 3,
+         "RecoverySecretSignature" : null,
+         "Fingerprint" : "3919ce8899beef1de9d9d39f34cb59830e7a9363",
+         "RecoverySecret" : null,
+         "Primary" : 1,
+         "ID" : "u-uRjKtsPIZjuXDTo2JC0DGfuX-BwAxSK_wFuuL1WcdN2bsIgUkjJT546saNqqyC9e8KQ7YTrhxtAIPremoGgg=="
+         }
+         ],
+         "Services" : 1,
+         "UsedDriveSpace" : 0,
+         "Delinquent" : 0,
+         "MnemonicStatus" : 1,
+         "Credit" : 0,
+         "UsedSpace" : 1062250,
+         "Name" : "recoveco4",
+         "MaxDriveSpace" : 2147483648,
+         "ID" : "TmW3dg3wkF1AzlMEswKu9eCBZ-J7hv452tMpGibPzknEd_Wes57opk31opIRC37SKAUjX9aHTWDOFkl0VEZuNQ==",
+         "ProductUsedSpace" : {
+         "Contact" : 0,
+         "Calendar" : 0,
+         "Mail" : 1062250,
+         "Drive" : 0,
+         "Pass" : 0
+         },
+         "AccountRecovery" : null
+        }
+        """
+
+        let responseDict = try XCTUnwrap(try convertStringToDictionary(text: json))
+        let userInfo = UserInfo(response: responseDict)
+
+        XCTAssertNil(userInfo.accountRecovery)
+
+    }
+
+    func testInitializeUserInfoFromResponseWithNotNilAccountRecovery() throws {
+        let json = """
+        {
+         "ToMigrate" : 0,
+         "Currency" : "EUR",
+         "Email" : "recoveco4@proton.black",
+         "MaxUpload" : 26214400,
+         "Type" : 1,
+         "UsedBaseSpace" : 1062250,
+         "ChargebeeUser" : 1,
+         "Subscribed" : 0,
+         "Flags" : {
+         "has-temporary-password" : false,
+         "protected" : false,
+         "onboard-checklist-storage-granted" : false,
+         "drive-early-access" : false,
+         "test-account" : false,
+         "no-login" : false,
+         "recovery-attempt" : false,
+         "sso" : false,
+         "no-proton-address" : false
+         },
+         "MaxSpace" : 524288000,
+         "MaxBaseSpace" : 524288000,
+         "Role" : 0,
+         "Private" : 1,
+         "DisplayName" : "",
+         "CreateTime" : 1712838979,
+         "Keys" : [
+         {
+         "Active" : 1,
+         "Version" : 3,
+         "RecoverySecretSignature" : null,
+         "Fingerprint" : "3919ce8899beef1de9d9d39f34cb59830e7a9363",
+         "RecoverySecret" : null,
+         "Primary" : 1,
+         "ID" : "u-uRjKtsPIZjuXDTo2JC0DGfuX-BwAxSK_wFuuL1WcdN2bsIgUkjJT546saNqqyC9e8KQ7YTrhxtAIPremoGgg=="
+         }
+         ],
+         "Services" : 1,
+         "UsedDriveSpace" : 0,
+         "Delinquent" : 0,
+         "MnemonicStatus" : 1,
+         "Credit" : 0,
+         "UsedSpace" : 1062250,
+         "Name" : "recoveco4",
+         "MaxDriveSpace" : 2147483648,
+         "ID" : "TmW3dg3wkF1AzlMEswKu9eCBZ-J7hv452tMpGibPzknEd_Wes57opk31opIRC37SKAUjX9aHTWDOFkl0VEZuNQ==",
+         "ProductUsedSpace" : {
+         "Contact" : 0,
+         "Calendar" : 0,
+         "Mail" : 1062250,
+         "Drive" : 0,
+         "Pass" : 0
+         },
+         "AccountRecovery" : {
+           "Reason" : 2,
+           "UID" : "slswn2dtcgcyah2x3rpbarmab6ytn7q4",
+           "StartTime" : 1712813188,
+           "State" : 2,
+           "EndTime" : 1714022788
+         }
+        }
+        """
+
+        let responseDict = try XCTUnwrap(try convertStringToDictionary(text: json))
+        let userInfo = UserInfo(response: responseDict)
+
+        XCTAssertNotNil(userInfo.accountRecovery)
+        XCTAssertEqual(.authentication, userInfo.accountRecovery?.reason)
+        XCTAssertEqual(1712813188, userInfo.accountRecovery?.startTime)
+        XCTAssertEqual(1714022788, userInfo.accountRecovery?.endTime)
+        XCTAssertEqual("slswn2dtcgcyah2x3rpbarmab6ytn7q4", userInfo.accountRecovery?.UID)
+        XCTAssertEqual(.cancelled, userInfo.accountRecovery?.state)
+
+    }
+
     private func convertStringToDictionary(text: String) throws -> [String: Any]? {
         if let data = text.data(using: .utf8) {
             let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
