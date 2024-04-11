@@ -23,6 +23,7 @@ import ProtonCoreCrypto
 import ProtonCoreDataModel
 import ProtonCoreNetworking
 import ProtonCoreServices
+import ProtonCoreAuthenticationKeyGeneration
 
 /// KeysAPI
 ///
@@ -137,29 +138,4 @@ final class UpdatePrivateKeyRequest: Request {
         return KeysAPI.path + "/private"
     }
 }
-
-final class PasswordAuth: Package {
-
-    let AuthVersion: Int = 4
-    let ModulusID: String // encrypted id
-    let salt: String // base64 encoded
-    let verifier: String // base64 encoded
-
-    init(modulusID: String, salt: String, verifier: String) {
-        self.ModulusID = modulusID
-        self.salt = salt
-        self.verifier = verifier
-    }
-
-    var parameters: [String: Any]? {
-        let out: [String: Any] = [
-            "Version": self.AuthVersion,
-            "ModulusID": self.ModulusID,
-            "Salt": self.salt,
-            "Verifier": self.verifier
-        ]
-        return out
-    }
-}
-
 

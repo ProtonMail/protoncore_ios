@@ -32,9 +32,11 @@ public struct DismissibleViewModifier: ViewModifier {
                 .contentShape(Rectangle())
                 .ignoresSafeArea()
                 .onTapGesture {
+#if os(iOS)
                     UIApplication.shared.sendAction(
                         #selector(UIResponder.resignFirstResponder),
                         to: nil, from: nil, for: nil)
+#endif
                 }
             content
         }

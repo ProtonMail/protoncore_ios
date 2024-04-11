@@ -77,7 +77,8 @@ struct PasswordChange2FAView_Previews: PreviewProvider {
         return PasswordChange2FAView.ViewModel(
             mode: .loginPassword,
             loginPassword: "", 
-            newPassword: ""
+            newPassword: "",
+            passwordChangeCompletion: nil
         )
     }()
 
