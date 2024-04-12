@@ -62,6 +62,8 @@ extension UserInfo {
 
     // convenience function for parsing from [String: Any]?, needed by some clients
     private static func parse(accountRecovery: [String: Any]?) -> AccountRecovery? {
+        guard let accountRecovery else { return nil }
+
         guard JSONSerialization.isValidJSONObject(accountRecovery as Any) else {
             PMLog.error("Account Recovery state from /users response is not a valid JSON object", sendToExternal: true)
             return nil
