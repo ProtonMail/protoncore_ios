@@ -81,10 +81,9 @@ public class PushNotificationService: NSObject, PushNotificationServiceProtocol 
 
         fallbackDelegate = NotificationCenterFactory.current.delegate
         NotificationCenterFactory.current.delegate = Self.shared
-        registerForRemoteNotifications()
     }
 
-    private func registerForRemoteNotifications() {
+    public func registerForRemoteNotifications() {
         NotificationCenterFactory.current.requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
             ObservabilityEnv.report(.pushNotificationsPermissionsRequested(result: granted ? .accepted : .rejected))
             guard granted else {
