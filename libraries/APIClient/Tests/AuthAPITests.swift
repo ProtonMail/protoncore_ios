@@ -167,8 +167,8 @@ class AuthAPITests: XCTestCase {
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/modulus") {
                 let authModulusResponse = AuthModulusResponse()
-                authModulusResponse.Modulus = modulus
-                authModulusResponse.ModulusID = modulusID
+                authModulusResponse.modulus = modulus
+                authModulusResponse.modulusID = modulusID
                 completion(nil, .success(authModulusResponse.toSuccessfulResponse))
             } else {
                 XCTFail()
@@ -181,8 +181,8 @@ class AuthAPITests: XCTestCase {
         apiService.perform(request: authModulusOK, response: AuthModulusResponse()) { (task, response: AuthModulusResponse) in
             XCTAssertEqual(response.responseCode, 1000)
             XCTAssert(response.error == nil)
-            XCTAssertEqual(response.Modulus, modulus)
-            XCTAssertEqual(response.ModulusID, modulusID)
+            XCTAssertEqual(response.modulus, modulus)
+            XCTAssertEqual(response.modulusID, modulusID)
             expectation1.fulfill()
         }
         self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in

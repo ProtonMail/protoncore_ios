@@ -98,7 +98,7 @@ public struct PasswordChangeView: View {
 struct PasswordChangeView_Previews: PreviewProvider {
 
     static var viewModel = {
-        return PasswordChangeView.ViewModel(mode: .loginPassword)
+        return PasswordChangeView.ViewModel(mode: .loginPassword, passwordChangeCompletion: nil)
     }()
 
     static var previews: some View {

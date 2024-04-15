@@ -45,10 +45,12 @@ public struct PCTextField: View {
                     SecureField(content.placeholder, text: $content.text)
                         .padding(.vertical)
                         .keyboardType(content.keyboardType)
+                        .autocapitalization(autocapitalization)
                 } else {
                     TextField(content.placeholder, text: $content.text)
                         .padding(.vertical)
                         .keyboardType(content.keyboardType)
+                        .autocapitalization(autocapitalization)
                 }
                 if content.isSecureEntry {
                     secureEntryDisplayButton
@@ -117,6 +119,10 @@ public struct PCTextField: View {
             Image(uiImage: IconProvider.crossCircleFilled)
                 .foregroundColor(ColorProvider.IconHint)
         })
+    }
+
+    private var autocapitalization: UITextAutocapitalizationType {
+        content.isSecureEntry ? .none : content.autocapitalization
     }
 }
 

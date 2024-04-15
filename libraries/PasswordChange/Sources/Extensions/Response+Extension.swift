@@ -22,4 +22,17 @@
 import Foundation
 import ProtonCoreNetworking
 
-public final class DefaultResponse: Response, Codable {}
+public final class DefaultResponse: Response, Decodable {
+
+    public init(from decoder: Decoder) throws {
+        super.init()
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.responseCode = try container.decodeIfPresent(Int.self, forKey: .responseCode)
+    }
+    
+    required init() {}
+    
+    enum CodingKeys: String, CodingKey {
+        case responseCode = "code"
+    }
+}

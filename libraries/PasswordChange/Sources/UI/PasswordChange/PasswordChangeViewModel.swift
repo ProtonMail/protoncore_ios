@@ -44,6 +44,7 @@ extension PasswordChangeView {
         private let passwordChangeService: PasswordChangeService?
         private let authCredential: AuthCredential?
         private let userInfo: UserInfo?
+        private var passwordChangeCompletion: PasswordChangeCompletion?
         private let mode: PasswordChangeModule.PasswordChangeMode
 
         @Published var currentPasswordFieldContent: PCTextFieldContent!
@@ -65,12 +66,14 @@ extension PasswordChangeView {
             mode: PasswordChangeModule.PasswordChangeMode,
             passwordChangeService: PasswordChangeService? = nil,
             authCredential: AuthCredential? = AuthCredential.none,
-            userInfo: UserInfo? = .getDefault()
+            userInfo: UserInfo? = .getDefault(),
+            passwordChangeCompletion: PasswordChangeCompletion?
         ) {
             self.mode = mode
             self.passwordChangeService = passwordChangeService
             self.authCredential = authCredential
             self.userInfo = userInfo
+            self.passwordChangeCompletion = passwordChangeCompletion
             self.setupViews()
         }
 
@@ -129,7 +132,8 @@ extension PasswordChangeView {
                 authCredential: authCredential,
                 userInfo: userInfo,
                 loginPassword: currentPasswordFieldContent.text,
-                newPassword: newPasswordFieldContent.text
+                newPassword: newPasswordFieldContent.text, 
+                passwordChangeCompletion: passwordChangeCompletion
             )
             let viewController = UIHostingController(rootView: PasswordChange2FAView(viewModel: viewModel))
             viewController.view.backgroundColor = ColorProvider.BackgroundNorm
@@ -137,13 +141,23 @@ extension PasswordChangeView {
         }
 
         private func updatePassword() {
+            guard let passwordChangeService, let authCredential, let userInfo else {
+                PMLog.error("PasswordChangeService, AuthCredential and UserInfo are required")
+                assertionFailure()
+                return
+            }
             Task { @MainActor in
                 PasswordChangeModule.initialViewController?.lockUI()
                 savePasswordIsLoading.toggle()
                 resetTextFieldsErrors()
                 do {
-                    try await updatePasswordRequest()
+                    try await updatePasswordRequest(
+                        passwordChangeService: passwordChangeService,
+                        authCredential: authCredential,
+                        userInfo: userInfo
+                    )
                     observabilityPasswordChangeSuccess()
+                    passwordChangeCompletion?(authCredential, userInfo)
                 } catch {
                     PMLog.error(error)
                     bannerState = .error(content: .init(message: error.localizedDescription))
@@ -154,12 +168,11 @@ extension PasswordChangeView {
             }
         }
 
-        private func updatePasswordRequest() async throws {
-            guard let passwordChangeService, let authCredential, let userInfo else {
-                PMLog.error("PasswordChangeService, AuthCredential and UserInfo is needed")
-                assertionFailure()
-                return
-            }
+        private func updatePasswordRequest(
+            passwordChangeService: PasswordChangeService,
+            authCredential: AuthCredential,
+            userInfo: UserInfo
+        ) async throws {
             switch mode {
             case .loginPassword:
                 try await passwordChangeService.updateLoginPassword(

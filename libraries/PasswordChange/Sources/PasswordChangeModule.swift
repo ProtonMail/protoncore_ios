@@ -29,6 +29,7 @@ import ProtonCoreServices
 
 #if os(iOS)
 public typealias PasswordChangeViewController = UIHostingController<PasswordChangeView>
+public typealias PasswordChangeCompletion = (_ authCredential: AuthCredential, _ userInfo: UserInfo) -> Void
 
 /// Useful parameters to have handy
 public enum PasswordChangeModule {
@@ -77,14 +78,16 @@ public enum PasswordChangeModule {
         mode: PasswordChangeMode,
         apiService: APIService,
         authCredential: AuthCredential,
-        userInfo: UserInfo
+        userInfo: UserInfo,
+        completion: PasswordChangeCompletion?
     ) -> PasswordChangeViewController {
         let passwordChangeService = PasswordChangeService(api: apiService)
         let viewModel = PasswordChangeView.ViewModel(
             mode: mode,
             passwordChangeService: passwordChangeService,
             authCredential: authCredential,
-            userInfo: userInfo
+            userInfo: userInfo,
+            passwordChangeCompletion: completion
         )
         let viewController = UIHostingController(rootView: PasswordChangeView(viewModel: viewModel))
         viewController.view.backgroundColor = ColorProvider.BackgroundNorm

@@ -73,7 +73,7 @@ public class PasswordChangeService {
                                                           clientProof: clientProof.encodeBase64(),
                                                           srpSession: info.srpSession,
                                                           twoFACode: twoFACode,
-                                                          modulusID: passwordAuth.ModulusID,
+                                                          modulusID: passwordAuth.modulusID,
                                                           salt: passwordAuth.salt,
                                                           verifier: passwordAuth.verifier)
 
@@ -194,8 +194,8 @@ public class PasswordChangeService {
 
     private func generatePasswordAuth(newPassword: Passphrase) async throws -> PasswordAuth? {
         let (_, authModulus): (URLSessionDataTask?, AuthModulusResponse) = try await apiService.perform(request: AuthAPI.Router.modulus)
-        guard let modulusID = authModulus.ModulusID else { throw UpdatePasswordError.invalidModulusID }
-        guard let newModulus = authModulus.Modulus else { throw UpdatePasswordError.invalidModulus }
+        guard let modulusID = authModulus.modulusID else { throw UpdatePasswordError.invalidModulusID }
+        guard let newModulus = authModulus.modulus else { throw UpdatePasswordError.invalidModulus }
 
         // generate new verifier
         guard let newSalt = try SrpRandomBits(PasswordSaltSize.login.IntBits) else {
