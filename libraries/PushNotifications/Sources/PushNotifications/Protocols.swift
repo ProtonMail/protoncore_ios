@@ -35,6 +35,9 @@ public protocol PushNotificationServiceProtocol: AnyObject {
 
     func setup()
 
+    /// Start device registration, requesting authorization if necessary
+    func registerForRemoteNotifications()
+
     func didLoginWithUID(_ uid: String)
     /// Delegate to pass unhandled notifications to
     var fallbackDelegate: UNUserNotificationCenterDelegate? { get set }
