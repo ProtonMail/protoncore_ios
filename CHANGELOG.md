@@ -1,17 +1,34 @@
+## 22.0.0 (2024-04-15)
+
+### changed (4 changes)
+
+- [feat(changePassword): [CP-7402] Changes to Reset Password for integration with Mail](apple/shared/protoncore@0b4aa14b130146dbd05d90e8e44215b102812426) ([merge request](apple/shared/protoncore!1752))
+- [refactor: forward to fallback delegate CP-7646](apple/shared/protoncore@f859dcf7b4c5af01f93f7a38d9c6fa06c3a7b414) ([merge request](apple/shared/protoncore!1749))
+- [feat (testing): Support for stubbing static methods and throwing from request creation (instead of crashing)](apple/shared/protoncore@092ca039acc2da330146d873c4d3c77d94bcec6f) ([merge request](apple/shared/protoncore!1724))
+- [Update to gopenpgp v2.8.0-alpha.1-proton.](apple/shared/protoncore@a47d689e59c8e651f94fe357f754ba7f1dba42a4) ([merge request](apple/shared/protoncore!1747))
+
+### added (3 changes)
+
+- [feat(changePassword): CP-7523 [iOS] Add support for 2FA mode](apple/shared/protoncore@96b32ec2a1771af543864e6d46c62f91c128a792) ([merge request](apple/shared/protoncore!1746))
+- [feat(changePassword): CP-7395 [iOS] Create a Change Password View](apple/shared/protoncore@14c700e610165c9fb0a4a6cad74e2e180da4d508) ([merge request](apple/shared/protoncore!1740))
+- [IA-1094: Parse lockedFlags in userinfo](apple/shared/protoncore@0044dba161541813c58ec24c9c8e3ce04efd3e88) ([merge request](apple/shared/protoncore!1705))
+
+### fixed (2 changes)
+
+- [fix: CP-7804 nil accountRecovery parsing](apple/shared/protoncore@657bb57e7737050303eb5cad57b84eb8ea8c9786) ([merge request](apple/shared/protoncore!1748))
+- [Fix 'Unable to create pipeline' error on each push.](apple/shared/protoncore@907cdcc16a12734f1b86b2e646bd00c04e9c88f9) ([merge request](apple/shared/protoncore!1750))
+
 ## 21.0.0 (2024-04-05)
 
-### Added (8 changes)
+### added (5 changes)
 
 - [feat(changePassword): CP-7784 [iOS] Create Banner component in SwiftUI](apple/shared/protoncore@fa41a34128e4f6a8038fc7bac2a5bfd9a44fe4d0) ([merge request](apple/shared/protoncore!1736))
-- [feat(changePassword): CP-7784 [iOS] Create Banner component in SwiftUI](apple/shared/protoncore@25bb61bbac26a2b8c70abf2a8905a264b0c99b12) ([merge request](apple/shared/protoncore!1736))
 - [feat(changePassword): CP-7776 [iOS] Create TextField component in SwiftUI](apple/shared/protoncore@5d3f7c6626b08facd7bbc66dc89241e6d02f3acf) ([merge request](apple/shared/protoncore!1734))
-- [feat(changePassword): CP-7776 [iOS] Create TextField component in SwiftUI](apple/shared/protoncore@74ae74cd887e7739094b55064ffc9469fa345d13) ([merge request](apple/shared/protoncore!1734))
 - [feat(changePassword): CP-7775 [iOS] Create button component in SwiftUI](apple/shared/protoncore@a4ed0635a5b8c498f392c5c5c9c8e7369edb52dd) ([merge request](apple/shared/protoncore!1733))
-- [feat(changePassword): CP-7775 [iOS] Create button component in SwiftUI](apple/shared/protoncore@5d74ba1aac9a253094ddb6f086f66cbc4cfe81cd) ([merge request](apple/shared/protoncore!1733))
 - [TPE-563 - Add proxy token support to Core](apple/shared/protoncore@9aca5bd8459b4e9474072f95b4c5f845388faa01) ([merge request](apple/shared/protoncore!1729))
 - [feat(passwordChange): CP-7396 [iOS] Port endpoints for changing password from Mail](apple/shared/protoncore@744f7edf5723db6fbb1f2f5118a0f422423a7146) ([merge request](apple/shared/protoncore!1726))
 
-### Changed (1 change)
+### changed (1 change)
 
 - [feat(payments): VPNAPPL-2047 Expose InAppPurchasePlan for VPN](apple/shared/protoncore@70e3f1b654feab58587870440ae959e675584ac0) ([merge request](apple/shared/protoncore!1727))
 
