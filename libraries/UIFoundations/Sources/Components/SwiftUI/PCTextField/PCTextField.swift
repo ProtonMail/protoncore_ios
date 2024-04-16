@@ -44,11 +44,13 @@ public struct PCTextField: View {
                 if content.isSecureEntry && !content.isSecureEntryDisplayed {
                     SecureField(content.placeholder, text: $content.text)
                         .padding(.vertical)
+                        .accentColor(ColorProvider.BrandNorm)
                         .keyboardType(content.keyboardType)
                         .autocapitalization(autocapitalization)
                 } else {
                     TextField(content.placeholder, text: $content.text)
                         .padding(.vertical)
+                        .accentColor(ColorProvider.BrandNorm)
                         .keyboardType(content.keyboardType)
                         .autocapitalization(autocapitalization)
                 }
@@ -88,7 +90,7 @@ public struct PCTextField: View {
 
     private var textFieldBorderColor: Color {
         switch style.mode {
-        case .idle where content.isFocused: return ColorProvider.InteractionNorm
+        case .idle where content.isFocused: return ColorProvider.BrandNorm
         case .error: return ColorProvider.NotificationError
         default: return ColorProvider.BackgroundSecondary
         }

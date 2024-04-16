@@ -1,6 +1,6 @@
 //
-//  PCButtonStyle.swift
-//  ProtonCore-UIFoundations - Created on 27.03.2024.
+//  View+Extensions.swift
+//  ProtonCore-Utilities - Created on 4/17/24.
 //
 //  Copyright (c) 2024 Proton Technologies AG
 //
@@ -19,26 +19,20 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-#if os(iOS)
-
 import SwiftUI
 
-@MainActor
-public struct PCButtonStyle {
-    public var brand: Brand
-    public var mode: ButtonMode
-    public enum ButtonMode {
-        case solid
-        case text
-    }
-
-    public init(
-        brand: Brand = .currentBrand,
-        mode: ButtonMode
-    ) {
-        self.brand = brand
-        self.mode = mode
+public extension View {
+    /// Applies the given transform if the given condition evaluates to `true`.
+    /// - Parameters:
+    ///   - condition: The condition to evaluate.
+    ///   - transform: The transform to apply to the source `View`.
+    /// - Returns: Either the original `View` or the modified `View` if the condition is `true`.
+    @ViewBuilder
+    func `if`(_ condition: @autoclosure () -> Bool, transform: (Self) -> some View) -> some View {
+        if condition() {
+            transform(self)
+        } else {
+            self
+        }
     }
 }
-
-#endif
