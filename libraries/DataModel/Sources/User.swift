@@ -45,6 +45,7 @@ public struct User: Codable, Equatable, CustomDebugStringConvertible {
     public let keys: [Key]
 
     public let accountRecovery: AccountRecovery?
+    public let lockedFlags: LockedFlags?
     // public let driveEarlyAccess: Int
     // public let mailSettings: MailSetting
     // public let addresses: [Address]
@@ -89,7 +90,8 @@ public struct User: Codable, Equatable, CustomDebugStringConvertible {
                 email: String?,
                 displayName: String?,
                 keys: [Key],
-                accountRecovery: AccountRecovery? = nil) {
+                accountRecovery: AccountRecovery? = nil,
+                lockedFlags: LockedFlags? = nil) {
         self.ID = ID
         self.name = name
         self.usedSpace = usedSpace
@@ -112,6 +114,7 @@ public struct User: Codable, Equatable, CustomDebugStringConvertible {
         self.displayName = displayName
         self.keys = keys
         self.accountRecovery = accountRecovery
+        self.lockedFlags = lockedFlags
     }
 
     public var description: String {
@@ -189,7 +192,7 @@ public final class UserInfo: NSObject, Codable {
     public var userId: String
     public var userKeys: [Key]
     public var weekStart: Int
-    public let lockedFlags: LockedFlags?
+    public var lockedFlags: LockedFlags?
 
     public static func getDefault() -> UserInfo {
         return .init(maxSpace: 0, maxBaseSpace: 0, maxDriveSpace: 0, usedSpace: 0,
