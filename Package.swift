@@ -165,6 +165,7 @@ extension String {
     static let troubleShootingResourcesiOS: String = "ProtonCoreTroubleShootingResourcesiOS"
     static let uiFoundations: String = "ProtonCoreUIFoundations"
     static let uiFoundationsResourcesiOS: String = "ProtonCoreUIFoundationsResourcesiOS"
+    static let uiFoundationsResourcestvOS: String = "ProtonCoreUIFoundationsResourcestvOS"
     static let uiFoundationsResourcesmacOS: String = "ProtonCoreUIFoundationsResourcesmacOS"
     static let utilities: String = "ProtonCoreUtilities"
     static let vCard: String = "ProtonCoreVCard"
@@ -288,6 +289,8 @@ extension Target.Dependency {
     static var uiFoundations: Target.Dependency { .target(name: .uiFoundations) }
     static var uiFoundationsResourcesiOS: Target.Dependency { .target(name: .uiFoundationsResourcesiOS,
                                                                       condition: .when(platforms: [.iOS])) }
+    static var uiFoundationsResourcestvOS: Target.Dependency { .target(name: .uiFoundationsResourcestvOS,
+                                                                       condition: .when(platforms: [.tvOS])) }
     static var uiFoundationsResourcesmacOS: Target.Dependency { .target(name: .uiFoundationsResourcesmacOS,
                                                                         condition: .when(platforms: [.macOS])) }
     static var utilities: Target.Dependency { .target(name: .utilities) }
@@ -1885,6 +1888,7 @@ add(
                        .log,
                        .utilities,
                        .uiFoundationsResourcesiOS,
+                       .uiFoundationsResourcestvOS,
                        .uiFoundationsResourcesmacOS
                    ],
                    path: "libraries/UIFoundations/Sources"),
@@ -1893,6 +1897,12 @@ add(
                    path: "libraries/UIFoundations/Resources-iOS",
                    resources: [
                        .process("Resources-iOS"),
+                       .process("Resources-Shared")
+                   ]),
+
+        coreTarget(name: .uiFoundationsResourcestvOS,
+                   path: "libraries/UIFoundations/Resources-tvOS",
+                   resources: [
                        .process("Resources-Shared")
                    ]),
 
