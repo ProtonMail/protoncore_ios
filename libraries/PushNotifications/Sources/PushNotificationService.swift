@@ -237,12 +237,7 @@ extension PushNotificationService {
 
     private func generateEncryptionKit() -> EncryptionKit? {
         do {
-            let keyPair = try MailCrypto.generateRandomKeyPair()
-            return EncryptionKit(
-                passphrase: keyPair.passphrase,
-                privateKey: keyPair.privateKey,
-                publicKey: keyPair.publicKey
-            )
+            return try EncryptionKit.generateRandomKeyPair()
         } catch {
             return nil
         }
