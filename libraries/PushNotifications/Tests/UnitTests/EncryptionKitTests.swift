@@ -30,7 +30,7 @@ final class EncryptionKitTests: XCTestCase {
     }
 
     func testGenerateRandomKeyPair() throws {
-        let encryptionKit = try EncryptionKit.generateRandomKeyPair()
+        let encryptionKit = try EncryptionKit.generateEncryptionKit()
         let privateKey = ArmoredKey(value: encryptionKit.privateKey)
         let publicKey = ArmoredKey(value: encryptionKit.publicKey)
         let passphrase = Passphrase(value: encryptionKit.passphrase)

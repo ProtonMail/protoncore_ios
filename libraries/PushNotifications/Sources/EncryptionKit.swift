@@ -39,7 +39,7 @@ struct EncryptionKit: Codable, Equatable {
 
     // MARK: - static
 
-    static func generateRandomKeyPair() throws -> EncryptionKit {
+    static func generateEncryptionKit() throws -> EncryptionKit {
         let passphrase = UUID().uuidString
         let username = UUID().uuidString
         let domain = "protonmail.com"
