@@ -23,6 +23,7 @@ import Foundation
 import ProtonCoreDoh
 
 public class TestDoH: DoH, ServerConfig {
+    public var apnEnvironment: APNEnvironment = .development
     public var defaultHost: String = "https://test.xyz"
     public var captchaHost: String = "https://test.xyz"
     public var humanVerificationV3Host: String = "https://verify.test.xyz"

@@ -237,6 +237,7 @@ extension PushNotificationService {
         let publicKey = encryptionKit.publicKey
 
         let request = DeviceRegistrationEndpoint(deviceToken: token,
+                                                 apnEnvironment: apiService.dohInterface.getAPNEnvironment(),
                                                  publicKey: publicKey)
 
         do {

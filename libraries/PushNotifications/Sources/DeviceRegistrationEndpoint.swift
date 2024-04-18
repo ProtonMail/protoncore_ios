@@ -18,6 +18,7 @@
 
 import Foundation
 import ProtonCoreNetworking
+import ProtonCoreDoh
 
 public final class DeviceRegistrationEndpoint: Request {
     public let path = "/core/v4/devices"
@@ -28,10 +29,10 @@ public final class DeviceRegistrationEndpoint: Request {
 
     public let isAuth = true
 
-    init(deviceToken: String, publicKey: String) {
+    init(deviceToken: String, apnEnvironment: APNEnvironment, publicKey: String) {
         parameters = [
             "DeviceToken": deviceToken,
-            "Environment": 6, // App Store, also for development and staging environments
+            "Environment": apnEnvironment.rawValue,
             "PublicKey": publicKey
         ]
     }
