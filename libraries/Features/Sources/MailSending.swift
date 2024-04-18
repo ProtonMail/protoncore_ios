@@ -55,6 +55,23 @@ public class AttachmentContent {
     }
 }
 
+public enum RecipientType {
+    case `internal`
+    case external
+}
+
+public class MessageRecipient {
+    public let email: String
+    public let type: RecipientType
+    public let activePublicKey: String
+
+    public init(email: String, type: RecipientType, activePublicKey: String) {
+        self.email = email
+        self.type = type
+        self.activePublicKey = activePublicKey
+    }
+}
+
 public class Recipient: Package {
 
     public init(email: String, name: String) {
