@@ -42,6 +42,7 @@ public extension Quark {
             user.recoveryEmail.isEmpty ? nil : "--recovery=\(user.recoveryEmail)",
             user.isExternal ? "--external=true" : nil,
             user.isExternal ? "--external-email=\(user.email)" : nil,
+            user.recoveryVerified ? "--recovery-verified=true" : nil,
             "--format=json"
         ].compactMap { $0 }
 
