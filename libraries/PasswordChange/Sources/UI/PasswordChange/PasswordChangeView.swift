@@ -24,11 +24,17 @@
 import SwiftUI
 import ProtonCoreUIFoundations
 import ProtonCoreObservability
+import ProtonCoreUtilities
 
 public struct PasswordChangeView: View {
     @ObservedObject public var viewModel: ViewModel
 
     @State var saveButtonIsEnabled = false
+
+    enum Constants {
+        static let iconImageSize: CGFloat = 20
+        static let iconButtonSize: CGFloat = 40
+    }
 
     var textFieldContents: [String] {[
         viewModel.currentPasswordFieldContent.text,
@@ -83,6 +89,9 @@ public struct PasswordChangeView: View {
             .keyboardDismissible()
             .navigationTitle(PCTranslation.accountPassword.l10n)
             .navigationBarTitleDisplayMode(.inline)
+            .if(viewModel.showingDismissButton) { view in
+                view.navigationBarItems(leading: dismissButton())
+            }
         }
         .bannerDisplayable(bannerState: $viewModel.bannerState, configuration: .default())
         .onChange(of: textFieldContents) { _ in
@@ -93,12 +102,37 @@ public struct PasswordChangeView: View {
             ObservabilityEnv.report(.screenLoadCountTotal(screenName: viewModel.screenLoadObservabilityEvent))
         }
     }
+
+    @ViewBuilder
+    private func dismissButton() -> some View {
+        switch Brand.currentBrand {
+        case .proton, .vpn:
+            Button(action: { viewModel.dismissView() }, label: {
+                Text("Close")
+                    .foregroundColor(ColorProvider.InteractionNorm)
+            })
+        case .pass:
+            ZStack {
+                ColorProvider.PurpleBase.opacity(0.2)
+                    .clipShape(Circle())
+
+                Image(uiImage: IconProvider.cross)
+                    .resizable()
+                    .renderingMode(.template)
+                    .scaledToFit()
+                    .foregroundColor(ColorProvider.PurpleBase)
+                    .frame(width: Constants.iconImageSize, height: Constants.iconImageSize)
+            }
+            .frame(width: Constants.iconButtonSize, height: Constants.iconButtonSize)
+            .onTapGesture { viewModel.dismissView() }
+        }
+    }
 }
 
 struct PasswordChangeView_Previews: PreviewProvider {
 
     static var viewModel = {
-        return PasswordChangeView.ViewModel(mode: .loginPassword, passwordChangeCompletion: nil)
+        return PasswordChangeView.ViewModel(mode: .loginPassword, showingDismissButton: false, passwordChangeCompletion: nil)
     }()
 
     static var previews: some View {

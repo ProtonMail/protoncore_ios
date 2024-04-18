@@ -47,6 +47,7 @@ extension PasswordChangeView {
         private var passwordChangeCompletion: PasswordChangeCompletion?
         private let mode: PasswordChangeModule.PasswordChangeMode
 
+        let showingDismissButton: Bool
         @Published var currentPasswordFieldContent: PCTextFieldContent!
         @Published var newPasswordFieldContent: PCTextFieldContent!
         @Published var confirmNewPasswordFieldContent: PCTextFieldContent!
@@ -67,12 +68,14 @@ extension PasswordChangeView {
             passwordChangeService: PasswordChangeService? = nil,
             authCredential: AuthCredential? = AuthCredential.none,
             userInfo: UserInfo? = .getDefault(),
+            showingDismissButton : Bool,
             passwordChangeCompletion: PasswordChangeCompletion?
         ) {
             self.mode = mode
             self.passwordChangeService = passwordChangeService
             self.authCredential = authCredential
             self.userInfo = userInfo
+            self.showingDismissButton = showingDismissButton
             self.passwordChangeCompletion = passwordChangeCompletion
             self.setupViews()
         }
@@ -103,6 +106,10 @@ extension PasswordChangeView {
             case .singlePassword, .loginPassword: return .changePassword
             case .mailboxPassword: return .changeMailboxPassword
             }
+        }
+
+        func dismissView() {
+            PasswordChangeModule.initialViewController?.dismiss(animated: true)
         }
 
         func savePasswordTapped() {
@@ -227,11 +234,18 @@ extension PasswordChangeView {
         }
 
         private func observabilityPasswordChangeError(error: Error) {
+            let status: HTTPResponseCodeStatus
+            switch error.responseCode {
+            case .some(200...299): status = .http2xx
+            case .some(400...499): status = .http4xx
+            case .some(500...599): status = .http5xx
+            default: status = .unknown
+            }
             switch mode {
             case .singlePassword, .loginPassword:
-                ObservabilityEnv.report(.updateLoginPassword(status: .http2xx, twoFactorMode: .disabled))
+                ObservabilityEnv.report(.updateLoginPassword(status: status, twoFactorMode: .disabled))
             case .mailboxPassword:
-                ObservabilityEnv.report(.updateMailboxPassword(status: .http2xx, twoFactorMode: .disabled))
+                ObservabilityEnv.report(.updateMailboxPassword(status: status, twoFactorMode: .disabled))
             }
         }
     }

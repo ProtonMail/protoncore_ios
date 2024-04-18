@@ -79,6 +79,7 @@ public enum PasswordChangeModule {
         apiService: APIService,
         authCredential: AuthCredential,
         userInfo: UserInfo,
+        showingDismissButton: Bool = false,
         completion: PasswordChangeCompletion?
     ) -> PasswordChangeViewController {
         let passwordChangeService = PasswordChangeService(api: apiService)
@@ -87,6 +88,7 @@ public enum PasswordChangeModule {
             passwordChangeService: passwordChangeService,
             authCredential: authCredential,
             userInfo: userInfo,
+            showingDismissButton: showingDismissButton,
             passwordChangeCompletion: completion
         )
         let viewController = UIHostingController(rootView: PasswordChangeView(viewModel: viewModel))

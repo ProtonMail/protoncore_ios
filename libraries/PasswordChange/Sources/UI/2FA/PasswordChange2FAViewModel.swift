@@ -90,10 +90,12 @@ extension PasswordChange2FAView {
                         authCredential: authCredential,
                         userInfo: userInfo
                     )
+                    observabilityPasswordChangeSuccess()
                     passwordChangeCompletion?(authCredential, userInfo)
                 } catch {
                     PMLog.error(error)
                     bannerState = .error(content: .init(message: error.localizedDescription))
+                    observabilityPasswordChangeError(error: error)
                 }
                 PasswordChangeModule.initialViewController?.unlockUI()
                 authenticateIsLoading = false
@@ -123,6 +125,31 @@ extension PasswordChange2FAView {
                     twoFACode: tfaFieldContent.text,
                     buildAuth: mode == .singlePassword ? true : false
                 )
+            }
+        }
+
+        private func observabilityPasswordChangeSuccess() {
+            switch mode {
+            case .singlePassword, .loginPassword:
+                ObservabilityEnv.report(.updateLoginPassword(status: .http2xx, twoFactorMode: .enabled))
+            case .mailboxPassword:
+                ObservabilityEnv.report(.updateMailboxPassword(status: .http2xx, twoFactorMode: .enabled))
+            }
+        }
+
+        private func observabilityPasswordChangeError(error: Error) {
+            let status: HTTPResponseCodeStatus
+            switch error.responseCode {
+            case .some(200...299): status = .http2xx
+            case .some(400...499): status = .http4xx
+            case .some(500...599): status = .http5xx
+            default: status = .unknown
+            }
+            switch mode {
+            case .singlePassword, .loginPassword:
+                ObservabilityEnv.report(.updateLoginPassword(status: status, twoFactorMode: .enabled))
+            case .mailboxPassword:
+                ObservabilityEnv.report(.updateMailboxPassword(status: status, twoFactorMode: .enabled))
             }
         }
     }

@@ -42,7 +42,7 @@ public struct User: Codable, Equatable, CustomDebugStringConvertible {
     public let orgPrivateKey: String?
     public let email: String?
     public let displayName: String?
-    public let keys: [Key]
+    public var keys: [Key]
 
     public let accountRecovery: AccountRecovery?
     public let lockedFlags: LockedFlags?
@@ -141,6 +141,10 @@ public struct User: Codable, Equatable, CustomDebugStringConvertible {
 
     public var debugDescription: String {
         return description
+    }
+
+    public mutating func setNewKeys(_ newKeys: [Key]) {
+        self.keys = newKeys
     }
 }
 
