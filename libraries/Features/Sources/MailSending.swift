@@ -91,7 +91,7 @@ public class Recipient: Package {
 /// Message content need to be send
 public class MessageContent {
     /// recipints internal & external
-    var recipients: [String] // chagne to Recipient later when use contacts
+    var recipients: [MessageRecipient]
 
     /// encrypted message body. encrypted by self key
     var body: String = ""
@@ -108,7 +108,7 @@ public class MessageContent {
     ///   - emails: email addresses
     ///   - body: event body
     ///   - attachments: attachments
-    public init(recipients: [String], subject: String, body: String, attachments: [AttachmentContent]) {
+    public init(recipients: [MessageRecipient], subject: String, body: String, attachments: [AttachmentContent]) {
         self.recipients = recipients
         self.subject = subject
         self.body = body
@@ -211,7 +211,7 @@ public class MailFeature {
         let addressKey = addrPrivKeys.first!
 
         var requests: [UserEmailPubKeys] = [UserEmailPubKeys]()
-        let emails: [String] = content.recipients
+        let emails: [String] = content.recipients.map(\.email)
         for email in emails {
             requests.append(UserEmailPubKeys(email: email, authCredential: authCredential))
         }
@@ -339,11 +339,12 @@ public class MailFeature {
                     }
                 }
 
+                // TODO: Update `SendCalEvent` to use `MessageRecipient` model
                 let sendApi = SendCalEvent.init(subject: content.subject,
                                                 body: body,
                                                 bodyData: encodedBody,
                                                 senderName: senderName, senderAddr: senderAddr,
-                                                recipients: content.recipients, atts: content.attachments,
+                                                recipients: content.recipients.map(\.email), atts: content.attachments,
 
                                                 messagePackage: msgs, clearBody: sendBuilder.clearBodyPackage, clearAtts: sendBuilder.clearAtts,
                                                 mimeDataPacket: sendBuilder.mimeBody, clearMimeBody: sendBuilder.clearMimeBodyPackage,
