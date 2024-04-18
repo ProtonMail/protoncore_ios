@@ -67,6 +67,8 @@ public struct User: Decodable {
     public var isExternal: Bool = false
     public var passphrase: String = ""
     public var recoveryEmail: String = ""
+    /// Is recovery email verified?
+    public var recoveryVerified: Bool = false
 
     public enum CodingKeys: String, CodingKey {
         case name = "UserName"
@@ -86,16 +88,29 @@ public struct User: Decodable {
         self.email = name
     }
 
-    public init(name: String, password: String, mailboxPassword: String = "", twoFASecurityKey: String = "") {
+    public init(
+        name: String,
+        password: String,
+        mailboxPassword: String = "",
+        twoFASecurityKey: String = "",
+        recoveryVerified: Bool = false
+    ) {
         self.name = name
         self.password = password
         self.mailboxPassword = mailboxPassword
         self.twoFASecurityKey = twoFASecurityKey
         self.displayName = name
         self.email = name
+        self.recoveryVerified = recoveryVerified
     }
 
-    public init(email: String, name: String, password: String, isExternal: Bool = false) {
+    public init(
+        email: String,
+        name: String,
+        password: String,
+        isExternal: Bool = false,
+        recoveryVerified: Bool = false
+    ) {
         self.name = name
         self.password = password
         self.email = email
@@ -103,6 +118,7 @@ public struct User: Decodable {
         self.isExternal = isExternal
         self.mailboxPassword = ""
         self.twoFASecurityKey = ""
+        self.recoveryVerified = recoveryVerified
     }
 
     init(user: String) {
