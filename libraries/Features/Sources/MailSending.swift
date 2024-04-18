@@ -55,9 +55,9 @@ public class AttachmentContent {
     }
 }
 
-public enum RecipientType {
-    case `internal`
-    case external
+public enum RecipientType: Int {
+    case `internal` = 1
+    case external = 2
 }
 
 public class MessageRecipient {
