@@ -24,6 +24,7 @@ import ProtonCoreAuthentication
 import ProtonCoreCrypto
 import ProtonCoreCryptoGoInterface
 import ProtonCoreDataModel
+import ProtonCoreKeyManager
 import ProtonCoreNetworking
 import ProtonCoreServices
 
