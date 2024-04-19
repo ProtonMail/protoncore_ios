@@ -63,12 +63,18 @@ public enum RecipientType: Int {
 public class MessageRecipient {
     public let email: String
     public let type: RecipientType
-    public let activePublicKey: String
+    public let activePublicKeys: [ActivePublicKey]
 
-    public init(email: String, type: RecipientType, activePublicKey: String) {
+    var publicKeyForEncryption: String? {
+        activePublicKeys
+            .first { $0.flags.contains(.encryptNewData) }?
+            .publicKey
+    }
+
+    public init(email: String, type: RecipientType, activePublicKeys: [ActivePublicKey]) {
         self.email = email
         self.type = type
-        self.activePublicKey = activePublicKey
+        self.activePublicKeys = activePublicKeys
     }
 }
 
