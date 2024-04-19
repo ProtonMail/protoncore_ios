@@ -105,6 +105,10 @@ public extension ServerConfig {
     var timeout: TimeInterval {
         return 20
     }
+
+    var apnEnvironment: APNEnvironment {
+        .development
+    }
 }
 
 extension DoH {
