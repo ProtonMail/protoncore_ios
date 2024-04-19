@@ -234,12 +234,6 @@ public class MailFeature {
 
         let addressKey = addrPrivKeys.first!
 
-        var requests: [UserEmailPubKeys] = [UserEmailPubKeys]()
-        let emails: [String] = content.recipients.map(\.email)
-        for email in emails {
-            requests.append(UserEmailPubKeys(email: email, authCredential: authCredential))
-        }
-
         // is encrypt outside -- disable now
         let isEO = false // !message.password.isEmpty
 
@@ -258,11 +252,6 @@ public class MailFeature {
 
         sendQueue.async {
             do {
-                let callResults = requests.performConcurrentlyAndWaitForResults(api: self.apiService, response: KeysResponse.self)
-                let results = try callResults.map { response in
-                    try response.get()
-                }
-
                 // all prebuild errors need pop up from here
                 guard let splited = try body.split(),
                       let bodyData = splited.dataPacket,
@@ -281,23 +270,58 @@ public class MailFeature {
                 sendBuilder.update(bodyData: bodyData, bodySession: key, algo: session.algo)
                 // sendBuilder.set(pwd: message.password, hit: message.passwordHint)
 
-                for (index, value) in results.enumerated() {
-                    let req = requests[index]
+                content.recipients.forEach { recipent in
                     // check contacts have pub key or not
-                    if let contact = contacts.find(email: req.email) {
-                        if value.recipientType == 1 {
+                    if let contact = contacts.find(email: recipent.email) {
+                        if recipent.type == .internal {
                             // if type is internal check is key match with contact key
                             // compare the key if doesn't match
-                            sendBuilder.add(addr: PreAddress(email: req.email, pubKey: value.firstKey(), pgpKey: contact.firstPgpKey, recipintType: value.recipientType, eo: isEO, hasMime: false, isSigned: true, isPgpEncrypted: false, isPlainText: true))
+                            sendBuilder.addPreAddress(
+                                recipent: recipent,
+                                pubKey: recipent.publicKeyForEncryption,
+                                pgpKey: contact.firstPgpKey,
+                                isEO: isEO,
+                                hasMime: false,
+                                isSigned: true,
+                                isPgpEncrypted: false,
+                                isPlainText: true
+                            )
                         } else {
-                            let areKeysEmpty = value.keys.isEmpty
-                            sendBuilder.add(addr: PreAddress(email: req.email, pubKey: nil, pgpKey: areKeysEmpty ? nil : contact.firstPgpKey, recipintType: value.recipientType, eo: isEO, hasMime: areKeysEmpty ? false : contact.hasMime, isSigned: contact.isSigned, isPgpEncrypted: contact.isEncrypted, isPlainText: true))
+                            let areKeysEmpty = recipent.activePublicKeys.isEmpty
+                            sendBuilder.addPreAddress(
+                                recipent: recipent,
+                                pubKey: nil,
+                                pgpKey: areKeysEmpty ? nil : contact.firstPgpKey,
+                                isEO: isEO,
+                                hasMime: areKeysEmpty ? false : contact.hasMime,
+                                isSigned: contact.isSigned,
+                                isPgpEncrypted: contact.isEncrypted,
+                                isPlainText: true
+                            )
                         }
                     } else {
                         if sign == 1 {
-                            sendBuilder.add(addr: PreAddress(email: req.email, pubKey: value.firstKey(), pgpKey: nil, recipintType: value.recipientType, eo: isEO, hasMime: true, isSigned: true, isPgpEncrypted: false, isPlainText: true))
+                            sendBuilder.addPreAddress(
+                                recipent: recipent,
+                                pubKey: recipent.publicKeyForEncryption,
+                                pgpKey: nil,
+                                isEO: isEO,
+                                hasMime: true,
+                                isSigned: true,
+                                isPgpEncrypted: false,
+                                isPlainText: true
+                            )
                         } else {
-                            sendBuilder.add(addr: PreAddress(email: req.email, pubKey: value.firstKey(), pgpKey: nil, recipintType: value.recipientType, eo: isEO, hasMime: false, isSigned: false, isPgpEncrypted: false, isPlainText: true))
+                            sendBuilder.addPreAddress(
+                                recipent: recipent,
+                                pubKey: recipent.publicKeyForEncryption,
+                                pgpKey: nil,
+                                isEO: isEO,
+                                hasMime: false,
+                                isSigned: false,
+                                isPgpEncrypted: false,
+                                isPlainText: true
+                            )
                         }
                     }
                 }
@@ -440,6 +464,7 @@ private extension SendBuilder {
 
     func addPreAddress(
         recipent: MessageRecipient,
+        pubKey: String?,
         pgpKey: Data?,
         isEO: Bool,
         hasMime: Bool,
@@ -449,7 +474,7 @@ private extension SendBuilder {
     ) {
         add(addr: PreAddress(
             email: recipent.email,
-            pubKey: recipent.publicKeyForEncryption,
+            pubKey: pubKey,
             pgpKey: pgpKey,
             recipintType: recipent.type.rawValue,
             eo: isEO,
