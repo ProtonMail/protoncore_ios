@@ -96,22 +96,6 @@ public struct ActivePublicKey: Equatable {
     }
 }
 
-public class Recipient: Package {
-
-    public init(email: String, name: String) {
-        self.email = email
-        self.name = name
-    }
-
-    var email: String
-    var name: String
-
-    public var parameters: [String: Any]? {
-        return nil
-    }
-
-}
-
 /// Message content need to be send
 public class MessageContent {
     /// recipints internal & external
