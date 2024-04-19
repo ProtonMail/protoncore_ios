@@ -61,7 +61,7 @@ public enum RecipientType: Int {
     case external = 2
 }
 
-public class MessageRecipient {
+public class Recipient {
     public let email: String
     public let type: RecipientType
     public let activePublicKeys: [ActivePublicKey]
@@ -100,7 +100,7 @@ public struct ActivePublicKey: Equatable {
 /// Message content need to be send
 public class MessageContent {
     /// recipints internal & external
-    var recipients: [MessageRecipient]
+    var recipients: [Recipient]
 
     /// encrypted message body. encrypted by self key
     var body: String = ""
@@ -117,7 +117,7 @@ public class MessageContent {
     ///   - emails: email addresses
     ///   - body: event body
     ///   - attachments: attachments
-    public init(recipients: [MessageRecipient], subject: String, body: String, attachments: [AttachmentContent]) {
+    public init(recipients: [Recipient], subject: String, body: String, attachments: [AttachmentContent]) {
         self.recipients = recipients
         self.subject = subject
         self.body = body
@@ -447,7 +447,7 @@ public class MailFeature {
 private extension SendBuilder {
 
     func addPreAddress(
-        recipent: MessageRecipient,
+        recipent: Recipient,
         pubKey: String?,
         pgpKey: Data?,
         isEO: Bool,
