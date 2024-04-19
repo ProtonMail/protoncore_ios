@@ -84,6 +84,7 @@ public class PushNotificationService: NSObject, PushNotificationServiceProtocol 
     }
 
     public func registerForRemoteNotifications(uid: String) {
+        guard FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.pushNotifications) else { return }
         NotificationCenterFactory.current.requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
             ObservabilityEnv.report(.pushNotificationsPermissionsRequested(result: granted ? .accepted : .rejected))
             guard granted else {
