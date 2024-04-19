@@ -80,21 +80,8 @@ public class Recipient {
 }
 
 public struct ActivePublicKey: Equatable {
-    public let flags: Flags
+    public let flags: KeyFlags
     public let publicKey: String
-
-    public struct Flags: OptionSet {
-        public let rawValue: UInt8
-
-        public init(rawValue: UInt8) {
-            self.rawValue = rawValue
-        }
-
-        /// 1: Can use key to verify signatures | Key is not compromised
-        public static let verifySignatures = Flags(rawValue: 1 << 0)
-        /// 2: Can use key to encrypt new data | Key is not obsolete
-        public static let encryptNewData = Flags(rawValue: 1 << 1)
-    }
 }
 
 /// Message content need to be send
