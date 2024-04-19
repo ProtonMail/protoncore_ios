@@ -78,4 +78,10 @@ class EnvironmentTests: XCTestCase {
         _ = env.dohModifiable.replacingHumanVerificationV3Host(with: "testdomain.com")
         XCTAssertTrue(env.doh.humanVerificationV3Host == "testdomain.com")
     }
+
+    func testAPNEnvironmentForProductionHosts() {
+        ProductionHosts.allCases.forEach { environment in
+            XCTAssertEqual(APNEnvironment.production, environment.apnEnvironment)
+        }
+    }
 }
