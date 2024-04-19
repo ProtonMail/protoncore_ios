@@ -372,7 +372,6 @@ public class MailFeature {
                     }
                 }
 
-                // TODO: Update `SendCalEvent` to use `MessageRecipient` model
                 let sendApi = SendCalEvent.init(subject: content.subject,
                                                 body: body,
                                                 bodyData: encodedBody,
