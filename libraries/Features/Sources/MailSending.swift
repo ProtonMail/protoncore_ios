@@ -436,6 +436,32 @@ public class MailFeature {
 
 }
 
+private extension SendBuilder {
+
+    func addPreAddress(
+        recipent: MessageRecipient,
+        pgpKey: Data?,
+        isEO: Bool,
+        hasMime: Bool,
+        isSigned: Bool,
+        isPgpEncrypted: Bool,
+        isPlainText: Bool
+    ) {
+        add(addr: PreAddress(
+            email: recipent.email,
+            pubKey: recipent.publicKeyForEncryption,
+            pgpKey: pgpKey,
+            recipintType: recipent.type.rawValue,
+            eo: isEO,
+            hasMime: hasMime,
+            isSigned: isSigned,
+            isPgpEncrypted: isPgpEncrypted,
+            isPlainText: isPlainText
+        ))
+    }
+
+}
+
 extension UserInfo {
     var userPrivateKeys: Data {
         var out = Data()
