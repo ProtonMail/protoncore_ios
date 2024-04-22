@@ -242,15 +242,15 @@ public class MailFeature {
                 sendBuilder.update(bodyData: bodyData, bodySession: key, algo: session.algo)
                 // sendBuilder.set(pwd: message.password, hit: message.passwordHint)
 
-                content.recipients.forEach { recipent in
+                content.recipients.forEach { recipient in
                     // check contacts have pub key or not
-                    if let contact = contacts.find(email: recipent.email) {
-                        if recipent.type == .internal {
+                    if let contact = contacts.find(email: recipient.email) {
+                        if recipient.type == .internal {
                             // if type is internal check is key match with contact key
                             // compare the key if doesn't match
                             sendBuilder.addPreAddress(
-                                recipent: recipent,
-                                pubKey: recipent.publicKeyForEncryption,
+                                recipient: recipient,
+                                pubKey: recipient.publicKeyForEncryption,
                                 pgpKey: contact.firstPgpKey,
                                 isEO: isEO,
                                 hasMime: false,
@@ -259,9 +259,9 @@ public class MailFeature {
                                 isPlainText: true
                             )
                         } else {
-                            let areKeysEmpty = recipent.activePublicKeys.isEmpty
+                            let areKeysEmpty = recipient.activePublicKeys.isEmpty
                             sendBuilder.addPreAddress(
-                                recipent: recipent,
+                                recipient: recipient,
                                 pubKey: nil,
                                 pgpKey: areKeysEmpty ? nil : contact.firstPgpKey,
                                 isEO: isEO,
@@ -274,8 +274,8 @@ public class MailFeature {
                     } else {
                         if sign == 1 {
                             sendBuilder.addPreAddress(
-                                recipent: recipent,
-                                pubKey: recipent.publicKeyForEncryption,
+                                recipient: recipient,
+                                pubKey: recipient.publicKeyForEncryption,
                                 pgpKey: nil,
                                 isEO: isEO,
                                 hasMime: true,
@@ -285,8 +285,8 @@ public class MailFeature {
                             )
                         } else {
                             sendBuilder.addPreAddress(
-                                recipent: recipent,
-                                pubKey: recipent.publicKeyForEncryption,
+                                recipient: recipient,
+                                pubKey: recipient.publicKeyForEncryption,
                                 pgpKey: nil,
                                 isEO: isEO,
                                 hasMime: false,
@@ -434,7 +434,7 @@ public class MailFeature {
 private extension SendBuilder {
 
     func addPreAddress(
-        recipent: Recipient,
+        recipient: Recipient,
         pubKey: String?,
         pgpKey: Data?,
         isEO: Bool,
@@ -444,10 +444,10 @@ private extension SendBuilder {
         isPlainText: Bool
     ) {
         add(addr: PreAddress(
-            email: recipent.email,
+            email: recipient.email,
             pubKey: pubKey,
             pgpKey: pgpKey,
-            recipintType: recipent.type.rawValue,
+            recipintType: recipient.type.rawValue,
             eo: isEO,
             hasMime: hasMime,
             isSigned: isSigned,
