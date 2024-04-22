@@ -36,5 +36,3 @@ final class TelemetrySettingsServiceMock: TelemetrySettingsServiceProtocol {
         set { underlyingIsTelemetryEnabled = newValue }
     }
 }
-
-

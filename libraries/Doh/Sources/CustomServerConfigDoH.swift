@@ -66,7 +66,7 @@ public final class CustomServerConfigDoH: DoH, ServerConfig {
                                           humanVerificationV3Host: humanVerificationV3Host,
                                           accountHost: accountHost,
                                           defaultHost: defaultHost,
-                                          apiHost: apiHost, 
+                                          apiHost: apiHost,
                                           defaultPath: defaultPath,
                                           proxyToken: proxyToken)
     }

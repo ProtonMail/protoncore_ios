@@ -73,7 +73,7 @@ final class QuarkDriveCommandsTests: XCTestCase {
         } catch {
             XCTFail("drivePopulateUser method threw an unexpected error: \(error)")
         }
-    } 
+    }
 
     func testDrivePopuleQuarkCommandWithPhotosAndDevice() {
         let quarkCommand = Quark().baseUrl(dohMock)

@@ -1038,7 +1038,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
             // 1. Continue transaction after signup without stored token
             // 2. Fail token request
             // Expected: Retry
-            
+
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
             let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 12)
@@ -1054,12 +1054,12 @@ final class ProcessUnauthenticatedTests: XCTestCase {
             alertManagerMock.showAlertStub.bodyIs { _, _, _ in
                 expectation.fulfill()
             }
-            
+
             // when
             queue.async {
                 try! out.processAuthenticatedBeforeSignup(transaction: transaction, plan: plan) { _ in XCTFail() }
             }
-            
+
             // then
             waitForExpectations(timeout: timeout)
             XCTAssertEqual(apiService.requestJSONStub.callCounter, 1)

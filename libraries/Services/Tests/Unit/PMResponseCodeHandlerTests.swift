@@ -65,7 +65,7 @@ final class PMResponseCodeHandlerTests: XCTestCase {
     // MARK: - Human verification
 
     func test_handler_callsHVWhenHVRequired_forLeftResponseLeftCompletion() {
-        handleResponse(response: .left(["Code" : APIErrorCode.humanVerificationRequired]),
+        handleResponse(response: .left(["Code": APIErrorCode.humanVerificationRequired]),
                        completion: .left({ _, _ in }))
         XCTAssertTrue(hvCalled)
     }
@@ -77,7 +77,7 @@ final class PMResponseCodeHandlerTests: XCTestCase {
     }
 
     func test_handler_callsHVWhenHVRequired_forLeftResponseRightCompletion() {
-        handleResponse(response: .left(["Code" : APIErrorCode.humanVerificationRequired]),
+        handleResponse(response: .left(["Code": APIErrorCode.humanVerificationRequired]),
                        completion: .right({ _, _ in }))
         XCTAssertTrue(hvCalled)
     }

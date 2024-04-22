@@ -148,7 +148,7 @@ extension PushNotificationService: UNUserNotificationCenterDelegate {
     public func userNotificationCenter(_ center: UNUserNotificationCenter,
                                        didReceive response: UNNotificationResponse,
                                        withCompletionHandler completionHandler: @escaping () -> Void) {
-        notificationCenter(center as NotificationCenterProtocol, 
+        notificationCenter(center as NotificationCenterProtocol,
                            didReceive: response,
                            withCompletionHandler: completionHandler)
     }
@@ -218,7 +218,7 @@ extension PushNotificationService {
         Task {
             guard let encryptionKit = generateEncryptionKit() else { return }
 
-            await register(sessionUID: currentUID, 
+            await register(sessionUID: currentUID,
                            token: deviceToken,
                            encryptionKit: encryptionKit)
         }

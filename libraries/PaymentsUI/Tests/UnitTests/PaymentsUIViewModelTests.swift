@@ -437,7 +437,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
             XCTAssertEqual(sut.availablePlans?[1].details.title, "Pass Plus")
         }
     }
-        
+
     func test_fetchPlan_updateMode_withNoAvailablePlans_showsCurrentPlan() async throws {
         try await withFeatureFlags([.dynamicPlans]) {
             let storeKitManager = StoreKitManagerMock()

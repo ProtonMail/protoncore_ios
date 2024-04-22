@@ -153,8 +153,7 @@ class UserInfoTests: XCTestCase {
         XCTAssertEqual(referralProgram.link, "https://pr.tn/ref/YN9B20")
         XCTAssertFalse(referralProgram.eligible)
     }
-    
-    
+
     func testInitializeUserInfoFromResponse() throws {
         let json = """
         {
@@ -163,7 +162,7 @@ class UserInfoTests: XCTestCase {
         """
         let responseDict = try XCTUnwrap(try convertStringToDictionary(text: json))
         let userInfo = UserInfo(response: responseDict)
-        
+
         XCTAssertEqual(userInfo.lockedFlags, LockedFlags.orgIssueForPrimaryAdmin)
     }
 

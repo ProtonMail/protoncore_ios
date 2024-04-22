@@ -58,7 +58,7 @@ final class TelemetryServiceTests: XCTestCase {
                     .flow("flow_item")
                 ]
             )
-            
+
             apiService.requestJSONStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
                 if path.contains("/data/v1/stats") {
                     let params = parameters as! [String: Any]
@@ -72,9 +72,9 @@ final class TelemetryServiceTests: XCTestCase {
                     completion(nil, .success([:]))
                 }
             }
-            
+
             await sut.report(event: testEvent)
-            
+
             XCTAssertTrue(apiService.requestJSONStub.wasCalled)
         }
     }

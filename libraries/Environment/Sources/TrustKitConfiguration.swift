@@ -38,7 +38,7 @@ extension TrustKitWrapper {
         return propertiesForAllPlatforms.merging(platformSpecificConfiguration, uniquingKeysWith: { lhs, rhs in rhs })
     }
 
-    private static func pinnedDomains(hardfail: Bool) -> [String : [String : Any]] {
+    private static func pinnedDomains(hardfail: Bool) -> [String: [String: Any]] {
         let primaryConfiguration = protonPrimary(hardfail: hardfail, publicKeyHashes: ProtonPublicKeyHashes.main)
         let verifyConfiguration = protonSecondary(hardfail: hardfail, publicKeyHashes: ProtonPublicKeyHashes.main)
         let vpnConfiguration = protonSecondary(hardfail: hardfail, publicKeyHashes: ProtonPublicKeyHashes.vpn)
