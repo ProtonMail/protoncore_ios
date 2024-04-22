@@ -173,6 +173,13 @@ public struct DohInterfaceMock: DoHInterface, ServerConfig {
 
     @FuncStub(DohInterfaceMock.getProxyToken, initialReturn: nil) public var getProxyTokenStub
     public func getProxyToken() -> String? { getSignUpStringStub() }
+
+    @FuncStub(DohInterfaceMock.getAPNEnvironment, initialReturn: .development) public var getAPNEnvironmentStub
+    public func getAPNEnvironment() -> ProtonCoreDoh.APNEnvironment { getAPNEnvironmentStub() }
+
+    @PropertyStub(\DohInterfaceMock.apnEnvironment, initialGet: .development) public var apnEnvironmentStub
+    public var apnEnvironment: ProtonCoreDoh.APNEnvironment { apnEnvironmentStub() }
+
 }
 
 public final class DohMock: DoH, ServerConfig {
@@ -313,4 +320,8 @@ public final class DohMock: DoH, ServerConfig {
 
     @FuncStub(DohInterfaceMock.getProxyToken, initialReturn: nil) public var getProxyTokenStub
     override public func getProxyToken() -> String? { getSignUpStringStub() }
+
+    @PropertyStub(\DohInterfaceMock.apnEnvironment, initialGet: .development) public var apnEnvironmentStub
+    public var apnEnvironment: ProtonCoreDoh.APNEnvironment { apnEnvironmentStub() }
+
 }

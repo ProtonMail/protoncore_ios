@@ -42,6 +42,7 @@ final class DohMock: DoH, ServerConfig {
     var signupDomain: String = "local.protoncore.unittests"
     var timeout: TimeInterval = 1
     var proxyToken: String? = "test.token.1234"
+    var apnEnvironment: APNEnvironment = .development
 
     private init() {}
 
