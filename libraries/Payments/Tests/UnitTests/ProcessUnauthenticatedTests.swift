@@ -86,7 +86,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 1)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 1)
             let out = ProcessUnauthenticated(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             processDependencies.getReceiptStub.bodyIs { _ in "test receipt" }
@@ -123,7 +123,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 3)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 3)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         processDependencies.getReceiptStub.bodyIs { _ in throw NSError(domain: "test error", code: 42, userInfo: nil) }
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
@@ -162,7 +162,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 2)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 2)
             let out = ProcessUnauthenticated(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
@@ -197,7 +197,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 4)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 4)
             let out = ProcessUnauthenticated(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             processDependencies.getReceiptStub.bodyIs { _ in "test receipt" }
@@ -235,7 +235,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 6)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 6)
             let out = ProcessUnauthenticated(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             processDependencies.getReceiptStub.bodyIs { _ in "test receipt" }
@@ -273,7 +273,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 12)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 12)
             let out = ProcessUnauthenticated(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             processDependencies.getReceiptStub.bodyIs { _ in "test receipt" }
@@ -311,7 +311,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 15)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 15)
             let out = ProcessUnauthenticated(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             processDependencies.getReceiptStub.bodyIs { _ in "test receipt" }
@@ -349,7 +349,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 2)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 2)
             let out = ProcessUnauthenticated(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             processDependencies.getReceiptStub.bodyIs { _ in "test receipt" }
@@ -388,7 +388,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 18)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 18)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         let testSubscriptionDict = self.testSubscriptionDict
@@ -431,7 +431,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 10, cycle: 24)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 10, cycle: 24)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         let testSubscriptionDict = self.testSubscriptionDict
@@ -480,7 +480,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 48)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 48)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
@@ -509,7 +509,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 1)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 1)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
         let expectation = self.expectation(description: "Completion block called")
@@ -542,7 +542,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 2)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 2)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
         let expectation = self.expectation(description: "Completion block called")
@@ -573,7 +573,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 2)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 2)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
         let expectation = self.expectation(description: "Completion block called")
@@ -608,7 +608,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 3)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 3)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
         let expectation = self.expectation(description: "Completion block called")
@@ -646,7 +646,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 4)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 4)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
         let expectation = self.expectation(description: "Completion block called")
@@ -685,7 +685,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 6)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 6)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
@@ -720,7 +720,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 6)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 6)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
@@ -755,7 +755,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 12)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 12)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
@@ -797,7 +797,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 15)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 15)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
@@ -840,7 +840,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 18)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 18)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
@@ -880,7 +880,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
         withFeatureFlags([.dynamicPlans]) {
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 24)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 24)
             let out = ProcessUnauthenticated(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
@@ -919,7 +919,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 1)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 1)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
@@ -961,7 +961,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 12)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 12)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
@@ -1003,7 +1003,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 12)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 12)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .chargeable) }
@@ -1041,7 +1041,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
             
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 12)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 12)
             let out = ProcessUnauthenticated(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
@@ -1074,7 +1074,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 9)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 9)
             let out = ProcessUnauthenticated(dependencies: processDependencies)
             let expectation = self.expectation(description: "Completion block called")
             let testSubscriptionDict = self.testSubscriptionDict
@@ -1129,7 +1129,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 5)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 5)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         processDependencies.getReceiptStub.bodyIs { _ in "test receipt" }
@@ -1166,7 +1166,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 1)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 1)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
@@ -1199,7 +1199,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 2)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 2)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         processDependencies.getReceiptStub.bodyIs { _ in "test receipt" }
@@ -1235,7 +1235,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 6)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 6)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         processDependencies.getReceiptStub.bodyIs { _ in "test receipt" }
@@ -1271,7 +1271,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 6)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 6)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         processDependencies.getReceiptStub.bodyIs { _ in "test receipt" }
@@ -1307,7 +1307,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 2)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 2)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         processDependencies.getReceiptStub.bodyIs { _ in "test receipt" }
@@ -1343,7 +1343,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 9)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 9)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         processDependencies.getReceiptStub.bodyIs { _ in "test receipt" }
@@ -1382,7 +1382,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 6)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 6)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
@@ -1413,7 +1413,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
         // given
         let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: nil, transactionState: .purchased)
-        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 12)
+        let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 12)
         let out = ProcessUnauthenticated(dependencies: processDependencies)
         let expectation = self.expectation(description: "Completion block called")
         let testSubscriptionDict = self.testSubscriptionDict
@@ -1468,7 +1468,7 @@ final class ProcessUnauthenticatedTests: XCTestCase {
 
             // given
             let transaction = SKPaymentTransactionMock(payment: payment, transactionDate: nil, transactionIdentifier: "identifier", transactionState: .purchased)
-            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, amountDue: 100, cycle: 6)
+            let plan = PlanToBeProcessed(protonIdentifier: "testID", planName: "testName", amount: 100, currencyCode: "EUR", amountDue: 100, cycle: 6)
             let out = ProcessUnauthenticated(dependencies: processDependencies)
             paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "existing test token", status: .chargeable) }
             let expectation = self.expectation(description: "Completion block called")

@@ -146,7 +146,7 @@ protocol PaymentsApiProtocol {
     /// Get payment methods in priority order
     func methodsRequest(api: APIService) -> MethodRequest
     func paymentTokenOldRequest(api: APIService, amount: Int, receipt: String) -> PaymentTokenOldRequest
-    func paymentTokenRequest(api: APIService, amount: Int, receipt: String, transactionId: String, bundleId: String, productId: String) -> PaymentTokenRequest
+    func paymentTokenRequest(api: APIService, amount: Int, currencyCode: String, receipt: String, transactionId: String, bundleId: String, productId: String) -> PaymentTokenRequest
     func paymentTokenStatusRequest(api: APIService, token: PaymentToken) -> PaymentTokenStatusRequest
     func validateSubscriptionRequest(api: APIService, protonPlanName: String, isAuthenticated: Bool, cycle: Int) -> ValidateSubscriptionRequest
     func countriesCountRequest(api: APIService) -> CountriesCountRequest
@@ -216,7 +216,7 @@ class PaymentsApiV4Implementation: PaymentsApiProtocol {
         PaymentTokenOldRequest(api: api, amount: amount, receipt: receipt)
     }
 
-    func paymentTokenRequest(api: APIService, amount: Int, receipt: String, transactionId: String, bundleId: String, productId: String) -> PaymentTokenRequest {
+    func paymentTokenRequest(api: APIService, amount: Int, currencyCode: String, receipt: String, transactionId: String, bundleId: String, productId: String) -> PaymentTokenRequest {
         fatalError("Token Requests for auto-recurring subscriptions should not be used with API v4")
     }
 
@@ -282,7 +282,7 @@ class PaymentsApiV5Implementation: PaymentsApiProtocol {
             throw StoreKitManagerErrors.alreadyPurchasedPlanDoesNotMatchBackend
         }
 
-        return V5SubscriptionRequest(api: api, planName: plan.planName, amount: plan.amount, cycle: plan.cycle, paymentAction: paymentAction)
+        return V5SubscriptionRequest(api: api, planName: plan.planName, amount: plan.amount, currencyCode: plan.currencyCode, cycle: plan.cycle, paymentAction: paymentAction)
 
     }
 
@@ -318,8 +318,8 @@ class PaymentsApiV5Implementation: PaymentsApiProtocol {
         fatalError("Token Requests for 1-time payments should not be used with API v5")
     }
 
-    func paymentTokenRequest(api: ProtonCoreServices.APIService, amount: Int, receipt: String, transactionId: String, bundleId: String, productId: String) -> PaymentTokenRequest {
-            PaymentTokenRequest(api: api, amount: amount, receipt: receipt, transactionId: transactionId, bundleId: bundleId, productId: productId)
+    func paymentTokenRequest(api: ProtonCoreServices.APIService, amount: Int, currencyCode: String, receipt: String, transactionId: String, bundleId: String, productId: String) -> PaymentTokenRequest {
+        PaymentTokenRequest(api: api, amount: amount, currencyCode: currencyCode, receipt: receipt, transactionId: transactionId, bundleId: bundleId, productId: productId)
     }
 
     func paymentTokenStatusRequest(api: ProtonCoreServices.APIService, token: PaymentToken) -> PaymentTokenStatusRequest {
