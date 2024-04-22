@@ -75,10 +75,12 @@ final class V5SubscriptionRequest: SubscriptionRequest {
     private let amount: Int
     private let paymentAction: PaymentAction?
     private let cycle: Int
+    private let currencyCode: String
 
-    init(api: APIService, planName: String, amount: Int, cycle: Int, paymentAction: PaymentAction) {
+    init(api: APIService, planName: String, amount: Int, currencyCode: String, cycle: Int, paymentAction: PaymentAction) {
         self.planName = planName
         self.amount = amount
+        self.currencyCode = currencyCode
         self.paymentAction = paymentAction
         self.cycle = cycle
         super.init(api: api)
@@ -88,6 +90,7 @@ final class V5SubscriptionRequest: SubscriptionRequest {
         self.planName = planName
         self.amount = 0
         self.paymentAction = nil
+        self.currencyCode = "USD"
         self.cycle = 12
         super.init(api: api)
     }
@@ -97,7 +100,7 @@ final class V5SubscriptionRequest: SubscriptionRequest {
     override var path: String { super.path + "/v5/subscription" }
 
     override var parameters: [String: Any]? {
-        var params: [String: Any] = ["Amount": amount, "Currency": "USD", "Plans": [planName: 1], "Cycle": cycle, "External": 1]
+        var params: [String: Any] = ["Amount": amount, "Currency": currencyCode, "Plans": [planName: 1], "Cycle": cycle, "External": 1]
         guard amount != .zero, let paymentAction = paymentAction else {
             return params
         }

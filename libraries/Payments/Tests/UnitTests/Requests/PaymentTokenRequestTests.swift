@@ -37,6 +37,7 @@ final class PaymentTokenRequestTests: XCTestCase {
         withFeatureFlags([.dynamicPlans]) {
             sut = PaymentTokenRequest(api: APIServiceMock(),
                                       amount: 1295,
+                                      currencyCode: "EUR",
                                       receipt: "Receipt",
                                       transactionId: "TID",
                                       bundleId: "BID",
@@ -50,7 +51,7 @@ final class PaymentTokenRequestTests: XCTestCase {
         let details = payment["Details"] as! [String: String]
 
         XCTAssertEqual(1295, sut.parameters!["Amount"] as! Int)
-        XCTAssertEqual("USD", sut.parameters!["Currency"] as! String)
+        XCTAssertEqual("EUR", sut.parameters!["Currency"] as! String)
         XCTAssertEqual("apple-recurring", payment["Type"] as! String)
         XCTAssertEqual("TID", details["TransactionID"])
         XCTAssertEqual("BID", details["BundleID"])

@@ -59,11 +59,19 @@ public final class Payments {
 
     public internal(set) lazy var planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol> = {
         if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
-            return .right(PlansDataSource(
+            let dataSource = PlansDataSource(
                 apiService: apiService,
                 storeKitDataSource: storeKitDataSource,
                 localStorage: localStorage
-            ))
+            )
+            Task { // pre-fetch plans
+                do {
+                    try await dataSource.fetchAvailablePlans()
+                } catch {
+                    PMLog.error(error)
+                }
+            }
+            return .right(dataSource)
         } else {
             return .left(
                 ServicePlanDataService(

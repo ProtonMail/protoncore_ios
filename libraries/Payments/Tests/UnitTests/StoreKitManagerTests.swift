@@ -1283,7 +1283,8 @@ final class StoreKitManagerTests: XCTestCase {
         paymentsQueue.transactionState = .purchased
         plansDataSourceMock.isIAPAvailableStub.fixture = true
         plansDataSourceMock.detailsOfAvailablePlanInstanceCorrespondingToIAPStub.bodyIs { _, _  in planDetails.instances.first }
-
+        plansDataSourceMock.lastFetchedProductsStub.fixture = [SKProduct(identifier: productId, price: "1299", priceLocale: Locale(identifier: "fr_CH"))]
+        
         let out = setupMocksToSimulateOngoingPurchaseWithDynamicPlans(expectRefreshHandler: nil)
         out.availableProducts = [SKProduct(identifier: productId, price: "0.0", priceLocale: Locale(identifier: "en_US"))]
 
@@ -1315,7 +1316,8 @@ final class StoreKitManagerTests: XCTestCase {
 
             // given
             let productId = "ios_test_12_usd_auto_renewing"
-
+            plansDataSourceMock.lastFetchedProductsStub.fixture = [SKProduct(identifier: productId, price: "1299", priceLocale: Locale(identifier: "fr_CH"))]
+            
             let out = setupMocksToSimulateOngoingPurchaseWithDynamicPlans(expectRefreshHandler: nil)
             paymentsQueue.transactionState = .purchased
             let plan = InAppPurchasePlan(storeKitProductId: productId)!
@@ -1386,56 +1388,66 @@ final class StoreKitManagerTests: XCTestCase {
         // 1. ReceiptError = receiptLost
         // 2. Do purchase
         // Expected: Error: Errors.appIsLocked
-
-        // given
-        let productId = "ios_test_12_usd_auto_renewing"
-        plansDataSourceMock.isIAPAvailableStub.fixture = true
-
-        let out = setupMocksToSimulateOngoingPurchaseWithDynamicPlans(expectRefreshHandler: nil)
-        out.receiptError = StoreKitManager.Errors.receiptLost // (1)
-        paymentsQueue.transactionState = .purchased
-        let plan = InAppPurchasePlan(storeKitProductId: productId)!
-        let expectation1 = expectation(description: "Should call error completion block")
-        let subscription: [String: Any] = [
-            "Code": 1000,
-            "Subscription": [
-                "PeriodStart": 0,
-                "PeriodEnd": 0,
-                "CouponCode": "test code",
-                "Cycle": 12,
-                "Plans": [String]()
-            ] as [String: Any]
-        ]
-        let token = PaymentToken(token: "test token", status: .pending)
-        storeKitManagerDelegate.tokenStorageStub.fixture = paymentTokenStorageMock
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
-            if path.contains("subscription/check") {
-                completion(nil, .success(ValidateSubscription(amount: 0, amountDue: 0).toSuccessfulResponse))
-            } else if path.contains("tokens/") {
-                completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
-            } else if path.contains("/tokens") {
-                completion(nil, .success(token.toSuccessfulResponse))
-            } else if path.contains("/subscription") {
-                completion(nil, .success(subscription))
-            } else {
-                XCTFail("Unexpected request")
+        withFeatureFlags([.dynamicPlans]) {
+            // given
+            let productId = "ios_test_12_usd_auto_renewing"
+            plansDataSourceMock.isIAPAvailableStub.fixture = true
+            plansDataSourceMock.availablePlansStub.fixture = .init(plans: [AvailablePlans.AvailablePlan(ID: productId,
+                                                                                                        type: 0,
+                                                                                                        name: "Bundle2022", title: "Bundle Title", instances: [.init(cycle: 12, description: "description", periodEnd: 12, price: [.init(ID: "price", current: 1299, currency: "CHF")])], entitlements:
+                                                                                                          [.description(.init(type: "description", iconName: "tick", text: "text", hint: "hint"))],
+                                                                                                        decorations: [.starred(.init(type: "starred", iconName: "tick"))]
+                                                                                                       )
+                                          ])
+            plansDataSourceMock.lastFetchedProductsStub.fixture = [SKProduct(identifier: productId, price: "1299", priceLocale: Locale(identifier: "fr_CH"))]
+            
+            let out = setupMocksToSimulateOngoingPurchaseWithDynamicPlans(expectRefreshHandler: nil)
+            out.receiptError = StoreKitManager.Errors.receiptLost // (1)
+            paymentsQueue.transactionState = .purchased
+            let plan = InAppPurchasePlan(storeKitProductId: productId)!
+            let expectation1 = expectation(description: "Should call error completion block")
+            let subscription: [String: Any] = [
+                "Code": 1000,
+                "Subscription": [
+                    "PeriodStart": 0,
+                    "PeriodEnd": 0,
+                    "CouponCode": "test code",
+                    "Cycle": 12,
+                    "Plans": ["vpn2022"],
+                ] as [String: Any]
+            ]
+            let token = PaymentToken(token: "test token", status: .pending)
+            storeKitManagerDelegate.tokenStorageStub.fixture = paymentTokenStorageMock
+            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+                if path.contains("subscription/check") {
+                    completion(nil, .success(ValidateSubscription(amount: 0, amountDue: 0).toSuccessfulResponse))
+                } else if path.contains("tokens/") {
+                    completion(nil, .success(PaymentTokenStatus(status: .chargeable).toSuccessfulResponse))
+                } else if path.contains("/tokens") {
+                    completion(nil, .success(token.toSuccessfulResponse))
+                } else if path.contains("/subscription") {
+                    completion(nil, .success(subscription))
+                } else {
+                    XCTFail("Unexpected request")
+                }
             }
-        }
 
-        // when: Do purchase for unauthorized (1)
-        var returnedError: Error?
-        paymentTokenStorageMock.getStub.bodyIs { _ in token }
-        out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail("Shouldn't be calling success handler") } errorCompletion: { error in
-            returnedError = error
-            expectation1.fulfill()
-        }
-        //       Start processing transactions (2)
-        paymentsQueue.fire = true
+            // when: Do purchase for unauthorized (1)
+            var returnedError: Error?
+            paymentTokenStorageMock.getStub.bodyIs { _ in token }
+            out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail("Shouldn't be calling success handler") } errorCompletion: { error in
+                returnedError = error
+                expectation1.fulfill()
+            }
+            //       Start processing transactions (2)
+            paymentsQueue.fire = true
 
-        // then
-        waitForExpectations(timeout: timeout)
-        XCTAssertEqual(returnedError as? StoreKitManager.Errors, StoreKitManager.Errors.receiptLost)
+            // then
+            waitForExpectations(timeout: timeout)
+            XCTAssertEqual(returnedError as? StoreKitManager.Errors, StoreKitManager.Errors.receiptLost)
+        }
     }
+
 
     // MARK: Private helpers
 

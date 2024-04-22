@@ -58,6 +58,11 @@ public final class PlansDataSourceMock: NSObject, PlansDataSourceProtocol {
         hasPaymentMethodsStub()
     }
 
+    @PropertyStub(\PlansDataSourceProtocol.lastFetchedProducts, initialGet: []) public var lastFetchedProductsStub
+    public var lastFetchedProducts: [SKProduct] {
+        lastFetchedProductsStub()
+    }
+
     @AsyncThrowingFuncStub(PlansDataSourceProtocol.fetchIAPAvailability) public var fetchIAPAvailabilityStub
     public func fetchIAPAvailability() async throws {
         try await fetchIAPAvailabilityStub()

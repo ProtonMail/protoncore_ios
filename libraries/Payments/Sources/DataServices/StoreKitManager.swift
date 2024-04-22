@@ -793,6 +793,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
         let planName: String
         let planAmount: Int
         let planIdentifier: String
+        let currencyCode: String
         let cycle: Int
         switch planService {
         case .left(let planService):
@@ -811,19 +812,22 @@ extension StoreKitManager: SKPaymentTransactionObserver {
             planAmount = amount
             planIdentifier = protonIdentifier
             cycle = 12
+            currencyCode = "USD"
 
         case .right(let planDataSource):
+            let productIdentifier = transaction.payment.productIdentifier
             guard let details = planDataSource.detailsOfAvailablePlanCorrespondingToIAP(plan),
                   let instance = planDataSource.detailsOfAvailablePlanInstanceCorrespondingToIAP(plan),
-                  let price = instance.price.first(where: { $0.currency.lowercased() == plan.currency?.lowercased() }),
+                  let product = planDataSource.lastFetchedProducts.first(where: {$0.productIdentifier == productIdentifier}),
+                  let productCurrencyCode = product.priceLocale.currencyCode,
                   let name = details.name,
                   let id = details.ID
             else {
                 throw Errors.alreadyPurchasedPlanDoesNotMatchBackend
             }
-
+            planAmount = Int(product.price.doubleValue * 100.0)
+            currencyCode = productCurrencyCode
             planName = name
-            planAmount = price.current
             planIdentifier = id
             cycle = instance.cycle
         }
@@ -843,7 +847,12 @@ extension StoreKitManager: SKPaymentTransactionObserver {
             amountDue = fetchedAmountDue ?? planAmount
         }
 
-        let planToBeProcessed = PlanToBeProcessed(protonIdentifier: planIdentifier, planName: planName, amount: planAmount, amountDue: amountDue, cycle: cycle)
+        let planToBeProcessed = PlanToBeProcessed(protonIdentifier: planIdentifier,
+                                                  planName: planName,
+                                                  amount: planAmount,
+                                                  currencyCode:  currencyCode,
+                                                  amountDue: amountDue,
+                                                  cycle: cycle)
 
         do {
             let customCompletion: ProcessCompletionCallback = { result in
