@@ -1,3 +1,14 @@
+## 23.0.0 (2024-04-22)
+
+### Changed (1 change)
+
+- [fix: Obtain amount and currency from App Store for use in v5 Token and Subscription request](apple/shared/protoncore@6d9c99a9b126e3fb4a365dee1f31f752f93e48a8) ([merge request](apple/shared/protoncore!1766))
+
+### Fixed (2 changes)
+
+- [fix: support multiple APNEnvironments [CP-7891]](apple/shared/protoncore@f1cbc60a5d085096e2f948d3c72607c7f4fec1b4) ([merge request](apple/shared/protoncore!1763))
+- [fix: Add Feature Flag check in new method](apple/shared/protoncore@5f198ee473196f5ea02f6c917e17f2bc5a271676) ([merge request](apple/shared/protoncore!1764))
+
 ## 22.0.0 (2024-04-15)
 
 ### changed (4 changes)
