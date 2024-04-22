@@ -51,7 +51,6 @@ final class PCButtonSnapshotTests: SnapshotTestCase {
         checkSnapshots(view: view, perceptualPrecision: 0.98, name: #function, line: #line)
     }
 
-
     func test_PCButton_solid_disabled() {
         let view = PCButton(
             style: .constant(.init(mode: .solid)),
@@ -60,7 +59,6 @@ final class PCButtonSnapshotTests: SnapshotTestCase {
 
         checkSnapshots(view: view, perceptualPrecision: 0.98, name: #function, line: #line)
     }
-
 
     func test_PCButton_text_idle() {
         let view = PCButton(

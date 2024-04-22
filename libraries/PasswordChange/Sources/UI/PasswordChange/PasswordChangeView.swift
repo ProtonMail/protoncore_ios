@@ -97,7 +97,7 @@ public struct PasswordChangeView: View {
         .onChange(of: textFieldContents) { _ in
             saveButtonIsEnabled = textFieldContents.first(where: { $0.isEmpty }) == nil
         }
-        .onAppear() {
+        .onAppear {
             viewModel.currentPasswordFieldContent.focus()
             ObservabilityEnv.report(.screenLoadCountTotal(screenName: viewModel.screenLoadObservabilityEvent))
         }

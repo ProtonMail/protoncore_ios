@@ -173,15 +173,15 @@ final class PaymentsUICoordinatorTests: XCTestCase {
             let expectation = self.expectation(description: "Success completion block called")
             let observeMock = ObservabilityServiceMock()
             ObservabilityEnv.current.observabilityService = observeMock
-            
+
             observeMock.reportStub.bodyIs { _, event in
                 guard event.isSameAs(event: .planSelectionCheckoutTotal(status: .failed, plan: .paid, isDynamic: true)) else {
                     return
-                }               
+                }
                 XCTAssertEqual(1, event.toJsonDict["Version"] as! Int)
                 expectation.fulfill()
             }
-            
+
             planServiceMock.detailsOfPlanCorrespondingToIAPStub.bodyIs { _, _ in .dummy.updated(name: "ios_test_12_usd_auto_renewing", iD: "test_plan_id") }
             planServiceMock.currentSubscriptionStub.fixture = .dummy.updated(couponCode: "test code")
             apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in

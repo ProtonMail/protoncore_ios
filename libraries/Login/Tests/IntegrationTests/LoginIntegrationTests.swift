@@ -110,7 +110,7 @@ final class LoginIntegrationTests: IntegrationTestCase {
     func testDoesNotRequireAskingForSecondPasswordForUsernameRequirement() async throws {
         let user = User(name: randomName, password: randomPassword, mailboxPassword: "456")
         let loginResult = try await createAccountAndLogin(user: user, minimumAccountType: .username)
-       
+
         guard case let .success(.finished(userData)) = loginResult else { XCTFail(); return }
         XCTAssertFalse(userData.user.keys.isEmpty)
         let address = try XCTUnwrap(userData.addresses.first)
@@ -129,7 +129,7 @@ final class LoginIntegrationTests: IntegrationTestCase {
     func testRequiresAskingForSecondPasswordForInternalRequirement() async throws {
         let user = User(name: randomName, password: randomPassword, mailboxPassword: "456")
         let loginResult = try await createAccountAndLogin(user: user, minimumAccountType: .internal)
-        
+
         guard case .success(.askSecondPassword) = loginResult else { XCTFail(); return }
     }
 

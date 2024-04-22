@@ -1687,7 +1687,7 @@ add(
                        .snapshotTesting
                    ],
                    path: "libraries/TestingToolkit/UnitTests/Core"),
-        
+
         coreTarget(name: .testingToolkitUnitTestsCryptoGoInterface,
                    dependencies: [
                        .cryptoGoInterface,

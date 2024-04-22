@@ -464,7 +464,6 @@ final class ObservabilityEventTests: XCTestCase {
         }
     }
 
-
     // MARK: - protonAccountAvailableSignup event
 
     let ios_core_proton_account_available_signup_total_v2 = """

@@ -61,7 +61,7 @@ public enum PasswordChangeModule {
         return podBundle
         #endif
     }
-    
+
     /// Localized name of the settings item for Password Change
     public static let settingsItem = PCTranslation.settingsItem.l10n
 
@@ -97,7 +97,7 @@ public enum PasswordChangeModule {
         return viewController
     }
 
-    weak static var initialViewController: UIViewController?
+    static weak var initialViewController: UIViewController?
 }
 
 private class PasswordChangeClass {}

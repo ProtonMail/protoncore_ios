@@ -138,4 +138,3 @@ final class UpdatePrivateKeyRequest: Request {
         return KeysAPI.path + "/private"
     }
 }
-

@@ -35,7 +35,7 @@ public enum PCTranslation: TranslationsExposing {
     }
 
     public static var prefixForMissingValue: String = ""
-    
+
     case settingsItem
     case accountPassword
     case currentPassword

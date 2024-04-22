@@ -32,11 +32,11 @@ extension UserInfo {
             }
         }
         let subscribed = response["Subscribed"] as? UInt8
-        var lockedFlags: LockedFlags? = nil
+        var lockedFlags: LockedFlags?
         if let lockedFlagsRes = response["LockedFlags"] as? Int8 {
             lockedFlags = LockedFlags(rawValue: lockedFlagsRes)
         }
-        
+
         self.init(
             maxSpace: response["MaxSpace"] as? Int64,
             maxBaseSpace: response["MaxBaseSpace"] as? Int64,

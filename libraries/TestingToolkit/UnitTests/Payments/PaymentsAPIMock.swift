@@ -35,7 +35,7 @@ public final class PaymentsApiMock: PaymentsApiProtocol {
         paymentStatusRequestStub(api)
     }
 
-    @ThrowingFuncStub(PaymentsApiProtocol.buySubscriptionRequest, initialReturn: { 
+    @ThrowingFuncStub(PaymentsApiProtocol.buySubscriptionRequest, initialReturn: {
         V5SubscriptionRequest(api: $0.0, planName: $0.1.planName)
     }) public var buySubscriptionRequestStub
     public func buySubscriptionRequest(

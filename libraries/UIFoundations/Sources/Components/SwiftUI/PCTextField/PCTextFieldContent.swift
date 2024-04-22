@@ -69,7 +69,7 @@ public struct PCTextFieldContent {
         currentFocus == focusID
     }
 
-    mutating public func focus() {
+    public mutating func focus() {
         self.currentFocus = focusID
     }
 }

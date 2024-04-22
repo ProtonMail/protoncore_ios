@@ -68,7 +68,7 @@ extension PasswordChangeView {
             passwordChangeService: PasswordChangeService? = nil,
             authCredential: AuthCredential? = AuthCredential.none,
             userInfo: UserInfo? = .getDefault(),
-            showingDismissButton : Bool,
+            showingDismissButton: Bool,
             passwordChangeCompletion: PasswordChangeCompletion?
         ) {
             self.mode = mode
@@ -139,7 +139,7 @@ extension PasswordChangeView {
                 authCredential: authCredential,
                 userInfo: userInfo,
                 loginPassword: currentPasswordFieldContent.text,
-                newPassword: newPasswordFieldContent.text, 
+                newPassword: newPasswordFieldContent.text,
                 passwordChangeCompletion: passwordChangeCompletion
             )
             let viewController = UIHostingController(rootView: PasswordChange2FAView(viewModel: viewModel))

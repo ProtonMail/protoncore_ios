@@ -106,7 +106,6 @@ public class PasswordChangeService {
                                                                   oldPassword: oldPassword,
                                                                   newPassphrase: resultOfKeyUpdate.hashedNewPassword)
 
-
         var passwordAuth: PasswordAuth?
         if buildAuth {
             passwordAuth = try await generatePasswordAuth(newPassword: newPassword)
@@ -124,7 +123,7 @@ public class PasswordChangeService {
         }
         let srpClient = try auth.generateProofs(2048)
 
-        guard let clientEphemeral = srpClient.clientEphemeral, 
+        guard let clientEphemeral = srpClient.clientEphemeral,
               let clientProof = srpClient.clientProof else {
             throw UpdatePasswordError.cantGenerateSRPClient
         }
@@ -142,7 +141,6 @@ public class PasswordChangeService {
             auth: passwordAuth,
             authCredential: currentAuth
         )
-
 
         let (_, updatePrivateKeyResponse): (URLSessionDataTask?, DefaultResponse) = try await apiService.perform(request: updatePrivateKeyRequest)
 
