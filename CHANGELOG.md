@@ -1,10 +1,20 @@
+## 24.0.0 (2024-04-24)
+
+### changed (1 change)
+
+- [[CALIOS-2763] Active Public Keys in MailFeature](apple/shared/protoncore@9f19032d184626fb58f8fea834809990bec0b98f) ([merge request](apple/shared/protoncore!1762))
+
+### fixed (1 change)
+
+- [fix(essentials): CP-7965 Pass Essentials is not handled by susbcriptions screen](apple/shared/protoncore@439a3f2a65e8756c2b9222f1e2948bf39048c27b) ([merge request](apple/shared/protoncore!1772))
+
 ## 23.0.0 (2024-04-22)
 
-### Changed (1 change)
+### changed (1 change)
 
 - [fix: Obtain amount and currency from App Store for use in v5 Token and Subscription request](apple/shared/protoncore@6d9c99a9b126e3fb4a365dee1f31f752f93e48a8) ([merge request](apple/shared/protoncore!1766))
 
-### Fixed (2 changes)
+### fixed (2 changes)
 
 - [fix: support multiple APNEnvironments [CP-7891]](apple/shared/protoncore@f1cbc60a5d085096e2f948d3c72607c7f4fec1b4) ([merge request](apple/shared/protoncore!1763))
 - [fix: Add Feature Flag check in new method](apple/shared/protoncore@5f198ee473196f5ea02f6c917e17f2bc5a271676) ([merge request](apple/shared/protoncore!1764))
