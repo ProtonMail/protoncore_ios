@@ -27,7 +27,9 @@ import ProtonCorePayments
 
 public extension CurrentPlan {
     static var dummy: CurrentPlan {
-        CurrentPlan(subscriptions: [.init(title: "dummy", description: "dummy", amount: 1500, entitlements: [])])
+        CurrentPlan(
+            subscriptions: [.init(title: "dummy", name: "dummy", description: "dummy", amount: 1500, entitlements: [])]
+        )
     }
 
     func updated(subscriptions: [Subscription]? = nil) -> CurrentPlan {

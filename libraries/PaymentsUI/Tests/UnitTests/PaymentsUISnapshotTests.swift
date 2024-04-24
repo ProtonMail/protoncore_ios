@@ -339,6 +339,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
 
         static let availablePlans: AvailablePlans = .init(plans: MockData.availablePlansList, defaultCycle: 12) // dynamic plan
         static let currentPlan: CurrentPlan = .init(subscriptions: [.init(title: "Current Subscription", // dynamic plan
+                                                                          name: "planName",
                                                                           description: "Description",
                                                                           periodEnd: 1965360000,
                                                                           entitlements: [
@@ -354,6 +355,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
 
             static let mailFree: CurrentPlan = .init(subscriptions: [
                 .init(title: "Mail Free",
+                      name: nil,
                       description: "Free encrypted email and calendar for everyone",
                       periodEnd: 1965360000,
                       entitlements: [.progress(.init(type: "progress",
@@ -366,6 +368,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             ])
             static let vpnFree: CurrentPlan = .init(subscriptions: [
                 .init(title: "VPN Free",
+                      name: nil,
                       description: "High-speed Swiss VPN that protects your privacy",
                       periodEnd: 1965360000,
                       entitlements: [.description(.description(text: "249 servers in 5 countries", iconName: "servers")),
@@ -375,6 +378,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             ])
             static let passFree: CurrentPlan = .init(subscriptions: [
                 .init(title: "Pass Free",
+                      name: nil,
                       description: "Encrypted password manager that also protects your identity",
                       periodEnd: 1965360000,
                       entitlements: [.description(.description(text: "Unlimited logins and notes", iconName: "infinite")),
@@ -385,6 +389,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             ])
             static let arbitraryFree: CurrentPlan = .init(subscriptions: [
                 .init(title: "Blue Moon Free",
+                      name: nil,
                       description: "Keep your satellites secure",
                       periodEnd: 1965360000,
                       entitlements: [.description(.description(text: "Aliases!", iconName: "alias")),
@@ -393,6 +398,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             ])
             static var mail2022: CurrentPlan = .init(subscriptions: [
                 .init(title: "Mail Plus",
+                      name: "mail2022",
                       description: "Encrypted email with premium features and free VPN",
                       periodEnd: 1965360000,
                       renew: 0,
@@ -409,6 +415,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             ])
             static var vpn2022: CurrentPlan = .init(subscriptions: [
                 .init(title: "VPN Plus",
+                      name: "vpn2022",
                       description: "Encrypted email with premium features and free VPN",
                       periodEnd: 1965360000,
                       renew: 0,
@@ -424,6 +431,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             ])
             static var bundle2022: CurrentPlan = .init(subscriptions: [
                 .init(title: "Proton Unlimited",
+                      name: "bundle2022",
                       description: "Acces to all Proton apps and premium features",
                       periodEnd: 1965360000,
                       renew: 0,
@@ -439,6 +447,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             ])
             static var drive2022: CurrentPlan = .init(subscriptions: [
                 .init(title: "Drive Plus",
+                      name: "drive2022",
                       description: "Secure your files with end-to-end encryption",
                       periodEnd: 1965360000,
                       renew: 0,
@@ -453,6 +462,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
 
             static var pass2023: CurrentPlan = .init(subscriptions: [
                 .init(title: "Pass Plus",
+                      name: "pass2022",
                       description: "Encrypted password manager that also protects your identity",
                       periodEnd: 1965360000,
                       renew: 0,
@@ -468,6 +478,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
 
             static var mailpro2022: CurrentPlan = .init(subscriptions: [
                 .init(title: "Mail Essentials",
+                      name: "mailpro2022",
                       description: "Secure email and calendar for professionals and businesses.",
                       periodEnd: 1965360000,
                       renew: 0,
@@ -484,6 +495,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
 
             static var bundlepro2022: CurrentPlan = .init(subscriptions: [
                 .init(title: "Business",
+                      name: "bundlepro2022",
                       description: "Privacy and security suite for businesses, including all premium Proton services.",
                       periodEnd: 1965360000,
                       renew: 0,
@@ -499,6 +511,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             ])
             static var enterprise2022: CurrentPlan = .init(subscriptions: [
                 .init(title: "Enterprise",
+                      name: "enterprise2022",
                       description: "All premium Proton services with more storage for your business.",
                       periodEnd: 1965360000,
                       renew: 0,
@@ -511,6 +524,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             ])
             static var visionary2022: CurrentPlan = .init(subscriptions: [
                 .init(title: "Visionary",
+                      name: "visionary2022",
                       description: "Our exclusive plan for early supporters.",
                       periodEnd: 1965360000,
                       renew: 0,
@@ -532,6 +546,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
 
             static let mailFree: CurrentPlan = .init(subscriptions: [
                 .init(title: "Mail Free",
+                      name: nil,
                       description: "Free encrypted email and calendar for everyone",
                       periodEnd: 1965360000,
                       entitlements: [.progress(.init(type: "progress",
@@ -551,6 +566,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             ])
             static let driveFree: CurrentPlan = .init(subscriptions: [
                 .init(title: "Drive Free",
+                      name: nil,
                       description: "Free encrypted storage for everyone",
                       periodEnd: 1965360000,
                       entitlements: [.progress(.init(type: "progress",
@@ -570,6 +586,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             ])
             static let mailFreeDelinquent: CurrentPlan = .init(subscriptions: [
                 .init(title: "Mail Free",
+                      name: nil,
                       description: "Free encrypted email and calendar for everyone",
                       periodEnd: 1965360000,
                       entitlements: [.progress(.init(type: "progress",
@@ -589,6 +606,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             ])
             static let driveFreeDelinquent: CurrentPlan = .init(subscriptions: [
                 .init(title: "Drive Free",
+                      name: nil,
                       description: "Free encrypted storage for everyone",
                       periodEnd: 1965360000,
                       entitlements: [.progress(.init(type: "progress",
@@ -2592,6 +2610,7 @@ extension CurrentPlan {
 extension CurrentPlan.Subscription {
     func updated(cycle: Int?, cycleDescription: String?, currency: String?, amount: Int?, renew: Int?) -> Self {
         Self(title: self.title,
+             name: self.name,
              description: self.description,
              cycleDescription: cycleDescription ?? self.cycleDescription,
              cycle: cycle ?? self.cycle,
