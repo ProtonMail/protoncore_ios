@@ -270,9 +270,9 @@ final class PaymentsUICoordinator {
         finishCallback(reason: .purchaseError(error: error))
     }
 
-    private func showError(message: String, error: Error) {
+    private func showError(message: String, error: Error, action: ActionCallback = nil) {
         guard localErrorMessages else { return }
-        alertManager.showError(message: message, error: error)
+        alertManager.showError(message: message, error: error, action: action)
     }
 
     private var localErrorMessages: Bool {
@@ -347,6 +347,7 @@ extension PaymentsUICoordinator: PaymentsUIViewControllerDelegate {
     }
 
     func userDidSelectPlan(plan: AvailablePlansPresentation, completionHandler: @escaping () -> Void) {
+        
         guard let inAppPlan = plan.availablePlan else {
             completionHandler()
             return
@@ -423,6 +424,13 @@ extension PaymentsUICoordinator: PaymentsUIViewControllerDelegate {
     func planPurchaseError() {
         if mode == .signup {
             self.showProcessingTransactionAlert(isError: true)
+        }
+    }
+
+    func purchaseBecameUnavailable() {
+        self.showError(message: PUITranslations.iap_temporarily_unavailable.l10n,
+                       error: PlansDataSourceError.purchaseBecameUnavailable) {
+            self.userDidCloseViewController()
         }
     }
 }

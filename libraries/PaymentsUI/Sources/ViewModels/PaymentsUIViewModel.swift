@@ -173,6 +173,11 @@ class PaymentsUIViewModel {
         }
     }
 
+    var shouldDisablePurchaseButtons: Bool {
+        guard case .right(let planDataSource) = planService else { return false }
+        return !planDataSource.isIAPAvailable
+    }
+
     // MARK: Public interface
 
     init(mode: PaymentsUIMode,
