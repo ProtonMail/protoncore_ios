@@ -459,12 +459,19 @@ extension UserInfo {
 }
 
 // MARK: LockedFlags
-public enum LockedFlags: Int8, Codable {
-    case mailStorageExceeded = 1
-    case driveStorageExceeded = 2
-    case storageExceeded = 3
-    case orgIssueForPrimaryAdmin = 4
-    case orgIssueForMember = 8
+public struct LockedFlags: OptionSet, Codable {
+    
+    public let rawValue: Int
+
+    public static let mailStorageExceeded = LockedFlags(rawValue: 1 << 0)
+    public static let driveStorageExceeded = LockedFlags(rawValue: 1 << 1)
+    public static let storageExceeded: LockedFlags = [.mailStorageExceeded, .driveStorageExceeded]
+    public static let orgIssueForPrimaryAdmin = LockedFlags(rawValue: 1 << 2)
+    public static let orgIssueForMember = LockedFlags(rawValue: 1 << 3)
+    
+    public init(rawValue: Int) {
+        self.rawValue = rawValue
+    }
 }
 
 // MARK: Account Recovery
