@@ -83,17 +83,20 @@ extension PasswordChangeView {
         func setupViews() {
             currentPasswordFieldContent = .init(
                 title: PCTranslation.currentPassword.l10n,
-                isSecureEntry: true
+                isSecureEntry: true,
+                textContentType: .password
             )
 
             newPasswordFieldContent = .init(
                 title: mode == .mailboxPassword ? PCTranslation.newMailboxPassword.l10n : PCTranslation.newSignInPassword.l10n,
-                isSecureEntry: true
+                isSecureEntry: true,
+                textContentType: .newPassword
             )
 
             confirmNewPasswordFieldContent = .init(
                 title: mode == .mailboxPassword ? PCTranslation.confirmNewMailboxPassword.l10n : PCTranslation.confirmNewSignInPassword.l10n,
-                isSecureEntry: true
+                isSecureEntry: true,
+                textContentType: .newPassword
             )
 
             newPasswordFieldStyle = .init(mode: .idle)

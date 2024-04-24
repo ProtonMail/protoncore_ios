@@ -71,7 +71,8 @@ extension PasswordChange2FAView {
             tfaFieldContent = .init(
                 title: PCTranslation.tfaCode.l10n,
                 footnote: PCTranslation.enterDigitsCode.l10n,
-                keyboardType: .numberPad
+                keyboardType: .numberPad,
+                textContentType: .oneTimeCode
             )
         }
 
