@@ -79,7 +79,14 @@ public struct PasswordChangeView: View {
                             title: PCTranslation.savePassword.l10n,
                             isEnabled: saveButtonIsEnabled,
                             isAnimating: viewModel.savePasswordIsLoading,
-                            action: { viewModel.savePasswordTapped() }
+                            action: {
+#if os(iOS)
+                                UIApplication.shared.sendAction(
+                                    #selector(UIResponder.resignFirstResponder),
+                                    to: nil, from: nil, for: nil)
+#endif
+                                viewModel.savePasswordTapped()
+                            }
                         ))
                     )
                 }
