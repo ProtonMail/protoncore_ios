@@ -74,6 +74,7 @@ public extension Quark {
         return try parseQuarkCommandJsonResponse(jsonData: data, type: CreateUserQuarkResponse.self)
     }
 
+    @discardableResult
     func userCreateAddress(decryptedUserId: Int, password: String, email: String, genKeys: GenKeys = .Curve25519) throws -> CreateUserAddressQuarkResponse? {
         let args = [
             "userID=\(decryptedUserId)",
@@ -92,6 +93,7 @@ public extension Quark {
         return try parseQuarkCommandJsonResponse(jsonData: data, type: CreateUserAddressQuarkResponse.self)
     }
 
+    @discardableResult
     func userExpireSession(username: String, expireRefreshToken: Bool = false) throws -> (data: Data, response: URLResponse) {
         let args = [
             "User=\(username)",
