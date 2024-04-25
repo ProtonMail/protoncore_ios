@@ -47,12 +47,14 @@ public struct PCTextField: View {
                         .accentColor(ColorProvider.BrandNorm)
                         .keyboardType(content.keyboardType)
                         .autocapitalization(autocapitalization)
+                        .textContentType(content.textContentType)
                 } else {
                     TextField(content.placeholder, text: $content.text)
                         .padding(.vertical)
                         .accentColor(ColorProvider.BrandNorm)
                         .keyboardType(content.keyboardType)
                         .autocapitalization(autocapitalization)
+                        .textContentType(content.textContentType)
                 }
                 if content.isSecureEntry {
                     secureEntryDisplayButton

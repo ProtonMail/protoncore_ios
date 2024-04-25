@@ -90,6 +90,7 @@ final class TwoFactorViewController: UIViewController, AccessibleView, Focusable
     private func setupUI() {
         view.backgroundColor = ColorProvider.BackgroundNorm
         recoveryCodeButton.setMode(mode: .text)
+        codeTextField.textContentType = .oneTimeCode
 
         titleView.text = LUITranslation.login_2fa_screen_title.l10n
         titleView.textColor = ColorProvider.TextNorm
