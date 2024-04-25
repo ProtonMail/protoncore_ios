@@ -117,6 +117,7 @@ extension PasswordChangeView {
 
         func savePasswordTapped() {
             do {
+                resetTextFieldsErrors()
                 try validate(
                     for: .default,
                     password: newPasswordFieldContent.text,
@@ -159,7 +160,6 @@ extension PasswordChangeView {
             Task { @MainActor in
                 PasswordChangeModule.initialViewController?.lockUI()
                 savePasswordIsLoading.toggle()
-                resetTextFieldsErrors()
                 do {
                     try await updatePasswordRequest(
                         passwordChangeService: passwordChangeService,
