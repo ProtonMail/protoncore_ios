@@ -45,6 +45,7 @@ final class CurrentPlanPresentationTests: XCTestCase {
 
         let subscription = CurrentPlan.Subscription(
             title: "title",
+            name: "name",
             description: "description",
             cycleDescription: "cycleDescription",
             entitlements: []
@@ -73,6 +74,7 @@ final class CurrentPlanPresentationTests: XCTestCase {
 
         let subscription = CurrentPlan.Subscription(
             title: "title",
+            name: "name",
             description: "description",
             cycleDescription: "cycleDescription",
             currency: "USD",
@@ -104,6 +106,7 @@ final class CurrentPlanPresentationTests: XCTestCase {
 
         let subscription = CurrentPlan.Subscription(
             title: "title",
+            name: "name",
             description: "description",
             cycleDescription: "cycleDescription",
             currency: "USD",

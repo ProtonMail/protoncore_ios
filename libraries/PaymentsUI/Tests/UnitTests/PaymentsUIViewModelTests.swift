@@ -80,6 +80,7 @@ final class PaymentsUIViewModelTests: XCTestCase {
 
         plansDataSource.currentPlanStub.fixture = .init(subscriptions: [
             .init(title: "VPN Plus",
+                  name: "vpn2022",
                   description: "nice vpn",
                   cycleDescription: "for 12 months",
                   entitlements: []

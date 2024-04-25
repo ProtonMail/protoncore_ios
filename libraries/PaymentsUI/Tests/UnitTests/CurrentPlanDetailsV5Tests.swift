@@ -43,6 +43,7 @@ final class CurrentPlanDetailsV5Tests: XCTestCase {
         // Given
         let subscription = CurrentPlan.Subscription(
             title: "title",
+            name: "name",
             description: "description",
             cycleDescription: "cycleDescription",
             entitlements: [.description(.init(type: "description", text: "text", iconName: "tick"))]
@@ -59,6 +60,7 @@ final class CurrentPlanDetailsV5Tests: XCTestCase {
         // Given
         let subscription = CurrentPlan.Subscription(
             title: "title",
+            name: "name",
             description: "description",
             cycleDescription: "cycleDescription",
             entitlements: [.description(.init(type: "description", text: "text", iconName: "tick"))]

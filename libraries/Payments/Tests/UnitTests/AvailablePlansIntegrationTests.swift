@@ -66,6 +66,7 @@ final class AvailablePlansIntegrationTests: XCTestCase {
                 XCTAssertEqual(availablePlans.defaultCycle, 12)
                 XCTAssertEqual(availablePlans.plans.count, 1)
                 XCTAssertEqual(availablePlans.plans[0].title, "Mail Essentials")
+                XCTAssertEqual(availablePlans.plans[0].name, "mailpro2022")
                 XCTAssertEqual(availablePlans.plans[0].description, "Description")
                 XCTAssertEqual(availablePlans.plans[0].decorations.count, 4)
                 XCTAssertEqual(availablePlans.plans[0].decorations[0], .starred(.init(type: "starred", iconName: "tick")))
