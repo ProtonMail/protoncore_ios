@@ -26,6 +26,10 @@ import ProtonCoreFeatureFlags
 import ProtonCoreObservability
 import StoreKit
 
+public enum PlansDataSourceError: Error {
+    case purchaseBecameUnavailable
+}
+
 public protocol PlansDataSourceProtocol {
     var isIAPAvailable: Bool { get }
     var availablePlans: AvailablePlans? { get }

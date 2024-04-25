@@ -657,7 +657,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
                 // but we found this holds true as well for .purchased. So far. Proceed with caution.
                 finishTransaction(transaction, nil)
                 callSuccessCompletion(for: cacheKey, with: .autoRenewal)
-                PMLog.debug("Ignoring and finishing transaction corresponding to renewal cycle.")
+                PMLog.debug("Ignoring and finishing transaction corresponding to renewal cycle. Current transaction: \(transaction.transactionIdentifier ?? "nil"). Original transaction: \(transaction.original?.transactionIdentifier ?? "nil"). Original transaction date: \(transaction.original?.transactionDate?.description ?? "nil")")
                 group.leave()
                 return
             }
@@ -690,6 +690,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
     }
 
     private func processFailedStoreKitTransaction(_ transaction: SKPaymentTransaction, cacheKey: UserInitiatedPurchaseCache) {
+        PMLog.debug("Processing failed transaction")
         finishTransaction(transaction, nil)
         let error = transaction.error as NSError?
         let refreshHandler = refreshHandler
@@ -834,8 +835,10 @@ extension StoreKitManager: SKPaymentTransactionObserver {
 
         let amountDue: Int
         if let cachedAmountDue = threadSafeCache.removeValueSynchronously(for: cacheKey, in: \.amountDue) {
+            PMLog.debug("Using cached amount \(cachedAmountDue)")
             amountDue = cachedAmountDue
         } else {
+            PMLog.debug("No amount cached, validating subscription request")
             let validateSubscriptionRequest = paymentsApi.validateSubscriptionRequest(
                 api: apiService,
                 protonPlanName: planName,
@@ -846,6 +849,8 @@ extension StoreKitManager: SKPaymentTransactionObserver {
             let fetchedAmountDue = isDynamic ? response?.validateSubscription?.amount : response?.validateSubscription?.amountDue
             amountDue = fetchedAmountDue ?? planAmount
         }
+        PMLog.debug("final amount \(amountDue)")
+
 
         let planToBeProcessed = PlanToBeProcessed(protonIdentifier: planIdentifier,
                                                   planName: planName,
@@ -886,6 +891,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
             }
         } catch {
             ObservabilityEnv.report(.paymentSubscribeTotal(status: .failed, isDynamic: isDynamic))
+            PMLog.error(error)
             throw error
         }
     }
