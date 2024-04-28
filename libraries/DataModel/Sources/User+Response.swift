@@ -90,7 +90,7 @@ extension UserInfo {
                 }
             }
 
-            if let twoFA = settings["2FA"]  as? [String: Any] {
+            if let twoFA = settings["2FA"] as? [String: Any] {
                 self.twoFactor = twoFA["Enabled"] as? Int ?? 0
             }
 

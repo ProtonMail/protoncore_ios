@@ -23,22 +23,50 @@
 import Foundation
 
 public struct TwoFA: Codable {
-
+    
     public var enabled: State
-
+    public var FIDO2: Fido2? = nil
+    
     public init(enabled: State) {
         self.enabled = enabled
     }
-
+    
     public struct State: OptionSet, Codable {
         public let rawValue: Int
-
+        
         public init(rawValue: Int) {
             self.rawValue = rawValue
         }
-
+        
         public static let off: State = []
         public static let totp = State(rawValue: 1 << 0)
         public static let webAuthn = State(rawValue: 1 << 1)
+    }
+    
+    public struct Fido2: Codable {
+        public let authenticationOptions: AuthenticationOptions
+        public let registeredKeys: [RegisteredKey]
+    }
+    
+    public struct AuthenticationOptions: Codable {
+        let publicKey: PublicKey
+    }
+    
+    public struct PublicKey: Codable {
+        public let timeout: Int
+        public let challenge: Data
+        public let userVerification: String
+        public let rpId: String
+        public let allowCredentials: [AllowedCredential]
+    }
+    public struct AllowedCredential: Codable {
+        public let id: Data
+        public let type: String
+    }
+    
+    public struct RegisteredKey: Codable {
+        public let attestationFormat: String
+        public let credentialID: Data
+        public let name: String
     }
 }
