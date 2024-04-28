@@ -39,6 +39,6 @@ public struct TwoFA: Codable {
 
         public static let off: State = []
         public static let totp = State(rawValue: 1 << 0)
-        public static let webAuthn = State(rawValue: 1 << 2)
+        public static let webAuthn = State(rawValue: 1 << 1)
     }
 }
