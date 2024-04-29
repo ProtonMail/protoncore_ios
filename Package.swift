@@ -1548,7 +1548,8 @@ add(
                            .testingToolkitUnitTestsObservability,
                            .testingToolkitUnitTestsServices
                        ],
-                       path: "libraries/Services/Tests/Unit"),
+                       path: "libraries/Services/Tests/Unit",
+                       resources: [.process("Fixtures")]),
 
         coreTestTarget(name: .services + "IntegrationTests",
                        dependencies: [

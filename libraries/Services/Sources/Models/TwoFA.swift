@@ -25,7 +25,7 @@ import Foundation
 public struct TwoFA: Codable {
     
     public var enabled: State
-    public var FIDO2: Fido2? = nil
+    public var FIDO2: Fido2?
     
     public init(enabled: State) {
         self.enabled = enabled
@@ -44,12 +44,12 @@ public struct TwoFA: Codable {
     }
     
     public struct Fido2: Codable {
-        public let authenticationOptions: AuthenticationOptions
+        public let authenticationOptions: AuthenticationOptions?
         public let registeredKeys: [RegisteredKey]
     }
     
     public struct AuthenticationOptions: Codable {
-        let publicKey: PublicKey
+        public let publicKey: PublicKey
     }
     
     public struct PublicKey: Codable {

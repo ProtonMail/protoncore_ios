@@ -1,0 +1,33 @@
+{
+  "Code": 1000,
+  "LocalID": 2,
+  "TokenType": "Bearer",
+  "AccessToken": "h2i6dztqernz2hgmcyntnvzxtosgu4cc",
+  "RefreshToken": "fr5be7icol45ddh2usvpvzpcr4rkoo3p",
+  "Scopes": [
+    "self",
+    "parent",
+    "user",
+    "twofactor",
+    "vpn"
+  ],
+  "UID": "64pq4rlei3jacm23g2spawpt3wh43c4l",
+  "UserID": "sYxACd5vkeRnCC03LpZw7Ayrm9wNuXpAmbJOb_1p9A7wjPeedwPgNz9HQmO0ZVhMHEaHlByd0tdBgt_afxsRFQ==",
+  "EventID": "20tOBO0DfsZKoZlH4XzbJOmGVXCONyZ5-EisBCA_W6y8eXoDfCJmV_3q_f4HSyoKaZeYMwFwcj-DSAa6ku1STg==",
+  "PasswordMode": 1,
+  "ServerProof": "3vyp6ZTO5TdPGWW1qKtUUNAFsOcbj3cT9nVc9pua8Tb/sYiJtrLA+HKFCOT8fVuVN5QOx/sf3DyyWbl5WIsAw0tkVX9JyzHEcPCsm8p/7NoH75HYSuS1Uhe0VDpqkKb8zKX6JMsrEZ+5gDIZyKYu30TRMjdHByA9K3VjfEFT92+uUvt5H25hHz9qlC2z794yel3oYHoGWN2uGJU59CdVi2BR0gfyFb6+NBFR4PSZtqGTNyteG6rdWdGgQPEu2D/MUDFWLdqR/zBr0NZPRodvv5qO2XUJtf824RfAmi3Lzxf/Y2jFPdZjvzGap6hsvg9FTYfQdik971fhST1/YGalbQ==",
+  "Scope": "self parent user twofactor vpn",
+  "Uid": "64pq4rlei3jacm23g2spawpt3wh43c4l",
+  "TwoFactor": 1,
+  "2FA": {
+    "Enabled": 1,
+    "FIDO2": {
+      "AuthenticationOptions": null,
+      "RegisteredKeys": [
+
+      ]
+    },
+    "TOTP": 1
+  },
+  "TemporaryPassword": 0
+}
