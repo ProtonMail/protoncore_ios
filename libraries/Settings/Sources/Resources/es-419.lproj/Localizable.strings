@@ -1,6 +1,6 @@
 "pmsettings-settings-title" = "Ajustes";
 
-"pmsettings-settings-app-settings-section" = "Ajustes de la app";
+"pmsettings-settings-app-settings-section" = "Ajustes de la aplicación";
 
 "pmsettings-settings-system-settings-section" = "Ajustes del sistema";
 
@@ -24,4 +24,4 @@
 
 "pmsettings-settings-about-terms" = "Términos de uso";
 
-"pmsettings-settings-footer" = "Versión de la app: %@";
+"pmsettings-settings-footer" = "Versión de la aplicación: %@";
