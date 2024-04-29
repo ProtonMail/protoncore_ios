@@ -58,6 +58,19 @@ final class StoreKitManagerTests: XCTestCase {
         paymentTokenStorageMock = PaymentTokenStorageMock()
     }
 
+    override func tearDown() {
+        planServiceMock = nil
+        plansDataSourceMock = nil
+        paymentsApi = nil
+        apiService = nil
+        alertManagerMock = nil
+        paymentsAlertMock = nil
+        paymentsQueue = nil
+        storeKitManagerDelegate = nil
+        paymentTokenStorageMock = nil
+        super.tearDown()
+    }
+
     // MARK: Static one-time plans tests
 
     func testPurchaseWithoutAvailableProducts() throws {

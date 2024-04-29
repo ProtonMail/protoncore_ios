@@ -363,7 +363,9 @@ extension PaymentsUICoordinator: PaymentsUIViewControllerDelegate {
         // unregister from being notified on the transactions — you will get notified via `buyPlan` completion block
         storeKitManager.stopBeingNotifiedWhenTransactionsWaitingForTheSignupAppear()
         purchaseManager.buyPlan(plan: plan, addCredits: addCredits) { [weak self] purchaseResult in
-            completionHandler()
+            if case .renewalNotification = purchaseResult {} else {
+                completionHandler()
+            }
             guard let self = self else { return }
             switch purchaseResult {
             case .planPurchaseProcessingInProgress(let inProgressPlan):
@@ -409,6 +411,8 @@ extension PaymentsUICoordinator: PaymentsUIViewControllerDelegate {
                 ObservabilityEnv.report(.planSelectionCheckoutTotal(status: .canceled,
                                                                     plan: self.getPlanNameForObservabilityPurposes(plan: plan),
                                                                     isDynamic: self.featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)))
+            case .renewalNotification:
+                break
             }
         }
     }

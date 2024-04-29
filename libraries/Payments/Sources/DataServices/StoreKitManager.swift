@@ -977,7 +977,6 @@ extension StoreKitManager: ProcessDependencies {
 
     /// Refreshes the current subscription details from BE
     func updateCurrentSubscription(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
-        // TODO: test purchase process with PlansDataSource object
         switch planService {
         case .left(let planService):
             planService.updateCurrentSubscription(success: success, failure: failure)
