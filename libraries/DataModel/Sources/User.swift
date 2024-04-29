@@ -460,7 +460,7 @@ extension UserInfo {
 
 // MARK: LockedFlags
 public struct LockedFlags: OptionSet, Codable {
-    
+
     public let rawValue: Int
 
     public static let mailStorageExceeded = LockedFlags(rawValue: 1 << 0)
@@ -468,7 +468,7 @@ public struct LockedFlags: OptionSet, Codable {
     public static let storageExceeded: LockedFlags = [.mailStorageExceeded, .driveStorageExceeded]
     public static let orgIssueForPrimaryAdmin = LockedFlags(rawValue: 1 << 2)
     public static let orgIssueForMember = LockedFlags(rawValue: 1 << 3)
-    
+
     public init(rawValue: Int) {
         self.rawValue = rawValue
     }

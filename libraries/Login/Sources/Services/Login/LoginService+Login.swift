@@ -103,7 +103,7 @@ extension LoginService {
                     switch status {
                     case let .newCredential(credential, passwordMode):
                         self.handleValidCredentials(credential: credential, passwordMode: passwordMode, mailboxPassword: nil, isSSO: true, completion: completion)
-                    case .updatedCredential, .ssoChallenge, .ask2FA:
+                    case .updatedCredential, .ssoChallenge, .ask2FA, .askFIDO2:
                         completion(.failure(.invalidState))
                     }
 
@@ -134,11 +134,15 @@ extension LoginService {
                 case let .success(status):
                     switch status {
                     case let .ask2FA(context):
-                        self.context = context
+                        self.totpContext = context
+                        PMLog.debug("Login successful but needs 2FA code")
+                        completion(.success(.ask2FA))
+                    case let .askFIDO2(context):
+                        self.fido2Context = context
                         PMLog.debug("Login successful but needs 2FA code")
                         completion(.success(.ask2FA))
                     case let .newCredential(credential, passwordMode):
-                        self.context = (credential: credential, passwordMode: passwordMode)
+                        self.totpContext = (credential: credential, passwordMode: passwordMode)
                         self.handleValidCredentials(credential: credential, passwordMode: passwordMode, mailboxPassword: password, completion: completion)
                     case .updatedCredential(let credential):
                         authManager.onSessionObtaining(credential: credential)
@@ -163,7 +167,7 @@ extension LoginService {
     public func provide2FACode(_ code: String, completion: @escaping (Result<LoginStatus, LoginError>) -> Void) {
         withAuthDelegateAvailable(completion) { authManager in
             PMLog.debug("Confirming 2FA code")
-            guard let context = self.context else {
+            guard let context = self.totpContext else {
                 completion(.failure(.invalidState))
                 return
             }
@@ -179,11 +183,15 @@ extension LoginService {
                     switch status {
                     case let .newCredential(credential, passwordMode):
                         PMLog.debug("2FA code accepted, updating the credentials context and moving further")
-                        self.context = (credential: credential, passwordMode: passwordMode)
+                        self.totpContext = (credential: credential, passwordMode: passwordMode)
                         self.handleValidCredentials(credential: credential, passwordMode: passwordMode, mailboxPassword: mailboxPassword, completion: completion)
 
                     case .ask2FA:
-                        PMLog.error("Asking afaing for 2FA code should never happen", sendToExternal: true)
+                        PMLog.error("Asking again for 2FA code should never happen", sendToExternal: true)
+                        completion(.failure(.invalidState))
+
+                    case .askFIDO2:
+                        PMLog.error("Asking for FIDO2 after 2FA code should never happen", sendToExternal: true)
                         completion(.failure(.invalidState))
 
                     case .updatedCredential(let credential):

@@ -23,6 +23,7 @@ import Foundation
 import ProtonCoreAPIClient
 import ProtonCoreCryptoGoInterface
 import ProtonCoreDataModel
+import ProtonCoreFeatureFlags
 import ProtonCoreNetworking
 import ProtonCoreServices
 
@@ -33,6 +34,7 @@ public class Authenticator: NSObject, AuthenticatorInterface {
 
     public enum Status {
         case ask2FA(TwoFactorContext)
+        case askFIDO2(FIDO2Context)
         case newCredential(Credential, PasswordMode)
         case updatedCredential(Credential)
         case ssoChallenge(SSOChallengeResponse)
@@ -148,7 +150,18 @@ public class Authenticator: NSObject, AuthenticatorInterface {
                             let context = (credential, authResponse.passwordMode)
                             completion(.success(.ask2FA(context)))
                         } else if authResponse._2FA.enabled.contains(.webAuthn) {
-                            completion(.failure(Errors.notImplementedYet("WebAuthn not implemented yet")))
+                            guard FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.fidoKeys) else {
+                                completion(.failure(Errors.notImplementedYet("WebAuthn not implemented yet")))
+                                return
+                            }
+                            guard let fido2 = authResponse._2FA.FIDO2 else {
+                                completion(.failure(Errors.emptyAuthInfoResponse))
+                                return
+                            }
+                            let credential = Credential(res: authResponse, userName: username, userID: authResponse.userID)
+                            self.apiService.setSessionUID(uid: credential.UID)
+                            let context = FIDO2Context(fido2: fido2, credential: credential)
+                            completion(.success(.askFIDO2(context)))
                         } else {
                             completion(.failure(Errors.notImplementedYet("Unknown 2FA method required")))
                         }

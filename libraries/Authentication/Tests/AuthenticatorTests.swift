@@ -36,7 +36,7 @@ import ProtonCoreCryptoGoImplementation
 #endif
 import ProtonCoreDoh
 import ProtonCoreNetworking
-import ProtonCoreServices
+@testable import ProtonCoreServices
 #if canImport(ProtonCoreTestingToolkitUnitTestsAuthentication)
 import ProtonCoreTestingToolkitUnitTestsAuthentication
 import ProtonCoreTestingToolkitUnitTestsServices
@@ -256,6 +256,69 @@ class AuthenticatorTests: XCTestCase {
         }
         waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
+        }
+    }
+
+    func testAuthenticateSuccess2FAWebAuthnWithFF() {
+        withFeatureFlags([.fidoKeys]) {
+            let manager = Authenticator(api: self.apiService)
+            let expect = self.expectation(description: "AuthInfo + Auth")
+            apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+                if path.contains("/auth/info") {
+                    completion(nil, .success(self.authInfoResponse))
+                } else if path.contains("/auth/v4") {
+                    let pk = TwoFA.PublicKey(timeout: 100,
+                                             challenge: Data([65, 66, 67]),
+                                             userVerification: "check",
+                                             rpId: "proton.me",
+                                             allowCredentials: [
+                                                TwoFA.AllowedCredential(id: Data([97, 98, 99]),
+                                                                        type: "public")
+                                             ])
+                    let fido2 = TwoFA.Fido2(authenticationOptions: TwoFA.AuthenticationOptions(publicKey: pk),
+                                            registeredKeys: [
+                                                TwoFA.RegisteredKey(attestationFormat: "packed",
+                                                                    credentialID: Data([100, 101, 102]),
+                                                                    name: "My Key")
+                                            ])
+                    let twoFA = TwoFA(enabled: .webAuthn, fido2: fido2)
+                    completion(nil, .success(self.authRouteResponse(twoFA: twoFA)))
+                } else {
+                    XCTFail()
+                    completion(nil, .success(AuthenticatorTests.emptyReponse))
+                }
+            }
+            srpAuthMock.generateProofsStub.bodyIs { _, _  in
+                return self.srpProofs
+            }
+
+            manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
+                switch result {
+                case .success(Authenticator.Status.askFIDO2(let context)):
+                    let twoFA = TwoFA(enabled: .webAuthn)
+                    let authRouteResponse = self.authRouteResponse(twoFA: twoFA)
+                    XCTAssertEqual(context.credential.UID, authRouteResponse.UID)
+                    XCTAssertEqual(context.fido2.authenticationOptions!.publicKey.challenge, Data([65, 66, 67]))
+                    XCTAssertEqual(context.fido2.authenticationOptions!.publicKey.timeout, 100)
+                    XCTAssertEqual(context.fido2.authenticationOptions!.publicKey.userVerification, "check")
+                    XCTAssertEqual(context.fido2.authenticationOptions!.publicKey.rpId, "proton.me")
+                    XCTAssertEqual(context.fido2.authenticationOptions!.publicKey.allowCredentials.count, 1)
+                    XCTAssertEqual(context.fido2.authenticationOptions!.publicKey.allowCredentials[0].id, Data([97, 98, 99]))
+                    XCTAssertEqual(context.fido2.authenticationOptions!.publicKey.allowCredentials[0].type, "public")
+
+                    XCTAssertEqual(context.fido2.registeredKeys.count, 1)
+                    XCTAssertEqual(context.fido2.registeredKeys[0].attestationFormat, "packed")
+                    XCTAssertEqual(context.fido2.registeredKeys[0].credentialID, Data([100, 101, 102]))
+                    XCTAssertEqual(context.fido2.registeredKeys[0].name, "My Key")
+
+                default:
+                    XCTFail("Wrong result")
+                }
+                expect.fulfill()
+            }
+            waitForExpectations(timeout: timeout) { (error) in
+                XCTAssertNil(error, String(describing: error))
+            }
         }
     }
 

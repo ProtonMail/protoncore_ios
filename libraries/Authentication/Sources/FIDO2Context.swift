@@ -1,6 +1,6 @@
 //
-//  LoginBasicStatus.swift
-//  ProtonCore-Authentication - Created on 21/10/2020.
+//  FIDO2Context.swift
+//  ProtonCore-Authentication - Created on 29/04/24.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -20,8 +20,11 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
+import ProtonCoreServices
+import ProtonCoreNetworking
 
-@available(*, deprecated, message: "Removing this unused enum")
-public enum LoginBasicStatus: String {
-    case loggedIn, ask2FA, askSecondPassword
+/// Holds the bits necessary for signing a FIDO2 challenge
+public struct FIDO2Context {
+    public let fido2: TwoFA.Fido2 // For now, passing everything as it's not clear what is needed
+    public let credential: Credential
 }
