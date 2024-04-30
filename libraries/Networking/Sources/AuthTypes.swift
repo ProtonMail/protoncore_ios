@@ -251,6 +251,7 @@ extension AuthCredential {
                   userID: credential.userID,
                   privateKey: nil,
                   passwordKeySalt: nil)
+        update(password: credential.mailboxPassword)
     }
 
     public func updatedKeepingKeyAndPasswordDataIntact(credential: Credential) -> AuthCredential {
@@ -281,10 +282,24 @@ public struct Credential: Equatable {
     public var scope: Scopes { scopes }
     public var scopes: Scopes
 
+    // This is either User Password (1-Password mode) or Mailbox Password (2-Password mode)
+    public var mailboxPassword: String = ""
+
     public var hasFullScope: Bool { scopes.contains("full") }
 
     public var isForUnauthenticatedSession: Bool { userID.isEmpty }
 
+    public init(UID: String, accessToken: String, refreshToken: String, userName: String, userID: String, scopes: Scopes, mailboxPassword: String) {
+        self.UID = UID
+        self.accessToken = accessToken
+        self.refreshToken = refreshToken
+        self.userName = userName
+        self.userID = userID
+        self.scopes = scopes
+        self.mailboxPassword = mailboxPassword
+    }
+
+    @available(*, deprecated, message: "Please use the init method with mailboxPassword")
     public init(UID: String, accessToken: String, refreshToken: String, userName: String, userID: String, scopes: Scopes) {
         self.UID = UID
         self.accessToken = accessToken
@@ -346,7 +361,8 @@ extension Credential {
                   refreshToken: authCredential.refreshToken,
                   userName: authCredential.userName,
                   userID: authCredential.userID,
-                  scopes: [])
+                  scopes: [],
+                  mailboxPassword: authCredential.mailboxpassword)
     }
 
     public init(_ authCredential: AuthCredential, scopes: Scopes) {
@@ -355,7 +371,8 @@ extension Credential {
                   refreshToken: authCredential.refreshToken,
                   userName: authCredential.userName,
                   userID: authCredential.userID,
-                  scopes: scopes)
+                  scopes: scopes,
+                  mailboxPassword: authCredential.mailboxpassword)
     }
 
     @available(*, deprecated, message: "Please use the init method with scopes")
