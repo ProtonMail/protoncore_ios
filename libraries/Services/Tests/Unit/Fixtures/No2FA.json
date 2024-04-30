@@ -1,0 +1,38 @@
+{
+  "Code": 1000,
+  "LocalID": 0,
+  "TokenType": "Bearer",
+  "AccessToken": "njiuxj42lrwfpd6thj7b6iz75fqhlotw",
+  "RefreshToken": "hi65nuslhnypegjr2z4g5vs3en3xkeeu",
+  "Scopes": [
+    "full",
+    "self",
+    "payments",
+    "keys",
+    "parent",
+    "user",
+    "loggedin",
+    "vpn",
+    "verified",
+    "settings"
+  ],
+  "UID": "kt743gnchoeuknnvxjyg36qxeqmlgjff",
+  "UserID": "sYxACd5vkeRnCC03LpZw7Ayrm9wNuXpAmbJOb_1p9A7wjPeedwPgNz9HQmO0ZVhMHEaHlByd0tdBgt_afxsRFQ==",
+  "EventID": "05Ki4tba4vWEULMVBnxAdn4mO5nIg8vL_73T8t0_xxTfAGR6GxwFB6aPdereNH6ZuK6rJKpOrDP0X7uY6iDAqA==",
+  "PasswordMode": 1,
+  "ServerProof": "1E1pQarjQuc5jLAjm5/YGgzz3EVdMKIDOV70NlcINM4mzwfoglTjkdl0wLND0zECOGSFiKdk8D8C2A5e09Yl4KQLAzDFPcLe6blD3jJ5lZfU4RNL2EFNZIWJs0BmWDugIB8h5zRJOH9WOnFR6JZQwwwEoA4ZXSPkHgJEjeycRbVfeqem5eUpzlibq+FbGtq8tpQJbojGpxZe2VBvUGiS4I8BbmjgALUPr+vy826hMSjIgHynQQzcZQDna0GuQmCPSPILK4qjTzbyPAOPtvP929gWZshV+495xiw9fONo/h1YAf8JgClLflM1MJ9rlbjlTmMsZnGRRuZvrhIxerGOqQ==",
+  "Scope": "full self payments keys parent user loggedin vpn verified settings",
+  "Uid": "kt743gnchoeuknnvxjyg36qxeqmlgjff",
+  "TwoFactor": 0,
+  "2FA": {
+    "Enabled": 0,
+    "FIDO2": {
+      "AuthenticationOptions": null,
+      "RegisteredKeys": [
+
+      ]
+    },
+    "TOTP": 0
+  },
+  "TemporaryPassword": 0
+}

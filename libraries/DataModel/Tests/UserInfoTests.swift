@@ -126,8 +126,7 @@ class UserInfoTests: XCTestCase {
                 "Enabled": 0,
                 "Allowed": 3,
                 "ExpirationTime": null,
-                "U2FKeys": [],
-                "RegisteredKeys": []
+                "FIDO2": null,
             },
             "WeekStart": 0,
             "Telemetry": 1,
