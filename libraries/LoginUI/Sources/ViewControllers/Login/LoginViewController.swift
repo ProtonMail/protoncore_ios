@@ -258,6 +258,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
             self?.view.isUserInteractionEnabled = !isLoading
             self?.signInButton.isSelected = isLoading
         }
+        viewModel.challenge.reset()
         try? self.loginTextField.setUpChallenge(viewModel.challenge, type: .username)
 
         NotificationCenter.default

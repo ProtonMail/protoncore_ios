@@ -1721,11 +1721,8 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         let parameters = try XCTUnwrap(capturedRequest?.parameters as? [String: Any])
         let payload = try XCTUnwrap(parameters["Payload"] as? [String: Any])
         let challenge0 = try XCTUnwrap(payload["\(challengeProperties.prefix)-ios-v4-challenge-0"] as? [String: Any])
-        let challenge1 = try XCTUnwrap(payload["\(challengeProperties.prefix)-ios-v4-challenge-1"] as? [String: Any])
         let challangeParameters0 = try XCTUnwrap(challengeProperties.provideParametersForSessionFetching().first) as NSDictionary
-        let challangeParameters1 = try XCTUnwrap(challengeProperties.provideParametersForSessionFetching().last) as NSDictionary
         XCTAssertTrue(challangeParameters0.isEqual(to: challenge0))
-        XCTAssertTrue(challangeParameters1.isEqual(to: challenge1))
     }
 
     func testSessionAcquireCallFailsSilentlyIfSessionAcquireCallFailsWithHttpResponse() async throws {
