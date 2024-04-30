@@ -219,6 +219,9 @@ class AuthenticatorMockTests: XCTestCase {
                             expect.fulfill()
                         }
                     }
+                case .askFIDO2:
+                        // TBC in CP-7952
+                    break
                 case .ssoChallenge:
                     XCTFail("Not expected here")
                     expect.fulfill()

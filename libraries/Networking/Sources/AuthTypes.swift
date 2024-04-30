@@ -519,6 +519,7 @@ public enum AuthErrors: Error {
     case wrongPassword
     case switchToSSOError
     case switchToSRPError
+    case insufficientFIDO2Details
 
     // case serverError(NSError) <- This case was removed. Use networkingError instead. If you're logic depends on previously available NSError, use .underlyingError property.
     // In case you wonder why I'm writing a comment and not use @available(*, unavailable): it's because at the time of writing,
@@ -527,7 +528,7 @@ public enum AuthErrors: Error {
     public var underlyingError: NSError {
         switch self {
         case .emptyAuthResponse, .emptyAuthInfoResponse, .emptyServerSrpAuth, .wrongPassword,
-             .emptyClientSrpAuth, .emptyUserInfoResponse, .wrongServerProof, .notImplementedYet, .switchToSSOError, .switchToSRPError:
+                .emptyClientSrpAuth, .emptyUserInfoResponse, .wrongServerProof, .notImplementedYet, .switchToSSOError, .switchToSRPError, .insufficientFIDO2Details:
             return self as NSError
         case .addressKeySetupError(let error), .parsingError(let error):
             return error as NSError
@@ -539,7 +540,7 @@ public enum AuthErrors: Error {
     public var codeInNetworking: Int {
         switch self {
         case .emptyAuthResponse, .emptyAuthInfoResponse, .emptyServerSrpAuth, .wrongPassword,
-             .emptyClientSrpAuth, .emptyUserInfoResponse, .wrongServerProof, .notImplementedYet, .switchToSSOError, .switchToSRPError:
+                .emptyClientSrpAuth, .emptyUserInfoResponse, .wrongServerProof, .notImplementedYet, .switchToSSOError, .switchToSRPError, .insufficientFIDO2Details:
             return (self as NSError).code
         case .addressKeySetupError(let error), .parsingError(let error):
             return (error as NSError).code
@@ -550,7 +551,7 @@ public enum AuthErrors: Error {
 
     public var localizedDescription: String {
         switch self {
-        case .emptyAuthResponse, .emptyAuthInfoResponse, .emptyServerSrpAuth, .emptyClientSrpAuth, .emptyUserInfoResponse, .wrongServerProof, .wrongPassword, .switchToSSOError, .switchToSRPError:
+        case .emptyAuthResponse, .emptyAuthInfoResponse, .emptyServerSrpAuth, .emptyClientSrpAuth, .emptyUserInfoResponse, .wrongServerProof, .wrongPassword, .switchToSSOError, .switchToSRPError, .insufficientFIDO2Details:
             return (self as NSError).localizedDescription
         case .addressKeySetupError(let error), .parsingError(let error):
             return error.localizedDescription
@@ -572,7 +573,7 @@ public enum AuthErrors: Error {
 extension AuthErrors: LocalizedError {
     public var errorDescription: String? {
         switch self {
-        case .emptyAuthResponse, .emptyAuthInfoResponse, .emptyServerSrpAuth, .emptyClientSrpAuth, .emptyUserInfoResponse, .wrongServerProof, .wrongPassword, .switchToSSOError, .switchToSRPError:
+        case .emptyAuthResponse, .emptyAuthInfoResponse, .emptyServerSrpAuth, .emptyClientSrpAuth, .emptyUserInfoResponse, .wrongServerProof, .wrongPassword, .switchToSSOError, .switchToSRPError, .insufficientFIDO2Details:
             return "Authentication error"
         case .addressKeySetupError(let error), .parsingError(let error):
             return error.localizedDescription
