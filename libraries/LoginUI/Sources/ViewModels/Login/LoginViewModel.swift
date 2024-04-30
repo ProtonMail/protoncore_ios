@@ -85,7 +85,7 @@ final class LoginViewModel {
 
         let userFrame = ["name": "username"]
         let challengeData = self.challenge.export()
-            .allFingerprintDict()
+            .signupFingerprintDict()
             .first(where: { $0["frame"] as? [String: String] == userFrame })
         let intent: Intent = isSsoUIEnabled ? .sso : .auto
 

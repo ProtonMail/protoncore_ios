@@ -47,13 +47,8 @@ final class PMChallengeTests: XCTestCase {
         XCTAssertTrue(addr1 != addr2)
     }
 
-    func testStorageCapacity() {
-        let capacity = FileManager.deviceCapacity()
-        XCTAssertNotNil(capacity, "Capacity is nil, find another way to fetch it")
-    }
-
-    func testIsJailbreak() {
-        let isJailbreak = FileManager.isJailbreak()
+    func testIsJailbroken() {
+        let isJailbreak = FileManager.isJailbroken()
         XCTAssertNotNil(isJailbreak, "isJailbreak is nil, find another way to fetch it")
     }
 
@@ -67,33 +62,46 @@ final class PMChallengeTests: XCTestCase {
         XCTAssertEqual(interceptor?.type, PMChallenge.TextFieldType.username, "TextField type is not equal")
     }
 
-    func testChallengeFetchValue() {
+    func testDeviceFingerprintGenerate() throws {
         final class TestDevice: UIDevice {
             override var name: String { "test device" }
         }
-        var challenge = PMChallenge.Challenge()
+
         let device = TestDevice()
         let locale = Locale(identifier: "en_US")
         let timeZone = TimeZone(identifier: "Europe/Zurich")!
-        challenge.fetchValues(device: device, locale: locale, timeZone: timeZone)
-        XCTAssertEqual(challenge.deviceFingerprint.deviceName, "test device".rollingHash(), "device name")
-        XCTAssertEqual(challenge.deviceFingerprint.appLang, "en", "app lang")
-        XCTAssertEqual(challenge.deviceFingerprint.regionCode, "US", "region code")
-        XCTAssertEqual(challenge.deviceFingerprint.timezone, "Europe/Zurich", "timezone")
-        XCTAssertEqual(challenge.deviceFingerprint.timezoneOffset, -1 * (timeZone.secondsFromGMT() / 60), "timezone offset")
-        XCTAssertNotEqual(challenge.deviceFingerprint.keyboards, [], "keyboard")
+        let testUserDefault = try XCTUnwrap(UserDefaults(suiteName: "a.b.c"))
+        testUserDefault.set(["en_US@sw=QWERTY;hw=Automatic"], forKey: "AppleKeyboards")
+        let deviceFingerprint = PMChallenge.Challenge.DeviceFingerprint.generate(
+            device: device,
+            locale: locale,
+            timeZone: timeZone,
+            userDefaults: testUserDefault
+        )
+        XCTAssertEqual(deviceFingerprint.deviceName, "test device".rollingHash(), "device name")
+        XCTAssertEqual(deviceFingerprint.appLang, "en", "app lang")
+        XCTAssertEqual(deviceFingerprint.regionCode, "US", "region code")
+        XCTAssertEqual(deviceFingerprint.timezone, "Europe/Zurich", "timezone")
+        XCTAssertEqual(deviceFingerprint.timezoneOffset, -1 * (timeZone.secondsFromGMT() / 60), "timezone offset")
+        XCTAssertNotEqual(deviceFingerprint.keyboards, [], "keyboard")
     }
 
-    func testChallengeFetchValueDictionary() {
+    func testDeviceFingerprintDictionary() throws {
         final class TestDevice: UIDevice {
             override var name: String { "test device" }
         }
-        var challenge = PMChallenge.Challenge()
         let device = TestDevice()
         let locale = Locale(identifier: "en_US")
         let timeZone = TimeZone(identifier: "Europe/Zurich")!
-        challenge.fetchValues(device: device, locale: locale, timeZone: timeZone)
-        let dictionary = try? challenge.asDictionary()
+        let testUserDefault = try XCTUnwrap(UserDefaults(suiteName: "a.b.c"))
+        testUserDefault.set(["en_US@sw=QWERTY;hw=Automatic"], forKey: "AppleKeyboards")
+        let deviceFingerprint = PMChallenge.Challenge.DeviceFingerprint.generate(
+            device: device,
+            locale: locale,
+            timeZone: timeZone,
+            userDefaults: testUserDefault
+        )
+        let dictionary = try? deviceFingerprint.asDictionary(addVersion: true)
         XCTAssertEqual(dictionary?["deviceName"] as? Int, "test device".rollingHash(), "device name")
         XCTAssertEqual(dictionary?["appLang"] as? String, "en", "app lang")
         XCTAssertEqual(dictionary?["regionCode"] as? String, "US", "region code")
@@ -111,16 +119,9 @@ final class PMChallengeTests: XCTestCase {
         XCTAssertNotNil(dictionary?["v"] as? String, "version")
     }
 
-    func testChallengeExport() {
-        var challenge = PMChallenge.Challenge()
-        challenge.fetchValues()
-
-        XCTAssertNoThrow(try challenge.asString())
-        XCTAssertNoThrow(try challenge.asDictionary())
-    }
-
     func testTypeUsername() {
         let challenge = PMChallenge.shared()
+        challenge.reset()
         let textField = PMTextField()
         let gr = UIGestureRecognizer()
         XCTAssertNoThrow(try textField.setUpChallenge(challenge, type: .username))
@@ -153,7 +154,7 @@ final class PMChallengeTests: XCTestCase {
             _ = interceptor.textField?.delegate?.textFieldShouldEndEditing?(textField.textField)
             _ = interceptor.textField?.delegate?.textFieldDidEndEditing?(textField.textField)
 
-            let dictArray = PMChallenge.shared().export().allFingerprintDict()
+            let dictArray = PMChallenge.shared().export().signupFingerprintDict()
             guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"), let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
                 XCTFail("username, or recovery frame not found")
                 return
@@ -198,6 +199,7 @@ final class PMChallengeTests: XCTestCase {
 
     func testPasteUsername() {
         let challenge = PMChallenge.shared()
+        challenge.reset()
         let textField = PMTextField()
         XCTAssertNoThrow(try textField.setUpChallenge(challenge, type: .username))
         guard let interceptor = challenge.getInterceptor(textField: textField.textField) else {
@@ -228,7 +230,7 @@ final class PMChallengeTests: XCTestCase {
             _ = interceptor.textField?.delegate?.textFieldShouldEndEditing?(textField.textField)
             _ = interceptor.textField?.delegate?.textFieldDidEndEditing?(textField.textField)
 
-            let dictArray = PMChallenge.shared().export().allFingerprintDict()
+            let dictArray = PMChallenge.shared().export().signupFingerprintDict()
             guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"), let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
                 XCTFail("username, or recovery frame not found")
                 return
@@ -305,7 +307,7 @@ final class PMChallengeTests: XCTestCase {
             _ = interceptor.textField?.delegate?.textFieldShouldEndEditing?(textField.textField)
             _ = interceptor.textField?.delegate?.textFieldDidEndEditing?(textField.textField)
 
-            let dictArray = PMChallenge.shared().export().allFingerprintDict()
+            let dictArray = PMChallenge.shared().export().signupFingerprintDict()
             guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"), let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
                 XCTFail("username, or recovery frame not found")
                 return
@@ -382,7 +384,7 @@ final class PMChallengeTests: XCTestCase {
             _ = interceptor.textField?.delegate?.textFieldShouldEndEditing?(textField.textField)
             _ = interceptor.textField?.delegate?.textFieldDidEndEditing?(textField.textField)
 
-            let dictArray = PMChallenge.shared().export().allFingerprintDict()
+            let dictArray = PMChallenge.shared().export().signupFingerprintDict()
             guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"), let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
                 XCTFail("username, or recovery frame not found")
                 return
@@ -427,6 +429,7 @@ final class PMChallengeTests: XCTestCase {
 
     func testTypeUsernameAndRecovery() {
         let challenge = PMChallenge.shared()
+        challenge.reset()
         let usernameTextField = PMTextField()
         let recoveryMailTextField = PMTextField()
         let usernameGr = UIGestureRecognizer()
@@ -481,7 +484,7 @@ final class PMChallengeTests: XCTestCase {
                 _ = recoveryMailInterceptor.textField?.delegate?.textFieldShouldEndEditing?(recoveryMailTextField.textField)
                 _ = recoveryMailInterceptor.textField?.delegate?.textFieldDidEndEditing?(recoveryMailTextField.textField)
 
-                let dictArray = PMChallenge.shared().export().allFingerprintDict()
+                let dictArray = PMChallenge.shared().export().signupFingerprintDict()
                 guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"), let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
                     XCTFail("username, or recovery frame not found")
                     return
@@ -525,21 +528,14 @@ final class PMChallengeTests: XCTestCase {
         }
     }
 
-    func test_allFingerprintDict_keysSet() {
-        let dictArray = PMChallenge.shared().export().allFingerprintDict()
-        guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"),
-              let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
-            XCTFail("username, or recovery frame not found")
-            return
-        }
-        let nameDict = dictArray[nameIndex]
-        let recoveryDict = dictArray[recoveryIndex]
-        XCTAssertEqual(nameDict.keysSet, Set(["isDarkmodeOn", "deviceName", "appLang", "keydownUsername", "timezone", "uuid", "regionCode", "copyUsername", "frame", "pasteUsername", "keyboards", "storageCapacity", "isJailbreak", "v", "timeUsername", "clickUsername", "preferredContentSize", "cellulars", "timezoneOffset"]))
-        XCTAssertEqual(recoveryDict.keysSet, Set(["isDarkmodeOn", "deviceName", "appLang", "timezone", "uuid", "regionCode", "frame", "keyboards", "storageCapacity", "isJailbreak", "clickRecovery", "timeRecovery", "pasteRecovery", "v", "preferredContentSize", "cellulars", "keydownRecovery", "timezoneOffset", "copyRecovery"]))
+    func test_deviceFingerprintDict_keysSet() throws {
+        let dict = try PMChallenge.Challenge.DeviceFingerprint.generate().asDictionary()
+
+        XCTAssertEqual(dict.keysSet, Set(["preferredContentSize", "appLang", "deviceName", "isJailbreak", "isDarkmodeOn", "uuid", "timezone", "cellulars", "timezoneOffset", "regionCode", "keyboards"]))
     }
 
-    func test_deviceFingerprintDict_keysSet() {
-        let dictArray = PMChallenge.shared().export().deviceFingerprintDict()
+    func test_signupFingerprintDict_keysSet() {
+        let dictArray = PMChallenge.shared().export().signupFingerprintDict()
         guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"),
               let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
             XCTFail("username, or recovery frame not found")
@@ -547,25 +543,13 @@ final class PMChallengeTests: XCTestCase {
         }
         let nameDict = dictArray[nameIndex]
         let recoveryDict = dictArray[recoveryIndex]
-        XCTAssertEqual(nameDict.keysSet, Set(["preferredContentSize", "appLang", "storageCapacity", "deviceName", "isJailbreak", "isDarkmodeOn", "frame", "uuid", "timezone", "cellulars", "timezoneOffset", "regionCode", "keyboards"]))
-        XCTAssertEqual(recoveryDict.keysSet, Set(["preferredContentSize", "appLang", "storageCapacity", "deviceName", "isJailbreak", "isDarkmodeOn", "frame", "uuid", "timezone", "cellulars", "timezoneOffset", "regionCode", "keyboards"]))
-    }
-
-    func test_behaviouralFingerprintDict_keysSet() {
-        let dictArray = PMChallenge.shared().export().behaviouralFingerprintDict()
-        guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"),
-              let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
-            XCTFail("username, or recovery frame not found")
-            return
-        }
-        let nameDict = dictArray[nameIndex]
-        let recoveryDict = dictArray[recoveryIndex]
-        XCTAssertEqual(nameDict.keysSet, Set(["pasteUsername", "v", "frame", "clickUsername", "keydownUsername", "timeUsername", "copyUsername"]))
-        XCTAssertEqual(recoveryDict.keysSet, Set(["pasteRecovery", "v", "frame", "clickRecovery", "timeRecovery", "copyRecovery", "keydownRecovery"]))
+        let deviceDict = ["timezone", "keyboards", "preferredContentSize", "isDarkmodeOn", "regionCode", "uuid", "deviceName", "isJailbreak", "cellulars", "timezoneOffset", "appLang"]
+        XCTAssertEqual(nameDict.keysSet, Set(["pasteUsername", "v", "frame", "clickUsername", "keydownUsername", "timeUsername", "copyUsername"] + deviceDict))
+        XCTAssertEqual(recoveryDict.keysSet, Set(["pasteRecovery", "v", "frame", "clickRecovery", "timeRecovery", "copyRecovery", "keydownRecovery"] + deviceDict))
     }
 
     func test_deviceFingerprintDict_keysValue() {
-        let dictArray = PMChallenge.shared().export().deviceFingerprintDict()
+        let dictArray = PMChallenge.shared().export().signupFingerprintDict()
         guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username") else {
             XCTFail("username, or recovery frame not found")
             return
@@ -590,7 +574,7 @@ final class PMChallengeTests: XCTestCase {
     }
 
     func test_behaviouralFingerprintDict_keysValue() {
-        let dictArray = PMChallenge.shared().export().behaviouralFingerprintDict()
+        let dictArray = PMChallenge.shared().export().signupFingerprintDict()
         guard let nameIndex = self.findIndex(dictArray: dictArray, frameName: "username"),
               let recoveryIndex = self.findIndex(dictArray: dictArray, frameName: "recovery") else {
             XCTFail("username, or recovery frame not found")
@@ -599,7 +583,7 @@ final class PMChallengeTests: XCTestCase {
         let nameDict = dictArray[nameIndex]
         let recoveryDict = dictArray[recoveryIndex]
         XCTAssertEqual(nameDict["pasteUsername"] as? [String], [])
-        XCTAssertEqual(nameDict["v"] as? String, "2.0.3")
+        XCTAssertEqual(nameDict["v"] as? String, "2.1.0")
 
         XCTAssertEqual(nameDict["clickUsername"] as? Int, 0)
         XCTAssertEqual(nameDict["keydownUsername"] as? [String], [])
