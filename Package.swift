@@ -535,7 +535,10 @@ add(
                        .foundations,
                        .uiFoundations
                    ],
-                   path: "libraries/Challenge/Sources"),
+                   path: "libraries/Challenge/Sources",
+                   resources: [
+                    .process("PrivacyInfo.xcprivacy")
+                   ]),
 
         coreTestTarget(name: .challenge + "Tests",
                        dependencies: [
