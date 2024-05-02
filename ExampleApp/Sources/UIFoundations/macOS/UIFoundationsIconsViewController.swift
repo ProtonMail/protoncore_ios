@@ -235,7 +235,7 @@ final class UIFoundationsIconsViewController: NSViewController {
             (IconProvider.fileLines, "ic-file-lines", "fileLines"),
             (IconProvider.filePdf, "ic-file-pdf", "filePdf"),
             (IconProvider.fileShapes, "ic-file-shapes", "fileShapes"),
-            (IconProvider.file, "ic-file", "file"),
+            (IconProvider.file, "ic-file-empty", "file"),
             (IconProvider.filingCabinet, "ic-filing-cabinet", "filingCabinet"),
             (IconProvider.filter, "ic-filter", "filter"),
             (IconProvider.fingerprint, "ic-fingerprint", "fingerprint"),
