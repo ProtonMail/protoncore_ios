@@ -357,7 +357,7 @@ class PaymentsUIViewModel {
                             cycle: nil)
         }
 
-        if userHasNoPlan {
+        if userHasNoPlan && servicePlan.isIAPAvailable {
             let plansToShow = servicePlan.availablePlansDetails
                 .compactMap {
                     createPlan(details: $0,
@@ -418,7 +418,7 @@ class PaymentsUIViewModel {
                 completionHandler?(.success((self.plans, footerType)))
             } else {
                 // there is an other subscription type
-                if let freePlan = freePlan {
+                if let freePlan = freePlan, servicePlan.isIAPAvailable {
                     plans.append([freePlan])
                 }
                 self.plans = plans
@@ -450,7 +450,7 @@ class PaymentsUIViewModel {
                     completion(.failure(error))
                 }
             } else {
-                completion(.failure(StoreKitManagerErrors.transactionFailedByUnknownReason))
+                completion(.success)         
             }
         } failure: { error in
             completion(.failure(error))
