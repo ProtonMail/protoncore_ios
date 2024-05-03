@@ -61,7 +61,7 @@ public enum RecipientType: Int {
     case external = 2
 }
 
-public class Recipient {
+public struct Recipient: Equatable {
     public let email: String
     public let type: RecipientType
     public let activePublicKeys: [ActivePublicKey]
@@ -82,6 +82,11 @@ public class Recipient {
 public struct ActivePublicKey: Equatable {
     public let flags: KeyFlags
     public let publicKey: String
+
+    public init(flags: KeyFlags, publicKey: String) {
+        self.flags = flags
+        self.publicKey = publicKey
+    }
 }
 
 /// Message content need to be send
