@@ -160,9 +160,7 @@ class PaymentsApiV4Implementation: PaymentsApiProtocol {
 
     func buySubscriptionRequest(api: APIService,
                                 plan: PlanToBeProcessed,
-
                                 amountDue: Int,
-
                                 paymentAction: PaymentAction,
                                 isCreditingAllowed: Bool) throws -> SubscriptionRequest {
         guard Thread.isMainThread == false else {
@@ -170,22 +168,22 @@ class PaymentsApiV4Implementation: PaymentsApiProtocol {
             throw AwaitInternalError.synchronousCallPerformedFromTheMainThread
         }
         guard isCreditingAllowed else { // dynamic plans case
-            return V4SubscriptionRequest(api: api, planId: plan.protonIdentifier, amount: plan.amount, cycle: plan.cycle, paymentAction: paymentAction)
+            return V4SubscriptionRequest(api: api, planName: plan.planName, amount: plan.amount, currencyCode: plan.currencyCode, cycle: plan.cycle, paymentAction: paymentAction)
         }
         if amountDue == plan.amount {
             // if amountDue is equal to amount, request subscription
-            return V4SubscriptionRequest(api: api, planId: plan.protonIdentifier, amount: plan.amount, cycle: plan.cycle, paymentAction: paymentAction)
+            return V4SubscriptionRequest(api: api, planName: plan.planName, amount: plan.amount, currencyCode: plan.currencyCode, cycle: plan.cycle, paymentAction: paymentAction)
         } else {
             // if amountDue is not equal to amount, request credit for a full amount
             let creditReq = creditRequest(api: api, amount: plan.amount, paymentAction: paymentAction)
             _ = try creditReq.awaitResponse(responseObject: CreditResponse())
             // then request subscription for amountDue = 0
-            return V4SubscriptionRequest(api: api, planId: plan.protonIdentifier, amount: 0, cycle: plan.cycle, paymentAction: paymentAction)
+            return V4SubscriptionRequest(api: api, planName: plan.planName, amount: 0, currencyCode: plan.currencyCode, cycle: plan.cycle, paymentAction: paymentAction)
         }
     }
 
     func buySubscriptionForZeroRequest(api: APIService, plan: PlanToBeProcessed) -> SubscriptionRequest {
-        V4SubscriptionRequest(api: api, planId: plan.protonIdentifier)
+        V4SubscriptionRequest(api: api, planName: plan.planName)
     }
 
     func getSubscriptionRequest(api: APIService) -> GetSubscriptionRequest {
