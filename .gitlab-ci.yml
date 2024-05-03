@@ -34,8 +34,9 @@ variables:
 
 .set_up_simulator: &set_up_simulator
   - DEVICE_NAME=$CI_PIPELINE_ID-$CI_JOB_NAME
-  - DEVICE_OS=15.5
-  - xcrun simctl create $DEVICE_NAME "iPhone 11" iOS$DEVICE_OS
+  - DEVICE_OS=17.0.1
+  - DEVICE_RUNTIME=iOS$DEVICE_OS
+  - xcrun simctl create $DEVICE_NAME "iPhone 15" $DEVICE_RUNTIME
 
 .add_private_ssh_key: &add_private_ssh_key
   - echo "$CI_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null

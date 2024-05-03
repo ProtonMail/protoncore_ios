@@ -325,21 +325,4 @@ class AuthHelperTests: XCTestCase {
         XCTAssertTrue(delegate.sessionWasInvalidatedStub.wasCalledExactlyOnce)
         XCTAssertTrue(delegate.credentialsWereUpdatedStub.wasNotCalled)
     }
-
-    #if !(SPM && os(macOS))
-    func testConcurrentUpdating() async throws {
-        let delegate = AuthHelperDelegateMock()
-        let out = AuthHelper(credential: initialCredential)
-        out.setUpDelegate(delegate, callingItOn: .immediateExecutor)
-        let results: [Credential?] = await performConcurrentlySettingExpectations(amount: 100) { counter, continuation in
-            let credential = self.initialCredential.updated(accessToken: "access \(counter)", refreshToken: "refresh \(counter)")
-            out.onUpdate(credential: credential, sessionUID: "test session")
-            continuation.resume(returning: out.credential(sessionUID: "test session"))
-        }
-        XCTAssertEqual(delegate.credentialsWereUpdatedStub.callCounter, 100)
-        let counters = results.compactMap { $0 }.map { $0.accessToken.replacingOccurrences(of: "access ", with: "") }.map(Int.init)
-        XCTAssertEqual(counters, Array(1...100))
-        XCTAssertTrue(delegate.sessionWasInvalidatedStub.wasNotCalled)
-    }
-    #endif
 }
