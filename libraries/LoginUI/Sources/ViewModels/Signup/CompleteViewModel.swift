@@ -198,7 +198,7 @@ class CompleteViewModel {
                 switch loginStatus {
                 case .finished(let loginData):
                     completion(.success(loginData))
-                case .ask2FA, .askSecondPassword, .chooseInternalUsernameAndCreateInternalAddress, .ssoChallenge:
+                case .ask2FA, .askSecondPassword, .chooseInternalUsernameAndCreateInternalAddress, .ssoChallenge, .askFIDO2:
                     completion(.failure(LoginError.invalidState))
                 }
             case .failure(let error):

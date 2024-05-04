@@ -62,7 +62,7 @@ final class MailboxPasswordViewModel {
                         self?.finished.publish(.createAddressNeeded(data, username))
                         self?.isLoading.value = false
                     }
-                case .ask2FA, .askSecondPassword, .ssoChallenge:
+                case .ask2FA, .askSecondPassword, .ssoChallenge, .askFIDO2:
                     PMLog.error("Invalid state \(status) after entering Mailbox password", sendToExternal: true)
                     self?.error.publish(.invalidState)
                     self?.isLoading.value = false
