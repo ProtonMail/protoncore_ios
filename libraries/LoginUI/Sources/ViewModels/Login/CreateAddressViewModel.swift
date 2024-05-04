@@ -151,7 +151,7 @@ final class CreateAddressViewModel {
             switch result {
             case let .success(status):
                 switch status {
-                case .ask2FA, .askSecondPassword, .chooseInternalUsernameAndCreateInternalAddress, .ssoChallenge:
+                case .ask2FA, .askSecondPassword, .chooseInternalUsernameAndCreateInternalAddress, .ssoChallenge, .askFIDO2:
                     self?.isLoading.value = false
                 case let .finished(data):
                     self?.finished.publish(data)

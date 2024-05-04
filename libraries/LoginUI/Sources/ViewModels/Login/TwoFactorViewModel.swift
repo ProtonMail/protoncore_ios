@@ -77,8 +77,8 @@ final class TwoFactorViewModel {
                         self?.finished.publish(.createAddressNeeded(data, username))
                         self?.isLoading.value = false
                     }
-                case .ask2FA:
-                    PMLog.error("Asking for 2FA code password after successful 2FA code is an invalid state", sendToExternal: true)
+                case .ask2FA, .askFIDO2:
+                    PMLog.error("Asking for 2FA validation after successful 2FA validation is an invalid state", sendToExternal: true)
                     self?.error.publish(.invalidState)
                     self?.isLoading.value = false
                 case .askSecondPassword:

@@ -172,6 +172,14 @@ final class LoginCoordinator {
         navigationController?.pushViewController(twoFactorViewController, animated: true)
     }
 
+    @available(iOS 15.0, *)
+    func showKeySignature(challenge: Data, relyingPartyIdentifier: String, allowedCredentialIds: [Data]) {
+        let viewModel = Fido2ViewModel(challenge: challenge, relyingPartyIdentifier: relyingPartyIdentifier, allowedCredentialIds: allowedCredentialIds)
+        let fido2View = Fido2View(viewModel: viewModel)
+        let fido2ViewController = Fido2ViewController(rootView: fido2View)
+        navigationController?.pushViewController(fido2ViewController, animated: true)
+    }
+
     private func showMailboxPassword() {
         let mailboxPasswordViewController = UIStoryboard.instantiateInLogin(MailboxPasswordViewController.self,
                                                                      inAppTheme: customization.inAppTheme)
@@ -262,6 +270,11 @@ extension LoginCoordinator: LoginStepsDelegate {
 
     func requestTwoFactorCode(username: String, password: String) {
         showTwoFactorCode(username: username, password: password)
+    }
+
+    @available(iOS 15.0, *)
+    func requestKeySignature(challenge: Data, relyingPartyIdentifier: String, allowedCredentialIds: [Data]) {
+         showKeySignature(challenge: challenge, relyingPartyIdentifier: relyingPartyIdentifier, allowedCredentialIds: allowedCredentialIds)
     }
 
     func mailboxPasswordNeeded() {

@@ -139,8 +139,8 @@ extension LoginService {
                         completion(.success(.ask2FA))
                     case let .askFIDO2(context):
                         self.fido2Context = context
-                        PMLog.debug("Login successful but needs 2FA code")
-                        completion(.success(.ask2FA))
+                        PMLog.debug("Login successful but needs FIDO2 validation")
+                        completion(.success(.askFIDO2(context)))
                     case let .newCredential(credential, passwordMode):
                         self.totpContext = (credential: credential, passwordMode: passwordMode)
                         self.handleValidCredentials(credential: credential, passwordMode: passwordMode, mailboxPassword: password, completion: completion)

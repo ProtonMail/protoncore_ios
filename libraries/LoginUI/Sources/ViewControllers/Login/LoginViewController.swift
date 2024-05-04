@@ -33,6 +33,8 @@ import ProtonCoreTelemetry
 
 protocol LoginStepsDelegate: AnyObject {
     func requestTwoFactorCode(username: String, password: String)
+    @available(iOS 15.0, *)
+    func requestKeySignature(challenge: Data, relyingPartyIdentifier: String, allowedCredentialIds: [Data])
     func mailboxPasswordNeeded()
     func createAddressNeeded(data: CreateAddressData, defaultUsername: String?)
     func userAccountSetupNeeded()
@@ -229,6 +231,24 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
                 self?.clearAccount()
                 self?.delegate?.requestTwoFactorCode(username: username, password: password)
                 self?.measureLoginSuccess()
+            case let .fido2KeyNeeded(context):
+                self?.clearAccount()
+                guard #available(iOS 15.0, *) else {
+                    self?.showBanner(message: "FIDO2 security keys are not supported in iOS versions prior to 15.0", style: .error)
+                    self?.measureLoginFailure(httpCode: 426)
+                    return
+                }
+                guard let challenge = context.fido2.authenticationOptions?.publicKey.challenge,
+                      let relyingPartyIdentifier = context.fido2.authenticationOptions?.publicKey.rpId,
+                      let allowedCredentialIds = context.fido2.authenticationOptions?.publicKey.allowCredentials.map(\.id)
+                else {
+                    self?.showBanner(message: "We don't have details about your keys to request your FIDO2 authentication", style: .error)
+                    self?.measureLoginFailure(httpCode: 503)
+                    return
+                }
+                self?.delegate?.requestKeySignature(challenge: challenge,
+                                                    relyingPartyIdentifier: relyingPartyIdentifier,
+                                                    allowedCredentialIds: allowedCredentialIds)
             case .mailboxPasswordNeeded:
                 self?.delegate?.mailboxPasswordNeeded()
                 self?.measureLoginSuccess()

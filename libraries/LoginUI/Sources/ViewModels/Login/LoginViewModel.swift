@@ -34,6 +34,7 @@ final class LoginViewModel {
     enum LoginResult {
         case done(LoginData)
         case twoFactorCodeNeeded
+        case fido2KeyNeeded(FIDO2Context)
         case mailboxPasswordNeeded
         case createAddressNeeded(CreateAddressData, String?)
         case ssoChallenge(SSOChallengeResponse)
@@ -104,6 +105,9 @@ final class LoginViewModel {
                     self?.finished.publish(.done(data))
                 case .ask2FA:
                     self?.finished.publish(.twoFactorCodeNeeded)
+                    self?.isLoading.value = false
+                case let .askFIDO2(context):
+                    self?.finished.publish(.fido2KeyNeeded(context))
                     self?.isLoading.value = false
                 case .askSecondPassword:
                     self?.finished.publish(.mailboxPasswordNeeded)

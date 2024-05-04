@@ -49,6 +49,7 @@ public struct CreateAddressData {
 public enum LoginStatus {
     case finished(UserData)
     case ask2FA
+    case askFIDO2(FIDO2Context)
     case askSecondPassword
     case chooseInternalUsernameAndCreateInternalAddress(CreateAddressData)
     case ssoChallenge(SSOChallengeResponse)
