@@ -39,7 +39,7 @@ extension PasswordChangeView {
 
     /// The `ObservableObject` that holds the model data for this View
     @MainActor
-    public final class ViewModel: ObservableObject, PasswordValidator {
+    public final class ViewModel: ObservableObject, PasswordValidator, PasswordChangeObservability {
 
         private let passwordChangeService: PasswordChangeService?
         private let authCredential: AuthCredential?
@@ -73,6 +73,7 @@ extension PasswordChangeView {
         ) {
             self.mode = mode
             self.passwordChangeService = passwordChangeService
+            authCredential?.mailboxpassword = ""
             self.authCredential = authCredential
             self.userInfo = userInfo
             self.showingDismissButton = showingDismissButton
@@ -166,12 +167,12 @@ extension PasswordChangeView {
                         authCredential: authCredential,
                         userInfo: userInfo
                     )
-                    observabilityPasswordChangeSuccess()
+                    observabilityPasswordChangeSuccess(mode: mode, twoFAEnabled: false)
                     passwordChangeCompletion?(authCredential, userInfo)
                 } catch {
                     PMLog.error(error)
                     bannerState = .error(content: .init(message: error.localizedDescription))
-                    observabilityPasswordChangeError(error: error)
+                    observabilityPasswordChangeError(mode: mode, error: error, twoFAEnabled: false)
                 }
                 PasswordChangeModule.initialViewController?.unlockUI()
                 savePasswordIsLoading = false
@@ -224,31 +225,6 @@ extension PasswordChangeView {
             case .passwordNotEqual:
                 confirmNewPasswordFieldStyle.mode = .error
                 confirmNewPasswordFieldContent.footnote = PCTranslation.passwordNotMatchErrorDescription.l10n
-            }
-        }
-
-        private func observabilityPasswordChangeSuccess() {
-            switch mode {
-            case .singlePassword, .loginPassword:
-                ObservabilityEnv.report(.updateLoginPassword(status: .http2xx, twoFactorMode: .disabled))
-            case .mailboxPassword:
-                ObservabilityEnv.report(.updateMailboxPassword(status: .http2xx, twoFactorMode: .disabled))
-            }
-        }
-
-        private func observabilityPasswordChangeError(error: Error) {
-            let status: HTTPResponseCodeStatus
-            switch error.responseCode {
-            case .some(200...299): status = .http2xx
-            case .some(400...499): status = .http4xx
-            case .some(500...599): status = .http5xx
-            default: status = .unknown
-            }
-            switch mode {
-            case .singlePassword, .loginPassword:
-                ObservabilityEnv.report(.updateLoginPassword(status: status, twoFactorMode: .disabled))
-            case .mailboxPassword:
-                ObservabilityEnv.report(.updateMailboxPassword(status: status, twoFactorMode: .disabled))
             }
         }
     }
