@@ -174,7 +174,7 @@ final class LoginCoordinator {
 
     @available(iOS 15.0, *)
     func showKeySignature(challenge: Data, relyingPartyIdentifier: String, allowedCredentialIds: [Data]) {
-        let viewModel = Fido2ViewModel(challenge: challenge, relyingPartyIdentifier: relyingPartyIdentifier, allowedCredentialIds: allowedCredentialIds)
+        let viewModel = container.makeFido2ViewModel(challenge: challenge, relyingPartyIdentifier: relyingPartyIdentifier, allowedCredentialIds: allowedCredentialIds)
         let fido2View = Fido2View(viewModel: viewModel)
         let fido2ViewController = Fido2ViewController(rootView: fido2View)
         navigationController?.pushViewController(fido2ViewController, animated: true)

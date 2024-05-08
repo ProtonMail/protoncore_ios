@@ -1,5 +1,5 @@
 //
-//  TwoFATests.swift
+//  AuthRouteResponseTests.swift
 //  ProtonCore-Services-Tests - Created on 29/04/24.
 //
 //  Copyright (c) 2024 Proton Technologies AG
@@ -24,14 +24,14 @@ import XCTest
 @testable import ProtonCoreAuthentication
 import ProtonCoreServices
 
-class TwoFATests: XCTestCase {
+class AuthRouteResponseTests: XCTestCase {
 
     var jsonDecoder: JSONDecoder!
 
 #if SPM
-let bundle = Bundle.module
+    let bundle = Bundle.module
 #else
-let bundle = Bundle(for: type(of: self))
+    let bundle = Bundle(for: type(of: self))
 #endif
 
     override func setUp() {
@@ -47,7 +47,7 @@ let bundle = Bundle(for: type(of: self))
     func testParseAuthRouteResponseWithNoTwoFA() {
 
         guard let url = bundle.url(forResource: "No2FA", withExtension: "json"),
-        let data = try? Data(contentsOf: url) else {
+              let data = try? Data(contentsOf: url) else {
             XCTFail("Failed to read contents of fixture file")
             return
         }
@@ -66,7 +66,7 @@ let bundle = Bundle(for: type(of: self))
 
     func testParseAuthRouteResponseWithTwoFACode() {
         guard let url = bundle.url(forResource: "2FAOnly", withExtension: "json"),
-        let data = try? Data(contentsOf: url) else {
+              let data = try? Data(contentsOf: url) else {
             XCTFail("Failed to read contents of fixture file")
             return
         }
@@ -86,7 +86,7 @@ let bundle = Bundle(for: type(of: self))
     func testParseAuthRouteResponseWithTwoFACodeAndFIDO2() {
 
         guard let url = bundle.url(forResource: "2FAandFIDO2", withExtension: "json"),
-        let data = try? Data(contentsOf: url) else {
+              let data = try? Data(contentsOf: url) else {
             XCTFail("Failed to read contents of fixture file")
             return
         }
@@ -108,6 +108,5 @@ let bundle = Bundle(for: type(of: self))
         } catch {
             XCTFail("Error decoding data: \(error)")
         }
-
     }
 }

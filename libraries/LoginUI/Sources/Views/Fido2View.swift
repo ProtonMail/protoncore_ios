@@ -26,13 +26,17 @@ import ProtonCoreUIFoundations
 
 @available(iOS 15.0, *)
 public struct Fido2View: View {
-    var viewModel: Fido2ViewModel
+    @ObservedObject var viewModel: Fido2ViewModel
 
     public var body: some View {
         VStack {
             Text("Insert a security key linked to your Proton Account.")
             Link("Learn more", destination: URL(string: "https://proton.me/support/two-factor-authentication-2fa")!)
             Spacer()
+            if viewModel.isLoading {
+                ProgressView()
+                Spacer()
+            }
             PCButton(
                 style: .constant(.init(mode: .solid)),
                 content: .constant(.init(
@@ -48,9 +52,7 @@ public struct Fido2View: View {
 
 #Preview {
     if #available(iOS 15.0, *) {
-       return Fido2View(viewModel: Fido2ViewModel(challenge: Data([1, 2, 3]),
-                                            relyingPartyIdentifier: "proton.me",
-                                                 allowedCredentialIds: []))
+        return Fido2View(viewModel: Fido2ViewModel.initial)
     } else {
         return Text("🦖 This view is not available for iOS versions < 15.0")
     }
