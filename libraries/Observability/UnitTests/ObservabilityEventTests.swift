@@ -389,7 +389,22 @@ final class ObservabilityEventTests: XCTestCase {
                 "properties": {
                     "status": {
                         "type": "string",
-                        "enum": ["http2xx", "http4xx", "http5xx", "unknown"]
+                        "enum": [
+                            "http200",
+                            "http2xx",
+                            "http4xx",
+                            "http401",
+                            "http5xx",
+                            "invalidCredentials",
+                            "invalidUserName",
+                            "invalidModulusID",
+                            "invalidModulus",
+                            "cantHashPassword",
+                            "cantGenerateVerifier",
+                            "cantGenerateSRPClient",
+                            "keyUpdateFailed",
+                            "unknown"
+                        ]
                     },
                     "twoFactorMode": {
                         "type": "string",
@@ -410,11 +425,10 @@ final class ObservabilityEventTests: XCTestCase {
         "description": "Upgrade password request.",
         "additionalProperties": false
     }
-
     """
 
     func testChangePasswordUpdateLoginPasswordEvent() throws {
-        try HTTPResponseCodeStatus.allCases.forEach { status in
+        try PasswordChangeHTTPResponseCodeStatus.allCases.forEach { status in
             let issues = try validatePayloadAccordingToSchema(event: .updateLoginPassword(status: status, twoFactorMode: .enabled),
                                                               schema: ios_core_changePassword_updateLoginPassword_total_v1)
             XCTAssertEqual(issues, .noIssues)
@@ -433,7 +447,22 @@ final class ObservabilityEventTests: XCTestCase {
                 "properties": {
                     "status": {
                         "type": "string",
-                        "enum": ["http2xx", "http4xx", "http5xx", "unknown"]
+                        "enum": [
+                            "http200",
+                            "http2xx",
+                            "http4xx",
+                            "http401",
+                            "http5xx",
+                            "invalidCredentials",
+                            "invalidUserName",
+                            "invalidModulusID",
+                            "invalidModulus",
+                            "cantHashPassword",
+                            "cantGenerateVerifier",
+                            "cantGenerateSRPClient",
+                            "keyUpdateFailed",
+                            "unknown"
+                        ]
                     },
                     "twoFactorMode": {
                         "type": "string",
@@ -457,7 +486,7 @@ final class ObservabilityEventTests: XCTestCase {
     """
 
     func testChangePasswordUpdateMailboxPasswordEvent() throws {
-        try HTTPResponseCodeStatus.allCases.forEach { status in
+        try PasswordChangeHTTPResponseCodeStatus.allCases.forEach { status in
             let issues = try validatePayloadAccordingToSchema(event: .updateMailboxPassword(status: status, twoFactorMode: .enabled),
                                                               schema: ios_core_changePassword_updateMailboxPassword_total_v1)
             XCTAssertEqual(issues, .noIssues)
