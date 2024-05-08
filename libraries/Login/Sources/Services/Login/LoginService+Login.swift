@@ -29,7 +29,7 @@ import ProtonCoreNetworking
 import ProtonCoreServices
 import ProtonCoreObservability
 
-extension LoginService {
+extension LoginService: Login {
 
     public func processResponseToken(idpEmail: String, responseToken: SSOResponseToken, completion: @escaping (Result<LoginStatus, LoginError>) -> Void) {
         if responseToken.uid != apiService.sessionUID,
@@ -210,6 +210,10 @@ extension LoginService {
                 }
             }
         }
+    }
+
+    public func provideFido2Signature(_ signature: Fido2Signature, completion: @escaping (Result<LoginStatus, LoginError>) -> Void) {
+        // TODO: CP-7943
     }
 
     public func finishLoginFlow(mailboxPassword: String, passwordMode: PasswordMode, completion: @escaping (Result<LoginStatus, LoginError>) -> Void) {

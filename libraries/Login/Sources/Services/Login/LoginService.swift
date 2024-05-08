@@ -29,7 +29,7 @@ import ProtonCoreNetworking
 import ProtonCoreServices
 import ProtonCoreFeatureFlags
 
-public final class LoginService: Login {
+public final class LoginService {
 
     public typealias AuthenticationManager = AuthenticatorInterface & AuthenticatorKeyGenerationInterface
 
