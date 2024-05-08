@@ -39,8 +39,9 @@ public enum PCTranslation: TranslationsExposing {
     case settingsItem
     case accountPassword
     case currentPassword
-    case newSignInPassword
-    case confirmNewSignInPassword
+    case currentSignInPassword
+    case newPassword
+    case confirmNewPassword
     case newMailboxPassword
     case confirmNewMailboxPassword
     case passwordEmptyErrorDescription
@@ -71,11 +72,13 @@ public enum PCTranslation: TranslationsExposing {
         case .accountPassword:
             return localized(key: "Account password", comment: "Screen title")
         case .currentPassword:
+            return localized(key: "Current password", comment: "TextField title")
+        case .currentSignInPassword:
             return localized(key: "Current sign-in password", comment: "TextField title")
-        case .newSignInPassword:
-            return localized(key: "New sign-in password", comment: "TextField title")
-        case .confirmNewSignInPassword:
-            return localized(key: "Confirm new sign-in password", comment: "TextField title")
+        case .newPassword:
+            return localized(key: "New password", comment: "TextField title")
+        case .confirmNewPassword:
+            return localized(key: "Confirm new password", comment: "TextField title")
         case .newMailboxPassword:
             return localized(key: "New mailbox password", comment: "TextField title")
         case .confirmNewMailboxPassword:

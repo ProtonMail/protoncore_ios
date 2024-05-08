@@ -73,7 +73,6 @@ extension PasswordChangeView {
         ) {
             self.mode = mode
             self.passwordChangeService = passwordChangeService
-            authCredential?.mailboxpassword = ""
             self.authCredential = authCredential
             self.userInfo = userInfo
             self.showingDismissButton = showingDismissButton
@@ -83,19 +82,19 @@ extension PasswordChangeView {
 
         func setupViews() {
             currentPasswordFieldContent = .init(
-                title: PCTranslation.currentPassword.l10n,
+                title: mode == .mailboxPassword ? PCTranslation.currentSignInPassword.l10n : PCTranslation.currentPassword.l10n,
                 isSecureEntry: true,
                 textContentType: .password
             )
 
             newPasswordFieldContent = .init(
-                title: mode == .mailboxPassword ? PCTranslation.newMailboxPassword.l10n : PCTranslation.newSignInPassword.l10n,
+                title: mode == .mailboxPassword ? PCTranslation.newMailboxPassword.l10n : PCTranslation.newPassword.l10n,
                 isSecureEntry: true,
                 textContentType: .newPassword
             )
 
             confirmNewPasswordFieldContent = .init(
-                title: mode == .mailboxPassword ? PCTranslation.confirmNewMailboxPassword.l10n : PCTranslation.confirmNewSignInPassword.l10n,
+                title: mode == .mailboxPassword ? PCTranslation.confirmNewMailboxPassword.l10n : PCTranslation.confirmNewPassword.l10n,
                 isSecureEntry: true,
                 textContentType: .newPassword
             )
