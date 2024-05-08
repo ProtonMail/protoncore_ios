@@ -1,8 +1,8 @@
 //
-//  FIDO2Context.swift
-//  ProtonCore-Authentication - Created on 29/04/24.
+//  SettingsEndpoint.swift
+//  ProtonCore-Service - Created on 02/05/2024.
 //
-//  Copyright (c) 2022 Proton Technologies AG
+//  Copyright (c) 2024 Proton Technologies AG
 //
 //  This file is part of Proton Technologies AG and ProtonCore.
 //
@@ -20,11 +20,31 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
-import ProtonCoreServices
 import ProtonCoreNetworking
 
-/// Holds the bits necessary for signing a FIDO2 challenge
-public struct FIDO2Context {
-    public let fido2: Fido2 // For now, passing everything as it's not clear what is needed
-    public let credential: Credential
+public class SettingsResponse: APIDecodableResponse {
+    public let code: Int
+    public let userSettings: UserSettings
+}
+
+public struct UserSettings: Codable {
+    public let _2FA: TwoFA  
+
+    public struct TwoFA: Codable {
+        public var enabled: State
+        public let registeredKeys: [RegisteredKey]
+
+        public init(enabled: State, registeredKeys: [RegisteredKey]) {
+            self.enabled = enabled
+            self.registeredKeys = registeredKeys
+        }
+    }
+}
+
+public final class SettingsEndpoint: Request {
+
+    public var path: String {
+        "/core/v4/settings"
+    }
+
 }

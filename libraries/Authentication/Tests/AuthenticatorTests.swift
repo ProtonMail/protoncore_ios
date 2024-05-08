@@ -93,7 +93,7 @@ class AuthenticatorTests: XCTestCase {
         public var code: Int
     }
 
-    func authRouteResponse(twoFA: TwoFA) -> AuthService.AuthRouteResponse {
+    func authRouteResponse(twoFA: AuthInfoResponse.TwoFA) -> AuthService.AuthRouteResponse {
         return AuthService.AuthRouteResponse(accessToken: "accessToken", tokenType: "tokenType", refreshToken: "refreshToken", scopes: ["Scope"], UID: "UID", userID: "userID", eventID: "eventID", serverProof: AuthenticatorTests.exampleServerProof, passwordMode: PasswordMode.one, _2FA: twoFA)
     }
 
@@ -152,7 +152,7 @@ class AuthenticatorTests: XCTestCase {
             if path.contains("/auth/info") {
                 completion(nil, .success(self.authInfoResponse))
             } else if path.contains("/auth/v4") {
-                let twoFA = TwoFA(enabled: .off)
+                let twoFA = AuthInfoResponse.TwoFA(enabled: .off)
                 completion(nil, .success(self.authRouteResponse(twoFA: twoFA)))
             } else {
                 XCTFail()
@@ -167,7 +167,7 @@ class AuthenticatorTests: XCTestCase {
         manager.authenticate(username: username, password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .success(Authenticator.Status.newCredential(let credential, let passwordMode)):
-                let twoFA = TwoFA(enabled: .off)
+                let twoFA = AuthInfoResponse.TwoFA(enabled: .off)
                 let authRouteResponse = self.authRouteResponse(twoFA: twoFA)
                 XCTAssertEqual(credential.UID, authRouteResponse.UID)
                 XCTAssertEqual(credential.accessToken, authRouteResponse.accessToken)
@@ -193,7 +193,7 @@ class AuthenticatorTests: XCTestCase {
             if path.contains("/auth/info") {
                 completion(nil, .success(self.authInfoResponse))
             } else if path.contains("/auth/v4") {
-                let twoFA = TwoFA(enabled: .totp)
+                let twoFA = AuthInfoResponse.TwoFA(enabled: .totp)
                 completion(nil, .success(self.authRouteResponse(twoFA: twoFA)))
             } else {
                 XCTFail()
@@ -208,7 +208,7 @@ class AuthenticatorTests: XCTestCase {
         manager.authenticate(username: username, password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .success(Authenticator.Status.ask2FA(let context)):
-                let twoFA = TwoFA(enabled: .totp)
+                let twoFA = AuthInfoResponse.TwoFA(enabled: .totp)
                 let authRouteResponse = self.authRouteResponse(twoFA: twoFA)
                 XCTAssertEqual(context.credential.UID, authRouteResponse.UID)
                 XCTAssertEqual(context.credential.accessToken, authRouteResponse.accessToken)
@@ -234,7 +234,7 @@ class AuthenticatorTests: XCTestCase {
             if path.contains("/auth/info") {
                 completion(nil, .success(self.authInfoResponse))
             } else if path.contains("/auth/v4") {
-                let twoFA = TwoFA(enabled: .webAuthn)
+                let twoFA = AuthInfoResponse.TwoFA(enabled: .webAuthn)
                 completion(nil, .success(self.authRouteResponse(twoFA: twoFA)))
             } else {
                 XCTFail()
@@ -267,21 +267,21 @@ class AuthenticatorTests: XCTestCase {
                 if path.contains("/auth/info") {
                     completion(nil, .success(self.authInfoResponse))
                 } else if path.contains("/auth/v4") {
-                    let pk = TwoFA.PublicKey(timeout: 100,
+                    let pk = PublicKey(timeout: 100,
                                              challenge: Data([65, 66, 67]),
                                              userVerification: "check",
                                              rpId: "proton.me",
                                              allowCredentials: [
-                                                TwoFA.AllowedCredential(id: Data([97, 98, 99]),
+                                                AllowedCredential(id: Data([97, 98, 99]),
                                                                         type: "public")
                                              ])
-                    let fido2 = TwoFA.Fido2(authenticationOptions: TwoFA.AuthenticationOptions(publicKey: pk),
+                    let fido2 = Fido2(authenticationOptions: AuthenticationOptions(publicKey: pk),
                                             registeredKeys: [
-                                                TwoFA.RegisteredKey(attestationFormat: "packed",
+                                                RegisteredKey(attestationFormat: "packed",
                                                                     credentialID: Data([100, 101, 102]),
                                                                     name: "My Key")
                                             ])
-                    let twoFA = TwoFA(enabled: .webAuthn, fido2: fido2)
+                    let twoFA = AuthInfoResponse.TwoFA(enabled: .webAuthn, fido2: fido2)
                     completion(nil, .success(self.authRouteResponse(twoFA: twoFA)))
                 } else {
                     XCTFail()
@@ -295,7 +295,7 @@ class AuthenticatorTests: XCTestCase {
             manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
                 switch result {
                 case .success(Authenticator.Status.askFIDO2(let context)):
-                    let twoFA = TwoFA(enabled: .webAuthn)
+                    let twoFA = AuthInfoResponse.TwoFA(enabled: .webAuthn)
                     let authRouteResponse = self.authRouteResponse(twoFA: twoFA)
                     XCTAssertEqual(context.credential.UID, authRouteResponse.UID)
                     XCTAssertEqual(context.fido2.authenticationOptions!.publicKey.challenge, Data([65, 66, 67]))
@@ -339,7 +339,7 @@ class AuthenticatorTests: XCTestCase {
             if path.contains("/auth/info") {
                 completion(nil, .success(self.authInfoResponse))
             } else if path.contains("/auth/v4") {
-                completion(nil, .success(self.authRouteResponse(twoFA: TwoFA(enabled: .off))))
+                completion(nil, .success(self.authRouteResponse(twoFA: AuthInfoResponse.TwoFA(enabled: .off))))
             } else {
                 XCTFail()
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
@@ -351,7 +351,7 @@ class AuthenticatorTests: XCTestCase {
         manager.authenticate(username: username, password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .success(Authenticator.Status.newCredential(let credential, _)):
-                let authRouteResponse = self.authRouteResponse(twoFA: TwoFA(enabled: .off))
+                let authRouteResponse = self.authRouteResponse(twoFA: AuthInfoResponse.TwoFA(enabled: .off))
                 XCTAssertEqual(credential.UID, authRouteResponse.UID)
             default:
                 XCTFail("Wrong result")
@@ -381,7 +381,7 @@ class AuthenticatorTests: XCTestCase {
             if path.contains("/auth/info") {
                 completion(nil, .success(self.authInfoResponse))
             } else if path.contains("/auth/v4") {
-                completion(nil, .success(self.authRouteResponse(twoFA: TwoFA(enabled: .off))))
+                completion(nil, .success(self.authRouteResponse(twoFA: AuthInfoResponse.TwoFA(enabled: .off))))
             } else {
                 XCTFail()
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
@@ -392,7 +392,7 @@ class AuthenticatorTests: XCTestCase {
         manager.authenticate(username: username, password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
             case .success(Authenticator.Status.newCredential(let credential, _)):
-                let authRouteResponse = self.authRouteResponse(twoFA: TwoFA(enabled: .off))
+                let authRouteResponse = self.authRouteResponse(twoFA: AuthInfoResponse.TwoFA(enabled: .off))
                 XCTAssertEqual(credential.UID, authRouteResponse.UID)
             default:
                 XCTFail("Wrong result")
@@ -428,7 +428,7 @@ class AuthenticatorTests: XCTestCase {
             if path.contains("/auth/info") {
                 completion(nil, .success(self.authInfoResponse))
             } else if path.contains("/auth/v4") {
-                completion(nil, .success(self.authRouteResponse(twoFA: TwoFA(enabled: .off))))
+                completion(nil, .success(self.authRouteResponse(twoFA: AuthInfoResponse.TwoFA(enabled: .off))))
             } else {
                 XCTFail()
                 completion(nil, .success(AuthenticatorTests.emptyReponse))
@@ -809,7 +809,7 @@ class AuthenticatorTests: XCTestCase {
             if path.contains("/auth/info") {
                 completion(nil, .success(self.authInfoResponse))
             } else if path.contains("/auth/v4") {
-                let twoFA = TwoFA(enabled: .off)
+                let twoFA = AuthInfoResponse.TwoFA(enabled: .off)
                 completion(nil, .success(self.authRouteResponse(twoFA: twoFA)))
             } else {
                 XCTFail()
