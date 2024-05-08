@@ -73,7 +73,6 @@ extension PasswordChangeView {
         ) {
             self.mode = mode
             self.passwordChangeService = passwordChangeService
-            authCredential?.mailboxpassword = ""
             self.authCredential = authCredential
             self.userInfo = userInfo
             self.showingDismissButton = showingDismissButton
