@@ -50,6 +50,7 @@ public enum PCTranslation: TranslationsExposing {
     case savePassword
     case passwordRecoveryButton
     case protonPasswordDescription
+    case learnMore
 
     case tfaTitle
     case tfaCode
@@ -94,7 +95,9 @@ public enum PCTranslation: TranslationsExposing {
         case .passwordRecoveryButton:
             return localized(key: "Don't know your current password?", comment: "Action button")
         case .protonPasswordDescription:
-            return localized(key: "Proton's encryption technology means that nobody can access your password - not even us. Make sure you add a recovery method so that you can get back into your account if you forget your password. [Learn more](https://proton.me)", comment: "Password view description")
+            return localized(key: "Proton's encryption technology means that nobody can access your password - not even us. Make sure you add a recovery method so that you can get back into your account if you forget your password.", comment: "Password view description")
+        case .learnMore:
+            return localized(key: "Learn more", comment: "Hyperlink text")
         case .tfaTitle:
             return localized(key: "Two-factor authentication", comment: "Screen title")
         case .tfaCode:

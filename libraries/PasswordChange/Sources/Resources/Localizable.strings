@@ -21,7 +21,9 @@
 
 "Don't know your current password?" = "Don't know your current password?";
 
-"Proton's encryption technology means that nobody can access your password - not even us. Make sure you add a recovery method so that you can get back into your account if you forget your password. [Learn more](https://proton.me)" = "Proton's encryption technology means that nobody can access your password - not even us. Make sure you add a recovery method so that you can get back into your account if you forget your password. [Learn more](https://proton.me)";
+"Proton's encryption technology means that nobody can access your password - not even us. Make sure you add a recovery method so that you can get back into your account if you forget your password." = "Proton's encryption technology means that nobody can access your password - not even us. Make sure you add a recovery method so that you can get back into your account if you forget your password.";
+
+"Learn more" = "Learn more";
 
 "Two-factor authentication" = "Two-factor authentication";
 
