@@ -20,11 +20,33 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
+import ProtonCoreAPIClient
 import ProtonCoreServices
 import ProtonCoreNetworking
 
 /// Holds the bits necessary for signing a FIDO2 challenge
 public struct FIDO2Context {
-    public let fido2: Fido2 // For now, passing everything as it's not clear what is needed
+    public let authenticationOptions: AuthenticationOptions
     public let credential: Credential
+    public let passwordMode: PasswordMode
+}
+
+/// FIDO2 signature details provided by the key
+public struct Fido2Signature {
+    /// signed challenge
+    public let signature: Data
+    /// id of credential used to sign
+    public let credentialID: Data
+    /// data about the authenticator
+    public let authenticatorData: Data
+    /// data about the client
+    public let clientData: Data
+
+    /// Memberwise initializer
+    public init(signature: Data, credentialID: Data, authenticatorData: Data, clientData: Data) {
+        self.signature = signature
+        self.credentialID = credentialID
+        self.authenticatorData = authenticatorData
+        self.clientData = clientData
+    }
 }

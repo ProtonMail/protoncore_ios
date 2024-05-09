@@ -16,8 +16,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
 
+#if os(iOS)
+
 import Foundation
 import AuthenticationServices
+import ProtonCoreAuthentication
 import ProtonCoreLog
 import ProtonCoreLogin
 
@@ -26,6 +29,7 @@ public class Fido2ViewModel: NSObject, ObservableObject {
 
     var state: Fido2ViewModelState = .initial
     @Published var isLoading = false
+    weak var delegate: TwoFactorViewControllerDelegate?
 
     #if DEBUG
     static var initial: Fido2ViewModel = .init()
@@ -61,29 +65,33 @@ public class Fido2ViewModel: NSObject, ObservableObject {
 
         isLoading = true
         login.provideFido2Signature(signature) { [weak self] result in
-            self?.isLoading = false
             switch result {
             case let .success(status):
                 switch status {
                 case let .finished(data):
-                    // TODO: CP-7943
-                    break
+                    self?.delegate?.twoFactorViewControllerDidFinish(data: data) { [weak self] in
+                        self?.isLoading = false
+                    }
                 case let .chooseInternalUsernameAndCreateInternalAddress(data):
-                    // TODO: Need UI design for informing the user
-                    break
+                    login.availableUsernameForExternalAccountEmail(email: data.email) { [weak self] username in
+                        self?.delegate?.createAddressNeeded(data: data, defaultUsername: username)
+                        self?.isLoading = false
+                    }
                 case .ask2FA, .askFIDO2:
                     PMLog.error("Asking for 2FA validation after successful 2FA validation is an invalid state", sendToExternal: true)
-                    // TODO: Need UI design for informing the user
+                    self?.isLoading = false
+                    // TODO: CP-7953
                 case .askSecondPassword:
-                    // TODO: Need UI design for informing the user
-                    break
+                    self?.delegate?.mailboxPasswordNeeded()
+                    self?.isLoading = false
                 case .ssoChallenge:
                     PMLog.error("Receiving SSO challenge after successful 2FA code is an invalid state", sendToExternal: true)
-                    // TODO: Need UI design for informing the user
+                    self?.isLoading = false
+                    // TODO: CP-7953
                 }
             case .failure:
-                // TODO: Need UI design for informing the user
-                break
+                // TODO: CP-7953
+                self?.isLoading = false
             }
         }
     }
@@ -99,7 +107,7 @@ extension Fido2ViewModel: ASAuthorizationControllerDelegate {
             provideFido2Signature(signature)
         default:
             PMLog.error("Received unknown authorization type.")
-            // TODO: Need UI design for informing the user
+            // TODO: CP-7953
         }
     }
     public func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
@@ -113,7 +121,6 @@ extension Fido2ViewModel: ASAuthorizationControllerPresentationContextProviding 
     public func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         ASPresentationAnchor()
     }
-
 }
 
 @available(iOS 15.0, macOS 12.0, *)
@@ -131,3 +138,5 @@ enum Fido2ViewModelState {
     case initial
     case configured(login: Login, challenge: Data, relyingPartyIdentifier: String, allowedCredentials: [ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor])
 }
+
+#endif

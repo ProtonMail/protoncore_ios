@@ -150,17 +150,22 @@ public class Authenticator: NSObject, AuthenticatorInterface {
                             let context = (credential, authResponse.passwordMode)
                             completion(.success(.ask2FA(context)))
                         } else if authResponse._2FA.enabled.contains(.webAuthn) {
-                            guard FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.fidoKeys) else {
+                            guard FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.fidoKeys,
+                                                                          reloadValue: true)
+                            else {
                                 completion(.failure(Errors.notImplementedYet("WebAuthn not implemented yet")))
                                 return
                             }
-                            guard let fido2 = authResponse._2FA.FIDO2 else {
+                            guard let fido2 = authResponse._2FA.FIDO2,
+                                  let authenticationOptions = fido2.authenticationOptions else {
                                 completion(.failure(Errors.emptyAuthInfoResponse))
                                 return
                             }
                             let credential = Credential(res: authResponse, userName: username, userID: authResponse.userID)
                             self.apiService.setSessionUID(uid: credential.UID)
-                            let context = FIDO2Context(fido2: fido2, credential: credential)
+                            let context = FIDO2Context(authenticationOptions: authenticationOptions,
+                                                       credential: credential,
+                                                       passwordMode: authResponse.passwordMode)
                             completion(.success(.askFIDO2(context)))
                         } else {
                             completion(.failure(Errors.notImplementedYet("Unknown 2FA method required")))
@@ -175,8 +180,24 @@ public class Authenticator: NSObject, AuthenticatorInterface {
 
     /// Continue clear login flow with 2FA code
     public func confirm2FA(_ twoFactorCode: String,
-                           context: TwoFactorContext, completion: @escaping Completion)  {
+                           context: TwoFactorContext, completion: @escaping Completion) {
         var route = AuthService.TwoFAEndpoint(code: twoFactorCode)
+        route.auth = AuthCredential(context.credential)
+        self.apiService.perform(request: route) { (_, result: Result<AuthService.TwoFAResponse, ResponseError>) in
+            switch result {
+            case .failure(let responseError):
+                completion(.failure(.from(responseError)))
+            case .success(let response):
+                var credential = context.credential
+                credential.scopes = response.scopes
+                completion(.success(.newCredential(credential, context.passwordMode)))
+            }
+        }
+    }
+
+    /// Send FIDO2 key signature
+    public func sendFIDO2Signature(_ signature: Fido2Signature, context: FIDO2Context, completion: @escaping Completion) {
+        var route = AuthService.TwoFAEndpoint(signature: signature, authenticationOptions: context.authenticationOptions)
         route.auth = AuthCredential(context.credential)
         self.apiService.perform(request: route) { (_, result: Result<AuthService.TwoFAResponse, ResponseError>) in
             switch result {

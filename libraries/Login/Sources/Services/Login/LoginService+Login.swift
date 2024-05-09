@@ -213,7 +213,50 @@ extension LoginService: Login {
     }
 
     public func provideFido2Signature(_ signature: Fido2Signature, completion: @escaping (Result<LoginStatus, LoginError>) -> Void) {
-        // TODO: CP-7943
+        if #available(iOS 15.0, macOS 12.0, *) {
+            withAuthDelegateAvailable(completion) { authManager in
+                
+                PMLog.debug("Sending FIDO2 challenge")
+                guard let mailboxPassword = mailboxPassword,
+                      let fido2Context else {
+                    completion(.failure(.invalidState))
+                    return
+                }
+
+                manager.sendFIDO2Signature(signature, context: fido2Context) { result in
+                    switch result {
+                    case let .success(status):
+                        switch status {
+                        case let .newCredential(credential, passwordMode):
+                            PMLog.debug("2FA code accepted, updating the credentials context and moving further")
+                            self.totpContext = (credential: credential, passwordMode: passwordMode)
+                            self.handleValidCredentials(credential: credential, passwordMode: passwordMode, mailboxPassword: mailboxPassword, completion: completion)
+                            
+                        case .ask2FA:
+                            PMLog.error("Asking again for 2FA code should never happen", sendToExternal: true)
+                            completion(.failure(.invalidState))
+                            
+                        case .askFIDO2:
+                            PMLog.error("Asking for FIDO2 after 2FA code should never happen", sendToExternal: true)
+                            completion(.failure(.invalidState))
+                            
+                        case .updatedCredential(let credential):
+                            authManager.onSessionObtaining(credential: credential)
+                            self.apiService.setSessionUID(uid: credential.UID)
+                            PMLog.error("No idea how to handle updatedCredential", sendToExternal: true)
+                            completion(.failure(.invalidState))
+                        case .ssoChallenge:
+                            PMLog.error("Obtaining SSO challenge should never happen", sendToExternal: true)
+                            completion(.failure(.invalidState))
+                        }
+                    case let .failure(error):
+                        PMLog.error("Confirming 2FA code failed with \(error)", sendToExternal: true)
+                        let loginError = error.asLoginError(in2FAContext: true)
+                        completion(.failure(loginError))
+                    }
+                }
+            }
+        }
     }
 
     public func finishLoginFlow(mailboxPassword: String, passwordMode: PasswordMode, completion: @escaping (Result<LoginStatus, LoginError>) -> Void) {

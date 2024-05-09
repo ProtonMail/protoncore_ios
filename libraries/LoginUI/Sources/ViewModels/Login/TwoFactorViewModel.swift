@@ -31,13 +31,7 @@ final class TwoFactorViewModel {
         case recoveryCode
     }
 
-    enum TwoFactorResult {
-        case done(LoginData)
-        case mailboxPasswordNeeded
-        case createAddressNeeded(CreateAddressData, String?)
-    }
-
-    // MARK: - Properties
+     // MARK: - Properties
 
     let finished = Publisher<TwoFactorResult>()
     let error = Publisher<LoginError>()

@@ -412,22 +412,3 @@ public extension Login {
     }
 }
 
-/// FIDO2 signature details provided by the key
-public struct Fido2Signature {
-    /// signed challenge
-    public let signature: Data
-    /// id of credential used to sign
-    public let credentialID: Data
-    /// data about the authenticator
-    public let authenticatorData: Data
-    /// data about the client
-    public let clientData: Data
-
-    /// Memberwise initializer
-    public init(signature: Data, credentialID: Data, authenticatorData: Data, clientData: Data) {
-        self.signature = signature
-        self.credentialID = credentialID
-        self.authenticatorData = authenticatorData
-        self.clientData = clientData
-    }
-}

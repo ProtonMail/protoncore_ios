@@ -98,7 +98,7 @@ public class LoginMock: Login {
     }
 
     @FuncStub(Login.provideFido2Signature) public var provideFido2SignatureStub
-    public func provideFido2Signature(_ signature: ProtonCoreLogin.Fido2Signature, completion: @escaping (Result<ProtonCoreLogin.LoginStatus, ProtonCoreLogin.LoginError>) -> Void) {
+    public func provideFido2Signature(_ signature: Fido2Signature, completion: @escaping (Result<ProtonCoreLogin.LoginStatus, ProtonCoreLogin.LoginError>) -> Void) {
         provideFido2SignatureStub(signature, completion)
     }
 

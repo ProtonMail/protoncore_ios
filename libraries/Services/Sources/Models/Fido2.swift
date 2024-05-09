@@ -61,4 +61,3 @@ public struct RegisteredKey: Codable {
     public let credentialID: Data
     public let name: String
 }
-
