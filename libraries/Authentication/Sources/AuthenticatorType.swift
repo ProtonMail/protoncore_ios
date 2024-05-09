@@ -33,6 +33,8 @@ public protocol AuthenticatorInterface {
 
     func confirm2FA(_ twoFactorCode: String, context: TwoFactorContext, completion: @escaping Authenticator.Completion)
 
+    func sendFIDO2Signature(_ signature: Fido2Signature, context: FIDO2Context, completion: @escaping Authenticator.Completion)
+
     func refreshCredential(_ oldCredential: Credential, completion: @escaping Authenticator.Completion)
 
     func checkAvailableUsernameWithoutSpecifyingDomain(_ username: String, completion: @escaping (Result<(), AuthErrors>) -> Void)

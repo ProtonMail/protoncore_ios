@@ -175,6 +175,7 @@ final class LoginCoordinator {
     @available(iOS 15.0, *)
     func showKeySignature(challenge: Data, relyingPartyIdentifier: String, allowedCredentialIds: [Data]) {
         let viewModel = container.makeFido2ViewModel(challenge: challenge, relyingPartyIdentifier: relyingPartyIdentifier, allowedCredentialIds: allowedCredentialIds)
+        viewModel.delegate = self
         let fido2View = Fido2View(viewModel: viewModel)
         let fido2ViewController = Fido2ViewController(rootView: fido2View)
         navigationController?.pushViewController(fido2ViewController, animated: true)
@@ -439,7 +440,7 @@ extension LoginCoordinator: TwoFactorViewControllerDelegate {
         popAndShowError(error: error)
     }
 
-    func twoFactorViewControllerDidFinish(endLoading: @escaping () -> Void, data: LoginData) {
+    func twoFactorViewControllerDidFinish(data: ProtonCoreLogin.LoginData, endLoading: @escaping () -> Void) {
         finish(endLoading: endLoading, data: data)
     }
 }
