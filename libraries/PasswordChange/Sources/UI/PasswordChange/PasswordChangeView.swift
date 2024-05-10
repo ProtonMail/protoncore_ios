@@ -31,6 +31,8 @@ public struct PasswordChangeView: View {
 
     @State var saveButtonIsEnabled = false
 
+    private let urlRecoveryMethods = URL(string: "https://proton.me/support/set-account-recovery-methods")!
+
     enum Constants {
         static let iconImageSize: CGFloat = 20
         static let iconButtonSize: CGFloat = 40
@@ -52,10 +54,16 @@ public struct PasswordChangeView: View {
         ScrollView {
             VStack(spacing: 40) {
                 VStack(spacing: 30) {
-                    Text(.init(PCTranslation.protonPasswordDescription.l10n))
-                    .font(.subheadline)
-                    .foregroundColor(ColorProvider.TextWeak)
-                    .accentColor(ColorProvider.TextAccent)
+                    Link(destination: urlRecoveryMethods, label: {
+                        (Text(PCTranslation.protonPasswordDescription.l10n + " ") +
+                         Text(PCTranslation.learnMore.l10n)
+                            .foregroundColor(ColorProvider.TextAccent)
+                        )
+                        .multilineTextAlignment(.leading)
+                        .font(.subheadline)
+                        .foregroundColor(ColorProvider.TextWeak)
+                    })
+
                     PCTextField(
                         style: $viewModel.currentPasswordFieldStyle,
                         content: $viewModel.currentPasswordFieldContent
