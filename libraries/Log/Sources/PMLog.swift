@@ -198,6 +198,10 @@ public class PMLog {
         data: [String: Any]?
     ) {
         guard !isRunningTests else { return }
+        if let isExternalLogEnabled, !isExternalLogEnabled() {
+            // App disabled external logging
+            return
+        }
         guard let externalLog else {
             assertionFailure("ProtonCore logger not initialized. Please use PMLog.setEnvironment(...) in the ProtonCore initialization.")
             return
