@@ -45,7 +45,9 @@ open class ProtonCoreBaseTestCase: CoreTestCase {
     public var dynamicDomain: String? {
         // Using `testBundle` or the specified bundle to fetch the domain from Info.plist
         let bundle = bundleIdentifier.flatMap { Bundle(identifier: $0) } ?? Bundle.testBundle
-        return bundle.object(forInfoDictionaryKey: "DYNAMIC_DOMAIN") as? String
+        let domain = bundle.object(forInfoDictionaryKey: "DYNAMIC_DOMAIN") as? String
+        guard let domain, !domain.isEmpty else { return nil }
+        return domain
     }
 
     open var host: String? { dynamicDomain.map { "https://\($0)" } }
