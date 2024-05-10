@@ -22,8 +22,10 @@
 
 @testable import ProtonCoreFeatureFlags
 import ProtonCoreUtilities
+import ProtonCoreNetworking
 #if canImport(ProtonCoreTestingToolkitUnitTestsServices)
 import ProtonCoreTestingToolkitUnitTestsServices
+import ProtonCoreTestingToolkitUnitTestsNetworking
 #else
 import ProtonCoreTestingToolkit
 #endif
@@ -65,7 +67,10 @@ final class FeatureFlagsTests: XCTestCase {
         let localDataSource = Atomic<LocalFeatureFlagsDataSourceProtocol>(
             DefaultLocalFeatureFlagsDatasource(userDefaults: featureFlagUserDefaults)
         )
-        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(DefaultRemoteFeatureFlagsDataSourceMock()))
+
+        let remoteFeatureFlagsDataSourceMock = DefaultRemoteFeatureFlagsDataSourceMock()
+        remoteFeatureFlagsDataSourceMock.userID = userId
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(remoteFeatureFlagsDataSourceMock))
 
         // When
         sut.updateLocalDataSource(localDataSource)
@@ -199,15 +204,15 @@ final class FeatureFlagsTests: XCTestCase {
             )]
         )
 
-        let apiService = APIServiceMock()
-        apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-            completion(nil, .success(flagResponse))
-        }
-        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(DefaultRemoteFeatureFlagsDataSourceMock()))
+        let defaultRemoteFeatureFlagsDataSourceMock = DefaultRemoteFeatureFlagsDataSourceMock()
+        defaultRemoteFeatureFlagsDataSourceMock.userID = userId
+        defaultRemoteFeatureFlagsDataSourceMock.featureFlagResponse = flagResponse
+
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(defaultRemoteFeatureFlagsDataSourceMock))
 
         // When
         Task {
-            try await sut.fetchFlags(for: userId, using: apiService)
+            try await sut.fetchFlags()
             expectation.fulfill()
         }
 
@@ -225,16 +230,15 @@ final class FeatureFlagsTests: XCTestCase {
             toggles: []
         )
 
-        let apiService = APIServiceMock()
-        apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-            completion(nil, .success(flagResponse))
-        }
+        let defaultRemoteFeatureFlagsDataSourceMock = DefaultRemoteFeatureFlagsDataSourceMock()
+        defaultRemoteFeatureFlagsDataSourceMock.userID = userId
+        defaultRemoteFeatureFlagsDataSourceMock.featureFlagResponse = flagResponse
 
-        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(DefaultRemoteFeatureFlagsDataSourceMock()))
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(defaultRemoteFeatureFlagsDataSourceMock))
 
         // When
         Task {
-            try await sut.fetchFlags(for: userId, using: apiService)
+            try await sut.fetchFlags()
             expectation.fulfill()
         }
 
@@ -256,16 +260,15 @@ final class FeatureFlagsTests: XCTestCase {
             )]
         )
 
-        let apiService = APIServiceMock()
-        apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-            completion(nil, .success(flagResponse))
-        }
+        let defaultRemoteFeatureFlagsDataSourceMock = DefaultRemoteFeatureFlagsDataSourceMock()
+        defaultRemoteFeatureFlagsDataSourceMock.userID = userId
+        defaultRemoteFeatureFlagsDataSourceMock.featureFlagResponse = flagResponse
 
-        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(DefaultRemoteFeatureFlagsDataSourceMock()))
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(defaultRemoteFeatureFlagsDataSourceMock))
 
         // When
         Task {
-            try await sut.fetchFlags(for: userId, using: apiService)
+            try await sut.fetchFlags()
             expectation.fulfill()
         }
 
@@ -337,15 +340,15 @@ final class FeatureFlagsTests: XCTestCase {
             )]
         )
 
-        let apiService = APIServiceMock()
-        apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-            completion(nil, .success(flagResponse))
-        }
-        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(DefaultRemoteFeatureFlagsDataSourceMock()))
+        let defaultRemoteFeatureFlagsDataSourceMock = DefaultRemoteFeatureFlagsDataSourceMock()
+        defaultRemoteFeatureFlagsDataSourceMock.userID = userId
+        defaultRemoteFeatureFlagsDataSourceMock.featureFlagResponse = flagResponse
+
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(defaultRemoteFeatureFlagsDataSourceMock))
 
         // When
         Task {
-            try await sut.fetchFlags(for: userId, using: apiService)
+            try await sut.fetchFlags()
             expectation.fulfill()
         }
 
@@ -363,16 +366,15 @@ final class FeatureFlagsTests: XCTestCase {
             toggles: []
         )
 
-        let apiService = APIServiceMock()
-        apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-            completion(nil, .success(flagResponse))
-        }
+        let defaultRemoteFeatureFlagsDataSourceMock = DefaultRemoteFeatureFlagsDataSourceMock()
+        defaultRemoteFeatureFlagsDataSourceMock.userID = userId
+        defaultRemoteFeatureFlagsDataSourceMock.featureFlagResponse = flagResponse
 
-        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(DefaultRemoteFeatureFlagsDataSourceMock()))
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(defaultRemoteFeatureFlagsDataSourceMock))
 
         // When
         Task {
-            try await sut.fetchFlags(for: userId, using: apiService)
+            try await sut.fetchFlags()
             expectation.fulfill()
         }
 
@@ -394,16 +396,15 @@ final class FeatureFlagsTests: XCTestCase {
             )]
         )
 
-        let apiService = APIServiceMock()
-        apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-            completion(nil, .success(flagResponse))
-        }
+        let defaultRemoteFeatureFlagsDataSourceMock = DefaultRemoteFeatureFlagsDataSourceMock()
+        defaultRemoteFeatureFlagsDataSourceMock.userID = userId
+        defaultRemoteFeatureFlagsDataSourceMock.featureFlagResponse = flagResponse
 
-        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(DefaultRemoteFeatureFlagsDataSourceMock()))
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(defaultRemoteFeatureFlagsDataSourceMock))
 
         // When
         Task {
-            try await sut.fetchFlags(for: userId, using: apiService)
+            try await sut.fetchFlags()
             expectation.fulfill()
         }
 
@@ -414,7 +415,7 @@ final class FeatureFlagsTests: XCTestCase {
 
     // MARK: - fetchFlags
 
-    func test_fetchFlags_withoutUserId_returnsFlagForUnauthSession() async throws {
+    func test_fetchFlags_withoutUserIdSet_returnsFlagForUnauthSession() async throws {
         // Given
         sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(DefaultRemoteFeatureFlagsDataSourceMock()))
 
@@ -426,20 +427,23 @@ final class FeatureFlagsTests: XCTestCase {
         XCTAssertEqual(localFlags?.isEmpty, false)
     }
 
-    func test_fetchFlags_withUserId_returnsFlagForUserId() async throws {
+    func test_fetchFlags_withUserIdSet_returnsFlagForUserId_empty() async throws {
         // Given
         let userId = "userId"
-        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(DefaultRemoteFeatureFlagsDataSourceMock()))
+        let defaultRemoteFeatureFlagsDataSourceMock = DefaultRemoteFeatureFlagsDataSourceMock()
+        defaultRemoteFeatureFlagsDataSourceMock.userID = userId
+
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(defaultRemoteFeatureFlagsDataSourceMock))
 
         // When
-        try await sut.fetchFlags(for: userId)
+        try await sut.fetchFlags()
 
         // Then
         let localFlags = sut.localDataSource.value.getFeatureFlags(userId: userId, reloadFromLocalDataSource: true)
         XCTAssertEqual(localFlags?.isEmpty, false)
     }
 
-    func test_fetchFlagsForUserId_withUserId_returnsFlagForUserId() async throws {
+    func test_fetchFlagsForUserId_withUserIdSet_returnsFlagForUserId() async throws {
         // Given
         let userId = "userId"
         let flagResponse = FeatureFlagResponse(
@@ -451,13 +455,14 @@ final class FeatureFlagsTests: XCTestCase {
             )]
         )
 
-        let apiService = APIServiceMock()
-        apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-            completion(nil, .success(flagResponse))
-        }
+        let defaultRemoteFeatureFlagsDataSourceMock = DefaultRemoteFeatureFlagsDataSourceMock()
+        defaultRemoteFeatureFlagsDataSourceMock.userID = userId
+        defaultRemoteFeatureFlagsDataSourceMock.featureFlagResponse = flagResponse
+
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(defaultRemoteFeatureFlagsDataSourceMock))
 
         // When
-        try await sut.fetchFlags(for: userId, using: apiService)
+        try await sut.fetchFlags()
 
         // Then
         let localFlags = sut.localDataSource.value.getFeatureFlags(userId: userId, reloadFromLocalDataSource: true)
@@ -484,23 +489,21 @@ final class FeatureFlagsTests: XCTestCase {
             )]
         )
 
-        let apiService = APIServiceMock()
-        apiService.requestDecodableStub.bodyIs { count, _, _, _, _, _, _, _, _, _, _, completion in
-            if count == 1 {
-                completion(nil, .success(flagResponse1))
-            } else {
-                completion(nil, .success(flagResponse2))
-            }
-        }
+        let defaultRemoteFeatureFlagsDataSourceMock = DefaultRemoteFeatureFlagsDataSourceMock()
+        defaultRemoteFeatureFlagsDataSourceMock.userID = userId
+
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(defaultRemoteFeatureFlagsDataSourceMock))
 
         // When fetching the first time
-        try await sut.fetchFlags(for: userId, using: apiService)
+        defaultRemoteFeatureFlagsDataSourceMock.featureFlagResponse = flagResponse1
+        try await sut.fetchFlags()
 
         // Then BlackFriday flag is true is isEnabled returns true
         XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
 
         // When fetching a second time
-        try await sut.fetchFlags(for: userId, using: apiService)
+        defaultRemoteFeatureFlagsDataSourceMock.featureFlagResponse = flagResponse2
+        try await sut.fetchFlags()
 
         // Then BlackFriday flag is false but isEnabled still returns the first returned value
         XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
@@ -526,23 +529,21 @@ final class FeatureFlagsTests: XCTestCase {
             )]
         )
 
-        let apiService = APIServiceMock()
-        apiService.requestDecodableStub.bodyIs { count, _, _, _, _, _, _, _, _, _, _, completion in
-            if count == 1 {
-                completion(nil, .success(flagResponse1))
-            } else {
-                completion(nil, .success(flagResponse2))
-            }
-        }
+        let defaultRemoteFeatureFlagsDataSourceMock = DefaultRemoteFeatureFlagsDataSourceMock()
+        defaultRemoteFeatureFlagsDataSourceMock.userID = userId
+
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(defaultRemoteFeatureFlagsDataSourceMock))
 
         // When fetching the first time
-        try await sut.fetchFlags(for: userId, using: apiService)
+        defaultRemoteFeatureFlagsDataSourceMock.featureFlagResponse = flagResponse1
+        try await sut.fetchFlags()
 
         // Then BlackFriday flag is not returned and is isEnabled returns false
         XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
 
         // When fetching a second time
-        try await sut.fetchFlags(for: userId, using: apiService)
+        defaultRemoteFeatureFlagsDataSourceMock.featureFlagResponse = flagResponse2
+        try await sut.fetchFlags()
 
         // Then BlackFriday flag is returned and true, but isEnabled still returns
         // the first-returned value (false)
@@ -561,16 +562,17 @@ final class FeatureFlagsTests: XCTestCase {
             )]
         )
 
-        let apiService = APIServiceMock()
-        apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-            completion(nil, .success(flagResponse))
-        }
+        let defaultRemoteFeatureFlagsDataSourceMock = DefaultRemoteFeatureFlagsDataSourceMock()
+        defaultRemoteFeatureFlagsDataSourceMock.userID = userId
+
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(defaultRemoteFeatureFlagsDataSourceMock))
 
         // Then BlackFriday flag is not returned and is isEnabled returns false
         XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
 
         // When fetching the first time
-        try await sut.fetchFlags(for: userId, using: apiService)
+        defaultRemoteFeatureFlagsDataSourceMock.featureFlagResponse = flagResponse
+        try await sut.fetchFlags()
 
         // Then BlackFriday flag is returned and true, but isEnabled still returns the first returned value
         XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday, for: userId))
@@ -604,20 +606,16 @@ final class FeatureFlagsTests: XCTestCase {
             )]
         )
 
-        let apiService = APIServiceMock()
-        apiService.requestDecodableStub.bodyIs { count, _, _, _, _, _, _, _, _, _, _, completion in
-            if count == 1 {
-                completion(nil, .success(flagResponse1))
-            } else {
-                completion(nil, .success(flagResponse2))
-            }
-        }
-        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(DefaultRemoteFeatureFlagsDataSourceMock()))
+        let defaultRemoteFeatureFlagsDataSourceMock = DefaultRemoteFeatureFlagsDataSourceMock()
+        defaultRemoteFeatureFlagsDataSourceMock.userID = userId
+
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(defaultRemoteFeatureFlagsDataSourceMock))
 
         sut.setUserId(userId)
 
         // When flags are fetched the first time
-        try await sut.fetchFlags(for: userId, using: apiService)
+        defaultRemoteFeatureFlagsDataSourceMock.featureFlagResponse = flagResponse1
+        try await sut.fetchFlags()
 
         // Then 2 flags should be returned
         let localFlags1 = sut.localDataSource.value.getFeatureFlags(
@@ -627,7 +625,8 @@ final class FeatureFlagsTests: XCTestCase {
         XCTAssertTrue(sut.isEnabled(TestFlagsType.notActivatedFlag, reloadValue: true))
 
         // When fetched the second time
-        try await sut.fetchFlags(for: userId, using: apiService)
+        defaultRemoteFeatureFlagsDataSourceMock.featureFlagResponse = flagResponse2
+        try await sut.fetchFlags()
 
         // Then only one flag should be returned, and the deleted FF should
         // no longer be in the local data source.
@@ -640,7 +639,7 @@ final class FeatureFlagsTests: XCTestCase {
 
     // MARK: - Reset
 
-    func test_resetFlagsForUserId_resetsFlagsForuserId() async throws {
+    func test_resetFlagsForUserId_resetsFlagsForUserId() async throws {
         // Given
         let userId1 = "userId1"
         let flagResponse1 = FeatureFlagResponse(
@@ -662,18 +661,18 @@ final class FeatureFlagsTests: XCTestCase {
             )]
         )
 
-        let apiService = APIServiceMock()
-        apiService.requestDecodableStub.bodyIs { count, _, _, _, _, _, _, _, _, _, _, completion in
-            if count == 1 {
-                completion(nil, .success(flagResponse1))
-            } else {
-                completion(nil, .success(flagResponse2))
-            }
-        }
+        let defaultRemoteFeatureFlagsDataSourceMock = DefaultRemoteFeatureFlagsDataSourceMock()
+
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(defaultRemoteFeatureFlagsDataSourceMock))
 
         // When
-        try await sut.fetchFlags(for: userId1, using: apiService)
-        try await sut.fetchFlags(for: userId2, using: apiService)
+        defaultRemoteFeatureFlagsDataSourceMock.userID = userId1
+        defaultRemoteFeatureFlagsDataSourceMock.featureFlagResponse = flagResponse1
+        try await sut.fetchFlags()
+
+        defaultRemoteFeatureFlagsDataSourceMock.userID = userId2
+        defaultRemoteFeatureFlagsDataSourceMock.featureFlagResponse = flagResponse2
+        try await sut.fetchFlags()
 
         // Then
         let flags = sut.localDataSource.value.getFeatureFlags(userId: userId1, reloadFromLocalDataSource: true)
@@ -700,13 +699,14 @@ final class FeatureFlagsTests: XCTestCase {
             )]
         )
 
-        let apiService = APIServiceMock()
-        apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-            completion(nil, .success(flagResponse))
-        }
+        let defaultRemoteFeatureFlagsDataSourceMock = DefaultRemoteFeatureFlagsDataSourceMock()
+        defaultRemoteFeatureFlagsDataSourceMock.userID = userId
+        defaultRemoteFeatureFlagsDataSourceMock.featureFlagResponse = flagResponse
+
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(defaultRemoteFeatureFlagsDataSourceMock))
 
         // When
-        try await sut.fetchFlags(for: userId, using: apiService)
+        try await sut.fetchFlags()
 
         // Then
         let flags = sut.localDataSource.value.getFeatureFlags(userId: userId, reloadFromLocalDataSource: true)

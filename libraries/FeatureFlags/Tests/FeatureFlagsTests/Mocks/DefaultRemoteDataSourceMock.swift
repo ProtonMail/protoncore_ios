@@ -24,15 +24,20 @@ import Foundation
 @testable import ProtonCoreFeatureFlags
 
 public class DefaultRemoteFeatureFlagsDataSourceMock: RemoteFeatureFlagsDataSourceProtocol {
-    public init() {}
+    public var userID: String = ""
+    public var featureFlagResponse: FeatureFlagResponse?
 
-    public func getFlags() async throws -> [FeatureFlag] {
-        guard let url = Bundle.module.url(forResource: "flags", withExtension: "json"),
-              let data = try? Data(contentsOf: url, options: .mappedIfSafe),
-              let response = try? JSONDecoder().decode(FeatureFlagResponse.self, from: data)
-        else {
-            return []
+    public func getFlags() async throws -> (featureFlags: [ProtonCoreFeatureFlags.FeatureFlag], userID: String) {
+        if let featureFlagsResponse = featureFlagResponse {
+            return (featureFlagsResponse.toggles, self.userID)
+        } else {
+            guard let url = Bundle.module.url(forResource: "flags", withExtension: "json"),
+                  let data = try? Data(contentsOf: url, options: .mappedIfSafe),
+                  let response = try? JSONDecoder().decode(FeatureFlagResponse.self, from: data)
+            else {
+                return ([], "")
+            }
+            return (response.toggles, self.userID)
         }
-        return response.toggles
     }
 }
