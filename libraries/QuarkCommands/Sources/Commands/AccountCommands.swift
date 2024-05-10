@@ -31,7 +31,7 @@ public extension Quark {
     @discardableResult
     func setUsedSpace(decryptedUserId: Int, product: String, usedSpace: String) throws -> (data: Data, response: URLResponse) {
         let args = [
-            "--uid=\(decryptedUserId)",
+            "--user-id=\(decryptedUserId)",
             "--product=\(product)",
             "--used-space=\(usedSpace)"
         ]
