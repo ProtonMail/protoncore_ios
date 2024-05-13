@@ -33,8 +33,9 @@ public class Authenticator: NSObject, AuthenticatorInterface {
     public typealias Completion = (Result<Status, AuthErrors>) -> Void
 
     public enum Status {
-        case ask2FA(TwoFactorContext)
+        case askTOTP(TOTPContext)
         case askFIDO2(FIDO2Context)
+        case askAny2FA(TOTPContext, FIDO2Context)
         case newCredential(Credential, PasswordMode)
         case updatedCredential(Credential)
         case ssoChallenge(SSOChallengeResponse)
@@ -140,34 +141,62 @@ public class Authenticator: NSObject, AuthenticatorInterface {
                             return completion(.failure(Errors.wrongServerProof))
                         }
                         // are we done yet or need 2FA?
-                        if authResponse._2FA.enabled == .off {
-                            let credential = Credential(res: authResponse, userName: username, userID: authResponse.userID)
-                            self.apiService.setSessionUID(uid: credential.UID)
-                            completion(.success(.newCredential(credential, authResponse.passwordMode)))
-                        } else if authResponse._2FA.enabled.contains(.totp) {
-                            let credential = Credential(res: authResponse, userName: username, userID: authResponse.userID)
-                            self.apiService.setSessionUID(uid: credential.UID)
-                            let context = (credential, authResponse.passwordMode)
-                            completion(.success(.ask2FA(context)))
-                        } else if authResponse._2FA.enabled.contains(.webAuthn) {
-                            guard FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.fidoKeys,
-                                                                          reloadValue: true)
-                            else {
-                                completion(.failure(Errors.notImplementedYet("WebAuthn not implemented yet")))
-                                return
-                            }
+                        guard authResponse._2FA.enabled.rawValue <= 3 else {
+                            return completion(.failure(Errors.notImplementedYet("Unknown 2FA method required")))
+                        }
+                        let areFidoKeysEnabled = FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.fidoKeys,
+                                                                                         reloadValue: true)
+                        let credential = Credential(res: authResponse, userName: username, userID: authResponse.userID)
+                        self.apiService.setSessionUID(uid: credential.UID)
+                        var totpContext: TOTPContext?
+                        var fido2Context: FIDO2Context?
+                        if authResponse._2FA.enabled.contains(.totp) {
+                            totpContext = .init(credential: credential, passwordMode: authResponse.passwordMode)
+                        }
+                        if authResponse._2FA.enabled.contains(.webAuthn) && areFidoKeysEnabled {
                             guard let fido2 = authResponse._2FA.FIDO2,
                                   let authenticationOptions = fido2.authenticationOptions else {
                                 completion(.failure(Errors.emptyAuthInfoResponse))
                                 return
                             }
-                            let credential = Credential(res: authResponse, userName: username, userID: authResponse.userID)
-                            self.apiService.setSessionUID(uid: credential.UID)
-                            let context = FIDO2Context(authenticationOptions: authenticationOptions,
-                                                       credential: credential,
-                                                       passwordMode: authResponse.passwordMode)
-                            completion(.success(.askFIDO2(context)))
-                        } else {
+                            fido2Context = .init(authenticationOptions: authenticationOptions,
+                                                 credential: credential,
+                                                 passwordMode: authResponse.passwordMode)
+                        }
+
+                        switch authResponse._2FA.enabled {
+                        case .off:
+                            completion(.success(.newCredential(credential, authResponse.passwordMode)))
+                        case .both where !areFidoKeysEnabled:
+                                if let totpContext {
+                                    return completion(.success(.askTOTP(totpContext)))
+                                } else {
+                                    return completion(.failure(Errors.notImplementedYet("WebAuthn not implemented yet")))
+                                }
+                        case .both where areFidoKeysEnabled:
+                            if let totpContext, let fido2Context {
+                                return completion(.success(.askAny2FA(totpContext, fido2Context)))
+                            } else {
+                                return completion(.failure(.insufficientFIDO2Details))
+                            }
+                        case .totp:
+                            if let totpContext {
+                                return completion(.success(.askTOTP(totpContext)))
+                            } else {
+                                return completion(.failure(.emptyAuthInfoResponse))
+                            }
+                        case .webAuthn:
+                            guard areFidoKeysEnabled else {
+                                completion(.failure(Errors.notImplementedYet("WebAuthn not implemented yet")))
+                                return
+                            }
+                            if let fido2Context { 
+                                completion(.success(.askFIDO2(fido2Context)))
+                            } else {
+                                completion(.failure(.insufficientFIDO2Details))
+                            }
+                        default:
+                            // should already be controlled in previous check
                             completion(.failure(Errors.notImplementedYet("Unknown 2FA method required")))
                         }
                     }
@@ -177,10 +206,9 @@ public class Authenticator: NSObject, AuthenticatorInterface {
             return completion(.failure(.parsingError(parsingError)))
         }
     }
-
     /// Continue clear login flow with 2FA code
     public func confirm2FA(_ twoFactorCode: String,
-                           context: TwoFactorContext, completion: @escaping Completion) {
+                           context: TOTPContext, completion: @escaping Completion) {
         var route = AuthService.TwoFAEndpoint(code: twoFactorCode)
         route.auth = AuthCredential(context.credential)
         self.apiService.perform(request: route) { (_, result: Result<AuthService.TwoFAResponse, ResponseError>) in
@@ -342,8 +370,8 @@ public class Authenticator: NSObject, AuthenticatorInterface {
     }
 
     private func obtainChildSession(_ credential: Credential? = nil,
-                                   selector: String,
-                                   completion: @escaping (Result<AuthService.ChildSessionResponse, AuthErrors>) -> Void) {
+                                    selector: String,
+                                    completion: @escaping (Result<AuthService.ChildSessionResponse, AuthErrors>) -> Void) {
         var route = AuthService.ChildSessionRequest(selector: selector)
         if let auth = credential {
             route.auth = AuthCredential(auth)

@@ -413,19 +413,19 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func testLoginWith2FACode_isSuccessful() {
+    func testLoginWithTOTPCode_isSuccessful() {
         let (api, authDelegate) = apiService
         _ = authDelegate
         mockOnePasswordWith2FAUserLogin()
 
-        let expect = expectation(description: "testLoginWith2FACodeIsSuccessful")
+        let expect = expectation(description: "testLoginWithTOTPCodeIsSuccessful")
         let service = LoginService(api: api, clientApp: .other(named: "core"), minimumAccountType: .internal)
 
         service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, challenge: nil) { result in
             switch result {
             case let .success(status):
                 switch status {
-                case .ask2FA:
+                case .askTOTP:
                     service.provide2FACode(LoginTestUser.defaultUser.twoFactorCode) { result in
                         switch result {
                         case let .success(status):
@@ -452,19 +452,19 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func testLoginWithWrong2FACode_isFailure() {
+    func testLoginWithWrongTOTPCode_isFailure() {
         let (api, authDelegate) = apiService
         _ = authDelegate
         mockOnePasswordWith2FAUserLoginWrong2FA()
 
-        let expect = expectation(description: "testLoginWithWrong2FACodeFails")
+        let expect = expectation(description: "testLoginWithWrongTOTPCodeFails")
         let service = LoginService(api: api, clientApp: .other(named: "core"), minimumAccountType: .internal)
 
         service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, challenge: nil) { result in
             switch result {
             case let .success(status):
                 switch status {
-                case .ask2FA:
+                case .askTOTP:
                     service.provide2FACode("999999") { result in
                         switch result {
                         case .success:
@@ -858,7 +858,7 @@ class LoginServiceTests: XCTestCase {
             switch result {
             case let .success(status):
                 switch status {
-                case .ask2FA:
+                case .askTOTP:
                     service.provide2FACode(LoginTestUser.defaultUser.twoFactorCode) { result in
                         switch result {
                         case let .success(status):
@@ -880,7 +880,7 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func testLoginWith2FAAndSecondPassword_isSuccessfulForInternal() {
+    func testLoginWithTOTPAndSecondPassword_isSuccessfulForInternal() {
         performLoginWithTwoPasswordUser(minimumAccountType: .internal) { expect, service, status in
             switch status {
             case .askSecondPassword:
@@ -903,7 +903,7 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func testLoginWith2FAAndSecondPassword_isSuccessfulForExternal() {
+    func testLoginWithTOTPAndSecondPassword_isSuccessfulForExternal() {
         performLoginWithTwoPasswordUser(minimumAccountType: .external) { expect, service, status in
             switch status {
             case .askSecondPassword:
@@ -926,7 +926,7 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func testLoginWith2FAAndSecondPassword_DoesNotAskForSecondPasswordForUsername() {
+    func testLoginWithTOTPAndSecondPassword_DoesNotAskForSecondPasswordForUsername() {
         performLoginWithTwoPasswordUser(minimumAccountType: .username) { expect, service, status in
             switch status {
             case .finished:
@@ -942,7 +942,7 @@ class LoginServiceTests: XCTestCase {
         _ = authDelegate
         mockTwoPasswordWith2FAUserLoginFail()
 
-        let expect = expectation(description: "testLoginWith2FAAndWrongSecondPasswordFails")
+        let expect = expectation(description: "testLoginWithTOTPAndWrongSecondPasswordFails")
         let service = LoginService(api: api, clientApp: .other(named: "core"), minimumAccountType: .internal)
 
         service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, challenge: nil) { result in

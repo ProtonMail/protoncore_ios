@@ -100,10 +100,10 @@ public final class AuthInfoResponse: Response, APIDecodableResponse {
 
     public struct TwoFA: Codable {
 
-        public var enabled: State
+        public var enabled: EnabledMechanism
         public var FIDO2: Fido2?
 
-        public init(enabled: State, fido2: Fido2? = nil) {
+        public init(enabled: EnabledMechanism, fido2: Fido2? = nil) {
             self.enabled = enabled
             self.FIDO2 = fido2
         }

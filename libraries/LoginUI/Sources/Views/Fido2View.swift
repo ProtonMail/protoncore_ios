@@ -2,9 +2,9 @@
 //  Fido2View.swift
 //  ProtonCore-Login - Created on 30/04/2024.
 //
-//  Copyright (c) 2022 Proton Technologies AG
+//  Copyright (c) 2024 Proton AG
 //
-//  This file is part of Proton Technologies AG and ProtonCore.
+//  This file is part of Proton AG and ProtonCore.
 //
 //  ProtonCore is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -26,33 +26,49 @@ import ProtonCoreUIFoundations
 
 @available(iOS 15.0, *)
 public struct Fido2View: View {
-    @ObservedObject var viewModel: Fido2ViewModel
+    @ObservedObject var viewModel: ViewModel
+
+    var isNested: Bool = false
 
     public var body: some View {
-        VStack {
-            Text("Insert a security key linked to your Proton Account.")
-            Link("Learn more", destination: URL(string: "https://proton.me/support/two-factor-authentication-2fa")!)
-            Spacer()
-            if viewModel.isLoading {
-                ProgressView()
-                Spacer()
+        VStack(alignment: .leading, spacing: 24) {
+            Group {
+                Text("Present a security key linked to your Proton Account.",
+                     bundle: LUITranslation.bundle,
+                     comment: "FIDO2 Key prompt")
+                Link(destination: URL(string: "https://proton.me/support/two-factor-authentication-2fa")!) {
+                    Text("Learn more",
+                         bundle: LUITranslation.bundle,
+                         comment: "Link text to the Proton KB explaining 2FA")
+                }
             }
+            .font(isNested ? .body : .title3)
+
+            Image("physical-key",
+                  bundle: LoginUIModule.resourceBundle)
+            .frame(maxWidth: .infinity, alignment: .center)
+
             PCButton(
                 style: .constant(.init(mode: .solid)),
                 content: .constant(.init(
                     title: "Authenticate",
-                    isEnabled: true,
-                    isAnimating: false,
+                    isEnabled: !viewModel.isLoading,
+                    isAnimating: viewModel.isLoading,
                     action: { viewModel.startSignature() })
                 )
             )
-        }.padding(10)
+        }
+        .frame(maxWidth: .infinity,
+               maxHeight: .infinity,
+               alignment: .top)
+
     }
 }
 
 #Preview {
     if #available(iOS 15.0, *) {
-        return Fido2View(viewModel: Fido2ViewModel.initial)
+        return Fido2View(viewModel: Fido2View.ViewModel.initial)
+            .padding(20)
     } else {
         return Text("🦖 This view is not available for iOS versions < 15.0")
     }

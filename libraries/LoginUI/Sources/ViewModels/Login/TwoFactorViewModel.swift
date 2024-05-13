@@ -25,7 +25,7 @@ import Foundation
 import ProtonCoreLog
 import ProtonCoreLogin
 
-final class TwoFactorViewModel {
+public final class TwoFactorViewModel: ObservableObject {
     enum Mode {
         case twoFactorCode
         case recoveryCode
@@ -71,7 +71,7 @@ final class TwoFactorViewModel {
                         self?.finished.publish(.createAddressNeeded(data, username))
                         self?.isLoading.value = false
                     }
-                case .ask2FA, .askFIDO2:
+                case .askTOTP, .askAny2FA, .askFIDO2:
                     PMLog.error("Asking for 2FA validation after successful 2FA validation is an invalid state", sendToExternal: true)
                     self?.error.publish(.invalidState)
                     self?.isLoading.value = false

@@ -51,7 +51,9 @@ public enum LoginStatus {
     /// Login is complete
     case finished(UserData)
     /// Need TOTP code
-    case ask2FA
+    case askTOTP
+    /// Need either TOTP or FIDO2 key
+    case askAny2FA(FIDO2Context)
     /// Need FIDO2 key
     case askFIDO2(FIDO2Context)
     /// Need second password
@@ -411,4 +413,3 @@ public extension Login {
         }
     }
 }
-

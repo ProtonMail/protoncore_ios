@@ -89,6 +89,23 @@ class AuthenticatorTests: XCTestCase {
         return srpProofs
     }
 
+    let fido2: Fido2 = .init(authenticationOptions: .init(
+        publicKey: .init(timeout: 600,
+                         challenge: Data(repeating: 22, count: 22),
+                         userVerification: "discouraged",
+                         rpId: "proton.me",
+                         allowCredentials: [
+                            .init(id: Data(repeating: 33, count: 12),
+                                  type: "public-key")
+                         ]
+                        )
+    ),
+                             registeredKeys: [
+                                .init(attestationFormat: "packed",
+                                      credentialID: Data(repeating: 1, count: 5), name: "My Yubi key")
+                             ]
+    )
+
     struct Response: Codable {
         public var code: Int
     }
@@ -207,7 +224,7 @@ class AuthenticatorTests: XCTestCase {
         let username = "username"
         manager.authenticate(username: username, password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
             switch result {
-            case .success(Authenticator.Status.ask2FA(let context)):
+            case .success(Authenticator.Status.askTOTP(let context)):
                 let twoFA = AuthInfoResponse.TwoFA(enabled: .totp)
                 let authRouteResponse = self.authRouteResponse(twoFA: twoFA)
                 XCTAssertEqual(context.credential.UID, authRouteResponse.UID)
@@ -234,7 +251,8 @@ class AuthenticatorTests: XCTestCase {
             if path.contains("/auth/info") {
                 completion(nil, .success(self.authInfoResponse))
             } else if path.contains("/auth/v4") {
-                let twoFA = AuthInfoResponse.TwoFA(enabled: .webAuthn)
+                let twoFA = AuthInfoResponse.TwoFA(enabled: .webAuthn,
+                                                   fido2: self.fido2)
                 completion(nil, .success(self.authRouteResponse(twoFA: twoFA)))
             } else {
                 XCTFail()
@@ -851,7 +869,7 @@ class AuthenticatorTests: XCTestCase {
         }
 
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope1", "Scope2"])
-        let context = TwoFactorContext(credential: testCredential, passwordMode: .one)
+        let context = TOTPContext(credential: testCredential, passwordMode: .one)
         manager.confirm2FA("code", context: context) { result in
             switch result {
             case .success(Authenticator.Status.newCredential(let credential, let passwordMode)):
@@ -886,7 +904,7 @@ class AuthenticatorTests: XCTestCase {
         }
 
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
-        let context = TwoFactorContext(credential: testCredential, passwordMode: .one)
+        let context = TOTPContext(credential: testCredential, passwordMode: .one)
         manager.confirm2FA("code", context: context) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
@@ -915,7 +933,7 @@ class AuthenticatorTests: XCTestCase {
         }
 
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
-        let context = TwoFactorContext(credential: testCredential, passwordMode: .one)
+        let context = TOTPContext(credential: testCredential, passwordMode: .one)
         manager.confirm2FA("code", context: context) { result in
             switch result {
             case .failure(AuthErrors.networkingError(let responseError)):
@@ -948,7 +966,7 @@ class AuthenticatorTests: XCTestCase {
         }
 
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
-        let context = TwoFactorContext(credential: testCredential, passwordMode: .one)
+        let context = TOTPContext(credential: testCredential, passwordMode: .one)
         manager.confirm2FA("code", context: context) { result in
             switch result {
             case .failure(.apiMightBeBlocked(let message, let originalError)):

@@ -181,6 +181,25 @@ final class LoginCoordinator {
         navigationController?.pushViewController(fido2ViewController, animated: true)
     }
 
+    @available(iOS 15.0, *)
+    @MainActor
+    func showTwoFactorChoice(username: String,
+                             password: String,
+                             challenge: Data,
+                             relyingPartyIdentifier: String,
+                             allowedCredentialIds: [Data]) {
+        let fido2ViewModel = container.makeFido2ViewModel(challenge: challenge, relyingPartyIdentifier: relyingPartyIdentifier, allowedCredentialIds: allowedCredentialIds)
+        fido2ViewModel.delegate = self
+
+        let totpViewModel = container.makeTOTPViewModel()
+        totpViewModel.delegate = self
+
+        let choose2FAView = Choose2FAView(totpViewModel: totpViewModel, fido2ViewModel: fido2ViewModel)
+        let choose2FAViewController = Choose2FAViewController(rootView: choose2FAView)
+
+        navigationController?.pushViewController(choose2FAViewController, animated: true)
+    }
+
     private func showMailboxPassword() {
         let mailboxPasswordViewController = UIStoryboard.instantiateInLogin(MailboxPasswordViewController.self,
                                                                      inAppTheme: customization.inAppTheme)
@@ -269,13 +288,25 @@ extension LoginCoordinator: LoginStepsDelegate {
         UIApplication.openURLIfPossible(externalLinks.accountSetup)
     }
 
-    func requestTwoFactorCode(username: String, password: String) {
+    func requestTOTPCode(username: String, password: String) {
         showTwoFactorCode(username: username, password: password)
     }
 
     @available(iOS 15.0, *)
     func requestKeySignature(challenge: Data, relyingPartyIdentifier: String, allowedCredentialIds: [Data]) {
          showKeySignature(challenge: challenge, relyingPartyIdentifier: relyingPartyIdentifier, allowedCredentialIds: allowedCredentialIds)
+    }
+
+    @available(iOS 15.0, *)
+    func requestTOTPOrKeySignature(username: String, password: String, challenge: Data, relyingPartyIdentifier: String, allowedCredentialIds: [Data]) {
+        Task {
+            await MainActor.run {  showTwoFactorChoice(username: username,
+                                                       password: password,
+                                                       challenge: challenge,
+                                                       relyingPartyIdentifier: relyingPartyIdentifier,
+                                                       allowedCredentialIds: allowedCredentialIds)
+            }
+        }
     }
 
     func mailboxPasswordNeeded() {

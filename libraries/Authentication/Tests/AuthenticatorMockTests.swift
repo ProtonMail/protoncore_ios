@@ -24,7 +24,7 @@
 import XCTest
 
 import ProtonCoreNetworking
-import ProtonCoreServices
+@testable import ProtonCoreServices
 #if canImport(ProtonCoreTestingToolkitUnitTestsAuthentication)
 import ProtonCoreTestingToolkitUnitTestsAuthentication
 #else
@@ -187,10 +187,11 @@ class AuthenticatorMockTests: XCTestCase {
         }
     }
 
-    func testWrongAuth2FA() {
+    /// Verifies mock sends an error when confirming TOTP code
+    func testWrongAuthTOTP() {
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, _, completion in
-            let twoFactorContext: TwoFactorContext = (credential: self.testCredential, passwordMode: .two)
-            completion(.success(.ask2FA(twoFactorContext)))
+            let twoFactorContext: TOTPContext = .init(credential: self.testCredential, passwordMode: .two)
+            completion(.success(.askTOTP(twoFactorContext)))
         }
         authenticatorMock.confirm2FAStub.bodyIs { _, _, context, completion in
             completion(.failure(AuthErrors.networkingError(ResponseError(httpCode: nil, responseCode: 8002, userFacingMessage: nil, underlyingError: nil))))
@@ -203,7 +204,7 @@ class AuthenticatorMockTests: XCTestCase {
                 case .updatedCredential, .newCredential:
                     XCTFail()
                     expect.fulfill()
-                case let .ask2FA(context):
+                case let .askTOTP(context):
                     self.authenticatorMock.confirm2FA("555656565655656", context: context) { result in
                         switch result {
                         case .success:
@@ -219,10 +220,71 @@ class AuthenticatorMockTests: XCTestCase {
                             expect.fulfill()
                         }
                     }
-                case .askFIDO2:
-                        // TBC in CP-7952
-                    break
-                case .ssoChallenge:
+                case .ssoChallenge, .askFIDO2, .askAny2FA:
+                    XCTFail("Not expected here")
+                    expect.fulfill()
+                }
+            case .failure:
+                XCTFail("Auth flow failed")
+                expect.fulfill()
+            }
+        }
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+
+    /// Verifies mock sends an error when sending FIDO2 signature
+    func testWrongAuthFIDO2() {
+        authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, _, completion in
+            let twoFactorContext: FIDO2Context = .init(
+                authenticationOptions: .init(publicKey: .init(
+                    timeout: 60,
+                    challenge: Data([45, 45, 45]),
+                    userVerification: "discouraged",
+                    rpId: "proton.me",
+                    allowCredentials: [
+                        .init(id: Data([22, 22, 22]),
+                              type: "public-key")
+                    ]
+                )),
+                credential: self.testCredential,
+                passwordMode: .two)
+            completion(.success(.askFIDO2(twoFactorContext)))
+        }
+        authenticatorMock.sendFIDO2SignatureStub.bodyIs { _, _, context, completion in
+            completion(.failure(AuthErrors.networkingError(ResponseError(httpCode: nil, responseCode: 8002, userFacingMessage: nil, underlyingError: nil))))
+        }
+        let expect = expectation(description: "AuthInfo + Auth + 2FA")
+        authenticatorMock.authenticate(username: "username", password: "password", challenge: nil, intent: nil, srpAuth: nil) { result in
+            switch result {
+            case .success(let status):
+                switch status {
+                case .updatedCredential, .newCredential:
+                    XCTFail()
+                    expect.fulfill()
+                case let .askFIDO2(context):
+                    self.authenticatorMock.sendFIDO2Signature(.init(
+                        signature: Data([1, 2, 3]),
+                        credentialID: Data([4, 5, 6]),
+                        authenticatorData: Data([100, 101, 222]),
+                        clientData: Data([221, 23, 4])
+                    ), context: context) { result in
+                        switch result {
+                        case .success:
+                            XCTFail()
+                            expect.fulfill()
+                        case let .failure(error):
+                            guard case Authenticator.Errors.networkingError(let errorResponse) = error else {
+                                XCTFail()
+                                expect.fulfill()
+                                return
+                            }
+                            XCTAssertEqual(errorResponse.responseCode, 8002)
+                            expect.fulfill()
+                        }
+                    }
+                case .ssoChallenge, .askTOTP, .askAny2FA:
                     XCTFail("Not expected here")
                     expect.fulfill()
                 }

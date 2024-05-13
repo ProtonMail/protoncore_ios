@@ -1,6 +1,6 @@
 //
-//  AuthCredential.swift
-//  ProtonCore-APIClient - Created on 20/02/2020.
+//  Choose2FAViewController.swift
+//  ProtonCore-Login - Created on 8/5/2024.
 //
 //  Copyright (c) 2022 Proton Technologies AG
 //
@@ -19,20 +19,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import Foundation
-import ProtonCoreNetworking
+#if os(iOS)
 
-/// Blind object to returned to clients in order to continue authentication upon 2FA code input
-public struct TOTPContext {
-    public let credential: Credential
-    public let passwordMode: PasswordMode
+import UIKit
+import SwiftUI
 
-    public init(credential: Credential, passwordMode: PasswordMode) {
-        self.credential = credential
-        self.passwordMode = passwordMode
-    }
-}
+@available(iOS 15.0, *)
+typealias Choose2FAViewController = UIHostingController<Choose2FAView>
 
-public enum PasswordMode: Int, Codable {
-    case one = 1, two = 2
-}
+#endif

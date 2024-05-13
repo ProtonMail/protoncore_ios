@@ -48,7 +48,7 @@ public struct AuthenticatorWithKeyGenerationMock: AuthenticatorInterface, Authen
     }
 
     @FuncStub(Self.confirm2FA) public var confirm2FAStub
-    public func confirm2FA(_ twoFactorCode: String, context: TwoFactorContext, completion: @escaping Authenticator.Completion) {
+    public func confirm2FA(_ twoFactorCode: String, context: TOTPContext, completion: @escaping Authenticator.Completion) {
         confirm2FAStub(twoFactorCode, context, completion)
     }
 
