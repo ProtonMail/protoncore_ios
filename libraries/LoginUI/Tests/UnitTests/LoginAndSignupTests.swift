@@ -261,9 +261,9 @@ final class LoginAndSignupTests: XCTestCase {
 
 private class DummyRemoteDataSource: RemoteFeatureFlagsDataSourceProtocol {
     var didGetFlags = false
-    func getFlags() async throws -> [FeatureFlag] {
+    func getFlags() async throws -> (featureFlags: [FeatureFlag], userID: String) {
         didGetFlags = true
-        return []
+        return ([], "")
     }
 }
 

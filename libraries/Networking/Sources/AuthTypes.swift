@@ -68,7 +68,7 @@ public final class AuthCredential: NSObject, NSCoding, Codable {
         RefreshToken: \(refreshToken)
         SessionID: \(sessionID)
         UserName: \(userName)
-        UserUD: \(userID)
+        UserID: \(userID)
         """
     }
 

@@ -26,12 +26,14 @@ import Foundation
 /// Remote flags datasource used for mocking, it always returns a predefined set of feature flags.
 public class MockFlagsDatasource: RemoteFeatureFlagsDataSourceProtocol {
     private var flags: [FeatureFlag]
+    private var userId: String
 
-    init(flags: [FeatureFlag]) {
+    init(flags: [FeatureFlag], userId: String) {
         self.flags = flags
+        self.userId = userId
     }
 
-    public func getFlags() async throws -> [FeatureFlag] {
-        flags
+    public func getFlags() async throws -> (featureFlags: [ProtonCoreFeatureFlags.FeatureFlag], userID: String) {
+        return (flags, userId)
     }
 }

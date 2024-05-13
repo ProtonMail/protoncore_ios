@@ -88,7 +88,7 @@ This updates the local feature flag data source:
     try await FeatureFlagsRepository.shared.fetchFlags()
 ```
 
-`fetchFlags()` implicitly uses the `userId` and `apiService` set with `setUserId(_:)` and `setApiService(_:)` respectively.
+`fetchFlags()` uses the `userId` and `apiService` set with `setUserId(_:)` and `setApiService(_:)` respectively.
 
 In a multi-user context, you can use:
 
