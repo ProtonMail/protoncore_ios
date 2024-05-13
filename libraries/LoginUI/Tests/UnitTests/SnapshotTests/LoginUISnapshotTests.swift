@@ -208,6 +208,30 @@ class LoginUISnapshotTests: SnapshotTestCase {
         let controller = loginViewController(for: .internal, inAppTheme: .matchSystem)
         checkSnapshots(controller: controller, perceptualPrecision: defaultPrecision)
     }
+
+    func testLoginScreenWithTOTP() {
+        let controller = UIStoryboard.instantiateInLogin(TwoFactorViewController.self,
+                                                         inAppTheme: { .matchSystem })
+        let viewModel = TwoFactorViewModel(login: LoginMock(), username: "", password: "")
+        controller.viewModel = viewModel
+        checkSnapshots(controller: controller, perceptualPrecision: defaultPrecision)
+    }
+
+    @available(iOS 15.0, *)
+    func testLoginScreenWithFIDO2() {
+        let fido2ViewModel = Fido2View.ViewModel.initial
+        let view = Fido2View(viewModel: fido2ViewModel).padding(20)
+        checkSnapshots(view: view, perceptualPrecision: defaultPrecision)
+    }
+
+    @MainActor @available(iOS 15.0, *)
+    func testLoginScreenWithFIDO2AndTOTP() {
+        let fido2ViewModel = Fido2View.ViewModel.initial
+        let totpViewModel = TOTPView.ViewModel(login: LoginMock())
+        let view = Choose2FAView(totpViewModel: totpViewModel, fido2ViewModel: fido2ViewModel)
+        checkSnapshots(view: view, perceptualPrecision: defaultPrecision)
+    }
+
 }
 
 #endif

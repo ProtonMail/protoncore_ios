@@ -30,15 +30,15 @@ public class TestUser {
     public var email: String
     public var password: String
     public var mailboxPassword: String
-    public var twoFASecurityKey: String
+    public var totpSecurityKey: String
     public var username: String
     public var pmMeEmail: String
 
-    public init(email: String, password: String, mailboxPassword: String, twoFASecurityKey: String) {
+    public init(email: String, password: String, mailboxPassword: String, totpSecurityKey: String) {
         self.email = email
         self.password = password
         self.mailboxPassword = mailboxPassword
-        self.twoFASecurityKey = twoFASecurityKey
+        self.totpSecurityKey = totpSecurityKey
         self.username = String(email.split(separator: "@")[0])
         self.pmMeEmail = "\(username)@pm.me"
     }
@@ -48,13 +48,13 @@ public class TestUser {
         self.email = String(userData[0])
         self.password = String(userData[1])
         self.mailboxPassword = String(userData[2])
-        self.twoFASecurityKey = String(userData[3])
+        self.totpSecurityKey = String(userData[3])
         self.username = String(String(userData[0]).split(separator: "@")[0])
         self.pmMeEmail = "\(username)@pm.me"
     }
 
     public func generateCode() -> String {
-        let totp = TOTP(secret: base32DecodeToData(twoFASecurityKey)!)
+        let totp = TOTP(secret: base32DecodeToData(totpSecurityKey)!)
 
         if let res = totp?.generate(time: Date()) {
             return res

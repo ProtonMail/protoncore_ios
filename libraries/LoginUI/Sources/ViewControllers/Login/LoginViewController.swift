@@ -32,9 +32,11 @@ import ProtonCoreServices
 import ProtonCoreTelemetry
 
 protocol LoginStepsDelegate: AnyObject {
-    func requestTwoFactorCode(username: String, password: String)
+    func requestTOTPCode(username: String, password: String)
     @available(iOS 15.0, *)
     func requestKeySignature(challenge: Data, relyingPartyIdentifier: String, allowedCredentialIds: [Data])
+    @available(iOS 15.0, *)
+    func requestTOTPOrKeySignature(username: String, password: String, challenge: Data, relyingPartyIdentifier: String, allowedCredentialIds: [Data])
     func mailboxPasswordNeeded()
     func createAddressNeeded(data: CreateAddressData, defaultUsername: String?)
     func userAccountSetupNeeded()
@@ -221,7 +223,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
             case let .done(data):
                 self?.delegate?.loginViewControllerDidFinish(endLoading: { [weak self] in self?.viewModel.isLoading.value = false }, data: data)
                 self?.measureLoginSuccess()
-            case .twoFactorCodeNeeded:
+            case .totpCodeNeeded:
                 guard
                     let username = self?.loginTextField.value,
                     let password = self?.passwordTextField.value
@@ -229,7 +231,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
                 // Clean username and password before leaving this page
                 // To eliminate KeyChain auto remember prompt
                 self?.clearAccount()
-                self?.delegate?.requestTwoFactorCode(username: username, password: password)
+                self?.delegate?.requestTOTPCode(username: username, password: password)
                 self?.measureLoginSuccess()
             case let .fido2KeyNeeded(context):
                 self?.clearAccount()
@@ -245,6 +247,34 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
                 self?.delegate?.requestKeySignature(challenge: challenge,
                                                     relyingPartyIdentifier: relyingPartyIdentifier,
                                                     allowedCredentialIds: allowedCredentialIds)
+            case let .anyOfFido2TotpNeeded(context):
+                self?.clearAccount()
+                guard #available(iOS 15.0, *) else {
+                    if let username = self?.loginTextField.value,
+                       let password = self?.passwordTextField.value {
+                        self?.delegate?.requestTOTPCode(username: username, password: password)
+                        self?.measureLoginSuccess()
+                    }
+                    return
+                }
+                let challenge = context.authenticationOptions.publicKey.challenge
+                let relyingPartyIdentifier = context.authenticationOptions.publicKey.rpId
+                let allowedCredentialIds = context.authenticationOptions.publicKey.allowCredentials.map(\.id)
+
+                guard let username = self?.loginTextField.value,
+                      let password = self?.passwordTextField.value
+                else {
+                    self?.delegate?.requestKeySignature(challenge: challenge,
+                                                        relyingPartyIdentifier: relyingPartyIdentifier,
+                                                        allowedCredentialIds: allowedCredentialIds)
+                    return
+                }
+
+                self?.delegate?.requestTOTPOrKeySignature(username: username,
+                                                          password: password,
+                                                          challenge: challenge,
+                                                          relyingPartyIdentifier: relyingPartyIdentifier,
+                                                          allowedCredentialIds: allowedCredentialIds)
             case .mailboxPasswordNeeded:
                 self?.delegate?.mailboxPasswordNeeded()
                 self?.measureLoginSuccess()

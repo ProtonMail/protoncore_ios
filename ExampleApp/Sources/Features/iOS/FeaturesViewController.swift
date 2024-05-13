@@ -103,7 +103,7 @@ class FeaturesViewController: UIViewController, TrustKitDelegate {
                 PMLog.info(String(describing: error))
             case .failure(AuthErrors.apiMightBeBlocked):
                 self.onDohTroubleshot()
-            case .failure, .success(.ask2FA), .success(.updatedCredential), .success(.ssoChallenge):
+            case .failure, .success(.askTOTP), .success(.updatedCredential), .success(.ssoChallenge):
                 break
             }
         }

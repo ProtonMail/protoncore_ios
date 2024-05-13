@@ -28,13 +28,13 @@ public class SettingsResponse: APIDecodableResponse {
 }
 
 public struct UserSettings: Codable {
-    public let _2FA: TwoFA  
+    public let _2FA: TwoFA
 
     public struct TwoFA: Codable {
-        public var enabled: State
+        public var enabled: EnabledMechanism
         public let registeredKeys: [RegisteredKey]
 
-        public init(enabled: State, registeredKeys: [RegisteredKey]) {
+        public init(enabled: EnabledMechanism, registeredKeys: [RegisteredKey]) {
             self.enabled = enabled
             self.registeredKeys = registeredKeys
         }

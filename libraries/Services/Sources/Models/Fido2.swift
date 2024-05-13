@@ -44,16 +44,17 @@ public struct AllowedCredential: Codable {
     public let type: String
 }
 
-public struct State: OptionSet, Codable {
+public struct EnabledMechanism: OptionSet, Codable {
     public let rawValue: Int
 
     public init(rawValue: Int) {
         self.rawValue = rawValue
     }
 
-    public static let off: State = []
-    public static let totp = State(rawValue: 1 << 0)
-    public static let webAuthn = State(rawValue: 1 << 1)
+    public static let off: EnabledMechanism = []
+    public static let both: EnabledMechanism = [.totp, .webAuthn]
+    public static let totp = EnabledMechanism(rawValue: 1 << 0)
+    public static let webAuthn = EnabledMechanism(rawValue: 1 << 1)
 }
 
 public struct RegisteredKey: Codable {

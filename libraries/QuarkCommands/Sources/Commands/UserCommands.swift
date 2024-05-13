@@ -38,7 +38,7 @@ public extension Quark {
             createAddress == .noKey ? "--create-address=true" : nil,
             createAddress == .withKey(genKeys: .Curve25519) ? "--gen-keys=\(GenKeys.Curve25519.rawValue)" : nil,
             user.mailboxPassword.isEmpty ? nil : "--mailbox-pass=\(user.mailboxPassword)",
-            user.twoFASecurityKey.isEmpty ? nil : "--totp-secret=\(user.twoFASecurityKey)",
+            user.totpSecurityKey.isEmpty ? nil : "--totp-secret=\(user.totpSecurityKey)",
             user.recoveryEmail.isEmpty ? nil : "--recovery=\(user.recoveryEmail)",
             user.isExternal ? "--external=true" : nil,
             user.isExternal ? "--external-email=\(user.email)" : nil,

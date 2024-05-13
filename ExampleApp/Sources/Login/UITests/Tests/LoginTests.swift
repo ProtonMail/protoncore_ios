@@ -104,7 +104,7 @@ class LoginTests: LoginBaseTestCase {
         let user = testData.onePassUserWith2Fa
 
         mainRobot
-            // switching to username here because the onePassUserWith2Fa user account doesn't have addresses
+        // switching to username here because the onePassUserWith2Fa user account doesn't have addresses
             .changeAccountTypeToUsername()
             .showLogin()
             .fillUsername(username: user.username)
@@ -173,6 +173,19 @@ class LoginTests: LoginBaseTestCase {
             .fillTwoFACode(code: invalidTwoFACode)
             .confirm2FA(robot: TwoFaRobot.self)
             .verify.incorrectCredentialsErrorDialog()
+    }
+
+    func testLoginWithUserWithTOTPAndFIDO2Key() {
+        let user = testData.onePassUserWith2Fa
+        mainRobot
+            .changeAccountTypeToUsername()
+            .showLogin()
+            .fillUsername(username: user.username)
+            .fillpassword(password: user.password)
+            .signIn(robot: TwoFaRobot.self)
+            .fillTwoFACode(code: user.generateCode())
+            .confirm2FA(robot: LoginSampleAppRobot.self)
+            .verify.buttonLogoutVisible()
     }
 
     func testLoginWithDisabledUser() {
