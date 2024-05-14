@@ -47,4 +47,5 @@ public final class SettingsEndpoint: Request {
         "/core/v4/settings"
     }
 
+    public init() { }
 }
