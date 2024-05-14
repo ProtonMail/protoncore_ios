@@ -57,8 +57,21 @@ public struct EnabledMechanism: OptionSet, Codable {
     public static let webAuthn = EnabledMechanism(rawValue: 1 << 1)
 }
 
-public struct RegisteredKey: Codable {
+public struct RegisteredKey: Codable, Identifiable {
     public let attestationFormat: String
     public let credentialID: Data
     public let name: String
+
+    public var id: Data {
+        credentialID
+    }
+}
+
+extension RegisteredKey {
+    /// Sample init for Preview
+    public init(number: Int) {
+        self.attestationFormat = "packed"
+        self.credentialID = UUID().uuidString.data(using: .utf8)!
+        self.name = "Key \(number)"
+    }
 }
