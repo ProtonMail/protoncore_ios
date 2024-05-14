@@ -125,8 +125,7 @@ extension LoginErrorCapable {
         case .missingSubUserConfiguration:
             showBanner(message: LUITranslation.error_missing_sub_user_configuration.l10n)
         case .invalid2FAKey:
-            // TODO: Need UI design for informing the user
-            break
+            showBanner(message: LUITranslation.twofa_invalid_2fa_key.l10n)
         }
     }
 

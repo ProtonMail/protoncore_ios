@@ -37,7 +37,7 @@ struct TOTPView: View {
             )
 
             PCButton(style: .constant(.init(mode: .solid)),
-                     content: .constant(.init(title: "Authenticate",
+                     content: .constant(.init(title: LUITranslation.login_2fa_action_button_title.l10n,
                                               isEnabled: !viewModel.isLoading,
                                               isAnimating: viewModel.isLoading,
                                               action: { viewModel.startValidation() }

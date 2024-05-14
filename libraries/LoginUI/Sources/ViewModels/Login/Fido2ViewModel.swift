@@ -68,7 +68,7 @@ extension Fido2View {
             guard case let .configured(login, _, _, _) = state else { return }
 
             isLoading = true
-            login.provideFido2Signature(signature) { [weak self] result in
+            login.provideFido2Signature(signature) { @MainActor [weak self] result in
                 switch result {
                 case let .success(status):
                     switch status {
@@ -84,17 +84,17 @@ extension Fido2View {
                     case .askTOTP, .askAny2FA, .askFIDO2:
                         PMLog.error("Asking for 2FA validation after successful 2FA validation is an invalid state", sendToExternal: true)
                         self?.isLoading = false
-                        // TODO: CP-7953
+                        self?.bannerState = .error(content: .init(message: LUITranslation.twofa_invalid_state_banner.l10n))
                     case .askSecondPassword:
                         self?.delegate?.mailboxPasswordNeeded()
                         self?.isLoading = false
                     case .ssoChallenge:
                         PMLog.error("Receiving SSO challenge after successful 2FA code is an invalid state", sendToExternal: true)
                         self?.isLoading = false
-                        // TODO: CP-7953
+                        self?.bannerState = .error(content: .init(message: LUITranslation.twofa_invalid_state_banner.l10n))
                     }
-                case .failure:
-                    // TODO: CP-7953
+                case .failure(let error):
+                    self?.bannerState = .error(content: .init(message: error.userFacingMessageInLogin))
                     self?.isLoading = false
                 }
             }
@@ -102,46 +102,54 @@ extension Fido2View {
     }
 }
 
-    @available(iOS 15.0, macOS 12.0, *)
+@available(iOS 15.0, macOS 12.0, *)
 extension Fido2View.ViewModel: ASAuthorizationControllerDelegate {
 
-        public func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-            switch authorization.credential {
-            case let credentialAssertion as ASAuthorizationSecurityKeyPublicKeyCredentialAssertion:
-                let signature = Fido2Signature(credentialAssertion: credentialAssertion)
-                provideFido2Signature(signature)
-            default:
-                PMLog.error("Received unknown authorization type.")
-                // TODO: CP-7953
-            }
-        }
-        public func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-            // TODO: CP-7953
-            print(error)
+    @MainActor
+    public func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+        case let credentialAssertion as ASAuthorizationSecurityKeyPublicKeyCredentialAssertion:
+            let signature = Fido2Signature(credentialAssertion: credentialAssertion)
+            provideFido2Signature(signature)
+        default:
+            PMLog.error("Received unknown authorization type: \(authorization.credential)", sendToExternal: true)
+            bannerState = .error(content: .init(message: LUITranslation.twofa_unexpected_authorization_type.l10n))
         }
     }
 
-    @available(iOS 15.0, macOS 12.0, *)
+    @MainActor
+    public func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        PMLog.error("Secure Key authorization failed with error: \(error.localizedDescription)", sendToExternal: true)
+        guard let authorizationError = error as? ASAuthorizationError,
+              authorizationError.code != .canceled else {
+            // do nothing, it's user caused
+            return
+        }
+        bannerState = .error(content: .init(message: error.localizedDescription))
+    }
+}
+
+@available(iOS 15.0, macOS 12.0, *)
 extension Fido2View.ViewModel: ASAuthorizationControllerPresentationContextProviding {
-        public func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-            ASPresentationAnchor()
-        }
+    public func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        ASPresentationAnchor()
     }
+}
 
-    @available(iOS 15.0, macOS 12.0, *)
-    extension Fido2Signature {
-        init(credentialAssertion: ASAuthorizationSecurityKeyPublicKeyCredentialAssertion) {
-            self = .init(signature: credentialAssertion.signature,
-                         credentialID: credentialAssertion.credentialID,
-                         authenticatorData: credentialAssertion.rawAuthenticatorData,
-                         clientData: credentialAssertion.rawClientDataJSON)
-        }
+@available(iOS 15.0, macOS 12.0, *)
+extension Fido2Signature {
+    init(credentialAssertion: ASAuthorizationSecurityKeyPublicKeyCredentialAssertion) {
+        self = .init(signature: credentialAssertion.signature,
+                     credentialID: credentialAssertion.credentialID,
+                     authenticatorData: credentialAssertion.rawAuthenticatorData,
+                     clientData: credentialAssertion.rawClientDataJSON)
     }
+}
 
-    @available(iOS 15.0, macOS 12.0, *)
-    enum Fido2ViewModelState {
-        case initial
-        case configured(login: Login, challenge: Data, relyingPartyIdentifier: String, allowedCredentials: [ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor])
-    }
+@available(iOS 15.0, macOS 12.0, *)
+enum Fido2ViewModelState {
+    case initial
+    case configured(login: Login, challenge: Data, relyingPartyIdentifier: String, allowedCredentials: [ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor])
+}
 
 #endif
