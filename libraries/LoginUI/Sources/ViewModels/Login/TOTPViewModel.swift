@@ -25,6 +25,7 @@ import Foundation
 import ProtonCoreUIFoundations
 import ProtonCoreLogin
 import ProtonCoreLog
+import SwiftUI
 
 extension TOTPView {
     @MainActor
@@ -53,7 +54,7 @@ extension TOTPView {
             login.provide2FACode(code) { [weak self] result in
                 self?.isLoading = false
                 switch result {
-                case let .failure(error): self?.bannerState = .error(content: .init(message: error.localizedDescription))
+                case let .failure(error): self?.bannerState = .error(content: .init(message: error.userFacingMessageInLogin))
                 case let .success(status):
                     switch status {
                     case let .finished(data):
@@ -64,16 +65,15 @@ extension TOTPView {
                         }
                     case .askTOTP, .askAny2FA, .askFIDO2:
                         PMLog.error("Asking for 2FA validation after successful 2FA validation is an invalid state", sendToExternal: true)
-                        // TODO: CP-7953
+                        self?.bannerState = .error(content: .init(message: LUITranslation.twofa_invalid_state_banner.l10n))
                     case .askSecondPassword:
                         self?.delegate?.mailboxPasswordNeeded()
                     case .ssoChallenge:
                         PMLog.error("Receiving SSO challenge after successful 2FA code is an invalid state", sendToExternal: true)
-                        // TODO: CP-7953
+                        self?.bannerState = .error(content: .init(message: LUITranslation.twofa_invalid_state_banner.l10n))
                     }
                 }
             }
-
         }
     }
 }

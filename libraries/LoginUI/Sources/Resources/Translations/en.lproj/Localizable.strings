@@ -227,3 +227,9 @@
 "Present a security key linked to your Proton Account." = "Present a security key linked to your Proton Account.";
 
 "Learn more" = "Learn more";
+
+"Invalid state. Please quit the app and try again in a few minutes." = "Invalid state. Please quit the app and try again in a few minutes.";
+
+"There was a problem reading your security key." = "There was a problem reading your security key.";
+
+"We received an authorization from a type we don't support yet." = "We received an authorization from a type we don't support yet.";

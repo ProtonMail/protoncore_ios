@@ -121,10 +121,8 @@ public extension LoginError {
              .missingKeys,
              .needsFirstTimePasswordChange,
              .emailAddressAlreadyUsed,
-             .missingSubUserConfiguration:
-            return localizedDescription
-        case .invalid2FAKey:
-            // TODO: Need UI design for informing the user
+             .missingSubUserConfiguration,
+             .invalid2FAKey:
             return localizedDescription
         }
     }
