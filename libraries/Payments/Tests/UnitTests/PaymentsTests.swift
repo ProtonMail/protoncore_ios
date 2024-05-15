@@ -61,8 +61,9 @@ final class PaymentsTests: XCTestCase {
         super.tearDown()
     }
 
-    func testPaymentsActivation_DynamicPlans() throws {
-        withFeatureFlags([.dynamicPlans]) {
+    @MainActor
+    func testPaymentsActivation_StartObservingPaymentsQueue() async throws {
+        await withFeatureFlags([.dynamicPlans]) {
             let payments = Payments(inAppPurchaseIdentifiers: [],
                                     apiService: apiService,
                                     localStorage: storageMock,
@@ -74,11 +75,7 @@ final class PaymentsTests: XCTestCase {
 
             payments.planService = .right(plansDataSourceMock)
 
-            let expectation = XCTestExpectation(description: "Allow time for fetching plans")
-
-            payments.activate(delegate: storeKitDelegate) { _ in expectation.fulfill() }
-
-            wait(for: [expectation], timeout: 0.1)
+            await payments.startObservingPaymentQueue(delegate: storeKitDelegate)
 
             XCTAssertTrue(storeKitManager.updateAvailableProductsListStub.wasNotCalled)
             XCTAssertTrue(storeKitManager.subscribeToPaymentQueueStub.wasCalledExactlyOnce)

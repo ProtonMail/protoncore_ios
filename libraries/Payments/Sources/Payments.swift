@@ -128,6 +128,19 @@ public final class Payments {
         self.featureFlagsRepository = featureFlagsRepository
     }
 
+    public func startObservingPaymentQueue(delegate: StoreKitManagerDelegate) async {
+        // Setting delegate is a requirement before any purchase-related operation is performed
+        storeKitManager.delegate = delegate
+
+        guard case let .right(plansDataSource) = planService else { return }
+        do {
+            try await plansDataSource.fetchAvailablePlans()
+        } catch {
+            PMLog.error(error, sendToExternal: true)
+        }
+        storeKitManager.subscribeToPaymentQueue()
+    }
+
     public func activate(delegate: StoreKitManagerDelegate, storeKitProductsFetched: @escaping (Error?) -> Void = { _ in }) {
         // Setting delegate is a requirement before any purchase-related operation is performed
         storeKitManager.delegate = delegate
@@ -141,14 +154,7 @@ public final class Payments {
             // In the dynamic plans, fetching available IAPs from StoreKit is not a prerequisite.
             // It is done alongside fetching available plans
             Task {
-                if case let .right(plansDataSource) = planService {
-                    do {
-                        try await plansDataSource.fetchAvailablePlans()
-                    } catch {
-                        PMLog.error(error)
-                    }
-                    storeKitManager.subscribeToPaymentQueue()
-                }
+                await startObservingPaymentQueue(delegate: delegate)
                 storeKitProductsFetched(nil)
             }
         } else {
@@ -167,6 +173,12 @@ public final class Payments {
         storeKitManager.refreshHandler = { _ in }
 
         storeKitManager.delegate = nil
+    }
+
+    public func updateServiceIAPAvailability() async throws {
+        if case let .right(plansDataSource) = planService {
+            try await plansDataSource.fetchIAPAvailability()
+        }
     }
 
     public func updateService(completion: @escaping (Result<(), Error>) -> Void) {
