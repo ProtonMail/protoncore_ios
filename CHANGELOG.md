@@ -1,3 +1,23 @@
+## 25.0.0 (2024-05-14)
+
+### added (1 change)
+
+- [feat: Add support for FIDO2 security keys as 2FA mechanism [CP-7848]](apple/shared/protoncore@d261af4dffdc9f7294cd5bffc648f995291bd408) ([merge request](apple/shared/protoncore!1813))
+
+### fixed (1 change)
+
+- [fix: CP-8075 [iOS] Improve tappable area of \"Learn more\" in Password Change view](apple/shared/protoncore@a6b13fe12b6186730fc74398fc190357968ed5cc) ([merge request](apple/shared/protoncore!1804))
+
+### removed (1 change)
+
+- [feat(changePassword): CP-7916 [iOS] Remove organization key from change password flow](apple/shared/protoncore@bd0af698669f465c26f630f54981f9fba91ffdde) ([merge request](apple/shared/protoncore!1803))
+
+### changed (2 changes)
+
+- [feat(changePassword): [iOS] Remove \"sign in\" from password fields](apple/shared/protoncore@036dd1097f7da5e9455b08042ce40c44508a300c) ([merge request](apple/shared/protoncore!1802))
+- [feat(changePassword): CP-7409 [iOS] Update Password Change observability events](apple/shared/protoncore@d0a17a09d2e9ae5477c49ebde92f982c3c044806) ([merge request](apple/shared/protoncore!1799))
+
+
 ## 24.0.0 (2024-04-24)
 
 ### changed (1 change)
