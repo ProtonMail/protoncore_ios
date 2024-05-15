@@ -50,9 +50,10 @@ struct TOTPView: View {
 
 }
 
+#if DEBUG
 #Preview {
     TOTPView(viewModel: TOTPView.ViewModel(login: LoginStub()))
-
 }
+#endif
 
 #endif
