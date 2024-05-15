@@ -65,6 +65,7 @@ public struct Fido2View: View {
     }
 }
 
+#if DEBUG
 #Preview {
     if #available(iOS 15.0, *) {
         return Fido2View(viewModel: Fido2View.ViewModel.initial)
@@ -73,5 +74,6 @@ public struct Fido2View: View {
         return Text("🦖 This view is not available for iOS versions < 15.0")
     }
 }
+#endif
 
 #endif
