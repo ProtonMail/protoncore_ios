@@ -34,7 +34,7 @@ public enum LoginUIModule {
         let resourceBundle = Bundle.module
         return resourceBundle
         #else
-        let podBundle = Bundle(for: Choose2FAView.self)
+        let podBundle = Bundle(for: LoginUIClass.self)
         if let bundleURL = podBundle.url(forResource: "Resources-LoginUI", withExtension: "bundle") {
             if let bundle = Bundle(url: bundleURL) {
                 return bundle
@@ -50,3 +50,5 @@ public enum LoginUIModule {
 }
 
 #endif
+
+private class LoginUIClass {}
