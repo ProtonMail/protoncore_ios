@@ -19,16 +19,22 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-public struct ProtonColorPaletteiOS {
-    static let instance = ProtonColorPaletteiOS()
+public struct ProtonColorPaletteiOS: ColorPalette {
+    public typealias T = ProtonColorPaletteiOS
+
+    public static let instance = ProtonColorPaletteiOS()
 
     private init() {}
 
     // MARK: MobileBrand
     public let BrandDarken40 = ProtonColor(name: "MobileBrandDarken40")
+    public let BrandDarken30 = ProtonColor(name: "Meteorite")
     public let BrandDarken20 = ProtonColor(name: "MobileBrandDarken20")
+    public let BrandDarken10 = ProtonColor(name: "MoodyBlue")
     public let BrandNorm = ProtonColor(name: "MobileBrandNorm")
+    public let BrandLighten10 = ProtonColor(name: "LavenderMist")
     public let BrandLighten20 = ProtonColor(name: "MobileBrandLighten20")
+    public let BrandLighten30 = ProtonColor(name: "TitanWhite")
     public let BrandLighten40 = ProtonColor(name: "MobileBrandLighten40")
 
     // MARK: Notification
@@ -146,7 +152,7 @@ public struct ProtonColorPaletteiOS {
     // MARK: Background
     public var BackgroundNorm: ProtonColor {
         switch Brand.currentBrand {
-        case .proton, .vpn:
+        case .proton, .vpn, .wallet:
             return ProtonColor(name: "MobileBackgroundNorm", vpnFallbackRgb: backgroundNormVpn)
         case .pass:
             return ProtonColor(name: "MobileBackgroundNormPassTheme", vpnFallbackRgb: backgroundNormVpn)
@@ -162,6 +168,10 @@ public struct ProtonColorPaletteiOS {
     // MARK: Separator
     public var SeparatorNorm: ProtonColor {
         ProtonColor(name: "MobileSeparatorNorm", vpnFallbackRgb: separatorNormVpn)
+    }
+
+    public var SeparatorStrong: ProtonColor {
+        ProtonColor(name: "Mercury")
     }
 
     // MARK: Sidebar
@@ -191,38 +201,15 @@ public struct ProtonColorPaletteiOS {
     }
     public let SidebarInteractionPressed = ProtonColor(name: "MobileSidebarInteractionPressed")
 
+    public var SidebarInteractionSelected: ProtonColor {
+        ProtonColor(name: "DreamyBlue")
+    }
+    public var SidebarInteractionAlternative: ProtonColor {
+        ProtonColor(name: "TexasRose")
+    }
+
     // MARK: Blenders
     public let BlenderNorm = ProtonColor(name: "MobileBlenderNorm")
-
-    // MARK: Accent
-    public let PurpleBase = ProtonColor(name: "SharedPurpleBase")
-    public let EnzianBase = ProtonColor(name: "SharedEnzianBase")
-    public let PinkBase = ProtonColor(name: "SharedPinkBase")
-    public let PlumBase = ProtonColor(name: "SharedPlumBase")
-    public let StrawberryBase = ProtonColor(name: "SharedStrawberryBase")
-    public let CeriseBase = ProtonColor(name: "SharedCeriseBase")
-    public let CarrotBase = ProtonColor(name: "SharedCarrotBase")
-    public let CopperBase = ProtonColor(name: "SharedCopperBase")
-    public let SaharaBase = ProtonColor(name: "SharedSaharaBase")
-    public let SoilBase = ProtonColor(name: "SharedSoilBase")
-    public let SlateblueBase = ProtonColor(name: "SharedSlateblueBase")
-    public let CobaltBase = ProtonColor(name: "SharedCobaltBase")
-    public let PacificBase = ProtonColor(name: "SharedPacificBase")
-    public let OceanBase = ProtonColor(name: "SharedOceanBase")
-    public let ReefBase = ProtonColor(name: "SharedReefBase")
-    public let PineBase = ProtonColor(name: "SharedPineBase")
-    public let FernBase = ProtonColor(name: "SharedFernBase")
-    public let ForestBase = ProtonColor(name: "SharedForestBase")
-    public let OliveBase = ProtonColor(name: "SharedOliveBase")
-    public let PickleBase = ProtonColor(name: "SharedPickleBase")
-
-    // MARK: Two special colors that consistently occur in designs even though they are not part af the palette
-    public let White = ProtonColor(name: "White")
-    public let Black = ProtonColor(name: "Black")
-
-    // MARK: Special banner colors
-    public let Ebb = ProtonColor(name: "Ebb")
-    public let Cloud = ProtonColor(name: "Cloud")
 }
 
 // Two special global colors
