@@ -215,3 +215,35 @@
 "Sign in" = "Logga in";
 
 "Troubleshoot" = "Felsök";
+
+"Your account has several 2FA mechanisms configured. Please choose how you want to confirm your identity." = "Ditt konto har flera 2FA-mekanismer konfigurerade. Välj hur du vill bekräfta din identitet.";
+
+"One-time code" = "Engångskod";
+
+"Security key" = "Säkerhetsnyckel";
+
+"Two-Factor Authentication" = "Tvåfaktorsautentisering";
+
+"Present a security key linked to your Proton Account." = "Present a security key linked to your Proton Account.";
+
+"Learn more" = "Lär dig mer";
+
+"Invalid state. Please quit the app and try again in a few minutes." = "Ogiltigt tillstånd. Avsluta appen och försök igen om några minuter.";
+
+"There was a problem reading your security key." = "Det var ett problem att läsa din säkerhetsnyckel.";
+
+"We received an authorization from a type we don't support yet." = "Vi har fått en auktorisering från en typ som vi inte stöder ännu.";
+
+"Fetching your security keys details" = "Hämtar detaljer om dina säkerhetsnycklar";
+
+"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys.";
+
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "An error occurred fetching your security keys. You can also check them on the Proton %@ website.";
+
+"These are the security keys registered to your account" = "Dessa är säkerhetsnycklarna registrerade till ditt konto";
+
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys.";
+
+"Security Keys" = "Säkerhetsnycklar";
+
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "För att hantera, lägga till eller ta bort säkerhetsnycklar, använd Proton %@ webbapplikation.";
