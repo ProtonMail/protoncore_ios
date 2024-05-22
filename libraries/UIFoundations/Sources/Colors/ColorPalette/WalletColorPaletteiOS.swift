@@ -42,9 +42,6 @@ public struct WalletColorPaletteiOS: ColorPalette {
     public var BrandDarken30: ProtonColor {
         ProtonColor(name: "Meteorite")
     }
-    public var BrandDarken40: ProtonColor {
-        ProtonColor(name: "MobileBrandDarken40")
-    }
     public var BrandLighten10: ProtonColor {
         ProtonColor(name: "LavenderMist")
     }
@@ -53,9 +50,6 @@ public struct WalletColorPaletteiOS: ColorPalette {
     }
     public var BrandLighten30: ProtonColor {
         ProtonColor(name: "TitanWhite")
-    }
-    public var BrandLighten40: ProtonColor {
-        ProtonColor(name: "MobileBrandLighten40")
     }
 
     // MARK: Notification
@@ -81,12 +75,6 @@ public struct WalletColorPaletteiOS: ColorPalette {
     }
     public var InteractionNormDisabled: ProtonColor {
         BrandLighten30
-    }
-    public var InteractionNormMajor1PassTheme: ProtonColor {
-        ProtonColor(name: "MobileInteractionNormMajor1PassTheme")
-    }
-    public var InteractionNormMajor2PassTheme: ProtonColor {
-        ProtonColor(name: "MobileInteractionNormMajor2PassTheme")
     }
 
     // MARK: Interaction Strong
@@ -126,9 +114,6 @@ public struct WalletColorPaletteiOS: ColorPalette {
     }
     public var Shade20: ProtonColor {
         ProtonColor(name: "FrostWhisper")
-    }
-    public var Shade15: ProtonColor {
-        ProtonColor(name: "MobileShade15")
     }
     public var Shade10: ProtonColor {
         ProtonColor(name: "CloudVeil")
@@ -177,11 +162,6 @@ public struct WalletColorPaletteiOS: ColorPalette {
         BrandNorm
     }
 
-    // MARK: Floaty
-    public let FloatyBackground = ProtonColor(name: "MobileFloatyBackground")
-    public let FloatyPressed = ProtonColor(name: "MobileFloatyPressed")
-    public let FloatyText = ProtonColor(name: "MobileFloatyText")
-
     // MARK: Background
     public var BackgroundNorm: ProtonColor {
         ProtonColor(name: "CloudVeil")
@@ -206,9 +186,6 @@ public struct WalletColorPaletteiOS: ColorPalette {
     public var SidebarBackground: ProtonColor {
         ProtonColor(name: "MidnightPulse")
     }
-    public var SidebarInteractionWeakNorm: ProtonColor {
-        ProtonColor(name: "MobileSidebarInteractionWeakNorm")
-    }
     public var SidebarInteractionWeakPressed: ProtonColor {
         ProtonColor(name: "PortGore")
     }
@@ -217,9 +194,6 @@ public struct WalletColorPaletteiOS: ColorPalette {
     }
     public var SidebarInteractionAlternative: ProtonColor {
         ProtonColor(name: "TexasRose")
-    }
-    public var SidebarSeparator: ProtonColor {
-        ProtonColor(name: "MobileSidebarSeparator")
     }
     public var SidebarTextNorm: ProtonColor {
         ProtonColor(name: "CadetBlue")
@@ -236,7 +210,4 @@ public struct WalletColorPaletteiOS: ColorPalette {
     public var SidebarInteractionPressed: ProtonColor {
         ProtonColor(name: "PortGore")
     }
-
-    // MARK: Blenders
-    public let BlenderNorm = ProtonColor(name: "MobileBlenderNorm")
 }
