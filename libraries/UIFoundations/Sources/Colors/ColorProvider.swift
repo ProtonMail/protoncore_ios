@@ -38,17 +38,13 @@ public let UIColorManager = ColorProviderBase()
 
 @dynamicMemberLookup
 public final class ColorProviderBase {
-    public var palette: any ColorPalette {
-#if canImport(AppKit)
-        return ProtonColorPalettemacOS.instance
-#else
+    public var iOSPalette: any ColorPaletteiOS {
         switch brand {
         case .proton, .vpn, .pass:
             return ProtonColorPaletteiOS.instance
         case .wallet:
             return WalletColorPaletteiOS.instance
         }
-#endif
     }
 
     public var brand: Brand {
@@ -63,20 +59,20 @@ public final class ColorProviderBase {
 import UIKit
 
 extension ColorProviderBase {
-    public subscript(dynamicMember keypath: KeyPath<any ColorPalette, ProtonColor>) -> UIColor {
-        palette[keyPath: keypath].uiColor
+    public subscript(dynamicMember keypath: KeyPath<any ColorPaletteiOS, ProtonColor>) -> UIColor {
+        iOSPalette[keyPath: keypath].uiColor
     }
 
-    public subscript(dynamicMember keypath: KeyPath<any ColorPalette, ProtonColor>) -> CGColor {
-        palette[keyPath: keypath].uiColor.cgColor
+    public subscript(dynamicMember keypath: KeyPath<any ColorPaletteiOS, ProtonColor>) -> CGColor {
+        iOSPalette[keyPath: keypath].uiColor.cgColor
     }
 
-    @available(*, deprecated, message: "Use the version using protocol ColorPalette")
+    @available(*, deprecated, message: "Use the version using protocol ColorPaletteiOS")
     public subscript(dynamicMember keypath: KeyPath<ProtonColorPaletteiOS, ProtonColor>) -> UIColor {
         ProtonColorPaletteiOS.instance[keyPath: keypath].uiColor
     }
 
-    @available(*, deprecated, message: "Use the version using protocol ColorPalette")
+    @available(*, deprecated, message: "Use the version using protocol ColorPaletteiOS")
     public subscript(dynamicMember keypath: KeyPath<ProtonColorPaletteiOS, ProtonColor>) -> CGColor {
         ProtonColorPaletteiOS.instance[keyPath: keypath].uiColor.cgColor
     }
@@ -302,11 +298,11 @@ extension ColorProviderBase {
 
     #if canImport(UIKit)
 
-    public subscript(dynamicMember keypath: KeyPath<any ColorPalette, ProtonColor>) -> Color {
-        palette[keyPath: keypath].color
+    public subscript(dynamicMember keypath: KeyPath<any ColorPaletteiOS, ProtonColor>) -> Color {
+        iOSPalette[keyPath: keypath].color
     }
 
-    @available(*, deprecated, message: "Use the version using protocol ColorPalette")
+    @available(*, deprecated, message: "Use the version using protocol ColorPaletteiOS")
     public subscript(dynamicMember keypath: KeyPath<ProtonColorPaletteiOS, ProtonColor>) -> Color {
         ProtonColorPaletteiOS.instance[keyPath: keypath].color
     }

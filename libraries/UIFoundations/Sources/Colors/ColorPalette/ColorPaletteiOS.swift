@@ -21,7 +21,7 @@
 
 import Foundation
 
-public protocol ColorPalette<T> {
+public protocol ColorPaletteiOS<T> {
     associatedtype T
     static var instance: T { get }
 
@@ -144,7 +144,7 @@ public protocol ColorPalette<T> {
     var Cloud: ProtonColor { get }
 }
 
-public extension ColorPalette {
+public extension ColorPaletteiOS {
     // MARK: Default colors
 
     // MARK: MobileBrand
@@ -244,7 +244,7 @@ public extension ColorPalette {
     var BlenderNorm: ProtonColor { ProtonColor(name: "MobileBlenderNorm") }
 }
 
-public extension ColorPalette {
+public extension ColorPaletteiOS {
     // MARK: Accent
     var PurpleBase: ProtonColor { ProtonColor(name: "SharedPurpleBase") }
     var EnzianBase: ProtonColor { ProtonColor(name: "SharedEnzianBase") }
@@ -276,7 +276,7 @@ public extension ColorPalette {
     var Cloud: ProtonColor { ProtonColor(name: "Cloud") }
 }
 
-extension ColorPalette {
+extension ColorPaletteiOS {
     private var balticSea: Int { 0x1C1B24 }
     private var bastille: Int { 0x292733 }
     private var steelGray: Int { 0x343140 }

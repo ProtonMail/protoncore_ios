@@ -19,7 +19,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-public struct ProtonColorPaletteiOS: ColorPalette {
+public struct ProtonColorPaletteiOS: ColorPaletteiOS {
     public typealias T = ProtonColorPaletteiOS
 
     public static let instance = ProtonColorPaletteiOS()

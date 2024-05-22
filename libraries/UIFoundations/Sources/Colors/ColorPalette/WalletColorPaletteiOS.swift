@@ -21,7 +21,7 @@
 
 import Foundation
 
-public struct WalletColorPaletteiOS: ColorPalette {
+public struct WalletColorPaletteiOS: ColorPaletteiOS {
 
     public typealias T = WalletColorPaletteiOS
 
