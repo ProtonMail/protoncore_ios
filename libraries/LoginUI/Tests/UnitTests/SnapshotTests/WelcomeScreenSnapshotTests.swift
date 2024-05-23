@@ -137,6 +137,11 @@ class WelcomeScreenSnapshotTests: ProtonCoreTestingToolkitUnitTestsCore.Snapshot
         welcomeScreenSnapshotTests(variant: .pass(WelcomeScreenTexts(body: body)), inAppTheme: .light)
     }
 
+    func testWalletWelcomeScreenEnforceLightTheme() {
+        let body = "This is a test message for the welcome screen snapshot tests of the Wallet screen variant"
+        welcomeScreenSnapshotTests(variant: .wallet(WelcomeScreenTexts(body: body)), inAppTheme: .light)
+    }
+
     func testMailWelcomeScreenEnforceDarkTheme() {
         let body = "This is a test message for the welcome screen snapshot tests of the Mail screen variant"
         welcomeScreenSnapshotTests(variant: .mail(WelcomeScreenTexts(body: body)), inAppTheme: .dark)
