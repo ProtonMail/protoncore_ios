@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
+import ProtonCoreLog
 
 public enum DoHConstants {
     public static let dohHostHeader = "x-pm-doh-host"
@@ -64,7 +65,7 @@ public enum ProductionHosts: String, CaseIterable {
         case .passAPI: result = "OBQXG4ZNMFYGSLTQOJXXI33OFZWWK"
         case .walletAPI:
             result = ""
-            assertionFailure("DoH for Wallet is not configured")
+            PMLog.info("DoH for Wallet is not configured")
         case .accountApp: result = "MFRWG33VNZ2C44DSN52G63RONVSQ"
         case .accountAPI: result = "MFRWG33VNZ2C2YLQNEXHA4TPORXW4LTNMU"
         case .verifyApp: result = "OZSXE2LGPEXHA4TPORXW4LTNMU"

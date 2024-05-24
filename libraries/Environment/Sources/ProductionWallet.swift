@@ -31,6 +31,8 @@ final class ProductionWallet: DoH, VerificationModifiable {
     var _humanVerificationV3Host: String = ProductionHosts.verifyApp.urlString
     var humanVerificationV3Host: String { _humanVerificationV3Host }
 
+    var enableDoh: Bool { false }
+
     let apiHost: String = ProductionHosts.walletAPI.dohHost
     let defaultPath: String = ""
     let signupDomain: String = "proton.me"
