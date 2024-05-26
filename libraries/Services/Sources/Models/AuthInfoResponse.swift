@@ -49,7 +49,7 @@ public final class AuthInfoResponse: Response, APIDecodableResponse {
         case version
         case salt
         case srpSession = "SRPSession"
-        case _2FA = "2FA"
+        case _2FA = "_2FA"
     }
 
     required init() {
@@ -76,7 +76,7 @@ public final class AuthInfoResponse: Response, APIDecodableResponse {
             version: version,
             salt: salt,
             srpSession: srpSession,
-            _2FA: response["2FA"] as? TwoFA
+            _2FA: response["_2FA"] as? TwoFA
         )
     }
 
