@@ -224,7 +224,7 @@
 
 "Two-Factor Authentication" = "Tvåfaktorsautentisering";
 
-"Present a security key linked to your Proton Account." = "Present a security key linked to your Proton Account.";
+"Present a security key linked to your Proton Account." = "Visa en säkerhetsnyckel länkat till ditt Proton-konto.";
 
 "Learn more" = "Lär dig mer";
 
@@ -236,13 +236,13 @@
 
 "Fetching your security keys details" = "Hämtar detaljer om dina säkerhetsnycklar";
 
-"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys.";
+"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "Du har inga säkerhetsnycklar registrerade på ditt konto ännu. Besök sektionen för inställningar på vår webbplats för att lägga till säkerhetsnycklar.";
 
-"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "An error occurred fetching your security keys. You can also check them on the Proton %@ website.";
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "Ett fel uppstod när dina säkerhetsnycklar skulle hämtas. Du kan också kontrollera dem på webbplatsen för Proton %@.";
 
 "These are the security keys registered to your account" = "Dessa är säkerhetsnycklarna registrerade till ditt konto";
 
-"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys.";
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "Du har ännu inga säkerhetsnycklar registrerade på ditt konto. Använd webbapplikationen Proton %@ för att lägga till säkerhetsnycklar.";
 
 "Security Keys" = "Säkerhetsnycklar";
 
