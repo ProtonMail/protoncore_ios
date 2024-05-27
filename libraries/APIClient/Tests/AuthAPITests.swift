@@ -50,13 +50,25 @@ class AuthAPITests: XCTestCase {
             version: version,
             salt: salt,
             srpSession: srpSession,
-            _2FA: .init(enabled: .both,
-                        fido2: .init(authenticationOptions: .init(publicKey: .init(timeout: 600, challenge: Data([1, 2, 3]),
-                                                                                   userVerification: "discouraged",
-                                                                                   rpId: "proton.me",
-                                                                                   allowCredentials: [.init(id: Data([80, 200, 240]), type: "public-key")])),
-                                     registeredKeys: [.init(attestationFormat: "packed",
-                                                            credentialID: Data([80, 160, 240]), name: "Yubi")]))
+            _2FA: .init(
+                enabled: .both,
+                fido2: .init(
+                    authenticationOptions: .init(
+                        publicKey: .init(
+                            timeout: 600, 
+                            challenge: Data([1, 2, 3]),
+                            userVerification: "discouraged",
+                            rpId: "proton.me",
+                            allowCredentials: [
+                                .init(id: Data([80, 200, 240]), type: "public-key")
+                            ])),
+                    registeredKeys: [
+                        .init(attestationFormat: "packed",
+                              credentialID: Data([80, 160, 240]),
+                              name: "Yubi")
+                    ]
+                )
+            )
         )
     }
 

@@ -49,7 +49,7 @@ public final class AuthInfoResponse: Response, APIDecodableResponse, Encodable {
         case version
         case salt
         case srpSession = "SRPSession"
-        case _2FA = "_2FA"
+        case _2FA 
     }
 
     required init() {
@@ -94,7 +94,7 @@ public final class AuthInfoResponse: Response, APIDecodableResponse, Encodable {
         self.version = version
         self.salt = salt
         self.srpSession = srpSession
-        self._2FA = response["2FA"] as? TwoFA
+        self._2FA = TwoFA(response["2FA"] as? [String: Any])
         return true
     }
 
@@ -106,6 +106,15 @@ public final class AuthInfoResponse: Response, APIDecodableResponse, Encodable {
         public init(enabled: EnabledMechanism, fido2: Fido2? = nil) {
             self.enabled = enabled
             self.FIDO2 = fido2
+        }
+
+        public init?(_ jsonDictionary: [String: Any]?) {
+            guard let jsonDictionary, let jsonData = try? JSONSerialization.data(withJSONObject: jsonDictionary)
+            else { return nil }
+
+            let decoder = JSONDecoder.decapitalisingFirstLetter
+            guard let instance = try? decoder.decode(Self.self, from: jsonData) else { return nil }
+            self = instance
         }
     }
 }

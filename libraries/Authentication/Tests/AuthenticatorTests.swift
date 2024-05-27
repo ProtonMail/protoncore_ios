@@ -2625,14 +2625,3 @@ class AuthenticatorTests: XCTestCase {
     }
 }
 
-extension AuthInfoResponse: Encodable {
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: AuthInfoResponse.CodingKeys.self)
-        try container.encode(modulus, forKey: .modulus)
-        try container.encode(serverEphemeral, forKey: .serverEphemeral)
-        try container.encode(version, forKey: .version)
-        try container.encode(salt, forKey: .salt)
-        try container.encode(srpSession, forKey: .srpSession)
-        try? container.encode(_2FA, forKey: ._2FA)
-    }
-}
