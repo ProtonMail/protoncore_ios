@@ -76,6 +76,10 @@ class DohIntegrationTests: XCTestCase {
     func testDoHWorksForTXTDomains() async throws {
         // DoH must be run on prod, because there's no AR for atlas
         for environment in Environment.productions {
+            guard environment.doh.enableDoh else {
+                // Doh is disabled for WalletProd
+                return
+            }
             // GIVEN
             environment.updateDohStatus(to: .forceAlternativeRouting)
             let authDelegate = AuthHelper()

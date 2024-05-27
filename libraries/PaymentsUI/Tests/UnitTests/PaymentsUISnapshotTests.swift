@@ -109,6 +109,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
             static var drivePaidPlans: [Plan] { [Plans.bundle2022, .drive2022].map(\.plan) }
             static var calendarPaidPlans: [Plan] { [Plans.bundle2022, .mail2022].map(\.plan) }
             static var passPaidPlans: [Plan] { [Plans.bundle2022, .pass2023].map(\.plan) }
+            static var walletPaidPlans: [Plan] { [Plans.bundle2022].map(\.plan) }
 
             var plan: Plan {
                 switch self {
@@ -720,6 +721,10 @@ final class PaymentsUISnapshotTests: XCTestCase {
             shownPlanNames = ObfuscatedConstants.passShownPlanNames
             iapIdentifiers = ObfuscatedConstants.passIAPIdentifiers
             paidPlans = MockData.Plans.passPaidPlans
+        case .wallet:
+            shownPlanNames = Set()
+            iapIdentifiers = Set()
+            paidPlans = MockData.Plans.walletPaidPlans
         case .other("arbitraryOffer"):
             shownPlanNames = ObfuscatedConstants.mailShownPlanNames
             var identifiers = ObfuscatedConstants.mailIAPIdentifiers
@@ -922,6 +927,8 @@ final class PaymentsUISnapshotTests: XCTestCase {
             return ObfuscatedConstants.calendarShownPlanNames
         case .pass:
             return ObfuscatedConstants.passShownPlanNames
+        case .wallet:
+            return Set()
         case .other("arbitraryOffer"):
             return ObfuscatedConstants.mailShownPlanNames
         case .other:
