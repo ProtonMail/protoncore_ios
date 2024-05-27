@@ -216,7 +216,7 @@
 
 "Troubleshoot" = "Dépannage";
 
-"Your account has several 2FA mechanisms configured. Please choose how you want to confirm your identity." = "Plusieurs mécanismes 2FA sont configurés sur votre compte. Choisissez la manière dont vous souhaitez confirmer votre identité.";
+"Your account has several 2FA mechanisms configured. Please choose how you want to confirm your identity." = "Plusieurs mécanismes A2F sont configurés sur votre compte. Choisissez la manière dont vous voulez confirmer votre identité.";
 
 "One-time code" = "Mot de passe unique";
 
@@ -238,7 +238,7 @@
 
 "You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "Vous n'avez pas encore de clés de sécurité enregistrées pour votre compte. Consultez la section Paramètres de notre site web pour ajouter des clés de sécurité.";
 
-"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "Une erreur est survenue lors de la récupération de vos clés de sécurité. Vous pouvez également les vérifier depuis le site web de Proton %@.";
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "Une erreur s'est produite lors de la récupération de vos clés de sécurité. Vous pouvez également les vérifier depuis le site web de Proton %@.";
 
 "These are the security keys registered to your account" = "Voici les clés de sécurité enregistrées pour votre compte.";
 

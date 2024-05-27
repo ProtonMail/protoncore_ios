@@ -216,7 +216,7 @@
 
 "Troubleshoot" = "Solução de problemas";
 
-"Your account has several 2FA mechanisms configured. Please choose how you want to confirm your identity." = "Your account has several 2FA mechanisms configured. Please choose how you want to confirm your identity.";
+"Your account has several 2FA mechanisms configured. Please choose how you want to confirm your identity." = "Sua conta tem vários mecanismos de A2F configurados. Escolha como confirmar sua identidade.";
 
 "One-time code" = "Código de uso único";
 
@@ -224,13 +224,13 @@
 
 "Two-Factor Authentication" = "Autenticação de dois fatores";
 
-"Present a security key linked to your Proton Account." = "Present a security key linked to your Proton Account.";
+"Present a security key linked to your Proton Account." = "Apresente uma chave de segurança vinculada à sua conta da Proton.";
 
 "Learn more" = "Saiba mais";
 
 "Invalid state. Please quit the app and try again in a few minutes." = "Invalid state. Please quit the app and try again in a few minutes.";
 
-"There was a problem reading your security key." = "There was a problem reading your security key.";
+"There was a problem reading your security key." = "Houve um problema ao ler sua chave de segurança.";
 
 "We received an authorization from a type we don't support yet." = "We received an authorization from a type we don't support yet.";
 
@@ -246,4 +246,4 @@
 
 "Security Keys" = "Chaves de segurança";
 
-"To manage, add, or remove security keys, please use the Proton %@ web application." = "To manage, add, or remove security keys, please use the Proton %@ web application.";
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "Para gerenciar, adicionar ou remover chaves de segurança use o aplicativo web da Proton %@.";
