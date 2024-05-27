@@ -21,7 +21,6 @@ import Foundation
 import ProtonCoreAuthentication
 import ProtonCoreNetworking
 import ProtonCoreServices
-import Collections
 
 public struct UnlockPasswordEndpoint: Request {
 
@@ -39,15 +38,19 @@ public struct UnlockPasswordEndpoint: Request {
     }
 
     public var parameters: [String: Any]? {
-        let authParams: [String: Any] = [
+        guard let twoFAParamsDictionary = twoFAParams.asParameterDictionary else {
+            return nil
+        }
+
+        var authParams: [String: Any] = [
             "Username": authData.username,
             "ClientEphemeral": authData.ephemeral.base64EncodedString(),
             "ClientProof": authData.proof.base64EncodedString(),
             "SRPSession": authData.srpSession
         ]
-        return twoFAParams.asParameterDictionary?.merging(authParams) { a, b in
-            a
-        }
+            authParams.merge(twoFAParamsDictionary, uniquingKeysWith: { a, _ in a })
+
+        return authParams
     }
 
     public var path: String { "/users/password" }

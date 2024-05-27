@@ -312,17 +312,17 @@ class AuthenticatorTests: XCTestCase {
 
             manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
                 switch result {
-                case .success(Authenticator.Status.askFIDO2(let context)):
+                case let .success(Authenticator.Status.askFIDO2(context, authenticationOptions)):
                     let twoFA = AuthInfoResponse.TwoFA(enabled: .webAuthn)
                     let authRouteResponse = self.authRouteResponse(twoFA: twoFA)
                     XCTAssertEqual(context.credential.UID, authRouteResponse.UID)
-                    XCTAssertEqual(context.authenticationOptions.publicKey.challenge, Data([65, 66, 67]))
-                    XCTAssertEqual(context.authenticationOptions.publicKey.timeout, 100)
-                    XCTAssertEqual(context.authenticationOptions.publicKey.userVerification, "check")
-                    XCTAssertEqual(context.authenticationOptions.publicKey.rpId, "proton.me")
-                    XCTAssertEqual(context.authenticationOptions.publicKey.allowCredentials.count, 1)
-                    XCTAssertEqual(context.authenticationOptions.publicKey.allowCredentials[0].id, Data([97, 98, 99]))
-                    XCTAssertEqual(context.authenticationOptions.publicKey.allowCredentials[0].type, "public")
+                    XCTAssertEqual(authenticationOptions.challenge, Data([65, 66, 67]))
+                    XCTAssertEqual(authenticationOptions.publicKey.timeout, 100)
+                    XCTAssertEqual(authenticationOptions.publicKey.userVerification, "check")
+                    XCTAssertEqual(authenticationOptions.relyingPartyIdentifier, "proton.me")
+                    XCTAssertEqual(authenticationOptions.allowedCredentialIds.count, 1)
+                    XCTAssertEqual(authenticationOptions.allowedCredentialIds[0], Data([97, 98, 99]))
+                    XCTAssertEqual(authenticationOptions.publicKey.allowCredentials[0].type, "public")
 
                 default:
                     XCTFail("Wrong result")

@@ -60,7 +60,7 @@ final class InfoEndpointTests: XCTestCase {
     }
 
     func testPath() {
-        XCTAssertEqual("/auth/info", cut.path)
+        XCTAssertEqual("/core/v4/auth/info", cut.path)
     }
 
     func testMethod() {

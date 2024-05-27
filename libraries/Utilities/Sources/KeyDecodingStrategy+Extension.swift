@@ -33,7 +33,14 @@ extension JSONDecoder.KeyDecodingStrategy {
 
             // let's hope server will not return unicode glyphs as JSON keys
             let originalKey: String = lastKey.stringValue
-            if CharacterSet.decimalDigits.contains(originalKey.unicodeScalars.first!) {
+
+//            // if first character is _, it means it's a roundtrip encoded/decoded property such as _2FA
+//            if originalKey.unicodeScalars.first! == "_" {
+//                return BasicCodingKey(stringValue: originalKey)!
+//            }
+
+            if CharacterSet.decimalDigits.contains(originalKey.unicodeScalars.first!)
+            {
                 // we will just add _ in the beginning if first character is a digit (like 2FA)
                 return BasicCodingKey(stringValue: "_" + originalKey)!
             }

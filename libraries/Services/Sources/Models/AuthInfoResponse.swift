@@ -26,7 +26,7 @@ import ProtonCoreNetworking
 /**
  A class representing the data required to compute the SRP
  */
-public final class AuthInfoResponse: Response, APIDecodableResponse {
+public final class AuthInfoResponse: Response, APIDecodableResponse, Encodable {
     public var modulus: String
     public var serverEphemeral: String
     public var version: Int

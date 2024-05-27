@@ -47,6 +47,17 @@ public extension Encodable {
             let modifiedKey = firstLetter + lastKey.stringValue.dropFirst()
             return CustomCodingKey(stringValue: modifiedKey)!
         })
+        // Custom Data encoding for FIDO2 object
+//        encoder.dataEncodingStrategy = .custom({ data, encoder in
+//            let lastKey = encoder.codingPath.last!
+//            if dataAsByteArrayEncodingStrategyExceptions.contains(lastKey.stringValue) {
+//                let bytes: [UInt8] = Array(data)
+//                try bytes.encode(to: encoder)
+//            } else {
+//                try data.base64EncodedString().encode(to: encoder)
+//            }
+//        })
+        encoder.dataEncodingStrategy = .deferredToData
 
         var result = try! JSONSerialization.jsonObject(with: encoder.encode(self)) as! [String: Any]
         result["Code"] = 1000
@@ -61,7 +72,11 @@ public extension Encodable {
     }
 
     var encodingStrategyExceptions: [String: String] {
-        return ["srpSession": "SRPSession"]
+        return ["srpSession": "SRPSession", "_2FA" : "2FA"]
+    }
+
+    var dataAsByteArrayEncodingStrategyExceptions: [String] {
+        ["challenge", "id", "credentialID"]
     }
 
     func toSuccessfulResponse(underKey key: String) -> [String: Any] {
