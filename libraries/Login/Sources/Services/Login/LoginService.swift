@@ -81,11 +81,6 @@ public final class LoginService {
         self.ssoCallbackScheme = ssoCallbackScheme
         authManager = authenticator ?? Authenticator(api: api)
 
-        Task {
-                   FeatureFlagsRepository.shared.setApiService(api)
-                   try await FeatureFlagsRepository.shared.fetchFlags()
-        }
-
     }
 
     // MARK: - Configuration
