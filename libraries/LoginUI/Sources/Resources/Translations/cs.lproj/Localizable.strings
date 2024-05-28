@@ -216,7 +216,7 @@
 
 "Troubleshoot" = "Poradce při potížích";
 
-"Your account has several 2FA mechanisms configured. Please choose how you want to confirm your identity." = "Váš účet má nastaven několik mechanismů 2FA. Zvolte, jakým způsobem chcete potvrdit svou identitu.";
+"Please choose how you want to confirm your identity." = "Váš účet má nastaven několik mechanismů 2FA. Zvolte, jakým způsobem chcete potvrdit svou identitu.";
 
 "One-time code" = "Jednorázový kód";
 

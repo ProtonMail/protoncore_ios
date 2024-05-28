@@ -43,4 +43,12 @@ public enum ClientApp: Codable, Equatable {
         case .other(let named): return named
         }
     }
+
+    /// User-facing version of the app name
+    public var displayName: String {
+        switch self {
+        case .vpn: return "VPN"
+        default: return name.capitalized
+        }
+    }
 }

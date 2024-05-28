@@ -216,7 +216,7 @@
 
 "Troubleshoot" = "Penyelesaian Masalah";
 
-"Your account has several 2FA mechanisms configured. Please choose how you want to confirm your identity." = "Akun Anda memiliki beberapa mekanisme 2FA yang terpasang. Silakan tentukan bagaimana Anda ingin mengonfirmasi identitas Anda.";
+"Please choose how you want to confirm your identity." = "Akun Anda memiliki beberapa mekanisme 2FA yang terpasang. Silakan tentukan bagaimana Anda ingin mengonfirmasi identitas Anda.";
 
 "One-time code" = "Kode sekali pakai";
 

@@ -39,7 +39,7 @@ public struct Choose2FAView: View {
 
     public var body: some View {
         VStack(alignment: .leading, spacing: 24) {
-            Text("Your account has several 2FA mechanisms configured. Please choose how you want to confirm your identity.",
+            Text("Please choose how you want to confirm your identity.",
                  bundle: LUITranslation.bundle,
                  comment: "2FA choice screen header")
             Picker("Type", selection: $selectedType) {

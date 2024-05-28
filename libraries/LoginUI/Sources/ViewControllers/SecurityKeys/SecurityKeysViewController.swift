@@ -32,7 +32,7 @@ public final class SecurityKeysViewController: UIHostingController<SecurityKeysV
     }
     
     init(apiService: APIService, clientApp: ClientApp) {
-        self.viewModel = SecurityKeysView.ViewModel(apiService: apiService, productName: clientApp.name)
+        self.viewModel = SecurityKeysView.ViewModel(apiService: apiService, productName: clientApp.displayName)
         let view = SecurityKeysView(viewModel: viewModel)
         super.init(rootView: view)
     }
