@@ -84,9 +84,6 @@ extension PasswordChangeView {
             self.showingDismissButton = showingDismissButton
             self.passwordChangeCompletion = passwordChangeCompletion
             self.setupViews()
-            Task {
-                self.authInfo = try? await self.passwordChangeService?.fetchAuthInfo()
-            }
         }
 
         func setupViews() {
@@ -125,27 +122,30 @@ extension PasswordChangeView {
         }
 
         func savePasswordTapped() {
-            guard let authInfo else {
-                bannerState = .error(content: .init(message: "AuthInfo not loaded"))
-                return
-            }
-            do {
-                resetTextFieldsErrors()
-                try validate(
-                    for: .default,
-                    password: newPasswordFieldContent.text,
-                    confirmPassword: confirmNewPasswordFieldContent.text
-                )
-                if needs2FA {
-                    present2FAAndUpdatePassword()
-                } else {
-                    updatePassword()
+            Task { @MainActor in
+                guard let authInfo = try? await self.passwordChangeService?.fetchAuthInfo() else {
+                    bannerState = .error(content: .init(message: "We could not initiate the Secure Password update connection. Please try again."))
+                    return
                 }
-            } catch let error as PasswordValidationError {
-                displayPasswordError(error: error)
-            } catch {
-                PMLog.error(error)
-                bannerState = .error(content: .init(message: error.localizedDescription))
+                self.authInfo = authInfo
+                do {
+                    resetTextFieldsErrors()
+                    try validate(
+                        for: .default,
+                        password: newPasswordFieldContent.text,
+                        confirmPassword: confirmNewPasswordFieldContent.text
+                    )
+                    if needs2FA {
+                        present2FAAndUpdatePassword()
+                    } else {
+                        updatePassword()
+                    }
+                } catch let error as PasswordValidationError {
+                    displayPasswordError(error: error)
+                } catch {
+                    PMLog.error(error)
+                    bannerState = .error(content: .init(message: error.localizedDescription))
+                }
             }
         }
 
