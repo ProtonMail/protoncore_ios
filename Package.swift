@@ -1292,8 +1292,8 @@ add(
                        .loginUI,
                        .networking,
                        .observability,
+                       .passwordRequest,
                        .services,
-//                       .swiftCollections,
                        .uiFoundations,
                        .utilities
                    ],
