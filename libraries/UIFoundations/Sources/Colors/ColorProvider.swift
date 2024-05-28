@@ -127,7 +127,7 @@ public extension CGColor {
 
 #endif
 
-#if canImport(AppKit)
+#if canImport(AppKit) && !targetEnvironment(macCatalyst)
 import AppKit
 import ProtonCoreUtilities
 
@@ -309,7 +309,7 @@ extension ColorProviderBase {
 
     #endif
 
-    #if canImport(AppKit)
+    #if canImport(AppKit) && !targetEnvironment(macCatalyst)
 
     public subscript(dynamicMember keypath: KeyPath<ProtonColorPalettemacOS, ProtonColor>) -> Color {
         ProtonColorPalettemacOS.instance[keyPath: keypath].color

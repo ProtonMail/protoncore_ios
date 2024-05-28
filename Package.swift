@@ -234,7 +234,7 @@ extension Target.Dependency {
     static var hash: Target.Dependency { .target(name: .hash) }
     static var humanVerification: Target.Dependency { .target(name: .humanVerification) }
     static var humanVerificationResourcesiOS: Target.Dependency { .target(name: .humanVerificationResourcesiOS,
-                                                                          condition: .when(platforms: [.iOS])) }
+                                                                          condition: .when(platforms: [.iOS, .macCatalyst])) }
     static var humanVerificationResourcesmacOS: Target.Dependency { .target(name: .humanVerificationResourcesmacOS,
                                                                             condition: .when(platforms: [.macOS])) }
     static var keymaker: Target.Dependency { .target(name: .keymaker) }
@@ -243,7 +243,7 @@ extension Target.Dependency {
     static var login: Target.Dependency { .target(name: .login) }
     static var loginUI: Target.Dependency { .target(name: .loginUI) }
     static var loginUIResourcesiOS: Target.Dependency { .target(name: .loginUIResourcesiOS,
-                                                                condition: .when(platforms: [.iOS])) }
+                                                                condition: .when(platforms: [.iOS, .macCatalyst])) }
     static var missingScopes: Target.Dependency { .target(name: .missingScopes) }
     static var networking: Target.Dependency { .target(name: .networking) }
     static var obfuscatedConstants: Target.Dependency { .target(name: .obfuscatedConstants) }
@@ -253,7 +253,7 @@ extension Target.Dependency {
     static var payments: Target.Dependency { .target(name: .payments) }
     static var paymentsUI: Target.Dependency { .target(name: .paymentsUI) }
     static var paymentsUIResourcesiOS: Target.Dependency { .target(name: .paymentsUIResourcesiOS,
-                                                                   condition: .when(platforms: [.iOS])) }
+                                                                   condition: .when(platforms: [.iOS, .macCatalyst])) }
     static var pushNotifications: Target.Dependency { .target(name: .pushNotifications) }
     static var quarkCommands: Target.Dependency { .target(name: .quarkCommands) }
     static var services: Target.Dependency { .target(name: .services) }
@@ -288,7 +288,7 @@ extension Target.Dependency {
                                                                         condition: .when(platforms: [.iOS])) }
     static var uiFoundations: Target.Dependency { .target(name: .uiFoundations) }
     static var uiFoundationsResourcesiOS: Target.Dependency { .target(name: .uiFoundationsResourcesiOS,
-                                                                      condition: .when(platforms: [.iOS])) }
+                                                                      condition: .when(platforms: [.iOS, .macCatalyst])) }
     static var uiFoundationsResourcestvOS: Target.Dependency { .target(name: .uiFoundationsResourcestvOS,
                                                                        condition: .when(platforms: [.tvOS])) }
     static var uiFoundationsResourcesmacOS: Target.Dependency { .target(name: .uiFoundationsResourcesmacOS,
@@ -1959,7 +1959,7 @@ add(
 let package = Package(
     name: "ProtonCore",
     defaultLocalization: "en",
-    platforms: [.iOS(.v14), .macOS(.v11)],
+    platforms: [.iOS(.v14), .macOS(.v11), .macCatalyst(.v14)],
     products: products + [
         .plugin(name: .obfuscatedConstantsGenerationPlugin,
                 targets: [.obfuscatedConstantsGenerationPlugin]),
