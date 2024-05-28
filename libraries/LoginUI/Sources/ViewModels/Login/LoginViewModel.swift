@@ -195,68 +195,45 @@ extension LoginViewModel: TwoFAProviderDelegate {
     func providerDidObtain(factor: String) async throws {
        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, any Error>) -> Void in
             login.provide2FACode(factor) { [weak self] result in
-                switch result {
-                case let .failure(loginError):
-                    self?.error.publish(loginError)
-                    continuation.resume(throwing: loginError)
-                case let .success(status):
-                    switch status {
-                    case let .finished(data):
-                        self?.finished.publish(.done(data))
-                        continuation.resume()
-                    case let .chooseInternalUsernameAndCreateInternalAddress(data):
-                        self?.login.availableUsernameForExternalAccountEmail(email: data.email) { [weak self] username in
-                            self?.finished.publish(.createAddressNeeded(data, username))
-                            continuation.resume()
-                        }
-                    case .askTOTP, .askAny2FA, .askFIDO2:
-                        PMLog.error("Asking for 2FA validation after successful 2FA validation is an invalid state", sendToExternal: true)
-                        self?.error.publish(.invalidState)
-                        continuation.resume(throwing: LoginError.invalidState)
-                    case .askSecondPassword:
-                        self?.finished.publish(.mailboxPasswordNeeded)
-                        continuation.resume()
-                    case .ssoChallenge:
-                        PMLog.error("Receiving SSO challenge after successful 2FA code is an invalid state", sendToExternal: true)
-                        self?.error.publish(.invalidState)
-                        continuation.resume(throwing: LoginError.invalidState)
-                    }
-                }
+                self?.callbackForDidObtain(result: result, continuation: continuation)
             }
        }
-
     }
 
     func providerDidObtain(factor: ProtonCoreAuthentication.Fido2Signature) async throws {
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, any Error>) -> Void in
             login.provideFido2Signature(factor) { [weak self] result in
-                switch result {
-                case let .failure(loginError):
-                    self?.error.publish(loginError)
-                    continuation.resume(throwing: loginError)
-                case let .success(status):
-                    switch status {
-                    case let .finished(data):
-                        self?.finished.publish(.done(data))
-                        continuation.resume()
-                    case let .chooseInternalUsernameAndCreateInternalAddress(data):
-                        self?.login.availableUsernameForExternalAccountEmail(email: data.email) { [weak self] username in
-                            self?.finished.publish(.createAddressNeeded(data, username))
-                            continuation.resume()
-                        }
-                    case .askTOTP, .askAny2FA, .askFIDO2:
-                        PMLog.error("Asking for 2FA validation after successful 2FA validation is an invalid state", sendToExternal: true)
-                        self?.error.publish(.invalidState)
-                        continuation.resume(throwing: LoginError.invalidState)
-                    case .askSecondPassword:
-                        self?.finished.publish(.mailboxPasswordNeeded)
-                        continuation.resume()
-                    case .ssoChallenge:
-                        PMLog.error("Receiving SSO challenge after successful 2FA code is an invalid state", sendToExternal: true)
-                        self?.error.publish(.invalidState)
-                        continuation.resume(throwing: LoginError.invalidState)
-                    }
+                self?.callbackForDidObtain(result: result, continuation: continuation)
+            }
+        }
+    }
+
+    private func callbackForDidObtain(result: Result<LoginStatus, LoginError>, continuation: CheckedContinuation<Void, any Error>) {
+        switch result {
+        case let .failure(loginError):
+            error.publish(loginError)
+            continuation.resume(throwing: loginError)
+        case let .success(status):
+            switch status {
+            case let .finished(data):
+                finished.publish(.done(data))
+                continuation.resume()
+            case let .chooseInternalUsernameAndCreateInternalAddress(data):
+                login.availableUsernameForExternalAccountEmail(email: data.email) { [weak self] username in
+                    self?.finished.publish(.createAddressNeeded(data, username))
+                    continuation.resume()
                 }
+            case .askTOTP, .askAny2FA, .askFIDO2:
+                PMLog.error("Asking for 2FA validation after successful 2FA validation is an invalid state", sendToExternal: true)
+                   error.publish(.invalidState)
+                continuation.resume(throwing: LoginError.invalidState)
+            case .askSecondPassword:
+                finished.publish(.mailboxPasswordNeeded)
+                continuation.resume()
+            case .ssoChallenge:
+                PMLog.error("Receiving SSO challenge after successful 2FA code is an invalid state", sendToExternal: true)
+                    error.publish(.invalidState)
+                continuation.resume(throwing: LoginError.invalidState)
             }
         }
     }
