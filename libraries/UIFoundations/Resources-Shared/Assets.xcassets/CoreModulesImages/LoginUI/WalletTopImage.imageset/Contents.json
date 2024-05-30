@@ -3,6 +3,16 @@
     {
       "filename" : "WalletTopImage.svg",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Pass-welcome-DUI.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {

@@ -1581,7 +1581,10 @@ add(
     targets: [
         coreTarget(name: .settings,
                    dependencies: [
-                       .uiFoundations
+                        .dataModel,
+                        .networking,
+                        .services,
+                        .uiFoundations,
                    ],
                    path: "libraries/Settings/Sources",
                    resources: [

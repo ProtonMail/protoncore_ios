@@ -79,21 +79,21 @@ public struct WalletColorPaletteiOS: ColorPaletteiOS {
 
     // MARK: Interaction Strong
     public var InteractionStrong: ProtonColor {
-        ProtonColor(name: "Mirage")
+        Shade100
     }
     public var InteractionStrongPressed: ProtonColor {
-        ProtonColor(name: "Trout")
+        Shade80
     }
 
     // MARK: Interaction Weak
     public var InteractionWeak: ProtonColor {
-        White
+        Shade0
     }
     public var InteractionWeakPressed: ProtonColor {
-        ProtonColor(name: "Mercury")
+        Shade40
     }
     public var InteractionWeakDisabled: ProtonColor {
-        ProtonColor(name: "FrostWhisper")
+        Shade20
     }
 
     // MARK: Shade
@@ -118,25 +118,22 @@ public struct WalletColorPaletteiOS: ColorPaletteiOS {
     public var Shade10: ProtonColor {
         ProtonColor(name: "CloudVeil")
     }
-    public var Shade0: ProtonColor {
-        White
-    }
 
     // MARK: Text
     public var TextNorm: ProtonColor {
-        ProtonColor(name: "Mirage")
+        Shade100
     }
     public var TextWeak: ProtonColor {
-        ProtonColor(name: "Trout")
+        Shade80
     }
     public var TextHint: ProtonColor {
-        ProtonColor(name: "MistySilver")
+        Shade60
     }
     public var TextDisabled: ProtonColor {
-        ProtonColor(name: "Mischka")
+        Shade50
     }
     public var TextInverted: ProtonColor {
-        White
+        Shade0
     }
     public var TextAccent: ProtonColor {
         BrandNorm
@@ -144,19 +141,19 @@ public struct WalletColorPaletteiOS: ColorPaletteiOS {
 
     // MARK: Icon
     public var IconNorm: ProtonColor {
-        ProtonColor(name: "Mirage")
+        Shade100
     }
     public var IconWeak: ProtonColor {
-        ProtonColor(name: "Trout")
+        Shade80
     }
     public var IconHint: ProtonColor {
-        ProtonColor(name: "MistySilver")
+        Shade60
     }
     public var IconDisabled: ProtonColor {
-        ProtonColor(name: "Mischka")
+        Shade50
     }
     public var IconInverted: ProtonColor {
-        White
+        Shade0
     }
     public var IconAccent: ProtonColor {
         BrandNorm
@@ -164,22 +161,22 @@ public struct WalletColorPaletteiOS: ColorPaletteiOS {
 
     // MARK: Background
     public var BackgroundNorm: ProtonColor {
-        ProtonColor(name: "CloudVeil")
+        Shade10
     }
     public var BackgroundDeep: ProtonColor {
-        ProtonColor(name: "FrostWhisper")
+        Shade20
     }
     public var BackgroundSecondary: ProtonColor {
-        White
+        Shade0
     }
 
     // MARK: Separator
     public var SeparatorNorm: ProtonColor {
-        ProtonColor(name: "FrostWhisper")
+        Shade20
     }
 
     public var SeparatorStrong: ProtonColor {
-        ProtonColor(name: "Mercury")
+        Shade40
     }
 
     // MARK: Sidebar
@@ -205,7 +202,7 @@ public struct WalletColorPaletteiOS: ColorPaletteiOS {
         ProtonColor(name: "Topaz")
     }
     public var SidebarIconWeak: ProtonColor {
-        ProtonColor(name: "Trout")
+        ProtonColor(name: "MulledWine")
     }
     public var SidebarInteractionPressed: ProtonColor {
         ProtonColor(name: "PortGore")

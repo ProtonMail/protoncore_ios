@@ -24,6 +24,9 @@ Pod::Spec.new do |s|
 
     this_pod_does_not_have_subspecs(s)
 
+    s.dependency 'ProtonCore-DataModel', $version
+    s.dependency 'ProtonCore-Networking', $version
+    s.dependency 'ProtonCore-Services', $version
     s.dependency 'ProtonCore-UIFoundations', $version
 
     s.source_files = 'libraries/Settings/Sources/**/*.swift'
