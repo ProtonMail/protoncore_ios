@@ -47,7 +47,7 @@ public extension Encodable {
             let modifiedKey = firstLetter + lastKey.stringValue.dropFirst()
             return CustomCodingKey(stringValue: modifiedKey)!
         })
-        
+
         // Custom Data encoding for FIDO2 object
         encoder.dataEncodingStrategy = .custom({ data, encoder in
             let lastKey = encoder.codingPath.last!
@@ -72,7 +72,7 @@ public extension Encodable {
     }
 
     var encodingStrategyExceptions: [String: String] {
-        return ["srpSession": "SRPSession", "_2FA" : "2FA"]
+        return ["srpSession": "SRPSession", "_2FA": "2FA"]
     }
 
     var dataAsByteArrayEncodingStrategyExceptions: [String] {

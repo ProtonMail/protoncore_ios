@@ -49,7 +49,7 @@ public final class AuthInfoResponse: Response, APIDecodableResponse, Encodable {
         case version
         case salt
         case srpSession = "SRPSession"
-        case _2FA 
+        case _2FA
     }
 
     required init() {

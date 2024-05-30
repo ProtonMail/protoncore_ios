@@ -247,7 +247,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
                     self?.measureLoginFailure(httpCode: 426)
                     return
                 }
-      
+
                 self?.delegate?.requestKeySignature(authenticationOptions: authenticationOptions,
                                                     providerDelegate: self?.viewModel)
             case let .anyOfFido2TotpNeeded(authenticationOptions):
@@ -260,7 +260,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
                     }
                     return
                 }
-              
+
                 guard let username = self?.loginTextField.value,
                       let password = self?.passwordTextField.value
                 else {

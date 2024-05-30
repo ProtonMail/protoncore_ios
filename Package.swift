@@ -189,7 +189,6 @@ extension String {
     static let sentryPackage: String = "sentry-cocoa"
     static let sdWebImage: String = "SDWebImage"
     static let swiftBCrypt: String = "SwiftBCrypt"
-//    static let swiftCollections: String = "swift-collections"
     static let swiftOTP: String = "SwiftOTP"
     static let snapshotTesting: String = "SnapshotTesting"
     static let snapshotTestingPackage: String = "swift-snapshot-testing"
@@ -311,7 +310,6 @@ extension Target.Dependency {
     static var sentry: Target.Dependency { .product(name: .sentry, package: .sentryPackage) }
     static var snapshotTesting: Target.Dependency { .product(name: .snapshotTesting, package: .snapshotTestingPackage) }
     static var swiftBCrypt: Target.Dependency { .product(name: .swiftBCrypt, package: .swiftBCrypt) }
-//    static var swiftCollections: Target.Dependency { .product(name: .collections, package: .swiftCollections) }
     static var swiftOTP: Target.Dependency { .product(name: .swiftOTP, package: .swiftOTP) }
     static var trustKit: Target.Dependency { .product(name: .trustKit, package: .trustKit) }
     static var sdWebImage: Target.Dependency { .product(name: .sdWebImage, package: .sdWebImage) }
@@ -2028,10 +2026,6 @@ let package = Package(
         .package(
             url: "https://github.com/getsentry/sentry-cocoa.git",
             exact: "8.18.0"
-//        ),
-//        .package(
-//            url: "https://github.com/apple/swift-collections.git",
-//            .upToNextMajor(from: "1.1.0")
         )
     ],
     targets: targets + [

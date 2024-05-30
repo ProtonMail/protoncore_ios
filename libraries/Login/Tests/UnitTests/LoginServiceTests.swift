@@ -508,6 +508,47 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
+    func testLoginWithFIDO2_isSuccessful() {
+        withFeatureFlags([.fidoKeys]) {
+            let (api, authDelegate) = self.apiService
+            _ = authDelegate
+            mockOnePasswordWithFIDO2UserLogin()
+
+            let expect = expectation(description: "testLoginWithFIDO2IsSuccessful")
+            let service = LoginService(api: api, clientApp: .other(named: "core"), minimumAccountType: .internal)
+
+            service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, challenge: nil) { result in
+                switch result {
+                case let .success(status):
+                    switch status {
+                    case let .askAny2FA(authenticationOptions):
+                        service.provideFido2Signature(LoginTestUser.defaultUser.fido2SignatureWithAuthenticationOptions(authenticationOptions)) { result in
+                            switch result {
+                            case let .success(status):
+                                switch status {
+                                case .finished:
+                                    expect.fulfill()
+                                default:
+                                    XCTFail("Should be finished")
+                                }
+                            case .failure:
+                                XCTFail("FIDO2 signature should be correct")
+                            }
+                        }
+                    default:
+                        XCTFail("Should ask for 2FA code")
+                    }
+                case .failure:
+                    XCTFail("Sign in should succeed")
+                }
+            }
+
+            waitForExpectations(timeout: 30) { (error) in
+                XCTAssertNil(error, String(describing: error))
+            }
+        }
+    }
+
     func testLogoutInvalidaCredentials_isFailure() {
         let (api, authDelegate) = apiService
         _ = authDelegate

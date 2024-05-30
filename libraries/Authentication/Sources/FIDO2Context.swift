@@ -43,7 +43,6 @@ public struct Fido2Signature {
     /// original `AuthenticationOptions` used as challenge
     public let authenticationOptions: AuthenticationOptions
 
-
     /// Memberwise initializer
     public init(signature: Data, credentialID: Data, authenticatorData: Data, clientData: Data, authenticationOptions: AuthenticationOptions) {
         self.signature = signature

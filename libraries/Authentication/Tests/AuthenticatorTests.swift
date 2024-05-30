@@ -2624,4 +2624,3 @@ class AuthenticatorTests: XCTestCase {
         }
     }
 }
-

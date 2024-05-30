@@ -30,7 +30,7 @@ public final class SecurityKeysViewController: UIHostingController<SecurityKeysV
      required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     init(apiService: APIService, clientApp: ClientApp) {
         self.viewModel = SecurityKeysView.ViewModel(apiService: apiService, productName: clientApp.displayName)
         let view = SecurityKeysView(viewModel: viewModel)

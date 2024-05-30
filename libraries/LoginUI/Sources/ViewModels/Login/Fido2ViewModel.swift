@@ -56,7 +56,7 @@ extension Fido2View {
                     credentialID: $0,
                     transports: ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor.Transport.allSupported
                 )
-            }
+                                                }
             )
             controller.performRequests()
         }
@@ -145,7 +145,6 @@ extension Fido2Signature {
 @available(iOS 15.0, macOS 12.0, *)
 enum Fido2ViewModelState {
     case initial
-    //case configured(challenge: Data, relyingPartyIdentifier: String, allowedCredentials: [ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor])
     case configured(authenticationOptions: AuthenticationOptions)
 
 }
