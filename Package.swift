@@ -1225,11 +1225,12 @@ add(
     targets: [
         coreTarget(name: .obfuscatedConstants,
                    dependencies: [
-                       .cryptoSwift,
-                       .dataModel,
-                       .networking,
-                       .swiftOTP,
-                       .trustKit
+                    .authentication,
+                    .cryptoSwift,
+                    .dataModel,
+                    .networking,
+                    .swiftOTP,
+                    .trustKit
                    ],
                    path: "libraries/ObfuscatedConstants/Sources",
                    exclude: ["Template"])
