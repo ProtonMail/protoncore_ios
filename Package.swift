@@ -172,7 +172,6 @@ extension String {
 
     // MARK: - Dependencies names
     static let alamofire: String = "Alamofire"
-//    static let collections: String = "Collections"
     static let cryptoSwift: String = "CryptoSwift"
     static let ellipticCurveKeyPair: String = "EllipticCurveKeyPair"
     static let fusion: String = "fusion"
