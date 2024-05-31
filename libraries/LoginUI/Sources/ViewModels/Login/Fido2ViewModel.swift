@@ -51,25 +51,32 @@ extension Fido2View {
 
             let controller = makeAuthController(relyingPartyIdentifier: authenticationOptions.relyingPartyIdentifier,
                                                 challenge: authenticationOptions.challenge,
-                                                allowedCredentials: authenticationOptions.allowedCredentialIds.map {
-                ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor(
-                    credentialID: $0,
-                    transports: ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor.Transport.allSupported
-                )
-                                                }
+                                                allowedCredentials: authenticationOptions.allowedCredentialIds
             )
             controller.performRequests()
         }
 
         private func makeAuthController(relyingPartyIdentifier: String,
                                         challenge: Data,
-                                        allowedCredentials: [ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor]) -> ASAuthorizationController {
-            let provider = ASAuthorizationSecurityKeyPublicKeyCredentialProvider(relyingPartyIdentifier: relyingPartyIdentifier)
+                                        allowedCredentials: [Data]) -> ASAuthorizationController {
+            let fido2Provider = ASAuthorizationSecurityKeyPublicKeyCredentialProvider(relyingPartyIdentifier: relyingPartyIdentifier)
 
-            let request = provider.createCredentialAssertionRequest(challenge: challenge)
-            request.allowedCredentials = allowedCredentials
+            let fido2Request = fido2Provider.createCredentialAssertionRequest(challenge: challenge)
+            fido2Request.allowedCredentials = allowedCredentials.map {
+                ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor(
+                    credentialID: $0,
+                    transports: ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor.Transport.allSupported
+                )
+            }
 
-            let controller = ASAuthorizationController(authorizationRequests: [request])
+            let passkeyProvider = ASAuthorizationPlatformPublicKeyCredentialProvider(relyingPartyIdentifier: relyingPartyIdentifier)
+
+            let passkeyRequest = passkeyProvider.createCredentialAssertionRequest(challenge: challenge)
+            passkeyRequest.allowedCredentials = allowedCredentials.map {
+                ASAuthorizationPlatformPublicKeyCredentialDescriptor(credentialID: $0)
+            }
+
+            let controller = ASAuthorizationController(authorizationRequests: [fido2Request, passkeyRequest])
             controller.presentationContextProvider = self
             controller.delegate = self
             return controller
@@ -104,7 +111,14 @@ extension Fido2View.ViewModel: ASAuthorizationControllerDelegate {
                 provideFido2Signature(Fido2Signature(credentialAssertion: credentialAssertion, authenticationOptions: authenticationOptions))
             } else {
                 PMLog.error("Invalid state: received a signature for which we don't keep the challenge")
-                bannerState = .error(content: .init(message: "Unexpected FIDO2 signature"))
+                bannerState = .error(content: .init(message: LUITranslation.twofa_unexpected_signature.l10n))
+            }
+        case let credentialAssertion as ASAuthorizationPlatformPublicKeyCredentialAssertion:
+            if case .configured(let authenticationOptions) = state {
+                provideFido2Signature(Fido2Signature(credentialAssertion: credentialAssertion, authenticationOptions: authenticationOptions))
+            } else {
+                PMLog.error("Invalid state: received a signature for which we don't keep the challenge")
+                bannerState = .error(content: .init(message: LUITranslation.twofa_unexpected_signature.l10n))
             }
         default:
             PMLog.error("Received unknown authorization type: \(authorization.credential)", sendToExternal: true)
@@ -133,7 +147,7 @@ extension Fido2View.ViewModel: ASAuthorizationControllerPresentationContextProvi
 
 @available(iOS 15.0, macOS 12.0, *)
 extension Fido2Signature {
-    init(credentialAssertion: ASAuthorizationSecurityKeyPublicKeyCredentialAssertion, authenticationOptions: AuthenticationOptions) {
+    init(credentialAssertion: ASAuthorizationPublicKeyCredentialAssertion, authenticationOptions: AuthenticationOptions) {
         self = .init(signature: credentialAssertion.signature,
                      credentialID: credentialAssertion.credentialID,
                      authenticatorData: credentialAssertion.rawAuthenticatorData,
