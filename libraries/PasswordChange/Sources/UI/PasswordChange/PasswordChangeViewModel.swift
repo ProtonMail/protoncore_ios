@@ -124,7 +124,7 @@ extension PasswordChangeView {
         func savePasswordTapped() {
             Task { @MainActor in
                 guard let authInfo = try? await self.passwordChangeService?.fetchAuthInfo() else {
-                    bannerState = .error(content: .init(message: "We could not initiate the Secure Password update connection. Please try again."))
+                    bannerState = .error(content: .init(message: LUITranslation.unavailable_authinfo.l10n))
                     return
                 }
                 self.authInfo = authInfo
