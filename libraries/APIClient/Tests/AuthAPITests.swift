@@ -29,7 +29,7 @@ import ProtonCoreTestingToolkit
 #endif
 import ProtonCoreDoh
 import ProtonCoreNetworking
-import ProtonCoreServices
+@testable import ProtonCoreServices
 @testable import ProtonCoreAPIClient
 
 class AuthAPITests: XCTestCase {
@@ -49,7 +49,26 @@ class AuthAPITests: XCTestCase {
             serverEphemeral: serverEphemeral,
             version: version,
             salt: salt,
-            srpSession: srpSession
+            srpSession: srpSession,
+            _2FA: .init(
+                enabled: .both,
+                fido2: .init(
+                    authenticationOptions: .init(
+                        publicKey: .init(
+                            timeout: 600,
+                            challenge: Data([1, 2, 3]),
+                            userVerification: "discouraged",
+                            rpId: "proton.me",
+                            allowCredentials: [
+                                .init(id: Data([80, 200, 240]), type: "public-key")
+                            ])),
+                    registeredKeys: [
+                        .init(attestationFormat: "packed",
+                              credentialID: Data([80, 160, 240]),
+                              name: "Yubi")
+                    ]
+                )
+            )
         )
     }
 
@@ -78,6 +97,7 @@ class AuthAPITests: XCTestCase {
             XCTAssertEqual(response.salt, self.salt)
             XCTAssertEqual(response.srpSession, self.srpSession)
             XCTAssertEqual(response.version, self.version)
+            XCTAssertNotNil(response._2FA)
             expectation.fulfill()
         }
 
@@ -98,6 +118,13 @@ class AuthAPITests: XCTestCase {
         let expectation = self.expectation(description: "Success completion block called")
         let authInfoOK1 = AuthAPI.Router.info(username: "ok")
         apiService.perform(request: authInfoOK1) { (task, result: Result<AuthInfoResponse, ResponseError>) in
+            guard let response = result.value else {
+                XCTFail()
+                return
+            }
+            XCTAssertEqual(response.modulus, self.modulus)
+            XCTAssertNotNil(response._2FA)
+
             expectation.fulfill()
         }
 
@@ -216,17 +243,5 @@ class AuthAPITests: XCTestCase {
         self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
             XCTAssertNil(expectationError)
         }
-    }
-}
-
-extension AuthInfoResponse: Encodable {
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: AuthInfoResponse.CodingKeys.self)
-        try container.encode(modulus, forKey: .modulus)
-        try container.encode(serverEphemeral, forKey: .serverEphemeral)
-        try container.encode(version, forKey: .version)
-        try container.encode(salt, forKey: .salt)
-        try container.encode(srpSession, forKey: .srpSession)
-        try? container.encode(_2FA, forKey: ._2FA)
     }
 }

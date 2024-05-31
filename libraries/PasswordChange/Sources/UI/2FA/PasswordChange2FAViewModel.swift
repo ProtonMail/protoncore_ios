@@ -26,6 +26,7 @@ import ProtonCoreLog
 import ProtonCoreNetworking
 import ProtonCoreObservability
 import ProtonCoreUIFoundations
+import ProtonCoreServices
 import UIKit
 
 extension PasswordChange2FAView {
@@ -42,6 +43,7 @@ extension PasswordChange2FAView {
 
         private let loginPassword: String
         private let newPassword: String
+        private let twoFA: AuthInfoResponse.TwoFA?
 
         @Published var tfaFieldContent: PCTextFieldContent!
         @Published var authenticateIsLoading = false
@@ -53,6 +55,7 @@ extension PasswordChange2FAView {
             passwordChangeService: PasswordChangeService? = nil,
             authCredential: AuthCredential? = AuthCredential.none,
             userInfo: UserInfo? = .getDefault(),
+            twoFA: AuthInfoResponse.TwoFA?,
             loginPassword: String,
             newPassword: String,
             passwordChangeCompletion: PasswordChangeCompletion?
@@ -64,6 +67,7 @@ extension PasswordChange2FAView {
             self.loginPassword = loginPassword
             self.newPassword = newPassword
             self.passwordChangeCompletion = passwordChangeCompletion
+            self.twoFA = twoFA
             self.setupViews()
         }
 
@@ -123,7 +127,7 @@ extension PasswordChange2FAView {
                     userInfo: userInfo,
                     loginPassword: loginPassword,
                     newPassword: .init(value: newPassword),
-                    twoFACode: tfaFieldContent.text,
+                    twoFAParams: .totp(tfaFieldContent.text),
                     buildAuth: mode == .singlePassword ? true : false
                 )
             }

@@ -24,6 +24,7 @@ import ProtonCoreAuthentication
 import ProtonCoreLog
 import ProtonCoreLogin
 import ProtonCoreUIFoundations
+import ProtonCoreServices
 
 @available(iOS 15.0, macOS 12.0, *)
 extension Fido2View {
@@ -33,7 +34,7 @@ extension Fido2View {
         var state: Fido2ViewModelState = .initial
         @Published var isLoading = false
         @Published var bannerState: BannerState = .none
-        weak var delegate: TwoFactorViewControllerDelegate?
+        public weak var delegate: TwoFAProviderDelegate?
 
 #if DEBUG
         static var initial: ViewModel = .init()
@@ -41,61 +42,51 @@ extension Fido2View {
 
         override private init() { }
 
-        public init(login: Login, challenge: Data, relyingPartyIdentifier: String, allowedCredentialIds: [Data]) {
-            self.state = .configured(login: login,
-                                     challenge: challenge,
-                                     relyingPartyIdentifier: relyingPartyIdentifier,
-                                     allowedCredentials: allowedCredentialIds.map {
-                ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor(credentialID: $0,
-                                                                        transports: ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor.Transport.allSupported)
-                                     }
-            )
+        public init(authenticationOptions: AuthenticationOptions) {
+            self.state = .configured(authenticationOptions: authenticationOptions)
         }
 
         func startSignature() {
-            guard case let .configured(_, challenge, relyingPartyIdentifier, allowedCredentials) = state else { return }
+            guard case let .configured(authenticationOptions) = state else { return }
 
-            let provider = ASAuthorizationSecurityKeyPublicKeyCredentialProvider(relyingPartyIdentifier: relyingPartyIdentifier)
-            let request = provider.createCredentialAssertionRequest(challenge: challenge)
-            request.allowedCredentials = allowedCredentials
-            let controller = ASAuthorizationController(authorizationRequests: [request])
-            controller.delegate = self
-            controller.presentationContextProvider = self
+            let controller = makeAuthController(relyingPartyIdentifier: authenticationOptions.relyingPartyIdentifier,
+                                                challenge: authenticationOptions.challenge,
+                                                allowedCredentials: authenticationOptions.allowedCredentialIds.map {
+                ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor(
+                    credentialID: $0,
+                    transports: ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor.Transport.allSupported
+                )
+                                                }
+            )
             controller.performRequests()
         }
 
-        func provideFido2Signature(_ signature: Fido2Signature) {
-            guard case let .configured(login, _, _, _) = state else { return }
+        private func makeAuthController(relyingPartyIdentifier: String,
+                                        challenge: Data,
+                                        allowedCredentials: [ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor]) -> ASAuthorizationController {
+            let provider = ASAuthorizationSecurityKeyPublicKeyCredentialProvider(relyingPartyIdentifier: relyingPartyIdentifier)
 
+            let request = provider.createCredentialAssertionRequest(challenge: challenge)
+            request.allowedCredentials = allowedCredentials
+
+            let controller = ASAuthorizationController(authorizationRequests: [request])
+            controller.presentationContextProvider = self
+            controller.delegate = self
+            return controller
+        }
+
+        func provideFido2Signature(_ signature: Fido2Signature) {
             isLoading = true
-            login.provideFido2Signature(signature) { @MainActor [weak self] result in
-                switch result {
-                case let .success(status):
-                    switch status {
-                    case let .finished(data):
-                        self?.delegate?.twoFactorViewControllerDidFinish(data: data) { [weak self] in
-                            self?.isLoading = false
-                        }
-                    case let .chooseInternalUsernameAndCreateInternalAddress(data):
-                        login.availableUsernameForExternalAccountEmail(email: data.email) { [weak self] username in
-                            self?.delegate?.createAddressNeeded(data: data, defaultUsername: username)
-                            self?.isLoading = false
-                        }
-                    case .askTOTP, .askAny2FA, .askFIDO2:
-                        PMLog.error("Asking for 2FA validation after successful 2FA validation is an invalid state", sendToExternal: true)
-                        self?.isLoading = false
-                        self?.bannerState = .error(content: .init(message: LUITranslation.twofa_invalid_state_banner.l10n))
-                    case .askSecondPassword:
-                        self?.delegate?.mailboxPasswordNeeded()
-                        self?.isLoading = false
-                    case .ssoChallenge:
-                        PMLog.error("Receiving SSO challenge after successful 2FA code is an invalid state", sendToExternal: true)
-                        self?.isLoading = false
-                        self?.bannerState = .error(content: .init(message: LUITranslation.twofa_invalid_state_banner.l10n))
+            Task {
+                do {
+                    try await delegate?.providerDidObtain(factor: signature)
+                    // We don't update isLoading here, it would be too early as
+                    // there are still some requests working to fetch the UserData
+                } catch {
+                    await MainActor.run {
+                        isLoading = false
+                        bannerState = .error(content: .init(message: error.localizedDescription))
                     }
-                case .failure(let error):
-                    self?.bannerState = .error(content: .init(message: error.userFacingMessageInLogin))
-                    self?.isLoading = false
                 }
             }
         }
@@ -109,8 +100,12 @@ extension Fido2View.ViewModel: ASAuthorizationControllerDelegate {
     public func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         switch authorization.credential {
         case let credentialAssertion as ASAuthorizationSecurityKeyPublicKeyCredentialAssertion:
-            let signature = Fido2Signature(credentialAssertion: credentialAssertion)
-            provideFido2Signature(signature)
+            if case .configured(let authenticationOptions) = state {
+                provideFido2Signature(Fido2Signature(credentialAssertion: credentialAssertion, authenticationOptions: authenticationOptions))
+            } else {
+                PMLog.error("Invalid state: received a signature for which we don't keep the challenge")
+                bannerState = .error(content: .init(message: "Unexpected FIDO2 signature"))
+            }
         default:
             PMLog.error("Received unknown authorization type: \(authorization.credential)", sendToExternal: true)
             bannerState = .error(content: .init(message: LUITranslation.twofa_unexpected_authorization_type.l10n))
@@ -138,18 +133,20 @@ extension Fido2View.ViewModel: ASAuthorizationControllerPresentationContextProvi
 
 @available(iOS 15.0, macOS 12.0, *)
 extension Fido2Signature {
-    init(credentialAssertion: ASAuthorizationSecurityKeyPublicKeyCredentialAssertion) {
+    init(credentialAssertion: ASAuthorizationSecurityKeyPublicKeyCredentialAssertion, authenticationOptions: AuthenticationOptions) {
         self = .init(signature: credentialAssertion.signature,
                      credentialID: credentialAssertion.credentialID,
                      authenticatorData: credentialAssertion.rawAuthenticatorData,
-                     clientData: credentialAssertion.rawClientDataJSON)
+                     clientData: credentialAssertion.rawClientDataJSON,
+                     authenticationOptions: authenticationOptions)
     }
 }
 
 @available(iOS 15.0, macOS 12.0, *)
 enum Fido2ViewModelState {
     case initial
-    case configured(login: Login, challenge: Data, relyingPartyIdentifier: String, allowedCredentials: [ASAuthorizationSecurityKeyPublicKeyCredentialDescriptor])
+    case configured(authenticationOptions: AuthenticationOptions)
+
 }
 
 #endif

@@ -216,7 +216,7 @@
 
 "Troubleshoot" = "Felsök";
 
-"Your account has several 2FA mechanisms configured. Please choose how you want to confirm your identity." = "Ditt konto har flera 2FA-mekanismer konfigurerade. Välj hur du vill bekräfta din identitet.";
+"Please choose how you want to confirm your identity." = "Ditt konto har flera 2FA-mekanismer konfigurerade. Välj hur du vill bekräfta din identitet.";
 
 "One-time code" = "Engångskod";
 

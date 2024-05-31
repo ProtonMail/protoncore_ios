@@ -238,7 +238,10 @@ class AuthenticatorMockTests: XCTestCase {
     func testWrongAuthFIDO2() {
         authenticatorMock.authenticateStub.bodyIs { _, _, _, _, _, _, completion in
             let twoFactorContext: FIDO2Context = .init(
-                authenticationOptions: .init(publicKey: .init(
+                credential: self.testCredential,
+                passwordMode: .two)
+            completion(.success(.askFIDO2(twoFactorContext,
+                .init(publicKey: .init(
                     timeout: 60,
                     challenge: Data([45, 45, 45]),
                     userVerification: "discouraged",
@@ -247,10 +250,7 @@ class AuthenticatorMockTests: XCTestCase {
                         .init(id: Data([22, 22, 22]),
                               type: "public-key")
                     ]
-                )),
-                credential: self.testCredential,
-                passwordMode: .two)
-            completion(.success(.askFIDO2(twoFactorContext)))
+                )))))
         }
         authenticatorMock.sendFIDO2SignatureStub.bodyIs { _, _, context, completion in
             completion(.failure(AuthErrors.networkingError(ResponseError(httpCode: nil, responseCode: 8002, userFacingMessage: nil, underlyingError: nil))))
@@ -263,12 +263,22 @@ class AuthenticatorMockTests: XCTestCase {
                 case .updatedCredential, .newCredential:
                     XCTFail()
                     expect.fulfill()
-                case let .askFIDO2(context):
+                case let .askFIDO2(context, _):
                     self.authenticatorMock.sendFIDO2Signature(.init(
                         signature: Data([1, 2, 3]),
                         credentialID: Data([4, 5, 6]),
                         authenticatorData: Data([100, 101, 222]),
-                        clientData: Data([221, 23, 4])
+                        clientData: Data([221, 23, 4]),
+                        authenticationOptions: .init(publicKey: .init(
+                            timeout: 60,
+                            challenge: Data([45, 45, 45]),
+                            userVerification: "discouraged",
+                            rpId: "proton.me",
+                            allowCredentials: [
+                                .init(id: Data([4, 5, 6]),
+                                      type: "public-key")
+                            ]
+                        ))
                     ), context: context) { result in
                         switch result {
                         case .success:

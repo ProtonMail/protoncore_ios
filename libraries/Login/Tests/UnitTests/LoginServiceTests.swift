@@ -48,6 +48,7 @@ import ProtonCoreCryptoGoImplementation
 import ProtonCoreDataModel
 import ProtonCoreNetworking
 import ProtonCoreObfuscatedConstants
+@testable import ProtonCoreFeatureFlags
 @testable import ProtonCoreServices
 @testable import ProtonCoreLogin
 @testable import ProtonCoreObservability
@@ -97,8 +98,15 @@ class LoginServiceTests: XCTestCase {
                                     userName: "",
                                     userID: userId,
                                     scopes: .empty)
-        api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-            completion(nil, .success(AuthService.UserResponse(user: .dummy.updated(ID: userId))))
+        api.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+            if path.contains("/users") {
+                completion(nil, .success(AuthService.UserResponse(user: .dummy.updated(ID: userId))))
+            } else if path.contains("/feature/v2/frontend") {
+                completion(nil, .success(FeatureFlagResponse(code: 0, toggles: [])))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
         }
 
         // When
@@ -125,8 +133,15 @@ class LoginServiceTests: XCTestCase {
         setupSUT()
         let expectation = XCTestExpectation(description: "success expected")
         let credential = Credential(UID: "", accessToken: "", refreshToken: "", userName: "", userID: "", scopes: .empty)
-        api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-            completion(nil, .success(AuthService.UserResponse(user: .dummy)))
+        api.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+            if path.contains("/users") {
+                completion(nil, .success(AuthService.UserResponse(user: .dummy)))
+            } else if path.contains("/feature/v2/frontend") {
+                completion(nil, .success(FeatureFlagResponse(code: 0, toggles: [])))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
         }
 
         // When
@@ -147,8 +162,15 @@ class LoginServiceTests: XCTestCase {
         setupSUT()
         let credential = Credential(UID: "", accessToken: "", refreshToken: "", userName: "", userID: "", scopes: .empty)
         let expectation = XCTestExpectation(description: "failure expected")
-        api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-            completion(nil, .success(AuthService.UserResponse(user: .dummy)))
+        api.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+            if path.contains("/users") {
+                completion(nil, .success(AuthService.UserResponse(user: .dummy)))
+            } else if path.contains("/feature/v2/frontend") {
+                completion(nil, .success(FeatureFlagResponse(code: 0, toggles: [])))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
         }
 
         sut.handleValidCredentials(credential: credential, passwordMode: .one, mailboxPassword: nil) { (result: Result<LoginStatus, LoginError>) in
@@ -483,6 +505,47 @@ class LoginServiceTests: XCTestCase {
 
         waitForExpectations(timeout: 30) { (error) in
             XCTAssertNil(error, String(describing: error))
+        }
+    }
+
+    func testLoginWithFIDO2_isSuccessful() {
+        withFeatureFlags([.fidoKeys]) {
+            let (api, authDelegate) = self.apiService
+            _ = authDelegate
+            mockOnePasswordWithFIDO2UserLogin()
+
+            let expect = expectation(description: "testLoginWithFIDO2IsSuccessful")
+            let service = LoginService(api: api, clientApp: .other(named: "core"), minimumAccountType: .internal)
+
+            service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, challenge: nil) { result in
+                switch result {
+                case let .success(status):
+                    switch status {
+                    case let .askAny2FA(authenticationOptions):
+                        service.provideFido2Signature(LoginTestUser.defaultUser.fido2SignatureWithAuthenticationOptions(authenticationOptions)) { result in
+                            switch result {
+                            case let .success(status):
+                                switch status {
+                                case .finished:
+                                    expect.fulfill()
+                                default:
+                                    XCTFail("Should be finished")
+                                }
+                            case .failure:
+                                XCTFail("FIDO2 signature should be correct")
+                            }
+                        }
+                    default:
+                        XCTFail("Should ask for 2FA code")
+                    }
+                case .failure:
+                    XCTFail("Sign in should succeed")
+                }
+            }
+
+            waitForExpectations(timeout: 30) { (error) in
+                XCTAssertNil(error, String(describing: error))
+            }
         }
     }
 

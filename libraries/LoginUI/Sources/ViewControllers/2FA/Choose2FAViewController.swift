@@ -25,6 +25,6 @@ import UIKit
 import SwiftUI
 
 @available(iOS 15.0, *)
-typealias Choose2FAViewController = UIHostingController<Choose2FAView>
+public typealias Choose2FAViewController = UIHostingController<Choose2FAView>
 
 #endif

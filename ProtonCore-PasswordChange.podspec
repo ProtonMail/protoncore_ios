@@ -28,8 +28,10 @@ Pod::Spec.new do |s|
     s.dependency "ProtonCore-Authentication", $version
     s.dependency "ProtonCore-Authentication-KeyGeneration", $version
     s.dependency "ProtonCore-FeatureFlags", $version
+    s.dependency "ProtonCore-LoginUI", $version
     s.dependency "ProtonCore-Networking", $version
     s.dependency "ProtonCore-Observability", $version
+    s.dependency "ProtonCore-PasswordRequest", $version
     s.dependency "ProtonCore-Services", $version
     s.dependency "ProtonCore-UIFoundations", $version
     s.dependency "ProtonCore-Utilities", $version
@@ -47,6 +49,7 @@ Pod::Spec.new do |s|
             test_spec.dependency "ProtonCore-Authentication", $version
             test_spec.dependency "ProtonCore-Authentication-KeyGeneration", $version
             test_spec.dependency "ProtonCore-Networking", $version
+            test_spec.dependency "ProtonCore-Services", $version            
             test_spec.dependency "ProtonCore-TestingToolkit/UnitTests/Core", $version
             test_spec.dependency "ProtonCore-TestingToolkit/TestData", $version
             test_spec.source_files = 'libraries/PasswordChange/Tests/**/*.swift'

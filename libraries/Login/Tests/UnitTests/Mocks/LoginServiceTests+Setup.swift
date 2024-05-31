@@ -103,6 +103,15 @@ extension LoginServiceTests {
         mock(filename: "2FaOnePasswordUserWith2FAOK", title: "One password user /keys/salts mock", path: "/auth/v4/2fa")
     }
 
+    func mockOnePasswordWithFIDO2UserLogin() {
+        mock(filename: "AuthInfoOnePasswordUserWith2FA", title: "One password user /auth/info mock", path: "/auth/info")
+        mock(filename: "AuthOnePasswordUserWithFIDO2", title: "One password user /auth mock", path: "/auth/v4")
+        mock(filename: "UsersOnePasswordUserWith2FA", title: "One password user user /users mock", path: "/users")
+        mock(filename: "AddressesOnePasswordUserWith2FA", title: "One password user /addresses mock", path: "/addresses")
+        mock(filename: "SaltsOnePasswordUserWith2FA", title: "One password user /keys/salts mock", path: "/keys/salts")
+        mock(filename: "2FaOnePasswordUserWith2FAOK", title: "One password user /keys/salts mock", path: "/auth/v4/2fa")
+    }
+
     func mockOnePasswordWith2FAUserLoginWrong2FA() {
         mock(filename: "AuthInfoOnePasswordUserWith2FA", title: "One password user /auth/info mock", path: "/auth/info")
         mock(filename: "AuthOnePasswordUserWith2FA", title: "One password user /auth mock", path: "/auth/v4")

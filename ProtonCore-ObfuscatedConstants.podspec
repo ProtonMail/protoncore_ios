@@ -28,6 +28,7 @@ Pod::Spec.new do |s|
     s.dependency 'TrustKit'
     s.dependency 'SwiftOTP', '~> 2.0'
     s.dependency 'CryptoSwift', '1.3.1'
+    s.dependency 'ProtonCore-Authentication', $version
     s.dependency 'ProtonCore-DataModel', $version
     s.dependency 'ProtonCore-Networking', $version
      

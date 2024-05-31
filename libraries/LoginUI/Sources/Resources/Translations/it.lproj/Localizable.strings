@@ -216,7 +216,7 @@
 
 "Troubleshoot" = "Risoluzione problemi";
 
-"Your account has several 2FA mechanisms configured. Please choose how you want to confirm your identity." = "Il tuo account ha diversi meccanismi 2FA configurati. Scegli come desideri confermare la tua identità.";
+"Please choose how you want to confirm your identity." = "Il tuo account ha diversi meccanismi 2FA configurati. Scegli come desideri confermare la tua identità.";
 
 "One-time code" = "Codice monouso";
 

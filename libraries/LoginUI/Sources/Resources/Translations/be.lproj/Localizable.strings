@@ -216,7 +216,7 @@
 
 "Troubleshoot" = "Выпраўленне непаладак";
 
-"Your account has several 2FA mechanisms configured. Please choose how you want to confirm your identity." = "Ваш уліковы запіс мае некалькі механізмаў канфігурацыі 2ФА. Выберыце спосаб пацвярджэння вашай ідэнтычнасці.";
+"Please choose how you want to confirm your identity." = "Ваш уліковы запіс мае некалькі механізмаў канфігурацыі 2ФА. Выберыце спосаб пацвярджэння вашай ідэнтычнасці.";
 
 "One-time code" = "Аднаразовы код";
 

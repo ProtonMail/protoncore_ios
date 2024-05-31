@@ -30,7 +30,7 @@ enum TwoFAType {
 }
 
 @available(iOS 15.0, *)
-struct Choose2FAView: View {
+public struct Choose2FAView: View {
 
     @State private var selectedType: TwoFAType = .totp
 
@@ -39,7 +39,7 @@ struct Choose2FAView: View {
 
     public var body: some View {
         VStack(alignment: .leading, spacing: 24) {
-            Text("Your account has several 2FA mechanisms configured. Please choose how you want to confirm your identity.",
+            Text("Please choose how you want to confirm your identity.",
                  bundle: LUITranslation.bundle,
                  comment: "2FA choice screen header")
             Picker("Type", selection: $selectedType) {
@@ -84,7 +84,7 @@ struct Choose2FAView: View {
         }
     }
 
-    init(totpViewModel: TOTPView.ViewModel, fido2ViewModel: Fido2View.ViewModel) {
+    public init(totpViewModel: TOTPView.ViewModel, fido2ViewModel: Fido2View.ViewModel) {
         self.totpViewModel = totpViewModel
         self.fido2ViewModel = fido2ViewModel
     }
@@ -95,11 +95,11 @@ struct Choose2FAView: View {
 #Preview {
     if #available(iOS 16.0, *) {
         NavigationStack {
-            Choose2FAView(totpViewModel: TOTPView.ViewModel(login: LoginStub()),
+            Choose2FAView(totpViewModel: TOTPView.ViewModel(),
                           fido2ViewModel: Fido2View.ViewModel.initial)
         }
     } else if #available(iOS 15.0, *) {
-        Choose2FAView(totpViewModel: TOTPView.ViewModel(login: LoginStub()),
+        Choose2FAView(totpViewModel: TOTPView.ViewModel(),
                       fido2ViewModel: Fido2View.ViewModel.initial)
     } else {
         // Fallback on earlier versions

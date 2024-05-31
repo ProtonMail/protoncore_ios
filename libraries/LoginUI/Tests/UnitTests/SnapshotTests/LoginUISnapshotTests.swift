@@ -220,14 +220,14 @@ class LoginUISnapshotTests: SnapshotTestCase {
     @available(iOS 15.0, *)
     func testLoginScreenWithFIDO2() {
         let fido2ViewModel = Fido2View.ViewModel.initial
-        let view = Fido2View(viewModel: fido2ViewModel).padding(20)
+        let view = Fido2View(viewModel: fido2ViewModel)
         checkSnapshots(view: view, perceptualPrecision: defaultPrecision)
     }
 
     @MainActor @available(iOS 15.0, *)
     func testLoginScreenWithFIDO2AndTOTP() {
         let fido2ViewModel = Fido2View.ViewModel.initial
-        let totpViewModel = TOTPView.ViewModel(login: LoginMock())
+        let totpViewModel = TOTPView.ViewModel()
         let view = Choose2FAView(totpViewModel: totpViewModel, fido2ViewModel: fido2ViewModel)
         checkSnapshots(view: view, perceptualPrecision: defaultPrecision)
     }

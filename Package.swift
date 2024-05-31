@@ -172,7 +172,6 @@ extension String {
 
     // MARK: - Dependencies names
     static let alamofire: String = "Alamofire"
-
     static let cryptoSwift: String = "CryptoSwift"
     static let ellipticCurveKeyPair: String = "EllipticCurveKeyPair"
     static let fusion: String = "fusion"
@@ -1226,11 +1225,12 @@ add(
     targets: [
         coreTarget(name: .obfuscatedConstants,
                    dependencies: [
-                       .cryptoSwift,
-                       .dataModel,
-                       .networking,
-                       .swiftOTP,
-                       .trustKit
+                    .authentication,
+                    .cryptoSwift,
+                    .dataModel,
+                    .networking,
+                    .swiftOTP,
+                    .trustKit
                    ],
                    path: "libraries/ObfuscatedConstants/Sources",
                    exclude: ["Template"])
@@ -1287,8 +1287,10 @@ add(
                        .authentication,
                        .authenticationKeyGeneration,
                        .featureFlags,
+                       .loginUI,
                        .networking,
                        .observability,
+                       .passwordRequest,
                        .services,
                        .uiFoundations,
                        .utilities
