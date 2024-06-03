@@ -216,7 +216,7 @@
 
 "Troubleshoot" = "Dépannage";
 
-"Please choose how you want to confirm your identity." = "Plusieurs mécanismes A2F sont configurés sur votre compte. Choisissez la manière dont vous voulez confirmer votre identité.";
+"Please choose how you want to confirm your identity." = "Choisissez la manière dont vous voulez confirmer votre identité.";
 
 "One-time code" = "Mot de passe unique";
 
@@ -232,7 +232,7 @@
 
 "There was a problem reading your security key." = "Un problème est survenu lors de la lecture de votre clé de sécurité.";
 
-"We received an authorization from a type we don't support yet." = "Nous avons reçu une autorisation d'une catégorie non prise en charge.";
+"We received an authorization from a type we don't support yet." = "Nous avons reçu un type d'autorisation que nous ne prenons pas encore en charge.";
 
 "Fetching your security keys details" = "Récupération des informations de vos clés de sécurité";
 
@@ -247,3 +247,7 @@
 "Security Keys" = "Clés de sécurité";
 
 "To manage, add, or remove security keys, please use the Proton %@ web application." = "Pour gérer, ajouter ou retirer des clés de sécurité, utilisez l'application web de Proton %@.";
+
+"Unexpected FIDO2 signature." = "Signature FIDO2 inattendue.";
+
+"We could not initiate the Secure Password update connection. Please try again." = "Nous n'avons pas pu établir la connexion pour la mise à jour du mot de passe sécurisé. Veuillez réessayer.";

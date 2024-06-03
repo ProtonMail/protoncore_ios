@@ -25,3 +25,15 @@
 "pmsettings-settings-about-terms" = "Términos de uso";
 
 "pmsettings-settings-footer" = "Versión de la aplicación: %@";
+
+"Bug report" = "Reporte de errores";
+
+"Send report" = "Enviar reporte";
+
+"Title" = "Título";
+
+"What went wrong" = "¿Cuál es el problema?";
+
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Describa el problema con tanto detalle como pueda. Si hubo un mensaje de error, inclúyalo también. Mínimo 10 caracteres.";
+
+"Your report was sent successfully" = "Reporte enviado con éxito";

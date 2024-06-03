@@ -25,3 +25,15 @@
 "pmsettings-settings-about-terms" = "Condicions del servei";
 
 "pmsettings-settings-footer" = "Versió de l'aplicació: %@";
+
+"Bug report" = "Informe d'error";
+
+"Send report" = "Envia l'informe";
+
+"Title" = "Títol";
+
+"What went wrong" = "Quin era el problema?";
+
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters.";
+
+"Your report was sent successfully" = "Your report was sent successfully";

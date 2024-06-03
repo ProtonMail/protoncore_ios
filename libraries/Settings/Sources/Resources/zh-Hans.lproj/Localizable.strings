@@ -25,3 +25,15 @@
 "pmsettings-settings-about-terms" = "服务条款";
 
 "pmsettings-settings-footer" = "程序版本：%@";
+
+"Bug report" = "Bug report";
+
+"Send report" = "Send report";
+
+"Title" = "头衔";
+
+"What went wrong" = "What went wrong";
+
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters.";
+
+"Your report was sent successfully" = "Your report was sent successfully";
