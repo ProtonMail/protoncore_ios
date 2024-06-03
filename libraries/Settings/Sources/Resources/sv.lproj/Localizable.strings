@@ -25,3 +25,15 @@
 "pmsettings-settings-about-terms" = "Användarvillkor";
 
 "pmsettings-settings-footer" = "App-version: %@";
+
+"Bug report" = "Rapportera fel";
+
+"Send report" = "Skicka rapport";
+
+"Title" = "Titel";
+
+"What went wrong" = "Vad gick fel?";
+
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Beskriv problemet så detaljerat du kan. Om det fanns ett felmeddelande, berätta vad det stod. Minst 10 tecken.";
+
+"Your report was sent successfully" = "Din rapport har skickats";

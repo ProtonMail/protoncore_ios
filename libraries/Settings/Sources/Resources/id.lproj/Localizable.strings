@@ -25,3 +25,15 @@
 "pmsettings-settings-about-terms" = "Ketentuan layanan";
 
 "pmsettings-settings-footer" = "Versi Aplikasi: %@";
+
+"Bug report" = "Laporan bug";
+
+"Send report" = "Kirim laporan";
+
+"Title" = "Gelar";
+
+"What went wrong" = "Masalah apa yang Anda hadapi";
+
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Mohon uraikan masalah Anda serinci mungkin. Apabila Anda menjumpai pesan kesalahan tertentu, mohon beri tahu kami isi dari pesan tersebut. Minimal 10 karakter.";
+
+"Your report was sent successfully" = "Laporan Anda berhasil dikirim";

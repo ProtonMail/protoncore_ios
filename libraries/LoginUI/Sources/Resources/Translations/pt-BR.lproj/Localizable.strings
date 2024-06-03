@@ -216,7 +216,7 @@
 
 "Troubleshoot" = "Solução de problemas";
 
-"Please choose how you want to confirm your identity." = "Sua conta tem vários mecanismos de A2F configurados. Escolha como confirmar sua identidade.";
+"Please choose how you want to confirm your identity." = "Please choose how you want to confirm your identity.";
 
 "One-time code" = "Código de uso único";
 
@@ -240,10 +240,14 @@
 
 "An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "An error occurred fetching your security keys. You can also check them on the Proton %@ website.";
 
-"These are the security keys registered to your account" = "These are the security keys registered to your account";
+"These are the security keys registered to your account" = "Essas chaves de segurança estão registradas na sua conta";
 
 "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys.";
 
 "Security Keys" = "Chaves de segurança";
 
 "To manage, add, or remove security keys, please use the Proton %@ web application." = "Para gerenciar, adicionar ou remover chaves de segurança use o aplicativo web da Proton %@.";
+
+"Unexpected FIDO2 signature." = "Unexpected FIDO2 signature.";
+
+"We could not initiate the Secure Password update connection. Please try again." = "We could not initiate the Secure Password update connection. Please try again.";

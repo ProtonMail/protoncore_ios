@@ -216,7 +216,7 @@
 
 "Troubleshoot" = "문제 해결";
 
-"Please choose how you want to confirm your identity." = "계정에 여러 2단계 인증 매커니즘이 구성되어 있습니다. 어떤 방식으로 신원을 확인할 것인지 선택해 주세요.";
+"Please choose how you want to confirm your identity." = "Please choose how you want to confirm your identity.";
 
 "One-time code" = "일회용 코드";
 
@@ -247,3 +247,7 @@
 "Security Keys" = "보안 키";
 
 "To manage, add, or remove security keys, please use the Proton %@ web application." = "보안 키를 관리, 추가하거나 제거하려면 Proton %@ 웹 앱을 사용해 주세요.";
+
+"Unexpected FIDO2 signature." = "Unexpected FIDO2 signature.";
+
+"We could not initiate the Secure Password update connection. Please try again." = "We could not initiate the Secure Password update connection. Please try again.";

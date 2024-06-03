@@ -216,7 +216,7 @@
 
 "Troubleshoot" = "Felsök";
 
-"Please choose how you want to confirm your identity." = "Ditt konto har flera 2FA-mekanismer konfigurerade. Välj hur du vill bekräfta din identitet.";
+"Please choose how you want to confirm your identity." = "Välj hur du vill bekräfta din identitet.";
 
 "One-time code" = "Engångskod";
 
@@ -247,3 +247,7 @@
 "Security Keys" = "Säkerhetsnycklar";
 
 "To manage, add, or remove security keys, please use the Proton %@ web application." = "För att hantera, lägga till eller ta bort säkerhetsnycklar, använd Proton %@ webbapplikation.";
+
+"Unexpected FIDO2 signature." = "Oväntad FIDO2-signatur.";
+
+"We could not initiate the Secure Password update connection. Please try again." = "We could not initiate the Secure Password update connection. Please try again.";
