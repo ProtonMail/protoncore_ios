@@ -168,7 +168,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
 
         signUpButton.setMode(mode: .text)
         signUpButton.addTarget(self, action: #selector(signUpPressed), for: .touchUpInside)
-        signUpButton.isHidden = !isSignupAvailable || isSSOEnabled
+        signUpButton.isHidden = !isSignupAvailable
         signUpButton.setTitle(viewModel.signUpButtonTitle, for: .normal)
 
         loginTextField.autocorrectionType = .no
