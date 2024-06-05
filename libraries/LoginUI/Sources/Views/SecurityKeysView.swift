@@ -56,11 +56,16 @@ public struct SecurityKeysView: View {
                                     .foregroundColor(ColorProvider.TextNorm)
                             }
                         } header: {
-                            Text("These are the security keys registered to your account",
-                                 bundle: LoginUIModule.resourceBundle,
-                                 comment: "Header before showing list of security keys")
-                            .textCase(nil)
-                        } footer:  {
+                                Text("These are the security keys registered to your account",
+                                     bundle: LoginUIModule.resourceBundle,
+                                     comment: "Header before showing list of security keys")
+                                .apply {
+                                    if #available(iOS 16.0, *) {
+                                        $0.lineLimit(2, reservesSpace: true)
+                                    }
+                                }
+                                .textCase(nil)
+                        } footer: {
                             Text("To manage, add, or remove security keys, please use the Proton \(viewModel.productName) web application.",
                                  bundle: LoginUIModule.resourceBundle,
                                  comment: "Footer after showing list of security keys, with a %@ placeholder for the product name")
