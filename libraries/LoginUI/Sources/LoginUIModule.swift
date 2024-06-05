@@ -25,6 +25,7 @@
 import Foundation
 import ProtonCoreDataModel
 import ProtonCoreServices
+import ProtonCoreUIFoundations
 import SwiftUI
 
 public enum LoginUIModule {
@@ -44,8 +45,15 @@ public enum LoginUIModule {
         #endif
     }
 
-    public static func makeSecurityKeysViewController(apiService: APIService, clientApp: ClientApp) -> SecurityKeysViewController {
-        return SecurityKeysViewController(apiService: apiService, clientApp: clientApp)
+    public static func makeSecurityKeysViewController(apiService: APIService, 
+                                                      clientApp: ClientApp,
+                                                      showingDismissButton: Bool = false
+    ) -> SecurityKeysViewController {
+        let viewController = SecurityKeysViewController(apiService: apiService,
+                                          clientApp: clientApp,
+                                          showingDismissButton: showingDismissButton)
+        viewController.view.backgroundColor = ColorProvider.BackgroundNorm
+        return viewController
     }
 }
 

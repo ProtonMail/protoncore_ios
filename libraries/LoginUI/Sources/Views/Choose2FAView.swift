@@ -23,6 +23,7 @@
 
 import SwiftUI
 import ProtonCoreLogin
+import ProtonCoreUIFoundations
 
 enum TwoFAType {
     case totp
@@ -64,6 +65,7 @@ public struct Choose2FAView: View {
                               bundle: LUITranslation.bundle,
                               comment: "2FA screen title"))
         .navigationBarTitleDisplayMode(.inline)
+        .background(ColorProvider.BackgroundNorm)
         .frame(maxWidth: .infinity,
                maxHeight: .infinity,
                alignment: .top)

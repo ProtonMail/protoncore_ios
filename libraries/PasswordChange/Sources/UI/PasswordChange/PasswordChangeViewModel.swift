@@ -295,6 +295,10 @@ extension PasswordChangeView {
 }
 
 extension PasswordChangeView.ViewModel: TwoFAProviderDelegate {
+    public func userDidGoBack() {
+        dismissView()
+    }
+    
     public func providerDidObtain(factor: String) async throws {
         try await updatePasswordWith(twoFAParams: .totp(factor))
     }

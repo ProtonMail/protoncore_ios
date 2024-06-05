@@ -19,11 +19,17 @@
 #if os(iOS)
 
 import SwiftUI
+import ProtonCoreUIFoundations
 
 public struct SecurityKeysView: View {
 
+    enum Constants {
+        static let iconImageSize: CGFloat = 20
+        static let iconButtonSize: CGFloat = 40
+    }
+    
     @ObservedObject var viewModel: ViewModel
-
+    
     public var body: some View {
         VStack {
             switch viewModel.viewState {
@@ -47,6 +53,7 @@ public struct SecurityKeysView: View {
                         Section {
                             ForEach(keys) {
                                 Text($0.name)
+                                    .foregroundColor(ColorProvider.TextNorm)
                             }
                         } header: {
                             Text("These are the security keys registered to your account",
@@ -57,6 +64,15 @@ public struct SecurityKeysView: View {
                             Text("To manage, add, or remove security keys, please use the Proton \(viewModel.productName) web application.",
                                  bundle: LoginUIModule.resourceBundle,
                                  comment: "Footer after showing list of security keys, with a %@ placeholder for the product name")
+                            .foregroundColor(ColorProvider.TextWeak)
+                        }
+                        .listRowBackground(ColorProvider.BackgroundSecondary)
+                    }
+                    .apply {
+                        if #available(iOS 16.0, *) {
+                            $0.scrollContentBackground(.hidden)
+                        } else {
+                            $0
                         }
                     }
                 }
@@ -68,6 +84,10 @@ public struct SecurityKeysView: View {
                 .padding(20)
             }
         }
+        .if(viewModel.showingDismissButton) { view in
+            view.navigationBarItems(leading: dismissButton())
+        }
+        .foregroundColor(ColorProvider.TextWeak)
         .navigationTitle(Text("Security Keys",
                               bundle: LoginUIModule.resourceBundle,
                               comment: "Title for Security Keys list screen"))
@@ -80,9 +100,39 @@ public struct SecurityKeysView: View {
             viewModel.loadKeys()
         }
     }
-
+    
+    @ViewBuilder
+    private func dismissButton() -> some View {
+        switch Brand.currentBrand {
+        case .proton, .vpn:
+            Button(action: { viewModel.dismiss() }, label: {
+                Text("Close")
+                    .foregroundColor(ColorProvider.InteractionNorm)
+            })
+        case .pass, .wallet:
+            ZStack {
+                ColorProvider.PurpleBase.opacity(0.2)
+                    .clipShape(Circle())
+                
+                Image(uiImage: IconProvider.cross)
+                    .resizable()
+                    .renderingMode(.template)
+                    .scaledToFit()
+                    .foregroundColor(ColorProvider.PurpleBase)
+                    .frame(width: Constants.iconImageSize, height: Constants.iconImageSize)
+            }
+            .frame(width: Constants.iconButtonSize, height: Constants.iconButtonSize)
+            .onTapGesture { viewModel.dismiss() }
+        }
+    }
+    
     private static let isRunningTests = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+    
+}
 
+// Allow to apply a modifier conditionally
+extension View {
+    func apply<V: View>(@ViewBuilder _ block: (Self) -> V) -> V { block(self) }
 }
 
 #if DEBUG

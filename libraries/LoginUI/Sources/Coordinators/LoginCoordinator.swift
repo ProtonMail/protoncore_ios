@@ -102,6 +102,7 @@ final class LoginCoordinator {
     func createLoginViewController(username: String?) -> UIViewController {
         let loginViewController = UIStoryboard.instantiateInLogin(LoginViewController.self, inAppTheme: customization.inAppTheme)
         loginViewController.viewModel = container.makeLoginViewModel()
+        loginViewController.viewModel.navigationDelegate = self
         loginViewController.customErrorPresenter = customization.customErrorPresenter
         loginViewController.initialUsername = username
         loginViewController.delegate = self

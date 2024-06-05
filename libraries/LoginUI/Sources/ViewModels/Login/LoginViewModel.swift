@@ -49,6 +49,8 @@ final class LoginViewModel {
     let error = Publisher<LoginError>()
     let isLoading = Observable<Bool>(false)
 
+    weak var navigationDelegate: NavigationDelegate?
+
     var isSsoUIEnabled = false
     let subtitleLabel = LUITranslation.screen_subtitle.l10n
     var loginTextFieldTitle: String {
@@ -191,6 +193,10 @@ final class LoginViewModel {
 // MARK: 2FA Provider Delegate 
 
 extension LoginViewModel: TwoFAProviderDelegate {
+    func userDidGoBack() {
+        navigationDelegate?.userDidGoBack()
+    }
+    
 
     func providerDidObtain(factor: String) async throws {
        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, any Error>) -> Void in
@@ -237,6 +243,8 @@ extension LoginViewModel: TwoFAProviderDelegate {
             }
         }
     }
+
+  
 }
 
 #endif
