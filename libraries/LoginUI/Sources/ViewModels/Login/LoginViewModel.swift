@@ -196,7 +196,6 @@ extension LoginViewModel: TwoFAProviderDelegate {
     func userDidGoBack() {
         navigationDelegate?.userDidGoBack()
     }
-    
 
     func providerDidObtain(factor: String) async throws {
        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, any Error>) -> Void in
@@ -244,7 +243,6 @@ extension LoginViewModel: TwoFAProviderDelegate {
         }
     }
 
-  
 }
 
 #endif

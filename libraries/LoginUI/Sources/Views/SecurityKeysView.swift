@@ -27,9 +27,9 @@ public struct SecurityKeysView: View {
         static let iconImageSize: CGFloat = 20
         static let iconButtonSize: CGFloat = 40
     }
-    
+
     @ObservedObject var viewModel: ViewModel
-    
+
     public var body: some View {
         VStack {
             switch viewModel.viewState {
@@ -100,12 +100,12 @@ public struct SecurityKeysView: View {
         .frame(maxWidth: .infinity,
                maxHeight: .infinity,
                alignment: .top)
-        .onAppear() {
+        .onAppear {
             guard !Self.isRunningTests else { return }
             viewModel.loadKeys()
         }
     }
-    
+
     @ViewBuilder
     private func dismissButton() -> some View {
         switch Brand.currentBrand {
@@ -118,7 +118,7 @@ public struct SecurityKeysView: View {
             ZStack {
                 ColorProvider.PurpleBase.opacity(0.2)
                     .clipShape(Circle())
-                
+
                 Image(uiImage: IconProvider.cross)
                     .resizable()
                     .renderingMode(.template)
@@ -130,9 +130,9 @@ public struct SecurityKeysView: View {
             .onTapGesture { viewModel.dismiss() }
         }
     }
-    
+
     private static let isRunningTests = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
-    
+
 }
 
 // Allow to apply a modifier conditionally

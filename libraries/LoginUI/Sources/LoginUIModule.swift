@@ -19,7 +19,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-
 #if os(iOS)
 
 import Foundation
@@ -45,7 +44,7 @@ public enum LoginUIModule {
         #endif
     }
 
-    public static func makeSecurityKeysViewController(apiService: APIService, 
+    public static func makeSecurityKeysViewController(apiService: APIService,
                                                       clientApp: ClientApp,
                                                       showingDismissButton: Bool = false
     ) -> SecurityKeysViewController {

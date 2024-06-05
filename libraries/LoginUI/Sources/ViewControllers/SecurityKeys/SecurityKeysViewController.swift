@@ -38,7 +38,7 @@ public final class SecurityKeysViewController: UIHostingController<SecurityKeysV
         self.viewModel.navigationDelegate = self
     }
 
-    public override func viewDidLoad() {
+    override public func viewDidLoad() {
         UITableView.appearance(whenContainedInInstancesOf: [UIHostingController<SecurityKeysView>.self]).backgroundColor = .clear
     }
 }

@@ -22,7 +22,7 @@ import Foundation
 import ProtonCoreServices
 import ProtonCoreLog
 
-extension SecurityKeysView { 
+extension SecurityKeysView {
     public class ViewModel: ObservableObject {
 
         let apiService: APIService!
@@ -75,7 +75,6 @@ extension SecurityKeysView {
             navigationDelegate?.userDidGoBack()
         }
 
-        
     }
 
 }
