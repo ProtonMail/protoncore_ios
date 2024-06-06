@@ -46,6 +46,10 @@ extension Fido2View {
             self.state = .configured(authenticationOptions: authenticationOptions)
         }
 
+        func dismiss() {
+            delegate?.userDidGoBack()
+        }
+
         func startSignature() {
             guard case let .configured(authenticationOptions) = state else { return }
 

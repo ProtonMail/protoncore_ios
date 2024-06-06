@@ -31,10 +31,21 @@ public final class SecurityKeysViewController: UIHostingController<SecurityKeysV
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(apiService: APIService, clientApp: ClientApp) {
-        self.viewModel = SecurityKeysView.ViewModel(apiService: apiService, productName: clientApp.displayName)
+    init(apiService: APIService, clientApp: ClientApp, showingDismissButton: Bool) {
+        self.viewModel = SecurityKeysView.ViewModel(apiService: apiService, productName: clientApp.displayName, showingDismissButton: showingDismissButton)
         let view = SecurityKeysView(viewModel: viewModel)
         super.init(rootView: view)
+        self.viewModel.navigationDelegate = self
+    }
+
+    override public func viewDidLoad() {
+        UITableView.appearance(whenContainedInInstancesOf: [UIHostingController<SecurityKeysView>.self]).backgroundColor = .clear
+    }
+}
+
+extension SecurityKeysViewController: NavigationDelegate {
+    public func userDidGoBack() {
+        navigationController?.popViewController(animated: true)
     }
 }
 

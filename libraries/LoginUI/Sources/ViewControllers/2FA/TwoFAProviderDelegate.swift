@@ -16,12 +16,14 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
 
+#if os(iOS)
+
 import Foundation
 import ProtonCoreAuthentication
 import ProtonCoreLogin
 
 /// Protocol conformed to by the invoker of the 2FA UI
-public protocol TwoFAProviderDelegate: AnyObject {
+public protocol TwoFAProviderDelegate: AnyObject, NavigationDelegate {
     /// notifies the delegate about the obtained 1-time code. After verification, if it was wrong, an error is thrown.
     /// Depending on the error type, the 2FA View is expected to allow the user to retry, or to cancel completely
     func providerDidObtain(factor: String) async throws
@@ -30,3 +32,5 @@ public protocol TwoFAProviderDelegate: AnyObject {
     func providerDidObtain(factor: Fido2Signature) async throws
 
 }
+
+#endif
