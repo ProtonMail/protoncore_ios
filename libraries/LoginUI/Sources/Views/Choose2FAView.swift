@@ -59,7 +59,7 @@ public struct Choose2FAView: View {
             selectedView
 
         }
-        .font(.system(size: 20))
+        .font(.title3)
         .padding(20)
         .navigationTitle(Text("Two-Factor Authentication",
                               bundle: LUITranslation.bundle,
