@@ -65,6 +65,7 @@ public struct Choose2FAView: View {
                               bundle: LUITranslation.bundle,
                               comment: "2FA screen title"))
         .navigationBarTitleDisplayMode(.inline)
+        .foregroundColor(ColorProvider.TextNorm)
         .background(ColorProvider.BackgroundNorm)
         .frame(maxWidth: .infinity,
                maxHeight: .infinity,
