@@ -135,11 +135,6 @@ public struct SecurityKeysView: View {
 
 }
 
-// Allow to apply a modifier conditionally
-extension View {
-    func apply<V: View>(@ViewBuilder _ block: (Self) -> V) -> V { block(self) }
-}
-
 #if DEBUG
 
 @testable import ProtonCoreServices
