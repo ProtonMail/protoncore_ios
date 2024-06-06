@@ -16,6 +16,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
 
+#if os(iOS)
+
 import Foundation
 import ProtonCoreAuthentication
 import ProtonCoreLogin
@@ -30,3 +32,5 @@ public protocol TwoFAProviderDelegate: AnyObject, NavigationDelegate {
     func providerDidObtain(factor: Fido2Signature) async throws
 
 }
+
+#endif
