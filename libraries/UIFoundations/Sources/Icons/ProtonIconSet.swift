@@ -374,6 +374,8 @@ public struct ProtonIconSet {
 
     public let lockOpenExclamationFilled = ProtonIcon(name: "ic-lock-open-exclamation-filled")
 
+    public let lockOpenFilled = ProtonIcon(name: "ic-lock-open-filled")
+
     public let lockOpenFilled2 = ProtonIcon(name: "ic-lock-open-filled-2")
 
     public let lockOpenPenFilled = ProtonIcon(name: "ic-lock-open-pen-filled")
