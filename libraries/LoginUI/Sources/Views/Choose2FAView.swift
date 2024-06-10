@@ -33,7 +33,7 @@ enum TwoFAType {
 @available(iOS 15.0, *)
 public struct Choose2FAView: View {
 
-    @State private var selectedType: TwoFAType = .totp
+    @State private var selectedType: TwoFAType = .fido2
 
     @ObservedObject var totpViewModel: TOTPView.ViewModel
     @ObservedObject var fido2ViewModel: Fido2View.ViewModel
@@ -44,14 +44,14 @@ public struct Choose2FAView: View {
                  bundle: LUITranslation.bundle,
                  comment: "2FA choice screen header")
             Picker("Type", selection: $selectedType) {
-                Text("One-time code",
-                     bundle: LUITranslation.bundle,
-                     comment: "Single use TOTP code")
-                .tag(TwoFAType.totp)
                 Text("Security key",
                      bundle: LUITranslation.bundle,
                      comment: "A hardware based FIDO2 key")
                 .tag(TwoFAType.fido2)
+                Text("One-time code",
+                     bundle: LUITranslation.bundle,
+                     comment: "Single use TOTP code")
+                .tag(TwoFAType.totp)
             }
             .pickerStyle(.segmented)
             .disabled(totpViewModel.isLoading || fido2ViewModel.isLoading)
