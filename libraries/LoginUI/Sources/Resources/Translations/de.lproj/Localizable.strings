@@ -232,7 +232,7 @@
 
 "There was a problem reading your security key." = "Es gab ein Problem beim Lesen deines Sicherheitsschlüssels.";
 
-"We received an authorization from a type we don't support yet." = "We received an authorization from a type we don't support yet.";
+"We received an authorization from a type we don't support yet." = "Wir haben eine Methode zur Authentisierung erhalten, die wir noch nicht unterstützen";
 
 "Fetching your security keys details" = "Sicherheitsschlüssel-Details werden abgerufen";
 
@@ -250,4 +250,4 @@
 
 "Unexpected FIDO2 signature." = "Unerwartete FIDO2-Signatur.";
 
-"We could not initiate the Secure Password update connection. Please try again." = "We could not initiate the Secure Password update connection. Please try again.";
+"We could not initiate the Secure Password update connection. Please try again." = "Wir konnten die Verbindung zur sicheren Passwort-Aktualisierung nicht einrichten. Bitte versuche es nochmals.";

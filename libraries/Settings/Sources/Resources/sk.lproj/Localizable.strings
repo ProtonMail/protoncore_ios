@@ -26,14 +26,14 @@
 
 "pmsettings-settings-footer" = "Verzia aplikácie: %@";
 
-"Bug report" = "Bug report";
+"Bug report" = "Nahlásenie chyby";
 
-"Send report" = "Send report";
+"Send report" = "Odoslať hlásenie";
 
 "Title" = "Názov";
 
-"What went wrong" = "What went wrong";
+"What went wrong" = "Čo sa pokazilo";
 
-"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters.";
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Popíšte problém čo najpodrobnejšie, prosím. Ak sa vyskytlo chybové hlásenie, dajte nám vedieť, čo sa v ňom uvádzalo. Najmenej 10 znakov.";
 
-"Your report was sent successfully" = "Your report was sent successfully";
+"Your report was sent successfully" = "Vaše hlásenie bolo úspešne odoslané";

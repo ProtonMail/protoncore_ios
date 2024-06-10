@@ -216,21 +216,21 @@
 
 "Troubleshoot" = "Riešenie problémov";
 
-"Please choose how you want to confirm your identity." = "Please choose how you want to confirm your identity.";
+"Please choose how you want to confirm your identity." = "Vyberte, prosím, akým spôsobom potvrdíte svoju identitu.";
 
-"One-time code" = "One-time code";
+"One-time code" = "Jednorazový kód";
 
-"Security key" = "Security key";
+"Security key" = "Bezpečnostný kľúč";
 
-"Two-Factor Authentication" = "Two-Factor Authentication";
+"Two-Factor Authentication" = "Dvojfaktorová autentizácia";
 
-"Present a security key linked to your Proton Account." = "Present a security key linked to your Proton Account.";
+"Present a security key linked to your Proton Account." = "Predložte bezpečnostný kľúč prepojený s vaším účtom Proton.";
 
 "Learn more" = "Dozvedieť sa viac";
 
-"Invalid state. Please quit the app and try again in a few minutes." = "Invalid state. Please quit the app and try again in a few minutes.";
+"Invalid state. Please quit the app and try again in a few minutes." = "Neplatný stav. Ukončite aplikáciu a skúste to o niekoľko minút znova, prosím.";
 
-"There was a problem reading your security key." = "There was a problem reading your security key.";
+"There was a problem reading your security key." = "Pri čítaní vášho bezpečnostného kľúča došlo k problému.";
 
 "We received an authorization from a type we don't support yet." = "We received an authorization from a type we don't support yet.";
 
@@ -244,7 +244,7 @@
 
 "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys.";
 
-"Security Keys" = "Security Keys";
+"Security Keys" = "Bezpečnostné kľúče";
 
 "To manage, add, or remove security keys, please use the Proton %@ web application." = "To manage, add, or remove security keys, please use the Proton %@ web application.";
 
