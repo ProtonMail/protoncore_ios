@@ -32,12 +32,14 @@ public final class PMUnlockViewControllerComposer {
     ///   - unlocker: Object able to unlock the app, biometrically or using a password
     ///   - logoutManager: Object able to logout
     ///   - logoutAlertSubtitle: Text that alerts the user that a logout action will be carried out and its consequences
+    ///   - fireUnlockAutomatically: Fire unlock automatically when app moves to foreground?
     /// - Returns: `PMUnlockViewController` as `UIViewController`
     public static func assemble(
         header: ProtonHeaderViewModel,
         unlocker: Unlocker,
         logoutManager: LogoutManager?,
-        logoutAlertSubtitle: String) -> UIViewController {
+        logoutAlertSubtitle: String,
+        fireUnlockAutomatically: Bool = false) -> UIViewController {
         let viewModel = UnlockViewModel(
             bioUnlocker: unlocker,
             pinUnlocker: unlocker,
@@ -45,7 +47,8 @@ public final class PMUnlockViewControllerComposer {
             logout: logoutManager,
             biometricType: .currentType,
             header: header,
-            alertSubtitle: logoutAlertSubtitle)
+            alertSubtitle: logoutAlertSubtitle,
+            fireUnlockAutomatically: fireUnlockAutomatically)
         let viewController = PMUnlockViewController()
         viewController.viewModel = viewModel
         return viewController

@@ -22,6 +22,7 @@
 #if os(iOS)
 
 import Foundation
+import UIKit
 
 protocol BiometricUnlockViewModel {
     var biometryType: BiometryType { get }
@@ -55,7 +56,8 @@ public class UnlockViewModel: BiometricUnlockViewModel, PinUnlockViewModel {
                 logout: LogoutManager?,
                 biometricType: BiometryType,
                 header: ProtonHeaderViewModel,
-                alertSubtitle: String) {
+                alertSubtitle: String,
+                fireUnlockAutomatically: Bool = false) {
         self.bioUnlocker = bioUnlocker
         self.pinUnlocker = pinUnlocker
         self.lockReader = lockReader
@@ -63,6 +65,16 @@ public class UnlockViewModel: BiometricUnlockViewModel, PinUnlockViewModel {
         self.biometryType = biometricType
         self.header = header
         self.alertSubtitle = alertSubtitle
+        
+        if fireUnlockAutomatically {
+            NotificationCenter.default
+                .addObserver(
+                    self,
+                    selector: #selector(unlockWithBio),
+                    name: UIApplication.willEnterForegroundNotification,
+                    object: nil
+                )
+        }
     }
 
     public var allowsSignOut: Bool {
@@ -93,6 +105,7 @@ public class UnlockViewModel: BiometricUnlockViewModel, PinUnlockViewModel {
         }
     }
 
+    @objc
     public func unlockWithBio() {
         bioUnlocker.bioUnlock { [weak self] success in
             guard success else { return }
