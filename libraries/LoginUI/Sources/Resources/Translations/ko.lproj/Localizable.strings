@@ -142,7 +142,7 @@
 
 "Recovery phone number" = "복구 전화번호";
 
-"By clicking Next, you agree with Proton's Terms and Conditions" = "다음을 클릭하면, Proton의 이용 약관에 동의하는 것입니다";
+"By clicking Next, you agree with Proton's Terms and Conditions" = "다음을 클릭하면, Proton 이용 약관에 동의하는 것으로 간주합니다.";
 
 "Terms and Conditions" = "이용 약관";
 
@@ -216,7 +216,7 @@
 
 "Troubleshoot" = "문제 해결";
 
-"Please choose how you want to confirm your identity." = "Please choose how you want to confirm your identity.";
+"Please choose how you want to confirm your identity." = "어떻게 회원님의 신원을 확인할지 선택해 주세요.";
 
 "One-time code" = "일회용 코드";
 
@@ -248,6 +248,6 @@
 
 "To manage, add, or remove security keys, please use the Proton %@ web application." = "보안 키를 관리, 추가하거나 제거하려면 Proton %@ 웹 앱을 사용해 주세요.";
 
-"Unexpected FIDO2 signature." = "Unexpected FIDO2 signature.";
+"Unexpected FIDO2 signature." = "알 수 없는 FIDO2 서명";
 
-"We could not initiate the Secure Password update connection. Please try again." = "We could not initiate the Secure Password update connection. Please try again.";
+"We could not initiate the Secure Password update connection. Please try again." = "보안 비밀번호 업데이트 연결을 초기화하지 못했습니다. 다시 시도하십시오.";

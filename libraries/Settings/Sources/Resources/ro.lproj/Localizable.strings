@@ -26,14 +26,14 @@
 
 "pmsettings-settings-footer" = "Versiune aplicație: %@";
 
-"Bug report" = "Bug report";
+"Bug report" = "Raport eroare";
 
-"Send report" = "Send report";
+"Send report" = "Trimitere raport";
 
 "Title" = "Titlu";
 
-"What went wrong" = "What went wrong";
+"What went wrong" = "Ce nu a funcționat?";
 
-"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters.";
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Descrieți problema cât mai detaliat posibil. Dacă a existat un mesaj de eroare, anunțați-ne ce spunea. Minim 10 caractere.";
 
-"Your report was sent successfully" = "Your report was sent successfully";
+"Your report was sent successfully" = "Raportul a fost trimis cu succes.";

@@ -32,8 +32,8 @@
 
 "Title" = "Títol";
 
-"What went wrong" = "Quin era el problema?";
+"What went wrong" = "Què ha anat malament?";
 
-"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters.";
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Descrigui el problema amb el màxim de detall possible. Si hi ha hagut un missatge d'error, faci'ns saber què deia. Mínim 10 caràcters.";
 
-"Your report was sent successfully" = "Your report was sent successfully";
+"Your report was sent successfully" = "El vostre informe s'ha enviat correctament";

@@ -248,6 +248,6 @@
 
 "To manage, add, or remove security keys, please use the Proton %@ web application." = "Untuk mengelola, menambahkan, atau menghapus kunci keamanan, silakan gunakan aplikasi web Proton %@.";
 
-"Unexpected FIDO2 signature." = "Unexpected FIDO2 signature.";
+"Unexpected FIDO2 signature." = "Tanda tangan FIDO2 tidak terduga.";
 
-"We could not initiate the Secure Password update connection. Please try again." = "We could not initiate the Secure Password update connection. Please try again.";
+"We could not initiate the Secure Password update connection. Please try again." = "Kami tidak dapat memulai koneksi pembaruan kata sandi aman. Silakan coba kembali.";

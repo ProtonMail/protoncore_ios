@@ -26,14 +26,14 @@
 
 "pmsettings-settings-footer" = "Različica aplikacije: %@";
 
-"Bug report" = "Bug report";
+"Bug report" = "Prijava hrošča";
 
-"Send report" = "Send report";
+"Send report" = "Pošlji poročilo";
 
 "Title" = "Naslov";
 
-"What went wrong" = "What went wrong";
+"What went wrong" = "Katere težave so nastale";
 
-"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters.";
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Težavo čim bolj podrobno opišite. Če se je pojavilo sporočilo o napaki, nam sporočite, kaj je v njem pisalo. Sporočilo mora vsebovati najmanj 10 znakov.";
 
-"Your report was sent successfully" = "Your report was sent successfully";
+"Your report was sent successfully" = "Poročilo je bilo uspešno poslano.";

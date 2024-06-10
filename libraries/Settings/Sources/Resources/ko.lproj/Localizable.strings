@@ -26,14 +26,14 @@
 
 "pmsettings-settings-footer" = "앱 버전: %@";
 
-"Bug report" = "Bug report";
+"Bug report" = "버그 리포트";
 
-"Send report" = "Send report";
+"Send report" = "보고서 보내기";
 
 "Title" = "제목";
 
-"What went wrong" = "What went wrong";
+"What went wrong" = "무엇이 잘못됐나요";
 
-"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters.";
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "발생한 문제를 최대한 상세하게 설명해주세요. 오류 메시지가 표시되었다면, 무엇이었는지 알려주세요. 최대 10글자 까지입니다.";
 
-"Your report was sent successfully" = "Your report was sent successfully";
+"Your report was sent successfully" = "사용자의 리포트가 성공적으로 전송되었습니다.";

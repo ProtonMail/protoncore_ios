@@ -1,4 +1,4 @@
-"Privacy by default" = "Privacidade padrão";
+"Privacy by default" = "Privacidade por padrão";
 
 "Proton address required" = "Endereço Proton obrigatório";
 
@@ -216,7 +216,7 @@
 
 "Troubleshoot" = "Solução de problemas";
 
-"Please choose how you want to confirm your identity." = "Please choose how you want to confirm your identity.";
+"Please choose how you want to confirm your identity." = "Escolha como você deseja confirmar a sua identidade.";
 
 "One-time code" = "Código de uso único";
 
@@ -228,15 +228,15 @@
 
 "Learn more" = "Saiba mais";
 
-"Invalid state. Please quit the app and try again in a few minutes." = "Invalid state. Please quit the app and try again in a few minutes.";
+"Invalid state. Please quit the app and try again in a few minutes." = "Estado invalido. Saia do aplicativo e tente novamente em alguns minutos.";
 
 "There was a problem reading your security key." = "Houve um problema ao ler sua chave de segurança.";
 
-"We received an authorization from a type we don't support yet." = "We received an authorization from a type we don't support yet.";
+"We received an authorization from a type we don't support yet." = "Recebermos uma autorização de um tipo que não suportamos ainda.";
 
-"Fetching your security keys details" = "Fetching your security keys details";
+"Fetching your security keys details" = "Obtendo os detalhes das suas chaves de segurança";
 
-"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys.";
+"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "Você não tem chaves de segurança registradas na sua conta. Visite a seção de configurações no nosso site para adicionar as chaves de segurança.";
 
 "An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "An error occurred fetching your security keys. You can also check them on the Proton %@ website.";
 
