@@ -22,12 +22,12 @@ import ProtonCoreObservability
 protocol PasswordChangeObservability {
     func observabilityPasswordChangeSuccess(
         mode: PasswordChangeModule.PasswordChangeMode,
-        twoFAEnabled: Bool
+        twoFAMode: TwoFactorMode
     )
     func observabilityPasswordChangeError(
         mode: PasswordChangeModule.PasswordChangeMode, 
         error: Error,
-        twoFAEnabled: Bool
+        twoFAMode: TwoFactorMode
     )
 }
 
@@ -35,18 +35,18 @@ extension PasswordChangeObservability {
 
     func observabilityPasswordChangeSuccess(
         mode: PasswordChangeModule.PasswordChangeMode,
-        twoFAEnabled: Bool
+        twoFAMode: TwoFactorMode
     ) {
         switch mode {
         case .singlePassword, .loginPassword:
             ObservabilityEnv.report(.updateLoginPassword(
                 status: .http200,
-                twoFactorMode: twoFAEnabled ? .enabled : .disabled
+                twoFactorMode: twoFAMode
             ))
         case .mailboxPassword:
             ObservabilityEnv.report(.updateMailboxPassword(
                 status: .http200,
-                twoFactorMode: twoFAEnabled ? .enabled : .disabled
+                twoFactorMode: twoFAMode
             ))
         }
     }
@@ -54,7 +54,7 @@ extension PasswordChangeObservability {
     func observabilityPasswordChangeError(
         mode: PasswordChangeModule.PasswordChangeMode, 
         error: Error,
-        twoFAEnabled: Bool
+        twoFAMode: TwoFactorMode
     ) {
         let status: PasswordChangeHTTPResponseCodeStatus
         switch error.responseCode {
@@ -72,12 +72,12 @@ extension PasswordChangeObservability {
         case .singlePassword, .loginPassword:
             ObservabilityEnv.report(.updateLoginPassword(
                 status: status,
-                twoFactorMode: twoFAEnabled ? .enabled : .disabled
+                twoFactorMode: twoFAMode
             ))
         case .mailboxPassword:
             ObservabilityEnv.report(.updateMailboxPassword(
                 status: status,
-                twoFactorMode:  twoFAEnabled ? .enabled : .disabled
+                twoFactorMode:  twoFAMode
             ))
         }
     }

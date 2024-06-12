@@ -95,12 +95,12 @@ extension PasswordChange2FAView {
                         authCredential: authCredential,
                         userInfo: userInfo
                     )
-                    observabilityPasswordChangeSuccess(mode: mode, twoFAEnabled: true)
+                    observabilityPasswordChangeSuccess(mode: mode, twoFAMode: .totp)
                     passwordChangeCompletion?(authCredential, userInfo)
                 } catch {
                     PMLog.error(error)
                     bannerState = .error(content: .init(message: error.localizedDescription))
-                    observabilityPasswordChangeError(mode: mode, error: error, twoFAEnabled: true)
+                    observabilityPasswordChangeError(mode: mode, error: error, twoFAMode: .totp)
                 }
                 PasswordChangeModule.initialViewController?.unlockUI()
                 authenticateIsLoading = false

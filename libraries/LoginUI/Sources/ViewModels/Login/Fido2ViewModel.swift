@@ -23,8 +23,10 @@ import AuthenticationServices
 import ProtonCoreAuthentication
 import ProtonCoreLog
 import ProtonCoreLogin
+import ProtonCoreObservability
 import ProtonCoreUIFoundations
 import ProtonCoreServices
+
 
 @available(iOS 15.0, macOS 12.0, *)
 extension Fido2View {
@@ -112,20 +114,25 @@ extension Fido2View.ViewModel: ASAuthorizationControllerDelegate {
         switch authorization.credential {
         case let credentialAssertion as ASAuthorizationSecurityKeyPublicKeyCredentialAssertion:
             if case .configured(let authenticationOptions) = state {
+                ObservabilityEnv.report(.webAuthnRequestTotal(status: .authorizedFIDO2))
                 provideFido2Signature(Fido2Signature(credentialAssertion: credentialAssertion, authenticationOptions: authenticationOptions))
             } else {
                 PMLog.error("Invalid state: received a signature for which we don't keep the challenge")
+                ObservabilityEnv.report(.webAuthnRequestTotal(status: .authorizedMissingChallenge))
                 bannerState = .error(content: .init(message: LUITranslation.twofa_unexpected_signature.l10n))
             }
         case let credentialAssertion as ASAuthorizationPlatformPublicKeyCredentialAssertion:
             if case .configured(let authenticationOptions) = state {
+                ObservabilityEnv.report(.webAuthnRequestTotal(status: .authorizedPasskey))
                 provideFido2Signature(Fido2Signature(credentialAssertion: credentialAssertion, authenticationOptions: authenticationOptions))
             } else {
                 PMLog.error("Invalid state: received a signature for which we don't keep the challenge")
+                ObservabilityEnv.report(.webAuthnRequestTotal(status: .authorizedMissingChallenge))
                 bannerState = .error(content: .init(message: LUITranslation.twofa_unexpected_signature.l10n))
             }
         default:
             PMLog.error("Received unknown authorization type: \(authorization.credential)", sendToExternal: true)
+            ObservabilityEnv.report(.webAuthnRequestTotal(status: .authorizedUnsupportedType))
             bannerState = .error(content: .init(message: LUITranslation.twofa_unexpected_authorization_type.l10n))
         }
     }
@@ -133,12 +140,26 @@ extension Fido2View.ViewModel: ASAuthorizationControllerDelegate {
     @MainActor
     public func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         PMLog.error("Secure Key authorization failed with error: \(error.localizedDescription)", sendToExternal: true)
-        guard let authorizationError = error as? ASAuthorizationError,
-              authorizationError.code != .canceled else {
-            // do nothing, it's user caused
+
+        defer {
+            bannerState = .error(content: .init(message: error.localizedDescription))
+        }
+
+        guard let authorizationError = error as? ASAuthorizationError else {
+            ObservabilityEnv.report(.webAuthnRequestTotal(status: .errorOther))
             return
         }
-        bannerState = .error(content: .init(message: error.localizedDescription))
+        let status: WebAuthnRequestStatus = switch authorizationError.code {
+        case .canceled: .errorCanceled
+        case .failed: .errorFailed
+        case .invalidResponse: .errorInvalidResponse
+        case .notHandled: .errorNotHandled
+        case .notInteractive: .errorNotInteractive
+        case .unknown: .errorUnknown
+        @unknown default:
+                .errorOther
+        }
+        ObservabilityEnv.report(.webAuthnRequestTotal(status: status))
     }
 }
 
