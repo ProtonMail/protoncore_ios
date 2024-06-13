@@ -775,7 +775,6 @@ final class ObservabilityEventTests: XCTestCase {
         }
     }
 
-
     // MARK: - WebAuthn events
 
     let ios_core_login_2fa_auth_total_v1 = """

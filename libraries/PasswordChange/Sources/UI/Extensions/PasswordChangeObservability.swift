@@ -25,7 +25,7 @@ protocol PasswordChangeObservability {
         twoFAMode: TwoFactorMode
     )
     func observabilityPasswordChangeError(
-        mode: PasswordChangeModule.PasswordChangeMode, 
+        mode: PasswordChangeModule.PasswordChangeMode,
         error: Error,
         twoFAMode: TwoFactorMode
     )
@@ -52,7 +52,7 @@ extension PasswordChangeObservability {
     }
 
     func observabilityPasswordChangeError(
-        mode: PasswordChangeModule.PasswordChangeMode, 
+        mode: PasswordChangeModule.PasswordChangeMode,
         error: Error,
         twoFAMode: TwoFactorMode
     ) {
@@ -77,7 +77,7 @@ extension PasswordChangeObservability {
         case .mailboxPassword:
             ObservabilityEnv.report(.updateMailboxPassword(
                 status: status,
-                twoFactorMode:  twoFAMode
+                twoFactorMode: twoFAMode
             ))
         }
     }
