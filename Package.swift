@@ -2029,7 +2029,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/getsentry/sentry-cocoa.git",
-            exact: "8.18.0"
+            exact: "8.29.0"
         )
     ],
     targets: targets + [
