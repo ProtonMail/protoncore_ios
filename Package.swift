@@ -505,6 +505,7 @@ add(
                        .cryptoGoInterface,
                        .featureFlags,
                        .foundations,
+                       .observability,
                        .services
                    ],
                    path: "libraries/Authentication/Sources"),

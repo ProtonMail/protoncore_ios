@@ -1,6 +1,6 @@
 //
-//  ChangePasswordUpgradePasswordTotalEvent.swift
-//  ProtonCore-Observability - Created on 19.03.2024.
+//  LoginAuthWith2FATotalEvent.swift
+//  ProtonCore-Observability - Created on 10.06.2024.
 //
 //  Copyright (c) 2024 Proton Technologies AG
 //
@@ -21,21 +21,21 @@
 
 import ProtonCoreNetworking
 
-public struct ChangePasswordUpdateLoginPasswordTotalLabels: Encodable, Equatable {
-    let status: PasswordChangeHTTPResponseCodeStatus
-    let twoFactorMode: TwoFactorMode
+public struct LoginAuthWith2FALabels: Encodable, Equatable {
+    let status: HTTPResponseCodeStatus
+    let twoFAType: TwoFAType
 
     enum CodingKeys: String, CodingKey {
         case status
-        case twoFactorMode
+        case twoFAType
     }
 }
 
-extension ObservabilityEvent where Payload == PayloadWithLabels<ChangePasswordUpdateLoginPasswordTotalLabels> {
-    public static func updateLoginPassword(status: PasswordChangeHTTPResponseCodeStatus, 
-                                           twoFactorMode: TwoFactorMode) -> Self {
-        .init(name: "ios_core_changePassword_updateLoginPassword_total",
-              labels: .init(status: status, twoFactorMode: twoFactorMode),
-              version: .v2)
+extension ObservabilityEvent where Payload ==  PayloadWithLabels<LoginAuthWith2FALabels> {
+    public static func loginAuthWith2FATotalEvent(status: HTTPResponseCodeStatus,
+                                                  twoFAType type: TwoFAType) -> Self {
+        .init(name: "ios_core_login_2fa_auth_total",
+              labels: .init(status: status, twoFAType: type))
     }
 }
+

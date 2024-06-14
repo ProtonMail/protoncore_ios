@@ -22,6 +22,7 @@
 import Foundation
 import ProtonCoreNetworking
 import ProtonCoreServices
+import ProtonCoreObservability
 
 extension AuthService {
 
@@ -90,6 +91,13 @@ public enum TwoFAParams {
                 "CredentialID": [UInt8](signature.credentialID)
             ]
             ]
+        }
+    }
+
+    public var observabilityMode: TwoFactorMode {
+        return switch self {
+        case .totp: .totp
+        case .fido2: .webauthn
         }
     }
 }

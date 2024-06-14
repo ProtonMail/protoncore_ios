@@ -379,7 +379,7 @@ final class ObservabilityEventTests: XCTestCase {
 
     // MARK: - changePasswordUpdateLoginPassword event
 
-    let ios_core_changePassword_updateLoginPassword_total_v1 = """
+    let ios_core_changePassword_updateLoginPassword_total_v2 = """
     {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -408,7 +408,7 @@ final class ObservabilityEventTests: XCTestCase {
                     },
                     "twoFactorMode": {
                         "type": "string",
-                        "enum": ["enabled", "disabled"]
+                        "enum": ["disabled", "totp", "webauthn"]
                     }
                 },
                 "required": ["status", "twoFactorMode"],
@@ -420,7 +420,7 @@ final class ObservabilityEventTests: XCTestCase {
             }
         },
         "required": ["Labels", "Value"],
-        "$id": "https://proton.me/ios_core_changePassword_updateLoginPassword_total_v1.schema.json",
+        "$id": "https://proton.me/ios_core_changePassword_updateLoginPassword_total_v2.schema.json",
         "title": "me.proton.core.observability.domain.metrics.ChangePasswordUpdateLoginPasswordTotal",
         "description": "Upgrade password request.",
         "additionalProperties": false
@@ -429,15 +429,15 @@ final class ObservabilityEventTests: XCTestCase {
 
     func testChangePasswordUpdateLoginPasswordEvent() throws {
         try PasswordChangeHTTPResponseCodeStatus.allCases.forEach { status in
-            let issues = try validatePayloadAccordingToSchema(event: .updateLoginPassword(status: status, twoFactorMode: .enabled),
-                                                              schema: ios_core_changePassword_updateLoginPassword_total_v1)
+            let issues = try validatePayloadAccordingToSchema(event: .updateLoginPassword(status: status, twoFactorMode: .webauthn),
+                                                              schema: ios_core_changePassword_updateLoginPassword_total_v2)
             XCTAssertEqual(issues, .noIssues)
         }
     }
 
     // MARK: - changePasswordUpdateMailboxPassword event
 
-    let ios_core_changePassword_updateMailboxPassword_total_v1 = """
+    let ios_core_changePassword_updateMailboxPassword_total_v2 = """
     {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
@@ -466,7 +466,7 @@ final class ObservabilityEventTests: XCTestCase {
                     },
                     "twoFactorMode": {
                         "type": "string",
-                        "enum": ["enabled", "disabled"]
+                        "enum": ["disabled", "totp", "webauthn"]
                     }
                 },
                 "required": ["status", "twoFactorMode"],
@@ -478,7 +478,7 @@ final class ObservabilityEventTests: XCTestCase {
             }
         },
         "required": ["Labels", "Value"],
-        "$id": "https://proton.me/ios_core_changePassword_updateMailboxPassword_total_v1.schema.json",
+        "$id": "https://proton.me/ios_core_changePassword_updateMailboxPassword_total_v2.schema.json",
         "title": "me.proton.core.observability.domain.metrics.ChangePasswordUpdateMailboxPasswordTotal",
         "description": "Updating user keys for password change request.",
         "additionalProperties": false
@@ -487,8 +487,8 @@ final class ObservabilityEventTests: XCTestCase {
 
     func testChangePasswordUpdateMailboxPasswordEvent() throws {
         try PasswordChangeHTTPResponseCodeStatus.allCases.forEach { status in
-            let issues = try validatePayloadAccordingToSchema(event: .updateMailboxPassword(status: status, twoFactorMode: .enabled),
-                                                              schema: ios_core_changePassword_updateMailboxPassword_total_v1)
+            let issues = try validatePayloadAccordingToSchema(event: .updateMailboxPassword(status: status, twoFactorMode: .totp),
+                                                              schema: ios_core_changePassword_updateMailboxPassword_total_v2)
             XCTAssertEqual(issues, .noIssues)
         }
     }
@@ -771,6 +771,101 @@ final class ObservabilityEventTests: XCTestCase {
                 event: .pushNotificationsTokenRegistered(status: status),
                 schema: ios_core_pushNotifications_token_registration_total_v1
             )
+            XCTAssertEqual(issues, .noIssues)
+        }
+    }
+
+    // MARK: - WebAuthn events
+
+    let ios_core_login_2fa_auth_total_v1 = """
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+        "Labels": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "enum": ["http2xx", "http4xx", "http5xx", "unknown"]
+                },
+                "twoFAType": {
+                    "type": "string",
+                    "enum": ["totp", "webauthn"]
+                }
+            },
+            "required": ["status", "twoFAType"],
+            "additionalProperties": false
+        },
+        "Value": {
+            "type": "integer",
+            "minimum": 1
+        }
+    },
+    "required": ["Labels", "Value"],
+    "$id": "https://proton.me/ios_core_login_2fa_auth_total_v1.schema.json",
+    "title": "me.proton.core.observability.domain.metrics.LoginAuthWith2FATotal",
+    "description": "Perform an auth, using 2FA.",
+    "additionalProperties": false
+}
+"""
+
+    let ios_core_webauthn_request_total_v1 = """
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+        "Labels": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "authorizedFIDO2",
+                            "authorizedPasskey",
+                            "authorizedUnsupportedType",
+                            "authorizedMissingChallenge",
+                            "errorCanceled",
+                            "errorFailed",
+                            "errorInvalidResponse",
+                            "errorNotHandled",
+                            "errorUnknown",
+                            "errorNotInteractive",
+                            "errorOther"
+                    ]
+                }
+            },
+            "required": ["status"],
+            "additionalProperties": false
+        },
+        "Value": {
+            "type": "integer",
+            "minimum": 1
+        }
+    },
+    "required": ["Labels", "Value"],
+    "$id": "https://proton.me/ios_core_webauthn_request_total_v1.schema.json",
+    "title": "me.proton.core.observability.domain.metrics.WebAuthnRequestTotal",
+    "description": "Authenticating for 2FA with WebAuthn.",
+    "additionalProperties": false
+}
+"""
+
+    func testLogin2FAAuthEvent() throws {
+        try HTTPResponseCodeStatus.allCases.forEach { status in
+            try TwoFAType.allCases.forEach { type in
+                let issues = try validatePayloadAccordingToSchema(event: .loginAuthWith2FATotalEvent(status: status,
+                                                                                                     twoFAType: type),
+                                                                  schema: ios_core_login_2fa_auth_total_v1)
+                XCTAssertEqual(issues, .noIssues)
+            }
+        }
+    }
+
+    func testWebAuthnRequestEvent() throws {
+        try WebAuthnRequestStatus.allCases.forEach { status in
+            let issues = try validatePayloadAccordingToSchema(event: .webAuthnRequestTotal(status: status),
+                                                              schema: ios_core_webauthn_request_total_v1)
             XCTAssertEqual(issues, .noIssues)
         }
     }

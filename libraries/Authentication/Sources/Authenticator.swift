@@ -25,9 +25,10 @@ import ProtonCoreCryptoGoInterface
 import ProtonCoreDataModel
 import ProtonCoreFeatureFlags
 import ProtonCoreNetworking
+import ProtonCoreObservability
 import ProtonCoreServices
 
-public class Authenticator: NSObject, AuthenticatorInterface {
+public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObservability {
 
     public typealias Errors = AuthErrors
     public typealias Completion = (Result<Status, AuthErrors>) -> Void
@@ -216,11 +217,15 @@ public class Authenticator: NSObject, AuthenticatorInterface {
                            context: TOTPContext, completion: @escaping Completion) {
         var route = AuthService.TwoFAEndpoint(code: twoFactorCode)
         route.auth = AuthCredential(context.credential)
-        self.apiService.perform(request: route) { (_, result: Result<AuthService.TwoFAResponse, ResponseError>) in
+        self.apiService.perform(request: route) { [weak self] (_, result: Result<AuthService.TwoFAResponse, ResponseError>) in
             switch result {
             case .failure(let responseError):
+                self?.observabilityAuth2FAStatusReport(twoFAType: .totp,
+                                                 httpCode: responseError.httpCode)
                 completion(.failure(.from(responseError)))
             case .success(let response):
+                self?.observabilityAuth2FAStatusReport(twoFAType: .totp,
+                                                 httpCode: 200)
                 var credential = context.credential
                 credential.scopes = response.scopes
                 completion(.success(.newCredential(credential, context.passwordMode)))
@@ -232,11 +237,13 @@ public class Authenticator: NSObject, AuthenticatorInterface {
     public func sendFIDO2Signature(_ signature: Fido2Signature, context: FIDO2Context, completion: @escaping Completion) {
         var route = AuthService.TwoFAEndpoint(signature: signature)
         route.auth = AuthCredential(context.credential)
-        self.apiService.perform(request: route) { (_, result: Result<AuthService.TwoFAResponse, ResponseError>) in
+        self.apiService.perform(request: route) { [weak self] (_, result: Result<AuthService.TwoFAResponse, ResponseError>) in
             switch result {
             case .failure(let responseError):
+                self?.observabilityAuth2FAStatusReport(twoFAType: .webauthn, httpCode: responseError.httpCode)
                 completion(.failure(.from(responseError)))
             case .success(let response):
+                self?.observabilityAuth2FAStatusReport(twoFAType: .webauthn, httpCode: 200)
                 var credential = context.credential
                 credential.scopes = response.scopes
                 completion(.success(.newCredential(credential, context.passwordMode)))
