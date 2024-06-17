@@ -207,7 +207,7 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
                                         self.currentSubscriptionButton.isEnabled = true
                                         self.processPossiblePlans()
                                     } catch {
-                                        PMLog.debug("Error: Update Service Plans error: \(error)")
+                                        PMLog.error("Error: Update Service Plans error: \(error)", sendToExternal: true)
                                     }
                                 }
                             }
