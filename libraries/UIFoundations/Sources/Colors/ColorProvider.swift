@@ -24,10 +24,16 @@ import Foundation
 public struct ProtonColor {
     let name: String
     let vpnFallbackRgb: Int?
+    let alternativeDarkName: String?
 
-    init(name: String, vpnFallbackRgb: Int? = nil) {
+    init(
+        name: String,
+        vpnFallbackRgb: Int? = nil,
+        alternativeDarkName: String? = nil
+    ) {
         self.name = name
         self.vpnFallbackRgb = vpnFallbackRgb
+        self.alternativeDarkName = alternativeDarkName
     }
 }
 
@@ -80,7 +86,13 @@ extension ColorProviderBase {
 
 extension ProtonColor {
     var uiColor: UIColor {
-        darkModeAwareValue { color(name: name) } protonFallback: { color(name: name) } vpnFallback: {
+        if let alternativeDarkName {
+            return UIColor { (traits) -> UIColor in
+                traits.userInterfaceStyle == .dark ?
+                color(name: alternativeDarkName) : color(name: name)
+            }
+        }
+        return darkModeAwareValue { color(name: name) } protonFallback: { color(name: name) } vpnFallback: {
             vpnFallbackRgb.map { UIColor(rgb: $0) } ?? color(name: name)
         }
     }
@@ -321,7 +333,17 @@ extension ColorProviderBase {
 
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 extension ProtonColor {
-    var color: Color { Color(name, bundle: PMUIFoundations.bundle) }
+    var color: Color {
+#if canImport(UIKit)
+        if #available(iOS 15.0, *) {
+            Color(uiColor: uiColor)
+        } else {
+            Color(name, bundle: PMUIFoundations.bundle)
+        }
+#else
+        Color(name, bundle: PMUIFoundations.bundle)
+#endif
+    }
 }
 
 #if canImport(UIKit)
