@@ -50,9 +50,6 @@
       }
     },
     {
-      "skippedTests" : [
-        "ObservabilityEventTests\/test_paymentLaunchBilling_everyStatus_isValid()"
-      ],
       "target" : {
         "containerPath" : "container:",
         "identifier" : "ProtonCoreObservabilityIntegrationTests",
