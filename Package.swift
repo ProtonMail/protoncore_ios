@@ -1,10 +1,21 @@
-// swift-tools-version:5.7
+// swift-tools-version:5.10
 
 import PackageDescription
 
 var products: [Product] = []
 var targets: [Target] = []
 var plugins: [Target.PluginUsage] = []
+
+let swiftSettings: [SwiftSetting] = [
+    .enableUpcomingFeature("BareSlashRegexLiterals"),
+    .enableUpcomingFeature("ConciseMagicFile"),
+    .enableUpcomingFeature("ExistentialAny"),
+    .enableUpcomingFeature("ForwardTrailingClosures"),
+    .enableUpcomingFeature("ImplicitOpenExistentials"),
+    .enableUpcomingFeature("StrictConcurrency"),
+    .unsafeFlags(["-warn-concurrency", "-enable-actor-data-race-checks"]),
+    .spm
+]
 
 func products(from newProduct: String) -> [Product] {
     let products: [Product] = [
@@ -50,6 +61,7 @@ func coreTarget(name: String,
                 path: String,
                 exclude: [String]? = nil,
                 sources: [String]? = nil,
+                settings:  [SwiftSetting] = [.spm],
                 resources: [Resource]? = nil) -> Target {
     .target(name: name,
             dependencies: dependencies ?? [],
@@ -60,7 +72,7 @@ func coreTarget(name: String,
             publicHeadersPath: nil,
             cSettings: nil,
             cxxSettings: nil,
-            swiftSettings: [.spm],
+            swiftSettings: settings,
             linkerSettings: nil,
             plugins: plugins)
 }
@@ -781,7 +793,9 @@ add(
                        .networking,
                        .services,
                    ],
-                   path: "libraries/FeatureFlags/Sources"),
+                   path: "libraries/FeatureFlags/Sources",
+                   settings: swiftSettings
+                  ),
 
         coreTestTarget(name: .featureFlags + "Tests",
                        dependencies: [
