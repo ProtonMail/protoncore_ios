@@ -45,9 +45,9 @@ struct FeatureFlagResponse: Decodable {
 }
 
 public class DefaultRemoteFeatureFlagsDataSource: RemoteFeatureFlagsDataSourceProtocol {
-    public let apiService: APIService
+    public let apiService: any APIService
 
-    init(apiService: APIService) {
+    init(apiService: any APIService) {
         self.apiService = apiService
     }
 
@@ -65,12 +65,11 @@ public enum FeatureFlagsEnvironment {
 
 private extension APIService {
     /// Async variant that can take an `Endpoint`
-    func exec<T: Decodable>(endpoint: Request) async throws -> T {
+    func exec<T: Decodable>(endpoint: any Request) async throws -> T {
         try await withCheckedThrowingContinuation { continuation in
-            perform(
-                request: endpoint,
-                callCompletionBlockUsing: FeatureFlagsEnvironment.networkCompletionExecutor
-            ) { _, result in
+            perform(request: endpoint, 
+                    callCompletionBlockUsing: FeatureFlagsEnvironment.networkCompletionExecutor,
+                    onDataTaskCreated: { _ in }) { _, result in
                 continuation.resume(with: result)
             }
         }
