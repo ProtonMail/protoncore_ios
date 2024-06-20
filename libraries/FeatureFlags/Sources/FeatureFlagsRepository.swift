@@ -28,7 +28,7 @@ import ProtonCoreUtilities
  The FeatureFlagsRepository class is responsible for managing feature flags and their state.
  It conforms to the FeatureFlagsRepositoryProtocol.
  */
-public class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol {
+public final class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol {
     /// The local data source for feature flags.
     private(set) var localDataSource: Atomic<any LocalFeatureFlagsDataSourceProtocol>
 

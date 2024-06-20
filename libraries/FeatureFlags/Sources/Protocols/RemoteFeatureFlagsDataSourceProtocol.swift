@@ -22,6 +22,6 @@
 
 import Foundation
 
-public protocol RemoteFeatureFlagsDataSourceProtocol {
+public protocol RemoteFeatureFlagsDataSourceProtocol: Sendable {
     func getFlags() async throws -> (featureFlags: [FeatureFlag], userID: String)
 }

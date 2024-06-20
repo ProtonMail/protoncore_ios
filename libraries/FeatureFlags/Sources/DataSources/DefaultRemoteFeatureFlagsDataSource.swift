@@ -21,7 +21,8 @@
 //
 
 import ProtonCoreNetworking
-import ProtonCoreServices
+import Foundation
+@preconcurrency import ProtonCoreServices
 import ProtonCoreUtilities
 
 struct FeatureFlagRequest: Request {
@@ -44,9 +45,9 @@ struct FeatureFlagResponse: Decodable {
     }
 }
 
-public class DefaultRemoteFeatureFlagsDataSource: RemoteFeatureFlagsDataSourceProtocol {
+public final class DefaultRemoteFeatureFlagsDataSource: RemoteFeatureFlagsDataSourceProtocol {
     public let apiService: any APIService
-
+    
     init(apiService: any APIService) {
         self.apiService = apiService
     }
@@ -60,15 +61,18 @@ public class DefaultRemoteFeatureFlagsDataSource: RemoteFeatureFlagsDataSourcePr
 }
 
 public enum FeatureFlagsEnvironment {
-    public static var networkCompletionExecutor: CompletionBlockExecutor = .asyncMainExecutor
+    #warning("Mutable static var are not thread safe and should be avoided")
+    public nonisolated(unsafe) static var networkCompletionExecutor: CompletionBlockExecutor = .asyncMainExecutor
 }
+
 
 private extension APIService {
     /// Async variant that can take an `Endpoint`
-    func exec<T: Decodable>(endpoint: any Request) async throws -> T {
+    func exec<T: Decodable>(endpoint: any Request,
+                            networkCompletionExecutor: CompletionBlockExecutor = .asyncMainExecutor) async throws -> T {
         try await withCheckedThrowingContinuation { continuation in
             perform(request: endpoint, 
-                    callCompletionBlockUsing: FeatureFlagsEnvironment.networkCompletionExecutor,
+                    callCompletionBlockUsing: networkCompletionExecutor,
                     onDataTaskCreated: { _ in }) { _, result in
                 continuation.resume(with: result)
             }
