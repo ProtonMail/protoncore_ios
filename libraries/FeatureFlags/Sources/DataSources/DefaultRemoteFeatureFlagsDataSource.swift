@@ -23,7 +23,7 @@
 import ProtonCoreNetworking
 import Foundation
 @preconcurrency import ProtonCoreServices
-import ProtonCoreUtilities
+@preconcurrency import ProtonCoreUtilities
 
 struct FeatureFlagRequest: Request {
     var path: String {
@@ -60,11 +60,9 @@ public final class DefaultRemoteFeatureFlagsDataSource: RemoteFeatureFlagsDataSo
     }
 }
 
-public enum FeatureFlagsEnvironment {
-    #warning("Mutable static var are not thread safe and should be avoided")
-    public nonisolated(unsafe) static var networkCompletionExecutor: CompletionBlockExecutor = .asyncMainExecutor
+public struct FeatureFlagsEnvironment: Sendable {
+    public var networkCompletionExecutor: CompletionBlockExecutor = .asyncMainExecutor
 }
-
 
 private extension APIService {
     /// Async variant that can take an `Endpoint`

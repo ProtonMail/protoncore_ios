@@ -22,18 +22,47 @@
 
 import ProtonCoreLog
 import ProtonCoreServices
-import ProtonCoreUtilities
+@preconcurrency import ProtonCoreUtilities
+import Foundation
 
 /**
  The FeatureFlagsRepository class is responsible for managing feature flags and their state.
  It conforms to the FeatureFlagsRepositoryProtocol.
  */
-public final class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol {
+public final class FeatureFlagsRepository: @unchecked Sendable, FeatureFlagsRepositoryProtocol {
     /// The local data source for feature flags.
-    private(set) var localDataSource: Atomic<any LocalFeatureFlagsDataSourceProtocol>
-
+    private var _localDataSource: Atomic<any LocalFeatureFlagsDataSourceProtocol>
     /// The remote data source for feature flags.
-    private(set) var remoteDataSource: Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?>
+    private var _remoteDataSource: Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?>
+    private let queue = DispatchQueue(label: "ch.proton.featureflagsrepository_queue", attributes: .concurrent)
+
+    /// The local data source for feature flags.
+    var localDataSource: Atomic<any LocalFeatureFlagsDataSourceProtocol> {
+        get {
+            return queue.sync {
+                _localDataSource
+            }
+        }
+        set {
+            queue.async(flags: .barrier) {
+                self._localDataSource = newValue
+            }
+        }
+    }
+    
+    /// The remote data source for feature flags.
+    var remoteDataSource: Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?> {
+        get {
+            return queue.sync {
+                _remoteDataSource
+            }
+        }
+        set {
+            queue.async(flags: .barrier) {
+                self._remoteDataSource = newValue
+            }
+        }
+    }
 
     /// The configuration for feature flags.
     private(set) var userId: String {
@@ -62,8 +91,8 @@ public final class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol {
      */
     init(localDataSource: Atomic<any LocalFeatureFlagsDataSourceProtocol>,
          remoteDataSource: Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?>) {
-        self.localDataSource = localDataSource
-        self.remoteDataSource = remoteDataSource
+        self._localDataSource = localDataSource
+        self._remoteDataSource = remoteDataSource
         self._userId = localDataSource.value.userIdForActiveSession
     }
 

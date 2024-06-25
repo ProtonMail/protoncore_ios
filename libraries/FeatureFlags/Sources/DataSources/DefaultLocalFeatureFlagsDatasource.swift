@@ -23,7 +23,7 @@
 import Foundation
 import ProtonCoreUtilities
 
-public final class DefaultLocalFeatureFlagsDatasource: LocalFeatureFlagsDataSourceProtocol {
+public final class DefaultLocalFeatureFlagsDatasource: @unchecked Sendable, LocalFeatureFlagsDataSourceProtocol {
     private let serialAccessQueue = DispatchQueue(label: "ch.proton.featureflags_queue")
 
     static let featureFlagsKey = "protoncore.featureflag"
