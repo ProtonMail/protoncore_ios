@@ -19,6 +19,7 @@
 import Foundation
 import ProtonCoreObservability
 
+#if os(iOS)
 protocol PasswordChangeObservability {
     func observabilityPasswordChangeSuccess(
         mode: PasswordChangeModule.PasswordChangeMode,
@@ -82,3 +83,5 @@ extension PasswordChangeObservability {
         }
     }
 }
+
+#endif
