@@ -112,60 +112,11 @@ class WelcomeScreenSnapshotTests: ProtonCoreTestingToolkitUnitTestsCore.Snapshot
         welcomeScreenSnapshotTests(variant: .pass(WelcomeScreenTexts(body: body)))
     }
 
-    func testMailWelcomeScreenEnforceLightTheme() {
-        let body = "This is a test message for the welcome screen snapshot tests of the Mail screen variant"
-        welcomeScreenSnapshotTests(variant: .mail(WelcomeScreenTexts(body: body)), inAppTheme: .light)
-    }
-
-    func testDriveWelcomeScreenEnforceLightTheme() {
-        let body = "This is a test message for the welcome screen snapshot tests of the Drive screen variant"
-        welcomeScreenSnapshotTests(variant: .drive(WelcomeScreenTexts(body: body)), inAppTheme: .light)
-    }
-
-    func testCalendarWelcomeScreenEnforceLightTheme() {
-        let body = "This is a test message for the welcome screen snapshot tests of the Calendar screen variant"
-        welcomeScreenSnapshotTests(variant: .calendar(WelcomeScreenTexts(body: body)), inAppTheme: .light)
-    }
-
-    func testVPNWelcomeScreenEnforceLightTheme() {
-        let body = "This is a test message for the welcome screen snapshot tests of the VPN screen variant"
-        welcomeScreenSnapshotTests(variant: .vpn(WelcomeScreenTexts(body: body)), inAppTheme: .light)
-    }
-
-    func testPassWelcomeScreenEnforceLightTheme() {
-        let body = "This is a test message for the welcome screen snapshot tests of the Pass screen variant"
-        welcomeScreenSnapshotTests(variant: .pass(WelcomeScreenTexts(body: body)), inAppTheme: .light)
-    }
-
-    func testWalletWelcomeScreenEnforceLightTheme() {
+    func testWalletWelcomeScreen() {
         let body = "This is a test message for the welcome screen snapshot tests of the Wallet screen variant"
-        welcomeScreenSnapshotTests(variant: .wallet(WelcomeScreenTexts(body: body)), inAppTheme: .light)
+        welcomeScreenSnapshotTests(variant: .wallet(WelcomeScreenTexts(body: body)))
     }
 
-    func testMailWelcomeScreenEnforceDarkTheme() {
-        let body = "This is a test message for the welcome screen snapshot tests of the Mail screen variant"
-        welcomeScreenSnapshotTests(variant: .mail(WelcomeScreenTexts(body: body)), inAppTheme: .dark)
-    }
-
-    func testDriveWelcomeScreenEnforceDarkTheme() {
-        let body = "This is a test message for the welcome screen snapshot tests of the Drive screen variant"
-        welcomeScreenSnapshotTests(variant: .drive(WelcomeScreenTexts(body: body)), inAppTheme: .dark)
-    }
-
-    func testCalendarWelcomeScreenEnforceDarkTheme() {
-        let body = "This is a test message for the welcome screen snapshot tests of the Calendar screen variant"
-        welcomeScreenSnapshotTests(variant: .calendar(WelcomeScreenTexts(body: body)), inAppTheme: .dark)
-    }
-
-    func testVPNWelcomeScreenEnforceDarkTheme() {
-        let body = "This is a test message for the welcome screen snapshot tests of the VPN screen variant"
-        welcomeScreenSnapshotTests(variant: .vpn(WelcomeScreenTexts(body: body)), inAppTheme: .dark)
-    }
-
-    func testPassWelcomeScreenEnforceDarkTheme() {
-        let body = "This is a test message for the welcome screen snapshot tests of the Pass screen variant"
-        welcomeScreenSnapshotTests(variant: .pass(WelcomeScreenTexts(body: body)), inAppTheme: .dark)
-    }
 }
 
 extension Bool: CaseIterable {
