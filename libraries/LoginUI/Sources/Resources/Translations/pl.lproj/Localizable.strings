@@ -238,15 +238,15 @@
 
 "You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "Nie masz żadnych kluczy bezpieczeństwa powiązanych z kontem. Przejdź do ustawień konta przez stronę internetową i dodaj klucze bezpieczeństwa.";
 
-"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "An error occurred fetching your security keys. You can also check them on the Proton %@ website.";
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "Wystąpił błąd podczas ładowania kluczy bezpieczeństwa. Sprawdź problem na stronie internetowej Proton %@.";
 
 "These are the security keys registered to your account" = "Te klucze bezpieczeństwa zostały zarejestrowane na Twoim koncie";
 
-"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys.";
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "Nie masz żadnych kluczy bezpieczeństwa powiązanych z kontem. Dodaj klucze bezpieczeństwa na stronie aplikacji internetowej Proton %@.";
 
 "Security Keys" = "Klucze bezpieczeństwa";
 
-"To manage, add, or remove security keys, please use the Proton %@ web application." = "To manage, add, or remove security keys, please use the Proton %@ web application.";
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "Zarządzaj, dodawaj i usuwaj klucze bezpieczeństwa na stronie aplikacji internetowej Proton %@.";
 
 "Unexpected FIDO2 signature." = "Podpis FIDO2 jest nieprawidłowy.";
 

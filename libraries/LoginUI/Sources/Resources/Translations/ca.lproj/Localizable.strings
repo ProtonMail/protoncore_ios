@@ -216,7 +216,7 @@
 
 "Troubleshoot" = "Resolució de problemes";
 
-"Please choose how you want to confirm your identity." = "Si us plau, esculli com vol confirmar la seva identitat.";
+"Please choose how you want to confirm your identity." = "Si us plau, escolliu com voleu confirmar la vostra identitat.";
 
 "One-time code" = "Codi d'un sol ús";
 
@@ -224,30 +224,30 @@
 
 "Two-Factor Authentication" = "Autenticació de doble factor";
 
-"Present a security key linked to your Proton Account." = "Presenti una clau de seguretat vinculada al seu compte de Proton.";
+"Present a security key linked to your Proton Account." = "Presenteu una clau de seguretat vinculada al vostre compte de Proton.";
 
 "Learn more" = "Més informació";
 
-"Invalid state. Please quit the app and try again in a few minutes." = "Estat no vàlid. Si us plau, tanqui l'aplicació i torni-ho a provar d'aquí a uns minuts.";
+"Invalid state. Please quit the app and try again in a few minutes." = "Estat no vàlid. Si us plau, tanqueu l'aplicació i torneu-ho a provar d'aquí a uns minuts.";
 
-"There was a problem reading your security key." = "S'ha produït un problema en llegir la seva clau de seguretat.";
+"There was a problem reading your security key." = "S'ha produït un problema en llegir la vostra clau de seguretat.";
 
 "We received an authorization from a type we don't support yet." = "Hem rebut una autorització d'un tipus que encara no suportem.";
 
 "Fetching your security keys details" = "S'estan obtenint els detalls de les seves claus de seguretat";
 
-"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "Encara no té cap clau de seguretat registrada al seu compte. Visiti la secció de configuració del nostre lloc web per afegir claus de seguretat.";
+"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "Encara no teniu cap clau de seguretat registrada al vostre compte. Visiteu la secció de configuració del nostre lloc web per afegir claus de seguretat.";
 
-"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "S'ha produït un error en recuperar les seves claus de seguretat. També pot consultar-les al lloc web de Proton %@.";
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "S'ha produït un error en recuperar les vostres claus de seguretat. També podeu consultar-les al lloc web de Proton %@.";
 
-"These are the security keys registered to your account" = "Aquestes són les claus de seguretat registrades al seu compte";
+"These are the security keys registered to your account" = "Aquestes són les claus de seguretat registrades al vostre compte";
 
-"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "Encara no té cap clau de seguretat registrada al seu compte. Utilitzi l'aplicació web Proton %@ per afegir claus de seguretat.";
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "Encara no teniu cap clau de seguretat registrada al vostre compte. Utilitzeu l'aplicació web Proton %@ per afegir claus de seguretat.";
 
 "Security Keys" = "Claus de seguretat";
 
-"To manage, add, or remove security keys, please use the Proton %@ web application." = "Per gestionar, afegir o eliminar claus de seguretat, utilitzi l'aplicació web Proton %@.";
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "Per gestionar, afegir o eliminar claus de seguretat, utilitzeu l'aplicació web Proton %@.";
 
 "Unexpected FIDO2 signature." = "Signatura FIDO2 inesperada.";
 
-"We could not initiate the Secure Password update connection. Please try again." = "No hem pogut iniciar la connexió d'actualització de la contrasenya segura. Si us plau, torni-ho a provar.";
+"We could not initiate the Secure Password update connection. Please try again." = "No hem pogut iniciar la connexió d'actualització de la contrasenya segura. Torneu-ho a provar.";

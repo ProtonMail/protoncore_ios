@@ -228,11 +228,11 @@
 
 "Learn more" = "მეტის ნახვა";
 
-"Invalid state. Please quit the app and try again in a few minutes." = "Invalid state. Please quit the app and try again in a few minutes.";
+"Invalid state. Please quit the app and try again in a few minutes." = "არასწორი მდგომარეობა. გადით აპიდან და რამდენიმე წუთში თავიდან სცადეთ.";
 
 "There was a problem reading your security key." = "აღმოჩენილია პრობლემა თქვენი უსაფრთხოების გასაღების კითხვისას.";
 
-"We received an authorization from a type we don't support yet." = "We received an authorization from a type we don't support yet.";
+"We received an authorization from a type we don't support yet." = "მივიღეთ ავტორიზაცია ტიპისგან, რომლის მხარდაჭერაც ჯერ არ გვაქვს.";
 
 "Fetching your security keys details" = "თქვენი უაფრთხოების გასაღების დეტალების გამოთხოვა";
 
