@@ -246,8 +246,8 @@
 
 "Security Keys" = "უსაფრთხოების გასაღებები";
 
-"To manage, add, or remove security keys, please use the Proton %@ web application." = "To manage, add, or remove security keys, please use the Proton %@ web application.";
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "უსაფრთხოების გასაღებების სამართავად, დასამატებლად ან წასაშლელად Proton %@ ვებ-აპლიკაცია გამოიყენეთ.";
 
 "Unexpected FIDO2 signature." = "მოულოდნელი FIDO2 ხელმოწერა";
 
-"We could not initiate the Secure Password update connection. Please try again." = "We could not initiate the Secure Password update connection. Please try again.";
+"We could not initiate the Secure Password update connection. Please try again." = "Secure Password-ის განახლებისთვის მიერთების აწევა შეუძლებელია. მოგვიანებით სცადეთ.";
