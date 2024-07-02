@@ -218,11 +218,11 @@
 
 "Please choose how you want to confirm your identity." = "Please choose how you want to confirm your identity.";
 
-"One-time code" = "One-time code";
+"One-time code" = "Одноразовий код";
 
-"Security key" = "Security key";
+"Security key" = "Ключ безпеки";
 
-"Two-Factor Authentication" = "Two-Factor Authentication";
+"Two-Factor Authentication" = "Двоетапна перевірка";
 
 "Present a security key linked to your Proton Account." = "Present a security key linked to your Proton Account.";
 
@@ -244,7 +244,7 @@
 
 "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys.";
 
-"Security Keys" = "Security Keys";
+"Security Keys" = "Ключі безпеки";
 
 "To manage, add, or remove security keys, please use the Proton %@ web application." = "To manage, add, or remove security keys, please use the Proton %@ web application.";
 
