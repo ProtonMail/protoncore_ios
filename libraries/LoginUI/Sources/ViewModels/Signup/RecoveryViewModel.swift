@@ -22,7 +22,6 @@
 #if os(iOS)
 
 import Foundation
-import UIKit
 import ProtonCoreChallenge
 import ProtonCoreLogin
 
@@ -55,20 +54,6 @@ class RecoveryViewModel {
         signupService.validatePhoneNumberServerSide(number: number, completion: completion)
     }
 
-    func termsAttributedString(textView: UITextView) -> NSAttributedString {
-        /// Fix me poissble bug: if _login_recovery_t_c_desc translated string doesnt match in _login_recovery_t_c_link translated string. the hyper link could be failed when clicking.
-        var text = LUITranslation.recovery_t_c_desc.l10n
-        let linkText = LUITranslation.recovery_t_c_link.l10n
-        if ProcessInfo.processInfo.arguments.contains("RunningInUITests") {
-            // Workaround for UI test automation to detect link in separated line
-            let texts = text.components(separatedBy: linkText)
-            if texts.count >= 2 {
-                text = texts[0] + "\n" + linkText + texts[1]
-            }
-        }
-
-        return .hyperlink(in: text, as: linkText, path: "", subfont: textView.font)
-    }
 }
 
 #endif
