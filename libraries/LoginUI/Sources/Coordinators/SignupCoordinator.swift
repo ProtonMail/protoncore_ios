@@ -519,6 +519,10 @@ extension SignupCoordinator: PasswordViewControllerDelegate {
     func passwordBackButtonPressed() {
         navigationController?.popViewController(animated: true)
     }
+
+    func termsAndConditionsLinkPressed() {
+        showTermsAndConditionsViewController()
+    }
 }
 
 // MARK: RecoveryViewControllerDelegate
@@ -531,10 +535,6 @@ extension SignupCoordinator: RecoveryViewControllerDelegate {
 
     func recoveryBackButtonPressed() {
         navigationController?.popViewController(animated: true)
-    }
-
-    func termsAndConditionsLinkPressed() {
-        showTermsAndConditionsViewController()
     }
 
     func recoveryCountryPickerPressed() {

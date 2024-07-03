@@ -31,7 +31,6 @@ import ProtonCoreTelemetry
 protocol RecoveryViewControllerDelegate: AnyObject {
     func recoveryBackButtonPressed()
     func recoveryFinish(email: String?, phoneNumber: String?, completionHandler: (() -> Void)?)
-    func termsAndConditionsLinkPressed()
     func recoveryCountryPickerPressed()
 }
 
@@ -107,18 +106,6 @@ class RecoveryViewController: UIViewController, AccessibleView, Focusable, Produ
         didSet {
             nextButton.setTitle(LUITranslation.next_button.l10n, for: .normal)
             nextButton.isEnabled = false
-        }
-    }
-    @IBOutlet weak var termsTextView: UITextView! {
-        didSet {
-            termsTextView.delegate = self
-            termsTextView.attributedText = viewModel?.termsAttributedString(textView: termsTextView)
-            let foregroundColor: UIColor = ColorProvider.BrandNorm
-            termsTextView.linkTextAttributes = [.foregroundColor: foregroundColor]
-            termsTextView.backgroundColor = ColorProvider.BackgroundNorm
-            termsTextView.textColor = ColorProvider.TextWeak
-            termsTextView.font = .adjustedFont(forTextStyle: .footnote)
-            termsTextView.adjustsFontForContentSizeCategory = true
         }
     }
 
@@ -344,18 +331,17 @@ class RecoveryViewController: UIViewController, AccessibleView, Focusable, Produ
     @objc private func keyboardWillShow(notification: NSNotification) {
         adjust(scrollView, notification: notification,
                topView: topView(of: recoveryEmailTextField, recoveryPhoneTextField),
-               bottomView: termsTextView)
+               bottomView: nextButton)
     }
 
     @objc private func keyboardWillHide(notification: NSNotification) {
-        adjust(scrollView, notification: notification, topView: recoveryMethodTitleLabel, bottomView: termsTextView)
+        adjust(scrollView, notification: notification, topView: recoveryMethodTitleLabel, bottomView: nextButton)
     }
 
     @objc
     private func preferredContentSizeChanged(_ notification: Notification) {
         recoveryMethodTitleLabel.font = .adjustedFont(forTextStyle: .title2, weight: .bold)
         recoveryMethodDescriptionLabel.font = .adjustedFont(forTextStyle: .subheadline)
-        termsTextView.font = .adjustedFont(forTextStyle: .footnote)
         configSegment()
     }
 
@@ -420,14 +406,6 @@ extension RecoveryViewController: PMTextFieldComboDelegate {
         delegate?.recoveryCountryPickerPressed()
         recoveryPhoneTextField.pickerButton(isActive: true)
         measureOnViewFocused(item: "phone_country")
-    }
-}
-
-extension RecoveryViewController: UITextViewDelegate {
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        delegate?.termsAndConditionsLinkPressed()
-        measureOnViewClicked(item: "terms")
-        return false
     }
 }
 
