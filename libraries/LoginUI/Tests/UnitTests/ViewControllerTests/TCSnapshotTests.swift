@@ -34,8 +34,9 @@ import ProtonCoreUIFoundations
 class TCSnapshotTests: SnapshotTestCase {
 
     func testTCViewControllerScreen() {
-        let tcViewController = UIStoryboard.instantiate(storyboardName: "PMSignup", controllerType: TCViewController.self, inAppTheme: { .default })
-        let navigationViewController = LoginNavigationViewController(rootViewController: tcViewController)
+        let elViewController = UIStoryboard.instantiate(storyboardName: "PMSignup", controllerType: ExternalLinkViewController.self, inAppTheme: { .default })
+        elViewController.screenTitle = LUITranslation.terms_conditions_view_title.l10n
+        let navigationViewController = LoginNavigationViewController(rootViewController: elViewController)
         checkSnapshots(controller: navigationViewController, perceptualPrecision: 0.98)
     }
 }

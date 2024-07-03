@@ -30,7 +30,7 @@ import XCTest
 class PasswordViewModelTests: XCTestCase {
 
     func testPasswordOK1() throws {
-        let viewModel = PasswordViewModel()
+        let viewModel = PasswordViewModel(clientApp: .other(named: "core-unit-tests"))
         let result = viewModel.passwordValidationResult(for: .notEmpty, password: "a", repeatParrword: "a")
         switch result {
         case .success:
@@ -41,7 +41,7 @@ class PasswordViewModelTests: XCTestCase {
     }
 
     func testPasswordOK2() throws {
-        let viewModel = PasswordViewModel()
+        let viewModel = PasswordViewModel(clientApp: .other(named: "core-unit-tests"))
         let result = viewModel.passwordValidationResult(for: .notEmpty, password: "fhhjdhjdhjdhjhdjhddssaww@#$", repeatParrword: "fhhjdhjdhjdhjhdjhddssaww@#$")
         switch result {
         case .success:
@@ -52,7 +52,7 @@ class PasswordViewModelTests: XCTestCase {
     }
 
     func testPasswordEmpty() throws {
-        let viewModel = PasswordViewModel()
+        let viewModel = PasswordViewModel(clientApp: .other(named: "core-unit-tests"))
         let result = viewModel.passwordValidationResult(for: .notEmpty, password: "", repeatParrword: "")
         switch result {
         case .success:
@@ -63,7 +63,7 @@ class PasswordViewModelTests: XCTestCase {
     }
 
     func testPasswordNotEqual1() throws {
-        let viewModel = PasswordViewModel()
+        let viewModel = PasswordViewModel(clientApp: .other(named: "core-unit-tests"))
         let result = viewModel.passwordValidationResult(for: .notEmpty, password: "aa", repeatParrword: "bb")
         switch result {
         case .success:
@@ -74,7 +74,7 @@ class PasswordViewModelTests: XCTestCase {
     }
 
     func testPasswordNotEqual2() throws {
-        let viewModel = PasswordViewModel()
+        let viewModel = PasswordViewModel(clientApp: .other(named: "core-unit-tests"))
         let result = viewModel.passwordValidationResult(for: .notEmpty, password: "", repeatParrword: "bb")
         switch result {
         case .success:
@@ -85,7 +85,7 @@ class PasswordViewModelTests: XCTestCase {
     }
 
     func testPasswordNotEqual3() throws {
-        let viewModel = PasswordViewModel()
+        let viewModel = PasswordViewModel(clientApp: .other(named: "core-unit-tests"))
         let result = viewModel.passwordValidationResult(for: .notEmpty, password: "c", repeatParrword: "")
         switch result {
         case .success:

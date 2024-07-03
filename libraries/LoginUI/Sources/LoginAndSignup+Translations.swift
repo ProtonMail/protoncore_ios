@@ -103,6 +103,10 @@ public enum LUITranslation: TranslationsExposing {
     case password_view_title
     case password_field_minimum_length_hint
     case repeat_password_field_title
+    case password_t_c_desc
+    case password_t_c_link
+    case password_t_c_wallet_desc
+    case password_p_p_link
     case domains_sheet_title
     case recovery_view_title
     case recovery_view_title_optional
@@ -111,8 +115,6 @@ public enum LUITranslation: TranslationsExposing {
     case recovery_seg_phone
     case recovery_email_field_title
     case recovery_phone_field_title
-    case recovery_t_c_desc
-    case recovery_t_c_link
     case skip_button
     case recovery_skip_title
     case recovery_skip_desc
@@ -129,6 +131,7 @@ public enum LUITranslation: TranslationsExposing {
     case email_verification_code_desc
     case did_not_receive_code_button
     case terms_conditions_view_title
+    case privacy_policy_view_title
     case error_invalid_token_request
     case error_invalid_token
     case error_create_user_failed
@@ -290,6 +293,14 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Password must contain at least 8 characters", comment: "Password field hint about minimum length")
         case .repeat_password_field_title:
             return localized(key: "Repeat password", comment: "Repeat password field title")
+        case .password_t_c_desc:
+            return localized(key: "By clicking Next, you agree with Proton's Terms and Conditions", comment: "Password terms and conditions description")
+        case .password_t_c_link:
+            return localized(key: "Terms and Conditions", comment: "Password terms and conditions link")
+        case .password_t_c_wallet_desc:
+            return localized(key: "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy", comment: "Password terms and conditions description")
+        case .password_p_p_link:
+            return localized(key: "Privacy Policy", comment: "Password privacy policy link")
         case .domains_sheet_title:
             return localized(key: "Domain", comment: "Title of domains bottom action sheet")
         case .recovery_view_title:
@@ -306,10 +317,6 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Recovery email", comment: "Recovery email field title")
         case .recovery_phone_field_title:
             return localized(key: "Recovery phone number", comment: "Recovery phone field title")
-        case .recovery_t_c_desc:
-            return localized(key: "By clicking Next, you agree with Proton's Terms and Conditions", comment: "Recovery terms and conditions description")
-        case .recovery_t_c_link:
-            return localized(key: "Terms and Conditions", comment: "Recovery terms and conditions link")
         case .skip_button:
             return localized(key: "Skip", comment: "Skip button")
         case .recovery_skip_title:
@@ -342,6 +349,8 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Did not receive a code?", comment: "Did not receive code button")
         case .terms_conditions_view_title:
             return localized(key: "Terms and Conditions", comment: "Terms and conditions view title")
+        case .privacy_policy_view_title:
+            return localized(key: "Privacy Policy", comment: "Privacy policy view title")
         case .error_invalid_token_request:
             return localized(key: "Invalid token request", comment: "Invalid token request error")
         case .error_invalid_token:

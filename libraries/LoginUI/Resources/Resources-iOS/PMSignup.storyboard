@@ -542,10 +542,10 @@
             </objects>
             <point key="canvasLocation" x="2473.913043478261" y="-618.08035714285711"/>
         </scene>
-        <!--View Controller-->
+        <!--External Link View Controller-->
         <scene sceneID="dI1-bc-aG0">
             <objects>
-                <viewController storyboardIdentifier="TC" id="mgS-ty-qip" customClass="TCViewController" customModule="ProtonCoreLoginUI" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExternalLink" id="mgS-ty-qip" customClass="ExternalLinkViewController" customModule="ProtonCoreLoginUI" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6g4-vM-jwm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

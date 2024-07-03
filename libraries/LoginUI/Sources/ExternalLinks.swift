@@ -51,7 +51,16 @@ final class ExternalLinks {
     }
 
     var termsAndConditions: URL {
-        return URL(string: "https://proton.me/legal/terms-ios")!
+        switch clientApp {
+        case .wallet:
+            return URL(string: "https://proton.me/leqal/wallet/terms")!
+        default:
+            return URL(string: "https://proton.me/legal/terms-ios")!
+        }
+    }
+
+    var privacyPolicy: URL {
+        return URL(string: "https://proton.me/wallet/privacy-policy")!
     }
 
     var support: URL {

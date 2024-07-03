@@ -1,5 +1,5 @@
 //
-//  TCViewController.swift
+//  ExternalLinkViewController.swift
 //  ProtonCore-Login - Created on 11/03/2021.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -26,14 +26,15 @@ import WebKit
 import ProtonCoreFoundations
 import ProtonCoreUIFoundations
 
-protocol TCViewControllerDelegate: AnyObject {
-    func termsAndConditionsClose()
+protocol ExternalLinkViewControllerDelegate: AnyObject {
+    func externalLinkViewControllerClose()
 }
 
-class TCViewController: UIViewController, AccessibleView {
+class ExternalLinkViewController: UIViewController, AccessibleView {
 
-    weak var delegate: TCViewControllerDelegate?
-    var termsAndConditionsURL: URL?
+    weak var delegate: ExternalLinkViewControllerDelegate?
+    var screenTitle: String?
+    var externalLinkURL: URL?
 
     override var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
 
@@ -46,9 +47,9 @@ class TCViewController: UIViewController, AccessibleView {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = ColorProvider.BackgroundNorm
-        navigationItem.title = LUITranslation.terms_conditions_view_title.l10n
+        navigationItem.title = screenTitle
         navigationController?.navigationBar.tintColor = ColorProvider.IconNorm
-        setUpCloseButton(showCloseButton: true, action: #selector(TCViewController.onCloseButtonTap(_:)))
+        setUpCloseButton(showCloseButton: true, action: #selector(ExternalLinkViewController.onCloseButtonTap(_:)))
         setupWebView()
         generateAccessibilityIdentifiers()
         updateTitleAttributes()
@@ -57,20 +58,20 @@ class TCViewController: UIViewController, AccessibleView {
     // MARK: Actions
 
     @objc func onCloseButtonTap(_ sender: UIButton) {
-        delegate?.termsAndConditionsClose()
+        delegate?.externalLinkViewControllerClose()
     }
 
     // MARK: Private methods
 
     func setupWebView() {
         webView.navigationDelegate = self
-        guard let url = self.termsAndConditionsURL else { return }
+        guard let url = self.externalLinkURL else { return }
         let request = URLRequest(url: url, cachePolicy: URLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 20.0)
         webView.load(request)
     }
 }
 
-extension TCViewController: WKNavigationDelegate {
+extension ExternalLinkViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView,
                  decidePolicyFor navigationAction: WKNavigationAction,
                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
@@ -80,7 +81,7 @@ extension TCViewController: WKNavigationDelegate {
         }
 
         // promise webview won't navigate to other link
-        if url == termsAndConditionsURL?.absoluteString {
+        if url == externalLinkURL?.absoluteString {
             decisionHandler(.allow)
         } else {
             decisionHandler(.cancel)

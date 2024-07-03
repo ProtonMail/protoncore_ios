@@ -70,7 +70,7 @@ class SignupScreenLoadObservabilityTests: SnapshotTestCase {
         let passwordViewController = UIStoryboard.instantiate(storyboardName: "PMSignup",
                                                               controllerType: PasswordViewController.self,
                                                               inAppTheme: { .default })
-        passwordViewController.viewModel = PasswordViewModel()
+        passwordViewController.viewModel = PasswordViewModel(clientApp: .other(named: "core-unit-tests"))
         _ = passwordViewController.view
         XCTAssertTrue(stub.reportStub.wasCalledExactlyOnce)
         XCTAssertTrue(stub.reportStub.lastArguments!.value.isSameAs(event: .screenLoadCountTotal(screenName: .passwordCreation)))
