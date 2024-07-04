@@ -41,13 +41,6 @@ import ProtonCoreUIFoundations
 @testable import ProtonCorePaymentsUI
 
 @available(iOS 13, *)
-extension UITraitCollection {
-    func updated(to style: UIUserInterfaceStyle) -> UITraitCollection {
-        UITraitCollection(traitsFrom: [self, UITraitCollection.init(userInterfaceStyle: style)])
-    }
-}
-
-@available(iOS 13, *)
 final class PaymentsUISnapshotTests: XCTestCase {
 
     let subscriptionStartDate = Date(timeIntervalSince1970: 4818489600)
@@ -59,6 +52,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
     var servicePlan: ServicePlanDataServiceMock!
     var plansDataSource: PlansDataSourceMock!
 
+    let precision: Float = 0.99
     let perceptualPrecision: Float = 0.98
     var featureFlagsRepository: FeatureFlagsRepositoryProtocol!
 
@@ -817,6 +811,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
 
         assertSnapshot(matching: viewController,
                        as: .image(on: ViewImageConfig(safeArea: .zero, size: imageSize, traits: traits.updated(to: .light)),
+                                  precision: precision,
                                   perceptualPrecision: perceptualPrecision,
                                   size: imageSize),
                        record: reRecordEverything || record,
@@ -826,6 +821,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
 
         assertSnapshot(matching: viewController,
                        as: .image(on: ViewImageConfig(safeArea: .zero, size: imageSize, traits: traits.updated(to: .dark)),
+                                  precision: precision,
                                   perceptualPrecision: perceptualPrecision,
                                   size: imageSize),
                        record: reRecordEverything || record,
@@ -898,6 +894,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
 
         assertSnapshot(matching: viewController,
                        as: .image(on: ViewImageConfig(safeArea: .zero, size: imageSize, traits: traits.updated(to: .light)),
+                                  precision: precision,
                                   perceptualPrecision: perceptualPrecision,
                                   size: imageSize),
                        record: reRecordEverything || record,
@@ -907,6 +904,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
 
         assertSnapshot(matching: viewController,
                        as: .image(on: ViewImageConfig(safeArea: .zero, size: imageSize, traits: traits.updated(to: .dark)),
+                                  precision: precision,
                                   perceptualPrecision: perceptualPrecision,
                                   size: imageSize),
                        record: reRecordEverything || record,
@@ -997,48 +995,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentDynamicSubscription_Free_InMail() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.mailFree,
-                clientApp: .mail
-            )
-        }
-    }
-
-    func testCurrentDynamicSubscription_Free_InMail_StorageSplit() async {
-        await withFeatureFlags([.dynamicPlans, .splitStorage]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.StorageSplit.mailFree,
-                clientApp: .mail
-            )
-        }
-    }
-
-    func testCurrentDynamicSubscription_Free_InMail_StorageSplit_Delinquent() async {
-        await withFeatureFlags([.dynamicPlans, .splitStorage]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.StorageSplit.mailFreeDelinquent,
-                clientApp: .mail
-            )
-        }
-    }
-
     func testCurrentSubscription_Free_InVPN() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: nil,
             paymentMethods: existingPaymentsMethods,
             clientApp: .vpn
         )
-    }
-
-    func testCurrentDynamicSubscription_Free_InVPN() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.vpnFree,
-                clientApp: .vpn
-            )
-        }
     }
 
     func testCurrentSubscription_Free_InPass() async {
@@ -1049,48 +1011,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentDynamicSubscription_Free_InPass() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.passFree,
-                clientApp: .pass
-            )
-        }
-    }
-
-    func testCurrentDynamicSubscription_Free_InDrive_StorageSplit() async {
-        await withFeatureFlags([.dynamicPlans, .splitStorage]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.StorageSplit.driveFree,
-                clientApp: .drive
-            )
-        }
-    }
-
-    func testCurrentDynamicSubscription_Free_InDrive_StorageSplit_Delinquent() async {
-        await withFeatureFlags([.dynamicPlans, .splitStorage]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.StorageSplit.driveFreeDelinquent,
-                clientApp: .drive
-            )
-        }
-    }
-
     func testCurrentSubscription_Free_ArbitraryOffer() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: nil,
             paymentMethods: existingPaymentsMethods,
             clientApp: .other(named: "arbitraryOffer")
         )
-    }
-
-    func testCurrentDynamicSubscription_Free_ArbitraryOffer() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.arbitraryFree,
-                clientApp: .other(named: "arbitraryOffer")
-            )
-        }
     }
 
     // mail2022
@@ -1103,15 +1029,6 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentDynamicSubscription_Mail2022_1() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.mail2022.updated(cycle: 1, cycleDescription: "every month", currency: "EUR", amount: 499),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testCurrentSubscription_Mail2022_12() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.mail2022.plan,
@@ -1120,31 +1037,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentDynamicSubscription_Mail2022_12() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.mail2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                    currency: "EUR", amount: 4788),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testCurrentSubscription_Mail2022_24() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.mail2022.plan.updated(cycle: 24),
             paymentMethods: existingPaymentsMethods,
             clientApp: .mail
         )
-    }
-
-    func testCurrentDynamicSubscription_Mail2022_24() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.mail2022.updated(cycle: 24, cycleDescription: "every 2 years", currency: "EUR", amount: 8376),
-                clientApp: .mail
-            )
-        }
     }
 
     // vpn2022
@@ -1157,30 +1055,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentDynamicSubscription_VPN2022_1() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.vpn2022.updated(cycle: 1, cycleDescription: "every month", currency: "CHF", amount: 999),
-                clientApp: .vpn
-            )
-        }
-    }
-
     func testCurrentSubscription_VPN2022_12() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.vpn2022.plan.updated(cycle: 12),
             paymentMethods: .empty,
             clientApp: .vpn
         )
-    }
-
-    func testCurrentDynamicSubscription_VPN2022_12() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.vpn2022.updated(cycle: 12, cycleDescription: "every year", currency: "CHF", amount: 7188),
-                clientApp: .vpn
-            )
-        }
     }
 
     func testCurrentSubscription_VPN2022_15() async {
@@ -1191,30 +1071,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentDynamicSubscription_VPN2022_15() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.vpn2022.updated(cycle: 1, cycleDescription: "every 1.5 years", currency: "CHF", amount: 7485),
-                clientApp: .vpn
-            )
-        }
-    }
-
     func testCurrentSubscription_VPN2022_24() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.vpn2022.plan.updated(cycle: 24),
             paymentMethods: existingPaymentsMethods,
             clientApp: .vpn
         )
-    }
-
-    func testCurrentDynamicSubscription_VPN2022_24() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.vpn2022.updated(cycle: 1, cycleDescription: "every 2 years", currency: "CHF", amount: 11976),
-                clientApp: .vpn
-            )
-        }
     }
 
     func testCurrentSubscription_VPN2022_30() async {
@@ -1225,32 +1087,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentDynamicSubscription_VPN2022_30() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.vpn2022.updated(cycle: 1, cycleDescription: "every 2.5 years", currency: "CHF", amount: 14900),
-                clientApp: .vpn
-            )
-        }
-    }
-    // bundle2022 in mail
-
     func testCurrentSubscription_Bundle2022_1_InMail() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundle2022.plan.updated(cycle: 1),
             paymentMethods: existingPaymentsMethods,
             clientApp: .mail
         )
-    }
-
-    func testCurrentDynamicSubscription_Bundle2022_1_InMail() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundle2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                      currency: "USD", amount: 1299),
-                clientApp: .mail
-            )
-        }
     }
 
     func testCurrentSubscription_Bundle2022_12_InMail() async {
@@ -1261,32 +1103,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentDynamicSubscription_Bundle2022_12_InMail() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundle2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                      currency: "USD", amount: 11988),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testCurrentSubscription_Bundle2022_24_InMail() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundle2022.plan.updated(cycle: 24),
             paymentMethods: existingPaymentsMethods,
             clientApp: .mail
         )
-    }
-
-    func testCurrentDynamicSubscription_Bundle2022_24_InMail() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundle2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                      currency: "USD", amount: 19176),
-                clientApp: .mail
-            )
-        }
     }
 
     // bundle2022 in pass
@@ -1299,16 +1121,6 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentDynamicSubscription_Bundle2022_1_InPass() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundle2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                      currency: "USD", amount: 1299),
-                clientApp: .pass
-            )
-        }
-    }
-
     func testCurrentSubscription_Bundle2022_12_InPass() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundle2022.plan.updated(cycle: 12),
@@ -1317,32 +1129,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentDynamicSubscription_Bundle2022_12_InPass() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundle2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                      currency: "USD", amount: 11988),
-                clientApp: .pass
-            )
-        }
-    }
-
     func testCurrentSubscription_Bundle2022_24_InPass() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundle2022.plan.updated(cycle: 24),
             paymentMethods: existingPaymentsMethods,
             clientApp: .pass
         )
-    }
-
-    func testCurrentDynamicSubscription_Bundle2022_24_InPass() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundle2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                      currency: "USD", amount: 19176),
-                clientApp: .pass
-            )
-        }
     }
 
     // drive2022
@@ -1355,16 +1147,6 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentDynamicSubscription_Drive2022_1() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.drive2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                     currency: "USD", amount: 499),
-                clientApp: .drive
-            )
-        }
-    }
-
     func testCurrentSubscription_Drive2022_12() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.drive2022.plan.updated(cycle: 12),
@@ -1373,32 +1155,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentDynamicSubscription_Drive2022_12() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.drive2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                     currency: "USD", amount: 4788),
-                clientApp: .drive
-            )
-        }
-    }
-
     func testCurrentSubscription_Drive2022_24() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.drive2022.plan.updated(cycle: 24),
             paymentMethods: existingPaymentsMethods,
             clientApp: .drive
         )
-    }
-
-    func testCurrentDynamicSubscription_Drive2022_24() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.drive2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                     currency: "USD", amount: 8376),
-                clientApp: .drive
-            )
-        }
     }
 
     // pass2023
@@ -1411,16 +1173,6 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentDynamicSubscription_Pass2023_1() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.pass2023.updated(cycle: 1, cycleDescription: "every month",
-                                                                    currency: "CHF", amount: 499),
-                clientApp: .pass
-            )
-        }
-    }
-
     func testCurrentSubscription_Pass2023_12() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.pass2023.plan.updated(cycle: 12),
@@ -1429,32 +1181,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentDynamicSubscription_Pass2023_12() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.pass2023.updated(cycle: 12, cycleDescription: "every year",
-                                                                    currency: "CHF", amount: 4788),
-                clientApp: .pass
-            )
-        }
-    }
-
     func testCurrentSubscription_Pass2023_24() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.pass2023.plan.updated(cycle: 24),
             paymentMethods: existingPaymentsMethods,
             clientApp: .pass
         )
-    }
-
-    func testCurrentDynamicSubscription_Pass2023_24() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.pass2023.updated(cycle: 1, cycleDescription: "every 2 years",
-                                                                    currency: "CHF", amount: 3588),
-                clientApp: .pass
-            )
-        }
     }
 
     // mailpro2022
@@ -1467,16 +1199,6 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentDynamicSubscription_MailPro2022_1() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.mailpro2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                       currency: "CHF", amount: 799),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testCurrentSubscription_MailPro2022_12() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.mailpro2022.plan.updated(cycle: 12),
@@ -1485,32 +1207,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentDynamicSubscription_MailPro2022_12() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.mailpro2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                       currency: "CHF", amount: 8388),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testCurrentSubscription_MailPro2022_24() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.mailpro2022.plan.updated(cycle: 24),
             paymentMethods: existingPaymentsMethods,
             clientApp: .mail
         )
-    }
-
-    func testCurrentDynamicSubscription_MailPro2022_24() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.mailpro2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                       currency: "CHF", amount: 7788),
-                clientApp: .mail
-            )
-        }
     }
 
     // bundlepro2022
@@ -1523,32 +1225,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentDynamicSubscription_BundlePro2022_1() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundlepro2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                         currency: "CHF", amount: 1299),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testCurrentSubscription_BundlePro2022_12() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundlepro2022.plan.updated(cycle: 12),
             paymentMethods: existingPaymentsMethods,
             clientApp: .mail
         )
-    }
-
-    func testCurrentDynamicSubscription_BundlePro2022_12() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundlepro2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                         currency: "CHF", amount: 13188),
-                clientApp: .mail
-            )
-        }
     }
 
     func testCurrentSubscription_BundlePro2022_24() async {
@@ -1558,17 +1240,6 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-
-    func testCurrentDynamicSubscription_BundlePro2022_24() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundlepro2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                         currency: "CHF", amount: 23976),
-                clientApp: .mail
-            )
-        }
-    }
-
     // enterprise2022
 
     func testCurrentSubscription_Enterprise2022_1() async {
@@ -1579,32 +1250,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentDynamicSubscription_Enterprise2022_1() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundlepro2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                         currency: "CHF", amount: 1599),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testCurrentSubscription_Enterprise2022_12() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.enterprise2022.plan.updated(cycle: 12),
             paymentMethods: existingPaymentsMethods,
             clientApp: .mail
         )
-    }
-
-    func testCurrentDynamicSubscription_Enterprise2022_12() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundlepro2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                         currency: "CHF", amount: 16788),
-                clientApp: .mail
-            )
-        }
     }
 
     func testCurrentSubscription_Enterprise2022_24() async {
@@ -1615,16 +1266,6 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentDynamicSubscription_Enterprise2022_24() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.enterprise2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                          currency: "CHF", amount: 31176),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testCurrentSubscription_Free_ModalPresentation() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: nil,
@@ -1632,16 +1273,6 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail,
             modalPresentation: true
         )
-    }
-
-    func testCurrentDynamicSubscription_Free_ModalPresentation() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.mailFree,
-                clientApp: .mail,
-                modalPresentation: true
-            )
-        }
     }
 
     // visionary2022
@@ -1654,16 +1285,6 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentDynamicSubscription_Visionary2022_1() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.visionary2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                         currency: "CHF", amount: 2999),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testCurrentSubscription_Visionary2022_12() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.visionary2022.plan.updated(cycle: 12),
@@ -1672,32 +1293,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testCurrentDynamicSubscription_Visionary2022_12() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.visionary2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                         currency: "CHF", amount: 28788),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testCurrentSubscription_Visionary2022_24() async {
         await snapshotCurrentSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.visionary2022.plan.updated(cycle: 24),
             paymentMethods: existingPaymentsMethods,
             clientApp: .mail
         )
-    }
-
-    func testCurrentDynamicSubscription_Visionary2022_24() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.visionary2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                         currency: "CHF", amount: 47976),
-                clientApp: .mail
-            )
-        }
     }
 
     // unknownTestPlan
@@ -1773,24 +1374,6 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                          record: record)
     }
 
-    private func snapshotUpdateDynamicSubscriptionScreen(currentPlan: CurrentPlan,
-                                                         name: String = #function,
-                                                         clientApp: ClientApp,
-
-                                                         modalPresentation: Bool = false,
-                                                         record: Bool = false,
-                                                         file: StaticString = #filePath,
-                                                         line: UInt = #line) async {
-        await snapshotDynamicPlanSubscriptionScreen(mode: .update,
-                                                    currentPlan: currentPlan,
-                                                    name: name,
-                                                    clientApp: clientApp,
-                                                    modalPresentation: modalPresentation,
-                                                    record: record,
-                                                    file: file,
-                                                    line: line)
-    }
-
     // free
 
     func testUpdateSubscription_Free_InMail() async {
@@ -1801,30 +1384,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testUpdateDynamicSubscription_Free_InMail() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.mailFree,
-                clientApp: .mail
-            )
-        }
-    }
-
     func testUpdateSubscription_Free_InVPN() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: nil,
             paymentMethods: .empty,
             clientApp: .vpn
         )
-    }
-
-    func testUpdateDynamicSubscription_Free_InVPN() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.vpnFree,
-                clientApp: .vpn
-            )
-        }
     }
 
     func testUpdateSubscription_Free_InPass() async {
@@ -1835,30 +1400,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testUpdateDynamicSubscription_Free_InPass() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.passFree,
-                clientApp: .pass
-            )
-        }
-    }
-
     func testUpdateSubscription_Free_ArbitraryOffer() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: nil,
             paymentMethods: .empty,
             clientApp: .other(named: "arbitraryOffer")
         )
-    }
-
-    func testUpdateDynamicSubscription_Free_ArbitraryOffer() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.arbitraryFree,
-                clientApp: .other(named: "arbitraryOffer")
-            )
-        }
     }
 
     // mail2022
@@ -1871,15 +1418,6 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testUpdateDynamicSubscription_Mail2022_1() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.mail2022.updated(cycle: 1, cycleDescription: "every month", currency: "EUR", amount: 499),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testUpdateSubscription_Mail2022_12() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.mail2022.plan,
@@ -1888,30 +1426,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testUpdateDynamicSubscription_Mail2022_12() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.mail2022.updated(cycle: 12, cycleDescription: "every year", currency: "EUR", amount: 4788),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testUpdateSubscription_Mail2022_24() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.mail2022.plan.updated(cycle: 24),
             paymentMethods: existingPaymentsMethods,
             clientApp: .mail
         )
-    }
-
-    func testUpdateDynamicSubscription_Mail2022_24() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.mail2022.updated(cycle: 24, cycleDescription: "every 2 years", currency: "EUR", amount: 8376),
-                clientApp: .mail
-            )
-        }
     }
 
     // vpn2022
@@ -1924,30 +1444,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testUpdateDynamicSubscription_VPN2022_1() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.vpn2022.updated(cycle: 1, cycleDescription: "every month", currency: "CHF", amount: 999),
-                clientApp: .vpn
-            )
-        }
-    }
-
     func testUpdateSubscription_VPN2022_12() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.vpn2022.plan.updated(cycle: 12),
             paymentMethods: .empty,
             clientApp: .vpn
         )
-    }
-
-    func testUpdateDynamicSubscription_VPN2022_12() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.vpn2022.updated(cycle: 12, cycleDescription: "every year", currency: "CHF", amount: 7188),
-                clientApp: .vpn
-            )
-        }
     }
 
     func testUpdateSubscription_VPN2022_15() async {
@@ -1958,15 +1460,6 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testUpdateDynamicSubscription_VPN2022_15() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.vpn2022.updated(cycle: 1, cycleDescription: "every 1.5 years", currency: "CHF", amount: 7485),
-                clientApp: .vpn
-            )
-        }
-    }
-
     func testUpdateSubscription_VPN2022_24() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.vpn2022.plan.updated(cycle: 24),
@@ -1975,30 +1468,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testUpdateDynamicSubscription_VPN2022_24() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.vpn2022.updated(cycle: 1, cycleDescription: "every 2 years", currency: "CHF", amount: 11976),
-                clientApp: .vpn
-            )
-        }
-    }
-
     func testUpdateSubscription_VPN2022_30() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.vpn2022.plan.updated(cycle: 30),
             paymentMethods: existingPaymentsMethods,
             clientApp: .vpn
         )
-    }
-
-    func testUpdateDynamicSubscription_VPN2022_30() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotCurrentDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.vpn2022.updated(cycle: 1, cycleDescription: "every 2.5 years", currency: "CHF", amount: 14900),
-                clientApp: .vpn
-            )
-        }
     }
 
     // bundle2022
@@ -2010,17 +1485,6 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-
-    func testUpdateDynamicSubscription_Bundle2022_1_InMail() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundle2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                      currency: "USD", amount: 1299),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testUpdateSubscription_Bundle2022_12_InMail() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundle2022.plan.updated(cycle: 12),
@@ -2028,33 +1492,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-
-    func testUpdateDynamicSubscription_Bundle2022_12_InMail() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundle2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                      currency: "USD", amount: 11988),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testUpdateSubscription_Bundle2022_24_InMail() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundle2022.plan.updated(cycle: 24),
             paymentMethods: existingPaymentsMethods,
             clientApp: .mail
         )
-    }
-
-    func testUpdateDynamicSubscription_Bundle2022_24_InMail() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundle2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                      currency: "USD", amount: 19176),
-                clientApp: .mail
-            )
-        }
     }
 
     func testUpdateSubscription_Bundle2022_1_InPass() async {
@@ -2065,16 +1508,6 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testUpdateDynamicSubscription_Bundle2022_1_InPass() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundle2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                      currency: "USD", amount: 1299),
-                clientApp: .pass
-            )
-        }
-    }
-
     func testUpdateSubscription_Bundle2022_12_InPass() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundle2022.plan.updated(cycle: 12),
@@ -2083,32 +1516,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testUpdateDynamicSubscription_Bundle2022_12_InPass() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundle2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                      currency: "USD", amount: 11988),
-                clientApp: .pass
-            )
-        }
-    }
-
     func testUpdateSubscription_Bundle2022_24_InPass() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundle2022.plan.updated(cycle: 24),
             paymentMethods: existingPaymentsMethods,
             clientApp: .pass
         )
-    }
-
-    func testUpdateDynamicSubscription_Bundle2022_24_InPass() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundle2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                      currency: "USD", amount: 19176),
-                clientApp: .pass
-            )
-        }
     }
 
     // pass2023
@@ -2121,32 +1534,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testUpdateDynamicSubscription_Pass2023_1() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.pass2023.updated(cycle: 1, cycleDescription: "every month",
-                                                                    currency: "CHF", amount: 499),
-                clientApp: .pass
-            )
-        }
-    }
-
     func testUpdateSubscription_Pass2023_12() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.pass2023.plan.updated(cycle: 12),
             paymentMethods: .empty,
             clientApp: .pass
         )
-    }
-
-    func testUpdateDynamicSubscription_Pass2023_12() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.pass2023.updated(cycle: 12, cycleDescription: "every year",
-                                                                    currency: "CHF", amount: 4788),
-                clientApp: .pass
-            )
-        }
     }
 
     func testUpdateSubscription_Pass2023_24() async {
@@ -2157,15 +1550,6 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testUpdateDynamicSubscription_Pass2023_24() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.pass2023.updated(cycle: 1, cycleDescription: "every 2 years",
-                                                                    currency: "CHF", amount: 3588),
-                clientApp: .pass
-            )
-        }
-    }
     // drive2022
 
     func testUpdateSubscription_Drive2022_1() async {
@@ -2176,32 +1560,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testUpdateDynamicSubscription_Drive2022_1() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.drive2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                     currency: "USD", amount: 499),
-                clientApp: .drive
-            )
-        }
-    }
-
     func testUpdateSubscription_Drive2022_12() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.drive2022.plan.updated(cycle: 12),
             paymentMethods: .empty,
             clientApp: .drive
         )
-    }
-
-    func testUpdateDynamicSubscription_Drive2022_12() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.drive2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                     currency: "USD", amount: 4788),
-                clientApp: .drive
-            )
-        }
     }
 
     func testUpdateSubscription_Drive2022_24() async {
@@ -2212,15 +1576,6 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testUpdateDynamicSubscription_Drive2022_24() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.drive2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                     currency: "USD", amount: 8376),
-                clientApp: .drive
-            )
-        }
-    }
     // mailpro2022
 
     func testUpdateSubscription_MailPro2022_1() async {
@@ -2231,16 +1586,6 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testUpdateDynamicSubscription_MailPro2022_1() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.mailpro2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                       currency: "CHF", amount: 799),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testUpdateSubscription_MailPro2022_12() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.mailpro2022.plan.updated(cycle: 12),
@@ -2248,33 +1593,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
             clientApp: .mail
         )
     }
-
-    func testUpdateDynamicSubscription_MailPro2022_12() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.mailpro2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                       currency: "CHF", amount: 8388),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testUpdateSubscription_MailPro2022_24() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.mailpro2022.plan.updated(cycle: 24),
             paymentMethods: existingPaymentsMethods,
             clientApp: .mail
         )
-    }
-
-    func testUpdateDynamicSubscription_MailPro2022_24() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.mailpro2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                       currency: "CHF", amount: 7788),
-                clientApp: .mail
-            )
-        }
     }
 
     // bundlepro2022
@@ -2287,16 +1611,6 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testUpdateDynamicSubscription_BundlePro2022_1() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundlepro2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                         currency: "CHF", amount: 1299),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testUpdateSubscription_BundlePro2022_12() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundlepro2022.plan.updated(cycle: 12),
@@ -2305,32 +1619,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testUpdateDynamicSubscription_BundlePro2022_12() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundlepro2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                         currency: "CHF", amount: 13188),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testUpdateSubscription_BundlePro2022_24() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.bundlepro2022.plan.updated(cycle: 24),
             paymentMethods: existingPaymentsMethods,
             clientApp: .mail
         )
-    }
-
-    func testUpdateDynamicSubscription_BundlePro2022_24() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundlepro2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                         currency: "CHF", amount: 23976),
-                clientApp: .mail
-            )
-        }
     }
 
     // enterprise2022
@@ -2342,16 +1636,6 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testUpdateDynamicSubscription_Enterprise2022_1() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundlepro2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                         currency: "CHF", amount: 1599),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testUpdateSubscription_Enterprise2022_12() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.enterprise2022.plan.updated(cycle: 12),
@@ -2360,32 +1644,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testUpdateDynamicSubscription_Enterprise2022_12() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.bundlepro2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                         currency: "CHF", amount: 16788),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testUpdateSubscription_Enterprise2022_24() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.enterprise2022.plan.updated(cycle: 24),
             paymentMethods: existingPaymentsMethods,
             clientApp: .mail
         )
-    }
-
-    func testUpdateDynamicSubscription_Enterprise2022_24() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.enterprise2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                          currency: "CHF", amount: 31176),
-                clientApp: .mail
-            )
-        }
     }
 
     // visionary2022
@@ -2398,16 +1662,6 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testUpdateDynamicSubscription_Visionary2022_1() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.visionary2022.updated(cycle: 1, cycleDescription: "every month",
-                                                                         currency: "CHF", amount: 2999),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testUpdateSubscription_Visionary2022_12() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.visionary2022.plan.updated(cycle: 12),
@@ -2416,32 +1670,12 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testUpdateDynamicSubscription_Visionary2022_12() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.visionary2022.updated(cycle: 12, cycleDescription: "every year",
-                                                                         currency: "CHF", amount: 28788),
-                clientApp: .mail
-            )
-        }
-    }
-
     func testUpdateSubscription_Visionary2022_24() async {
         await snapshotUpdateSubscriptionScreen(
             currentSubscriptionPlan: MockData.Plans.visionary2022.plan.updated(cycle: 24),
             paymentMethods: existingPaymentsMethods,
             clientApp: .mail
         )
-    }
-
-    func testUpdateDynamicSubscription_Visionary2022_24() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotUpdateDynamicSubscriptionScreen(
-                currentPlan: MockData.DynamicPlans.visionary2022.updated(cycle: 24, cycleDescription: "every 2 years",
-                                                                         currency: "CHF", amount: 47976),
-                clientApp: .mail
-            )
-        }
     }
 
     // unknownTestPlan
@@ -2511,13 +1745,7 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                                   clientApp: ClientApp,
                                                   customPlansDescription: CustomPlansDescription = [:],
                                                   record: Bool = false) async {
-        if try! await featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
-            await snapshotDynamicPlanSubscriptionScreen(mode: .signup,
-                                                        currentPlan: MockData.DynamicPlans.mailFree,
-                                                        name: name,
-                                                        clientApp: clientApp,
-                                                        record: record)
-        } else {
+
             await snapshotSubscriptionScreen(mode: .signup,
                                              currentSubscriptionPlan: nil,
                                              paymentMethods: .empty,
@@ -2525,57 +1753,27 @@ final class PaymentsUISnapshotTests: XCTestCase {
                                              clientApp: clientApp,
                                              customPlansDescription: customPlansDescription,
                                              record: record)
-        }
+
     }
 
     func testSignupSubscription_Mail() async {
         await snapshotSignupSubscriptionScreen(clientApp: .mail)
     }
 
-    func testSignupDynamicSubscription_Mail() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotSignupSubscriptionScreen(clientApp: .mail)
-        }
-    }
-
     func testSignupSubscription_VPN() async {
         await snapshotSignupSubscriptionScreen(clientApp: .vpn)
-    }
-
-    func testSignupDynamicSubscription_VPN() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotSignupSubscriptionScreen(clientApp: .vpn)
-        }
     }
 
     func testSignupSubscription_Drive() async {
         await snapshotSignupSubscriptionScreen(clientApp: .drive)
     }
 
-    func testSignupDynamicSubscription_Drive() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotSignupSubscriptionScreen(clientApp: .drive)
-        }
-    }
-
     func testSignupSubscription_Calendar() async {
         await snapshotSignupSubscriptionScreen(clientApp: .calendar)
     }
 
-    func testSignupDynamicSubscription_Calendar() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotSignupSubscriptionScreen(clientApp: .calendar)
-        }
-    }
-
     func testSignupSubscription_Pass() async {
         await snapshotSignupSubscriptionScreen(clientApp: .pass)
-    }
-
-    func testSignupDynamicSubscription_Pass() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotSignupSubscriptionScreen(clientApp: .pass)
-        }
     }
 
     func testSignupSubscription_Free_ArbitraryOffer() async {
@@ -2584,49 +1782,10 @@ final class PaymentsUISnapshotTests: XCTestCase {
         )
     }
 
-    func testSignupDynamicSubscription_Free_ArbitraryOffer() async {
-        await withFeatureFlags([.dynamicPlans]) {
-            await snapshotSignupSubscriptionScreen(
-                clientApp: .other(named: "arbitraryOffer")
-            )
-        }
-    }
-
     func testSignupSubscription_CustomDescription() async {
         await snapshotSignupSubscriptionScreen(clientApp: .pass, customPlansDescription: MockData.customPlansDescription)
     }
-}
 
-extension CurrentPlan.Subscription.DescriptionEntitlement {
-    static func description(text: String, iconName: String = "") -> Self {
-        .init(type: "description", text: text, iconName: iconName)
-    }
-}
-
-extension CurrentPlan {
-    func updated(cycle: Int? = nil, cycleDescription: String? = nil, currency: String? = nil, amount: Int? = nil, renew: Int? = nil) -> CurrentPlan {
-        Self(subscriptions: self.subscriptions.map { $0.updated(cycle: cycle,
-                                                                cycleDescription: cycleDescription,
-                                                                currency: currency,
-                                                                amount: amount,
-                                                                renew: renew)
-        })
-    }
-}
-
-extension CurrentPlan.Subscription {
-    func updated(cycle: Int?, cycleDescription: String?, currency: String?, amount: Int?, renew: Int?) -> Self {
-        Self(title: self.title,
-             name: self.name,
-             description: self.description,
-             cycleDescription: cycleDescription ?? self.cycleDescription,
-             cycle: cycle ?? self.cycle,
-             currency: currency ?? self.currency,
-             amount: amount ?? self.amount,
-             periodEnd: self.periodEnd,
-             renew: renew ?? self.renew,
-             entitlements: self.entitlements)
-    }
 }
 
 #endif
