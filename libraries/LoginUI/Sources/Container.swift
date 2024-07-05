@@ -133,7 +133,7 @@ final class Container {
     }
 
     func makePasswordViewModel() -> PasswordViewModel {
-        return PasswordViewModel()
+        return PasswordViewModel(clientApp: clientApp)
     }
 
     func makeRecoveryViewModel(initialCountryCode: Int) -> RecoveryViewModel {

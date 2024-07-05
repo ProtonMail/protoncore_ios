@@ -26,12 +26,14 @@ import ProtonCoreFoundations
 import ProtonCoreUIFoundations
 import ProtonCoreObservability
 import ProtonCoreTelemetry
+import ProtonCoreUtilities
 
 protocol PasswordViewControllerDelegate: AnyObject {
     func passwordIsShown()
     func validatedPassword(password: String, completionHandler: (() -> Void)?)
     func passwordBackButtonPressed()
     func termsAndConditionsLinkPressed()
+    func privacyPolicyLinkPressed()
 }
 
 class PasswordViewController: UIViewController, AccessibleView, Focusable, ProductMetricsMeasurable {
@@ -284,8 +286,20 @@ extension PasswordViewController: SignUpErrorCapable, LoginErrorCapable {
 
 extension PasswordViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        delegate?.termsAndConditionsLinkPressed()
-        measureOnViewClicked(item: "terms")
+        guard let stringRange = Range(characterRange, in: textView.text) else {
+            return false
+        }
+        switch textView.text[stringRange] {
+        case LUITranslation.password_t_c_link.l10n:
+            delegate?.termsAndConditionsLinkPressed()
+            measureOnViewClicked(item: "terms")
+        case LUITranslation.password_p_p_link.l10n:
+            delegate?.privacyPolicyLinkPressed()
+            measureOnViewClicked(item: "privacy_policy")
+        default:
+            break
+        }
+
         return false
     }
 }
