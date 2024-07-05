@@ -30,11 +30,15 @@ protocol ExternalLinkViewControllerDelegate: AnyObject {
     func externalLinkViewControllerClose()
 }
 
+struct ExternalLinkConfiguration {
+    let title: String
+    let url: URL
+}
+
 class ExternalLinkViewController: UIViewController, AccessibleView {
 
     weak var delegate: ExternalLinkViewControllerDelegate?
-    var screenTitle: String?
-    var externalLinkURL: URL?
+    var configuration: ExternalLinkConfiguration?
 
     override var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
 
@@ -47,7 +51,7 @@ class ExternalLinkViewController: UIViewController, AccessibleView {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = ColorProvider.BackgroundNorm
-        navigationItem.title = screenTitle
+        navigationItem.title = configuration?.title
         navigationController?.navigationBar.tintColor = ColorProvider.IconNorm
         setUpCloseButton(showCloseButton: true, action: #selector(ExternalLinkViewController.onCloseButtonTap(_:)))
         setupWebView()
@@ -65,7 +69,7 @@ class ExternalLinkViewController: UIViewController, AccessibleView {
 
     func setupWebView() {
         webView.navigationDelegate = self
-        guard let url = self.externalLinkURL else { return }
+        guard let url = configuration?.url else { return }
         let request = URLRequest(url: url, cachePolicy: URLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 20.0)
         webView.load(request)
     }
@@ -81,7 +85,7 @@ extension ExternalLinkViewController: WKNavigationDelegate {
         }
 
         // promise webview won't navigate to other link
-        if url == externalLinkURL?.absoluteString {
+        if url == configuration?.url.absoluteString {
             decisionHandler(.allow)
         } else {
             decisionHandler(.cancel)

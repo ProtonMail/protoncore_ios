@@ -284,8 +284,10 @@ final class SignupCoordinator {
 
     private func showTermsAndConditionsViewController() {
         let elViewController = UIStoryboard.instantiateInSignup(ExternalLinkViewController.self, inAppTheme: customization.inAppTheme)
-        elViewController.screenTitle = LUITranslation.terms_conditions_view_title.l10n
-        elViewController.externalLinkURL = externalLinks.termsAndConditions
+        elViewController.configuration = .init(
+            title: LUITranslation.terms_conditions_view_title.l10n,
+            url: externalLinks.termsAndConditions
+        )
         elViewController.delegate = self
 
         let navigationVC = LoginNavigationViewController(rootViewController: elViewController)
@@ -295,8 +297,10 @@ final class SignupCoordinator {
 
     private func showPrivacyPolicyViewController() {
         let elViewController = UIStoryboard.instantiateInSignup(ExternalLinkViewController.self, inAppTheme: customization.inAppTheme)
-        elViewController.screenTitle = LUITranslation.privacy_policy_view_title.l10n
-        elViewController.externalLinkURL = externalLinks.privacyPolicy
+        elViewController.configuration = .init(
+            title: LUITranslation.privacy_policy_view_title.l10n,
+            url: externalLinks.privacyPolicy
+        )
         elViewController.delegate = self
 
         let navigationVC = LoginNavigationViewController(rootViewController: elViewController)

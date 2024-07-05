@@ -35,7 +35,7 @@ class TCSnapshotTests: SnapshotTestCase {
 
     func testTCViewControllerScreen() {
         let elViewController = UIStoryboard.instantiate(storyboardName: "PMSignup", controllerType: ExternalLinkViewController.self, inAppTheme: { .default })
-        elViewController.screenTitle = LUITranslation.terms_conditions_view_title.l10n
+        elViewController.configuration = .init(title: LUITranslation.terms_conditions_view_title.l10n, url: URL(string: "https://proton.me")!)
         let navigationViewController = LoginNavigationViewController(rootViewController: elViewController)
         checkSnapshots(controller: navigationViewController, perceptualPrecision: 0.98)
     }
