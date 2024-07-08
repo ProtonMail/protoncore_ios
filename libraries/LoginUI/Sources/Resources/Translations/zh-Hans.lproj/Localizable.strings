@@ -144,7 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "点击下一步即表示您同意 Proton 的条款和条件";
 
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
+
 "Terms and Conditions" = "条款和条件";
+
+"Privacy Policy" = "Privacy Policy";
 
 "Skip" = "跳过";
 
@@ -177,6 +181,8 @@
 "Did not receive a code?" = "未收到验证码？";
 
 "Terms and Conditions" = "条款和条件";
+
+"Privacy Policy" = "Privacy Policy";
 
 "Invalid token request" = "无效令牌请求";
 
@@ -216,38 +222,38 @@
 
 "Troubleshoot" = "排查故障";
 
-"Please choose how you want to confirm your identity." = "Please choose how you want to confirm your identity.";
+"Please choose how you want to confirm your identity." = "请选择您想要确认身份的方式。";
 
-"One-time code" = "One-time code";
+"One-time code" = "一次性验证码";
 
-"Security key" = "Security key";
+"Security key" = "安全密钥";
 
-"Two-Factor Authentication" = "Two-Factor Authentication";
+"Two-Factor Authentication" = "双重认证";
 
-"Present a security key linked to your Proton Account." = "Present a security key linked to your Proton Account.";
+"Present a security key linked to your Proton Account." = "请出示与您的 Proton 账户关联的安全密钥。";
 
 "Learn more" = "了解详情";
 
-"Invalid state. Please quit the app and try again in a few minutes." = "Invalid state. Please quit the app and try again in a few minutes.";
+"Invalid state. Please quit the app and try again in a few minutes." = "状态无效。请退出应用并在几分钟后重试。";
 
-"There was a problem reading your security key." = "There was a problem reading your security key.";
+"There was a problem reading your security key." = "读取您的安全密钥时出现问题。";
 
-"We received an authorization from a type we don't support yet." = "We received an authorization from a type we don't support yet.";
+"We received an authorization from a type we don't support yet." = "我们收到了尚不支持的类型的授权。";
 
-"Fetching your security keys details" = "Fetching your security keys details";
+"Fetching your security keys details" = "正在获取您的安全密钥详细信息";
 
-"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys.";
+"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "您的账户中尚未注册任何安全密钥。请访问我们网站上的设置部分来添加安全密钥。";
 
-"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "An error occurred fetching your security keys. You can also check them on the Proton %@ website.";
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "获取您的安全密钥时出错。您也可以在 Proton %@ 网站上查看它们。";
 
-"These are the security keys registered to your account" = "These are the security keys registered to your account";
+"These are the security keys registered to your account" = "这些是注册到您账户的安全密钥";
 
-"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys.";
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "您的账户中尚未注册任何安全密钥。请使用 Proton %@ 网页应用程序添加安全密钥。";
 
-"Security Keys" = "Security Keys";
+"Security Keys" = "安全密钥";
 
-"To manage, add, or remove security keys, please use the Proton %@ web application." = "To manage, add, or remove security keys, please use the Proton %@ web application.";
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "若要管理、添加或删除安全密钥，请使用 Proton %@ 网页应用程序。";
 
-"Unexpected FIDO2 signature." = "Unexpected FIDO2 signature.";
+"Unexpected FIDO2 signature." = "未知的 FIDO2 签名";
 
-"We could not initiate the Secure Password update connection. Please try again." = "We could not initiate the Secure Password update connection. Please try again.";
+"We could not initiate the Secure Password update connection. Please try again." = "我们无法启动安全密码更新连接。请重试。";

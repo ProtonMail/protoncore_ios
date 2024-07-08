@@ -144,7 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "S klikom na Naprej potrjujete, da se strinjate s Proton pravili in pogoji";
 
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
+
 "Terms and Conditions" = "Pravila in pogoji";
+
+"Privacy Policy" = "Privacy Policy";
 
 "Skip" = "Preskoči";
 
@@ -177,6 +181,8 @@
 "Did not receive a code?" = "Niste prejeli kode?";
 
 "Terms and Conditions" = "Pravila in pogoji";
+
+"Privacy Policy" = "Privacy Policy";
 
 "Invalid token request" = "Neveljavna zahteva žetona";
 

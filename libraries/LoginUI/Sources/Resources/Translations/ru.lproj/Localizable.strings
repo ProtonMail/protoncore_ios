@@ -36,7 +36,7 @@
 
 "Sign in with password" = "Войти с помощью пароля";
 
-"Sign in with SSO" = "Войти с помощью системы единого входа";
+"Sign in with SSO" = "Войти через SSO";
 
 "Sign in to your organization" = "Войдите в вашу организацию";
 
@@ -144,7 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "Нажимая кнопку Далее, вы соглашаетесь с условиями Proton";
 
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
+
 "Terms and Conditions" = "Условия";
+
+"Privacy Policy" = "Privacy Policy";
 
 "Skip" = "Пропустить";
 
@@ -177,6 +181,8 @@
 "Did not receive a code?" = "Не получили код?";
 
 "Terms and Conditions" = "Условия";
+
+"Privacy Policy" = "Privacy Policy";
 
 "Invalid token request" = "Недействительный запрос токена";
 

@@ -144,7 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "Με κλικ στο Επόμενο, συμφωνείτε με τους Όρους και Προϋποθέσεις της Proton";
 
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
+
 "Terms and Conditions" = "Όροι και Προϋποθέσεις";
+
+"Privacy Policy" = "Privacy Policy";
 
 "Skip" = "Παράλειψη";
 
@@ -177,6 +181,8 @@
 "Did not receive a code?" = "Δεν λάβατε τον κωδικό;";
 
 "Terms and Conditions" = "Όροι και Προϋποθέσεις";
+
+"Privacy Policy" = "Privacy Policy";
 
 "Invalid token request" = "Μη έγκυρο αίτημα διακριτικού";
 

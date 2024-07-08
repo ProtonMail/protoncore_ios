@@ -144,7 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "點擊下一步，即表示您同意 Proton 的合約條款";
 
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
+
 "Terms and Conditions" = "條款與細則";
+
+"Privacy Policy" = "Privacy Policy";
 
 "Skip" = "略過";
 
@@ -177,6 +181,8 @@
 "Did not receive a code?" = "未收到驗證碼？";
 
 "Terms and Conditions" = "條款與細則";
+
+"Privacy Policy" = "Privacy Policy";
 
 "Invalid token request" = "無效的權杖申請";
 
