@@ -24,6 +24,7 @@ import Foundation
 private let seedSubscriber = "quark/raw::payments:seed-subscriber"
 private let seedPaymentMethod = "quark/raw::payments:seed-payment-method"
 private let makeDelinquent = "quark/raw::payments:make-delinquent"
+private let newSeedSubscriber = "quark/raw::new-payments:seed:subscribed-user"
 
 public extension Quark {
 
@@ -39,6 +40,7 @@ public extension Quark {
         case overdueMoreThan30Days
     }
 
+    @available(*, deprecated, renamed: "newSeedNewSubscriber", message: "`Use new payment provider`.")
     @discardableResult
     func seedNewSubscriber(user: User, plan: UserPlan, state: DelinquentState = .paid) throws -> User {
 
@@ -84,6 +86,7 @@ public extension Quark {
         }
     }
 
+    @available(*, deprecated, renamed: "newSeedNewSubscriber", message: "`Use new payment provider`.")
     @discardableResult
     func seedNewSubscriberWithCycle(user: User, plan: UserPlan, cycleDurationMonths: Int) throws -> (data: Data, response: URLResponse) {
 
@@ -117,7 +120,6 @@ public extension Quark {
         return try executeQuarkRequest(request)
     }
 
-    @discardableResult
     func updateDelinquentState(state: DelinquentState, for username: String) throws {
         let args = [
             "username=\(username)&&--delinquentState=\(state.rawValue)"
@@ -138,5 +140,46 @@ public extension Quark {
         } catch {
             throw error
         }
+    }
+
+    @discardableResult
+    func newSeedNewSubscriber(user: User, plan: UserPlan, cycle: Int) throws -> User {
+        let args = [
+            "username=\(user.name)",
+            "password=\(user.password)",
+            "plan=\(plan.rawValue)",
+            "cycle=\(cycle)"
+        ]
+
+        let request = try route(newSeedSubscriber)
+            .args(args)
+            .build()
+
+        let (usersData, response) = try executeQuarkRequest(request)
+        guard let htmlResponse = String(data: usersData, encoding: .utf8) else {
+            throw QuarkError(urlResponse: response, message: "Failed users fetching")
+        }
+
+        let regexPattern = "User `[^`]*` \\(ID (\\d+)\\) seeded correctly\\."
+        let regex = try NSRegularExpression(pattern: regexPattern)
+        let matches = regex.matches(in: htmlResponse, range: NSRange(htmlResponse.startIndex..., in: htmlResponse))
+
+        if matches.isEmpty {
+            throw QuarkError(urlResponse: response, message: "Failed to fetch ID: \(htmlResponse)")
+        }
+
+        guard let match = matches.first else {
+            throw QuarkError(urlResponse: response, message: "No valid match found: \(htmlResponse)")
+        }
+
+        guard let idRange = Range(match.range(at: 1), in: htmlResponse) else {
+            throw QuarkError(urlResponse: response, message: "Failed to extract ID range: \(htmlResponse)")
+        }
+
+        let id = Int(htmlResponse[idRange]) ?? 0
+
+        var createdUser = user
+        createdUser.id = id
+        return createdUser
     }
 }
