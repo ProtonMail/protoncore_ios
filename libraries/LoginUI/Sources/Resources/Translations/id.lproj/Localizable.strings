@@ -144,7 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "Dengan mengeklik Selanjutnya, Anda menyatakan diri setuju terhadap Syarat dan Ketentuan Proton";
 
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Dengan mengeklik Selanjutnya, Anda menyatakan diri setuju terhadap Syarat dan Ketentuan serta Kebijakan Privasi Proton";
+
 "Terms and Conditions" = "Syarat dan Ketentuan";
+
+"Privacy Policy" = "Kebijakan Privasi";
 
 "Skip" = "Lewati";
 
@@ -177,6 +181,8 @@
 "Did not receive a code?" = "Tidak menerima kode?";
 
 "Terms and Conditions" = "Syarat dan Ketentuan";
+
+"Privacy Policy" = "Kebijakan Privasi";
 
 "Invalid token request" = "Permintaan token tidak valid";
 

@@ -144,7 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "A Tovább gombra kattintva elfogadja a Proton felhasználási feltételeit";
 
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
+
 "Terms and Conditions" = "Szerződési feltételeket";
+
+"Privacy Policy" = "Privacy Policy";
 
 "Skip" = "Kihagyás";
 
@@ -177,6 +181,8 @@
 "Did not receive a code?" = "Nem kapta meg a kódot?";
 
 "Terms and Conditions" = "Szerződési feltételeket";
+
+"Privacy Policy" = "Privacy Policy";
 
 "Invalid token request" = "Érvénytelen token kérés";
 

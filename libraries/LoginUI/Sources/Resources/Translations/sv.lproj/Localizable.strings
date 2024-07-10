@@ -144,7 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "Genom att klicka på ”Nästa” godkänner du Protons användarvillkor";
 
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Genom att klicka på nästa godkänner du Protons villkor och integritetspolicy";
+
 "Terms and Conditions" = "Användarvillkor";
+
+"Privacy Policy" = "Integritetspolicy";
 
 "Skip" = "Hoppa över";
 
@@ -177,6 +181,8 @@
 "Did not receive a code?" = "Fick du ingen kod?";
 
 "Terms and Conditions" = "Användarvillkor";
+
+"Privacy Policy" = "Integritetspolicy";
 
 "Invalid token request" = "Ogiltig tokenbegäran";
 

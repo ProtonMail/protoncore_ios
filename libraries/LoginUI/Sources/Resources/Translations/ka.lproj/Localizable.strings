@@ -144,7 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "შემდეგ გვერდზე გადასვლით თქვენ ეთანხმებით Proton-ის წესებს და პირობებს";
 
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
+
 "Terms and Conditions" = "პირობები და წესები";
+
+"Privacy Policy" = "Privacy Policy";
 
 "Skip" = "გამოტოვება";
 
@@ -177,6 +181,8 @@
 "Did not receive a code?" = "კოდი არ მიგიღიათ?";
 
 "Terms and Conditions" = "პირობები და წესები";
+
+"Privacy Policy" = "Privacy Policy";
 
 "Invalid token request" = "კოდის არასწორი მოთხოვნა";
 
@@ -238,7 +244,7 @@
 
 "You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys.";
 
-"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "An error occurred fetching your security keys. You can also check them on the Proton %@ website.";
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "შეცდომა თქვენი უსაფრთხოების გასაღებების გამოთხოვისას. მათი შემოწმება Proton %@-ის ვებგვერდზეც შეგიძლიათ.";
 
 "These are the security keys registered to your account" = "თქვენს ანგარიშზე რეგისტრირებულია უსაფრთხოების გასაღებები";
 
