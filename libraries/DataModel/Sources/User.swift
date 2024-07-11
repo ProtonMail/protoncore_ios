@@ -396,6 +396,7 @@ public final class UserInfo: NSObject, Codable {
         self.usedDriveSpace = userinfo.usedDriveSpace
         self.userId = userinfo.userId
         self.userKeys = userinfo.userKeys
+        self.lockedFlags = userinfo.lockedFlags
     }
 }
 
