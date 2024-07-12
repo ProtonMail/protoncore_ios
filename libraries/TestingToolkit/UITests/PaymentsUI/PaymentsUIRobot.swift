@@ -185,7 +185,7 @@ public final class PaymentsUIRobot: CoreElements {
             staticText(title).waitUntilExists().checkExists()
             return PaymentsUIRobot()
         }
-        
+
         @discardableResult
         public func storageInfo(usedSpace: String, totalSpace: String) -> PaymentsUIRobot {
             staticText("\(usedSpace) of \(totalSpace)").waitUntilExists().checkExists()

@@ -60,9 +60,9 @@ extension BugReportView {
         }
 
         func setupBindings() {
-            let handleTextfieldsChanged: (String) -> () = { [weak self] _ in
+            let handleTextfieldsChanged: (String) -> Void = { [weak self] _ in
                 guard let self else { return }
-                self.sendButtonIsEnabled = 
+                self.sendButtonIsEnabled =
                 !self.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
                 self.description.trimmingCharacters(in: .whitespacesAndNewlines).count >= 10
             }

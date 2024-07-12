@@ -349,7 +349,7 @@ extension PaymentsUICoordinator: PaymentsUIViewControllerDelegate {
     }
 
     func userDidSelectPlan(plan: AvailablePlansPresentation, completionHandler: @escaping () -> Void) {
-        
+
         guard let inAppPlan = plan.availablePlan else {
             completionHandler()
             return

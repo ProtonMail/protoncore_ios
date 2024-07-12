@@ -69,24 +69,4 @@ struct BugReport {
     var username: String
     var email: String
 
-    init(
-        os: String,
-        osVersion: String,
-        client: String,
-        clientVersion: String,
-        title: String,
-        description: String,
-        username: String,
-        email: String
-    ) {
-        self.os = os
-        self.osVersion = osVersion
-        self.client = client
-        self.clientVersion = clientVersion
-        self.title = title
-        self.description = description
-        self.username = username
-        self.email = email
-    }
-
 }

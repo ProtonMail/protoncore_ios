@@ -181,7 +181,7 @@ protocol PushModalCoordinator: DefaultCoordinator {
 }
 
 extension DefaultCoordinator {
-    // default implementation if not overriden
+    // default implementation if not overridden
     public var animated: Bool {
         return true
     }

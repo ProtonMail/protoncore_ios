@@ -825,7 +825,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
             let productIdentifier = transaction.payment.productIdentifier
             guard let details = planDataSource.detailsOfAvailablePlanCorrespondingToIAP(plan),
                   let instance = planDataSource.detailsOfAvailablePlanInstanceCorrespondingToIAP(plan),
-                  let product = planDataSource.lastFetchedProducts.first(where: {$0.productIdentifier == productIdentifier}),
+                  let product = planDataSource.lastFetchedProducts.first(where: { $0.productIdentifier == productIdentifier }),
                   let productCurrencyCode = product.priceLocale.currencyCode,
                   let name = details.name,
                   let id = details.ID
@@ -857,11 +857,10 @@ extension StoreKitManager: SKPaymentTransactionObserver {
         }
         PMLog.debug("final amount \(amountDue)")
 
-
         let planToBeProcessed = PlanToBeProcessed(protonIdentifier: planIdentifier,
                                                   planName: planName,
                                                   amount: planAmount,
-                                                  currencyCode:  currencyCode,
+                                                  currencyCode: currencyCode,
                                                   amountDue: amountDue,
                                                   cycle: cycle)
 

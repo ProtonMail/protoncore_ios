@@ -43,6 +43,7 @@ final class FeatureFlagsTests: XCTestCase {
     var sut: FeatureFlagsRepository!
 
     private var localDataSource: LocalFeatureFlagsDataSourceProtocol!
+    private var overrideLocalDataSource: Atomic<OverrideFeatureFlagDataSourceProtocol>!
     private var featureFlagUserDefaults: UserDefaults!
     private let suiteName = "FeatureFlagsTests"
 
@@ -50,8 +51,10 @@ final class FeatureFlagsTests: XCTestCase {
         super.setUp()
         featureFlagUserDefaults = UserDefaults(suiteName: suiteName)!
         localDataSource = DefaultLocalFeatureFlagsDatasource(userDefaults: featureFlagUserDefaults)
+        overrideLocalDataSource = Atomic<OverrideFeatureFlagDataSourceProtocol>(OverrideLocalFeatureFlagsDatasource(userDefaults: featureFlagUserDefaults))
         sut = .init(localDataSource: Atomic<LocalFeatureFlagsDataSourceProtocol>(localDataSource),
                     remoteDataSource: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(nil))
+        sut.overrideLocalDataSource = overrideLocalDataSource
     }
 
     override func tearDown() {
@@ -621,7 +624,7 @@ final class FeatureFlagsTests: XCTestCase {
         let localFlags1 = sut.localDataSource.value.getFeatureFlags(
             userId: userId,
             reloadFromLocalDataSource: true)
-        XCTAssertEqual(localFlags1?.flags.count, 2)
+        XCTAssertEqual(localFlags1?.flagsCount, 2)
         XCTAssertTrue(sut.isEnabled(TestFlagsType.notActivatedFlag, reloadValue: true))
 
         // When fetched the second time
@@ -633,7 +636,7 @@ final class FeatureFlagsTests: XCTestCase {
         let localFlags2 = sut.localDataSource.value.getFeatureFlags(
             userId: userId,
             reloadFromLocalDataSource: true)
-        XCTAssertEqual(localFlags2?.flags.count, 1)
+        XCTAssertEqual(localFlags2?.flagsCount, 1)
         XCTAssertFalse(sut.isEnabled(TestFlagsType.notActivatedFlag, reloadValue: true))
     }
 
@@ -734,5 +737,129 @@ final class FeatureFlagsTests: XCTestCase {
 
         // Then
         XCTAssertNil(localDataSource.userIdForActiveSession)
+    }
+
+    // MARK: Override Feature Flag
+
+    typealias TestFlag = (any FeatureFlagTypeProtocol, Bool)
+
+    private func populateLocalDataSource(flags: [TestFlag], for userId: String) -> Atomic<LocalFeatureFlagsDataSourceProtocol> {
+
+        var flagsArray: [FeatureFlag] = []
+
+        flags.forEach { flag in
+            flagsArray.append(FeatureFlag(name: flag.0.rawValue, enabled: flag.1, variant: nil))
+        }
+
+        let featureFlags = FeatureFlags(flags: flagsArray)
+        featureFlagUserDefaults.setEncodableValue([userId: featureFlags], forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+        let localDataSource = Atomic<LocalFeatureFlagsDataSourceProtocol>(
+            DefaultLocalFeatureFlagsDatasource(userDefaults: featureFlagUserDefaults)
+        )
+
+        let remoteFeatureFlagsDataSourceMock = DefaultRemoteFeatureFlagsDataSourceMock()
+        remoteFeatureFlagsDataSourceMock.userID = userId
+        sut.updateRemoteDataSource(with: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(remoteFeatureFlagsDataSourceMock))
+
+        return localDataSource
+    }
+
+    func test_default_status_for_overridden_flag() {
+        // Given
+        let userId = "userId"
+
+        let localDataSource = populateLocalDataSource(flags: [TestFlag(TestFlagsType.fakeFlag, true)], for: userId)
+
+        // When
+        sut.updateLocalDataSource(localDataSource)
+
+        // Then
+        XCTAssertNil(sut.overrideLocalDataSource.value.getFeatureFlags(userId: userId))
+    }
+
+    func test_override_feature_flag() {
+        // Given
+        let userId = "userId"
+        let localDataSource = populateLocalDataSource(flags: [TestFlag(TestFlagsType.blackFriday, true)], for: userId)
+
+        // When
+        sut.updateLocalDataSource(localDataSource)
+        sut.setFlagOverride(TestFlagsType.blackFriday, overrideValue: false, userId: userId)
+
+        // Then
+        XCTAssertTrue(sut.overrideLocalDataSource.value.getFeatureFlags(userId: userId)?.getFlag(for: TestFlagsType.blackFriday) != nil)
+    }
+
+    func test_override_unexistent_feature_flag() {
+        // Given
+        let userId = "userId"
+
+        // When
+        sut.setFlagOverride(TestFlagsType.disabledFlag, overrideValue: true)
+
+        // Then
+        XCTAssertNil(sut.overrideLocalDataSource.value.getFeatureFlags(userId: userId))
+    }
+
+    func test_remove_overridden_feature_flag() {
+        // Given
+        let userId = "userId"
+        let localDataSource = populateLocalDataSource(flags: [TestFlag(TestFlagsType.blackFriday, true)], for: userId)
+
+        // When
+        sut.updateLocalDataSource(localDataSource)
+        sut.setFlagOverride(TestFlagsType.blackFriday, overrideValue: true)
+        sut.resetFlagOverride(TestFlagsType.blackFriday)
+
+        // Then
+        XCTAssertTrue(sut.overrideLocalDataSource.value.getFeatureFlags(userId: userId)?.getFlag(for: TestFlagsType.blackFriday) == nil)
+    }
+
+    func test_clean_overridden_feature_flags() {
+        // Given
+        let userId = "userId"
+        let localDataSource = populateLocalDataSource(flags: [TestFlag(TestFlagsType.blackFriday, true), TestFlag(TestFlagsType.notActivatedFlag, true)], for: userId)
+
+        sut.updateLocalDataSource(localDataSource)
+        sut.setFlagOverride(TestFlagsType.blackFriday, overrideValue: false)
+        sut.setFlagOverride(TestFlagsType.notActivatedFlag, overrideValue: false)
+
+        // When
+        sut.resetOverrides()
+
+        // Then
+        let emptyFlags: [String: FeatureFlags]? = featureFlagUserDefaults.decodableValue(forKey: OverrideLocalFeatureFlagsDatasource.overrideFeatureFlagsKey)
+        XCTAssertNil(emptyFlags?[userId])
+    }
+
+    func test_override_feature_flag_return_overridden_value() {
+        // Given
+        let userId = "userId"
+        let defaultValue = true
+        let localDataSource = populateLocalDataSource(flags: [TestFlag(TestFlagsType.blackFriday, defaultValue)], for: userId)
+
+        // When
+        sut.setUserId(userId)
+        sut.updateLocalDataSource(localDataSource)
+        sut.setFlagOverride(TestFlagsType.blackFriday, overrideValue: false, userId: userId)
+
+        // Then
+        XCTAssertEqual(sut.isEnabled(TestFlagsType.blackFriday), !defaultValue)
+    }
+
+    func test_remove_override_feature_flag_local_value_returned() {
+        // Given
+        let userId = "userId"
+        let defaultValue = true
+        let localDataSource = populateLocalDataSource(flags: [TestFlag(TestFlagsType.blackFriday, defaultValue)], for: userId)
+
+        // When
+        sut.setUserId(userId)
+        sut.updateLocalDataSource(localDataSource)
+        sut.setFlagOverride(TestFlagsType.blackFriday, overrideValue: false, userId: userId)
+        sut.resetFlagOverride(TestFlagsType.blackFriday)
+
+        // Then
+        XCTAssertEqual(sut.isEnabled(TestFlagsType.blackFriday), defaultValue)
     }
 }
