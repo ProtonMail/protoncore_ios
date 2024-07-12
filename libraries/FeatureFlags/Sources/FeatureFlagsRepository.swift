@@ -192,7 +192,7 @@ public extension FeatureFlagsRepository {
 // MARK: - Flag Override
 public extension FeatureFlagsRepository {
 
-    func setFlagOverride(_ flag: any FeatureFlagTypeProtocol, overrideValue: Bool, userId: String? = nil) {
+    func setFlagOverride(_ flag: any FeatureFlagTypeProtocol, overrideWithValue: Bool, userId: String? = nil) {
 
         let userId: String = userId ?? self.userId
 
@@ -206,13 +206,18 @@ public extension FeatureFlagsRepository {
         } else if let existingLocalFlag = localDataSource.value.getFeatureFlags(
             userId: userId,
             reloadFromLocalDataSource: false
-        )?.getFlag(for: flag){
+        )?.getFlag(for: flag) {
             flagToUpdate = existingLocalFlag
         } else {
-            PMLog.debug("flag: \(flag) not found in localDataSource 🤷🏻")
-            return
+            PMLog.error("⚠️ This flag is not present on Unleash ⚠️")
+            flagToUpdate = FeatureFlag(name: flag.rawValue,
+                                       enabled: overrideWithValue,
+                                       variant: nil)
         }
-        let newFeatureFlag = FeatureFlag(name: flagToUpdate.name, enabled: overrideValue, variant: flagToUpdate.variant)
+        
+        let newFeatureFlag = FeatureFlag(name: flagToUpdate.name,
+                                         enabled: overrideWithValue,
+                                         variant: flagToUpdate.variant)
 
         overrideLocalDataSource.value.addFlag(newFeatureFlag, userId: userId)
     }

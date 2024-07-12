@@ -60,6 +60,9 @@ final class FeatureFlagsTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
         featureFlagUserDefaults.removePersistentDomain(forName: suiteName)
+        localDataSource = nil
+        overrideLocalDataSource = nil
+        sut = nil
     }
 
     func test_updateLocalDataSource_updatesLocalDataSource() {
@@ -784,21 +787,35 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         sut.updateLocalDataSource(localDataSource)
-        sut.setFlagOverride(TestFlagsType.blackFriday, overrideValue: false, userId: userId)
+        sut.setFlagOverride(TestFlagsType.blackFriday, overrideWithValue: false, userId: userId)
 
         // Then
         XCTAssertTrue(sut.overrideLocalDataSource.value.getFeatureFlags(userId: userId)?.getFlag(for: TestFlagsType.blackFriday) != nil)
     }
 
-    func test_override_unexistent_feature_flag() {
+    func test_override_flag_not_provided_by_Unleash() {
+
+        // When
+        sut.setFlagOverride(TestFlagsType.disabledFlag, overrideWithValue: true)
+        sut.setFlagOverride(TestFlagsType.notActivatedFlag, overrideWithValue: false)
+
+        // Then
+        XCTAssertTrue(sut.isEnabled(TestFlagsType.disabledFlag))
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.notActivatedFlag))
+    }
+    
+    func test_override_flag_not_provided_by_Unleash_for_a_given_userId() {
         // Given
         let userId = "userId"
 
         // When
-        sut.setFlagOverride(TestFlagsType.disabledFlag, overrideValue: true)
+        sut.setUserId(userId)
+        sut.setFlagOverride(TestFlagsType.disabledFlag, overrideWithValue: true, userId: userId)
+        sut.setFlagOverride(TestFlagsType.notActivatedFlag, overrideWithValue: false, userId: userId)
 
         // Then
-        XCTAssertNil(sut.overrideLocalDataSource.value.getFeatureFlags(userId: userId))
+        XCTAssertTrue(sut.isEnabled(TestFlagsType.disabledFlag))
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.notActivatedFlag))
     }
 
     func test_remove_overridden_feature_flag() {
@@ -808,7 +825,7 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         sut.updateLocalDataSource(localDataSource)
-        sut.setFlagOverride(TestFlagsType.blackFriday, overrideValue: true)
+        sut.setFlagOverride(TestFlagsType.blackFriday, overrideWithValue: true)
         sut.resetFlagOverride(TestFlagsType.blackFriday)
 
         // Then
@@ -821,8 +838,8 @@ final class FeatureFlagsTests: XCTestCase {
         let localDataSource = populateLocalDataSource(flags: [TestFlag(TestFlagsType.blackFriday, true), TestFlag(TestFlagsType.notActivatedFlag, true)], for: userId)
 
         sut.updateLocalDataSource(localDataSource)
-        sut.setFlagOverride(TestFlagsType.blackFriday, overrideValue: false)
-        sut.setFlagOverride(TestFlagsType.notActivatedFlag, overrideValue: false)
+        sut.setFlagOverride(TestFlagsType.blackFriday, overrideWithValue: false)
+        sut.setFlagOverride(TestFlagsType.notActivatedFlag, overrideWithValue: false)
 
         // When
         sut.resetOverrides()
@@ -841,7 +858,7 @@ final class FeatureFlagsTests: XCTestCase {
         // When
         sut.setUserId(userId)
         sut.updateLocalDataSource(localDataSource)
-        sut.setFlagOverride(TestFlagsType.blackFriday, overrideValue: false, userId: userId)
+        sut.setFlagOverride(TestFlagsType.blackFriday, overrideWithValue: false, userId: userId)
 
         // Then
         XCTAssertEqual(sut.isEnabled(TestFlagsType.blackFriday), !defaultValue)
@@ -856,7 +873,7 @@ final class FeatureFlagsTests: XCTestCase {
         // When
         sut.setUserId(userId)
         sut.updateLocalDataSource(localDataSource)
-        sut.setFlagOverride(TestFlagsType.blackFriday, overrideValue: false, userId: userId)
+        sut.setFlagOverride(TestFlagsType.blackFriday, overrideWithValue: false, userId: userId)
         sut.resetFlagOverride(TestFlagsType.blackFriday)
 
         // Then
