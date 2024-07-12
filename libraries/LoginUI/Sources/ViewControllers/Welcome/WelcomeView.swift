@@ -244,7 +244,7 @@ final class WelcomeView: UIView {
         let body = UILabel()
         let text: String
         switch variant {
-        case .mail(let texts), .calendar(let texts), 
+        case .mail(let texts), .calendar(let texts),
              .drive(let texts), .vpn(let texts),
              .pass(let texts), .wallet(let texts):
             text = texts.body

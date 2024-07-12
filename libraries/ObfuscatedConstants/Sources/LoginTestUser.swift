@@ -29,7 +29,6 @@ public class LoginTestUser {
     public let password: String
     public let twoFactorCode: String = "123456"
 
-
     public init(username: String, password: String) {
         self.username = username
         self.password = password

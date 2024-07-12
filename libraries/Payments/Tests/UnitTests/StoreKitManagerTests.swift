@@ -1297,7 +1297,7 @@ final class StoreKitManagerTests: XCTestCase {
         plansDataSourceMock.isIAPAvailableStub.fixture = true
         plansDataSourceMock.detailsOfAvailablePlanInstanceCorrespondingToIAPStub.bodyIs { _, _  in planDetails.instances.first }
         plansDataSourceMock.lastFetchedProductsStub.fixture = [SKProduct(identifier: productId, price: "1299", priceLocale: Locale(identifier: "fr_CH"))]
-        
+
         let out = setupMocksToSimulateOngoingPurchaseWithDynamicPlans(expectRefreshHandler: nil)
         out.availableProducts = [SKProduct(identifier: productId, price: "0.0", priceLocale: Locale(identifier: "en_US"))]
 
@@ -1330,7 +1330,7 @@ final class StoreKitManagerTests: XCTestCase {
             // given
             let productId = "ios_test_12_usd_auto_renewing"
             plansDataSourceMock.lastFetchedProductsStub.fixture = [SKProduct(identifier: productId, price: "1299", priceLocale: Locale(identifier: "fr_CH"))]
-            
+
             let out = setupMocksToSimulateOngoingPurchaseWithDynamicPlans(expectRefreshHandler: nil)
             paymentsQueue.transactionState = .purchased
             let plan = InAppPurchasePlan(storeKitProductId: productId)!
@@ -1413,7 +1413,7 @@ final class StoreKitManagerTests: XCTestCase {
                                                                                                        )
                                           ])
             plansDataSourceMock.lastFetchedProductsStub.fixture = [SKProduct(identifier: productId, price: "1299", priceLocale: Locale(identifier: "fr_CH"))]
-            
+
             let out = setupMocksToSimulateOngoingPurchaseWithDynamicPlans(expectRefreshHandler: nil)
             out.receiptError = StoreKitManager.Errors.receiptLost // (1)
             paymentsQueue.transactionState = .purchased
@@ -1460,7 +1460,6 @@ final class StoreKitManagerTests: XCTestCase {
             XCTAssertEqual(returnedError as? StoreKitManager.Errors, StoreKitManager.Errors.receiptLost)
         }
     }
-
 
     // MARK: Private helpers
 

@@ -29,8 +29,12 @@ import ProtonCoreUtilities
  It conforms to the FeatureFlagsRepositoryProtocol.
  */
 public class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol {
+
     /// The local data source for feature flags.
     private(set) var localDataSource: Atomic<LocalFeatureFlagsDataSourceProtocol>
+
+    /// The local data source for overridden feature flags.
+    internal var overrideLocalDataSource = Atomic<OverrideFeatureFlagDataSourceProtocol>(OverrideLocalFeatureFlagsDatasource())
 
     /// The remote data source for feature flags.
     private(set) var remoteDataSource: Atomic<RemoteFeatureFlagsDataSourceProtocol?>
@@ -55,10 +59,10 @@ public class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol {
 
     /**
      Private initialization of the shared FeatureFlagsRepository instance.
-
+     
      - Parameters:
-       - localDataSource: The local data source for feature flags.
-       - remoteDataSource: The remote data source for feature flags.
+     - localDataSource: The local data source for feature flags.
+     - remoteDataSource: The remote data source for feature flags.
      */
     init(localDataSource: Atomic<LocalFeatureFlagsDataSourceProtocol>,
          remoteDataSource: Atomic<RemoteFeatureFlagsDataSourceProtocol?>) {
@@ -86,9 +90,9 @@ public extension FeatureFlagsRepository {
 
     /**
      Sets the FeatureFlagsRepository configuration with the given user id.
-
+     
      - Parameters:
-       - userId: The user id used to initialize the configuration for feature flags.
+     - userId: The user id used to initialize the configuration for feature flags.
      */
     func setUserId(_ userId: String) {
         self.userId = userId
@@ -96,9 +100,9 @@ public extension FeatureFlagsRepository {
 
     /**
      Sets the FeatureFlagsRepository remote data source with the given api service.
-
+     
      - Parameters:
-       - apiService: The api service used to initialize the remote data source for feature flags.
+     - apiService: The api service used to initialize the remote data source for feature flags.
      */
     func setApiService(_ apiService: APIService) {
         self.remoteDataSource = Atomic<RemoteFeatureFlagsDataSourceProtocol?>(DefaultRemoteFeatureFlagsDataSource(apiService: apiService))
@@ -106,7 +110,7 @@ public extension FeatureFlagsRepository {
 
     /**
      Asynchronously fetches the feature flags from the remote data source and updates the local data source.
-
+     
      - Throws: An error if the operation fails.
      */
     func fetchFlags() async throws {
@@ -122,44 +126,116 @@ public extension FeatureFlagsRepository {
     /**
      A Boolean function indicating if a feature flag is enabled or not.
      The flag is fetched from the local data source and is intended for use in a single-user context.
-
+     If an overridden flag is found, it gets returned instead of the local value.
+     
      - Parameters:
-       - flag: The flag we want to know the state of.
-       - reloadValue: Pass `true` if you want the latest stored value for the flag. Pass `false` if  you want the "static" value, which is always the same as the first returned.
+     - flag: The flag we want to know the state of.
+     - reloadValue: Pass `true` if you want the latest stored value for the flag. Pass `false` if  you want the "static" value, which is always the same as the first returned.
      */
-    func isEnabled(_ flag: any FeatureFlagTypeProtocol, reloadValue: Bool) -> Bool {
-        let flags = localDataSource.value.getFeatureFlags(
+    func isEnabled(_ flag: any FeatureFlagTypeProtocol, reloadValue: Bool = false) -> Bool {
+
+        let overriddenFlag = overrideLocalDataSource.value.getFeatureFlags(
+            userId: self.userId
+        )?.getFlag(for: flag)
+
+        if let overriddenFlag = overriddenFlag {
+            return overriddenFlag.enabled
+        }
+
+        let flag = localDataSource.value.getFeatureFlags(
             userId: self.userId,
             reloadFromLocalDataSource: reloadValue
-        )
-        return flags?.getFlag(for: flag)?.enabled ?? false
+        )?.getFlag(for: flag)
+
+        if let flag = flag {
+            return flag.enabled
+        }
+
+        return false
     }
 
     /**
      A Boolean function indicating if a feature flag is enabled or not.
      The flag is fetched from the local data source and is intended for use in multi-user contexts.
-
+     If an overridden flag is found, it gets returned instead of the local value.
+     
      - Parameters:
-       - flag: The flag we want to know the state of.
-       - userId: The user id for which we want to check the flag value. If the userId is `nil`, the first-set userId will be used.  See ``setUserId(_)``.
-       - reloadValue: Pass `true` if you want the latest stored value for the flag. Pass `false` if  you want the "static" value, which is always the same as the first returned.
+     - flag: The flag we want to know the state of.
+     - userId: The user id for which we want to check the flag value. If the userId is `nil`, the first-set userId will be used.  See ``setUserId(_)``.
+     - reloadValue: Pass `true` if you want the latest stored value for the flag. Pass `false` if  you want the "static" value, which is always the same as the first returned.
      */
     func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String?, reloadValue: Bool) -> Bool {
-        let flags: FeatureFlags?
 
-        if let userId {
-            flags = localDataSource.value.getFeatureFlags(
-                userId: userId,
-                reloadFromLocalDataSource: reloadValue
-            )
-        } else {
-            flags = localDataSource.value.getFeatureFlags(
-                userId: self.userId,
-                reloadFromLocalDataSource: reloadValue
-            )
+        let tempUserId: String = userId ?? self.userId
+
+        let overriddenFlag = overrideLocalDataSource.value.getFeatureFlags(
+            userId: tempUserId
+        )?.getFlag(for: flag)
+
+        if let overriddenFlag = overriddenFlag {
+            return overriddenFlag.enabled
         }
 
-        return flags?.getFlag(for: flag)?.enabled ?? false
+        let flag = localDataSource.value.getFeatureFlags(
+            userId: tempUserId,
+            reloadFromLocalDataSource: reloadValue
+        )?.getFlag(for: flag)
+
+        if let flag = flag {
+            return flag.enabled
+        }
+
+        return false
+    }
+}
+
+// MARK: - Flag Override
+public extension FeatureFlagsRepository {
+
+    func setFlagOverride(_ flag: any FeatureFlagTypeProtocol, overrideValue: Bool, userId: String? = nil) {
+
+        let userId: String = userId ?? self.userId
+
+        // Check if the flag is already overridden
+        // If NOT, we fetch it from the localDataSource
+        let flagToUpdate: FeatureFlag
+        if let existingOverriddenFlag = overrideLocalDataSource.value.getFeatureFlags(
+            userId: userId
+        )?.getFlag(for: flag) {
+            flagToUpdate = existingOverriddenFlag
+        } else if let existingLocalFlag = localDataSource.value.getFeatureFlags(
+            userId: userId,
+            reloadFromLocalDataSource: false
+        )?.getFlag(for: flag){
+            flagToUpdate = existingLocalFlag
+        } else {
+            PMLog.debug("flag: \(flag) not found in localDataSource 🤷🏻")
+            return
+        }
+        let newFeatureFlag = FeatureFlag(name: flagToUpdate.name, enabled: overrideValue, variant: flagToUpdate.variant)
+
+        overrideLocalDataSource.value.addFlag(newFeatureFlag, userId: userId)
+    }
+
+    func resetFlagOverride(_ flag: any FeatureFlagTypeProtocol, userId: String? = nil) {
+
+        let userId: String = userId ?? self.userId
+
+        let flagToRemove: FeatureFlag
+        if let existingOverriddenFlag = overrideLocalDataSource.value.getFeatureFlags(
+            userId: userId
+        )?.getFlag(for: flag) {
+            flagToRemove = existingOverriddenFlag
+        } else {
+            PMLog.debug("flag: \(flag) not found in localDataSource 🤷🏻")
+            return
+        }
+
+        overrideLocalDataSource.value.removeFlag(flagToRemove, userId: userId)
+    }
+
+    func resetOverrides() {
+        overrideLocalDataSource.value.cleanAllFlags()
     }
 }
 
@@ -175,9 +251,9 @@ public extension FeatureFlagsRepository {
 
     /**
      Resets feature flags for a specific user.
-
+     
      - Parameters:
-        - userId: The ID of the user whose feature flags need to be reset.
+     - userId: The ID of the user whose feature flags need to be reset.
      */
     func resetFlags(for userId: String) {
         localDataSource.value.cleanFlags(for: userId)
