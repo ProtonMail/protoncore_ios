@@ -24,16 +24,16 @@ import Foundation
 
 public protocol BaseFeatureFlagsDatasourceProtocol {
     func cleanAllFlags()
+    
+    var userIdForActiveSession: String? { get }
+    func setUserIdForActiveSession(_ userId: String)
+    func clearUserId()
 }
 
 public protocol LocalFeatureFlagsDataSourceProtocol: BaseFeatureFlagsDatasourceProtocol {
     func getFeatureFlags(userId: String, reloadFromLocalDataSource: Bool) -> FeatureFlags?
     func upsertFlags(_ flags: FeatureFlags, userId: String)
     func cleanFlags(for userId: String)
-
-    var userIdForActiveSession: String? { get }
-    func setUserIdForActiveSession(_ userId: String)
-    func clearUserId()
 }
 
 public protocol OverrideFeatureFlagDataSourceProtocol: BaseFeatureFlagsDatasourceProtocol {

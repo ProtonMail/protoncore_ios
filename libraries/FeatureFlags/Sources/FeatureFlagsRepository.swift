@@ -47,6 +47,7 @@ public class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol {
         set {
             _userId = newValue
             localDataSource.value.setUserIdForActiveSession(newValue)
+            overrideLocalDataSource.value.setUserIdForActiveSession(newValue)
         }
     }
 
@@ -141,6 +142,15 @@ public extension FeatureFlagsRepository {
         if let overriddenFlag = overriddenFlag {
             return overriddenFlag.enabled
         }
+        
+        // Search for the flag for no userId set
+        let overriddenNoIdFlag = overrideLocalDataSource.value.getFeatureFlags(
+            userId: ""
+        )?.getFlag(for: flag)
+
+        if let overriddenNoIdFlag = overriddenNoIdFlag {
+            return overriddenNoIdFlag.enabled
+        }
 
         let flag = localDataSource.value.getFeatureFlags(
             userId: self.userId,
@@ -192,7 +202,7 @@ public extension FeatureFlagsRepository {
 // MARK: - Flag Override
 public extension FeatureFlagsRepository {
 
-    func setFlagOverride(_ flag: any FeatureFlagTypeProtocol, overrideValue: Bool, userId: String? = nil) {
+    func setFlagOverride(_ flag: any FeatureFlagTypeProtocol, overrideWithValue: Bool, userId: String? = nil) {
 
         let userId: String = userId ?? self.userId
 
@@ -206,13 +216,18 @@ public extension FeatureFlagsRepository {
         } else if let existingLocalFlag = localDataSource.value.getFeatureFlags(
             userId: userId,
             reloadFromLocalDataSource: false
-        )?.getFlag(for: flag){
+        )?.getFlag(for: flag) {
             flagToUpdate = existingLocalFlag
         } else {
-            PMLog.debug("flag: \(flag) not found in localDataSource 🤷🏻")
-            return
+            PMLog.error("⚠️ This flag is not present on Unleash ⚠️")
+            flagToUpdate = FeatureFlag(name: flag.rawValue,
+                                       enabled: overrideWithValue,
+                                       variant: nil)
         }
-        let newFeatureFlag = FeatureFlag(name: flagToUpdate.name, enabled: overrideValue, variant: flagToUpdate.variant)
+        
+        let newFeatureFlag = FeatureFlag(name: flagToUpdate.name,
+                                         enabled: overrideWithValue,
+                                         variant: flagToUpdate.variant)
 
         overrideLocalDataSource.value.addFlag(newFeatureFlag, userId: userId)
     }

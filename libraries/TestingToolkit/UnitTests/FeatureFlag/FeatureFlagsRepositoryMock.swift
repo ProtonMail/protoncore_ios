@@ -62,7 +62,7 @@ public final class FeatureFlagsRepositoryMock: FeatureFlagsRepositoryProtocol {
 
     public func clearUserId() {}
 
-    public func setFlagOverride(_ flag: any ProtonCoreFeatureFlags.FeatureFlagTypeProtocol, overrideValue: Bool, userId: String?) {}
+    public func setFlagOverride(_ flag: any ProtonCoreFeatureFlags.FeatureFlagTypeProtocol, overrideWithValue: Bool, userId: String?) {}
 
     public func resetFlagOverride(_ flag: any ProtonCoreFeatureFlags.FeatureFlagTypeProtocol, userId: String?) {}
 

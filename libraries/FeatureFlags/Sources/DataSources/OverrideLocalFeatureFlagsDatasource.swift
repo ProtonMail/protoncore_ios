@@ -83,4 +83,24 @@ public class OverrideLocalFeatureFlagsDatasource: OverrideFeatureFlagDataSourceP
             }
         }
     }
+    
+    // MARK: - User ID
+
+    public var userIdForActiveSession: String? {
+        serialAccessQueue.sync {
+            userDefaults.object(forKey: Self.userIdKey) as? String
+        }
+    }
+
+    public func setUserIdForActiveSession(_ userId: String) {
+        serialAccessQueue.sync {
+            userDefaults.set(userId, forKey: Self.userIdKey)
+        }
+    }
+
+    public func clearUserId() {
+        serialAccessQueue.sync {
+            userDefaults.removeObject(forKey: Self.userIdKey)
+        }
+    }
 }
