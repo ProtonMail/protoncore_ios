@@ -60,7 +60,7 @@
 
 "Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "El vostre compte no té claus; inicieu sessió a la versió web per generar automàticament les claus requerides. Quan hàgiu iniciat sessió a la versió web, torneu a l'aplicació i inicieu-hi la sessió.";
 
-"Account setup required" = "Configuració del compte requerida";
+"Account setup required" = "Cal configurar el compte";
 
 "Incorrect mailbox password" = "Contrasenya de la bústia de correu incorrecta";
 
@@ -144,11 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "Clicant a Següent accepteu els Termes i Condicions de Proton";
 
-"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Clicant a Següent, accepteu els termes i condicions i la política de privacitat de Proton.";
 
 "Terms and Conditions" = "Termes i Condicions";
 
-"Privacy Policy" = "Privacy Policy";
+"Privacy Policy" = "Política de privacitat";
 
 "Skip" = "Omet";
 
@@ -182,7 +182,7 @@
 
 "Terms and Conditions" = "Termes i Condicions";
 
-"Privacy Policy" = "Privacy Policy";
+"Privacy Policy" = "Política de privacitat";
 
 "Invalid token request" = "Sol·licitud de token invàlida";
 

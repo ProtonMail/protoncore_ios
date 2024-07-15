@@ -144,11 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "შემდეგ გვერდზე გადასვლით თქვენ ეთანხმებით Proton-ის წესებს და პირობებს";
 
-"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "შემდეგ გვერდზე გადასვლით თქვენ ეთანხმებით Proton-ის წესებს და პირობებს და კონფიდენციალობის პოლიტიკას";
 
 "Terms and Conditions" = "პირობები და წესები";
 
-"Privacy Policy" = "Privacy Policy";
+"Privacy Policy" = "კონფიდენციალობის პოლიტიკა";
 
 "Skip" = "გამოტოვება";
 
@@ -182,7 +182,7 @@
 
 "Terms and Conditions" = "პირობები და წესები";
 
-"Privacy Policy" = "Privacy Policy";
+"Privacy Policy" = "კონფიდენციალობის პოლიტიკა";
 
 "Invalid token request" = "კოდის არასწორი მოთხოვნა";
 
