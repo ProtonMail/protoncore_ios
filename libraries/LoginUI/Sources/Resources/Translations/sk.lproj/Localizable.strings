@@ -144,11 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "Kliknutím na tlačidlo Ďalej vyjadrujete súhlas so Zmluvnými podmienkami Protonu";
 
-"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Kliknutím na tlačidlo Ďalej súhlasíte so zmluvnými podmienkami a zásadami ochrany osobných údajov spoločnosti Proton.";
 
 "Terms and Conditions" = "Podmienky používania";
 
-"Privacy Policy" = "Privacy Policy";
+"Privacy Policy" = "Ochrana osobných údajov";
 
 "Skip" = "Preskočiť";
 
@@ -182,7 +182,7 @@
 
 "Terms and Conditions" = "Podmienky používania";
 
-"Privacy Policy" = "Privacy Policy";
+"Privacy Policy" = "Ochrana osobných údajov";
 
 "Invalid token request" = "Neplatná žiadosť o token";
 

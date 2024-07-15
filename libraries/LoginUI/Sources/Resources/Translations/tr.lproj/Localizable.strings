@@ -144,11 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "Sonraki üzerine tıklayarak Proton Hüküm ve Koşullarını kabul etmiş olursunuz";
 
-"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Sonraki üzerine tıkladığınızda Proton Hüküm ve Koşulları ile Gizlilik ilkesi metinlerini kabul etmiş olursunuz";
 
 "Terms and Conditions" = "Hüküm ve Koşullar";
 
-"Privacy Policy" = "Privacy Policy";
+"Privacy Policy" = "Gizlilik ilkesi";
 
 "Skip" = "Atla";
 
@@ -182,7 +182,7 @@
 
 "Terms and Conditions" = "Hüküm ve Koşullar";
 
-"Privacy Policy" = "Privacy Policy";
+"Privacy Policy" = "Gizlilik ilkesi";
 
 "Invalid token request" = "Kod isteği geçersiz";
 
