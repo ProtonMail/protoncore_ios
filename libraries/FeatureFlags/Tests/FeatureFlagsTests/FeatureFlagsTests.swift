@@ -879,4 +879,19 @@ final class FeatureFlagsTests: XCTestCase {
         // Then
         XCTAssertEqual(sut.isEnabled(TestFlagsType.blackFriday), defaultValue)
     }
+    
+    func test_sync_overridden_flags_after_setting_userId() {
+        // Given
+        let userId = "userId"
+        let expectedFlagValue = false
+        let localDataSource = populateLocalDataSource(flags: [TestFlag(TestFlagsType.fakeFlag, true)], for: userId)
+
+        // When
+        sut.setFlagOverride(TestFlagsType.blackFriday, overrideWithValue: expectedFlagValue)
+        sut.setUserId(userId)
+        sut.updateLocalDataSource(localDataSource)
+    
+        // Then
+        XCTAssertEqual(sut.isEnabled(TestFlagsType.blackFriday), expectedFlagValue)
+    }
 }

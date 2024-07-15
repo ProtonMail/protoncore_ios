@@ -47,6 +47,7 @@ public class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol {
         set {
             _userId = newValue
             localDataSource.value.setUserIdForActiveSession(newValue)
+            overrideLocalDataSource.value.setUserIdForActiveSession(newValue)
         }
     }
 
@@ -140,6 +141,15 @@ public extension FeatureFlagsRepository {
 
         if let overriddenFlag = overriddenFlag {
             return overriddenFlag.enabled
+        }
+        
+        // Search for the flag for no userId set
+        let overriddenNoIdFlag = overrideLocalDataSource.value.getFeatureFlags(
+            userId: ""
+        )?.getFlag(for: flag)
+
+        if let overriddenNoIdFlag = overriddenNoIdFlag {
+            return overriddenNoIdFlag.enabled
         }
 
         let flag = localDataSource.value.getFeatureFlags(
