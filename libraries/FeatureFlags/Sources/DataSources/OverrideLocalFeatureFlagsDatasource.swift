@@ -25,7 +25,8 @@ public class OverrideLocalFeatureFlagsDatasource: OverrideFeatureFlagDataSourceP
 
     static let overrideFeatureFlagsKey = "protoncore.overrideFeatureflag"
     static let userIdKey = "protoncore.featureflag.userId"
-
+    static let globalUserId = ""
+    
     private let userDefaults: UserDefaults
 
     public init(userDefaults: UserDefaults = .standard) {
@@ -34,10 +35,10 @@ public class OverrideLocalFeatureFlagsDatasource: OverrideFeatureFlagDataSourceP
 
     // MARK: - Get flags
 
-    public func getFeatureFlags(userId: String) -> FeatureFlags? {
+    public func getFeatureFlags() -> FeatureFlags? {
         serialAccessQueue.sync {
-            let dynamicFlags: [String: FeatureFlags]? = userDefaults.decodableValue(forKey: Self.overrideFeatureFlagsKey)
-            return dynamicFlags?[userId]
+            let globalOverriddenFlags: [String: FeatureFlags]? = userDefaults.decodableValue(forKey: Self.overrideFeatureFlagsKey)
+            return globalOverriddenFlags?[Self.globalUserId]
         }
     }
 
@@ -51,56 +52,28 @@ public class OverrideLocalFeatureFlagsDatasource: OverrideFeatureFlagDataSourceP
 
     // MARK: - Flag Override and Revert Override
 
-    public func addFlag(_ flag: FeatureFlag, userId: String) {
+    public func addFlag(_ flag: FeatureFlag) {
         serialAccessQueue.sync {
-            var overrideFlags: [String: FeatureFlags] = userDefaults.decodableValue(forKey: Self.overrideFeatureFlagsKey) ?? [:]
-
-            // Flag already overridden --> replace existing value with new value
-            // Otherwise append new flag
-            if let existingFlag = overrideFlags[userId]?.getFlag(flag) {
-                overrideFlags[userId]?.setFlag(existingFlag)
-            } else {
-                if overrideFlags[userId] == nil {
-                    overrideFlags[userId] = FeatureFlags.default
-                }
-                overrideFlags[userId]?.setFlag(flag)
+            var globalOverriddenFlags: [String: FeatureFlags] = userDefaults.decodableValue(forKey: Self.overrideFeatureFlagsKey) ?? [:]
+            if globalOverriddenFlags[Self.globalUserId] == nil {
+                globalOverriddenFlags[Self.globalUserId] = FeatureFlags.default
             }
-
+            globalOverriddenFlags[Self.globalUserId]?.setFlag(flag)
             PMLog.debug("⚠️ flag: \(flag.name) overridden 💣 ⚠️")
-            userDefaults.setEncodableValue(overrideFlags, forKey: Self.overrideFeatureFlagsKey)
+            userDefaults.setEncodableValue(globalOverriddenFlags, forKey: Self.overrideFeatureFlagsKey)
         }
     }
 
-    public func removeFlag(_ flag: FeatureFlag, userId: String) {
+    public func removeFlag(_ flag: FeatureFlag) {
         serialAccessQueue.sync {
-            var overrideFlags: [String: FeatureFlags] = userDefaults.decodableValue(forKey: Self.overrideFeatureFlagsKey) ?? [:]
+            var globalOverriddenFlags: [String: FeatureFlags] = userDefaults.decodableValue(forKey: Self.overrideFeatureFlagsKey) ?? [:]
 
             // Overridden Flag found --> remove it
-            if let existingFlag = overrideFlags[userId]?.getFlag(flag) {
-                overrideFlags[userId]?.removeFlag(existingFlag)
+            if let existingFlag = globalOverriddenFlags[Self.globalUserId]?.getFlag(flag) {
+                globalOverriddenFlags[Self.globalUserId]?.removeFlag(existingFlag)
                 PMLog.debug("Overridden flag: \(flag.name) successfully removed ✅")
-                userDefaults.setEncodableValue(overrideFlags, forKey: Self.overrideFeatureFlagsKey)
+                userDefaults.setEncodableValue(globalOverriddenFlags, forKey: Self.overrideFeatureFlagsKey)
             }
-        }
-    }
-    
-    // MARK: - User ID
-
-    public var userIdForActiveSession: String? {
-        serialAccessQueue.sync {
-            userDefaults.object(forKey: Self.userIdKey) as? String
-        }
-    }
-
-    public func setUserIdForActiveSession(_ userId: String) {
-        serialAccessQueue.sync {
-            userDefaults.set(userId, forKey: Self.userIdKey)
-        }
-    }
-
-    public func clearUserId() {
-        serialAccessQueue.sync {
-            userDefaults.removeObject(forKey: Self.userIdKey)
         }
     }
 }

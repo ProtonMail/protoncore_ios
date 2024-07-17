@@ -50,6 +50,12 @@ public struct FeatureFlags: Hashable, Codable, Sendable {
     }
 
     mutating func setFlag(_ flag: FeatureFlag) {
+        for (index, element) in flags.enumerated() {
+            if element.name == flag.name {
+                flags[index] = flag
+                return
+            }
+        }
         flags.append(flag)
     }
 
