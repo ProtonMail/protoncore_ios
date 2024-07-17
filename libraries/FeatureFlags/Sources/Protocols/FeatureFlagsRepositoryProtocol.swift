@@ -32,8 +32,8 @@ public protocol FeatureFlagsRepositoryProtocol: AnyObject {
     // MARK: - For single-user clients
     func isEnabled(_ flag: any FeatureFlagTypeProtocol, reloadValue: Bool) -> Bool
 
-    func setFlagOverride(_ flag: any FeatureFlagTypeProtocol, overrideWithValue: Bool, userId: String?)
-    func resetFlagOverride(_ flag: any FeatureFlagTypeProtocol, userId: String?)
+    func setFlagOverride(_ flag: any FeatureFlagTypeProtocol, overrideWithValue: Bool)
+    func resetFlagOverride(_ flag: any FeatureFlagTypeProtocol)
 
     // MARK: - For multi-user clients
     func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String?, reloadValue: Bool) -> Bool

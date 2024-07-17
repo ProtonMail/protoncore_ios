@@ -47,7 +47,6 @@ public class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol {
         set {
             _userId = newValue
             localDataSource.value.setUserIdForActiveSession(newValue)
-            overrideLocalDataSource.value.setUserIdForActiveSession(newValue)
         }
     }
 
@@ -134,34 +133,7 @@ public extension FeatureFlagsRepository {
      - reloadValue: Pass `true` if you want the latest stored value for the flag. Pass `false` if  you want the "static" value, which is always the same as the first returned.
      */
     func isEnabled(_ flag: any FeatureFlagTypeProtocol, reloadValue: Bool = false) -> Bool {
-
-        let overriddenFlag = overrideLocalDataSource.value.getFeatureFlags(
-            userId: self.userId
-        )?.getFlag(for: flag)
-
-        if let overriddenFlag = overriddenFlag {
-            return overriddenFlag.enabled
-        }
-        
-        // Search for the flag for no userId set
-        let overriddenNoIdFlag = overrideLocalDataSource.value.getFeatureFlags(
-            userId: ""
-        )?.getFlag(for: flag)
-
-        if let overriddenNoIdFlag = overriddenNoIdFlag {
-            return overriddenNoIdFlag.enabled
-        }
-
-        let flag = localDataSource.value.getFeatureFlags(
-            userId: self.userId,
-            reloadFromLocalDataSource: reloadValue
-        )?.getFlag(for: flag)
-
-        if let flag = flag {
-            return flag.enabled
-        }
-
-        return false
+        isEnabled(flag, for: nil, reloadValue: reloadValue)
     }
 
     /**
@@ -178,12 +150,11 @@ public extension FeatureFlagsRepository {
 
         let tempUserId: String = userId ?? self.userId
 
-        let overriddenFlag = overrideLocalDataSource.value.getFeatureFlags(
-            userId: tempUserId
-        )?.getFlag(for: flag)
+        // Search for an existing global overridden flag
+        let overriddenFlag = overrideLocalDataSource.value.getFeatureFlags()?.getFlag(for: flag)
 
-        if let overriddenFlag = overriddenFlag {
-            return overriddenFlag.enabled
+        if let overriddenNoIdFlag = overriddenFlag {
+            return overriddenNoIdFlag.enabled
         }
 
         let flag = localDataSource.value.getFeatureFlags(
@@ -202,51 +173,28 @@ public extension FeatureFlagsRepository {
 // MARK: - Flag Override
 public extension FeatureFlagsRepository {
 
-    func setFlagOverride(_ flag: any FeatureFlagTypeProtocol, overrideWithValue: Bool, userId: String? = nil) {
-
-        let userId: String = userId ?? self.userId
-
-        // Check if the flag is already overridden
-        // If NOT, we fetch it from the localDataSource
-        let flagToUpdate: FeatureFlag
-        if let existingOverriddenFlag = overrideLocalDataSource.value.getFeatureFlags(
-            userId: userId
-        )?.getFlag(for: flag) {
-            flagToUpdate = existingOverriddenFlag
-        } else if let existingLocalFlag = localDataSource.value.getFeatureFlags(
-            userId: userId,
-            reloadFromLocalDataSource: false
-        )?.getFlag(for: flag) {
-            flagToUpdate = existingLocalFlag
-        } else {
-            PMLog.error("⚠️ This flag is not present on Unleash ⚠️")
-            flagToUpdate = FeatureFlag(name: flag.rawValue,
-                                       enabled: overrideWithValue,
-                                       variant: nil)
-        }
+    func setFlagOverride(_ flag: any FeatureFlagTypeProtocol, overrideWithValue: Bool) {
         
-        let newFeatureFlag = FeatureFlag(name: flagToUpdate.name,
+        let newFeatureFlag = FeatureFlag(name: flag.rawValue,
                                          enabled: overrideWithValue,
-                                         variant: flagToUpdate.variant)
+                                         variant: nil)
 
-        overrideLocalDataSource.value.addFlag(newFeatureFlag, userId: userId)
+        overrideLocalDataSource.value.addFlag(newFeatureFlag)
     }
 
-    func resetFlagOverride(_ flag: any FeatureFlagTypeProtocol, userId: String? = nil) {
+    func resetFlagOverride(_ flag: any FeatureFlagTypeProtocol) {
 
         let userId: String = userId ?? self.userId
 
         let flagToRemove: FeatureFlag
-        if let existingOverriddenFlag = overrideLocalDataSource.value.getFeatureFlags(
-            userId: userId
-        )?.getFlag(for: flag) {
+        if let existingOverriddenFlag = overrideLocalDataSource.value.getFeatureFlags()?.getFlag(for: flag) {
             flagToRemove = existingOverriddenFlag
         } else {
             PMLog.debug("flag: \(flag) not found in localDataSource 🤷🏻")
             return
         }
 
-        overrideLocalDataSource.value.removeFlag(flagToRemove, userId: userId)
+        overrideLocalDataSource.value.removeFlag(flagToRemove)
     }
 
     func resetOverrides() {

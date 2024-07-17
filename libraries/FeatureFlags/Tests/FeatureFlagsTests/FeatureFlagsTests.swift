@@ -777,7 +777,7 @@ final class FeatureFlagsTests: XCTestCase {
         sut.updateLocalDataSource(localDataSource)
 
         // Then
-        XCTAssertNil(sut.overrideLocalDataSource.value.getFeatureFlags(userId: userId))
+        XCTAssertNil(sut.overrideLocalDataSource.value.getFeatureFlags())
     }
 
     func test_override_feature_flag() {
@@ -787,10 +787,10 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         sut.updateLocalDataSource(localDataSource)
-        sut.setFlagOverride(TestFlagsType.blackFriday, overrideWithValue: false, userId: userId)
+        sut.setFlagOverride(TestFlagsType.blackFriday, overrideWithValue: false)
 
         // Then
-        XCTAssertTrue(sut.overrideLocalDataSource.value.getFeatureFlags(userId: userId)?.getFlag(for: TestFlagsType.blackFriday) != nil)
+        XCTAssertTrue(sut.overrideLocalDataSource.value.getFeatureFlags()?.getFlag(for: TestFlagsType.blackFriday) != nil)
     }
 
     func test_override_flag_not_provided_by_Unleash() {
@@ -810,8 +810,8 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         sut.setUserId(userId)
-        sut.setFlagOverride(TestFlagsType.disabledFlag, overrideWithValue: true, userId: userId)
-        sut.setFlagOverride(TestFlagsType.notActivatedFlag, overrideWithValue: false, userId: userId)
+        sut.setFlagOverride(TestFlagsType.disabledFlag, overrideWithValue: true)
+        sut.setFlagOverride(TestFlagsType.notActivatedFlag, overrideWithValue: false)
 
         // Then
         XCTAssertTrue(sut.isEnabled(TestFlagsType.disabledFlag))
@@ -829,7 +829,7 @@ final class FeatureFlagsTests: XCTestCase {
         sut.resetFlagOverride(TestFlagsType.blackFriday)
 
         // Then
-        XCTAssertTrue(sut.overrideLocalDataSource.value.getFeatureFlags(userId: userId)?.getFlag(for: TestFlagsType.blackFriday) == nil)
+        XCTAssertTrue(sut.overrideLocalDataSource.value.getFeatureFlags()?.getFlag(for: TestFlagsType.blackFriday) == nil)
     }
 
     func test_clean_overridden_feature_flags() {
@@ -858,7 +858,7 @@ final class FeatureFlagsTests: XCTestCase {
         // When
         sut.setUserId(userId)
         sut.updateLocalDataSource(localDataSource)
-        sut.setFlagOverride(TestFlagsType.blackFriday, overrideWithValue: false, userId: userId)
+        sut.setFlagOverride(TestFlagsType.blackFriday, overrideWithValue: false)
 
         // Then
         XCTAssertEqual(sut.isEnabled(TestFlagsType.blackFriday), !defaultValue)
@@ -873,7 +873,7 @@ final class FeatureFlagsTests: XCTestCase {
         // When
         sut.setUserId(userId)
         sut.updateLocalDataSource(localDataSource)
-        sut.setFlagOverride(TestFlagsType.blackFriday, overrideWithValue: false, userId: userId)
+        sut.setFlagOverride(TestFlagsType.blackFriday, overrideWithValue: false)
         sut.resetFlagOverride(TestFlagsType.blackFriday)
 
         // Then
@@ -893,5 +893,33 @@ final class FeatureFlagsTests: XCTestCase {
     
         // Then
         XCTAssertEqual(sut.isEnabled(TestFlagsType.blackFriday), expectedFlagValue)
+    }
+    
+    func test_override_add_flag() {
+        // Given
+        let expectedCount = 1
+        let expectedValue = false
+
+        // When
+        sut.setFlagOverride(TestFlagsType.blackFriday, overrideWithValue: expectedValue)
+    
+        // Then
+        XCTAssertEqual(sut.overrideLocalDataSource.value.getFeatureFlags()?.flagsCount, expectedCount)
+        XCTAssertEqual(sut.isEnabled(TestFlagsType.blackFriday), expectedValue)
+    }
+    
+    func test_override_replace_existing_flag() {
+        // Given
+        let expectedCount = 2
+        let expectedValue = true
+
+        // When
+        sut.setFlagOverride(TestFlagsType.fakeFlag, overrideWithValue: false)
+        sut.setFlagOverride(TestFlagsType.blackFriday, overrideWithValue: false)
+        sut.setFlagOverride(TestFlagsType.blackFriday, overrideWithValue: true)
+    
+        // Then
+        XCTAssertEqual(sut.isEnabled(TestFlagsType.blackFriday), expectedValue)
+        XCTAssertEqual(sut.overrideLocalDataSource.value.getFeatureFlags()?.flagsCount, expectedCount)
     }
 }
