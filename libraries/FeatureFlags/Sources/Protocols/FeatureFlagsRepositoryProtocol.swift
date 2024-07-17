@@ -32,7 +32,7 @@ public protocol FeatureFlagsRepositoryProtocol: AnyObject {
     // MARK: - For single-user clients
     func isEnabled(_ flag: any FeatureFlagTypeProtocol, reloadValue: Bool) -> Bool
 
-    func setFlagOverride(_ flag: any FeatureFlagTypeProtocol, overrideWithValue: Bool)
+    func setFlagOverride(_ flag: any FeatureFlagTypeProtocol, _ overrideWithValue: Bool)
     func resetFlagOverride(_ flag: any FeatureFlagTypeProtocol)
 
     // MARK: - For multi-user clients

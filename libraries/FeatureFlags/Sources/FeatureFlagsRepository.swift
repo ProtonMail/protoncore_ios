@@ -173,7 +173,7 @@ public extension FeatureFlagsRepository {
 // MARK: - Flag Override
 public extension FeatureFlagsRepository {
 
-    func setFlagOverride(_ flag: any FeatureFlagTypeProtocol, overrideWithValue: Bool) {
+    func setFlagOverride(_ flag: any FeatureFlagTypeProtocol, _ overrideWithValue: Bool) {
         
         let newFeatureFlag = FeatureFlag(name: flag.rawValue,
                                          enabled: overrideWithValue,
@@ -183,8 +183,6 @@ public extension FeatureFlagsRepository {
     }
 
     func resetFlagOverride(_ flag: any FeatureFlagTypeProtocol) {
-
-        let userId: String = userId ?? self.userId
 
         let flagToRemove: FeatureFlag
         if let existingOverriddenFlag = overrideLocalDataSource.value.getFeatureFlags()?.getFlag(for: flag) {
