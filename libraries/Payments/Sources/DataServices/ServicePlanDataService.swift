@@ -49,6 +49,7 @@ public protocol ServicePlanDataServiceProtocol: Service, AnyObject {
     func updateCredits(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void)
     func updateCountriesCount(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void)
     func willRenewAutomatically(plan: InAppPurchasePlan) -> Bool
+    func fetchCurrentSubscription(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void)
 }
 
 public extension ServicePlanDataServiceProtocol {
@@ -64,6 +65,10 @@ public extension ServicePlanDataServiceProtocol {
 
     func updateCountriesCount(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
         updateCountriesCount(callBlocksOnParticularQueue: .main, success: success, failure: failure)
+    }
+    
+    func fetchCurrentSubscription(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        fetchCurrentSubscription(callBlocksOnParticularQueue: .main, success: success, failure: failure)
     }
 }
 
@@ -264,7 +269,12 @@ extension ServicePlanDataService {
             self.countriesCount = countriesCountRes.countriesCount
         }, callBlocksOnParticularQueue: callBlocksOnParticularQueue, success: success, failure: failure)
     }
-
+    
+    public func fetchCurrentSubscription(callBlocksOnParticularQueue: DispatchQueue? = nil, success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        performWork(work: { try self.fetchCurrentSubscription() },
+                    callBlocksOnParticularQueue: callBlocksOnParticularQueue, success: success, failure: failure)
+    }
+    
     func willRenewAutomatically(plan: InAppPurchasePlan) -> Bool {
         guard let subscription = currentSubscription else {
             return false
@@ -375,5 +385,21 @@ extension ServicePlanDataService {
 
     private func updateCredits(user: User) {
         credits = Credits(credit: Double(user.credit) / 100, currency: user.currency)
+    }
+
+    private func fetchCurrentSubscription() throws {
+        
+        guard Thread.isMainThread == false else {
+            assertionFailure("This is a blocking network request, should never be called from main thread")
+            throw AwaitInternalError.synchronousCallPerformedFromTheMainThread
+        }
+        do {
+            let subscriptionApi = self.paymentsApi.getSubscriptionRequest(api: self.service)
+            let subscriptionRes = try subscriptionApi.awaitResponse(responseObject: GetSubscriptionResponse())
+            self.currentSubscription = subscriptionRes.subscription
+        } catch {
+            print("error fetching current subscription")
+            self.currentSubscription = nil
+        }
     }
 }
