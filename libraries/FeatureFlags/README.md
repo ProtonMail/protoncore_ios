@@ -90,14 +90,6 @@ This updates the local feature flag data source:
 
 `fetchFlags()` uses the `userId` and `apiService` set with `setUserId(_:)` and `setApiService(_:)` respectively.
 
-In a multi-user context, you can use:
-
-```swift
-    try await FeatureFlagsRepository.shared.fetchFlags(for: userId1, using: apiService)
-```
- 
- This will update the local feature flag data source with feature flag values for user with user ID `userId1`.
-
 ### Check the value of a feature flag
 
 To check the value of a given feature flag, use:
