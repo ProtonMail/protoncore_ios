@@ -421,8 +421,19 @@ class PaymentsUIViewModel {
                 if let freePlan = freePlan, servicePlan.isIAPAvailable {
                     plans.append([freePlan])
                 }
-                self.plans = plans
-                completionHandler?(.success((self.plans, footerType)))
+                // in case there are no plans to display at this point, we request the current sub
+                if servicePlan.currentSubscription == nil {
+                    servicePlan.fetchCurrentSubscription { [weak self] in
+                        guard let self = self else { return }
+                        self.plans = plans
+                        completionHandler?(.success((self.plans, self.footerType)))
+                    } failure: { error in
+                        completionHandler?(.failure(error))
+                    }
+                } else {
+                    self.plans = plans
+                    completionHandler?(.success((self.plans, footerType)))
+                }
             }
         }
     }
