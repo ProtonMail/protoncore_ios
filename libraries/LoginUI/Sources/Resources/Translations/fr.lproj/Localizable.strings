@@ -256,4 +256,4 @@
 
 "Unexpected FIDO2 signature." = "Signature FIDO2 inattendue.";
 
-"We could not initiate the Secure Password update connection. Please try again." = "Nous n'avons pas pu établir la connexion pour la mise à jour du mot de passe sécurisé. Veuillez réessayer.";
+"We could not initiate the Secure Password update connection. Please try again." = "Nous n'avons pas pu initialiser la connexion pour la mise à jour du mot de passe sécurisé. Veuillez réessayer.";

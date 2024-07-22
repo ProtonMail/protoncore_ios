@@ -144,11 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "Нажимая кнопку Далее, вы соглашаетесь с условиями Proton";
 
-"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Нажимая кнопку «Далее», вы соглашаетесь с Условиями использования и Политикой конфиденциальности Proton";
 
 "Terms and Conditions" = "Условия";
 
-"Privacy Policy" = "Privacy Policy";
+"Privacy Policy" = "Политика конфиденциальности";
 
 "Skip" = "Пропустить";
 
@@ -182,7 +182,7 @@
 
 "Terms and Conditions" = "Условия";
 
-"Privacy Policy" = "Privacy Policy";
+"Privacy Policy" = "Политика конфиденциальности";
 
 "Invalid token request" = "Недействительный запрос токена";
 
