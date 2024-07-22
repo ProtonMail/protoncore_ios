@@ -53,7 +53,7 @@ final class ExternalLinks {
     var termsAndConditions: URL {
         switch clientApp {
         case .wallet:
-            return URL(string: "https://proton.me/leqal/wallet/terms")!
+            return URL(string: "https://proton.me/legal/wallet/terms")!
         default:
             return URL(string: "https://proton.me/legal/terms-ios")!
         }
