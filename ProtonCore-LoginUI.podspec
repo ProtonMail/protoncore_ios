@@ -51,6 +51,7 @@ Pod::Spec.new do |s|
     
     s.ios.resource_bundles = {
         'Resources-LoginUI' => [
+            "libraries/LoginUI/Sources/Resources/Assets.xcassets",
             "libraries/LoginUI/Resources/**/*.{xib,storyboard,json}"
         ],
         'Translations-LoginUI' => [

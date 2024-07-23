@@ -29,6 +29,7 @@ import ProtonCorePayments
 import ProtonCorePaymentsUI
 import ProtonCoreHumanVerification
 import ProtonCoreFoundations
+import ProtonCoreLog
 
 enum FlowStartKind {
     case over(UIViewController, UIModalTransitionStyle)
@@ -282,11 +283,27 @@ final class SignupCoordinator {
     }
 
     private func showTermsAndConditionsViewController() {
-        let tcViewController = UIStoryboard.instantiateInSignup(TCViewController.self, inAppTheme: customization.inAppTheme)
-        tcViewController.termsAndConditionsURL = externalLinks.termsAndConditions
-        tcViewController.delegate = self
+        let elViewController = UIStoryboard.instantiateInSignup(ExternalLinkViewController.self, inAppTheme: customization.inAppTheme)
+        elViewController.configuration = .init(
+            title: LUITranslation.terms_conditions_view_title.l10n,
+            url: externalLinks.termsAndConditions
+        )
+        elViewController.delegate = self
 
-        let navigationVC = LoginNavigationViewController(rootViewController: tcViewController)
+        let navigationVC = LoginNavigationViewController(rootViewController: elViewController)
+        navigationVC.modalPresentationStyle = .pageSheet
+        navigationController?.present(navigationVC, animated: true)
+    }
+
+    private func showPrivacyPolicyViewController() {
+        let elViewController = UIStoryboard.instantiateInSignup(ExternalLinkViewController.self, inAppTheme: customization.inAppTheme)
+        elViewController.configuration = .init(
+            title: LUITranslation.privacy_policy_view_title.l10n,
+            url: externalLinks.privacyPolicy
+        )
+        elViewController.delegate = self
+
+        let navigationVC = LoginNavigationViewController(rootViewController: elViewController)
         navigationVC.modalPresentationStyle = .pageSheet
         navigationController?.present(navigationVC, animated: true)
     }
@@ -518,6 +535,14 @@ extension SignupCoordinator: PasswordViewControllerDelegate {
     func passwordBackButtonPressed() {
         navigationController?.popViewController(animated: true)
     }
+
+    func termsAndConditionsLinkPressed() {
+        showTermsAndConditionsViewController()
+    }
+
+    func privacyPolicyLinkPressed() {
+        showPrivacyPolicyViewController()
+    }
 }
 
 // MARK: RecoveryViewControllerDelegate
@@ -530,10 +555,6 @@ extension SignupCoordinator: RecoveryViewControllerDelegate {
 
     func recoveryBackButtonPressed() {
         navigationController?.popViewController(animated: true)
-    }
-
-    func termsAndConditionsLinkPressed() {
-        showTermsAndConditionsViewController()
     }
 
     func recoveryCountryPickerPressed() {
@@ -575,6 +596,7 @@ extension SignupCoordinator: CompleteViewControllerDelegate {
 
     // swiftlint:disable:next cyclomatic_complexity
     private func errorHandler(error: Error) {
+        PMLog.error(error, sendToExternal: true)
         longTermTask.inProgress = false
         if activeViewController != nil {
             navigationController?.popViewController(animated: true)
@@ -667,8 +689,8 @@ extension SignupCoordinator: CompleteViewControllerDelegate {
 
 // MARK: TCViewControllerDelegate
 
-extension SignupCoordinator: TCViewControllerDelegate {
-    func termsAndConditionsClose() {
+extension SignupCoordinator: ExternalLinkViewControllerDelegate {
+    func externalLinkViewControllerClose() {
         navigationController?.dismiss(animated: true)
     }
 }

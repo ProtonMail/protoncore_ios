@@ -93,4 +93,9 @@ public final class ServicePlanDataServiceMock: ServicePlanDataServiceProtocol {
     @FuncStub(ServicePlanDataServiceProtocol.willRenewAutomatically, initialReturn: false) public var willRenewAutomaticallyStub
     public func willRenewAutomatically(plan: InAppPurchasePlan) -> Bool {
         willRenewAutomaticallyStub(plan) }
+    
+    @FuncStub(ServicePlanDataServiceProtocol.fetchCurrentSubscription) public var fetchCurrentSubscriptionStub
+    public func fetchCurrentSubscription(callBlocksOnParticularQueue: DispatchQueue?, success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+        fetchCurrentSubscriptionStub(callBlocksOnParticularQueue, success, failure)
+    }
 }

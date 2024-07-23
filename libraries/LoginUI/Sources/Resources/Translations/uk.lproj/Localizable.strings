@@ -144,7 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "Натискаючи Далі, ви погоджуєтеся з Умовами та положеннями Proton";
 
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
+
 "Terms and Conditions" = "Умови та положення";
+
+"Privacy Policy" = "Privacy Policy";
 
 "Skip" = "Пропустити";
 
@@ -177,6 +181,8 @@
 "Did not receive a code?" = "Не отримали код?";
 
 "Terms and Conditions" = "Умови та положення";
+
+"Privacy Policy" = "Privacy Policy";
 
 "Invalid token request" = "Недійсний запит токена";
 
@@ -218,11 +224,11 @@
 
 "Please choose how you want to confirm your identity." = "Please choose how you want to confirm your identity.";
 
-"One-time code" = "One-time code";
+"One-time code" = "Одноразовий код";
 
-"Security key" = "Security key";
+"Security key" = "Ключ безпеки";
 
-"Two-Factor Authentication" = "Two-Factor Authentication";
+"Two-Factor Authentication" = "Двоетапна перевірка";
 
 "Present a security key linked to your Proton Account." = "Present a security key linked to your Proton Account.";
 
@@ -244,7 +250,7 @@
 
 "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys.";
 
-"Security Keys" = "Security Keys";
+"Security Keys" = "Ключі безпеки";
 
 "To manage, add, or remove security keys, please use the Proton %@ web application." = "To manage, add, or remove security keys, please use the Proton %@ web application.";
 

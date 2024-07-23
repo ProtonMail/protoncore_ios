@@ -144,7 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "다음을 클릭하면, Proton 이용 약관에 동의하는 것으로 간주합니다.";
 
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "다음을 클릭하면, Proton의 이용 약관 및 개인정보 취급방침에 동의하는 것으로 간주됩니다";
+
 "Terms and Conditions" = "이용 약관";
+
+"Privacy Policy" = "개인정보 취급방침";
 
 "Skip" = "건너뛰기";
 
@@ -160,7 +164,7 @@
 
 "Creating your account" = "계정을 생성하는 중";
 
-"Generating your address" = "당신의 주소 생성하기";
+"Generating your address" = "내 주소를 생성하는 중";
 
 "Securing your account" = "계정을 보호하는 중";
 
@@ -177,6 +181,8 @@
 "Did not receive a code?" = "코드를 받지 못하셨나요?";
 
 "Terms and Conditions" = "이용 약관";
+
+"Privacy Policy" = "개인정보 취급방침";
 
 "Invalid token request" = "유효하지 않는 토큰 요청";
 

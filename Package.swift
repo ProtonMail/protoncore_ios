@@ -152,6 +152,7 @@ extension String {
     static let settings: String = "ProtonCoreSettings"
     static let telemetry: String = "ProtonCoreTelemetry"
     static let testingToolkit: String = "ProtonCoreTestingToolkit"
+    static let testingToolkitPerformance: String = "ProtonCoreTestingToolkitPerformance"
     static let testingToolkitTestData: String = "ProtonCoreTestingToolkitTestData"
     static let testingToolkitUnitTestsAccountDeletion: String = "ProtonCoreTestingToolkitUnitTestsAccountDeletion"
     static let testingToolkitUnitTestsAuthentication: String = "ProtonCoreTestingToolkitUnitTestsAuthentication"
@@ -272,6 +273,7 @@ extension Target.Dependency {
     static var telemetry: Target.Dependency { .target(name: .telemetry) }
     static var testingToolkit: Target.Dependency { .target(name: .testingToolkit) }
     static var testingToolkitTestData: Target.Dependency { .target(name: .testingToolkitTestData) }
+    static var testingToolkitPerformance: Target.Dependency { .target(name: .testingToolkitPerformance) }
     static var testingToolkitUnitTestsAccountDeletion: Target.Dependency { .target(name: .testingToolkitUnitTestsAccountDeletion) }
     static var testingToolkitUnitTestsAuthentication: Target.Dependency { .target(name: .testingToolkitUnitTestsAuthentication) }
     static var testingToolkitUnitTestsAuthenticationKeyGeneration: Target.Dependency { .target(name: .testingToolkitUnitTestsAuthenticationKeyGeneration) }
@@ -1651,6 +1653,7 @@ add(
 
 add(
     products: [
+        .testingToolkitPerformance,
         .testingToolkitTestData,
         .testingToolkitUnitTestsAccountDeletion,
         .testingToolkitUnitTestsAuthentication,
@@ -1675,6 +1678,9 @@ add(
         .testingToolkitUITestsPaymentsUI
     ],
     targets: [
+        coreTarget(name: .testingToolkitPerformance,
+                   path: "libraries/TestingToolkit/Performance"),
+
         coreTarget(name: .testingToolkitTestData,
                    dependencies: [
                        .dataModel,

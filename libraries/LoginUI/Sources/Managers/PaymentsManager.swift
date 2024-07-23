@@ -126,8 +126,9 @@ class PaymentsManager {
                 break
             case .toppedUpCredits:
                 completionHandler(.success(()))
-            case .planPurchaseProcessingInProgress:
-                break
+            case .planPurchaseProcessingInProgress(let plan):
+                self?.selectedPlan = plan
+                completionHandler(.success(()))
             }
         })
     }
@@ -154,11 +155,13 @@ class PaymentsManager {
                 }
 
             case .right(let planDataSource):
-                Task { [weak self] in
-                    do {
-                        try await planDataSource.fetchCurrentPlan()
-                        self?.payments.storeKitManager.retryProcessingAllPendingTransactions { [weak self] in
+
+                payments.storeKitManager.retryProcessingAllPendingTransactions { [weak self] in
+                    Task { [weak self] in
+                        do {
                             var possiblyPurchasedPlan: InAppPurchasePlan?
+                            try await planDataSource.fetchCurrentPlan()
+
                             if planDataSource.currentPlan?.hasExistingProtonSubscription ?? false {
                                 possiblyPurchasedPlan = self?.selectedPlan
                             }
@@ -166,9 +169,9 @@ class PaymentsManager {
                             self?.restoreExistingDelegate()
                             self?.payments.storeKitManager.unsubscribeFromPaymentQueue()
                             completionHandler(.success(possiblyPurchasedPlan))
+                        } catch {
+                            completionHandler(.failure(error))
                         }
-                    } catch {
-                        completionHandler(.failure(error))
                     }
                 }
             }

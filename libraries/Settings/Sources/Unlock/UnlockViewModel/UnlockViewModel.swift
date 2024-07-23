@@ -65,7 +65,7 @@ public class UnlockViewModel: BiometricUnlockViewModel, PinUnlockViewModel {
         self.biometryType = biometricType
         self.header = header
         self.alertSubtitle = alertSubtitle
-        
+
         if fireUnlockAutomatically {
             NotificationCenter.default
                 .addObserver(

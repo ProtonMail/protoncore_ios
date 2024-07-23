@@ -73,14 +73,14 @@ final class PMAPIServiceRequestTests: XCTestCase {
 
     let numberOfRequests: UInt = 50
 
-    var dohMock: DohMock! = nil
-    var sessionUID: String! = nil
-    var cacheToClearMock: URLCacheMock! = nil
-    var sessionMock: SessionMock! = nil
-    var sessionFactoryMock: SessionFactoryMock! = nil
-    var trustKitProviderMock: TrustKitProviderMock! = nil
-    var apiServiceDelegateMock: APIServiceDelegateMock! = nil
-    var authDelegateMock: AuthDelegateMock! = nil
+    var dohMock: DohMock!
+    var sessionUID: String!
+    var cacheToClearMock: URLCacheMock!
+    var sessionMock: SessionMock!
+    var sessionFactoryMock: SessionFactoryMock!
+    var trustKitProviderMock: TrustKitProviderMock!
+    var apiServiceDelegateMock: APIServiceDelegateMock!
+    var authDelegateMock: AuthDelegateMock!
 
     var testService: PMAPIService {
         PMAPIService.createAPIService(doh: dohMock,
@@ -110,6 +110,18 @@ final class PMAPIServiceRequestTests: XCTestCase {
         trustKitProviderMock = TrustKitProviderMock()
         apiServiceDelegateMock = APIServiceDelegateMock()
         authDelegateMock = AuthDelegateMock()
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+        dohMock = nil
+        sessionUID = nil
+        cacheToClearMock = nil
+        sessionMock = nil
+        sessionFactoryMock = nil
+        trustKitProviderMock = nil
+        apiServiceDelegateMock = nil
+        authDelegateMock = nil
     }
 
     // MARK: - Error propagation

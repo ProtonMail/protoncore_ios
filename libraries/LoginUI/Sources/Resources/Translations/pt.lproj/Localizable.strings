@@ -144,7 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "Ao clicar em Próximo, concorda com os termos e condições da Proton";
 
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
+
 "Terms and Conditions" = "Termos e condições";
+
+"Privacy Policy" = "Política de privacidade";
 
 "Skip" = "Ignorar";
 
@@ -177,6 +181,8 @@
 "Did not receive a code?" = "Não recebeu o código?";
 
 "Terms and Conditions" = "Termos e condições";
+
+"Privacy Policy" = "Política de privacidade";
 
 "Invalid token request" = "Pedido de token inválido";
 
@@ -216,7 +222,7 @@
 
 "Troubleshoot" = "Resolução de problemas";
 
-"Please choose how you want to confirm your identity." = "Please choose how you want to confirm your identity.";
+"Please choose how you want to confirm your identity." = "Escolha como deseja confirmar a sua identidade.";
 
 "One-time code" = "Código de uso único";
 
@@ -248,6 +254,6 @@
 
 "To manage, add, or remove security keys, please use the Proton %@ web application." = "To manage, add, or remove security keys, please use the Proton %@ web application.";
 
-"Unexpected FIDO2 signature." = "Unexpected FIDO2 signature.";
+"Unexpected FIDO2 signature." = "Assinatura FIDO2 inesperada.";
 
 "We could not initiate the Secure Password update connection. Please try again." = "We could not initiate the Secure Password update connection. Please try again.";

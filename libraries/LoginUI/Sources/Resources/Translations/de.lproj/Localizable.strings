@@ -144,7 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "Indem du auf „Weiter” klickst, erklärst du dich mit den Allgemeinen Geschäftsbedingungen von Proton einverstanden.";
 
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Indem du auf „Weiter“ klickst, erklärst du dich mit den Nutzungsbedingungen und der Datenschutzerklärung von Proton einverstanden.";
+
 "Terms and Conditions" = "Allgemeine Geschäftsbedingungen";
+
+"Privacy Policy" = "Datenschutzerklärung";
 
 "Skip" = "Überspringen";
 
@@ -177,6 +181,8 @@
 "Did not receive a code?" = "Code nicht erhalten?";
 
 "Terms and Conditions" = "Allgemeine Geschäftsbedingungen";
+
+"Privacy Policy" = "Datenschutzerklärung";
 
 "Invalid token request" = "Token-Anforderung ungültig";
 

@@ -1,6 +1,6 @@
 {
-    "go_version":"1.21.0",
-    "go_fork_branch":"fork/go1.21.0-macos-patch",
+    "go_version":"1.22.3",
+    "go_fork_branch":"fork/go1.22.3-macos-patch",
     "build_dir":"build",
     "out_dir":"out",
     "go_mobile_dir":"mobile",

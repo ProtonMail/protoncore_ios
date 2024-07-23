@@ -61,7 +61,7 @@ extension String {
 
 }
 
-extension String {
+public extension String {
 
     subscript(value: Int) -> Character {
         self[index(at: value)]

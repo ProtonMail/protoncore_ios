@@ -38,4 +38,3 @@ extension ObservabilityEvent where Payload ==  PayloadWithLabels<LoginAuthWith2F
               labels: .init(status: status, twoFAType: type))
     }
 }
-

@@ -144,7 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "შემდეგ გვერდზე გადასვლით თქვენ ეთანხმებით Proton-ის წესებს და პირობებს";
 
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "შემდეგ გვერდზე გადასვლით თქვენ ეთანხმებით Proton-ის წესებს და პირობებს და კონფიდენციალობის პოლიტიკას";
+
 "Terms and Conditions" = "პირობები და წესები";
+
+"Privacy Policy" = "კონფიდენციალობის პოლიტიკა";
 
 "Skip" = "გამოტოვება";
 
@@ -177,6 +181,8 @@
 "Did not receive a code?" = "კოდი არ მიგიღიათ?";
 
 "Terms and Conditions" = "პირობები და წესები";
+
+"Privacy Policy" = "კონფიდენციალობის პოლიტიკა";
 
 "Invalid token request" = "კოდის არასწორი მოთხოვნა";
 
@@ -228,17 +234,17 @@
 
 "Learn more" = "მეტის ნახვა";
 
-"Invalid state. Please quit the app and try again in a few minutes." = "Invalid state. Please quit the app and try again in a few minutes.";
+"Invalid state. Please quit the app and try again in a few minutes." = "არასწორი მდგომარეობა. გადით აპიდან და რამდენიმე წუთში თავიდან სცადეთ.";
 
 "There was a problem reading your security key." = "აღმოჩენილია პრობლემა თქვენი უსაფრთხოების გასაღების კითხვისას.";
 
-"We received an authorization from a type we don't support yet." = "We received an authorization from a type we don't support yet.";
+"We received an authorization from a type we don't support yet." = "მივიღეთ ავტორიზაცია ტიპისგან, რომლის მხარდაჭერაც ჯერ არ გვაქვს.";
 
 "Fetching your security keys details" = "თქვენი უაფრთხოების გასაღების დეტალების გამოთხოვა";
 
 "You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys.";
 
-"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "An error occurred fetching your security keys. You can also check them on the Proton %@ website.";
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "შეცდომა თქვენი უსაფრთხოების გასაღებების გამოთხოვისას. მათი შემოწმება Proton %@-ის ვებგვერდზეც შეგიძლიათ.";
 
 "These are the security keys registered to your account" = "თქვენს ანგარიშზე რეგისტრირებულია უსაფრთხოების გასაღებები";
 
@@ -246,8 +252,8 @@
 
 "Security Keys" = "უსაფრთხოების გასაღებები";
 
-"To manage, add, or remove security keys, please use the Proton %@ web application." = "To manage, add, or remove security keys, please use the Proton %@ web application.";
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "უსაფრთხოების გასაღებების სამართავად, დასამატებლად ან წასაშლელად Proton %@ ვებ-აპლიკაცია გამოიყენეთ.";
 
 "Unexpected FIDO2 signature." = "მოულოდნელი FIDO2 ხელმოწერა";
 
-"We could not initiate the Secure Password update connection. Please try again." = "We could not initiate the Secure Password update connection. Please try again.";
+"We could not initiate the Secure Password update connection. Please try again." = "Secure Password-ის განახლებისთვის მიერთების აწევა შეუძლებელია. მოგვიანებით სცადეთ.";

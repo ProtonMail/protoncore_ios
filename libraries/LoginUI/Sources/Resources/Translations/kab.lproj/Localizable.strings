@@ -144,7 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "By clicking Next, you agree with Proton's Terms and Conditions";
 
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
+
 "Terms and Conditions" = "Tiwtilin n useqdec";
+
+"Privacy Policy" = "Privacy Policy";
 
 "Skip" = "Zgel";
 
@@ -177,6 +181,8 @@
 "Did not receive a code?" = "Ur d-teṭṭifeḍ ara tangalt?";
 
 "Terms and Conditions" = "Tiwtilin n useqdec";
+
+"Privacy Policy" = "Privacy Policy";
 
 "Invalid token request" = "Assuter n ujiṭun ur d arameɣtu";
 

@@ -1,0 +1,1605 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "1540"
+   version = "1.7">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES"
+      buildArchitectures = "Automatic">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "GoLibsCryptoGo"
+               BuildableName = "GoLibsCryptoGo"
+               BlueprintName = "GoLibsCryptoGo"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "GoLibsCryptoPatchedGo"
+               BuildableName = "GoLibsCryptoPatchedGo"
+               BlueprintName = "GoLibsCryptoPatchedGo"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "GoLibsCryptoSearchGo"
+               BuildableName = "GoLibsCryptoSearchGo"
+               BlueprintName = "GoLibsCryptoSearchGo"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "GoLibsCryptoVPNPatchedGo"
+               BuildableName = "GoLibsCryptoVPNPatchedGo"
+               BlueprintName = "GoLibsCryptoVPNPatchedGo"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreAPIClient"
+               BuildableName = "ProtonCoreAPIClient"
+               BlueprintName = "ProtonCoreAPIClient"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreAccountDeletion"
+               BuildableName = "ProtonCoreAccountDeletion"
+               BlueprintName = "ProtonCoreAccountDeletion"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreAccountRecovery"
+               BuildableName = "ProtonCoreAccountRecovery"
+               BlueprintName = "ProtonCoreAccountRecovery"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreAccountSwitcher"
+               BuildableName = "ProtonCoreAccountSwitcher"
+               BlueprintName = "ProtonCoreAccountSwitcher"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreAuthentication"
+               BuildableName = "ProtonCoreAuthentication"
+               BlueprintName = "ProtonCoreAuthentication"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreAuthenticationKeyGeneration"
+               BuildableName = "ProtonCoreAuthenticationKeyGeneration"
+               BlueprintName = "ProtonCoreAuthenticationKeyGeneration"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreChallenge"
+               BuildableName = "ProtonCoreChallenge"
+               BlueprintName = "ProtonCoreChallenge"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreCommon"
+               BuildableName = "ProtonCoreCommon"
+               BlueprintName = "ProtonCoreCommon"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreCrypto"
+               BuildableName = "ProtonCoreCrypto"
+               BlueprintName = "ProtonCoreCrypto"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreCryptoGoImplementation"
+               BuildableName = "ProtonCoreCryptoGoImplementation"
+               BlueprintName = "ProtonCoreCryptoGoImplementation"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreCryptoGoInterface"
+               BuildableName = "ProtonCoreCryptoGoInterface"
+               BlueprintName = "ProtonCoreCryptoGoInterface"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreCryptoPatchedGoImplementation"
+               BuildableName = "ProtonCoreCryptoPatchedGoImplementation"
+               BlueprintName = "ProtonCoreCryptoPatchedGoImplementation"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreCryptoSearchGoImplementation"
+               BuildableName = "ProtonCoreCryptoSearchGoImplementation"
+               BlueprintName = "ProtonCoreCryptoSearchGoImplementation"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreCryptoVPNPatchedGoImplementation"
+               BuildableName = "ProtonCoreCryptoVPNPatchedGoImplementation"
+               BlueprintName = "ProtonCoreCryptoVPNPatchedGoImplementation"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreDataModel"
+               BuildableName = "ProtonCoreDataModel"
+               BlueprintName = "ProtonCoreDataModel"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreDoh"
+               BuildableName = "ProtonCoreDoh"
+               BlueprintName = "ProtonCoreDoh"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreEnvironment"
+               BuildableName = "ProtonCoreEnvironment"
+               BlueprintName = "ProtonCoreEnvironment"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreFeatureFlags"
+               BuildableName = "ProtonCoreFeatureFlags"
+               BlueprintName = "ProtonCoreFeatureFlags"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreFeatures"
+               BuildableName = "ProtonCoreFeatures"
+               BlueprintName = "ProtonCoreFeatures"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreForceUpgrade"
+               BuildableName = "ProtonCoreForceUpgrade"
+               BlueprintName = "ProtonCoreForceUpgrade"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreFoundations"
+               BuildableName = "ProtonCoreFoundations"
+               BlueprintName = "ProtonCoreFoundations"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreHash"
+               BuildableName = "ProtonCoreHash"
+               BlueprintName = "ProtonCoreHash"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreHumanVerification"
+               BuildableName = "ProtonCoreHumanVerification"
+               BlueprintName = "ProtonCoreHumanVerification"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreKeyManager"
+               BuildableName = "ProtonCoreKeyManager"
+               BlueprintName = "ProtonCoreKeyManager"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreKeymaker"
+               BuildableName = "ProtonCoreKeymaker"
+               BlueprintName = "ProtonCoreKeymaker"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreLog"
+               BuildableName = "ProtonCoreLog"
+               BlueprintName = "ProtonCoreLog"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreLogin"
+               BuildableName = "ProtonCoreLogin"
+               BlueprintName = "ProtonCoreLogin"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreLoginUI"
+               BuildableName = "ProtonCoreLoginUI"
+               BlueprintName = "ProtonCoreLoginUI"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreMissingScopes"
+               BuildableName = "ProtonCoreMissingScopes"
+               BlueprintName = "ProtonCoreMissingScopes"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreNetworking"
+               BuildableName = "ProtonCoreNetworking"
+               BlueprintName = "ProtonCoreNetworking"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreObfuscatedConstants"
+               BuildableName = "ProtonCoreObfuscatedConstants"
+               BlueprintName = "ProtonCoreObfuscatedConstants"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreObservability"
+               BuildableName = "ProtonCoreObservability"
+               BlueprintName = "ProtonCoreObservability"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCorePasswordChange"
+               BuildableName = "ProtonCorePasswordChange"
+               BlueprintName = "ProtonCorePasswordChange"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCorePasswordRequest"
+               BuildableName = "ProtonCorePasswordRequest"
+               BlueprintName = "ProtonCorePasswordRequest"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCorePayments"
+               BuildableName = "ProtonCorePayments"
+               BlueprintName = "ProtonCorePayments"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCorePaymentsUI"
+               BuildableName = "ProtonCorePaymentsUI"
+               BlueprintName = "ProtonCorePaymentsUI"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCorePushNotifications"
+               BuildableName = "ProtonCorePushNotifications"
+               BlueprintName = "ProtonCorePushNotifications"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreQuarkCommands"
+               BuildableName = "ProtonCoreQuarkCommands"
+               BlueprintName = "ProtonCoreQuarkCommands"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreServices"
+               BuildableName = "ProtonCoreServices"
+               BlueprintName = "ProtonCoreServices"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreSettings"
+               BuildableName = "ProtonCoreSettings"
+               BlueprintName = "ProtonCoreSettings"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTelemetry"
+               BuildableName = "ProtonCoreTelemetry"
+               BlueprintName = "ProtonCoreTelemetry"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTestingToolkitTestData"
+               BuildableName = "ProtonCoreTestingToolkitTestData"
+               BlueprintName = "ProtonCoreTestingToolkitTestData"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTestingToolkitUITestsAccountDeletion"
+               BuildableName = "ProtonCoreTestingToolkitUITestsAccountDeletion"
+               BlueprintName = "ProtonCoreTestingToolkitUITestsAccountDeletion"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTestingToolkitUITestsAccountSwitcher"
+               BuildableName = "ProtonCoreTestingToolkitUITestsAccountSwitcher"
+               BlueprintName = "ProtonCoreTestingToolkitUITestsAccountSwitcher"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTestingToolkitUITestsCore"
+               BuildableName = "ProtonCoreTestingToolkitUITestsCore"
+               BlueprintName = "ProtonCoreTestingToolkitUITestsCore"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTestingToolkitUITestsHumanVerification"
+               BuildableName = "ProtonCoreTestingToolkitUITestsHumanVerification"
+               BlueprintName = "ProtonCoreTestingToolkitUITestsHumanVerification"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTestingToolkitUITestsLogin"
+               BuildableName = "ProtonCoreTestingToolkitUITestsLogin"
+               BlueprintName = "ProtonCoreTestingToolkitUITestsLogin"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTestingToolkitUITestsPaymentsUI"
+               BuildableName = "ProtonCoreTestingToolkitUITestsPaymentsUI"
+               BlueprintName = "ProtonCoreTestingToolkitUITestsPaymentsUI"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTestingToolkitUnitTestsAccountDeletion"
+               BuildableName = "ProtonCoreTestingToolkitUnitTestsAccountDeletion"
+               BlueprintName = "ProtonCoreTestingToolkitUnitTestsAccountDeletion"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTestingToolkitUnitTestsAuthentication"
+               BuildableName = "ProtonCoreTestingToolkitUnitTestsAuthentication"
+               BlueprintName = "ProtonCoreTestingToolkitUnitTestsAuthentication"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTestingToolkitUnitTestsAuthenticationKeyGeneration"
+               BuildableName = "ProtonCoreTestingToolkitUnitTestsAuthenticationKeyGeneration"
+               BlueprintName = "ProtonCoreTestingToolkitUnitTestsAuthenticationKeyGeneration"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTestingToolkitUnitTestsCore"
+               BuildableName = "ProtonCoreTestingToolkitUnitTestsCore"
+               BlueprintName = "ProtonCoreTestingToolkitUnitTestsCore"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTestingToolkitUnitTestsCryptoGoInterface"
+               BuildableName = "ProtonCoreTestingToolkitUnitTestsCryptoGoInterface"
+               BlueprintName = "ProtonCoreTestingToolkitUnitTestsCryptoGoInterface"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTestingToolkitUnitTestsDataModel"
+               BuildableName = "ProtonCoreTestingToolkitUnitTestsDataModel"
+               BlueprintName = "ProtonCoreTestingToolkitUnitTestsDataModel"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTestingToolkitUnitTestsDoh"
+               BuildableName = "ProtonCoreTestingToolkitUnitTestsDoh"
+               BlueprintName = "ProtonCoreTestingToolkitUnitTestsDoh"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTestingToolkitUnitTestsFeatureFlag"
+               BuildableName = "ProtonCoreTestingToolkitUnitTestsFeatureFlag"
+               BlueprintName = "ProtonCoreTestingToolkitUnitTestsFeatureFlag"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTestingToolkitUnitTestsLogin"
+               BuildableName = "ProtonCoreTestingToolkitUnitTestsLogin"
+               BlueprintName = "ProtonCoreTestingToolkitUnitTestsLogin"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTestingToolkitUnitTestsLoginUI"
+               BuildableName = "ProtonCoreTestingToolkitUnitTestsLoginUI"
+               BlueprintName = "ProtonCoreTestingToolkitUnitTestsLoginUI"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTestingToolkitUnitTestsNetworking"
+               BuildableName = "ProtonCoreTestingToolkitUnitTestsNetworking"
+               BlueprintName = "ProtonCoreTestingToolkitUnitTestsNetworking"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTestingToolkitUnitTestsObservability"
+               BuildableName = "ProtonCoreTestingToolkitUnitTestsObservability"
+               BlueprintName = "ProtonCoreTestingToolkitUnitTestsObservability"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTestingToolkitUnitTestsPayments"
+               BuildableName = "ProtonCoreTestingToolkitUnitTestsPayments"
+               BlueprintName = "ProtonCoreTestingToolkitUnitTestsPayments"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTestingToolkitUnitTestsServices"
+               BuildableName = "ProtonCoreTestingToolkitUnitTestsServices"
+               BlueprintName = "ProtonCoreTestingToolkitUnitTestsServices"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTroubleShooting"
+               BuildableName = "ProtonCoreTroubleShooting"
+               BlueprintName = "ProtonCoreTroubleShooting"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreUIFoundations"
+               BuildableName = "ProtonCoreUIFoundations"
+               BlueprintName = "ProtonCoreUIFoundations"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreUtilities"
+               BuildableName = "ProtonCoreUtilities"
+               BlueprintName = "ProtonCoreUtilities"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreVCard"
+               BuildableName = "ProtonCoreVCard"
+               BlueprintName = "ProtonCoreVCard"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      shouldAutocreateTestPlan = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreAPIClientTests"
+               BuildableName = "ProtonCoreAPIClientTests"
+               BlueprintName = "ProtonCoreAPIClientTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreAccountDeletionLocalizationTests"
+               BuildableName = "ProtonCoreAccountDeletionLocalizationTests"
+               BlueprintName = "ProtonCoreAccountDeletionLocalizationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreAccountDeletionTests"
+               BuildableName = "ProtonCoreAccountDeletionTests"
+               BlueprintName = "ProtonCoreAccountDeletionTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreAccountRecoveryTests"
+               BuildableName = "ProtonCoreAccountRecoveryTests"
+               BlueprintName = "ProtonCoreAccountRecoveryTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreAccountSwitcherLocalizationTests"
+               BuildableName = "ProtonCoreAccountSwitcherLocalizationTests"
+               BlueprintName = "ProtonCoreAccountSwitcherLocalizationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreAccountSwitcherTests"
+               BuildableName = "ProtonCoreAccountSwitcherTests"
+               BlueprintName = "ProtonCoreAccountSwitcherTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreAuthenticationKeyGenerationTests"
+               BuildableName = "ProtonCoreAuthenticationKeyGenerationTests"
+               BlueprintName = "ProtonCoreAuthenticationKeyGenerationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreAuthenticationTests"
+               BuildableName = "ProtonCoreAuthenticationTests"
+               BlueprintName = "ProtonCoreAuthenticationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreChallengeTests"
+               BuildableName = "ProtonCoreChallengeTests"
+               BlueprintName = "ProtonCoreChallengeTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreCryptoGoImplementationTests"
+               BuildableName = "ProtonCoreCryptoGoImplementationTests"
+               BlueprintName = "ProtonCoreCryptoGoImplementationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreCryptoPatchedGoImplementationTests"
+               BuildableName = "ProtonCoreCryptoPatchedGoImplementationTests"
+               BlueprintName = "ProtonCoreCryptoPatchedGoImplementationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreCryptoSearchGoImplementationTests"
+               BuildableName = "ProtonCoreCryptoSearchGoImplementationTests"
+               BlueprintName = "ProtonCoreCryptoSearchGoImplementationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreCryptoTests"
+               BuildableName = "ProtonCoreCryptoTests"
+               BlueprintName = "ProtonCoreCryptoTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreCryptoVPNPatchedGoImplementationTests"
+               BuildableName = "ProtonCoreCryptoVPNPatchedGoImplementationTests"
+               BlueprintName = "ProtonCoreCryptoVPNPatchedGoImplementationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreDataModelTests"
+               BuildableName = "ProtonCoreDataModelTests"
+               BlueprintName = "ProtonCoreDataModelTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreDohIntegrationTests"
+               BuildableName = "ProtonCoreDohIntegrationTests"
+               BlueprintName = "ProtonCoreDohIntegrationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreDohUnitTests"
+               BuildableName = "ProtonCoreDohUnitTests"
+               BlueprintName = "ProtonCoreDohUnitTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreEnvironmentTests"
+               BuildableName = "ProtonCoreEnvironmentTests"
+               BlueprintName = "ProtonCoreEnvironmentTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreFeatureFlagsTests"
+               BuildableName = "ProtonCoreFeatureFlagsTests"
+               BlueprintName = "ProtonCoreFeatureFlagsTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreForceUpgradeLocalizationTests"
+               BuildableName = "ProtonCoreForceUpgradeLocalizationTests"
+               BlueprintName = "ProtonCoreForceUpgradeLocalizationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreForceUpgradeTests"
+               BuildableName = "ProtonCoreForceUpgradeTests"
+               BlueprintName = "ProtonCoreForceUpgradeTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreHashTests"
+               BuildableName = "ProtonCoreHashTests"
+               BlueprintName = "ProtonCoreHashTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreHumanVerificationLocalizationTests"
+               BuildableName = "ProtonCoreHumanVerificationLocalizationTests"
+               BlueprintName = "ProtonCoreHumanVerificationLocalizationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreHumanVerificationTests"
+               BuildableName = "ProtonCoreHumanVerificationTests"
+               BlueprintName = "ProtonCoreHumanVerificationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreKeyManagerTests"
+               BuildableName = "ProtonCoreKeyManagerTests"
+               BlueprintName = "ProtonCoreKeyManagerTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreKeymakerTests"
+               BuildableName = "ProtonCoreKeymakerTests"
+               BlueprintName = "ProtonCoreKeymakerTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreLogTests"
+               BuildableName = "ProtonCoreLogTests"
+               BlueprintName = "ProtonCoreLogTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreLoginIntegrationTests"
+               BuildableName = "ProtonCoreLoginIntegrationTests"
+               BlueprintName = "ProtonCoreLoginIntegrationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreLoginLocalizationTests"
+               BuildableName = "ProtonCoreLoginLocalizationTests"
+               BlueprintName = "ProtonCoreLoginLocalizationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreLoginUIIntegrationTests"
+               BuildableName = "ProtonCoreLoginUIIntegrationTests"
+               BlueprintName = "ProtonCoreLoginUIIntegrationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreLoginUILocalizationTests"
+               BuildableName = "ProtonCoreLoginUILocalizationTests"
+               BlueprintName = "ProtonCoreLoginUILocalizationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreLoginUIUnitTests"
+               BuildableName = "ProtonCoreLoginUIUnitTests"
+               BlueprintName = "ProtonCoreLoginUIUnitTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreLoginUnitTests"
+               BuildableName = "ProtonCoreLoginUnitTests"
+               BlueprintName = "ProtonCoreLoginUnitTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreMissingScopesTests"
+               BuildableName = "ProtonCoreMissingScopesTests"
+               BlueprintName = "ProtonCoreMissingScopesTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreNetworkingLocalizationTests"
+               BuildableName = "ProtonCoreNetworkingLocalizationTests"
+               BlueprintName = "ProtonCoreNetworkingLocalizationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreNetworkingTests"
+               BuildableName = "ProtonCoreNetworkingTests"
+               BlueprintName = "ProtonCoreNetworkingTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreObservabilityIntegrationTests"
+               BuildableName = "ProtonCoreObservabilityIntegrationTests"
+               BlueprintName = "ProtonCoreObservabilityIntegrationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreObservabilityUnitTests"
+               BuildableName = "ProtonCoreObservabilityUnitTests"
+               BlueprintName = "ProtonCoreObservabilityUnitTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCorePasswordChangeTests"
+               BuildableName = "ProtonCorePasswordChangeTests"
+               BlueprintName = "ProtonCorePasswordChangeTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCorePasswordRequestLocalizationTests"
+               BuildableName = "ProtonCorePasswordRequestLocalizationTests"
+               BlueprintName = "ProtonCorePasswordRequestLocalizationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCorePasswordRequestUnitTests"
+               BuildableName = "ProtonCorePasswordRequestUnitTests"
+               BlueprintName = "ProtonCorePasswordRequestUnitTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCorePaymentsIntegrationTests"
+               BuildableName = "ProtonCorePaymentsIntegrationTests"
+               BlueprintName = "ProtonCorePaymentsIntegrationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCorePaymentsLocalizationTests"
+               BuildableName = "ProtonCorePaymentsLocalizationTests"
+               BlueprintName = "ProtonCorePaymentsLocalizationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCorePaymentsTests"
+               BuildableName = "ProtonCorePaymentsTests"
+               BlueprintName = "ProtonCorePaymentsTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCorePaymentsUILocalizationTests"
+               BuildableName = "ProtonCorePaymentsUILocalizationTests"
+               BlueprintName = "ProtonCorePaymentsUILocalizationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCorePaymentsUITests"
+               BuildableName = "ProtonCorePaymentsUITests"
+               BlueprintName = "ProtonCorePaymentsUITests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCorePushNotificationsTests"
+               BuildableName = "ProtonCorePushNotificationsTests"
+               BlueprintName = "ProtonCorePushNotificationsTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreQuarkCommandsTests"
+               BuildableName = "ProtonCoreQuarkCommandsTests"
+               BlueprintName = "ProtonCoreQuarkCommandsTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreServicesIntegrationTests"
+               BuildableName = "ProtonCoreServicesIntegrationTests"
+               BlueprintName = "ProtonCoreServicesIntegrationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreServicesLocalizationTests"
+               BuildableName = "ProtonCoreServicesLocalizationTests"
+               BlueprintName = "ProtonCoreServicesLocalizationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreServicesUnitTests"
+               BuildableName = "ProtonCoreServicesUnitTests"
+               BlueprintName = "ProtonCoreServicesUnitTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreSettingsTests"
+               BuildableName = "ProtonCoreSettingsTests"
+               BlueprintName = "ProtonCoreSettingsTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTelemetryTests"
+               BuildableName = "ProtonCoreTelemetryTests"
+               BlueprintName = "ProtonCoreTelemetryTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTroubleShootingLocalizationTests"
+               BuildableName = "ProtonCoreTroubleShootingLocalizationTests"
+               BlueprintName = "ProtonCoreTroubleShootingLocalizationTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreTroubleShootingTests"
+               BuildableName = "ProtonCoreTroubleShootingTests"
+               BlueprintName = "ProtonCoreTroubleShootingTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreUIFoundationsTests"
+               BuildableName = "ProtonCoreUIFoundationsTests"
+               BlueprintName = "ProtonCoreUIFoundationsTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCoreUtilitiesTests"
+               BuildableName = "ProtonCoreUtilitiesTests"
+               BlueprintName = "ProtonCoreUtilitiesTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES">
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "GoLibsCryptoGo"
+            BuildableName = "GoLibsCryptoGo"
+            BlueprintName = "GoLibsCryptoGo"
+            ReferencedContainer = "container:">
+         </BuildableReference>
+      </MacroExpansion>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>

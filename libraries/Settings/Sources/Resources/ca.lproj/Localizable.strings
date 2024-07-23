@@ -12,7 +12,7 @@
 
 "pmsettings-settings-system-settings-notifications-title" = "Notificacions";
 
-"pmsettings-settings-system-settings-notifications-description" = "Aquest calendari us pot mantenir informat sobre els esdeveniments que s'estan produint o les invitacions. Si voleu rebre notificacions push, heu de canviar la configuració del vostre sistema.";
+"pmsettings-settings-system-settings-notifications-description" = "Aquest calendari us pot mantenir informat sobre els esdeveniments que s'estan produint o les invitacions. Si voleu rebre notificacions automàtiques, heu de canviar la configuració del vostre sistema.";
 
 "pmsettings-settings-system-settings-notifications-button" = "Gestiona els permisos a la configuració del sistema";
 
@@ -34,6 +34,6 @@
 
 "What went wrong" = "Què ha anat malament?";
 
-"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Descrigui el problema amb el màxim de detall possible. Si hi ha hagut un missatge d'error, faci'ns saber què deia. Mínim 10 caràcters.";
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Si us plau, descriviu el problema amb el màxim de detall possible. Si hi ha hagut un missatge d'error, feu-nos saber què deia. Mínim 10 caràcters.";
 
 "Your report was sent successfully" = "El vostre informe s'ha enviat correctament";

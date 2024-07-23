@@ -39,6 +39,10 @@ public final class FeatureFlagsRepositoryMock: FeatureFlagsRepositoryProtocol {
 
     }
 
+    public func updateOverrideLocalDataSource(_ overrideLocalDataSource: ProtonCoreUtilities.Atomic<any ProtonCoreFeatureFlags.OverrideFeatureFlagDataSourceProtocol>) {
+
+    }
+
     public func setUserId(_ userId: String) {
         self.setUserIdWasCalled = true
         self.userId = userId
@@ -52,15 +56,15 @@ public final class FeatureFlagsRepositoryMock: FeatureFlagsRepositoryProtocol {
         self.fetchFlagsWasCalled = true
     }
 
-    public func resetFlags() {
+    public func resetFlags() {}
 
-    }
+    public func resetFlags(for userId: String) {}
 
-    public func resetFlags(for userId: String) {
+    public func clearUserId() {}
 
-    }
+    public func setFlagOverride(_ flag: any ProtonCoreFeatureFlags.FeatureFlagTypeProtocol, _ overrideWithValue: Bool) {}
 
-    public func clearUserId() {
+    public func resetFlagOverride(_ flag: any ProtonCoreFeatureFlags.FeatureFlagTypeProtocol) {}
 
-    }
+    public func resetOverrides() {}
 }

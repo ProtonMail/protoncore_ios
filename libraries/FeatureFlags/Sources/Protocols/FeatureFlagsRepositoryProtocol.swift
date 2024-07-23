@@ -32,6 +32,9 @@ public protocol FeatureFlagsRepositoryProtocol: AnyObject, Sendable {
     // MARK: - For single-user clients
     func isEnabled(_ flag: any FeatureFlagTypeProtocol, reloadValue: Bool) -> Bool
 
+    func setFlagOverride(_ flag: any FeatureFlagTypeProtocol, _ overrideWithValue: Bool)
+    func resetFlagOverride(_ flag: any FeatureFlagTypeProtocol)
+
     // MARK: - For multi-user clients
     func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String?, reloadValue: Bool) -> Bool
 
@@ -39,6 +42,7 @@ public protocol FeatureFlagsRepositoryProtocol: AnyObject, Sendable {
     func resetFlags()
     func resetFlags(for userId: String)
     func clearUserId()
+    func resetOverrides()
 }
 
 public extension FeatureFlagsRepositoryProtocol {

@@ -69,7 +69,37 @@ final class QuarkPaymentsCommandsTests: XCTestCase {
             let newUser = try quarkCommand.seedNewSubscriber(user: user, plan: .mail2022)
 
             // Assert
-            XCTAssertNotNil(newUser.id, "User id should come from the response ")
+            XCTAssertNotNil(newUser.id, "User id should come from the response")
+        } catch {
+            XCTFail("seedUserWithCreditCard method threw an unexpected error: \(error)")
+        }
+    }
+
+    func testCreateUserWithChargebeeSuccess() {
+        // mock response
+        stub(condition: isHost("test.quark.commands.url")) { request in
+            #if SPM
+            let bundle = Bundle.module
+            #else
+            let bundle = Bundle(for: type(of: self))
+            #endif
+            let url = bundle.url(forResource: "ChargebeePaymentsSeedSubscriber", withExtension: "html")!
+            let headers = ["Content-Type": "application/xhtml+xml;charset=utf-8"]
+            return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: 200, headers: headers)
+
+        }
+        // mock url
+        dohMock.getCurrentlyUsedHostUrlStub.bodyIs { _ in "https://test.quark.commands.url" }
+
+        let quarkCommand = Quark().baseUrl(dohMock)
+
+        let user = User(name: "quarkcommand@test.quark.commands.url", password: "123456789")
+        do {
+            // Act
+            let newUser = try quarkCommand.newSeedNewSubscriber(user: user, plan: .mail2022, cycle: 1)
+
+            // Assert
+            XCTAssertNotNil(newUser.id, "User id should come from the response")
         } catch {
             XCTFail("seedUserWithCreditCard method threw an unexpected error: \(error)")
         }

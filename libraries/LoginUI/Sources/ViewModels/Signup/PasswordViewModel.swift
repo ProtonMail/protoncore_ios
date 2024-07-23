@@ -23,8 +23,15 @@
 
 import Foundation
 import ProtonCoreLogin
+import ProtonCoreDataModel
+import UIKit
 
 class PasswordViewModel {
+    let clientApp: ClientApp
+
+    init(clientApp: ClientApp) {
+        self.clientApp = clientApp
+    }
 
     func passwordValidationResult(for restrictions: SignupPasswordRestrictions,
                                   password: String,
@@ -53,6 +60,28 @@ class PasswordViewModel {
         }
 
         return .success
+    }
+
+    func termsAttributedString(textView: UITextView) -> NSAttributedString {
+        switch clientApp {
+        case .wallet:
+            let text = NSMutableAttributedString(string: LUITranslation.password_t_c_wallet_desc.l10n)
+            text.addHyperLink(subString: LUITranslation.password_t_c_link.l10n, link: "", font: textView.font)
+            text.addHyperLink(subString: LUITranslation.password_p_p_link.l10n, link: "", font: textView.font)
+            return text
+        default:
+            var text = LUITranslation.password_t_c_desc.l10n
+            let linkText = LUITranslation.password_t_c_link.l10n
+            if ProcessInfo.processInfo.arguments.contains("RunningInUITests") {
+                // Workaround for UI test automation to detect link in separated line
+                let texts = text.components(separatedBy: linkText)
+                if texts.count >= 2 {
+                    text = texts[0] + "\n" + linkText + texts[1]
+                }
+            }
+
+            return .hyperlink(in: text, as: linkText, path: "", subfont: textView.font)
+        }
     }
 }
 

@@ -45,7 +45,7 @@ struct FeatureFlagResponse: Decodable {
     }
 }
 
-public final class DefaultRemoteFeatureFlagsDataSource: RemoteFeatureFlagsDataSourceProtocol {
+public struct DefaultRemoteFeatureFlagsDataSource: RemoteFeatureFlagsDataSourceProtocol {
     public let apiService: any APIService
     
     init(apiService: any APIService) {

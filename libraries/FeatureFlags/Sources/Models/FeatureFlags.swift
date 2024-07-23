@@ -23,7 +23,7 @@
 import Foundation
 
 public struct FeatureFlags: Hashable, Codable, Sendable {
-    public let flags: [FeatureFlag]
+    private var flags: [FeatureFlag]
 
     public init(flags: [FeatureFlag]) {
         self.flags = flags
@@ -37,11 +37,43 @@ public struct FeatureFlags: Hashable, Codable, Sendable {
         flags.isEmpty
     }
 
+    public var flagsCount: Int {
+        flags.count
+    }
+
     public func isEnabled(for key: any FeatureFlagTypeProtocol) -> Bool {
         flags.first { $0.name == key.rawValue }?.enabled ?? false
     }
 
     func getFlag(for key: any FeatureFlagTypeProtocol) -> FeatureFlag? {
         flags.first { $0.name == key.rawValue }
+    }
+
+    mutating func setFlag(_ flag: FeatureFlag) {
+        for (index, element) in flags.enumerated() {
+            if element.name == flag.name {
+                flags[index] = flag
+                return
+            }
+        }
+        flags.append(flag)
+    }
+
+    mutating func removeFlag(_ flag: FeatureFlag) {
+        if let index = flags.firstIndex(of: flag) {
+            flags.remove(at: index)
+        }
+    }
+
+    func getFlag(_ flag: FeatureFlag) -> FeatureFlag? {
+        if let index = flags.firstIndex(of: flag) {
+            return flags[index]
+        }
+
+        return nil
+    }
+
+    func hasFlag(_ flag: FeatureFlag) -> Bool {
+        flags.firstIndex(of: flag) != nil ? true : false
     }
 }

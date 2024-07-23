@@ -26,11 +26,14 @@ import ProtonCoreFoundations
 import ProtonCoreUIFoundations
 import ProtonCoreObservability
 import ProtonCoreTelemetry
+import ProtonCoreUtilities
 
 protocol PasswordViewControllerDelegate: AnyObject {
     func passwordIsShown()
     func validatedPassword(password: String, completionHandler: (() -> Void)?)
     func passwordBackButtonPressed()
+    func termsAndConditionsLinkPressed()
+    func privacyPolicyLinkPressed()
 }
 
 class PasswordViewController: UIViewController, AccessibleView, Focusable, ProductMetricsMeasurable {
@@ -91,6 +94,19 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable, Produ
         }
     }
     @IBOutlet weak var scrollView: UIScrollView!
+
+    @IBOutlet weak var termsTextView: UITextView! {
+        didSet {
+            termsTextView.delegate = self
+            termsTextView.attributedText = viewModel?.termsAttributedString(textView: termsTextView)
+            let foregroundColor: UIColor = ColorProvider.BrandNorm
+            termsTextView.linkTextAttributes = [.foregroundColor: foregroundColor]
+            termsTextView.backgroundColor = ColorProvider.BackgroundNorm
+            termsTextView.textColor = ColorProvider.TextWeak
+            termsTextView.font = .adjustedFont(forTextStyle: .footnote)
+            termsTextView.adjustsFontForContentSizeCategory = true
+        }
+    }
 
     var focusNoMore: Bool = false
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
@@ -200,16 +216,17 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable, Produ
     @objc private func keyboardWillShow(notification: NSNotification) {
         adjust(scrollView, notification: notification,
                topView: topView(of: passwordTextField, repeatPasswordTextField),
-               bottomView: nextButton)
+               bottomView: termsTextView)
     }
 
     @objc private func keyboardWillHide(notification: NSNotification) {
-        adjust(scrollView, notification: notification, topView: createPasswordTitleLabel, bottomView: nextButton)
+        adjust(scrollView, notification: notification, topView: createPasswordTitleLabel, bottomView: termsTextView)
     }
 
     @objc
     private func preferredContentSizeChanged(_ notification: Notification) {
         createPasswordTitleLabel.font = .adjustedFont(forTextStyle: .title2, weight: .bold)
+        termsTextView.font = .adjustedFont(forTextStyle: .footnote)
     }
 }
 
@@ -264,6 +281,26 @@ extension PasswordViewController: SignUpErrorCapable, LoginErrorCapable {
             repeatPasswordTextField.isError = true
             measureOnViewAction(action: .validate, additionalDimensions: [.result("password_mismatch")])
         }
+    }
+}
+
+extension PasswordViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        guard let stringRange = Range(characterRange, in: textView.text) else {
+            return false
+        }
+        switch textView.text[stringRange] {
+        case LUITranslation.password_t_c_link.l10n:
+            delegate?.termsAndConditionsLinkPressed()
+            measureOnViewClicked(item: "terms")
+        case LUITranslation.password_p_p_link.l10n:
+            delegate?.privacyPolicyLinkPressed()
+            measureOnViewClicked(item: "privacy_policy")
+        default:
+            break
+        }
+
+        return false
     }
 }
 

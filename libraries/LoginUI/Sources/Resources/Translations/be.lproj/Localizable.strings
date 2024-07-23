@@ -144,7 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "Націскаючы кнопку \"Далей\", вы пагаджаецеся з Умовамі выкарыстання Proton";
 
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Націскаючы кнопку \"Далей\", вы пагаджаецеся з Умовамі выкарыстання Proton і Палітыкай прыватнасці";
+
 "Terms and Conditions" = "Умовы выкарыстання";
+
+"Privacy Policy" = "Палітыка прыватнасці";
 
 "Skip" = "Прапусціць";
 
@@ -177,6 +181,8 @@
 "Did not receive a code?" = "Не атрымалі код?";
 
 "Terms and Conditions" = "Умовы выкарыстання";
+
+"Privacy Policy" = "Палітыка прыватнасці";
 
 "Invalid token request" = "Памылковы запыт токена";
 

@@ -305,7 +305,7 @@ public extension CGColor {
 #if canImport(SwiftUI)
 import SwiftUI
 
-@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.0, OSX 10.15, tvOS 15.0, watchOS 6.0, *)
 extension ColorProviderBase {
 
     #if canImport(UIKit)
@@ -331,7 +331,7 @@ extension ColorProviderBase {
 
 }
 
-@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.0, OSX 10.15, tvOS 15.0, watchOS 6.0, *)
 extension ProtonColor {
     var color: Color {
 #if canImport(UIKit)

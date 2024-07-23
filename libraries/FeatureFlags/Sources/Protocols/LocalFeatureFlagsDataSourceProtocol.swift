@@ -22,13 +22,22 @@
 
 import Foundation
 
-public protocol LocalFeatureFlagsDataSourceProtocol: Sendable {
+public protocol BaseFeatureFlagsDatasourceProtocol: Sendable {
+    func cleanAllFlags()
+}
+
+public protocol LocalFeatureFlagsDataSourceProtocol: BaseFeatureFlagsDatasourceProtocol, Sendable {
     func getFeatureFlags(userId: String, reloadFromLocalDataSource: Bool) -> FeatureFlags?
     func upsertFlags(_ flags: FeatureFlags, userId: String)
-    func cleanAllFlags()
     func cleanFlags(for userId: String)
-
+    
     var userIdForActiveSession: String? { get }
     func setUserIdForActiveSession(_ userId: String)
     func clearUserId()
+}
+
+public protocol OverrideFeatureFlagDataSourceProtocol: BaseFeatureFlagsDatasourceProtocol {
+    func getFeatureFlags() -> FeatureFlags?
+    func addFlag(_ flag: FeatureFlag)
+    func removeFlag(_ flag: FeatureFlag)
 }

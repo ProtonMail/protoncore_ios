@@ -82,7 +82,7 @@ public extension Quark {
             "email=\(email)",
             "--gen-keys=\(genKeys.rawValue)",
             "--format=json",
-            "--primary=\(isPrimary ? "1": "0")"
+            "--primary=\(isPrimary ? "1" : "0")"
         ]
 
         let request = try route(usersCreateAddress)

@@ -90,14 +90,6 @@ This updates the local feature flag data source:
 
 `fetchFlags()` uses the `userId` and `apiService` set with `setUserId(_:)` and `setApiService(_:)` respectively.
 
-In a multi-user context, you can use:
-
-```swift
-    try await FeatureFlagsRepository.shared.fetchFlags(for: userId1, using: apiService)
-```
- 
- This will update the local feature flag data source with feature flag values for user with user ID `userId1`.
-
 ### Check the value of a feature flag
 
 To check the value of a given feature flag, use:
@@ -128,6 +120,34 @@ If you wish to read the latest value fetched for a given feature flag and user, 
                                                                           reloadValue: true)
 ```
 
+### Override Flag
+
+If you need to override a flag, or set a local override one, you can do so invoking:
+
+```swift
+    FeatureFlagsRepository.shared.setFlagOverride(flagName, overrideWithValue: value)
+```
+
+in the same way, to remove an overridden flag: 
+
+```swift
+    FeatureFlagsRepository.shared.resetFlagOverride(flagName)
+```
+To remove any override
+
+```swift
+    FeatureFlagsRepository.shared.resetOverrides()
+```
+
+Where feature flags returned by Unleash are bound to the user session, overridden flags are not. This will allow to set overrides before a session is initated (i.e. sign up flow).
+
+When checking for the status of a flag using:
+
+```swift
+    FeatureFlagRepository.shared.isEnabled(MyFlagType.myFeature)
+```
+
+We first check for any overridden flag with the same name, if no overridden flag is found we then look in the list of flags returned by Unleash
 
 ## Logout
 
