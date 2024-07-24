@@ -832,6 +832,7 @@ final class FeatureFlagsTests: XCTestCase {
         sut.setFlagOverride(TestFlagsType.blackFriday, false)
         sut.resetFlagOverride(TestFlagsType.blackFriday)
 
+        sut.setUserId(userId)
         // Then
         XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday))
         XCTAssertTrue(overrideLocalDataSource.value.getFeatureFlags()?.getFlag(for: TestFlagsType.blackFriday) == nil)
