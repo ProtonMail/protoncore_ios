@@ -53,8 +53,10 @@ final class FeatureFlagsTests: XCTestCase {
         localDataSource = DefaultLocalFeatureFlagsDatasource(userDefaults: featureFlagUserDefaults)
         overrideLocalDataSource = Atomic<OverrideFeatureFlagDataSourceProtocol>(OverrideLocalFeatureFlagsDatasource(userDefaults: featureFlagUserDefaults))
         sut = .init(localDataSource: Atomic<LocalFeatureFlagsDataSourceProtocol>(localDataSource),
-                    remoteDataSource: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(nil))
-        sut.overrideLocalDataSource = overrideLocalDataSource
+                    remoteDataSource: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(nil),
+                    overrideLocalDataSource: overrideLocalDataSource
+        )
+//        sut.overrideLocalDataSource = overrideLocalDataSource
     }
 
     override func tearDown() {
@@ -777,7 +779,7 @@ final class FeatureFlagsTests: XCTestCase {
         sut.updateLocalDataSource(localDataSource)
 
         // Then
-        XCTAssertNil(sut.overrideLocalDataSource.value.getFeatureFlags())
+        XCTAssertNil(overrideLocalDataSource.value.getFeatureFlags())
     }
 
     func test_override_feature_flag() {
@@ -790,7 +792,9 @@ final class FeatureFlagsTests: XCTestCase {
         sut.setFlagOverride(TestFlagsType.blackFriday, false)
 
         // Then
-        XCTAssertTrue(sut.overrideLocalDataSource.value.getFeatureFlags()?.getFlag(for: TestFlagsType.blackFriday) != nil)
+        XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday))
+
+        XCTAssertTrue(overrideLocalDataSource.value.getFeatureFlags()?.getFlag(for: TestFlagsType.blackFriday) != nil)
     }
 
     func test_override_flag_not_provided_by_Unleash() {
@@ -825,11 +829,12 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         sut.updateLocalDataSource(localDataSource)
-        sut.setFlagOverride(TestFlagsType.blackFriday, true)
+        sut.setFlagOverride(TestFlagsType.blackFriday, false)
         sut.resetFlagOverride(TestFlagsType.blackFriday)
 
         // Then
-        XCTAssertTrue(sut.overrideLocalDataSource.value.getFeatureFlags()?.getFlag(for: TestFlagsType.blackFriday) == nil)
+        XCTAssertTrue(sut.isEnabled(TestFlagsType.blackFriday))
+        XCTAssertTrue(overrideLocalDataSource.value.getFeatureFlags()?.getFlag(for: TestFlagsType.blackFriday) == nil)
     }
 
     func test_clean_overridden_feature_flags() {
@@ -889,7 +894,7 @@ final class FeatureFlagsTests: XCTestCase {
         sut.resetFlagOverride(TestFlagsType.blackFriday)
        
         // Then
-        XCTAssertEqual(sut.overrideLocalDataSource.value.getFeatureFlags()?.flagsCount, expectedCount)
+        XCTAssertEqual(overrideLocalDataSource.value.getFeatureFlags()?.flagsCount, expectedCount)
         XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday))
     }
     
@@ -917,7 +922,7 @@ final class FeatureFlagsTests: XCTestCase {
         sut.setFlagOverride(TestFlagsType.blackFriday, expectedValue)
     
         // Then
-        XCTAssertEqual(sut.overrideLocalDataSource.value.getFeatureFlags()?.flagsCount, expectedCount)
+        XCTAssertEqual(overrideLocalDataSource.value.getFeatureFlags()?.flagsCount, expectedCount)
         XCTAssertEqual(sut.isEnabled(TestFlagsType.blackFriday), expectedValue)
     }
     
@@ -933,6 +938,6 @@ final class FeatureFlagsTests: XCTestCase {
     
         // Then
         XCTAssertEqual(sut.isEnabled(TestFlagsType.blackFriday), expectedValue)
-        XCTAssertEqual(sut.overrideLocalDataSource.value.getFeatureFlags()?.flagsCount, expectedCount)
+        XCTAssertEqual(overrideLocalDataSource.value.getFeatureFlags()?.flagsCount, expectedCount)
     }
 }

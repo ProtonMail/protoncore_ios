@@ -37,7 +37,7 @@ public final class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol, @unch
     private var _remoteDataSource: Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?>
 
     /// The local data source for overridden feature flags.
-    private let overrideLocalDataSource = Atomic<any OverrideFeatureFlagDataSourceProtocol>(OverrideLocalFeatureFlagsDatasource())
+    private let overrideLocalDataSource: Atomic<any OverrideFeatureFlagDataSourceProtocol>
 
     //If we notice a explosion of threads using concurrent queue we should move to a serial queue
     private let queue = DispatchQueue(label: "ch.proton.featureflagsrepository_queue", attributes: .concurrent)
@@ -96,9 +96,12 @@ public final class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol, @unch
      - remoteDataSource: The remote data source for feature flags.
      */
     init(localDataSource: Atomic<any LocalFeatureFlagsDataSourceProtocol>,
-         remoteDataSource: Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?>) {
+         remoteDataSource: Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?>,
+         overrideLocalDataSource: Atomic<any OverrideFeatureFlagDataSourceProtocol> = Atomic<any OverrideFeatureFlagDataSourceProtocol>(OverrideLocalFeatureFlagsDatasource())
+    ) {
         self._localDataSource = localDataSource
         self._remoteDataSource = remoteDataSource
+        self.overrideLocalDataSource = overrideLocalDataSource
         self._userId = localDataSource.value.userIdForActiveSession
     }
 
