@@ -26,7 +26,7 @@ import ProtonCoreLog
 
 public class CountryCodeViewModel {
 
-    private (set) var sectionNames: [String] = []
+    private(set) var sectionNames: [String] = []
     private var countryCodes: [CountryCode] = []
     private var sectionCountryCodes: [String: [CountryCode]] = [:]
     private var searchBarPlaceholderText: String = ""

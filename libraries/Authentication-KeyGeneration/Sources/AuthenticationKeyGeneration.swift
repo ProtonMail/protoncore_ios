@@ -63,7 +63,7 @@ extension Authenticator: AuthenticatorKeyGenerationInterface {
                                  completion: @escaping (Result<Key, AuthErrors>) -> Void) {
         getRandomSRPModulus { result in
             switch result {
-            case let .success(_):
+            case .success:
                 let keySetup = AddressKeySetup()
                 guard let userKey = user.keys.first?.privateKey else {
                     completion(.failure(.addressKeySetupError(KeySetupError.invalidKey)))

@@ -295,8 +295,10 @@ extension PasswordChangeView {
 }
 
 extension PasswordChangeView.ViewModel: TwoFAProviderDelegate {
-    public func userDidGoBack() {
-        dismissView()
+    nonisolated public func userDidGoBack() {
+        Task { @MainActor in
+            dismissView()
+        }
     }
 
     public func providerDidObtain(factor: String) async throws {
@@ -308,7 +310,7 @@ extension PasswordChangeView.ViewModel: TwoFAProviderDelegate {
     }
 
     private func updatePasswordWith(twoFAParams: TwoFAParams) async throws {
-        await MainActor.run {
+        _ = await MainActor.run {
             PasswordChangeModule.initialViewController?.navigationController?.popViewController(animated: true)
         }
         guard let authInfo else {

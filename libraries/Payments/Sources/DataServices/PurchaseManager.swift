@@ -123,31 +123,28 @@ final class PurchaseManager: PurchaseManagerProtocol {
         }
 
         let planName: String
-        let planId: String
         let cycle: Int
         switch planService {
         case .left(let planService):
             guard let details = planService.detailsOfPlanCorrespondingToIAP(plan),
-                  let id = planService.detailsOfPlanCorrespondingToIAP(plan)?.ID else {
+                  let _ = planService.detailsOfPlanCorrespondingToIAP(plan)?.ID else {
                 // the plan details, including its id, are unknown, preventing us from doing any further operation
                 assertionFailure("Programmer's error: buy plan method must be called when the plan details are available")
                 throw StoreKitManagerErrors.transactionFailedByUnknownReason
             }
             planName = details.name
-            planId = id
             cycle = 12
 
         case .right(let planDataSource):
             guard let availablePlan = planDataSource.detailsOfAvailablePlanCorrespondingToIAP(plan),
                   let instance = planDataSource.detailsOfAvailablePlanInstanceCorrespondingToIAP(plan),
                   let name = availablePlan.name,
-                  let id = availablePlan.ID else {
+                  let _ = availablePlan.ID else {
                 // the plan details, including its id, are unknown, preventing us from doing any further operation
                 assertionFailure("Programmer's error: buy plan method must be called when the plan details are available")
                 throw StoreKitManagerErrors.transactionFailedByUnknownReason
             }
             planName = name
-            planId = id
             cycle = instance.cycle
         }
 

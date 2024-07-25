@@ -89,8 +89,8 @@ class PaymentsUIViewModel {
 
     // MARK: Public properties
 
-    private (set) var plans: [[PlanPresentation]] = []
-    private (set) var footerType: FooterType = .withoutPlansToBuy
+    private(set) var plans: [[PlanPresentation]] = []
+    private(set) var footerType: FooterType = .withoutPlansToBuy
 
     var dynamicPlans: [[PaymentCellType]] {
          [
@@ -111,7 +111,7 @@ class PaymentsUIViewModel {
             }()
          ].filter { !$0.isEmpty }
     }
-    private (set) var availablePlans: [AvailablePlansPresentation]?
+    private(set) var availablePlans: [AvailablePlansPresentation]?
     var currentPlan: CurrentPlanPresentation?
 
     var defaultCycle: Int? {

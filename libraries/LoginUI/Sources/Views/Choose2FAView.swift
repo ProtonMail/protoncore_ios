@@ -109,6 +109,5 @@ public struct Choose2FAView: View {
         Text("🦖 This view is not available for iOS versions < 15.0")
     }
 }
-
 #endif
 #endif
