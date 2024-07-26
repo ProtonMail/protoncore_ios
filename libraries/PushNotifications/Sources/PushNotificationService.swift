@@ -242,7 +242,7 @@ extension PushNotificationService {
                                                  publicKey: publicKey)
 
         do {
-           let _ = try await withCheckedThrowingContinuation { continuation in
+           _ = try await withCheckedThrowingContinuation { continuation in
                 apiService.request(method: request.method,
                                    path: request.path,
                                    parameters: request.parameters,
