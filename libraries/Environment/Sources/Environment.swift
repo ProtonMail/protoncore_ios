@@ -34,6 +34,7 @@ public enum Environment {
     case blackPayment
 
     case custom(String)
+    case customHttp(String)
 
     static let productionMail = ProductionMail()
     static let productionVPN = ProductionVPN()
@@ -88,7 +89,7 @@ extension Environment {
             Environment.blackServer.status = status
         case .blackPayment:
             Environment.blackPaymentsServer.status = status
-        case .custom:
+        case .custom, .customHttp:
             assertionFailure("Cannot set doH status of custom black environment via this method")
         }
     }
@@ -113,6 +114,8 @@ extension Environment {
             return Environment.blackPaymentsServer
         case .custom(let customDomain):
             return Environment.buildCustomDoh(customDomain: customDomain)
+        case .customHttp(let customDomain):
+            return Environment.buildCustomHttpDoh(customDomain: customDomain)
         }
     }
 
@@ -130,7 +133,7 @@ extension Environment {
             return Environment.productionPass
         case .walletProd:
             return Environment.productionWallet
-        case .black, .blackPayment, .custom:
+        case .black, .blackPayment, .custom, .customHttp:
             fatalError("Invalid index")
         }
     }
@@ -142,6 +145,20 @@ extension Environment {
             humanVerificationV3Host: "https://verify.\(customDomain)",
             accountHost: "https://account.\(customDomain)",
             defaultHost: "https://\(customDomain)",
+            apiHost: ProductionHosts.mailAPI.dohHost,
+            defaultPath: "/api",
+            proxyToken: nil,
+            apnEnvironment: .development
+        )
+    }
+    
+    static func buildCustomHttpDoh(customDomain: String) -> CustomServerConfigDoH {
+        return CustomServerConfigDoH.build(
+            signupDomain: customDomain,
+            captchaHost: "http://api.\(customDomain)",
+            humanVerificationV3Host: "http://verify.\(customDomain)",
+            accountHost: "http://account.\(customDomain)",
+            defaultHost: "http://\(customDomain)",
             apiHost: ProductionHosts.mailAPI.dohHost,
             defaultPath: "/api",
             proxyToken: nil,
