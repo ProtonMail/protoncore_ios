@@ -13,7 +13,9 @@ let swiftSettings: [SwiftSetting] = [
     .enableUpcomingFeature("ForwardTrailingClosures"),
     .enableUpcomingFeature("ImplicitOpenExistentials"),
     .enableUpcomingFeature("StrictConcurrency"),
-    .unsafeFlags(["-warn-concurrency", "-enable-actor-data-race-checks"]),
+    // Commented unsafe flags as this produces error if we try try to import the packages with specific tag.
+    // They should be activated to correct warnings
+//    .unsafeFlags(["-warn-concurrency", "-enable-actor-data-race-checks"]),
     .spm
 ]
 
