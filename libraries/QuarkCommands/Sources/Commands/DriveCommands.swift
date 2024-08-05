@@ -22,7 +22,6 @@
 import Foundation
 
 private let drivePopulate: String = "quark/raw::drive:populate"
-private let driveUsedSpace: String = "quark/raw::drive:quota:set-used-space"
 
 public extension Quark {
 
@@ -43,21 +42,4 @@ public extension Quark {
 
         return try executeQuarkRequest(request)
     }
-
-    @available(*, renamed: "Quark.setUsedSpace", message: "Please use general setting command")
-    @discardableResult
-    func driveSetUsedSpace(uid: Int, space: String) throws -> (data: Data, response: URLResponse) {
-
-        let args = [
-            "--uid=\(uid)",
-            "--used-space=\(space)"
-        ]
-
-        let request = try route(driveUsedSpace)
-            .args(args)
-            .build()
-
-        return try executeQuarkRequest(request)
-    }
-
 }
