@@ -144,11 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "Натискаючи Далі, ви погоджуєтеся з Умовами та положеннями Proton";
 
-"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Натискаючи «Далі», ви погоджуєтеся з Умовами та положеннями й Політикою приватності компанії Proton";
 
 "Terms and Conditions" = "Умови та положення";
 
-"Privacy Policy" = "Privacy Policy";
+"Privacy Policy" = "Політика приватності";
 
 "Skip" = "Пропустити";
 
@@ -182,7 +182,7 @@
 
 "Terms and Conditions" = "Умови та положення";
 
-"Privacy Policy" = "Privacy Policy";
+"Privacy Policy" = "Політика приватності";
 
 "Invalid token request" = "Недійсний запит токена";
 
@@ -222,7 +222,7 @@
 
 "Troubleshoot" = "Усунення проблем";
 
-"Please choose how you want to confirm your identity." = "Please choose how you want to confirm your identity.";
+"Please choose how you want to confirm your identity." = "Оберіть спосіб підтвердження вашої особи.";
 
 "One-time code" = "Одноразовий код";
 
@@ -230,30 +230,30 @@
 
 "Two-Factor Authentication" = "Двоетапна перевірка";
 
-"Present a security key linked to your Proton Account." = "Present a security key linked to your Proton Account.";
+"Present a security key linked to your Proton Account." = "Пред'явіть ключ безпеки, прив'язаний до вашого облікового запису Proton.";
 
 "Learn more" = "Докладніше";
 
-"Invalid state. Please quit the app and try again in a few minutes." = "Invalid state. Please quit the app and try again in a few minutes.";
+"Invalid state. Please quit the app and try again in a few minutes." = "Недійсний стан. Вийдіть із застосунку та спробуйте ще раз за кілька хвилин.";
 
-"There was a problem reading your security key." = "There was a problem reading your security key.";
+"There was a problem reading your security key." = "Сталася помилка під час читання вашого ключа безпеки.";
 
-"We received an authorization from a type we don't support yet." = "We received an authorization from a type we don't support yet.";
+"We received an authorization from a type we don't support yet." = "Ми отримали авторизацію від типу, який ми ще не підтримуємо.";
 
-"Fetching your security keys details" = "Fetching your security keys details";
+"Fetching your security keys details" = "Отримання даних про ключі безпеки";
 
-"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys.";
+"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "У вашому обліковому записі ще не зареєстровано жодного ключа безпеки. Відвідайте розділ налаштувань на нашому сайті, щоб додати ключі безпеки.";
 
-"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "An error occurred fetching your security keys. You can also check them on the Proton %@ website.";
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "Виникла помилка при отриманні ваших ключів безпеки. Ви також можете перевірити їх на вебсайті Proton %@.";
 
-"These are the security keys registered to your account" = "These are the security keys registered to your account";
+"These are the security keys registered to your account" = "Це ключі безпеки, зареєстровані у вашому обліковому записі";
 
-"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys.";
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "У вашому обліковому записі ще немає ключів безпеки. Будь ласка, скористайтеся вебзастосунком Proton %@, щоб додати ключі безпеки.";
 
 "Security Keys" = "Ключі безпеки";
 
-"To manage, add, or remove security keys, please use the Proton %@ web application." = "To manage, add, or remove security keys, please use the Proton %@ web application.";
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "Для керування, додавання або видалення ключів безпеки, використовуйте вебзастосунок Proton %@.";
 
-"Unexpected FIDO2 signature." = "Unexpected FIDO2 signature.";
+"Unexpected FIDO2 signature." = "Неочікуваний підпис FIDO2.";
 
-"We could not initiate the Secure Password update connection. Please try again." = "We could not initiate the Secure Password update connection. Please try again.";
+"We could not initiate the Secure Password update connection. Please try again." = "Не вдалося встановити з'єднання для оновлення захищеного пароля. Спробуйте ще раз.";

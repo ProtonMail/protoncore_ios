@@ -144,11 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "Door op Volgende te klikken gaat u akkoord met de algemene voorwaarden van Proton";
 
-"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Door op Volgende te klikken, gaat u akkoord met de Algemene Voorwaarden en het Privacybeleid van Proton";
 
 "Terms and Conditions" = "Algemene voorwaarden";
 
-"Privacy Policy" = "Privacy Policy";
+"Privacy Policy" = "Privacybeleid";
 
 "Skip" = "Overslaan";
 
@@ -182,7 +182,7 @@
 
 "Terms and Conditions" = "Algemene voorwaarden";
 
-"Privacy Policy" = "Privacy Policy";
+"Privacy Policy" = "Privacybeleid";
 
 "Invalid token request" = "Ongeldig token verzoek";
 
@@ -222,38 +222,38 @@
 
 "Troubleshoot" = "Los probleem op";
 
-"Please choose how you want to confirm your identity." = "Please choose how you want to confirm your identity.";
+"Please choose how you want to confirm your identity." = "Kies hoe u uw identiteit wilt bevestigen.";
 
 "One-time code" = "Eenmalige code";
 
-"Security key" = "Security key";
+"Security key" = "Beveiligingssleutel";
 
-"Two-Factor Authentication" = "Two-Factor Authentication";
+"Two-Factor Authentication" = "Tweestapsverificatie";
 
-"Present a security key linked to your Proton Account." = "Present a security key linked to your Proton Account.";
+"Present a security key linked to your Proton Account." = "Vul een beveiligingssleutel in die gekoppeld is aan uw Proton Account.";
 
 "Learn more" = "Meer informatie";
 
-"Invalid state. Please quit the app and try again in a few minutes." = "Invalid state. Please quit the app and try again in a few minutes.";
+"Invalid state. Please quit the app and try again in a few minutes." = "Ongeldige staat. Sluit de app en probeer het over een paar minuten opnieuw.";
 
-"There was a problem reading your security key." = "There was a problem reading your security key.";
+"There was a problem reading your security key." = "Er was een probleem tijdens het lezen van uw beveiligingssleutel.";
 
-"We received an authorization from a type we don't support yet." = "We received an authorization from a type we don't support yet.";
+"We received an authorization from a type we don't support yet." = "We hebben een autorisatie ontvangen van een type dat we nog niet ondersteunen.";
 
-"Fetching your security keys details" = "Fetching your security keys details";
+"Fetching your security keys details" = "Ophalen details van uw beveiligingssleutels";
 
-"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys.";
+"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "U hebt nog geen beveiligingssleutels geregistreerd in uw account. Bezoek de sectie instellingen op onze website om beveiligingssleutels toe te voegen.";
 
-"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "An error occurred fetching your security keys. You can also check them on the Proton %@ website.";
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "Er is een fout opgetreden bij het ophalen van uw beveiligingssleutels. U kunt deze ook bekijken op de Proton %@ website.";
 
-"These are the security keys registered to your account" = "These are the security keys registered to your account";
+"These are the security keys registered to your account" = "Dit zijn de beveiligingssleutels die geregistreerd zijn op uw account";
 
-"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys.";
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "U hebt nog geen beveiligingssleutels geregistreerd in uw account. Gebruik de Proton %@ webapplicatie om beveiligingssleutels toe te voegen.";
 
 "Security Keys" = "Beveiligingssleutels";
 
-"To manage, add, or remove security keys, please use the Proton %@ web application." = "To manage, add, or remove security keys, please use the Proton %@ web application.";
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "Om beveiligingssleutels te beheren, toe te voegen of te verwijderen gebruikt u de Proton %@ webapplicatie.";
 
-"Unexpected FIDO2 signature." = "Unexpected FIDO2 signature.";
+"Unexpected FIDO2 signature." = "Onverwachte FIDO2 handtekening.";
 
-"We could not initiate the Secure Password update connection. Please try again." = "We could not initiate the Secure Password update connection. Please try again.";
+"We could not initiate the Secure Password update connection. Please try again." = "De verbinding met Beveiligd Wachtwoord wijzigen kon niet in gang gezet worden. Probeer het opnieuw.";

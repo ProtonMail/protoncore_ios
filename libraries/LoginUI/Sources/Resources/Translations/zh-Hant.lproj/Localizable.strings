@@ -148,7 +148,7 @@
 
 "Terms and Conditions" = "條款與細則";
 
-"Privacy Policy" = "Privacy Policy";
+"Privacy Policy" = "隱私權政策";
 
 "Skip" = "略過";
 
@@ -182,7 +182,7 @@
 
 "Terms and Conditions" = "條款與細則";
 
-"Privacy Policy" = "Privacy Policy";
+"Privacy Policy" = "隱私權政策";
 
 "Invalid token request" = "無效的權杖申請";
 
@@ -224,9 +224,9 @@
 
 "Please choose how you want to confirm your identity." = "Please choose how you want to confirm your identity.";
 
-"One-time code" = "One-time code";
+"One-time code" = "拋棄式驗證碼";
 
-"Security key" = "Security key";
+"Security key" = "安全金鑰";
 
 "Two-Factor Authentication" = "Two-Factor Authentication";
 
