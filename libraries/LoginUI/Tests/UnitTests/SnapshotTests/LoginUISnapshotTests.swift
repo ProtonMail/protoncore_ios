@@ -51,17 +51,13 @@ class LoginUISnapshotTests: SnapshotTestCase {
     }
 
     func testSignInScreenWithSSO_withNav_iPhone12() {
-        withFeatureFlags([.externalSSO]) {
-            let controller = loginViewController(for: .username, clientApp: .vpn)
-            checkSnapshots(controller: controller, device: .iPhone12, perceptualPrecision: defaultPrecision)
-        }
+        let controller = loginViewController(for: .username, clientApp: .vpn)
+        checkSnapshots(controller: controller, device: .iPhone12, perceptualPrecision: defaultPrecision)
     }
 
     func testSignInScreenWithSSO_withNav_iPadMiniLandscape() {
-        withFeatureFlags([.externalSSO]) {
-            let controller = loginViewController(for: .username, clientApp: .vpn)
-            checkSnapshots(controller: controller, device: .iPadMini(.landscape), perceptualPrecision: defaultPrecision)
-        }
+        let controller = loginViewController(for: .username, clientApp: .vpn)
+        checkSnapshots(controller: controller, device: .iPadMini(.landscape), perceptualPrecision: defaultPrecision)
     }
 
     private func createHelpViewController(inAppTheme: InAppTheme = .default) -> UIViewController {
