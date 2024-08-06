@@ -36,7 +36,7 @@
 
 "Payment failed" = "Pembayaran gagal";
 
-"You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support." = "Anda telah berhasil terdaftar namun pembayaran tidak diproses. Untuk mengirim ulang informasi pembayaran Anda, klik Coba Lagi. Anda hanya akan ditagih sekali. Jika masalah berlanjut, silakan hubungi bantuan pelanggan.";
+"You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support." = "Anda telah berhasil mendaftar, namun pembayaran Anda tidak terproses. Untuk mengirim ulang informasi pembayaran Anda, klik Coba Lagi. Anda hanya akan ditagih satu kali. Apabila masalah ini terus berlanjut, silakan hubungi layanan dukungan.";
 
 "Retry" = "Coba lagi";
 

@@ -26,7 +26,7 @@
 
 "pmsettings-settings-footer" = "Версія програми: %@";
 
-"Bug report" = "Bug report";
+"Bug report" = "Звіт про помилку";
 
 "Send report" = "Надіслати звіт";
 
@@ -36,4 +36,4 @@
 
 "Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Якнайдокладніше опишіть проблему. Якщо було повідомлення про помилку, повідомте нам, про що в ньому йшлося. Введіть щонайменше 10 символів.";
 
-"Your report was sent successfully" = "Your report was sent successfully";
+"Your report was sent successfully" = "Ваш звіт успішно надіслано";

@@ -242,13 +242,13 @@
 
 "Fetching your security keys details" = "თქვენი უაფრთხოების გასაღების დეტალების გამოთხოვა";
 
-"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys.";
+"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "თქვენ არ გაქვთ უსაფრთხოების გასაღებები მიმაგრებული თქვენს ანგარიშზე. გასაღებების დასამატებლად ეწვიეთ ჩვენი ვებგვერდის მორგების სექციას.";
 
 "An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "შეცდომა თქვენი უსაფრთხოების გასაღებების გამოთხოვისას. მათი შემოწმება Proton %@-ის ვებგვერდზეც შეგიძლიათ.";
 
 "These are the security keys registered to your account" = "თქვენს ანგარიშზე რეგისტრირებულია უსაფრთხოების გასაღებები";
 
-"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys.";
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "თქვენ არ გაქვთ უსაფრთხოების გასაღებები მიმაგრებული თქვენს ანგარიშზე. გამოიყენეთ Proton %@-ის ვებაპი უსაფრთხოების გასაღებების დასამატებლად.";
 
 "Security Keys" = "უსაფრთხოების გასაღებები";
 
