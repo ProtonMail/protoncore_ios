@@ -37,7 +37,21 @@ public extension InAppPurchasePlan {
 
     func priceLabel(from storeKitManager: StoreKitManagerProtocol) -> (value: NSDecimalNumber, locale: Locale)? {
         guard let storeKitProductId else { return nil }
+
         return storeKitManager.priceLabelForProduct(storeKitProductId: storeKitProductId)
+    }
+
+    func introductoryDiscountInfo(from storeKitManager: StoreKitManagerProtocol) -> (value: Double, locale: Locale, periods: Int)? {
+        guard let storeKitProductId else { return nil }
+        guard let discount = storeKitManager.introductoryDiscountForProduct(storeKitProductId: storeKitProductId) else {
+            return nil
+        }
+
+        return (
+            discount.price.doubleValue,
+            discount.priceLocale,
+            discount.numberOfPeriods
+        )
     }
 }
 

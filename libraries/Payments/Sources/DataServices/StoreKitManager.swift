@@ -305,6 +305,12 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
         return (product.price, product.priceLocale)
     }
 
+    public func introductoryDiscountForProduct(storeKitProductId: String) -> SKProductDiscount? {
+        guard let product = availableProducts.first(where: { $0.productIdentifier == storeKitProductId }) else { return nil }
+
+        return product.introductoryPrice
+    }
+
     /// first pending transaction which is .purchased or .restored
     public func currentTransaction() -> SKPaymentTransaction? {
         return paymentQueue.transactions.filter {
