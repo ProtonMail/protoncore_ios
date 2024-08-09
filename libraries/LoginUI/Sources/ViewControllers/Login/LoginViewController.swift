@@ -98,9 +98,8 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
     var focusNoMore: Bool = false
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
     private var webView: SSOViewController?
-    private var isSSOEnabled: Bool {
-        FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.externalSSO, reloadValue: true) &&
-            viewModel.clientApp == .vpn
+    private var isVPN: Bool {
+        viewModel.clientApp == .vpn
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
@@ -183,7 +182,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
 
         loginTextField.value = initialUsername ?? ""
 
-        signInWithSSOButton.isHidden = !isSSOEnabled
+        signInWithSSOButton.isHidden = !isVPN
         signInWithSSOButton.setTitle(viewModel.signInWithSSOButtonTitle, for: .normal)
         signInWithSSOButton.setMode(mode: .text)
         signInWithSSOButton.addTarget(self, action: #selector(signInWithSSO), for: .touchUpInside)
@@ -345,7 +344,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
             return
         }
 
-        guard (passwordTextField.isHidden == false && passwordValid) || isSSOEnabled else {
+        guard (passwordTextField.isHidden == false && passwordValid) || isVPN else {
             return
         }
 

@@ -133,220 +133,204 @@ class AuthServiceTests: XCTestCase {
     }
 
     func test_info_withAutoIntent_trackSuccessful() {
-        withFeatureFlags([.externalSSO]) {
-            // Given
-            let expectation = XCTestExpectation(description: "success with sso response expected")
-            let username = "username"
-            let expectedEvent: ObservabilityEvent = .ssoObtainChallengeToken(status: .http2xx)
-            api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-                completion(nil, .success(["SSOChallengeToken": "ssoChallengeToken"]))
-            }
-            api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-                completion(nil, .failure(BadPerformError()))
-            }
-
-            // When
-            sut.info(username: username, intent: .auto) { response in
-                XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
-                expectation.fulfill()
-            }
-
-            wait(for: [expectation], timeout: 0.1)
+        // Given
+        let expectation = XCTestExpectation(description: "success with sso response expected")
+        let username = "username"
+        let expectedEvent: ObservabilityEvent = .ssoObtainChallengeToken(status: .http2xx)
+        api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(["SSOChallengeToken": "ssoChallengeToken"]))
         }
+        api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .failure(BadPerformError()))
+        }
+
+        // When
+        sut.info(username: username, intent: .auto) { response in
+            XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 0.1)
     }
 
     func test_info_withSSOIntent_trackSuccessful() {
-        withFeatureFlags([.externalSSO]) {
-            // Given
-            let expectation = XCTestExpectation(description: "success with sso response expected")
-            let username = "username"
-            let response = SSOChallengeResponse(ssoChallengeToken: "ssoChallengeToken")
-            let expectedEvent: ObservabilityEvent = .ssoObtainChallengeToken(status: .http2xx)
-            api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-                completion(nil, .success(response))
-            }
-            api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-                completion(nil, .failure(BadPerformError()))
-            }
-
-            // When
-            sut.info(username: username, intent: .sso) { response in
-                XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
-                expectation.fulfill()
-            }
-
-            wait(for: [expectation], timeout: 0.1)
+        // Given
+        let expectation = XCTestExpectation(description: "success with sso response expected")
+        let username = "username"
+        let response = SSOChallengeResponse(ssoChallengeToken: "ssoChallengeToken")
+        let expectedEvent: ObservabilityEvent = .ssoObtainChallengeToken(status: .http2xx)
+        api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(response))
         }
+        api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .failure(BadPerformError()))
+        }
+
+        // When
+        sut.info(username: username, intent: .sso) { response in
+            XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 0.1)
     }
 
     func test_info_withSSOIntent_trackFails() {
-        withFeatureFlags([.externalSSO]) {
-            // Given
-            let expectation = XCTestExpectation(description: "success with sso response expected")
-            let username = "username"
-            let expectedEvent: ObservabilityEvent = .ssoObtainChallengeToken(status: .unknown)
-            api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-                completion(nil, .failure(.badResponse()))
-            }
-            api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-                completion(nil, .failure(BadPerformError()))
-            }
-
-            // When
-            sut.info(username: username, intent: .sso) { response in
-                XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
-                expectation.fulfill()
-            }
-
-            wait(for: [expectation], timeout: 0.1)
+        // Given
+        let expectation = XCTestExpectation(description: "success with sso response expected")
+        let username = "username"
+        let expectedEvent: ObservabilityEvent = .ssoObtainChallengeToken(status: .unknown)
+        api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .failure(.badResponse()))
         }
+        api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .failure(BadPerformError()))
+        }
+
+        // When
+        sut.info(username: username, intent: .sso) { response in
+            XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 0.1)
     }
 
     func test_info_withSSOIntent() {
-        withFeatureFlags([.externalSSO]) {
-            // Given
-            let expectation = XCTestExpectation(description: "success with sso response expected")
-            let username = "username"
-            let response = SSOChallengeResponse(ssoChallengeToken: "ssoChallengeToken")
-            api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-                completion(nil, .success(response))
-            }
-            api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-                completion(nil, .failure(BadPerformError()))
-            }
-
-            // When
-            sut.info(username: username, intent: .sso) { response in
-                switch response {
-                case .success(.right(let response)):
-                    XCTAssertEqual(response.ssoChallengeToken, "ssoChallengeToken")
-                default:
-                    XCTFail("SSOChallenge expected")
-                }
-                expectation.fulfill()
-            }
-
-            wait(for: [expectation], timeout: 0.1)
+        // Given
+        let expectation = XCTestExpectation(description: "success with sso response expected")
+        let username = "username"
+        let response = SSOChallengeResponse(ssoChallengeToken: "ssoChallengeToken")
+        api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(response))
         }
+        api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .failure(BadPerformError()))
+        }
+
+        // When
+        sut.info(username: username, intent: .sso) { response in
+            switch response {
+            case .success(.right(let response)):
+                XCTAssertEqual(response.ssoChallengeToken, "ssoChallengeToken")
+            default:
+                XCTFail("SSOChallenge expected")
+            }
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 0.1)
     }
 
     func test_info_withProtonIntent() {
-        withFeatureFlags([.externalSSO]) {
-            // Given
-            let expectation = XCTestExpectation(description: "success with sso response expected")
-            let username = "username"
-            let response = AuthInfoResponse(modulus: "modulus", serverEphemeral: "serverEphemeral", version: 1, salt: "salt", srpSession: "srpSession")
-            api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-                completion(nil, .success(response))
-            }
-
-            // When
-            sut.info(username: username, intent: .proton) { response in
-                switch response {
-                case .success(.left(let response)):
-                    XCTAssertEqual(response.modulus, "modulus")
-                    XCTAssertEqual(response.serverEphemeral, "serverEphemeral")
-                    XCTAssertEqual(response.version, 1)
-                    XCTAssertEqual(response.salt, "salt")
-                    XCTAssertEqual(response.srpSession, "srpSession")
-                default:
-                    XCTFail()
-                }
-                expectation.fulfill()
-            }
-
-            wait(for: [expectation], timeout: 0.1)
+        // Given
+        let expectation = XCTestExpectation(description: "success with sso response expected")
+        let username = "username"
+        let response = AuthInfoResponse(modulus: "modulus", serverEphemeral: "serverEphemeral", version: 1, salt: "salt", srpSession: "srpSession")
+        api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(response))
         }
+
+        // When
+        sut.info(username: username, intent: .proton) { response in
+            switch response {
+            case .success(.left(let response)):
+                XCTAssertEqual(response.modulus, "modulus")
+                XCTAssertEqual(response.serverEphemeral, "serverEphemeral")
+                XCTAssertEqual(response.version, 1)
+                XCTAssertEqual(response.salt, "salt")
+                XCTAssertEqual(response.srpSession, "srpSession")
+            default:
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 0.1)
     }
 
     func test_info_withAutoIntent_ssoExpected() {
-        withFeatureFlags([.externalSSO]) {
-            // Given
-            let expectation = XCTestExpectation(description: "success with sso response expected")
-            api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-                completion(nil, .success(["SSOChallengeToken": "ssoChallengeToken"]))
-            }
-            api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-                completion(nil, .failure(BadPerformError()))
-            }
-
-            // When
-            sut.info(username: "username", intent: .auto) { response in
-                switch response {
-                case .success(.right(let response)):
-                    XCTAssertEqual(response.ssoChallengeToken, "ssoChallengeToken")
-                default:
-                    XCTFail()
-                }
-                expectation.fulfill()
-            }
-
-            wait(for: [expectation], timeout: 0.1)
+        // Given
+        let expectation = XCTestExpectation(description: "success with sso response expected")
+        api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(["SSOChallengeToken": "ssoChallengeToken"]))
         }
+        api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .failure(BadPerformError()))
+        }
+
+        // When
+        sut.info(username: "username", intent: .auto) { response in
+            switch response {
+            case .success(.right(let response)):
+                XCTAssertEqual(response.ssoChallengeToken, "ssoChallengeToken")
+            default:
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 0.1)
     }
 
     func test_info_withAutoIntent_AuthInfoExpected() {
-        withFeatureFlags([.externalSSO]) {
-            // Given
-            let expectation = XCTestExpectation(description: "success with auth info response expected")
-            api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-                completion(nil, .success(
-                    [
-                        "Modulus": "modulus",
-                        "ServerEphemeral": "serverEphemeral",
-                        "Version": 1,
-                        "Salt": "salt",
-                        "SRPSession": "srpSession"
-                    ]
-                ))
-            }
-            api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-                completion(nil, .failure(BadPerformError()))
-            }
-
-            // When
-            sut.info(username: "username", intent: .auto) { response in
-                switch response {
-                case .success(.left(let response)):
-                    XCTAssertEqual(response.modulus, "modulus")
-                    XCTAssertEqual(response.serverEphemeral, "serverEphemeral")
-                    XCTAssertEqual(response.version, 1)
-                    XCTAssertEqual(response.salt, "salt")
-                    XCTAssertEqual(response.srpSession, "srpSession")
-                default:
-                    XCTFail()
-                }
-                expectation.fulfill()
-            }
-
-            wait(for: [expectation], timeout: 0.1)
+        // Given
+        let expectation = XCTestExpectation(description: "success with auth info response expected")
+        api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(
+                [
+                    "Modulus": "modulus",
+                    "ServerEphemeral": "serverEphemeral",
+                    "Version": 1,
+                    "Salt": "salt",
+                    "SRPSession": "srpSession"
+                ]
+            ))
         }
+        api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .failure(BadPerformError()))
+        }
+
+        // When
+        sut.info(username: "username", intent: .auto) { response in
+            switch response {
+            case .success(.left(let response)):
+                XCTAssertEqual(response.modulus, "modulus")
+                XCTAssertEqual(response.serverEphemeral, "serverEphemeral")
+                XCTAssertEqual(response.version, 1)
+                XCTAssertEqual(response.salt, "salt")
+                XCTAssertEqual(response.srpSession, "srpSession")
+            default:
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 0.1)
     }
 
     func test_info_withAutoIntent_badJSONExpectsError() {
-        withFeatureFlags([.externalSSO]) {
-            // Given
-            let expectation = XCTestExpectation(description: "failure with response error expected")
-            api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-                completion(nil, .success(["NotExpected": "not expected"]))
-            }
-            api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-                completion(nil, .failure(BadPerformError()))
-            }
-
-            // When
-            sut.info(username: "username", intent: .auto) { response in
-                switch response {
-                case .failure(let error):
-                    XCTAssertEqual(error, ResponseError(httpCode: nil, responseCode: 2002, userFacingMessage: "Response is neither SSOChallenge, nor AuthInfoResponse", underlyingError: nil))
-                default:
-                    XCTFail()
-                }
-                expectation.fulfill()
-            }
-
-            wait(for: [expectation], timeout: 0.1)
+        // Given
+        let expectation = XCTestExpectation(description: "failure with response error expected")
+        api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(["NotExpected": "not expected"]))
         }
+        api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .failure(BadPerformError()))
+        }
+
+        // When
+        sut.info(username: "username", intent: .auto) { response in
+            switch response {
+            case .failure(let error):
+                XCTAssertEqual(error, ResponseError(httpCode: nil, responseCode: 2002, userFacingMessage: "Response is neither SSOChallenge, nor AuthInfoResponse", underlyingError: nil))
+            default:
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 0.1)
     }
 
     func test_info_withoutIntent() {

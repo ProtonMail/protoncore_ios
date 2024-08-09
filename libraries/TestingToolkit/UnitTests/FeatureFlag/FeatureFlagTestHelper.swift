@@ -86,10 +86,6 @@ public extension ProtonCoreFeatureFlags.FeatureFlag {
         .init(name: "DynamicPlan", enabled: true, variant: nil)
     }
 
-    static var externalSSO: Self {
-        .init(name: "ExternalSSO", enabled: true, variant: nil)
-    }
-
     static var fidoKeys: Self {
         .init(name: "FIDO2Mobile", enabled: true, variant: nil)
     }

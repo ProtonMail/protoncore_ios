@@ -345,93 +345,87 @@ class LoginServiceTests: XCTestCase {
     }
 
     func testLoginWithSSO_isSuccessful() {
-        withFeatureFlags([.externalSSO]) {
-            let authDelegate = AuthHelper()
-            let apiService = APIServiceMock()
-            apiService.authDelegateStub.fixture = authDelegate
-            apiService.fetchAuthCredentialsStub.bodyIs { $1(.wrongConfigurationNoDelegate) }
+        let authDelegate = AuthHelper()
+        let apiService = APIServiceMock()
+        apiService.authDelegateStub.fixture = authDelegate
+        apiService.fetchAuthCredentialsStub.bodyIs { $1(.wrongConfigurationNoDelegate) }
 
-            mockSSOUserLogin()
-            apiService.requestDecodableStub.bodyIs { count, _, _, _, _, _, _, _, _, _, _, completion in
-                completion(nil, .success(SSOChallengeResponse(ssoChallengeToken: "b7953c6a26d97a8f7a673afb79e6e9ce")))
-            }
-            let expect = expectation(description: "testLoginWithSSOisSuccessful")
-            let service = LoginService(api: apiService, clientApp: .other(named: "core"), minimumAccountType: .internal)
+        mockSSOUserLogin()
+        apiService.requestDecodableStub.bodyIs { count, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(SSOChallengeResponse(ssoChallengeToken: "b7953c6a26d97a8f7a673afb79e6e9ce")))
+        }
+        let expect = expectation(description: "testLoginWithSSOisSuccessful")
+        let service = LoginService(api: apiService, clientApp: .other(named: "core"), minimumAccountType: .internal)
 
-            service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, intent: .sso, challenge: nil) { result in
-                switch result {
-                case let .success(status):
-                    switch status {
-                    case .ssoChallenge:
-                        expect.fulfill()
-                    default:
-                        XCTFail("Should receive SSO challenge")
-                    }
-                case .failure:
-                    XCTFail("Sign in should succeed")
+        service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, intent: .sso, challenge: nil) { result in
+            switch result {
+            case let .success(status):
+                switch status {
+                case .ssoChallenge:
+                    expect.fulfill()
+                default:
+                    XCTFail("Should receive SSO challenge")
                 }
+            case .failure:
+                XCTFail("Sign in should succeed")
             }
+        }
 
-            waitForExpectations(timeout: 30) { (error) in
-                XCTAssertNil(error, String(describing: error))
-            }
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssertNil(error, String(describing: error))
         }
     }
 
     func testLoginWithSSO_fails() {
-        withFeatureFlags([.externalSSO]) {
-            let authDelegate = AuthHelper()
-            let apiService = APIServiceMock()
-            apiService.authDelegateStub.fixture = authDelegate
-            apiService.fetchAuthCredentialsStub.bodyIs { $1(.wrongConfigurationNoDelegate) }
+        let authDelegate = AuthHelper()
+        let apiService = APIServiceMock()
+        apiService.authDelegateStub.fixture = authDelegate
+        apiService.fetchAuthCredentialsStub.bodyIs { $1(.wrongConfigurationNoDelegate) }
 
-            mockSSOUserLogin()
-            apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-                completion(nil, .failure(.badResponse()))
-            }
-            let expect = expectation(description: "testLoginWithSSOisSuccessful")
-            let service = LoginService(api: apiService, clientApp: .other(named: "core"), minimumAccountType: .internal)
+        mockSSOUserLogin()
+        apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .failure(.badResponse()))
+        }
+        let expect = expectation(description: "testLoginWithSSOisSuccessful")
+        let service = LoginService(api: apiService, clientApp: .other(named: "core"), minimumAccountType: .internal)
 
-            service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, intent: .sso, challenge: nil) { result in
-                switch result {
-                case .success:
-                    XCTFail("Failure expected")
-                case .failure:
-                    expect.fulfill()
-                }
+        service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, intent: .sso, challenge: nil) { result in
+            switch result {
+            case .success:
+                XCTFail("Failure expected")
+            case .failure:
+                expect.fulfill()
             }
+        }
 
-            waitForExpectations(timeout: 30) { (error) in
-                XCTAssertNil(error, String(describing: error))
-            }
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssertNil(error, String(describing: error))
         }
     }
 
     func testLoginWithSSO_fails_tracksFailure() {
-        withFeatureFlags([.externalSSO]) {
-            observabilityServiceMock = ObservabilityServiceMock()
-            ObservabilityEnv.current.observabilityService = observabilityServiceMock
-            let authDelegate = AuthHelper()
-            let apiService = APIServiceMock()
-            apiService.authDelegateStub.fixture = authDelegate
-            apiService.fetchAuthCredentialsStub.bodyIs { $1(.wrongConfigurationNoDelegate) }
-            let expectedEvent: ObservabilityEvent = .ssoObtainChallengeToken(status: .ssoDomainNotFound)
+        observabilityServiceMock = ObservabilityServiceMock()
+        ObservabilityEnv.current.observabilityService = observabilityServiceMock
+        let authDelegate = AuthHelper()
+        let apiService = APIServiceMock()
+        apiService.authDelegateStub.fixture = authDelegate
+        apiService.fetchAuthCredentialsStub.bodyIs { $1(.wrongConfigurationNoDelegate) }
+        let expectedEvent: ObservabilityEvent = .ssoObtainChallengeToken(status: .ssoDomainNotFound)
 
-            mockSSOUserLogin()
-            apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-                completion(nil, .failure(ResponseError(httpCode: 422, responseCode: 8101, userFacingMessage: "Email domain not found, please sign in with a password", underlyingError: nil) as NSError))
-            }
-            let expect = expectation(description: "testLoginWithSSOisSuccessful")
-            let service = LoginService(api: apiService, clientApp: .other(named: "core"), minimumAccountType: .internal)
+        mockSSOUserLogin()
+        apiService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .failure(ResponseError(httpCode: 422, responseCode: 8101, userFacingMessage: "Email domain not found, please sign in with a password", underlyingError: nil) as NSError))
+        }
+        let expect = expectation(description: "testLoginWithSSOisSuccessful")
+        let service = LoginService(api: apiService, clientApp: .other(named: "core"), minimumAccountType: .internal)
 
-            service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, intent: .sso, challenge: nil) { _ in
-                XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
-                expect.fulfill()
-            }
+        service.login(username: LoginTestUser.defaultUser.username, password: LoginTestUser.defaultUser.password, intent: .sso, challenge: nil) { _ in
+            XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
+            expect.fulfill()
+        }
 
-            waitForExpectations(timeout: 30) { (error) in
-                XCTAssertNil(error, String(describing: error))
-            }
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssertNil(error, String(describing: error))
         }
     }
 
