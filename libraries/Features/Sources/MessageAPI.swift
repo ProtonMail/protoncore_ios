@@ -39,46 +39,47 @@ final class SendResponse: Response {
 }
 
 /// send message reuqest -- SendResponse
-final class SendCalEvent: Request {
-    var messagePackage: [AddressPackageBase]  // message package
-    var body: String
-    var bodyData: String
+public final class SendCalEvent: Request {
+    public var messagePackage: [AddressPackageBase]  // message package
+    public var body: String
+    public var bodyData: String
     // let messageID: String
-    let expirationTime: Int32
+    public let expirationTime: Int32
 
     //// new
-    let subject: String
-    let senderName: String
-    let senderAddr: String
-    let recipients: [String]
-    let atts: [AttachmentContent]
+    public let subject: String
+    public let senderName: String
+    public let senderAddr: String
+    public let recipients: [String]
+    public let atts: [AttachmentContent]
 
     ///
-    var clearBody: ClearBodyPackage?
-    var clearAtts: [ClearAttachmentPackage]?
+    public var clearBody: ClearBodyPackage?
+    public var clearAtts: [ClearAttachmentPackage]?
 
-    var mimeDataPacket: String
-    var clearMimeBody: ClearBodyPackage?
+    public var mimeDataPacket: String
+    public var clearMimeBody: ClearBodyPackage?
 
-    var plainTextDataPacket: String
-    var clearPlainTextBody: ClearBodyPackage?
+    public var plainTextDataPacket: String
+    public var clearPlainTextBody: ClearBodyPackage?
 
-    init(subject: String,
-         body: String,
-         bodyData: String,
-         senderName: String,
-         senderAddr: String,
-         recipients: [String],
-         atts: [AttachmentContent],
-
-         messagePackage: [AddressPackageBase],
-         clearBody: ClearBodyPackage?,
-         clearAtts: [ClearAttachmentPackage]?,
-         mimeDataPacket: String,
-         clearMimeBody: ClearBodyPackage?,
-         plainTextDataPacket: String,
-         clearPlainTextBody: ClearBodyPackage?,
-         authCredential: AuthCredential? = nil) {
+    public init(
+        subject: String,
+        body: String,
+        bodyData: String,
+        senderName: String,
+        senderAddr: String,
+        recipients: [String],
+        atts: [AttachmentContent],
+        messagePackage: [AddressPackageBase],
+        clearBody: ClearBodyPackage?,
+        clearAtts: [ClearAttachmentPackage]?,
+        mimeDataPacket: String,
+        clearMimeBody: ClearBodyPackage?,
+        plainTextDataPacket: String,
+        clearPlainTextBody: ClearBodyPackage?,
+        authCredential: AuthCredential? = nil
+    ) {
         self.subject = subject
         self.body = body
         self.senderName = senderName
@@ -86,27 +87,23 @@ final class SendCalEvent: Request {
         self.recipients = recipients
         self.atts = atts
         self.bodyData = bodyData
-
         self.messagePackage = messagePackage
         self.expirationTime = 0
         self.clearBody = clearBody
         self.clearAtts = clearAtts
-
         self.mimeDataPacket = mimeDataPacket
         self.clearMimeBody = clearMimeBody
-
         self.plainTextDataPacket = plainTextDataPacket
         self.clearPlainTextBody = clearPlainTextBody
-
         self.auth = authCredential
     }
 
-    let auth: AuthCredential?
-    var authCredential: AuthCredential? {
+    public let auth: AuthCredential?
+    public var authCredential: AuthCredential? {
         return self.auth
     }
 
-    var parameters: [String: Any]? {
+    public var parameters: [String: Any]? {
         var out: [String: Any] = [String: Any]()
 
         /// messages
@@ -274,11 +271,11 @@ final class SendCalEvent: Request {
         return out
     }
 
-    var path: String {
+    public var path: String {
         return MessageAPI.path + "/send/direct"
     }
 
-    var method: HTTPMethod {
+    public var method: HTTPMethod {
         return .post
     }
 }
