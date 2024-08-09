@@ -206,8 +206,7 @@ public class PasswordChangeService {
                                                 srpSession: authInfo.srpSession)
 
         let request = UnlockPasswordEndpoint(authData: authEndpointData, signature: signature)
-        try await apiService.perform(request: request)
-
+        _ = try await apiService.perform(request: request)
     }
 
     private func generateLocalKeys(

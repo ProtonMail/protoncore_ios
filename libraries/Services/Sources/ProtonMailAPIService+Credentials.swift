@@ -222,7 +222,7 @@ extension PMAPIService {
                                                        sessionType: .from(credentialsCausing401),
                                                        error: .unauthSessionInvalidatedAndRefetched)
 
-            PMLog.signpost("Unauthenticated session invalidated in \(#function) due to \(responseError.httpCode) (\(responseError.responseCode ?? 0))")
+            PMLog.signpost("Unauthenticated session invalidated in \(#function) due to \(String(describing: responseError.httpCode)) (\(responseError.responseCode ?? 0))")
             authDelegate?.onUnauthenticatedSessionInvalidated(sessionUID: sessionUID)
 
             self.acquireSessionWithoutSynchronization(deviceFingerprints: deviceFingerprints, continuation: continuation) { (result: SessionAcquisitionResult) in
@@ -247,7 +247,7 @@ extension PMAPIService {
 
             reportRefreshFailure(authenticated: !credentialsCausing401.isForUnauthenticatedSession)
 
-            PMLog.signpost("Authenticated session invalidated in \(#function) due to \(responseError.httpCode) (\(responseError.responseCode ?? 0))")
+            PMLog.signpost("Authenticated session invalidated in \(#function) due to \(String(describing: responseError.httpCode)) (\(responseError.responseCode ?? 0))")
             authDelegate?.onAuthenticatedSessionInvalidated(sessionUID: sessionUID)
 
             continuation()
@@ -304,7 +304,7 @@ extension PMAPIService {
             loggingDelegate?.accessTokenRefreshDidFail(for: sessionUID,
                                                        sessionType: .from(credentialsCausing401),
                                                        error: .legacyRefreshFailedWithLogout)
-            PMLog.signpost("Authenticated session invalidated in \(#function) due to \(responseError.httpCode) (\(responseError.responseCode ?? 0))")
+            PMLog.signpost("Authenticated session invalidated in \(#function) due to \(String(describing: responseError.httpCode)) (\(responseError.responseCode ?? 0))")
             authDelegate?.onAuthenticatedSessionInvalidated(sessionUID: sessionUID)
             continuation()
             completion(.logout(underlyingError: responseError))

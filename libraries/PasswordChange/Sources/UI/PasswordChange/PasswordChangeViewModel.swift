@@ -295,8 +295,10 @@ extension PasswordChangeView {
 }
 
 extension PasswordChangeView.ViewModel: TwoFAProviderDelegate {
-    public func userDidGoBack() {
-        dismissView()
+    nonisolated public func userDidGoBack() {
+        Task { @MainActor in
+            dismissView()
+        }
     }
 
     public func providerDidObtain(factor: String) async throws {
@@ -307,10 +309,9 @@ extension PasswordChangeView.ViewModel: TwoFAProviderDelegate {
         try await updatePasswordWith(twoFAParams: .fido2(factor))
     }
 
+    @MainActor
     private func updatePasswordWith(twoFAParams: TwoFAParams) async throws {
-        await MainActor.run {
-            PasswordChangeModule.initialViewController?.navigationController?.popViewController(animated: true)
-        }
+        _ = PasswordChangeModule.initialViewController?.navigationController?.popViewController(animated: true)
         guard let authInfo else {
             PMLog.error("Attempted to change password without authInfo.")
             throw UpdatePasswordError.missingAuthInfo

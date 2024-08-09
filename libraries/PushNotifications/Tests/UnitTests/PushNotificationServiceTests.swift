@@ -103,7 +103,7 @@ final class PushNotificationServiceTests: XCTestCase {
 class FakeNotificationCenter: NotificationCenterProtocol {
     var isAuthorizationRequestSuccesful: Bool
     var authorizationRequestError: Error?
-    private (set) var didRequestAuthorization = false
+    private(set) var didRequestAuthorization = false
 
     public func requestAuthorization(options: UNAuthorizationOptions, completionHandler: @escaping (Bool, Error?) -> Void) {
         didRequestAuthorization = true
