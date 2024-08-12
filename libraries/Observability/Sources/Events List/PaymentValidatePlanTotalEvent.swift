@@ -33,7 +33,7 @@ public struct PaymentValidatePlanTotalLabels: Encodable, Equatable {
 extension ObservabilityEvent where Payload == PayloadWithLabels<PaymentValidatePlanTotalLabels> {
     private enum Constants {
           static let staticEventName = "ios_core_checkout_aiapBilling_validatePlan_total"
-          static let dynamicEventName = "ios_core_checkout_dynamicPlan_aiapBilling_validatePlan_total"
+          static let dynamicEventName = "ios_core_checkout_dynamicPlans_aiapBilling_validatePlan_total"
       }
 
     public static func paymentValidatePlanTotal(status: HTTPResponseCodeStatus, isDynamic: Bool = false) -> Self {
