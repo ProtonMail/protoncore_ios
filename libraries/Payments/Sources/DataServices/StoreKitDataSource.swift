@@ -27,38 +27,15 @@ import StoreKit
 public protocol StoreKitDataSourceProtocol {
     var availableProducts: [SKProduct] { get }
     var unavailableProductsIdentifiers: [String] { get }
-
     func fetchAvailableProducts(availablePlans: AvailablePlans) async throws
     func fetchAvailableProducts(productIdentifiers: Set<String>) async throws
-
     func filterAccordingToAvailableProducts(availablePlans: AvailablePlans) -> AvailablePlans
 }
 
-final class StoreKitDataSource: NSObject, StoreKitDataSourceProtocol {
-
-    private(set) var availableProducts: [SKProduct] = []
-    private(set) var unavailableProductsIdentifiers: [String] = []
-
-    private var request: SKProductsRequest?
-    private let requestFactory: (Set<String>) -> SKProductsRequest
-    var requestContinuation: CheckedContinuation<Void, Error>?
-
-    init(requestFactory: @escaping (Set<String>) -> SKProductsRequest = { .init(productIdentifiers: $0) }) {
-        self.requestFactory = requestFactory
-    }
-
+extension StoreKitDataSourceProtocol {
     func fetchAvailableProducts(availablePlans: AvailablePlans) async throws {
         let planVendorIdentifiers = availablePlans.plans.flatMap(\.instances).compactMap(\.vendors).map(\.apple.productID)
         try await fetchAvailableProducts(productIdentifiers: Set(planVendorIdentifiers))
-    }
-
-    func fetchAvailableProducts(productIdentifiers: Set<String>) async throws {
-        try await withCheckedThrowingContinuation { continuation in
-            requestContinuation = continuation
-            request = requestFactory(productIdentifiers)
-            request?.delegate = self
-            request?.start()
-        }
     }
 
     func filterAccordingToAvailableProducts(availablePlans originalPlans: AvailablePlans) -> AvailablePlans {
@@ -85,27 +62,80 @@ final class StoreKitDataSource: NSObject, StoreKitDataSourceProtocol {
     }
 }
 
-extension StoreKitDataSource: SKProductsRequestDelegate {
+final class StoreKitDataSource: StoreKitDataSourceProtocol {
+    private(set) var availableProducts: [SKProduct] = []
+    private(set) var unavailableProductsIdentifiers: [String] = []
 
-    public func productsRequest(_: SKProductsRequest, didReceive response: SKProductsResponse) {
-        if !response.invalidProductIdentifiers.isEmpty {
-            PMLog.debug("Some IAP identifiers are reported as invalid by the AppStore: \(response.invalidProductIdentifiers)")
+    private let requestFactory: (Set<String>) -> SKProductsRequest
+
+    final class RequestDelegate: NSObject, SKProductsRequestDelegate {
+        typealias ResultClosure = (Result<SKProductsResponse, Error>) -> ()
+
+        static var outstandingRequests: [UUID: RequestDelegate] = [:]
+        static let queue = DispatchQueue(label: "StoreKitDataSourceRequests")
+
+        let id = UUID()
+        private let request: SKProductsRequest
+        private let closure: ResultClosure
+
+        init(request: SKProductsRequest, closure: @escaping ResultClosure) {
+            self.request = request
+            self.closure = closure
+
+            super.init()
+
+            Self.queue.sync {
+                Self.outstandingRequests[id] = self
+            }
+
+            request.delegate = self
         }
-        unavailableProductsIdentifiers = response.invalidProductIdentifiers
-        availableProducts = response.products
-        request = nil
-        ObservabilityEnv.report(.paymentQuerySubscriptionsTotal(status: .successful, isDynamic: true))
 
-        requestContinuation?.resume(returning: ())
-        requestContinuation = nil
+        func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+            closure(.success(response))
+
+            Self.queue.async { [unowned self] in
+                Self.outstandingRequests.removeValue(forKey: self.id)
+            }
+        }
+
+        func request(_ request: SKRequest, didFailWithError error: any Error) {
+            closure(.failure(error))
+
+            Self.queue.async { [unowned self] in
+                Self.outstandingRequests.removeValue(forKey: self.id)
+            }
+        }
+
+        func resume() {
+            request.start()
+        }
     }
 
-    func request(_: SKRequest, didFailWithError error: Error) {
-        PMLog.error("SKProduct fetch failed with error \(error)", sendToExternal: true)
-        request = nil
-        ObservabilityEnv.report(.paymentQuerySubscriptionsTotal(status: .failed, isDynamic: false))
+    init(requestFactory: @escaping (Set<String>) -> SKProductsRequest = { .init(productIdentifiers: $0) }) {
+        self.requestFactory = requestFactory
+    }
 
-        requestContinuation?.resume(throwing: error)
-        requestContinuation = nil
+    func fetchAvailableProducts(productIdentifiers: Set<String>) async throws {
+        let skRequest = requestFactory(productIdentifiers)
+        return try await withCheckedThrowingContinuation { continuation in
+            let delegate = RequestDelegate(request: skRequest) { [weak self] result in
+                switch result {
+                case .success(let response):
+                    if !response.invalidProductIdentifiers.isEmpty {
+                        PMLog.debug("Some IAP identifiers are reported as invalid by the AppStore: \(response.invalidProductIdentifiers)")
+                    }
+                    self?.unavailableProductsIdentifiers = response.invalidProductIdentifiers
+                    self?.availableProducts = response.products
+                    ObservabilityEnv.report(.paymentQuerySubscriptionsTotal(status: .successful, isDynamic: true))
+                    continuation.resume()
+                case .failure(let error):
+                    PMLog.error("SKProduct fetch failed with error \(error)", sendToExternal: true)
+                    ObservabilityEnv.report(.paymentQuerySubscriptionsTotal(status: .failed, isDynamic: false))
+                    continuation.resume(throwing: error)
+                }
+            }
+            delegate.resume()
+        }
     }
 }
