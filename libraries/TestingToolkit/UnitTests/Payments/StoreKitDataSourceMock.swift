@@ -24,7 +24,7 @@ import StoreKit
 #if canImport(ProtonCoreTestingToolkitUnitTestsCore)
 import ProtonCoreTestingToolkitUnitTestsCore
 #endif
-import ProtonCorePayments
+@testable import ProtonCorePayments
 
 public final class StoreKitDataSourceMock: NSObject, StoreKitDataSourceProtocol {
 
