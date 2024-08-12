@@ -27,8 +27,9 @@ import StoreKit
 public protocol StoreKitDataSourceProtocol {
     var availableProducts: [SKProduct] { get }
     var unavailableProductsIdentifiers: [String] { get }
-
+    func fetchAvailableProducts(availablePlans: AvailablePlans) async throws
     func fetchAvailableProducts(productIdentifiers: Set<String>) async throws
+    func filterAccordingToAvailableProducts(availablePlans: AvailablePlans) -> AvailablePlans
 }
 
 extension StoreKitDataSourceProtocol {
