@@ -60,7 +60,7 @@ final class AttachmentPackage {
 }
 
 // message attachment key package for clear text
-final class ClearAttachmentPackage {
+public final class ClearAttachmentPackage {
     /// attachment id
     let ID: String
     /// based64 encoded session key
@@ -74,11 +74,11 @@ final class ClearAttachmentPackage {
 }
 
 // message attachment key package for clear text
-final class ClearBodyPackage {
+public final class ClearBodyPackage {
     /// based64 encoded session key
-    let key: String
-    let algo: String // default is "aes256"
-    init(key: String, algo: String) {
+    public let key: String
+    public let algo: String // default is "aes256"
+    public init(key: String, algo: String) {
         self.key = key
         self.algo = algo
     }
@@ -183,21 +183,21 @@ class MimeAddressPackage: AddressPackageBase {
     }
 }
 
-class AddressPackageBase: Package {
+public class AddressPackageBase: Package {
 
-    let type: SendType!
-    let sign: Int! // 0 or 1
-    let email: String
-    let plainText: Bool
+    public let type: SendType!
+    public let sign: Int! // 0 or 1
+    public let email: String
+    public let plainText: Bool
 
-    init(email: String, type: SendType, sign: Int, plainText: Bool) {
+    public init(email: String, type: SendType, sign: Int, plainText: Bool) {
         self.type = type
         self.sign = sign
         self.email = email
         self.plainText = plainText
     }
 
-    var parameters: [String: Any]? {
+    public var parameters: [String: Any]? {
         var out: [String: Any] = [
             "Type": type.rawValue
         ]
