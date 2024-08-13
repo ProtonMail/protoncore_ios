@@ -26,7 +26,7 @@
 
 "pmsettings-settings-footer" = "App versie: %@";
 
-"Bug report" = "Bug report";
+"Bug report" = "Bugrapport";
 
 "Send report" = "Rapport verzenden";
 
@@ -34,6 +34,6 @@
 
 "What went wrong" = "Wat is er misgegaan";
 
-"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters.";
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Beschrijf het probleem zo gedetailleerd mogelijk. Als er een foutmelding was, laat ons dan weten wat er stond. Minimaal 10 karakters.";
 
-"Your report was sent successfully" = "Your report was sent successfully";
+"Your report was sent successfully" = "Uw rapport is succesvol verzonden.";
