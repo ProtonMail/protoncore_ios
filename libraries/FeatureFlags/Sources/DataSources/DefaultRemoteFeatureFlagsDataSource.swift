@@ -21,8 +21,9 @@
 //
 
 import ProtonCoreNetworking
-import ProtonCoreServices
-import ProtonCoreUtilities
+import Foundation
+@preconcurrency import ProtonCoreServices
+@preconcurrency import ProtonCoreUtilities
 
 struct FeatureFlagRequest: Request {
     var path: String {
@@ -44,10 +45,10 @@ struct FeatureFlagResponse: Decodable {
     }
 }
 
-public class DefaultRemoteFeatureFlagsDataSource: RemoteFeatureFlagsDataSourceProtocol {
-    public let apiService: APIService
-
-    init(apiService: APIService) {
+public struct DefaultRemoteFeatureFlagsDataSource: RemoteFeatureFlagsDataSourceProtocol {
+    public let apiService: any APIService
+    
+    init(apiService: any APIService) {
         self.apiService = apiService
     }
 
@@ -59,18 +60,18 @@ public class DefaultRemoteFeatureFlagsDataSource: RemoteFeatureFlagsDataSourcePr
     }
 }
 
-public enum FeatureFlagsEnvironment {
-    public static var networkCompletionExecutor: CompletionBlockExecutor = .asyncMainExecutor
+public struct FeatureFlagsEnvironment: Sendable {
+    public var networkCompletionExecutor: CompletionBlockExecutor = .asyncMainExecutor
 }
 
 private extension APIService {
     /// Async variant that can take an `Endpoint`
-    func exec<T: Decodable>(endpoint: Request) async throws -> T {
+    func exec<T: Decodable>(endpoint: any Request,
+                            networkCompletionExecutor: CompletionBlockExecutor = .asyncMainExecutor) async throws -> T {
         try await withCheckedThrowingContinuation { continuation in
-            perform(
-                request: endpoint,
-                callCompletionBlockUsing: FeatureFlagsEnvironment.networkCompletionExecutor
-            ) { _, result in
+            perform(request: endpoint, 
+                    callCompletionBlockUsing: networkCompletionExecutor,
+                    onDataTaskCreated: { _ in }) { _, result in
                 continuation.resume(with: result)
             }
         }

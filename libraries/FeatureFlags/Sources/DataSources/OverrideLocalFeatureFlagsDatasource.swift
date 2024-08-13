@@ -20,7 +20,9 @@ import Foundation
 import ProtonCoreUtilities
 import ProtonCoreLog
 
-public class OverrideLocalFeatureFlagsDatasource: OverrideFeatureFlagDataSourceProtocol {
+extension UserDefaults : @unchecked Sendable {}
+
+public final class OverrideLocalFeatureFlagsDatasource: OverrideFeatureFlagDataSourceProtocol {
     private let serialAccessQueue = DispatchQueue(label: "ch.proton.featureflags_queue")
 
     static let overrideFeatureFlagsKey = "protoncore.overrideFeatureflag"

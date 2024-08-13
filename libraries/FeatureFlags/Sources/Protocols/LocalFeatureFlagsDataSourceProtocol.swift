@@ -22,11 +22,11 @@
 
 import Foundation
 
-public protocol BaseFeatureFlagsDatasourceProtocol {
+public protocol BaseFeatureFlagsDatasourceProtocol: Sendable {
     func cleanAllFlags()
 }
 
-public protocol LocalFeatureFlagsDataSourceProtocol: BaseFeatureFlagsDatasourceProtocol {
+public protocol LocalFeatureFlagsDataSourceProtocol: BaseFeatureFlagsDatasourceProtocol, Sendable {
     func getFeatureFlags(userId: String, reloadFromLocalDataSource: Bool) -> FeatureFlags?
     func upsertFlags(_ flags: FeatureFlags, userId: String)
     func cleanFlags(for userId: String)

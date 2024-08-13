@@ -22,22 +22,53 @@
 
 import ProtonCoreLog
 import ProtonCoreServices
-import ProtonCoreUtilities
+@preconcurrency import ProtonCoreUtilities
+import Foundation
 
 /**
  The FeatureFlagsRepository class is responsible for managing feature flags and their state.
  It conforms to the FeatureFlagsRepositoryProtocol.
  */
-public class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol {
-
-    /// The local data source for feature flags.
-    private(set) var localDataSource: Atomic<LocalFeatureFlagsDataSourceProtocol>
+public final class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol, @unchecked Sendable {
+  /// The local data source for feature flags.
+    private var _localDataSource: Atomic<any LocalFeatureFlagsDataSourceProtocol>
+    
+    /// The remote data source for feature flags.
+    private var _remoteDataSource: Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?>
 
     /// The local data source for overridden feature flags.
-    internal var overrideLocalDataSource = Atomic<OverrideFeatureFlagDataSourceProtocol>(OverrideLocalFeatureFlagsDatasource())
+    private let overrideLocalDataSource: Atomic<any OverrideFeatureFlagDataSourceProtocol>
 
+    //If we notice a explosion of threads using concurrent queue we should move to a serial queue
+    private let queue = DispatchQueue(label: "ch.proton.featureflagsrepository_queue", attributes: .concurrent)
+
+    /// The local data source for feature flags.
+    var localDataSource: Atomic<any LocalFeatureFlagsDataSourceProtocol> {
+        get {
+            return queue.sync {
+                _localDataSource
+            }
+        }
+        set {
+            queue.async(flags: .barrier) { [weak self] in
+                self?._localDataSource = newValue
+            }
+        }
+    }
+    
     /// The remote data source for feature flags.
-    private(set) var remoteDataSource: Atomic<RemoteFeatureFlagsDataSourceProtocol?>
+    var remoteDataSource: Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?> {
+        get {
+            return queue.sync {
+                _remoteDataSource
+            }
+        }
+        set {
+            queue.async(flags: .barrier) { [weak self] in
+                self?._remoteDataSource = newValue
+            }
+        }
+    }
 
     /// The configuration for feature flags.
     private(set) var userId: String {
@@ -52,9 +83,9 @@ public class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol {
 
     private var _userId: String?
 
-    public internal(set) static var shared: FeatureFlagsRepository = .init(
-        localDataSource: Atomic<LocalFeatureFlagsDataSourceProtocol>(DefaultLocalFeatureFlagsDatasource()),
-        remoteDataSource: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(nil)
+    public static let shared: FeatureFlagsRepository = .init(
+        localDataSource: Atomic<any LocalFeatureFlagsDataSourceProtocol>(DefaultLocalFeatureFlagsDatasource()),
+        remoteDataSource: Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?>(nil)
     )
 
     /**
@@ -64,15 +95,18 @@ public class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol {
      - localDataSource: The local data source for feature flags.
      - remoteDataSource: The remote data source for feature flags.
      */
-    init(localDataSource: Atomic<LocalFeatureFlagsDataSourceProtocol>,
-         remoteDataSource: Atomic<RemoteFeatureFlagsDataSourceProtocol?>) {
-        self.localDataSource = localDataSource
-        self.remoteDataSource = remoteDataSource
+    init(localDataSource: Atomic<any LocalFeatureFlagsDataSourceProtocol>,
+         remoteDataSource: Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?>,
+         overrideLocalDataSource: Atomic<any OverrideFeatureFlagDataSourceProtocol> = Atomic<any OverrideFeatureFlagDataSourceProtocol>(OverrideLocalFeatureFlagsDatasource())
+    ) {
+        self._localDataSource = localDataSource
+        self._remoteDataSource = remoteDataSource
+        self.overrideLocalDataSource = overrideLocalDataSource
         self._userId = localDataSource.value.userIdForActiveSession
     }
 
     // Internal func for testing
-    func updateRemoteDataSource(with remoteDataSource: Atomic<RemoteFeatureFlagsDataSourceProtocol?>) {
+    func updateRemoteDataSource(with remoteDataSource: Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?>) {
         self.remoteDataSource = remoteDataSource
     }
 }
@@ -84,7 +118,7 @@ public extension FeatureFlagsRepository {
     /**
      Updates the local data source conforming to the `LocalFeatureFlagsProtocol` protocol
      */
-    func updateLocalDataSource(_ localDataSource: Atomic<LocalFeatureFlagsDataSourceProtocol>) {
+    func updateLocalDataSource(_ localDataSource: Atomic<any LocalFeatureFlagsDataSourceProtocol>) {
         self.localDataSource = localDataSource
     }
 
@@ -104,8 +138,8 @@ public extension FeatureFlagsRepository {
      - Parameters:
      - apiService: The api service used to initialize the remote data source for feature flags.
      */
-    func setApiService(_ apiService: APIService) {
-        self.remoteDataSource = Atomic<RemoteFeatureFlagsDataSourceProtocol?>(DefaultRemoteFeatureFlagsDataSource(apiService: apiService))
+    func setApiService(_ apiService: any APIService) {
+       remoteDataSource = Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?>(DefaultRemoteFeatureFlagsDataSource(apiService: apiService))
     }
 
     /**

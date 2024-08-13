@@ -67,7 +67,7 @@ public enum FeatureFlagVariantPayloadValue: Codable, Equatable, Hashable, Sendab
     case string(String)
     case nonDecodable
 
-    public init(from decoder: Decoder) throws {
+    public init(from decoder: any Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let value = try? container.decode(String.self) {
             self = .string(value)
@@ -80,7 +80,7 @@ public enum FeatureFlagVariantPayloadValue: Codable, Equatable, Hashable, Sendab
                                                                debugDescription: "Wrong type for MyValue"))
     }
 
-    public func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: any Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
         case let .string(value):
