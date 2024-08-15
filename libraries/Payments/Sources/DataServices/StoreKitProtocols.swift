@@ -76,6 +76,7 @@ public protocol StoreKitManagerProtocol: NSObjectProtocol {
     func stopBeingNotifiedWhenTransactionsWaitingForTheSignupAppear()
     func currentTransaction() -> SKPaymentTransaction?
     func priceLabelForProduct(storeKitProductId: String) -> (NSDecimalNumber, Locale)?
+    func introductoryDiscountForProduct(storeKitProductId: String) -> SKProductDiscount?
     var inAppPurchaseIdentifiers: ListOfIAPIdentifiers { get }
     var delegate: StoreKitManagerDelegate? { get set }
     var reportBugAlertHandler: BugAlertHandler { get }

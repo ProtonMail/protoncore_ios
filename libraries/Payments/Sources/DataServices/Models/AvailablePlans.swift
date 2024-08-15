@@ -27,6 +27,25 @@ import Foundation
 public struct AvailablePlans: Decodable, Equatable {
     public var plans: [AvailablePlan]
     public var defaultCycle: Int?
+    public var displayLists: PlanDisplayLists?
+
+    public struct PlanDisplayLists: Decodable, Equatable {
+        /// A list of regular expressions that filters out plans we don't want the user to see.
+        ///
+        /// By default, all plans are displayed to the user. But if a plan identifier matches one of the regular
+        /// expressions in this list, it won't be shown for display through the default payment flow. An app can decide
+        /// to show this product anyway at some other time, for example when displaying a temporary product offering.
+        public let excludeList: [String]?
+
+        /// A list of regular expressions that allows plans normally excluded by the exclude list.
+        ///
+        /// By default, all plans are displayed to the user. But if a plan identifier matches one of the regular
+        /// expressions in the exclude list, it won't be shown for display through the default payment flow.
+        /// If, however, the identifier matches one of the regular expressions in the allow list, it will again be
+        /// eligible for display in the default payment flow.
+
+        public let allowList: [String]?
+    }
 
     public struct AvailablePlan: Decodable, Equatable {
         public var ID: String?

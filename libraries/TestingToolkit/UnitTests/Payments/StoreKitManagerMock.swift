@@ -96,6 +96,11 @@ public final class StoreKitManagerMock: NSObject, StoreKitManagerProtocol {
 
     @PropertyStub(\StoreKitManagerProtocol.canExtendSubscription, initialGet: false) public var canExtendSubscriptionStub
     public var canExtendSubscription: Bool { return canExtendSubscriptionStub() }
+    
+    @FuncStub(StoreKitManagerProtocol.introductoryDiscountForProduct, initialReturn: nil) public var introductoryDiscountForProductStub
+    public func introductoryDiscountForProduct(storeKitProductId: String) -> SKProductDiscount? {
+        introductoryDiscountForProductStub(storeKitProductId)
+    }
 }
 
 public final class StoreKitManagerDelegateMock: StoreKitManagerDelegate {

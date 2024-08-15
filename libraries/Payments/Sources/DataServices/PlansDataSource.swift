@@ -47,6 +47,7 @@ public protocol PlansDataSourceProtocol {
     func fetchCurrentPlan() async throws
     func fetchPaymentMethods() async throws
     func createIconURL(iconName: String) -> URL?
+    func shouldDisplayPlanInstance(_ plan: AvailablePlans.AvailablePlan.Instance) -> Bool
 
     func detailsOfAvailablePlanCorrespondingToIAP(_ iap: InAppPurchasePlan) -> AvailablePlans.AvailablePlan?
     func detailsOfAvailablePlanInstanceCorrespondingToIAP(_ iap: InAppPurchasePlan) -> AvailablePlans.AvailablePlan.Instance?
@@ -67,6 +68,10 @@ class PlansDataSource: PlansDataSourceProtocol {
     }
 
     var availablePlans: AvailablePlans?
+
+    private var excludeRegexes: [NSRegularExpression]?
+    private var includeRegexes: [NSRegularExpression]?
+
     var currentPlan: CurrentPlan?
     var paymentMethods: [PaymentMethod]?
     var lastFetchedProducts: [SKProduct] {
@@ -124,6 +129,27 @@ class PlansDataSource: PlansDataSourceProtocol {
 
         try await storeKitDataSource.fetchAvailableProducts(availablePlans: backendAvailablePlans)
         availablePlans = storeKitDataSource.filterAccordingToAvailableProducts(availablePlans: backendAvailablePlans)
+
+        let displayLists = backendAvailablePlans.displayLists
+        includeRegexes = displayLists?.allowList?.compactMap {
+            try? NSRegularExpression(pattern: $0)
+        }
+        excludeRegexes = displayLists?.excludeList?.compactMap {
+            try? NSRegularExpression(pattern: $0)
+        }
+    }
+
+    func shouldDisplayPlanInstance(_ instance: AvailablePlans.AvailablePlan.Instance) -> Bool {
+        guard let productId = instance.vendors?.apple.productID, !productId.contains("hidden") else { return false }
+
+        guard excludeRegexes?.first(where: { $0.matches(productId) }) == nil else {
+            guard includeRegexes?.first(where: { $0.matches(productId) }) != nil else {
+                return false
+            }
+            return true
+        }
+
+        return true
     }
 
     func fetchCurrentPlan() async throws {
@@ -177,5 +203,11 @@ class PlansDataSource: PlansDataSourceProtocol {
             return true
         }
         return !paymentMethods.isEmpty
+    }
+}
+
+fileprivate extension NSRegularExpression {
+    func matches(_ string: String) -> Bool {
+        return firstMatch(in: string, range: NSRange(0..<string.count)) != nil
     }
 }
