@@ -42,8 +42,7 @@ public extension InAppPurchasePlan {
     }
 
     func introductoryDiscountInfo(from storeKitManager: StoreKitManagerProtocol) -> (value: Double, locale: Locale, periods: Int)? {
-        guard let storeKitProductId else { return nil }
-        guard let discount = storeKitManager.introductoryDiscountForProduct(storeKitProductId: storeKitProductId) else {
+        guard let storeKitProductId, let discount = storeKitManager.introductoryDiscountForProduct(storeKitProductId: storeKitProductId) else {
             return nil
         }
 

@@ -69,8 +69,8 @@ class PlansDataSource: PlansDataSourceProtocol {
 
     var availablePlans: AvailablePlans?
 
-    var excludeRegexes: [NSRegularExpression]?
-    var includeRegexes: [NSRegularExpression]?
+    private var excludeRegexes: [NSRegularExpression]?
+    private var includeRegexes: [NSRegularExpression]?
 
     var currentPlan: CurrentPlan?
     var paymentMethods: [PaymentMethod]?
@@ -140,9 +140,7 @@ class PlansDataSource: PlansDataSourceProtocol {
     }
 
     func shouldDisplayPlanInstance(_ instance: AvailablePlans.AvailablePlan.Instance) -> Bool {
-        guard let productId = instance.vendors?.apple.productID else { return false }
-
-        guard !productId.contains("hidden") else { return false }
+        guard let productId = instance.vendors?.apple.productID, !productId.contains("hidden") else { return false }
 
         guard excludeRegexes?.first(where: { $0.matches(productId) }) == nil else {
             guard includeRegexes?.first(where: { $0.matches(productId) }) != nil else {
