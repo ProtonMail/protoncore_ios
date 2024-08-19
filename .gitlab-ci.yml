@@ -177,7 +177,7 @@ test:unit:ios:all:
     - fastlane run_unit_tests device_name:$DEVICE_NAME
   after_script:
     - *tear_down_simulator
-    - fastlane cleanup_run_unit_tests
+    - fastlane cleanup_unit_tests
     - ssh-add -D
   artifacts:
     name: "ios-tests-$CI_COMMIT_SHA"
@@ -205,7 +205,7 @@ test:unit:macos:all:
   script:
     - fastlane run_unit_tests_macos
   after_script:
-    - fastlane cleanup_run_unit_tests_macos
+    - fastlane cleanup_unit_tests_macos
   artifacts:
     paths:
       - fastlane/test_output/*xcresult/**
@@ -226,7 +226,7 @@ test:apphost:macos:all:
   script:
     - fastlane run_apphosted_test_macos
   after_script:
-    - fastlane cleanup_run_unit_tests_macos
+    - fastlane cleanup_unit_tests_macos
   artifacts:
     paths:
       - fastlane/test_output/*xcresult/**
@@ -248,7 +248,7 @@ test:unit:localization:
     - fastlane run_localization_tests device_name:$DEVICE_NAME
   after_script:
     - *tear_down_simulator
-    - fastlane cleanup_run_localization_tests
+    - fastlane cleanup_localization_tests
   variables:
     GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-3
   tags:
@@ -275,7 +275,7 @@ test:unit:integration:
     - fastlane run_integration_tests device_name:$DEVICE_NAME xcargs:DYNAMIC_DOMAIN="${DYNAMIC_DOMAIN}"
   after_script:
     - *tear_down_simulator
-    - fastlane cleanup_run_integration_tests
+    - fastlane cleanup_integration_tests
   artifacts:
     paths:
       - fastlane/test_output/*xcresult/**
@@ -299,7 +299,7 @@ test:ui:light:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
       when: never
   script:
-    - fastlane build_ui_tests device_name:$DEVICE_NAME
+    - fastlane run_ui_tests device_name:$DEVICE_NAME
     - bash scripts/run_ui_tests_on_ci.sh --light --device $DEVICE_NAME $DEVICE_OS --dynamic-domain ${DYNAMIC_DOMAIN}
   <<: &ui_testing_common_configuration
     stage: ui_and_integration_test
@@ -323,7 +323,7 @@ test:ui:light:
     after_script:
       - *tear_down_simulator
       - rm -rf ~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/
-      - fastlane cleanup_build_ui_tests
+      - fastlane cleanup_ui_tests
       - ssh-add -D
     variables:
       GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-5
@@ -342,7 +342,7 @@ test:ui:smoke:
     - if: "$CI_COMMIT_BRANCH"
       when: never
   script:
-    - fastlane build_ui_tests device_name:$DEVICE_NAME
+    - fastlane run_ui_tests device_name:$DEVICE_NAME
     - bash scripts/run_ui_tests_on_ci.sh --smoke --device $DEVICE_NAME $DEVICE_OS --dynamic-domain ${DYNAMIC_DOMAIN}
   <<: *ui_testing_common_configuration
 
@@ -356,7 +356,7 @@ test:ui:regression:
     - when: never
   timeout: 3 hours 30 minutes
   script:
-    - fastlane build_ui_tests device_name:$DEVICE_NAME
+    - fastlane run_ui_tests device_name:$DEVICE_NAME
     - bash scripts/run_ui_tests_on_ci.sh --regression --device $DEVICE_NAME $DEVICE_OS --dynamic-domain ${DYNAMIC_DOMAIN}
   <<: *ui_testing_common_configuration
 
