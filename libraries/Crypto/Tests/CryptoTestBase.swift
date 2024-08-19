@@ -51,20 +51,12 @@ class CryptoTestBase: XCTestCase {
     override func setUp() {
         super.setUp()
         injectDefaultCryptoImplementation()
-        #if SPM
         self.testBundle = Bundle.module
-        #else
-        self.testBundle = Bundle(for: type(of: self))
-        #endif
     }
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        #if SPM
         self.testBundle = Bundle.module
-        #else
-        self.testBundle = Bundle(for: type(of: self))
-        #endif
     }
 
     func random(length: Int) -> Data {

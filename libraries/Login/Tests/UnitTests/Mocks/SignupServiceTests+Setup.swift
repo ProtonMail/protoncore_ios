@@ -200,11 +200,7 @@ extension SignupServiceTests {
             if requestValidator(request) == false {
                 XCTFail("request has not passed the validator")
             }
-            #if SPM
             let bundle = Bundle.module
-            #else
-            let bundle = Bundle(for: type(of: self))
-            #endif
             let url = bundle.url(forResource: filename, withExtension: "json")!
             let headers = ["Content-Type": "application/json;charset=utf-8"]
             return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: statusCode, headers: headers)

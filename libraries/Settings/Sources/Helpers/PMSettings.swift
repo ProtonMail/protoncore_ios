@@ -25,11 +25,7 @@ import UIKit
 import Foundation
 
 public final class PMSettings {
-    #if SPM
     public static let bundle = Bundle.module
-    #else
-    public static let bundle = Bundle(path: Bundle(for: PMSettings.self).path(forResource: "Resources-Settings", ofType: "bundle")!)!
-    #endif
 }
 
 #endif

@@ -33,11 +33,7 @@ private class Handler {}
 public enum HVTranslation: TranslationsExposing {
 
     public static var bundle: Bundle {
-        #if SPM
         return spmResourcesBundle
-        #else
-        return Bundle(path: Bundle(for: Handler.self).path(forResource: "Translations-HumanVerification", ofType: "bundle")!)!
-        #endif
     }
 
     public static var prefixForMissingValue: String = ""

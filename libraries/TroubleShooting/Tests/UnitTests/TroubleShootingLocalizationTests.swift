@@ -22,11 +22,7 @@
 
 import XCTest
 @testable import ProtonCoreTroubleShooting
-#if SPM
 import ProtonCoreTestingToolkitUnitTestsCore
-#else
-import ProtonCoreTestingToolkit
-#endif
 
 final class TroubleShootingLocalizationTests: XCTestCase {
     func testAccountDeletionTranslationsAreDefinedForEnglish() {

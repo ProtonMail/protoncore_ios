@@ -29,17 +29,6 @@ class UserAgentTests: XCTestCase {
 
     let concurrentQueue = DispatchQueue(label: "com.protoncore.Concurrent", attributes: .concurrent)
 
-#if !SPM && DEBUG_CORE_INTERNALS
-    func testUAConcurrent() {
-        for _ in 1...50 {
-            concurrentQueue.sync {
-                _ = UserAgent.default.ua
-                XCTAssertTrue(UserAgent.default.initCount == 1)
-            }
-        }
-    }
-#endif
-
     func testDarwinVersion() {
         let dv = UserAgent.default.DarwinVersion()
         XCTAssertFalse(dv.isEmpty)

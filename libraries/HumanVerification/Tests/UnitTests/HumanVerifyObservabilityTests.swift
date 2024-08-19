@@ -25,14 +25,10 @@
 @testable import ProtonCoreHumanVerification
 @testable import ProtonCoreObservability
 @testable import ProtonCoreNetworking
-#if SPM
 import ProtonCoreTestingToolkitUnitTestsCore
 import ProtonCoreTestingToolkitUnitTestsDoh
 import ProtonCoreTestingToolkitUnitTestsObservability
 import ProtonCoreTestingToolkitUnitTestsServices
-#else
-import ProtonCoreTestingToolkit
-#endif
 
 import WebKit
 import XCTest

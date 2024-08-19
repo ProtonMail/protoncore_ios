@@ -1,3 +1,2 @@
-import "Linting.fastfile"
 import "UnitTests.fastfile"
 import "CoverageReports.fastfile"

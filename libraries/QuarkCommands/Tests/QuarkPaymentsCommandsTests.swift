@@ -48,11 +48,7 @@ final class QuarkPaymentsCommandsTests: XCTestCase {
     func testCreateUserSuccess() {
         // mock response
         stub(condition: isHost("test.quark.commands.url")) { request in
-            #if SPM
             let bundle = Bundle.module
-            #else
-            let bundle = Bundle(for: type(of: self))
-            #endif
             let url = bundle.url(forResource: "PaymentsSeedSubscriber", withExtension: "html")!
             let headers = ["Content-Type": "application/xhtml+xml;charset=utf-8"]
             return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: 200, headers: headers)
@@ -78,11 +74,7 @@ final class QuarkPaymentsCommandsTests: XCTestCase {
     func testCreateUserWithChargebeeSuccess() {
         // mock response
         stub(condition: isHost("test.quark.commands.url")) { request in
-            #if SPM
             let bundle = Bundle.module
-            #else
-            let bundle = Bundle(for: type(of: self))
-            #endif
             let url = bundle.url(forResource: "ChargebeePaymentsSeedSubscriber", withExtension: "html")!
             let headers = ["Content-Type": "application/xhtml+xml;charset=utf-8"]
             return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: 200, headers: headers)

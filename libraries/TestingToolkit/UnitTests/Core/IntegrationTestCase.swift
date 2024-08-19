@@ -27,16 +27,13 @@ open class IntegrationTestCase: XCTestCase {
     open var testBundle: Bundle? { nil }
 
     public var dynamicDomain: String? {
-        #if SPM
         let domain = ProcessInfo().environment["DYNAMIC_DOMAIN"]
-        #else
-        let domain = testBundle?.object(forInfoDictionaryKey: "DYNAMIC_DOMAIN") as? String
-        #endif
+
         return domain.flatMap { dynamicDomain in
             guard !dynamicDomain.isEmpty else { return nil }
             return dynamicDomain
         }
-                                               }
+    }
 
     public var dynamicDomainAvailable: Bool { dynamicDomain != nil }
 

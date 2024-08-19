@@ -43,10 +43,6 @@ public final class HVCommon {
     }
 
     public static var bundle: Bundle {
-        #if SPM
         return spmResourcesBundle
-        #else
-        return Bundle(path: Bundle(for: HVCommon.self).path(forResource: "Resources-HumanVerification", ofType: "bundle")!)!
-        #endif
     }
 }

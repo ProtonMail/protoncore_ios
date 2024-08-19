@@ -201,11 +201,7 @@ extension CompleteViewModelTests {
             counter += 1
             let url: URL
             let filename = counter > filenames.count ? filenames[0] : filenames[counter - 1]
-            #if SPM
             let bundle = Bundle.module
-            #else
-            let bundle = Bundle(for: type(of: self))
-            #endif
             url = bundle.url(forResource: filename, withExtension: "json")!
 
             let headers = ["Content-Type": "application/json;charset=utf-8"]

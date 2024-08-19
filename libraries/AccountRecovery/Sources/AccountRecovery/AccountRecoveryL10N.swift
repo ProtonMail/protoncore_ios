@@ -24,11 +24,7 @@ private class Handler {}
 public enum ARTranslation: TranslationsExposing {
 
     public static var bundle: Bundle {
-        #if SPM
         return Bundle.module
-        #else
-        return Bundle(path: Bundle(for: Handler.self).path(forResource: "Resources-AccountRecovery", ofType: "bundle")!)!
-        #endif
     }
 
     #if DEBUG

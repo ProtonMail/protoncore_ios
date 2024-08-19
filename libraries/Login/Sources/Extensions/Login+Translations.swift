@@ -27,11 +27,7 @@ private class Handler {}
 public enum LSTranslation: TranslationsExposing {
 
     public static var bundle: Bundle {
-        #if SPM
         return Bundle.module
-        #else
-        return Bundle(path: Bundle(for: Handler.self).path(forResource: "Translations-Login", ofType: "bundle")!)!
-        #endif
     }
 
     public static var prefixForMissingValue: String = ""

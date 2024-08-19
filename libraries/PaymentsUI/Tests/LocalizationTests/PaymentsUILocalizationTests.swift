@@ -21,11 +21,7 @@
 
 import XCTest
 @testable import ProtonCorePaymentsUI
-#if SPM
 import ProtonCoreTestingToolkitUnitTestsCore
-#else
-import ProtonCoreTestingToolkit
-#endif
 
 final class PaymentsUILocalizationTests: XCTestCase {
     func testAllSubstitutionsAreFollowingTheExpectedFormat() {

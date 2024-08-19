@@ -21,11 +21,7 @@
 
 import XCTest
 @testable import ProtonCoreNetworking
-#if SPM
 import ProtonCoreTestingToolkitUnitTestsCore
-#else
-import ProtonCoreTestingToolkit
-#endif
 
 class NetworkingLocalizationTests: XCTestCase {
 

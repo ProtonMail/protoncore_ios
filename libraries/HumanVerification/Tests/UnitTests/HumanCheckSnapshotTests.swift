@@ -22,12 +22,8 @@
 #if os(iOS)
 
 import XCTest
-#if SPM
 import ProtonCoreTestingToolkitUnitTestsDoh
 import ProtonCoreTestingToolkitUnitTestsCore
-#else
-import ProtonCoreTestingToolkit
-#endif
 import ProtonCoreUIFoundations
 import ProtonCoreServices
 @testable import ProtonCoreHumanVerification

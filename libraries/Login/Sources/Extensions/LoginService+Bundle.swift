@@ -23,10 +23,6 @@ import Foundation
 
 extension LoginService {
     public static var bundle: Bundle {
-        #if SPM
         return Bundle.module
-        #else
-        return Bundle(path: Bundle(for: LoginService.self).path(forResource: "Resources-Login", ofType: "bundle")!)!
-        #endif
     }
 }

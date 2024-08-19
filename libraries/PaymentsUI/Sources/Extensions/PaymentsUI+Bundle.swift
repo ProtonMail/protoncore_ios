@@ -21,18 +21,12 @@
 
 #if os(iOS)
 
-#if SPM
 import ProtonCorePaymentsUIResourcesiOS
-#endif
 import Foundation
 
 extension PaymentsUI {
     public static var bundle: Bundle {
-        #if SPM
         return spmResourcesBundle
-        #else
-        return Bundle(path: Bundle(for: PaymentsUI.self).path(forResource: "Resources-PaymentsUI", ofType: "bundle")!)!
-        #endif
     }
 }
 

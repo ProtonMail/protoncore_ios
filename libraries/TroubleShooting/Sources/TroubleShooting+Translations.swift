@@ -27,11 +27,7 @@ private class Handler {}
 public enum TSTranslation: TranslationsExposing {
 
     public static var bundle: Bundle {
-        #if SPM
         return Bundle.module
-        #else
-        return Bundle(path: Bundle(for: Handler.self).path(forResource: "Translations-TroubleShooting", ofType: "bundle")!)!
-        #endif
     }
 
     public static var prefixForMissingValue: String = ""

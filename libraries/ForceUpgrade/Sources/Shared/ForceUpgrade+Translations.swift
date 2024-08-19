@@ -27,11 +27,7 @@ private class Handler {}
 public enum FUTranslation: TranslationsExposing {
 
     public static var bundle: Bundle {
-        #if SPM
         return Bundle.module
-        #else
-        return Bundle(path: Bundle(for: Handler.self).path(forResource: "Translations-ForceUpgrade", ofType: "bundle")!)!
-        #endif
     }
 
     public static var prefixForMissingValue: String = ""

@@ -24,11 +24,7 @@
 import XCTest
 import ProtonCoreServices
 import ProtonCoreEnvironment
-#if SPM
 import ProtonCoreTestingToolkitUnitTestsCore
-#else
-import ProtonCoreTestingToolkit
-#endif
 import ProtonCoreUIFoundations
 @testable import ProtonCoreTroubleShooting
 
