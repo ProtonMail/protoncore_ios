@@ -1,4 +1,4 @@
-"Privacy by default" = "حریم شخصی به صورت پیشفرص";
+"Privacy by default" = "حریم شخصی به صورت پیش‌فرض";
 
 "Proton address required" = "آدرس Proton نیاز است";
 
@@ -20,7 +20,7 @@
 
 "Code sent to %@" = "کد به %@ ارسال شد";
 
-"Request new code?" = "درخواست کد جدید?";
+"Request new code?" = "درخواست کد جدید؟";
 
 "Resend" = "ارسال مجدد";
 
@@ -30,13 +30,13 @@
 
 "Enter your Proton Account details." = "اطلاعات حساب Proton خود را وارد کنید.";
 
-"Email or username" = "رایانامه یا نام‌کاربری";
+"Email or username" = "ایمیل یا نام‌کاربری";
 
 "Sign in" = "ورود";
 
-"Sign in with password" = "Sign in with password";
+"Sign in with password" = "ورود با گذرواژه";
 
-"Sign in with SSO" = "ورود با احراز هویت یکپارچه";
+"Sign in with SSO" = "ورود با احراز هویت یکپارچه (SSO)";
 
 "Sign in to your organization" = "به سازمان خود وارد شوید";
 
@@ -54,7 +54,7 @@
 
 "Still need help? Contact us directly." = "هنوز به کمک نیاز دارید؟ با ما به صورت مستقیم تماس بگیرید.";
 
-"Please enter your Proton Account email or username." = "لطفا ایمیل حساب کاربری یا نام کاربری Proton خود را وارد کنید.";
+"Please enter your Proton Account email or username." = "لطفا ایمیل یا نام کاربری حساب کاربری Proton خود را وارد کنید.";
 
 "Complete Setup" = "تکمیل عملیات راه‌اندازی";
 
@@ -64,7 +64,7 @@
 
 "Incorrect mailbox password" = "گذرواژهٔ صندوق پستی نادرست است";
 
-"Your session has expired. Please log in again." = "Your session has expired. Please log in again.";
+"Your session has expired. Please log in again." = "نشست شما منقضی شده. لطفا دوباره وارد شوید.";
 
 "Proton address required" = "آدرس Proton نیاز است";
 
