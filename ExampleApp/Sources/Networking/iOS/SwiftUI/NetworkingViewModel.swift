@@ -124,7 +124,11 @@ class NetworkingViewModel: ObservableObject {
                 PMLog.info("")
             case .failure: // network or parsing error
                 PMLog.info("")
-            case .success(.ask2FA(let context)): // success but need 2FA
+            case .success(.askAny2FA(let context)): // success but need 2FA (any)
+                PMLog.info(context)
+            case .success(.askTOTP(let context)): // success but need 2FA
+                PMLog.info(context)
+            case .success(.askFIDO2(let context)): // success but need 2FA
                 PMLog.info(context)
             case .success(.newCredential(let credential, let passwordMode)): // success without 2FA
                 self.testAuthCredential = AuthCredential(credential)

@@ -232,12 +232,12 @@ class PaymentsNewUserSubscriptionUIVC: PaymentsBaseUIViewController, AccessibleV
             case .failure:
                 self.loginStatusLabel.text = "Login status: Not OK"
                 self.loginButton.isSelected = false
-            case .success(.ask2FA):
-                self.loginStatusLabel.text = "Login status: Not supportd 2FA"
+            case .success(.askTOTP), .success(.askFIDO2), .success(.askAny2FA):
                 self.loginButton.isSelected = false
+                self.loginStatusLabel.text = "Login status: Not supported 2FA"
             case .success(.ssoChallenge):
-                self.loginStatusLabel.text = "Login status: Not supportd SSO Challenge"
                 self.loginButton.isSelected = false
+                self.loginStatusLabel.text = "Login status: Not supported SSO Challenge"
             case .success(.updatedCredential):
                 self.loginButton.isSelected = false
                 // should not happen

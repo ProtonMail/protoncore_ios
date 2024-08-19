@@ -100,7 +100,7 @@ final class LoginViewController: NSViewController {
             switch result {
             case .success(.finished(let loginData)):
                 self?.handleSuccessfulLogin(loginData)
-            case .success(.ask2FA):
+            case .success(.askAny2FA), .success(.askTOTP), .success(.askFIDO2):
                 self?.handle2FARequest()
             case .success(.askSecondPassword):
                 self?.handleSecondPasswordRequest()
