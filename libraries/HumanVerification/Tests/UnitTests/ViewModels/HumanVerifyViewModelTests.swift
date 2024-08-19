@@ -22,14 +22,10 @@
 #if os(iOS)
 
 import XCTest
-#if SPM
 import ProtonCoreTestingToolkitUnitTestsCore
 import ProtonCoreTestingToolkitUnitTestsDoh
 import ProtonCoreTestingToolkitUnitTestsObservability
 import ProtonCoreTestingToolkitUnitTestsServices
-#else
-import ProtonCoreTestingToolkit
-#endif
 import ProtonCoreChallenge
 import ProtonCoreServices
 import ProtonCoreNetworking

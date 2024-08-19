@@ -230,11 +230,7 @@ extension LoginServiceTests {
                 XCTFail("request has not passed the validator")
             }
             counter += 1
-            #if SPM
             let bundle = Bundle.module
-            #else
-            let bundle = Bundle(for: type(of: self))
-            #endif
             let url: URL
             if counter > 1, let differentOnSecondRequestFilename = differentOnSecondRequestFilename {
                 url = bundle.url(forResource: differentOnSecondRequestFilename, withExtension: "json")!

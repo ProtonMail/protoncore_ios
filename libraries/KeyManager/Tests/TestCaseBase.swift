@@ -45,11 +45,7 @@ class TestCaseBase: XCTestCase {
     override func setUp() {
         super.setUp()
         injectDefaultCryptoImplementation()
-        #if SPM
         self.testBundle = Bundle.module
-        #else
-        self.testBundle = Bundle(for: type(of: self))
-        #endif
     }
 
 }

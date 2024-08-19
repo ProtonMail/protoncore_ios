@@ -60,11 +60,7 @@ class ReportAPITests: XCTestCase {
         super.setUp()
         authenticatorMock = AuthenticatorMock()
         apiService = APIServiceMock()
-        #if SPM
         self.testBundle = Bundle.module
-        #else
-        self.testBundle = Bundle(for: type(of: self))
-        #endif
     }
 
     func testUploadAndProgressSuccess() {

@@ -21,11 +21,7 @@
 
 import XCTest
 @testable import ProtonCorePayments
-#if SPM
 import ProtonCoreTestingToolkitUnitTestsCore
-#else
-import ProtonCoreTestingToolkit
-#endif
 
 final class PaymentsTranslationsTests: XCTestCase {
 

@@ -22,11 +22,7 @@
 
 import XCTest
 @testable import ProtonCoreLogin
-#if SPM
 import ProtonCoreTestingToolkitUnitTestsCore
-#else
-import ProtonCoreTestingToolkit
-#endif
 
 final class LoginLocalizationTests: XCTestCase {
     func testAllSubstitutionsAreFollowingTheExpectedFormat() {

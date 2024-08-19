@@ -49,11 +49,7 @@ final class QuarkUserCommandsTests: XCTestCase {
     func testCreateUserSuccess() {
         // mock response
         stub(condition: isHost("test.quark.commands.url")) { request in
-            #if SPM
             let bundle = Bundle.module
-            #else
-            let bundle = Bundle(for: type(of: self))
-            #endif
             let url = bundle.url(forResource: "CreateUserSuccess", withExtension: "json")!
             let headers = ["Content-Type": "application/xhtml+xml;charset=utf-8"]
             return HTTPStubsResponse(data: try! Data(contentsOf: url), statusCode: 200, headers: headers)
@@ -82,11 +78,7 @@ final class QuarkUserCommandsTests: XCTestCase {
     func testCreateUserFailed() {
         // mock response
         stub(condition: isHost("test.quark.commands.url")) { request in
-            #if SPM
             let bundle = Bundle.module
-            #else
-            let bundle = Bundle(for: type(of: self))
-            #endif
             guard let url = bundle.url(forResource: "CreateUserFailed", withExtension: "json") else {
                 fatalError("Resource file not found")
             }

@@ -27,12 +27,8 @@ import UIKit
 import XCTest
 @testable import ProtonCoreTroubleShooting
 import ProtonCoreDoh
-#if SPM
 import ProtonCoreTestingToolkitUnitTestsCore
 import ProtonCoreTestingToolkitUnitTestsDoh
-#else
-import ProtonCoreTestingToolkit
-#endif
 
 class TroubleShootingHelperTests: XCTestCase {
     private var dohMock: DohMock!

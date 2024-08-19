@@ -26,7 +26,7 @@ import ProtonCoreUtilities
 
 class CryptoFileTests: CryptoTestBase {
 
-    #if !(SPM && os(macOS))
+    #if !os(macOS)
     func testWriteAndRead() {
         do {
             let url = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)

@@ -23,14 +23,9 @@
 
 import XCTest
 
-#if SPM
 import ProtonCoreTestingToolkitUnitTestsDoh
 import ProtonCoreTestingToolkitUnitTestsServices
 import ProtonCoreCryptoPatchedGoImplementation
-#else
-import ProtonCoreTestingToolkit
-import ProtonCoreCryptoGoImplementation
-#endif
 
 import ProtonCoreChallenge
 import ProtonCoreDoh

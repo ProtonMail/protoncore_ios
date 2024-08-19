@@ -26,11 +26,7 @@ class SettingsResponseTests: XCTestCase {
 
     var jsonDecoder: JSONDecoder!
 
-#if SPM
     let bundle = Bundle.module
-#else
-    let bundle = Bundle(for: type(of: self))
-#endif
 
     override func setUp() {
         super.setUp()

@@ -1,6 +1,6 @@
 # Crypto
 
-This repo is a wrapper around Crypto.framework to allow its usage as cocoapod. Frameworks for different architectures are packed into one Xcframework. This is a pre-compiled version and it complied from repo [GopenPGP](https://github.com/ProtonMail/gopenpgp)
+This repo is a wrapper around Crypto.framework to allow its usage as standalone package. Frameworks for different architectures are packed into one Xcframework. This is a pre-compiled version and it complied from repo [GopenPGP](https://github.com/ProtonMail/gopenpgp)
 
 ## Build instructions
 

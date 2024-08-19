@@ -97,11 +97,7 @@ extension PlansDataSourceIntegrationTests {
 
     private func mock(filename: String, title: String, path: String, statusCode: Int32 = 200) {
         weak var usersStub = stub(condition: pathEndsWith(path)) { request in
-            #if SPM
             let bundle = Bundle.module
-            #else
-            let bundle = Bundle(for: type(of: self))
-            #endif
 
             let url = bundle.url(forResource: filename, withExtension: "json")!
             let headers = ["Content-Type": "application/json;charset=utf-8"]

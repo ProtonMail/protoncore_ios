@@ -124,7 +124,7 @@ You'll need to call
 import ProtonCoreObservability
 ```
 
-and remember to add the `ProtonCoreObservability` module as a dependency of your module (SPM or Cocoapods) or app.
+and remember to add the `ProtonCoreObservability` module as a dependency of your module or app.
 
 **Step 2** - Call the event you created when needed
 

@@ -22,11 +22,7 @@
 
 import XCTest
 @testable import ProtonCoreHumanVerification
-#if SPM
 import ProtonCoreTestingToolkitUnitTestsCore
-#else
-import ProtonCoreTestingToolkit
-#endif
 
 final class HumanVerifyLocalizationTests: XCTestCase {
     func testAllSubstitutionsAreFollowingTheExpectedFormat() {

@@ -100,11 +100,7 @@ class KeySetupTests: XCTestCase {
     override func setUp() {
         super.setUp()
         injectDefaultCryptoImplementation()
-        #if SPM
         self.testBundle = .module
-        #else
-        self.testBundle = Bundle(for: type(of: self))
-        #endif
     }
 
     func testAddressKeyGeneration() {

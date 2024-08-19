@@ -17,8 +17,6 @@ It contains default implementations for instantiation component.
 # Installation
 
 `FeatureFlags` is installed via the official [Swift Package Manager](https://swift.org/package-manager/).  
-As it is exposed through SPM you should pull the public github repo for any open source repository.
-Otherwise you can pull the gitlab endpoint.
 
 Select `Xcode`>`File`> `Swift Packages`>`Add Package Dependency...`  
 and add `https://git@github.com:ProtonMail/protoncore_ios.git`.

@@ -316,7 +316,7 @@ class EncryptorTests: CryptoTestBase {
         }
     }
 
-    #if !(SPM && os(macOS))
+    #if !os(macOS)
     func testEncryptStream() {
         do {
             let cleartextUrl = self.url(of: "user_a_clear_message")
