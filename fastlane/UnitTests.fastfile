@@ -76,7 +76,7 @@ lane :run_unit_tests_macos do |arguments|
 end
 
 lane :run_apphosted_test_macos do |arguments|
-  execute_tests_for_workspace("ExampleAppSPM.xcworkspace", "ProtonCore-Keymaker-macOS-AppHost", "fastlane/DerivedData/UnitTests-macOS", "platform=macOS", arguments)
+  execute_tests_for_workspace("ExampleApp.xcworkspace", "ProtonCore-Keymaker-macOS-AppHost", "fastlane/DerivedData/UnitTests-macOS", "platform=macOS", arguments)
 end
 
 lane :run_integration_tests do |arguments|
@@ -104,7 +104,7 @@ lane :run_ui_tests do |arguments|
   create_derived_data_folder("UITestsOnlyBuild")
   prepare_for_building
   run_tests(
-    workspace: "ExampleAppSPM.xcworkspace",
+    workspace: "ExampleApp.xcworkspace",
     scheme: "UITests-light",
     derived_data_path: derived_data_path("UITestsOnlyBuild"),
     device: device_name(arguments),

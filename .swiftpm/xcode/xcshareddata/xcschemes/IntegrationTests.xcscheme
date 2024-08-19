@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1430"
+   LastUpgradeVersion = "1530"
    version = "2.1">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -46,7 +46,7 @@
             BlueprintIdentifier = "25BDF93C271424B3001BB254"
             BuildableName = "Example-iOS-Mail-AppStoreIAP.app"
             BlueprintName = "Example-iOS-Mail-AppStoreIAP"
-            ReferencedContainer = "container:ExampleAppSPM.xcodeproj">
+            ReferencedContainer = "container:ExampleApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </LaunchAction>
