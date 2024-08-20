@@ -17,10 +17,6 @@ def derived_data_path(prefix)
   "./ProtonCore/" + prefix + "/" + pipeline_id + "/DerivedData/"
 end
 
-def create_derived_data_folder(prefix)
-  sh("mkdir", "-p", derived_data_path(prefix))
-end
-
 def delete_derived_data_folder(prefix)
   clear_derived_data(
     derived_data_path: derived_data_path(prefix)
@@ -33,23 +29,7 @@ def prepare_for_building
   bundle_install(gemfile: "fastlane/Gemfile")
 end
 
-def build_for_testing(folder, scheme, device, destination, arguments)
-  create_derived_data_folder(folder)
-  prepare_for_building
-  run_tests(
-    workspace: ".swiftpm/xcode/package.xcworkspace",
-    scheme: scheme,
-    derived_data_path: derived_data_path(folder),
-    device: device,
-    destination: destination,
-    xcargs: arguments[:xcargs],
-    build_for_testing: true,
-    code_coverage: true,
-    result_bundle: true
-  )
-end
-
-def execute_unit_tests(folder, scheme, device, destination, arguments)
+def execute_tests(folder, scheme, device, destination, arguments)
   prepare_for_building
   run_tests(
     workspace: ".swiftpm/xcode/package.xcworkspace",
@@ -85,66 +65,22 @@ def execute_tests_for_workspace(workspace, scheme, derived_data_path, destinatio
   sh("rm", "-rf", derived_data_path)
 end
 
-# --- Building lanes ---
-
-lane :build_mac do |arguments|
-  build_for_testing("UnitTests-macOS", "UnitTests", nil, "platform=macOS", arguments)
-end
-
-lane :build_ios do |arguments|
-  build_for_testing("UnitTests-iOS", "UnitTests", "iPhone 11", nil, arguments)
-end
-
-lane :build_integration do |arguments|
-  build_for_testing("IntegrationTests", "IntegrationTests", "iPhone 11", nil, arguments)
-end
-
-lane :build_localization do |arguments|
-  create_derived_data_folder("CoreTranslationTests")
-  prepare_for_building
-  run_tests(
-    workspace: ".swiftpm/xcode/package.xcworkspace",
-    scheme: "CoreTranslationTests",
-    derived_data_path: derived_data_path("CoreTranslationTests"),
-    prelaunch_simulator: false,
-    device: 'iPhone 11',
-    xcargs: arguments[:xcargs],
-    build_for_testing: true,
-    code_coverage: false,
-    result_bundle: false
-  )
-end
-
-lane :build_ui_tests do |arguments|
-  create_derived_data_folder("UITestsOnlyBuild")
-  prepare_for_building
-  run_tests(
-    workspace: "ExampleAppSPM.xcworkspace",
-    scheme: "UITests-light",
-    derived_data_path: derived_data_path("UITestsOnlyBuild"),
-    device: device_name(arguments),
-    xcargs: arguments[:xcargs],
-    build_for_testing: true,
-    clean: false
-  )
-end
-
-# --- Running tests lanes ---
+# --- Test lanes ---
 
 lane :run_unit_tests do |arguments|
-  execute_unit_tests("UnitTests-iOS", "UnitTests", device_name(arguments), nil, arguments)
+  execute_tests("UnitTests-iOS", "UnitTests", device_name(arguments), nil, arguments)
 end
 
 lane :run_unit_tests_macos do |arguments|
-  execute_unit_tests("UnitTests-macOS", "UnitTests", nil, "platform=macOS", arguments)
+  execute_tests("UnitTests-macOS", "UnitTests", nil, "platform=macOS", arguments)
 end
 
 lane :run_apphosted_test_macos do |arguments|
-  execute_tests_for_workspace("ExampleAppSPM.xcworkspace", "ProtonCore-Keymaker-macOS-AppHost", "fastlane/DerivedData/UnitTests-macOS", "platform=macOS", arguments)
+  execute_tests_for_workspace("ExampleApp.xcworkspace", "ProtonCore-Keymaker-macOS-AppHost", "fastlane/DerivedData/UnitTests-macOS", "platform=macOS", arguments)
 end
 
 lane :run_integration_tests do |arguments|
-  execute_unit_tests("IntegrationTests", "IntegrationTests", device_name(arguments), nil, arguments)
+  execute_tests("IntegrationTests", "IntegrationTests", device_name(arguments), nil, arguments)
 end
 
 lane :run_localization_tests do |arguments|
@@ -164,25 +100,38 @@ lane :run_localization_tests do |arguments|
   )
 end
 
-# --- Cleaning lanes ---
-
-lane :cleanup_build_ui_tests do
-  delete_derived_data_folder("UITestsOnlyBuild")
+lane :run_ui_tests do |arguments|
+  create_derived_data_folder("UITestsOnlyBuild")
+  prepare_for_building
+  run_tests(
+    workspace: "ExampleApp.xcworkspace",
+    scheme: "UITests-light",
+    derived_data_path: derived_data_path("UITestsOnlyBuild"),
+    device: device_name(arguments),
+    xcargs: arguments[:xcargs],
+    build_and_test: true,
+    clean: false
+  )
 end
 
-lane :cleanup_run_unit_tests do
+# --- Cleaning lanes ---
+
+lane :cleanup_unit_tests do
   delete_derived_data_folder("UnitTests-iOS")
 end
 
-lane :cleanup_run_unit_tests_macos do
+lane :cleanup_unit_tests_macos do
   delete_derived_data_folder("UnitTests-macOS")
 end
 
-lane :cleanup_run_integration_tests do
+lane :cleanup_integration_tests do
   delete_derived_data_folder("IntegrationTests")
 end
 
-lane :cleanup_run_localization_tests do
+lane :cleanup_localization_tests do
   delete_derived_data_folder("CoreTranslationTests")
 end
 
+lane :cleanup_ui_tests do
+  delete_derived_data_folder("UITestsOnlyBuild")
+end

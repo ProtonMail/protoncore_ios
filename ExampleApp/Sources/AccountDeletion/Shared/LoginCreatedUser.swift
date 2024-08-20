@@ -95,7 +95,7 @@ final class LoginCreatedUser {
                           mailboxPassword: \(account.account.mailboxPassword ?? "—")
                           """)
                     completion(.success(credential))
-                case .success(.askTOTP):
+                case .success(.askTOTP), .success(.askFIDO2), .success(.askAny2FA):
                     completion(.failure(.invalid2FACode(message: "Should never ask for 2FA but it did")))
                 case .success(.ssoChallenge):
                     completion(.failure(.generic(message: "Should not receive SSO challenge but it did", code: LoginCreatedUser.defaultErrorCode, originalError: LoginError.invalidState)))

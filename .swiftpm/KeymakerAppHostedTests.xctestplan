@@ -19,7 +19,7 @@
         "RandomPinProtectionTests\/testLockUnlockV1()"
       ],
       "target" : {
-        "containerPath" : "container:ExampleAppSPM.xcodeproj",
+        "containerPath" : "container:ExampleApp.xcodeproj",
         "identifier" : "664237CA2A6977790056776D",
         "name" : "ProtonCore-Keymaker-macOS-AppHostTests"
       }

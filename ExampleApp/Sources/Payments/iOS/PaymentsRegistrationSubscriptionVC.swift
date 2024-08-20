@@ -225,6 +225,9 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
             case .purchaseCancelled:
                 self.statusLabel.text = "Status: cancelled"
                 self.purchaseSubscriptionButton.isEnabled = true
+            case .renewalNotification:
+                self.purchaseSubscriptionButton.isSelected = false
+                self.statusLabel.text = "Status: renewal notification received"
             }
         }
     }
@@ -258,12 +261,12 @@ class PaymentsRegistrationSubscriptionVC: PaymentsBaseUIViewController, Accessib
             case .failure:
                 self.loginButton.isSelected = false
                 self.loginStatusLabel.text = "Login status: Not OK"
-            case .success(.ask2FA):
+            case .success(.askTOTP), .success(.askFIDO2), .success(.askAny2FA):
                 self.loginButton.isSelected = false
-                self.loginStatusLabel.text = "Login status: Not supportd 2FA"
+                self.loginStatusLabel.text = "Login status: Not supported 2FA"
             case .success(.ssoChallenge):
                 self.loginButton.isSelected = false
-                self.loginStatusLabel.text = "Login status: Not supportd SSO Challenge"
+                self.loginStatusLabel.text = "Login status: Not supported SSO Challenge"
             case .success(.updatedCredential):
                 self.loginButton.isSelected = false
                 // should not happen

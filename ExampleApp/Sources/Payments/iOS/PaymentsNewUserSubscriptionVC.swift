@@ -229,10 +229,10 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
                 self.serviceDelegate.onDohTroubleshot()
             case .failure:
                 self.loginStatusLabel.text = "Login status: Not OK"
-            case .success(.ask2FA):
-                self.loginStatusLabel.text = "Login status: Not supportd 2FA"
+            case .success(.askAny2FA), .success(.askTOTP), .success(.askFIDO2):
+                self.loginStatusLabel.text = "Login status: Not supported 2FA"
             case .success(.ssoChallenge):
-                self.loginStatusLabel.text = "Login status: Not supportd SSO Challenge"
+                self.loginStatusLabel.text = "Login status: Not supported SSO Challenge"
             case .success(.updatedCredential):
                 break
                 // should not happen
@@ -420,6 +420,9 @@ class PaymentsNewUserSubscriptionVC: PaymentsBaseUIViewController, AccessibleVie
             case .purchaseCancelled:
                 self.purchaseSubscriptionButton.isSelected = false
                 self.statusLabel.text = "Status: Cancelled"
+            case .renewalNotification:
+                self.statusLabel.text = "Renewal in progress"
+                PMLog.debug("Renewal in progress")
             }
         }
     }

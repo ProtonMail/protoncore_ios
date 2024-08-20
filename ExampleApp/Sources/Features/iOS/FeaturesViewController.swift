@@ -103,7 +103,7 @@ class FeaturesViewController: UIViewController, TrustKitDelegate {
                 PMLog.info(String(describing: error))
             case .failure(AuthErrors.apiMightBeBlocked):
                 self.onDohTroubleshot()
-            case .failure, .success(.askTOTP), .success(.updatedCredential), .success(.ssoChallenge):
+            case .failure, .success(.askTOTP), .success(.askFIDO2), .success(.askAny2FA), .success(.updatedCredential), .success(.ssoChallenge):
                 break
             }
         }
@@ -143,7 +143,14 @@ class FeaturesViewController: UIViewController, TrustKitDelegate {
                                          keyPacket: encrypted.keyPacket!.encodeBase64(), dataPacket: encrypted.dataPacket!,
                                          fileData: (attData as Data).encodeBase64())
 
-        let msgContent = MessageContent(recipients: emails, subject: "Invitation for an event starting on Mar 8, 2021, 2:30 PM (GMT-8) Testing", body: body, attachments: [att])
+        let recipients: [Recipient] = emails.map { email in
+            let activePublicKeys: [ActivePublicKey] = 
+                [ActivePublicKey(flags: .all,
+                                 publicKey: firstKey.privateKey.publicKey)]
+            return Recipient(email: email, type: RecipientType.internal, activePublicKeys: activePublicKeys)
+        }
+
+        let msgContent = MessageContent(recipients: recipients, subject: "Invitation for an event starting on Mar 8, 2021, 2:30 PM (GMT-8) Testing", body: body, attachments: [att])
         features.send(content: msgContent,
                       userKeys: self.user!.keys,
                       addressKeys: address.keys,

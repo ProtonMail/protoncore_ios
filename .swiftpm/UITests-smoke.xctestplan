@@ -47,7 +47,7 @@
         "AccountDeletionTests\/testAccountIsDeleted_VpnAdminWithAddressAndKeys()"
       ],
       "target" : {
-        "containerPath" : "container:ExampleAppSPM.xcodeproj",
+        "containerPath" : "container:ExampleApp.xcodeproj",
         "identifier" : "66A3AB432770890B0056A570",
         "name" : "Example-AccountDeletion-UITests"
       }
@@ -64,7 +64,7 @@
         "AccountSwitcherTests\/testSwitcherScreenSignsOutAfterConfirmation()"
       ],
       "target" : {
-        "containerPath" : "container:ExampleAppSPM.xcodeproj",
+        "containerPath" : "container:ExampleApp.xcodeproj",
         "identifier" : "25AAB485270EE45800CEA95A",
         "name" : "Example-AccountSwitcher-UITests"
       }
@@ -139,14 +139,14 @@
         "LoginWelcomeTests\/testVpnWelcomeScreenIsShown()"
       ],
       "target" : {
-        "containerPath" : "container:ExampleAppSPM.xcodeproj",
+        "containerPath" : "container:ExampleApp.xcodeproj",
         "identifier" : "25AAB53D2710456A00CEA95A",
         "name" : "Example-Login-UITests"
       }
     },
     {
       "target" : {
-        "containerPath" : "container:ExampleAppSPM.xcodeproj",
+        "containerPath" : "container:ExampleApp.xcodeproj",
         "identifier" : "66F5998D287DB63200F5BE5E",
         "name" : "Example-Networking-UITests"
       }
@@ -171,14 +171,14 @@
         "PaymentsNewUserSubscriptionUIVCUITests\/testUpdateVpnPlusPlan()"
       ],
       "target" : {
-        "containerPath" : "container:ExampleAppSPM.xcodeproj",
+        "containerPath" : "container:ExampleApp.xcodeproj",
         "identifier" : "25AAB61527108CA500CEA95A",
         "name" : "Example-Payments-UITests"
       }
     },
     {
       "target" : {
-        "containerPath" : "container:ExampleAppSPM.xcodeproj",
+        "containerPath" : "container:ExampleApp.xcodeproj",
         "identifier" : "35B49CDB28379DAC00744D78",
         "name" : "Example-TokenRefresh-UITests"
       }

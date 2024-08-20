@@ -209,7 +209,7 @@ final class UIFoundationsIconsViewController: UIFoundationsAppearanceStyleViewCo
             (IconProvider.fileLines, "ic-file-lines", "fileLines"),
             (IconProvider.filePdf, "ic-file-pdf", "filePdf"),
             (IconProvider.fileShapes, "ic-file-shapes", "fileShapes"),
-            (IconProvider.file, "ic-file", "file"),
+            (IconProvider.fileEmpty, "ic-file-empty", "file-empty"),
             (IconProvider.filingCabinet, "ic-filing-cabinet", "filingCabinet"),
             (IconProvider.filter, "ic-filter", "filter"),
             (IconProvider.fingerprint, "ic-fingerprint", "fingerprint"),

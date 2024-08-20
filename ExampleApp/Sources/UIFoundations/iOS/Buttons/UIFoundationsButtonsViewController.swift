@@ -100,16 +100,20 @@ class UIFoundationsButtonsViewController: UIFoundationsAppearanceStyleViewContro
     @objc func brandAction(sender: UIBarButtonItem!) {
         switch ColorProvider.brand {
         case .proton:
-            ColorProvider.brand = .vpn
-            brandButton?.title = "Pass"
-
-        case .vpn:
-            ColorProvider.brand = .pass
+            ColorProvider.brand = .proton
             brandButton?.title = "Proton"
 
-        case .pass:
-            ColorProvider.brand = .proton
+        case .vpn:
+            ColorProvider.brand = .vpn
             brandButton?.title = "VPN"
+
+        case .pass:
+            ColorProvider.brand = .pass
+            brandButton?.title = "Pass"
+
+        case .wallet:
+            ColorProvider.brand = .wallet
+            brandButton?.title = "Wallet"
         }
         setupButtons()
     }

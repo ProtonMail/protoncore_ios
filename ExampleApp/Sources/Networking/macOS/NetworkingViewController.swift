@@ -99,8 +99,12 @@ class NetworkingViewController: NSViewController {
                 PMLog.info("")
             case .failure: // network or parsing error
                 PMLog.info("")
-            case .success(.ask2FA(let context)): // success but need 2FA
+            case .success(.askTOTP(let context)): // success but need 2FA w/ TOTP
                 PMLog.info(String(describing: context))
+            case .success(.askFIDO2(let context, _)): // success but need 2FA w/ FIDO2
+                PMLog.info(String(describing: context))
+            case .success(.askAny2FA(let totpContext, let fido2Context, _)): // success but need 2FA (any)
+                PMLog.info("TOTP Context: \(totpContext), FIDO2 Context: \(fido2Context)")
             case .success(.newCredential(_, let passwordMode)): // success without 2FA
                 PMLog.info("pwd mode: \(passwordMode)")
                 self.showHumanVerification()
