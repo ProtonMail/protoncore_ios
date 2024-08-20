@@ -2157,6 +2157,7 @@ class AuthenticatorTests: XCTestCase {
         let testIndependence = false
         let testSelector = "test selector"
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
+        let testPayload = Data("testPayload".utf8)
         let manager = Authenticator(api: apiService)
 
         apiService.requestDecodableStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
@@ -2165,7 +2166,9 @@ class AuthenticatorTests: XCTestCase {
                 let childClientID = params["ChildClientID"] as? String,
                 let independence = params["Independent"] as? Int,
                 childClientID == testClientId,
-                independence == (testIndependence ? 1 : 0) {
+                independence == (testIndependence ? 1 : 0),
+                let payload = params["Payload"] as? String,
+                payload == testPayload.base64EncodedString() {
                 completion(nil, .success(AuthService.ForkSessionResponse(selector: testSelector)))
             } else {
                 XCTFail()
@@ -2176,7 +2179,7 @@ class AuthenticatorTests: XCTestCase {
         // when
         let response = try await withCheckedThrowingContinuation { continuation in
             manager.forkSession(testCredential,
-                                useCase: .forChildClientID(testClientId, independent: testIndependence),
+                                useCase: .forChildClientID(testClientId, independent: testIndependence, payload: testPayload),
                                 completion: continuation.resume(with:))
         }
 
@@ -2189,6 +2192,7 @@ class AuthenticatorTests: XCTestCase {
         let testClientId = "test child client ID"
         let testIndependence = false
         let testCredential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"])
+        let testPayload = Data("testPayload".utf8)
         let manager = Authenticator(api: apiService)
 
         apiService.requestDecodableStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
@@ -2197,7 +2201,9 @@ class AuthenticatorTests: XCTestCase {
                 let childClientID = params["ChildClientID"] as? String,
                 let independence = params["Independent"] as? Int,
                 childClientID == testClientId,
-                independence == (testIndependence ? 1 : 0) {
+                independence == (testIndependence ? 1 : 0),
+                let payload = params["Payload"] as? String,
+                payload == testPayload.base64EncodedString() {
                 completion(nil, .failure(.badResponse()))
             } else {
                 XCTFail()
@@ -2209,7 +2215,7 @@ class AuthenticatorTests: XCTestCase {
         do {
             _ = try await withCheckedThrowingContinuation { continuation in
                 manager.forkSession(testCredential,
-                                    useCase: .forChildClientID(testClientId, independent: testIndependence),
+                                    useCase: .forChildClientID(testClientId, independent: testIndependence, payload: testPayload),
                                     completion: continuation.resume(with:))
             }
             XCTFail()
@@ -2233,6 +2239,7 @@ class AuthenticatorTests: XCTestCase {
         let testCredential = Credential(
             UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"]
         )
+        let testPayload = Data("testPayload".utf8)
         let manager = Authenticator(api: apiService)
 
         let refreshResponse = RefreshResponse(accessToken: "active accessToken",
@@ -2246,7 +2253,9 @@ class AuthenticatorTests: XCTestCase {
                 let childClientID = params["ChildClientID"] as? String,
                 let independence = params["Independent"] as? Int,
                 childClientID == testClientId,
-                independence == (testIndependence ? 1 : 0) {
+                independence == (testIndependence ? 1 : 0),
+                let payload = params["Payload"] as? String,
+                payload == testPayload.base64EncodedString() {
                 completion(nil, .success(AuthService.ForkSessionResponse(selector: testSelector)))
             } else if path.contains("/auth/v4/sessions/forks/\(testSelector)") {
                 completion(nil, .success(AuthService.ChildSessionResponse(
@@ -2263,7 +2272,7 @@ class AuthenticatorTests: XCTestCase {
         // when
         let response = try await withCheckedThrowingContinuation { continuation in
             manager.performForkingAndObtainChildSession(testCredential,
-                                                        useCase: .forChildClientID(testClientId, independent: testIndependence),
+                                                        useCase: .forChildClientID(testClientId, independent: testIndependence, payload: testPayload),
                                                         completion: continuation.resume(with:))
         }
 
@@ -2283,6 +2292,7 @@ class AuthenticatorTests: XCTestCase {
         let testCredential = Credential(
             UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"]
         )
+        let testPayload = Data("testPayload".utf8)
         let manager = Authenticator(api: apiService)
 
         apiService.requestDecodableStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
@@ -2291,7 +2301,9 @@ class AuthenticatorTests: XCTestCase {
                let childClientID = params["ChildClientID"] as? String,
                let independence = params["Independent"] as? Int,
                childClientID == testClientId,
-               independence == (testIndependence ? 1 : 0) {
+               independence == (testIndependence ? 1 : 0),
+               let payload = params["Payload"] as? String,
+               payload == testPayload.base64EncodedString() {
                 completion(nil, .failure(.badResponse()))
             } else {
                 XCTFail()
@@ -2303,7 +2315,7 @@ class AuthenticatorTests: XCTestCase {
         do {
             _ = try await withCheckedThrowingContinuation { continuation in
                 manager.performForkingAndObtainChildSession(testCredential,
-                                                            useCase: .forChildClientID(testClientId, independent: testIndependence),
+                                                            useCase: .forChildClientID(testClientId, independent: testIndependence, payload: testPayload),
                                                             completion: continuation.resume(with:))
             }
             XCTFail()
@@ -2326,6 +2338,7 @@ class AuthenticatorTests: XCTestCase {
         let testCredential = Credential(
             UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"]
         )
+        let testPayload = Data("testPayload".utf8)
         let manager = Authenticator(api: apiService)
 
         apiService.requestDecodableStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
@@ -2334,7 +2347,9 @@ class AuthenticatorTests: XCTestCase {
                 let childClientID = params["ChildClientID"] as? String,
                 let independence = params["Independent"] as? Int,
                 childClientID == testClientId,
-                independence == (testIndependence ? 1 : 0) {
+                independence == (testIndependence ? 1 : 0),
+                let payload = params["Payload"] as? String,
+                payload == testPayload.base64EncodedString() {
                 completion(nil, .success(AuthService.ForkSessionResponse(selector: testSelector)))
             } else if path.contains("/auth/v4/sessions/forks/\(testSelector)") {
                 completion(nil, .failure(.badResponse()))
@@ -2348,7 +2363,7 @@ class AuthenticatorTests: XCTestCase {
         do {
             _ = try await withCheckedThrowingContinuation { continuation in
                 manager.performForkingAndObtainChildSession(testCredential,
-                                                            useCase: .forChildClientID(testClientId, independent: testIndependence),
+                                                            useCase: .forChildClientID(testClientId, independent: testIndependence, payload: testPayload),
                                                             completion: continuation.resume(with:))
             }
             XCTFail()
@@ -2371,6 +2386,7 @@ class AuthenticatorTests: XCTestCase {
         let testCredential = Credential(
             UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"]
         )
+        let testPayload = Data("testPayload".utf8)
         let manager = Authenticator(api: apiService)
 
         apiService.requestDecodableStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
@@ -2379,7 +2395,9 @@ class AuthenticatorTests: XCTestCase {
                 let childClientID = params["ChildClientID"] as? String,
                 let independence = params["Independent"] as? Int,
                 childClientID == testClientId,
-                independence == (testIndependence ? 1 : 0) {
+                independence == (testIndependence ? 1 : 0),
+                let payload = params["Payload"] as? String,
+                payload == testPayload.base64EncodedString() {
                 completion(nil, .success(AuthService.ForkSessionResponse(selector: testSelector)))
             } else if path.contains("/auth/v4/sessions/forks/\(testSelector)") {
                 completion(nil, .success(AuthService.ChildSessionResponse(
@@ -2397,7 +2415,7 @@ class AuthenticatorTests: XCTestCase {
         do {
             _ = try await withCheckedThrowingContinuation { continuation in
                 manager.performForkingAndObtainChildSession(testCredential,
-                                                            useCase: .forChildClientID(testClientId, independent: testIndependence),
+                                                            useCase: .forChildClientID(testClientId, independent: testIndependence, payload: testPayload),
                                                             completion: continuation.resume(with:))
             }
             XCTFail()
