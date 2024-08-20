@@ -26,7 +26,7 @@ extension AuthService {
 
     public enum ForkSessionUseCase {
         case forAccountDeletion
-        case forChildClientID(String, independent: Bool)
+        case forChildClientID(String, independent: Bool, payload: Data?)
     }
 
     public struct ForkSessionResponse: APIDecodableResponse, Encodable, Equatable {
@@ -37,15 +37,18 @@ extension AuthService {
 
         private let childClientId: String
         private let independent: Int
+        private let payload: Data?
 
         init(useCase: ForkSessionUseCase) {
             switch useCase {
             case .forAccountDeletion:
                 self.childClientId = "WebAccountLite"
                 self.independent = 1
-            case .forChildClientID(let childClientId, let independent):
+                payload = nil
+            case .forChildClientID(let childClientId, let independent, let payload):
                 self.childClientId = childClientId
                 self.independent = independent ? 1 : 0
+                self.payload = payload
             }
         }
 
@@ -57,10 +60,14 @@ extension AuthService {
             return .post
         }
         var parameters: [String: Any]? {
-            [
+            var dictionary: [String: Any] = [
                 "ChildClientID": childClientId,
                 "Independent": independent
             ]
+            if let payload {
+                dictionary["Payload"] = payload.base64EncodedString()
+            }
+            return dictionary
         }
 
         var isAuth: Bool {
