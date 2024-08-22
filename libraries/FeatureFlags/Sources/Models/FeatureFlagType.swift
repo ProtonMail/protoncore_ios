@@ -29,4 +29,5 @@ public enum CoreFeatureFlagType: String, FeatureFlagTypeProtocol {
     case reportInvalidUnauthRequests = "ReportInvalidUnauthRequests"
     case splitStorage = "SplitStorage"
     case telemetrySignUpMetrics = "IOSTelemetrySignUpMetrics"
+    case globalSSODisabled = "GlobalSSODisabled"
 }
