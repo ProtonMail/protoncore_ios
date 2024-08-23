@@ -98,6 +98,8 @@ final class TwoFactorViewController: UIViewController, AccessibleView, Focusable
         titleView.text = LUITranslation.login_2fa_screen_title.l10n
         titleView.textColor = ColorProvider.TextNorm
         authenticateButton.setTitle(LUITranslation.login_2fa_action_button_title.l10n, for: .normal)
+
+        setUpBackArrow(action: #selector(TwoFactorViewController.goBack(_:)))
     }
 
     // Set up username and password textField to enable keyChain auto remember password
