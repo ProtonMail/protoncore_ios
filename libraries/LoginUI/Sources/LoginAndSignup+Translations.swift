@@ -152,6 +152,10 @@ public enum LUITranslation: TranslationsExposing {
     case twofa_unexpected_authorization_type
     case twofa_unexpected_signature
     case unavailable_authinfo
+    case join_organization_title
+    case continue_and_join_organization
+    case continue_core_button
+    case organization_t_c_description
 
     public var l10n: String {
         switch self {
@@ -400,6 +404,18 @@ public enum LUITranslation: TranslationsExposing {
         case .unavailable_authinfo:
             return localized(key: "We could not initiate the Secure Password update connection. Please try again.",
                              comment: "Error shown when changing password on an account which has 2 Factor Auth configured, but can't retrieve the authentication challenge")
+        case .join_organization_title:
+            return localized(key: "Join %@",
+                             comment: "Join organization screen title that uses the name of the organization.")
+        case .continue_and_join_organization:
+            return localized(key: "Continue to create your Proton Account and join your organization",
+                             comment: "Join organization screen description.")
+        case .continue_core_button:
+            return localized(key: "Continue",
+                             comment: "Continue action button title")
+        case .organization_t_c_description:
+            return localized(key: "By continuing, you agree to our",
+                             comment: "Join organization terms and conditions description")
         }
     }
 }
