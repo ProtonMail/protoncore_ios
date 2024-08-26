@@ -265,3 +265,17 @@
 "Continue" = "Continue";
 
 "By continuing, you agree to our" = "By continuing, you agree to our";
+
+"Set backup password" = "Set backup password";
+
+"If you get locked out of your Proton Account, your backup password will allow you to sign in and recover your data.\n\nIt’s the only way to fully restore your account, so make sure to keep it somewhere safe." = "If you get locked out of your Proton Account, your backup password will allow you to sign in and recover your data.\n\nIt’s the only way to fully restore your account, so make sure to keep it somewhere safe.";
+
+"Backup password" = "Backup password";
+
+"Repeat backup password" = "Repeat backup password";
+
+"Password cannot be empty" = "Password cannot be empty";
+
+"Password must contain at least 8 characters" = "Password must contain at least 8 characters";
+
+"Password doesn't match" = "Password doesn't match";

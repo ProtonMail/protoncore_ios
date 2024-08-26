@@ -156,6 +156,13 @@ public enum LUITranslation: TranslationsExposing {
     case continue_and_join_organization
     case continue_core_button
     case organization_t_c_description
+    case set_backup_password
+    case backup_password_description
+    case backup_password
+    case repeat_backup_password
+    case passwordEmptyErrorDescription
+    case passwordLeast8CharactersErrorDescription
+    case passwordNotMatchErrorDescription
 
     public var l10n: String {
         switch self {
@@ -416,6 +423,24 @@ public enum LUITranslation: TranslationsExposing {
         case .organization_t_c_description:
             return localized(key: "By continuing, you agree to our",
                              comment: "Join organization terms and conditions description")
+        case .set_backup_password:
+            return localized(key: "Set backup password",
+                             comment: "Set backup password SSO screen title")
+        case .backup_password_description:
+            return localized(key: "If you get locked out of your Proton Account, your backup password will allow you to sign in and recover your data.\n\nIt’s the only way to fully restore your account, so make sure to keep it somewhere safe.",
+                             comment: "Set backup password SSO screen description")
+        case .backup_password:
+            return localized(key: "Backup password",
+                             comment: "Backup password textfield title")
+        case .repeat_backup_password:
+            return localized(key: "Repeat backup password",
+                             comment: "Repeat backup password textfield title")
+        case .passwordEmptyErrorDescription:
+            return localized(key: "Password cannot be empty", comment: "Textfield validation error")
+        case .passwordLeast8CharactersErrorDescription:
+            return localized(key: "Password must contain at least 8 characters", comment: "Textfield validation error")
+        case .passwordNotMatchErrorDescription:
+            return localized(key: "Password doesn't match", comment: "Textfield validation error")
         }
     }
 }
