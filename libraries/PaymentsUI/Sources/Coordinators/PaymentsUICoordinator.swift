@@ -365,9 +365,8 @@ extension PaymentsUICoordinator: PaymentsUIViewControllerDelegate {
         // unregister from being notified on the transactions — you will get notified via `buyPlan` completion block
         storeKitManager.stopBeingNotifiedWhenTransactionsWaitingForTheSignupAppear()
         purchaseManager.buyPlan(plan: plan, addCredits: addCredits) { [weak self] purchaseResult in
-            if case .renewalNotification = purchaseResult {} else {
-                completionHandler()
-            }
+            completionHandler()
+
             guard let self = self else { return }
             switch purchaseResult {
             case .planPurchaseProcessingInProgress(let inProgressPlan):
