@@ -58,11 +58,13 @@ extension SetBackupPasswordView {
                     password: backupPasswordContent.text,
                     confirmPassword: repeatBackupPasswordContent.text
                 )
-            } catch let error as PasswordValidationError {
-                displayPasswordError(error: error)
             } catch {
                 PMLog.error(error)
                 bannerState = .error(content: .init(message: error.localizedDescription))
+
+                if let error = error as? PasswordValidationError {
+                    displayPasswordError(error: error)
+                }
             }
         }
 
@@ -74,16 +76,26 @@ extension SetBackupPasswordView {
         private func displayPasswordError(error: PasswordValidationError) {
             switch error {
             case .passwordEmpty:
-                bannerState = .error(content: .init(message: LUITranslation.passwordEmptyErrorDescription.l10n))
                 backupPasswordStyle.mode = .error
             case .passwordShouldHaveAtLeastEightCharacters:
-                bannerState = .error(content: .init(message: LUITranslation.passwordLeast8CharactersErrorDescription.l10n))
                 backupPasswordStyle.mode = .error
             case .passwordNotEqual:
-                bannerState = .error(content: .init(message: LUITranslation.passwordNotMatchErrorDescription.l10n))
                 backupPasswordStyle.mode = .error
                 repeatBackupPasswordStyle.mode = .error
             }
+        }
+    }
+}
+
+extension PasswordValidationError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .passwordEmpty: 
+            return LUITranslation.passwordEmptyErrorDescription.l10n
+        case .passwordShouldHaveAtLeastEightCharacters:
+            return LUITranslation.passwordLeast8CharactersErrorDescription.l10n
+        case .passwordNotEqual:
+            return LUITranslation.passwordNotMatchErrorDescription.l10n
         }
     }
 }
