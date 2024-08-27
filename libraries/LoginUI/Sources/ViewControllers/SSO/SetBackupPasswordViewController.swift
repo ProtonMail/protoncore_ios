@@ -41,6 +41,7 @@ public final class SetBackupPasswordViewController: UIHostingController<SetBacku
     }
 
     override public func viewDidLoad() {
+        super.viewDidLoad()
         view.backgroundColor = ColorProvider.BackgroundNorm
     }
 }

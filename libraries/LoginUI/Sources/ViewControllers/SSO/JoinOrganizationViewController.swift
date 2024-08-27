@@ -44,6 +44,7 @@ public final class JoinOrganizationViewController: UIHostingController<JoinOrgan
     }
 
     override public func viewDidLoad() {
+        super.viewDidLoad()
         view.backgroundColor = ColorProvider.BackgroundNorm
     }
 }

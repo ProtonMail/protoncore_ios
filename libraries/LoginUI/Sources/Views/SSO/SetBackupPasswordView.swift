@@ -28,7 +28,7 @@ public struct SetBackupPasswordView: View {
 
     @StateObject var viewModel: ViewModel
 
-    enum Constants {
+    private enum Constants {
         static let itemSpacing: CGFloat = 20
     }
 

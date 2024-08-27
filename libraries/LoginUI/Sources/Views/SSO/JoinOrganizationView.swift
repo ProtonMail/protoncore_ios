@@ -28,7 +28,7 @@ public struct JoinOrganizationView: View {
 
     @StateObject var viewModel: ViewModel
 
-    enum Constants {
+    private enum Constants {
         static let itemSpacing: CGFloat = 20
         static let emailContainerRadius: CGFloat = 8
         static let imageSize: CGFloat = 32

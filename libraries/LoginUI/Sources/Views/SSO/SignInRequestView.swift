@@ -28,7 +28,7 @@ public struct SignInRequestView: View {
 
     @StateObject var viewModel: ViewModel
 
-    enum Constants {
+    private enum Constants {
         static let itemSpacing: CGFloat = 20
         static let codePadding: CGFloat = 10
         static let cornerRadius: CGFloat = 8

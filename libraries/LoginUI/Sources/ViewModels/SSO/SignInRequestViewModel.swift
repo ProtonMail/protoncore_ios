@@ -66,8 +66,8 @@ extension SignInRequestView {
         init(dependencies: Dependencies) {
             self.mode = dependencies.mode
             self.devices = [
-                .init(name: "macOS", localizedClientName: "Proton Mail, Chrome", lastActivityTime: Date(timeIntervalSince1970: 1724748945)),
-                .init(name: "Google Pixel 7a", localizedClientName: "Proton Mail, Android", lastActivityTime: Date(timeIntervalSince1970: 1724747945))
+                .init(name: "macOS", localizedClientName: "Proton Mail, Chrome", lastActivityTime: Date()),
+                .init(name: "Google Pixel 7a", localizedClientName: "Proton Mail, Android", lastActivityTime: Date())
             ]
         }
 

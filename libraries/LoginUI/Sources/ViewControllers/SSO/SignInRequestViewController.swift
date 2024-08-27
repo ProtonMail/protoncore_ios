@@ -41,6 +41,7 @@ public final class SignInRequestViewController: UIHostingController<SignInReques
     }
 
     override public func viewDidLoad() {
+        super.viewDidLoad()
         view.backgroundColor = ColorProvider.BackgroundNorm
     }
 }
