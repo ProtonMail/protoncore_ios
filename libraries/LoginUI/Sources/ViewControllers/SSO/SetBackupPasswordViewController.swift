@@ -23,22 +23,19 @@
 
 import Foundation
 import SwiftUI
-import ProtonCoreDataModel
 
-public final class JoinOrganizationViewController: UIHostingController<JoinOrganizationView> {
+public final class SetBackupPasswordViewController: UIHostingController<SetBackupPasswordView> {
 
-    let viewModel: JoinOrganizationView.ViewModel
+    let viewModel: SetBackupPasswordView.ViewModel
 
      required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(clientApp: ClientApp) {
-        let dependencies = JoinOrganizationView.Dependencies(
-            externalLinks: .init(clientApp: clientApp)
-        )
-        self.viewModel = JoinOrganizationView.ViewModel(dependencies: dependencies)
-        let view = JoinOrganizationView(viewModel: self.viewModel)
+    init() {
+        let dependencies = SetBackupPasswordView.Dependencies()
+        self.viewModel = SetBackupPasswordView.ViewModel(dependencies: dependencies)
+        let view = SetBackupPasswordView(viewModel: self.viewModel)
         super.init(rootView: view)
     }
 }

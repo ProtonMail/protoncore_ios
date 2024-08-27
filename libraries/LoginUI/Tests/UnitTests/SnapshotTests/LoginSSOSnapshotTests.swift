@@ -37,6 +37,13 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
 
         checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
     }
+
+    @MainActor
+    func testSetBackupPasswordView() {
+        let viewController = SetBackupPasswordViewController()
+
+        checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
+    }
 }
 
 #endif
