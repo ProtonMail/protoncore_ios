@@ -22,6 +22,7 @@
 #if os(iOS)
 
 import Foundation
+import ProtonCoreUIFoundations
 import SwiftUI
 
 public final class SetBackupPasswordViewController: UIHostingController<SetBackupPasswordView> {
@@ -37,6 +38,10 @@ public final class SetBackupPasswordViewController: UIHostingController<SetBacku
         self.viewModel = SetBackupPasswordView.ViewModel(dependencies: dependencies)
         let view = SetBackupPasswordView(viewModel: self.viewModel)
         super.init(rootView: view)
+    }
+
+    override public func viewDidLoad() {
+        view.backgroundColor = ColorProvider.BackgroundNorm
     }
 }
 

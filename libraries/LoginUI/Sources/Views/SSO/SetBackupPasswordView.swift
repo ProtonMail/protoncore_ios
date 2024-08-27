@@ -54,7 +54,6 @@ public struct SetBackupPasswordView: View {
                 content: $viewModel.repeatBackupPasswordContent
             )
 
-
             PCButton(
                 style: .constant(.init(mode: .solid)),
                 content: .constant(.init(

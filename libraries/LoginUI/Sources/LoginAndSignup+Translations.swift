@@ -163,6 +163,19 @@ public enum LUITranslation: TranslationsExposing {
     case passwordEmptyErrorDescription
     case passwordLeast8CharactersErrorDescription
     case passwordNotMatchErrorDescription
+    case sign_in_request_title
+    case sign_in_request_description
+    case confirmation_code
+    case sign_in_request_disclaimer
+    case yes_it_was_me
+    case no_it_wasnt_me
+    case share_confirmation_code_title
+    case approve_sign_in_another_device_title
+    case share_confirmation_code_description
+    case approve_sign_in_another_device_description
+    case use_backup_password_instead
+    case ask_administrator_for_help
+    case devices_available
 
     public var l10n: String {
         switch self {
@@ -441,6 +454,32 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Password must contain at least 8 characters", comment: "Textfield validation error")
         case .passwordNotMatchErrorDescription:
             return localized(key: "Password doesn't match", comment: "Textfield validation error")
+        case .sign_in_request_title:
+            return localized(key: "Sign-in requested on another device. Was it you?", comment: "Sign in request title for device B")
+        case .sign_in_request_description:
+            return localized(key: "Check that the confirmation code match the code on your other device.", comment: "Sign in request description for device B")
+        case .confirmation_code:
+            return localized(key: "Confirmation code", comment: "Textfield title")
+        case .sign_in_request_disclaimer:
+            return localized(key: "If you didn't make this request, cancel it now.", comment: "Sign in request disclaimer information")
+        case .yes_it_was_me:
+            return localized(key: "Yes, it was me", comment: "Action button title")
+        case .no_it_wasnt_me:
+            return localized(key: "No, it wasn't me", comment: "Action button title")
+        case .share_confirmation_code_title:
+            return localized(key: "Share the confirmation code with your administrator", comment: "Screen title")
+        case .approve_sign_in_another_device_title:
+            return localized(key: "Approve the sign-in from another device", comment: "Screen title")
+        case .share_confirmation_code_description:
+            return localized(key: "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@.", comment: "Screen description for requesting admin access")
+        case .approve_sign_in_another_device_description:
+            return localized(key: "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device.", comment: "Screen description when requesting to approve on another device")
+        case .use_backup_password_instead:
+            return localized(key: "Use backup password instead", comment: "Action button title")
+        case .ask_administrator_for_help:
+            return localized(key: "Ask administrator for help", comment: "Action button title")
+        case .devices_available:
+            return localized(key: "Devices available:", comment: "Section title")
         }
     }
 }
