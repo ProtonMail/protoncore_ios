@@ -54,10 +54,12 @@ extension TOTPView {
                     try await delegate?.providerDidObtain(factor: code)
                     // don't update isLoading here, it stops way ahead of the view being dismissed
                 } catch {
-                    await MainActor.run {
-                        isLoading = false
-                        bannerState = .error(content: .init(message: error.localizedDescription))
+                    isLoading = false
+                    var errorMessage = LUITranslation.operation_could_not_be_completed.l10n
+                    if let loginError = error as? ProtonCoreLogin.LoginError {
+                        errorMessage = loginError.userFacingMessageInLogin
                     }
+                    bannerState = .error(content: .init(message: errorMessage))
                 }
             }
 

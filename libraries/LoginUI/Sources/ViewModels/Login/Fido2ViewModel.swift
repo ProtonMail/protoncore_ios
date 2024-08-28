@@ -140,12 +140,9 @@ extension Fido2View.ViewModel: ASAuthorizationControllerDelegate {
     public func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         PMLog.error("Secure Key authorization failed with error: \(error.localizedDescription)", sendToExternal: true)
 
-        defer {
-            bannerState = .error(content: .init(message: error.localizedDescription))
-        }
-
         guard let authorizationError = error as? ASAuthorizationError else {
             ObservabilityEnv.report(.webAuthnRequestTotal(status: .errorOther))
+            bannerState = .error(content: .init(message: LUITranslation.operation_could_not_be_completed.l10n))
             return
         }
         let status: WebAuthnRequestStatus = switch authorizationError.code {
@@ -157,6 +154,9 @@ extension Fido2View.ViewModel: ASAuthorizationControllerDelegate {
         case .unknown: .errorUnknown
         @unknown default:
                 .errorOther
+        }
+        if status != .errorCanceled {
+            bannerState = .error(content: .init(message: LUITranslation.operation_could_not_be_completed.l10n))
         }
         ObservabilityEnv.report(.webAuthnRequestTotal(status: status))
     }
