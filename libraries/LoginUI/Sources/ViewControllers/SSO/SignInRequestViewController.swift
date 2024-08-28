@@ -22,24 +22,21 @@
 #if os(iOS)
 
 import Foundation
-import SwiftUI
 import ProtonCoreUIFoundations
-import ProtonCoreDataModel
+import SwiftUI
 
-public final class JoinOrganizationViewController: UIHostingController<JoinOrganizationView> {
+public final class SignInRequestViewController: UIHostingController<SignInRequestView> {
 
-    let viewModel: JoinOrganizationView.ViewModel
+    let viewModel: SignInRequestView.ViewModel
 
      required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(clientApp: ClientApp) {
-        let dependencies = JoinOrganizationView.Dependencies(
-            externalLinks: .init(clientApp: clientApp)
-        )
-        self.viewModel = JoinOrganizationView.ViewModel(dependencies: dependencies)
-        let view = JoinOrganizationView(viewModel: self.viewModel)
+    init(mode: SignInRequestView.ViewMode) {
+        let dependencies = SignInRequestView.Dependencies(mode: mode)
+        self.viewModel = SignInRequestView.ViewModel(dependencies: dependencies)
+        let view = SignInRequestView(viewModel: self.viewModel)
         super.init(rootView: view)
     }
 

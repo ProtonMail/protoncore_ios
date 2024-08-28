@@ -44,6 +44,27 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
 
         checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
     }
+
+    @MainActor
+    func testSignInRequestViewModeRequestForAdminApproval() {
+        let viewController = SignInRequestViewController(mode: .requestForAdminApproval(code: "64S3"))
+
+        checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
+    }
+
+    @MainActor
+    func testSignInRequestViewModeRequestApproveFromAnotherDevice() {
+        let viewController = SignInRequestViewController(mode: .requestApproveFromAnotherDevice(code: "64S3"))
+
+        checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
+    }
+
+    @MainActor
+    func testSignInRequestViewModeApprovingAccess() {
+        let viewController = SignInRequestViewController(mode: .approvingAccess)
+
+        checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
+    }
 }
 
 #endif

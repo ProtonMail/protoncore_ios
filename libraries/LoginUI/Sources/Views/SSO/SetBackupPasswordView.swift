@@ -28,7 +28,7 @@ public struct SetBackupPasswordView: View {
 
     @StateObject var viewModel: ViewModel
 
-    enum Constants {
+    private enum Constants {
         static let itemSpacing: CGFloat = 20
     }
 
@@ -53,7 +53,6 @@ public struct SetBackupPasswordView: View {
                 style: $viewModel.repeatBackupPasswordStyle,
                 content: $viewModel.repeatBackupPasswordContent
             )
-
 
             PCButton(
                 style: .constant(.init(mode: .solid)),
