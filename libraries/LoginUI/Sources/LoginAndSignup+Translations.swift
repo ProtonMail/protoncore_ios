@@ -153,10 +153,8 @@ public enum LUITranslation: TranslationsExposing {
     case twofa_unexpected_signature
     case unavailable_authinfo
     case join_organization_title
-    case continue_and_join_organization
+    case join_organization_description
     case continue_core_button
-    case organization_t_c_description
-    case set_backup_password
     case backup_password_description
     case backup_password
     case repeat_backup_password
@@ -427,20 +425,14 @@ public enum LUITranslation: TranslationsExposing {
         case .join_organization_title:
             return localized(key: "Join %@",
                              comment: "Join organization screen title that uses the name of the organization.")
-        case .continue_and_join_organization:
-            return localized(key: "Continue to create your Proton Account and join your organization",
+        case .join_organization_description:
+            return localized(key: "%@ invited you to join their organization on %@.",
                              comment: "Join organization screen description.")
         case .continue_core_button:
             return localized(key: "Continue",
                              comment: "Continue action button title")
-        case .organization_t_c_description:
-            return localized(key: "By continuing, you agree to our",
-                             comment: "Join organization terms and conditions description")
-        case .set_backup_password:
-            return localized(key: "Set backup password",
-                             comment: "Set backup password SSO screen title")
         case .backup_password_description:
-            return localized(key: "If you get locked out of your Proton Account, your backup password will allow you to sign in and recover your data.\n\nIt’s the only way to fully restore your account, so make sure to keep it somewhere safe.",
+            return localized(key: "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.",
                              comment: "Set backup password SSO screen description")
         case .backup_password:
             return localized(key: "Backup password",

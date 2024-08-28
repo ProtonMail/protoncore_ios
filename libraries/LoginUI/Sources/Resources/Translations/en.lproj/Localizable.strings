@@ -260,15 +260,11 @@
 
 "Join %@" = "Join %@";
 
-"Continue to create your Proton Account and join your organization" = "Continue to create your Proton Account and join your organization";
+"%@ invited you to join their organization on %@." = "%@ invited you to join their organization on %@.";
 
 "Continue" = "Continue";
 
-"By continuing, you agree to our" = "By continuing, you agree to our";
-
-"Set backup password" = "Set backup password";
-
-"If you get locked out of your Proton Account, your backup password will allow you to sign in and recover your data.\n\nIt’s the only way to fully restore your account, so make sure to keep it somewhere safe." = "If you get locked out of your Proton Account, your backup password will allow you to sign in and recover your data.\n\nIt’s the only way to fully restore your account, so make sure to keep it somewhere safe.";
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.";
 
 "Backup password" = "Backup password";
 
