@@ -30,27 +30,31 @@ public struct JoinOrganizationView: View {
 
     private enum Constants {
         static let itemSpacing: CGFloat = 20
-        static let emailContainerRadius: CGFloat = 8
-        static let imageSize: CGFloat = 32
+        static let imageCornerRadius: CGFloat = 12
+        static let imageSize: CGFloat = 56
+        static let standardPadding: CGFloat = 12
     }
 
     public var body: some View {
-        VStack(spacing: Constants.itemSpacing) {
-            Text(viewModel.joinOrganizationTitle)
-                .font(.title2)
-                .fontWeight(.bold)
-                .frame(maxWidth: .infinity, alignment: .leading)
+        ScrollView {
+            VStack(spacing: Constants.itemSpacing) {
+                headerView
+                
+                Text(LUITranslation.backup_password_description.l10n)
+                    .font(.subheadline)
+                    .foregroundColor(ColorProvider.TextWeak)
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
-            ImageTitleCell(
-                image: Image(viewModel.organizationImageName, bundle: PMUIFoundations.bundle),
-                title: viewModel.accountEmail
-            )
+                PCTextField(
+                    style: $viewModel.backupPasswordStyle,
+                    content: $viewModel.backupPasswordContent
+                )
 
-            Text(LUITranslation.continue_and_join_organization.l10n)
-                .font(.subheadline)
-                .foregroundColor(ColorProvider.TextWeak)
+                PCTextField(
+                    style: $viewModel.repeatBackupPasswordStyle,
+                    content: $viewModel.repeatBackupPasswordContent
+                )
 
-            VStack {
                 PCButton(
                     style: .constant(.init(mode: .solid)),
                     content: .constant(.init(
@@ -58,46 +62,53 @@ public struct JoinOrganizationView: View {
                         action: viewModel.continueTapped
                     ))
                 )
-
-                PCButton(
-                    style: .constant(.init(mode: .text)),
-                    content: .constant(.init(
-                        title: LUITranslation._core_cancel_button.l10n,
-                        action: viewModel.cancelTapped
-                    ))
-                )
+                .padding(.top, Constants.itemSpacing)
             }
-            .padding(.top, Constants.itemSpacing)
-
-            Link(destination: viewModel.termsAndConditionsLink, label: {
-                (Text(LUITranslation.organization_t_c_description.l10n + " ") +
-                 Text(LUITranslation.password_t_c_link.l10n.lowercased())
-                    .foregroundColor(ColorProvider.TextAccent)
-                )
-                .multilineTextAlignment(.leading)
-                .font(.subheadline)
-                .foregroundColor(ColorProvider.TextWeak)
-            })
-            .frame(maxWidth: .infinity, alignment: .leading)
-
-            Spacer()
+            .padding(Constants.itemSpacing)
+            .foregroundColor(ColorProvider.TextNorm)
+            .background(ColorProvider.BackgroundNorm)
+            .frame(maxWidth: .infinity)
+            .bannerDisplayable(bannerState: $viewModel.bannerState,
+                               configuration: .default())
         }
-        .padding(Constants.itemSpacing)
-        .foregroundColor(ColorProvider.TextNorm)
-        .background(ColorProvider.BackgroundNorm)
-        .frame(maxWidth: .infinity)
-        .bannerDisplayable(bannerState: $viewModel.bannerState,
-                           configuration: .default())
+        .background(
+            ColorProvider.BackgroundNorm
+                .edgesIgnoringSafeArea(.all)
+        )
+    }
+
+    @ViewBuilder
+    private var headerView: some View {
+        defaultOrganizationImage
+        VStack(spacing: Constants.standardPadding) {
+            Text(viewModel.joinOrganizationTitle)
+                .font(.title2)
+                .fontWeight(.bold)
+            Text(viewModel.joinOrganizationDescription)
+                .font(.subheadline)
+                .fontWeight(.semibold)
+                .multilineTextAlignment(.center)
+        }
+        Divider()
+            .background(ColorProvider.SeparatorNorm)
+    }
+
+    @ViewBuilder
+    private var defaultOrganizationImage: some View {
+        IconProvider.users
+            .resizable()
+            .foregroundColor(ColorProvider.White)
+            .padding(Constants.standardPadding)
+            .frame(width: Constants.imageSize, height: Constants.imageSize)
+            .background(ColorProvider.BrandNorm)
+            .cornerRadius(Constants.imageCornerRadius)
     }
 }
 
 #if DEBUG
 #Preview {
     NavigationView {
-        let dependencies = JoinOrganizationView.Dependencies(
-            externalLinks: ExternalLinks(clientApp: .vpn)
-        )
-        JoinOrganizationView(viewModel: .init(dependencies: dependencies))
+        JoinOrganizationView(viewModel: .init(dependencies: .init()))
     }
 }
 #endif

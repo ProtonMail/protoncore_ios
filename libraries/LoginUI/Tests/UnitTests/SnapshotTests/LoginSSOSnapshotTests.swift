@@ -33,14 +33,7 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
 
     @MainActor
     func testJoinOrganizationView() {
-        let viewController = JoinOrganizationViewController(clientApp: .vpn)
-
-        checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
-    }
-
-    @MainActor
-    func testSetBackupPasswordView() {
-        let viewController = SetBackupPasswordViewController()
+        let viewController = JoinOrganizationViewController()
 
         checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
     }

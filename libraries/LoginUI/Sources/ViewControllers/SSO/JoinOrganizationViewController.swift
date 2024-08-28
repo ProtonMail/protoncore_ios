@@ -34,11 +34,8 @@ public final class JoinOrganizationViewController: UIHostingController<JoinOrgan
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(clientApp: ClientApp) {
-        let dependencies = JoinOrganizationView.Dependencies(
-            externalLinks: .init(clientApp: clientApp)
-        )
-        self.viewModel = JoinOrganizationView.ViewModel(dependencies: dependencies)
+    init() {
+        self.viewModel = JoinOrganizationView.ViewModel(dependencies: .init())
         let view = JoinOrganizationView(viewModel: self.viewModel)
         super.init(rootView: view)
     }

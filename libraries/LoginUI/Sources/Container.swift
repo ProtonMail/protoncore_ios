@@ -165,7 +165,7 @@ final class Container {
 
     @MainActor
     func makeJoinOrganizationViewModel() -> JoinOrganizationView.ViewModel {
-        return .init(dependencies: .init(externalLinks: self.externalLinks))
+        return .init(dependencies: .init())
     }
 
     // MARK: Other view models

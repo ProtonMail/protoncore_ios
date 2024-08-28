@@ -22,30 +22,37 @@
 #if os(iOS)
 
 import SwiftUI
+import ProtonCoreLog
 import ProtonCoreUIFoundations
+import ProtonCoreUtilities
 
 extension JoinOrganizationView {
-    struct Dependencies {
-        let externalLinks: ExternalLinks
-    }
+    struct Dependencies {}
 }
 
 extension JoinOrganizationView {
 
     @MainActor
-    final class ViewModel: ObservableObject {
-
-        private let externalLinks: ExternalLinks
+    final class ViewModel: ObservableObject, PasswordValidator {
 
         @Published var bannerState: BannerState = .none
-        
-        private let organizationName: String = "Proton AG"
-        let accountEmail: String = "test@test.com"
-        let organizationImageName: String = "LaunchScreenVPNLogo"
 
-        init(dependencies: Dependencies) {
-            self.externalLinks = dependencies.externalLinks
-        }
+        @Published var backupPasswordStyle: PCTextFieldStyle = .init(mode: .idle)
+        @Published var backupPasswordContent: PCTextFieldContent = .init(
+            title: LUITranslation.backup_password.l10n,
+            isSecureEntry: true
+        )
+        @Published var repeatBackupPasswordStyle: PCTextFieldStyle = .init(mode: .idle)
+        @Published var repeatBackupPasswordContent: PCTextFieldContent = .init(
+            title: LUITranslation.repeat_backup_password.l10n,
+            isSecureEntry: true
+        )
+
+        private let organizationName: String = "Proton AG"
+        private let organizationEmail: String = "admin@privacybydefault.com"
+        private let productJoining: String = "Proton Mail"
+
+        init(dependencies: Dependencies) {}
 
         var joinOrganizationTitle: String {
             String.localizedStringWithFormat(
@@ -54,13 +61,59 @@ extension JoinOrganizationView {
             )
         }
 
-        var termsAndConditionsLink: URL {
-            externalLinks.termsAndConditions
+        var joinOrganizationDescription: String {
+            String.localizedStringWithFormat(
+                LUITranslation.join_organization_description.l10n,
+                organizationEmail,
+                productJoining
+            )
         }
 
-        func continueTapped() {}
+        func continueTapped() {
+            do {
+                resetTextFieldsErrors()
+                try validate(
+                    for: .default,
+                    password: backupPasswordContent.text,
+                    confirmPassword: repeatBackupPasswordContent.text
+                )
+            } catch {
+                PMLog.error(error)
+                bannerState = .error(content: .init(message: error.localizedDescription))
 
-        func cancelTapped() {}
+                if let error = error as? PasswordValidationError {
+                    displayPasswordError(error: error)
+                }
+            }
+        }
+
+        private func resetTextFieldsErrors() {
+            backupPasswordStyle.mode = .idle
+            repeatBackupPasswordStyle.mode = .idle
+        }
+
+        private func displayPasswordError(error: PasswordValidationError) {
+            switch error {
+            case .passwordEmpty, .passwordShouldHaveAtLeastEightCharacters:
+                backupPasswordStyle.mode = .error
+            case .passwordNotEqual:
+                backupPasswordStyle.mode = .error
+                repeatBackupPasswordStyle.mode = .error
+            }
+        }
+    }
+}
+
+extension PasswordValidationError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .passwordEmpty:
+            return LUITranslation.passwordEmptyErrorDescription.l10n
+        case .passwordShouldHaveAtLeastEightCharacters:
+            return LUITranslation.passwordLeast8CharactersErrorDescription.l10n
+        case .passwordNotEqual:
+            return LUITranslation.passwordNotMatchErrorDescription.l10n
+        }
     }
 }
 
