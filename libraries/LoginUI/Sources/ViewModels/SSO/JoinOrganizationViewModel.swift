@@ -49,8 +49,8 @@ extension JoinOrganizationView {
         )
 
         private let organizationName: String = "Proton AG"
-        let organizationEmail: String = "admin@privacybydefault.com"
-        let productJoining: String = "Proton Mail"
+        private let organizationEmail: String = "admin@privacybydefault.com"
+        private let productJoining: String = "Proton Mail"
 
         init(dependencies: Dependencies) {}
 
@@ -94,9 +94,7 @@ extension JoinOrganizationView {
 
         private func displayPasswordError(error: PasswordValidationError) {
             switch error {
-            case .passwordEmpty:
-                backupPasswordStyle.mode = .error
-            case .passwordShouldHaveAtLeastEightCharacters:
+            case .passwordEmpty, .passwordShouldHaveAtLeastEightCharacters:
                 backupPasswordStyle.mode = .error
             case .passwordNotEqual:
                 backupPasswordStyle.mode = .error
