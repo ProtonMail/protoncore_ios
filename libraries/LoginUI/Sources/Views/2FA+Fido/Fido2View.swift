@@ -42,6 +42,7 @@ public struct Fido2View: View {
                     Text("Learn more",
                          bundle: LUITranslation.bundle,
                          comment: "Link text to the Proton KB explaining 2FA")
+                    .foregroundColor(ColorProvider.TextAccent)
                 }
             }
             .font(isNested ? .body : .title3)
