@@ -257,3 +257,49 @@
 "Unexpected FIDO2 signature." = "მოულოდნელი FIDO2 ხელმოწერა";
 
 "We could not initiate the Secure Password update connection. Please try again." = "Secure Password-ის განახლებისთვის მიერთების აწევა შეუძლებელია. მოგვიანებით სცადეთ.";
+
+"Join %@" = "%@-ზე შესვლა";
+
+"%@ invited you to join their organization on %@." = "%@-მა მიგიწვიათ, შეუერთდეთ მათ ორგანიზაციას %@-ზე";
+
+"Continue" = "გაგრძელება";
+
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "გასაგრძელებლად დააყენეთ მარქაფი პაროლი. ეს პაროლი საშუალებას მოგცემთ, შეხვიდეთ და აღადგინოთ თქვენი მონაცემები, თუ თქვენი Proton-ის ანგარიში დაგებლოკებათ, ასე, რომ, დარწმუნდით, რომ ის საიმედოდ შეინახეთ.";
+
+"Backup password" = "მარქაფი პაროლი";
+
+"Repeat backup password" = "გაიმეორეთ მარქაფი პაროლი";
+
+"Password cannot be empty" = "პაროლი ცარიელი ვერ იქნება";
+
+"Password must contain at least 8 characters" = "პაროლი 8 სიმბოლოს მაინც უნდა შეიცავდეს";
+
+"Password doesn't match" = "პაროლები არ ემთხვევა";
+
+"Sign-in requested on another device. Was it you?" = "მოთხოვნილია შესვლა სხვა მოწყობილობიდან. შენ იყავი ცელქო?";
+
+"Check that the confirmation code match the code on your other device." = "შეამოწმეთ, რომ დადასტურები კოდი ემთხვევა სხვა მოწყობილობაზე ნაჩვენებ კოდს.";
+
+"Confirmation code" = "დადასტურების კოდი";
+
+"If you didn't make this request, cancel it now." = "თუ მოთხოვნა თქვენი არაა, გააუქმეთ ის ახლავე.";
+
+"Yes, it was me" = "დიახ, მე ვიყავი";
+
+"No, it wasn't me" = "არა, მე არ ვიყავი";
+
+"Share the confirmation code with your administrator" = "გაუზიარეთ დადასტურების კოდი თქვენს ადმინისტრატორს";
+
+"Approve the sign-in from another device" = "სხვა მოწყობილობიდან შესვლის დაშვება";
+
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "იმისათვის, რომ დავრწმუნდეთ, რომ ის, ვინც შესვლას ცდილობს, ნამდვილად თქვენ ბრძანდებით, გაუზიარეთ დადასტურების კოდი თქვენს ადმინისტრატორს %@, რომ მათ შეეძლოთ, %@-სთვის მოთხოვნა დაადასტურონ.";
+
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "იმისათვის, რომ დავრწმუნდეთ, რომ ის, ვინც თქვენს ანგარიშში შედის, თქვენ ბრძანდებით, იხილეთ კოდი და დაადასტურეთ მოთხოვნა სხვა მოწყობილობიდან.";
+
+"Use backup password instead" = "გამოყენეთ მარქაფი პაროლი";
+
+"Ask administrator for help" = "ადმინისთვის დახმარების თხოვნა";
+
+"Devices available:" = "ხელმსაწვდომი მოწყობილობები:";
+
+"Operation couldn't be completed. Please try again." = "ოპერაციის დასრულება შეუძლებელია. თავიდან სცადეთ.";

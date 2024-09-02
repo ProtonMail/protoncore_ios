@@ -257,3 +257,49 @@
 "Unexpected FIDO2 signature." = "Tanda tangan FIDO2 tidak terduga.";
 
 "We could not initiate the Secure Password update connection. Please try again." = "Kami tidak dapat memulai koneksi pembaruan kata sandi aman. Silakan coba kembali.";
+
+"Join %@" = "Gabung ke %@";
+
+"%@ invited you to join their organization on %@." = "%@ mengundang Anda untuk bergabung dalam organiasinya di %@.";
+
+"Continue" = "Lanjut";
+
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Tentukan kata sandi cadangan untuk melanjutkan. Kata sandi ini akan memungkinkan Anda untuk masuk dan memulihkan data apabila Anda sampai terkunci dari Akun Proton Anda, sehingga pastikan Anda menyimpan kata sandi ini di tempat yang aman.";
+
+"Backup password" = "Kata sandi cadangan";
+
+"Repeat backup password" = "Ulangi kata sandi cadangan";
+
+"Password cannot be empty" = "Kata sandi tidak boleh kosong";
+
+"Password must contain at least 8 characters" = "Kata sandi minimal 8 karakter";
+
+"Password doesn't match" = "Kata sandi tidak sesuai";
+
+"Sign-in requested on another device. Was it you?" = "Terdapat permintaan entri masuk pada perangkat lainnya. Apakah ini Anda?";
+
+"Check that the confirmation code match the code on your other device." = "Periksa apakah kode konfirmasi ini sesuai dengan kode yang terdapat pada perangkat lainnya.";
+
+"Confirmation code" = "Kode konfirmasi";
+
+"If you didn't make this request, cancel it now." = "Apabila Anda tidak mengajukan permintaan ini, batalkan tindakan ini sekarang juga.";
+
+"Yes, it was me" = "Ya, ini saya";
+
+"No, it wasn't me" = "Tidak, ini bukan saya";
+
+"Share the confirmation code with your administrator" = "Bagikan kode konfirmasi ini dengan administrator Anda";
+
+"Approve the sign-in from another device" = "Setujui entri masuk dari perangkat lainnya";
+
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Untuk memastikan bahwa entri masuk ini benar-benar berasal dari Anda, bagikan kode konfirmasi ini dengan administrator %@ Anda agar mereka dapat menerima permintaan untuk %@.";
+
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Untuk memastikan bahwa entri masuk ke akun ini benar-benar berasal dari Anda, tinjau kode konfirmasi yang tertera dan terima permintaan ini dari perangkat lainnya.";
+
+"Use backup password instead" = "Gunakan kata sandi cadangan";
+
+"Ask administrator for help" = "Minta bantuan kepada administrator";
+
+"Devices available:" = "Perangkat yang tersedia:";
+
+"Operation couldn't be completed. Please try again." = "Tindakan tidak dapat diselesaikan. Silakan coba lagi.";

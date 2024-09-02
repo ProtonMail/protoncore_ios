@@ -257,3 +257,49 @@
 "Unexpected FIDO2 signature." = "Нечаканы подпіс FIDO2.";
 
 "We could not initiate the Secure Password update connection. Please try again." = "Не атрымалася ініцыялізаваць абноўленае злучэнне бяспечнага пароля. Паспрабуйце яшчэ раз.";
+
+"Join %@" = "Далучыцца да групы %@";
+
+"%@ invited you to join their organization on %@." = "%@ запрасіў вас далучыцца да іх арганізацыі ў %@.";
+
+"Continue" = "Працягнуць";
+
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Задайце рэзервовы пароль для працягу. Гэты пароль дазволіць вам увайсці і адравіць вашы даныя, калі вы не зможаце атрымаць доступ да свайго ўліковага запісу Proton. Пераканайцеся, што ён захаваны ў надзейным месцы.";
+
+"Backup password" = "Рэзервовы пароль";
+
+"Repeat backup password" = "Паўтарыце рэзервовы пароль";
+
+"Password cannot be empty" = "Пароль не можа быць пустым";
+
+"Password must contain at least 8 characters" = "Пароль павінен змяшчаць прынамсі 8 сімвалаў";
+
+"Password doesn't match" = "Паролі не супадаюць";
+
+"Sign-in requested on another device. Was it you?" = "Запытаны ўваход на іншай прыладзе. Гэта былі вы?";
+
+"Check that the confirmation code match the code on your other device." = "Праверце, ці супадае код пацвярджэння з кодам на іншай вашай прыладзе.";
+
+"Confirmation code" = "Код пацвярджэння";
+
+"If you didn't make this request, cancel it now." = "Скасуйце гэты запыт, калі вы яго не рабілі.";
+
+"Yes, it was me" = "Так, гэта быў я.";
+
+"No, it wasn't me" = "Не, гэта быў не я.";
+
+"Share the confirmation code with your administrator" = "Абагуліць код пацвярджэння з вашым адміністратарам";
+
+"Approve the sign-in from another device" = "Ухваліце ​​ўваход з іншай прылады";
+
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Абагуліце код пацвярджэння з вашым адміністратарам %@ для таго, каб ухваліць запыт для %@. Гэта неабходна для пацвярджэння вашай асобы пры ўваходзе.";
+
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Праверце код пацвярджэння і ўхваліце запыт ад іншай прылады. Гэта дазволіць пераканацца ў тым, што іменна вы хочаце атрымаць доступ да ўліковага запісу.";
+
+"Use backup password instead" = "Замест гэтага скарыстайцеся рэзервовай копіяй пароля";
+
+"Ask administrator for help" = "Папрасіце адміністратара дапамагчы вам";
+
+"Devices available:" = "Даступныя прылады:";
+
+"Operation couldn't be completed. Please try again." = "Немагчыма завяршыць аперацыю. Паспрабуйце яшчэ раз.";

@@ -257,3 +257,49 @@
 "Unexpected FIDO2 signature." = "알 수 없는 FIDO2 서명";
 
 "We could not initiate the Secure Password update connection. Please try again." = "보안 비밀번호 업데이트 연결을 초기화하지 못했습니다. 다시 시도하십시오.";
+
+"Join %@" = "%@ 합류";
+
+"%@ invited you to join their organization on %@." = "%@님이 조직 %@에 합류하도록 초대했습니다.";
+
+"Continue" = "계속";
+
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "계속하려면 백업 비밀번호를 설정하세요. 이 비밀번호로 Proton Account 접근이 잠겼을 때 다시 로그인 및 복구할 수 있습니다. 이 비밀번호를 안전한 위치에 보관하세요.";
+
+"Backup password" = "백업 비밀번호";
+
+"Repeat backup password" = "백업 비밀번호 확인";
+
+"Password cannot be empty" = "비밀번호는 비울 수 없습니다";
+
+"Password must contain at least 8 characters" = "비밀번호는 최소 8자 이상이어야 합니다.";
+
+"Password doesn't match" = "비밀번호가 일치하지 않습니다 ";
+
+"Sign-in requested on another device. Was it you?" = "다른 기기에서 로그인이 요청되었습니다. 회원님의 요청인가요?";
+
+"Check that the confirmation code match the code on your other device." = "확인 코드가 다른 기기의 코드와 일치하는지 확인하세요.";
+
+"Confirmation code" = "확인 코드";
+
+"If you didn't make this request, cancel it now." = "요청을 직접하지 않으셨다면, 즉시 취소하세요.";
+
+"Yes, it was me" = "네, 저였어요.";
+
+"No, it wasn't me" = "아뇨, 제가 아니였어요.";
+
+"Share the confirmation code with your administrator" = "관리자에게 확인 코드를 공유하세요";
+
+"Approve the sign-in from another device" = "다른 기기에서 로그인을 수락하세요";
+
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "정말로 내가 로그인하려고 하는 것인지 확인하려면, %@에 대한 요청을 승인할 수 있도록 관리자 %@와(과) 확인 코드를 공유하세요.";
+
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "내가 정말로 당신의 계정에 로그인하려고 하는지 확인하기 위헤, 확인 코드를 검토하고 다른 장치에서 요청을 승인하세요.";
+
+"Use backup password instead" = "대신 백업 비밀번호 사용";
+
+"Ask administrator for help" = "지원을 위해 관리자에게 문의";
+
+"Devices available:" = "기기 사용 가능:";
+
+"Operation couldn't be completed. Please try again." = "작업을 완료하지 못했습니다. 다시 시도하십시오.";

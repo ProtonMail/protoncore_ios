@@ -257,3 +257,49 @@
 "Unexpected FIDO2 signature." = "Uventet FIDO2-signatur.";
 
 "We could not initiate the Secure Password update connection. Please try again." = "Vi kan ikke starte oppdateringstilkoblingen for sikkert passord. Vennligst prøv på nytt.";
+
+"Join %@" = "Bli med %@";
+
+"%@ invited you to join their organization on %@." = "%@ inviterte deg til å bli med i organisasjonen deres på %@";
+
+"Continue" = "Fortsett";
+
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Angi et reservepassord for å fortsette. Dette passordet lar deg logge på og gjenopprette dataene dine hvis du blir låst ute av Proton-kontoen din, så sørg for å oppbevare det et trygt sted.";
+
+"Backup password" = "Sikkerhetskopier passord";
+
+"Repeat backup password" = "Gjenta sikkerhetskopipassord";
+
+"Password cannot be empty" = "Passord kan ikke være tomt";
+
+"Password must contain at least 8 characters" = "Passord må inneholde minst 8 tegn";
+
+"Password doesn't match" = "Passordet samsvarer ikke";
+
+"Sign-in requested on another device. Was it you?" = "Pålogging forespurt på en annen enhet. Var det deg?";
+
+"Check that the confirmation code match the code on your other device." = "Sjekk at bekreftelseskoden samsvarer med koden på den andre enheten din.";
+
+"Confirmation code" = "Bekreftelseskode";
+
+"If you didn't make this request, cancel it now." = "Hvis du ikke sendte denne forespørselen, kanseller den nå.";
+
+"Yes, it was me" = "Ja, det var meg";
+
+"No, it wasn't me" = "Nei, det var ikke meg";
+
+"Share the confirmation code with your administrator" = "Del bekreftelseskoden med administratoren din";
+
+"Approve the sign-in from another device" = "Godkjenn påloggingen fra en annen enhet";
+
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "For å være sikker på at det virkelig er du som prøver å logge på, del bekreftelseskoden med administratoren din %@ slik at de kan godkjenne forespørselen for %@.";
+
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "For å være sikker på at det virkelig er du som prøver å logge på kontoen din, kan du se gjennom bekreftelseskoden og godkjenne forespørselen fra en annen enhet.";
+
+"Use backup password instead" = "Bruk reservepassord i stedet";
+
+"Ask administrator for help" = "Spør administrator om hjelp";
+
+"Devices available:" = "Enheter tilgjengelig:";
+
+"Operation couldn't be completed. Please try again." = "Operasjonen kunne ikke fullføres. Vennligst prøv igjen.";

@@ -144,7 +144,7 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "Al hacer clic en Siguiente, aceptas los Términos y Condiciones de Proton";
 
-"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Al hacer clic en Siguiente, aceptas los Términos y Condiciones y la Política de Privacidad de Proton";
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Al hacer clic en Siguiente, aceptas los Términos y Condiciones y la Política de Privacidad de Proton.";
 
 "Terms and Conditions" = "Términos y condiciones";
 
@@ -158,7 +158,7 @@
 
 "Set recovery method" = "Establecer un método de recuperación";
 
-"Your account is being created" = "Se está creando tu cuenta";
+"Your account is being created" = "Se está creando tu cuenta.";
 
 "This should take no more than a minute." = "Esto no debería de tardar más de un minuto.";
 
@@ -192,7 +192,7 @@
 
 "Invalid hashed password" = "Hash de la contraseña inválido";
 
-"Password can not be empty.\nPlease try again." = "El campo de la contraseña no puede estar vacío.\nInténtalo de nuevo.";
+"Password can not be empty.\nPlease try again." = "El campo contraseña no puede estar vacío.\nInténtalo de nuevo.";
 
 "Passwords do not match.\nPlease try again." = "Las contraseñas no coinciden.\nInténtalo de nuevo.";
 
@@ -210,7 +210,7 @@
 
 "Proton Free" = "Proton Free";
 
-"Your payment was confirmed and your %@ account successfully created." = "Tu pago ha sido confirmado y tu cuenta %@ se ha creado.";
+"Your payment was confirmed and your %@ account successfully created." = "Tu pago ha sido confirmado y tu cuenta %@ se ha creado satisfactoriamente.";
 
 "Your Proton account was successfully created." = "Tu cuenta Proton ha sido creada correctamente.";
 
@@ -230,7 +230,7 @@
 
 "Two-Factor Authentication" = "Autenticación de dos factores";
 
-"Present a security key linked to your Proton Account." = "Presenta una clave de seguridad vinculada a la cuenta de Proton.";
+"Present a security key linked to your Proton Account." = "Presenta una clave de seguridad vinculada a tu cuenta de Proton.";
 
 "Learn more" = "Más información";
 
@@ -238,7 +238,7 @@
 
 "There was a problem reading your security key." = "Se ha detectado un problema al leer la clave de seguridad.";
 
-"We received an authorization from a type we don't support yet." = "Hemos recibido una autorización desde un tipo que aún no soportamos.";
+"We received an authorization from a type we don't support yet." = "Hemos recibido una autorización de un tipo que aún no soportamos.";
 
 "Fetching your security keys details" = "Obteniendo los detalles de las claves de seguridad";
 
@@ -246,9 +246,9 @@
 
 "An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "Se ha producido un error al obtener las claves de seguridad. Puede revisarlas en el sitio web de Proton %@.";
 
-"These are the security keys registered to your account" = "Estas son las claves de seguridad registradas en la cuenta.";
+"These are the security keys registered to your account" = "Estas son las claves de seguridad registradas en tu cuenta.";
 
-"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "Aún no tienes claves de seguridad registradas en la cuenta. Usa la aplicación web de Proton %@ para añadir claves de seguridad.";
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "Aún no tienes claves de seguridad registradas en tu cuenta. Usa la aplicación web de Proton %@ para añadir claves de seguridad.";
 
 "Security Keys" = "Claves de seguridad";
 
@@ -257,3 +257,49 @@
 "Unexpected FIDO2 signature." = "Firma FIDO2 inesperada.";
 
 "We could not initiate the Secure Password update connection. Please try again." = "No se ha podido iniciar la conexión de actualización de contraseña segura. Vuelve a intentarlo.";
+
+"Join %@" = "Unirte a %@";
+
+"%@ invited you to join their organization on %@." = "%@ te ha invitado a unirte a su organización en %@";
+
+"Continue" = "Continuar";
+
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Debes añadir una contraseña de respaldo para continuar. Esta contraseña te permite iniciar sesión y recuperar tus datos en caso de perder el acceso a tu cuenta de Proton, asegúrate de mantenerla en un lugar seguro.";
+
+"Backup password" = "Contraseña de respaldo";
+
+"Repeat backup password" = "Confirmar la contraseña de respaldo";
+
+"Password cannot be empty" = "La contraseña no puede estar vacía.";
+
+"Password must contain at least 8 characters" = "La contraseña debe tener al menos 8 caracteres";
+
+"Password doesn't match" = "La contraseña no coincide.";
+
+"Sign-in requested on another device. Was it you?" = "Se ha solicitado un inicio de sesión en un nuevo dispositivo. ¿Has sido tú?";
+
+"Check that the confirmation code match the code on your other device." = "Confirma que el código de confirmación sea igual al código de tu otro dispositivo.";
+
+"Confirmation code" = "Código de confirmación";
+
+"If you didn't make this request, cancel it now." = "Si no has realizado esta solicitud, cancélala ahora.";
+
+"Yes, it was me" = "Sí, fui yo.";
+
+"No, it wasn't me" = "No, no fui yo.";
+
+"Share the confirmation code with your administrator" = "Comparte el código de confirmación con tu administrador.";
+
+"Approve the sign-in from another device" = "Aprobar el inicio de sesión desde otro dispositivo";
+
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Para confirmar que en verdad eres tú quien intenta iniciar sesión, comparte el código de confirmación con tu administrador %@ para que acepte la solicitud de %@.";
+
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Para confirmar que en verdad eres tú quien intenta iniciar sesión, revisa el código de confirmación y acepta la solicitud desde otro dispositivo.";
+
+"Use backup password instead" = "Usar la contraseña de respaldo en su lugar";
+
+"Ask administrator for help" = "Pedir ayuda al administrador";
+
+"Devices available:" = "Dispositivos disponibles:";
+
+"Operation couldn't be completed. Please try again." = "No se ha podido completar la operación. Inténtalo de nuevo.";

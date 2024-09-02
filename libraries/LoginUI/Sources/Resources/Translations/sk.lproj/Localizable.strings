@@ -257,3 +257,49 @@
 "Unexpected FIDO2 signature." = "Neočakávaný podpis FIDO2.";
 
 "We could not initiate the Secure Password update connection. Please try again." = "Nepodarilo sa nám spustiť pripojenie na aktualizáciu zabezpečeného hesla. Skúste to znova, prosím.";
+
+"Join %@" = "Pripojiť sa k %@";
+
+"%@ invited you to join their organization on %@." = "%@ vám posiela pozvánku do organizácie na %@.";
+
+"Continue" = "Pokračovať";
+
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Ak chcete pokračovať, nastavte záložné heslo. Toto heslo vám umožní prihlásiť sa a obnoviť údaje, ak sa vám zablokuje konto Proton, preto ho nezabudnite uložiť na bezpečné miesto.";
+
+"Backup password" = "Záložné heslo";
+
+"Repeat backup password" = "Zopakujte záložné heslo";
+
+"Password cannot be empty" = "Heslo nemôže byť prázdne";
+
+"Password must contain at least 8 characters" = "Heslo musí obsahovať aspoň 8 znakov";
+
+"Password doesn't match" = "Heslo sa nezhoduje";
+
+"Sign-in requested on another device. Was it you?" = "Požiadavka na prihlásenie na inom zariadení. Boli ste to vy?";
+
+"Check that the confirmation code match the code on your other device." = "Skontrolujte, že sa potvrdzovací kód zhoduje s kódom na inom vašom zariadení.";
+
+"Confirmation code" = "Potvrdzovací kód";
+
+"If you didn't make this request, cancel it now." = "Ak ste túto žiadosť nepodali, zrušte ju teraz.";
+
+"Yes, it was me" = "Áno, ide o moju žiadosť";
+
+"No, it wasn't me" = "Nie, nejde o moju žiadosť";
+
+"Share the confirmation code with your administrator" = "Zdieľajte potvrdzovací kód s vaším správcom";
+
+"Approve the sign-in from another device" = "Schválenie prihlásenia z iného zariadenia";
+
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Ak sa chcete uistiť, že sa o prihlásenie pokúšate naozaj vy, zdieľajte potvrdzovací kód so správcom %@, aby mohol schváliť žiadosť pre %@.";
+
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Ak sa chcete uistiť, že sa do svojho konta pokúšate prihlásiť naozaj vy, skontrolujte potvrdzovací kód a potvrďte žiadosť z iného zariadenia.";
+
+"Use backup password instead" = "Namiesto toho použiť záložné heslo";
+
+"Ask administrator for help" = "Požiadať správcu o pomoc";
+
+"Devices available:" = "Dostupné zariadenia:";
+
+"Operation couldn't be completed. Please try again." = "Operácia nemohla byť dokončená. Skúste to neskôr, prosím.";

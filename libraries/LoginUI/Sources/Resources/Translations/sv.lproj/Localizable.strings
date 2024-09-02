@@ -257,3 +257,49 @@
 "Unexpected FIDO2 signature." = "Oväntad FIDO2-signatur.";
 
 "We could not initiate the Secure Password update connection. Please try again." = "Vi kunde inte initiera anslutning för uppdatering av det säkra lösenordet. Försök igen.";
+
+"Join %@" = "Gå med %@";
+
+"%@ invited you to join their organization on %@." = "%@ invited you to join their organization on %@.";
+
+"Continue" = "Fortsätt";
+
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.";
+
+"Backup password" = "Säkerhetskopiera lösenord";
+
+"Repeat backup password" = "Repeat backup password";
+
+"Password cannot be empty" = "Lösenord kan inte vara tomt";
+
+"Password must contain at least 8 characters" = "Lösenord måste innehålla minst 8 tecken";
+
+"Password doesn't match" = "Lösenord matchar inte";
+
+"Sign-in requested on another device. Was it you?" = "Inloggning begärd på annan enhet. Var det du?";
+
+"Check that the confirmation code match the code on your other device." = "Kontrollera att bekräftelsekoden matchar koden på din andra enhet.";
+
+"Confirmation code" = "Bekräftelsekod";
+
+"If you didn't make this request, cancel it now." = "Om du inte gjorde denna begäran, avbryt den nu.";
+
+"Yes, it was me" = "Ja, det var jag";
+
+"No, it wasn't me" = "Nej, det var inte jag";
+
+"Share the confirmation code with your administrator" = "Dela bekräftelsekoden med din administratör";
+
+"Approve the sign-in from another device" = "Godkänn inloggningen från annan enhet";
+
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@.";
+
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device.";
+
+"Use backup password instead" = "Use backup password instead";
+
+"Ask administrator for help" = "Be administratör om hjälp";
+
+"Devices available:" = "Enheter tillgängliga:";
+
+"Operation couldn't be completed. Please try again." = "Operation kunde inte slutföras. Försök igen.";

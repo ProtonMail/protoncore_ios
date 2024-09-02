@@ -56,11 +56,11 @@
 
 "Complete payment" = "Completar pago";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "El proceso de configuración de tu cuenta no puede finalizarse debido a un error inesperado.\nInténtalo de nuevo.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "El proceso de configuración de tu cuenta no se puede finalizar debido a un error inesperado.\nInténtalo de nuevo.";
 
 "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "La compra en la aplicación ha comenzado. Sigue las instrucciones de Apple para terminar o cancelar la compra.";
 
-"In app payments are temporarily unavailable." = "Los pagos en la aplicación están indisponible temporalmente.";
+"In app payments are temporarily unavailable." = "Los pagos en la aplicación no están disponibles temporalmente.";
 
 "One plan for all Proton services" = "Un plan para todos los servicios de Proton";
 
@@ -68,7 +68,7 @@
 
 "The privacy-first email and calendar solution for your everyday communication needs." = "La solución de correo electrónico y calendario centrada en la privacidad para tus comunicaciones diarias.";
 
-"Your privacy and security are our priority." = "Tu privacidad y seguridad son nuestras prioridades.";
+"Your privacy and security are our priority." = "Tu privacidad y seguridad son nuestra prioridad.";
 
 "The storage-focused plan with 200 GB of cloud storage to keep your files private." = "El plan centrado en almacenamiento con 200 GB de almacenamiento en la nube para mantener tus ficheros en privado.";
 
