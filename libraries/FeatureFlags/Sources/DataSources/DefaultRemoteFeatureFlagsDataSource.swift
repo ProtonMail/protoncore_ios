@@ -47,29 +47,32 @@ struct FeatureFlagResponse: Decodable {
 
 public struct DefaultRemoteFeatureFlagsDataSource: RemoteFeatureFlagsDataSourceProtocol {
     public let apiService: any APIService
+    public let completionExecutor: CompletionBlockExecutor
     
-    init(apiService: any APIService) {
+    init(apiService: any APIService, completionExecutor: CompletionBlockExecutor = .asyncMainExecutor) {
         self.apiService = apiService
+        self.completionExecutor = completionExecutor
     }
 
     public func getFlags() async throws -> (featureFlags: [FeatureFlag], userID: String) {
         let endpoint = FeatureFlagRequest()
-        let response: FeatureFlagResponse = try await apiService.exec(endpoint: endpoint)
+        let response: FeatureFlagResponse = try await apiService.exec(
+            endpoint: endpoint,
+            networkCompletionExecutor: completionExecutor
+        )
         let userID = apiService.authDelegate?.credential(sessionUID: apiService.sessionUID)?.userID
         return (response.toggles, userID ?? "")
     }
 }
 
-public struct FeatureFlagsEnvironment: Sendable {
-    public var networkCompletionExecutor: CompletionBlockExecutor = .asyncMainExecutor
-}
-
 private extension APIService {
     /// Async variant that can take an `Endpoint`
-    func exec<T: Decodable>(endpoint: any Request,
-                            networkCompletionExecutor: CompletionBlockExecutor = .asyncMainExecutor) async throws -> T {
+    func exec<T: Decodable>(
+        endpoint: any Request,
+        networkCompletionExecutor: CompletionBlockExecutor
+    ) async throws -> T {
         try await withCheckedThrowingContinuation { continuation in
-            perform(request: endpoint, 
+            perform(request: endpoint,
                     callCompletionBlockUsing: networkCompletionExecutor,
                     onDataTaskCreated: { _ in }) { _, result in
                 continuation.resume(with: result)

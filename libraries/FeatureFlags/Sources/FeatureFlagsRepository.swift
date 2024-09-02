@@ -138,8 +138,10 @@ public extension FeatureFlagsRepository {
      - Parameters:
      - apiService: The api service used to initialize the remote data source for feature flags.
      */
-    func setApiService(_ apiService: any APIService) {
-       remoteDataSource = Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?>(DefaultRemoteFeatureFlagsDataSource(apiService: apiService))
+    func setApiService(_ apiService: any APIService, completionExecutor: CompletionBlockExecutor = .asyncMainExecutor) {
+        remoteDataSource = Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?>(
+            DefaultRemoteFeatureFlagsDataSource(apiService: apiService, completionExecutor: completionExecutor)
+        )
     }
 
     /**

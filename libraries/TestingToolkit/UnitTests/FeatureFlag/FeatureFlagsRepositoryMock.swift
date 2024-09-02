@@ -48,7 +48,7 @@ public final class FeatureFlagsRepositoryMock: FeatureFlagsRepositoryProtocol {
         self.userId = userId
     }
 
-    public func setApiService(_ apiService: ProtonCoreServices.APIService) {
+    public func setApiService(_ apiService: ProtonCoreServices.APIService, completionExecutor: CompletionBlockExecutor) {
         self.setApiServiceWasCalled = true
     }
 

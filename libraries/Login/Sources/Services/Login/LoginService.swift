@@ -163,7 +163,7 @@ public final class LoginService {
                 guard let self else { return }
                 switch result {
                 case .success(let user):
-                    self.featureFlagsRepository.setApiService(self.apiService)
+                    self.featureFlagsRepository.setApiService(self.apiService, completionExecutor: .asyncMainExecutor)
 
                     if !user.ID.isEmpty {
                         self.featureFlagsRepository.setUserId(user.ID)
