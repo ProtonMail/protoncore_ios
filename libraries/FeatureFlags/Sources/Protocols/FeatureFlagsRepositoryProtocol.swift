@@ -56,4 +56,9 @@ public extension FeatureFlagsRepositoryProtocol {
     func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String?, reloadValue: Bool = false) -> Bool {
         isEnabled(flag, for: userId, reloadValue: reloadValue)
     }
+
+    func setApiService(_ apiService: any APIService, completionExecutor: CompletionBlockExecutor = .asyncMainExecutor) {
+        setApiService(apiService, completionExecutor: completionExecutor)
+    }
+
 }
