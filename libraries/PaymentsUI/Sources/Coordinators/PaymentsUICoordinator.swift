@@ -413,6 +413,8 @@ extension PaymentsUICoordinator: PaymentsUIViewControllerDelegate {
             case .renewalNotification:
                 break; // precondition prevents it
             }
+
+            completionHandler()
         }
     }
 
