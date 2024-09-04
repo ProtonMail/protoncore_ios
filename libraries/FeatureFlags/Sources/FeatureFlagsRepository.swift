@@ -137,9 +137,14 @@ public extension FeatureFlagsRepository {
      
      - Parameters:
      - apiService: The api service used to initialize the remote data source for feature flags.
+     - completionExecutor: The executor used to determine how the completion handler is executed:
+        - `asyncMainExecutor`: Executes tasks asynchronously on the main dispatch queue.
+        - `immediateExecutor`: Executes tasks immediately, ignoring any delays.
      */
-    func setApiService(_ apiService: any APIService) {
-       remoteDataSource = Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?>(DefaultRemoteFeatureFlagsDataSource(apiService: apiService))
+    func setApiService(_ apiService: any APIService, completionExecutor: CompletionBlockExecutor = .asyncMainExecutor) {
+        remoteDataSource = Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?>(
+            DefaultRemoteFeatureFlagsDataSource(apiService: apiService, completionExecutor: completionExecutor)
+        )
     }
 
     /**
