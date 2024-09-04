@@ -1,5 +1,5 @@
 //
-//  JoinOrganizationViewController.swift
+//  EnterBackupPasswordViewController.swift
 //  ProtonCore-LoginUI - Created on 23/08/2024.
 //
 //  Copyright (c) 2024 Proton AG
@@ -25,18 +25,17 @@ import Foundation
 import ProtonCoreUIFoundations
 import SwiftUI
 
-public final class SignInRequestViewController: UIHostingController<SignInRequestView> {
+public final class EnterBackupPasswordViewController: UIHostingController<EnterBackupPasswordView> {
 
-    let viewModel: SignInRequestView.ViewModel
+    let viewModel: EnterBackupPasswordView.ViewModel
 
      required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(mode: SignInRequestView.ViewMode) {
-        let dependencies = SignInRequestView.Dependencies(mode: mode)
-        self.viewModel = SignInRequestView.ViewModel(dependencies: dependencies)
-        let view = SignInRequestView(viewModel: self.viewModel)
+    init() {
+        self.viewModel = EnterBackupPasswordView.ViewModel(dependencies: .init())
+        let view = EnterBackupPasswordView(viewModel: self.viewModel)
         super.init(rootView: view)
     }
 

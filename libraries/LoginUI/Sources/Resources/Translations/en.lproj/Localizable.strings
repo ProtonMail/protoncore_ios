@@ -303,3 +303,7 @@
 "Devices available:" = "Devices available:";
 
 "Operation couldn't be completed. Please try again." = "Operation couldn't be completed. Please try again.";
+
+"Enter your backup password" = "Enter your backup password";
+
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";

@@ -1,6 +1,6 @@
 //
 //  SignInRequestViewModel.swift
-//  ProtonCore-Login - Created on 23/08/2024.
+//  ProtonCore-LoginUI - Created on 23/08/2024.
 //
 //  Copyright (c) 2024 Proton AG
 //
