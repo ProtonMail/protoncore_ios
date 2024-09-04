@@ -92,9 +92,7 @@ final class PurchaseManager: PurchaseManagerProtocol {
                     assertionFailure("Purchase product completion block should be called only once")
                     return
                 }
-                if case .renewalNotification = result {} else {
-                    callbackExecuted = true
-                }
+                callbackExecuted = true
                 finishCallbackToBeCalledOnProvidedQueue(result)
             }
         }

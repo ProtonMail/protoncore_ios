@@ -683,18 +683,6 @@ extension StoreKitManager: SKPaymentTransactionObserver {
             let group = DispatchGroup()
             group.enter()
 
-            guard transaction.original == nil
-                    || transaction.transactionIdentifier == transaction.original?.transactionIdentifier else {
-                // This is not the first purchase.
-                // Caveat: Apple says original is undefined for transactionStates other than .restored,
-                // but we found this holds true as well for .purchased. So far. Proceed with caution.
-                finishTransaction(transaction, nil)
-                callSuccessCompletion(for: cacheKey, with: .autoRenewal)
-                PMLog.debug("Ignoring and finishing transaction corresponding to renewal cycle. Current transaction: \(transaction.transactionIdentifier ?? "nil"). Original transaction: \(transaction.original?.transactionIdentifier ?? "nil"). Original transaction date: \(transaction.original?.transactionDate?.description ?? "nil")")
-                group.leave()
-                return
-            }
-
             processPurchasedStoreKitTransaction(
                 transaction, cacheKey: cacheKey, shouldVerifyPurchaseWasForSameAccount: shouldVerify, group: group
             ) { [weak self] result in
