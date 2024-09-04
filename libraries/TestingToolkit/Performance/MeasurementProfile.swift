@@ -40,12 +40,12 @@ public class MeasurementProfile: MeasurementProtocol {
             "os_version": "iOS \(UIDevice.current.systemVersion)",
             "device_model": UIDevice.current.model,
             "sli": serviceLevelIndicator ?? "unknown",
+            "environment": MeasurementConfig.environment,
         ]
 
         self.sharedMetadata = [
             "app_version": MeasurementConfig.version,
             "build_commit_sha1": MeasurementConfig.buildCommitShortSha,
-            "environment": MeasurementConfig.environment,
             "ci_job_id": MeasurementConfig.ciJobId
         ]
     }
