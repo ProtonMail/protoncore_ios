@@ -129,6 +129,11 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
             accessQueue.async { self[keyPath: dict][key] = value }
         }
 
+        func value<K, V>(for key: K, in dict: ReferenceWritableKeyPath<ThreadSafeAsyncCache, [K: V]>, completion: @escaping (V?) -> Void
+        ) {
+            accessQueue.async { completion(self[keyPath: dict][key]) }
+        }
+
         func removeValue<K, V>(
             for key: K, in dict: ReferenceWritableKeyPath<ThreadSafeAsyncCache, [K: V]>, completion: @escaping (V?) -> Void
         ) {
@@ -138,6 +143,19 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
         func removeValueSynchronously<K, V>(for key: K,
                                             in dict: ReferenceWritableKeyPath<ThreadSafeAsyncCache, [K: V]>) -> V? {
             accessQueue.sync { self[keyPath: dict].removeValue(forKey: key) }
+        }
+
+        func value<K, V>(for key: K,
+                               in dict: ReferenceWritableKeyPath<ThreadSafeAsyncCache, [K: V]>,
+                               defaultValue: V,
+                               completion: @escaping (V) -> Void) {
+            value(for: key, in: dict) { valueIfExists in
+                if let value = valueIfExists {
+                    completion(value)
+                } else {
+                    completion(defaultValue)
+                }
+            }
         }
 
         func removeValue<K, V>(for key: K,
@@ -157,7 +175,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     private var threadSafeCache: ThreadSafeAsyncCache = .init()
 
     private func callSuccessCompletion(for cache: UserInitiatedPurchaseCache, with result: PaymentSucceeded) {
-        threadSafeCache.removeValue(for: cache, in: \.successCompletion, defaultValue: defaultSuccessCallback) { $0(result) }
+        threadSafeCache.value(for: cache, in: \.successCompletion, defaultValue: defaultSuccessCallback) { $0(result) }
     }
 
     private func callDeferredCompletion(for cache: UserInitiatedPurchaseCache) {
