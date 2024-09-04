@@ -23,15 +23,14 @@ import Foundation
 import StoreKit
 
 public extension SKPaymentTransaction {
-
     var isRenewal: Bool {
-        self.original != nil &&
-        (self.transactionState == .purchased || self.transactionState == .restored)
+        original != nil &&
+            (transactionState == .purchased || transactionState == .restored)
     }
 
-#if DEBUG
-    open override var debugDescription: String {
-        "[Date: \(self.transactionDate) - State: \(String(describing:self.transactionState))\n Identifier: \(self.transactionIdentifier). Original: \(self.original?.debugDescription ?? "self") ]"
-    }
-#endif
+    #if DEBUG
+        override open var debugDescription: String {
+            "[Date: \(transactionDate) - State: \(String(describing: transactionState))\n Identifier: \(transactionIdentifier). Original: \(original?.debugDescription ?? "self") ]"
+        }
+    #endif
 }

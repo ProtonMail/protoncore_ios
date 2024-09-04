@@ -21,8 +21,8 @@
 
 import Foundation
 import ProtonCoreFeatureFlags
-import ProtonCoreServices
 import ProtonCoreObservability
+import ProtonCoreServices
 import ProtonCoreUtilities
 
 public enum PurchaseResult {
@@ -81,7 +81,6 @@ public protocol PurchaseManagerProtocol {
 }
 
 public extension PurchaseManagerProtocol {
-
     /// If no queue to callFinishCallbackOn is provided, the finish callback **will be called on the main queue**
     func buyPlan(plan: InAppPurchasePlan, addCredits: Bool = false, finishCallback: @escaping (PurchaseResult) -> Void) {
         buyPlan(plan: plan, addCredits: addCredits, callFinishCallbackOn: DispatchQueue.main, finishCallback: finishCallback)
@@ -89,7 +88,6 @@ public extension PurchaseManagerProtocol {
 }
 
 final class PurchaseManager: PurchaseManagerProtocol {
-
     private let planService: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>
     private let storeKitManager: StoreKitManagerProtocol
     private var paymentsApi: PaymentsApiProtocol
@@ -107,7 +105,8 @@ final class PurchaseManager: PurchaseManagerProtocol {
          storeKitManager: StoreKitManagerProtocol,
          paymentsApi: PaymentsApiProtocol,
          apiService: APIService,
-         featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared) {
+         featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared)
+    {
         self.planService = planService
         self.storeKitManager = storeKitManager
         self.paymentsApi = paymentsApi
@@ -118,8 +117,8 @@ final class PurchaseManager: PurchaseManagerProtocol {
     func buyPlan(plan: InAppPurchasePlan,
                  addCredits: Bool,
                  callFinishCallbackOn queueToCallFinishCallbackOn: DispatchQueue,
-                 finishCallback finishCallbackToBeCalledOnProvidedQueue: @escaping (PurchaseResult) -> Void) {
-
+                 finishCallback finishCallbackToBeCalledOnProvidedQueue: @escaping (PurchaseResult) -> Void)
+    {
         var callbackExecuted = false
         let finishCallback: (PurchaseResult) -> Void = { result in
             queueToCallFinishCallbackOn.async {
@@ -142,7 +141,6 @@ final class PurchaseManager: PurchaseManagerProtocol {
     }
 
     private func buyPlanUsingProperFlow(plan: InAppPurchasePlan, addCredits: Bool, finishCallback: @escaping (PurchaseResult) -> Void) throws {
-
         guard InAppPurchasePlan.isThisAFreePlan(protonName: plan.protonName) == false else {
             // "free plan" is really the lack of any plan — so no purchase is required if user selects free
             finishCallback(.purchasedPlan(accountPlan: plan))
@@ -158,9 +156,10 @@ final class PurchaseManager: PurchaseManagerProtocol {
         let planName: String
         let cycle: Int
         switch planService {
-        case .left(let planService):
+        case let .left(planService):
             guard let details = planService.detailsOfPlanCorrespondingToIAP(plan),
-                  let _ = planService.detailsOfPlanCorrespondingToIAP(plan)?.ID else {
+                  let _ = planService.detailsOfPlanCorrespondingToIAP(plan)?.ID
+            else {
                 // the plan details, including its id, are unknown, preventing us from doing any further operation
                 assertionFailure("Programmer's error: buy plan method must be called when the plan details are available")
                 throw StoreKitManagerErrors.transactionFailedByUnknownReason
@@ -168,11 +167,12 @@ final class PurchaseManager: PurchaseManagerProtocol {
             planName = details.name
             cycle = 12
 
-        case .right(let planDataSource):
+        case let .right(planDataSource):
             guard let availablePlan = planDataSource.detailsOfAvailablePlanCorrespondingToIAP(plan),
                   let instance = planDataSource.detailsOfAvailablePlanInstanceCorrespondingToIAP(plan),
                   let name = availablePlan.name,
-                  let _ = availablePlan.ID else {
+                  let _ = availablePlan.ID
+            else {
                 // the plan details, including its id, are unknown, preventing us from doing any further operation
                 assertionFailure("Programmer's error: buy plan method must be called when the plan details are available")
                 throw StoreKitManagerErrors.transactionFailedByUnknownReason
@@ -196,7 +196,6 @@ final class PurchaseManager: PurchaseManagerProtocol {
     }
 
     private func fetchAmountDue(protonPlanName: String, cycle: Int) throws -> Int {
-
         let isDynamic = featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)
         let isAuthenticated = storeKitManager.delegate?.userId?.isEmpty == false
         let validateSubscriptionRequest = paymentsApi.validateSubscriptionRequest(
@@ -227,7 +226,7 @@ final class PurchaseManager: PurchaseManagerProtocol {
         let subscriptionResponse = try subscriptionRequest.awaitResponse(responseObject: SubscriptionResponse())
         if let newSubscription = subscriptionResponse.newSubscription {
             switch planService {
-            case .left(let planService):
+            case let .left(planService):
                 planService.updateCurrentSubscription { [weak self] in
                     finishCallback(.purchasedPlan(accountPlan: plan))
                     self?.storeKitManager.refreshHandler(.finished(.resolvingIAPToSubscription))
@@ -238,7 +237,7 @@ final class PurchaseManager: PurchaseManagerProtocol {
                     self?.storeKitManager.refreshHandler(.finished(.resolvingIAPToSubscription))
                 }
 
-            case .right(let planDataSource):
+            case let .right(planDataSource):
                 Task { [weak self] in
                     do {
                         try await planDataSource.fetchCurrentPlan()
@@ -253,14 +252,13 @@ final class PurchaseManager: PurchaseManagerProtocol {
         } else {
             throw StoreKitManager.Errors.noNewSubscriptionInSuccessfulResponse
         }
-        return
     }
 
     private func buyPlanWhenIAPIsNecessaryToProvideMoney(
         plan: InAppPurchasePlan, amountDue: Int, finishCallback: @escaping (PurchaseResult) -> Void
     ) {
         ObservabilityEnv.report(.paymentScreenView(screenID: .aiapBilling))
-        self.storeKitManager.purchaseProduct(plan: plan, amountDue: amountDue) { [weak self] result in
+        storeKitManager.purchaseProduct(plan: plan, amountDue: amountDue) { [weak self] result in
             guard let self else {
                 finishCallback(.purchaseCancelled)
                 return
@@ -268,17 +266,19 @@ final class PurchaseManager: PurchaseManagerProtocol {
             if case .cancelled = result {
                 finishCallback(.purchaseCancelled)
             } else if case .resolvingIAPToCredits = result,
-                      !self.featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+                      !self.featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)
+            {
                 finishCallback(.toppedUpCredits)
             } else if case .resolvingIAPToCreditsCausedByError = result,
-                      !self.featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
+                      !self.featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)
+            {
                 finishCallback(.toppedUpCredits)
             } else if case .autoRenewal = result {
                 finishCallback(.renewalNotification)
             } else if case .withoutObtainingToken = result { // purchase during signup flow
                 finishCallback(.planPurchaseProcessingInProgress(processingPlan: plan))
             } else if case .withoutExchangingToken = result { // purchase during signup flow
-                finishCallback(.planPurchaseProcessingInProgress(processingPlan: plan)) 
+                finishCallback(.planPurchaseProcessingInProgress(processingPlan: plan))
             } else {
                 finishCallback(.purchasedPlan(accountPlan: plan))
             }
@@ -286,7 +286,7 @@ final class PurchaseManager: PurchaseManagerProtocol {
             // ignored payment errors
             if let error = error as? StoreKitManagerErrors, error == .notAllowed || error.isUnknown || error == .alreadyPurchasedPlanDoesNotMatchBackend {
                 finishCallback(.purchaseCancelled)
-            } else if let error = error as? StoreKitManagerErrors, case .apiMightBeBlocked(let message, let originalError) = error {
+            } else if let error = error as? StoreKitManagerErrors, case let .apiMightBeBlocked(message, originalError) = error {
                 finishCallback(.apiMightBeBlocked(message: message, originalError: originalError, processingPlan: self?.unfinishedPurchasePlan))
             } else {
                 finishCallback(.purchaseError(error: error, processingPlan: self?.unfinishedPurchasePlan))

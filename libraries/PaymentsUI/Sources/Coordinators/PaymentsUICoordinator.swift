@@ -21,19 +21,18 @@
 
 #if os(iOS)
 
-import UIKit
 import enum ProtonCoreDataModel.ClientApp
-import ProtonCorePayments
-import ProtonCoreNetworking
-import ProtonCoreUIFoundations
-import ProtonCoreObservability
-import ProtonCoreFoundations
-import ProtonCoreUtilities
 import ProtonCoreFeatureFlags
+import ProtonCoreFoundations
 import ProtonCoreLog
+import ProtonCoreNetworking
+import ProtonCoreObservability
+import ProtonCorePayments
+import ProtonCoreUIFoundations
+import ProtonCoreUtilities
+import UIKit
 
 final class PaymentsUICoordinator {
-
     private var viewController: UIViewController?
     private var presentationType: PaymentsUIPresentationType = .modal
     private var mode: PaymentsUIMode = .signup
@@ -69,7 +68,8 @@ final class PaymentsUICoordinator {
          customization: PaymentsUICustomizationOptions,
          alertManager: PaymentsUIAlertManager,
          onDohTroubleshooting: @escaping () -> Void,
-         featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared) {
+         featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared)
+    {
         self.planService = planService
         self.storeKitManager = storeKitManager
         self.purchaseManager = purchaseManager
@@ -77,14 +77,14 @@ final class PaymentsUICoordinator {
         self.alertManager = alertManager
         self.clientApp = clientApp
         self.customization = customization
-        self.storyboardName = "PaymentsUI"
+        storyboardName = "PaymentsUI"
         self.onDohTroubleshooting = onDohTroubleshooting
         self.featureFlagsRepository = featureFlagsRepository
     }
 
     func start(viewController: UIViewController?, completionHandler: @escaping ((PaymentsUIResultReason) -> Void)) {
         self.viewController = viewController
-        self.mode = .signup
+        mode = .signup
         self.completionHandler = completionHandler
         if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             Task {
@@ -110,7 +110,7 @@ final class PaymentsUICoordinator {
 
     // MARK: Private methods
 
-    private func showPaymentsUI(servicePlan: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>) async {
+    private func showPaymentsUI(servicePlan _: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>) async {
         let paymentsUIViewController = await MainActor.run {
             let paymentsUIViewController = UIStoryboard.instantiate(
                 PaymentsUIViewController.self, storyboardName: storyboardName, inAppTheme: customization.inAppTheme
@@ -168,7 +168,7 @@ final class PaymentsUICoordinator {
                     paymentsUIViewController.reloadData()
                 }
             }
-        } catch let error {
+        } catch {
             await MainActor.run {
                 showError(error: error)
             }
@@ -176,7 +176,7 @@ final class PaymentsUICoordinator {
         }
     }
 
-    private func showPaymentsUI(servicePlan: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>, backendFetch: Bool) {
+    private func showPaymentsUI(servicePlan _: Either<ServicePlanDataServiceProtocol, PlansDataSourceProtocol>, backendFetch: Bool) {
         let paymentsUIViewController = UIStoryboard.instantiate(
             PaymentsUIViewController.self, storyboardName: storyboardName, inAppTheme: customization.inAppTheme
         )
@@ -190,7 +190,8 @@ final class PaymentsUICoordinator {
                                         planService: planService,
                                         shownPlanNames: shownPlanNames,
                                         clientApp: clientApp,
-                                        customPlansDescription: customization.customPlansDescription) { [weak self] updatedPlan in
+                                        customPlansDescription: customization.customPlansDescription)
+        { [weak self] updatedPlan in
             DispatchQueue.main.async { [weak self] in
                 self?.paymentsUIViewController?.reloadData()
                 if updatedPlan != nil {
@@ -219,7 +220,7 @@ final class PaymentsUICoordinator {
                 } else {
                     paymentsUIViewController.reloadData()
                 }
-            case .failure(let error):
+            case let .failure(error):
                 DispatchQueue.main.async { [weak self] in
                     self?.showError(error: error)
                 }
@@ -232,7 +233,7 @@ final class PaymentsUICoordinator {
         if mode == .signup {
             viewController?.navigationController?.pushViewController(paymentsViewController, animated: true)
             completionHandler?(.open(vc: paymentsViewController, opened: true))
-            if self.unfinishedPurchasePlan != nil {
+            if unfinishedPurchasePlan != nil {
                 showProcessingTransactionAlert()
             }
         } else {
@@ -261,13 +262,13 @@ final class PaymentsUICoordinator {
 
     private func showError(error: Error) {
         if let error = error as? StoreKitManagerErrors {
-            self.showError(message: error.userFacingMessageInPayments, error: error)
+            showError(message: error.userFacingMessageInPayments, error: error)
         } else if let error = error as? ResponseError {
-            self.showError(message: error.localizedDescription, error: error)
+            showError(message: error.localizedDescription, error: error)
         } else if let error = error as? AuthErrors, error.isInvalidAccessToken {
             // silence invalid access token error
         } else {
-            self.showError(message: error.userFacingMessageInPayments, error: error)
+            showError(message: error.userFacingMessageInPayments, error: error)
         }
         finishCallback(reason: .purchaseError(error: error))
     }
@@ -349,7 +350,6 @@ extension PaymentsUICoordinator: PaymentsUIViewControllerDelegate {
     }
 
     func userDidSelectPlan(plan: AvailablePlansPresentation, completionHandler: @escaping () -> Void) {
-
         guard let inAppPlan = plan.availablePlan else {
             completionHandler()
             return
@@ -371,11 +371,11 @@ extension PaymentsUICoordinator: PaymentsUIViewControllerDelegate {
             reportObservability(plan: plan, result: purchaseResult)
 
             switch purchaseResult {
-            case .planPurchaseProcessingInProgress(let inProgressPlan):
+            case let .planPurchaseProcessingInProgress(inProgressPlan):
                 self.unfinishedPurchasePlan = inProgressPlan
                 self.finishCallback(reason: .planPurchaseProcessingInProgress(accountPlan: inProgressPlan))
 
-            case .purchasedPlan(let purchasedPlan):
+            case let .purchasedPlan(purchasedPlan):
                 self.unfinishedPurchasePlan = self.purchaseManager.unfinishedPurchasePlan
                 self.finishCallback(reason: .purchasedPlan(accountPlan: purchasedPlan))
 
@@ -383,7 +383,7 @@ extension PaymentsUICoordinator: PaymentsUIViewControllerDelegate {
                 self.unfinishedPurchasePlan = self.purchaseManager.unfinishedPurchasePlan
                 self.finishCallback(reason: .toppedUpCredits)
 
-            case .purchaseError(let error, let processingPlan):
+            case let .purchaseError(error, processingPlan):
                 self.unfinishedPurchasePlan = processingPlan
                 self.finishCallback(reason: .purchaseError(error: error))
                 self.showError(error: error)
@@ -394,9 +394,9 @@ extension PaymentsUICoordinator: PaymentsUIViewControllerDelegate {
 
             case .purchaseCancelled:
                 // No callback called, we remain in the subscriptions screen
-                break;
+                break
             case .renewalNotification:
-                break; // precondition prevents it
+                break // precondition prevents it
             }
 
             completionHandler()
@@ -413,25 +413,24 @@ extension PaymentsUICoordinator: PaymentsUIViewControllerDelegate {
 
     func planPurchaseError() {
         if mode == .signup {
-            self.showProcessingTransactionAlert(isError: true)
+            showProcessingTransactionAlert(isError: true)
         }
     }
 
     func purchaseBecameUnavailable() {
-        self.showError(message: PUITranslations.iap_temporarily_unavailable.l10n,
-                       error: PlansDataSourceError.purchaseBecameUnavailable) {
+        showError(message: PUITranslations.iap_temporarily_unavailable.l10n,
+                  error: PlansDataSourceError.purchaseBecameUnavailable)
+        {
             self.userDidCloseViewController()
         }
     }
 
     private func reportObservability(plan: InAppPurchasePlan, result: PurchaseResult) {
-
         let isDynamic = featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)
 
         ObservabilityEnv.report(.paymentLaunchBillingTotal(status: result.launchBillingStatus, isDynamic: isDynamic))
         ObservabilityEnv.report(.paymentPurchaseTotal(status: result.purchaseStatus))
         ObservabilityEnv.report(.planSelectionCheckoutTotal(status: result.planSelectionCheckoutStatus, plan: getPlanNameForObservabilityPurposes(plan: plan)))
-
     }
 }
 
