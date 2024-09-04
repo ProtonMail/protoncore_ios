@@ -637,6 +637,14 @@ extension StoreKitManager: SKPaymentTransactionObserver {
         PMLog.debug("StoreKit transaction queue contains transaction(s). Will handle it now.")
         transactionsFinishHandler = finishHandler
         paymentQueue.transactions.forEach { [weak self] transaction in
+            guard !transaction.isRenewal else {
+                // skip processing for transactions corresponding to a monthly renewal
+                if let self {
+                    paymentQueue.finishTransaction(transaction)
+                    ObservabilityEnv.report(.paymentLaunchBillingTotal(status: .renewalNotification, isDynamic: self.featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)))
+                }
+                return
+            }
             self?.addStoreKitTransactionProcessingOperation { [weak self] in
                 self?.processStoreKitTransaction(transaction: transaction, shouldVerifyPurchaseWasForSameAccount: true)
             }
@@ -943,7 +951,10 @@ extension StoreKitManager {
     }
 
     private func successCompletionAlertView(result: PaymentSucceeded) {
-        guard case .resolvingIAPToCreditsCausedByError = result else { return }
+        guard case .resolvingIAPToCreditsCausedByError = result else {
+            refreshHandler(.finished(result))
+            return
+        }
         paymentsAlertManager.creditsAppliedAlert { [weak self] in
             guard let self = self else { return }
             self.reportBugAlertHandler?(try? self.readReceipt())
