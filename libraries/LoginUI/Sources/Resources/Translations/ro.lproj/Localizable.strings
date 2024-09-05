@@ -257,3 +257,49 @@
 "Unexpected FIDO2 signature." = "Semnătură FIDO2 neașteptată.";
 
 "We could not initiate the Secure Password update connection. Please try again." = "Nu s-a putut iniția conexiunea de actualizare a Secure Password. Mai încercați.";
+
+"Join %@" = "Alăturați-vă la %@";
+
+"%@ invited you to join their organization on %@." = "%@ v-a invitat să vă alăturați organizației sale din %@.";
+
+"Continue" = "Continuare";
+
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Setați o parolă de rezervă pentru a continua. Această parolă vă va permite să vă conectați și să vă recuperați datele dacă nu vă mai puteți accesa contul Proton, așa că asigurați-vă că o păstrați undeva în siguranță.";
+
+"Backup password" = "Parola de rezervă";
+
+"Repeat backup password" = "Repetare parolă de rezervă";
+
+"Password cannot be empty" = "Parola nu poate fi goală";
+
+"Password must contain at least 8 characters" = "Parola trebuie să conțină cel puțin 8 caractere.";
+
+"Password doesn't match" = "Parolele nu se potrivesc";
+
+"Sign-in requested on another device. Was it you?" = "Solicitare de conectare de pe alt dispozitiv. Ați fost dvs.?";
+
+"Check that the confirmation code match the code on your other device." = "Verificați dacă se potrivește codul de confirmare cu codul de pe celălalt dispozitiv.";
+
+"Confirmation code" = "Cod de confirmare";
+
+"If you didn't make this request, cancel it now." = "Dacă nu ați efectuat această solicitare, anulați-o acum.";
+
+"Yes, it was me" = "Da, eu am fost";
+
+"No, it wasn't me" = "Nu, nu am fost eu";
+
+"Share the confirmation code with your administrator" = "Partajați codul de confirmare cu administratorul";
+
+"Approve the sign-in from another device" = "Aprobare conectare de pe alt dispozitiv";
+
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Pentru a ne dovedi că dețineți contul la care încercați să vă conectați, partajați codul de confirmare administratorului %@, astfel încât acesta să poată aproba cererea pentru %@.";
+
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Pentru a ne dovedi că dețineți contul la care încercați să vă conectați, revizuiți codul de confirmare și aprobați solicitarea de pe alt dispozitiv.";
+
+"Use backup password instead" = "Folosire parolă de rezervă în schimb";
+
+"Ask administrator for help" = "Solicitați ajutor de la administrator";
+
+"Devices available:" = "Dispozitive disponibile:";
+
+"Operation couldn't be completed. Please try again." = "Operațiunea nu a putut fi finalizată. Mai încercați.";

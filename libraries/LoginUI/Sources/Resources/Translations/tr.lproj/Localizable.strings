@@ -257,3 +257,49 @@
 "Unexpected FIDO2 signature." = "Beklenmeyen FIDO2 imzası ile karşılaşıldı.";
 
 "We could not initiate the Secure Password update connection. Please try again." = "Güvenli parola güncelleme bağlantısını başlatamadık. Lütfen yeniden deneyin.";
+
+"Join %@" = "%@ kuruluşuna katılın";
+
+"%@ invited you to join their organization on %@." = "%@ sizi %@ üzerindeki kuruluşuna katılmaya davet etti";
+
+"Continue" = "İlerle";
+
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "İlerlemek için bir yedek parola ayarlayın. Bu parola, Proton hesabınız kilitlendiğinde oturum açmanızı ve verilerinizi kurtarmanızı sağlar. Bu nedenle güvenli bir yerde sakladığınızdan emin olun.";
+
+"Backup password" = "Yedek parola";
+
+"Repeat backup password" = "Yedek parola onayı";
+
+"Password cannot be empty" = "Parola boş olamaz";
+
+"Password must contain at least 8 characters" = "Parola en az 8 karakter uzunluğunda olmalıdır";
+
+"Password doesn't match" = "Parola ile onayı aynı değil";
+
+"Sign-in requested on another device. Was it you?" = "Başka bir aygıttan oturum açılması istendi. Bunu siz mi yaptınız?";
+
+"Check that the confirmation code match the code on your other device." = "Onay kodunun diğer aygıtınızdaki kod ile aynı olup olmadığına bakın.";
+
+"Confirmation code" = "Onay kodu";
+
+"If you didn't make this request, cancel it now." = "Böyle bir istekte bulunmadıysanız iptal edin.";
+
+"Yes, it was me" = "Evet, bendim";
+
+"No, it wasn't me" = "Hayır, ben değildim";
+
+"Share the confirmation code with your administrator" = "Onay kodunu yöneticiniz ile paylaşın";
+
+"Approve the sign-in from another device" = "Başka bir aygıtta oturum açılmasına izin ver";
+
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Oturum açmaya çalışanın gerçekten siz olduğunuzdan emin olmak için, onay kodunu yöneticinizle %@ paylaşın. Böylece %@ isteğini onaylayabilir.";
+
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Hesabınızda oturum açmaya çalışan kişinin gerçekten siz olduğunuzdan emin olmak için onay kodunu inceleyin ve başka bir aygıttan isteği onaylayın.";
+
+"Use backup password instead" = "Bunun yerine yedek parolayı kullan";
+
+"Ask administrator for help" = "Yardım almak için yöneticiye sorun";
+
+"Devices available:" = "Kullanılabilecek aygıtlar:";
+
+"Operation couldn't be completed. Please try again." = "İşlem tamamlanamadı. Lütfen yeniden deneyin.";

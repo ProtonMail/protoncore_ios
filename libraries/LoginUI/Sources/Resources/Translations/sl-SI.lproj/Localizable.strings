@@ -257,3 +257,49 @@
 "Unexpected FIDO2 signature." = "Nepričakovan FIDO2 podpis.";
 
 "We could not initiate the Secure Password update connection. Please try again." = "Povezave za posodobitev varnega gesla nismo mogli vzpostaviti. Poskusite znova.";
+
+"Join %@" = "Join %@";
+
+"%@ invited you to join their organization on %@." = "%@ invited you to join their organization on %@.";
+
+"Continue" = "Nadaljuj";
+
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.";
+
+"Backup password" = "Backup password";
+
+"Repeat backup password" = "Repeat backup password";
+
+"Password cannot be empty" = "Password cannot be empty";
+
+"Password must contain at least 8 characters" = "Geslo mora vsebovati vsaj osem znakov";
+
+"Password doesn't match" = "Password doesn't match";
+
+"Sign-in requested on another device. Was it you?" = "Sign-in requested on another device. Was it you?";
+
+"Check that the confirmation code match the code on your other device." = "Check that the confirmation code match the code on your other device.";
+
+"Confirmation code" = "Confirmation code";
+
+"If you didn't make this request, cancel it now." = "If you didn't make this request, cancel it now.";
+
+"Yes, it was me" = "Yes, it was me";
+
+"No, it wasn't me" = "No, it wasn't me";
+
+"Share the confirmation code with your administrator" = "Share the confirmation code with your administrator";
+
+"Approve the sign-in from another device" = "Approve the sign-in from another device";
+
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@.";
+
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device.";
+
+"Use backup password instead" = "Use backup password instead";
+
+"Ask administrator for help" = "Ask administrator for help";
+
+"Devices available:" = "Devices available:";
+
+"Operation couldn't be completed. Please try again." = "Operation couldn't be completed. Please try again.";

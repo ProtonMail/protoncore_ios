@@ -257,3 +257,49 @@
 "Unexpected FIDO2 signature." = "Signature FIDO2 inattendue.";
 
 "We could not initiate the Secure Password update connection. Please try again." = "Nous n'avons pas pu initialiser la connexion pour la mise à jour du mot de passe sécurisé. Veuillez réessayer.";
+
+"Join %@" = "Rejoindre %@";
+
+"%@ invited you to join their organization on %@." = "%@ vous a invité à vous joindre à son organisation sur %@.";
+
+"Continue" = "Continuer";
+
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Définissez un mot de passe de secours pour continuer. Ce mot de passe vous permettra de vous connecter et de récupérer vos données si vous n'avez plus accès à votre compte Proton, alors assurez-vous de le conserver en lieu sûr.";
+
+"Backup password" = "Mot de passe de secours";
+
+"Repeat backup password" = "Confirmer le mot de passe de secours";
+
+"Password cannot be empty" = "Le mot de passe ne peut pas être vide";
+
+"Password must contain at least 8 characters" = "Le mot de passe doit contenir au moins 8 caractères.";
+
+"Password doesn't match" = "Le mot de passe ne correspond pas.";
+
+"Sign-in requested on another device. Was it you?" = "Une connexion a été demandée sur un autre appareil. Est-ce que c'était vous ?";
+
+"Check that the confirmation code match the code on your other device." = "Assurez-vous que le code de confirmation correspond au code sur votre autre appareil.";
+
+"Confirmation code" = "Code de confirmation";
+
+"If you didn't make this request, cancel it now." = "Si vous n'êtes pas à l'origine de cette demande, annulez-la maintenant.";
+
+"Yes, it was me" = "Oui, c'est moi.";
+
+"No, it wasn't me" = "Non, ce n'est pas moi.";
+
+"Share the confirmation code with your administrator" = "Partagez le code de confirmation avec votre administrateur.";
+
+"Approve the sign-in from another device" = "Approuver la connexion depuis un autre appareil";
+
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Pour vous assurer que c’est bien vous qui essayez de vous connecter, partagez le code de confirmation avec votre administrateur %@ afin qu'il puisse approuver la demande pour %@.";
+
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Pour vous assurer que c’est bien vous qui essayez de vous connecter à votre compte, vérifiez le code de confirmation et approuvez la demande depuis un autre appareil.";
+
+"Use backup password instead" = "Utiliser plutôt le mot de passe de secours";
+
+"Ask administrator for help" = "Demander de l'aide à l'administrateur";
+
+"Devices available:" = "Appareils disponibles :";
+
+"Operation couldn't be completed. Please try again." = "L'opération n'a pas pu être terminée. Nous vous invitons à réessayer.";

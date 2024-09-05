@@ -257,3 +257,49 @@
 "Unexpected FIDO2 signature." = "Firma FIDO2 inesperada.";
 
 "We could not initiate the Secure Password update connection. Please try again." = "No se pudo iniciar la conexión de actualización de contraseña segura. Vuelva a intentarlo.";
+
+"Join %@" = "Unirse a %@";
+
+"%@ invited you to join their organization on %@." = "%@ le ha invitado a unirse a su organización en %@.";
+
+"Continue" = "Continuar";
+
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Configure una contraseña de respaldo para continuar. Esta contraseña le permite iniciar sesión y recuperar sus datos en caso de perder el acceso a la cuenta de Proton, asegúrese de mantenerla en un lugar seguro.";
+
+"Backup password" = "Contraseña de respaldo";
+
+"Repeat backup password" = "Confirmar la contraseña de respaldo";
+
+"Password cannot be empty" = "La contraseña no puede estar vacía.";
+
+"Password must contain at least 8 characters" = "La contraseña debe tener al menos 8 caracteres";
+
+"Password doesn't match" = "La contraseña no coincide.";
+
+"Sign-in requested on another device. Was it you?" = "Se solicitó un inicio de sesión en otro dispositivo. ¿Ha sido usted?";
+
+"Check that the confirmation code match the code on your other device." = "Compruebe que el código de confirmación sea igual al código en su otro dispositivo.";
+
+"Confirmation code" = "Código de confirmación";
+
+"If you didn't make this request, cancel it now." = "Si no realizó esta solicitud, cancélela ahora.";
+
+"Yes, it was me" = "Sí, fui yo.";
+
+"No, it wasn't me" = "No, no fui yo.";
+
+"Share the confirmation code with your administrator" = "Comparta el código de confirmación con su administrador";
+
+"Approve the sign-in from another device" = "Aprobar el inicio de sesión desde otro dispositivo";
+
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Para confirmar que en verdad es usted quien intenta iniciar sesión, comparta el código de confirmación con su administrador %@ para que acepte la solicitud para %@.";
+
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Para confirmar que en verdad es usted quien intenta iniciar sesión, revise el código de confirmación y acepte la solicitud desde otro dispositivo.";
+
+"Use backup password instead" = "Usar la contraseña de respaldo en su lugar";
+
+"Ask administrator for help" = "Pedir ayuda al administrador";
+
+"Devices available:" = "Dispositivos disponibles:";
+
+"Operation couldn't be completed. Please try again." = "No se pudo completar la operación. Intente de nuevo.";
