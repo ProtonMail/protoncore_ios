@@ -429,8 +429,8 @@ extension PaymentsUICoordinator: PaymentsUIViewControllerDelegate {
         let isDynamic = featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)
 
         ObservabilityEnv.report(.paymentLaunchBillingTotal(status: result.launchBillingStatus, isDynamic: isDynamic))
-        ObservabilityEnv.report(.paymentPurchaseTotal(status: result.purchaseStatus))
-        ObservabilityEnv.report(.planSelectionCheckoutTotal(status: result.planSelectionCheckoutStatus, plan: getPlanNameForObservabilityPurposes(plan: plan)))
+        ObservabilityEnv.report(.paymentPurchaseTotal(status: result.purchaseStatus, isDynamic: isDynamic))
+        ObservabilityEnv.report(.planSelectionCheckoutTotal(status: result.planSelectionCheckoutStatus, plan: getPlanNameForObservabilityPurposes(plan: plan), isDynamic: isDynamic))
     }
 }
 
