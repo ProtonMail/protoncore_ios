@@ -154,11 +154,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
                          completion: @escaping (V) -> Void)
         {
             value(for: key, in: dict) { valueIfExists in
-                if let value = valueIfExists {
-                    completion(value)
-                } else {
-                    completion(defaultValue)
-                }
+                valueIfExists != nil ? completion(valueIfExists!) : completion(defaultValue)
             }
         }
 
@@ -168,11 +164,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
                                completion: @escaping (V) -> Void)
         {
             removeValue(for: key, in: dict) { valueIfExists in
-                if let value = valueIfExists {
-                    completion(value)
-                } else {
-                    completion(defaultValue)
-                }
+                valueIfExists != nil ? completion(valueIfExists!) : completion(defaultValue)
             }
         }
     }

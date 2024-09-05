@@ -1,5 +1,5 @@
 //
-//  Transaction.swift
+//  SKPaymentTransaction+isRenewalAccessor.swift
 //  ProtonCore-Payments - Created on 04/09/24.
 //
 //  Copyright (c) 2024 Proton Technologies AG
