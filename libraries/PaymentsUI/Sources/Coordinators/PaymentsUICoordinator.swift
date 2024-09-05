@@ -77,14 +77,14 @@ final class PaymentsUICoordinator {
         self.alertManager = alertManager
         self.clientApp = clientApp
         self.customization = customization
-        storyboardName = "PaymentsUI"
+        self.storyboardName = "PaymentsUI"
         self.onDohTroubleshooting = onDohTroubleshooting
         self.featureFlagsRepository = featureFlagsRepository
     }
 
     func start(viewController: UIViewController?, completionHandler: @escaping ((PaymentsUIResultReason) -> Void)) {
         self.viewController = viewController
-        mode = .signup
+        self.mode = .signup
         self.completionHandler = completionHandler
         if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
             Task {
