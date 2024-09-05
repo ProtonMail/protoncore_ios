@@ -177,6 +177,11 @@ public enum LUITranslation: TranslationsExposing {
     case operation_could_not_be_completed
     case enter_backup_password_title
     case enter_backup_password_description
+    case access_granted_title
+    case access_denied_title
+    case access_granted_description
+    case access_denied_description
+    case back_to_signin_button
 
     public var l10n: String {
         switch self {
@@ -481,6 +486,16 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Enter your backup password", comment: "Enter backup password screen title")
         case .enter_backup_password_description:
             return localized(key: "To make sure it’s really you trying to sign-in, please enter your backup password.", comment: "Screen description when promption user to enter their backup password at login.")
+        case .access_granted_title:
+            return localized(key: "Access granted", comment: "Access Granted screen title")
+        case .access_denied_title:
+            return localized(key: "Access denied", comment: "Access Denied screen title")
+        case .access_granted_description:
+            return localized(key: "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.", comment: "Access Granted screen description")
+        case .access_denied_description:
+            return localized(key: "Contact your administrator if the problem persists.", comment: "Access Denied screen description")
+        case .back_to_signin_button:
+            return localized(key: "Back to sign-in", comment: "Action button title")
         }
     }
 }

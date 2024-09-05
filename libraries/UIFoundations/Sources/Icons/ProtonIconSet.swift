@@ -544,7 +544,11 @@ public struct ProtonIconSet {
 
     public let userArrowRight = ProtonIcon(name: "ic-user-arrow-right")
 
+    public let userCheck = ProtonIcon(name: "ic-user-check")
+
     public let userCircle = ProtonIcon(name: "ic-user-circle")
+
+    public let userExclamation = ProtonIcon(name: "ic-user-exclamation")
 
     public let userFilled = ProtonIcon(name: "ic-user-filled")
 
