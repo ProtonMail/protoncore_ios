@@ -36,7 +36,7 @@ public enum PurchaseResult {
     @available(*, deprecated, message: "Renewal transactions are no longer reported on")
     case renewalNotification
 
-    var launchBillingStatus: PaymentLaunchBillingTotalStatus {
+    public var launchBillingStatus: PaymentLaunchBillingTotalStatus {
         return switch self {
         case .purchasedPlan, .toppedUpCredits: .success
         case .planPurchaseProcessingInProgress: .planPurchaseProcessingInProgress
@@ -47,7 +47,7 @@ public enum PurchaseResult {
         }
     }
 
-    var purchaseStatus: PaymentPurchaseTotalStatus {
+    public var purchaseStatus: PaymentPurchaseTotalStatus {
         return switch self {
         case .purchasedPlan, .toppedUpCredits: .success
         case .planPurchaseProcessingInProgress: .planPurchaseProcessingInProgress
@@ -58,14 +58,14 @@ public enum PurchaseResult {
         }
     }
 
-    var planSelectionCheckoutStatus: PlanSelectionCheckoutStatus {
+    public var planSelectionCheckoutStatus: PlanSelectionCheckoutStatus {
         return switch self {
         case .purchasedPlan, .toppedUpCredits: .successful
         case .planPurchaseProcessingInProgress: .processingInProgress
         case .purchaseError: .failed
         case .apiMightBeBlocked: .apiMightBeBlocked
         case .purchaseCancelled: .canceled
-        case .renewalNotification: .unknown
+        case .renewalNotification: .successful
         }
     }
 }
