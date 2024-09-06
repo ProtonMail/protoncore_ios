@@ -175,6 +175,8 @@ public enum LUITranslation: TranslationsExposing {
     case ask_administrator_for_help
     case devices_available
     case operation_could_not_be_completed
+    case enter_backup_password_title
+    case enter_backup_password_description
 
     public var l10n: String {
         switch self {
@@ -475,6 +477,10 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Devices available:", comment: "Section title")
         case .operation_could_not_be_completed:
             return localized(key: "Operation couldn't be completed. Please try again.", comment: "Error message")
+        case .enter_backup_password_title:
+            return localized(key: "Enter your backup password", comment: "Enter backup password screen title")
+        case .enter_backup_password_description:
+            return localized(key: "To make sure it’s really you trying to sign-in, please enter your backup password.", comment: "Screen description when promption user to enter their backup password at login.")
         }
     }
 }

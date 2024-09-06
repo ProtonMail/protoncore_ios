@@ -1,5 +1,5 @@
 //
-//  JoinOrganizationView.swift
+//  EnterBackupPasswordView.swift
 //  ProtonCore-LoginUI - Created on 23/08/2024.
 //
 //  Copyright (c) 2024 Proton AG
@@ -24,23 +24,23 @@
 import SwiftUI
 import ProtonCoreUIFoundations
 
-public struct JoinOrganizationView: View {
+public struct EnterBackupPasswordView: View {
 
     @StateObject var viewModel: ViewModel
 
     private enum Constants {
         static let itemSpacing: CGFloat = 20
-        static let imageCornerRadius: CGFloat = 12
-        static let imageSize: CGFloat = 56
-        static let standardPadding: CGFloat = 12
     }
 
     public var body: some View {
         ScrollView {
             VStack(spacing: Constants.itemSpacing) {
-                headerView
-                
-                Text(LUITranslation.backup_password_description.l10n)
+                Text(viewModel.screenTitle)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                Text(viewModel.bodyDescription)
                     .font(.subheadline)
                     .foregroundColor(ColorProvider.TextWeak)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -50,23 +50,29 @@ public struct JoinOrganizationView: View {
                     content: $viewModel.backupPasswordContent
                 )
 
-                PCTextField(
-                    style: $viewModel.repeatBackupPasswordStyle,
-                    content: $viewModel.repeatBackupPasswordContent
-                )
-
-                PCButton(
-                    style: .constant(.init(mode: .solid)),
-                    content: .constant(.init(
-                        title: LUITranslation.continue_core_button.l10n,
-                        action: viewModel.continueTapped
-                    ))
-                )
+                VStack {
+                    PCButton(
+                        style: .constant(.init(mode: .solid)),
+                        content: .constant(.init(
+                            title: viewModel.primaryButtonActionTitle,
+                            action: viewModel.primaryActionButtonTapped
+                        ))
+                    )
+                    
+                    PCButton(
+                        style: .constant(.init(mode: .text)),
+                        content: .constant(.init(
+                            title: viewModel.secondaryButtonActionTitle,
+                            action: viewModel.secondaryActionButtonTapped
+                        ))
+                    )
+                }
                 .padding(.top, Constants.itemSpacing)
+
+                Spacer()
             }
             .padding(Constants.itemSpacing)
             .foregroundColor(ColorProvider.TextNorm)
-            .background(ColorProvider.BackgroundNorm)
             .frame(maxWidth: .infinity)
             .bannerDisplayable(bannerState: $viewModel.bannerState,
                                configuration: .default())
@@ -76,43 +82,14 @@ public struct JoinOrganizationView: View {
                 .edgesIgnoringSafeArea(.all)
         )
     }
-
-    @ViewBuilder
-    private var headerView: some View {
-        defaultOrganizationImage
-        VStack(spacing: Constants.standardPadding) {
-            Text(viewModel.joinOrganizationTitle)
-                .font(.title2)
-                .fontWeight(.bold)
-            Text(viewModel.joinOrganizationDescription)
-                .font(.subheadline)
-                .fontWeight(.semibold)
-                .multilineTextAlignment(.center)
-        }
-        Divider()
-            .background(ColorProvider.SeparatorNorm)
-    }
-
-    @ViewBuilder
-    private var defaultOrganizationImage: some View {
-        IconProvider.users
-            .resizable()
-            .foregroundColor(ColorProvider.White)
-            .padding(Constants.standardPadding)
-            .frame(width: Constants.imageSize, height: Constants.imageSize)
-            .background(ColorProvider.BrandNorm)
-            .cornerRadius(Constants.imageCornerRadius)
-    }
 }
 
 #if DEBUG
 #Preview {
     NavigationView {
-        JoinOrganizationView(viewModel: .init(dependencies: .init()))
+        EnterBackupPasswordView(viewModel: .init(dependencies: .init()))
     }
 }
 #endif
 
 #endif
-
-
