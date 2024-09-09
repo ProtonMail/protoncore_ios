@@ -292,9 +292,9 @@
 
 "Approve the sign-in from another device" = "Godkänn inloggningen från annan enhet";
 
-"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@.";
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "För att vara säker på att det verkligen är du som försöker logga in, dela bekräftelsekoden med din administratör %@ så att de kan godkänna begäran för %@.";
 
-"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device.";
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "För att vara säker på att det verkligen är du som försöker logga in på ditt konto, granska bekräftelsekoden och godkänn begäran från annan enhet.";
 
 "Use backup password instead" = "Use backup password instead";
 
@@ -303,3 +303,17 @@
 "Devices available:" = "Enheter tillgängliga:";
 
 "Operation couldn't be completed. Please try again." = "Operation kunde inte slutföras. Försök igen.";
+
+"Enter your backup password" = "Enter your backup password";
+
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+
+"Access granted" = "Access granted";
+
+"Access denied" = "Access denied";
+
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+
+"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+
+"Back to sign-in" = "Back to sign-in";

@@ -260,11 +260,11 @@
 
 "Join %@" = "Συμμετοχή %@";
 
-"%@ invited you to join their organization on %@." = "%@ invited you to join their organization on %@.";
+"%@ invited you to join their organization on %@." = "Το %@ σας προσκάλεσε να συμμετάσχετε στον οργανισμό τους στο %@.";
 
 "Continue" = "Συνέχεια";
 
-"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.";
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Ορίστε έναν εφεδρικό κωδικό πρόσβασης για να συνεχίσετε. Αυτός ο κωδικός πρόσβασης θα σας επιτρέψει να συνδεθείτε και να ανακτήσετε τα δεδομένα σας εάν κλειδωθείτε έξω από τον λογαριασμό Proton, οπότε φροντίστε να τον κρατήσετε κάπου ασφαλή.";
 
 "Backup password" = "Εφεδρικός κωδικός πρόσβασης";
 
@@ -276,30 +276,44 @@
 
 "Password doesn't match" = "Οι κωδικοί πρόσβασης δεν ταιριάζουν";
 
-"Sign-in requested on another device. Was it you?" = "Sign-in requested on another device. Was it you?";
+"Sign-in requested on another device. Was it you?" = "Η σύνδεση ζητήθηκε σε άλλη συσκευή. Ήσασταν εσείς;";
 
-"Check that the confirmation code match the code on your other device." = "Check that the confirmation code match the code on your other device.";
+"Check that the confirmation code match the code on your other device." = "Βεβαιωθείτε ότι ο κωδικός επιβεβαίωσης αντιστοιχεί στον κωδικό της άλλης συσκευής σας.";
 
-"Confirmation code" = "Confirmation code";
+"Confirmation code" = "Κωδικός επιβεβαίωσης";
 
-"If you didn't make this request, cancel it now." = "If you didn't make this request, cancel it now.";
+"If you didn't make this request, cancel it now." = "Εάν δεν υποβάλατε εσείς αυτό το αίτημα, ακυρώστε το τώρα.";
 
-"Yes, it was me" = "Yes, it was me";
+"Yes, it was me" = "Ναι, ήμουν εγώ";
 
-"No, it wasn't me" = "No, it wasn't me";
+"No, it wasn't me" = "Όχι, δεν ήμουν εγώ";
 
-"Share the confirmation code with your administrator" = "Share the confirmation code with your administrator";
+"Share the confirmation code with your administrator" = "Μοιραστείτε τον κωδικό επιβεβαίωσης με τον διαχειριστή σας";
 
-"Approve the sign-in from another device" = "Approve the sign-in from another device";
+"Approve the sign-in from another device" = "Έγκριση της σύνδεσης από άλλη συσκευή";
 
-"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@.";
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Για να βεβαιωθείτε ότι προσπαθείτε πραγματικά να συνδεθείτε, μοιραστείτε τον κωδικό επιβεβαίωσης με τον διαχειριστή σας %@, ώστε να μπορέσει να εγκρίνει το αίτημα για %@.";
 
-"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device.";
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Για να βεβαιωθείτε ότι προσπαθείτε πραγματικά να συνδεθείτε στον λογαριασμό σας, ελέγξτε τον κωδικό επιβεβαίωσης και εγκρίνετε το αίτημα από άλλη συσκευή.";
 
-"Use backup password instead" = "Use backup password instead";
+"Use backup password instead" = "Χρησιμοποιήστε εφεδρικό κωδικό πρόσβασης";
 
-"Ask administrator for help" = "Ask administrator for help";
+"Ask administrator for help" = "Ζητήστε βοήθεια από το διαχειριστή";
 
-"Devices available:" = "Devices available:";
+"Devices available:" = "Διαθέσιμες συσκευές:";
 
-"Operation couldn't be completed. Please try again." = "Operation couldn't be completed. Please try again.";
+"Operation couldn't be completed. Please try again." = "Δεν ήταν δυνατή η ολοκλήρωση της λειτουργίας. Παρακαλούμε προσπαθήστε ξανά.";
+
+"Enter your backup password" = "Enter your backup password";
+
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+
+"Access granted" = "Access granted";
+
+"Access denied" = "Access denied";
+
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+
+"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+
+"Back to sign-in" = "Back to sign-in";

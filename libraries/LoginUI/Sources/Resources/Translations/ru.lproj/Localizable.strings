@@ -258,23 +258,23 @@
 
 "We could not initiate the Secure Password update connection. Please try again." = "Нам не удалось установить подключение для обновления Secure Password. Попробуйте еще раз.";
 
-"Join %@" = "Join %@";
+"Join %@" = "Присоединиться к %@";
 
-"%@ invited you to join their organization on %@." = "%@ invited you to join their organization on %@.";
+"%@ invited you to join their organization on %@." = "%@ пригласил вас присоединиться к их организации в %@.";
 
 "Continue" = "Продолжить";
 
-"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.";
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Установите резервный пароль для продолжения работы. Этот пароль позволит вам войти в систему и восстановить данные в случае блокировки аккаунта Proton, поэтому храните его в надежном месте.";
 
-"Backup password" = "Backup password";
+"Backup password" = "Пароль резервной копии";
 
-"Repeat backup password" = "Repeat backup password";
+"Repeat backup password" = "Повторите пароль резервной копии";
 
-"Password cannot be empty" = "Password cannot be empty";
+"Password cannot be empty" = "Пароль не может быть пустым";
 
 "Password must contain at least 8 characters" = "Пароль должен содержать хотя бы 8 символов";
 
-"Password doesn't match" = "Password doesn't match";
+"Password doesn't match" = "Пароли не совпадают";
 
 "Sign-in requested on another device. Was it you?" = "Sign-in requested on another device. Was it you?";
 
@@ -302,4 +302,18 @@
 
 "Devices available:" = "Devices available:";
 
-"Operation couldn't be completed. Please try again." = "Operation couldn't be completed. Please try again.";
+"Operation couldn't be completed. Please try again." = "Операция не может быть завершена. Попробуйте еще раз.";
+
+"Enter your backup password" = "Enter your backup password";
+
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+
+"Access granted" = "Access granted";
+
+"Access denied" = "Access denied";
+
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+
+"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+
+"Back to sign-in" = "Back to sign-in";
