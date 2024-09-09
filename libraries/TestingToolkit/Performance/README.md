@@ -21,6 +21,11 @@ Usage examples:
 
 1. First you need to set the configuration in base test class or in `setUp` function:
 ```swift
+
+class MainMeasurementTests: ProtonCoreBaseTestCase {
+
+    private lazy var measurementContext = MeasurementContext(MeasurementConfig.self)
+    
     override class func setUp() {
         super.setUp()
         MeasurementConfig
@@ -30,7 +35,7 @@ Usage examples:
             .setLokiCertificate("certificate_ios_sdk")
             .setLokiCertificatePassphrase(ProcessInfo.processInfo.environment["CERTIFICATE_IOS_SDK_PASSPHRASE"] ?? "invalid")
     }
-
+ 
     func testMeasurement1() async {
         let measurementProfile = measurementContext.setWorkflow("test_iOS", forTest: self.name)
 
