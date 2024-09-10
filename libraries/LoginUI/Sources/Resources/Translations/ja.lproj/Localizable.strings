@@ -276,30 +276,44 @@
 
 "Password doesn't match" = "Password doesn't match";
 
-"Sign-in requested on another device. Was it you?" = "Sign-in requested on another device. Was it you?";
+"Sign-in requested on another device. Was it you?" = "別の端末でログインが要求されました。あなたがログインしましたか？";
 
-"Check that the confirmation code match the code on your other device." = "Check that the confirmation code match the code on your other device.";
+"Check that the confirmation code match the code on your other device." = "確認コードが他のデバイスに表示されているコードと一致していることを確認してください。";
 
-"Confirmation code" = "Confirmation code";
+"Confirmation code" = "確認コード";
 
-"If you didn't make this request, cancel it now." = "If you didn't make this request, cancel it now.";
+"If you didn't make this request, cancel it now." = "あなたがこのリクエストをしていない場合は、今すぐキャンセルしてください。";
 
-"Yes, it was me" = "Yes, it was me";
+"Yes, it was me" = "はい、私です";
 
-"No, it wasn't me" = "No, it wasn't me";
+"No, it wasn't me" = "いいえ、私ではありません";
 
-"Share the confirmation code with your administrator" = "Share the confirmation code with your administrator";
+"Share the confirmation code with your administrator" = "確認コードを管理者と共有する";
 
-"Approve the sign-in from another device" = "Approve the sign-in from another device";
+"Approve the sign-in from another device" = "別のデバイスからのサインインを承認する";
 
-"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@.";
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "サインインしようとしているのが本当にあなたか確認するために、確認コードを管理者 %@ と共有し、管理者が %@のリクエストを承認できるようにします。";
 
-"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device.";
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "ログインしようとしているのが、本当にあなたか確認するために、確認コードを確認し、別のデバイスからのリクエストを承認してください。";
 
-"Use backup password instead" = "Use backup password instead";
+"Use backup password instead" = "代わりにバックアップパスワードを使用する";
 
-"Ask administrator for help" = "Ask administrator for help";
+"Ask administrator for help" = "管理者にヘルプを依頼する";
 
-"Devices available:" = "Devices available:";
+"Devices available:" = "利用可能な端末";
 
 "Operation couldn't be completed. Please try again." = "操作を完了できませんでした。もう一度やり直してください。";
+
+"Enter your backup password" = "Enter your backup password";
+
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+
+"Access granted" = "Access granted";
+
+"Access denied" = "Access denied";
+
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+
+"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+
+"Back to sign-in" = "Back to sign-in";

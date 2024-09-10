@@ -284,9 +284,9 @@
 
 "If you didn't make this request, cancel it now." = "Si vous n'êtes pas à l'origine de cette demande, annulez-la maintenant.";
 
-"Yes, it was me" = "Oui, c'est moi.";
+"Yes, it was me" = "Oui, c'était moi.";
 
-"No, it wasn't me" = "Non, ce n'est pas moi.";
+"No, it wasn't me" = "Non, ce n'était pas moi.";
 
 "Share the confirmation code with your administrator" = "Partagez le code de confirmation avec votre administrateur.";
 
@@ -303,3 +303,17 @@
 "Devices available:" = "Appareils disponibles :";
 
 "Operation couldn't be completed. Please try again." = "L'opération n'a pas pu être terminée. Nous vous invitons à réessayer.";
+
+"Enter your backup password" = "Saisissez votre mot de passe de secours";
+
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Pour s'assurer que c'est bien vous qui tentez de vous connecter, veuillez entrer votre mot de passe de secours.";
+
+"Access granted" = "L'accès a été autorisé.";
+
+"Access denied" = "L'accès est refusé.";
+
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Pour des raisons de sécurité, vous avez été déconnecté de tous vos autres appareils actifs. Avant d'accéder à votre compte, vous devrez saisir un nouveau mot de passe de secours.";
+
+"Contact your administrator if the problem persists." = "Contactez votre administrateur si le problème persiste.";
+
+"Back to sign-in" = "Retour à la connexion";

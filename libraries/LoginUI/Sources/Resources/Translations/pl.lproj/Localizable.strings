@@ -260,11 +260,11 @@
 
 "Join %@" = "Dołącz do grupy %@";
 
-"%@ invited you to join their organization on %@." = "%@ invited you to join their organization on %@.";
+"%@ invited you to join their organization on %@." = "Użytkownik %@ zaprosił Cię do dołączenia do organizacji %@.";
 
 "Continue" = "Kontynuuj";
 
-"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.";
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Ustaw hasło kopii zapasowej. To hasło pozwoli Ci zalogować się i odzyskać dane, jeśli Twoje konto Proton zostanie zablokowane. Upewnij się, że przechowujesz je w bezpiecznym miejscu.";
 
 "Backup password" = "Hasło kopii zapasowej";
 
@@ -276,30 +276,44 @@
 
 "Password doesn't match" = "Hasła nie pasują do siebie";
 
-"Sign-in requested on another device. Was it you?" = "Sign-in requested on another device. Was it you?";
+"Sign-in requested on another device. Was it you?" = "Potwierdź zalogowanie się na innym urządzeniu. To nie Ty?";
 
-"Check that the confirmation code match the code on your other device." = "Check that the confirmation code match the code on your other device.";
+"Check that the confirmation code match the code on your other device." = "Sprawdź, czy kod potwierdzający pasuje do kodu na innym urządzeniu.";
 
-"Confirmation code" = "Confirmation code";
+"Confirmation code" = "Kod potwierdzający";
 
-"If you didn't make this request, cancel it now." = "If you didn't make this request, cancel it now.";
+"If you didn't make this request, cancel it now." = "Jeśli żądanie nie zostało wysłane przez Ciebie, anuluj je.";
 
-"Yes, it was me" = "Yes, it was me";
+"Yes, it was me" = "Tak, to ja";
 
-"No, it wasn't me" = "No, it wasn't me";
+"No, it wasn't me" = "Nie, to nie ja";
 
-"Share the confirmation code with your administrator" = "Share the confirmation code with your administrator";
+"Share the confirmation code with your administrator" = "Udostępnij kod potwierdzający administratorowi";
 
-"Approve the sign-in from another device" = "Approve the sign-in from another device";
+"Approve the sign-in from another device" = "Potwierdź logowanie na innym urządzeniu";
 
-"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@.";
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Aby upewnić się, że to Ty próbujesz zalogować się na swoje konto, udostępnij kod potwierdzający administratorowi %@, aby potwierdził logowanie %@.";
 
-"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device.";
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Aby upewnić się, że to Ty próbujesz zalogować się na swoje konto, sprawdź kod potwierdzający i potwierdź logowanie z innego urządzenia.";
 
 "Use backup password instead" = "Użyj hasła kopii zapasowe zamiast tego";
 
-"Ask administrator for help" = "Ask administrator for help";
+"Ask administrator for help" = "Poproś administratora o pomoc";
 
-"Devices available:" = "Devices available:";
+"Devices available:" = "Dostępne urządzenia:";
 
-"Operation couldn't be completed. Please try again." = "Operation couldn't be completed. Please try again.";
+"Operation couldn't be completed. Please try again." = "Operacja nie mogła zostać zakończona. Spróbuj ponownie.";
+
+"Enter your backup password" = "Enter your backup password";
+
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+
+"Access granted" = "Access granted";
+
+"Access denied" = "Access denied";
+
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+
+"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+
+"Back to sign-in" = "Back to sign-in";
