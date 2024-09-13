@@ -35,6 +35,7 @@ extension Bundle {
     }
 }
 
+#if os(iOS)
 open class ProtonCoreBaseTestCase: CoreTestCase {
 
     public let app = XCUIApplication()
@@ -85,6 +86,59 @@ open class ProtonCoreBaseTestCase: CoreTestCase {
         try? FileManager.default.removeItem(at: log)
     }
 }
+#elseif os(macOS)
+
+open class ProtonCoreBaseTestCase: MacCoreTestCase {
+
+    public let app = XCUIApplication()
+    public var bundleIdentifier: String?
+    public var launchArguments: [String] = []
+    public var launchEnvironment: [String: String] = [:]
+
+    public var dynamicDomain: String? {
+        // Using `testBundle` or the specified bundle to fetch the domain from Info.plist
+        let bundle = bundleIdentifier.flatMap { Bundle(identifier: $0) } ?? Bundle.testBundle
+        let domain = bundle.object(forInfoDictionaryKey: "DYNAMIC_DOMAIN") as? String
+        guard let domain, !domain.isEmpty else { return nil }
+        return domain
+    }
+
+    open var host: String? { dynamicDomain.map { "https://\($0)" } }
+
+    public func beforeSetUp(bundleIdentifier: String? = nil,
+                            launchArguments: [String]? = nil,
+                            launchEnvironment: [String: String]? = nil) {
+        if let bundleIdentifier = bundleIdentifier {
+            self.bundleIdentifier = bundleIdentifier
+        }
+        self.launchArguments = launchArguments ?? self.launchArguments
+        self.launchEnvironment = launchEnvironment ?? self.launchEnvironment
+    }
+
+    override open func setUp() {
+        super.setUp()
+        PMLog.info("UI TEST START")
+        launchArguments.append("RunningInUITests")
+        launchEnvironment["UITestsLogsDirectory"] = PMLog.logsDirectory!.absoluteString
+        if let dynamicDomain = dynamicDomain {
+            launchEnvironment["DYNAMIC_DOMAIN"] = dynamicDomain
+        }
+        app.launchArguments = launchArguments
+        app.launchEnvironment = launchEnvironment
+        app.launch()
+    }
+
+    override open func tearDown() {
+        super.tearDown()
+        guard let log = PMLog.logFile else { return }
+        PMLog.info("UI TEST ENDED")
+        let logsAttachment = XCTAttachment(contentsOfFile: log)
+        logsAttachment.lifetime = .keepAlways
+        add(logsAttachment)
+        try? FileManager.default.removeItem(at: log)
+    }
+}
+#endif
 
 public extension ProtonCoreBaseTestCase {
     var randomName: String {
