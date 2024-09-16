@@ -143,11 +143,11 @@ public extension Quark {
     }
 
     @discardableResult
-    func newSeedNewSubscriber(user: User, plan: UserPlan, cycle: Int) throws -> User {
+    func newSeedNewSubscriber(user: User, plan: String, cycle: Int) throws -> User {
         let args = [
             "username=\(user.name)",
             "password=\(user.password)",
-            "plan=\(plan.rawValue)",
+            "plan=\(plan)",
             "cycle=\(cycle)"
         ]
 
@@ -181,5 +181,10 @@ public extension Quark {
         var createdUser = user
         createdUser.id = id
         return createdUser
+    }
+
+    @discardableResult
+    func newSeedNewSubscriber(user: User, plan: UserPlan, cycle: Int) throws -> User {
+        return try newSeedNewSubscriber(user: user, plan: plan.rawValue, cycle: cycle)
     }
 }

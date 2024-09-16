@@ -121,7 +121,8 @@ public extension Quark {
 
         return try executeQuarkRequest(request)
     }
-
+    
+    @available(*, deprecated, renamed: "newSeedNewSubscriber", message: "`Use new payment provider`.")
     @discardableResult
     func enableSubscription(id: Int, plan: String) throws -> (data: Data, response: URLResponse) {
         let args = [
