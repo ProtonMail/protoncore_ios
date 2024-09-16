@@ -32,25 +32,25 @@ public struct PayloadWithValueAndLabels<Value, Labels>: Encodable where Value: E
     }
 }
 
-extension ObservabilityEvent {
+public extension ObservabilityEvent {
     init<Labels>(name: String, labels: Labels, version: ObservabilityEventVersion) where Payload == PayloadWithLabels<Labels>, Labels: Encodable {
         self.init(name: name, version: version, data: .init(value: version.rawValue, labels: labels))
     }
 }
 
-extension ObservabilityEvent {
+public extension ObservabilityEvent {
     init<Labels>(name: String, value: Int, labels: Labels) where Payload == PayloadWithLabels<Labels>, Labels: Encodable {
         self.init(name: name, version: .v1, data: .init(value: value, labels: labels))
     }
 }
 
-extension ObservabilityEvent {
+public extension ObservabilityEvent {
     init<Labels>(name: String, labels: Labels) where Payload == PayloadWithLabels<Labels>, Labels: Encodable {
         self.init(name: name, version: .v1, data: .init(value: 1, labels: labels))
     }
 }
 
-extension ObservabilityEvent {
+public extension ObservabilityEvent {
     func increment<Labels>() -> Self where Payload == PayloadWithValueAndLabels<Int, Labels>, Labels: Encodable {
         .init(name: name, version: version, data: .init(value: data.value + 1, labels: data.labels))
     }
