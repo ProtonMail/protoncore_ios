@@ -31,6 +31,7 @@ enum LokiPushError: Error {
 }
 
 @available(iOS 15.0, *)
+@available(macOS 12.0, *)
 class LokiClient {
 
     init(){

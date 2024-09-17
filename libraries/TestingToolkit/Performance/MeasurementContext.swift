@@ -22,6 +22,7 @@
 import XCTest
 
 @available(iOS 15.0, *)
+@available(macOS 12.0, *)
 public class MeasurementContext: NSObject, XCTestObservation {
     public static let shared = MeasurementContext(MeasurementConfig.self)
 
