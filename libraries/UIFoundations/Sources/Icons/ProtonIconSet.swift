@@ -119,6 +119,8 @@ public struct ProtonIconSet {
     public let brandProtonMail = ProtonIcon(name: "ic-brand-proton-mail")
 
     public let brandProtonVpn = ProtonIcon(name: "ic-brand-proton-vpn")
+    
+    public let brandProtonPass = ProtonIcon(name: "ic-brand-proton-pass")
 
     public let brandProton = ProtonIcon(name: "ic-brand-proton")
 
