@@ -61,7 +61,7 @@ public final class OverrideLocalFeatureFlagsDatasource: OverrideFeatureFlagDataS
                 globalOverriddenFlags[Self.globalUserId] = FeatureFlags.default
             }
             globalOverriddenFlags[Self.globalUserId]?.setFlag(flag)
-            PMLog.debug("⚠️ flag: \(flag.name) overridden 💣 ⚠️")
+            PMLog.debug("Feature flag \(flag.name) overridden.  Override value: \(flag.enabled)")
             userDefaults.setEncodableValue(globalOverriddenFlags, forKey: Self.overrideFeatureFlagsKey)
         }
     }
@@ -73,7 +73,7 @@ public final class OverrideLocalFeatureFlagsDatasource: OverrideFeatureFlagDataS
             // Overridden Flag found --> remove it
             if let existingFlag = globalOverriddenFlags[Self.globalUserId]?.getFlag(flag) {
                 globalOverriddenFlags[Self.globalUserId]?.removeFlag(existingFlag)
-                PMLog.debug("Overridden flag: \(flag.name) successfully removed ✅")
+                PMLog.debug("Override feature flag \(flag.name) successfully removed.")
                 userDefaults.setEncodableValue(globalOverriddenFlags, forKey: Self.overrideFeatureFlagsKey)
             }
         }
