@@ -270,7 +270,7 @@
 
 "Repeat backup password" = "Confirmer le mot de passe de secours";
 
-"Password cannot be empty" = "Le mot de passe ne peut pas être vide";
+"Password cannot be empty" = "Le mot de passe ne peut pas être vide.";
 
 "Password must contain at least 8 characters" = "Le mot de passe doit contenir au moins 8 caractères.";
 

@@ -8,7 +8,7 @@
 
 "Insecure_View_line1" = "Most megváltoztathatja a fiók jelszavát ";
 
-"Insecure_View_line2" = " freely during ";
+"Insecure_View_line2" = " szabadon ";
 
 "Insecure_View_line3" = "A jelszó megváltoztatásához használja a bejelentkezett eszközt (abban a munkamenetben, ahol a kérés indult).";
 
@@ -16,6 +16,6 @@
 
 "Grace_View_Undefined_Time_Left" = "néhány óra";
 
-"Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+"Grace_View_line2" = ". Hogy biztonságban tartsuk a fiókját, meg kell győződünk, hogy ön az. Vissza tudja állítani a jelszavát ";
 
 "Grace_View_line3" = "Ha nem ön kérte, vagy ha már nincs szüksége segítségre a bejelentkezéshez, kérjük, törölje, és tegye fiókját biztonságosabbá.";

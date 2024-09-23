@@ -58,7 +58,7 @@
 
 "Complete Setup" = "Kurulumu tamamla";
 
-"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "Hesabınızın anahtarları yok. Gerekli anahtarları otomatik olarak oluşturmak için lütfen İnternet sitesinde oturum açın. Oturum açtıktan sonra lütfen uygulamaya geri dönüp orada da oturum açın.";
+"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "Hesabınızın anahtarları yok. Gerekli anahtarları otomatik olarak oluşturmak için lütfen internet sitesinde oturum açın. Oturum açtıktan sonra lütfen uygulamaya geri dönüp orada da oturum açın.";
 
 "Account setup required" = "Hesap kurulumu gerekli";
 
@@ -248,11 +248,11 @@
 
 "These are the security keys registered to your account" = "Hesabınıza kayıtlı güvenlik anahtarları bunlar";
 
-"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "Hesabınızda henüz kayıtlı bir güvenlik anahtarı yok. Lütfen güvenlik anahtarı eklemek için Proton %@ İnternet uygulamasını kullanın.";
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "Hesabınızda henüz kayıtlı bir güvenlik anahtarı yok. Lütfen güvenlik anahtarı eklemek için Proton %@ internet uygulamasını kullanın.";
 
 "Security Keys" = "Güvenlik anahtarları";
 
-"To manage, add, or remove security keys, please use the Proton %@ web application." = "Güvenlik anahtarlarını yönetmek, eklemek ya da kaldırmak için lütfen Proton %@ İnternet uygulamasını kullanın.";
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "Güvenlik anahtarlarını yönetmek, eklemek ya da kaldırmak için lütfen Proton %@ internet uygulamasını kullanın.";
 
 "Unexpected FIDO2 signature." = "Beklenmeyen FIDO2 imzası ile karşılaşıldı.";
 
@@ -304,16 +304,16 @@
 
 "Operation couldn't be completed. Please try again." = "İşlem tamamlanamadı. Lütfen yeniden deneyin.";
 
-"Enter your backup password" = "Enter your backup password";
+"Enter your backup password" = "Yedek parolanızı yazın";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Oturum açmaya çalışanın gerçekten siz olduğunuzdan emin olmamız için lütfen yedek parolanızı yazın.";
 
-"Access granted" = "Access granted";
+"Access granted" = "Erişim onaylandı";
 
-"Access denied" = "Access denied";
+"Access denied" = "Erişim reddedildi";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Güvenliğiniz için, diğer tüm etkin aygıtlarınızdaki oturumlar kapatıldı. Hesabınıza erişmeden önce, yeni bir yedek parola yazmanız gerekecek.";
 
-"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+"Contact your administrator if the problem persists." = "Sorun sürerse yöneticiniz ile görüşün.";
 
-"Back to sign-in" = "Back to sign-in";
+"Back to sign-in" = "Oturum açmaya dön";

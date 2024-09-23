@@ -144,11 +144,11 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "A Tovább gombra kattintva elfogadja a Proton felhasználási feltételeit";
 
-"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "A Tovább gombra kattintva elfogadja a Proton Felhasználói Feltételeit és az Adatvédelmi irányelveit.";
 
 "Terms and Conditions" = "Szerződési feltételeket";
 
-"Privacy Policy" = "Privacy Policy";
+"Privacy Policy" = "Adatvédelmi irányelvek";
 
 "Skip" = "Kihagyás";
 
@@ -182,7 +182,7 @@
 
 "Terms and Conditions" = "Szerződési feltételeket";
 
-"Privacy Policy" = "Privacy Policy";
+"Privacy Policy" = "Adatvédelmi irányelvek";
 
 "Invalid token request" = "Érvénytelen token kérés";
 
@@ -222,87 +222,87 @@
 
 "Troubleshoot" = "Hibaelhárítás";
 
-"Please choose how you want to confirm your identity." = "Please choose how you want to confirm your identity.";
+"Please choose how you want to confirm your identity." = "Kérjük, válassza ki hogyan akarja megerősíteni az személyazonosságát.";
 
-"One-time code" = "One-time code";
+"One-time code" = "Egyszer használatos kód";
 
 "Security key" = "Hitelesítési kulcs";
 
-"Two-Factor Authentication" = "Two-Factor Authentication";
+"Two-Factor Authentication" = "Kétlépcsős azonosítás";
 
-"Present a security key linked to your Proton Account." = "Present a security key linked to your Proton Account.";
+"Present a security key linked to your Proton Account." = "Csatlakoztassa a fiókjához való hitelesítési kulcsot.";
 
 "Learn more" = "További információk";
 
-"Invalid state. Please quit the app and try again in a few minutes." = "Invalid state. Please quit the app and try again in a few minutes.";
+"Invalid state. Please quit the app and try again in a few minutes." = "Érvénytelen állapot. Lépjen ki az alkalmazásból és próbálja újra később.";
 
-"There was a problem reading your security key." = "There was a problem reading your security key.";
+"There was a problem reading your security key." = "Probléma történt a hitelesítési kulcs beolvasásánál.";
 
-"We received an authorization from a type we don't support yet." = "We received an authorization from a type we don't support yet.";
+"We received an authorization from a type we don't support yet." = "Olyan típustól kaptunk a hitelesítést amit még nem támogatunk.";
 
-"Fetching your security keys details" = "Fetching your security keys details";
+"Fetching your security keys details" = "A hitelesítési kulcs adatok lekérése";
 
-"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys.";
+"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "Még nincsen a fiókjához kapcsolva egy hitelesítési kulcs. A weboldalunkon a fiók beállításoknál tudd hozzáadni új hitelesítési kulcsokat.";
 
-"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "An error occurred fetching your security keys. You can also check them on the Proton %@ website.";
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "Egy hiba történt a hitelesítési kulcsok adatainak lekérésekor. Ellenőrizze a hitelesítési kulcsokat a Proton %@ weboldalon.";
 
 "These are the security keys registered to your account" = "Ezek a biztonsági kulcsok, amik a fiókjához vannak regisztrálva.";
 
-"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys.";
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "Még nincsen a fiókjához kapcsolva egy hitelesítési kulcs. A Proton %@ weboldalunkon a fiók beállításoknál tudd hozzáadni új hitelesítési kulcsokat.";
 
-"Security Keys" = "Security Keys";
+"Security Keys" = "Hitelesítési kulcsok";
 
-"To manage, add, or remove security keys, please use the Proton %@ web application." = "To manage, add, or remove security keys, please use the Proton %@ web application.";
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "A Proton %@ weboldalunkon a fiók beállításoknál tudja kezelni, hozzáadni vagy törölni hitelesítési kulcsokat.";
 
-"Unexpected FIDO2 signature." = "Unexpected FIDO2 signature.";
+"Unexpected FIDO2 signature." = "Váratlan FIDO2 aláírás.";
 
-"We could not initiate the Secure Password update connection. Please try again." = "We could not initiate the Secure Password update connection. Please try again.";
+"We could not initiate the Secure Password update connection. Please try again." = "Nem tudtunk egy biztonságos kapcsolatot létrehozni a jelszó változtatáshoz. Próbálja újra később.";
 
-"Join %@" = "Join %@";
+"Join %@" = "Csatlakozzon %@";
 
-"%@ invited you to join their organization on %@." = "%@ invited you to join their organization on %@.";
+"%@ invited you to join their organization on %@." = "%@ meghívta önt a szervezetbe a %@";
 
 "Continue" = "Tovább";
 
-"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.";
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Állítson be egy biztonsági jelszót a tovább lépéshez. Ez a jelszó a fiók adatok visszaállításához lesz használva ha esetleg nem tudna bejelentkezni a Proton fiókjába. Tartsa biztonságban ezt a jelszót.";
 
-"Backup password" = "Backup password";
+"Backup password" = "Biztonsági jelszó";
 
-"Repeat backup password" = "Repeat backup password";
+"Repeat backup password" = "Ismételje meg a biztonsági jelszót";
 
-"Password cannot be empty" = "Password cannot be empty";
+"Password cannot be empty" = "A jelszó nem lehet üres";
 
 "Password must contain at least 8 characters" = "A jelszónak legalább 8 karakterből kell állnia";
 
-"Password doesn't match" = "Password doesn't match";
+"Password doesn't match" = "A jelszók nem egyeznek";
 
-"Sign-in requested on another device. Was it you?" = "Sign-in requested on another device. Was it you?";
+"Sign-in requested on another device. Was it you?" = "Bejelentkezési kérelmet küldtek egy másik eszközön. Ön volt az?";
 
-"Check that the confirmation code match the code on your other device." = "Check that the confirmation code match the code on your other device.";
+"Check that the confirmation code match the code on your other device." = "Ellenőrizze, hogy az ellenőrző kód egyezik az ön eszközén.";
 
-"Confirmation code" = "Confirmation code";
+"Confirmation code" = "Ellenőrző kód";
 
-"If you didn't make this request, cancel it now." = "If you didn't make this request, cancel it now.";
+"If you didn't make this request, cancel it now." = "Ha nem ön kérte ezt, azonnal vonja vissza.";
 
-"Yes, it was me" = "Yes, it was me";
+"Yes, it was me" = "Igen, én voltam";
 
-"No, it wasn't me" = "No, it wasn't me";
+"No, it wasn't me" = "Nem, nem én voltam";
 
-"Share the confirmation code with your administrator" = "Share the confirmation code with your administrator";
+"Share the confirmation code with your administrator" = "Ossza meg az ellenőrző kódot az adminisztrátorral.";
 
-"Approve the sign-in from another device" = "Approve the sign-in from another device";
+"Approve the sign-in from another device" = "Fogadja el a bejelentkezési kérelmet.";
 
-"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@.";
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Hogy meg győződjünk hogy ön próbál bejelentkezni, ossza meg az ellenőrző kódot az adminisztrátorral %@, hogy elfogadhassa a %@ kérelmet.";
 
-"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device.";
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Hogy meg győződjünk arról, hogy ön próbál bejelentkezni, nézze meg az ellenőrző kódot is fogadja el a kérelmet a másik eszközről.";
 
-"Use backup password instead" = "Use backup password instead";
+"Use backup password instead" = "Használja a biztonsági jelszót";
 
-"Ask administrator for help" = "Ask administrator for help";
+"Ask administrator for help" = "Segítség kérése az adminisztrátortól";
 
-"Devices available:" = "Devices available:";
+"Devices available:" = "Elérhető eszközök:";
 
-"Operation couldn't be completed. Please try again." = "Operation couldn't be completed. Please try again.";
+"Operation couldn't be completed. Please try again." = "A művelet nem hajtható végre. Próbálja újra később.";
 
 "Enter your backup password" = "Enter your backup password";
 

@@ -266,15 +266,15 @@
 
 "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.";
 
-"Backup password" = "Backup password";
+"Backup password" = "Back-up wachtwoord";
 
-"Repeat backup password" = "Repeat backup password";
+"Repeat backup password" = "Herhaal back-upwachtwoord";
 
 "Password cannot be empty" = "Password cannot be empty";
 
 "Password must contain at least 8 characters" = "Wachtwoord moet ten minste 8 tekens bevatten";
 
-"Password doesn't match" = "Password doesn't match";
+"Password doesn't match" = "Wachtwoord komt niet overeen";
 
 "Sign-in requested on another device. Was it you?" = "Sign-in requested on another device. Was it you?";
 
@@ -284,9 +284,9 @@
 
 "If you didn't make this request, cancel it now." = "If you didn't make this request, cancel it now.";
 
-"Yes, it was me" = "Yes, it was me";
+"Yes, it was me" = "Ja, dat was ik";
 
-"No, it wasn't me" = "No, it wasn't me";
+"No, it wasn't me" = "Nee, dat was ik niet";
 
 "Share the confirmation code with your administrator" = "Share the confirmation code with your administrator";
 
@@ -308,12 +308,12 @@
 
 "To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
 
-"Access granted" = "Access granted";
+"Access granted" = "Toegang verleend";
 
-"Access denied" = "Access denied";
+"Access denied" = "Toegang geweigerd";
 
 "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
 
 "Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
 
-"Back to sign-in" = "Back to sign-in";
+"Back to sign-in" = "Terug naar aanmelden";

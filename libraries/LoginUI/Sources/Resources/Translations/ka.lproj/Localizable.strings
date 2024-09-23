@@ -304,16 +304,16 @@
 
 "Operation couldn't be completed. Please try again." = "ოპერაციის დასრულება შეუძლებელია. თავიდან სცადეთ.";
 
-"Enter your backup password" = "Enter your backup password";
+"Enter your backup password" = "შეიყვანეთ თქვენი მარქაფის პაროლი";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "იმისათვის რომ დავრწმუნდეთ, რომ ეს ნამდვილად თქვენ ცდილობთ შესვლას, შეიყვანეთ თქვენი მარქაფის პაროლი.";
 
-"Access granted" = "Access granted";
+"Access granted" = "წვდომა მონიჭებულია";
 
-"Access denied" = "Access denied";
+"Access denied" = "წვდომა აკრძალულია";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "თქვენი უსაფრთხოებისთვის გახვედით ყველა თქვენი აქტიური მოწყობილობიდან. თქვენს ანგარიშთან წვდომამდე ახალი მარქაფის პაროლის შეყვანა მოგიწევთ.";
 
-"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+"Contact your administrator if the problem persists." = "დაუკავშირდით თქვენს ადმინისტრატორს, თუ პაროლი არ გაქრება.";
 
-"Back to sign-in" = "Back to sign-in";
+"Back to sign-in" = "შესვლის გვერდზე დაბრუნება";
