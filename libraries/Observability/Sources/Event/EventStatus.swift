@@ -125,6 +125,8 @@ public enum PasswordChangeHTTPResponseCodeStatus: String, Encodable, CaseIterabl
     case cantGenerateVerifier
     case cantGenerateSRPClient
     case keyUpdateFailed
+    case missingAuthInfo
+    case missingUserInfo
     case unknown
 }
 

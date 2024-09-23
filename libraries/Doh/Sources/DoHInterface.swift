@@ -145,6 +145,14 @@ extension DoH {
     }
 
     public class func hostIsPinned(_ host: String) -> Bool {
+        #if DEBUG
+        // Clients often disable TLS pinning for debug builds. This would break alternative routing because we don't
+        // know the pinning configuration, and would thus always fail-closed in this case.
+        if pinningConfiguration.isEmpty {
+            return true
+        }
+        #endif
+
         for (pinnedHost, entry) in pinningConfiguration {
             if entry.allowsHost(host, for: pinnedHost) {
                 return true

@@ -90,21 +90,42 @@ class DoHProviderRequestTests: XCTestCase {
 
     let urlSuffix = ProductionHosts.mailAPI.dohHost
 
+    func fulfill(
+        _ hostExpectations: [String: XCTestExpectation],
+        accordingToResult result: URLRequest,
+        sessionID: String = ""
+    ) {
+        guard let url = result.url else { XCTFail("No URL in result?"); return }
+
+        if #available(iOS 16, *),
+           let host = url.host(),
+           let expectation = hostExpectations[host] {
+            expectation.fulfill()
+        }
+
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
+              let name = components.queryItems?.first(where: { $0.name == "name" })?.value else {
+            XCTFail("URL '\(url)' doesn't contain name=testSessionID.\(self.urlSuffix)")
+            return
+        }
+
+        XCTAssertEqual(name, "\(sessionID)\(sessionID.isEmpty ? "" : ".")\(self.urlSuffix)")
+    }
+
     func testNotAuthRequestAuthCredentialPassedByAuthDelegate_NoSessionID() {
         authDelegate = TestAuthDelegate(sessionID: "")
-        let expectation1 = self.expectation(description: "Success completion block called from provider 1")
-        let expectation2 = self.expectation(description: "Success completion block called from provider 2")
-        let expectation3 = self.expectation(description: "Success completion block called from provider 3")
+        let hostExpectations = [
+            "1.1.1.1": self.expectation(description: "Success completion block called from provider 1"),
+            "8.8.8.8": self.expectation(description: "Success completion block called from provider 2"),
+            "9.9.9.9": self.expectation(description: "Success completion block called from provider 3"),
+        ]
+
+        let expectation = self.expectation(description: "Final completion block invoked")
 
         let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { result in
-            if let urlString = result.url?.absoluteString, urlString.contains("google.com") {
-                XCTAssertTrue(urlString.contains("name=\(self.urlSuffix)"))
-                expectation1.fulfill()
-            } else if let urlString = result.url?.absoluteString, urlString.contains("dns11.quad9") {
-                XCTAssertTrue(urlString.contains("name=\(self.urlSuffix)"))
-                expectation2.fulfill()
-            }
+            self.fulfill(hostExpectations, accordingToResult: result)
         }
+
         let doh = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
         let apiService = PMAPIService.createAPIServiceWithoutSession(doh: doh as DoHInterface,
                                                                      challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
@@ -113,7 +134,7 @@ class DoHProviderRequestTests: XCTestCase {
         apiService.authDelegate = authDelegate
 
         apiService.perform(request: request, response: AuthResponse()) { task, response in
-            expectation3.fulfill()
+            expectation.fulfill()
         }
 
         self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
@@ -122,19 +143,18 @@ class DoHProviderRequestTests: XCTestCase {
     }
 
     func testNotAuthRequestNoAuthCredential_NoSessionID() {
-        let expectation1 = self.expectation(description: "Success completion block called from provider 1")
-        let expectation2 = self.expectation(description: "Success completion block called from provider 2")
-        let expectation3 = self.expectation(description: "Success completion block called from provider 3")
+        let hostExpectations = [
+            "1.1.1.1": self.expectation(description: "Success completion block called from provider 1"),
+            "8.8.8.8": self.expectation(description: "Success completion block called from provider 2"),
+            "9.9.9.9": self.expectation(description: "Success completion block called from provider 3"),
+        ]
+
+        let expectation = self.expectation(description: "Final completion block invoked")
 
         let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { result in
-            if let urlString = result.url?.absoluteString, urlString.contains("google.com") {
-                XCTAssertTrue(urlString.contains("name=\(self.urlSuffix)"))
-                expectation1.fulfill()
-            } else if let urlString = result.url?.absoluteString, urlString.contains("dns11.quad9") {
-                XCTAssertTrue(urlString.contains("name=\(self.urlSuffix)"))
-                expectation2.fulfill()
-            }
+            self.fulfill(hostExpectations, accordingToResult: result)
         }
+
         let doh = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
         let apiService = PMAPIService.createAPIServiceWithoutSession(doh: doh as DoHInterface,
                                                                      challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
@@ -142,7 +162,7 @@ class DoHProviderRequestTests: XCTestCase {
         doh.status = .forceAlternativeRouting
 
         apiService.perform(request: request, response: AuthResponse()) { (task, response: AuthResponse) in
-            expectation3.fulfill()
+            expectation.fulfill()
         }
 
         self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
@@ -151,19 +171,18 @@ class DoHProviderRequestTests: XCTestCase {
     }
 
     func testAuthRequestAuthCredentialPassedByAuthDelegate_SessionID() {
-        let expectation1 = self.expectation(description: "Success completion block called from provider 1")
-        let expectation2 = self.expectation(description: "Success completion block called from provider 2")
-        let expectation3 = self.expectation(description: "Success completion block called from provider 3")
+        let hostExpectations = [
+            "1.1.1.1": self.expectation(description: "Success completion block called from provider 1"),
+            "8.8.8.8": self.expectation(description: "Success completion block called from provider 2"),
+            "9.9.9.9": self.expectation(description: "Success completion block called from provider 3"),
+        ]
 
-        let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { [self] result in
-            if let urlString = result.url?.absoluteString, urlString.contains("google.com") {
-                XCTAssertTrue(urlString.contains("name=testSessionID.\(self.urlSuffix)"))
-                expectation1.fulfill()
-            } else if let urlString = result.url?.absoluteString, urlString.contains("dns11.quad9") {
-                XCTAssertTrue(urlString.contains("name=testSessionID.\(self.urlSuffix)"))
-                expectation2.fulfill()
-            }
+        let expectation = self.expectation(description: "Final completion block invoked")
+
+        let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { result in
+            self.fulfill(hostExpectations, accordingToResult: result, sessionID: "testSessionID")
         }
+
         var doh: DoHInterface = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
         let apiService = PMAPIService.createAPIServiceWithoutSession(doh: doh,
                                                                      challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
@@ -172,7 +191,7 @@ class DoHProviderRequestTests: XCTestCase {
         apiService.authDelegate = authDelegate
 
         apiService.perform(request: request, response: AuthResponse()) { (task, response: AuthResponse) in
-            expectation3.fulfill()
+            expectation.fulfill()
         }
 
         self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
@@ -181,19 +200,18 @@ class DoHProviderRequestTests: XCTestCase {
     }
 
     func testAuthRequestOwnSessionIDPassesByAPIService_SessionID() {
-        let expectation1 = self.expectation(description: "Success completion block called from provider 1")
-        let expectation2 = self.expectation(description: "Success completion block called from provider 2")
-        let expectation3 = self.expectation(description: "Success completion block called from provider 3")
+        let hostExpectations = [
+            "1.1.1.1": self.expectation(description: "Success completion block called from provider 1"),
+            "8.8.8.8": self.expectation(description: "Success completion block called from provider 2"),
+            "9.9.9.9": self.expectation(description: "Success completion block called from provider 3"),
+        ]
 
-        let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { [self] result in
-            if let urlString = result.url?.absoluteString, urlString.contains("google.com") {
-                XCTAssertTrue(urlString.contains("name=testSessionID.\(self.urlSuffix)"))
-                expectation1.fulfill()
-            } else if let urlString = result.url?.absoluteString, urlString.contains("dns11.quad9") {
-                XCTAssertTrue(urlString.contains("name=testSessionID.\(self.urlSuffix)"))
-                expectation2.fulfill()
-            }
+        let expectation = self.expectation(description: "Final completion block invoked")
+
+        let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { result in
+            self.fulfill(hostExpectations, accordingToResult: result, sessionID: "testSessionID")
         }
+
         var doh: DoHInterface = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
         let apiService = PMAPIService.createAPIService(doh: doh,
                                                        sessionUID: "OwnSessionID_123",
@@ -203,7 +221,7 @@ class DoHProviderRequestTests: XCTestCase {
         apiService.authDelegate = authDelegate
 
         apiService.perform(request: request, response: AuthResponse()) { (task, response: AuthResponse) in
-            expectation3.fulfill()
+            expectation.fulfill()
         }
 
         self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
@@ -212,19 +230,18 @@ class DoHProviderRequestTests: XCTestCase {
     }
 
     func testAuthRequestAuthCredentailPassedByRequest_SessionID() {
-        let expectation1 = self.expectation(description: "Success completion block called from provider 1")
-        let expectation2 = self.expectation(description: "Success completion block called from provider 2")
-        let expectation3 = self.expectation(description: "Success completion block called from provider 3")
+        let hostExpectations = [
+            "1.1.1.1": self.expectation(description: "Success completion block called from provider 1"),
+            "8.8.8.8": self.expectation(description: "Success completion block called from provider 2"),
+            "9.9.9.9": self.expectation(description: "Success completion block called from provider 3"),
+        ]
 
-        let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { [self] result in
-            if let urlString = result.url?.absoluteString, urlString.contains("google.com") {
-                XCTAssertTrue(urlString.contains("name=testSessionID.\(self.urlSuffix)"))
-                expectation1.fulfill()
-            } else if let urlString = result.url?.absoluteString, urlString.contains("dns11.quad9") {
-                XCTAssertTrue(urlString.contains("name=testSessionID.\(self.urlSuffix)"))
-                expectation2.fulfill()
-            }
+        let expectation = self.expectation(description: "Final completion block invoked")
+
+        let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { result in
+            self.fulfill(hostExpectations, accordingToResult: result, sessionID: "testSessionID")
         }
+
         let doh = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
         let apiService = PMAPIService.createAPIServiceWithoutSession(doh: doh as DoHInterface,
                                                                      challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
@@ -233,7 +250,7 @@ class DoHProviderRequestTests: XCTestCase {
         apiService.authDelegate = authDelegate
 
         apiService.perform(request: request, response: AuthResponse()) { (task, response: AuthResponse) in
-            expectation3.fulfill()
+            expectation.fulfill()
         }
 
         self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
@@ -242,19 +259,18 @@ class DoHProviderRequestTests: XCTestCase {
     }
 
     func testAuthRequestAuthCredentailPassedByAuthDelegateAndRequest_SessionID() {
-        let expectation1 = self.expectation(description: "Success completion block called from provider 1")
-        let expectation2 = self.expectation(description: "Success completion block called from provider 2")
-        let expectation3 = self.expectation(description: "Success completion block called from provider 3")
+        let hostExpectations = [
+            "1.1.1.1": self.expectation(description: "Success completion block called from provider 1"),
+            "8.8.8.8": self.expectation(description: "Success completion block called from provider 2"),
+            "9.9.9.9": self.expectation(description: "Success completion block called from provider 3"),
+        ]
 
-        let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { [self] result in
-            if let urlString = result.url?.absoluteString, urlString.contains("google.com") {
-                XCTAssertTrue(urlString.contains("name=testSessionID_2.\(self.urlSuffix)"))
-                expectation1.fulfill()
-            } else if let urlString = result.url?.absoluteString, urlString.contains("dns11.quad9") {
-                XCTAssertTrue(urlString.contains("name=testSessionID_2.\(self.urlSuffix)"))
-                expectation2.fulfill()
-            }
+        let expectation = self.expectation(description: "Final completion block invoked")
+
+        let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { result in
+            self.fulfill(hostExpectations, accordingToResult: result, sessionID: "testSessionID_2")
         }
+
         let doh = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
         let apiService = PMAPIService.createAPIServiceWithoutSession(doh: doh as DoHInterface,
                                                                      challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
@@ -263,7 +279,7 @@ class DoHProviderRequestTests: XCTestCase {
         apiService.authDelegate = authDelegate
 
         apiService.perform(request: request, response: AuthResponse()) { (task, response: AuthResponse) in
-            expectation3.fulfill()
+            expectation.fulfill()
         }
 
         self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
@@ -272,19 +288,18 @@ class DoHProviderRequestTests: XCTestCase {
     }
 
     func testAuthRequestAuthCredentialPassesByAuthDelegateAndRequestANDAPIService_SessionID() {
-        let expectation1 = self.expectation(description: "Success completion block called from provider 1")
-        let expectation2 = self.expectation(description: "Success completion block called from provider 2")
-        let expectation3 = self.expectation(description: "Success completion block called from provider 3")
+        let hostExpectations = [
+            "1.1.1.1": self.expectation(description: "Success completion block called from provider 1"),
+            "8.8.8.8": self.expectation(description: "Success completion block called from provider 2"),
+            "9.9.9.9": self.expectation(description: "Success completion block called from provider 3"),
+        ]
 
-        let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { [self] result in
-            if let urlString = result.url?.absoluteString, urlString.contains("google.com") {
-                XCTAssertTrue(urlString.contains("name=testSessionID_2.\(self.urlSuffix)"))
-                expectation1.fulfill()
-            } else if let urlString = result.url?.absoluteString, urlString.contains("dns11.quad9") {
-                XCTAssertTrue(urlString.contains("name=testSessionID_2.\(self.urlSuffix)"))
-                expectation2.fulfill()
-            }
+        let expectation = self.expectation(description: "Final completion block invoked")
+
+        let networkingEngineMock = NetworkingEngineMock(data: nil, response: nil, error: nil) { result in
+            self.fulfill(hostExpectations, accordingToResult: result, sessionID: "testSessionID_2")
         }
+
         let doh = DohMock.mockWithMockNetworkingEngine(networkingEngine: networkingEngineMock)
         let apiService = PMAPIService.createAPIService(doh: doh as DoHInterface,
                                                        sessionUID: "OwnSessionID_123",
@@ -294,7 +309,7 @@ class DoHProviderRequestTests: XCTestCase {
         apiService.authDelegate = authDelegate
 
         apiService.perform(request: request, response: AuthResponse()) { (task, response: AuthResponse) in
-            expectation3.fulfill()
+            expectation.fulfill()
         }
 
         self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in

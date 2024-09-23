@@ -74,6 +74,9 @@ extension UpdatePasswordError {
         case .cantGenerateVerifier: return .cantGenerateVerifier
         case .cantGenerateSRPClient: return .cantGenerateSRPClient
         case .keyUpdateFailed: return .keyUpdateFailed
+        case .missingAuthInfo: return .missingAuthInfo
+        case .missingUserInfo: return .missingUserInfo
+        case .default: return .unknown
         @unknown default: return .unknown
         }
     }

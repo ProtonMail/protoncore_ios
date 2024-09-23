@@ -20,9 +20,9 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
-import ProtonCoreLog
 
 struct Quad9: DoHProviderInternal {
+    public let description = "Quad9 DoH"
 
     let supported: [DNSRecordType] = [.a, .txt]
 
@@ -32,5 +32,5 @@ struct Quad9: DoHProviderInternal {
         self.networkingEngine = networkingEngine
     }
 
-    let queryUrl = URL(string: "https://dns11.quad9.net:5053/dns-query")!
+    let queryUrl = URL(string: "https://9.9.9.9:5053/dns-query")!
 }

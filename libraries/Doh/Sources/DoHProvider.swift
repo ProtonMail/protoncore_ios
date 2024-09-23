@@ -47,7 +47,7 @@ public protocol DoHProviderPublic {
     func fetch(host: String, sessionId: String?, type: DNSRecordType, timeout: TimeInterval, completion: @escaping ([DNS]?) -> Void)
 }
 
-protocol DoHProviderInternal: DoHProviderPublic {
+protocol DoHProviderInternal: DoHProviderPublic, CustomStringConvertible {
     static var defaultRecordType: DNSRecordType { get }
     static var defaultTimeout: TimeInterval { get }
 
@@ -82,17 +82,30 @@ extension DoHProviderInternal {
         return queryUrl.appending(queryItems: queryItems).absoluteString
     }
 
-    public func fetch(host: String, sessionId: String?, type: DNSRecordType, timeout: TimeInterval, completion: @escaping ([DNS]?) -> Void) {
+    public func fetch(
+        host: String,
+        sessionId: String?,
+        type: DNSRecordType,
+        timeout: TimeInterval,
+        completion: @escaping ([DNS]?) -> Void
+    ) {
         let urlStr = self.query(host: host, type: type, sessionId: sessionId)
         let url = URL(string: urlStr)!
 
-        let request = URLRequest(
-            url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: timeout
+        var request = URLRequest(
+            url: url,
+            cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
+            timeoutInterval: timeout
         )
 
+        request.setValue("application/dns-json", forHTTPHeaderField: "Accept")
+
         fetchAsynchronously(request: request) { data in
-            guard let resData = data else { completion(nil); return }
-            guard let dns = self.parse(data: resData) else { completion(nil); return }
+            guard let resData = data, let dns = self.parse(data: resData) else {
+                completion(nil)
+                return
+            }
+
             completion(dns)
         }
     }

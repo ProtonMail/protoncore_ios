@@ -37,6 +37,12 @@ open class DoH: DoHInterface {
     private let networkingEngine: DoHNetworkingEngine
     private let currentTimeProvider: () -> Date
 
+    private lazy var dohProviders: [DoHProviderInternal] = [
+        Google(networkingEngine: networkingEngine),
+        Quad9(networkingEngine: networkingEngine),
+        Cloudflare(networkingEngine: networkingEngine),
+    ]
+
     private var cookiesSynchronizer: DoHCookieSynchronizer?
 
     var config: DoHInterface & ServerConfig {
@@ -348,22 +354,26 @@ open class DoH: DoHInterface {
     }
 
 private func determineIfErrorCodeIndicatesDoHSolvableProblem(_ code: Int) -> Bool {
-    guard code == NSURLErrorTimedOut ||
-            code == NSURLErrorCannotConnectToHost ||
-            code == NSURLErrorCannotFindHost ||
-            code == NSURLErrorDNSLookupFailed ||
-            code == 3500 || // this is tls error
-            code == -1200 ||
-            code == 451 ||
-            code == 310 ||
-            code == -1017 || // this is when proxy return nil body
-            //            code == -1004 ||  // only for testing
-            code == -1005 // only for testing
-    else {
-        return false
-    }
+    #if DEBUG
+    // Bad URL is for malformed requests, CannotParseResponse is for when a proxy returns an empty response.
+    let isTestingError = code == NSURLErrorCannotParseResponse
+    #else
+    let isTestingError = false
+    #endif
 
-    return true
+    return code == NSURLErrorBadURL || // BadURL can happen when a DNS lookup fails or is blocked (undocumented!).
+           code == NSURLErrorDNSLookupFailed ||
+           code == NSURLErrorTimedOut ||
+           code == NSURLErrorCannotConnectToHost ||
+           code == NSURLErrorNetworkConnectionLost ||
+           code == NSURLErrorCannotFindHost ||
+           code == NSURLErrorSecureConnectionFailed ||
+           code == NSURLErrorServerCertificateHasUnknownRoot ||
+           code == NSURLErrorServerCertificateUntrusted ||
+           code == 3500 || // this is tls error
+           code == 451 ||
+           code == 310 ||
+           isTestingError
 }
 
     private func handlePrimaryDomainFailure(
@@ -431,9 +441,7 @@ private func determineIfErrorCodeIndicatesDoHSolvableProblem(_ code: Int) -> Boo
     // MARK: - Resolving proxy domains
 
     private func resolveProxyDomains(for host: ProductionHosts, sessionId: String?, completion: @escaping (Bool) -> Void) {
-        domainResolvingExecutor.execute { [weak self] in
-            guard let self = self else { completion(false); return }
-
+        domainResolvingExecutor.execute { [unowned self] in
             guard self.isThereAnyProxyDomainWorthRetryInCache(for: host) == false else {
                 PMLog.debug("[DoH] Resolving proxy domain — succeeded before")
                 completion(true)
@@ -441,33 +449,44 @@ private func determineIfErrorCodeIndicatesDoHSolvableProblem(_ code: Int) -> Boo
             }
 
             PMLog.debug("[DoH] Resolving proxy domain — fetching")
-            // perform the proxy domain fetching. it should result in populating the cache
-            self.fetchHostFromDNSProvidersUsingSynchronousBlockingCall(for: host, sessionId: sessionId, timeout: self.config.timeout)
 
-            // try getting the domain from cache again
-            guard self.isThereAnyProxyDomainWorthRetryInCache(for: host) else {
-                PMLog.debug("[DoH] Resolving proxy domain — failed")
-                return completion(false)
+            Task {
+                await fetchHostFromDNSProviders(for: host, sessionId: sessionId, timeout: self.config.timeout)
+
+                // try getting the domain from cache again
+                guard self.isThereAnyProxyDomainWorthRetryInCache(for: host) else {
+                    PMLog.debug("[DoH] Resolving proxy domain — failed")
+                    completion(false)
+                    return
+                }
+
+                PMLog.debug("[DoH] Resolving proxy domain — succeeded")
+                completion(true)
             }
-
-            PMLog.debug("[DoH] Resolving proxy domain — succeeded")
-            completion(true)
         }
     }
 
-    private func fetchHostFromDNSProvidersUsingSynchronousBlockingCall(for host: ProductionHosts, sessionId: String?, timeout: TimeInterval) {
-        assert(Thread.isMainThread == false, "This is a blocking call, should never be called from the main thread")
+    private func fetchHostFromDNSProviders(for host: ProductionHosts, sessionId: String?, timeout: TimeInterval) async {
+        await withTaskGroup(of: Void.self) { group in
+            // For each of our configured providers, attempt to resolve the failing API URL using DoH.
+            // Populate the cache with any results that succeed, and wait for every request to complete or time out.
+            dohProviders.forEach { provider in
+                group.addTask {
+                    await withUnsafeContinuation { continuation in
+                        provider.fetch(host: host.dohHost, sessionId: sessionId, timeout: timeout) { dns in
+                            if let dns {
+                                self.populateCache(for: host, with: dns)
+                            }
 
-        let semaphore = DispatchSemaphore(value: 0)
-        [Google(networkingEngine: networkingEngine), Quad9(networkingEngine: networkingEngine)]
-            .map { (provider: DoHProviderInternal) in
-                provider.fetch(host: host.dohHost, sessionId: sessionId, timeout: timeout) { [weak self] dns in
-                    defer { semaphore.signal() }
-                    guard let self = self, let dns = dns else { return }
-                    self.populateCache(for: host, with: dns)
+                            continuation.resume()
+                        }
+                    }
+
+                    PMLog.debug("[DoH] Resolving proxy domain — hit from \(provider)")
                 }
-            }.forEach {
-                semaphore.wait()
             }
+
+            await group.waitForAll()
+        }
     }
 }

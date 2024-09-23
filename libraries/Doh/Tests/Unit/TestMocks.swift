@@ -131,17 +131,22 @@ func stubDoHProvidersSuccess() {
     ]
     }
     """.data(using: String.Encoding.utf8)!
-    stub(condition: isHost("dns.google.com")) { _ in HTTPStubsResponse(data: response, statusCode: 200, headers: [:]) }
-    stub(condition: isHost("dns11.quad9.net")) { _ in HTTPStubsResponse(data: response, statusCode: 200, headers: [:]) }
+    stub(condition: isHost("8.8.8.8")) { _ in HTTPStubsResponse(data: response, statusCode: 200, headers: [:]) }
+    stub(condition: isHost("9.9.9.9")) { _ in HTTPStubsResponse(data: response, statusCode: 200, headers: [:]) }
+    stub(condition: isHost("1.1.1.1")) { _ in HTTPStubsResponse(data: response, statusCode: 200, headers: [:]) }
 }
 
 func stubDoHProvidersTimeout(sleepInSeconds: UInt32 = 1) {
     let response = "{ \"Code\": 1000 }".data(using: String.Encoding.utf8)!
-    stub(condition: isHost("dns.google.com")) { request in
+    stub(condition: isHost("8.8.8.8")) { request in
         sleep(sleepInSeconds)
         return HTTPStubsResponse(data: response, statusCode: 400, headers: [:])
     }
-    stub(condition: isHost("dns11.quad9.net")) { request in
+    stub(condition: isHost("9.9.9.9")) { request in
+        sleep(sleepInSeconds)
+        return HTTPStubsResponse(data: response, statusCode: 400, headers: [:])
+    }
+    stub(condition: isHost("1.1.1.1")) { request in
         sleep(sleepInSeconds)
         return HTTPStubsResponse(data: response, statusCode: 400, headers: [:])
     }
@@ -149,10 +154,13 @@ func stubDoHProvidersTimeout(sleepInSeconds: UInt32 = 1) {
 
 func stubDoHProvidersBadResponse() {
     let response = "{ \"Code\": 1000 }".data(using: String.Encoding.utf8)!
-    stub(condition: isHost("dns.google.com")) { request in
+    stub(condition: isHost("8.8.8.8")) { request in
         return HTTPStubsResponse(data: response, statusCode: 400, headers: [:])
     }
-    stub(condition: isHost("dns11.quad9.net")) { request in
+    stub(condition: isHost("9.9.9.9")) { request in
+        return HTTPStubsResponse(data: response, statusCode: 400, headers: [:])
+    }
+    stub(condition: isHost("1.1.1.1")) { request in
         return HTTPStubsResponse(data: response, statusCode: 400, headers: [:])
     }
 }
