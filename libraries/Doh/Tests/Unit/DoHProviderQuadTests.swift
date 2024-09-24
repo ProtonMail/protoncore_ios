@@ -54,7 +54,7 @@ class DoHProviderQuadTests: XCTestCase {
 
     func testQuad9Url() {
         let quad9 = Quad9(networkingEngine: networkingEngine)
-        XCTAssertTrue(quad9.queryUrl.absoluteString.contains("dns11.quad9.net"))
+        XCTAssertTrue(quad9.queryUrl.absoluteString.contains("9.9.9.9"))
     }
 
     func testQuad9GetQuery() {
@@ -90,7 +90,7 @@ class DoHProviderQuadTests: XCTestCase {
     }
 
     func testQuad9BadResponse1() async {
-        stub(condition: isHost("dns11.quad9.net") && isMethodGET() && isPath("/dns-query")) { request in
+        stub(condition: isHost("9.9.9.9") && isMethodGET() && isPath("/dns-query")) { request in
             let dbody = "".data(using: String.Encoding.utf8)!
             return HTTPStubsResponse(data: dbody, statusCode: 200, headers: [:])
         }
@@ -102,7 +102,7 @@ class DoHProviderQuadTests: XCTestCase {
     }
 
     func testQuad9BadResponse2() async {
-        stub(condition: isHost("dns11.quad9.net") && isMethodGET() && isPath("/dns-query")) { request in
+        stub(condition: isHost("9.9.9.9") && isMethodGET() && isPath("/dns-query")) { request in
             let dbody = "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":true,\"CD\":false,\"Question\":[{\"name\":\"test.host.name.\",\"type\":16}],\"Authority\":[{\"name\":\".\",\"type\":6,\"TTL\":86394,\"data\":\"a.root-servers.net. nstld.verisign-grs.com. 2021071901 1800 900 604800 86400\"}]}".data(using: String.Encoding.utf8)!
             return HTTPStubsResponse(data: dbody, statusCode: 200, headers: [:])
         }
@@ -114,7 +114,7 @@ class DoHProviderQuadTests: XCTestCase {
     }
 
     func testQuad9BadResponse3() async {
-        stub(condition: isHost("dns11.quad9.net") && isMethodGET() && isPath("/dns-query")) { request in
+        stub(condition: isHost("9.9.9.9") && isMethodGET() && isPath("/dns-query")) { request in
             let dbody = "[\"Ford\", \"BMW\", \"Fiat\", \"Tonka\"]".data(using: String.Encoding.utf8)!
             return HTTPStubsResponse(data: dbody, statusCode: 200, headers: [:])
         }
@@ -126,7 +126,7 @@ class DoHProviderQuadTests: XCTestCase {
     }
 
     func testQuad9BadResponse4() async {
-        stub(condition: isHost("dns11.quad9.net") && isMethodGET() && isPath("/dns-query")) { request in
+        stub(condition: isHost("9.9.9.9") && isMethodGET() && isPath("/dns-query")) { request in
             var dict = [String: Any]()
             if let components = URLComponents(url: request.url!, resolvingAgainstBaseURL: false) {
                 if let queryItems = components.queryItems {
@@ -154,7 +154,7 @@ class DoHProviderQuadTests: XCTestCase {
     }
 
     func testQuad9BadResponse5() async {
-        stub(condition: isHost("dns11.quad9.net") && isMethodGET() && isPath("/dns-query")) { request in
+        stub(condition: isHost("9.9.9.9") && isMethodGET() && isPath("/dns-query")) { request in
             var dict = [String: Any]()
             if let components = URLComponents(url: request.url!, resolvingAgainstBaseURL: false) {
                 if let queryItems = components.queryItems {

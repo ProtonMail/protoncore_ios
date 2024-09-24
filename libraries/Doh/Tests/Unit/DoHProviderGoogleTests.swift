@@ -54,7 +54,7 @@ class DoHProviderGoogleTests: XCTestCase {
 
     func testGoogleUrl() {
         let google = Google(networkingEngine: networkingEngine)
-        XCTAssertTrue(google.queryUrl.absoluteString.contains("dns.google.com"))
+        XCTAssertTrue(google.queryUrl.absoluteString.contains("8.8.8.8"))
     }
 
     func testGoogleGetQuery() {
@@ -90,7 +90,7 @@ class DoHProviderGoogleTests: XCTestCase {
     }
 
     func testGoogleBadResponse1() async {
-        stub(condition: isHost("dns.google.com") && isMethodGET() && isPath("/resolve")) { request in
+        stub(condition: isHost("8.8.8.8") && isMethodGET() && isPath("/resolve")) { request in
             var dict = [String: Any]()
             if let components = URLComponents(url: request.url!, resolvingAgainstBaseURL: false) {
                 if let queryItems = components.queryItems {
@@ -110,7 +110,7 @@ class DoHProviderGoogleTests: XCTestCase {
     }
 
     func testGoogleBadResponse2() async {
-        stub(condition: isHost("dns.google.com") && isMethodGET() && isPath("/resolve")) { request in
+        stub(condition: isHost("8.8.8.8") && isMethodGET() && isPath("/resolve")) { request in
             var dict = [String: Any]()
             if let components = URLComponents(url: request.url!, resolvingAgainstBaseURL: false) {
                 if let queryItems = components.queryItems {
@@ -130,7 +130,7 @@ class DoHProviderGoogleTests: XCTestCase {
     }
 
     func testGoogleBadResponse3() async {
-        stub(condition: isHost("dns.google.com") && isMethodGET() && isPath("/resolve")) { request in
+        stub(condition: isHost("8.8.8.8") && isMethodGET() && isPath("/resolve")) { request in
             var dict = [String: Any]()
             if let components = URLComponents(url: request.url!, resolvingAgainstBaseURL: false) {
                 if let queryItems = components.queryItems {
@@ -150,7 +150,7 @@ class DoHProviderGoogleTests: XCTestCase {
     }
 
     func testGoogleBadResponse4() async {
-        stub(condition: isHost("dns.google.com") && isMethodGET() && isPath("/resolve")) { request in
+        stub(condition: isHost("8.8.8.8") && isMethodGET() && isPath("/resolve")) { request in
             var dict = [String: Any]()
             if let components = URLComponents(url: request.url!, resolvingAgainstBaseURL: false) {
                 if let queryItems = components.queryItems {
@@ -178,7 +178,7 @@ class DoHProviderGoogleTests: XCTestCase {
     }
 
     func testGoogleBadResponse5() async {
-        stub(condition: isHost("dns.google.com") && isMethodGET() && isPath("/resolve")) { request in
+        stub(condition: isHost("8.8.8.8") && isMethodGET() && isPath("/resolve")) { request in
             var dict = [String: Any]()
             if let components = URLComponents(url: request.url!, resolvingAgainstBaseURL: false) {
                 if let queryItems = components.queryItems {

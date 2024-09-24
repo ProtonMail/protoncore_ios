@@ -403,6 +403,8 @@ final class ObservabilityEventTests: XCTestCase {
                             "cantGenerateVerifier",
                             "cantGenerateSRPClient",
                             "keyUpdateFailed",
+                            "missingAuthInfo",
+                            "missingUserInfo",
                             "unknown"
                         ]
                     },
@@ -461,6 +463,8 @@ final class ObservabilityEventTests: XCTestCase {
                             "cantGenerateVerifier",
                             "cantGenerateSRPClient",
                             "keyUpdateFailed",
+                            "missingAuthInfo",
+                            "missingUserInfo",
                             "unknown"
                         ]
                     },
