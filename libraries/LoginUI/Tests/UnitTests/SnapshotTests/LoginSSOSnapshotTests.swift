@@ -58,6 +58,27 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
 
         checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
     }
+
+    @MainActor
+    func testEnterBackupPassword() {
+        let viewController = EnterBackupPasswordViewController()
+
+        checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
+    }
+
+    @MainActor
+    func testAccessGranted() {
+        let viewController = AccessGrantedDeniedViewController(mode: .accessGranted)
+
+        checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
+    }
+
+    @MainActor
+    func testAccessDenied() {
+        let viewController = AccessGrantedDeniedViewController(mode: .accessDenied)
+
+        checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
+    }
 }
 
 #endif
