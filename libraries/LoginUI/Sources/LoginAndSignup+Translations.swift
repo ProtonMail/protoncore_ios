@@ -182,6 +182,8 @@ public enum LUITranslation: TranslationsExposing {
     case access_granted_description
     case access_denied_description
     case back_to_signin_button
+    case request_admin_access_title
+    case request_admin_access_description
 
     public var l10n: String {
         switch self {
@@ -496,6 +498,10 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Contact your administrator if the problem persists.", comment: "Access Denied screen description")
         case .back_to_signin_button:
             return localized(key: "Back to sign-in", comment: "Action button title")
+        case .request_admin_access_title:
+            return localized(key: "Ask your administrator for access?", comment: "Request Admin for Access screen title")
+        case .request_admin_access_description:
+            return localized(key: "This will sign you out of your other devices and you will have to create a new backup password.", comment: "Screen description when prompting the user to request access from their organization admin.")
         }
     }
 }
