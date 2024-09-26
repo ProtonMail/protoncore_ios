@@ -186,14 +186,26 @@ public extension FeatureFlagsRepository {
      - reloadValue: Pass `true` if you want the latest stored value for the flag. Pass `false` if  you want the "static" value, which is always the same as the first returned.
      */
     func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String?, reloadValue: Bool) -> Bool {
+        getFlag(flag, for: userId, reloadValue: reloadValue)?.enabled ?? false
+    }
 
+    /**
+     The flag is fetched from the local data source and is intended for use in multi-user contexts.
+     If an overridden flag is found, it gets returned instead of the local value.
+
+     - Parameters:
+     - flag: The flag we want to know the state of.
+     - userId: The user id for which we want to check the flag value. If the userId is `nil`, the first-set userId will be used.  See ``setUserId(_)``.
+     - reloadValue: Pass `true` if you want the latest stored value for the flag. Pass `false` if  you want the "static" value, which is always the same as the first returned.
+     */
+    func getFlag(_ flag: any FeatureFlagTypeProtocol, for userId: String?, reloadValue: Bool) -> FeatureFlag? {
         let tempUserId: String = userId ?? self.userId
 
         // Search for an existing global overridden flag
         let overriddenFlag = overrideLocalDataSource.value.getFeatureFlags()?.getFlag(for: flag)
 
         if let overriddenNoIdFlag = overriddenFlag {
-            return overriddenNoIdFlag.enabled
+            return overriddenNoIdFlag
         }
 
         let flag = localDataSource.value.getFeatureFlags(
@@ -201,11 +213,7 @@ public extension FeatureFlagsRepository {
             reloadFromLocalDataSource: reloadValue
         )?.getFlag(for: flag)
 
-        if let flag = flag {
-            return flag.enabled
-        }
-
-        return false
+        return flag
     }
 }
 

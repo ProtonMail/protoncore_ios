@@ -37,6 +37,7 @@ public protocol FeatureFlagsRepositoryProtocol: AnyObject, Sendable {
 
     // MARK: - For multi-user clients
     func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String?, reloadValue: Bool) -> Bool
+    func getFlag(_ flag: any FeatureFlagTypeProtocol, for userId: String?, reloadValue: Bool) -> FeatureFlag?
 
     // MARK: - Commons
     func resetFlags()
@@ -55,6 +56,11 @@ public extension FeatureFlagsRepositoryProtocol {
     /// For multi-user clients
     func isEnabled(_ flag: any FeatureFlagTypeProtocol, for userId: String?, reloadValue: Bool = false) -> Bool {
         isEnabled(flag, for: userId, reloadValue: reloadValue)
+    }
+
+    /// For multi-user clients
+    func getFlag(_ flag: any FeatureFlagTypeProtocol, for userId: String?, reloadValue: Bool = false) -> FeatureFlag? {
+        getFlag(flag, for: userId, reloadValue: reloadValue)
     }
 
     func setApiService(_ apiService: any APIService, completionExecutor: CompletionBlockExecutor = .asyncMainExecutor) {
