@@ -2047,7 +2047,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/nalexn/ViewInspector.git",
-            .upToNextMajor(from: "0.9.9")
+            .upToNextMajor(from: "0.10.0")
         ),
         .package(
             url: "https://github.com/getsentry/sentry-cocoa.git",

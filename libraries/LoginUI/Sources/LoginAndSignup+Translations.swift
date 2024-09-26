@@ -434,7 +434,7 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Join %@",
                              comment: "Join organization screen title that uses the name of the organization.")
         case .join_organization_description:
-            return localized(key: "%@ invited you to join their organization on %@.",
+            return localized(key: "%@ added you to their Proton organization.",
                              comment: "Join organization screen description.")
         case .continue_core_button:
             return localized(key: "Continue",
