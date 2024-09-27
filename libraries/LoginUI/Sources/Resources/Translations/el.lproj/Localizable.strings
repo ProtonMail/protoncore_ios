@@ -304,16 +304,16 @@
 
 "Operation couldn't be completed. Please try again." = "Δεν ήταν δυνατή η ολοκλήρωση της λειτουργίας. Παρακαλούμε προσπαθήστε ξανά.";
 
-"Enter your backup password" = "Enter your backup password";
+"Enter your backup password" = "Εισαγάγετε τον εφεδρικό κωδικό πρόσβασης σας";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Για να βεβαιωθείτε ότι προσπαθείτε πραγματικά να συνδεθείτε, εισαγάγετε τον εφεδρικό κωδικό πρόσβασης σας.";
 
-"Access granted" = "Access granted";
+"Access granted" = "Πρόσβαση επετράπη";
 
-"Access denied" = "Access denied";
+"Access denied" = "Δεν επιτρέπεται η πρόσβαση";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Για την ασφάλειά σας, έχετε αποσυνδεθεί από όλες τις άλλες ενεργές συσκευές σας. Προτού αποκτήσετε πρόσβαση στον λογαριασμό σας, θα πρέπει να εισαγάγετε έναν νέο εφεδρικό κωδικό πρόσβασης σας.";
 
-"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+"Contact your administrator if the problem persists." = "Επικοινωνήστε με το διαχειριστή σας εάν το πρόβλημα παραμένει.";
 
-"Back to sign-in" = "Back to sign-in";
+"Back to sign-in" = "Επιστροφή στη σύνδεση";

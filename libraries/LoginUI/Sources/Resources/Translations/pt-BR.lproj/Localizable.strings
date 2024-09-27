@@ -304,16 +304,16 @@
 
 "Operation couldn't be completed. Please try again." = "Não foi possível concluir a operação. Por favor, tente novamente.";
 
-"Enter your backup password" = "Enter your backup password";
+"Enter your backup password" = "Digite sua senha de backup";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Para ter certeza que é realmente você tentando se conectar, por favor insira a sua senha de backup.";
 
-"Access granted" = "Access granted";
+"Access granted" = "Acesso concedido";
 
-"Access denied" = "Access denied";
+"Access denied" = "Acesso negado";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Para sua segurança, você foi desconectado de todos os seus outros dispositivos ativos. Antes de acessar sua conta, você precisará digitar uma nova senha de backup.";
 
-"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+"Contact your administrator if the problem persists." = "Entre em contato com o administrador se o problema persistir.";
 
-"Back to sign-in" = "Back to sign-in";
+"Back to sign-in" = "Voltar para o login";

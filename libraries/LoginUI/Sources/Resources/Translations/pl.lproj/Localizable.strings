@@ -264,7 +264,7 @@
 
 "Continue" = "Kontynuuj";
 
-"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Ustaw hasło kopii zapasowej. To hasło pozwoli Ci zalogować się i odzyskać dane, jeśli Twoje konto Proton zostanie zablokowane. Upewnij się, że przechowujesz je w bezpiecznym miejscu.";
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Ustaw hasło kopii zapasowej, aby kontynuować. To hasło pozwoli Ci zalogować się i odzyskać dane, jeśli utracisz dostęp do konta Proton. Upewnij się, że przechowujesz je w bezpiecznym miejscu.";
 
 "Backup password" = "Hasło kopii zapasowej";
 
@@ -304,16 +304,16 @@
 
 "Operation couldn't be completed. Please try again." = "Operacja nie mogła zostać zakończona. Spróbuj ponownie.";
 
-"Enter your backup password" = "Enter your backup password";
+"Enter your backup password" = "Wpisz hasło kopii zapasowej";
 
 "To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
 
 "Access granted" = "Access granted";
 
-"Access denied" = "Access denied";
+"Access denied" = "Odmowa dostępu";
 
 "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
 
 "Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
 
-"Back to sign-in" = "Back to sign-in";
+"Back to sign-in" = "Powrót do logowania";

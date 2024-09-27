@@ -304,16 +304,16 @@
 
 "Operation couldn't be completed. Please try again." = "작업을 완료하지 못했습니다. 다시 시도하십시오.";
 
-"Enter your backup password" = "Enter your backup password";
+"Enter your backup password" = "백업 비밀번호를 입력하세요";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "본인이 로그인 시도 중인지 인증하기 위해 백업 비밀번호를 입력해주세요.";
 
-"Access granted" = "Access granted";
+"Access granted" = "엑세스 권한 부여됨";
 
-"Access denied" = "Access denied";
+"Access denied" = "액세스 거부됨";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "보안을 위해, 모든 활성 기기에서 로그아웃되었습니다. 계정 접근 전에 새 백업 비밀번호를 입력해야합니다.";
 
-"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+"Contact your administrator if the problem persists." = "문제가 발생한다면 관리자에게 연락하세요.";
 
-"Back to sign-in" = "Back to sign-in";
+"Back to sign-in" = "로그인으로 이동";

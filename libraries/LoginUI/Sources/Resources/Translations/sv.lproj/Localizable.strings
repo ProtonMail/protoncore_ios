@@ -260,15 +260,15 @@
 
 "Join %@" = "Gå med %@";
 
-"%@ invited you to join their organization on %@." = "%@ invited you to join their organization on %@.";
+"%@ invited you to join their organization on %@." = "%@ bjöd in dig att ansluta dig till deras organisation på %@";
 
 "Continue" = "Fortsätt";
 
-"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.";
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Ställ in ett säkerhetskopieringslösenord för att fortsätta. Detta lösenord gör att du kan logga in och återställa dina data om du blir utelåst från ditt Proton-konto, så se till att förvara det någonstans säkert.";
 
 "Backup password" = "Säkerhetskopiera lösenord";
 
-"Repeat backup password" = "Repeat backup password";
+"Repeat backup password" = "Repetera säkerhetskopieringslösenord";
 
 "Password cannot be empty" = "Lösenord kan inte vara tomt";
 
@@ -296,7 +296,7 @@
 
 "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "För att vara säker på att det verkligen är du som försöker logga in på ditt konto, granska bekräftelsekoden och godkänn begäran från annan enhet.";
 
-"Use backup password instead" = "Use backup password instead";
+"Use backup password instead" = "Använd säkerhetskopieringslösenord istället";
 
 "Ask administrator for help" = "Be administratör om hjälp";
 
@@ -304,16 +304,16 @@
 
 "Operation couldn't be completed. Please try again." = "Operation kunde inte slutföras. Försök igen.";
 
-"Enter your backup password" = "Enter your backup password";
+"Enter your backup password" = "Ange ditt säkerhetskopieringslösenord";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "För att vara säker på att det verkligen är du som försöker logga in, ange ditt säkerhetskopieringslösenord.";
 
-"Access granted" = "Access granted";
+"Access granted" = "Åtkomst beviljad";
 
-"Access denied" = "Access denied";
+"Access denied" = "Åtkomst nekad";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "För din säkerhet har du blivit utloggad från alla dina andra aktiva enheter. Innan du kommer åt ditt konto måste du ange ett nytt säkerhetskopieringslösenord.";
 
-"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+"Contact your administrator if the problem persists." = "Kontakta din administratör om problemet kvarstår.";
 
-"Back to sign-in" = "Back to sign-in";
+"Back to sign-in" = "Tillbaka till inloggning";

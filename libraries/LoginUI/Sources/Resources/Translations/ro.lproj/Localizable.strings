@@ -304,16 +304,16 @@
 
 "Operation couldn't be completed. Please try again." = "Operațiunea nu a putut fi finalizată. Mai încercați.";
 
-"Enter your backup password" = "Enter your backup password";
+"Enter your backup password" = "Introduceți parola de rezervă";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Pentru a dovedi că sunteți proprietarul contului, introduceți parola de rezervă.";
 
-"Access granted" = "Access granted";
+"Access granted" = "Acces acordat";
 
-"Access denied" = "Access denied";
+"Access denied" = "Acces respins";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Din motive de securitate contul a fost deconectat de la toate celelalte dispozitive active. Înainte de a vă accesa contul, va trebui să introduceți o nouă parolă de rezervă.";
 
-"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+"Contact your administrator if the problem persists." = "Contactați-vă administratorul dacă problema persistă.";
 
-"Back to sign-in" = "Back to sign-in";
+"Back to sign-in" = "La autentificare";

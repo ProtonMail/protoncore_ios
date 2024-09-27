@@ -162,11 +162,11 @@
 
 "This should take no more than a minute." = "Això no hauria de durar més d'un minut.";
 
-"Creating your account" = "Creant el vostre compte";
+"Creating your account" = "S'està creant el compte";
 
 "Generating your address" = "Generant la vostra adreça";
 
-"Securing your account" = "Protegint el vostre compte";
+"Securing your account" = "S'està protegint el compte";
 
 "Verifying your payment" = "S'està verificant el pagament.";
 
@@ -258,7 +258,7 @@
 
 "We could not initiate the Secure Password update connection. Please try again." = "No hem pogut iniciar la connexió d'actualització de la contrasenya segura. Torneu-ho a provar.";
 
-"Join %@" = "Join %@";
+"Join %@" = "Uniu-vos %@";
 
 "%@ invited you to join their organization on %@." = "%@ invited you to join their organization on %@.";
 
@@ -266,7 +266,7 @@
 
 "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.";
 
-"Backup password" = "Contrasenya de reserva";
+"Backup password" = "Contrasenya de la còpia de seguretat";
 
 "Repeat backup password" = "Confirma la contrasenya de recuperació";
 
@@ -310,7 +310,7 @@
 
 "Access granted" = "Access granted";
 
-"Access denied" = "Access denied";
+"Access denied" = "Accés denegat";
 
 "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
 

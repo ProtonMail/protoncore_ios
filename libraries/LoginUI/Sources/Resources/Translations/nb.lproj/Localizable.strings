@@ -304,16 +304,16 @@
 
 "Operation couldn't be completed. Please try again." = "Operasjonen kunne ikke fullføres. Vennligst prøv igjen.";
 
-"Enter your backup password" = "Enter your backup password";
+"Enter your backup password" = "Angi sikkerhetskopipassordet ditt";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "For å være sikker på at det virkelig er du som prøver å logge på, vennligst skriv inn ditt sikkerhetskopipassord.";
 
-"Access granted" = "Access granted";
+"Access granted" = "Tilgang godkjent";
 
-"Access denied" = "Access denied";
+"Access denied" = "Tilgang nektet";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Av sikkerhetshensyn har du blitt logget av alle de andre aktive enhetene dine. Før du får tilgang til kontoen din, må du skrive inn et nytt sikkerhetskopipassord.";
 
-"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+"Contact your administrator if the problem persists." = "Kontakt administratoren hvis problemet vedvarer.";
 
-"Back to sign-in" = "Back to sign-in";
+"Back to sign-in" = "Tilbake til pålogging";

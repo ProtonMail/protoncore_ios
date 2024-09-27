@@ -34,11 +34,11 @@
 
 "Sign in" = "Войти";
 
-"Sign in with password" = "Войти с помощью пароля";
+"Sign in with password" = "Войти с паролем";
 
 "Sign in with SSO" = "Войти через SSO";
 
-"Sign in to your organization" = "Войдите в вашу организацию";
+"Sign in to your organization" = "Войти в свою организацию";
 
 "Create an account" = "Создать аккаунт";
 
@@ -242,13 +242,13 @@
 
 "Fetching your security keys details" = "Загрузка информации о ключах безопасности";
 
-"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "У вас еще нет ключей безопасности, зарегистрированных в вашей аккаунте. Чтобы добавить ключи безопасности, посетите раздел настроек на нашем сайте.";
+"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "У вас ещё нет ключей безопасности, зарегистрированных в вашем аккаунте. Чтобы добавить ключи безопасности, посетите раздел настроек на сайте.";
 
 "An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "Произошла ошибка при загрузке ключей безопасности. Вы также можете проверить их на веб-сайте Proton %@.";
 
-"These are the security keys registered to your account" = "Это ключи безопасности, зарегистрированные в вашей учетной записи";
+"These are the security keys registered to your account" = "Это ключи безопасности, зарегистрированные в вашем аккаунте";
 
-"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "У вас еще нет ключей безопасности, зарегистрированных в вашей учетной записи. Для добавления ключей безопасности воспользуйтесь веб-приложением Proton %@.";
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "У вас еще нет ключей безопасности, зарегистрированных в вашем аккаунте. Для добавления ключей безопасности воспользуйтесь веб-приложением Proton %@.";
 
 "Security Keys" = "Ключи безопасности";
 
@@ -276,31 +276,31 @@
 
 "Password doesn't match" = "Пароли не совпадают";
 
-"Sign-in requested on another device. Was it you?" = "Sign-in requested on another device. Was it you?";
+"Sign-in requested on another device. Was it you?" = "Обнаружен вход на другом устройстве. Это вы?";
 
-"Check that the confirmation code match the code on your other device." = "Check that the confirmation code match the code on your other device.";
+"Check that the confirmation code match the code on your other device." = "Подтвердите, что код подтверждения совпадает с кодом на вашем другом устройстве.";
 
-"Confirmation code" = "Confirmation code";
+"Confirmation code" = "Код подтверждения";
 
-"If you didn't make this request, cancel it now." = "If you didn't make this request, cancel it now.";
+"If you didn't make this request, cancel it now." = "Если вы не отправляли этот запрос, отмените его сейчас.";
 
-"Yes, it was me" = "Yes, it was me";
+"Yes, it was me" = "Да, это я";
 
-"No, it wasn't me" = "No, it wasn't me";
+"No, it wasn't me" = "Нет, это не я";
 
-"Share the confirmation code with your administrator" = "Share the confirmation code with your administrator";
+"Share the confirmation code with your administrator" = "Поделитесь кодом подтверждения с вашим администратором";
 
-"Approve the sign-in from another device" = "Approve the sign-in from another device";
+"Approve the sign-in from another device" = "Подтвердить вход с другого устройства";
 
-"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@.";
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Чтобы убедиться, что входите действительно вы, поделитесь этим кодом подтверждения с вашим администратором %@, для одобрения запроса для %@.";
 
-"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device.";
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Чтобы убедиться, что в ваш аккаунт входите действительно вы, проверьте код подтверждения и одобрите запрос с другого устройства.";
 
-"Use backup password instead" = "Use backup password instead";
+"Use backup password instead" = "Воспользуйтесь резервным паролем";
 
-"Ask administrator for help" = "Ask administrator for help";
+"Ask administrator for help" = "Обратитесь к администратору за помощью";
 
-"Devices available:" = "Devices available:";
+"Devices available:" = "Доступные устройства:";
 
 "Operation couldn't be completed. Please try again." = "Операция не может быть завершена. Попробуйте еще раз.";
 
