@@ -1,6 +1,6 @@
 //
-//  SignInRequestView.swift
-//  ProtonCore-LoginUI - Created on 23/08/2024.
+//  RequestAdminAccessView.swift
+//  ProtonCore-LoginUI - Created on 26/09/2024.
 //
 //  Copyright (c) 2024 Proton AG
 //

@@ -92,7 +92,7 @@ extension SignInRequestView {
             }
         }
 
-        var primaryButtonActionTitle: String {
+        var primaryButtonTitle: String {
             switch mode {
             case .requestForAdminApproval: return LUITranslation.use_backup_password_instead.l10n
             case .requestApproveFromAnotherDevice: return LUITranslation.use_backup_password_instead.l10n
@@ -100,7 +100,7 @@ extension SignInRequestView {
             }
         }
 
-        var secondaryButtonActionTitle: String {
+        var secondaryButtonTitle: String {
             switch mode {
             case .requestForAdminApproval: return LUITranslation._core_cancel_button.l10n
             case .requestApproveFromAnotherDevice: return LUITranslation.ask_administrator_for_help.l10n

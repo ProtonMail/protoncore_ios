@@ -184,6 +184,10 @@ public enum LUITranslation: TranslationsExposing {
     case back_to_signin_button
     case request_admin_access_title
     case request_admin_access_description
+    case admin_grant_access_title
+    case admin_grant_access_description
+    case grant_access_button_title
+    case deny_access_button_title
 
     public var l10n: String {
         switch self {
@@ -502,6 +506,14 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Ask your administrator for access?", comment: "Request Admin for Access screen title")
         case .request_admin_access_description:
             return localized(key: "This will sign you out of your other devices and you will have to create a new backup password.", comment: "Screen description when prompting the user to request access from their organization admin.")
+        case .admin_grant_access_title:
+            return localized(key: "Grant access to user?", comment: "Admin Grant Access screen title")
+        case .admin_grant_access_description:
+            return localized(key: "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.", comment: "Screen description when prompting an admin to grant access to a user in their organization.")
+        case .grant_access_button_title:
+            return localized(key: "Grant access", comment: "Grant access button title")
+        case .deny_access_button_title:
+            return localized(key: "Deny access", comment: "Deny access button title")
         }
     }
 }

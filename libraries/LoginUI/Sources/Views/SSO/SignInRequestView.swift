@@ -54,7 +54,7 @@ public struct SignInRequestView: View {
                     PCButton(
                         style: .constant(.init(mode: .solid)),
                         content: .constant(.init(
-                            title: viewModel.primaryButtonActionTitle,
+                            title: viewModel.primaryButtonTitle,
                             action: viewModel.primaryActionButtonTapped
                         ))
                     )
@@ -62,7 +62,7 @@ public struct SignInRequestView: View {
                     PCButton(
                         style: .constant(.init(mode: .text)),
                         content: .constant(.init(
-                            title: viewModel.secondaryButtonActionTitle,
+                            title: viewModel.secondaryButtonTitle,
                             action: viewModel.secondaryActionButtonTapped
                         ))
                     )
