@@ -48,8 +48,8 @@ extension JoinOrganizationView {
             isSecureEntry: true
         )
 
-        private let organizationName: String = "Proton AG"
-        private let organizationEmail: String = "admin@privacybydefault.com"
+        let organizationName: String = "Proton AG"
+        let organizationEmail: String = "admin@privacybydefault.com"
 
         init(dependencies: Dependencies) {}
 

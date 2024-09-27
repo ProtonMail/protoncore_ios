@@ -43,10 +43,7 @@ public struct SignInRequestView: View {
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                Text(viewModel.bodyDescription)
-                    .font(.subheadline)
-                    .foregroundColor(ColorProvider.TextWeak)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                bodyText()
 
                 confirmationCodeContainer
 
@@ -94,6 +91,32 @@ public struct SignInRequestView: View {
                 .padding(.top, Constants.itemSpacing)
         case .approvingAccess:
             confirmationCodeInput
+        }
+    }
+
+    private func bodyText() -> some View {
+        if #available(iOS 15, *) {
+            var attributedString = AttributedString(viewModel.bodyDescription)
+
+            attributedString.font = Font.subheadline
+            attributedString.foregroundColor = ColorProvider.TextWeak
+
+            // make the email substrings heavier weight
+            if let adminRange = attributedString.range(of: viewModel.adminEmail) {
+                attributedString[adminRange].font = Font.subheadline.weight(.bold)
+            }
+
+            if let memberRange = attributedString.range(of: viewModel.memberEmail) {
+                attributedString[memberRange].font = Font.subheadline.weight(.bold)
+            }
+
+            return Text(attributedString)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        } else {
+            return Text(viewModel.bodyDescription)
+                .font(.subheadline)
+                .foregroundColor(ColorProvider.TextWeak)
+                .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 

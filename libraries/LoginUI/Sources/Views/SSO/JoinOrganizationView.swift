@@ -84,13 +84,31 @@ public struct JoinOrganizationView: View {
             Text(viewModel.joinOrganizationTitle)
                 .font(.title2)
                 .fontWeight(.bold)
-            Text(viewModel.joinOrganizationDescription)
+            bodyText()
+        }
+        Divider()
+            .background(ColorProvider.SeparatorNorm)
+    }
+
+    private func bodyText() -> some View {
+        if #available(iOS 15, *) {
+            var attributedString = AttributedString(viewModel.joinOrganizationDescription)
+
+            attributedString.font = Font.subheadline.weight(.semibold)
+
+            // make the email substrings heavier weight
+            if let range = attributedString.range(of: viewModel.organizationEmail) {
+                attributedString[range].font = Font.subheadline.weight(.bold)
+            }
+
+            return Text(attributedString)
+                .multilineTextAlignment(.center)
+        } else {
+            return Text(viewModel.joinOrganizationDescription)
                 .font(.subheadline)
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
         }
-        Divider()
-            .background(ColorProvider.SeparatorNorm)
     }
 
     @ViewBuilder
