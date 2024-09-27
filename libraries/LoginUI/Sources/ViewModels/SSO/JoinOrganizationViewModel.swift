@@ -50,7 +50,6 @@ extension JoinOrganizationView {
 
         private let organizationName: String = "Proton AG"
         private let organizationEmail: String = "admin@privacybydefault.com"
-        private let productJoining: String = "Proton Mail"
 
         init(dependencies: Dependencies) {}
 
@@ -64,8 +63,7 @@ extension JoinOrganizationView {
         var joinOrganizationDescription: String {
             String.localizedStringWithFormat(
                 LUITranslation.join_organization_description.l10n,
-                organizationEmail,
-                productJoining
+                organizationEmail
             )
         }
 
