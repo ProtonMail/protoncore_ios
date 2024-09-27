@@ -1,5 +1,5 @@
 //
-//  JoinOrganizationView.swift
+//  SignInRequestView.swift
 //  ProtonCore-LoginUI - Created on 23/08/2024.
 //
 //  Copyright (c) 2024 Proton AG
