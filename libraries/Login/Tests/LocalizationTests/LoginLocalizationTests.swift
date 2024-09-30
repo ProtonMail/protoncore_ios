@@ -25,7 +25,7 @@ import XCTest
 import ProtonCoreTestingToolkitUnitTestsCore
 
 final class LoginLocalizationTests: XCTestCase {
-    func testAllSubstitutionsAreFollowingTheExpectedFormat() {
+    func testAllSubstitutionsAreFollowingTheExpectedFormatForEnglish() {
         testAllSubstitutionsAreValid(for: LSTranslation.self)
     }
 
