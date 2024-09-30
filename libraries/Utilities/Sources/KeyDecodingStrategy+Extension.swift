@@ -32,8 +32,8 @@ extension JSONDecoder.KeyDecodingStrategy {
             }
 
             let originalKey: String = lastKey.stringValue
-            if CharacterSet.decimalDigits.contains(originalKey.unicodeScalars.first!)
-            {
+
+            if CharacterSet.decimalDigits.contains(originalKey.unicodeScalars.first!) {
                 // we will just add _ in the beginning if first character is a digit (like 2FA)
                 return BasicCodingKey(stringValue: "_" + originalKey)!
             }

@@ -1,6 +1,6 @@
 //
 //  AuthDevice.swift
-//  ProtonCorePayments - Created on 30.09.24.
+//  ProtonCore-Login - Created on 30.09.24.
 //
 //  Copyright (c) 2024 Proton Technologies AG
 //
@@ -26,9 +26,9 @@ import Foundation
 /// currently has authenticated/.
 public struct AuthDevice: Codable, Equatable {
 
-    public var id: String
+    public var ID: String
     public var deviceToken: String
-    public var activationAddressId: String
+    public var activationAddressID: String
     public var state: State
     public var name: String
     public var localizedClientName: String
@@ -48,10 +48,10 @@ public struct AuthDevice: Codable, Equatable {
         case activeNoAssociatedSession = 5
     }
 
-    public init(id: String, deviceToken: String, activationAddressId: String, state: State, name: String, localizedClientName: String, platform: String, createTime: Int, activateTime: Int? = nil, rejectTime: Int? = nil, activationToken: String? = nil, lastActivityTime: Int) {
-        self.id = id
+    public init(ID: String, deviceToken: String, activationAddressID: String, state: State, name: String, localizedClientName: String, platform: String, createTime: Int, activateTime: Int? = nil, rejectTime: Int? = nil, activationToken: String? = nil, lastActivityTime: Int) {
+        self.ID = ID
         self.deviceToken = deviceToken
-        self.activationAddressId = activationAddressId
+        self.activationAddressID = activationAddressID
         self.state = state
         self.name = name
         self.localizedClientName = localizedClientName

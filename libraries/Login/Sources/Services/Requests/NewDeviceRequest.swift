@@ -19,22 +19,44 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+import Foundation
 import ProtonCoreNetworking
+import ProtonCoreServices
 
-struct NewDeviceResponse: APIDecodableResponse, Encodable {
-    var authDevice: AuthDevice
+public final class NewDeviceResponse: Response {
+    var authDevice: AuthDevice?
+
+    override public func ParseResponse(_ response: [String: Any]!) -> Bool {
+        guard let authDeviceDict = response["AuthDevice"] as? [String: Any] else {
+            return false
+        }
+
+        let json = authDeviceDict.json()
+        if let data = json.data(using: .utf8) {
+            do {
+                self.authDevice = try JSONDecoder.decapitalisingFirstLetter.decode(AuthDevice.self,
+                                                                                   from: data)
+            } catch {
+                NSLog(error.localizedDescription)
+            }
+
+            return true
+        }
+
+        return false
+    }
 }
 
-class NewDeviceRequest: Request {
-    var path: String {
-        "/core/v4/devices"
+public final class NewDeviceRequest: Request {
+    public var path: String {
+        "/auth/v4/devices"
     }
 
-    var isAuth: Bool {
+    public var isAuth: Bool {
         true
     }
 
-    var method: HTTPMethod {
+    public var method: HTTPMethod {
         .post
     }
 
@@ -46,7 +68,7 @@ class NewDeviceRequest: Request {
         self.activationToken = activationToken
     }
 
-    var parameters: [String: Any]? {
+    public var parameters: [String: Any]? {
         return [
             "Name": self.name,
             "ActivationToken": self.activationToken
