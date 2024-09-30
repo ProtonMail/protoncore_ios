@@ -63,6 +63,9 @@ extension SignInRequestView {
 
         @Published var confirmationCodeContent: PCTextFieldContent = .init(title: LUITranslation.confirmation_code.l10n)
 
+        let adminEmail = "admin@privacybydefault.com"
+        let memberEmail = "member@privacybydefault.com"
+
         init(dependencies: Dependencies) {
             self.mode = dependencies.mode
             self.devices = [
@@ -84,8 +87,8 @@ extension SignInRequestView {
             case .requestForAdminApproval: 
                 return String.localizedStringWithFormat(
                     LUITranslation.share_confirmation_code_description.l10n,
-                    "admin@privacybydefault.com",
-                    "member@privacybydefault.com"
+                    adminEmail,
+                    memberEmail
                 )
             case .requestApproveFromAnotherDevice: return LUITranslation.approve_sign_in_another_device_description.l10n
             case .approvingAccess: return LUITranslation.sign_in_request_description.l10n
