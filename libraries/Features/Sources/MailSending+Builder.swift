@@ -417,9 +417,6 @@ class SendBuilder {
     }
 
     func buildAddressPackages() -> [Result<AddressPackageBase, Error>] {
-
-        assert(Thread.isMainThread == false, "This is a blocking call, should never be called from the main thread")
-
         let group = DispatchGroup()
 
         var results: [(UUID, Result<AddressPackageBase, Error>)] = []
