@@ -260,7 +260,7 @@
 
 "Join %@" = "Připojit se k %@";
 
-"%@ invited you to join their organization on %@." = "%@ vás pozval(a) do jejich organizace na %@.";
+"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
 
 "Continue" = "Pokračovat";
 
@@ -317,3 +317,7 @@
 "Contact your administrator if the problem persists." = "Pokud problém přetrvává, kontaktujte správce.";
 
 "Back to sign-in" = "Zpět k přihlášení";
+
+"Ask your administrator for access?" = "Ask your administrator for access?";
+
+"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";

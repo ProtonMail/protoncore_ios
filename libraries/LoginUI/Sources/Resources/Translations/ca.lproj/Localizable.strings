@@ -260,7 +260,7 @@
 
 "Join %@" = "Uniu-vos %@";
 
-"%@ invited you to join their organization on %@." = "%@ invited you to join their organization on %@.";
+"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
 
 "Continue" = "Continua";
 
@@ -308,7 +308,7 @@
 
 "To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
 
-"Access granted" = "Access granted";
+"Access granted" = "S'ha atorgat l'accés.";
 
 "Access denied" = "Accés denegat";
 
@@ -316,4 +316,8 @@
 
 "Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
 
-"Back to sign-in" = "Back to sign-in";
+"Back to sign-in" = "Torna a l'inici de sessió";
+
+"Ask your administrator for access?" = "Ask your administrator for access?";
+
+"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";

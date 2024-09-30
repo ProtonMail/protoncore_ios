@@ -260,7 +260,7 @@
 
 "Join %@" = "Join %@";
 
-"%@ invited you to join their organization on %@." = "%@ invited you to join their organization on %@.";
+"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
 
 "Continue" = "Doorgaan";
 
@@ -304,7 +304,7 @@
 
 "Operation couldn't be completed. Please try again." = "Operation couldn't be completed. Please try again.";
 
-"Enter your backup password" = "Enter your backup password";
+"Enter your backup password" = "Voer uw back-up woord in";
 
 "To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
 
@@ -317,3 +317,7 @@
 "Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
 
 "Back to sign-in" = "Terug naar aanmelden";
+
+"Ask your administrator for access?" = "Ask your administrator for access?";
+
+"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";

@@ -260,7 +260,7 @@
 
 "Join %@" = "Csatlakozzon %@";
 
-"%@ invited you to join their organization on %@." = "%@ meghívta önt a szervezetbe a %@";
+"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
 
 "Continue" = "Tovább";
 
@@ -308,12 +308,16 @@
 
 "To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
 
-"Access granted" = "Access granted";
+"Access granted" = "Hozzáférés enedélyezve";
 
-"Access denied" = "Access denied";
+"Access denied" = "Hozzáférés megtagadva";
 
 "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
 
-"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+"Contact your administrator if the problem persists." = "Ha a probléma továbbra is fennáll, forduljon az adminisztrátorhoz.";
 
-"Back to sign-in" = "Back to sign-in";
+"Back to sign-in" = "Vissza a bejelentkezéshez";
+
+"Ask your administrator for access?" = "Ask your administrator for access?";
+
+"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
