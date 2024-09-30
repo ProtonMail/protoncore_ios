@@ -21,6 +21,7 @@
 
 import Foundation
 import ProtonCoreNetworking
+import ProtonCoreServices
 
 public final class RenewSubscriptionRequest: BaseApiRequest<Response> {
     override public var method: HTTPMethod { .put }
@@ -29,5 +30,9 @@ public final class RenewSubscriptionRequest: BaseApiRequest<Response> {
     override public var parameters: [String: Any]? {
         var params: [String: Any] = ["RenewalState": 1]
         return params
+    }
+    
+    public override init(api: APIService) {
+        super.init(api: api)
     }
 }
