@@ -1,6 +1,6 @@
 //
-//  EnterBackupPasswordViewModel.swift
-//  ProtonCore-LoginUI - Created on 23/08/2024.
+//  AdminGrantAccessViewModel.swift
+//  ProtonCore-LoginUI - Created on 26/09/2024.
 //
 //  Copyright (c) 2024 Proton AG
 //
@@ -22,53 +22,51 @@
 #if os(iOS)
 
 import SwiftUI
-import ProtonCoreLog
 import ProtonCoreUIFoundations
 
-extension EnterBackupPasswordView {
+extension AdminGrantAccessView {
     struct Dependencies {}
 }
 
-extension EnterBackupPasswordView {
+extension AdminGrantAccessView {
 
     @MainActor
     final class ViewModel: ObservableObject {
 
         @Published var bannerState: BannerState = .none
 
-        @Published var backupPasswordStyle: PCTextFieldStyle = .init(mode: .idle)
-        @Published var backupPasswordContent: PCTextFieldContent = .init(
-            title: LUITranslation.backup_password.l10n,
-            isSecureEntry: true
+        @Published var confirmationCodeStyle: PCTextFieldStyle = .init(mode: .idle)
+        @Published var confirmationCodeContent: PCTextFieldContent = .init(
+            title: LUITranslation.confirmation_code.l10n,
+            isSecureEntry: false
         )
 
-        @Published var confirmationCodeContent: PCTextFieldContent = .init(title: LUITranslation.confirmation_code.l10n)
+        let adminEmail: String = "admin@privacybydefault.com"
 
         init(dependencies: Dependencies) {}
 
         var screenTitle: String {
-            return LUITranslation.enter_backup_password_title.l10n
+            LUITranslation.admin_grant_access_title.l10n
         }
 
         var bodyDescription: String {
-            return LUITranslation.enter_backup_password_description.l10n
+            String.localizedStringWithFormat(
+                LUITranslation.admin_grant_access_description.l10n,
+                adminEmail
+            )
         }
 
-        var primaryButtonTitle: String {
-            return LUITranslation.continue_core_button.l10n
+        var grantAccessButtonTitle: String {
+            LUITranslation.grant_access_button_title.l10n
         }
 
-        var secondaryButtonTitle: String {
-            return LUITranslation.ask_administrator_for_help.l10n
+        var denyAccessButtonTitle: String {
+            LUITranslation.deny_access_button_title.l10n
         }
 
-        func primaryActionButtonTapped() {}
+        func grantAccessButtonTapped() {}
 
-        func secondaryActionButtonTapped() {}
-
-        private func resetTextFieldErrors() {
-            backupPasswordStyle.mode = .idle
-        }
+        func denyAccessButtonTapped() {}
     }
 }
 

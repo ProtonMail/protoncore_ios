@@ -63,7 +63,7 @@ extension AccessGrantedDeniedView {
             }
         }
 
-        var primaryButtonActionTitle: String {
+        var primaryButtonTitle: String {
             switch mode {
             case .accessGranted: return LUITranslation.continue_core_button.l10n
             case .accessDenied: return LUITranslation.back_to_signin_button.l10n

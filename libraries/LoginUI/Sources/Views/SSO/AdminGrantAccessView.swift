@@ -1,6 +1,6 @@
 //
-//  EnterBackupPasswordView.swift
-//  ProtonCore-LoginUI - Created on 23/08/2024.
+//  AdminGrantAccessView.swift
+//  ProtonCore-LoginUI - Created on 27/09/2024.
 //
 //  Copyright (c) 2024 Proton AG
 //
@@ -24,12 +24,12 @@
 import SwiftUI
 import ProtonCoreUIFoundations
 
-public struct EnterBackupPasswordView: View {
+public struct AdminGrantAccessView: View {
 
     @StateObject var viewModel: ViewModel
 
     private enum Constants {
-        static let itemSpacing: CGFloat = 20
+        static let itemSpacing: CGFloat = 24
     }
 
     public var body: some View {
@@ -40,30 +40,27 @@ public struct EnterBackupPasswordView: View {
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                Text(viewModel.bodyDescription)
-                    .font(.subheadline)
-                    .foregroundColor(ColorProvider.TextWeak)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                bodyText()
 
                 PCTextField(
-                    style: $viewModel.backupPasswordStyle,
-                    content: $viewModel.backupPasswordContent
+                    style: $viewModel.confirmationCodeStyle,
+                    content: $viewModel.confirmationCodeContent
                 )
 
                 VStack {
                     PCButton(
                         style: .constant(.init(mode: .solid)),
                         content: .constant(.init(
-                            title: viewModel.primaryButtonTitle,
-                            action: viewModel.primaryActionButtonTapped
+                            title: viewModel.grantAccessButtonTitle,
+                            action: viewModel.grantAccessButtonTapped
                         ))
                     )
-                    
+
                     PCButton(
                         style: .constant(.init(mode: .text)),
                         content: .constant(.init(
-                            title: viewModel.secondaryButtonTitle,
-                            action: viewModel.secondaryActionButtonTapped
+                            title: viewModel.denyAccessButtonTitle,
+                            action: viewModel.denyAccessButtonTapped
                         ))
                     )
                 }
@@ -82,12 +79,34 @@ public struct EnterBackupPasswordView: View {
                 .edgesIgnoringSafeArea(.all)
         )
     }
+
+    private func bodyText() -> some View {
+        if #available(iOS 15, *) {
+            var attributedString = AttributedString(viewModel.bodyDescription)
+
+            attributedString.font = Font.subheadline
+            attributedString.foregroundColor = ColorProvider.TextWeak
+
+            // make the email substring heavier weight
+            if let range = attributedString.range(of: viewModel.adminEmail) {
+                attributedString[range].font = Font.subheadline.weight(.bold)
+            }
+
+            return Text(attributedString)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        } else {
+            return Text(viewModel.bodyDescription)
+                .font(.subheadline)
+                .foregroundColor(ColorProvider.TextWeak)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
 }
 
 #if DEBUG
 #Preview {
     NavigationView {
-        EnterBackupPasswordView(viewModel: .init(dependencies: .init()))
+        AdminGrantAccessView(viewModel: .init(dependencies: .init()))
     }
 }
 #endif

@@ -85,6 +85,12 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
 
         checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
     }
+
+    func testAdminGrantAccess() {
+        let viewController = AdminGrantAccessViewController()
+
+        checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
+    }
 }
 
 #endif
