@@ -26,14 +26,14 @@
 
 "pmsettings-settings-footer" = "應用程式版本：%@";
 
-"Bug report" = "Bug report";
+"Bug report" = "回報程式缺陷";
 
 "Send report" = "傳送回報";
 
 "Title" = "職銜";
 
-"What went wrong" = "What went wrong";
+"What went wrong" = "發生了什麼問題";
 
-"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters.";
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "請盡可能詳述問題。若有錯誤訊息，也請告訴我們內容。最少 10 個字元。";
 
-"Your report was sent successfully" = "Your report was sent successfully";
+"Your report was sent successfully" = "您的回報已成功傳送";

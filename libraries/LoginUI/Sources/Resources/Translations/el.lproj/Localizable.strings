@@ -260,7 +260,7 @@
 
 "Join %@" = "Συμμετοχή %@";
 
-"%@ invited you to join their organization on %@." = "Το %@ σας προσκάλεσε να συμμετάσχετε στον οργανισμό τους στο %@.";
+"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
 
 "Continue" = "Συνέχεια";
 
@@ -317,3 +317,7 @@
 "Contact your administrator if the problem persists." = "Επικοινωνήστε με το διαχειριστή σας εάν το πρόβλημα παραμένει.";
 
 "Back to sign-in" = "Επιστροφή στη σύνδεση";
+
+"Ask your administrator for access?" = "Ask your administrator for access?";
+
+"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";

@@ -260,7 +260,7 @@
 
 "Join %@" = "Beitreten %@";
 
-"%@ invited you to join their organization on %@." = "%@ hat dich eingeladen, einer Organisation auf %@ beizutreten.";
+"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
 
 "Continue" = "Weiter";
 
@@ -317,3 +317,7 @@
 "Contact your administrator if the problem persists." = "Kontaktiere deinen Administrator, wenn das Problem weiterhin besteht.";
 
 "Back to sign-in" = "Zurück zur Anmeldung";
+
+"Ask your administrator for access?" = "Ask your administrator for access?";
+
+"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";

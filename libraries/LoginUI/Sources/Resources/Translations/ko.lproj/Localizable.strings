@@ -260,7 +260,7 @@
 
 "Join %@" = "%@ 합류";
 
-"%@ invited you to join their organization on %@." = "%@님이 조직 %@에 합류하도록 초대했습니다.";
+"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
 
 "Continue" = "계속";
 
@@ -317,3 +317,7 @@
 "Contact your administrator if the problem persists." = "문제가 발생한다면 관리자에게 연락하세요.";
 
 "Back to sign-in" = "로그인으로 이동";
+
+"Ask your administrator for access?" = "Ask your administrator for access?";
+
+"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";

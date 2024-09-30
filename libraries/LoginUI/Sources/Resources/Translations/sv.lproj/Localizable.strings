@@ -260,7 +260,7 @@
 
 "Join %@" = "Gå med %@";
 
-"%@ invited you to join their organization on %@." = "%@ bjöd in dig att ansluta dig till deras organisation på %@";
+"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
 
 "Continue" = "Fortsätt";
 
@@ -317,3 +317,7 @@
 "Contact your administrator if the problem persists." = "Kontakta din administratör om problemet kvarstår.";
 
 "Back to sign-in" = "Tillbaka till inloggning";
+
+"Ask your administrator for access?" = "Ask your administrator for access?";
+
+"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";

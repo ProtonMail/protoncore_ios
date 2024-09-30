@@ -260,7 +260,7 @@
 
 "Join %@" = "%@-ზე შესვლა";
 
-"%@ invited you to join their organization on %@." = "%@-მა მიგიწვიათ, შეუერთდეთ მათ ორგანიზაციას %@-ზე";
+"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
 
 "Continue" = "გაგრძელება";
 
@@ -317,3 +317,7 @@
 "Contact your administrator if the problem persists." = "დაუკავშირდით თქვენს ადმინისტრატორს, თუ პაროლი არ გაქრება.";
 
 "Back to sign-in" = "შესვლის გვერდზე დაბრუნება";
+
+"Ask your administrator for access?" = "Ask your administrator for access?";
+
+"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";

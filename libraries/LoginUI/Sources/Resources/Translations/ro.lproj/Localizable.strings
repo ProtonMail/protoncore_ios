@@ -260,7 +260,7 @@
 
 "Join %@" = "Alăturați-vă la %@";
 
-"%@ invited you to join their organization on %@." = "%@ v-a invitat să vă alăturați organizației sale din %@.";
+"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
 
 "Continue" = "Continuare";
 
@@ -317,3 +317,7 @@
 "Contact your administrator if the problem persists." = "Contactați-vă administratorul dacă problema persistă.";
 
 "Back to sign-in" = "La autentificare";
+
+"Ask your administrator for access?" = "Ask your administrator for access?";
+
+"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
