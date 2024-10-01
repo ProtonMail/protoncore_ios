@@ -25,7 +25,7 @@ import ProtonCoreServices
 
 public final class RenewSubscriptionRequest: BaseApiRequest<Response> {
     override public var method: HTTPMethod { .put }
-    override public var path: String { super.path + "/v5/renew" }
+    override public var path: String { super.path + "/v5/subscription/renew" }
 
     override public var parameters: [String: Any]? {
         var params: [String: Any] = ["RenewalState": 1]
