@@ -41,8 +41,8 @@ public enum Encryptor {
     /// - Parameters:
     ///   - publicKey: armored public key
     ///   - sessionKey: raw session key object
-    /// - Returns: encrypted session(raw key packet) usually is Data. this func return based64 encded string
-    public static func encryptSession(publicKey: ArmoredKey, sessionKey: SessionKey) throws -> Based64String {
+    /// - Returns: encrypted session(raw key packet) usually is Data. this func return base64 encded string
+    public static func encryptSession(publicKey: ArmoredKey, sessionKey: SessionKey) throws -> Base64String {
         return try Crypto().encryptSessionKey(publicKey: publicKey, sessionKey: sessionKey)
     }
 

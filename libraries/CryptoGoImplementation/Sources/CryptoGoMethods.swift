@@ -120,8 +120,8 @@ public enum CryptoGoMethodsImplementation: CryptoGoMethods {
         GoLibs.SrpRandomBits(bits, error)
     }
 
-    public func SrpRandomBytes(_ byes: Int, _ error: NSErrorPointer) -> Data? {
-        GoLibs.SrpRandomBytes(byes, error)
+    public func SrpRandomBytes(_ bytes: Int, _ error: NSErrorPointer) -> Data? {
+        GoLibs.SrpRandomBytes(bytes, error)
     }
 
     public func SrpProofs() -> ProtonCoreCryptoGoInterface.SrpProofs {

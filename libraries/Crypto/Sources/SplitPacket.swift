@@ -32,11 +32,11 @@ public class SplitPacket {
     public let dataPacket: Data
     public let keyPacket: Data
 
-    var based64DataPacket: Based64String {
-        return Based64String.init(raw: dataPacket)
+    var base64DataPacket: Base64String {
+        return Base64String.init(raw: dataPacket)
     }
 
-    var based64KeyPacket: Based64String {
-        return Based64String.init(raw: keyPacket)
+    var base64KeyPacket: Base64String {
+        return Base64String.init(raw: keyPacket)
     }
 }

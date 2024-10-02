@@ -119,9 +119,9 @@ public class Crypto {
         return ArmoredMessage.init(value: armoredMessage)
     }
 
-    public func encryptSessionKey(publicKey: ArmoredKey, sessionKey: SessionKey) throws -> Based64String {
+    public func encryptSessionKey(publicKey: ArmoredKey, sessionKey: SessionKey) throws -> Base64String {
         let keyPacket = try self.encryptSessionRaw(publicKey: publicKey, session: sessionKey.sessionKey, algo: sessionKey.algo)
-        return Based64String.init(raw: keyPacket)
+        return Base64String.init(raw: keyPacket)
     }
 
     /// decrypt key packet to get decrypted SymmetricKey object

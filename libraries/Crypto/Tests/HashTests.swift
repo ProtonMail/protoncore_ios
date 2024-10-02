@@ -37,10 +37,10 @@ class HashTests: CryptoTestBase {
         resultHandler(result!)
     }
 
-    func testEncoderBased64WithString() {
+    func testEncoderBase64WithString() {
         let check = "TestString"
-        let based64 = Based64.encode(value: check)
-        let bStr = Based64String.init(based64: based64)
+        let base64 = Base64.encode(value: check)
+        let bStr = Base64String.init(base64: base64)
         XCTAssertEqual(check, String(data: bStr.decode, encoding: .utf8))
     }
 

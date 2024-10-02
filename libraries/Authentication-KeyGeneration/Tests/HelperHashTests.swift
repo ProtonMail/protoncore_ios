@@ -88,7 +88,7 @@ class HelperHashTests: XCTestCase {
         let byteArray = NSMutableData()
         byteArray.append(randomSalt)
         let source = NSData(data: byteArray as Data) as Data
-        let encodedSalt = JKBCrypt.based64DotSlash(source)
+        let encodedSalt = JKBCrypt.base64DotSlash(source)
         let real_salt = "$2a$10$" + encodedSalt
 
         let hash = try BCrypt.hash(phrase: testpassword, salt: Data(real_salt.utf8))

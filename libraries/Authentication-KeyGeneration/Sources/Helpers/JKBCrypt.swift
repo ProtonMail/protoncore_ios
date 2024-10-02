@@ -378,7 +378,7 @@ public class JKBCrypt: NSObject {
     }
 
     /// Keep this one still in use
-    public class func based64DotSlash(_ data: Data) -> String {
+    public class func base64DotSlash(_ data: Data) -> String {
         return encodeData(data, ofLength: UInt(data.count))
     }
 
