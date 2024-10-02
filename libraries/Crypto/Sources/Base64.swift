@@ -1,5 +1,5 @@
 //
-//  Based64.swift
+//  Base64.swift
 //  ProtonCore-Crypto - Created on 07/19/22.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -22,7 +22,7 @@
 
 import Foundation
 
-public enum Based64 {
+public enum Base64 {
 
     public static func encode(raw: Data) -> String {
         let base64Encoded = raw.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
@@ -35,8 +35,8 @@ public enum Based64 {
         return self.encode(raw: utf8raw)
     }
 
-    public static func decode(based64: String) -> Data {
-        let decodedData = Data(base64Encoded: based64, options: NSData.Base64DecodingOptions(rawValue: 0))
+    public static func decode(base64: String) -> Data {
+        let decodedData = Data(base64Encoded: base64, options: NSData.Base64DecodingOptions(rawValue: 0))
         return decodedData!
     }
 }

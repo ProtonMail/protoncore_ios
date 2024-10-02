@@ -23,26 +23,26 @@
 import Foundation
 
 public enum EncodedType {
-    public enum Based64 {}
+    public enum Base64 {}
     public enum Hex {}
 }
 
 public struct Encoded<Type> {
     public let value: String
 
-    public init(based64: String) {
-        self.value = based64
+    public init(base64: String) {
+        self.value = base64
     }
 }
 
-public typealias Based64String = Encoded<EncodedType.Based64>
+public typealias Base64String = Encoded<EncodedType.Base64>
 
-extension Encoded where Type == EncodedType.Based64 {
+extension Encoded where Type == EncodedType.Base64 {
     public init(raw: Data) {
-        self.value = Based64.encode(raw: raw)
+        self.value = Base64.encode(raw: raw)
     }
 
     public var decode: Data {
-        return Based64.decode(based64: value)
+        return Base64.decode(base64: value)
     }
 }

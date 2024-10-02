@@ -301,14 +301,14 @@ class EncryptorTests: CryptoTestBase {
         do {
 
             let sessionKeyCheck = SessionKey.init(sessionKey: random, algo: Algorithm.AES256)
-            let based64KeyPacket = try Encryptor.encryptSession(publicKey: ArmoredKey.init(value: pubKey),
-                                                                sessionKey: sessionKeyCheck)
+            let base64KeyPacket = try Encryptor.encryptSession(publicKey: ArmoredKey.init(value: pubKey),
+                                                               sessionKey: sessionKeyCheck)
 
             let decryptionKey = DecryptionKey.init(privateKey: ArmoredKey.init(value: privKey),
                                                    passphrase: Passphrase.init(value: privKeyPassphrase))
 
             let sessionKey = try Decryptor.decryptSessionKey(decryptionKeys: [decryptionKey],
-                                                             keyPacket: based64KeyPacket.decode)
+                                                             keyPacket: base64KeyPacket.decode)
             XCTAssertEqual(sessionKey.sessionKey, sessionKeyCheck.sessionKey)
             XCTAssertEqual(sessionKey.algo.value, sessionKeyCheck.algo.value)
         } catch let error {

@@ -1,5 +1,5 @@
 //
-//  Based64Tests.swift
+//  Base64Tests.swift
 //  ProtonCore-Crypto-Tests - Created on 07/15/22.
 //
 //  Copyright (c) 2022 Proton Technologies AG
@@ -23,19 +23,19 @@ import XCTest
 import ProtonCoreCryptoGoInterface
 import ProtonCoreCrypto
 
-class Based64Tests: CryptoTestBase {
+class Base64Tests: CryptoTestBase {
 
     func testEncodeString() {
         let check = "jlksdjfkljasdflkjlsdf"
-        let encoded = Based64.encode(value: check)
-        let decoded = Based64.decode(based64: encoded)
+        let encoded = Base64.encode(value: check)
+        let decoded = Base64.decode(base64: encoded)
         XCTAssertEqual(String(data: decoded, encoding: .utf8), check)
     }
 
     func testEncodeData() {
         let check = self.random(length: 32)
-        let encoded = Based64.encode(raw: check)
-        let decoded = Based64.decode(based64: encoded)
+        let encoded = Base64.encode(raw: check)
+        let decoded = Base64.decode(base64: encoded)
         XCTAssertEqual(decoded, check)
     }
 }

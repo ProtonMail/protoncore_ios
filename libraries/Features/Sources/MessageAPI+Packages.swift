@@ -63,7 +63,7 @@ final class AttachmentPackage {
 public final class ClearAttachmentPackage {
     /// attachment id
     let ID: String
-    /// based64 encoded session key
+    /// base64 encoded session key
     let encodedSession: String
     let algo: String // default is "aes256"
     init(attID: String, encodedSession: String, algo: String) {
@@ -75,7 +75,7 @@ public final class ClearAttachmentPackage {
 
 // message attachment key package for clear text
 public final class ClearBodyPackage {
-    /// based64 encoded session key
+    /// base64 encoded session key
     public let key: String
     public let algo: String // default is "aes256"
     public init(key: String, algo: String) {
