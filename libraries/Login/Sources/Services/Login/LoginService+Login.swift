@@ -245,7 +245,7 @@ extension LoginService: Login {
                                 completion(.failure(.invalidState))
                             }
                         case let .failure(error):
-                            PMLog.error("Confirming 2FA code failed with \(error)", sendToExternal: true)
+                            PMLog.error("FIDO2 authentication failed with \(error)", sendToExternal: true)
                             let loginError = error.asLoginError(in2FAContext: true)
                             completion(.failure(loginError))
                         }
