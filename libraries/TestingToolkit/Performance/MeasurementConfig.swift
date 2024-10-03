@@ -23,59 +23,53 @@ import Foundation
 
 public final class MeasurementConfig {
 
-    public static var buildCommitShortSha: String = {
-        return ProcessInfo.processInfo.environment["CI_COMMIT_SHA"] ?? "unknown"
-    }()
-
-    public static var ciJobId: String = {
-        return ProcessInfo.processInfo.environment["CI_JOB_ID"] ?? "unknown"
-    }()
-
-    public static var version: String {
-        return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
-    }
-
+    public static var buildCommitShortSha: String = ProcessInfo.processInfo.environment["CI_COMMIT_SHA"] ?? "unknown"
+    public static var ciJobId: String = ProcessInfo.processInfo.environment["CI_JOB_ID"] ?? "unknown"
+    public static var version: String = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
     public static var environment: String = "unknown"
+    public static var product: String = Bundle.main.bundleIdentifier ?? "unknown"
 
-    public static var product: String = {
-        return Bundle.main.bundleIdentifier ?? "unknown"
-    }()
-
-    public static var lokiEndpoint: String? = nil
+    public static var lokiEndpoint: String?
     public static var lokiCertificate: String = ""
     public static var lokiCertificatePassphrase: String = ""
-    public static var _bundle: Bundle? = nil
+    public static var _bundle: Bundle?
 
-    init() {}
+    private init() {}
 
     @discardableResult
     public static func setEnvironment(_ value: String) -> MeasurementConfig.Type {
-        self.environment = value
+        environment = value
         return self
     }
 
     @discardableResult
     public static func setLokiEndpoint(_ value: String?) -> MeasurementConfig.Type {
-        self.lokiEndpoint = value
+        lokiEndpoint = value
         return self
     }
 
     @discardableResult
     public static func setLokiCertificate(_ value: String) -> MeasurementConfig.Type {
-        self.lokiCertificate = value
+        lokiCertificate = value
         return self
     }
 
     @discardableResult
     public static func setLokiCertificatePassphrase(_ value: String) -> MeasurementConfig.Type {
-        self.lokiCertificatePassphrase = value
+        lokiCertificatePassphrase = value
         return self
     }
 
     @discardableResult
     public static func setBundle(_ bundle: Bundle) -> MeasurementConfig.Type {
-        self._bundle = bundle
-        self.product = bundle.bundleIdentifier ?? "unknown"
+        _bundle = bundle
+        product = bundle.bundleIdentifier ?? "unknown"
+        return self
+    }
+
+    @discardableResult
+    public static func setAppVersion(_ app_version: String) -> MeasurementConfig.Type {
+        version = app_version
         return self
     }
 }
