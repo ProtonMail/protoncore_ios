@@ -97,13 +97,6 @@
     {
       "target" : {
         "containerPath" : "container:",
-        "identifier" : "ProtonCoreFeatureSwitchTests",
-        "name" : "ProtonCoreFeatureSwitchTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:",
         "identifier" : "ProtonCoreHashTests",
         "name" : "ProtonCoreHashTests"
       }
