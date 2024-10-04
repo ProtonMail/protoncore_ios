@@ -243,6 +243,10 @@ the given headers. Empty parameters are omitted from the headers.
  * GetPublicKey returns the unarmored public keys from this keyring.
  */
 - (NSData* _Nullable)getPublicKey:(NSError* _Nullable* _Nullable)error;
+/**
+ * GetSHA256Fingerprint computes the SHA256 fingerprint of the primary key.
+ */
+- (NSString* _Nonnull)getSHA256Fingerprint;
 // skipped method Key.GetSHA256Fingerprints with unsupported parameter or return types
 
 /**

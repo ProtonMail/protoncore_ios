@@ -1,6 +1,6 @@
 {
-    "go_version":"1.21.0",
-    "go_fork_branch":"fork/go1.21.0",
+    "go_version":"1.22.3",
+    "go_fork_branch":"fork/go1.22.3",
     "build_dir":"build",
     "out_dir":"out",
     "go_mobile_dir":"mobile",
@@ -11,7 +11,7 @@
     ],
     "build_name":"GoLibs",
     "commit_message":"Search build",
-    "upload_branch":"feature/crypto-update",
+    "upload_branch":"feature/crypto-update/mail",
     "destination_folder":"vendor/Crypto+Search-Go",
     "targets":[
         "apple"
@@ -22,7 +22,7 @@
         {
             "module":{
                 "path":"github.com/ProtonMail/gopenpgp/v2",
-                "version":"v2.8.0-alpha.1-proton"
+                "version":"v2.8.0-beta.1-proton"
             },
             "packages":[
                 "crypto",
