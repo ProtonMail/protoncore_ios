@@ -260,7 +260,7 @@
 
 "Join %@" = "Alăturați-vă la %@";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "%@ v-a adăugat la organizația sa din Proton.";
 
 "Continue" = "Continuare";
 
@@ -318,6 +318,14 @@
 
 "Back to sign-in" = "La autentificare";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "Solicitați acces de la administrator?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Aceasta vă va deconecta contul de pe alte dispozitive și va trebui să creați o nouă parolă de rezervă.";
+
+"Grant access to user?" = "Acordați acces utilizatorului?";
+
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ vă solicită ajutorul să se conecteze la contul său Proton folosind autentificarea unică.\n\nIntroduceți codul de confirmare trimis acestui utilizator.";
+
+"Grant access" = "Acordare acces";
+
+"Deny access" = "Refuzare acces";

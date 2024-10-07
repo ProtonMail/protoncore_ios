@@ -1,6 +1,6 @@
 "Delete account" = "계정 삭제";
 
-"This will permanently delete your account and all of its data. You will not be able to reactivate this account." = "귀하의 계정 및 계정에 연결된 모든 정보가 영구 삭제되며, 이 계정의 복구가 불가능합니다.";
+"This will permanently delete your account and all of its data. You will not be able to reactivate this account." = "회원님의 계정 및 계정에 연결된 모든 정보가 영구적으로 삭제되며, 계정을 복구할 수 없습니다.";
 
 "Account deleted.\nLogging out..." = "계정이 삭제되었습니다. \n로그아웃 중...";
 

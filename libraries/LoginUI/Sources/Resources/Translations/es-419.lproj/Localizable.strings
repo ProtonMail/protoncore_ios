@@ -144,7 +144,7 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "Al hacer clic en Siguiente, acepta los Términos y Condiciones de Proton";
 
-"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Al hacer clic en Siguiente, acepta los Términos y Condiciones y la Política de Privacidad de Proton";
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Al hacer clic en Siguiente, acepta los Términos y Condiciones y la Política de Privacidad de Proton.";
 
 "Terms and Conditions" = "Términos y Condiciones";
 
@@ -210,7 +210,7 @@
 
 "Proton Free" = "Proton Free";
 
-"Your payment was confirmed and your %@ account successfully created." = "el pago fue confirmado y la cuenta %@ fue creada.";
+"Your payment was confirmed and your %@ account successfully created." = "El pago fue confirmado y la cuenta %@ fue creada.";
 
 "Your Proton account was successfully created." = "La cuenta Proton fue creada.";
 
@@ -260,7 +260,7 @@
 
 "Join %@" = "Unirse a %@";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "%@ le añadió a su organización de Proton.";
 
 "Continue" = "Continuar";
 
@@ -318,6 +318,14 @@
 
 "Back to sign-in" = "Volver al inicio de sesión";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "¿Pedir acceso a su administrador?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Esto cerrará su sesión en sus otros dispositivos y tendrá que crear una contraseña de respaldo nueva.";
+
+"Grant access to user?" = "¿Otorgar acceso al usuario?";
+
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ solicita su ayuda para iniciar sesión en la cuenta de Proton con inicio de sesión único.\n\nIngrese el código de confirmación que enviamos a este usuario.";
+
+"Grant access" = "Permitir el acceso";
+
+"Deny access" = "Denegar el acceso";

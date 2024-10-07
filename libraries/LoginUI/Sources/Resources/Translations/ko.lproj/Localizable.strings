@@ -260,7 +260,7 @@
 
 "Join %@" = "%@ 합류";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "%@님이 나를 Proton 조직에 초대했습니다.";
 
 "Continue" = "계속";
 
@@ -318,6 +318,14 @@
 
 "Back to sign-in" = "로그인으로 이동";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "관리자에게 접속에 대해서 문의하시겠습니까?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "이 작업으로 이 기기외 다른 기기에서 로그아웃되며 새로운 백업 비밀번호를 생성해야합니다.";
+
+"Grant access to user?" = "유저에게 접근을 허락하시겠습니까?";
+
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@님이 싱글 사인 온으로 Proton Account에 로그인하기 위해 내 지원을 요청하고 있습니다.\n\n이 사용자에게 보낼 확인 코드를 입력하세요.";
+
+"Grant access" = "액세스 허용";
+
+"Deny access" = "접근 거부";

@@ -260,7 +260,7 @@
 
 "Join %@" = "%@ kuruluşuna katılın";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "%@ sizi kendi Proton kuruluşuna ekledi.";
 
 "Continue" = "İlerle";
 
@@ -318,6 +318,14 @@
 
 "Back to sign-in" = "Oturum açmaya dön";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "Yöneticinizden erişim izni istensin mi?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Bu işlem diğer aygıtlardaki oturumlarınızı kapatacak ve yeni bir yedek parola oluşturmanız gerekecek.";
+
+"Grant access to user?" = "Kullanıcıya izin verilsin mi?";
+
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@, Proton hesabında tek oturum açma kullanmak için yardımınızı istiyor.\n\nBu kullanıcıya gönderdiğimiz onay kodunu yazın.";
+
+"Grant access" = "İzin ver";
+
+"Deny access" = "İzin verme";

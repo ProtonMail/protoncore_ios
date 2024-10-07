@@ -260,7 +260,7 @@
 
 "Join %@" = "Далучыцца да групы %@";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "%@ дадаў вас у сваю арганізацыю Proton.";
 
 "Continue" = "Працягнуць";
 
@@ -318,6 +318,14 @@
 
 "Back to sign-in" = "Вярнуцца да ўваходу";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "Запытаць доступ у вашага адміністратара?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Гэта дзеянне прывядзе да завяршэння сеанса на вашых іншых прыладах і вам давядзецца стварыць новы рэзервовы пароль.";
+
+"Grant access to user?" = "Даць доступ карыстальніку?";
+
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ просіць вашай дапамогі, каб увайсці ў свой уліковы запіс Proton праз адзіны ўваход.\n\nУвядзіце код пацвярджэння, які мы адправілі гэтаму карыстальніку.";
+
+"Grant access" = "Даць доступ";
+
+"Deny access" = "Адмовіць у доступе";
