@@ -260,7 +260,7 @@
 
 "Join %@" = "%@-ზე შესვლა";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "%@-მა დაგამატათ თავის Proton-ის ორგანიზაციაში.";
 
 "Continue" = "გაგრძელება";
 
@@ -318,6 +318,14 @@
 
 "Back to sign-in" = "შესვლის გვერდზე დაბრუნება";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "ვთხოვოთ თქვენს ადმინისტრატორს წვდომა?";
 
 "This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+
+"Grant access to user?" = "Grant access to user?";
+
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
+
+"Grant access" = "წვდომის უფლების მიცემა";
+
+"Deny access" = "წვდომის აკრძალვა";

@@ -276,7 +276,7 @@
 
 "Password doesn't match" = "Le mot de passe ne correspond pas.";
 
-"Sign-in requested on another device. Was it you?" = "Une connexion a été demandée sur un autre appareil. Est-ce que c'était vous ?";
+"Sign-in requested on another device. Was it you?" = "Une connexion a été demandée sur un autre appareil. En êtes-vous à l'origine ?";
 
 "Check that the confirmation code match the code on your other device." = "Assurez-vous que le code de confirmation correspond au code sur votre autre appareil.";
 
@@ -318,6 +318,14 @@
 
 "Back to sign-in" = "Retour à la connexion";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "Souhaitez-vous demander l'accès à votre administrateur ?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Ceci vous déconnectera de vos autres appareils et vous devrez créer un nouveau mot de passe de secours.";
+
+"Grant access to user?" = "Autoriser l'accès à l'utilisateur ?";
+
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ demande votre aide pour se connecter à son compte Proton avec une authentification unique (SSO).\n\nSaisissez le code de confirmation que nous avons envoyé à cet utilisateur.";
+
+"Grant access" = "Autoriser l'accès";
+
+"Deny access" = "Refuser l'accès";

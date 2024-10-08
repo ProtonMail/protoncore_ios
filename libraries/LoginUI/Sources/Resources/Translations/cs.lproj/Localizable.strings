@@ -260,7 +260,7 @@
 
 "Join %@" = "Připojit se k %@";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "%@ vás přidal(a) do jejich organizace Proton.";
 
 "Continue" = "Pokračovat";
 
@@ -318,6 +318,14 @@
 
 "Back to sign-in" = "Zpět k přihlášení";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "Požádat správce o přístup?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Tím se odhlásíte z ostatních zařízení a budete muset vytvořit nové záložní heslo.";
+
+"Grant access to user?" = "Povolit přístup uživateli?";
+
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ vás žádá o pomoc s přihlášením k účtu Proton pomocí jednotného přihlášení.\n\nZadejte potvrzovací kód, který jsme tomuto uživateli zaslali.";
+
+"Grant access" = "Povolit přístup";
+
+"Deny access" = "Zamítnout přístup";

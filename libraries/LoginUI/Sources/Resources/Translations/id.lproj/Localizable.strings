@@ -260,7 +260,7 @@
 
 "Join %@" = "Gabung ke %@";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "%@ telah menambahkan Anda ke organisasi Proton mereka.";
 
 "Continue" = "Lanjut";
 
@@ -318,6 +318,14 @@
 
 "Back to sign-in" = "Kembali ke layar masuk";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "Minta akses kepada administrator Anda?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Tindakan ini akan mengeluarkan Anda dari perangkat lainnya yang Anda miliki, dan Anda akan perlu untuk membuat kata sandi cadangan baru.";
+
+"Grant access to user?" = "Berikan akses kepada pengguna?";
+
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ meminta bantuan Anda untuk masuk ke Akun Proton mereka melalui single sign-on.\n\nMasukkan kode konfirmasi yang kami kirim kepada pengguna yang bersangkutan.";
+
+"Grant access" = "Beri akses";
+
+"Deny access" = "Tolak akses";

@@ -266,23 +266,23 @@
 
 "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.";
 
-"Backup password" = "Backup password";
+"Backup password" = "Резервний пароль";
 
-"Repeat backup password" = "Repeat backup password";
+"Repeat backup password" = "Повторити резервний пароль";
 
-"Password cannot be empty" = "Password cannot be empty";
+"Password cannot be empty" = "Потрібно ввести пароль";
 
 "Password must contain at least 8 characters" = "Пароль повинен містити принаймні 8 символів";
 
-"Password doesn't match" = "Password doesn't match";
+"Password doesn't match" = "Пароль не збігається";
 
-"Sign-in requested on another device. Was it you?" = "Sign-in requested on another device. Was it you?";
+"Sign-in requested on another device. Was it you?" = "Запит на вхід на іншому пристрої. Це були ви?";
 
 "Check that the confirmation code match the code on your other device." = "Перевірте, чи збігається код підтвердження з кодом на іншому пристрої.";
 
 "Confirmation code" = "Код підтвердження";
 
-"If you didn't make this request, cancel it now." = "If you didn't make this request, cancel it now.";
+"If you didn't make this request, cancel it now." = "Якщо не ви зробили цей запит, скасуйте його зараз.";
 
 "Yes, it was me" = "Так, це був я";
 
@@ -308,9 +308,9 @@
 
 "To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
 
-"Access granted" = "Access granted";
+"Access granted" = "Доступ надано";
 
-"Access denied" = "Access denied";
+"Access denied" = "Доступ заборонено";
 
 "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
 
@@ -321,3 +321,11 @@
 "Ask your administrator for access?" = "Ask your administrator for access?";
 
 "This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+
+"Grant access to user?" = "Grant access to user?";
+
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
+
+"Grant access" = "Надати доступ";
+
+"Deny access" = "Заборонити доступ";

@@ -260,7 +260,7 @@
 
 "Join %@" = "Gå med %@";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "%@ har lagt till dig i deras Proton-organisation.";
 
 "Continue" = "Fortsätt";
 
@@ -318,6 +318,14 @@
 
 "Back to sign-in" = "Tillbaka till inloggning";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "Be din administratör om åtkomst?";
 
 "This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+
+"Grant access to user?" = "Bevilja åtkomst till användare?";
+
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
+
+"Grant access" = "Bevilja åtkomst";
+
+"Deny access" = "Neka åtkomst";

@@ -260,7 +260,7 @@
 
 "Join %@" = "Присоединиться к %@";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "%@ добавили вас в свою организацию Proton.";
 
 "Continue" = "Продолжить";
 
@@ -308,9 +308,9 @@
 
 "To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
 
-"Access granted" = "Access granted";
+"Access granted" = "Доступ разрешён";
 
-"Access denied" = "Access denied";
+"Access denied" = "Доступ запрещён";
 
 "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
 
@@ -318,6 +318,14 @@
 
 "Back to sign-in" = "Back to sign-in";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "Запросить доступ у администратора?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Это отключит вас от других устройств, и вам придется создать новый пароль для резервного копирования.";
+
+"Grant access to user?" = "Предоставить доступ пользователю?";
+
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
+
+"Grant access" = "Предоставить доступ";
+
+"Deny access" = "Отказать в доступе";

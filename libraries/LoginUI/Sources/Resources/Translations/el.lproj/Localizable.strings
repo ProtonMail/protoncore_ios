@@ -260,7 +260,7 @@
 
 "Join %@" = "Συμμετοχή %@";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "Το %@ σας πρόσθεσε στον οργανισμό Proton τους.";
 
 "Continue" = "Συνέχεια";
 
@@ -318,6 +318,14 @@
 
 "Back to sign-in" = "Επιστροφή στη σύνδεση";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "Ζητήστε πρόσβαση από το διαχειριστή σας;";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Αυτό θα σας αποσυνδέσει από τις άλλες συσκευές σας και θα πρέπει να δημιουργήσετε έναν νέο εφεδρικό κωδικό πρόσβασης.";
+
+"Grant access to user?" = "Παραχώρηση πρόσβασης στον χρήστη;";
+
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "Ο/Η %@ ζητά τη βοήθειά σας για να συνδεθεί στον λογαριασμό Proton με καθολική σύνδεση.\n\nΕισαγάγετε τον κωδικό επιβεβαίωσης που στείλαμε σε αυτόν τον χρήστη.";
+
+"Grant access" = "Παραχώρηση πρόσβασης";
+
+"Deny access" = "Άρνηση πρόσβασης";

@@ -260,7 +260,7 @@
 
 "Join %@" = "Unisciti a %@";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "%@ ti ha aggiunto alla sua organizzazione Proton.";
 
 "Continue" = "Continua";
 
@@ -318,6 +318,14 @@
 
 "Back to sign-in" = "Torna all'accesso";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "Vuoi chiedere l'accesso al tuo amministratore?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Questo ti disconnetterà dagli altri tuoi dispositivi e dovrai creare una nuova password di backup.";
+
+"Grant access to user?" = "Consentire l'accesso all'utente?";
+
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ richiede il tuo aiuto per accedere al proprio account Proton con Single Sign-On.\n\nInserisci il codice di conferma che abbiamo inviato a questo utente.";
+
+"Grant access" = "Consenti accesso";
+
+"Deny access" = "Nega accesso";
