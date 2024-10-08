@@ -26,7 +26,7 @@ private let drivePopulate: String = "quark/raw::drive:populate"
 public extension Quark {
 
     @discardableResult
-    func drivePopulateUser(user: User, scenario: Int, hasPhotos: Bool, withDevice: Bool = false) throws -> (data: Data, response: URLResponse) {
+    func drivePopulateUser(user: User, scenario: Int, hasPhotos: Bool, withDevice: Bool = false, sharingWithUserName: String = "", sharingWithUserPassword: String = "") throws -> (data: Data, response: URLResponse) {
 
         let args = [
             "-u=\(user.name)",
@@ -34,6 +34,8 @@ public extension Quark {
             "-S=\(scenario)",
             hasPhotos ? "--photo=\(hasPhotos)" : nil,
             withDevice ? "--device=\(withDevice)" : nil,
+            !sharingWithUserName.isEmpty ? "--sharing-username=\(sharingWithUserName)" : nil,
+            !sharingWithUserPassword.isEmpty ? "--sharing-user-pass=\(sharingWithUserPassword)" : nil,
         ].compactMap { $0 }
 
         var request = try route(drivePopulate)
