@@ -11,18 +11,19 @@
     ],
     "build_name":"GoLibs",
     "commit_message":"VPN build",
-    "upload_branch":"feature/crypto-update",
+    "upload_branch":"feature/crypto-update/vpn",
     "destination_folder":"vendor/Crypto+VPN-patched-Go",
     "targets":[
         "apple"
     ],
     "min_ios_version":"14.0",
     "min_macos_version":"10.15",
+    "apple_tv":true,
     "requirements":[
         {
             "module":{
                 "path":"github.com/ProtonMail/gopenpgp/v2",
-                "version":"v2.8.0-alpha.1-proton"
+                "version":"v2.8.0-beta.1-proton"
             },
             "packages":[
                 "crypto",
