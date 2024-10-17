@@ -121,6 +121,7 @@ public protocol CryptoPGPSplitMessage {
     func getBinaryDataPacket() -> Data?
     func getBinaryKeyPacket() -> Data?
     func getPGPMessage() -> CryptoPGPMessage?
+    func getNumberOfKeyPackets(_ ret0_: UnsafeMutablePointer<Int>?) throws
 }
 
 public protocol CryptoClearTextMessage {
