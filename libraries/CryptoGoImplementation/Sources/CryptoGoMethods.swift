@@ -329,4 +329,8 @@ public enum CryptoGoMethodsImplementation: CryptoGoMethods {
     public func CryptoEncryptSessionKeyWithPassword(_ sk: ProtonCoreCryptoGoInterface.CryptoSessionKey?, _ password: Data?, _ error: NSErrorPointer) -> Data? {
         GoLibs.CryptoEncryptSessionKeyWithPassword(sk?.toGoLibsType, password, error)
     }
+    
+    public func CryptoIsPGPMessage(_ data: String?) -> Bool {
+        GoLibs.CryptoIsPGPMessage(data)
+    }
 }

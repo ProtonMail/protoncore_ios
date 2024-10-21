@@ -130,4 +130,6 @@ public protocol CryptoGoMethods {
     func CryptoDecryptMessageWithPassword(_ message: CryptoPGPMessage?, _ password: Data?, _ error: NSErrorPointer) -> CryptoPlainMessage?
 
     func CryptoEncryptSessionKeyWithPassword(_ sk: CryptoSessionKey?, _ password: Data?, _ error: NSErrorPointer) -> Data?
+    
+    func CryptoIsPGPMessage(_ data: String?) -> Bool
 }
