@@ -318,14 +318,14 @@
 
 "Back to sign-in" = "Zurück zur Anmeldung";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "Möchtest du deinen Administrator um Zugriff bitten?";
 
 "This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
 
-"Grant access to user?" = "Grant access to user?";
+"Grant access to user?" = "Dem Benutzer Zugriff gewähren?";
 
 "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
 
 "Grant access" = "Zugriff erlauben";
 
-"Deny access" = "Deny access";
+"Deny access" = "Zugriff verweigern";
