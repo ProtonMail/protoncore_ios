@@ -1,8 +1,10 @@
 //
-//  UserPlans.swift
+//  CalendarCommands.swift
 //  ProtonCore-QuarkCommands - Created on 08.12.2023.
 //
 // Copyright (c) 2023. Proton Technologies AG
+//
+// This file is part of Proton Mail.
 //
 // Proton Mail is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -19,26 +21,13 @@
 
 import Foundation
 
-public enum UserPlan: String {
+private let seedHolidays: String = "/quark/cal:calendar:backend:create"
 
-    case free = "free"
+public extension Quark {
 
-    case bundle2022 = "bundle2022"
-    case bundlepro2022 = "bundlepro2022"
-    case drive2022 = "drive2022"
-    case drivepro2022 = "drivepro2022"
-    case enterprise2022 = "enterprise2022"
-    case family2022 = "family2022"
-    case mail2022 = "mail2022"
-    case mailpro2022 = "mailpro2022"
-    case vpn2022 = "vpn2022"
-    case visionary2022 = "visionary2022"
-
-    case pass2023 = "pass2023"
-    case vpnpass2023 = "vpnpass2023"
-    case vpnpro2023 = "vpnpro2023"
-    case vpnbiz2023 = "vpnbiz2023"
-
-    case passbiz2024 = "passbiz2024"
-    case passpro2024 = "passpro2024"
+    @discardableResult
+    func seedHolidaysCalendars() throws -> (data: Data, response: URLResponse) {
+        let request = try route(seedHolidays).build()
+        return try executeQuarkRequest(request)
+    }
 }

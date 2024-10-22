@@ -33,7 +33,7 @@ extension URLRequest {
         // Directly construct the final URL string with conditional path adjustment
         let finalUrlString = baseUrl
             .replacingOccurrences(of: "/api", with: useNewRoute ? "/internal-api" : "/api/internal")
-            + "/\(route)?\(joinedArgs)"
+        + "/\(route)?\(joinedArgs)"
 
         guard let finalUrl = URL(string: finalUrlString) else { return }
         url = finalUrl
@@ -176,8 +176,8 @@ public class Quark {
     /**
      Configures the timeout settings for HTTP requests.
      - Parameters:
-       - request
-       - resource
+     - request
+     - resource
      * - Returns: The Quark instance with response handling set
      */
     public func configureTimeouts(request: TimeInterval, resource: TimeInterval) -> Quark {
