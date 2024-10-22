@@ -208,6 +208,7 @@ extension String {
     static let snapshotTestingPackage: String = "swift-snapshot-testing"
     static let trustKit: String = "TrustKit"
     static let viewInspector: String = "ViewInspector"
+    static let yams: String = "Yams"
 
     // MARK: - Plugin names
 
@@ -329,6 +330,7 @@ extension Target.Dependency {
     static var trustKit: Target.Dependency { .product(name: .trustKit, package: .trustKit) }
     static var sdWebImage: Target.Dependency { .product(name: .sdWebImage, package: .sdWebImage) }
     static var viewInspector: Target.Dependency { .product(name: .viewInspector, package: .viewInspector)}
+    static var yams: Target.Dependency { .product(name: .yams, package: .yams)}
 
     // MARK: - Helpers
 
@@ -1529,7 +1531,8 @@ add(
                        .environment,
                        .log,
                        .networking,
-                       .services
+                       .services,
+                       .yams
                    ],
                    path: "libraries/QuarkCommands/Sources"),
 
@@ -1539,6 +1542,7 @@ add(
                            .foundations,
                            .testingToolkitUnitTestsDoh,
                            .ohhttpStubs,
+                           .yams
                        ],
                        path: "libraries/QuarkCommands/Tests",
                        resources: [.process("Mocks")])
@@ -2052,6 +2056,10 @@ let package = Package(
         .package(
             url: "https://github.com/getsentry/sentry-cocoa.git",
             .upToNextMajor(from: "8.36.0")
+        ),
+        .package(
+            url: "https://github.com/jpsim/Yams.git",
+            from: "5.1.3"
         )
     ],
     targets: targets + [
