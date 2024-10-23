@@ -258,13 +258,13 @@
 
 "We could not initiate the Secure Password update connection. Please try again." = "Не вдалося встановити з'єднання для оновлення захищеного пароля. Спробуйте ще раз.";
 
-"Join %@" = "Join %@";
+"Join %@" = "Доєднатися %@";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "%@ додали вас до своєї організації Proton.";
 
 "Continue" = "Продовжити";
 
-"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.";
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Встановіть резервний пароль, щоби продовжити. Цей пароль дозволить вам увійти й відновити свої дані, якщо ви заблокуєте свій обліковий запис Proton, тому обов'язково зберігайте його в безпечному місці.";
 
 "Backup password" = "Резервний пароль";
 
@@ -288,43 +288,43 @@
 
 "No, it wasn't me" = "Ні, це був не я";
 
-"Share the confirmation code with your administrator" = "Share the confirmation code with your administrator";
+"Share the confirmation code with your administrator" = "Поділитися кодом підтвердження з адміністратором";
 
-"Approve the sign-in from another device" = "Approve the sign-in from another device";
+"Approve the sign-in from another device" = "Підтвердити вхід з іншого пристрою";
 
-"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@.";
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Щоб переконатися, що ви дійсно хочете увійти та поділитися кодом підтвердження з адміністратором %@, щоб вони могли затвердити запит %@.";
 
-"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device.";
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Щоб переконатися, що ви дійсно намагаєтеся увійти до свого облікового запису, перегляньте код підтвердження і підтвердьте запит з іншого пристрою.";
 
-"Use backup password instead" = "Use backup password instead";
+"Use backup password instead" = "Використовувати пароль резервного копіювання";
 
-"Ask administrator for help" = "Ask administrator for help";
+"Ask administrator for help" = "Зверніться до адміністратора про допомогу";
 
 "Devices available:" = "Доступні пристрої:";
 
 "Operation couldn't be completed. Please try again." = "Неможливо завершити операцію. Будь ласка, спробуйте ще раз.";
 
-"Enter your backup password" = "Enter your backup password";
+"Enter your backup password" = "Введіть пароль резервного копіювання";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Щоб переконатися, що ви дійсно намагаєтеся увійти, введіть свій резервний пароль.";
 
 "Access granted" = "Доступ надано";
 
 "Access denied" = "Доступ заборонено";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Для вашої безпеки ми вийшли з облікового запису на усіх інших активних пристроїв. Перш ніж отримати доступ до свого облікового запису, вам потрібно буде ввести новий резервний пароль.";
 
-"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+"Contact your administrator if the problem persists." = "Зверніться до адміністратора, якщо проблема повторюється.";
 
-"Back to sign-in" = "Back to sign-in";
+"Back to sign-in" = "Повернутися до авторизації";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "Звернутися до адміністратора для доступу?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Це призведе до виходу з інших пристроїв, і вам доведеться створити новий резервний пароль.";
 
-"Grant access to user?" = "Grant access to user?";
+"Grant access to user?" = "Надати доступ користувачеві?";
 
-"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ просить вашої допомоги, щоб увійти до свого облікового запису Proton за допомогою єдиного входу.\n\nВведіть код підтвердження, який ми надіслали цьому користувачеві.";
 
 "Grant access" = "Надати доступ";
 

@@ -304,19 +304,19 @@
 
 "Operation couldn't be completed. Please try again." = "Операция не может быть завершена. Попробуйте еще раз.";
 
-"Enter your backup password" = "Enter your backup password";
+"Enter your backup password" = "Введите пароль для резервной копии";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Чтобы убедиться, что это действительно вы пытаетесь войти в систему, введите пароль резервной копии.";
 
 "Access granted" = "Доступ разрешён";
 
 "Access denied" = "Доступ запрещён";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "В целях безопасности вы были отключены от всех других активных устройств. Перед тем как получить доступ к своему аккаунту, вам нужно будет ввести новый пароль резервной копии.";
 
-"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+"Contact your administrator if the problem persists." = "Если проблема не устранена, свяжитесь с администратором.";
 
-"Back to sign-in" = "Back to sign-in";
+"Back to sign-in" = "Вернуться к входу";
 
 "Ask your administrator for access?" = "Запросить доступ у администратора?";
 
@@ -324,7 +324,7 @@
 
 "Grant access to user?" = "Предоставить доступ пользователю?";
 
-"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ просит вашей помощи, чтобы войти в свой аккаунт Proton с единой регистрацией.\n\nВведите код подтверждения, который мы отправили этому пользователю.";
 
 "Grant access" = "Предоставить доступ";
 

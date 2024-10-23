@@ -260,7 +260,7 @@
 
 "Join %@" = "Dołącz do grupy %@";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "%@ dodał Cię do organizacji Proton.";
 
 "Continue" = "Kontynuuj";
 
@@ -306,26 +306,26 @@
 
 "Enter your backup password" = "Wpisz hasło kopii zapasowej";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Wpisz hasło kopii zapasowej, aby potwierdzić, że to naprawdę Ty próbujesz się zalogować.";
 
 "Access granted" = "Dostęp został przyznany";
 
 "Access denied" = "Odmowa dostępu";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Ze względów bezpieczeństwa zostaniesz wylogowany ze wszystkich aktywnych urządzeń. Przed uzyskaniem dostępu do konta konieczne będzie wpisanie nowego hasła kopii zapasowej.";
 
 "Contact your administrator if the problem persists." = "Jeśli problem powtarza się, skontaktuj się z administratorem.";
 
 "Back to sign-in" = "Powrót do logowania";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "Poprosić administratora o dostęp?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Spowoduje to wylogowanie z innych urządzeń i konieczność utworzenia nowego hasła kopii zapasowej.";
 
-"Grant access to user?" = "Grant access to user?";
+"Grant access to user?" = "Przyznać dostęp użytkownikowi?";
 
-"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ prosi o pomoc w zalogowaniu się na swoje konto Proton za pomocą logowania SSO.\n\nWpisz kod potwierdzający, który wysłaliśmy do tego użytkownika.";
 
-"Grant access" = "Grant access";
+"Grant access" = "Dostęp został przyznany";
 
-"Deny access" = "Deny access";
+"Deny access" = "Odmowa dostępu";

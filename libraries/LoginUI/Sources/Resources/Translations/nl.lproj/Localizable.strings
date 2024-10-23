@@ -280,7 +280,7 @@
 
 "Check that the confirmation code match the code on your other device." = "Check that the confirmation code match the code on your other device.";
 
-"Confirmation code" = "Confirmation code";
+"Confirmation code" = "Bevestigingscode";
 
 "If you didn't make this request, cancel it now." = "If you didn't make this request, cancel it now.";
 
@@ -288,7 +288,7 @@
 
 "No, it wasn't me" = "Nee, dat was ik niet";
 
-"Share the confirmation code with your administrator" = "Share the confirmation code with your administrator";
+"Share the confirmation code with your administrator" = "Deel de bevestigingscode met uw beheerder";
 
 "Approve the sign-in from another device" = "Approve the sign-in from another device";
 
@@ -300,7 +300,7 @@
 
 "Ask administrator for help" = "Ask administrator for help";
 
-"Devices available:" = "Devices available:";
+"Devices available:" = "Beschikbare apparaten:";
 
 "Operation couldn't be completed. Please try again." = "Operation couldn't be completed. Please try again.";
 
@@ -326,6 +326,6 @@
 
 "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
 
-"Grant access" = "Grant access";
+"Grant access" = "Toegang verlenen";
 
 "Deny access" = "Deny access";

@@ -284,9 +284,9 @@
 
 "If you didn't make this request, cancel it now." = "If you didn't make this request, cancel it now.";
 
-"Yes, it was me" = "Yes, it was me";
+"Yes, it was me" = "Sí, era jo.";
 
-"No, it wasn't me" = "No, it wasn't me";
+"No, it wasn't me" = "No, no era jo.";
 
 "Share the confirmation code with your administrator" = "Share the confirmation code with your administrator";
 
@@ -296,15 +296,15 @@
 
 "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device.";
 
-"Use backup password instead" = "Use backup password instead";
+"Use backup password instead" = "Utilitza la contrasenya de recuperació en lloc";
 
-"Ask administrator for help" = "Ask administrator for help";
+"Ask administrator for help" = "Demaneu ajuda a l'administrador";
 
 "Devices available:" = "Dispositius disponibles:";
 
 "Operation couldn't be completed. Please try again." = "Operation couldn't be completed. Please try again.";
 
-"Enter your backup password" = "Enter your backup password";
+"Enter your backup password" = "Introduïu la vostra contrasenya de seguretat";
 
 "To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
 
@@ -322,7 +322,7 @@
 
 "This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
 
-"Grant access to user?" = "Grant access to user?";
+"Grant access to user?" = "Donar accés a l'usuari?";
 
 "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
 

@@ -324,7 +324,7 @@
 
 "Grant access to user?" = "Даць доступ карыстальніку?";
 
-"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ просіць вашай дапамогі, каб увайсці ў свой уліковы запіс Proton праз адзіны ўваход.\n\nУвядзіце код пацвярджэння, які мы адправілі гэтаму карыстальніку.";
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ просіць вашай дапамогі, каб увайсці ў свой уліковы запіс Proton з адзіным уваходам.\n\nУвядзіце код пацвярджэння, які мы адправілі гэтаму карыстальніку.";
 
 "Grant access" = "Даць доступ";
 
