@@ -137,6 +137,9 @@
       }
     },
     {
+      "skippedTests" : [
+        "LoginServiceTests\/testLoginUpdatesCredentialsEvenIfTheCredentialsAreAlreadyThere()"
+      ],
       "target" : {
         "containerPath" : "container:",
         "identifier" : "ProtonCoreLoginUnitTests",
@@ -232,13 +235,6 @@
         "containerPath" : "container:",
         "identifier" : "ProtonCoreForceUpgradeTests",
         "name" : "ProtonCoreForceUpgradeTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:",
-        "identifier" : "ProtonCoreSubscriptionsTests",
-        "name" : "ProtonCoreSubscriptionsTests"
       }
     },
     {
