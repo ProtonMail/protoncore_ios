@@ -270,7 +270,7 @@
 
 "Repeat backup password" = "Repeat backup password";
 
-"Password cannot be empty" = "Password cannot be empty";
+"Password cannot be empty" = "Geslo ne more biti prazno.";
 
 "Password must contain at least 8 characters" = "Geslo mora vsebovati vsaj osem znakov";
 

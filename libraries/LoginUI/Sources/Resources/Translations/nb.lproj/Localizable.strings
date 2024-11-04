@@ -268,7 +268,7 @@
 
 "Backup password" = "Sikkerhetskopier passord";
 
-"Repeat backup password" = "Gjenta sikkerhetskopipassord";
+"Repeat backup password" = "Gjenta reservepassord";
 
 "Password cannot be empty" = "Passord kan ikke være tomt";
 
@@ -304,15 +304,15 @@
 
 "Operation couldn't be completed. Please try again." = "Operasjonen kunne ikke fullføres. Vennligst prøv igjen.";
 
-"Enter your backup password" = "Angi sikkerhetskopipassordet ditt";
+"Enter your backup password" = "Angi reservepassordet ditt";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "For å være sikker på at det virkelig er du som prøver å logge på, vennligst skriv inn ditt sikkerhetskopipassord.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "For å være sikker på at det virkelig er du som prøver å logge på, skriv inn ditt reservepassord.";
 
-"Access granted" = "Tilgang godkjent";
+"Access granted" = "Tilgang gitt";
 
 "Access denied" = "Tilgang nektet";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Av sikkerhetshensyn har du blitt logget av alle de andre aktive enhetene dine. Før du får tilgang til kontoen din, må du skrive inn et nytt sikkerhetskopipassord.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Av sikkerhetshensyn har du blitt logget av alle de andre aktive enhetene dine. Før du får tilgang til kontoen din, må du skrive inn et nytt reservepassord.";
 
 "Contact your administrator if the problem persists." = "Kontakt administratoren hvis problemet vedvarer.";
 
@@ -320,7 +320,7 @@
 
 "Ask your administrator for access?" = "Spørre din administrator om tilgang?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "Dette vil logge deg ut av de andre enhetene dine, og du må opprette et nytt sikkerhetskopipassord.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Dette vil logge deg ut av de andre enhetene dine, og du må opprette et nytt reservepassord.";
 
 "Grant access to user?" = "Gi tilgang til brukeren?";
 

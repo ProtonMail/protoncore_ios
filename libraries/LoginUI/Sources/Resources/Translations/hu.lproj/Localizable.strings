@@ -144,7 +144,7 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "A Tovább gombra kattintva elfogadja a Proton felhasználási feltételeit";
 
-"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "A Tovább gombra kattintva elfogadja a Proton Felhasználói Feltételeit és az Adatvédelmi irányelveit.";
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "A Következő gombra kattintva kijelenti, hogy elfogadja a Proton Felhasználási feltételeit és Adatvédelmi irányelveit";
 
 "Terms and Conditions" = "Szerződési feltételeket";
 
@@ -222,13 +222,13 @@
 
 "Troubleshoot" = "Hibaelhárítás";
 
-"Please choose how you want to confirm your identity." = "Kérjük, válassza ki hogyan akarja megerősíteni az személyazonosságát.";
+"Please choose how you want to confirm your identity." = "Kérjük, válassza ki hogyan szeretné megerősíteni a kilétét.";
 
 "One-time code" = "Egyszer használatos kód";
 
 "Security key" = "Hitelesítési kulcs";
 
-"Two-Factor Authentication" = "Kétlépcsős azonosítás";
+"Two-Factor Authentication" = "Kétlépcsős hitelesítés";
 
 "Present a security key linked to your Proton Account." = "Csatlakoztassa a fiókjához való hitelesítési kulcsot.";
 
@@ -248,7 +248,7 @@
 
 "These are the security keys registered to your account" = "Ezek a biztonsági kulcsok, amik a fiókjához vannak regisztrálva.";
 
-"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "Még nincsen a fiókjához kapcsolva egy hitelesítési kulcs. A Proton %@ weboldalunkon a fiók beállításoknál tudd hozzáadni új hitelesítési kulcsokat.";
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "Még nincs a fiókjához kapcsolva hitelesítési kulcs. A Proton %@ weboldalon adhat hozzá új hitelesítési kulcsokat.";
 
 "Security Keys" = "Hitelesítési kulcsok";
 
@@ -258,13 +258,13 @@
 
 "We could not initiate the Secure Password update connection. Please try again." = "Nem tudtunk egy biztonságos kapcsolatot létrehozni a jelszó változtatáshoz. Próbálja újra később.";
 
-"Join %@" = "Csatlakozzon %@";
+"Join %@" = "Csatlakozás: %@";
 
 "%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
 
 "Continue" = "Tovább";
 
-"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Állítson be egy biztonsági jelszót a tovább lépéshez. Ez a jelszó a fiók adatok visszaállításához lesz használva ha esetleg nem tudna bejelentkezni a Proton fiókjába. Tartsa biztonságban ezt a jelszót.";
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Állítson be egy biztonsági jelszót a továbblépéshez. Ezzel bejelentkezhet és helyreállíthatja az adatait, ha esetleg nem tudna bejelentkezni a Proton fiókjába. Tartsa biztonságban ezt a jelszót.";
 
 "Backup password" = "Biztonsági jelszó";
 
@@ -274,7 +274,7 @@
 
 "Password must contain at least 8 characters" = "A jelszónak legalább 8 karakterből kell állnia";
 
-"Password doesn't match" = "A jelszók nem egyeznek";
+"Password doesn't match" = "A jelszó nem egyezik";
 
 "Sign-in requested on another device. Was it you?" = "Bejelentkezési kérelmet küldtek egy másik eszközön. Ön volt az?";
 
@@ -288,13 +288,13 @@
 
 "No, it wasn't me" = "Nem, nem én voltam";
 
-"Share the confirmation code with your administrator" = "Ossza meg az ellenőrző kódot az adminisztrátorral.";
+"Share the confirmation code with your administrator" = "Ossza meg az ellenőrző kódot az adminisztrátorral";
 
-"Approve the sign-in from another device" = "Fogadja el a bejelentkezési kérelmet.";
+"Approve the sign-in from another device" = "Egy másik eszközről történt bejelentkezés elfogadása";
 
 "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Hogy meg győződjünk hogy ön próbál bejelentkezni, ossza meg az ellenőrző kódot az adminisztrátorral %@, hogy elfogadhassa a %@ kérelmet.";
 
-"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Hogy meg győződjünk arról, hogy ön próbál bejelentkezni, nézze meg az ellenőrző kódot is fogadja el a kérelmet a másik eszközről.";
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Annak ellenőrzésére, hogy valóban ön próbál bejelentkezni, nézze meg az ellenőrző kódot és fogadja el a kérelmet a másik eszközről.";
 
 "Use backup password instead" = "Használja a biztonsági jelszót";
 
@@ -304,7 +304,7 @@
 
 "Operation couldn't be completed. Please try again." = "A művelet nem hajtható végre. Próbálja újra később.";
 
-"Enter your backup password" = "Enter your backup password";
+"Enter your backup password" = "Írja be a biztonsági jelszót";
 
 "To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
 
@@ -318,7 +318,7 @@
 
 "Back to sign-in" = "Vissza a bejelentkezéshez";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "Hozzáférés kérése az adminisztrátortól?";
 
 "This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
 

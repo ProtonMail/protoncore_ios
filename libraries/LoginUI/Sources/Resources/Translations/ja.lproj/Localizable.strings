@@ -270,7 +270,7 @@
 
 "Repeat backup password" = "Repeat backup password";
 
-"Password cannot be empty" = "Password cannot be empty";
+"Password cannot be empty" = "パスワードは空にできません";
 
 "Password must contain at least 8 characters" = "パスワードは 8 文字以上必要です";
 
@@ -310,7 +310,7 @@
 
 "Access granted" = "Access granted";
 
-"Access denied" = "Access denied";
+"Access denied" = "アクセスが拒否されました。";
 
 "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
 

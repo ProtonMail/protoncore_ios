@@ -320,11 +320,11 @@
 
 "Ask your administrator for access?" = "ვთხოვოთ თქვენს ადმინისტრატორს წვდომა?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "ეს გაგიყვანთ ყველა თქვენი სხვა მოწყობილობებიდან და მგიწევთ, ახალი მარქაფი პაროლი შექმნათ.";
 
 "Grant access to user?" = "მივანიჭო წვდომა მომხმარებელს?";
 
-"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ ითხოვს დახმარებას, რომ თავიანთ Proton-ის ანგარიშშ SSO-ით შევიდნენ.\n\nშეიყვანეთ დადასტურების კოდი, რომელიც ამ მომხმარებელს გავუგზავნეთ.";
 
 "Grant access" = "წვდომის უფლების მიცემა";
 

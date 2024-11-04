@@ -258,74 +258,74 @@
 
 "We could not initiate the Secure Password update connection. Please try again." = "我们无法启动安全密码更新连接。请重试。";
 
-"Join %@" = "Join %@";
+"Join %@" = "加入 %@";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "%@ 已将您添加到他们的 Proton 组织。";
 
 "Continue" = "继续";
 
-"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.";
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "设置备份密码以继续。如果您无法登录 Proton 账户，此密码将允许您登录并恢复数据，因此请务必将其保存在某个安全的地方。";
 
-"Backup password" = "Backup password";
+"Backup password" = "备份密码";
 
-"Repeat backup password" = "Repeat backup password";
+"Repeat backup password" = "重输备份密码";
 
-"Password cannot be empty" = "Password cannot be empty";
+"Password cannot be empty" = "密码不能为空";
 
 "Password must contain at least 8 characters" = "密码必须至少包含 8 个字符";
 
-"Password doesn't match" = "Password doesn't match";
+"Password doesn't match" = "密码不一致";
 
-"Sign-in requested on another device. Was it you?" = "Sign-in requested on another device. Was it you?";
+"Sign-in requested on another device. Was it you?" = "另一台设备上的登录请求。是您本人吗？";
 
-"Check that the confirmation code match the code on your other device." = "Check that the confirmation code match the code on your other device.";
+"Check that the confirmation code match the code on your other device." = "检查确认码是否与您其他设备上的代码相匹配。";
 
-"Confirmation code" = "Confirmation code";
+"Confirmation code" = "确认码";
 
-"If you didn't make this request, cancel it now." = "If you didn't make this request, cancel it now.";
+"If you didn't make this request, cancel it now." = "如果您没有提出该请求，请立即取消。";
 
-"Yes, it was me" = "Yes, it was me";
+"Yes, it was me" = "是的，这是我";
 
-"No, it wasn't me" = "No, it wasn't me";
+"No, it wasn't me" = "不，这不是我";
 
-"Share the confirmation code with your administrator" = "Share the confirmation code with your administrator";
+"Share the confirmation code with your administrator" = "与管理员分享确认码";
 
-"Approve the sign-in from another device" = "Approve the sign-in from another device";
+"Approve the sign-in from another device" = "批准另一台设备上的登录请求";
 
-"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@.";
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "为了确保尝试登录的人确实是您本人，请与您的管理员 %@ 分享确认码，以便他们可以批准 %@ 的请求。";
 
-"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device.";
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "为了确保尝试登录账户的真实用户，请检查确认码并从另一台设备批准请求。";
 
-"Use backup password instead" = "Use backup password instead";
+"Use backup password instead" = "改用备份密码";
 
-"Ask administrator for help" = "Ask administrator for help";
+"Ask administrator for help" = "请求管理员帮助";
 
-"Devices available:" = "Devices available:";
+"Devices available:" = "可用设备：";
 
-"Operation couldn't be completed. Please try again." = "Operation couldn't be completed. Please try again.";
+"Operation couldn't be completed. Please try again." = "操作无法完成。请重试。";
 
-"Enter your backup password" = "Enter your backup password";
+"Enter your backup password" = "输入您的备份密码";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "为了确保您确实正在尝试登录，请输入您的备份密码。";
 
-"Access granted" = "Access granted";
+"Access granted" = "已授予访问权限";
 
-"Access denied" = "Access denied";
+"Access denied" = "访问被拒绝";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "为了您的安全，已为您已退出所有其他活动设备。在访问您的账户之前，您将需要输入一个新的备份密码。";
 
-"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+"Contact your administrator if the problem persists." = "如果问题仍然存在，请联系您的管理员。";
 
-"Back to sign-in" = "Back to sign-in";
+"Back to sign-in" = "返回登录";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "向管理员请求访问权限？";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "这将使您退出其他设备，并且您必须创建一个新的备份密码。";
 
-"Grant access to user?" = "Grant access to user?";
+"Grant access to user?" = "授予用户访问权限？";
 
-"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ 正在请求您的帮助以单点登录方式登录其 Proton 账户。\n\n输入我们发送给该用户的确认码。";
 
-"Grant access" = "Grant access";
+"Grant access" = "授予访问权限";
 
-"Deny access" = "Deny access";
+"Deny access" = "拒绝访问权限";

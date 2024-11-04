@@ -144,7 +144,7 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "點擊下一步，即表示您同意 Proton 的合約條款";
 
-"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "點擊下一步，即表示您同意 Proton 的合約條款與隱私權政策。";
 
 "Terms and Conditions" = "條款與細則";
 
@@ -228,15 +228,15 @@
 
 "Security key" = "安全金鑰";
 
-"Two-Factor Authentication" = "Two-Factor Authentication";
+"Two-Factor Authentication" = "雙重身分驗證";
 
-"Present a security key linked to your Proton Account." = "Present a security key linked to your Proton Account.";
+"Present a security key linked to your Proton Account." = "出示連結到您 Proton 帳號的安全金鑰。";
 
 "Learn more" = "瞭解詳情";
 
 "Invalid state. Please quit the app and try again in a few minutes." = "Invalid state. Please quit the app and try again in a few minutes.";
 
-"There was a problem reading your security key." = "There was a problem reading your security key.";
+"There was a problem reading your security key." = "讀取安全金鑰時發生問題。";
 
 "We received an authorization from a type we don't support yet." = "We received an authorization from a type we don't support yet.";
 
@@ -246,11 +246,11 @@
 
 "An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "An error occurred fetching your security keys. You can also check them on the Proton %@ website.";
 
-"These are the security keys registered to your account" = "These are the security keys registered to your account";
+"These are the security keys registered to your account" = "這些是註冊在您帳號的安全性密鑰。";
 
 "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys.";
 
-"Security Keys" = "Security Keys";
+"Security Keys" = "安全金鑰";
 
 "To manage, add, or remove security keys, please use the Proton %@ web application." = "To manage, add, or remove security keys, please use the Proton %@ web application.";
 
@@ -258,65 +258,65 @@
 
 "We could not initiate the Secure Password update connection. Please try again." = "We could not initiate the Secure Password update connection. Please try again.";
 
-"Join %@" = "Join %@";
+"Join %@" = "加入 %@";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "%@ 已新增至您的 Proton 組織。";
 
 "Continue" = "繼續";
 
 "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.";
 
-"Backup password" = "Backup password";
+"Backup password" = "備份密碼";
 
-"Repeat backup password" = "Repeat backup password";
+"Repeat backup password" = "再次輸入備份密碼";
 
-"Password cannot be empty" = "Password cannot be empty";
+"Password cannot be empty" = "密碼不能為空";
 
 "Password must contain at least 8 characters" = "密碼必須包含至少 8 個半形字元";
 
-"Password doesn't match" = "Password doesn't match";
+"Password doesn't match" = "密碼不正確";
 
-"Sign-in requested on another device. Was it you?" = "Sign-in requested on another device. Was it you?";
+"Sign-in requested on another device. Was it you?" = "在其他裝置上要求登入。是您嗎？";
 
 "Check that the confirmation code match the code on your other device." = "Check that the confirmation code match the code on your other device.";
 
-"Confirmation code" = "Confirmation code";
+"Confirmation code" = "確認碼";
 
-"If you didn't make this request, cancel it now." = "If you didn't make this request, cancel it now.";
+"If you didn't make this request, cancel it now." = "若您並未做出此請求，請立刻取消。";
 
-"Yes, it was me" = "Yes, it was me";
+"Yes, it was me" = "對，就是我";
 
-"No, it wasn't me" = "No, it wasn't me";
+"No, it wasn't me" = "不，這不是我";
 
-"Share the confirmation code with your administrator" = "Share the confirmation code with your administrator";
+"Share the confirmation code with your administrator" = "將確認碼分享給您的管理員";
 
-"Approve the sign-in from another device" = "Approve the sign-in from another device";
+"Approve the sign-in from another device" = "批准從其他裝置登入";
 
 "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@.";
 
-"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device.";
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "若要確定真的是您試圖登入您的帳號，請檢視確認碼，並批准從其他裝置提出的要求。";
 
-"Use backup password instead" = "Use backup password instead";
+"Use backup password instead" = "改用備份密碼";
 
-"Ask administrator for help" = "Ask administrator for help";
+"Ask administrator for help" = "尋求管理員協助";
 
-"Devices available:" = "Devices available:";
+"Devices available:" = "可用裝置:";
 
-"Operation couldn't be completed. Please try again." = "Operation couldn't be completed. Please try again.";
+"Operation couldn't be completed. Please try again." = "";
 
-"Enter your backup password" = "Enter your backup password";
+"Enter your backup password" = "輸入您的備份密碼";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "為了確定真的是您嘗試登入，請輸入您的備份密碼。";
 
-"Access granted" = "Access granted";
+"Access granted" = "已獲得許可";
 
-"Access denied" = "Access denied";
+"Access denied" = "存取被拒";
 
 "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
 
 "Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
 
-"Back to sign-in" = "Back to sign-in";
+"Back to sign-in" = "返回登入";
 
 "Ask your administrator for access?" = "Ask your administrator for access?";
 
@@ -326,6 +326,6 @@
 
 "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
 
-"Grant access" = "Grant access";
+"Grant access" = "獲取權限";
 
-"Deny access" = "Deny access";
+"Deny access" = "拒絕存取";
