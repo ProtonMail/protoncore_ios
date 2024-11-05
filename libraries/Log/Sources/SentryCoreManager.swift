@@ -65,7 +65,7 @@ public enum SentryBreadcrumbType: String {
 
 public final class SentryCoreManager: ExternalLogProtocol {
 
-    struct Constants {
+    enum Constants {
         static let sentryDSN = "https://2c74eb763791400d9a3c17db8bf57dea@sentry-new.protontech.ch/56"
         static let clientName = "client.name"
         static let device = "device"
@@ -76,7 +76,7 @@ public final class SentryCoreManager: ExternalLogProtocol {
 
     private var hub: SentryHub!
 
-    public var environment: String
+    public let environment: String
 
     public init(environment: String) {
         self.environment = environment
