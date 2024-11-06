@@ -90,10 +90,6 @@ public extension ProtonCoreFeatureFlags.FeatureFlag {
         .init(name: "ExternalSSO", enabled: true, variant: nil)
     }
 
-    static var fidoKeys: Self {
-        .init(name: "FIDO2Mobile", enabled: true, variant: nil)
-    }
-
     static var pushNotifications: Self {
         .init(name: "PushNotifications", enabled: true, variant: nil)
     }

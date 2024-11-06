@@ -278,60 +278,58 @@ class AuthenticatorTests: XCTestCase {
     }
 
     func testAuthenticateSuccess2FAWebAuthnWithFF() {
-        withFeatureFlags([.fidoKeys]) {
-            let manager = Authenticator(api: self.apiService)
-            let expect = self.expectation(description: "AuthInfo + Auth")
-            apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
-                if path.contains("/auth/info") {
-                    completion(nil, .success(self.authInfoResponse))
-                } else if path.contains("/auth/v4") {
-                    let pk = PublicKey(timeout: 100,
-                                             challenge: Data([65, 66, 67]),
-                                             userVerification: "check",
-                                             rpId: "proton.me",
-                                             allowCredentials: [
-                                                AllowedCredential(id: Data([97, 98, 99]),
-                                                                        type: "public")
-                                             ])
-                    let fido2 = Fido2(authenticationOptions: AuthenticationOptions(publicKey: pk),
-                                            registeredKeys: [
-                                                RegisteredKey(attestationFormat: "packed",
-                                                                    credentialID: Data([100, 101, 102]),
-                                                                    name: "My Key")
-                                            ])
-                    let twoFA = AuthInfoResponse.TwoFA(enabled: .webAuthn, fido2: fido2)
-                    completion(nil, .success(self.authRouteResponse(twoFA: twoFA)))
-                } else {
-                    XCTFail()
-                    completion(nil, .success(AuthenticatorTests.emptyReponse))
-                }
+        let manager = Authenticator(api: self.apiService)
+        let expect = self.expectation(description: "AuthInfo + Auth")
+        apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+            if path.contains("/auth/info") {
+                completion(nil, .success(self.authInfoResponse))
+            } else if path.contains("/auth/v4") {
+                let pk = PublicKey(timeout: 100,
+                                         challenge: Data([65, 66, 67]),
+                                         userVerification: "check",
+                                         rpId: "proton.me",
+                                         allowCredentials: [
+                                            AllowedCredential(id: Data([97, 98, 99]),
+                                                                    type: "public")
+                                         ])
+                let fido2 = Fido2(authenticationOptions: AuthenticationOptions(publicKey: pk),
+                                        registeredKeys: [
+                                            RegisteredKey(attestationFormat: "packed",
+                                                                credentialID: Data([100, 101, 102]),
+                                                                name: "My Key")
+                                        ])
+                let twoFA = AuthInfoResponse.TwoFA(enabled: .webAuthn, fido2: fido2)
+                completion(nil, .success(self.authRouteResponse(twoFA: twoFA)))
+            } else {
+                XCTFail()
+                completion(nil, .success(AuthenticatorTests.emptyReponse))
             }
-            srpAuthMock.generateProofsStub.bodyIs { _, _  in
-                return self.srpProofs
-            }
+        }
+        srpAuthMock.generateProofsStub.bodyIs { _, _  in
+            return self.srpProofs
+        }
 
-            manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
-                switch result {
-                case let .success(Authenticator.Status.askFIDO2(context, authenticationOptions)):
-                    let twoFA = AuthInfoResponse.TwoFA(enabled: .webAuthn)
-                    let authRouteResponse = self.authRouteResponse(twoFA: twoFA)
-                    XCTAssertEqual(context.credential.UID, authRouteResponse.UID)
-                    XCTAssertEqual(authenticationOptions.challenge, Data([65, 66, 67]))
-                    XCTAssertEqual(authenticationOptions.publicKey.timeout, 100)
-                    XCTAssertEqual(authenticationOptions.publicKey.userVerification, "check")
-                    XCTAssertEqual(authenticationOptions.relyingPartyIdentifier, "proton.me")
-                    XCTAssertEqual(authenticationOptions.allowedCredentialIds.count, 1)
-                    XCTAssertEqual(authenticationOptions.allowedCredentialIds[0], Data([97, 98, 99]))
-                    XCTAssertEqual(authenticationOptions.publicKey.allowCredentials[0].type, "public")
+        manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
+            switch result {
+            case let .success(Authenticator.Status.askFIDO2(context, authenticationOptions)):
+                let twoFA = AuthInfoResponse.TwoFA(enabled: .webAuthn)
+                let authRouteResponse = self.authRouteResponse(twoFA: twoFA)
+                XCTAssertEqual(context.credential.UID, authRouteResponse.UID)
+                XCTAssertEqual(authenticationOptions.challenge, Data([65, 66, 67]))
+                XCTAssertEqual(authenticationOptions.publicKey.timeout, 100)
+                XCTAssertEqual(authenticationOptions.publicKey.userVerification, "check")
+                XCTAssertEqual(authenticationOptions.relyingPartyIdentifier, "proton.me")
+                XCTAssertEqual(authenticationOptions.allowedCredentialIds.count, 1)
+                XCTAssertEqual(authenticationOptions.allowedCredentialIds[0], Data([97, 98, 99]))
+                XCTAssertEqual(authenticationOptions.publicKey.allowCredentials[0].type, "public")
 
-                default:
-                    XCTFail("Wrong result")
-                }
-                expect.fulfill()
+            default:
+                XCTFail("Wrong result")
             }
-            waitForExpectations(timeout: timeout) { (error) in
-                XCTAssertNil(error, String(describing: error))
-            }
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
         }
     }
 
