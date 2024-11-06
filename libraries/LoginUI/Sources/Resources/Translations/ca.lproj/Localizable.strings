@@ -290,7 +290,7 @@
 
 "Share the confirmation code with your administrator" = "Share the confirmation code with your administrator";
 
-"Approve the sign-in from another device" = "Approve the sign-in from another device";
+"Approve the sign-in from another device" = "Aprova l'inici de sessió des d'un altre dispositiu";
 
 "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@.";
 
@@ -304,7 +304,7 @@
 
 "Operation couldn't be completed. Please try again." = "Operation couldn't be completed. Please try again.";
 
-"Enter your backup password" = "Introduïu la vostra contrasenya de seguretat";
+"Enter your backup password" = "Introduïu la vostra contrasenya de recuperació";
 
 "To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
 
@@ -318,7 +318,7 @@
 
 "Back to sign-in" = "Torna a l'inici de sessió";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "Voleu demanar accés al vostre administrador?";
 
 "This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
 

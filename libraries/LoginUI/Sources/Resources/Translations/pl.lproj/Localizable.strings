@@ -276,7 +276,7 @@
 
 "Password doesn't match" = "Hasła nie pasują do siebie";
 
-"Sign-in requested on another device. Was it you?" = "Potwierdź zalogowanie się na innym urządzeniu. To nie Ty?";
+"Sign-in requested on another device. Was it you?" = "Potwierdź logowanie na innym urządzeniu. To nie Ty?";
 
 "Check that the confirmation code match the code on your other device." = "Sprawdź, czy kod potwierdzający pasuje do kodu na innym urządzeniu.";
 

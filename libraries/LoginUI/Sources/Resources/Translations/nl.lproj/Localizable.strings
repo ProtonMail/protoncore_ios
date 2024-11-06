@@ -260,29 +260,29 @@
 
 "Join %@" = "Join %@";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "%@ heeft u aan hun Proton organisatie toegevoegd.";
 
 "Continue" = "Doorgaan";
 
-"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.";
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Stel een back-upwachtwoord in om door te gaan. Dit wachtwoord stelt u in staat om in te loggen en uw gegevens te herstellen als u wordt geblokkeerd uit uw Proton Account, dus zorg ervoor dat het ergens veilig blijft.";
 
 "Backup password" = "Back-up wachtwoord";
 
 "Repeat backup password" = "Herhaal back-upwachtwoord";
 
-"Password cannot be empty" = "Password cannot be empty";
+"Password cannot be empty" = "Wachtwoord kan niet leeg zijn";
 
 "Password must contain at least 8 characters" = "Wachtwoord moet ten minste 8 tekens bevatten";
 
 "Password doesn't match" = "Wachtwoord komt niet overeen";
 
-"Sign-in requested on another device. Was it you?" = "Sign-in requested on another device. Was it you?";
+"Sign-in requested on another device. Was it you?" = "Inloggen op een ander apparaat. Was u dit?";
 
-"Check that the confirmation code match the code on your other device." = "Check that the confirmation code match the code on your other device.";
+"Check that the confirmation code match the code on your other device." = "Controleer of de bevestigingscode overeenkomt met de code op uw andere apparaat.";
 
 "Confirmation code" = "Bevestigingscode";
 
-"If you didn't make this request, cancel it now." = "If you didn't make this request, cancel it now.";
+"If you didn't make this request, cancel it now." = "Als u dit verzoek niet heeft gemaakt, annuleer het dan nu.";
 
 "Yes, it was me" = "Ja, dat was ik";
 
@@ -290,42 +290,42 @@
 
 "Share the confirmation code with your administrator" = "Deel de bevestigingscode met uw beheerder";
 
-"Approve the sign-in from another device" = "Approve the sign-in from another device";
+"Approve the sign-in from another device" = "De aanmelding vanaf een ander apparaat goedkeuren";
 
-"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@.";
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Om zeker te zijn dat u echt probeert in te loggen, deel de bevestigingscode met uw beheerder %@ zodat deze het verzoek voor %@ kan goedkeuren.";
 
-"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device.";
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Om er zeker van te zijn dat u het echt bent die zich probeert aan te melden bij uw account, controleer de bevestigingscode en keur uw verzoek goed vanaf een ander apparaat.";
 
-"Use backup password instead" = "Use backup password instead";
+"Use backup password instead" = "Gebruik in plaats daarvan back-upwachtwoord";
 
-"Ask administrator for help" = "Ask administrator for help";
+"Ask administrator for help" = "Vraag de beheerder om hulp";
 
 "Devices available:" = "Beschikbare apparaten:";
 
-"Operation couldn't be completed. Please try again." = "Operation couldn't be completed. Please try again.";
+"Operation couldn't be completed. Please try again." = "Bewerking kan niet worden voltooid. Probeer het opnieuw.";
 
 "Enter your backup password" = "Voer uw back-up woord in";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Om er zeker van te zijn dat je echt probeert in te loggen, voer uw wachtwoord voor de back-up in.";
 
 "Access granted" = "Toegang verleend";
 
 "Access denied" = "Toegang geweigerd";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Voor uw veiligheid bent u afgemeld van al uw andere actieve apparaten. Voordat u toegang krijgt tot uw account, moet u een nieuw wachtwoord voor back-up invoeren.";
 
-"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+"Contact your administrator if the problem persists." = "Neem contact op met de beheerder als het probleem aanhoudt.";
 
 "Back to sign-in" = "Terug naar aanmelden";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "Toegang vragen aan uw beheerder?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Dit zal u uitloggen uit uw andere apparaten en u moet een nieuw back-upwachtwoord maken.";
 
-"Grant access to user?" = "Grant access to user?";
+"Grant access to user?" = "Toegang verlenen aan gebruiker?";
 
-"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ vraagt u om hulp bij hun Proton Account met een enkel signaal.\n\nVoer de bevestigingscode in die we naar deze gebruiker hebben gestuurd.";
 
 "Grant access" = "Toegang verlenen";
 
-"Deny access" = "Deny access";
+"Deny access" = "Toegang weigeren";

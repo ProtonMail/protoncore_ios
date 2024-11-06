@@ -294,7 +294,7 @@
 
 "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Абагуліце код пацвярджэння з вашым адміністратарам %@ для таго, каб ухваліць запыт для %@. Гэта неабходна для пацвярджэння вашай асобы пры ўваходзе.";
 
-"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Праверце код пацвярджэння і ўхваліце запыт ад іншай прылады. Гэта дазволіць пераканацца ў тым, што іменна вы хочаце атрымаць доступ да ўліковага запісу.";
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Праверце код пацвярджэння і ўхваліце запыт ад іншай прылады. Гэта дазволіць пераканацца ў тым, што менавіта вы хочаце атрымаць доступ да ўліковага запісу.";
 
 "Use backup password instead" = "Замест гэтага скарыстайцеся рэзервовай копіяй пароля";
 
