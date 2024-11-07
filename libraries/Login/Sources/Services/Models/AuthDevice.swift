@@ -32,7 +32,7 @@ public struct AuthDevice: Codable, Equatable {
     public var state: State
     public var name: String
     public var localizedClientName: String
-    public var platform: String // make enum?
+    public var platform: Platform
     public var createTime: Int
     public var activateTime: Int?
     public var rejectTime: Int?
@@ -48,7 +48,18 @@ public struct AuthDevice: Codable, Equatable {
         case activeNoAssociatedSession = 5
     }
 
-    public init(ID: String, deviceToken: String, activationAddressID: String, state: State, name: String, localizedClientName: String, platform: String, createTime: Int, activateTime: Int? = nil, rejectTime: Int? = nil, activationToken: String? = nil, lastActivityTime: Int) {
+    public enum Platform: String, Codable {
+        case android = "Android"
+        case androidTV = "AndroidTv"
+        case appleTV = "AppleTv"
+        case iOS = "iOS"
+        case macOS = "macOS"
+        case linux = "Linux"
+        case web = "Web"
+        case windows = "Windows"
+    }
+
+    public init(ID: String, deviceToken: String, activationAddressID: String, state: State, name: String, localizedClientName: String, platform: Platform, createTime: Int, activateTime: Int? = nil, rejectTime: Int? = nil, activationToken: String? = nil, lastActivityTime: Int) {
         self.ID = ID
         self.deviceToken = deviceToken
         self.activationAddressID = activationAddressID
