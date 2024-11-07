@@ -159,11 +159,6 @@ public extension FeatureFlagsRepository {
         }
 
         let (flags, userID) = try await remoteDataSource.getFlags()
-
-        let flagsDescription = flags.map { "\($0.name)=\($0.enabled)" }.joined(separator: ", ")
-
-        PMLog.debug("Initializing flags: \(flagsDescription)")
-
         localDataSource.value.upsertFlags(.init(flags: flags), userId: userID)
     }
 
