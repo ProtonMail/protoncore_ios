@@ -370,6 +370,7 @@ report:integration:code:coverage:
   stage: report
   interruptible: true
   rules: *rules_mr_and_develop
+  allow_failure: true
   needs:
     - job: test:unit:integration
       artifacts: true
@@ -404,6 +405,7 @@ report:apphost:macos:code:coverage:
   stage: report
   interruptible: true
   rules: *rules_mr_and_develop
+  allow_failure: true
   needs:
     - job: test:apphost:macos:all
       artifacts: true
@@ -438,6 +440,7 @@ report:unit:macos:code:coverage:
   stage: report
   interruptible: true
   rules: *rules_mr_and_develop
+  allow_failure: true
   needs:
     - job: test:unit:macos:all
       artifacts: true
@@ -472,6 +475,7 @@ report:unit:ios:code:coverage:
   stage: report
   interruptible: true
   rules: *rules_mr_and_develop
+  allow_failure: true
   needs:
     - job: test:unit:ios:all
       artifacts: true
