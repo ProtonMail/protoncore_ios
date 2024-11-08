@@ -1,7 +1,17 @@
 include:
-  - project: "proton/devops/atlas-deploy"
-    ref: main
-    file: "/scenarios/pipeline-env.yml"
+  - component: gitlab.protontech.ch/proton/devops/cicd-components/kubernetes/atlas-deploy/pipenv@0.7.0
+    inputs:
+      cleanup-stage: cleanup
+
+  - component: gitlab.protontech.ch/proton/devops/cicd-components/kubernetes/atlas-deploy/pipenv@0.7.0
+    inputs:
+      cleanup-stage: cleanup
+      deploy: manual
+      cleanup: manual
+      images: $IMAGES
+      features: $FEATURES
+      key: customenv$CI_PIPELINE_ID
+      suffix: ":custom"
   
   - project: "translations/generator"
     ref: master
@@ -30,6 +40,8 @@ variables:
   GIT_DEPTH: 20
   GIT_STRATEGY: clone
   FF_ENABLE_JOB_CLEANUP: "true"
+  IMAGES: $IMAGES
+  FEATURES: $FEATURES
 
 .set_up_simulator: &set_up_simulator
   - DEVICE_NAME=$CI_PIPELINE_ID-$CI_JOB_NAME
@@ -265,7 +277,7 @@ test:unit:integration:
   allow_failure: true
   interruptible: true
   needs:
-    - job: deploy:review
+    - job: atlas:deploy:pipenv
       artifacts: true
   before_script:
     - *add_private_ssh_key
@@ -308,7 +320,7 @@ test:ui:light:
     needs:
       - job: linting:code-quality
         artifacts: false
-      - job: deploy:review
+      - job: atlas:deploy:pipenv
         artifacts: true
     artifacts:
       when: always
