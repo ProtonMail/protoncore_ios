@@ -308,9 +308,9 @@
 
 "To make sure it’s really you trying to sign-in, please enter your backup password." = "본인이 로그인 시도 중인지 인증하기 위해 백업 비밀번호를 입력해주세요.";
 
-"Access granted" = "엑세스 권한 부여됨";
+"Access granted" = "엑세스 승인됨.";
 
-"Access denied" = "액세스 거부됨";
+"Access denied" = "액세스 거부";
 
 "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "보안을 위해, 다른 모든 기기에서 로그아웃 되었습니다. 계정 접근 전에 새 백업 비밀번호를 입력해야합니다.";
 
