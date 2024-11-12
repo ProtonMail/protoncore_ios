@@ -21,33 +21,12 @@
 
 import Foundation
 import ProtonCoreNetworking
-import ProtonCoreServices
 
-public final class NewDeviceResponse: Response {
+public final class CreateAuthDeviceResponse: Response, APIDecodableResponse, Encodable {
     var authDevice: AuthDevice?
-
-    override public func ParseResponse(_ response: [String: Any]!) -> Bool {
-        guard let authDeviceDict = response["AuthDevice"] as? [String: Any] else {
-            return false
-        }
-
-        let json = authDeviceDict.json()
-        if let data = json.data(using: .utf8) {
-            do {
-                self.authDevice = try JSONDecoder.decapitalisingFirstLetter.decode(AuthDevice.self,
-                                                                                   from: data)
-            } catch {
-                NSLog(error.localizedDescription)
-            }
-
-            return true
-        }
-
-        return false
-    }
 }
 
-public final class NewDeviceRequest: Request {
+public final class CreateAuthDeviceRequest: Request {
     public var path: String {
         "/auth/v4/devices"
     }
