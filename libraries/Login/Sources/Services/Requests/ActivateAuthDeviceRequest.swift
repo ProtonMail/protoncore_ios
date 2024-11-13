@@ -1,6 +1,6 @@
 //
-//  DefaultResponse.swift
-//  ProtonCore-Services - Created on 20.03.2024.
+//  CreateAuthDeviceResponse.swift
+//  ProtonCore-Login - Created on 13.11.24.
 //
 //  Copyright (c) 2024 Proton Technologies AG
 //
@@ -22,22 +22,26 @@
 import Foundation
 import ProtonCoreNetworking
 
-public final class DefaultResponse: Response, Codable {
-
-    public init(from decoder: Decoder) throws {
-        super.init()
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.responseCode = try container.decodeIfPresent(Int.self, forKey: .responseCode)
+public final class ActivateAuthDeviceRequest: Request {
+    public var path: String {
+        "/auth/v4/devices/\(deviceID)"
     }
 
-    public func encode(to encoder: any Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(responseCode, forKey: .responseCode)
+    public var isAuth: Bool = true
+
+    public var method: HTTPMethod = .post
+
+    public let deviceID: String
+    public let encryptedSecret: String
+
+    public init(deviceID: String, encryptedSecret: String) {
+        self.deviceID = deviceID
+        self.encryptedSecret = encryptedSecret
     }
 
-    required init() {}
-
-    enum CodingKeys: String, CodingKey {
-        case responseCode = "code"
+    public var parameters: [String: Any]? {
+        return [
+            "EncryptedSecret": self.encryptedSecret
+        ]
     }
 }

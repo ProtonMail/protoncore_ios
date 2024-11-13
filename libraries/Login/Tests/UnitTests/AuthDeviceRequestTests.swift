@@ -27,6 +27,7 @@ import ProtonCoreTestingToolkitUnitTestsServices
 #else
 import ProtonCoreTestingToolkit
 #endif
+import ProtonCoreServices
 @testable import ProtonCoreLogin
 
 final class AuthDeviceRequestTests: XCTestCase {
@@ -116,6 +117,38 @@ final class AuthDeviceRequestTests: XCTestCase {
 
         XCTAssertEqual(response.authDevices.count, 2)
         XCTAssertEqual(response.authDevices.first?.localizedClientName, clientName)
+    }
+
+    func testActivateAuthDeviceResponse() async throws {
+
+        let dataRes = try loadMockJSON(filename: "ActivateAuthDeviceOK")
+        let res = try JSONDecoder.decapitalisingFirstLetter
+            .decode(DefaultResponse.self, from: dataRes)
+
+        let deviceID = "12345678"
+        let sut = ActivateAuthDeviceRequest(deviceID: deviceID, encryptedSecret: "secret")
+
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+            if method == .post && path.contains("/auth/v4/devices/\(deviceID)") {
+                completion(nil, .success(res.toSuccessfulResponse))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        apiService.requestDecodableStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+            if method == .post && path.contains("/auth/v4/devices/\(deviceID)") {
+                completion(nil, .success(res))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+
+        let (_, response) = await apiService.perform(request: sut, response: res)
+
+        XCTAssertEqual(response.responseCode, 1000)
+        XCTAssertNil(response.error)
     }
 
     private func loadMockJSON(filename: String) throws -> Data {
