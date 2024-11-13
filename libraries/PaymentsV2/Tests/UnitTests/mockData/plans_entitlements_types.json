@@ -1,0 +1,16 @@
+[
+    {
+       "Type":"description",
+       "Text":"Easy Switch import assistant",
+       "IconName":"shield",
+       "Hint":"Quickly transfer your emails, calendars or contacts from any provider"
+    },
+    {
+       "Type":"progress",
+       "Text":"Easy Switch import assistant",
+       "IconName":"shield",
+       "Max":100,
+       "Min":5,
+       "Current":50
+    }
+ ]

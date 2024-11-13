@@ -23,17 +23,6 @@
         "identifier" : "664237CA2A6977790056776D",
         "name" : "ProtonCore-Keymaker-macOS-AppHostTests"
       }
-    },
-    {
-      "skippedTests" : [
-        "CryptoTests",
-        "LockedTests\/testCodableLockUnlock()"
-      ],
-      "target" : {
-        "containerPath" : "container:",
-        "identifier" : "ProtonCoreKeymakerTests",
-        "name" : "ProtonCoreKeymakerTests"
-      }
     }
   ],
   "version" : 1

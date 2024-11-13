@@ -1,0 +1,12 @@
+[
+    {
+       "Type":"starred",
+       "IconName":"shield"
+    },
+    {
+       "Type":"badge",
+       "Text":"This is a badge",
+       "Anchor":"TopLeading",
+       "PlanId":"planId121231909j09jscascas12eqjj"
+    }
+ ]
