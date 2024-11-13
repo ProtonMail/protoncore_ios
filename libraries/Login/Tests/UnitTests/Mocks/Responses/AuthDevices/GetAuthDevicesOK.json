@@ -1,0 +1,33 @@
+{
+   "Code":1000,
+   "AuthDevices":[
+      {
+         "ID":"r5H2qGDRiUQ4-7gm...5YLf215MEgZCdzOtLW5psxgB8oNc=",
+         "DeviceToken":"wfih0367aa7dc0359bf5c42d15a93e6c",
+         "ActivationAddressID":"-Bpgivr5H2qGDRiUQ4-7gm5...oFRykab4Z23EGEW1ka3GtQPF9xwx9-VUA==",
+         "State":2,
+         "Name":"MyPhone 5",
+         "LocalizedClientName":"Proton Account for Web",
+         "Platform":"Web",
+         "CreateTime":1715720090,
+         "ActivateTime":1715720090,
+         "RejectTime":1715720090,
+         "ActivationToken":"-----BEGIN PGP MESSAGE-----.*-----END PGP MESSAGE-----",
+         "LastActivityTime":1715720090
+      },
+      {
+         "ID":"r5H2qGDRiUQ4-7gm...5YLf215MEgZCdzOtLW5psxgB8oNc2",
+         "DeviceToken":"wfih0367aa7dc0359bf5c42d15a93e62",
+         "ActivationAddressID":"-Bpgivr5H2qGDRiUQ4-7gm5...oFRykab4Z23EGEW1ka3GtQPF9xwx9-VUA=2",
+         "State":1,
+         "Name":"MyPhone 6",
+         "LocalizedClientName":"Proton Account for Web",
+         "Platform":"Web",
+         "CreateTime":1715720091,
+         "ActivateTime":1715720091,
+         "RejectTime":1715720091,
+         "ActivationToken":"-----BEGIN PGP MESSAGE-----.*-----END PGP MESSAGE-----",
+         "LastActivityTime":1715720091
+      }
+   ]
+}

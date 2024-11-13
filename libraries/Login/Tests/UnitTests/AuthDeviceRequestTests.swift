@@ -1,5 +1,5 @@
 //
-//  CreateAuthDeviceRequestTests.swift
+//  AuthDeviceRequestTests.swift
 //  ProtonCore-Login-Tests - Created on 30.09.2024.
 //
 //  Copyright (c) 2024 Proton Technologies AG
@@ -29,7 +29,7 @@ import ProtonCoreTestingToolkit
 #endif
 @testable import ProtonCoreLogin
 
-final class CreateAuthDeviceRequestTests: XCTestCase {
+final class AuthDeviceRequestTests: XCTestCase {
 
     var apiService: APIServiceMock!
 
@@ -43,33 +43,11 @@ final class CreateAuthDeviceRequestTests: XCTestCase {
         apiService = nil
     }
 
-    let deviceName = "MyPhone 5"
-    let activationToken = "-----BEGIN PGP MESSAGE-----.*-----END PGP MESSAGE-----"
-
-    var createDeviceResponse: String {
-        return """
-            {
-                "Code": 1000,
-                "AuthDevice": {
-                    "ID": "r5H2qGDRiUQ4-7gm...5YLf215MEgZCdzOtLW5psxgB8oNc=",
-                    "DeviceToken": "wfih0367aa7dc0359bf5c42d15a93e6c",
-                    "ActivationAddressID": "-Bpgivr5H2qGDRiUQ4-7gm5...oFRykab4Z23EGEW1ka3GtQPF9xwx9-VUA==",
-                    "State": 2,
-                    "Name": "\(deviceName)",
-                    "LocalizedClientName": "Proton Account for Web",
-                    "Platform": "Web",
-                    "CreateTime": 1715720090,
-                    "ActivateTime": 1715720090,
-                    "RejectTime": 1715720090,
-                    "ActivationToken": "\(activationToken)",
-                    "LastActivityTime": 1715720090
-                }
-            }
-        """
-    }
-
     func testCreateAuthDeviceResponse() async throws {
-        let createDeviceDataRes = self.createDeviceResponse.data(using: String.Encoding.utf8)!
+        let deviceName = "MyPhone 5"
+        let activationToken = "-----BEGIN PGP MESSAGE-----.*-----END PGP MESSAGE-----"
+
+        let createDeviceDataRes = try loadMockJSON(filename: "CreateAuthDeviceOK")
         let createDeviceRes = try JSONDecoder.decapitalisingFirstLetter
             .decode(CreateAuthDeviceResponse.self, from: createDeviceDataRes)
 
@@ -98,11 +76,51 @@ final class CreateAuthDeviceRequestTests: XCTestCase {
         XCTAssertNil(response.error)
 
         if let authDevice = response.authDevice {
-            XCTAssertEqual(authDevice.name, self.deviceName)
-            XCTAssertEqual(authDevice.activationToken, self.activationToken)
+            XCTAssertEqual(authDevice.name, deviceName)
+            XCTAssertEqual(authDevice.activationToken, activationToken)
         } else {
             XCTFail("AuthDevice not found")
         }
+    }
+
+    func testGetAuthDevicesResponse() async throws {
+        let clientName = "Proton Account for Web"
+
+        let devicesDataRes = try loadMockJSON(filename: "GetAuthDevicesOK")
+        let devicesRes = try JSONDecoder.decapitalisingFirstLetter
+            .decode(AuthDevicesResponse.self, from: devicesDataRes)
+
+        let sut = AuthDevicesRequest()
+
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+            if method == .get && path.contains("/auth/v4/devices") {
+                completion(nil, .success(devicesRes.toSuccessfulResponse))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        apiService.requestDecodableStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+            if method == .get && path.contains("/auth/v4/devices") {
+                completion(nil, .success(devicesRes))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+
+        let (_, response) = await apiService.perform(request: sut, response: devicesRes)
+
+        XCTAssertEqual(response.responseCode, 1000)
+        XCTAssertNil(response.error)
+
+        XCTAssertEqual(response.authDevices.count, 2)
+        XCTAssertEqual(response.authDevices.first?.localizedClientName, clientName)
+    }
+
+    private func loadMockJSON(filename: String) throws -> Data {
+        let url = Bundle.module.url(forResource: filename, withExtension: "json")!
+        return try Data(contentsOf: url)
     }
 }
 

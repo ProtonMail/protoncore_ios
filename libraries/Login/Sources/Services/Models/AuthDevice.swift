@@ -57,6 +57,11 @@ public struct AuthDevice: Codable, Equatable {
         case linux = "Linux"
         case web = "Web"
         case windows = "Windows"
+        case unknown
+
+        public init(from decoder: Decoder) throws {
+            self = try Platform(rawValue: decoder.singleValueContainer().decode(RawValue.self)) ?? .unknown
+        }
     }
 
     public init(ID: String, deviceToken: String, activationAddressID: String, state: State, name: String, localizedClientName: String, platform: Platform, createTime: Int, activateTime: Int? = nil, rejectTime: Int? = nil, activationToken: String? = nil, lastActivityTime: Int) {
