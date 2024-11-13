@@ -1,5 +1,5 @@
 //
-//  NewDeviceRequest.swift
+//  CreateAuthDeviceRequest.swift
 //  ProtonCore-Login - Created on 30.09.24.
 //
 //  Copyright (c) 2024 Proton Technologies AG
