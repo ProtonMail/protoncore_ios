@@ -154,14 +154,15 @@ extension PasswordChangeView {
                 PMLog.error("2FA mutated from under us.")
                 return
             }
-            let canUseFIDO2 = FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.fidoKeys) && twoFA.enabled.contains(.webAuthn)
-            if twoFA.enabled.contains(.totp) && !canUseFIDO2 {
+
+            if twoFA.enabled.contains(.totp) && !twoFA.enabled.contains(.webAuthn) {
                 showTOTP(twoFA: twoFA)
-            } else if twoFA.enabled.contains(.totp) && canUseFIDO2, #available(iOS 15.0, *),
+            } else if twoFA.enabled.contains(.totp) && twoFA.enabled.contains(.webAuthn),
+                      #available(iOS 15.0, *),
                       let authOptions = twoFA.FIDO2?.authenticationOptions  {
                 showTwoFactorChoice(authenticationOptions: authOptions)
-
-            } else if twoFA.enabled == .webAuthn && canUseFIDO2, #available(iOS 15.0, *),
+            } else if twoFA.enabled == .webAuthn,
+                      #available(iOS 15.0, *),
                       let authOptions = twoFA.FIDO2?.authenticationOptions {
                 showKeySignature(authenticationOptions: authOptions)
             }

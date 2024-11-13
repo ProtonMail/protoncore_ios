@@ -149,8 +149,7 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
                         guard authResponse._2FA.enabled.rawValue <= 3 else {
                             return completion(.failure(Errors.notImplementedYet("Unknown 2FA method required")))
                         }
-                        let areFidoKeysEnabled = FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.fidoKeys,
-                                                                                         reloadValue: true)
+
                         let credential = Credential(res: authResponse, userName: username, userID: authResponse.userID)
                         self.apiService.setSessionUID(uid: credential.UID)
                         var totpContext: TOTPContext?
@@ -159,7 +158,7 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
                         if authResponse._2FA.enabled.contains(.totp) {
                             totpContext = .init(credential: credential, passwordMode: authResponse.passwordMode)
                         }
-                        if authResponse._2FA.enabled.contains(.webAuthn) && areFidoKeysEnabled {
+                        if authResponse._2FA.enabled.contains(.webAuthn) {
                             guard let fido2 = authResponse._2FA.FIDO2,
                                   let authOptions = fido2.authenticationOptions else {
                                 completion(.failure(Errors.emptyAuthInfoResponse))
@@ -173,13 +172,7 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
                         switch authResponse._2FA.enabled {
                         case .off:
                             completion(.success(.newCredential(credential, authResponse.passwordMode)))
-                        case .both where !areFidoKeysEnabled:
-                                if let totpContext {
-                                    return completion(.success(.askTOTP(totpContext)))
-                                } else {
-                                    return completion(.failure(Errors.notImplementedYet("WebAuthn not implemented yet")))
-                                }
-                        case .both where areFidoKeysEnabled:
+                        case .both:
                             if let totpContext, let fido2Context, let authenticationOptions {
                                 return completion(.success(.askAny2FA(totpContext, fido2Context, authenticationOptions)))
                             } else {
@@ -192,10 +185,6 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
                                 return completion(.failure(.emptyAuthInfoResponse))
                             }
                         case .webAuthn:
-                            guard areFidoKeysEnabled else {
-                                completion(.failure(Errors.notImplementedYet("WebAuthn not implemented yet")))
-                                return
-                            }
                             if let authenticationOptions, let fido2Context {
                                 completion(.success(.askFIDO2(fido2Context, authenticationOptions)))
                             } else {
