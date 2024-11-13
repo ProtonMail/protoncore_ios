@@ -17,6 +17,10 @@ def derived_data_path(prefix)
   "./ProtonCore/" + prefix + "/" + pipeline_id + "/DerivedData/"
 end
 
+def create_derived_data_folder(prefix)
+  sh("mkdir", "-p", derived_data_path(prefix))
+end
+
 def delete_derived_data_folder(prefix)
   clear_derived_data(
     derived_data_path: derived_data_path(prefix)
