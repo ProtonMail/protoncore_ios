@@ -120,7 +120,6 @@ final class AuthDeviceRequestTests: XCTestCase {
     }
 
     func testActivateAuthDeviceResponse() async throws {
-
         let dataRes = try loadMockJSON(filename: "ActivateAuthDeviceOK")
         let res = try JSONDecoder.decapitalisingFirstLetter
             .decode(DefaultResponse.self, from: dataRes)
@@ -138,6 +137,37 @@ final class AuthDeviceRequestTests: XCTestCase {
         }
         apiService.requestDecodableStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
             if method == .post && path.contains("/auth/v4/devices/\(deviceID)") {
+                completion(nil, .success(res))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+
+        let (_, response) = await apiService.perform(request: sut, response: res)
+
+        XCTAssertEqual(response.responseCode, 1000)
+        XCTAssertNil(response.error)
+    }
+
+    func testDeleteAuthDeviceResponse() async throws {
+        let dataRes = try loadMockJSON(filename: "DeleteAuthDeviceOK")
+        let res = try JSONDecoder.decapitalisingFirstLetter
+            .decode(DefaultResponse.self, from: dataRes)
+
+        let deviceID = "12345678"
+        let sut = DeleteAuthDeviceRequest(deviceID: deviceID)
+
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+            if method == .delete && path.contains("/auth/v4/devices/\(deviceID)") {
+                completion(nil, .success(res.toSuccessfulResponse))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        apiService.requestDecodableStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+            if method == .delete && path.contains("/auth/v4/devices/\(deviceID)") {
                 completion(nil, .success(res))
             } else {
                 XCTFail()

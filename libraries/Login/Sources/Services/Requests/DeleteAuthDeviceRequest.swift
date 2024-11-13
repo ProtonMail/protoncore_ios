@@ -1,5 +1,5 @@
 //
-//  ActivateAuthDeviceRequest.swift
+//  DeleteAuthDeviceRequest.swift
 //  ProtonCore-Login - Created on 13.11.24.
 //
 //  Copyright (c) 2024 Proton Technologies AG
@@ -22,26 +22,18 @@
 import Foundation
 import ProtonCoreNetworking
 
-public final class ActivateAuthDeviceRequest: Request {
+public final class DeleteAuthDeviceRequest: Request {
     public var path: String {
         "/auth/v4/devices/\(deviceID)"
     }
 
     public var isAuth: Bool = true
 
-    public var method: HTTPMethod = .post
+    public var method: HTTPMethod = .delete
 
     public let deviceID: String
-    public let encryptedSecret: String
 
-    public init(deviceID: String, encryptedSecret: String) {
+    public init(deviceID: String) {
         self.deviceID = deviceID
-        self.encryptedSecret = encryptedSecret
-    }
-
-    public var parameters: [String: Any]? {
-        return [
-            "EncryptedSecret": self.encryptedSecret
-        ]
     }
 }
