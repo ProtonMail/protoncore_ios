@@ -20,106 +20,15 @@
     {
       "target" : {
         "containerPath" : "container:",
-        "identifier" : "ProtonCoreAPIClientTests",
-        "name" : "ProtonCoreAPIClientTests"
+        "identifier" : "ProtonCorePaymentsV2UnitTests",
+        "name" : "ProtonCorePaymentsV2UnitTests"
       }
     },
     {
       "target" : {
         "containerPath" : "container:",
-        "identifier" : "ProtonCoreAccountDeletionTests",
-        "name" : "ProtonCoreAccountDeletionTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:",
-        "identifier" : "ProtonCoreAccountSwitcherTests",
-        "name" : "ProtonCoreAccountSwitcherTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:",
-        "identifier" : "ProtonCoreAuthenticationKeyGenerationTests",
-        "name" : "ProtonCoreAuthenticationKeyGenerationTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:",
-        "identifier" : "ProtonCoreAuthenticationTests",
-        "name" : "ProtonCoreAuthenticationTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:",
-        "identifier" : "ProtonCoreChallengeTests",
-        "name" : "ProtonCoreChallengeTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:",
-        "identifier" : "ProtonCoreCryptoPatchedGoImplementationTests",
-        "name" : "ProtonCoreCryptoPatchedGoImplementationTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:",
-        "identifier" : "ProtonCoreCryptoTests",
-        "name" : "ProtonCoreCryptoTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:",
-        "identifier" : "ProtonCoreDataModelTests",
-        "name" : "ProtonCoreDataModelTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:",
-        "identifier" : "ProtonCoreDohUnitTests",
-        "name" : "ProtonCoreDohUnitTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:",
-        "identifier" : "ProtonCoreEnvironmentTests",
-        "name" : "ProtonCoreEnvironmentTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:",
-        "identifier" : "ProtonCoreHashTests",
-        "name" : "ProtonCoreHashTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:",
-        "identifier" : "ProtonCoreHumanVerificationTests",
-        "name" : "ProtonCoreHumanVerificationTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:",
-        "identifier" : "ProtonCoreKeyManagerTests",
-        "name" : "ProtonCoreKeyManagerTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:",
-        "identifier" : "ProtonCoreKeymakerTests",
-        "name" : "ProtonCoreKeymakerTests"
+        "identifier" : "ProtonCoreServicesUnitTests",
+        "name" : "ProtonCoreServicesUnitTests"
       }
     },
     {
@@ -132,8 +41,8 @@
     {
       "target" : {
         "containerPath" : "container:",
-        "identifier" : "ProtonCoreLoginUIUnitTests",
-        "name" : "ProtonCoreLoginUIUnitTests"
+        "identifier" : "ProtonCoreForceUpgradeTests",
+        "name" : "ProtonCoreForceUpgradeTests"
       }
     },
     {
@@ -156,6 +65,55 @@
     {
       "target" : {
         "containerPath" : "container:",
+        "identifier" : "ProtonCoreObservabilityUnitTests",
+        "name" : "ProtonCoreObservabilityUnitTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreKeyManagerTests",
+        "name" : "ProtonCoreKeyManagerTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreUIFoundationsTests",
+        "name" : "ProtonCoreUIFoundationsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreAccountDeletionTests",
+        "name" : "ProtonCoreAccountDeletionTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreLoginUnitTests",
+        "name" : "ProtonCoreLoginUnitTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreDohUnitTests",
+        "name" : "ProtonCoreDohUnitTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreHashTests",
+        "name" : "ProtonCoreHashTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
         "identifier" : "ProtonCoreNetworkingTests",
         "name" : "ProtonCoreNetworkingTests"
       }
@@ -163,8 +121,43 @@
     {
       "target" : {
         "containerPath" : "container:",
-        "identifier" : "ProtonCoreObservabilityUnitTests",
-        "name" : "ProtonCoreObservabilityUnitTests"
+        "identifier" : "ProtonCoreAuthenticationKeyGenerationTests",
+        "name" : "ProtonCoreAuthenticationKeyGenerationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreLoginUIUnitTests",
+        "name" : "ProtonCoreLoginUIUnitTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreUtilitiesTests",
+        "name" : "ProtonCoreUtilitiesTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreAccountRecoveryTests",
+        "name" : "ProtonCoreAccountRecoveryTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreHumanVerificationTests",
+        "name" : "ProtonCoreHumanVerificationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreChallengeTests",
+        "name" : "ProtonCoreChallengeTests"
       }
     },
     {
@@ -184,22 +177,8 @@
     {
       "target" : {
         "containerPath" : "container:",
-        "identifier" : "ProtonCorePaymentsUITests",
-        "name" : "ProtonCorePaymentsUITests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:",
-        "identifier" : "ProtonCoreQuarkCommandsTests",
-        "name" : "ProtonCoreQuarkCommandsTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:",
-        "identifier" : "ProtonCoreServicesUnitTests",
-        "name" : "ProtonCoreServicesUnitTests"
+        "identifier" : "ProtonCoreCryptoPatchedGoImplementationTests",
+        "name" : "ProtonCoreCryptoPatchedGoImplementationTests"
       }
     },
     {
@@ -219,15 +198,15 @@
     {
       "target" : {
         "containerPath" : "container:",
-        "identifier" : "ProtonCoreUIFoundationsTests",
-        "name" : "ProtonCoreUIFoundationsTests"
+        "identifier" : "ProtonCoreDataModelTests",
+        "name" : "ProtonCoreDataModelTests"
       }
     },
     {
       "target" : {
         "containerPath" : "container:",
-        "identifier" : "ProtonCoreUtilitiesTests",
-        "name" : "ProtonCoreUtilitiesTests"
+        "identifier" : "ProtonCoreQuarkCommandsTests",
+        "name" : "ProtonCoreQuarkCommandsTests"
       }
     },
     {
@@ -240,6 +219,13 @@
     {
       "target" : {
         "containerPath" : "container:",
+        "identifier" : "ProtonCoreEnvironmentTests",
+        "name" : "ProtonCoreEnvironmentTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
         "identifier" : "ProtonCoreFeatureFlagsTests",
         "name" : "ProtonCoreFeatureFlagsTests"
       }
@@ -247,8 +233,43 @@
     {
       "target" : {
         "containerPath" : "container:",
-        "identifier" : "ProtonCoreAccountRecoveryTests",
-        "name" : "ProtonCoreAccountRecoveryTests"
+        "identifier" : "ProtonCoreAccountSwitcherTests",
+        "name" : "ProtonCoreAccountSwitcherTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreAPIClientTests",
+        "name" : "ProtonCoreAPIClientTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreKeymakerTests",
+        "name" : "ProtonCoreKeymakerTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreAuthenticationTests",
+        "name" : "ProtonCoreAuthenticationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCorePaymentsUITests",
+        "name" : "ProtonCorePaymentsUITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ProtonCoreCryptoTests",
+        "name" : "ProtonCoreCryptoTests"
       }
     }
   ],

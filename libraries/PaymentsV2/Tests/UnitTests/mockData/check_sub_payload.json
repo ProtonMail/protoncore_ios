@@ -1,0 +1,16 @@
+{
+    "Code": 1000,
+    "Amount": 1500,
+    "AmountDue": 0,
+    "Proration": -1448,
+    "CouponDiscount": 0,
+    "Coupon": {
+        "Code": "TEST2022",
+        "Description": "Description of TEST2022"
+    },
+    "UnusedCredit": 0,
+    "Credit": 48,
+    "Currency": "USD",
+    "Cycle": 1,
+    "Gift": -100
+}

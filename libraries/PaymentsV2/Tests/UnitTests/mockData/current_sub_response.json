@@ -1,0 +1,61 @@
+{
+    "Code": 1000,
+    "Subscriptions": [
+        {
+            "ID": "6opBd5UdUtY_RtEz...YA==",
+            "InvoiceID": "hUcV0_EeNw...g==",
+            "Name": "mail2022+drivepro2022",
+            "Description": "Current plan",
+            "Title": "Some plan",
+            "Cycle": 12,
+            "CycleDescription": "1 year",
+            "Currency": "USD",
+            "Amount": 2500,
+            "Offer": "default",
+            "PeriodStart": 1465617471,
+            "PeriodEnd": 1468119471,
+            "Decorations": [],
+            "Entitlements": [
+                {
+                    "IconName": "shield",
+                    "Text": "Free VPN on a single device",
+                    "Type": "description"
+                },
+                {
+                    "IconName": "checkmark",
+                    "Text": "And the free features of all other Proton products!",
+                    "Type": "description"
+                }
+            ]
+        }
+    ],
+    "UpcomingSubscriptions": [
+        {
+            "ID": "6opBd5UdUtY_RtEz...YA==",
+            "InvoiceID": "hUcV0_EeNw...g==",
+            "Name": "mail2022+drivepro2022",
+            "Description": "Current plan",
+            "Title": "Some upcoming plan",
+            "Cycle": 1,
+            "CycleDescription": "1 month",
+            "Currency": "USD",
+            "Amount": 2500,
+            "Offer": "default",
+            "PeriodStart": 1465617471,
+            "PeriodEnd": 1468119471,
+            "Decorations": [],
+            "Entitlements": [
+                {
+                    "IconName": "shield",
+                    "Text": "Free VPN on a single device",
+                    "Type": "description"
+                },
+                {
+                    "IconName": "checkmark",
+                    "Text": "And the free features of all other Proton products!",
+                    "Type": "description"
+                }
+            ]
+        }
+    ]
+}

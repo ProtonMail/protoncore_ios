@@ -1,4 +1,4 @@
-// swift-tools-version:5.9
+// swift-tools-version:5.10
 
 import PackageDescription
 
@@ -146,6 +146,7 @@ extension String {
     static let passwordChange: String = "ProtonCorePasswordChange"
     static let passwordRequest: String = "ProtonCorePasswordRequest"
     static let payments: String = "ProtonCorePayments"
+    static let paymentsV2: String = "ProtonCorePaymentsV2"
     static let paymentsUI: String = "ProtonCorePaymentsUI"
     static let paymentsUIResourcesiOS: String = "ProtonCorePaymentsUIResourcesiOS"
     static let pushNotifications: String = "ProtonCorePushNotifications"
@@ -266,6 +267,7 @@ extension Target.Dependency {
     static var passwordChange: Target.Dependency { .target(name: .passwordChange) }
     static var passwordRequest: Target.Dependency { .target(name: .passwordRequest) }
     static var payments: Target.Dependency { .target(name: .payments) }
+    static var paymentsV2: Target.Dependency { .target(name: .paymentsV2) }
     static var paymentsUI: Target.Dependency { .target(name: .paymentsUI) }
     static var paymentsUIResourcesiOS: Target.Dependency { .target(name: .paymentsUIResourcesiOS,
                                                                    condition: .when(platforms: [.iOS, .macCatalyst])) }
@@ -1379,6 +1381,34 @@ add(
 )
 
 // MARK: Payments
+add(
+    product: .paymentsV2,
+    targets: [
+        coreTarget(name: .paymentsV2,
+                   dependencies: [
+                        .observability,
+                        .networking
+                   ],
+                   path: "libraries/PaymentsV2/Sources"),
+
+        coreTestTarget(name: .paymentsV2 + "UnitTests",
+                       dependencies: [
+                        .paymentsV2
+                       ],
+                       path: "libraries/PaymentsV2/Tests/UnitTests",
+                       resources:[
+                        .copy("mockData/availablePlans.json"),
+                        .copy("mockData/plans_entitlements_types.json"),
+                        .copy("mockData/plans_decorations.json"),
+                        .copy("mockData/current_sub_response.json"),
+                        .copy("mockData/new_sub_payload.json"),
+                        .copy("mockData/check_sub_payload.json"),
+                        .copy("mockData/payment_status_payload.json"),
+                        .copy("mockData/StoreKit_mock.storekit"),
+                        .copy("mockData/StoreKitTestCertificate.cer")
+                    ])
+    ]
+)
 
 add(
     product: .payments,
@@ -1991,7 +2021,7 @@ add(
 let package = Package(
     name: "ProtonCore",
     defaultLocalization: "en",
-    platforms: [.iOS(.v14), .macOS(.v11), .macCatalyst(.v14)],
+    platforms: [.iOS(.v16), .macOS(.v12), .macCatalyst(.v14)],
     products: products + [
         .plugin(name: .obfuscatedConstantsGenerationPlugin,
                 targets: [.obfuscatedConstantsGenerationPlugin]),
