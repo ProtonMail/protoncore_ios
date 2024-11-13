@@ -23,7 +23,7 @@
 
 import Foundation
 
-public class PMLog {
+public final class PMLog {
 
     public enum LogLevel {
         case fatal, error, warn, info, debug, trace
@@ -92,10 +92,11 @@ public class PMLog {
     private nonisolated(unsafe) static var mExternalLogger: (any ExternalLogProtocol)?
 
     public static func setExternalLoggingEnvironment(_ environment: ExternalLogEnvironment) {
+        let isNewExternalLoggerSet = queue.sync { mExternalLogger != nil }
+        if isNewExternalLoggerSet {
+            info("ExternalLogger was already set and you're about to set a new one, ignore this message if this is intended")
+        }
         queue.sync {
-            if mExternalLogger != nil {
-                info("ExternalLogger was already set and you're about to set a new one, ignore this message if this is intended")
-            }
             mExternalLogger = SentryCoreManager(environment: environment.rawValue)
         }
     }
@@ -171,7 +172,8 @@ public class PMLog {
         let log = "\(Date()) : \(level.description) : \((file as NSString).lastPathComponent) : \(function) : \(line) : \(column) - \(message)"
         printToConsole(log)
         callback?(message, level)
-        if sendToExternal {
+        let isNewExternalLoggerSet = queue.sync { mExternalLogger != nil }
+        if sendToExternal && (isNewExternalLoggerSet || externalLog != nil) {
             let externalLogMessage = "\(message) - \((file as NSString).lastPathComponent) : \(function) : Line: \(line) : Col: \(column)"
             sendExternalLog(level: level, log: externalLogMessage)
         }
@@ -223,6 +225,30 @@ public class PMLog {
 
     private static func sendExternalLog(level: LogLevel, log: String) {
         guard !isRunningTests else { return }
+        let isNewExternalLoggerSet = queue.sync { mExternalLogger != nil }
+        if isNewExternalLoggerSet {
+            queue.sync {
+                newSendExternalLog(level: level, log: log)
+            }
+        } else {
+            oldSendExternalLog(level: level, log: log)
+        }
+    }
+
+    private static func newSendExternalLog(level: LogLevel, log: String) {
+        guard let mExternalLogger else {
+            assertionFailure("ProtonCore logger not initialized. Use PMLog.setExternalLogEnvironment(_) in the ProtonCore initialization.")
+            return
+        }
+        switch level {
+        case .error, .fatal:
+            mExternalLogger.capture(errorMessage: log, level: level)
+        default:
+            break
+        }
+    }
+
+    private static func oldSendExternalLog(level: LogLevel, log: String) {
         if let isExternalLogEnabled, !isExternalLogEnabled() {
             // App disabled external logging
             return
@@ -246,6 +272,7 @@ public class PMLog {
         type: SentryBreadcrumbType,
         data: [String: Any]?
     ) {
+        guard !isRunningTests else { return }
         let isNewExternalLoggerSet = queue.sync { mExternalLogger != nil }
         if isNewExternalLoggerSet {
             queue.sync {
@@ -263,7 +290,6 @@ public class PMLog {
         type: SentryBreadcrumbType,
         data: [String: Any]?
     ) {
-        guard !isRunningTests else { return }
         guard let mExternalLogger else {
             assertionFailure("ProtonCore logger not initialized. Use PMLog.setExternalLogEnvironment(_) in the ProtonCore initialization.")
             return
@@ -285,7 +311,6 @@ public class PMLog {
         type: SentryBreadcrumbType,
         data: [String: Any]?
     ) {
-        guard !isRunningTests else { return }
         if let isExternalLogEnabled, !isExternalLogEnabled() {
             // App disabled external logging
             return
