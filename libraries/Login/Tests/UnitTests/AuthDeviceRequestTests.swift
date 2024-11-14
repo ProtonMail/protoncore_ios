@@ -181,6 +181,70 @@ final class AuthDeviceRequestTests: XCTestCase {
         XCTAssertNil(response.error)
     }
 
+    func testRejectAuthDeviceResponse() async throws {
+        let dataRes = try loadMockJSON(filename: "RejectAuthDeviceOK")
+        let res = try JSONDecoder.decapitalisingFirstLetter
+            .decode(DefaultResponse.self, from: dataRes)
+
+        let deviceID = "12345678"
+        let sut = RejectAuthDeviceRequest(deviceID: deviceID)
+
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+            if method == .put && path.contains("/auth/v4/devices/\(deviceID)/reject") {
+                completion(nil, .success(res.toSuccessfulResponse))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        apiService.requestDecodableStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+            if method == .put && path.contains("/auth/v4/devices/\(deviceID)/reject") {
+                completion(nil, .success(res))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+
+        let (_, response) = await apiService.perform(request: sut, response: res)
+
+        XCTAssertEqual(response.responseCode, 1000)
+        XCTAssertNil(response.error)
+    }
+
+    func testAssociateAuthDeviceResponse() async throws {
+        let dataRes = try loadMockJSON(filename: "AssociateAuthDeviceOK")
+        let res = try JSONDecoder.decapitalisingFirstLetter
+            .decode(AssociateAuthDeviceResponse.self, from: dataRes)
+
+        let deviceID = "12345678"
+        let sut = AssociateAuthDeviceRequest(deviceID: deviceID, deviceToken: "87654321")
+
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+            if method == .post && path.contains("/auth/v4/devices/\(deviceID)/associate") {
+                completion(nil, .success(res.toSuccessfulResponse))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        apiService.requestDecodableStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+            if method == .post && path.contains("/auth/v4/devices/\(deviceID)/associate") {
+                completion(nil, .success(res))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+
+        let (_, response) = await apiService.perform(request: sut, response: res)
+
+        XCTAssertEqual(response.responseCode, 1000)
+        XCTAssertEqual(response.device?.ID, deviceID)
+        XCTAssertEqual(response.device?.encryptedSecret, "encrypted$secret")
+        XCTAssertNil(response.error)
+    }
+
     private func loadMockJSON(filename: String) throws -> Data {
         let url = Bundle.module.url(forResource: filename, withExtension: "json")!
         return try Data(contentsOf: url)
