@@ -1,0 +1,7 @@
+{
+  "Code": 1000,
+  "Device": {
+    "ID": "12345678",
+    "EncryptedSecret": "encrypted$secret"
+  }
+}
