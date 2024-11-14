@@ -245,39 +245,6 @@ class AuthenticatorTests: XCTestCase {
     }
 
     func testAuthenticateSuccess2FAWebAuthn() {
-        let manager = Authenticator(api: apiService)
-        let expect = expectation(description: "AuthInfo + Auth")
-        apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
-            if path.contains("/auth/info") {
-                completion(nil, .success(self.authInfoResponse))
-            } else if path.contains("/auth/v4") {
-                let twoFA = AuthInfoResponse.TwoFA(enabled: .webAuthn,
-                                                   fido2: self.fido2)
-                completion(nil, .success(self.authRouteResponse(twoFA: twoFA)))
-            } else {
-                XCTFail()
-                completion(nil, .success(AuthenticatorTests.emptyReponse))
-            }
-        }
-        srpAuthMock.generateProofsStub.bodyIs { _, _  in
-            return self.srpProofs
-        }
-
-        manager.authenticate(username: "username", password: "password", challenge: nil, srpAuth: srpAuthMock) { result in
-            switch result {
-            case .failure(AuthErrors.notImplementedYet(let string)):
-                XCTAssertEqual("WebAuthn not implemented yet", string)
-            default:
-                XCTFail("Wrong result")
-            }
-            expect.fulfill()
-        }
-        waitForExpectations(timeout: timeout) { (error) in
-            XCTAssertNil(error, String(describing: error))
-        }
-    }
-
-    func testAuthenticateSuccess2FAWebAuthnWithFF() {
         let manager = Authenticator(api: self.apiService)
         let expect = self.expectation(description: "AuthInfo + Auth")
         apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
