@@ -408,8 +408,7 @@ add(
                            .testingToolkitUnitTestsServices,
                            .viewInspector,
                        ],
-                       path: "libraries/AccountRecovery/Tests",
-                       resources: [.process("Resources")])
+                       path: "libraries/AccountRecovery/Tests")
     ]
 )
 
@@ -1337,7 +1336,7 @@ add(
                            .testingToolkitUnitTestsServices
                        ],
                        path: "libraries/PasswordChange/Tests",
-                       exclude: ["__Snapshots__"])
+                       exclude: ["SnapshotTests/__Snapshots__"])
     ]
 )
 
@@ -1381,34 +1380,6 @@ add(
 )
 
 // MARK: Payments
-add(
-    product: .paymentsV2,
-    targets: [
-        coreTarget(name: .paymentsV2,
-                   dependencies: [
-                        .observability,
-                        .networking
-                   ],
-                   path: "libraries/PaymentsV2/Sources"),
-
-        coreTestTarget(name: .paymentsV2 + "UnitTests",
-                       dependencies: [
-                        .paymentsV2
-                       ],
-                       path: "libraries/PaymentsV2/Tests/UnitTests",
-                       resources:[
-                        .copy("mockData/availablePlans.json"),
-                        .copy("mockData/plans_entitlements_types.json"),
-                        .copy("mockData/plans_decorations.json"),
-                        .copy("mockData/current_sub_response.json"),
-                        .copy("mockData/new_sub_payload.json"),
-                        .copy("mockData/check_sub_payload.json"),
-                        .copy("mockData/payment_status_payload.json"),
-                        .copy("mockData/StoreKit_mock.storekit"),
-                        .copy("mockData/StoreKitTestCertificate.cer")
-                    ])
-    ]
-)
 
 add(
     product: .payments,
@@ -1471,6 +1442,35 @@ add(
                            .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/Payments/Tests/LocalizationTests")
+    ]
+)
+
+add(
+    product: .paymentsV2,
+    targets: [
+        coreTarget(name: .paymentsV2,
+                   dependencies: [
+                        .observability,
+                        .networking
+                   ],
+                   path: "libraries/PaymentsV2/Sources"),
+
+        coreTestTarget(name: .paymentsV2 + "UnitTests",
+                       dependencies: [
+                        .paymentsV2
+                       ],
+                       path: "libraries/PaymentsV2/Tests/UnitTests",
+                       resources:[
+                        .copy("mockData/availablePlans.json"),
+                        .copy("mockData/plans_entitlements_types.json"),
+                        .copy("mockData/plans_decorations.json"),
+                        .copy("mockData/current_sub_response.json"),
+                        .copy("mockData/new_sub_payload.json"),
+                        .copy("mockData/check_sub_payload.json"),
+                        .copy("mockData/payment_status_payload.json"),
+                        .copy("mockData/StoreKit_mock.storekit"),
+                        .copy("mockData/StoreKitTestCertificate.cer")
+                    ])
     ]
 )
 
