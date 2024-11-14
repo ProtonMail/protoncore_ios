@@ -408,8 +408,7 @@ add(
                            .testingToolkitUnitTestsServices,
                            .viewInspector,
                        ],
-                       path: "libraries/AccountRecovery/Tests",
-                       resources: [.process("Resources")])
+                       path: "libraries/AccountRecovery/Tests")
     ]
 )
 
@@ -1337,7 +1336,7 @@ add(
                            .testingToolkitUnitTestsServices
                        ],
                        path: "libraries/PasswordChange/Tests",
-                       exclude: ["__Snapshots__"])
+                       exclude: ["SnapshotTests/__Snapshots__"])
     ]
 )
 
