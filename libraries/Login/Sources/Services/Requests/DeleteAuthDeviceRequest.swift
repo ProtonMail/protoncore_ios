@@ -27,9 +27,9 @@ public final class DeleteAuthDeviceRequest: Request {
         "/auth/v4/devices/\(deviceID)"
     }
 
-    public var isAuth: Bool = true
+    public let isAuth: Bool = true
 
-    public var method: HTTPMethod = .delete
+    public let method: HTTPMethod = .delete
 
     public let deviceID: String
 

@@ -27,9 +27,9 @@ public final class ActivateAuthDeviceRequest: Request {
         "/auth/v4/devices/\(deviceID)"
     }
 
-    public var isAuth: Bool = true
+    public let isAuth: Bool = true
 
-    public var method: HTTPMethod = .post
+    public let method: HTTPMethod = .post
 
     public let deviceID: String
     public let encryptedSecret: String

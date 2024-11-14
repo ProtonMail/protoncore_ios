@@ -36,9 +36,9 @@ public final class AssociateAuthDeviceRequest: Request {
         "/auth/v4/devices/\(deviceID)/associate"
     }
 
-    public var isAuth: Bool = true
+    public let isAuth: Bool = true
 
-    public var method: HTTPMethod = .post
+    public let method: HTTPMethod = .post
 
     public let deviceID: String
     public let deviceToken: String

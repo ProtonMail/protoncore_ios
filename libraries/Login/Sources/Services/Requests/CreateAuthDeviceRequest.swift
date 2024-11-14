@@ -31,13 +31,9 @@ public final class CreateAuthDeviceRequest: Request {
         "/auth/v4/devices"
     }
 
-    public var isAuth: Bool {
-        true
-    }
+    public let isAuth: Bool = true
 
-    public var method: HTTPMethod {
-        .post
-    }
+    public var method: HTTPMethod = .post
 
     public let name: String
     public let activationToken: String

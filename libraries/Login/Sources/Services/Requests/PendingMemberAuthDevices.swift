@@ -1,6 +1,6 @@
 //
-//  RejectAuthDeviceRequest.swift
-//  ProtonCore-Login - Created on 14.11.24.
+//  PendingMemberDevicesRequest.swift
+//  ProtonCore-Login - Created on 11.11.24.
 //
 //  Copyright (c) 2024 Proton Technologies AG
 //
@@ -22,18 +22,13 @@
 import Foundation
 import ProtonCoreNetworking
 
-public final class RejectAuthDeviceRequest: Request {
+public final class PendingMemberDevicesRequest: Request {
     public var path: String {
-        "/auth/v4/devices/\(deviceID)/reject"
+        "/core/v4/members/devices/pending"
     }
 
     public let isAuth: Bool = true
 
-    public let method: HTTPMethod = .put
+    public let method: HTTPMethod = .get
 
-    public let deviceID: String
-
-    public init(deviceID: String) {
-        self.deviceID = deviceID
-    }
 }
