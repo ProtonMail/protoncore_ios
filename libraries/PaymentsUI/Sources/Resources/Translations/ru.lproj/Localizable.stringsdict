@@ -155,11 +155,11 @@
         <key>one</key>
         <string>%d подключение</string>
         <key>few</key>
-        <string>%d подключений</string>
+        <string>%d подключения</string>
         <key>many</key>
-        <string>%d подключения</string>
+        <string>%d подключений</string>
         <key>other</key>
-        <string>%d подключения</string>
+        <string>%d подключений</string>
       </dict>
     </dict>
     <key>&lt;n&gt; VPN connections</key>
@@ -279,7 +279,7 @@
         <key>many</key>
         <string>%d папок и ярлыков</string>
         <key>other</key>
-        <string>Папок и ярлыков: %d</string>
+        <string>%d папок и ярлыков</string>
       </dict>
     </dict>
     <key>High-speed VPN on &lt;n&gt; devices</key>

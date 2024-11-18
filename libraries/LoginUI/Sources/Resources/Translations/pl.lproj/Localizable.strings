@@ -264,11 +264,11 @@
 
 "Continue" = "Kontynuuj";
 
-"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Ustaw hasło kopii zapasowej, aby kontynuować. To hasło pozwoli Ci zalogować się i odzyskać dane, jeśli utracisz dostęp do konta Proton. Upewnij się, że przechowujesz je w bezpiecznym miejscu.";
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Ustaw hasło zapasowe, aby kontynuować. To hasło pozwoli Ci zalogować się i odzyskać dane, jeśli utracisz dostęp do konta Proton. Upewnij się, że przechowujesz je w bezpiecznym miejscu.";
 
-"Backup password" = "Hasło kopii zapasowej";
+"Backup password" = "Hasło zapasowe";
 
-"Repeat backup password" = "Potwierdź hasło kopii zapasowej";
+"Repeat backup password" = "Potwierdź hasło zapasowe";
 
 "Password cannot be empty" = "Hasło nie może być puste";
 
@@ -296,7 +296,7 @@
 
 "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Aby upewnić się, że to Ty próbujesz zalogować się na swoje konto, sprawdź kod potwierdzający i potwierdź logowanie z innego urządzenia.";
 
-"Use backup password instead" = "Użyj hasła kopii zapasowe zamiast tego";
+"Use backup password instead" = "Użyj hasła zapasowego zamiast tego";
 
 "Ask administrator for help" = "Poproś administratora o pomoc";
 
@@ -304,15 +304,15 @@
 
 "Operation couldn't be completed. Please try again." = "Operacja nie mogła zostać zakończona. Spróbuj ponownie.";
 
-"Enter your backup password" = "Wpisz hasło kopii zapasowej";
+"Enter your backup password" = "Wpisz hasło zapasowe";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "Wpisz hasło kopii zapasowej, aby potwierdzić, że to naprawdę Ty próbujesz się zalogować.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Wpisz hasło zapasowe, aby potwierdzić, że to naprawdę Ty próbujesz się zalogować.";
 
 "Access granted" = "Dostęp został przyznany";
 
 "Access denied" = "Odmowa dostępu";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Ze względów bezpieczeństwa zostaniesz wylogowany ze wszystkich aktywnych urządzeń. Przed uzyskaniem dostępu do konta konieczne będzie wpisanie nowego hasła kopii zapasowej.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Ze względów bezpieczeństwa zostaniesz wylogowany ze wszystkich aktywnych urządzeń. Przed uzyskaniem dostępu do konta konieczne będzie wpisanie nowego hasła zapasowego.";
 
 "Contact your administrator if the problem persists." = "Jeśli problem powtarza się, skontaktuj się z administratorem.";
 
@@ -320,7 +320,7 @@
 
 "Ask your administrator for access?" = "Poprosić administratora o dostęp?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "Spowoduje to wylogowanie z innych urządzeń i konieczność utworzenia nowego hasła kopii zapasowej.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Spowoduje to wylogowanie z innych urządzeń i konieczność utworzenia nowego hasła zapasowego.";
 
 "Grant access to user?" = "Przyznać dostęp użytkownikowi?";
 

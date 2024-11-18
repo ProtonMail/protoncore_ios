@@ -312,15 +312,15 @@
 
 "Access denied" = "存取被拒";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "為了您的安全，已登出其他所有使用中的裝置。在存取您的帳號前，您必須輸入新的備份密碼。";
 
-"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+"Contact your administrator if the problem persists." = "若問題仍然存在，請聯絡您的管理員。";
 
 "Back to sign-in" = "返回登入";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "向您的管理員要求存取權？";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "這會登出您的其他裝置，您必須建立新的備份密碼。";
 
 "Grant access to user?" = "Grant access to user?";
 

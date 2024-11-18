@@ -34,6 +34,6 @@
 
 "What went wrong" = "どの様な問題が発生しましたか";
 
-"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters.";
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "できる限り詳細に問題を報告してください。もしエラーメッセージがあれば、なんと表示されているかお知らせください。10 文字以上である必要があります。";
 
-"Your report was sent successfully" = "Your report was sent successfully";
+"Your report was sent successfully" = "報告が正常に送信されました";
