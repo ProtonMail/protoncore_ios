@@ -144,7 +144,7 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "次へをクリックすると、Proton の利用規約に同意したことになります。";
 
-"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "次へをクリックすると、Proton の利用規約およびプライバシーポリシーに同意したことになります";
 
 "Terms and Conditions" = "利用規約";
 
@@ -222,7 +222,7 @@
 
 "Troubleshoot" = "トラブルシューティング";
 
-"Please choose how you want to confirm your identity." = "Please choose how you want to confirm your identity.";
+"Please choose how you want to confirm your identity." = "本人確認の方法を選択してください。";
 
 "One-time code" = "ワンタイムコード";
 
@@ -230,51 +230,51 @@
 
 "Two-Factor Authentication" = "2要素認証";
 
-"Present a security key linked to your Proton Account." = "Present a security key linked to your Proton Account.";
+"Present a security key linked to your Proton Account." = "あなたのProtonアカウントにリンクされたセキュリティキーを提示してください。";
 
 "Learn more" = "詳細";
 
-"Invalid state. Please quit the app and try again in a few minutes." = "Invalid state. Please quit the app and try again in a few minutes.";
+"Invalid state. Please quit the app and try again in a few minutes." = "状態が無効です。アプリを終了して、数分後に再試行してください。";
 
 "There was a problem reading your security key." = "セキュリティキーの読み込み中に問題が発生しました。";
 
-"We received an authorization from a type we don't support yet." = "We received an authorization from a type we don't support yet.";
+"We received an authorization from a type we don't support yet." = "私たちはまだサポートしていないタイプの承認を受け取りました。";
 
-"Fetching your security keys details" = "Fetching your security keys details";
+"Fetching your security keys details" = "セキュリティキーの詳細を取得しています";
 
-"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys.";
+"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "あなたのアカウントにはまだセキュリティキーが登録されていません。セキュリティキーを追加するには、当社のウェブサイトの設定セクションにアクセスしてください。";
 
-"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "An error occurred fetching your security keys. You can also check them on the Proton %@ website.";
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "セキュリティキーの取得でエラーが発生しました。Proton %@ のウェブサイトでも確認いただけます。";
 
-"These are the security keys registered to your account" = "These are the security keys registered to your account";
+"These are the security keys registered to your account" = "これらはあなたのアカウントに登録されているセキュリティキーです";
 
-"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys.";
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "あなたのアカウントには、まだセキュリティキーが登録されていません。Proton %@ のウェブアプリケーションを使用してセキュリティキーを追加してください。";
 
 "Security Keys" = "セキュリティキー";
 
-"To manage, add, or remove security keys, please use the Proton %@ web application." = "To manage, add, or remove security keys, please use the Proton %@ web application.";
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "セキュリティキーの管理・追加・削除はProton %@ Webアプリを使用してください。";
 
-"Unexpected FIDO2 signature." = "Unexpected FIDO2 signature.";
+"Unexpected FIDO2 signature." = "予期しないFIDO2署名です。";
 
-"We could not initiate the Secure Password update connection. Please try again." = "We could not initiate the Secure Password update connection. Please try again.";
+"We could not initiate the Secure Password update connection. Please try again." = "セキュアパスワードの更新接続を開始できませんでした。もう一度お試しください。";
 
-"Join %@" = "Join %@";
+"Join %@" = "%@ に参加";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "%@があなたをProton組織に追加しました。";
 
 "Continue" = "続行";
 
 "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "続行するにはバックアップパスワードを設定してください。 このパスワードを使用すると、Protonアカウントからロックアウトされた場合に、ログインしてデータを回復できます。 バックアップパスワードは、安全な場所に保管するようにしてください。";
 
-"Backup password" = "Backup password";
+"Backup password" = "バックアップパスワード";
 
-"Repeat backup password" = "Repeat backup password";
+"Repeat backup password" = "もう一度バックアップパスワードを入力してください";
 
 "Password cannot be empty" = "パスワードは空にできません";
 
 "Password must contain at least 8 characters" = "パスワードは 8 文字以上必要です";
 
-"Password doesn't match" = "Password doesn't match";
+"Password doesn't match" = "パスワードが一致しません";
 
 "Sign-in requested on another device. Was it you?" = "別の端末でログインが要求されました。あなたがログインしましたか？";
 
@@ -304,28 +304,28 @@
 
 "Operation couldn't be completed. Please try again." = "操作を完了できませんでした。もう一度やり直してください。";
 
-"Enter your backup password" = "Enter your backup password";
+"Enter your backup password" = "バックアップパスワードを入力してください";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "サインインを試みているのが本当にあなたであることを確認するため、バックアップパスワードを入力してください。";
 
-"Access granted" = "Access granted";
+"Access granted" = "アクセスが承認されました";
 
 "Access denied" = "アクセスが拒否されました。";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "セキュリティのため、全ての他のデバイスからサインアウトされました。アカウントにアクセスする前に、新しいバックアップパスワードを入力する必要があります。";
 
-"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+"Contact your administrator if the problem persists." = "問題が解決しない場合、管理者にお問い合わせください。";
 
-"Back to sign-in" = "Back to sign-in";
+"Back to sign-in" = "サインインに戻る";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "管理者にアクセス権を申請しますか？";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "これにより他のデバイスからサインアウトされ、新しいバックアップパスワードを作成する必要があります。";
 
-"Grant access to user?" = "Grant access to user?";
+"Grant access to user?" = "ユーザーにアクセス権を付与しますか？";
 
-"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@がシングルサインオンでProtonアカウントにサインインするための支援を要請しています。\n\nこのユーザーに送信した確認コードを入力してください。";
 
-"Grant access" = "Grant access";
+"Grant access" = "アクセスを承認";
 
-"Deny access" = "Deny access";
+"Deny access" = "アクセスを拒否";
