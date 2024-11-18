@@ -75,7 +75,7 @@ public final class AeadCrypto {
     ///   - value: The string to encrypt.
     ///   - key: The encryption key as `Data`.
     ///   - aad: Optional associated data for authentication.
-    /// - Returns: The encrypted string, base64-encoded.
+    /// - Returns: The encrypted string, base64-encoded as `iv | ciphertext | tag`
     /// - Throws: An error if the encryption process fails.
     public func encrypt(value: String, key: Data, aad: Data? = nil) throws -> String {
         let valueData = value.data(using: .utf8)!
@@ -88,7 +88,7 @@ public final class AeadCrypto {
     ///   - value: The data to encrypt.
     ///   - key: The encryption key as `Data`.
     ///   - aad: Optional associated data for authentication.
-    /// - Returns: The encrypted data.
+    /// - Returns: The encrypted data encoded as `iv | ciphertext | tag`
     /// - Throws: An error if the encryption process fails.
     public func encrypt(value: Data, key: Data, aad: Data? = nil) throws -> Data {
         return try encrypt(value: value, key: CryptoKit.SymmetricKey(data: key), aad: aad)
@@ -97,7 +97,7 @@ public final class AeadCrypto {
     /// Decrypts a base64-encoded encrypted string using AES-GCM.
     ///
     /// - Parameters:
-    ///   - base64EncryptedString: The encrypted string, base64-encoded.
+    ///   - base64EncryptedString: The encrypted string, base64-encoded as `iv | ciphertext | tag`
     ///   - key: The decryption key as `Data`.
     ///   - aad: Optional associated data for authentication.
     /// - Returns: The decrypted string.
@@ -111,7 +111,7 @@ public final class AeadCrypto {
     /// Decrypts encrypted data using AES-GCM.
     ///
     /// - Parameters:
-    ///   - value: The encrypted data.
+    ///   - value: The encrypted data encoded as `iv | ciphertext | tag`.
     ///   - key: The decryption key as `Data`.
     ///   - aad: Optional associated data for authentication.
     /// - Returns: The decrypted data.
@@ -124,7 +124,8 @@ public final class AeadCrypto {
 
     /// Generates a random initialization vector (IV) for AES-GCM encryption.
     ///
-    /// By default `AES.GCM.Nonce` uses 12-byte
+    /// The IV is generated from a cryptographically secure random bytes source.
+    /// By default `AES.GCM.Nonce` uses 12-byte.
     /// https://developer.apple.com/documentation/cryptokit/aes/gcm/nonce/init()
     ///
     /// - Returns: A 12-byte nonce for AES-GCM.
