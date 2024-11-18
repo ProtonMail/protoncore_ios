@@ -1015,6 +1015,34 @@
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCorePaymentsUIV2"
+               BuildableName = "ProtonCorePaymentsUIV2"
+               BlueprintName = "ProtonCorePaymentsUIV2"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCorePaymentsV2"
+               BuildableName = "ProtonCorePaymentsV2"
+               BlueprintName = "ProtonCorePaymentsV2"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -1621,6 +1649,16 @@
                BlueprintIdentifier = "ProtonCorePaymentsV2UnitTests"
                BuildableName = "ProtonCorePaymentsV2UnitTests"
                BlueprintName = "ProtonCorePaymentsV2UnitTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ProtonCorePaymentsUIV2Tests"
+               BuildableName = "ProtonCorePaymentsUIV2Tests"
+               BlueprintName = "ProtonCorePaymentsUIV2Tests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>

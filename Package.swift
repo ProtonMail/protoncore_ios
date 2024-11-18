@@ -15,7 +15,7 @@ let swiftSettings: [SwiftSetting] = [
     .enableUpcomingFeature("StrictConcurrency"),
     // Commented unsafe flags as this produces error if we try try to import the packages with specific tag.
     // They should be activated to correct warnings
-//    .unsafeFlags(["-warn-concurrency", "-enable-actor-data-race-checks"]),
+    //    .unsafeFlags(["-warn-concurrency", "-enable-actor-data-race-checks"]),
     .spm
 ]
 
@@ -148,6 +148,7 @@ extension String {
     static let payments: String = "ProtonCorePayments"
     static let paymentsV2: String = "ProtonCorePaymentsV2"
     static let paymentsUI: String = "ProtonCorePaymentsUI"
+    static let paymentsUIV2: String = "ProtonCorePaymentsUIV2"
     static let paymentsUIResourcesiOS: String = "ProtonCorePaymentsUIResourcesiOS"
     static let pushNotifications: String = "ProtonCorePushNotifications"
     static let quarkCommands: String = "ProtonCoreQuarkCommands"
@@ -210,6 +211,7 @@ extension String {
     static let trustKit: String = "TrustKit"
     static let viewInspector: String = "ViewInspector"
     static let yams: String = "Yams"
+    static let protonCoreUI: String = "ProtonCoreUI"
 
     // MARK: - Plugin names
 
@@ -269,6 +271,7 @@ extension Target.Dependency {
     static var payments: Target.Dependency { .target(name: .payments) }
     static var paymentsV2: Target.Dependency { .target(name: .paymentsV2) }
     static var paymentsUI: Target.Dependency { .target(name: .paymentsUI) }
+    static var paymentsUIV2: Target.Dependency { .target(name: .paymentsUIV2) }
     static var paymentsUIResourcesiOS: Target.Dependency { .target(name: .paymentsUIResourcesiOS,
                                                                    condition: .when(platforms: [.iOS, .macCatalyst])) }
     static var pushNotifications: Target.Dependency { .target(name: .pushNotifications) }
@@ -333,6 +336,7 @@ extension Target.Dependency {
     static var sdWebImage: Target.Dependency { .product(name: .sdWebImage, package: .sdWebImage) }
     static var viewInspector: Target.Dependency { .product(name: .viewInspector, package: .viewInspector)}
     static var yams: Target.Dependency { .product(name: .yams, package: .yams)}
+    static var protonCoreUI: Target.Dependency { .product(name: .protonCoreUI, package: .protonCoreUI)}
 
     // MARK: - Helpers
 
@@ -365,18 +369,18 @@ add(
 
         coreTestTarget(name: .accountDeletion + "Tests",
                        dependencies: [
-                           .accountDeletion,
-                           .testingToolkitUnitTestsAccountDeletion,
-                           .testingToolkitUnitTestsDoh,
-                           .testingToolkitUnitTestsNetworking,
-                           .testingToolkitUnitTestsServices
+                        .accountDeletion,
+                        .testingToolkitUnitTestsAccountDeletion,
+                        .testingToolkitUnitTestsDoh,
+                        .testingToolkitUnitTestsNetworking,
+                        .testingToolkitUnitTestsServices
                        ],
                        path: "libraries/AccountDeletion/Tests/UnitTests"),
 
         coreTestTarget(name: .accountDeletion + "LocalizationTests",
                        dependencies: [
-                           .accountDeletion,
-                           .testingToolkitUnitTestsCore
+                        .accountDeletion,
+                        .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/AccountDeletion/Tests/LocalizationTests")
     ]
@@ -389,24 +393,24 @@ add(
     targets: [
         coreTarget(name: .accountRecovery,
                    dependencies: [
-                       .featureFlags,
-                       .pushNotifications,
-                       .services,
-                       .authentication,
-                       .dataModel,
-                       .uiFoundations,
-                       .networking,
-                       .passwordRequest
+                    .featureFlags,
+                    .pushNotifications,
+                    .services,
+                    .authentication,
+                    .dataModel,
+                    .uiFoundations,
+                    .networking,
+                    .passwordRequest
                    ],
                    path: "libraries/AccountRecovery/Sources",
                    resources: [.process("Resources")]),
 
         coreTestTarget(name: .accountRecovery + "Tests",
                        dependencies: [
-                           .accountRecovery,
-                           .testingToolkitUnitTestsFeatureFlag,
-                           .testingToolkitUnitTestsServices,
-                           .viewInspector,
+                        .accountRecovery,
+                        .testingToolkitUnitTestsFeatureFlag,
+                        .testingToolkitUnitTestsServices,
+                        .viewInspector,
                        ],
                        path: "libraries/AccountRecovery/Tests")
     ]
@@ -419,34 +423,34 @@ add(
     targets: [
         coreTarget(name: .accountSwitcher,
                    dependencies: [
-                       .uiFoundations,
-                       .log,
-                       .utilities,
-                       .accountSwitcherResourcesiOS
+                    .uiFoundations,
+                    .log,
+                    .utilities,
+                    .accountSwitcherResourcesiOS
                    ],
                    path: "libraries/AccountSwitcher/Sources",
                    resources: [
-                       .process("Resources")
+                    .process("Resources")
                    ]),
 
         coreTarget(name: .accountSwitcherResourcesiOS,
                    path: "libraries/AccountSwitcher/Resources-iOS",
                    resources: [
-                       .process("Resources")
+                    .process("Resources")
                    ]),
 
         coreTestTarget(name: .accountSwitcher + "Tests",
                        dependencies: [
-                           .accountSwitcher,
-                           .testingToolkitUnitTestsCore
+                        .accountSwitcher,
+                        .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/AccountSwitcher/Tests/UnitTests",
                        exclude: ["__Snapshots__"]),
 
         coreTestTarget(name: .accountSwitcher + "LocalizationTests",
                        dependencies: [
-                           .accountSwitcher,
-                           .testingToolkitUnitTestsCore
+                        .accountSwitcher,
+                        .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/AccountSwitcher/Tests/LocalizationTests")
     ]
@@ -459,24 +463,24 @@ add(
     targets: [
         coreTarget(name: .apiClient,
                    dependencies: [
-                       .dataModel,
-                       .networking,
-                       .services
+                    .dataModel,
+                    .networking,
+                    .services
                    ],
                    path: "libraries/APIClient/Sources"),
 
         coreTestTarget(name: .apiClient + "Tests",
                        dependencies: [
-                           .apiClient,
-                           .authentication,
-                           .crypto,
-                           .cryptoGoInterface,
-                           .cryptoGoUsedInTests,
-                           .challenge,
-                           .testingToolkitTestData,
-                           .testingToolkitUnitTestsAuthentication,
-                           .ohhttpStubs,
-                           .trustKit
+                        .apiClient,
+                        .authentication,
+                        .crypto,
+                        .cryptoGoInterface,
+                        .cryptoGoUsedInTests,
+                        .challenge,
+                        .testingToolkitTestData,
+                        .testingToolkitUnitTestsAuthentication,
+                        .ohhttpStubs,
+                        .trustKit
                        ],
                        path: "libraries/APIClient/Tests",
                        resources: [.process("TestData")])
@@ -490,22 +494,22 @@ add(
     targets: [
         coreTarget(name: .authenticationKeyGeneration,
                    dependencies: [
-                       .authentication,
-                       .crypto,
-                       .cryptoGoInterface,
-                       .hash,
-                       .utilities
+                    .authentication,
+                    .crypto,
+                    .cryptoGoInterface,
+                    .hash,
+                    .utilities
                    ],
                    path: "libraries/Authentication-KeyGeneration/Sources"),
 
         coreTestTarget(name: .authenticationKeyGeneration + "Tests",
                        dependencies: [
-                           .authenticationKeyGeneration,
-                           .cryptoGoUsedInTests,
-                           .hash,
-                           .obfuscatedConstants,
-                           .ohhttpStubs,
-                           .swiftBCrypt
+                        .authenticationKeyGeneration,
+                        .cryptoGoUsedInTests,
+                        .hash,
+                        .obfuscatedConstants,
+                        .ohhttpStubs,
+                        .swiftBCrypt
                        ],
                        path: "libraries/Authentication-KeyGeneration/Tests",
                        resources: [.process("TestData")])
@@ -519,25 +523,25 @@ add(
     targets: [
         coreTarget(name: .authentication,
                    dependencies: [
-                       .apiClient,
-                       .crypto,
-                       .cryptoGoInterface,
-                       .featureFlags,
-                       .foundations,
-                       .observability,
-                       .services
+                    .apiClient,
+                    .crypto,
+                    .cryptoGoInterface,
+                    .featureFlags,
+                    .foundations,
+                    .observability,
+                    .services
                    ],
                    path: "libraries/Authentication/Sources"),
 
         coreTestTarget(name: .authentication + "Tests",
                        dependencies: [
-                           .authentication,
-                           .cryptoGoInterface,
-                           .cryptoGoUsedInTests,
-                           .testingToolkitUnitTestsAuthentication,
-                           .testingToolkitUnitTestsFeatureFlag,
-                           .testingToolkitUnitTestsObservability,
-                           .ohhttpStubs
+                        .authentication,
+                        .cryptoGoInterface,
+                        .cryptoGoUsedInTests,
+                        .testingToolkitUnitTestsAuthentication,
+                        .testingToolkitUnitTestsFeatureFlag,
+                        .testingToolkitUnitTestsObservability,
+                        .ohhttpStubs
                        ],
                        path: "libraries/Authentication/Tests")
     ]
@@ -550,9 +554,9 @@ add(
     targets: [
         coreTarget(name: .challenge,
                    dependencies: [
-                       .dataModel,
-                       .foundations,
-                       .uiFoundations
+                    .dataModel,
+                    .foundations,
+                    .uiFoundations
                    ],
                    path: "libraries/Challenge/Sources",
                    resources: [
@@ -561,7 +565,7 @@ add(
 
         coreTestTarget(name: .challenge + "Tests",
                        dependencies: [
-                           .challenge
+                        .challenge
                        ],
                        path: "libraries/Challenge/Tests")
     ]
@@ -574,9 +578,9 @@ add(
     targets: [
         coreTarget(name: .common,
                    dependencies: [
-                       .networking,
-                       .services,
-                       .uiFoundations
+                    .networking,
+                    .services,
+                    .uiFoundations
                    ],
                    path: "libraries/Common/Sources")
     ]
@@ -589,20 +593,20 @@ add(
     targets: [
         coreTarget(name: .crypto,
                    dependencies: [
-                       .cryptoGoInterface,
-                       .dataModel
+                    .cryptoGoInterface,
+                    .dataModel
                    ],
                    path: "libraries/Crypto/Sources"),
 
         coreTestTarget(name: .crypto + "Tests",
                        dependencies: [
-                           .crypto,
-                           .cryptoGoUsedInTests,
-                           .utilities
+                        .crypto,
+                        .cryptoGoUsedInTests,
+                        .utilities
                        ],
                        path: "libraries/Crypto/Tests",
                        resources: [
-                           .process("Resources")
+                        .process("Resources")
                        ]),
     ]
 )
@@ -619,61 +623,61 @@ add(
     targets: [
         coreTarget(name: .cryptoGoImplementation,
                    dependencies: [
-                       .goLibsCryptoGo,
-                       .cryptoGoInterface,
+                    .goLibsCryptoGo,
+                    .cryptoGoInterface,
                    ],
                    path: "libraries/CryptoGoImplementation/Crypto-Go"),
 
         coreTarget(name: .cryptoPatchedGoImplementation,
                    dependencies: [
-                       .goLibsCryptoPatchedGo,
-                       .cryptoGoInterface
+                    .goLibsCryptoPatchedGo,
+                    .cryptoGoInterface
                    ],
                    path: "libraries/CryptoGoImplementation/Crypto-patched-Go"),
 
         coreTarget(name: .cryptoVPNPatchedGoImplementation,
                    dependencies: [
-                       .goLibsCryptoVPNPatchedGo,
-                       .cryptoGoInterface
+                    .goLibsCryptoVPNPatchedGo,
+                    .cryptoGoInterface
                    ],
                    path: "libraries/CryptoGoImplementation/Crypto+VPN-patched-Go"),
 
         coreTarget(name: .cryptoSearchGoImplementation,
                    dependencies: [
-                       .goLibsCryptoSearchGo,
-                       .cryptoGoInterface
+                    .goLibsCryptoSearchGo,
+                    .cryptoGoInterface
                    ],
                    path: "libraries/CryptoGoImplementation/Crypto+Search-Go"),
 
         coreTestTarget(name: .cryptoGoImplementation + "Tests",
                        dependencies: [
-                           .goLibsCryptoGo,
-                           .cryptoGoImplementation,
-                           .cryptoGoInterface
+                        .goLibsCryptoGo,
+                        .cryptoGoImplementation,
+                        .cryptoGoInterface
                        ],
                        path: "libraries/CryptoGoImplementation/Tests-Crypto-Go"),
 
         coreTestTarget(name: .cryptoPatchedGoImplementation + "Tests",
                        dependencies: [
-                           .goLibsCryptoPatchedGo,
-                           .cryptoPatchedGoImplementation,
-                           .cryptoGoInterface
+                        .goLibsCryptoPatchedGo,
+                        .cryptoPatchedGoImplementation,
+                        .cryptoGoInterface
                        ],
                        path: "libraries/CryptoGoImplementation/Tests-Crypto-patched-Go"),
 
         coreTestTarget(name: .cryptoVPNPatchedGoImplementation + "Tests",
                        dependencies: [
-                           .goLibsCryptoVPNPatchedGo,
-                           .cryptoVPNPatchedGoImplementation,
-                           .cryptoGoInterface
+                        .goLibsCryptoVPNPatchedGo,
+                        .cryptoVPNPatchedGoImplementation,
+                        .cryptoGoInterface
                        ],
                        path: "libraries/CryptoGoImplementation/Tests-Crypto+VPN-patched-Go"),
 
         coreTestTarget(name: .cryptoSearchGoImplementation + "Tests",
                        dependencies: [
-                           .goLibsCryptoSearchGo,
-                           .cryptoSearchGoImplementation,
-                           .cryptoGoInterface
+                        .goLibsCryptoSearchGo,
+                        .cryptoSearchGoImplementation,
+                        .cryptoGoInterface
                        ],
                        path: "libraries/CryptoGoImplementation/Tests-Crypto+Search-Go")
     ]
@@ -702,8 +706,8 @@ add(
 
         coreTestTarget(name: .dataModel + "Tests",
                        dependencies: [
-                           .dataModel,
-                           .testingToolkitUnitTestsDataModel
+                        .dataModel,
+                        .testingToolkitUnitTestsDataModel
                        ],
                        path: "libraries/DataModel/Tests")
     ]
@@ -716,33 +720,33 @@ add(
     targets: [
         coreTarget(name: .doh,
                    dependencies: [
-                       .log,
-                       .utilities
+                    .log,
+                    .utilities
                    ],
                    path: "libraries/DoH/Sources"),
 
         coreTestTarget(name: .doh + "UnitTests",
                        dependencies: [
-                           .doh,
-                           .authentication,
-                           .challenge,
-                           .foundations,
-                           .services,
-                           .obfuscatedConstants,
-                           .testingToolkitUnitTestsDoh,
-                           .ohhttpStubs
+                        .doh,
+                        .authentication,
+                        .challenge,
+                        .foundations,
+                        .services,
+                        .obfuscatedConstants,
+                        .testingToolkitUnitTestsDoh,
+                        .ohhttpStubs
                        ],
                        path: "libraries/Doh/Tests/Unit"),
 
         coreTestTarget(name: .doh + "IntegrationTests",
                        dependencies: [
-                           .doh,
-                           .authentication,
-                           .environment,
-                           .foundations,
-                           .observability,
-                           .services,
-                           .testingToolkitUnitTestsCore
+                        .doh,
+                        .authentication,
+                        .environment,
+                        .foundations,
+                        .observability,
+                        .services,
+                        .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/Doh/Tests/Integration")
     ]
@@ -755,16 +759,16 @@ add(
     targets: [
         coreTarget(name: .environment,
                    dependencies: [
-                       .doh,
-                       .trustKit
+                    .doh,
+                    .trustKit
                    ],
                    path: "libraries/Environment/Sources"),
 
         coreTestTarget(name: .environment + "Tests",
                        dependencies: [
-                           .environment,
-                           .testingToolkitUnitTestsDoh,
-                           .ohhttpStubs
+                        .environment,
+                        .testingToolkitUnitTestsDoh,
+                        .ohhttpStubs
                        ],
                        path: "libraries/Environment/Tests")
     ]
@@ -777,13 +781,13 @@ add(
     targets: [
         coreTarget(name: .features,
                    dependencies: [
-                       .dataModel,
-                       .hash,
-                       .crypto,
-                       .cryptoGoInterface,
-                       .keyManager,
-                       .authentication,
-                       .networking
+                    .dataModel,
+                    .hash,
+                    .crypto,
+                    .cryptoGoInterface,
+                    .keyManager,
+                    .authentication,
+                    .networking
                    ],
                    path: "libraries/Features/Sources")
     ]
@@ -796,9 +800,9 @@ add(
     targets: [
         coreTarget(name: .featureFlags,
                    dependencies: [
-                       .log,
-                       .networking,
-                       .services,
+                    .log,
+                    .networking,
+                    .services,
                    ],
                    path: "libraries/FeatureFlags/Sources",
                    settings: swiftSettings
@@ -806,9 +810,9 @@ add(
 
         coreTestTarget(name: .featureFlags + "Tests",
                        dependencies: [
-                           .featureFlags,
-                           .utilities,
-                           .testingToolkitUnitTestsServices
+                        .featureFlags,
+                        .utilities,
+                        .testingToolkitUnitTestsServices
                        ],
                        path: "libraries/FeatureFlags/Tests",
                        resources: [.process("FeatureFlagsTests/QueryResources")])
@@ -822,25 +826,25 @@ add(
     targets: [
         coreTarget(name: .forceUpgrade,
                    dependencies: [
-                       .uiFoundations,
-                       .networking
+                    .uiFoundations,
+                    .networking
                    ],
                    path: "libraries/ForceUpgrade/Sources",
                    resources: [
-                       .process("Shared/Resources")
+                    .process("Shared/Resources")
                    ]),
 
         coreTestTarget(name: .forceUpgrade + "Tests",
                        dependencies: [
-                           .forceUpgrade,
-                           .testingToolkitUnitTestsCore
+                        .forceUpgrade,
+                        .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/ForceUpgrade/Tests/UnitTests"),
 
         coreTestTarget(name: .forceUpgrade + "LocalizationTests",
                        dependencies: [
-                           .forceUpgrade,
-                           .testingToolkitUnitTestsCore
+                        .forceUpgrade,
+                        .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/ForceUpgrade/Tests/LocalizationTests")
 
@@ -854,7 +858,7 @@ add(
     targets: [
         coreTarget(name: .foundations,
                    dependencies: [
-                       .log
+                    .log
                    ],
                    path: "libraries/Foundations/Sources")
     ]
@@ -887,7 +891,7 @@ add(
 
         coreTestTarget(name: .hash + "Tests",
                        dependencies: [
-                           .hash
+                        .hash
                        ],
                        path: "libraries/Hash/Tests")
     ]
@@ -900,51 +904,51 @@ add(
     targets: [
         coreTarget(name: .humanVerification,
                    dependencies: [
-                       .uiFoundations,
-                       .foundations,
-                       .utilities,
-                       .apiClient,
-                       .observability,
-                       .crypto,
-                       .cryptoGoInterface,
-                       .dataModel,
-                       .networking,
-                       .telemetry,
-                       .humanVerificationResourcesiOS,
-                       .humanVerificationResourcesmacOS
+                    .uiFoundations,
+                    .foundations,
+                    .utilities,
+                    .apiClient,
+                    .observability,
+                    .crypto,
+                    .cryptoGoInterface,
+                    .dataModel,
+                    .networking,
+                    .telemetry,
+                    .humanVerificationResourcesiOS,
+                    .humanVerificationResourcesmacOS
                    ],
                    path: "libraries/HumanVerification/Sources"),
 
         coreTarget(name: .humanVerificationResourcesiOS,
                    path: "libraries/HumanVerification/Resources-iOS",
                    resources: [
-                       .process("Resources-iOS")
+                    .process("Resources-iOS")
                    ]),
 
         coreTarget(name: .humanVerificationResourcesmacOS,
                    path: "libraries/HumanVerification/Resources-macOS",
                    resources: [
-                       .process("Resources-macOS")
+                    .process("Resources-macOS")
                    ]),
 
         coreTestTarget(name: .humanVerification + "Tests",
                        dependencies: [
-                           .challenge,
-                           .humanVerification,
-                           .cryptoGoUsedInTests,
-                           .testingToolkitUnitTestsCore,
-                           .testingToolkitUnitTestsDoh,
-                           .testingToolkitUnitTestsFeatureFlag,
-                           .testingToolkitUnitTestsObservability,
-                           .testingToolkitUnitTestsServices
+                        .challenge,
+                        .humanVerification,
+                        .cryptoGoUsedInTests,
+                        .testingToolkitUnitTestsCore,
+                        .testingToolkitUnitTestsDoh,
+                        .testingToolkitUnitTestsFeatureFlag,
+                        .testingToolkitUnitTestsObservability,
+                        .testingToolkitUnitTestsServices
                        ],
                        path: "libraries/HumanVerification/Tests/UnitTests",
                        exclude: ["__Snapshots__"]),
 
         coreTestTarget(name: .humanVerification + "LocalizationTests",
                        dependencies: [
-                           .humanVerification,
-                           .testingToolkitUnitTestsCore
+                        .humanVerification,
+                        .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/HumanVerification/Tests/LocalizationTests")
     ]
@@ -957,17 +961,17 @@ add(
     targets: [
         coreTarget(name: .keymaker,
                    dependencies: [
-                       .cryptoGoInterface,
-                       .ellipticCurveKeyPair
+                    .cryptoGoInterface,
+                    .ellipticCurveKeyPair
                    ],
                    path: "libraries/Keymaker/Sources"),
 
         coreTestTarget(name: .keymaker + "Tests",
                        dependencies: [
-                           .keymaker,
-                           .cryptoGoUsedInTests,
-                           .testingToolkitUnitTestsCore,
-                           .cryptoSwift
+                        .keymaker,
+                        .cryptoGoUsedInTests,
+                        .testingToolkitUnitTestsCore,
+                        .cryptoSwift
                        ],
                        path: "libraries/Keymaker/Tests")
     ]
@@ -980,16 +984,16 @@ add(
     targets: [
         coreTarget(name: .keyManager,
                    dependencies: [
-                       .cryptoGoInterface,
-                       .crypto,
-                       .dataModel
+                    .cryptoGoInterface,
+                    .crypto,
+                    .dataModel
                    ],
                    path: "libraries/KeyManager/Sources"),
 
         coreTestTarget(name: .keyManager + "Tests",
                        dependencies: [
-                           .keyManager,
-                           .cryptoGoUsedInTests
+                        .keyManager,
+                        .cryptoGoUsedInTests
                        ],
                        path: "libraries/KeyManager/Tests",
                        resources: [.process("TestData")])
@@ -1023,61 +1027,61 @@ add(
     targets: [
         coreTarget(name: .login,
                    dependencies: [
-                       .log,
-                       .foundations,
-                       .dataModel,
-                       .observability,
-                       .crypto,
-                       .cryptoGoInterface,
-                       .authentication,
-                       .authenticationKeyGeneration,
-                       .trustKit,
-                       .featureFlags
+                    .log,
+                    .foundations,
+                    .dataModel,
+                    .observability,
+                    .crypto,
+                    .cryptoGoInterface,
+                    .authentication,
+                    .authenticationKeyGeneration,
+                    .trustKit,
+                    .featureFlags
                    ],
                    path: "libraries/Login/Sources",
                    resources: [.process("Resources")]),
 
         coreTestTarget(name: .login + "UnitTests",
                        dependencies: [
-                           .login,
-                           .challenge,
-                           .crypto,
-                           .cryptoGoInterface,
-                           .cryptoGoUsedInTests,
-                           .hash,
-                           .authentication,
-                           .authenticationKeyGeneration,
-                           .obfuscatedConstants,
-                           .testingToolkitTestData,
-                           .testingToolkitUnitTestsAuthenticationKeyGeneration,
-                           .testingToolkitUnitTestsFeatureFlag,
-                           .testingToolkitUnitTestsLogin,
-                           .testingToolkitUnitTestsObservability,
-                           .ohhttpStubs,
-                           .trustKit
+                        .login,
+                        .challenge,
+                        .crypto,
+                        .cryptoGoInterface,
+                        .cryptoGoUsedInTests,
+                        .hash,
+                        .authentication,
+                        .authenticationKeyGeneration,
+                        .obfuscatedConstants,
+                        .testingToolkitTestData,
+                        .testingToolkitUnitTestsAuthenticationKeyGeneration,
+                        .testingToolkitUnitTestsFeatureFlag,
+                        .testingToolkitUnitTestsLogin,
+                        .testingToolkitUnitTestsObservability,
+                        .ohhttpStubs,
+                        .trustKit
                        ],
                        path: "libraries/Login/Tests/UnitTests",
                        resources: [
-                           .process("Mocks/Responses")
+                        .process("Mocks/Responses")
                        ]),
 
         coreTestTarget(name: .login + "IntegrationTests",
                        dependencies: [
-                           .login,
-                           .crypto,
-                           .cryptoGoInterface,
-                           .cryptoGoUsedInTests,
-                           .quarkCommands,
-                           .testingToolkitUnitTestsCore,
-                           .testingToolkitUnitTestsFeatureFlag,
-                           .trustKit
+                        .login,
+                        .crypto,
+                        .cryptoGoInterface,
+                        .cryptoGoUsedInTests,
+                        .quarkCommands,
+                        .testingToolkitUnitTestsCore,
+                        .testingToolkitUnitTestsFeatureFlag,
+                        .trustKit
                        ],
                        path: "libraries/Login/Tests/IntegrationTests"),
 
         coreTestTarget(name: .login + "LocalizationTests",
                        dependencies: [
-                           .login,
-                           .testingToolkitUnitTestsCore
+                        .login,
+                        .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/Login/Tests/LocalizationTests")
     ]
@@ -1090,93 +1094,93 @@ add(
     targets: [
         coreTarget(name: .loginUI,
                    dependencies: [
-                       .log,
-                       .foundations,
-                       .uiFoundations,
-                       .challenge,
-                       .dataModel,
-                       .troubleShooting,
-                       .environment,
-                       .observability,
-                       .crypto,
-                       .cryptoGoInterface,
-                       .authentication,
-                       .authenticationKeyGeneration,
-                       .login,
-                       .payments,
-                       .paymentsUI,
-                       .humanVerification,
-                       .loginUIResourcesiOS,
-                       .lottie,
-                       .trustKit,
-                       .telemetry
+                    .log,
+                    .foundations,
+                    .uiFoundations,
+                    .challenge,
+                    .dataModel,
+                    .troubleShooting,
+                    .environment,
+                    .observability,
+                    .crypto,
+                    .cryptoGoInterface,
+                    .authentication,
+                    .authenticationKeyGeneration,
+                    .login,
+                    .payments,
+                    .paymentsUI,
+                    .humanVerification,
+                    .loginUIResourcesiOS,
+                    .lottie,
+                    .trustKit,
+                    .telemetry
                    ],
                    path: "libraries/LoginUI/Sources",
                    resources: [
-                       .process("Resources/Translations")
+                    .process("Resources/Translations")
                    ]),
 
         coreTarget(name: .loginUIResourcesiOS,
                    path: "libraries/LoginUI/Resources",
                    resources: [
-                       .process("Resources-iOS")
+                    .process("Resources-iOS")
                    ]),
 
         coreTestTarget(name: .loginUI + "UnitTests",
                        dependencies: [
-                           .loginUI,
-                           .authentication,
-                           .authenticationKeyGeneration,
-                           .crypto,
-                           .cryptoGoInterface,
-                           .cryptoGoUsedInTests,
-                           .humanVerification,
-                           .login,
-                           .obfuscatedConstants,
-                           .payments,
-                           .paymentsUI,
-                           .testingToolkitTestData,
-                           .testingToolkitUnitTestsCore,
-                           .testingToolkitUnitTestsFeatureFlag,
-                           .testingToolkitUnitTestsLoginUI,
-                           .testingToolkitUnitTestsObservability,
-                           .ohhttpStubs,
-                           .trustKit
+                        .loginUI,
+                        .authentication,
+                        .authenticationKeyGeneration,
+                        .crypto,
+                        .cryptoGoInterface,
+                        .cryptoGoUsedInTests,
+                        .humanVerification,
+                        .login,
+                        .obfuscatedConstants,
+                        .payments,
+                        .paymentsUI,
+                        .testingToolkitTestData,
+                        .testingToolkitUnitTestsCore,
+                        .testingToolkitUnitTestsFeatureFlag,
+                        .testingToolkitUnitTestsLoginUI,
+                        .testingToolkitUnitTestsObservability,
+                        .ohhttpStubs,
+                        .trustKit
                        ],
                        path: "libraries/LoginUI/Tests/UnitTests",
                        exclude: [
-                           "SnapshotTests/__Snapshots__",
-                           "ViewControllerTests/__Snapshots__"
+                        "SnapshotTests/__Snapshots__",
+                        "ViewControllerTests/__Snapshots__"
                        ],
                        resources: [
-                           .process("Mocks/Responses")
+                        .process("Mocks/Responses")
                        ]),
 
         coreTestTarget(name: .loginUI + "IntegrationTests",
                        dependencies: [
-                           .loginUI,
-                           .authentication,
-                           .authenticationKeyGeneration,
-                           .crypto,
-                           .cryptoGoInterface,
-                           .cryptoGoUsedInTests,
-                           .humanVerification,
-                           .login,
-                           .obfuscatedConstants,
-                           .payments,
-                           .paymentsUI,
-                           .testingToolkitTestData,
-                           .testingToolkitUnitTestsCore,
-                           .testingToolkitUnitTestsFeatureFlag,
-                           .testingToolkitUnitTestsLoginUI,
-                           .trustKit
+                        .loginUI,
+                        .authentication,
+                        .authenticationKeyGeneration,
+                        .crypto,
+                        .cryptoGoInterface,
+                        .cryptoGoUsedInTests,
+                        .humanVerification,
+                        .login,
+                        .obfuscatedConstants,
+                        .payments,
+                        .paymentsUI,
+                        .testingToolkitTestData,
+                        .testingToolkitUnitTestsCore,
+                        .testingToolkitUnitTestsFeatureFlag,
+                        .testingToolkitUnitTestsLoginUI,
+                        .trustKit
                        ],
                        path: "libraries/LoginUI/Tests/IntegrationTests"),
 
         coreTestTarget(name: .loginUI + "LocalizationTests",
                        dependencies: [
-                           .loginUI,
-                           .testingToolkitUnitTestsCore
+                        .loginUI,
+                        .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/LoginUI/Tests/LocalizationTests")
     ]
@@ -1189,19 +1193,19 @@ add(
     targets: [
         coreTarget(name: .missingScopes,
                    dependencies: [
-                       .apiClient,
-                       .authentication,
-                       .services,
-                       .uiFoundations,
-                       .passwordRequest
+                    .apiClient,
+                    .authentication,
+                    .services,
+                    .uiFoundations,
+                    .passwordRequest
                    ],
                    path: "libraries/MissingScopes/Sources"),
 
         coreTestTarget(name: .missingScopes + "Tests",
                        dependencies: [
-                           .missingScopes,
-                           .testingToolkitUnitTestsNetworking,
-                           .testingToolkitUnitTestsServices
+                        .missingScopes,
+                        .testingToolkitUnitTestsNetworking,
+                        .testingToolkitUnitTestsServices
                        ],
                        path: "libraries/MissingScopes/Tests")
     ]
@@ -1214,27 +1218,27 @@ add(
     targets: [
         coreTarget(name: .networking,
                    dependencies: [
-                       .environment,
-                       .log,
-                       .utilities,
-                       .alamofire,
-                       .trustKit
+                    .environment,
+                    .log,
+                    .utilities,
+                    .alamofire,
+                    .trustKit
                    ],
                    path: "libraries/Networking/Sources"),
 
         coreTestTarget(name: .networking + "Tests",
                        dependencies: [
-                           .networking,
-                           .testingToolkitUnitTestsNetworking,
-                           .ohhttpStubs,
-                           .trustKit
+                        .networking,
+                        .testingToolkitUnitTestsNetworking,
+                        .ohhttpStubs,
+                        .trustKit
                        ],
                        path: "libraries/Networking/Tests/UnitTests"),
 
         coreTestTarget(name: .networking + "LocalizationTests",
                        dependencies: [
-                           .networking,
-                           .testingToolkitUnitTestsCore
+                        .networking,
+                        .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/Networking/Tests/LocalizationTests")
     ]
@@ -1266,34 +1270,34 @@ add(
     targets: [
         coreTarget(name: .observability,
                    dependencies: [
-                       .networking,
-                       .utilities
+                    .networking,
+                    .utilities
                    ],
                    path: "libraries/Observability/Sources"),
 
         coreTestTarget(name: .observability + "UnitTests",
                        dependencies: [
-                           .observability,
-                           .challenge,
-                           .foundations,
-                           .testingToolkitUnitTestsCore,
-                           .testingToolkitUnitTestsFeatureFlag,
-                           .testingToolkitUnitTestsObservability,
-                           .testingToolkitUnitTestsNetworking,
-                           .testingToolkitUnitTestsServices,
-                           .jsonSchema
+                        .observability,
+                        .challenge,
+                        .foundations,
+                        .testingToolkitUnitTestsCore,
+                        .testingToolkitUnitTestsFeatureFlag,
+                        .testingToolkitUnitTestsObservability,
+                        .testingToolkitUnitTestsNetworking,
+                        .testingToolkitUnitTestsServices,
+                        .jsonSchema
                        ],
                        path: "libraries/Observability/UnitTests"),
 
         coreTestTarget(name: .observability + "IntegrationTests",
                        dependencies: [
-                           .observability,
-                           .authentication,
-                           .foundations,
-                           .networking,
-                           .services,
-                           .testingToolkitUnitTestsCore,
-                           .testingToolkitUnitTestsObservability
+                        .observability,
+                        .authentication,
+                        .foundations,
+                        .networking,
+                        .services,
+                        .testingToolkitUnitTestsCore,
+                        .testingToolkitUnitTestsObservability
                        ],
                        path: "libraries/Observability/IntegrationTests")
     ]
@@ -1306,34 +1310,34 @@ add(
     targets: [
         coreTarget(name: .passwordChange,
                    dependencies: [
-                       .authentication,
-                       .authenticationKeyGeneration,
-                       .featureFlags,
-                       .loginUI,
-                       .networking,
-                       .observability,
-                       .passwordRequest,
-                       .services,
-                       .uiFoundations,
-                       .utilities
+                    .authentication,
+                    .authenticationKeyGeneration,
+                    .featureFlags,
+                    .loginUI,
+                    .networking,
+                    .observability,
+                    .passwordRequest,
+                    .services,
+                    .uiFoundations,
+                    .utilities
                    ],
                    path: "libraries/PasswordChange/Sources",
                    resources: [.process("Resources")]),
 
         coreTestTarget(name: .passwordChange + "Tests",
                        dependencies: [
-                           .authentication,
-                           .authenticationKeyGeneration,
-                           .crypto,
-                           .cryptoGoInterface,
-                           .cryptoGoUsedInTests,
-                           .passwordChange,
-                           .networking,
-                           .services,
-                           .testingToolkitUnitTestsCore,
-                           .testingToolkitUnitTestsNetworking,
-                           .testingToolkitUnitTestsAuthentication,
-                           .testingToolkitUnitTestsServices
+                        .authentication,
+                        .authenticationKeyGeneration,
+                        .crypto,
+                        .cryptoGoInterface,
+                        .cryptoGoUsedInTests,
+                        .passwordChange,
+                        .networking,
+                        .services,
+                        .testingToolkitUnitTestsCore,
+                        .testingToolkitUnitTestsNetworking,
+                        .testingToolkitUnitTestsAuthentication,
+                        .testingToolkitUnitTestsServices
                        ],
                        path: "libraries/PasswordChange/Tests",
                        exclude: ["SnapshotTests/__Snapshots__"])
@@ -1347,33 +1351,33 @@ add(
     targets: [
         coreTarget(name: .passwordRequest,
                    dependencies: [
-                       .authentication,
-                       .networking,
-                       .services,
-                       .uiFoundations
+                    .authentication,
+                    .networking,
+                    .services,
+                    .uiFoundations
                    ],
                    path: "libraries/PasswordRequest/Sources",
                    resources: [
-                       .process("Resources")
+                    .process("Resources")
                    ]),
 
         coreTestTarget(name: .passwordRequest + "UnitTests",
                        dependencies: [
-                           .authentication,
-                           .passwordRequest,
-                           .networking,
-                           .services,
-                           .testingToolkitUnitTestsCore,
-                           .testingToolkitUnitTestsNetworking,
-                           .testingToolkitUnitTestsAuthentication,
-                           .testingToolkitUnitTestsServices
+                        .authentication,
+                        .passwordRequest,
+                        .networking,
+                        .services,
+                        .testingToolkitUnitTestsCore,
+                        .testingToolkitUnitTestsNetworking,
+                        .testingToolkitUnitTestsAuthentication,
+                        .testingToolkitUnitTestsServices
                        ],
                        path: "libraries/PasswordRequest/Tests/UnitTests"),
 
         coreTestTarget(name: .passwordRequest + "LocalizationTests",
                        dependencies: [
-                           .passwordRequest,
-                           .testingToolkitUnitTestsCore
+                        .passwordRequest,
+                        .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/PasswordRequest/Tests/LocalizationTests")
     ]
@@ -1386,60 +1390,60 @@ add(
     targets: [
         coreTarget(name: .payments,
                    dependencies: [
-                       .authentication,
-                       .foundations,
-                       .hash,
-                       .log,
-                       .networking,
-                       .reachabilitySwift,
-                       .services,
-                       .featureFlags
+                    .authentication,
+                    .foundations,
+                    .hash,
+                    .log,
+                    .networking,
+                    .reachabilitySwift,
+                    .services,
+                    .featureFlags
                    ],
                    path: "libraries/Payments/Sources"),
 
         coreTestTarget(name: .payments + "Tests",
                        dependencies: [
-                           .authentication,
-                           .challenge,
-                           .dataModel,
-                           .doh,
-                           .log,
-                           .login,
-                           .payments,
-                           .services,
-                           .testingToolkitTestData,
-                           .testingToolkitUnitTestsFeatureFlag,
-                           .testingToolkitUnitTestsPayments,
-                           .testingToolkitUnitTestsServices,
-                           .ohhttpStubs
+                        .authentication,
+                        .challenge,
+                        .dataModel,
+                        .doh,
+                        .log,
+                        .login,
+                        .payments,
+                        .services,
+                        .testingToolkitTestData,
+                        .testingToolkitUnitTestsFeatureFlag,
+                        .testingToolkitUnitTestsPayments,
+                        .testingToolkitUnitTestsServices,
+                        .ohhttpStubs
                        ],
                        path: "libraries/Payments/Tests/UnitTests",
                        resources: [
-                           .process("AppStoreLocalTest"),
-                           .process("Mocks/Responses")
+                        .process("AppStoreLocalTest"),
+                        .process("Mocks/Responses")
                        ]),
 
         coreTestTarget(name: .payments + "IntegrationTests",
                        dependencies: [
-                           .authentication,
-                           .challenge,
-                           .dataModel,
-                           .doh,
-                           .environment,
-                           .log,
-                           .login,
-                           .payments,
-                           .services,
-                           .testingToolkitTestData,
-                           .testingToolkitUnitTestsPayments,
-                           .testingToolkitUnitTestsServices
+                        .authentication,
+                        .challenge,
+                        .dataModel,
+                        .doh,
+                        .environment,
+                        .log,
+                        .login,
+                        .payments,
+                        .services,
+                        .testingToolkitTestData,
+                        .testingToolkitUnitTestsPayments,
+                        .testingToolkitUnitTestsServices
                        ],
                        path: "libraries/Payments/Tests/IntegrationTests"),
 
         coreTestTarget(name: .payments + "LocalizationTests",
                        dependencies: [
-                           .payments,
-                           .testingToolkitUnitTestsCore
+                        .payments,
+                        .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/Payments/Tests/LocalizationTests")
     ]
@@ -1477,49 +1481,68 @@ add(
 // MARK: PaymentsUI
 
 add(
+    product: .paymentsUIV2,
+    targets: [
+        coreTarget(name: .paymentsUIV2,
+                   dependencies: [
+                        .paymentsV2,
+                        .protonCoreUI
+                   ],
+                   path: "libraries/PaymentsUI/v2/Sources"),
+
+        coreTestTarget(name: .paymentsUIV2 + "Tests",
+                       dependencies: [
+                        .paymentsUIV2
+                       ],
+                       path: "libraries/PaymentsUI/v2/Tests"
+                      )
+    ]
+)
+
+add(
     product: .paymentsUI,
     targets: [
         coreTarget(name: .paymentsUI,
                    dependencies: [
-                       .log,
-                       .foundations,
-                       .uiFoundations,
-                       .observability,
-                       .payments,
-                       .paymentsUIResourcesiOS,
-                       .sdWebImage,
-                       .featureFlags
+                    .log,
+                    .foundations,
+                    .uiFoundations,
+                    .observability,
+                    .payments,
+                    .paymentsUIResourcesiOS,
+                    .sdWebImage,
+                    .featureFlags
                    ],
-                   path: "libraries/PaymentsUI/Sources",
+                   path: "libraries/PaymentsUI/v1/Sources",
                    resources: [
-                       .process("Resources/Translations")
+                    .process("Resources/Translations")
                    ]),
 
         coreTarget(name: .paymentsUIResourcesiOS,
-                   path: "libraries/PaymentsUI/Resources",
+                   path: "libraries/PaymentsUI/v1/Resources",
                    resources: [
-                       .process("Resources-iOS")
+                    .process("Resources-iOS")
                    ]),
 
         coreTestTarget(name: .paymentsUI + "Tests",
                        dependencies: [
-                           .paymentsUI,
-                           .obfuscatedConstants,
-                           .testingToolkitUnitTestsDataModel,
-                           .testingToolkitUnitTestsFeatureFlag,
-                           .testingToolkitUnitTestsObservability,
-                           .testingToolkitUnitTestsPayments,
-                           .testingToolkitUnitTestsServices
+                        .paymentsUI,
+                        .obfuscatedConstants,
+                        .testingToolkitUnitTestsDataModel,
+                        .testingToolkitUnitTestsFeatureFlag,
+                        .testingToolkitUnitTestsObservability,
+                        .testingToolkitUnitTestsPayments,
+                        .testingToolkitUnitTestsServices
                        ],
-                       path: "libraries/PaymentsUI/Tests/UnitTests",
+                       path: "libraries/PaymentsUI/v1/Tests/UnitTests",
                        exclude: ["__Snapshots__"]),
 
         coreTestTarget(name: .paymentsUI + "LocalizationTests",
                        dependencies: [
-                           .paymentsUI,
-                           .testingToolkitUnitTestsCore
+                        .paymentsUI,
+                        .testingToolkitUnitTestsCore
                        ],
-                       path: "libraries/PaymentsUI/Tests/LocalizationTests")
+                       path: "libraries/PaymentsUI/v1/Tests/LocalizationTests")
     ]
 )
 
@@ -1530,21 +1553,21 @@ add(
     targets: [
         coreTarget(name: .pushNotifications,
                    dependencies: [
-                       .log,
-                       .dataModel,
-                       .keymaker,
-                       .networking,
-                       .crypto,
-                       .cryptoGoInterface,
-                       .featureFlags,
-                       .services
+                    .log,
+                    .dataModel,
+                    .keymaker,
+                    .networking,
+                    .crypto,
+                    .cryptoGoInterface,
+                    .featureFlags,
+                    .services
                    ],
                    path: "libraries/PushNotifications/Sources"),
 
         coreTestTarget(name: .pushNotifications + "Tests",
                        dependencies: [
-                           .pushNotifications,
-                           .testingToolkitUnitTestsCore
+                        .pushNotifications,
+                        .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/PushNotifications/Tests")
     ]
@@ -1557,22 +1580,22 @@ add(
     targets: [
         coreTarget(name: .quarkCommands,
                    dependencies: [
-                       .doh,
-                       .environment,
-                       .log,
-                       .networking,
-                       .services,
-                       .yams
+                    .doh,
+                    .environment,
+                    .log,
+                    .networking,
+                    .services,
+                    .yams
                    ],
                    path: "libraries/QuarkCommands/Sources"),
 
         coreTestTarget(name: .quarkCommands + "Tests",
                        dependencies: [
-                           .quarkCommands,
-                           .foundations,
-                           .testingToolkitUnitTestsDoh,
-                           .ohhttpStubs,
-                           .yams
+                        .quarkCommands,
+                        .foundations,
+                        .testingToolkitUnitTestsDoh,
+                        .ohhttpStubs,
+                        .yams
                        ],
                        path: "libraries/QuarkCommands/Tests",
                        resources: [.process("Mocks")])
@@ -1586,44 +1609,44 @@ add(
     targets: [
         coreTarget(name: .services,
                    dependencies: [
-                       .observability,
-                       .utilities,
-                       .foundations
+                    .observability,
+                    .utilities,
+                    .foundations
                    ],
                    path: "libraries/Services/Sources",
                    resources: [
-                       .process("Resources")
+                    .process("Resources")
                    ]),
 
         coreTestTarget(name: .services + "UnitTests",
                        dependencies: [
-                           .services,
-                           .authentication,
-                           .challenge,
-                           .testingToolkitUnitTestsCore,
-                           .testingToolkitUnitTestsDoh,
-                           .testingToolkitUnitTestsNetworking,
-                           .testingToolkitUnitTestsObservability,
-                           .testingToolkitUnitTestsServices
+                        .services,
+                        .authentication,
+                        .challenge,
+                        .testingToolkitUnitTestsCore,
+                        .testingToolkitUnitTestsDoh,
+                        .testingToolkitUnitTestsNetworking,
+                        .testingToolkitUnitTestsObservability,
+                        .testingToolkitUnitTestsServices
                        ],
                        path: "libraries/Services/Tests/Unit",
                        resources: [.process("Fixtures")]),
 
         coreTestTarget(name: .services + "IntegrationTests",
                        dependencies: [
-                           .services,
-                           .authentication,
-                           .challenge,
-                           .login,
-                           .testingToolkitUnitTestsCore
+                        .services,
+                        .authentication,
+                        .challenge,
+                        .login,
+                        .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/Services/Tests/Integration"),
 
         coreTestTarget(name: .services + "LocalizationTests",
                        dependencies: [
-                           .services,
-                           .challenge,
-                           .testingToolkitUnitTestsCore
+                        .services,
+                        .challenge,
+                        .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/Services/Tests/Localization")
     ]
@@ -1636,26 +1659,26 @@ add(
     targets: [
         coreTarget(name: .settings,
                    dependencies: [
-                        .dataModel,
-                        .networking,
-                        .services,
-                        .uiFoundations,
+                    .dataModel,
+                    .networking,
+                    .services,
+                    .uiFoundations,
                    ],
                    path: "libraries/Settings/Sources",
                    resources: [
-                       .process("Resources")
+                    .process("Resources")
                    ]),
 
         coreTestTarget(name: .settings + "Tests",
                        dependencies: [
-                           .settings,
-                           .testingToolkitUnitTestsCore
+                        .settings,
+                        .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/Settings/Tests",
                        exclude: [
-                           "Resources",
-                           "Security/Presentation/__Snapshots__",
-                           "Settings/Presentation/__Snapshots__"
+                        "Resources",
+                        "Security/Presentation/__Snapshots__",
+                        "Settings/Presentation/__Snapshots__"
                        ])
     ]
 )
@@ -1667,19 +1690,19 @@ add(
     targets: [
         coreTarget(name: .telemetry,
                    dependencies: [
-                       .networking,
-                       .services,
-                       .featureFlags
+                    .networking,
+                    .services,
+                    .featureFlags
                    ],
                    path: "libraries/Telemetry/Sources"),
 
         coreTestTarget(name: .telemetry + "Tests",
                        dependencies: [
-                           .telemetry,
-                           .testingToolkitUnitTestsCore,
-                           .testingToolkitUnitTestsNetworking,
-                           .testingToolkitUnitTestsServices,
-                           .testingToolkitUnitTestsFeatureFlag
+                        .telemetry,
+                        .testingToolkitUnitTestsCore,
+                        .testingToolkitUnitTestsNetworking,
+                        .testingToolkitUnitTestsServices,
+                        .testingToolkitUnitTestsFeatureFlag
                        ],
                        path: "libraries/Telemetry/Tests")
     ]
@@ -1706,7 +1729,7 @@ add(
         .testingToolkitUnitTestsPayments,
         .testingToolkitUnitTestsServices,
 
-        .testingToolkitUITestsAccountDeletion,
+            .testingToolkitUITestsAccountDeletion,
         .testingToolkitUITestsAccountSwitcher,
         .testingToolkitUITestsCore,
         .testingToolkitUITestsHumanVerification,
@@ -1719,181 +1742,181 @@ add(
 
         coreTarget(name: .testingToolkitTestData,
                    dependencies: [
-                       .dataModel,
-                       .networking,
-                       .cryptoSwift
+                    .dataModel,
+                    .networking,
+                    .cryptoSwift
                    ],
                    path: "libraries/TestingToolkit/TestData"),
 
         coreTarget(name: .testingToolkitUnitTestsAccountDeletion,
                    dependencies: [
-                       .accountDeletion,
-                       .testingToolkitUnitTestsCore,
-                       .testingToolkitUnitTestsNetworking
+                    .accountDeletion,
+                    .testingToolkitUnitTestsCore,
+                    .testingToolkitUnitTestsNetworking
                    ],
                    path: "libraries/TestingToolkit/UnitTests/AccountDeletion"),
 
         coreTarget(name: .testingToolkitUnitTestsAuthentication,
                    dependencies: [
-                       .authentication,
-                       .testingToolkitUnitTestsCore,
-                       .testingToolkitUnitTestsServices
+                    .authentication,
+                    .testingToolkitUnitTestsCore,
+                    .testingToolkitUnitTestsServices
                    ],
                    path: "libraries/TestingToolkit/UnitTests/Authentication"),
 
         coreTarget(name: .testingToolkitUnitTestsAuthenticationKeyGeneration,
                    dependencies: [
-                       .authenticationKeyGeneration,
-                       .testingToolkitUnitTestsAuthentication,
-                       .testingToolkitUnitTestsCore,
-                       .testingToolkitUnitTestsServices
+                    .authenticationKeyGeneration,
+                    .testingToolkitUnitTestsAuthentication,
+                    .testingToolkitUnitTestsCore,
+                    .testingToolkitUnitTestsServices
                    ],
                    path: "libraries/TestingToolkit/UnitTests/Authentication-KeyGeneration"),
 
         coreTarget(name: .testingToolkitUnitTestsCore,
                    dependencies: [
-                       .utilities,
-                       .snapshotTesting
+                    .utilities,
+                    .snapshotTesting
                    ],
                    path: "libraries/TestingToolkit/UnitTests/Core"),
 
         coreTarget(name: .testingToolkitUnitTestsCryptoGoInterface,
                    dependencies: [
-                       .cryptoGoInterface,
-                       .testingToolkitUnitTestsCore
+                    .cryptoGoInterface,
+                    .testingToolkitUnitTestsCore
                    ],
                    path: "libraries/TestingToolkit/UnitTests/CryptoGoInterface"),
 
         coreTarget(name: .testingToolkitUnitTestsDataModel,
                    dependencies: [
-                       .dataModel,
-                       .testingToolkitUnitTestsCore
+                    .dataModel,
+                    .testingToolkitUnitTestsCore
                    ],
                    path: "libraries/TestingToolkit/UnitTests/DataModel"),
 
         coreTarget(name: .testingToolkitUnitTestsDoh,
                    dependencies: [
-                       .doh,
-                       .testingToolkitUnitTestsCore
+                    .doh,
+                    .testingToolkitUnitTestsCore
                    ],
                    path: "libraries/TestingToolkit/UnitTests/Doh"),
 
         coreTarget(name: .testingToolkitUnitTestsFeatureFlag,
                    dependencies: [
-                       .featureFlags,
-                       .testingToolkitUnitTestsCore
+                    .featureFlags,
+                    .testingToolkitUnitTestsCore
                    ],
                    path: "libraries/TestingToolkit/UnitTests/FeatureFlag"),
 
         coreTarget(name: .testingToolkitUnitTestsLogin,
                    dependencies: [
-                       .login,
-                       .testingToolkitUnitTestsCore,
-                       .testingToolkitUnitTestsAuthentication,
-                       .testingToolkitUnitTestsDataModel,
-                       .testingToolkitUnitTestsServices
+                    .login,
+                    .testingToolkitUnitTestsCore,
+                    .testingToolkitUnitTestsAuthentication,
+                    .testingToolkitUnitTestsDataModel,
+                    .testingToolkitUnitTestsServices
                    ],
                    path: "libraries/TestingToolkit/UnitTests/Login"),
 
         coreTarget(name: .testingToolkitUnitTestsLoginUI,
                    dependencies: [
-                       .loginUI,
-                       .testingToolkitUnitTestsCore,
-                       .testingToolkitUnitTestsAuthentication,
-                       .testingToolkitUnitTestsDataModel,
-                       .testingToolkitUnitTestsLogin,
-                       .testingToolkitUnitTestsServices
+                    .loginUI,
+                    .testingToolkitUnitTestsCore,
+                    .testingToolkitUnitTestsAuthentication,
+                    .testingToolkitUnitTestsDataModel,
+                    .testingToolkitUnitTestsLogin,
+                    .testingToolkitUnitTestsServices
                    ],
                    path: "libraries/TestingToolkit/UnitTests/LoginUI"),
 
         coreTarget(name: .testingToolkitUnitTestsNetworking,
                    dependencies: [
-                       .networking,
-                       .testingToolkitUnitTestsCore
+                    .networking,
+                    .testingToolkitUnitTestsCore
                    ],
                    path: "libraries/TestingToolkit/UnitTests/Networking"),
 
         coreTarget(name: .testingToolkitUnitTestsObservability,
                    dependencies: [
-                       .observability,
-                       .testingToolkitUnitTestsCore
+                    .observability,
+                    .testingToolkitUnitTestsCore
                    ],
                    path: "libraries/TestingToolkit/UnitTests/Observability"),
 
         coreTarget(name: .testingToolkitUnitTestsPayments,
                    dependencies: [
-                       .payments,
-                       .testingToolkitUnitTestsCore,
-                       .ohhttpStubs
+                    .payments,
+                    .testingToolkitUnitTestsCore,
+                    .ohhttpStubs
                    ],
                    path: "libraries/TestingToolkit/UnitTests/Payments"),
 
         coreTarget(name: .testingToolkitUnitTestsServices,
                    dependencies: [
-                       .services,
-                       .doh,
-                       .foundations,
-                       .networking,
-                       .testingToolkitUnitTestsCore,
-                       .testingToolkitUnitTestsDataModel,
-                       .testingToolkitUnitTestsDoh,
-                       .testingToolkitUnitTestsNetworking
+                    .services,
+                    .doh,
+                    .foundations,
+                    .networking,
+                    .testingToolkitUnitTestsCore,
+                    .testingToolkitUnitTestsDataModel,
+                    .testingToolkitUnitTestsDoh,
+                    .testingToolkitUnitTestsNetworking
                    ],
                    path: "libraries/TestingToolkit/UnitTests/Services"),
 
         coreTarget(name: .testingToolkitUITestsAccountDeletion,
                    dependencies: [
-                       .accountDeletion,
-                       .doh,
-                       .quarkCommands,
-                       .fusion
+                    .accountDeletion,
+                    .doh,
+                    .quarkCommands,
+                    .fusion
                    ],
                    path: "libraries/TestingToolkit/UITests/AccountDeletion"),
 
         coreTarget(name: .testingToolkitUITestsAccountSwitcher,
                    dependencies: [
-                       .accountSwitcher,
-                       .doh,
-                       .quarkCommands,
-                       .fusion
+                    .accountSwitcher,
+                    .doh,
+                    .quarkCommands,
+                    .fusion
                    ],
                    path: "libraries/TestingToolkit/UITests/AccountSwitcher"),
 
         coreTarget(name: .testingToolkitUITestsCore,
                    dependencies: [
-                       .doh,
-                       .log,
-                       .quarkCommands,
-                       .fusion
+                    .doh,
+                    .log,
+                    .quarkCommands,
+                    .fusion
                    ],
                    path: "libraries/TestingToolkit/UITests/Core"),
 
         coreTarget(name: .testingToolkitUITestsHumanVerification,
                    dependencies: [
-                       .humanVerification,
-                       .doh,
-                       .quarkCommands,
-                       .fusion
+                    .humanVerification,
+                    .doh,
+                    .quarkCommands,
+                    .fusion
                    ],
                    path: "libraries/TestingToolkit/UITests/HumanVerification"),
 
         coreTarget(name: .testingToolkitUITestsLogin,
                    dependencies: [
-                       .humanVerification,
-                       .loginUI,
-                       .paymentsUI,
-                       .doh,
-                       .quarkCommands,
-                       .fusion,
+                    .humanVerification,
+                    .loginUI,
+                    .paymentsUI,
+                    .doh,
+                    .quarkCommands,
+                    .fusion,
                    ],
                    path: "libraries/TestingToolkit/UITests/Login"),
 
         coreTarget(name: .testingToolkitUITestsPaymentsUI,
                    dependencies: [
-                       .paymentsUI,
-                       .doh,
-                       .quarkCommands,
-                       .fusion
+                    .paymentsUI,
+                    .doh,
+                    .quarkCommands,
+                    .fusion
                    ],
                    path: "libraries/TestingToolkit/UITests/PaymentsUI")
     ]
@@ -1906,38 +1929,38 @@ add(
     targets: [
         coreTarget(name: .troubleShooting,
                    dependencies: [
-                       .foundations,
-                       .doh,
-                       .troubleShootingResourcesiOS,
-                       .uiFoundations,
-                       .utilities
+                    .foundations,
+                    .doh,
+                    .troubleShootingResourcesiOS,
+                    .uiFoundations,
+                    .utilities
                    ],
                    path: "libraries/TroubleShooting/Sources",
                    resources: [
-                       .process("Resources")
+                    .process("Resources")
                    ]),
 
         coreTarget(name: .troubleShootingResourcesiOS,
                    path: "libraries/TroubleShooting/Resources",
                    resources: [
-                       .process("Resources-iOS")
+                    .process("Resources-iOS")
                    ]),
 
         coreTestTarget(name: .troubleShooting + "Tests",
                        dependencies: [
-                           .troubleShooting,
-                           .services,
-                           .environment,
-                           .testingToolkitUnitTestsCore,
-                           .testingToolkitUnitTestsDoh
+                        .troubleShooting,
+                        .services,
+                        .environment,
+                        .testingToolkitUnitTestsCore,
+                        .testingToolkitUnitTestsDoh
                        ],
                        path: "libraries/TroubleShooting/Tests/UnitTests",
                        exclude: ["__Snapshots__"]),
 
         coreTestTarget(name: .troubleShooting + "LocalizationTests",
                        dependencies: [
-                           .troubleShooting,
-                           .testingToolkitUnitTestsCore
+                        .troubleShooting,
+                        .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/TroubleShooting/Tests/LocalizationTests")
     ]
@@ -1950,38 +1973,38 @@ add(
     targets: [
         coreTarget(name: .uiFoundations,
                    dependencies: [
-                       .foundations,
-                       .log,
-                       .utilities,
-                       .uiFoundationsResourcesiOS,
-                       .uiFoundationsResourcestvOS,
-                       .uiFoundationsResourcesmacOS
+                    .foundations,
+                    .log,
+                    .utilities,
+                    .uiFoundationsResourcesiOS,
+                    .uiFoundationsResourcestvOS,
+                    .uiFoundationsResourcesmacOS
                    ],
                    path: "libraries/UIFoundations/Sources"),
 
         coreTarget(name: .uiFoundationsResourcesiOS,
                    path: "libraries/UIFoundations/Resources-iOS",
                    resources: [
-                       .process("Resources-iOS"),
-                       .process("Resources-Shared")
+                    .process("Resources-iOS"),
+                    .process("Resources-Shared")
                    ]),
 
         coreTarget(name: .uiFoundationsResourcestvOS,
                    path: "libraries/UIFoundations/Resources-tvOS",
                    resources: [
-                       .process("Resources-Shared")
+                    .process("Resources-Shared")
                    ]),
 
         coreTarget(name: .uiFoundationsResourcesmacOS,
                    path: "libraries/UIFoundations/Resources-macOS",
                    resources: [
-                       .process("Resources-Shared")
+                    .process("Resources-Shared")
                    ]),
 
         coreTestTarget(name: .uiFoundations + "Tests",
                        dependencies: [
-                           .uiFoundations,
-                           .testingToolkitUnitTestsCore
+                        .uiFoundations,
+                        .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/UIFoundations/Tests",
                        exclude: ["__Snapshots__"])
@@ -1995,13 +2018,13 @@ add(
     targets: [
         coreTarget(name: .utilities,
                    dependencies: [
-                       .log
+                    .log
                    ],
                    path: "libraries/Utilities/Sources"),
 
         coreTestTarget(name: .utilities + "Tests",
                        dependencies: [
-                           .utilities
+                        .utilities
                        ],
                        path: "libraries/Utilities/Tests")
     ]
@@ -2021,7 +2044,7 @@ add(
 let package = Package(
     name: "ProtonCore",
     defaultLocalization: "en",
-    platforms: [.iOS(.v16), .macOS(.v12), .macCatalyst(.v14)],
+    platforms: [.iOS(.v16), .macOS(.v12), .macCatalyst(.v14), .tvOS(.v17)],
     products: products + [
         .plugin(name: .obfuscatedConstantsGenerationPlugin,
                 targets: [.obfuscatedConstantsGenerationPlugin]),
@@ -2090,6 +2113,10 @@ let package = Package(
         .package(
             url: "https://github.com/jpsim/Yams.git",
             from: "5.1.3"
+        ),
+        .package(
+            url: "https://gitlab.protontech.ch/apple/shared/ProtonCoreUI.git",
+            branch: "develop"
         )
     ],
     targets: targets + [
