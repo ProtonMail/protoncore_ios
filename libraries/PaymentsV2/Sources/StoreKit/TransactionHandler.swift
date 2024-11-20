@@ -35,6 +35,11 @@ public enum TransactionHandlerState: String {
     case creatingTransactionToken
     case createNewSubscription
     case transactionCompleted
+    // Error states:
+    case transactionCancelledByUser
+    case mismatchTransactionIDs
+    case transactionProcessError
+    case unknownError
 
     public var localizedDescription: String? {
         switch self {
@@ -64,6 +69,7 @@ public final class TransactionHandler {
         debugPrint(transaction.originalID)
         debugPrint(transaction.id)
         guard transaction.originalID == transaction.id else {
+            transactionState = .mismatchTransactionIDs
             throw TransactionHandlerError.transactionIdNotEqualToOriginalTransactionId
         }
 
@@ -96,6 +102,7 @@ private extension TransactionHandler {
 
         guard let amount = transaction.price, let currency = transaction.currencyIdentifier else {
             debugPrint("Impossible to get amount and currency from transaction")
+            transactionState = .transactionProcessError
             throw ProtonPlansManagerError.unableToGetTransactionAmountOrCurrency
         }
 
@@ -117,6 +124,7 @@ private extension TransactionHandler {
     private func createNewToken(_ transactionToken: Token) async throws -> NewToken {
 
         guard let request = try? paymentsAPIs.url(for: .createToken(token: transactionToken)) else {
+            transactionState = .transactionProcessError
             throw ProtonPlansManagerError.unableToCreateRequest
         }
         debugPrint("Creating payment token..")
@@ -136,6 +144,7 @@ private extension TransactionHandler {
     private func createNewSubscription(token: NewToken, composedPlan: ComposedPlan, transaction: ProtonTransactionProviding) async throws -> Bool {
 
         guard let planName = composedPlan.plan.name else {
+            transactionState = .transactionProcessError
             throw TransactionHandlerError.unableToFindPlanName
         }
         debugPrint("Creating new subscription..")
@@ -153,6 +162,7 @@ private extension TransactionHandler {
                                                                 giftCode: nil))
 
         guard let request = try? paymentsAPIs.url(for: .createSubscription(newSubscription: newSub)) else {
+            transactionState = .transactionProcessError
             throw ProtonPlansManagerError.unableToCreateRequest
         }
 
@@ -166,6 +176,7 @@ private extension TransactionHandler {
             return true
         } catch {
             ObservabilityEnv.report(.paymentSubscribeTotal(status: .failed, isDynamic: true))
+            transactionState = .transactionProcessError
             throw error
         }
     }
