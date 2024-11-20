@@ -1,5 +1,5 @@
 //
-//  RejectAuthDeviceRequest.swift
+//  PingAdminHelpRequest.swift
 //  ProtonCore-Login - Created on 14.11.24.
 //
 //  Copyright (c) 2024 Proton Technologies AG
@@ -22,9 +22,9 @@
 import Foundation
 import ProtonCoreNetworking
 
-public final class RejectAuthDeviceRequest: Request {
+public final class PingAdminHelpRequest: Request {
     public var path: String {
-        "/auth/v4/devices/\(deviceID)/reject"
+        "/auth/v4/devices/\(deviceID)/admin"
     }
 
     public let isAuth: Bool = true

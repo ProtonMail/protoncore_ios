@@ -31,8 +31,8 @@ public final class AuthDevicesRequest: Request {
         "/auth/v4/devices"
     }
 
-    public var isAuth: Bool = true
+    public let isAuth: Bool = true
 
-    public var method: HTTPMethod = .get
+    public let method: HTTPMethod = .get
 
 }

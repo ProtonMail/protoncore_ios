@@ -245,6 +245,71 @@ final class AuthDeviceRequestTests: XCTestCase {
         XCTAssertNil(response.error)
     }
 
+    func testPendingMembersAuthDeviceResponse() async throws {
+        let clientName = "Proton Account for Web"
+
+        let dataRes = try loadMockJSON(filename: "GetAuthDevicesOK")
+        let res = try JSONDecoder.decapitalisingFirstLetter
+            .decode(AuthDevicesResponse.self, from: dataRes)
+
+        let sut = PendingMemberDevicesRequest()
+
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+            if method == .get && path.contains("/core/v4/members/devices/pending") {
+                completion(nil, .success(res.toSuccessfulResponse))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        apiService.requestDecodableStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+            if method == .get && path.contains("/core/v4/members/devices/pending") {
+                completion(nil, .success(res))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+
+        let (_, response) = await apiService.perform(request: sut, response: res)
+
+        XCTAssertEqual(response.responseCode, 1000)
+        XCTAssertEqual(response.authDevices.count, 2)
+        XCTAssertEqual(response.authDevices.first?.localizedClientName, clientName)
+        XCTAssertNil(response.error)
+    }
+
+    func testPingAdminHelpResponse() async throws {
+        let dataRes = try loadMockJSON(filename: "PingAdminHelpOK")
+        let res = try JSONDecoder.decapitalisingFirstLetter
+            .decode(DefaultResponse.self, from: dataRes)
+
+        let deviceID = "12345678"
+        let sut = PingAdminHelpRequest(deviceID: deviceID)
+
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+            if method == .put && path.contains("/auth/v4/devices/\(deviceID)/admin") {
+                completion(nil, .success(res.toSuccessfulResponse))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        apiService.requestDecodableStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+            if method == .put && path.contains("/auth/v4/devices/\(deviceID)/admin") {
+                completion(nil, .success(res))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+
+        let (_, response) = await apiService.perform(request: sut, response: res)
+
+        XCTAssertEqual(response.responseCode, 1000)
+        XCTAssertNil(response.error)
+    }
+
     private func loadMockJSON(filename: String) throws -> Data {
         let url = Bundle.module.url(forResource: filename, withExtension: "json")!
         return try Data(contentsOf: url)
