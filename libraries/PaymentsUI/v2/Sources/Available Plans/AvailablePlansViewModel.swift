@@ -21,6 +21,7 @@
 
 import Foundation
 import ProtonCorePaymentsV2
+import ProtonCoreUI
 import StoreKit
 
 @MainActor
@@ -36,6 +37,7 @@ public class AvailablePlansViewModel: ObservableObject {
 
     @Published var confirmationCompleted: Bool = false
     @Published var updateCompleted: Bool = false
+    @Published var showAlert: BannerState = .none
 
     let billing = BillingCycle.allCases
 
@@ -78,9 +80,9 @@ public class AvailablePlansViewModel: ObservableObject {
                 viewModels.append(PlanViewModel(envURL: paymentsAPIs.currentEnv(),
                                                 remoteManager: remoteManager,
                                                 composedPlan: plan,
-                                                subscriptionManager: ProtonPlansManager(environment: envURL,
-                                                                                        remoteManager: remoteManager,
-                                                                                        plansComposer: plansComposer)))
+                                                plansManager: ProtonPlansManager(environment: envURL,
+                                                                                 remoteManager: remoteManager,
+                                                                                 plansComposer: plansComposer)))
             }
             availablePlansViewModels = viewModels
 
@@ -122,6 +124,19 @@ extension AvailablePlansViewModel: PlanViewModelDelegate {
 
     public func purchaseInProgress() {
         viewState = .purchasing
+    }
+
+    public func transactionCancelledByUser() {
+        Task {
+            await fetchAvailablePlans()
+        }
+    }
+
+    public func transactionProcessError() {
+        showAlert = .error(content: PCBannerContent(message: String(localized: "Transaction_process_error", bundle: .module)))
+        Task {
+            await fetchAvailablePlans()
+        }
     }
 }
 

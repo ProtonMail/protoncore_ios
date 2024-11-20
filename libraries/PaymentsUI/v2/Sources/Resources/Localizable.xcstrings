@@ -180,6 +180,30 @@
         }
       }
     },
+    "Transaction_cancelled_by_user" : {
+      "comment" : "Transaction cancelled by user",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transaction cancelled by the user"
+          }
+        }
+      }
+    },
+    "Transaction_process_error" : {
+      "comment" : "Transaction process error",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Something went wrong, please retry. If the issue persists please contact our support team"
+          }
+        }
+      }
+    },
     "Transaction_state_payment_account_update_complete" : {
       "comment" : "Transaction account update state complete",
       "extractionState" : "manual",

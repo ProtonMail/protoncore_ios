@@ -96,6 +96,7 @@ public struct AvailablePlansView: View {
                     }
                 }
             }
+            .bannerDisplayable(bannerState: $viewModel.showAlert, configuration: .default())
         }
     }
 

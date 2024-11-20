@@ -162,8 +162,10 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding {
         case .pending:
             throw ProtonPlansManagerError.transactionPending
         case .userCancelled:
+            transactionState = .transactionCancelledByUser
             throw ProtonPlansManagerError.transactionCancelledByUser
         @unknown default:
+            transactionState = .unknownError
             throw ProtonPlansManagerError.transactionUnknownError
         }
     }

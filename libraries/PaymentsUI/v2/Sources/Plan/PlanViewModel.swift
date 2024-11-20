@@ -29,6 +29,8 @@ public protocol PlanViewModelDelegate: AnyObject {
     func purchaseInProgress()
     func updatingAccount()
     func transactionCompleted()
+    func transactionCancelledByUser()
+    func transactionProcessError()
 }
 
 /// Represents a purchasable plan or free instance
@@ -88,20 +90,20 @@ public class PlanViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private let paymentsAPI: PaymentsAPIs
     private let remoteManager: RemoteManager
-    private var subscriptionManager: ProtonPlansManagerProviding?
+    private var plansManager: ProtonPlansManagerProviding?
 
     public init(envURL: EnvURLType,
                 remoteManager: RemoteManager,
                 composedPlan: ComposedPlan,
-                subscriptionManager: ProtonPlansManagerProviding? = nil) {
+                plansManager: ProtonPlansManagerProviding? = nil) {
 
         self.paymentsAPI = PaymentsAPIs(envURL: envURL)
         self.remoteManager = remoteManager
-        if let subManager = subscriptionManager {
-            self.subscriptionManager = subManager
+        if let pManager = plansManager {
+            self.plansManager = pManager
         } else {
-            self.subscriptionManager = ProtonPlansManager(environment: envURL,
-                                                          remoteManager: remoteManager)
+            self.plansManager = ProtonPlansManager(environment: envURL,
+                                                   remoteManager: remoteManager)
         }
 
         let progressEntitlements = composedPlan.plan.entitlements.compactMap {
@@ -189,13 +191,14 @@ public class PlanViewModel: ObservableObject {
     }
 
     public func purchasePlan() async {
-        guard let product = product as? Product, let name = name, let subscriptionManager = subscriptionManager else {
+        guard let product = product as? Product, let name = name, let plansManager = plansManager else {
             return
         }
 
         delegate?.purchaseInProgress()
 
-        subscriptionManager.transactionStatePublisher.sink { [weak self] value in
+        plansManager.transactionStatePublisher.sink { [weak self] value in
+
             guard let self = self else { return }
 
             switch value {
@@ -203,6 +206,10 @@ public class PlanViewModel: ObservableObject {
                 self.delegate?.transactionCompleted()
             case .createNewSubscription:
                 self.delegate?.updatingAccount()
+            case .transactionCancelledByUser:
+                self.delegate?.transactionCancelledByUser()
+            case .unknownError, .transactionProcessError, .mismatchTransactionIDs:
+                self.delegate?.transactionProcessError()
             default:
                 break
             }
@@ -210,7 +217,7 @@ public class PlanViewModel: ObservableObject {
         .store(in: &cancellables)
 
         do {
-            try await subscriptionManager.purchase(product, planName: name, planCycle: subscriptionPeriod.rawValue)
+            _ = try await plansManager.purchase(product, planName: name, planCycle: subscriptionPeriod.rawValue)
         } catch {
             debugPrint(error)
         }
