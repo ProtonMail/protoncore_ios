@@ -227,6 +227,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
         viewModel.finished.bind { [weak self] result in
             switch result {
             case let .done(data):
+                // TODO: SSO - Check SSO and present appropriate views
                 self?.delegate?.loginViewControllerDidFinish(endLoading: { [weak self] in self?.viewModel.isLoading.value = false }, data: data)
                 self?.measureLoginSuccess()
             case .totpCodeNeeded:

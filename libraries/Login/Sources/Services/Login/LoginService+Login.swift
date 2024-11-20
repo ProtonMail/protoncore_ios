@@ -102,6 +102,7 @@ extension LoginService: Login {
                 case let .success(status):
                     switch status {
                     case let .newCredential(credential, passwordMode):
+                        // TODO: SSO - Check that new SSO flows use this case
                         self.handleValidCredentials(credential: credential, passwordMode: passwordMode, mailboxPassword: nil, isSSO: true, completion: completion)
                     case .updatedCredential, .ssoChallenge, .askTOTP, .askFIDO2, .askAny2FA:
                         completion(.failure(.invalidState))
