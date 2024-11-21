@@ -54,7 +54,7 @@ public struct AvailablePlansView: View {
                     .padding(Theme.spacing.large)
 
                     ScrollView(showsIndicators: false) {
-                        ForEach(viewModel.filteredPlans, id: \.self) { viewModel in
+                        ForEach(viewModel.filteredPlans, id: \.id) { viewModel in
                             PlanView(viewModel: viewModel)
                                 .padding(.top, Theme.spacing.standard)
                         }

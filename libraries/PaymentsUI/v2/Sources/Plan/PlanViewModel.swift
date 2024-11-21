@@ -33,7 +33,7 @@ public protocol PlanViewModelDelegate: AnyObject {
 
 /// Represents a purchasable plan or free instance
 @MainActor
-public class PlanViewModel: ObservableObject {
+public class PlanViewModel: ObservableObject, Identifiable {
 
     private struct Constants {
         static func footerText(renew: Int) -> String {
@@ -231,6 +231,6 @@ extension PlanViewModel: Equatable {
 
 extension PlanViewModel: Hashable {
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(ObjectIdentifier(self))
+        hasher.combine(id)
     }
 }
