@@ -174,6 +174,7 @@ public final class LoginService {
                     }
 
                     if isSSO {
+                        // TODO: SSO - If no user keys -> start POST /devices
                         var ssoCredential = credential
                         ssoCredential.userName = user.name ?? ""
                         completion(.success(.finished(UserData(credential: .init(ssoCredential), user: user, salts: [], passphrases: [:], addresses: [], scopes: credential.scopes))))

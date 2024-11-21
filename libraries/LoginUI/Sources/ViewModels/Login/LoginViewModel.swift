@@ -173,6 +173,8 @@ final class LoginViewModel {
             switch result {
             case .success(.finished(let data)):
                 ObservabilityEnv.report(.ssoIdentityProviderLoginResult(status: .successful))
+                // TODO: SSO - Send a new state .ssoPendingWork that will handle the new flows:
+                // no keys, no device secret, empty, invalid or inactive secret
                 self?.finished.publish(.done(data))
             case let .failure(error):
                 ObservabilityEnv.report(.ssoIdentityProviderLoginResult(status: .failed))
