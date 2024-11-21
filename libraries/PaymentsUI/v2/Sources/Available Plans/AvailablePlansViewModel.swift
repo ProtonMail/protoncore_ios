@@ -97,7 +97,7 @@ public class AvailablePlansViewModel: ObservableObject {
     }
 
     func billingFilter(filter: BillingCycle) {
-
+        filteredPlans.removeAll()
         filteredPlans = filter == .all ? availablePlansViewModels : availablePlansViewModels.filter { return $0.subscriptionPeriod == filter }
 
         filteredPlans.forEach { plan in
