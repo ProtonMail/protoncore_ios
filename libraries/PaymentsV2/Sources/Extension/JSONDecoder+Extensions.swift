@@ -25,7 +25,7 @@ public extension JSONDecoder.KeyDecodingStrategy {
     static var lowerCamelCase: JSONDecoder.KeyDecodingStrategy {
         .custom {
             // this has been added convert the ID JSON key to the most common used id
-            if  $0.last!.stringValue == "ID" {
+            if  $0.last!.stringValue == "ID" || $0.last!.stringValue == "UUID" {
                 return AnyKey(stringValue: $0.last!.stringValue.lowercased())!
             }
             let currentKey = $0.last!.stringValue

@@ -244,4 +244,17 @@ final class PaymentsAPIsTokenTests: XCTestCase {
         XCTAssertEqual(expectedResult, result?.url)
         XCTAssertNil(result?.body)
     }
+
+    // MARK: Transaction UUID
+
+    func test_transactionUUID() throws {
+        
+        guard let expectedResult = URL(string: "https://proton.black/api/auth/v4/sessions/uuid") else {
+            return
+        }
+        let result = try? sut.url(for: .userTransactionUUID)
+
+        XCTAssertEqual(expectedResult, result?.url)
+        XCTAssertNil(result?.body)
+    }
 }

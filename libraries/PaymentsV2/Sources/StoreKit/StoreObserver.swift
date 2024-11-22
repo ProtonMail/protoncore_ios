@@ -27,6 +27,8 @@ public enum TransactionType {
     case failed
     case renewal
     case alreadyProcessed
+    case transactionUUIDNotFoundOrMismatching
+    case unableToVerifyAccountsUUIDs
     case unknown
 }
 
@@ -81,13 +83,22 @@ public final class StoreObserver {
         Task(priority: .background) {
             for await update in Transaction.updates {
                 if let transaction = try? update.payloadValue {
-                    guard let plan = planComposer?.matchPlanToStoreProduct(transaction.productID) else {
+                    guard let plan = planComposer?.matchPlanToStoreProduct(transaction.productID), let appAccountToken = transaction.appAccountToken else {
                         return
                     }
                     do {
-                        _ = try await transactionHandler?.processTransaction(transaction.toProtonTransaction(), plan: plan)
-                        await transaction.finish()
-                        transactionStatus = .successful
+                        guard let accountMatching = try await transactionHandler?.verifyTransactionUUIDs(appAccountToken: appAccountToken) else {
+                            transactionStatus = .unableToVerifyAccountsUUIDs
+                            return
+                        }
+                        if accountMatching {
+                            _ = try await transactionHandler?.processTransaction(transaction.toProtonTransaction(), plan: plan)
+                            await transaction.finish()
+                            transactionStatus = .successful
+                        } else {
+                            transactionStatus = .transactionUUIDNotFoundOrMismatching
+                            return
+                        }
                     } catch {
                         debugPrint(error)
 

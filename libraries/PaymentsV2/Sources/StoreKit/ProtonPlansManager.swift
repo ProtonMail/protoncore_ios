@@ -42,6 +42,7 @@ public enum ProtonPlansManagerError: Error {
     case unableToCreateRequest
     case unableToFetchProductsFromStore
     case unableToMatchProtonPlanToStoreProduct
+    case unableToGetUserTransactionUUID
 
     // Transaction error
     case transactionNotFound
@@ -138,7 +139,8 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding {
         self.planName = planName
         self.planCycle = planCycle
 
-        let result = try await product.purchase()
+        let userTransactionUUID = try await generateUserTransactionUUID()
+        let result = try await product.purchase(options: [.appAccountToken(userTransactionUUID)])
 
         switch result {
         case .success(let verificationResult):
@@ -167,6 +169,23 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding {
         @unknown default:
             transactionState = .unknownError
             throw ProtonPlansManagerError.transactionUnknownError
+        }
+    }
+
+    private func generateUserTransactionUUID() async throws -> UUID {
+        guard let request = try? paymentsAPI.url(for: .userTransactionUUID) else {
+            throw ProtonPlansManagerError.unableToGetUserTransactionUUID
+        }
+        
+        do {
+            let uuidStrign: UserTransactionUUIDResponse = try await remoteManager.getFromURL(request.url)
+            guard let uuid = UUID(uuidString: uuidStrign.uuid) else {
+                throw ProtonPlansManagerError.unableToGetUserTransactionUUID
+            }
+
+            return uuid
+        } catch {
+            throw ProtonPlansManagerError.unableToGetUserTransactionUUID
         }
     }
 

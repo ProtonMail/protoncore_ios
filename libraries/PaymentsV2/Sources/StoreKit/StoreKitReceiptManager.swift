@@ -22,18 +22,22 @@
 import Foundation
 import StoreKit
 
+enum StoreKitReceiptManagerError: Error {
+    case unableToExtractReceiptData
+}
+
 public protocol StoreKitReceiptManagerProviding {
     func fetchPurchaseReceipt() throws -> String
 }
 
-final public class StoreKitReceiptManager: StoreKitReceiptManagerProviding {
+public final class StoreKitReceiptManager: StoreKitReceiptManagerProviding {
 
     public init() {}
 
     public func fetchPurchaseReceipt() throws -> String {
         guard let url = Bundle.main.appStoreReceiptURL, let data = try? Data(contentsOf: url) else {
             debugPrint("Unable to get receipt data")
-            throw ProtonPlansManagerError.unableToExtractReceiptData
+            throw StoreKitReceiptManagerError.unableToExtractReceiptData
         }
 
         return data.base64EncodedString()

@@ -19,14 +19,20 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+import Foundation
 import ProtonCoreObservability
 import ProtonCoreNetworking
 import StoreKit
 
 public enum TransactionHandlerError: Error {
+
+    case unableToCreateRequest
     case unableToFindPlanName
     case unableToFindMatchingPlan
     case transactionIdNotEqualToOriginalTransactionId
+    case userTransactionUUIDNotMatching
+    case unableToGetBundleIdentifier
+    case unableToGetTransactionAmountOrCurrency
 }
 
 public enum TransactionHandlerState: String {
@@ -74,6 +80,7 @@ public final class TransactionHandler {
         }
 
         try await resolveTransaction(transaction, plan: plan)
+
         // transaction.appAccountToken
         // add API to fetch account UUID from BE --> AccountUUID
         // if transaction.appAccountToken == AccountUUID --> Process
@@ -82,6 +89,17 @@ public final class TransactionHandler {
 
     public func updateRemoteManager(remoteManager: RemoteManagerProviding) {
         self.remoteManager = remoteManager
+    }
+
+    public func verifyTransactionUUIDs(appAccountToken: UUID) async throws -> Bool {
+
+        guard let request = try? paymentsAPIs.url(for: .userTransactionUUID) else {
+            throw TransactionHandlerError.unableToCreateRequest
+        }
+        debugPrint("Fetching user transaction UUID")
+
+        let userUUID: UserTransactionUUIDResponse = try await remoteManager.getFromURL(request.url)
+        return appAccountToken == userUUID.uuidValue
     }
 }
 
@@ -97,13 +115,13 @@ private extension TransactionHandler {
         let transactionIdentifier = transaction.originalID
         guard let bundleIdentifier = Bundle.main.bundleIdentifier else {
             debugPrint("bundle not obtainable")
-            throw ProtonPlansManagerError.unableToGetBundleIdentifier
+            throw TransactionHandlerError.unableToGetBundleIdentifier
         }
 
         guard let amount = transaction.price, let currency = transaction.currencyIdentifier else {
             debugPrint("Impossible to get amount and currency from transaction")
             transactionState = .transactionProcessError
-            throw ProtonPlansManagerError.unableToGetTransactionAmountOrCurrency
+            throw TransactionHandlerError.unableToGetTransactionAmountOrCurrency
         }
 
         transactionState = .generatingReceipt
@@ -125,7 +143,7 @@ private extension TransactionHandler {
 
         guard let request = try? paymentsAPIs.url(for: .createToken(token: transactionToken)) else {
             transactionState = .transactionProcessError
-            throw ProtonPlansManagerError.unableToCreateRequest
+            throw TransactionHandlerError.unableToCreateRequest
         }
         debugPrint("Creating payment token..")
         do {
@@ -163,7 +181,7 @@ private extension TransactionHandler {
 
         guard let request = try? paymentsAPIs.url(for: .createSubscription(newSubscription: newSub)) else {
             transactionState = .transactionProcessError
-            throw ProtonPlansManagerError.unableToCreateRequest
+            throw TransactionHandlerError.unableToCreateRequest
         }
 
         transactionState = .createNewSubscription

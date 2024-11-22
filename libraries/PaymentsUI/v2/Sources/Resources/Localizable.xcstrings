@@ -199,7 +199,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Something went wrong, please retry. If the issue persists please contact our support team"
+            "value" : "Something went wrong, please retry. If the issue persists please contact our support team."
           }
         }
       }

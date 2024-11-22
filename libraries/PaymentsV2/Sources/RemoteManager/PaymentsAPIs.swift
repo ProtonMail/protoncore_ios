@@ -31,10 +31,31 @@ public struct PaymentsAPIs {
 
     private struct Constants {
         static var envPrefix = "https://"
-        static var moduleNameSpace = "/payments/"
+        static func moduleNameSpace(requestType: RequestType) -> String {
+            switch requestType {
+            case .userTransactionUUID:
+                return "/auth/"
+            default:
+                return "/payments/"
+            }
+        }
+
+        static func apiVersion(requestType: RequestType) -> APIv {
+            switch requestType {
+            case .userTransactionUUID:
+                return .v4
+            default:
+                return .v5
+            }
+        }
+
+        static func urlString(requestType: RequestType, baseURL: String) -> String {
+            return Constants.envPrefix + baseURL + Constants.moduleNameSpace(requestType: requestType) + Constants.apiVersion(requestType: requestType).rawValue + requestType.requestEndpoint
+        }
     }
 
     private enum APIv: String {
+        case v4
         case v5
     }
 
@@ -43,7 +64,7 @@ public struct PaymentsAPIs {
 
     public func url(for api: RequestType) throws -> APIRequest {
 
-        let urlString = Constants.envPrefix + envURL.baseUrl + Constants.moduleNameSpace + version.rawValue + api.requestEndpoint
+        let urlString = Constants.urlString(requestType: api, baseURL: envURL.baseUrl)
         var urlComponents = URLComponents(string: urlString)
 
         if let queryItems = api.queryComponents {
@@ -88,6 +109,7 @@ public enum RequestType {
 
     // MARK: Miscellaneous
     case icon(name: String)
+    case userTransactionUUID
 }
 
 extension RequestType {
@@ -112,6 +134,8 @@ extension RequestType {
             return "/plans"
         case .icon(let iconName):
             return "/resources/icons/\(iconName)"
+        case .userTransactionUUID:
+            return "/sessions/uuid"
         }
     }
 
@@ -138,6 +162,8 @@ extension RequestType {
         case .availablePlans:
             return nil
         case .icon:
+            return nil
+        case .userTransactionUUID:
             return nil
         }
     }
@@ -170,6 +196,8 @@ extension RequestType {
 
             return generateQueryParameters(parameters: queryParams)
         case .icon:
+            return nil
+        case .userTransactionUUID:
             return nil
         }
     }

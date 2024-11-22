@@ -64,7 +64,7 @@ public class RemoteManager: RemoteManagerProviding {
 
     public func updateSession(sessionID: String, authToken: String) {
         requestHTTPHeader[.sessionId] = sessionID
-        requestHTTPHeader[.authorization] =  "Bearer \(authToken)"
+        requestHTTPHeader[.authorization] = "Bearer \(authToken)"
     }
 
     // MARK: Private methods

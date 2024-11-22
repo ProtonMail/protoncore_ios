@@ -37,6 +37,7 @@ public protocol ProtonTransactionProviding {
     var originalID: UInt64 { get }
     var productID: String { get }
     var price: Decimal? { get }
+    var userTransactionUUID: UUID? { get }
     var currencyIdentifier: String? { get }
 }
 
@@ -45,6 +46,7 @@ public struct ProtonTransaction: ProtonTransactionProviding {
     public var originalID: UInt64
     public var productID: String
     public var price: Decimal?
+    public var userTransactionUUID: UUID?
     public var currencyIdentifier: String?
 }
 
@@ -58,6 +60,7 @@ extension Transaction {
             originalID: originalID,
             productID: productID,
             price: price,
+            userTransactionUUID: appAccountToken,
             currencyIdentifier: currencyCode )
     }
 }
