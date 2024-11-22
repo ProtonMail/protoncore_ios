@@ -150,6 +150,7 @@ extension String {
     static let paymentsUI: String = "ProtonCorePaymentsUI"
     static let paymentsUIV2: String = "ProtonCorePaymentsUIV2"
     static let paymentsUIResourcesiOS: String = "ProtonCorePaymentsUIResourcesiOS"
+    static let protonCoreUI: String = "ProtonCoreUI"
     static let pushNotifications: String = "ProtonCorePushNotifications"
     static let quarkCommands: String = "ProtonCoreQuarkCommands"
     static let services: String = "ProtonCoreServices"
@@ -211,7 +212,6 @@ extension String {
     static let trustKit: String = "TrustKit"
     static let viewInspector: String = "ViewInspector"
     static let yams: String = "Yams"
-    static let protonCoreUI: String = "ProtonCoreUI"
 
     // MARK: - Plugin names
 
@@ -274,6 +274,7 @@ extension Target.Dependency {
     static var paymentsUIV2: Target.Dependency { .target(name: .paymentsUIV2) }
     static var paymentsUIResourcesiOS: Target.Dependency { .target(name: .paymentsUIResourcesiOS,
                                                                    condition: .when(platforms: [.iOS, .macCatalyst])) }
+    static var protonCoreUI: Target.Dependency { .target(name: .protonCoreUI) }
     static var pushNotifications: Target.Dependency { .target(name: .pushNotifications) }
     static var quarkCommands: Target.Dependency { .target(name: .quarkCommands) }
     static var services: Target.Dependency { .target(name: .services) }
@@ -336,8 +337,7 @@ extension Target.Dependency {
     static var sdWebImage: Target.Dependency { .product(name: .sdWebImage, package: .sdWebImage) }
     static var viewInspector: Target.Dependency { .product(name: .viewInspector, package: .viewInspector)}
     static var yams: Target.Dependency { .product(name: .yams, package: .yams)}
-    static var protonCoreUI: Target.Dependency { .product(name: .protonCoreUI, package: .protonCoreUI)}
-
+  
     // MARK: - Helpers
 
     static var cryptoGoUsedInTests: Target.Dependency { .cryptoPatchedGoImplementation }
@@ -1572,6 +1572,19 @@ add(
     ]
 )
 
+// MARK: ProtonCoreUI
+
+add(
+    product: .protonCoreUI,
+    targets: [
+        coreTarget(name: .protonCoreUI,
+                   path: "libraries/ProtonCoreUI/Sources"),
+
+        coreTestTarget(name: .protonCoreUI + "UnitTests",
+                       path: "libraries/ProtonCoreUI/Tests/ProtonCoreUITests")
+    ]
+)
+
 // MARK: QuarkCommands
 
 add(
@@ -2112,10 +2125,6 @@ let package = Package(
         .package(
             url: "https://github.com/jpsim/Yams.git",
             from: "5.1.3"
-        ),
-        .package(
-            url: "https://gitlab.protontech.ch/apple/shared/ProtonCoreUI.git",
-            branch: "develop"
         )
     ],
     targets: targets + [
