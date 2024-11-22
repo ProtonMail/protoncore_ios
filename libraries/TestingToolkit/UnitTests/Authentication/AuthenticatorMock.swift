@@ -31,7 +31,13 @@ import ProtonCoreNetworking
 import ProtonCoreServices
 
 public struct AuthenticatorMock: AuthenticatorInterface {
+
     public init() {}
+
+    @AsyncThrowingFuncStub(AuthenticatorInterface.authenticate(idpEmail:responseToken:), initialReturn: .crash) public var authenticateStubWithSSOAsync
+    public func authenticate(idpEmail: String, responseToken: ProtonCoreNetworking.SSOResponseToken) async throws -> ProtonCoreAuthentication.Authenticator.Status {
+        try await authenticateStubWithSSOAsync(idpEmail, responseToken)
+    }
 
     @FuncStub(AuthenticatorMock.authenticate(idpEmail:responseToken:completion:)) public var authenticateStubWithSSO
     public func authenticate(idpEmail: String, responseToken: SSOResponseToken, completion: @escaping Authenticator.Completion) {
@@ -83,9 +89,14 @@ public struct AuthenticatorMock: AuthenticatorInterface {
         createAddressStub(credential, domain, displayName, signature, completion)
     }
 
-    @FuncStub(Self.getUserInfo) public var getUserInfoStub
+    @FuncStub(Self.getUserInfo(_:completion:)) public var getUserInfoStub
     public func getUserInfo(_ credential: Credential?, completion: @escaping (Result<User, AuthErrors>) -> Void) {
         getUserInfoStub(credential, completion)
+    }
+
+    @AsyncThrowingFuncStub(AuthenticatorInterface.getUserInfo(_:), initialReturn: .crash) public var getUserInfoAsyncStub
+    public func getUserInfo(_ credential: ProtonCoreNetworking.Credential?) async throws -> User {
+        try await getUserInfoAsyncStub(credential)
     }
 
     @FuncStub(Self.getAddresses) public var getAddressesStub

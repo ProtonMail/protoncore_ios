@@ -28,6 +28,9 @@ import ProtonCoreServices
 
 /// Handles interactions with the Authentication routes.
 public protocol AuthenticatorInterface {
+    func authenticate(idpEmail: String, responseToken: SSOResponseToken) async throws -> Authenticator.Status
+
+    @available(*, deprecated, message: "Use async version")
     func authenticate(idpEmail: String, responseToken: SSOResponseToken, completion: @escaping Authenticator.Completion)
 
     func authenticate(username: String, password: String, challenge: ChallengeProperties?, intent: Intent?, srpAuth: SrpAuth?, completion: @escaping Authenticator.Completion)
@@ -63,6 +66,7 @@ public protocol AuthenticatorInterface {
                        completion: @escaping (Result<Address, AuthErrors>) -> Void)
 
     func getUserInfo(_ credential: Credential?, completion: @escaping (Result<User, AuthErrors>) -> Void)
+    func getUserInfo(_ credential: Credential?) async throws -> User
 
     func getAddresses(_ credential: Credential?, completion: @escaping (Result<[Address], AuthErrors>) -> Void)
 
@@ -123,15 +127,24 @@ public extension AuthenticatorInterface {
     func setUsername(username: String, completion: @escaping (Result<(), AuthErrors>) -> Void) {
         setUsername(nil, username: username, completion: completion)
     }
+
     func getKeySalts(completion: @escaping (Result<[KeySalt], AuthErrors>) -> Void) {
         getKeySalts(nil, completion: completion)
     }
+
+    @available(*, deprecated, message: "Use async version")
     func getUserInfo(completion: @escaping (Result<User, AuthErrors>) -> Void) {
         getUserInfo(nil, completion: completion)
     }
+
+    func getUserInfo() async throws -> User {
+        try await getUserInfo(nil)
+    }
+
     func getAddresses(completion: @escaping (Result<[Address], AuthErrors>) -> Void) {
         getAddresses(nil, completion: completion)
     }
+    
     func createAddress(domain: String, completion: @escaping (Result<Address, AuthErrors>) -> Void) {
         createAddress(nil, domain: domain, displayName: nil, signature: nil, completion: completion)
     }

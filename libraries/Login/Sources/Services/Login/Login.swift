@@ -338,7 +338,10 @@ public extension CreateAddressKeysError {
 }
 
 public protocol Login {
+    func validateAndAuthenticateSSO(idpEmail: String, responseToken: SSOResponseToken) async throws -> LoginStatus
+    @available(*, deprecated, renamed: "validateAndAuthenticateSSO", message: "Remove as part of GSSO")
     func processResponseToken(idpEmail: String, responseToken: SSOResponseToken, completion: @escaping (Result<LoginStatus, LoginError>) -> Void)
+
     func getSSORequest(challenge ssoChallengeResponse: SSOChallengeResponse) async -> (request: URLRequest?, error: String?)
     func isProtonPage(url: URL?) -> Bool
 

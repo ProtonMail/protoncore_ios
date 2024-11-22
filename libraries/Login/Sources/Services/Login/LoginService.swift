@@ -174,7 +174,7 @@ public final class LoginService {
                     }
 
                     if isSSO {
-                        // TODO: SSO - If no user keys -> start POST /devices
+                        // TODO: Will be removed as part of GSSO
                         var ssoCredential = credential
                         ssoCredential.userName = user.name ?? ""
                         completion(.success(.finished(UserData(credential: .init(ssoCredential), user: user, salts: [], passphrases: [:], addresses: [], scopes: credential.scopes))))
@@ -202,6 +202,32 @@ public final class LoginService {
                 }
             }
         }
+    }
+
+    func handleSSOCredentials(credential: Credential, passwordMode: PasswordMode) async throws -> LoginStatus {
+        guard let authDelegate = apiService.authDelegate else { throw LoginError.invalidState }
+        authDelegate.onSessionObtaining(credential: credential)
+        self.apiService.setSessionUID(uid: credential.UID)
+
+        let user = try await authManager.getUserInfo()
+
+        self.featureFlagsRepository.setApiService(self.apiService)
+        if !user.ID.isEmpty {
+            self.featureFlagsRepository.setUserId(user.ID)
+        }
+        try await self.featureFlagsRepository.fetchFlags()
+
+        var ssoCredential = credential
+        ssoCredential.userName = user.name ?? ""
+
+        return .finished(UserData(
+            credential: .init(ssoCredential),
+            user: user,
+            salts: [],
+            passphrases: [:],
+            addresses: [],
+            scopes: credential.scopes
+        ))
     }
 
     func withAuthDelegateAvailable<T>(_ completion: (Result<T, LoginError>) -> Void, continuation: (AuthDelegate) -> Void) {

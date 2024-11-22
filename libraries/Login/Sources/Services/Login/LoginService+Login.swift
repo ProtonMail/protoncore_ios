@@ -30,13 +30,21 @@ import ProtonCoreServices
 import ProtonCoreObservability
 
 extension LoginService: Login {
-
+    @available(*, deprecated, renamed: "validateAndAuthenticateSSO", message: "Remove as part of GSSO")
     public func processResponseToken(idpEmail: String, responseToken: SSOResponseToken, completion: @escaping (Result<LoginStatus, LoginError>) -> Void) {
         if responseToken.uid != apiService.sessionUID,
            responseToken.uid.caseInsensitiveCompare("notimplementedyet") != .orderedSame {
             assertionFailure("response token UID is not equal to apiService UID and it should.")
         }
         authenticateWithSSO(idpEmail: idpEmail, responseToken: responseToken, completion: completion)
+    }
+
+    public func validateAndAuthenticateSSO(idpEmail: String, responseToken: SSOResponseToken) async throws -> LoginStatus {
+        if responseToken.uid != apiService.sessionUID,
+           responseToken.uid.caseInsensitiveCompare("notimplementedyet") != .orderedSame {
+            assertionFailure("response token UID is not equal to apiService UID and it should.")
+        }
+        return try await authenticateWithSSO(idpEmail: idpEmail, responseToken: responseToken)
     }
 
     public func getSSORequest(challenge ssoChallengeResponse: SSOChallengeResponse) async -> (request: URLRequest?, error: String?) {
@@ -95,6 +103,7 @@ extension LoginService: Login {
         return hosts.contains(where: url.absoluteString.contains)
     }
 
+    @available(*, deprecated, message: "Use async version. Remove as part of GSSO")
     private func authenticateWithSSO(idpEmail: String, responseToken: SSOResponseToken, completion: @escaping (Result<LoginStatus, LoginError>) -> Void) {
         withAuthDelegateAvailable(completion) { authDelegate in
             authManager.authenticate(idpEmail: idpEmail, responseToken: responseToken) { result in
@@ -113,6 +122,19 @@ extension LoginService: Login {
                     completion(.failure(error.asLoginError()))
                 }
             }
+        }
+    }
+
+    private func authenticateWithSSO(
+        idpEmail: String,
+        responseToken: SSOResponseToken
+    ) async throws -> LoginStatus {
+        let authStaus = try await authManager.authenticate(idpEmail: idpEmail, responseToken: responseToken)
+        switch authStaus {
+        case let .newCredential(credential, passwordMode):
+            return try await handleSSOCredentials(credential: credential, passwordMode: passwordMode)
+        case .updatedCredential, .ssoChallenge, .askTOTP, .askFIDO2, .askAny2FA:
+            throw LoginError.invalidState
         }
     }
 
