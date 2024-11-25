@@ -260,7 +260,7 @@
 
 "Join %@" = "Uniu-vos %@";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "%@ us ha afegit a la seva organització Proton.";
 
 "Continue" = "Continua";
 
@@ -276,19 +276,19 @@
 
 "Password doesn't match" = "La contrasenya no coincideix.";
 
-"Sign-in requested on another device. Was it you?" = "Sign-in requested on another device. Was it you?";
+"Sign-in requested on another device. Was it you?" = "S'ha sol·licitat una connexió en un altre dispositiu. Heu estat vosaltres?";
 
-"Check that the confirmation code match the code on your other device." = "Check that the confirmation code match the code on your other device.";
+"Check that the confirmation code match the code on your other device." = "Comproveu que el codi de confirmació coincideixi amb el codi de l'altre dispositiu.";
 
 "Confirmation code" = "Codi de confirmació";
 
-"If you didn't make this request, cancel it now." = "If you didn't make this request, cancel it now.";
+"If you didn't make this request, cancel it now." = "Si no heu fet aquesta sol·licitud, cancel·leu-la ara.";
 
 "Yes, it was me" = "Sí, era jo.";
 
 "No, it wasn't me" = "No, no era jo.";
 
-"Share the confirmation code with your administrator" = "Share the confirmation code with your administrator";
+"Share the confirmation code with your administrator" = "Compartiu el codi de confirmació amb l'administrador";
 
 "Approve the sign-in from another device" = "Aprova l'inici de sessió des d'un altre dispositiu";
 
@@ -302,11 +302,11 @@
 
 "Devices available:" = "Dispositius disponibles:";
 
-"Operation couldn't be completed. Please try again." = "Operation couldn't be completed. Please try again.";
+"Operation couldn't be completed. Please try again." = "L'operació no s'ha pogut completar. Torneu-ho a provar.";
 
 "Enter your backup password" = "Introduïu la vostra contrasenya de recuperació";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Per assegurar-vos que realment esteu intentant iniciar la sessió, introduïu la vostra contrasenya de recuperació.";
 
 "Access granted" = "S'ha atorgat l'accés.";
 
@@ -314,7 +314,7 @@
 
 "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
 
-"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+"Contact your administrator if the problem persists." = "Contacteu amb l'administrador si el problema persisteix.";
 
 "Back to sign-in" = "Torna a l'inici de sessió";
 
