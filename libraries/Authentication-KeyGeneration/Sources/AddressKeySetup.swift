@@ -88,7 +88,7 @@ final class AddressKeySetup {
         /// build key matadata list
         let keylist: [[String: Any]] = [[
             "Fingerprint": armoredAddrKey.fingerprint,
-            "SHA256Fingerprints": armoredAddrKey.sha256Fingerprint,
+            "SHA256Fingerprints": armoredAddrKey.sha256Fingerprints,
             "Primary": 1,
             "Flags": keyFlags.rawValue
         ]]

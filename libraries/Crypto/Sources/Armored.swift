@@ -95,8 +95,12 @@ extension Armored where Type == ArmoredType.Key {
         return self.value.fingerprint
     }
 
-    public var sha256Fingerprint: [String] {
+    public var sha256Fingerprint: String {
         return self.value.sha256Fingerprint
+    }
+
+    public var sha256Fingerprints: [String] {
+        return self.value.sha256Fingerprints
     }
 }
 

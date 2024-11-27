@@ -45,7 +45,17 @@ extension String {
     }
 
     // get sha256 fingerprint
-    public var sha256Fingerprint: [String] {
+    public var sha256Fingerprint: String {
+        do {
+            let key = try throwing { error in CryptoGo.CryptoNewKeyFromArmored(self, &error) }
+            return key?.getSHA256Fingerprint() ?? ""
+        } catch {
+            return ""
+        }
+    }
+
+    // get sha256 fingerprints
+    public var sha256Fingerprints: [String] {
         do {
             let jsonFingerprints = try throwing { error in CryptoGo.HelperGetJsonSHA256Fingerprints(self, &error) }
             guard let jsondata = jsonFingerprints else {
