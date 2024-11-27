@@ -188,6 +188,8 @@ public enum LUITranslation: TranslationsExposing {
     case admin_grant_access_description
     case grant_access_button_title
     case deny_access_button_title
+    case signing_you_in
+    case to_your_organization
 
     public var l10n: String {
         switch self {
@@ -514,6 +516,10 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Grant access", comment: "Grant access button title")
         case .deny_access_button_title:
             return localized(key: "Deny access", comment: "Deny access button title")
+        case .signing_you_in:
+            return localized(key: "Signing you in", comment: "SSO Signing in loading screen title")
+        case .to_your_organization:
+            return localized(key: "to your organization", comment: "SSO Signing in loading screen subtitle")
         }
     }
 }
