@@ -167,6 +167,7 @@ final class LoginViewModel {
         await login.getSSORequest(challenge: ssoChallengeResponse)
     }
 
+    @available(*, deprecated, renamed: "processResponseTokenV2", message: "Remove as part of GSSO")
     func processResponseToken(idpEmail: String, responseToken: SSOResponseToken) {
         isLoading.value = true
         login.processResponseToken(idpEmail: idpEmail, responseToken: responseToken) { [weak self] result in
@@ -183,6 +184,30 @@ final class LoginViewModel {
             default:
                 self?.error.publish(.invalidState)
                 self?.isLoading.value = false
+            }
+        }
+    }
+
+    func processResponseTokenV2(idpEmail: String, responseToken: SSOResponseToken) {
+        isLoading.value = true
+        Task { [weak self] in
+            guard let self else { return }
+            do {
+                ObservabilityEnv.report(.ssoIdentityProviderLoginResult(status: .successful))
+                let loginStatus = try await self.login.validateAndAuthenticateSSO(idpEmail: idpEmail, responseToken: responseToken)
+                guard case .finished(let userData) = loginStatus else {
+                    throw LoginError.invalidState
+                }
+                self.finished.publish(.done(userData))
+            } catch {
+                PMLog.error(error, sendToExternal: true)
+                ObservabilityEnv.report(.ssoIdentityProviderLoginResult(status: .failed))
+                if let loginError = error as? LoginError {
+                    self.error.publish(loginError)
+                } else {
+                    self.error.publish(.invalidState)
+                }
+                self.isLoading.value = false
             }
         }
     }

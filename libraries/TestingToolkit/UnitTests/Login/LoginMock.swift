@@ -34,7 +34,14 @@ import ProtonCoreTestingToolkitUnitTestsCore
 #endif
 
 public class LoginMock: Login {
+
+    
     public init() {}
+
+    @AsyncThrowingFuncStub(Login.validateAndAuthenticateSSO(idpEmail:responseToken:), initialReturn: .crash) public var validateAndAuthenticateSSOStub
+    public func validateAndAuthenticateSSO(idpEmail: String, responseToken: ProtonCoreNetworking.SSOResponseToken) async throws -> ProtonCoreLogin.LoginStatus {
+        try await validateAndAuthenticateSSOStub(idpEmail, responseToken)
+    }
 
     @FuncStub(Login.processResponseToken) public var processResponseTokenStub
     public func processResponseToken(idpEmail: String, responseToken: SSOResponseToken, completion: @escaping (Result<LoginStatus, LoginError>) -> Void) {

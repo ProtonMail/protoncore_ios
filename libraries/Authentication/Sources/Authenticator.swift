@@ -58,6 +58,7 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
     private let srpBuilder = SRPBuilder()
 
     /// login with SSO
+    @available(*, deprecated, message: "Use async version")
     public func authenticate(idpEmail: String,
                              responseToken: SSOResponseToken,
                              completion: @escaping Completion) {
@@ -71,6 +72,24 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
                 completion(.success(.newCredential(credential, authResponse.passwordMode)))
             case .failure(let error):
                 completion(.failure(.networkingError(error)))
+            }
+        }
+    }
+
+    /// login with SSO async
+    public func authenticate(idpEmail: String, responseToken: SSOResponseToken) async throws -> Status {
+        try await withCheckedThrowingContinuation { continuation in
+            // 1. auth info request
+            let authClient = AuthService(api: self.apiService)
+            authClient.ssoAuthentication(ssoResponseToken: responseToken) { [weak self] response in
+                switch response {
+                case .success(let authResponse):
+                    let credential = Credential(res: authResponse, userName: idpEmail, userID: authResponse.userID)
+                    self?.apiService.setSessionUID(uid: credential.UID)
+                    continuation.resume(returning: .newCredential(credential, authResponse.passwordMode))
+                case .failure(let error):
+                    continuation.resume(throwing: AuthErrors.networkingError(error))
+                }
             }
         }
     }
@@ -330,6 +349,7 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
         }
     }
 
+    @available(*, deprecated, message: "Use async version")
     public func getUserInfo(_ credential: Credential? = nil, completion: @escaping (Result<User, AuthErrors>) -> Void) {
         var route = AuthService.UserInfoEndpoint()
         if let auth = credential {
@@ -338,6 +358,26 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
         self.apiService.perform(request: route, decodableCompletion: mapValueAndError(completion) { (response: AuthService.UserResponse) in
             response.user
         })
+    }
+
+    public func getUserInfo(_ credential: Credential? = nil) async throws -> User {
+        var route = AuthService.UserInfoEndpoint()
+        if let auth = credential {
+            route.auth = AuthCredential(auth)
+        }
+        return try await withCheckedThrowingContinuation { continuation in
+            self.apiService.perform(request: route) { (_, result: Result<AuthService.UserResponse, ResponseError>) in
+                switch result {
+                case .success(let response):
+                    continuation.resume(returning: response.user)
+                case .failure(let error):
+                    let throwingError = error.isApiIsBlockedError ?
+                    AuthErrors.apiMightBeBlocked(message: error.localizedDescription, originalError: error) :
+                        .networkingError(error)
+                    continuation.resume(throwing: throwingError)
+                }
+            }
+        }
     }
 
     public func getAddresses(_ credential: Credential? = nil, completion: @escaping (Result<[Address], AuthErrors>) -> Void) {
