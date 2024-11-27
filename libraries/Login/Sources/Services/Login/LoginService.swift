@@ -181,9 +181,10 @@ public final class LoginService {
                         return
                     }
 
-                    // This is because of a bug on the API, where accounts with no keys return PasswordMode = 2.
-                    // (according to Android code)
-                    if passwordMode == .two && !user.keys.isEmpty && self.minimumAccountType != .username {
+                    /// There are accounts that are in 2 password mode, but don't effectively require a second password.
+                    /// This is because those accounts have no keys (so key password = NULL != account password).
+                    /// An example of accounts that happen to behave like this are the `accountType = .username` ones.
+                    if passwordMode == .two && !user.keys.isEmpty {
                         completion(.success(.askSecondPassword))
                         return
                     }

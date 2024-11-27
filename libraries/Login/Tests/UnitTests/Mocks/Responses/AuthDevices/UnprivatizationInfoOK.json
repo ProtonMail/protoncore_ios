@@ -1,0 +1,11 @@
+{
+  "State": 0,
+  "InvitationData": "{\"Address\":\"member@internal-domain.com\", \"Revision\":2}",
+  "InvitationSignature": "string",
+  "InvitationEmail": "string",
+  "AdminEmail": "admin@proton.ch",
+  "OrgKeyFingerprintSignature": "OrgKeyFingerprintSignature",
+  "OrgPublicKey": "OrgPublicKey",
+  "PrivateIntent": true,
+  "Code": 1000
+}

@@ -310,6 +310,39 @@ final class AuthDeviceRequestTests: XCTestCase {
         XCTAssertNil(response.error)
     }
 
+    func testUnprivatizationInfoResponse() async throws {
+
+        let dataRes = try loadMockJSON(filename: "UnprivatizationInfoOK")
+        let res = try JSONDecoder.decapitalisingFirstLetter
+            .decode(UnprivatizationInfo.self, from: dataRes)
+
+        let sut = UnprivatizationInfoRequest()
+
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+            if method == .get && path.contains("/core/v4/members/me/unprivatize") {
+                completion(nil, .success(res.toSuccessfulResponse))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+        apiService.requestDecodableStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+            if method == .get && path.contains("/core/v4/members/me/unprivatize") {
+                completion(nil, .success(res))
+            } else {
+                XCTFail()
+                completion(nil, .success([:]))
+            }
+        }
+
+        let (_, response): (_, UnprivatizationInfo) = await apiService.perform(request: sut, response: res)
+
+        XCTAssertEqual(response.responseCode, 1000)
+        XCTAssertEqual(response.orgPublicKey.value, "OrgPublicKey")
+        XCTAssertEqual(response.adminEmail, "admin@proton.ch")
+        XCTAssertNil(response.error)
+    }
+
     private func loadMockJSON(filename: String) throws -> Data {
         let url = Bundle.module.url(forResource: filename, withExtension: "json")!
         return try Data(contentsOf: url)
