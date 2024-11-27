@@ -119,7 +119,7 @@ final class AddressKeyActivation {
                 }
                 let keylist: [[String: Any]] = [[
                     "Fingerprint": updatedPrivateKey.fingerprint,
-                    "SHA256Fingerprints": updatedPrivateKey.sha256Fingerprint,
+                    "SHA256Fingerprints": updatedPrivateKey.sha256Fingerprints,
                     "Primary": 1,
                     "Flags": keyFlags.rawValue
                 ]]

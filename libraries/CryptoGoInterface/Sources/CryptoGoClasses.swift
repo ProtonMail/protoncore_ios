@@ -33,6 +33,7 @@ public protocol CryptoKey {
     func getArmoredPublicKey(_ error: NSErrorPointer) -> String
     func getArmoredPublicKey(withCustomHeaders comment: String?, version: String?, error: NSErrorPointer) -> String
     func getFingerprint() -> String
+    func getSHA256Fingerprint() -> String
     func getHexKeyID() -> String
     func getPublicKey() throws -> Data
     func isExpired() -> Bool
