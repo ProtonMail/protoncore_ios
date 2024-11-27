@@ -414,3 +414,7 @@ public extension Login {
         }
     }
 }
+
+public enum SSOLoginError: Error {
+    case authDeviceNotFound
+}

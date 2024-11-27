@@ -30,12 +30,14 @@ final class DeviceSecretRepositoryTests: XCTestCase {
     var sut: DeviceSecretRepository!
 
     override func setUpWithError() throws {
+        try super.setUpWithError()
         provider = SecItemMethodsProviderMock()
         keychain = Keychain(service: "test.service", accessGroup: "test.access.group", secItemMethodsProvider: provider)
         sut = DeviceSecretRepository(keychain: keychain)
     }
 
     override func tearDownWithError() throws {
+        super.tearDown()
         keychain = nil
         sut = nil
         provider = nil
