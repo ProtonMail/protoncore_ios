@@ -109,6 +109,11 @@ public struct AuthenticatorMock: AuthenticatorInterface {
         getKeySaltsStub(credential, completion)
     }
 
+    @AsyncThrowingFuncStub(AuthenticatorInterface.getKeys, initialReturn: .crash) public var getKeysStub
+    public func getKeys(_ credential: Credential?, email: String, internalOnly: Bool) async throws -> AuthService.KeysInfoResponse? {
+        try await getKeysStub(credential, email, internalOnly)
+    }
+
     @FuncStub(Self.forkSession) public var forkSessionStub
     public func forkSession(_ credential: Credential?,
                             useCase: AuthService.ForkSessionUseCase,

@@ -34,7 +34,6 @@ import ProtonCoreTestingToolkitUnitTestsCore
 #endif
 
 public class LoginMock: Login {
-
     
     public init() {}
 

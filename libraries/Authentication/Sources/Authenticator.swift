@@ -400,6 +400,26 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
         })
     }
 
+    public func getKeys(_ credential: Credential? = nil, email: String, internalOnly: Bool) async throws -> AuthService.KeysInfoResponse? {
+        var route = AuthService.KeysEndpoint(email: email, internalOnly: internalOnly)
+        if let auth = credential {
+            route.auth = AuthCredential(auth)
+        }
+        return try await withCheckedThrowingContinuation { continuation in
+            self.apiService.perform(request: route) { (_, result: Result<AuthService.KeysInfoResponse, ResponseError>) in
+                switch result {
+                case .success(let response):
+                    continuation.resume(returning: response)
+                case .failure(let error):
+                    let throwingError = error.isApiIsBlockedError ?
+                    AuthErrors.apiMightBeBlocked(message: error.localizedDescription, originalError: error) :
+                        .networkingError(error)
+                    continuation.resume(throwing: throwingError)
+                }
+            }
+        }
+    }
+
     public func forkSession(_ credential: Credential? = nil,
                             useCase: AuthService.ForkSessionUseCase,
                             completion: @escaping (Result<AuthService.ForkSessionResponse, AuthErrors>) -> Void) {
