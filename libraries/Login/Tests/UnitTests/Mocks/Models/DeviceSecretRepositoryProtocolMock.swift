@@ -1,6 +1,6 @@
 //
-//  ActivateAuthDeviceRequest.swift
-//  ProtonCore-Login - Created on 13.11.24.
+//  DeviceSecretRepositoryProtocolMock.swift
+//  ProtonCore-Login-Tests - Created on 27.11.2024.
 //
 //  Copyright (c) 2024 Proton Technologies AG
 //
@@ -19,10 +19,20 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-public struct DeviceSecret: Codable, Equatable {
-    public let userId: String
-    public let deviceId: String
-    public let secret: String
-    public let token: String
-}
+import ProtonCoreLogin
 
+class DeviceSecretRepositoryProtocolMock: DeviceSecretRepositoryProtocol {
+    var store: [String: DeviceSecret] = [:]
+
+    func getByUserId(userId: String) throws -> ProtonCoreLogin.DeviceSecret? {
+        store[userId]
+    }
+    
+    func upsert(deviceSecret: ProtonCoreLogin.DeviceSecret) throws {
+        store[deviceSecret.userId] = deviceSecret
+    }
+    
+    func delete(for userId: String) throws {
+        store[userId] = nil
+    }
+}

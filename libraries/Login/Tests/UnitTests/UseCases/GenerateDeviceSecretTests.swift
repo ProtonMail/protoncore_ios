@@ -1,6 +1,6 @@
 //
-//  ActivateAuthDeviceRequest.swift
-//  ProtonCore-Login - Created on 13.11.24.
+//  GenerateDeviceSecretTests.swift
+//  ProtonCore-Login-Tests - Created on 27.11.2024.
 //
 //  Copyright (c) 2024 Proton Technologies AG
 //
@@ -19,10 +19,28 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-public struct DeviceSecret: Codable, Equatable {
-    public let userId: String
-    public let deviceId: String
-    public let secret: String
-    public let token: String
-}
+#if os(iOS)
+import XCTest
+@testable import ProtonCoreLogin
 
+final class GenerateDeviceSecretTests: XCTestCase {
+
+    var sut: GenerateDeviceSecret!
+
+    override func setUpWithError() throws {
+        try super.setUpWithError()
+        sut = GenerateDeviceSecret()
+    }
+
+    override func tearDownWithError() throws {
+        super.tearDown()
+        sut = nil
+    }
+
+    func testGenerateDeviceSecretIs32Bytes() throws {
+        let deviceSecret = try sut.invoke()
+        let deviceSecretData = Data(base64Encoded: deviceSecret)
+        XCTAssertEqual(deviceSecretData?.count, 32)
+    }
+}
+#endif

@@ -22,7 +22,13 @@
 import Foundation
 import ProtonCoreKeymaker
 
-public final class DeviceSecretRepository {
+public protocol DeviceSecretRepositoryProtocol {
+    func getByUserId(userId: String) throws -> DeviceSecret?
+    func upsert(deviceSecret: DeviceSecret) throws
+    func delete(for userId: String) throws
+}
+
+public final class DeviceSecretRepository: DeviceSecretRepositoryProtocol {
     public enum Constants {
         public static let defaultKeychainService = "me.proton.protoncore.account"
         public static let defaultKeychainAccesGroup = "me.proton.protoncore.account"

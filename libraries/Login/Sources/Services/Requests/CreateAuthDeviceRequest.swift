@@ -36,17 +36,17 @@ public final class CreateAuthDeviceRequest: Request {
     public var method: HTTPMethod = .post
 
     public let name: String
-    public let activationToken: String
+    public let activationToken: String?
 
-    public init(name: String, activationToken: String) {
+    public init(name: String, activationToken: String? = nil) {
         self.name = name
         self.activationToken = activationToken
     }
 
     public var parameters: [String: Any]? {
-        return [
+        [
             "Name": self.name,
             "ActivationToken": self.activationToken
-        ]
+        ].compactMapValues { $0 }
     }
 }

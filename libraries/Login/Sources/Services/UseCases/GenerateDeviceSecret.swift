@@ -1,6 +1,6 @@
 //
-//  ActivateAuthDeviceRequest.swift
-//  ProtonCore-Login - Created on 13.11.24.
+//  GenerateDeviceSecret.swift
+//  ProtonCore-Login - Created on 26.11.24.
 //
 //  Copyright (c) 2024 Proton Technologies AG
 //
@@ -19,10 +19,23 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-public struct DeviceSecret: Codable, Equatable {
-    public let userId: String
-    public let deviceId: String
-    public let secret: String
-    public let token: String
-}
+import Foundation
+import ProtonCoreDataModel
 
+
+/// Generate new random device secret.
+///
+/// return: 32-byte, base64-ed random salt as String
+struct GenerateDeviceSecret {
+    private enum Constants {
+        static let deviceSecretBytes = 32
+    }
+
+    func invoke() throws -> String {
+        var keyData = Data(count: Constants.deviceSecretBytes)
+        _ = keyData.withUnsafeMutableBytes {
+            SecRandomCopyBytes(kSecRandomDefault, Constants.deviceSecretBytes, $0.baseAddress!)
+        }
+        return keyData.base64EncodedString()
+    }
+}
