@@ -46,6 +46,9 @@ protocol LoginStepsDelegate: AnyObject {
     func userAccountSetupNeeded()
     func firstPasswordChangeNeeded()
     func learnMoreAboutExternalAccountsNotSupported()
+
+    /// SSO
+    func ssoLoading(data: LoginData)
 }
 
 /// Notify delegate of Login related events
@@ -227,9 +230,14 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
         viewModel.finished.bind { [weak self] result in
             switch result {
             case let .done(data):
-                // TODO: SSO - Check SSO and present appropriate views
                 self?.delegate?.loginViewControllerDidFinish(endLoading: { [weak self] in self?.viewModel.isLoading.value = false }, data: data)
                 self?.measureLoginSuccess()
+            case let .ssoAuthorized(data):
+                self?.viewModel.isLoading.value = false
+                self?.delegate?.ssoLoading(data: data)
+                // TODO: SSO - Check SSO and present appropriate views
+                
+                break
             case .totpCodeNeeded:
                 guard
                     let username = self?.loginTextField.value,

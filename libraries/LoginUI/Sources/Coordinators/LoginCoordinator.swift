@@ -282,6 +282,17 @@ final class LoginCoordinator {
     }
 }
 
+// MARK: SSO
+extension LoginCoordinator {
+    private func showSSOLoading(data: LoginData) {
+        let ssoLoaderViewController = SSOLoginLoaderViewController(user: data.user)
+        let ssoNavigationController = UINavigationController(rootViewController: ssoLoaderViewController)
+        ssoNavigationController.modalPresentationStyle = .fullScreen
+
+        navigationController?.present(ssoNavigationController, animated: true)
+    }
+}
+
 // MARK: - Login steps delegate
 
 extension LoginCoordinator: LoginStepsDelegate {
@@ -326,6 +337,11 @@ extension LoginCoordinator: LoginStepsDelegate {
 
     func learnMoreAboutExternalAccountsNotSupported() {
         UIApplication.openURLIfPossible(externalLinks.learnMoreAboutExternalAccountsNotSupported)
+    }
+
+    /// SSO
+    func ssoLoading(data: LoginData) {
+        showSSOLoading(data: data)
     }
 }
 
