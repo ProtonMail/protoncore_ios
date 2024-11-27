@@ -258,9 +258,9 @@
 
 "We could not initiate the Secure Password update connection. Please try again." = "Povezave za posodobitev varnega gesla nismo mogli vzpostaviti. Poskusite znova.";
 
-"Join %@" = "Join %@";
+"Join %@" = "Pridruži se skupini %@";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "%@ vas je dodal k svoji organizaciji Proton.";
 
 "Continue" = "Nadaljuj";
 
@@ -300,7 +300,7 @@
 
 "Ask administrator for help" = "Ask administrator for help";
 
-"Devices available:" = "Devices available:";
+"Devices available:" = "Razpoložljive naprave:";
 
 "Operation couldn't be completed. Please try again." = "Operation couldn't be completed. Please try again.";
 
@@ -308,7 +308,7 @@
 
 "To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
 
-"Access granted" = "Access granted";
+"Access granted" = "Dostop odobren";
 
 "Access denied" = "Dostop zavrnjen";
 
@@ -322,10 +322,10 @@
 
 "This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
 
-"Grant access to user?" = "Grant access to user?";
+"Grant access to user?" = "Želite uporabniku omogočiti dostop?";
 
 "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
 
-"Grant access" = "Grant access";
+"Grant access" = "Odobri dostop";
 
-"Deny access" = "Deny access";
+"Deny access" = "Zavrni dostop";

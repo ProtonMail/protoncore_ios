@@ -316,7 +316,7 @@
 
 "Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
 
-"Back to sign-in" = "Back to sign-in";
+"Back to sign-in" = "Voltar para o início de sessão";
 
 "Ask your administrator for access?" = "Ask your administrator for access?";
 
@@ -326,6 +326,6 @@
 
 "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
 
-"Grant access" = "Grant access";
+"Grant access" = "Conceder acesso";
 
-"Deny access" = "Deny access";
+"Deny access" = "Negar o acesso";
