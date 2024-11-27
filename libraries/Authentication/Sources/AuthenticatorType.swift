@@ -72,6 +72,8 @@ public protocol AuthenticatorInterface {
 
     func getKeySalts(_ credential: Credential?, completion: @escaping (Result<[KeySalt], AuthErrors>) -> Void)
 
+    func getKeys(_ credential: Credential?, email: String, internalOnly: Bool) async throws -> AuthService.KeysInfoResponse?
+
     /// Forks the session to get a selector which can be later used to obtain the child session.
     ///
     /// - Parameters:
@@ -130,6 +132,10 @@ public extension AuthenticatorInterface {
 
     func getKeySalts(completion: @escaping (Result<[KeySalt], AuthErrors>) -> Void) {
         getKeySalts(nil, completion: completion)
+    }
+
+    func getKeys(email: String, internalOnly: Bool = true) async throws -> AuthService.KeysInfoResponse? {
+        try await getKeys(nil, email: email, internalOnly: internalOnly)
     }
 
     @available(*, deprecated, message: "Use async version")
