@@ -47,11 +47,12 @@ public class AvailablePlansViewModel: ObservableObject {
         case errorData
         case idle
         case purchasing
-        case noPlans
     }
 
     private var availablePlans: [AvailablePlan] = []
     private var availablePlansViewModels: [PlanViewModel] = []
+    public var currentPlan: PlanViewModel?
+    public let hideCurrentPlan: Bool
 
     private let paymentsAPIs: PaymentsAPIs
     private let remoteManager: RemoteManager
@@ -61,48 +62,77 @@ public class AvailablePlansViewModel: ObservableObject {
     public init(sessionId: String,
                 token: String,
                 envURL: EnvURLType = .paymentsBlack,
-                appVersion: String) {
+                appVersion: String,
+                hideCurrentPlan: Bool = false) {
 
         self.envURL = envURL
         paymentsAPIs = PaymentsAPIs(envURL: envURL)
         remoteManager = RemoteManager(sessionID: sessionId, authToken: token, appVersion: appVersion)
         plansComposer = PlansComposer(remoteManager: remoteManager, paymentsAPIs: paymentsAPIs)
+        self.hideCurrentPlan = hideCurrentPlan
     }
 
-    public func fetchAvailablePlans() async {
+    private func fetchCurrentPlan() async throws -> PlanViewModel? {
         viewState = .fetching
+
+        let currentPlanResponse = try await plansComposer.fetchCurrentSubscription()
+        return PlanViewModel(envURL: paymentsAPIs.currentEnv(),
+                             remoteManager: remoteManager,
+                             currentPlan: currentPlanResponse)
+
+    }
+
+    private func fetchAvailablePlans() async throws -> [PlanViewModel] {
+        viewState = .fetching
+
+        let composedPlans = try await plansComposer.fetchAvailablePlans()
+
+        var viewModels = [PlanViewModel]()
+        composedPlans.forEach { plan in
+            viewModels.append(PlanViewModel(envURL: paymentsAPIs.currentEnv(),
+                                            remoteManager: remoteManager,
+                                            composedPlan: plan,
+                                            plansManager: ProtonPlansManager(environment: envURL,
+                                                                             remoteManager: remoteManager,
+                                                                             plansComposer: plansComposer)))
+        }
+        availablePlansViewModels = viewModels
+
+        // before presenting the data, we filter the result based on the active billing cycle
+        return billingFilter(filter: billingCycle)
+    }
+
+    public func fetchData() async {
+
         do {
-
-            let composedPlans = try await plansComposer.fetchAvailablePlans()
-
-            var viewModels = [PlanViewModel]()
-            composedPlans.forEach { plan in
-                viewModels.append(PlanViewModel(envURL: paymentsAPIs.currentEnv(),
-                                                remoteManager: remoteManager,
-                                                composedPlan: plan,
-                                                plansManager: ProtonPlansManager(environment: envURL,
-                                                                                 remoteManager: remoteManager,
-                                                                                 plansComposer: plansComposer)))
+            if !hideCurrentPlan {
+                async let currentSubscription = fetchCurrentPlan()
+                currentPlan = try await currentSubscription
             }
-            availablePlansViewModels = viewModels
+            async let plans = fetchAvailablePlans()
+            filteredPlans = try await plans
 
-            // before presenting the data, we filter the result based on the active billing cycle
-            billingFilter(filter: billingCycle)
-
-            viewState = availablePlansViewModels.isEmpty ? .noPlans : .dataLoaded
+            viewState = .dataLoaded
         } catch {
             viewState = .errorData
             debugPrint(error)
         }
     }
 
-    func billingFilter(filter: BillingCycle) {
+    @discardableResult
+    public func billingFilter(filter: BillingCycle) ->  [PlanViewModel] {
         filteredPlans.removeAll()
         filteredPlans = filter == .all ? availablePlansViewModels : availablePlansViewModels.filter { return $0.subscriptionPeriod == filter }
 
         filteredPlans.forEach { plan in
             plan.delegate = self
         }
+
+        return filteredPlans
+    }
+
+    public func hasAvailablePlans() -> Bool {
+        !filteredPlans.isEmpty
     }
 }
 
@@ -113,7 +143,7 @@ extension AvailablePlansViewModel: PlanViewModelDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + Constants.transactionCompletedDelay) { [weak self] in
             guard let self else { return }
             Task {
-                await self.fetchAvailablePlans()
+                await self.fetchData()
             }
         }
     }
@@ -128,14 +158,14 @@ extension AvailablePlansViewModel: PlanViewModelDelegate {
 
     public func transactionCancelledByUser() {
         Task {
-            await fetchAvailablePlans()
+            await fetchData()
         }
     }
 
     public func transactionProcessError() {
         showAlert = .error(content: PCBannerContent(message: String(localized: "Transaction_process_error", bundle: .module)))
         Task {
-            await fetchAvailablePlans()
+            await fetchData()
         }
     }
 }
@@ -152,6 +182,22 @@ extension AvailablePlansViewModel {
 #if DEBUG
     func setBillingCycle(_ billingCycle: BillingCycle) {
         self.billingCycle = billingCycle
+    }
+#endif
+
+#if DEBUG
+    func setCurrentPlan(_ currentPlan: PlanViewModel) {
+        self.currentPlan = currentPlan
+    }
+#endif
+
+#if DEBUG
+    func showBanner() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+            guard let self else { return }
+            self.showAlert = .error(content: PCBannerContent(message: String(localized: "Transaction_process_error",
+                                                                             bundle: .module)))
+        }
     }
 #endif
 }
