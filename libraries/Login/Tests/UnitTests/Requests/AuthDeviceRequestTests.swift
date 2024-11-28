@@ -30,7 +30,7 @@ import ProtonCoreTestingToolkit
 import ProtonCoreServices
 @testable import ProtonCoreLogin
 
-final class AuthDeviceRequestTests: XCTestCase {
+final class AuthDeviceRequestTests: XCTestCase, JSONMockLoader {
 
     var apiService: APIServiceMock!
 
@@ -341,11 +341,6 @@ final class AuthDeviceRequestTests: XCTestCase {
         XCTAssertEqual(response.orgPublicKey.value, "OrgPublicKey")
         XCTAssertEqual(response.adminEmail, "admin@proton.ch")
         XCTAssertNil(response.error)
-    }
-
-    private func loadMockJSON(filename: String) throws -> Data {
-        let url = Bundle.module.url(forResource: filename, withExtension: "json")!
-        return try Data(contentsOf: url)
     }
 }
 
