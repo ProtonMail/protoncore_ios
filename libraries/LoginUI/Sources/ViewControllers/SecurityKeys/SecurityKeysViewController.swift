@@ -47,6 +47,8 @@ extension SecurityKeysViewController: NavigationDelegate {
     public func userDidGoBack() {
         navigationController?.popViewController(animated: true)
     }
+
+    public func userDidClose() {}
 }
 
 #endif

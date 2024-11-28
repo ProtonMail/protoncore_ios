@@ -21,7 +21,6 @@
 
 #if os(iOS)
 
-import Foundation
 import ProtonCoreUIFoundations
 import SwiftUI
 

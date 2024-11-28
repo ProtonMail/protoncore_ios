@@ -26,6 +26,7 @@ import XCTest
 #if canImport(ProtonCoreTestingToolkitUnitTestsCore)
 import ProtonCoreTestingToolkitUnitTestsCore
 #endif
+import SwiftUI
 
 class LoginSSOSnapshotTests: SnapshotTestCase {
 
@@ -33,7 +34,13 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
 
     @MainActor
     func testJoinOrganizationView() {
-        let viewController = JoinOrganizationViewController()
+        let view = JoinOrganizationView(viewModel: .init(dependencies: .init(
+            organizationName: "Proton AG",
+            organizationAdminEmail: "admin@privacybydefault.com",
+            organizationLogoID: nil,
+            organizationPublicKey: .init(value: "")
+        )))
+        let viewController = UIHostingController(rootView: view)
 
         checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
     }

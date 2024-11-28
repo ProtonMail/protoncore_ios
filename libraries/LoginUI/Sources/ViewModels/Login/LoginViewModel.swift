@@ -223,6 +223,10 @@ extension LoginViewModel: TwoFAProviderDelegate {
         navigationDelegate?.userDidGoBack()
     }
 
+    func userDidClose() {
+        navigationDelegate?.userDidClose()
+    }
+
     func providerDidObtain(factor: String) async throws {
        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, any Error>) -> Void in
             login.provide2FACode(factor) { [weak self] result in

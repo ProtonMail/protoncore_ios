@@ -284,9 +284,13 @@ final class LoginCoordinator {
 
 // MARK: SSO
 extension LoginCoordinator {
-    private func showSSOLoading(data: LoginData) {
-        let ssoLoaderViewController = SSOLoginLoaderViewController(user: data.user)
-        let ssoNavigationController = UINavigationController(rootViewController: ssoLoaderViewController)
+    private func showGlobalSSOAccountSetup(data: LoginData) {
+        let viewController = GlobalSSOMainViewController(
+            apiService: container.api,
+            userData: data,
+            navigationDelegate: self
+        )
+        let ssoNavigationController = UINavigationController(rootViewController: viewController)
         ssoNavigationController.modalPresentationStyle = .fullScreen
 
         navigationController?.present(ssoNavigationController, animated: true)
@@ -340,8 +344,8 @@ extension LoginCoordinator: LoginStepsDelegate {
     }
 
     /// SSO
-    func ssoLoading(data: LoginData) {
-        showSSOLoading(data: data)
+    func ssoAccountSetupNeeded(data: LoginData) {
+        showGlobalSSOAccountSetup(data: data)
     }
 }
 
@@ -435,6 +439,23 @@ extension LoginCoordinator: NavigationDelegate {
         }
     }
 
+    func userDidClose() {
+        guard let navigationController = navigationController else { return }
+        defer {
+            navigationController.popToRootViewController(animated: true) {
+                // GlobalSSO screens are on top of NavigationController.
+                // We dismiss GlobalSSOMainViewController presented
+                navigationController.presentedViewController?.dismiss(animated: true)
+            }
+        }
+
+        // this flag prevents the unnecessary showing of the "session invalidated" message to the user
+        // the message is unnecessary if the user came back to the root screen intentionally
+        sessionInvalidatedDueToUserGoingBackToRootController = true
+
+        clearUserSession()
+    }
+
     private func clearSessionAndPopToRootViewController(animated: Bool,
                                                         completion: @escaping (LoginNavigationViewController) -> Void = { _ in }) {
 
@@ -446,6 +467,10 @@ extension LoginCoordinator: NavigationDelegate {
             }
         }
 
+        clearUserSession()
+    }
+
+    private func clearUserSession() {
         // This code clears out the locally stored user session and clears the session on the BE.
         // It's a UX optimization. The app would work without it, but the user would have to tap login twice:
         // first attempt would fail and cause the session clearing, the second one would succeed.

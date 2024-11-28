@@ -339,7 +339,7 @@ final class AuthDeviceRequestTests: XCTestCase, JSONMockLoader {
 
         XCTAssertEqual(response.responseCode, 1000)
         XCTAssertEqual(response.orgPublicKey.value, "OrgPublicKey")
-        XCTAssertEqual(response.adminEmail, "admin@proton.ch")
+        XCTAssertEqual(response.adminEmail, "admin@privacybydefault.com")
         XCTAssertNil(response.error)
     }
 }

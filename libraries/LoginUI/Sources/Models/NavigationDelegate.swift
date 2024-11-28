@@ -25,6 +25,7 @@ import Foundation
 
 public protocol NavigationDelegate: AnyObject {
     func userDidGoBack()
+    func userDidClose()
 }
 
 #endif

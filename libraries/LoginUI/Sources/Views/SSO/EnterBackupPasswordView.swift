@@ -85,6 +85,7 @@ public struct EnterBackupPasswordView: View {
 }
 
 #if DEBUG
+
 #Preview {
     NavigationView {
         EnterBackupPasswordView(viewModel: .init(dependencies: .init()))
