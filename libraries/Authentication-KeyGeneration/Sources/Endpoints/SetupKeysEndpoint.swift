@@ -35,6 +35,9 @@ extension AuthService {
         let keySalt: String
         let passwordAuth: PasswordAuth
 
+        /// Global SSO: Base64 encoded string of hashed password using AES256-GCM (AeadCrypto) to the device secret
+        let encryptedSecret: String?
+
         var path: String {
             "/keys/setup"
         }
@@ -52,14 +55,13 @@ extension AuthService {
         }
 
         var parameters: [String: Any]? {
-            let out: [String: Any] = [
+            [
                 "KeySalt": keySalt,
                 "PrimaryKey": privateKey.value,
                 "AddressKeys": addresses,
-                "Auth": passwordAuth.parameters!
-            ]
-
-            return out
+                "Auth": passwordAuth.parameters!,
+                "EncryptedSecret": encryptedSecret as Any
+            ].compactMapValues { $0 }
         }
     }
 }

@@ -29,6 +29,13 @@ import ProtonCoreUtilities
 /// class for key migeration phase 2
 final class AccountKeySetup {
 
+    let aeadCrypto = AeadCrypto()
+
+    enum Constants {
+        /// Used for Global SSO auth device secret context
+        static let deviceSecretContext = "account.device-secret"
+    }
+
     /// account level key. on phase 2 user key used for
     struct UserKey {
         /// armored key
@@ -165,9 +172,15 @@ final class AccountKeySetup {
     ///   - accountKey: generated account key
     ///   - modulus: srp modulus
     ///   - modulusId: modulus id
+    ///   - deviceSecret: 32-byte random string as base64. Used in GlobalSSO for `auth/v4/devices`
     /// - Returns: `AuthService.SetupKeysEndpoint`
-    func setupSetupKeysRoute(password: String, accountKey: GeneratedAccountKey,
-                             modulus: String, modulusId: String) throws -> AuthService.SetupKeysEndpoint {
+    func setupSetupKeysRoute(
+        password: String,
+        accountKey: GeneratedAccountKey,
+        modulus: String,
+        modulusId: String,
+        deviceSecret: String? = nil
+    ) throws -> AuthService.SetupKeysEndpoint {
 
         // for the login password needs to set 80 bits & srp auth use 80 bits
         let newSaltForKey: Data = try PasswordHash.random(bits: PasswordSaltSize.login.int32Bits)
@@ -181,6 +194,18 @@ final class AccountKeySetup {
 
         let passwordAuth = PasswordAuth(modulusID: modulusId, salt: newSaltForKey.encodeBase64(), verifier: verifierForKey.encodeBase64())
 
+        /// For Global SSO
+        var encryptedSecret: String?
+        if let deviceSecret, let deviceSecretKey = Data(base64Encoded: deviceSecret) {
+            /// Key hashed password
+            let passphrase = accountKey.userKey.password.value
+            encryptedSecret = try aeadCrypto.encrypt(
+                value: passphrase,
+                key: deviceSecretKey,
+                aad: Constants.deviceSecretContext.data(using: .utf8)
+            )
+        }
+
         let addressData = accountKey.addressKeys.map { addressKey -> [String: Any] in
             let address: [String: Any] = [
                 "AddressID": addressKey.addressId,
@@ -191,9 +216,12 @@ final class AccountKeySetup {
             ]
             return address
         }
-        return AuthService.SetupKeysEndpoint(addresses: addressData,
-                                             privateKey: accountKey.userKey.armoredKey,
-                                             keySalt: accountKey.userKey.passwordSalt.encodeBase64(),
-                                             passwordAuth: passwordAuth)
+        return AuthService.SetupKeysEndpoint(
+            addresses: addressData,
+            privateKey: accountKey.userKey.armoredKey,
+            keySalt: accountKey.userKey.passwordSalt.encodeBase64(),
+            passwordAuth: passwordAuth,
+            encryptedSecret: encryptedSecret
+        )
     }
 }

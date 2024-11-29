@@ -21,16 +21,25 @@
 
 #if os(iOS)
 
-
+import ProtonCoreAuthentication
+import ProtonCoreAuthenticationKeyGeneration
 import ProtonCoreCrypto
 import ProtonCoreLog
 import ProtonCoreLogin
+import ProtonCoreServices
 import ProtonCoreUIFoundations
 import ProtonCoreUtilities
 import SwiftUI
 
 extension JoinOrganizationView {
     struct Dependencies {
+        let apiService: APIService?
+        let userData: LoginData
+        let organizationInfo: OrganizationInfo
+        let loginDelegate: GlobalSSOLoginDelegate?
+    }
+
+    struct OrganizationInfo {
         let organizationName: String
         let organizationAdminEmail: String
         let organizationLogoID: String?
@@ -42,7 +51,13 @@ extension JoinOrganizationView {
 
     @MainActor
     final class ViewModel: ObservableObject, PasswordValidator {
+        @Published var viewState: ViewState = .idle
         @Published var bannerState: BannerState = .none
+
+        enum ViewState {
+            case idle
+            case loading
+        }
 
         @Published var backupPasswordStyle: PCTextFieldStyle = .init(mode: .idle)
         @Published var backupPasswordContent: PCTextFieldContent = .init(
@@ -55,52 +70,72 @@ extension JoinOrganizationView {
             isSecureEntry: true
         )
 
-        let organizationName: String
-        let organizationAdminEmail: String
-        let organizationLogoID: String?
-        let organizationPublicKey: ArmoredKey
+        var authenticator: AuthenticatorKeyGenerationInterface?
+        let userData: LoginData
+        let organizationInfo: OrganizationInfo
+        let deviceSecretRepository: DeviceSecretRepositoryProtocol
+
+        weak var loginDelegate: GlobalSSOLoginDelegate?
 
         init(dependencies: Dependencies) {
-            self.organizationName = dependencies.organizationName
-            self.organizationAdminEmail = dependencies.organizationAdminEmail
-            self.organizationLogoID = dependencies.organizationLogoID
-            self.organizationPublicKey = dependencies.organizationPublicKey
+            if let apiService = dependencies.apiService {
+                self.authenticator = Authenticator(api: apiService)
+            }
+            self.userData = dependencies.userData
+            self.organizationInfo = dependencies.organizationInfo
+            self.loginDelegate = dependencies.loginDelegate
+            self.deviceSecretRepository = DeviceSecretRepository()
         }
 
         var joinOrganizationTitle: String {
             String.localizedStringWithFormat(
                 LUITranslation.join_organization_title.l10n,
-                organizationName
+                organizationInfo.organizationName
             )
         }
 
         var joinOrganizationDescription: String {
             String.localizedStringWithFormat(
                 LUITranslation.join_organization_description.l10n,
-                organizationAdminEmail
+                organizationInfo.organizationAdminEmail
             )
         }
 
         var organizationLogoURL: URL? {
-            guard let organizationLogoID else { return nil }
+            guard let _ = organizationInfo.organizationLogoID else { return nil }
             // TODO: Retrieve logo from /organizations/logo/{logoId}
             return nil
         }
 
         func continueTapped() {
-            do {
-                resetTextFieldsErrors()
-                try validate(
-                    for: .default,
-                    password: backupPasswordContent.text,
-                    confirmPassword: repeatBackupPasswordContent.text
-                )
-            } catch {
-                PMLog.error(error)
-                bannerState = .error(content: .init(message: error.localizedDescription))
+            Task {
+                do {
+                    guard let authenticator else { throw SSOLoginError.authenticatorNotFound }
+                    resetTextFieldsErrors()
+                    try validate(
+                        for: .default,
+                        password: backupPasswordContent.text,
+                        confirmPassword: repeatBackupPasswordContent.text
+                    )
+                    viewState = .loading
+                    guard let deviceSecret = try deviceSecretRepository.getByUserId(userId: userData.user.ID) else {
+                        throw SSOLoginError.deviceSecretNotFound
+                    }
+                    try await authenticator.setupAccountKeys(
+                        addresses: userData.addresses,
+                        password: backupPasswordContent.text,
+                        deviceSecret: deviceSecret.secret
+                    )
+                    await loginDelegate?.globalSSOLoginDidFinish(data: userData)
+                    viewState = .idle
+                } catch {
+                    viewState = .idle
+                    PMLog.error(error)
+                    bannerState = .error(content: .init(message: error.localizedDescription))
 
-                if let error = error as? PasswordValidationError {
-                    displayPasswordError(error: error)
+                    if let error = error as? PasswordValidationError {
+                        displayPasswordError(error: error)
+                    }
                 }
             }
         }

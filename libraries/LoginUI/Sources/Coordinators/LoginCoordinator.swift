@@ -256,6 +256,14 @@ final class LoginCoordinator {
         }
     }
 
+    private func finish(data: LoginData) async {
+        await withCheckedContinuation { continuation in
+            finish(endLoading: {
+                continuation.resume()
+            }, data: data)
+        }
+    }
+
     private func completeLoginFlow(data: LoginData) {
         navigationController?.dismiss(animated: true, completion: nil)
         delegate?.loginCoordinatorDidFinish(loginCoordinator: self, data: data)
@@ -288,7 +296,8 @@ extension LoginCoordinator {
         let viewController = GlobalSSOMainViewController(
             apiService: container.api,
             userData: data,
-            navigationDelegate: self
+            navigationDelegate: self,
+            loginDelegate: self
         )
         let ssoNavigationController = UINavigationController(rootViewController: viewController)
         ssoNavigationController.modalPresentationStyle = .fullScreen
@@ -368,6 +377,17 @@ extension LoginCoordinator: LoginViewControllerDelegate {
 
     func loginViewControllerDidFinish(endLoading: @escaping () -> Void, data: LoginData) {
         finish(endLoading: endLoading, data: data)
+    }
+}
+
+// MARK: - Global SSO Login delegate
+
+extension LoginCoordinator: GlobalSSOLoginDelegate {
+    func globalSSOLoginDidFinish(data: LoginData) async {
+        await MainActor.run {
+            navigationController?.presentedViewController?.dismiss(animated: true)
+        }
+        await finish(data: data)
     }
 }
 

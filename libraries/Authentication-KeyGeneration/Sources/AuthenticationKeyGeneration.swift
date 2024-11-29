@@ -56,11 +56,10 @@ public extension AuthenticatorKeyGenerationInterface {
         setupAccountKeys(nil, addresses: addresses, password: password, completion: completion)
     }
 
-    func setupAccountKeys(_ credential: Credential? = nil,
-                          addresses: [Address],
+    func setupAccountKeys(addresses: [Address],
                           password: String,
                           deviceSecret: String? = nil) async throws {
-        try await setupAccountKeys(credential, addresses: addresses, password: password, deviceSecret: deviceSecret)
+        try await setupAccountKeys(nil, addresses: addresses, password: password, deviceSecret: deviceSecret)
     }
 }
 
