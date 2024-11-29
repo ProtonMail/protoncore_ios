@@ -65,10 +65,13 @@ public protocol AuthenticatorInterface {
                        signature: String?,
                        completion: @escaping (Result<Address, AuthErrors>) -> Void)
 
+    @available(*, deprecated, message: "Use async version")
     func getUserInfo(_ credential: Credential?, completion: @escaping (Result<User, AuthErrors>) -> Void)
     func getUserInfo(_ credential: Credential?) async throws -> User
 
+    @available(*, deprecated, message: "Use async version")
     func getAddresses(_ credential: Credential?, completion: @escaping (Result<[Address], AuthErrors>) -> Void)
+    func getAddresses(_ credential: Credential?) async throws -> [Address]
 
     func getKeySalts(_ credential: Credential?, completion: @escaping (Result<[KeySalt], AuthErrors>) -> Void)
 
@@ -109,7 +112,9 @@ public protocol AuthenticatorInterface {
     func closeSession(_ credential: Credential?,
                       completion: @escaping (Result<AuthService.EndSessionResponse, AuthErrors>) -> Void)
 
+    @available(*, deprecated, renamed: "randomSRPModulus", message: "Use async version")
     func getRandomSRPModulus(completion: @escaping (Result<AuthService.ModulusEndpointResponse, AuthErrors>) -> Void)
+    func randomSRPModulus() async throws -> AuthService.ModulusEndpointResponse
 }
 
 // Workaround for the lack of default parameters in protocols
@@ -147,10 +152,15 @@ public extension AuthenticatorInterface {
         try await getUserInfo(nil)
     }
 
+    @available(*, deprecated, message: "Use async version")
     func getAddresses(completion: @escaping (Result<[Address], AuthErrors>) -> Void) {
         getAddresses(nil, completion: completion)
     }
-    
+
+    func getAddresses() async throws -> [Address] {
+        try await getAddresses(nil)
+    }
+
     func createAddress(domain: String, completion: @escaping (Result<Address, AuthErrors>) -> Void) {
         createAddress(nil, domain: domain, displayName: nil, signature: nil, completion: completion)
     }

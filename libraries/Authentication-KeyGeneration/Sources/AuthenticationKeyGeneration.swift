@@ -38,18 +38,30 @@ public protocol AuthenticatorKeyGenerationInterface {
                         addresses: [Address],
                         password: String,
                         completion: @escaping (Result<(), AuthErrors>) -> Void)
+
+    func setupAccountKeys(_ credential: Credential?,
+                          addresses: [Address],
+                          password: String,
+                          deviceSecret: String?) async throws
 }
 
 public extension AuthenticatorKeyGenerationInterface {
 
-  func createAddressKey(user: User, address: Address, password: String, salt: Data, isPrimary: Bool,
-                        completion: @escaping (Result<Key, AuthErrors>) -> Void) {
-      createAddressKey(nil, user: user, address: address, password: password, salt: salt, isPrimary: isPrimary, completion: completion)
-  }
+    func createAddressKey(user: User, address: Address, password: String, salt: Data, isPrimary: Bool,
+                          completion: @escaping (Result<Key, AuthErrors>) -> Void) {
+        createAddressKey(nil, user: user, address: address, password: password, salt: salt, isPrimary: isPrimary, completion: completion)
+    }
 
-  func setupAccountKeys(addresses: [Address], password: String, completion: @escaping (Result<(), AuthErrors>) -> Void) {
-      setupAccountKeys(nil, addresses: addresses, password: password, completion: completion)
-  }
+    func setupAccountKeys(addresses: [Address], password: String, completion: @escaping (Result<(), AuthErrors>) -> Void) {
+        setupAccountKeys(nil, addresses: addresses, password: password, completion: completion)
+    }
+
+    func setupAccountKeys(_ credential: Credential? = nil,
+                          addresses: [Address],
+                          password: String,
+                          deviceSecret: String? = nil) async throws {
+        try await setupAccountKeys(credential, addresses: addresses, password: password, deviceSecret: deviceSecret)
+    }
 }
 
 extension Authenticator: AuthenticatorKeyGenerationInterface {
@@ -94,6 +106,7 @@ extension Authenticator: AuthenticatorKeyGenerationInterface {
         }
     }
 
+    @available(*, deprecated, message: "Use async version")
     public func setupAccountKeys(_ credential: Credential? = nil,
                                  addresses: [Address],
                                  password: String,
@@ -127,5 +140,45 @@ extension Authenticator: AuthenticatorKeyGenerationInterface {
                 completion(.failure(error))
             }
         }
+    }
+
+    /// Sets up the Account keys and sends them to the BE
+    ///
+    /// - Parameters:
+    ///    - credential: Credentials of the account
+    ///    - addresses: Addresses of the account
+    ///    - password: Account password used
+    ///    - deviceSecret: (GSSO) - 32-byte random string base64 encoded (used in `/auth/v4/devices`)
+    public func setupAccountKeys(
+        _ credential: Credential? = nil,
+        addresses: [Address],
+        password: String,
+        deviceSecret: String? = nil
+    ) async throws {
+        let modulusData = try await randomSRPModulus()
+
+        // key generation is really slow for account keys, do not block the main thread
+        let keySetup = AccountKeySetup()
+        let key = try keySetup.generateAccountKey(addresses: addresses, password: password)
+        var route = try keySetup.setupSetupKeysRoute(
+            password: password,
+            accountKey: key,
+            modulus: modulusData.modulus,
+            modulusId: modulusData.modulusID
+        )
+        if let auth = credential {
+            route.auth = AuthCredential(auth)
+        }
+
+        try await withCheckedThrowingContinuation { continuation in
+            self.apiService.perform(request: route) { (_, result: Result<AuthService.SetupKeysEndpointResponse, ResponseError>) in
+                switch result {
+                case .failure(let responseError):
+                    continuation.resume(throwing: AuthErrors.from(responseError))
+                case .success:
+                    continuation.resume()
+                }
+            }
+        } as Void
     }
 }

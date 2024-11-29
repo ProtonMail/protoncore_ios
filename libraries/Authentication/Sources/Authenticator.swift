@@ -380,6 +380,7 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
         }
     }
 
+    @available(*, deprecated, message: "Use async version")
     public func getAddresses(_ credential: Credential? = nil, completion: @escaping (Result<[Address], AuthErrors>) -> Void) {
         var route = AuthService.AddressEndpoint()
         if let auth = credential {
@@ -390,6 +391,27 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
         })
     }
 
+    public func getAddresses(_ credential: Credential? = nil) async throws -> [Address] {
+        var route = AuthService.AddressEndpoint()
+        if let auth = credential {
+            route.auth = AuthCredential(auth)
+        }
+        return try await withCheckedThrowingContinuation { continuation in
+            self.apiService.perform(request: route) { (_, result: Result<AuthService.AddressesResponse, ResponseError>) in
+                switch result {
+                case .success(let response):
+                    continuation.resume(returning: response.addresses)
+                case .failure(let error):
+                    let throwingError = error.isApiIsBlockedError ?
+                    AuthErrors.apiMightBeBlocked(message: error.localizedDescription, originalError: error) :
+                        .networkingError(error)
+                    continuation.resume(throwing: throwingError)
+                }
+            }
+        }
+    }
+
+    @available(*, deprecated, message: "Use async version")
     public func getKeySalts(_ credential: Credential? = nil, completion: @escaping (Result<[KeySalt], AuthErrors>) -> Void) {
         var route = AuthService.KeySaltsEndpoint()
         if let auth = credential {
@@ -485,9 +507,27 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
         self.apiService.perform(request: route, decodableCompletion: mapError(completion))
     }
 
+    @available(*, deprecated, renamed: "randomSRPModulus", message: "Use async version")
     public func getRandomSRPModulus(completion: @escaping (Result<AuthService.ModulusEndpointResponse, AuthErrors>) -> Void) {
         let route = AuthService.ModulusEndpoint()
         self.apiService.perform(request: route, decodableCompletion: mapError(completion))
+    }
+
+    public func randomSRPModulus() async throws -> AuthService.ModulusEndpointResponse {
+        let route = AuthService.ModulusEndpoint()
+        return try await withCheckedThrowingContinuation { continuation in
+            self.apiService.perform(request: route) { (_, result: Result<AuthService.ModulusEndpointResponse, ResponseError>) in
+                switch result {
+                case .success(let response):
+                    continuation.resume(returning: response)
+                case .failure(let error):
+                    let throwingError = error.isApiIsBlockedError ?
+                    AuthErrors.apiMightBeBlocked(message: error.localizedDescription, originalError: error) :
+                        .networkingError(error)
+                    continuation.resume(throwing: throwingError)
+                }
+            }
+        }
     }
 
     private func mapValueAndError<T, S>(_ completion: @escaping (Result<T, AuthErrors>) -> Void,
