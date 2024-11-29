@@ -87,6 +87,8 @@ extension CreateAddressCoordinator: NavigationDelegate {
     func userDidGoBack() {
         delegate?.userDidGoBack()
     }
+    
+    func userDidClose() {}
 }
 
 // MARK: - Choose username VC delegate

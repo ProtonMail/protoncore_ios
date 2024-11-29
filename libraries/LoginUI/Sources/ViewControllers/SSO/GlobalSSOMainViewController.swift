@@ -1,6 +1,6 @@
 //
-//  SSOLoginLoaderViewController.swift
-//  ProtonCore-LoginUI - Created on 26/11/2024.
+//  GlobalSSOMainViewController.swift
+//  ProtonCore-LoginUI - Created on 28/11/2024.
 //
 //  Copyright (c) 2024 Proton AG
 //
@@ -21,22 +21,31 @@
 
 #if os(iOS)
 
-import ProtonCoreDataModel
+import ProtonCoreLogin
+import ProtonCoreServices
 import ProtonCoreUIFoundations
 import SwiftUI
 
-public final class SSOLoginLoaderViewController: UIHostingController<SSOLoginLoaderView> {
-
-    let viewModel: SSOLoginLoaderView.ViewModel
+final class GlobalSSOMainViewController: UIHostingController<GlobalSSOMainView> {
+    let navigationDelegate: NavigationDelegate?
+    let viewModel: GlobalSSOMainView.ViewModel
 
      required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(user: User) {
-        let dependencies = SSOLoginLoaderView.Dependencies(user: user)
-        self.viewModel = SSOLoginLoaderView.ViewModel(dependencies: dependencies)
-        let view = SSOLoginLoaderView(viewModel: self.viewModel)
+    init(
+        apiService: APIService,
+        userData: LoginData,
+        navigationDelegate: NavigationDelegate?
+    ) {
+        let dependencies = GlobalSSOMainView.Dependencies(
+            apiService: apiService,
+            userData: userData
+        )
+        self.viewModel = GlobalSSOMainView.ViewModel(dependencies: dependencies)
+        let view = GlobalSSOMainView(viewModel: self.viewModel)
+        self.navigationDelegate = navigationDelegate
         super.init(rootView: view)
     }
 
@@ -48,7 +57,7 @@ public final class SSOLoginLoaderViewController: UIHostingController<SSOLoginLoa
 
     @objc
     func dismissViewController() {
-        navigationController?.dismiss(animated: true)
+        navigationDelegate?.userDidClose()
     }
 }
 

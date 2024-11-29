@@ -302,6 +302,8 @@ extension PasswordChangeView.ViewModel: TwoFAProviderDelegate {
         }
     }
 
+    nonisolated public func userDidClose() {}
+
     public func providerDidObtain(factor: String) async throws {
         try await updatePasswordWith(twoFAParams: .totp(factor))
     }

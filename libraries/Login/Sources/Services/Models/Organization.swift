@@ -20,39 +20,44 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 public struct Organization: Codable {
-    let name: String
-    let displayName: String
-    let planName: String
-    let planFlags: PlanFlags
-    let twoFactorRequired: Int
-    let twoFactorGracePeriod: Int?
-    let theme: String?
-    let email: String?
-    let maxDomains: Int
-    let maxAddresses: Int
-    let maxCalendars: Int
-    let maxSpace: Int
-    let maxMembers: Int
-    let maxVPN: Int
-    let features: Int // Bits, 1 = catch-all addresses
-    let flags: Int // Bits, 1 = loyalty
-    let usedDomains: Int
-    let usedAddresses: Int
-    let usedCalendars: Int
-    let usedSpace: Int
-    let assignedSpace: Int
-    let usedMembers: Int
-    let usedVPN: Int
-    let hasKeys: Int
-    let toMigrate: Int
-    let brokenSKL: Int
-    let invitationsRemaining: Int
-    let requiresKey: Int
-    let requiresDomain: Int
+    public let name: String
+    public let displayName: String
+    public let planName: String
+    public let planFlags: PlanFlags
+    public let twoFactorRequired: Int
+    public let twoFactorGracePeriod: Int?
+    public let theme: String?
+    public let email: String?
+    public let maxDomains: Int
+    public let maxAddresses: Int
+    public let maxCalendars: Int
+    public let maxSpace: Int64
+    public let maxMembers: Int
+    public let maxVPN: Int
+    public let features: Int // Bits, 1 = catch-all addresses
+    public let flags: Int // Bits, 1 = loyalty
+    public let usedDomains: Int
+    public let usedAddresses: Int
+    public let usedCalendars: Int
+    public let usedSpace: Int64
+    public let assignedSpace: Int64
+    public let usedMembers: Int
+    public let usedVPN: Int
+    public let hasKeys: Int
+    public let toMigrate: Int
+    public let brokenSKL: Int
+    public let invitationsRemaining: Int
+    public let requiresKey: Int
+    public let requiresDomain: Int
 
     public enum PlanFlags: Int, Codable {
         case mail = 1
         case drive = 2
         case vpn = 3
+        case unknown
+
+        public init(from decoder: Decoder) throws {
+            self = try PlanFlags(rawValue: decoder.singleValueContainer().decode(RawValue.self)) ?? .unknown
+        }
     }
 }

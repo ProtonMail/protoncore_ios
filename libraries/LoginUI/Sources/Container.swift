@@ -161,13 +161,6 @@ final class Container {
         return paymentsManager
     }
 
-    // MARK: SSO view models
-
-    @MainActor
-    func makeJoinOrganizationViewModel() -> JoinOrganizationView.ViewModel {
-        return .init(dependencies: .init())
-    }
-
     // MARK: Other view models
 
     func makeExternalLinks() -> ExternalLinks {

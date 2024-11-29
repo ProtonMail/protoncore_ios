@@ -48,7 +48,7 @@ protocol LoginStepsDelegate: AnyObject {
     func learnMoreAboutExternalAccountsNotSupported()
 
     /// SSO
-    func ssoLoading(data: LoginData)
+    func ssoAccountSetupNeeded(data: LoginData)
 }
 
 /// Notify delegate of Login related events
@@ -234,10 +234,7 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
                 self?.measureLoginSuccess()
             case let .ssoAuthorized(data):
                 self?.viewModel.isLoading.value = false
-                self?.delegate?.ssoLoading(data: data)
-                // TODO: SSO - Check SSO and present appropriate views
-                
-                break
+                self?.delegate?.ssoAccountSetupNeeded(data: data)
             case .totpCodeNeeded:
                 guard
                     let username = self?.loginTextField.value,

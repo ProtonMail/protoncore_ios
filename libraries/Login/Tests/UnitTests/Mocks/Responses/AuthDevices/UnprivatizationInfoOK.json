@@ -3,7 +3,7 @@
   "InvitationData": "{\"Address\":\"member@internal-domain.com\", \"Revision\":2}",
   "InvitationSignature": "string",
   "InvitationEmail": "string",
-  "AdminEmail": "admin@proton.ch",
+  "AdminEmail": "admin@privacybydefault.com",
   "OrgKeyFingerprintSignature": "OrgKeyFingerprintSignature",
   "OrgPublicKey": "OrgPublicKey",
   "PrivateIntent": true,

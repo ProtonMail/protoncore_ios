@@ -79,7 +79,7 @@ public struct JoinOrganizationView: View {
 
     @ViewBuilder
     private var headerView: some View {
-        defaultOrganizationImage
+        organizationImage
         VStack(spacing: Constants.standardPadding) {
             Text(viewModel.joinOrganizationTitle)
                 .font(.title2)
@@ -97,7 +97,7 @@ public struct JoinOrganizationView: View {
             attributedString.font = Font.subheadline.weight(.semibold)
 
             // make the email substrings heavier weight
-            if let range = attributedString.range(of: viewModel.organizationEmail) {
+            if let range = attributedString.range(of: viewModel.organizationAdminEmail) {
                 attributedString[range].font = Font.subheadline.weight(.bold)
             }
 
@@ -108,6 +108,23 @@ public struct JoinOrganizationView: View {
                 .font(.subheadline)
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
+        }
+    }
+
+    @ViewBuilder
+    private var organizationImage: some View {
+        if let organizationLogoURL = viewModel.organizationLogoURL {
+            AsyncImage(url: organizationLogoURL) { image in
+                image
+                    .resizable()
+                    .padding(Constants.standardPadding)
+                    .frame(width: Constants.imageSize, height: Constants.imageSize)
+            } placeholder: {
+                defaultOrganizationImage
+            }
+
+        } else {
+            defaultOrganizationImage
         }
     }
 
@@ -124,9 +141,17 @@ public struct JoinOrganizationView: View {
 }
 
 #if DEBUG
+import ProtonCoreCrypto
+import ProtonCoreLogin
+
 #Preview {
     NavigationView {
-        JoinOrganizationView(viewModel: .init(dependencies: .init()))
+        JoinOrganizationView(viewModel: .init(dependencies: .init(
+            organizationName: "Proton AG",
+            organizationAdminEmail: "admin@privacybydefault.com",
+            organizationLogoID: nil,
+            organizationPublicKey: .init(value: "")
+        )))
     }
 }
 #endif

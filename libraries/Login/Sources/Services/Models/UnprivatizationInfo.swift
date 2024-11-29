@@ -1,5 +1,5 @@
 //
-//  ActivateAuthDeviceRequest.swift
+//  UnprivatizationInfo.swift
 //  ProtonCore-Login - Created on 13.11.24.
 //
 //  Copyright (c) 2024 Proton Technologies AG

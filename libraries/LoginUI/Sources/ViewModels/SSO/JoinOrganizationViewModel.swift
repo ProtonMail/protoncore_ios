@@ -21,20 +21,27 @@
 
 #if os(iOS)
 
-import SwiftUI
+
+import ProtonCoreCrypto
 import ProtonCoreLog
+import ProtonCoreLogin
 import ProtonCoreUIFoundations
 import ProtonCoreUtilities
+import SwiftUI
 
 extension JoinOrganizationView {
-    struct Dependencies {}
+    struct Dependencies {
+        let organizationName: String
+        let organizationAdminEmail: String
+        let organizationLogoID: String?
+        let organizationPublicKey: ArmoredKey
+    }
 }
 
 extension JoinOrganizationView {
 
     @MainActor
     final class ViewModel: ObservableObject, PasswordValidator {
-
         @Published var bannerState: BannerState = .none
 
         @Published var backupPasswordStyle: PCTextFieldStyle = .init(mode: .idle)
@@ -48,10 +55,17 @@ extension JoinOrganizationView {
             isSecureEntry: true
         )
 
-        let organizationName: String = "Proton AG"
-        let organizationEmail: String = "admin@privacybydefault.com"
+        let organizationName: String
+        let organizationAdminEmail: String
+        let organizationLogoID: String?
+        let organizationPublicKey: ArmoredKey
 
-        init(dependencies: Dependencies) {}
+        init(dependencies: Dependencies) {
+            self.organizationName = dependencies.organizationName
+            self.organizationAdminEmail = dependencies.organizationAdminEmail
+            self.organizationLogoID = dependencies.organizationLogoID
+            self.organizationPublicKey = dependencies.organizationPublicKey
+        }
 
         var joinOrganizationTitle: String {
             String.localizedStringWithFormat(
@@ -63,8 +77,14 @@ extension JoinOrganizationView {
         var joinOrganizationDescription: String {
             String.localizedStringWithFormat(
                 LUITranslation.join_organization_description.l10n,
-                organizationEmail
+                organizationAdminEmail
             )
+        }
+
+        var organizationLogoURL: URL? {
+            guard let organizationLogoID else { return nil }
+            // TODO: Retrieve logo from /organizations/logo/{logoId}
+            return nil
         }
 
         func continueTapped() {

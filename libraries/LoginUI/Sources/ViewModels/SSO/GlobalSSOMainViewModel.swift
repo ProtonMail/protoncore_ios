@@ -1,0 +1,97 @@
+//
+//  SSOLoginLoaderViewModel.swift
+//  ProtonCore-LoginUI - Created on 26/11/2024.
+//
+//  Copyright (c) 2024 Proton AG
+//
+//  This file is part of Proton AG and ProtonCore.
+//
+//  ProtonCore is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  ProtonCore is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
+
+#if os(iOS)
+
+import ProtonCoreLogin
+import ProtonCoreServices
+import ProtonCoreLog
+import ProtonCoreUIFoundations
+import SwiftUI
+
+extension GlobalSSOMainView {
+    struct Dependencies {
+        let apiService: APIService
+        let userData: UserData
+    }
+}
+
+extension GlobalSSOMainView {
+
+    @MainActor
+    final class ViewModel: ObservableObject {
+        let apiService: APIService
+        let userData: UserData
+
+        @Published var screenState: ScreenState
+
+        let organizationRepository: OrganizationRepository
+        let postLoginSSOAccountSetup: PostLoginSSOAccountSetup
+
+        enum ScreenState {
+            case loading(SSOLoginLoaderView.Dependencies)
+            case newBackupPassword(JoinOrganizationView.Dependencies)
+        }
+
+        init(dependencies: Dependencies) {
+            self.apiService = dependencies.apiService
+            self.userData = dependencies.userData
+            screenState = .loading(.init(user: userData.user))
+            self.postLoginSSOAccountSetup = .init(
+                apiService: apiService,
+                userData: userData
+            )
+            organizationRepository = .init(apiService: apiService)
+        }
+
+        func startPostLoginSetup() async {
+            do {
+                let nextStep = try await postLoginSSOAccountSetup.invoke()
+                switch nextStep {
+                case .newBackupPassword(let unprivatizeInfo):
+                    await loadNewBackupPassword(unprivatizeInfo: unprivatizeInfo)
+                case .unimplemented:
+                    break
+                }
+            } catch {
+                PMLog.error(error)
+            }
+        }
+
+        private func loadNewBackupPassword(unprivatizeInfo: UnprivatizeUserSuccess) async {
+            do {
+                let organization = try await organizationRepository.getOrganization()
+                let organizationSettings = try await organizationRepository.getOrganizationSettings()
+                screenState = .newBackupPassword(.init(
+                    organizationName: organization.displayName,
+                    organizationAdminEmail: unprivatizeInfo.adminEmail,
+                    organizationLogoID: organizationSettings.logoID,
+                    organizationPublicKey: unprivatizeInfo.organizationPublicKey
+                ))
+            } catch {
+                PMLog.error(error)
+            }
+        }
+
+    }
+}
+
+#endif

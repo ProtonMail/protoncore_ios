@@ -1,6 +1,6 @@
 //
-//  JoinOrganizationViewController.swift
-//  ProtonCore-LoginUI - Created on 23/08/2024.
+//  GlobalSSOMainView.swift
+//  ProtonCore-LoginUI - Created on 23/11/2024.
 //
 //  Copyright (c) 2024 Proton AG
 //
@@ -21,28 +21,26 @@
 
 #if os(iOS)
 
-import Foundation
 import SwiftUI
-import ProtonCoreUIFoundations
-import ProtonCoreDataModel
 
-public final class JoinOrganizationViewController: UIHostingController<JoinOrganizationView> {
+struct GlobalSSOMainView: View {
+    @StateObject var viewModel: ViewModel
 
-    let viewModel: JoinOrganizationView.ViewModel
-
-     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    var body: some View {
+        mainView
+            .task {
+                await viewModel.startPostLoginSetup()
+            }
     }
 
-    init() {
-        self.viewModel = JoinOrganizationView.ViewModel(dependencies: .init())
-        let view = JoinOrganizationView(viewModel: self.viewModel)
-        super.init(rootView: view)
-    }
-
-    override public func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = ColorProvider.BackgroundNorm
+    @ViewBuilder
+    var mainView: some View {
+        switch viewModel.screenState {
+        case .loading(let dependencies):
+            SSOLoginLoaderView(viewModel: .init(dependencies: dependencies))
+        case .newBackupPassword(let dependencies):
+            JoinOrganizationView(viewModel: .init(dependencies: dependencies))
+        }
     }
 }
 
