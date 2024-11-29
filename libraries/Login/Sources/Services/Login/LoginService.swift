@@ -211,6 +211,7 @@ public final class LoginService {
         self.apiService.setSessionUID(uid: credential.UID)
 
         let user = try await authManager.getUserInfo()
+        let addresses = try await authManager.getAddresses()
 
         self.featureFlagsRepository.setApiService(self.apiService)
         if !user.ID.isEmpty {
@@ -226,7 +227,7 @@ public final class LoginService {
             user: user,
             salts: [],
             passphrases: [:],
-            addresses: [],
+            addresses: addresses,
             scopes: credential.scopes
         ))
     }

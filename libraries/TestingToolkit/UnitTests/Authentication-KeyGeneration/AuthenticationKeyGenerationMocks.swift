@@ -107,6 +107,11 @@ public struct AuthenticatorWithKeyGenerationMock: AuthenticatorInterface, Authen
         getAddressesStub(credential, completion)
     }
 
+    @AsyncThrowingFuncStub(AuthenticatorInterface.getAddresses(_:), initialReturn: .crash) public var getAddressesAsyncStub
+    public func getAddresses(_ credential: ProtonCoreNetworking.Credential?) async throws -> [Address] {
+        try await getAddressesAsyncStub(credential)
+    }
+
     @FuncStub(Self.getKeySalts) public var getKeySaltsStub
     public func getKeySalts(_ credential: Credential?, completion: @escaping (Result<[KeySalt], AuthErrors>) -> Void) {
         getKeySaltsStub(credential, completion)
@@ -140,6 +145,11 @@ public struct AuthenticatorWithKeyGenerationMock: AuthenticatorInterface, Authen
     @FuncStub(Self.getRandomSRPModulus) public var getRandomSRPModulusStub
     public func getRandomSRPModulus(completion: @escaping (Result<AuthService.ModulusEndpointResponse, AuthErrors>) -> Void) {
         getRandomSRPModulusStub(completion)
+    }
+
+    @AsyncThrowingFuncStub(AuthenticatorInterface.randomSRPModulus, initialReturn: .crash) public var getRandomSRPModulusAsyncStub
+    public func randomSRPModulus() async throws -> AuthService.ModulusEndpointResponse {
+        try await getRandomSRPModulusAsyncStub()
     }
 
     @FuncStub(Self.createAddressKey) public var createAddressKeyStub
