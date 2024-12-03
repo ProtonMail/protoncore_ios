@@ -45,6 +45,7 @@ public enum TransactionHandlerState: String {
     case transactionCancelledByUser
     case mismatchTransactionIDs
     case transactionProcessError
+    case unableToGetUserTransactionUUID
     case unknownError
 
     public var localizedDescription: String? {
@@ -154,7 +155,7 @@ private extension TransactionHandler {
             if let responseError = error as? ResponseError {
                 ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(error: responseError, isDynamic: true))
             }
-
+            transactionState = .transactionProcessError
             throw error
         }
     }

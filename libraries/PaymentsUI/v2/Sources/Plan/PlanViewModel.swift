@@ -208,7 +208,7 @@ public class PlanViewModel: ObservableObject, Identifiable {
                 self.delegate?.updatingAccount()
             case .transactionCancelledByUser:
                 self.delegate?.transactionCancelledByUser()
-            case .unknownError, .transactionProcessError, .mismatchTransactionIDs:
+            case .unknownError, .transactionProcessError, .mismatchTransactionIDs, .unableToGetUserTransactionUUID:
                 self.delegate?.transactionProcessError()
             default:
                 break

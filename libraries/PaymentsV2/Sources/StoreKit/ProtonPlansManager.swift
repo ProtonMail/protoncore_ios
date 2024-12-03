@@ -180,11 +180,13 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding {
         do {
             let uuidStrign: UserTransactionUUIDResponse = try await remoteManager.getFromURL(request.url)
             guard let uuid = UUID(uuidString: uuidStrign.uuid) else {
+                transactionState = .unableToGetUserTransactionUUID
                 throw ProtonPlansManagerError.unableToGetUserTransactionUUID
             }
 
             return uuid
         } catch {
+            transactionState = .unableToGetUserTransactionUUID
             throw ProtonPlansManagerError.unableToGetUserTransactionUUID
         }
     }
