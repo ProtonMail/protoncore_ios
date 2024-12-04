@@ -19,19 +19,11 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+import Combine
 import Foundation
 import ProtonCorePaymentsV2
-import StoreKit
 import ProtonCoreUI
-import Combine
-
-public protocol PlanViewModelDelegate: AnyObject {
-    func purchaseInProgress()
-    func updatingAccount()
-    func transactionCompleted()
-    func transactionCancelledByUser()
-    func transactionProcessError()
-}
+import StoreKit
 
 /// Represents a purchasable plan or free instance
 @MainActor
@@ -42,7 +34,7 @@ public class PlanViewModel: ObservableObject, Identifiable {
 
             let expirationText = String(localized: "Current_plan_exipiration", bundle: .module)
             let renewalText = String(localized: "Current_plan_renewal", bundle: .module)
-            
+
             return renew == 0 ? expirationText : renewalText
         }
     }
@@ -68,7 +60,7 @@ public class PlanViewModel: ObservableObject, Identifiable {
 
     public var isCurrentPlan: Bool
 
-    public weak var delegate: PlanViewModelDelegate?
+    private(set) var transactionState = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
 
     public var showProgressEntitlements: Bool {
         !progressEntitlements.isEmpty
@@ -87,7 +79,6 @@ public class PlanViewModel: ObservableObject, Identifiable {
     /// The plan description is taken from the `AvailablePlan`. The duration and identifier com from the `PlanInstance`,
     /// and the localized price and the purchase action are derived from the `Product`
 
-    private var cancellables = Set<AnyCancellable>()
     private let paymentsAPI: PaymentsAPIs
     private let remoteManager: RemoteManager
     private var plansManager: ProtonPlansManagerProviding?
@@ -132,6 +123,10 @@ public class PlanViewModel: ObservableObject, Identifiable {
         self.decorations = composedPlan.plan.decorations
         self.product = composedPlan.product
         self.isCurrentPlan = false
+
+        if let transactionState = plansManager?.transactionProgress {
+            self.transactionState = transactionState
+        }
     }
 
     public init(envURL: EnvURLType,
@@ -172,6 +167,10 @@ public class PlanViewModel: ObservableObject, Identifiable {
                          TextStyle(text: Formatter.formatDate(Double(endPeriod), formatType: .MMddYYYY), font: .headline, color: Theme.color.textNorm)]
             createFooterText(texts: texts)
         }
+
+        if let transactionState = plansManager?.transactionProgress {
+            self.transactionState = transactionState
+        }
     }
 
     // MARK: Public methods
@@ -195,26 +194,7 @@ public class PlanViewModel: ObservableObject, Identifiable {
             return
         }
 
-        delegate?.purchaseInProgress()
-
-        plansManager.transactionStatePublisher.sink { [weak self] value in
-
-            guard let self = self else { return }
-
-            switch value {
-            case .transactionCompleted:
-                self.delegate?.transactionCompleted()
-            case .createNewSubscription:
-                self.delegate?.updatingAccount()
-            case .transactionCancelledByUser:
-                self.delegate?.transactionCancelledByUser()
-            case .unknownError, .transactionProcessError, .mismatchTransactionIDs, .unableToGetUserTransactionUUID:
-                self.delegate?.transactionProcessError()
-            default:
-                break
-            }
-        }
-        .store(in: &cancellables)
+        transactionState.send(.generatingReceipt)
 
         do {
             _ = try await plansManager.purchase(product, planName: name, planCycle: subscriptionPeriod.rawValue)

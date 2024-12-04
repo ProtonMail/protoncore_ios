@@ -88,7 +88,7 @@ final class TransactionHandlerTests: XCTestCase {
 
         let protonTransaction = convertStoreTestTransaction(transaction, price: composedPlan.product.price, currencyId: "USD")
 
-        cancellable = sut.$transactionState.sink { [weak self] state in
+        cancellable = sut.transactionState.sink { [weak self] state in
             debugPrint(state.localizedDescription)
             guard let self = self else { return }
             self.mockRemoteManager.setupURLSessionMock(withMockResponse: remoteResponseFor(transactionState: state))

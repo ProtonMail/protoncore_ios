@@ -26,7 +26,7 @@ import StoreKit
 
 public protocol ProtonPlansManagerProviding {
 
-    var transactionStatePublisher: Published<TransactionHandlerState>.Publisher { get }
+    var transactionProgress: CurrentValueSubject<TransactionHandlerState, Never> { get }
     func getProtonPlans() async throws -> AvailablePlans
     func getStoreProducts(_ plans: [String]) async throws -> [Product]
     func getAvailablePlans() async throws -> [ComposedPlan]
@@ -53,8 +53,7 @@ public enum ProtonPlansManagerError: Error {
 
 public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding {
 
-    @Published private var transactionState: TransactionHandlerState = .idle
-    public var transactionStatePublisher: Published<TransactionHandlerState>.Publisher{ $transactionState }
+    public var transactionProgress = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
 
     private var products: [Product] = []
     private var transactionToken: Token!
@@ -85,9 +84,10 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding {
 
         super.init()
 
-        // assing transaction state subscriber
-        transactionHandler.$transactionState
-            .assign(to: &$transactionState)
+        // Assiging TransactionHandler currentValue subject to ProtonPlansManager transactionProgress currentValue subject to receive changes.
+        // Values received from TransactionHandler are not currently used here, we rely on the throwable processTransaction in TransactionHandler
+        // But changes sent from TransactionHandler.transactionState will be passed anyway and can be used, if necessary, from any subscriber
+        transactionProgress = transactionHandler.transactionState
     }
 
     public func updateUserSession(sessionID: String, authToken: String) {
@@ -164,10 +164,12 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding {
         case .pending:
             throw ProtonPlansManagerError.transactionPending
         case .userCancelled:
-            transactionState = .transactionCancelledByUser
+            transactionProgress.value = .transactionCancelledByUser
+            transactionProgress.send(completion: .finished)
             throw ProtonPlansManagerError.transactionCancelledByUser
         @unknown default:
-            transactionState = .unknownError
+            transactionProgress.value = .unknownError
+            transactionProgress.send(completion: .finished)
             throw ProtonPlansManagerError.transactionUnknownError
         }
     }
@@ -180,13 +182,15 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding {
         do {
             let uuidStrign: UserTransactionUUIDResponse = try await remoteManager.getFromURL(request.url)
             guard let uuid = UUID(uuidString: uuidStrign.uuid) else {
-                transactionState = .unableToGetUserTransactionUUID
+                transactionProgress.value = .unableToGetUserTransactionUUID
+                transactionProgress.send(completion: .finished)
                 throw ProtonPlansManagerError.unableToGetUserTransactionUUID
             }
 
             return uuid
         } catch {
-            transactionState = .unableToGetUserTransactionUUID
+            transactionProgress.value = .unableToGetUserTransactionUUID
+            transactionProgress.send(completion: .finished)
             throw ProtonPlansManagerError.unableToGetUserTransactionUUID
         }
     }
