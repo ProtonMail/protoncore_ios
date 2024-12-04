@@ -19,6 +19,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+import Combine
 import Foundation
 import ProtonCorePaymentsV2
 import ProtonCoreUI
@@ -38,6 +39,8 @@ public class AvailablePlansViewModel: ObservableObject {
     @Published var confirmationCompleted: Bool = false
     @Published var updateCompleted: Bool = false
     @Published var showAlert: BannerState = .none
+
+    private var cancellables = Set<AnyCancellable>()
 
     let billing = BillingCycle.allCases
 
@@ -124,8 +127,28 @@ public class AvailablePlansViewModel: ObservableObject {
         filteredPlans.removeAll()
         filteredPlans = filter == .all ? availablePlansViewModels : availablePlansViewModels.filter { return $0.subscriptionPeriod == filter }
 
-        filteredPlans.forEach { plan in
-            plan.delegate = self
+        filteredPlans.forEach { [weak self] plan in
+            guard let self = self else {
+                return
+            }
+
+            plan.transactionState.sink { value in
+                switch value {
+                case .generatingReceipt:
+                    self.purchaseInProgress()
+                case .transactionCompleted:
+                    self.transactionCompleted()
+                case .createNewSubscription:
+                    self.confirmationCompleted = true
+                case .transactionCancelledByUser:
+                    self.transactionCancelledByUser()
+                case .unknownError, .transactionProcessError, .mismatchTransactionIDs, .unableToGetUserTransactionUUID:
+                    self.transactionProcessError()
+                default:
+                    break
+                }
+            }
+            .store(in: &self.cancellables)
         }
 
         return filteredPlans
@@ -136,12 +159,15 @@ public class AvailablePlansViewModel: ObservableObject {
     }
 }
 
-extension AvailablePlansViewModel: PlanViewModelDelegate {
+extension AvailablePlansViewModel {
 
     public func transactionCompleted() {
         updateCompleted = true
         DispatchQueue.main.asyncAfter(deadline: .now() + Constants.transactionCompletedDelay) { [weak self] in
             guard let self else { return }
+            // Reset TransactionProgress flags --> Improve this logic
+            self.confirmationCompleted = false
+            self.updateCompleted = false
             Task {
                 await self.fetchData()
             }
