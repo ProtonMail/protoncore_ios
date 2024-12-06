@@ -101,4 +101,8 @@ public extension ProtonCoreFeatureFlags.FeatureFlag {
     static var telemetrySignUpMetrics: Self {
         .init(name: "IOSTelemetrySignUpMetrics", enabled: true, variant: nil)
     }
+
+    static var paymentsV2: Self {
+        .init(name: "IOSPaymentsV2", enabled: true, variant: nil)
+    }
 }
