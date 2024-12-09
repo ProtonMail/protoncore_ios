@@ -264,7 +264,7 @@
 
 "Continue" = "Continua";
 
-"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.";
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Establiu una contrasenya de recuperació per continuar. Aquesta contrasenya us permetrà iniciar la sessió i recuperar les vostres dades si us bloquegen el vostre compte de Proton, així que assegureu-vos de mantenir-lo en un lloc segur.";
 
 "Backup password" = "Contrasenya de la còpia de seguretat";
 
@@ -292,9 +292,9 @@
 
 "Approve the sign-in from another device" = "Aprova l'inici de sessió des d'un altre dispositiu";
 
-"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@.";
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Per assegurar-vos que realment esteu intentant iniciar la sessió, compartiu el codi de confirmació amb el vostre administrador %@ perquè pugui aprovar la sol·licitud de %@.";
 
-"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device.";
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Per assegurar-vos que realment intenteu iniciar la sessió al vostre compte, reviseu el codi de confirmació i aproveu la sol·licitud des d'un altre dispositiu.";
 
 "Use backup password instead" = "Utilitza la contrasenya de recuperació en lloc";
 
@@ -312,7 +312,7 @@
 
 "Access denied" = "Accés denegat";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Per la vostra seguretat, heu tancat la sessió de tots els vostres dispositius actius. Abans d'accedir al vostre compte, haureu d'introduir una nova contrasenya de recuperació.";
 
 "Contact your administrator if the problem persists." = "Contacteu amb l'administrador si el problema persisteix.";
 
@@ -320,12 +320,16 @@
 
 "Ask your administrator for access?" = "Voleu demanar accés al vostre administrador?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Això us tancarà la sessió dels vostres altres dispositius i haureu de crear una nova contrasenya de recuperació.";
 
 "Grant access to user?" = "Donar accés a l'usuari?";
 
-"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ demana la vostra ajuda per iniciar la sessió al seu compte de Proton amb un inici de sessió únic.\n\nIntroduïu el codi de confirmació que hem enviat a aquest usuari.";
 
 "Grant access" = "Dona l'accés";
 
 "Deny access" = "Denega l'accés";
+
+"Signing you in" = "S'està iniciant la sessió.";
+
+"to your organization" = "a la vostra organització";

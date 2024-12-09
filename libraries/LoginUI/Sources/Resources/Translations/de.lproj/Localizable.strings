@@ -264,11 +264,11 @@
 
 "Continue" = "Weiter";
 
-"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.";
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Lege ein Backup-Passwort fest, um fortzufahren. Mit diesem Passwort kannst du dich anmelden und deine Daten wiederherstellen, wenn du aus deinem Proton-Konto ausgesperrt wirst. Bewahre es also an einem sicheren Ort auf.";
 
-"Backup password" = "Backup password";
+"Backup password" = "Backup-Passwort";
 
-"Repeat backup password" = "Repeat backup password";
+"Repeat backup password" = "Wiederholung des Backup-Passworts";
 
 "Password cannot be empty" = "Passwort darf nicht leer sein";
 
@@ -296,7 +296,7 @@
 
 "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Um sicherzugehen, dass es wirklich du bist, der versucht, sich bei deinem Konto anzumelden, überprüfe den Bestätigungscode und bestätige die Anfrage von einem anderen Gerät aus.";
 
-"Use backup password instead" = "Use backup password instead";
+"Use backup password instead" = "Stattdessen Backup-Passwort verwenden";
 
 "Ask administrator for help" = "Einen Administrator um Hilfe bitten";
 
@@ -304,15 +304,15 @@
 
 "Operation couldn't be completed. Please try again." = "Fehler beim Abschließen des Vorgangs. Bitte versuche es erneut.";
 
-"Enter your backup password" = "Enter your backup password";
+"Enter your backup password" = "Gib dein Backup-Passwort ein";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Um sicherzugehen, dass du wirklich versuchst, dich anzumelden, gib bitte dein Backup-Passwort ein.";
 
 "Access granted" = "Zugriff gewährt";
 
 "Access denied" = "Zugriff verweigert";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Zu deiner Sicherheit wurdest du von all deinen anderen aktiven Geräten abgemeldet. Bevor du auf dein Konto zugreifen kannst, musst du ein neues Backup-Passwort eingeben.";
 
 "Contact your administrator if the problem persists." = "Kontaktiere deinen Administrator, wenn das Problem weiterhin besteht.";
 
@@ -320,12 +320,16 @@
 
 "Ask your administrator for access?" = "Möchtest du deinen Administrator um Zugriff bitten?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Dadurch wirst du von deinen anderen Geräten abgemeldet, und du musst ein neues Backup-Passwort festlegen.";
 
 "Grant access to user?" = "Dem Benutzer Zugriff gewähren?";
 
-"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ bittet um deine Hilfe bei der Anmeldung in sein Proton-Konto mit Single-Sign-On.\n\n Gib den Bestätigungscode ein, den wir diesem Benutzer gesendet haben.";
 
 "Grant access" = "Zugriff erlauben";
 
 "Deny access" = "Zugriff verweigern";
+
+"Signing you in" = "Du wirst angemeldet";
+
+"to your organization" = "zu deiner Organisation";

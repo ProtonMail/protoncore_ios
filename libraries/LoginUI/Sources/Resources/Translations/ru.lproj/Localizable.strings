@@ -64,11 +64,11 @@
 
 "Incorrect mailbox password" = "Неверный пароль почтового ящика";
 
-"Your session has expired. Please log in again." = "Время сеанса истекло. Пожалуйста, войдите снова.";
+"Your session has expired. Please log in again." = "Истёк срок действия вашей сессии. Войдите снова.";
 
 "Proton address required" = "Требуется адрес Proton";
 
-"You need a Proton email address to use Proton Mail and Proton Calendar.\nYou’ll still be able to use %@ to sign in, and to recover your account." = "Чтобы использовать Proton Mail и Proton Calendar, вам нужна эл. почта Proton.\nВы также сможете использовать %@ для входа, и для восстановления вашей учетной записи.";
+"You need a Proton email address to use Proton Mail and Proton Calendar.\nYou’ll still be able to use %@ to sign in, and to recover your account." = "Вам необходим адрес электронной почты Proton, чтобы пользоваться Proton Mail и Proton Calendar.\nВы по-прежнему сможете использовать %@ для входа в аккаунт и его восстановления.";
 
 "Username" = "Имя пользователя";
 
@@ -158,7 +158,7 @@
 
 "Set recovery method" = "Установить способ восстановления";
 
-"Your account is being created" = "Создается ваша учетная запись";
+"Your account is being created" = "Создаётся ваш аккаунт";
 
 "This should take no more than a minute." = "Обычно на это требуется менее минуты.";
 
@@ -192,7 +192,7 @@
 
 "Invalid hashed password" = "Неверный хешированный пароль";
 
-"Password can not be empty.\nPlease try again." = "Пароль не может быть пустым.\nПожалуйста, попробуйте еще раз.";
+"Password can not be empty.\nPlease try again." = "Пароль не может быть пустым.\nПовторите попытку.";
 
 "Passwords do not match.\nPlease try again." = "Пароль и подтверждение не совпадают.\nПожалуйста, попробуйте еще раз.";
 
@@ -329,3 +329,7 @@
 "Grant access" = "Предоставить доступ";
 
 "Deny access" = "Отказать в доступе";
+
+"Signing you in" = "Выполняется вход";
+
+"to your organization" = "в вашу организацию";
