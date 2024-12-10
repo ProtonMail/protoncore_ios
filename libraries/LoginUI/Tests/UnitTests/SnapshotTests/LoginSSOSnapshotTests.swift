@@ -24,6 +24,7 @@
 import XCTest
 @testable import ProtonCoreLoginUI
 #if canImport(ProtonCoreTestingToolkitUnitTestsCore)
+import ProtonCoreTestingToolkitUnitTestsServices
 import ProtonCoreTestingToolkitUnitTestsCore
 #endif
 import SwiftUI
@@ -35,10 +36,15 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
     @MainActor
     func testJoinOrganizationView() {
         let view = JoinOrganizationView(viewModel: .init(dependencies: .init(
-            organizationName: "Proton AG",
-            organizationAdminEmail: "admin@privacybydefault.com",
-            organizationLogoID: nil,
-            organizationPublicKey: .init(value: "")
+                    apiService: APIServiceMock(),
+                    userData: .dummy,
+                    organizationInfo: .init(
+                        organizationName: "Proton AG",
+                        organizationAdminEmail: "admin@privacybydefault.com",
+                        organizationLogoID: nil,
+                        organizationPublicKey: .init(value: "")
+                    ),
+                    loginDelegate: nil
         )))
         let viewController = UIHostingController(rootView: view)
 

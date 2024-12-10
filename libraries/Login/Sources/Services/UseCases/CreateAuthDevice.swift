@@ -51,13 +51,14 @@ struct CreateAuthDevice {
         let (_, result): (_, CreateAuthDeviceResponse) = try await apiService.perform(request: createAuthDeviceRequest)
 
         guard let authDevice = result.authDevice else { throw SSOLoginError.authDeviceNotFound }
+        guard let deviceToken = authDevice.deviceToken else { throw SSOLoginError.deviceTokenNotFound }
 
         // Persist DeviceSecret (secret, deviceId, token)
         try deviceSecretRepository.upsert(deviceSecret: .init(
             userId: userId,
             deviceId: authDevice.ID,
             secret: deviceSecret,
-            token: authDevice.deviceToken
+            token: deviceToken
         ))
     }
 }

@@ -27,17 +27,12 @@ import Foundation
 public struct AuthDevice: Codable, Equatable {
 
     public var ID: String
-    public var deviceToken: String
-    public var activationAddressID: String
+    public var deviceToken: String?
     public var state: State
     public var name: String
     public var localizedClientName: String
-    public var platform: Platform
-    public var createTime: Int
-    public var activateTime: Int?
-    public var rejectTime: Int?
-    public var activationToken: String?
-    public var lastActivityTime: Int
+    public var platform: Platform?
+    public var lastActivityTime: String
 
     public enum State: Int, Codable, Equatable {
         case inactive = 0
@@ -64,18 +59,20 @@ public struct AuthDevice: Codable, Equatable {
         }
     }
 
-    public init(ID: String, deviceToken: String, activationAddressID: String, state: State, name: String, localizedClientName: String, platform: Platform, createTime: Int, activateTime: Int? = nil, rejectTime: Int? = nil, activationToken: String? = nil, lastActivityTime: Int) {
+    public init(
+        ID: String,
+        deviceToken: String?,
+        state: State, name: String,
+        localizedClientName: String,
+        platform: Platform?,
+        lastActivityTime: String
+    ) {
         self.ID = ID
         self.deviceToken = deviceToken
-        self.activationAddressID = activationAddressID
         self.state = state
         self.name = name
         self.localizedClientName = localizedClientName
         self.platform = platform
-        self.createTime = createTime
-        self.activateTime = activateTime
-        self.rejectTime = rejectTime
-        self.activationToken = activationToken
         self.lastActivityTime = lastActivityTime
     }
 }

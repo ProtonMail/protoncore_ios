@@ -124,6 +124,7 @@ extension JoinOrganizationView {
                     try await authenticator.setupAccountKeys(
                         addresses: userData.addresses,
                         password: backupPasswordContent.text,
+                        orgPublicKey: organizationInfo.organizationPublicKey,
                         deviceSecret: deviceSecret.secret
                     )
                     await loginDelegate?.globalSSOLoginDidFinish(data: userData)

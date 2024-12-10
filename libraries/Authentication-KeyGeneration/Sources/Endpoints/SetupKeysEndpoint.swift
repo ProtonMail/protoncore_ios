@@ -35,7 +35,10 @@ extension AuthService {
         let keySalt: String
         let passwordAuth: PasswordAuth
 
-        /// Global SSO: Base64 encoded string of hashed password using AES256-GCM (AeadCrypto) to the device secret
+        /// Global SSO
+        let orgPrimaryUserKey: ArmoredKey?
+        let orgActivationToken: ArmoredSignature?
+        /// Base64 encoded string of hashed password using AES256-GCM (AeadCrypto) to the device secret
         let encryptedSecret: String?
 
         var path: String {
@@ -56,8 +59,10 @@ extension AuthService {
 
         var parameters: [String: Any]? {
             [
-                "KeySalt": keySalt,
                 "PrimaryKey": privateKey.value,
+                "KeySalt": keySalt,
+                "OrgPrimaryUserKey": orgPrimaryUserKey?.value as Any,
+                "OrgActivationToken": orgActivationToken?.value as Any,
                 "AddressKeys": addresses,
                 "Auth": passwordAuth.parameters!,
                 "EncryptedSecret": encryptedSecret as Any

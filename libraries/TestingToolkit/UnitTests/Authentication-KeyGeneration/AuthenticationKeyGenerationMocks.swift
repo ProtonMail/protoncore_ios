@@ -24,6 +24,7 @@ import Foundation
 import ProtonCoreAPIClient
 import ProtonCoreAuthentication
 import ProtonCoreAuthenticationKeyGeneration
+import ProtonCoreCrypto
 import ProtonCoreDataModel
 import ProtonCoreNetworking
 import ProtonCoreCryptoGoInterface
@@ -165,8 +166,8 @@ public struct AuthenticatorWithKeyGenerationMock: AuthenticatorInterface, Authen
         setupAccountKeysStub(credential, addresses, password, completion)
     }
 
-    @AsyncThrowingFuncStub(AuthenticatorKeyGenerationInterface.setupAccountKeys(_:addresses:password:deviceSecret:)) public var setupAccountKeysAsyncStub
-    public func setupAccountKeys(_ credential: Credential?, addresses: [Address], password: String, deviceSecret: String?) async throws {
-        try await setupAccountKeysAsyncStub(credential, addresses, password, deviceSecret)
+    @AsyncThrowingFuncStub(AuthenticatorKeyGenerationInterface.setupAccountKeys(_:addresses:password:orgPublicKey:deviceSecret:)) public var setupAccountKeysAsyncStub
+    public func setupAccountKeys(_ credential: Credential?, addresses: [Address], password: String, orgPublicKey: ArmoredKey?, deviceSecret: String?) async throws {
+        try await setupAccountKeysAsyncStub(credential, addresses, password, orgPublicKey, deviceSecret)
     }
 }

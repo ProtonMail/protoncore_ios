@@ -131,6 +131,8 @@ final class AccountKeySetupV1 {
                                              privateKey: firstaddressKey.armoredKey,
                                              keySalt: key.passwordSalt.encodeBase64(),
                                              passwordAuth: passwordAuth,
+                                             orgPrimaryUserKey: nil,
+                                             orgActivationToken: nil,
                                              encryptedSecret: nil)
     }
 }

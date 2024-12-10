@@ -78,7 +78,6 @@ final class AuthDeviceRequestTests: XCTestCase, JSONMockLoader {
 
         if let authDevice = response.authDevice {
             XCTAssertEqual(authDevice.name, deviceName)
-            XCTAssertEqual(authDevice.activationToken, activationToken)
         } else {
             XCTFail("AuthDevice not found")
         }

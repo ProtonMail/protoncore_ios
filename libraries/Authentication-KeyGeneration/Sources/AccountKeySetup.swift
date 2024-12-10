@@ -34,6 +34,7 @@ final class AccountKeySetup {
     enum Constants {
         /// Used for Global SSO auth device secret context
         static let deviceSecretContext = "account.device-secret"
+        static let ssoKeyGenerationContext = SignatureContext(value: "account.key-token.user-unprivatization", isCritical: true)
     }
 
     /// account level key. on phase 2 user key used for
@@ -172,6 +173,7 @@ final class AccountKeySetup {
     ///   - accountKey: generated account key
     ///   - modulus: srp modulus
     ///   - modulusId: modulus id
+    ///   - orgPublicKey: Organization public key
     ///   - deviceSecret: 32-byte random string as base64. Used in GlobalSSO for `auth/v4/devices`
     /// - Returns: `AuthService.SetupKeysEndpoint`
     func setupSetupKeysRoute(
@@ -179,8 +181,20 @@ final class AccountKeySetup {
         accountKey: GeneratedAccountKey,
         modulus: String,
         modulusId: String,
+        orgPublicKey: ArmoredKey? = nil,
         deviceSecret: String? = nil
     ) throws -> AuthService.SetupKeysEndpoint {
+
+        let addressData = accountKey.addressKeys.map { addressKey -> [String: Any] in
+            let address: [String: Any] = [
+                "AddressID": addressKey.addressId,
+                "PrivateKey": addressKey.armoredKey.value,
+                "Token": addressKey.token.value,
+                "Signature": addressKey.signature.value,
+                "SignedKeyList": addressKey.signedKeyList
+            ]
+            return address
+        }
 
         // for the login password needs to set 80 bits & srp auth use 80 bits
         let newSaltForKey: Data = try PasswordHash.random(bits: PasswordSaltSize.login.int32Bits)
@@ -194,7 +208,14 @@ final class AccountKeySetup {
 
         let passwordAuth = PasswordAuth(modulusID: modulusId, salt: newSaltForKey.encodeBase64(), verifier: verifierForKey.encodeBase64())
 
-        /// For Global SSO
+        /// Global SSO or magic link
+        var orgPrimaryUserKey: ArmoredKey?
+        var orgActivationToken: ArmoredSignature?
+        if let orgPublicKey {
+            (orgPrimaryUserKey, orgActivationToken) = try generateOrgKeys(accountKey: accountKey, orgPublicKey: orgPublicKey)
+        }
+
+        /// Global SSO
         var encryptedSecret: String?
         if let deviceSecret, let deviceSecretKey = Data(base64Encoded: deviceSecret) {
             /// Key hashed password
@@ -206,22 +227,46 @@ final class AccountKeySetup {
             )
         }
 
-        let addressData = accountKey.addressKeys.map { addressKey -> [String: Any] in
-            let address: [String: Any] = [
-                "AddressID": addressKey.addressId,
-                "PrivateKey": addressKey.armoredKey.value,
-                "Token": addressKey.token.value,
-                "Signature": addressKey.signature.value,
-                "SignedKeyList": addressKey.signedKeyList
-            ]
-            return address
-        }
         return AuthService.SetupKeysEndpoint(
             addresses: addressData,
             privateKey: accountKey.userKey.armoredKey,
             keySalt: accountKey.userKey.passwordSalt.encodeBase64(),
             passwordAuth: passwordAuth,
+            orgPrimaryUserKey: orgPrimaryUserKey,
+            orgActivationToken: orgActivationToken,
             encryptedSecret: encryptedSecret
         )
+    }
+
+    private func generateOrgKeys(
+        accountKey: GeneratedAccountKey,
+        orgPublicKey: ArmoredKey
+    ) throws -> (orgPrimaryUserKey: ArmoredKey?, orgActivationToken: ArmoredSignature) {
+        // MARK: - orgActivationToken
+
+        // generate 32 byte secret and encode it to hex
+        let randomSecret = try PasswordHash.genAddrPassphrase()
+        // encrypt it to organization key
+        let token = try randomSecret.encrypt(publicKey: orgPublicKey)
+        // Signing it with the newly created address key and the context account.key-token.user-unprivatization
+        guard let primaryAddressKey = accountKey.addressKeys.first?.armoredKey else {
+            throw KeySetupError.keyGenerationFailed
+        }
+        let signingKey = SigningKey(privateKey: primaryAddressKey, passphrase: accountKey.userKey.password)
+        let orgActivationToken = try Sign.signDetached(
+            signingKey: signingKey,
+            plainData: try token.unArmor().value,
+            signatureContext: Constants.ssoKeyGenerationContext
+        )
+
+        // MARK: - orgPrimaryUserKey
+        // Encrypt a copy of the primary key with the random secret encoded to hex as OrgPrimaryUserKey
+        let orgPrimaryUserKey = try Crypto.updatePassphrase(
+            privateKey: accountKey.userKey.armoredKey,
+            oldPassphrase: accountKey.userKey.password,
+            newPassphrase: randomSecret
+        )
+
+        return (orgPrimaryUserKey, orgActivationToken)
     }
 }
