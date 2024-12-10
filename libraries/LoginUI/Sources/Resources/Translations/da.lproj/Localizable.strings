@@ -16,7 +16,7 @@
 
 "The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Proton-serverne kan ikke nås. Det kan skyldes forkert netværkskonfiguration, at Proton-servere ikke fungerer eller at Proton-servere er blokeret";
 
-"Search country" = "Søg land";
+"Search country" = "Søg efter land";
 
 "Code sent to %@" = "Kode sendt til %@";
 
@@ -329,3 +329,7 @@
 "Grant access" = "Grant access";
 
 "Deny access" = "Deny access";
+
+"Signing you in" = "Logger dig ind";
+
+"to your organization" = "til din organisation";

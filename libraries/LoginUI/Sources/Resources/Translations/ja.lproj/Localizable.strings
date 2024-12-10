@@ -52,7 +52,7 @@
 
 "Customer support" = "カスタマーサポート";
 
-"Still need help? Contact us directly." = "問題が解決しませんか? 直接お問い合わせる.";
+"Still need help? Contact us directly." = "問題が解決しませんか？私たちに直接ご連絡ください。";
 
 "Please enter your Proton Account email or username." = "Proton アカウントのメールアドレスまたはユーザー名を入力してください。";
 
@@ -329,3 +329,7 @@
 "Grant access" = "アクセスを承認";
 
 "Deny access" = "アクセスを拒否";
+
+"Signing you in" = "サインインしています";
+
+"to your organization" = "あなたの組織に";

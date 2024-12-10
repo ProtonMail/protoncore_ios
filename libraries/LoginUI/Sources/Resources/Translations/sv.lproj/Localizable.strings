@@ -58,7 +58,7 @@
 
 "Complete Setup" = "Slutför inställning";
 
-"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "Ditt konto saknar nycklar. Logga in på webben för att automatiskt generera obligatoriska nycklar. När du har loggat in på webben går du tillbaka till appen och loggar in.";
+"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "Ditt konto saknar nycklar. Logga in på webben för att automatiskt generera obligatoriska nycklar. Efter att ha loggat in på webben gå tillbaka till appen och logga in.";
 
 "Account setup required" = "Inställning av konto krävs";
 
@@ -142,7 +142,7 @@
 
 "Recovery phone number" = "Telefonnummer för återställning";
 
-"By clicking Next, you agree with Proton's Terms and Conditions" = "Genom att klicka på ”Nästa” godkänner du Protons användarvillkor";
+"By clicking Next, you agree with Proton's Terms and Conditions" = "Genom att klicka på nästa godkänner du Protons användarvillkor";
 
 "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Genom att klicka på nästa godkänner du Protons villkor och integritetspolicy";
 
@@ -234,7 +234,7 @@
 
 "Learn more" = "Lär dig mer";
 
-"Invalid state. Please quit the app and try again in a few minutes." = "Ogiltigt tillstånd. Avsluta appen och försök igen om några minuter.";
+"Invalid state. Please quit the app and try again in a few minutes." = "Ogiltigt tillstånd. Stäng appen och försök igen om några minuter.";
 
 "There was a problem reading your security key." = "Det var ett problem att läsa din säkerhetsnyckel.";
 
@@ -242,7 +242,7 @@
 
 "Fetching your security keys details" = "Hämtar detaljer om dina säkerhetsnycklar";
 
-"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "Du har inga säkerhetsnycklar registrerade på ditt konto ännu. Besök sektionen för inställningar på vår webbplats för att lägga till säkerhetsnycklar.";
+"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "Du har inga säkerhetsnycklar registrerade på ditt konto ännu. Besök inställningssektionen på vår webbplats för att lägga till säkerhetsnycklar.";
 
 "An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "Ett fel uppstod när dina säkerhetsnycklar skulle hämtas. Du kan också kontrollera dem på webbplatsen för Proton %@.";
 
@@ -264,11 +264,11 @@
 
 "Continue" = "Fortsätt";
 
-"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Ställ in ett säkerhetskopieringslösenord för att fortsätta. Detta lösenord gör att du kan logga in och återställa dina data om du blir utelåst från ditt Proton-konto, så se till att förvara det någonstans säkert.";
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Ställ in ett reservlösenord för att fortsätta. Detta lösenord gör att du kan logga in och återställa dina data om du blir utelåst från ditt Proton-konto, så se till att förvara det någonstans säkert.";
 
-"Backup password" = "Säkerhetskopiera lösenord";
+"Backup password" = "Reservlösenord";
 
-"Repeat backup password" = "Repetera säkerhetskopieringslösenord";
+"Repeat backup password" = "Repetera reservlösenord";
 
 "Password cannot be empty" = "Lösenord kan inte vara tomt";
 
@@ -296,23 +296,23 @@
 
 "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "För att vara säker på att det verkligen är du som försöker logga in på ditt konto, granska bekräftelsekoden och godkänn begäran från annan enhet.";
 
-"Use backup password instead" = "Använd säkerhetskopieringslösenord istället";
+"Use backup password instead" = "Använd reservlösenord istället";
 
 "Ask administrator for help" = "Be administratör om hjälp";
 
 "Devices available:" = "Enheter tillgängliga:";
 
-"Operation couldn't be completed. Please try again." = "Operation kunde inte slutföras. Försök igen.";
+"Operation couldn't be completed. Please try again." = "Åtgärd kunde inte slutföras. Försök igen.";
 
-"Enter your backup password" = "Ange ditt säkerhetskopieringslösenord";
+"Enter your backup password" = "Ange ditt reservlösenord";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "För att vara säker på att det verkligen är du som försöker logga in, ange ditt säkerhetskopieringslösenord.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "För att vara säker på att det verkligen är du som försöker logga in, ange ditt reservlösenord.";
 
 "Access granted" = "Åtkomst beviljad";
 
 "Access denied" = "Åtkomst nekad";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "För din säkerhet har du blivit utloggad från alla dina andra aktiva enheter. Innan du kommer åt ditt konto måste du ange ett nytt säkerhetskopieringslösenord.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "För din säkerhet har du blivit utloggad från alla dina andra aktiva enheter. Innan du kommer åt ditt konto måste du ange ett nytt reservlösenord.";
 
 "Contact your administrator if the problem persists." = "Kontakta din administratör om problemet kvarstår.";
 
@@ -320,12 +320,16 @@
 
 "Ask your administrator for access?" = "Be din administratör om åtkomst?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "Detta kommer att logga ut dig från dina andra enheter och du måste skapa ett nytt säkerhetskopieringslösenord.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Detta kommer att logga ut dig från dina andra enheter och du måste skapa ett nytt reservlösenord.";
 
 "Grant access to user?" = "Bevilja åtkomst till användare?";
 
-"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ ber om din hjälp att logga in på deras Proton-konto med enkel inloggning. \n\nAnge bekräftelsekoden som vi har skickat till användaren.";
 
 "Grant access" = "Bevilja åtkomst";
 
 "Deny access" = "Neka åtkomst";
+
+"Signing you in" = "Loggar in dig";
+
+"to your organization" = "till din organisation";
