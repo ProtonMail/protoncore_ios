@@ -265,8 +265,11 @@ final class LoginCoordinator {
     }
 
     private func completeLoginFlow(data: LoginData) {
-        navigationController?.dismiss(animated: true, completion: nil)
-        delegate?.loginCoordinatorDidFinish(loginCoordinator: self, data: data)
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            self.navigationController?.dismiss(animated: true, completion: nil)
+            self.delegate?.loginCoordinatorDidFinish(loginCoordinator: self, data: data)
+        }
     }
 
     private func popAndShowError(error: LoginError) {

@@ -87,7 +87,7 @@ public class Crypto {
     ///   - publicKey: armored public key
     ///   - signingKey: signing key pack. include a private key and its passphase
     /// - Returns: encrypted Armored message
-    internal func encryptAndSign(plainRaw: Either<String, Data>,
+    public func encryptAndSign(plainRaw: Either<String, Data>,
                                  publicKey: ArmoredKey, signingKey: SigningKey?, signatureContext: SignatureContext?) throws -> ArmoredMessage {
 
         let publicKeyRing = try self.keyRingBuilder.buildPublicKeyRing(armoredKeys: [publicKey])
