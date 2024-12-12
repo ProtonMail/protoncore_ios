@@ -28,11 +28,24 @@ struct AvailablePlansBodyView: View {
 
     var body: some View {
         ScrollView(showsIndicators: false) {
-            // MARK: Current plan view
-            if let viewModel = viewModel.currentPlan {
-                PlanView(viewModel: viewModel)
-                    .padding(Theme.spacing.large)
+            // MARK: Header
+            if viewModel.hideCurrentPlan {
+                SubscriptionsViewHeader()
+                    .padding(.bottom, viewModel.hideCurrentPlan ? Theme.spacing.extraLarge : 0)
             }
+
+            // MARK: Available plans section title
+            if !viewModel.hideCurrentPlan {
+                HStack {
+                    Text(String(localized: "Available_plans_section_title", bundle: .module))
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    Spacer()
+                }
+                .padding(.horizontal, Theme.spacing.extraLarge)
+                .opacity(viewModel.hasAvailablePlans ? 1 : 0)
+            }
+
             // MARK: Plan filter picker
             HStack {
                 Picker("", selection: $viewModel.billingCycle) {
@@ -48,19 +61,20 @@ struct AvailablePlansBodyView: View {
 
                 Spacer()
             }
-            .padding(Theme.spacing.large)
+            .padding(.horizontal, Theme.spacing.large)
+            .opacity(viewModel.hasAvailablePlans ? 1 : 0)
 
             // MARK: Available plans
             ScrollView(showsIndicators: false) {
-                if viewModel.hasAvailablePlans() {
+                if viewModel.hasAvailablePlans {
                     ForEach(viewModel.filteredPlans, id: \.id) { viewModel in
                         PlanView(viewModel: viewModel)
                             .padding(.top, Theme.spacing.standard)
                     }
                 } else {
                     NoAvailblePlansView()
+                        .opacity(viewModel.hideCurrentPlan ? 1 : 0)
                 }
-
             }
             .padding(.horizontal, Theme.spacing.large)
             .scrollDisabled(!viewModel.hideCurrentPlan)

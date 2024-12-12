@@ -1487,7 +1487,8 @@ add(
         coreTarget(name: .paymentsUIV2,
                    dependencies: [
                         .paymentsV2,
-                        .protonCoreUI
+                        .protonCoreUI,
+                        .foundations
                    ],
                    path: "libraries/PaymentsUI/v2/Sources"),
 

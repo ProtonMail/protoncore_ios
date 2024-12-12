@@ -26,6 +26,7 @@ import ProtonCoreUI
 public struct AvailablePlansView: View {
 
     @ObservedObject var viewModel: AvailablePlansViewModel
+    @Environment(\.presentationMode) var presentationMode
 
     public var body: some View {
         ZStack {
@@ -33,20 +34,43 @@ public struct AvailablePlansView: View {
                 .ignoresSafeArea()
 
             VStack {
-                SubscriptionsViewHeader()
+                //MARK: Modal presentation close button
+                if viewModel.showCloseButton {
+                    HStack {
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            Image(uiImage: Theme.icon.crossBig)
+                                .tint(Theme.color.textNorm)
+                        }
+                        .padding(Theme.spacing.extraLarge)
+                    }
+                }
+                // MARK: Current plan
+                if !viewModel.hideCurrentPlan {
+                    // MARK: Current plan view
+                    if let planViewModel = viewModel.currentPlan {
+                        PlanView(viewModel: planViewModel)
+                            .padding(Theme.spacing.large)
+                            .opacity(viewModel.hideCurrentPlan ? 0 : 1)
+                        Spacer()
+                    }
+                }
                 switch viewModel.viewState {
                 case .dataLoaded:
                     AvailablePlansBodyView(viewModel: viewModel)
                 case .fetching:
-                    LoadingView(loadingMessage: String(localized: "Loading_plans_message", bundle: .module))
+                    LoadingView(loadingMessage: String(localized: "Loading_plans_message",
+                                                       bundle: .module))
                 case .errorData, .idle, .purchasing:
-                    GeometryReader { proxy in
                         ErrorView(buttonAction: {
                             Task {
                                 await viewModel.fetchData()
                             }
                         })
-                        .position(x: proxy.frame(in: .local).midX, y: proxy.frame(in: .local).midY)
+                case .noData:
+                    if viewModel.hideCurrentPlan {
+                        NoAvailblePlansView()
                     }
                 }
             }
@@ -71,6 +95,7 @@ public struct AvailablePlansView: View {
         self.viewModel = viewModel
     }
 }
+
 
 // swiftlint:disable line_length
 #Preview {
@@ -127,8 +152,9 @@ public struct AvailablePlansView: View {
     let viewModel = AvailablePlansViewModel(sessionId: "123",
                                             token: "1231da",
                                             envURL: .paymentsBlack,
-                                            appVersion: "VPN@5.5.0")
-    viewModel.addPlanViewModels(availablePlans)
+                                            appVersion: "VPN@5.5.0",
+                                            presentationMode: .push)
+   // viewModel.addPlanViewModels(availablePlans)
     viewModel.setBillingCycle(.all)
     // viewModel.showBanner()
     viewModel.setCurrentPlan(currentPlan)
