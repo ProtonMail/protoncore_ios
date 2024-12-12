@@ -11,7 +11,19 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "All plans"
+            "value" : "All billing cycles"
+          }
+        }
+      }
+    },
+    "Available_plans_section_title" : {
+      "comment" : "Available plans section title",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upgrade your plan"
           }
         }
       }
@@ -23,7 +35,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "One plan for all Proton services"
+            "value" : "Our plans for your privacy"
           }
         }
       }
@@ -127,7 +139,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Monthly plans"
+            "value" : "1 month"
           }
         }
       }
@@ -139,7 +151,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You cannot manage subscriptions inside the mobile app"
+            "value" : "Your subscription can’t be managed inside the mobile app."
           }
         }
       }
@@ -176,6 +188,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Get %@"
+          }
+        }
+      }
+    },
+    "Select_plan_nav_title" : {
+      "comment" : "Select plan navigation title",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a plan"
+          }
+        }
+      }
+    },
+    "Subscriptions_nav_title" : {
+      "comment" : "Available sub navigation title",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subscriptions"
           }
         }
       }
@@ -283,7 +319,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Yearly plans"
+            "value" : "12 months"
           }
         }
       }

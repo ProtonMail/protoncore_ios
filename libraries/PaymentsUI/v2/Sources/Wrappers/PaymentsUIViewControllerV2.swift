@@ -21,10 +21,12 @@
 
 import SwiftUI
 import ProtonCorePaymentsV2
+import ProtonCoreUI
 import Combine
 
 public protocol PaymentsUIViewControllerV2Delegate: AnyObject {
     func viewControllerWillAppear(isFirstAppearance: Bool)
+    func viewControllerWillDisappear()
     func planPurchaseError()
     func paymentsFlowStateDidChange(_state: AvailablePlansViewModel.State)
 }
@@ -38,19 +40,37 @@ public final class PaymentsUIViewControllerV2: UIViewController {
 
     public weak var delegate: PaymentsUIViewControllerV2Delegate?
 
-    public init(sessionId: String, token: String, appVersion: String, env: EnvURLType) {
+    public init(sessionId: String,
+                token: String,
+                appVersion: String,
+                env: EnvURLType,
+                presentationMode: PresentationMode = .none,
+                hideCurrentPlan: Bool = false) {
         super.init(nibName: nil, bundle: nil)
 
-        setupView(sessionId: sessionId, token: token, appVersion: appVersion, env: env)
+        setupView(sessionId: sessionId,
+                  token: token,
+                  appVersion: appVersion,
+                  env: env,
+                  presentationMode: presentationMode)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupView(sessionId: String, token: String, appVersion: String, env: EnvURLType) {
+    private func setupView(sessionId: String,
+                           token: String,
+                           appVersion: String,
+                           env: EnvURLType,
+                           presentationMode: PresentationMode,
+                           hideCurrentPlan: Bool = false) {
 
-        let viewModel = AvailablePlansViewModel(sessionId: sessionId, token: token, envURL: env, appVersion: appVersion)
+        let viewModel = AvailablePlansViewModel(sessionId: sessionId,
+                                                token: token,
+                                                envURL: env,
+                                                appVersion: appVersion,
+                                                presentationMode: presentationMode)
 
         viewModel.$viewState.sink { [weak self] value in
             guard let self = self else { return }
@@ -66,6 +86,11 @@ public final class PaymentsUIViewControllerV2: UIViewController {
         view.addSubview(hostingController.view)
         hostingController.view.frame = view.bounds
         hostingController.didMove(toParent: self)
+
+        if presentationMode == .push {
+            title = hideCurrentPlan ? String(localized: "Select_plan_nav_title", bundle: .module) : String(localized: "Subscriptions_nav_title", bundle: .module)
+            navigationItem.leftBarButtonItem = UIBarButtonItem(customView: customNavBarButton())
+        }
     }
 
     public override func viewWillAppear(_ animated: Bool) {
@@ -73,5 +98,23 @@ public final class PaymentsUIViewControllerV2: UIViewController {
         debugPrint("viewControllerWillAppear called with value: \(viewWillAppear)")
         delegate?.viewControllerWillAppear(isFirstAppearance: viewWillAppear)
         viewWillAppear = false
+    }
+
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.viewControllerWillDisappear()
+    }
+
+    private func customNavBarButton() -> UIButton {
+        let button = UIButton(frame: .zero)
+        button.setImage(Theme.icon.arrowLeft, for: .normal)
+        button.addTarget(self, action: #selector(popView), for: .touchUpInside)
+        button.tintColor = Theme.color.textNorm
+        return button
+    }
+
+    @objc
+    private func popView() {
+        navigationController?.popViewController(animated: true)
     }
 }

@@ -1,5 +1,5 @@
 {
-  "originHash" : "4738cd595234b2e420d44fad5261174cbecf95ffb6a681bc190c803905a20349",
+  "originHash" : "1c325cde49a49211b24569e278b3ed953e457ca6b31479cf90943e531d215ac1",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -105,8 +105,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/getsentry/sentry-cocoa.git",
       "state" : {
-        "revision" : "0ffc3c6287461962cb2a81e57fc0ee0335d8d56a",
-        "version" : "8.40.1"
+        "revision" : "56bfb7e723c76614be4c0861ee820ccbaed14c6d",
+        "version" : "8.41.0"
       }
     },
     {
@@ -130,10 +130,10 @@
     {
       "identity" : "swift-syntax",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/swiftlang/swift-syntax.git",
+      "location" : "https://github.com/swiftlang/swift-syntax",
       "state" : {
-        "revision" : "515f79b522918f83483068d99c68daeb5116342d",
-        "version" : "600.0.0-prerelease-2024-08-14"
+        "revision" : "0687f71944021d616d34d922343dcef086855920",
+        "version" : "600.0.1"
       }
     },
     {
@@ -168,8 +168,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/nalexn/ViewInspector.git",
       "state" : {
-        "revision" : "5acfa0a3c095ac9ad050abe51c60d1831e8321da",
-        "version" : "0.10.0"
+        "revision" : "788e7879d38a839c4e348ab0762dcc0364e646a2",
+        "version" : "0.10.1"
       }
     },
     {

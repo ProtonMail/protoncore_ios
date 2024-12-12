@@ -40,6 +40,10 @@ public class AvailablePlansViewModel: ObservableObject {
     @Published var updateCompleted: Bool = false
     @Published var showAlert: BannerState = .none
 
+    public var hasAvailablePlans: Bool {
+        !filteredPlans.isEmpty
+    }
+
     private var cancellables = Set<AnyCancellable>()
 
     let billing = BillingCycle.allCases
@@ -50,29 +54,36 @@ public class AvailablePlansViewModel: ObservableObject {
         case errorData
         case idle
         case purchasing
+        case noData
     }
 
     private var availablePlans: [AvailablePlan] = []
     private var availablePlansViewModels: [PlanViewModel] = []
     public var currentPlan: PlanViewModel?
     public let hideCurrentPlan: Bool
+    public var showCloseButton: Bool {
+        presentationMode == .modal
+    }
 
     private let paymentsAPIs: PaymentsAPIs
     private let remoteManager: RemoteManager
     private let plansComposer: PlansComposer
     private let envURL: EnvURLType
+    private let presentationMode: PresentationMode
 
     public init(sessionId: String,
                 token: String,
                 envURL: EnvURLType = .paymentsBlack,
                 appVersion: String,
-                hideCurrentPlan: Bool = false) {
+                hideCurrentPlan: Bool = false,
+                presentationMode: PresentationMode) {
 
         self.envURL = envURL
         paymentsAPIs = PaymentsAPIs(envURL: envURL)
         remoteManager = RemoteManager(sessionID: sessionId, authToken: token, appVersion: appVersion)
         plansComposer = PlansComposer(remoteManager: remoteManager, paymentsAPIs: paymentsAPIs)
         self.hideCurrentPlan = hideCurrentPlan
+        self.presentationMode = presentationMode
     }
 
     private func fetchCurrentPlan() async throws -> PlanViewModel? {
@@ -89,6 +100,11 @@ public class AvailablePlansViewModel: ObservableObject {
         viewState = .fetching
 
         let composedPlans = try await plansComposer.fetchAvailablePlans()
+
+        if composedPlans.isEmpty {
+            viewState = .noData
+            return []
+        }
 
         var viewModels = [PlanViewModel]()
         composedPlans.forEach { plan in
@@ -152,10 +168,6 @@ public class AvailablePlansViewModel: ObservableObject {
         }
 
         return filteredPlans
-    }
-
-    public func hasAvailablePlans() -> Bool {
-        !filteredPlans.isEmpty
     }
 }
 
