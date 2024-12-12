@@ -102,29 +102,7 @@ public struct SSOLoginLoaderView: View {
 import ProtonCoreDataModel
 
 #Preview {
-    let user = User(
-        ID: "",
-        name: "Bernd ",
-        usedSpace: 0,
-        usedBaseSpace: 0,
-        usedDriveSpace: 0,
-        currency: "",
-        credit: 0,
-        maxSpace: 0,
-        maxBaseSpace: 0,
-        maxDriveSpace: 0,
-        maxUpload: 0,
-        role: 1,
-        private: 0,
-        subscribed: .mail,
-        services: 0,
-        delinquent: 0,
-        orgPrivateKey: nil,
-        email: "bernd.siegmart@privacybydefault.com",
-        displayName: "Bernd",
-        keys: []
-    )
-    return SSOLoginLoaderView(viewModel: .init(dependencies: .init(user: user)))
+    SSOLoginLoaderView(viewModel: .init(dependencies: .init(user: .mock)))
 }
 #endif
 

@@ -59,6 +59,7 @@ public struct JoinOrganizationView: View {
                     style: .constant(.init(mode: .solid)),
                     content: .constant(.init(
                         title: LUITranslation.continue_core_button.l10n,
+                        isAnimating: viewModel.viewState == .loading,
                         action: viewModel.continueTapped
                     ))
                 )
@@ -68,6 +69,7 @@ public struct JoinOrganizationView: View {
             .foregroundColor(ColorProvider.TextNorm)
             .background(ColorProvider.BackgroundNorm)
             .frame(maxWidth: .infinity)
+            .disabled(viewModel.viewState == .loading)
             .bannerDisplayable(bannerState: $viewModel.bannerState,
                                configuration: .default())
         }
@@ -97,7 +99,7 @@ public struct JoinOrganizationView: View {
             attributedString.font = Font.subheadline.weight(.semibold)
 
             // make the email substrings heavier weight
-            if let range = attributedString.range(of: viewModel.organizationAdminEmail) {
+            if let range = attributedString.range(of: viewModel.organizationInfo.organizationAdminEmail) {
                 attributedString[range].font = Font.subheadline.weight(.bold)
             }
 
@@ -142,15 +144,28 @@ public struct JoinOrganizationView: View {
 
 #if DEBUG
 import ProtonCoreCrypto
+import ProtonCoreDataModel
 import ProtonCoreLogin
 
 #Preview {
     NavigationView {
         JoinOrganizationView(viewModel: .init(dependencies: .init(
-            organizationName: "Proton AG",
-            organizationAdminEmail: "admin@privacybydefault.com",
-            organizationLogoID: nil,
-            organizationPublicKey: .init(value: "")
+            apiService: nil,
+            userData: .init(
+                credential: .none,
+                user: .mock,
+                salts: [],
+                passphrases: [:],
+                addresses: [],
+                scopes: []
+            ),
+            organizationInfo: .init(
+                organizationName: "Proton AG",
+                organizationAdminEmail: "admin@privacybydefault.com",
+                organizationLogoID: nil,
+                organizationPublicKey: .init(value: "")
+            ),
+            loginDelegate: nil
         )))
     }
 }

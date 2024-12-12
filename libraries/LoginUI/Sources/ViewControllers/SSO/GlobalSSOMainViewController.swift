@@ -26,9 +26,15 @@ import ProtonCoreServices
 import ProtonCoreUIFoundations
 import SwiftUI
 
+protocol GlobalSSOLoginDelegate: AnyObject {
+    func globalSSOLoginDidFinish(data: LoginData) async
+}
+
 final class GlobalSSOMainViewController: UIHostingController<GlobalSSOMainView> {
-    let navigationDelegate: NavigationDelegate?
     let viewModel: GlobalSSOMainView.ViewModel
+
+    weak var navigationDelegate: NavigationDelegate?
+    weak var loginDelegate: GlobalSSOLoginDelegate?
 
      required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -37,11 +43,13 @@ final class GlobalSSOMainViewController: UIHostingController<GlobalSSOMainView> 
     init(
         apiService: APIService,
         userData: LoginData,
-        navigationDelegate: NavigationDelegate?
+        navigationDelegate: NavigationDelegate?,
+        loginDelegate: GlobalSSOLoginDelegate?
     ) {
         let dependencies = GlobalSSOMainView.Dependencies(
             apiService: apiService,
-            userData: userData
+            userData: userData,
+            loginDelegate: loginDelegate
         )
         self.viewModel = GlobalSSOMainView.ViewModel(dependencies: dependencies)
         let view = GlobalSSOMainView(viewModel: self.viewModel)

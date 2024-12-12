@@ -31,6 +31,7 @@ extension GlobalSSOMainView {
     struct Dependencies {
         let apiService: APIService
         let userData: UserData
+        let loginDelegate: GlobalSSOLoginDelegate?
     }
 }
 
@@ -46,6 +47,8 @@ extension GlobalSSOMainView {
         let organizationRepository: OrganizationRepository
         let postLoginSSOAccountSetup: PostLoginSSOAccountSetup
 
+        weak var loginDelegate: GlobalSSOLoginDelegate?
+
         enum ScreenState {
             case loading(SSOLoginLoaderView.Dependencies)
             case newBackupPassword(JoinOrganizationView.Dependencies)
@@ -54,6 +57,7 @@ extension GlobalSSOMainView {
         init(dependencies: Dependencies) {
             self.apiService = dependencies.apiService
             self.userData = dependencies.userData
+            self.loginDelegate = dependencies.loginDelegate
             screenState = .loading(.init(user: userData.user))
             self.postLoginSSOAccountSetup = .init(
                 apiService: apiService,
@@ -81,10 +85,15 @@ extension GlobalSSOMainView {
                 let organization = try await organizationRepository.getOrganization()
                 let organizationSettings = try await organizationRepository.getOrganizationSettings()
                 screenState = .newBackupPassword(.init(
-                    organizationName: organization.displayName,
-                    organizationAdminEmail: unprivatizeInfo.adminEmail,
-                    organizationLogoID: organizationSettings.logoID,
-                    organizationPublicKey: unprivatizeInfo.organizationPublicKey
+                    apiService: apiService,
+                    userData: userData,
+                    organizationInfo: .init(
+                        organizationName: organization.displayName,
+                        organizationAdminEmail: unprivatizeInfo.adminEmail,
+                        organizationLogoID: organizationSettings.logoID,
+                        organizationPublicKey: unprivatizeInfo.organizationPublicKey
+                    ),
+                    loginDelegate: loginDelegate
                 ))
             } catch {
                 PMLog.error(error)

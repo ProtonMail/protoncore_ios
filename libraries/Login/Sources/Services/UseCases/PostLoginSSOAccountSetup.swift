@@ -58,7 +58,7 @@ public final class PostLoginSSOAccountSetup {
         let state = loginSSOState(userData: userData)
         switch state {
         case .firstLogin:
-//            try await createAuthDevice.invoke()
+            try await createAuthDevice.invoke()
             let verifyInfo = try await verifyUnprivatization.invoke()
             return .newBackupPassword(verifyInfo)
         case .unimplemented:

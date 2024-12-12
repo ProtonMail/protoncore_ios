@@ -130,6 +130,9 @@ final class AccountKeySetupV1 {
         return AuthService.SetupKeysEndpoint(addresses: addressData,
                                              privateKey: firstaddressKey.armoredKey,
                                              keySalt: key.passwordSalt.encodeBase64(),
-                                             passwordAuth: passwordAuth)
+                                             passwordAuth: passwordAuth,
+                                             orgPrimaryUserKey: nil,
+                                             orgActivationToken: nil,
+                                             encryptedSecret: nil)
     }
 }

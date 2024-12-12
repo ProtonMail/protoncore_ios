@@ -21,6 +21,7 @@
 
 import Foundation
 import ProtonCoreAuthentication
+import ProtonCoreCrypto
 import ProtonCoreDataModel
 import ProtonCoreNetworking
 
@@ -42,6 +43,7 @@ public protocol AuthenticatorKeyGenerationInterface {
     func setupAccountKeys(_ credential: Credential?,
                           addresses: [Address],
                           password: String,
+                          orgPublicKey: ArmoredKey?,
                           deviceSecret: String?) async throws
 }
 
@@ -56,11 +58,11 @@ public extension AuthenticatorKeyGenerationInterface {
         setupAccountKeys(nil, addresses: addresses, password: password, completion: completion)
     }
 
-    func setupAccountKeys(_ credential: Credential? = nil,
-                          addresses: [Address],
+    func setupAccountKeys(addresses: [Address],
                           password: String,
+                          orgPublicKey: ArmoredKey?,
                           deviceSecret: String? = nil) async throws {
-        try await setupAccountKeys(credential, addresses: addresses, password: password, deviceSecret: deviceSecret)
+        try await setupAccountKeys(nil, addresses: addresses, password: password, orgPublicKey: orgPublicKey, deviceSecret: deviceSecret)
     }
 }
 
@@ -148,11 +150,13 @@ extension Authenticator: AuthenticatorKeyGenerationInterface {
     ///    - credential: Credentials of the account
     ///    - addresses: Addresses of the account
     ///    - password: Account password used
+    ///    - orgPublicKey: (GSSO or magic link) Organization public key
     ///    - deviceSecret: (GSSO) - 32-byte random string base64 encoded (used in `/auth/v4/devices`)
     public func setupAccountKeys(
         _ credential: Credential? = nil,
         addresses: [Address],
         password: String,
+        orgPublicKey: ArmoredKey? = nil,
         deviceSecret: String? = nil
     ) async throws {
         let modulusData = try await randomSRPModulus()
@@ -164,7 +168,9 @@ extension Authenticator: AuthenticatorKeyGenerationInterface {
             password: password,
             accountKey: key,
             modulus: modulusData.modulus,
-            modulusId: modulusData.modulusID
+            modulusId: modulusData.modulusID,
+            orgPublicKey: orgPublicKey,
+            deviceSecret: deviceSecret
         )
         if let auth = credential {
             route.auth = AuthCredential(auth)

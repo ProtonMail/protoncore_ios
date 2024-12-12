@@ -575,3 +575,32 @@ extension UserInfo {
         static let lockedFlags: LockedFlags? = nil
     }
 }
+
+#if DEBUG
+public extension User {
+    static var mock: User {
+        .init(
+            ID: "",
+            name: "Proton",
+            usedSpace: 0,
+            usedBaseSpace: 0,
+            usedDriveSpace: 0,
+            currency: "",
+            credit: 0,
+            maxSpace: 0,
+            maxBaseSpace: 0,
+            maxDriveSpace: 0,
+            maxUpload: 0,
+            role: 1,
+            private: 0,
+            subscribed: .mail,
+            services: 0,
+            delinquent: 0,
+            orgPrivateKey: nil,
+            email: "proton@privacybydefault.com",
+            displayName: "Proton",
+            keys: []
+        )
+    }
+}
+#endif

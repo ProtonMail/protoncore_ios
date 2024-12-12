@@ -30,9 +30,9 @@ public protocol DeviceSecretRepositoryProtocol {
 
 public final class DeviceSecretRepository: DeviceSecretRepositoryProtocol {
     public enum Constants {
-        public static let defaultKeychainService = "me.proton.protoncore.account"
-        public static let defaultKeychainAccesGroup = "me.proton.protoncore.account"
-        
+        public static let defaultKeychainService = "group.me.proton.protoncore.account"
+        public static let defaultKeychainAccesGroup = "group.me.proton.protoncore.account"
+
         static let keychainPrefix = "authdevice-secret-"
         static func deviceKey(for userId: String) -> String {
             "\(Constants.keychainPrefix)\(userId)"

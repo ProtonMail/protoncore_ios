@@ -29,6 +29,14 @@ import ProtonCoreUtilities
 /// class for key migeration phase 2
 final class AccountKeySetup {
 
+    let aeadCrypto = AeadCrypto()
+
+    enum Constants {
+        /// Used for Global SSO auth device secret context
+        static let deviceSecretContext = "account.device-secret"
+        static let ssoKeyGenerationContext = "account.key-token.user-unprivatization"
+    }
+
     /// account level key. on phase 2 user key used for
     struct UserKey {
         /// armored key
@@ -49,6 +57,9 @@ final class AccountKeySetup {
 
         /// armored key
         let armoredKey: ArmoredKey
+
+        /// address passphrase
+        let passphrase: Passphrase
 
         /// on phase 2. token used to encrypt address key
         let token: ArmoredMessage
@@ -107,7 +118,7 @@ final class AccountKeySetup {
         ///   - so we genrete here and encrypt it here try to keep it in this function scope.        ///
 
         let addressKeys = try addresses.map { addr -> AddressKey in
-            // generate addr passphrase
+            /// generate addr passphrase
             let addrPassphrase = try PasswordHash.genAddrPassphrase()
 
             /// generate a new key.  id: address email.  passphrase: hexed secret (should be 64 bytes) with default key type
@@ -116,7 +127,7 @@ final class AccountKeySetup {
             /// generate token.   token is hexed secret encrypted by `UserKey.publicKey`. Note: we don't need to inline sign
             let token = try addrPassphrase.encrypt(publicKey: armoredUserKey)
 
-            /// gnerenate a detached signature.  sign the hexed secret by user key
+            /// generate a detached signature.  sign the hexed secret by user key
             let userSigner = SigningKey.init(privateKey: armoredUserKey,
                                              passphrase: userKeyPassphrase)
             /// sign addr passphrase
@@ -149,6 +160,7 @@ final class AccountKeySetup {
             ]
 
             return AddressKey(addressId: addr.addressID, armoredKey: armoredAddrKey,
+                              passphrase: addrPassphrase,
                               token: token, signature: tokenSignature,
                               signedKeyList: signedKeyList)
         }
@@ -165,21 +177,17 @@ final class AccountKeySetup {
     ///   - accountKey: generated account key
     ///   - modulus: srp modulus
     ///   - modulusId: modulus id
+    ///   - orgPublicKey: Organization public key
+    ///   - deviceSecret: 32-byte random string as base64. Used in GlobalSSO for `auth/v4/devices`
     /// - Returns: `AuthService.SetupKeysEndpoint`
-    func setupSetupKeysRoute(password: String, accountKey: GeneratedAccountKey,
-                             modulus: String, modulusId: String) throws -> AuthService.SetupKeysEndpoint {
-
-        // for the login password needs to set 80 bits & srp auth use 80 bits
-        let newSaltForKey: Data = try PasswordHash.random(bits: PasswordSaltSize.login.int32Bits)
-
-        // generate new verifier
-        guard let authForKey = try SrpAuthForVerifier(password, modulus, newSaltForKey) else {
-            throw KeySetupError.cantHashPassword
-        }
-
-        let verifierForKey = try authForKey.generateVerifier(2048)
-
-        let passwordAuth = PasswordAuth(modulusID: modulusId, salt: newSaltForKey.encodeBase64(), verifier: verifierForKey.encodeBase64())
+    func setupSetupKeysRoute(
+        password: String,
+        accountKey: GeneratedAccountKey,
+        modulus: String,
+        modulusId: String,
+        orgPublicKey: ArmoredKey? = nil,
+        deviceSecret: String? = nil
+    ) throws -> AuthService.SetupKeysEndpoint {
 
         let addressData = accountKey.addressKeys.map { addressKey -> [String: Any] in
             let address: [String: Any] = [
@@ -191,9 +199,76 @@ final class AccountKeySetup {
             ]
             return address
         }
-        return AuthService.SetupKeysEndpoint(addresses: addressData,
-                                             privateKey: accountKey.userKey.armoredKey,
-                                             keySalt: accountKey.userKey.passwordSalt.encodeBase64(),
-                                             passwordAuth: passwordAuth)
+
+        /// for the login password needs to set 80 bits & srp auth use 80 bits
+        let newSaltForKey: Data = try PasswordHash.random(bits: PasswordSaltSize.login.int32Bits)
+
+        /// generate new verifier
+        guard let authForKey = try SrpAuthForVerifier(password, modulus, newSaltForKey) else {
+            throw KeySetupError.cantHashPassword
+        }
+
+        let verifierForKey = try authForKey.generateVerifier(2048)
+
+        let passwordAuth = PasswordAuth(modulusID: modulusId, salt: newSaltForKey.encodeBase64(), verifier: verifierForKey.encodeBase64())
+
+        /// Global SSO or magic link
+        var orgPrimaryUserKey: ArmoredKey?
+        var orgActivationToken: ArmoredSignature?
+        if let orgPublicKey {
+            (orgPrimaryUserKey, orgActivationToken) = try generateOrgUserKeys(
+                accountKey: accountKey,
+                orgPublicKey: orgPublicKey
+            )
+        }
+
+        /// Global SSO
+        var encryptedSecret: String?
+        if let deviceSecret, let deviceSecretKey = Data(base64Encoded: deviceSecret) {
+            let passphrase = accountKey.userKey.password.value
+            encryptedSecret = try aeadCrypto.encrypt(
+                value: passphrase,
+                key: deviceSecretKey,
+                aad: Constants.deviceSecretContext.data(using: .utf8)
+            )
+        }
+
+        return AuthService.SetupKeysEndpoint(
+            addresses: addressData,
+            privateKey: accountKey.userKey.armoredKey,
+            keySalt: accountKey.userKey.passwordSalt.encodeBase64(),
+            passwordAuth: passwordAuth,
+            orgPrimaryUserKey: orgPrimaryUserKey,
+            orgActivationToken: orgActivationToken,
+            encryptedSecret: encryptedSecret
+        )
+    }
+
+    private func generateOrgUserKeys(
+        accountKey: GeneratedAccountKey,
+        orgPublicKey: ArmoredKey
+    ) throws -> (orgPrimaryUserKey: ArmoredKey, orgActivationToken: ArmoredSignature) {
+        /// generate 32 byte secret and encode it to hex
+        let randomSecret = try PasswordHash.genAddrPassphrase()
+        /// encrypt it to the organization key, signing it with the newly created address key and the context account.key-token.user-unprivatization
+        guard let primaryAddressKey = accountKey.addressKeys.first else {
+            throw KeySetupError.keyGenerationFailed
+        }
+        let signingKey = SigningKey(privateKey: primaryAddressKey.armoredKey, passphrase: primaryAddressKey.passphrase)
+        let orgActivationToken: ArmoredMessage = try Crypto().encryptAndSign(
+            plainRaw: .left(randomSecret.value),
+            publicKey: orgPublicKey,
+            signingKey: signingKey,
+            signatureContext: SignatureContext(value: Constants.ssoKeyGenerationContext, isCritical: true)
+        )
+
+        /// encrypt a copy of the primary key with the random secret encoded to hex as OrgPrimaryUserKey
+        let orgPrimaryUserKey = try Crypto.updatePassphrase(
+            privateKey: accountKey.userKey.armoredKey,
+            oldPassphrase: accountKey.userKey.password,
+            newPassphrase: randomSecret
+        )
+
+        return (orgPrimaryUserKey, ArmoredSignature(value: orgActivationToken.value))
     }
 }
