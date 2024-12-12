@@ -1,5 +1,5 @@
 //
-//  SSOLoginLoaderViewModel.swift
+//  SSOLoginErrorViewModel.swift
 //  ProtonCore-LoginUI - Created on 26/11/2024.
 //
 //  Copyright (c) 2024 Proton AG
@@ -25,20 +25,27 @@ import ProtonCoreDataModel
 import ProtonCoreUIFoundations
 import SwiftUI
 
-extension SSOLoginLoaderView {
+extension SSOLoginErrorView {
     struct Dependencies {
         let user: User
+        let error: Error
+        let continueAction: () -> Void
     }
 }
 
-extension SSOLoginLoaderView {
+extension SSOLoginErrorView {
 
     @MainActor
     final class ViewModel: ObservableObject {
         let user: User
 
+        @Published var bannerState = BannerState.none
+        let continueAction: () -> Void
+
         init(dependencies: Dependencies) {
             self.user = dependencies.user
+            self.bannerState = .error(content: .init(message: dependencies.error.localizedDescription))
+            self.continueAction = dependencies.continueAction
         }
 
         var memberEmail: String {
@@ -47,6 +54,10 @@ extension SSOLoginLoaderView {
 
         var avatarInitials: String {
             user.name?.initials() ?? user.displayName?.initials() ?? user.email?.initials() ?? "P"
+        }
+
+        func continueButtonTapped() {
+            continueAction()
         }
     }
 }
