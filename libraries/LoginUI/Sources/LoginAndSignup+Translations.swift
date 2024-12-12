@@ -190,6 +190,8 @@ public enum LUITranslation: TranslationsExposing {
     case deny_access_button_title
     case signing_you_in
     case to_your_organization
+    case sso_login_error_screen_title
+    case sso_login_error_screen_description
 
     public var l10n: String {
         switch self {
@@ -520,6 +522,10 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Signing you in", comment: "SSO Signing in loading screen title")
         case .to_your_organization:
             return localized(key: "to your organization", comment: "SSO Signing in loading screen subtitle")
+        case .sso_login_error_screen_title:
+            return localized(key: "Sign in with single sign-on", comment: "SSO Signing in error screen title")
+        case .sso_login_error_screen_description:
+            return localized(key: "Your organization uses SSO. Continue to sign in with your third-party SSO provider.", comment: "SSO Signing in error screen description")
         }
     }
 }

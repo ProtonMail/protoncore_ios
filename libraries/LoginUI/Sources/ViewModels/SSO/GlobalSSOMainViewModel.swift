@@ -51,6 +51,7 @@ extension GlobalSSOMainView {
 
         enum ScreenState {
             case loading(SSOLoginLoaderView.Dependencies)
+            case error(SSOLoginErrorView.Dependencies)
             case newBackupPassword(JoinOrganizationView.Dependencies)
         }
 
@@ -77,6 +78,7 @@ extension GlobalSSOMainView {
                 }
             } catch {
                 PMLog.error(error)
+                loadSSOErrorLogin(error: error, action: startPostLoginSetup)
             }
         }
 
@@ -97,7 +99,24 @@ extension GlobalSSOMainView {
                 ))
             } catch {
                 PMLog.error(error)
+                loadSSOErrorLogin(error: error) {
+                    await self.loadNewBackupPassword(unprivatizeInfo: unprivatizeInfo)
+                }
             }
+        }
+
+        private func loadSSOErrorLogin(error: Error, action: @escaping () async -> Void) {
+            screenState = .error(.init(
+                user: userData.user,
+                error: error,
+                continueAction: {
+                    Task { [weak self] in
+                        guard let self else { return }
+                        self.screenState = .loading(.init(user: userData.user))
+                        await action()
+                    }
+                }
+            ))
         }
 
     }

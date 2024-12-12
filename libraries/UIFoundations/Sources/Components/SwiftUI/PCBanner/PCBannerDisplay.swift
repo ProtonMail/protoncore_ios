@@ -36,13 +36,34 @@ public enum BannerState: Equatable {
 }
 
 public struct PCBannerConfiguration {
+    public enum Position {
+        case top
+        case bottom
+
+        var alignment: Alignment {
+            return switch self {
+            case .top: .top
+            case .bottom: .bottom
+            }
+        }
+
+        var edge: Edge {
+            return switch self {
+            case .top: .top
+            case .bottom: .bottom
+            }
+        }
+    }
+    public var position: Position
     public var animationDuration: CGFloat
     public var dismissDuration: TimeInterval?
 
     public init(
+        position: Position = .top,
         animationDuration: CGFloat = 0.25,
         dismissDuration: TimeInterval? = 4
     ) {
+        self.position = position
         self.animationDuration = animationDuration
         self.dismissDuration = dismissDuration
     }
@@ -62,10 +83,14 @@ public struct PCBannerDisplay: ViewModifier {
 
     @State var timer: Timer?
 
+    enum Constants {
+        static let dragVelocityThreshold = 50.0
+    }
+
     public func body(content: Content) -> some View {
         if bannerState != .none {
             content
-                .overlay(banner, alignment: .top)
+                .overlay(banner, alignment: configuration.position.alignment)
         } else {
             content
         }
@@ -80,10 +105,10 @@ public struct PCBannerDisplay: ViewModifier {
                     content: .constant(content)
                 )
                 .padding()
-                .offset(y: min(0, dragYOffset))
+                .offset(y: offsetPosition)
                 .transition(.asymmetric(
-                    insertion: .opacity.combined(with: .move(edge: .top)),
-                    removal: .opacity.combined(with: .move(edge: .top))
+                    insertion: .opacity.combined(with: .move(edge: configuration.position.edge)),
+                    removal: .opacity.combined(with: .move(edge: configuration.position.edge))
                 ))
             }
         }
@@ -97,9 +122,7 @@ public struct PCBannerDisplay: ViewModifier {
                         width: value.predictedEndLocation.x - value.location.x,
                         height: value.predictedEndLocation.y - value.location.y
                     )
-                    if velocity.height <= -50 {
-                        dismissBanner()
-                    }
+                    checkDraggingDismissal(velocityHeight: velocity.height)
                 }
         )
         .onAppear {
@@ -109,6 +132,9 @@ public struct PCBannerDisplay: ViewModifier {
                     DispatchQueue.main.async { dismissBanner() }
                 })
             }
+        }
+        .onDisappear {
+            dismissBanner()
         }
     }
 
@@ -142,7 +168,24 @@ public struct PCBannerDisplay: ViewModifier {
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + configuration.animationDuration) {
             bannerState = .none
-            dragYOffset = 0
+            dragYOffset = .zero
+        }
+    }
+
+    private func checkDraggingDismissal(velocityHeight: CGFloat) {
+        switch configuration.position {
+        case .top where velocityHeight <= -Constants.dragVelocityThreshold,
+             .bottom where velocityHeight > Constants.dragVelocityThreshold:
+            dismissBanner()
+        default:
+            break
+        }
+    }
+
+    private var offsetPosition: CGFloat {
+        return switch configuration.position {
+        case .top: min(0, dragYOffset)
+        case .bottom: max(0, dragYOffset)
         }
     }
 }

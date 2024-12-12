@@ -1,5 +1,5 @@
 //
-//  SignInRequestView.swift
+//  SSOLoginErrorView.swift
 //  ProtonCore-LoginUI - Created on 23/08/2024.
 //
 //  Copyright (c) 2024 Proton AG
@@ -24,12 +24,11 @@
 import ProtonCoreUIFoundations
 import SwiftUI
 
-public struct SSOLoginLoaderView: View {
+public struct SSOLoginErrorView: View {
 
     @StateObject var viewModel: ViewModel
 
     private enum Constants {
-        static let loaderSize: CGFloat = 33
         static let cornerRadius: CGFloat = 16
         static let avatarSize: CGFloat = 28
         static let avatarPadding: CGFloat = 14
@@ -41,27 +40,39 @@ public struct SSOLoginLoaderView: View {
 
     public var body: some View {
         VStack(spacing: Constants.itemsPadding) {
-            ProtonLoaderView(size: Constants.loaderSize)
-                .frame(width: Constants.loaderSize, height: Constants.loaderSize)
-            
-            VStack(spacing: Constants.titlePadding) {
-                Text(LUITranslation.signing_you_in.l10n)
-                    .font(.title)
+
+            VStack(alignment: .leading, spacing: Constants.titlePadding) {
+                Text(LUITranslation.sso_login_error_screen_title.l10n)
+                    .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(ColorProvider.TextNorm)
-                Text(LUITranslation.to_your_organization.l10n)
-                    .font(.title3)
+                Text(LUITranslation.sso_login_error_screen_description.l10n)
+                    .font(.subheadline)
                     .foregroundColor(ColorProvider.TextHint)
             }
-            
+
             emailContainer
 
+            PCButton(
+                style: .constant(.init(mode: .solid)),
+                content: .constant(.init(
+                    title: LUITranslation.continue_core_button.l10n,
+                    action: viewModel.continueButtonTapped
+                ))
+            )
             Spacer()
         }
         .padding()
         .background(
             ColorProvider.BackgroundNorm
                 .edgesIgnoringSafeArea(.all)
+        )
+        .bannerDisplayable(
+            bannerState: $viewModel.bannerState,
+            configuration: .init(
+                position: .bottom,
+                dismissDuration: nil
+            )
         )
     }
 
@@ -95,9 +106,14 @@ public struct SSOLoginLoaderView: View {
 
 #if DEBUG
 import ProtonCoreDataModel
+import ProtonCoreLogin
 
 #Preview {
-    SSOLoginLoaderView(viewModel: .init(dependencies: .init(user: .mock)))
+    SSOLoginErrorView(viewModel: .init(dependencies: .init(
+        user: .mock,
+        error: SSOLoginError.authDeviceNotFound,
+        continueAction: {}
+    )))
 }
 #endif
 
