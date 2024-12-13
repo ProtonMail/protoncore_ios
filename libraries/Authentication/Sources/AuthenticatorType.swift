@@ -73,7 +73,9 @@ public protocol AuthenticatorInterface {
     func getAddresses(_ credential: Credential?, completion: @escaping (Result<[Address], AuthErrors>) -> Void)
     func getAddresses(_ credential: Credential?) async throws -> [Address]
 
+    @available(*, deprecated, message: "Use async version")
     func getKeySalts(_ credential: Credential?, completion: @escaping (Result<[KeySalt], AuthErrors>) -> Void)
+    func getKeySalts(_ credential: Credential?) async throws -> [KeySalt]
 
     func getKeys(_ credential: Credential?, email: String, internalOnly: Bool) async throws -> AuthService.KeysInfoResponse?
 
@@ -135,8 +137,13 @@ public extension AuthenticatorInterface {
         setUsername(nil, username: username, completion: completion)
     }
 
+    @available(*, deprecated, message: "Use async version")
     func getKeySalts(completion: @escaping (Result<[KeySalt], AuthErrors>) -> Void) {
         getKeySalts(nil, completion: completion)
+    }
+
+    func getKeySalts() async throws -> [KeySalt] {
+        try await getKeySalts(nil)
     }
 
     func getKeys(email: String, internalOnly: Bool = true) async throws -> AuthService.KeysInfoResponse? {

@@ -65,6 +65,15 @@ public extension UserData {
                  addresses: addresses,
                  scopes: scopes)
     }
+
+    func updated(passphrases: [String: String]) -> UserData {
+        UserData(credential: credential,
+                 user: user,
+                 salts: salts,
+                 passphrases: passphrases,
+                 addresses: addresses,
+                 scopes: scopes)
+    }
 }
 
 public struct UserData {

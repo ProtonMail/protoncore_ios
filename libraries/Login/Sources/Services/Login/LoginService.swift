@@ -212,6 +212,7 @@ public final class LoginService {
 
         let user = try await authManager.getUserInfo()
         let addresses = try await authManager.getAddresses()
+        let keySalts = try await authManager.getKeySalts()
 
         self.featureFlagsRepository.setApiService(self.apiService)
         if !user.ID.isEmpty {
@@ -225,7 +226,7 @@ public final class LoginService {
         return .finished(UserData(
             credential: .init(ssoCredential),
             user: user,
-            salts: [],
+            salts: keySalts,
             passphrases: [:],
             addresses: addresses,
             scopes: credential.scopes

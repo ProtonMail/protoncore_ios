@@ -22,7 +22,6 @@
 import Foundation
 import ProtonCoreDataModel
 
-
 /// Generate new random device secret.
 ///
 /// return: 32-byte, base64-ed random salt as String

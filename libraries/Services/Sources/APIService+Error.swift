@@ -80,6 +80,12 @@ public class APIErrorCode {
     public static let humanVerificationAddressAlreadyTaken = 2001
     public static let tls = 3500
 
+    public static let notAllowed = 2011
+    public static let authDeviceNotFound = 10300
+    public static let authDeviceNotActive = 10301
+    public static let authDeviceTokenInvalid = 10302
+    public static let authDeviceRejected = 10303
+
     public static let humanVerificationEditEmail = 9100 // internal error
 
     public static let potentiallyBlocked = 111_222_333 // internal error

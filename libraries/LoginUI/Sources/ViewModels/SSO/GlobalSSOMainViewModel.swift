@@ -73,6 +73,8 @@ extension GlobalSSOMainView {
                 switch nextStep {
                 case .newBackupPassword(let unprivatizeInfo):
                     await loadNewBackupPassword(unprivatizeInfo: unprivatizeInfo)
+                case .loginSuccess(let newUserData):
+                    await loginDelegate?.globalSSOLoginDidFinish(data: newUserData)
                 case .unimplemented:
                     break
                 }
