@@ -330,6 +330,10 @@
 
 "Deny access" = "접근 거부";
 
-"Signing you in" = "사용자의 조직에";
+"Signing you in" = "로그인 하는 중";
 
-"to your organization" = "로그인하는 중";
+"to your organization" = "귀하의 조직에";
+
+"Sign in with single sign-on" = "Single sign-on으로 로그인";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "귀하의 조직이 SSO를 사용합니다. 제3자 SSO제공자로 로그인하려면 계속하세요.";

@@ -333,3 +333,7 @@
 "Signing you in" = "Адбываецца ўваход";
 
 "to your organization" = "у вашу арганізацыю";
+
+"Sign in with single sign-on" = "Увайсці з адзіным уваходам";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Ваша арганізацыя выкарыстоўвае адзіны ўваход (SSO). Працягніце ўваход з вашым пастаўшчыком SSO.";

@@ -333,3 +333,7 @@
 "Signing you in" = "Signing you in";
 
 "to your organization" = "to your organization";
+
+"Sign in with single sign-on" = "Sign in with single sign-on";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Your organization uses SSO. Continue to sign in with your third-party SSO provider.";

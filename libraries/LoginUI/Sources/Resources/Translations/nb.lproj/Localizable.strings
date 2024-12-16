@@ -333,3 +333,7 @@
 "Signing you in" = "Logger deg på";
 
 "to your organization" = "organisasjonen din";
+
+"Sign in with single sign-on" = "Logg på med enkel pålogging";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Organisasjonen bruker SSO. Fortsett å logge på med tredjepartsleverandøren av SSO.";

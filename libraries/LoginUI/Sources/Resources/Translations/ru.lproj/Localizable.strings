@@ -333,3 +333,7 @@
 "Signing you in" = "Выполняется вход";
 
 "to your organization" = "в вашу организацию";
+
+"Sign in with single sign-on" = "Войти с помощью единого входа";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Ваша организация использует SSO. Продолжайте выполнять вход с помощью стороннего поставщика SSO.";

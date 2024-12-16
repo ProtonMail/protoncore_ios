@@ -333,3 +333,7 @@
 "Signing you in" = "Logowanie";
 
 "to your organization" = "do organizacji";
+
+"Sign in with single sign-on" = "Logowanie SSO";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Your organization uses SSO. Continue to sign in with your third-party SSO provider.";

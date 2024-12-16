@@ -316,7 +316,7 @@
 
 "Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
 
-"Back to sign-in" = "Back to sign-in";
+"Back to sign-in" = "Tilbage til login";
 
 "Ask your administrator for access?" = "Ask your administrator for access?";
 
@@ -326,10 +326,14 @@
 
 "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
 
-"Grant access" = "Grant access";
+"Grant access" = "Tildel adgang";
 
 "Deny access" = "Deny access";
 
 "Signing you in" = "Logger dig ind";
 
 "to your organization" = "til din organisation";
+
+"Sign in with single sign-on" = "Sign in with single sign-on";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Your organization uses SSO. Continue to sign in with your third-party SSO provider.";

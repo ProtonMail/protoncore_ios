@@ -330,6 +330,10 @@
 
 "Deny access" = "Toegang weigeren";
 
-"Signing you in" = "Signing you in";
+"Signing you in" = "U wordt ingelogd";
 
-"to your organization" = "to your organization";
+"to your organization" = "naar uw organisatie";
+
+"Sign in with single sign-on" = "Sign in with single sign-on";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Your organization uses SSO. Continue to sign in with your third-party SSO provider.";

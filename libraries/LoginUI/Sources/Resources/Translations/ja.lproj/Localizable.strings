@@ -333,3 +333,7 @@
 "Signing you in" = "サインインしています";
 
 "to your organization" = "あなたの組織に";
+
+"Sign in with single sign-on" = "シングルサインオンでサインイン";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "組織はSSOを利用しています。引き続きサードパーティーSSOプロバイダでサインインします。";

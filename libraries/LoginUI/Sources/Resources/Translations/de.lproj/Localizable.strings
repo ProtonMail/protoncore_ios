@@ -333,3 +333,7 @@
 "Signing you in" = "Du wirst angemeldet";
 
 "to your organization" = "zu deiner Organisation";
+
+"Sign in with single sign-on" = "Anmeldung mit Single Sign-On";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Deine Organisation verwendet SSO. Melde dich weiterhin bei deinem SSO-Anbieter an.";
