@@ -28,6 +28,15 @@ import ProtonCoreUtilities
 /// Build and validate passphrases for a given mailboxPassword and KeySalts
 struct BuildAndValidatePassphrases {
 
+    private enum Constants {
+        static let passphraseSuffix = 31
+    }
+
+    func buildAndValidatePassphrases(passphrase: String, salts: [KeySalt], userKeys: [Key]) throws -> [String: String]? {
+        let passphrases = try buildPassphrases(salts: salts, passphrase: passphrase)
+        return validatePassphrases(passphrases: passphrases, userKeys: userKeys) ? passphrases : nil
+    }
+
     func buildPassphrases(salts: [KeySalt], mailboxPassword: String) throws -> [String: String] {
         var error: NSError?
 
@@ -43,7 +52,7 @@ struct BuildAndValidatePassphrases {
 
             let passphraseUncut = String.init(data: passphraseSlice!, encoding: .utf8)
             // by some internal reason of go-srp, output will be 60 characters but we need only last 31 of them
-            let passphrase = passphraseUncut!.suffix(31)
+            let passphrase = passphraseUncut!.suffix(Constants.passphraseSuffix)
 
             return (salt.ID, String(passphrase))
         }
@@ -69,12 +78,7 @@ struct BuildAndValidatePassphrases {
                 var error: NSError?
                 let armored = CryptoGo.CryptoNewKeyFromArmored(privateKey, &error)
 
-                do {
-                    _ = try armored?.unlock(passphrase.utf8)
-                    isValid = true
-                } catch {
-                    // do nothing
-                }
+                isValid = (try? armored?.unlock(passphrase.utf8)) != nil
             }
         }
 

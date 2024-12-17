@@ -102,18 +102,14 @@ public final class PostLoginSSOAccountSetup {
     }
 
     private func deviceSecretState(userData: LoginData, decryptedSecret: String) throws -> State {
-        let passphrases = try buildAndValidatePassphrases.buildPassphrases(
+        guard let passphrases = try buildAndValidatePassphrases.buildAndValidatePassphrases(
+            passphrase: decryptedSecret,
             salts: userData.salts,
-            passphrase: decryptedSecret
-        )
-        let validPassphrase = buildAndValidatePassphrases.validatePassphrases(
-            passphrases: passphrases,
             userKeys: userData.user.keys
-        )
-        if validPassphrase {
-            return .validSecret(passphrases: passphrases)
+        ) else {
+            return .unimplemented
         }
-        return .unimplemented
+        return .validSecret(passphrases: passphrases)
     }
 }
 #endif
