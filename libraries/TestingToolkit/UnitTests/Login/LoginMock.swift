@@ -147,6 +147,11 @@ public class LoginMock: Login {
         refreshUserInfoStub(completion)
     }
 
+    @AsyncThrowingFuncStub(Login.refreshUserData, initialReturn: .crash) public var refreshUserDataStub
+    public func refreshUserData(backupPassword: String) async throws -> UserData {
+        try await refreshUserDataStub(backupPassword)
+    }
+
     @FuncStub(Login.availableUsernameForExternalAccountEmail) public var availableUsernameForExternalAccountEmailStub
     public func availableUsernameForExternalAccountEmail(email: String, completion: @escaping (String?) -> Void) {
         availableUsernameForExternalAccountEmailStub(email, completion)

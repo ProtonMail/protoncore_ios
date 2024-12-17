@@ -32,6 +32,7 @@ import ProtonCoreServices
 import ProtonCoreAPIClient
 
 struct LoginStub: Login {
+    
     func validateAndAuthenticateSSO(idpEmail: String, responseToken: ProtonCoreNetworking.SSOResponseToken) async throws -> ProtonCoreLogin.LoginStatus {
         .askTOTP
     }
@@ -102,6 +103,10 @@ struct LoginStub: Login {
 
     func createAddressKeys(user: ProtonCoreDataModel.User, address: ProtonCoreDataModel.Address, mailboxPassword: String, completion: @escaping (Result<ProtonCoreDataModel.Key, ProtonCoreLogin.CreateAddressKeysError>) -> Void) {
 
+    }
+
+    func refreshUserData(backupPassword: String) async throws -> ProtonCoreLogin.UserData {
+        .init(credential: .none, user: .mock, salts: [], passphrases: [:], addresses: [], scopes: [])
     }
 
     func refreshCredentials(completion: @escaping (Result<ProtonCoreNetworking.Credential, ProtonCoreLogin.LoginError>) -> Void) {

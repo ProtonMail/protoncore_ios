@@ -41,16 +41,9 @@ final class GlobalSSOMainViewController: UIHostingController<GlobalSSOMainView> 
     }
 
     init(
-        apiService: APIService,
-        userData: LoginData,
-        navigationDelegate: NavigationDelegate?,
-        loginDelegate: GlobalSSOLoginDelegate?
+        dependencies: GlobalSSOMainView.Dependencies,
+        navigationDelegate: NavigationDelegate?
     ) {
-        let dependencies = GlobalSSOMainView.Dependencies(
-            apiService: apiService,
-            userData: userData,
-            loginDelegate: loginDelegate
-        )
         self.viewModel = GlobalSSOMainView.ViewModel(dependencies: dependencies)
         let view = GlobalSSOMainView(viewModel: self.viewModel)
         self.navigationDelegate = navigationDelegate

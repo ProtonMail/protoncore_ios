@@ -34,6 +34,7 @@ import SwiftUI
 extension JoinOrganizationView {
     struct Dependencies {
         let apiService: APIService?
+        let loginService: Login?
         let userData: LoginData
         let organizationInfo: OrganizationInfo
         let loginDelegate: GlobalSSOLoginDelegate?
@@ -71,6 +72,7 @@ extension JoinOrganizationView {
         )
 
         var authenticator: AuthenticatorKeyGenerationInterface?
+        let loginService: Login?
         let userData: LoginData
         let organizationInfo: OrganizationInfo
         let deviceSecretRepository: DeviceSecretRepositoryProtocol
@@ -81,6 +83,7 @@ extension JoinOrganizationView {
             if let apiService = dependencies.apiService {
                 self.authenticator = Authenticator(api: apiService)
             }
+            self.loginService = dependencies.loginService
             self.userData = dependencies.userData
             self.organizationInfo = dependencies.organizationInfo
             self.loginDelegate = dependencies.loginDelegate
@@ -110,7 +113,7 @@ extension JoinOrganizationView {
         func continueTapped() {
             Task {
                 do {
-                    guard let authenticator else { throw SSOLoginError.authenticatorNotFound }
+                    guard let authenticator, let loginService else { throw SSOLoginError.authenticatorNotFound }
                     resetTextFieldsErrors()
                     try validate(
                         for: .default,
@@ -127,7 +130,8 @@ extension JoinOrganizationView {
                         orgPublicKey: organizationInfo.organizationPublicKey,
                         deviceSecret: deviceSecret.secret
                     )
-                    await loginDelegate?.globalSSOLoginDidFinish(data: userData)
+                    let updatedUserData = try await loginService.refreshUserData(backupPassword: backupPasswordContent.text)
+                    await loginDelegate?.globalSSOLoginDidFinish(data: updatedUserData)
                     viewState = .idle
                 } catch {
                     viewState = .idle

@@ -68,6 +68,11 @@ public struct AuthenticatorWithKeyGenerationMock: AuthenticatorInterface, Authen
         refreshCredentialStub(oldCredential, completion)
     }
 
+    @AsyncThrowingFuncStub(AuthenticatorInterface.refreshCredential(_:), initialReturn: .crash) public var refreshCredentialAsyncStub
+    public func refreshCredential(_ oldCredential: Credential) async throws -> Credential {
+        try await refreshCredentialAsyncStub(oldCredential)
+    }
+
     @FuncStub(Self.checkAvailableUsernameWithoutSpecifyingDomain) public var checkAvailableUsernameWithoutSpecifyingDomainStub
     public func checkAvailableUsernameWithoutSpecifyingDomain(_ username: String, completion: @escaping (Result<(), AuthErrors>) -> Void) {
         checkAvailableUsernameWithoutSpecifyingDomainStub(username, completion)
