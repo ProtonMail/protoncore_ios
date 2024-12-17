@@ -1,0 +1,15 @@
+{
+  "request": {
+    "exactUrl": ["/api/mail/v4/count"],
+    "method": "GET"
+  },
+  "response": {
+    "headers": {},
+    "body": {},
+    "statusCode": 204
+  },
+  "meta": {
+    "test": "What tests is this used in?",
+    "description": "What is being mocked? What effect does it have on the application?"
+  }
+}

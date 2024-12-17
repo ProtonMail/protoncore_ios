@@ -1,0 +1,5 @@
+{
+  "description": "A valid scenario used in unit tests.",
+  "updateFiles": false,
+  "mockFiles": ["conversations.mock.json", "count.mock.json"]
+}
