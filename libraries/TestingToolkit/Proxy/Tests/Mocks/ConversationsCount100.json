@@ -1,0 +1,171 @@
+    [
+       {
+          "name":"string",
+          "enabled":true,
+          "updateFile":false,
+          "request":{
+             "exactUrl":[
+                "mail/v4/conversations/count"
+             ],
+             "method":"GET"
+          },
+          "response":{
+             "body":{
+                "Code":1000,
+                "Counts":[
+                   {
+                      "LabelID":"0",
+                      "Total":100,
+                      "Unread":100,
+                      "TasksRunning":[
+
+                      ]
+                   },
+                   {
+                      "LabelID":"1",
+                      "Total":10,
+                      "Unread":10,
+                      "TasksRunning":[
+
+                      ]
+                   },
+                   {
+                      "LabelID":"2",
+                      "Total":10,
+                      "Unread":0,
+                      "TasksRunning":[
+
+                      ]
+                   },
+                   {
+                      "LabelID":"3",
+                      "Total":0,
+                      "Unread":0,
+                      "TasksRunning":[
+
+                      ]
+                   },
+                   {
+                      "LabelID":"4",
+                      "Total":0,
+                      "Unread":0,
+                      "TasksRunning":[
+
+                      ]
+                   },
+                   {
+                      "LabelID":"5",
+                      "Total":1,
+                      "Unread":0,
+                      "TasksRunning":[
+
+                      ]
+                   },
+                   {
+                      "LabelID":"15",
+                      "Total":1,
+                      "Unread":0,
+                      "TasksRunning":[
+
+                      ]
+                   },
+                   {
+                      "LabelID":"6",
+                      "Total":0,
+                      "Unread":0,
+                      "TasksRunning":[
+
+                      ]
+                   },
+                   {
+                      "LabelID":"7",
+                      "Total":1,
+                      "Unread":0,
+                      "TasksRunning":[
+
+                      ]
+                   },
+                   {
+                      "LabelID":"8",
+                      "Total":0,
+                      "Unread":0,
+                      "TasksRunning":[
+
+                      ]
+                   },
+                   {
+                      "LabelID":"9",
+                      "Total":0,
+                      "Unread":0,
+                      "TasksRunning":[
+
+                      ]
+                   },
+                   {
+                      "LabelID":"12",
+                      "Total":0,
+                      "Unread":0,
+                      "TasksRunning":[
+
+                      ]
+                   },
+                   {
+                      "LabelID":"10",
+                      "Total":0,
+                      "Unread":0,
+                      "TasksRunning":[
+
+                      ]
+                   },
+                   {
+                      "LabelID":"16",
+                      "Total":0,
+                      "Unread":0,
+                      "TasksRunning":[
+
+                      ]
+                   }
+                ]
+             },
+             "headers":{
+                "server":"nginx",
+                "date":"Mon, 25 Nov 2024 13:57:04 GMT",
+                "content-type":"application/json",
+                "content-length":"174",
+                "connection":"close",
+                "x-pm-code":"1000",
+                "cache-control":"max-age=0, must-revalidate, no-cache, no-store, private",
+                "expires":"Fri, 04 May 1984 22:15:00 GMT",
+                "x-pm-route-pattern":"GET /mail/v4/conversations/count",
+                "x-pm-user-id":"757",
+                "x-pm-uid":"id35tmiqwe2twqqb5ycrnznilrj6bnib",
+                "access":"application/vnd.protonmail.api+json;apiversion=4",
+                "x-pm-time-total":"114",
+                "x-pm-time-user":"81",
+                "x-pm-time-system":"3",
+                "x-pm-memory":"6",
+                "x-pm-allocated-memory":"8",
+                "x-pm-urgency":"1",
+                "x-pm-apiversion":"develop (83312246)",
+                "x-b3-traceid":"0f6935a1d3d04b5af46fde9a0d878d0c",
+                "x-b3-spanid":"243069cd19f745e6",
+                "x-b3-parentspanid":"",
+                "vary":"Accept-Encoding",
+                "content-encoding":"gzip",
+                "x-pm-nonce":"Z0SCL2C8R85u7tioAazSXAAAAMM",
+                "set-cookie":[
+                   "Session-Id=Z0SCL2C8R85u7tioAazSXAAAAMM; Domain=watt.proton.black; Path=/; HttpOnly; Secure; Max-Age=7776000",
+                   "Version=; Domain=watt.proton.black; Path=/; Secure; Expires=Thu, 01 Jan 1970 00:00:00 GMT"
+                ],
+                "strict-transport-security":"max-age=15724800; includeSubDomains, max-age=31536000; includeSubDomains; preload, max-age=63072000",
+                "content-security-policy":"default-src 'self'; script-src 'self' 'unsafe-eval' 'nonce-Z0SCL2C8R85u7tioAazSXAAAAMM' 'strict-dynamic' https:; style-src 'self' 'unsafe-inline'; img-src http: https: data: blob: cid:; font-src 'self' https://*.watt.proton.black; frame-src https:; connect-src https: wss:; media-src https:; frame-ancestors https://*.proton.mock/ https://*.watt.proton.black;",
+                "expect-ct":"max-age=2592000, enforce",
+                "x-content-type-options":"nosniff",
+                "x-xss-protection":"1; mode=block",
+                "referrer-policy":"strict-origin-when-cross-origin",
+                "x-permitted-cross-domain-policies":"none"
+             },
+             "statusCode":200
+          }
+       }
+    ]
