@@ -23,7 +23,7 @@ import Foundation
 import ProtonCoreNetworking
 
 public final class AssociateAuthDeviceResponse: Response, APIDecodableResponse, Encodable {
-    var device: AssociateAuthDeviceOutput?
+    var authDevice: AssociateAuthDeviceOutput?
 }
 
 public struct AssociateAuthDeviceOutput: Codable {

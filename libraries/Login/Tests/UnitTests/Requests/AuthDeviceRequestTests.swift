@@ -239,8 +239,8 @@ final class AuthDeviceRequestTests: XCTestCase, JSONMockLoader {
         let (_, response) = await apiService.perform(request: sut, response: res)
 
         XCTAssertEqual(response.responseCode, 1000)
-        XCTAssertEqual(response.device?.ID, deviceID)
-        XCTAssertEqual(response.device?.encryptedSecret, "encrypted$secret")
+        XCTAssertEqual(response.authDevice?.ID, deviceID)
+        XCTAssertEqual(response.authDevice?.encryptedSecret, "encrypted$secret")
         XCTAssertNil(response.error)
     }
 

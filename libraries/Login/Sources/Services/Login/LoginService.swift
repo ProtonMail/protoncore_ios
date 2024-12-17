@@ -210,8 +210,10 @@ public final class LoginService {
         authDelegate.onSessionObtaining(credential: credential)
         self.apiService.setSessionUID(uid: credential.UID)
 
-        let user = try await authManager.getUserInfo()
-        let addresses = try await authManager.getAddresses()
+        async let userResult = authManager.getUserInfo()
+        async let addressesResult = authManager.getAddresses()
+        async let keySaltsResult = authManager.getKeySalts()
+        let (user, addresses, keySalts) = try await (userResult, addressesResult, keySaltsResult)
 
         self.featureFlagsRepository.setApiService(self.apiService)
         if !user.ID.isEmpty {
@@ -225,7 +227,7 @@ public final class LoginService {
         return .finished(UserData(
             credential: .init(ssoCredential),
             user: user,
-            salts: [],
+            salts: keySalts,
             passphrases: [:],
             addresses: addresses,
             scopes: credential.scopes

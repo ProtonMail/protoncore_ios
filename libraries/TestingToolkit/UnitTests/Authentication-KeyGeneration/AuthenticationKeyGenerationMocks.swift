@@ -118,6 +118,11 @@ public struct AuthenticatorWithKeyGenerationMock: AuthenticatorInterface, Authen
         getKeySaltsStub(credential, completion)
     }
 
+    @AsyncThrowingFuncStub(AuthenticatorInterface.getKeySalts(_:), initialReturn: .crash) public var getKeySaltsAsyncStub
+    public func getKeySalts(_ credential: Credential?) async throws -> [KeySalt] {
+        try await getKeySaltsAsyncStub(credential)
+    }
+
     @AsyncThrowingFuncStub(AuthenticatorInterface.getKeys, initialReturn: .crash) public var getKeysStub
     public func getKeys(_ credential: Credential?, email: String, internalOnly: Bool) async throws -> AuthService.KeysInfoResponse? {
         try await getKeysStub(credential, email, internalOnly)

@@ -21,10 +21,12 @@
 
 #if os(iOS)
 
+import ProtonCoreLog
 import ProtonCoreServices
 
 public enum SSOLoginScreen {
     case newBackupPassword(UnprivatizeUserSuccess)
+    case loginSuccess(UserData)
     case unimplemented
 }
 
@@ -34,43 +36,80 @@ public final class PostLoginSSOAccountSetup {
 
     let createAuthDevice: CreateAuthDevice
     let verifyUnprivatization: VerifyUnprivatization
+    let checkDeviceSecret: CheckDeviceSecret
+    let decryptEncryptedSecret: DecryptEncryptedSecret
+    let buildAndValidatePassphrases: BuildAndValidatePassphrases
 
     public init(apiService: APIService, userData: LoginData) {
         self.apiService = apiService
         self.userData = userData
 
+        let deviceSecretRepository = DeviceSecretRepository()
+
         self.createAuthDevice = CreateAuthDevice(
             userId: userData.user.ID,
             apiService: apiService,
-            deviceSecretRepository: DeviceSecretRepository()
+            deviceSecretRepository: deviceSecretRepository
         )
 
         self.verifyUnprivatization = VerifyUnprivatization(apiService: apiService)
+
+        self.checkDeviceSecret = CheckDeviceSecret(
+            apiService: apiService,
+            deviceSecretRepository: deviceSecretRepository
+        )
+
+        self.decryptEncryptedSecret = DecryptEncryptedSecret(deviceSecretRepository: deviceSecretRepository)
+        self.buildAndValidatePassphrases = BuildAndValidatePassphrases()
     }
 
     public enum State {
         case firstLogin
-        // case invalidSecret
+        case validSecret(passphrases: [String: String])
         case unimplemented
     }
 
     public func invoke() async throws -> SSOLoginScreen {
-        let state = loginSSOState(userData: userData)
+        let state = await loginSSOState(userData: userData)
         switch state {
         case .firstLogin:
             try await createAuthDevice.invoke()
             let verifyInfo = try await verifyUnprivatization.invoke()
             return .newBackupPassword(verifyInfo)
+        case .validSecret(let passphrases):
+            return .loginSuccess(userData.updated(passphrases: passphrases))
         case .unimplemented:
             return .unimplemented
         }
     }
 
-    private func loginSSOState(userData: LoginData) -> State {
-        if userData.user.keys.isEmpty {
+    private func loginSSOState(userData: LoginData) async -> State {
+        guard !userData.user.keys.isEmpty else {
             return .firstLogin
         }
+
+        do {
+            let encryptedSecret = try await checkDeviceSecret.invoke(userId: userData.user.ID)
+            guard let decryptedSecret = try decryptEncryptedSecret.invoke(userId: userData.user.ID, encryptedSecret: encryptedSecret) else {
+                return .unimplemented
+            }
+            return try deviceSecretState(userData: userData, decryptedSecret: decryptedSecret)
+        } catch {
+            PMLog.error(error)
+        }
+
         return .unimplemented
+    }
+
+    private func deviceSecretState(userData: LoginData, decryptedSecret: String) throws -> State {
+        guard let passphrases = try buildAndValidatePassphrases.buildAndValidatePassphrases(
+            passphrase: decryptedSecret,
+            salts: userData.salts,
+            userKeys: userData.user.keys
+        ) else {
+            return .unimplemented
+        }
+        return .validSecret(passphrases: passphrases)
     }
 }
 #endif
