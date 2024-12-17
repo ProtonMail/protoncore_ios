@@ -44,6 +44,7 @@ public struct AvailablePlansView: View {
                                 .tint(Theme.color.textNorm)
                         }
                         .padding(Theme.spacing.extraLarge)
+                        Spacer()
                     }
                 }
                 // MARK: Current plan

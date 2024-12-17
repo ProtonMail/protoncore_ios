@@ -43,24 +43,28 @@ final public class PaymentsV2 {
     public func availablePlansView(sessionID: String,
                                    accessToken: String,
                                    appVersion: String,
+                                   hideCurrentPlan: Bool = false,
                                    env: EnvURLType) -> PaymentsUIViewControllerV2 {
         return PaymentsUIViewControllerV2(sessionId: sessionID,
                                           token: accessToken,
                                           appVersion: appVersion,
-                                          env: env)
+                                          env: env,
+                                          hideCurrentPlan: hideCurrentPlan)
     }
 
     public func showAvailablePlans(presentationMode: PresentationMode,
                                    sessionID: String,
                                    accessToken: String,
                                    appVersion: String,
+                                   hideCurrentPlan: Bool = false,
                                    env: EnvURLType) throws {
 
         let vc = PaymentsUIViewControllerV2(sessionId: sessionID,
                                             token: accessToken,
                                             appVersion: appVersion,
                                             env: env,
-                                            presentationMode: presentationMode)
+                                            presentationMode: presentationMode,
+                                            hideCurrentPlan: hideCurrentPlan)
 
         switch presentationMode {
         case .modal:

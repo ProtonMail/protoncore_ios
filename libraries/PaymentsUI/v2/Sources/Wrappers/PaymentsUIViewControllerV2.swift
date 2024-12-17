@@ -52,7 +52,8 @@ public final class PaymentsUIViewControllerV2: UIViewController {
                   token: token,
                   appVersion: appVersion,
                   env: env,
-                  presentationMode: presentationMode)
+                  presentationMode: presentationMode,
+                  hideCurrentPlan: hideCurrentPlan)
     }
 
     required init?(coder: NSCoder) {
@@ -70,6 +71,7 @@ public final class PaymentsUIViewControllerV2: UIViewController {
                                                 token: token,
                                                 envURL: env,
                                                 appVersion: appVersion,
+                                                hideCurrentPlan: hideCurrentPlan,
                                                 presentationMode: presentationMode)
 
         viewModel.$viewState.sink { [weak self] value in
