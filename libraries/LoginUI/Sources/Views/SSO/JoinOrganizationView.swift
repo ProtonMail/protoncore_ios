@@ -151,6 +151,7 @@ import ProtonCoreLogin
     NavigationView {
         JoinOrganizationView(viewModel: .init(dependencies: .init(
             apiService: nil,
+            loginService: nil,
             userData: .init(
                 credential: .none,
                 user: .mock,

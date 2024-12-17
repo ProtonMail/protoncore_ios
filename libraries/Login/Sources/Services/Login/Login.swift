@@ -370,6 +370,7 @@ public protocol Login {
     func refreshCredentials(completion: @escaping (Result<Credential, LoginError>) -> Void)
     func refreshUserInfo(completion: @escaping (Result<User, LoginError>) -> Void)
     func availableUsernameForExternalAccountEmail(email: String, completion: @escaping (String?) -> Void)
+    func refreshUserData(backupPassword: String) async throws -> UserData
 
     var minimumAccountType: AccountType { get }
     func updateAccountType(accountType: AccountType)

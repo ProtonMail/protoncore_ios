@@ -139,6 +139,17 @@ public final class LoginService {
         }
     }
 
+    public func refreshCredentials() async throws -> Credential {
+        guard let authDelegate = apiService.authDelegate,
+              let oldCredential = authDelegate.credential(sessionUID: self.sessionId) else {
+            throw LoginError.invalidState
+        }
+        let credential = try await authManager.refreshCredential(oldCredential)
+        authDelegate.onUpdate(credential: credential, sessionUID: self.sessionId)
+        apiService.setSessionUID(uid: credential.UID)
+        return credential
+    }
+
     public func refreshUserInfo(completion: @escaping (Result<User, LoginError>) -> Void) {
         withAuthDelegateAvailable(completion) { authDelegate in
             guard let credential = authDelegate.credential(sessionUID: sessionId) else {
@@ -149,6 +160,27 @@ public final class LoginService {
                 completion($0.mapError { $0.asLoginError() })
             }
         }
+    }
+
+    public func refreshUserData(backupPassword: String) async throws -> UserData {
+        let credential = try await refreshCredentials()
+        let user = try await authManager.getUserInfo()
+        let addresses = try await authManager.getAddresses()
+        let keySalts = try await authManager.getKeySalts()
+
+        let passphrases = try BuildAndValidatePassphrases().buildPassphrases(
+            salts: keySalts,
+            mailboxPassword: backupPassword
+        )
+
+        return UserData(
+            credential: .init(credential),
+            user: user,
+            salts: keySalts,
+            passphrases: passphrases,
+            addresses: addresses,
+            scopes: credential.scopes
+        )
     }
 
     // MARK: - Data gathering entry point

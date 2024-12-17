@@ -260,6 +260,7 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
     }
 
     // Refresh expired access token using refresh token
+    @available(*, deprecated, message: "Use async version")
     public func refreshCredential(_ oldCredential: Credential, completion: @escaping Completion) {
         self.apiService.refreshCredential(oldCredential) { (result: Result<Credential, ResponseError>) in
             switch result {
@@ -267,6 +268,20 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
                 completion(.failure(.from(responseError)))
             case .success(let credential):
                 completion(.success(.updatedCredential(credential)))
+            }
+        }
+    }
+    
+    // Refresh expired access token using refresh token
+    public func refreshCredential(_ oldCredential: Credential) async throws -> Credential {
+        try await withCheckedThrowingContinuation { continuation in
+            self.apiService.refreshCredential(oldCredential) { (result: Result<Credential, ResponseError>) in
+                switch result {
+                case .failure(let responseError):
+                    continuation.resume(throwing: responseError)
+                case .success(let credential):
+                    continuation.resume(returning: credential)
+                }
             }
         }
     }

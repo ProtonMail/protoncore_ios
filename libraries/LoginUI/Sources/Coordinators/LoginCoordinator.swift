@@ -297,10 +297,13 @@ final class LoginCoordinator {
 extension LoginCoordinator {
     private func showGlobalSSOAccountSetup(data: LoginData) {
         let viewController = GlobalSSOMainViewController(
-            apiService: container.api,
-            userData: data,
-            navigationDelegate: self,
-            loginDelegate: self
+            dependencies: .init(
+                apiService: container.api,
+                loginService: container.login,
+                userData: data,
+                loginDelegate: self
+            ),
+            navigationDelegate: self
         )
         let ssoNavigationController = UINavigationController(rootViewController: viewController)
         ssoNavigationController.modalPresentationStyle = .fullScreen

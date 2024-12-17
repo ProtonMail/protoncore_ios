@@ -59,9 +59,14 @@ public struct AuthenticatorMock: AuthenticatorInterface {
         sendFIDO2SignatureStub(signature, context, completion)
     }
 
-    @FuncStub(Self.refreshCredential) public var refreshCredentialStub
+    @FuncStub(AuthenticatorInterface.refreshCredential) public var refreshCredentialStub
     public func refreshCredential(_ oldCredential: Credential, completion: @escaping Authenticator.Completion) {
         refreshCredentialStub(oldCredential, completion)
+    }
+
+    @AsyncThrowingFuncStub(AuthenticatorInterface.refreshCredential(_:), initialReturn: .crash) public var refreshCredentialAsyncStub
+    public func refreshCredential(_ oldCredential: Credential) async throws -> Credential {
+        try await refreshCredentialAsyncStub(oldCredential)
     }
 
     @FuncStub(Self.checkAvailableUsernameWithoutSpecifyingDomain) public var checkAvailableUsernameWithoutSpecifyingDomainStub

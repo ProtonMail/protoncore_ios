@@ -30,6 +30,7 @@ import SwiftUI
 extension GlobalSSOMainView {
     struct Dependencies {
         let apiService: APIService
+        let loginService: Login
         let userData: UserData
         let loginDelegate: GlobalSSOLoginDelegate?
     }
@@ -40,6 +41,7 @@ extension GlobalSSOMainView {
     @MainActor
     final class ViewModel: ObservableObject {
         let apiService: APIService
+        let loginService: Login
         let userData: UserData
 
         @Published var screenState: ScreenState
@@ -57,6 +59,7 @@ extension GlobalSSOMainView {
 
         init(dependencies: Dependencies) {
             self.apiService = dependencies.apiService
+            self.loginService = dependencies.loginService
             self.userData = dependencies.userData
             self.loginDelegate = dependencies.loginDelegate
             screenState = .loading(.init(user: userData.user))
@@ -90,6 +93,7 @@ extension GlobalSSOMainView {
                 let organizationSettings = try await organizationRepository.getOrganizationSettings()
                 screenState = .newBackupPassword(.init(
                     apiService: apiService,
+                    loginService: loginService,
                     userData: userData,
                     organizationInfo: .init(
                         organizationName: organization.displayName,

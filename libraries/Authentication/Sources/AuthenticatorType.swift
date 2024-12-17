@@ -45,7 +45,9 @@ public protocol AuthenticatorInterface {
     ///   - completion: Completion closure which will receive the result of the request
     func sendFIDO2Signature(_ signature: Fido2Signature, context: FIDO2Context, completion: @escaping Authenticator.Completion)
 
+    @available(*, deprecated, message: "Use async version")
     func refreshCredential(_ oldCredential: Credential, completion: @escaping Authenticator.Completion)
+    func refreshCredential(_ oldCredential: Credential) async throws -> Credential
 
     func checkAvailableUsernameWithoutSpecifyingDomain(_ username: String, completion: @escaping (Result<(), AuthErrors>) -> Void)
 
