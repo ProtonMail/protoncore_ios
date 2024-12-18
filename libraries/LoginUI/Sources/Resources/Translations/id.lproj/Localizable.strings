@@ -333,3 +333,7 @@
 "Signing you in" = "Memasukkan Anda";
 
 "to your organization" = "ke organisasi Anda";
+
+"Sign in with single sign-on" = "Sign in with single sign-on";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Your organization uses SSO. Continue to sign in with your third-party SSO provider.";

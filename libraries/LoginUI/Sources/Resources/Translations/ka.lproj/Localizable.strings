@@ -333,3 +333,7 @@
 "Signing you in" = "შესვლა";
 
 "to your organization" = "თქვენს ორგანიზაციაში";
+
+"Sign in with single sign-on" = "შესვლა SSO-ით";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "თქვენი ორგანიზაცია SSO-ს იყენებს. გააგრძელეთ შესვლა თქვენი SSO პროვაიდერით.";

@@ -333,3 +333,7 @@
 "Signing you in" = "Accesso in corso";
 
 "to your organization" = "all' organizzazione";
+
+"Sign in with single sign-on" = "Accedi con Single Sign-On";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "La tua organizzazione utilizza SSO. Continua per accedere con il tuo provider SSO di terze parti.";

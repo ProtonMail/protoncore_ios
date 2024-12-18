@@ -333,3 +333,7 @@
 "Signing you in" = "Conectare la";
 
 "to your organization" = "la organizația dvs.";
+
+"Sign in with single sign-on" = "Conectați-vă cu autentificarea unică";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Organizația folosește conectarea cu autentificare unică (SSO). Continuați conectarea cu furnizorul terț de autentificare unică.";

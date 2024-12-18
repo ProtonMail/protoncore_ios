@@ -333,3 +333,7 @@
 "Signing you in" = "Γίνεται είσοδος";
 
 "to your organization" = "στον οργανισμό σας";
+
+"Sign in with single sign-on" = "Συνδεθείτε μέσω ενιαίας πρόσβασης";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Ο οργανισμός σας χρησιμοποιεί ενιαία πρόσβαση. Συνεχίστε για να συνδεθείτε μέσω του παρόχου SSO σας.";

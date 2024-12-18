@@ -333,3 +333,7 @@
 "Signing you in" = "Iniciando sesión";
 
 "to your organization" = "a tu organización";
+
+"Sign in with single sign-on" = "Iniciar sesión con inicio de sesión único";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Tu organización usa el inicio de sesión único (SSO). Continúa iniciando sesión con tu proveedor de SSO externo.";

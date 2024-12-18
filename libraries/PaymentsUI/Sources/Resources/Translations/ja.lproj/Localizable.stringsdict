@@ -13,7 +13,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>other</key>
-        <string>%d 個の電子メール エイリアス</string>
+        <string>%d 個のメール エイリアス</string>
       </dict>
     </dict>
     <key>&lt;n&gt; users</key>

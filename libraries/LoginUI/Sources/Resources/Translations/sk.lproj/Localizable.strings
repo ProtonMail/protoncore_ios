@@ -333,3 +333,7 @@
 "Signing you in" = "Prihlasujeme vás";
 
 "to your organization" = "do vašej organizácie";
+
+"Sign in with single sign-on" = "Prihlásenie pomocou jednotného prihlásenia";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Vaša organizácia používa SSO. Pokračujte v prihlasovaní pomocou poskytovateľa SSO tretej strany.";

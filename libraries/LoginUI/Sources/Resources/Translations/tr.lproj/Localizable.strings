@@ -333,3 +333,7 @@
 "Signing you in" = "Oturumunuz açılıyor";
 
 "to your organization" = "kuruluşunuzda";
+
+"Sign in with single sign-on" = "Tek oturum açma ile oturum açın";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Kuruluşunuz tek oturum açma kullanıyor. Oturum açmayı üçüncü taraf tek oturum açma hizmeti sağlayıcı ile sürdürün.";
