@@ -21,7 +21,6 @@
 
 import UIKit
 import ProtonCorePaymentsV2
-import ProtonCoreFoundations
 
 public enum PresentationMode {
     case modal
@@ -32,24 +31,27 @@ public enum PresentationMode {
 public enum PaymentsPresentationError: Error {
     case unableToGetParentViewController
     case noPresentationModeSet
+    case transactionsObserverNotActive
+    case unableToFindValidEnvironment
 }
 
 final public class PaymentsV2 {
 
-    private let keyWindow = UIApplication.firstKeyWindow
-
     public init() {}
 
+    //MARK: Public functions
+
+    //MARK: Presentation
     public func availablePlansView(sessionID: String,
                                    accessToken: String,
                                    appVersion: String,
                                    hideCurrentPlan: Bool = false,
-                                   env: EnvURLType) -> PaymentsUIViewControllerV2 {
-        return PaymentsUIViewControllerV2(sessionId: sessionID,
-                                          token: accessToken,
-                                          appVersion: appVersion,
-                                          env: env,
-                                          hideCurrentPlan: hideCurrentPlan)
+                                   env: String) throws -> PaymentsUIViewControllerV2 {
+        return try createPaymentsView(sessionID: sessionID,
+                                      accessToken: accessToken,
+                                      appVersion: appVersion,
+                                      hideCurrentPlan: hideCurrentPlan,
+                                      env: env)
     }
 
     public func showAvailablePlans(presentationMode: PresentationMode,
@@ -57,14 +59,18 @@ final public class PaymentsV2 {
                                    accessToken: String,
                                    appVersion: String,
                                    hideCurrentPlan: Bool = false,
-                                   env: EnvURLType) throws {
+                                   env: String) throws {
 
-        let vc = PaymentsUIViewControllerV2(sessionId: sessionID,
-                                            token: accessToken,
-                                            appVersion: appVersion,
-                                            env: env,
-                                            presentationMode: presentationMode,
-                                            hideCurrentPlan: hideCurrentPlan)
+        guard TransactionsObserver.shared.isON else {
+            throw PaymentsPresentationError.transactionsObserverNotActive
+        }
+
+        let vc = try createPaymentsView(sessionID: sessionID,
+                                        accessToken: accessToken,
+                                        appVersion: appVersion,
+                                        hideCurrentPlan: hideCurrentPlan,
+                                        presentationMode: presentationMode,
+                                        env: env)
 
         switch presentationMode {
         case .modal:
@@ -76,9 +82,9 @@ final public class PaymentsV2 {
         }
     }
 
+    //MARK: Private functions
     private func presentView(vc: UIViewController) throws {
-
-        guard let viewController = keyWindow?.topMostViewController else {
+        guard let viewController = UIApplication.getTopViewController() else {
             throw PaymentsPresentationError.unableToGetParentViewController
         }
 
@@ -91,5 +97,24 @@ final public class PaymentsV2 {
         }
 
         navController.pushViewController(vc, animated: true)
+    }
+
+    private func createPaymentsView(sessionID: String,
+                                    accessToken: String,
+                                    appVersion: String,
+                                    hideCurrentPlan: Bool = false,
+                                    presentationMode: PresentationMode = .none,
+                                    env: String) throws -> PaymentsUIViewControllerV2 {
+
+        guard let env = env.toEnvURLType else {
+            throw PaymentsPresentationError.unableToFindValidEnvironment
+        }
+
+        return PaymentsUIViewControllerV2(sessionId: sessionID,
+                                          token: accessToken,
+                                          appVersion: appVersion,
+                                          env: env,
+                                          presentationMode: presentationMode,
+                                          hideCurrentPlan: hideCurrentPlan)
     }
 }

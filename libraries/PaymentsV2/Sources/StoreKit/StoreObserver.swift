@@ -37,11 +37,15 @@ public protocol StoreObserverProviding {
     func stop()
 }
 
-public typealias StoreObserverConfiguration = (sessionID: String, authToken: String, appVersion: String, env: EnvURLType, atlasSecret: String)
+public enum StoreObserverError: Error {
+    case missingOrInvalidConfiguration
+}
 
-public final class StoreObserver {
+public typealias TransactionsObserverConfiguration = (sessionID: String, authToken: String, appVersion: String, env: EnvURLType, atlasSecret: String)
 
-    public var configuration: StoreObserverConfiguration? {
+public final class TransactionsObserver {
+
+    public var configuration: TransactionsObserverConfiguration? {
         didSet {
             guard let sessionId = configuration?.sessionID,
                     let authToken = configuration?.authToken,
@@ -71,7 +75,7 @@ public final class StoreObserver {
     private var planComposer: PlansComposerProviding?
     private var transactionHandler: TransactionHandler?
 
-    public static let shared = StoreObserver()
+    public static let shared = TransactionsObserver()
 
     @Published public private(set) var isON: Bool = false
     @Published public private(set) var transactionStatus: TransactionType = .unknown
@@ -118,7 +122,7 @@ public final class StoreObserver {
     public func start() async throws {
         guard let _ = remoteManager, let _ = paymentsAPI, let planComposer = planComposer else {
             assertionFailure("StoreObserver: StoreObserverConfiguration required to start the observer")
-            return
+            throw StoreObserverError.missingOrInvalidConfiguration
         }
 
         if !planComposer.hasData {
