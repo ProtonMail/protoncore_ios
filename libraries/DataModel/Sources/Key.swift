@@ -100,3 +100,9 @@ extension Key {
         KeyFlags(rawValue: UInt8(truncating: keyFlags as NSNumber)).contains(.dontExpectSignedEmails)
     }
 }
+
+public extension Array where Element == Key {
+    func primary() -> Key? {
+        return self.first(where: { $0.primary == 1 }) ?? first
+    }
+}

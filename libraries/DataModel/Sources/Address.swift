@@ -173,3 +173,9 @@ extension Key {
     }
 
 }
+
+public extension Array where Element == Address {
+    func primary() -> Address? {
+        self.sorted(by: {$0.order < $1.order}).first
+    }
+}

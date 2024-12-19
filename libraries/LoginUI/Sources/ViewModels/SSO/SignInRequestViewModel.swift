@@ -22,6 +22,7 @@
 #if os(iOS)
 
 import SwiftUI
+import ProtonCoreLogin
 import ProtonCoreUIFoundations
 
 extension SignInRequestView {
@@ -34,24 +35,8 @@ extension SignInRequestView {
 
     enum ViewMode {
         case requestForAdminApproval(code: String)
-        case requestApproveFromAnotherDevice(code: String)
+        case requestApproveFromAnotherDevice(code: String, devices: [AuthDevice])
         case approvingAccess
-    }
-
-    struct DeviceViewModel {
-        let name: String
-        let localizedClientName: String
-        let lastActivityTime: Date
-
-        private let timeFormatter: RelativeDateTimeFormatter = {
-            let formatter = RelativeDateTimeFormatter()
-            formatter.dateTimeStyle = .numeric
-            return formatter
-        }()
-
-        var lastActivityString: String {
-            timeFormatter.localizedString(for: lastActivityTime, relativeTo: Date())
-        }
     }
 
     @MainActor
@@ -59,7 +44,7 @@ extension SignInRequestView {
 
         @Published var bannerState: BannerState = .none
         @Published var mode: ViewMode
-        @Published var devices: [DeviceViewModel]
+        @Published var devices: [AuthDevice] = []
 
         @Published var confirmationCodeContent: PCTextFieldContent = .init(title: LUITranslation.confirmation_code.l10n)
 
@@ -68,10 +53,9 @@ extension SignInRequestView {
 
         init(dependencies: Dependencies) {
             self.mode = dependencies.mode
-            self.devices = [
-                .init(name: "macOS", localizedClientName: "Proton Mail, Chrome", lastActivityTime: Date()),
-                .init(name: "Google Pixel 7a", localizedClientName: "Proton Mail, Android", lastActivityTime: Date())
-            ]
+            if case .requestApproveFromAnotherDevice(_, let devices) = mode {
+                self.devices = devices
+            }
         }
 
         var screenTitle: String {
@@ -114,6 +98,31 @@ extension SignInRequestView {
         func primaryActionButtonTapped() {}
 
         func secondaryActionButtonTapped() {}
+    }
+}
+
+extension AuthDevice {
+    private static let timeFormatter: RelativeDateTimeFormatter = {
+        let formatter = RelativeDateTimeFormatter()
+        formatter.dateTimeStyle = .numeric
+        return formatter
+    }()
+
+    var lastActivityString: String {
+        guard let lastActivityTime = TimeInterval(lastActivityTime) else {
+            return "Unknown"
+        }
+        return Self.timeFormatter.localizedString(for: Date(timeIntervalSince1970: lastActivityTime), relativeTo: Date())
+    }
+
+    var icon: Image {
+        guard let platform else { return IconProvider.tv }
+        switch platform {
+        case .android, .iOS:
+            return IconProvider.mobile
+        default:
+            return IconProvider.tv
+        }
     }
 }
 

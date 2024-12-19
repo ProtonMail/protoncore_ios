@@ -25,8 +25,12 @@ import ProtonCoreLog
 import ProtonCoreServices
 
 public enum SSOLoginScreen {
-    case newBackupPassword(UnprivatizeUserSuccess)
+    case setupBackupPassword(UnprivatizeUserSuccess)
     case loginSuccess(UserData)
+    case requestApproveFromAnotherDevice(code: String, devices: [AuthDevice])
+//    case waitingAdminApproval
+//    case inputBackupPassword
+//    case requestAdminHelp
     case unimplemented
 }
 
@@ -39,6 +43,8 @@ public final class PostLoginSSOAccountSetup {
     let checkDeviceSecret: CheckDeviceSecret
     let decryptEncryptedSecret: DecryptEncryptedSecret
     let buildAndValidatePassphrases: BuildAndValidatePassphrases
+    let getAuthDevices: GetAuthDevices
+    let generateConfirmationCode: GenerateConfirmationCode
 
     public init(apiService: APIService, userData: LoginData) {
         self.apiService = apiService
@@ -61,44 +67,48 @@ public final class PostLoginSSOAccountSetup {
 
         self.decryptEncryptedSecret = DecryptEncryptedSecret(deviceSecretRepository: deviceSecretRepository)
         self.buildAndValidatePassphrases = BuildAndValidatePassphrases()
+        self.getAuthDevices = GetAuthDevices(apiService: apiService)
+        self.generateConfirmationCode = GenerateConfirmationCode(deviceSecretRepository: deviceSecretRepository)
     }
 
-    public enum State {
+    enum State {
         case firstLogin
         case validSecret(passphrases: [String: String])
-        case unimplemented
+        case noSecret
+        case invalidSecret
     }
 
     public func invoke() async throws -> SSOLoginScreen {
-        let state = await loginSSOState(userData: userData)
+        let state = try await loginSSOState(userData: userData)
         switch state {
         case .firstLogin:
             try await createAuthDevice.invoke()
             let verifyInfo = try await verifyUnprivatization.invoke()
-            return .newBackupPassword(verifyInfo)
+            return .setupBackupPassword(verifyInfo)
         case .validSecret(let passphrases):
             return .loginSuccess(userData.updated(passphrases: passphrases))
-        case .unimplemented:
-            return .unimplemented
+        case .noSecret, .invalidSecret:
+            try await createAuthDevice.invoke(addresses: userData.addresses)
+            let authDevices = try await getAuthDevices.invoke()
+            guard !authDevices.isEmpty else { return .unimplemented }
+            let code = try generateConfirmationCode.invoke(userId: userData.user.ID)
+            return .requestApproveFromAnotherDevice(code: code, devices: authDevices)
         }
     }
 
-    private func loginSSOState(userData: LoginData) async -> State {
+    private func loginSSOState(userData: LoginData) async throws -> State {
         guard !userData.user.keys.isEmpty else {
             return .firstLogin
         }
 
-        do {
-            let encryptedSecret = try await checkDeviceSecret.invoke(userId: userData.user.ID)
-            guard let decryptedSecret = try decryptEncryptedSecret.invoke(userId: userData.user.ID, encryptedSecret: encryptedSecret) else {
-                return .unimplemented
-            }
-            return try deviceSecretState(userData: userData, decryptedSecret: decryptedSecret)
-        } catch {
-            PMLog.error(error)
+        let encryptedSecret = try await checkDeviceSecret.invoke(userId: userData.user.ID)
+        guard let decryptedSecret = try decryptEncryptedSecret.invoke(
+            userId: userData.user.ID,
+            encryptedSecret: encryptedSecret
+        ) else {
+            return .noSecret
         }
-
-        return .unimplemented
+        return try deviceSecretState(userData: userData, decryptedSecret: decryptedSecret)
     }
 
     private func deviceSecretState(userData: LoginData, decryptedSecret: String) throws -> State {
@@ -107,7 +117,7 @@ public final class PostLoginSSOAccountSetup {
             salts: userData.salts,
             userKeys: userData.user.keys
         ) else {
-            return .unimplemented
+            return .invalidSecret
         }
         return .validSecret(passphrases: passphrases)
     }

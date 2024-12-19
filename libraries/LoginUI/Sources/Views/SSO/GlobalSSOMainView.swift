@@ -42,6 +42,8 @@ struct GlobalSSOMainView: View {
             SSOLoginErrorView(viewModel: .init(dependencies: dependencies))
         case .newBackupPassword(let dependencies):
             JoinOrganizationView(viewModel: .init(dependencies: dependencies))
+        case .requestApproveFromAnotherDevice(let dependencies):
+            SignInRequestView(viewModel: .init(dependencies: dependencies))
         }
     }
 }
