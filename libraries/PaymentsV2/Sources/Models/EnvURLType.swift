@@ -38,3 +38,17 @@ public enum EnvURLType {
         }
     }
 }
+
+public extension String {
+
+    var toEnvURLType: EnvURLType? {
+        switch self {
+        case "black":
+            return .protonBlack
+        case "payments":
+            return .paymentsBlack
+        default:
+            return nil
+        }
+    }
+}
