@@ -24,10 +24,10 @@ import Foundation
 public struct MockObject: Codable {
     public var name: String
     public var enabled: Bool
-    public var updateFile: Bool?
-    public var isRawFileContent: Bool?
-    public var request: RequestDetails
-    public var response: ResponseDetails
+    public let updateFile: Bool?
+    public let isRawFileContent: Bool?
+    public let request: RequestDetails
+    public let response: ResponseDetails
     
     public init(name: String, enabled: Bool, updateFile: Bool? = nil, isRawFileContent: Bool? = nil, request: RequestDetails, response: ResponseDetails) {
         self.name = name

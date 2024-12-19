@@ -21,14 +21,14 @@
 
 import XCTest
 
-final class ProxyTests: XCTestCase {
+final class ProxyTest: XCTestCase {
 
     var client: ProxyClient!
     private let defaultTimeout: TimeInterval = 25.0
 
     override func setUp() {
         super.setUp()
-        client = ProxyClient(baseURL: URL(string: "https://account.mock.proton.black")!)
+        client = ProxyClient(baseURL: URL(string: "https://account.mock.euler.proton.black")!)
     }
 
     override func tearDown() {
@@ -36,7 +36,7 @@ final class ProxyTests: XCTestCase {
         super.tearDown()
     }
 
-    func disableTestListScenarios() {
+    func testListScenarios() {
         let expectation = self.expectation(description: "Fetch scenarios")
 
         client.fetchDynamicMockRoutes { result in
@@ -54,12 +54,12 @@ final class ProxyTests: XCTestCase {
     }
 
 
-    func disableTestRegisterAStaticMock() {
+    func testRegisterAStaticMock() {
         var expectation = self.expectation(description: "Register a static mock")
 
         let requestDetails = RequestDetails(exactUrl: ["test/testRegisterAStaticMock"], method: "GET")
         let responseDetails = ResponseDetails(statusCode: 200, body: AnyCodable(value: "{\"test\": \"asas\"}"), headers: AnyCodable(value: ContentType.json.asHeader))
-        let routeRequest = MockObject(name: "TestScenario", enabled: true, updateFile: false, request: requestDetails, response: responseDetails)
+        let routeRequest = MockObject(name: "TestScenario", enabled: true, updateFile: false, isRawFileContent: false, request: requestDetails, response: responseDetails)
 
         client.addStaticMockRoute(route: routeRequest) { result in
             switch result {
@@ -103,17 +103,17 @@ final class ProxyTests: XCTestCase {
         wait(for: [expectation], timeout: defaultTimeout)
     }
 
-    func disableTestSetAndGetGlobalBandwidth() {
+    func testSetAndGetGlobalBandwidth() {
         let setBandwidthExpectation = expectation(description: "Set bandwidth settings")
         let getBandwidthExpectation = expectation(description: "Get bandwidth settings")
         let resetBandwidthExpectation = expectation(description: "Reset bandwidth settings")
 
-        let bandwidthInfo = BandwidthInfo(enabled: true, limit: BandwidthLimit.EDGE.speedBytesPerSec)
+        let bandwidthInfo = BandwidthInfo(enabled: true, limit: BandwidthLimit.edge.speedBytesPerSec)
 
         client.addGlobalBandwidth(bandwidthInfo: bandwidthInfo) { result in
             switch result {
             case .success(let updatedBandwidth):
-                XCTAssertEqual(updatedBandwidth.limit, BandwidthLimit.EDGE.speedBytesPerSec, "Bandwidth limit should be EDGE.")
+                XCTAssertEqual(updatedBandwidth.limit, BandwidthLimit.edge.speedBytesPerSec, "Bandwidth limit should be EDGE.")
             case .failure(let error):
                 XCTFail("Failed to set bandwidth settings: \(error)")
             }
@@ -125,7 +125,7 @@ final class ProxyTests: XCTestCase {
         client.fetchGlobalBandwidth { result in
             switch result {
             case .success(let bandwidth):
-                XCTAssertEqual(bandwidth.limit, BandwidthLimit.EDGE.speedBytesPerSec, "Bandwidth limit should be EDGE.")
+                XCTAssertEqual(bandwidth.limit, BandwidthLimit.edge.speedBytesPerSec, "Bandwidth limit should be EDGE.")
             case .failure(let error):
                 XCTFail("Failed to fetch bandwidth settings: \(error)")
             }
@@ -137,7 +137,7 @@ final class ProxyTests: XCTestCase {
         client.resetBandwidth { result in
             switch result {
             case .success(let bandwidth):
-                XCTAssertEqual(bandwidth.limit, BandwidthLimit.NONE.speedBytesPerSec, "Bandwidth limit should be 1000.")
+                XCTAssertEqual(bandwidth.limit, BandwidthLimit.none.speedBytesPerSec, "Bandwidth limit should be 1000.")
             case .failure(let error):
                 XCTFail("Failed to fetch bandwidth settings: \(error)")
             }
@@ -147,17 +147,17 @@ final class ProxyTests: XCTestCase {
         wait(for: [resetBandwidthExpectation], timeout: defaultTimeout)
     }
 
-    func disableTestSetAndGetGlobalLatency() {
+    func testSetAndGetGlobalLatency() {
         let setLatencyExpectation = expectation(description: "Set latency settings")
         let getLatencyExpectation = expectation(description: "Get latency settings")
         let resetLatencyExpectation = expectation(description: "Reset latency settings")
 
-        let latencyInfo = LatencyInfo(enabled: true, latency: LatencyLevel.HIGH.latencyMs)
+        let latencyInfo = LatencyInfo(enabled: true, latency: LatencyLevel.high.latencyMs)
 
         client.addGlobalLatency(latencyInfo: latencyInfo) { result in
             switch result {
             case .success(let updatedLatency):
-                XCTAssertEqual(updatedLatency.latency, LatencyLevel.HIGH.latencyMs, "Latency should be HIGH.")
+                XCTAssertEqual(updatedLatency.latency, LatencyLevel.high.latencyMs, "Latency should be HIGH.")
             case .failure(let error):
                 XCTFail("Failed to set latency settings: \(error)")
             }
@@ -169,7 +169,7 @@ final class ProxyTests: XCTestCase {
         client.fetchGlobalLatency { result in
             switch result {
             case .success(let latency):
-                XCTAssertEqual(latency.latency, LatencyLevel.HIGH.latencyMs, "Latency should be HIGH.")
+                XCTAssertEqual(latency.latency, LatencyLevel.high.latencyMs, "Latency should be HIGH.")
             case .failure(let error):
                 XCTFail("Failed to fetch latency settings: \(error)")
             }
@@ -181,7 +181,7 @@ final class ProxyTests: XCTestCase {
         client.resetLatency { result in
             switch result {
             case .success(let latency):
-                XCTAssertEqual(latency.latency, LatencyLevel.NONE.latencyMs, "Latency should be 0.")
+                XCTAssertEqual(latency.latency, LatencyLevel.none.latencyMs, "Latency should be 0.")
             case .failure(let error):
                 XCTFail("Failed to reset latency settings: \(error)")
             }
@@ -191,7 +191,7 @@ final class ProxyTests: XCTestCase {
         wait(for: [resetLatencyExpectation], timeout: defaultTimeout)
     }
 
-    func disableTestResetAllMocksAndSettings() {
+    func testResetAllMocksAndSettings() {
         let expectation = self.expectation(description: "Disable all mocks")
 
         client.resetAllMocksAndSettings { result in
@@ -207,7 +207,7 @@ final class ProxyTests: XCTestCase {
         wait(for: [expectation], timeout: defaultTimeout)
     }
 
-    func disableTestBulkRouteActionsWithFileInput() {
+    func testBulkRouteActionsWithFileInput() {
         let bulkRouteExpectation = expectation(description: "Set bulk routes from file")
 
         let bundle = Bundle(for: Self.self)
@@ -239,7 +239,7 @@ final class ProxyTests: XCTestCase {
         wait(for: [bulkRouteExpectation], timeout: defaultTimeout)
     }
 
-    func disableTestBulkRouteActionsFromScenarioFile() {
+    func testBulkRouteActionsFromScenarioFile() {
         let bulkRouteExpectation = expectation(description: "Set bulk routes from scenario file")
 
         // Path to the folder containing the scenario file
@@ -277,7 +277,7 @@ final class ProxyTests: XCTestCase {
         wait(for: [bulkRouteExpectation], timeout: 5.0)
     }
 
-    func disableTestRegisterAPicture() {
+    func testRegisterAPicture() {
         let expectation = expectation(description: "Upload picture from file")
         let bundle = Bundle(for: Self.self)
         let data = bundle.getDataFor(fileName: "placeholder.png", subdirectory: "Mocks")!
