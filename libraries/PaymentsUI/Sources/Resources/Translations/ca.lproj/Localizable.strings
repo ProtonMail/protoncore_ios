@@ -18,7 +18,7 @@
 
 "Your plan will automatically renew on %@" = "El vostre pla es renovarà automàticament el %@";
 
-"Current plan will expire on %@" = "El vostre pla actual finalitzarà el %@";
+"Current plan will expire on %@" = "El pla actual caduca el %@";
 
 "Contact an administrator to make changes to your Proton subscription." = "Contacteu amb un administrador per fer canvis a la vostra subscripció de Proton.";
 
@@ -106,7 +106,7 @@
 
 "Connection issues" = "Problemes de connexió";
 
-"Check your internet connection" = "Comproveu la vostra connexió a internet";
+"Check your internet connection" = "Comproveu la connexió a internet";
 
 "Strict no-logs policy" = "Política estricta de no conservar registres";
 
