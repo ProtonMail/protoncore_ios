@@ -22,6 +22,7 @@
 #if os(iOS)
 
 import SwiftUI
+import ProtonCoreLogin
 import ProtonCoreUIFoundations
 
 public struct SignInRequestView: View {
@@ -85,7 +86,7 @@ public struct SignInRequestView: View {
         switch viewModel.mode {
         case .requestForAdminApproval(let code):
             displayConfirmationCode(code: code)
-        case .requestApproveFromAnotherDevice(let code):
+        case .requestApproveFromAnotherDevice(let code, _):
             displayConfirmationCode(code: code)
             devicesContainer
                 .padding(.top, Constants.itemSpacing)
@@ -163,16 +164,16 @@ public struct SignInRequestView: View {
                 .font(.subheadline)
                 .foregroundColor(ColorProvider.TextWeak)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            ForEach(viewModel.devices, id: \.self.name) { device in
+            ForEach(viewModel.devices, id: \.self.ID) { device in
                 deviceItem(device: device)
             }
         }
     }
 
     @ViewBuilder
-    func deviceItem(device: DeviceViewModel) -> some View {
+    func deviceItem(device: AuthDevice) -> some View {
         HStack(alignment: .top, spacing: Constants.itemSpacing) {
-            IconProvider.tv
+            device.icon
                 .resizable()
                 .frame(width: Constants.deviceIconSize, height: Constants.deviceIconSize)
             VStack(alignment: .leading) {
@@ -192,7 +193,8 @@ public struct SignInRequestView: View {
 #if DEBUG
 #Preview("RequestApproveFromAnotherDevice") {
     NavigationView {
-        let mode = SignInRequestView.ViewMode.requestApproveFromAnotherDevice(code: "64S3")
+        let devices: [AuthDevice] = [.mock, .mock]
+        let mode = SignInRequestView.ViewMode.requestApproveFromAnotherDevice(code: "64S3", devices: devices)
         SignInRequestView(viewModel: .init(dependencies: .init(mode: mode)))
     }
 }

@@ -76,3 +76,19 @@ public struct AuthDevice: Codable, Equatable {
         self.lastActivityTime = lastActivityTime
     }
 }
+
+#if DEBUG
+public extension AuthDevice {
+    static var mock: AuthDevice {
+        return .init(
+            ID: "123",
+            deviceToken: "",
+            state: .active,
+            name: "Your device",
+            localizedClientName: "Proton Mail",
+            platform: .iOS,
+            lastActivityTime: "2024-12-12T14:40:37.537"
+        )
+    }
+}
+#endif

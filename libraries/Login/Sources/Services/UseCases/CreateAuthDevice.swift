@@ -21,6 +21,8 @@
 
 #if os(iOS)
 import UIKit
+import ProtonCoreDataModel
+import ProtonCoreCrypto
 import ProtonCoreServices
 
 /// Creates a new auth device and stores the generated DeviceSecret on the Keychain
@@ -41,13 +43,24 @@ struct CreateAuthDevice {
         self.deviceSecretRepository = deviceSecretRepository
     }
 
-    func invoke() async throws {
+    func invoke(addresses: [Address]? = nil) async throws {
         // Generate new deviceSecret
         let deviceSecret = try generateDeviceSecret.invoke()
 
+        var activationToken: String?
+        if let addresses,
+            let primaryPrivateKeyStr = addresses.primary()?.keys.primary()?.privateKey {
+            let primaryPrivateKey = ArmoredKey(value: primaryPrivateKeyStr)
+
+            activationToken = try Encryptor.encrypt(
+                publicKey: ArmoredKey(value: primaryPrivateKey.armoredPublicKey),
+                cleartext: deviceSecret
+            ).value
+        }
+
         // Call POST /auth/v4/devices with ActivationToken and obtain a DeviceToken
         let deviceName = await UIDevice.current.name
-        let createAuthDeviceRequest = CreateAuthDeviceRequest(name: deviceName)
+        let createAuthDeviceRequest = CreateAuthDeviceRequest(name: deviceName, activationToken: activationToken)
         let (_, result): (_, CreateAuthDeviceResponse) = try await apiService.perform(request: createAuthDeviceRequest)
 
         guard let authDevice = result.authDevice else { throw SSOLoginError.authDeviceNotFound }

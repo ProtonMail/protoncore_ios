@@ -55,6 +55,7 @@ extension GlobalSSOMainView {
             case loading(SSOLoginLoaderView.Dependencies)
             case error(SSOLoginErrorView.Dependencies)
             case newBackupPassword(JoinOrganizationView.Dependencies)
+            case requestApproveFromAnotherDevice(SignInRequestView.Dependencies)
         }
 
         init(dependencies: Dependencies) {
@@ -74,12 +75,14 @@ extension GlobalSSOMainView {
             do {
                 let nextStep = try await postLoginSSOAccountSetup.invoke()
                 switch nextStep {
-                case .newBackupPassword(let unprivatizeInfo):
+                case .setupBackupPassword(let unprivatizeInfo):
                     await loadNewBackupPassword(unprivatizeInfo: unprivatizeInfo)
                 case .loginSuccess(let newUserData):
                     await loginDelegate?.globalSSOLoginDidFinish(data: newUserData)
+                case .requestApproveFromAnotherDevice(let code, let devices):
+                    loadRequestApproveFromAnotherDevice(code: code, devices: devices)
                 case .unimplemented:
-                    break
+                    loadSSOErrorLogin(error: UnimplementedError.unimplemented, action: startPostLoginSetup)
                 }
             } catch {
                 PMLog.error(error)
@@ -111,6 +114,12 @@ extension GlobalSSOMainView {
             }
         }
 
+        private func loadRequestApproveFromAnotherDevice(code: String, devices: [AuthDevice]) {
+            screenState = .requestApproveFromAnotherDevice(.init(
+                mode: .requestApproveFromAnotherDevice(code: code, devices: devices)
+            ))
+        }
+
         private func loadSSOErrorLogin(error: Error, action: @escaping () async -> Void) {
             screenState = .error(.init(
                 user: userData.user,
@@ -124,8 +133,13 @@ extension GlobalSSOMainView {
                 }
             ))
         }
-
     }
+}
+
+enum UnimplementedError: LocalizedError {
+    case unimplemented
+
+    var errorDescription: String? { "Flow not implemented" }
 }
 
 #endif
