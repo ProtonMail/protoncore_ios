@@ -166,7 +166,7 @@ import ProtonCoreLogin
                 organizationLogoID: nil,
                 organizationPublicKey: .init(value: "")
             ),
-            loginDelegate: nil
+            ssoNavigationDelegate: nil
         )))
     }
 }

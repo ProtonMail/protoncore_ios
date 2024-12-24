@@ -35,12 +35,12 @@ public struct EnterBackupPasswordView: View {
     public var body: some View {
         ScrollView {
             VStack(spacing: Constants.itemSpacing) {
-                Text(viewModel.screenTitle)
+                Text(LUITranslation.enter_backup_password_title.l10n)
                     .font(.title2)
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                Text(viewModel.bodyDescription)
+                Text(LUITranslation.enter_backup_password_description.l10n)
                     .font(.subheadline)
                     .foregroundColor(ColorProvider.TextWeak)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -54,7 +54,7 @@ public struct EnterBackupPasswordView: View {
                     PCButton(
                         style: .constant(.init(mode: .solid)),
                         content: .constant(.init(
-                            title: viewModel.primaryButtonTitle,
+                            title: LUITranslation.continue_core_button.l10n,
                             action: viewModel.primaryActionButtonTapped
                         ))
                     )
@@ -62,7 +62,7 @@ public struct EnterBackupPasswordView: View {
                     PCButton(
                         style: .constant(.init(mode: .text)),
                         content: .constant(.init(
-                            title: viewModel.secondaryButtonTitle,
+                            title: LUITranslation.ask_administrator_for_help.l10n,
                             action: viewModel.secondaryActionButtonTapped
                         ))
                     )
@@ -74,21 +74,36 @@ public struct EnterBackupPasswordView: View {
             .padding(Constants.itemSpacing)
             .foregroundColor(ColorProvider.TextNorm)
             .frame(maxWidth: .infinity)
-            .bannerDisplayable(bannerState: $viewModel.bannerState,
-                               configuration: .default())
+        }
+        .onAppear {
+            viewModel.backupPasswordContent.focus()
         }
         .background(
             ColorProvider.BackgroundNorm
                 .edgesIgnoringSafeArea(.all)
         )
+        .bannerDisplayable(bannerState: $viewModel.bannerState,
+                           configuration: .init(position: .bottom))
     }
 }
 
 #if DEBUG
+import ProtonCoreLogin
 
 #Preview {
     NavigationView {
-        EnterBackupPasswordView(viewModel: .init(dependencies: .init()))
+        EnterBackupPasswordView(viewModel: .init(dependencies: .init(
+            userData: .init(
+                credential: .none,
+                user: .mock,
+                salts: [],
+                passphrases: [:],
+                addresses: [],
+                scopes: []
+            ),
+            apiService: nil,
+            ssoNavigationDelegate: nil
+        )))
     }
 }
 #endif

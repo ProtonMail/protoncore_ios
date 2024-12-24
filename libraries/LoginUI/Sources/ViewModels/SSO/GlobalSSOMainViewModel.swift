@@ -31,8 +31,8 @@ extension GlobalSSOMainView {
     struct Dependencies {
         let apiService: APIService
         let loginService: Login
-        let userData: UserData
-        let loginDelegate: GlobalSSOLoginDelegate?
+        let userData: LoginData
+        let ssoNavigationDelegate: GlobalSSONavigationDelegate?
     }
 }
 
@@ -42,27 +42,28 @@ extension GlobalSSOMainView {
     final class ViewModel: ObservableObject {
         let apiService: APIService
         let loginService: Login
-        let userData: UserData
+        private let userData: LoginData
 
         @Published var screenState: ScreenState
 
         let organizationRepository: OrganizationRepository
         let postLoginSSOAccountSetup: PostLoginSSOAccountSetup
 
-        weak var loginDelegate: GlobalSSOLoginDelegate?
+        weak var ssoNavigationDelegate: GlobalSSONavigationDelegate?
 
         enum ScreenState {
             case loading(SSOLoginLoaderView.Dependencies)
             case error(SSOLoginErrorView.Dependencies)
             case newBackupPassword(JoinOrganizationView.Dependencies)
             case requestApproveFromAnotherDevice(SignInRequestView.Dependencies)
+            case enterBackupPassword(EnterBackupPasswordView.Dependencies)
         }
 
         init(dependencies: Dependencies) {
             self.apiService = dependencies.apiService
             self.loginService = dependencies.loginService
             self.userData = dependencies.userData
-            self.loginDelegate = dependencies.loginDelegate
+            self.ssoNavigationDelegate = dependencies.ssoNavigationDelegate
             screenState = .loading(.init(user: userData.user))
             self.postLoginSSOAccountSetup = .init(
                 apiService: apiService,
@@ -78,9 +79,11 @@ extension GlobalSSOMainView {
                 case .setupBackupPassword(let unprivatizeInfo):
                     await loadNewBackupPassword(unprivatizeInfo: unprivatizeInfo)
                 case .loginSuccess(let newUserData):
-                    await loginDelegate?.globalSSOLoginDidFinish(data: newUserData)
+                    await ssoNavigationDelegate?.globalSSOLoginDidFinish(data: newUserData)
                 case .requestApproveFromAnotherDevice(let code, let devices):
                     loadRequestApproveFromAnotherDevice(code: code, devices: devices)
+                case .enterBackupPassword:
+                    loadEnterBackupPassword()
                 case .unimplemented:
                     loadSSOErrorLogin(error: UnimplementedError.unimplemented, action: startPostLoginSetup)
                 }
@@ -104,7 +107,7 @@ extension GlobalSSOMainView {
                         organizationLogoID: organizationSettings.logoID,
                         organizationPublicKey: unprivatizeInfo.organizationPublicKey
                     ),
-                    loginDelegate: loginDelegate
+                    ssoNavigationDelegate: ssoNavigationDelegate
                 ))
             } catch {
                 PMLog.error(error)
@@ -116,7 +119,17 @@ extension GlobalSSOMainView {
 
         private func loadRequestApproveFromAnotherDevice(code: String, devices: [AuthDevice]) {
             screenState = .requestApproveFromAnotherDevice(.init(
-                mode: .requestApproveFromAnotherDevice(code: code, devices: devices)
+                mode: .requestApproveFromAnotherDevice(code: code, devices: devices),
+                userData: userData,
+                ssoNavigationDelegate: ssoNavigationDelegate
+            ))
+        }
+
+        private func loadEnterBackupPassword() {
+            screenState = .enterBackupPassword(.init(
+                userData: userData,
+                apiService: apiService,
+                ssoNavigationDelegate: ssoNavigationDelegate
             ))
         }
 
@@ -139,7 +152,7 @@ extension GlobalSSOMainView {
 enum UnimplementedError: LocalizedError {
     case unimplemented
 
-    var errorDescription: String? { "Flow not implemented" }
+    var errorDescription: String { "Flow not implemented" }
 }
 
 #endif

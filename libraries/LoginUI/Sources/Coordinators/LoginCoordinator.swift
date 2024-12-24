@@ -301,12 +301,13 @@ extension LoginCoordinator {
                 apiService: container.api,
                 loginService: container.login,
                 userData: data,
-                loginDelegate: self
+                ssoNavigationDelegate: self
             ),
             navigationDelegate: self
         )
         let ssoNavigationController = UINavigationController(rootViewController: viewController)
         ssoNavigationController.modalPresentationStyle = .fullScreen
+        ssoNavigationController.modalTransitionStyle = .crossDissolve
 
         navigationController?.present(ssoNavigationController, animated: true)
     }
@@ -388,12 +389,23 @@ extension LoginCoordinator: LoginViewControllerDelegate {
 
 // MARK: - Global SSO Login delegate
 
-extension LoginCoordinator: GlobalSSOLoginDelegate {
+extension LoginCoordinator: GlobalSSONavigationDelegate {
     func globalSSOLoginDidFinish(data: LoginData) async {
         await MainActor.run {
             navigationController?.presentedViewController?.dismiss(animated: true)
         }
         await finish(data: data)
+    }
+
+    func showEnterBackupPassword(data: LoginData) {
+        let viewController = EnterBackupPasswordViewController(dependencies: .init(
+            userData: data,
+            apiService: container.api,
+            ssoNavigationDelegate: self
+        ))
+        if let ssoNavigationController = navigationController?.presentedViewController as? UINavigationController {
+            ssoNavigationController.pushViewController(viewController, animated: true)
+        }
     }
 }
 

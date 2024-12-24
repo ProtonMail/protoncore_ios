@@ -28,8 +28,8 @@ public enum SSOLoginScreen {
     case setupBackupPassword(UnprivatizeUserSuccess)
     case loginSuccess(UserData)
     case requestApproveFromAnotherDevice(code: String, devices: [AuthDevice])
+    case enterBackupPassword
 //    case waitingAdminApproval
-//    case inputBackupPassword
 //    case requestAdminHelp
     case unimplemented
 }
@@ -90,7 +90,7 @@ public final class PostLoginSSOAccountSetup {
         case .noSecret, .invalidSecret:
             try await createAuthDevice.invoke(addresses: userData.addresses)
             let authDevices = try await getAuthDevices.invoke()
-            guard !authDevices.isEmpty else { return .unimplemented }
+            guard !authDevices.isEmpty else { return .enterBackupPassword }
             let code = try generateConfirmationCode.invoke(userId: userData.user.ID)
             return .requestApproveFromAnotherDevice(code: code, devices: authDevices)
         }

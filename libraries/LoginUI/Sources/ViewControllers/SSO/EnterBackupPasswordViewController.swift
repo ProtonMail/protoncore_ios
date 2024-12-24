@@ -20,9 +20,10 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 #if os(iOS)
-
-import ProtonCoreUIFoundations
 import SwiftUI
+import ProtonCoreLogin
+import ProtonCoreServices
+import ProtonCoreUIFoundations
 
 public final class EnterBackupPasswordViewController: UIHostingController<EnterBackupPasswordView> {
 
@@ -32,8 +33,8 @@ public final class EnterBackupPasswordViewController: UIHostingController<EnterB
         fatalError("init(coder:) has not been implemented")
     }
 
-    init() {
-        self.viewModel = EnterBackupPasswordView.ViewModel(dependencies: .init())
+    init(dependencies: EnterBackupPasswordView.Dependencies) {
+        self.viewModel = EnterBackupPasswordView.ViewModel(dependencies: dependencies)
         let view = EnterBackupPasswordView(viewModel: self.viewModel)
         super.init(rootView: view)
     }

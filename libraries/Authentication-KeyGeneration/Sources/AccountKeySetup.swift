@@ -29,11 +29,7 @@ import ProtonCoreUtilities
 /// class for key migeration phase 2
 final class AccountKeySetup {
 
-    let aeadCrypto = AeadCrypto()
-
     enum Constants {
-        /// Used for Global SSO auth device secret context
-        static let deviceSecretContext = "account.device-secret"
         static let ssoKeyGenerationContext = "account.key-token.user-unprivatization"
     }
 
@@ -224,12 +220,10 @@ final class AccountKeySetup {
 
         /// Global SSO
         var encryptedSecret: String?
-        if let deviceSecret, let deviceSecretKey = Data(base64Encoded: deviceSecret) {
-            let passphrase = accountKey.userKey.password.value
-            encryptedSecret = try aeadCrypto.encrypt(
-                value: passphrase,
-                key: deviceSecretKey,
-                aad: Constants.deviceSecretContext.data(using: .utf8)
+        if let deviceSecret {
+            encryptedSecret = try GetEncryptedSecret().invoke(
+                passphrase: accountKey.userKey.password.value,
+                deviceSecret: deviceSecret
             )
         }
 
