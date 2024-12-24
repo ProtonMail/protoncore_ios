@@ -1,5 +1,5 @@
 //
-//  StoreObserver.swift
+//  TransactionsObserver.swift
 //  ProtonCore-PaymentsV2 - Created on 15/10/2024.
 //
 //  Copyright (c) 2024 Proton Technologies AG

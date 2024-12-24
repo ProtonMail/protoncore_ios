@@ -27,7 +27,8 @@ struct AvailablePlansBodyView: View {
     @ObservedObject var viewModel: AvailablePlansViewModel
 
     var body: some View {
-        ScrollView(showsIndicators: false) {
+
+        VStack {
             // MARK: Header
             if viewModel.hideCurrentPlan {
                 SubscriptionsViewHeader()
@@ -65,19 +66,22 @@ struct AvailablePlansBodyView: View {
             .opacity(viewModel.hasAvailablePlans ? 1 : 0)
 
             // MARK: Available plans
+
             ScrollView(showsIndicators: false) {
                 if viewModel.hasAvailablePlans {
-                    ForEach(viewModel.filteredPlans, id: \.id) { viewModel in
-                        PlanView(viewModel: viewModel)
-                            .padding(.top, Theme.spacing.standard)
+                    if viewModel.isFilterEmpty {
+                        NoAvailblePlansView(type: .filterEmtpy)
+                    } else {
+                        ForEach(viewModel.filteredPlans, id: \.id) { viewModel in
+                            PlanView(viewModel: viewModel)
+                                .padding(.top, Theme.spacing.standard)
+                        }
                     }
                 } else {
-                    NoAvailblePlansView()
-                        .opacity(viewModel.hideCurrentPlan ? 1 : 0)
+                    NoAvailblePlansView(type: .noPlans)
                 }
             }
             .padding(.horizontal, Theme.spacing.large)
-            .scrollDisabled(!viewModel.hideCurrentPlan)
 
             // MARK: Footer view
             FooterView(image: Theme.icon.infoCircle,
@@ -86,6 +90,5 @@ struct AvailablePlansBodyView: View {
             .padding(.top, Theme.spacing.extraLarge)
             .padding(.horizontal, Theme.spacing.large)
         }
-        .scrollDisabled(viewModel.hideCurrentPlan)
     }
 }

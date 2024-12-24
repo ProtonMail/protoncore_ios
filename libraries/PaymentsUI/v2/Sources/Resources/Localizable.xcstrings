@@ -168,6 +168,30 @@
         }
       }
     },
+    "No_filtered_plan_message" : {
+      "comment" : "Filtered plans empty message",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please select a differen billying cycle"
+          }
+        }
+      }
+    },
+    "No_filtered_plan_title" : {
+      "comment" : "Filtered plans empty title",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No plans found"
+          }
+        }
+      }
+    },
     "Plans_footer_disclaimer" : {
       "comment" : "Plans footer disclaimer",
       "extractionState" : "manual",

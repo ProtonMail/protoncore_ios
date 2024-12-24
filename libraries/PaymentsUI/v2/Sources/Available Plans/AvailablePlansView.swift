@@ -71,7 +71,7 @@ public struct AvailablePlansView: View {
                         })
                 case .noData:
                     if viewModel.hideCurrentPlan {
-                        NoAvailblePlansView()
+                        NoAvailblePlansView(type: .noPlans)
                     }
                 }
             }
