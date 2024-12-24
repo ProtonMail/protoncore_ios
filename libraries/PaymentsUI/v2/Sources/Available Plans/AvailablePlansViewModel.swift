@@ -32,7 +32,7 @@ public class AvailablePlansViewModel: ObservableObject {
         static var transactionCompletedDelay: Double = 2
     }
 
-    @Published var billingCycle: BillingCycle = .monthly
+    @Published var billingCycle: BillingCycle = .all
     @Published var filteredPlans: [PlanViewModel] = []
     @Published public var viewState: State = .idle
 
@@ -41,7 +41,11 @@ public class AvailablePlansViewModel: ObservableObject {
     @Published var showAlert: BannerState = .none
 
     public var hasAvailablePlans: Bool {
-        !filteredPlans.isEmpty
+        !availablePlansViewModels.isEmpty
+    }
+
+    public var isFilterEmpty: Bool {
+        filteredPlans.isEmpty
     }
 
     private var cancellables = Set<AnyCancellable>()
@@ -57,7 +61,6 @@ public class AvailablePlansViewModel: ObservableObject {
         case noData
     }
 
-    private var availablePlans: [AvailablePlan] = []
     private var availablePlansViewModels: [PlanViewModel] = []
     public var currentPlan: PlanViewModel?
     public let hideCurrentPlan: Bool

@@ -22,18 +22,44 @@
 import SwiftUI
 import ProtonCoreUI
 
-struct NoAvailblePlansView: View {
-    var body: some View {
+public enum NoAvailblePlansViewType {
+    case noPlans
+    case filterEmtpy
 
+
+    public var title: String {
+        switch self {
+        case .noPlans:
+            return String(localized: "No_available_plan_title", bundle: .module)
+        case .filterEmtpy:
+            return String(localized: "No_filtered_plan_title", bundle: .module)
+        }
+    }
+
+    public var message: String {
+        switch self {
+        case .noPlans:
+            return String(localized: "No_available_plan_message", bundle: .module)
+        case .filterEmtpy:
+            return String(localized: "No_filtered_plan_message", bundle: .module)
+        }
+    }
+}
+
+struct NoAvailblePlansView: View {
+
+    let type: NoAvailblePlansViewType
+
+    var body: some View {
         ZStack {
             Color(Theme.color.backgroundNorm)
                 .ignoresSafeArea()
             VStack {
                 Image("empty_result_image", bundle: Bundle.module)
-                Text(String(localized: "No_available_plan_title", bundle: .module))
+                Text(type.title)
                     .font(.headline)
                     .padding(.top, Theme.spacing.extraLarge)
-                Text(String(localized: "No_available_plan_message", bundle: .module))
+                Text(type.message)
                     .font(.subheadline)
                     .multilineTextAlignment(.center)
                     .padding(.top, Theme.spacing.large)
@@ -44,5 +70,5 @@ struct NoAvailblePlansView: View {
 }
 
 #Preview {
-    NoAvailblePlansView()
+    NoAvailblePlansView(type: .noPlans)
 }
