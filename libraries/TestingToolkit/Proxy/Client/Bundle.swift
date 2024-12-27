@@ -39,9 +39,9 @@ public extension Bundle {
 
         guard let fileURL = self.url(forResource: fileNameOnly, withExtension: fileExtension, subdirectory: subdirectory) else {
             if let subdirectory = subdirectory {
-                print("Could not find file \(fileNameOnly).\(fileExtension) in folder: \(subdirectory)")
+                print("Could not find file \(fileName) in folder: \(subdirectory)")
             } else {
-                print("Could not find file \(fileNameOnly).\(fileExtension) in the bundle.")
+                print("Could not find file \(fileName) in the bundle.")
             }
             return nil
         }

@@ -170,7 +170,7 @@ public class ProxyClient {
     }
 
     public func resetLatency(completion: @escaping (Result<LatencyInfo, APIError>) -> Void) {
-        let latencyInfo = LatencyInfo(enabled: false, latency: LatencyLevel.NONE.latencyMs)
+        let latencyInfo = LatencyInfo(enabled: false, latency: LatencyLevel.none.latencyMs)
         guard let body = encodeBody(latencyInfo) else {
             completion(.failure(.decodingError(NSError(domain: "EncodingError", code: 0, userInfo: nil))))
             return
@@ -179,7 +179,7 @@ public class ProxyClient {
     }
 
     public func resetBandwidth(completion: @escaping (Result<BandwidthInfo, APIError>) -> Void) {
-        let bandwidthInfo = BandwidthInfo(enabled: false, limit: BandwidthLimit.NONE.speedBytesPerSec)
+        let bandwidthInfo = BandwidthInfo(enabled: false, limit: BandwidthLimit.none.speedBytesPerSec)
         guard let body = encodeBody(bandwidthInfo) else {
             completion(.failure(.decodingError(NSError(domain: "EncodingError", code: 0, userInfo: nil))))
             return
