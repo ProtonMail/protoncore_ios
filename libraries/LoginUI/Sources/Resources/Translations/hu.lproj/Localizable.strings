@@ -260,7 +260,7 @@
 
 "Join %@" = "Csatlakozás: %@";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "%@ felvett téged a Proton szervezetükbe.";
 
 "Continue" = "Tovább";
 
@@ -306,13 +306,13 @@
 
 "Enter your backup password" = "Írja be a biztonsági jelszót";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Hogy megbizonyosodjon arról, hogy valóban Ön próbál bejelentkezni, kérjük, adja meg a biztonsági jelszavát.";
 
 "Access granted" = "Hozzáférés enedélyezve";
 
 "Access denied" = "Hozzáférés megtagadva";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Az Ön biztonsága érdekében az összes többi aktív eszközéről kijelentkezett. Mielőtt hozzáférne a fiókjához, be kell adnia egy új biztonsági jelszót.";
 
 "Contact your administrator if the problem persists." = "Ha a probléma továbbra is fennáll, forduljon az adminisztrátorhoz.";
 
@@ -320,20 +320,20 @@
 
 "Ask your administrator for access?" = "Hozzáférés kérése az adminisztrátortól?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Ezzel kijelentkezik a többi eszközéről, és új biztonsági jelszót kell létrehoznia.";
 
-"Grant access to user?" = "Grant access to user?";
+"Grant access to user?" = "Hozzáférést biztosít a felhasználónak?";
 
-"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ az Ön segítségét kéri, hogy bejelentkezhessen a Proton-fiókjába egyszeri bejelentkezéssel.\n\nÍrd be a felhasználónak küldött megerősítő kódot.";
 
 "Grant access" = "Hozzáférés megadása";
 
 "Deny access" = "Hozzáférés megtagadása";
 
-"Signing you in" = "Signing you in";
+"Signing you in" = "Bejelentkezés";
 
-"to your organization" = "to your organization";
+"to your organization" = "a szervezetébe";
 
-"Sign in with single sign-on" = "Sign in with single sign-on";
+"Sign in with single sign-on" = "Bejelentkezés egyszeri bejelentkezéssel";
 
-"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Your organization uses SSO. Continue to sign in with your third-party SSO provider.";
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Az Ön szervezete SSO-t használ. A bejelentkezés folytatása a harmadik féltől származó SSO-szolgáltatóval.";
