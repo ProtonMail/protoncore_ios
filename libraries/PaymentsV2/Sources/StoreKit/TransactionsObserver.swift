@@ -43,23 +43,34 @@ public enum TransactionsObserverError: Error {
     case requiredSubComponentInitFailed
 }
 
-public typealias TransactionsObserverConfiguration = (sessionID: String, authToken: String, appVersion: String, env: String, atlasSecret: String?)
+public struct TransactionsObserverConfiguration {
+    let sessionID: String
+    let authToken: String
+    let appVersion: String
+    let env: String
+    let atlasSecret: String?
+
+    public init(sessionID: String, authToken: String, appVersion: String, env: String, atlasSecret: String? = nil) {
+        self.sessionID = sessionID
+        self.authToken = authToken
+        self.appVersion = appVersion
+        self.env = env
+        self.atlasSecret = atlasSecret
+    }
+}
 
 public final class TransactionsObserver: TransactionsObserverProviding {
 
+    public static let shared = TransactionsObserver()
     public var configuration: TransactionsObserverConfiguration?
+    @Published public private(set) var isON: Bool = false
+    @Published public private(set) var transactionStatus: TransactionType = .unknown
 
     private var updates: Task<Void, Never>?
     private var remoteManager: RemoteManagerProviding?
     private var paymentsAPI: PaymentsAPIs?
     private var planComposer: PlansComposerProviding?
     private var transactionHandler: TransactionHandler?
-
-    public static let shared = TransactionsObserver()
-
-    @Published public private(set) var isON: Bool = false
-    @Published public private(set) var transactionStatus: TransactionType = .unknown
-
 
     private init() {}
 
@@ -138,16 +149,16 @@ public final class TransactionsObserver: TransactionsObserverProviding {
         }
         updates = newTransactionListenerTask()
         isON = true
-        debugPrint("TransactionsObserver started: \(isON)")
+        debugPrint("TransactionsObserver started: \(isON) ✅")
     }
 
     public func stop() {
         if isON {
             updates?.cancel()
             isON = false
-            debugPrint("TransactionsObserver stopped")
+            debugPrint("TransactionsObserver stopped 🛑")
         } else {
-            debugPrint("TransactionsObserver not started, nothing to stop")
+            debugPrint("TransactionsObserver not started, nothing to stop 👍🏻")
         }
     }
 }
