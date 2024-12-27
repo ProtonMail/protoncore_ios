@@ -32,42 +32,22 @@ public enum TransactionType {
     case unknown
 }
 
-public protocol StoreObserverProviding {
-    func start()
+public protocol TransactionsObserverProviding {
+    func start() async throws
     func stop()
 }
 
-public enum StoreObserverError: Error {
+public enum TransactionsObserverError: Error {
     case missingOrInvalidConfiguration
+    case impossibleToResolveRunningEnvironment
+    case requiredSubComponentInitFailed
 }
 
-public typealias TransactionsObserverConfiguration = (sessionID: String, authToken: String, appVersion: String, env: EnvURLType, atlasSecret: String)
+public typealias TransactionsObserverConfiguration = (sessionID: String, authToken: String, appVersion: String, env: String, atlasSecret: String?)
 
-public final class TransactionsObserver {
+public final class TransactionsObserver: TransactionsObserverProviding {
 
-    public var configuration: TransactionsObserverConfiguration? {
-        didSet {
-            guard let sessionId = configuration?.sessionID,
-                    let authToken = configuration?.authToken,
-                    let appVersion = configuration?.appVersion,
-                    let env = configuration?.env,
-                    let secret = configuration?.atlasSecret else {
-                return
-            }
-            self.remoteManager = RemoteManager(sessionID: sessionId,
-                                               authToken: authToken,
-                                               appVersion: appVersion,
-                                               atlasSecret: secret)
-            self.paymentsAPI = PaymentsAPIs(envURL: env)
-
-            guard let remoteManager = self.remoteManager, let paymentsAPI = self.paymentsAPI else {
-                return
-            }
-
-            self.transactionHandler = TransactionHandler(remoteManager: remoteManager, paymentsAPIs: paymentsAPI)
-            self.planComposer = PlansComposer(remoteManager: remoteManager, paymentsAPIs: paymentsAPI)
-        }
-    }
+    public var configuration: TransactionsObserverConfiguration?
 
     private var updates: Task<Void, Never>?
     private var remoteManager: RemoteManagerProviding?
@@ -118,11 +98,39 @@ public final class TransactionsObserver {
         }
     }
 
+    // MARK: Private functions
+    private func initRequiredComponents() throws {
+
+        guard let config = configuration else {
+            throw TransactionsObserverError.missingOrInvalidConfiguration
+        }
+
+        guard let env = config.env.toEnvURLType else {
+            throw TransactionsObserverError.impossibleToResolveRunningEnvironment
+        }
+
+        self.remoteManager = RemoteManager(sessionID: config.sessionID,
+                                           authToken: config.authToken,
+                                           appVersion: config.appVersion,
+                                           atlasSecret: config.atlasSecret)
+        self.paymentsAPI = PaymentsAPIs(envURL: env)
+
+        guard let remoteManager = self.remoteManager, let paymentsAPI = self.paymentsAPI else {
+            throw TransactionsObserverError.requiredSubComponentInitFailed
+        }
+
+        self.transactionHandler = TransactionHandler(remoteManager: remoteManager, paymentsAPIs: paymentsAPI)
+        self.planComposer = PlansComposer(remoteManager: remoteManager, paymentsAPIs: paymentsAPI)
+    }
+
     // MARK: Public methods
     public func start() async throws {
-        guard let _ = remoteManager, let _ = paymentsAPI, let planComposer = planComposer else {
-            assertionFailure("StoreObserver: StoreObserverConfiguration required to start the observer")
-            throw StoreObserverError.missingOrInvalidConfiguration
+
+        try initRequiredComponents()
+
+        guard let planComposer = planComposer, let _ = transactionHandler else {
+            assertionFailure("TransactionsObserver: TransactionsObserverConfiguration required to start the observer")
+            throw TransactionsObserverError.requiredSubComponentInitFailed
         }
 
         if !planComposer.hasData {
@@ -130,16 +138,16 @@ public final class TransactionsObserver {
         }
         updates = newTransactionListenerTask()
         isON = true
-        debugPrint("StoreObserver started: \(isON)")
+        debugPrint("TransactionsObserver started: \(isON)")
     }
 
     public func stop() {
         if isON {
             updates?.cancel()
             isON = false
-            debugPrint("StoreObserver stopped")
+            debugPrint("TransactionsObserver stopped")
         } else {
-            debugPrint("StoreObserver not started, nothing to stop")
+            debugPrint("TransactionsObserver not started, nothing to stop")
         }
     }
 }

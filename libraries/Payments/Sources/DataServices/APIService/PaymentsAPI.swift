@@ -281,7 +281,6 @@ class PaymentsApiV5Implementation: PaymentsApiProtocol {
         }
 
         return V5SubscriptionRequest(api: api, planName: plan.planName, amount: plan.amount, currencyCode: plan.currencyCode, cycle: plan.cycle, paymentAction: paymentAction)
-
     }
 
     func buySubscriptionForZeroRequest(api: ProtonCoreServices.APIService, plan: PlanToBeProcessed) -> SubscriptionRequest {
