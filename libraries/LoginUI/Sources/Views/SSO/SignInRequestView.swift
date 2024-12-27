@@ -195,19 +195,52 @@ public struct SignInRequestView: View {
     NavigationView {
         let devices: [AuthDevice] = [.mock, .mock]
         let mode = SignInRequestView.ViewMode.requestApproveFromAnotherDevice(code: "64S3", devices: devices)
-        SignInRequestView(viewModel: .init(dependencies: .init(mode: mode)))
+        SignInRequestView(viewModel: .init(dependencies: .init(
+            mode: mode,
+            userData: .init(
+                credential: .none,
+                user: .mock,
+                salts: [],
+                passphrases: [:],
+                addresses: [],
+                scopes: []
+            ),
+            ssoNavigationDelegate: nil
+        )))
     }
 }
 #Preview("RequestForAdminApproval") {
     NavigationView {
         let mode = SignInRequestView.ViewMode.requestForAdminApproval(code: "64S3")
-        SignInRequestView(viewModel: .init(dependencies: .init(mode: mode)))
+        SignInRequestView(viewModel: .init(dependencies: .init(
+            mode: mode,
+            userData: .init(
+                credential: .none,
+                user: .mock,
+                salts: [],
+                passphrases: [:],
+                addresses: [],
+                scopes: []
+            ),
+            ssoNavigationDelegate: nil
+        )))
     }
 }
 
 #Preview("ApprovingAccess") {
     NavigationView {
-        SignInRequestView(viewModel: .init(dependencies: .init(mode: .approvingAccess)))
+        SignInRequestView(viewModel: .init(dependencies: .init(
+            mode: .approvingAccess,
+            userData: .init(
+                credential: .none,
+                user: .mock,
+                salts: [],
+                passphrases: [:],
+                addresses: [],
+                scopes: []
+            ),
+            ssoNavigationDelegate: nil
+        )))
     }
 }
 #endif

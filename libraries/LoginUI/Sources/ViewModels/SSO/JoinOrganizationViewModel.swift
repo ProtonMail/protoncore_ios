@@ -37,7 +37,7 @@ extension JoinOrganizationView {
         let loginService: Login?
         let userData: LoginData
         let organizationInfo: OrganizationInfo
-        let loginDelegate: GlobalSSOLoginDelegate?
+        let ssoNavigationDelegate: GlobalSSONavigationDelegate?
     }
 
     struct OrganizationInfo {
@@ -71,13 +71,13 @@ extension JoinOrganizationView {
             isSecureEntry: true
         )
 
-        var authenticator: AuthenticatorKeyGenerationInterface?
-        let loginService: Login?
-        let userData: LoginData
+        private var authenticator: AuthenticatorKeyGenerationInterface?
+        private let loginService: Login?
+        private let userData: LoginData
         let organizationInfo: OrganizationInfo
-        let deviceSecretRepository: DeviceSecretRepositoryProtocol
+        private let deviceSecretRepository: DeviceSecretRepositoryProtocol
 
-        weak var loginDelegate: GlobalSSOLoginDelegate?
+        weak var ssoNavigationDelegate: GlobalSSONavigationDelegate?
 
         init(dependencies: Dependencies) {
             if let apiService = dependencies.apiService {
@@ -86,7 +86,7 @@ extension JoinOrganizationView {
             self.loginService = dependencies.loginService
             self.userData = dependencies.userData
             self.organizationInfo = dependencies.organizationInfo
-            self.loginDelegate = dependencies.loginDelegate
+            self.ssoNavigationDelegate = dependencies.ssoNavigationDelegate
             self.deviceSecretRepository = DeviceSecretRepository()
         }
 
@@ -131,7 +131,7 @@ extension JoinOrganizationView {
                         deviceSecret: deviceSecret.secret
                     )
                     let updatedUserData = try await loginService.refreshUserData(backupPassword: backupPasswordContent.text)
-                    await loginDelegate?.globalSSOLoginDidFinish(data: updatedUserData)
+                    await ssoNavigationDelegate?.globalSSOLoginDidFinish(data: updatedUserData)
                     viewState = .idle
                 } catch {
                     viewState = .idle

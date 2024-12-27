@@ -22,17 +22,31 @@
 #if os(iOS)
 
 import SwiftUI
+import ProtonCoreAuthenticationKeyGeneration
 import ProtonCoreLog
+import ProtonCoreLogin
+import ProtonCoreServices
 import ProtonCoreUIFoundations
 
 extension EnterBackupPasswordView {
-    struct Dependencies {}
+    struct Dependencies {
+        let userData: LoginData
+        let apiService: APIService?
+        let ssoNavigationDelegate: GlobalSSONavigationDelegate?
+    }
 }
 
 extension EnterBackupPasswordView {
 
     @MainActor
     final class ViewModel: ObservableObject {
+        private let apiService: APIService?
+        private let userData: LoginData
+
+        private let buildAndValidatePassphrases = BuildAndValidatePassphrases()
+        private var activateAuthDevice: ActivateAuthDevice?
+
+        weak var ssoNavigationDelegate: GlobalSSONavigationDelegate?
 
         @Published var bannerState: BannerState = .none
 
@@ -42,27 +56,43 @@ extension EnterBackupPasswordView {
             isSecureEntry: true
         )
 
-        @Published var confirmationCodeContent: PCTextFieldContent = .init(title: LUITranslation.confirmation_code.l10n)
-
-        init(dependencies: Dependencies) {}
-
-        var screenTitle: String {
-            return LUITranslation.enter_backup_password_title.l10n
+        init(dependencies: Dependencies) {
+            self.apiService = dependencies.apiService
+            self.userData = dependencies.userData
+            self.ssoNavigationDelegate = dependencies.ssoNavigationDelegate
+            if let apiService = dependencies.apiService {
+                self.activateAuthDevice = ActivateAuthDevice(
+                    apiService: apiService,
+                    deviceSecretRepository: DeviceSecretRepository()
+                )
+            }
         }
 
-        var bodyDescription: String {
-            return LUITranslation.enter_backup_password_description.l10n
+        func primaryActionButtonTapped() {
+            Task {
+                let backupPassword = backupPasswordContent.text
+                do {
+                    guard let passphrases = try buildAndValidatePassphrases.buildAndValidatePassphrases(
+                        mailboxPassword: backupPassword,
+                        salts: userData.salts,
+                        userKeys: userData.user.keys
+                    ) else {
+                        bannerState = .error(content: .init(message: "Password not valid"))
+                        return
+                    }
+                    let newUserData = userData.updated(passphrases: passphrases)
+                    guard let passphrase = newUserData.getMailboxPassword else {
+                        bannerState = .error(content: .init(message: "Passphrase not found"))
+                        return
+                    }
+                    try await activateAuthDevice?.invoke(userId: userData.user.ID, passphrase: passphrase)
+                    await ssoNavigationDelegate?.globalSSOLoginDidFinish(data: newUserData)
+                } catch {
+                    PMLog.error(error)
+                    bannerState = .error(content: .init(message: error.localizedDescription))
+                }
+            }
         }
-
-        var primaryButtonTitle: String {
-            return LUITranslation.continue_core_button.l10n
-        }
-
-        var secondaryButtonTitle: String {
-            return LUITranslation.ask_administrator_for_help.l10n
-        }
-
-        func primaryActionButtonTapped() {}
 
         func secondaryActionButtonTapped() {}
 

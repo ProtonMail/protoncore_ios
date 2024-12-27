@@ -36,15 +36,16 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
     @MainActor
     func testJoinOrganizationView() {
         let view = JoinOrganizationView(viewModel: .init(dependencies: .init(
-                    apiService: APIServiceMock(),
-                    userData: .dummy,
-                    organizationInfo: .init(
-                        organizationName: "Proton AG",
-                        organizationAdminEmail: "admin@privacybydefault.com",
-                        organizationLogoID: nil,
-                        organizationPublicKey: .init(value: "")
-                    ),
-                    loginDelegate: nil
+            apiService: APIServiceMock(),
+            loginService: nil,
+            userData: .dummy,
+            organizationInfo: .init(
+                organizationName: "Proton AG",
+                organizationAdminEmail: "admin@privacybydefault.com",
+                organizationLogoID: nil,
+                organizationPublicKey: .init(value: "")
+            ),
+            ssoNavigationDelegate: nil
         )))
         let viewController = UIHostingController(rootView: view)
 
@@ -53,28 +54,48 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
 
     @MainActor
     func testSignInRequestViewModeRequestForAdminApproval() {
-        let viewController = SignInRequestViewController(mode: .requestForAdminApproval(code: "64S3"))
+        let view = SignInRequestView(viewModel: .init(dependencies: .init(
+            mode: .requestForAdminApproval(code: "64S3"),
+            userData: .dummy,
+            ssoNavigationDelegate: nil
+        )))
+        let viewController = UIHostingController(rootView: view)
 
         checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
     }
 
     @MainActor
     func testSignInRequestViewModeRequestApproveFromAnotherDevice() {
-        let viewController = SignInRequestViewController(mode: .requestApproveFromAnotherDevice(code: "64S3"))
+        let view = SignInRequestView(viewModel: .init(dependencies: .init(
+            mode: .requestApproveFromAnotherDevice(code: "64S3", devices: [.mock]),
+            userData: .dummy,
+            ssoNavigationDelegate: nil
+        )))
+        let viewController = UIHostingController(rootView: view)
 
         checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
     }
 
     @MainActor
     func testSignInRequestViewModeApprovingAccess() {
-        let viewController = SignInRequestViewController(mode: .approvingAccess)
+        let view = SignInRequestView(viewModel: .init(dependencies: .init(
+            mode: .approvingAccess,
+            userData: .dummy,
+            ssoNavigationDelegate: nil
+        )))
+        let viewController = UIHostingController(rootView: view)
 
         checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
     }
 
     @MainActor
     func testEnterBackupPassword() {
-        let viewController = EnterBackupPasswordViewController()
+        let view = EnterBackupPasswordView(viewModel: .init(dependencies: .init(
+            userData: .dummy,
+            apiService: nil,
+            ssoNavigationDelegate: nil
+        )))
+        let viewController = UIHostingController(rootView: view)
 
         checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
     }

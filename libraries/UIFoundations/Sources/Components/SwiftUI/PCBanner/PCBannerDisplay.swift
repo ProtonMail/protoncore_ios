@@ -88,53 +88,51 @@ public struct PCBannerDisplay: ViewModifier {
     }
 
     public func body(content: Content) -> some View {
-        if bannerState != .none {
-            content
-                .overlay(banner, alignment: configuration.position.alignment)
-        } else {
-            content
-        }
+        content
+            .overlay(banner, alignment: configuration.position.alignment)
     }
 
     @ViewBuilder
     private var banner: some View {
-        ZStack {
-            if animating {
-                PCBanner(
-                    style: .constant(style),
-                    content: .constant(content)
-                )
-                .padding()
-                .offset(y: offsetPosition)
-                .transition(.asymmetric(
-                    insertion: .opacity.combined(with: .move(edge: configuration.position.edge)),
-                    removal: .opacity.combined(with: .move(edge: configuration.position.edge))
-                ))
-            }
-        }
-        .gesture(
-            DragGesture()
-                .onChanged { gesture in
-                    withAnimation { dragYOffset = gesture.translation.height }
-                }
-                .onEnded { value in
-                    let velocity = CGSize(
-                        width: value.predictedEndLocation.x - value.location.x,
-                        height: value.predictedEndLocation.y - value.location.y
+        if bannerState != .none {
+            ZStack {
+                if animating {
+                    PCBanner(
+                        style: .constant(style),
+                        content: .constant(content)
                     )
-                    checkDraggingDismissal(velocityHeight: velocity.height)
+                    .padding()
+                    .offset(y: offsetPosition)
+                    .transition(.asymmetric(
+                        insertion: .opacity.combined(with: .move(edge: configuration.position.edge)),
+                        removal: .opacity.combined(with: .move(edge: configuration.position.edge))
+                    ))
                 }
-        )
-        .onAppear {
-            showBanner()
-            if let dismissDuration = configuration.dismissDuration {
-                timer = Timer.scheduledTimer(withTimeInterval: dismissDuration, repeats: false, block: { _ in
-                    DispatchQueue.main.async { dismissBanner() }
-                })
             }
-        }
-        .onDisappear {
-            dismissBanner()
+            .gesture(
+                DragGesture()
+                    .onChanged { gesture in
+                        withAnimation { dragYOffset = gesture.translation.height }
+                    }
+                    .onEnded { value in
+                        let velocity = CGSize(
+                            width: value.predictedEndLocation.x - value.location.x,
+                            height: value.predictedEndLocation.y - value.location.y
+                        )
+                        checkDraggingDismissal(velocityHeight: velocity.height)
+                    }
+            )
+            .onAppear {
+                showBanner()
+                if let dismissDuration = configuration.dismissDuration {
+                    timer = Timer.scheduledTimer(withTimeInterval: dismissDuration, repeats: false, block: { _ in
+                        DispatchQueue.main.async { dismissBanner() }
+                    })
+                }
+            }
+            .onDisappear {
+                dismissBanner()
+            }
         }
     }
 

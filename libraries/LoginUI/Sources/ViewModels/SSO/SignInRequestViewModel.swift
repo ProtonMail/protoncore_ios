@@ -28,6 +28,8 @@ import ProtonCoreUIFoundations
 extension SignInRequestView {
     struct Dependencies {
         let mode: SignInRequestView.ViewMode
+        let userData: LoginData
+        let ssoNavigationDelegate: GlobalSSONavigationDelegate?
     }
 }
 
@@ -45,6 +47,9 @@ extension SignInRequestView {
         @Published var bannerState: BannerState = .none
         @Published var mode: ViewMode
         @Published var devices: [AuthDevice] = []
+        private let userData: LoginData
+
+        weak var ssoNavigationDelegate: GlobalSSONavigationDelegate?
 
         @Published var confirmationCodeContent: PCTextFieldContent = .init(title: LUITranslation.confirmation_code.l10n)
 
@@ -53,6 +58,8 @@ extension SignInRequestView {
 
         init(dependencies: Dependencies) {
             self.mode = dependencies.mode
+            self.userData = dependencies.userData
+            self.ssoNavigationDelegate = dependencies.ssoNavigationDelegate
             if case .requestApproveFromAnotherDevice(_, let devices) = mode {
                 self.devices = devices
             }
@@ -95,7 +102,9 @@ extension SignInRequestView {
             }
         }
 
-        func primaryActionButtonTapped() {}
+        func primaryActionButtonTapped() {
+            ssoNavigationDelegate?.showEnterBackupPassword(data: userData)
+        }
 
         func secondaryActionButtonTapped() {}
     }

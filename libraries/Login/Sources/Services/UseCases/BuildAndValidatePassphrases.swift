@@ -26,18 +26,25 @@ import ProtonCoreDataModel
 import ProtonCoreUtilities
 
 /// Build and validate passphrases for a given mailboxPassword and KeySalts
-struct BuildAndValidatePassphrases {
+public struct BuildAndValidatePassphrases {
 
     private enum Constants {
         static let passphraseSuffix = 31
     }
 
-    func buildAndValidatePassphrases(passphrase: String, salts: [KeySalt], userKeys: [Key]) throws -> [String: String]? {
+    public init() {}
+
+    public func buildAndValidatePassphrases(passphrase: String, salts: [KeySalt], userKeys: [Key]) throws -> [String: String]? {
         let passphrases = try buildPassphrases(salts: salts, passphrase: passphrase)
         return validatePassphrases(passphrases: passphrases, userKeys: userKeys) ? passphrases : nil
     }
 
-    func buildPassphrases(salts: [KeySalt], mailboxPassword: String) throws -> [String: String] {
+    public func buildAndValidatePassphrases(mailboxPassword: String, salts: [KeySalt], userKeys: [Key]) throws -> [String: String]? {
+        let passphrases = try buildPassphrases(salts: salts, mailboxPassword: mailboxPassword)
+        return validatePassphrases(passphrases: passphrases, userKeys: userKeys) ? passphrases : nil
+    }
+
+    public func buildPassphrases(salts: [KeySalt], mailboxPassword: String) throws -> [String: String] {
         var error: NSError?
 
         let passphrases = salts.filter {
@@ -62,12 +69,12 @@ struct BuildAndValidatePassphrases {
         return Dictionary(passphrases, uniquingKeysWith: { one, _ in one })
     }
 
-    func buildPassphrases(salts: [KeySalt], passphrase: String) throws -> [String: String] {
+    public func buildPassphrases(salts: [KeySalt], passphrase: String) throws -> [String: String] {
         let passphrases = salts.map { ($0.ID, passphrase) }
         return Dictionary(passphrases, uniquingKeysWith: { one, _ in one })
     }
 
-    func validatePassphrases(passphrases: ([String: String]), userKeys: [Key]) -> Bool {
+    public func validatePassphrases(passphrases: ([String: String]), userKeys: [Key]) -> Bool {
         var isValid = false
 
         // new keys - user keys

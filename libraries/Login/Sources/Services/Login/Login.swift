@@ -421,4 +421,5 @@ public enum SSOLoginError: Error {
     case deviceTokenNotFound
     case authenticatorNotFound
     case deviceSecretNotFound
+    case encryptedSecretNotFound
 }
