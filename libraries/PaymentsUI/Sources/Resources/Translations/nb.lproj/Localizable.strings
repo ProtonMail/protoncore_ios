@@ -56,9 +56,9 @@
 
 "Complete payment" = "Fullfør betaling";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Prosessen med å sette opp konto kunne ikke finaliseres på grunn av en uventet feil.\nVennligst forsøk igjen.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Prosessen med å sette opp konto kunne ikke finaliseres på grunn av en uventet feil.\nForsøk igjen.";
 
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "IAP-kjøpsprosessen har startet. Vennligst følg Apple sine instruksjoner for enten å fullføre eller avbryte kjøpet.";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "IAP-kjøpsprosessen har startet. Følg Apple sine instruksjoner for enten å fullføre eller avbryte kjøpet.";
 
 "In app payments are temporarily unavailable." = "I appen er betalinger midlertidig utilgjengelige.";
 
