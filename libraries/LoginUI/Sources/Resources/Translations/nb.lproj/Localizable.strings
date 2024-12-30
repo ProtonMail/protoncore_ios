@@ -4,7 +4,7 @@
 
 "Update required" = "Oppdatering kreves";
 
-"Please enter your Proton Account password." = "Vennligst skriv inn passordet til Proton-kontoen din.";
+"Please enter your Proton Account password." = "Skriv inn passordet til Proton-kontoen din.";
 
 "OK" = "OK";
 
@@ -54,17 +54,17 @@
 
 "Still need help? Contact us directly." = "Trenger du fortsatt hjelp? Kontakt oss direkte.";
 
-"Please enter your Proton Account email or username." = "Vennligst skriv inn e-postadressen eller brukernavnet til Proton-kontoen din.";
+"Please enter your Proton Account email or username." = "Skriv inn e-postadressen eller brukernavnet til Proton-kontoen din.";
 
 "Complete Setup" = "Fullfør oppsett";
 
-"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "Kontoen din mangler nøkler, vennligst logg inn på weben for automatisk generering av obligatoriske nøkler. Når du har logget deg inn på weben, vennligst returner til appen og logg på.";
+"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "Kontoen din mangler nøkler, logg inn på weben for automatisk generering av obligatoriske nøkler. Når du har logget deg inn på weben, returner til appen og logg på.";
 
 "Account setup required" = "Kontooppsett kreves";
 
 "Incorrect mailbox password" = "Feil postbokspassord";
 
-"Your session has expired. Please log in again." = "Økten er utløpt. Vennligst logg på nytt.";
+"Your session has expired. Please log in again." = "Økten er utløpt. Logg på nytt.";
 
 "Proton address required" = "Proton-adresse kreves";
 
@@ -72,7 +72,7 @@
 
 "Username" = "Brukernavn";
 
-"Please enter a username." = "Vennligst skriv inn et brukernavn.";
+"Please enter a username." = "Skriv inn et brukernavn.";
 
 "Unlock your mailbox" = "Lås opp postkassen din";
 
@@ -172,7 +172,7 @@
 
 "Account verification" = "Kontoverifisering";
 
-"For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "For å ivareta din sikkerhet, må vi verifisere at den adressen du angav tilhører deg. Vi sendte en verifiseringskode til %@. Vennligst angi koden nedenfor:";
+"For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "For å ivareta din sikkerhet, må vi verifisere at den adressen du angav tilhører deg. Vi sendte en verifiseringskode til %@. Skriv inn koden nedenfor:";
 
 "Verification code" = "Verifiseringskode";
 
@@ -192,13 +192,13 @@
 
 "Invalid hashed password" = "Ugyldig hashet passord";
 
-"Password can not be empty.\nPlease try again." = "Passord kan ikke stå tomt.\nVennligst forsøk igjen.";
+"Password can not be empty.\nPlease try again." = "Passord kan ikke stå tomt.\nForsøk igjen.";
 
-"Passwords do not match.\nPlease try again." = "Passordene samsvarer ikke.\nVennligst forsøk igjen.";
+"Passwords do not match.\nPlease try again." = "Passordene samsvarer ikke.\nForsøk igjen.";
 
 "Email address already used." = "E-postadressen er allerede i bruk.";
 
-"Please ask your admin to configure your sub-user." = "Vennligst spør din administrator om å konfigurere din underbruker.";
+"Please ask your admin to configure your sub-user." = "Spør administratoren om å konfigurere din underbruker.";
 
 "Would you like to receive a new verification code or use an alternate email address?" = "Ønsker du å motta en ny verifiseringskode eller bruke en alternativ e-postadresse?";
 
@@ -234,7 +234,7 @@
 
 "Learn more" = "Lær mer";
 
-"Invalid state. Please quit the app and try again in a few minutes." = "Ugyldig tilstand. Vennligst avslutt appen og prøv igjen om noen få minutter.";
+"Invalid state. Please quit the app and try again in a few minutes." = "Ugyldig tilstand. Avslutt appen og prøv igjen om noen få minutter.";
 
 "There was a problem reading your security key." = "Det oppstod et problem med å lese sikkerhetsnøkkelen din.";
 
@@ -256,7 +256,7 @@
 
 "Unexpected FIDO2 signature." = "Uventet FIDO2-signatur.";
 
-"We could not initiate the Secure Password update connection. Please try again." = "Vi kan ikke starte oppdateringstilkoblingen for sikkert passord. Vennligst prøv på nytt.";
+"We could not initiate the Secure Password update connection. Please try again." = "Vi kan ikke starte oppdateringstilkoblingen for sikkert passord. Prøv på nytt.";
 
 "Join %@" = "Bli med %@";
 
@@ -302,7 +302,7 @@
 
 "Devices available:" = "Enheter tilgjengelig:";
 
-"Operation couldn't be completed. Please try again." = "Operasjonen kunne ikke fullføres. Vennligst prøv igjen.";
+"Operation couldn't be completed. Please try again." = "Operasjonen kunne ikke fullføres. Prøv igjen.";
 
 "Enter your backup password" = "Angi reservepassordet ditt";
 
