@@ -35,6 +35,8 @@ struct VerifyUnprivatization {
     let apiService: APIService
     let authManager: AuthenticationManager
 
+    let getUnprivatizationInfo: GetUnprivatizationInfo
+
     private enum Constants {
         static let orgVerificationContext = "account.organization-fingerprint"
     }
@@ -42,12 +44,11 @@ struct VerifyUnprivatization {
     init(apiService: APIService) {
         self.apiService = apiService
         self.authManager = Authenticator(api: apiService)
+        self.getUnprivatizationInfo = GetUnprivatizationInfo(apiService: apiService)
     }
 
     func invoke() async throws -> UnprivatizeUserSuccess {
-        // Fetch the route GET /core/v4/members/me/unprivatize to get the data info.
-        let unprivatizationInfoRequest = UnprivatizationInfoRequest()
-        let (_, unprivatizationInfo): (_, UnprivatizationInfo) = try await apiService.perform(request: unprivatizationInfoRequest)
+        let unprivatizationInfo = try await getUnprivatizationInfo.invoke()
 
         guard unprivatizationInfo.state == .pending else { throw UnprivatizationError.invalidState }
 

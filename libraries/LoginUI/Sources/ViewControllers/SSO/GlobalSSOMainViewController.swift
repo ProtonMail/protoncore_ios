@@ -27,15 +27,17 @@ import ProtonCoreUIFoundations
 import SwiftUI
 
 protocol GlobalSSONavigationDelegate: AnyObject {
-    func showEnterBackupPassword(data: LoginData)
+    func showRequestAdminHelpConfirmation(data: LoginData, unprivatizationInfo: UnprivatizationInfo)
+    func showRequestAdminHelp(data: LoginData)
+    func showEnterBackupPassword(data: LoginData, unprivatizationInfo: UnprivatizationInfo)
     func globalSSOLoginDidFinish(data: LoginData) async
+    func globalSSOLoginDidCancel()
 }
 
 final class GlobalSSOMainViewController: UIHostingController<GlobalSSOMainView> {
     let viewModel: GlobalSSOMainView.ViewModel
 
     weak var navigationDelegate: NavigationDelegate?
-    weak var loginDelegate: GlobalSSONavigationDelegate?
 
      required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

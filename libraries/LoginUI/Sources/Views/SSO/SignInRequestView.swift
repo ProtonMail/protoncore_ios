@@ -72,8 +72,6 @@ public struct SignInRequestView: View {
             .padding(Constants.itemSpacing)
             .foregroundColor(ColorProvider.TextNorm)
             .frame(maxWidth: .infinity)
-            .bannerDisplayable(bannerState: $viewModel.bannerState,
-                               configuration: .default())
         }
         .background(
             ColorProvider.BackgroundNorm
@@ -205,6 +203,7 @@ public struct SignInRequestView: View {
                 addresses: [],
                 scopes: []
             ),
+            unprivatizationInfo: .init(state: .ready, adminEmail: "admin@privacybydefault.com", orgKeyFingerprintSignature: .init(value: ""), orgPublicKey: .init(value: "")),
             ssoNavigationDelegate: nil
         )))
     }
@@ -222,6 +221,7 @@ public struct SignInRequestView: View {
                 addresses: [],
                 scopes: []
             ),
+            unprivatizationInfo: .init(state: .ready, adminEmail: "admin@privacybydefault.com", orgKeyFingerprintSignature: .init(value: ""), orgPublicKey: .init(value: "")),
             ssoNavigationDelegate: nil
         )))
     }
@@ -239,6 +239,7 @@ public struct SignInRequestView: View {
                 addresses: [],
                 scopes: []
             ),
+            unprivatizationInfo: .init(state: .ready, adminEmail: "admin@privacybydefault.com", orgKeyFingerprintSignature: .init(value: ""), orgPublicKey: .init(value: "")),
             ssoNavigationDelegate: nil
         )))
     }

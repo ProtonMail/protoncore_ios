@@ -27,18 +27,27 @@ import ProtonCoreServices
 public enum SSOLoginScreen {
     case setupBackupPassword(UnprivatizeUserSuccess)
     case loginSuccess(UserData)
-    case requestApproveFromAnotherDevice(code: String, devices: [AuthDevice])
-    case enterBackupPassword
-//    case waitingAdminApproval
-//    case requestAdminHelp
+    case requestApproveFromAnotherDevice(
+        code: String,
+        devices: [AuthDevice],
+        unprivatizationInfo: UnprivatizationInfo
+    )
+    case enterBackupPassword(UnprivatizationInfo)
+    case requestApproveFromAdmin(code: String, unprivatizationInfo: UnprivatizationInfo)
     case unimplemented
 }
 
 public final class PostLoginSSOAccountSetup {
+    public enum Mode {
+        case `default`
+        case requestAdminHelp
+    }
+
     let apiService: APIService
     let userData: LoginData
 
     let createAuthDevice: CreateAuthDevice
+    let getUnprivatizationInfo: GetUnprivatizationInfo
     let verifyUnprivatization: VerifyUnprivatization
     let checkDeviceSecret: CheckDeviceSecret
     let decryptEncryptedSecret: DecryptEncryptedSecret
@@ -57,6 +66,8 @@ public final class PostLoginSSOAccountSetup {
             apiService: apiService,
             deviceSecretRepository: deviceSecretRepository
         )
+
+        self.getUnprivatizationInfo = GetUnprivatizationInfo(apiService: apiService)
 
         self.verifyUnprivatization = VerifyUnprivatization(apiService: apiService)
 
@@ -78,7 +89,16 @@ public final class PostLoginSSOAccountSetup {
         case invalidSecret
     }
 
-    public func invoke() async throws -> SSOLoginScreen {
+    public func invoke(mode: Mode) async throws -> SSOLoginScreen {
+        switch mode {
+        case .default:
+            return try await loadDefaultScreen()
+        case .requestAdminHelp:
+            return try await loadRequestAdminHelpScreen()
+        }
+    }
+
+    private func loadDefaultScreen() async throws -> SSOLoginScreen {
         let state = try await loginSSOState(userData: userData)
         switch state {
         case .firstLogin:
@@ -90,9 +110,14 @@ public final class PostLoginSSOAccountSetup {
         case .noSecret, .invalidSecret:
             try await createAuthDevice.invoke(addresses: userData.addresses)
             let authDevices = try await getAuthDevices.invoke()
-            guard !authDevices.isEmpty else { return .enterBackupPassword }
+            let unprivatizationInfo = try await getUnprivatizationInfo.invoke()
+            guard !authDevices.isEmpty else { return .enterBackupPassword(unprivatizationInfo) }
             let code = try generateConfirmationCode.invoke(userId: userData.user.ID)
-            return .requestApproveFromAnotherDevice(code: code, devices: authDevices)
+            return .requestApproveFromAnotherDevice(
+                code: code,
+                devices: authDevices,
+                unprivatizationInfo: unprivatizationInfo
+            )
         }
     }
 
@@ -120,6 +145,12 @@ public final class PostLoginSSOAccountSetup {
             return .invalidSecret
         }
         return .validSecret(passphrases: passphrases)
+    }
+
+    private func loadRequestAdminHelpScreen() async throws -> SSOLoginScreen {
+        let code = try generateConfirmationCode.invoke(userId: userData.user.ID)
+        let unprivatizationInfo = try await getUnprivatizationInfo.invoke()
+        return .requestApproveFromAdmin(code: code, unprivatizationInfo: unprivatizationInfo)
     }
 }
 #endif

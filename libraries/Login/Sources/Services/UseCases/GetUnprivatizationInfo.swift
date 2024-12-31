@@ -1,6 +1,6 @@
 //
-//  GenerateConfirmationCode.swift
-//  ProtonCore-Login - Created on 26.11.24.
+//  GetUnprivatizationInfo.swift
+//  ProtonCore-Login - Created on 31.12.24.
 //
 //  Copyright (c) 2024 Proton Technologies AG
 //
@@ -20,23 +20,21 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 #if os(iOS)
-import UIKit
-import ProtonCoreServices
 import ProtonCoreCrypto
+import ProtonCoreDataModel
+import ProtonCoreServices
+import UIKit
 
-/// Generate confirmation code using Crockford32
-public struct GenerateConfirmationCode {
-    let deviceSecretRepository: DeviceSecretRepositoryProtocol
+struct GetUnprivatizationInfo {
+    private let apiService: APIService
 
-    public init(deviceSecretRepository: DeviceSecretRepositoryProtocol) {
-        self.deviceSecretRepository = deviceSecretRepository
+    init(apiService: APIService) {
+        self.apiService = apiService
     }
 
-    public func invoke(userId: String) throws -> String {
-        let deviceSecret = try deviceSecretRepository.getByUserId(userId: userId)
-        guard let secret = deviceSecret?.secret else { throw SSOLoginError.deviceSecretNotFound }
-        let sha256EncodedSecret = Crockford32.encode(secret.sha256.data(using: .utf8)!)
-        return String(sha256EncodedSecret.prefix(4))
+    func invoke() async throws -> UnprivatizationInfo {
+        let (_, unprivatizationInfo): (_, UnprivatizationInfo) = try await apiService.perform(request: UnprivatizationInfoRequest())
+        return unprivatizationInfo
     }
 }
 

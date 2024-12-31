@@ -29,6 +29,7 @@ extension SignInRequestView {
     struct Dependencies {
         let mode: SignInRequestView.ViewMode
         let userData: LoginData
+        let unprivatizationInfo: UnprivatizationInfo
         let ssoNavigationDelegate: GlobalSSONavigationDelegate?
     }
 }
@@ -43,22 +44,22 @@ extension SignInRequestView {
 
     @MainActor
     final class ViewModel: ObservableObject {
-
-        @Published var bannerState: BannerState = .none
         @Published var mode: ViewMode
         @Published var devices: [AuthDevice] = []
         private let userData: LoginData
+        private let unprivatizationInfo: UnprivatizationInfo
 
         weak var ssoNavigationDelegate: GlobalSSONavigationDelegate?
 
         @Published var confirmationCodeContent: PCTextFieldContent = .init(title: LUITranslation.confirmation_code.l10n)
 
-        let adminEmail = "admin@privacybydefault.com"
-        let memberEmail = "member@privacybydefault.com"
+        var adminEmail: String { unprivatizationInfo.adminEmail }
+        var memberEmail: String { userData.user.email ?? "unknown" }
 
         init(dependencies: Dependencies) {
             self.mode = dependencies.mode
             self.userData = dependencies.userData
+            self.unprivatizationInfo = dependencies.unprivatizationInfo
             self.ssoNavigationDelegate = dependencies.ssoNavigationDelegate
             if case .requestApproveFromAnotherDevice(_, let devices) = mode {
                 self.devices = devices
@@ -103,10 +104,27 @@ extension SignInRequestView {
         }
 
         func primaryActionButtonTapped() {
-            ssoNavigationDelegate?.showEnterBackupPassword(data: userData)
+            switch mode {
+            case .requestForAdminApproval:
+                ssoNavigationDelegate?.showEnterBackupPassword(data: userData, unprivatizationInfo: unprivatizationInfo)
+            case .requestApproveFromAnotherDevice:
+                ssoNavigationDelegate?.showEnterBackupPassword(data: userData, unprivatizationInfo: unprivatizationInfo)
+            case .approvingAccess:
+                break
+            }
+
         }
 
-        func secondaryActionButtonTapped() {}
+        func secondaryActionButtonTapped() {
+            switch mode {
+            case .requestForAdminApproval:
+                ssoNavigationDelegate?.globalSSOLoginDidCancel()
+            case .requestApproveFromAnotherDevice:
+                ssoNavigationDelegate?.showRequestAdminHelpConfirmation(data: userData, unprivatizationInfo: unprivatizationInfo)
+            case .approvingAccess:
+                break
+            }
+        }
     }
 }
 

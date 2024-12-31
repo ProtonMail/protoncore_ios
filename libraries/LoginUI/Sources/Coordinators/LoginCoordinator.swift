@@ -298,6 +298,7 @@ extension LoginCoordinator {
     private func showGlobalSSOAccountSetup(data: LoginData) {
         let viewController = GlobalSSOMainViewController(
             dependencies: .init(
+                mode: .default,
                 apiService: container.api,
                 loginService: container.login,
                 userData: data,
@@ -390,6 +391,10 @@ extension LoginCoordinator: LoginViewControllerDelegate {
 // MARK: - Global SSO Login delegate
 
 extension LoginCoordinator: GlobalSSONavigationDelegate {
+    func globalSSOLoginDidCancel() {
+        userDidClose()
+    }
+
     func globalSSOLoginDidFinish(data: LoginData) async {
         await MainActor.run {
             navigationController?.presentedViewController?.dismiss(animated: true)
@@ -397,10 +402,39 @@ extension LoginCoordinator: GlobalSSONavigationDelegate {
         await finish(data: data)
     }
 
-    func showEnterBackupPassword(data: LoginData) {
+    func showEnterBackupPassword(data: LoginData, unprivatizationInfo: UnprivatizationInfo) {
         let viewController = EnterBackupPasswordViewController(dependencies: .init(
             userData: data,
             apiService: container.api,
+            unprivatizationInfo: unprivatizationInfo,
+            ssoNavigationDelegate: self
+        ))
+        if let ssoNavigationController = navigationController?.presentedViewController as? UINavigationController {
+            ssoNavigationController.pushViewController(viewController, animated: true)
+        }
+    }
+
+    func showRequestAdminHelp(data: LoginData) {
+        let viewController = GlobalSSOMainViewController(
+            dependencies: .init(
+                mode: .requestAdminHelp,
+                apiService: container.api,
+                loginService: container.login,
+                userData: data,
+                ssoNavigationDelegate: self
+            ),
+            navigationDelegate: self
+        )
+        if let ssoNavigationController = navigationController?.presentedViewController as? UINavigationController {
+            ssoNavigationController.pushViewController(viewController, animated: true)
+        }
+    }
+
+    func showRequestAdminHelpConfirmation(data: LoginData, unprivatizationInfo: UnprivatizationInfo) {
+        let viewController = RequestAdminAccessViewController(dependencies: .init(
+            apiService: container.api,
+            userData: data,
+            unprivatizationInfo: unprivatizationInfo,
             ssoNavigationDelegate: self
         ))
         if let ssoNavigationController = navigationController?.presentedViewController as? UINavigationController {
