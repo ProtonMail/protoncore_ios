@@ -35,6 +35,7 @@ public enum TransactionType {
 public protocol TransactionsObserverProviding {
     func start() async throws
     func stop()
+    func setConfiguration(_ configuration: TransactionsObserverConfiguration)
 }
 
 public enum TransactionsObserverError: Error {
@@ -160,5 +161,9 @@ public final class TransactionsObserver: TransactionsObserverProviding {
         } else {
             debugPrint("TransactionsObserver not started, nothing to stop 👍🏻")
         }
+    }
+
+    public func setConfiguration(_ configuration: TransactionsObserverConfiguration) {
+        self.configuration = configuration
     }
 }
