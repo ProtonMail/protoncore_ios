@@ -122,12 +122,12 @@ public class ProxyClient {
         request(endpoint: "/mock/routes/static", method: "POST", body: body, completion: completion)
     }
 
-    public func fetchDynamicMockRoutes( completion: @escaping (Result<[DynamicMockResponse], APIError>) -> Void) {
+    public func fetchDynamicMockRoutes( completion: @escaping (Result<[DynamicMocksSummary], APIError>) -> Void) {
         request(endpoint: "/mock/routes/dynamic", method: "GET", completion: completion)
     }
 
-    public func addDynamicMockScenario(scenario: ScenarioMockObject, completion: @escaping (Result<ScenarioMockResponse, APIError>) -> Void) {
-        guard let body = encodeBody(scenario) else {
+    public func addDynamicMockScenario(dynamicMock: DynamicMockBody, completion: @escaping (Result<DynamicMockResponse, APIError>) -> Void) {
+        guard let body = encodeBody(dynamicMock) else {
             completion(.failure(.decodingError(NSError(domain: "EncodingError", code: 0, userInfo: nil))))
             return
         }

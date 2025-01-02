@@ -28,7 +28,7 @@ public struct MockObject: Codable {
     public let isRawFileContent: Bool?
     public let request: RequestDetails
     public let response: ResponseDetails
-    
+
     public init(name: String, enabled: Bool, updateFile: Bool? = nil, isRawFileContent: Bool? = nil, request: RequestDetails, response: ResponseDetails) {
         self.name = name
         self.enabled = enabled
@@ -43,27 +43,27 @@ public struct RequestDetails: Codable {
     public let exactUrl: [String]?
     public let matchUrl: [String]?
     public let method: String?
-    
+
     public enum CodingKeys: String, CodingKey {
         case exactUrl, matchUrl, method
     }
-    
+
     public init(exactUrl: [String]? = nil, matchUrl: [String]? = nil, method: String? = nil) {
         self.exactUrl = exactUrl
         self.matchUrl = matchUrl
         self.method = method
     }
-    
+
     public func validate() throws {
         guard exactUrl != nil || matchUrl != nil else {
             throw ValidationError.missingUrl
         }
-        
+
         guard !(exactUrl != nil && matchUrl != nil) else {
             throw ValidationError.bothUrlsProvided
         }
     }
-    
+
     public enum ValidationError: Error {
         case missingUrl
         case bothUrlsProvided
@@ -73,10 +73,10 @@ public struct RequestDetails: Codable {
 // General-purpose type to handle any JSON type, including Data and Base64-encoded JSON
 public struct AnyCodable: Codable {
     public let value: Any
-    
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        
+
         if let intValue = try? container.decode(Int.self) {
             value = intValue
         } else if let doubleValue = try? container.decode(Double.self) {
@@ -99,10 +99,10 @@ public struct AnyCodable: Codable {
             throw DecodingError.dataCorruptedError(in: container, debugDescription: "Unable to decode value.")
         }
     }
-    
+
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
-        
+
         switch value {
         case let intValue as Int:
             try container.encode(intValue)
@@ -130,7 +130,7 @@ public struct AnyCodable: Codable {
             throw EncodingError.invalidValue(value, EncodingError.Context(codingPath: container.codingPath, debugDescription: "Unable to encode value."))
         }
     }
-    
+
     public init(value: Any) {
         self.value = value
     }
@@ -140,7 +140,7 @@ public struct ResponseDetails: Codable {
     public let statusCode: Int?
     public let body: AnyCodable?
     public let headers: AnyCodable?
-    
+
     public init(statusCode: Int, body: AnyCodable? = nil, headers: AnyCodable? = nil) {
         self.statusCode = statusCode
         self.body = body
@@ -148,13 +148,13 @@ public struct ResponseDetails: Codable {
     }
 }
 
-public struct DynamicMockResponse: Codable {
+public struct DynamicMocksSummary: Codable {
     public let name: String
     public let description: String
     public let enabled: Bool?
     public let updateFile: Bool?
-    
-    public init(name: String, description: String, enabled: Bool? = nil, updateFile: Bool? = nil) {
+
+    public init(name: String, description: String, enabled: Bool?, updateFile: Bool?) {
         self.name = name
         self.description = description
         self.enabled = enabled
@@ -162,25 +162,25 @@ public struct DynamicMockResponse: Codable {
     }
 }
 
-public struct ScenarioMockObject: Codable {
-    public let scenarioName: String
+public struct DynamicMockBody: Codable {
+    public let name: String
     public let enabled: Bool
-    public let updateFile: Bool
-    
-    public init(scenarioName: String, enabled: Bool, updateFile: Bool) {
-        self.scenarioName = scenarioName
+
+    public init(name: String, enabled: Bool) {
+        self.name = name
         self.enabled = enabled
-        self.updateFile = updateFile
     }
 }
 
-public struct ScenarioMockResponse: Codable {
+public struct DynamicMockResponse: Codable {
+    public let name: String
     public let description: String
     public let enabled: Bool
     public let updateFile: Bool
     public let mocks: [Mock]
-    
-    public init(description: String, enabled: Bool, updateFile: Bool, mocks: [Mock]) {
+
+    public init(name: String, description: String, enabled: Bool, updateFile: Bool, mocks: [Mock]) {
+        self.name = name
         self.description = description
         self.enabled = enabled
         self.updateFile = updateFile
@@ -192,7 +192,7 @@ public struct Mock: Codable {
     public let request: RequestDetails
     public let response: ResponseDetails
     public let meta: MockMeta?
-    
+
     public init(request: RequestDetails, response: ResponseDetails, meta: MockMeta? = nil) {
         self.request = request
         self.response = response
@@ -203,7 +203,7 @@ public struct Mock: Codable {
 public struct MockMeta: Codable {
     public let test: String
     public let description: String
-    
+
     public init(test: String, description: String) {
         self.test = test
         self.description = description
@@ -214,7 +214,7 @@ public struct ScenarioFile: Codable {
     public let description: String?
     public let updateFile: Bool?
     public let mockFiles: [String]
-    
+
     public init(description: String? = nil, updateFile: Bool? = nil, mockFiles: [String]) {
         self.description = description
         self.updateFile = updateFile
@@ -226,7 +226,7 @@ public struct ScenarioFileWithName {
     public let name: String
     public let directory: String
     public let scenarioFile: ScenarioFile
-    
+
     public init(name: String, directory: String, scenarioFile: ScenarioFile) {
         self.name = name
         self.directory = directory
@@ -237,7 +237,7 @@ public struct ScenarioFileWithName {
 public struct LatencyInfo: Codable {
     public let enabled: Bool
     public let latency: Int
-    
+
     public init(enabled: Bool, latency: Int) {
         self.enabled = enabled
         self.latency = latency
@@ -247,7 +247,7 @@ public struct LatencyInfo: Codable {
 public struct BandwidthInfo: Codable {
     public let enabled: Bool
     public let limit: Int
-    
+
     public init(enabled: Bool, limit: Int) {
         self.enabled = enabled
         self.limit = limit
@@ -258,7 +258,7 @@ public enum ScenarioDataError: Error {
     case missingFile(String)
     case fileReadError(String)
     case jsonParsingError(String)
-    
+
     public init(errorMessage: String) {
         switch errorMessage {
         case "missingFile":
@@ -277,7 +277,7 @@ public struct InvalidRequestBodySchemaResponse: Codable {
     public let keyword: String
     public let params: [String: AnyCodable]
     public let message: String
-    
+
     public init(instancePath: String, schemaPath: String, keyword: String, params: [String: AnyCodable], message: String) {
         self.instancePath = instancePath
         self.schemaPath = schemaPath
