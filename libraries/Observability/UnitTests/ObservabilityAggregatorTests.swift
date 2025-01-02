@@ -84,4 +84,14 @@ final class ObservabilityAggregatorTests: XCTestCase {
             continuation.resume()
         }
     }
+
+    func test_aggregateAndClearIsThreadSafe() async {
+        _ = await performConcurrentlySettingExpectations(amount: 100) { [weak self] _, continuation in
+            guard let self else { XCTFail("self is nil"); return }
+            self.sut.aggregate(event: .dummyEvent(status: .successful))
+            self.sut.aggregate(event: .dummyEvent(status: .failed))
+            self.sut.clear()
+            continuation.resume()
+        }
+    }
 }
