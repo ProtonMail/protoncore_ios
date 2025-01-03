@@ -23,10 +23,10 @@ import ProtonCoreCrypto
 import ProtonCoreNetworking
 
 public final class UnprivatizationInfo: Response, APIDecodableResponse, Encodable {
-    var state: UnprivatizeState
-    var adminEmail: String
-    var orgKeyFingerprintSignature: ArmoredSignature
-    var orgPublicKey: ArmoredKey
+    public var state: UnprivatizeState
+    public var adminEmail: String
+    public var orgKeyFingerprintSignature: ArmoredSignature
+    public var orgPublicKey: ArmoredKey
 
     public init(
         state: UnprivatizeState,

@@ -33,8 +33,8 @@ public final class RequestAdminAccessViewController: UIHostingController<Request
         fatalError("init(coder:) has not been implemented")
     }
 
-    init() {
-        self.viewModel = RequestAdminAccessView.ViewModel(dependencies: .init())
+    init(dependencies: RequestAdminAccessView.Dependencies) {
+        self.viewModel = RequestAdminAccessView.ViewModel(dependencies: dependencies)
         let view = RequestAdminAccessView(viewModel: self.viewModel)
         super.init(rootView: view)
     }

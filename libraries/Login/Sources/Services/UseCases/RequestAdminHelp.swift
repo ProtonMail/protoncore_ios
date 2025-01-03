@@ -1,6 +1,6 @@
 //
-//  GenerateConfirmationCode.swift
-//  ProtonCore-Login - Created on 26.11.24.
+//  RequestAdminHelp.swift
+//  ProtonCore-Login - Created on 31.12.24.
 //
 //  Copyright (c) 2024 Proton Technologies AG
 //
@@ -20,23 +20,29 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 #if os(iOS)
-import UIKit
-import ProtonCoreServices
 import ProtonCoreCrypto
+import ProtonCoreDataModel
+import ProtonCoreServices
+import UIKit
 
-/// Generate confirmation code using Crockford32
-public struct GenerateConfirmationCode {
-    let deviceSecretRepository: DeviceSecretRepositoryProtocol
+public struct RequestAdminHelp {
+    private let apiService: APIService
+    private let deviceSecretRepository: DeviceSecretRepositoryProtocol
 
-    public init(deviceSecretRepository: DeviceSecretRepositoryProtocol) {
+    public init(
+        apiService: APIService,
+        deviceSecretRepository: DeviceSecretRepositoryProtocol
+    ) {
+        self.apiService = apiService
         self.deviceSecretRepository = deviceSecretRepository
     }
 
-    public func invoke(userId: String) throws -> String {
-        let deviceSecret = try deviceSecretRepository.getByUserId(userId: userId)
-        guard let secret = deviceSecret?.secret else { throw SSOLoginError.deviceSecretNotFound }
-        let sha256EncodedSecret = Crockford32.encode(secret.sha256.data(using: .utf8)!)
-        return String(sha256EncodedSecret.prefix(4))
+    public func invoke(userId: String) async throws {
+        guard let deviceSecret = try deviceSecretRepository.getByUserId(userId: userId) else {
+            throw SSOLoginError.deviceSecretNotFound
+        }
+        let request = PingAdminHelpRequest(deviceID: deviceSecret.deviceId)
+        _ = try await apiService.perform(request: request)
     }
 }
 

@@ -39,14 +39,14 @@ public struct RequestAdminAccessView: View {
     public var body: some View {
         ScrollView {
             VStack(spacing: Constants.itemSpacing) {
-                Text(viewModel.screenTitle)
+                Text(LUITranslation.request_admin_access_title.l10n)
                     .font(.title2)
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
                 adminEmailContainer
 
-                Text(viewModel.bodyDescription)
+                Text(LUITranslation.request_admin_access_description.l10n)
                     .font(.subheadline)
                     .foregroundColor(ColorProvider.TextWeak)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -54,7 +54,7 @@ public struct RequestAdminAccessView: View {
                 PCButton(
                     style: .constant(.init(mode: .solid)),
                     content: .constant(.init(
-                        title: viewModel.continueButtonActionTitle,
+                        title: LUITranslation.continue_core_button.l10n,
                         action: viewModel.continueActionButtonTapped
                     ))
                 )
@@ -70,13 +70,20 @@ public struct RequestAdminAccessView: View {
             ColorProvider.BackgroundNorm
                 .edgesIgnoringSafeArea(.all)
         )
+        .bannerDisplayable(
+            bannerState: $viewModel.bannerState,
+            configuration: .init(
+                position: .bottom,
+                dismissDuration: nil
+            )
+        )
     }
 
     @ViewBuilder
     var adminEmailContainer: some View {
         HStack {
             organizationImage
-            Text(viewModel.adminEmailAddress)
+            Text(viewModel.unprivatizationInfo.adminEmail)
                 .font(.subheadline)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -102,7 +109,19 @@ public struct RequestAdminAccessView: View {
 #if DEBUG
 #Preview {
     NavigationView {
-        RequestAdminAccessView(viewModel: .init(dependencies: .init()))
+        RequestAdminAccessView(viewModel: .init(dependencies: .init(
+            apiService: nil,
+            userData: .init(
+                credential: .none,
+                user: .mock,
+                salts: [],
+                passphrases: [:],
+                addresses: [],
+                scopes: []
+            ),
+            unprivatizationInfo: .init(state: .ready, adminEmail: "admin@privacybydefault.com", orgKeyFingerprintSignature: .init(value: ""), orgPublicKey: .init(value: "")),
+            ssoNavigationDelegate: nil
+        )))
     }
 }
 #endif

@@ -29,6 +29,7 @@ import SwiftUI
 
 extension GlobalSSOMainView {
     struct Dependencies {
+        let mode: PostLoginSSOAccountSetup.Mode
         let apiService: APIService
         let loginService: Login
         let userData: LoginData
@@ -44,6 +45,7 @@ extension GlobalSSOMainView {
         let loginService: Login
         private let userData: LoginData
 
+        var mode: PostLoginSSOAccountSetup.Mode
         @Published var screenState: ScreenState
 
         let organizationRepository: OrganizationRepository
@@ -60,6 +62,7 @@ extension GlobalSSOMainView {
         }
 
         init(dependencies: Dependencies) {
+            self.mode = dependencies.mode
             self.apiService = dependencies.apiService
             self.loginService = dependencies.loginService
             self.userData = dependencies.userData
@@ -74,16 +77,18 @@ extension GlobalSSOMainView {
 
         func startPostLoginSetup() async {
             do {
-                let nextStep = try await postLoginSSOAccountSetup.invoke()
+                let nextStep = try await postLoginSSOAccountSetup.invoke(mode: mode)
                 switch nextStep {
                 case .setupBackupPassword(let unprivatizeInfo):
                     await loadNewBackupPassword(unprivatizeInfo: unprivatizeInfo)
                 case .loginSuccess(let newUserData):
                     await ssoNavigationDelegate?.globalSSOLoginDidFinish(data: newUserData)
-                case .requestApproveFromAnotherDevice(let code, let devices):
-                    loadRequestApproveFromAnotherDevice(code: code, devices: devices)
-                case .enterBackupPassword:
-                    loadEnterBackupPassword()
+                case .requestApproveFromAnotherDevice(let code, let devices, let unprivatizationInfo):
+                    loadRequestApproveFromAnotherDevice(code: code, devices: devices, unprivatizationInfo: unprivatizationInfo)
+                case .enterBackupPassword(let unprivatizationInfo):
+                    loadEnterBackupPassword(unprivatizatonInfo: unprivatizationInfo)
+                case .requestApproveFromAdmin(let code, let unprivatizationInfo):
+                    loadRequestApproveFromAdmin(code: code, unprivatizationInfo: unprivatizationInfo)
                 case .unimplemented:
                     loadSSOErrorLogin(error: UnimplementedError.unimplemented, action: startPostLoginSetup)
                 }
@@ -117,18 +122,36 @@ extension GlobalSSOMainView {
             }
         }
 
-        private func loadRequestApproveFromAnotherDevice(code: String, devices: [AuthDevice]) {
+        private func loadRequestApproveFromAnotherDevice(
+            code: String,
+            devices: [AuthDevice],
+            unprivatizationInfo: UnprivatizationInfo
+        ) {
             screenState = .requestApproveFromAnotherDevice(.init(
                 mode: .requestApproveFromAnotherDevice(code: code, devices: devices),
                 userData: userData,
+                unprivatizationInfo: unprivatizationInfo,
                 ssoNavigationDelegate: ssoNavigationDelegate
             ))
         }
 
-        private func loadEnterBackupPassword() {
+        private func loadEnterBackupPassword(unprivatizatonInfo: UnprivatizationInfo) {
             screenState = .enterBackupPassword(.init(
                 userData: userData,
                 apiService: apiService,
+                unprivatizationInfo: unprivatizatonInfo,
+                ssoNavigationDelegate: ssoNavigationDelegate
+            ))
+        }
+
+        private func loadRequestApproveFromAdmin(
+            code: String,
+            unprivatizationInfo: UnprivatizationInfo
+        ) {
+            screenState = .requestApproveFromAnotherDevice(.init(
+                mode: .requestForAdminApproval(code: code),
+                userData: userData,
+                unprivatizationInfo: unprivatizationInfo,
                 ssoNavigationDelegate: ssoNavigationDelegate
             ))
         }

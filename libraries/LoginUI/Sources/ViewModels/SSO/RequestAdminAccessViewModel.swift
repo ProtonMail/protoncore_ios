@@ -21,36 +21,61 @@
 
 #if os(iOS)
 
-import SwiftUI
+import ProtonCoreLog
+import ProtonCoreLogin
+import ProtonCoreServices
 import ProtonCoreUIFoundations
+import SwiftUI
 
 extension RequestAdminAccessView {
-    struct Dependencies {}
+    struct Dependencies {
+        let apiService: APIService?
+        let userData: LoginData
+        let unprivatizationInfo: UnprivatizationInfo
+        let ssoNavigationDelegate: GlobalSSONavigationDelegate?
+    }
 }
 
 extension RequestAdminAccessView {
 
     @MainActor
     final class ViewModel: ObservableObject {
-        init(dependencies: Dependencies) {}
+        let apiService: APIService?
+        let userData: LoginData
+        let unprivatizationInfo: UnprivatizationInfo
 
-        var adminEmailAddress: String {
-            "admin@privacybydefault.com"
+        @Published var bannerState: BannerState = .none
+
+        weak var ssoNavigationDelegate: GlobalSSONavigationDelegate?
+
+        var requestAdminHelp: RequestAdminHelp?
+
+        init(dependencies: Dependencies) {
+            self.apiService = dependencies.apiService
+            self.userData = dependencies.userData
+            self.unprivatizationInfo = dependencies.unprivatizationInfo
+            self.ssoNavigationDelegate = dependencies.ssoNavigationDelegate
+
+            if let apiService = dependencies.apiService {
+                self.requestAdminHelp = RequestAdminHelp(
+                    apiService: apiService,
+                    deviceSecretRepository: DeviceSecretRepository()
+                )
+            }
         }
 
-        var screenTitle: String {
-            LUITranslation.request_admin_access_title.l10n
+        func continueActionButtonTapped() {
+            Task {
+                do {
+                    guard let requestAdminHelp else { throw LoginError.invalidState }
+                    try await requestAdminHelp.invoke(userId: userData.user.ID)
+                    ssoNavigationDelegate?.showRequestAdminHelp(data: userData)
+                } catch {
+                    PMLog.error(error)
+                    self.bannerState = .error(content: .init(message: error.localizedDescription))
+                }
+            }
         }
-
-        var bodyDescription: String {
-            LUITranslation.request_admin_access_description.l10n
-        }
-
-        var continueButtonActionTitle: String {
-            LUITranslation.continue_core_button.l10n
-        }
-
-        func continueActionButtonTapped() {}
     }
 }
 

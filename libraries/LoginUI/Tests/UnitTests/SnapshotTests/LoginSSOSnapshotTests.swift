@@ -21,17 +21,25 @@
 
 #if os(iOS)
 
-import XCTest
+import ProtonCoreLogin
 @testable import ProtonCoreLoginUI
 #if canImport(ProtonCoreTestingToolkitUnitTestsCore)
-import ProtonCoreTestingToolkitUnitTestsServices
 import ProtonCoreTestingToolkitUnitTestsCore
+import ProtonCoreTestingToolkitUnitTestsServices
 #endif
+import XCTest
 import SwiftUI
 
 class LoginSSOSnapshotTests: SnapshotTestCase {
 
     let defaultPrecision: Float = 0.98
+
+    let unprivatizationInfo = UnprivatizationInfo(
+        state: .pending,
+        adminEmail: "admin@privacybydefault.com",
+        orgKeyFingerprintSignature: .init(value: ""),
+        orgPublicKey: .init(value: "")
+    )
 
     @MainActor
     func testJoinOrganizationView() {
@@ -57,6 +65,7 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
         let view = SignInRequestView(viewModel: .init(dependencies: .init(
             mode: .requestForAdminApproval(code: "64S3"),
             userData: .dummy,
+            unprivatizationInfo: self.unprivatizationInfo,
             ssoNavigationDelegate: nil
         )))
         let viewController = UIHostingController(rootView: view)
@@ -69,6 +78,7 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
         let view = SignInRequestView(viewModel: .init(dependencies: .init(
             mode: .requestApproveFromAnotherDevice(code: "64S3", devices: [.mock]),
             userData: .dummy,
+            unprivatizationInfo: self.unprivatizationInfo,
             ssoNavigationDelegate: nil
         )))
         let viewController = UIHostingController(rootView: view)
@@ -81,6 +91,7 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
         let view = SignInRequestView(viewModel: .init(dependencies: .init(
             mode: .approvingAccess,
             userData: .dummy,
+            unprivatizationInfo: self.unprivatizationInfo,
             ssoNavigationDelegate: nil
         )))
         let viewController = UIHostingController(rootView: view)
@@ -93,6 +104,7 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
         let view = EnterBackupPasswordView(viewModel: .init(dependencies: .init(
             userData: .dummy,
             apiService: nil,
+            unprivatizationInfo: self.unprivatizationInfo,
             ssoNavigationDelegate: nil
         )))
         let viewController = UIHostingController(rootView: view)
@@ -115,7 +127,12 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
     }
 
     func testRequestAdminAccess() {
-        let viewController = RequestAdminAccessViewController()
+        let viewController = RequestAdminAccessViewController(dependencies: .init(
+            apiService: nil,
+            userData: .dummy,
+            unprivatizationInfo: self.unprivatizationInfo,
+            ssoNavigationDelegate: nil
+        ))
 
         checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
     }
