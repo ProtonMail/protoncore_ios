@@ -38,9 +38,13 @@ struct PlanDetailView: View {
         VStack(alignment: .leading, spacing: Theme.spacing.standard) {
             ForEach(viewModel.descriptionEntitlements, id: \.self) { entitlement in
                 HStack(alignment: .top) {
-                    AsyncImage(url: viewModel.iconURLforEntitlement(entitlement)) { image in
-                        image.image?.resizable()
+                    PCAsyncImage(url: viewModel.iconURLforEntitlement(entitlement),
+                                 placeholderImage: Theme.icon.checkmark) { image in
+                        image
+                            .resizable()
                             .renderingMode(.template)
+                    } placeholder: {
+                        ProgressView()
                     }
                     .foregroundColor(Theme.color.iconAccent)
                     .frame(width: Constants.iconSize, height: Constants.iconSize)
