@@ -26,6 +26,12 @@ public struct HeaderTitleView: View {
 
     private struct Constants {
         static var decorationSize: CGFloat = 16
+
+        static var titleTextSize: CGFloat = 17
+        static var titleFontWeight: Font.Weight = .semibold
+
+        static var descriptionTextSize: CGFloat = 13
+        static var descriptionFontWeight: Font.Weight = .regular
     }
 
     let title: String
@@ -37,15 +43,17 @@ public struct HeaderTitleView: View {
         VStack(alignment: .leading, spacing: Theme.spacing.standard) {
             HStack {
                 Text(title)
-                    .font(.body)
-                    .fontWeight(.semibold)
-                .fontWeight(.semibold)
+                    .font(.system(size: Constants.titleTextSize))
+                    .fontWeight(Constants.titleFontWeight)
                 if let decorationsUrl = decorations {
                     ForEach(decorationsUrl, id: \.self) { decoration in
-                        AsyncImage(url: decoration) { image in
-                            image.image?.resizable()
+                        PCAsyncImage(url: decoration, placeholderImage: nil) { image in
+                            image
+                                .resizable()
                                 .renderingMode(.template)
                                 .opacity(showChevron ? 1 : 0)
+                        } placeholder: {
+                            ProgressView()
                         }
                         .foregroundColor(Theme.color.iconAccent)
                         .frame(width: Constants.decorationSize, height: Constants.decorationSize)
@@ -53,8 +61,8 @@ public struct HeaderTitleView: View {
                 }
             }
             Text(description)
-                .font(.caption)
-                .fontWeight(.regular)
+                .font(.system(size: Constants.descriptionTextSize))
+                .fontWeight(Constants.descriptionFontWeight)
                 .foregroundColor(Theme.color.textWeak)
         }
     }
