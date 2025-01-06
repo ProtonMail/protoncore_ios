@@ -159,6 +159,7 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding {
             }
 
             _ = try await transactionHandler.processTransaction(transaction.toProtonTransaction(), plan: matchingPlan)
+            await transaction.finish()
             debugPrint("Transaction completed ✅")
             return matchingPlan
         case .pending:
