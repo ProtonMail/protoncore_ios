@@ -42,8 +42,8 @@ final class ProxyTest: XCTestCase {
         client.fetchDynamicMockRoutes { result in
             switch result {
             case .success(let scenarios):
-                XCTAssertFalse(scenarios.isEmpty, "The scenarios list should not be empty.")
                 XCTAssertNotNil(scenarios.first?.name, "Scenario name should not be nil.")
+                XCTAssertFalse(scenarios.isEmpty, "The scenarios list should not be empty.")
             case .failure(let error):
                 XCTFail("Failed to fetch scenarios: \(error)")
             }
@@ -53,6 +53,21 @@ final class ProxyTest: XCTestCase {
         wait(for: [expectation], timeout: defaultTimeout)
     }
 
+    func testEnableDynamicMock() {
+        let expectation = self.expectation(description: "Fetch scenarios")
+        let dynamicMock = DynamicMockBody(name: "loginWithSrp", enabled: false)
+
+        client.addDynamicMockScenario(dynamicMock: dynamicMock) { result in
+            switch result {
+            case .success(let scenarios):
+                print(scenarios)
+            case .failure(let error):
+                XCTFail("Failed to fetch scenarios: \(error)")
+            }
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: defaultTimeout)
+    }
 
     func testRegisterAStaticMock() {
         var expectation = self.expectation(description: "Register a static mock")
