@@ -33,14 +33,12 @@ class ObservabilityAggregatorImpl: ObservabilityAggregator {
     var aggregatedEvents = Atomic<[AggregableObservabilityEvent]>([])
 
     func aggregate<Labels: Encodable & Equatable>(event: ObservabilityEvent<PayloadWithLabels<Labels>>) {
-        guard let index = aggregatedEvents.value.firstIndex(where: { $0.isSameAs(event: event) }) else {
-            aggregatedEvents.mutate { events in
+        aggregatedEvents.mutate { events in
+            if let index = events.firstIndex(where: { $0.isSameAs(event: event) }) {
+                events[index].increment()
+            } else {
                 events.append(.init(event: event))
             }
-            return
-        }
-        aggregatedEvents.mutate { events in
-            events[index].increment()
         }
     }
 
