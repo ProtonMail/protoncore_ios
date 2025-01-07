@@ -331,6 +331,8 @@ public struct ProtonIconSet: Sendable {
 
     public let image = ProtonIcon(name: "ic-image")
 
+    public let imageSlash = ProtonIcon(name: "ic-image-slash")
+
     public let inbox = ProtonIcon(name: "ic-inbox")
 
     public let infoCircleFilled = ProtonIcon(name: "ic-info-circle-filled")
