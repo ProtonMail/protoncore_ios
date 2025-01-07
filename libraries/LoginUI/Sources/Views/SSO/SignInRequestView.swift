@@ -88,8 +88,6 @@ public struct SignInRequestView: View {
             displayConfirmationCode(code: code)
             devicesContainer
                 .padding(.top, Constants.itemSpacing)
-        case .approvingAccess:
-            confirmationCodeInput
         }
     }
 
@@ -140,19 +138,6 @@ public struct SignInRequestView: View {
             RoundedRectangle(cornerRadius: Constants.cornerRadius)
                 .stroke(ColorProvider.SeparatorNorm, lineWidth: 1)
         )
-    }
-
-    @ViewBuilder
-    private var confirmationCodeInput: some View {
-        PCTextField(
-            style: .constant(.init(mode: .idle)),
-            content: $viewModel.confirmationCodeContent
-        )
-
-        Text(LUITranslation.sign_in_request_disclaimer.l10n)
-            .font(.subheadline)
-            .foregroundColor(ColorProvider.TextWeak)
-            .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     @ViewBuilder
@@ -213,24 +198,6 @@ public struct SignInRequestView: View {
         let mode = SignInRequestView.ViewMode.requestForAdminApproval(code: "64S3")
         SignInRequestView(viewModel: .init(dependencies: .init(
             mode: mode,
-            userData: .init(
-                credential: .none,
-                user: .mock,
-                salts: [],
-                passphrases: [:],
-                addresses: [],
-                scopes: []
-            ),
-            unprivatizationInfo: .init(state: .ready, adminEmail: "admin@privacybydefault.com", orgKeyFingerprintSignature: .init(value: ""), orgPublicKey: .init(value: "")),
-            ssoNavigationDelegate: nil
-        )))
-    }
-}
-
-#Preview("ApprovingAccess") {
-    NavigationView {
-        SignInRequestView(viewModel: .init(dependencies: .init(
-            mode: .approvingAccess,
             userData: .init(
                 credential: .none,
                 user: .mock,
