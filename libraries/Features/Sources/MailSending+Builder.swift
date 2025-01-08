@@ -418,6 +418,7 @@ class SendBuilder {
 
     func buildAddressPackages() -> [Result<AddressPackageBase, Error>] {
         let group = DispatchGroup()
+        let resultsQueue = DispatchQueue(label: "ch.protonmail.ios.protoncore.features.builders.buildAddressPackages")
 
         var results: [(UUID, Result<AddressPackageBase, Error>)] = []
         let requests = builders.map { (UUID(), $0) }
@@ -425,8 +426,10 @@ class SendBuilder {
         requests.forEach { uuid, builder in
             group.enter()
             builder.build { (result: Result<AddressPackageBase, Error>) in
-                results.append((uuid, result))
-                group.leave()
+                resultsQueue.async {
+                    results.append((uuid, result))
+                    group.leave()
+                }
             }
         }
         group.wait()
