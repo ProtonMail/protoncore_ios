@@ -39,7 +39,6 @@ extension SignInRequestView {
     enum ViewMode {
         case requestForAdminApproval(code: String)
         case requestApproveFromAnotherDevice(code: String, devices: [AuthDevice])
-        case approvingAccess
     }
 
     @MainActor
@@ -50,8 +49,6 @@ extension SignInRequestView {
         private let unprivatizationInfo: UnprivatizationInfo
 
         weak var ssoNavigationDelegate: GlobalSSONavigationDelegate?
-
-        @Published var confirmationCodeContent: PCTextFieldContent = .init(title: LUITranslation.confirmation_code.l10n)
 
         var adminEmail: String { unprivatizationInfo.adminEmail }
         var memberEmail: String { userData.user.email ?? "unknown" }
@@ -70,7 +67,6 @@ extension SignInRequestView {
             switch mode {
             case .requestForAdminApproval: return LUITranslation.share_confirmation_code_title.l10n
             case .requestApproveFromAnotherDevice: return LUITranslation.approve_sign_in_another_device_title.l10n
-            case .approvingAccess: return LUITranslation.sign_in_request_title.l10n
             }
         }
 
@@ -83,7 +79,6 @@ extension SignInRequestView {
                     memberEmail
                 )
             case .requestApproveFromAnotherDevice: return LUITranslation.approve_sign_in_another_device_description.l10n
-            case .approvingAccess: return LUITranslation.sign_in_request_description.l10n
             }
         }
 
@@ -91,7 +86,6 @@ extension SignInRequestView {
             switch mode {
             case .requestForAdminApproval: return LUITranslation.use_backup_password_instead.l10n
             case .requestApproveFromAnotherDevice: return LUITranslation.use_backup_password_instead.l10n
-            case .approvingAccess: return LUITranslation.yes_it_was_me.l10n
             }
         }
 
@@ -99,7 +93,6 @@ extension SignInRequestView {
             switch mode {
             case .requestForAdminApproval: return LUITranslation._core_cancel_button.l10n
             case .requestApproveFromAnotherDevice: return LUITranslation.ask_administrator_for_help.l10n
-            case .approvingAccess: return LUITranslation.no_it_wasnt_me.l10n
             }
         }
 
@@ -109,8 +102,6 @@ extension SignInRequestView {
                 ssoNavigationDelegate?.showEnterBackupPassword(data: userData, unprivatizationInfo: unprivatizationInfo)
             case .requestApproveFromAnotherDevice:
                 ssoNavigationDelegate?.showEnterBackupPassword(data: userData, unprivatizationInfo: unprivatizationInfo)
-            case .approvingAccess:
-                break
             }
 
         }
@@ -121,8 +112,6 @@ extension SignInRequestView {
                 ssoNavigationDelegate?.globalSSOLoginDidCancel()
             case .requestApproveFromAnotherDevice:
                 ssoNavigationDelegate?.showRequestAdminHelpConfirmation(data: userData, unprivatizationInfo: unprivatizationInfo)
-            case .approvingAccess:
-                break
             }
         }
     }

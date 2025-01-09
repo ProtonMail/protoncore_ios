@@ -36,6 +36,9 @@ public enum LSTranslation: TranslationsExposing {
     case _loginservice_error_generic
     case _loginservice_external_accounts_not_supported_popup_local_desc
     case _loginservice_external_accounts_address_required_popup_title
+    case _sso_code_doesnt_match
+    case _sso_invalid_code
+    case _sso_device_secret_not_found
 
     public var l10n: String {
         switch self {
@@ -47,6 +50,12 @@ public enum LSTranslation: TranslationsExposing {
             return localized(key: "Get a Proton Mail address linked to this account in your Proton web settings.", comment: "External accounts not supported popup local desc")
         case ._loginservice_external_accounts_address_required_popup_title:
             return localized(key: "Proton address required", comment: "External accounts address required popup title")
+        case ._sso_code_doesnt_match:
+            return localized(key: "Code doesn't match", comment: "SSO error displayed when the confirmation code introduced (in device B) does not match with the one in the device A")
+        case ._sso_invalid_code:
+            return localized(key: "Code isn't valid", comment: "SSO error displayed when the confirmation code is invalid (e.g. wrong length)")
+        case ._sso_device_secret_not_found:
+            return localized(key: "Device secret not found", comment: "SSO error displayed when there was an error while validating the code")
         }
     }
 }

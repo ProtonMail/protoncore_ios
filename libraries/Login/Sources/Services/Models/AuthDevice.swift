@@ -33,6 +33,8 @@ public struct AuthDevice: Codable, Equatable {
     public var localizedClientName: String
     public var platform: Platform?
     public var lastActivityTime: String
+    public var activationToken: String?
+    public var activationAddressID: String?
 
     public enum State: Int, Codable, Equatable {
         case inactive = 0
@@ -62,10 +64,13 @@ public struct AuthDevice: Codable, Equatable {
     public init(
         ID: String,
         deviceToken: String?,
-        state: State, name: String,
+        state: State,
+        name: String,
         localizedClientName: String,
         platform: Platform?,
-        lastActivityTime: String
+        lastActivityTime: String,
+        activationToken: String?,
+        activationAddressID: String?
     ) {
         self.ID = ID
         self.deviceToken = deviceToken
@@ -74,6 +79,8 @@ public struct AuthDevice: Codable, Equatable {
         self.localizedClientName = localizedClientName
         self.platform = platform
         self.lastActivityTime = lastActivityTime
+        self.activationToken = activationToken
+        self.activationAddressID = activationAddressID
     }
 }
 
@@ -87,7 +94,9 @@ public extension AuthDevice {
             name: "Your device",
             localizedClientName: "Proton Mail",
             platform: .iOS,
-            lastActivityTime: "2024-12-12T14:40:37.537"
+            lastActivityTime: "2024-12-12T14:40:37.537",
+            activationToken: nil,
+            activationAddressID: nil
         )
     }
 }

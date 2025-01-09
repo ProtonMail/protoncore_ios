@@ -40,6 +40,7 @@ public struct ActivateAuthDevice {
         self.getEncryptedSecret = GetEncryptedSecret()
     }
 
+    // Activate local device
     public func invoke(
         userId: String,
         passphrase: String
@@ -57,6 +58,28 @@ public struct ActivateAuthDevice {
         // Call POST /auth/v4/devices/\(deviceID) and send the EncryptedSecret
         let activateAuthDeviceRequest = ActivateAuthDeviceRequest(
             deviceID: deviceSecret.deviceId,
+            encryptedSecret: encryptedSecret
+        )
+        let (_, _): (_, DefaultResponse) = try await apiService.perform(request: activateAuthDeviceRequest)
+    }
+
+    // Activate another device
+    public func invoke(
+        userId: String,
+        deviceId: String,
+        deviceSecret: String,
+        passphrase: String
+    ) async throws {
+        guard let encryptedSecret = try getEncryptedSecret.invoke(
+            passphrase: passphrase,
+            deviceSecret: deviceSecret
+        ) else {
+            throw SSOLoginError.encryptedSecretNotFound
+        }
+
+        // Call POST /auth/v4/devices/\(deviceID) and send the EncryptedSecret
+        let activateAuthDeviceRequest = ActivateAuthDeviceRequest(
+            deviceID: deviceId,
             encryptedSecret: encryptedSecret
         )
         let (_, _): (_, DefaultResponse) = try await apiService.perform(request: activateAuthDeviceRequest)

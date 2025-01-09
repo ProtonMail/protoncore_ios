@@ -46,12 +46,14 @@ public struct User: Codable, Equatable, CustomDebugStringConvertible {
 
     public let accountRecovery: AccountRecovery?
     public let lockedFlags: LockedFlags?
-    // public let driveEarlyAccess: Int
-    // public let mailSettings: MailSetting
-    // public let addresses: [Address]
+    public let flags: UserFlags?
 
     public var hasAnySubscription: Bool {
         !subscribed.isEmpty
+    }
+
+    public var isSSOAccount: Bool {
+        flags?.sso ?? false
     }
 
     public struct Subscribed: OptionSet, Codable, Equatable {
@@ -91,7 +93,8 @@ public struct User: Codable, Equatable, CustomDebugStringConvertible {
                 displayName: String?,
                 keys: [Key],
                 accountRecovery: AccountRecovery? = nil,
-                lockedFlags: LockedFlags? = nil) {
+                lockedFlags: LockedFlags? = nil,
+                flags: UserFlags? = nil) {
         self.ID = ID
         self.name = name
         self.usedSpace = usedSpace
@@ -115,6 +118,7 @@ public struct User: Codable, Equatable, CustomDebugStringConvertible {
         self.keys = keys
         self.accountRecovery = accountRecovery
         self.lockedFlags = lockedFlags
+        self.flags = flags
     }
 
     public var description: String {
@@ -459,6 +463,23 @@ extension UserInfo {
     }
 }
 
+// MARK: UserFlags
+
+public struct UserFlags: Codable, Equatable {
+    public let hasTemporaryPassword: Bool
+    public let sso: Bool
+
+    public init(hasTemporaryPassword: Bool, sso: Bool) {
+        self.hasTemporaryPassword = hasTemporaryPassword
+        self.sso = sso
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case hasTemporaryPassword = "has-temporary-password"
+        case sso
+    }
+}
+
 // MARK: LockedFlags
 public struct LockedFlags: OptionSet, Codable {
 
@@ -577,6 +598,11 @@ extension UserInfo {
 }
 
 #if DEBUG
+public extension UserFlags {
+    static var `default`: UserFlags {
+        .init(hasTemporaryPassword: false, sso: false)
+    }
+}
 public extension User {
     static var mock: User {
         .init(
@@ -599,7 +625,8 @@ public extension User {
             orgPrivateKey: nil,
             email: "proton@privacybydefault.com",
             displayName: "Proton",
-            keys: []
+            keys: [],
+            flags: .default
         )
     }
 }

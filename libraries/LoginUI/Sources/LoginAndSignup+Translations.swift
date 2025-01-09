@@ -192,6 +192,7 @@ public enum LUITranslation: TranslationsExposing {
     case to_your_organization
     case sso_login_error_screen_title
     case sso_login_error_screen_description
+    case unknown
 
     public var l10n: String {
         switch self {
@@ -467,7 +468,7 @@ public enum LUITranslation: TranslationsExposing {
         case .sign_in_request_title:
             return localized(key: "Sign-in requested on another device. Was it you?", comment: "Sign in request title for device B")
         case .sign_in_request_description:
-            return localized(key: "Check that the confirmation code match the code on your other device.", comment: "Sign in request description for device B")
+            return localized(key: "Enter the confirmation code we sent on your other device for %@.", comment: "Sign in request description for device B")
         case .confirmation_code:
             return localized(key: "Confirmation code", comment: "Textfield title")
         case .sign_in_request_disclaimer:
@@ -526,6 +527,8 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Sign in with single sign-on", comment: "SSO Signing in error screen title")
         case .sso_login_error_screen_description:
             return localized(key: "Your organization uses SSO. Continue to sign in with your third-party SSO provider.", comment: "SSO Signing in error screen description")
+        case .unknown:
+            return localized(key: "Unknown", comment: "Used when some account value is not found. Should never happen.")
         }
     }
 }
