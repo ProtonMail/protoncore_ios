@@ -1,8 +1,8 @@
 //
-//  GetAuthDevices.swift
-//  ProtonCore-Login - Created on 26.11.24.
+//  DeleteAuthDevice.swift
+//  ProtonCore-Login - Created on 09.01.25.
 //
-//  Copyright (c) 2024 Proton Technologies AG
+//  Copyright (c) 2025 Proton Technologies AG
 //
 //  This file is part of Proton Technologies AG and ProtonCore.
 //
@@ -20,22 +20,18 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 #if os(iOS)
-import UIKit
 import ProtonCoreServices
 
-/// Calls AuthDevices request and returns the auth devices of the account
-public struct GetAuthDevices {
-    let apiService: APIService
+public struct DeleteAuthDevice {
+    private let apiService: APIService
 
     public init(apiService: APIService) {
         self.apiService = apiService
     }
 
-    public func invoke() async throws -> [AuthDevice] {
-        let authDevicesRequest = AuthDevicesRequest()
-        let (_, result): (_, AuthDevicesResponse) = try await apiService.perform(request: authDevicesRequest)
-
-        return result.authDevices
+    public func invoke(deviceId: String) async throws {
+        let request = DeleteAuthDeviceRequest(deviceID: deviceId)
+        _ = try await apiService.perform(request: request)
     }
 }
 

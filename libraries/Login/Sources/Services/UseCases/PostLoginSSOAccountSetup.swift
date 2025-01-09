@@ -34,7 +34,6 @@ public enum SSOLoginScreen {
     )
     case enterBackupPassword(UnprivatizationInfo)
     case requestApproveFromAdmin(code: String, unprivatizationInfo: UnprivatizationInfo)
-    case unimplemented
 }
 
 public final class PostLoginSSOAccountSetup {
@@ -43,23 +42,24 @@ public final class PostLoginSSOAccountSetup {
         case requestAdminHelp
     }
 
-    let apiService: APIService
-    let userData: LoginData
+    private let apiService: APIService
+    private let userData: LoginData
 
-    let createAuthDevice: CreateAuthDevice
-    let getUnprivatizationInfo: GetUnprivatizationInfo
-    let verifyUnprivatization: VerifyUnprivatization
-    let checkDeviceSecret: CheckDeviceSecret
-    let decryptEncryptedSecret: DecryptEncryptedSecret
-    let buildAndValidatePassphrases: BuildAndValidatePassphrases
-    let getAuthDevices: GetAuthDevices
-    let generateConfirmationCode: GenerateConfirmationCode
+    private let deviceSecretRepository: DeviceSecretRepository
+    private let createAuthDevice: CreateAuthDevice
+    private let getUnprivatizationInfo: GetUnprivatizationInfo
+    private let verifyUnprivatization: VerifyUnprivatization
+    private let checkDeviceSecret: CheckDeviceSecret
+    private let decryptEncryptedSecret: DecryptEncryptedSecret
+    private let buildAndValidatePassphrases: BuildAndValidatePassphrases
+    private let getAuthDevices: GetAuthDevices
+    private let generateConfirmationCode: GenerateConfirmationCode
 
     public init(apiService: APIService, userData: LoginData) {
         self.apiService = apiService
         self.userData = userData
 
-        let deviceSecretRepository = DeviceSecretRepository()
+        self.deviceSecretRepository = DeviceSecretRepository()
 
         self.createAuthDevice = CreateAuthDevice(
             userId: userData.user.ID,
@@ -87,6 +87,7 @@ public final class PostLoginSSOAccountSetup {
         case validSecret(passphrases: [String: String])
         case noSecret
         case invalidSecret
+        case inactiveSecret
     }
 
     public func invoke(mode: Mode) async throws -> SSOLoginScreen {
@@ -107,17 +108,11 @@ public final class PostLoginSSOAccountSetup {
             return .setupBackupPassword(verifyInfo)
         case .validSecret(let passphrases):
             return .loginSuccess(userData.updated(passphrases: passphrases))
+        case .inactiveSecret:
+            return try await loadScreenWithSecretAvailable()
         case .noSecret, .invalidSecret:
             try await createAuthDevice.invoke(addresses: userData.addresses)
-            let authDevices = try await getAuthDevices.invoke()
-            let unprivatizationInfo = try await getUnprivatizationInfo.invoke()
-            guard !authDevices.isEmpty else { return .enterBackupPassword(unprivatizationInfo) }
-            let code = try generateConfirmationCode.invoke(userId: userData.user.ID)
-            return .requestApproveFromAnotherDevice(
-                code: code,
-                devices: authDevices,
-                unprivatizationInfo: unprivatizationInfo
-            )
+            return try await loadScreenWithSecretAvailable()
         }
     }
 
@@ -126,14 +121,20 @@ public final class PostLoginSSOAccountSetup {
             return .firstLogin
         }
 
-        let encryptedSecret = try await checkDeviceSecret.invoke(userId: userData.user.ID)
-        guard let decryptedSecret = try decryptEncryptedSecret.invoke(
-            userId: userData.user.ID,
-            encryptedSecret: encryptedSecret
-        ) else {
+        switch try await checkDeviceSecret.invoke(userId: userData.user.ID) {
+        case .success(let encryptedSecret):
+            guard let decryptedSecret = try decryptEncryptedSecret.invoke(
+                userId: userData.user.ID,
+                encryptedSecret: encryptedSecret
+            ) else {
+                return .noSecret
+            }
+            return try deviceSecretState(userData: userData, decryptedSecret: decryptedSecret)
+        case .inactiveSecret:
+            return .inactiveSecret
+        case .noSecret:
             return .noSecret
         }
-        return try deviceSecretState(userData: userData, decryptedSecret: decryptedSecret)
     }
 
     private func deviceSecretState(userData: LoginData, decryptedSecret: String) throws -> State {
@@ -142,6 +143,7 @@ public final class PostLoginSSOAccountSetup {
             salts: userData.salts,
             userKeys: userData.user.keys
         ) else {
+            try deviceSecretRepository.delete(for: userData.user.ID)
             return .invalidSecret
         }
         return .validSecret(passphrases: passphrases)
@@ -152,5 +154,19 @@ public final class PostLoginSSOAccountSetup {
         let unprivatizationInfo = try await getUnprivatizationInfo.invoke()
         return .requestApproveFromAdmin(code: code, unprivatizationInfo: unprivatizationInfo)
     }
+
+    private func loadScreenWithSecretAvailable() async throws -> SSOLoginScreen {
+        let authDevices = try await getAuthDevices.invoke()
+            .filter({ $0.state == .active })
+        let unprivatizationInfo = try await getUnprivatizationInfo.invoke()
+        guard !authDevices.isEmpty else { return .enterBackupPassword(unprivatizationInfo) }
+        let code = try generateConfirmationCode.invoke(userId: userData.user.ID)
+        return .requestApproveFromAnotherDevice(
+            code: code,
+            devices: authDevices,
+            unprivatizationInfo: unprivatizationInfo
+        )
+    }
+
 }
 #endif

@@ -21,16 +21,22 @@
 
 #if os(iOS)
 
-import SwiftUI
+import Combine
+import ProtonCoreLog
 import ProtonCoreLogin
+import ProtonCoreServices
 import ProtonCoreUIFoundations
+import SwiftUI
 
 extension SignInRequestView {
     struct Dependencies {
         let mode: SignInRequestView.ViewMode
+        let apiService: APIService?
         let userData: LoginData
         let unprivatizationInfo: UnprivatizationInfo
         let ssoNavigationDelegate: GlobalSSONavigationDelegate?
+        let onDeviceActivatedAction: () -> Void
+        let onDeviceRejectedAction: () -> Void
     }
 }
 
@@ -47,20 +53,47 @@ extension SignInRequestView {
         @Published var devices: [AuthDevice] = []
         private let userData: LoginData
         private let unprivatizationInfo: UnprivatizationInfo
+        private var deleteAuthDevice: DeleteAuthDevice?
+
+        let onDeviceActivatedAction: () -> Void
+        let onDeviceRejectedAction: () -> Void
+
+        private var authDeviceLoop: AuthDevicePollingLoop?
 
         weak var ssoNavigationDelegate: GlobalSSONavigationDelegate?
 
         var adminEmail: String { unprivatizationInfo.adminEmail }
-        var memberEmail: String { userData.user.email ?? "unknown" }
+        var memberEmail: String { userData.user.email ?? LUITranslation.unknown.l10n }
+
+        private var cancellables: Set<AnyCancellable> = .init()
 
         init(dependencies: Dependencies) {
             self.mode = dependencies.mode
             self.userData = dependencies.userData
             self.unprivatizationInfo = dependencies.unprivatizationInfo
             self.ssoNavigationDelegate = dependencies.ssoNavigationDelegate
+            self.onDeviceActivatedAction = dependencies.onDeviceActivatedAction
+            self.onDeviceRejectedAction = dependencies.onDeviceRejectedAction
+            if let apiService = dependencies.apiService,
+               let deviceSecret = try? DeviceSecretRepository().getByUserId(userId: userData.user.ID) {
+                authDeviceLoop = AuthDevicePollingLoop(
+                    apiService: apiService,
+                    observingDeviceId: deviceSecret.deviceId
+                )
+                self.deleteAuthDevice = DeleteAuthDevice(apiService: apiService)
+            }
             if case .requestApproveFromAnotherDevice(_, let devices) = mode {
                 self.devices = devices
             }
+        }
+
+        func startAuthDeviceLoop() {
+            authDeviceLoop?.start()
+            observePendingDevice()
+        }
+
+        func stopAuthDeviceLoop() {
+            authDeviceLoop?.stop()
         }
 
         var screenTitle: String {
@@ -114,6 +147,33 @@ extension SignInRequestView {
                 ssoNavigationDelegate?.showRequestAdminHelpConfirmation(data: userData, unprivatizationInfo: unprivatizationInfo)
             }
         }
+
+        private func observePendingDevice() {
+            authDeviceLoop?.authDeviceObserver
+                .receive(on: DispatchQueue.main)
+                .sink { [weak self] authDevice in
+                    guard let self else { return }
+                    switch authDevice.state {
+                    case .active, .activeNoAssociatedSession:
+                        authDeviceLoop?.stop()
+                        onDeviceActivatedAction()
+                    case .rejected:
+                        authDeviceLoop?.stop()
+                        onDeviceRejected(authDevice: authDevice)
+                    case .inactive, .pendingActivation, .pendingAdminActivation:
+                        // Do nothing and continue looping
+                        break
+                    }
+                }
+                .store(in: &cancellables)
+        }
+
+        private func onDeviceRejected(authDevice: AuthDevice) {
+            Task {
+                try? await self.deleteAuthDevice?.invoke(deviceId: authDevice.ID)
+                onDeviceRejectedAction()
+            }
+        }
     }
 }
 
@@ -126,7 +186,7 @@ extension AuthDevice {
 
     var lastActivityString: String {
         guard let lastActivityTime = TimeInterval(lastActivityTime) else {
-            return "Unknown"
+            return LUITranslation.unknown.l10n
         }
         return Self.timeFormatter.localizedString(for: Date(timeIntervalSince1970: lastActivityTime), relativeTo: Date())
     }

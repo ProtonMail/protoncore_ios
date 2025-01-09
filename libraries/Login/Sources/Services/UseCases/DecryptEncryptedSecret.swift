@@ -52,6 +52,7 @@ struct DecryptEncryptedSecret {
         guard let encryptedSecret,
               let deviceSecret = try deviceSecretRepository.getByUserId(userId: userId)?.secret,
               let deviceSecretData = Data(base64Encoded: deviceSecret) else {
+            try deviceSecretRepository.delete(for: userId)
             return nil
         }
 

@@ -64,9 +64,12 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
     func testSignInRequestViewModeRequestForAdminApproval() {
         let view = SignInRequestView(viewModel: .init(dependencies: .init(
             mode: .requestForAdminApproval(code: "64S3"),
+            apiService: nil,
             userData: .dummy,
             unprivatizationInfo: self.unprivatizationInfo,
-            ssoNavigationDelegate: nil
+            ssoNavigationDelegate: nil,
+            onDeviceActivatedAction: {},
+            onDeviceRejectedAction: {}
         )))
         let viewController = UIHostingController(rootView: view)
 
@@ -77,9 +80,12 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
     func testSignInRequestViewModeRequestApproveFromAnotherDevice() {
         let view = SignInRequestView(viewModel: .init(dependencies: .init(
             mode: .requestApproveFromAnotherDevice(code: "64S3", devices: [.mock]),
+            apiService: nil,
             userData: .dummy,
             unprivatizationInfo: self.unprivatizationInfo,
-            ssoNavigationDelegate: nil
+            ssoNavigationDelegate: nil,
+            onDeviceActivatedAction: {},
+            onDeviceRejectedAction: {}
         )))
         let viewController = UIHostingController(rootView: view)
 
@@ -88,11 +94,11 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
 
     @MainActor
     func testSignInRequestViewModeApprovingAccess() {
-        let view = SignInRequestView(viewModel: .init(dependencies: .init(
-            mode: .approvingAccess,
+        let view = GrantAccessView(viewModel: .init(dependencies: .init(
+            apiService: nil,
+            authDevices: [.mock, .mock],
             userData: .dummy,
-            unprivatizationInfo: self.unprivatizationInfo,
-            ssoNavigationDelegate: nil
+            navigationDelegate: nil
         )))
         let viewController = UIHostingController(rootView: view)
 
@@ -114,14 +120,22 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
 
     @MainActor
     func testAccessGranted() {
-        let viewController = AccessGrantedDeniedViewController(mode: .accessGranted)
+        let view = AccessGrantedDeniedView(viewModel: .init(dependencies: .init(
+            mode: .accessGranted,
+            ssoNavigationDelegate: nil
+        )))
+        let viewController = UIHostingController(rootView: view)
 
         checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
     }
 
     @MainActor
     func testAccessDenied() {
-        let viewController = AccessGrantedDeniedViewController(mode: .accessDenied)
+        let view = AccessGrantedDeniedView(viewModel: .init(dependencies: .init(
+            mode: .accessDenied,
+            ssoNavigationDelegate: nil
+        )))
+        let viewController = UIHostingController(rootView: view)
 
         checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
     }
@@ -133,12 +147,6 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
             unprivatizationInfo: self.unprivatizationInfo,
             ssoNavigationDelegate: nil
         ))
-
-        checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
-    }
-
-    func testAdminGrantAccess() {
-        let viewController = AdminGrantAccessViewController()
 
         checkSnapshots(controller: viewController, perceptualPrecision: defaultPrecision)
     }

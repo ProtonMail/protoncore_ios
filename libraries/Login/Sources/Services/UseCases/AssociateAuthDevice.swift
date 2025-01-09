@@ -27,8 +27,9 @@ import ProtonCoreServices
  ///
  /// Return an EncryptedSecret (that can be decrypted with a DeviceSecret).
 struct AssociateAuthDevice {
-    let apiService: APIService
-    let deviceSecretRepository: DeviceSecretRepositoryProtocol
+    private let apiService: APIService
+    private let deviceSecretRepository: DeviceSecretRepositoryProtocol
+    private let deleteAuthDevice: DeleteAuthDevice
 
     enum AssociateDeviceResult: Equatable {
         case deviceNotFound
@@ -46,6 +47,7 @@ struct AssociateAuthDevice {
     ) {
         self.apiService = apiService
         self.deviceSecretRepository = deviceSecretRepository
+        self.deleteAuthDevice = DeleteAuthDevice(apiService: apiService)
     }
 
     func invoke(
@@ -63,14 +65,23 @@ struct AssociateAuthDevice {
             }
             return .success(encryptedSecret)
         } catch {
-            return handleAssociateDeviceError(error: error, userId: userId)
+            return await handleAssociateDeviceError(
+                error: error,
+                userId: userId,
+                deviceId: deviceId
+            )
         }
     }
 
-    private func handleAssociateDeviceError(error: Error, userId: String) -> AssociateDeviceResult {
+    private func handleAssociateDeviceError(
+        error: Error,
+        userId: String,
+        deviceId: String
+    ) async -> AssociateDeviceResult {
         switch error.bestShotAtReasonableErrorCode {
         case APIErrorCode.authDeviceNotFound:
             PMLog.error("Associate AuthDevice error: Not found")
+            try? await deleteAuthDevice.invoke(deviceId: deviceId)
             return .deviceNotFound
         case APIErrorCode.authDeviceNotActive:
             PMLog.error("Associate AuthDevice error: Not active")
@@ -81,6 +92,7 @@ struct AssociateAuthDevice {
             return .deviceTokenInvalid
         case APIErrorCode.authDeviceRejected:
             PMLog.error("Associate AuthDevice error: Rejected")
+            try? await deleteAuthDevice.invoke(deviceId: deviceId)
             return .deviceRejected
         case APIErrorCode.notAllowed:
             PMLog.error("Associate AuthDevice error: Not allowed")

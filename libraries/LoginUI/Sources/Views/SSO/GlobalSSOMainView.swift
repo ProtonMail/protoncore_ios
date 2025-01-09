@@ -28,8 +28,9 @@ struct GlobalSSOMainView: View {
 
     var body: some View {
         mainView
+            .navigationBarBackButtonHidden()
             .task {
-                await viewModel.startPostLoginSetup()
+                await viewModel.invokePostLoginSetup()
             }
     }
 
@@ -46,6 +47,8 @@ struct GlobalSSOMainView: View {
             SignInRequestView(viewModel: .init(dependencies: dependencies))
         case .enterBackupPassword(let dependencies):
             EnterBackupPasswordView(viewModel: .init(dependencies: dependencies))
+        case .accessGrantedDenied(let dependencies):
+            AccessGrantedDeniedView(viewModel: .init(dependencies: dependencies))
         }
     }
 }

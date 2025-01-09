@@ -30,6 +30,12 @@ struct CheckDeviceSecret {
     let deviceSecretRepository: DeviceSecretRepositoryProtocol
     let associateAuthDevice: AssociateAuthDevice
 
+    enum DeviceSecretResult {
+        case success(String)
+        case inactiveSecret
+        case noSecret
+    }
+
     init(
         apiService: APIService,
         deviceSecretRepository: DeviceSecretRepositoryProtocol
@@ -42,12 +48,12 @@ struct CheckDeviceSecret {
         )
     }
 
-    func invoke(userId: String) async throws -> String? {
+    func invoke(userId: String) async throws -> DeviceSecretResult {
         let deviceSecret = try deviceSecretRepository.getByUserId(userId: userId)
         guard let deviceId = deviceSecret?.deviceId,
               let deviceToken = deviceSecret?.token else {
             PMLog.info("Device Secret not found")
-            return nil
+            return .noSecret
         }
         let associateResult = await associateAuthDevice.invoke(
             userId: userId,
@@ -55,13 +61,14 @@ struct CheckDeviceSecret {
             deviceToken: deviceToken
         )
         switch associateResult {
-        case .deviceNotFound: return nil
-        case .deviceNotActive: return nil
-        case .deviceTokenInvalid: return nil
-        case .deviceRejected: return nil
-        case .sessionAlreadyAssociated: return nil
-        case .unknownError: return nil
-        case .success(let encryptedSecret): return encryptedSecret
+        case .deviceNotActive: return .inactiveSecret
+        case .deviceNotFound,
+                .deviceTokenInvalid,
+                .deviceRejected,
+                .sessionAlreadyAssociated,
+                .unknownError:
+            return .noSecret
+        case .success(let encryptedSecret): return .success(encryptedSecret) 
         }
     }
 }

@@ -56,6 +56,7 @@ final class GlobalSSOMainViewController: UIHostingController<GlobalSSOMainView> 
     override public func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = ColorProvider.BackgroundNorm
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         navigationItem.leftBarButtonItem = .button(on: self, action: #selector(dismissViewController), image: IconProvider.crossBig)
     }
 

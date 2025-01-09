@@ -53,8 +53,6 @@ public struct AccessGrantedDeniedView: View {
             .padding(Constants.itemSpacing)
             .foregroundColor(ColorProvider.TextNorm)
             .frame(maxWidth: .infinity)
-            .bannerDisplayable(bannerState: $viewModel.bannerState,
-                               configuration: .default())
         }
         .background(
             ColorProvider.BackgroundNorm
@@ -93,13 +91,19 @@ public struct AccessGrantedDeniedView: View {
 #Preview("AccessGranted") {
     NavigationView {
         let mode = AccessGrantedDeniedView.ViewMode.accessGranted
-        AccessGrantedDeniedView(viewModel: .init(dependencies: .init(mode: mode)))
+        AccessGrantedDeniedView(viewModel: .init(dependencies: .init(
+            mode: mode,
+            ssoNavigationDelegate: nil
+        )))
     }
 }
 #Preview("AccessDenied") {
     NavigationView {
         let mode = AccessGrantedDeniedView.ViewMode.accessDenied
-        AccessGrantedDeniedView(viewModel: .init(dependencies: .init(mode: mode)))
+        AccessGrantedDeniedView(viewModel: .init(dependencies: .init(
+            mode: mode,
+            ssoNavigationDelegate: nil
+        )))
     }
 }
 

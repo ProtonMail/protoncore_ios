@@ -77,6 +77,12 @@ public struct SignInRequestView: View {
             ColorProvider.BackgroundNorm
                 .edgesIgnoringSafeArea(.all)
         )
+        .onAppear {
+            viewModel.startAuthDeviceLoop()
+        }
+        .onDisappear {
+            viewModel.stopAuthDeviceLoop()
+        }
     }
 
     @ViewBuilder
@@ -180,6 +186,7 @@ public struct SignInRequestView: View {
         let mode = SignInRequestView.ViewMode.requestApproveFromAnotherDevice(code: "64S3", devices: devices)
         SignInRequestView(viewModel: .init(dependencies: .init(
             mode: mode,
+            apiService: nil,
             userData: .init(
                 credential: .none,
                 user: .mock,
@@ -189,7 +196,9 @@ public struct SignInRequestView: View {
                 scopes: []
             ),
             unprivatizationInfo: .init(state: .ready, adminEmail: "admin@privacybydefault.com", orgKeyFingerprintSignature: .init(value: ""), orgPublicKey: .init(value: "")),
-            ssoNavigationDelegate: nil
+            ssoNavigationDelegate: nil,
+            onDeviceActivatedAction: {},
+            onDeviceRejectedAction: {}
         )))
     }
 }
@@ -198,6 +207,7 @@ public struct SignInRequestView: View {
         let mode = SignInRequestView.ViewMode.requestForAdminApproval(code: "64S3")
         SignInRequestView(viewModel: .init(dependencies: .init(
             mode: mode,
+            apiService: nil,
             userData: .init(
                 credential: .none,
                 user: .mock,
@@ -207,7 +217,9 @@ public struct SignInRequestView: View {
                 scopes: []
             ),
             unprivatizationInfo: .init(state: .ready, adminEmail: "admin@privacybydefault.com", orgKeyFingerprintSignature: .init(value: ""), orgPublicKey: .init(value: "")),
-            ssoNavigationDelegate: nil
+            ssoNavigationDelegate: nil,
+            onDeviceActivatedAction: {},
+            onDeviceRejectedAction: {}
         )))
     }
 }

@@ -27,6 +27,7 @@ import ProtonCoreUIFoundations
 extension AccessGrantedDeniedView {
     struct Dependencies {
         let mode: AccessGrantedDeniedView.ViewMode
+        let ssoNavigationDelegate: GlobalSSONavigationDelegate?
     }
 }
 
@@ -40,13 +41,13 @@ extension AccessGrantedDeniedView {
     @MainActor
     final class ViewModel: ObservableObject {
 
-        @Published var bannerState: BannerState = .none
         @Published var mode: ViewMode
 
-        @Published var confirmationCodeContent: PCTextFieldContent = .init(title: LUITranslation.confirmation_code.l10n)
+        weak var ssoNavigationDelegate: GlobalSSONavigationDelegate?
 
         init(dependencies: Dependencies) {
             self.mode = dependencies.mode
+            self.ssoNavigationDelegate = dependencies.ssoNavigationDelegate
         }
 
         var screenTitle: String {
@@ -70,7 +71,10 @@ extension AccessGrantedDeniedView {
             }
         }
 
-        func primaryActionButtonTapped() {}
+        func primaryActionButtonTapped() {
+            ssoNavigationDelegate?.globalSSOLoginDidCancel()
+        }
+
     }
 }
 
