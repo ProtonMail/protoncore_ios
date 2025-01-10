@@ -1,8 +1,8 @@
 //
-//  RequestAdminAccessViewController.swift
-//  ProtonCore-LoginUI - Created on 26/09/2024.
+//  ChangeBackupPasswordViewController.swift
+//  ProtonCore-LoginUI - Created on 10/01/2025.
 //
-//  Copyright (c) 2024 Proton AG
+//  Copyright (c) 2025 Proton AG
 //
 //  This file is part of Proton AG and ProtonCore.
 //
@@ -20,22 +20,22 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 #if os(iOS)
-
-import Foundation
-import ProtonCoreUIFoundations
 import SwiftUI
+import ProtonCoreLogin
+import ProtonCoreServices
+import ProtonCoreUIFoundations
 
-public final class RequestAdminAccessViewController: UIHostingController<RequestAdminAccessView> {
+public final class ChangeBackupPasswordViewController: UIHostingController<SetBackupPasswordView> {
 
-    let viewModel: RequestAdminAccessView.ViewModel
+    let viewModel: SetBackupPasswordView.ViewModel
 
      required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(dependencies: RequestAdminAccessView.Dependencies) {
-        self.viewModel = RequestAdminAccessView.ViewModel(dependencies: dependencies)
-        let view = RequestAdminAccessView(viewModel: self.viewModel)
+    init(dependencies: SetBackupPasswordView.Dependencies) {
+        self.viewModel = SetBackupPasswordView.ViewModel(dependencies: dependencies)
+        let view = SetBackupPasswordView(viewModel: self.viewModel)
         super.init(rootView: view)
     }
 

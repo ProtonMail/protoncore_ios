@@ -1,5 +1,5 @@
 //
-//  JoinOrganizationView.swift
+//  SetBackupPasswordView.swift
 //  ProtonCore-LoginUI - Created on 23/08/2024.
 //
 //  Copyright (c) 2024 Proton AG
@@ -24,7 +24,7 @@
 import SwiftUI
 import ProtonCoreUIFoundations
 
-public struct JoinOrganizationView: View {
+public struct SetBackupPasswordView: View {
 
     @StateObject var viewModel: ViewModel
 
@@ -38,8 +38,9 @@ public struct JoinOrganizationView: View {
     public var body: some View {
         ScrollView {
             VStack(spacing: Constants.itemSpacing) {
-                headerView
-                
+
+                screenTitle
+
                 Text(LUITranslation.backup_password_description.l10n)
                     .font(.subheadline)
                     .foregroundColor(ColorProvider.TextWeak)
@@ -70,47 +71,52 @@ public struct JoinOrganizationView: View {
             .background(ColorProvider.BackgroundNorm)
             .frame(maxWidth: .infinity)
             .disabled(viewModel.viewState == .loading)
-            .bannerDisplayable(bannerState: $viewModel.bannerState,
-                               configuration: .default())
         }
         .background(
             ColorProvider.BackgroundNorm
                 .edgesIgnoringSafeArea(.all)
         )
+        .bannerDisplayable(bannerState: $viewModel.bannerState,
+                           configuration: .default())
+        .onAppear {
+            viewModel.backupPasswordContent.focus()
+        }
     }
 
     @ViewBuilder
-    private var headerView: some View {
-        organizationImage
-        VStack(spacing: Constants.standardPadding) {
-            Text(viewModel.joinOrganizationTitle)
+    private var screenTitle: some View {
+        switch viewModel.mode {
+        case .setNewBackupPassword:
+            joinOrganizationHeader
+        case .changeTemporaryPassword:
+            Text(viewModel.screenTitle)
                 .font(.title2)
                 .fontWeight(.bold)
-            bodyText()
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+
+    @ViewBuilder
+    private var joinOrganizationHeader: some View {
+        organizationImage
+        VStack(spacing: Constants.standardPadding) {
+            Text(viewModel.screenTitle)
+                .font(.title2)
+                .fontWeight(.bold)
+            joinOrganizationSubtitle
         }
         Divider()
             .background(ColorProvider.SeparatorNorm)
     }
 
-    private func bodyText() -> some View {
-        if #available(iOS 15, *) {
-            var attributedString = AttributedString(viewModel.joinOrganizationDescription)
+    private var joinOrganizationSubtitle: some View {
+        var attributedString = AttributedString(viewModel.joinOrganizationSubtitle)
 
-            attributedString.font = Font.subheadline.weight(.semibold)
+        attributedString.font = Font.subheadline.weight(.semibold)
+        attributedString = attributedString.withBoldText(text: viewModel.organizationAdminEmail)
 
-            // make the email substrings heavier weight
-            if let range = attributedString.range(of: viewModel.organizationInfo.organizationAdminEmail) {
-                attributedString[range].font = Font.subheadline.weight(.bold)
-            }
-
-            return Text(attributedString)
-                .multilineTextAlignment(.center)
-        } else {
-            return Text(viewModel.joinOrganizationDescription)
-                .font(.subheadline)
-                .fontWeight(.semibold)
-                .multilineTextAlignment(.center)
-        }
+        return Text(attributedString)
+            .multilineTextAlignment(.center)
     }
 
     @ViewBuilder
@@ -147,11 +153,16 @@ import ProtonCoreCrypto
 import ProtonCoreDataModel
 import ProtonCoreLogin
 
-#Preview {
+#Preview("Set new backup password") {
     NavigationView {
-        JoinOrganizationView(viewModel: .init(dependencies: .init(
+        SetBackupPasswordView(viewModel: .init(dependencies: .init(
+            mode: .setNewBackupPassword(organizationInfo: .init(
+                organizationName: "Proton AG",
+                organizationAdminEmail: "admin@privacybydefault.com",
+                organizationLogoID: nil,
+                organizationPublicKey: .init(value: "")
+            )),
             apiService: nil,
-            loginService: nil,
             userData: .init(
                 credential: .none,
                 user: .mock,
@@ -160,12 +171,26 @@ import ProtonCoreLogin
                 addresses: [],
                 scopes: []
             ),
-            organizationInfo: .init(
-                organizationName: "Proton AG",
-                organizationAdminEmail: "admin@privacybydefault.com",
-                organizationLogoID: nil,
-                organizationPublicKey: .init(value: "")
+            loginService: nil,
+            ssoNavigationDelegate: nil
+        )))
+    }
+}
+
+#Preview("Change temporary password") {
+    NavigationView {
+        SetBackupPasswordView(viewModel: .init(dependencies: .init(
+            mode: .changeTemporaryPassword,
+            apiService: nil,
+            userData: .init(
+                credential: .none,
+                user: .mock,
+                salts: [],
+                passphrases: [:],
+                addresses: [],
+                scopes: []
             ),
+            loginService: nil,
             ssoNavigationDelegate: nil
         )))
     }

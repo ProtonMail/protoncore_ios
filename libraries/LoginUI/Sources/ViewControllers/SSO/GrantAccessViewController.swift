@@ -49,6 +49,7 @@ public final class GrantAccessViewController: UIHostingController<GrantAccessVie
         super.viewDidLoad()
         view.backgroundColor = ColorProvider.BackgroundNorm
         navigationItem.leftBarButtonItem = .button(on: self, action: #selector(dismissViewController), image: IconProvider.crossBig)
+        navigationController?.navigationBar.tintColor = ColorProvider.TextNorm
     }
 
     @objc

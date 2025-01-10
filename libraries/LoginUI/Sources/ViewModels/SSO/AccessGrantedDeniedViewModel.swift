@@ -21,8 +21,9 @@
 
 #if os(iOS)
 
-import SwiftUI
+import ProtonCoreLogin
 import ProtonCoreUIFoundations
+import SwiftUI
 
 extension AccessGrantedDeniedView {
     struct Dependencies {
@@ -34,7 +35,7 @@ extension AccessGrantedDeniedView {
 extension AccessGrantedDeniedView {
 
     enum ViewMode {
-        case accessGranted
+        case accessGranted(userData: LoginData)
         case accessDenied
     }
 
@@ -72,7 +73,12 @@ extension AccessGrantedDeniedView {
         }
 
         func primaryActionButtonTapped() {
-            ssoNavigationDelegate?.globalSSOLoginDidCancel()
+            switch mode {
+            case .accessGranted(let userData):
+                ssoNavigationDelegate?.showChangeBackupPassword(data: userData)
+            case .accessDenied:
+                ssoNavigationDelegate?.globalSSOLoginDidCancel()
+            }
         }
 
     }

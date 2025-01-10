@@ -26,6 +26,7 @@ import SwiftUI
 import ProtonCoreDataModel
 import ProtonCoreFeatureFlags
 import ProtonCoreLog
+import ProtonCoreLogin
 import ProtonCoreLoginUI
 import ProtonCoreNetworking
 import ProtonCoreObservability

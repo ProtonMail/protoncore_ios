@@ -43,7 +43,7 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
 
     @MainActor
     func testJoinOrganizationView() {
-        let view = JoinOrganizationView(viewModel: .init(dependencies: .init(
+        let view = SetBackupPasswordView(viewModel: .init(dependencies: .init(
             apiService: APIServiceMock(),
             loginService: nil,
             userData: .dummy,

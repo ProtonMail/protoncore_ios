@@ -21,6 +21,7 @@
 
 #if os(iOS)
 
+import ProtonCoreAuthentication
 import ProtonCoreLogin
 import ProtonCoreServices
 import ProtonCoreLog
@@ -41,9 +42,14 @@ extension GlobalSSOMainView {
 
     @MainActor
     final class ViewModel: ObservableObject {
-        let apiService: APIService
-        let loginService: Login
-        private let userData: LoginData
+        private let apiService: APIService
+        private let loginService: Login
+        private var userData: LoginData {
+            didSet {
+                postLoginSSOAccountSetup.update(userData: userData)
+            }
+        }
+        private let authService: Authenticator
 
         var mode: PostLoginSSOAccountSetup.Mode
         @Published var screenState: ScreenState
@@ -56,7 +62,7 @@ extension GlobalSSOMainView {
         enum ScreenState {
             case loading(SSOLoginLoaderView.Dependencies)
             case error(SSOLoginErrorView.Dependencies)
-            case newBackupPassword(JoinOrganizationView.Dependencies)
+            case newBackupPassword(SetBackupPasswordView.Dependencies)
             case requestApproveFromAnotherDevice(SignInRequestView.Dependencies)
             case enterBackupPassword(EnterBackupPasswordView.Dependencies)
             case accessGrantedDenied(AccessGrantedDeniedView.Dependencies)
@@ -66,6 +72,7 @@ extension GlobalSSOMainView {
             self.mode = dependencies.mode
             self.apiService = dependencies.apiService
             self.loginService = dependencies.loginService
+            self.authService = Authenticator(api: dependencies.apiService)
             self.userData = dependencies.userData
             self.ssoNavigationDelegate = dependencies.ssoNavigationDelegate
             screenState = .loading(.init(user: userData.user))
@@ -81,9 +88,14 @@ extension GlobalSSOMainView {
                 let nextStep = try await postLoginSSOAccountSetup.invoke(mode: mode)
                 switch nextStep {
                 case .setupBackupPassword(let unprivatizeInfo):
-                    await loadNewBackupPassword(unprivatizeInfo: unprivatizeInfo)
+                    await loadSetNewBackupPassword(unprivatizeInfo: unprivatizeInfo)
                 case .loginSuccess(let newUserData):
                     await ssoNavigationDelegate?.globalSSOLoginDidFinish(data: newUserData)
+                case .loginSuccessNeedPasswordChange(let newUserData):
+                    self.screenState = .accessGrantedDenied(.init(
+                        mode: .accessGranted(userData: newUserData),
+                        ssoNavigationDelegate: ssoNavigationDelegate
+                    ))
                 case .requestApproveFromAnotherDevice(let code, let devices, let unprivatizationInfo):
                     loadRequestApproveFromAnotherDevice(code: code, devices: devices, unprivatizationInfo: unprivatizationInfo)
                 case .enterBackupPassword(let unprivatizationInfo):
@@ -97,26 +109,26 @@ extension GlobalSSOMainView {
             }
         }
 
-        private func loadNewBackupPassword(unprivatizeInfo: UnprivatizeUserSuccess) async {
+        private func loadSetNewBackupPassword(unprivatizeInfo: UnprivatizeUserSuccess) async {
             do {
                 let organization = try await organizationRepository.getOrganization()
                 let organizationSettings = try await organizationRepository.getOrganizationSettings()
                 screenState = .newBackupPassword(.init(
-                    apiService: apiService,
-                    loginService: loginService,
-                    userData: userData,
-                    organizationInfo: .init(
+                    mode: .setNewBackupPassword(organizationInfo: .init(
                         organizationName: organization.displayName,
                         organizationAdminEmail: unprivatizeInfo.adminEmail,
                         organizationLogoID: organizationSettings.logoID,
                         organizationPublicKey: unprivatizeInfo.organizationPublicKey
-                    ),
+                    )),
+                    apiService: apiService,
+                    userData: userData,
+                    loginService: loginService,
                     ssoNavigationDelegate: ssoNavigationDelegate
                 ))
             } catch {
                 PMLog.error(error)
                 loadSSOErrorLogin(error: error) {
-                    await self.loadNewBackupPassword(unprivatizeInfo: unprivatizeInfo)
+                    await self.loadSetNewBackupPassword(unprivatizeInfo: unprivatizeInfo)
                 }
             }
         }
@@ -134,6 +146,7 @@ extension GlobalSSOMainView {
                 ssoNavigationDelegate: ssoNavigationDelegate,
                 onDeviceActivatedAction: {
                     Task {
+                        self.mode = .default
                         await self.invokePostLoginSetup()
                     }
                 },
@@ -160,8 +173,12 @@ extension GlobalSSOMainView {
                 userData: userData,
                 unprivatizationInfo: unprivatizationInfo,
                 ssoNavigationDelegate: ssoNavigationDelegate,
-                onDeviceActivatedAction: {
+                onDeviceActivatedAction: { [weak self] in
+                    guard let self else { return }
                     Task {
+                        self.mode = .default
+                        let newUser = try await self.authService.getUserInfo()
+                        self.userData = self.userData.updated(user: newUser)
                         await self.invokePostLoginSetup()
                     }
                 },

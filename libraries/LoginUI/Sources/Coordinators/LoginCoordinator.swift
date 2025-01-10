@@ -414,6 +414,19 @@ extension LoginCoordinator: GlobalSSONavigationDelegate {
         }
     }
 
+    func showChangeBackupPassword(data: LoginData) {
+        let viewController = ChangeBackupPasswordViewController(dependencies: .init(
+            mode: .changeTemporaryPassword,
+            apiService: container.api,
+            userData: data,
+            loginService: container.login,
+            ssoNavigationDelegate: self
+        ))
+        if let ssoNavigationController = navigationController?.presentedViewController as? UINavigationController {
+            ssoNavigationController.pushViewController(viewController, animated: true)
+        }
+    }
+
     func showRequestAdminHelp(data: LoginData) {
         let viewController = GlobalSSOMainViewController(
             dependencies: .init(

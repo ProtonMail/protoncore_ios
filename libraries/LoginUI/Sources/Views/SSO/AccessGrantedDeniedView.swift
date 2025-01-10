@@ -88,20 +88,27 @@ public struct AccessGrantedDeniedView: View {
 }
 
 #if DEBUG
+import ProtonCoreLogin
+
 #Preview("AccessGranted") {
     NavigationView {
-        let mode = AccessGrantedDeniedView.ViewMode.accessGranted
         AccessGrantedDeniedView(viewModel: .init(dependencies: .init(
-            mode: mode,
+            mode: .accessGranted(userData: .init(
+                credential: .none,
+                user: .mock,
+                salts: [],
+                passphrases: [:],
+                addresses: [],
+                scopes: []
+            )),
             ssoNavigationDelegate: nil
         )))
     }
 }
 #Preview("AccessDenied") {
     NavigationView {
-        let mode = AccessGrantedDeniedView.ViewMode.accessDenied
         AccessGrantedDeniedView(viewModel: .init(dependencies: .init(
-            mode: mode,
+            mode: .accessDenied,
             ssoNavigationDelegate: nil
         )))
     }

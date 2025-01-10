@@ -83,10 +83,7 @@ public struct GrantAccessView: View {
 
         attributedString.font = Font.subheadline
         attributedString.foregroundColor = ColorProvider.TextWeak
-
-        if let memberRange = attributedString.range(of: viewModel.memberEmail) {
-            attributedString[memberRange].font = Font.subheadline.weight(.bold)
-        }
+        attributedString = attributedString.withBoldText(text: viewModel.memberEmail)
 
         return Text(attributedString)
             .frame(maxWidth: .infinity, alignment: .leading)

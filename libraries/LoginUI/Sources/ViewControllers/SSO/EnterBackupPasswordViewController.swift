@@ -42,6 +42,7 @@ public final class EnterBackupPasswordViewController: UIHostingController<EnterB
     override public func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = ColorProvider.BackgroundNorm
+        navigationController?.navigationBar.tintColor = ColorProvider.TextNorm
     }
 }
 

@@ -1,10 +1,10 @@
 //
-//  ActivateAuthDeviceRequest.swift
-//  ProtonCore-Login - Created on 13.11.24.
+//  AttributedString+Extensions.swift
+//  ProtonCore-LoginUI - Created on 13/01/2025.
 //
-//  Copyright (c) 2024 Proton Technologies AG
+//  Copyright (c) 2025 Proton AG
 //
-//  This file is part of Proton Technologies AG and ProtonCore.
+//  This file is part of Proton AG and ProtonCore.
 //
 //  ProtonCore is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -19,9 +19,14 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-public struct DeviceSecret: Codable, Equatable {
-    public let userId: String
-    public let deviceId: String
-    public let secret: String
-    public let token: String
+import SwiftUI
+
+extension AttributedString {
+    func withBoldText(text: String) -> AttributedString {
+        var newAttributedString = self
+        if let range = newAttributedString.range(of: text) {
+            newAttributedString[range].font = Font.subheadline.weight(.bold)
+        }
+        return newAttributedString
+    }
 }

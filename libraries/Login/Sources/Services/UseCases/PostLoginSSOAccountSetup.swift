@@ -21,12 +21,14 @@
 
 #if os(iOS)
 
+import ProtonCoreAuthentication
 import ProtonCoreLog
 import ProtonCoreServices
 
 public enum SSOLoginScreen {
     case setupBackupPassword(UnprivatizeUserSuccess)
     case loginSuccess(UserData)
+    case loginSuccessNeedPasswordChange(UserData)
     case requestApproveFromAnotherDevice(
         code: String,
         devices: [AuthDevice],
@@ -43,7 +45,8 @@ public final class PostLoginSSOAccountSetup {
     }
 
     private let apiService: APIService
-    private let userData: LoginData
+    private let authenticator: Authenticator
+    private var userData: LoginData
 
     private let deviceSecretRepository: DeviceSecretRepository
     private let createAuthDevice: CreateAuthDevice
@@ -58,6 +61,7 @@ public final class PostLoginSSOAccountSetup {
     public init(apiService: APIService, userData: LoginData) {
         self.apiService = apiService
         self.userData = userData
+        self.authenticator = Authenticator(api: apiService)
 
         self.deviceSecretRepository = DeviceSecretRepository()
 
@@ -82,6 +86,10 @@ public final class PostLoginSSOAccountSetup {
         self.generateConfirmationCode = GenerateConfirmationCode(deviceSecretRepository: deviceSecretRepository)
     }
 
+    public func update(userData: UserData) {
+        self.userData = userData
+    }
+
     enum State {
         case firstLogin
         case validSecret(passphrases: [String: String])
@@ -95,7 +103,8 @@ public final class PostLoginSSOAccountSetup {
         case .default:
             return try await loadDefaultScreen()
         case .requestAdminHelp:
-            return try await loadRequestAdminHelpScreen()
+            let unprivatizationInfo = try await getUnprivatizationInfo.invoke()
+            return try await loadRequestAdminHelpScreen(unprivatizationInfo: unprivatizationInfo)
         }
     }
 
@@ -107,7 +116,7 @@ public final class PostLoginSSOAccountSetup {
             let verifyInfo = try await verifyUnprivatization.invoke()
             return .setupBackupPassword(verifyInfo)
         case .validSecret(let passphrases):
-            return .loginSuccess(userData.updated(passphrases: passphrases))
+            return try await validSecretUserCheck(passphrases: passphrases)
         case .inactiveSecret:
             return try await loadScreenWithSecretAvailable()
         case .noSecret, .invalidSecret:
@@ -149,9 +158,18 @@ public final class PostLoginSSOAccountSetup {
         return .validSecret(passphrases: passphrases)
     }
 
-    private func loadRequestAdminHelpScreen() async throws -> SSOLoginScreen {
+    private func validSecretUserCheck(passphrases: [String: String]) async throws -> SSOLoginScreen {
+        let user = try await authenticator.getUserInfo()
+        let newUserData = userData.updated(user: user)
+        if user.hasTemporaryPassword {
+            return .loginSuccessNeedPasswordChange(newUserData.updated(passphrases: passphrases))
+        } else {
+            return .loginSuccess(newUserData.updated(passphrases: passphrases))
+        }
+    }
+
+    private func loadRequestAdminHelpScreen(unprivatizationInfo: UnprivatizationInfo) async throws -> SSOLoginScreen {
         let code = try generateConfirmationCode.invoke(userId: userData.user.ID)
-        let unprivatizationInfo = try await getUnprivatizationInfo.invoke()
         return .requestApproveFromAdmin(code: code, unprivatizationInfo: unprivatizationInfo)
     }
 
@@ -159,7 +177,13 @@ public final class PostLoginSSOAccountSetup {
         let authDevices = try await getAuthDevices.invoke()
             .filter({ $0.state == .active })
         let unprivatizationInfo = try await getUnprivatizationInfo.invoke()
-        guard !authDevices.isEmpty else { return .enterBackupPassword(unprivatizationInfo) }
+        guard !authDevices.isEmpty else {
+            if (userData.user.hasTemporaryPassword) {
+                return try await loadRequestAdminHelpScreen(unprivatizationInfo: unprivatizationInfo)
+            } else {
+                return .enterBackupPassword(unprivatizationInfo)
+            }
+        }
         let code = try generateConfirmationCode.invoke(userId: userData.user.ID)
         return .requestApproveFromAnotherDevice(
             code: code,

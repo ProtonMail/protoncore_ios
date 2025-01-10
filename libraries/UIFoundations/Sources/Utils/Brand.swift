@@ -21,13 +21,23 @@
 
 import Foundation
 
-public enum Brand {
+public enum Brand: @unchecked Sendable {
     case proton
     case vpn
     case pass
     case wallet
 
-    public static var currentBrand: Brand = .proton
+    public static let queue: DispatchQueue = .init(label: "me.proton.protoncore.brandupdater")
+
+    private static var _currentBrand: Brand = .proton
+    public static var currentBrand: Brand {
+        get {
+            queue.sync { self._currentBrand }
+        }
+        set {
+            queue.sync { self._currentBrand = newValue }
+        }
+    }
 }
 
 #if canImport(UIKit) && !os(tvOS)

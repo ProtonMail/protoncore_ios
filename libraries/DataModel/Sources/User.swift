@@ -56,6 +56,10 @@ public struct User: Codable, Equatable, CustomDebugStringConvertible {
         flags?.sso ?? false
     }
 
+    public var hasTemporaryPassword: Bool {
+        flags?.hasTemporaryPassword ?? false
+    }
+
     public struct Subscribed: OptionSet, Codable, Equatable {
         public let rawValue: UInt8
 

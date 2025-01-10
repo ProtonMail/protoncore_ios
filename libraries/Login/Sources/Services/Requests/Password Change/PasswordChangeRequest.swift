@@ -1,6 +1,6 @@
 //
 //  PasswordChangeRequest.swift
-//  ProtonCore-PasswordChange - Created on 20.03.2024.
+//  ProtonCore-Login - Created on 20.03.2024.
 //
 //  Copyright (c) 2024 Proton Technologies AG
 //
@@ -32,7 +32,7 @@ struct SettingsAPI {
 /// Update login password request. Only called in 2-password mode (or onboarding to 2-password mode).
 ///
 /// Documentation: https://protonmail.gitlab-pages.protontech.ch/Slim-API/account/#tag/Settings/operation/put_core-%7B_version%7D-settings-password
-final class PasswordChangeRequest: Request {
+public final class PasswordChangeRequest: Request {
     let clientEphemeral: String
     let clientProof: String
     let srpSession: String
@@ -41,7 +41,7 @@ final class PasswordChangeRequest: Request {
     let salt: String
     let verifier: String
 
-    init(clientEphemeral: String, clientProof: String, srpSession: String, twoFACode: String?, modulusID: String, salt: String, verifier: String) {
+    public init(clientEphemeral: String, clientProof: String, srpSession: String, twoFACode: String?, modulusID: String, salt: String, verifier: String) {
         self.clientEphemeral = clientEphemeral
         self.clientProof = clientProof
         self.srpSession = srpSession
@@ -51,7 +51,7 @@ final class PasswordChangeRequest: Request {
         self.verifier = verifier
     }
 
-    var parameters: [String: Any]? {
+    public var parameters: [String: Any]? {
         let auth: [String: Any] = [
             "Version": 4,
             "ModulusID": modulusID,
@@ -70,8 +70,8 @@ final class PasswordChangeRequest: Request {
         return result
     }
 
-    var method: HTTPMethod { .put }
-    var path: String {
+    public var method: HTTPMethod { .put }
+    public var path: String {
         SettingsAPI.Path + "/password"
     }
 }
