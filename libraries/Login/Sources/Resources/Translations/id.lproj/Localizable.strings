@@ -5,3 +5,9 @@
 "Get a Proton Mail address linked to this account in your Proton web settings." = "Dapatkan alamat Proton Mail yang terhubung dengan akun ini pada pengaturan web Proton Anda.";
 
 "Proton address required" = "Alamat Proton dibutuhkan";
+
+"Code doesn't match" = "Code doesn't match";
+
+"Code isn't valid" = "Code isn't valid";
+
+"Device secret not found" = "Device secret not found";

@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Başka bir aygıttan oturum açılması istendi. Bunu siz mi yaptınız?";
 
-"Check that the confirmation code match the code on your other device." = "Onay kodunun diğer aygıtınızdaki kod ile aynı olup olmadığına bakın.";
+"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
 
 "Confirmation code" = "Onay kodu";
 
@@ -337,3 +337,5 @@
 "Sign in with single sign-on" = "Tek oturum açma ile oturum açın";
 
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Kuruluşunuz tek oturum açma kullanıyor. Oturum açmayı üçüncü taraf tek oturum açma hizmeti sağlayıcı ile sürdürün.";
+
+"Unknown" = "Bilinmiyor";

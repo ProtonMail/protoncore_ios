@@ -5,3 +5,9 @@
 "Get a Proton Mail address linked to this account in your Proton web settings." = "在您的 Proton 網路設定中取得連結至此帳號的 Proton Mail 電子郵件位址。";
 
 "Proton address required" = "需要 Proton 位址";
+
+"Code doesn't match" = "Code doesn't match";
+
+"Code isn't valid" = "Code isn't valid";
+
+"Device secret not found" = "Device secret not found";

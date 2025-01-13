@@ -5,3 +5,9 @@
 "Get a Proton Mail address linked to this account in your Proton web settings." = "Obțineți o adresă Proton Mail asociată acestui cont în setările web Proton.";
 
 "Proton address required" = "Este necesară o adresă Proton";
+
+"Code doesn't match" = "Code doesn't match";
+
+"Code isn't valid" = "Code isn't valid";
+
+"Device secret not found" = "Device secret not found";

@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Terdapat permintaan entri masuk pada perangkat lainnya. Apakah ini Anda?";
 
-"Check that the confirmation code match the code on your other device." = "Periksa apakah kode konfirmasi ini sesuai dengan kode yang terdapat pada perangkat lainnya.";
+"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
 
 "Confirmation code" = "Kode konfirmasi";
 
@@ -337,3 +337,5 @@
 "Sign in with single sign-on" = "Masuk dengan sistem masuk tunggal";
 
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Organisasi Anda menggunakan SSO. Lanjut masuk dengan penyedia SSO pihak ketiga Anda.";
+
+"Unknown" = "Tidak diketahui";

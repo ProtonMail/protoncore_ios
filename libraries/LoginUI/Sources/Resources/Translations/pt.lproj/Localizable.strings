@@ -144,7 +144,7 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "Ao clicar em Próximo, concorda com os termos e condições da Proton";
 
-"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Ao clicar em Próximo, concorda com os termos e condições e a política de privacidade da Proton.";
 
 "Terms and Conditions" = "Termos e condições";
 
@@ -230,110 +230,112 @@
 
 "Two-Factor Authentication" = "Autenticação de dois fatores";
 
-"Present a security key linked to your Proton Account." = "Present a security key linked to your Proton Account.";
+"Present a security key linked to your Proton Account." = "Apresente uma chave de segurança vinculada à sua conta da Proton.";
 
 "Learn more" = "Saiba mais";
 
-"Invalid state. Please quit the app and try again in a few minutes." = "Invalid state. Please quit the app and try again in a few minutes.";
+"Invalid state. Please quit the app and try again in a few minutes." = "O estado é inválido. Saia da aplicação e tente novamente dentro de alguns minutos.";
 
-"There was a problem reading your security key." = "There was a problem reading your security key.";
+"There was a problem reading your security key." = "Ocorreu um problema ao ler a sua chave de segurança.";
 
-"We received an authorization from a type we don't support yet." = "We received an authorization from a type we don't support yet.";
+"We received an authorization from a type we don't support yet." = "Recebemos uma autorização de um tipo que ainda não suportamos.";
 
-"Fetching your security keys details" = "Fetching your security keys details";
+"Fetching your security keys details" = "A obter os detalhes das suas chaves de segurança";
 
-"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys.";
+"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "Ainda não tem nenhuma chave de segurança inscrita na sua conta. Consulte a secção de definições no nosso sítio web para adicionar chaves de segurança.";
 
-"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "An error occurred fetching your security keys. You can also check them on the Proton %@ website.";
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "Ocorreu um erro ao buscar as suas chaves de segurança. Também pode verificá-las no sítio web Proton %@.";
 
-"These are the security keys registered to your account" = "These are the security keys registered to your account";
+"These are the security keys registered to your account" = "Estas são as chaves de segurança registadas na sua conta.";
 
-"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys.";
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "Ainda não tem nenhuma chave de segurança inscrita na sua conta. Use a aplicação da Proton %@ para adicionar chaves de segurança.";
 
 "Security Keys" = "Chaves de segurança";
 
-"To manage, add, or remove security keys, please use the Proton %@ web application." = "To manage, add, or remove security keys, please use the Proton %@ web application.";
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "Para gerir, adicionar ou remover as chaves de segurança, se a aplicação web da Proton %@.";
 
 "Unexpected FIDO2 signature." = "Assinatura FIDO2 inesperada.";
 
-"We could not initiate the Secure Password update connection. Please try again." = "We could not initiate the Secure Password update connection. Please try again.";
+"We could not initiate the Secure Password update connection. Please try again." = "Não foi possível iniciar a conexão de atualização de palavra-passe segura. Tente novamente.";
 
-"Join %@" = "Join %@";
+"Join %@" = "Junte-se a %@";
 
-"%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
+"%@ added you to their Proton organization." = "%@ adicionou-o à organização Proton deles.";
 
 "Continue" = "Continuar";
 
-"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.";
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Defina uma palavra-passe de backup para continuar. Esta palavra-passe permitirá que inicie sessão e recupere os seus dados caso fique bloqueado da sua conta Proton. Por isso, certifique-se de a guardar num lugar seguro.";
 
-"Backup password" = "Backup password";
+"Backup password" = "Palavra-passe de backup";
 
-"Repeat backup password" = "Repeat backup password";
+"Repeat backup password" = "Repetir a palavra-passe de backup";
 
 "Password cannot be empty" = "A palavra-passe não pode estar vazia.";
 
 "Password must contain at least 8 characters" = "A palavra-passe deve conter pelo menos 8 carateres";
 
-"Password doesn't match" = "Password doesn't match";
+"Password doesn't match" = "A palavra-passe não corresponde.";
 
-"Sign-in requested on another device. Was it you?" = "Sign-in requested on another device. Was it you?";
+"Sign-in requested on another device. Was it you?" = "Solicitação de início de sessão noutro dispositivo. Foi você?";
 
-"Check that the confirmation code match the code on your other device." = "Check that the confirmation code match the code on your other device.";
+"Enter the confirmation code we sent on your other device for %@." = "Insira o código de confirmação que enviamos no seu outro dispositivo para %@.";
 
-"Confirmation code" = "Confirmation code";
+"Confirmation code" = "Código de confirmação";
 
-"If you didn't make this request, cancel it now." = "If you didn't make this request, cancel it now.";
+"If you didn't make this request, cancel it now." = "Se não fez este pedido, cancele-o agora.";
 
-"Yes, it was me" = "Yes, it was me";
+"Yes, it was me" = "Sim, fui eu.";
 
-"No, it wasn't me" = "No, it wasn't me";
+"No, it wasn't me" = "Não, não fui eu.";
 
-"Share the confirmation code with your administrator" = "Share the confirmation code with your administrator";
+"Share the confirmation code with your administrator" = "Partilhe o código de confirmação com o seu administrador";
 
-"Approve the sign-in from another device" = "Approve the sign-in from another device";
+"Approve the sign-in from another device" = "Aprove o inicio de sessão a partir de outro dispositivo";
 
-"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@.";
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Para garantir que realmente é você a tentar entrar na sua conta, partilhe o código de confirmação com o seu administrador %@ para poder aprovar a solicitação para %@.";
 
-"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device.";
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Para garantir que realmente é você a tentar entrar na sua conta, verifique o código de confirmação e aprove a solicitação em outro dispositivo.";
 
-"Use backup password instead" = "Use backup password instead";
+"Use backup password instead" = "Usar a palavra-passe de backup em vez disso";
 
-"Ask administrator for help" = "Ask administrator for help";
+"Ask administrator for help" = "Pecar ajuda ao administrador";
 
 "Devices available:" = "Dispositivos disponíveis:";
 
-"Operation couldn't be completed. Please try again." = "Operation couldn't be completed. Please try again.";
+"Operation couldn't be completed. Please try again." = "A operação não pôde ser finalizada. Tente novamente.";
 
-"Enter your backup password" = "Enter your backup password";
+"Enter your backup password" = "Introduza a sua palavra-passe de backup";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Para garantir que é realmente você a tentar iniciar sessão, insira a sua palavra-passe de backup.";
 
-"Access granted" = "Access granted";
+"Access granted" = "O acesso foi concedido.";
 
 "Access denied" = "Acesso negado";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Para a sua segurança, foi desconectado de todos os seus outros dispositivos ativos. Antes de aceder a sua conta, precisará inserir uma nova palavra-passe de backup.";
 
-"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+"Contact your administrator if the problem persists." = "Se o problema persistir, contacte o seu administrador.";
 
 "Back to sign-in" = "Voltar para o início de sessão";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "Solicitar acesso ao administrador?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Isto irá desconectá-lo dos seus outros dispositivos e terá de criar uma palavra-passe de backup.";
 
-"Grant access to user?" = "Grant access to user?";
+"Grant access to user?" = "Conceder o acesso ao utilizador?";
 
-"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ solicita a sua ajuda para entrar na sua conta Proton com a autenticação única.\n\nInsira o código de confirmação enviado para este utilizador.";
 
 "Grant access" = "Conceder acesso";
 
 "Deny access" = "Negar o acesso";
 
-"Signing you in" = "Signing you in";
+"Signing you in" = "A iniciar sessão";
 
-"to your organization" = "to your organization";
+"to your organization" = "para a sua organização";
 
-"Sign in with single sign-on" = "Sign in with single sign-on";
+"Sign in with single sign-on" = "Iniciar sessão com autenticação única";
 
-"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Your organization uses SSO. Continue to sign in with your third-party SSO provider.";
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "A sua organização usa a autenticação única SSO. Continue a entrar com p seu fornecedor de SSO de terceiros.";
+
+"Unknown" = "Desconhecido";

@@ -10,7 +10,7 @@
 
 "Insecure_View_line2" = " gratuitamente durante ";
 
-"Insecure_View_line3" = "Por favor, vá ao dispositivo com sessão iniciada (na sessão onde o pedido foi iniciado) para mudar a sua palavra-passe.";
+"Insecure_View_line3" = "Aceda ao dispositivo ligado (na sessão onde o pedido foi iniciado) para alterar a sua palavra-passe.";
 
 "Grace_View_Cancel_Button_CTA" = "Cancelar o pedido";
 
@@ -18,4 +18,4 @@
 
 "Grace_View_line2" = ". Para manter a sua conta segura, queremos garantir que é realmente você que está a tentar redefinir a sua palavra-passe. Poderá redefinir a sua palavra-passe em ";
 
-"Grace_View_line3" = "Se não fez este pedido, ou se já não precisa de ajuda a iniciar sessão, por favor cancele-o e tome medidas para proteger a sua conta";
+"Grace_View_line3" = "Se não fez este pedido, ou se já não precisa de ajuda a iniciar sessão, cancele-o e tome medidas para proteger a sua conta.";

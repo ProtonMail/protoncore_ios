@@ -5,3 +5,9 @@
 "Get a Proton Mail address linked to this account in your Proton web settings." = "Отримайте адресу Proton Mail, пов'язану з цим обліковим записом, у вебналаштуваннях Proton.";
 
 "Proton address required" = "Адреса Proton обов'язкова";
+
+"Code doesn't match" = "Code doesn't match";
+
+"Code isn't valid" = "Code isn't valid";
+
+"Device secret not found" = "Device secret not found";

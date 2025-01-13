@@ -5,3 +5,9 @@
 "Get a Proton Mail address linked to this account in your Proton web settings." = "Αποκτήστε μια διεύθυνση Proton Mail συνδεδεμένη με αυτόν τον λογαριασμό στις ρυθμίσεις ιστού του Proton.";
 
 "Proton address required" = "Απαιτείται διεύθυνση Proton";
+
+"Code doesn't match" = "Code doesn't match";
+
+"Code isn't valid" = "Code isn't valid";
+
+"Device secret not found" = "Device secret not found";

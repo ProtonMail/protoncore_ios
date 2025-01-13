@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Inloggen op een ander apparaat. Was u dit?";
 
-"Check that the confirmation code match the code on your other device." = "Controleer of de bevestigingscode overeenkomt met de code op uw andere apparaat.";
+"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
 
 "Confirmation code" = "Bevestigingscode";
 
@@ -337,3 +337,5 @@
 "Sign in with single sign-on" = "Aanmelden met single sign-on";
 
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Uw organisatie gebruikt SSO. Meld u aan met uw externe SSO-provider.";
+
+"Unknown" = "Onbekend";

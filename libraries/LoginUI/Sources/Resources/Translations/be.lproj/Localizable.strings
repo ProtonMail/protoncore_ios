@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Запытаны ўваход на іншай прыладзе. Гэта былі вы?";
 
-"Check that the confirmation code match the code on your other device." = "Праверце, ці супадае код пацвярджэння з кодам на іншай вашай прыладзе.";
+"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
 
 "Confirmation code" = "Код пацвярджэння";
 
@@ -337,3 +337,5 @@
 "Sign in with single sign-on" = "Увайсці з адзіным уваходам";
 
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Ваша арганізацыя выкарыстоўвае адзіны ўваход (SSO). Працягніце ўваход з дапамогай старонняга пастаўшчыка SSO.";
+
+"Unknown" = "Невядома";

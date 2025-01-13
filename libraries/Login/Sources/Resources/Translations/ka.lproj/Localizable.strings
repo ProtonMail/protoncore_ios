@@ -5,3 +5,9 @@
 "Get a Proton Mail address linked to this account in your Proton web settings." = "მიიღეთ Proton Mail-ის მისამართი, მიბმული ამ ანგარიშთან, Proton-ის ვებ-პარამეტრებში.";
 
 "Proton address required" = "Proton-ის მისამართი აუცილებელია";
+
+"Code doesn't match" = "Code doesn't match";
+
+"Code isn't valid" = "Code isn't valid";
+
+"Device secret not found" = "Device secret not found";
