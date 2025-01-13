@@ -59,6 +59,7 @@ extension GlobalSSOMainView {
             case newBackupPassword(JoinOrganizationView.Dependencies)
             case requestApproveFromAnotherDevice(SignInRequestView.Dependencies)
             case enterBackupPassword(EnterBackupPasswordView.Dependencies)
+            case accessGrantedDenied(AccessGrantedDeniedView.Dependencies)
         }
 
         init(dependencies: Dependencies) {
@@ -75,7 +76,7 @@ extension GlobalSSOMainView {
             organizationRepository = .init(apiService: apiService)
         }
 
-        func startPostLoginSetup() async {
+        func invokePostLoginSetup() async {
             do {
                 let nextStep = try await postLoginSSOAccountSetup.invoke(mode: mode)
                 switch nextStep {
@@ -89,12 +90,10 @@ extension GlobalSSOMainView {
                     loadEnterBackupPassword(unprivatizatonInfo: unprivatizationInfo)
                 case .requestApproveFromAdmin(let code, let unprivatizationInfo):
                     loadRequestApproveFromAdmin(code: code, unprivatizationInfo: unprivatizationInfo)
-                case .unimplemented:
-                    loadSSOErrorLogin(error: UnimplementedError.unimplemented, action: startPostLoginSetup)
                 }
             } catch {
                 PMLog.error(error)
-                loadSSOErrorLogin(error: error, action: startPostLoginSetup)
+                loadSSOErrorLogin(error: error, action: invokePostLoginSetup)
             }
         }
 
@@ -129,9 +128,16 @@ extension GlobalSSOMainView {
         ) {
             screenState = .requestApproveFromAnotherDevice(.init(
                 mode: .requestApproveFromAnotherDevice(code: code, devices: devices),
+                apiService: apiService,
                 userData: userData,
                 unprivatizationInfo: unprivatizationInfo,
-                ssoNavigationDelegate: ssoNavigationDelegate
+                ssoNavigationDelegate: ssoNavigationDelegate,
+                onDeviceActivatedAction: {
+                    Task {
+                        await self.invokePostLoginSetup()
+                    }
+                },
+                onDeviceRejectedAction: loadDeviceRejected
             ))
         }
 
@@ -150,8 +156,22 @@ extension GlobalSSOMainView {
         ) {
             screenState = .requestApproveFromAnotherDevice(.init(
                 mode: .requestForAdminApproval(code: code),
+                apiService: apiService,
                 userData: userData,
                 unprivatizationInfo: unprivatizationInfo,
+                ssoNavigationDelegate: ssoNavigationDelegate,
+                onDeviceActivatedAction: {
+                    Task {
+                        await self.invokePostLoginSetup()
+                    }
+                },
+                onDeviceRejectedAction: loadDeviceRejected
+            ))
+        }
+
+        private func loadDeviceRejected() {
+            screenState = .accessGrantedDenied(.init(
+                mode: .accessDenied,
                 ssoNavigationDelegate: ssoNavigationDelegate
             ))
         }
@@ -170,12 +190,6 @@ extension GlobalSSOMainView {
             ))
         }
     }
-}
-
-enum UnimplementedError: LocalizedError {
-    case unimplemented
-
-    var errorDescription: String { "Flow not implemented" }
 }
 
 #endif
