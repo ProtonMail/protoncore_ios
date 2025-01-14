@@ -1,6 +1,6 @@
 //
-//  OpenPGPExtension.swift
-//  ProtonCore-PasswordChange - Created on 20.03.2024.
+//  OpenPGP+Extension.swift
+//  ProtonCore-Login - Created on 20.03.2024.
 //
 //  Copyright (c) 2024 Proton Technologies AG
 //

@@ -1,6 +1,6 @@
 //
 //  UpdatePrivateKeyRequest.swift
-//  ProtonCore-PasswordChange - Created on 20.03.2024.
+//  ProtonCore-Login - Created on 20.03.2024.
 //
 //  Copyright (c) 2024 Proton Technologies AG
 //
@@ -39,53 +39,56 @@ struct KeysAPI {
 /// This route can not be used to re-activate keys that we don't have access to, in that case the route "Activate Key" must be used first.
 ///
 /// Documentation: https://protonmail.gitlab-pages.protontech.ch/Slim-API/account/#tag/Keys/operation/put_core-%7B_version%7D-keys-private
-final class UpdatePrivateKeyRequest: Request {
+public final class UpdatePrivateKeyRequest: Request {
 
-    let clientEphemeral: String // base64 encoded
-    let clientProof: String // base64 encoded
-    let SRPSession: String // hex encoded session id
-    let twoFAParams: TwoFAParams? // optional
+    public struct SRPAuthValues {
+        let SRPSession: String // hex encoded session id
+        let clientEphemeral: String // base64 encoded
+        let clientProof: String // base64 encoded
+    }
+
     let keySalt: String // base64 encoded need random value
     var userLevelKeys: [Key]
     var userAddressKeys: [Key]
+    let srpAuthValues: SRPAuthValues?
+    let twoFAParams: TwoFAParams?
     let userKeys: [Key]?
     let auth: PasswordAuth?
+    let encryptedSecret: String?
 
-    init(clientEphemeral: String,
-         clientProof: String,
-         SRPSession: String,
-         keySalt: String,
-         userlevelKeys: [Key] = [],
-         addressKeys: [Key] = [],
-         twoFAParams: TwoFAParams? = nil,
-         userKeys: [Key]?,
-         auth: PasswordAuth?,
-         authCredential: AuthCredential?) {
-        self.clientEphemeral = clientEphemeral
-        self.clientProof = clientProof
-        self.SRPSession = SRPSession
+    public init(srpAuthValues: SRPAuthValues?,
+                keySalt: String,
+                userlevelKeys: [Key] = [],
+                addressKeys: [Key] = [],
+                twoFAParams: TwoFAParams? = nil,
+                userKeys: [Key]?,
+                auth: PasswordAuth?,
+                authCredential: AuthCredential?,
+                encryptedSecret: String?) {
+        self.srpAuthValues = srpAuthValues
         self.keySalt = keySalt
         self.userLevelKeys = userlevelKeys
         self.userAddressKeys = addressKeys
 
         self.userKeys = userKeys
 
+        self.credential = authCredential
+
         // optional values
         self.twoFAParams = twoFAParams
         self.auth = auth
-
-        self.credential = authCredential
+        self.encryptedSecret = encryptedSecret
     }
 
     // custom auth credentical
     let credential: AuthCredential?
-    var authCredential: AuthCredential? {
+    public var authCredential: AuthCredential? {
         get {
             return self.credential
         }
     }
 
-    var parameters: [String: Any]? {
+    public var parameters: [String: Any]? {
         var keysDict: [Any] = [Any]()
         for userLevelKey in userLevelKeys where userLevelKey.isUpdated {
             keysDict.append( ["ID": userLevelKey.keyID, "PrivateKey": userLevelKey.privateKey] )
@@ -95,11 +98,14 @@ final class UpdatePrivateKeyRequest: Request {
         }
 
         var out: [String: Any] = [
-            "ClientEphemeral": self.clientEphemeral,
-            "ClientProof": self.clientProof,
-            "SRPSession": self.SRPSession,
             "KeySalt": self.keySalt
         ]
+
+        if let srpAuthValues {
+            out["SRPSession"] = srpAuthValues.SRPSession
+            out["ClientProof"] = srpAuthValues.clientProof
+            out["ClientEphemeral"] = srpAuthValues.clientEphemeral
+        }
 
         if !keysDict.isEmpty {
             out["Keys"] = keysDict
@@ -119,18 +125,22 @@ final class UpdatePrivateKeyRequest: Request {
             out.merge(twoFAParamsDictionary, uniquingKeysWith: { a, _ in a })
         }
 
-        if let auth_obj = self.auth {
-            out["Auth"] = auth_obj.parameters
+        if let authObj = self.auth {
+            out["Auth"] = authObj.parameters
+        }
+
+        if let encryptedSecret {
+            out["EncryptedSecret"] = encryptedSecret
         }
 
         return out
     }
 
-    var method: HTTPMethod {
+    public var method: HTTPMethod {
         return .put
     }
 
-    var path: String {
+    public var path: String {
         return KeysAPI.path + "/private"
     }
 }

@@ -50,8 +50,13 @@ extension EnterBackupPasswordView {
 
         weak var ssoNavigationDelegate: GlobalSSONavigationDelegate?
 
-        @Published var bannerState: BannerState = .none
+        enum ViewState {
+            case idle
+            case loading
+        }
 
+        @Published var bannerState: BannerState = .none
+        @Published var viewState: ViewState = .idle
         @Published var backupPasswordStyle: PCTextFieldStyle = .init(mode: .idle)
         @Published var backupPasswordContent: PCTextFieldContent = .init(
             title: LUITranslation.backup_password.l10n,
@@ -88,9 +93,12 @@ extension EnterBackupPasswordView {
                         bannerState = .error(content: .init(message: "Passphrase not found"))
                         return
                     }
+                    viewState = .loading
                     try await activateAuthDevice?.invoke(userId: userData.user.ID, passphrase: passphrase)
                     await ssoNavigationDelegate?.globalSSOLoginDidFinish(data: newUserData)
+                    viewState = .idle
                 } catch {
+                    viewState = .idle
                     PMLog.error(error)
                     bannerState = .error(content: .init(message: error.localizedDescription))
                 }

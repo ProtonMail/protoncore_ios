@@ -44,7 +44,13 @@ extension RequestAdminAccessView {
         let userData: LoginData
         let unprivatizationInfo: UnprivatizationInfo
 
+        enum ViewState {
+            case idle
+            case loading
+        }
+
         @Published var bannerState: BannerState = .none
+        @Published var viewState: ViewState = .idle
 
         weak var ssoNavigationDelegate: GlobalSSONavigationDelegate?
 
@@ -68,9 +74,12 @@ extension RequestAdminAccessView {
             Task {
                 do {
                     guard let requestAdminHelp else { throw LoginError.invalidState }
+                    viewState = .loading
                     try await requestAdminHelp.invoke(userId: userData.user.ID)
                     ssoNavigationDelegate?.showRequestAdminHelp(data: userData)
+                    viewState = .idle
                 } catch {
+                    viewState = .idle
                     PMLog.error(error)
                     self.bannerState = .error(content: .init(message: error.localizedDescription))
                 }

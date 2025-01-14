@@ -1,5 +1,5 @@
 //
-//  JoinOrganizationView.swift
+//  SetBackupPasswordViewModel.swift
 //  ProtonCore-LoginUI - Created on 23/08/2024.
 //
 //  Copyright (c) 2024 Proton AG
@@ -31,12 +31,17 @@ import ProtonCoreUIFoundations
 import ProtonCoreUtilities
 import SwiftUI
 
-extension JoinOrganizationView {
+extension SetBackupPasswordView {
+    enum Mode {
+        case setNewBackupPassword(organizationInfo: OrganizationInfo)
+        case changeTemporaryPassword
+    }
+
     struct Dependencies {
+        let mode: SetBackupPasswordView.Mode
         let apiService: APIService?
-        let loginService: Login?
         let userData: LoginData
-        let organizationInfo: OrganizationInfo
+        let loginService: Login?
         let ssoNavigationDelegate: GlobalSSONavigationDelegate?
     }
 
@@ -48,12 +53,14 @@ extension JoinOrganizationView {
     }
 }
 
-extension JoinOrganizationView {
+extension SetBackupPasswordView {
 
     @MainActor
     final class ViewModel: ObservableObject, PasswordValidator {
         @Published var viewState: ViewState = .idle
         @Published var bannerState: BannerState = .none
+
+        let mode: SetBackupPasswordView.Mode
 
         enum ViewState {
             case idle
@@ -72,40 +79,64 @@ extension JoinOrganizationView {
         )
 
         private var authenticator: AuthenticatorKeyGenerationInterface?
-        private let loginService: Login?
         private let userData: LoginData
-        let organizationInfo: OrganizationInfo
         private let deviceSecretRepository: DeviceSecretRepositoryProtocol
+
+        // Mode setBackupPassword
+        var organizationInfo: OrganizationInfo?
+        private var loginService: Login?
+
+        // Mode changeTemporaryPassword
+        private var passwordChangeService: BasePasswordChangeService?
+
 
         weak var ssoNavigationDelegate: GlobalSSONavigationDelegate?
 
         init(dependencies: Dependencies) {
-            if let apiService = dependencies.apiService {
-                self.authenticator = Authenticator(api: apiService)
-            }
-            self.loginService = dependencies.loginService
             self.userData = dependencies.userData
-            self.organizationInfo = dependencies.organizationInfo
+            self.mode = dependencies.mode
+            self.loginService = dependencies.loginService
+            switch mode {
+            case .setNewBackupPassword(let organizationInfo):
+                self.organizationInfo = organizationInfo
+                if let apiService = dependencies.apiService {
+                    self.authenticator = Authenticator(api: apiService)
+                }
+            case .changeTemporaryPassword:
+                if let apiService = dependencies.apiService {
+                    self.passwordChangeService = BasePasswordChangeService(api: apiService)
+                }
+            }
+
             self.ssoNavigationDelegate = dependencies.ssoNavigationDelegate
             self.deviceSecretRepository = DeviceSecretRepository()
         }
 
-        var joinOrganizationTitle: String {
+        var screenTitle: String {
+            switch mode {
+            case .setNewBackupPassword:
+                String.localizedStringWithFormat(
+                    LUITranslation.join_organization_title.l10n,
+                    organizationInfo?.organizationName ?? LUITranslation.unknown.l10n
+                )
+            case .changeTemporaryPassword:
+                LUITranslation.set_backup_password_title.l10n
+            }
+        }
+
+        var joinOrganizationSubtitle: String {
             String.localizedStringWithFormat(
-                LUITranslation.join_organization_title.l10n,
-                organizationInfo.organizationName
+                LUITranslation.join_organization_description.l10n,
+                organizationInfo?.organizationAdminEmail ?? LUITranslation.unknown.l10n
             )
         }
 
-        var joinOrganizationDescription: String {
-            String.localizedStringWithFormat(
-                LUITranslation.join_organization_description.l10n,
-                organizationInfo.organizationAdminEmail
-            )
+        var organizationAdminEmail: String {
+            organizationInfo?.organizationAdminEmail ?? LUITranslation.unknown.l10n
         }
 
         var organizationLogoURL: URL? {
-            guard let _ = organizationInfo.organizationLogoID else { return nil }
+            guard let _ = organizationInfo?.organizationLogoID else { return nil }
             // TODO: Retrieve logo from /organizations/logo/{logoId}
             return nil
         }
@@ -113,7 +144,6 @@ extension JoinOrganizationView {
         func continueTapped() {
             Task {
                 do {
-                    guard let authenticator, let loginService else { throw SSOLoginError.authenticatorNotFound }
                     resetTextFieldsErrors()
                     try validate(
                         for: .default,
@@ -121,18 +151,12 @@ extension JoinOrganizationView {
                         confirmPassword: repeatBackupPasswordContent.text
                     )
                     viewState = .loading
-                    guard let deviceSecret = try deviceSecretRepository.getByUserId(userId: userData.user.ID) else {
-                        throw SSOLoginError.deviceSecretNotFound
+                    switch mode {
+                    case .setNewBackupPassword:
+                        try await setupNewAccountKeys()
+                    case .changeTemporaryPassword:
+                        try await changeTemporaryPassword()
                     }
-                    try await authenticator.setupAccountKeys(
-                        addresses: userData.addresses,
-                        password: backupPasswordContent.text,
-                        orgPublicKey: organizationInfo.organizationPublicKey,
-                        deviceSecret: deviceSecret.secret
-                    )
-                    let updatedUserData = try await loginService.refreshUserData(backupPassword: backupPasswordContent.text)
-                    await ssoNavigationDelegate?.globalSSOLoginDidFinish(data: updatedUserData)
-                    viewState = .idle
                 } catch {
                     viewState = .idle
                     PMLog.error(error)
@@ -143,6 +167,50 @@ extension JoinOrganizationView {
                     }
                 }
             }
+        }
+
+        func setupNewAccountKeys() async throws {
+            guard let authenticator, let loginService, let organizationInfo else {
+                throw SSOLoginError.authenticatorNotFound
+            }
+
+            guard let deviceSecret = try deviceSecretRepository.getByUserId(userId: userData.user.ID) else {
+                throw SSOLoginError.deviceSecretNotFound
+            }
+
+            try await authenticator.setupAccountKeys(
+                addresses: userData.addresses,
+                password: backupPasswordContent.text,
+                orgPublicKey: organizationInfo.organizationPublicKey,
+                deviceSecret: deviceSecret.secret
+            )
+            let updatedUserData = try await loginService.refreshUserData(backupPassword: backupPasswordContent.text)
+            await ssoNavigationDelegate?.globalSSOLoginDidFinish(data: updatedUserData)
+            viewState = .idle
+        }
+
+        func changeTemporaryPassword() async throws {
+            guard let loginService, let passwordChangeService else {
+                throw SSOLoginError.authenticatorNotFound
+            }
+            guard let deviceSecret = try deviceSecretRepository.getByUserId(userId: userData.user.ID) else {
+                throw SSOLoginError.deviceSecretNotFound
+            }
+            if let mailboxPassword = userData.getMailboxPassword {
+                userData.credential.update(password: mailboxPassword)
+            }
+            try await passwordChangeService.updateUserPassword(
+                auth: userData.credential,
+                userInfo: userData.toUserInfo,
+                loginPassword: userData.getMailboxPassword!,
+                newPassword: .init(value: backupPasswordContent.text),
+                buildAuth: true,
+                skipPasswordSRPProof: true,
+                deviceSecret: deviceSecret.secret
+            )
+            let updatedUserData = try await loginService.refreshUserData(backupPassword: backupPasswordContent.text)
+            await ssoNavigationDelegate?.globalSSOLoginDidFinish(data: updatedUserData)
+            viewState = .idle
         }
 
         private func resetTextFieldsErrors() {

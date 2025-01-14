@@ -1,6 +1,6 @@
 //
 //  UpdatePasswordError.swift
-//  ProtonCore-PasswordChange - Created on 20.03.2024.
+//  ProtonCore-Login - Created on 20.03.2024.
 //
 //  Copyright (c) 2024 Proton Technologies AG
 //
@@ -22,7 +22,7 @@
 import Foundation
 import ProtonCoreObservability
 
-enum UpdatePasswordError: Int, Error {
+public enum UpdatePasswordError: Int, Error {
     case invalidUserName
     case invalidModulusID
     case invalidModulus
@@ -37,34 +37,12 @@ enum UpdatePasswordError: Int, Error {
 }
 
 extension UpdatePasswordError: LocalizedError {
-    var errorDescription: String? {
-        switch self {
-        case .invalidUserName:
-            return PCTranslation.errorInvalidUsername.l10n
-        case .invalidModulusID:
-            return PCTranslation.errorInvalidModulusID.l10n
-        case .invalidModulus:
-            return PCTranslation.errorInvalidModulus.l10n
-        case .cantHashPassword:
-            return PCTranslation.errorCantHashPassword.l10n
-        case .cantGenerateVerifier:
-            return PCTranslation.errorCantGenerateVerifier.l10n
-        case .cantGenerateSRPClient:
-            return PCTranslation.errorCantGenerateSRPClient.l10n
-        case .keyUpdateFailed:
-            return PCTranslation.errorKeyUpdateFailed.l10n
-        case .missingUserInfo:
-            return PCTranslation.errorMissingUserInfo.l10n
-        case .missingAuthInfo:
-            return PCTranslation.errorMissingAuthInfo.l10n
-        case .default:
-            return PCTranslation.errorUpdatePasswordDefault.l10n
-
-        }
+    public var errorDescription: String? {
+        LSTranslation.errorUpdatePasswordDefault.l10n
     }
 }
 
-extension UpdatePasswordError {
+public extension UpdatePasswordError {
     var passwordChangeObservabilityStatus: PasswordChangeHTTPResponseCodeStatus {
         switch self {
         case .invalidUserName: return .invalidUserName

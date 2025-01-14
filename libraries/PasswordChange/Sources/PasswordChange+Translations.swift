@@ -53,17 +53,6 @@ public enum PCTranslation: TranslationsExposing {
     case enterDigitsCode
     case authenticate
 
-    case errorInvalidUsername
-    case errorInvalidModulusID
-    case errorInvalidModulus
-    case errorCantHashPassword
-    case errorCantGenerateVerifier
-    case errorCantGenerateSRPClient
-    case errorKeyUpdateFailed
-    case errorUpdatePasswordDefault
-    case errorMissingAuthInfo
-    case errorMissingUserInfo
-
     public var l10n: String {
         switch self {
         case .settingsItem:
@@ -104,27 +93,6 @@ public enum PCTranslation: TranslationsExposing {
             return localized(key: "Enter the 6-digit code.", comment: "Textfield footnote")
         case .authenticate:
             return localized(key: "Authenticate", comment: "Action button")
-        case .errorInvalidUsername:
-            return localized(key: "Invalid username!", comment: "Error message")
-        case .errorInvalidModulusID:
-            return localized(key: "Can't get a Modulus ID!", comment: "Error message")
-        case .errorInvalidModulus:
-            return localized(key: "Can't get a Modulus!", comment: "Error message")
-        case .errorCantHashPassword:
-            return localized(key: "Invalid hashed password!", comment: "Error message")
-        case .errorCantGenerateVerifier:
-            return localized(key: "Can't create an SRP verifier!", comment: "Error message")
-        case .errorCantGenerateSRPClient:
-            return localized(key: "Can't create an SRP Client", comment: "Error message")
-        case .errorKeyUpdateFailed:
-            return localized(key: "The private key update failed.", comment: "Error message")
-        case .errorUpdatePasswordDefault:
-            return localized(key: "Password update failed", comment: "Error message")
-        case .errorMissingAuthInfo:
-            return localized(key: "Missing AuthInfo", comment: "Error message")
-        case .errorMissingUserInfo:
-            return localized(key: "Missing UserInfo", comment: "Error message")
-
         }
     }
 }

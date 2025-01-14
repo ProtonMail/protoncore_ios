@@ -33,20 +33,4 @@
 
 "Authenticate" = "Authenticate";
 
-"Invalid username!" = "Invalid username!";
-
-"Can't get a Modulus ID!" = "Can't get a Modulus ID!";
-
-"Can't get a Modulus!" = "Can't get a Modulus!";
-
-"Invalid hashed password!" = "Invalid hashed password!";
-
-"Can't create an SRP verifier!" = "Can't create an SRP verifier!";
-
-"Can't create an SRP Client" = "Can't create an SRP Client";
-
-"The private key update failed." = "The private key update failed.";
-
-"Password update failed" = "Password update failed";
-
 "Close" = "Close";

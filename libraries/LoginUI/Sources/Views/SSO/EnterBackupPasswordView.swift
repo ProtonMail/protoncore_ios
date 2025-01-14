@@ -55,6 +55,7 @@ public struct EnterBackupPasswordView: View {
                         style: .constant(.init(mode: .solid)),
                         content: .constant(.init(
                             title: LUITranslation.continue_core_button.l10n,
+                            isAnimating: viewModel.viewState == .loading,
                             action: viewModel.primaryActionButtonTapped
                         ))
                     )
@@ -74,6 +75,7 @@ public struct EnterBackupPasswordView: View {
             .padding(Constants.itemSpacing)
             .foregroundColor(ColorProvider.TextNorm)
             .frame(maxWidth: .infinity)
+            .disabled(viewModel.viewState == .loading)
         }
         .onAppear {
             viewModel.backupPasswordContent.focus()

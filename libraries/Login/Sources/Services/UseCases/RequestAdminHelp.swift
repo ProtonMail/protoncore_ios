@@ -42,7 +42,7 @@ public struct RequestAdminHelp {
             throw SSOLoginError.deviceSecretNotFound
         }
         let request = PingAdminHelpRequest(deviceID: deviceSecret.deviceId)
-        _ = try await apiService.perform(request: request)
+        let _: (_, DefaultResponse) = try await apiService.perform(request: request)
     }
 }
 

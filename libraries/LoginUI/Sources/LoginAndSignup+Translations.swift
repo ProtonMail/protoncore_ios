@@ -193,6 +193,7 @@ public enum LUITranslation: TranslationsExposing {
     case sso_login_error_screen_title
     case sso_login_error_screen_description
     case unknown
+    case set_backup_password_title
 
     public var l10n: String {
         switch self {
@@ -529,6 +530,8 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Your organization uses SSO. Continue to sign in with your third-party SSO provider.", comment: "SSO Signing in error screen description")
         case .unknown:
             return localized(key: "Unknown", comment: "Used when some account value is not found. Should never happen.")
+        case .set_backup_password_title:
+            return localized(key: "Set backup password", comment: "Set backup password screen title")
         }
     }
 }

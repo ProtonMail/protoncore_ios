@@ -55,6 +55,7 @@ public struct RequestAdminAccessView: View {
                     style: .constant(.init(mode: .solid)),
                     content: .constant(.init(
                         title: LUITranslation.continue_core_button.l10n,
+                        isAnimating: viewModel.viewState == .loading,
                         action: viewModel.continueActionButtonTapped
                     ))
                 )
@@ -65,6 +66,7 @@ public struct RequestAdminAccessView: View {
             .padding(Constants.itemSpacing)
             .foregroundColor(ColorProvider.TextNorm)
             .frame(maxWidth: .infinity)
+            .disabled(viewModel.viewState == .loading)
         }
         .background(
             ColorProvider.BackgroundNorm

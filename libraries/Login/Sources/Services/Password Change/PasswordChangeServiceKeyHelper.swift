@@ -1,6 +1,6 @@
 //
 //  PasswordChangeServiceKeyHelper.swift
-//  ProtonCore-PasswordChange - Created on 20.03.2024.
+//  ProtonCore-Login - Created on 20.03.2024.
 //
 //  Copyright (c) 2024 Proton Technologies AG
 //

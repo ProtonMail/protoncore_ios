@@ -65,9 +65,7 @@ public class AuthDeviceManager {
 public extension AuthDeviceManager {
 
     func setup() {
-        #if !DEBUG
         guard FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.externalSSO, reloadValue: true) else { return }
-        #endif
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(fetchPendingDevices),
@@ -87,6 +85,7 @@ public extension AuthDeviceManager {
 private extension AuthDeviceManager {
 
     @objc func fetchPendingDevices() {
+        guard FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.externalSSO, reloadValue: true) else { return }
         guard fetchPendingDevicesTask == nil else { return }
         fetchPendingDevicesTask = Task { @MainActor [weak self] in
             defer {
@@ -124,7 +123,8 @@ private extension AuthDeviceManager {
 
             let apiService = try apiManagerProvider.getApiService(userId: currentUser.user.ID)
             let authDevices = try await GetAuthDevices(apiService: apiService).invoke()
-            let pendingDevices = authDevices.filter({ $0.state == .pendingActivation })
+            let pendingDevices = authDevices
+                .filter({ $0.state == .pendingActivation || $0.state == .pendingAdminActivation })
             if !pendingDevices.isEmpty {
                 pendingDevicesObserver.send(.init(
                     apiService: apiService,

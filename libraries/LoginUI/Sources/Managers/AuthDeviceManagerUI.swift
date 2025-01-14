@@ -48,6 +48,7 @@ public extension AuthDeviceManagerUI {
     func setup() {
         authDeviceManager.setup()
         observePendingDevices()
+        forceFetchPendingDevices()
     }
 
     func forceFetchPendingDevices() {

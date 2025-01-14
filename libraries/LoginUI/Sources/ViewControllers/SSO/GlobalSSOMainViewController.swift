@@ -30,6 +30,7 @@ protocol GlobalSSONavigationDelegate: AnyObject {
     func showRequestAdminHelpConfirmation(data: LoginData, unprivatizationInfo: UnprivatizationInfo)
     func showRequestAdminHelp(data: LoginData)
     func showEnterBackupPassword(data: LoginData, unprivatizationInfo: UnprivatizationInfo)
+    func showChangeBackupPassword(data: LoginData)
     func globalSSOLoginDidFinish(data: LoginData) async
     func globalSSOLoginDidCancel()
 }
@@ -56,6 +57,7 @@ final class GlobalSSOMainViewController: UIHostingController<GlobalSSOMainView> 
     override public func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = ColorProvider.BackgroundNorm
+        navigationController?.navigationBar.tintColor = ColorProvider.TextNorm
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         navigationItem.leftBarButtonItem = .button(on: self, action: #selector(dismissViewController), image: IconProvider.crossBig)
     }
