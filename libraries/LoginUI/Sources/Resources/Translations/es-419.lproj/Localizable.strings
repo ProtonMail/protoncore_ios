@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Se solicitó un inicio de sesión en otro dispositivo. ¿Ha sido usted?";
 
-"Check that the confirmation code match the code on your other device." = "Compruebe que el código de confirmación sea igual al código en su otro dispositivo.";
+"Enter the confirmation code we sent on your other device for %@." = "Ingrese el código de confirmación que le enviamos al otro dispositivo para %@.";
 
 "Confirmation code" = "Código de confirmación";
 
@@ -337,3 +337,5 @@
 "Sign in with single sign-on" = "Iniciar sesión con inicio de sesión único";
 
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Su organización usa el inicio de sesión único (SSO). Continúe iniciando sesión con su proveedor de SSO externo.";
+
+"Unknown" = "Desconocido";

@@ -5,3 +5,9 @@
 "Get a Proton Mail address linked to this account in your Proton web settings." = "V spletnih nastavitvah programa Proton pridobite naslov Proton Mail, povezan s tem računom.";
 
 "Proton address required" = "Potreben je naslov Proton";
+
+"Code doesn't match" = "Code doesn't match";
+
+"Code isn't valid" = "Code isn't valid";
+
+"Device secret not found" = "Device secret not found";

@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Indlogning påkrævet på en anden enhed. Var det dig?";
 
-"Check that the confirmation code match the code on your other device." = "Tjek, at bekræftelseskoden matcher koden på din anden enhed.";
+"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
 
 "Confirmation code" = "Bekræftelseskode";
 
@@ -337,3 +337,5 @@
 "Sign in with single sign-on" = "Sign in with single sign-on";
 
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Your organization uses SSO. Continue to sign in with your third-party SSO provider.";
+
+"Unknown" = "Ukendt";

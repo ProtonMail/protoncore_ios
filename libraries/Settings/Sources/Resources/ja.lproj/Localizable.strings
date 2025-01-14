@@ -4,7 +4,7 @@
 
 "pmsettings-settings-system-settings-section" = "システム設定";
 
-"pmsettings-settings-system-settings-language-title" = "言語 / Language";
+"pmsettings-settings-system-settings-language-title" = "言語";
 
 "pmsettings-settings-system-settings-language-description" = "システム設定で言語を選択できます。";
 
@@ -16,7 +16,7 @@
 
 "pmsettings-settings-system-settings-notifications-button" = "システム設定で権限を管理する";
 
-"pmsettings-settings-about-section" = "アプリについて";
+"pmsettings-settings-about-section" = "詳細";
 
 "pmsettings-settings-about-acknowledgements" = "謝辞";
 

@@ -5,3 +5,9 @@
 "Get a Proton Mail address linked to this account in your Proton web settings." = "Obtén una dirección de Proton Mail vinculada a esta cuenta en la configuración web de Proton.";
 
 "Proton address required" = "Es necesaria una dirección Proton.";
+
+"Code doesn't match" = "El código no coincide.";
+
+"Code isn't valid" = "El código no está válido.";
+
+"Device secret not found" = "No se ha encontrado el código secreto del dispositivo.";

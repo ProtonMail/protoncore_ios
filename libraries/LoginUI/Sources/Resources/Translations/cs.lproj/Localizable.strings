@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Požadavek na přihlášení na jiném zařízení. Byli jste to vy?";
 
-"Check that the confirmation code match the code on your other device." = "Zkontrolujte, že se potvrzovací kód shoduje s kódem na jiném vašem zařízení.";
+"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
 
 "Confirmation code" = "Potvrzovací kód";
 
@@ -337,3 +337,5 @@
 "Sign in with single sign-on" = "Přihlásit se pomocí jednotného přihlášení";
 
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Vaše organizace používá SSO. Pokračujte v přihlašování pomocí poskytovatele SSO třetí strany.";
+
+"Unknown" = "Neznámé";

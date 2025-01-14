@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "მოთხოვნილია შესვლა სხვა მოწყობილობიდან. შენ იყავი ცელქო?";
 
-"Check that the confirmation code match the code on your other device." = "შეამოწმეთ, რომ დადასტურები კოდი ემთხვევა სხვა მოწყობილობაზე ნაჩვენებ კოდს.";
+"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
 
 "Confirmation code" = "დადასტურების კოდი";
 
@@ -337,3 +337,5 @@
 "Sign in with single sign-on" = "შესვლა SSO-ით";
 
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "თქვენი ორგანიზაცია SSO-ს იყენებს. გააგრძელეთ შესვლა თქვენი SSO პროვაიდერით.";
+
+"Unknown" = "უცნობი";

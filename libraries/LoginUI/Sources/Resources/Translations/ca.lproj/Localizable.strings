@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "S'ha sol·licitat una connexió en un altre dispositiu. Heu estat vosaltres?";
 
-"Check that the confirmation code match the code on your other device." = "Comproveu que el codi de confirmació coincideixi amb el codi de l'altre dispositiu.";
+"Enter the confirmation code we sent on your other device for %@." = "Introduïu el codi de confirmació enviat a l'altre dispositiu per %@.";
 
 "Confirmation code" = "Codi de confirmació";
 
@@ -337,3 +337,5 @@
 "Sign in with single sign-on" = "Inicia la sessió amb un inici de sessió únic";
 
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "La vostra organització utilitza l'inici de sessió únic (SSO). Continueu iniciant la sessió amb el vostre proveïdor d'SSO de tercers.";
+
+"Unknown" = "Desconegut";

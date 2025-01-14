@@ -32,9 +32,9 @@
 
 "Your country may be blocking access to Proton. Try using %1$@ (or any other VPN) or %2$@ to access Proton." = "Vaše země možná blokuje přístup ke službě Proton. Zkuste pro přístup k Protonu použít %1$@ (nebo jinou VPN) nebo %2$@.";
 
-"Temporarily disable or remove your antivirus software." = "Dočasně zakažte nebo odstraňte Váš antivirový program.";
+"Temporarily disable or remove your antivirus software." = "Dočasně deaktivujte nebo odstraňte váš antivirový program.";
 
-"Disable any proxies or firewalls, or contact your network administrator." = "Zakažte všechny proxy a brány firewallu, nebo se obraťte na správce sítě.";
+"Disable any proxies or firewalls, or contact your network administrator." = "Deaktivujte všechny proxy nebo brány firewall nebo se obraťte na správce sítě.";
 
 "Check Proton Status for our system status." = "Zkontrolujte Stav Protonu pro zjištění stavu našeho systému.";
 

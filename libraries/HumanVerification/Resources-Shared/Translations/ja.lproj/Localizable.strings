@@ -2,9 +2,9 @@
 
 "Need help with human verification?" = "人間ではないことの検証に助けが必要ですか?";
 
-"Request an invite" = "登録を申請する";
+"Request an invite" = "招待をリクエスト";
 
-"Visit our Help Center" = "ヘルプセンターを閲覧";
+"Visit our Help Center" = "ヘルプセンターを開く";
 
 "If you are having trouble creating your account, please request an invitation and we will respond within 1 business day." = "アカウントの作成に問題がある場合は、招待をリクエストしてください。1 営業日以内に対応します。";
 
@@ -16,14 +16,14 @@
 
 "Email" = "メールアドレス";
 
-"CAPTCHA" = "キャプチャ";
+"CAPTCHA" = "CAPTCHA";
 
 "Help" = "ヘルプ";
 
 "OK" = "OK";
 
-"Get verification code" = "検証コードを取得";
+"Get verification code" = "認証コードを取得";
 
-"Verification code" = "検証コード";
+"Verification code" = "認証コード";
 
-"Verify" = "検証";
+"Verify" = "認証";

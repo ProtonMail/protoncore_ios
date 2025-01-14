@@ -34,6 +34,6 @@
 
 "What went wrong" = "Qual foi o problema?";
 
-"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters.";
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Descreva o problema com o máximo de detalhes possível. Se incluir uma mensagem de erro, diga-nos o que diz.A mensagem deve incluir, no mínimo, 10 caracteres.";
 
-"Your report was sent successfully" = "Your report was sent successfully";
+"Your report was sent successfully" = "O seu relatório foi enviado.";

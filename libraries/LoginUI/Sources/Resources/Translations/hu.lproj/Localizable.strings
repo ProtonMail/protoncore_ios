@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Bejelentkezési kérelmet küldtek egy másik eszközön. Ön volt az?";
 
-"Check that the confirmation code match the code on your other device." = "Ellenőrizze, hogy az ellenőrző kód egyezik az ön eszközén.";
+"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
 
 "Confirmation code" = "Ellenőrző kód";
 
@@ -337,3 +337,5 @@
 "Sign in with single sign-on" = "Bejelentkezés egyszeri bejelentkezéssel";
 
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Az Ön szervezete SSO-t használ. A bejelentkezés folytatása a harmadik féltől származó SSO-szolgáltatóval.";
+
+"Unknown" = "Ismeretlen";

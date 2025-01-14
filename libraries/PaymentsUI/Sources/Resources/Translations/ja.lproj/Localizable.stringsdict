@@ -27,7 +27,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>other</key>
-        <string>%d ユーザー</string>
+        <string>%d 人のユーザー</string>
       </dict>
     </dict>
     <key>&lt;n&gt; email addresses</key>
@@ -41,7 +41,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>other</key>
-        <string>%d メールアドレス</string>
+        <string>%d 個のメールアドレス</string>
       </dict>
     </dict>
     <key>&lt;n&gt; email addresses / user</key>
@@ -55,7 +55,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>other</key>
-        <string>%d メールアドレス / ユーザー</string>
+        <string>%d 個のメールアドレス / ユーザー</string>
       </dict>
     </dict>
     <key>&lt;n&gt; calendars</key>
@@ -69,7 +69,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>other</key>
-        <string>%d カレンダー</string>
+        <string>%d 個のカレンダー</string>
       </dict>
     </dict>
     <key>&lt;n&gt; folders / labels</key>
@@ -83,7 +83,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>other</key>
-        <string>%d フォルダー / ラベル</string>
+        <string>%d 個のフォルダー / ラベル</string>
       </dict>
     </dict>
     <key>&lt;n&gt; countries</key>
@@ -278,7 +278,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>other</key>
-        <string>%d ユーザー</string>
+        <string>%d 人のユーザー</string>
       </dict>
     </dict>
     <key>&lt;n&gt; of &lt;m&gt; email addresses</key>
@@ -301,7 +301,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>other</key>
-        <string>%d メールアドレス</string>
+        <string>%d 個のメールアドレス</string>
       </dict>
     </dict>
     <key>&lt;n&gt; of &lt;m&gt; calendars</key>
@@ -324,7 +324,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>other</key>
-        <string>%d カレンダー</string>
+        <string>%d 個のカレンダー</string>
       </dict>
     </dict>
     <key>&lt;n&gt; addresses per user</key>
@@ -338,7 +338,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>other</key>
-        <string>ユーザーごとに %d アドレス</string>
+        <string>ユーザーあたり %d 個のアドレス</string>
       </dict>
     </dict>
     <key>&lt;n&gt; calendars per user</key>

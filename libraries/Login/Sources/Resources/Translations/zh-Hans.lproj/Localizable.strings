@@ -5,3 +5,9 @@
 "Get a Proton Mail address linked to this account in your Proton web settings." = "在 Proton 网页版设置中可为此账户创建 Proton Mail 邮箱地址。";
 
 "Proton address required" = "需要使用 Proton 地址";
+
+"Code doesn't match" = "Code doesn't match";
+
+"Code isn't valid" = "Code isn't valid";
+
+"Device secret not found" = "Device secret not found";

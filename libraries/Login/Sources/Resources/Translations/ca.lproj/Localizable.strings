@@ -5,3 +5,9 @@
 "Get a Proton Mail address linked to this account in your Proton web settings." = "Obteniu una adreça de correu de Proton enllaçada a aquest compte a la configuració web de Proton.";
 
 "Proton address required" = "Es requereix l'adreça del Proton";
+
+"Code doesn't match" = "El codi no coincideix.";
+
+"Code isn't valid" = "El codi no és vàlid.";
+
+"Device secret not found" = "No s'ha trobat el codi secret del dispositiu.";

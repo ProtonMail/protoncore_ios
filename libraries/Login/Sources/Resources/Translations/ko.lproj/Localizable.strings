@@ -5,3 +5,9 @@
 "Get a Proton Mail address linked to this account in your Proton web settings." = "Proton 웹 설정에서 이 계정에 연결된 Proton Mail 주소를 받으세요.";
 
 "Proton address required" = "Proton 주소 필요";
+
+"Code doesn't match" = "Code doesn't match";
+
+"Code isn't valid" = "Code isn't valid";
+
+"Device secret not found" = "Device secret not found";

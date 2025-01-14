@@ -93,9 +93,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d каляндар</string>
+        <string>%d календара</string>
         <key>few</key>
-        <string>%d календары</string>
+        <string>%d календароў</string>
         <key>many</key>
         <string>%d календароў</string>
         <key>other</key>
@@ -508,9 +508,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d каляндар на карыстальніка</string>
+        <string>%d календара на карыстальніка</string>
         <key>few</key>
-        <string>%d календары на карыстальніка</string>
+        <string>%d календароў на карыстальніка</string>
         <key>many</key>
         <string>%d календароў на карыстальніка</string>
         <key>other</key>

@@ -214,7 +214,7 @@
 
 "Your Proton account was successfully created." = "Proton 계정이 성공적으로 생성되었습니다.";
 
-"Enjoy the world of privacy." = "사생활의 세계를 즐기세요.";
+"Enjoy the world of privacy." = "프라이버시의 세계를 즐겨보세요.";
 
 "Cancel" = "취소";
 
@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "다른 기기에서 로그인이 요청되었습니다. 본인이 맞나요?";
 
-"Check that the confirmation code match the code on your other device." = "확인 코드가 다른 기기의 코드와 일치하는지 확인하세요.";
+"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
 
 "Confirmation code" = "확인 코드";
 
@@ -337,3 +337,5 @@
 "Sign in with single sign-on" = "Single sign-on으로 로그인";
 
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "귀하의 조직이 SSO를 사용합니다. 제3자 SSO제공자로 로그인하려면 계속하세요.";
+
+"Unknown" = "알 수 없음";
