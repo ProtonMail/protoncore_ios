@@ -1,5 +1,5 @@
 {
-  "originHash" : "1c325cde49a49211b24569e278b3ed953e457ca6b31479cf90943e531d215ac1",
+  "originHash" : "3c5345b7c4f5e3fa18614eb3e59745dfefde0fef54e8c3dc08f46317fbfbcf60",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -17,15 +17,6 @@
       "state" : {
         "revision" : "5f680d98dadbddab36a207b436a6291d86a5523a",
         "version" : "2.1.2"
-      }
-    },
-    {
-      "identity" : "ccrypt_blowfish",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/tannerdsilva/Ccrypt_blowfish.git",
-      "state" : {
-        "revision" : "abd2bf4ca4730e05d04e9a096f3f6300653ee40c",
-        "version" : "1.3.0"
       }
     },
     {
@@ -137,15 +128,6 @@
       }
     },
     {
-      "identity" : "swiftbcrypt",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/tannerdsilva/SwiftBCrypt.git",
-      "state" : {
-        "revision" : "12521ab8c1416828b00cb4d94e450dd111df6193",
-        "version" : "0.2.0"
-      }
-    },
-    {
       "identity" : "swiftotp",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/lachlanbell/SwiftOTP",
@@ -168,8 +150,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/nalexn/ViewInspector.git",
       "state" : {
-        "revision" : "788e7879d38a839c4e348ab0762dcc0364e646a2",
-        "version" : "0.10.1"
+        "revision" : "5acfa0a3c095ac9ad050abe51c60d1831e8321da",
+        "version" : "0.10.0"
       }
     },
     {

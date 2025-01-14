@@ -206,7 +206,6 @@ extension String {
     static let sentry: String = "Sentry"
     static let sentryPackage: String = "sentry-cocoa"
     static let sdWebImage: String = "SDWebImage"
-    static let swiftBCrypt: String = "SwiftBCrypt"
     static let swiftOTP: String = "SwiftOTP"
     static let snapshotTesting: String = "SnapshotTesting"
     static let snapshotTestingPackage: String = "swift-snapshot-testing"
@@ -333,7 +332,6 @@ extension Target.Dependency {
     static var reachabilitySwift: Target.Dependency { .product(name: .reachabilitySwift, package: .reachabilitySwiftPackage) }
     static var sentry: Target.Dependency { .product(name: .sentry, package: .sentryPackage) }
     static var snapshotTesting: Target.Dependency { .product(name: .snapshotTesting, package: .snapshotTestingPackage) }
-    static var swiftBCrypt: Target.Dependency { .product(name: .swiftBCrypt, package: .swiftBCrypt) }
     static var swiftOTP: Target.Dependency { .product(name: .swiftOTP, package: .swiftOTP) }
     static var trustKit: Target.Dependency { .product(name: .trustKit, package: .trustKit) }
     static var sdWebImage: Target.Dependency { .product(name: .sdWebImage, package: .sdWebImage) }
@@ -510,8 +508,7 @@ add(
                         .cryptoGoUsedInTests,
                         .hash,
                         .obfuscatedConstants,
-                        .ohhttpStubs,
-                        .swiftBCrypt
+                        .ohhttpStubs
                        ],
                        path: "libraries/Authentication-KeyGeneration/Tests",
                        resources: [.process("TestData")])
@@ -2112,10 +2109,6 @@ let package = Package(
             from: "1.15.0"
         ),
         .package(
-            url: "https://github.com/tannerdsilva/SwiftBCrypt.git",
-            from: "0.2.0"
-        ),
-        .package(
             url: "https://github.com/SDWebImage/SDWebImage.git",
             "0.0.0"..<"5.16.0"
         ),
@@ -2125,7 +2118,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/nalexn/ViewInspector.git",
-            .upToNextMajor(from: "0.10.0")
+            exact: "0.10.0"
         ),
         .package(
             url: "https://github.com/getsentry/sentry-cocoa.git",

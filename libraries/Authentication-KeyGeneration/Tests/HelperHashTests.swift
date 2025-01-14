@@ -33,7 +33,6 @@ import ProtonCoreCryptoVPNPatchedGoImplementation
 #else
 import ProtonCoreCryptoGoImplementation
 #endif
-import SwiftBCrypt
 
 import ProtonCoreAuthentication
 @testable import ProtonCoreAuthenticationKeyGeneration
@@ -89,12 +88,9 @@ class HelperHashTests: XCTestCase {
         byteArray.append(randomSalt)
         let source = NSData(data: byteArray as Data) as Data
         let encodedSalt = JKBCrypt.base64DotSlash(source)
-        let real_salt = "$2a$10$" + encodedSalt
 
-        let hash = try BCrypt.hash(phrase: testpassword, salt: Data(real_salt.utf8))
-        var out = String(bytes: hash.bytes, encoding: .utf8)!
-        // SwiftBCrypt library leaves \0 at the end of computed has. And it must be removed.
-        out.removeLast()
+        let hash = try Bcrypt.hash(password: testpassword, salt: Array(encodedSalt.utf8))
+        let out = String(bytes: hash.bytes, encoding: .utf8)!
 
         var index = out.index(out.startIndex, offsetBy: 4)
         let leftPwd = "$2y$" + String(out[index...])
