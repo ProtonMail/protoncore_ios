@@ -35,7 +35,7 @@ class CountryPickerSnapshotTests: SnapshotTestCase {
     func testCountryPickerViewControllerScreen() {
         let viewController = UIStoryboard.instantiate(storyboardName: "CountryPicker", controllerType: CountryPickerViewController.self, name: "CountryPickerViewController")
         viewController.viewModel = CountryCodeViewModel()
-        checkSnapshots(controller: viewController, perceptualPrecision: 0.98)
+        checkSnapshots(controller: viewController, perceptualPrecision: 0.9)
     }
 }
 

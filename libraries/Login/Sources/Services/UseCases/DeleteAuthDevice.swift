@@ -19,7 +19,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-#if os(iOS)
 import ProtonCoreServices
 
 public struct DeleteAuthDevice {
@@ -31,8 +30,6 @@ public struct DeleteAuthDevice {
 
     public func invoke(deviceId: String) async throws {
         let request = DeleteAuthDeviceRequest(deviceID: deviceId)
-        _ = try await apiService.perform(request: request)
+        let _: (_, DefaultResponse) = try await apiService.perform(request: request)
     }
 }
-
-#endif

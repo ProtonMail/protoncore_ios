@@ -216,7 +216,7 @@ public final class LoginService {
                     /// There are accounts that are in 2 password mode, but don't effectively require a second password.
                     /// This is because those accounts have no keys (so key password = NULL != account password).
                     /// An example of accounts that happen to behave like this are the `accountType = .username` ones.
-                    if passwordMode == .two && !user.keys.isEmpty {
+                    if passwordMode == .two && !user.keys.isEmpty && minimumAccountType != .username {
                         completion(.success(.askSecondPassword))
                         return
                     }

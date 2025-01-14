@@ -19,8 +19,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-#if os(iOS)
-import UIKit
 import ProtonCoreServices
 
 /// Calls AuthDevices request and returns the auth devices of the account
@@ -38,5 +36,3 @@ public struct GetAuthDevices {
         return result.authDevices
     }
 }
-
-#endif

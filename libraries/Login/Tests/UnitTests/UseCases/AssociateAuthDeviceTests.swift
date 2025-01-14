@@ -84,6 +84,8 @@ final class AssociateAuthDeviceTests: XCTestCase, JSONMockLoader {
                     underlyingError: nil
                 )
                 completion(nil, .failure(responseError as NSError))
+            } else if method == .delete && path.contains("/auth/v4/devices/\(self.deviceId)") {
+                completion(nil, .success(DefaultResponse()))
             } else {
                 XCTFail()
                 completion(nil, .success([:]))
@@ -124,6 +126,8 @@ final class AssociateAuthDeviceTests: XCTestCase, JSONMockLoader {
                     underlyingError: nil
                 )
                 completion(nil, .failure(responseError as NSError))
+            } else if method == .delete && path.contains("/auth/v4/devices/\(self.deviceId)") {
+                completion(nil, .success(DefaultResponse()))
             } else {
                 XCTFail()
                 completion(nil, .success([:]))

@@ -19,6 +19,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+
+#if os(iOS)
+
 import Combine
 @testable import ProtonCorePaymentsV2
 import StoreKitTest
@@ -153,3 +156,4 @@ final class TransactionHandlerTests: XCTestCase, @unchecked Sendable {
         }
     }
 }
+#endif
