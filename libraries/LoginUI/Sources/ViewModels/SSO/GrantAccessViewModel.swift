@@ -49,7 +49,13 @@ extension GrantAccessView {
 
         weak var navigationDelegate: GrantAccessViewNavigationDelegate?
 
+        enum ViewState {
+            case idle
+            case loading
+        }
+
         @Published var bannerState: BannerState = .none
+        @Published var viewState: ViewState = .idle
         @Published var confirmationCodeStyle: PCTextFieldStyle = .init(mode: .idle)
         @Published var confirmationCodeContent: PCTextFieldContent = .init(
             title: LUITranslation.confirmation_code.l10n,
@@ -87,6 +93,7 @@ extension GrantAccessView {
                     guard let activateAuthDevice else { return }
                     guard let authDevice = authDevices.first else { throw SSOLoginError.authDeviceNotFound }
                     resetConfirmationCodeInput()
+                    viewState = .loading
 
                     let deviceSecret = try validateConfirmationCode.invoke(
                         userData: userData,
@@ -105,10 +112,13 @@ extension GrantAccessView {
                         deviceSecret: deviceSecret,
                         passphrase: mailboxPassphrase
                     )
+                    viewState = .idle
                     navigationDelegate?.dismissGrantAccessView()
                 } catch let error as ValidateConfirmationCode.ValidationError {
+                    viewState = .idle
                     displayConfirmationCodeError(error: error)
                 } catch {
+                    viewState = .idle
                     PMLog.error(error)
                     bannerState = .error(content: .init(message: error.localizedDescription))
                 }

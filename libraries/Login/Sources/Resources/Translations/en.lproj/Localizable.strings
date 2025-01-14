@@ -12,4 +12,6 @@
 
 "Device secret not found" = "Device secret not found";
 
+"Passphrase not found" = "Passphrase not found";
+
 "Password update failed" = "Password update failed";

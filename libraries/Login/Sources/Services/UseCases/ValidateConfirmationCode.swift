@@ -67,9 +67,11 @@ public struct ValidateConfirmationCode {
         userAddress: Address,
         activationToken: String
     ) throws -> String {
+        guard let mailboxPassword = userData.getMailboxPassword else { throw ValidationError.passphraseNotFound }
+
         // User keys used to decrypt the UserAddress key token
         let userDecryptionKeys: [DecryptionKey] = userData.user.keys.compactMap({
-            .init(privateKey: ArmoredKey(value: $0.privateKey), passphrase: Passphrase(value: userData.getMailboxPassword!))
+            .init(privateKey: ArmoredKey(value: $0.privateKey), passphrase: Passphrase(value: mailboxPassword))
         })
         guard let encryptedUserAddressKeyToken = userAddress.keys.primary()?.token else {
             PMLog.error("User address key token not found")
@@ -99,6 +101,7 @@ public struct ValidateConfirmationCode {
         case invalidCode
         case doesNotMatch
         case deviceSecretNotFound
+        case passphraseNotFound
 
         public var errorDescription: String? {
             return switch self {
@@ -108,6 +111,8 @@ public struct ValidateConfirmationCode {
                 LSTranslation._sso_code_doesnt_match.l10n
             case .deviceSecretNotFound:
                 LSTranslation._sso_device_secret_not_found.l10n
+            case .passphraseNotFound:
+                LSTranslation._sso_passphrase_not_found.l10n
             }
         }
     }

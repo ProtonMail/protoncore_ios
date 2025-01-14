@@ -39,6 +39,7 @@ public enum LSTranslation: TranslationsExposing {
     case _sso_code_doesnt_match
     case _sso_invalid_code
     case _sso_device_secret_not_found
+    case _sso_passphrase_not_found
 
     case errorUpdatePasswordDefault
 
@@ -58,6 +59,8 @@ public enum LSTranslation: TranslationsExposing {
             return localized(key: "Code isn't valid", comment: "SSO error displayed when the confirmation code is invalid (e.g. wrong length)")
         case ._sso_device_secret_not_found:
             return localized(key: "Device secret not found", comment: "SSO error displayed when there was an error while validating the code")
+        case ._sso_passphrase_not_found:
+            return localized(key: "Passphrase not found", comment: "SSO error displayed when there was an error while validating the code")
         case .errorUpdatePasswordDefault:
             return localized(key: "Password update failed", comment: "Error message")
         }

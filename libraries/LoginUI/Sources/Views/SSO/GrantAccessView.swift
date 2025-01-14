@@ -50,6 +50,7 @@ public struct GrantAccessView: View {
                         style: .constant(.init(mode: .solid)),
                         content: .constant(.init(
                             title: LUITranslation.yes_it_was_me.l10n,
+                            isAnimating: viewModel.viewState == .loading,
                             action: viewModel.primaryActionButtonTapped
                         ))
                     )
@@ -69,6 +70,7 @@ public struct GrantAccessView: View {
             .padding(Constants.itemSpacing)
             .foregroundColor(ColorProvider.TextNorm)
             .frame(maxWidth: .infinity)
+            .disabled(viewModel.viewState == .loading)
         }
         .background(
             ColorProvider.BackgroundNorm
