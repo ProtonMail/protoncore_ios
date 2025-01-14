@@ -38,29 +38,7 @@ public enum UpdatePasswordError: Int, Error {
 
 extension UpdatePasswordError: LocalizedError {
     public var errorDescription: String? {
-        switch self {
-        case .invalidUserName:
-            return LSTranslation.errorInvalidUsername.l10n
-        case .invalidModulusID:
-            return LSTranslation.errorInvalidModulusID.l10n
-        case .invalidModulus:
-            return LSTranslation.errorInvalidModulus.l10n
-        case .cantHashPassword:
-            return LSTranslation.errorCantHashPassword.l10n
-        case .cantGenerateVerifier:
-            return LSTranslation.errorCantGenerateVerifier.l10n
-        case .cantGenerateSRPClient:
-            return LSTranslation.errorCantGenerateSRPClient.l10n
-        case .keyUpdateFailed:
-            return LSTranslation.errorKeyUpdateFailed.l10n
-        case .missingUserInfo:
-            return LSTranslation.errorMissingUserInfo.l10n
-        case .missingAuthInfo:
-            return LSTranslation.errorMissingAuthInfo.l10n
-        case .default:
-            return LSTranslation.errorUpdatePasswordDefault.l10n
-
-        }
+        LSTranslation.errorUpdatePasswordDefault.l10n
     }
 }
 
