@@ -25,8 +25,8 @@ import ProtonCoreUI
 struct IconButton: View {
 
     private struct Constants {
-        static var buttonLabelPadding: CGFloat = 10
-        static var buttonBorderWidth: CGFloat = 2
+        static let buttonLabelPadding: CGFloat = 10
+        static let buttonBorderWidth: CGFloat = 2
     }
 
     let action: () -> Void

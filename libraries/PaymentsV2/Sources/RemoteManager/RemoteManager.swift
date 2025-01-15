@@ -21,7 +21,7 @@
 
 import Foundation
 
-public protocol RemoteManagerProviding {
+public protocol RemoteManagerProviding: Sendable {
 
     func updateSession(sessionID: String, authToken: String)
 
@@ -51,11 +51,12 @@ public enum RequestTye: String {
     case PUT, POST, DELETE, GET
 }
 
-public class RemoteManager: RemoteManagerProviding {
+public final class RemoteManager: RemoteManagerProviding, @unchecked Sendable {
 
     private var requestHTTPHeader: [APIHeader: String]!
+    private let queue = DispatchQueue(label: "paymentsV2.remoteManager.syncQueue")
 
-    var session: URLSession
+    private var session: URLSession
 
     public init(sessionID: String, authToken: String, appVersion: String, atlasSecret: String? = nil) {
         session = URLSession.shared
@@ -63,32 +64,40 @@ public class RemoteManager: RemoteManagerProviding {
     }
 
     public func updateSession(sessionID: String, authToken: String) {
-        requestHTTPHeader[.sessionId] = sessionID
-        requestHTTPHeader[.authorization] = "Bearer \(authToken)"
+        queue.sync {
+            requestHTTPHeader[.sessionId] = sessionID
+            requestHTTPHeader[.authorization] = "Bearer \(authToken)"
+        }
+    }
+
+    public func setSession(_ session: URLSession) {
+        queue.sync {
+            self.session = session
+        }
     }
 
     // MARK: Private methods
 
     private func generateRequestHeader(_ sessionID: String, _ authToken: String, _ appVersion: String, _ atlasSecret: String?) {
-
-        requestHTTPHeader = [.sessionId: sessionID,
-                             .accept: "application/json",
-                             .contentType: "application/json",
-                             .authorization: "Bearer \(authToken)",
-                             .appVersion: appVersion]
-
+        queue.sync {
+            requestHTTPHeader = [.sessionId: sessionID,
+                                 .accept: "application/json",
+                                 .contentType: "application/json",
+                                 .authorization: "Bearer \(authToken)",
+                                 .appVersion: appVersion]
 #if DEBUG
-        guard let atlasSecret = atlasSecret else {
-            return
-        }
+            guard let atlasSecret = atlasSecret else {
+                return
+            }
 
-        requestHTTPHeader[.atlasSecret] = atlasSecret
+            requestHTTPHeader[.atlasSecret] = atlasSecret
 #endif
+        }
     }
 
     // MARK: GET
 
-    public func getFromURL<T: Decodable>(_ url: URL) async throws -> T {
+    public func getFromURL<T: Decodable & Sendable>(_ url: URL) async throws -> T {
 
         let (data, response) = try await session.data(for: requestFactory(url: url,
                                                                           requestType: .GET))
@@ -110,7 +119,7 @@ public class RemoteManager: RemoteManagerProviding {
         try verifyResponse(response: response)
     }
 
-    public func postToURL<T: Decodable>(request: APIRequest) async throws -> T {
+    public func postToURL<T: Decodable & Sendable>(request: APIRequest) async throws -> T {
 
         let (data, response) = try await session.data(for: requestFactory(url: request.url,
                                                                           requestType: .POST,
@@ -133,7 +142,7 @@ public class RemoteManager: RemoteManagerProviding {
         try verifyResponse(response: response)
     }
 
-    public func putToURL<T: Decodable>(request: APIRequest) async throws -> T {
+    public func putToURL<T: Decodable & Sendable>(request: APIRequest) async throws -> T {
 
         let (data, response) = try await session.data(for: requestFactory(url: request.url,
                                                                           requestType: .PUT,
@@ -156,7 +165,7 @@ public class RemoteManager: RemoteManagerProviding {
         try verifyResponse(response: response)
     }
 
-    public func deleteToURL<T: Decodable>(request: APIRequest) async throws -> T {
+    public func deleteToURL<T: Decodable & Sendable>(request: APIRequest) async throws -> T {
 
         let (data, response) = try await session.data(for: requestFactory(url: request.url,
                                                                           requestType: .DELETE,

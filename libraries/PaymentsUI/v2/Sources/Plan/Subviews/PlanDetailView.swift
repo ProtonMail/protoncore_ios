@@ -25,11 +25,11 @@ import ProtonCoreUI
 struct PlanDetailView: View {
 
     private struct Constants {
-        static var iconSize: CGFloat = 15
-        static var buttonTopPadding: CGFloat = 10
-        static var entitlementTextVerticalOffset: CGFloat = -3
-        static var entitlementTextSize: CGFloat = 14
-        static var entitlementFontWeight: Font.Weight = .regular
+        static let iconSize: CGFloat = 15
+        static let buttonTopPadding: CGFloat = 10
+        static let entitlementTextVerticalOffset: CGFloat = -3
+        static let entitlementTextSize: CGFloat = 14
+        static let entitlementFontWeight: Font.Weight = .regular
     }
 
     @StateObject var viewModel: PlanViewModel

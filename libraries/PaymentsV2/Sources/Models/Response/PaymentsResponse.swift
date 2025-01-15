@@ -21,14 +21,14 @@
 
 import Foundation
 
-public struct PaymentsStatus: Decodable {
+public struct PaymentsStatus: Decodable, Sendable {
     public let code: Int
     public let countryCode: String?
     public let state: String?
     public let vendorStates: VendorStates
 }
 
-public struct VendorStates: Decodable {
+public struct VendorStates: Decodable, Sendable {
     public let card: Int?
     public let paypal: Int?
     public let apple: Int?

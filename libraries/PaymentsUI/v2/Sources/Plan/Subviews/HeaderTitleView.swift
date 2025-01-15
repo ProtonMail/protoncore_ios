@@ -25,13 +25,13 @@ import ProtonCoreUI
 public struct HeaderTitleView: View {
 
     private struct Constants {
-        static var decorationSize: CGFloat = 16
+        static let decorationSize: CGFloat = 16
 
-        static var titleTextSize: CGFloat = 17
-        static var titleFontWeight: Font.Weight = .semibold
+        static let titleTextSize: CGFloat = 17
+        static let titleFontWeight: Font.Weight = .semibold
 
-        static var descriptionTextSize: CGFloat = 13
-        static var descriptionFontWeight: Font.Weight = .regular
+        static let descriptionTextSize: CGFloat = 13
+        static let descriptionFontWeight: Font.Weight = .regular
     }
 
     let title: String

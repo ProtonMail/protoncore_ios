@@ -209,7 +209,7 @@ public class PlanViewModel: ObservableObject, Identifiable {
     }
 }
 
-extension PlanViewModel: Equatable {
+extension PlanViewModel: @preconcurrency Equatable {
     public static func == (lhs: PlanViewModel, rhs: PlanViewModel) -> Bool {
         return lhs.title == rhs.title &&
         lhs.description == rhs.description
@@ -217,7 +217,7 @@ extension PlanViewModel: Equatable {
 }
 
 extension PlanViewModel: Hashable {
-    public func hash(into hasher: inout Hasher) {
+    nonisolated public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
 }

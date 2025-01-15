@@ -21,7 +21,7 @@
 
 import Foundation
 
-public struct DescriptionEntitlement: Decodable, Equatable, Hashable {
+public struct DescriptionEntitlement: Decodable, Equatable, Hashable, Sendable {
 
     public let type: String
     public let text: String
@@ -36,7 +36,7 @@ public struct DescriptionEntitlement: Decodable, Equatable, Hashable {
     }
 }
 
-public struct ProgressEntitlement: Decodable, Equatable, Hashable {
+public struct ProgressEntitlement: Decodable, Equatable, Hashable, Sendable {
 
     public let type: String
     public let text: String
@@ -55,12 +55,12 @@ public struct ProgressEntitlement: Decodable, Equatable, Hashable {
     }
 }
 
-public enum EntitlementType: String, Decodable, Equatable {
+public enum EntitlementType: String, Decodable, Equatable, Sendable {
     case description
     case progress
 }
 
-public enum Entitlement: Decodable, Equatable, Hashable {
+public enum Entitlement: Decodable, Equatable, Hashable, Sendable {
 
     case progress(ProgressEntitlement)
     case description(DescriptionEntitlement)

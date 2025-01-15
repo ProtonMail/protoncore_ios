@@ -21,7 +21,7 @@
 
 import Foundation
 
-public struct StarredDecoration: Decodable, Equatable, Hashable {
+public struct StarredDecoration: Decodable, Equatable, Hashable, Sendable {
 
     public let type: String
     public let iconName: String
@@ -32,7 +32,7 @@ public struct StarredDecoration: Decodable, Equatable, Hashable {
     }
 }
 
-public struct BadgeDecoration: Decodable, Equatable, Hashable {
+public struct BadgeDecoration: Decodable, Equatable, Hashable, Sendable {
 
     public let type: String
     public let text: String
@@ -47,13 +47,13 @@ public struct BadgeDecoration: Decodable, Equatable, Hashable {
     }
 }
 
-public enum DecorationType: String, Decodable, Equatable, Hashable {
+public enum DecorationType: String, Decodable, Equatable, Hashable, Sendable {
 
     case starred
     case badge
 }
 
-public enum Decoration: Decodable, Equatable, Hashable {
+public enum Decoration: Decodable, Equatable, Hashable, Sendable {
 
     case starred(StarredDecoration)
     case badge(BadgeDecoration)

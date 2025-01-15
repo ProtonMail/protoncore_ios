@@ -19,8 +19,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import XCTest
 @testable import ProtonCorePaymentsV2
+import XCTest
 
 final class ComposeTests: XCTestCase {
 

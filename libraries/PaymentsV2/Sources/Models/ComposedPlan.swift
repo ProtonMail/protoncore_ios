@@ -22,7 +22,7 @@
 import Foundation
 import StoreKit
 
-public struct ComposedPlan: Equatable, Hashable {
+public struct ComposedPlan: Equatable, Hashable, Sendable {
 
     public let plan: AvailablePlan
     public let instance: PlanInstance

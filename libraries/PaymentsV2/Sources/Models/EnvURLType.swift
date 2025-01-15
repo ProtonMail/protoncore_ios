@@ -21,7 +21,7 @@
 
 import Foundation
 
-public enum EnvURLType {
+public enum EnvURLType: Sendable {
 
     case paymentsBlack
     case protonBlack

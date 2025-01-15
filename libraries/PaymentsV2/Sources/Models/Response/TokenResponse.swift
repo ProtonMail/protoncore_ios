@@ -21,7 +21,7 @@
 
 import Foundation
 
-struct TokenStatus: Decodable {
+struct TokenStatus: Decodable, Sendable {
 
     let code: Int
     let status: Int
@@ -31,7 +31,7 @@ struct TokenStatus: Decodable {
     }
 }
 
-public struct NewToken: Decodable {
+public struct NewToken: Decodable, Sendable {
 
     public let code: Int
     public let status: Int
