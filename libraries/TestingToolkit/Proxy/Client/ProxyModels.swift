@@ -254,6 +254,14 @@ public struct BandwidthInfo: Codable {
     }
 }
 
+public struct RequestForward: Codable {
+    public let enabled: Bool
+
+    public init(enabled: Bool) {
+        self.enabled = enabled
+    }
+}
+
 public enum ScenarioDataError: Error {
     case missingFile(String)
     case fileReadError(String)

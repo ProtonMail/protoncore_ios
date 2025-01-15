@@ -28,7 +28,7 @@ final class ProxyTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        client = ProxyClient(baseURL: URL(string: "https://account.mock.euler.proton.black")!)
+        client = ProxyClient(baseURL: URL(string: "http://account.mock.proton.black:3001")!)
     }
 
     override func tearDown() {
@@ -53,14 +53,44 @@ final class ProxyTest: XCTestCase {
         wait(for: [expectation], timeout: defaultTimeout)
     }
 
+    func testDisableProxyRequestForward() {
+        let expectation = self.expectation(description: "Fetch proxy forward")
+
+        client.fetchMockForwardingStatus { result in
+            switch result {
+            case .success(let forward):
+                XCTAssert(forward.enabled, "The forward should be enabled.")
+            case .failure(let error):
+                XCTFail("Failed to fetch scenarios: \(error)")
+            }
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: defaultTimeout)
+
+        let disableForwardExpectation = self.expectation(description: "Disable forward")
+
+        client.setMockForwardingStatus(requestForward: RequestForward(enabled: false), completion: { result in
+            switch result {
+            case .success(let forward):
+                XCTAssertFalse(forward.enabled, "The forward should be disabled.")
+            case .failure(let error):
+                XCTFail("Failed to fetch scenarios: \(error)")
+            }
+            disableForwardExpectation.fulfill()
+        })
+
+        wait(for: [disableForwardExpectation], timeout: defaultTimeout)
+    }
+
     func testEnableDynamicMock() {
         let expectation = self.expectation(description: "Fetch scenarios")
-        let dynamicMock = DynamicMockBody(name: "loginWithSrp", enabled: false)
+        let dynamicMock = DynamicMockBody(name: "loginWithSrp", enabled: true)
 
         client.addDynamicMockScenario(dynamicMock: dynamicMock) { result in
             switch result {
-            case .success(let scenarios):
-                print(scenarios)
+            case .success(let dynamicMock):
+                print(dynamicMock)
             case .failure(let error):
                 XCTFail("Failed to fetch scenarios: \(error)")
             }
@@ -105,7 +135,7 @@ final class ProxyTest: XCTestCase {
 
         expectation = self.expectation(description: "Reset scenarios")
 
-        client.resetStaticMock(staticMock: routeRequest) { result in
+        client.disableStaticMocks(staticMock: routeRequest) { result in
             switch result {
             case .success(let staticRoute):
                 XCTAssertEqual(staticRoute.enabled, false, "The scenario name should match the test scenario.")
@@ -212,7 +242,26 @@ final class ProxyTest: XCTestCase {
         client.resetAllMocksAndSettings { result in
             switch result {
             case .success(let message):
-                XCTAssertEqual(message, "All mocks disabled successfully, bandwith and latency are disabled.")
+                XCTAssertEqual(message, "All mocks disabled successfully, bandwith, latency and forwarding controls are disabled.")
+            case .failure(let error):
+                XCTFail("Failed to disable all mocks: \(error)")
+            }
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: defaultTimeout)
+    }
+
+    func testFetchStaticMocks() {
+        let expectation = self.expectation(description: "Fetch all static mocks")
+
+        client.fetchStaticMockRoutes { result in
+            switch result {
+            case .success(let mocks):
+
+                for mock in mocks {
+                    print(mock.value.request.exactUrl!)
+                }
             case .failure(let error):
                 XCTFail("Failed to disable all mocks: \(error)")
             }
@@ -229,13 +278,6 @@ final class ProxyTest: XCTestCase {
 
         do {
             let data = bundle.getDataFor(fileName: "ConversationsCount100.json", subdirectory: "Mocks")!
-
-            // Print the raw JSON data for debugging
-            if let jsonString = String(data: data, encoding: .utf8) {
-                print("Raw JSON data for :\n\(jsonString)")
-            } else {
-                print("Unable to convert data to string.")
-            }
             let routes = try JSONDecoder().decode([MockObject].self, from: data)
 
             client.updateStaticMockRoutes(routes: routes) { result in
@@ -254,20 +296,18 @@ final class ProxyTest: XCTestCase {
         wait(for: [bulkRouteExpectation], timeout: defaultTimeout)
     }
 
-    func testBulkRouteActionsFromScenarioFile() {
+    fileprivate func loadScenarioFile(subdirectory: String, filename: String) {
         let bulkRouteExpectation = expectation(description: "Set bulk routes from scenario file")
 
-        // Path to the folder containing the scenario file
-        let subdirectory = "Mocks/scenarioA"
-        let filename = "scenario.json"
         let bundle = Bundle(for: Self.self)
 
         do {
-            // Read and parse the scenario file using the new `throws` handling
             let scenarioFileWithName = try ScenarioDataFactory.readScenarioFile(filename: filename, subdirectory: subdirectory, bundle: bundle)
             let routes = try ScenarioDataFactory.parseScenarioFile(from: scenarioFileWithName, bundle: bundle)
 
-            // Set bulk routes using the parsed route data
+            for route in routes {
+                print("NAME: \(route.name) | URL: \(route.request.exactUrl!)\n")
+            }
             client.updateStaticMockRoutes(routes: routes) { result in
                 switch result {
                 case .success(let routeDataArray):
@@ -276,7 +316,6 @@ final class ProxyTest: XCTestCase {
                     XCTFail("Failed to set bulk routes from scenario file: \(error)")
                 }
 
-                // Fulfill the expectation
                 bulkRouteExpectation.fulfill()
             }
 
@@ -288,8 +327,59 @@ final class ProxyTest: XCTestCase {
             XCTFail("Unexpected error: \(error)")
         }
 
-        // Wait for the expectation with a timeout
-        wait(for: [bulkRouteExpectation], timeout: 5.0)
+        wait(for: [bulkRouteExpectation], timeout: 30)
+    }
+
+    func testBulkRouteActionsFromScenarioFileAsAFile() {
+        let subdirectory = "Mocks/scenarioB"
+        let filename = "scenario.json"
+        loadScenarioFile(subdirectory: subdirectory, filename: filename)
+    }
+
+    func testBulkRouteActionsFromScenarioFileAsAFolder() {
+        let resetStaticMocks = self.expectation(description:"Reset static mocks")
+        let expectationsrp = self.expectation(description:"Fetch scenarios")
+        let dynamicMock = DynamicMockBody(name: "loginWithSrp", enabled: true)
+
+        client.resetStaticMocks { result in
+            switch result {
+            case .success(_):
+                print("Reset static mocks Success \n")
+            case .failure(let error):
+                XCTFail("Failed to fetch scenarios: \(error)")
+            }
+            resetStaticMocks.fulfill()
+        }
+
+        wait(for: [resetStaticMocks], timeout: defaultTimeout)
+
+        client.addDynamicMockScenario(dynamicMock: dynamicMock) { result in
+            switch result {
+            case .success(_):
+                print("Success \n")
+            case .failure(let error):
+                XCTFail("Failed to fetch scenarios: \(error)")
+            }
+            expectationsrp.fulfill()
+        }
+        wait(for: [expectationsrp], timeout: defaultTimeout)
+
+        let subdirectory = "Mocks/scenarios"
+        let filename = "common-mocks-scenario.json"
+        loadScenarioFile(subdirectory: subdirectory, filename: filename)
+        let disableForwardExpectation = self.expectation(description: "Disable forward")
+
+        client.setMockForwardingStatus(requestForward: RequestForward(enabled: false), completion: { result in
+            switch result {
+            case .success(let forward):
+                XCTAssertFalse(forward.enabled, "The forward should be disabled.")
+            case .failure(let error):
+                XCTFail("Failed to fetch scenarios: \(error)")
+            }
+            disableForwardExpectation.fulfill()
+        })
+
+        wait(for: [disableForwardExpectation], timeout: defaultTimeout)
     }
 
     func testRegisterAPicture() {

@@ -61,6 +61,7 @@ public class ProxyClient {
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         }
 
+
         session.dataTask(with: request) { data, response, error in
             if let error = error {
                 completion(.failure(.requestError(error)))
@@ -103,7 +104,7 @@ public class ProxyClient {
 
     // MARK: - Endpoints
     public func fetchStaticMockRoutes(completion: @escaping (Result<[String: MockObject], APIError>) -> Void) {
-        request(endpoint: "mock/routes/static", method: "GET", completion: completion)
+        request(endpoint: "/mock/routes/static", method: "GET", completion: completion)
     }
 
     public func addStaticMockRoute(route: MockObject, completion: @escaping (Result<MockObject, APIError>) -> Void) {
@@ -111,7 +112,7 @@ public class ProxyClient {
             completion(.failure(.decodingError(NSError(domain: "EncodingError", code: 0, userInfo: nil))))
             return
         }
-        request(endpoint: "mock/route/static", method: "POST", body: body, completion: completion)
+        request(endpoint: "/mock/route/static", method: "POST", body: body, completion: completion)
     }
 
     public func updateStaticMockRoutes(routes: [MockObject], completion: @escaping (Result<[MockObject], APIError>) -> Void) {
@@ -134,8 +135,25 @@ public class ProxyClient {
         request(endpoint: "/mock/routes/dynamic", method: "POST", body: body, completion: completion)
     }
 
+    public func fetchMockForwardingStatus(completion: @escaping (Result<RequestForward, APIError>) -> Void) {
+        request(endpoint: "/mock/forward/enable", method: "GET") { (result: Result<RequestForward, APIError>) in
+            completion(result)
+        }
+    }
+
+    public func setMockForwardingStatus(requestForward: RequestForward, completion: @escaping (Result<RequestForward, APIError>) -> Void) {
+        guard let bodyData = try? JSONEncoder().encode(requestForward) else {
+            completion(.failure(.decodingError(NSError(domain: "EncodingError", code: 0, userInfo: nil))))
+            return
+        }
+
+        request(endpoint: "/mock/forward/enable", method: "POST", body: bodyData) { (result: Result<RequestForward, APIError>) in
+            completion(result)
+        }
+    }
+
     public func fetchGlobalLatency( completion: @escaping (Result<LatencyInfo, APIError>) -> Void) {
-        request(endpoint: "mock/latency", method: "GET", completion: completion)
+        request(endpoint: "/mock/latency", method: "GET", completion: completion)
     }
 
     public func addGlobalLatency(latencyInfo: LatencyInfo, completion: @escaping (Result<LatencyInfo, APIError>) -> Void) {
@@ -143,11 +161,11 @@ public class ProxyClient {
             completion(.failure(.decodingError(NSError(domain: "EncodingError", code: 0, userInfo: nil))))
             return
         }
-        request(endpoint: "mock/latency", method: "POST", body: body, completion: completion)
+        request(endpoint: "/mock/latency", method: "POST", body: body, completion: completion)
     }
 
     public func fetchGlobalBandwidth( completion: @escaping (Result<BandwidthInfo, APIError>) -> Void) {
-        request(endpoint: "mock/bandwidth", method: "GET", completion: completion)
+        request(endpoint: "/mock/bandwidth", method: "GET", completion: completion)
     }
 
     public func addGlobalBandwidth(bandwidthInfo: BandwidthInfo, completion: @escaping (Result<BandwidthInfo, APIError>) -> Void) {
@@ -155,11 +173,32 @@ public class ProxyClient {
             completion(.failure(.decodingError(NSError(domain: "EncodingError", code: 0, userInfo: nil))))
             return
         }
-        request(endpoint: "mock/bandwidth", method: "POST", body: body, completion: completion)
+        request(endpoint: "/mock/bandwidth", method: "POST", body: body, completion: completion)
+    }
+
+    public func resetStaticMocks(completion: @escaping (Result<String, APIError>) -> Void) {
+        request(endpoint: "/mock/reset/static", method: "POST") { (result: Result<[String: String], APIError>) in
+            switch result {
+            case .success(let response):
+                completion(.success(response["message"] ?? "Success"))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    public func disableStaticMocks(staticMock: MockObject, completion: @escaping (Result<MockObject, APIError>) -> Void) {
+        var updatedStaticMock = staticMock
+        updatedStaticMock.enabled = false
+        guard let body = encodeBody(updatedStaticMock) else {
+            completion(.failure(.decodingError(NSError(domain: "EncodingError", code: 0, userInfo: nil))))
+            return
+        }
+        request(endpoint: "mock/route/static", method: "POST", body: body, completion: completion)
     }
 
     public func resetAllMocksAndSettings( completion: @escaping (Result<String, APIError>) -> Void) {
-        request(endpoint: "mock/reset/all", method: "POST") { (result: Result<[String: String], APIError>) in
+        request(endpoint: "/mock/reset/all", method: "POST") { (result: Result<[String: String], APIError>) in
             switch result {
             case .success(let response):
                 completion(.success(response["message"] ?? "Success"))
@@ -175,7 +214,7 @@ public class ProxyClient {
             completion(.failure(.decodingError(NSError(domain: "EncodingError", code: 0, userInfo: nil))))
             return
         }
-        request(endpoint: "mock/latency", method: "POST", body: body, completion: completion)
+        request(endpoint: "/mock/latency", method: "POST", body: body, completion: completion)
     }
 
     public func resetBandwidth(completion: @escaping (Result<BandwidthInfo, APIError>) -> Void) {
@@ -184,17 +223,7 @@ public class ProxyClient {
             completion(.failure(.decodingError(NSError(domain: "EncodingError", code: 0, userInfo: nil))))
             return
         }
-        request(endpoint: "mock/bandwidth", method: "POST", body: body, completion: completion)
-    }
-
-    public func resetStaticMock(staticMock: MockObject, completion: @escaping (Result<MockObject, APIError>) -> Void) {
-        var updatedStaticMock = staticMock
-        updatedStaticMock.enabled = false
-        guard let body = encodeBody(updatedStaticMock) else {
-            completion(.failure(.decodingError(NSError(domain: "EncodingError", code: 0, userInfo: nil))))
-            return
-        }
-        request(endpoint: "mock/route/static", method: "POST", body: body, completion: completion)
+        request(endpoint: "/mock/bandwidth", method: "POST", body: body, completion: completion)
     }
 }
 
