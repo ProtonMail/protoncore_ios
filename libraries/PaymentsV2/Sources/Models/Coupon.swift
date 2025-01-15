@@ -21,7 +21,7 @@
 
 import Foundation
 
-public struct Coupon: Decodable {
+public struct Coupon: Decodable, Sendable {
     public let code: String
     public let description: String
 }

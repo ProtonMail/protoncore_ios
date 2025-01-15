@@ -19,84 +19,84 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import XCTest
-import StoreKitTest
 @testable import ProtonCorePaymentsV2
+import StoreKitTest
+import XCTest
 
-final class PlanComposerTests: XCTestCase {
+final class PlansComposerTests: XCTestCase, @unchecked Sendable {
 
-    let productsIds = ["iosvpn_bundle2022_12_usd_auto_renewing", "iosvpn_vpn2022_1_usd_auto_renewing"]
-    let mockRemoteManager = MockedRemoteManager()
+    private let productsIds = ["iosvpn_bundle2022_12_usd_auto_renewing", "iosvpn_vpn2022_1_usd_auto_renewing"]
+    private var mockRemoteManager: MockedRemoteManager!
 
-    var planComposer: PlansComposer!
+    var plansComposer: PlansComposer!
 
     override func setUp() {
         super.setUp()
-        planComposer = PlansComposer(remoteManager: mockRemoteManager.remoteManager, paymentsAPIs: mockRemoteManager.paymentsAPI)
+        mockRemoteManager = MockedRemoteManager()
+        guard let remoteManager = mockRemoteManager.remoteManager, let paymentsAPIs = mockRemoteManager.paymentsAPI else {
+            XCTFail("MockRemoteManager returned nil remoteManager or paymentsAPIs")
+            return
+        }
+
+        plansComposer = PlansComposer(remoteManager: remoteManager, paymentsAPIs: paymentsAPIs)
         let url = Bundle.module.url(forResource: "StoreKit_mock", withExtension: "storekit")!
         do {
             _ = try SKTestSession(contentsOf: url)
         } catch {
-            print(error)
+            debugPrint(error)
         }
-
     }
 
     override func tearDown() {
         super.tearDown()
-        planComposer = nil
+        plansComposer = nil
     }
 
     func test_composedPlan_success() async throws {
-
         let mockResponse = Bundle.main.loadJsonDataToDic(from: "availablePlans.json")
         mockRemoteManager.setupURLSessionMock(withMockResponse: mockResponse)
 
         // Fetch Proton plans
-        _ = try await planComposer.fetchProtonPlans()
+        _ = try await plansComposer.fetchProtonPlans()
+        _ = try await plansComposer.getStoreProducts(["iosvpn_bundle2022_12_usd_auto_renewing", "iosvpn_vpn2022_1_usd_auto_renewing"])
 
-       _ = try await planComposer.getStoreProducts(["iosvpn_bundle2022_12_usd_auto_renewing", "iosvpn_vpn2022_1_usd_auto_renewing"])
-
-        let composedPlans = try await planComposer.fetchAvailablePlans()
+        let composedPlans = try await plansComposer.fetchAvailablePlans()
         XCTAssertNotNil(composedPlans)
         XCTAssertTrue(composedPlans.count == 3)
     }
 
     func test_composedPlan_match_individual_StoreKit_plan() async throws {
-
         let mockResponse = Bundle.main.loadJsonDataToDic(from: "availablePlans.json")
         mockRemoteManager.setupURLSessionMock(withMockResponse: mockResponse)
 
         // Fetch Proton plans
-        _ = try await planComposer.fetchProtonPlans()
-        _ = try await planComposer.getStoreProducts(productsIds)
-        let composedPlan = planComposer.matchPlanToStoreProduct("iosvpn_bundle2022_12_usd_auto_renewing")
+        _ = try await plansComposer.fetchProtonPlans()
+        _ = try await plansComposer.getStoreProducts(productsIds)
+        let composedPlan = plansComposer.matchPlanToStoreProduct("iosvpn_bundle2022_12_usd_auto_renewing")
 
         XCTAssertNotNil(composedPlan)
         XCTAssertEqual(composedPlan?.plan.title, "Proton Unlimited")
     }
 
     func test_composedPlan_equatable() async throws {
-
         let mockResponse = Bundle.main.loadJsonDataToDic(from: "availablePlans.json")
         mockRemoteManager.setupURLSessionMock(withMockResponse: mockResponse)
 
         // Fetch Proton plans
-        _ = try await planComposer.fetchProtonPlans()
-        _ = try await planComposer.getStoreProducts(productsIds)
+        _ = try await plansComposer.fetchProtonPlans()
+        _ = try await plansComposer.getStoreProducts(productsIds)
 
-        let composedPlan = planComposer.matchPlanToStoreProduct("iosvpn_bundle2022_12_usd_auto_renewing")
-        let composedPlan2 = planComposer.matchPlanToStoreProduct("iosvpn_bundle2022_12_usd_auto_renewing")
+        let composedPlan = plansComposer.matchPlanToStoreProduct("iosvpn_bundle2022_12_usd_auto_renewing")
+        let composedPlan2 = plansComposer.matchPlanToStoreProduct("iosvpn_bundle2022_12_usd_auto_renewing")
 
         XCTAssertEqual(composedPlan, composedPlan2)
     }
 
     func test_fetch_current_subscription() async throws {
-
         let mockResponse = Bundle.main.loadJsonDataToDic(from: "current_sub_response.json")
         mockRemoteManager.setupURLSessionMock(withMockResponse: mockResponse)
 
-        let currentSubscription = try await planComposer.fetchCurrentSubscription()
+        let currentSubscription = try await plansComposer.fetchCurrentSubscription()
 
         XCTAssertEqual(currentSubscription.name, "mail2022+drivepro2022")
         XCTAssertEqual(currentSubscription.description, "Current plan")

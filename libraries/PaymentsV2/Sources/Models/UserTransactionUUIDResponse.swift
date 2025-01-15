@@ -21,7 +21,7 @@
 
 import Foundation
 
-public struct UserTransactionUUIDResponse: Decodable {
+public struct UserTransactionUUIDResponse: Decodable, Sendable {
     let code: Int
     let uuid: String
 

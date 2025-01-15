@@ -21,16 +21,19 @@
 
 import Foundation
 
-public typealias APIRequest = (url: URL, body: [String: Any]?)
+public struct APIRequest: @unchecked Sendable {
+    public let url: URL
+    public let body: [String: Any]?
+}
 
 public enum PaymentsAPIsError: Error {
     case malformedURL
 }
 
-public struct PaymentsAPIs {
+public struct PaymentsAPIs: Sendable {
 
     private struct Constants {
-        static var envPrefix = "https://"
+        static let envPrefix = "https://"
         static func moduleNameSpace(requestType: RequestType) -> String {
             switch requestType {
             case .userTransactionUUID:
@@ -75,7 +78,7 @@ public struct PaymentsAPIs {
             throw PaymentsAPIsError.malformedURL
         }
 
-        return (url: url, body: api.body)
+        return APIRequest(url: url, body: api.body)
     }
 
     public init(envURL: EnvURLType) {

@@ -32,7 +32,7 @@ public enum TransactionType {
     case unknown
 }
 
-public protocol TransactionsObserverProviding {
+public protocol TransactionsObserverProviding: Sendable {
     func start() async throws
     func stop()
     func setConfiguration(_ configuration: TransactionsObserverConfiguration)
@@ -44,7 +44,7 @@ public enum TransactionsObserverError: Error {
     case requiredSubComponentInitFailed
 }
 
-public struct TransactionsObserverConfiguration {
+public struct TransactionsObserverConfiguration: Sendable {
     let sessionID: String
     let authToken: String
     let appVersion: String
@@ -60,10 +60,10 @@ public struct TransactionsObserverConfiguration {
     }
 }
 
-public final class TransactionsObserver: TransactionsObserverProviding {
+public final class TransactionsObserver: TransactionsObserverProviding, @unchecked Sendable {
 
     public static let shared = TransactionsObserver()
-    public var configuration: TransactionsObserverConfiguration?
+    private var configuration: TransactionsObserverConfiguration?
     @Published public private(set) var isON: Bool = false
     @Published public private(set) var transactionStatus: TransactionType = .unknown
 
@@ -72,6 +72,7 @@ public final class TransactionsObserver: TransactionsObserverProviding {
     private var paymentsAPI: PaymentsAPIs?
     private var planComposer: PlansComposerProviding?
     private var transactionHandler: TransactionHandler?
+    private let queue = DispatchQueue(label: "paymentsV2.transactionObserver.syncQueue")
 
     private init() {}
 
@@ -164,6 +165,8 @@ public final class TransactionsObserver: TransactionsObserverProviding {
     }
 
     public func setConfiguration(_ configuration: TransactionsObserverConfiguration) {
-        self.configuration = configuration
+        queue.sync {
+            self.configuration = configuration
+        }
     }
 }

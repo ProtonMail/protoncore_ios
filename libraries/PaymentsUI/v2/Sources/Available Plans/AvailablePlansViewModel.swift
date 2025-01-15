@@ -29,7 +29,7 @@ import StoreKit
 public class AvailablePlansViewModel: ObservableObject {
 
     private struct Constants {
-        static var transactionCompletedDelay: Double = 2
+        static let transactionCompletedDelay: Double = 2
     }
 
     @Published var billingCycle: BillingCycle = .all

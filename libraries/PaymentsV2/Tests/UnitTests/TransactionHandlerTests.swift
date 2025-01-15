@@ -19,59 +19,70 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import XCTest
-import StoreKitTest
 import Combine
 @testable import ProtonCorePaymentsV2
+import StoreKitTest
+import XCTest
 
-final class TransactionHandlerTests: XCTestCase {
+final class TransactionHandlerTests: XCTestCase, @unchecked Sendable {
 
     private var urlSessionConfig: URLSessionConfiguration!
     private var mockRemoteManager: MockedRemoteManager!
+    private let queue = DispatchQueue(label: "payments.unitTest.syncQueue")
 
     private let productsIds = ["iosvpn_bundle2022_12_usd_auto_renewing", "iosvpn_vpn2022_1_usd_auto_renewing"]
-    private var planComposer: PlansComposer!
+    private var subsComposer: PlansComposer!
     private var storeSession: SKTestSession!
     private var receiptManager: MockStoreKitReceiptManager!
 
-    private var cancellable: AnyCancellable?
+    private var cancellable = Set<AnyCancellable>()
 
     private var sut: TransactionHandler!
 
     override func setUp() {
         super.setUp()
 
-        mockRemoteManager = MockedRemoteManager()
-        planComposer = PlansComposer(remoteManager: mockRemoteManager.remoteManager, paymentsAPIs: mockRemoteManager.paymentsAPI)
-        let url = Bundle.module.url(forResource: "StoreKit_mock", withExtension: "storekit")!
-        do {
-            storeSession = try SKTestSession(contentsOf: url)
-        } catch {
-            print(error)
+        queue.sync {
+            mockRemoteManager = MockedRemoteManager()
+
+            guard let remoteManager = mockRemoteManager.remoteManager, let paymentsAPIs = mockRemoteManager.paymentsAPI else {
+                XCTFail("MockRemoteManager returned nil remoteManager or paymentsAPIs")
+                return
+            }
+
+            subsComposer = PlansComposer(remoteManager: remoteManager,
+                                         paymentsAPIs: paymentsAPIs)
+            let url = Bundle.module.url(forResource: "StoreKit_mock", withExtension: "storekit")!
+            do {
+                storeSession = try SKTestSession(contentsOf: url)
+            } catch {
+                debugPrint(error)
+            }
+
+            receiptManager = MockStoreKitReceiptManager(receipt: "asdpoasmdpo12dp1o2mdpoasmdpoasmdcpaoscmapsomc")
+
+            sut = TransactionHandler(remoteManager: remoteManager,
+                                     paymentsAPIs: paymentsAPIs,
+                                     receiptManager: receiptManager)
         }
-
-        receiptManager = MockStoreKitReceiptManager(receipt: "asdpoasmdpo12dp1o2mdpoasmdpoasmdcpaoscmapsomc")
-
-        sut = TransactionHandler(remoteManager: mockRemoteManager.remoteManager,
-                                 paymentsAPIs: mockRemoteManager.paymentsAPI,
-                                 receiptManager: receiptManager)
     }
 
     override func tearDown() {
         super.tearDown()
-        planComposer = nil
-        cancellable = nil
-        mockRemoteManager.destroy()
-        mockRemoteManager = nil
+        queue.sync {
+            subsComposer = nil
+            cancellable.removeAll()
+            mockRemoteManager.destroy()
+            mockRemoteManager = nil
+        }
     }
 
     func test_transaction_state() async throws {
-
         // Fetch Proton plans
         mockRemoteManager.setupURLSessionMock(withMockResponse: remoteResponseFor(transactionState: .idle))
 
-        _ = try await planComposer.fetchProtonPlans()
-        _ = try await planComposer.getStoreProducts(["iosvpn_bundle2022_12_usd_auto_renewing", "iosvpn_vpn2022_1_usd_auto_renewing"])
+        _ = try await subsComposer.fetchProtonPlans()
+        _ = try await subsComposer.getStoreProducts(["iosvpn_bundle2022_12_usd_auto_renewing", "iosvpn_vpn2022_1_usd_auto_renewing"])
 
         try storeSession.buyProduct(productIdentifier: productsIds[0])
 
@@ -81,27 +92,38 @@ final class TransactionHandlerTests: XCTestCase {
             XCTFail("No transaction found")
             return
         }
-        guard let composedPlan = planComposer.matchPlanToStoreProduct(transaction.productIdentifier) else {
+        guard let composedPlan = subsComposer.matchPlanToStoreProduct(transaction.productIdentifier) else {
             XCTFail("No plan found")
             return
         }
 
         let protonTransaction = convertStoreTestTransaction(transaction, price: composedPlan.product.price, currencyId: "USD")
 
-        cancellable = sut.transactionState.sink { [weak self] state in
-            debugPrint(state.localizedDescription)
-            guard let self = self else { return }
+        sut.transactionState.sink { [weak self] state in
+            guard let self = self else {
+                XCTFail()
+                return
+            }
+            debugPrint(state.localizedDescription ?? "")
+
+            if state == .transactionProcessError {
+                XCTFail()
+            }
+
             self.mockRemoteManager.setupURLSessionMock(withMockResponse: remoteResponseFor(transactionState: state))
-            debugPrint(state.localizedDescription)
+
+            debugPrint(state.localizedDescription ?? "")
             switch state {
             case .transactionCompleted:
                 XCTAssert(true)
             default:
                 debugPrint("Test in progress...")
             }
-        }
 
-        try await sut.processTransaction(protonTransaction, plan: composedPlan)
+        }
+        .store(in: &cancellable)
+
+        _ = try await sut.processTransaction(protonTransaction, plan: composedPlan)
     }
 
     private func convertStoreTestTransaction(_ transaction: SKTestTransaction, price: Decimal, currencyId: String) -> ProtonTransaction {
@@ -110,7 +132,6 @@ final class TransactionHandlerTests: XCTestCase {
                           productID: transaction.productIdentifier,
                           price: price,
                           currencyIdentifier: currencyId)
-
     }
 
     private func remoteResponseFor(transactionState: TransactionHandlerState) -> [String: Any] {

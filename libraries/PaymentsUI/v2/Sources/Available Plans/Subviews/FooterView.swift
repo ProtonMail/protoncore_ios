@@ -28,8 +28,8 @@ struct FooterView: View {
     let text: String
 
     private struct Constants {
-        static var horizontalSpacing: CGFloat = Theme.spacing.standard
-        static var iconSize: CGSize = CGSize(width: 16, height: 16)
+        static let horizontalSpacing: CGFloat = Theme.spacing.standard
+        static let iconSize: CGSize = CGSize(width: 16, height: 16)
     }
 
     var body: some View {

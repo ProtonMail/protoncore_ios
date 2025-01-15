@@ -24,7 +24,7 @@ import ProtonCoreUI
 
 struct ErrorView: View {
 
-    let buttonAction: () -> Void
+    let buttonAction: @Sendable () -> Void
 
     var body: some View {
         ZStack {

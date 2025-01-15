@@ -21,7 +21,7 @@
 
 import Foundation
 
-public struct SubscriptionResponse: Decodable, Hashable, Identifiable {
+public struct SubscriptionResponse: Decodable, Hashable, Identifiable, Sendable {
 
     public let id: String
     public let invoiceID: String?
@@ -40,7 +40,7 @@ public struct SubscriptionResponse: Decodable, Hashable, Identifiable {
     public let external: Int
 }
 
-public struct CurrentSubscriptionResponse: Decodable, Hashable, Identifiable {
+public struct CurrentSubscriptionResponse: Decodable, Hashable, Identifiable, Sendable {
 
     public let id: String?
     public let name: String?
@@ -106,24 +106,24 @@ public struct CurrentSubscriptionResponse: Decodable, Hashable, Identifiable {
     }
 }
 
-public struct CurrentSubscription: Decodable {
+public struct CurrentSubscription: Decodable, Sendable {
     public let code: Int
     public let subscriptions: [CurrentSubscriptionResponse]
     public let upcomingSubscriptions: [CurrentSubscriptionResponse]?
 }
 
-public struct NewSubscriptionResponse: Decodable {
+public struct NewSubscriptionResponse: Decodable, Sendable {
     public let code: Int
     public let subscription: SubscriptionResponse
     public let upcomingSubscriptions: [SubscriptionResponse]?
 }
 
-public struct LastSubscription: Decodable {
+public struct LastSubscription: Decodable, Sendable {
     public let code: Int
     public let lastSubscriptionEnd: Int
 }
 
-public struct ValidateSubscriptionResponse: Decodable {
+public struct ValidateSubscriptionResponse: Decodable, Sendable {
     public let code: Int
     public let amount: Int
     public let amountDue: Int

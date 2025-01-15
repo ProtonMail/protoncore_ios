@@ -30,9 +30,10 @@ public struct ProductMock: ProductProtocol {
     public var id: String
 }
 
+// swiftlint:disable line_length
 public struct PreviewsData {
 #if DEBUG
-    static var remoteManager = RemoteManager(sessionID: "asdojas", authToken: "asdlj12e", appVersion: "VPN@3000")
+    static let remoteManager = RemoteManager(sessionID: "asdojas", authToken: "asdlj12e", appVersion: "VPN@3000")
 
     static func descriptionEntitlements() -> [Entitlement] {
         return [Entitlement.description(DescriptionEntitlement(type: "description", text: "10 VPN connections", iconName: "shield")),
@@ -50,7 +51,7 @@ public struct PreviewsData {
         return descriptionEntitlements() + progressEntitlements()
     }
 
-    static var currentSub = CurrentSubscriptionResponse(id: "asd123qwd12d",
+    static let currentSub = CurrentSubscriptionResponse(id: "asd123qwd12d",
                                                         name: "iosvpn_bundle2022_12_usd_auto_recurring",
                                                         title: "Visionary",
                                                         description: "Current plan",
@@ -74,7 +75,7 @@ public struct PreviewsData {
                                                                        Entitlement.progress(ProgressEntitlement(type: "progress", text: "0.6 GB of 1 GB", min: 0, max: 10, current: 6))],
                                                         decorations: [])
 
-    static var freePlan = CurrentSubscriptionResponse(id: "asd123qwd12d",
+    static let freePlan = CurrentSubscriptionResponse(id: "asd123qwd12d",
                                                       name: nil,
                                                       title: "Proton Free",
                                                       description: "Current plan",

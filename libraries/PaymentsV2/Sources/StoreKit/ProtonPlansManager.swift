@@ -24,7 +24,7 @@ import Foundation
 import ProtonCoreObservability
 import StoreKit
 
-public protocol ProtonPlansManagerProviding {
+public protocol ProtonPlansManagerProviding: Sendable {
 
     var transactionProgress: CurrentValueSubject<TransactionHandlerState, Never> { get }
     func getProtonPlans() async throws -> AvailablePlans
@@ -51,7 +51,7 @@ public enum ProtonPlansManagerError: Error {
     case transactionUnknownError
 }
 
-public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding {
+public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @unchecked Sendable {
 
     public var transactionProgress = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
 

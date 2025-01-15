@@ -35,8 +35,8 @@ struct ProgressEntitlementView: View {
     }
 
     private struct Constants {
-        static var progressLineHeight: CGFloat = 4
-        static var progressAnimationDuration: TimeInterval = 1.0
+        static let progressLineHeight: CGFloat = 4
+        static let progressAnimationDuration: TimeInterval = 1.0
 
         static func progressColor(maxValue: Int, currentValue: Int) -> Color {
             let progress = Double(currentValue) / Double(maxValue)

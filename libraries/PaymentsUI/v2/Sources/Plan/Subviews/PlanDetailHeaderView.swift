@@ -35,12 +35,12 @@ struct PlanDetailHeaderView: View {
 
     private struct Constants {
 
-        static var buttonTopPadding: CGFloat = 10
-        static var chevronSize: CGFloat = 20
-        static var imageTouchArea: CGFloat = 5
+        static let buttonTopPadding: CGFloat = 10
+        static let chevronSize: CGFloat = 20
+        static let imageTouchArea: CGFloat = 5
 
-        static var priceTextFont: Font = .headline
-        static var periodTextFont: Font = .caption
+        static let priceTextFont: Font = .headline
+        static let periodTextFont: Font = .caption
 
         static func imageRotationAngle(isExpanded: Bool) -> Double {
             return isExpanded ? 180 : 0

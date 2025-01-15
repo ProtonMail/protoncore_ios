@@ -21,7 +21,7 @@
 
 import Foundation
 
-public struct Plan: Decodable, Identifiable, Equatable, Hashable {
+public struct Plan: Decodable, Identifiable, Equatable, Hashable, Sendable {
 
     public let id: String
     public let type: Int

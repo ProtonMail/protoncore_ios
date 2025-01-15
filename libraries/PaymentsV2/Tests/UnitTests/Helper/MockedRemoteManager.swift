@@ -22,7 +22,7 @@
 import Foundation
 @testable import ProtonCorePaymentsV2
 
-final class MockedRemoteManager {
+final class MockedRemoteManager: @unchecked Sendable {
 
     public var paymentsAPI: PaymentsAPIs!
     private var urlSessionConfig: URLSessionConfiguration!
@@ -36,7 +36,7 @@ final class MockedRemoteManager {
         urlSessionConfig.protocolClasses = [MockURLProtocol.self]
 
         remoteManager = RemoteManager(sessionID: "adasd12d21d", authToken: "dasdawd12e", appVersion: "@VPN3.3.2")
-        remoteManager.session = URLSession(configuration: urlSessionConfig)
+        remoteManager?.setSession(URLSession(configuration: urlSessionConfig))
     }
 
     public func destroy() {
@@ -76,7 +76,6 @@ final class MockedRemoteManager {
             return (response, responseData)
         }
 
-        remoteManager = RemoteManager(sessionID: "adasd12d21d", authToken: "dasdawd12e", appVersion: "@VPN3.3.2", atlasSecret: "asdkn12d12d")
-        remoteManager.session = URLSession(configuration: urlSessionConfig)
+        remoteManager.setSession(URLSession(configuration: urlSessionConfig))
     }
 }

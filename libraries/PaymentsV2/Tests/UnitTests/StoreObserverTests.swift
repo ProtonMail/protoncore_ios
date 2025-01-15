@@ -19,61 +19,59 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import XCTest
 import Combine
 @testable import ProtonCorePaymentsV2
+import XCTest
 
-final class StoreObserverTests: XCTestCase {
+final class StoreObserverTests: XCTestCase, @unchecked Sendable {
 
     private var urlSessionConfig: URLSessionConfiguration!
     private var mockRemoteManager: MockedRemoteManager!
 
-    private var sut: StoreObserver!
+    private var sut: TransactionsObserver!
     private var cancellable: AnyCancellable?
 
     override func setUp() {
         super.setUp()
 
+        sut = TransactionsObserver.shared
         mockRemoteManager = MockedRemoteManager()
         let plansMockResponse = Bundle.main.loadJsonDataToDic(from: "availablePlans.json")
         mockRemoteManager.setupURLSessionMock(withMockResponse: plansMockResponse)
 
-        sut = StoreObserver.shared
-        let configuration = StoreObserverConfiguration(sessionID: "asdasd12d",
-                                                       authToken: "12d12",
-                                                       appVersion: "V200",
-                                                       env: .protonBlack,
-                                                       atlasSecret: "qwdn12od")
-        sut.configuration = configuration
+        let configuration = TransactionsObserverConfiguration(sessionID: "asdasd12d",
+                                                              authToken: "12d12",
+                                                              appVersion: "V200",
+                                                              env: "black",
+                                                              atlasSecret: "qwdn12od")
+        sut.setConfiguration(configuration)
     }
 
     override func tearDown() {
         super.tearDown()
 
-        sut = nil
-        cancellable = nil
         mockRemoteManager.destroy()
         mockRemoteManager = nil
+        sut = nil
+        cancellable = nil
     }
 
     func test_start_observer() async throws {
-
         cancellable = sut.$isON
             .dropFirst()
             .sink { state in
-            XCTAssertTrue(state)
-        }
-        
+                XCTAssertTrue(state)
+            }
+
         try await sut.start()
     }
 
-    func test_stop_observer() throws {
-
+    func test_stop_observer() async throws {
         cancellable = sut.$isON
             .dropFirst()
             .sink { state in
-            XCTAssertFalse(state)
-        }
+                XCTAssertFalse(state)
+            }
 
         sut.stop()
     }

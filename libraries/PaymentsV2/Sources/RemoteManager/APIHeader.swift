@@ -21,7 +21,7 @@
 
 import Foundation
 
-public enum APIHeader: String {
+public enum APIHeader: String, Sendable {
     case setCookie = "set-cookie"
     case authorization = "Authorization"
     case sessionId = "x-pm-uid"

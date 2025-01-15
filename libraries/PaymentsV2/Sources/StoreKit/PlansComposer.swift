@@ -28,7 +28,7 @@ public enum PlansComposerError: Error {
     case unableToFetchCurrentSub
 }
 
-public protocol PlansComposerProviding {
+public protocol PlansComposerProviding: Sendable {
 
     var hasData: Bool { get }
     func getStoreProducts(_ plans: [String]) async throws -> [Product]
@@ -39,7 +39,7 @@ public protocol PlansComposerProviding {
     func fetchCurrentSubscription() async throws -> CurrentSubscriptionResponse
 }
 
-public final class PlansComposer: PlansComposerProviding {
+public final class PlansComposer: PlansComposerProviding, @unchecked Sendable {
 
     public var hasData: Bool {
         return !availablePlans.plans.isEmpty && !storeProducts.isEmpty
@@ -49,6 +49,7 @@ public final class PlansComposer: PlansComposerProviding {
     private let paymentsAPIs: PaymentsAPIs
     private var availablePlans: AvailablePlans = AvailablePlans(code: 0, plans: [], defaultCycle: 0)
     private var storeProducts: [Product] = []
+    private let queue = DispatchQueue(label: "paymentsV2.plansComposer.syncQueue")
 
     public init(remoteManager: RemoteManagerProviding, paymentsAPIs: PaymentsAPIs) {
         self.remoteManager = remoteManager
@@ -105,6 +106,8 @@ public final class PlansComposer: PlansComposerProviding {
     }
 
     public func updateRemoteManager(remoteManager: RemoteManagerProviding) {
-        self.remoteManager = remoteManager
+        queue.sync {
+            self.remoteManager = remoteManager
+        }
     }
 }

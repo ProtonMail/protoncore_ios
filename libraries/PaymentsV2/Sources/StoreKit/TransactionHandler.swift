@@ -36,7 +36,7 @@ public enum TransactionHandlerError: Error {
     case unableToGetTransactionAmountOrCurrency
 }
 
-public enum TransactionHandlerState: String {
+public enum TransactionHandlerState: String, Sendable {
     case idle
     case generatingReceipt
     case creatingTransactionToken
@@ -57,12 +57,19 @@ public enum TransactionHandlerState: String {
     }
 }
 
-public final class TransactionHandler {
+public protocol TransactionHandlerProviding: Sendable {
+    func processTransaction(_ transaction: ProtonTransaction, plan: ComposedPlan) async throws -> ComposedPlan
+    func updateRemoteManager(remoteManager: RemoteManagerProviding) async
+    func verifyTransactionUUIDs(appAccountToken: UUID) async throws -> Bool
+}
+
+public final class TransactionHandler: TransactionHandlerProviding, @unchecked Sendable {
 
     private var remoteManager: RemoteManagerProviding
     private let paymentsAPIs: PaymentsAPIs
     private let receiptManager: StoreKitReceiptManagerProviding
     private(set) var transactionState = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
+    private let queue = DispatchQueue(label: "paymentsV2.transactionHandler.syncQueue")
 
     public init(remoteManager: RemoteManagerProviding,
                 paymentsAPIs: PaymentsAPIs,
@@ -77,8 +84,7 @@ public final class TransactionHandler {
         debugPrint(transaction.originalID)
         debugPrint(transaction.id)
         guard transaction.originalID == transaction.id else {
-            transactionState.value = .mismatchTransactionIDs
-            transactionState.send(completion: .finished)
+            updateTransactionState(state: .mismatchTransactionIDs)
             throw TransactionHandlerError.transactionIdNotEqualToOriginalTransactionId
         }
 
@@ -91,7 +97,9 @@ public final class TransactionHandler {
     }
 
     public func updateRemoteManager(remoteManager: RemoteManagerProviding) {
-        self.remoteManager = remoteManager
+        queue.sync {
+            self.remoteManager = remoteManager
+        }
     }
 
     public func verifyTransactionUUIDs(appAccountToken: UUID) async throws -> Bool {
@@ -103,6 +111,16 @@ public final class TransactionHandler {
 
         let userUUID: UserTransactionUUIDResponse = try await remoteManager.getFromURL(request.url)
         return appAccountToken == userUUID.uuidValue
+    }
+
+    private func updateTransactionState(state: TransactionHandlerState) {
+        let completableStates: [TransactionHandlerState] = [.transactionProcessError, .mismatchTransactionIDs, .transactionCompleted]
+        queue.sync {
+            transactionState.value = state
+            if completableStates.contains(state) {
+                transactionState.send(completion: .finished)
+            }
+        }
     }
 }
 
@@ -123,12 +141,11 @@ private extension TransactionHandler {
 
         guard let amount = transaction.price, let currency = transaction.currencyIdentifier else {
             debugPrint("Impossible to get amount and currency from transaction")
-            transactionState.value = .transactionProcessError
-            transactionState.send(completion: .finished)
+            updateTransactionState(state: .transactionProcessError)
             throw TransactionHandlerError.unableToGetTransactionAmountOrCurrency
         }
 
-        transactionState.send(.generatingReceipt)
+        updateTransactionState(state: .generatingReceipt)
 
         let formattedAmount = NSDecimalNumber(decimal: amount * 100).intValue
         let newToken = Token(amount: formattedAmount,
@@ -146,8 +163,7 @@ private extension TransactionHandler {
     private func createNewToken(_ transactionToken: Token) async throws -> NewToken {
 
         guard let request = try? paymentsAPIs.url(for: .createToken(token: transactionToken)) else {
-            transactionState.value = .transactionProcessError
-            transactionState.send(completion: .finished)
+            updateTransactionState(state: .transactionProcessError)
             throw TransactionHandlerError.unableToCreateRequest
         }
         debugPrint("Creating payment token..")
@@ -159,8 +175,7 @@ private extension TransactionHandler {
             if let responseError = error as? ResponseError {
                 ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(error: responseError, isDynamic: true))
             }
-            transactionState.value = .transactionProcessError
-            transactionState.send(completion: .finished)
+            updateTransactionState(state: .transactionProcessError)
             throw error
         }
     }
@@ -168,8 +183,7 @@ private extension TransactionHandler {
     private func createNewSubscription(token: NewToken, composedPlan: ComposedPlan, transaction: ProtonTransactionProviding) async throws -> Bool {
 
         guard let planName = composedPlan.plan.name else {
-            transactionState.value = .transactionProcessError
-            transactionState.send(completion: .finished)
+            updateTransactionState(state: .transactionProcessError)
             throw TransactionHandlerError.unableToFindPlanName
         }
         debugPrint("Creating new subscription..")
@@ -187,24 +201,21 @@ private extension TransactionHandler {
                                                                 giftCode: nil))
 
         guard let request = try? paymentsAPIs.url(for: .createSubscription(newSubscription: newSub)) else {
-            transactionState.value = .transactionProcessError
-            transactionState.send(completion: .finished)
+            updateTransactionState(state: .transactionProcessError)
             throw TransactionHandlerError.unableToCreateRequest
         }
 
-        transactionState.send(.createNewSubscription)
+        updateTransactionState(state: .createNewSubscription)
 
         do {
             _ = try await remoteManager.postToURL(request: request)
             debugPrint("New subscription successfully created ✅")
             ObservabilityEnv.report(.paymentSubscribeTotal(status: .successful, isDynamic: true))
-            transactionState.value = .transactionCompleted
-            transactionState.send(completion: .finished)
+            updateTransactionState(state: .transactionProcessError)
             return true
         } catch {
             ObservabilityEnv.report(.paymentSubscribeTotal(status: .failed, isDynamic: true))
-            transactionState.value = .transactionProcessError
-            transactionState.send(completion: .finished)
+            updateTransactionState(state: .transactionProcessError)
             throw error
         }
     }

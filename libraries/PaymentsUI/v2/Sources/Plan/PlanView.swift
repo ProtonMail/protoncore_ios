@@ -32,7 +32,7 @@ public struct PlanView: View {
     }
 
     private struct Constants {
-        static var borderWidth: CGFloat = 1
+        static let borderWidth: CGFloat = 1
 
         static func backgroundColor(isCurrentPlan: Bool, isExpanded: Bool) -> Color {
             if isCurrentPlan {

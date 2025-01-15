@@ -21,41 +21,38 @@
 
 import Foundation
 
-class MockURLProtocol: URLProtocol {
+final class MockURLProtocol: URLProtocol, @unchecked Sendable {
 
-    static var error: Error?
-    static var requestHandler: ((URLRequest) throws -> (HTTPURLResponse, Data))?
+    nonisolated(unsafe) static var error: Error?
+    nonisolated(unsafe) static var requestHandler: ((URLRequest) throws -> (HTTPURLResponse, Data))?
 
     override class func canInit(with request: URLRequest) -> Bool {
-           return true
-       }
+        return true
+    }
 
-       override class func canonicalRequest(for request: URLRequest) -> URLRequest {
-           return request
-       }
+    override class func canonicalRequest(for request: URLRequest) -> URLRequest {
+        return request
+    }
 
-       override func startLoading() {
-           if let error = MockURLProtocol.error {
-               client?.urlProtocol(self, didFailWithError: error)
-               return
-           }
+    override func startLoading() {
+        if let error = MockURLProtocol.error {
+            client?.urlProtocol(self, didFailWithError: error)
+            return
+        }
 
-           guard let handler = MockURLProtocol.requestHandler else {
-               assertionFailure("Received unexpected request with no handler set")
-               return
-           }
+        if let handler = MockURLProtocol.requestHandler {
+            do {
+                let (response, data) = try handler(request)
+                client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .allowed)
+                client?.urlProtocol(self, didLoad: data)
+                client?.urlProtocolDidFinishLoading(self)
+            } catch {
+                client?.urlProtocol(self, didFailWithError: error)
+            }
+        }
+    }
 
-           do {
-               let (response, data) = try handler(request)
-               client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .allowed)
-               client?.urlProtocol(self, didLoad: data)
-               client?.urlProtocolDidFinishLoading(self)
-           } catch {
-               client?.urlProtocol(self, didFailWithError: error)
-           }
-       }
-
-       override func stopLoading() {
-           // TODO: Andd stop loading here
-       }
+    override func stopLoading() {
+        // TODO: Andd stop loading here
+    }
 }
