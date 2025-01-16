@@ -86,6 +86,9 @@ public class APIErrorCode {
     public static let authDeviceTokenInvalid = 10302
     public static let authDeviceRejected = 10303
 
+    public static let unprivatizationNotExists = 2501
+    public static let unprivatizationNotAllowed = 10401
+
     public static let humanVerificationEditEmail = 9100 // internal error
 
     public static let potentiallyBlocked = 111_222_333 // internal error
