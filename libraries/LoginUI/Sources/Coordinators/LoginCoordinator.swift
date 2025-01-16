@@ -306,7 +306,7 @@ extension LoginCoordinator {
             ),
             navigationDelegate: self
         )
-        let ssoNavigationController = UINavigationController(rootViewController: viewController)
+        let ssoNavigationController = LoginNavigationViewController(rootViewController: viewController)
         ssoNavigationController.modalPresentationStyle = .fullScreen
         ssoNavigationController.modalTransitionStyle = .crossDissolve
 
@@ -396,9 +396,6 @@ extension LoginCoordinator: GlobalSSONavigationDelegate {
     }
 
     func globalSSOLoginDidFinish(data: LoginData) async {
-        await MainActor.run {
-            navigationController?.presentedViewController?.dismiss(animated: true)
-        }
         await finish(data: data)
     }
 

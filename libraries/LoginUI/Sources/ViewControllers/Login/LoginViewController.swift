@@ -493,11 +493,7 @@ extension LoginViewController: WKNavigationDelegate {
         if let responseToken = viewModel.getSSOTokenFromURL(url: navigationAction.request.url) {
             decisionHandler(.cancel)
             self.webView?.dismiss(animated: true)
-            if viewModel.clientApp == .vpn {
-                viewModel.processResponseToken(idpEmail: loginTextField.value, responseToken: responseToken)
-            } else {
-                viewModel.processResponseTokenV2(idpEmail: loginTextField.value, responseToken: responseToken)
-            }
+            viewModel.processResponseTokenV2(idpEmail: loginTextField.value, responseToken: responseToken)
         } else {
             decisionHandler(.allow)
         }

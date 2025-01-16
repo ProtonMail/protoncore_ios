@@ -23,6 +23,7 @@
 
 import ProtonCoreAuthentication
 import ProtonCoreLog
+import ProtonCoreNetworking
 import ProtonCoreServices
 
 public enum SSOLoginScreen {
@@ -96,6 +97,7 @@ public final class PostLoginSSOAccountSetup {
         case noSecret
         case invalidSecret
         case inactiveSecret
+        case noUnprivatizationInfo
     }
 
     public func invoke(mode: Mode) async throws -> SSOLoginScreen {
@@ -122,12 +124,14 @@ public final class PostLoginSSOAccountSetup {
         case .noSecret, .invalidSecret:
             try await createAuthDevice.invoke(addresses: userData.addresses)
             return try await loadScreenWithSecretAvailable()
+        case .noUnprivatizationInfo:
+            return .loginSuccess(userData)
         }
     }
 
     private func loginSSOState(userData: LoginData) async throws -> State {
         guard !userData.user.keys.isEmpty else {
-            return .firstLogin
+            return try await firstLoginState()
         }
 
         switch try await checkDeviceSecret.invoke(userId: userData.user.ID) {
@@ -144,6 +148,23 @@ public final class PostLoginSSOAccountSetup {
         case .noSecret:
             return .noSecret
         }
+    }
+
+    private func firstLoginState() async throws -> State {
+        // Try to get UnprivatizationInfo, if NotExists or NotAllowed (2501, 10401), fallback to regular SSO.
+        // We must not set keys to allow API rollout to global SSO incrementally.
+        do {
+            _ = try await getUnprivatizationInfo.invoke()
+        } catch {
+            if let responseError = error as? ResponseError,
+               responseError.responseCode == APIErrorCode.unprivatizationNotAllowed
+                || responseError.responseCode == APIErrorCode.unprivatizationNotExists {
+                PMLog.debug("Unprivatization not allowed. Falling back to regular SSO")
+                return .noUnprivatizationInfo
+            }
+            throw error
+        }
+        return .firstLogin
     }
 
     private func deviceSecretState(userData: LoginData, decryptedSecret: String) throws -> State {
