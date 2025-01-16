@@ -44,15 +44,15 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
     @MainActor
     func testJoinOrganizationView() {
         let view = SetBackupPasswordView(viewModel: .init(dependencies: .init(
-            apiService: APIServiceMock(),
-            loginService: nil,
-            userData: .dummy,
-            organizationInfo: .init(
+            mode: .setNewBackupPassword(organizationInfo: .init(
                 organizationName: "Proton AG",
                 organizationAdminEmail: "admin@privacybydefault.com",
                 organizationLogoID: nil,
                 organizationPublicKey: .init(value: "")
-            ),
+            )),
+            apiService: APIServiceMock(),
+            userData: .dummy,
+            loginService: nil,
             ssoNavigationDelegate: nil
         )))
         let viewController = UIHostingController(rootView: view)
@@ -121,7 +121,7 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
     @MainActor
     func testAccessGranted() {
         let view = AccessGrantedDeniedView(viewModel: .init(dependencies: .init(
-            mode: .accessGranted,
+            mode: .accessGranted(userData: .dummy),
             ssoNavigationDelegate: nil
         )))
         let viewController = UIHostingController(rootView: view)

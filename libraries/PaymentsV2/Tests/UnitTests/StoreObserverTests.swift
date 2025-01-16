@@ -19,6 +19,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+#if os(iOS)
+
 import Combine
 @testable import ProtonCorePaymentsV2
 import XCTest
@@ -39,6 +41,7 @@ final class StoreObserverTests: XCTestCase, @unchecked Sendable {
         let plansMockResponse = Bundle.main.loadJsonDataToDic(from: "availablePlans.json")
         mockRemoteManager.setupURLSessionMock(withMockResponse: plansMockResponse)
 
+        sut = TransactionsObserver.shared
         let configuration = TransactionsObserverConfiguration(sessionID: "asdasd12d",
                                                               authToken: "12d12",
                                                               appVersion: "V200",
@@ -76,3 +79,4 @@ final class StoreObserverTests: XCTestCase, @unchecked Sendable {
         sut.stop()
     }
 }
+#endif

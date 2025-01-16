@@ -19,6 +19,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+#if os(iOS)
 @testable import ProtonCorePaymentsV2
 import StoreKitTest
 import XCTest
@@ -102,3 +103,4 @@ final class PlansComposerTests: XCTestCase, @unchecked Sendable {
         XCTAssertEqual(currentSubscription.description, "Current plan")
     }
 }
+#endif

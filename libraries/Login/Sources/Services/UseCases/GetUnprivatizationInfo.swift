@@ -19,11 +19,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-#if os(iOS)
 import ProtonCoreCrypto
 import ProtonCoreDataModel
 import ProtonCoreServices
-import UIKit
 
 struct GetUnprivatizationInfo {
     private let apiService: APIService
@@ -37,5 +35,3 @@ struct GetUnprivatizationInfo {
         return unprivatizationInfo
     }
 }
-
-#endif

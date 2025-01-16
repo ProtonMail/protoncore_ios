@@ -5,11 +5,11 @@ ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "180"
 # --- Functions definition ---
 
 def default_destination
-  "platform=iOS Simulator,name=iPhone 11,OS=15.5"
+  "platform=iOS Simulator,name=iPhone 15,OS=17.5"
 end
 
 def device_name(arguments)
-  arguments.has_key?(:device_name) ? arguments[:device_name] : 'iPhone 11'
+  arguments.has_key?(:device_name) ? arguments[:device_name] : 'iPhone 15'
 end
 
 def derived_data_path(prefix)

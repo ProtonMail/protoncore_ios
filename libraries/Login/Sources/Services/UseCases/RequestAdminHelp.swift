@@ -19,11 +19,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-#if os(iOS)
 import ProtonCoreCrypto
 import ProtonCoreDataModel
 import ProtonCoreServices
-import UIKit
 
 public struct RequestAdminHelp {
     private let apiService: APIService
@@ -45,5 +43,3 @@ public struct RequestAdminHelp {
         let _: (_, DefaultResponse) = try await apiService.perform(request: request)
     }
 }
-
-#endif

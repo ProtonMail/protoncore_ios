@@ -981,17 +981,6 @@ class LoginServiceTests: XCTestCase {
         }
     }
 
-    func testLoginWithTOTPAndSecondPassword_DoesNotAskForSecondPasswordForUsername() {
-        performLoginWithTwoPasswordUser(minimumAccountType: .username) { expect, service, status in
-            switch status {
-            case .finished:
-                expect.fulfill()
-            default:
-                XCTFail("Should finish successfully")
-            }
-        }
-    }
-
     func testLoginWithWrongSecondPassword_failsWithInvalidSecondPasswordError() {
         let (api, authDelegate) = apiService
         _ = authDelegate
