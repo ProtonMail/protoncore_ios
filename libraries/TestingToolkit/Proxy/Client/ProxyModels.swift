@@ -165,10 +165,12 @@ public struct DynamicMocksSummary: Codable {
 public struct DynamicMockBody: Codable {
     public let name: String
     public let enabled: Bool
+    public let parameters: AnyCodable?
 
-    public init(name: String, enabled: Bool) {
+    public init(name: String, enabled: Bool, parameters: AnyCodable? = nil) {
         self.name = name
         self.enabled = enabled
+        self.parameters = parameters
     }
 }
 
