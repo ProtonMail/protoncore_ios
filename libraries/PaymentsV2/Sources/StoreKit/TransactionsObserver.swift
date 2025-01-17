@@ -138,20 +138,24 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
 
     // MARK: Public methods
     public func start() async throws {
+        if !isON {
+            try initRequiredComponents()
 
-        try initRequiredComponents()
+            guard let planComposer = planComposer, let _ = transactionHandler else {
+                assertionFailure("TransactionsObserver: TransactionsObserverConfiguration required to start the observer")
+                throw TransactionsObserverError.requiredSubComponentInitFailed
+            }
 
-        guard let planComposer = planComposer, let _ = transactionHandler else {
-            assertionFailure("TransactionsObserver: TransactionsObserverConfiguration required to start the observer")
-            throw TransactionsObserverError.requiredSubComponentInitFailed
+            if !planComposer.hasData {
+                _ = try await planComposer.fetchAvailablePlans()
+            }
+            updates?.cancel()
+            updates = newTransactionListenerTask()
+            isON = true
+            debugPrint("TransactionsObserver started: \(isON) ✅")
+        } else {
+            debugPrint("TransactionsObserver already running, nothing to start")
         }
-
-        if !planComposer.hasData {
-            _ = try await planComposer.fetchAvailablePlans()
-        }
-        updates = newTransactionListenerTask()
-        isON = true
-        debugPrint("TransactionsObserver started: \(isON) ✅")
     }
 
     public func stop() {
