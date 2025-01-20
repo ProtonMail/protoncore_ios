@@ -6,8 +6,12 @@
 
 "Proton address required" = "Endereço Proton obrigatório";
 
-"Code doesn't match" = "Code doesn't match";
+"Code doesn't match" = "O código não corresponde";
 
-"Code isn't valid" = "Code isn't valid";
+"Code isn't valid" = "O código não é válido";
 
-"Device secret not found" = "Device secret not found";
+"Device secret not found" = "Segredo do dispositivo não encontrado";
+
+"Passphrase not found" = "Senha não encontrada";
+
+"Password update failed" = "Erro na atualização de senha";

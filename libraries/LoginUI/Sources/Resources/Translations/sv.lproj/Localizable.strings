@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Inloggning begärd på annan enhet. Var det du?";
 
-"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
+"Enter the confirmation code we sent on your other device for %@." = "Ange bekräftelsekoden vi skickade på din andra enhet för %@.";
 
 "Confirmation code" = "Bekräftelsekod";
 
@@ -336,6 +336,8 @@
 
 "Sign in with single sign-on" = "Logga in med enkel inloggning";
 
-"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Din organisation använder SSO. Fortsätt för att logga in med din tredjeparts-SSO-leverantör.";
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Din organisation använder SSO. Fortsätt att logga in med din SSO-leverantör från tredje part.";
 
 "Unknown" = "Okänd";
+
+"Set backup password" = "Välj reservlösenord";

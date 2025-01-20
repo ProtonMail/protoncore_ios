@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Η σύνδεση ζητήθηκε σε άλλη συσκευή. Ήσασταν εσείς;";
 
-"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
+"Enter the confirmation code we sent on your other device for %@." = "Εισαγάγετε τον κωδικό επιβεβαίωσης που στείλαμε στην άλλη συσκευή σας για %@.";
 
 "Confirmation code" = "Κωδικός επιβεβαίωσης";
 
@@ -339,3 +339,5 @@
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Ο οργανισμός σας χρησιμοποιεί ενιαία πρόσβαση. Συνεχίστε για να συνδεθείτε μέσω του παρόχου SSO σας.";
 
 "Unknown" = "Άγνωστο";
+
+"Set backup password" = "Ορισμός εφεδρικού κωδικού πρόσβασης";

@@ -6,8 +6,12 @@
 
 "Proton address required" = "需要使用 Proton 地址";
 
-"Code doesn't match" = "Code doesn't match";
+"Code doesn't match" = "密码不一致";
 
-"Code isn't valid" = "Code isn't valid";
+"Code isn't valid" = "密码无效";
 
-"Device secret not found" = "Device secret not found";
+"Device secret not found" = "未找到设备密钥";
+
+"Passphrase not found" = "未找到密码";
+
+"Password update failed" = "密码修改失败";

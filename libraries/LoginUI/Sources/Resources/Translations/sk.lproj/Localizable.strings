@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Požiadavka na prihlásenie na inom zariadení. Boli ste to vy?";
 
-"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
+"Enter the confirmation code we sent on your other device for %@." = "Vložte potvrdzovací kód, ktorý sme vám poslali na vaše ďalšie zariadenie pre %@.";
 
 "Confirmation code" = "Potvrdzovací kód";
 
@@ -339,3 +339,5 @@
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Vaša organizácia používa SSO. Pokračujte v prihlasovaní pomocou poskytovateľa SSO tretej strany.";
 
 "Unknown" = "Neznáme";
+
+"Set backup password" = "Nastavte záložné heslo";

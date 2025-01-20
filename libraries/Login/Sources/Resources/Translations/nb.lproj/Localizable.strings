@@ -6,8 +6,12 @@
 
 "Proton address required" = "Proton-adresse kreves";
 
-"Code doesn't match" = "Code doesn't match";
+"Code doesn't match" = "Kode samsvarer ikke";
 
-"Code isn't valid" = "Code isn't valid";
+"Code isn't valid" = "Kode er ikke gyldig";
 
-"Device secret not found" = "Device secret not found";
+"Device secret not found" = "Enhetshemmelighet ikke funnet";
+
+"Passphrase not found" = "Passfrase ikke funnet";
+
+"Password update failed" = "Passordoppdatering mislyktes";

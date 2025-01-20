@@ -11,3 +11,7 @@
 "Code isn't valid" = "El codi no és vàlid.";
 
 "Device secret not found" = "No s'ha trobat el codi secret del dispositiu.";
+
+"Passphrase not found" = "No s'ha trobat la frase de contrasenya.";
+
+"Password update failed" = "No s'ha pogut actualitzar la contrasenya.";

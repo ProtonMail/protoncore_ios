@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Solicitare de conectare de pe alt dispozitiv. Ați fost dvs.?";
 
-"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
+"Enter the confirmation code we sent on your other device for %@." = "Introduceți codul de confirmare primit pe celălalt dispozitiv pentru %@.";
 
 "Confirmation code" = "Cod de confirmare";
 
@@ -339,3 +339,5 @@
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Organizația folosește conectarea cu autentificare unică (SSO). Continuați conectarea cu furnizorul terț de autentificare unică.";
 
 "Unknown" = "Necunoscut";
+
+"Set backup password" = "Setare parolă de rezervă";

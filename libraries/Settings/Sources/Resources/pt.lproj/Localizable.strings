@@ -1,14 +1,14 @@
 "pmsettings-settings-title" = "Definições";
 
-"pmsettings-settings-app-settings-section" = "Definições";
+"pmsettings-settings-app-settings-section" = "Definições da aplicação";
 
-"pmsettings-settings-system-settings-section" = "Definições de Sistema";
+"pmsettings-settings-system-settings-section" = "Definições do sistema";
 
 "pmsettings-settings-system-settings-language-title" = "Idioma";
 
 "pmsettings-settings-system-settings-language-description" = "Pode escolher o idioma de preferência nas definições do sistema.";
 
-"pmsettings-settings-system-settings-language-button" = "Defina o idioma nas definições de sistema.";
+"pmsettings-settings-system-settings-language-button" = "Defina o idioma nas definições do sistema.";
 
 "pmsettings-settings-system-settings-notifications-title" = "Notificações";
 

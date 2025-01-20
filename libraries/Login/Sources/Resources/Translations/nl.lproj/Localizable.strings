@@ -6,8 +6,12 @@
 
 "Proton address required" = "Proton-adres vereist";
 
-"Code doesn't match" = "Code doesn't match";
+"Code doesn't match" = "Code komt niet overeen";
 
-"Code isn't valid" = "Code isn't valid";
+"Code isn't valid" = "Code is niet geldig";
 
-"Device secret not found" = "Device secret not found";
+"Device secret not found" = "Apparaatgeheim niet gevonden";
+
+"Passphrase not found" = "Wachtwoordzin niet gevonden";
+
+"Password update failed" = "Wachtwoord wijzigen mislukt";

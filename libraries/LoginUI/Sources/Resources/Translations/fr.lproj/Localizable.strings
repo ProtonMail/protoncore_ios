@@ -339,3 +339,5 @@
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Votre organisation utilise l'authentification unique (SSO). Connectez-vous avec votre fournisseur SSO tiers.";
 
 "Unknown" = "Inconnu";
+
+"Set backup password" = "Définir le mot de passe de secours";
