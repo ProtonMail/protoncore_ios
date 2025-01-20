@@ -83,9 +83,28 @@ final class ProxyTest: XCTestCase {
         wait(for: [disableForwardExpectation], timeout: defaultTimeout)
     }
 
-    func testEnableDynamicMock() {
+    func testEnableDynamicMockSrp() {
         let expectation = self.expectation(description: "Fetch scenarios")
         let dynamicMock = DynamicMockBody(name: "loginWithSrp", enabled: true)
+
+        client.addDynamicMockScenario(dynamicMock: dynamicMock) { result in
+            switch result {
+            case .success(let dynamicMock):
+                print(dynamicMock)
+            case .failure(let error):
+                XCTFail("Failed to fetch scenarios: \(error)")
+            }
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: defaultTimeout)
+    }
+    
+    func testEnableDynamicMockRecordAll() {
+        let expectation = self.expectation(description: "Fetch scenarios")
+        let parameters: [String: Any] = [
+            "mockDirectory": "1234"
+        ]
+        let dynamicMock = DynamicMockBody(name: "recordAll", enabled: true, parameters: AnyCodable(value: parameters))
 
         client.addDynamicMockScenario(dynamicMock: dynamicMock) { result in
             switch result {
