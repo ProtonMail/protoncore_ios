@@ -6,8 +6,12 @@
 
 "Proton address required" = "Este necesară o adresă Proton";
 
-"Code doesn't match" = "Code doesn't match";
+"Code doesn't match" = "Codul nu se potrivește.";
 
-"Code isn't valid" = "Code isn't valid";
+"Code isn't valid" = "Codul nu este valid.";
 
-"Device secret not found" = "Device secret not found";
+"Device secret not found" = "Codul secret al dispozitivului nu a fost găsit.";
+
+"Passphrase not found" = "Fraza de acces nu a fost găsită.";
+
+"Password update failed" = "Actualizarea parolei a eșuat.";

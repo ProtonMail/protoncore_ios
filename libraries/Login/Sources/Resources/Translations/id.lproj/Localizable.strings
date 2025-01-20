@@ -6,8 +6,12 @@
 
 "Proton address required" = "Alamat Proton dibutuhkan";
 
-"Code doesn't match" = "Code doesn't match";
+"Code doesn't match" = "Kode tidak cocok";
 
-"Code isn't valid" = "Code isn't valid";
+"Code isn't valid" = "Kode tidak valid";
 
-"Device secret not found" = "Device secret not found";
+"Device secret not found" = "Rahasia perangkat tidak ditemukan";
+
+"Passphrase not found" = "Frasa sandi tidak ditemukan";
+
+"Password update failed" = "Pembaruan kata sandi gagal";

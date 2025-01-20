@@ -266,7 +266,7 @@
 
 "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.";
 
-"Backup password" = "Backup password";
+"Backup password" = "Varnostna kopija gesla";
 
 "Repeat backup password" = "Repeat backup password";
 
@@ -284,9 +284,9 @@
 
 "If you didn't make this request, cancel it now." = "If you didn't make this request, cancel it now.";
 
-"Yes, it was me" = "Yes, it was me";
+"Yes, it was me" = "Da, bil sem jaz.";
 
-"No, it wasn't me" = "No, it wasn't me";
+"No, it wasn't me" = "Ne, nisem bil jaz.";
 
 "Share the confirmation code with your administrator" = "Share the confirmation code with your administrator";
 
@@ -316,7 +316,7 @@
 
 "Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
 
-"Back to sign-in" = "Back to sign-in";
+"Back to sign-in" = "Nazaj na prijavo";
 
 "Ask your administrator for access?" = "Ask your administrator for access?";
 
@@ -330,12 +330,14 @@
 
 "Deny access" = "Zavrni dostop";
 
-"Signing you in" = "Signing you in";
+"Signing you in" = "Prijavljanje";
 
-"to your organization" = "to your organization";
+"to your organization" = "v vašo organizacijo";
 
 "Sign in with single sign-on" = "Sign in with single sign-on";
 
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Your organization uses SSO. Continue to sign in with your third-party SSO provider.";
 
 "Unknown" = "Neznan";
+
+"Set backup password" = "Set backup password";

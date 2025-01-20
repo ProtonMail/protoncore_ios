@@ -339,3 +339,5 @@
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "La vostra organització utilitza l'inici de sessió únic (SSO). Continueu iniciant la sessió amb el vostre proveïdor d'SSO de tercers.";
 
 "Unknown" = "Desconegut";
+
+"Set backup password" = "Defineix la contrasenya de recuperació";

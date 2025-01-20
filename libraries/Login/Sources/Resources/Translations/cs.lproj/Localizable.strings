@@ -6,8 +6,12 @@
 
 "Proton address required" = "Vyžadována Proton adresa";
 
-"Code doesn't match" = "Code doesn't match";
+"Code doesn't match" = "Kód se neshoduje";
 
-"Code isn't valid" = "Code isn't valid";
+"Code isn't valid" = "Kód není platný";
 
-"Device secret not found" = "Device secret not found";
+"Device secret not found" = "Secret zařízení nebyl nalezen";
+
+"Passphrase not found" = "Heslo nebylo nalezeno";
+
+"Password update failed" = "Aktualizace hesla se nezdařila";

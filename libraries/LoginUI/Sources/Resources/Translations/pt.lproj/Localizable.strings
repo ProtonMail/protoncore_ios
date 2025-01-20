@@ -90,9 +90,9 @@
 
 "Recovery code" = "Código de recuperação";
 
-"Use recovery code" = "Usar código de recuperação";
+"Use recovery code" = "Utilizar um código de recuperação";
 
-"Use two-factor code" = "Usar código em dois passos";
+"Use two-factor code" = "Utilizar um código em dois passos";
 
 "Enter the 6-digit code." = "Inserir o código de 6 algarismos.";
 
@@ -104,7 +104,7 @@
 
 "Change password" = "Alterar a palavra-passe";
 
-"To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "Para usar a app Proton como membro de uma organização, primeiro é necessário alterar a sua palavra-passe através de um login no Proton via browser.";
+"To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "Para utilizar a app Proton como membro de uma organização, primeiro é necessário alterar a sua palavra-passe através de um login no Proton via browser.";
 
 "Error occured" = "Ocorreu um erro";
 
@@ -248,7 +248,7 @@
 
 "These are the security keys registered to your account" = "Estas são as chaves de segurança registadas na sua conta.";
 
-"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "Ainda não tem nenhuma chave de segurança inscrita na sua conta. Use a aplicação da Proton %@ para adicionar chaves de segurança.";
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "Ainda não tem nenhuma chave de segurança inscrita na sua conta. Utilize a aplicação da Proton %@ para adicionar chaves de segurança.";
 
 "Security Keys" = "Chaves de segurança";
 
@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Solicitação de início de sessão noutro dispositivo. Foi você?";
 
-"Enter the confirmation code we sent on your other device for %@." = "Insira o código de confirmação que enviamos no seu outro dispositivo para %@.";
+"Enter the confirmation code we sent on your other device for %@." = "Introduza o código de confirmação que enviamos no seu outro dispositivo para %@.";
 
 "Confirmation code" = "Código de confirmação";
 
@@ -296,7 +296,7 @@
 
 "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Para garantir que realmente é você a tentar entrar na sua conta, verifique o código de confirmação e aprove a solicitação em outro dispositivo.";
 
-"Use backup password instead" = "Usar a palavra-passe de backup em vez disso";
+"Use backup password instead" = "Utilizar a palavra-passe de backup em vez disso";
 
 "Ask administrator for help" = "Pecar ajuda ao administrador";
 
@@ -306,7 +306,7 @@
 
 "Enter your backup password" = "Introduza a sua palavra-passe de backup";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "Para garantir que é realmente você a tentar iniciar sessão, insira a sua palavra-passe de backup.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Para garantir que é realmente você a tentar iniciar sessão, Introduza a sua palavra-passe de backup.";
 
 "Access granted" = "O acesso foi concedido.";
 
@@ -324,7 +324,7 @@
 
 "Grant access to user?" = "Conceder o acesso ao utilizador?";
 
-"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ solicita a sua ajuda para entrar na sua conta Proton com a autenticação única.\n\nInsira o código de confirmação enviado para este utilizador.";
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ solicita a sua ajuda para entrar na sua conta Proton com a autenticação única.\n\nIntroduza o código de confirmação enviado para este utilizador.";
 
 "Grant access" = "Conceder acesso";
 
@@ -339,3 +339,5 @@
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "A sua organização usa a autenticação única SSO. Continue a entrar com p seu fornecedor de SSO de terceiros.";
 
 "Unknown" = "Desconhecido";
+
+"Set backup password" = "Definir a palavra-passe de backup";

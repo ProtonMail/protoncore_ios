@@ -6,8 +6,12 @@
 
 "Proton address required" = "Proton-ის მისამართი აუცილებელია";
 
-"Code doesn't match" = "Code doesn't match";
+"Code doesn't match" = "კოდი არ ემთხვევა";
 
-"Code isn't valid" = "Code isn't valid";
+"Code isn't valid" = "კოდი არასწორია";
 
-"Device secret not found" = "Device secret not found";
+"Device secret not found" = "მოწყობილობის საიდუმლო არ არსებობს";
+
+"Passphrase not found" = "საკვანძო ფრაზა აღმოჩენილი არაა";
+
+"Password update failed" = "პაროლის განახლების შეცდომა";

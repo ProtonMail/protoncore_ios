@@ -6,8 +6,12 @@
 
 "Proton address required" = "Proton アドレスが必要です";
 
-"Code doesn't match" = "Code doesn't match";
+"Code doesn't match" = "コードが一致しません";
 
-"Code isn't valid" = "Code isn't valid";
+"Code isn't valid" = "コードが無効です";
 
-"Device secret not found" = "Device secret not found";
+"Device secret not found" = "デバイスのシークレットが見つかりません";
+
+"Passphrase not found" = "パスフレーズが見つかりません";
+
+"Password update failed" = "パスワードの更新に失敗しました。";

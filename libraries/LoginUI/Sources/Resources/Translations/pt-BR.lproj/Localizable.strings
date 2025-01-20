@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Solicitação de login em outro dispositivo. Foi você?";
 
-"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
+"Enter the confirmation code we sent on your other device for %@." = "Digite o código de confirmação que enviamos no seu outro dispositivo para %@.";
 
 "Confirmation code" = "Código de confirmação";
 
@@ -339,3 +339,5 @@
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Sua organização usa SSO. Continue a entrada com seu provedor de SSO de terceiros.";
 
 "Unknown" = "Desconhecido";
+
+"Set backup password" = "Configurar senha de backup";

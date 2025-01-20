@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "另一台设备上的登录请求。是您本人吗？";
 
-"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
+"Enter the confirmation code we sent on your other device for %@." = "输入我们发送到您其他设备上的确认代码 %@。";
 
 "Confirmation code" = "确认码";
 
@@ -339,3 +339,5 @@
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "您的组织使用 SSO。请继续使用第三方 SSO 提供商登录。";
 
 "Unknown" = "未知";
+
+"Set backup password" = "设置备份密码";

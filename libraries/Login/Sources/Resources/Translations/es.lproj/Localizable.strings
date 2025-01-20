@@ -11,3 +11,7 @@
 "Code isn't valid" = "El código no está válido.";
 
 "Device secret not found" = "No se ha encontrado el código secreto del dispositivo.";
+
+"Passphrase not found" = "No se ha encontrado la frase de contraseña.";
+
+"Password update failed" = "Error al actualizar la contraseña";

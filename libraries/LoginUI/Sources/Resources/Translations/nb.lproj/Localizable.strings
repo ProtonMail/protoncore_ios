@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Pålogging forespurt på en annen enhet. Var det deg?";
 
-"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
+"Enter the confirmation code we sent on your other device for %@." = "Skriv inn bekreftelseskoden vi sendte på den andre enheten din for %@.";
 
 "Confirmation code" = "Bekreftelseskode";
 
@@ -339,3 +339,5 @@
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Organisasjonen bruker SSO. Fortsett å logge på med tredjepartsleverandøren av SSO.";
 
 "Unknown" = "Ukjent";
+
+"Set backup password" = "Angi reservepassord";

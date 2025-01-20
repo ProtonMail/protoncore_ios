@@ -6,8 +6,12 @@
 
 "Proton address required" = "Proton 주소 필요";
 
-"Code doesn't match" = "Code doesn't match";
+"Code doesn't match" = "코드가 일치하지 않습니다.";
 
-"Code isn't valid" = "Code isn't valid";
+"Code isn't valid" = "코드가 유효하지 않습니다.";
 
-"Device secret not found" = "Device secret not found";
+"Device secret not found" = "기기 시크릿을 찾을 수 없음";
+
+"Passphrase not found" = "비밀번호를 찾을 수 없음";
+
+"Password update failed" = "비밀번호 변경 실패";

@@ -6,8 +6,12 @@
 
 "Proton address required" = "Απαιτείται διεύθυνση Proton";
 
-"Code doesn't match" = "Code doesn't match";
+"Code doesn't match" = "Ο κωδικός δεν ταιριάζει";
 
-"Code isn't valid" = "Code isn't valid";
+"Code isn't valid" = "Ο κωδικός δεν είναι έγκυρος";
 
-"Device secret not found" = "Device secret not found";
+"Device secret not found" = "Ο μυστικός κωδικός συσκευής δε βρέθηκε";
+
+"Passphrase not found" = "Δεν βρέθηκε φράση πρόσβασης";
+
+"Password update failed" = "Αποτυχία ενημέρωσης κωδικού πρόσβασης";

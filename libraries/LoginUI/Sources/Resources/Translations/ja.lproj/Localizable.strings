@@ -104,13 +104,13 @@
 
 "Change password" = "パスワードの変更";
 
-"To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "組織のメンバーとして Proton アプリを使うと、初めにブラウザーから Proton にサインインしてパスワードを変更する必要があります。";
+"To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "組織のメンバーとして Proton アプリを使うには、初めにブラウザーから Proton にサインインしてパスワードを変更する必要があります。";
 
 "Error occured" = "エラーが発生しました";
 
 "Create your Proton Account" = "Proton アカウントを作成";
 
-"One account for all Proton services." = "1つのアカウントで全 Proton サービスを利用可能.";
+"One account for all Proton services." = "1つのアカウントですべてのProtonサービスを利用可能。";
 
 "Next" = "次へ";
 
@@ -158,7 +158,7 @@
 
 "Set recovery method" = "回復手段を設定";
 
-"Your account is being created" = "アカウント作成中";
+"Your account is being created" = "アカウントを作成しています";
 
 "This should take no more than a minute." = "これにはそんなに時間はかかりません。";
 
@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "別の端末でログインが要求されました。あなたがログインしましたか？";
 
-"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
+"Enter the confirmation code we sent on your other device for %@." = "他のデバイスに送信した確認コードを%@に入力してください。";
 
 "Confirmation code" = "確認コード";
 
@@ -339,3 +339,5 @@
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "組織はSSOを利用しています。引き続きサードパーティーSSOプロバイダでサインインします。";
 
 "Unknown" = "不明";
+
+"Set backup password" = "バックアップパスワードを設定";
