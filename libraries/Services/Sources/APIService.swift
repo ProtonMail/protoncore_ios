@@ -679,6 +679,26 @@ public extension APIService {
         }
     }
 
+    func performDownload(request route: Request,
+                         destinationDirectory: URL,
+                         callCompletionBlockUsing executor: CompletionBlockExecutor = .asyncMainExecutor,
+                         decodableCompletion complete: @escaping DownloadCompletion) {
+        let url = self.dohInterface.getCurrentlyUsedHostUrl() + route.path
+
+        download(
+            byUrl: url,
+            destinationDirectoryURL: destinationDirectory,
+            headers: route.header,
+            authenticated: route.isAuth,
+            customAuthCredential: route.authCredential,
+            nonDefaultTimeout: route.nonDefaultTimeout,
+            retryPolicy: route.retryPolicy) { downloadDataTask in
+            } downloadCompletion: { urlResponse, url, error in
+                executor.execute {
+                    complete(urlResponse, url, error)
+                }
+            }
+    }
 }
 
 // MARK: - Deprecated APIs
