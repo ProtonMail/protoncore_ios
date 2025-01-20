@@ -81,6 +81,9 @@ public struct SetBackupPasswordView: View {
         .onAppear {
             viewModel.backupPasswordContent.focus()
         }
+        .onLoad {
+            viewModel.loadOrganizationLogo()
+        }
     }
 
     @ViewBuilder
@@ -125,8 +128,8 @@ public struct SetBackupPasswordView: View {
             AsyncImage(url: organizationLogoURL) { image in
                 image
                     .resizable()
-                    .padding(Constants.standardPadding)
                     .frame(width: Constants.imageSize, height: Constants.imageSize)
+                    .cornerRadius(Constants.imageCornerRadius)
             } placeholder: {
                 defaultOrganizationImage
             }

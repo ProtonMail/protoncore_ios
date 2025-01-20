@@ -81,14 +81,15 @@ extension SetBackupPasswordView {
         private var authenticator: AuthenticatorKeyGenerationInterface?
         private let userData: LoginData
         private let deviceSecretRepository: DeviceSecretRepositoryProtocol
+        private var getOrganizationLogo: GetOrganizationLogo?
 
         // Mode setBackupPassword
+        @Published var organizationLogoURL: URL?
         var organizationInfo: OrganizationInfo?
         private var loginService: Login?
 
         // Mode changeTemporaryPassword
         private var passwordChangeService: BasePasswordChangeService?
-
 
         weak var ssoNavigationDelegate: GlobalSSONavigationDelegate?
 
@@ -101,10 +102,12 @@ extension SetBackupPasswordView {
                 self.organizationInfo = organizationInfo
                 if let apiService = dependencies.apiService {
                     self.authenticator = Authenticator(api: apiService)
+                    self.getOrganizationLogo = GetOrganizationLogo(apiService: apiService)
                 }
             case .changeTemporaryPassword:
                 if let apiService = dependencies.apiService {
                     self.passwordChangeService = BasePasswordChangeService(api: apiService)
+                    self.getOrganizationLogo = GetOrganizationLogo(apiService: apiService)
                 }
             }
 
@@ -135,10 +138,11 @@ extension SetBackupPasswordView {
             organizationInfo?.organizationAdminEmail ?? LUITranslation.unknown.l10n
         }
 
-        var organizationLogoURL: URL? {
-            guard let _ = organizationInfo?.organizationLogoID else { return nil }
-            // TODO: Retrieve logo from /organizations/logo/{logoId}
-            return nil
+        func loadOrganizationLogo() {
+            guard let logoId = organizationInfo?.organizationLogoID else { return }
+            Task {
+                organizationLogoURL = try? await getOrganizationLogo?.invoke(logoId: logoId)
+            }
         }
 
         func continueTapped() {
