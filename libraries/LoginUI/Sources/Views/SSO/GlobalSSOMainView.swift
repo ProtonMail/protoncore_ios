@@ -42,7 +42,7 @@ struct GlobalSSOMainView: View {
         case .loading(let dependencies):
             SSOLoginLoaderView(viewModel: .init(dependencies: dependencies))
         case .error(let dependencies):
-            SSOLoginErrorView(viewModel: .init(dependencies: dependencies))
+            SSOLoginLoaderView(viewModel: .init(dependencies: dependencies))
         case .newBackupPassword(let dependencies):
             SetBackupPasswordView(viewModel: .init(dependencies: dependencies))
         case .requestApproveFromAnotherDevice(let dependencies):
