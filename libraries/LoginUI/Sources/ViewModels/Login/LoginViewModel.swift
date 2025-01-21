@@ -204,7 +204,11 @@ final class LoginViewModel {
                 if let loginError = error as? LoginError {
                     self.error.publish(loginError)
                 } else {
-                    self.error.publish(.invalidState)
+                    self.error.publish(LoginError.generic(
+                        message: error.localizedDescription,
+                        code: error.responseCode ?? -1,
+                        originalError: error
+                    ))
                 }
                 self.isLoading.value = false
             }
