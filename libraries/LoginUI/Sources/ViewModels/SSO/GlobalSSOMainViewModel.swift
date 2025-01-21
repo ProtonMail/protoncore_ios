@@ -61,7 +61,7 @@ extension GlobalSSOMainView {
 
         enum ScreenState {
             case loading(SSOLoginLoaderView.Dependencies)
-            case error(SSOLoginErrorView.Dependencies)
+            case error(SSOLoginLoaderView.Dependencies)
             case newBackupPassword(SetBackupPasswordView.Dependencies)
             case requestApproveFromAnotherDevice(SignInRequestView.Dependencies)
             case enterBackupPassword(EnterBackupPasswordView.Dependencies)
@@ -75,7 +75,7 @@ extension GlobalSSOMainView {
             self.authService = Authenticator(api: dependencies.apiService)
             self.userData = dependencies.userData
             self.ssoNavigationDelegate = dependencies.ssoNavigationDelegate
-            screenState = .loading(.init(user: userData.user))
+            screenState = .loading(.init(user: userData.user, errorRetryAction: nil))
             self.postLoginSSOAccountSetup = .init(
                 apiService: apiService,
                 userData: userData
@@ -194,16 +194,18 @@ extension GlobalSSOMainView {
         }
 
         private func loadSSOErrorLogin(error: Error, action: @escaping () async -> Void) {
-            screenState = .error(.init(
+            self.screenState = .error(.init(
                 user: userData.user,
-                error: error,
-                continueAction: {
-                    Task { [weak self] in
-                        guard let self else { return }
-                        self.screenState = .loading(.init(user: userData.user))
-                        await action()
+                errorRetryAction: .init(
+                    error: error,
+                    retryAction: {
+                        Task { [weak self] in
+                            guard let self else { return }
+                            self.screenState = .loading(.init(user: userData.user, errorRetryAction: nil))
+                            await action()
+                        }
                     }
-                }
+                )
             ))
         }
     }

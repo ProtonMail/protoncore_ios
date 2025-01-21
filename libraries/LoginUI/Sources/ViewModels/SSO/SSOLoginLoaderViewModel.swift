@@ -28,6 +28,12 @@ import SwiftUI
 extension SSOLoginLoaderView {
     struct Dependencies {
         let user: User
+        let errorRetryAction: ErrorRetryAction?
+    }
+
+    struct ErrorRetryAction {
+        let error: Error
+        let retryAction: () -> Void
     }
 }
 
@@ -37,8 +43,18 @@ extension SSOLoginLoaderView {
     final class ViewModel: ObservableObject {
         let user: User
 
+        @Published var bannerState = BannerState.none
+
         init(dependencies: Dependencies) {
             self.user = dependencies.user
+
+            if let errorRetryAction = dependencies.errorRetryAction {
+                self.bannerState = .error(content: .init(
+                    message: errorRetryAction.error.localizedDescription,
+                    buttonTitle: "Retry",
+                    buttonAction: errorRetryAction.retryAction
+                ))
+            }
         }
 
         var memberEmail: String {

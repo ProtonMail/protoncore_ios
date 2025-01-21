@@ -34,16 +34,23 @@ public struct SSOLoginLoaderView: View {
         static let avatarSize: CGFloat = 28
         static let avatarPadding: CGFloat = 14
         static let avatarCornerRadius: CGFloat = 8
-        static let emailContainerPadding: CGFloat = 12
+        static let standardPadding: CGFloat = 12
         static let itemsPadding: CGFloat = 24
         static let titlePadding: CGFloat = 8
+        static let imageSize: CGFloat = 45
+        static let imagePadding: CGFloat = 10
+        static let imageCornerRadius: CGFloat = 12
     }
 
     public var body: some View {
         VStack(spacing: Constants.itemsPadding) {
-            ProtonLoaderView(size: Constants.loaderSize)
-                .frame(width: Constants.loaderSize, height: Constants.loaderSize)
-            
+            if viewModel.bannerState == .none {
+                ProtonLoaderView(size: Constants.loaderSize)
+                    .frame(width: Constants.loaderSize, height: Constants.loaderSize)
+            } else {
+                defaultOrganizationImage
+            }
+
             VStack(spacing: Constants.titlePadding) {
                 Text(LUITranslation.signing_you_in.l10n)
                     .font(.title)
@@ -63,6 +70,13 @@ public struct SSOLoginLoaderView: View {
             ColorProvider.BackgroundNorm
                 .edgesIgnoringSafeArea(.all)
         )
+        .bannerDisplayable(
+            bannerState: $viewModel.bannerState,
+            configuration: .init(
+                position: .bottom,
+                dismissDuration: nil
+            )
+        )
     }
 
     @ViewBuilder
@@ -74,7 +88,7 @@ public struct SSOLoginLoaderView: View {
                 .foregroundColor(ColorProvider.TextNorm)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(Constants.emailContainerPadding)
+        .padding(Constants.standardPadding)
         .overlay(
             RoundedRectangle(cornerRadius: Constants.cornerRadius)
                 .stroke(ColorProvider.SeparatorNorm, lineWidth: 1)
@@ -91,13 +105,32 @@ public struct SSOLoginLoaderView: View {
                 .foregroundColor(ColorProvider.White)
         }
     }
+
+    @ViewBuilder
+    private var defaultOrganizationImage: some View {
+        IconProvider.users
+            .resizable()
+            .foregroundColor(ColorProvider.White)
+            .padding(Constants.imagePadding)
+            .frame(width: Constants.imageSize, height: Constants.imageSize)
+            .background(ColorProvider.BrandNorm)
+            .cornerRadius(Constants.imageCornerRadius)
+    }
 }
 
 #if DEBUG
 import ProtonCoreDataModel
+import ProtonCoreLogin
 
-#Preview {
-    SSOLoginLoaderView(viewModel: .init(dependencies: .init(user: .mock)))
+#Preview("Loading") {
+    SSOLoginLoaderView(viewModel: .init(dependencies: .init(user: .mock, errorRetryAction: nil)))
+}
+
+#Preview("Error") {
+    SSOLoginLoaderView(viewModel: .init(dependencies: .init(
+        user: .mock,
+        errorRetryAction: .init(error: LoginError.initialError(message: "Your error"), retryAction: {})
+    )))
 }
 #endif
 
