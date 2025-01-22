@@ -27,9 +27,9 @@ import ProtonCoreUIFoundations
 import SwiftUI
 
 protocol GlobalSSONavigationDelegate: AnyObject {
-    func showRequestAdminHelpConfirmation(data: LoginData, unprivatizationInfo: UnprivatizationInfo)
+    func showRequestAdminHelpConfirmation(data: LoginData, adminEmail: String)
     func showRequestAdminHelp(data: LoginData)
-    func showEnterBackupPassword(data: LoginData, unprivatizationInfo: UnprivatizationInfo)
+    func showEnterBackupPassword(data: LoginData, adminEmail: String)
     func showChangeBackupPassword(data: LoginData)
     func globalSSOLoginDidFinish(data: LoginData) async
     func globalSSOLoginDidCancel()

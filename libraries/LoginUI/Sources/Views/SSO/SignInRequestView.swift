@@ -195,7 +195,7 @@ public struct SignInRequestView: View {
                 addresses: [],
                 scopes: []
             ),
-            unprivatizationInfo: .init(state: .ready, adminEmail: "admin@privacybydefault.com", orgKeyFingerprintSignature: .init(value: ""), orgPublicKey: .init(value: "")),
+            adminEmail: "admin@privacybydefault.com",
             ssoNavigationDelegate: nil,
             onDeviceActivatedAction: {},
             onDeviceRejectedAction: {}
@@ -216,7 +216,7 @@ public struct SignInRequestView: View {
                 addresses: [],
                 scopes: []
             ),
-            unprivatizationInfo: .init(state: .ready, adminEmail: "admin@privacybydefault.com", orgKeyFingerprintSignature: .init(value: ""), orgPublicKey: .init(value: "")),
+            adminEmail: "admin@privacybydefault.com",
             ssoNavigationDelegate: nil,
             onDeviceActivatedAction: {},
             onDeviceRejectedAction: {}

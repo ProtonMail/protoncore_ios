@@ -391,6 +391,7 @@ extension LoginCoordinator: LoginViewControllerDelegate {
 // MARK: - Global SSO Login delegate
 
 extension LoginCoordinator: GlobalSSONavigationDelegate {
+    
     func globalSSOLoginDidCancel() {
         userDidClose()
     }
@@ -399,11 +400,11 @@ extension LoginCoordinator: GlobalSSONavigationDelegate {
         await finish(data: data)
     }
 
-    func showEnterBackupPassword(data: LoginData, unprivatizationInfo: UnprivatizationInfo) {
+    func showEnterBackupPassword(data: LoginData, adminEmail: String) {
         let viewController = EnterBackupPasswordViewController(dependencies: .init(
             userData: data,
             apiService: container.api,
-            unprivatizationInfo: unprivatizationInfo,
+            adminEmail: adminEmail,
             ssoNavigationDelegate: self
         ))
         if let ssoNavigationController = navigationController?.presentedViewController as? UINavigationController {
@@ -440,11 +441,11 @@ extension LoginCoordinator: GlobalSSONavigationDelegate {
         }
     }
 
-    func showRequestAdminHelpConfirmation(data: LoginData, unprivatizationInfo: UnprivatizationInfo) {
+    func showRequestAdminHelpConfirmation(data: LoginData, adminEmail: String) {
         let viewController = RequestAdminAccessViewController(dependencies: .init(
             apiService: container.api,
             userData: data,
-            unprivatizationInfo: unprivatizationInfo,
+            adminEmail: adminEmail,
             ssoNavigationDelegate: self
         ))
         if let ssoNavigationController = navigationController?.presentedViewController as? UINavigationController {

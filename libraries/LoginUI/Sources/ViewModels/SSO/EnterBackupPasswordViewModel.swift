@@ -32,7 +32,7 @@ extension EnterBackupPasswordView {
     struct Dependencies {
         let userData: LoginData
         let apiService: APIService?
-        let unprivatizationInfo: UnprivatizationInfo
+        let adminEmail: String
         let ssoNavigationDelegate: GlobalSSONavigationDelegate?
     }
 }
@@ -43,7 +43,7 @@ extension EnterBackupPasswordView {
     final class ViewModel: ObservableObject {
         private let apiService: APIService?
         private let userData: LoginData
-        private let unprivatizationInfo: UnprivatizationInfo
+        private let adminEmail: String
 
         private let buildAndValidatePassphrases = BuildAndValidatePassphrases()
         private var activateAuthDevice: ActivateAuthDevice?
@@ -66,7 +66,7 @@ extension EnterBackupPasswordView {
         init(dependencies: Dependencies) {
             self.apiService = dependencies.apiService
             self.userData = dependencies.userData
-            self.unprivatizationInfo = dependencies.unprivatizationInfo
+            self.adminEmail = dependencies.adminEmail
             self.ssoNavigationDelegate = dependencies.ssoNavigationDelegate
             if let apiService = dependencies.apiService {
                 self.activateAuthDevice = ActivateAuthDevice(
@@ -106,7 +106,7 @@ extension EnterBackupPasswordView {
         }
 
         func secondaryActionButtonTapped() {
-            ssoNavigationDelegate?.showRequestAdminHelp(data: userData)
+            ssoNavigationDelegate?.showRequestAdminHelpConfirmation(data: userData, adminEmail: adminEmail)
         }
 
         private func resetTextFieldErrors() {

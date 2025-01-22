@@ -85,7 +85,7 @@ public struct RequestAdminAccessView: View {
     var adminEmailContainer: some View {
         HStack {
             organizationImage
-            Text(viewModel.unprivatizationInfo.adminEmail)
+            Text(viewModel.adminEmail)
                 .font(.subheadline)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -121,7 +121,7 @@ public struct RequestAdminAccessView: View {
                 addresses: [],
                 scopes: []
             ),
-            unprivatizationInfo: .init(state: .ready, adminEmail: "admin@privacybydefault.com", orgKeyFingerprintSignature: .init(value: ""), orgPublicKey: .init(value: "")),
+            adminEmail: "admin@privacybydefault.com",
             ssoNavigationDelegate: nil
         )))
     }

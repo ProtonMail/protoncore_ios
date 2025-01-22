@@ -66,7 +66,7 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
             mode: .requestForAdminApproval(code: "64S3"),
             apiService: nil,
             userData: .dummy,
-            unprivatizationInfo: self.unprivatizationInfo,
+            adminEmail: "admin@privacybydefault.com",
             ssoNavigationDelegate: nil,
             onDeviceActivatedAction: {},
             onDeviceRejectedAction: {}
@@ -82,7 +82,7 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
             mode: .requestApproveFromAnotherDevice(code: "64S3", devices: [.mock]),
             apiService: nil,
             userData: .dummy,
-            unprivatizationInfo: self.unprivatizationInfo,
+            adminEmail: "admin@privacybydefault.com",
             ssoNavigationDelegate: nil,
             onDeviceActivatedAction: {},
             onDeviceRejectedAction: {}
@@ -110,7 +110,7 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
         let view = EnterBackupPasswordView(viewModel: .init(dependencies: .init(
             userData: .dummy,
             apiService: nil,
-            unprivatizationInfo: self.unprivatizationInfo,
+            adminEmail: "admin@privacybydefault.com",
             ssoNavigationDelegate: nil
         )))
         let viewController = UIHostingController(rootView: view)
@@ -144,7 +144,7 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
         let viewController = RequestAdminAccessViewController(dependencies: .init(
             apiService: nil,
             userData: .dummy,
-            unprivatizationInfo: self.unprivatizationInfo,
+            adminEmail: "admin@privacybydefault.com",
             ssoNavigationDelegate: nil
         ))
 

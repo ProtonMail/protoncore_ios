@@ -247,12 +247,6 @@ public final class LoginService {
         async let keySaltsResult = authManager.getKeySalts()
         let (user, addresses, keySalts) = try await (userResult, addressesResult, keySaltsResult)
 
-        self.featureFlagsRepository.setApiService(self.apiService)
-        if !user.ID.isEmpty {
-            self.featureFlagsRepository.setUserId(user.ID)
-        }
-        try await self.featureFlagsRepository.fetchFlags()
-
         var ssoCredential = credential
         ssoCredential.userName = user.name ?? ""
 
