@@ -31,7 +31,7 @@ extension RequestAdminAccessView {
     struct Dependencies {
         let apiService: APIService?
         let userData: LoginData
-        let unprivatizationInfo: UnprivatizationInfo
+        let adminEmail: String
         let ssoNavigationDelegate: GlobalSSONavigationDelegate?
     }
 }
@@ -42,7 +42,7 @@ extension RequestAdminAccessView {
     final class ViewModel: ObservableObject {
         let apiService: APIService?
         let userData: LoginData
-        let unprivatizationInfo: UnprivatizationInfo
+        let adminEmail: String
 
         enum ViewState {
             case idle
@@ -59,7 +59,7 @@ extension RequestAdminAccessView {
         init(dependencies: Dependencies) {
             self.apiService = dependencies.apiService
             self.userData = dependencies.userData
-            self.unprivatizationInfo = dependencies.unprivatizationInfo
+            self.adminEmail = dependencies.adminEmail
             self.ssoNavigationDelegate = dependencies.ssoNavigationDelegate
 
             if let apiService = dependencies.apiService {

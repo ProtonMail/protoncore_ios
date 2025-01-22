@@ -30,13 +30,9 @@ public enum SSOLoginScreen {
     case setupBackupPassword(UnprivatizeUserSuccess)
     case loginSuccess(UserData)
     case loginSuccessNeedPasswordChange(UserData)
-    case requestApproveFromAnotherDevice(
-        code: String,
-        devices: [AuthDevice],
-        unprivatizationInfo: UnprivatizationInfo
-    )
-    case enterBackupPassword(UnprivatizationInfo)
-    case requestApproveFromAdmin(code: String, unprivatizationInfo: UnprivatizationInfo)
+    case requestApproveFromAnotherDevice(code: String, devices: [AuthDevice])
+    case enterBackupPassword
+    case requestApproveFromAdmin(code: String)
 }
 
 public final class PostLoginSSOAccountSetup {
@@ -105,8 +101,7 @@ public final class PostLoginSSOAccountSetup {
         case .default:
             return try await loadDefaultScreen()
         case .requestAdminHelp:
-            let unprivatizationInfo = try await getUnprivatizationInfo.invoke()
-            return try await loadRequestAdminHelpScreen(unprivatizationInfo: unprivatizationInfo)
+            return try await loadRequestAdminHelpScreen()
         }
     }
 
@@ -189,27 +184,25 @@ public final class PostLoginSSOAccountSetup {
         }
     }
 
-    private func loadRequestAdminHelpScreen(unprivatizationInfo: UnprivatizationInfo) async throws -> SSOLoginScreen {
+    private func loadRequestAdminHelpScreen() async throws -> SSOLoginScreen {
         let code = try generateConfirmationCode.invoke(userId: userData.user.ID)
-        return .requestApproveFromAdmin(code: code, unprivatizationInfo: unprivatizationInfo)
+        return .requestApproveFromAdmin(code: code)
     }
 
     private func loadScreenWithSecretAvailable() async throws -> SSOLoginScreen {
         let authDevices = try await getAuthDevices.invoke()
             .filter({ $0.state == .active })
-        let unprivatizationInfo = try await getUnprivatizationInfo.invoke()
         guard !authDevices.isEmpty else {
             if (userData.user.hasTemporaryPassword) {
-                return try await loadRequestAdminHelpScreen(unprivatizationInfo: unprivatizationInfo)
+                return try await loadRequestAdminHelpScreen()
             } else {
-                return .enterBackupPassword(unprivatizationInfo)
+                return .enterBackupPassword
             }
         }
         let code = try generateConfirmationCode.invoke(userId: userData.user.ID)
         return .requestApproveFromAnotherDevice(
             code: code,
-            devices: authDevices,
-            unprivatizationInfo: unprivatizationInfo
+            devices: authDevices
         )
     }
 

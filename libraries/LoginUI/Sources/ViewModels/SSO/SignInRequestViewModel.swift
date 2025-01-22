@@ -33,7 +33,7 @@ extension SignInRequestView {
         let mode: SignInRequestView.ViewMode
         let apiService: APIService?
         let userData: LoginData
-        let unprivatizationInfo: UnprivatizationInfo
+        let adminEmail: String
         let ssoNavigationDelegate: GlobalSSONavigationDelegate?
         let onDeviceActivatedAction: () -> Void
         let onDeviceRejectedAction: () -> Void
@@ -52,7 +52,7 @@ extension SignInRequestView {
         @Published var mode: ViewMode
         @Published var devices: [AuthDevice] = []
         private let userData: LoginData
-        private let unprivatizationInfo: UnprivatizationInfo
+        let adminEmail: String
         private var deleteAuthDevice: DeleteAuthDevice?
 
         let onDeviceActivatedAction: () -> Void
@@ -62,7 +62,6 @@ extension SignInRequestView {
 
         weak var ssoNavigationDelegate: GlobalSSONavigationDelegate?
 
-        var adminEmail: String { unprivatizationInfo.adminEmail }
         var memberEmail: String { userData.user.email ?? LUITranslation.unknown.l10n }
 
         private var cancellables: Set<AnyCancellable> = .init()
@@ -70,7 +69,7 @@ extension SignInRequestView {
         init(dependencies: Dependencies) {
             self.mode = dependencies.mode
             self.userData = dependencies.userData
-            self.unprivatizationInfo = dependencies.unprivatizationInfo
+            self.adminEmail = dependencies.adminEmail
             self.ssoNavigationDelegate = dependencies.ssoNavigationDelegate
             self.onDeviceActivatedAction = dependencies.onDeviceActivatedAction
             self.onDeviceRejectedAction = dependencies.onDeviceRejectedAction
@@ -132,9 +131,9 @@ extension SignInRequestView {
         func primaryActionButtonTapped() {
             switch mode {
             case .requestForAdminApproval:
-                ssoNavigationDelegate?.showEnterBackupPassword(data: userData, unprivatizationInfo: unprivatizationInfo)
+                ssoNavigationDelegate?.showEnterBackupPassword(data: userData, adminEmail: adminEmail)
             case .requestApproveFromAnotherDevice:
-                ssoNavigationDelegate?.showEnterBackupPassword(data: userData, unprivatizationInfo: unprivatizationInfo)
+                ssoNavigationDelegate?.showEnterBackupPassword(data: userData, adminEmail: adminEmail)
             }
 
         }
@@ -144,7 +143,7 @@ extension SignInRequestView {
             case .requestForAdminApproval:
                 ssoNavigationDelegate?.globalSSOLoginDidCancel()
             case .requestApproveFromAnotherDevice:
-                ssoNavigationDelegate?.showRequestAdminHelpConfirmation(data: userData, unprivatizationInfo: unprivatizationInfo)
+                ssoNavigationDelegate?.showRequestAdminHelpConfirmation(data: userData, adminEmail: adminEmail)
             }
         }
 

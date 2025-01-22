@@ -39,4 +39,10 @@ public struct OrganizationRepository {
         let (_, result): (_, OrganizationSettingsResponse) = try await apiService.perform(request: request)
         return result
     }
+
+    public func getOrganizationSignature() async throws -> OrganizationSignatureResponse {
+        let request = GetOrganizationSignatureRequest()
+        let (_, result): (_, OrganizationSignatureResponse) = try await apiService.perform(request: request)
+        return result
+    }
 }

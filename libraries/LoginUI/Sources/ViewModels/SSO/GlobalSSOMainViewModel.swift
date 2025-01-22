@@ -96,12 +96,12 @@ extension GlobalSSOMainView {
                         mode: .accessGranted(userData: newUserData),
                         ssoNavigationDelegate: ssoNavigationDelegate
                     ))
-                case .requestApproveFromAnotherDevice(let code, let devices, let unprivatizationInfo):
-                    loadRequestApproveFromAnotherDevice(code: code, devices: devices, unprivatizationInfo: unprivatizationInfo)
-                case .enterBackupPassword(let unprivatizationInfo):
-                    loadEnterBackupPassword(unprivatizatonInfo: unprivatizationInfo)
-                case .requestApproveFromAdmin(let code, let unprivatizationInfo):
-                    loadRequestApproveFromAdmin(code: code, unprivatizationInfo: unprivatizationInfo)
+                case .requestApproveFromAnotherDevice(let code, let devices):
+                    await loadRequestApproveFromAnotherDevice(code: code, devices: devices)
+                case .enterBackupPassword:
+                    await loadEnterBackupPassword()
+                case .requestApproveFromAdmin(let code):
+                    await loadRequestApproveFromAdmin(code: code)
                 }
             } catch {
                 PMLog.error(error)
@@ -133,57 +133,74 @@ extension GlobalSSOMainView {
             }
         }
 
-        private func loadRequestApproveFromAnotherDevice(
-            code: String,
-            devices: [AuthDevice],
-            unprivatizationInfo: UnprivatizationInfo
-        ) {
-            screenState = .requestApproveFromAnotherDevice(.init(
-                mode: .requestApproveFromAnotherDevice(code: code, devices: devices),
-                apiService: apiService,
-                userData: userData,
-                unprivatizationInfo: unprivatizationInfo,
-                ssoNavigationDelegate: ssoNavigationDelegate,
-                onDeviceActivatedAction: {
-                    Task {
-                        self.mode = .default
-                        await self.invokePostLoginSetup()
-                    }
-                },
-                onDeviceRejectedAction: loadDeviceRejected
-            ))
+        private func loadRequestApproveFromAnotherDevice(code: String, devices: [AuthDevice]) async {
+            do {
+                let organizationSignature = try await organizationRepository.getOrganizationSignature()
+                screenState = .requestApproveFromAnotherDevice(.init(
+                    mode: .requestApproveFromAnotherDevice(code: code, devices: devices),
+                    apiService: apiService,
+                    userData: userData,
+                    adminEmail: organizationSignature.fingerprintSignatureAddress,
+                    ssoNavigationDelegate: ssoNavigationDelegate,
+                    onDeviceActivatedAction: {
+                        Task {
+                            self.mode = .default
+                            await self.invokePostLoginSetup()
+                        }
+                    },
+                    onDeviceRejectedAction: loadDeviceRejected
+                ))
+            } catch {
+                PMLog.error(error)
+                loadSSOErrorLogin(error: error) {
+                    await self.loadRequestApproveFromAnotherDevice(code: code, devices: devices)
+                }
+            }
         }
 
-        private func loadEnterBackupPassword(unprivatizatonInfo: UnprivatizationInfo) {
-            screenState = .enterBackupPassword(.init(
-                userData: userData,
-                apiService: apiService,
-                unprivatizationInfo: unprivatizatonInfo,
-                ssoNavigationDelegate: ssoNavigationDelegate
-            ))
+        private func loadEnterBackupPassword() async {
+            do {
+                let organizationSignature = try await organizationRepository.getOrganizationSignature()
+                screenState = .enterBackupPassword(.init(
+                    userData: userData,
+                    apiService: apiService,
+                    adminEmail: organizationSignature.fingerprintSignatureAddress,
+                    ssoNavigationDelegate: ssoNavigationDelegate
+                ))
+            } catch {
+                PMLog.error(error)
+                loadSSOErrorLogin(error: error) {
+                    await self.loadEnterBackupPassword()
+                }
+            }
         }
 
-        private func loadRequestApproveFromAdmin(
-            code: String,
-            unprivatizationInfo: UnprivatizationInfo
-        ) {
-            screenState = .requestApproveFromAnotherDevice(.init(
-                mode: .requestForAdminApproval(code: code),
-                apiService: apiService,
-                userData: userData,
-                unprivatizationInfo: unprivatizationInfo,
-                ssoNavigationDelegate: ssoNavigationDelegate,
-                onDeviceActivatedAction: { [weak self] in
-                    guard let self else { return }
-                    Task {
-                        self.mode = .default
-                        let newUser = try await self.authService.getUserInfo()
-                        self.userData = self.userData.updated(user: newUser)
-                        await self.invokePostLoginSetup()
-                    }
-                },
-                onDeviceRejectedAction: loadDeviceRejected
-            ))
+        private func loadRequestApproveFromAdmin(code: String) async {
+            do {
+                let organizationSignature = try await organizationRepository.getOrganizationSignature()
+                screenState = .requestApproveFromAnotherDevice(.init(
+                    mode: .requestForAdminApproval(code: code),
+                    apiService: apiService,
+                    userData: userData,
+                    adminEmail: organizationSignature.fingerprintSignatureAddress,
+                    ssoNavigationDelegate: ssoNavigationDelegate,
+                    onDeviceActivatedAction: { [weak self] in
+                        guard let self else { return }
+                        Task {
+                            self.mode = .default
+                            let newUser = try await self.authService.getUserInfo()
+                            self.userData = self.userData.updated(user: newUser)
+                            await self.invokePostLoginSetup()
+                        }
+                    },
+                    onDeviceRejectedAction: loadDeviceRejected
+                ))
+            } catch {
+                PMLog.error(error)
+                loadSSOErrorLogin(error: error) {
+                    await self.loadRequestApproveFromAdmin(code: code)
+                }
+            }
         }
 
         private func loadDeviceRejected() {

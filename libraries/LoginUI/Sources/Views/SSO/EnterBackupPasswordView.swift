@@ -104,7 +104,7 @@ import ProtonCoreLogin
                 scopes: []
             ),
             apiService: nil,
-            unprivatizationInfo: .init(state: .ready, adminEmail: "", orgKeyFingerprintSignature: .init(value: ""), orgPublicKey: .init(value: "")),
+            adminEmail: "admin@privacybydefault.com",
             ssoNavigationDelegate: nil
         )))
     }
