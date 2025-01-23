@@ -38,4 +38,27 @@ public extension View {
 
     /// Allow to apply a modifier conditionally (similar to above, but accepts availability conditionals)
     func apply<V: View>(@ViewBuilder _ block: (Self) -> V) -> V { block(self) }
+
+    func keyboardDismissible() -> some View {
+        self
+            .modifier(DismissibleViewModifier())
+    }
+}
+
+public struct DismissibleViewModifier: ViewModifier {
+    public func body(content: Content) -> some View {
+        ZStack {
+            Color.clear
+                .contentShape(Rectangle())
+                .ignoresSafeArea()
+                .onTapGesture {
+#if os(iOS)
+                    UIApplication.shared.sendAction(
+                        #selector(UIResponder.resignFirstResponder),
+                        to: nil, from: nil, for: nil)
+#endif
+                }
+            content
+        }
+    }
 }

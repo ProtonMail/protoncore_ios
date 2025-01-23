@@ -30,7 +30,9 @@ public struct GrantAccessView: View {
     @StateObject var viewModel: ViewModel
 
     private enum Constants {
+        static let defaultCornerRadius: CGFloat = 8
         static let itemSpacing: CGFloat = 20
+        static let deviceIconSize: CGFloat = 24
     }
 
     public var body: some View {
@@ -41,6 +43,10 @@ public struct GrantAccessView: View {
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
+                if let authDevice = viewModel.selectedAuthDevice {
+                    deviceItem(device: authDevice)
+                }
+
                 bodyText()
 
                 confirmationCodeInput
@@ -50,6 +56,7 @@ public struct GrantAccessView: View {
                         style: .constant(.init(mode: .solid)),
                         content: .constant(.init(
                             title: LUITranslation.yes_it_was_me.l10n,
+                            isEnabled: viewModel.isConfirmationCodeFilled,
                             isAnimating: viewModel.viewState == .loading,
                             action: viewModel.primaryActionButtonTapped
                         ))
@@ -70,6 +77,7 @@ public struct GrantAccessView: View {
             .padding(Constants.itemSpacing)
             .foregroundColor(ColorProvider.TextNorm)
             .frame(maxWidth: .infinity)
+            .keyboardDismissible()
             .disabled(viewModel.viewState == .loading)
         }
         .background(
@@ -94,8 +102,8 @@ public struct GrantAccessView: View {
 
     @ViewBuilder
     private var confirmationCodeInput: some View {
-        PCTextField(
-            style: $viewModel.confirmationCodeStyle,
+        PCCodeInput(
+            style: .constant(.init()),
             content: $viewModel.confirmationCodeContent
         )
 
@@ -103,6 +111,27 @@ public struct GrantAccessView: View {
             .font(.subheadline)
             .foregroundColor(ColorProvider.TextWeak)
             .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    @ViewBuilder
+    func deviceItem(device: AuthDevice) -> some View {
+        HStack(alignment: .top, spacing: Constants.itemSpacing) {
+            device.icon
+                .resizable()
+                .frame(width: Constants.deviceIconSize, height: Constants.deviceIconSize)
+            VStack(alignment: .leading) {
+                Text(device.name)
+                    .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text(device.localizedClientName)
+                    .font(.subheadline)
+                    .foregroundColor(ColorProvider.TextWeak)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
+        .padding()
+        .background(ColorProvider.BackgroundSecondary)
+        .cornerRadius(Constants.defaultCornerRadius)
     }
 }
 

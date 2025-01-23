@@ -22,9 +22,10 @@
 #if os(iOS)
 
 import SwiftUI
-import ProtonCoreUIFoundations
 import ProtonCoreObservability
 import ProtonCoreServices
+import ProtonCoreUIFoundations
+import ProtonCoreUtilities
 
 struct PasswordChange2FAView: View {
     @ObservedObject public var viewModel: ViewModel
