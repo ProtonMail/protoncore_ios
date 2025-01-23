@@ -43,6 +43,8 @@ extension GrantAccessView {
         private let authDevices: [AuthDevice]
         private let userData: LoginData
 
+        @Published var selectedAuthDevice: AuthDevice?
+
         private var rejectAuthDevice: RejectAuthDevice?
         private var validateConfirmationCode: ValidateConfirmationCode
         private var activateAuthDevice: ActivateAuthDevice?
@@ -56,11 +58,8 @@ extension GrantAccessView {
 
         @Published var bannerState: BannerState = .none
         @Published var viewState: ViewState = .idle
-        @Published var confirmationCodeStyle: PCTextFieldStyle = .init(mode: .idle)
-        @Published var confirmationCodeContent: PCTextFieldContent = .init(
-            title: LUITranslation.confirmation_code.l10n,
-            autocapitalization: .allCharacters
-        )
+        @Published var confirmationCodeStyle: PCCodeInputStyle = .init()
+        @Published var confirmationCodeContent: PCCodeInputContent = .init(title: LUITranslation.confirmation_code.l10n)
 
         var memberEmail: String { userData.user.email ?? LUITranslation.unknown.l10n }
 
@@ -71,10 +70,15 @@ extension GrantAccessView {
             )
         }
 
+        var isConfirmationCodeFilled: Bool {
+            confirmationCodeContent.code.count == confirmationCodeContent.codeLength
+        }
+
         init(dependencies: Dependencies) {
             self.authDevices = dependencies.authDevices
             self.userData = dependencies.userData
             self.navigationDelegate = dependencies.navigationDelegate
+            self.selectedAuthDevice = dependencies.authDevices.first
 
             let deviceSecretRepository = DeviceSecretRepository()
             if let apiService = dependencies.apiService {
@@ -91,14 +95,13 @@ extension GrantAccessView {
             Task {
                 do {
                     guard let activateAuthDevice else { return }
-                    guard let authDevice = authDevices.first else { throw SSOLoginError.authDeviceNotFound }
-                    resetConfirmationCodeInput()
+                    guard let authDevice = selectedAuthDevice else { throw SSOLoginError.authDeviceNotFound }
                     viewState = .loading
 
                     let deviceSecret = try validateConfirmationCode.invoke(
                         userData: userData,
                         authDevice: authDevice,
-                        code: confirmationCodeContent.text
+                        code: confirmationCodeContent.code
                     )
 
                     guard let mailboxPassphrase = userData.getMailboxPassword else {
@@ -114,9 +117,6 @@ extension GrantAccessView {
                     )
                     viewState = .idle
                     navigationDelegate?.dismissGrantAccessView()
-                } catch let error as ValidateConfirmationCode.ValidationError {
-                    viewState = .idle
-                    displayConfirmationCodeError(error: error)
                 } catch {
                     viewState = .idle
                     PMLog.error(error)
@@ -137,16 +137,6 @@ extension GrantAccessView {
                     bannerState = .error(content: .init(message: error.localizedDescription))
                 }
             }
-        }
-
-        private func displayConfirmationCodeError(error: ValidateConfirmationCode.ValidationError) {
-            confirmationCodeStyle.mode = .error
-            confirmationCodeContent.footnote = error.localizedDescription
-        }
-
-        private func resetConfirmationCodeInput() {
-            confirmationCodeStyle.mode = .idle
-            confirmationCodeContent.footnote = ""
         }
     }
 }
