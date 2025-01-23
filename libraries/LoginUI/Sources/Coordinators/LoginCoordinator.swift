@@ -267,6 +267,10 @@ final class LoginCoordinator {
     private func completeLoginFlow(data: LoginData) {
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
+            if let presentedViewController = self.navigationController?.presentedViewController {
+                /// Global SSO presents GlobalMainSSOView above navigationController that needs to be dismissed first
+                presentedViewController.dismiss(animated: false)
+            }
             self.navigationController?.dismiss(animated: true, completion: nil)
             self.delegate?.loginCoordinatorDidFinish(loginCoordinator: self, data: data)
         }
