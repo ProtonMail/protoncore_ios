@@ -49,7 +49,6 @@ public extension AuthDeviceManagerUI {
     func setup() {
         authDeviceManager.setup()
         observePendingDevices()
-        forceFetchPendingDevices()
     }
 
     func forceFetchPendingDevices() {
@@ -74,6 +73,7 @@ private extension AuthDeviceManagerUI {
     @MainActor
     private func presentGrantAccessView(pendingDevicesUpdate: PendingAuthDevicesUpdate) {
         guard let windowScene = appWindow?.windowScene else { return }
+        guard overlayWindow == nil else { return } // So we don't present multiple approvals at the same time
 
         overlayWindow = UIWindow(windowScene: windowScene)
         if let style = appWindow?.overrideUserInterfaceStyle {
