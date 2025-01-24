@@ -63,13 +63,14 @@ public struct PCCodeInput: View {
                 TextField("", text: $content.code)
                     .focused($isFocused)
                     .keyboardType(.alphabet)
-                    .textInputAutocapitalization(content.autocapitalization)
+                    .textInputAutocapitalization(.characters)
                     .autocorrectionDisabled()
                     .onReceive(Just(content.code)) { _ in limitText(text: $content.code, limit: content.codeLength) }
                     .opacity(.zero)
             }
         }
         .onChange(of: content.code, perform: { newValue in
+            content.code = content.code.uppercased()
             for idx in 0..<codeArray.count {
                 if idx < content.code.count {
                     codeArray[idx] = String(content.code[idx])
@@ -125,7 +126,7 @@ public struct PCCodeInput: View {
         && ( nextField || lastCharacterFilled )
     }
 
-    func limitText(text: Binding<String>, limit: Int) {
+    private func limitText(text: Binding<String>, limit: Int) {
         if text.wrappedValue.count > limit {
             text.wrappedValue = String(text.wrappedValue.prefix(limit))
         }
