@@ -29,16 +29,13 @@ public struct PCCodeInputContent {
     public var code: String = ""
     public var isFocused: Bool = false
     public var codeLength: Int
-    public var autocapitalization: TextInputAutocapitalization
 
     public init(
         title: String,
-        length: Int = 4,
-        autocapitalization: TextInputAutocapitalization = .characters
+        length: Int = 4
     ) {
         self.title = title
         self.codeLength = length
-        self.autocapitalization = autocapitalization
     }
 
     public mutating func focus() {
