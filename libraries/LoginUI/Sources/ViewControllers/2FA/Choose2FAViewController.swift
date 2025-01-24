@@ -20,11 +20,24 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 #if os(iOS)
-
-import UIKit
 import SwiftUI
+import ProtonCoreUIFoundations
 
 @available(iOS 15.0, *)
-public typealias Choose2FAViewController = UIHostingController<Choose2FAView>
+public final class Choose2FAViewController: UIHostingController<Choose2FAView> {
+     required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    public override init(rootView: Choose2FAView) {
+        super.init(rootView: rootView)
+    }
+
+    override public func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = ColorProvider.BackgroundNorm
+        navigationController?.navigationBar.tintColor = ColorProvider.TextNorm
+    }
+}
 
 #endif
