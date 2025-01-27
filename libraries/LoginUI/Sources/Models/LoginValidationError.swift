@@ -28,6 +28,8 @@ import ProtonCoreUIFoundations
 enum LoginValidationError: Error, Equatable {
     case emptyUsername
     case emptyPassword
+    case emptyEmail
+    case invalidEmail
 }
 
 extension LoginValidationError: CustomStringConvertible {
@@ -37,6 +39,10 @@ extension LoginValidationError: CustomStringConvertible {
             return LUITranslation.validation_invalid_username.l10n
         case .emptyPassword:
             return LUITranslation._core_validation_invalid_password.l10n
+        case .emptyEmail:
+            return LUITranslation.validation_empty_email.l10n
+        case .invalidEmail:
+            return LUITranslation.validation_invalid_email.l10n
         }
     }
 }

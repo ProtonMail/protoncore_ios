@@ -26,6 +26,7 @@ import DeviceCheck
 import ProtonCoreChallenge
 import ProtonCoreLogin
 import ProtonCoreServices
+import ProtonCoreUtilities
 
 class SignupViewModel {
 

@@ -139,6 +139,11 @@ final class LoginViewModel {
         return !username.isEmpty ? .success : .failure(.emptyUsername)
     }
 
+    func validate(email: String) -> Result<(), LoginValidationError> {
+        guard !email.isEmpty else { return .failure(.emptyEmail)}
+        return email.isValidEmail() ? .success : .failure(.invalidEmail)
+    }
+
     func validate(password: String) -> Result<(), LoginValidationError> {
         return !password.isEmpty ? .success : .failure(.emptyPassword)
     }
