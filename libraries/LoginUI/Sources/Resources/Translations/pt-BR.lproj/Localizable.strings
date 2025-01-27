@@ -302,11 +302,11 @@
 
 "Devices available:" = "Dispositivos disponíveis:";
 
-"Operation couldn't be completed. Please try again." = "Não foi possível concluir a operação. Por favor, tente novamente.";
+"Operation couldn't be completed. Please try again." = "Não foi possível concluir a operação. Tente novamente.";
 
 "Enter your backup password" = "Digite sua senha de backup";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "Para ter certeza que é realmente você tentando se conectar, por favor insira a sua senha de backup.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Para ter certeza que é realmente você tentando se conectar, insira a sua senha de backup.";
 
 "Access granted" = "Acesso concedido";
 
