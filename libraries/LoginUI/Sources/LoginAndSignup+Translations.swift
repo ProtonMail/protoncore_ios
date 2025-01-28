@@ -194,6 +194,8 @@ public enum LUITranslation: TranslationsExposing {
     case sso_login_error_screen_description
     case unknown
     case set_backup_password_title
+    case validation_empty_email
+    case validation_invalid_email
 
     public var l10n: String {
         switch self {
@@ -532,6 +534,10 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Unknown", comment: "Used when some account value is not found. Should never happen.")
         case .set_backup_password_title:
             return localized(key: "Set backup password", comment: "Set backup password screen title")
+        case .validation_invalid_email:
+            return localized(key: "Email is invalid.", comment: "Input email validation error")
+        case .validation_empty_email:
+            return localized(key: "Please enter your Proton Account email.", comment: "Invalid email empty hint")
         }
     }
 }

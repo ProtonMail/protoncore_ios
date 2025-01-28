@@ -24,6 +24,7 @@
 import Foundation
 import ProtonCoreChallenge
 import ProtonCoreLogin
+import ProtonCoreUtilities
 
 class RecoveryViewModel {
 

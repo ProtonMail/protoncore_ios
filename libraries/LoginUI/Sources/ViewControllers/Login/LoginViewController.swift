@@ -424,8 +424,13 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
 
     @discardableResult
     private func setAddressTextFieldError() -> Bool {
-        let usernameValid = viewModel.validate(username: loginTextField.value)
-        switch usernameValid {
+        var addressFieldIsValid: Result<(), LoginValidationError>
+        if viewModel.isSsoUIEnabled {
+            addressFieldIsValid = viewModel.validate(email: loginTextField.value)
+        } else {
+            addressFieldIsValid = viewModel.validate(username: loginTextField.value)
+        }
+        switch addressFieldIsValid {
         case let .failure(error):
             setError(textField: loginTextField, error: error)
             return false
