@@ -158,10 +158,17 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
                 throw ProtonPlansManagerError.unableToMatchProtonPlanToStoreProduct
             }
 
-            _ = try await transactionHandler.processTransaction(transaction.toProtonTransaction(), plan: matchingPlan)
-            await transaction.finish()
-            debugPrint("Transaction completed ✅")
-            return matchingPlan
+            do {
+                TransactionsObserver.shared.addTransactionInProgress(transaction.id)
+                _ = try await transactionHandler.processTransaction(transaction.toProtonTransaction(), plan: matchingPlan)
+                TransactionsObserver.shared.removeTransactionInProgress(transaction.id)
+                await transaction.finish()
+                debugPrint("Transaction completed ✅")
+                return matchingPlan
+            } catch {
+                debugPrint(error)
+                throw error
+            }
         case .pending:
             throw ProtonPlansManagerError.transactionPending
         case .userCancelled:

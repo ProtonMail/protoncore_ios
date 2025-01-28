@@ -151,7 +151,10 @@ public class AvailablePlansViewModel: ObservableObject {
                 return
             }
 
-            plan.transactionState.sink { value in
+            plan.transactionState
+                .dropFirst()
+                .receive(on: DispatchQueue.main)
+                .sink { value in
                 switch value {
                 case .generatingReceipt:
                     self.purchaseInProgress()

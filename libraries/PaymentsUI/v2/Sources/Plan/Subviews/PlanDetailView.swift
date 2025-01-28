@@ -52,6 +52,7 @@ struct PlanDetailView: View {
                         .font(.system(size: Constants.entitlementTextSize))
                         .fontWeight(Constants.entitlementFontWeight)
                         .padding(.top, Constants.entitlementTextVerticalOffset)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
             }
             if !viewModel.isCurrentPlan {

@@ -211,7 +211,7 @@ private extension TransactionHandler {
             _ = try await remoteManager.postToURL(request: request)
             debugPrint("New subscription successfully created ✅")
             ObservabilityEnv.report(.paymentSubscribeTotal(status: .successful, isDynamic: true))
-            updateTransactionState(state: .transactionProcessError)
+            updateTransactionState(state: .transactionCompleted)
             return true
         } catch {
             ObservabilityEnv.report(.paymentSubscribeTotal(status: .failed, isDynamic: true))
