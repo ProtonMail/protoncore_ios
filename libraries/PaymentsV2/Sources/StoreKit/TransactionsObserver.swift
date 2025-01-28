@@ -36,6 +36,8 @@ public protocol TransactionsObserverProviding: Sendable {
     func start() async throws
     func stop()
     func setConfiguration(_ configuration: TransactionsObserverConfiguration)
+    func addTransactionInProgress(_ transactionId: UInt64)
+    func removeTransactionInProgress(_ transactionId: UInt64)
 }
 
 public enum TransactionsObserverError: Error {
@@ -72,40 +74,50 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
     private var paymentsAPI: PaymentsAPIs?
     private var planComposer: PlansComposerProviding?
     private var transactionHandler: TransactionHandler?
+    private var transactionsInProgress = Set<UInt64>()
     private let queue = DispatchQueue(label: "paymentsV2.transactionObserver.syncQueue")
 
     private init() {}
 
     private func newTransactionListenerTask() -> Task<Void, Never> {
         Task(priority: .background) {
-            for await update in Transaction.updates {
-                if let transaction = try? update.payloadValue {
-                    guard let plan = planComposer?.matchPlanToStoreProduct(transaction.productID), let appAccountToken = transaction.appAccountToken else {
+
+            for await unfinished in Transaction.unfinished {
+                switch unfinished {
+                case .verified(let transaction):
+                    guard !transactionsInProgress.contains(transaction.id) else {
+                        debugPrint("Transaction already in progress, no action required")
                         return
                     }
-                    do {
-                        guard let accountMatching = try await transactionHandler?.verifyTransactionUUIDs(appAccountToken: appAccountToken) else {
-                            transactionStatus = .unableToVerifyAccountsUUIDs
-                            return
-                        }
-                        if accountMatching {
-                            _ = try await transactionHandler?.processTransaction(transaction.toProtonTransaction(), plan: plan)
-                            await transaction.finish()
-                            transactionStatus = .successful
-                        } else {
-                            transactionStatus = .transactionUUIDNotFoundOrMismatching
-                            return
-                        }
-                    } catch {
-                        debugPrint(error)
-
-                        if let error = error as? APICodeError, error == APICodeError.invalidRequirements {
-                            await transaction.finish()
-                            transactionStatus = .alreadyProcessed
-                            return
-                        }
+                    guard let status = await transaction.subscriptionStatus else {
+                        debugPrint("Transaction received is not a subscription")
                         transactionStatus = .failed
+                        return
                     }
+                    await processTransaction(transaction)
+                case .unverified(let transaction, let transactionError):
+                    debugPrint("Unverified unfinished transaction:\n \(transaction)\n \(transactionError)")
+                    return
+                }
+            }
+
+            for await update in Transaction.updates {
+                switch update {
+                case .verified(let transaction):
+                    guard let status = await transaction.subscriptionStatus else {
+                        debugPrint("Transaction received is not a subscription")
+                        return
+                    }
+                    switch status.state {
+                    case .subscribed:
+                        debugPrint("Transaction already processed")
+                        return
+                    default:
+                        debugPrint("Transaction state: \(status.state)")
+                    }
+                case .unverified(let transaction, let transactionError):
+                    debugPrint("Unverified update transaction:\n \(transaction)\n \(transactionError)")
+                    return
                 }
             }
         }
@@ -134,6 +146,36 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
 
         self.transactionHandler = TransactionHandler(remoteManager: remoteManager, paymentsAPIs: paymentsAPI)
         self.planComposer = PlansComposer(remoteManager: remoteManager, paymentsAPIs: paymentsAPI)
+    }
+
+    private func processTransaction(_ transaction: Transaction) async {
+
+        guard let plan = planComposer?.matchPlanToStoreProduct(transaction.productID), let appAccountToken = transaction.appAccountToken else {
+            return
+        }
+        do {
+            guard let accountMatching = try await transactionHandler?.verifyTransactionUUIDs(appAccountToken: appAccountToken) else {
+                transactionStatus = .unableToVerifyAccountsUUIDs
+                return
+            }
+            if accountMatching {
+                _ = try await transactionHandler?.processTransaction(transaction.toProtonTransaction(), plan: plan)
+                await transaction.finish()
+                transactionStatus = .successful
+            } else {
+                transactionStatus = .transactionUUIDNotFoundOrMismatching
+                return
+            }
+        } catch {
+            debugPrint(error)
+
+            if let error = error as? APICodeError, error == APICodeError.invalidRequirements {
+                await transaction.finish()
+                transactionStatus = .alreadyProcessed
+                return
+            }
+            transactionStatus = .failed
+        }
     }
 
     // MARK: Public methods
@@ -171,6 +213,18 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
     public func setConfiguration(_ configuration: TransactionsObserverConfiguration) {
         queue.sync {
             self.configuration = configuration
+        }
+    }
+
+    public func addTransactionInProgress(_ transactionId: UInt64) {
+        queue.sync {
+            _ = self.transactionsInProgress.insert(transactionId)
+        }
+    }
+
+    public func removeTransactionInProgress(_ transactionId: UInt64) {
+        queue.sync {
+            _ = self.transactionsInProgress.remove(transactionId)
         }
     }
 }

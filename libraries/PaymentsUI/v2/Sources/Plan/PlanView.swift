@@ -72,7 +72,7 @@ public struct PlanView: View {
             if let renewFooter = viewModel.renewFooter, viewModel.isCurrentPlan {
                 Divider()
                 Text(renewFooter)
-                    .frame(width: .infinity)
+                    .fixedSize(horizontal: false, vertical: true)
             }
         }
         .foregroundColor(Theme.color.textNorm)

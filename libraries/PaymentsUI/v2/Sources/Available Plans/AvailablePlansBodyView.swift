@@ -82,13 +82,6 @@ struct AvailablePlansBodyView: View {
                 }
             }
             .padding(.horizontal, Theme.spacing.large)
-
-            // MARK: Footer view
-            FooterView(image: Theme.icon.infoCircle,
-                       text: String(localized: "Plans_footer_disclaimer",
-                                    bundle: .module))
-            .padding(.top, Theme.spacing.extraLarge)
-            .padding(.horizontal, Theme.spacing.large)
         }
     }
 }
