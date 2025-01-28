@@ -22,6 +22,7 @@
 #if os(iOS)
 
 import SwiftUI
+import ProtonCoreObservability
 import ProtonCoreUIFoundations
 
 public struct AccessGrantedDeniedView: View {
@@ -58,6 +59,14 @@ public struct AccessGrantedDeniedView: View {
             ColorProvider.BackgroundNorm
                 .edgesIgnoringSafeArea(.all)
         )
+        .onAppear {
+            switch viewModel.mode {
+            case .accessGranted:
+                ObservabilityEnv.report(.ssoScreenState(stateId: .deviceGranted))
+            case .accessDenied:
+                ObservabilityEnv.report(.ssoScreenState(stateId: .deviceRejected))
+            }
+        }
     }
 
     @ViewBuilder

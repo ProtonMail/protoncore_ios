@@ -21,6 +21,7 @@
 
 import ProtonCoreCrypto
 import ProtonCoreDataModel
+import ProtonCoreObservability
 import ProtonCoreServices
 
 struct GetUnprivatizationInfo {
@@ -31,7 +32,12 @@ struct GetUnprivatizationInfo {
     }
 
     func invoke() async throws -> UnprivatizationInfo {
-        let (_, unprivatizationInfo): (_, UnprivatizationInfo) = try await apiService.perform(request: UnprivatizationInfoRequest())
-        return unprivatizationInfo
+        do {
+            let (_, unprivatizationInfo): (_, UnprivatizationInfo) = try await apiService.perform(request: UnprivatizationInfoRequest())
+            return unprivatizationInfo
+        } catch {
+            ObservabilityEnv.report(.ssoAuthGetUnprivatization(status: .fromResponseError(error)))
+            throw error
+        }
     }
 }

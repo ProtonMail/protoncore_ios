@@ -22,9 +22,10 @@
 #if os(iOS)
 
 import ProtonCoreAuthentication
-import ProtonCoreLogin
-import ProtonCoreServices
 import ProtonCoreLog
+import ProtonCoreLogin
+import ProtonCoreObservability
+import ProtonCoreServices
 import ProtonCoreUIFoundations
 import SwiftUI
 
@@ -113,6 +114,7 @@ extension GlobalSSOMainView {
             do {
                 let organization = try await organizationRepository.getOrganization()
                 let organizationSettings = try await organizationRepository.getOrganizationSettings()
+                ObservabilityEnv.report(.ssoAuthLoadOrganization(status: .successful))
                 screenState = .newBackupPassword(.init(
                     mode: .setNewBackupPassword(organizationInfo: .init(
                         organizationName: organization.displayName,
@@ -126,6 +128,7 @@ extension GlobalSSOMainView {
                     ssoNavigationDelegate: ssoNavigationDelegate
                 ))
             } catch {
+                ObservabilityEnv.report(.ssoAuthLoadOrganization(status: .failed))
                 PMLog.error(error)
                 loadSSOErrorLogin(error: error) {
                     await self.loadSetNewBackupPassword(unprivatizeInfo: unprivatizeInfo)
@@ -162,6 +165,7 @@ extension GlobalSSOMainView {
         private func loadRequestApproveFromAdmin(code: String) async {
             do {
                 let organizationSignature = try await organizationRepository.getOrganizationSignature()
+                ObservabilityEnv.report(.ssoAuthLoadOrganization(status: .successful))
                 screenState = .requestApproveFromAnotherDevice(.init(
                     mode: .requestForAdminApproval(code: code, adminEmail: organizationSignature.fingerprintSignatureAddress),
                     apiService: apiService,
@@ -181,6 +185,7 @@ extension GlobalSSOMainView {
                     }
                 ))
             } catch {
+                ObservabilityEnv.report(.ssoAuthLoadOrganization(status: .failed))
                 PMLog.error(error)
                 loadSSOErrorLogin(error: error) {
                     await self.loadRequestApproveFromAdmin(code: code)

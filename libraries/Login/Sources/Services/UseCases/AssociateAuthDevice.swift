@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import ProtonCoreLog
+import ProtonCoreObservability
 import ProtonCoreServices
 
  /// Associate Device with user.
@@ -62,6 +63,7 @@ struct AssociateAuthDevice {
                 PMLog.error("Associate AuthDevice error: EncryptedSecret not found")
                 return .unknownError
             }
+            ObservabilityEnv.report(.ssoAuthAssociateDevice(status: .success))
             return .success(encryptedSecret)
         } catch {
             return await handleAssociateDeviceError(
@@ -79,24 +81,30 @@ struct AssociateAuthDevice {
     ) async -> AssociateDeviceResult {
         switch error.bestShotAtReasonableErrorCode {
         case APIErrorCode.authDeviceNotFound:
+            ObservabilityEnv.report(.ssoAuthAssociateDevice(status: .notFound))
             PMLog.error("Associate AuthDevice error: Not found")
             try? await deleteAuthDevice.invoke(deviceId: deviceId)
             return .deviceNotFound
         case APIErrorCode.authDeviceNotActive:
+            ObservabilityEnv.report(.ssoAuthAssociateDevice(status: .notActive))
             PMLog.error("Associate AuthDevice error: Not active")
             return .deviceNotActive
         case APIErrorCode.authDeviceTokenInvalid:
+            ObservabilityEnv.report(.ssoAuthAssociateDevice(status: .invalidToken))
             PMLog.error("Associate AuthDevice error: Token invalid")
             try? deviceSecretRepository.delete(for: userId)
             return .deviceTokenInvalid
         case APIErrorCode.authDeviceRejected:
+            ObservabilityEnv.report(.ssoAuthAssociateDevice(status: .rejected))
             PMLog.error("Associate AuthDevice error: Rejected")
             try? await deleteAuthDevice.invoke(deviceId: deviceId)
             return .deviceRejected
         case APIErrorCode.notAllowed:
+            ObservabilityEnv.report(.ssoAuthAssociateDevice(status: .sessionAlreadyAssociated))
             PMLog.error("Associate AuthDevice error: Not allowed")
             return .sessionAlreadyAssociated
         default:
+            ObservabilityEnv.report(.ssoAuthAssociateDevice(status: .fromResponseError(error)))
             PMLog.error("Associate AuthDevice error (\(error.bestShotAtReasonableErrorCode)): \(error.localizedDescription)")
             return .unknownError
         }

@@ -1,8 +1,8 @@
 //
-//  GenerateDeviceSecret.swift
-//  ProtonCore-Login - Created on 26.11.24.
+//  SSOAuthRequestAdminHelpTotalEvent.swift
+//  ProtonCore-Observability - Created on 28.01.2025.
 //
-//  Copyright (c) 2024 Proton Technologies AG
+//  Copyright (c) 2025 Proton Technologies AG
 //
 //  This file is part of Proton Technologies AG and ProtonCore.
 //
@@ -19,22 +19,20 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import Foundation
-import ProtonCoreDataModel
+import ProtonCoreNetworking
 
-/// Generate new random device secret.
-///
-/// return: 32-byte, base64-ed random salt as String
-struct GenerateDeviceSecret {
-    private enum Constants {
-        static let deviceSecretBytes = 32
+public struct SSOAuthRequestAdminHelpTotalLabels: Encodable, Equatable {
+    let status: SSOAuthHTTPResponseCodeStatus
+
+    enum CodingKeys: String, CodingKey {
+        case status
     }
+}
 
-    func invoke() -> String {
-        var keyData = Data(count: Constants.deviceSecretBytes)
-        _ = keyData.withUnsafeMutableBytes {
-            SecRandomCopyBytes(kSecRandomDefault, Constants.deviceSecretBytes, $0.baseAddress!)
-        }
-        return keyData.base64EncodedString()
+extension ObservabilityEvent where Payload == PayloadWithLabels<SSOAuthRequestAdminHelpTotalLabels> {
+    public static func ssoAuthRequestAdminHelp(status: SSOAuthHTTPResponseCodeStatus) -> Self {
+        .init(name: "ios_core_auth_sso_requestAdminHelp_total",
+              labels: .init(status: status),
+              version: .v1)
     }
 }

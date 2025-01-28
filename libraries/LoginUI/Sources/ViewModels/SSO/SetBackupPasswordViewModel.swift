@@ -26,6 +26,7 @@ import ProtonCoreAuthenticationKeyGeneration
 import ProtonCoreCrypto
 import ProtonCoreLog
 import ProtonCoreLogin
+import ProtonCoreObservability
 import ProtonCoreServices
 import ProtonCoreUIFoundations
 import ProtonCoreUtilities
@@ -174,47 +175,65 @@ extension SetBackupPasswordView {
         }
 
         func setupNewAccountKeys() async throws {
-            guard let authenticator, let loginService, let organizationInfo else {
-                throw SSOLoginError.authenticatorNotFound
-            }
+            do {
+                guard let authenticator, let loginService, let organizationInfo else {
+                    throw SSOLoginError.authenticatorNotFound
+                }
 
-            guard let deviceSecret = try deviceSecretRepository.getByUserId(userId: userData.user.ID) else {
-                throw SSOLoginError.deviceSecretNotFound
-            }
+                guard let deviceSecret = try deviceSecretRepository.getByUserId(userId: userData.user.ID) else {
+                    throw SSOLoginError.deviceSecretNotFound
+                }
 
-            try await authenticator.setupAccountKeys(
-                addresses: userData.addresses,
-                password: backupPasswordContent.text,
-                orgPublicKey: organizationInfo.organizationPublicKey,
-                deviceSecret: deviceSecret.secret
-            )
-            let updatedUserData = try await loginService.refreshUserData(backupPassword: backupPasswordContent.text)
-            await ssoNavigationDelegate?.globalSSOLoginDidFinish(data: updatedUserData)
-            viewState = .idle
+                try await authenticator.setupAccountKeys(
+                    addresses: userData.addresses,
+                    password: backupPasswordContent.text,
+                    orgPublicKey: organizationInfo.organizationPublicKey,
+                    deviceSecret: deviceSecret.secret
+                )
+                let updatedUserData = try await loginService.refreshUserData(backupPassword: backupPasswordContent.text)
+                await ssoNavigationDelegate?.globalSSOLoginDidFinish(data: updatedUserData)
+                viewState = .idle
+                ObservabilityEnv.report(.ssoAuthSetupKeys(status: .success))
+            } catch let error as SSOLoginError {
+                ObservabilityEnv.report(.ssoAuthSetupKeys(status: .deviceSecretNotFound))
+                throw error
+            } catch {
+                ObservabilityEnv.report(.ssoAuthSetupKeys(status: .fromResponseError(error)))
+                throw error
+            }
         }
 
         func changeTemporaryPassword() async throws {
-            guard let loginService, let passwordChangeService else {
-                throw SSOLoginError.authenticatorNotFound
+            do {
+                guard let loginService, let passwordChangeService else {
+                    throw SSOLoginError.authenticatorNotFound
+                }
+                guard let deviceSecret = try deviceSecretRepository.getByUserId(userId: userData.user.ID) else {
+                    throw SSOLoginError.deviceSecretNotFound
+                }
+                if let mailboxPassword = userData.getMailboxPassword {
+                    userData.credential.update(password: mailboxPassword)
+                }
+                try await passwordChangeService.updateUserPassword(
+                    auth: userData.credential,
+                    userInfo: userData.toUserInfo,
+                    loginPassword: userData.getMailboxPassword!,
+                    newPassword: .init(value: backupPasswordContent.text),
+                    buildAuth: true,
+                    skipPasswordSRPProof: true,
+                    deviceSecret: deviceSecret.secret
+                )
+                let updatedUserData = try await loginService.refreshUserData(backupPassword: backupPasswordContent.text)
+                ObservabilityEnv.report(.ssoAuthChangePassword(status: .success))
+                await ssoNavigationDelegate?.globalSSOLoginDidFinish(data: updatedUserData)
+                viewState = .idle
+            } catch let error as SSOLoginError {
+                ObservabilityEnv.report(.ssoAuthChangePassword(status: .deviceSecretNotFound))
+                throw error
+            } catch {
+                ObservabilityEnv.report(.ssoAuthChangePassword(status: .fromResponseError(error)))
+                throw error
             }
-            guard let deviceSecret = try deviceSecretRepository.getByUserId(userId: userData.user.ID) else {
-                throw SSOLoginError.deviceSecretNotFound
-            }
-            if let mailboxPassword = userData.getMailboxPassword {
-                userData.credential.update(password: mailboxPassword)
-            }
-            try await passwordChangeService.updateUserPassword(
-                auth: userData.credential,
-                userInfo: userData.toUserInfo,
-                loginPassword: userData.getMailboxPassword!,
-                newPassword: .init(value: backupPasswordContent.text),
-                buildAuth: true,
-                skipPasswordSRPProof: true,
-                deviceSecret: deviceSecret.secret
-            )
-            let updatedUserData = try await loginService.refreshUserData(backupPassword: backupPasswordContent.text)
-            await ssoNavigationDelegate?.globalSSOLoginDidFinish(data: updatedUserData)
-            viewState = .idle
         }
 
         private func resetTextFieldsErrors() {

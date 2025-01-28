@@ -21,6 +21,7 @@
 
 import ProtonCoreCrypto
 import ProtonCoreDataModel
+import ProtonCoreObservability
 import ProtonCoreServices
 
 public struct RequestAdminHelp {
@@ -36,10 +37,16 @@ public struct RequestAdminHelp {
     }
 
     public func invoke(userId: String) async throws {
-        guard let deviceSecret = try deviceSecretRepository.getByUserId(userId: userId) else {
-            throw SSOLoginError.deviceSecretNotFound
+        do {
+            guard let deviceSecret = try deviceSecretRepository.getByUserId(userId: userId) else {
+                throw SSOLoginError.deviceSecretNotFound
+            }
+            let request = PingAdminHelpRequest(deviceID: deviceSecret.deviceId)
+            let _: (_, DefaultResponse) = try await apiService.perform(request: request)
+            ObservabilityEnv.report(.ssoAuthRequestAdminHelp(status: .http2xx))
+        } catch {
+            ObservabilityEnv.report(.ssoAuthRequestAdminHelp(status: .fromResponseError(error)))
+            throw error
         }
-        let request = PingAdminHelpRequest(deviceID: deviceSecret.deviceId)
-        let _: (_, DefaultResponse) = try await apiService.perform(request: request)
     }
 }

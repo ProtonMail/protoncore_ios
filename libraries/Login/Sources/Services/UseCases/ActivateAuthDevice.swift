@@ -21,6 +21,8 @@
 
 import ProtonCoreAuthenticationKeyGeneration
 import ProtonCoreLog
+import ProtonCoreNetworking
+import ProtonCoreObservability
 import ProtonCoreServices
 
  /// Activate Device with userId and passphrase.
@@ -44,22 +46,28 @@ public struct ActivateAuthDevice {
         userId: String,
         passphrase: String
     ) async throws {
-        guard let deviceSecret = try deviceSecretRepository.getByUserId(userId: userId) else {
-            throw SSOLoginError.deviceSecretNotFound
-        }
-        guard let encryptedSecret = try getEncryptedSecret.invoke(
-            passphrase: passphrase,
-            deviceSecret: deviceSecret.secret
-        ) else {
-            throw SSOLoginError.encryptedSecretNotFound
-        }
+        do {
+            guard let deviceSecret = try deviceSecretRepository.getByUserId(userId: userId) else {
+                throw SSOLoginError.deviceSecretNotFound
+            }
+            guard let encryptedSecret = try getEncryptedSecret.invoke(
+                passphrase: passphrase,
+                deviceSecret: deviceSecret.secret
+            ) else {
+                throw SSOLoginError.encryptedSecretNotFound
+            }
 
-        // Call POST /auth/v4/devices/\(deviceID) and send the EncryptedSecret
-        let activateAuthDeviceRequest = ActivateAuthDeviceRequest(
-            deviceID: deviceSecret.deviceId,
-            encryptedSecret: encryptedSecret
-        )
-        let (_, _): (_, DefaultResponse) = try await apiService.perform(request: activateAuthDeviceRequest)
+            // Call POST /auth/v4/devices/\(deviceID) and send the EncryptedSecret
+            let activateAuthDeviceRequest = ActivateAuthDeviceRequest(
+                deviceID: deviceSecret.deviceId,
+                encryptedSecret: encryptedSecret
+            )
+            let (_, _): (_, DefaultResponse) = try await apiService.perform(request: activateAuthDeviceRequest)
+            ObservabilityEnv.report(.ssoAuthActivateDevice(status: .http2xx))
+        } catch {
+            ObservabilityEnv.report(.ssoAuthActivateDevice(status: .failed(error: error)))
+            throw error
+        }
     }
 
     // Activate another device
@@ -69,18 +77,38 @@ public struct ActivateAuthDevice {
         deviceSecret: String,
         passphrase: String
     ) async throws {
-        guard let encryptedSecret = try getEncryptedSecret.invoke(
-            passphrase: passphrase,
-            deviceSecret: deviceSecret
-        ) else {
-            throw SSOLoginError.encryptedSecretNotFound
+        do {
+            guard let encryptedSecret = try getEncryptedSecret.invoke(
+                passphrase: passphrase,
+                deviceSecret: deviceSecret
+            ) else {
+                throw SSOLoginError.encryptedSecretNotFound
+            }
+
+            // Call POST /auth/v4/devices/\(deviceID) and send the EncryptedSecret
+            let activateAuthDeviceRequest = ActivateAuthDeviceRequest(
+                deviceID: deviceId,
+                encryptedSecret: encryptedSecret
+            )
+            let (_, _): (_, DefaultResponse) = try await apiService.perform(request: activateAuthDeviceRequest)
+            ObservabilityEnv.report(.ssoAuthActivateDevice(status: .http2xx))
+        } catch {
+            ObservabilityEnv.report(.ssoAuthActivateDevice(status: .failed(error: error)))
+            throw error
+        }
+    }
+}
+
+extension SSOAuthActivateDeviceResponseCodeStatus {
+    static func failed(error: Error) -> Self {
+        if let ssoLoginError = error as? SSOLoginError {
+            switch ssoLoginError {
+            case .deviceSecretNotFound: return .deviceSecretNotFound
+            case .encryptedSecretNotFound: return .encryptedSecretNotFound
+            default: return .unknown
+            }
         }
 
-        // Call POST /auth/v4/devices/\(deviceID) and send the EncryptedSecret
-        let activateAuthDeviceRequest = ActivateAuthDeviceRequest(
-            deviceID: deviceId,
-            encryptedSecret: encryptedSecret
-        )
-        let (_, _): (_, DefaultResponse) = try await apiService.perform(request: activateAuthDeviceRequest)
+        return .fromResponseError(error)
     }
 }
