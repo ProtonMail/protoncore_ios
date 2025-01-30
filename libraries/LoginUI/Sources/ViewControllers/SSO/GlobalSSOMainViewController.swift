@@ -36,7 +36,6 @@ protocol GlobalSSONavigationDelegate: AnyObject {
 }
 
 final class GlobalSSOMainViewController: UIHostingController<GlobalSSOMainView> {
-    let viewModel: GlobalSSOMainView.ViewModel
 
     weak var navigationDelegate: NavigationDelegate?
 
@@ -48,8 +47,8 @@ final class GlobalSSOMainViewController: UIHostingController<GlobalSSOMainView> 
         dependencies: GlobalSSOMainView.Dependencies,
         navigationDelegate: NavigationDelegate?
     ) {
-        self.viewModel = GlobalSSOMainView.ViewModel(dependencies: dependencies)
-        let view = GlobalSSOMainView(viewModel: self.viewModel)
+        let viewModel = GlobalSSOMainView.ViewModel(dependencies: dependencies)
+        let view = GlobalSSOMainView(viewModel: viewModel)
         self.navigationDelegate = navigationDelegate
         super.init(rootView: view)
     }
