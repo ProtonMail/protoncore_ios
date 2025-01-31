@@ -29,12 +29,7 @@ public class ProxyClient {
     // Initialize with baseURL and session
     public init(baseURL: URL) {
         let config = URLSessionConfiguration.default
-#if DEBUG
-        let sessionDelegate = BypassSSLValidationDelegate()
-        self.session = URLSession(configuration: config, delegate: sessionDelegate, delegateQueue: nil)
-#else
         self.session = URLSession(configuration: config)
-#endif
         self.baseURL = baseURL
     }
 
@@ -224,12 +219,5 @@ public class ProxyClient {
             return
         }
         request(endpoint: "/mock/bandwidth", method: "POST", body: body, completion: completion)
-    }
-}
-
-public class BypassSSLValidationDelegate: NSObject, URLSessionDelegate {
-    public func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        // Accept all certificates
-        completionHandler(.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
     }
 }
