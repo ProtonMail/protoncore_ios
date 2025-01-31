@@ -6,11 +6,11 @@
 
 "Proton address required" = "Adres Proton jest wymagany";
 
-"Code doesn't match" = "Code doesn't match";
+"Code doesn't match" = "Kod nie pasuje";
 
-"Code isn't valid" = "Code isn't valid";
+"Code isn't valid" = "Kod jest nieprawidłowy";
 
-"Device secret not found" = "Device secret not found";
+"Device secret not found" = "Nie znaleziono sekretu urządzenia";
 
 "Passphrase not found" = "Hasło nie znalezione";
 

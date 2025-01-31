@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Potwierdź logowanie na innym urządzeniu. To nie Ty?";
 
-"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
+"Enter the confirmation code we sent on your other device for %@." = "Wpisz kod potwierdzający konta %@ wysłany na inne urządzenie.";
 
 "Confirmation code" = "Kod potwierdzający";
 

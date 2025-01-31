@@ -10,7 +10,7 @@
 
 "Code isn't valid" = "Kód není platný";
 
-"Device secret not found" = "Secret zařízení nebyl nalezen";
+"Device secret not found" = "Secret daného zařízení nenalezeno";
 
 "Passphrase not found" = "Heslo nebylo nalezeno";
 
