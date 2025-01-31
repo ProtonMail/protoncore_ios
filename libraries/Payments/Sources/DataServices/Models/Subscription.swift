@@ -93,7 +93,7 @@ extension Subscription {
         var existingSubscription = false
 
         self.planDetails?.forEach { details in
-            guard !InAppPurchasePlan.isThisAFreePlan(protonName: details.name),
+            guard !details.isFreePlan,
                   !InAppPurchasePlan.isThisATrialPlan(protonName: details.name)
             else { return }
             existingSubscription = true

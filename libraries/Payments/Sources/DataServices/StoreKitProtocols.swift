@@ -169,7 +169,7 @@ protocol ProcessDependencies: AnyObject {
     var alertManager: PaymentsAlertManager { get }
     var updateSubscription: (Subscription) throws -> Void { get }
     func updateCurrentSubscription(success: @escaping () -> Void, failure: @escaping (Error) -> Void)
-    var finishTransaction: (SKPaymentTransaction, (() -> Void)?) -> Void { get }
+    func finishTransaction(_ transaction: SKPaymentTransaction, completion: (() -> Void)?)
     var apiService: APIService { get }
     func addTransactionsBeforeSignup(transaction: SKPaymentTransaction)
     func removeTransactionsBeforeSignup(transaction: SKPaymentTransaction)

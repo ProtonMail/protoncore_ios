@@ -598,6 +598,8 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
 }
 
 extension StoreKitManager: SKProductsRequestDelegate {
+
+    @available(*, deprecated, message: "this will be removed when all the BUs moved to dynamic plans")
     public func productsRequest(_: SKProductsRequest, didReceive response: SKProductsResponse) {
         // This is just for early detection of programmers errors and to indicate what can be removed when we remove the feature flag
         if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
@@ -614,6 +616,7 @@ extension StoreKitManager: SKProductsRequestDelegate {
         ObservabilityEnv.report(.paymentQuerySubscriptionsTotal(status: .successful, isDynamic: featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)))
     }
 
+    @available(*, deprecated, message: "this will be removed when all the BUs moved to dynamic plans")
     func request(_: SKRequest, didFailWithError error: Error) {
         // This is just for early detection of programmers errors and to indicate what can be removed when we remove the feature flag
         if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
@@ -712,7 +715,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
 
     private func processFailedStoreKitTransaction(_ transaction: SKPaymentTransaction, cacheKey: UserInitiatedPurchaseCache) {
         PMLog.debug("Processing failed transaction")
-        finishTransaction(transaction, nil)
+        finishTransaction(transaction, completion: nil)
         let error = transaction.error as NSError?
         let refreshHandler = refreshHandler
         switch error {
@@ -777,25 +780,24 @@ extension StoreKitManager: SKPaymentTransactionObserver {
         } catch Errors.receiptLost { // receipt error
             PMLog.error("Error: lost receipt", sendToExternal: true)
             callErrorCompletion(for: cacheKey, with: Errors.receiptLost)
-            finishTransaction(transaction, nil)
+            finishTransaction(transaction, completion: nil)
             group.leave()
 
         } catch Errors.noNewSubscriptionInSuccessfulResponse { // error on BE
             PMLog.error("Error: no new subscription in success response", sendToExternal: true)
             callErrorCompletion(for: cacheKey, with: Errors.noNewSubscriptionInSuccessfulResponse)
-            finishTransaction(transaction, nil)
+            finishTransaction(transaction, completion: nil)
             group.leave()
 
         } catch Errors.alreadyPurchasedPlanDoesNotMatchBackend {
             PMLog.error("Error: Already purchased plan does not match backend", sendToExternal: true)
-            callErrorCompletion(for: cacheKey, with: Errors.alreadyPurchasedPlanDoesNotMatchBackend)
-
             if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) &&
-                transaction.payment.productIdentifier.hasSuffix("_non_renewing")
-            {
+                transaction.payment.productIdentifier.hasSuffix("_non_renewing") {
                 // If dynamic plans are enabled, but there is a pending transaction for a non-renewing plan,
                 // finalize the transaction here.
-                finishTransaction(transaction, nil)
+                finishTransaction(transaction, completion: nil)
+            } else {
+                callErrorCompletion(for: cacheKey, with: Errors.alreadyPurchasedPlanDoesNotMatchBackend)
             }
 
             group.leave()
@@ -815,8 +817,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
     {
         let isDynamic = featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)
 
-        guard let plan = InAppPurchasePlan(storeKitProductId: transaction.payment.productIdentifier)
-        else {
+        guard let plan = InAppPurchasePlan(storeKitProductId: transaction.payment.productIdentifier) else {
             throw Errors.alreadyPurchasedPlanDoesNotMatchBackend
         }
 
@@ -833,8 +834,7 @@ extension StoreKitManager: SKPaymentTransactionObserver {
 
             guard let details = planService.detailsOfPlanCorrespondingToIAP(plan),
                   let amount = details.pricing(for: plan.period),
-                  let protonIdentifier = details.ID
-            else {
+                  let protonIdentifier = details.ID else {
                 throw Errors.alreadyPurchasedPlanDoesNotMatchBackend
             }
 
@@ -1025,9 +1025,9 @@ extension StoreKitManager: ProcessDependencies {
         }
     }
 
-    var finishTransaction: (SKPaymentTransaction, (() -> Void)?) -> Void { {
-        self.finishTransaction(transaction: $0, finishCallback: $1)
-    } }
+    func finishTransaction(_ transaction: SKPaymentTransaction, completion: (() -> Void)?) {
+        self.finishTransaction(transaction: transaction, finishCallback: completion)
+    }
 
     func addTransactionsBeforeSignup(transaction: SKPaymentTransaction) {
         // TODO: should it be thread safe?
