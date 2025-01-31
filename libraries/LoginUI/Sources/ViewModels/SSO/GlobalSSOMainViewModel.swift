@@ -142,13 +142,15 @@ extension GlobalSSOMainView {
                     userData: userData,
                     adminEmail: organizationSignature.fingerprintSignatureAddress,
                     ssoNavigationDelegate: ssoNavigationDelegate,
-                    onDeviceActivatedAction: {
-                        Task {
-                            self.mode = .default
-                            await self.invokePostLoginSetup()
+                    onDeviceActivatedAction: { [weak self] in
+                        Task { [weak self] in
+                            self?.mode = .default
+                            await self?.invokePostLoginSetup()
                         }
                     },
-                    onDeviceRejectedAction: loadDeviceRejected
+                    onDeviceRejectedAction: { [weak self] in
+                        self?.loadDeviceRejected()
+                    }
                 ))
             } catch {
                 PMLog.error(error)
@@ -193,7 +195,9 @@ extension GlobalSSOMainView {
                             await self.invokePostLoginSetup()
                         }
                     },
-                    onDeviceRejectedAction: loadDeviceRejected
+                    onDeviceRejectedAction: { [weak self] in
+                        self?.loadDeviceRejected()
+                    }
                 ))
             } catch {
                 PMLog.error(error)
@@ -215,7 +219,7 @@ extension GlobalSSOMainView {
                 user: userData.user,
                 errorRetryAction: .init(
                     error: error,
-                    retryAction: {
+                    retryAction: { [weak self] in
                         Task { [weak self] in
                             guard let self else { return }
                             self.screenState = .loading(.init(user: userData.user, errorRetryAction: nil))

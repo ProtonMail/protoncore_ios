@@ -27,15 +27,13 @@ import ProtonCoreUIFoundations
 
 public final class ChangeBackupPasswordViewController: UIHostingController<SetBackupPasswordView> {
 
-    let viewModel: SetBackupPasswordView.ViewModel
-
      required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     init(dependencies: SetBackupPasswordView.Dependencies) {
-        self.viewModel = SetBackupPasswordView.ViewModel(dependencies: dependencies)
-        let view = SetBackupPasswordView(viewModel: self.viewModel)
+        let viewModel = SetBackupPasswordView.ViewModel(dependencies: dependencies)
+        let view = SetBackupPasswordView(viewModel: viewModel)
         super.init(rootView: view)
     }
 

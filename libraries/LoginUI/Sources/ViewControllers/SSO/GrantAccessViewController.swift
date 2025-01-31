@@ -31,7 +31,6 @@ protocol GrantAccessViewNavigationDelegate: AnyObject {
 
 public final class GrantAccessViewController: UIHostingController<GrantAccessView> {
 
-    let viewModel: GrantAccessView.ViewModel
     weak var navigationDelegate: GrantAccessViewNavigationDelegate?
 
      required init?(coder aDecoder: NSCoder) {
@@ -39,9 +38,9 @@ public final class GrantAccessViewController: UIHostingController<GrantAccessVie
     }
 
     init(dependencies: GrantAccessView.Dependencies) {
-        self.viewModel = GrantAccessView.ViewModel(dependencies: dependencies)
+        let viewModel = GrantAccessView.ViewModel(dependencies: dependencies)
         self.navigationDelegate = dependencies.navigationDelegate
-        let view = GrantAccessView(viewModel: self.viewModel)
+        let view = GrantAccessView(viewModel: viewModel)
         super.init(rootView: view)
     }
 

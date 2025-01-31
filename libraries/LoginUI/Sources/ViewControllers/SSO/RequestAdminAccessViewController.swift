@@ -27,15 +27,13 @@ import SwiftUI
 
 public final class RequestAdminAccessViewController: UIHostingController<RequestAdminAccessView> {
 
-    let viewModel: RequestAdminAccessView.ViewModel
-
      required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     init(dependencies: RequestAdminAccessView.Dependencies) {
-        self.viewModel = RequestAdminAccessView.ViewModel(dependencies: dependencies)
-        let view = RequestAdminAccessView(viewModel: self.viewModel)
+        let viewModel = RequestAdminAccessView.ViewModel(dependencies: dependencies)
+        let view = RequestAdminAccessView(viewModel: viewModel)
         super.init(rootView: view)
     }
 
