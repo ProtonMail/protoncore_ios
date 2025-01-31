@@ -196,6 +196,8 @@ public enum LUITranslation: TranslationsExposing {
     case set_backup_password_title
     case validation_empty_email
     case validation_invalid_email
+    case invalid_password
+    case passphrase_not_found
 
     public var l10n: String {
         switch self {
@@ -538,6 +540,10 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Email is invalid.", comment: "Input email validation error")
         case .validation_empty_email:
             return localized(key: "Please enter your Proton Account email.", comment: "Invalid email empty hint")
+        case .invalid_password:
+            return localized(key: "Password not valid", comment: "Invalid password error")
+        case .passphrase_not_found:
+            return localized(key: "Passphrase not found", comment: "Passphrase not found error")
         }
     }
 }

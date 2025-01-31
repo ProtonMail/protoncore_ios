@@ -104,7 +104,6 @@ import ProtonCoreLogin
                 scopes: []
             ),
             apiService: nil,
-            adminEmail: "admin@privacybydefault.com",
             ssoNavigationDelegate: nil
         )))
     }

@@ -29,7 +29,7 @@ import SwiftUI
 protocol GlobalSSONavigationDelegate: AnyObject {
     func showRequestAdminHelpConfirmation(data: LoginData, adminEmail: String)
     func showRequestAdminHelp(data: LoginData)
-    func showEnterBackupPassword(data: LoginData, adminEmail: String)
+    func showEnterBackupPassword(data: LoginData)
     func showChangeBackupPassword(data: LoginData)
     func globalSSOLoginDidFinish(data: LoginData) async
     func globalSSOLoginDidCancel()

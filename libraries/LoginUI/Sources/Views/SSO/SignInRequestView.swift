@@ -72,11 +72,14 @@ public struct SignInRequestView: View {
             .padding(Constants.itemSpacing)
             .foregroundColor(ColorProvider.TextNorm)
             .frame(maxWidth: .infinity)
+            .disabled(viewModel.viewState == .loading)
         }
         .background(
             ColorProvider.BackgroundNorm
                 .edgesIgnoringSafeArea(.all)
         )
+        .bannerDisplayable(bannerState: $viewModel.bannerState,
+                           configuration: .default())
         .onAppear {
             viewModel.startAuthDeviceLoop()
         }
@@ -88,7 +91,7 @@ public struct SignInRequestView: View {
     @ViewBuilder
     var confirmationCodeContainer: some View {
         switch viewModel.mode {
-        case .requestForAdminApproval(let code):
+        case .requestForAdminApproval(let code, _):
             displayConfirmationCode(code: code)
         case .requestApproveFromAnotherDevice(let code, _):
             displayConfirmationCode(code: code)
@@ -98,29 +101,17 @@ public struct SignInRequestView: View {
     }
 
     private func bodyText() -> some View {
-        if #available(iOS 15, *) {
-            var attributedString = AttributedString(viewModel.bodyDescription)
+        var attributedString = AttributedString(viewModel.bodyDescription)
 
-            attributedString.font = Font.subheadline
-            attributedString.foregroundColor = ColorProvider.TextWeak
-
-            // make the email substrings heavier weight
-            if let adminRange = attributedString.range(of: viewModel.adminEmail) {
-                attributedString[adminRange].font = Font.subheadline.weight(.bold)
-            }
-
-            if let memberRange = attributedString.range(of: viewModel.memberEmail) {
-                attributedString[memberRange].font = Font.subheadline.weight(.bold)
-            }
-
-            return Text(attributedString)
-                .frame(maxWidth: .infinity, alignment: .leading)
-        } else {
-            return Text(viewModel.bodyDescription)
-                .font(.subheadline)
-                .foregroundColor(ColorProvider.TextWeak)
-                .frame(maxWidth: .infinity, alignment: .leading)
+        attributedString.font = Font.subheadline
+        attributedString.foregroundColor = ColorProvider.TextWeak
+        if case let .requestForAdminApproval(_, adminEmail) = viewModel.mode {
+            attributedString = attributedString.withBoldText(text: adminEmail)
         }
+        attributedString = attributedString.withBoldText(text: viewModel.memberEmail)
+
+        return Text(attributedString)
+            .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private func displayConfirmationCode(code: String) -> some View {
@@ -195,7 +186,6 @@ public struct SignInRequestView: View {
                 addresses: [],
                 scopes: []
             ),
-            adminEmail: "admin@privacybydefault.com",
             ssoNavigationDelegate: nil,
             onDeviceActivatedAction: {},
             onDeviceRejectedAction: {}
@@ -204,7 +194,7 @@ public struct SignInRequestView: View {
 }
 #Preview("RequestForAdminApproval") {
     NavigationView {
-        let mode = SignInRequestView.ViewMode.requestForAdminApproval(code: "64S3")
+        let mode = SignInRequestView.ViewMode.requestForAdminApproval(code: "64S3", adminEmail: "admin@privacybydefault.com")
         SignInRequestView(viewModel: .init(dependencies: .init(
             mode: mode,
             apiService: nil,
@@ -216,7 +206,6 @@ public struct SignInRequestView: View {
                 addresses: [],
                 scopes: []
             ),
-            adminEmail: "admin@privacybydefault.com",
             ssoNavigationDelegate: nil,
             onDeviceActivatedAction: {},
             onDeviceRejectedAction: {}
