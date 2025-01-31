@@ -404,11 +404,10 @@ extension LoginCoordinator: GlobalSSONavigationDelegate {
         await finish(data: data)
     }
 
-    func showEnterBackupPassword(data: LoginData, adminEmail: String) {
+    func showEnterBackupPassword(data: LoginData) {
         let viewController = EnterBackupPasswordViewController(dependencies: .init(
             userData: data,
             apiService: container.api,
-            adminEmail: adminEmail,
             ssoNavigationDelegate: self
         ))
         if let ssoNavigationController = navigationController?.presentedViewController as? UINavigationController {

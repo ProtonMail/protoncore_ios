@@ -33,7 +33,6 @@ extension SignInRequestView {
         let mode: SignInRequestView.ViewMode
         let apiService: APIService?
         let userData: LoginData
-        let adminEmail: String
         let ssoNavigationDelegate: GlobalSSONavigationDelegate?
         let onDeviceActivatedAction: () -> Void
         let onDeviceRejectedAction: () -> Void
@@ -43,22 +42,31 @@ extension SignInRequestView {
 extension SignInRequestView {
 
     enum ViewMode {
-        case requestForAdminApproval(code: String)
+        case requestForAdminApproval(code: String, adminEmail: String)
         case requestApproveFromAnotherDevice(code: String, devices: [AuthDevice])
     }
 
     @MainActor
     final class ViewModel: ObservableObject {
+        @Published var viewState: ViewState = .idle
+        @Published var bannerState: BannerState = .none
+
         @Published var mode: ViewMode
         @Published var devices: [AuthDevice] = []
         private let userData: LoginData
-        let adminEmail: String
+
+        enum ViewState {
+            case idle
+            case loading
+        }
+
         private var deleteAuthDevice: DeleteAuthDevice?
 
         let onDeviceActivatedAction: () -> Void
         let onDeviceRejectedAction: () -> Void
 
         private var authDeviceLoop: AuthDevicePollingLoop?
+        private var organizationRepository: OrganizationRepository?
 
         weak var ssoNavigationDelegate: GlobalSSONavigationDelegate?
 
@@ -69,7 +77,6 @@ extension SignInRequestView {
         init(dependencies: Dependencies) {
             self.mode = dependencies.mode
             self.userData = dependencies.userData
-            self.adminEmail = dependencies.adminEmail
             self.ssoNavigationDelegate = dependencies.ssoNavigationDelegate
             self.onDeviceActivatedAction = dependencies.onDeviceActivatedAction
             self.onDeviceRejectedAction = dependencies.onDeviceRejectedAction
@@ -80,6 +87,7 @@ extension SignInRequestView {
                     observingDeviceId: deviceSecret.deviceId
                 )
                 self.deleteAuthDevice = DeleteAuthDevice(apiService: apiService)
+                self.organizationRepository = OrganizationRepository(apiService: apiService)
             }
             if case .requestApproveFromAnotherDevice(_, let devices) = mode {
                 self.devices = devices
@@ -104,7 +112,7 @@ extension SignInRequestView {
 
         var bodyDescription: String {
             switch mode {
-            case .requestForAdminApproval: 
+            case .requestForAdminApproval(_, let adminEmail):
                 return String.localizedStringWithFormat(
                     LUITranslation.share_confirmation_code_description.l10n,
                     adminEmail,
@@ -131,11 +139,10 @@ extension SignInRequestView {
         func primaryActionButtonTapped() {
             switch mode {
             case .requestForAdminApproval:
-                ssoNavigationDelegate?.showEnterBackupPassword(data: userData, adminEmail: adminEmail)
+                ssoNavigationDelegate?.showEnterBackupPassword(data: userData)
             case .requestApproveFromAnotherDevice:
-                ssoNavigationDelegate?.showEnterBackupPassword(data: userData, adminEmail: adminEmail)
+                ssoNavigationDelegate?.showEnterBackupPassword(data: userData)
             }
-
         }
 
         func secondaryActionButtonTapped() {
@@ -143,7 +150,23 @@ extension SignInRequestView {
             case .requestForAdminApproval:
                 ssoNavigationDelegate?.globalSSOLoginDidCancel()
             case .requestApproveFromAnotherDevice:
-                ssoNavigationDelegate?.showRequestAdminHelpConfirmation(data: userData, adminEmail: adminEmail)
+                Task {
+                    do {
+                        guard let organizationRepository else { return }
+                        viewState = .loading
+                        let organizationSignature = try await organizationRepository.getOrganizationSignature()
+                        ssoNavigationDelegate?.showRequestAdminHelpConfirmation(
+                            data: userData,
+                            adminEmail: organizationSignature.fingerprintSignatureAddress
+                        )
+                        viewState = .idle
+                    } catch {
+                        viewState = .idle
+                        PMLog.error(error)
+                        bannerState = .error(content: .init(message: error.localizedDescription))
+                    }
+                }
+
             }
         }
 

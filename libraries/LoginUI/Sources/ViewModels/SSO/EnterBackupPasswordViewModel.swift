@@ -32,7 +32,6 @@ extension EnterBackupPasswordView {
     struct Dependencies {
         let userData: LoginData
         let apiService: APIService?
-        let adminEmail: String
         let ssoNavigationDelegate: GlobalSSONavigationDelegate?
     }
 }
@@ -43,10 +42,10 @@ extension EnterBackupPasswordView {
     final class ViewModel: ObservableObject {
         private let apiService: APIService?
         private let userData: LoginData
-        private let adminEmail: String
 
         private let buildAndValidatePassphrases = BuildAndValidatePassphrases()
         private var activateAuthDevice: ActivateAuthDevice?
+        var organizationRepository: OrganizationRepository?
 
         weak var ssoNavigationDelegate: GlobalSSONavigationDelegate?
 
@@ -66,13 +65,13 @@ extension EnterBackupPasswordView {
         init(dependencies: Dependencies) {
             self.apiService = dependencies.apiService
             self.userData = dependencies.userData
-            self.adminEmail = dependencies.adminEmail
             self.ssoNavigationDelegate = dependencies.ssoNavigationDelegate
             if let apiService = dependencies.apiService {
                 self.activateAuthDevice = ActivateAuthDevice(
                     apiService: apiService,
                     deviceSecretRepository: DeviceSecretRepository()
                 )
+                self.organizationRepository = OrganizationRepository(apiService: apiService)
             }
         }
 
@@ -85,12 +84,12 @@ extension EnterBackupPasswordView {
                         salts: userData.salts,
                         userKeys: userData.user.keys
                     ) else {
-                        bannerState = .error(content: .init(message: "Password not valid"))
+                        bannerState = .error(content: .init(message: LUITranslation.invalid_password.l10n))
                         return
                     }
                     let newUserData = userData.updated(passphrases: passphrases)
                     guard let passphrase = newUserData.getMailboxPassword else {
-                        bannerState = .error(content: .init(message: "Passphrase not found"))
+                        bannerState = .error(content: .init(message: LUITranslation.passphrase_not_found.l10n))
                         return
                     }
                     viewState = .loading
@@ -106,7 +105,22 @@ extension EnterBackupPasswordView {
         }
 
         func secondaryActionButtonTapped() {
-            ssoNavigationDelegate?.showRequestAdminHelpConfirmation(data: userData, adminEmail: adminEmail)
+            Task {
+                do {
+                    guard let organizationRepository else { return }
+                    viewState = .loading
+                    let organizationSignature = try await organizationRepository.getOrganizationSignature()
+                    ssoNavigationDelegate?.showRequestAdminHelpConfirmation(
+                        data: userData,
+                        adminEmail: organizationSignature.fingerprintSignatureAddress
+                    )
+                    viewState = .idle
+                } catch {
+                    viewState = .idle
+                    PMLog.error(error)
+                    bannerState = .error(content: .init(message: error.localizedDescription))
+                }
+            }
         }
 
         private func resetTextFieldErrors() {

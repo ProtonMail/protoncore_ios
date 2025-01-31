@@ -134,57 +134,38 @@ extension GlobalSSOMainView {
         }
 
         private func loadRequestApproveFromAnotherDevice(code: String, devices: [AuthDevice]) async {
-            do {
-                let organizationSignature = try await organizationRepository.getOrganizationSignature()
-                screenState = .requestApproveFromAnotherDevice(.init(
-                    mode: .requestApproveFromAnotherDevice(code: code, devices: devices),
-                    apiService: apiService,
-                    userData: userData,
-                    adminEmail: organizationSignature.fingerprintSignatureAddress,
-                    ssoNavigationDelegate: ssoNavigationDelegate,
-                    onDeviceActivatedAction: { [weak self] in
-                        Task { [weak self] in
-                            self?.mode = .default
-                            await self?.invokePostLoginSetup()
-                        }
-                    },
-                    onDeviceRejectedAction: { [weak self] in
-                        self?.loadDeviceRejected()
+            screenState = .requestApproveFromAnotherDevice(.init(
+                mode: .requestApproveFromAnotherDevice(code: code, devices: devices),
+                apiService: apiService,
+                userData: userData,
+                ssoNavigationDelegate: ssoNavigationDelegate,
+                onDeviceActivatedAction: { [weak self] in
+                    Task { [weak self] in
+                        self?.mode = .default
+                        await self?.invokePostLoginSetup()
                     }
-                ))
-            } catch {
-                PMLog.error(error)
-                loadSSOErrorLogin(error: error) {
-                    await self.loadRequestApproveFromAnotherDevice(code: code, devices: devices)
+                },
+                onDeviceRejectedAction: { [weak self] in
+                    self?.loadDeviceRejected()
                 }
-            }
+            ))
         }
 
         private func loadEnterBackupPassword() async {
-            do {
-                let organizationSignature = try await organizationRepository.getOrganizationSignature()
-                screenState = .enterBackupPassword(.init(
-                    userData: userData,
-                    apiService: apiService,
-                    adminEmail: organizationSignature.fingerprintSignatureAddress,
-                    ssoNavigationDelegate: ssoNavigationDelegate
-                ))
-            } catch {
-                PMLog.error(error)
-                loadSSOErrorLogin(error: error) {
-                    await self.loadEnterBackupPassword()
-                }
-            }
+            screenState = .enterBackupPassword(.init(
+                userData: userData,
+                apiService: apiService,
+                ssoNavigationDelegate: ssoNavigationDelegate
+            ))
         }
 
         private func loadRequestApproveFromAdmin(code: String) async {
             do {
                 let organizationSignature = try await organizationRepository.getOrganizationSignature()
                 screenState = .requestApproveFromAnotherDevice(.init(
-                    mode: .requestForAdminApproval(code: code),
+                    mode: .requestForAdminApproval(code: code, adminEmail: organizationSignature.fingerprintSignatureAddress),
                     apiService: apiService,
                     userData: userData,
-                    adminEmail: organizationSignature.fingerprintSignatureAddress,
                     ssoNavigationDelegate: ssoNavigationDelegate,
                     onDeviceActivatedAction: { [weak self] in
                         guard let self else { return }
