@@ -404,7 +404,7 @@ final class ProcessUnauthenticated: ProcessUnathenticatedProtocol {
     private func finishWhenAuthenticated(transaction: SKPaymentTransaction,
                                          result: PaymentSucceeded,
                                          completion: @escaping ProcessCompletionCallback) {
-        dependencies.finishTransaction(transaction, nil)
+        dependencies.finishTransaction(transaction, completion: nil)
         dependencies.removeTransactionsBeforeSignup(transaction: transaction)
         dependencies.tokenStorage.clear()
         NotificationCenter.default.post(name: Payments.transactionFinishedNotification, object: nil)

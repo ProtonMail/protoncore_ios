@@ -35,44 +35,22 @@ public struct InAppPurchasePlan: Equatable, Hashable {
     public static let defaultOffer = "default"
     public static let defaultCurrency = "usd"
 
-    public typealias ProductId = String
-
-    public let storeKitProductId: ProductId?
+    public let storeKitProductId: String?
     public let protonName: String
     public let offer: String?
     public var period: String?
     public let currency: String?
 
-    public var isFreePlan: Bool { InAppPurchasePlan.isThisAFreePlan(protonName: protonName) }
-
-    // FIXME: check if clients use this, and remove because it's too coupled anyway
-    public var isPlusPlan: Bool { InAppPurchasePlan.isThisAPlusPlan(protonName: protonName) }
-    public var isUnlimitedPlan: Bool { InAppPurchasePlan.isThisAUnlimitedPlan(protonName: protonName) }
-
-    public static let freePlan: InAppPurchasePlan = .init(protonPlanName: "free", offer: nil, listOfIAPIdentifiers: [])
-    public static var freePlanName: String { freePlan.protonName }
-
-    // FIXME: these checks are possibly too coupled to plan name, and betray too much knowledge
-    public static func isThisAFreePlan(protonName: String, featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared) -> Bool {
-        if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) {
-            return protonName == freePlanName || protonName.containsIgnoringCase(check: "vpnfree") || protonName.containsIgnoringCase(check: "drivefree")
-        } else {
-            return protonName == freePlanName || protonName == "vpnfree" || protonName == "drivefree"
-        }
-
-    }
-
-    public static func isThisAPlusPlan(protonName: String) -> Bool {
-        protonName.range(of: "plus", options: .caseInsensitive) != nil
-    }
-
-    public static func isThisAUnlimitedPlan(protonName: String) -> Bool {
-        protonName.range(of: "unlimited", options: .caseInsensitive) != nil
+    public var isFreePlan: Bool {
+        currency == nil
     }
 
     public static func isThisATrialPlan(protonName: String) -> Bool {
         protonName == "trial"
     }
+
+    public static let freePlan: InAppPurchasePlan = .init(protonPlanName: freePlanName, offer: nil, listOfIAPIdentifiers: [])
+    public static var freePlanName = "free"
 
     private static let regex: NSRegularExpression = {
         guard let instance = try? NSRegularExpression(
@@ -179,7 +157,7 @@ public struct InAppPurchasePlan: Equatable, Hashable {
 
     /// Creates an InAppPurchasePlan from the corresponding components in the product id:
     /// plan name, offer, period and currency
-    public init?(storeKitProductId: ProductId,
+    public init?(storeKitProductId: String,
                  featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared) {
         if featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)  {
             self.init(storeKitProductId: storeKitProductId,
@@ -228,7 +206,7 @@ public struct InAppPurchasePlan: Equatable, Hashable {
                   currency: matchingPlanDetails?.currency)
     }
 
-    private init(storeKitProductId: InAppPurchasePlan.ProductId?,
+    private init(storeKitProductId: String?,
                  protonName: String,
                  offer: String?,
                  period: String?,

@@ -141,7 +141,7 @@ final class PurchaseManager: PurchaseManagerProtocol {
     }
 
     private func buyPlanUsingProperFlow(plan: InAppPurchasePlan, addCredits: Bool, finishCallback: @escaping (PurchaseResult) -> Void) throws {
-        guard InAppPurchasePlan.isThisAFreePlan(protonName: plan.protonName) == false else {
+        guard !plan.isFreePlan else {
             // "free plan" is really the lack of any plan — so no purchase is required if user selects free
             finishCallback(.purchasedPlan(accountPlan: plan))
             return

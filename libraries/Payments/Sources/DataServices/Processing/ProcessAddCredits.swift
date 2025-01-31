@@ -94,10 +94,11 @@ final class ProcessAddCredits: ProcessProtocol {
 
     private func finish(transaction: SKPaymentTransaction, result: ProcessCompletionResult, completion: @escaping ProcessCompletionCallback) {
         // Step 5. Finish the IAP transaction
-        dependencies.finishTransaction(transaction) { [weak self] in
-            self?.dependencies.tokenStorage.clear()
-            completion(result)
-            self?.dependencies.refreshCompletionHandler(result)
+        dependencies.finishTransaction(transaction) {
+            [weak self] in
+                self?.dependencies.tokenStorage.clear()
+                completion(result)
+                self?.dependencies.refreshCompletionHandler(result)
         }
     }
 }

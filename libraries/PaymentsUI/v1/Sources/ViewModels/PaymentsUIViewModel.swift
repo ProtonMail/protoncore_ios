@@ -478,7 +478,7 @@ class PaymentsUIViewModel {
                             cycle: Int?) -> PlanPresentation? {
 
         // we need to remove all other plans not defined in the shownPlanNames
-        guard shownPlanNames.contains(where: { baseDetails.name == $0 }) || InAppPurchasePlan.isThisAFreePlan(protonName: baseDetails.name) else {
+        guard shownPlanNames.contains(where: { baseDetails.name == $0 }) || baseDetails.isFreePlan else {
             return nil
         }
 

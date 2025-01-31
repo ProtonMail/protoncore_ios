@@ -45,6 +45,9 @@ public struct Plan: Codable, Equatable {
     public let pricing: [String: Int]?
     public let defaultPricing: [String: Int]?
     public let vendors: Vendors?
+    public var isFreePlan: Bool {
+        vendors == nil
+    }
     // offers are ignored for now
 
     // this one exists only for /subscription
@@ -174,7 +177,7 @@ public extension Plan {
 
         var plansForNames = planDetails
             .filter { $0.isAPrimaryPlan }
-            .filter { !InAppPurchasePlan.isThisAFreePlan(protonName: $0.name) }
+            .filter { !$0.isFreePlan }
             .filter { !InAppPurchasePlan.isThisATrialPlan(protonName: $0.name) }
         if plansForNames.isEmpty, let firstPlan = planDetails.first {
             plansForNames.append(firstPlan)

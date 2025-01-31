@@ -200,7 +200,7 @@ final class ServicePlanDataService: ServicePlanDataServiceProtocol {
     }
 
     public func detailsOfPlanCorrespondingToIAP(_ plan: InAppPurchasePlan) -> Plan? {
-        if InAppPurchasePlan.isThisAFreePlan(protonName: plan.protonName) {
+        if plan.isFreePlan {
             return defaultPlanDetails
         } else {
             return availablePlansDetails.first(where: {
