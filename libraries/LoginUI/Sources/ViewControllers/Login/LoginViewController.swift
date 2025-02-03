@@ -141,14 +141,15 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
 
     // MARK: - Setup
 
-    private func showWebView() -> SSOViewController {
+    private func showWebView(completion: @escaping (SSOViewController) -> Void) {
         let ssoVC = SSOViewController()
         ssoVC.webViewDelegate = self
         let webViewNav = DarkModeAwareNavigationViewController(rootViewController: ssoVC)
         webViewNav.overrideUserInterfaceStyle = self.overrideUserInterfaceStyle
         webViewNav.navigationBar.backgroundColor = ColorProvider.BackgroundNorm
-        self.navigationController?.present(webViewNav, animated: true)
-        return ssoVC
+        self.navigationController?.present(webViewNav, animated: true, completion: {
+            completion(ssoVC)
+        })
     }
 
     private func setupUI() {
@@ -285,17 +286,19 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
                 self?.delegate?.createAddressNeeded(data: data, defaultUsername: defaultUsername)
                 self?.measureLoginSuccess()
             case .ssoChallenge(let ssoChallengeResponse):
-                self?.webView = self?.showWebView()
-                Task {
-                    let ssoRequestResult = await self?.viewModel.getSSORequest(challenge: ssoChallengeResponse)
-                    if let error = ssoRequestResult?.error {
-                        self?.webView?.dismiss(animated: true)
-                        self?.showBanner(message: error)
-                        return
-                    } else if let request = ssoRequestResult?.request {
-                        self?.webView?.loadRequest(request: request)
+                self?.showWebView(completion: { ssoViewControler in
+                    self?.webView = ssoViewControler
+                    Task { @MainActor in
+                        let ssoRequestResult = await self?.viewModel.getSSORequest(challenge: ssoChallengeResponse)
+                        if let error = ssoRequestResult?.error {
+                            self?.webView?.dismiss(animated: true)
+                            self?.showBanner(message: error)
+                            return
+                        } else if let request = ssoRequestResult?.request {
+                            self?.webView?.loadRequest(request: request)
+                        }
                     }
-                }
+                })
                 self?.measureLoginSuccess()
             case .switchToSSOLogin(let info):
                 self?.showBanner(message: info, style: .info)
