@@ -341,3 +341,11 @@
 "Unknown" = "未知";
 
 "Set backup password" = "设置备份密码";
+
+"Email is invalid" = "电子邮件无效";
+
+"Please enter your Proton Account email." = "请输入您的 Proton 帐户电子邮件。";
+
+"Password not valid" = "Password not valid";
+
+"Passphrase not found" = "未找到密码";

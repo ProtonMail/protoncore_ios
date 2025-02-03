@@ -341,3 +341,11 @@
 "Unknown" = "Desconhecido";
 
 "Set backup password" = "Definir a palavra-passe de backup";
+
+"Email is invalid" = "O e-mail não é válido.";
+
+"Please enter your Proton Account email." = "Introduza a palavra-passe do seu e-mail da Proton.";
+
+"Password not valid" = "A palavra-passe não é válida.";
+
+"Passphrase not found" = "A frase-passe não foi encontrada.";

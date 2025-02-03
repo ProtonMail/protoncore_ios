@@ -341,3 +341,11 @@
 "Unknown" = "Necunoscut";
 
 "Set backup password" = "Setare parolă de rezervă";
+
+"Email is invalid" = "E-mail nevalid";
+
+"Please enter your Proton Account email." = "Introduceți adresa de e-mai a contului Proton.";
+
+"Password not valid" = "Password not valid";
+
+"Passphrase not found" = "Fraza de acces nu a fost găsită.";

@@ -341,3 +341,11 @@
 "Unknown" = "Невядома";
 
 "Set backup password" = "Задайце рэзервовы пароль";
+
+"Email is invalid" = "Email is invalid";
+
+"Please enter your Proton Account email." = "Please enter your Proton Account email.";
+
+"Password not valid" = "Password not valid";
+
+"Passphrase not found" = "Passphrase not found";

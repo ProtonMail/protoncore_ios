@@ -341,3 +341,11 @@
 "Unknown" = "Ukjent";
 
 "Set backup password" = "Angi reservepassord";
+
+"Email is invalid" = "E-post er ugyldig";
+
+"Please enter your Proton Account email." = "Skriv inn din Proton konto-e-post.";
+
+"Password not valid" = "Password not valid";
+
+"Passphrase not found" = "Passfrase ikke funnet";

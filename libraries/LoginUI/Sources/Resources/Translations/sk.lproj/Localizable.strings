@@ -341,3 +341,11 @@
 "Unknown" = "Neznáme";
 
 "Set backup password" = "Nastavte záložné heslo";
+
+"Email is invalid" = "Email je neplatný";
+
+"Please enter your Proton Account email." = "Zadajte svoj email účtu Proton.";
+
+"Password not valid" = "Password not valid";
+
+"Passphrase not found" = "Nenašla sa prístupová fráza";

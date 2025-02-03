@@ -341,3 +341,11 @@
 "Unknown" = "不明";
 
 "Set backup password" = "バックアップパスワードを設定";
+
+"Email is invalid" = "メールアドレスが無効です";
+
+"Please enter your Proton Account email." = "Proton アカウントのメールアドレスを入力してください。";
+
+"Password not valid" = "Password not valid";
+
+"Passphrase not found" = "パスフレーズが見つかりません";

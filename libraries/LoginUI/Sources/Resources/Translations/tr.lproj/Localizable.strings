@@ -341,3 +341,11 @@
 "Unknown" = "Bilinmiyor";
 
 "Set backup password" = "Yedek parola ayarla";
+
+"Email is invalid" = "E-posta adresi geçersiz";
+
+"Please enter your Proton Account email." = "Lütfen Proton hesabınızın e-posta adresini yazın.";
+
+"Password not valid" = "Şifre geçerli değil";
+
+"Passphrase not found" = "Parola ifadesi bulunamadı";
