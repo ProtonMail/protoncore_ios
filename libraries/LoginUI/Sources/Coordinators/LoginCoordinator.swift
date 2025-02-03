@@ -235,8 +235,9 @@ final class LoginCoordinator {
 
     /// Completes Login flow with the obtained
     private func finish(endLoading: @escaping () -> Void, data: LoginData) {
-        guard let performBeforeFlow = customization.performBeforeFlow else {
-            completeLoginFlow(data: data)
+        guard let performBeforeFlow = self.customization.performBeforeFlow else {
+            endLoading()
+            self.completeLoginFlow(data: data)
             return
         }
         DispatchQueue.main.async { [weak self] in
@@ -247,9 +248,11 @@ final class LoginCoordinator {
                     case .success:
                         self?.completeLoginFlow(data: data)
                     case .failure(let error):
-                        self?.popAndShowError(error: .generic(message: error.localizedDescription,
-                                                              code: error.bestShotAtReasonableErrorCode,
-                                                              originalError: error))
+                        self?.popAndShowError(error: .generic(
+                            message: error.localizedDescription,
+                            code: error.bestShotAtReasonableErrorCode,
+                            originalError: error
+                        ))
                     }
                 }
             }
@@ -257,8 +260,8 @@ final class LoginCoordinator {
     }
 
     private func finish(data: LoginData) async {
-        await withCheckedContinuation { continuation in
-            finish(endLoading: {
+        await withCheckedContinuation { [weak self] continuation in
+            self?.finish(endLoading: {
                 continuation.resume()
             }, data: data)
         }
