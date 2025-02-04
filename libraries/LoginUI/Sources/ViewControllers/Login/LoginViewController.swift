@@ -286,9 +286,9 @@ final class LoginViewController: UIViewController, AccessibleView, Focusable, Pr
                 self?.delegate?.createAddressNeeded(data: data, defaultUsername: defaultUsername)
                 self?.measureLoginSuccess()
             case .ssoChallenge(let ssoChallengeResponse):
-                self?.showWebView(completion: { ssoViewControler in
+                self?.showWebView(completion: { [weak self] ssoViewControler in
                     self?.webView = ssoViewControler
-                    Task { @MainActor in
+                    Task { @MainActor [weak self] in
                         let ssoRequestResult = await self?.viewModel.getSSORequest(challenge: ssoChallengeResponse)
                         if let error = ssoRequestResult?.error {
                             self?.webView?.dismiss(animated: true)
@@ -500,7 +500,9 @@ extension LoginViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if let responseToken = viewModel.getSSOTokenFromURL(url: navigationAction.request.url) {
             decisionHandler(.cancel)
-            self.webView?.dismiss(animated: true)
+            self.webView?.dismiss(animated: true, completion: {
+                self.webView = nil
+            })
             viewModel.processResponseTokenV2(idpEmail: loginTextField.value, responseToken: responseToken)
         } else {
             decisionHandler(.allow)
