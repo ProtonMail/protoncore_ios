@@ -341,3 +341,11 @@
 "Unknown" = "Άγνωστο";
 
 "Set backup password" = "Ορισμός εφεδρικού κωδικού πρόσβασης";
+
+"Email is invalid" = "Το email δεν είναι έγκυρο";
+
+"Please enter your Proton Account email." = "Παρακαλούμε εισαγάγετε το email του Λογαριασμού Proton σας.";
+
+"Password not valid" = "Password not valid";
+
+"Passphrase not found" = "Δεν βρέθηκε φράση πρόσβασης";

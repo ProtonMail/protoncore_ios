@@ -341,3 +341,11 @@
 "Unknown" = "უცნობი";
 
 "Set backup password" = "მარქაფი პაროლის დაყენება";
+
+"Email is invalid" = "ელ-ფოსტა არასწორია";
+
+"Please enter your Proton Account email." = "შეიყვანეთ თქვენი Proton-ის ანგარიშის ელფოსტა.";
+
+"Password not valid" = "პაროლი არასწორია";
+
+"Passphrase not found" = "საკვანძო ფრაზა აღმოჩენილი არაა";

@@ -252,7 +252,7 @@
 
 "Security Keys" = "Claves de seguridad";
 
-"To manage, add, or remove security keys, please use the Proton %@ web application." = "Para administrar, añadir, o borrar claves de seguridad, usa la aplicación web de Proton %@.";
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "Para administrar, añadir o eliminar claves de seguridad, usa la aplicación web de Proton %@.";
 
 "Unexpected FIDO2 signature." = "Firma FIDO2 inesperada.";
 
@@ -341,3 +341,11 @@
 "Unknown" = "Desconocido";
 
 "Set backup password" = "Establece una contraseña de respaldo";
+
+"Email is invalid" = "El correo electrónico no es válido.";
+
+"Please enter your Proton Account email." = "Ingresa el correo electrónico de tu cuenta de Proton.";
+
+"Password not valid" = "La contraseña no es válida.";
+
+"Passphrase not found" = "No se ha encontrado la frase de contraseña.";

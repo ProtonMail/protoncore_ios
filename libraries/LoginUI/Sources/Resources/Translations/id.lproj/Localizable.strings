@@ -341,3 +341,11 @@
 "Unknown" = "Tidak diketahui";
 
 "Set backup password" = "Atur kata sandi cadangan";
+
+"Email is invalid" = "Email tidak valid";
+
+"Please enter your Proton Account email." = "Silakan masukkan email Akun Proton Anda.";
+
+"Password not valid" = "Password not valid";
+
+"Passphrase not found" = "Frasa sandi tidak ditemukan";

@@ -341,3 +341,11 @@
 "Unknown" = "Desconegut";
 
 "Set backup password" = "Defineix la contrasenya de recuperació";
+
+"Email is invalid" = "El correu electrònic no és vàlid.";
+
+"Please enter your Proton Account email." = "Introduïu la contrasenya del correu electrònic de Proton.";
+
+"Password not valid" = "La contrasenya no és vàlida.";
+
+"Passphrase not found" = "No s'ha trobat la frase de contrasenya.";
