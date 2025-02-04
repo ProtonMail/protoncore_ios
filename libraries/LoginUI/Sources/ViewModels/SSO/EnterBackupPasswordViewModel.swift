@@ -25,6 +25,7 @@ import SwiftUI
 import ProtonCoreAuthenticationKeyGeneration
 import ProtonCoreLog
 import ProtonCoreLogin
+import ProtonCoreObservability
 import ProtonCoreServices
 import ProtonCoreUIFoundations
 
@@ -84,19 +85,23 @@ extension EnterBackupPasswordView {
                         salts: userData.salts,
                         userKeys: userData.user.keys
                     ) else {
+                        ObservabilityEnv.report(.ssoAuthInputPassword(status: .invalidPassphrase))
                         bannerState = .error(content: .init(message: LUITranslation.invalid_password.l10n))
                         return
                     }
                     let newUserData = userData.updated(passphrases: passphrases)
                     guard let passphrase = newUserData.getMailboxPassword else {
+                        ObservabilityEnv.report(.ssoAuthInputPassword(status: .noPrimaryKey))
                         bannerState = .error(content: .init(message: LUITranslation.passphrase_not_found.l10n))
                         return
                     }
                     viewState = .loading
                     try await activateAuthDevice?.invoke(userId: userData.user.ID, passphrase: passphrase)
                     await ssoNavigationDelegate?.globalSSOLoginDidFinish(data: newUserData)
+                    ObservabilityEnv.report(.ssoAuthInputPassword(status: .unlockSuccess))
                     viewState = .idle
                 } catch {
+                    ObservabilityEnv.report(.ssoAuthInputPassword(status: .fromResponseError(error)))
                     viewState = .idle
                     PMLog.error(error)
                     bannerState = .error(content: .init(message: error.localizedDescription))
@@ -110,12 +115,14 @@ extension EnterBackupPasswordView {
                     guard let organizationRepository else { return }
                     viewState = .loading
                     let organizationSignature = try await organizationRepository.getOrganizationSignature()
+                    ObservabilityEnv.report(.ssoAuthLoadOrganization(status: .successful))
                     ssoNavigationDelegate?.showRequestAdminHelpConfirmation(
                         data: userData,
                         adminEmail: organizationSignature.fingerprintSignatureAddress
                     )
                     viewState = .idle
                 } catch {
+                    ObservabilityEnv.report(.ssoAuthLoadOrganization(status: .failed))
                     viewState = .idle
                     PMLog.error(error)
                     bannerState = .error(content: .init(message: error.localizedDescription))

@@ -22,6 +22,7 @@
 #if os(iOS)
 
 import SwiftUI
+import ProtonCoreObservability
 import ProtonCoreUIFoundations
 
 public struct SetBackupPasswordView: View {
@@ -80,6 +81,12 @@ public struct SetBackupPasswordView: View {
                            configuration: .default())
         .onAppear {
             viewModel.backupPasswordContent.focus()
+            switch viewModel.mode {
+            case .setNewBackupPassword:
+                ObservabilityEnv.report(.ssoScreenState(stateId: .passwordSetup))
+            case .changeTemporaryPassword:
+                ObservabilityEnv.report(.ssoScreenState(stateId: .passwordChange))
+            }
         }
         .onLoad {
             viewModel.loadOrganizationLogo()

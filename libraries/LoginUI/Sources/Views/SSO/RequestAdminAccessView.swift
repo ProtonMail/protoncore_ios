@@ -22,6 +22,7 @@
 #if os(iOS)
 
 import SwiftUI
+import ProtonCoreObservability
 import ProtonCoreUIFoundations
 
 public struct RequestAdminAccessView: View {
@@ -79,6 +80,9 @@ public struct RequestAdminAccessView: View {
                 dismissDuration: nil
             )
         )
+        .onAppear {
+            ObservabilityEnv.report(.ssoScreenState(stateId: .requireAdmin))
+        }
     }
 
     @ViewBuilder

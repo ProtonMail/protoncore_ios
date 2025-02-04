@@ -19,6 +19,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+import ProtonCoreObservability
 import ProtonCoreServices
 
 public struct RejectAuthDevice {
@@ -29,7 +30,13 @@ public struct RejectAuthDevice {
     }
 
     public func invoke(deviceId: String) async throws {
-        let request = RejectAuthDeviceRequest(deviceID: deviceId)
-        _ = try await apiService.perform(request: request)
+        do {
+            let request = RejectAuthDeviceRequest(deviceID: deviceId)
+            _ = try await apiService.perform(request: request)
+            ObservabilityEnv.report(.ssoAuthRejectDevice(status: .http2xx))
+        } catch {
+            ObservabilityEnv.report(.ssoAuthRejectDevice(status: .fromResponseError(error)))
+            throw error
+        }
     }
 }

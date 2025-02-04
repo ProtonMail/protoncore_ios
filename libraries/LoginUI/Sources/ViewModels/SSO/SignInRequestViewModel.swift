@@ -24,6 +24,7 @@
 import Combine
 import ProtonCoreLog
 import ProtonCoreLogin
+import ProtonCoreObservability
 import ProtonCoreServices
 import ProtonCoreUIFoundations
 import SwiftUI
@@ -155,12 +156,14 @@ extension SignInRequestView {
                         guard let organizationRepository else { return }
                         viewState = .loading
                         let organizationSignature = try await organizationRepository.getOrganizationSignature()
+                        ObservabilityEnv.report(.ssoAuthLoadOrganization(status: .successful))
                         ssoNavigationDelegate?.showRequestAdminHelpConfirmation(
                             data: userData,
                             adminEmail: organizationSignature.fingerprintSignatureAddress
                         )
                         viewState = .idle
                     } catch {
+                        ObservabilityEnv.report(.ssoAuthLoadOrganization(status: .failed))
                         viewState = .idle
                         PMLog.error(error)
                         bannerState = .error(content: .init(message: error.localizedDescription))

@@ -23,6 +23,7 @@
 
 import SwiftUI
 import ProtonCoreLogin
+import ProtonCoreObservability
 import ProtonCoreUIFoundations
 
 public struct SignInRequestView: View {
@@ -82,6 +83,12 @@ public struct SignInRequestView: View {
                            configuration: .default())
         .onAppear {
             viewModel.startAuthDeviceLoop()
+            switch viewModel.mode {
+            case .requestForAdminApproval:
+                ObservabilityEnv.report(.ssoScreenState(stateId: .waitingAdmin))
+            case .requestApproveFromAnotherDevice:
+                ObservabilityEnv.report(.ssoScreenState(stateId: .waitingMember))
+            }
         }
         .onDisappear {
             viewModel.stopAuthDeviceLoop()

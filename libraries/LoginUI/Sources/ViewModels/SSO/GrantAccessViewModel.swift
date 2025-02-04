@@ -24,6 +24,7 @@
 import SwiftUI
 import ProtonCoreLog
 import ProtonCoreLogin
+import ProtonCoreObservability
 import ProtonCoreServices
 import ProtonCoreUIFoundations
 
@@ -115,9 +116,11 @@ extension GrantAccessView {
                         deviceSecret: deviceSecret,
                         passphrase: mailboxPassphrase
                     )
+                    ObservabilityEnv.report(.ssoAuthMemberApprovalScreenState(stateId: .confirmed))
                     viewState = .idle
                     navigationDelegate?.dismissGrantAccessView()
                 } catch {
+                    ObservabilityEnv.report(.ssoAuthMemberApprovalScreenState(stateId: .error))
                     viewState = .idle
                     PMLog.error(error)
                     bannerState = .error(content: .init(message: error.localizedDescription))
@@ -131,8 +134,10 @@ extension GrantAccessView {
                     guard let rejectAuthDevice else { return }
                     guard let authDevice = authDevices.first else { throw SSOLoginError.authDeviceNotFound }
                     try await rejectAuthDevice.invoke(deviceId: authDevice.ID)
+                    ObservabilityEnv.report(.ssoAuthMemberApprovalScreenState(stateId: .rejected))
                     navigationDelegate?.dismissGrantAccessView()
                 } catch {
+                    ObservabilityEnv.report(.ssoAuthMemberApprovalScreenState(stateId: .error))
                     PMLog.error(error)
                     bannerState = .error(content: .init(message: error.localizedDescription))
                 }

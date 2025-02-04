@@ -20,6 +20,8 @@
 //  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
 //
 
+import ProtonCoreNetworking
+
 public enum SuccessOrFailureStatus: String, Encodable, CaseIterable {
     case successful
     case failed
@@ -147,4 +149,34 @@ public enum WebAuthnRequestStatus: String, Encodable, CaseIterable {
 public enum TwoFAType: String, Encodable, CaseIterable {
     case totp
     case webauthn
+}
+
+public enum SSOAuthHTTPResponseCodeStatus: String, Encodable, CaseIterable {
+    case http1xx
+    case http2xx
+    case http3xx
+    case http4xx
+    case http5xx
+    case connectionError
+    case notConnected
+    case parseError
+    case sslError
+    case cancellation
+    case unknown
+
+    public static func fromResponseError(_ error: Error) -> Self {
+        guard let httpCode = error.httpCode,
+              let responseError = error as? ResponseError else {
+            return .unknown
+        }
+        switch httpCode {
+        case 100...199: return .http1xx
+        case 200...299: return .http2xx
+        case 300...399: return .http3xx
+        case 495: return .sslError
+        case 400...499: return .http4xx
+        case 500...599: return .http5xx
+        default: return .unknown
+        }
+    }
 }

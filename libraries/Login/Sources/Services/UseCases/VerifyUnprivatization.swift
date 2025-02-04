@@ -23,6 +23,7 @@ import Foundation
 import ProtonCoreAuthentication
 import ProtonCoreCrypto
 import ProtonCoreDataModel
+import ProtonCoreObservability
 import ProtonCoreServices
 
 /// Called as a first step in the unprivatization flow for first time login SSO users.
@@ -48,39 +49,49 @@ struct VerifyUnprivatization {
     }
 
     func invoke() async throws -> UnprivatizeUserSuccess {
-        let unprivatizationInfo = try await getUnprivatizationInfo.invoke()
+        do {
+            let unprivatizationInfo = try await getUnprivatizationInfo.invoke()
 
-        guard unprivatizationInfo.state == .pending else { throw UnprivatizationError.invalidState }
+            guard unprivatizationInfo.state == .pending else { throw UnprivatizationError.invalidState }
 
-        // Fetch the keys from GET /keys/all for the AdminEmail.
-        let adminEmail = unprivatizationInfo.adminEmail
-        guard let keysInfo = try await authManager.getKeys(email: adminEmail, internalOnly: false),
-              let publicAddressKey = keysInfo.address.keys.first else {
-            // If unable, or the key is not in the Address part (i.e. in KT) error out.
-            throw UnprivatizationError.publicAddressKeyNotFound
-        }
+            // Fetch the keys from GET /keys/all for the AdminEmail.
+            let adminEmail = unprivatizationInfo.adminEmail
+            guard let keysInfo = try await authManager.getKeys(email: adminEmail, internalOnly: false),
+                  let publicAddressKey = keysInfo.address.keys.first else {
+                // If unable, or the key is not in the Address part (i.e. in KT) error out.
+                throw UnprivatizationError.publicAddressKeyNotFound
+            }
 
 
-        // Verify the SHA265 fingerprint of the OrgPublicKey using the OrgKeyFingerprintSignature and the fetched admin address key.
-        let fingerprint = unprivatizationInfo.orgPublicKey.sha256Fingerprint
+            // Verify the SHA265 fingerprint of the OrgPublicKey using the OrgKeyFingerprintSignature and the fetched admin address key.
+            let fingerprint = unprivatizationInfo.orgPublicKey.sha256Fingerprint
 
-        let verified = try Sign.verifyDetached(
-            signature: unprivatizationInfo.orgKeyFingerprintSignature,
-            plainText: fingerprint,
-            verifierKey: ArmoredKey(value: publicAddressKey.publicKey),
-            trimTrailingSpaces: false,
-            verificationContext: VerificationContext(
-                value: Constants.orgVerificationContext,
-                required: .always
+            let verified = try Sign.verifyDetached(
+                signature: unprivatizationInfo.orgKeyFingerprintSignature,
+                plainText: fingerprint,
+                verifierKey: ArmoredKey(value: publicAddressKey.publicKey),
+                trimTrailingSpaces: false,
+                verificationContext: VerificationContext(
+                    value: Constants.orgVerificationContext,
+                    required: .always
+                )
             )
-        )
 
-        guard verified else { throw UnprivatizationError.verificationError }
+            guard verified else { throw UnprivatizationError.verificationError }
 
-        return UnprivatizeUserSuccess(
-            adminEmail: adminEmail,
-            organizationPublicKey: unprivatizationInfo.orgPublicKey
-        )
+            ObservabilityEnv.report(.ssoAuthVerifyUnprivatization(status: .success))
+            return UnprivatizeUserSuccess(
+                adminEmail: adminEmail,
+                organizationPublicKey: unprivatizationInfo.orgPublicKey
+            )
+        } catch {
+            if let unprivatizationError = error as? UnprivatizationError {
+                ObservabilityEnv.report(.ssoAuthVerifyUnprivatization(status: unprivatizationError.observabilityStatus))
+            } else {
+                ObservabilityEnv.report(.ssoAuthVerifyUnprivatization(status: .failure))
+            }
+            throw error
+        }
     }
 }
 
@@ -98,4 +109,12 @@ enum UnprivatizationError: Error {
     case invalidState
     case publicAddressKeyNotFound
     case verificationError
+
+    var observabilityStatus: SSOAuthVerifyUnprivatizationCodeStatus {
+        switch self {
+        case .invalidState: return .failureUnprivatizeStateError
+        case .publicAddressKeyNotFound: return .failurePublicAddressKeysError
+        case .verificationError: return .failureVerificationError
+        }
+    }
 }

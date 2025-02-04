@@ -22,6 +22,7 @@
 #if os(iOS)
 
 import SwiftUI
+import ProtonCoreObservability
 import ProtonCoreUIFoundations
 
 public struct EnterBackupPasswordView: View {
@@ -86,6 +87,9 @@ public struct EnterBackupPasswordView: View {
         )
         .bannerDisplayable(bannerState: $viewModel.bannerState,
                            configuration: .init(position: .bottom))
+        .onAppear {
+            ObservabilityEnv.report(.ssoScreenState(stateId: .passwordInput))
+        }
     }
 }
 

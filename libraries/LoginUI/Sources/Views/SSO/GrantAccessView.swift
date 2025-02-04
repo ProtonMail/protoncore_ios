@@ -23,6 +23,7 @@
 
 import SwiftUI
 import ProtonCoreLogin
+import ProtonCoreObservability
 import ProtonCoreUIFoundations
 
 public struct GrantAccessView: View {
@@ -86,6 +87,9 @@ public struct GrantAccessView: View {
         )
         .bannerDisplayable(bannerState: $viewModel.bannerState,
                            configuration: .init(position: .bottom))
+        .onAppear {
+            ObservabilityEnv.report(.ssoAuthMemberApprovalScreenState(stateId: .idle))
+        }
     }
 
     private func bodyText() -> some View {
