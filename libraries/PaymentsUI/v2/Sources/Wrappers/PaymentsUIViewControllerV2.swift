@@ -24,21 +24,12 @@ import ProtonCorePaymentsV2
 import ProtonCoreUI
 import Combine
 
-public protocol PaymentsUIViewControllerV2Delegate: AnyObject {
-    func viewControllerWillAppear(isFirstAppearance: Bool)
-    func viewControllerWillDisappear()
-    func planPurchaseError()
-    func paymentsFlowStateDidChange(_state: AvailablePlansViewModel.State)
-}
-
 public final class PaymentsUIViewControllerV2: UIViewController {
 
     private var viewWillAppear: Bool = true
     private var cancellables = Set<AnyCancellable>()
-
     @Published private var viewState: AvailablePlansViewModel.State = .idle
-
-    public weak var delegate: PaymentsUIViewControllerV2Delegate?
+    public private(set) var transactionProgress = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
 
     public init(sessionId: String,
                 token: String,
@@ -74,11 +65,7 @@ public final class PaymentsUIViewControllerV2: UIViewController {
                                                 hideCurrentPlan: hideCurrentPlan,
                                                 presentationMode: presentationMode)
 
-        viewModel.$viewState.sink { [weak self] value in
-            guard let self = self else { return }
-            self.delegate?.paymentsFlowStateDidChange(_state: value)
-        }
-        .store(in: &cancellables)
+        transactionProgress = viewModel.transactionProgress
 
         let availablePlansView = AvailablePlansView(viewModel: viewModel)
 
@@ -98,13 +85,7 @@ public final class PaymentsUIViewControllerV2: UIViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         debugPrint("viewControllerWillAppear called with value: \(viewWillAppear)")
-        delegate?.viewControllerWillAppear(isFirstAppearance: viewWillAppear)
         viewWillAppear = false
-    }
-
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        delegate?.viewControllerWillDisappear()
     }
 
     private func customNavBarButton() -> UIButton {
