@@ -48,6 +48,8 @@ public class AvailablePlansViewModel: ObservableObject {
         filteredPlans.isEmpty
     }
 
+    public private(set) var transactionProgress = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
+
     private var cancellables = Set<AnyCancellable>()
 
     let billing = BillingCycle.allCases
@@ -151,6 +153,8 @@ public class AvailablePlansViewModel: ObservableObject {
                 return
             }
 
+            self.transactionProgress = plan.transactionState
+
             plan.transactionState
                 .dropFirst()
                 .receive(on: DispatchQueue.main)
@@ -159,12 +163,15 @@ public class AvailablePlansViewModel: ObservableObject {
                 case .generatingReceipt:
                     self.purchaseInProgress()
                 case .transactionCompleted:
+                    self.transactionProgress.send(completion: .finished)
                     self.transactionCompleted()
                 case .createNewSubscription:
                     self.confirmationCompleted = true
                 case .transactionCancelledByUser:
+                    self.transactionProgress.send(completion: .finished)
                     self.transactionCancelledByUser()
                 case .unknownError, .transactionProcessError, .mismatchTransactionIDs, .unableToGetUserTransactionUUID:
+                    self.transactionProgress.send(completion: .finished)
                     self.transactionProcessError()
                 default:
                     break

@@ -19,8 +19,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import UIKit
+import Combine
 import ProtonCorePaymentsV2
+import UIKit
 
 public enum PresentationMode {
     case modal
@@ -35,7 +36,12 @@ public enum PaymentsPresentationError: Error {
     case unableToFindValidEnvironment
 }
 
-final public class PaymentsV2 {
+final public class PaymentsV2: Sendable {
+
+    public private(set) var transactionProgress = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
+    private let queue = DispatchQueue(label: "paymentsV2Presenter.syncQueue")
+    private var presentationMode: PresentationMode = .none
+    private var paymentsView: PaymentsUIViewControllerV2!
 
     public init() {}
 
@@ -65,20 +71,38 @@ final public class PaymentsV2 {
             throw PaymentsPresentationError.transactionsObserverNotActive
         }
 
-        let vc = try createPaymentsView(sessionID: sessionID,
-                                        accessToken: accessToken,
-                                        appVersion: appVersion,
-                                        hideCurrentPlan: hideCurrentPlan,
-                                        presentationMode: presentationMode,
-                                        env: env)
+        self.presentationMode = presentationMode
+
+        paymentsView = try createPaymentsView(sessionID: sessionID,
+                                              accessToken: accessToken,
+                                              appVersion: appVersion,
+                                              hideCurrentPlan: hideCurrentPlan,
+                                              presentationMode: presentationMode,
+                                              env: env)
 
         switch presentationMode {
         case .modal:
-            try presentView(vc: vc)
+            try presentView(vc: paymentsView)
         case .push:
-            try pushView(vc: vc)
+            try pushView(vc: paymentsView)
         case .none:
             throw PaymentsPresentationError.noPresentationModeSet
+        }
+    }
+
+    public func dismissPayments() {
+        switch presentationMode {
+        case .modal:
+            paymentsView.dismiss(animated: true)
+        case .push:
+            guard let viewController = UIApplication.getTopViewController(), let navController = viewController.navigationController else {
+                debugPrint("PaymentsV2 dismiss error: Impossible to find top viewController or navigation controller")
+                return
+            }
+
+            navController.popToViewController(paymentsView, animated: true)
+        case .none:
+            break
         }
     }
 
@@ -110,11 +134,15 @@ final public class PaymentsV2 {
             throw PaymentsPresentationError.unableToFindValidEnvironment
         }
 
-        return PaymentsUIViewControllerV2(sessionId: sessionID,
+        let vc = PaymentsUIViewControllerV2(sessionId: sessionID,
                                           token: accessToken,
                                           appVersion: appVersion,
                                           env: env,
                                           presentationMode: presentationMode,
                                           hideCurrentPlan: hideCurrentPlan)
+        queue.sync {
+            self.transactionProgress = vc.transactionProgress
+        }
+        return vc
     }
 }
