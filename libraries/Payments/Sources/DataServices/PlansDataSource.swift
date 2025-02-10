@@ -55,7 +55,7 @@ public protocol PlansDataSourceProtocol {
 
 class PlansDataSource: PlansDataSourceProtocol {
     var isIAPAvailable: Bool {
-        guard paymentsBackendStatusAcceptsIAP else { return false }
+        guard iapSupportStatus.isEnabled else { return false }
         guard featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan) else {
             assertionFailure("You need Dynamic Plans enabled to use PlansDataSource")
             return true
@@ -63,8 +63,8 @@ class PlansDataSource: PlansDataSourceProtocol {
         return localStorage.credits?.credit.isZero ?? true
     }
 
-    var paymentsBackendStatusAcceptsIAP: Bool {
-        willSet { localStorage.paymentsBackendStatusAcceptsIAP = newValue }
+    var iapSupportStatus: IAPSupportStatus {
+        willSet { localStorage.iapSupportStatus = newValue }
     }
 
     var availablePlans: AvailablePlans?
@@ -101,13 +101,21 @@ class PlansDataSource: PlansDataSourceProtocol {
         self.storeKitDataSource = storeKitDataSource
         self.localStorage = localStorage
         self.featureFlagsRepository = featureFlagsRepository
-        paymentsBackendStatusAcceptsIAP = localStorage.paymentsBackendStatusAcceptsIAP
+        self.iapSupportStatus = localStorage.iapSupportStatus
     }
 
     func fetchIAPAvailability() async throws {
-        let paymentStatusRequest = V5PaymentStatusRequest(api: apiService)
-        let paymentStatusResponse = try await paymentStatusRequest.response(responseObject: PaymentStatusResponse())
-        paymentsBackendStatusAcceptsIAP = paymentStatusResponse.isAvailable ?? false
+        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsV6Status),
+           case let request = V6PaymentStatusRequest(api: apiService),
+           let response = try await request.response(responseObject: V6PaymentStatusResponse()) as? V6PaymentStatusResponse {
+            iapSupportStatus = response.status
+        } else {
+            let paymentStatusRequest = V5PaymentStatusRequest(api: apiService)
+            let paymentStatusResponse = try await paymentStatusRequest.response(responseObject: PaymentStatusResponse())
+
+            let available = paymentStatusResponse.isAvailable ?? false
+            iapSupportStatus = available ? .enabled : .disabled(localizedReason: nil)
+        }
     }
 
     func fetchAvailablePlans() async throws {

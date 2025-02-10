@@ -25,9 +25,24 @@
 var paymentStatusResponse: [String: Any] {
     [
         "Code": 1000,
-        "Paypal": 0,
-        "Card": 0,
-        "Bitcoin": 0,
-        "InApp": 1
+        "Location": [
+          "CountryCode": "CH",
+          "State": nil,
+          "ZipCode": "1200"
+        ],
+        "PaymentMethods": [
+          "Bitcoin": [
+            "State": 1,
+            "Reason": nil
+          ],
+          "Card": [
+            "State": 1,
+            "Reason": nil
+          ],
+          "InApp": [
+            "State": 1,
+            "Reason": nil
+          ]
+        ]
     ]
 }

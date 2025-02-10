@@ -240,7 +240,7 @@ class TokenStorageImp: PaymentTokenStorage {
 class DataStorageImpl: ServicePlanDataStorage {
     var servicePlansDetails: [Plan]?
     var defaultPlanDetails: Plan?
-    var paymentsBackendStatusAcceptsIAP: Bool = false
+    var iapSupportStatus: IAPSupportStatus = .disabled(localizedReason: nil)
     var credits: Credits?
     var currentSubscription: Subscription?
     var paymentMethods: [PaymentMethod]?

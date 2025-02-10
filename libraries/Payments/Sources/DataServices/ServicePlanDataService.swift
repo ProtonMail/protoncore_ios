@@ -78,15 +78,25 @@ public protocol ServicePlanDataStorage: AnyObject {
     var currentSubscription: Subscription? { get set }
     var credits: Credits? { get set }
     var paymentMethods: [PaymentMethod]? { get set }
-    var paymentsBackendStatusAcceptsIAP: Bool { get set }
-
-    /// Informs about the result of the payments backend status call /payments/v4/status concerning IAP acceptance
-    @available(*, deprecated, renamed: "paymentsBackendStatusAcceptsIAP")
-    var isIAPUpgradePlanAvailable: Bool { get set }
+    var iapSupportStatus: IAPSupportStatus { get set }
 }
 
 public extension ServicePlanDataStorage {
-    @available(*, deprecated, renamed: "paymentsBackendStatusAcceptsIAP")
+    @available(*, deprecated, renamed: "iapSupportStatus")
+    var paymentsBackendStatusAcceptsIAP: Bool {
+        get {
+            return iapSupportStatus.isEnabled
+        }
+        set {
+            guard newValue else {
+                iapSupportStatus = .disabled(localizedReason: nil)
+                return
+            }
+            iapSupportStatus = .enabled
+        }
+    }
+
+    @available(*, deprecated, renamed: "iapSupportStatus")
     var isIAPUpgradePlanAvailable: Bool {
         get { paymentsBackendStatusAcceptsIAP }
         set { paymentsBackendStatusAcceptsIAP = newValue }
@@ -136,23 +146,16 @@ final class ServicePlanDataService: ServicePlanDataServiceProtocol {
             assertionFailure("ServicePlanDataService should never be called with Dynamic Plans FF enabled")
             return false
         }
-        guard paymentsBackendStatusAcceptsIAP else { return false }
 
-        return true
+        return iapSupportStatus.isEnabled
     }
 
     public var availablePlansDetails: [Plan] {
         willSet { localStorage.servicePlansDetails = newValue }
     }
 
-    public var paymentsBackendStatusAcceptsIAP: Bool {
-        willSet { localStorage.paymentsBackendStatusAcceptsIAP = newValue }
-    }
-
-    @available(*, deprecated, renamed: "paymentsBackendStatusAcceptsIAP")
-    public var isIAPUpgradePlanAvailable: Bool {
-        get { paymentsBackendStatusAcceptsIAP }
-        set { paymentsBackendStatusAcceptsIAP = newValue }
+    public var iapSupportStatus: IAPSupportStatus {
+        willSet { localStorage.iapSupportStatus = newValue }
     }
 
     public var defaultPlanDetails: Plan? {
@@ -190,7 +193,7 @@ final class ServicePlanDataService: ServicePlanDataServiceProtocol {
          featureFlagsRepository: FeatureFlagsRepositoryProtocol = FeatureFlagsRepository.shared) {
         self.localStorage = localStorage
         self.availablePlansDetails = localStorage.servicePlansDetails ?? []
-        self.paymentsBackendStatusAcceptsIAP = localStorage.paymentsBackendStatusAcceptsIAP
+        self.iapSupportStatus = localStorage.iapSupportStatus
         self.defaultPlanDetails = localStorage.defaultPlanDetails
         self.currentSubscription = localStorage.currentSubscription
         self.paymentsApi = paymentsApi
@@ -232,8 +235,16 @@ extension ServicePlanDataService {
 
         // get API atatus
         let paymentStatusApi = paymentsApi.paymentStatusRequest(api: service)
-        let paymentStatusResponse = try paymentStatusApi.awaitResponse(responseObject: PaymentStatusResponse())
-        paymentsBackendStatusAcceptsIAP = paymentStatusResponse.isAvailable ?? false
+
+        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsV6Status),
+           let response = try paymentStatusApi
+                .awaitResponse(responseObject: V6PaymentStatusResponse()) as? V6PaymentStatusResponse {
+            iapSupportStatus = response.status
+        } else {
+            let paymentStatusResponse = try paymentStatusApi.awaitResponse(responseObject: PaymentStatusResponse())
+            let available = paymentStatusResponse.isAvailable ?? false
+            iapSupportStatus = available ? .enabled : .disabled(localizedReason: nil)
+        }
 
         // get service plans
         let servicePlanApi = paymentsApi.plansRequest(api: service)

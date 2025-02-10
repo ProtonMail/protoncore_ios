@@ -52,10 +52,10 @@ final class PlansDataSourceIntegrationTests: XCTestCase {
         // Given
         let api = PMAPIService.createAPIServiceWithoutSession(doh: DohMock() as DoHInterface, challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
         mockPaymentStatus()
-        let request = V5PaymentStatusRequest(api: api)
+        let request = V6PaymentStatusRequest(api: api)
 
         // When
-        let paymentStatusResponse = try await request.response(responseObject: PaymentStatusResponse())
+        let paymentStatusResponse = try await request.response(responseObject: V6PaymentStatusResponse())
         guard let isAvailable = paymentStatusResponse.isAvailable else {
             XCTFail("Expected: payment status")
             return

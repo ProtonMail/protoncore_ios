@@ -31,7 +31,6 @@ import ProtonCoreTestingToolkit
 @testable import ProtonCorePayments
 
 final class ProcessDependenciesMock: ProcessDependencies {
-
     @PropertyStub(\ProcessDependencies.storeKitDelegate, initialGet: nil) var storeKitDelegateStub
     var storeKitDelegate: StoreKitManagerDelegate? { storeKitDelegateStub() }
 
