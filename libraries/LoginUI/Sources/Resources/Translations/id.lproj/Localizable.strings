@@ -178,7 +178,7 @@
 
 "Enter the 6-digit code." = "Masukkan kode 6 digit.";
 
-"Did not receive a code?" = "Tidak menerima kode?";
+"Did not receive a code?" = "Tidak menerima kode verifikasi?";
 
 "Terms and Conditions" = "Syarat dan Ketentuan";
 
@@ -346,6 +346,6 @@
 
 "Please enter your Proton Account email." = "Silakan masukkan email Akun Proton Anda.";
 
-"Password not valid" = "Password not valid";
+"Password not valid" = "Kata sandi tidak valid";
 
 "Passphrase not found" = "Frasa sandi tidak ditemukan";

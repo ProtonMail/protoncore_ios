@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Anmeldung auf einem anderen Gerät angefragt. Warst du das?";
 
-"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
+"Enter the confirmation code we sent on your other device for %@." = "Gib den Bestätigungscode ein, den wir auf dein anderes Gerät für %@ gesendet haben.";
 
 "Confirmation code" = "Bestätigungscode";
 
@@ -346,6 +346,6 @@
 
 "Please enter your Proton Account email." = "Gib die E-Mail-Adresse deines Proton-Kontos ein.";
 
-"Password not valid" = "Password not valid";
+"Password not valid" = "Passwort nicht gültig";
 
-"Passphrase not found" = "Passphrase not found";
+"Passphrase not found" = "Passphrase nicht gefunden";

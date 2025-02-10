@@ -255,7 +255,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>other</key>
-        <string>%d 個國家（美國、荷蘭、日本）</string>
+        <string>%d 個國家(美國、荷蘭、日本)</string>
       </dict>
     </dict>
     <key>&lt;n&gt; of &lt;m&gt; users</key>

@@ -346,6 +346,6 @@
 
 "Please enter your Proton Account email." = "Inserisci l'email del tuo Account Proton.";
 
-"Password not valid" = "Password not valid";
+"Password not valid" = "Il password non è valido.";
 
 "Passphrase not found" = "Frase di accesso non trovata";
