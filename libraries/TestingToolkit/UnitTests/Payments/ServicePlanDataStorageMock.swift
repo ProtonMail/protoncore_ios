@@ -32,8 +32,8 @@ public final class ServicePlanDataStorageMock: ServicePlanDataStorage {
     @PropertyStub(\ServicePlanDataStorage.servicePlansDetails, initialGet: nil) public var servicePlansDetailsStub
     public var servicePlansDetails: [Plan]? { get { servicePlansDetailsStub() } set { servicePlansDetailsStub(newValue) } }
 
-    @PropertyStub(\ServicePlanDataStorage.paymentsBackendStatusAcceptsIAP, initialGet: true) public var paymentsBackendStatusAcceptsIAPStub
-    public var paymentsBackendStatusAcceptsIAP: Bool { get { paymentsBackendStatusAcceptsIAPStub() } set { paymentsBackendStatusAcceptsIAPStub(newValue) } }
+    @PropertyStub(\ServicePlanDataStorage.iapSupportStatus, initialGet: .enabled) public var iapSupportStatusStub
+    public var iapSupportStatus: IAPSupportStatus { get { iapSupportStatusStub() } set { iapSupportStatusStub(newValue) } }
 
     @PropertyStub(\ServicePlanDataStorage.defaultPlanDetails, initialGet: nil) public var defaultPlanDetailsStub
     public var defaultPlanDetails: Plan? { get { defaultPlanDetailsStub() } set { defaultPlanDetailsStub(newValue) } }

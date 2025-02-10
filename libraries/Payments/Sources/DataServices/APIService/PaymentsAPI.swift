@@ -21,6 +21,7 @@
 
 import Foundation
 import ProtonCoreAuthentication
+import ProtonCoreFeatureFlags
 import ProtonCoreLog
 import ProtonCoreDataModel
 import ProtonCoreNetworking
@@ -268,7 +269,10 @@ class PaymentsApiV4Implementation: PaymentsApiProtocol {
 
 class PaymentsApiV5Implementation: PaymentsApiProtocol {
     func paymentStatusRequest(api: APIService) -> PaymentStatusRequest {
-        V5PaymentStatusRequest(api: api)
+        guard FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsV6Status) else {
+            return V5PaymentStatusRequest(api: api)
+        }
+        return V6PaymentStatusRequest(api: api)
     }
 
     func buySubscriptionRequest(api: ProtonCoreServices.APIService, plan: PlanToBeProcessed, amountDue: Int, paymentAction: PaymentAction, isCreditingAllowed: Bool) throws -> SubscriptionRequest {

@@ -30,7 +30,7 @@ import ProtonCoreServices
 public final class PaymentsApiMock: PaymentsApiProtocol {
     public init() { }
 
-    @FuncStub(PaymentsApiProtocol.paymentStatusRequest, initialReturn: { V5PaymentStatusRequest(api: $0) }) public var paymentStatusRequestStub
+    @FuncStub(PaymentsApiProtocol.paymentStatusRequest, initialReturn: { V6PaymentStatusRequest(api: $0) }) public var paymentStatusRequestStub
     public func paymentStatusRequest(api: APIService) -> PaymentStatusRequest {
         paymentStatusRequestStub(api)
     }

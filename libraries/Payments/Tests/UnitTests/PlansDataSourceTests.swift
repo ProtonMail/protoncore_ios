@@ -110,7 +110,7 @@ final class PlansDataSourceTests: XCTestCase {
     func test_isIAPAvailable_isTrueWhenSettingPaymentsBackendStatusAcceptsIAPToTrue() {
         // Given
         withFeatureFlags([.dynamicPlans]) {
-            servicePlanDataStorageMock.paymentsBackendStatusAcceptsIAPStub.fixture = true
+            servicePlanDataStorageMock.iapSupportStatusStub.fixture = .enabled
             sut = .init(
                 apiService: apiServiceMock,
                 storeKitDataSource: storeKitDataSourceMock,
@@ -118,7 +118,7 @@ final class PlansDataSourceTests: XCTestCase {
             )
 
             // Then
-            XCTAssertTrue(sut.paymentsBackendStatusAcceptsIAP)
+            XCTAssertTrue(sut.iapSupportStatus.isEnabled)
             XCTAssertTrue(sut.isIAPAvailable)
         }
     }
@@ -126,7 +126,7 @@ final class PlansDataSourceTests: XCTestCase {
     func test_isIAPAvailable_isFalseWhenSettingPaymentsBackendStatusAcceptsIAPToFalse() {
         // Given
         withFeatureFlags([.dynamicPlans]) {
-            servicePlanDataStorageMock.paymentsBackendStatusAcceptsIAPStub.fixture = false
+            servicePlanDataStorageMock.iapSupportStatusStub.fixture = .enabled
             sut = .init(
                 apiService: apiServiceMock,
                 storeKitDataSource: storeKitDataSourceMock,
@@ -134,7 +134,7 @@ final class PlansDataSourceTests: XCTestCase {
             )
 
             // Then
-            XCTAssertFalse(sut.paymentsBackendStatusAcceptsIAP)
+            XCTAssertFalse(sut.iapSupportStatus.isEnabled)
             XCTAssertFalse(sut.isIAPAvailable)
         }
     }
@@ -142,7 +142,7 @@ final class PlansDataSourceTests: XCTestCase {
     func test_isIAPAvailable_isFalseWhenCreditsAreAvailable() {
         // Given
         withFeatureFlags([.dynamicPlans]) {
-            servicePlanDataStorageMock.paymentsBackendStatusAcceptsIAPStub.fixture = true
+            servicePlanDataStorageMock.iapSupportStatusStub.fixture = .enabled
             servicePlanDataStorageMock.creditsStub.fixture = Credits(credit: 50, currency: "USD")
             sut = .init(
                 apiService: apiServiceMock,

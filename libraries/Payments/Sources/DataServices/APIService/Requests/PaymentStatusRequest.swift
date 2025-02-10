@@ -50,14 +50,48 @@ final class V5PaymentStatusRequest: PaymentStatusRequest {
     override var isAuth: Bool { false }
 }
 
+/// Payment Status request for API v5
+final class V6PaymentStatusRequest: PaymentStatusRequest {
+
+    override init(api: APIService) {
+        super.init(api: api)
+    }
+
+    override var path: String { super.path + "/v6/status/apple" }
+
+    override var isAuth: Bool { false }
+}
+
 /// Common Payment Status response
-final class PaymentStatusResponse: Response {
+class PaymentStatusResponse: Response {
     var isAvailable: Bool?
 
     override func ParseResponse(_ response: [String: Any]) -> Bool {
         PMLog.debug(response.json(prettyPrinted: true))
         let states = response["VendorStates"] as? [String: Any] ?? response
         self.isAvailable = states["InApp"].map { $0 as? Int == 1 }
+        return true
+    }
+}
+
+final class V6PaymentStatusResponse: PaymentStatusResponse {
+    var unavailabilityReason: String?
+
+    var status: IAPSupportStatus {
+        guard let isAvailable, isAvailable else { return .disabled(localizedReason: unavailabilityReason) }
+        return .enabled
+    }
+
+    override func ParseResponse(_ response: [String: Any]) -> Bool {
+        PMLog.debug(response.json(prettyPrinted: true))
+        guard let methods = response["PaymentMethods"] as? [String: Any] else { return false }
+
+        let inApp = methods["InApp"] as? [String: Any]
+
+        // Value can be 0 or 1, values > 1 are reserved for future use.
+        // For now we will assume that such values mean it is disabled.
+        self.isAvailable = (inApp?["State"] as? Int) == 1
+        self.unavailabilityReason = inApp?["Reason"] as? String
         return true
     }
 }
