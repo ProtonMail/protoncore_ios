@@ -29,7 +29,7 @@ final class MockedRemoteManager: @unchecked Sendable {
     public var remoteManager: RemoteManager!
 
     init() {
-        paymentsAPI = PaymentsAPIs(envURL: .protonBlack)
+        paymentsAPI = PaymentsAPIs(doh: PaymentsDoH())
         URLProtocol.registerClass(MockURLProtocol.self)
 
         urlSessionConfig = URLSessionConfiguration.ephemeral

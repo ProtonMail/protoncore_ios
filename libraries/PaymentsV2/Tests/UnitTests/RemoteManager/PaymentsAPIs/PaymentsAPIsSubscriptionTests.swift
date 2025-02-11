@@ -19,26 +19,23 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import XCTest
 @testable import ProtonCorePaymentsV2
+import XCTest
 
 final class PaymentsAPIsSubscriptionTests: XCTestCase {
 
     var sut: PaymentsAPIs!
-    var envURL: EnvURLType!
+    var doh = PaymentsDoH()
 
     override func setUp() {
         super.setUp()
-
-        envURL = .protonBlack
-        sut = PaymentsAPIs(envURL: envURL)
+        sut = PaymentsAPIs(doh: doh)
     }
 
     override func tearDown() {
         super.tearDown()
 
         sut = nil
-        envURL = nil
     }
 
     private func assertPayload(expectedPayload: [String: Any], generatedPayload: Any?) {
@@ -52,7 +49,7 @@ final class PaymentsAPIsSubscriptionTests: XCTestCase {
 
     // MARK: Tests
     func testGetCurrentSubscriptionRequest() throws {
-        guard let expectedResult = URL(string: "https://proton.black/api/payments/v5/subscription") else {
+        guard let expectedResult = URL(string: doh.getCurrentlyUsedHostUrl() + "/payments/v5/subscription") else {
             return
         }
 
@@ -63,7 +60,7 @@ final class PaymentsAPIsSubscriptionTests: XCTestCase {
     }
 
     func testCancelSubscriptionRequest() throws {
-        guard let expectedResult = URL(string: "https://proton.black/api/payments/v5/subscription") else {
+        guard let expectedResult = URL(string: doh.getCurrentlyUsedHostUrl() + "/payments/v5/subscription") else {
             return
         }
 
@@ -90,7 +87,7 @@ final class PaymentsAPIsSubscriptionTests: XCTestCase {
     }
 
     func testCreateNewSubscription() throws {
-        guard let expectedResult = URL(string: "https://proton.black/api/payments/v5/subscription") else {
+        guard let expectedResult = URL(string: doh.getCurrentlyUsedHostUrl() + "/payments/v5/subscription") else {
             return
         }
 
@@ -132,7 +129,7 @@ final class PaymentsAPIsSubscriptionTests: XCTestCase {
     }
 
     func testCheckSubscriptionRequest() throws {
-        guard let expectedResult = URL(string: "https://proton.black/api/payments/v5/subscription/check") else {
+        guard let expectedResult = URL(string: doh.getCurrentlyUsedHostUrl() + "/payments/v5/subscription/check") else {
             return
         }
 
@@ -166,7 +163,7 @@ final class PaymentsAPIsSubscriptionTests: XCTestCase {
     }
 
     func testRenewSubscriptionRequest() throws {
-        guard let expectedResult = URL(string: "https://proton.black/api/payments/v5/subscription/renew") else {
+        guard let expectedResult = URL(string: doh.getCurrentlyUsedHostUrl() + "/payments/v5/subscription/renew") else {
             return
         }
 
@@ -188,7 +185,7 @@ final class PaymentsAPIsSubscriptionTests: XCTestCase {
     }
 
     func testSubscriptionLatestRequest() throws {
-        guard let expectedResult = URL(string: "https://proton.black/api/payments/v5/subscription/latest") else {
+        guard let expectedResult = URL(string: doh.getCurrentlyUsedHostUrl() + "/payments/v5/subscription/latest") else {
             return
         }
 

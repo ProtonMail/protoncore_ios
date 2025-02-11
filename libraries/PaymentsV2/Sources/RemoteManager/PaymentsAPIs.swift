@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
+import ProtonCoreDoh
 
 public struct APIRequest: @unchecked Sendable {
     public let url: URL
@@ -33,7 +34,6 @@ public enum PaymentsAPIsError: Error {
 public struct PaymentsAPIs: Sendable {
 
     private struct Constants {
-        static let envPrefix = "https://"
         static func moduleNameSpace(requestType: RequestType) -> String {
             switch requestType {
             case .userTransactionUUID:
@@ -52,8 +52,8 @@ public struct PaymentsAPIs: Sendable {
             }
         }
 
-        static func urlString(requestType: RequestType, baseURL: String) -> String {
-            return Constants.envPrefix + baseURL + Constants.moduleNameSpace(requestType: requestType) + Constants.apiVersion(requestType: requestType).rawValue + requestType.requestEndpoint
+        static func urlString(hostURL: String, requestType: RequestType) -> String {
+            return hostURL  + Constants.moduleNameSpace(requestType: requestType) + Constants.apiVersion(requestType: requestType).rawValue + requestType.requestEndpoint
         }
     }
 
@@ -62,12 +62,12 @@ public struct PaymentsAPIs: Sendable {
         case v5
     }
 
-    private let envURL: EnvURLType
+    private let doh: DoHInterface
     private let version: APIv = .v5
 
     public func url(for api: RequestType) throws -> APIRequest {
 
-        let urlString = Constants.urlString(requestType: api, baseURL: envURL.baseUrl)
+        let urlString = Constants.urlString(hostURL: doh.getCurrentlyUsedHostUrl(), requestType: api)
         var urlComponents = URLComponents(string: urlString)
 
         if let queryItems = api.queryComponents {
@@ -81,12 +81,8 @@ public struct PaymentsAPIs: Sendable {
         return APIRequest(url: url, body: api.body)
     }
 
-    public init(envURL: EnvURLType) {
-        self.envURL = envURL
-    }
-
-    public func currentEnv() -> EnvURLType {
-        envURL
+    public init(doh: DoHInterface & ServerConfig) {
+        self.doh = doh
     }
 }
 

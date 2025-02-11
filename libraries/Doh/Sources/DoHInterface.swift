@@ -179,7 +179,7 @@ extension DispatchQueue: DoHWorkExecutor {
     }
 }
 
-public protocol DoHInterface {
+public protocol DoHInterface: Sendable {
 
     func clearCache()
 

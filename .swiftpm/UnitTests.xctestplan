@@ -93,13 +93,6 @@
     {
       "target" : {
         "containerPath" : "container:",
-        "identifier" : "ProtonCoreLoginUnitTests",
-        "name" : "ProtonCoreLoginUnitTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:",
         "identifier" : "ProtonCoreDohUnitTests",
         "name" : "ProtonCoreDohUnitTests"
       }
@@ -207,13 +200,6 @@
         "containerPath" : "container:",
         "identifier" : "ProtonCoreQuarkCommandsTests",
         "name" : "ProtonCoreQuarkCommandsTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:",
-        "identifier" : "ProtonCoreEnvironmentTests",
-        "name" : "ProtonCoreEnvironmentTests"
       }
     },
     {

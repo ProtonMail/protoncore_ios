@@ -1,6 +1,6 @@
 //
-//  EnvURLType.swift
-//  ProtonCore-PaymentsV2 - Created on 15/10/2024.
+//  PaymentsDoH.swift
+//  ProtonCore-PaymentsUIV2 - Created on 7/11/2024.
 //
 //  Copyright (c) 2024 Proton Technologies AG
 //
@@ -20,35 +20,17 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
+import ProtonCoreDoh
 
-public enum EnvURLType: Sendable {
+public final class PaymentsDoH: DoH, ServerConfig {
+    public let signupDomain: String = "proton.me"
+    public let captchaHost: String =  "https://some.captcha.host"
+    public let humanVerificationV3Host: String = "https://verify.proton.me"
+    public let accountHost: String = "https://verify.proton.me"
+    public let defaultHost: String = "https://some.default.host"
+    public let apiHost: String = "payments-api.proton.me"
+    public let defaultPath: String = "/api"
+    public let proxyToken: String? = nil
 
-    case paymentsBlack
-    case protonBlack
-    case custom(envUrl: String)
-
-    public var baseUrl: String {
-        switch self {
-        case .paymentsBlack:
-            return "payments.proton.black/api"
-        case .protonBlack:
-            return "proton.black/api"
-        case .custom(let customEnv):
-            return customEnv
-        }
-    }
-}
-
-public extension String {
-
-    var toEnvURLType: EnvURLType? {
-        switch self {
-        case "black":
-            return .protonBlack
-        case "payments":
-            return .paymentsBlack
-        default:
-            return nil
-        }
-    }
+    public init() {}
 }

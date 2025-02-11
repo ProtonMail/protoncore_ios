@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import SwiftUI
+import ProtonCoreDoh
 import ProtonCorePaymentsV2
 import ProtonCoreUI
 import Combine
@@ -34,7 +35,7 @@ public final class PaymentsUIViewControllerV2: UIViewController {
     public init(sessionId: String,
                 token: String,
                 appVersion: String,
-                env: EnvURLType,
+                doh: DoHInterface & ServerConfig,
                 presentationMode: PresentationMode = .none,
                 hideCurrentPlan: Bool = false) {
         super.init(nibName: nil, bundle: nil)
@@ -42,7 +43,7 @@ public final class PaymentsUIViewControllerV2: UIViewController {
         setupView(sessionId: sessionId,
                   token: token,
                   appVersion: appVersion,
-                  env: env,
+                  doh: doh,
                   presentationMode: presentationMode,
                   hideCurrentPlan: hideCurrentPlan)
     }
@@ -54,13 +55,13 @@ public final class PaymentsUIViewControllerV2: UIViewController {
     private func setupView(sessionId: String,
                            token: String,
                            appVersion: String,
-                           env: EnvURLType,
+                           doh: DoHInterface & ServerConfig,
                            presentationMode: PresentationMode,
                            hideCurrentPlan: Bool = false) {
 
         let viewModel = AvailablePlansViewModel(sessionId: sessionId,
                                                 token: token,
-                                                envURL: env,
+                                                doh: doh,
                                                 appVersion: appVersion,
                                                 hideCurrentPlan: hideCurrentPlan,
                                                 presentationMode: presentationMode)
