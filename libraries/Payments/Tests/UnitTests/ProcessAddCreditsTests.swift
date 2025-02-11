@@ -99,7 +99,10 @@ final class ProcessAddCreditsTests: XCTestCase {
         }
 
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+        processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+            returnedTransaction = transaction
+            completion?()
+        }
 
         // when
         var returnedResult: ProcessCompletionResult?
@@ -142,7 +145,10 @@ final class ProcessAddCreditsTests: XCTestCase {
         }
 
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+        processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+            returnedTransaction = transaction
+            completion?()
+        }
 
         // when
         var returnedResult: ProcessCompletionResult?
@@ -256,7 +262,10 @@ final class ProcessAddCreditsTests: XCTestCase {
         }
 
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+        processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+            returnedTransaction = transaction
+            completion?()
+        }
 
         // when
         var returnedResult: ProcessCompletionResult?
