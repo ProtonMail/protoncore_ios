@@ -88,7 +88,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
             completion(nil, .success(PaymentTokenStatus(status: .consumed).toSuccessfulResponse))
         }
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+        processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+            returnedTransaction = transaction
+            completion?()
+        }
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
 
@@ -130,7 +133,9 @@ final class ProcessAuthenticatedTests: XCTestCase {
         // then
         waitForExpectations(timeout: timeout)
         XCTAssertTrue(paymentTokenStorageMock.clearStub.wasCalledExactlyOnce)
-        XCTAssertTrue(processDependencies.finishTransactionStub.getCallCounter == 0)
+        processDependencies.finishTransactionStub.bodyIs { counter, _, _ in
+            XCTAssertTrue(counter == 0)
+        }
         guard case .errored(.wrongTokenStatus(.failed)) = returnedResult else { XCTFail(); return }
     }
 
@@ -158,7 +163,9 @@ final class ProcessAuthenticatedTests: XCTestCase {
         // then
         waitForExpectations(timeout: timeout)
         XCTAssertTrue(paymentTokenStorageMock.clearStub.wasCalledExactlyOnce)
-        XCTAssertTrue(processDependencies.finishTransactionStub.getCallCounter == 0)
+        processDependencies.finishTransactionStub.bodyIs { counter, _, _ in
+            XCTAssertTrue(counter == 0)
+        }
         guard case .errored(.wrongTokenStatus(.notSupported)) = returnedResult else { XCTFail(); return }
     }
 
@@ -190,7 +197,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
         }
 
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+        processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+            returnedTransaction = transaction
+            completion?()
+        }
 
         // when
         var returnedResult: ProcessCompletionResult?
@@ -233,7 +243,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
         }
 
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+        processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+            returnedTransaction = transaction
+            completion?()
+        }
         var returnedSubscription: Subscription?
         processDependencies.updateSubscriptionStub.fixture = { returnedSubscription = $0 }
         var processCompletionResult: ProcessCompletionResult?
@@ -283,7 +296,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
             } else { XCTFail(); completion(nil, .success([:])) }
         }
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+        processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+            returnedTransaction = transaction
+            completion?()
+        }
 
         // when
         var returnedResult: ProcessCompletionResult?
@@ -325,7 +341,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
             }
         }
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+        processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+            returnedTransaction = transaction
+            completion?()
+        }
 
         // when
         var returnedResult: ProcessCompletionResult?
@@ -361,7 +380,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
         }
 
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+        processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+            returnedTransaction = transaction
+            completion?()
+        }
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
         // when
@@ -399,7 +421,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
             }
 
             var returnedTransaction: SKPaymentTransaction?
-            processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+            processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+                returnedTransaction = transaction
+                completion?()
+            }
             var processCompletionResult: ProcessCompletionResult?
             processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
             // when
@@ -438,7 +463,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
         }
 
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+        processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+            returnedTransaction = transaction
+            completion?()
+        }
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
 
@@ -475,7 +503,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
             }
 
             var returnedTransaction: SKPaymentTransaction?
-            processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+            processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+                returnedTransaction = transaction
+                completion?()
+            }
             var processCompletionResult: ProcessCompletionResult?
             processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
 
@@ -583,7 +614,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
             } else { XCTFail(); completion(nil, .success([:])) }
         }
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+        processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+            returnedTransaction = transaction
+            completion?()
+        }
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
 
@@ -622,7 +656,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
             } else { XCTFail(); completion(nil, .success([:])) }
         }
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+        processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+            returnedTransaction = transaction
+            completion?()
+        }
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
 
@@ -661,7 +698,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
             } else { XCTFail(); completion(nil, .success([:])) }
         }
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+        processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+            returnedTransaction = transaction
+            completion?()
+        }
 
         // when
         var returnedResult: ProcessCompletionResult?
@@ -699,7 +739,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
                 } else { XCTFail(); completion(nil, .success([:])) }
             }
             var returnedTransaction: SKPaymentTransaction?
-            processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+            processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+                returnedTransaction = transaction
+                completion?()
+            }
 
             // when
             var returnedResult: ProcessCompletionResult?
@@ -741,7 +784,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
             } else { XCTFail(); completion(nil, .success([:])) }
         }
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+        processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+            returnedTransaction = transaction
+            completion?()
+        }
 
         // when
         var returnedResult: ProcessCompletionResult?
@@ -780,7 +826,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
                 } else { XCTFail(); completion(nil, .success([:])) }
             }
             var returnedTransaction: SKPaymentTransaction?
-            processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+            processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+                returnedTransaction = transaction
+                completion?()
+            }
 
             // when
             var returnedResult: ProcessCompletionResult?
@@ -822,7 +871,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
             } else { XCTFail(); completion(nil, .success([:])) }
         }
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+        processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+            returnedTransaction = transaction
+            completion?()
+        }
 
         // when
         var returnedResult: ProcessCompletionResult?
@@ -862,7 +914,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
                 } else { XCTFail(); completion(nil, .success([:])) }
             }
             var returnedTransaction: SKPaymentTransaction?
-            processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+            processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+                returnedTransaction = transaction
+                completion?()
+            }
 
             // when
             var returnedResult: ProcessCompletionResult?
@@ -905,7 +960,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
             } else { XCTFail(); completion(nil, .success([:])) }
         }
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+        processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+            returnedTransaction = transaction
+            completion?()
+        }
 
         // when
         var returnedResult: ProcessCompletionResult?
@@ -946,7 +1004,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
                 } else { XCTFail(); completion(nil, .success([:])) }
             }
             var returnedTransaction: SKPaymentTransaction?
-            processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+            processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+                returnedTransaction = transaction
+                completion?()
+            }
 
             // when
             var returnedResult: ProcessCompletionResult?
@@ -988,7 +1049,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
             } else { XCTFail(); completion(nil, .success([:])) }
         }
         var returnedTransaction: SKPaymentTransaction?
-        processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+        processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+            returnedTransaction = transaction
+            completion?()
+        }
 
         // when
         var returnedResult: ProcessCompletionResult?
@@ -1028,7 +1092,10 @@ final class ProcessAuthenticatedTests: XCTestCase {
                 } else { XCTFail(); completion(nil, .success([:])) }
             }
             var returnedTransaction: SKPaymentTransaction?
-            processDependencies.finishTransactionStub.fixture = { returnedTransaction = $0; $1?() }
+            processDependencies.finishTransactionStub.bodyIs { _, transaction, completion in
+                returnedTransaction = transaction
+                completion?()
+            }
 
             // when
             var returnedResult: ProcessCompletionResult?
