@@ -22,6 +22,7 @@
 import Combine
 import Foundation
 import ProtonCoreObservability
+import ProtonCoreDoh
 import StoreKit
 
 public protocol ProtonPlansManagerProviding: Sendable {
@@ -70,9 +71,11 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
     private var planName: String!
     private var planCycle: Int!
 
-    public init(environment: EnvURLType, remoteManager: RemoteManagerProviding, plansComposer: PlansComposerProviding? = nil) {
+    public init(doh: DoHInterface & ServerConfig,
+                remoteManager: RemoteManagerProviding,
+                plansComposer: PlansComposerProviding? = nil) {
         self.remoteManager = remoteManager
-        self.paymentsAPI = PaymentsAPIs(envURL: environment)
+        self.paymentsAPI = PaymentsAPIs(doh: doh)
         self.transactionHandler = TransactionHandler(remoteManager: remoteManager,
                                                      paymentsAPIs: paymentsAPI)
         if let composer = plansComposer {

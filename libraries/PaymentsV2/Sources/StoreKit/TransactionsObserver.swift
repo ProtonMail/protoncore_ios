@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
+import ProtonCoreDoh
 import StoreKit
 
 public enum TransactionType {
@@ -50,14 +51,18 @@ public struct TransactionsObserverConfiguration: Sendable {
     let sessionID: String
     let authToken: String
     let appVersion: String
-    let env: String
+    let doh: DoHInterface & ServerConfig
     let atlasSecret: String?
 
-    public init(sessionID: String, authToken: String, appVersion: String, env: String, atlasSecret: String? = nil) {
+    public init(sessionID: String,
+                authToken: String,
+                appVersion: String,
+                doh: DoHInterface & ServerConfig,
+                atlasSecret: String? = nil) {
         self.sessionID = sessionID
         self.authToken = authToken
         self.appVersion = appVersion
-        self.env = env
+        self.doh = doh
         self.atlasSecret = atlasSecret
     }
 }
@@ -89,7 +94,7 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
                         debugPrint("Transaction already in progress, no action required")
                         return
                     }
-                    guard let status = await transaction.subscriptionStatus else {
+                    guard (await transaction.subscriptionStatus) != nil else {
                         debugPrint("Transaction received is not a subscription")
                         transactionStatus = .failed
                         return
@@ -130,15 +135,12 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
             throw TransactionsObserverError.missingOrInvalidConfiguration
         }
 
-        guard let env = config.env.toEnvURLType else {
-            throw TransactionsObserverError.impossibleToResolveRunningEnvironment
-        }
 
         self.remoteManager = RemoteManager(sessionID: config.sessionID,
                                            authToken: config.authToken,
                                            appVersion: config.appVersion,
                                            atlasSecret: config.atlasSecret)
-        self.paymentsAPI = PaymentsAPIs(envURL: env)
+        self.paymentsAPI = PaymentsAPIs(doh: config.doh)
 
         guard let remoteManager = self.remoteManager, let paymentsAPI = self.paymentsAPI else {
             throw TransactionsObserverError.requiredSubComponentInitFailed

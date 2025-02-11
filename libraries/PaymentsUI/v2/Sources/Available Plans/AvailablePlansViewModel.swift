@@ -21,6 +21,7 @@
 
 import Combine
 import Foundation
+import ProtonCoreDoh
 import ProtonCorePaymentsV2
 import ProtonCoreUI
 import StoreKit
@@ -50,6 +51,7 @@ public class AvailablePlansViewModel: ObservableObject {
 
     public private(set) var transactionProgress = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
 
+    private let doh: DoHInterface & ServerConfig
     private var cancellables = Set<AnyCancellable>()
 
     let billing = BillingCycle.allCases
@@ -73,18 +75,17 @@ public class AvailablePlansViewModel: ObservableObject {
     private let paymentsAPIs: PaymentsAPIs
     private let remoteManager: RemoteManager
     private let plansComposer: PlansComposer
-    private let envURL: EnvURLType
     private let presentationMode: PresentationMode
 
     public init(sessionId: String,
                 token: String,
-                envURL: EnvURLType = .paymentsBlack,
+                doh: DoHInterface & ServerConfig,
                 appVersion: String,
                 hideCurrentPlan: Bool = false,
                 presentationMode: PresentationMode) {
 
-        self.envURL = envURL
-        paymentsAPIs = PaymentsAPIs(envURL: envURL)
+        self.doh = doh
+        paymentsAPIs = PaymentsAPIs(doh: doh)
         remoteManager = RemoteManager(sessionID: sessionId, authToken: token, appVersion: appVersion)
         plansComposer = PlansComposer(remoteManager: remoteManager, paymentsAPIs: paymentsAPIs)
         self.hideCurrentPlan = hideCurrentPlan
@@ -95,7 +96,7 @@ public class AvailablePlansViewModel: ObservableObject {
         viewState = .fetching
 
         let currentPlanResponse = try await plansComposer.fetchCurrentSubscription()
-        return PlanViewModel(envURL: paymentsAPIs.currentEnv(),
+        return PlanViewModel(doh: doh,
                              remoteManager: remoteManager,
                              currentPlan: currentPlanResponse)
 
@@ -113,10 +114,10 @@ public class AvailablePlansViewModel: ObservableObject {
 
         var viewModels = [PlanViewModel]()
         composedPlans.forEach { plan in
-            viewModels.append(PlanViewModel(envURL: paymentsAPIs.currentEnv(),
+            viewModels.append(PlanViewModel(doh: doh,
                                             remoteManager: remoteManager,
                                             composedPlan: plan,
-                                            plansManager: ProtonPlansManager(environment: envURL,
+                                            plansManager: ProtonPlansManager(doh: doh,
                                                                              remoteManager: remoteManager,
                                                                              plansComposer: plansComposer)))
         }

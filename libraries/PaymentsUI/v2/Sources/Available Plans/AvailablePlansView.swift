@@ -64,11 +64,11 @@ public struct AvailablePlansView: View {
                     LoadingView(loadingMessage: String(localized: "Loading_plans_message",
                                                        bundle: .module))
                 case .errorData, .idle, .purchasing:
-                        ErrorView(buttonAction: {
-                            Task {
-                                await viewModel.fetchData()
-                            }
-                        })
+                    ErrorView(buttonAction: {
+                        Task {
+                            await viewModel.fetchData()
+                        }
+                    })
                 case .noData:
                     if viewModel.hideCurrentPlan {
                         NoAvailblePlansView(type: .noPlans)
@@ -122,40 +122,40 @@ public struct AvailablePlansView: View {
                                      instance: ProtonCorePaymentsV2.Examples.planInstance(cycle: 12),
                                      product: productVPNYearly)
 
-    let planViewModel = PlanViewModel(envURL: .paymentsBlack,
-                                               remoteManager: PreviewsData.remoteManager,
-                                               composedPlan: composedPlan)
+    let planViewModel = PlanViewModel(doh: PaymentsDoH(),
+                                      remoteManager: PreviewsData.remoteManager,
+                                      composedPlan: composedPlan)
 
-    let planViewModel2 = PlanViewModel(envURL: .paymentsBlack,
-                                                remoteManager: PreviewsData.remoteManager,
-                                                composedPlan: composedPlan2)
+    let planViewModel2 = PlanViewModel(doh: PaymentsDoH(),
+                                       remoteManager: PreviewsData.remoteManager,
+                                       composedPlan: composedPlan2)
 
-    let planViewModel3 = PlanViewModel(envURL: .paymentsBlack,
-                                                remoteManager: PreviewsData.remoteManager,
-                                                currentPlan: PreviewsData.currentSub)
+    let planViewModel3 = PlanViewModel(doh: PaymentsDoH(),
+                                       remoteManager: PreviewsData.remoteManager,
+                                       currentPlan: PreviewsData.currentSub)
 
-    let planViewModel4 = PlanViewModel(envURL: .paymentsBlack,
-                                                remoteManager: PreviewsData.remoteManager,
-                                                currentPlan: PreviewsData.freePlan)
+    let planViewModel4 = PlanViewModel(doh: PaymentsDoH(),
+                                       remoteManager: PreviewsData.remoteManager,
+                                       currentPlan: PreviewsData.freePlan)
 
-    let planViewModel5 = PlanViewModel(envURL: .paymentsBlack,
+    let planViewModel5 = PlanViewModel(doh: PaymentsDoH(),
                                        remoteManager: PreviewsData.remoteManager,
                                        composedPlan: composedPlan5)
 
-  //  let allPlans = [planViewModel3, planViewModel4, planViewModel, planViewModel2]
+    //  let allPlans = [planViewModel3, planViewModel4, planViewModel, planViewModel2]
     let availablePlans = [planViewModel, planViewModel2, planViewModel5]
 
     // Current plan
-    let currentPlan = PlanViewModel(envURL: .paymentsBlack,
+    let currentPlan = PlanViewModel(doh: PaymentsDoH(),
                                     remoteManager: PreviewsData.remoteManager,
                                     currentPlan: PreviewsData.currentSub)
 
     let viewModel = AvailablePlansViewModel(sessionId: "123",
                                             token: "1231da",
-                                            envURL: .paymentsBlack,
+                                            doh: PaymentsDoH(),
                                             appVersion: "VPN@5.5.0",
                                             presentationMode: .push)
-   // viewModel.addPlanViewModels(availablePlans)
+    // viewModel.addPlanViewModels(availablePlans)
     viewModel.setBillingCycle(.all)
     // viewModel.showBanner()
     viewModel.setCurrentPlan(currentPlan)

@@ -24,32 +24,32 @@ import SwiftUI
 import ProtonCoreUI
 
 public struct PlanView: View {
-
+    
     @ObservedObject public var viewModel: PlanViewModel
-
+    
     public init(viewModel: PlanViewModel) {
         self.viewModel = viewModel
     }
-
+    
     private struct Constants {
         static let borderWidth: CGFloat = 1
-
+        
         static func backgroundColor(isCurrentPlan: Bool, isExpanded: Bool) -> Color {
             if isCurrentPlan {
                 return Theme.color.backgroundNorm
             }
-
+            
             return isExpanded ? Theme.color.backgroundNorm : Theme.color.backgroundSecondary
         }
-
+        
         static func borderColor(isExpanded: Bool) -> Color {
             isExpanded ? Theme.color.iconAccent : Theme.color.backgroundSecondary
         }
     }
-
+    
     public var body: some View {
         VStack(alignment: .leading, spacing: Theme.spacing.large) {
-
+            
             PlanDetailHeaderView(isExpanded: $viewModel.isExpanded,
                                  title: viewModel.title,
                                  description: viewModel.description,
@@ -57,18 +57,18 @@ public struct PlanView: View {
                                  formattedPeriod: viewModel.formattedPeriod,
                                  showChevron: !viewModel.isCurrentPlan,
                                  decorationsURLs: viewModel.decorationsURLs())
-
+            
             if viewModel.showProgressEntitlements {
                 ForEach(viewModel.progressEntitlements, id: \.self) { progress in
                     ProgressEntitlementView(currentValue: progress.current, maxValue: progress.max, text: progress.text)
                 }
             }
-
+            
             if viewModel.isExpanded || viewModel.isCurrentPlan {
                 PlanDetailView(viewModel: viewModel)
                     .padding(.top, Theme.spacing.large)
             }
-
+            
             if let renewFooter = viewModel.renewFooter, viewModel.isCurrentPlan {
                 Divider()
                 Text(renewFooter)
@@ -87,27 +87,27 @@ public struct PlanView: View {
 }
 
 #Preview {
-
+    
     let product = ProductMock(displayName: "name", description: "description", displayPrice: "$12", price: Decimal(12), id: "iosvpn_bundle2022_12_usd_auto_recurring")
-
+    
     // ViewModel displaying available plan
     let composedPlan = ComposedPlan(plan: ProtonCorePaymentsV2.Examples.availablePlanExample(title: "VPN Plus",
-                                                                                   entitlements: PreviewsData.descriptionEntitlements()),
+                                                                                             entitlements: PreviewsData.descriptionEntitlements()),
                                     instance: ProtonCorePaymentsV2.Examples.planInstance(),
                                     product: product)
-    let viewModel = PlanViewModel(envURL: .paymentsBlack,
-                                           remoteManager: PreviewsData.remoteManager,
-                                           composedPlan: composedPlan)
-
+    let viewModel = PlanViewModel(doh: PaymentsDoH(),
+                                  remoteManager: PreviewsData.remoteManager,
+                                  composedPlan: composedPlan)
+    
     // ViewModel displaying current sub
-    let viewModel2 = PlanViewModel(envURL: .paymentsBlack,
+    let viewModel2 = PlanViewModel(doh: PaymentsDoH(),
                                    remoteManager: PreviewsData.remoteManager,
                                    currentPlan: PreviewsData.currentSub)
     // ViewModel displaying Free plan
-    let viewModel3 = PlanViewModel(envURL: .paymentsBlack,
+    let viewModel3 = PlanViewModel(doh: PaymentsDoH(),
                                    remoteManager: PreviewsData.remoteManager,
                                    currentPlan: PreviewsData.freePlan)
-
+    
     return PlanView(viewModel: viewModel2)
         .padding(12)
 }

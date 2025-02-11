@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Combine
+import ProtonCoreDoh
 import ProtonCorePaymentsV2
 import UIKit
 
@@ -52,12 +53,12 @@ final public class PaymentsV2: Sendable {
                                    accessToken: String,
                                    appVersion: String,
                                    hideCurrentPlan: Bool = false,
-                                   env: String) throws -> PaymentsUIViewControllerV2 {
+                                   doh: DoHInterface & ServerConfig) throws -> PaymentsUIViewControllerV2 {
         return try createPaymentsView(sessionID: sessionID,
                                       accessToken: accessToken,
                                       appVersion: appVersion,
                                       hideCurrentPlan: hideCurrentPlan,
-                                      env: env)
+                                      doh: doh)
     }
 
     public func showAvailablePlans(presentationMode: PresentationMode,
@@ -65,7 +66,7 @@ final public class PaymentsV2: Sendable {
                                    accessToken: String,
                                    appVersion: String,
                                    hideCurrentPlan: Bool = false,
-                                   env: String) throws {
+                                   doh: DoHInterface & ServerConfig) throws {
 
         guard TransactionsObserver.shared.isON else {
             throw PaymentsPresentationError.transactionsObserverNotActive
@@ -78,7 +79,7 @@ final public class PaymentsV2: Sendable {
                                               appVersion: appVersion,
                                               hideCurrentPlan: hideCurrentPlan,
                                               presentationMode: presentationMode,
-                                              env: env)
+                                              doh: doh)
 
         switch presentationMode {
         case .modal:
@@ -128,18 +129,14 @@ final public class PaymentsV2: Sendable {
                                     appVersion: String,
                                     hideCurrentPlan: Bool = false,
                                     presentationMode: PresentationMode = .none,
-                                    env: String) throws -> PaymentsUIViewControllerV2 {
-
-        guard let env = env.toEnvURLType else {
-            throw PaymentsPresentationError.unableToFindValidEnvironment
-        }
+                                    doh: DoHInterface & ServerConfig) throws -> PaymentsUIViewControllerV2 {
 
         let vc = PaymentsUIViewControllerV2(sessionId: sessionID,
-                                          token: accessToken,
-                                          appVersion: appVersion,
-                                          env: env,
-                                          presentationMode: presentationMode,
-                                          hideCurrentPlan: hideCurrentPlan)
+                                            token: accessToken,
+                                            appVersion: appVersion,
+                                            doh: doh,
+                                            presentationMode: presentationMode,
+                                            hideCurrentPlan: hideCurrentPlan)
         queue.sync {
             self.transactionProgress = vc.transactionProgress
         }

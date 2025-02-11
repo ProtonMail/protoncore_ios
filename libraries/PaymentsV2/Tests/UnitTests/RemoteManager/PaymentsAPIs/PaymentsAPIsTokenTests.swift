@@ -19,26 +19,23 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import XCTest
 @testable import ProtonCorePaymentsV2
+import XCTest
 
 final class PaymentsAPIsTokenTests: XCTestCase {
 
     var sut: PaymentsAPIs!
-    var envURL: EnvURLType!
+    var doh = PaymentsDoH()
 
     override func setUp() {
         super.setUp()
-
-        envURL = .protonBlack
-        sut = PaymentsAPIs(envURL: envURL)
+        sut = PaymentsAPIs(doh: doh)
     }
 
     override func tearDown() {
         super.tearDown()
 
         sut = nil
-        envURL = nil
     }
 
     private func validateJsonBody(expectedJSON: [String: Any], testBodyJSON: [String: Any]?) {
@@ -60,7 +57,8 @@ final class PaymentsAPIsTokenTests: XCTestCase {
     // MARK: Token
     func test_createToken() throws {
 
-        guard let expectedResult = URL(string: "https://proton.black/api/payments/v5/tokens") else {
+
+        guard let expectedResult = URL(string: doh.getCurrentlyUsedHostUrl() + "/payments/v5/tokens") else {
             return
         }
 
@@ -99,7 +97,7 @@ final class PaymentsAPIsTokenTests: XCTestCase {
     func test_checkToken() throws {
 
         let expectedToken = "asdaskdlo12je9120e9dj1029djaosdj0129dj0"
-        guard let expectedResult = URL(string: "https://proton.black/api/payments/v5/tokens/\(expectedToken)") else {
+        guard let expectedResult = URL(string: doh.getCurrentlyUsedHostUrl() + "/payments/v5/tokens/\(expectedToken)") else {
             return
         }
 
@@ -112,7 +110,7 @@ final class PaymentsAPIsTokenTests: XCTestCase {
     // MARK: Subscriptions
     func test_createSubscription() throws {
 
-        guard let expectedResult = URL(string: "https://proton.black/api/payments/v5/subscription") else {
+        guard let expectedResult = URL(string: doh.getCurrentlyUsedHostUrl() + "/payments/v5/subscription") else {
             return
         }
 
@@ -153,7 +151,7 @@ final class PaymentsAPIsTokenTests: XCTestCase {
 
     func test_checkSubscription() throws {
 
-        guard let expectedResult = URL(string: "https://proton.black/api/payments/v5/subscription/check") else {
+        guard let expectedResult = URL(string: doh.getCurrentlyUsedHostUrl() + "/payments/v5/subscription/check") else {
             return
         }
 
@@ -186,7 +184,7 @@ final class PaymentsAPIsTokenTests: XCTestCase {
 
     func test_subscription_latest() throws {
 
-        guard let expectedResult = URL(string: "https://proton.black/api/payments/v5/subscription/latest") else {
+        guard let expectedResult = URL(string: doh.getCurrentlyUsedHostUrl() + "/payments/v5/subscription/latest") else {
             return
         }
         let result = try? sut.url(for: .subscriptionLatest)
@@ -197,7 +195,7 @@ final class PaymentsAPIsTokenTests: XCTestCase {
 
     func test_change_renew_subscription() throws {
 
-        guard let expectedResult = URL(string: "https://proton.black/api/payments/v5/subscription/renew") else {
+        guard let expectedResult = URL(string: doh.getCurrentlyUsedHostUrl() + "/payments/v5/subscription/renew") else {
             return
         }
 
@@ -220,7 +218,7 @@ final class PaymentsAPIsTokenTests: XCTestCase {
     func test_payment_status() throws {
 
         let vendor = "Apple"
-        guard let expectedResult = URL(string: "https://proton.black/api/payments/v5/status/\(vendor)") else {
+        guard let expectedResult = URL(string: doh.getCurrentlyUsedHostUrl() + "/payments/v5/status/\(vendor)") else {
             return
         }
 
@@ -235,7 +233,7 @@ final class PaymentsAPIsTokenTests: XCTestCase {
 
         let expectedQuery = "plans?Currency=USD&State=1&Timestamp=123124&Vendor=Apple"
 
-        guard let expectedResult = URL(string: "https://proton.black/api/payments/v5/\(expectedQuery)") else {
+        guard let expectedResult = URL(string: doh.getCurrentlyUsedHostUrl() + "/payments/v5/\(expectedQuery)") else {
             return
         }
 
@@ -249,7 +247,7 @@ final class PaymentsAPIsTokenTests: XCTestCase {
 
     func test_transactionUUID() throws {
         
-        guard let expectedResult = URL(string: "https://proton.black/api/auth/v4/sessions/uuid") else {
+        guard let expectedResult = URL(string: doh.getCurrentlyUsedHostUrl() + "/auth/v4/sessions/uuid") else {
             return
         }
         let result = try? sut.url(for: .userTransactionUUID)

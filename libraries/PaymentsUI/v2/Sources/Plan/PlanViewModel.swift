@@ -21,6 +21,7 @@
 
 import Combine
 import Foundation
+import ProtonCoreDoh
 import ProtonCorePaymentsV2
 import ProtonCoreUI
 import StoreKit
@@ -83,17 +84,17 @@ public class PlanViewModel: ObservableObject, Identifiable {
     private let remoteManager: RemoteManager
     private var plansManager: ProtonPlansManagerProviding?
 
-    public init(envURL: EnvURLType,
+    public init(doh: DoHInterface & ServerConfig,
                 remoteManager: RemoteManager,
                 composedPlan: ComposedPlan,
                 plansManager: ProtonPlansManagerProviding? = nil) {
 
-        self.paymentsAPI = PaymentsAPIs(envURL: envURL)
+        self.paymentsAPI = PaymentsAPIs(doh: doh)
         self.remoteManager = remoteManager
         if let pManager = plansManager {
             self.plansManager = pManager
         } else {
-            self.plansManager = ProtonPlansManager(environment: envURL,
+            self.plansManager = ProtonPlansManager(doh: doh,
                                                    remoteManager: remoteManager)
         }
 
@@ -129,11 +130,11 @@ public class PlanViewModel: ObservableObject, Identifiable {
         }
     }
 
-    public init(envURL: EnvURLType,
+    public init(doh: DoHInterface & ServerConfig,
                 remoteManager: RemoteManager,
                 currentPlan: CurrentSubscriptionResponse) {
 
-        self.paymentsAPI = PaymentsAPIs(envURL: envURL)
+        self.paymentsAPI = PaymentsAPIs(doh: doh)
         self.remoteManager = remoteManager
 
         let progressEntitlements = currentPlan.entitlements.compactMap {
