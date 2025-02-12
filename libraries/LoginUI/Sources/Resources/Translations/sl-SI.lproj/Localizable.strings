@@ -258,7 +258,7 @@
 
 "We could not initiate the Secure Password update connection. Please try again." = "Povezave za posodobitev varnega gesla nismo mogli vzpostaviti. Poskusite znova.";
 
-"Join %@" = "Pridruži se skupini %@";
+"Join %@" = "Pridruži se %@";
 
 "%@ added you to their Proton organization." = "%@ vas je dodal k svoji organizaciji Proton.";
 

@@ -130,7 +130,7 @@
 
 "Set recovery method" = "設定復原方法";
 
-"Set recovery method (optional)" = "設定復原方式（選擇性）";
+"Set recovery method (optional)" = "設定復原方式(選擇性)";
 
 "We will send recovery instructions to this email or phone number if you get locked out of your account." = "如果您的帳號被鎖定，我們會向此電子郵件地址或電話號碼傳送復原說明。";
 
@@ -302,7 +302,7 @@
 
 "Devices available:" = "可用裝置:";
 
-"Operation couldn't be completed. Please try again." = "";
+"Operation couldn't be completed. Please try again." = "執行未能完成。請再嘗試。";
 
 "Enter your backup password" = "輸入您的備份密碼";
 

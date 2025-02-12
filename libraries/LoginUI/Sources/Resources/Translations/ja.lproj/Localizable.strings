@@ -346,6 +346,6 @@
 
 "Please enter your Proton Account email." = "Proton アカウントのメールアドレスを入力してください。";
 
-"Password not valid" = "Password not valid";
+"Password not valid" = "パスワードが無効です";
 
 "Passphrase not found" = "パスフレーズが見つかりません";

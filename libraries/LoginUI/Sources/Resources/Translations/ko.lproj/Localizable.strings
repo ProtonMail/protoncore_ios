@@ -346,6 +346,6 @@
 
 "Please enter your Proton Account email." = "Proton 계정 이메일을 입력해주세요.";
 
-"Password not valid" = "Password not valid";
+"Password not valid" = "사용할 수 없는 비밀번호";
 
 "Passphrase not found" = "비밀번호를 찾을 수 없음";

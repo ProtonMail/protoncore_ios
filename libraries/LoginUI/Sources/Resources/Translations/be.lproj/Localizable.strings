@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Запытаны ўваход на іншай прыладзе. Гэта былі вы?";
 
-"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
+"Enter the confirmation code we sent on your other device for %@." = "Увядзіце код пацвярджэння адпраўлены на вашу іншую прыладу для %@.";
 
 "Confirmation code" = "Код пацвярджэння";
 
@@ -342,10 +342,10 @@
 
 "Set backup password" = "Задайце рэзервовы пароль";
 
-"Email is invalid" = "Email is invalid";
+"Email is invalid" = "Памылковая электронная пошта";
 
-"Please enter your Proton Account email." = "Please enter your Proton Account email.";
+"Please enter your Proton Account email." = "Увядзіце электронную пошту ўліковага запісу Proton.";
 
-"Password not valid" = "Password not valid";
+"Password not valid" = "Недапушчальны пароль";
 
-"Passphrase not found" = "Passphrase not found";
+"Passphrase not found" = "Парольная фраза не знойдзена";

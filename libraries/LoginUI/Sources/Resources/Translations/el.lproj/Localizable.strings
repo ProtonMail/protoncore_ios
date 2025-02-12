@@ -346,6 +346,6 @@
 
 "Please enter your Proton Account email." = "Παρακαλούμε εισαγάγετε το email του Λογαριασμού Proton σας.";
 
-"Password not valid" = "Password not valid";
+"Password not valid" = "Ο κωδικός πρόσβασης δεν είναι έγκυρος";
 
 "Passphrase not found" = "Δεν βρέθηκε φράση πρόσβασης";

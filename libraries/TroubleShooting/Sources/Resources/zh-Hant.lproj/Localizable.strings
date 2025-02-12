@@ -28,9 +28,9 @@
 
 "Please make sure that your internet connection is working." = "請確認您的網際網路連線正常運作。";
 
-"Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "請嘗試改用另一個網路來連線到 Proton（或使用 %1$@ 或 %2$@）。";
+"Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "請嘗試改用另一個網路來連線到 Proton(或使用 %1$@ 或 %2$@)。";
 
-"Your country may be blocking access to Proton. Try using %1$@ (or any other VPN) or %2$@ to access Proton." = "您所在的國家可能封鎖存取 Proton。請嘗試改用 %1$@ （或其它VPN）或 %2$@ 存取 Proton。";
+"Your country may be blocking access to Proton. Try using %1$@ (or any other VPN) or %2$@ to access Proton." = "您所在的國家可能封鎖存取 Proton。請嘗試改用 %1$@ (或其它VPN)或 %2$@ 存取 Proton。";
 
 "Temporarily disable or remove your antivirus software." = "暫時停用或移除您的防毒軟體。";
 
