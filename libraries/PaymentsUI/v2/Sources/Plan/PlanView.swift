@@ -86,6 +86,7 @@ public struct PlanView: View {
     }
 }
 
+#if DEBUG
 #Preview {
     
     let product = ProductMock(displayName: "name", description: "description", displayPrice: "$12", price: Decimal(12), id: "iosvpn_bundle2022_12_usd_auto_recurring")
@@ -111,3 +112,4 @@ public struct PlanView: View {
     return PlanView(viewModel: viewModel2)
         .padding(12)
 }
+#endif
