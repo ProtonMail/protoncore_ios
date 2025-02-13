@@ -97,7 +97,7 @@ public struct AvailablePlansView: View {
     }
 }
 
-
+#if DEBUG
 // swiftlint:disable line_length
 #Preview {
 
@@ -162,3 +162,4 @@ public struct AvailablePlansView: View {
 
     return AvailablePlansView(viewModel: viewModel)
 }
+#endif
