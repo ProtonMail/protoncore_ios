@@ -48,6 +48,17 @@ final public class PaymentsV2: Sendable {
 
     //MARK: Public functions
 
+    //MARK: Restore Purchases
+    public func restorePurchases(sessionId: String,
+                                 token: String,
+                                 doh: DoHInterface & ServerConfig,
+                                 appVersion: String) async throws -> CurrentSubscriptionResponse {
+
+        let plansManager = ProtonPlansManager(doh: doh,
+                                              remoteManager: RemoteManager(sessionID: sessionId, authToken: token, appVersion: appVersion))
+       return try await plansManager.restorePurchases()
+    }
+
     //MARK: Presentation
     public func availablePlansView(sessionID: String,
                                    accessToken: String,

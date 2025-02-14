@@ -44,6 +44,7 @@ public enum ProtonPlansManagerError: Error {
     case unableToFetchProductsFromStore
     case unableToMatchProtonPlanToStoreProduct
     case unableToGetUserTransactionUUID
+    case unableToRestorePurchases
 
     // Transaction error
     case transactionNotFound
@@ -182,6 +183,20 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
             transactionProgress.value = .unknownError
             transactionProgress.send(completion: .finished)
             throw ProtonPlansManagerError.transactionUnknownError
+        }
+    }
+
+    public func restorePurchases() async throws -> CurrentSubscriptionResponse {
+        do {
+            try await AppStore.sync()
+            return try await getCurrentPlan()
+        } catch {
+            debugPrint(error)
+            if error is PlansComposerError {
+                throw error
+            } else {
+                throw(ProtonPlansManagerError.unableToRestorePurchases)
+            }
         }
     }
 
