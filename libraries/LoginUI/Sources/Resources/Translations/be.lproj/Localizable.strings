@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Запытаны ўваход на іншай прыладзе. Гэта былі вы?";
 
-"Enter the confirmation code we sent on your other device for %@." = "Увядзіце код пацвярджэння адпраўлены на вашу іншую прыладу для %@.";
+"Enter the confirmation code we sent on your other device for %@." = "Увядзіце код пацвярджэння які быў адпраўлены на вашу іншую прыладу для %@.";
 
 "Confirmation code" = "Код пацвярджэння";
 

@@ -8,11 +8,11 @@
 
 "Sign out" = "Tanca la sessió";
 
-"Remove account from this device" = "Esborri el compte d'aquest dispositiu";
+"Remove account from this device" = "Esborra el compte d'aquest dispositiu";
 
 "Remove account" = "Esborra el compte";
 
-"You will be signed out and all the data associated with this account will be removed from this device." = "Es tancarà la sessió i totes les dades relacionades amb aquest compte s'esborraran d'aquest dispositiu.";
+"You will be signed out and all the data associated with this account will be removed from this device." = "Es tancarà la sessió i totes les dades associades a aquest compte s'esborraran d'aquest dispositiu.";
 
 "Remove" = "Esborra";
 
@@ -20,7 +20,7 @@
 
 "Dismiss account switcher" = "Descartar el canvi de compte";
 
-"Sign in to another account" = "Iniciar sessió a un altre compte";
+"Sign in to another account" = "Inicia la sessió a un altre compte";
 
 "Cancel" = "Cancel·la";
 
