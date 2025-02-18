@@ -22,6 +22,7 @@
 import Combine
 import Foundation
 import ProtonCoreObservability
+import ProtonCoreLog
 import ProtonCoreDoh
 import StoreKit
 
@@ -36,21 +37,41 @@ public protocol ProtonPlansManagerProviding: Sendable {
     func purchase(_ product: Product, planName: String, planCycle: Int) async throws -> ComposedPlan
 }
 
-public enum ProtonPlansManagerError: Error {
-    case unableToExtractReceiptData
-    case unableToGetBundleIdentifier
-    case unableToGetTransactionAmountOrCurrency
-    case unableToCreateRequest
-    case unableToFetchProductsFromStore
-    case unableToMatchProtonPlanToStoreProduct
+public enum ProtonPlansManagerError: LocalizedError {
+    case unableToMatchProtonPlanToStoreProduct(productId: String)
     case unableToGetUserTransactionUUID
     case unableToRestorePurchases
 
     // Transaction error
-    case transactionNotFound
     case transactionCancelledByUser
     case transactionPending
     case transactionUnknownError
+
+    public var errorDescription: String? {
+        switch self {
+        case .unableToMatchProtonPlanToStoreProduct(let productId):
+            return String(localized: "Plans_Manager_impossible_to_match_plan", bundle: .module)
+        case .unableToGetUserTransactionUUID:
+            return String(localized: "Plans_Manager_impossible_to_get_user_uuid", bundle: .module)
+        case .unableToRestorePurchases:
+            return String(localized: "Plans_Manager_impossible_to_restore_transactions", bundle: .module)
+        case .transactionCancelledByUser:
+            return String(localized: "Plans_Manager_Transaction_cancelled_by_user", bundle: .module)
+        case .transactionUnknownError:
+            return String(localized: "Plans_Manager_Transaction_unknown_error", bundle: .module)
+        case .transactionPending:
+            return String(localized: "Plans_Managere_peding_transaction_received", bundle: .module)
+        }
+    }
+
+    public var failureReason: String? {
+        switch self {
+        case .unableToMatchProtonPlanToStoreProduct(let productId):
+            return "Impossible to find AppleStore product with id: \(productId)"
+        default:
+            return nil
+        }
+    }
 }
 
 public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @unchecked Sendable {
@@ -159,7 +180,9 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
             }
 
             guard let matchingPlan = findMatchingPlan(productID: transaction.productID) else {
-                throw ProtonPlansManagerError.unableToMatchProtonPlanToStoreProduct
+                let error = ProtonPlansManagerError.unableToMatchProtonPlanToStoreProduct(productId: transaction.productID)
+                PMLog.error(error.failureReason ?? "PaymentsV2 - unable to match Proton and AppleStore plans", sendToExternal: true)
+                throw error
             }
 
             do {
@@ -174,15 +197,37 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
                 throw error
             }
         case .pending:
-            throw ProtonPlansManagerError.transactionPending
+            let error = ProtonPlansManagerError.transactionPending
+            PMLog.error(error.errorDescription ?? "PaymentsV2 - Transaction cancelled by the user", sendToExternal: true)
+            throw error
         case .userCancelled:
             transactionProgress.value = .transactionCancelledByUser
             transactionProgress.send(completion: .finished)
-            throw ProtonPlansManagerError.transactionCancelledByUser
+            let error = ProtonPlansManagerError.transactionCancelledByUser
+            PMLog.error(error.errorDescription ?? "PaymentsV2 - Transaction cancelled by the user", sendToExternal: true)
+            throw error
         @unknown default:
             transactionProgress.value = .unknownError
             transactionProgress.send(completion: .finished)
-            throw ProtonPlansManagerError.transactionUnknownError
+            let error = ProtonPlansManagerError.transactionUnknownError
+            PMLog.error(error.errorDescription ?? "PaymentsV2 - unknown transaction error", sendToExternal: true)
+            throw error
+        }
+    }
+
+    public func restorePurchases() async throws -> CurrentSubscriptionResponse {
+        do {
+            try await AppStore.sync()
+            return try await getCurrentPlan()
+        } catch {
+            debugPrint(error)
+            if error is PlansComposerError {
+                throw error
+            } else {
+                let error = ProtonPlansManagerError.unableToRestorePurchases
+                PMLog.error(error.errorDescription ?? "PaymentsV2 - impossible to restore transactions", sendToExternal: true)
+                throw error
+            }
         }
     }
 
@@ -201,24 +246,18 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
     }
 
     private func generateUserTransactionUUID() async throws -> UUID {
-        guard let request = try? paymentsAPI.url(for: .userTransactionUUID) else {
-            throw ProtonPlansManagerError.unableToGetUserTransactionUUID
-        }
-        
-        do {
-            let uuidStrign: UserTransactionUUIDResponse = try await remoteManager.getFromURL(request.url)
-            guard let uuid = UUID(uuidString: uuidStrign.uuid) else {
-                transactionProgress.value = .unableToGetUserTransactionUUID
-                transactionProgress.send(completion: .finished)
-                throw ProtonPlansManagerError.unableToGetUserTransactionUUID
-            }
+        let request = try paymentsAPI.url(for: .userTransactionUUID)
 
-            return uuid
-        } catch {
+        let uuidStrign: UserTransactionUUIDResponse = try await remoteManager.getFromURL(request.url)
+        guard let uuid = UUID(uuidString: uuidStrign.uuid) else {
             transactionProgress.value = .unableToGetUserTransactionUUID
             transactionProgress.send(completion: .finished)
-            throw ProtonPlansManagerError.unableToGetUserTransactionUUID
+            let error = ProtonPlansManagerError.unableToGetUserTransactionUUID
+            PMLog.error(error.errorDescription ?? "PaymentsV2 - impossible to get user uuid", sendToExternal: true)
+            throw error
         }
+
+        return uuid
     }
 
     private func findMatchingPlan(productID: String) -> ComposedPlan? {

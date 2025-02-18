@@ -20,10 +20,18 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
+import ProtonCoreLog
 import StoreKit
 
-enum StoreKitReceiptManagerError: Error {
+public enum StoreKitReceiptManagerError: LocalizedError {
     case unableToExtractReceiptData
+
+    public var errorDescription: String? {
+        switch self {
+        case .unableToExtractReceiptData:
+            return String(localized: "SK_Receipt_impossible_to_get_receipt", bundle: .module)
+        }
+    }
 }
 
 public protocol StoreKitReceiptManagerProviding {
@@ -37,7 +45,9 @@ public final class StoreKitReceiptManager: StoreKitReceiptManagerProviding {
     public func fetchPurchaseReceipt() throws -> String {
         guard let url = Bundle.main.appStoreReceiptURL, let data = try? Data(contentsOf: url) else {
             debugPrint("Unable to get receipt data")
-            throw StoreKitReceiptManagerError.unableToExtractReceiptData
+            let error = StoreKitReceiptManagerError.unableToExtractReceiptData
+            PMLog.error(error.errorDescription ?? "PaymentsV2 - StoreKit impssible to get receipt data", sendToExternal: true)
+            throw error
         }
 
         return data.base64EncodedString()

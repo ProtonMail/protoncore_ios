@@ -20,12 +20,20 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
-import StoreKit
+import ProtonCoreLog
 import ProtonCoreObservability
+import StoreKit
 
-public enum PlansComposerError: Error {
-    case unableToCreateAvailablePlansRequest
+public enum PlansComposerError: LocalizedError {
+
     case unableToFetchCurrentSub
+
+    public var errorDescription: String? {
+        switch self {
+        case .unableToFetchCurrentSub:
+            return String(localized: "PlansComposer_unable_to_fetch_currentSub", bundle: .module)
+        }
+    }
 }
 
 public protocol PlansComposerProviding: Sendable {
@@ -68,10 +76,7 @@ public final class PlansComposer: PlansComposerProviding, @unchecked Sendable {
     }
 
     public func fetchProtonPlans() async throws -> AvailablePlans {
-        guard let availablePlansRequests = try? paymentsAPIs.url(for: .availablePlans(currency: nil, vendor: nil, state: nil, timeStamp: nil)) else {
-            throw PlansComposerError.unableToCreateAvailablePlansRequest
-        }
-
+        let availablePlansRequests = try paymentsAPIs.url(for: .availablePlans(currency: nil, vendor: nil, state: nil, timeStamp: nil))
         availablePlans = try await remoteManager.getFromURL(availablePlansRequests.url)
         return availablePlans
     }
@@ -99,7 +104,9 @@ public final class PlansComposer: PlansComposerProviding, @unchecked Sendable {
         let currentSubResponse: CurrentSubscription = try await remoteManager.getFromURL(request.url)
 
         guard let currentSub = currentSubResponse.subscriptions.first else {
-            throw PlansComposerError.unableToFetchCurrentSub
+            let error = PlansComposerError.unableToFetchCurrentSub
+            PMLog.error(error.errorDescription ?? "PaymentsV2 - unableToFetchCurrentSub", sendToExternal: true)
+            throw error
         }
 
         return currentSub

@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
+import ProtonCoreLog
 
 public protocol RemoteManagerProviding: Sendable {
 
@@ -37,10 +38,28 @@ public protocol RemoteManagerProviding: Sendable {
     func deleteToURL<T: Decodable>(request: APIRequest) async throws -> T
 }
 
-enum RemoteError: Error, Comparable {
-    case errorDecondingResponse
-    case invalidHTTPResponse
-    case responseReturnedError(errorCode: Int)
+public enum RemoteError: LocalizedError, Comparable {
+    case errorDecondingResponse(details: String)
+    case invalidHTTPResponse(url: String)
+    case responseReturnedError(errorCode: Int, urlString: String)
+
+    public var errorDescription: String? {
+        switch self {
+        default:
+            return String(localized: "Remote_manager_error", bundle: .module)
+        }
+    }
+
+    public var failureReason: String? {
+        switch self {
+        case .errorDecondingResponse(let details):
+            return "Error deconding response: \(details)"
+        case .invalidHTTPResponse(let url):
+            return "Invalid http response for url: \(url)"
+        case .responseReturnedError(let errorCode, let urlString):
+            return "Request: \(urlString) returned error code: \(errorCode)"
+        }
+    }
 }
 
 enum SerializationError: Error {
@@ -181,11 +200,15 @@ public final class RemoteManager: RemoteManagerProviding, @unchecked Sendable {
 
     private func verifyResponse(response: URLResponse) throws {
         guard let httpResponse = response as? HTTPURLResponse else {
-            throw RemoteError.invalidHTTPResponse
+            let error = RemoteError.invalidHTTPResponse(url: response.url?.absoluteString ?? "")
+            PMLog.error(error.failureReason ?? "PaymentsV2 - invalidHTTPResponse", sendToExternal: true)
+            throw error
         }
 
         if !(200...299).contains(httpResponse.statusCode) {
-            throw RemoteError.responseReturnedError(errorCode: httpResponse.statusCode)
+            let error = RemoteError.responseReturnedError(errorCode: httpResponse.statusCode, urlString: httpResponse.url?.absoluteString ?? "")
+            PMLog.error(error.failureReason ?? "PaymentsV2 - responseReturnedError \(httpResponse.statusCode)", sendToExternal: true)
+            throw error
         }
     }
 
@@ -202,10 +225,13 @@ public final class RemoteManager: RemoteManagerProviding, @unchecked Sendable {
 
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .lowerCamelCase
-
-        let decodedData = try decoder.decode(T.self, from: data)
-
-        return decodedData
+        do {
+            return try decoder.decode(T.self, from: data)
+        } catch {
+            let error = RemoteError.errorDecondingResponse(details: error.localizedDescription)
+            PMLog.error(error.failureReason ?? "PaymentsV2 - errorDecondingResponse", sendToExternal: true)
+            throw error
+        }
     }
 
     private func requestFactory(url: URL,
