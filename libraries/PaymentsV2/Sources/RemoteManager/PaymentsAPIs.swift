@@ -21,14 +21,29 @@
 
 import Foundation
 import ProtonCoreDoh
+import ProtonCoreLog
 
 public struct APIRequest: @unchecked Sendable {
     public let url: URL
     public let body: [String: Any]?
 }
 
-public enum PaymentsAPIsError: Error {
-    case malformedURL
+public enum PaymentsAPIsError: LocalizedError {
+    case malformedURL(url: String)
+
+    public var errorDescription: String? {
+        switch self {
+        case .malformedURL(let url):
+            return String(localized: "APIs_malformed_url_request", bundle: .module)
+        }
+    }
+
+    public var failureReason: String? {
+        switch self {
+        case .malformedURL(let url):
+            return  "The expected url: \(url) is wrong or malformed"
+        }
+    }
 }
 
 public struct PaymentsAPIs: Sendable {
@@ -75,7 +90,9 @@ public struct PaymentsAPIs: Sendable {
         }
 
         guard let url = urlComponents?.url else {
-            throw PaymentsAPIsError.malformedURL
+            let error = PaymentsAPIsError.malformedURL(url: urlString)
+            PMLog.error(error.failureReason ?? "PaymentsV2 - malformedURL", sendToExternal: true)
+            throw error
         }
 
         return APIRequest(url: url, body: api.body)

@@ -21,19 +21,37 @@
 
 import Combine
 import Foundation
-import ProtonCoreObservability
+import ProtonCoreLog
 import ProtonCoreNetworking
+import ProtonCoreObservability
 import StoreKit
 
-public enum TransactionHandlerError: Error {
+public enum TransactionHandlerError: LocalizedError {
 
-    case unableToCreateRequest
-    case unableToFindPlanName
-    case unableToFindMatchingPlan
-    case transactionIdNotEqualToOriginalTransactionId
-    case userTransactionUUIDNotMatching
+    case unableToFindPlanName(productID: String)
+    case transactionIdNotEqualToOriginalTransactionId(originalID: UInt64, transactionId: UInt64)
     case unableToGetBundleIdentifier
-    case unableToGetTransactionAmountOrCurrency
+    case unableToGetTransactionAmountOrCurrency(transactionId: UInt64)
+
+    public var errorDescription: String? {
+        switch self {
+        default:
+            return String(localized: "Transaction_Handler_plan_not_found", bundle: .module)
+        }
+    }
+
+    public var failureReason: String? {
+        switch self {
+        case .unableToFindPlanName(let productId):
+            return "Impossible to find plan name for productId: \(productId)"
+        case .transactionIdNotEqualToOriginalTransactionId(let originalId, let transactionId):
+            return "\(originalId) != \(transactionId) this could indicate a repeated or renewal of an existing plan"
+        case .unableToGetBundleIdentifier:
+            return "App Bundle identifier not found"
+        case .unableToGetTransactionAmountOrCurrency(let transactionId):
+            return "Impossible to find transaction amount or currency for transactionId: \(transactionId)"
+        }
+    }
 }
 
 public enum TransactionHandlerState: String, Sendable {
@@ -85,7 +103,9 @@ public final class TransactionHandler: TransactionHandlerProviding, @unchecked S
         debugPrint(transaction.id)
         guard transaction.originalID == transaction.id else {
             updateTransactionState(state: .mismatchTransactionIDs)
-            throw TransactionHandlerError.transactionIdNotEqualToOriginalTransactionId
+            let error = TransactionHandlerError.transactionIdNotEqualToOriginalTransactionId(originalID: transaction.originalID, transactionId: transaction.id)
+            PMLog.error(error.failureReason ?? "Transaction: originaId (\(transaction.originalID)) different from transactionId (\(transaction.id)", sendToExternal: true)
+            throw error
         }
 
         try await resolveTransaction(transaction, plan: plan)
@@ -104,9 +124,7 @@ public final class TransactionHandler: TransactionHandlerProviding, @unchecked S
 
     public func verifyTransactionUUIDs(appAccountToken: UUID) async throws -> Bool {
 
-        guard let request = try? paymentsAPIs.url(for: .userTransactionUUID) else {
-            throw TransactionHandlerError.unableToCreateRequest
-        }
+        let request = try paymentsAPIs.url(for: .userTransactionUUID)
         debugPrint("Fetching user transaction UUID")
 
         let userUUID: UserTransactionUUIDResponse = try await remoteManager.getFromURL(request.url)
@@ -136,13 +154,17 @@ private extension TransactionHandler {
         let transactionIdentifier = transaction.originalID
         guard let bundleIdentifier = Bundle.main.bundleIdentifier else {
             debugPrint("bundle not obtainable")
-            throw TransactionHandlerError.unableToGetBundleIdentifier
+            let error = TransactionHandlerError.unableToGetBundleIdentifier
+            PMLog.error(error.failureReason ?? "Bundle identifier not found", sendToExternal: true)
+            throw error
         }
 
         guard let amount = transaction.price, let currency = transaction.currencyIdentifier else {
             debugPrint("Impossible to get amount and currency from transaction")
             updateTransactionState(state: .transactionProcessError)
-            throw TransactionHandlerError.unableToGetTransactionAmountOrCurrency
+            let error = TransactionHandlerError.unableToGetTransactionAmountOrCurrency(transactionId: transaction.id)
+            PMLog.error(error.failureReason ?? "Bundle identifier not found", sendToExternal: true)
+            throw error
         }
 
         updateTransactionState(state: .generatingReceipt)
@@ -162,19 +184,20 @@ private extension TransactionHandler {
 
     private func createNewToken(_ transactionToken: Token) async throws -> NewToken {
 
-        guard let request = try? paymentsAPIs.url(for: .createToken(token: transactionToken)) else {
-            updateTransactionState(state: .transactionProcessError)
-            throw TransactionHandlerError.unableToCreateRequest
-        }
         debugPrint("Creating payment token..")
         do {
+            let request = try paymentsAPIs.url(for: .createToken(token: transactionToken))
             let newToken: NewToken = try await remoteManager.postToURL(request: request)
             ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(status: .http2xx, isDynamic: true))
             return newToken
         } catch {
-            if let responseError = error as? ResponseError {
+
+            if case let RemoteError.responseReturnedError(error, urlString) = error {
+                let responseError = ResponseError(httpCode: nil, responseCode: error, userFacingMessage: "PaymentV2 - TransactionHandler: Error for requets: \(urlString)", underlyingError: nil)
                 ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(error: responseError, isDynamic: true))
+                PMLog.error("PaymentsV2 - Failed to create new token, error: \(error), url: \(urlString)", sendToExternal: true)
             }
+
             updateTransactionState(state: .transactionProcessError)
             throw error
         }
@@ -183,8 +206,10 @@ private extension TransactionHandler {
     private func createNewSubscription(token: NewToken, composedPlan: ComposedPlan, transaction: ProtonTransactionProviding) async throws -> Bool {
 
         guard let planName = composedPlan.plan.name else {
+            let error = TransactionHandlerError.unableToFindPlanName(productID: transaction.productID)
+            PMLog.error(error.failureReason ?? "PaymentsV2 - TransactionHandler unableToFindPlanName failure reason missing", sendToExternal: true)
             updateTransactionState(state: .transactionProcessError)
-            throw TransactionHandlerError.unableToFindPlanName
+            throw error
         }
         debugPrint("Creating new subscription..")
         let newSub = NewSubscription(newValues: NewSubscriptionValues(amount: nil,
@@ -200,14 +225,10 @@ private extension TransactionHandler {
                                                                 couponCode: nil,
                                                                 giftCode: nil))
 
-        guard let request = try? paymentsAPIs.url(for: .createSubscription(newSubscription: newSub)) else {
-            updateTransactionState(state: .transactionProcessError)
-            throw TransactionHandlerError.unableToCreateRequest
-        }
-
         updateTransactionState(state: .createNewSubscription)
 
         do {
+            let request = try paymentsAPIs.url(for: .createSubscription(newSubscription: newSub))
             _ = try await remoteManager.postToURL(request: request)
             debugPrint("New subscription successfully created ✅")
             ObservabilityEnv.report(.paymentSubscribeTotal(status: .successful, isDynamic: true))

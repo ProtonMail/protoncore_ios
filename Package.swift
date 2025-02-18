@@ -1390,6 +1390,7 @@ add(
     targets: [
         coreTarget(name: .paymentsV2,
                    dependencies: [
+                    .log,
                     .observability,
                     .networking
                    ],
@@ -1485,6 +1486,7 @@ add(
     targets: [
         coreTarget(name: .paymentsUIV2,
                    dependencies: [
+                        .log,
                         .paymentsV2,
                         .protonCoreUI,
                         .foundations

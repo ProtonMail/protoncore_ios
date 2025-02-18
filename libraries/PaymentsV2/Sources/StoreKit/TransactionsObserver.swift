@@ -21,6 +21,7 @@
 
 import Foundation
 import ProtonCoreDoh
+import ProtonCoreLog
 import StoreKit
 
 public enum TransactionType {
@@ -41,10 +42,18 @@ public protocol TransactionsObserverProviding: Sendable {
     func removeTransactionInProgress(_ transactionId: UInt64)
 }
 
-public enum TransactionsObserverError: Error {
+public enum TransactionsObserverError: LocalizedError {
     case missingOrInvalidConfiguration
-    case impossibleToResolveRunningEnvironment
     case requiredSubComponentInitFailed
+
+    public var failureReason: String? {
+        switch self {
+        case .missingOrInvalidConfiguration:
+            return "No configuration find for PaymentsV2 - TransactionObserver"
+        case .requiredSubComponentInitFailed:
+            return "Impossible to initilize sub-components required by PaymentsV2 - TransactionObserver"
+        }
+    }
 }
 
 public struct TransactionsObserverConfiguration: Sendable {
@@ -132,7 +141,9 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
     private func initRequiredComponents() throws {
 
         guard let config = configuration else {
-            throw TransactionsObserverError.missingOrInvalidConfiguration
+            let error = TransactionsObserverError.missingOrInvalidConfiguration
+            PMLog.error(error.failureReason ?? "No configuration provided to PaymentsV2 - TransactionObserver", sendToExternal: true)
+            throw error
         }
 
 
@@ -143,7 +154,9 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
         self.paymentsAPI = PaymentsAPIs(doh: config.doh)
 
         guard let remoteManager = self.remoteManager, let paymentsAPI = self.paymentsAPI else {
-            throw TransactionsObserverError.requiredSubComponentInitFailed
+            let error = TransactionsObserverError.requiredSubComponentInitFailed
+            PMLog.error(error.failureReason ?? "Impossible to initilize sub-components required by PaymentsV2 - TransactionObserver", sendToExternal: true)
+            throw error
         }
 
         self.transactionHandler = TransactionHandler(remoteManager: remoteManager, paymentsAPIs: paymentsAPI)
@@ -187,7 +200,9 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
 
             guard let planComposer = planComposer, let _ = transactionHandler else {
                 assertionFailure("TransactionsObserver: TransactionsObserverConfiguration required to start the observer")
-                throw TransactionsObserverError.requiredSubComponentInitFailed
+                let error = TransactionsObserverError.requiredSubComponentInitFailed
+                PMLog.error(error.failureReason ?? "Impossible to initilize sub-components required by PaymentsV2 - TransactionObserver", sendToExternal: true)
+                throw error
             }
 
             if !planComposer.hasData {
