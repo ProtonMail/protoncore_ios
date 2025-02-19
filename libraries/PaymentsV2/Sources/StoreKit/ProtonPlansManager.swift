@@ -231,20 +231,6 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
         }
     }
 
-    public func restorePurchases() async throws -> CurrentSubscriptionResponse {
-        do {
-            try await AppStore.sync()
-            return try await getCurrentPlan()
-        } catch {
-            debugPrint(error)
-            if error is PlansComposerError {
-                throw error
-            } else {
-                throw(ProtonPlansManagerError.unableToRestorePurchases)
-            }
-        }
-    }
-
     private func generateUserTransactionUUID() async throws -> UUID {
         let request = try paymentsAPI.url(for: .userTransactionUUID)
 
