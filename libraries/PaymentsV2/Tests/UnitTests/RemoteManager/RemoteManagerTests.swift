@@ -163,7 +163,6 @@ extension RemoteManagerTests {
     func test_create_payment_token_no_response_fail() async throws {
 
         let expectedErrorCode = 500
-        mockRemoteManager.setupURLSessionMock(responseStatusCode: expectedErrorCode)
 
         let token = Token(amount: 200, currency: "USD", payment: nil, paymentMethodID: nil)
         guard let request = try? paymentsAPI.url(for: .createToken(token: token)) else {
@@ -171,9 +170,11 @@ extension RemoteManagerTests {
             return
         }
 
+        mockRemoteManager.setupURLSessionMock(urlPath: request.url.absoluteString, responseStatusCode: expectedErrorCode)
+
         await XCTAssertThrowsErrorAsync(
             try await sut.postToURL(request: request),
-            RemoteError.responseReturnedError(errorCode: expectedErrorCode)
+            RemoteError.responseReturnedError(errorCode: expectedErrorCode, urlString: request.url.absoluteString)
         )
     }
 }

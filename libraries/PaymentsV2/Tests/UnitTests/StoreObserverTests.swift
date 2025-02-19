@@ -45,7 +45,6 @@ final class StoreObserverTests: XCTestCase, @unchecked Sendable {
         let configuration = TransactionsObserverConfiguration(sessionID: "asdasd12d",
                                                               authToken: "12d12",
                                                               appVersion: "V200",
-                                                              env: "black",
                                                               doh: PaymentsDoH(),
                                                               atlasSecret: "qwdn12od")
         sut.setConfiguration(configuration)

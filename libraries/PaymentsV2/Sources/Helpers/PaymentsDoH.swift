@@ -23,14 +23,41 @@ import Foundation
 import ProtonCoreDoh
 
 public final class PaymentsDoH: DoH, ServerConfig {
-    public let signupDomain: String = "proton.me"
-    public let captchaHost: String =  "https://some.captcha.host"
-    public let humanVerificationV3Host: String = "https://verify.proton.me"
-    public let accountHost: String = "https://verify.proton.me"
-    public let defaultHost: String = "https://some.default.host"
-    public let apiHost: String = "payments-api.proton.me"
-    public let defaultPath: String = "/api"
-    public let proxyToken: String? = nil
+    public let signupDomain: String
+    public let captchaHost: String
+    public let humanVerificationV3Host: String
+    public let accountHost: String
+    public let defaultHost: String
+    public let apiHost: String
+    public let defaultPath: String
+    public let proxyToken: String?
 
-    public init() {}
+    public init(signupDomain: String,
+                captchaHost: String,
+                humanVerificationV3Host: String,
+                accountHost: String,
+                defaultHost: String,
+                apiHost: String,
+                defaultPath: String,
+                proxyToken: String?) {
+        self.signupDomain = signupDomain
+        self.captchaHost = captchaHost
+        self.humanVerificationV3Host = humanVerificationV3Host
+        self.accountHost = accountHost
+        self.defaultHost = defaultHost
+        self.apiHost = apiHost
+        self.defaultPath = defaultPath
+        self.proxyToken = proxyToken
+    }
+
+    public convenience init() {
+        self.init(signupDomain: "proton.me",
+                  captchaHost: "https://some.captcha.host",
+                  humanVerificationV3Host: "https://verify.proton.me",
+                  accountHost: "https://verify.proton.me",
+                  defaultHost: "https://some.default.host",
+                  apiHost: "payments-api.proton.me",
+                  defaultPath: "/api",
+                  proxyToken: nil)
+    }
 }

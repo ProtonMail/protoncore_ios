@@ -27,9 +27,11 @@ final class MockedRemoteManager: @unchecked Sendable {
     public var paymentsAPI: PaymentsAPIs!
     private var urlSessionConfig: URLSessionConfiguration!
     public var remoteManager: RemoteManager!
+    let doh: PaymentsDoH
 
     init() {
-        paymentsAPI = PaymentsAPIs(doh: PaymentsDoH())
+        doh = PaymentsDoH()
+        paymentsAPI = PaymentsAPIs(doh: doh)
         URLProtocol.registerClass(MockURLProtocol.self)
 
         urlSessionConfig = URLSessionConfiguration.ephemeral
@@ -47,7 +49,9 @@ final class MockedRemoteManager: @unchecked Sendable {
     }
 
     public func setupURLSessionMock(withMockResponse mock: [String: Any]? = nil,
-                                     responseStatusCode: Int = 200) {
+                                    urlPath: String? = nil,
+                                    responseStatusCode: Int = 200) {
+        let requestURLPath = urlPath != nil ? urlPath : doh.defaultPath
         var responseData: Data = Data()
         if let mock = mock {
             guard let data = try? JSONSerialization.data(withJSONObject: mock) else {
@@ -69,7 +73,7 @@ final class MockedRemoteManager: @unchecked Sendable {
         }
 
         MockURLProtocol.requestHandler = { request in
-            let response = HTTPURLResponse(url: URL(string: "https://whatever.com/mock")!,
+            let response = HTTPURLResponse(url: URL(string: requestURLPath!)!,
                                            statusCode: responseStatusCode,
                                            httpVersion: nil,
                                            headerFields: nil)!
