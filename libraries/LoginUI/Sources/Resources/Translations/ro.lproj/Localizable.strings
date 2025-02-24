@@ -192,9 +192,9 @@
 
 "Invalid hashed password" = "Parolă generată nevalidă";
 
-"Password can not be empty.\nPlease try again." = "Parolele nu pot fi goale.\nMai reîncercați.";
+"Password can not be empty.\nPlease try again." = "Parolele nu pot fi goale.\nReîncercați.";
 
-"Passwords do not match.\nPlease try again." = "Parolele nu coincid.\nMai reîncercați.";
+"Passwords do not match.\nPlease try again." = "Parolele nu coincid.\nReîncercați.";
 
 "Email address already used." = "Adresă de e-mail deja utilizată.";
 

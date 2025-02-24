@@ -205,9 +205,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Suport per a %d domini de correu personalitzat</string>
+        <string>Admissió d'%d domini de correu electrònic personalitzat</string>
         <key>other</key>
-        <string>Suport per a %d dominis de correu personalitzats</string>
+        <string>Admissió de %d dominis de correu electrònic personalitzats</string>
       </dict>
     </dict>
     <key>&lt;n&gt; folders and labels</key>
@@ -452,9 +452,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Velocitat VPN mitjana a %d connexió VPN</string>
+        <string>%d connexió VPN a velocitat mitjana</string>
         <key>other</key>
-        <string>Velocitat VPN mitjana a %d connexions VPN</string>
+        <string>%d connexions VPN a velocitat mitjana</string>
       </dict>
     </dict>
     <key>Up to &lt;n&gt; forwarding mailboxes</key>
