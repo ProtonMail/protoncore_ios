@@ -6,12 +6,12 @@
 
 "Proton address required" = "Требуется адрес Proton";
 
-"Code doesn't match" = "Code doesn't match";
+"Code doesn't match" = "Код не совпадает";
 
-"Code isn't valid" = "Code isn't valid";
+"Code isn't valid" = "Код недействителен";
 
-"Device secret not found" = "Device secret not found";
+"Device secret not found" = "Секрет устройства не найден";
 
-"Passphrase not found" = "Passphrase not found";
+"Passphrase not found" = "Кодовая фраза не найдена";
 
 "Password update failed" = "Не удалось обновить пароль";

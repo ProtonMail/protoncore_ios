@@ -324,7 +324,7 @@
 
 "Grant access to user?" = "Conceder acesso para o usuário?";
 
-"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ está solicitando sua ajuda para iniciar a sessão na conta Proton dele(a) com logon único.\n\nDigite o código de confirmação que enviamos a esse usuário.";
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ está solicitando sua ajuda para iniciar a sessão na conta Proton dele com logon único.\n\nDigite o código de confirmação que enviamos a esse usuário.";
 
 "Grant access" = "Conceder acesso";
 

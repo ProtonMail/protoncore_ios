@@ -278,7 +278,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Обнаружен вход на другом устройстве. Это вы?";
 
-"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
+"Enter the confirmation code we sent on your other device for %@." = "Введите код подтверждения, который мы отправили на ваше другое устройство для %@.";
 
 "Confirmation code" = "Код подтверждения";
 
@@ -340,12 +340,12 @@
 
 "Unknown" = "Неизвестный";
 
-"Set backup password" = "Set backup password";
+"Set backup password" = "Установить резервный пароль";
 
-"Email is invalid" = "Email is invalid";
+"Email is invalid" = "Недопустимый адрес электронной почты";
 
-"Please enter your Proton Account email." = "Please enter your Proton Account email.";
+"Please enter your Proton Account email." = "Введите адрес электронной почты вашего аккаунта Proton.";
 
-"Password not valid" = "Password not valid";
+"Password not valid" = "Пароль недействителен";
 
-"Passphrase not found" = "Passphrase not found";
+"Passphrase not found" = "Кодовая фраза не найдена";
