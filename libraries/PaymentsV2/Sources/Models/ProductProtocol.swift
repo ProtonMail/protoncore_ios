@@ -61,6 +61,6 @@ extension Transaction {
             productID: productID,
             price: price,
             userTransactionUUID: appAccountToken,
-            currencyIdentifier: currencyCode )
+            currencyIdentifier: currency?.identifier)
     }
 }
