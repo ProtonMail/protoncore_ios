@@ -6,29 +6,29 @@
 
 "Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you." = "Apple ens informa que heu millorat el vostre pla, però falten algunes dades tècniques. Empleneu l'informe d'error i el nostre equip us contactarà.";
 
-"Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "Apple ens ha informat que heu millorat el vostre pla, però hem detectat que heu sortit del vostre compte des de llavors.";
+"Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "Apple ens ha informat que heu millorat el pla de servei, però hem detectat que heu tancat la sessió del compte des d'aleshores.";
 
 "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "No hem pogut comprovar que el producte que heu comprat a l'App Store concori amb cap producte del nostre servidor. Empleneu l’informe d’errors i el nostre equip d'atenció al client us contactarà.";
 
-"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Inicieu la sessió al compte de Proton Mail del qual voleu millorar el pla per poder completar la compra.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Inicieu la sessió al compte de Proton Mail del qual voleu millorar el pla per a poder completar la compra.";
 
-"Apple informed us they could not process the purchase." = "Apple informa que no han pogut processar la compra.";
+"Apple informed us they could not process the purchase." = "Apple informa que no s'ha pogut processar la compra.";
 
-"We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "Hem activat la vostra subscripció satisfactòriament. Torneu a carregar l'aplicació per començar a utilitzar el nou pla de serveis.";
+"We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "Hem activat la vostra subscripció. Torneu a carregar l'aplicació per a començar a utilitzar el nou pla de servei.";
 
-"Please unlock the app to proceed with your service plan activation" = "Desbloquegeu l'aplicació per continuar amb l'activació del vostre pla de serveis";
+"Please unlock the app to proceed with your service plan activation" = "Desbloquegeu l'aplicació per continuar amb l'activació del vostre pla de servei";
 
-"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Inicieu la sessió al compte de Proton Mail pel qual esteu millorant el pla per poder completar l'activació del pla.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Inicieu la sessió al compte de Proton Mail per al qual esteu millorant el pla per a poder completar-ne l'activació.";
 
-"Wrong payment token status. Please relaunch the app. If error persists, contact support." = "Estat del token de pagament incorrecte. Torneu a carregar l'aplicació. Si l'error persisteix, contacteu amb suport.";
+"Wrong payment token status. Please relaunch the app. If error persists, contact support." = "L'estat del testimoni de pagament no és correcte. Reinicieu l'aplicació. Si l'error persisteix, contacteu amb el servei d'assistència.";
 
-"Do you want to activate the purchase for %@ address?" = "Voleu activar la compra per l'adreça %@?";
+"Do you want to activate the purchase for %@ address?" = "Voleu activar la compra per a l'adreça %@?";
 
 "Yes, activate it for " = "Sí, activeu-lo per ";
 
 "No, for another Proton Mail account" = "No, per a un altre compte de Proton Mail";
 
-"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "No hem pogut millorar el vostre compte al pla que heu seleccionat, de manera que hem afegit el vostre pagament com a crèdit al vostre compte. Per obtenir més informació i completar l'actualització, poseu-vos en contacte amb Suport.";
+"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "No hem pogut millorar el vostre compte al pla que heu seleccionat, de manera que hem afegit el pagament com a crèdit al vostre compte. Per a obtenir més informació i completar la millora del pla, poseu-vos en contacte amb el servei d'assistència.";
 
 "Contact Support" = "Contacta amb el suport";
 

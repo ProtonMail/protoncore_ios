@@ -52,23 +52,23 @@
 
 "Customer support" = "Atenció al client";
 
-"Still need help? Contact us directly." = "Encara necessiteu ajuda? Contacteu-nos directament.";
+"Still need help? Contact us directly." = "Encara necessiteu ajuda? Contacteu amb nosaltres directament.";
 
 "Please enter your Proton Account email or username." = "Introduïu el vostre correu electrònic o nom d'usuari del compte Proton.";
 
 "Complete Setup" = "Completar configuració";
 
-"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "El vostre compte no té claus; inicieu sessió a la versió web per generar automàticament les claus requerides. Quan hàgiu iniciat sessió a la versió web, torneu a l'aplicació i inicieu-hi la sessió.";
+"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "El vostre compte no té claus. Inicieu la sessió a la web per a generar automàticament les claus necessàries. Un cop hàgiu iniciat la sessió a la web, torneu a l'aplicació i inicieu-hi la sessió.";
 
 "Account setup required" = "Cal configurar el compte";
 
-"Incorrect mailbox password" = "Contrasenya de la bústia de correu incorrecta";
+"Incorrect mailbox password" = "La contrasenya de la bústia de correu és incorrecta";
 
 "Your session has expired. Please log in again." = "La vostra sessió ha caducat. Torneu a iniciar sessió.";
 
 "Proton address required" = "Es requereix l'adreça del Proton";
 
-"You need a Proton email address to use Proton Mail and Proton Calendar.\nYou’ll still be able to use %@ to sign in, and to recover your account." = "Necessiteu un correu de Proton per fer servir Proton Mail i Proton Calendar.\nPodreu seguir fent servir %@ per iniciar sessió, i per recuperar el compte.";
+"You need a Proton email address to use Proton Mail and Proton Calendar.\nYou’ll still be able to use %@ to sign in, and to recover your account." = "Necessiteu una adreça de correu electrònic de Proton per a fer servir Proton Mail i Proton Calendar.\nPodreu seguir fent servir %@ per a iniciar la sessió i per a recuperar el compte.";
 
 "Username" = "Nom d'usuari";
 
@@ -104,7 +104,7 @@
 
 "Change password" = "Canvia la contrasenya";
 
-"To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "Per utilitzar l'aplicació Proton com a membre d'una organització abans necessiteu canviar la vostra contrasenya iniciant sessió a Proton des d'un navegador.";
+"To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "Per a utilitzar l'aplicació de Proton com a membre d'una organització abans necessiteu canviar la contrasenya iniciant la sessió a Proton des d'un navegador.";
 
 "Error occured" = "S'ha produït un error";
 
@@ -116,7 +116,7 @@
 
 "Use your current email instead" = "Utilitzeu el vostre correu electrònic actual.";
 
-"Create a secure Proton Mail address instead" = "Creeu una adreça Proton Mail segura";
+"Create a secure Proton Mail address instead" = "Creeu una adreça segura de Proton Mail";
 
 "Email" = "Correu electrònic";
 
@@ -142,9 +142,9 @@
 
 "Recovery phone number" = "Número de telèfon de recuperació";
 
-"By clicking Next, you agree with Proton's Terms and Conditions" = "Clicant a Següent accepteu els Termes i Condicions de Proton";
+"By clicking Next, you agree with Proton's Terms and Conditions" = "En clicar a Següent, accepteu els Termes i Condicions de Proton";
 
-"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Clicant a Següent, accepteu els termes i condicions i la política de privacitat de Proton.";
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "En clicar a Següent, accepteu els termes i condicions i la política de privacitat de Proton.";
 
 "Terms and Conditions" = "Termes i Condicions";
 
@@ -172,7 +172,7 @@
 
 "Account verification" = "Verificació del compte";
 
-"For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "Per la vostra seguretat, hem de verificar que l'adreça que heu introduït us pertany. Hem enviat un codi de verificació a %@. Introduïu el codi a sota:";
+"For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "Per la vostra seguretat, hem de verificar que l'adreça que heu introduït us pertany. Hem enviat un codi de verificació a %@. Introduïu el codi a continuació:";
 
 "Verification code" = "Codi de verificació";
 
@@ -190,7 +190,7 @@
 
 "Create user failed" = "No s'ha pogut crear l'usuari.";
 
-"Invalid hashed password" = "Contrasenya resumida invàlida";
+"Invalid hashed password" = "L'empremta electrònica de la contrasenya no és vàlida";
 
 "Password can not be empty.\nPlease try again." = "La contrasenya no es pot deixar buida.\nTorneu-ho a provar.";
 
@@ -206,13 +206,13 @@
 
 "Congratulations" = "Felicitats";
 
-"Your Proton Free account was successfully created." = "S'ha creat el vostre compte Proton Free.";
+"Your Proton Free account was successfully created." = "S'ha creat el vostre compte de Proton Free.";
 
 "Proton Free" = "Proton Free";
 
-"Your payment was confirmed and your %@ account successfully created." = "S'ha confirmat el vostre pagament i el vostre compte %@ s'ha creat.";
+"Your payment was confirmed and your %@ account successfully created." = "S'ha confirmat el pagament i s'ha creat el vostre compte %@.";
 
-"Your Proton account was successfully created." = "S'ha creat el vostre compte Proton.";
+"Your Proton account was successfully created." = "S'ha creat el vostre compte de Proton.";
 
 "Enjoy the world of privacy." = "Gaudiu del món de la privacitat.";
 
@@ -238,7 +238,7 @@
 
 "There was a problem reading your security key." = "S'ha produït un problema en llegir la vostra clau de seguretat.";
 
-"We received an authorization from a type we don't support yet." = "Hem rebut una autorització d'un tipus que encara no suportem.";
+"We received an authorization from a type we don't support yet." = "Hem rebut una autorització d'un tipus que encara no admetem.";
 
 "Fetching your security keys details" = "S'estan obtenint els detalls de les seves claus de seguretat";
 
@@ -248,23 +248,23 @@
 
 "These are the security keys registered to your account" = "Aquestes són les claus de seguretat registrades al vostre compte";
 
-"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "Encara no teniu cap clau de seguretat registrada al vostre compte. Utilitzeu l'aplicació web Proton %@ per afegir claus de seguretat.";
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "Encara no teniu cap clau de seguretat registrada al vostre compte. Utilitzeu l'aplicació web de Proton %@ per a afegir claus de seguretat.";
 
 "Security Keys" = "Claus de seguretat";
 
-"To manage, add, or remove security keys, please use the Proton %@ web application." = "Per gestionar, afegir o eliminar claus de seguretat, utilitzeu l'aplicació web Proton %@.";
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "Per a gestionar, afegir o esborrar claus de seguretat, utilitzeu l'aplicació web de Proton %@.";
 
-"Unexpected FIDO2 signature." = "Signatura FIDO2 inesperada.";
+"Unexpected FIDO2 signature." = "S'ha trobat una signatura FIDO2 inesperada.";
 
 "We could not initiate the Secure Password update connection. Please try again." = "No hem pogut iniciar la connexió d'actualització de la contrasenya segura. Torneu-ho a provar.";
 
 "Join %@" = "Uniu-vos %@";
 
-"%@ added you to their Proton organization." = "%@ us ha afegit a la seva organització Proton.";
+"%@ added you to their Proton organization." = "%@ us ha afegit a la seva organització de Proton.";
 
 "Continue" = "Continua";
 
-"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Establiu una contrasenya de recuperació per continuar. Aquesta contrasenya us permetrà iniciar la sessió i recuperar les vostres dades si us bloquegen el vostre compte de Proton, així que assegureu-vos de mantenir-lo en un lloc segur.";
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Establiu una contrasenya de recuperació per a continuar. Aquesta contrasenya us permetrà iniciar la sessió i recuperar les dades si us bloquegen el compte de Proton, així que assegureu-vos de mantenir-lo en un lloc segur.";
 
 "Backup password" = "Contrasenya de la còpia de seguretat";
 
@@ -276,7 +276,7 @@
 
 "Password doesn't match" = "La contrasenya no coincideix.";
 
-"Sign-in requested on another device. Was it you?" = "S'ha sol·licitat una connexió en un altre dispositiu. Heu estat vosaltres?";
+"Sign-in requested on another device. Was it you?" = "S'ha sol·licitat l'inici de sessió en un altre dispositiu. És vostra la sol·licitud?";
 
 "Enter the confirmation code we sent on your other device for %@." = "Introduïu el codi de confirmació enviat a l'altre dispositiu per %@.";
 
@@ -292,11 +292,11 @@
 
 "Approve the sign-in from another device" = "Aprova l'inici de sessió des d'un altre dispositiu";
 
-"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Per assegurar-vos que realment esteu intentant iniciar la sessió, compartiu el codi de confirmació amb el vostre administrador %@ perquè pugui aprovar la sol·licitud de %@.";
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Per assegurar-nos que l'intent d'inici de sessió és realment vostre, compartiu el codi de confirmació amb el vostre administrador %@ perquè pugui aprovar la sol·licitud de %@.";
 
-"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Per assegurar-vos que realment intenteu iniciar la sessió al vostre compte, reviseu el codi de confirmació i aproveu la sol·licitud des d'un altre dispositiu.";
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Per assegurar-nos que l'intent d'inici de sessió al vostre compte és realment vostre, reviseu el codi de confirmació i aproveu la sol·licitud des d'un altre dispositiu.";
 
-"Use backup password instead" = "Utilitza la contrasenya de recuperació en lloc";
+"Use backup password instead" = "Utilitza la contrasenya de recuperació";
 
 "Ask administrator for help" = "Demaneu ajuda a l'administrador";
 
@@ -306,13 +306,13 @@
 
 "Enter your backup password" = "Introduïu la vostra contrasenya de recuperació";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "Per assegurar-vos que realment esteu intentant iniciar la sessió, introduïu la vostra contrasenya de recuperació.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Per a assegurar-nos que l'intent d'inici de sessió és realment vostre, introduïu la contrasenya de recuperació.";
 
 "Access granted" = "S'ha atorgat l'accés.";
 
 "Access denied" = "Accés denegat";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Per la vostra seguretat, heu tancat la sessió de tots els vostres dispositius actius. Abans d'accedir al vostre compte, haureu d'introduir una nova contrasenya de recuperació.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Per la vostra seguretat, se us ha tancat la sessió de tots els vostres dispositius actius. Abans d'accedir al compte, haureu d'introduir una nova contrasenya de recuperació.";
 
 "Contact your administrator if the problem persists." = "Contacteu amb l'administrador si el problema persisteix.";
 
@@ -320,7 +320,7 @@
 
 "Ask your administrator for access?" = "Voleu demanar accés al vostre administrador?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "Això us tancarà la sessió dels vostres altres dispositius i haureu de crear una nova contrasenya de recuperació.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Això us tancarà la sessió dels vostres altres dispositius i haureu de crear una contrasenya de recuperació nova.";
 
 "Grant access to user?" = "Donar accés a l'usuari?";
 

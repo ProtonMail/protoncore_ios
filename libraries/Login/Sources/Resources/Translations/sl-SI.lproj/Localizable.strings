@@ -6,9 +6,9 @@
 
 "Proton address required" = "Potreben je naslov Proton";
 
-"Code doesn't match" = "Code doesn't match";
+"Code doesn't match" = "Koda se ne ujema";
 
-"Code isn't valid" = "Code isn't valid";
+"Code isn't valid" = "Koda ni veljavna";
 
 "Device secret not found" = "Device secret not found";
 
