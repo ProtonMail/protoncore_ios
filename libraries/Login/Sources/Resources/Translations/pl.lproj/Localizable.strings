@@ -10,8 +10,8 @@
 
 "Code isn't valid" = "Kod jest nieprawidłowy";
 
-"Device secret not found" = "Nie znaleziono sekretu urządzenia";
+"Device secret not found" = "Sekret urządzenia nie został znaleziony";
 
-"Passphrase not found" = "Hasło nie znalezione";
+"Passphrase not found" = "Hasło nie zostało znalezione";
 
 "Password update failed" = "Aktualizacja hasła nie powiodła się";
