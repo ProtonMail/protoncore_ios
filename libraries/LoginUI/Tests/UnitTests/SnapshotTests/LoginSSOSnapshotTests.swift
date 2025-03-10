@@ -63,10 +63,9 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
     @MainActor
     func testSignInRequestViewModeRequestForAdminApproval() {
         let view = SignInRequestView(viewModel: .init(dependencies: .init(
-            mode: .requestForAdminApproval(code: "64S3"),
+            mode: .requestForAdminApproval(code: "64S3", adminEmail: "admin@privacybydefault.com"),
             apiService: nil,
             userData: .dummy,
-            adminEmail: "admin@privacybydefault.com",
             ssoNavigationDelegate: nil,
             onDeviceActivatedAction: {},
             onDeviceRejectedAction: {}
@@ -82,7 +81,6 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
             mode: .requestApproveFromAnotherDevice(code: "64S3", devices: [.mock]),
             apiService: nil,
             userData: .dummy,
-            adminEmail: "admin@privacybydefault.com",
             ssoNavigationDelegate: nil,
             onDeviceActivatedAction: {},
             onDeviceRejectedAction: {}
@@ -110,7 +108,6 @@ class LoginSSOSnapshotTests: SnapshotTestCase {
         let view = EnterBackupPasswordView(viewModel: .init(dependencies: .init(
             userData: .dummy,
             apiService: nil,
-            adminEmail: "admin@privacybydefault.com",
             ssoNavigationDelegate: nil
         )))
         let viewController = UIHostingController(rootView: view)

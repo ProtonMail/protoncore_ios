@@ -44,6 +44,8 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
         case newCredential(Credential, PasswordMode)
         case updatedCredential(Credential)
         case ssoChallenge(SSOChallengeResponse)
+        /// Authenticated without an account - credentials are garbage collected by the backend and the user is only a placeholder until the user creates an account.
+        case credentialLess(Credential)
     }
 
     public var apiService: APIService!
@@ -56,6 +58,24 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
     override private init() { }
 
     private let srpBuilder = SRPBuilder()
+    
+    /// login as a "credential-less" user
+    public func authenticateWithCredentialLessSession() async -> Result<Status, AuthErrors> {
+        let credentialResult = await apiService.fetchCredentialForCredentialLessSession()
+        
+        guard let credential = credentialResult.value else {
+            return .failure(
+                .networkingError(
+                    .init(httpCode: nil,
+                          responseCode: nil,
+                          userFacingMessage: nil,
+                          underlyingError: credentialResult.error ?? AuthErrors.emptyAuthResponse.underlyingError)))
+        }
+        
+        self.apiService.setSessionUID(uid: credential.UID)
+        
+        return .success(.credentialLess(credential))
+    }
 
     /// login with SSO
     @available(*, deprecated, message: "Use async version")

@@ -130,7 +130,7 @@ public final class LoginService {
                     completion(.failure(error.asLoginError()))
                 case .success(.askTOTP), .success(.ssoChallenge), .success(.askFIDO2), .success(.askAny2FA):
                     completion(.failure(.invalidState))
-                case .success(.newCredential(let credential, _)), .success(.updatedCredential(let credential)):
+                case .success(.newCredential(let credential, _)), .success(.updatedCredential(let credential)), .success(.credentialLess(let credential)):
                     authDelegate.onUpdate(credential: credential, sessionUID: self.sessionId)
                     self.apiService.setSessionUID(uid: credential.UID)
                     completion(.success(credential))

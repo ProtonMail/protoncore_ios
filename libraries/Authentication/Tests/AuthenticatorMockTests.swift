@@ -220,7 +220,7 @@ class AuthenticatorMockTests: XCTestCase {
                             expect.fulfill()
                         }
                     }
-                case .ssoChallenge, .askFIDO2, .askAny2FA:
+                case .ssoChallenge, .askFIDO2, .askAny2FA, .credentialLess:
                     XCTFail("Not expected here")
                     expect.fulfill()
                 }
@@ -294,7 +294,7 @@ class AuthenticatorMockTests: XCTestCase {
                             expect.fulfill()
                         }
                     }
-                case .ssoChallenge, .askTOTP, .askAny2FA:
+                case .ssoChallenge, .askTOTP, .askAny2FA, .credentialLess:
                     XCTFail("Not expected here")
                     expect.fulfill()
                 }

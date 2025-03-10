@@ -29,6 +29,43 @@ import ProtonCoreUtilities
 // MARK: - Fetching and refreshing credentials
 
 extension PMAPIService {
+    public func fetchCredentialForCredentialLessSession() async -> Result<Credential, APIError> {
+        let sessionResult = await acquireSessionIfNeeded()
+        
+        guard let sessionAuthCredential = sessionResult.value?.authCredential else {
+            // We failed to get a session atuh credential. We probably have an error.
+            return .failure(sessionResult.error ?? APIError.badResponse())
+        }
+        
+        let credentialLessRequest = CredentiallessRequest(challenge: deviceFingerprints)
+        
+        let credentialLessResponse: Result<CredentiallessRequestResponse, APIError> =
+        await performRequestHavingFetchedCredentials(method: credentialLessRequest.method,
+                                                     path: credentialLessRequest.path,
+                                                     parameters: credentialLessRequest.calculatedParameters,
+                                                     headers: credentialLessRequest.header,
+                                                     authenticated: true,
+                                                     authRetry: false,
+                                                     authRetryRemains: 0,
+                                                     fetchingCredentialsResult: .found(credentials: sessionAuthCredential),
+                                                     nonDefaultTimeout: nil,
+                                                     retryPolicy: .background,
+                                                     onDataTaskCreated: { _ in })
+    
+        guard let credentialLessResponse = credentialLessResponse.value else {
+            return .failure(credentialLessResponse.error ?? APIError.badResponse())
+        }
+        
+        let credential = Credential(UID: credentialLessResponse.UID,
+                                    accessToken: credentialLessResponse.accessToken,
+                                    refreshToken: credentialLessResponse.refreshToken,
+                                    userName: "",
+                                    userID: credentialLessResponse.userID,
+                                    scopes: credentialLessResponse.scopes,
+                                    mailboxPassword: "")
+        
+        return .success(credential)
+    }
 
     public func fetchAuthCredentials(completion: @escaping (AuthCredentialFetchingResult) -> Void) {
         performSeriallyInAuthCredentialQueue { continuation in
@@ -329,7 +366,7 @@ extension PMAPIService {
             completion(.refreshingError(underlyingError: error))
         }
     }
-
+    
     enum SessionAcquisitionResult {
         case acquired(AuthCredential)
         case acquiringError(ResponseError)

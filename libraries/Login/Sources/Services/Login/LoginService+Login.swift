@@ -113,7 +113,7 @@ extension LoginService: Login {
                     case let .newCredential(credential, passwordMode):
                         // TODO: SSO - Check that new SSO flows use this case
                         self.handleValidCredentials(credential: credential, passwordMode: passwordMode, mailboxPassword: nil, isSSO: true, completion: completion)
-                    case .updatedCredential, .ssoChallenge, .askTOTP, .askFIDO2, .askAny2FA:
+                    case .updatedCredential, .ssoChallenge, .askTOTP, .askFIDO2, .askAny2FA, .credentialLess:
                         completion(.failure(.invalidState))
                     }
 
@@ -133,7 +133,7 @@ extension LoginService: Login {
         switch authStaus {
         case let .newCredential(credential, passwordMode):
             return try await handleSSOCredentials(credential: credential, passwordMode: passwordMode)
-        case .updatedCredential, .ssoChallenge, .askTOTP, .askFIDO2, .askAny2FA:
+        case .updatedCredential, .ssoChallenge, .askTOTP, .askFIDO2, .askAny2FA, .credentialLess:
             throw LoginError.invalidState
         }
     }
@@ -178,6 +178,9 @@ extension LoginService: Login {
                         completion(.failure(.invalidState))
                     case .ssoChallenge(let ssoChallengeResponse):
                         completion(.success(.ssoChallenge(ssoChallengeResponse)))
+                    case .credentialLess:
+                        // We should never get credentialLess if we try to login.
+                        completion(.failure(.invalidState))
                     }
                 case let .failure(error):
                     PMLog.error("Login failed with \(error)", sendToExternal: true)
@@ -224,6 +227,9 @@ extension LoginService: Login {
                     case .ssoChallenge:
                         PMLog.error("Obtaining SSO challenge should never happen", sendToExternal: true)
                         completion(.failure(.invalidState))
+                    case .credentialLess:
+                        // We should never get credentialLess if we provide 2FAC Code
+                        completion(.failure(.invalidState))
                     }
                 case let .failure(error):
                     PMLog.error("Confirming 2FA code failed with \(error)", sendToExternal: true)
@@ -265,6 +271,9 @@ extension LoginService: Login {
                             completion(.failure(.invalidState))
                         case .ssoChallenge:
                             PMLog.error("Obtaining SSO challenge should never happen", sendToExternal: true)
+                            completion(.failure(.invalidState))
+                        case .credentialLess:
+                            // We should never get credentialLess if we provide a Fido2Signature
                             completion(.failure(.invalidState))
                         }
                     case let .failure(error):
