@@ -25,8 +25,7 @@ import ProtonCoreLog
 import ProtonCoreNetworking
 import ProtonCoreUtilities
 
-extension Result {
-
+public extension Result {
     var value: Success? {
         guard case .success(let valueObject) = self else { return nil }
         return valueObject
@@ -153,6 +152,38 @@ extension PMAPIService {
                                                             onDataTaskCreated: onDataTaskCreated,
                                                             completion: completion)
             }
+        }
+    }
+    
+    /// async version of performRequestHavingFetchedCredentials that returns a decodable response Result
+    /// If you want to get the task or a json completion use the non async version
+    func performRequestHavingFetchedCredentials<T>(method: HTTPMethod,
+                                                   path: String,
+                                                   parameters: Any?,
+                                                   headers: [String: Any]?,
+                                                   authenticated: Bool,
+                                                   authRetry: Bool,
+                                                   authRetryRemains: Int,
+                                                   fetchingCredentialsResult: AuthCredentialFetchingResult,
+                                                   nonDefaultTimeout: TimeInterval?,
+                                                   retryPolicy: ProtonRetryPolicy.RetryMode,
+                                                   onDataTaskCreated: @escaping (URLSessionDataTask) -> Void)
+    async -> Result<T, APIError> where T: APIDecodableResponse {
+        await withCheckedContinuation { continuation in
+            performRequestHavingFetchedCredentials(method: method,
+                                                   path: path,
+                                                   parameters: parameters,
+                                                   headers: headers,
+                                                   authenticated: authenticated,
+                                                   authRetry: authRetry,
+                                                   authRetryRemains: authRetryRemains,
+                                                   fetchingCredentialsResult: fetchingCredentialsResult,
+                                                   nonDefaultTimeout: nonDefaultTimeout,
+                                                   retryPolicy: retryPolicy,
+                                                   onDataTaskCreated: onDataTaskCreated,
+                                                   completion: .right({ task, result in
+                continuation.resume(returning: result)
+            }))
         }
     }
 

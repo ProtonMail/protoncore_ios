@@ -379,6 +379,19 @@ public enum SessionAcquiringResult {
     case sessionUnavailableAndNotFetched
 }
 
+public extension SessionAcquiringResult {
+    var authCredential: AuthCredential? {
+        switch self {
+        case .sessionFetchedAndAvailable(let authCredential):
+            return authCredential
+        case .sessionAlreadyPresent(let authCredential):
+            return authCredential
+        case .sessionUnavailableAndNotFetched:
+            return nil
+        }
+    }
+}
+
 public enum AuthCredentialFetchingResult: Equatable {
     case found(credentials: AuthCredential)
     case notFound
@@ -403,8 +416,11 @@ public protocol APIService: API, RequestPerforming {
     var sessionUID: String { get }
     func getSession() -> Session?
     func setSessionUID(uid: String)
+    @available(*, deprecated, message: "Use async version")
     func acquireSessionIfNeeded(completion: @escaping (Result<SessionAcquiringResult, APIError>) -> Void)
+    func acquireSessionIfNeeded() async -> Result<SessionAcquiringResult, APIError>
     func fetchAuthCredentials(completion: @escaping (AuthCredentialFetchingResult) -> Void)
+    func fetchCredentialForCredentialLessSession() async -> Result<Credential, APIError>
     // delegates
     var authDelegate: AuthDelegate? { get set }
     var serviceDelegate: APIServiceDelegate? { get set }

@@ -48,13 +48,27 @@ public enum SessionResponseError: Error {
         switch self {
         case .configurationError: return self as NSError
         case .responseBodyIsNotAJSONDictionary(let data, let response?), .responseBodyIsNotADecodableObject(let data, let response?):
-            if let data = data, let object = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
-                return ResponseError(httpCode: response.statusCode, responseCode: object["Code"] as? Int, userFacingMessage: object["Error"] as? String,
-                                     underlyingError: self.withoutResponse as NSError) as NSError
-            } else {
-                return ResponseError(httpCode: response.statusCode, responseCode: nil, userFacingMessage: nil,
+            guard let data = data, let object = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                return ResponseError(httpCode: response.statusCode,
+                                     responseCode: nil,
+                                     userFacingMessage: "Response Body is not a JSON.",
                                      underlyingError: self.withoutResponse as NSError) as NSError
             }
+            
+            // Note: I want to keep the response, and the body. They are really helpful when debugging.
+            let errorMessage: String
+            if let errorFromObject = object["Error"] as? String {
+                // Here I don't put the body in the error message because I am breaking a lot of tests if I do that.
+                // And the error message should be enough
+                errorMessage = errorFromObject
+            } else {
+                // Since we don't have a specific error here, include the body to help with debugging.
+                errorMessage = "Possible decoding error. See body in next line for more info. \n body: \(object)"
+            }
+            return ResponseError(httpCode: response.statusCode,
+                                 responseCode: object["Code"] as? Int,
+                                 userFacingMessage: errorMessage,
+                                 underlyingError: self as NSError) as NSError
         case .responseBodyIsNotAJSONDictionary, .responseBodyIsNotADecodableObject:
             return self as NSError
         case .networkingEngineError(let underlyingError): return underlyingError
