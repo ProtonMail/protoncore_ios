@@ -31,6 +31,10 @@ public class AvailablePlansViewModel: ObservableObject {
 
     private struct Constants {
         static let transactionCompletedDelay: Double = 2
+
+        static func bottomPadding(presentationMode: PresentationMode) -> CGFloat {
+            return presentationMode == .modal ? 75 : 0
+        }
     }
 
     @Published var billingCycle: BillingCycle = .all
@@ -40,6 +44,12 @@ public class AvailablePlansViewModel: ObservableObject {
     @Published var confirmationCompleted: Bool = false
     @Published var updateCompleted: Bool = false
     @Published var showAlert: BannerState = .none
+    public var hideAvailablePlans: Bool {
+        guard let isFreePlan = currentPlan?.isFreePlan else {
+            return false
+        }
+        return !isFreePlan
+    }
 
     public var hasAvailablePlans: Bool {
         !availablePlansViewModels.isEmpty
@@ -70,6 +80,10 @@ public class AvailablePlansViewModel: ObservableObject {
     public let hideCurrentPlan: Bool
     public var showCloseButton: Bool {
         presentationMode == .modal
+    }
+
+    public var bottomPadding: CGFloat {
+        return Constants.bottomPadding(presentationMode: presentationMode)
     }
 
     private let paymentsAPIs: PaymentsAPIs
@@ -229,21 +243,15 @@ extension AvailablePlansViewModel {
         billingCycle = .all
         billingFilter(filter: billingCycle)
     }
-#endif
 
-#if DEBUG
     func setBillingCycle(_ billingCycle: BillingCycle) {
         self.billingCycle = billingCycle
     }
-#endif
 
-#if DEBUG
     func setCurrentPlan(_ currentPlan: PlanViewModel) {
         self.currentPlan = currentPlan
     }
-#endif
 
-#if DEBUG
     func showBanner() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
             guard let self else { return }
