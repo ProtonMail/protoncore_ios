@@ -54,12 +54,19 @@ public struct AvailablePlansView: View {
                         PlanView(viewModel: planViewModel)
                             .padding(Theme.spacing.large)
                             .opacity(viewModel.hideCurrentPlan ? 0 : 1)
+                        if viewModel.hideAvailablePlans {
+                            FooterView(image: Theme.icon.infoCircle,
+                                       text: String(localized: "Plans_footer_disclaimer", bundle: .module))
+                            .padding(.horizontal)
+                        }
                         Spacer()
                     }
                 }
                 switch viewModel.viewState {
                 case .dataLoaded:
-                    AvailablePlansBodyView(viewModel: viewModel)
+                    if !viewModel.hideAvailablePlans {
+                        AvailablePlansBodyView(viewModel: viewModel)
+                    }
                 case .fetching:
                     LoadingView(loadingMessage: String(localized: "Loading_plans_message",
                                                        bundle: .module))
@@ -155,7 +162,7 @@ public struct AvailablePlansView: View {
                                             doh: PaymentsDoH(),
                                             appVersion: "VPN@5.5.0",
                                             presentationMode: .push)
-    // viewModel.addPlanViewModels(availablePlans)
+    viewModel.addPlanViewModels(availablePlans)
     viewModel.setBillingCycle(.all)
     // viewModel.showBanner()
     viewModel.setCurrentPlan(currentPlan)

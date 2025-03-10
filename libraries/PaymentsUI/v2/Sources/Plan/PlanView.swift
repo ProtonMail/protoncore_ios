@@ -83,6 +83,11 @@ public struct PlanView: View {
             RoundedRectangle(cornerRadius: Theme.radius.large)
                 .stroke(Constants.borderColor(isExpanded: viewModel.isExpanded), lineWidth: Constants.borderWidth)
         )
+        .onTapGesture {
+            withAnimation {
+                viewModel.isExpanded.toggle()
+            }
+        }
     }
 }
 

@@ -68,6 +68,7 @@ public class PlanViewModel: ObservableObject, Identifiable {
     }
 
     public var renewFooter: AttributedString?
+    public var isFreePlan: Bool
 
     /// plan Decorations
     private let decorations: [Decoration]
@@ -116,6 +117,7 @@ public class PlanViewModel: ObservableObject, Identifiable {
 
         self.description = composedPlan.plan.description
         self.title = composedPlan.plan.title
+        self.isFreePlan = false
         self.name = composedPlan.plan.name
         self.progressEntitlements = progressEntitlements
         self.formattedPrice = composedPlan.product.displayPrice
@@ -156,6 +158,7 @@ public class PlanViewModel: ObservableObject, Identifiable {
         self.description = currentPlan.description
         self.title = currentPlan.title
         self.name = currentPlan.name ?? String(localized: "Current_free_plan_name", bundle: .module)
+        self.isFreePlan = currentPlan.name == nil
         self.progressEntitlements = progressEntitlements
         self.formattedPrice = ProtonCoreUI.Formatter.formatCurrency(amount: currentPlan.amount, currency: currentPlan.currency)
         self.formattedPeriod = currentPlan.cycleDescription ?? ""

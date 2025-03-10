@@ -82,6 +82,7 @@ struct AvailablePlansBodyView: View {
                 }
             }
             .padding(.horizontal, Theme.spacing.large)
+            .padding(.bottom, viewModel.bottomPadding)
         }
     }
 }
