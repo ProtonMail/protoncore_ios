@@ -92,6 +92,7 @@ public enum LUITranslation: TranslationsExposing {
     case main_view_desc
     case next_button
     case signin_button
+    case signin_qr_code_button
     case email_address_button
     case proton_address_button
     case username_field_title
@@ -321,6 +322,8 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Next", comment: "Next button")
         case .signin_button:
             return localized(key: "Sign in", comment: "Sign in button")
+        case .signin_qr_code_button:
+            return localized(key: "Sign in with a QR code", comment: "Sign in with a QR code")
         case .email_address_button:
             return localized(key: "Use your current email instead", comment: "Email address button")
         case .proton_address_button:

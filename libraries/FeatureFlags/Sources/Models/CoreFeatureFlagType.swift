@@ -31,4 +31,5 @@ public enum CoreFeatureFlagType: String, FeatureFlagTypeProtocol {
     case telemetrySignUpMetrics = "IOSTelemetrySignUpMetrics"
     case paymentsV2 = "IOSPaymentsV2"
     case paymentsV6Status = "PaymentsV6StatusRequest"
+    case easyDeviceMigrationDisabled = "EasyDeviceMigrationDisabled"
 }

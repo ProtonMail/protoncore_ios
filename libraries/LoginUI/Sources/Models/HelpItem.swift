@@ -26,6 +26,7 @@ import UIKit
 import ProtonCoreUIFoundations
 
 public enum HelpItem {
+    case signInWithQRCode
     case forgotUsername
     case forgotPassword
     case otherIssues
@@ -37,6 +38,8 @@ public enum HelpItem {
 extension HelpItem: CustomStringConvertible {
     public var description: String {
         switch self {
+        case .signInWithQRCode:
+            return LUITranslation.signin_qr_code_button.l10n
         case .forgotUsername:
             return LUITranslation.help_forgot_username.l10n
         case .forgotPassword:
@@ -56,6 +59,8 @@ extension HelpItem: CustomStringConvertible {
 extension HelpItem {
     public var icon: UIImage? {
         switch self {
+        case .signInWithQRCode:
+            return IconProvider.qrCode
         case .forgotUsername:
             return IconProvider.userCircle
         case .forgotPassword:
