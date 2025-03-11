@@ -24,18 +24,27 @@
 import Foundation
 import ProtonCoreLogin
 import ProtonCoreUtilities
+import ProtonCoreFeatureFlags
 
 final class HelpViewModel {
 
     let helpSections: [[HelpItem]]
 
     init(helpDecorator: ([[HelpItem]]) -> [[HelpItem]]) {
+        
+        var mainSection: [HelpItem] = [
+              .forgotUsername,
+              .forgotPassword,
+              .otherIssues
+        ]
+        // setFlagOverride disables the easyDeviceMigration feature by setting the kill switch to true.
+        FeatureFlagsRepository.shared.setFlagOverride(CoreFeatureFlagType.easyDeviceMigrationDisabled, true)
+        if !FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.easyDeviceMigrationDisabled) {
+            mainSection.insert(.signInWithQRCode, at: 0)
+        }
+        
         let defaultHelp: [[HelpItem]] = [
-            [
-                .forgotUsername,
-                .forgotPassword,
-                .otherIssues
-            ],
+            mainSection,
             [
                 .staticText(text: LUITranslation.help_more_help.l10n)
             ],

@@ -469,6 +469,9 @@ extension LoginCoordinator: HelpViewControllerDelegate {
 
     func userDidRequestHelp(item: HelpItem) {
         switch item {
+        case .signInWithQRCode:
+            // TODO: Navigate to the correct screen, when the screen is ready.
+            break
         case .forgotUsername:
             UIApplication.openURLIfPossible(externalLinks.forgottenUsername)
         case .forgotPassword:

@@ -464,6 +464,8 @@ public struct ProtonIconSet: Sendable {
     public let questionCircleFilled = ProtonIcon(name: "ic-question-circle-filled")
 
     public let questionCircle = ProtonIcon(name: "ic-question-circle")
+    
+    public let qrCode = ProtonIcon(name: "ic-qr-code")
 
     public let replyAll = ProtonIcon(name: "ic-reply-all")
 
