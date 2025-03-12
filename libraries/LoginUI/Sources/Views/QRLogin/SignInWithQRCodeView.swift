@@ -32,8 +32,8 @@ public struct SignInWithQRCodeView: View {
         static let loaderSize: CGFloat = 33
         static let qrWidthHeight: CGFloat = 264
         static let cornerRadius: CGFloat = 16
-        static let topPadding: CGFloat = 24
-        static let extraPadding: CGFloat = 8
+        static let verticalTextPadding: CGFloat = 24
+        static let sectionPadding: CGFloat = 32
         static let leadingTrailingPadding: CGFloat = 16
         static let noSpacing: CGFloat = .zero
         static let tinySpacing: CGFloat = 4
@@ -63,7 +63,7 @@ public struct SignInWithQRCodeView: View {
                 ProtonLoaderView(size: Constants.loaderSize)
                     .frame(width: Constants.loaderSize, height: Constants.loaderSize)
             }
-        }.padding(.top, Constants.topPadding + Constants.extraPadding)
+        }.padding(.top, Constants.sectionPadding)
     }
     
     var instructions: some View {
@@ -72,20 +72,20 @@ public struct SignInWithQRCodeView: View {
                 .modifier(TextViewModifier(lineSpacing: Constants.lineSpacing))
             numberedList
         }
-        .padding(.top, Constants.topPadding)
+        .padding(.top, Constants.sectionPadding)
         .padding([.leading, .trailing], Constants.leadingTrailingPadding)
     }
     
     var numberedList: some View {
         VStack(alignment: .leading, spacing: Constants.tinySpacing) {
-            numberedTextItem(number: 1, text: LUITranslation.open_proton_app_on_phone.l10n)
-            numberedTextItem(number: 2, text: LUITranslation.tap_into_settings_instructions.l10n)
-            numberedTextItem(number: 3, text: LUITranslation.tap_scan_qr_code.l10n)
+            numberedTextItem(number: 1, text: AttributedString.markdown(LUITranslation.open_proton_app_on_phone.l10n))
+            numberedTextItem(number: 2, text: AttributedString.markdown(LUITranslation.tap_into_settings_instructions.l10n))
+            numberedTextItem(number: 3, text: AttributedString.markdown(LUITranslation.tap_scan_qr_code.l10n))
         }
-        .padding(.top, Constants.topPadding)
+        .padding(.top, Constants.verticalTextPadding)
     }
     
-    func numberedTextItem(number: Int, text: String) -> some View {
+    func numberedTextItem(number: Int, text: AttributedString) -> some View {
         HStack(alignment: .top, spacing: Constants.tinySpacing) {
             Text("\(number).")
                 // frame(width: textSize) makes sure the text is aligned
@@ -103,7 +103,7 @@ public struct SignInWithQRCodeView: View {
         
         func body(content: Content) -> some View {
             content
-                .font(.callout)
+                .font(.body)
                 .lineSpacing(lineSpacing)
                 .foregroundStyle(ColorProvider.TextWeak)
         }
@@ -112,4 +112,10 @@ public struct SignInWithQRCodeView: View {
 
 #Preview {
     SignInWithQRCodeView()
+}
+
+extension AttributedString {
+    static func markdown(_ string: String) -> AttributedString {
+        (try? AttributedString(markdown: string)) ?? AttributedString(string)
+    }
 }
