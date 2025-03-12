@@ -554,9 +554,9 @@ public enum LUITranslation: TranslationsExposing {
         case .open_proton_app_on_phone:
             return localized(key: "Open the Proton app on your phone", comment: "Open the Proton app on your phone")
         case .tap_into_settings_instructions:
-            return localized(key: "Tap into Settings, then tap Sign in to another device", comment: "Tap into Settings, then tap Sign in to another device")
+            return localized(key: "Tap into **Settings**, then tap **Sign in to another device**", comment: "Tap into **Settings**, then tap **Sign in to another device**")
         case .tap_scan_qr_code:
-            return localized(key: "Tap Scan QR code", comment: "Tap Scan QR code")
+            return localized(key: "Tap **Scan QR code**", comment: "Tap **Scan QR code**")
         case .scan_this_code_instructions:
             return localized(key: "Scan this code with your phone camera to sign in instantly.", comment: "Scan this code with your phone camera to sign in instantly.")
         }
