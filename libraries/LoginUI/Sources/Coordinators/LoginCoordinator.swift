@@ -31,6 +31,7 @@ import ProtonCoreNetworking
 import ProtonCoreTroubleShooting
 import ProtonCoreServices
 import ProtonCoreUtilities
+import SwiftUI
 
 protocol LoginCoordinatorDelegate: AnyObject {
     func userDidDismissLoginCoordinator(loginCoordinator: LoginCoordinator)
@@ -155,7 +156,7 @@ final class LoginCoordinator {
                                                           inAppTheme: customization.inAppTheme)
         helpViewController.delegate = self
         helpViewController.viewModel = HelpViewModel(helpDecorator: customization.helpDecorator)
-        navigationController?.present(helpViewController, animated: true, completion: nil)
+        navigationController?.present(UINavigationController(rootViewController: helpViewController), animated: true, completion: nil)
     }
 
     private func showTwoFactorCode(username: String, password: String) {
@@ -470,8 +471,10 @@ extension LoginCoordinator: HelpViewControllerDelegate {
     func userDidRequestHelp(item: HelpItem) {
         switch item {
         case .signInWithQRCode:
-            // TODO: Navigate to the correct screen, when the screen is ready.
-            break
+            if let helpNavigationController = navigationController?.presentedViewController as? UINavigationController {
+                let signInWithQRCodeView = UIHostingController(rootView: SignInWithQRCodeView())
+                helpNavigationController.pushViewController(signInWithQRCodeView, animated: true)
+            }
         case .forgotUsername:
             UIApplication.openURLIfPossible(externalLinks.forgottenUsername)
         case .forgotPassword:

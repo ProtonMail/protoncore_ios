@@ -31,25 +31,24 @@ protocol HelpViewControllerDelegate: AnyObject {
 }
 
 final class HelpViewController: UIViewController, AccessibleView {
-
+    
     // MARK: - Outlets
-
+    
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var closeButton: UIButton!
-
+    
     // MARK: - Properties
-
+    
     weak var delegate: HelpViewControllerDelegate?
     var viewModel: HelpViewModel!
-
+    
     override var preferredStatusBarStyle: UIStatusBarStyle { darkModeAwarePreferredStatusBarStyle() }
-
+    
     // MARK: - Setup
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupUI()
         setupTableView()
         generateAccessibilityIdentifiers()
@@ -59,11 +58,18 @@ final class HelpViewController: UIViewController, AccessibleView {
         view.backgroundColor = ColorProvider.BackgroundNorm
         tableView.backgroundColor = ColorProvider.BackgroundNorm
         titleLabel.textColor = ColorProvider.TextNorm
-        closeButton.setImage(IconProvider.cross, for: .normal)
-        closeButton.tintColor = ColorProvider.IconNorm
         titleLabel.text = LUITranslation.help_screen_title.l10n
         titleLabel.font = .adjustedFont(forTextStyle: .title2, weight: .bold)
         titleLabel.adjustsFontForContentSizeCategory = true
+        
+        let closeButton = UIButton(type: .custom)
+        closeButton.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
+        closeButton.setImage(IconProvider.cross, for: .normal)
+        closeButton.sizeToFit()
+        let leftBarButtonItem = UIBarButtonItem(customView: closeButton)
+        self.navigationItem.leftBarButtonItem = leftBarButtonItem
+        
+        self.navigationController?.navigationBar.backgroundColor = view.backgroundColor
     }
 
     private func setupTableView() {
