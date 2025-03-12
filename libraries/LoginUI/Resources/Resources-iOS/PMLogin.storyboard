@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -319,24 +319,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="87N-4d-0V4">
-                                <rect key="frame" x="16" y="16" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="9a0-Lb-439"/>
-                                    <constraint firstAttribute="height" constant="40" id="jha-dW-9up"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="closePressed:" destination="0dC-Hl-SR5" eventType="touchUpInside" id="ZcN-Ye-PqS"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How can we help?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlS-LV-eb1">
-                                <rect key="frame" x="24" y="80" width="366" height="27"/>
+                                <rect key="frame" x="24" y="72" width="366" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RbN-Gc-Kc7">
-                                <rect key="frame" x="0.0" y="131" width="414" height="765"/>
+                                <rect key="frame" x="0.0" y="123" width="414" height="773"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" name="SeparatorLineColour"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -346,18 +336,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RbN-Gc-Kc7" firstAttribute="leading" secondItem="dXe-Bn-yXb" secondAttribute="leading" id="0za-VC-sKx"/>
-                            <constraint firstItem="87N-4d-0V4" firstAttribute="top" secondItem="dXe-Bn-yXb" secondAttribute="top" constant="16" id="MVA-bT-2Kx"/>
-                            <constraint firstItem="87N-4d-0V4" firstAttribute="leading" secondItem="dXe-Bn-yXb" secondAttribute="leading" constant="16" id="QxQ-2F-16W"/>
                             <constraint firstAttribute="bottom" secondItem="RbN-Gc-Kc7" secondAttribute="bottom" id="RuM-8T-YiZ"/>
                             <constraint firstItem="RbN-Gc-Kc7" firstAttribute="top" secondItem="vlS-LV-eb1" secondAttribute="bottom" constant="24" id="Vjf-8t-89N"/>
-                            <constraint firstItem="vlS-LV-eb1" firstAttribute="top" secondItem="87N-4d-0V4" secondAttribute="bottom" constant="24" id="exJ-9W-Vuy"/>
+                            <constraint firstItem="vlS-LV-eb1" firstAttribute="top" secondItem="MI7-7x-3fm" secondAttribute="top" constant="24" id="hh2-On-sdb"/>
                             <constraint firstAttribute="trailing" secondItem="vlS-LV-eb1" secondAttribute="trailing" constant="24" id="ppL-CK-yzR"/>
                             <constraint firstItem="vlS-LV-eb1" firstAttribute="leading" secondItem="dXe-Bn-yXb" secondAttribute="leading" constant="24" id="uJf-gC-YOe"/>
                             <constraint firstAttribute="trailing" secondItem="RbN-Gc-Kc7" secondAttribute="trailing" id="vPb-kU-YW4"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="closeButton" destination="87N-4d-0V4" id="WiA-QY-izm"/>
                         <outlet property="tableView" destination="RbN-Gc-Kc7" id="MVL-ig-brn"/>
                         <outlet property="titleLabel" destination="vlS-LV-eb1" id="RSK-P1-qXP"/>
                     </connections>
@@ -509,7 +496,7 @@ You’ll still be able to use example@example.ch to sign in, and to recover your
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

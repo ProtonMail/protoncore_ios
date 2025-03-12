@@ -199,6 +199,10 @@ public enum LUITranslation: TranslationsExposing {
     case validation_invalid_email
     case invalid_password
     case passphrase_not_found
+    case open_proton_app_on_phone
+    case tap_into_settings_instructions
+    case tap_scan_qr_code
+    case scan_this_code_instructions
 
     public var l10n: String {
         switch self {
@@ -547,6 +551,14 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Password not valid", comment: "Invalid password error")
         case .passphrase_not_found:
             return localized(key: "Passphrase not found", comment: "Passphrase not found error")
+        case .open_proton_app_on_phone:
+            return localized(key: "Open the Proton app on your phone", comment: "Open the Proton app on your phone")
+        case .tap_into_settings_instructions:
+            return localized(key: "Tap into Settings, then tap Sign in to another device", comment: "Tap into Settings, then tap Sign in to another device")
+        case .tap_scan_qr_code:
+            return localized(key: "Tap Scan QR code", comment: "Tap Scan QR code")
+        case .scan_this_code_instructions:
+            return localized(key: "Scan this code with your phone camera to sign in instantly.", comment: "Scan this code with your phone camera to sign in instantly.")
         }
     }
 }
