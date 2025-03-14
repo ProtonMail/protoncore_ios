@@ -102,5 +102,28 @@ final class PlansComposerTests: XCTestCase, @unchecked Sendable {
         XCTAssertEqual(currentSubscription.name, "mail2022+drivepro2022")
         XCTAssertEqual(currentSubscription.description, "Current plan")
     }
+
+    func test_mostExpensivePlan() async throws {
+        let mockResponse = Bundle.main.loadJsonDataToDic(from: "availablePlans.json")
+        mockRemoteManager.setupURLSessionMock(withMockResponse: mockResponse)
+
+        // Fetch Proton plans
+        _ = try await plansComposer.fetchAvailablePlans()
+
+        let mostExpensivePlan = plansComposer.mostExpensivePlan
+        XCTAssertEqual(mostExpensivePlan?.plan.title, "VPN Plus")
+    }
+
+    func test_discount() async throws {
+        let mockResponse = Bundle.main.loadJsonDataToDic(from: "availablePlans.json")
+        // we know by the mock that the most expensive plan is 11.99 a month
+        // compared to the first returned 119.99 a year, we expect a price discount, per month, of 17%
+        mockRemoteManager.setupURLSessionMock(withMockResponse: mockResponse)
+
+        // Fetch Proton plans
+        let availablePlans = try await plansComposer.fetchAvailablePlans()
+        let discount = plansComposer.availableDiscount(comparedTo: availablePlans.first!)
+        XCTAssertEqual(discount, 17)
+    }
 }
 #endif
