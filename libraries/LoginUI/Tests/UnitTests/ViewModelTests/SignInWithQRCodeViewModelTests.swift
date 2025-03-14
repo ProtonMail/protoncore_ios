@@ -1,0 +1,112 @@
+//
+//  Created on 13.03.2025.
+//
+//  Copyright (c) 2025 Proton AG
+//
+//  ProtonVPN is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  ProtonVPN is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+
+import XCTest
+import ProtonCoreLogin
+@testable import ProtonCoreLoginUI
+import ProtonCoreTestingToolkitUnitTestsServices
+import ProtonCoreServices
+
+class SignInWithQRCodeViewModelTests: XCTestCase {
+    var sut: SignInWithQRCodeView.ViewModel!
+    var mockAPIService: APIServiceMock!
+    var mockServiceDelegate: APIServiceDelegateMock!
+    var mockSecureHashGenerator: MockSecureHashGenerator!
+    var mockClientIdProvider: MockClientIdProvider!
+
+    override func setUp() async throws {
+        mockAPIService = APIServiceMock()
+        mockSecureHashGenerator = MockSecureHashGenerator()
+        mockClientIdProvider = MockClientIdProvider()
+
+        sut = SignInWithQRCodeView.ViewModel(dependencies:
+                .init(apiService: mockAPIService,
+                      secureHashGenerator: mockSecureHashGenerator,
+                      clientIdProvider: mockClientIdProvider))
+    }
+
+    func testGenerateQRCodeText() async {
+        let selector = "selector"
+        let userCode = "userCode"
+        let clientId = "clientId"
+        mockAPIService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(ForkSessionUserCodeResponse(selector: selector, userCode: userCode)))
+        }
+
+        mockClientIdProvider.id = clientId
+        mockSecureHashGenerator.data = Data([1,2,3])
+
+        await sut.generateANewQRCodeText()
+
+        // wait a little for the qrCode to reach the main thread
+        try? await Task.sleep(nanoseconds: 100_000_000)
+
+        XCTAssertEqual(sut.qrCodeText, "\(userCode):AQID:\(clientId)")
+    }
+
+    func testRefreshOfQRCodeText() async {
+        let selector = "selector"
+        let userCode = "userCode"
+        let clientId = "clientId"
+        mockAPIService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(ForkSessionUserCodeResponse(selector: selector, userCode: userCode)))
+        }
+
+        mockClientIdProvider.id = clientId
+        mockSecureHashGenerator.data = Data([1,2,3])
+
+        sut.refreshWaitTimeInSeconds = 1
+
+        await sut.generateANewQRCodeText()
+
+        // wait a little for the qrCode to reach the main thread
+        try? await Task.sleep(nanoseconds: 100_000_000)
+
+        let qrCode1 = sut.qrCodeText
+
+        // Change the secure hash
+        mockSecureHashGenerator.data = Data([1,2,3,4])
+
+        // wait for refreshWaitTimeInSeconds to expire
+        try? await Task.sleep(nanoseconds: UInt64(sut.refreshWaitTimeInSeconds * 1_000_000_000))
+
+        let qrCode2 = sut.qrCodeText
+
+        XCTAssertNotEqual(qrCode1, qrCode2)
+    }
+}
+
+class MockSecureHashGenerator: SecureHashGenerator {
+    var data: Data!
+    var error: (any Error)?
+
+    func random(bits: Int32) throws -> Data {
+        if let err = error {
+            throw err
+        }
+        return data
+    }
+}
+
+class MockClientIdProvider: ClientIdProvider {
+    var id: String!
+
+    func clientId() -> String {
+        id
+    }
+}

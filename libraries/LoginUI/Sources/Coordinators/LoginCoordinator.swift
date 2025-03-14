@@ -471,9 +471,12 @@ extension LoginCoordinator: HelpViewControllerDelegate {
     func userDidRequestHelp(item: HelpItem) {
         switch item {
         case .signInWithQRCode:
-            if let helpNavigationController = navigationController?.presentedViewController as? UINavigationController {
-                let signInWithQRCodeView = UIHostingController(rootView: SignInWithQRCodeView())
-                helpNavigationController.pushViewController(signInWithQRCodeView, animated: true)
+            Task { @MainActor in
+                if let helpNavigationController = navigationController?.presentedViewController as? UINavigationController {
+                    let viewModel = self.container.makeSignInWithQRCodeViewModel()
+                    let signInWithQRCodeView = UIHostingController(rootView: SignInWithQRCodeView(viewModel: viewModel))
+                    helpNavigationController.pushViewController(signInWithQRCodeView, animated: true)
+                }
             }
         case .forgotUsername:
             UIApplication.openURLIfPossible(externalLinks.forgottenUsername)

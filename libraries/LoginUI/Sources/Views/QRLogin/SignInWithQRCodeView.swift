@@ -20,17 +20,13 @@ import SwiftUI
 import ProtonCoreUIFoundations
 
 public struct SignInWithQRCodeView: View {
-    
-    @State var state: SignInWithQRCodeState = .loading
-    
-    enum SignInWithQRCodeState {
-        case qrCodeReady
-        case loading
-    }
+
+    @StateObject var viewModel: ViewModel
     
     private enum Constants {
         static let loaderSize: CGFloat = 33
-        static let qrWidthHeight: CGFloat = 264
+        static let qrBgSize: CGFloat = 264
+        static let qrCodeSize: CGFloat = 244
         static let cornerRadius: CGFloat = 16
         static let verticalTextPadding: CGFloat = 24
         static let sectionPadding: CGFloat = 32
@@ -46,20 +42,27 @@ public struct SignInWithQRCodeView: View {
             qrCode
             instructions
             Spacer()
-        }.navigationTitle(LUITranslation.signin_qr_code_button.l10n)
+        }
+        .navigationTitle(LUITranslation.signin_qr_code_button.l10n)
+        .onAppear {
+            viewModel.generateANewQRCodeText()
+        }
+        .onDisappear {
+            viewModel.cancelQRCodeRefresh()
+        }
     }
     
     var qrCode: some View {
         ZStack(alignment: .center) {
             Rectangle()
                 .background(Color.white)
-                .frame(width: Constants.qrWidthHeight, height: Constants.qrWidthHeight)
+                .frame(width: Constants.qrBgSize, height: Constants.qrBgSize)
                 .cornerRadius(Constants.cornerRadius)
-            switch state {
-            case .qrCodeReady:
-                // TODO: Add the QR code here
-                EmptyView()
-            case .loading:
+            if let qrCodeText = viewModel.qrCodeText {
+                QRCodeView(text: qrCodeText)
+                    .foregroundStyle(Color.black)
+                    .frame(width: Constants.qrCodeSize, height: Constants.qrCodeSize)
+            } else {
                 ProtonLoaderView(size: Constants.loaderSize)
                     .frame(width: Constants.loaderSize, height: Constants.loaderSize)
             }
@@ -108,10 +111,6 @@ public struct SignInWithQRCodeView: View {
                 .foregroundStyle(ColorProvider.TextWeak)
         }
     }
-}
-
-#Preview {
-    SignInWithQRCodeView()
 }
 
 extension AttributedString {
