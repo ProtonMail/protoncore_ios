@@ -39,12 +39,14 @@ public enum PlansComposerError: LocalizedError {
 public protocol PlansComposerProviding: Sendable {
 
     var hasData: Bool { get }
+    var mostExpensivePlan: ComposedPlan? { get }
     func getStoreProducts(_ plans: [String]) async throws -> [Product]
     func fetchProtonPlans() async throws -> AvailablePlans
     func matchPlanToStoreProduct(_ productId: String) -> ComposedPlan?
     func fetchAvailablePlans() async throws -> [ComposedPlan]
     func updateRemoteManager(remoteManager: RemoteManagerProviding)
     func fetchCurrentSubscription() async throws -> CurrentSubscriptionResponse
+    func availableDiscount(comparedTo plan: ComposedPlan) -> Int?
 }
 
 public final class PlansComposer: PlansComposerProviding, @unchecked Sendable {
@@ -52,6 +54,8 @@ public final class PlansComposer: PlansComposerProviding, @unchecked Sendable {
     public var hasData: Bool {
         return !availablePlans.plans.isEmpty && !storeProducts.isEmpty
     }
+
+    public var mostExpensivePlan: ComposedPlan?
 
     private var remoteManager: RemoteManagerProviding
     private let paymentsAPIs: PaymentsAPIs
@@ -96,7 +100,9 @@ public final class PlansComposer: PlansComposerProviding, @unchecked Sendable {
 
         availablePlans = try await fetchProtonPlans()
         storeProducts = try await getStoreProducts(availablePlans.plans.identifiersForAppleInstances())
-        return availablePlans.plans.modelsMatchingProducts(in: storeProducts)
+        let matchedPlans = availablePlans.plans.modelsMatchingProducts(in: storeProducts)
+        mostExpensivePlan = matchedPlans.sorted { $0.pricePerMonth > $1.pricePerMonth }.first
+        return matchedPlans
     }
 
     public func fetchCurrentSubscription() async throws -> CurrentSubscriptionResponse {
@@ -116,5 +122,9 @@ public final class PlansComposer: PlansComposerProviding, @unchecked Sendable {
         queue.sync {
             self.remoteManager = remoteManager
         }
+    }
+
+    public func availableDiscount(comparedTo plan: ComposedPlan) -> Int? {
+        mostExpensivePlan.flatMap { plan.discount(comparedTo: $0) }
     }
 }
