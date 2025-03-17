@@ -6,7 +6,7 @@
 
 "Please enter your Proton Account password." = "请输入您的 Proton 账户密码";
 
-"OK" = "确定";
+"OK" = "好的";
 
 "Help" = "帮助";
 
@@ -20,15 +20,15 @@
 
 "Code sent to %@" = "验证码已发送到 %@";
 
-"Request new code?" = "请求新验证码?";
+"Request new code?" = "重新发送验证码？";
 
 "Resend" = "重新发送";
 
 "Get a replacement code sent to %@." = "获取发送到 %@ 的替换码";
 
-"Request new code" = "请求新验证码";
+"Request new code" = "重新发送验证码";
 
-"Enter your Proton Account details." = "请输入您的 Proton 账户详细信息";
+"Enter your Proton Account details." = "请输入您的 Proton 账户信息。";
 
 "Email or username" = "邮箱或用户名";
 
@@ -38,11 +38,13 @@
 
 "Sign in with SSO" = "使用SSO登录";
 
+"Sign in with a QR code" = "使用二维码登录";
+
 "Sign in to your organization" = "登录到您的组织";
 
-"Create an account" = "创建账户";
+"Create an account" = "创建账号";
 
-"How can we help?" = "我们能帮你什么吗？";
+"How can we help?" = "需要帮助吗？";
 
 "Forgot username" = "忘记用户名";
 
@@ -82,7 +84,7 @@
 
 "Forgot password" = "忘记密码";
 
-"Two-factor authentication" = "双重验证";
+"Two-factor authentication" = "双因素身份验证 ( 2FA )";
 
 "Authenticate" = "认证账户";
 
@@ -92,9 +94,9 @@
 
 "Use recovery code" = "使用恢复码";
 
-"Use two-factor code" = "使用双重验证码";
+"Use two-factor code" = "输入一次性密码";
 
-"Enter the 6-digit code." = "请输入 6 位验证码";
+"Enter the 6-digit code." = "请输入 6 位验证码。";
 
 "Enter an 8-character recovery code." = "请输入 8 位恢复码";
 
@@ -112,19 +114,19 @@
 
 "One account for all Proton services." = "一个账户即可通用所有 Proton 服务";
 
-"Next" = "继续";
+"Next" = "下一页";
 
 "Use your current email instead" = "使用您已有的邮箱地址";
 
 "Create a secure Proton Mail address instead" = "创建一个安全的 Proton Mail 邮箱地址";
 
-"Email" = "邮箱";
+"Email" = "电子邮件地址";
 
 "Create your password" = "创建密码";
 
 "Password must contain at least 8 characters" = "密码必须至少包含 8 个字符";
 
-"Repeat password" = "重复密码";
+"Repeat password" = "再次输入密码";
 
 "Domain" = "域名";
 
@@ -134,9 +136,9 @@
 
 "We will send recovery instructions to this email or phone number if you get locked out of your account." = "假如以后您忘记用户名或密码无法登录，我们将通过这个邮箱或电话号码帮助您恢复账户。";
 
-"Email" = "邮箱";
+"Email" = "电子邮件地址";
 
-"Phone" = "电话";
+"Phone" = "电话号码";
 
 "Recovery email" = "密保邮箱";
 
@@ -146,7 +148,7 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "点击下一步，即表示您同意 Proton 的条款和条件以及隐私政策";
 
-"Terms and Conditions" = "条款和条件";
+"Terms and Conditions" = "条款与细则";
 
 "Privacy Policy" = "隐私政策";
 
@@ -176,11 +178,11 @@
 
 "Verification code" = "验证码";
 
-"Enter the 6-digit code." = "请输入 6 位验证码";
+"Enter the 6-digit code." = "请输入 6 位验证码。";
 
 "Did not receive a code?" = "未收到验证码？";
 
-"Terms and Conditions" = "条款和条件";
+"Terms and Conditions" = "条款与细则";
 
 "Privacy Policy" = "隐私政策";
 
@@ -204,7 +206,7 @@
 
 "Change email address" = "更改邮箱地址";
 
-"Congratulations" = "恭喜";
+"Congratulations" = "祝贺";
 
 "Your Proton Free account was successfully created." = "您已经成功创建Proton免费账号。";
 
@@ -220,7 +222,7 @@
 
 "Sign in" = "登录";
 
-"Troubleshoot" = "排查故障";
+"Troubleshoot" = "故障排查";
 
 "Please choose how you want to confirm your identity." = "请选择您想要确认身份的方式。";
 
@@ -282,7 +284,7 @@
 
 "Confirmation code" = "确认码";
 
-"If you didn't make this request, cancel it now." = "如果您没有提出该请求，请立即取消。";
+"If you didn't make this request, cancel it now." = "如果您没有提出申请，请立即取消。";
 
 "Yes, it was me" = "是的，这是我";
 
@@ -310,7 +312,7 @@
 
 "Access granted" = "已授予访问权限";
 
-"Access denied" = "访问被拒绝";
+"Access denied" = "拒绝访问";
 
 "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "为了您的安全，已为您已退出所有其他活动设备。在访问您的账户之前，您将需要输入一个新的备份密码。";
 
@@ -349,3 +351,11 @@
 "Password not valid" = "密码无效";
 
 "Passphrase not found" = "未找到密码";
+
+"Open the Proton app on your phone" = "在您的手机上打开 Proton 应用";
+
+"Tap into Settings, then tap Sign in to another device" = "点击进入设置，然后点击登录到另一台设备";
+
+"Tap Scan QR code" = "点击扫描二维码";
+
+"Scan this code with your phone camera to sign in instantly." = "用您的手机摄像头扫描此代码以即时登录。";

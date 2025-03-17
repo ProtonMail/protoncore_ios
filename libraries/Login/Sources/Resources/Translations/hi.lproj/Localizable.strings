@@ -1,0 +1,17 @@
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Proton सर्वर पे पहुंचा नहीं जा सकता। ये गलत नेटवर्क संरचना, Proton सर्वर का काम नहीं करना या Proton सर्वर के ब्लॉक होने की वजह से हो सकता है।";
+
+"An error has occured" = "एक एरर हुआ है";
+
+"Get a Proton Mail address linked to this account in your Proton web settings." = "अपने Proton वेब सेटिंग्स में इस खाते से जुड़ा एक Proton Mail पता प्राप्त करें।";
+
+"Proton address required" = "Proton पता चाहिए";
+
+"Code doesn't match" = "कोड मेल नहीं खाता";
+
+"Code isn't valid" = "कोड मान्य नहीं है";
+
+"Device secret not found" = "डिवाइस गुप्त नहीं मिला";
+
+"Passphrase not found" = "पासफ्रेज़ नहीं मिला";
+
+"Password update failed" = "पासवर्ड अपडेट विफल रहा";

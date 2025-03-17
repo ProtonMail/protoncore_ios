@@ -38,6 +38,8 @@
 
 "Sign in with SSO" = "Mit SSO anmelden";
 
+"Sign in with a QR code" = "Mit QR-Code anmelden";
+
 "Sign in to your organization" = "Bei deiner Organisation anmelden";
 
 "Create an account" = "Konto erstellen";
@@ -300,7 +302,7 @@
 
 "Ask administrator for help" = "Einen Administrator um Hilfe bitten";
 
-"Devices available:" = "Verfügbare Geräte:";
+"Devices available:" = "Geräte verfügbar:";
 
 "Operation couldn't be completed. Please try again." = "Fehler beim Abschließen des Vorgangs. Bitte versuche es erneut.";
 
@@ -349,3 +351,11 @@
 "Password not valid" = "Passwort nicht gültig";
 
 "Passphrase not found" = "Passphrase nicht gefunden";
+
+"Open the Proton app on your phone" = "Öffne die Proton-App auf deinem Handy";
+
+"Tap into Settings, then tap Sign in to another device" = "Tippe auf „Einstellungen” und dann auf „Mit einem anderen Gerät anmelden”";
+
+"Tap Scan QR code" = "Antippen, um QR-Code zu scannen";
+
+"Scan this code with your phone camera to sign in instantly." = "Scanne diesen Code mit der Kamera deines Handys, um dich sofort anzumelden.";

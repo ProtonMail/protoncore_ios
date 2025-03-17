@@ -24,7 +24,7 @@
 
 "In case Proton sites are blocked, this setting allows the app to try alternative network routing to reach Proton, which can be useful for bypassing firewalls or network issues. We recommend keeping this setting on for greater reliability. %1$@" = "Sé lokað á Proton-vefsvæði, gerir þessi stilling forritinu kleift að reyna að nota aðra leið um netið til að tengjast Proton, sem aftur getur nýst til að komast fram hjá eldveggjum eða vandamálum varðandi netkerfið. Við mælum með því að hafa þessa stillingu virka til að auka áreiðanleika forritsins. %1$@";
 
-"Learn more" = "Kanna nánar";
+"Learn more" = "Læra meira";
 
 "Please make sure that your internet connection is working." = "Vinsamlega gakktu úr skugga um að nettengingin þín virki.";
 

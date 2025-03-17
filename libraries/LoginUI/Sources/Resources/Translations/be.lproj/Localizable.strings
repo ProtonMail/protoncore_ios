@@ -38,6 +38,8 @@
 
 "Sign in with SSO" = "Увайсці з SSO";
 
+"Sign in with a QR code" = "Увайсці праз QR-код";
+
 "Sign in to your organization" = "Увайсці ў сваю арганізацыю";
 
 "Create an account" = "Стварыць уліковы запіс";
@@ -349,3 +351,11 @@
 "Password not valid" = "Недапушчальны пароль";
 
 "Passphrase not found" = "Парольная фраза не знойдзена";
+
+"Open the Proton app on your phone" = "Адкрыць праграму Proton на вашай прыладзе";
+
+"Tap into Settings, then tap Sign in to another device" = "Націсніце на Налады, а потым выберыце Увайсці ў іншую прыладу";
+
+"Tap Scan QR code" = "Націсніце сканіраваць QR-код";
+
+"Scan this code with your phone camera to sign in instantly." = "Сканіраваць гэты код з дапамогай камеры прылады, каб імгненна ўвайсці.";

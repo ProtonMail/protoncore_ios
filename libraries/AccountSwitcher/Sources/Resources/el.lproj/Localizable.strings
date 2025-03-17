@@ -2,7 +2,7 @@
 
 "Manage accounts" = "Διαχείριση λογαριασμών";
 
-"Signed in to Proton Mail" = "Συνδεδεμένος/η στο Proton Mail";
+"Signed in to Proton Mail" = "Συνδεδεμένο στο Proton Mail";
 
 "Signed out of Proton Mail" = "Αποσυνδεμένο από το Proton Mail";
 
@@ -16,7 +16,7 @@
 
 "Remove" = "Αφαίρεση";
 
-"Are you sure you want to sign out %@?" = "Θέλετε σίγουρα έξοδο του %@;";
+"Are you sure you want to sign out %@?" = "Θέλετε σίγουρα να αποσυνδεθείτε από %@;";
 
 "Dismiss account switcher" = "Παράβλεψη εναλλάκτη λογαριασμού";
 

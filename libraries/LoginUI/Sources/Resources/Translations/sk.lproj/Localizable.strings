@@ -38,6 +38,8 @@
 
 "Sign in with SSO" = "Prihláste sa pomocou SSO";
 
+"Sign in with a QR code" = "Prihlásiť sa pomocou QR kódu";
+
 "Sign in to your organization" = "Prihláste sa do svojej organizácie";
 
 "Create an account" = "Vytvoriť účet";
@@ -349,3 +351,11 @@
 "Password not valid" = "Neplatné heslo";
 
 "Passphrase not found" = "Nenašla sa prístupová fráza";
+
+"Open the Proton app on your phone" = "Otvorte aplikáciu Proton vo vašom telefóne";
+
+"Tap into Settings, then tap Sign in to another device" = "Ťuknite na Nastavenia a potom ťuknite na Prihlásiť sa do iného zariadenia";
+
+"Tap Scan QR code" = "Ťuknutím naskenujte QR kód";
+
+"Scan this code with your phone camera to sign in instantly." = "Naskenujte tento kód pomocou fotoaparátu telefónu pre okamžité prihlásenie.";

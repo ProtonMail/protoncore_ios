@@ -38,6 +38,8 @@
 
 "Sign in with SSO" = "Prijava s SSO";
 
+"Sign in with a QR code" = "Sign in with a QR code";
+
 "Sign in to your organization" = "Prijavite se v svojo organizacijo";
 
 "Create an account" = "Ustvarite račun";
@@ -268,7 +270,7 @@
 
 "Backup password" = "Varnostna kopija gesla";
 
-"Repeat backup password" = "Repeat backup password";
+"Repeat backup password" = "Ponovi varnostno kopijo gesla";
 
 "Password cannot be empty" = "Geslo ne more biti prazno.";
 
@@ -276,51 +278,51 @@
 
 "Password doesn't match" = "Password doesn't match";
 
-"Sign-in requested on another device. Was it you?" = "Sign-in requested on another device. Was it you?";
+"Sign-in requested on another device. Was it you?" = "Zahteva za prijavo na drugi napravi. Ste bili vi?";
 
-"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
+"Enter the confirmation code we sent on your other device for %@." = "Vpišite potrditveno kodo, ki smo jo poslali na vašo drugo napravo za %@.";
 
-"Confirmation code" = "Confirmation code";
+"Confirmation code" = "Potrditvena koda";
 
-"If you didn't make this request, cancel it now." = "If you didn't make this request, cancel it now.";
+"If you didn't make this request, cancel it now." = "Če tega niste zahtevali, jo takoj prekličite.";
 
 "Yes, it was me" = "Da, bil sem jaz.";
 
 "No, it wasn't me" = "Ne, nisem bil jaz.";
 
-"Share the confirmation code with your administrator" = "Share the confirmation code with your administrator";
+"Share the confirmation code with your administrator" = "Delite potrditveno kodo z vašim skrbnikom";
 
-"Approve the sign-in from another device" = "Approve the sign-in from another device";
+"Approve the sign-in from another device" = "Odobritev prijave iz druge naprave";
 
-"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@.";
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Delite potrditveno kodo z vašim skrbnikom %@, ki bo lahko odobril zahtevo za %@. Tako boste zagotovili, da se res vi prijavljate v vaš račun.";
 
-"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device.";
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Preverite, če se res vi prijavljate v vaš račun, tako da pregledate potrditveno kodo in odobrite zahtevo iz druge naprave.";
 
-"Use backup password instead" = "Use backup password instead";
+"Use backup password instead" = "Namesto tega uporabi varnostno kopijo gesla";
 
-"Ask administrator for help" = "Ask administrator for help";
+"Ask administrator for help" = "Za pomoč prosi skrbnika";
 
 "Devices available:" = "Razpoložljive naprave:";
 
 "Operation couldn't be completed. Please try again." = "Operation couldn't be completed. Please try again.";
 
-"Enter your backup password" = "Enter your backup password";
+"Enter your backup password" = "Vnesite vašo varnostno kopijo gesla";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Vpišite varnostno kopijo gesla, da preverimo, če se res vi poskušate prijaviti.";
 
 "Access granted" = "Dostop odobren";
 
 "Access denied" = "Dostop zavrnjen";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Za vašo varnost ste bili izpisani na vseh vaših ostalih aktivnih napravah. Pred dostopom do vašega računa, boste morali vnesti novo rezervno geslo.";
 
-"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+"Contact your administrator if the problem persists." = "Če se težava ponavlja, se obrnite na skrbnika.";
 
 "Back to sign-in" = "Nazaj na prijavo";
 
-"Ask your administrator for access?" = "Ask your administrator for access?";
+"Ask your administrator for access?" = "Zaprosi svojega skrbnika za dostop?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "This will sign you out of your other devices and you will have to create a new backup password.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Izpisani boste na vaših ostalih napravah, ustvariti pa boste morali novo rezervno geslo.";
 
 "Grant access to user?" = "Želite uporabniku omogočiti dostop?";
 
@@ -340,12 +342,20 @@
 
 "Unknown" = "Neznan";
 
-"Set backup password" = "Set backup password";
+"Set backup password" = "Določi varnostno kopijo gesla";
 
-"Email is invalid" = "Email is invalid";
+"Email is invalid" = "Nepravilen e-poštni naslov";
 
 "Please enter your Proton Account email." = "Please enter your Proton Account email.";
 
 "Password not valid" = "Password not valid";
 
 "Passphrase not found" = "Passphrase not found";
+
+"Open the Proton app on your phone" = "Open the Proton app on your phone";
+
+"Tap into Settings, then tap Sign in to another device" = "Tap into Settings, then tap Sign in to another device";
+
+"Tap Scan QR code" = "Tap Scan QR code";
+
+"Scan this code with your phone camera to sign in instantly." = "Scan this code with your phone camera to sign in instantly.";

@@ -38,6 +38,8 @@
 
 "Sign in with SSO" = "SSO-ით შესვლა";
 
+"Sign in with a QR code" = "Sign in with a QR code";
+
 "Sign in to your organization" = "შედით თქვენს ორგანიზაციაში";
 
 "Create an account" = "ანგარიშის შექმნა";
@@ -349,3 +351,11 @@
 "Password not valid" = "პაროლი არასწორია";
 
 "Passphrase not found" = "საკვანძო ფრაზა აღმოჩენილი არაა";
+
+"Open the Proton app on your phone" = "Open the Proton app on your phone";
+
+"Tap into Settings, then tap Sign in to another device" = "Tap into Settings, then tap Sign in to another device";
+
+"Tap Scan QR code" = "Tap Scan QR code";
+
+"Scan this code with your phone camera to sign in instantly." = "Scan this code with your phone camera to sign in instantly.";

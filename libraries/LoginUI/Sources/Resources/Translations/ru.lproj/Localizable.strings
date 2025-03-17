@@ -38,7 +38,9 @@
 
 "Sign in with SSO" = "Войти через SSO";
 
-"Sign in to your organization" = "Войти в свою организацию";
+"Sign in with a QR code" = "Sign in with a QR code";
+
+"Sign in to your organization" = "Войдите в вашу организацию";
 
 "Create an account" = "Создать аккаунт";
 
@@ -158,7 +160,7 @@
 
 "Set recovery method" = "Установить способ восстановления";
 
-"Your account is being created" = "Создаётся ваш аккаунт";
+"Your account is being created" = "Создается ваш аккаунт";
 
 "This should take no more than a minute." = "Обычно на это требуется менее минуты.";
 
@@ -338,7 +340,7 @@
 
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Ваша организация использует SSO. Продолжайте выполнять вход с помощью стороннего поставщика SSO.";
 
-"Unknown" = "Неизвестный";
+"Unknown" = "Неизвестное";
 
 "Set backup password" = "Установить резервный пароль";
 
@@ -349,3 +351,11 @@
 "Password not valid" = "Пароль недействителен";
 
 "Passphrase not found" = "Кодовая фраза не найдена";
+
+"Open the Proton app on your phone" = "Open the Proton app on your phone";
+
+"Tap into Settings, then tap Sign in to another device" = "Tap into Settings, then tap Sign in to another device";
+
+"Tap Scan QR code" = "Tap Scan QR code";
+
+"Scan this code with your phone camera to sign in instantly." = "Scan this code with your phone camera to sign in instantly.";

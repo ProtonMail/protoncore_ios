@@ -38,6 +38,8 @@
 
 "Sign in with SSO" = "SSO로 로그인";
 
+"Sign in with a QR code" = "Sign in with a QR code";
+
 "Sign in to your organization" = "조직에 로그인";
 
 "Create an account" = "계정 만들기";
@@ -349,3 +351,11 @@
 "Password not valid" = "사용할 수 없는 비밀번호";
 
 "Passphrase not found" = "비밀번호를 찾을 수 없음";
+
+"Open the Proton app on your phone" = "Open the Proton app on your phone";
+
+"Tap into Settings, then tap Sign in to another device" = "Tap into Settings, then tap Sign in to another device";
+
+"Tap Scan QR code" = "Tap Scan QR code";
+
+"Scan this code with your phone camera to sign in instantly." = "Scan this code with your phone camera to sign in instantly.";

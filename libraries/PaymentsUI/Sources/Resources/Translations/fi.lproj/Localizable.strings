@@ -1,0 +1,135 @@
+"OK" = "OK";
+
+"Cancel" = "Peru";
+
+"Warning" = "Varoitus";
+
+"Select a plan" = "Valitse tilaus";
+
+"Current plan" = "Nykyinen tilaus";
+
+"Subscription" = "Tilaus";
+
+"Upgrade your plan" = "Päivitä tilauksesi";
+
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Vain vuotuiset tilaukset ilman automaattista uusimista ovat saatavilla mobiilisovelluksesta.";
+
+"You cannot manage subscriptions inside the mobile application." = "Et voi hallinnoida tilauksia mobiilisovelluksesta.";
+
+"Your plan will automatically renew on %@" = "Tilauksesi uudistuu automaattisesti %@";
+
+"Current plan will expire on %@" = "Nykyinen tilaus päättyy %@";
+
+"Contact an administrator to make changes to your Proton subscription." = "Ole Proton-tilauksesi muutoksista yhteydessä ylläpitoosi.";
+
+"%1$@ of %2$@" = "%1$@/%2$@";
+
+"%@ storage" = "%@ tallennustilaa";
+
+"%@ storage / user" = "%@ tallennustilaa/käyttäjä";
+
+"for %@" = "osoitteelle %@";
+
+"Custom email addresses" = "Omat sähköpostiosoitteet";
+
+"Priority customer support" = "Ensisijainen asiakaspalvelu";
+
+"Adblocker (NetShield)" = "Mainosesto (NetShield)";
+
+"Streaming service support" = "Suoratoistopalveluiden tuki";
+
+"High speed" = "Korkea nopeus";
+
+"Highest speed" = "Korkein nopeus";
+
+"Multi-user support" = "Usean käyttäjän tuki";
+
+"The basic for private and secure communications." = "Perusteet yksityiseen ja turvalliseen viestintään.";
+
+"Full-featured mailbox with advanced protection." = "Täystoiminen postilaatikko edistyneellä suojauksella.";
+
+"Limited time offer" = "Vain rajoitetun ajan";
+
+"Complete payment?" = "Viimeistelläänkö maksu?";
+
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Protonin pakettitilauksen osto on jo aloitettu. Paina jatka viimeistelläksesi maksutapahtuman ja luodaksesi tilisi";
+
+"Complete payment" = "Viimeistele maksu";
+
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Tilin määritystä ei voitu viimeistellä odottamattoman virheen vuoksi.\nYritä uudelleen.";
+
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Sovelluksen sisäisen oston käsittely on alkanut. Seuraa Applen ohjeita viimeistelläksesi tai peruaksesi sen.";
+
+"In app payments are temporarily unavailable." = "Sovelluksen sisäiset maksut eivät ole tilapäisesti mahdollisia.";
+
+"One plan for all Proton services" = "Yksi tilaus kaikille Proton-palveluille";
+
+"The no-cost starter account designed to empower everyone with privacy by default." = "Maksuton aloitustili, joka on suunniteltu tuomaan oletusarvoinen yksityisyys kaikkien ulottuville.";
+
+"The privacy-first email and calendar solution for your everyday communication needs." = "Se yksityisyyspainotteinen sähköposti- ja kalenteriratkaisu jokapäiväiseen viestintääsi.";
+
+"Your privacy and security are our priority." = "Yksityisyytesi ja tietoturvasi ovat meille ensisijaisia.";
+
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Tallennukseen keskittyvä tilaus, joka sisältää 200 Gt pilvitallennustilaa tiedostojesi yksityiseen säilytykseen.";
+
+"The ultimate privacy pack with access to all premium Proton services." = "Ylivoimaisesti paras yksityisyyspaketti, joka sisältää pääsyn kaikkiin Protonin premium-palveluihin.";
+
+"Only non-renewing annual subscriptions are available via this app" = "Tämän sovelluksen kautta on saatavilla vain uusiutumattomia vuositilauksia.";
+
+"Your subscription cannot be managed inside the mobile app." = "Tilaustasi ei voi hallita mobiilisovelluksessa.";
+
+"Unlimited folders, labels, and filters" = "Rajattomasti kansioita, tunnisteita ja suodattimia";
+
+"Up to %@ storage" = "%@ tallennustilaa";
+
+"Free VPN on a single device" = "Ilmainen VPN yhdelle laitteelle";
+
+"Highest VPN speed" = "Korkein VPN-nopeus";
+
+"Built-in ad-blocker (NetShield)" = "Sisäänrakennettu mainosesto (NetShield)";
+
+"Access to streaming services globally" = "Käytä suoratoistopalveluita eri puolilta maailmaa";
+
+"Secure Core servers" = "Secure Core -palvelimet";
+
+"TOR over VPN" = "Tor + VPN";
+
+"P2P/BitTorrent" = "P2P/BitTorrent";
+
+"Get %@" = "Hanki %@";
+
+"Get Proton for free" = "Hanki Proton ilmaiseksi";
+
+"Extend subscription" = "Pidennä tilausta";
+
+"%@ of %@" = "%@/%@";
+
+"Connection issues" = "Yhteysongelmat";
+
+"Check your internet connection" = "Tarkista Internet-yhteytesi";
+
+"Strict no-logs policy" = "Tiukka lokivapaa käytäntö";
+
+"Plan successfully upgraded" = "Tilauksen päivitys onnistui";
+
+"Integrated 2FA authenticator" = "Sisäänrakennettu kaksivaiheinen todentaja";
+
+"Priority support" = "Ensisijainen tuki";
+
+"Unlimited devices" = "Rajattomasti laitteita";
+
+"Unlimited email aliases" = "Rajattomasti sähköpostialiaksia";
+
+"Unlimited logins and notes" = "Rajattomasti kirjautumistietoja ja muistiinpanoja";
+
+"Custom fields" = "Mukautetut kentät";
+
+"For next-level password management and identity protection." = "Edistyneempään salasanojen hallintaan ja henkilöllisyyden suojaukseen.";
+
+"Pay monthly" = "Maksa kuukausittain";
+
+"Pay annually" = "Maksa vuosittain";
+
+"Pay every two years" = "Maksa kahden vuoden välein";
+
+"Free" = "Ilmainen";

@@ -61,9 +61,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d e-postadress / användare</string>
+        <string>%d e-postadress/användare</string>
         <key>other</key>
-        <string>%d e-postadresser / användare</string>
+        <string>%d e-postadresser/användare</string>
       </dict>
     </dict>
     <key>&lt;n&gt; calendars</key>
@@ -93,9 +93,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d mapp / etikett</string>
+        <string>%d mapp/etikett</string>
         <key>other</key>
-        <string>%d mappar / etiketter</string>
+        <string>%d mappar/etiketter</string>
       </dict>
     </dict>
     <key>&lt;n&gt; countries</key>
@@ -468,7 +468,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Upp till %d vidarebefordrad brevlådor</string>
+        <string>Upp till %d vidarebefordrad brevlåda</string>
         <key>other</key>
         <string>Upp till %d vidarebefordrade brevlådor</string>
       </dict>

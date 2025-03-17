@@ -10,13 +10,13 @@
 
 "Subscription" = "Langganan";
 
-"Upgrade your plan" = "Tingkatkan paket langganan Anda";
+"Upgrade your plan" = "Tingkatkan paket Anda";
 
 "Only annual subscriptions without auto-renewal are available inside the mobile app." = "Hanya langganan tahunan tanpa pembaruan otomatis yang tersedia dalam aplikasi seluler.";
 
 "You cannot manage subscriptions inside the mobile application." = "Anda tidak dapat mengelola langganan di dalam aplikasi seluler.";
 
-"Your plan will automatically renew on %@" = "Paket Anda akan otomatis diperbarui pada %@";
+"Your plan will automatically renew on %@" = "Paket Anda akan diperbarui secara otomatis pada %@";
 
 "Current plan will expire on %@" = "Paket saat ini akan kedaluwarsa pada %@";
 
@@ -24,7 +24,7 @@
 
 "%1$@ of %2$@" = "%1$@ dari %2$@";
 
-"%@ storage" = "%@ penyimpanan";
+"%@ storage" = "Ruang penyimpanan %@";
 
 "%@ storage / user" = "%@ penyimpanan / pengguna";
 
@@ -36,19 +36,19 @@
 
 "Adblocker (NetShield)" = "Pemblokir iklan (NetShield)";
 
-"Streaming service support" = "Dukungan layanan streaming";
+"Streaming service support" = "Mendukung layanan siaran langsung";
 
 "High speed" = "Kecepatan tinggi";
 
 "Highest speed" = "Kecepatan tertinggi";
 
-"Multi-user support" = "Dukungan multi-pengguna";
+"Multi-user support" = "Mendukung multi-pengguna";
 
-"The basic for private and secure communications." = "Dasar untuk komunikasi pribadi dan aman.";
+"The basic for private and secure communications." = "Hal mendasar untuk komunikasi yang pribadi dan aman.";
 
 "Full-featured mailbox with advanced protection." = "Kotak surat berfitur lengkap dengan perlindungan tingkat lanjut.";
 
-"Limited time offer" = "Penawaran dalam waktu terbatas";
+"Limited time offer" = "Penawaran waktu terbatas";
 
 "Complete payment?" = "Selesaikan pembayaran?";
 
@@ -64,7 +64,7 @@
 
 "One plan for all Proton services" = "Satu paket untuk seluruh layanan Proton";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "Akun gratis yang dirancang untuk menghadirkan privasi sebagai hal yang baku bagi semua.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "Akun gratis pemula yang dirancang untuk menghadirkan privasi sebagai bawaan untuk semua orang.";
 
 "The privacy-first email and calendar solution for your everyday communication needs." = "Solusi email dan kalender yang mengedepankan privasi untuk kebutuhan komunikasi Anda sehari-hari.";
 
@@ -78,7 +78,7 @@
 
 "Your subscription cannot be managed inside the mobile app." = "Langganan Anda tidak dapat dikelola dalam aplikasi ponsel.";
 
-"Unlimited folders, labels, and filters" = "Tanpa batasan jumlah folder, label, dan filter";
+"Unlimited folders, labels, and filters" = "Tanpa batasan jumlah folder, label, dan saringan";
 
 "Up to %@ storage" = "Ruang penyimpanan hingga %@";
 
@@ -88,7 +88,7 @@
 
 "Built-in ad-blocker (NetShield)" = "Pemblokir iklan bawaan (NetShield)";
 
-"Access to streaming services globally" = "Akses ke berbagai layanan streaming di seluruh dunia";
+"Access to streaming services globally" = "Akses ke berbagai layanan siaran langsung di seluruh dunia";
 
 "Secure Core servers" = "Server Secure Core";
 
@@ -98,7 +98,7 @@
 
 "Get %@" = "Dapatkan %@";
 
-"Get Proton for free" = "Dapatkan Proton secara gratis";
+"Get Proton for free" = "Dapatkan Proton secara cuma-cuma";
 
 "Extend subscription" = "Perpanjang langganan";
 
@@ -108,7 +108,7 @@
 
 "Check your internet connection" = "Periksa koneksi internet Anda";
 
-"Strict no-logs policy" = "Kebijakan tanpa log yang ketat";
+"Strict no-logs policy" = "Kebijakan tanpa pencatatan yang ketat";
 
 "Plan successfully upgraded" = "Paket berhasil ditingkatkan";
 
@@ -116,13 +116,13 @@
 
 "Priority support" = "Dukungan prioritas";
 
-"Unlimited devices" = "Tanpa batasan jumlah perangkat";
+"Unlimited devices" = "Tanpa batasan perangkat";
 
 "Unlimited email aliases" = "Tanpa batasan alias email";
 
-"Unlimited logins and notes" = "Tanpa batasan jumlah login dan catatan";
+"Unlimited logins and notes" = "Tanpa batasan masuk dan catatan";
 
-"Custom fields" = "Kolom khusus";
+"Custom fields" = "Kolom kustom";
 
 "For next-level password management and identity protection." = "Untuk pengelolaan kata sandi dan perlindungan identitas tingkat lanjut.";
 

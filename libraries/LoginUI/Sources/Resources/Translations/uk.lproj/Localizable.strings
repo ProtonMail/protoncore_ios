@@ -38,6 +38,8 @@
 
 "Sign in with SSO" = "Увійти за допомогою SSO";
 
+"Sign in with a QR code" = "Sign in with a QR code";
+
 "Sign in to your organization" = "Увійдіть до своєї організації";
 
 "Create an account" = "Зареєструватися";
@@ -278,7 +280,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Запит на вхід на іншому пристрої. Це були ви?";
 
-"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
+"Enter the confirmation code we sent on your other device for %@." = "Уведіть код підтвердження, який ми надіслали на інший пристрій протягом %@.";
 
 "Confirmation code" = "Код підтвердження";
 
@@ -340,12 +342,20 @@
 
 "Unknown" = "Невідомо";
 
-"Set backup password" = "Set backup password";
+"Set backup password" = "Встановіть резервний пароль";
 
-"Email is invalid" = "Email is invalid";
+"Email is invalid" = "Недійсна електронна адреса";
 
 "Please enter your Proton Account email." = "Please enter your Proton Account email.";
 
 "Password not valid" = "Password not valid";
 
 "Passphrase not found" = "Passphrase not found";
+
+"Open the Proton app on your phone" = "Open the Proton app on your phone";
+
+"Tap into Settings, then tap Sign in to another device" = "Tap into Settings, then tap Sign in to another device";
+
+"Tap Scan QR code" = "Tap Scan QR code";
+
+"Scan this code with your phone camera to sign in instantly." = "Scan this code with your phone camera to sign in instantly.";

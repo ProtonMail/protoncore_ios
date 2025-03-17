@@ -1,0 +1,3 @@
+"Network connection error" = "Verkkoyhteysvirhe";
+
+"The TLS certificate validation failed when trying to connect to the Proton API. Your current Internet connection may be monitored. To keep your data secure, we are preventing the app from accessing the Proton API.\nTo log in or access your account, switch to a new network and try to connect again." = "TLS-varmenteen vahvistus yhdistettäessä Proton VPN -rajapintaan epäonnistui. Nykyistä Internet-yhteyttäsi saatetaan seurata ja tietojesi turvaamiseksi sovelluksen pääsy rajapintaan estetään.\nKirjautuaksesi tai käyttääksesi tiliäsi, vaihda toiseen verkkoon ja yritä muodostaa yhteys uudelleen.";

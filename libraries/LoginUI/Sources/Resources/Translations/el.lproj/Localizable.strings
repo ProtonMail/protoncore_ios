@@ -38,6 +38,8 @@
 
 "Sign in with SSO" = "Συνδεθείτε με SSO";
 
+"Sign in with a QR code" = "Συνδεθείτε με κωδικό QR";
+
 "Sign in to your organization" = "Συνδεθήτε στον οργανισμό σας";
 
 "Create an account" = "Δημιουργία λογαριασμού";
@@ -158,7 +160,7 @@
 
 "Set recovery method" = "Ορισμός μεθόδου ανάκτησης";
 
-"Your account is being created" = "Ο λογαριασμός σας δημιουργείται";
+"Your account is being created" = "Ο λογαριασμός σας δημιουγείται";
 
 "This should take no more than a minute." = "Αυτό δεν πρέπει να πάρει πάνω από ένα λεπτό.";
 
@@ -349,3 +351,11 @@
 "Password not valid" = "Ο κωδικός πρόσβασης δεν είναι έγκυρος";
 
 "Passphrase not found" = "Δεν βρέθηκε φράση πρόσβασης";
+
+"Open the Proton app on your phone" = "Ανοίξτε την εφαρμογή Proton στο τηλέφωνό σας";
+
+"Tap into Settings, then tap Sign in to another device" = "Πατήστε Ρυθμίσεις και στη συνέχεια πατήστε Σύνδεση σε άλλη συσκευή";
+
+"Tap Scan QR code" = "Πατήστε Σάρωση κωδικού QR";
+
+"Scan this code with your phone camera to sign in instantly." = "Σαρώστε αυτόν τον κωδικό με την κάμερα του κινητού σας για να συνδεθείτε αυτόματα.";

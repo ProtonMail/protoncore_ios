@@ -6,11 +6,11 @@
 
 "Please enter your Proton Account password." = "Please enter your Proton Account password.";
 
-"OK" = "U redu";
+"OK" = "OK";
 
 "Help" = "Pomoć";
 
-"Continue" = "Nastavi";
+"Continue" = "Nastavite";
 
 "Password" = "Lozinka";
 
@@ -20,23 +20,25 @@
 
 "Code sent to %@" = "Kôd je poslan na %@";
 
-"Request new code?" = "Zatraži novi kôd?";
+"Request new code?" = "Zatraži novi kȏd?";
 
 "Resend" = "Ponovno pošalji";
 
 "Get a replacement code sent to %@." = "Get a replacement code sent to %@.";
 
-"Request new code" = "Zatraži novi kôd";
+"Request new code" = "Zatraži novi kȏd";
 
-"Enter your Proton Account details." = "Unesite detalje vašeg Proton računa";
+"Enter your Proton Account details." = "Unesite podatke svog računa za Proton.";
 
 "Email or username" = "Adresa e-pošte ili korisničko ime";
 
-"Sign in" = "Prijavite se";
+"Sign in" = "Prijavi se";
 
 "Sign in with password" = "Sign in with password";
 
 "Sign in with SSO" = "Prijavite se sa SSO";
+
+"Sign in with a QR code" = "Sign in with a QR code";
 
 "Sign in to your organization" = "Prijavite se u vašu organizaciju";
 
@@ -94,11 +96,11 @@
 
 "Use two-factor code" = "Koristi kȏd dvofaktorske autentikacije";
 
-"Enter the 6-digit code." = "Unesite 6-znamenkasti kôd.";
+"Enter the 6-digit code." = "Unesite 6-znamenkasti kod.";
 
 "Enter an 8-character recovery code." = "Unesite 8-znamenkasti kod za oporavak.";
 
-"Learn more" = "Saznajte više";
+"Learn more" = "Više informacija";
 
 "Change your password" = "Promijenite vašu lozinku";
 
@@ -176,7 +178,7 @@
 
 "Verification code" = "Kȏd za provjeru";
 
-"Enter the 6-digit code." = "Unesite 6-znamenkasti kôd.";
+"Enter the 6-digit code." = "Unesite 6-znamenkasti kod.";
 
 "Did not receive a code?" = "Niste primili kôd?";
 
@@ -216,9 +218,9 @@
 
 "Enjoy the world of privacy." = "Enjoy the world of privacy.";
 
-"Cancel" = "Poništi";
+"Cancel" = "Odustani";
 
-"Sign in" = "Prijavite se";
+"Sign in" = "Prijavi se";
 
 "Troubleshoot" = "Rješavanje problema";
 
@@ -232,7 +234,7 @@
 
 "Present a security key linked to your Proton Account." = "Present a security key linked to your Proton Account.";
 
-"Learn more" = "Saznajte više";
+"Learn more" = "Više informacija";
 
 "Invalid state. Please quit the app and try again in a few minutes." = "Invalid state. Please quit the app and try again in a few minutes.";
 
@@ -262,51 +264,51 @@
 
 "%@ added you to their Proton organization." = "%@ added you to their Proton organization.";
 
-"Continue" = "Nastavi";
+"Continue" = "Nastavite";
 
 "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.";
 
-"Backup password" = "Backup password";
+"Backup password" = "Rezervna lozinka";
 
-"Repeat backup password" = "Repeat backup password";
+"Repeat backup password" = "Ponovite rezervnu lozinku";
 
-"Password cannot be empty" = "Password cannot be empty";
+"Password cannot be empty" = "Lozinka ne može biti prazna";
 
 "Password must contain at least 8 characters" = "Lozinka mora sadržavati najmanje 8 znakova";
 
 "Password doesn't match" = "Password doesn't match";
 
-"Sign-in requested on another device. Was it you?" = "Sign-in requested on another device. Was it you?";
+"Sign-in requested on another device. Was it you?" = "Zatražena je prijava na drugom uređaju. Jeste li to Vi?";
 
-"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
+"Enter the confirmation code we sent on your other device for %@." = "Unesite kôd za potvrdu koji smo poslali na Vaš drugi uređaj za %@.";
 
-"Confirmation code" = "Confirmation code";
+"Confirmation code" = "Kôd za potvrdu";
 
-"If you didn't make this request, cancel it now." = "If you didn't make this request, cancel it now.";
+"If you didn't make this request, cancel it now." = "Ako niste poslali ovaj zahtjev, otkažite ga sada.";
 
-"Yes, it was me" = "Yes, it was me";
+"Yes, it was me" = "Da, to sam ja";
 
-"No, it wasn't me" = "No, it wasn't me";
+"No, it wasn't me" = "Ne, to nisam ja";
 
-"Share the confirmation code with your administrator" = "Share the confirmation code with your administrator";
+"Share the confirmation code with your administrator" = "Podijelite kôd za potvrdu s Vašim administratorom";
 
-"Approve the sign-in from another device" = "Approve the sign-in from another device";
+"Approve the sign-in from another device" = "Potvrdi prijavu s drugog uređaja";
 
-"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@.";
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Da bismo bili sigurni da se Vi pokušavate prijaviti, podijelite kôd za potvrdu s Vašim administratorom %@ koji će potvrditi zahtjev za %@.";
 
-"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device.";
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Da bismo bili sigurni da ste to Vi, provjerite kôd za potvrdu i odobrite prijavu s drugog uređaja.";
 
 "Use backup password instead" = "Use backup password instead";
 
-"Ask administrator for help" = "Ask administrator for help";
+"Ask administrator for help" = "Pitaj administratora za pomoć";
 
-"Devices available:" = "Devices available:";
+"Devices available:" = "Dostupni uređaji:";
 
 "Operation couldn't be completed. Please try again." = "Operation couldn't be completed. Please try again.";
 
-"Enter your backup password" = "Enter your backup password";
+"Enter your backup password" = "Unesite rezervnu lozinku";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Da bismo bili sigurni da ste to Vi, unesite Vašu rezervnu lozinku.";
 
 "Access granted" = "Access granted";
 
@@ -330,7 +332,7 @@
 
 "Deny access" = "Deny access";
 
-"Signing you in" = "Signing you in";
+"Signing you in" = "Prijavljujemo vas";
 
 "to your organization" = "to your organization";
 
@@ -349,3 +351,11 @@
 "Password not valid" = "Password not valid";
 
 "Passphrase not found" = "Passphrase not found";
+
+"Open the Proton app on your phone" = "Open the Proton app on your phone";
+
+"Tap into Settings, then tap Sign in to another device" = "Tap into Settings, then tap Sign in to another device";
+
+"Tap Scan QR code" = "Tap Scan QR code";
+
+"Scan this code with your phone camera to sign in instantly." = "Scan this code with your phone camera to sign in instantly.";

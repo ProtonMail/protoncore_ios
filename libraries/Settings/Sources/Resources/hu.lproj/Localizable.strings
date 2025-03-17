@@ -10,7 +10,7 @@
 
 "pmsettings-settings-system-settings-language-button" = "A nyelvet a rendszerbeállításoknál állíthatja be.";
 
-"pmsettings-settings-system-settings-notifications-title" = "Emlékeztetők";
+"pmsettings-settings-system-settings-notifications-title" = "Értesítések";
 
 "pmsettings-settings-system-settings-notifications-description" = "Ez a naptár értesíti az eseményekről és meghívókról. Ha azonnali értesítéseket szeretne kapni, meg kell változtatnia a rendszerbeállításokat.";
 
@@ -32,7 +32,7 @@
 
 "Title" = "Beosztás";
 
-"What went wrong" = "Mi romlott el";
+"What went wrong" = "Milyen hibát észleltél";
 
 "Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Írja le a problémát olyan pontossággal, ahogy csak tudja. Ha hibaüzenet is jelent meg, kérjük azt is írja le pontosan. Legalább 10 karakter szükséges.";
 

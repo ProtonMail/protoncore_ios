@@ -1,0 +1,39 @@
+"pmsettings-settings-title" = "Asetukset";
+
+"pmsettings-settings-app-settings-section" = "Sovellusasetukset";
+
+"pmsettings-settings-system-settings-section" = "Järjestelmäasetukset";
+
+"pmsettings-settings-system-settings-language-title" = "Kieli";
+
+"pmsettings-settings-system-settings-language-description" = "Voit valita haluamasi kielen järjestelmäasetuksista.";
+
+"pmsettings-settings-system-settings-language-button" = "Aseta kieli järjestelmäasetuksissa.";
+
+"pmsettings-settings-system-settings-notifications-title" = "Ilmoitukset";
+
+"pmsettings-settings-system-settings-notifications-description" = "Tämä kalenteri voi pitää sinut ajan tasalla tapahtumista tai kutsuista. Jos haluat saada push-ilmoituksia, sinun on muutettava järjestelmäasetuksia.";
+
+"pmsettings-settings-system-settings-notifications-button" = "Hallinnoi käyttöoikeuksia järjestelmäasetuksissa";
+
+"pmsettings-settings-about-section" = "Tietoja";
+
+"pmsettings-settings-about-acknowledgements" = "Maininnat";
+
+"pmsettings-settings-about-privacy" = "Tietosuojakäytäntö";
+
+"pmsettings-settings-about-terms" = "Käyttöehdot";
+
+"pmsettings-settings-footer" = "Sovellusversio: %@";
+
+"Bug report" = "Vikailmoitus";
+
+"Send report" = "Lähetä raportti";
+
+"Title" = "Nimike";
+
+"What went wrong" = "Mikä meni pieleen";
+
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Kuvaile ongelmaa mahdollisimman tarkasti ja sisällytä myös mahdolliset virheilmoitukset. Vähintään 10 merkkiä.";
+
+"Your report was sent successfully" = "Raporttisi on lähetetty.";

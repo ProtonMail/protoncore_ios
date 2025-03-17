@@ -1,0 +1,21 @@
+"Settings_Item" = "Salasanan uudelleenasetus";
+
+"Insecure_View_Title" = "Nollaa salasanasi";
+
+"Grace_View_Title" = "Haluatko nollata salasanasi?";
+
+"Grace_View_line1" = "Saimme pyynnön nollata salasanasi tunnukselle ";
+
+"Insecure_View_line1" = "Voit nyt vaihtaa salasanasi tilille ";
+
+"Insecure_View_line2" = " vapaasti aikana ";
+
+"Insecure_View_line3" = "Siirry allekirjoitettuun laitteeseen (istunnossa, jossa pyyntö aloitettiin) salasanan vaihtamiseksi.";
+
+"Grace_View_Cancel_Button_CTA" = "Peru pyyntö";
+
+"Grace_View_Undefined_Time_Left" = "muutaman tunnin";
+
+"Grace_View_line2" = ". Suojataksemme tilisi haluamme varmistaa, että juuri sinä haluat nollata salasanasi. Voit nollata salasanasi ";
+
+"Grace_View_line3" = "Jos et pyytänyt tätä tai et enää tarvitse apua kirjautumiseen, peru pyyntö ja varmista tilisi suojaus.";

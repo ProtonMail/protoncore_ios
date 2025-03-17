@@ -6,7 +6,7 @@
 
 "Select a plan" = "請選擇一個方案";
 
-"Current plan" = "目前方案";
+"Current plan" = "當前方案";
 
 "Subscription" = "訂購授權";
 
@@ -28,7 +28,7 @@
 
 "%@ storage / user" = "%@ 雲端儲存 / 使用者";
 
-"for %@" = "為期 %@";
+"for %@" = "%@ 版";
 
 "Custom email addresses" = "自訂電子郵件信箱";
 
@@ -38,7 +38,7 @@
 
 "Streaming service support" = "支援影音串流服務";
 
-"High speed" = "高速";
+"High speed" = "極飆速";
 
 "Highest speed" = "極速";
 
@@ -48,7 +48,7 @@
 
 "Full-featured mailbox with advanced protection." = "完整的電子郵件信箱搭配進階保護。";
 
-"Limited time offer" = "限時特惠";
+"Limited time offer" = "限時促銷";
 
 "Complete payment?" = "是否已完成付款？";
 
@@ -78,13 +78,13 @@
 
 "Your subscription cannot be managed inside the mobile app." = "您的訂購授權無法在行動裝置應用程式內管理。";
 
-"Unlimited folders, labels, and filters" = "資料夾、標籤和篩選器無上限";
+"Unlimited folders, labels, and filters" = "資料夾、標籤與篩選器無上限";
 
 "Up to %@ storage" = "多至 %@ 儲存空間";
 
-"Free VPN on a single device" = "單一裝置的免費 VPN";
+"Free VPN on a single device" = "單一裝置上的免費 VPN";
 
-"Highest VPN speed" = "頂尖 VPN 速度";
+"Highest VPN speed" = "最高 VPN 速度";
 
 "Built-in ad-blocker (NetShield)" = "內建廣告攔截程式 (NetShield)";
 
@@ -92,17 +92,17 @@
 
 "Secure Core servers" = "Secure Core伺服器";
 
-"TOR over VPN" = "VPN透過Tor";
+"TOR over VPN" = "經由 VPN 使用 Tor";
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "取得 %@";
+"Get %@" = "選用 %@";
 
 "Get Proton for free" = "免費取得 Proton";
 
 "Extend subscription" = "延長訂購授權";
 
-"%@ of %@" = "已用 %@，最多 %@";
+"%@ of %@" = "%@ 中的 %@";
 
 "Connection issues" = "連線問題";
 
@@ -112,13 +112,13 @@
 
 "Plan successfully upgraded" = "方案升級成功";
 
-"Integrated 2FA authenticator" = "使用二步驟驗證";
+"Integrated 2FA authenticator" = "整合雙重驗證";
 
 "Priority support" = "優先支援";
 
 "Unlimited devices" = "無限裝置數";
 
-"Unlimited email aliases" = "無限電子郵件別名";
+"Unlimited email aliases" = "不限數量的電子郵件別名";
 
 "Unlimited logins and notes" = "無限登入資訊與筆記";
 

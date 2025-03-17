@@ -38,6 +38,8 @@
 
 "Sign in with SSO" = "Logga in med SSO";
 
+"Sign in with a QR code" = "Logga in med en QR-kod";
+
 "Sign in to your organization" = "Logga in på din organisation";
 
 "Create an account" = "Skapa ett konto";
@@ -144,7 +146,7 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "Genom att klicka på nästa godkänner du Protons användarvillkor";
 
-"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Genom att klicka på nästa godkänner du Protons villkor och integritetspolicy";
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Genom att klicka på nästa godkänner du Protons användarvillkor och integritetspolicy";
 
 "Terms and Conditions" = "Användarvillkor";
 
@@ -294,7 +296,7 @@
 
 "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "För att vara säker på att det verkligen är du som försöker logga in, dela bekräftelsekoden med din administratör %@ så att de kan godkänna begäran för %@.";
 
-"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "För att vara säker på att det verkligen är du som försöker logga in på ditt konto, granska bekräftelsekoden och godkänn begäran från annan enhet.";
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "För att vara säker på att det verkligen är du som försöker logga in på ditt konto, granska bekräftelsekoden och godkänn begäran från en annan enhet.";
 
 "Use backup password instead" = "Använd reservlösenord istället";
 
@@ -349,3 +351,11 @@
 "Password not valid" = "Lösenord inte giltigt";
 
 "Passphrase not found" = "Lösenfras hittades inte";
+
+"Open the Proton app on your phone" = "Öppna Proton-appen på din telefon";
+
+"Tap into Settings, then tap Sign in to another device" = "Tryck på “Inställningar“ och tryck sedan på “Logga in på annan enhet“";
+
+"Tap Scan QR code" = "Tryck skanna QR-kod";
+
+"Scan this code with your phone camera to sign in instantly." = "Skanna denna kod med din telefonkamera för att logga in omedelbart.";

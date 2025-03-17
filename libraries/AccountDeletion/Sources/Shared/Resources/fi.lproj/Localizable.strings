@@ -1,0 +1,15 @@
+"Delete account" = "Poista tili";
+
+"This will permanently delete your account and all of its data. You will not be able to reactivate this account." = "Tämä poistaa tilisi ja kaikki sen tiedot pysyvästi. Et voi aktivoida tiliä uudelleen.";
+
+"Account deleted.\nLogging out..." = "Tili on poistettu.\nKirjaudutaan ulos...";
+
+"Close" = "Sulje";
+
+"OK" = "OK";
+
+"A networking error has occured" = "Tapahtui verkkovirhe";
+
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Protonin palvelimia ei tavoiteta. Tämä voi johtua vääristä verkkoasetuksista, Protonin palvelinten toiminta ongelmista tai niiden estosta";
+
+"Troubleshoot" = "Vianetsintä";

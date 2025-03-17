@@ -38,6 +38,8 @@
 
 "Sign in with SSO" = "Iniciar sessão com SSO";
 
+"Sign in with a QR code" = "Iniciar sessão com um código QR";
+
 "Sign in to your organization" = "Inicie sessão pela sua organização";
 
 "Create an account" = "Criar uma conta";
@@ -144,7 +146,7 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "Ao clicar em Próximo, você concorda com os termos e condições da Proton";
 
-"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Ao clicar em Próximo, você concorda com os termos e condições e a política de privacidade da Proton";
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Ao clicar em Próximo, você concorda com os Termos e Condições e com a Política de Privacidade da Proton";
 
 "Terms and Conditions" = "Termos e condições";
 
@@ -314,7 +316,7 @@
 
 "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Para sua segurança, você foi desconectado de todos os seus outros dispositivos ativos. Antes de acessar sua conta, você precisará digitar uma nova senha de backup.";
 
-"Contact your administrator if the problem persists." = "Entre em contato com o administrador se o problema persistir.";
+"Contact your administrator if the problem persists." = "Entre em contato com seu administrador se o problema persistir.";
 
 "Back to sign-in" = "Voltar para o login";
 
@@ -349,3 +351,11 @@
 "Password not valid" = "A senha não é valida.";
 
 "Passphrase not found" = "Senha não encontrada";
+
+"Open the Proton app on your phone" = "Abra o aplicativo da Proton no seu celular";
+
+"Tap into Settings, then tap Sign in to another device" = "Toque em Configurações, então toque em Iniciar sessão com um código Qr";
+
+"Tap Scan QR code" = "Toque em escanear QR code";
+
+"Scan this code with your phone camera to sign in instantly." = "Escaneei esse código com seu celular para iniciar sessão instantaneamente.";

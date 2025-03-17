@@ -14,7 +14,7 @@
 
 "SMS" = "SMS";
 
-"Email" = "E-mail";
+"Email" = "E-mail cím";
 
 "CAPTCHA" = "CAPTCHA";
 
@@ -26,4 +26,4 @@
 
 "Verification code" = "Ellenőrző kód";
 
-"Verify" = "Ellenőrzés";
+"Verify" = "Megerősítés";

@@ -38,6 +38,8 @@
 
 "Sign in with SSO" = "Sign in with SSO";
 
+"Sign in with a QR code" = "Sign in with a QR code";
+
 "Sign in to your organization" = "Sign in to your organization";
 
 "Create an account" = "Stofna notandaaðgang";
@@ -98,7 +100,7 @@
 
 "Enter an 8-character recovery code." = "Enter an 8-character recovery code.";
 
-"Learn more" = "Kanna nánar";
+"Learn more" = "Læra meira";
 
 "Change your password" = "Breyta lykilorðinu þínu";
 
@@ -118,7 +120,7 @@
 
 "Create a secure Proton Mail address instead" = "Búðu frekar til öruggt Proton Mail tölvupóstnetfang";
 
-"Email" = "Tölvupóstfang";
+"Email" = "Tölvupóstur";
 
 "Create your password" = "Create your password";
 
@@ -134,7 +136,7 @@
 
 "We will send recovery instructions to this email or phone number if you get locked out of your account." = "Við munum senda endurheimtarleiðbeiningar á þetta netfang eða símanúmer ef þú læsist úti á reikningnum þínum.";
 
-"Email" = "Tölvupóstfang";
+"Email" = "Tölvupóstur";
 
 "Phone" = "Sími";
 
@@ -232,7 +234,7 @@
 
 "Present a security key linked to your Proton Account." = "Present a security key linked to your Proton Account.";
 
-"Learn more" = "Kanna nánar";
+"Learn more" = "Læra meira";
 
 "Invalid state. Please quit the app and try again in a few minutes." = "Invalid state. Please quit the app and try again in a few minutes.";
 
@@ -342,10 +344,18 @@
 
 "Set backup password" = "Set backup password";
 
-"Email is invalid" = "Email is invalid";
+"Email is invalid" = "Póstfangið er ógilt";
 
 "Please enter your Proton Account email." = "Please enter your Proton Account email.";
 
 "Password not valid" = "Password not valid";
 
 "Passphrase not found" = "Passphrase not found";
+
+"Open the Proton app on your phone" = "Open the Proton app on your phone";
+
+"Tap into Settings, then tap Sign in to another device" = "Tap into Settings, then tap Sign in to another device";
+
+"Tap Scan QR code" = "Tap Scan QR code";
+
+"Scan this code with your phone camera to sign in instantly." = "Scan this code with your phone camera to sign in instantly.";

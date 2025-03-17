@@ -6,12 +6,12 @@
 
 "Proton address required" = "Proton e-mail cím szükséges";
 
-"Code doesn't match" = "Code doesn't match";
+"Code doesn't match" = "A kód nem egyezik";
 
-"Code isn't valid" = "Code isn't valid";
+"Code isn't valid" = "A kód nem érvényes";
 
-"Device secret not found" = "Device secret not found";
+"Device secret not found" = "Eszköz titka nem található";
 
-"Passphrase not found" = "Passphrase not found";
+"Passphrase not found" = "Jelmondat nem található";
 
 "Password update failed" = "A jelszó frissítése nem sikerült";

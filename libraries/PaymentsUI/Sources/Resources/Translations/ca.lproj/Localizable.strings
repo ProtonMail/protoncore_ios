@@ -50,7 +50,7 @@
 
 "Limited time offer" = "Oferta per temps limitat";
 
-"Complete payment?" = "Voleu completar el pagament?";
+"Complete payment?" = "Completar pagament?";
 
 "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Ja s'ha iniciat una compra per a un pla de paquet de Proton. Premeu continuar per completar el pagament i crear el vostre compte";
 
@@ -64,7 +64,7 @@
 
 "One plan for all Proton services" = "Un pla per a tots els serveis de Proton";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "El compte d'inici sense cost dissenyat per atorgar privadesa a tothom de manera predeterminada.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "El compte d'inici sense cost dissenyat per a dotar de privadesa a tothom de manera predeterminada.";
 
 "The privacy-first email and calendar solution for your everyday communication needs." = "La solució de correu electrònic i calendari que prioritza la privadesa per a les necessitats de comunicació diàries.";
 
@@ -112,7 +112,7 @@
 
 "Plan successfully upgraded" = "S'ha millorat el pla";
 
-"Integrated 2FA authenticator" = "Autenticació de doble factor (2FA) integrada";
+"Integrated 2FA authenticator" = "Autenticador de doble factor (A2F) integrat";
 
 "Priority support" = "Suport prioritari";
 
@@ -124,7 +124,7 @@
 
 "Custom fields" = "Camps personalitzats";
 
-"For next-level password management and identity protection." = "Per a una gestió de contrasenyes i una protecció de la identitat del més alt nivell.";
+"For next-level password management and identity protection." = "Per a una gestió de contrasenyes i identitat del més alt nivell.";
 
 "Pay monthly" = "Pagament mensual";
 

@@ -16,7 +16,7 @@
 
 "You cannot manage subscriptions inside the mobile application." = "Вы не можете управлять подписками внутри мобильного приложения.";
 
-"Your plan will automatically renew on %@" = "Ваша подписка будет обновлена автоматически %@";
+"Your plan will automatically renew on %@" = "Ваш тариф будет автоматически продлен %@";
 
 "Current plan will expire on %@" = "Текущий тариф истекает %@";
 
@@ -24,11 +24,11 @@
 
 "%1$@ of %2$@" = "%1$@ из %2$@";
 
-"%@ storage" = "%@ хранилища";
+"%@ storage" = "%@ хранилище";
 
 "%@ storage / user" = "%@ хранилища на пользователя";
 
-"for %@" = "за %@";
+"for %@" = "для %@";
 
 "Custom email addresses" = "Пользовательские адреса электронной почты";
 
@@ -84,7 +84,7 @@
 
 "Free VPN on a single device" = "Бесплатный VPN на одном устройстве";
 
-"Highest VPN speed" = "Высочайшая скорость VPN";
+"Highest VPN speed" = "Наивысшая скорость VPN";
 
 "Built-in ad-blocker (NetShield)" = "Встроенный блокировщик рекламы (NetShield)";
 
@@ -112,19 +112,19 @@
 
 "Plan successfully upgraded" = "Тариф успешно обновлен";
 
-"Integrated 2FA authenticator" = "Встроенный 2FA аутентификатор";
+"Integrated 2FA authenticator" = "Интегрированная двухфакторная аутентификация";
 
 "Priority support" = "Приоритетная поддержка";
 
 "Unlimited devices" = "Неограниченное количество устройств";
 
-"Unlimited email aliases" = "Неограниченное количество псевдонимов";
+"Unlimited email aliases" = "Неограниченное количество псевдонимов эл. почты";
 
 "Unlimited logins and notes" = "Неограниченное количество имен пользователей и заметок";
 
 "Custom fields" = "Настраиваемые поля";
 
-"For next-level password management and identity protection." = "Для нового уровня управления паролями и защиты личных данных.";
+"For next-level password management and identity protection." = "Для управления паролями и защиты личных данных на новом уровне.";
 
 "Pay monthly" = "Платить ежемесячно";
 

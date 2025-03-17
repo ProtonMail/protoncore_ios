@@ -38,6 +38,8 @@
 
 "Sign in with SSO" = "Inloggen met SSO";
 
+"Sign in with a QR code" = "Meld u aan met een QR-code";
+
 "Sign in to your organization" = "Aanmelden bij uw organisatie";
 
 "Create an account" = "Een account aanmaken";
@@ -349,3 +351,11 @@
 "Password not valid" = "Ongeldig wachtwoord";
 
 "Passphrase not found" = "Wachtwoordzin niet gevonden";
+
+"Open the Proton app on your phone" = "Open de Proton app op uw telefoon";
+
+"Tap into Settings, then tap Sign in to another device" = "Tik op Instellingen en klik daarna op aanmelden bij een ander apparaat";
+
+"Tap Scan QR code" = "Tik op scannen QR-code";
+
+"Scan this code with your phone camera to sign in instantly." = "Scan deze code met uw telefoon camera om direct in te loggen.";

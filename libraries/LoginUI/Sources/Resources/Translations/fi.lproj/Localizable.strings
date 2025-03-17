@@ -1,0 +1,361 @@
+"Privacy by default" = "Privacy by default";
+
+"Proton address required" = "Proton-osoite vaaditaan";
+
+"Update required" = "Päivitys vaaditaan";
+
+"Please enter your Proton Account password." = "Syötä Proton-tilisi salasana.";
+
+"OK" = "OK";
+
+"Help" = "Tuki";
+
+"Continue" = "Jatka";
+
+"Password" = "Salasana";
+
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Protonin palvelimia ei tavoiteta. Tämä voi johtua vääristä verkkoasetuksista, Protonin palvelinten toiminta ongelmista tai niiden estosta";
+
+"Search country" = "Etsi maa";
+
+"Code sent to %@" = "Koodi lähetettiin kohteeseen %@";
+
+"Request new code?" = "Pyydetäänkö uusi koodi?";
+
+"Resend" = "Lähetä uudelleen";
+
+"Get a replacement code sent to %@." = "Pyydä korvaava koodi kohteeseen %@.";
+
+"Request new code" = "Pyydä uusi koodi";
+
+"Enter your Proton Account details." = "Syötä Proton-tilisi tiedot.";
+
+"Email or username" = "Sähköpostiosoite tai käyttäjätunnus";
+
+"Sign in" = "Kirjaudu sisään";
+
+"Sign in with password" = "Salasana";
+
+"Sign in with SSO" = "Kertakirjautuminen";
+
+"Sign in with a QR code" = "Sign in with a QR code";
+
+"Sign in to your organization" = "Kirjaudu organisaatioosi";
+
+"Create an account" = "Luo tili";
+
+"How can we help?" = "Miten voimme auttaa?";
+
+"Forgot username" = "Unohditko käyttäjätunnuksesi";
+
+"Forgot password" = "Unohtunut salasana";
+
+"Other sign-in issues" = "Muut kirjautumisongelmat";
+
+"Customer support" = "Asiakaspalvelu";
+
+"Still need help? Contact us directly." = "Tarvitsetko edelleen apua? Ota meihin yhteyttä.";
+
+"Please enter your Proton Account email or username." = "Syötä Proton-tilisi sähköposti tai käyttäjätunnus.";
+
+"Complete Setup" = "Viimeistele määritys";
+
+"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "Tililtäsi puuttuu avaimia. Kirjaudu sisään verkkoversioon luodaksesi tarvitttavat avaimet. Kirjauduttuasi verkkoversioon, palaa sovellukseen ja kirjaudu.";
+
+"Account setup required" = "Tili on määritettävä";
+
+"Incorrect mailbox password" = "Virheellinen postilaatikon salasana";
+
+"Your session has expired. Please log in again." = "Istunto on erääntynyt. Kirjaudu sisään uudelleen.";
+
+"Proton address required" = "Proton-osoite vaaditaan";
+
+"You need a Proton email address to use Proton Mail and Proton Calendar.\nYou’ll still be able to use %@ to sign in, and to recover your account." = "Tarvitset Proton Mailin ja Proton Calendarin käyttöön Proton-sähköpostiosoitteen.\nVoit edelleen kirjautua sisään ja palauttaa tilisi osoitteella %@.";
+
+"Username" = "Käyttäjätunnus";
+
+"Please enter a username." = "Syötä käyttäjätunnus.";
+
+"Unlock your mailbox" = "Avaa postilaatikkosi";
+
+"Mailbox password" = "Postilaatikon salasana";
+
+"Unlock" = "Avaa";
+
+"Forgot password" = "Unohtunut salasana";
+
+"Two-factor authentication" = "Kaksivaiheinen tunnistautuminen";
+
+"Authenticate" = "Tunnistaudu";
+
+"Two-factor code" = "Toisen vaiheen koodi";
+
+"Recovery code" = "Palautuskoodi";
+
+"Use recovery code" = "Käytä palautuskoodia";
+
+"Use two-factor code" = "Käytä toisen vaiheen koodia";
+
+"Enter the 6-digit code." = "Syötä 6-numeroinen koodi.";
+
+"Enter an 8-character recovery code." = "Syötä 8-merkkinen palautuskoodi.";
+
+"Learn more" = "Lue lisää";
+
+"Change your password" = "Vaihda salasanasi";
+
+"Change password" = "Vaihda salasana";
+
+"To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "Käyttääksesi Proton-sovellusta organisaation jäsenenä, sinun on ensin vaihdettava salasanasi kirjautumalla Protoniin verkkoselaimen kautta.";
+
+"Error occured" = "Tapahtui virhe";
+
+"Create your Proton Account" = "Luo Proton-tilisi";
+
+"One account for all Proton services." = "Yksi tili kaikille Proton-palveluille.";
+
+"Next" = "Seuraava";
+
+"Use your current email instead" = "Käytä sen sijaan nykyistä sähköpostiosoitettasi";
+
+"Create a secure Proton Mail address instead" = "Luo sen sijaan suojattu Proton Mail -osoite";
+
+"Email" = "Sähköposti";
+
+"Create your password" = "Luo salasanasi";
+
+"Password must contain at least 8 characters" = "Salasanan täytyy sisältää vähintään 8 merkkiä";
+
+"Repeat password" = "Toista salasana";
+
+"Domain" = "Verkkotunnus";
+
+"Set recovery method" = "Aseta palautustapa";
+
+"Set recovery method (optional)" = "Määritä palautustapa (valinnainen)";
+
+"We will send recovery instructions to this email or phone number if you get locked out of your account." = "Lähetämme palautusohjeet tähän sähköpostiosoitteeseen tai puhelinnumeroon mikäli menetät pääsyn tilillesi.";
+
+"Email" = "Sähköposti";
+
+"Phone" = "Puhelin";
+
+"Recovery email" = "Palautussähköposti";
+
+"Recovery phone number" = "Palautusnumero";
+
+"By clicking Next, you agree with Proton's Terms and Conditions" = "Painaessasi \"Seuraava\" hyväksyt Protonin käyttöehdot.";
+
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Jatkamalla hyväksyt Protonin käyttöehdot ja tietosuojakäytännön";
+
+"Terms and Conditions" = "Käyttöehdot";
+
+"Privacy Policy" = "Tietosuojakäytäntö";
+
+"Skip" = "Ohita";
+
+"Skip recovery method?" = "Ohitetaanko palautustapa?";
+
+"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "Palautustapa mahdollistaa pääsyn tilillesi mikäli kadotat salasanasi tai joudut lukituksi ulos tilitäsi.";
+
+"Set recovery method" = "Aseta palautustapa";
+
+"Your account is being created" = "Tiliäsi luodaan";
+
+"This should take no more than a minute." = "Yleensä tämä ei kestä minuuttia pidempään.";
+
+"Creating your account" = "Tiliäsi luodaan";
+
+"Generating your address" = "Osoitettasi luodaan";
+
+"Securing your account" = "Tiliäsi suojataan";
+
+"Verifying your payment" = "Maksuasi vahvistetaan";
+
+"Account verification" = "Tilin vahvistus";
+
+"For your security, we must verify that the address you entered belongs to you. We sent a verification code to %@. Please enter the code below:" = "Suojauksesi varmistamiseksi sinun on vahvistettava olevasi syöttämäsi osoitteen omistaja. Osoitteeseen %@ lähetettiin vahvistuskoodi, joka tulee syöttää alle:";
+
+"Verification code" = "Vahvistuskoodi";
+
+"Enter the 6-digit code." = "Syötä 6-numeroinen koodi.";
+
+"Did not receive a code?" = "Etkö saanut koodia?";
+
+"Terms and Conditions" = "Käyttöehdot";
+
+"Privacy Policy" = "Tietosuojakäytäntö";
+
+"Invalid token request" = "Virheellinen tunnistepyyntö";
+
+"Invalid token error" = "Virheellinen tunnistevirhe";
+
+"Create user failed" = "Käyttäjän luonti epäonnistui";
+
+"Invalid hashed password" = "Virheellinen hajautettu salasana";
+
+"Password can not be empty.\nPlease try again." = "Salasana ei voi olla tyhjä.\nYritä uudelleen.";
+
+"Passwords do not match.\nPlease try again." = "Salasanat eivät täsmää.\nYritä uudelleen.";
+
+"Email address already used." = "Sähköpostiosoite on jo käytössä.";
+
+"Please ask your admin to configure your sub-user." = "Pyydä ylläpitoasi määrittämään alikäyttäjäsi.";
+
+"Would you like to receive a new verification code or use an alternate email address?" = "Haluatko uuden vahvistuskoodin vai käyttää vaihtoehtoista sähköpostiosoitetta?";
+
+"Change email address" = "Vaihda sähköpostiosoite";
+
+"Congratulations" = "Onnittelut";
+
+"Your Proton Free account was successfully created." = "Ilmainen Proton-tilisi on luotu.";
+
+"Proton Free" = "Proton Free";
+
+"Your payment was confirmed and your %@ account successfully created." = "Maksusi vahvistettiin ja %@-tilisi luotiin.";
+
+"Your Proton account was successfully created." = "Proton-tilisi on luotu.";
+
+"Enjoy the world of privacy." = "Nauti yksityisyyden maailmasta.";
+
+"Cancel" = "Peru";
+
+"Sign in" = "Kirjaudu sisään";
+
+"Troubleshoot" = "Vianetsintä";
+
+"Please choose how you want to confirm your identity." = "Valitse identiteettisi vahvistustapa.";
+
+"One-time code" = "Kertakoodi";
+
+"Security key" = "Suojausavain";
+
+"Two-Factor Authentication" = "Kaksivaiheinen tunnistautuminen";
+
+"Present a security key linked to your Proton Account." = "Kytke Proton-tiliisi liitetty suojausavain.";
+
+"Learn more" = "Lue lisää";
+
+"Invalid state. Please quit the app and try again in a few minutes." = "Virheellinen tila. Sulje sovellus ja yritä uudelleen muutaman minuutin kuluttua.";
+
+"There was a problem reading your security key." = "Ongelma suojausavaintasi luettaessa.";
+
+"We received an authorization from a type we don't support yet." = "Saimme valtuutuksen tyypiltä, jota emme vielä tue.";
+
+"Fetching your security keys details" = "Noudetaan suojausavaimesi tietoja";
+
+"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "Tiliisi ei ole vielä liitetty suojausavaimia. Liitä suojausavaimia verkkosivustomme asetustusosiosta.";
+
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "Virhe noudettaessa suojausavaimiasi. Löydät ne myös Proton %@ -sivustolta.";
+
+"These are the security keys registered to your account" = "Tässä ovat tiliisi liitetyt suojausavaimet";
+
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "Tiliisi ei ole vielä liitetty suojausavaimia. Liitä suojausavaimia Proton %@ -verkkosovelluksessa.";
+
+"Security Keys" = "Suojausavaimet";
+
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "Hallitse, liitä tai poista suojausavaimia Proton %@ -verkkosovelluksessa.";
+
+"Unexpected FIDO2 signature." = "Odottamaton FIDO2-allekirjoitus.";
+
+"We could not initiate the Secure Password update connection. Please try again." = "Emme pystyneet muodostamaan Secure Passwordin päivitysyhteyttä. Yritä uudelleen.";
+
+"Join %@" = "Liity ryhmään %@";
+
+"%@ added you to their Proton organization." = "%@ lisäsi sinut heidän Proton organisaatioon.";
+
+"Continue" = "Jatka";
+
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Jatka asettamalla varasalasana. Sen avulla voit kirjautua sisään ja palauttaa tietosi, jos Proton-tilisi lukittuu, joten tallenna se turvalliseen paikkaan.";
+
+"Backup password" = "Varasalasana";
+
+"Repeat backup password" = "Toista varasalasana";
+
+"Password cannot be empty" = "Salasana ei voi olla tyhjä";
+
+"Password must contain at least 8 characters" = "Salasanan täytyy sisältää vähintään 8 merkkiä";
+
+"Password doesn't match" = "Salasana ei täsmää";
+
+"Sign-in requested on another device. Was it you?" = "Kirjautumista pyydettiin toisella laitteella. Olitko se sinä?";
+
+"Enter the confirmation code we sent on your other device for %@." = "Syötä tilin %@ vahvistuskoodi, jonka lähetimme toiseen laitteeseesi.";
+
+"Confirmation code" = "Vahvistuskoodi";
+
+"If you didn't make this request, cancel it now." = "Jos et tehnyt tätä pyyntöä, peruuta se nyt.";
+
+"Yes, it was me" = "Kyllä, se olin minä";
+
+"No, it wasn't me" = "Ei, se en ollut minä";
+
+"Share the confirmation code with your administrator" = "Jaa vahvistuskoodi ylläpidollesi";
+
+"Approve the sign-in from another device" = "Hyväksy kirjautuminen toiselta laitteelta";
+
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Varmistaaksemme juuri sinun olevan kirjautumassa, jaa vahvistuskoodi ylläpitäjällesi (%@), jotta hän voi hyväksyä pyynnön tunnukselta %@.";
+
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Varmistaaksemme, että sinä todella yrität kirjautua tilillesi, tarkista vahvistuskoodi ja hyväksy pyyntö toisella laitteella.";
+
+"Use backup password instead" = "Käytä varasalasanaa sen sijaan";
+
+"Ask administrator for help" = "Pyydä apua ylläpidoltasi";
+
+"Devices available:" = "Saatavilla olevat laitteet:";
+
+"Operation couldn't be completed. Please try again." = "Toimintoa ei voitu suorittaa. Yritä uudelleen.";
+
+"Enter your backup password" = "Syötä varasalasanasi";
+
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Varmistaaksemme juuri sinun olevan kirjautumassa, syötä varasalasanasi.";
+
+"Access granted" = "Pääsy myönnetty";
+
+"Access denied" = "Pääsy evätty";
+
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Turvallisuutesi takaamiseksi sinut on kirjattu ulos kaikista muista laitteistasi. Ennen pääsyä tilillesi sinun täytyy asettaa uusi varasalasana.";
+
+"Contact your administrator if the problem persists." = "Ole ongelman jatkuessa yhteydessä ylläpitoosi.";
+
+"Back to sign-in" = "Palaa kirjautumiseen";
+
+"Ask your administrator for access?" = "Haluatko pyytää käyttöoikeutta ylläpidoltasi?";
+
+"This will sign you out of your other devices and you will have to create a new backup password." = "Tämä kirjaa sinut ulos muilta laitteiltasi, ja sinun on luotava uusi varasalasana.";
+
+"Grant access to user?" = "Myönnetäänkö käyttäjälle käyttöoikeus?";
+
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ pyytää apuasi Proton-tilille kirjautumiseen kertakirjautumisella.\n\nSyötä vahvistuskoodi, jonka lähetimme tälle käyttäjälle.";
+
+"Grant access" = "Myönnä käyttöoikeus";
+
+"Deny access" = "Kiellä käyttöoikeus";
+
+"Signing you in" = "Kirjaudutaan sisään";
+
+"to your organization" = "organisaatioosi";
+
+"Sign in with single sign-on" = "Kirjaudu kertakirjautumisella";
+
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Organisaatiosi käyttää SSO:ta. Jatka kirjautumista kolmannen osapuolen SSO-tarjoajallasi.";
+
+"Unknown" = "Tuntematon";
+
+"Set backup password" = "Aseta varasalasana";
+
+"Email is invalid" = "Virheellinen sähköpostiosoite";
+
+"Please enter your Proton Account email." = "Syötä Proton-tilisi sähköpostiosoite.";
+
+"Password not valid" = "Virheellinen salasana";
+
+"Passphrase not found" = "Salalausetta ei löydy";
+
+"Open the Proton app on your phone" = "Open the Proton app on your phone";
+
+"Tap into Settings, then tap Sign in to another device" = "Tap into Settings, then tap Sign in to another device";
+
+"Tap Scan QR code" = "Tap Scan QR code";
+
+"Scan this code with your phone camera to sign in instantly." = "Scan this code with your phone camera to sign in instantly.";

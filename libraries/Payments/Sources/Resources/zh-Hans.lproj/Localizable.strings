@@ -2,7 +2,7 @@
 
 "Failed to get list of available products from App Store." = "无法获取 App Store 产品列表。";
 
-"Purchase is not possible." = "不可购买。";
+"Purchase is not possible." = "无法购买。";
 
 "Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you." = "Apple 告知我们您已升级账户，但有部分技术数据缺失。请提交一份问题反馈，我们的客服团队将联系您";
 
@@ -32,7 +32,7 @@
 
 "Contact Support" = "联系客服";
 
-"Dismiss" = "关闭";
+"Dismiss" = "忽略";
 
 "Payment failed" = "支付失败";
 
@@ -40,6 +40,6 @@
 
 "Retry" = "重试";
 
-"OK" = "确定";
+"OK" = "好的";
 
 "The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "连接 Proton 服务器失败，原因可能是网络配置有误、Proton 服务器故障或遭到封锁";
