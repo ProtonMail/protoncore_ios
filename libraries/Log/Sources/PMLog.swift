@@ -84,20 +84,15 @@ public final class PMLog {
     private static let numberOfOldestLinesToTrimInOneGo = 500
     private static let queue = DispatchQueue(label: "ch.proton.core.log")
 
-    @available(*, deprecated, message: "This is not concurrency safe and now deprecated. Pls use the new setExternalLoggingEnvironment API.")
-    public static var externalLog: (any ExternalLogProtocol)?
-    @available(*, deprecated, message: "This is not concurrency safe and now deprecated. Pls use the new setExternalLoggingEnvironment API.")
-    public static var isExternalLogEnabled: (() -> Bool)?
-
     private nonisolated(unsafe) static var mExternalLogger: (any ExternalLogProtocol)?
 
-    public static func setExternalLoggingEnvironment(_ environment: ExternalLogEnvironment) {
+    public static func setExternalLoggingEnvironment(_ environment: ExternalLogEnvironment, host: String) {
         let isNewExternalLoggerSet = queue.sync { mExternalLogger != nil }
         if isNewExternalLoggerSet {
             info("ExternalLogger was already set and you're about to set a new one, ignore this message if this is intended")
         }
         queue.sync {
-            mExternalLogger = SentryCoreManager(environment: environment.rawValue)
+            mExternalLogger = SentryCoreManager(environment: environment.rawValue, defaultHost: host)
         }
     }
 
@@ -149,7 +144,7 @@ public final class PMLog {
     public static func signpost(_ message: String, category: String = "default", level: LogLevel = .info, type: SentryBreadcrumbType = .empty, data: [String: Any]? = nil, sendToExternal: Bool = false) {
         printToConsole("SIGNPOST: \(category) \(level) \(type): \(message) \(data ?? [:])")
         let isNewExternalLoggerSet = queue.sync { mExternalLogger != nil }
-        if sendToExternal && (isNewExternalLoggerSet || externalLog != nil) {
+        if sendToExternal && isNewExternalLoggerSet {
             sendExternalSignpost(level: level, message: message, category: category, type: type, data: data)
         }
     }
@@ -160,12 +155,6 @@ public final class PMLog {
         #endif
     }
 
-    @available(*, deprecated, message: "This is deprecated. Pls use the new setExternalLoggingEnvironment method")
-    public static func setEnvironment(environment: String, isExternalLogEnabled: (@Sendable () -> Bool)? = nil) {
-        externalLog = SentryCoreManager(environment: environment)
-        self.isExternalLogEnabled = isExternalLogEnabled
-    }
-
     // MARK: - Internal
 
     private static func log(_ message: String, level: LogLevel, file: String = #file, function: String = #function, line: Int = #line, column: Int = #column, sendToExternal: Bool) {
@@ -173,7 +162,7 @@ public final class PMLog {
         printToConsole(log)
         callback?(message, level)
         let isNewExternalLoggerSet = queue.sync { mExternalLogger != nil }
-        if sendToExternal && (isNewExternalLoggerSet || externalLog != nil) {
+        if sendToExternal && isNewExternalLoggerSet {
             let externalLogMessage = "\(message) - \((file as NSString).lastPathComponent) : \(function) : Line: \(line) : Col: \(column)"
             sendExternalLog(level: level, log: externalLogMessage)
         }
@@ -225,43 +214,20 @@ public final class PMLog {
 
     private static func sendExternalLog(level: LogLevel, log: String) {
         guard !isRunningTests else { return }
-        let isNewExternalLoggerSet = queue.sync { mExternalLogger != nil }
-        if isNewExternalLoggerSet {
+        let isExternalLoggerSet = queue.sync { mExternalLogger != nil }
+        if isExternalLoggerSet {
             queue.sync {
-                newSendExternalLog(level: level, log: log)
+                guard let mExternalLogger else {
+                    assertionFailure("ProtonCore logger not initialized. Use PMLog.setExternalLogEnvironment(_) in the ProtonCore initialization.")
+                    return
+                }
+                switch level {
+                case .error, .fatal:
+                    mExternalLogger.capture(errorMessage: log, level: level)
+                default:
+                    break
+                }
             }
-        } else {
-            oldSendExternalLog(level: level, log: log)
-        }
-    }
-
-    private static func newSendExternalLog(level: LogLevel, log: String) {
-        guard let mExternalLogger else {
-            assertionFailure("ProtonCore logger not initialized. Use PMLog.setExternalLogEnvironment(_) in the ProtonCore initialization.")
-            return
-        }
-        switch level {
-        case .error, .fatal:
-            mExternalLogger.capture(errorMessage: log, level: level)
-        default:
-            break
-        }
-    }
-
-    private static func oldSendExternalLog(level: LogLevel, log: String) {
-        if let isExternalLogEnabled, !isExternalLogEnabled() {
-            // App disabled external logging
-            return
-        }
-        guard let externalLog else {
-            assertionFailure("ProtonCore logger not initialized. Please use PMLog.setEnvironment(...) in the ProtonCore initialization.")
-            return
-        }
-        switch level {
-        case .error, .fatal:
-            externalLog.capture(errorMessage: log, level: level)
-        default:
-            break
         }
     }
 
@@ -273,60 +239,23 @@ public final class PMLog {
         data: [String: Any]?
     ) {
         guard !isRunningTests else { return }
-        let isNewExternalLoggerSet = queue.sync { mExternalLogger != nil }
-        if isNewExternalLoggerSet {
+        let isExternalLoggerSet = queue.sync { mExternalLogger != nil }
+        if isExternalLoggerSet {
             queue.sync {
-                newSendExternalSignpost(level: level, message: message, category: category, type: type, data: data)
+                guard let mExternalLogger else {
+                    assertionFailure("ProtonCore logger not initialized. Use PMLog.setExternalLogEnvironment(_) in the ProtonCore initialization.")
+                    return
+                }
+
+                mExternalLogger.breadcrumb(
+                    message: message,
+                    category: category,
+                    level: level,
+                    type: type,
+                    data: data
+                )
             }
-        } else {
-            oldSendExternalSignpost(level: level, message: message, category: category, type: type, data: data)
         }
-    }
-
-    private static func newSendExternalSignpost(
-        level: LogLevel,
-        message: String,
-        category: String,
-        type: SentryBreadcrumbType,
-        data: [String: Any]?
-    ) {
-        guard let mExternalLogger else {
-            assertionFailure("ProtonCore logger not initialized. Use PMLog.setExternalLogEnvironment(_) in the ProtonCore initialization.")
-            return
-        }
-
-        mExternalLogger.breadcrumb(
-            message: message,
-            category: category,
-            level: level,
-            type: type,
-            data: data
-        )
-    }
-
-    private static func oldSendExternalSignpost(
-        level: LogLevel,
-        message: String,
-        category: String,
-        type: SentryBreadcrumbType,
-        data: [String: Any]?
-    ) {
-        if let isExternalLogEnabled, !isExternalLogEnabled() {
-            // App disabled external logging
-            return
-        }
-        guard let externalLog else {
-            assertionFailure("ProtonCore logger not initialized. Please use PMLog.setEnvironment(...) in the ProtonCore initialization.")
-            return
-        }
-
-        externalLog.breadcrumb(
-            message: message,
-            category: category,
-            level: level,
-            type: type,
-            data: data
-        )
     }
 
     private static let isRunningTests = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil

@@ -66,7 +66,7 @@ public enum SentryBreadcrumbType: String {
 public final class SentryCoreManager: ExternalLogProtocol {
 
     enum Constants {
-        static let sentryDSN = "https://2c74eb763791400d9a3c17db8bf57dea@sentry-new.protontech.ch/56"
+        static let sentryDSNKey = "2c74eb763791400d9a3c17db8bf57dea"
         static let clientName = "client.name"
         static let device = "device"
         static let deviceFamily = "device.family"
@@ -77,15 +77,17 @@ public final class SentryCoreManager: ExternalLogProtocol {
     private var hub: SentryHub!
 
     public let environment: String
+    public let defaultHost: String
 
-    public init(environment: String) {
+    public init(environment: String, defaultHost: String) {
         self.environment = environment
+        self.defaultHost = defaultHost
         setup()
     }
 
     func setup() {
         let options = Sentry.Options()
-        options.dsn = Constants.sentryDSN
+        options.dsn = "https://\(Constants.sentryDSNKey)@\(defaultHost)/core/v4/reports/sentry/56"
         #if DEBUG
         options.debug = true
         #endif
