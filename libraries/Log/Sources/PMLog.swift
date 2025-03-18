@@ -58,7 +58,8 @@ public final class PMLog {
 
     private nonisolated(unsafe) static var mExternalLogger: (any ExternalLogProtocol)?
 
-    public static func setHost(_ host: String) {
+    /// Set the host used to derive the Sentry host URL.  Should be `doh.defaultHost` for most clients.
+    public static func setExternalLoggerHost(_ host: String) {
         let isNewExternalLoggerSet = queue.sync { mExternalLogger != nil }
         if isNewExternalLoggerSet {
             info("ExternalLogger was already set and you're about to set a new one, ignore this message if this is intended")
