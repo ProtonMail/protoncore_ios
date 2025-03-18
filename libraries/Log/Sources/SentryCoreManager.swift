@@ -76,22 +76,27 @@ public final class SentryCoreManager: ExternalLogProtocol {
 
     private var hub: SentryHub!
 
-    public let environment: String
-    public let defaultHost: String
+    public let host: String
 
-    public init(environment: String, defaultHost: String) {
-        self.environment = environment
-        self.defaultHost = defaultHost
+    public init(_ host: String) {
+        self.host = host
         setup()
     }
 
     func setup() {
         let options = Sentry.Options()
-        options.dsn = "https://\(Constants.sentryDSNKey)@\(defaultHost)/core/v4/reports/sentry/56"
+        options.dsn = "https://\(Constants.sentryDSNKey)@\(host)/core/v4/reports/sentry/56"
         #if DEBUG
         options.debug = true
         #endif
-        options.environment = self.environment
+
+        var environment: String
+        if host.contains("black") {
+            environment = "black"
+        } else {
+            environment = "production"
+        }
+        options.environment = environment
 
         let scope = Scope()
         let clientName = Bundle.main.bundleIdentifier ?? "Unknown"

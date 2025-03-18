@@ -46,34 +46,6 @@ public final class PMLog {
         }
     }
 
-    public enum ExternalLogEnvironment: RawRepresentable {
-        case black
-        case production
-        case custom(String)
-
-        public init?(rawValue: String) {
-            switch rawValue {
-            case "black":
-                self = .black
-            case "production":
-                self = .production
-            default:
-                self = .custom(rawValue)
-            }
-        }
-
-        public var rawValue: String {
-            switch self {
-            case .black:
-                return "black"
-            case .production:
-                return "production"
-            case .custom(let environment):
-                return environment
-            }
-        }
-    }
-
     public static var callback: ((String, LogLevel) -> Void)?
 
     // MARK: - Properties
@@ -86,13 +58,13 @@ public final class PMLog {
 
     private nonisolated(unsafe) static var mExternalLogger: (any ExternalLogProtocol)?
 
-    public static func setExternalLoggingEnvironment(_ environment: ExternalLogEnvironment, host: String) {
+    public static func setHost(_ host: String) {
         let isNewExternalLoggerSet = queue.sync { mExternalLogger != nil }
         if isNewExternalLoggerSet {
             info("ExternalLogger was already set and you're about to set a new one, ignore this message if this is intended")
         }
         queue.sync {
-            mExternalLogger = SentryCoreManager(environment: environment.rawValue, defaultHost: host)
+            mExternalLogger = SentryCoreManager(host)
         }
     }
 
