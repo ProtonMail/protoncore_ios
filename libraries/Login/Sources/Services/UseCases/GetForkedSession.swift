@@ -1,5 +1,5 @@
 //
-//  Created on 12.03.2025.
+//  Created on 17.03.2025.
 //
 //  Copyright (c) 2025 Proton AG
 //
@@ -19,7 +19,7 @@
 import Foundation
 import ProtonCoreServices
 
-public struct GetUserCodeAndSelector {
+public struct GetForkedSession {
     private let apiService: APIService
 
     public init(apiService: APIService) {
@@ -27,14 +27,19 @@ public struct GetUserCodeAndSelector {
     }
 
     public struct Response {
-        public let userCode: String
-        public let selector: String
+        public let payload: String
+        public let UID: String
+        public let refreshToken: String
+        public let accessToken: String
     }
 
-    public func invoke() async throws -> Response {
-        let request = ForkSessionRequest(useCase: .initiateFork)
-        let response: (URLSessionDataTask?, ForkSessionInitiateResponse) = try await apiService.perform(request: request)
+    public func invoke(selector: String) async throws -> Response {
+        let request = ForkSessionRequest(useCase: .pullFork(selector: selector))
+        let response: (URLSessionDataTask?, ForkSessionPullResponse) = try await apiService.perform(request: request)
 
-        return Response(userCode: response.1.userCode, selector: response.1.selector)
+        return Response(payload: response.1.payload,
+                        UID: response.1.UID,
+                        refreshToken: response.1.refreshToken,
+                        accessToken: response.1.accessToken)
     }
 }

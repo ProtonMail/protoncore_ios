@@ -49,6 +49,7 @@ public struct SignInWithQRCodeView: View {
         }
         .onDisappear {
             viewModel.cancelQRCodeRefresh()
+            viewModel.stopPollingFork()
         }
     }
     
