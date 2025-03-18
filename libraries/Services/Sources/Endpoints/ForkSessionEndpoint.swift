@@ -19,22 +19,7 @@
 import Foundation
 import ProtonCoreNetworking
 
-public final class ForkSessionResponse: Response, Codable {
-    public let code: Int
-    public let selector: String
-
-    public init(code: Int, selector: String) {
-        self.code = code
-        self.selector = selector
-    }
-
-    public required init() {
-        self.code = 0
-        self.selector = ""
-    }
-}
-
-public final class ForkSessionUserCodeResponse: Response, Codable {
+public final class ForkSessionInitiateResponse: Response, Codable {
     public let selector: String
     public let userCode: String
 
@@ -49,14 +34,54 @@ public final class ForkSessionUserCodeResponse: Response, Codable {
     }
 }
 
+public final class ForkSessionPushResponse: Response, Codable {
+    public let code: Int
+    public let selector: String
+
+    public init(code: Int, selector: String) {
+        self.code = code
+        self.selector = selector
+    }
+
+    public required init() {
+        self.code = 0
+        self.selector = ""
+    }
+}
+
+public final class ForkSessionPullResponse: Response, Codable {
+    public let code: Int
+    public let payload: String
+    public let UID: String
+    public let refreshToken: String
+    public let accessToken: String
+
+    public init(code: Int, payload: String, UID: String, refreshToken: String, accessToken: String) {
+        self.code = code
+        self.payload = payload
+        self.UID = UID
+        self.refreshToken = refreshToken
+        self.accessToken = accessToken
+    }
+
+    public required init() {
+        self.code = 0
+        self.payload = ""
+        self.UID = ""
+        self.refreshToken = ""
+        self.accessToken = ""
+    }
+}
+
 public final class ForkSessionRequest: Request {
     let useCase: UseCase
     let timeout: TimeInterval?
 
     public enum UseCase {
         // To test this I need to login first.
-        case getSelector(payload: String, clientId: String, independent: Bool, userCode: String)
-        case getUserCode
+        case initiateFork
+        case pushFork(payload: String, clientId: String, independent: Bool, userCode: String)
+        case pullFork(selector: String)
     }
 
     public init(useCase: UseCase, timeout: TimeInterval? = nil) {
@@ -69,28 +94,33 @@ public final class ForkSessionRequest: Request {
     }
 
     public var path: String {
-        return "/auth/v4/sessions/forks"
+        switch useCase {
+        case .initiateFork, .pushFork:
+            return "/auth/v4/sessions/forks"
+        case .pullFork(let selector):
+            return "/auth/v4/sessions/forks/\(selector)"
+        }
     }
 
     public var method: HTTPMethod {
         switch useCase {
-        case .getSelector:
+        case .pushFork:
             return .post
-        case .getUserCode:
+        case .initiateFork, .pullFork:
             return .get
         }
     }
 
     public var parameters: [String: Any]? {
         switch useCase {
-        case .getSelector(let payload, let clientId, let independent, let userCode):
+        case .pushFork(let payload, let clientId, let independent, let userCode):
             return [
                 "Payload": payload,
                 "ChildClientID": clientId,
                 "Independent": independent ? 1 : 0,
                 "UserCode": userCode
             ]
-        case .getUserCode:
+        case .initiateFork, .pullFork:
             return nil
         }
     }

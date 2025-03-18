@@ -30,6 +30,20 @@ import ProtonCoreTestingToolkitUnitTestsCore
 import ProtonCoreTestingToolkit
 #endif
 
+import ProtonCoreQuarkCommands
+
+#if canImport(ProtonCoreCryptoPatchedGoImplementation)
+import ProtonCoreCryptoPatchedGoImplementation
+#elseif canImport(ProtonCoreCryptoGoImplementation)
+import ProtonCoreCryptoGoImplementation
+#elseif canImport(ProtonCoreCryptoSearchGoImplementation)
+import ProtonCoreCryptoSearchGoImplementation
+#elseif canImport(ProtonCoreCryptoVPNPatchedGoImplementation)
+import ProtonCoreCryptoVPNPatchedGoImplementation
+#else
+import ProtonCoreCryptoGoImplementation
+#endif
+
 @testable import ProtonCoreServices
 @testable import ProtonCoreNetworking
 
@@ -40,7 +54,6 @@ final class ForkSessionIntegrationTests: IntegrationTestCase {
     var environment: Environment { dynamicDomain.map(Environment.custom) ?? .black }
 
     final class TestServiceDelegate: APIServiceDelegate {
-        // Feature works only for VPN
         var appVersion: String { "ios-vpn@4.2.0-dev" }
         var userAgent: String? { nil }
         var locale: String { "en_US" }
@@ -54,6 +67,7 @@ final class ForkSessionIntegrationTests: IntegrationTestCase {
 
     override class func setUp() {
         super.setUp()
+        injectDefaultCryptoImplementation()
         PMAPIService.noTrustKit = true
     }
 
@@ -62,27 +76,70 @@ final class ForkSessionIntegrationTests: IntegrationTestCase {
         PMAPIService.noTrustKit = false
     }
 
-    func testGetUserCodeAndSelectorSuccessfully() async throws {
+    func testGetPushAndPullForkSuccessfully() async throws {
+        // This test forks a session
+        // And makes sure we can query the session details after the fork is pushed.
+
         // GIVEN
-        let service = PMAPIService.createAPIServiceWithoutSession(
-            environment: environment,
-            challengeParametersProvider: .forAPIService(clientApp: .vpn, challenge: .init()))
-        // Note: We need both authDelegate and serviceDelegate for the request to succeed.
+        let apiService = PMAPIService.createAPIServiceWithoutSession(environment: environment, challengeParametersProvider: .empty)
         let authDelegate = AuthHelper()
-        service.authDelegate = authDelegate
-        service.serviceDelegate = serviceDelegate
+        apiService.authDelegate = authDelegate
+        apiService.serviceDelegate = serviceDelegate
+
+        let user = User(email: randomEmail, name: randomEmail, password: randomPassword, isExternal: true)
+        guard let userResponse = try createAccount(user: user) else {
+            XCTFail("\(#file): \(#function): Failed to create user.")
+            return
+        }
+
+        guard let _ = try await login(apiService, user: user, minimumAccountType: .external).value else {
+            XCTFail("\(#file): \(#function): Failed to login user.")
+            return
+        }
+
+        let payload = "TestPayload"
 
         // WHEN
-        let request = ForkSessionRequest(useCase: .getUserCode)
-        let response: (URLSessionDataTask?, ForkSessionUserCodeResponse) = try await service.perform(request: request)
+        let initiateRequest = ForkSessionRequest(useCase: .initiateFork)
+        let initiateResponse: (URLSessionDataTask?, ForkSessionInitiateResponse) = try await apiService.perform(request: initiateRequest)
 
+        let pushRequest = ForkSessionRequest(useCase: .pushFork(payload: payload, clientId: "ios-vpn", independent: true, userCode: initiateResponse.1.userCode))
+        let pushResponse: (URLSessionDataTask?, ForkSessionPushResponse) = try await apiService.perform(request: pushRequest)
+
+        let pullRequest = ForkSessionRequest(useCase: .pullFork(selector: pushResponse.1.selector))
+        let pullResponse: (URLSessionDataTask?, ForkSessionPullResponse) = try await apiService.perform(request: pullRequest)
         // THEN
-        XCTAssertNotEqual(response.1.userCode, "")
-        XCTAssertNotEqual(response.1.selector, "")
+
+        XCTAssertNotEqual(initiateResponse.1.userCode, "")
+        XCTAssertNotEqual(initiateResponse.1.selector, "")
+        XCTAssertNotEqual(pushResponse.1.selector, "")
+        XCTAssertEqual(initiateResponse.1.selector, pushResponse.1.selector)
+
+        XCTAssertNotEqual(pullResponse.1.UID, "")
+        XCTAssertEqual(pullResponse.1.payload, payload)
+        XCTAssertNotEqual(pullResponse.1.accessToken, "")
+        XCTAssertNotEqual(pullResponse.1.refreshToken, "")
+
+        deleteAccount(id: userResponse.decryptedUserId)
     }
 
-    func testGetSelectorSuccessfully() async throws {
-        // TODO: I will need this after I scan the qr code to get the selector of the fork from the BE. Add tests then.
-        // I need to be logged in to be able to fork the session. How do I log in?
+    private func createAccount(user: User) throws -> CreateUserQuarkResponse? {
+        let quark = Quark()
+            .baseUrl(environment.doh)
+
+        return try quark.userCreate(user: user, createAddress: .noKey)
     }
+
+    private func login(_ apiService: APIService, user: User, minimumAccountType: AccountType) async throws -> Result<LoginStatus, LoginError> {
+        let loginService = LoginService(api: apiService, clientApp: .vpn, minimumAccountType: minimumAccountType)
+        return await withCheckedContinuation { continuation in
+            loginService.login(username: user.name, password: user.password, challenge: nil, completion: continuation.resume(returning:))
+        }
+    }
+
+    private func deleteAccount(id: Int) {
+        let quark = Quark().baseUrl(environment.doh)
+        let _ = try? quark.deleteUser(id: id)
+    }
+
 }

@@ -55,18 +55,23 @@ extension SignInWithQRCodeView {
 
         @Published var qrCodeText: String?
 
-        var refreshWaitTimeInSeconds: Int = 600
+        var refreshWaitTimeInSeconds: TimeInterval = 600
+        var pullForkIntervalInSeconds: TimeInterval = 10
 
         private var getUserCodeAndSelectorUseCase: GetUserCodeAndSelector?
         private var generateSignInQRCodeUseCase: GenerateSignInQRCode?
-        private var userCode: String?
+        private var getForkedSessionUseCase: GetForkedSession?
         private var selector: String?
 
-        private var timer: Timer?
+        var forkedSession: GetForkedSession.Response?
+
+        private var refreshQRCodeTimer: Timer?
+        private var pullForkTimer: Timer?
 
         init(dependencies: Dependencies) {
             if let apiService = dependencies.apiService {
                 getUserCodeAndSelectorUseCase = GetUserCodeAndSelector(apiService: apiService)
+                getForkedSessionUseCase = GetForkedSession(apiService: apiService)
             }
 
             if let secureHashGenerator = dependencies.secureHashGenerator,
@@ -77,7 +82,7 @@ extension SignInWithQRCodeView {
 
         func generateANewQRCodeText() {
             Task {
-                // Remove the old qrCodeText
+                stopPollingFork()
                 removeQRCodeText()
 
                 guard let getUserCodeAndSelectorUseCase = getUserCodeAndSelectorUseCase, let generateSignInQRCodeUseCase = generateSignInQRCodeUseCase else {
@@ -88,7 +93,6 @@ extension SignInWithQRCodeView {
                     let userCodeAndSelector = try await getUserCodeAndSelectorUseCase.invoke()
                     let qrCode = try generateSignInQRCodeUseCase.invoke(userCode: userCodeAndSelector.userCode)
 
-                    self.userCode = userCodeAndSelector.userCode
                     self.selector = userCodeAndSelector.selector
                     self.qrCodeText = qrCode.text
                 } catch {
@@ -98,14 +102,47 @@ extension SignInWithQRCodeView {
 #endif
                 }
 
-                // Refresh the qr code every refreshWaitTimeInSeconds
                 scheduleQRCodeRefresh()
+                startPollingFork()
             }
         }
 
         func cancelQRCodeRefresh() {
-            timer?.invalidate()
-            timer = nil
+            refreshQRCodeTimer?.invalidate()
+            refreshQRCodeTimer = nil
+        }
+
+        func startPollingFork() {
+            pullForkTimer?.invalidate()
+            pullForkTimer = Timer.scheduledTimer(withTimeInterval: pullForkIntervalInSeconds, repeats: true, block: { [weak self] timer in
+                Task { @MainActor [weak self] in
+                    do {
+                        guard let self = self else {
+                            timer.invalidate()
+                            return
+                        }
+                        guard let selector = self.selector, timer.isValid else { return }
+                        print("PT: Fork about to be pulled")
+                        self.forkedSession = try await self.getForkedSessionUseCase?.invoke(selector: selector)
+                        timer.invalidate()
+                        print("PT: Fork pulled successfully")
+                        // TODO: Notify the Login Coordinator that we should do the "post login" steps.
+                        // I will need to pass the data from here back to the Login Coordinator.
+                        // I will also need to add the decryption step. The payload will contain the encrypted passphrase. The encryptionKey is the one generated for the QR code.
+                        // I will probably add this to the GetForkedSession use case.
+                        // I will do this once I can push forks from the Logged In device.
+                        // I will remove the print statements once this part is done.
+                    } catch {
+                        // Do nothing. The fork might not be available yet.
+                        print("PT: Fork pull error: \(error)")
+                    }
+                }
+            })
+        }
+
+        func stopPollingFork() {
+            pullForkTimer?.invalidate()
+            pullForkTimer = nil
         }
 
         private func removeQRCodeText() {
@@ -113,8 +150,8 @@ extension SignInWithQRCodeView {
         }
 
         private func scheduleQRCodeRefresh() {
-            timer?.invalidate()
-            timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(refreshWaitTimeInSeconds),
+            refreshQRCodeTimer?.invalidate()
+            refreshQRCodeTimer = Timer.scheduledTimer(withTimeInterval: refreshWaitTimeInSeconds,
                                          repeats: false,
                                          block: { [weak self] timer in
                 guard timer.isValid else { return }

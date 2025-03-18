@@ -22,6 +22,7 @@ import ProtonCoreLogin
 import ProtonCoreTestingToolkitUnitTestsServices
 import ProtonCoreServices
 
+@MainActor
 class SignInWithQRCodeViewModelTests: XCTestCase {
     var sut: SignInWithQRCodeView.ViewModel!
     var mockAPIService: APIServiceMock!
@@ -45,13 +46,13 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
         let userCode = "userCode"
         let clientId = "clientId"
         mockAPIService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-            completion(nil, .success(ForkSessionUserCodeResponse(selector: selector, userCode: userCode)))
+            completion(nil, .success(ForkSessionInitiateResponse(selector: selector, userCode: userCode)))
         }
 
         mockClientIdProvider.id = clientId
         mockSecureHashGenerator.data = Data([1,2,3])
 
-        await sut.generateANewQRCodeText()
+        sut.generateANewQRCodeText()
 
         // wait a little for the qrCode to reach the main thread
         try? await Task.sleep(nanoseconds: 100_000_000)
@@ -64,7 +65,7 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
         let userCode = "userCode"
         let clientId = "clientId"
         mockAPIService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-            completion(nil, .success(ForkSessionUserCodeResponse(selector: selector, userCode: userCode)))
+            completion(nil, .success(ForkSessionInitiateResponse(selector: selector, userCode: userCode)))
         }
 
         mockClientIdProvider.id = clientId
@@ -72,7 +73,7 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
 
         sut.refreshWaitTimeInSeconds = 1
 
-        await sut.generateANewQRCodeText()
+        sut.generateANewQRCodeText()
 
         // wait a little for the qrCode to reach the main thread
         try? await Task.sleep(nanoseconds: 100_000_000)
@@ -88,6 +89,59 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
         let qrCode2 = sut.qrCodeText
 
         XCTAssertNotEqual(qrCode1, qrCode2)
+    }
+
+    func testPollingOfFork() async {
+        let selector = "selector"
+        let userCode = "userCode"
+        let clientId = "clientId"
+        let UID = "UID"
+        let payload = "TestPayload"
+        let refreshToken = "RefreshToken"
+        let accessToken = "AccessToken"
+        var pullResult: ForkSessionPullResponse?
+
+        mockAPIService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+            if path.contains(try! Regex("/auth/[^/]+/sessions/forks$")) {
+                completion(nil, .success(ForkSessionInitiateResponse(selector: selector, userCode: userCode)))
+                return
+            } else if let result = pullResult {
+                completion(nil, .success(result))
+                return
+            } else {
+                completion(nil, .failure(NSError(domain: "", code: 404)))
+                return
+            }
+        }
+
+        mockClientIdProvider.id = clientId
+        mockSecureHashGenerator.data = Data([1,2,3])
+
+        sut.refreshWaitTimeInSeconds = 100
+        sut.pullForkIntervalInSeconds = 1
+
+        sut.generateANewQRCodeText()
+
+        // wait for a bit more then a second for the fork to be pulled
+        try? await Task.sleep(nanoseconds: UInt64(sut.pullForkIntervalInSeconds * 1_000_000_000) + 100_000_000)
+
+        // wait for one cycle and then set the pullResult, to make sure that we keep polling on failure to get the fork
+        pullResult = ForkSessionPullResponse(code: 1000, payload: payload, UID: UID, refreshToken: refreshToken, accessToken: accessToken)
+
+        try? await Task.sleep(nanoseconds: UInt64(sut.pullForkIntervalInSeconds * 1_000_000_000) + 100_000_000)
+
+        XCTAssertEqual(pullResult?.UID, sut.forkedSession?.UID)
+        XCTAssertEqual(pullResult?.payload, sut.forkedSession?.payload)
+        XCTAssertEqual(pullResult?.accessToken, sut.forkedSession?.accessToken)
+        XCTAssertEqual(pullResult?.refreshToken, sut.forkedSession?.refreshToken)
+
+        // make sure that after we get the pullResult, we stop polling
+        pullResult = ForkSessionPullResponse(code: 1000, payload: "DifferentPayload", UID: UID, refreshToken: refreshToken, accessToken: accessToken)
+
+        try? await Task.sleep(nanoseconds: UInt64(sut.pullForkIntervalInSeconds * 1_000_000_000) + 100_000_000)
+
+        // Make sure we did not replace the forkedSession with the new pulledResult.
+        XCTAssertNotEqual(pullResult?.payload, sut.forkedSession?.payload)
     }
 }
 

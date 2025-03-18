@@ -1654,7 +1654,11 @@ add(
                         .authentication,
                         .challenge,
                         .login,
-                        .testingToolkitUnitTestsCore
+                        .testingToolkitUnitTestsCore,
+                        .quarkCommands,
+                        .crypto,
+                        .cryptoGoInterface,
+                        .cryptoGoUsedInTests
                        ],
                        path: "libraries/Services/Tests/Integration"),
 
