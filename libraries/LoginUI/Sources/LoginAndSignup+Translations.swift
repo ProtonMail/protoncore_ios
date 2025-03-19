@@ -203,6 +203,13 @@ public enum LUITranslation: TranslationsExposing {
     case tap_into_settings_instructions
     case tap_scan_qr_code
     case scan_this_code_instructions
+    case sign_in_to_another_device
+    case sign_in_with_qr_code_title
+    case sign_in_with_qr_code_scan_instructions
+    case sign_in_with_qr_code_access_qr_code_instructions
+    case sign_in_with_qr_code_warning_one
+    case sign_in_with_qr_code_warning_two
+    case scan_qr_code_title
 
     public var l10n: String {
         switch self {
@@ -559,6 +566,20 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Tap **Scan QR code**", comment: "Tap **Scan QR code**")
         case .scan_this_code_instructions:
             return localized(key: "Scan this code with your phone camera to sign in instantly.", comment: "Scan this code with your phone camera to sign in instantly.")
+        case .sign_in_to_another_device:
+            return localized(key: "Sign in to another device", comment: "Sign in to another device")
+        case .sign_in_with_qr_code_title:
+            return localized(key: "Sign in with your QR code", comment: "Sign in with your QR code")
+        case .sign_in_with_qr_code_scan_instructions:
+            return localized(key: "Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active.", comment: "Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active.")
+        case .sign_in_with_qr_code_access_qr_code_instructions:
+            return localized(key: "To access the QR code, tap the **Sign in with QR code button** on the sign-in screen.", comment: "To access the QR code, tap the **Sign in with QR code button** on the sign-in screen.")
+        case .sign_in_with_qr_code_warning_one:
+            return localized(key: "Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust.", comment: "Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust.")
+        case .sign_in_with_qr_code_warning_two:
+            return localized(key: "Proton will never ask you to scan a QR code that does not come from the domain **proton.me**.", comment: "Proton will never ask you to scan a QR code that does not come from the domain **proton.me**.")
+        case .scan_qr_code_title:
+            return localized(key: "Scan QR code", comment: "Scan QR code")
         }
     }
 }
