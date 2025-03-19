@@ -472,6 +472,8 @@ public struct ProtonIconSet {
 
     public let rocket = ProtonIcon(name: "ic-rocket")
 
+    public let scanQRCode = ProtonIcon(name: "ic-scan-qr-code")
+
     public let servers = ProtonIcon(name: "ic-servers")
 
     public let sliders = ProtonIcon(name: "ic-sliders")
