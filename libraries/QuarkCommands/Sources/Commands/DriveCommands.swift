@@ -22,6 +22,7 @@
 import Foundation
 
 private let drivePopulate: String = "quark/raw::drive:populate"
+private let setUsedSpaceCommand = "quark/drive:quota:set-used-space"
 
 public extension Quark {
 
@@ -42,6 +43,24 @@ public extension Quark {
             .args(args)
             .build()
         request.timeoutInterval = 120
+
+        return try executeQuarkRequest(request)
+    }
+
+    /// - Parameters:
+    ///   - decryptedUserId: user Id
+    ///   - product: "Mail", "Drive", "Calendar"...etc
+    ///   - usedSpace: "500KB", "1GB" ...etc
+    @discardableResult
+    func setUsedSpace(decryptedUserId: Int, product: String, usedSpace: String) throws -> (data: Data, response: URLResponse) {
+        let args = [
+            "--user-id=\(decryptedUserId)",
+            "--product=\(product)",
+            "--used-space=\(usedSpace)"
+        ]
+        let request = try route(setUsedSpaceCommand)
+            .args(args)
+            .build()
 
         return try executeQuarkRequest(request)
     }
