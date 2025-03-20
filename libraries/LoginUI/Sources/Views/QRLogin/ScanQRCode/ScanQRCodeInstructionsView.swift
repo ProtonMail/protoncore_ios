@@ -23,7 +23,11 @@ import ProtonCoreUIFoundations
 @MainActor
 public struct ScanQRCodeInstructionsView: View {
 
-    public init() {}
+    @StateObject var viewModel: ViewModel
+
+    public init(viewModel: ViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+    }
 
     private enum Constants {
         static let cornerRadius: CGFloat = 16
@@ -89,10 +93,8 @@ public struct ScanQRCodeInstructionsView: View {
 
     var scanButton: some View {
         PCButton(style: .constant(.init(mode: .solid)),
-                 content: .constant(.init(title: LUITranslation.scan_qr_code_title.l10n, action: {
-            // TODO: Ask for biometric id.
-            // Then show the scan QR code view
-        })))
+                 content: .constant(.init(title: LUITranslation.scan_qr_code_title.l10n,
+                                          action: viewModel.handleScanQRButtonPress)))
         .frame(height: Constants.scanButtonHeight)
         .padding(.horizontal, Constants.leadingTrailingPadding)
         .padding(.top, Constants.scanButtonTopPadding)

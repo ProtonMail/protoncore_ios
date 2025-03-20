@@ -373,3 +373,5 @@
 "Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Proton will never ask you to scan a QR code that does not come from the domain **proton.me**.";
 
 "Scan QR code" = "Scan QR code";
+
+"Authenticate to access the QR code scanner" = "Authenticate to access the QR code scanner";
