@@ -671,7 +671,7 @@ final class StoreKitManagerTests: XCTestCase {
             ]
             let token = PaymentToken(token: "test token", status: .pending)
             storeKitManagerDelegate.tokenStorageStub.fixture = paymentTokenStorageMock
-            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
                 if path.contains("subscription/check") {
                     completion(nil, .success(ValidateSubscription(amount: 0, amountDue: 0).toSuccessfulResponse))
                 } else if path.contains("tokens/") {
@@ -744,7 +744,7 @@ final class StoreKitManagerTests: XCTestCase {
         ]
         let token = PaymentToken(token: "test token", status: .pending)
         storeKitManagerDelegate.tokenStorageStub.fixture = paymentTokenStorageMock
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("subscription/check") {
                 completion(nil, .success(ValidateSubscription(amount: 0, amountDue: 0).toSuccessfulResponse))
             } else if path.contains("tokens/") {
@@ -1348,7 +1348,7 @@ final class StoreKitManagerTests: XCTestCase {
             let token = PaymentToken(token: "test token", status: .pending)
             plansDataSourceMock.isIAPAvailableStub.fixture = true
             storeKitManagerDelegate.tokenStorageStub.fixture = paymentTokenStorageMock
-            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
                 if path.contains("subscription/check") {
                     completion(nil, .success(ValidateSubscription(amount: 0, amountDue: 0).toSuccessfulResponse))
                 } else if path.contains("tokens/") {
@@ -1431,7 +1431,7 @@ final class StoreKitManagerTests: XCTestCase {
             ]
             let token = PaymentToken(token: "test token", status: .pending)
             storeKitManagerDelegate.tokenStorageStub.fixture = paymentTokenStorageMock
-            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
                 if path.contains("subscription/check") {
                     completion(nil, .success(ValidateSubscription(amount: 0, amountDue: 0).toSuccessfulResponse))
                 } else if path.contains("tokens/") {

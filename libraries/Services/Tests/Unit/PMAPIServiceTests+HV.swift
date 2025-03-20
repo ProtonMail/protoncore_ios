@@ -64,6 +64,7 @@ final class PMAPIServiceHVTests: XCTestCase {
     lazy var someOtherSessionError: SessionResponseError = .responseBodyIsNotADecodableObject(body: someOtherErrorResponseData, response: someOtherErrorResponse)
 
     let successfulResponse: HTTPURLResponse = .init(statusCode: 200)
+    let successfulResponseWithStatus202: HTTPURLResponse = .init(statusCode: 202)
     let successfulResponseJSON: JSONDictionary = ["Code": 1000, "String": "some successful string", "Number": 42]
     lazy var successfulResponseData: Data = try! JSONSerialization.data(withJSONObject: successfulResponseJSON)
 
@@ -245,6 +246,46 @@ final class PMAPIServiceHVTests: XCTestCase {
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: false, authRetry: true, customAuthCredential: authCredential,
                             nonDefaultTimeout: nil, retryPolicy: .userInitiated,
+                            jsonCompletion: { task, result in continuation.resume(returning: (task, result)) })
+        }
+
+        // THEN
+        let value = try XCTUnwrap(result.1.value)
+        XCTAssertEqual(try JSONSerialization.data(withJSONObject: value),
+                       try JSONSerialization.data(withJSONObject: self.successfulResponseJSON))
+    }
+
+    func testHumanVerificationIsLaunchedForJSONResponseWithStatus202_HVSuccess() async throws {
+        let service = PMAPIService.createAPIService(doh: dohMock,
+                                                    sessionUID: "test sessionUID",
+                                                    sessionFactory: sessionFactoryMock,
+                                                    cacheToClear: cacheToClearMock,
+                                                    trustKitProvider: trustKitProviderMock,
+                                                    challengeParametersProvider: .forAPIService(clientApp: .other(named: "core"), challenge: .init()))
+        service.authDelegate = authDelegateMock
+        service.humanDelegate = humanDelegateMock
+
+        sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
+            try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
+        }
+        sessionMock.requestJSONStub.bodyIs { counter, _, _, completion in
+            switch counter {
+            case 0: completion(URLSessionDataTaskMock(response: self.humanVerificationResponse), .success(self.humanVerificationResponseJSON))
+            case 1: completion(URLSessionDataTaskMock(response: self.successfulResponseWithStatus202), .success(self.successfulResponseJSON))
+            default: XCTFail("Stub shouldn't be called more than twice")
+            }
+        }
+        humanDelegateMock.onHumanVerifyStub.bodyIs { _, _, _, completion in
+            completion(.verification(header: [:], verificationCodeBlock: { isSuccessful, responseError, blockFinish in blockFinish?() }))
+        }
+
+        let authCredential = AuthCredential.dummy.updated(sessionID: "test sessionID", accessToken: "test accessToken", refreshToken: "test refreshToken", userName: "test userName", userID: "test userID")
+
+        // WHEN
+        let result = await withCheckedContinuation { continuation in
+            service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
+                            authenticated: false, authRetry: true, customAuthCredential: authCredential,
+                            nonDefaultTimeout: nil, retryPolicy: .userInitiated, successStatusCode: .accepted,
                             jsonCompletion: { task, result in continuation.resume(returning: (task, result)) })
         }
 

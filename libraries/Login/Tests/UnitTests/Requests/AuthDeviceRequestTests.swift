@@ -54,7 +54,7 @@ final class AuthDeviceRequestTests: XCTestCase, JSONMockLoader {
 
         let sut = CreateAuthDeviceRequest(name: deviceName, activationToken: activationToken)
 
-        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, _, completion in
             if method == .post && path.contains("/auth/v4/devices") {
                 completion(nil, .success(createDeviceRes.toSuccessfulResponse))
             } else {
@@ -92,7 +92,7 @@ final class AuthDeviceRequestTests: XCTestCase, JSONMockLoader {
 
         let sut = AuthDevicesRequest()
 
-        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, _, completion in
             if method == .get && path.contains("/auth/v4/devices") {
                 completion(nil, .success(devicesRes.toSuccessfulResponse))
             } else {
@@ -126,7 +126,7 @@ final class AuthDeviceRequestTests: XCTestCase, JSONMockLoader {
         let deviceID = "12345678"
         let sut = ActivateAuthDeviceRequest(deviceID: deviceID, encryptedSecret: "secret")
 
-        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, _, completion in
             if method == .post && path.contains("/auth/v4/devices/\(deviceID)") {
                 completion(nil, .success(res.toSuccessfulResponse))
             } else {
@@ -157,7 +157,7 @@ final class AuthDeviceRequestTests: XCTestCase, JSONMockLoader {
         let deviceID = "12345678"
         let sut = DeleteAuthDeviceRequest(deviceID: deviceID)
 
-        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, _, completion in
             if method == .delete && path.contains("/auth/v4/devices/\(deviceID)") {
                 completion(nil, .success(res.toSuccessfulResponse))
             } else {
@@ -188,7 +188,7 @@ final class AuthDeviceRequestTests: XCTestCase, JSONMockLoader {
         let deviceID = "12345678"
         let sut = RejectAuthDeviceRequest(deviceID: deviceID)
 
-        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, _, completion in
             if method == .put && path.contains("/auth/v4/devices/\(deviceID)/reject") {
                 completion(nil, .success(res.toSuccessfulResponse))
             } else {
@@ -219,7 +219,7 @@ final class AuthDeviceRequestTests: XCTestCase, JSONMockLoader {
         let deviceID = "12345678"
         let sut = AssociateAuthDeviceRequest(deviceID: deviceID, deviceToken: "87654321")
 
-        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, _, completion in
             if method == .post && path.contains("/auth/v4/devices/\(deviceID)/associate") {
                 completion(nil, .success(res.toSuccessfulResponse))
             } else {
@@ -253,7 +253,7 @@ final class AuthDeviceRequestTests: XCTestCase, JSONMockLoader {
 
         let sut = PendingMemberDevicesRequest()
 
-        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, _, completion in
             if method == .get && path.contains("/core/v4/members/devices/pending") {
                 completion(nil, .success(res.toSuccessfulResponse))
             } else {
@@ -286,7 +286,7 @@ final class AuthDeviceRequestTests: XCTestCase, JSONMockLoader {
         let deviceID = "12345678"
         let sut = PingAdminHelpRequest(deviceID: deviceID)
 
-        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, _, completion in
             if method == .put && path.contains("/auth/v4/devices/\(deviceID)/admin") {
                 completion(nil, .success(res.toSuccessfulResponse))
             } else {
@@ -317,7 +317,7 @@ final class AuthDeviceRequestTests: XCTestCase, JSONMockLoader {
 
         let sut = UnprivatizationInfoRequest()
 
-        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, _, completion in
             if method == .get && path.contains("/core/v4/members/me/unprivatize") {
                 completion(nil, .success(res.toSuccessfulResponse))
             } else {

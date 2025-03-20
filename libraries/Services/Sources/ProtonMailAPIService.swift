@@ -135,7 +135,7 @@ extension Either: APIResponse where Left == JSONDictionary, Right == ResponseErr
     }
 }
 
-public class PMAPIService: APIService {
+public class PMAPIService: APIService {    
     typealias ResponseFromSession<T> = Either<Result<JSONDictionary, SessionResponseError>, Result<T, SessionResponseError>> where T: SessionDecodableResponse
     typealias ResponseInPMAPIService<T> = Either<Result<JSONDictionary, API.APIError>, Result<T, API.APIError>> where T: APIDecodableResponse
     typealias APIResponseCompletion<T> = Either<JSONCompletion, DecodableCompletion<T>> where T: APIDecodableResponse
@@ -348,13 +348,16 @@ public class PMAPIService: APIService {
         self.sessionUID = uid
     }
 
-    func transformJSONCompletion(_ jsonCompletion: @escaping JSONCompletion) -> JSONCompletion {
+    func transformJSONCompletion(
+        successStatusCode: SuccessStatusCode,
+        jsonCompletion: @escaping JSONCompletion
+    ) -> JSONCompletion {
 
         { task, result in
             switch result {
             case .failure: jsonCompletion(task, result)
             case .success(let dict):
-                if let httpResponse = task?.response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                if let httpResponse = task?.response as? HTTPURLResponse, httpResponse.statusCode != successStatusCode.rawValue {
                     let error: NSError
                     if let responseCode = dict["Code"] as? Int {
                         error = NSError(

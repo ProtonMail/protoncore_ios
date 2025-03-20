@@ -60,6 +60,9 @@ public protocol Request: Package {
 
     /// initially using for sending the fingerprint
     var challengeProperties: ChallengeProperties? { get }
+
+    var successStatusCode: SuccessStatusCode { get }
+    var successResponseCodes: [Int] { get }
 }
 
 extension Request {
@@ -97,6 +100,14 @@ extension Request {
 
     public var challengeProperties: ChallengeProperties? {
         return nil
+    }
+
+    public var successStatusCode: SuccessStatusCode {
+        return .ok
+    }
+
+    public var successResponseCodes: [Int] {
+        return [1000, 1001]
     }
 
     /// This function should be used in networking layer or when you are trying to get the full request parameters from endpoints.

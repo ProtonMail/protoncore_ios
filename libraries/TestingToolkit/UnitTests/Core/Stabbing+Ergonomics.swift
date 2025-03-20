@@ -33,8 +33,9 @@ public protocol Stabbing {
     associatedtype A10
     associatedtype A11
     associatedtype A12
+    associatedtype A13
     var callCounter: UInt { get }
-    var capturedArguments: [CapturedArguments<Input, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12>] { get }
+    var capturedArguments: [CapturedArguments<Input, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13>] { get }
 }
 
 extension StubbedFunction: Stabbing {}
@@ -49,9 +50,9 @@ extension Stabbing {
 
     public var wasCalledExactlyOnce: Bool { callCounter == 1 }
 
-    public var lastArguments: CapturedArguments<Input, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12>? { capturedArguments.last }
+    public var lastArguments: CapturedArguments<Input, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13>? { capturedArguments.last }
 
-    public func arguments(forCallCounter: UInt) -> CapturedArguments<Input, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12>? {
+    public func arguments(forCallCounter: UInt) -> CapturedArguments<Input, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13>? {
         let argumentsIndex = Int(forCallCounter) - 1
         return capturedArguments.indices.contains(argumentsIndex) ? capturedArguments[argumentsIndex] : nil
     }

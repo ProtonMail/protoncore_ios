@@ -516,7 +516,7 @@ class SignupServiceTests: XCTestCase {
         let apiService = APIServiceMock()
         let service = SignupService(api: apiService, clientApp: .mail)
 
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/core/v4/validate/email") {
                 completion(nil, .success(["Code": 1000]))
             } else {
@@ -544,7 +544,7 @@ class SignupServiceTests: XCTestCase {
     func testValidEmailInvalidInput() {
         let apiService = APIServiceMock()
         let service = SignupService(api: apiService, clientApp: .mail)
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/core/v4/validate/email") {
                 let error = """
                     {
@@ -589,7 +589,7 @@ class SignupServiceTests: XCTestCase {
         let apiService = APIServiceMock()
         let service = SignupService(api: apiService, clientApp: .mail)
 
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/core/v4/validate/phone") {
                 completion(nil, .success(["Code": 1000]))
             } else {
@@ -617,7 +617,7 @@ class SignupServiceTests: XCTestCase {
     func testValidPhoneNumberInvalidInput() {
         let apiService = APIServiceMock()
         let service = SignupService(api: apiService, clientApp: .mail)
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/core/v4/validate/phone") {
                 let error = """
                     {

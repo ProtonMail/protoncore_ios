@@ -38,7 +38,7 @@ public final class PropertyStub<Property> {
 public final class StubbedProperty<Property> {
 
     public typealias SetCapturedArguments = CapturedArguments<Property, Property, Absent, Absent, Absent, Absent, Absent,
-                                                              Absent, Absent, Absent, Absent, Absent, Absent>
+                                                              Absent, Absent, Absent, Absent, Absent, Absent, Absent>
 
     @FuncStub(StubbedProperty<Property>.get, initialReturn: .crash) var getStub
     func `get`() -> Property { getStub() }

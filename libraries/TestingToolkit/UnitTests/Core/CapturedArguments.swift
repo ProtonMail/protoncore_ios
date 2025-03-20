@@ -21,7 +21,7 @@
 
 import Foundation
 
-public struct CapturedArguments<Input, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12> {
+public struct CapturedArguments<Input, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13> {
 
     private let argument1: A1
     private let argument2: A2
@@ -35,8 +35,9 @@ public struct CapturedArguments<Input, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, 
     private let argument10: A10
     private let argument11: A11
     private let argument12: A12
+    private let argument13: A13
 
-    private init(a1: A1, a2: A2, a3: A3, a4: A4, a5: A5, a6: A6, a7: A7, a8: A8, a9: A9, a10: A10, a11: A11, a12: A12) {
+    private init(a1: A1, a2: A2, a3: A3, a4: A4, a5: A5, a6: A6, a7: A7, a8: A8, a9: A9, a10: A10, a11: A11, a12: A12, a13: A13) {
         self.argument1 = a1
         self.argument2 = a2
         self.argument3 = a3
@@ -49,26 +50,27 @@ public struct CapturedArguments<Input, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, 
         self.argument10 = a10
         self.argument11 = a11
         self.argument12 = a12
+        self.argument13 = a13
     }
 }
 
 extension CapturedArguments: Equatable where A1: Equatable, A2: Equatable, A3: Equatable, A4: Equatable, A5: Equatable, A6: Equatable,
-                                             A7: Equatable, A8: Equatable, A9: Equatable, A10: Equatable, A11: Equatable, A12: Equatable {}
+                                             A7: Equatable, A8: Equatable, A9: Equatable, A10: Equatable, A11: Equatable, A12: Equatable, A13: Equatable {}
 
 extension CapturedArguments: Codable where A1: Codable, A2: Codable, A3: Codable, A4: Codable, A5: Codable, A6: Codable,
-                                           A7: Codable, A8: Codable, A9: Codable, A10: Codable, A11: Codable, A12: Codable {}
+                                           A7: Codable, A8: Codable, A9: Codable, A10: Codable, A11: Codable, A12: Codable, A13: Codable {}
 
 extension CapturedArguments where Input == Void, A1 == Absent, A2 == Absent, A3 == Absent, A4 == Absent, A5 == Absent, A6 == Absent, A7 == Absent,
-                                  A8 == Absent, A9 == Absent, A10 == Absent, A11 == Absent, A12 == Absent {
+                                  A8 == Absent, A9 == Absent, A10 == Absent, A11 == Absent, A12 == Absent, A13 == Absent {
 
     init(input _: Input) {
         self.init(a1: .nothing, a2: .nothing, a3: .nothing, a4: .nothing, a5: .nothing, a6: .nothing,
-                  a7: .nothing, a8: .nothing, a9: .nothing, a10: .nothing, a11: .nothing, a12: .nothing)
+                  a7: .nothing, a8: .nothing, a9: .nothing, a10: .nothing, a11: .nothing, a12: .nothing, a13: .nothing)
     }
 }
 
 extension CapturedArguments where Input == A1, A2 == Absent, A3 == Absent, A4 == Absent, A5 == Absent, A6 == Absent, A7 == Absent,
-                                  A8 == Absent, A9 == Absent, A10 == Absent, A11 == Absent, A12 == Absent {
+                                  A8 == Absent, A9 == Absent, A10 == Absent, A11 == Absent, A12 == Absent, A13 == Absent {
 
     public var a1: A1 { argument1 }
 
@@ -76,12 +78,12 @@ extension CapturedArguments where Input == A1, A2 == Absent, A3 == Absent, A4 ==
 
     init(input: Input) {
         self.init(a1: input, a2: .nothing, a3: .nothing, a4: .nothing, a5: .nothing, a6: .nothing,
-                  a7: .nothing, a8: .nothing, a9: .nothing, a10: .nothing, a11: .nothing, a12: .nothing)
+                  a7: .nothing, a8: .nothing, a9: .nothing, a10: .nothing, a11: .nothing, a12: .nothing, a13: .nothing)
     }
 }
 
 extension CapturedArguments where Input == (A1, A2), A3 == Absent, A4 == Absent, A5 == Absent, A6 == Absent, A7 == Absent,
-                                  A8 == Absent, A9 == Absent, A10 == Absent, A11 == Absent, A12 == Absent {
+                                  A8 == Absent, A9 == Absent, A10 == Absent, A11 == Absent, A12 == Absent, A13 == Absent {
 
     public var a1: A1 { argument1 }
     public var a2: A2 { argument2 }
@@ -91,12 +93,12 @@ extension CapturedArguments where Input == (A1, A2), A3 == Absent, A4 == Absent,
 
     init(input: Input) {
         self.init(a1: input.0, a2: input.1, a3: .nothing, a4: .nothing, a5: .nothing, a6: .nothing,
-                  a7: .nothing, a8: .nothing, a9: .nothing, a10: .nothing, a11: .nothing, a12: .nothing)
+                  a7: .nothing, a8: .nothing, a9: .nothing, a10: .nothing, a11: .nothing, a12: .nothing, a13: .nothing)
     }
 }
 
 extension CapturedArguments where Input == (A1, A2, A3), A4 == Absent, A5 == Absent, A6 == Absent, A7 == Absent,
-                                  A8 == Absent, A9 == Absent, A10 == Absent, A11 == Absent, A12 == Absent {
+                                  A8 == Absent, A9 == Absent, A10 == Absent, A11 == Absent, A12 == Absent, A13 == Absent {
 
     public var a1: A1 { argument1 }
     public var a2: A2 { argument2 }
@@ -108,12 +110,12 @@ extension CapturedArguments where Input == (A1, A2, A3), A4 == Absent, A5 == Abs
 
     init(input: Input) {
         self.init(a1: input.0, a2: input.1, a3: input.2, a4: .nothing, a5: .nothing, a6: .nothing,
-                  a7: .nothing, a8: .nothing, a9: .nothing, a10: .nothing, a11: .nothing, a12: .nothing)
+                  a7: .nothing, a8: .nothing, a9: .nothing, a10: .nothing, a11: .nothing, a12: .nothing, a13: .nothing)
     }
 }
 
 extension CapturedArguments where Input == (A1, A2, A3, A4), A5 == Absent, A6 == Absent, A7 == Absent,
-                                  A8 == Absent, A9 == Absent, A10 == Absent, A11 == Absent, A12 == Absent {
+                                  A8 == Absent, A9 == Absent, A10 == Absent, A11 == Absent, A12 == Absent, A13 == Absent {
 
     public var a1: A1 { argument1 }
     public var a2: A2 { argument2 }
@@ -127,12 +129,12 @@ extension CapturedArguments where Input == (A1, A2, A3, A4), A5 == Absent, A6 ==
 
     init(input: Input) {
         self.init(a1: input.0, a2: input.1, a3: input.2, a4: input.3, a5: .nothing, a6: .nothing,
-                  a7: .nothing, a8: .nothing, a9: .nothing, a10: .nothing, a11: .nothing, a12: .nothing)
+                  a7: .nothing, a8: .nothing, a9: .nothing, a10: .nothing, a11: .nothing, a12: .nothing, a13: .nothing)
     }
 }
 
 extension CapturedArguments where Input == (A1, A2, A3, A4, A5), A6 == Absent, A7 == Absent,
-                                  A8 == Absent, A9 == Absent, A10 == Absent, A11 == Absent, A12 == Absent {
+                                  A8 == Absent, A9 == Absent, A10 == Absent, A11 == Absent, A12 == Absent, A13 == Absent {
 
     public var a1: A1 { argument1 }
     public var a2: A2 { argument2 }
@@ -145,12 +147,12 @@ extension CapturedArguments where Input == (A1, A2, A3, A4, A5), A6 == Absent, A
 
     init(input: Input) {
         self.init(a1: input.0, a2: input.1, a3: input.2, a4: input.3, a5: input.4, a6: .nothing,
-                  a7: .nothing, a8: .nothing, a9: .nothing, a10: .nothing, a11: .nothing, a12: .nothing)
+                  a7: .nothing, a8: .nothing, a9: .nothing, a10: .nothing, a11: .nothing, a12: .nothing, a13: .nothing)
     }
 }
 
 extension CapturedArguments where Input == (A1, A2, A3, A4, A5, A6), A7 == Absent,
-                                  A8 == Absent, A9 == Absent, A10 == Absent, A11 == Absent, A12 == Absent {
+                                  A8 == Absent, A9 == Absent, A10 == Absent, A11 == Absent, A12 == Absent, A13 == Absent {
 
     public var a1: A1 { argument1 }
     public var a2: A2 { argument2 }
@@ -164,12 +166,12 @@ extension CapturedArguments where Input == (A1, A2, A3, A4, A5, A6), A7 == Absen
 
     init(input: Input) {
         self.init(a1: input.0, a2: input.1, a3: input.2, a4: input.3, a5: input.4, a6: input.5,
-                  a7: .nothing, a8: .nothing, a9: .nothing, a10: .nothing, a11: .nothing, a12: .nothing)
+                  a7: .nothing, a8: .nothing, a9: .nothing, a10: .nothing, a11: .nothing, a12: .nothing, a13: .nothing)
     }
 }
 
 extension CapturedArguments where Input == (A1, A2, A3, A4, A5, A6, A7),
-                                  A8 == Absent, A9 == Absent, A10 == Absent, A11 == Absent, A12 == Absent {
+                                  A8 == Absent, A9 == Absent, A10 == Absent, A11 == Absent, A12 == Absent, A13 == Absent {
 
     public var a1: A1 { argument1 }
     public var a2: A2 { argument2 }
@@ -184,11 +186,11 @@ extension CapturedArguments where Input == (A1, A2, A3, A4, A5, A6, A7),
 
     init(input: Input) {
         self.init(a1: input.0, a2: input.1, a3: input.2, a4: input.3, a5: input.4, a6: input.5,
-                  a7: input.6, a8: .nothing, a9: .nothing, a10: .nothing, a11: .nothing, a12: .nothing)
+                  a7: input.6, a8: .nothing, a9: .nothing, a10: .nothing, a11: .nothing, a12: .nothing, a13: .nothing)
     }
 }
 
-extension CapturedArguments where Input == (A1, A2, A3, A4, A5, A6, A7, A8), A9 == Absent, A10 == Absent, A11 == Absent, A12 == Absent {
+extension CapturedArguments where Input == (A1, A2, A3, A4, A5, A6, A7, A8), A9 == Absent, A10 == Absent, A11 == Absent, A12 == Absent, A13 == Absent {
 
     public var a1: A1 { argument1 }
     public var a2: A2 { argument2 }
@@ -204,11 +206,11 @@ extension CapturedArguments where Input == (A1, A2, A3, A4, A5, A6, A7, A8), A9 
 
     init(input: Input) {
         self.init(a1: input.0, a2: input.1, a3: input.2, a4: input.3, a5: input.4, a6: input.5,
-                  a7: input.6, a8: input.7, a9: .nothing, a10: .nothing, a11: .nothing, a12: .nothing)
+                  a7: input.6, a8: input.7, a9: .nothing, a10: .nothing, a11: .nothing, a12: .nothing, a13: .nothing)
     }
 }
 
-extension CapturedArguments where Input == (A1, A2, A3, A4, A5, A6, A7, A8, A9), A10 == Absent, A11 == Absent, A12 == Absent {
+extension CapturedArguments where Input == (A1, A2, A3, A4, A5, A6, A7, A8, A9), A10 == Absent, A11 == Absent, A12 == Absent, A13 == Absent {
 
     public var a1: A1 { argument1 }
     public var a2: A2 { argument2 }
@@ -225,11 +227,11 @@ extension CapturedArguments where Input == (A1, A2, A3, A4, A5, A6, A7, A8, A9),
 
     init(input: Input) {
         self.init(a1: input.0, a2: input.1, a3: input.2, a4: input.3, a5: input.4, a6: input.5,
-                  a7: input.6, a8: input.7, a9: input.8, a10: .nothing, a11: .nothing, a12: .nothing)
+                  a7: input.6, a8: input.7, a9: input.8, a10: .nothing, a11: .nothing, a12: .nothing, a13: .nothing)
     }
 }
 
-extension CapturedArguments where Input == (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10), A11 == Absent, A12 == Absent {
+extension CapturedArguments where Input == (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10), A11 == Absent, A12 == Absent, A13 == Absent {
 
     public var a1: A1 { argument1 }
     public var a2: A2 { argument2 }
@@ -247,11 +249,11 @@ extension CapturedArguments where Input == (A1, A2, A3, A4, A5, A6, A7, A8, A9, 
 
     init(input: Input) {
         self.init(a1: input.0, a2: input.1, a3: input.2, a4: input.3, a5: input.4, a6: input.5,
-                  a7: input.6, a8: input.7, a9: input.8, a10: input.9, a11: .nothing, a12: .nothing)
+                  a7: input.6, a8: input.7, a9: input.8, a10: input.9, a11: .nothing, a12: .nothing, a13: .nothing)
     }
 }
 
-extension CapturedArguments where Input == (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11), A12 == Absent {
+extension CapturedArguments where Input == (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11), A12 == Absent, A13 == Absent {
 
     public var a1: A1 { argument1 }
     public var a2: A2 { argument2 }
@@ -270,11 +272,11 @@ extension CapturedArguments where Input == (A1, A2, A3, A4, A5, A6, A7, A8, A9, 
 
     init(input: Input) {
         self.init(a1: input.0, a2: input.1, a3: input.2, a4: input.3, a5: input.4, a6: input.5,
-                  a7: input.6, a8: input.7, a9: input.8, a10: input.9, a11: input.10, a12: .nothing)
+                  a7: input.6, a8: input.7, a9: input.8, a10: input.9, a11: input.10, a12: .nothing, a13: .nothing)
     }
 }
 
-extension CapturedArguments where Input == (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12) {
+extension CapturedArguments where Input == (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12), A13 == Absent {
 
     public var a1: A1 { argument1 }
     public var a2: A2 { argument2 }
@@ -294,6 +296,31 @@ extension CapturedArguments where Input == (A1, A2, A3, A4, A5, A6, A7, A8, A9, 
 
     init(input: Input) {
         self.init(a1: input.0, a2: input.1, a3: input.2, a4: input.3, a5: input.4, a6: input.5,
-                  a7: input.6, a8: input.7, a9: input.8, a10: input.9, a11: input.10, a12: input.11)
+                  a7: input.6, a8: input.7, a9: input.8, a10: input.9, a11: input.10, a12: input.11, a13: .nothing)
+    }
+}
+
+extension CapturedArguments where Input == (A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13) {
+
+    public var a1: A1 { argument1 }
+    public var a2: A2 { argument2 }
+    public var a3: A3 { argument3 }
+    public var a4: A4 { argument4 }
+    public var a5: A5 { argument5 }
+    public var a6: A6 { argument6 }
+    public var a7: A7 { argument7 }
+    public var a8: A8 { argument8 }
+    public var a9: A9 { argument9 }
+    public var a10: A10 { argument10 }
+    public var a11: A11 { argument11 }
+    public var a12: A12 { argument12 }
+    public var a13: A13 { argument13 }
+
+    public var first: A1 { a1 }
+    public var last: A13 { a13 }
+
+    init(input: Input) {
+        self.init(a1: input.0, a2: input.1, a3: input.2, a4: input.3, a5: input.4, a6: input.5,
+                  a7: input.6, a8: input.7, a9: input.8, a10: input.9, a11: input.10, a12: input.11, a13: input.12)
     }
 }

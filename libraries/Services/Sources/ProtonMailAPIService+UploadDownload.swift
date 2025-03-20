@@ -43,12 +43,13 @@ extension PMAPIService {
                        customAuthCredential: AuthCredential?,
                        nonDefaultTimeout: TimeInterval?,
                        retryPolicy: ProtonRetryPolicy.RetryMode,
+                       successStatusCode: SuccessStatusCode = .ok,
                        uploadProgress: ProgressCompletion?,
                        jsonCompletion: @escaping JSONCompletion) {
         let jsonOperationAndCompletion: JSONOperationAndCompletion = (
             { request, operationCompletion in
                 self.session.upload(with: request, keyPacket: keyPackets, dataPacket: dataPacket, signature: signature, completion: operationCompletion, uploadProgress: uploadProgress)
-            }, transformJSONCompletion(jsonCompletion)
+            }, transformJSONCompletion(successStatusCode: successStatusCode, jsonCompletion: jsonCompletion)
         )
         performUploadOperation(path: path,
                                parameters: parameters,
@@ -95,13 +96,14 @@ extension PMAPIService {
                        customAuthCredential: AuthCredential?,
                        nonDefaultTimeout: TimeInterval?,
                        retryPolicy: ProtonRetryPolicy.RetryMode,
+                       successStatusCode: SuccessStatusCode = .ok,
                        uploadProgress: ProgressCompletion?,
                        jsonCompletion: @escaping JSONCompletion) {
 
         let jsonOperationAndCompletion: JSONOperationAndCompletion = (
             { request, operationCompletion in
                 self.session.upload(with: request, files: files, completion: operationCompletion, uploadProgress: uploadProgress)
-            }, transformJSONCompletion(jsonCompletion)
+            }, transformJSONCompletion(successStatusCode: successStatusCode, jsonCompletion: jsonCompletion)
         )
         performUploadOperation(path: path,
                                parameters: parameters,
@@ -148,6 +150,7 @@ extension PMAPIService {
                                customAuthCredential: AuthCredential?,
                                nonDefaultTimeout: TimeInterval?,
                                retryPolicy: ProtonRetryPolicy.RetryMode,
+                               successStatusCode: SuccessStatusCode = .ok,
                                uploadProgress: ProgressCompletion?,
                                jsonCompletion: @escaping JSONCompletion) {
 
@@ -156,7 +159,7 @@ extension PMAPIService {
                 self.session.uploadFromFile(
                     with: request, keyPacket: keyPackets, dataPacketSourceFileURL: dataPacketSourceFileURL, signature: signature, completion: operationCompletion, uploadProgress: uploadProgress
                 )
-            }, transformJSONCompletion(jsonCompletion)
+            }, transformJSONCompletion(successStatusCode: successStatusCode, jsonCompletion: jsonCompletion)
         )
 
         performUploadOperation(path: path,
