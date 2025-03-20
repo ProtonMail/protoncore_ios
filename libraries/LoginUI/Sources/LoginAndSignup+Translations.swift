@@ -210,6 +210,7 @@ public enum LUITranslation: TranslationsExposing {
     case sign_in_with_qr_code_warning_one
     case sign_in_with_qr_code_warning_two
     case scan_qr_code_title
+    case authenticate_to_scan_qr_description
 
     public var l10n: String {
         switch self {
@@ -580,6 +581,8 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Proton will never ask you to scan a QR code that does not come from the domain **proton.me**.", comment: "Proton will never ask you to scan a QR code that does not come from the domain **proton.me**.")
         case .scan_qr_code_title:
             return localized(key: "Scan QR code", comment: "Scan QR code")
+        case .authenticate_to_scan_qr_description:
+            return localized(key: "Authenticate to access the QR code scanner", comment: "Authenticate to access the QR code scanner")
         }
     }
 }
