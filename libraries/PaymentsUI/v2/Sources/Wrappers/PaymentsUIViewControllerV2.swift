@@ -32,33 +32,34 @@ public final class PaymentsUIViewControllerV2: UIViewController {
     @Published private var viewState: AvailablePlansViewModel.State = .idle
     public private(set) var transactionProgress = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
 
+    private let sessionId: String
+    private let token: String
+    private let appVersion: String
+    private let doh: DoHInterface & ServerConfig
+    private let presentationMode: PresentationMode
+    private let hideCurrentPlan: Bool
+
     public init(sessionId: String,
                 token: String,
                 appVersion: String,
                 doh: DoHInterface & ServerConfig,
                 presentationMode: PresentationMode = .none,
                 hideCurrentPlan: Bool = false) {
-        super.init(nibName: nil, bundle: nil)
+        self.sessionId = sessionId
+        self.token = token
+        self.appVersion = appVersion
+        self.doh = doh
+        self.presentationMode = presentationMode
+        self.hideCurrentPlan = hideCurrentPlan
 
-        setupView(sessionId: sessionId,
-                  token: token,
-                  appVersion: appVersion,
-                  doh: doh,
-                  presentationMode: presentationMode,
-                  hideCurrentPlan: hideCurrentPlan)
+        super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupView(sessionId: String,
-                           token: String,
-                           appVersion: String,
-                           doh: DoHInterface & ServerConfig,
-                           presentationMode: PresentationMode,
-                           hideCurrentPlan: Bool = false) {
-
+    private func setupView() {
         let viewModel = AvailablePlansViewModel(sessionId: sessionId,
                                                 token: token,
                                                 doh: doh,
@@ -87,6 +88,7 @@ public final class PaymentsUIViewControllerV2: UIViewController {
         super.viewWillAppear(animated)
         debugPrint("viewControllerWillAppear called with value: \(viewWillAppear)")
         viewWillAppear = false
+        setupView()
     }
 
     private func customNavBarButton() -> UIButton {
