@@ -359,3 +359,19 @@
 "Tap Scan QR code" = "Tocca Scansiona il codice QR.";
 
 "Scan this code with your phone camera to sign in instantly." = "Scansiona questo codice con la fotocamera del tuo telefono per accedere immediatamente.";
+
+"Sign in to another device" = "Accedi a un altro dispositivo";
+
+"Sign in with your QR code" = "Esegui l'accesso con un codice QR";
+
+"Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Utilizza questo dispositivo per scansionare il codice QR mostrato sul dispositivo in cui vuoi fare accesso. Tutti e due i dispositivi rimarranno attivi.";
+
+"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "Per accedere al codice QR, tocca sul tasto **Accedi con codice QR** sulla schermata di accesso.";
+
+"Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust." = "Fai attenzione a messaggi contenenti codici QR. Non scansionare mai un codice QR da un sito web o una persona di cui non ti fidi.";
+
+"Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Proton non ti chiederà mai di scansionare un codice QR che non proviene dal dominio **proton.me**.";
+
+"Scan QR code" = "Scansiona il codice QR";
+
+"Authenticate to access the QR code scanner" = "Autenticarsi per accedere allo scanner di codici QR";

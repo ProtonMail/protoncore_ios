@@ -73,13 +73,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d emailová adresa / používateľa</string>
+        <string>%d emailová adresa/používateľ</string>
         <key>few</key>
-        <string>%d emailové adresy / používateľa</string>
+        <string>%d emailové adresy/používateľ</string>
         <key>many</key>
-        <string>%d emailových adries / používateľ</string>
+        <string>%d emailových adries/používateľ</string>
         <key>other</key>
-        <string>%d emailových adries / používateľa</string>
+        <string>%d emailových adries/používateľa</string>
       </dict>
     </dict>
     <key>&lt;n&gt; calendars</key>
@@ -113,13 +113,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d priečinok / štítok</string>
+        <string>%d priečinok/štítok</string>
         <key>few</key>
-        <string>%d priečinky / štítky</string>
+        <string>%d priečinky/štítky</string>
         <key>many</key>
-        <string>%d priečinkov / štítkov</string>
+        <string>%d priečinkov/štítkov</string>
         <key>other</key>
-        <string>%d priečinkov / štítkov</string>
+        <string>%d priečinkov/štítkov</string>
       </dict>
     </dict>
     <key>&lt;n&gt; countries</key>

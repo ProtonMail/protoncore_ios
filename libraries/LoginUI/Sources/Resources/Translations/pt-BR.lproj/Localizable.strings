@@ -356,6 +356,22 @@
 
 "Tap into Settings, then tap Sign in to another device" = "Toque em Configurações, então toque em Iniciar sessão com um código Qr";
 
-"Tap Scan QR code" = "Toque em escanear QR code";
+"Tap Scan QR code" = "Toque em Digitalizar o código QR";
 
-"Scan this code with your phone camera to sign in instantly." = "Escaneei esse código com seu celular para iniciar sessão instantaneamente.";
+"Scan this code with your phone camera to sign in instantly." = "Digitalize esse código com seu celular para iniciar sessão instantaneamente.";
+
+"Sign in to another device" = "Iniciar sessão em outro dispositivo";
+
+"Sign in with your QR code" = "Iniciar sessão com seu código QR";
+
+"Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Use este dispositivo para digitalizar o código QR exibido no dispositivo em que você deseja iniciar sessão. Ambos os dispositivos permanecerão ativos.";
+
+"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "Para acessar o código QR, toque no botão **Iniciar sessão com um código QR** na tela de inicio de sessão.";
+
+"Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust." = "Cuidado com mensagens que contenham um código QR. Nunca digitalize um código QR de um site ou de uma pessoa em quem você não confia.";
+
+"Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "A Proton nunca solicitará que você digitalize um código QR que não venha do domínio **proton.me**.";
+
+"Scan QR code" = "Digitalizar o código QR";
+
+"Authenticate to access the QR code scanner" = "Autentique-se para acessar o leitor de código QR";

@@ -13,11 +13,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Aliasuri de e-mail: %d</string>
+        <string>%d alias de e-mail</string>
         <key>few</key>
-        <string>Aliasuri de e-mail: %d</string>
+        <string>%d aliasuri de e-mail</string>
         <key>other</key>
-        <string>Aliasuri de e-mail: %d</string>
+        <string>%d de aliasuri de e-mail</string>
       </dict>
     </dict>
     <key>&lt;n&gt; users</key>
@@ -31,11 +31,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Utilizatori: %d</string>
+        <string>%d utilizator</string>
         <key>few</key>
-        <string>Utilizatori: %d</string>
+        <string>%d utilizatori</string>
         <key>other</key>
-        <string>Utilizatori: %d</string>
+        <string>%d de utilizatori</string>
       </dict>
     </dict>
     <key>&lt;n&gt; email addresses</key>
@@ -49,11 +49,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Adrese de e-mail: %d</string>
+        <string>%d adresă de e-mail</string>
         <key>few</key>
-        <string>Adrese de e-mail: %d</string>
+        <string>%d adrese de e-mail</string>
         <key>other</key>
-        <string>Adrese de e-mail: %d</string>
+        <string>%d de adrese de e-mail</string>
       </dict>
     </dict>
     <key>&lt;n&gt; email addresses / user</key>
@@ -67,11 +67,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Adrese de e-mail/utilizator: %d</string>
+        <string>%d adresă de e-mail per utilizator</string>
         <key>few</key>
-        <string>Adrese de e-mail/utilizator: %d</string>
+        <string>%d adrese de e-mail per utilizator</string>
         <key>other</key>
-        <string>Adrese de e-mail/utilizator: %d</string>
+        <string>%d de adrese de e-mail per utilizator</string>
       </dict>
     </dict>
     <key>&lt;n&gt; calendars</key>
@@ -85,11 +85,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Calendare: %d</string>
+        <string>%d calendar</string>
         <key>few</key>
-        <string>Calendare: %d</string>
+        <string>%d calendare</string>
         <key>other</key>
-        <string>Calendare: %d</string>
+        <string>%d de calendare</string>
       </dict>
     </dict>
     <key>&lt;n&gt; folders / labels</key>
@@ -103,11 +103,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Foldere/etichete: %d</string>
+        <string>%d folder/etichetă</string>
         <key>few</key>
-        <string>Foldere/etichete: %d</string>
+        <string>%d foldere/etichete</string>
         <key>other</key>
-        <string>Foldere/etichete: %d</string>
+        <string>%d de foldere/etichete</string>
       </dict>
     </dict>
     <key>&lt;n&gt; countries</key>
@@ -121,11 +121,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Țări: %d</string>
+        <string>%d țară</string>
         <key>few</key>
-        <string>Țări: %d</string>
+        <string>%d țări</string>
         <key>other</key>
-        <string>Țări: %d</string>
+        <string>%d de țări</string>
       </dict>
     </dict>
     <key>&lt;n&gt; connections</key>
@@ -139,11 +139,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Conexiuni: %d</string>
+        <string>%d conexiune</string>
         <key>few</key>
-        <string>Conexiuni: %d</string>
+        <string>%d conexiuni</string>
         <key>other</key>
-        <string>Conexiuni: %d</string>
+        <string>%d de conexiuni</string>
       </dict>
     </dict>
     <key>&lt;n&gt; VPN connections</key>
@@ -157,11 +157,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Conexiuni VPN: %d</string>
+        <string>%d conexiune VPN</string>
         <key>few</key>
-        <string>Conexiuni VPN: %d</string>
+        <string>%d conexiuni VPN</string>
         <key>other</key>
-        <string>Conexiuni VPN: %d</string>
+        <string>%d de conexiuni VPN</string>
       </dict>
     </dict>
     <key>&lt;n&gt; high-speed VPN connections</key>
@@ -175,11 +175,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Conexiuni VPN de mare viteză: %d</string>
+        <string>%d conexiune VPN de mare viteză</string>
         <key>few</key>
-        <string>Conexiuni VPN de mare viteză: %d</string>
+        <string>%d conexiuni VPN de mare viteză</string>
         <key>other</key>
-        <string>Conexiuni VPN de mare viteză: %d</string>
+        <string>%d de conexiuni VPN de mare viteză</string>
       </dict>
     </dict>
     <key>&lt;n&gt; custom domains</key>
@@ -193,11 +193,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Domenii personale: %d</string>
+        <string>%d domeniu personal</string>
         <key>few</key>
-        <string>Domenii personale: %d</string>
+        <string>%d domenii personale</string>
         <key>other</key>
-        <string>Domenii personale: %d</string>
+        <string>%d de domenii personale</string>
       </dict>
     </dict>
     <key>&lt;n&gt; vaults</key>
@@ -211,11 +211,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Seifuri: %d</string>
+        <string>%d seif</string>
         <key>few</key>
-        <string>Seifuri: %d</string>
+        <string>%d seifuri</string>
         <key>other</key>
-        <string>Seifuri: %d</string>
+        <string>%d de seifuri</string>
       </dict>
     </dict>
     <key>Support for &lt;n&gt; custom email domains</key>
@@ -229,11 +229,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Domenii de e-mail personale: %d</string>
+        <string>Suport pentru %d domeniu de e-mail personal</string>
         <key>few</key>
-        <string>Domenii de e-mail personale: %d</string>
+        <string>Suport pentru %d domenii de e-mail personale</string>
         <key>other</key>
-        <string>Domenii de e-mail personale: %d</string>
+        <string>Suport pentru %d de domenii de e-mail personale</string>
       </dict>
     </dict>
     <key>&lt;n&gt; folders and labels</key>
@@ -247,11 +247,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Foldere și etichete: %d</string>
+        <string>%d folder și etichetă</string>
         <key>few</key>
-        <string>Foldere și etichete: %d</string>
+        <string>%d foldere și etichete</string>
         <key>other</key>
-        <string>Foldere și etichete: %d</string>
+        <string>%d de foldere și etichete</string>
       </dict>
     </dict>
     <key>High-speed VPN on &lt;n&gt; devices</key>
@@ -438,11 +438,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Adrese per utilizator: %d</string>
+        <string>%d adresă per utilizator</string>
         <key>few</key>
-        <string>Adrese per utilizator: %d</string>
+        <string>%d adrese per utilizator</string>
         <key>other</key>
-        <string>Adrese per utilizator: %d</string>
+        <string>%d de adrese per utilizator</string>
       </dict>
     </dict>
     <key>&lt;n&gt; calendars per user</key>
@@ -456,11 +456,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Calendare per utilizator: %d</string>
+        <string>%d calendar per utilizator</string>
         <key>few</key>
-        <string>Calendare per utilizator: %d</string>
+        <string>%d calendare per utilizator</string>
         <key>other</key>
-        <string>Calendare per utilizator: %d</string>
+        <string>%d de calendare per utilizator</string>
       </dict>
     </dict>
     <key>&lt;n&gt; VPN connections per user</key>
@@ -474,11 +474,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Conexiuni VPN per utilizator: %d</string>
+        <string>%d conexiune VPN per utilizator</string>
         <key>few</key>
-        <string>Conexiuni VPN per utilizator: %d</string>
+        <string>%d conexiuni VPN per utilizator</string>
         <key>other</key>
-        <string>Conexiuni VPN per utilizator: %d</string>
+        <string>%d de conexiuni VPN per utilizator</string>
       </dict>
     </dict>
     <key>Pay for &lt;n&gt; months</key>
@@ -510,11 +510,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Conexiuni VPN cu viteză medie: %d</string>
+        <string>%d conexiune VPN cu viteză medie</string>
         <key>few</key>
-        <string>Conexiuni VPN cu viteză medie: %d</string>
+        <string>%d conexiuni VPN cu viteză medie</string>
         <key>other</key>
-        <string>Conexiuni VPN cu viteză medie: %d</string>
+        <string>%d de conexiuni VPN cu viteză medie</string>
       </dict>
     </dict>
     <key>Up to &lt;n&gt; forwarding mailboxes</key>
@@ -528,11 +528,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>Adrese de redirecționare: %d</string>
+        <string>Maxim %d adresă de redirecționare</string>
         <key>few</key>
-        <string>Adrese de redirecționare: %d</string>
+        <string>Până la %d adrese pentru redirecționare</string>
         <key>other</key>
-        <string>Adrese de redirecționare: %d</string>
+        <string>Până la %d de adrese pentru redirecționare</string>
       </dict>
     </dict>
   </dict>

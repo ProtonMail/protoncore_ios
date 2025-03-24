@@ -359,3 +359,19 @@
 "Tap Scan QR code" = "Koppintson a QR-kód beolvasása gombra";
 
 "Scan this code with your phone camera to sign in instantly." = "Az azonnali bejelentkezéshez szkennelje be ezt a kódot a telefon kamerájával.";
+
+"Sign in to another device" = "Jelentkezzen be egy másik eszközre";
+
+"Sign in with your QR code" = "Jelentkezzen be QR-kóddal";
+
+"Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Ezzel az eszközzel beolvassa a bejelentkezni kívánt eszközön megjelenő QR-kódot. Mindkét eszköz aktív marad.";
+
+"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "A QR-kód eléréséhez koppintson a bejelentkezési képernyőn a **Bejelentkezés QR-kóddal** gombra.";
+
+"Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust." = "Vigyázzon a QR-kódot tartalmazó üzenetekkel. Soha ne olvasson be olyan weboldalról vagy személytől származó QR-kódot, akiben nem bízik.";
+
+"Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "A Proton soha nem fogja kérni, hogy olyan QR-kódot olvasson be, amely nem a **proton.me** domainről származik.";
+
+"Scan QR code" = "QR-kód beolvasása";
+
+"Authenticate to access the QR code scanner" = "Hitelesítés a QR-kód olvasó eléréséhez";

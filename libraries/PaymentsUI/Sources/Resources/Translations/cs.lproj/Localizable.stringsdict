@@ -73,13 +73,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d e-mailová adresa / uživatele</string>
+        <string>%d e-mailová adresa / uživatel</string>
         <key>few</key>
-        <string>%d e-mailové adresy / uživatele</string>
+        <string>%d e-mailové adresy / uživatel</string>
         <key>many</key>
-        <string>%d e-mailových adres / uživatele</string>
+        <string>%d e-mailových adres / uživatel</string>
         <key>other</key>
-        <string>%d e-mailových adres / uživatele</string>
+        <string>%d e-mailových adres / uživatel</string>
       </dict>
     </dict>
     <key>&lt;n&gt; calendars</key>
@@ -367,9 +367,9 @@
         <key>few</key>
         <string>%d zemích (US, NL, JP)</string>
         <key>many</key>
-        <string>%d zemích (US, NL, JP)</string>
+        <string>%d zemí (US, NL, JP)</string>
         <key>other</key>
-        <string>%d zemích (US, NL, JP)</string>
+        <string>%d zemí (US, NL, JP)</string>
       </dict>
     </dict>
     <key>&lt;n&gt; of &lt;m&gt; users</key>
