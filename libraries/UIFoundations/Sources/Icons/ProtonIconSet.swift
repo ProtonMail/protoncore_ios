@@ -164,6 +164,8 @@ public struct ProtonIconSet {
 
     public let chartLine = ProtonIcon(name: "ic-chart-line")
 
+    public let checkmarkBig = ProtonIcon(name: "ic-check-big")
+
     public let checkmarkCircleFilled = ProtonIcon(name: "ic-checkmark-circle-filled")
 
     public let checkmarkCircle = ProtonIcon(name: "ic-checkmark-circle")
@@ -223,6 +225,10 @@ public struct ProtonIconSet {
     public let crossSmall = ProtonIcon(name: "ic-cross-small")
 
     public let cross = ProtonIcon(name: "ic-cross")
+
+    public let crossHair = ProtonIcon(name: "ic-crosshair")
+
+    public let crossHairOutline = ProtonIcon(name: "ic-crosshair-outline")
 
     public let drive = ProtonIcon(name: "ic-drive")
 
@@ -473,6 +479,8 @@ public struct ProtonIconSet {
     public let rocket = ProtonIcon(name: "ic-rocket")
 
     public let scanQRCode = ProtonIcon(name: "ic-scan-qr-code")
+
+    public let scanQRCodeWarning = ProtonIcon(name: "ic-scan-qr-warning")
 
     public let servers = ProtonIcon(name: "ic-servers")
 

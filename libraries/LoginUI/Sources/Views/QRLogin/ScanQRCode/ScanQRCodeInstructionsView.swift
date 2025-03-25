@@ -20,6 +20,7 @@
 
 import SwiftUI
 import ProtonCoreUIFoundations
+import UIKit
 
 @MainActor
 public struct ScanQRCodeInstructionsView: View {
@@ -29,6 +30,10 @@ public struct ScanQRCodeInstructionsView: View {
     public init(viewModel: ViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
+
+    // Adding a NavigationStack inside a UINavigationController leads to issues with layout and pushing views to the NavigationStack
+    // So instead of adding a NavigationStack we rely on the original UINavigationController
+    @State private var navController: WeakReference<UINavigationController>?
 
     private enum Constants {
         static let cornerRadius: CGFloat = 16
@@ -56,6 +61,18 @@ public struct ScanQRCodeInstructionsView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(ColorProvider.BackgroundNorm))
         .navigationTitle(LUITranslation.sign_in_to_another_device.l10n)
+        .background(
+            NavigationControllerAccessor(callback: { nav in
+                navController = WeakReference(value: nav)
+            })
+        )
+        .onReceive(viewModel.$showQRCodeScanner) { show in
+            if show {
+                let hostingViewController = HidingNavigationBarUIHostingController(rootView: AnyView(ScanQRCodeView()))
+                navController?.value?.pushViewController(hostingViewController, animated: true)
+                viewModel.showQRCodeScanner = false
+            }
+        }
     }
 
     var scanImage: some View {
@@ -113,6 +130,37 @@ public struct ScanQRCodeInstructionsView: View {
                 .multilineTextAlignment(.center)
                 .foregroundStyle(ColorProvider.TextWeak)
         }
+    }
+}
+
+struct NavigationControllerAccessor: UIViewControllerRepresentable {
+    var callback: (UINavigationController?) -> Void
+
+    func makeUIViewController(context: Context) -> UIViewController {
+        let viewController = UIViewController()
+
+        // Access the UINavigationController once added to a navigation stack
+        Task { @MainActor in
+            self.callback(viewController.navigationController)
+        }
+
+        return viewController
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
+}
+
+class HidingNavigationBarUIHostingController: UIHostingController<AnyView> {
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
+}
+
+class WeakReference<T: AnyObject> {
+    weak var value: T?
+
+    init(value: T?) {
+        self.value = value
     }
 }
 
