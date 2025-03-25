@@ -23,11 +23,12 @@ import ProtonCoreLogin
 import ProtonCoreAuthenticationKeyGeneration
 
 public extension ScanQRCodeInstructionsView {
-
     @MainActor
     final class ViewModel: ObservableObject {
         private var shouldExecuteScanQRButtonPress = true
         private var authWithBiometricsOrPass: AuthenticateWithBiometricsOrPasscode
+
+        @Published var showQRCodeScanner: Bool = false
 
         public init() {
             self.authWithBiometricsOrPass = AuthenticateWithBiometricsOrPasscode(localizedReason: LUITranslation.authenticate_to_scan_qr_description.l10n)
@@ -39,9 +40,12 @@ public extension ScanQRCodeInstructionsView {
             shouldExecuteScanQRButtonPress = false
             Task { @MainActor in
                 switch await authWithBiometricsOrPass.invoke() {
-                   case .success: break
-                   case .failure(let error):
-                      debugPrint(error)
+                case .success:
+                    showQRCodeScanner = true
+                case .failure(let error):
+#if DEBUG
+                    debugPrint(error)
+#endif
                 }
                 shouldExecuteScanQRButtonPress = true
             }

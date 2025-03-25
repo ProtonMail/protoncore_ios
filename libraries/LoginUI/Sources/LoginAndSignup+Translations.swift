@@ -211,6 +211,16 @@ public enum LUITranslation: TranslationsExposing {
     case sign_in_with_qr_code_warning_two
     case scan_qr_code_title
     case authenticate_to_scan_qr_description
+    case scan_qr_code_placing_instructions
+    case verifying
+    case signed_in_other_device
+    case you_are_signed_in
+    case got_it
+    case code_not_recognized
+    case scan_qr_code_tip
+    case camera_access_denied_title
+    case camera_access_go_to_settings_description
+    case go_to_settings
 
     public var l10n: String {
         switch self {
@@ -574,7 +584,7 @@ public enum LUITranslation: TranslationsExposing {
         case .sign_in_with_qr_code_scan_instructions:
             return localized(key: "Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active.", comment: "Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active.")
         case .sign_in_with_qr_code_access_qr_code_instructions:
-            return localized(key: "To access the QR code, tap the **Sign in with QR code button** on the sign-in screen.", comment: "To access the QR code, tap the **Sign in with QR code button** on the sign-in screen.")
+            return localized(key: "To access the QR code, tap the **Sign in with QR code** button on the sign-in screen.", comment: "To access the QR code, tap the **Sign in with QR code** button on the sign-in screen.")
         case .sign_in_with_qr_code_warning_one:
             return localized(key: "Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust.", comment: "Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust.")
         case .sign_in_with_qr_code_warning_two:
@@ -583,6 +593,26 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Scan QR code", comment: "Scan QR code")
         case .authenticate_to_scan_qr_description:
             return localized(key: "Authenticate to access the QR code scanner", comment: "Authenticate to access the QR code scanner")
+        case .scan_qr_code_placing_instructions:
+            return localized(key: "Place QR code within the square", comment: "Place QR code within the square")
+        case .verifying:
+            return localized(key: "Verifying...", comment: "Verifying...")
+        case .signed_in_other_device:
+            return localized(key: "You’re signed in to %@ on the other device.", comment: "You’re signed in to %@ on the other device.")
+        case .you_are_signed_in:
+            return localized(key: "You're signed in", comment: "You're signed in")
+        case .got_it:
+            return localized(key: "Got it", comment: "Got it")
+        case .code_not_recognized:
+            return localized(key: "Code not recognized. Try again.", comment: "Code not recognized. Try again.")
+        case .scan_qr_code_tip:
+            return localized(key: "Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me.", comment: "Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me.")
+        case .camera_access_denied_title:
+            return localized(key: "Camera Access Denied.", comment: "Camera Access Denied.")
+        case .camera_access_go_to_settings_description:
+            return localized(key: "The permission to use the Camera is off. Please enable it from the Settings.", comment: "The permission to use the Camera is off. Please enable it from the Settings.")
+        case .go_to_settings:
+            return localized(key: "Go to Settings", comment: "Go to Settings")
         }
     }
 }
