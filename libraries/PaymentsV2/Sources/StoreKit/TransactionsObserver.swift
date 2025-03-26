@@ -61,18 +61,15 @@ public struct TransactionsObserverConfiguration: Sendable {
     let authToken: String
     let appVersion: String
     let doh: DoHInterface & ServerConfig
-    let atlasSecret: String?
 
     public init(sessionID: String,
                 authToken: String,
                 appVersion: String,
-                doh: DoHInterface & ServerConfig,
-                atlasSecret: String? = nil) {
+                doh: DoHInterface & ServerConfig) {
         self.sessionID = sessionID
         self.authToken = authToken
         self.appVersion = appVersion
         self.doh = doh
-        self.atlasSecret = atlasSecret
     }
 }
 
@@ -150,7 +147,7 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
         self.remoteManager = RemoteManager(sessionID: config.sessionID,
                                            authToken: config.authToken,
                                            appVersion: config.appVersion,
-                                           atlasSecret: config.atlasSecret)
+                                           atlasSecret: config.doh.getProxyToken())
         self.paymentsAPI = PaymentsAPIs(doh: config.doh)
 
         guard let remoteManager = self.remoteManager, let paymentsAPI = self.paymentsAPI else {

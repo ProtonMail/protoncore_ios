@@ -100,7 +100,7 @@ public class AvailablePlansViewModel: ObservableObject {
 
         self.doh = doh
         paymentsAPIs = PaymentsAPIs(doh: doh)
-        remoteManager = RemoteManager(sessionID: sessionId, authToken: token, appVersion: appVersion)
+        remoteManager = RemoteManager(sessionID: sessionId, authToken: token, appVersion: appVersion, atlasSecret: doh.getProxyToken())
         plansComposer = PlansComposer(remoteManager: remoteManager, paymentsAPIs: paymentsAPIs)
         self.hideCurrentPlan = hideCurrentPlan
         self.presentationMode = presentationMode
