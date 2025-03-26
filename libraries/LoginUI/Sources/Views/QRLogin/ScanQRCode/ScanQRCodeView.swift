@@ -42,56 +42,43 @@ fileprivate enum Constants {
 @MainActor
 struct ScanQRCodeView: View {
 
-    @State private var navController: WeakReference<UINavigationController>?
-    @State private var state: ViewState = .scanning
-
-    enum ViewState {
-        case scanning
-        case verifying
-        case success
-        case failure
-        case cameraNotAllowed
-    }
+    @StateObject var viewModel: ViewModel
 
     var body: some View {
         ZStack(alignment: .top) {
-            switch state {
+            switch viewModel.state {
             case .scanning:
-                ScanningView(handleCameraUsePermissionRequestRejection: {
-                    navController?.value?.popToRootViewController(animated: true)
-                }, handleCameraUseNotAllowed: {
-                    Task { @MainActor in
-                        state = .cameraNotAllowed
-                    }
-                })
+                ScanningView(
+                    handleQRCodeString: { qrCode in
+                        viewModel.handleQRCode(qrCode)
+                    },
+                    handleCameraUsePermissionRequestRejection: {
+                        viewModel.handleCameraUsePermissionRequestRejection()
+                    }, handleCameraUseNotAllowed: {
+                        viewModel.handleCameraUseNotAllowed()
+                    })
             case .verifying:
                 VerifyingView()
             case .success:
-                // TODO: Pass in the email
-                SuccessView(email: "tobedone@proton.ch") {
-                    // Pop to root view controller when the button is pressed
-                    navController?.value?.popToRootViewController(animated: true)
+                SuccessView(email: viewModel.email) {
+                    viewModel.handleGotItButtonPressed()
                 }
             case .failure:
                 FailureView() {
-                    // Show the QR scanner when the button is pressed
                     withAnimation {
-                        state = .scanning
+                        viewModel.handleScanQRCodePressed()
                     }
                 }
             case .cameraNotAllowed:
                 CameraNotAllowedView {
-                    // Take the user to the Settings/App
-                    if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
-                        UIApplication.shared.open(url)
-                    }
+                    viewModel.handleGoToSettingsPressed()
                 }
             }
             closeButton
         }
         .background(
             NavigationControllerAccessor(callback: { nav in
-                navController = WeakReference(value: nav)
+                viewModel.navigationController = nav
             })
         )
     }
@@ -106,7 +93,7 @@ struct ScanQRCodeView: View {
     var closeButtonTopLeft: some View {
         HStack(alignment: .center, spacing: Constants.noSpacing) {
             Button(action: {
-                navController?.value?.popViewController(animated: true)
+                viewModel.handleCloseButtonPressed()
             }) {
                 Image(uiImage: IconProvider.cross)
                     .resizable()
@@ -123,6 +110,7 @@ struct ScanQRCodeView: View {
 @MainActor
 private struct ScanningView: View {
 
+    var handleQRCodeString: (String) -> Void
     var handleCameraUsePermissionRequestRejection: () -> Void
     var handleCameraUseNotAllowed: () -> Void
 
@@ -136,9 +124,10 @@ private struct ScanningView: View {
     }
 
     var camera: some View {
-        CameraView(handleCameraUsePermissionRequestRejection: handleCameraUsePermissionRequestRejection,
-                   handleCameraUseNotAllowed: handleCameraUseNotAllowed)
-            .edgesIgnoringSafeArea(.all)
+        QRCodeCameraView(handleQRCodeString:handleQRCodeString,
+                         handleCameraUsePermissionRequestRejection: handleCameraUsePermissionRequestRejection,
+                         handleCameraUseNotAllowed: handleCameraUseNotAllowed)
+        .edgesIgnoringSafeArea(.all)
     }
 
     var maskWithCutout: some View {
