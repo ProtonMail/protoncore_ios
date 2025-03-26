@@ -21,7 +21,9 @@
 import SwiftUI
 import AVFoundation
 
-struct CameraView: UIViewControllerRepresentable {
+struct QRCodeCameraView: UIViewControllerRepresentable {
+
+    var handleQRCodeString: (String) -> Void
 
     /// Handle "Don't Allow" pressed when asked to allow camera use
     var handleCameraUsePermissionRequestRejection: () -> Void
@@ -29,32 +31,45 @@ struct CameraView: UIViewControllerRepresentable {
     var handleCameraUseNotAllowed: () -> Void
 
     func makeUIViewController(context: Context) -> some UIViewController {
-        let controller = CameraViewController()
+        let controller = QRCodeCameraViewController()
         controller.cameraPermissionsDelegate = context.coordinator
+        controller.scannerDelegate = context.coordinator
         return controller
     }
 
     func makeCoordinator() -> Coordinator {
-        Coordinator(requestRejectionHandler: handleCameraUsePermissionRequestRejection, cameraNotAllowedHandler: handleCameraUseNotAllowed)
+        Coordinator(qrCodeHandler: handleQRCodeString, requestRejectionHandler: handleCameraUsePermissionRequestRejection, cameraNotAllowedHandler: handleCameraUseNotAllowed)
     }
 
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
 
-    class Coordinator: NSObject, CameraUsagePermissionsHandler {
+    class Coordinator: NSObject, CameraUsagePermissionsHandler, QRScannerDelegate {
+        var qrCodeHandler: (String) -> Void
         var requestRejectionHandler: () -> Void
         var cameraNotAllowedHandler: () -> Void
 
-        init(requestRejectionHandler: @escaping () -> Void, cameraNotAllowedHandler: @escaping () -> Void) {
+        init(qrCodeHandler: @escaping (String) -> Void, requestRejectionHandler: @escaping () -> Void, cameraNotAllowedHandler: @escaping () -> Void) {
+            self.qrCodeHandler = qrCodeHandler
             self.requestRejectionHandler = requestRejectionHandler
             self.cameraNotAllowedHandler = cameraNotAllowedHandler
         }
 
         func handleCameraUsePermissionRequestRejection() {
-            requestRejectionHandler()
+            Task { @MainActor in
+                requestRejectionHandler()
+            }
         }
 
         func handleCameraUseNotAllowed() {
-            cameraNotAllowedHandler()
+            Task { @MainActor in
+                cameraNotAllowedHandler()
+            }
+        }
+
+        func didDetectQRCode(_ code: String) {
+            Task { @MainActor in
+                qrCodeHandler(code)
+            }
         }
     }
 }
@@ -64,20 +79,26 @@ protocol CameraUsagePermissionsHandler: AnyObject {
     func handleCameraUseNotAllowed() -> Void
 }
 
-class CameraViewController: UIViewController {
+protocol QRScannerDelegate: AnyObject {
+    func didDetectQRCode(_ code: String)
+}
+
+class QRCodeCameraViewController: UIViewController {
+
     var captureSession: AVCaptureSession?
     var previewLayer: AVCaptureVideoPreviewLayer?
 
     weak var cameraPermissionsDelegate: CameraUsagePermissionsHandler?
+    weak var scannerDelegate: QRScannerDelegate?
+
+    // Coordinate session start and stop. Concurrent calls to start and stop session can cause crashes.
+    var sessionQueue = DispatchQueue(label: "qr.session.queue", qos: .userInitiated)
+
+    var allowMoreQRCodeNotifications: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         checkCameraPermissions()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        startSession()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -131,9 +152,21 @@ class CameraViewController: UIViewController {
         do {
             let input = try AVCaptureDeviceInput(device: camera)
 
-            if session.canAddInput(input) {
-                session.addInput(input)
+            guard session.canAddInput(input) else {
+                assertionFailure("Error setting up the camera. Please check the code!")
+                return
             }
+            session.addInput(input)
+
+            let metadataOutput = AVCaptureMetadataOutput()
+            guard session.canAddOutput(metadataOutput) else {
+                assertionFailure("Error setting up the camera. Please check the code!")
+                return
+            }
+
+            session.addOutput(metadataOutput)
+            metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+            metadataOutput.metadataObjectTypes = [.qr]
 
             let preview = AVCaptureVideoPreviewLayer(session: session)
             preview.videoGravity = .resizeAspectFill
@@ -142,27 +175,53 @@ class CameraViewController: UIViewController {
 
             self.previewLayer = preview
             self.captureSession = session
+            
+            startSession()
         } catch {
             assertionFailure("Error setting up the camera. Make sure you first check if we have access to the camera!")
         }
     }
 
     private func startSession() {
-        guard let session = self.captureSession, !session.isRunning else { return }
-        // startRunning needs to run on a background thread
-        Task.detached(priority: .userInitiated) {
-            guard !session.isRunning else { return }
+        allowMoreQRCodeNotifications = true
+        sessionQueue.async { [weak self] in
+            guard let session = self?.captureSession, !session.isRunning else { return }
             session.startRunning()
         }
     }
 
     private func stopSession() {
-        guard let session = self.captureSession, session.isRunning else { return }
-        // stopRunning needs to run on a background thread
-        Task.detached(priority: .userInitiated) {
-            guard session.isRunning else { return }
+        sessionQueue.async { [weak self] in
+            guard let session = self?.captureSession, session.isRunning else { return }
             session.stopRunning()
         }
+    }
+}
+
+extension QRCodeCameraViewController: AVCaptureMetadataOutputObjectsDelegate {
+    func metadataOutput(_ output: AVCaptureMetadataOutput,
+                        didOutput metadataObjects: [AVMetadataObject],
+                        from connection: AVCaptureConnection) {
+        guard let metadataObject = metadataObjects.first as? AVMetadataMachineReadableCodeObject,
+              metadataObject.type == .qr,
+              let qrString = metadataObject.stringValue else {
+#if DEBUG
+            debugPrint("Could not extract the QR code string")
+#endif
+            return
+        }
+
+        // This function is called a multiple times for the same valid qr code. allowQRCodeNotification stops the multiple calls from being propagated.
+        guard allowMoreQRCodeNotifications else {
+            return
+        }
+
+        allowMoreQRCodeNotifications = false
+
+        stopSession()
+        // Vibrate the phone
+        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+        scannerDelegate?.didDetectQRCode(qrString)
     }
 }
 
