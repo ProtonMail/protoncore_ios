@@ -46,7 +46,12 @@ public enum PaymentsAPIsError: LocalizedError {
     }
 }
 
-public struct PaymentsAPIs: Sendable {
+public protocol PaymentsAPIsProviding {
+
+    func url(for api: RequestType) throws -> APIRequest
+}
+
+public struct PaymentsAPIs: PaymentsAPIsProviding, Sendable {
 
     private struct Constants {
         static func moduleNameSpace(requestType: RequestType) -> String {
