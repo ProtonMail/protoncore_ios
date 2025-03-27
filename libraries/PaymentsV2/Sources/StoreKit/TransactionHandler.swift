@@ -151,13 +151,24 @@ private extension TransactionHandler {
 
         let receipt = try receiptManager.fetchPurchaseReceipt()
 
-        let transactionIdentifier = transaction.originalID
-        guard let bundleIdentifier = Bundle.main.bundleIdentifier else {
+        guard var bundleIdentifier = Bundle.main.bundleIdentifier else {
             debugPrint("bundle not obtainable")
             let error = TransactionHandlerError.unableToGetBundleIdentifier
             PMLog.error(error.failureReason ?? "Bundle identifier not found", sendToExternal: true)
             throw error
         }
+
+        var transactionIdentifier = String(transaction.originalID)
+
+#if DEBUG && targetEnvironment(simulator)
+        let envrionment = ProcessInfo.processInfo.environment
+        if envrionment["test-transaction"] == "sandbox" {
+            transactionIdentifier = "test-transaction"
+        }
+        if let bundle = envrionment["bundleIdentifier"] {
+            bundleIdentifier = bundle
+        }
+#endif
 
         guard let amount = transaction.price, let currency = transaction.currencyIdentifier else {
             debugPrint("Impossible to get amount and currency from transaction")
@@ -175,7 +186,7 @@ private extension TransactionHandler {
                              payment: PaymentReceipt(details: ReceiptDetails(bundleID: bundleIdentifier,
                                                                              productID: transaction.productID,
                                                                              receipt: receipt,
-                                                                             transactionID: String(transactionIdentifier)),
+                                                                             transactionID: transactionIdentifier),
                                                      type: "apple-recurring"),
                              paymentMethodID: nil)
         debugPrint("Validation token generated ✅")
