@@ -67,6 +67,16 @@ extension PMAPIService {
         return .success(credential)
     }
 
+    public func fetchAuthCredentials() async -> AuthCredentialFetchingResult {
+        await withCheckedContinuation { completion in
+            performSeriallyInAuthCredentialQueue { continuation in
+                self.fetchAuthCredentialsWithoutSynchronization(continuation: continuation, completion: { result in
+                    completion.resume(returning: result)
+                })
+            }
+        }
+    }
+
     public func fetchAuthCredentials(completion: @escaping (AuthCredentialFetchingResult) -> Void) {
         performSeriallyInAuthCredentialQueue { continuation in
             self.fetchAuthCredentialsWithoutSynchronization(continuation: continuation, completion: completion)

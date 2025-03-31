@@ -419,7 +419,9 @@ public protocol APIService: API, RequestPerforming {
     @available(*, deprecated, message: "Use async version")
     func acquireSessionIfNeeded(completion: @escaping (Result<SessionAcquiringResult, APIError>) -> Void)
     func acquireSessionIfNeeded() async -> Result<SessionAcquiringResult, APIError>
+    @available(*, deprecated, message: "Use async version")
     func fetchAuthCredentials(completion: @escaping (AuthCredentialFetchingResult) -> Void)
+    func fetchAuthCredentials() async -> AuthCredentialFetchingResult
     func fetchCredentialForCredentialLessSession() async -> Result<Credential, APIError>
     // delegates
     var authDelegate: AuthDelegate? { get set }

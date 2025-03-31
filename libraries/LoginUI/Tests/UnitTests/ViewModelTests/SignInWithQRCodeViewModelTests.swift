@@ -26,7 +26,6 @@ import ProtonCoreServices
 class SignInWithQRCodeViewModelTests: XCTestCase {
     var sut: SignInWithQRCodeView.ViewModel!
     var mockAPIService: APIServiceMock!
-    var mockServiceDelegate: APIServiceDelegateMock!
     var mockSecureHashGenerator: MockSecureHashGenerator!
     var mockClientIdProvider: MockClientIdProvider!
 

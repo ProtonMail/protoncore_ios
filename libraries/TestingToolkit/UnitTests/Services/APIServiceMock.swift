@@ -65,7 +65,12 @@ public struct APIServiceMock: APIService {
     public func fetchAuthCredentials(completion: @escaping (AuthCredentialFetchingResult) -> Void) {
         fetchAuthCredentialsStub(completion)
     }
-    
+
+    @AsyncFuncStub(APIServiceMock.fetchAuthCredentials, initialReturn: AuthCredentialFetchingResult.notFound) public var fetchAuthCredentialsStubAsync
+    public func fetchAuthCredentials() async -> ProtonCoreServices.AuthCredentialFetchingResult {
+        return await fetchAuthCredentialsStubAsync()
+    }
+
     public var fetchCredentialForCredentialLessSessionStub: (() async -> Result<ProtonCoreNetworking.Credential, APIError>)?
     public func fetchCredentialForCredentialLessSession() async -> Result<ProtonCoreNetworking.Credential, APIError> {
         guard let stub = fetchCredentialForCredentialLessSessionStub else {

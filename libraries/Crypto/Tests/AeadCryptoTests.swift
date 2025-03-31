@@ -23,113 +23,141 @@ import XCTest
 import ProtonCoreCrypto
 
 final class AeadCryptoTests: XCTestCase {
-    var sut: AeadCrypto!
+    var sut12: AeadCrypto!
+    var sut16: AeadCrypto!
+    var suts: [AeadCrypto]!
 
     override func setUpWithError() throws {
-        sut = AeadCrypto()
+        sut12 = AeadCrypto(cipherIvBytes: ._12)
+        sut16 = AeadCrypto(cipherIvBytes: ._16)
+        suts = [sut12, sut16]
     }
 
     override func tearDownWithError() throws {
-        sut = nil
+        sut12 = nil
+        sut16 = nil
+        suts = nil
     }
 
     func testEncryptAndDecryptStringWorks() throws {
         let plain = "test-plain-text"
-        let key = getRandomKey()
 
-        let encrypted = try sut.encrypt(value: plain, key: key)
-        let decrypted = try sut.decrypt(base64EncryptedString: encrypted, key: key)
+        for sut in suts {
+            let key = getRandomKey()
 
-        XCTAssertEqual(plain, decrypted)
+            let encrypted = try sut.encrypt(value: plain, key: key)
+            let decrypted = try sut.decrypt(base64EncryptedString: encrypted, key: key)
+
+            XCTAssertEqual(plain, decrypted)
+        }
     }
 
     func testEncryptAndDecryptDataWorks() throws {
         let plainData = "test-plain-text".data(using: .utf8)!
-        let key = getRandomKey()
 
-        let encrypted = try sut.encrypt(value: plainData, key: key)
-        let decrypted = try sut.decrypt(value: encrypted, key: key)
+        for sut in suts {
+            let key = getRandomKey()
 
-        XCTAssertEqual(plainData, decrypted)
+            let encrypted = try sut.encrypt(value: plainData, key: key)
+            let decrypted = try sut.decrypt(value: encrypted, key: key)
+
+            XCTAssertEqual(plainData, decrypted)
+        }
     }
 
     func testEncryptAndDecryptStringFails() throws {
         let plain = "test-plain-text"
-        let key = getRandomKey()
-        let key2 = getRandomKey()
+        for sut in suts {
+            let key = getRandomKey()
+            let key2 = getRandomKey()
 
-        let encrypted = try sut.encrypt(value: plain, key: key)
-        XCTAssertThrowsError(try sut.decrypt(base64EncryptedString: encrypted, key: key2))
+            let encrypted = try sut.encrypt(value: plain, key: key)
+            XCTAssertThrowsError(try sut.decrypt(base64EncryptedString: encrypted, key: key2))
+        }
     }
 
     func testEncryptAndDecryptDataFails() throws {
         let plainData = "test-plain-text".data(using: .utf8)!
-        let key = getRandomKey()
-        let key2 = getRandomKey()
+        for sut in suts {
+            let key = getRandomKey()
+            let key2 = getRandomKey()
 
-        let encrypted = try sut.encrypt(value: plainData, key: key)
-        XCTAssertThrowsError(try sut.decrypt(value: encrypted, key: key2))
+            let encrypted = try sut.encrypt(value: plainData, key: key)
+            XCTAssertThrowsError(try sut.decrypt(value: encrypted, key: key2))
+        }
     }
 
     func testEncryptDecryptEmptyString() throws {
         let plain = ""
-        let key = getRandomKey()
+        for sut in suts {
+            let key = getRandomKey()
 
-        let encrypted = try sut.encrypt(value: plain, key: key)
-        let decrypted = try sut.decrypt(base64EncryptedString: encrypted, key: key)
+            let encrypted = try sut.encrypt(value: plain, key: key)
+            let decrypted = try sut.decrypt(base64EncryptedString: encrypted, key: key)
 
-        XCTAssertEqual(plain, decrypted)
+            XCTAssertEqual(plain, decrypted)
+        }
     }
 
     func testEncryptDecryptEmptyBytes() throws {
         let plainData = Data(count: 0)
-        let key = getRandomKey()
+        for sut in suts {
+            let key = getRandomKey()
 
-        let encrypted = try sut.encrypt(value: plainData, key: key)
-        let decrypted = try sut.decrypt(value: encrypted, key: key)
+            let encrypted = try sut.encrypt(value: plainData, key: key)
+            let decrypted = try sut.decrypt(value: encrypted, key: key)
 
-        XCTAssertEqual(decrypted.count, 0)
+            XCTAssertEqual(decrypted.count, 0)
+        }
     }
 
     func testEncryptDecryptAadWorks() throws {
         let plain = ""
-        let key = getRandomKey()
-        let aad = getRandomAad()
+        for sut in suts {
+            let key = getRandomKey()
+            let aad = getRandomAad()
 
-        let encrypted = try sut.encrypt(value: plain, key: key, aad: aad)
-        let decrypted = try sut.decrypt(base64EncryptedString: encrypted, key: key, aad: aad)
+            let encrypted = try sut.encrypt(value: plain, key: key, aad: aad)
+            let decrypted = try sut.decrypt(base64EncryptedString: encrypted, key: key, aad: aad)
 
-        XCTAssertEqual(plain, decrypted)
+            XCTAssertEqual(plain, decrypted)
+        }
     }
 
     func testEncryptDecryptAadFails() throws {
         let plain = ""
-        let key = getRandomKey()
-        let aad = getRandomAad()
-        let aad2 = getRandomAad()
+        for sut in suts {
+            let key = getRandomKey()
+            let aad = getRandomAad()
+            let aad2 = getRandomAad()
 
-        let encrypted = try sut.encrypt(value: plain, key: key, aad: aad)
-        XCTAssertThrowsError(try sut.decrypt(base64EncryptedString: encrypted, key: key, aad: aad2))
+            let encrypted = try sut.encrypt(value: plain, key: key, aad: aad)
+            XCTAssertThrowsError(try sut.decrypt(base64EncryptedString: encrypted, key: key, aad: aad2))
+        }
     }
 
     func testEncryptDecrypt71CharsUsingLatin1String() throws {
         let plain = "ÀÁÂÃÄÅÆ¼½¾ÀÁÂÃÄÅÆ¼½¾ÀÁÂÃÄÅÆ¼½¾ÀÁÂÃÄÅÆ¼½¾ÀÁÂÃÄÅÆ¼½¾ÀÁÂÃÄÅÆ¼½¾ÀÁÂÃÄÅÆ¼½¾ÀÁÂÃÄÅÆ¼½¾"
-        let key = getRandomKey()
+        for sut in suts {
+            let key = getRandomKey()
 
-        let encrypted = try sut.encrypt(value: plain, key: key)
-        let decrypted = try sut.decrypt(base64EncryptedString: encrypted, key: key)
+            let encrypted = try sut.encrypt(value: plain, key: key)
+            let decrypted = try sut.decrypt(base64EncryptedString: encrypted, key: key)
 
-        XCTAssertEqual(plain, decrypted)
+            XCTAssertEqual(plain, decrypted)
+        }
     }
 
     func testEncryptDecrypt100KByteData() throws {
         let plainData = getRandomBytes(count: 100 * 1000)
-        let key = getRandomKey()
-
-        let encrypted = try sut.encrypt(value: plainData, key: key)
-        let decrypted = try sut.decrypt(value: encrypted, key: key)
-
-        XCTAssertEqual(plainData, decrypted)
+        for sut in suts {
+            let key = getRandomKey()
+            
+            let encrypted = try sut.encrypt(value: plainData, key: key)
+            let decrypted = try sut.decrypt(value: encrypted, key: key)
+            
+            XCTAssertEqual(plainData, decrypted)
+        }
     }
 
     // MARK: Private

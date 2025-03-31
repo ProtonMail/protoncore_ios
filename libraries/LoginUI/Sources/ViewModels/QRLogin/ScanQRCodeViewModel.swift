@@ -20,6 +20,16 @@
 
 import UIKit
 import Combine
+import ProtonCoreServices
+import ProtonCoreLogin
+import ProtonCoreLog
+
+extension ScanQRCodeView {
+    struct Dependencies {
+        let passphrase: String
+        let apiService: APIService
+    }
+}
 
 extension ScanQRCodeView {
     @MainActor
@@ -38,10 +48,43 @@ extension ScanQRCodeView {
 
         weak var navigationController: UINavigationController?
 
-        func handleQRCode(_ code: String) {
-            if code != "" {
-                state = .verifying
-                print("PT: QR CODE STRING -> \(code)")
+        private var decodeQRCodeUseCase = DecodeSignInQRCode()
+
+        private let passphrase: String
+        private let apiService: APIService
+
+        init(dependencies: Dependencies) {
+            self.passphrase = dependencies.passphrase
+            self.apiService = dependencies.apiService
+        }
+
+        func handleQRCodeDetected(_ code: String) {
+            Task { @MainActor in
+                await processQRCode(code)
+            }
+        }
+
+        func processQRCode(_ code: String) async {
+            guard !code.isEmpty else {
+                return
+            }
+
+            state = .verifying
+
+            do {
+                let decodedQRCode = try decodeQRCodeUseCase.invoke(qrCode: code)
+                // encrypt the passphrase
+                let securePassphrase = try SecurePassphrasePayload(passphrase: passphrase, encryptionKey: decodedQRCode.encryptionKey)
+                // push the fork -> Show sucess on 200
+                let request = ForkSessionRequest(useCase: .pushFork(payload: securePassphrase.encryptedPayload,
+                                                                    clientId: decodedQRCode.clientId,
+                                                                    independent: true,
+                                                                    userCode: decodedQRCode.userCode))
+                let _: (URLSessionDataTask?, ForkSessionPushResponse) = try await apiService.perform(request: request)
+                state = .success
+            } catch {
+                PMLog.error(error.localizedDescription, sendToExternal: true)
+                state = .failure
             }
         }
 
