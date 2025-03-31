@@ -25,7 +25,6 @@ private let usersCreate = "quark/raw::user:create"
 private let usersCreateAddress = "quark/raw::user:create:address"
 private let usersExpireSessions = "quark/raw::user:expire:sessions"
 private let usersDelete = "quark/raw::user:delete"
-private let usersSubscription = "quark/raw::user:create:subscription"
 private let usersCreateSubUser = "quark/raw::user:create:subuser"
 
 public extension Quark {
@@ -116,21 +115,6 @@ public extension Quark {
         ]
 
         let request = try route(usersDelete)
-            .args(args)
-            .build()
-
-        return try executeQuarkRequest(request)
-    }
-    
-    @available(*, deprecated, renamed: "newSeedNewSubscriber", message: "`Use new payment provider`.")
-    @discardableResult
-    func enableSubscription(id: Int, plan: String) throws -> (data: Data, response: URLResponse) {
-        let args = [
-            "userID=\(id)",
-            "--planID=\(plan)"
-        ]
-
-        let request = try route(usersSubscription)
             .args(args)
             .build()
 
