@@ -1,6 +1,6 @@
 "support form" = "客服表单";
 
-"email" = "邮箱";
+"email" = "电子邮件地址";
 
 "Twitter" = "Twitter";
 
@@ -8,9 +8,9 @@
 
 "Allow alternative routing" = "允许使用备用线路";
 
-"No internet connection" = "网络未连接";
+"No internet connection" = "无网络连接";
 
-"Internet Service Provider (ISP) problem" = "运营商（ISP）问题";
+"Internet Service Provider (ISP) problem" = "运营商 (ISP) 问题";
 
 "Government block" = "政府封锁";
 
@@ -18,7 +18,7 @@
 
 "Proxy/Firewall interference" = "代理服务器或防火墙干扰";
 
-"Proton is down" = "Proton 系统故障";
+"Proton is down" = "Proton 宕机";
 
 "Still can't find a solution" = "问题仍未解决";
 
@@ -46,4 +46,4 @@
 
 "Please share your problem." = "请说明您的问题。";
 
-"Back" = "上一步";
+"Back" = "返回";

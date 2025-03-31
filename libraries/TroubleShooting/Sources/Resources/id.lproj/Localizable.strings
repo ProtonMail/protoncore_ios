@@ -6,7 +6,7 @@
 
 "Troubleshooting" = "Pemecahan masalah";
 
-"Allow alternative routing" = "Izinkan pengalihan lalu lintas alternatif";
+"Allow alternative routing" = "Izinkan perutean alternatif";
 
 "No internet connection" = "Tidak ada koneksi internet";
 
@@ -14,11 +14,11 @@
 
 "Government block" = "Pemblokiran pemerintah";
 
-"Antivirus interference" = "Gangguan antivirus";
+"Antivirus interference" = "Halangan antivirus";
 
-"Proxy/Firewall interference" = "Hadangan Proxy/Firewall";
+"Proxy/Firewall interference" = "Gangguan Proxy/Firewall";
 
-"Proton is down" = "Proton sedang offline";
+"Proton is down" = "Proton sedang bermasalah";
 
 "Still can't find a solution" = "Masalah saya belum teratasi";
 
@@ -26,17 +26,17 @@
 
 "Learn more" = "Pelajari lebih lanjut";
 
-"Please make sure that your internet connection is working." = "Pastikan koneksi internet Anda tidak bermasalah.";
+"Please make sure that your internet connection is working." = "Pastikan koneksi internet anda berfungsi.";
 
 "Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "Cobalah untuk terhubung ke Proton melalui jaringan yang berbeda (atau gunakan %1$@ atau %2$@).";
 
 "Your country may be blocking access to Proton. Try using %1$@ (or any other VPN) or %2$@ to access Proton." = "Negara Anda mungkin memblokir akses ke Proton. Cobalah untuk menggunakan %1$@ (atau VPN lainnya) atau %2$@ untuk mengakses Proton.";
 
-"Temporarily disable or remove your antivirus software." = "Nonaktifkan atau hapus perangkat antivirus Anda untuk sementara waktu.";
+"Temporarily disable or remove your antivirus software." = "Nonaktifkan atau hapus perangkat lunak antivirus Anda untuk sementara waktu.";
 
 "Disable any proxies or firewalls, or contact your network administrator." = "Nonaktifkan seluruh proxy atau firewall yang aktif, atau hubungi pengelola jaringan Anda.";
 
-"Check Proton Status for our system status." = "Periksa Proton Status untuk mengetahui status sistem kami.";
+"Check Proton Status for our system status." = "Memeriksa Proton status untuk status sistem kami.";
 
 "Proton Status" = "Proton Status";
 

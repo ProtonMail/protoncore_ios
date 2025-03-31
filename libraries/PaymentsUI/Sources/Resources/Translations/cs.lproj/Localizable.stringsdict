@@ -363,13 +363,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d země (US, NL, JP)</string>
+        <string>%d zemi (US, NL, JP)</string>
         <key>few</key>
-        <string>%d země (US, NL, JP)</string>
+        <string>%d zemích (US, NL, JP)</string>
         <key>many</key>
-        <string>%d země (US, NL, JP)</string>
+        <string>%d zemích (US, NL, JP)</string>
         <key>other</key>
-        <string>%d země (US, NL, JP)</string>
+        <string>%d zemích (US, NL, JP)</string>
       </dict>
     </dict>
     <key>&lt;n&gt; of &lt;m&gt; users</key>

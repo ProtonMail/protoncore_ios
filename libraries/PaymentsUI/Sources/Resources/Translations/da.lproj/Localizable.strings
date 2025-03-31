@@ -1,12 +1,12 @@
 "OK" = "Ok";
 
-"Cancel" = "Annullér";
+"Cancel" = "Annuller";
 
 "Warning" = "Advarsel";
 
 "Select a plan" = "Vælg et abonnement";
 
-"Current plan" = "Nuværende abonnement";
+"Current plan" = "Nuværende abonnent";
 
 "Subscription" = "Abonnement";
 
@@ -28,13 +28,13 @@
 
 "%@ storage / user" = "%@ lager / bruger";
 
-"for %@" = "i %@";
+"for %@" = "til %@";
 
 "Custom email addresses" = "Brugerdefinerede e-mailadresser";
 
 "Priority customer support" = "Prioriteret kundesupport";
 
-"Adblocker (NetShield)" = "Annonceblokering (NetShield)";
+"Adblocker (NetShield)" = "Reklameblokering (NetShield)";
 
 "Streaming service support" = "Understøttelse af streamingtjeneste";
 
@@ -42,11 +42,11 @@
 
 "Highest speed" = "Højeste hastighed";
 
-"Multi-user support" = "Flerbrugerunderstøttelse";
+"Multi-user support" = "Flerbruger-understøttelse";
 
-"The basic for private and secure communications." = "Det grundlæggende til privat og sikker kommunikation.";
+"The basic for private and secure communications." = "Grundlaget for privat og sikker kommunikation.";
 
-"Full-featured mailbox with advanced protection." = "Fuldt udstyret postkasse med avanceret beskyttelse.";
+"Full-featured mailbox with advanced protection." = "Mailboks med fuld funktionalitet og avanceret beskyttelse.";
 
 "Limited time offer" = "Tidsbegrænset tilbud";
 
@@ -68,7 +68,7 @@
 
 "The privacy-first email and calendar solution for your everyday communication needs." = "Den privatlivsorienterede e-mail- og kalenderløsning til dine daglige kommunikationsbehov.";
 
-"Your privacy and security are our priority." = "Beskyttelse af dit privatliv og din sikkerhed er vores førsteprioritet.";
+"Your privacy and security are our priority." = "Vi prioriterer dit privatliv og din sikkerhed.";
 
 "The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Det lagerfokuserede abonnement med 200 GB cloud-lager, så dine filer forbliver private.";
 
@@ -78,21 +78,21 @@
 
 "Your subscription cannot be managed inside the mobile app." = "Dit abonnement kan ikke administreres i mobilappen.";
 
-"Unlimited folders, labels, and filters" = "Ubegrænsede mapper, etiketter og filtre";
+"Unlimited folders, labels, and filters" = "Ubegrænset antal mapper, etiketter og filtre";
 
 "Up to %@ storage" = "Op til %@ lagerplads";
 
-"Free VPN on a single device" = "Gratis VPN på en enkelt enhed";
+"Free VPN on a single device" = "Gratis VPN på én enhed";
 
 "Highest VPN speed" = "Højeste VPN-hastighed";
 
-"Built-in ad-blocker (NetShield)" = "Indbygget annonceblokering (Netshield)";
+"Built-in ad-blocker (NetShield)" = "Indbygget reklameblokering (NetShield)";
 
-"Access to streaming services globally" = "Adgang til streamingtjenester i hele verden";
+"Access to streaming services globally" = "Adgang til globale streamingtjenester";
 
-"Secure Core servers" = "Secure Core servere";
+"Secure Core servers" = "Sikre Core-servere";
 
-"TOR over VPN" = "Tor over VPN";
+"TOR over VPN" = "Tor via VPN";
 
 "P2P/BitTorrent" = "P2P/Bittorrent";
 
@@ -108,23 +108,23 @@
 
 "Check your internet connection" = "Tjek din internetforbindelse";
 
-"Strict no-logs policy" = "Striks politik om ikke at logge";
+"Strict no-logs policy" = "Streng nul-logningspolitik";
 
 "Plan successfully upgraded" = "Abonnement opgraderet";
 
-"Integrated 2FA authenticator" = "Integreret 2FA-godkendelse";
+"Integrated 2FA authenticator" = "Integreret 2FA-godkendelsesværktøj";
 
 "Priority support" = "Prioriteret support";
 
-"Unlimited devices" = "Ubegrænset antal enheder";
+"Unlimited devices" = "Ubegrænsede enheder";
 
 "Unlimited email aliases" = "Ubegrænsede e-mail-aliasser";
 
-"Unlimited logins and notes" = "Ubegrænset antal logins og noter";
+"Unlimited logins and notes" = "Ubegrænset indlogninger og notater";
 
-"Custom fields" = "Brugerdefinerede felter";
+"Custom fields" = "Tilpassede felter";
 
-"For next-level password management and identity protection." = "For avanceret adgangskodehåndtering og identitetsbeskyttelse.";
+"For next-level password management and identity protection." = "Til videreudviklet adgangskodestyring og identitetsbeskyttelse.";
 
 "Pay monthly" = "Betal månedligt";
 

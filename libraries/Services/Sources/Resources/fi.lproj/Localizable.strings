@@ -1,0 +1,5 @@
+"Proton address required" = "Proton-osoite vaaditaan";
+
+"Update required" = "Päivitys vaaditaan";
+
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Protonin palvelimia ei tavoiteta. Tämä voi johtua vääristä verkkoasetuksista, Protonin palvelinten toiminta ongelmista tai niiden estosta";

@@ -38,6 +38,8 @@
 
 "Sign in with SSO" = "Tek oturum açma ile oturum açın";
 
+"Sign in with a QR code" = "Kare kod ile oturum aç";
+
 "Sign in to your organization" = "Kuruluşunuzda oturum açın";
 
 "Create an account" = "Hesap oluştur";
@@ -349,3 +351,11 @@
 "Password not valid" = "Parola geçerli değil";
 
 "Passphrase not found" = "Parola ifadesi bulunamadı";
+
+"Open the Proton app on your phone" = "Telefonunuzda Proton uygulamasını açın";
+
+"Tap into Settings, then tap Sign in to another device" = "Ayarlar üzerine ve başka bir aygıt ile Oturum aç üzerine dokunun";
+
+"Tap Scan QR code" = "Kare kodu tara üzerine dokunun";
+
+"Scan this code with your phone camera to sign in instantly." = "Anında oturum açmak için bu kodu telefonunuzun kamerasıyla tarayın.";

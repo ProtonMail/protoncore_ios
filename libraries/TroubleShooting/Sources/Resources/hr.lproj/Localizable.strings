@@ -16,7 +16,7 @@
 
 "Antivirus interference" = "Smetnje s antivirusom";
 
-"Proxy/Firewall interference" = "Poteškoće s proxy/vatrozidom";
+"Proxy/Firewall interference" = "Smetnje s Proxy-em/Vatrozidom";
 
 "Proton is down" = "Proton je van mreže";
 
@@ -24,7 +24,7 @@
 
 "In case Proton sites are blocked, this setting allows the app to try alternative network routing to reach Proton, which can be useful for bypassing firewalls or network issues. We recommend keeping this setting on for greater reliability. %1$@" = "U slučaju da su Protonove stranice blokirane, ova postavka omogućuje aplikaciji da isproba alternativno mrežno usmjeravanje do Protona, što može biti korisno u zaobilaženju vatrozida ili problema s mrežom. Preporučujemo da ovu postavku zadržite omogućenom radi veće pouzdanosti. %1$@";
 
-"Learn more" = "Saznajte više";
+"Learn more" = "Više informacija";
 
 "Please make sure that your internet connection is working." = "Provjerite da li vaša internetska veza radi.";
 
@@ -32,7 +32,7 @@
 
 "Your country may be blocking access to Proton. Try using %1$@ (or any other VPN) or %2$@ to access Proton." = "Vaša država možda blokira pristup Protonu. Pokušajte koristiti %1$@ (ili bilo koji drugi VPN) ili %2$@ za pristup Protonu.";
 
-"Temporarily disable or remove your antivirus software." = "Privremeno onemogućite ili uklonite svoj antivirusni program.";
+"Temporarily disable or remove your antivirus software." = "Privremeno onemogućite ili uklonite svoj antivirusni softver.";
 
 "Disable any proxies or firewalls, or contact your network administrator." = "Onemogućite sve proxye ili vatrozide ili se obratite mrežnom administratoru.";
 

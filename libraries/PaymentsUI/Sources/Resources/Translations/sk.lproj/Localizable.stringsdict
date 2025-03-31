@@ -77,7 +77,7 @@
         <key>few</key>
         <string>%d emailové adresy / používateľa</string>
         <key>many</key>
-        <string>%d emailových adries / používateľa</string>
+        <string>%d emailových adries / používateľ</string>
         <key>other</key>
         <string>%d emailových adries / používateľa</string>
       </dict>

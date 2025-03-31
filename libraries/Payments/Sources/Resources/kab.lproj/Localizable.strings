@@ -38,8 +38,8 @@
 
 "You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support." = "Ajerred-ik·im yedda akken iwata maca axelleṣ-inek·inem ur yettusesfar ara. I tuzna i tikkelt-nniḍen n telɣut n uxelleṣ-inek·inem, sit ales aneɛruḍ. Yiwet n tikkelt kan ad ak·am-d-tettwazen tfaṭurt. Ma yella yettuɣal-d wugur, ttxil-k·m nermes tallalt n umsaɣ.";
 
-"Retry" = "Ɛref̣ tikelt-nniḍen";
+"Retry" = "Ɛreḍ tikkelt niḍen";
 
-"OK" = "Ih";
+"OK" = "IH";
 
 "The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked";

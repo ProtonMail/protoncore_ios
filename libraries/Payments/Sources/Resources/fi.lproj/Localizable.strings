@@ -1,0 +1,45 @@
+"Contact customer support" = "Ota yhteyttä asiakaspalveluun";
+
+"Failed to get list of available products from App Store." = "App Storesta saatavilla olevien tuotteiden listauksen nouto epäonnistui.";
+
+"Purchase is not possible." = "Osto ei ole mahdollista.";
+
+"Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you." = "Apple ilmoitti sinun päivittäneen tilauksesi, mutta osa teknisistä tiedoista puuttui. Täytä vikailmoitus niin asiakaspalvelumme palaa asiaan.";
+
+"Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "Apple kertoi meille, että olet päivittänyt sopimuksesi, mutta huomasimme, että olet kirjautunut ulos tilistäsi sen jälkeen.";
+
+"It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "App Storesta ostamaasi tuotetta ei voitu yhdistää mihinkään palvelimemme tuotteeseen. Täytä vikailmoitus niin asiakaspalvelumme palaa asiaan.";
+
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Kirjaudu Proton Mail -tilille, jonka tilausta olet päivittämässä, jotta voimme viimeistellä oston.";
+
+"Apple informed us they could not process the purchase." = "Apple ilmoitti meille, etteivät he voineet käsitellä ostoa.";
+
+"We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "Olemme aktivoineet tilauksesi. Käynnistä sovellus uudelleen aloittaaksesi uuden tilauksen käyttämisen.";
+
+"Please unlock the app to proceed with your service plan activation" = "Avaa sovelluksen lukitus jatkaaksesi tilauksesi käyttöönottoa";
+
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Kirjaudu Proton Mail -tilille, jonka tilausta olet päivittämässä, jotta voimme viimeistellä tilauksen käyttöönoton.";
+
+"Wrong payment token status. Please relaunch the app. If error persists, contact support." = "Väärä maksutunnisteen tila. Käynnistä sovellus uudelleen. Jos virhe jatkuu, ota yhteyttä tukeen.";
+
+"Do you want to activate the purchase for %@ address?" = "Haluatko ottaa lston käyttöön %@-osoitteelle?";
+
+"Yes, activate it for " = "Kyllä, aktivoi tilille ";
+
+"No, for another Proton Mail account" = "Ei, jollekkin toiselle Proton Mail -tilille";
+
+"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "Tiliäsi ei voitu päivittää valitsemaasi tilaukseen, joten maksusi lisättiin tilillesi krediitteinä. Saadaksesi lisätietoja ja viimeistelläksesi päivityksen, ota yhteyttä tukeen.";
+
+"Contact Support" = "Ota yhteyttä asiakaspalveluun";
+
+"Dismiss" = "Sulje";
+
+"Payment failed" = "Maksu epäonnistui";
+
+"You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support." = "Olet rekisteröitynyt, mutta maksuasi ei käsitelty. Lähetä maksutietosi uudelleen painamalla Yritä uudelleen. Maksutapaasi veloitetaan vain kerran. Jos ongelma jatkuu, ota yhtettä asiakastukeen.";
+
+"Retry" = "Yritä uudelleen";
+
+"OK" = "OK";
+
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Protonin palvelimia ei tavoiteta. Tämä voi johtua vääristä verkkoasetuksista, Protonin palvelinten toiminta ongelmista tai niiden estosta";

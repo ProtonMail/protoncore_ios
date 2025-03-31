@@ -8,7 +8,7 @@
 
 "OK" = "تایید";
 
-"Help" = "راهنمایی";
+"Help" = "راهنما";
 
 "Continue" = "ادامه";
 
@@ -28,7 +28,7 @@
 
 "Request new code" = "درخواست کد جدید";
 
-"Enter your Proton Account details." = "اطلاعات حساب Proton خود را وارد کنید.";
+"Enter your Proton Account details." = "اطلاعات حساب 'پروتون' خود را وارد کنید.";
 
 "Email or username" = "ایمیل یا نام‌کاربری";
 
@@ -37,6 +37,8 @@
 "Sign in with password" = "ورود با گذرواژه";
 
 "Sign in with SSO" = "ورود با احراز هویت یکپارچه (SSO)";
+
+"Sign in with a QR code" = "Sign in with a QR code";
 
 "Sign in to your organization" = "به سازمان خود وارد شوید";
 
@@ -76,7 +78,7 @@
 
 "Unlock your mailbox" = "نامه‌دان خود را باز کنید";
 
-"Mailbox password" = "گذرواژه نامه‌دان";
+"Mailbox password" = "گذرواژهٔ صندوق پیام";
 
 "Unlock" = "بازگشایی";
 
@@ -96,7 +98,7 @@
 
 "Enter the 6-digit code." = "کد ۶-رقمی را وارد کنید.";
 
-"Enter an 8-character recovery code." = "یک کد بازیابی ۸ نویسه ای را وارد کنید.";
+"Enter an 8-character recovery code." = "یک کد بازیابی 8 نویسه ای را وارد کنید.";
 
 "Learn more" = "بیشتر بدانید";
 
@@ -118,11 +120,11 @@
 
 "Create a secure Proton Mail address instead" = "به جای آن یک آدرس Proton Mail امن ایجاد کنید";
 
-"Email" = "رایانامه";
+"Email" = "ایمیل";
 
-"Create your password" = "گذرواژه خود را ایجاد کنید";
+"Create your password" = "گذرواژه خود را بسازید";
 
-"Password must contain at least 8 characters" = "گذرواژه باید حداقل ۸ نویسه داشته باشد";
+"Password must contain at least 8 characters" = "گذرواژه باید حداقل 8 نویسه داشته باشد";
 
 "Repeat password" = "تکرار گذرواژه";
 
@@ -134,11 +136,11 @@
 
 "We will send recovery instructions to this email or phone number if you get locked out of your account." = "اگر شما راهی برای دسترسی به حساب کاربری خود نداشتید ما دستورالعمل های بازیابی را به این ایمیل یا شماره تلفن ارسال خواهیم کرد.";
 
-"Email" = "رایانامه";
+"Email" = "ایمیل";
 
 "Phone" = "تلفن";
 
-"Recovery email" = "رایانامه بازیابی";
+"Recovery email" = "ایمیل بازیابی";
 
 "Recovery phone number" = "شماره تلفن بازیابی";
 
@@ -146,15 +148,15 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy";
 
-"Terms and Conditions" = "شرایط و قوانین";
+"Terms and Conditions" = "شرایط و ضوابط";
 
 "Privacy Policy" = "خط مش سیاست حفظ اطلاعات و حریم خصوصی کاربران";
 
-"Skip" = "جهش";
+"Skip" = "رد شدن";
 
 "Skip recovery method?" = "رد شدن از تعیین روش بازیابی؟";
 
-"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "یک روش بازیابی به شما کمک میکند که در صورت فراموشی رمز عبور یا عدم امکان ورود به حساب کاربری، به حساب کاربری خود دسترسی پیدا کنید.";
+"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "یک روش بازیابی به شما کمک می کند که در صورت فراموشی گذرواژه یا عدم امکان ورود به حساب کاربری، به حساب کاربری خود دسترسی پیدا کنید.";
 
 "Set recovery method" = "تعیین روش بازیابی";
 
@@ -180,7 +182,7 @@
 
 "Did not receive a code?" = "یک کد دریافت نشد?";
 
-"Terms and Conditions" = "شرایط و قوانین";
+"Terms and Conditions" = "شرایط و ضوابط";
 
 "Privacy Policy" = "خط مش سیاست حفظ اطلاعات و حریم خصوصی کاربران";
 
@@ -216,7 +218,7 @@
 
 "Enjoy the world of privacy." = "از دنیای حریم خصوصی لذت ببرید.";
 
-"Cancel" = "انصراف";
+"Cancel" = "لغو";
 
 "Sign in" = "ورود";
 
@@ -224,7 +226,7 @@
 
 "Please choose how you want to confirm your identity." = "Please choose how you want to confirm your identity.";
 
-"One-time code" = "کد یکبار مصرفکد";
+"One-time code" = "کد یکبار مصرف";
 
 "Security key" = "کلید امنیتی";
 
@@ -272,15 +274,15 @@
 
 "Password cannot be empty" = "Password cannot be empty";
 
-"Password must contain at least 8 characters" = "گذرواژه باید حداقل ۸ نویسه داشته باشد";
+"Password must contain at least 8 characters" = "گذرواژه باید حداقل 8 نویسه داشته باشد";
 
 "Password doesn't match" = "Password doesn't match";
 
-"Sign-in requested on another device. Was it you?" = "Sign-in requested on another device. Was it you?";
+"Sign-in requested on another device. Was it you?" = "درخواستی برای ورود از دستگاه دیگری ارسال شده است. شما بودید؟";
 
 "Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
 
-"Confirmation code" = "Confirmation code";
+"Confirmation code" = "کد تایید";
 
 "If you didn't make this request, cancel it now." = "If you didn't make this request, cancel it now.";
 
@@ -288,15 +290,15 @@
 
 "No, it wasn't me" = "No, it wasn't me";
 
-"Share the confirmation code with your administrator" = "Share the confirmation code with your administrator";
+"Share the confirmation code with your administrator" = "اشتراک گذاری کد اعتبارسنجی با مدیر سیستم";
 
-"Approve the sign-in from another device" = "Approve the sign-in from another device";
+"Approve the sign-in from another device" = "تایید ورود از دستگاهی دیگر";
 
-"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@.";
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "برای اینکه مطمئن شویم این خود شما هستید که وارد می‌شوید، کد اعتبارسنجی را با مدیر %@ در میان بگذارید تا ایشان درخواست مذکور را برای %@ تایید کند.";
 
-"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device.";
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "برای اینکه مطمئن شویم این خود شما هستید که وارد اکانت‌تان می‌شوید، کد اعتبارسنجی را بررسی کرده و از طریق دستگاه دیگر این درخواست را تایید نمایید.";
 
-"Use backup password instead" = "Use backup password instead";
+"Use backup password instead" = "استفاده از رمز عبور پشتیبان";
 
 "Ask administrator for help" = "Ask administrator for help";
 
@@ -342,10 +344,18 @@
 
 "Set backup password" = "Set backup password";
 
-"Email is invalid" = "Email is invalid";
+"Email is invalid" = "ایمیل نامعتبر است";
 
 "Please enter your Proton Account email." = "Please enter your Proton Account email.";
 
 "Password not valid" = "Password not valid";
 
 "Passphrase not found" = "Passphrase not found";
+
+"Open the Proton app on your phone" = "Open the Proton app on your phone";
+
+"Tap into Settings, then tap Sign in to another device" = "Tap into Settings, then tap Sign in to another device";
+
+"Tap Scan QR code" = "Tap Scan QR code";
+
+"Scan this code with your phone camera to sign in instantly." = "Scan this code with your phone camera to sign in instantly.";

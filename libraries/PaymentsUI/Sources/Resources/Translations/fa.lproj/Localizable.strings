@@ -1,12 +1,12 @@
 "OK" = "تایید";
 
-"Cancel" = "انصراف";
+"Cancel" = "لغو";
 
 "Warning" = "هشدار";
 
 "Select a plan" = "یک طرح انتخاب کنید";
 
-"Current plan" = "طرح جاری";
+"Current plan" = "اشتراک کنونی";
 
 "Subscription" = "اشتراک";
 
@@ -36,7 +36,7 @@
 
 "Adblocker (NetShield)" = "مسدودکننده آگهی (NetShield)";
 
-"Streaming service support" = "پشتیبانی از سرویس استریم";
+"Streaming service support" = "پشتیبانی از استریم کردن";
 
 "High speed" = "سرعت بالا";
 
@@ -64,7 +64,7 @@
 
 "One plan for all Proton services" = "یک طرح سرویس برای همه سرویس‌های Proton";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "حساب آغازین بدون هزینه طراحی شده تا به هر کسی با حریم خصوصی به‌ صورت پیش فرض قدرت بدهد.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "حساب بی‌هزینهٔ آغازگر طراحی شده است حریم‌خصوصی را به هرکسی به‌صورت پیش‌فرض اعطا می‌کند.";
 
 "The privacy-first email and calendar solution for your everyday communication needs." = "The privacy-first email and calendar solution for your everyday communication needs.";
 
@@ -82,7 +82,7 @@
 
 "Up to %@ storage" = "فضای ذخیر سازی تا %@";
 
-"Free VPN on a single device" = "VPN رایگان در یک دستگاه";
+"Free VPN on a single device" = "VPN رایگان روی یک دستگاه";
 
 "Highest VPN speed" = "بالاترین سرعت VPN";
 
@@ -96,7 +96,7 @@
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "%@ را دریافت کنید";
+"Get %@" = "دریافت %@";
 
 "Get Proton for free" = "دریافت رایگان Proton";
 
@@ -118,7 +118,7 @@
 
 "Unlimited devices" = "دستگاه های نامحدود";
 
-"Unlimited email aliases" = "نام‌های مستعار ایمیل نامحدود";
+"Unlimited email aliases" = "ایمیل مستعار نامحدود";
 
 "Unlimited logins and notes" = "ورودها و یادداشت‌های نامحدود";
 

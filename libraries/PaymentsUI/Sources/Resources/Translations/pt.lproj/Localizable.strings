@@ -10,13 +10,13 @@
 
 "Subscription" = "Subscrição";
 
-"Upgrade your plan" = "Actualizar o seu plano";
+"Upgrade your plan" = "Atualizar o seu plano";
 
 "Only annual subscriptions without auto-renewal are available inside the mobile app." = "Apenas as subscrições anuais sem renovação automática estão disponíveis na aplicação móvel.";
 
 "You cannot manage subscriptions inside the mobile application." = "Não é possível gerir as subscrições na aplicação móvel.";
 
-"Your plan will automatically renew on %@" = "O seu plano renova automaticamente em %@";
+"Your plan will automatically renew on %@" = "O seu plano será automaticamente renovado em %@";
 
 "Current plan will expire on %@" = "O plano actual expirará em %@";
 
@@ -28,7 +28,7 @@
 
 "%@ storage / user" = "%@ de armazenamento / utilizador";
 
-"for %@" = "por %@";
+"for %@" = "para %@";
 
 "Custom email addresses" = "Endereços de e-mail  personalizados";
 
@@ -64,7 +64,7 @@
 
 "One plan for all Proton services" = "Um plano para todos os serviços Proton";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "A conta inicial gratuita criada para oferecer privacidade a todos por padrão.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "A conta de iniciação sem custo concebida para empoderar todas as pessoas com privacidade por defeito.";
 
 "The privacy-first email and calendar solution for your everyday communication needs." = "A solução de e-mail e calendário que privilegia a privacidade para as suas necessidades de comunicação diárias.";
 
@@ -82,11 +82,11 @@
 
 "Up to %@ storage" = "Até %@ de armazenamento";
 
-"Free VPN on a single device" = "VPN gratuita num único dispositivo";
+"Free VPN on a single device" = "VPN gratuito num único dispositivo";
 
 "Highest VPN speed" = "Velocidade VPN máxima";
 
-"Built-in ad-blocker (NetShield)" = "Bloqueador integrado (NetShield)";
+"Built-in ad-blocker (NetShield)" = "Bloqueador de anúncios integrado (NetShield)";
 
 "Access to streaming services globally" = "Aceda a serviços de streaming globalmente";
 
@@ -98,7 +98,7 @@
 
 "Get %@" = "Obter %@";
 
-"Get Proton for free" = "Obtenha Proton gratuitamente";
+"Get Proton for free" = "Obter a Proton gratuitamente";
 
 "Extend subscription" = "Prolongar a subscrição";
 
@@ -108,7 +108,7 @@
 
 "Check your internet connection" = "Verifique a sua ligação à Internet.";
 
-"Strict no-logs policy" = "Política estrita sem diários";
+"Strict no-logs policy" = "Política estrita sem registos";
 
 "Plan successfully upgraded" = "O plano foi actualizado.";
 
@@ -118,7 +118,7 @@
 
 "Unlimited devices" = "Número ilimitado de dispositivos";
 
-"Unlimited email aliases" = "Aliases de e-mail ilimitados";
+"Unlimited email aliases" = "Pseudónimos de e-mail ilimitados";
 
 "Unlimited logins and notes" = "Notas e inícios de sessão ilimitados";
 

@@ -1,0 +1,39 @@
+"pmsettings-settings-title" = "सेटिंग";
+
+"pmsettings-settings-app-settings-section" = "ऐप सेटिंग";
+
+"pmsettings-settings-system-settings-section" = "सिस्टम सेटिंग";
+
+"pmsettings-settings-system-settings-language-title" = "भाषा";
+
+"pmsettings-settings-system-settings-language-description" = "सिस्टम सेटिंग्स में पसंदीदा भाषा चुन सकते हैं।";
+
+"pmsettings-settings-system-settings-language-button" = "सिस्टम सेटिंग में भाषा सेट करें।";
+
+"pmsettings-settings-system-settings-notifications-title" = "सूचना";
+
+"pmsettings-settings-system-settings-notifications-description" = "यह कैलेंडर होने वाली घटनाओं या आमंत्रणों के बारे में आपको अपडेट रख सकता है। यदि आप पुश नोटीफिकेशन प्राप्त करना चाहते हैं, तो आपको अपनी सिस्टम सेटिंग्स बदलनी होंगी।";
+
+"pmsettings-settings-system-settings-notifications-button" = "सिस्टम सेटिंग में अनुमतियां संभाले";
+
+"pmsettings-settings-about-section" = "हम";
+
+"pmsettings-settings-about-acknowledgements" = "स्वीकृतियां";
+
+"pmsettings-settings-about-privacy" = "निजता नीति";
+
+"pmsettings-settings-about-terms" = "सेवा की शर्तें";
+
+"pmsettings-settings-footer" = "ऐप संस्करण: %@";
+
+"Bug report" = "बग रिपोर्ट";
+
+"Send report" = "रिपोर्ट भेजें";
+
+"Title" = "शीर्षक";
+
+"What went wrong" = "क्या गलत हुआ";
+
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "कृपया समस्या की ज्यादा जानकारी दें। यदि कोई त्रुटि संदेश था, तो हमें बताएं कि उसमें क्या लिखा था। न्यूनतम 10 अक्षर।";
+
+"Your report was sent successfully" = "रिपोर्ट सफलतापूर्वक भेज दी गई";

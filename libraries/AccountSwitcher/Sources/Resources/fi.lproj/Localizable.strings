@@ -1,0 +1,27 @@
+"switch to" = "vaihda tiliin";
+
+"Manage accounts" = "Hallitse tilejä";
+
+"Signed in to Proton Mail" = "Kirjautuneena Proton Mailiin";
+
+"Signed out of Proton Mail" = "Uloskirjautuneena Proton Mailista";
+
+"Sign out" = "Kirjaudu ulos";
+
+"Remove account from this device" = "Poista tili tältä laitteelta";
+
+"Remove account" = "Poista tili";
+
+"You will be signed out and all the data associated with this account will be removed from this device." = "Sinut kirjataan ulos ja kaikki tiliin liittyvät tiedot poistetaan tältä laitteelta.";
+
+"Remove" = "Poista";
+
+"Are you sure you want to sign out %@?" = "Haluatko varmasti kirjata tilin %@ ulos?";
+
+"Dismiss account switcher" = "Sulje tilinvalitsin";
+
+"Sign in to another account" = "Kirjaudu toiselle tilille";
+
+"Cancel" = "Peru";
+
+"Sign in" = "Kirjaudu sisään";

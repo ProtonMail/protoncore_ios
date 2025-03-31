@@ -36,7 +36,9 @@
 
 "Sign in with password" = "Iniciar sessão com a palavra-passe";
 
-"Sign in with SSO" = "Iniciar sessão com SSO";
+"Sign in with SSO" = "Faça o login com SSO";
+
+"Sign in with a QR code" = "Iniciar sessão com um código QR";
 
 "Sign in to your organization" = "Faça o login na sua organização";
 
@@ -44,11 +46,11 @@
 
 "How can we help?" = "Como podemos ajudar?";
 
-"Forgot username" = "Utilizador esquecido";
+"Forgot username" = "Esqueci-me do nome de utilizador";
 
-"Forgot password" = "Esqueceu-se da palavra-passe";
+"Forgot password" = "Esqueci-me da palavra-passe";
 
-"Other sign-in issues" = "Outros problemas de ligação";
+"Other sign-in issues" = "Outros problemas de acesso";
 
 "Customer support" = "Apoio ao cliente";
 
@@ -80,9 +82,9 @@
 
 "Unlock" = "Desbloquear";
 
-"Forgot password" = "Esqueceu-se da palavra-passe";
+"Forgot password" = "Esqueci-me da palavra-passe";
 
-"Two-factor authentication" = "Autenticação em dois passos";
+"Two-factor authentication" = "Autenticação de dois fatores";
 
 "Authenticate" = "Autenticar";
 
@@ -104,7 +106,7 @@
 
 "Change password" = "Alterar a palavra-passe";
 
-"To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "Para utilizar a app Proton como membro de uma organização, primeiro é necessário alterar a sua palavra-passe através de um login no Proton via browser.";
+"To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "Para utilizar a app Proton como membro de uma organização, primeiro é necessário alterar a sua palavra-passe iniciando sessão na Proton através de um browser.";
 
 "Error occured" = "Ocorreu um erro";
 
@@ -114,7 +116,7 @@
 
 "Next" = "Seguinte";
 
-"Use your current email instead" = "Utilizar o seu e-mail actual";
+"Use your current email instead" = "Utilizar o seu e-mail atual";
 
 "Create a secure Proton Mail address instead" = "Criar um endereço seguro do Proton Mail";
 
@@ -122,7 +124,7 @@
 
 "Create your password" = "Crie a sua palavra-passe";
 
-"Password must contain at least 8 characters" = "A palavra-passe deve conter pelo menos 8 carateres";
+"Password must contain at least 8 characters" = "A palavra-passe deve conter pelo menos 8 carateres.";
 
 "Repeat password" = "Repita a palavra-passe";
 
@@ -158,17 +160,17 @@
 
 "Set recovery method" = "Definir método de recuperação";
 
-"Your account is being created" = "A sua conta está a ser criada.";
+"Your account is being created" = "A sua conta está a ser criada";
 
 "This should take no more than a minute." = "Isto não deve demorar mais do que um minuto.";
 
-"Creating your account" = "A criar a sua conta";
+"Creating your account" = "Criação da sua conta";
 
 "Generating your address" = "Gerar o seu endereço";
 
 "Securing your account" = "A proteger a sua conta";
 
-"Verifying your payment" = "Verificação do seu pagamento";
+"Verifying your payment" = "A verificar o seu pagamento";
 
 "Account verification" = "Verificação da conta";
 
@@ -272,7 +274,7 @@
 
 "Password cannot be empty" = "A palavra-passe não pode estar vazia.";
 
-"Password must contain at least 8 characters" = "A palavra-passe deve conter pelo menos 8 carateres";
+"Password must contain at least 8 characters" = "A palavra-passe deve conter pelo menos 8 carateres.";
 
 "Password doesn't match" = "A palavra-passe não corresponde.";
 
@@ -349,3 +351,11 @@
 "Password not valid" = "A palavra-passe não é válida.";
 
 "Passphrase not found" = "A frase-passe não foi encontrada.";
+
+"Open the Proton app on your phone" = "Abra a aplicação Proton no seu telefone.";
+
+"Tap into Settings, then tap Sign in to another device" = "Toque em Definições e toque em Iniciar sessão noutro dispositivo.";
+
+"Tap Scan QR code" = "Toque em Ler o código QR.";
+
+"Scan this code with your phone camera to sign in instantly." = "Lee este código com a câmara do seu telemóvel para iniciar sessão instantaneamente.";

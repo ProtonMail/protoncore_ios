@@ -38,6 +38,8 @@
 
 "Sign in with SSO" = "Zaloguj się przez SSO";
 
+"Sign in with a QR code" = "Zaloguj się kodem QR";
+
 "Sign in to your organization" = "Zaloguj się do organizacji";
 
 "Create an account" = "Utwórz konto";
@@ -344,8 +346,16 @@
 
 "Email is invalid" = "Adres e-mail jest nieprawidłowy";
 
-"Please enter your Proton Account email." = "Please enter your Proton Account email.";
+"Please enter your Proton Account email." = "Wpisz adres e-mail konta Proton.";
 
-"Password not valid" = "Password not valid";
+"Password not valid" = "Hasło nie jest nieprawidłowe";
 
 "Passphrase not found" = "Hasło nie zostało znalezione";
+
+"Open the Proton app on your phone" = "Otwórz aplikację Proton na telefonie";
+
+"Tap into Settings, then tap Sign in to another device" = "Tap into Settings, then tap Sign in to another device";
+
+"Tap Scan QR code" = "Tap Scan QR code";
+
+"Scan this code with your phone camera to sign in instantly." = "Scan this code with your phone camera to sign in instantly.";

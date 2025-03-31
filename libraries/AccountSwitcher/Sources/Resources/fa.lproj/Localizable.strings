@@ -14,7 +14,7 @@
 
 "You will be signed out and all the data associated with this account will be removed from this device." = "You will be signed out and all the data associated with this account will be removed from this device.";
 
-"Remove" = "حذف";
+"Remove" = "حذف کردن";
 
 "Are you sure you want to sign out %@?" = "آیا مطمئنید که می‌خواهید از %@ خارج شوید؟";
 
@@ -22,6 +22,6 @@
 
 "Sign in to another account" = "ورود به یک حساب کاربری دیگر";
 
-"Cancel" = "انصراف";
+"Cancel" = "لغو";
 
 "Sign in" = "ورود";

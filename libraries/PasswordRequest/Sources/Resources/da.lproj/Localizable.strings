@@ -2,7 +2,7 @@
 
 "Enter your password" = "Indtast din adgangskode";
 
-"Continue" = "Fortsæt";
+"Continue" = "Forsæt";
 
 "Password" = "Adgangskode";
 
@@ -10,6 +10,6 @@
 
 "Current password" = "Aktuel adgangskode";
 
-"Cancel password reset" = "Annuller nulstilling af adgangskode";
+"Cancel password reset" = "Annullér nulstilling af adgangskode";
 
-"Cancel password reset?" = "Annuller nulstilling af adgangskode?";
+"Cancel password reset?" = "Annullér nulstilling af adgangskode?";

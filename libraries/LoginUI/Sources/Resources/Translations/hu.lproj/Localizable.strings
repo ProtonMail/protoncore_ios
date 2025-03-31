@@ -10,7 +10,7 @@
 
 "Help" = "Segítség";
 
-"Continue" = "Tovább";
+"Continue" = "Folytatás";
 
 "Password" = "Jelszó";
 
@@ -38,6 +38,8 @@
 
 "Sign in with SSO" = "Bejelentkezés SSO használatával";
 
+"Sign in with a QR code" = "Bejelentkezés QR-kóddal";
+
 "Sign in to your organization" = "Jelentkezzen be a szervezetébe";
 
 "Create an account" = "Fiók létrehozása";
@@ -46,7 +48,7 @@
 
 "Forgot username" = "Elfelejtett felhasználónév";
 
-"Forgot password" = "Elfelejtette a jelszavát";
+"Forgot password" = "Elfelejtett jelszó";
 
 "Other sign-in issues" = "Egyéb bejelentkezési problémák";
 
@@ -70,7 +72,7 @@
 
 "You need a Proton email address to use Proton Mail and Proton Calendar.\nYou’ll still be able to use %@ to sign in, and to recover your account." = "A Proton Mail és a Proton Calendar használatához egy Proton e-mail cím szükséges.\nTovábbra is használhatja a(z) %@ címet bekeletkezéshez, vagy a fiók helyreállításához.";
 
-"Username" = "Felhasználónév";
+"Username" = "Felhasználói név";
 
 "Please enter a username." = "Adja meg a felhasználónevét.";
 
@@ -80,11 +82,11 @@
 
 "Unlock" = "Feloldás";
 
-"Forgot password" = "Elfelejtette a jelszavát";
+"Forgot password" = "Elfelejtett jelszó";
 
 "Two-factor authentication" = "Kétlépcsős hitelesítés";
 
-"Authenticate" = "Azonosítás";
+"Authenticate" = "Hitelesítés";
 
 "Two-factor code" = "Kétlépcsős kód";
 
@@ -112,13 +114,13 @@
 
 "One account for all Proton services." = "Egy fiók minden Proton szolgáltatáshoz.";
 
-"Next" = "Következő";
+"Next" = "Tovább";
 
 "Use your current email instead" = "Inkább a jelenlegi e-mail címem használata";
 
 "Create a secure Proton Mail address instead" = "Inkább egy biztonságos Proton Mail cím létrehozása";
 
-"Email" = "E-mail";
+"Email" = "E-mail cím";
 
 "Create your password" = "Hozzon létre egy jelszót";
 
@@ -134,11 +136,11 @@
 
 "We will send recovery instructions to this email or phone number if you get locked out of your account." = "Erre a címre vagy telefonszámra fogjuk elküldeni a helyreállításhoz szükséges tudnivalókat, ha kizáródna a fiókjából.";
 
-"Email" = "E-mail";
+"Email" = "E-mail cím";
 
 "Phone" = "Telefonszám";
 
-"Recovery email" = "Helyreállító e-mail";
+"Recovery email" = "Helyreállítási e-mail cím";
 
 "Recovery phone number" = "Helyreállítási telefonszám";
 
@@ -154,7 +156,7 @@
 
 "Skip recovery method?" = "Helyreállítási módszer kihagyása?";
 
-"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "A helyreállítási módszerekkel visszaszerezheti a fiókja elérést, a jelszava elvesztése esetén vagy ha kizáródna a fiókjából.";
+"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "Egy helyreállítási módszer beállításával könnyen visszaszerezheti a fiókja elérést, ha elfelejtené a jelszavát vagy kizáródna a fiókból.";
 
 "Set recovery method" = "Helyreállítási módszer hozzáadása";
 
@@ -216,7 +218,7 @@
 
 "Enjoy the world of privacy." = "Élvezze a magánélet világát.";
 
-"Cancel" = "Mégsem";
+"Cancel" = "Törlés";
 
 "Sign in" = "Bejelentkezés";
 
@@ -262,7 +264,7 @@
 
 "%@ added you to their Proton organization." = "%@ felvett téged a Proton szervezetükbe.";
 
-"Continue" = "Tovább";
+"Continue" = "Folytatás";
 
 "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Állítson be egy biztonsági jelszót a továbblépéshez. Ezzel bejelentkezhet és helyreállíthatja az adatait, ha esetleg nem tudna bejelentkezni a Proton fiókjába. Tartsa biztonságban ezt a jelszót.";
 
@@ -278,7 +280,7 @@
 
 "Sign-in requested on another device. Was it you?" = "Bejelentkezési kérelmet küldtek egy másik eszközön. Ön volt az?";
 
-"Enter the confirmation code we sent on your other device for %@." = "Enter the confirmation code we sent on your other device for %@.";
+"Enter the confirmation code we sent on your other device for %@." = "Írja be a másik készülékére küldött megerősítő kódot a %@ számára.";
 
 "Confirmation code" = "Ellenőrző kód";
 
@@ -340,12 +342,20 @@
 
 "Unknown" = "Ismeretlen";
 
-"Set backup password" = "Set backup password";
+"Set backup password" = "Biztonsági jelszó beállítása";
 
-"Email is invalid" = "Email is invalid";
+"Email is invalid" = "Hibás email cím";
 
-"Please enter your Proton Account email." = "Please enter your Proton Account email.";
+"Please enter your Proton Account email." = "Adja meg Proton fiókjának e-mail címét.";
 
-"Password not valid" = "Password not valid";
+"Password not valid" = "Jelszó érvénytelen";
 
-"Passphrase not found" = "Passphrase not found";
+"Passphrase not found" = "Jelmondat nem található";
+
+"Open the Proton app on your phone" = "Nyissa meg a Proton alkalmazást a telefonján";
+
+"Tap into Settings, then tap Sign in to another device" = "Koppintson a Beállítások, majd a Bejelentkezés egy másik eszközre lehetőségre.";
+
+"Tap Scan QR code" = "Koppintson a QR-kód beolvasása gombra";
+
+"Scan this code with your phone camera to sign in instantly." = "Az azonnali bejelentkezéshez szkennelje be ezt a kódot a telefon kamerájával.";

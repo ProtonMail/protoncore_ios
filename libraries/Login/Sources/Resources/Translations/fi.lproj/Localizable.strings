@@ -1,0 +1,17 @@
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Protonin palvelimia ei tavoiteta. Tämä voi johtua vääristä verkkoasetuksista, Protonin palvelinten toiminta ongelmista tai niiden estosta";
+
+"An error has occured" = "Tapahtui virhe";
+
+"Get a Proton Mail address linked to this account in your Proton web settings." = "Hanki tähän tiliin linkitetty Proton Mail -osoite Protonin verkkoasetuksissa.";
+
+"Proton address required" = "Proton-osoite vaaditaan";
+
+"Code doesn't match" = "Koodi ei täsmää";
+
+"Code isn't valid" = "Koodi ei ole kelvollinen";
+
+"Device secret not found" = "Laitesalaisuutta ei löydy";
+
+"Passphrase not found" = "Salalausetta ei löydy";
+
+"Password update failed" = "Salasanan vaihto epäonnistui";

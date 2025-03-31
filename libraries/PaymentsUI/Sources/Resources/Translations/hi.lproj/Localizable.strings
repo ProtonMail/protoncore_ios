@@ -1,0 +1,135 @@
+"OK" = "ठीक है";
+
+"Cancel" = "रद्द करें";
+
+"Warning" = "चेतावनी";
+
+"Select a plan" = "प्लान चुनें";
+
+"Current plan" = "चालू प्लान";
+
+"Subscription" = "सदस्यता";
+
+"Upgrade your plan" = "अपना प्लान अपग्रेड करें";
+
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "मोबाइल ऐप में सिर्फ अपनेआप-रिन्यू के बिना के सालाना की सदस्यता मौजूद है।";
+
+"You cannot manage subscriptions inside the mobile application." = "आप सदस्यता मोबाइल ऐप से नहीं संभाल सकते।";
+
+"Your plan will automatically renew on %@" = "आपका प्लान %@ को अपनेआप रिन्यु हो जाएगा";
+
+"Current plan will expire on %@" = "वर्तमान योजना %@ को समाप्त होगी।";
+
+"Contact an administrator to make changes to your Proton subscription." = "अपने Proton सदस्यता में बदलाव लाने के लिए किसी एडमिन से संपर्क करें।";
+
+"%1$@ of %2$@" = "%2$@ में से %1$@";
+
+"%@ storage" = "%@ स्टोरेज";
+
+"%@ storage / user" = "%@ स्टोरेज / यूज़र";
+
+"for %@" = "%@ के लिए";
+
+"Custom email addresses" = "कस्टम ईमेल पते";
+
+"Priority customer support" = "प्राथमिक ग्राहक मदद";
+
+"Adblocker (NetShield)" = "एडब्लॉकर (NetShield)";
+
+"Streaming service support" = "स्ट्रीम सेवा का सपोर्ट";
+
+"High speed" = "तेज़ रफ्तार";
+
+"Highest speed" = "उच्चतम गति";
+
+"Multi-user support" = "बहु-उपयोगकर्ता समर्थन";
+
+"The basic for private and secure communications." = "निजी और सुरक्षित बातचीत के लिए बुनियादी प्लान।";
+
+"Full-featured mailbox with advanced protection." = "एडवांस सुरक्षा के साथ सारे सुविधा से संपन्न मेलबॉक्स।";
+
+"Limited time offer" = "सीमित समय ऑफर";
+
+"Complete payment?" = "भुगतान पूरा करें?";
+
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Proton बंडल योजना के लिए खरीदारी पहले ही शुरू की जा चुकी है। भुगतान प्रक्रिया पूरी करने और अपना खाता बनाने के लिए जारी रखें दबाएं";
+
+"Complete payment" = "भुगतान पूरा करें";
+
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "खाता एक गड़बड़ के अचानक होने से सेट नहीं हो सका।\nवापस कोशिश करें।";
+
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "IAP पे खरीदने का प्रॉसेस शुरू हो गया है। खरीद को पूरा या रद्द करने के लिए कृपया Apple के निर्देश देखें।";
+
+"In app payments are temporarily unavailable." = "ऐप में भुगतान अस्थायी रूप से उपलब्ध नहीं हैं।";
+
+"One plan for all Proton services" = "सारे Proton सेवाओं के लिए एक प्लान";
+
+"The no-cost starter account designed to empower everyone with privacy by default." = "बिना पैसे वाला शुरुआती खाता जो हर किसी को काम करने दे निजता के साथ।";
+
+"The privacy-first email and calendar solution for your everyday communication needs." = "निजता-सबसे-पहले ईमेल और कैलेंडर आपके रोज़मर्रा के बातचीत जरूरतों के लिए।";
+
+"Your privacy and security are our priority." = "आपकी निजता और सुरक्षा हमारी प्राथमिकता है।";
+
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "स्टोरेज पे फोकस वाला प्लान 200 जीबी के क्लाउड स्टोरेज के साथ आपके फाइल को निजी रखने के लिए।";
+
+"The ultimate privacy pack with access to all premium Proton services." = "सारे Proton सेवाओं के एक्सेस के साथ सबसे ताकतवर निजता पैक।";
+
+"Only non-renewing annual subscriptions are available via this app" = "ऐप से सिर्फ सालाना की सदस्यता का रिन्यू हटाना मौजूद है";
+
+"Your subscription cannot be managed inside the mobile app." = "आप सदस्यता मोबाइल ऐप से नहीं संभाल सकते।";
+
+"Unlimited folders, labels, and filters" = "असीमित फोल्डर, लेबल, और फिल्टर";
+
+"Up to %@ storage" = "%@ स्टोरेज तक";
+
+"Free VPN on a single device" = "मुफ्त वीपीएन एक डिवाइस पे";
+
+"Highest VPN speed" = "बढ़िया वीपीएन रफ्तार";
+
+"Built-in ad-blocker (NetShield)" = "पहले से डाला एड-ब्लॉकर (NetShield)";
+
+"Access to streaming services globally" = "दुनियाभर से स्ट्रीम सेवाएं एक्सेस करें";
+
+"Secure Core servers" = "Secure Core सर्वर";
+
+"TOR over VPN" = "VPN पर Tor";
+
+"P2P/BitTorrent" = "P2P/BitTorrent";
+
+"Get %@" = "%@ लें";
+
+"Get Proton for free" = "Proton मुफ्त में ले";
+
+"Extend subscription" = "सदस्यता खींचे";
+
+"%@ of %@" = "%@ में से %@";
+
+"Connection issues" = "कनेक्शन दिक्कत";
+
+"Check your internet connection" = "अपना इंटरनेट कनेक्शन देखें";
+
+"Strict no-logs policy" = "सख्त लॉग-नहीं नीति";
+
+"Plan successfully upgraded" = "प्लान सफलतापूर्वक अपग्रेड किया गया";
+
+"Integrated 2FA authenticator" = "2FA सत्यापन";
+
+"Priority support" = "प्राथमिक सहायता";
+
+"Unlimited devices" = "असीम डिवाइस";
+
+"Unlimited email aliases" = "अनगिनत ईमेल नकलीनाम";
+
+"Unlimited logins and notes" = "असीम लॉगइन और नोट";
+
+"Custom fields" = "कस्टम फील्ड";
+
+"For next-level password management and identity protection." = "उच्च स्तर के पासवर्ड प्रबंधन और पहचान सुरक्षा के लिए।";
+
+"Pay monthly" = "मासिक भुगतान करें";
+
+"Pay annually" = "सालाना भुगतान करें";
+
+"Pay every two years" = "हर दो साल में भुगतान करें";
+
+"Free" = "मुफ्त";

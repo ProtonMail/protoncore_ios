@@ -38,6 +38,8 @@
 
 "Sign in with SSO" = "Se connecter avec l'authentification unique (SSO)";
 
+"Sign in with a QR code" = "Se connecter avec un QR code";
+
 "Sign in to your organization" = "Connectez-vous à votre organisation";
 
 "Create an account" = "Créer un compte";
@@ -349,3 +351,11 @@
 "Password not valid" = "Le mot de passe n'est pas valide.";
 
 "Passphrase not found" = "La phrase secrète est introuvable.";
+
+"Open the Proton app on your phone" = "Ouvrez l'application Proton sur votre téléphone.";
+
+"Tap into Settings, then tap Sign in to another device" = "Appuyez sur paramètres et sur Se connecter à un autre appareil.";
+
+"Tap Scan QR code" = "Appuyez sur Scanner un QR code.";
+
+"Scan this code with your phone camera to sign in instantly." = "Scannez ce code avec l'appareil photo de votre téléphone pour vous connecter instantanément.";

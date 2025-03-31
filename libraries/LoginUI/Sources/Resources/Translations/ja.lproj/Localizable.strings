@@ -36,7 +36,9 @@
 
 "Sign in with password" = "パスワードでログイン";
 
-"Sign in with SSO" = "SSOでサインイン";
+"Sign in with SSO" = "SSOでサインインする";
+
+"Sign in with a QR code" = "Sign in with a QR code";
 
 "Sign in to your organization" = "組織にサインインする";
 
@@ -104,13 +106,13 @@
 
 "Change password" = "パスワードの変更";
 
-"To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "組織のメンバーとして Proton アプリを使うには、初めにブラウザーから Proton にサインインしてパスワードを変更する必要があります。";
+"To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "組織のメンバーとして Proton アプリを使うと、初めにブラウザーから Proton にサインインしてパスワードを変更する必要があります。";
 
 "Error occured" = "エラーが発生しました";
 
 "Create your Proton Account" = "Proton アカウントを作成";
 
-"One account for all Proton services." = "1つのアカウントですべてのProtonサービスを利用可能。";
+"One account for all Proton services." = "1つのアカウントで全 Proton サービスを利用可能.";
 
 "Next" = "次へ";
 
@@ -349,3 +351,11 @@
 "Password not valid" = "パスワードが無効です";
 
 "Passphrase not found" = "パスフレーズが見つかりません";
+
+"Open the Proton app on your phone" = "Open the Proton app on your phone";
+
+"Tap into Settings, then tap Sign in to another device" = "Tap into Settings, then tap Sign in to another device";
+
+"Tap Scan QR code" = "Tap Scan QR code";
+
+"Scan this code with your phone camera to sign in instantly." = "Scan this code with your phone camera to sign in instantly.";

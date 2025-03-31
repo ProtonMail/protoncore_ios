@@ -2,7 +2,7 @@
 
 "Proton address required" = "Alamat Proton dibutuhkan";
 
-"Update required" = "Pembaruan dibutuhkan";
+"Update required" = "Pembaruan diperlukan";
 
 "Please enter your Proton Account password." = "Silakan masukkan kata sandi Akun Proton.";
 
@@ -10,9 +10,9 @@
 
 "Help" = "Bantuan";
 
-"Continue" = "Lanjut";
+"Continue" = "Lanjutkan";
 
-"Password" = "Kata Sandi";
+"Password" = "Kata sandi";
 
 "The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Server Proton tidak dapat dijangkau. Hal ini dapat disebabkan antara lain oleh pengaturan jaringan yang tidak tepat, server Proton yang sedang offline, atau pemblokiran terhadap server Proton";
 
@@ -24,7 +24,7 @@
 
 "Resend" = "Kirim ulang";
 
-"Get a replacement code sent to %@." = "Dapatkan kode pengganti yang akan dikirim ke %@.";
+"Get a replacement code sent to %@." = "Dapatkan kode pengganti yang dikirim ke %@.";
 
 "Request new code" = "Minta kode baru";
 
@@ -38,6 +38,8 @@
 
 "Sign in with SSO" = "Masuk dengan SSO";
 
+"Sign in with a QR code" = "Masuk dengan kode QR";
+
 "Sign in to your organization" = "Masuk ke organisasi Anda";
 
 "Create an account" = "Buat akun";
@@ -50,9 +52,9 @@
 
 "Other sign-in issues" = "Masalah masuk lainnya";
 
-"Customer support" = "Layanan dukungan";
+"Customer support" = "Layanan pelanggan";
 
-"Still need help? Contact us directly." = "Masih butuh bantuan lebih lanjut? Hubungi kami secara langsung.";
+"Still need help? Contact us directly." = "Masih butuh bantuan? Hubungi kami secara langsung.";
 
 "Please enter your Proton Account email or username." = "Silakan masukkan Akun email Proton atau nama pengguna Anda.";
 
@@ -78,7 +80,7 @@
 
 "Mailbox password" = "Kata sandi kotak surat";
 
-"Unlock" = "Buka kunci";
+"Unlock" = "Membuka kunci";
 
 "Forgot password" = "Lupa kata sandi";
 
@@ -86,13 +88,13 @@
 
 "Authenticate" = "Autentikasi";
 
-"Two-factor code" = "Kode dua-faktor";
+"Two-factor code" = "Kode dua faktor";
 
 "Recovery code" = "Kode pemulihan";
 
 "Use recovery code" = "Gunakan kode pemulihan";
 
-"Use two-factor code" = "Gunakan kode dua-faktor";
+"Use two-factor code" = "Gunakan kode dua faktor";
 
 "Enter the 6-digit code." = "Masukkan kode 6 digit.";
 
@@ -104,13 +106,13 @@
 
 "Change password" = "Ubah kata sandi";
 
-"To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "Untuk dapat menggunakan aplikasi Proton selaku anggota organisasi, Anda perlu mengubah kata sandi Anda dengan masuk ke Proton melalui browser terlebih dahulu.";
+"To use the Proton app as a member of an organization, you first need to change your password by signing into Proton through a browser." = "Untuk menggunakan aplikasi Proton sebagai anggota organisasi, Anda perlu untuk terlebih dahulu mengubah kata sandi Anda dengan masuk ke Proton melalui browser.";
 
 "Error occured" = "Terjadi kesalahan";
 
 "Create your Proton Account" = "Buat Akun Proton Anda";
 
-"One account for all Proton services." = "Satu akun untuk semua layanan Proton.";
+"One account for all Proton services." = "Satu akun untuk seluruh layanan Proton.";
 
 "Next" = "Selanjutnya";
 
@@ -122,7 +124,7 @@
 
 "Create your password" = "Buat kata sandi Anda";
 
-"Password must contain at least 8 characters" = "Kata sandi minimal 8 karakter";
+"Password must contain at least 8 characters" = "Kata sandi harus mengandung minimal 8 karakter";
 
 "Repeat password" = "Ulangi kata sandi";
 
@@ -138,7 +140,7 @@
 
 "Phone" = "Telepon";
 
-"Recovery email" = "Email pemulihan";
+"Recovery email" = "Alamat email pemulihan";
 
 "Recovery phone number" = "Nomor telepon pemulihan";
 
@@ -220,7 +222,7 @@
 
 "Sign in" = "Masuk";
 
-"Troubleshoot" = "Penyelesaian Masalah";
+"Troubleshoot" = "Selesaikan masalah";
 
 "Please choose how you want to confirm your identity." = "Silakan tentukan bagaimana Anda ingin mengonfirmasi identitas Anda.";
 
@@ -262,7 +264,7 @@
 
 "%@ added you to their Proton organization." = "%@ telah menambahkan Anda ke organisasi Proton mereka.";
 
-"Continue" = "Lanjut";
+"Continue" = "Lanjutkan";
 
 "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Tentukan kata sandi cadangan untuk melanjutkan. Kata sandi ini akan memungkinkan Anda untuk masuk dan memulihkan data apabila Anda sampai terkunci dari Akun Proton Anda, sehingga pastikan Anda menyimpan kata sandi ini di tempat yang aman.";
 
@@ -272,7 +274,7 @@
 
 "Password cannot be empty" = "Kata sandi tidak boleh kosong";
 
-"Password must contain at least 8 characters" = "Kata sandi minimal 8 karakter";
+"Password must contain at least 8 characters" = "Kata sandi harus mengandung minimal 8 karakter";
 
 "Password doesn't match" = "Kata sandi tidak sesuai";
 
@@ -349,3 +351,11 @@
 "Password not valid" = "Kata sandi tidak valid";
 
 "Passphrase not found" = "Frasa sandi tidak ditemukan";
+
+"Open the Proton app on your phone" = "Buka aplikasi Proton pada ponsel Anda";
+
+"Tap into Settings, then tap Sign in to another device" = "Ketuk Pengaturan, lalu ketuk Masuk ke perangkat lain";
+
+"Tap Scan QR code" = "Ketuk Pindai kode QR";
+
+"Scan this code with your phone camera to sign in instantly." = "Pindai kode berikut dengan kamera ponsel Anda untuk masuk secara instan.";

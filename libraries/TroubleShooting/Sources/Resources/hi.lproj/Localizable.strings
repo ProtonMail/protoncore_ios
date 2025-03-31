@@ -1,0 +1,49 @@
+"support form" = "सपोर्ट फॉर्म";
+
+"email" = "ईमेल";
+
+"Twitter" = "Twitter";
+
+"Troubleshooting" = "समस्या सुलझाए";
+
+"Allow alternative routing" = "वैकल्पिक रूटिंग की अनुमति दें";
+
+"No internet connection" = "कोई इंटरनेट कनेक्शन नहीं";
+
+"Internet Service Provider (ISP) problem" = "इंटरनेट सेवा प्रदाता (ISP) समस्या";
+
+"Government block" = "सरकारी ब्लॉक";
+
+"Antivirus interference" = "एंटीवायरस हस्तक्षेप";
+
+"Proxy/Firewall interference" = "प्रॉक्सी / फ़ायरवॉल हस्तक्षेप";
+
+"Proton is down" = "Proton नीचे है";
+
+"Still can't find a solution" = "फिर भी समाधान नहीं मिल रहा है";
+
+"In case Proton sites are blocked, this setting allows the app to try alternative network routing to reach Proton, which can be useful for bypassing firewalls or network issues. We recommend keeping this setting on for greater reliability. %1$@" = "यदि प्रोटॉन साइटों को अवरुद्ध किया जाता है, तो यह सेटिंग ऐप को प्रोटॉन तक पहुंचने के लिए वैकल्पिक नेटवर्क रूटिंग की कोशिश करने की अनुमति देती है, जो फायरवॉल या नेटवर्क मुद्दों को दरकिनार करने के लिए उपयोगी हो सकता है। हम इस सेटिंग को अधिक विश्वसनीयता के लिए रखने की सलाह देते हैं। %1$@";
+
+"Learn more" = "और जानें";
+
+"Please make sure that your internet connection is working." = "कृपया सुनिश्चित करें कि आपका इंटरनेट कनेक्शन काम कर रहा है।";
+
+"Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "किसी अन्य नेटवर्क से Proton से कनेक्ट करने का प्रयास करें (या %1$@ या %2$@ का उपयोग करें)।";
+
+"Your country may be blocking access to Proton. Try using %1$@ (or any other VPN) or %2$@ to access Proton." = "आपका देश Proton तक पहुंच को अवरुद्ध कर सकता है। Proton का उपयोग करने के लिए%1$@ (या किसी अन्य VPN) या%2$@ का उपयोग करने का प्रयास करें।";
+
+"Temporarily disable or remove your antivirus software." = "अपने एंटीवायरस सॉफ़्टवेयर को अस्थायी रूप से अक्षम या हटा दें।";
+
+"Disable any proxies or firewalls, or contact your network administrator." = "किसी भी प्रॉक्सी या फ़ायरवॉल को अक्षम करें, या अपने नेटवर्क व्यवस्थापक से संपर्क करें।";
+
+"Check Proton Status for our system status." = "हमारे सिस्टम की स्थिति के लिए प्रोटॉन स्थिति की जाँच करें।";
+
+"Proton Status" = "प्रोटॉन की स्थिति";
+
+"Contact us directly through our support form, email (support@protonmail.zendesk.com), or Twitter." = "हमारे समर्थन फ़ॉर्म, ईमेल (support@protonmail.zendesk.com), या Twitter के माध्यम से सीधे हमसे संपर्क करें।";
+
+"Subject..." = "विषय...";
+
+"Please share your problem." = "अपनी समस्या बताएं।";
+
+"Back" = "पीछे जाएं";

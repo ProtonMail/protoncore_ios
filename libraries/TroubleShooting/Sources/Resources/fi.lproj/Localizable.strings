@@ -1,0 +1,49 @@
+"support form" = "tukilomake";
+
+"email" = "sähköpostiosoite";
+
+"Twitter" = "Twitter";
+
+"Troubleshooting" = "Vianetsintä";
+
+"Allow alternative routing" = "Salli vaihtoehtoinen reititys";
+
+"No internet connection" = "Internet-yhteys puuttuu";
+
+"Internet Service Provider (ISP) problem" = "Internet-palveluntarjoajan (ISP) ongelma";
+
+"Government block" = "Hallinnollinen esto";
+
+"Antivirus interference" = "Virustorjunnan aiheuttama häiriö";
+
+"Proxy/Firewall interference" = "Välityspalvelimen/palomuurin aiheuttama häiriö";
+
+"Proton is down" = "Proton ei ole tavoitettavissa";
+
+"Still can't find a solution" = "Eikö ratkaisua löydy vieläkään";
+
+"In case Proton sites are blocked, this setting allows the app to try alternative network routing to reach Proton, which can be useful for bypassing firewalls or network issues. We recommend keeping this setting on for greater reliability. %1$@" = "Mikäli Protonin sivustoja ei tavoiteta, sallii tämä asetus verkkoyhteyden vaihtoehtoisen reitityksen Protonin tavoittamiseksi. Tämä voi auttaa palomuurien tai yhteysongelmien kierrossa. Suosittelemme asetuksen käyttöä parempaa luotettavuutta varten. %1$@";
+
+"Learn more" = "Lue lisää";
+
+"Please make sure that your internet connection is working." = "Varmista Internet-yhteytesi toiminta.";
+
+"Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "Yritä tavoittaa Proton eri verkon (tai %1$@ tai %2$@ -yhteyksien) välityksellä.";
+
+"Your country may be blocking access to Proton. Try using %1$@ (or any other VPN) or %2$@ to access Proton." = "Maasi hallinto saattaa estää pääsyn Protoniin. Kokeile %1$@, %2$@ tai muita VPN -yhteyksiä Protonin tavoittamiseksi.";
+
+"Temporarily disable or remove your antivirus software." = "Poista tietoturvasovellus tilapäisesti käytöstä tai poista sen asennus.";
+
+"Disable any proxies or firewalls, or contact your network administrator." = "Poista välityspalvelimet ja/tai palomuurit käytöstä, tai ole yhteydessä verkkosi ylläpitoon.";
+
+"Check Proton Status for our system status." = "Tarkasta järjestelmämme tila Proton Status -sivustolta.";
+
+"Proton Status" = "Proton-tila";
+
+"Contact us directly through our support form, email (support@protonmail.zendesk.com), or Twitter." = "Ota meihin yhteyttä tukilomakkeen, sähköpostin (support@protonmail.zendesk.com) tai Twitterin välityksellä.";
+
+"Subject..." = "Aihe...";
+
+"Please share your problem." = "Kerro ongelmastasi.";
+
+"Back" = "Takaisin";

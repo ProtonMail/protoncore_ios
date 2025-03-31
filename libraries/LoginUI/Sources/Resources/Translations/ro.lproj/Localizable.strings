@@ -38,6 +38,8 @@
 
 "Sign in with SSO" = "Autentificare cu SSO";
 
+"Sign in with a QR code" = "Conectare cu cod QR";
+
 "Sign in to your organization" = "Autentificare la organizație";
 
 "Create an account" = "Creare cont";
@@ -349,3 +351,11 @@
 "Password not valid" = "Parolă nevalidă";
 
 "Passphrase not found" = "Fraza de acces nu a fost găsită.";
+
+"Open the Proton app on your phone" = "Deschideți aplicația Proton în telefon";
+
+"Tap into Settings, then tap Sign in to another device" = "Apăsați pe setări, apoi pe Conectare pe alt dispozitiv";
+
+"Tap Scan QR code" = "Apăsați pe Scanare cod QR";
+
+"Scan this code with your phone camera to sign in instantly." = "Scanați acest cod cu camera telefonului pentru a vă conecta.";

@@ -1,4 +1,4 @@
-"OK" = "Ih";
+"OK" = "IH";
 
 "Cancel" = "Sefsex";
 
@@ -8,7 +8,7 @@
 
 "Current plan" = "Aɣawas amiran";
 
-"Subscription" = "Ajerred";
+"Subscription" = "Amultaɣ";
 
 "Upgrade your plan" = "Sali aɣawas-ik";
 
@@ -92,7 +92,7 @@
 
 "Secure Core servers" = "Iqeddacen n Secure Core";
 
-"TOR over VPN" = "Tor ɣef VPN";
+"TOR over VPN" = "Tor s VPN";
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
@@ -102,7 +102,7 @@
 
 "Extend subscription" = "Seɣzef amultaɣ";
 
-"%@ of %@" = "%@ n %@";
+"%@ of %@" = "%@ si %@";
 
 "Connection issues" = "Uguren n tuqqna";
 

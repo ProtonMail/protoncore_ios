@@ -1,16 +1,16 @@
-"OK" = "确定";
+"OK" = "好的";
 
 "Cancel" = "取消";
 
-"Warning" = "警告";
+"Warning" = "注意";
 
 "Select a plan" = "选择套餐";
 
-"Current plan" = "当前等级";
+"Current plan" = "当前方案";
 
-"Subscription" = "账户等级";
+"Subscription" = "订阅授权";
 
-"Upgrade your plan" = "升级账户";
+"Upgrade your plan" = "升级您的套餐";
 
 "Only annual subscriptions without auto-renewal are available inside the mobile app." = "移动应用内仅支持开通无自动续期的年费账户。";
 
@@ -22,17 +22,17 @@
 
 "Contact an administrator to make changes to your Proton subscription." = "请联系机构管理员调整 Proton 账户等级。";
 
-"%1$@ of %2$@" = "共 %2$@，已使用 %1$@";
+"%1$@ of %2$@" = "共 %2$@ ，已使用 %1$@";
 
 "%@ storage" = "%@ 存储空间";
 
 "%@ storage / user" = "每位用户%@ 存储空间";
 
-"for %@" = "时长 %@";
+"for %@" = "仅限 %@";
 
 "Custom email addresses" = "自定义邮箱地址";
 
-"Priority customer support" = "优先客服支持";
+"Priority customer support" = "优先客户支持";
 
 "Adblocker (NetShield)" = "广告拦截 (NetShield)";
 
@@ -62,7 +62,7 @@
 
 "In app payments are temporarily unavailable." = "应用内付款暂时不可用。";
 
-"One plan for all Proton services" = "账户等级对所有 Proton 服务均有效";
+"One plan for all Proton services" = "套餐对所有 Proton 服务均有效";
 
 "The no-cost starter account designed to empower everyone with privacy by default." = "完全免费的普通账户，旨在助力所有人捍卫隐私。";
 
@@ -82,11 +82,11 @@
 
 "Up to %@ storage" = "最大容量达到%@";
 
-"Free VPN on a single device" = "单台设备免费 VPN";
+"Free VPN on a single device" = "单一设备上的免费VPN";
 
-"Highest VPN speed" = "最快的 VPN 速度";
+"Highest VPN speed" = "最快的VPN速度";
 
-"Built-in ad-blocker (NetShield)" = "内置广告过滤器（NetShield）";
+"Built-in ad-blocker (NetShield)" = "内置广告拦截器(NetShield)";
 
 "Access to streaming services globally" = "畅享全球流媒体服务";
 
@@ -102,29 +102,29 @@
 
 "Extend subscription" = "续期";
 
-"%@ of %@" = "已使用 %@，容量 %@";
+"%@ of %@" = "共 %@ ，已使用 %@";
 
 "Connection issues" = "连接问题";
 
 "Check your internet connection" = "检查您的网络连接";
 
-"Strict no-logs policy" = "严格的零日志原则";
+"Strict no-logs policy" = "严格的无日志策略";
 
 "Plan successfully upgraded" = "套餐成功升级";
 
-"Integrated 2FA authenticator" = "集成 2FA 验证器";
+"Integrated 2FA authenticator" = "内置 2FA 验证器";
 
-"Priority support" = "优先享受客服";
+"Priority support" = "优先支持";
 
-"Unlimited devices" = "无设备数量限制";
+"Unlimited devices" = "设备数不限";
 
-"Unlimited email aliases" = "邮箱别名无限量";
+"Unlimited email aliases" = "无限制的电子邮件别名";
 
 "Unlimited logins and notes" = "无限登录和笔记";
 
 "Custom fields" = "自定义字段";
 
-"For next-level password management and identity protection." = "用于下一级密码管理和身份保护。";
+"For next-level password management and identity protection." = "体验更高等级的密码管理与身份保护。";
 
 "Pay monthly" = "按月支付";
 

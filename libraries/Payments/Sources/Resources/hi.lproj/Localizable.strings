@@ -1,0 +1,45 @@
+"Contact customer support" = "ग्राहक मदद टीम से संपर्क करें";
+
+"Failed to get list of available products from App Store." = "App Store से उपलब्ध उत्पादों की सूची प्राप्त करने में विफल।";
+
+"Purchase is not possible." = "खरीद मुमकिन नहीं है।";
+
+"Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you." = "Apple ने हमें सूचित किया कि आपने सेवा योजना को अपग्रेड कर दिया है, लेकिन कुछ तकनीकी डेटा गायब थे। कृपया बग रिपोर्ट भरें और हमारी ग्राहक सहायता टीम आपसे संपर्क करेगी।";
+
+"Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "Apple ने बताया की आपने अपना प्लान अपग्रेड कर लिया है, लेकिन हमने देखा की आप तब से अपने खाते से साइनआउट है।";
+
+"It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "हमारे सर्वर पर किसी भी उत्पाद के लिए आपके खरीदे गए App Store उत्पाद का मिलान करना संभव नहीं था। कृपया बग रिपोर्ट भरें और हमारी ग्राहक सहायता टीम आपसे संपर्क करेगी।";
+
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "आप जिस Proton Mail के जिस खाते के लिए सेवा प्लान अपग्रेड कर रहे है उसमें साइनइन करें ताकि हम खरीद को पूरा कर सके।";
+
+"Apple informed us they could not process the purchase." = "Apple ने हमें सूचित किया कि वे खरीद की प्रक्रिया नहीं कर सकते।";
+
+"We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "हमने आपकी सदस्यता को सफलतापूर्वक सक्रिय कर दिया है। कृपया अपनी नई सेवा प्लान का इस्तेमाल शुरू करने के लिए ऐप को फिर से लॉन्च करें।";
+
+"Please unlock the app to proceed with your service plan activation" = "सेवा प्लान सक्रिय करने के प्रॉसेस को जारी रखने के लिए कृपया ऐप अनलॉक करें";
+
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "कृपया Proton Mail खाते में साइनइन करें जिसके लिए आप सेवा प्लान अपग्रेड कर रहे हैं ताकि हम सेवा योजना को सक्रिय कर सकें।";
+
+"Wrong payment token status. Please relaunch the app. If error persists, contact support." = "गलत भुगतान टोकन स्थिति। ऐप को वापस से लॉन्च करें। अगर समस्या बनी रहती है, तो सहायता टीम से संपर्क करें।";
+
+"Do you want to activate the purchase for %@ address?" = "क्या आप %@ खाते के लिए खरीदारी को सक्रिय करना चाहते हैं?";
+
+"Yes, activate it for " = "हां, इसके लिए सक्षम करें: ";
+
+"No, for another Proton Mail account" = "नहीं, दूसरे Proton Mail खाते के लिए";
+
+"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "हम आपका खाता आपके चुने हुए प्लान पे नहीं कर पाए, तो हमने आपके भुगतान को आपके खाते में क्रेडिट की तरह जोड़ दिया। और जानकारी के लिए और अपग्रेड पूरा करने के लिए, कृपया सहायता से संपर्क करें।";
+
+"Contact Support" = "सहायता से संपर्क";
+
+"Dismiss" = "रद्द करें";
+
+"Payment failed" = "भुगतान असफल";
+
+"You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support." = "आपने सफलतापूर्वक रजिस्टर कर लिया है लेकिन आपका भुगतान प्रॉसेस नहीं हुआ। अपनी भुगतान जानकारी वापिस भेजने के लिए, 'वापिस कोशिश करें' पे दबाएं। आपसे केवल एक बार रकम ली जाएगी। अगर समस्या बनी रहती है, तो कृपया ग्राहक सहायता से संपर्क करें।";
+
+"Retry" = "वापस कोशिश करें";
+
+"OK" = "ठीक है";
+
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Proton सर्वर पे पहुंचा नहीं जा सकता। ये गलत नेटवर्क संरचना, Proton सर्वर का काम नहीं करना या Proton सर्वर के ब्लॉक होने की वजह से हो सकता है।";

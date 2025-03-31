@@ -1,8 +1,8 @@
 "OK" = "OK";
 
-"Cancel" = "Mégsem";
+"Cancel" = "Törlés";
 
-"Warning" = "Figyelem";
+"Warning" = "Figyelmeztetés";
 
 "Select a plan" = "Csomag kiválasztása";
 
@@ -10,7 +10,7 @@
 
 "Subscription" = "Előfizetés";
 
-"Upgrade your plan" = "Váltás nagyobb csomagra";
+"Upgrade your plan" = "Váltson nagyobb csomagra";
 
 "Only annual subscriptions without auto-renewal are available inside the mobile app." = "A mobil alkalmazásban csak éves, nem automatikusan frissülő előfizetés érhető el.";
 
