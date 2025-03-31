@@ -374,4 +374,24 @@
 
 "Scan QR code" = "Skanna QR-kod";
 
-"Authenticate to access the QR code scanner" = "Authenticate to access the QR code scanner";
+"Authenticate to access the QR code scanner" = "Autentisera för åtkomst till QR-kodskanner";
+
+"Place QR code within the square" = "Placera QR-kod i fyrkanten";
+
+"Verifying..." = "Verifierar …";
+
+"You’re signed in to %@ on the other device." = "Du är inloggad på %@ på den andra enheten.";
+
+"You're signed in" = "Du är inloggad";
+
+"Got it" = "Jag förstår";
+
+"Code not recognized. Try again." = "Kod känns inte igen. Försök igen.";
+
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Tips: Skanna aldrig en QR-kod från en webbplats eller en person du inte litar på. Proton kommer aldrig att be dig skanna en QR-kod som inte kommer från domänen account.proton.me.";
+
+"Camera Access Denied." = "Kameraåtkomst nekad.";
+
+"The permission to use the Camera is off. Please enable it from the Settings." = "Behörigheten att använda kameran är av. Aktivera det från ”Inställningar”.";
+
+"Go to Settings" = "Gå till inställningar";

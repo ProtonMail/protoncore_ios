@@ -360,18 +360,38 @@
 
 "Scan this code with your phone camera to sign in instantly." = "Pindai kode berikut dengan kamera ponsel Anda untuk masuk secara instan.";
 
-"Sign in to another device" = "Sign in to another device";
+"Sign in to another device" = "Masuk ke perangkat lainnya";
 
-"Sign in with your QR code" = "Sign in with your QR code";
+"Sign in with your QR code" = "Masuk dengan kode QR Anda";
 
-"Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active.";
+"Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Gunakan perangkat ini untuk memindai kode QR yang muncul pada perangkat yang ingin Anda masuki. Kedua perangkat Anda akan tetap aktif.";
 
-"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "To access the QR code, tap the **Sign in with QR code** button on the sign-in screen.";
+"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "Untuk mengakses kode QR ini, ketuk tombol **Masuk dengan kode QR** pada layar entri masuk.";
 
-"Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust." = "Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust.";
+"Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust." = "Berhati-hatilah terhadap pesan yang mengandung kode QR. Jangan pindai kode QR dari situs web atau orang yang tidak Anda percayai.";
 
-"Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Proton will never ask you to scan a QR code that does not come from the domain **proton.me**.";
+"Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Proton tidak akan pernah meminta Anda untuk memindai kode QR yang tidak berasal dari domain **proton.me**.";
 
-"Scan QR code" = "Scan QR code";
+"Scan QR code" = "Pindai kode QR";
 
-"Authenticate to access the QR code scanner" = "Authenticate to access the QR code scanner";
+"Authenticate to access the QR code scanner" = "Autentikasikan diri Anda untuk mengakses pemindai kode QR";
+
+"Place QR code within the square" = "Posisikan kode QR di dalam kotak";
+
+"Verifying..." = "Memverifikasi…";
+
+"You’re signed in to %@ on the other device." = "Anda terhubung masuk ke %@ pada perangkat lainnya.";
+
+"You're signed in" = "Anda terhubung masuk";
+
+"Got it" = "Mengerti";
+
+"Code not recognized. Try again." = "Kode tidak dikenal. Silakan coba lagi.";
+
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Tips: Jangan pindai kode QR dari situs web atau orang yang tidak Anda percayai. Proton tidak akan pernah meminta Anda untuk memindai kode QR yang tidak berasal dari domain proton.me.";
+
+"Camera Access Denied." = "Akses Kamera Ditolak.";
+
+"The permission to use the Camera is off. Please enable it from the Settings." = "Izin untuk menggunakan Kamera sedang dinonaktifkan. Silakan aktifkan perizinan ini dari menu Pengaturan.";
+
+"Go to Settings" = "Tuju Pengaturan";

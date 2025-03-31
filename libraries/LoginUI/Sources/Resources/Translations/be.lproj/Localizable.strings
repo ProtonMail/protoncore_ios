@@ -366,7 +366,7 @@
 
 "Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Выкарыстоўвайце гэту прыладу для сканіравання QR-кода, які адлюстроўваецца на прыладзе, праз якую вы хочаце ўвайсці. Абедзве прылады застануцца актыўнымі.";
 
-"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "Націсніце кнопку **Увайсці з дапамогай QR-кода** на экране ўваходу, каб атрымаць доступ да QR-кода.";
+"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "Каб атрымаць доступ да QR-кода, націсніце кнопку **Увайсці з QR-кодам** на экране ўваходу.";
 
 "Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust." = "Сачыце за паведамленнямі, якія змяшчаюць QR-код. Ніколі не сканіруйце QR-код атрыманы з сайта або чалавека, якому вы не давяраеце.";
 
@@ -375,3 +375,23 @@
 "Scan QR code" = "Сканіраваць QR-код";
 
 "Authenticate to access the QR code scanner" = "Прайдзіце аўтэнтыфікацыю для доступу да сканера QR-кода";
+
+"Place QR code within the square" = "Памясціце QR-код у квадрат";
+
+"Verifying..." = "Ідзе праверка...";
+
+"You’re signed in to %@ on the other device." = "Вы ўвайшлі ў %@ на іншай прыладзе.";
+
+"You're signed in" = "Вы ўвайшлі ў сістэму";
+
+"Got it" = "Зразумела";
+
+"Code not recognized. Try again." = "Код не распазнаны. Паспрабуйце яшчэ раз.";
+
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Парада: ніколі не сканіруйце QR-код з вэб-сайта або ад чалавека, якому вы не давяраеце. Proton ніколі не будзе прасіць вас сканаваць QR-код, які паходзіць не з дамена account.proton.me.";
+
+"Camera Access Denied." = "Доступ да камеры забаронены.";
+
+"The permission to use the Camera is off. Please enable it from the Settings." = "Дазвол на выкарыстанне камеры выключаны. Уключыце яго ў наладах.";
+
+"Go to Settings" = "Перайдзіце ў Налады";

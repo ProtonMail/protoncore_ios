@@ -375,3 +375,23 @@
 "Scan QR code" = "Skenovat QR kód";
 
 "Authenticate to access the QR code scanner" = "Ověření pro přístup ke skeneru QR kódů";
+
+"Place QR code within the square" = "Umístěte QR kód do čtverce";
+
+"Verifying..." = "Ověřování...";
+
+"You’re signed in to %@ on the other device." = "Jste přihlášeni k %@ na jiném zařízení.";
+
+"You're signed in" = "Jste přihlášeni";
+
+"Got it" = "Rozumím";
+
+"Code not recognized. Try again." = "Kód nerozpoznán. Zkuste to znovu.";
+
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Tip: Nikdy neskenujte QR kód z webové stránky nebo od osoby, které nedůvěřujete. Proton vás nikdy nepožádá o naskenování QR kódu, který nepochází z domény account.proton.me.";
+
+"Camera Access Denied." = "Přístup k fotoaparátu zamítnut.";
+
+"The permission to use the Camera is off. Please enable it from the Settings." = "Oprávnění k používání fotoaparátu je vypnuto. Povolte jej v Nastavení.";
+
+"Go to Settings" = "Přejít do Nastavení";
