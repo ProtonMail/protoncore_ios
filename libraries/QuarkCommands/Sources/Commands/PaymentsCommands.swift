@@ -21,7 +21,6 @@
 
 import Foundation
 
-private let seedSubscriber = "quark/raw::payments:seed-subscriber"
 private let seedPaymentMethod = "quark/raw::payments:seed-payment-method"
 private let makeDelinquent = "quark/raw::payments:make-delinquent"
 private let newSeedSubscriber = "quark/raw::new-payments:seed:subscribed-user"
@@ -38,70 +37,6 @@ public extension Quark {
         case overdueMoreThan14Days
         /// unpaid invoice with payment not received for more than 30 days, the user is considered Delinquent
         case overdueMoreThan30Days
-    }
-
-    @available(*, deprecated, renamed: "newSeedNewSubscriber", message: "`Use new payment provider`.")
-    @discardableResult
-    func seedNewSubscriber(user: User, plan: UserPlan, state: DelinquentState = .paid) throws -> User {
-
-        let args = [
-            "username=\(user.name)",
-            "password=\(user.password)",
-            "plan=\(plan)",
-            "state=\(state)"
-        ]
-
-        let request = try route(seedSubscriber)
-            .args(args)
-            .build()
-
-        do {
-            let (textData, urlResponse) = try executeQuarkRequest(request)
-            guard let responseHTML = String(data: textData, encoding: .utf8) else {
-                throw QuarkError(urlResponse: urlResponse, message: "Unable to decode response")
-            }
-
-            let startPattern = "(ID "
-            let endPattern = ")"
-
-            guard let rangeStart = responseHTML.range(of: startPattern),
-                  let rangeEnd = responseHTML[rangeStart.upperBound...].range(of: endPattern) else {
-                throw QuarkError(urlResponse: urlResponse, message: "Unable to parse User ID")
-            }
-
-            let idStartIndex = rangeStart.upperBound
-            let idEndIndex = rangeEnd.lowerBound
-
-            let idString = String(responseHTML[idStartIndex..<idEndIndex])
-
-            guard let id = Int(idString) else {
-                throw QuarkError(urlResponse: urlResponse, message: "Parsed User ID is not a valid number")
-            }
-
-            var newUser = user
-            newUser.id = id
-            return newUser
-        } catch {
-            throw error
-        }
-    }
-
-    @available(*, deprecated, renamed: "newSeedNewSubscriber", message: "`Use new payment provider`.")
-    @discardableResult
-    func seedNewSubscriberWithCycle(user: User, plan: UserPlan, cycleDurationMonths: Int) throws -> (data: Data, response: URLResponse) {
-
-        let args = [
-            "username=\(user.name)",
-            "password=\(user.password)",
-            "plan=\(plan)",
-            "cycle=\(cycleDurationMonths)"
-        ]
-
-        let request = try route(seedSubscriber)
-            .args(args)
-            .build()
-
-        return try executeQuarkRequest(request)
     }
 
     @discardableResult
@@ -143,13 +78,15 @@ public extension Quark {
     }
 
     @discardableResult
-    func newSeedNewSubscriber(user: User, plan: String, cycle: Int) throws -> User {
+    func newSeedNewSubscriber(user: User, plan: String, cycle: Int, currency: String = "USD",  coupon: String = "") throws -> User {
         let args = [
             "username=\(user.name)",
             "password=\(user.password)",
             "plan=\(plan)",
-            "cycle=\(cycle)"
-        ]
+            "cycle=\(cycle)",
+            "currency=\(currency)",
+            !coupon.isEmpty ? "--coupon=\(coupon)" : nil
+        ].compactMap { $0 }
 
         let request = try route(newSeedSubscriber)
             .args(args)
