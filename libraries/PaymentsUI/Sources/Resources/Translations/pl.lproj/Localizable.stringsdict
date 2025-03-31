@@ -135,11 +135,11 @@
         <key>one</key>
         <string>%d kraju</string>
         <key>few</key>
-        <string>%d krajach</string>
+        <string>%d kraje</string>
         <key>many</key>
-        <string>%d krajach</string>
+        <string>%d krajów</string>
         <key>other</key>
-        <string>%d krajach</string>
+        <string>%d krajów</string>
       </dict>
     </dict>
     <key>&lt;n&gt; connections</key>
@@ -328,13 +328,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d kraju</string>
+        <string>%d kraj</string>
         <key>few</key>
-        <string>%d krajach</string>
+        <string>%d kraje</string>
         <key>many</key>
-        <string>%d krajach</string>
+        <string>%d krajów</string>
         <key>other</key>
-        <string>%d krajach</string>
+        <string>%d krajów</string>
       </dict>
     </dict>
     <key>&lt;n&gt; servers in &lt;m&gt; countries (US, NL, JP)</key>

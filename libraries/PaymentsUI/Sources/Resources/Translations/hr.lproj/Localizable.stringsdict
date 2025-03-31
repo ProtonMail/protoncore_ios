@@ -31,11 +31,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d korisnik</string>
+        <string>%d user</string>
         <key>few</key>
-        <string>%d korisnika</string>
+        <string>%d users</string>
         <key>other</key>
-        <string>%d korisnika</string>
+        <string>%d users</string>
       </dict>
     </dict>
     <key>&lt;n&gt; email addresses</key>
@@ -49,11 +49,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d adresa e-pošte</string>
+        <string>%d email address</string>
         <key>few</key>
-        <string>%d adrese e-pošte</string>
+        <string>%d email addresses</string>
         <key>other</key>
-        <string>%d adrese e-pošte</string>
+        <string>%d email addresses</string>
       </dict>
     </dict>
     <key>&lt;n&gt; email addresses / user</key>
@@ -85,11 +85,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d kalendar</string>
+        <string>%d calendar</string>
         <key>few</key>
-        <string>%d kalendara</string>
+        <string>%d calendars</string>
         <key>other</key>
-        <string>%d kalendara</string>
+        <string>%d calendars</string>
       </dict>
     </dict>
     <key>&lt;n&gt; folders / labels</key>
@@ -121,11 +121,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d država</string>
+        <string>%d country</string>
         <key>few</key>
-        <string>%d države</string>
+        <string>%d countries</string>
         <key>other</key>
-        <string>%d država</string>
+        <string>%d countries</string>
       </dict>
     </dict>
     <key>&lt;n&gt; connections</key>
@@ -139,11 +139,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d veza</string>
+        <string>%d connection</string>
         <key>few</key>
-        <string>%d veza</string>
+        <string>%d connections</string>
         <key>other</key>
-        <string>%d veze</string>
+        <string>%d connections</string>
       </dict>
     </dict>
     <key>&lt;n&gt; VPN connections</key>
@@ -157,11 +157,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d VPN veza</string>
+        <string>%d VPN connection</string>
         <key>few</key>
-        <string>%d VPN veze</string>
+        <string>%d VPN connections</string>
         <key>other</key>
-        <string>%d VPN veza</string>
+        <string>%d VPN connections</string>
       </dict>
     </dict>
     <key>&lt;n&gt; high-speed VPN connections</key>
@@ -175,11 +175,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d VPN veza visoke brzine</string>
+        <string>%d high-speed VPN connection</string>
         <key>few</key>
-        <string>%d VPN veze visoke brzine</string>
+        <string>%d high-speed VPN connections</string>
         <key>other</key>
-        <string>%d VPN veza visoke brzine</string>
+        <string>%d high-speed VPN connections</string>
       </dict>
     </dict>
     <key>&lt;n&gt; custom domains</key>
@@ -193,11 +193,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d prilagođena domena</string>
+        <string>%d custom domain</string>
         <key>few</key>
-        <string>%d prilagođene domene</string>
+        <string>%d custom domains</string>
         <key>other</key>
-        <string>%d prilagođenih domena</string>
+        <string>%d custom domains</string>
       </dict>
     </dict>
     <key>&lt;n&gt; vaults</key>
@@ -211,11 +211,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d trezor</string>
+        <string>%d vault</string>
         <key>few</key>
-        <string>%d trezora</string>
+        <string>%d vaults</string>
         <key>other</key>
-        <string>%d trezora</string>
+        <string>%d vaults</string>
       </dict>
     </dict>
     <key>Support for &lt;n&gt; custom email domains</key>
@@ -247,11 +247,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d mapa i oznaka</string>
+        <string>%d folder and label</string>
         <key>few</key>
-        <string>%d mape i oznake</string>
+        <string>%d folders and labels</string>
         <key>other</key>
-        <string>%d mapa i oznaka</string>
+        <string>%d folders and labels</string>
       </dict>
     </dict>
     <key>High-speed VPN on &lt;n&gt; devices</key>
@@ -296,11 +296,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d država</string>
+        <string>%d country</string>
         <key>few</key>
-        <string>%d države</string>
+        <string>%d countries</string>
         <key>other</key>
-        <string>%d država</string>
+        <string>%d countries</string>
       </dict>
     </dict>
     <key>&lt;n&gt; servers in &lt;m&gt; countries (US, NL, JP)</key>
@@ -314,11 +314,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d poslužitelj</string>
+        <string>%d server</string>
         <key>few</key>
-        <string>%d poslužitelja</string>
+        <string>%d servers</string>
         <key>other</key>
-        <string>%d poslužitelja</string>
+        <string>%d servers</string>
       </dict>
       <key>COUNTRIES</key>
       <dict>
@@ -358,11 +358,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d korisnik</string>
+        <string>%d user</string>
         <key>few</key>
-        <string>%d korisnika</string>
+        <string>%d users</string>
         <key>other</key>
-        <string>%d korisnika</string>
+        <string>%d users</string>
       </dict>
     </dict>
     <key>&lt;n&gt; of &lt;m&gt; email addresses</key>
@@ -389,11 +389,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d adresa e-pošte</string>
+        <string>%d email address</string>
         <key>few</key>
-        <string>%d adrese e-pošte</string>
+        <string>%d email addresses</string>
         <key>other</key>
-        <string>%d adrese e-pošte</string>
+        <string>%d email addresses</string>
       </dict>
     </dict>
     <key>&lt;n&gt; of &lt;m&gt; calendars</key>
@@ -420,11 +420,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d kalendar</string>
+        <string>%d calendar</string>
         <key>few</key>
-        <string>%d kalendara</string>
+        <string>%d calendars</string>
         <key>other</key>
-        <string>%d kalendara</string>
+        <string>%d calendars</string>
       </dict>
     </dict>
     <key>&lt;n&gt; addresses per user</key>
@@ -438,11 +438,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d adresa po korisniku</string>
+        <string>%d address per user</string>
         <key>few</key>
-        <string>%d adrese po korisniku</string>
+        <string>%d addresses per user</string>
         <key>other</key>
-        <string>%d adresa po korisniku</string>
+        <string>%d addresses per user</string>
       </dict>
     </dict>
     <key>&lt;n&gt; calendars per user</key>
@@ -456,11 +456,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d kalendar po korisniku</string>
+        <string>%d calendar per user</string>
         <key>few</key>
-        <string>%d kalendara po korisniku</string>
+        <string>%d calendars per user</string>
         <key>other</key>
-        <string>%d kalendara po korisniku</string>
+        <string>%d calendars per user</string>
       </dict>
     </dict>
     <key>&lt;n&gt; VPN connections per user</key>
@@ -474,11 +474,11 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d VPN veza po korisniku</string>
+        <string>%d VPN connection per user</string>
         <key>few</key>
-        <string>%d VPN veze po korisniku</string>
+        <string>%d VPN connections per user</string>
         <key>other</key>
-        <string>%d VPN veza po korisniku</string>
+        <string>%d VPN connections per user</string>
       </dict>
     </dict>
     <key>Pay for &lt;n&gt; months</key>

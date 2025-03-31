@@ -199,7 +199,7 @@
         <key>many</key>
         <string>%d высокоскоростных подключений к VPN</string>
         <key>other</key>
-        <string>%d высокоскоростных поключений к VPN</string>
+        <string>%d высокоскоростных подключений к VPN</string>
       </dict>
     </dict>
     <key>&lt;n&gt; custom domains</key>
@@ -530,7 +530,7 @@
         <key>one</key>
         <string>%d подключение к VPN на пользователя</string>
         <key>few</key>
-        <string>%d подключений к VPN на пользователя</string>
+        <string>%d подключения к VPN на пользователя</string>
         <key>many</key>
         <string>%d подключений к VPN на пользователя</string>
         <key>other</key>
@@ -548,7 +548,7 @@
         <key>one</key>
         <string>Оплата за %d месяц</string>
         <key>few</key>
-        <string>Оплата за %d месяцев</string>
+        <string>Оплатить %d месяца</string>
         <key>many</key>
         <string>Оплата за %d месяцев</string>
         <key>other</key>

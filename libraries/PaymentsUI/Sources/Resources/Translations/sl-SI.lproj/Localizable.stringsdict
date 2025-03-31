@@ -15,7 +15,7 @@
         <key>one</key>
         <string>%d e-poštni vzdevek</string>
         <key>two</key>
-        <string>%d e-poštnih vzdevkov</string>
+        <string>%d e-poštna vzdevka</string>
         <key>few</key>
         <string>%d e-poštni vzdevki</string>
         <key>other</key>
@@ -552,7 +552,7 @@
         <key>few</key>
         <string>Plačajte za %d mesece</string>
         <key>other</key>
-        <string>Plačajte za %d mesece</string>
+        <string>Plačajte za %d mesecev</string>
       </dict>
       <key>NSStringLocalizedFormatKey</key>
       <string>%#@VARIABLE@</string>
@@ -590,9 +590,9 @@
         <key>one</key>
         <string>Do %d e-poštnega predala za posredovanje</string>
         <key>two</key>
-        <string>Do %d e-poštnih predalov za posredovanje</string>
+        <string>Do %d e-poštna predala za posredovanje</string>
         <key>few</key>
-        <string>Do %d e-poštnih predalov za posredovanje</string>
+        <string>Do %d e-poštni predali za posredovanje</string>
         <key>other</key>
         <string>Do %d e-poštnih predalov za posredovanje</string>
       </dict>

@@ -508,9 +508,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d календара на карыстальніка</string>
+        <string>%d каляндар на карыстальніка</string>
         <key>few</key>
-        <string>%d календароў на карыстальніка</string>
+        <string>%d календары на карыстальніка</string>
         <key>many</key>
         <string>%d календароў на карыстальніка</string>
         <key>other</key>
