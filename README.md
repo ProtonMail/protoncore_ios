@@ -337,11 +337,6 @@ Uses and deliveres framework: [VCard.xcframework](vendor/VCard/VCard.xcframework
 
 Platforms supported: iOS, macOS
 
-
-## Example app
-
-The example app is located in [the ExampleApp directory](ExampleApp).
-
 ## License
 
 The code and data files in this distribution are licensed under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. See [GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.html) for a copy of this license.

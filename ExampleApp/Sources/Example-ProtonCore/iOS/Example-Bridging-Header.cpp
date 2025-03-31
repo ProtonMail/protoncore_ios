@@ -1,1 +1,0 @@
-// Keep this file so Xcode uses clang++ to link with libOpenPGP. - EJC
