@@ -50,7 +50,7 @@ struct ScanQRCodeView: View {
             case .scanning:
                 ScanningView(
                     handleQRCodeString: { qrCode in
-                        viewModel.handleQRCode(qrCode)
+                        viewModel.handleQRCodeDetected(qrCode)
                     },
                     handleCameraUsePermissionRequestRejection: {
                         viewModel.handleCameraUsePermissionRequestRejection()

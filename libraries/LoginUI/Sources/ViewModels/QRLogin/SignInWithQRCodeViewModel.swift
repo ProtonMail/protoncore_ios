@@ -36,7 +36,15 @@ class ClientIdProviderImplementation: ClientIdProvider {
     }
 
     func clientId() -> String {
-        apiService.serviceDelegate?.appVersion ?? ""
+        let appVersion = apiService.serviceDelegate?.appVersion ?? ""
+
+        let components = appVersion.split(separator: "@")
+
+        guard components.count == 2 else {
+            return appVersion
+        }
+
+        return String(components[0])
     }
 }
 

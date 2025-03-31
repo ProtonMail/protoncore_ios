@@ -23,6 +23,18 @@ import ProtonCoreLogin
 import ProtonCoreAuthenticationKeyGeneration
 
 public extension ScanQRCodeInstructionsView {
+    struct Dependencies {
+        let passphrase: String
+        let apiService: APIService
+
+        public init(passphrase: String, apiService: APIService) {
+            self.passphrase = passphrase
+            self.apiService = apiService
+        }
+    }
+}
+
+public extension ScanQRCodeInstructionsView {
     @MainActor
     final class ViewModel: ObservableObject {
         private var shouldExecuteScanQRButtonPress = true
@@ -30,7 +42,12 @@ public extension ScanQRCodeInstructionsView {
 
         @Published var showQRCodeScanner: Bool = false
 
-        public init() {
+        let passphrase: String
+        let apiService: APIService
+
+        public init(dependencies: Dependencies) {
+            self.passphrase = dependencies.passphrase
+            self.apiService = dependencies.apiService
             self.authWithBiometricsOrPass = AuthenticateWithBiometricsOrPasscode(localizedReason: LUITranslation.authenticate_to_scan_qr_description.l10n)
         }
 

@@ -30,7 +30,7 @@ import CryptoKit
 /// for input and output.
 ///
 /// ## Overview
-/// The encryption process uses a randomly generated 12-byte initialization vector (IV) for security,
+/// The encryption process uses a randomly generated 12-byte (or 16-byte if specified) initialization vector (IV) for security,
 /// which is combined with the ciphertext and authentication tag in the resulting output. Decryption
 /// ensures the integrity of the data by verifying the authentication tag.
 ///
@@ -59,13 +59,25 @@ import CryptoKit
 /// }
 /// ```
 ///
-/// - Note: This implementation uses a fixed 12-byte IV and 16-byte authentication tag,
+/// - Note: This implementation uses a fixed 12-byte IV by default (or 16-byte IV if specified)  and 16-byte authentication tag,
 ///         which are standard for AES-GCM.
 public final class AeadCrypto {
-    private let AesCipherIvBytes = 12
+    private var AesCipherIvBytes = 12
     private let AesCipherTagBytes = 16
 
-    public init() {}
+    public enum CipherIvBytes {
+        case _12
+        case _16
+    }
+
+    public init(cipherIvBytes: CipherIvBytes = ._12) {
+        switch cipherIvBytes {
+        case ._12:
+            AesCipherIvBytes = 12
+        case ._16:
+            AesCipherIvBytes = 16
+        }
+    }
 
     // MARK: Public
 
@@ -128,7 +140,7 @@ public final class AeadCrypto {
     /// By default `AES.GCM.Nonce` uses 12-byte.
     /// https://developer.apple.com/documentation/cryptokit/aes/gcm/nonce/init()
     ///
-    /// - Returns: A 12-byte nonce for AES-GCM.
+    /// - Returns: A 12-byte nonce  (or 16-byte IV if AesCipherIvBytes is 16) for AES-GCM.
     /// - Throws: An error if the nonce generation fails.
     private func getRandomIV() throws -> AES.GCM.Nonce {
         guard AesCipherIvBytes == 12 else {
@@ -147,7 +159,7 @@ public final class AeadCrypto {
     /// This method performs AES-GCM encryption on the given plaintext data. It generates a random
     /// initialization vector (IV) and optionally incorporates associated data (AAD) into the
     /// encryption process for additional authentication. The resulting encrypted data contains:
-    /// - The 12-byte IV
+    /// - The 12-byte IV (or 16-byte IV if specified)
     /// - The ciphertext
     /// - The 16-byte authentication tag
     ///
