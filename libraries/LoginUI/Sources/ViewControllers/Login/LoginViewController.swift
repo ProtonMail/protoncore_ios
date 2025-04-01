@@ -22,7 +22,7 @@
 #if os(iOS)
 
 import UIKit
-import WebKit
+@preconcurrency import WebKit
 import ProtonCoreLogin
 import ProtonCoreFoundations
 import ProtonCoreUIFoundations

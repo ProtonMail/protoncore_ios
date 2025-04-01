@@ -178,14 +178,13 @@ extension PMChallenge.Challenge {
             timeZone: TimeZone = .autoupdatingCurrent,
             userDefaults: UserDefaults = .standard
         ) {
-
-            self.appLang = locale.languageCode ?? "unknown"
+            self.appLang = locale.language.languageCode?.identifier ?? "unknown"
             self.cellulars = NetworkInformation.getCellularInfo()
             self.deviceName = device.name.rollingHash()
             self.isDarkmodeOn = UITraitCollection.current.userInterfaceStyle == .dark
             self.isJailbreak = FileManager.isJailbroken()
 
-            self.regionCode = locale.regionCode ?? "unknown"
+            self.regionCode = locale.region?.identifier ?? "unknown"
             self.timezone = timeZone.identifier
             self.timezoneOffset = -1 * (timeZone.secondsFromGMT() / 60)
             self.uuid = device.identifierForVendor?.uuidString ?? "unknown"

@@ -40,8 +40,7 @@ public enum SSOAuthInputPasswordCodeStatus: String, Encodable, CaseIterable {
     case unknown
 
     public static func fromResponseError(_ error: Error) -> Self {
-        guard let httpCode = error.httpCode,
-              let responseError = error as? ResponseError else {
+        guard let httpCode = error.httpCode, error is ResponseError else {
             return .unknown
         }
         switch httpCode {

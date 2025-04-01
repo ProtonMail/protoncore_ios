@@ -29,8 +29,10 @@ public extension SKPaymentTransaction {
     }
 
     #if DEBUG
-        override open var debugDescription: String {
-            "[Date: \(transactionDate) - State: \(String(describing: transactionState))\n Identifier: \(transactionIdentifier). Original: \(original?.debugDescription ?? "self") ]"
-        }
+    override var debugDescription: String {
+        let transactionDate = String(describing: transactionDate)
+        let transactionIdentifier = String(describing: transactionIdentifier)
+        return "[Date: \(transactionDate) - State: \(String(describing: transactionState))\n Identifier: \(transactionIdentifier). Original: \(original?.debugDescription ?? "self") ]"
+    }
     #endif
 }

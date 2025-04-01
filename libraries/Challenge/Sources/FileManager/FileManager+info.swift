@@ -24,8 +24,9 @@ import Foundation
 // MARK: Jail break
 extension FileManager {
     static func isJailbroken() -> Bool {
-        guard TARGET_IPHONE_SIMULATOR != 1 else { return false }
-
+        #if targetEnvironment(simulator)
+        return false
+        #else
         // Check 1 : existence of files that are common for jailbroken devices
         let checkList = [
             "/Applications/Cydia.app",
@@ -54,6 +55,7 @@ extension FileManager {
         } catch {
             return false
         }
+        #endif
     }
 
     private static func canOpen(path: String) -> Bool {

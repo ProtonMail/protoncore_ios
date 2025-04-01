@@ -28,8 +28,7 @@ public final class RenewSubscriptionRequest: BaseApiRequest<Response> {
     override public var path: String { super.path + "/v5/subscription/renew" }
 
     override public var parameters: [String: Any]? {
-        var params: [String: Any] = ["RenewalState": 1]
-        return params
+        return ["RenewalState": 1]
     }
     
     public override init(api: APIService) {
