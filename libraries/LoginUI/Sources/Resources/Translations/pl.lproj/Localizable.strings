@@ -338,7 +338,7 @@
 
 "Sign in with single sign-on" = "Logowanie SSO";
 
-"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Twoja organizacja używa SSO. Kontynuuj logowanie za pomocą zewnętrznego dostawcy SSO.";
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Twoja organizacja używa logowania SSO. Kontynuuj logowanie za pomocą zewnętrznego dostawcy SSO.";
 
 "Unknown" = "Nieznany";
 
@@ -375,3 +375,23 @@
 "Scan QR code" = "Scan QR code";
 
 "Authenticate to access the QR code scanner" = "Authenticate to access the QR code scanner";
+
+"Place QR code within the square" = "Place QR code within the square";
+
+"Verifying..." = "Verifying...";
+
+"You’re signed in to %@ on the other device." = "You’re signed in to %@ on the other device.";
+
+"You're signed in" = "You're signed in";
+
+"Got it" = "Got it";
+
+"Code not recognized. Try again." = "Code not recognized. Try again.";
+
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me.";
+
+"Camera Access Denied." = "Camera Access Denied.";
+
+"The permission to use the Camera is off. Please enable it from the Settings." = "The permission to use the Camera is off. Please enable it from the Settings.";
+
+"Go to Settings" = "Go to Settings";

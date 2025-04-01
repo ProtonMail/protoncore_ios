@@ -366,7 +366,7 @@
 
 "Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Use este dispositivo para escanear el código QR mostrado en el dispositivo al que desea iniciar sesión. Ambos dispositivos permanecerán activos.";
 
-"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "Para acceder al código QR, pulsa el botón **Iniciar sesión con código QR** en la pantalla de inicio de sesión.";
+"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "Para acceder al código QR, pulse el botón **Iniciar sesión con código QR** en la pantalla de inicio de sesión.";
 
 "Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust." = "Cuidado con los mensajes que contienen un código QR. Nunca escanee un código QR desde un sitio web o una persona en la que no confíe.";
 
@@ -375,3 +375,23 @@
 "Scan QR code" = "Escanear el código QR";
 
 "Authenticate to access the QR code scanner" = "Autentíquese para acceder al escáner del código QR";
+
+"Place QR code within the square" = "Coloque el código QR dentro del cuadrado";
+
+"Verifying..." = "Verificando...";
+
+"You’re signed in to %@ on the other device." = "Inició sesión sesión en %@ en el otro dispositivo.";
+
+"You're signed in" = "Inició sesión";
+
+"Got it" = "Entendido";
+
+"Code not recognized. Try again." = "No se reconoce el código. Inténtelo de nuevo.";
+
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Sugerencia: Nunca escanee un código QR desde un sitio web o una persona en la que no confíe. Proton nunca le pedirá que escanee un código QR que no proviene del dominio account.proton.me.";
+
+"Camera Access Denied." = "Acceso a la cámara denegado.";
+
+"The permission to use the Camera is off. Please enable it from the Settings." = "El permiso para usar la cámara está desactivado. Actívelo desde los ajustes.";
+
+"Go to Settings" = "Ir a Ajustes";

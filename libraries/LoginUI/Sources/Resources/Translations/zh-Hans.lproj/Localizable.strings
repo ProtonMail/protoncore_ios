@@ -1,4 +1,4 @@
-"Privacy by default" = "隐私优先";
+"Privacy by default" = "隐私至上";
 
 "Proton address required" = "需要使用 Proton 地址";
 
@@ -375,3 +375,23 @@
 "Scan QR code" = "扫描二维码";
 
 "Authenticate to access the QR code scanner" = "请验证身份以使用二维码扫描器";
+
+"Place QR code within the square" = "请将二维码放入扫描框";
+
+"Verifying..." = "正在验证...";
+
+"You’re signed in to %@ on the other device." = "您在其他设备上登录了 %@。";
+
+"You're signed in" = "您已成功登录";
+
+"Got it" = "知道了";
+
+"Code not recognized. Try again." = "无法识别二维码，请重试。";
+
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "提示：切勿扫描您不信任的网站或个人提供的二维码。Proton 不会要求您扫描不是来自 account.proton.me 域名的二维码。";
+
+"Camera Access Denied." = "摄像头访问被拒绝。";
+
+"The permission to use the Camera is off. Please enable it from the Settings." = "使用相机的权限已关闭。请从设置中启用。";
+
+"Go to Settings" = "转到设置";

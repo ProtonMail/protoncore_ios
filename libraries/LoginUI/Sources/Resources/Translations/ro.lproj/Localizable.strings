@@ -375,3 +375,23 @@
 "Scan QR code" = "Scanare cod QR";
 
 "Authenticate to access the QR code scanner" = "Autentificați-vă pentru a accesa cititorul de coduri QR.";
+
+"Place QR code within the square" = "Plasați codul QR în chenar";
+
+"Verifying..." = "Se verifică...";
+
+"You’re signed in to %@ on the other device." = "V-ați conectat la %@ de pe alt dispozitiv.";
+
+"You're signed in" = "V-ați conectat";
+
+"Got it" = "Am înțeles";
+
+"Code not recognized. Try again." = "Cod nerecunoscut. Reîncercați.";
+
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Sfat: Nu scanați niciodată un cod QR de pe un site web sau de la o persoană în care nu aveți încredere. Proton nu vă va cere niciodată să scanați un cod QR care nu provine de la domeniul account.proton.me.";
+
+"Camera Access Denied." = "Acces la cameră refuzat.";
+
+"The permission to use the Camera is off. Please enable it from the Settings." = "Permisiunea de a accesa camera este oprită. Activați-o din setări.";
+
+"Go to Settings" = "Accesare setări";

@@ -375,3 +375,23 @@
 "Scan QR code" = "Σάρωση κωδικού QR";
 
 "Authenticate to access the QR code scanner" = "Ταυτοποίηση για πρόσβαση στον σαρωτή κωδικών QR";
+
+"Place QR code within the square" = "Τοποθετήστε τον κωδικό QR μέσα στο τετράγωνο";
+
+"Verifying..." = "Επαλήθευση...";
+
+"You’re signed in to %@ on the other device." = "Είστε συνδεδεμένοι στο %@ στην άλλη συσκευή.";
+
+"You're signed in" = "Είστε συνδεδεμένοι";
+
+"Got it" = "Το κατάλαβα";
+
+"Code not recognized. Try again." = "Ο κωδικός δεν αναγνωρίζεται. Δοκιμάστε ξανά.";
+
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Συμβουλή: Μη σαρώνετε ποτέ έναν κωδικό QR από ιστότοπο ή άτομο που δεν εμπιστεύεστε. Η Proton δε θα σας ζητήσει ποτέ να σαρώσετε έναν κωδικό QR που δεν προέρχεται από τον τομέα account.proton.me.";
+
+"Camera Access Denied." = "Δεν επιτρέπεται η Πρόσβαση στην Κάμερα.";
+
+"The permission to use the Camera is off. Please enable it from the Settings." = "Το δικαίωμα χρήσης της κάμερας είναι απενεργοποιημένο. Παρακαλούμε ενεργοποιήστε το από τις Ρυθμίσεις.";
+
+"Go to Settings" = "Μετάβαση στις Ρυθμίσεις";

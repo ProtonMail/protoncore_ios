@@ -375,3 +375,23 @@
 "Scan QR code" = "Escanear el código";
 
 "Authenticate to access the QR code scanner" = "Autenticarse para acceder al escáner de código QR";
+
+"Place QR code within the square" = "Coloca el código QR dentro del cuadrado";
+
+"Verifying..." = "Verificando...";
+
+"You’re signed in to %@ on the other device." = "Has iniciado sesión en %@ en el otro dispositivo.";
+
+"You're signed in" = "Has iniciado sesión";
+
+"Got it" = "Entendido";
+
+"Code not recognized. Try again." = "No se reconoce el código. Inténtalo de nuevo.";
+
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Sugerencia: Nunca escanea un código QR desde un sitio web o una persona en la que no confíes. Proton nunca te pedirá que escanees un código QR que no proviene del dominio account.proton.me.";
+
+"Camera Access Denied." = "Se deniega el acceso a la cámara.";
+
+"The permission to use the Camera is off. Please enable it from the Settings." = "El permiso para usar la cámara está desactivado. Actívalo desde los ajustes.";
+
+"Go to Settings" = "Ir a Ajustes";

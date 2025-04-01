@@ -375,3 +375,23 @@
 "Scan QR code" = "Kare kodu tara";
 
 "Authenticate to access the QR code scanner" = "Kare kod tarayıcıya erişme izni verin";
+
+"Place QR code within the square" = "Kare kodu çerçeve içine yerleştirin";
+
+"Verifying..." = "Doğrulanıyor...";
+
+"You’re signed in to %@ on the other device." = "Başka bir aygıttan %@ oturumu açtınız.";
+
+"You're signed in" = "Oturum açtınız";
+
+"Got it" = "Anladım";
+
+"Code not recognized. Try again." = "Kod anlaşılamadı. Yeniden deneyin.";
+
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "İpucu: Güvenmediğiniz bir siteden veya kişiden gelen bir kare kodu asla taramayın. Proton asla sizden account.proton.me etki alanından gelmeyen bir kare kodu taramanızı istemez.";
+
+"Camera Access Denied." = "Kamera erişimi izni verilmedi.";
+
+"The permission to use the Camera is off. Please enable it from the Settings." = "Kamerayı kullanma izni kapalı. Lütfen ayarlardan açın.";
+
+"Go to Settings" = "Ayarlara git";

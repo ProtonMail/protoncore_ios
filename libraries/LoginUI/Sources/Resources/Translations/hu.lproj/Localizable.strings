@@ -375,3 +375,23 @@
 "Scan QR code" = "QR-kód beolvasása";
 
 "Authenticate to access the QR code scanner" = "Hitelesítés a QR-kód olvasó eléréséhez";
+
+"Place QR code within the square" = "QR-kód elhelyezése a négyzetben";
+
+"Verifying..." = "Ellenőrzés...";
+
+"You’re signed in to %@ on the other device." = "Ön a(z) %@-be van bejelentkezve a másik eszközön.";
+
+"You're signed in" = "Ön a(z) [%s]-be van bejelentkezve a másik eszközön.";
+
+"Got it" = "Értem";
+
+"Code not recognized. Try again." = "Nem ismert kód. Próbálja újra.";
+
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Tipp: Soha ne olvasson be olyan weboldalról vagy személytől származó QR-kódot, akiben nem bízik. A Proton soha nem fog olyan QR-kód beolvasására kérni, amely nem az account.proton.me domainről származik.";
+
+"Camera Access Denied." = "Kamera hozzáférés megtagadva";
+
+"The permission to use the Camera is off. Please enable it from the Settings." = "A kamera használatának engedélye ki van kapcsolva. Kérjük, engedélyezze a Beállításokban.";
+
+"Go to Settings" = "Menjen a beállításokhoz";
