@@ -27,6 +27,7 @@ import ProtonCoreLog
 extension ScanQRCodeView {
     struct Dependencies {
         let passphrase: String
+        let userEmail: String
         let apiService: APIService
     }
 }
@@ -56,6 +57,7 @@ extension ScanQRCodeView {
         init(dependencies: Dependencies) {
             self.passphrase = dependencies.passphrase
             self.apiService = dependencies.apiService
+            self.email = dependencies.userEmail
         }
 
         func handleQRCodeDetected(_ code: String) {
@@ -112,6 +114,7 @@ extension ScanQRCodeView {
 
         func handleGotItButtonPressed() {
             navigationController?.popToRootViewController(animated: true)
+            navigationController?.navigationBar.isHidden = false
         }
     }
 }

@@ -28,6 +28,7 @@ import ProtonCoreLog
 import ProtonCoreNetworking
 import ProtonCoreServices
 import ProtonCoreFeatureFlags
+import ProtonCoreCrypto
 
 public final class LoginService {
 
@@ -185,6 +186,14 @@ public final class LoginService {
 
     // MARK: - Data gathering entry point
 
+    func handleValidCredentials(credential: Credential, passwordMode: PasswordMode, mailboxPassword: String?, isSSO: Bool = false) async -> Result<LoginStatus, LoginError> {
+        await withCheckedContinuation { continuation in
+            self.handleValidCredentials(credential: credential, passwordMode: passwordMode, mailboxPassword: mailboxPassword, isSSO: isSSO) { result in
+                continuation.resume(returning: result)
+            }
+        }
+    }
+
     func handleValidCredentials(credential: Credential, passwordMode: PasswordMode, mailboxPassword: String?, isSSO: Bool = false, completion: @escaping (Result<LoginStatus, LoginError>) -> Void) {
         self.mailboxPassword = mailboxPassword
         withAuthDelegateAvailable(completion) { authDelegate in
@@ -192,7 +201,10 @@ public final class LoginService {
             self.apiService.setSessionUID(uid: credential.UID)
 
             authManager.getUserInfo { [weak self] result in
-                guard let self else { return }
+                guard let self else {
+                    completion(.failure(LoginError.invalidState))
+                    return
+                }
                 switch result {
                 case .success(let user):
                     self.featureFlagsRepository.setApiService(self.apiService)
@@ -254,6 +266,41 @@ public final class LoginService {
             credential: .init(ssoCredential),
             user: user,
             salts: keySalts,
+            passphrases: [:],
+            addresses: addresses,
+            scopes: credential.scopes
+        ))
+    }
+
+    func handleForkedSessionCredentials(credential: Credential) async throws -> LoginStatus {
+        guard let authDelegate = apiService.authDelegate else { throw LoginError.invalidState }
+        authDelegate.onSessionObtaining(credential: credential)
+        self.apiService.setSessionUID(uid: credential.UID)
+        
+        async let userResult = authManager.getUserInfo()
+        async let addressesResult = authManager.getAddresses()
+        let (user, addresses) = try await (userResult, addressesResult)
+        
+        // Verify the keys - make sure the keys are active and that they can be unlocked
+        // DOC: https://protonag.atlassian.net/wiki/spaces/API/pages/55609920/Authentication+sessions+and+tokens#Getting-keys
+        // "test that all the keys that have the property active = 1 can successfully decrypt according to the schema"
+        let keyRingBuilder = KeyRingBuilder()
+        let keys = user.keys + addresses.toKeys()
+        guard keys.allSatisfy({ $0.active == 1 }) else {
+            throw LoginError.missingKeys
+        }
+        try keyRingBuilder.buildPrivateKeyRingUnlock(
+            privateKeys: keys.map({ DecryptionKey(privateKey: ArmoredKey(value: $0.privateKey), passphrase: Passphrase(value: credential.mailboxPassword))})
+        )
+
+        var forkedCredential = credential
+        forkedCredential.userName = user.name ?? ""
+        forkedCredential.userID = user.ID
+
+        return .finished(UserData(
+            credential: .init(forkedCredential),
+            user: user,
+            salts: [],
             passphrases: [:],
             addresses: addresses,
             scopes: credential.scopes

@@ -32,6 +32,17 @@ import ProtonCoreServices
 import ProtonCoreAPIClient
 
 struct LoginStub: Login {
+    func loginWithQRCode(credential: ProtonCoreNetworking.Credential) async throws -> ProtonCoreLogin.LoginStatus {
+        return .finished(
+            UserData.init(
+                credential: AuthCredential(credential),
+                user: User.mock,
+                salts: [],
+                passphrases: [:],
+                addresses: [],
+                scopes: []))
+    }
+    
     
     func validateAndAuthenticateSSO(idpEmail: String, responseToken: ProtonCoreNetworking.SSOResponseToken) async throws -> ProtonCoreLogin.LoginStatus {
         .askTOTP

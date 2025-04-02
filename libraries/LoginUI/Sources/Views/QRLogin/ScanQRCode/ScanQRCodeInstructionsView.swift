@@ -70,7 +70,7 @@ public struct ScanQRCodeInstructionsView: View {
             if show {
                 let hostingViewController = HidingNavigationBarUIHostingController(
                     rootView: AnyView(ScanQRCodeView(
-                        viewModel: .init(dependencies: .init(passphrase: viewModel.passphrase, apiService: viewModel.apiService))))
+                        viewModel: .init(dependencies: .init(passphrase: viewModel.passphrase, userEmail: viewModel.userEmail, apiService: viewModel.apiService))))
                 )
                 navController?.value?.pushViewController(hostingViewController, animated: true)
                 viewModel.showQRCodeScanner = false

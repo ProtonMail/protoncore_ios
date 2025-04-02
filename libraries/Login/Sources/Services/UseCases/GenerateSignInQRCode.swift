@@ -42,6 +42,10 @@ public struct GenerateSignInQRCode {
         public let encryptionKeyBase64: String
         public let clientId: String
 
+        public var encryptionKey: Data {
+            Base64.decode(base64: encryptionKeyBase64)
+        }
+
         public var text: String {
             "\(userCode):\(encryptionKeyBase64):\(clientId)"
         }

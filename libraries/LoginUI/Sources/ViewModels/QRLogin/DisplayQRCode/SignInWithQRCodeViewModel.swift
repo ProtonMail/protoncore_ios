@@ -21,6 +21,8 @@ import Foundation
 import ProtonCoreServices
 import ProtonCoreLogin
 import ProtonCoreAuthenticationKeyGeneration
+import ProtonCoreNetworking
+import SwiftUI
 
 class SecureHashGeneratorImplentation: SecureHashGenerator {
     func random(bits: Int32) throws -> Data {
@@ -53,6 +55,8 @@ extension SignInWithQRCodeView {
         let apiService: APIService?
         let secureHashGenerator: SecureHashGenerator?
         let clientIdProvider: ClientIdProvider?
+        let handleBackToLoginButtonPress: () -> Void
+        let handleLoginCredentials: (Credential, _ loginErrorHandler: @escaping () -> Void) -> Void
     }
 }
 
@@ -61,23 +65,40 @@ extension SignInWithQRCodeView {
     @MainActor
     final class ViewModel: ObservableObject {
 
+        enum ViewState {
+            case qrCode
+            case signInFailed
+        }
+
         @Published var qrCodeText: String?
+        @Published var state: ViewState = .qrCode
+
+        weak var navigationController: UINavigationController?
 
         var refreshWaitTimeInSeconds: TimeInterval = 600
-        var pullForkIntervalInSeconds: TimeInterval = 10
+        var pullForkIntervalInSeconds: TimeInterval = 5
 
         private var getUserCodeAndSelectorUseCase: GetUserCodeAndSelector?
         private var generateSignInQRCodeUseCase: GenerateSignInQRCode?
         private var getForkedSessionUseCase: GetForkedSession?
         private var selector: String?
+        private var encryptionKey: Data?
+        private var apiService: APIService?
+        private let handleLoginCredentials: (Credential, _ loginErrorHandler: @escaping () -> Void) -> Void
+        private let handleBackToLoginButtonPress: () -> Void
 
         var forkedSession: GetForkedSession.Response?
 
         private var refreshQRCodeTimer: Timer?
         private var pullForkTimer: Timer?
 
+        enum Errors: Error {
+            case responseOrEncryptionKeyMissing
+        }
+
         init(dependencies: Dependencies) {
             if let apiService = dependencies.apiService {
+                self.apiService = apiService
                 getUserCodeAndSelectorUseCase = GetUserCodeAndSelector(apiService: apiService)
                 getForkedSessionUseCase = GetForkedSession(apiService: apiService)
             }
@@ -86,6 +107,21 @@ extension SignInWithQRCodeView {
                let clientIdProvider = dependencies.clientIdProvider {
                 generateSignInQRCodeUseCase = GenerateSignInQRCode(hashGenerator: secureHashGenerator, clientIdProvider: clientIdProvider)
             }
+
+            self.handleLoginCredentials = dependencies.handleLoginCredentials
+            self.handleBackToLoginButtonPress = dependencies.handleBackToLoginButtonPress
+        }
+
+        func handleTryAgainPressed() {
+            state = .qrCode
+        }
+
+        func handleBackPressed() {
+            handleBackToLoginButtonPress()
+        }
+
+        private func showSignInFailureView() {
+            self.state = .signInFailed
         }
 
         func generateANewQRCodeText() {
@@ -102,6 +138,7 @@ extension SignInWithQRCodeView {
                     let qrCode = try generateSignInQRCodeUseCase.invoke(userCode: userCodeAndSelector.userCode)
 
                     self.selector = userCodeAndSelector.selector
+                    self.encryptionKey = qrCode.encryptionKey
                     self.qrCodeText = qrCode.text
                 } catch {
 #if DEBUG
@@ -132,19 +169,32 @@ extension SignInWithQRCodeView {
                         guard let selector = self.selector, timer.isValid else { return }
                         print("PT: Fork about to be pulled")
                         self.forkedSession = try await self.getForkedSessionUseCase?.invoke(selector: selector)
+                        guard let response = self.forkedSession,
+                              let key = self.encryptionKey else {
+                            throw Errors.responseOrEncryptionKeyMissing
+                        }
                         timer.invalidate()
                         print("PT: Fork pulled successfully")
-                        // TODO: Notify the Login Coordinator that we should do the "post login" steps.
-                        // I will need to pass the data from here back to the Login Coordinator.
-                        // I will also need to add the decryption step. The payload will contain the encrypted passphrase. The encryptionKey is the one generated for the QR code.
-                        // I will probably add this to the GetForkedSession use case.
-                        // I will do this once I can push forks from the Logged In device.
-                        // I will remove the print statements once this part is done.
+                        try self.handleReceivedForkResponse(response, encryptionKey: key)
                     } catch {
                         // Do nothing. The fork might not be available yet.
                         print("PT: Fork pull error: \(error)")
                     }
                 }
+            })
+        }
+
+        private func handleReceivedForkResponse(_ response: GetForkedSession.Response, encryptionKey: Data) throws {
+            let securePayload = try SecurePassphrasePayload(encryptedPayload: response.payload, encryptionKey: encryptionKey)
+            var credential = Credential.init(UID: response.UID,
+                                             accessToken: response.accessToken,
+                                             refreshToken: response.refreshToken,
+                                             userName: "",
+                                             userID: "",
+                                             scopes: [],
+                                             mailboxPassword: securePayload.passphrase)
+            self.handleLoginCredentials(credential, { [weak self] in
+                self?.showSignInFailureView()
             })
         }
 
@@ -168,5 +218,23 @@ extension SignInWithQRCodeView {
                 }
             })
         }
+
+        var clientName: String? {
+            let componentsSeparatedByAt = self.apiService?.serviceDelegate?.appVersion.components(separatedBy: "@")
+
+            guard let componentsSeparatedByAt = componentsSeparatedByAt,
+                  componentsSeparatedByAt.count == 2 else {
+                return nil
+            }
+
+            let componentsSeparatedByDash = componentsSeparatedByAt[0].components(separatedBy: "-")
+
+            guard componentsSeparatedByDash.count == 2 else {
+                return nil
+            }
+
+            return componentsSeparatedByDash[1]
+        }
     }
 }
+

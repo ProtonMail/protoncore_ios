@@ -34,8 +34,12 @@ import ProtonCoreTestingToolkitUnitTestsCore
 #endif
 
 public class LoginMock: Login {
-    
     public init() {}
+
+    @AsyncThrowingFuncStub(Login.loginWithQRCode(credential:), initialReturn: .crash) public var loginWithQRCodeStub
+    public func loginWithQRCode(credential: ProtonCoreNetworking.Credential) async throws -> ProtonCoreLogin.LoginStatus {
+        try await loginWithQRCodeStub(credential)
+    }
 
     @AsyncThrowingFuncStub(Login.validateAndAuthenticateSSO(idpEmail:responseToken:), initialReturn: .crash) public var validateAndAuthenticateSSOStub
     public func validateAndAuthenticateSSO(idpEmail: String, responseToken: ProtonCoreNetworking.SSOResponseToken) async throws -> ProtonCoreLogin.LoginStatus {

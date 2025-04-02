@@ -221,6 +221,10 @@ public enum LUITranslation: TranslationsExposing {
     case camera_access_denied_title
     case camera_access_go_to_settings_description
     case go_to_settings
+    case to_proton_placeholder
+    case something_went_wrong_title
+    case sign_in_error_description
+    case new_qr_code_title
 
     public var l10n: String {
         switch self {
@@ -613,6 +617,14 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "The permission to use the Camera is off. Please enable it from the Settings.", comment: "The permission to use the Camera is off. Please enable it from the Settings.")
         case .go_to_settings:
             return localized(key: "Go to Settings", comment: "Go to Settings")
+        case .to_proton_placeholder:
+            return localized(key: "to Proton %@", comment: "to Proton %@")
+        case .something_went_wrong_title:
+            return localized(key: "Something went wrong", comment: "Something went wrong")
+        case .sign_in_error_description:
+            return localized(key: "We couldn't sign you in. Please scan a new QR code to try again.", comment: "We couldn't sign you in. Please scan a new QR code to try again.")
+        case .new_qr_code_title:
+            return localized(key: "New QR code", comment: "New QR code")
         }
     }
 }

@@ -30,6 +30,10 @@ import ProtonCoreServices
 import ProtonCoreObservability
 
 extension LoginService: Login {
+    public func loginWithQRCode(credential: Credential) async throws -> LoginStatus {
+        return try await self.handleForkedSessionCredentials(credential: credential)
+    }
+
     @available(*, deprecated, renamed: "validateAndAuthenticateSSO", message: "Remove as part of GSSO")
     public func processResponseToken(idpEmail: String, responseToken: SSOResponseToken, completion: @escaping (Result<LoginStatus, LoginError>) -> Void) {
         if responseToken.uid != apiService.sessionUID,

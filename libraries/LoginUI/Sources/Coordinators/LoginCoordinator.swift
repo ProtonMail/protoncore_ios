@@ -473,7 +473,13 @@ extension LoginCoordinator: HelpViewControllerDelegate {
         case .signInWithQRCode:
             Task { @MainActor in
                 if let helpNavigationController = navigationController?.presentedViewController as? UINavigationController {
-                    let viewModel = self.container.makeSignInWithQRCodeViewModel()
+                    let viewModel = self.container.makeSignInWithQRCodeViewModel(
+                        handleBackToLoginButtonPress: { [weak self] in
+                            self?.userDidDismissHelpViewController()
+                        },
+                        handleLoginData: { [weak self] loginData in
+                            self?.handleQRCodeLoginData(loginData)
+                        })
                     let signInWithQRCodeView = UIHostingController(rootView: SignInWithQRCodeView(viewModel: viewModel))
                     helpNavigationController.pushViewController(signInWithQRCodeView, animated: true)
                 }
@@ -492,6 +498,12 @@ extension LoginCoordinator: HelpViewControllerDelegate {
             guard let viewController = navigationController?.presentedViewController as? HelpViewController
             else { return }
             behaviour(viewController)
+        }
+    }
+
+    private func handleQRCodeLoginData(_ loginData: LoginData) {
+        Task { @MainActor in
+            await self.finish(data: loginData)
         }
     }
 }
