@@ -21,6 +21,7 @@ import ProtonCoreLogin
 @testable import ProtonCoreLoginUI
 import ProtonCoreTestingToolkitUnitTestsServices
 import ProtonCoreServices
+import ProtonCoreNetworking
 
 @MainActor
 class SignInWithQRCodeViewModelTests: XCTestCase {
@@ -28,6 +29,7 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
     var mockAPIService: APIServiceMock!
     var mockSecureHashGenerator: MockSecureHashGenerator!
     var mockClientIdProvider: MockClientIdProvider!
+    var handleLoginCredentials: (Credential, @escaping (LoginError) -> Void) -> Void = { _, _ in return }
 
     override func setUp() async throws {
         mockAPIService = APIServiceMock()
@@ -37,7 +39,8 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
         sut = SignInWithQRCodeView.ViewModel(dependencies:
                 .init(apiService: mockAPIService,
                       secureHashGenerator: mockSecureHashGenerator,
-                      clientIdProvider: mockClientIdProvider))
+                      clientIdProvider: mockClientIdProvider,
+                      handleLoginCredentials: handleLoginCredentials))
     }
 
     func testGenerateQRCodeText() async {
@@ -90,12 +93,13 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
         XCTAssertNotEqual(qrCode1, qrCode2)
     }
 
-    func testPollingOfFork() async {
+    func testPollingOfFork() async throws {
+        let encryptionKey = Data(Array(repeating: UInt8.random(in: 0..<100), count: 32))
         let selector = "selector"
         let userCode = "userCode"
         let clientId = "clientId"
         let UID = "UID"
-        let payload = "TestPayload"
+        var payload = try SecurePassphrasePayload(passphrase: "TestPassphrase", encryptionKey: encryptionKey)
         let refreshToken = "RefreshToken"
         let accessToken = "AccessToken"
         var pullResult: ForkSessionPullResponse?
@@ -114,7 +118,7 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
         }
 
         mockClientIdProvider.id = clientId
-        mockSecureHashGenerator.data = Data([1,2,3])
+        mockSecureHashGenerator.data = encryptionKey
 
         sut.refreshWaitTimeInSeconds = 100
         sut.pullForkIntervalInSeconds = 1
@@ -125,7 +129,7 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
         try? await Task.sleep(nanoseconds: UInt64(sut.pullForkIntervalInSeconds * 1_000_000_000) + 100_000_000)
 
         // wait for one cycle and then set the pullResult, to make sure that we keep polling on failure to get the fork
-        pullResult = ForkSessionPullResponse(code: 1000, payload: payload, UID: UID, refreshToken: refreshToken, accessToken: accessToken)
+        pullResult = ForkSessionPullResponse(code: 1000, payload: payload.encryptedPayload, UID: UID, refreshToken: refreshToken, accessToken: accessToken)
 
         try? await Task.sleep(nanoseconds: UInt64(sut.pullForkIntervalInSeconds * 1_000_000_000) + 100_000_000)
 
@@ -135,7 +139,8 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
         XCTAssertEqual(pullResult?.refreshToken, sut.forkedSession?.refreshToken)
 
         // make sure that after we get the pullResult, we stop polling
-        pullResult = ForkSessionPullResponse(code: 1000, payload: "DifferentPayload", UID: UID, refreshToken: refreshToken, accessToken: accessToken)
+        payload = try SecurePassphrasePayload(passphrase: "DifferentPassphrase", encryptionKey: encryptionKey)
+        pullResult = ForkSessionPullResponse(code: 1000, payload: payload.encryptedPayload, UID: UID, refreshToken: refreshToken, accessToken: accessToken)
 
         try? await Task.sleep(nanoseconds: UInt64(sut.pullForkIntervalInSeconds * 1_000_000_000) + 100_000_000)
 

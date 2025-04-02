@@ -156,12 +156,28 @@ final class Container {
     }
 
     @MainActor
-    func makeSignInWithQRCodeViewModel() -> SignInWithQRCodeView.ViewModel {
-        SignInWithQRCodeView.ViewModel(dependencies:
-                .init(apiService: api,
-                      secureHashGenerator: SecureHashGeneratorImplentation(),
-                      clientIdProvider: ClientIdProviderImplementation(apiService: api))
-        )
+    func makeSignInWithQRCodeViewModel(handleBackToLoginButtonPress: @escaping () -> Void, handleLoginData: @escaping (LoginData) -> Void) -> SignInWithQRCodeView.ViewModel {
+        SignInWithQRCodeView.ViewModel(dependencies: .init(
+            apiService: api,
+            secureHashGenerator: SecureHashGeneratorImplentation(),
+            clientIdProvider: ClientIdProviderImplementation(apiService: api),
+            handleBackToLoginButtonPress: handleBackToLoginButtonPress,
+            handleLoginCredentials: { [weak self] credential, loginErrorHandler in
+                Task { @MainActor [weak self] in
+                    guard let self = self else { return }
+                    do {
+                        let loginStatus = try await self.login.loginWithQRCode(credential: credential)
+                        switch loginStatus {
+                        case .finished(let loginData):
+                            handleLoginData(loginData)
+                        default:
+                            loginErrorHandler()
+                        }
+                    } catch {
+                        loginErrorHandler()
+                    }
+                }
+            }))
     }
 
     func makePaymentsCoordinator(for iaps: ListOfIAPIdentifiers, shownPlanNames: ListOfShownPlanNames, customization: PaymentsUICustomizationOptions, reportBugAlertHandler: BugAlertHandler) -> PaymentsManager {

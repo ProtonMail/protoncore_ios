@@ -338,6 +338,7 @@ public extension CreateAddressKeysError {
 }
 
 public protocol Login {
+    func loginWithQRCode(credential: Credential) async throws -> LoginStatus
     func validateAndAuthenticateSSO(idpEmail: String, responseToken: SSOResponseToken) async throws -> LoginStatus
     @available(*, deprecated, renamed: "validateAndAuthenticateSSO", message: "Remove as part of GSSO")
     func processResponseToken(idpEmail: String, responseToken: SSOResponseToken, completion: @escaping (Result<LoginStatus, LoginError>) -> Void)

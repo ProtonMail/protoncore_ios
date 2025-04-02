@@ -28,6 +28,8 @@ public struct ProtonIconSet {
 
     public let fullStorage = ProtonIcon(name: "fullStorage")
 
+    public let accountWarning = ProtonIcon(name: "ic-account-warning")
+
     public let alias = ProtonIcon(name: "ic-alias")
 
     public let archiveBox = ProtonIcon(name: "ic-archive-box")

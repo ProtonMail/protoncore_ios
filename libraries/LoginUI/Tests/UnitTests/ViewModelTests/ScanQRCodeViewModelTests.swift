@@ -33,7 +33,7 @@ class ScanQRCodeViewModelTests: XCTestCase {
     override func setUp() async throws {
         mockAPIService = APIServiceMock()
 
-        sut = ScanQRCodeView.ViewModel.init(dependencies: .init(passphrase: passphrase, apiService: mockAPIService))
+        sut = ScanQRCodeView.ViewModel.init(dependencies: .init(passphrase: passphrase, userEmail: "email", apiService: mockAPIService))
     }
 
     func testHandleQRCode_GoodQRCode() async throws {
