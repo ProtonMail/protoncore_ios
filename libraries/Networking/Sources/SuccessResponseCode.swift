@@ -1,5 +1,5 @@
 //
-//  Created on 20.03.2025.
+//  Created on 27.03.2025.
 //
 //  Copyright (c) 2025 Proton AG
 //
@@ -16,15 +16,5 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
 
-public enum SuccessStatusCode: Int {
-    case ok = 200
-    case created = 201
-    case accepted = 202
-    case nonAuthoritativeInformation = 203
-    case noContent = 204
-    case resetContent = 205
-    case partialContent = 206
-    case multiStatus = 207
-    case alreadyReported = 208
-    case imUsed = 226
-}
+public typealias SuccessResponseCode = Int
+public typealias SuccessResponseCodes = Set<SuccessResponseCode>

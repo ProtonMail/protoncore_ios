@@ -285,7 +285,7 @@ final class PMAPIServiceHVTests: XCTestCase {
         let result = await withCheckedContinuation { continuation in
             service.request(method: .get, path: "unit/tests", parameters: nil, headers: nil,
                             authenticated: false, authRetry: true, customAuthCredential: authCredential,
-                            nonDefaultTimeout: nil, retryPolicy: .userInitiated, successStatusCode: .accepted,
+                            nonDefaultTimeout: nil, retryPolicy: .userInitiated, successStatusCodes: [.accepted],
                             jsonCompletion: { task, result in continuation.resume(returning: (task, result)) })
         }
 

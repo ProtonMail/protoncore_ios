@@ -104,7 +104,7 @@ public struct APIServiceMock: APIService {
     @PropertyStub(\APIServiceMock.signUpDomain, initialGet: .crash) public var signUpDomainStub
     public var signUpDomain: String { signUpDomainStub() }
 
-    @FuncStub(APIServiceMock.request(method:path:parameters:headers:authenticated:authRetry:customAuthCredential:nonDefaultTimeout:retryPolicy:successStatusCode:onDataTaskCreated:jsonCompletion:)) public var requestJSONStub
+    @FuncStub(APIServiceMock.request(method:path:parameters:headers:authenticated:authRetry:customAuthCredential:nonDefaultTimeout:retryPolicy:successStatusCodes:onDataTaskCreated:jsonCompletion:)) public var requestJSONStub
     public func request(method: HTTPMethod,
                         path: String,
                         parameters: Any?,
@@ -114,10 +114,10 @@ public struct APIServiceMock: APIService {
                         customAuthCredential: AuthCredential?,
                         nonDefaultTimeout: TimeInterval?,
                         retryPolicy: ProtonRetryPolicy.RetryMode,
-                        successStatusCode: SuccessStatusCode,
+                        successStatusCodes: SuccessStatusCodes,
                         onDataTaskCreated: @escaping (URLSessionDataTask) -> Void,
                         jsonCompletion: @escaping JSONCompletion) {
-        requestJSONStub(method, path, parameters, headers, authenticated, authRetry, customAuthCredential, nonDefaultTimeout, retryPolicy, successStatusCode, onDataTaskCreated, jsonCompletion)
+        requestJSONStub(method, path, parameters, headers, authenticated, authRetry, customAuthCredential, nonDefaultTimeout, retryPolicy, successStatusCodes, onDataTaskCreated, jsonCompletion)
     }
 
     func requestWithoutGenerics(method: HTTPMethod,
@@ -159,7 +159,7 @@ public struct APIServiceMock: APIService {
         downloadStub(url, destinationDirectoryURL, headers, authenticated, customAuthCredential, nonDefaultTimeout, retryPolicy, downloadTask, downloadCompletion)
     }
 
-    @FuncStub(APIServiceMock.upload(byPath:parameters:keyPackets:dataPacket:signature:headers:authenticated:customAuthCredential:nonDefaultTimeout:retryPolicy:successStatusCode:uploadProgress:jsonCompletion:)) public var uploadJSONStub
+    @FuncStub(APIServiceMock.upload(byPath:parameters:keyPackets:dataPacket:signature:headers:authenticated:customAuthCredential:nonDefaultTimeout:retryPolicy:successStatusCodes:uploadProgress:jsonCompletion:)) public var uploadJSONStub
     public func upload(byPath path: String,
                        parameters: [String: String],
                        keyPackets: Data,
@@ -170,10 +170,10 @@ public struct APIServiceMock: APIService {
                        customAuthCredential: AuthCredential?,
                        nonDefaultTimeout: TimeInterval?,
                        retryPolicy: ProtonRetryPolicy.RetryMode,
-                       successStatusCode: SuccessStatusCode,
+                       successStatusCodes: SuccessStatusCodes,
                        uploadProgress: ProgressCompletion?,
                        jsonCompletion: @escaping JSONCompletion) {
-        uploadJSONStub(path, parameters, keyPackets, dataPacket, signature, headers, authenticated, customAuthCredential, nonDefaultTimeout, retryPolicy, successStatusCode, uploadProgress, jsonCompletion)
+        uploadJSONStub(path, parameters, keyPackets, dataPacket, signature, headers, authenticated, customAuthCredential, nonDefaultTimeout, retryPolicy, successStatusCodes, uploadProgress, jsonCompletion)
     }
 
     private func uploadWithoutGenerics(byPath path: String,
@@ -205,7 +205,7 @@ public struct APIServiceMock: APIService {
         uploadDecodableStub(path, parameters, keyPackets, dataPacket, signature, headers, authenticated, customAuthCredential, nonDefaultTimeout, retryPolicy, uploadProgress, eraseGenerics(from: decodableCompletion))
     }
 
-    @FuncStub(APIServiceMock.upload(byPath:parameters:files:headers:authenticated:customAuthCredential:nonDefaultTimeout:retryPolicy:successStatusCode:uploadProgress:jsonCompletion:)) public var uploadFilesJSONStub
+    @FuncStub(APIServiceMock.upload(byPath:parameters:files:headers:authenticated:customAuthCredential:nonDefaultTimeout:retryPolicy:successStatusCodes:uploadProgress:jsonCompletion:)) public var uploadFilesJSONStub
     public func upload(byPath path: String,
                        parameters: Any?,
                        files: [String: URL],
@@ -214,10 +214,10 @@ public struct APIServiceMock: APIService {
                        customAuthCredential: AuthCredential?,
                        nonDefaultTimeout: TimeInterval?,
                        retryPolicy: ProtonRetryPolicy.RetryMode,
-                       successStatusCode: SuccessStatusCode,
+                       successStatusCodes: SuccessStatusCodes,
                        uploadProgress: ProgressCompletion?,
                        jsonCompletion: @escaping JSONCompletion) {
-        uploadFilesJSONStub(path, parameters, files, headers, authenticated, customAuthCredential, nonDefaultTimeout, retryPolicy, successStatusCode, uploadProgress, jsonCompletion)
+        uploadFilesJSONStub(path, parameters, files, headers, authenticated, customAuthCredential, nonDefaultTimeout, retryPolicy, successStatusCodes, uploadProgress, jsonCompletion)
     }
 
     private func uploadFilesWithoutGenerics(byPath path: String,
@@ -245,7 +245,7 @@ public struct APIServiceMock: APIService {
 
     }
 
-    @FuncStub(APIServiceMock.uploadFromFile(byPath:parameters:keyPackets:dataPacketSourceFileURL:signature:headers:authenticated:customAuthCredential:nonDefaultTimeout:retryPolicy:successStatusCode:uploadProgress:jsonCompletion:)) public var uploadFromFileJsonStub
+    @FuncStub(APIServiceMock.uploadFromFile(byPath:parameters:keyPackets:dataPacketSourceFileURL:signature:headers:authenticated:customAuthCredential:nonDefaultTimeout:retryPolicy:successStatusCodes:uploadProgress:jsonCompletion:)) public var uploadFromFileJsonStub
     public func uploadFromFile(byPath path: String,
                                parameters: [String: String],
                                keyPackets: Data,
@@ -256,10 +256,10 @@ public struct APIServiceMock: APIService {
                                customAuthCredential: AuthCredential?,
                                nonDefaultTimeout: TimeInterval?,
                                retryPolicy: ProtonRetryPolicy.RetryMode,
-                               successStatusCode: SuccessStatusCode,
+                               successStatusCodes: SuccessStatusCodes,
                                uploadProgress: ProgressCompletion?,
                                jsonCompletion: @escaping JSONCompletion) {
-        uploadFromFileJsonStub(path, parameters, keyPackets, dataPacketSourceFileURL, signature, headers, authenticated, customAuthCredential, nonDefaultTimeout, retryPolicy, successStatusCode, uploadProgress, jsonCompletion)
+        uploadFromFileJsonStub(path, parameters, keyPackets, dataPacketSourceFileURL, signature, headers, authenticated, customAuthCredential, nonDefaultTimeout, retryPolicy, successStatusCodes, uploadProgress, jsonCompletion)
     }
 
     func uploadFromFileWithoutGenerics(byPath path: String,

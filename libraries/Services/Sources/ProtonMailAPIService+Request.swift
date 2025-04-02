@@ -54,7 +54,7 @@ extension PMAPIService {
                         customAuthCredential: AuthCredential?,
                         nonDefaultTimeout: TimeInterval?,
                         retryPolicy: ProtonRetryPolicy.RetryMode,
-                        successStatusCode: SuccessStatusCode = .ok,
+                        successStatusCodes: SuccessStatusCodes = SuccessStatusCodes.default,
                         onDataTaskCreated: @escaping (URLSessionDataTask) -> Void = { _ in },
                         jsonCompletion: @escaping JSONCompletion) {
         startRequest(
@@ -70,7 +70,10 @@ extension PMAPIService {
             retryPolicy: retryPolicy,
             onDataTaskCreated: onDataTaskCreated,
             completion: Either<JSONCompletion, DecodableCompletion<DummyAPIDecodableResponseOnlyForSatisfyingGenericsResolving>>.left(
-                transformJSONCompletion(successStatusCode: successStatusCode, jsonCompletion: jsonCompletion)
+                transformJSONCompletion(
+                    successStatusCodes: successStatusCodes,
+                    jsonCompletion: jsonCompletion
+                )
             )
         )
     }

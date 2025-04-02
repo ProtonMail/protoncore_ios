@@ -61,8 +61,8 @@ public protocol Request: Package {
     /// initially using for sending the fingerprint
     var challengeProperties: ChallengeProperties? { get }
 
-    var successStatusCode: SuccessStatusCode { get }
-    var successResponseCodes: [Int] { get }
+    var successStatusCodes: SuccessStatusCodes { get }
+    var successResponseCodes: SuccessResponseCodes { get }
 }
 
 extension Request {
@@ -102,11 +102,11 @@ extension Request {
         return nil
     }
 
-    public var successStatusCode: SuccessStatusCode {
-        return .ok
+    public var successStatusCodes: SuccessStatusCodes {
+        return [.ok]
     }
 
-    public var successResponseCodes: [Int] {
+    public var successResponseCodes: SuccessResponseCodes {
         return [1000, 1001]
     }
 

@@ -349,7 +349,7 @@ public class PMAPIService: APIService {
     }
 
     func transformJSONCompletion(
-        successStatusCode: SuccessStatusCode,
+        successStatusCodes: SuccessStatusCodes,
         jsonCompletion: @escaping JSONCompletion
     ) -> JSONCompletion {
 
@@ -357,7 +357,7 @@ public class PMAPIService: APIService {
             switch result {
             case .failure: jsonCompletion(task, result)
             case .success(let dict):
-                if let httpResponse = task?.response as? HTTPURLResponse, httpResponse.statusCode != successStatusCode.rawValue {
+                if let httpResponse = task?.response as? HTTPURLResponse, !successStatusCodes.contains(where: { $0.rawValue == httpResponse.statusCode }) {
                     let error: NSError
                     if let responseCode = dict["Code"] as? Int {
                         error = NSError(

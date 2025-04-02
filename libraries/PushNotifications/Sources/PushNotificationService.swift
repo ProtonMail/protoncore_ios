@@ -252,7 +252,7 @@ extension PushNotificationService {
                                    customAuthCredential: request.authCredential,
                                    nonDefaultTimeout: request.nonDefaultTimeout,
                                    retryPolicy: request.retryPolicy,
-                                   successStatusCode: .ok,
+                                   successStatusCodes: .default,
                                    onDataTaskCreated: { _ in }) { task, result in
 
                     if let httpResponse = task?.response as? HTTPURLResponse {
