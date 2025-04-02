@@ -21,4 +21,24 @@
 
 import Foundation
 
-public let spmResourcesBundle = Bundle.module
+fileprivate func isResourceBundlePath(_ path: String) -> Bool {
+    /*
+     * https://developer.apple.com/documentation/swift/fileid()
+     * "The unique identifier has the form `module/file`, where `file` is the name of the file in which the expression
+     *  appears and `module` is the name of the module that this file is part of."
+     */
+    let name = #fileID.components(separatedBy: "/").first!
+    return path.hasSuffix("\(name).bundle")
+}
+
+public let spmResourcesBundle: Bundle = {
+#if DEBUG
+    if let testBundlePath = ProcessInfo.processInfo.environment["XCTestBundlePath"],
+       let paths = Bundle(path: testBundlePath)?.paths(forResourcesOfType: "bundle", inDirectory: nil),
+       let resourceBundlePath = paths.first(where: isResourceBundlePath),
+       let resourceBundle = Bundle(path: resourceBundlePath) {
+        return resourceBundle
+    }
+#endif
+    return Bundle.module
+}()
