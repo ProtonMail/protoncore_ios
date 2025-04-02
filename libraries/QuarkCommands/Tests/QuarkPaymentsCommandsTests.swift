@@ -62,7 +62,7 @@ final class QuarkPaymentsCommandsTests: XCTestCase {
         let user = User(name: "quarkcommand@test.quark.commands.url", password: "123456789")
         do {
             // Act
-            let newUser = try quarkCommand.seedNewSubscriber(user: user, plan: .mail2022)
+            let newUser = try quarkCommand.newSeedNewSubscriber(user: user, plan: .mail2022, cycle: 1)
 
             // Assert
             XCTAssertNotNil(newUser.id, "User id should come from the response")
