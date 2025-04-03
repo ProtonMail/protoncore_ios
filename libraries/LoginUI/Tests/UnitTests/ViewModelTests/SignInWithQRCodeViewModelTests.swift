@@ -29,7 +29,7 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
     var mockAPIService: APIServiceMock!
     var mockSecureHashGenerator: MockSecureHashGenerator!
     var mockClientIdProvider: MockClientIdProvider!
-    var handleLoginCredentials: (Credential, @escaping (LoginError) -> Void) -> Void = { _, _ in return }
+    var handleLoginCredentials: (Credential, @escaping () -> Void) -> Void = { _, _ in return }
 
     override func setUp() async throws {
         mockAPIService = APIServiceMock()
@@ -40,6 +40,7 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
                 .init(apiService: mockAPIService,
                       secureHashGenerator: mockSecureHashGenerator,
                       clientIdProvider: mockClientIdProvider,
+                      handleBackToLoginButtonPress: {},
                       handleLoginCredentials: handleLoginCredentials))
     }
 
