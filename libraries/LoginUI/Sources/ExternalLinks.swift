@@ -35,7 +35,7 @@ final class ExternalLinks {
     var passwordReset: URL {
         switch clientApp {
         case .vpn:
-            return URL(string: "https://account.protonvpn.com/reset-password")!
+            return URL(string: "https://account.protonvpn.com/reset-password?ref=ios")!
         default:
             return URL(string: "https://account.proton.me/reset-password")!
         }
@@ -44,7 +44,7 @@ final class ExternalLinks {
     var accountSetup: URL {
         switch clientApp {
         case .vpn:
-            return URL(string: "https://account.protonvpn.com/")!
+            return URL(string: "https://account.protonvpn.com?ref=ios")!
         default:
             return URL(string: "https://account.proton.me/")!
         }
@@ -66,7 +66,7 @@ final class ExternalLinks {
     var support: URL {
         switch clientApp {
         case .vpn:
-            return URL(string: "https://protonvpn.com/support")!
+            return URL(string: "https://protonvpn.com/support?ref=ios")!
         default:
             return URL(string: "https://proton.me/support/contact")!
         }
@@ -75,7 +75,7 @@ final class ExternalLinks {
     var commonLoginProblems: URL {
         switch clientApp {
         case .vpn:
-            return URL(string: "https://protonvpn.com/support/login-problems")!
+            return URL(string: "https://protonvpn.com/support/login-problems?ref=ios")!
         default:
             return URL(string: "https://proton.me/support/common-login-problems")!
         }
@@ -84,7 +84,7 @@ final class ExternalLinks {
     var forgottenUsername: URL {
         switch clientApp {
         case .vpn:
-            return URL(string: "https://account.protonvpn.com/forgot-username")!
+            return URL(string: "https://account.protonvpn.com/forgot-username?ref=ios")!
         default:
             return URL(string: "https://account.proton.me/forgot-username")!
         }
