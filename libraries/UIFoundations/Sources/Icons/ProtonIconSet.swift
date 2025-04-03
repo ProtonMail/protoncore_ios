@@ -162,6 +162,8 @@ public struct ProtonIconSet {
 
     public let camera = ProtonIcon(name: "ic-camera")
 
+    public let cameraIllustration = ProtonIcon(name: "ic-camera-illustration")
+
     public let cardIdentity = ProtonIcon(name: "ic-card-identity")
 
     public let chartLine = ProtonIcon(name: "ic-chart-line")

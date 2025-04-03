@@ -29,8 +29,6 @@ public struct SignInWithQRCodeView: View {
 
     @StateObject var viewModel: ViewModel
 
-    @State var theme: UIUserInterfaceStyle = .unspecified
-
     public var body: some View {
         VStack(alignment: .center, spacing: Constants.noSpacing) {
             switch viewModel.state {
@@ -45,7 +43,6 @@ public struct SignInWithQRCodeView: View {
                     }
             case .signInFailed:
                 SignInFailedView(
-                    theme: theme,
                     handleTryAgainPress: {
                         viewModel.handleTryAgainPressed()
                     }, handleBackPress: {
@@ -56,7 +53,6 @@ public struct SignInWithQRCodeView: View {
         .background(
             NavigationControllerAccessor(callback: { navController in
                 viewModel.navigationController = navController
-                self.theme = navController?.traitCollection.userInterfaceStyle ?? .unspecified
             })
         )
     }

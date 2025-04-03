@@ -116,6 +116,23 @@ extension ScanQRCodeView {
             navigationController?.popToRootViewController(animated: true)
             navigationController?.navigationBar.isHidden = false
         }
+
+        var clientName: String? {
+            let componentsSeparatedByAt = self.apiService.serviceDelegate?.appVersion.components(separatedBy: "@")
+
+            guard let componentsSeparatedByAt = componentsSeparatedByAt,
+                  componentsSeparatedByAt.count == 2 else {
+                return nil
+            }
+
+            let componentsSeparatedByDash = componentsSeparatedByAt[0].components(separatedBy: "-")
+
+            guard componentsSeparatedByDash.count == 2 else {
+                return nil
+            }
+
+            return componentsSeparatedByDash[1]
+        }
     }
 }
 

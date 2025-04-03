@@ -36,7 +36,6 @@ struct SignInFailedView: View {
         static let sectionPadding: CGFloat = 24
     }
 
-    var theme: UIUserInterfaceStyle
     var handleTryAgainPress: () -> Void
     var handleBackPress: () -> Void
 
@@ -62,7 +61,7 @@ struct SignInFailedView: View {
     var title: some View {
         Text(LUITranslation.something_went_wrong_title.l10n)
             .font(.title2)
-            .foregroundStyle(theme == .light ? ColorProvider.Black : ColorProvider.White)
+            .foregroundStyle(ColorProvider.TextNorm)
             .multilineTextAlignment(.center)
             .padding(.horizontal, Constants.leadingTrailingPadding)
             .padding(.top, Constants.sectionPadding)
