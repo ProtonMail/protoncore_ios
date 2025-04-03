@@ -24,6 +24,7 @@ import ProtonCoreUIFoundations
 fileprivate enum Constants {
     static let noSpacing: CGFloat = 0
     static let closeButtonHeight: CGFloat = 24
+    static let arrowOutHeight: CGFloat = 24
     static let horizontalPadding: CGFloat = 16
     static let cornerRadius: CGFloat = 16
     static let crosshairTopPadding: CGFloat = 144
@@ -37,6 +38,10 @@ fileprivate enum Constants {
     static let successImageHeight: CGFloat = 128
     static let failureImageHeight: CGFloat = 168
     static let topTextTopPadding: CGFloat = 72
+    static let cameraIllustrationSize: CGSize = .init(width: 188, height: 148)
+    static let cameraIllustrationTopPadding: CGFloat = 80
+    static let cameraIllustrationBottomPadding: CGFloat = 24
+    static let textPadding: CGFloat = 16
 }
 
 @MainActor
@@ -70,7 +75,7 @@ struct ScanQRCodeView: View {
                     }
                 }
             case .cameraNotAllowed:
-                CameraNotAllowedView {
+                CameraNotAllowedView(clientName: viewModel.clientName) {
                     viewModel.handleGoToSettingsPressed()
                 }
             }
@@ -224,16 +229,83 @@ private struct FailureView: View {
 
 @MainActor
 private struct CameraNotAllowedView: View {
+
+    var clientName: String?
     var buttonPressAction: () -> Void
 
     var body: some View {
-        SharedImageTextAndButtonView(
-            topText: LUITranslation.camera_access_denied_title.l10n,
-            image: IconProvider.scanQRCodeWarning,
-            imageHeight: Constants.failureImageHeight,
-            infoText: AttributedString.markdown(LUITranslation.camera_access_go_to_settings_description.l10n),
-            buttonTitle: LUITranslation.go_to_settings.l10n,
-            buttonPressAction: buttonPressAction)
+        VStack(alignment: .center, spacing: Constants.noSpacing) {
+            icon
+            title
+            description
+            Spacer()
+            disclaimer
+            button
+        }
+    }
+
+    var icon: some View {
+        Image(uiImage: IconProvider.cameraIllustration)
+            .renderingMode(.original)
+            .resizable()
+            .scaledToFit()
+            .frame(width: Constants.cameraIllustrationSize.width, height: Constants.cameraIllustrationSize.height)
+            .padding(.top, Constants.cameraIllustrationTopPadding)
+            .padding(.bottom, Constants.cameraIllustrationBottomPadding)
+    }
+
+    var title: some View {
+        Text(LUITranslation.allow_access_camera_title.l10n)
+            .font(.title2)
+            .foregroundStyle(ColorProvider.TextNorm)
+            .multilineTextAlignment(.center)
+            .padding(.horizontal, Constants.horizontalPadding)
+            .padding(.top, Constants.textPadding)
+    }
+
+    var description: some View {
+        Text(descriptionString)
+            .font(.body)
+            .foregroundStyle(ColorProvider.TextNorm)
+            .multilineTextAlignment(.center)
+            .padding(.horizontal, Constants.horizontalPadding)
+            .padding(.top, Constants.textPadding)
+    }
+
+    var disclaimer: some View {
+        Text(LUITranslation.allow_access_camera_disclaimer.l10n)
+            .font(.footnote)
+            .foregroundStyle(ColorProvider.TextWeak)
+            .multilineTextAlignment(.center)
+            .padding(.horizontal, Constants.horizontalPadding)
+    }
+
+    var button: some View {
+        ZStack(alignment: .center) {
+            PCButton(style: .constant(.init(mode: .solid)), content: .constant(.init(title: LUITranslation.settings_title.l10n, action: {
+                buttonPressAction()
+            })))
+
+            HStack(alignment: .center, spacing: Constants.noSpacing) {
+                Spacer()
+                Image(uiImage: IconProvider.arrowOutSquare)
+                    .renderingMode(.template)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: Constants.arrowOutHeight, height: Constants.arrowOutHeight, alignment: .trailing)
+                    .padding(.horizontal, Constants.horizontalPadding)
+            }
+        }
+        .frame(height: Constants.buttonVerticalHeight)
+        .padding(.horizontal, Constants.horizontalPadding)
+        .padding(.vertical, Constants.buttonVerticalPadding)
+    }
+
+    private var descriptionString: String {
+        return String.localizedStringWithFormat(
+            LUITranslation.allow_access_camera_description.l10n,
+            clientName?.capitalized ?? ""
+        )
     }
 }
 

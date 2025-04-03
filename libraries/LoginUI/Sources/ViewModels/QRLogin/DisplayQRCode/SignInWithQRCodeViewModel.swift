@@ -75,7 +75,7 @@ extension SignInWithQRCodeView {
 
         weak var navigationController: UINavigationController?
 
-        var refreshWaitTimeInSeconds: TimeInterval = 600
+        var refreshWaitTimeInSeconds: TimeInterval = 540
         var pullForkIntervalInSeconds: TimeInterval = 5
 
         private var getUserCodeAndSelectorUseCase: GetUserCodeAndSelector?
@@ -217,23 +217,6 @@ extension SignInWithQRCodeView {
                     self?.generateANewQRCodeText()
                 }
             })
-        }
-
-        var clientName: String? {
-            let componentsSeparatedByAt = self.apiService?.serviceDelegate?.appVersion.components(separatedBy: "@")
-
-            guard let componentsSeparatedByAt = componentsSeparatedByAt,
-                  componentsSeparatedByAt.count == 2 else {
-                return nil
-            }
-
-            let componentsSeparatedByDash = componentsSeparatedByAt[0].components(separatedBy: "-")
-
-            guard componentsSeparatedByDash.count == 2 else {
-                return nil
-            }
-
-            return componentsSeparatedByDash[1]
         }
     }
 }
