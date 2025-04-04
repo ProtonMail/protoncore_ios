@@ -244,7 +244,9 @@ public class ProtonButton: UIButton, AccessibleView {
     fileprivate func showLoading() {
         contentEdgeInsets = UIEdgeInsets(top: contentEdgeInsets.top, left: 40, bottom: contentEdgeInsets.bottom, right: 40)
         if let activityIndicator = activityIndicator {
-            activityIndicator.startAnimating()
+            DispatchQueue.main.async {
+                activityIndicator.startAnimating()
+            }
         } else {
             createActivityIndicator()
         }
@@ -253,7 +255,9 @@ public class ProtonButton: UIButton, AccessibleView {
 
     fileprivate func stopLoading() {
         modeConfiguration()
-        activityIndicator?.stopAnimating()
+        DispatchQueue.main.async { [weak self] in
+            self?.activityIndicator?.stopAnimating()
+        }
         isUserInteractionEnabled = true
     }
 

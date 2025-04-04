@@ -55,6 +55,7 @@ public enum PSTranslation: TranslationsExposing {
     case popup_credits_applied_cancellation
     case error_apply_payment_on_registration_title
     case error_apply_payment_on_registration_message
+    case error_plan_already_purchased
 
     public var l10n: String {
         switch self {
@@ -104,6 +105,8 @@ public enum PSTranslation: TranslationsExposing {
             return localized(key: "Payment failed", comment: "Error applying credit after registration alert")
         case .error_apply_payment_on_registration_message:
             return localized(key: "You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support.", comment: "Error applying credit after registration alert")
+        case .error_plan_already_purchased:
+            return localized(key: "The signed-in Apple account already purchased this item.", comment: "Error trying to purchase a plan twice using the same Apple account")
         }
     }
 }

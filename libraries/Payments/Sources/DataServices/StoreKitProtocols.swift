@@ -180,9 +180,7 @@ protocol ProcessDependencies: AnyObject {
     var refreshCompletionHandler: (ProcessCompletionResult) -> Void { get }
 }
 
-extension SKPaymentQueue: PaymentQueueProtocol {
-
-}
+extension SKPaymentQueue: PaymentQueueProtocol {}
 
 extension InAppPurchasePlan {
     // only needed for backwards compatibility to purchase 0 cost plans

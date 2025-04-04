@@ -33,6 +33,7 @@ public enum PurchaseResult {
     case purchaseError(error: Error, processingPlan: InAppPurchasePlan? = nil)
     case apiMightBeBlocked(message: String, originalError: Error, processingPlan: InAppPurchasePlan? = nil)
     case purchaseCancelled
+    case planAlreadyPurchased(error: Error)
     @available(*, deprecated, message: "Renewal transactions are no longer reported on")
     case renewalNotification
 
@@ -44,6 +45,7 @@ public enum PurchaseResult {
         case .apiMightBeBlocked: .apiBlocked
         case .purchaseCancelled: .canceled
         case .renewalNotification: .renewalNotification
+        case .planAlreadyPurchased: .canceled
         }
     }
 
@@ -55,6 +57,7 @@ public enum PurchaseResult {
         case .apiMightBeBlocked: .apiBlocked
         case .purchaseCancelled: .canceled
         case .renewalNotification: .unknown
+        case .planAlreadyPurchased: .canceled
         }
     }
 
@@ -66,6 +69,7 @@ public enum PurchaseResult {
         case .apiMightBeBlocked: .apiMightBeBlocked
         case .purchaseCancelled: .canceled
         case .renewalNotification: .successful
+        case .planAlreadyPurchased: .canceled
         }
     }
 }
@@ -288,6 +292,8 @@ final class PurchaseManager: PurchaseManagerProtocol {
                 finishCallback(.purchaseCancelled)
             } else if let error = error as? StoreKitManagerErrors, case let .apiMightBeBlocked(message, originalError) = error {
                 finishCallback(.apiMightBeBlocked(message: message, originalError: originalError, processingPlan: self?.unfinishedPurchasePlan))
+            } else if (error as? StoreKitManagerErrors)  == .renewalTransaction {
+                finishCallback(.planAlreadyPurchased(error: error))
             } else {
                 finishCallback(.purchaseError(error: error, processingPlan: self?.unfinishedPurchasePlan))
             }

@@ -183,6 +183,10 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
         threadSafeCache.removeValue(for: cache, in: \.errorCompletion, defaultValue: defaultErrorCallback) { $0?(error) }
     }
 
+    private func callSilentErrorCompletion(for cache: UserInitiatedPurchaseCache, with error: Error) {
+        threadSafeCache.removeValue(for: cache, in: \.errorCompletion, defaultValue: {_ in }) { $0?(error) }
+    }
+
     private func getSuccessCompletion(for cache: UserInitiatedPurchaseCache, completion: @escaping (SuccessCallback?) -> Void) {
         threadSafeCache.removeValue(for: cache, in: \.successCompletion, completion: completion)
     }
@@ -661,8 +665,11 @@ extension StoreKitManager: SKPaymentTransactionObserver {
             guard !transaction.isRenewal else {
                 // skip processing for transactions corresponding to a monthly renewal
                 if let self {
-                    paymentQueue.finishTransaction(transaction)
+                    finishTransaction(transaction, completion: nil)
                     ObservabilityEnv.report(.paymentLaunchBillingTotal(status: .renewalNotification, isDynamic: self.featureFlagsRepository.isEnabled(CoreFeatureFlagType.dynamicPlan)))
+                    let cacheKey = UserInitiatedPurchaseCache(storeKitProductId: transaction.payment.productIdentifier,
+                                                              hashedUserId: applicationUserId().map(hash(userId:)))
+                    self.callSilentErrorCompletion(for: cacheKey, with: StoreKitManagerErrors.renewalTransaction)
                 }
                 return
             }

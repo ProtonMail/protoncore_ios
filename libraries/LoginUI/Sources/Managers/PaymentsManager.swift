@@ -115,7 +115,7 @@ class PaymentsManager {
             case .purchasedPlan(let plan):
                 self?.selectedPlan = plan
                 completionHandler(.success(()))
-            case .purchaseError(let error):
+            case .purchaseError(let error), .planAlreadyPurchased(let error):
                 if !shownHandlerCalled {
                     planShownHandler?()
                 }
