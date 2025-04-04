@@ -47,7 +47,7 @@ final class GenerateSignInQRCodeTests: XCTestCase {
 
         let qrCode = try sut.invoke(userCode: userCode)
 
-        XCTAssertEqual(qrCode.text, "\(userCode):\("AQID"):\(clientId)")
+        XCTAssertEqual(qrCode.text, "\(GenerateSignInQRCode.QRCodeVersion):\(userCode):\("AQID"):\(clientId)")
     }
 
     func testGenerateQRTextFailure() {

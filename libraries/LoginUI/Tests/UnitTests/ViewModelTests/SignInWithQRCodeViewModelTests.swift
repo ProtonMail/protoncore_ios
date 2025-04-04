@@ -60,7 +60,7 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
         // wait a little for the qrCode to reach the main thread
         try? await Task.sleep(nanoseconds: 100_000_000)
 
-        XCTAssertEqual(sut.qrCodeText, "\(userCode):AQID:\(clientId)")
+        XCTAssertEqual(sut.qrCodeText, "\(GenerateSignInQRCode.QRCodeVersion):\(userCode):AQID:\(clientId)")
     }
 
     func testRefreshOfQRCodeText() async {

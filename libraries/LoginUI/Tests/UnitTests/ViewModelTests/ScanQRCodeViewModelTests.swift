@@ -39,7 +39,7 @@ class ScanQRCodeViewModelTests: XCTestCase {
     func testHandleQRCode_GoodQRCode() async throws {
         let encryptionKeyData = Data(Array(repeating: UInt8.random(in: 0..<100), count: 32))
         let encryptionKey = Base64.encode(raw: encryptionKeyData)
-        let qrCode = "userCode:\(encryptionKey):ios-mail"
+        let qrCode = "\(GenerateSignInQRCode.QRCodeVersion):userCode:\(encryptionKey):ios-mail"
 
         mockAPIService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(ForkSessionPushResponse(code: 1000, selector: "someSelector")))
