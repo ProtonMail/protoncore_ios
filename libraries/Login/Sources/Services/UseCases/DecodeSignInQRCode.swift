@@ -24,6 +24,7 @@ public struct DecodeSignInQRCode {
     public init() {}
 
     public struct Response {
+        public let version: Int
         public let userCode: String
         public let encryptionKey: Data
         public let clientId: String
@@ -42,13 +43,18 @@ public struct DecodeSignInQRCode {
     public func invoke(qrCode: String) throws -> Response {
         let components = qrCode.split(separator: ":")
 
-        guard components.count == 3 else {
+        guard components.count == 4 else {
             throw DecodeError.qrCodeNotRecognized
         }
 
-        let userCode = String(components[0])
-        let key = String(components[1])
-        let clientId = String(components[2])
+        let version = Int(components[0])
+        let userCode = String(components[1])
+        let key = String(components[2])
+        let clientId = String(components[3])
+
+        guard let version = version, version == GenerateSignInQRCode.QRCodeVersion else {
+            throw DecodeError.qrCodeNotRecognized
+        }
 
         guard userCode != "" else {
             throw DecodeError.qrCodeNotRecognized
@@ -60,8 +66,10 @@ public struct DecodeSignInQRCode {
             throw DecodeError.qrCodeNotRecognized
         }
 
-        return Response(userCode: userCode,
-                        encryptionKey: Base64.decode(base64: key),
-                        clientId: clientId)
+        return Response(
+            version: version,
+            userCode: userCode,
+            encryptionKey: Base64.decode(base64: key),
+            clientId: clientId)
     }
 }

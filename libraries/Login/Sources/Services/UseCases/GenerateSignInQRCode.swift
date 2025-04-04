@@ -32,12 +32,15 @@ public struct GenerateSignInQRCode {
     private let hashGenerator: SecureHashGenerator
     private let clientIdProvider: ClientIdProvider
 
+    public static let QRCodeVersion: Int = 0
+
     public init(hashGenerator: SecureHashGenerator, clientIdProvider: ClientIdProvider) {
         self.hashGenerator = hashGenerator
         self.clientIdProvider = clientIdProvider
     }
 
     public struct Response {
+        public let version: Int
         public let userCode: String
         public let encryptionKeyBase64: String
         public let clientId: String
@@ -47,7 +50,7 @@ public struct GenerateSignInQRCode {
         }
 
         public var text: String {
-            "\(userCode):\(encryptionKeyBase64):\(clientId)"
+            "\(version):\(userCode):\(encryptionKeyBase64):\(clientId)"
         }
     }
 
@@ -57,8 +60,10 @@ public struct GenerateSignInQRCode {
         let clientId = clientIdProvider.clientId()
         let base64EncryptionKey = Base64.encode(raw: encryptionKey)
 
-        return Response(userCode: userCode,
-                        encryptionKeyBase64: base64EncryptionKey,
-                        clientId: clientId)
+        return Response(
+            version: Self.QRCodeVersion,
+            userCode: userCode,
+            encryptionKeyBase64: base64EncryptionKey,
+            clientId: clientId)
     }
 }
