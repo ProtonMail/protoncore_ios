@@ -229,6 +229,8 @@ public enum LUITranslation: TranslationsExposing {
     case allow_access_camera_description
     case allow_access_camera_disclaimer
     case settings_title
+    case qr_code_load_error_description
+    case retry
 
     public var l10n: String {
         switch self {
@@ -637,6 +639,10 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "You're always in control: You can change this anytime in your device settings.", comment: "You're always in control: You can change this anytime in your device settings.")
         case .settings_title:
             return localized(key: "Settings", comment: "Settings")
+        case .qr_code_load_error_description:
+            return localized(key: "We couldn't load the QR code", comment: "We couldn't load the QR code")
+        case .retry:
+            return localized(key: "Retry", comment: "Retry")
         }
     }
 }

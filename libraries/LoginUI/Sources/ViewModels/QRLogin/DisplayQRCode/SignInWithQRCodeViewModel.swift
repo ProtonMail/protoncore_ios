@@ -25,6 +25,7 @@ import ProtonCoreLogin
 import ProtonCoreAuthenticationKeyGeneration
 import ProtonCoreNetworking
 import SwiftUI
+import ProtonCoreUI
 
 class SecureHashGeneratorImplentation: SecureHashGenerator {
     func random(bits: Int32) throws -> Data {
@@ -74,6 +75,7 @@ extension SignInWithQRCodeView {
 
         @Published var qrCodeText: String?
         @Published var state: ViewState = .qrCode
+        @Published var bannerState: BannerState = .none
 
         weak var navigationController: UINavigationController?
 
@@ -142,15 +144,18 @@ extension SignInWithQRCodeView {
                     self.selector = userCodeAndSelector.selector
                     self.encryptionKey = qrCode.encryptionKey
                     self.qrCodeText = qrCode.text
+                    scheduleQRCodeRefresh()
+                    startPollingFork()
                 } catch {
-#if DEBUG
-                    // TODO: Show a toast message. And give the option to retry. There's a ticket for this.
-                    debugPrint(error)
-#endif
+                    cancelQRCodeRefresh()
+                    stopPollingFork()
+                    bannerState = .error(content: PCBannerContent(
+                        message: LUITranslation.qr_code_load_error_description.l10n,
+                        buttonTitle: LUITranslation.retry.l10n,
+                        buttonAction: { [weak self] in
+                            self?.generateANewQRCodeText()
+                        }))
                 }
-
-                scheduleQRCodeRefresh()
-                startPollingFork()
             }
         }
 
@@ -169,18 +174,24 @@ extension SignInWithQRCodeView {
                             return
                         }
                         guard let selector = self.selector, timer.isValid else { return }
+#if DEBUG
                         print("PT: Fork about to be pulled")
+#endif
                         self.forkedSession = try await self.getForkedSessionUseCase?.invoke(selector: selector)
                         guard let response = self.forkedSession,
                               let key = self.encryptionKey else {
                             throw Errors.responseOrEncryptionKeyMissing
                         }
                         timer.invalidate()
+#if DEBUG
                         print("PT: Fork pulled successfully")
+#endif
                         try self.handleReceivedForkResponse(response, encryptionKey: key)
                     } catch {
                         // Do nothing. The fork might not be available yet.
+#if DEBUG
                         print("PT: Fork pull error: \(error)")
+#endif
                     }
                 }
             })

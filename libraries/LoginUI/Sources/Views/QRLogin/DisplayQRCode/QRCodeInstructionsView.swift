@@ -35,6 +35,7 @@ struct QRCodeInstructionsView: View {
         static let tinySpacing: CGFloat = 4
         static let lineSpacing: CGFloat = 0.25
         static let textWidth: CGFloat = 16
+        static let borderSize: CGFloat = 1
     }
 
     var qrCodeText: String?
@@ -50,10 +51,14 @@ struct QRCodeInstructionsView: View {
 
     var qrCode: some View {
         ZStack(alignment: .center) {
-            Rectangle()
-                .background(Color.white)
+            RoundedRectangle(cornerRadius: Constants.cornerRadius)
                 .frame(width: Constants.qrBgSize, height: Constants.qrBgSize)
-                .cornerRadius(Constants.cornerRadius)
+                .foregroundStyle(ColorProvider.White)
+                .overlay(
+                    RoundedRectangle(cornerRadius: Constants.cornerRadius)
+                        .stroke(ColorProvider.SeparatorNorm, lineWidth: Constants.borderSize)
+                )
+
             if let qrCodeText = qrCodeText {
                 QRCodeView(text: qrCodeText)
                     .foregroundStyle(Color.black)

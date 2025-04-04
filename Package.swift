@@ -1114,7 +1114,8 @@ add(
                     .loginUIResourcesiOS,
                     .lottie,
                     .trustKit,
-                    .telemetry
+                    .telemetry,
+                    .protonCoreUI
                    ],
                    path: "libraries/LoginUI/Sources",
                    resources: [
