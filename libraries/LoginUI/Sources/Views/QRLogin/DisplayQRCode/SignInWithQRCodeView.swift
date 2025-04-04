@@ -50,11 +50,13 @@ public struct SignInWithQRCodeView: View {
                     })
             }
         }
+        .bannerDisplayable(bannerState: $viewModel.bannerState, configuration: .init(position: .bottom, dismissDuration: nil))
         .background(
             NavigationControllerAccessor(callback: { navController in
                 viewModel.navigationController = navController
             })
         )
+        .background(ColorProvider.BackgroundNorm)
     }
 }
 
