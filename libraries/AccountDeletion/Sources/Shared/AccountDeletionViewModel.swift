@@ -98,8 +98,23 @@ final class AccountDeletionViewModel: AccountDeletionViewModelInterface {
 
     var getURLRequest: URLRequest {
         let host = doh.getAccountHost()
-        let url = URL(string: "\(host)/lite?action=delete-account&language=\(preferredLanguage)#selector=\(forkSelector)")!
-        return URLRequest(url: url)
+
+        var components = URLComponents(string: host)!
+        components.path = "/lite"
+        components.queryItems = [
+            .init(name: "action", value: "delete-account"),
+            .init(name: "language", value: preferredLanguage)
+        ]
+
+        let url = URL(string: "#selector=\(forkSelector)", relativeTo: components.url)!.absoluteURL
+
+        var request = URLRequest(url: url)
+
+        for (header, value) in doh.getAccountHeaders() {
+            request.setValue(value, forHTTPHeaderField: header)
+        }
+
+        return request
     }
 
     var jsonDecoder = JSONDecoder()
