@@ -397,6 +397,10 @@ extension PaymentsUICoordinator: PaymentsUIViewControllerDelegate {
                 break
             case .renewalNotification:
                 break // precondition prevents it
+            case .planAlreadyPurchased(let error):
+                self.unfinishedPurchasePlan = nil
+                self.finishCallback(reason: .planAlreadyPurchased(error: error))
+                self.showError(error: error)
             }
 
             completionHandler()

@@ -40,6 +40,7 @@ public enum PaymentsUIResultReason {
     case planPurchaseProcessingInProgress(accountPlan: InAppPurchasePlan)
     case purchaseError(error: Error)
     case apiMightBeBlocked(message: String, originalError: Error)
+    case planAlreadyPurchased(error: Error)
 }
 
 enum PaymentsUIMode {
