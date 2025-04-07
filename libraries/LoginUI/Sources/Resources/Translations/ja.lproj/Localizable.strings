@@ -395,3 +395,23 @@
 "The permission to use the Camera is off. Please enable it from the Settings." = "カメラを使用する許可がオフになっています。設定から有効にしてください。";
 
 "Go to Settings" = "設定に移動";
+
+"to Proton %@" = "Proton %@ に";
+
+"Something went wrong" = "何か問題が発生しました";
+
+"We couldn't sign you in. Please scan a new QR code to try again." = "サインインできませんでした。新しいQRコードをスキャンして再度お試しください。";
+
+"New QR code" = "新しいQRコード";
+
+"Allow access to camera" = "カメラへのアクセスを許可";
+
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "QRコードをスキャンして別のデバイスにサインインするには、Proton %@にカメラへのアクセスを許可してください。";
+
+"You're always in control: You can change this anytime in your device settings." = "いつでもコントロールできます: デバイスの設定でいつでも変更できます。";
+
+"Settings" = "設定";
+
+"We couldn't load the QR code" = "We couldn't load the QR code";
+
+"Retry" = "再試行";

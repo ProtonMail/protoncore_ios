@@ -43,3 +43,5 @@
 "OK" = "OK";
 
 "The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Serverele Proton nu pot fi accesate. Cauza ar putea fi o configurare greșită a rețelei, serverele Proton nu funcționează sau sunt blocate.";
+
+"The signed-in Apple account already purchased this item." = "Contul Apple autentificat a achiziționat deja acest articol.";

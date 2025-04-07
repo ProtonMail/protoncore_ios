@@ -362,7 +362,7 @@
 
 "Sign in to another device" = "An einem anderen Gerät anmelden";
 
-"Sign in with your QR code" = "Mit QR-Code anmelden";
+"Sign in with your QR code" = "Mit deinem QR-Code anmelden";
 
 "Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Dieses Gerät verwenden, um den QR-Code zu scannen, der auf dem Gerät angezeigt wird, bei dem du dich anmelden möchtest. Beide Geräte bleiben aktiv.";
 
@@ -395,3 +395,23 @@
 "The permission to use the Camera is off. Please enable it from the Settings." = "Die Berechtigung zur Verwendung der Kamera ist deaktiviert. Bitte in den Einstellungen aktivieren.";
 
 "Go to Settings" = "Einstellungen öffnen";
+
+"to Proton %@" = "Zu Proton %@";
+
+"Something went wrong" = "Ein Fehler ist aufgetreten";
+
+"We couldn't sign you in. Please scan a new QR code to try again." = "Anmelden fehlgeschlagen. Bitte einen neuen QR-Code scannen, um es erneut zu versuchen.";
+
+"New QR code" = "Neuer QR-Code";
+
+"Allow access to camera" = "Kamerazugriff erlauben";
+
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "Um einen QR-Code einzulesen und sich auf einem anderen Gerät anzumelden, gewähre Proton %@ Zugriff auf Ihre Kamera.";
+
+"You're always in control: You can change this anytime in your device settings." = "Du hast stets die Kontrolle: Dies kann jederzeit in den Einstellungen Ihres Geräts geändert werden.";
+
+"Settings" = "Einstellungen";
+
+"We couldn't load the QR code" = "QR-Code konnte nicht geladen werden";
+
+"Retry" = "Erneut versuchen";

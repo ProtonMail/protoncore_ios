@@ -378,7 +378,7 @@
 
 "Place QR code within the square" = "Posiziona il codice QR all'interno del quadrato";
 
-"Verifying..." = "Verificazione in corso...";
+"Verifying..." = "Verifica in corso...";
 
 "You’re signed in to %@ on the other device." = "Hai effettuato l'accesso a %@ sull'altro dispositivo.";
 
@@ -395,3 +395,23 @@
 "The permission to use the Camera is off. Please enable it from the Settings." = "Il permesso di usare la fotocamera è disattivato. Abilitalo dalle Impostazioni.";
 
 "Go to Settings" = "Vai alle impostazioni";
+
+"to Proton %@" = "a Proton %@";
+
+"Something went wrong" = "Qualcosa è andato storto";
+
+"We couldn't sign you in. Please scan a new QR code to try again." = "Impossibile effettuare l'accesso. Scansiona un nuovo codice QR per riprovare.";
+
+"New QR code" = "Nuovo codice QR";
+
+"Allow access to camera" = "Consenti l'accesso alla fotocamera";
+
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "Per scansionare un codice QR e accedere a un altro dispositivo, concedi a Proton %@ l'accesso alla tua fotocamera.";
+
+"You're always in control: You can change this anytime in your device settings." = "Hai sempre il controllo: puoi modificarlo in qualsiasi momento nelle impostazioni del tuo dispositivo.";
+
+"Settings" = "Impostazioni";
+
+"We couldn't load the QR code" = "Impossibile caricare il codice QR";
+
+"Retry" = "Riprova";

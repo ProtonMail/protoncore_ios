@@ -1,10 +1,10 @@
-"switch to" = "ganti ke";
+"switch to" = "beralih ke";
 
 "Manage accounts" = "Kelola akun";
 
-"Signed in to Proton Mail" = "Masuk ke Proton Mail";
+"Signed in to Proton Mail" = "Terhubung masuk ke Proton Mail";
 
-"Signed out of Proton Mail" = "Keluar dari Proton Mail";
+"Signed out of Proton Mail" = "Tidak terhubung masuk ke Proton Mail";
 
 "Sign out" = "Keluar";
 
@@ -20,7 +20,7 @@
 
 "Dismiss account switcher" = "Tutup pemindah akun";
 
-"Sign in to another account" = "Masuk ke akun yang lain";
+"Sign in to another account" = "Masuk ke akun lain";
 
 "Cancel" = "Batal";
 

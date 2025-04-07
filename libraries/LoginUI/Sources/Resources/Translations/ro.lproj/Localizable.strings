@@ -395,3 +395,23 @@
 "The permission to use the Camera is off. Please enable it from the Settings." = "Permisiunea de a accesa camera este oprită. Activați-o din setări.";
 
 "Go to Settings" = "Accesare setări";
+
+"to Proton %@" = "la Proton %@";
+
+"Something went wrong" = "Ceva nu a funcționat corect";
+
+"We couldn't sign you in. Please scan a new QR code to try again." = "Nu s-a putut conecta. Scanați un cod QR nou și reîncercați.";
+
+"New QR code" = "Cod QR nou";
+
+"Allow access to camera" = "Permitere accesare cameră";
+
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "Pentru a scana un cod QR și a vă conecta pe alt dispozitiv, permiteți ca Proton %@ să vă acceseze camera.";
+
+"You're always in control: You can change this anytime in your device settings." = "Aveți control permanent: puteți oricând modifica asta în setările dispozitivului.";
+
+"Settings" = "Setări";
+
+"We couldn't load the QR code" = "Codul QR nu s-a putut încărca";
+
+"Retry" = "Reîncercare";

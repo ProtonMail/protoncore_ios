@@ -43,3 +43,5 @@
 "OK" = "Застосувати";
 
 "The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Сервери Proton недоступні. Причиною може бути неправильна конфігурація мережі, сервери Proton не працюють або сервери Proton заблоковані";
+
+"The signed-in Apple account already purchased this item." = "The signed-in Apple account already purchased this item.";

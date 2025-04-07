@@ -395,3 +395,23 @@
 "The permission to use the Camera is off. Please enable it from the Settings." = "Kamerayı kullanma izni kapalı. Lütfen ayarlardan açın.";
 
 "Go to Settings" = "Ayarlara git";
+
+"to Proton %@" = "Proton %@ ile";
+
+"Something went wrong" = "Bir sorun çıktı";
+
+"We couldn't sign you in. Please scan a new QR code to try again." = "Oturumunuz açılamadı. Yeniden denemek için lütfen yeni bir karekod tarayın.";
+
+"New QR code" = "Yeni kare kod ";
+
+"Allow access to camera" = "Kameraya erişme izni ver";
+
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "Bir kare kod tarayarak başka bir aygıtta oturum açmak için Proton %@ için kameraya erişme izni verin.";
+
+"You're always in control: You can change this anytime in your device settings." = "Kontrol her zaman sizde: Bunu istediğiniz zaman aygıt ayarlarınızdan değiştirebilirsiniz.";
+
+"Settings" = "Ayarlar";
+
+"We couldn't load the QR code" = "Kare kod yüklenemedi";
+
+"Retry" = "Yeniden dene";

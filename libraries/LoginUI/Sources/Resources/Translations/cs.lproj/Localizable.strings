@@ -395,3 +395,23 @@
 "The permission to use the Camera is off. Please enable it from the Settings." = "Oprávnění k používání fotoaparátu je vypnuto. Povolte jej v Nastavení.";
 
 "Go to Settings" = "Přejít do Nastavení";
+
+"to Proton %@" = "do Protonu %@";
+
+"Something went wrong" = "Něco se pokazilo";
+
+"We couldn't sign you in. Please scan a new QR code to try again." = "Nemohli jsme vás přihlásit. Naskenujte prosím nový QR kód a zkuste to znovu.";
+
+"New QR code" = "Nový QR kód";
+
+"Allow access to camera" = "Povolit přístup k fotoaparátu";
+
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "Chcete-li naskenovat kód QR a přihlásit se k jinému zařízení, povolte Protonu %@ přístup k fotoaparátu.";
+
+"You're always in control: You can change this anytime in your device settings." = "Vždy máte vše pod kontrolou: V nastavení zařízení to můžete kdykoli změnit.";
+
+"Settings" = "Nastavení";
+
+"We couldn't load the QR code" = "QR kód se nám nepodařilo načíst";
+
+"Retry" = "Opakovat";

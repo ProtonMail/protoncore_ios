@@ -15,7 +15,7 @@
         <key>one</key>
         <string>%d E-Mail-Alias</string>
         <key>other</key>
-        <string>%d E-Mail-Aliasse</string>
+        <string>%d E-Mail-Aliase</string>
       </dict>
     </dict>
     <key>&lt;n&gt; users</key>
@@ -157,9 +157,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d Hochgeschwindigkeits-VPN-Verbindung</string>
+        <string>%d Hochgeschwindigkeit-VPN-Verbindung</string>
         <key>other</key>
-        <string>%d Hochgeschwindigkeits-VPN-Verbindungen</string>
+        <string>%d Hochgeschwindigkeit-VPN-Verbindungen</string>
       </dict>
     </dict>
     <key>&lt;n&gt; custom domains</key>

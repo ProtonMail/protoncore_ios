@@ -1,24 +1,24 @@
-"Contact customer support" = "Hubungi bantuan pelanggan";
+"Contact customer support" = "Hubungi layanan dukungan";
 
-"Failed to get list of available products from App Store." = "Gagal mendapatkan daftar ketersediaan produk dari App Store.";
+"Failed to get list of available products from App Store." = "Daftar produk yang tersedia gagal diperoleh dari App Store.";
 
-"Purchase is not possible." = "Tidak dapat melakukan pembelian.";
+"Purchase is not possible." = "Pembelian tidak dimungkinkan.";
 
 "Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you." = "Apple menginformasikan, Anda sudah meningkatkan paket layanan, tapi beberapa data teknis hilang. Mohon isi laporan bug dan tim dukungan pelanggan kami akan menghubungi Anda.";
 
-"Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "Apple menginformasikan kami bahwa paket langganan Anda telah ditingkatkan, tetapi sistem kami mendeteksi bahwa Anda telah keluar dari akun.";
+"Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "Apple memberi tahu kami bahwa Anda telah meningkatkan paket layanan, namun kami menemukan bahwa Anda telah keluar dari akun sejak proses ini berlangsung.";
 
-"It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Tidak mungkin mencocokkan produk App Store yang Anda beli dengan produk apapun di server kami. Silakan isi laporan bug dan tim dukungan pelanggan akan menghubungi Anda.";
+"It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Produk App Store yang Anda beli tidak dapat dicocokkan dengan produk mana pun pada server kami. Silakan kirim laporan bug dan tim dukungan layanan kami akan menghubungi Anda.";
 
-"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Silakan masuk ke akun Proton Mail yang ingin Anda tingkatkan agar kami dapat menyelesaikan pembayaran.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Silakan masuk ke akun Proton Mail yang paketnya ingin Anda tingkatkan agar kami dapat menyelesaikan pembelian.";
 
-"Apple informed us they could not process the purchase." = "Apple menginformasikan, mereka tidak dapat memproses pembayaran.";
+"Apple informed us they could not process the purchase." = "Apple memberi tahu kami bahwa mereka tidak dapat memproses pembelian ini.";
 
-"We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "Kami berhasil mengaktifkan langganan Anda. Silakan luncurkan ulang aplikasi untuk menggunakan paket layanan baru.";
+"We have successfully activated your subscription. Please relaunch the app to start using your new service plan." = "Kami telah berhasil mengaktifkan langganan Anda. Silakan luncurkan ulang aplikasi untuk mulai menggunakan paket layanan baru Anda.";
 
-"Please unlock the app to proceed with your service plan activation" = "Mohon buka kunci aplikasi untuk melanjutkan aktivasi paket layanan Anda";
+"Please unlock the app to proceed with your service plan activation" = "Silakan buka kunci aplikasi untuk melanjutkan aktivasi paket layanan Anda";
 
-"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Silakan masuk ke akun Proton Mail yang ingin Anda tingkatkan agar kami dapat menyelesaikan aktivasi paket layanan.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Silakan masuk ke akun Proton Mail yang paketnya ingin Anda tingkatkan agar kami dapat menyelesaikan aktivasi paket layanan.";
 
 "Wrong payment token status. Please relaunch the app. If error persists, contact support." = "Status token pembayaran tidak sesuai. Silakan buka ulang aplikasi. Apabila masalah ini terus berlanjut, hubungi layanan dukungan.";
 
@@ -26,9 +26,9 @@
 
 "Yes, activate it for " = "Ya, aktifkan untuk ";
 
-"No, for another Proton Mail account" = "Bukan, untuk akun Proton Mail lain";
+"No, for another Proton Mail account" = "Tidak, pembayaran ini untuk akun Proton Mail lain";
 
-"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "Kami tidak dapat meningkatkan akun Anda ke paket yang Anda pilih, sehingga pembayaran Anda telah kami alihkan dalam bentuk saldo pada akun Anda. Untuk dapat menyelesaikan proses peningkatan akun Anda dan memperoleh informasi lebih lanjut, harap hubungi Layanan Dukungan.";
+"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "Kami tidak dapat meningkatkan akun Anda ke paket yang Anda pilih, sehingga pembayaran Anda telah kami alihkan dalam bentuk saldo pada akun Anda. Untuk informasi lebih lanjut dan untuk menyelesaikan peningkatan akun Anda, silakan hubungi Layanan Dukungan.";
 
 "Contact Support" = "Hubungi Layanan Dukungan";
 
@@ -43,3 +43,5 @@
 "OK" = "OK";
 
 "The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Server Proton tidak dapat dijangkau. Hal ini dapat disebabkan antara lain oleh pengaturan jaringan yang tidak tepat, server Proton yang sedang offline, atau pemblokiran terhadap server Proton";
+
+"The signed-in Apple account already purchased this item." = "Akun Apple yang terhubung masuk telah membeli item ini.";
