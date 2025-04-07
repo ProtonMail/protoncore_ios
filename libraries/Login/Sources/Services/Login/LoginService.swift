@@ -285,10 +285,9 @@ public final class LoginService {
         // DOC: https://protonag.atlassian.net/wiki/spaces/API/pages/55609920/Authentication+sessions+and+tokens#Getting-keys
         // "test that all the keys that have the property active = 1 can successfully decrypt according to the schema"
         let keyRingBuilder = KeyRingBuilder()
-        let keys = user.keys + addresses.toKeys()
-        guard keys.allSatisfy({ $0.active == 1 }) else {
-            throw LoginError.missingKeys
-        }
+        let keys = (user.keys + addresses.toKeys())
+            .filter({ $0.active ==  1 })
+
         try keyRingBuilder.buildPrivateKeyRingUnlock(
             privateKeys: keys.map({ DecryptionKey(privateKey: ArmoredKey(value: $0.privateKey), passphrase: Passphrase(value: credential.mailboxPassword))})
         )
