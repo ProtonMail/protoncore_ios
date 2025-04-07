@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ProtonMail/apple-fusion",
       "state" : {
-        "revision" : "5f680d98dadbddab36a207b436a6291d86a5523a",
-        "version" : "2.1.2"
+        "revision" : "86ac01d94a867182dc525963f8e337bc431b52a9",
+        "version" : "2.1.4"
       }
     },
     {
