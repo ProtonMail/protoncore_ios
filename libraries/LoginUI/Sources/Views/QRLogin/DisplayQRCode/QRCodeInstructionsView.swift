@@ -53,7 +53,7 @@ struct QRCodeInstructionsView: View {
         ZStack(alignment: .center) {
             RoundedRectangle(cornerRadius: Constants.cornerRadius)
                 .frame(width: Constants.qrBgSize, height: Constants.qrBgSize)
-                .foregroundStyle(ColorProvider.White)
+                .foregroundStyle(Color.white)
                 .overlay(
                     RoundedRectangle(cornerRadius: Constants.cornerRadius)
                         .stroke(ColorProvider.SeparatorNorm, lineWidth: Constants.borderSize)
