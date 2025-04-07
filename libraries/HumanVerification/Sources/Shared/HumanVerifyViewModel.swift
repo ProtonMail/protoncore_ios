@@ -72,17 +72,27 @@ class HumanVerifyViewModel {
     }
 
     var getURLRequest: URLRequest {
-        let host = apiService.dohInterface.getHumanVerificationV3Host()
-        let token = "?token=\(startToken ?? "")"
-        let methodsStrings = methods?.map { $0.method } ?? []
-        let methods = "&methods=\(methodsStrings.joined(separator: ","))"
-        let theme = "&theme=\(getTheme)"
-        let locale = "&locale=\(getLocale)"
-        let country = "&defaultCountry=\(getCountry)"
-        let embed = "&embed=true"
-        let vpn = clientApp == .vpn ? "&vpn=true" : ""
-        let url = URL(string: "\(host)/\(token)\(methods)\(theme)\(locale)\(country)\(embed)\(vpn)")!
-        let request = URLRequest(url: url)
+        var components = URLComponents(string: apiService.dohInterface.getHumanVerificationV3Host())!
+        components.path = "/"
+        components.queryItems = [
+            .init(name: "token", value: startToken),
+            .init(name: "methods", value: methods?.map(\.method).joined(separator: ",")),
+            .init(name: "theme", value: String(getTheme)),
+            .init(name: "locale", value: getLocale),
+            .init(name: "defaultCountry", value: getCountry),
+            .init(name: "embed", value: "true"),
+        ]
+
+        if clientApp == .vpn {
+            components.queryItems?.append(.init(name: "vpn", value: "true"))
+        }
+
+        var request = URLRequest(url: components.url!)
+
+        for (header, value) in apiService.dohInterface.getHumanVerificationV3Headers() {
+            request.setValue(value, forHTTPHeaderField: header)
+        }
+
         PMLog.info("\(request)")
         return request
     }
