@@ -49,6 +49,13 @@ struct ScanQRCodeView: View {
 
     @StateObject var viewModel: ViewModel
 
+    var closeButtonColor: Color {
+      switch viewModel.state {
+        case .scanning: return Color.white
+        default: return ColorProvider.IconNorm
+      }
+    }
+
     var body: some View {
         ZStack(alignment: .top) {
             switch viewModel.state {
@@ -104,7 +111,7 @@ struct ScanQRCodeView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: Constants.closeButtonHeight, height: Constants.closeButtonHeight)
-                    .foregroundStyle(Color.white)
+                    .foregroundStyle(closeButtonColor)
             }
             Spacer()
         }
@@ -377,9 +384,10 @@ private struct SharedBackgroundView: View {
 
     var crossHairOutline: some View {
         Image(uiImage: IconProvider.crossHairOutline)
-            .renderingMode(.original)
+            .renderingMode(.template)
             .resizable()
             .scaledToFit()
+            .foregroundStyle(ColorProvider.IconNorm)
             .frame(width: Constants.crosshairHeight, height: Constants.crosshairHeight)
             .padding(.top, Constants.crosshairTopPadding)
     }
@@ -387,7 +395,7 @@ private struct SharedBackgroundView: View {
     var topText: some View {
         Text(text)
             .font(.title2)
-            .foregroundStyle(Color.white)
+            .foregroundStyle(ColorProvider.TextNorm)
             .padding(.top, Constants.topTextTopPadding)
     }
 }
