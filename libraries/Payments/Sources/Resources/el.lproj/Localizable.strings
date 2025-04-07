@@ -10,7 +10,7 @@
 
 "It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Δεν κατέστει εφικτό να ταιριάξει το προϊόν του App Store που αγοράσατε σε οποιοδήποτε προϊόν του διακομιστή μας. Συμπληρώστε την αναφορά σφάλματος και η ομάδα υποστήριξης πελατών μας θα επικοινωνήσει μαζί σας.";
 
-"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Παρακαλούμε συνδεθήτε στον λογαριασμό Proton Mail που αναβαθμίζετε το πλάνο της υπηρεσίας του, ώστε να μπορέσουμε να ολοκληρώσουμε την αγορά.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Παρακαλούμε συνδεθείτε στον λογαριασμό Proton Mail του οποίου το πλάνο αναβαθμίζετε, ώστε να μπορέσουμε να ολοκληρώσουμε την αγορά.";
 
 "Apple informed us they could not process the purchase." = "Η Apple μας ενημέρωσε ότι δεν μπόρεσε να επεξεργαστούν την αγορά.";
 
@@ -18,7 +18,7 @@
 
 "Please unlock the app to proceed with your service plan activation" = "Παρακαλώ ξεκλειδώστε την εφαρμογή για να προχωρήσετε στην ενεργοποίηση του πακέτου/πλάνου υπηρεσίας σας";
 
-"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Παρακαλούμε συνδεθείτε στον λογαριασμό Proton Mail για τον οποίο αναβαθμίζετε το πλάνο υπηρεσιών, ώστε να μπορέσουμε να ολοκληρώσουμε την ενεργοποίηση του πλάνου υπηρεσιών.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Παρακαλούμε συνδεθείτε στον λογαριασμό Proton Mail για τον οποίο αναβαθμίζετε το πλάνο υπηρεσιών, ώστε να μπορέσουμε να ολοκληρώσουμε την ενεργοποίηση του νέου πλάνου.";
 
 "Wrong payment token status. Please relaunch the app. If error persists, contact support." = "Λάθος κατάσταση διακριτικού πληρωμής. Επανεκκινήστε την εφαρμογή. Εάν το σφάλμα παραμένει, επικοινωνήστε με την υποστήριξη.";
 
@@ -43,3 +43,5 @@
 "OK" = "ΟΚ";
 
 "The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Οι διακομιστές Proton δεν είναι προσβάσιμοι. Αυτό μπορεί να προκληθεί από λανθασμένη διαμόρφωση δικτύου, λόγο ότι διακομιστές Proton που δεν λειτουργούν ή διακομιστές Proton μπλοκάρονται";
+
+"The signed-in Apple account already purchased this item." = "Ο συνδεδεμένος λογαριασμός Apple έχει ήδη αγοράσει αυτό το προϊόν.";

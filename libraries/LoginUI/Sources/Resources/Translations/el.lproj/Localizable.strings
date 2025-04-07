@@ -395,3 +395,23 @@
 "The permission to use the Camera is off. Please enable it from the Settings." = "Το δικαίωμα χρήσης της κάμερας είναι απενεργοποιημένο. Παρακαλούμε ενεργοποιήστε το από τις Ρυθμίσεις.";
 
 "Go to Settings" = "Μετάβαση στις Ρυθμίσεις";
+
+"to Proton %@" = "στο Proton %@";
+
+"Something went wrong" = "Κάτι πήγε στραβά";
+
+"We couldn't sign you in. Please scan a new QR code to try again." = "Δεν ήταν δυνατή η σύνδεσή σας. Παρακαλούμε σαρώστε έναν νέο κωδικό QR για να προσπαθήσετε ξανά.";
+
+"New QR code" = "Νέος κωδικός QR";
+
+"Allow access to camera" = "Να επιτρέπεται η πρόσβαση στην κάμερα";
+
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "Για να σαρώσετε έναν κωδικό QR και να συνδεθήτε σε μια άλλη συσκευή, παραχωρήστε στο Proton %@ πρόσβαση στην κάμερά σας.";
+
+"You're always in control: You can change this anytime in your device settings." = "Έχετε πάντα τον έλεγχο: Μπορείτε να το αλλάξετε αυτό ανά πάσα στιγμή στις ρυθμίσεις της συσκευής σας.";
+
+"Settings" = "Ρυθμίσεις";
+
+"We couldn't load the QR code" = "Δεν ήταν δυνατή η φόρτωση του κωδικού QR";
+
+"Retry" = "Δοκιμάστε ξανά";

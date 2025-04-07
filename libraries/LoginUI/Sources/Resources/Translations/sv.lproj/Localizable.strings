@@ -366,7 +366,7 @@
 
 "Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Använd denna enhet för att skanna QR-koden som visas på enheten du vill logga in på. Båda enheterna förblir aktiva.";
 
-"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "To access the QR code, tap the **Sign in with QR code** button on the sign-in screen.";
+"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "För att komma åt QR-koden, tryck på knappen **Logga in med QR-kod** på inloggningsskärmen.";
 
 "Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust." = "Se upp för meddelanden som innehåller en QR-kod. Skanna aldrig en QR-kod från en webbplats eller en person du inte litar på.";
 
@@ -395,3 +395,23 @@
 "The permission to use the Camera is off. Please enable it from the Settings." = "Behörigheten att använda kameran är av. Aktivera det från ”Inställningar”.";
 
 "Go to Settings" = "Gå till inställningar";
+
+"to Proton %@" = "till Proton %@";
+
+"Something went wrong" = "Något gick fel";
+
+"We couldn't sign you in. Please scan a new QR code to try again." = "Vi kunde inte logga in dig. Skanna en ny QR-kod för att försöka igen.";
+
+"New QR code" = "Ny QR-kod";
+
+"Allow access to camera" = "Tillåt åtkomst till kamera";
+
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "För att skanna en QR-kod och logga in på annan enhet, bevilja Proton %@ åtkomst till din kamera.";
+
+"You're always in control: You can change this anytime in your device settings." = "Du har alltid kontroll: Du kan ändra detta när som helst i inställningarna på din enhet.";
+
+"Settings" = "Inställningar";
+
+"We couldn't load the QR code" = "Vi kunde inte ladda QR-koden";
+
+"Retry" = "Försök igen";

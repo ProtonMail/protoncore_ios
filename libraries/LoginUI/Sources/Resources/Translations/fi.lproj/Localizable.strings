@@ -376,22 +376,42 @@
 
 "Authenticate to access the QR code scanner" = "Tunnistaudu käyttääksesi QR-koodilukijaa";
 
-"Place QR code within the square" = "Place QR code within the square";
+"Place QR code within the square" = "Sijoita QR-koodi neliön sisään";
 
-"Verifying..." = "Verifying...";
+"Verifying..." = "Vahvistetaan...";
 
 "You’re signed in to %@ on the other device." = "You’re signed in to %@ on the other device.";
 
-"You're signed in" = "You're signed in";
+"You're signed in" = "Olet kirjautunut sisään";
 
-"Got it" = "Got it";
+"Got it" = "Selvä";
 
-"Code not recognized. Try again." = "Code not recognized. Try again.";
+"Code not recognized. Try again." = "Koodia ei tunnistettu. Yritä uudelleen.";
 
-"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me.";
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Vinkki: Älä koskaan lue QR-koodeja sivustoilta tai henkilöiltä, joihin et luota. Proton ei koskaan pyydä sinua lukemaan QR-koodia, joka ei ole peräisin verkkotunnuksesta account.proton.me.";
 
 "Camera Access Denied." = "Camera Access Denied.";
 
 "The permission to use the Camera is off. Please enable it from the Settings." = "The permission to use the Camera is off. Please enable it from the Settings.";
 
-"Go to Settings" = "Go to Settings";
+"Go to Settings" = "Mene asetuksiin";
+
+"to Proton %@" = "to Proton %@";
+
+"Something went wrong" = "Something went wrong";
+
+"We couldn't sign you in. Please scan a new QR code to try again." = "We couldn't sign you in. Please scan a new QR code to try again.";
+
+"New QR code" = "New QR code";
+
+"Allow access to camera" = "Allow access to camera";
+
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "To scan a QR code and sign in to another device, grant Proton %@ access to your camera.";
+
+"You're always in control: You can change this anytime in your device settings." = "You're always in control: You can change this anytime in your device settings.";
+
+"Settings" = "Settings";
+
+"We couldn't load the QR code" = "We couldn't load the QR code";
+
+"Retry" = "Yritä uudelleen";

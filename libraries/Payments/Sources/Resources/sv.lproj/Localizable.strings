@@ -43,3 +43,5 @@
 "OK" = "OK";
 
 "The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Proton-servrarna går inte att nå. Det kan bero på fel nätverkskonfiguration, att Proton-servrar inte fungerar eller att Proton-servrar är blockerade";
+
+"The signed-in Apple account already purchased this item." = "Det inloggade Apple-kontot har redan köpt detta objekt.";

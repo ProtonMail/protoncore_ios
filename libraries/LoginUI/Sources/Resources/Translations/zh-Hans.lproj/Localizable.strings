@@ -1,4 +1,4 @@
-"Privacy by default" = "隐私至上";
+"Privacy by default" = "Privacy by default";
 
 "Proton address required" = "需要使用 Proton 地址";
 
@@ -395,3 +395,23 @@
 "The permission to use the Camera is off. Please enable it from the Settings." = "使用相机的权限已关闭。请从设置中启用。";
 
 "Go to Settings" = "转到设置";
+
+"to Proton %@" = "发送至 Proton %@";
+
+"Something went wrong" = "出错";
+
+"We couldn't sign you in. Please scan a new QR code to try again." = "我们无法完成您的登录。请扫描新的二维码以重试。";
+
+"New QR code" = "新的二维码";
+
+"Allow access to camera" = "允许访问摄像头";
+
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "要扫描二维码并在其他设备上登录，请允许 Proton %@ 访问您的摄像头。";
+
+"You're always in control: You can change this anytime in your device settings." = "您始终拥有掌控权：您可随时在设备设置中更改此选项。";
+
+"Settings" = "设置";
+
+"We couldn't load the QR code" = "无法加载二维码";
+
+"Retry" = "重试";

@@ -4,7 +4,7 @@
 
 "Update required" = "Pembaruan diperlukan";
 
-"Please enter your Proton Account password." = "Silakan masukkan kata sandi Akun Proton.";
+"Please enter your Proton Account password." = "Silakan masukkan kata sandi Akun Proton Anda.";
 
 "OK" = "OK";
 
@@ -24,7 +24,7 @@
 
 "Resend" = "Kirim ulang";
 
-"Get a replacement code sent to %@." = "Dapatkan kode pengganti yang dikirim ke %@.";
+"Get a replacement code sent to %@." = "Dapatkan kode pengganti yang akan dikirim ke %@.";
 
 "Request new code" = "Minta kode baru";
 
@@ -395,3 +395,23 @@
 "The permission to use the Camera is off. Please enable it from the Settings." = "Izin untuk menggunakan Kamera sedang dinonaktifkan. Silakan aktifkan perizinan ini dari menu Pengaturan.";
 
 "Go to Settings" = "Tuju Pengaturan";
+
+"to Proton %@" = "ke Proton %@";
+
+"Something went wrong" = "Terdapat suatu kesalahan";
+
+"We couldn't sign you in. Please scan a new QR code to try again." = "Kami tidak dapat memasukkan Anda ke akun. Silakan salin kode QR baru atau coba lagi.";
+
+"New QR code" = "Kode QR baru";
+
+"Allow access to camera" = "Izinkan akses ke kamera";
+
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "Untuk memindai kode QR dan masuk ke perangkat lain, berikan %@ izin akses ke kamera Anda.";
+
+"You're always in control: You can change this anytime in your device settings." = "Anda selalu memegang kendali: Anda dapat mengubah hal ini kapan saja pada pengaturan perangkat Anda.";
+
+"Settings" = "Pengaturan";
+
+"We couldn't load the QR code" = "Kami tidak dapat memuat kode QR";
+
+"Retry" = "Coba lagi";

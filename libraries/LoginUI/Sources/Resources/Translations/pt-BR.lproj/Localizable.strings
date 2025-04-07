@@ -395,3 +395,23 @@
 "The permission to use the Camera is off. Please enable it from the Settings." = "A permissão para usar a câmera está desativada. Por favor, ative-a nas Configurações.";
 
 "Go to Settings" = "Ir para Ajustes";
+
+"to Proton %@" = "para o Proton %@";
+
+"Something went wrong" = "Algo deu errado";
+
+"We couldn't sign you in. Please scan a new QR code to try again." = "Não conseguimos fazer o login. Por favor, escaneie um novo código QR para tentar novamente.";
+
+"New QR code" = "Novo QR Code";
+
+"Allow access to camera" = "Permitir acesso à câmera";
+
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "Para escanear um QR code e iniciar sessão em outro dispositivo, conceda ao Proton %@ acesso à sua câmera.";
+
+"You're always in control: You can change this anytime in your device settings." = "Você está sempre no controle: você pode alterar isso a qualquer momento nas configurações do seu dispositivo.";
+
+"Settings" = "Configurações";
+
+"We couldn't load the QR code" = "Não foi possível carregar o código QR.";
+
+"Retry" = "Tentar novamente";
