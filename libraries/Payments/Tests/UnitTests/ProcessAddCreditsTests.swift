@@ -87,7 +87,7 @@ final class ProcessAddCreditsTests: XCTestCase {
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
 
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
                 completion(nil, .success(PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/credit") {
@@ -133,7 +133,7 @@ final class ProcessAddCreditsTests: XCTestCase {
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
                 completion(nil, .success(PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/credit") {
@@ -177,7 +177,7 @@ final class ProcessAddCreditsTests: XCTestCase {
         let expectation = self.expectation(description: "Completion block called")
         processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in return success() }
 
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
                 completion(nil, .success(["Code": 22000]))
             } else {
@@ -213,7 +213,7 @@ final class ProcessAddCreditsTests: XCTestCase {
             let expectation = self.expectation(description: "Completion block called")
             processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in return success() }
 
-            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+            apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
                 if path.contains("/tokens") {
                     completion(nil, .success(["Code": 22000]))
                 } else {
@@ -252,7 +252,7 @@ final class ProcessAddCreditsTests: XCTestCase {
         var processCompletionResult: ProcessCompletionResult?
         processDependencies.refreshCompletionHandlerStub.fixture = { processCompletionResult = $0 }
 
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
                 completion(nil, .success(PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/credit") {
@@ -294,7 +294,7 @@ final class ProcessAddCreditsTests: XCTestCase {
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
         processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in return success() }
 
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
                 completion(nil, .success(PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/credit") {
@@ -332,7 +332,7 @@ final class ProcessAddCreditsTests: XCTestCase {
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
         processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in return success() }
 
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
                 completion(nil, .success(PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/credit") {
@@ -369,7 +369,7 @@ final class ProcessAddCreditsTests: XCTestCase {
         paymentTokenStorageMock.getStub.bodyIs { _ in PaymentToken(token: "test token", status: .consumed) }
         processDependencies.updateCurrentSubscriptionStub.bodyIs { _, success, fail in return success() }
 
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/tokens") {
                 completion(nil, .success(PaymentToken(token: "test token", status: .chargeable).toSuccessfulResponse))
             } else if path.contains("/credit") {

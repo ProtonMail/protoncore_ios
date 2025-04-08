@@ -78,7 +78,7 @@ class AuthAPITests: XCTestCase {
     }
 
     func testAuthInfo_jsonStub() {
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 completion(nil, .success(self.authInfoResponse.toSuccessfulResponse))
             } else {
@@ -143,7 +143,7 @@ class AuthAPITests: XCTestCase {
             srpSession: srpSession
         )
 
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/info") {
                 completion(nil, .success(self.authInfoResponse.toSuccessfulResponse))
             } else {
@@ -191,7 +191,7 @@ class AuthAPITests: XCTestCase {
     func testAuthModulus() {
         let modulus = "testModulus"
         let modulusID = "testModulusID"
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/modulus") {
                 let authModulusResponse = AuthModulusResponse()
                 authModulusResponse.modulus = modulus
@@ -218,7 +218,7 @@ class AuthAPITests: XCTestCase {
     }
 
     func testAuth() {
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/auth/v4") {
                 let authResponse = AuthResponse()
                 authResponse.accessToken = "testAccessToken"

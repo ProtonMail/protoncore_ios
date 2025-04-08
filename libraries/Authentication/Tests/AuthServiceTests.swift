@@ -137,7 +137,7 @@ class AuthServiceTests: XCTestCase {
         let expectation = XCTestExpectation(description: "success with sso response expected")
         let username = "username"
         let expectedEvent: ObservabilityEvent = .ssoObtainChallengeToken(status: .http2xx)
-        api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(["SSOChallengeToken": "ssoChallengeToken"]))
         }
         api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
@@ -162,7 +162,7 @@ class AuthServiceTests: XCTestCase {
         api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(response))
         }
-        api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .failure(BadPerformError()))
         }
 
@@ -183,7 +183,7 @@ class AuthServiceTests: XCTestCase {
         api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .failure(.badResponse()))
         }
-        api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .failure(BadPerformError()))
         }
 
@@ -204,7 +204,7 @@ class AuthServiceTests: XCTestCase {
         api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(response))
         }
-        api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .failure(BadPerformError()))
         }
 
@@ -252,7 +252,7 @@ class AuthServiceTests: XCTestCase {
     func test_info_withAutoIntent_ssoExpected() {
         // Given
         let expectation = XCTestExpectation(description: "success with sso response expected")
-        api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(["SSOChallengeToken": "ssoChallengeToken"]))
         }
         api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
@@ -276,7 +276,7 @@ class AuthServiceTests: XCTestCase {
     func test_info_withAutoIntent_AuthInfoExpected() {
         // Given
         let expectation = XCTestExpectation(description: "success with auth info response expected")
-        api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(
                 [
                     "Modulus": "modulus",
@@ -312,7 +312,7 @@ class AuthServiceTests: XCTestCase {
     func test_info_withAutoIntent_badJSONExpectsError() {
         // Given
         let expectation = XCTestExpectation(description: "failure with response error expected")
-        api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        api.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(["NotExpected": "not expected"]))
         }
         api.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in

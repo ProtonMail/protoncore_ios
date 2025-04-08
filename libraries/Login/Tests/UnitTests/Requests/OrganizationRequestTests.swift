@@ -51,7 +51,7 @@ final class OrganizationRequestTests: XCTestCase, JSONMockLoader {
 
         let sut = GetOrganizationRequest()
 
-        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, _, completion in
             if method == .get && path.contains("/core/v4/organizations") {
                 completion(nil, .success(organizationsRes.toSuccessfulResponse))
             } else {
@@ -75,7 +75,7 @@ final class OrganizationRequestTests: XCTestCase, JSONMockLoader {
 
         let sut = GetOrganizationSettingsRequest()
 
-        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, _, completion in
             if method == .get && path.contains("/core/v4/organizations/settings") {
                 completion(nil, .success(organizationsRes.toSuccessfulResponse))
             } else {

@@ -87,6 +87,7 @@ public protocol API {
                  customAuthCredential: AuthCredential?,
                  nonDefaultTimeout: TimeInterval?,
                  retryPolicy: ProtonRetryPolicy.RetryMode,
+                 successStatusCodes: SuccessStatusCodes,
                  onDataTaskCreated: @escaping (URLSessionDataTask) -> Void,
                  jsonCompletion: @escaping JSONCompletion)
 
@@ -122,6 +123,7 @@ public protocol API {
                 customAuthCredential: AuthCredential?,
                 nonDefaultTimeout: TimeInterval?,
                 retryPolicy: ProtonRetryPolicy.RetryMode,
+                successStatusCodes: SuccessStatusCodes,
                 uploadProgress: ProgressCompletion?,
                 jsonCompletion: @escaping JSONCompletion)
 
@@ -146,6 +148,7 @@ public protocol API {
                 customAuthCredential: AuthCredential?,
                 nonDefaultTimeout: TimeInterval?,
                 retryPolicy: ProtonRetryPolicy.RetryMode,
+                successStatusCodes: SuccessStatusCodes,
                 uploadProgress: ProgressCompletion?,
                 jsonCompletion: @escaping JSONCompletion)
 
@@ -170,6 +173,7 @@ public protocol API {
                         customAuthCredential: AuthCredential?,
                         nonDefaultTimeout: TimeInterval?,
                         retryPolicy: ProtonRetryPolicy.RetryMode,
+                        successStatusCodes: SuccessStatusCodes,
                         uploadProgress: ProgressCompletion?,
                         jsonCompletion: @escaping JSONCompletion)
 
@@ -198,6 +202,7 @@ public extension API {
                  customAuthCredential: AuthCredential?,
                  nonDefaultTimeout: TimeInterval?,
                  retryPolicy: ProtonRetryPolicy.RetryMode,
+                 successStatusCodes: SuccessStatusCodes = .default,
                  jsonCompletion: @escaping JSONCompletion) {
         self.request(method: method,
                      path: path,
@@ -208,6 +213,7 @@ public extension API {
                      customAuthCredential: customAuthCredential,
                      nonDefaultTimeout: nonDefaultTimeout,
                      retryPolicy: retryPolicy,
+                     successStatusCodes: successStatusCodes,
                      onDataTaskCreated: { _ in },
                      jsonCompletion: jsonCompletion)
     }
@@ -221,6 +227,7 @@ public extension API {
                     customAuthCredential: AuthCredential?,
                     nonDefaultTimeout: TimeInterval?,
                     retryPolicy: ProtonRetryPolicy.RetryMode,
+                    successStatusCodes: SuccessStatusCodes = .default,
                     decodableCompletion: @escaping DecodableCompletion<T>) where T: APIDecodableResponse {
         self.request(method: method,
                      path: path,
@@ -248,9 +255,10 @@ public extension API {
                  customAuthCredential: AuthCredential?,
                  nonDefaultTimeout: TimeInterval?,
                  retryPolicy: ProtonRetryPolicy.RetryMode = .userInitiated,
+                 successStatusCodes: SuccessStatusCodes = .default,
                  completion: CompletionBlock?) {
         request(method: method, path: path, parameters: parameters, headers: headers, authenticated: authenticated, authRetry: authRetry,
-                customAuthCredential: customAuthCredential, nonDefaultTimeout: nonDefaultTimeout, retryPolicy: retryPolicy) { task, result in
+                customAuthCredential: customAuthCredential, nonDefaultTimeout: nonDefaultTimeout, retryPolicy: retryPolicy, successStatusCodes: successStatusCodes) { task, result in
             switch result {
             case .success(let dict): completion?(task, dict, nil)
             case .failure(let error): completion?(task, nil, error)
@@ -267,10 +275,11 @@ public extension API {
                  authRetry: Bool,
                  customAuthCredential: AuthCredential?,
                  retryPolicy: ProtonRetryPolicy.RetryMode = .userInitiated,
+                 successStatusCodes: SuccessStatusCodes = .default,
                  completion: CompletionBlock?) {
         self.request(method: method, path: path, parameters: parameters, headers: headers,
                      authenticated: authenticated, authRetry: authRetry, customAuthCredential: customAuthCredential,
-                     nonDefaultTimeout: nil, retryPolicy: retryPolicy, completion: completion)
+                     nonDefaultTimeout: nil, retryPolicy: retryPolicy, successStatusCodes: successStatusCodes, completion: completion)
     }
 
     @available(*, deprecated, message: "Please use the variant returning either DecodableResponseCompletion or JSONResponseCompletion")
@@ -282,11 +291,12 @@ public extension API {
                 customAuthCredential: AuthCredential?,
                 nonDefaultTimeout: TimeInterval?,
                 retryPolicy: ProtonRetryPolicy.RetryMode = .userInitiated,
+                successStatusCodes: SuccessStatusCodes = .default,
                 uploadProgress: ProgressCompletion?,
                 completion: @escaping CompletionBlock) {
         upload(byPath: path, parameters: parameters, files: files, headers: headers, authenticated: authenticated,
                customAuthCredential: customAuthCredential, nonDefaultTimeout: nonDefaultTimeout, retryPolicy: retryPolicy,
-               uploadProgress: uploadProgress) { task, result in
+               successStatusCodes: successStatusCodes, uploadProgress: uploadProgress) { task, result in
             switch result {
             case .success(let dict): completion(task, dict, nil)
             case .failure(let error): completion(task, nil, error)
@@ -455,6 +465,7 @@ public extension APIService {
                 customAuthCredential: route.authCredential,
                 nonDefaultTimeout: route.nonDefaultTimeout,
                 retryPolicy: route.retryPolicy,
+                successStatusCodes: route.successStatusCodes,
                 onDataTaskCreated: onDataTaskCreated) { (task, result: Result<JSONDictionary, APIError>) in
             executor.execute {
                 let httpCode = task.flatMap(\.response).flatMap { $0 as? HTTPURLResponse }.map(\.statusCode)
@@ -469,7 +480,7 @@ public extension APIService {
                         )
                     }
                 case .success(let object):
-                    if let code = object.code, code != 1000, code != 1001 {
+                    if let code = object.code, !route.successResponseCodes.contains(code) {
                         jsonDictionaryCompletion(
                             task, .failure(.init(httpCode: httpCode, responseCode: code, userFacingMessage: object.errorMessage, underlyingError: nil))
                         )
@@ -517,6 +528,7 @@ public extension APIService {
                 customAuthCredential: route.authCredential,
                 nonDefaultTimeout: route.nonDefaultTimeout,
                 retryPolicy: route.retryPolicy,
+                successStatusCodes: route.successStatusCodes,
                 onDataTaskCreated: onDataTaskCreated) { (task, result: Result<JSONDictionary, APIError>) in
             executor.execute {
                 let httpCode = task.flatMap(\.response).flatMap { $0 as? HTTPURLResponse }.map(\.statusCode)
@@ -644,6 +656,7 @@ public extension APIService {
                customAuthCredential: route.authCredential,
                nonDefaultTimeout: route.nonDefaultTimeout,
                retryPolicy: route.retryPolicy,
+               successStatusCodes: route.successStatusCodes,
                uploadProgress: uploadProgress) { (task: URLSessionDataTask?, result: Result<JSONDictionary, APIService.APIError>) in
 
             executor.execute {
@@ -754,6 +767,7 @@ public extension APIService {
                      customAuthCredential: route.authCredential,
                      nonDefaultTimeout: route.nonDefaultTimeout,
                      retryPolicy: route.retryPolicy,
+                     successStatusCodes: route.successStatusCodes,
                      jsonCompletion: completionWrapper)
 
         // wait operations
@@ -802,6 +816,7 @@ public extension APIService {
                      customAuthCredential: route.authCredential,
                      nonDefaultTimeout: route.nonDefaultTimeout,
                      retryPolicy: route.retryPolicy,
+                     successStatusCodes: route.successStatusCodes,
                      jsonCompletion: completionWrapper)
     }
 
@@ -870,6 +885,7 @@ public extension APIService {
                      customAuthCredential: route.authCredential,
                      nonDefaultTimeout: route.nonDefaultTimeout,
                      retryPolicy: route.retryPolicy,
+                     successStatusCodes: route.successStatusCodes,
                      jsonCompletion: completionWrapper)
     }
 
@@ -937,6 +953,7 @@ public extension APIService {
                      customAuthCredential: route.authCredential,
                      nonDefaultTimeout: route.nonDefaultTimeout,
                      retryPolicy: route.retryPolicy,
+                     successStatusCodes: route.successStatusCodes,
                      jsonCompletion: completionWrapper)
     }
 
@@ -1012,6 +1029,7 @@ public extension APIService {
                     customAuthCredential: route.authCredential,
                     nonDefaultTimeout: route.nonDefaultTimeout,
                     retryPolicy: route.retryPolicy,
+                    successStatusCodes: route.successStatusCodes,
                     uploadProgress: uploadProgress,
                     completion: completionWrapper)
     }
@@ -1043,6 +1061,7 @@ extension APIService {
             customAuthCredential: request.authCredential,
             nonDefaultTimeout: request.nonDefaultTimeout,
             retryPolicy: request.retryPolicy,
+            successStatusCodes: request.successStatusCodes,
             onDataTaskCreated: onDataTaskCreated,
             jsonCompletion: { task, result in
                 jsonCompletion?(task, result)

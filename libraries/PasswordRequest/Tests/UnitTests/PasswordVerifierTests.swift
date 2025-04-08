@@ -72,7 +72,7 @@ final class PasswordVerifierTests: XCTestCase {
     func test_lock_callsCorrectAPI() {
         // Given
         let expectation = XCTestExpectation(description: "")
-        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, _, completion in
             XCTAssertEqual(method, .put)
             XCTAssertEqual(path, "/users/lock")
             completion(nil, .success(.init()))
@@ -96,7 +96,7 @@ final class PasswordVerifierTests: XCTestCase {
             var path: String { "myPath" }
             var method: HTTPMethod { .get }
         }
-        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, _, completion in
             XCTAssertEqual(method, .get)
             XCTAssertEqual(path, "myPath")
             completion(nil, .success(.init()))
@@ -127,7 +127,7 @@ final class PasswordVerifierTests: XCTestCase {
             var path: String { "myPath" }
             var method: HTTPMethod { .get }
         }
-        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, _, completion in
             XCTAssertEqual(method, .get)
             XCTAssertEqual(path, "myPath")
             completion(nil, .success(.init()))
@@ -277,7 +277,7 @@ final class PasswordVerifierTests: XCTestCase {
         // Given
         let expectation = XCTestExpectation(description: "expect success")
 
-        apiService.requestJSONStub.bodyIs { count, _, _, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { count, _, _, _, _, _, _, _, _, _, _, _, completion in
             expectation.fulfill()
             completion(nil, .success(.init()))
         }
@@ -292,7 +292,7 @@ final class PasswordVerifierTests: XCTestCase {
     func test_verifyPassword_completeOnFailure_wrongPassword() {
         // Given
         let expectation = XCTestExpectation(description: "expects failure")
-        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             expectation.fulfill()
             completion(nil, .failure(.init(domain: "", code: 8002)))
         }
@@ -314,7 +314,7 @@ final class PasswordVerifierTests: XCTestCase {
     func test_verifyPassword_completesOnFailure() {
         // Given
         let expectation = XCTestExpectation(description: "expects failure")
-        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .failure(.init(domain: "failure", code: 1234)))
         }
 
@@ -337,7 +337,7 @@ final class PasswordVerifierTests: XCTestCase {
         // Given
         let error: NSError = .init(domain: "", code: 1234)
         let expectation = XCTestExpectation(description: "expect success")
-        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             expectation.fulfill()
             completion(nil, .failure(error))
         }

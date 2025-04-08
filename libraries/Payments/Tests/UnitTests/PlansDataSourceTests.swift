@@ -52,7 +52,7 @@ final class PlansDataSourceTests: XCTestCase {
     func test_fetchIAPAvailability_succeeds() async throws {
         // Given
         try await withFeatureFlags([.dynamicPlans]) {
-            apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
                 completion(nil, .success(["InApp": 1]))
             }
 
@@ -67,7 +67,7 @@ final class PlansDataSourceTests: XCTestCase {
     func test_fetchIAPAvailability_fails_onFalse() async throws {
         // Given
         try await withFeatureFlags([.dynamicPlans]) {
-            apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
                 completion(nil, .success(["InApp": 0]))
             }
 
@@ -81,7 +81,7 @@ final class PlansDataSourceTests: XCTestCase {
 
     func test_fetchIAPAvailability_fails_onBadJSON() async throws {
         // Given
-        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(["bad": "json"]))
         }
 
@@ -94,7 +94,7 @@ final class PlansDataSourceTests: XCTestCase {
 
     func test_fetchIAPAvailability_throws() async throws {
         // Given
-        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .failure(.badResponse()))
         }
 
@@ -158,7 +158,7 @@ final class PlansDataSourceTests: XCTestCase {
 
     func test_fetchCurrentPlan_succeeds() async throws {
         // Given
-        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(currentPlanResponse))
         }
 
@@ -171,7 +171,7 @@ final class PlansDataSourceTests: XCTestCase {
 
     func test_fetchCurrentPlan_fails() async throws {
         // Given
-        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success([:]))
         }
 
@@ -184,7 +184,7 @@ final class PlansDataSourceTests: XCTestCase {
 
     func test_fetchCurrentPlan_throws() async throws {
         // Given
-        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .failure(.badResponse()))
         }
 
@@ -201,7 +201,7 @@ final class PlansDataSourceTests: XCTestCase {
 
     func test_fetchAvailablePlans_succeeds() async throws {
         // Given
-        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(availablePlansResponse))
         }
         storeKitDataSourceMock.filterAccordingToAvailableProductsStub.bodyIs { _, plans in
@@ -219,7 +219,7 @@ final class PlansDataSourceTests: XCTestCase {
 
     func test_fetchAvailablePlans_success_filterPlans() async throws {
         // Given
-        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(availablePlansResponse))
         }
         storeKitDataSourceMock.filterAccordingToAvailableProductsStub.bodyIs { _, plans in
@@ -238,7 +238,7 @@ final class PlansDataSourceTests: XCTestCase {
 
     func test_fetchAvailablePlans_fails() async throws {
         // Given
-        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success([:]))
         }
 
@@ -253,7 +253,7 @@ final class PlansDataSourceTests: XCTestCase {
 
     func test_fetchAvailablePlans_throws() async throws {
         // Given
-        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .failure(.badResponse()))
         }
 
@@ -271,7 +271,7 @@ final class PlansDataSourceTests: XCTestCase {
 
     func test_fetchPaymentMethods_succeeds() async throws {
         // Given
-        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(paymentMethodsResponse))
         }
 
@@ -284,7 +284,7 @@ final class PlansDataSourceTests: XCTestCase {
 
     func test_fetchPaymentMethods_fails() async throws {
         // Given
-        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success([:]))
         }
 
@@ -297,7 +297,7 @@ final class PlansDataSourceTests: XCTestCase {
 
     func test_fetchPaymentMethods_throws() async throws {
         // Given
-        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .failure(.badResponse()))
         }
 
@@ -314,7 +314,7 @@ final class PlansDataSourceTests: XCTestCase {
 
     func test_willRenewAutomatically_isTrue() async throws {
         // Given
-        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(currentPlanResponse))
         }
 
@@ -327,7 +327,7 @@ final class PlansDataSourceTests: XCTestCase {
 
     func test_willRenewAutomatically_isFalse() async throws {
         // Given
-        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        apiServiceMock.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success([:]))
         }
 

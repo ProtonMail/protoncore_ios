@@ -207,7 +207,7 @@ final class ObservabilityServiceTests: XCTestCase {
 
     private func setupService() -> APIServiceMock {
         let service = APIServiceMock()
-        service.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+        service.requestJSONStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(.init()))
         }
         return service

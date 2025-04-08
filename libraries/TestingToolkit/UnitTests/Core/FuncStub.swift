@@ -23,9 +23,9 @@ import XCTest
 import ProtonCoreUtilities
 
 @propertyWrapper
-public final class FuncStub<Input, Output, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12> {
+public final class FuncStub<Input, Output, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13> {
 
-    public var wrappedValue: StubbedFunction<Input, Output, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12>
+    public var wrappedValue: StubbedFunction<Input, Output, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13>
 
     init(initialReturn: @escaping (Input) throws -> Output, function: String, line: UInt, file: String) {
         wrappedValue = StubbedFunction(initialReturn: .init(initialReturn), function: function, line: line, file: file)
@@ -40,14 +40,14 @@ public final class FuncStub<Input, Output, A1, A2, A3, A4, A5, A6, A7, A8, A9, A
     }
 }
 
-public final class StubbedFunction<Input, Output, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12> {
+public final class StubbedFunction<Input, Output, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13> {
 
     public var callCounter: UInt { capturedArgumentsAndCounterStorage.value.0 }
-    public var capturedArguments: [CapturedArguments<Input, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12>] {
+    public var capturedArguments: [CapturedArguments<Input, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13>] {
         capturedArgumentsAndCounterStorage.value.1
     }
 
-    private var capturedArgumentsAndCounterStorage: Atomic<(UInt, [CapturedArguments<Input, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12>])> = .init((.zero, .empty))
+    private var capturedArgumentsAndCounterStorage: Atomic<(UInt, [CapturedArguments<Input, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13>])> = .init((.zero, .empty))
 
     public var description: String
     public var ensureWasCalled = false
@@ -120,7 +120,7 @@ public final class StubbedFunction<Input, Output, A1, A2, A3, A4, A5, A6, A7, A8
         }
     }
 
-    func callAsFunction(input: Input, arguments: CapturedArguments<Input, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12>) -> Output {
+    func callAsFunction(input: Input, arguments: CapturedArguments<Input, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13>) -> Output {
         capturedArgumentsAndCounterStorage.mutate {
             $0.0 += 1
             $0.1.append(arguments)

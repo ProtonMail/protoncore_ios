@@ -19,6 +19,7 @@ example-app/**/build
 # localization
 _translations
 macosV5_ios14macos11/9999/DerivedData
+ProtonCore/UnitTests-iOS/9999/DerivedData
 
 # SPM
 .build

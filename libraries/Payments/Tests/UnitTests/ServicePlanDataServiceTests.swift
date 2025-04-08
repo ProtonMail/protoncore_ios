@@ -123,7 +123,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
         // statusRequest
         // plansRequest
         // defaultPlanRequest
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/status") {
                 completion(nil, .success(["Code": 1000, "Apple": true]))
             } else if path.contains("/plans/default") {
@@ -154,7 +154,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
         // statusRequest
         // plansRequest
         // defaultPlanRequest
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/status") {
                 completion(nil, .success(["Code": 1000, "Apple": true]))
             } else if path.contains("/plans/default") {
@@ -192,7 +192,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
         let yearlySubscriptionCycleReturnedByBE = 12
         let yearlySubscriptionCyclePresentedToUser = 12
 
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/status") {
                 completion(nil, .success(["Code": 1000, "Apple": true]))
             } else if path.contains("/plans/default") {
@@ -234,7 +234,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
         // organizationsRequest
         paymentsApi.getUserStub.bodyIs { _, _ in self.testUser.updated(subscribed: .mail) }
         let testSubscriptionDict = self.testSubscriptionDict
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/subscription") {
                 completion(nil, .success(testSubscriptionDict))
             } else if path.contains("/organizations") {
@@ -263,7 +263,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
                                          localStorage: servicePlanDataStorageMock,
                                          paymentsAlertManager: paymentsAlertMock)
         paymentsApi.getUserStub.bodyIs { _, _ in self.testUser.updated(subscribed: []) }
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/subscription") {
                 completion(nil, .success(["Code": 22110]))
             } else if path.contains("/methods") {
@@ -290,7 +290,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
                                          localStorage: servicePlanDataStorageMock,
                                          paymentsAlertManager: paymentsAlertMock)
         paymentsApi.getUserStub.bodyIs { _, _ in self.testUser.updated(subscribed: .mail) }
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/subscription") {
                 completion(URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 403)),
                            .failure(NSError(domain: "test", code: 100, userInfo: nil)))
@@ -336,7 +336,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
                                          localStorage: servicePlanDataStorageMock,
                                          paymentsAlertManager: paymentsAlertMock)
         paymentsApi.getUserStub.bodyIs { _, _ in self.testUser.updated(subscribed: []) }
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/vpn/countries/count") {
                 completion(nil, .success(self.testCountriesCountDict))
             } else {
@@ -366,7 +366,7 @@ final class ServicePlanDataServiceTests: XCTestCase {
                                          localStorage: servicePlanDataStorageMock,
                                          paymentsAlertManager: paymentsAlertMock)
         paymentsApi.getUserStub.bodyIs { _, _ in self.testUser.updated(subscribed: []) }
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/vpn/countries/count") {
                 completion(nil, .success(["Code": 1000, "Counts": []]))
             } else {

@@ -1435,7 +1435,7 @@ class AuthenticatorTests: XCTestCase {
     func testCreateUserSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createUser")
-        apiService.requestJSONStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, _, completion in
             if path.contains("/users") {
                 XCTAssertNil((parameters as! [String: Any])["Domain"])
                 let response = Response(code: 1000)
@@ -1466,7 +1466,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createUser")
         let testResponseError = ResponseError(httpCode: 12399, responseCode: 56789, userFacingMessage: "testErrorX", underlyingError: nil)
-        apiService.requestJSONStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, _, completion in
             if path.contains("/users") {
                 XCTAssertNil((parameters as! [String: Any])["Domain"])
                 completion(nil, .failure(AuthErrors.networkingError(testResponseError) as NSError))
@@ -1500,7 +1500,7 @@ class AuthenticatorTests: XCTestCase {
     func testCreateUserApiMightBeBlockedError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createUser")
-        apiService.requestJSONStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, _, completion in
             if path.contains("/users") {
                 XCTAssertNil((parameters as! [String: Any])["Domain"])
                 completion(nil, .failure(self.apiBlockedError))
@@ -1532,7 +1532,7 @@ class AuthenticatorTests: XCTestCase {
     func testCreateUserWithDomainSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createUser")
-        apiService.requestJSONStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, _, completion in
             if path.contains("/users") {
                 XCTAssertEqual((parameters as! [String: Any])["Domain"] as! String, "proton.test")
                 let response = Response(code: 1000)
@@ -1563,7 +1563,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createUser")
         let testResponseError = ResponseError(httpCode: 12399, responseCode: 56789, userFacingMessage: "testErrorX", underlyingError: nil)
-        apiService.requestJSONStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, _, completion in
             if path.contains("/users") {
                 XCTAssertEqual((parameters as! [String: Any])["Domain"] as! String, "proton.test")
                 completion(nil, .failure(AuthErrors.networkingError(testResponseError) as NSError))
@@ -1597,7 +1597,7 @@ class AuthenticatorTests: XCTestCase {
     func testCreateUserWithDomainApiMightBeBlockedError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createUser")
-        apiService.requestJSONStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, parameters, _, _, _, _, _, _, _, _, completion in
             if path.contains("/users") {
                 XCTAssertEqual((parameters as! [String: Any])["Domain"] as! String, "proton.test")
                 completion(nil, .failure(self.apiBlockedError))
@@ -1629,7 +1629,7 @@ class AuthenticatorTests: XCTestCase {
     func testCreateExternalUserSuccess() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createExternalUser")
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/users/external") {
                 let response = Response(code: 1000)
                 completion(nil, .success(response.toSuccessfulResponse))
@@ -1659,7 +1659,7 @@ class AuthenticatorTests: XCTestCase {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createExternalUser")
         let testResponseError = ResponseError(httpCode: 12399, responseCode: 56789, userFacingMessage: "testErrorX", underlyingError: nil)
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/users/external") {
                 completion(nil, .failure(AuthErrors.networkingError(testResponseError) as NSError))
             } else {
@@ -1692,7 +1692,7 @@ class AuthenticatorTests: XCTestCase {
     func testCreateExternalUserApiMightBeBlockedError() {
         let manager = Authenticator(api: apiService)
         let expect = expectation(description: "createExternalUser")
-        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+        apiService.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/users/external") {
                 completion(nil, .failure(self.apiBlockedError))
             } else {
