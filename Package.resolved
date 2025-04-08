@@ -1,5 +1,5 @@
 {
-  "originHash" : "3c5345b7c4f5e3fa18614eb3e59745dfefde0fef54e8c3dc08f46317fbfbcf60",
+  "originHash" : "d7a67f879e68fc448f6c7bd9e0a17e0c13a8d46e584419cf08aefb06c51b5b9c",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -26,15 +26,6 @@
       "state" : {
         "revision" : "678d442c6f7828def400a70ae15968aef67ef52d",
         "version" : "1.8.3"
-      }
-    },
-    {
-      "identity" : "ellipticcurvekeypair",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/agens-no/EllipticCurveKeyPair",
-      "state" : {
-        "revision" : "944ae5c89ca045e9f1a113b736706c73fc51d1c2",
-        "version" : "2.0.0"
       }
     },
     {

@@ -21,7 +21,6 @@
 
 import Foundation
 import Security
-import EllipticCurveKeyPair
 
 private enum BioProtectionConstants {
     static let privateLabelKey = "BioProtection" + ".private"
