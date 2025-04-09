@@ -206,12 +206,14 @@ public final class UserInfo: NSObject, Codable {
     public var weekStart: Int
     public var lockedFlags: LockedFlags?
 
+    public var edmOptOut: Int
+
     public static func getDefault() -> UserInfo {
         return .init(maxSpace: 0, maxBaseSpace: 0, maxDriveSpace: 0, usedSpace: 0,
                      usedBaseSpace: 0, usedDriveSpace: 0, language: "",
                      maxUpload: 0, role: 0, delinquent: 0,
                      keys: nil, userId: "", linkConfirmation: 0,
-                     credit: 0, currency: "", createTime: 0, subscribed: DefaultValue.subscribed)
+                     credit: 0, currency: "", createTime: 0, subscribed: DefaultValue.subscribed, edmOptOut: DefaultValue.edmOptOut)
     }
 
     // init from cache
@@ -258,7 +260,8 @@ public final class UserInfo: NSObject, Codable {
         conversationToolbarActions: ToolbarActions?,
         messageToolbarActions: ToolbarActions?,
         listToolbarActions: ToolbarActions?,
-        referralProgram: ReferralProgram?)
+        referralProgram: ReferralProgram?,
+        edmOptOut: Int?)
     {
         self.maxSpace = maxSpace ?? DefaultValue.maxSpace
         self.maxBaseSpace = maxBaseSpace ?? DefaultValue.maxBaseSpace
@@ -312,6 +315,7 @@ public final class UserInfo: NSObject, Codable {
         self.listToolbarActions = listToolbarActions ?? DefaultValue.listToolbarActions
         self.referralProgram = referralProgram
         self.lockedFlags = DefaultValue.lockedFlags
+        self.edmOptOut = edmOptOut ?? DefaultValue.edmOptOut
     }
 
     // init from api
@@ -333,7 +337,8 @@ public final class UserInfo: NSObject, Codable {
                          createTime: Int64?,
                          subscribed: User.Subscribed?,
                          accountRecovery: AccountRecovery? = nil,
-                         lockedFlags: LockedFlags? = nil) {
+                         lockedFlags: LockedFlags? = nil,
+                         edmOptOut: Int?) {
         self.accountRecovery = accountRecovery ?? DefaultValue.accountRecovery
         self.attachPublicKey = DefaultValue.attachPublicKey
         self.autoSaveContact = DefaultValue.autoSaveContact
@@ -378,6 +383,7 @@ public final class UserInfo: NSObject, Codable {
         self.userKeys = keys ?? DefaultValue.userKeys
         self.weekStart = DefaultValue.weekStart
         self.lockedFlags = lockedFlags ?? DefaultValue.lockedFlags
+        self.edmOptOut = edmOptOut ?? DefaultValue.edmOptOut
     }
 
     /// Update user addresses
@@ -598,6 +604,7 @@ extension UserInfo {
         static let messageToolbarActions: ToolbarActions = .init(isCustom: false, actions: [])
         static let listToolbarActions: ToolbarActions = .init(isCustom: false, actions: [])
         static let lockedFlags: LockedFlags? = nil
+        static let edmOptOut: Int = 0
     }
 }
 

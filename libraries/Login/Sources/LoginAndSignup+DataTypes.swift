@@ -141,7 +141,8 @@ public struct UserData {
                  conversationToolbarActions: nil,
                  messageToolbarActions: nil,
                  listToolbarActions: nil,
-                 referralProgram: nil
+                 referralProgram: nil,
+                 edmOptOut: nil
         )
     }
 }
