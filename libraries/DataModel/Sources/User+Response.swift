@@ -52,7 +52,8 @@ extension UserInfo {
             createTime: response["CreateTime"] as? Int64,
             subscribed: subscribed.map(User.Subscribed.init(rawValue:)),
             accountRecovery: UserInfo.parse(accountRecovery: response["AccountRecovery"] as? [String: Any]),
-            lockedFlags: LockedFlags(rawValue: response["LockedFlags"] as? Int ?? 0)
+            lockedFlags: LockedFlags(rawValue: response["LockedFlags"] as? Int ?? 0),
+            edmOptOut: DefaultValue.edmOptOut
         )
     }
 
@@ -110,6 +111,10 @@ extension UserInfo {
                let link = referralInfo["Link"] as? String,
                let eligible = referralInfo["Eligible"] as? Bool {
                 self.referralProgram = .init(link: link, eligible: eligible)
+            }
+
+            if let flags = settings["Flags"] as? [String: Int], let edmOptOut = flags["EdmOptOut"] {
+                self.edmOptOut = edmOptOut
             }
         }
     }
