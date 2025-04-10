@@ -201,7 +201,7 @@ class HumanVerifyViewModel {
     }
 
     private var getCountry: String {
-        return Locale.current.regionCode ?? ""
+        return Locale.current.region?.identifier ?? ""
     }
 }
 

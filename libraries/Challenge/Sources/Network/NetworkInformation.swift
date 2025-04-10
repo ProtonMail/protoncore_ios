@@ -26,8 +26,9 @@ struct NetworkInformation {
     typealias Cellular = PMChallenge.Cellular
 
     static func getCellularInfo() -> [PMChallenge.Cellular] {
-        guard TARGET_IPHONE_SIMULATOR != 1 else { return [] }
-
+        #if targetEnvironment(simulator)
+        return []
+        #else
         let networkInfo = CTTelephonyNetworkInfo()
 
         let carriers = networkInfo.serviceSubscriberCellularProviders?.values
@@ -35,6 +36,7 @@ struct NetworkInformation {
             Cellular(networkCode: $0.mobileNetworkCode, countryCode: $0.mobileCountryCode)
         }
         return infos ?? []
+        #endif
     }
 }
 #endif
