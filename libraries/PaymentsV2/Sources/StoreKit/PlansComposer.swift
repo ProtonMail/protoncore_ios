@@ -31,7 +31,7 @@ public enum PlansComposerError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .unableToFetchCurrentSub:
-            return String(localized: "PlansComposer_unable_to_fetch_currentSub", bundle: .module)
+            return PaymentsV2Localizer.PlansComposer_unable_to_fetch_currentSub.l10n
         }
     }
 }

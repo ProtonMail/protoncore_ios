@@ -33,17 +33,17 @@ struct ErrorView: View {
 
             VStack {
                 Image("error_image", bundle: Bundle.module)
-                Text(String(localized: "Error_view_title", bundle: .module))
+                Text(PaymentsUIV2Localizer.Error_view_title.l10n)
                     .font(.headline)
                     .padding(.top, Theme.spacing.extraLarge)
-                Text(String(localized: "Error_view_message", bundle: .module))
+                Text(PaymentsUIV2Localizer.Error_view_message.l10n)
                     .font(.subheadline)
                     .multilineTextAlignment(.center)
                     .padding(.top, Theme.spacing.large)
 
                 IconButton(action: {
                         buttonAction()
-                }, title: String(localized: "Error_view_button_title", bundle: .module), icon: Image(systemName: "arrow.clockwise"))
+                }, title: PaymentsUIV2Localizer.Error_view_button_title.l10n, icon: Image(systemName: "arrow.clockwise"))
                 .padding(.top, Theme.spacing.large)
             }
             .padding(Theme.spacing.large)

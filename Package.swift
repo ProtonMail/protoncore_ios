@@ -1490,7 +1490,8 @@ add(
                         .log,
                         .paymentsV2,
                         .protonCoreUI,
-                        .foundations
+                        .foundations,
+                        .utilities
                    ],
                    path: "libraries/PaymentsUI/v2/Sources"),
 

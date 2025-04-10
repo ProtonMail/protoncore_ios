@@ -38,7 +38,7 @@ struct AvailablePlansBodyView: View {
             // MARK: Available plans section title
             if !viewModel.hideCurrentPlan {
                 HStack {
-                    Text(String(localized: "Available_plans_section_title", bundle: .module))
+                    Text(PaymentsUIV2Localizer.Available_plans_section_title.l10n)
                         .font(.title2)
                         .fontWeight(.bold)
                     Spacer()

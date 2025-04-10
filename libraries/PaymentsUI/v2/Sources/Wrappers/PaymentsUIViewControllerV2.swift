@@ -79,7 +79,7 @@ public final class PaymentsUIViewControllerV2: UIViewController {
         hostingController.didMove(toParent: self)
 
         if presentationMode == .push {
-            title = hideCurrentPlan ? String(localized: "Select_plan_nav_title", bundle: .module) : String(localized: "Subscriptions_nav_title", bundle: .module)
+            title = hideCurrentPlan ? PaymentsUIV2Localizer.Select_plan_nav_title.l10n : PaymentsUIV2Localizer.Subscriptions_nav_title.l10n
             navigationItem.leftBarButtonItem = UIBarButtonItem(customView: customNavBarButton())
         }
     }

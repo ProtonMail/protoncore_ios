@@ -33,8 +33,8 @@ public class PlanViewModel: ObservableObject, Identifiable {
     private struct Constants {
         static func footerText(renew: Int) -> String {
 
-            let expirationText = String(localized: "Current_plan_exipiration", bundle: .module)
-            let renewalText = String(localized: "Current_plan_renewal", bundle: .module)
+            let expirationText = PaymentsUIV2Localizer.Current_plan_exipiration.l10n
+            let renewalText = PaymentsUIV2Localizer.Current_plan_renewal.l10n
 
             return renew == 0 ? expirationText : renewalText
         }
@@ -157,7 +157,7 @@ public class PlanViewModel: ObservableObject, Identifiable {
 
         self.description = currentPlan.description
         self.title = currentPlan.title
-        self.name = currentPlan.name ?? String(localized: "Current_free_plan_name", bundle: .module)
+        self.name = currentPlan.name ?? PaymentsUIV2Localizer.Current_free_plan_name.l10n
         self.isFreePlan = currentPlan.name == nil
         self.progressEntitlements = progressEntitlements
         self.formattedPrice = ProtonCoreUI.Formatter.formatCurrency(amount: currentPlan.amount, currency: currentPlan.currency)

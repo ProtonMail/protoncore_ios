@@ -56,7 +56,7 @@ public struct AvailablePlansView: View {
                             .opacity(viewModel.hideCurrentPlan ? 0 : 1)
                         if viewModel.hideAvailablePlans {
                             FooterView(image: Theme.icon.infoCircle,
-                                       text: String(localized: "Plans_footer_disclaimer", bundle: .module))
+                                       text: PaymentsUIV2Localizer.Plans_footer_disclaimer.l10n)
                             .padding(.horizontal)
                         }
                         Spacer()
@@ -68,8 +68,7 @@ public struct AvailablePlansView: View {
                         AvailablePlansBodyView(viewModel: viewModel)
                     }
                 case .fetching:
-                    LoadingView(loadingMessage: String(localized: "Loading_plans_message",
-                                                       bundle: .module))
+                    LoadingView(loadingMessage: PaymentsUIV2Localizer.Loading_plans_message.l10n)
                 case .errorData, .idle, .purchasing:
                     ErrorView(buttonAction: {
                         Task {
@@ -164,7 +163,7 @@ public struct AvailablePlansView: View {
                                             presentationMode: .push)
     viewModel.addPlanViewModels(availablePlans)
     viewModel.setBillingCycle(.all)
-    // viewModel.showBanner()
+    //viewModel.showBanner()
     viewModel.setCurrentPlan(currentPlan)
 
     return AvailablePlansView(viewModel: viewModel)

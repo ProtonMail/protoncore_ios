@@ -48,5 +48,5 @@ struct FooterView: View {
 
 #Preview {
     FooterView(image: Theme.icon.infoCircle,
-               text: String(localized: "Plans_footer_disclaimer", bundle: .module))
+               text: PaymentsUIV2Localizer.Plans_footer_disclaimer.l10n)
 }

@@ -46,7 +46,7 @@ public enum RemoteError: LocalizedError, Comparable {
     public var errorDescription: String? {
         switch self {
         default:
-            return String(localized: "Remote_manager_error", bundle: .module)
+            return PaymentsV2Localizer.Remote_manager_error.l10n
         }
     }
 
