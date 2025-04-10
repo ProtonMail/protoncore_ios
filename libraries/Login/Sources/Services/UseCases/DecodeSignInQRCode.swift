@@ -18,6 +18,7 @@
 
 import Foundation
 import ProtonCoreCrypto
+import ProtonCoreObservability
 
 public struct DecodeSignInQRCode {
 
@@ -44,6 +45,7 @@ public struct DecodeSignInQRCode {
         let components = qrCode.split(separator: ":")
 
         guard components.count == 4 else {
+            ObservabilityEnv.report(.qrLoginDecodeQRCode(status: .wrongNumberOfQRCodeComponents))
             throw DecodeError.qrCodeNotRecognized
         }
 
@@ -53,19 +55,23 @@ public struct DecodeSignInQRCode {
         let clientId = String(components[3])
 
         guard let version = version, version == GenerateSignInQRCode.QRCodeVersion else {
+            ObservabilityEnv.report(.qrLoginDecodeQRCode(status: .versionNotSupported))
             throw DecodeError.qrCodeNotRecognized
         }
 
         guard userCode != "" else {
+            ObservabilityEnv.report(.qrLoginDecodeQRCode(status: .invalidUserCode))
             throw DecodeError.qrCodeNotRecognized
         }
 
         let keyData = Base64.decode(base64: key)
 
         guard keyData.count == Constants.encryptionKeyLengthInBytes else {
+            ObservabilityEnv.report(.qrLoginDecodeQRCode(status: .invalidEncryptionKey))
             throw DecodeError.qrCodeNotRecognized
         }
 
+        ObservabilityEnv.report(.qrLoginDecodeQRCode(status: .success))
         return Response(
             version: version,
             userCode: userCode,

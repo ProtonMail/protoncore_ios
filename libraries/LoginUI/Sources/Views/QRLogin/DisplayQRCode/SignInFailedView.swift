@@ -20,6 +20,7 @@
 
 import SwiftUI
 import ProtonCoreUIFoundations
+import ProtonCoreObservability
 
 @MainActor
 struct SignInFailedView: View {
@@ -46,6 +47,9 @@ struct SignInFailedView: View {
             description
             Spacer()
             buttons
+        }
+        .onAppear {
+            ObservabilityEnv.report(.qrLoginShowQRCodeScreenState(stateId: .loginFailedGeneric))
         }
     }
 

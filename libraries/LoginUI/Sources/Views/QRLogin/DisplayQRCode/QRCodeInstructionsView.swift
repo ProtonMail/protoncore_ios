@@ -20,6 +20,7 @@
 
 import SwiftUI
 import ProtonCoreUIFoundations
+import ProtonCoreObservability
 
 struct QRCodeInstructionsView: View {
 
@@ -47,6 +48,9 @@ struct QRCodeInstructionsView: View {
             Spacer()
         }
         .navigationTitle(LUITranslation.signin_qr_code_button.l10n)
+        .onAppear {
+            ObservabilityEnv.report(.qrLoginShowQRCodeScreenState(stateId: .qrCode))
+        }
     }
 
     var qrCode: some View {

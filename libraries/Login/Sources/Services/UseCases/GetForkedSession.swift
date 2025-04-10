@@ -18,6 +18,7 @@
 
 import Foundation
 import ProtonCoreServices
+import ProtonCoreObservability
 
 public struct GetForkedSession {
     private let apiService: APIService
@@ -35,11 +36,16 @@ public struct GetForkedSession {
 
     public func invoke(selector: String) async throws -> Response {
         let request = ForkSessionRequest(useCase: .pullFork(selector: selector))
-        let response: (URLSessionDataTask?, ForkSessionPullResponse) = try await apiService.perform(request: request)
-
-        return Response(payload: response.1.payload,
-                        UID: response.1.UID,
-                        refreshToken: response.1.refreshToken,
-                        accessToken: response.1.accessToken)
+        do {
+            let response: (URLSessionDataTask?, ForkSessionPullResponse) = try await apiService.perform(request: request)
+            ObservabilityEnv.report(.qrLoginPullFork(status: .http2xx))
+            return Response(payload: response.1.payload,
+                            UID: response.1.UID,
+                            refreshToken: response.1.refreshToken,
+                            accessToken: response.1.accessToken)
+        } catch {
+            ObservabilityEnv.report(.qrLoginPullFork(status: .fromResponseError(error)))
+            throw error
+        }
     }
 }

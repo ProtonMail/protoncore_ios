@@ -20,7 +20,7 @@
 
 import SwiftUI
 import ProtonCoreUIFoundations
-import UIKit
+import ProtonCoreObservability
 
 @MainActor
 public struct ScanQRCodeInstructionsView: View {
@@ -75,6 +75,9 @@ public struct ScanQRCodeInstructionsView: View {
                 navController?.value?.pushViewController(hostingViewController, animated: true)
                 viewModel.showQRCodeScanner = false
             }
+        }
+        .onAppear {
+            ObservabilityEnv.report(.qrLoginScanQRCodeScreenState(stateId: .instructions))
         }
     }
 

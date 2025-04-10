@@ -29,7 +29,9 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
     var mockAPIService: APIServiceMock!
     var mockSecureHashGenerator: MockSecureHashGenerator!
     var mockClientIdProvider: MockClientIdProvider!
-    var handleLoginCredentials: (Credential, @escaping () -> Void) -> Void = { _, _ in return }
+    var handleLoginCredentials: (Credential,
+                                 _ loginErrorHandler: @escaping () -> Void,
+                                 _ loginSuccessHandler: @escaping () -> Void) -> Void = { _, _, _ in return }
 
     override func setUp() async throws {
         mockAPIService = APIServiceMock()
