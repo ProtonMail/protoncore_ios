@@ -1,5 +1,5 @@
 //
-//  Created on 12.03.2025.
+//  Created on 10.04.2025.
 //
 //  Copyright (c) 2025 Proton AG
 //
@@ -20,7 +20,7 @@ import Foundation
 import ProtonCoreServices
 import ProtonCoreObservability
 
-public struct GetUserCodeAndSelector {
+public struct PushSessionFork {
     private let apiService: APIService
 
     public init(apiService: APIService) {
@@ -28,18 +28,20 @@ public struct GetUserCodeAndSelector {
     }
 
     public struct Response {
-        public let userCode: String
         public let selector: String
     }
 
-    public func invoke() async throws -> Response {
-        let request = ForkSessionRequest(useCase: .initiateFork)
+    public func invoke(encryptedPayload: String, clientId: String, userCode: String) async throws -> Response {
+        let request = ForkSessionRequest(useCase: .pushFork(payload: encryptedPayload,
+                                                            clientId: clientId,
+                                                            independent: true,
+                                                            userCode: userCode))
         do {
-            let response: (URLSessionDataTask?, ForkSessionInitiateResponse) = try await apiService.perform(request: request)
-            ObservabilityEnv.report(.qrLoginInitiateFork(status: .http2xx))
-            return Response(userCode: response.1.userCode, selector: response.1.selector)
+            let response: (URLSessionDataTask?, ForkSessionPushResponse) = try await apiService.perform(request: request)
+            ObservabilityEnv.report(.qrLoginPushFork(status: .http2xx))
+            return Response(selector: response.1.selector)
         } catch {
-            ObservabilityEnv.report(.qrLoginInitiateFork(status: .fromResponseError(error)))
+            ObservabilityEnv.report(.qrLoginPushFork(status: .fromResponseError(error)))
             throw error
         }
     }

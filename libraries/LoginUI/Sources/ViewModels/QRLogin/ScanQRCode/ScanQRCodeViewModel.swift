@@ -23,6 +23,7 @@ import Combine
 import ProtonCoreServices
 import ProtonCoreLogin
 import ProtonCoreLog
+import ProtonCoreObservability
 
 extension ScanQRCodeView {
     struct Dependencies {
@@ -50,6 +51,7 @@ extension ScanQRCodeView {
         weak var navigationController: UINavigationController?
 
         private var decodeQRCodeUseCase = DecodeSignInQRCode()
+        private var pushSessionForkUseCase: PushSessionFork
 
         private let passphrase: String
         private let apiService: APIService
@@ -58,6 +60,7 @@ extension ScanQRCodeView {
             self.passphrase = dependencies.passphrase
             self.apiService = dependencies.apiService
             self.email = dependencies.userEmail
+            self.pushSessionForkUseCase = PushSessionFork(apiService: apiService)
         }
 
         func handleQRCodeDetected(_ code: String) {
@@ -78,11 +81,9 @@ extension ScanQRCodeView {
                 // encrypt the passphrase
                 let securePassphrase = try SecurePassphrasePayload(passphrase: passphrase, encryptionKey: decodedQRCode.encryptionKey)
                 // push the fork -> Show sucess on 200
-                let request = ForkSessionRequest(useCase: .pushFork(payload: securePassphrase.encryptedPayload,
-                                                                    clientId: decodedQRCode.clientId,
-                                                                    independent: true,
-                                                                    userCode: decodedQRCode.userCode))
-                let _: (URLSessionDataTask?, ForkSessionPushResponse) = try await apiService.perform(request: request)
+                let _ = try await pushSessionForkUseCase.invoke(encryptedPayload: securePassphrase.encryptedPayload,
+                                                                clientId: decodedQRCode.clientId,
+                                                                userCode: decodedQRCode.userCode)
                 state = .success
             } catch {
                 PMLog.error(error.localizedDescription, sendToExternal: true)

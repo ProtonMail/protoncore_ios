@@ -20,6 +20,7 @@
 
 import SwiftUI
 import ProtonCoreUIFoundations
+import ProtonCoreObservability
 
 fileprivate enum Constants {
     static let noSpacing: CGFloat = 0
@@ -133,6 +134,9 @@ private struct ScanningView: View {
             crossHairs
             scanQRCodeText
         }
+        .onAppear {
+            ObservabilityEnv.report(.qrLoginScanQRCodeScreenState(stateId: .camera))
+        }
     }
 
     var camera: some View {
@@ -183,6 +187,9 @@ private struct VerifyingView: View {
             SharedBackgroundView(text: LUITranslation.verifying.l10n)
             loadingIndicator
         }
+        .onAppear {
+            ObservabilityEnv.report(.qrLoginScanQRCodeScreenState(stateId: .verifying))
+        }
     }
 
     var loadingIndicator: some View {
@@ -216,6 +223,9 @@ private struct SuccessView: View {
             infoText: bodyDescription,
             buttonTitle: LUITranslation.got_it.l10n,
             buttonPressAction: buttonPressAction)
+        .onAppear {
+            ObservabilityEnv.report(.qrLoginScanQRCodeScreenState(stateId: .success))
+        }
     }
 }
 
@@ -231,6 +241,9 @@ private struct FailureView: View {
             infoText: AttributedString.markdown(LUITranslation.scan_qr_code_tip.l10n),
             buttonTitle: LUITranslation.scan_qr_code_title.l10n,
             buttonPressAction: buttonPressAction)
+        .onAppear {
+            ObservabilityEnv.report(.qrLoginScanQRCodeScreenState(stateId: .failure))
+        }
     }
 }
 
@@ -248,6 +261,9 @@ private struct CameraNotAllowedView: View {
             Spacer()
             disclaimer
             button
+        }
+        .onAppear {
+            ObservabilityEnv.report(.qrLoginScanQRCodeScreenState(stateId: .cameraAccessNotAllowed))
         }
     }
 

@@ -21,6 +21,7 @@
 
 import Foundation
 import ProtonCoreCrypto
+import ProtonCoreObservability
 
 // Documentation of how the payload should look like
 // https://protonag.atlassian.net/wiki/spaces/CP/pages/48302032/Data+specification#Encrypted-payload
@@ -62,10 +63,12 @@ public struct SecurePassphrasePayload {
         let cipher = AeadCrypto(cipherIvBytes: ._16)
         let jsonString = try cipher.decrypt(base64EncryptedString: encryptedPayload, key: encryptionKey)
         guard let jsonData = jsonString.data(using: .utf8) else {
+            ObservabilityEnv.report(.qrLoginDecodeQRCode(status: .failedToExtractPassphraseFromPayload))
             throw Errors.couldNotExtractPassphraseFromEncryptedPayload
         }
         let json = try JSONSerialization.jsonObject(with: jsonData) as? [String: String]
         guard let passphrase = json?["keyPassword"] else {
+            ObservabilityEnv.report(.qrLoginDecodeQRCode(status: .failedToExtractPassphraseFromPayload))
             throw Errors.couldNotExtractPassphraseFromEncryptedPayload
         }
         self.passphrase = passphrase

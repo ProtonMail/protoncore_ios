@@ -26,6 +26,7 @@ import ProtonCoreAuthenticationKeyGeneration
 import ProtonCoreNetworking
 import SwiftUI
 import ProtonCoreUI
+import ProtonCoreObservability
 
 class SecureHashGeneratorImplentation: SecureHashGenerator {
     func random(bits: Int32) throws -> Data {
@@ -59,7 +60,9 @@ extension SignInWithQRCodeView {
         let secureHashGenerator: SecureHashGenerator?
         let clientIdProvider: ClientIdProvider?
         let handleBackToLoginButtonPress: () -> Void
-        let handleLoginCredentials: (Credential, _ loginErrorHandler: @escaping () -> Void) -> Void
+        let handleLoginCredentials: (Credential,
+                                     _ loginErrorHandler: @escaping () -> Void,
+                                     _ loginSuccessHandler: @escaping () -> Void) -> Void
     }
 }
 
@@ -88,7 +91,9 @@ extension SignInWithQRCodeView {
         private var selector: String?
         private var encryptionKey: Data?
         private var apiService: APIService?
-        private let handleLoginCredentials: (Credential, _ loginErrorHandler: @escaping () -> Void) -> Void
+        private let handleLoginCredentials: (Credential,
+                                             _ loginErrorHandler: @escaping () -> Void,
+                                             _ loginSuccessHandler: @escaping () -> Void) -> Void
         private let handleBackToLoginButtonPress: () -> Void
 
         var forkedSession: GetForkedSession.Response?
@@ -155,6 +160,7 @@ extension SignInWithQRCodeView {
                         buttonAction: { [weak self] in
                             self?.generateANewQRCodeText()
                         }))
+                    ObservabilityEnv.report(.qrLoginShowQRCodeScreenState(stateId: .errorBanner))
                 }
             }
         }
@@ -199,7 +205,7 @@ extension SignInWithQRCodeView {
 
         private func handleReceivedForkResponse(_ response: GetForkedSession.Response, encryptionKey: Data) throws {
             let securePayload = try SecurePassphrasePayload(encryptedPayload: response.payload, encryptionKey: encryptionKey)
-            var credential = Credential.init(UID: response.UID,
+            let credential = Credential.init(UID: response.UID,
                                              accessToken: response.accessToken,
                                              refreshToken: response.refreshToken,
                                              userName: "",
@@ -207,7 +213,12 @@ extension SignInWithQRCodeView {
                                              scopes: [],
                                              mailboxPassword: securePayload.passphrase)
             self.handleLoginCredentials(credential, { [weak self] in
+                // Failure
+                ObservabilityEnv.report(.qrLoginResult(status: .failure))
                 self?.showSignInFailureView()
+            }, {
+                // Success
+                ObservabilityEnv.report(.qrLoginResult(status: .success))
             })
         }
 

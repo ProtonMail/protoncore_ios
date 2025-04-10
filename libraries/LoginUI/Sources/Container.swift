@@ -162,7 +162,7 @@ final class Container {
             secureHashGenerator: SecureHashGeneratorImplentation(),
             clientIdProvider: ClientIdProviderImplementation(apiService: api),
             handleBackToLoginButtonPress: handleBackToLoginButtonPress,
-            handleLoginCredentials: { [weak self] credential, loginErrorHandler in
+            handleLoginCredentials: { [weak self] credential, loginErrorHandler, loginSuccessHandler in
                 Task { @MainActor [weak self] in
                     guard let self = self else { return }
                     do {
@@ -170,6 +170,7 @@ final class Container {
                         switch loginStatus {
                         case .finished(let loginData):
                             handleLoginData(loginData)
+                            loginSuccessHandler()
                         default:
                             loginErrorHandler()
                         }
