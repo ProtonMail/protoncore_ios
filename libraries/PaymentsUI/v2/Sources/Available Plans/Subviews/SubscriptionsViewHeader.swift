@@ -28,10 +28,10 @@ public struct SubscriptionsViewHeader: View {
 
     public var body: some View {
         VStack(spacing: Theme.spacing.standard) {
-            Text(String(localized: "Available_subscriptions_view_title", bundle: .module))
+            Text(PaymentsUIV2Localizer.Available_subscriptions_view_title.l10n)
                 .font(.title2)
                 .fontWeight(.bold)
-            Text(String(localized: "Available_subscriptions_view_subtitle", bundle: .module))
+            Text(PaymentsUIV2Localizer.Available_subscriptions_view_subtitle.l10n)
                 .font(.caption)
             HStack(spacing: Theme.spacing.standard) {
                 ForEach(icons, id: \.self) { iconName in

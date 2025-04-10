@@ -30,18 +30,18 @@ public enum NoAvailblePlansViewType {
     public var title: String {
         switch self {
         case .noPlans:
-            return String(localized: "No_available_plan_title", bundle: .module)
+            return PaymentsUIV2Localizer.No_available_plan_title.l10n
         case .filterEmtpy:
-            return String(localized: "No_filtered_plan_title", bundle: .module)
+            return PaymentsUIV2Localizer.No_filtered_plan_title.l10n
         }
     }
 
     public var message: String {
         switch self {
         case .noPlans:
-            return String(localized: "No_available_plan_message", bundle: .module)
+            return PaymentsUIV2Localizer.No_available_plan_message.l10n
         case .filterEmtpy:
-            return String(localized: "No_filtered_plan_message", bundle: .module)
+            return PaymentsUIV2Localizer.No_filtered_plan_message.l10n
         }
     }
 }

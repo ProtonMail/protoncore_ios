@@ -30,11 +30,11 @@ public enum BillingCycle: Int, CaseIterable {
     var displayName: String {
         switch self {
         case .monthly:
-            String(localized: "Monthly_cycle", bundle: .module)
+            PaymentsUIV2Localizer.Monthly_cycle.l10n
         case .yearly:
-            String(localized: "Yearly_cycle", bundle: .module)
+            PaymentsUIV2Localizer.Yearly_cycle.l10n
         case .all:
-            String(localized: "All_cycle", bundle: .module)
+            PaymentsUIV2Localizer.All_cycle.l10n
         }
     }
 }

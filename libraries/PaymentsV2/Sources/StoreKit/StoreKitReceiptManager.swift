@@ -29,7 +29,7 @@ public enum StoreKitReceiptManagerError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .unableToExtractReceiptData:
-            return String(localized: "SK_Receipt_impossible_to_get_receipt", bundle: .module)
+            return PaymentsV2Localizer.SK_Receipt_impossible_to_get_receipt.l10n
         }
     }
 }

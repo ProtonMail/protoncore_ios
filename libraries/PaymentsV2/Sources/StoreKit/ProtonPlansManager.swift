@@ -50,17 +50,17 @@ public enum ProtonPlansManagerError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .unableToMatchProtonPlanToStoreProduct(let productId):
-            return String(localized: "Plans_Manager_impossible_to_match_plan", bundle: .module)
+            return PaymentsV2Localizer.Plans_Manager_impossible_to_match_plan.l10n
         case .unableToGetUserTransactionUUID:
-            return String(localized: "Plans_Manager_impossible_to_get_user_uuid", bundle: .module)
+            return PaymentsV2Localizer.Plans_Manager_impossible_to_get_user_uuid.l10n
         case .unableToRestorePurchases:
-            return String(localized: "Plans_Manager_impossible_to_restore_transactions", bundle: .module)
+            return PaymentsV2Localizer.Plans_Manager_impossible_to_restore_transactions.l10n
         case .transactionCancelledByUser:
-            return String(localized: "Plans_Manager_Transaction_cancelled_by_user", bundle: .module)
+            return PaymentsV2Localizer.Plans_Manager_Transaction_cancelled_by_user.l10n
         case .transactionUnknownError:
-            return String(localized: "Plans_Manager_Transaction_unknown_error", bundle: .module)
+            return PaymentsV2Localizer.Plans_Manager_Transaction_unknown_error.l10n
         case .transactionPending:
-            return String(localized: "Plans_Managere_peding_transaction_received", bundle: .module)
+            return PaymentsV2Localizer.Plans_Managere_peding_transaction_received.l10n
         }
     }
 

@@ -34,21 +34,21 @@ struct TransactionProgressView: View {
 
             VStack {
                 Image("transaction_image", bundle: Bundle.module)
-                Text(String(localized: "Transaction_state_view_title", bundle: .module))
+                Text(PaymentsUIV2Localizer.Transaction_state_view_title.l10n)
                     .font(.headline)
                     .padding(.top, Theme.spacing.extraLarge)
-                Text(String(localized: "Transaction_state_view_subtitle", bundle: .module))
+                Text(PaymentsUIV2Localizer.Transaction_state_view_subtitle.l10n)
                     .font(.subheadline)
                     .multilineTextAlignment(.center)
 
                 StateProgressView(progressCompleted: $confirmationCompleted,
-                                  stateProgressText: String(localized: "Transaction_state_payment_confirmation_progress", bundle: .module),
-                                  stateCompleteText: String(localized: "Transaction_state_payment_confirmation_complete", bundle: .module))
+                                  stateProgressText: PaymentsUIV2Localizer.Transaction_state_payment_confirmation_progress.l10n,
+                                  stateCompleteText: PaymentsUIV2Localizer.Transaction_state_payment_confirmation_complete.l10n)
                     .padding(.top, Theme.spacing.extraLarge)
                 if confirmationCompleted {
                     StateProgressView(progressCompleted: $updateCompleted,
-                                      stateProgressText: String(localized: "Transaction_state_payment_account_update_progress", bundle: .module),
-                                      stateCompleteText: String(localized: "Transaction_state_payment_account_update_complete", bundle: .module))
+                                      stateProgressText: PaymentsUIV2Localizer.Transaction_state_payment_account_update_progress.l10n,
+                                      stateCompleteText: PaymentsUIV2Localizer.Transaction_state_payment_account_update_complete.l10n))
                 }
             }
             .padding(Theme.spacing.large)

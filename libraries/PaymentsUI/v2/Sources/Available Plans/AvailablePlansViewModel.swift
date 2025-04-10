@@ -23,6 +23,7 @@ import Combine
 import Foundation
 import ProtonCoreDoh
 import ProtonCorePaymentsV2
+import ProtonCoreUtilities
 import ProtonCoreUI
 import StoreKit
 
@@ -229,7 +230,7 @@ extension AvailablePlansViewModel {
     }
 
     public func transactionProcessError() {
-        showAlert = .error(content: PCBannerContent(message: String(localized: "Transaction_process_error", bundle: .module)))
+        showAlert = .error(content: PCBannerContent(message: PaymentsUIV2Localizer.Transaction_process_error.l10n))
         Task {
             await fetchData()
         }
@@ -255,8 +256,7 @@ extension AvailablePlansViewModel {
     func showBanner() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
             guard let self else { return }
-            self.showAlert = .error(content: PCBannerContent(message: String(localized: "Transaction_process_error",
-                                                                             bundle: .module)))
+            self.showAlert = .error(content: PCBannerContent(message: PaymentsV2Localizer.Plans_Manager_impossible_to_get_user_uuid.l10n))
         }
     }
 #endif

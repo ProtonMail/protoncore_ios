@@ -36,7 +36,7 @@ public enum TransactionHandlerError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         default:
-            return String(localized: "Transaction_Handler_plan_not_found", bundle: .module)
+            return PaymentsV2Localizer.Transaction_Handler_plan_not_found.l10n
         }
     }
 
