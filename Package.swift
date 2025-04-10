@@ -192,7 +192,6 @@ extension String {
     // MARK: - Dependencies names
     static let alamofire: String = "Alamofire"
     static let cryptoSwift: String = "CryptoSwift"
-    static let ellipticCurveKeyPair: String = "EllipticCurveKeyPair"
     static let fusion: String = "fusion"
     static let fusionPackage: String = "apple-fusion"
     static let jsonSchema: String = "JSONSchema"
@@ -324,7 +323,6 @@ extension Target.Dependency {
     static var alamofire: Target.Dependency { .product(name: .alamofire, package: .alamofire) }
 
     static var cryptoSwift: Target.Dependency { .product(name: .cryptoSwift, package: .cryptoSwift) }
-    static var ellipticCurveKeyPair: Target.Dependency { .product(name: .ellipticCurveKeyPair, package: .ellipticCurveKeyPair) }
     static var fusion: Target.Dependency { .product(name: .fusion, package: .fusionPackage, condition: .when(platforms: [.iOS])) }
     static var jsonSchema: Target.Dependency { .product(name: .jsonSchema, package: .jsonSchemaPackage) }
     static var lottie: Target.Dependency { .product(name: .lottie, package: .lottiePackage) }
@@ -960,8 +958,7 @@ add(
     targets: [
         coreTarget(name: .keymaker,
                    dependencies: [
-                    .cryptoGoInterface,
-                    .ellipticCurveKeyPair
+                    .cryptoGoInterface
                    ],
                    path: "libraries/Keymaker/Sources"),
 
@@ -2087,10 +2084,6 @@ let package = Package(
         .package(
             url: "https://github.com/krzyzanowskim/CryptoSwift",
             from: "1.7.2"
-        ),
-        .package(
-            url: "https://github.com/agens-no/EllipticCurveKeyPair",
-            from: "2.0.0"
         ),
         .package(
             url: "https://github.com/kylef/JSONSchema.swift",
