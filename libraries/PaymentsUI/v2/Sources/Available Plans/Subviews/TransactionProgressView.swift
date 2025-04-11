@@ -48,7 +48,7 @@ struct TransactionProgressView: View {
                 if confirmationCompleted {
                     StateProgressView(progressCompleted: $updateCompleted,
                                       stateProgressText: PaymentsUIV2Localizer.Transaction_state_payment_account_update_progress.l10n,
-                                      stateCompleteText: PaymentsUIV2Localizer.Transaction_state_payment_account_update_complete.l10n))
+                                      stateCompleteText: PaymentsUIV2Localizer.Transaction_state_payment_account_update_complete.l10n)
                 }
             }
             .padding(Theme.spacing.large)
