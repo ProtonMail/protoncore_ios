@@ -28,7 +28,7 @@ public struct GetForkedSession {
     }
 
     public struct Response {
-        public let payload: String
+        public let payload: String?
         public let UID: String
         public let refreshToken: String
         public let accessToken: String

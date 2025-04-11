@@ -57,4 +57,16 @@ class ScanQRCodeViewModelTests: XCTestCase {
 
         XCTAssertEqual(sut.state, .failure)
     }
+
+    func testHandleQRCode_EmptyEncryptionKey() async throws {
+        let qrCode = "\(GenerateSignInQRCode.QRCodeVersion):userCode::ios-mail"
+
+        mockAPIService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+            completion(nil, .success(ForkSessionPushResponse(code: 1000, selector: "someSelector")))
+        }
+
+        await sut.processQRCode(qrCode)
+
+        XCTAssertEqual(sut.state, .success)
+    }
 }

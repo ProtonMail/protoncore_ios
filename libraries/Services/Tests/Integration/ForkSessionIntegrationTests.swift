@@ -80,47 +80,49 @@ final class ForkSessionIntegrationTests: IntegrationTestCase {
         // This test forks a session
         // And makes sure we can query the session details after the fork is pushed.
 
-        // GIVEN
-        let apiService = PMAPIService.createAPIServiceWithoutSession(environment: environment, challengeParametersProvider: .empty)
-        let authDelegate = AuthHelper()
-        apiService.authDelegate = authDelegate
-        apiService.serviceDelegate = serviceDelegate
+        let payloads: [String?] = ["TestPayload", nil]
 
-        let user = User(email: randomEmail, name: randomEmail, password: randomPassword, isExternal: true)
-        guard let userResponse = try createAccount(user: user) else {
-            XCTFail("\(#file): \(#function): Failed to create user.")
-            return
+        for payload in payloads {
+            // GIVEN
+            let apiService = PMAPIService.createAPIServiceWithoutSession(environment: environment, challengeParametersProvider: .empty)
+            let authDelegate = AuthHelper()
+            apiService.authDelegate = authDelegate
+            apiService.serviceDelegate = serviceDelegate
+
+            let user = User(email: randomEmail, name: randomEmail, password: randomPassword, isExternal: true)
+            guard let userResponse = try createAccount(user: user) else {
+                XCTFail("\(#file): \(#function): Failed to create user.")
+                return
+            }
+
+            guard let _ = try await login(apiService, user: user, minimumAccountType: .external).value else {
+                XCTFail("\(#file): \(#function): Failed to login user.")
+                return
+            }
+
+            // WHEN
+            let initiateRequest = ForkSessionRequest(useCase: .initiateFork)
+            let initiateResponse: (URLSessionDataTask?, ForkSessionInitiateResponse) = try await apiService.perform(request: initiateRequest)
+
+            let pushRequest = ForkSessionRequest(useCase: .pushFork(payload: payload, clientId: "ios-vpn", independent: true, userCode: initiateResponse.1.userCode))
+            let pushResponse: (URLSessionDataTask?, ForkSessionPushResponse) = try await apiService.perform(request: pushRequest)
+
+            let pullRequest = ForkSessionRequest(useCase: .pullFork(selector: pushResponse.1.selector))
+            let pullResponse: (URLSessionDataTask?, ForkSessionPullResponse) = try await apiService.perform(request: pullRequest)
+            // THEN
+
+            XCTAssertNotEqual(initiateResponse.1.userCode, "")
+            XCTAssertNotEqual(initiateResponse.1.selector, "")
+            XCTAssertNotEqual(pushResponse.1.selector, "")
+            XCTAssertEqual(initiateResponse.1.selector, pushResponse.1.selector)
+
+            XCTAssertNotEqual(pullResponse.1.UID, "")
+            XCTAssertEqual(pullResponse.1.payload, payload)
+            XCTAssertNotEqual(pullResponse.1.accessToken, "")
+            XCTAssertNotEqual(pullResponse.1.refreshToken, "")
+
+            deleteAccount(id: userResponse.decryptedUserId)
         }
-
-        guard let _ = try await login(apiService, user: user, minimumAccountType: .external).value else {
-            XCTFail("\(#file): \(#function): Failed to login user.")
-            return
-        }
-
-        let payload = "TestPayload"
-
-        // WHEN
-        let initiateRequest = ForkSessionRequest(useCase: .initiateFork)
-        let initiateResponse: (URLSessionDataTask?, ForkSessionInitiateResponse) = try await apiService.perform(request: initiateRequest)
-
-        let pushRequest = ForkSessionRequest(useCase: .pushFork(payload: payload, clientId: "ios-vpn", independent: true, userCode: initiateResponse.1.userCode))
-        let pushResponse: (URLSessionDataTask?, ForkSessionPushResponse) = try await apiService.perform(request: pushRequest)
-
-        let pullRequest = ForkSessionRequest(useCase: .pullFork(selector: pushResponse.1.selector))
-        let pullResponse: (URLSessionDataTask?, ForkSessionPullResponse) = try await apiService.perform(request: pullRequest)
-        // THEN
-
-        XCTAssertNotEqual(initiateResponse.1.userCode, "")
-        XCTAssertNotEqual(initiateResponse.1.selector, "")
-        XCTAssertNotEqual(pushResponse.1.selector, "")
-        XCTAssertEqual(initiateResponse.1.selector, pushResponse.1.selector)
-
-        XCTAssertNotEqual(pullResponse.1.UID, "")
-        XCTAssertEqual(pullResponse.1.payload, payload)
-        XCTAssertNotEqual(pullResponse.1.accessToken, "")
-        XCTAssertNotEqual(pullResponse.1.refreshToken, "")
-
-        deleteAccount(id: userResponse.decryptedUserId)
     }
 
     private func createAccount(user: User) throws -> CreateUserQuarkResponse? {

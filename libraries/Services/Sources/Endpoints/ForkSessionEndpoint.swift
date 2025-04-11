@@ -51,12 +51,12 @@ public final class ForkSessionPushResponse: Response, Codable {
 
 public final class ForkSessionPullResponse: Response, Codable {
     public let code: Int
-    public let payload: String
+    public let payload: String?
     public let UID: String
     public let refreshToken: String
     public let accessToken: String
 
-    public init(code: Int, payload: String, UID: String, refreshToken: String, accessToken: String) {
+    public init(code: Int, payload: String?, UID: String, refreshToken: String, accessToken: String) {
         self.code = code
         self.payload = payload
         self.UID = UID
@@ -80,7 +80,7 @@ public final class ForkSessionRequest: Request {
     public enum UseCase {
         // To test this I need to login first.
         case initiateFork
-        case pushFork(payload: String, clientId: String, independent: Bool, userCode: String)
+        case pushFork(payload: String?, clientId: String, independent: Bool, userCode: String)
         case pullFork(selector: String)
     }
 
@@ -114,12 +114,15 @@ public final class ForkSessionRequest: Request {
     public var parameters: [String: Any]? {
         switch useCase {
         case .pushFork(let payload, let clientId, let independent, let userCode):
-            return [
-                "Payload": payload,
+            var params: [String : Any] = [
                 "ChildClientID": clientId,
                 "Independent": independent ? 1 : 0,
                 "UserCode": userCode
             ]
+            if let payload = payload {
+                params["Payload"] = payload
+            }
+            return params
         case .initiateFork, .pullFork:
             return nil
         }
