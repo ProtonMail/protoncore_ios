@@ -27,6 +27,7 @@ import ProtonCoreNetworking
 import SwiftUI
 import ProtonCoreUI
 import ProtonCoreObservability
+import ProtonCoreLog
 
 class SecureHashGeneratorImplentation: SecureHashGenerator {
     func random(bits: Int32) throws -> Data {
@@ -103,6 +104,7 @@ extension SignInWithQRCodeView {
 
         enum Errors: Error {
             case responseOrEncryptionKeyMissing
+            case payloadMissing
         }
 
         init(dependencies: Dependencies) {
@@ -192,7 +194,7 @@ extension SignInWithQRCodeView {
 #if DEBUG
                         print("PT: Fork pulled successfully")
 #endif
-                        try self.handleReceivedForkResponse(response, encryptionKey: key)
+                        self.handleReceivedForkResponse(response, encryptionKey: key)
                     } catch {
                         // Do nothing. The fork might not be available yet.
 #if DEBUG
@@ -203,23 +205,32 @@ extension SignInWithQRCodeView {
             })
         }
 
-        private func handleReceivedForkResponse(_ response: GetForkedSession.Response, encryptionKey: Data) throws {
-            let securePayload = try SecurePassphrasePayload(encryptedPayload: response.payload, encryptionKey: encryptionKey)
-            let credential = Credential.init(UID: response.UID,
-                                             accessToken: response.accessToken,
-                                             refreshToken: response.refreshToken,
-                                             userName: "",
-                                             userID: "",
-                                             scopes: [],
-                                             mailboxPassword: securePayload.passphrase)
-            self.handleLoginCredentials(credential, { [weak self] in
-                // Failure
+        private func handleReceivedForkResponse(_ response: GetForkedSession.Response, encryptionKey: Data) {
+            do {
+                guard let payload = response.payload else {
+                    throw Errors.payloadMissing
+                }
+                let securePayload = try SecurePassphrasePayload(encryptedPayload: payload, encryptionKey: encryptionKey)
+                let credential = Credential.init(UID: response.UID,
+                                                 accessToken: response.accessToken,
+                                                 refreshToken: response.refreshToken,
+                                                 userName: "",
+                                                 userID: "",
+                                                 scopes: [],
+                                                 mailboxPassword: securePayload.passphrase)
+                 self.handleLoginCredentials(credential, { [weak self] in
+                    // Failure
+                    ObservabilityEnv.report(.qrLoginResult(status: .failure))
+                    self?.showSignInFailureView()
+                }, {
+                    // Success
+                    ObservabilityEnv.report(.qrLoginResult(status: .success))
+                })
+            } catch {
                 ObservabilityEnv.report(.qrLoginResult(status: .failure))
-                self?.showSignInFailureView()
-            }, {
-                // Success
-                ObservabilityEnv.report(.qrLoginResult(status: .success))
-            })
+                PMLog.error("Could not handle the response of pulling the fork: \(error)")
+                self.showSignInFailureView()
+            }
         }
 
         func stopPollingFork() {

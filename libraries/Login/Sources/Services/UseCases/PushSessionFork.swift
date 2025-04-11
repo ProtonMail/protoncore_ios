@@ -31,7 +31,7 @@ public struct PushSessionFork {
         public let selector: String
     }
 
-    public func invoke(encryptedPayload: String, clientId: String, userCode: String) async throws -> Response {
+    public func invoke(encryptedPayload: String?, clientId: String, userCode: String) async throws -> Response {
         let request = ForkSessionRequest(useCase: .pushFork(payload: encryptedPayload,
                                                             clientId: clientId,
                                                             independent: true,
