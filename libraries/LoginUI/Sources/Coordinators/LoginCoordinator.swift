@@ -495,7 +495,8 @@ extension LoginCoordinator: HelpViewControllerDelegate {
         case .staticText:
             break
         case .custom(_, _, let behaviour):
-            guard let viewController = navigationController?.presentedViewController as? HelpViewController
+            guard let navigationViewController = navigationController?.presentedViewController as? UINavigationController,
+                  let viewController = navigationViewController.topViewController as? HelpViewController
             else { return }
             behaviour(viewController)
         }
