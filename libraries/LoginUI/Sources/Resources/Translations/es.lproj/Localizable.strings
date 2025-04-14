@@ -364,17 +364,17 @@
 
 "Sign in with your QR code" = "Iniciar sesión con un código QR";
 
-"Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Utilizar este dispositivo para escanear el código QR mostrado en el dispositivo al que quieres iniciar sesión. Ambos dispositivos permanecerán activos.";
+"Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Usa este dispositivo para escanear el código QR mostrado en el dispositivo al que quieres iniciar sesión. Ambos dispositivos permanecerán activos.";
 
 "To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "Para acceder al código QR, pulsa el botón **Iniciar sesión con código QR** en la pantalla de inicio de sesión.";
 
-"Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust." = "Cuidado con los mensajes que contienen un código QR. Nunca escanee un código QR desde un sitio web o una persona en la que no confíe.";
+"Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust." = "Ten cuidado con los mensajes que contienen un código QR. Nunca escanea un código QR desde un sitio web o una persona en la que no confíes.";
 
-"Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Proton nunca le pedirá que escanee un código QR que no proviene del dominio **proton.me**.";
+"Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Proton nunca te pedirá que escanee un código QR que no proviene del dominio **proton.me**.";
 
-"Scan QR code" = "Escanear el código";
+"Scan QR code" = "Escanear el código QR";
 
-"Authenticate to access the QR code scanner" = "Autenticarse para acceder al escáner de código QR";
+"Authenticate to access the QR code scanner" = "Autentícate para acceder al escáner de código QR.";
 
 "Place QR code within the square" = "Coloca el código QR dentro del cuadrado";
 
@@ -398,19 +398,19 @@
 
 "to Proton %@" = "a Proton %@";
 
-"Something went wrong" = "Algo ha fallado";
+"Something went wrong" = "Se ha producido un error.";
 
-"We couldn't sign you in. Please scan a new QR code to try again." = "No pudimos iniciar sesión. Por favor, escanee un nuevo código QR para intentarlo de nuevo.";
+"We couldn't sign you in. Please scan a new QR code to try again." = "No hemos podido iniciar sesión. Escanea un nuevo código QR para intentarlo de nuevo.";
 
 "New QR code" = "Nuevo código QR";
 
 "Allow access to camera" = "Permitir el acceso a la cámara";
 
-"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "Para escanear un código QR e iniciar sesión en otro dispositivo, conceda a Proton %@ el acceso a su cámara.";
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "Para escanear un código QR e iniciar sesión en otro dispositivo, concede a Proton %@ el acceso a tu cámara.";
 
-"You're always in control: You can change this anytime in your device settings." = "Siempre tendrá el control: podrá cambiar esta decisión en cualquier momento accediendo a la configuración de su dispositivo.";
+"You're always in control: You can change this anytime in your device settings." = "Siempre tendrás el control: podrás cambiar esta decisión en cualquier momento accediendo a los ajustes de tu dispositivo.";
 
-"Settings" = "Configuración";
+"Settings" = "Ajustes";
 
 "We couldn't load the QR code" = "No hemos podido cargar el código QR.";
 

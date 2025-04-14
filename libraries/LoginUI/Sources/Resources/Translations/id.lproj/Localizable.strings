@@ -52,21 +52,21 @@
 
 "Other sign-in issues" = "Masalah masuk lainnya";
 
-"Customer support" = "Layanan pelanggan";
+"Customer support" = "Layanan dukungan";
 
 "Still need help? Contact us directly." = "Masih butuh bantuan? Hubungi kami secara langsung.";
 
-"Please enter your Proton Account email or username." = "Silakan masukkan Akun email Proton atau nama pengguna Anda.";
+"Please enter your Proton Account email or username." = "Silakan masukkan email atau nama pengguna Akun Proton Anda.";
 
-"Complete Setup" = "Selesaikan Persiapan";
+"Complete Setup" = "Selesaikan Pengaturan";
 
-"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "Akun Anda kehilangan kunci, silakan masuk ke web untuk membuat kunci yang diperlukan secara otomatis. Setelah Anda masuk ke web, silakan kembali ke app dan masuk ke akun Anda.";
+"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "Akun Anda memiliki kunci yang hilang. Silakan masuk pada platform web untuk menghasilkan kunci yang dibutuhkan secara otomatis. Setelah Anda terhubung masuk pada platform web, silakan kembali ke aplikasi dan masuk ke akun Anda.";
 
-"Account setup required" = "Diperlukan persiapan akun";
+"Account setup required" = "Pengaturan akun dibutuhkan";
 
 "Incorrect mailbox password" = "Kata sandi kotak surat salah";
 
-"Your session has expired. Please log in again." = "Sesi Anda telah kedaluwarsa. Mohon masuk lagi.";
+"Your session has expired. Please log in again." = "Masa berlaku sesi Anda telah berakhir. Silakan masuk kembali.";
 
 "Proton address required" = "Alamat Proton dibutuhkan";
 
@@ -84,7 +84,7 @@
 
 "Forgot password" = "Lupa kata sandi";
 
-"Two-factor authentication" = "Autentikasi dua-faktor";
+"Two-factor authentication" = "Autentikasi dua faktor";
 
 "Authenticate" = "Autentikasi";
 
@@ -134,7 +134,7 @@
 
 "Set recovery method (optional)" = "Atur metode pemulihan (opsional)";
 
-"We will send recovery instructions to this email or phone number if you get locked out of your account." = "Kami akan mengirimkan instruksi pemulihan ke email atau nomor telepon ini seandainya Anda terkunci dari akun Anda.";
+"We will send recovery instructions to this email or phone number if you get locked out of your account." = "Kami akan mengirimkan petunjuk pemulihan akun ke alamat email atau nomor telepon ini apabila Anda sampai terkunci dari akun Anda.";
 
 "Email" = "Email";
 
@@ -156,13 +156,13 @@
 
 "Skip recovery method?" = "Lewati metode pemulihan?";
 
-"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "Metode pemulihan akan membantu Anda mengakses akun Anda seandainya lupa dengan kata sandi atau terkunci dari akun Anda.";
+"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "Metode pemulihan akan membantu Anda untuk mengakses akun Anda seandainya Anda lupa kata sandi atau terkunci dari akun Anda.";
 
 "Set recovery method" = "Atur metode pemulihan";
 
 "Your account is being created" = "Akun Anda sedang dibuat";
 
-"This should take no more than a minute." = "Seharusnya tidak sampai satu menit.";
+"This should take no more than a minute." = "Proses ini pada umumnya tidak akan memakan waktu lebih dari satu menit.";
 
 "Creating your account" = "Membuat akun Anda";
 
@@ -190,9 +190,9 @@
 
 "Invalid token error" = "Kesalahan untuk token yang tidak valid";
 
-"Create user failed" = "Gagal membuat pengguna";
+"Create user failed" = "Pengguna gagal dibuat";
 
-"Invalid hashed password" = "Kata sandi hashed tidak valid";
+"Invalid hashed password" = "Kata sandi yang ter-hash tidak valid";
 
 "Password can not be empty.\nPlease try again." = "Kata sandi tidak boleh kosong.\nSilakan coba lagi.";
 
@@ -200,9 +200,9 @@
 
 "Email address already used." = "Alamat email sudah digunakan.";
 
-"Please ask your admin to configure your sub-user." = "Mohon minta admin Anda untuk menyesuaikan pengaturan sub-pengguna Anda.";
+"Please ask your admin to configure your sub-user." = "Silakan minta admin Anda untuk mengatur sub-pengguna Anda.";
 
-"Would you like to receive a new verification code or use an alternate email address?" = "Apakah Anda ingin menerima kode verifikasi baru atau menggunakan alamat email alternatif?";
+"Would you like to receive a new verification code or use an alternate email address?" = "Apakah Anda ingin menerima kode verifikasi baru atau menggunakan alamat email yang berbeda?";
 
 "Change email address" = "Ubah alamat email";
 
@@ -212,7 +212,7 @@
 
 "Proton Free" = "Proton Free";
 
-"Your payment was confirmed and your %@ account successfully created." = "Pembayaran Anda sudah dikonfirmasi dan akun %@ Anda berhasil dibuat.";
+"Your payment was confirmed and your %@ account successfully created." = "Pembayaran Anda telah terkonfirmasi dan akun %@ Anda berhasil dibuat.";
 
 "Your Proton account was successfully created." = "Akun Proton Anda berhasil dibuat.";
 
@@ -240,7 +240,7 @@
 
 "There was a problem reading your security key." = "Terdapat masalah dalam membaca kunci keamanan Anda.";
 
-"We received an authorization from a type we don't support yet." = "Kami telah menerima autorisasi dari tipe yang belum kami dukung.";
+"We received an authorization from a type we don't support yet." = "Kami menerima autorisasi dari jenis yang belum kami dukung.";
 
 "Fetching your security keys details" = "Mengambil rincian kunci keamanan Anda";
 
@@ -258,7 +258,7 @@
 
 "Unexpected FIDO2 signature." = "Tanda tangan FIDO2 tidak terduga.";
 
-"We could not initiate the Secure Password update connection. Please try again." = "Kami tidak dapat memulai koneksi pembaruan kata sandi aman. Silakan coba kembali.";
+"We could not initiate the Secure Password update connection. Please try again." = "Kami tidak dapat memulai koneksi pembaruan Secure Password. Silakan coba lagi.";
 
 "Join %@" = "Gabung ke %@";
 
@@ -276,7 +276,7 @@
 
 "Password must contain at least 8 characters" = "Kata sandi harus mengandung minimal 8 karakter";
 
-"Password doesn't match" = "Kata sandi tidak sesuai";
+"Password doesn't match" = "Kata sandi tidak cocok";
 
 "Sign-in requested on another device. Was it you?" = "Terdapat permintaan entri masuk pada perangkat lainnya. Apakah ini Anda?";
 
@@ -284,7 +284,7 @@
 
 "Confirmation code" = "Kode konfirmasi";
 
-"If you didn't make this request, cancel it now." = "Apabila Anda tidak mengajukan permintaan ini, batalkan tindakan ini sekarang juga.";
+"If you didn't make this request, cancel it now." = "Apabila Anda tidak mengajukan hal ini, batalkan permintaan ini sekarang juga.";
 
 "Yes, it was me" = "Ya, ini saya";
 
@@ -336,7 +336,7 @@
 
 "to your organization" = "ke organisasi Anda";
 
-"Sign in with single sign-on" = "Masuk dengan sistem masuk tunggal";
+"Sign in with single sign-on" = "Masuk dengan single sign-on";
 
 "Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Organisasi Anda menggunakan SSO. Lanjut masuk dengan penyedia SSO pihak ketiga Anda.";
 
@@ -414,4 +414,4 @@
 
 "We couldn't load the QR code" = "Kami tidak dapat memuat kode QR";
 
-"Retry" = "Coba lagi";
+"Retry" = "Coba Lagi";

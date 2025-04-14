@@ -366,11 +366,11 @@
 
 "Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Выкарыстоўвайце гэту прыладу для сканіравання QR-кода, які адлюстроўваецца на прыладзе, праз якую вы хочаце ўвайсці. Абедзве прылады застануцца актыўнымі.";
 
-"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "Каб атрымаць доступ да QR-кода, націсніце кнопку **Увайсці з QR-кодам** на экране ўваходу.";
+"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "Націсніце кнопку **Увайсці з дапамогай QR-кода** на экране ўваходу, каб атрымаць доступ да QR-кода.";
 
 "Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust." = "Сачыце за паведамленнямі, якія змяшчаюць QR-код. Ніколі не сканіруйце QR-код атрыманы з сайта або чалавека, якому вы не давяраеце.";
 
-"Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Proton ніколі не будзе прасіць вас адсканіраваць QR-код, які не належыць дамену **proton.me**";
+"Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Proton ніколі не будзе прасіць вас адсканіраваць QR-код, які не паходзіць з дамена **proton.me**";
 
 "Scan QR code" = "Сканіраваць QR-код";
 
@@ -378,7 +378,7 @@
 
 "Place QR code within the square" = "Памясціце QR-код у квадрат";
 
-"Verifying..." = "Ідзе праверка...";
+"Verifying..." = "Адбываецца праверка...";
 
 "You’re signed in to %@ on the other device." = "Вы ўвайшлі ў %@ на іншай прыладзе.";
 
@@ -388,9 +388,9 @@
 
 "Code not recognized. Try again." = "Код не распазнаны. Паспрабуйце яшчэ раз.";
 
-"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Парада: ніколі не сканіруйце QR-код з вэб-сайта або ад чалавека, якому вы не давяраеце. Proton ніколі не будзе прасіць вас сканаваць QR-код, які паходзіць не з дамена account.proton.me.";
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Парада: ніколі не сканіруйце QR-код з вэб-сайта або ад чалавека, якому вы не давяраеце. Proton ніколі не будзе прасіць вас сканаваць QR-код, які не паходзіць з дамена account.proton.me.";
 
-"Camera Access Denied." = "Доступ да камеры забаронены.";
+"Camera Access Denied." = "Доступ да камеры адхілены.";
 
 "The permission to use the Camera is off. Please enable it from the Settings." = "Дазвол на выкарыстанне камеры выключаны. Уключыце яго ў наладах.";
 
@@ -400,18 +400,18 @@
 
 "Something went wrong" = "Нешта пайшло не так";
 
-"We couldn't sign you in. Please scan a new QR code to try again." = "Мы не змаглі ўвайсці ў сістэму. Адсканіруйце новы QR-код, каб паўтарыць спробу.";
+"We couldn't sign you in. Please scan a new QR code to try again." = "Немагчыма ўвайсці ў сістэму. Адсканіруйце новы QR-код, каб паўтарыць спробу.";
 
 "New QR code" = "Новы QR-код";
 
 "Allow access to camera" = "Дазволіць доступ да камеры";
 
-"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "Каб адсканіраваць QR-код і ўвайсці на іншай прыладзе, дайце Proton %@ доступ да вашай камеры.";
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "Дайце Proton %@ доступ да сваёй камеры, каб адсканіраваць QR-код і ўвайсці на іншай прыладзе.";
 
-"You're always in control: You can change this anytime in your device settings." = "Вы зўсёды кантралюеце: вы можаце змяніць гэта ў любы час у наладах прылады.";
+"You're always in control: You can change this anytime in your device settings." = "У вас заўсёды ўсё пад кантролем: змяніць гэта можна ў любы час у наладах прылады.";
 
 "Settings" = "Налады";
 
-"We couldn't load the QR code" = "Мы не можам загрузіць QR-код";
+"We couldn't load the QR code" = "Немагчыма загрузіць QR-код";
 
 "Retry" = "Паўтарыць";
