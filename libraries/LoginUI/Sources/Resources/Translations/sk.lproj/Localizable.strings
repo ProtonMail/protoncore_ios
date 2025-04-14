@@ -396,22 +396,22 @@
 
 "Go to Settings" = "Prejsť do nastavení";
 
-"to Proton %@" = "to Proton %@";
+"to Proton %@" = "do Protonu %@";
 
-"Something went wrong" = "Something went wrong";
+"Something went wrong" = "Niečo sa pokazilo";
 
-"We couldn't sign you in. Please scan a new QR code to try again." = "We couldn't sign you in. Please scan a new QR code to try again.";
+"We couldn't sign you in. Please scan a new QR code to try again." = "Nedokázali sme vás prihlásiť. Naskenujte nový QR kód a skúste to znova, prosím.";
 
-"New QR code" = "New QR code";
+"New QR code" = "Nový QR kód";
 
-"Allow access to camera" = "Allow access to camera";
+"Allow access to camera" = "Povoliť prístup ku kamere";
 
-"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "To scan a QR code and sign in to another device, grant Proton %@ access to your camera.";
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "Ak chcete naskenovať kód QR a prihlásiť sa do iného zariadenia, umožnite spoločnosti Proton %@ prístup k fotoaparátu.";
 
-"You're always in control: You can change this anytime in your device settings." = "You're always in control: You can change this anytime in your device settings.";
+"You're always in control: You can change this anytime in your device settings." = "Vždy máte všetko pod kontrolou: V nastaveniach zariadenia to môžete kedykoľvek zmeniť.";
 
-"Settings" = "Settings";
+"Settings" = "Nastavenia";
 
-"We couldn't load the QR code" = "We couldn't load the QR code";
+"We couldn't load the QR code" = "Nepodarilo sa nám načítať QR kód";
 
 "Retry" = "Skúsiť znova";

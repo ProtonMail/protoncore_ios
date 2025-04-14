@@ -4,7 +4,7 @@
 
 "Purchase is not possible." = "Pembelian tidak dimungkinkan.";
 
-"Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you." = "Apple menginformasikan, Anda sudah meningkatkan paket layanan, tapi beberapa data teknis hilang. Mohon isi laporan bug dan tim dukungan pelanggan kami akan menghubungi Anda.";
+"Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you." = "Apple memberi tahu kami bahwa Anda telah meningkatkan paket layanan, namun terdapat beberapa data teknis yang hilang. Silakan isi laporan bug dan tim layanan dukungan kami akan menghubungi Anda.";
 
 "Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "Apple memberi tahu kami bahwa Anda telah meningkatkan paket layanan, namun kami menemukan bahwa Anda telah keluar dari akun sejak proses ini berlangsung.";
 
@@ -20,7 +20,7 @@
 
 "Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Silakan masuk ke akun Proton Mail yang paketnya ingin Anda tingkatkan agar kami dapat menyelesaikan aktivasi paket layanan.";
 
-"Wrong payment token status. Please relaunch the app. If error persists, contact support." = "Status token pembayaran tidak sesuai. Silakan buka ulang aplikasi. Apabila masalah ini terus berlanjut, hubungi layanan dukungan.";
+"Wrong payment token status. Please relaunch the app. If error persists, contact support." = "Status token pembayaran salah. Silakan buka ulang aplikasi. Apabila masalah ini terus berlanjut, hubungi layanan dukungan.";
 
 "Do you want to activate the purchase for %@ address?" = "Apakah Anda ingin mengaktifkan pembayaran untuk alamat %@?";
 
@@ -38,7 +38,7 @@
 
 "You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support." = "Anda telah berhasil mendaftar, namun pembayaran Anda tidak terproses. Untuk mengirim ulang informasi pembayaran Anda, klik Coba Lagi. Anda hanya akan ditagih satu kali. Apabila masalah ini terus berlanjut, silakan hubungi layanan dukungan.";
 
-"Retry" = "Coba lagi";
+"Retry" = "Coba Lagi";
 
 "OK" = "OK";
 

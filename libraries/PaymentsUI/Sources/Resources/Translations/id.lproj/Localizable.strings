@@ -26,7 +26,7 @@
 
 "%@ storage" = "Ruang penyimpanan %@";
 
-"%@ storage / user" = "%@ penyimpanan / pengguna";
+"%@ storage / user" = "Ruang penyimpanan %@ / pengguna";
 
 "for %@" = "untuk %@";
 
@@ -48,23 +48,23 @@
 
 "Full-featured mailbox with advanced protection." = "Kotak surat berfitur lengkap dengan perlindungan tingkat lanjut.";
 
-"Limited time offer" = "Penawaran waktu terbatas";
+"Limited time offer" = "Penawaran terbatas";
 
 "Complete payment?" = "Selesaikan pembayaran?";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Pembelian paket Proton Bundle telah diinisiasi. Tekan lanjutkan untuk menyelesaikan proses pembayaran dan membuat akun Anda";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Pembelian untuk paket Proton Bundle telah dimulai. Tekan lanjutkan untuk menyelesaikan prosesi pembayaran dan membuat akun Anda";
 
 "Complete payment" = "Selesaikan pembayaran";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Proses pemasangan akun tidak dapat diselesaikan karena adanya kesalahan yang tidak terduga. \nSilakan coba lagi.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Proses pengaturan akun tidak dapat diselesaikan karena adanya kesalahan yang tidak terduga. \nSilakan coba lagi.";
 
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Proses pembelian IAP sudah dimulai. Silakan mengikuti instruksi Apple untuk menuntaskan atau membatalkan pembelian.";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Proses pembelian IAP telah dimulai. Silakan ikuti instruksi Apple untuk menuntaskan atau membatalkan pembelian ini.";
 
 "In app payments are temporarily unavailable." = "Pembayaran dalam aplikasi untuk sementara tidak tersedia.";
 
 "One plan for all Proton services" = "Satu paket untuk seluruh layanan Proton";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "Akun gratis pemula yang dirancang untuk menghadirkan privasi sebagai bawaan untuk semua orang.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "Akun permulaan tanpa biaya yang dirancang untuk menghadirkan privasi sebagai hal yang baku bagi semua.";
 
 "The privacy-first email and calendar solution for your everyday communication needs." = "Solusi email dan kalender yang mengedepankan privasi untuk kebutuhan komunikasi Anda sehari-hari.";
 
@@ -76,9 +76,9 @@
 
 "Only non-renewing annual subscriptions are available via this app" = "Hanya langganan tahunan yang tidak terbarukan yang dapat dibeli via aplikasi ini";
 
-"Your subscription cannot be managed inside the mobile app." = "Langganan Anda tidak dapat dikelola dalam aplikasi ponsel.";
+"Your subscription cannot be managed inside the mobile app." = "Langganan Anda tidak dapat dikelola dari aplikasi seluler.";
 
-"Unlimited folders, labels, and filters" = "Tanpa batasan jumlah folder, label, dan saringan";
+"Unlimited folders, labels, and filters" = "Tanpa batasan jumlah folder, label, dan filter";
 
 "Up to %@ storage" = "Ruang penyimpanan hingga %@";
 
@@ -88,7 +88,7 @@
 
 "Built-in ad-blocker (NetShield)" = "Pemblokir iklan bawaan (NetShield)";
 
-"Access to streaming services globally" = "Akses ke berbagai layanan siaran langsung di seluruh dunia";
+"Access to streaming services globally" = "Akses ke layanan streaming di seluruh dunia";
 
 "Secure Core servers" = "Server Secure Core";
 
@@ -108,7 +108,7 @@
 
 "Check your internet connection" = "Periksa koneksi internet Anda";
 
-"Strict no-logs policy" = "Kebijakan tanpa pencatatan yang ketat";
+"Strict no-logs policy" = "Kebijakan tanpa log yang ketat";
 
 "Plan successfully upgraded" = "Paket berhasil ditingkatkan";
 
@@ -116,13 +116,13 @@
 
 "Priority support" = "Dukungan prioritas";
 
-"Unlimited devices" = "Tanpa batasan perangkat";
+"Unlimited devices" = "Tanpa batasan jumlah perangkat";
 
-"Unlimited email aliases" = "Tanpa batasan alias email";
+"Unlimited email aliases" = "Tanpa batasan jumlah alias email";
 
-"Unlimited logins and notes" = "Tanpa batasan masuk dan catatan";
+"Unlimited logins and notes" = "Tanpa batasan jumlah entri masuk dan catatan";
 
-"Custom fields" = "Kolom kustom";
+"Custom fields" = "Kolom khusus";
 
 "For next-level password management and identity protection." = "Untuk pengelolaan kata sandi dan perlindungan identitas tingkat lanjut.";
 
@@ -130,6 +130,6 @@
 
 "Pay annually" = "Bayar tahunan";
 
-"Pay every two years" = "Bayar setiap 2 tahun";
+"Pay every two years" = "Bayar per dua tahun";
 
 "Free" = "Free";
