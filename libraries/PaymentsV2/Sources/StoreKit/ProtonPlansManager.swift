@@ -49,7 +49,7 @@ public enum ProtonPlansManagerError: LocalizedError {
 
     public var errorDescription: String? {
         switch self {
-        case .unableToMatchProtonPlanToStoreProduct(let productId):
+        case .unableToMatchProtonPlanToStoreProduct:
             return PaymentsV2Localizer.Plans_Manager_impossible_to_match_plan.l10n
         case .unableToGetUserTransactionUUID:
             return PaymentsV2Localizer.Plans_Manager_impossible_to_get_user_uuid.l10n

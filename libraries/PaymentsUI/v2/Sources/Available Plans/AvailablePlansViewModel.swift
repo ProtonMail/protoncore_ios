@@ -45,6 +45,8 @@ public class AvailablePlansViewModel: ObservableObject {
     @Published var confirmationCompleted: Bool = false
     @Published var updateCompleted: Bool = false
     @Published var showAlert: BannerState = .none
+    @Published var hideCurrentPlan: Bool = false
+    
     public var hideAvailablePlans: Bool {
         guard let isFreePlan = currentPlan?.isFreePlan else {
             return false
@@ -78,7 +80,6 @@ public class AvailablePlansViewModel: ObservableObject {
 
     private var availablePlansViewModels: [PlanViewModel] = []
     public var currentPlan: PlanViewModel?
-    public let hideCurrentPlan: Bool
     public var showCloseButton: Bool {
         presentationMode == .modal
     }
@@ -169,12 +170,14 @@ public class AvailablePlansViewModel: ObservableObject {
                 return
             }
 
-            self.transactionProgress = plan.transactionState
-
             plan.transactionState
                 .dropFirst()
                 .receive(on: DispatchQueue.main)
-                .sink { value in
+                .sink { [weak self] value in
+                    guard let self = self else {
+                        return
+                    }
+                    self.transactionProgress.value = value
                 switch value {
                 case .generatingReceipt:
                     self.purchaseInProgress()
@@ -209,6 +212,7 @@ extension AvailablePlansViewModel {
             // Reset TransactionProgress flags --> Improve this logic
             self.confirmationCompleted = false
             self.updateCompleted = false
+            self.hideCurrentPlan = false
             Task {
                 await self.fetchData()
             }

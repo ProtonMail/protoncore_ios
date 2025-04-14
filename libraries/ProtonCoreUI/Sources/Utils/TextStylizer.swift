@@ -29,11 +29,12 @@ public struct TextStylizer {
 
         var composedText = AttributedString("")
 
-        texts.forEach { text in
+        for (index, text) in texts.enumerated() {
             var styledText = AttributedString(text.text)
             styledText.font = text.font
             styledText.foregroundColor = text.color
-            composedText += styledText
+
+            composedText +=  index > 0 ? " " + styledText : styledText
         }
 
         return composedText
