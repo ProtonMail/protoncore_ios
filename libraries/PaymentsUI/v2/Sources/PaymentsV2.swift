@@ -91,6 +91,9 @@ final public class PaymentsV2: Sendable {
                                               hideCurrentPlan: hideCurrentPlan,
                                               presentationMode: presentationMode,
                                               doh: doh)
+        queue.sync {
+            self.transactionProgress = paymentsView.transactionProgress
+        }
 
         switch presentationMode {
         case .modal:
@@ -148,9 +151,7 @@ final public class PaymentsV2: Sendable {
                                             doh: doh,
                                             presentationMode: presentationMode,
                                             hideCurrentPlan: hideCurrentPlan)
-        queue.sync {
-            self.transactionProgress = vc.transactionProgress
-        }
+
         return vc
     }
 }

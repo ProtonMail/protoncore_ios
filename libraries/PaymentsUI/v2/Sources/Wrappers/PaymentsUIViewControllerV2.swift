@@ -67,7 +67,13 @@ public final class PaymentsUIViewControllerV2: UIViewController {
                                                 hideCurrentPlan: hideCurrentPlan,
                                                 presentationMode: presentationMode)
 
-        transactionProgress = viewModel.transactionProgress
+        viewModel.transactionProgress.sink { [weak self] value in
+            guard let self = self else {
+                return
+            }
+            self.transactionProgress.value = value
+        }
+        .store(in: &cancellables)
 
         let availablePlansView = AvailablePlansView(viewModel: viewModel)
 
