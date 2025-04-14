@@ -98,6 +98,46 @@ final class ObservabilityEventTests: IntegrationTestCase {
         ResponseError(httpCode: 500, responseCode: nil, userFacingMessage: nil, underlyingError: nil)
     ]
 
+    // MARK: Generic event tests
+
+    func test_whenInitializeEventWithPayloadAndLabels_thenParametersAreCorrectlySet() {
+        let event = ObservabilityEvent(name: "n", labels: "l")
+
+        XCTAssertEqual(event.name, "n")
+        XCTAssertEqual(event.version, .v1)
+        XCTAssertEqual(event.data.labels, "l")
+        XCTAssertEqual(event.data.value, 1)
+    }
+
+    func test_whenInitializeEventWithPayloadAndLabelsAndVersion_thenParametersAreCorrectlySet() {
+        let event = ObservabilityEvent(name: "n", labels: "l", version: .v2)
+
+        XCTAssertEqual(event.name, "n")
+        XCTAssertEqual(event.version, .v2)
+        XCTAssertEqual(event.data.labels, "l")
+        XCTAssertEqual(event.data.value, 1)
+    }
+
+    func test_whenInitializeEventWithPayloadAndLabelsAndValueAndVersion_thenParametersAreCorrectlySet() {
+        let event = ObservabilityEvent(name: "n", value: 1000, labels: "l")
+
+        XCTAssertEqual(event.name, "n")
+        XCTAssertEqual(event.version, .v1)
+        XCTAssertEqual(event.data.labels, "l")
+        XCTAssertEqual(event.data.value, 1000)
+    }
+
+    func test_givenEvent_whenIncrement_thenValueIsIncremented() {
+        let event = ObservabilityEvent(name: "n", value: 1000, labels: "l")
+
+        let result = event.increment()
+
+        XCTAssertEqual(result.name, "n")
+        XCTAssertEqual(result.version, .v1)
+        XCTAssertEqual(result.data.labels, "l")
+        XCTAssertEqual(result.data.value, 1001)
+    }
+
     // MARK: - Test SSO auth schema
 
     func test_ssoAuth_everyStatus_isValid() {
