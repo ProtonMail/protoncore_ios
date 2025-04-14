@@ -26,6 +26,11 @@ public struct PayloadWithValueAndLabels<Value, Labels>: Encodable where Value: E
     let value: Value
     let labels: Labels
 
+    public init(value: Value, labels: Labels) {
+        self.value = value
+        self.labels = labels
+    }
+
     enum CodingKeys: String, CodingKey {
         case value = "Value"
         case labels = "Labels"
@@ -33,24 +38,23 @@ public struct PayloadWithValueAndLabels<Value, Labels>: Encodable where Value: E
 }
 
 public extension ObservabilityEvent {
+    /// Passes `1` to `value`
     init<Labels>(name: String, labels: Labels, version: ObservabilityEventVersion) where Payload == PayloadWithLabels<Labels>, Labels: Encodable {
-        self.init(name: name, version: version, data: .init(value: version.rawValue, labels: labels))
+        self.init(name: name, version: version, data: .init(value: 1, labels: labels))
     }
-}
 
-public extension ObservabilityEvent {
+    /// Passes `v1` to `version`
     init<Labels>(name: String, value: Int, labels: Labels) where Payload == PayloadWithLabels<Labels>, Labels: Encodable {
         self.init(name: name, version: .v1, data: .init(value: value, labels: labels))
     }
-}
 
-public extension ObservabilityEvent {
+    /// Passes `1` to `value`
+    /// Passes `v1` to `version`
     init<Labels>(name: String, labels: Labels) where Payload == PayloadWithLabels<Labels>, Labels: Encodable {
         self.init(name: name, version: .v1, data: .init(value: 1, labels: labels))
     }
-}
 
-public extension ObservabilityEvent {
+    /// Increments `data.value`
     func increment<Labels>() -> Self where Payload == PayloadWithValueAndLabels<Int, Labels>, Labels: Encodable {
         .init(name: name, version: version, data: .init(value: data.value + 1, labels: data.labels))
     }
