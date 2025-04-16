@@ -1,4 +1,4 @@
-"APIs_malformed_url_request" = "Something went wrong and we could fullfil your request. If the issue persists, please contact customer support.";
+"APIs_malformed_url_request" = "Something went wrong, and we couldn't fulfil your request. If the issue persists, please contact customer support.";
 
 "Plans_Manager_impossible_to_get_user_uuid" = "It was impossible to get the user’s UUID for the transaction";
 
