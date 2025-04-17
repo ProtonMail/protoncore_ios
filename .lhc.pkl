@@ -1,0 +1,66 @@
+extends "lhc:///Trains.pkl"
+
+// The base configuration which the other trains inherit from.
+local core = new Train {
+    templatesDirectory = "Integration/Templates"
+    attrsRef = "refs/notes/proton/attrs"
+    checklistsRef = "refs/notes/proton/checklists"
+    displayName = "Proton Core"
+
+    trailers = new Trailers {
+        projectId = "Jira-Id"
+    }
+
+    build = new BuildSettings {
+        productName = "ProtonCore"
+    }
+
+    // Linter settings are common for both trains.
+    linter = new {
+        projectIdPrefix = "CP-"
+
+        commitTypes = new LinterPolicyItem {
+            policy = "Require"
+            items = new Listing {
+                "feat"
+                "fix"
+                "build"
+                "test"
+                "refactor"
+                "build"
+                "ci"
+                "doc"
+                "chore"
+                "i18n"
+                "release"
+            }
+        }
+
+        commitScopes = new LinterPolicyItem {
+            policy = "Ignore"
+            // These scopes will be ignored by every train.
+            items = new Listing {
+                "ci"
+                "doc"
+                "docs"
+            }
+        }
+    }
+
+    changelogTypeDisplayNames = new Mapping {
+        ["merge"] = "Merged Branch"
+        ["revert"] = "Reverted Commit"
+        ["fix"] = "Fix"
+        ["feat"] = "Feature"
+        ["test"] = "Test"
+        ["refactor"] = "Refactor"
+        ["build"] = "Build"
+        ["ci"] = "CI/CD"
+        ["doc"] = "Documentation"
+        ["chore"] = "Chore"
+        ["i18n"] = "Localization/Internationalization"
+        ["release"] = "Release"
+    }
+}
+
+trains = new { core }
