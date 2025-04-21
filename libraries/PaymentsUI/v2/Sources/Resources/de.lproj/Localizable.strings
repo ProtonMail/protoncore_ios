@@ -1,0 +1,57 @@
+"All_cycle" = "Alle Abrechnungszeiträume";
+
+"Available_plans_section_title" = "Abonnement erweitern";
+
+"Available_subscriptions_view_subtitle" = "Unsere Tarife für deine Privatsphäre";
+
+"Available_subscriptions_view_title" = "Abonnement auswählen";
+
+"Current_free_plan_name" = "Kostenlos";
+
+"Current_plan_exipiration" = "Das Abonnement läuft ab am";
+
+"Current_plan_renewal" = "Das Abonnement verlängert sich automatisch am";
+
+"Error_view_button_title" = "Wiederholen";
+
+"Error_view_message" = "Diese Seite konnte nicht geladen werden. Bitte die Seite aktualisieren oder die Internetverbindung überprüfen.";
+
+"Error_view_title" = "Ein Fehler ist aufgetreten";
+
+"Loading_plans_message" = "Verfügbare Pakete werden abgerufen ...";
+
+"Monthly_cycle" = "1 Monat";
+
+"No_available_plan_message" = "Das Abonnement kann nicht über die mobile App verwaltet werden.";
+
+"No_available_plan_title" = "Keine verfügbaren Abonnements vorhanden";
+
+"No_filtered_plan_message" = "Bitte wähle einen anderen Abrechnungszeitraum aus";
+
+"No_filtered_plan_title" = "Keine Abonnements vorhanden";
+
+"Plans_footer_disclaimer" = "Abonnements können nicht innerhalb der mobilen App verwaltet werden.";
+
+"Purchase_button_title" = "%@ holen";
+
+"Select_plan_nav_title" = "Abonnement auswählen";
+
+"Subscriptions_nav_title" = "Abonnements";
+
+"Transaction_cancelled_by_user" = "Bezahlvorgang durch Benutzer abgebrochen";
+
+"Transaction_process_error" = "Ein Fehler ist aufgetreten, bitte erneut versuchen. Sollte das Problem weiterhin bestehen, kontaktiere bitte unser Support-Team.";
+
+"Transaction_state_payment_account_update_complete" = "Konto aktualisiert";
+
+"Transaction_state_payment_account_update_progress" = "Konto wird aktualisiert";
+
+"Transaction_state_payment_confirmation_complete" = "Zahlung bestätigt";
+
+"Transaction_state_payment_confirmation_progress" = "Zahlung wird bestätigt";
+
+"Transaction_state_view_subtitle" = "Dies sollte nicht länger als eine Minute dauern.";
+
+"Transaction_state_view_title" = "Deine Zahlung wird überprüft ...";
+
+"Yearly_cycle" = "12 Monate";

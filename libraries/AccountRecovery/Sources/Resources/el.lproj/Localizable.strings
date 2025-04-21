@@ -1,22 +1,81 @@
+"Settings_Item" = "Επαναφορά κωδικού πρόσβασης";
 
-"Account_Recovery_Settings_Item" = "Επαναφορά κωδικού πρόσβασης";
+"Insecure_View_Title" = "Επαναφορά κωδικού πρόσβασης";
 
-"Account_Recovery_Insecure_View_Title" = "Επαναφορά κωδικού πρόσβασης";
+"Cancelled_View_Title" = "Επαναφορά κωδικού πρόσβασης";
 
-"Account_Recovery_Grace_View_Title" = "Θέλετε να επαναφέρετε τον κωδικό πρόσβασης σας;";
+"Grace_View_Title" = "Επαναφορά κωδικού πρόσβασης";
 
-"Account_Recovery_Grace_View_line1" = "Λάβαμε ένα αίτημα για να επαναφέρουμε τον κωδικό πρόσβασης σας για ";
+"We received a password reset request for **%@**." = "Λάβαμε ένα αίτημα επαναφοράς κωδικού για το **%@**";
 
-"Account_Recovery_Insecure_View_line1" = "Τώρα μπορείτε να αλλάξετε τον κωδικό πρόσβασής σας για τον λογαριασμό ";
+"We received a password reset request for %@." = "Λάβαμε ένα αίτημα επαναφοράς κωδικού για το %@";
 
-"Account_Recovery_Insecure_View_line2" = " ελεύθερα κατά τη διάρκεια ";
+"If you didn't ask to reset your password, **cancel this request now**." = "Εάν δε ζητήσατε να γίνει επαναφορά του κωδικού σας, **ακυρώστε αυτό το αίτημα τώρα**.";
 
-"Account_Recovery_Insecure_View_line3" = "Παρακαλούμε μεταβείτε στη συνδεδεμένη συσκευή (στη συνεδρία όπου ξεκίνησε το αίτημα) για να αλλάξετε τον κωδικό πρόσβασής σας.";
+"If you didn't ask to reset your password, cancel this request now." = "Εάν δε ζητήσατε να γίνει επαναφορά του κωδικού σας, ακυρώστε αυτό το αίτημα τώρα.";
 
-"Account_Recovery_Grace_View_Cancel_Button_CTA" = "Ακύρωση αιτήματος";
+"Password reset requested" = "Ζητήθηκε επαναφορά κωδικού πρόσβασης";
 
-"Account_Recovery_Grace_View_Undefined_Time_Left" = "λίγες ώρες";
+"Insecure_View_line1" = "Τώρα μπορείτε να αλλάξετε τον κωδικό πρόσβασής σας για τον λογαριασμό ";
 
-"Account_Recovery_Grace_View_line2" = ". Για να διατηρήσουμε τον λογαριασμό σας ασφαλή, θέλουμε να βεβαιωθούμε ότι προσπαθείτε πραγματικά να επαναφέρετε τον κωδικό πρόσβασής σας. Θα μπορείτε να επαναφέρετε τον κωδικό πρόσβασής σας στο ";
+"You can change your password in %@." = "Μπορείτε να αλλάξετε τον κωδικό πρόσβασής σας σε %@.";
 
-"Account_Recovery_Grace_View_line3" = "Αν δεν υποβάλατε εσείς αυτό το αίτημα ή αν δε χρειάζεστε πλέον βοήθεια για να συνδεθείτε, ακυρώστε το και λάβετε μέτρα για να ασφαλίσετε τον λογαριασμό σας.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Για να βεβαιωθούμε ότι είστε πραγματικά εσείς που προσπαθείτε να κάνετε επαναφορά του κωδικού σας, περιμένουμε 72 ώρες πριν εγκρίνουμε αιτήματα.";
+
+"Insecure_View_line2" = " ελεύθερα κατά τη διάρκεια ";
+
+"Insecure_View_line3" = "Παρακαλούμε μεταβείτε στη συνδεδεμένη συσκευή (στη συνεδρία όπου ξεκίνησε το αίτημα) για να αλλάξετε τον κωδικό πρόσβασής σας.";
+
+"Grace_View_Cancel_Button_CTA" = "Ακύρωση αιτήματος";
+
+"Grace_View_Undefined_Time_Left" = "λίγες ώρες";
+
+"Settings_Item_Value_Grace" = "Σε εκκρεμότητα";
+
+"Settings_Item_Value_Expired" = "Ληγμένο";
+
+"Settings_Item_Value_Cancelled" = "Ακυρωμένα";
+
+"Settings_Item_Value_Insecure" = "Διαθέσιμα";
+
+"Insecure_View_Cancel_Button_CTA" = "Ακύρωση επαναφοράς";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "Εάν δε ζητήσατε να γίνει επαναφορά του κωδικού σας, **ακυρώστε αυτό το αίτημα τώρα**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "Εάν δε ζητήσατε να γίνει επαναφορά του κωδικού σας, ακυρώστε αυτό το αίτημα τώρα.";
+
+"We received a password reset request for **%@**." = "Λάβαμε ένα αίτημα επαναφοράς κωδικού για το **%@**.";
+
+"We received a password reset request for %@." = "Λάβαμε ένα αίτημα επαναφοράς κωδικού για το %@.";
+
+"Password reset cancelled" = "Η επαναφορά κωδικού πρόσβασης ακυρώθηκε";
+
+"Cancelled by the user" = "Ακυρώθηκε από τον χρήστη";
+
+"Authenticated in another session" = "Έγινε έλεγχος ταυτότητας σε άλλη συνεδρία";
+
+"none" = "καμία";
+
+"The account recovery process expired due to inaction" = "Η διαδικασία ανάκτησης λογαριασμού έληξε λόγω αδράνειας";
+
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Εάν δεν έχετε υποβάλει ποτέ αίτημα επαναφοράς κωδικού πρόσβασης, κάποιος άλλος θα μπορούσε να έχει πρόσβαση στον λογαριασμό σας. **Αλλάξτε τον κωδικό πρόσβασής σας τώρα**";
+
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Εάν δεν έχετε υποβάλει ποτέ αίτημα επαναφοράς κωδικού πρόσβασης, κάποιος άλλος θα μπορούσε να έχει πρόσβαση στον λογαριασμό σας. Αλλάξτε τον κωδικό πρόσβασής σας τώρα";
+
+"The account recovery process expired due to inaction" = "Η διαδικασία ανάκτησης λογαριασμού έληξε λόγω αδράνειας";
+
+"Recovery process not started" = "Η διαδικασία ανάκτησης δεν ξεκίνησε";
+
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Προς το παρόν δεν υπάρχει ανάκτηση λογαριασμού σε εξέλιξη. Μεταβείτε σε μια συνεδρία στην εφαρμογή ιστού για να ανακτήσετε τον κωδικό πρόσβασής σας.";
+
+"You can now reset your password" = "Μπορείτε τώρα να επαναφέρετε τον κωδικό πρόσβασής σας";
+
+"Reset available until %@." = "Η επαναφορά είναι διαθέσιμη έως %@.";
+
+"Change device to continue" = "Αλλάξτε συσκευή για να συνεχίσετε";
+
+"To reset your password, go back to your active session on **the originating device**." = "Για να κάνετε επαναφορά του κωδικού πρόσβασής σας, επιστρέψτε στην ενεργή συνεδρία σας στην **αρχική συσκευή**.";
+
+"To reset your password, go back to your active session on the originating device." = "Για να κάνετε επαναφορά του κωδικού πρόσβασής σας, επιστρέψτε στην ενεργή συνεδρία σας στην αρχική συσκευή.";
+
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Έχετε %@ για να κάνετε επαναφορά του κωδικού σας.\nΘα πρέπει να το κάνετε αυτό στη συσκευή και στο πρόγραμμα περιήγησης από όπου υποβάλατε το αίτημα επαναφοράς του κωδικού σας.\nΕάν δε ζητήσατε να γίνει επαναφορά του κωδικού σας, ακυρώστε το αίτημα τώρα.";

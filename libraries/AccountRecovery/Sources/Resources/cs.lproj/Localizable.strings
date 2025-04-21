@@ -1,22 +1,81 @@
+"Settings_Item" = "Reset hesla";
 
-"Account_Recovery_Settings_Item" = "Reset hesla";
+"Insecure_View_Title" = "Reset hesla";
 
-"Account_Recovery_Insecure_View_Title" = "Resetování hesla";
+"Cancelled_View_Title" = "Reset hesla";
 
-"Account_Recovery_Grace_View_Title" = "Chcete resetovat své heslo?";
+"Grace_View_Title" = "Reset hesla";
 
-"Account_Recovery_Grace_View_line1" = "Obdrželi jsme žádost o reset vašeho hesla pro ";
+"We received a password reset request for **%@**." = "Obdrželi jsme žádost o reset hesla pro **%@**";
 
-"Account_Recovery_Insecure_View_line1" = "Nyní můžete změnit své heslo k účtu ";
+"We received a password reset request for %@." = "Obdrželi jsme žádost o reset hesla pro %@";
 
-"Account_Recovery_Insecure_View_line2" = " během ";
+"If you didn't ask to reset your password, **cancel this request now**." = "Pokud jste o reset hesla nepožádali, **tento požadavek nyní zrušte**.";
 
-"Account_Recovery_Insecure_View_line3" = "Přejděte do přihlášeného zařízení (v relaci, ve které byl požadavek iniciován) a změňte heslo.";
+"If you didn't ask to reset your password, cancel this request now." = "Pokud jste o reset hesla nepožádali, tento požadavek nyní zrušte.";
 
-"Account_Recovery_Grace_View_Cancel_Button_CTA" = "Zrušit žádost";
+"Password reset requested" = "Vyžádán reset hesla";
 
-"Account_Recovery_Grace_View_Undefined_Time_Left" = "několika hodin";
+"Insecure_View_line1" = "Nyní můžete změnit své heslo k účtu ";
 
-"Account_Recovery_Grace_View_line2" = ". Aby byl váš účet v bezpečí, chceme se ujistit, že se o resetování hesla pokoušíte skutečně vy. Heslo si budete moci resetovat v ";
+"You can change your password in %@." = "Své heslo můžete změnit za %@.";
 
-"Account_Recovery_Grace_View_line3" = "Pokud jste tuto žádost nepodali nebo pokud již pomoc s přihlášením nepotřebujete, zrušte ji a podnikněte kroky k zabezpečení svého účtu.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Abychom měli jistotu, že se o reset hesla pokoušíte skutečně vy, počkáme před schválením požadavku 72 hodin.";
+
+"Insecure_View_line2" = " během ";
+
+"Insecure_View_line3" = "Přejděte do přihlášeného zařízení (v relaci, ve které byl požadavek iniciován) a změňte heslo.";
+
+"Grace_View_Cancel_Button_CTA" = "Zrušit žádost";
+
+"Grace_View_Undefined_Time_Left" = "několika hodin";
+
+"Settings_Item_Value_Grace" = "Čekající";
+
+"Settings_Item_Value_Expired" = "Vypršelo";
+
+"Settings_Item_Value_Cancelled" = "Zrušeno";
+
+"Settings_Item_Value_Insecure" = "K dispozici";
+
+"Insecure_View_Cancel_Button_CTA" = "Zrušit reset";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "Pokud jste o reset hesla nepožádali, **tento požadavek nyní zrušte**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "Pokud jste o reset hesla nepožádali, tento požadavek nyní zrušte.";
+
+"We received a password reset request for **%@**." = "Obdrželi jsme žádost o reset hesla pro **%@**.";
+
+"We received a password reset request for %@." = "Obdrželi jsme žádost o reset hesla pro %@.";
+
+"Password reset cancelled" = "Reset hesla zrušen";
+
+"Cancelled by the user" = "Zrušeno uživatelem";
+
+"Authenticated in another session" = "Ověřeno v jiné relaci";
+
+"none" = "žádný";
+
+"The account recovery process expired due to inaction" = "Proces obnovy účtu skončil z důvodu nečinnosti";
+
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Pokud jste nikdy nepožádali o reset hesla, může mít k vašemu účtu přístup někdo jiný. **Změňte si heslo nyní**";
+
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Pokud jste nikdy nepožádali o reset hesla, může mít k vašemu účtu přístup někdo jiný. Změňte si heslo nyní";
+
+"The account recovery process expired due to inaction" = "Proces obnovy účtu skončil z důvodu nečinnosti";
+
+"Recovery process not started" = "Proces obnovení nebyl zahájen";
+
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "V současné době neprobíhá žádné obnovení účtu. Pro obnovení hesla přejděte do relace ve webové aplikaci.";
+
+"You can now reset your password" = "Nyní můžete resetovat své heslo";
+
+"Reset available until %@." = "Reset je možný do %@.";
+
+"Change device to continue" = "Změňte zařízení pro pokračování";
+
+"To reset your password, go back to your active session on **the originating device**." = "Chcete-li resetovat heslo, vraťte se k aktivní relaci na **původním zařízení**.";
+
+"To reset your password, go back to your active session on the originating device." = "Chcete-li resetovat heslo, vraťte se k aktivní relaci na původním zařízení.";
+
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Pro reset hesla máte %@.\nJe třeba to provést na zařízení a v prohlížeči, ze kterého jste podali požadavek o reset hesla.\nPokud jste o reset hesla nepožádali, požadavek nyní zrušte.";

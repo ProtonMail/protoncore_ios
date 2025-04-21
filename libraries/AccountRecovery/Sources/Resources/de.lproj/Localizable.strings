@@ -1,22 +1,81 @@
+"Settings_Item" = "Passwort zurücksetzen";
 
-"Account_Recovery_Settings_Item" = "Passwort zurückgesetzt";
+"Insecure_View_Title" = "Passwort zurücksetzen";
 
-"Account_Recovery_Insecure_View_Title" = "Passwort zurücksetzen";
+"Cancelled_View_Title" = "Passwort zurücksetzen";
 
-"Account_Recovery_Grace_View_Title" = "Möchtest du dein Passwort zurücksetzen?";
+"Grace_View_Title" = "Passwort zurücksetzen";
 
-"Account_Recovery_Grace_View_line1" = "Wir haben eine Anfrage erhalten, dein Passwort zurückzusetzen für ";
+"We received a password reset request for **%@**." = "Es wurde eine Anfrage zum Zurücksetzen des Passworts für **%@** empfangen.";
 
-"Account_Recovery_Insecure_View_line1" = "Du kannst nun dein Passwort für das Konto ändern ";
+"We received a password reset request for %@." = "Es wurde eine Anfrage zum Zurücksetzen des Passworts für %@ empfangen.";
 
-"Account_Recovery_Insecure_View_line2" = " frei während ";
+"If you didn't ask to reset your password, **cancel this request now**." = "Wenn nicht darum gebeten wurde, das Passwort zurückzusetzen, **storniere diese Anfrage jetzt**.";
 
-"Account_Recovery_Insecure_View_line3" = "Bitte gehe zu dem angemeldeten Gerät, von dem aus die Anfrage zur Passwortänderung gestartet wurde, um dein Passwort zu ändern.";
+"If you didn't ask to reset your password, cancel this request now." = "Wenn nicht darum gebeten wurde, das Passwort zurückzusetzen, storniere diese Anfrage jetzt.";
 
-"Account_Recovery_Grace_View_Cancel_Button_CTA" = "Anfrage abbrechen";
+"Password reset requested" = "Passwortzurücksetzung angefordert";
 
-"Account_Recovery_Grace_View_Undefined_Time_Left" = "ein paar Stunden";
+"Insecure_View_line1" = "Du kannst nun dein Passwort für das Konto ändern ";
 
-"Account_Recovery_Grace_View_line2" = ". Um dein Konto zu schützen, möchten wir sicherstellen, dass du wirklich versuchst, dein Passwort zurückzusetzen. Du kannst dein Passwort zurücksetzen unter ";
+"You can change your password in %@." = "Das Passwort kann nun in %@ geändert werden.";
 
-"Account_Recovery_Grace_View_line3" = "Wenn du diese Anfrage nicht gestellt hast oder bei der Anmeldung keine Hilfe mehr brauchst, storniere sie bitte und ergreife Maßnahmen, um dein Konto zu sichern.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Um sicherzugehen, dass es wirklich du bist, der sein Passwort zurücksetzen möchte, wird 72 Stunden gewartet, bevor Anfragen genehmigt werden.";
+
+"Insecure_View_line2" = " frei während ";
+
+"Insecure_View_line3" = "Bitte gehe zu dem angemeldeten Gerät, von dem aus die Anfrage zur Passwortänderung gestartet wurde, um dein Passwort zu ändern.";
+
+"Grace_View_Cancel_Button_CTA" = "Anfrage abbrechen";
+
+"Grace_View_Undefined_Time_Left" = "ein paar Stunden";
+
+"Settings_Item_Value_Grace" = "Ausstehend";
+
+"Settings_Item_Value_Expired" = "Abgelaufen";
+
+"Settings_Item_Value_Cancelled" = "Abgebrochen";
+
+"Settings_Item_Value_Insecure" = "Verfügbar";
+
+"Insecure_View_Cancel_Button_CTA" = "Zurücksetzen abbrechen";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "Wenn nicht darum gebeten wurde, das Passwort zurückzusetzen, **storniere diese Anfrage jetzt**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "Wenn nicht darum gebeten wurde, das Passwort zurückzusetzen, storniere diese Anfrage jetzt.";
+
+"We received a password reset request for **%@**." = "Es wurde eine Anfrage zum Zurücksetzen des Passworts für **%@** gestellt.";
+
+"We received a password reset request for %@." = "Es wurde eine Anfrage zum Zurücksetzen des Passworts für %@ gestellt.";
+
+"Password reset cancelled" = "Passwortzurücksetzung abgebrochen";
+
+"Cancelled by the user" = "Duch Benutzer abgebrochen";
+
+"Authenticated in another session" = "In einer anderen Sitzung authentifiziert";
+
+"none" = "keine";
+
+"The account recovery process expired due to inaction" = "Der Prozess der Kontowiederherstellung ist aufgrund von Inaktivität abgelaufen";
+
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Wenn nie ein Antrag auf Zurücksetzung des Passworts gestellt wurde, könnte jemand anderes Zugang zu deinem Konto haben. **Ändere dein Passwort jetzt**";
+
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Wenn nie ein Antrag auf Zurücksetzung des Passworts gestellt wurde, könnte jemand anderes Zugang zu deinem Konto haben. Ändere dein Passwort jetzt";
+
+"The account recovery process expired due to inaction" = "Der Prozess der Kontowiederherstellung ist aufgrund von Inaktivität abgelaufen";
+
+"Recovery process not started" = "Wiederherstellungsprozess nicht gestartet";
+
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Derzeit findet keine Kontowiederherstellung statt. Bitte öffne eine Sitzung in der Webanwendung, um dein Passwort wiederherzustellen.";
+
+"You can now reset your password" = "Dein Passwort kannst jetzt zurückgesetzt werden";
+
+"Reset available until %@." = "Zurücksetzen verfügbar bis %@.";
+
+"Change device to continue" = "Gerät wechseln, um fortzufahren";
+
+"To reset your password, go back to your active session on **the originating device**." = "Um das Passwort zurückzusetzen, wechsle zurück zu deiner aktiven Sitzung auf **dem ursprünglichen Gerät**.";
+
+"To reset your password, go back to your active session on the originating device." = "Um das Passwort zurückzusetzen, wechsle zurück zu deiner aktiven Sitzung auf dem ursprünglichen Gerät.";
+
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Du hast %@, um dein Passwort zurückzusetzen.\nDu musst dies auf dem Gerät und in dem Browser tun, von dem aus du die Anforderung zum Zurücksetzen des Passworts gestellt hast.\nWenn du nicht darum gebeten hast, dein Passwort zurückzusetzen, brich die Anforderung jetzt ab.";

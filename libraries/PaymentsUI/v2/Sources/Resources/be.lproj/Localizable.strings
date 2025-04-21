@@ -1,0 +1,57 @@
+"All_cycle" = "Усе перыяды аплаты";
+
+"Available_plans_section_title" = "Палепшыце свой тарыфны план";
+
+"Available_subscriptions_view_subtitle" = "Нашы тарыфныя планы для вашай прыватнасці";
+
+"Available_subscriptions_view_title" = "Выберыце тарыфны план";
+
+"Current_free_plan_name" = "Free";
+
+"Current_plan_exipiration" = "Тэрмін дзеяння вашай падпіскі міне";
+
+"Current_plan_renewal" = "Ваша падпіска аўтаматычна падоўжыцца";
+
+"Error_view_button_title" = "Паўтарыць";
+
+"Error_view_message" = "Немагчыма загрузіць гэту старонку. Абнавіце старонку або праверце сваё падключэнне да інтэрнэту.";
+
+"Error_view_title" = "Нешта пайшло не так";
+
+"Loading_plans_message" = "Атрыманне даступных тарыфных планаў...";
+
+"Monthly_cycle" = "1 месяц";
+
+"No_available_plan_message" = "Вашай падпіскай нельга кіраваць у мабільнай праграме.";
+
+"No_available_plan_title" = "Даступных тарыфных планаў не знойдзена";
+
+"No_filtered_plan_message" = "Выберыце іншы перыяд аплаты";
+
+"No_filtered_plan_title" = "Тарыфныя планы не знойдзены";
+
+"Plans_footer_disclaimer" = "У мабільнай праграме адсутнічае магчымасць кіраваць падпіскамі";
+
+"Purchase_button_title" = "Атрымаць %@";
+
+"Select_plan_nav_title" = "Выберыце тарыфны план";
+
+"Subscriptions_nav_title" = "Падпіскі";
+
+"Transaction_cancelled_by_user" = "Трансакцыя скасавана карыстальнікам";
+
+"Transaction_process_error" = "Нешта пайшло не так. Паўтарыце спробу. Звярніцеся ў службу падтрымкі, калі праблема застанецца.";
+
+"Transaction_state_payment_account_update_complete" = "Уліковы запіс абноўлены";
+
+"Transaction_state_payment_account_update_progress" = "Абнаўленне вашага ўліковага запісу";
+
+"Transaction_state_payment_confirmation_complete" = "Плацеж пацверджаны";
+
+"Transaction_state_payment_confirmation_progress" = "Пацвярджэнне вашага плацяжу";
+
+"Transaction_state_view_subtitle" = "Звычайна гэта патрабуе не больш за хвіліну.";
+
+"Transaction_state_view_title" = "Ваш плацеж правяраецца...";
+
+"Yearly_cycle" = "12 месяцаў";

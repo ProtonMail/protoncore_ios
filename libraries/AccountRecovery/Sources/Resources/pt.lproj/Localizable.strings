@@ -1,22 +1,81 @@
+"Settings_Item" = "Redefinição da palavra-passe";
 
-"Account_Recovery_Settings_Item" = "Repor a palavra-passe";
+"Insecure_View_Title" = "Reposição da palavra-passe";
 
-"Account_Recovery_Insecure_View_Title" = "Redefinir a sua palavra-passe";
+"Cancelled_View_Title" = "Reposição da palavra-passe";
 
-"Account_Recovery_Grace_View_Title" = "Pretende redefinir a sua palavra-passe?";
+"Grace_View_Title" = "Reposição da palavra-passe";
 
-"Account_Recovery_Grace_View_line1" = "Recebemos um pedido para redefinir a sua palavra-passe para ";
+"We received a password reset request for **%@**." = "Recebemos um pedido de reposição da palavra-passe para **%@**.";
 
-"Account_Recovery_Insecure_View_line1" = "Agora pode mudar a sua palavra-passe para a conta ";
+"We received a password reset request for %@." = "Recebemos um pedido de reposição da palavra-passe para %@";
 
-"Account_Recovery_Insecure_View_line2" = " gratuitamente durante ";
+"If you didn't ask to reset your password, **cancel this request now**." = "Se não pediu para repor a sua palavra-passe, **cancele este pedido agora**.";
 
-"Account_Recovery_Insecure_View_line3" = "Por favor, vá ao dispositivo com sessão iniciada (na sessão onde o pedido foi iniciado) para mudar a sua palavra-passe.";
+"If you didn't ask to reset your password, cancel this request now." = "Se não pediu para repor a sua palavra-passe, cancele este pedido agora.";
 
-"Account_Recovery_Grace_View_Cancel_Button_CTA" = "Cancelar pedido";
+"Password reset requested" = "Pedido de reposição da palavra-passe feito";
 
-"Account_Recovery_Grace_View_Undefined_Time_Left" = "a few hours";
+"Insecure_View_line1" = "Agora pode mudar a sua palavra-passe para a conta ";
 
-"Account_Recovery_Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+"You can change your password in %@." = "Pode alterar a sua palavra-passe em %@.";
 
-"Account_Recovery_Grace_View_line3" = "Se não fez este pedido, ou se já não precisa de ajuda a iniciar sessão, por favor cancele-o e tome medidas para proteger a sua conta";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Para garantir que é mesmo você a tentar repor a sua palavra-passe, aguardamos 72 horas antes de aprovar os pedidos.";
+
+"Insecure_View_line2" = " gratuitamente durante ";
+
+"Insecure_View_line3" = "Aceda ao dispositivo ligado (na sessão onde o pedido foi iniciado) para alterar a sua palavra-passe.";
+
+"Grace_View_Cancel_Button_CTA" = "Cancelar pedido";
+
+"Grace_View_Undefined_Time_Left" = "algumas horas";
+
+"Settings_Item_Value_Grace" = "Pendente";
+
+"Settings_Item_Value_Expired" = "Expirado";
+
+"Settings_Item_Value_Cancelled" = "Cancelado";
+
+"Settings_Item_Value_Insecure" = "Disponível";
+
+"Insecure_View_Cancel_Button_CTA" = "Cancelar a reposição";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "Se não pediu para repor a sua palavra-passe, **cancele este pedido agora**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "Se não pediu para repor a sua palavra-passe, cancele este pedido agora.";
+
+"We received a password reset request for **%@**." = "Recebemos um pedido para repor a palavra-passe de **%@**.";
+
+"We received a password reset request for %@." = "Recebemos um pedido para repor a palavra-passe de %@.";
+
+"Password reset cancelled" = "Reposição da palavra-passe cancelada";
+
+"Cancelled by the user" = "Cancelado pelo utilizador";
+
+"Authenticated in another session" = "Autenticado noutra sessão";
+
+"none" = "nenhum";
+
+"The account recovery process expired due to inaction" = "O processo de recuperação de conta expirou devido à inatividade.";
+
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Se nunca fez um pedido de reposição da palavra-passe, outra pessoa pode ter acesso à sua conta. **Altere a sua palavra-passe agora**";
+
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Se nunca fez um pedido para repor a palavra-passe, é possível que outra pessoa tenha acesso à sua conta. Altere a sua palavra-passe agora.";
+
+"The account recovery process expired due to inaction" = "O processo de recuperação de conta expirou devido à inatividade.";
+
+"Recovery process not started" = "O processo de recuperação não foi iniciado.";
+
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Atualmente, não existe nenhuma recuperação de conta em curso. Aceda a uma sessão na aplicação web para recuperar a sua palavra-passe.";
+
+"You can now reset your password" = "Agora pode repor a sua palavra-passe";
+
+"Reset available until %@." = "Reposição disponível até %@.";
+
+"Change device to continue" = "Altere o dispositivo para continuar";
+
+"To reset your password, go back to your active session on **the originating device**." = "Para repor a sua palavra-passe, volte à sua sessão ativa no **dispositivo de origem**.";
+
+"To reset your password, go back to your active session on the originating device." = "Para repor a sua palavra-passe, volte à sua sessão ativa no dispositivo original.";
+
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Tem %@ para repor a sua palavra-passe.\nTerá que fazer isto no dispositivo e no navegador em que fez o seu pedido de reposição de palavra-passe.\nSe não pediu para repor a sua palavra-passe, cancele o pedido agora.";

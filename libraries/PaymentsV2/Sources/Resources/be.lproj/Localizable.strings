@@ -1,0 +1,21 @@
+"APIs_malformed_url_request" = "Нешта пайшло не так, і мы не змаглі выканаць ваш запыт. Звярніцеся ў службу падтрымкі, калі праблема застанецца.";
+
+"Plans_Manager_impossible_to_get_user_uuid" = "Не ўдалося атрымаць UUID карыстальніка для трансакцыі";
+
+"Plans_Manager_impossible_to_match_plan" = "Немагчыма супаставіць тарыфны план Proton з тарыфным планам Apple Store";
+
+"Plans_Manager_impossible_to_restore_transactions" = "Немагчыма аднавіць трансакцыі. Звярніцеся ў службу падтрымкі";
+
+"Plans_Manager_Transaction_cancelled_by_user" = "Трансакцыя была скасавана карыстальнікам";
+
+"Plans_Manager_Transaction_unknown_error" = "Адбылася нечаканая памылка. Звярніцеся ў службу падтрымкі, калі праблема застанецца.";
+
+"Plans_Managere_peding_transaction_received" = "Атрымана нечаканая трансакцыя ў стане чакання";
+
+"PlansComposer_unable_to_fetch_currentSub" = "Немагчыма атрымаць бягучую падпіску";
+
+"Remote_manager_error" = "Нешта пайшло не так, і мы не змаглі выканаць ваш запыт. Звярніцеся ў службу падтрымкі, калі праблема застанецца.";
+
+"SK_Receipt_impossible_to_get_receipt" = "Немагчыма атрымаць даныя квітанцыі аб трансакцыі ад Apple";
+
+"Transaction_Handler_plan_not_found" = "Немагчыма знайсці назву тарыфнага плана, які вы спрабуеце купіць. Звярніцеся ў службу падтрымкі, калі праблема застанецца.";

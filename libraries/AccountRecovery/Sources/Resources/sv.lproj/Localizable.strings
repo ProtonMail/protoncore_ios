@@ -1,22 +1,81 @@
+"Settings_Item" = "Lösenordsåterställning";
 
-"Account_Recovery_Settings_Item" = "Lösenordsåterställning";
+"Insecure_View_Title" = "Lösenordsåterställning";
 
-"Account_Recovery_Insecure_View_Title" = "Återställ ditt lösenord";
+"Cancelled_View_Title" = "Lösenordsåterställning";
 
-"Account_Recovery_Grace_View_Title" = "Vill du återställa ditt lösenord?";
+"Grace_View_Title" = "Lösenordsåterställning";
 
-"Account_Recovery_Grace_View_line1" = "Vi fick en begäran om att återställa ditt lösenord för ";
+"We received a password reset request for **%@**." = "Vi har mottagit en begäran om lösenordsåterställning för **%@**";
 
-"Account_Recovery_Insecure_View_line1" = "Du kan nu ändra ditt lösenord för kontot ";
+"We received a password reset request for %@." = "Vi har mottagit en begäran om lösenordsåterställning för %@";
 
-"Account_Recovery_Insecure_View_line2" = " fritt under ";
+"If you didn't ask to reset your password, **cancel this request now**." = "Om du inte bad om att få återställa ditt lösenord, **avbryt denna begäran nu**.";
 
-"Account_Recovery_Insecure_View_line3" = "Gå till den inloggade enheten (i sessionen där begäran initierades) för att ändra ditt lösenord.";
+"If you didn't ask to reset your password, cancel this request now." = "Om du inte bad om att få återställa ditt lösenord, avbryt denna begäran nu.";
 
-"Account_Recovery_Grace_View_Cancel_Button_CTA" = "Avbryt begäran";
+"Password reset requested" = "Lösenordsåterställning begärd";
 
-"Account_Recovery_Grace_View_Undefined_Time_Left" = "om några timmar";
+"Insecure_View_line1" = "Du kan nu ändra ditt lösenord för kontot ";
 
-"Account_Recovery_Grace_View_line2" = ". För att hålla ditt konto säkert vill vi se till att det verkligen är du som försöker återställa ditt lösenord. Du kommer att kunna återställa ditt lösenord om ";
+"You can change your password in %@." = "Du kan ändra ditt lösenord om %@.";
 
-"Account_Recovery_Grace_View_line3" = "Om du inte gjorde denna begäran, eller om du inte längre behöver hjälp med att logga in, avbryt den och vidta åtgärder för att skydda ditt konto.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "För att vara säker på att det verkligen är du som försöker återställa ditt lösenord väntar vi 72 timmar innan vi godkänner begäran.";
+
+"Insecure_View_line2" = " fritt under ";
+
+"Insecure_View_line3" = "Gå till den inloggade enheten (i sessionen där begäran initierades) för att ändra ditt lösenord.";
+
+"Grace_View_Cancel_Button_CTA" = "Avbryt begäran";
+
+"Grace_View_Undefined_Time_Left" = "om några timmar";
+
+"Settings_Item_Value_Grace" = "Väntande";
+
+"Settings_Item_Value_Expired" = "Löpt ut";
+
+"Settings_Item_Value_Cancelled" = "Avbruten";
+
+"Settings_Item_Value_Insecure" = "Tillgänglig";
+
+"Insecure_View_Cancel_Button_CTA" = "Avbryt återställning";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "Om du inte bad om att få återställa ditt lösenord, **avbryt denna begäran nu**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "Om du inte bad om att få återställa ditt lösenord, avbryt denna begäran nu.";
+
+"We received a password reset request for **%@**." = "Vi har mottagit en begäran om lösenordsåterställning för **%@**.";
+
+"We received a password reset request for %@." = "Vi har mottagit en begäran om lösenordsåterställning för %@.";
+
+"Password reset cancelled" = "Lösenordsåterställning avbruten";
+
+"Cancelled by the user" = "Avbruten av användaren";
+
+"Authenticated in another session" = "Autentiserad i annan session";
+
+"none" = "ingen";
+
+"The account recovery process expired due to inaction" = "Återställningsprocess för konto löpte ut på grund av inaktivitet";
+
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Om du aldrig gjort en begäran om lösenordsåterställning kan någon annan ha åtkomst till ditt konto. **Ändra ditt lösenord nu**";
+
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Om du aldrig gjort en begäran om lösenordsåterställning kan någon annan ha åtkomst till ditt konto. Ändra ditt lösenord nu";
+
+"The account recovery process expired due to inaction" = "Återställningsprocess för konto löpte ut på grund av inaktivitet";
+
+"Recovery process not started" = "Återställningsprocess inte startad";
+
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "För närvarande pågår ingen kontoåterställning. Gå till en session på webbapplikationen för att återställa ditt lösenord.";
+
+"You can now reset your password" = "Du kan nu återställa ditt lösenord";
+
+"Reset available until %@." = "Återställning tillgänglig till %@.";
+
+"Change device to continue" = "Ändra enhet för att fortsätta";
+
+"To reset your password, go back to your active session on **the originating device**." = "För att återställa ditt lösenord, gå tillbaka till din aktiva session på **den ursprungliga enheten**.";
+
+"To reset your password, go back to your active session on the originating device." = "För att återställa ditt lösenord, gå tillbaka till din aktiva session på den ursprungliga enheten.";
+
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Du har %@ för att återställa ditt lösenord.\nDu måste göra detta på enheten och webbläsaren som du gjorde din begäran om lösenordsåterställning från.\nOm du inte bad om att få återställa ditt lösenord, avbryt begäran nu.";

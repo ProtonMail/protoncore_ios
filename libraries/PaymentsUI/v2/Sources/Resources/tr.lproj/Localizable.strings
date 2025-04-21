@@ -1,0 +1,57 @@
+"All_cycle" = "Tüm fatura dönemleri";
+
+"Available_plans_section_title" = "Tarifenizi yükseltin";
+
+"Available_subscriptions_view_subtitle" = "Gizliliğiniz için tarifelerimiz";
+
+"Available_subscriptions_view_title" = "Bir tarife seçin";
+
+"Current_free_plan_name" = "Ücretsiz";
+
+"Current_plan_exipiration" = "Aboneliğinizin geçerlilik süresi sonu";
+
+"Current_plan_renewal" = "Aboneliğiniz şu zamanda otomatik olarak yenilenecek";
+
+"Error_view_button_title" = "Yeniden dene";
+
+"Error_view_message" = "Bu sayfa yüklenemedi. Lütfen sayfayı yenileyin veya internet bağlantınızı denetleyin.";
+
+"Error_view_title" = "Bir sorun çıktı";
+
+"Loading_plans_message" = "Kullanılabilecek tarifeler alınıyor...";
+
+"Monthly_cycle" = "1 ay";
+
+"No_available_plan_message" = "Aboneliğiniz mobil uygulama içinden yönetilemez.";
+
+"No_available_plan_title" = "Kullanılabilecek bir tarife bulunamadı";
+
+"No_filtered_plan_message" = "Lütfen farklı bir fatura dönemi seçin";
+
+"No_filtered_plan_title" = "Herhangi bir tarife bulunamadı";
+
+"Plans_footer_disclaimer" = "Abonelikleri mobil uygulama içinden yönetemezsiniz";
+
+"Purchase_button_title" = "%@ alın";
+
+"Select_plan_nav_title" = "Bir tarife seçin";
+
+"Subscriptions_nav_title" = "Abonelikler";
+
+"Transaction_cancelled_by_user" = "İşlem kullanıcı tarafından iptal edildi";
+
+"Transaction_process_error" = "Bir sorun çıktı. Lütfen yeniden deneyin. Sorun sürerse lütfen destek ekibimizle görüşün.";
+
+"Transaction_state_payment_account_update_complete" = "Hesap güncellendi";
+
+"Transaction_state_payment_account_update_progress" = "Hesabınız güncelleniyor";
+
+"Transaction_state_payment_confirmation_complete" = "Ödeme onaylandı";
+
+"Transaction_state_payment_confirmation_progress" = "Ödemeniz onaylanıyor";
+
+"Transaction_state_view_subtitle" = "Bu işlemin tamamlanması bir dakikadan fazla sürmemelidir.";
+
+"Transaction_state_view_title" = "Ödemeniz doğrulanıyor...";
+
+"Yearly_cycle" = "12 ay";

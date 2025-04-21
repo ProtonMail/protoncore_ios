@@ -412,6 +412,6 @@
 
 "Settings" = "設定";
 
-"We couldn't load the QR code" = "We couldn't load the QR code";
+"We couldn't load the QR code" = "QRコードを読み込めませんでした";
 
 "Retry" = "再試行";

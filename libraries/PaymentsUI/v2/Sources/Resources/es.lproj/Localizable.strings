@@ -1,0 +1,57 @@
+"All_cycle" = "Todos los ciclos de facturación";
+
+"Available_plans_section_title" = "Mejora tu plan";
+
+"Available_subscriptions_view_subtitle" = "Nuestros plans para tu privacidad";
+
+"Available_subscriptions_view_title" = "Selecciona un plan";
+
+"Current_free_plan_name" = "Free";
+
+"Current_plan_exipiration" = "Tu suscripción expira el";
+
+"Current_plan_renewal" = "Tu suscripción se renueva automáticamente el";
+
+"Error_view_button_title" = "Reintentar";
+
+"Error_view_message" = "No se ha podido cargar esta página. Actualiza la página o comprueba tu conexión a internet.";
+
+"Error_view_title" = "Se ha producido un error.";
+
+"Loading_plans_message" = "Obteniendo los planes disponibles...";
+
+"Monthly_cycle" = "1 mes";
+
+"No_available_plan_message" = "No se puede administrar tu suscripción dentro de la aplicación móvil.";
+
+"No_available_plan_title" = "No se ha encontrado planes disponibles.";
+
+"No_filtered_plan_message" = "Selecciona un ciclo de facturación diferente";
+
+"No_filtered_plan_title" = "No se han encontrado planes.";
+
+"Plans_footer_disclaimer" = "No se puede administrar las suscripciones dentro de la aplicación.";
+
+"Purchase_button_title" = "Obtén %@";
+
+"Select_plan_nav_title" = "Selecciona un plan";
+
+"Subscriptions_nav_title" = "Suscripciones";
+
+"Transaction_cancelled_by_user" = "Transacción cancelada por el usuario";
+
+"Transaction_process_error" = "Se ha producido un error. Inténtalo de nuevo. Si el problema persiste, ponte en contacto con nuestro equipo de soporte.";
+
+"Transaction_state_payment_account_update_complete" = "Se ha actualizado la cuenta.";
+
+"Transaction_state_payment_account_update_progress" = "Mejorando tu cuenta";
+
+"Transaction_state_payment_confirmation_complete" = "Se ha confirmado el pago.";
+
+"Transaction_state_payment_confirmation_progress" = "Confirmando tu pago";
+
+"Transaction_state_view_subtitle" = "Esto no debería de tardar más de un minuto.";
+
+"Transaction_state_view_title" = "Se está verificando tu pago...";
+
+"Yearly_cycle" = "12 meses";

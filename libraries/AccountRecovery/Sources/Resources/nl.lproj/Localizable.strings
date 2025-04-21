@@ -1,22 +1,81 @@
+"Settings_Item" = "Wachtwoordreset";
 
-"Account_Recovery_Settings_Item" = "Wachtwoord reset";
+"Insecure_View_Title" = "Wachtwoord resetten";
 
-"Account_Recovery_Insecure_View_Title" = "Uw wachtwoord opnieuw instellen";
+"Cancelled_View_Title" = "Wachtwoord resetten";
 
-"Account_Recovery_Grace_View_Title" = "Wilt u uw wachtwoord resetten?";
+"Grace_View_Title" = "Wachtwoord resetten";
 
-"Account_Recovery_Grace_View_line1" = "We hebben een verzoek ontvangen om uw wachtwoord te resetten voor ";
+"We received a password reset request for **%@**." = "We hebben een wachtwoord reset aanvraag ontvangen voor **%@**";
 
-"Account_Recovery_Insecure_View_line1" = "U kan nu uw wachtwoord veranderen voor account ";
+"We received a password reset request for %@." = "We hebben een wachtwoord reset aanvraag ontvangen voor %@";
 
-"Account_Recovery_Insecure_View_line2" = " vrijelijk gedurende ";
+"If you didn't ask to reset your password, **cancel this request now**." = "Als u niet hebt gevraagd om uw wachtwoord te resetten, **annuleer dit verzoek nu**.";
 
-"Account_Recovery_Insecure_View_line3" = "Ga naar het ingelogde apparaat (in de sessie waarin de aanvraag is gestart) om uw wachtwoord te wijzigen.";
+"If you didn't ask to reset your password, cancel this request now." = "Als u niet hebt gevraagd om uw wachtwoord te resetten, annuleer dit verzoek nu.";
 
-"Account_Recovery_Grace_View_Cancel_Button_CTA" = "Aanvraag annuleren";
+"Password reset requested" = "Wachtwoord reset aangevraagd";
 
-"Account_Recovery_Grace_View_Undefined_Time_Left" = "een paar uur";
+"Insecure_View_line1" = "U kan nu uw wachtwoord veranderen voor account ";
 
-"Account_Recovery_Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+"You can change your password in %@." = "U kunt uw wachtwoord wijzigen in %@.";
 
-"Account_Recovery_Grace_View_line3" = "Als u deze aanvraag niet deed, of niet langer hulp nodig heeft bij het inloggen, annuleer de aanvraag en onderneem stappen om uw account te beveiligen.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Om er zeker van te zijn dat u daadwerkelijk uw wachtwoord probeert te resetten, wachten we 72 uur voordat we verzoeken goedkeuren.";
+
+"Insecure_View_line2" = " vrijelijk gedurende ";
+
+"Insecure_View_line3" = "Ga naar het ingelogde apparaat (in de sessie waarin de aanvraag is gestart) om uw wachtwoord te wijzigen.";
+
+"Grace_View_Cancel_Button_CTA" = "Aanvraag annuleren";
+
+"Grace_View_Undefined_Time_Left" = "een paar uur";
+
+"Settings_Item_Value_Grace" = "In behandeling";
+
+"Settings_Item_Value_Expired" = "Verlopen";
+
+"Settings_Item_Value_Cancelled" = "Geannuleerd";
+
+"Settings_Item_Value_Insecure" = "Beschikbaar";
+
+"Insecure_View_Cancel_Button_CTA" = "Resetten annuleren";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "Als u niet hebt gevraagd om uw wachtwoord te resetten, **annuleer dit verzoek nu**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "Als u niet hebt gevraagd om uw wachtwoord te resetten, annuleer dit verzoek nu.";
+
+"We received a password reset request for **%@**." = "We hebben een wachtwoord reset aanvraag ontvangen voor **%@**.";
+
+"We received a password reset request for %@." = "We hebben een wachtwoord reset aanvraag ontvangen voor %@.";
+
+"Password reset cancelled" = "Wachtwoord resetten geannuleerd";
+
+"Cancelled by the user" = "Geannuleerd door de gebruiker";
+
+"Authenticated in another session" = "Geauthenticeerd in een andere sessie";
+
+"none" = "geen";
+
+"The account recovery process expired due to inaction" = "Het account herstelproces is wegens inactiviteit verlopen.";
+
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Als u nooit een verzoek tot het resetten van uw wachtwoord heeft gedaan, heeft iemand anders mogelijk toegang tot uw account. **Wijzig nu uw wachtwoord**";
+
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Als u nooit een verzoek tot het resetten van uw wachtwoord heeft gedaan, heeft iemand anders mogelijk toegang tot uw account. Wijzig nu uw wachtwoord";
+
+"The account recovery process expired due to inaction" = "Het account herstelproces is wegens inactiviteit verlopen.";
+
+"Recovery process not started" = "Herstelproces niet gestart";
+
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Er is momenteel geen account herstel bezig. Ga naar een sessie op de web-applicatie om uw wachtwoord te herstellen.";
+
+"You can now reset your password" = "U kunt nu uw wachtwoord resetten";
+
+"Reset available until %@." = "Reset beschikbaar tot %@.";
+
+"Change device to continue" = "Verander apparaat om door te gaan";
+
+"To reset your password, go back to your active session on **the originating device**." = "Om uw wachtwoord te resetten, gaat u terug naar uw actieve sessie op **het oorspronkelijke apparaat**.";
+
+"To reset your password, go back to your active session on the originating device." = "Om uw wachtwoord te resetten, gaat u terug naar uw actieve sessie op het oorspronkelijke apparaat.";
+
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "U heeft %@ om uw wachtwoord te resetten.\nU moet dit doen op het apparaat en de browser waarmee u het wachtwoordherstel heeft aangevraagd.\nAls u niet heeft gevraagd om uw wachtwoord te resetten, annuleer de aanvraag dan nu.";

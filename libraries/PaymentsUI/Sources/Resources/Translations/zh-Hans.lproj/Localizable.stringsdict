@@ -232,7 +232,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>other</key>
-        <string>%d个国家和地区</string>
+        <string>%d 个国家/地区</string>
       </dict>
     </dict>
     <key>&lt;n&gt; servers in &lt;m&gt; countries (US, NL, JP)</key>
