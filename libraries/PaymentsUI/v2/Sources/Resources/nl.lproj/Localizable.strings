@@ -1,0 +1,57 @@
+"All_cycle" = "Alle factureringscycli";
+
+"Available_plans_section_title" = "Upgrade uw abonnement";
+
+"Available_subscriptions_view_subtitle" = "Onze abonnementen voor uw privacy";
+
+"Available_subscriptions_view_title" = "Selecteer een abonnement";
+
+"Current_free_plan_name" = "Gratis";
+
+"Current_plan_exipiration" = "Uw abonnement verloopt op";
+
+"Current_plan_renewal" = "Uw abonnement wordt automatisch verlengd op";
+
+"Error_view_button_title" = "Opnieuw proberen";
+
+"Error_view_message" = "We konden deze pagina niet laden. Vernieuw de pagina of controleer uw internetverbinding.";
+
+"Error_view_title" = "Er is iets fout gegaan";
+
+"Loading_plans_message" = "Beschikbare abonnementen ophalen..";
+
+"Monthly_cycle" = "1 maand";
+
+"No_available_plan_message" = "Uw abonnement kan niet beheerd worden in de mobiele app.";
+
+"No_available_plan_title" = "Geen beschikbare abonnementen gevonden";
+
+"No_filtered_plan_message" = "Selecteer een andere factureringscyclus";
+
+"No_filtered_plan_title" = "Geen abonnementen gevonden";
+
+"Plans_footer_disclaimer" = "U kunt geen abonnementen beheren binnen de mobiele app";
+
+"Purchase_button_title" = "Kies %@";
+
+"Select_plan_nav_title" = "Selecteer een abonnement";
+
+"Subscriptions_nav_title" = "Abonnementen";
+
+"Transaction_cancelled_by_user" = "Transactie geannuleerd door de gebruiker";
+
+"Transaction_process_error" = "Er is iets misgegaan, probeer het opnieuw. Als het probleem aanhoudt, neem dan contact op met ons supportteam.";
+
+"Transaction_state_payment_account_update_complete" = "Account bijgewerkt";
+
+"Transaction_state_payment_account_update_progress" = "Bijwerken van uw account";
+
+"Transaction_state_payment_confirmation_complete" = "Betaling bevestigd";
+
+"Transaction_state_payment_confirmation_progress" = "Bevestigen van uw betaling";
+
+"Transaction_state_view_subtitle" = "Dit zou niet meer dan een minuut moeten duren.";
+
+"Transaction_state_view_title" = "Uw betaling wordt geverifieerd...";
+
+"Yearly_cycle" = "12 maanden";

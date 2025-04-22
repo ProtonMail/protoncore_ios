@@ -1,0 +1,57 @@
+"All_cycle" = "Όλοι οι κύκλοι χρέωσης";
+
+"Available_plans_section_title" = "Αναβαθμίστε το πλάνο σας";
+
+"Available_subscriptions_view_subtitle" = "Τα πλάνα μας για την ιδιωτικότητά σας";
+
+"Available_subscriptions_view_title" = "Επιλέξτε ένα πλάνο";
+
+"Current_free_plan_name" = "Free";
+
+"Current_plan_exipiration" = "Η συνδρομή σας λήγει στις";
+
+"Current_plan_renewal" = "Η συνδρομή σας ανανεώνεται αυτόματα στις";
+
+"Error_view_button_title" = "Επανάληψη";
+
+"Error_view_message" = "Δεν μπορέσαμε να φορτώσουμε αυτήν τη σελίδα. Παρακαλούμε ανανεώστε τη σελίδα ή ελέγξτε τη σύνδεσή σας στο διαδίκτυο.";
+
+"Error_view_title" = "Κάτι πήγε στραβά";
+
+"Loading_plans_message" = "Ανάκτηση διαθέσιμων πλάνων...";
+
+"Monthly_cycle" = "1 μήνα";
+
+"No_available_plan_message" = "Δεν είναι δυνατή η διαχείριση της συνδρομής σας εντός της εφαρμογής για κινητές συσκευές.";
+
+"No_available_plan_title" = "Δεν βρέθηκαν διαθέσιμα πλάνα";
+
+"No_filtered_plan_message" = "Παρακαλούμε επιλέξτε έναν διαφορετικό κύκλο χρέωσης";
+
+"No_filtered_plan_title" = "Δεν βρέθηκαν πλάνα";
+
+"Plans_footer_disclaimer" = "Δεν μπορείτε να διαχειριστείτε συνδρομές μέσα στην εφαρμογή για κινητά";
+
+"Purchase_button_title" = "Αποκτήστε %@";
+
+"Select_plan_nav_title" = "Επιλέξτε ένα πλάνο";
+
+"Subscriptions_nav_title" = "Συνδρομές";
+
+"Transaction_cancelled_by_user" = "Η συναλλαγή ακυρώθηκε από τον χρήστη";
+
+"Transaction_process_error" = "Κάτι πήγε στραβά, δοκιμάστε ξανά. Εάν το πρόβλημα παραμένει, παρακαλούμε επικοινωνήστε με την ομάδα υποστήριξής μας.";
+
+"Transaction_state_payment_account_update_complete" = "Ο λογαριασμός ενημερώθηκε";
+
+"Transaction_state_payment_account_update_progress" = "Ενημέρωση του λογαριασμού σας";
+
+"Transaction_state_payment_confirmation_complete" = "Η πληρωμή επιβεβαιώθηκε";
+
+"Transaction_state_payment_confirmation_progress" = "Γίνεται επιβεβαίωση της πληρωμής σας";
+
+"Transaction_state_view_subtitle" = "Αυτό δεν πρέπει να πάρει πάνω από ένα λεπτό.";
+
+"Transaction_state_view_title" = "Η πληρωμή σας επαληθεύεται...";
+
+"Yearly_cycle" = "12 μήνες";

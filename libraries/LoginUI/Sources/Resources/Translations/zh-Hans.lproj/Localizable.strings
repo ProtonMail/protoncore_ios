@@ -36,7 +36,7 @@
 
 "Sign in with password" = "使用密码登录";
 
-"Sign in with SSO" = "使用SSO登录";
+"Sign in with SSO" = "使用 SSO 登录";
 
 "Sign in with a QR code" = "使用二维码登录";
 
@@ -52,7 +52,7 @@
 
 "Other sign-in issues" = "其他登录问题";
 
-"Customer support" = "客服支持";
+"Customer support" = "客户支持";
 
 "Still need help? Contact us directly." = "仍需帮助？请直接联系我们";
 
@@ -84,7 +84,7 @@
 
 "Forgot password" = "忘记密码";
 
-"Two-factor authentication" = "双因素身份验证 (2FA)";
+"Two-factor authentication" = "双因素身份验证";
 
 "Authenticate" = "认证账户";
 
@@ -120,7 +120,7 @@
 
 "Create a secure Proton Mail address instead" = "创建一个安全的 Proton Mail 邮箱地址";
 
-"Email" = "电子邮件地址";
+"Email" = "邮箱地址";
 
 "Create your password" = "创建密码";
 
@@ -136,7 +136,7 @@
 
 "We will send recovery instructions to this email or phone number if you get locked out of your account." = "假如以后您忘记用户名或密码无法登录，我们将通过这个邮箱或电话号码帮助您恢复账户。";
 
-"Email" = "电子邮件地址";
+"Email" = "邮箱地址";
 
 "Phone" = "电话号码";
 

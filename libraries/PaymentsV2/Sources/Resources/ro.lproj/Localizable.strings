@@ -1,0 +1,21 @@
+"APIs_malformed_url_request" = "A apărut o problemă și nu vi s-a putut îndeplini solicitarea. Dacă problema persistă, contactați asistența pentru clienți.";
+
+"Plans_Manager_impossible_to_get_user_uuid" = "A fost imposibil de obținut UUID-ul utilizatorului pentru tranzacție.";
+
+"Plans_Manager_impossible_to_match_plan" = "A fost imposibilă potrivirea planului Proton cu un plan Apple Store.";
+
+"Plans_Manager_impossible_to_restore_transactions" = "A fost imposibilă restaurarea tranzacțiilor. Contactați asistența pentru clienți.";
+
+"Plans_Manager_Transaction_cancelled_by_user" = "Tranzacția a fost anulată de utilizator.";
+
+"Plans_Manager_Transaction_unknown_error" = "A apărut o eroare neașteptată. Dacă aceasta persistă, contactați asistența pentru clienți.";
+
+"Plans_Managere_peding_transaction_received" = "S-a primit o tranzacție în așteptare neașteptată.";
+
+"PlansComposer_unable_to_fetch_currentSub" = "Nu se poate prelua abonamentul curent.";
+
+"Remote_manager_error" = "A apărut o problemă și nu vi s-a putut îndeplini solicitarea. Dacă problema persistă, contactați asistența pentru clienți.";
+
+"SK_Receipt_impossible_to_get_receipt" = "Imposibil de obținut datele confirmării de primire a tranzacției de la Apple.";
+
+"Transaction_Handler_plan_not_found" = "A fost imposibil de găsit numele planului pe care încercați să îl achiziționați. Dacă problema persistă, contactați asistența pentru clienți.";

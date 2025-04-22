@@ -1,0 +1,57 @@
+"All_cycle" = "Todos os ciclos de faturamento";
+
+"Available_plans_section_title" = "Faça upgrade de seu plano";
+
+"Available_subscriptions_view_subtitle" = "Nossos planos para a sua privacidade";
+
+"Available_subscriptions_view_title" = "Selecione um plano";
+
+"Current_free_plan_name" = "Free";
+
+"Current_plan_exipiration" = "Sua assinatura expira em";
+
+"Current_plan_renewal" = "Sua assinatura será renovada automaticamente em";
+
+"Error_view_button_title" = "Tentar novamente";
+
+"Error_view_message" = "Não conseguimos carregar esta página. Por favor, atualize a página ou verifique sua conexão com a internet.";
+
+"Error_view_title" = "Algo deu errado";
+
+"Loading_plans_message" = "Obtendo planos disponíveis...";
+
+"Monthly_cycle" = "1 mês";
+
+"No_available_plan_message" = "Não é possível gerenciar sua assinatura no aplicativo móvel.";
+
+"No_available_plan_title" = "Nenhum plano disponível encontrado";
+
+"No_filtered_plan_message" = "Selecione um ciclo de faturamento diferente";
+
+"No_filtered_plan_title" = "Nenhum plano encontrado";
+
+"Plans_footer_disclaimer" = "Você não pode gerenciar assinaturas no aplicativo para dispositivos móveis";
+
+"Purchase_button_title" = "Obter %@";
+
+"Select_plan_nav_title" = "Selecione um plano";
+
+"Subscriptions_nav_title" = "Assinaturas";
+
+"Transaction_cancelled_by_user" = "Transação cancelada pelo usuário";
+
+"Transaction_process_error" = "Algo deu errado, por favor, tente novamente. Se o problema persistir, entre em contato com nossa equipe de suporte.";
+
+"Transaction_state_payment_account_update_complete" = "Conta atualizada";
+
+"Transaction_state_payment_account_update_progress" = "Atualizando sua conta";
+
+"Transaction_state_payment_confirmation_complete" = "Pagamento confirmado";
+
+"Transaction_state_payment_confirmation_progress" = "Confirmando seu pagamento";
+
+"Transaction_state_view_subtitle" = "Isto não deve levar mais de um minuto.";
+
+"Transaction_state_view_title" = "Seu pagamento está sendo verificado...";
+
+"Yearly_cycle" = "12 meses";

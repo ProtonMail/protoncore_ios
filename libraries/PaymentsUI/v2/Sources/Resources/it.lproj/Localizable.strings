@@ -1,0 +1,57 @@
+"All_cycle" = "Tutti i cicli di fatturazione";
+
+"Available_plans_section_title" = "Effettua l'upgrade del piano";
+
+"Available_subscriptions_view_subtitle" = "I nostri piani per la tua privacy";
+
+"Available_subscriptions_view_title" = "Seleziona un piano";
+
+"Current_free_plan_name" = "Free";
+
+"Current_plan_exipiration" = "Il tuo abbonamento scade il";
+
+"Current_plan_renewal" = "Il tuo abbonamento si rinnova automaticamente il";
+
+"Error_view_button_title" = "Riprova";
+
+"Error_view_message" = "Impossibile caricare questa pagina. Aggiorna la pagina o controlla la tua connessione internet.";
+
+"Error_view_title" = "Qualcosa è andato storto.";
+
+"Loading_plans_message" = "Recupero dei piani disponibili...";
+
+"Monthly_cycle" = "1 mese";
+
+"No_available_plan_message" = "Il tuo abbonamento non può essere gestito all'interno dell'app mobile.";
+
+"No_available_plan_title" = "Nessun piano disponibile trovato";
+
+"No_filtered_plan_message" = "Seleziona un ciclo di fatturazione differente";
+
+"No_filtered_plan_title" = "Nessun piano trovato";
+
+"Plans_footer_disclaimer" = "Non puoi gestire gli abbonamenti all'interno della app mobile.";
+
+"Purchase_button_title" = "Ottieni %@";
+
+"Select_plan_nav_title" = "Seleziona un piano";
+
+"Subscriptions_nav_title" = "Abbonamenti";
+
+"Transaction_cancelled_by_user" = "Transazione annullata dall'utente";
+
+"Transaction_process_error" = "Si è verificato un problema, riprova. Se il problema persiste, contatta il nostro team di supporto.";
+
+"Transaction_state_payment_account_update_complete" = "Account aggiornato";
+
+"Transaction_state_payment_account_update_progress" = "Aggiornamento del tuo account";
+
+"Transaction_state_payment_confirmation_complete" = "Pagamento confermato";
+
+"Transaction_state_payment_confirmation_progress" = "Conferma del tuo pagamento";
+
+"Transaction_state_view_subtitle" = "Non dovrebbe richiedere più di un minuto.";
+
+"Transaction_state_view_title" = "Il tuo pagamento è in fase di verifica...";
+
+"Yearly_cycle" = "12 mesi";

@@ -1,0 +1,57 @@
+"All_cycle" = "Tous les cycles de facturation";
+
+"Available_plans_section_title" = "Changez d'abonnement";
+
+"Available_subscriptions_view_subtitle" = "Nos abonnements pour votre confidentialité";
+
+"Available_subscriptions_view_title" = "Choisir un abonnement";
+
+"Current_free_plan_name" = "Free";
+
+"Current_plan_exipiration" = "Votre abonnement expire le";
+
+"Current_plan_renewal" = "Votre abonnement sera automatiquement renouvelé le";
+
+"Error_view_button_title" = "Réessayer";
+
+"Error_view_message" = "Le chargement de la page n'a pas abouti. Veuillez actualiser la page ou vérifier votre connexion internet.";
+
+"Error_view_title" = "Une erreur s'est produite.";
+
+"Loading_plans_message" = "Récupération des abonnements disponibles...";
+
+"Monthly_cycle" = "1 mois";
+
+"No_available_plan_message" = "Vous ne pouvez pas gérer votre abonnement dans l'application mobile.";
+
+"No_available_plan_title" = "Aucun abonnement disponible trouvé";
+
+"No_filtered_plan_message" = "Veuillez sélectionner un autre cycle de facturation.";
+
+"No_filtered_plan_title" = "Aucun abonnement trouvé";
+
+"Plans_footer_disclaimer" = "Vous ne pouvez pas gérer les abonnements dans l'application mobile.";
+
+"Purchase_button_title" = "Obtenir %@";
+
+"Select_plan_nav_title" = "Choisir un abonnement";
+
+"Subscriptions_nav_title" = "Abonnements";
+
+"Transaction_cancelled_by_user" = "La transaction a été annulée par l’utilisateur.";
+
+"Transaction_process_error" = "Une erreur s'est produite. Veuillez réessayer. Si le problème persiste, veuillez contacter notre équipe de support.";
+
+"Transaction_state_payment_account_update_complete" = "Le compte a été mis à jour.";
+
+"Transaction_state_payment_account_update_progress" = "Mise à jour de votre compte";
+
+"Transaction_state_payment_confirmation_complete" = "Le paiement est confirmé.";
+
+"Transaction_state_payment_confirmation_progress" = "Confirmation de votre paiement";
+
+"Transaction_state_view_subtitle" = "Ceci ne devrait pas prendre plus d'une minute.";
+
+"Transaction_state_view_title" = "Votre paiement est en cours de vérification...";
+
+"Yearly_cycle" = "12 mois";

@@ -1,22 +1,81 @@
+"Settings_Item" = "Poništavanje lozinke";
 
-"Account_Recovery_Settings_Item" = "Password reset";
+"Insecure_View_Title" = "Password reset";
 
-"Account_Recovery_Insecure_View_Title" = "Reset your password";
+"Cancelled_View_Title" = "Password reset";
 
-"Account_Recovery_Grace_View_Title" = "Do you want to reset your password?";
+"Grace_View_Title" = "Password reset";
 
-"Account_Recovery_Grace_View_line1" = "We received a request to reset your password for ";
+"We received a password reset request for **%@**." = "We received a password reset request for **%@**";
 
-"Account_Recovery_Insecure_View_line1" = "You can now change your password for the account ";
+"We received a password reset request for %@." = "We received a password reset request for %@";
 
-"Account_Recovery_Insecure_View_line2" = " freely during ";
+"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
 
-"Account_Recovery_Insecure_View_line3" = "Please go the signed-in device (in the session where the request was initiated) to change your password.";
+"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
 
-"Account_Recovery_Grace_View_Cancel_Button_CTA" = "Cancel request";
+"Password reset requested" = "Password reset requested";
 
-"Account_Recovery_Grace_View_Undefined_Time_Left" = "a few hours";
+"Insecure_View_line1" = "You can now change your password for the account ";
 
-"Account_Recovery_Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+"You can change your password in %@." = "You can change your password in %@.";
 
-"Account_Recovery_Grace_View_line3" = "If you didn't make this request, or if you no longer need help signing in, please cancel it and take steps to secure your account.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.";
+
+"Insecure_View_line2" = " freely during ";
+
+"Insecure_View_line3" = "Please go the signed-in device (in the session where the request was initiated) to change your password.";
+
+"Grace_View_Cancel_Button_CTA" = "Poništi zahtjev";
+
+"Grace_View_Undefined_Time_Left" = "a few hours";
+
+"Settings_Item_Value_Grace" = "Pending";
+
+"Settings_Item_Value_Expired" = "Expired";
+
+"Settings_Item_Value_Cancelled" = "Cancelled";
+
+"Settings_Item_Value_Insecure" = "Available";
+
+"Insecure_View_Cancel_Button_CTA" = "Cancel reset";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+
+"We received a password reset request for **%@**." = "We received a password reset request for **%@**.";
+
+"We received a password reset request for %@." = "We received a password reset request for %@.";
+
+"Password reset cancelled" = "Password reset cancelled";
+
+"Cancelled by the user" = "Cancelled by the user";
+
+"Authenticated in another session" = "Authenticated in another session";
+
+"none" = "none";
+
+"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "If you never made a password reset request, someone else could have access to your account. **Change your password now**";
+
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "If you never made a password reset request, someone else could have access to your account. Change your password now";
+
+"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+
+"Recovery process not started" = "Recovery process not started";
+
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
+
+"You can now reset your password" = "You can now reset your password";
+
+"Reset available until %@." = "Reset available until %@.";
+
+"Change device to continue" = "Change device to continue";
+
+"To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
+
+"To reset your password, go back to your active session on the originating device." = "To reset your password, go back to your active session on the originating device.";
+
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now.";

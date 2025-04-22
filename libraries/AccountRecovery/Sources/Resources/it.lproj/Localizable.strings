@@ -1,22 +1,81 @@
+"Settings_Item" = "Reimpostazione della password";
 
-"Account_Recovery_Settings_Item" = "Reimpostazione della password";
+"Insecure_View_Title" = "Reimposta la password";
 
-"Account_Recovery_Insecure_View_Title" = "Reimposta la tua password";
+"Cancelled_View_Title" = "Reimposta la password";
 
-"Account_Recovery_Grace_View_Title" = "Vuoi reimpostare la tua password?";
+"Grace_View_Title" = "Reimposta la password";
 
-"Account_Recovery_Grace_View_line1" = "Abbiamo ricevuto una richiesta di reimpostazione della password per ";
+"We received a password reset request for **%@**." = "Abbiamo ricevuto una richiesta di reimpostazione della password per **%@**.";
 
-"Account_Recovery_Insecure_View_line1" = "Ora puoi cambiare la tua password per l'account ";
+"We received a password reset request for %@." = "Abbiamo ricevuto una richiesta di reimpostazione della password per %@.";
 
-"Account_Recovery_Insecure_View_line2" = " liberamente per ";
+"If you didn't ask to reset your password, **cancel this request now**." = "Se non hai richiesto di reimpostare la tua password, **annulla subito questa richiesta**.";
 
-"Account_Recovery_Insecure_View_line3" = "Per cambiare la tua password, usa il dispositivo in cui hai effettuato l'accesso (nella sessione in cui è stata iniziata la richiesta).";
+"If you didn't ask to reset your password, cancel this request now." = "Se non hai richiesto di reimpostare la tua password, annulla subito questa richiesta.";
 
-"Account_Recovery_Grace_View_Cancel_Button_CTA" = "Annulla richiesta";
+"Password reset requested" = "Reimpostazione richiesta";
 
-"Account_Recovery_Grace_View_Undefined_Time_Left" = "qualche ora";
+"Insecure_View_line1" = "Ora puoi cambiare la tua password per l'account ";
 
-"Account_Recovery_Grace_View_line2" = ". Per proteggere il tuo account, vogliamo essere sicuri che sia davvero tu a tentare di reimpostare la password. Potrai reimpostare la tua password tra ";
+"You can change your password in %@." = "Puoi modificare la tua password in %@.";
 
-"Account_Recovery_Grace_View_line3" = "Se non hai fatto tu questa richiesta, o se non hai più bisogno di aiuto per l'accesso, annullala e intervieni per proteggere il tuo account.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Per garantire che sia veramente tu a cercare di reimpostare la tua password, attendiamo 72 ore prima di approvare le richieste.";
+
+"Insecure_View_line2" = " liberamente per ";
+
+"Insecure_View_line3" = "Per cambiare la tua password, usa il dispositivo in cui hai effettuato l'accesso (nella sessione in cui è stata iniziata la richiesta).";
+
+"Grace_View_Cancel_Button_CTA" = "Annulla la richiesta";
+
+"Grace_View_Undefined_Time_Left" = "qualche ora";
+
+"Settings_Item_Value_Grace" = "In attesa";
+
+"Settings_Item_Value_Expired" = "Scaduto";
+
+"Settings_Item_Value_Cancelled" = "Annullato";
+
+"Settings_Item_Value_Insecure" = "Disponibile";
+
+"Insecure_View_Cancel_Button_CTA" = "Annulla il ripristino";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "Se non hai richiesto di reimpostare la tua password, **annulla subito questa richiesta**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "Se non hai richiesto di reimpostare la tua password, annulla subito questa richiesta.";
+
+"We received a password reset request for **%@**." = "Abbiamo ricevuto una richiesta di reimpostazione della password per **%@**.";
+
+"We received a password reset request for %@." = "Abbiamo ricevuto una richiesta di reimpostazione della password per %@.";
+
+"Password reset cancelled" = "Reimpostazione annullata";
+
+"Cancelled by the user" = "Annullato dall'utente";
+
+"Authenticated in another session" = "Autenticato in un'altra sessione";
+
+"none" = "nessuno";
+
+"The account recovery process expired due to inaction" = "Il processo di recupero dell'account è scaduto a causa dell'inattività.";
+
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Se non hai mai effettuato una richiesta di reimpostazione della password, qualcun altro potrebbe avere accesso al tuo account. **Cambia subito la tua password**";
+
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Se non hai mai effettuato una richiesta di reimpostazione della password, qualcun altro potrebbe avere accesso al tuo account. Cambia subito la tua password";
+
+"The account recovery process expired due to inaction" = "Il processo di recupero dell'account è scaduto a causa dell'inattività.";
+
+"Recovery process not started" = "Processo di ripristino non avviato";
+
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Attualmente non ci sono procedure di recupero account in corso. Vai a una sessione sull'applicazione web per recuperare la tua password.";
+
+"You can now reset your password" = "Ora puoi reimpostare la tua password.";
+
+"Reset available until %@." = "Reimposta disponibile fino a %@.";
+
+"Change device to continue" = "Cambia dispositivo per continuare";
+
+"To reset your password, go back to your active session on **the originating device**." = "Per reimpostare la tua password, torna alla tua sessione attiva sul **dispositivo** di origine.";
+
+"To reset your password, go back to your active session on the originating device." = "Per reimpostare la tua password, torna alla tua sessione attiva sul dispositivo di origine.";
+
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Hai %@ per reimpostare la tua password.\nDovrai farlo sul dispositivo e browser da cui hai effettuato la richiesta di reimpostazione della password.\nSe non hai richiesto di reimpostare la password, annulla subito la richiesta.";

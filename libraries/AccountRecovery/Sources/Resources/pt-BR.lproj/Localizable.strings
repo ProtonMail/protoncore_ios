@@ -1,22 +1,81 @@
+"Settings_Item" = "Redefinição de senha";
 
-"Account_Recovery_Settings_Item" = "Redefinição de senha";
+"Insecure_View_Title" = "Redefinição de senha";
 
-"Account_Recovery_Insecure_View_Title" = "Redefinir sua senha";
+"Cancelled_View_Title" = "Redefinição de senha";
 
-"Account_Recovery_Grace_View_Title" = "Você gostaria de redefinir sua senha?";
+"Grace_View_Title" = "Redefinição de senha";
 
-"Account_Recovery_Grace_View_line1" = "Recebemos uma solicitação para redefinição da sua senha ";
+"We received a password reset request for **%@**." = "Recebemos uma solicitação para redefinir a senha de **%@**";
 
-"Account_Recovery_Insecure_View_line1" = "Agora você pode alterar a senha da sua conta ";
+"We received a password reset request for %@." = "Recebemos uma solicitação para redefinir a senha de %@";
 
-"Account_Recovery_Insecure_View_line2" = " a qualquer momento durante ";
+"If you didn't ask to reset your password, **cancel this request now**." = "Se você não solicitou a redefinição da sua senha, **cancele este pedido agora**.";
 
-"Account_Recovery_Insecure_View_line3" = "Vá ao dispositivo já conectado a sua conta (onde a solicitação foi realizada) para alterar sua senha.";
+"If you didn't ask to reset your password, cancel this request now." = "Se você não solicitou a redefinição da sua senha, cancele este pedido agora.";
 
-"Account_Recovery_Grace_View_Cancel_Button_CTA" = "Cancelar solicitação";
+"Password reset requested" = "A redefinição de senha foi solicitada";
 
-"Account_Recovery_Grace_View_Undefined_Time_Left" = "algumas horas";
+"Insecure_View_line1" = "Agora você pode alterar a senha da sua conta ";
 
-"Account_Recovery_Grace_View_line2" = "Para manter sua conta segura, queremos garantir que seja realmente você tentando redefinir sua senha. Você poderá redefinir sua senha em ";
+"You can change your password in %@." = "Você pode alterar sua senha em %@.";
 
-"Account_Recovery_Grace_View_line3" = "Se você não fez está solicitação, ou se você precisa mais de ajuda para acessar, por favor cancele esta solicitação e siga os passos para tornar sua conta mais segura.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Para confirmar que é realmente você tentando redefinir sua senha, aguardamos 72 horas antes de aprovar as solicitações.";
+
+"Insecure_View_line2" = " a qualquer momento durante ";
+
+"Insecure_View_line3" = "Vá ao dispositivo já conectado a sua conta (onde a solicitação foi realizada) para alterar sua senha.";
+
+"Grace_View_Cancel_Button_CTA" = "Cancelar solicitação";
+
+"Grace_View_Undefined_Time_Left" = "algumas horas";
+
+"Settings_Item_Value_Grace" = "Pendente";
+
+"Settings_Item_Value_Expired" = "Expirado";
+
+"Settings_Item_Value_Cancelled" = "Cancelado";
+
+"Settings_Item_Value_Insecure" = "Disponível";
+
+"Insecure_View_Cancel_Button_CTA" = "Cancelar redefinição";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "Se você não solicitou a redefinição da sua senha, **cancele este pedido agora**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "Se você não solicitou a redefinição da sua senha, cancele este pedido agora.";
+
+"We received a password reset request for **%@**." = "Recebemos uma solicitação de redefinição de senha para **%@**.";
+
+"We received a password reset request for %@." = "Recebemos uma solicitação de redefinição de senha para %@.";
+
+"Password reset cancelled" = "A redefinição de senha foi cancelada";
+
+"Cancelled by the user" = "Cancelado pelo usuário";
+
+"Authenticated in another session" = "Autenticado em outra sessão";
+
+"none" = "nenhum";
+
+"The account recovery process expired due to inaction" = "O processo de recuperação da conta expirou devido à inatividade";
+
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Se você nunca fez um pedido de redefinição de senha, alguém pode ter acesso à sua conta. **Altere sua senha agora**";
+
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Se você nunca fez um pedido de redefinição de senha, alguém pode ter acesso à sua conta. Altere sua senha agora";
+
+"The account recovery process expired due to inaction" = "O processo de recuperação da conta expirou devido à inatividade";
+
+"Recovery process not started" = "Processo de recuperação não iniciado";
+
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Atualmente, não há nenhum processo de recuperação de conta em andamento. Por favor, acesse a sessão no aplicativo web para recuperar sua senha.";
+
+"You can now reset your password" = "Você pode redefinir sua senha agora";
+
+"Reset available until %@." = "Redefinição disponível até %@.";
+
+"Change device to continue" = "Altere o dispositivo para continuar";
+
+"To reset your password, go back to your active session on **the originating device**." = "Para redefinir sua senha, volte para sua sessão ativa no **dispositivo original**.";
+
+"To reset your password, go back to your active session on the originating device." = "Para redefinir sua senha, volte para sua sessão ativa no dispositivo original.";
+
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Você tem %@ para redefinir sua senha.\nVocê precisará fazer isso no dispositivo e no navegador de onde fez o pedido de redefinição de senha.\nSe você não solicitou a redefinição da sua senha, cancele o pedido agora.";

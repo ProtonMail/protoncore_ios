@@ -1,22 +1,81 @@
+"Settings_Item" = "パスワードリセット";
 
-"Account_Recovery_Settings_Item" = "パスワードリセット";
+"Insecure_View_Title" = "Password reset";
 
-"Account_Recovery_Insecure_View_Title" = "あなたのパスワードをリセット";
+"Cancelled_View_Title" = "Password reset";
 
-"Account_Recovery_Grace_View_Title" = "パスワードをリセットしますか?";
+"Grace_View_Title" = "Password reset";
 
-"Account_Recovery_Grace_View_line1" = "パスワードをリセットするリクエストを受け取りました ";
+"We received a password reset request for **%@**." = "We received a password reset request for **%@**";
 
-"Account_Recovery_Insecure_View_line1" = "アカウントのパスワードを変更できるようになりました ";
+"We received a password reset request for %@." = "We received a password reset request for %@";
 
-"Account_Recovery_Insecure_View_line2" = " 期間中は自由に ";
+"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
 
-"Account_Recovery_Insecure_View_line3" = "サインインしているデバイス (要求が開始されたセッション内) に移動して、パスワードを変更してください。";
+"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
 
-"Account_Recovery_Grace_View_Cancel_Button_CTA" = "リクエストのキャンセル";
+"Password reset requested" = "Password reset requested";
 
-"Account_Recovery_Grace_View_Undefined_Time_Left" = "数時間";
+"Insecure_View_line1" = "アカウントのパスワードを変更できます。 ";
 
-"Account_Recovery_Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+"You can change your password in %@." = "You can change your password in %@.";
 
-"Account_Recovery_Grace_View_line3" = "このリクエストを行っていない場合、またはサインインのサポートが不要になった場合は、このリクエストをキャンセルし、アカウントを保護する措置を講じてください。";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.";
+
+"Insecure_View_line2" = " 期間中は自由に ";
+
+"Insecure_View_line3" = "サインインしたデバイス(リクエストが開始されたセッション内)でパスワードを変更してください。";
+
+"Grace_View_Cancel_Button_CTA" = "リクエストのキャンセル";
+
+"Grace_View_Undefined_Time_Left" = "数時間";
+
+"Settings_Item_Value_Grace" = "Pending";
+
+"Settings_Item_Value_Expired" = "Expired";
+
+"Settings_Item_Value_Cancelled" = "Cancelled";
+
+"Settings_Item_Value_Insecure" = "Available";
+
+"Insecure_View_Cancel_Button_CTA" = "Cancel reset";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+
+"We received a password reset request for **%@**." = "We received a password reset request for **%@**.";
+
+"We received a password reset request for %@." = "We received a password reset request for %@.";
+
+"Password reset cancelled" = "Password reset cancelled";
+
+"Cancelled by the user" = "Cancelled by the user";
+
+"Authenticated in another session" = "Authenticated in another session";
+
+"none" = "none";
+
+"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "If you never made a password reset request, someone else could have access to your account. **Change your password now**";
+
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "If you never made a password reset request, someone else could have access to your account. Change your password now";
+
+"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+
+"Recovery process not started" = "Recovery process not started";
+
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
+
+"You can now reset your password" = "You can now reset your password";
+
+"Reset available until %@." = "Reset available until %@.";
+
+"Change device to continue" = "Change device to continue";
+
+"To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
+
+"To reset your password, go back to your active session on the originating device." = "To reset your password, go back to your active session on the originating device.";
+
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now.";

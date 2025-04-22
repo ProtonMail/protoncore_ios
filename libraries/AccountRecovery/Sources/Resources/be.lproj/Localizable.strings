@@ -1,22 +1,81 @@
+"Settings_Item" = "Скінуць пароль";
 
-"Account_Recovery_Settings_Item" = "Скінуць пароль";
+"Insecure_View_Title" = "Скінуць пароль";
 
-"Account_Recovery_Insecure_View_Title" = "Скінуць ваш пароль";
+"Cancelled_View_Title" = "Скінуць пароль";
 
-"Account_Recovery_Grace_View_Title" = "Вы сапраўды хочаце скінуць свой пароль?";
+"Grace_View_Title" = "Скінуць пароль";
 
-"Account_Recovery_Grace_View_line1" = "Мы атрымалі запыт на скіданне вашага пароля для ";
+"We received a password reset request for **%@**." = "Атрыманы запыт на скіданне пароля для **%@**";
 
-"Account_Recovery_Insecure_View_line1" = "Цяпер вы можаце змяніць свой пароль для ўліковага запісу ";
+"We received a password reset request for %@." = "Атрыманы запыт на скіданне пароля для %@";
 
-"Account_Recovery_Insecure_View_line2" = " бясплатна на працягу ";
+"If you didn't ask to reset your password, **cancel this request now**." = "**Скасуйце гэты запыт**, калі вы яго не рабілі.";
 
-"Account_Recovery_Insecure_View_line3" = "Перайдзіце на прыладу, якая знаходзіцца ў сістэме (з якой быў ініцыяваны запыт), каб змяніць пароль.";
+"If you didn't ask to reset your password, cancel this request now." = "Скасуйце гэты запыт, калі вы яго не рабілі.";
 
-"Account_Recovery_Grace_View_Cancel_Button_CTA" = "Скасаваць запыт";
+"Password reset requested" = "Запыт на скіданне пароля";
 
-"Account_Recovery_Grace_View_Undefined_Time_Left" = "некалькі гадзін";
+"Insecure_View_line1" = "Цяпер вы можаце змяніць свой пароль для ўліковага запісу ";
 
-"Account_Recovery_Grace_View_line2" = ". У мэтах захавання бяспекі вашага ўліковага запісу нам неабходна пераканацца, што менавіта вы спрабуеце скінуць свой пароль. Вы зможаце скінуць яго праз ";
+"You can change your password in %@." = "Вы можаце змяніць свой пароль у %@.";
 
-"Account_Recovery_Grace_View_line3" = "Калі вы не рабілі запыт або дапамога з уваходам вам больш не патрабуецца, скасуйце яго і прыміце меры па абароне свайго ўліковага запісу.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Каб пераканацца што менавіта вы спрабуеце скінуць свой пароль, мы пачакаем 72 гадзіны перад тым, як ухваліць запыт.";
+
+"Insecure_View_line2" = " бясплатна на працягу ";
+
+"Insecure_View_line3" = "Перайдзіце на прыладу, якая знаходзіцца ў сістэме (з якой быў ініцыяваны запыт), каб змяніць пароль.";
+
+"Grace_View_Cancel_Button_CTA" = "Скасаваць запыт";
+
+"Grace_View_Undefined_Time_Left" = "некалькі гадзін";
+
+"Settings_Item_Value_Grace" = "У чаканні";
+
+"Settings_Item_Value_Expired" = "Пратэрмінавана";
+
+"Settings_Item_Value_Cancelled" = "Скасавана";
+
+"Settings_Item_Value_Insecure" = "Даступна";
+
+"Insecure_View_Cancel_Button_CTA" = "Скасаваць скіданне";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "**Скасуйце гэты запыт**, калі вы яго не рабілі.";
+
+"If you didn't ask to reset your password, cancel this request now." = "Скасуйце гэты запыт, калі вы яго не рабілі.";
+
+"We received a password reset request for **%@**." = "Атрыманы запыт на скіданне пароля для **%@**.";
+
+"We received a password reset request for %@." = "Атрыманы запыт на скіданне пароля для %@.";
+
+"Password reset cancelled" = "Скіданне пароля скасавана";
+
+"Cancelled by the user" = "Скасавана карыстальнікам";
+
+"Authenticated in another session" = "Аўтэнтыфікацыя выканана ў іншым сеансе";
+
+"none" = "няма";
+
+"The account recovery process expired due to inaction" = "Працэс аднаўлення ўліковага запісу пратэрмінаваны па прычыне бяздзейнасці";
+
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Калі вы ніколі не адпраўлялі запыт на скіданне пароля, то не выключана, што нехта іншы мае доступ да вашага ўліковага запісу. **Змяніце пароль**";
+
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Калі вы ніколі не адпраўлялі запыт на скіданне пароля, то не выключана, што нехта іншы мае доступ да вашага ўліковага запісу. Змяніце пароль";
+
+"The account recovery process expired due to inaction" = "Працэс аднаўлення ўліковага запісу пратэрмінаваны па прычыне бяздзейнасці";
+
+"Recovery process not started" = "Працэс аднаўлення не пачаты";
+
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "У цяперашні час працэдура аднаўлення ўліковага запісу не адбываецца. Перайдзіце ў сеанс вэб-праграмы, каб аднавіць свой пароль.";
+
+"You can now reset your password" = "Цяпер вы можаце скінуць свой пароль";
+
+"Reset available until %@." = "Скіданне даступна да %@.";
+
+"Change device to continue" = "Змяніце прыладу, каб працягнуць";
+
+"To reset your password, go back to your active session on **the originating device**." = "Вярніцеся да актыўнага сеанса на **зыходнай прыладзе**, каб скінуць свой пароль.";
+
+"To reset your password, go back to your active session on the originating device." = "Вярніцеся да актыўнага сеанса на зыходнай прыладзе, каб скінуць свой пароль.";
+
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "У вас ёсць %@, каб скінуць свой пароль.\nВам неабходна будзе зрабіць гэта на прыладзе і ў браўзеры, з якіх вы рабілі запыт на яго скіданне.\nСкасуйце запыт, калі вы не рабілі яго.";

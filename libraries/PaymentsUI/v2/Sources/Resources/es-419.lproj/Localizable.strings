@@ -1,0 +1,57 @@
+"All_cycle" = "Todos los ciclos de facturación";
+
+"Available_plans_section_title" = "Actualice su plan";
+
+"Available_subscriptions_view_subtitle" = "Nuestros planes para su privacidad";
+
+"Available_subscriptions_view_title" = "Seleccione un plan";
+
+"Current_free_plan_name" = "Free";
+
+"Current_plan_exipiration" = "Su suscripción expira el";
+
+"Current_plan_renewal" = "Su suscripción se renueva automáticamente el";
+
+"Error_view_button_title" = "Reintentar";
+
+"Error_view_message" = "No pudimos cargar esta página. Actualice la página o revise su conexión a internet.";
+
+"Error_view_title" = "Ocurrió un error";
+
+"Loading_plans_message" = "Obteniendo planes disponibles..";
+
+"Monthly_cycle" = "1 mes";
+
+"No_available_plan_message" = "Su suscripción no puede gestionarse dentro de la aplicación móvil.";
+
+"No_available_plan_title" = "No se encontraron planes disponibles";
+
+"No_filtered_plan_message" = "Seleccione un ciclo de facturación diferente";
+
+"No_filtered_plan_title" = "No se encontraron planes";
+
+"Plans_footer_disclaimer" = "No puede gestionar las suscripciones dentro de la aplicación móvil";
+
+"Purchase_button_title" = "Obtener %@";
+
+"Select_plan_nav_title" = "Seleccione un plan";
+
+"Subscriptions_nav_title" = "Suscripciones";
+
+"Transaction_cancelled_by_user" = "Transacción cancelada por el usuario";
+
+"Transaction_process_error" = "Ocurrió un problema. Vuelva a intentarlo. Si el problema persiste, póngase en contacto con nuestro equipo de soporte.";
+
+"Transaction_state_payment_account_update_complete" = "Cuenta actualizada";
+
+"Transaction_state_payment_account_update_progress" = "Mejorando su cuenta";
+
+"Transaction_state_payment_confirmation_complete" = "Pago confirmado";
+
+"Transaction_state_payment_confirmation_progress" = "Confirmando su pago";
+
+"Transaction_state_view_subtitle" = "Esto no debería de tomar más de un minuto.";
+
+"Transaction_state_view_title" = "Se está verificando su pago...";
+
+"Yearly_cycle" = "12 meses";

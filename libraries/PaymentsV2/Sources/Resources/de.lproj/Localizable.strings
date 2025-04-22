@@ -1,0 +1,21 @@
+"APIs_malformed_url_request" = "Es ist ein Fehler aufgetreten, und die Anfrage konnte nicht bearbeitet werden. Wenn das Problem weiterhin besteht, wende dich bitte an den Kundensupport.";
+
+"Plans_Manager_impossible_to_get_user_uuid" = "Es war nicht möglich, die UUID des Benutzers für die Buchung abzurufen";
+
+"Plans_Manager_impossible_to_match_plan" = "Es war nicht möglich, das Proton-Abo mit einem Apple Store-Abo abzugleichen.";
+
+"Plans_Manager_impossible_to_restore_transactions" = "Es war nicht möglich, Buchungen wiederherzustellen. Bitte wende dich an den Kundensupport.";
+
+"Plans_Manager_Transaction_cancelled_by_user" = "Der Bezahlvorgang wurde vom Benutzer abgebrochen";
+
+"Plans_Manager_Transaction_unknown_error" = "Ein unerwarteter Fehler ist aufgetreten. Wenn das Problem weiterhin besteht, wende dich bitte an den Kundensupport.";
+
+"Plans_Managere_peding_transaction_received" = "Unerwartete ausstehende Buchung empfangen";
+
+"PlansComposer_unable_to_fetch_currentSub" = "Das aktuelle Abonnement konnte nicht abgerufen werden";
+
+"Remote_manager_error" = "Es ist ein Fehler aufgetreten und die Anfrage konnte nicht erfüllt werden. Wenn das Problem weiterhin besteht, wende dich bitte an den Kundensupport.";
+
+"SK_Receipt_impossible_to_get_receipt" = "Es war unmöglich, Buchungsbelegdaten von Apple abzurufen";
+
+"Transaction_Handler_plan_not_found" = "Es war nicht möglich, den Namen des Pakets zu finden, das du zu kaufen versuchst. Wenn das Problem weiterhin besteht, wenden dich bitte an den Kundendienst";

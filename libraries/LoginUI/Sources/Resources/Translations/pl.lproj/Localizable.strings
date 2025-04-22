@@ -38,7 +38,7 @@
 
 "Sign in with SSO" = "Zaloguj się przez SSO";
 
-"Sign in with a QR code" = "Zaloguj się kodem QR";
+"Sign in with a QR code" = "Zaloguj się za pomocą kodu QR";
 
 "Sign in to your organization" = "Zaloguj się do organizacji";
 
@@ -364,7 +364,7 @@
 
 "Sign in with your QR code" = "Zaloguj się za pomocą kodu QR";
 
-"Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Użyj tego urządzenia, aby zeskanować kod QR wyświetlony na urządzeniu, na którym chcesz się zalogować. Oba urządzenia pozostaną aktywne.";
+"Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Użyj tego urządzenia, aby zeskanować kod QR wyświetlony na urządzeniu, na którym chcesz się zalogować. Oba urządzenia pozostaną zalogowane.";
 
 "To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "Aby uzyskać dostęp do kodu QR, kliknij **Zaloguj się za pomocą kodu QR** na ekranie logowania.";
 

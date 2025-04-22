@@ -1,0 +1,21 @@
+"APIs_malformed_url_request" = "Bir sorun çıktığından isteğinizi yerine getiremedik. Sorun sürerse, lütfen müşteri destek ekibimiz ile görüşün.";
+
+"Plans_Manager_impossible_to_get_user_uuid" = "İşlem için kullanıcının UUID değeri alınamadı";
+
+"Plans_Manager_impossible_to_match_plan" = "Proton tarifesi bir Apple Store tarifesiyle eşleştirilemedi";
+
+"Plans_Manager_impossible_to_restore_transactions" = "İşlemler geri yüklenemedi. Lütfen müşteri destek ekibimizle görüşün";
+
+"Plans_Manager_Transaction_cancelled_by_user" = "İşlem kullanıcı tarafından iptal edildi";
+
+"Plans_Manager_Transaction_unknown_error" = "Beklenmeyen bir sorun çıktı. Sorun sürerse lütfen müşteri destek ekibimizle görüşün.";
+
+"Plans_Managere_peding_transaction_received" = "Beklenmeyen bir bekleyen işlem alındı";
+
+"PlansComposer_unable_to_fetch_currentSub" = "Geçerli abonelik alınamadı";
+
+"Remote_manager_error" = "Bir sorun çıktığından isteğinizi yerine getiremedik. Sorun sürerse, lütfen müşteri destek ekibimiz ile görüşün.";
+
+"SK_Receipt_impossible_to_get_receipt" = "İşlemin ödeme verileri Apple üzerinden alınamadı";
+
+"Transaction_Handler_plan_not_found" = "Satın almaya çalıştığınız tarifenin adı bulunamadı. Sorun sürerse lütfen müşteri destek ekibimizle görüşün.";

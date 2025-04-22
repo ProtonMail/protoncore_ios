@@ -1,22 +1,81 @@
+"Settings_Item" = "Parola sıfırlama";
 
-"Account_Recovery_Settings_Item" = "Parola sıfırlama";
+"Insecure_View_Title" = "Parola sıfırlama";
 
-"Account_Recovery_Insecure_View_Title" = "Parolanızı sıfırlayın";
+"Cancelled_View_Title" = "Parola sıfırlama";
 
-"Account_Recovery_Grace_View_Title" = "Parolanızı sıfırlamak istiyor musunuz?";
+"Grace_View_Title" = "Parola sıfırlama";
 
-"Account_Recovery_Grace_View_line1" = "Şu hesap için bir parola sıfırlama isteği aldık: ";
+"We received a password reset request for **%@**." = "**%@** için bir parola sıfırlama isteği aldık";
 
-"Account_Recovery_Insecure_View_line1" = "Şu hesabınızın parolasını şimdi değiştirebilirsiniz: ";
+"We received a password reset request for %@." = "%@ için bir parola sıfırlama isteği aldık";
 
-"Account_Recovery_Insecure_View_line2" = " Şu süreyle geçerlidir: ";
+"If you didn't ask to reset your password, **cancel this request now**." = "Parolanızı sıfırlama isteğinde bulunmadıysanız, **bu isteği hemen iptal edin**.";
 
-"Account_Recovery_Insecure_View_line3" = "Parolanızı değiştirmek için oturumunuzun açık olduğu (isteğin yapıldığı oturum) aygıta geçin.";
+"If you didn't ask to reset your password, cancel this request now." = "Parolanızı sıfırlama isteğinde bulunmadıysanız, bu isteği şimdi iptal edin.";
 
-"Account_Recovery_Grace_View_Cancel_Button_CTA" = "İsteği iptal et";
+"Password reset requested" = "Parola sıfırlama isteği yapıldı";
 
-"Account_Recovery_Grace_View_Undefined_Time_Left" = "birkaç saat";
+"Insecure_View_line1" = "Şu hesabınızın parolasını şimdi değiştirebilirsiniz: ";
 
-"Account_Recovery_Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+"You can change your password in %@." = "Parolanızı %@ içinde değiştirebilirsiniz.";
 
-"Account_Recovery_Grace_View_line3" = "Bu isteği siz yapmadıysanız ya da artık oturum açmanıza gerek yoksa lütfen parola değiştirme işlemini iptal edin ve hesabınızın güvenliğini sağlayacak adımları uygulayın.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Parolanızı sıfırlamaya çalışan kişinin gerçekten siz olduğundan emin olmak için, istekleri onaylamadan önce 72 saat bekliyoruz.";
+
+"Insecure_View_line2" = " Şu süreyle geçerlidir: ";
+
+"Insecure_View_line3" = "Parolanızı değiştirmek için oturumunuzun açık olduğu (isteğin yapıldığı oturum) aygıta geçin.";
+
+"Grace_View_Cancel_Button_CTA" = "İsteği iptal et";
+
+"Grace_View_Undefined_Time_Left" = "birkaç saat";
+
+"Settings_Item_Value_Grace" = "Bekliyor";
+
+"Settings_Item_Value_Expired" = "Geçerlilik süresi dolmuş";
+
+"Settings_Item_Value_Cancelled" = "İptal edildi";
+
+"Settings_Item_Value_Insecure" = "Kullanılabilir";
+
+"Insecure_View_Cancel_Button_CTA" = "Sıfırlamayı iptal et";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "Parolanızı sıfırlama isteğinde bulunmadıysanız, **bu isteği hemen iptal edin**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "Parolanızı sıfırlama isteğinde bulunmadıysanız, bu isteği şimdi iptal edin.";
+
+"We received a password reset request for **%@**." = "**%@** için bir parola sıfırlama isteği aldık.";
+
+"We received a password reset request for %@." = "%@ için bir parola sıfırlama isteği aldık.";
+
+"Password reset cancelled" = "Parola sıfırlama işlemi iptal edildi";
+
+"Cancelled by the user" = "Kullanıcı tarafından iptal edildi";
+
+"Authenticated in another session" = "Başka bir oturumda kimlik doğrulandı";
+
+"none" = "yok";
+
+"The account recovery process expired due to inaction" = "Bir işlem yapılmadığından hesap kurtarma işleminin geçerlilik süresi doldu";
+
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Parola sıfırlama isteğini siz yapmadıysanız, başka biri hesabınıza erişiyor olabilir. **Parolanızı hemen değiştirin**";
+
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Parola sıfırlama isteğini siz yapmadıysanız, başka biri hesabınıza erişiyor olabilir. Parolanızı hemen değiştirin";
+
+"The account recovery process expired due to inaction" = "Bir işlem yapılmadığından hesap kurtarma işleminin geçerlilik süresi doldu";
+
+"Recovery process not started" = "Kurtarma işlemi başlatılmamış";
+
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Şu anda sürmekte olan bir hesap kurtarma işlemi yok. Parolanızı kurtarmak için lütfen internet uygulamasındaki bir oturuma gidin.";
+
+"You can now reset your password" = "Artık parolanızı sıfırlayabilirsiniz";
+
+"Reset available until %@." = "%@ zamanına kadar sıfırlanabilir.";
+
+"Change device to continue" = "İlerlemek için aygıtı değiştirin";
+
+"To reset your password, go back to your active session on **the originating device**." = "Parolanızı sıfırlamak için **başlangıç aygıtındaki** etkin oturumunuza geri dönün.";
+
+"To reset your password, go back to your active session on the originating device." = "Parolanızı sıfırlamak için, başlangıç aygıtındaki etkin oturumunuza geri dönün.";
+
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Parolanızı sıfırlamak için %@ süreniz var.\nBu işlemi, parola sıfırlama isteğinde bulunduğunuz aygıt ve tarayıcıda üzerinde yapmanız gerekir.\nParolanızı sıfırlama isteğinde bulunmadıysanız, isteği şimdi iptal edin.";

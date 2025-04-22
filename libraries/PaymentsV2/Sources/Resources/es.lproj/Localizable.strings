@@ -1,0 +1,21 @@
+"APIs_malformed_url_request" = "Se ha producido un error y no hemos podido completar tu solicitud. Si el problema persiste, ponte en contacto con atención al cliente.";
+
+"Plans_Manager_impossible_to_get_user_uuid" = "Fue imposible obtener el UUID del usuario para la transacción.";
+
+"Plans_Manager_impossible_to_match_plan" = "No se ha podido relacionar el plan de Proton con un plan de Apple Store.";
+
+"Plans_Manager_impossible_to_restore_transactions" = "Ha sido imposible restaurar las transacciones. Ponte en contacto con atención al cliente.";
+
+"Plans_Manager_Transaction_cancelled_by_user" = "La transacción ha sido cancelada por el usuario.";
+
+"Plans_Manager_Transaction_unknown_error" = "Se ha producido un error inesperado. Si esto persiste, ponte en contacto con atención al cliente.";
+
+"Plans_Managere_peding_transaction_received" = "Se ha recibido una transacción pendiente inesperada.";
+
+"PlansComposer_unable_to_fetch_currentSub" = "No se puede obtener la suscripción actual.";
+
+"Remote_manager_error" = "Se ha producido un error y no hemos podido completar tu solicitud. Si el problema persiste, ponte en contacto con atención al cliente.";
+
+"SK_Receipt_impossible_to_get_receipt" = "No se pueden obtener los datos del acuse de recibo de la transacción de Apple.";
+
+"Transaction_Handler_plan_not_found" = "No se ha podido encontrar el nombre del plan que intentas comprar. Si el problema persiste, ponte en contacto con atención al cliente.";

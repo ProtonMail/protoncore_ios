@@ -1,0 +1,21 @@
+"APIs_malformed_url_request" = "Er is iets misgegaan en we konden uw verzoek niet uitvoeren. Als het probleem aanhoudt, neem dan contact op met de klantenservice.";
+
+"Plans_Manager_impossible_to_get_user_uuid" = "Het was onmogelijk om de UUID van de gebruiker op te halen voor de transactie";
+
+"Plans_Manager_impossible_to_match_plan" = "Het was onmogelijk om het Proton abonnement te koppelen aan een Apple Store abonnement";
+
+"Plans_Manager_impossible_to_restore_transactions" = "Het was onmogelijk om transacties te herstellen. Neem contact op met de klantenservice";
+
+"Plans_Manager_Transaction_cancelled_by_user" = "De transactie is geannuleerd door de gebruiker";
+
+"Plans_Manager_Transaction_unknown_error" = "Er is een onverwachte fout opgetreden, als dit aanhoudt, neem contact op met de klantenservice";
+
+"Plans_Managere_peding_transaction_received" = "Onverwachte transactie in behandeling ontvangen";
+
+"PlansComposer_unable_to_fetch_currentSub" = "Kan het huidige abonnement niet ophalen";
+
+"Remote_manager_error" = "Er is iets misgegaan en we konden uw verzoek niet uitvoeren. Als het probleem aanhoudt, neem dan contact op met de klantenservice.";
+
+"SK_Receipt_impossible_to_get_receipt" = "Onmogelijk om transactiebewijs data te krijgen van Apple";
+
+"Transaction_Handler_plan_not_found" = "Het was niet mogelijk om de naam te vinden van het abonnement dat u probeert aan te schaffen. Als het probleem aanhoudt, neem dan contact op met de klantenservice";

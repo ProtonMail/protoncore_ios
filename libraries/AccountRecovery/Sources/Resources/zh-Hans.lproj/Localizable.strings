@@ -1,22 +1,81 @@
+"Settings_Item" = "重置密码";
 
-"Account_Recovery_Settings_Item" = "重置密码";
+"Insecure_View_Title" = "重置密码";
 
-"Account_Recovery_Insecure_View_Title" = "重置你的密码";
+"Cancelled_View_Title" = "重置密码";
 
-"Account_Recovery_Grace_View_Title" = "您想要重置密码吗?";
+"Grace_View_Title" = "重置密码";
 
-"Account_Recovery_Grace_View_line1" = "我们收到了 的密码重置请求";
+"We received a password reset request for **%@**." = "我们收到了 **%@** 的密码重置请求";
 
-"Account_Recovery_Insecure_View_line1" = "您现在可以为 更改密码";
+"We received a password reset request for %@." = "我们收到了 %@ 的密码重置请求";
 
-"Account_Recovery_Insecure_View_line2" = " 在 内 ";
+"If you didn't ask to reset your password, **cancel this request now**." = "如果您没有要求重置密码，请**立即取消此申请**。";
 
-"Account_Recovery_Insecure_View_line3" = "请使用登录设备(在发起请求的会话中)更改密码。";
+"If you didn't ask to reset your password, cancel this request now." = "如果您没有要求重置密码，请立即取消此申请。";
 
-"Account_Recovery_Grace_View_Cancel_Button_CTA" = "取消请求";
+"Password reset requested" = "已请求重置密码";
 
-"Account_Recovery_Grace_View_Undefined_Time_Left" = "几个小时";
+"Insecure_View_line1" = "现在您可以修改账户密码 ";
 
-"Account_Recovery_Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+"You can change your password in %@." = "您可以在 %@ 内重置您的密码。";
 
-"Account_Recovery_Grace_View_line3" = "如果您没有提出这一请求，或者如果您不再需要登录帮助，请取消请求并采取措施保护您的账户。";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "为确保真的是您在重置密码，我们会在 72 小时后才批准申请。";
+
+"Insecure_View_line2" = " 期间自由 ";
+
+"Insecure_View_line3" = "请前往已登录的设备（在发起请求的会话中）修改您的密码。";
+
+"Grace_View_Cancel_Button_CTA" = "取消请求";
+
+"Grace_View_Undefined_Time_Left" = "几个小时";
+
+"Settings_Item_Value_Grace" = "待处理";
+
+"Settings_Item_Value_Expired" = "已过期";
+
+"Settings_Item_Value_Cancelled" = "已取消";
+
+"Settings_Item_Value_Insecure" = "可应用";
+
+"Insecure_View_Cancel_Button_CTA" = "取消重置";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "如果您没有要求重置密码，请**立即取消此申请**。";
+
+"If you didn't ask to reset your password, cancel this request now." = "如果您没有要求重置密码，请立即取消此申请。";
+
+"We received a password reset request for **%@**." = "我们收到来自 **%@** 的密码重置申请。";
+
+"We received a password reset request for %@." = "我们收到来自 %@ 的密码重置申请。";
+
+"Password reset cancelled" = "密码重置已取消";
+
+"Cancelled by the user" = "用户已取消";
+
+"Authenticated in another session" = "已在另一个会话中验证";
+
+"none" = "无";
+
+"The account recovery process expired due to inaction" = "由于未操作，账户恢复已自动取消";
+
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "如果您从未发起密码重置申请，则可能是其他人有权访问您的账户。请**立即更改您的密码**";
+
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "如果您从未发起密码重置申请，则可能是其他人有权访问您的账户。请立即更改您的密码";
+
+"The account recovery process expired due to inaction" = "由于未操作，账户恢复已自动取消";
+
+"Recovery process not started" = "账户恢复未进行";
+
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "当前没有正在进行的账户恢复。请访问网页端以恢复您的密码。";
+
+"You can now reset your password" = "您现在可以重置您的密码";
+
+"Reset available until %@." = "请在 %@ 之前进行重置。";
+
+"Change device to continue" = "更改设备以继续";
+
+"To reset your password, go back to your active session on **the originating device**." = "若要重置您的密码，请返回 **主设备** 进行操作。";
+
+"To reset your password, go back to your active session on the originating device." = "若要重置您的密码，请返回主设备进行操作。";
+
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "您有 %@ 的时间来重置密码。\n您需要在提出密码重置请求的设备和浏览器上执行此操作。\n如果您没有申请重置密码，请立即取消申请。";

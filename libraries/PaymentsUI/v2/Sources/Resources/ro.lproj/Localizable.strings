@@ -1,0 +1,57 @@
+"All_cycle" = "Toate ciclurile de facturare";
+
+"Available_plans_section_title" = "Modificați-vă planul";
+
+"Available_subscriptions_view_subtitle" = "Planurile noastre pentru confidențialitatea dvs.";
+
+"Available_subscriptions_view_title" = "Selectare plan";
+
+"Current_free_plan_name" = "Free";
+
+"Current_plan_exipiration" = "Abonamentul expiră la";
+
+"Current_plan_renewal" = "Abonamentul se reînnoiește automat la";
+
+"Error_view_button_title" = "Reîncercare";
+
+"Error_view_message" = "Nu s-a putut încărca această pagină. Împrospătați pagina sau verificați conexiunea la internet.";
+
+"Error_view_title" = "Ceva nu a funcționat corect";
+
+"Loading_plans_message" = "Se preiau planurile disponibile...";
+
+"Monthly_cycle" = "o lună";
+
+"No_available_plan_message" = "Abonamentul nu poate fi gestionat din aplicația mobilă.";
+
+"No_available_plan_title" = "Nu au fost găsite planuri disponibile";
+
+"No_filtered_plan_message" = "Selectați un alt ciclu de facturare.";
+
+"No_filtered_plan_title" = "Nu s-au găsit planuri";
+
+"Plans_footer_disclaimer" = "Nu puteți gestiona abonamentele din aplicația mobilă.";
+
+"Purchase_button_title" = "Luați %@";
+
+"Select_plan_nav_title" = "Selectare plan";
+
+"Subscriptions_nav_title" = "Abonamente";
+
+"Transaction_cancelled_by_user" = "Tranzacție anulată de utilizator";
+
+"Transaction_process_error" = "A apărut o problemă. Reîncercați. Dacă problema persistă, contactați echipa noastră de asistență.";
+
+"Transaction_state_payment_account_update_complete" = "Cont actualizat";
+
+"Transaction_state_payment_account_update_progress" = "Se actualizează contul";
+
+"Transaction_state_payment_confirmation_complete" = "Plată confirmată";
+
+"Transaction_state_payment_confirmation_progress" = "Se confirmă plata";
+
+"Transaction_state_view_subtitle" = "De obicei, nu durează mai mult de un minut.";
+
+"Transaction_state_view_title" = "Vi se verifică plata...";
+
+"Yearly_cycle" = "12 luni";

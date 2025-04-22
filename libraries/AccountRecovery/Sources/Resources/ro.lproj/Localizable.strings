@@ -1,22 +1,81 @@
+"Settings_Item" = "Resetare parolă";
 
-"Account_Recovery_Settings_Item" = "Resetare parolă";
+"Insecure_View_Title" = "Resetare parolă";
 
-"Account_Recovery_Insecure_View_Title" = "Resetați-vă parola";
+"Cancelled_View_Title" = "Resetare parolă";
 
-"Account_Recovery_Grace_View_Title" = "Doriți să vă resetați parola?";
+"Grace_View_Title" = "Resetare parolă";
 
-"Account_Recovery_Grace_View_line1" = "Am primit o cerere de resetare a parolei pentru ";
+"We received a password reset request for **%@**." = "Am primit o solicitare de resetare a parolei pentru **%@**";
 
-"Account_Recovery_Insecure_View_line1" = "Acum vă puteți reseta parola pentru contul ";
+"We received a password reset request for %@." = "Am primit o cerere de resetare a parolei pentru %@";
 
-"Account_Recovery_Insecure_View_line2" = " timp de ";
+"If you didn't ask to reset your password, **cancel this request now**." = "Dacă nu ați solicitat resetarea parolei, **anulați această solicitare acum**.";
 
-"Account_Recovery_Insecure_View_line3" = "Accesați dispozitivul conectat (în sesiunea de unde a fost inițiată solicitarea) pentru a vă schimba parola.";
+"If you didn't ask to reset your password, cancel this request now." = "Dacă nu ați solicitat resetarea parolei, anulați această solicitare acum.";
 
-"Account_Recovery_Grace_View_Cancel_Button_CTA" = "Anulare solicitare";
+"Password reset requested" = "Solicitare resetare parolă";
 
-"Account_Recovery_Grace_View_Undefined_Time_Left" = "câteva ore";
+"Insecure_View_line1" = "Acum vă puteți reseta parola pentru contul ";
 
-"Account_Recovery_Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+"You can change your password in %@." = "Vă puteți schimba parola peste %@.";
 
-"Account_Recovery_Grace_View_line3" = "Dacă nu ați făcut această solicitare sau dacă nu mai aveți nevoie de ajutor pentru autentificare, anulați-o și luați măsuri pentru a vă securiza contul.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Pentru a ne asigura că dețineți contul și încercați să vă resetați parola, așteptăm 72 de ore înainte de a aproba solicitările.";
+
+"Insecure_View_line2" = " timp de ";
+
+"Insecure_View_line3" = "Accesați dispozitivul conectat (în sesiunea de unde a fost inițiată solicitarea) pentru a vă schimba parola.";
+
+"Grace_View_Cancel_Button_CTA" = "Anulare solicitare";
+
+"Grace_View_Undefined_Time_Left" = "câteva ore";
+
+"Settings_Item_Value_Grace" = "În așteptare";
+
+"Settings_Item_Value_Expired" = "Expirată";
+
+"Settings_Item_Value_Cancelled" = "Anulată";
+
+"Settings_Item_Value_Insecure" = "Disponibilă";
+
+"Insecure_View_Cancel_Button_CTA" = "Anulare resetare";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "Dacă nu ați solicitat resetarea parolei, **anulați această solicitare acum**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "Dacă nu ați solicitat resetarea parolei, anulați această solicitare acum.";
+
+"We received a password reset request for **%@**." = "Am primit o solicitare de resetare a parolei pentru **%@**.";
+
+"We received a password reset request for %@." = "Am primit o cerere de resetare a parolei pentru %@.";
+
+"Password reset cancelled" = "Resetarea parolei a fost anulată";
+
+"Cancelled by the user" = "Anulată de către utilizator";
+
+"Authenticated in another session" = "Autentificat într-o altă sesiune";
+
+"none" = "niciuna";
+
+"The account recovery process expired due to inaction" = "Procesul de recuperare a contului a expirat din cauza lipsei de acțiune.";
+
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Dacă nu ați solicitat resetarea parolei, altcineva ar putea avea acces la acest cont. **Schimbați-vă parola acum**";
+
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Dacă nu ați solicitat resetarea parolei, altcineva ar putea avea acces la acest cont. Schimbați-vă parola acum.";
+
+"The account recovery process expired due to inaction" = "Procesul de recuperare a contului a expirat din cauza lipsei de acțiune.";
+
+"Recovery process not started" = "Procesul de recuperare nu a fost inițiat.";
+
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "În prezent, nu există nicio recuperare de cont în curs. Accesați o sesiune pe aplicația web pentru a vă recupera parola.";
+
+"You can now reset your password" = "Acum vă puteți reseta parola";
+
+"Reset available until %@." = "Resetare disponibilă până la %@.";
+
+"Change device to continue" = "Schimbați dispozitivul pentru a continua";
+
+"To reset your password, go back to your active session on **the originating device**." = "Pentru a reseta parola, întoarceți-vă la sesiunea activă de pe **dispozitivul de origine**.";
+
+"To reset your password, go back to your active session on the originating device." = "Pentru a vă reseta parola, reveniți la sesiunea activă pe dispozitivul de origine.";
+
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Aveți %@ pentru a vă reseta parola.\nVa trebui să faceți acest lucru pe dispozitiv și pe navigatorul web de pe care ați făcut cererea de resetare a parolei.\nDacă nu ați solicitat resetarea parolei, anulați solicitarea acum.";

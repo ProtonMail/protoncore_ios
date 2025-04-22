@@ -1,0 +1,21 @@
+"APIs_malformed_url_request" = "Något gick fel och vi kunde inte fullfölja din begäran. Om problemet kvarstår, kontakta kundsupport.";
+
+"Plans_Manager_impossible_to_get_user_uuid" = "Det var omöjligt att hämta användarens UUID för transaktionen";
+
+"Plans_Manager_impossible_to_match_plan" = "It was impossible to match the Proton Plan to an Apple Store plan";
+
+"Plans_Manager_impossible_to_restore_transactions" = "Det var omöjligt att återställa transaktioner, kontakta kundsupport";
+
+"Plans_Manager_Transaction_cancelled_by_user" = "Transaktionen har avbrutits av användaren";
+
+"Plans_Manager_Transaction_unknown_error" = "Ett oväntat fel uppstod. Om detta kvarstår, kontakta kundsupport";
+
+"Plans_Managere_peding_transaction_received" = "Oväntad väntande transaktion mottagen";
+
+"PlansComposer_unable_to_fetch_currentSub" = "Kan inte hämta nuvarande prenumerationen";
+
+"Remote_manager_error" = "Något gick fel och vi kunde inte fullfölja din begäran. Om problemet kvarstår, kontakta kundsupport.";
+
+"SK_Receipt_impossible_to_get_receipt" = "Impossible to get transaction receipt data from Apple";
+
+"Transaction_Handler_plan_not_found" = "Det var omöjligt att hitta namnet på paketet du försöker köpa. Om problemet kvarstår, kontakta kundsupport";

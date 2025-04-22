@@ -1,0 +1,57 @@
+"All_cycle" = "所有计费周期";
+
+"Available_plans_section_title" = "升级套餐";
+
+"Available_subscriptions_view_subtitle" = "我们的隐私套餐";
+
+"Available_subscriptions_view_title" = "选择套餐";
+
+"Current_free_plan_name" = "Free";
+
+"Current_plan_exipiration" = "您的订阅将于以下日期到期";
+
+"Current_plan_renewal" = "您的订阅将于以下日期自动续订";
+
+"Error_view_button_title" = "重试";
+
+"Error_view_message" = "我们无法加载此页面，请刷新页面或检查网络连接。";
+
+"Error_view_title" = "出错了";
+
+"Loading_plans_message" = "正在查询可用套餐...";
+
+"Monthly_cycle" = "1 个月";
+
+"No_available_plan_message" = "您的订阅无法在移动应用程序内进行管理。";
+
+"No_available_plan_title" = "未找到可用套餐";
+
+"No_filtered_plan_message" = "请选择其他计费周期";
+
+"No_filtered_plan_title" = "未找到任何套餐";
+
+"Plans_footer_disclaimer" = "无法在移动应用程序内管理订阅";
+
+"Purchase_button_title" = "开通 %@";
+
+"Select_plan_nav_title" = "选择套餐";
+
+"Subscriptions_nav_title" = "订阅";
+
+"Transaction_cancelled_by_user" = "用户取消交易";
+
+"Transaction_process_error" = "出错了，请重试。如果问题仍然存在，请联系我们的支持团队。";
+
+"Transaction_state_payment_account_update_complete" = "账户已升级";
+
+"Transaction_state_payment_account_update_progress" = "正在升级您的账户";
+
+"Transaction_state_payment_confirmation_complete" = "付款已确认";
+
+"Transaction_state_payment_confirmation_progress" = "请确认您的付款";
+
+"Transaction_state_view_subtitle" = "通常只需不到一分钟。";
+
+"Transaction_state_view_title" = "正在验证您的付款...";
+
+"Yearly_cycle" = "12 个月";

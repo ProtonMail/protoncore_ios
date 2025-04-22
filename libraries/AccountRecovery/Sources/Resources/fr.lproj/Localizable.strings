@@ -1,22 +1,81 @@
+"Settings_Item" = "Réinitialisation du mot de passe";
 
-"Account_Recovery_Settings_Item" = "Réinitialisation du mot de passe";
+"Insecure_View_Title" = "Réinitialisation du mot de passe";
 
-"Account_Recovery_Insecure_View_Title" = "Réinitialisez votre mot de passe";
+"Cancelled_View_Title" = "Réinitialisation du mot de passe";
 
-"Account_Recovery_Grace_View_Title" = "Voulez-vous réinitialiser votre mot de passe ?";
+"Grace_View_Title" = "Réinitialisation du mot de passe";
 
-"Account_Recovery_Grace_View_line1" = "Nous avons reçu une demande de réinitialisation de votre mot de passe pour ";
+"We received a password reset request for **%@**." = "Nous avons reçu une demande de réinitialisation du mot de passe pour **%@**.";
 
-"Account_Recovery_Insecure_View_line1" = "Vous pouvez maintenant modifier librement votre mot de passe pour le compte ";
+"We received a password reset request for %@." = "Nous avons reçu une demande de réinitialisation du mot de passe pour %@.";
 
-"Account_Recovery_Insecure_View_line2" = " pendant ";
+"If you didn't ask to reset your password, **cancel this request now**." = "Si vous n'avez pas demandé à réinitialiser votre mot de passe, **annulez cette demande maintenant**.";
 
-"Account_Recovery_Insecure_View_line3" = "Rendez-vous sur l'appareil avec lequel vous vous êtes connecté (dans la session où la demande a été faite) pour changer votre mot de passe.";
+"If you didn't ask to reset your password, cancel this request now." = "Si vous n'avez pas demandé à réinitialiser votre mot de passe, veuillez annuler cette demande.";
 
-"Account_Recovery_Grace_View_Cancel_Button_CTA" = "Annuler la demande";
+"Password reset requested" = "La réinitialisation du mot de passe est nécessaire.";
 
-"Account_Recovery_Grace_View_Undefined_Time_Left" = "quelques heures.";
+"Insecure_View_line1" = "Vous pouvez maintenant modifier librement votre mot de passe pour le compte ";
 
-"Account_Recovery_Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+"You can change your password in %@." = "Vous pouvez modifier votre mot de passe dans %@.";
 
-"Account_Recovery_Grace_View_line3" = "Si vous n'êtes pas à l'origine de cette demande ou si vous n'avez plus besoin d'aide pour vous connecter, veuillez l'annuler et faire le nécessaire pour sécuriser votre compte.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Pour nous assurer que c'est bien vous qui essayez de réinitialiser votre mot de passe, nous attendons 72 heures avant d'approuver les demandes.";
+
+"Insecure_View_line2" = " pendant ";
+
+"Insecure_View_line3" = "Rendez-vous sur l'appareil avec lequel vous vous êtes connecté (dans la session où la demande a été faite) pour changer votre mot de passe.";
+
+"Grace_View_Cancel_Button_CTA" = "Annuler la demande";
+
+"Grace_View_Undefined_Time_Left" = "quelques heures";
+
+"Settings_Item_Value_Grace" = "En attente";
+
+"Settings_Item_Value_Expired" = "Expiré";
+
+"Settings_Item_Value_Cancelled" = "Annulé";
+
+"Settings_Item_Value_Insecure" = "Disponible";
+
+"Insecure_View_Cancel_Button_CTA" = "Annuler la réinitialisation";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "Si vous n'avez pas demandé à réinitialiser votre mot de passe, **annulez cette demande maintenant**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "Si vous n'avez pas demandé à réinitialiser votre mot de passe, veuillez annuler cette demande.";
+
+"We received a password reset request for **%@**." = "Nous avons reçu une demande de réinitialisation du mot de passe pour **%@**.";
+
+"We received a password reset request for %@." = "Nous avons reçu une demande de réinitialisation du mot de passe pour %@.";
+
+"Password reset cancelled" = "La réinitialisation du mot de passe a été annulée.";
+
+"Cancelled by the user" = "Annulé par l’utilisateur";
+
+"Authenticated in another session" = "Authentifié dans une autre session";
+
+"none" = "aucun";
+
+"The account recovery process expired due to inaction" = "La procédure de récupération du compte a expiré faute d’activité.";
+
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Si vous n'avez jamais fait de demande de réinitialisation de mot de passe, quelqu'un d'autre pourrait avoir accès à votre compte. **Changez votre mot de passe maintenant**";
+
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Si vous n’avez jamais fait de demande de réinitialisation de mot de passe, quelqu’un d’autre pourrait accéder à votre compte. Modifiez votre mot de passe maintenant.";
+
+"The account recovery process expired due to inaction" = "La procédure de récupération du compte a expiré faute d’activité.";
+
+"Recovery process not started" = "Le processus de récupération n'a pas démarré.";
+
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Il n'y a actuellement aucune récupération de compte en cours. Veuillez vous rendre sur une session sur l'application web pour récupérer votre mot de passe.";
+
+"You can now reset your password" = "Vous pouvez maintenant réinitialiser votre mot de passe.";
+
+"Reset available until %@." = "Réinitialisation disponible jusqu’au %@.";
+
+"Change device to continue" = "Changez d’appareil pour continuer";
+
+"To reset your password, go back to your active session on **the originating device**." = "Pour réinitialiser votre mot de passe, revenez à votre session active sur **l’appareil d’origine**.";
+
+"To reset your password, go back to your active session on the originating device." = "Pour réinitialiser votre mot de passe, retournez à votre session active sur l’appareil d’origine.";
+
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Vous avez %@ pour réinitialiser votre mot de passe.\nVous devrez le faire sur l'appareil et le navigateur à partir duquel vous avez fait votre demande de réinitialisation de mot de passe.\nSi vous n'avez pas demandé la réinitialisation de votre mot de passe, annulez la demande immédiatement.";

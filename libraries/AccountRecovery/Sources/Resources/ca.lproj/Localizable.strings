@@ -1,22 +1,81 @@
+"Settings_Item" = "Restabliment de contrasenya";
 
-"Account_Recovery_Settings_Item" = "Restabliment de contrasenya";
+"Insecure_View_Title" = "Restabliment de la contrasenya";
 
-"Account_Recovery_Insecure_View_Title" = "Restableix la contrasenya";
+"Cancelled_View_Title" = "Restabliment de la contrasenya";
 
-"Account_Recovery_Grace_View_Title" = "Do you want to reset your password?";
+"Grace_View_Title" = "Restabliment de la contrasenya";
 
-"Account_Recovery_Grace_View_line1" = "We received a request to reset your password for ";
+"We received a password reset request for **%@**." = "Hem rebut una sol·licitud de restabliment de la contrasenya per **%@**";
 
-"Account_Recovery_Insecure_View_line1" = "You can now change your password for the account ";
+"We received a password reset request for %@." = "Hem rebut una sol·licitud de restabliment de la contrasenya per %@";
 
-"Account_Recovery_Insecure_View_line2" = " freely during ";
+"If you didn't ask to reset your password, **cancel this request now**." = "Si no has sol·licitat restablir la contrasenya, **cancel·la aquesta petició ara**.";
 
-"Account_Recovery_Insecure_View_line3" = "Please go the signed-in device (in the session where the request was initiated) to change your password.";
+"If you didn't ask to reset your password, cancel this request now." = "Si no has sol·licitat restablir la contrasenya, cancel·la aquesta petició ara.";
 
-"Account_Recovery_Grace_View_Cancel_Button_CTA" = "Cancel·la la petició";
+"Password reset requested" = "Restabliment de la contrasenya sol·licitat";
 
-"Account_Recovery_Grace_View_Undefined_Time_Left" = "a few hours";
+"Insecure_View_line1" = "Ara podeu canviar la contrasenya del compte ";
 
-"Account_Recovery_Grace_View_line2" = ". To keep your account safe, we want to make sure it’s really you trying to reset your password. You’ll be able to reset your password in ";
+"You can change your password in %@." = "Pots canviar la teva contrasenya en %@.";
 
-"Account_Recovery_Grace_View_line3" = "If you didn't make this request, or if you no longer need help signing in, please cancel it and take steps to secure your account.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Per assegurar-nos que ets realment tu qui intenta restablir la contrasenya, esperarem 72 hores abans d'aprovar les sol·licituds.";
+
+"Insecure_View_line2" = " lliurement durant ";
+
+"Insecure_View_line3" = "Aneu al dispositiu en què heu iniciat la sessió (en la qual es va iniciar la sol·licitud) per canviar la vostra contrasenya.";
+
+"Grace_View_Cancel_Button_CTA" = "Cancel·la la sol·licitud";
+
+"Grace_View_Undefined_Time_Left" = "unes poques hores";
+
+"Settings_Item_Value_Grace" = "Pendent";
+
+"Settings_Item_Value_Expired" = "Caducat";
+
+"Settings_Item_Value_Cancelled" = "Cancel·lat";
+
+"Settings_Item_Value_Insecure" = "Disponible";
+
+"Insecure_View_Cancel_Button_CTA" = "Cancel·la la sol·licitud";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "Si no has sol·licitat restablir la contrasenya, **cancel·la aquesta petició ara**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "Si no has sol·licitat restablir la contrasenya, cancel·la aquesta petició ara.";
+
+"We received a password reset request for **%@**." = "Hem rebut una sol·licitud de restabliment de la contrasenya per **%@**.";
+
+"We received a password reset request for %@." = "Hem rebut una sol·licitud de restabliment de la contrasenya per %@.";
+
+"Password reset cancelled" = "Sol·licitud de restabliment de la contrasenya cancel·lat";
+
+"Cancelled by the user" = "Cancel·lat per l'usuari";
+
+"Authenticated in another session" = "Autenticat en una altra sessió";
+
+"none" = "cap";
+
+"The account recovery process expired due to inaction" = "El procés de recuperació del compte ha caducat a causa d'inacció";
+
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Si mai has sol·licitat un restabliment de la contrasenya, algú altre podria tenir accés al teu compte. **Canvia la teva contrasenya ara**";
+
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Si mai has sol·licitat un restabliment de la contrasenya, algú altre podria tenir accés al teu compte. Canvia la teva contrasenya ara";
+
+"The account recovery process expired due to inaction" = "El procés de recuperació del compte ha caducat a causa d'inacció";
+
+"Recovery process not started" = "Procés de recuperació no iniciat";
+
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Actualment no hi ha cap procés de recuperació de compte. Si us plau, aneu a una sessió de l'aplicació web per recuperar la contrasenya.";
+
+"You can now reset your password" = "Ara pots restablir la teva contrasenya";
+
+"Reset available until %@." = "Restabliment disponible fins %@.";
+
+"Change device to continue" = "Canvia de dispositiu per continuar";
+
+"To reset your password, go back to your active session on **the originating device**." = "Per restablir la contrasenya, torneu a la sessió activa del **dispositiu d'origen**.";
+
+"To reset your password, go back to your active session on the originating device." = "Per restablir la contrasenya, torneu a la sessió activa del dispositiu d'origen.";
+
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Tens %@ per restablir la contrasenya.\nNecesitaràs fer-ho al dispositiu i al navegador des d'on has fet la sol·licitud de restabliment de la contrasenya.\nSi no has sol·licitat restablir la contrasenya, cancel·la aquesta petició ara.";

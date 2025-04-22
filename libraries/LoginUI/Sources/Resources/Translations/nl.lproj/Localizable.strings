@@ -388,19 +388,19 @@
 
 "Code not recognized. Try again." = "Code niet herkend. Probeer het opnieuw.";
 
-"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Tip: Scan nooit een QR-code van een website of persoon die je niet vertrouwt. Proton zal nooit vragen om een QR-code te scannen die niet van het domein-account proton.me komt.";
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Tip: Scan nooit een QR-code van een website of persoon die u niet vertrouwt. Proton zal nooit vragen om een QR-code te scannen die niet van het domein-account proton.me komt.";
 
 "Camera Access Denied." = "Toegang tot de camera geweigerd.";
 
 "The permission to use the Camera is off. Please enable it from the Settings." = "Toestemming om de Camera te gebruiken is uitgeschakeld. Schakel deze in via Instellingen.";
 
-"Go to Settings" = "Naar instellingen gaan";
+"Go to Settings" = "Ga naar instellingen";
 
 "to Proton %@" = "naar Proton %@";
 
 "Something went wrong" = "Er is iets fout gegaan";
 
-"We couldn't sign you in. Please scan a new QR code to try again." = "We kunnen je niet inloggen. Scan een nieuwe QR-code om het opnieuw te proberen.";
+"We couldn't sign you in. Please scan a new QR code to try again." = "We kunnen u niet inloggen. Scan een nieuwe QR-code om het opnieuw te proberen.";
 
 "New QR code" = "Nieuwe QR-code";
 
