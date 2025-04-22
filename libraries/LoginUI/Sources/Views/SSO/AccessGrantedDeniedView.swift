@@ -41,7 +41,7 @@ public struct AccessGrantedDeniedView: View {
                 headerView
 
                 PCButton(
-                    style: .constant(.init(mode: .solid)),
+                    style: .constant(.init(mode: .solid())),
                     content: .constant(.init(
                         title: viewModel.primaryButtonTitle,
                         action: viewModel.primaryActionButtonTapped

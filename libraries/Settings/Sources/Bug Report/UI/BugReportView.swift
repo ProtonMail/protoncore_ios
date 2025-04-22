@@ -56,7 +56,7 @@ public struct BugReportView: View {
                     descriptionSection
 
                     PCButton(
-                        style: .constant(.init(mode: .solid)),
+                        style: .constant(.init(mode: .solid())),
                         content: .constant(.init(
                             title: BugReportTranslations.sendReport.l10n,
                             isEnabled: viewModel.sendButtonIsEnabled,

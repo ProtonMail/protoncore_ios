@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "certified-no-logs.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

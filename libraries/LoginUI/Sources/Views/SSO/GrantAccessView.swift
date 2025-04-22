@@ -54,7 +54,7 @@ public struct GrantAccessView: View {
 
                 VStack {
                     PCButton(
-                        style: .constant(.init(mode: .solid)),
+                        style: .constant(.init(mode: .solid())),
                         content: .constant(.init(
                             title: LUITranslation.yes_it_was_me.l10n,
                             isEnabled: viewModel.isConfirmationCodeFilled,

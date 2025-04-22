@@ -58,7 +58,7 @@ public struct SetBackupPasswordView: View {
                 )
 
                 PCButton(
-                    style: .constant(.init(mode: .solid)),
+                    style: .constant(.init(mode: .solid())),
                     content: .constant(.init(
                         title: LUITranslation.continue_core_button.l10n,
                         isAnimating: viewModel.viewState == .loading,

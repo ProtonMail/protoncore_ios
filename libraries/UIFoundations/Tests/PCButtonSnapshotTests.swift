@@ -35,7 +35,7 @@ final class PCButtonSnapshotTests: SnapshotTestCase {
 
     func test_PCButton_solid_idle() {
         let view = PCButton(
-            style: .constant(.init(mode: .solid)),
+            style: .constant(.init(mode: .solid())),
             content: .constant(.init(title: "Default Button", action: {}))
         )
 
@@ -44,7 +44,7 @@ final class PCButtonSnapshotTests: SnapshotTestCase {
 
     func test_PCButton_solid_animating() {
         let view = PCButton(
-            style: .constant(.init(mode: .solid)),
+            style: .constant(.init(mode: .solid())),
             content: .constant(.init(title: "Default Button", isAnimating: true, action: {}))
         )
 
@@ -53,7 +53,7 @@ final class PCButtonSnapshotTests: SnapshotTestCase {
 
     func test_PCButton_solid_disabled() {
         let view = PCButton(
-            style: .constant(.init(mode: .solid)),
+            style: .constant(.init(mode: .solid())),
             content: .constant(.init(title: "Default Button", isEnabled: false, action: {}))
         )
 

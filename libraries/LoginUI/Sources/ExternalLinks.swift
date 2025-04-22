@@ -93,6 +93,10 @@ final class ExternalLinks {
     var learnMoreAboutExternalAccountsNotSupported: URL {
         URL(string: "https://proton.me/support/external-accounts")!
     }
+
+    var certifiedNoLogsVPN: URL {
+        URL(string: "https://protonvpn.com/blog/no-logs-audit?ref=ios")!
+    }
 }
 
 #endif

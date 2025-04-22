@@ -116,7 +116,7 @@ public struct ScanQRCodeInstructionsView: View {
     }
 
     var scanButton: some View {
-        PCButton(style: .constant(.init(mode: .solid)),
+        PCButton(style: .constant(.init(mode: .solid())),
                  content: .constant(.init(title: LUITranslation.scan_qr_code_title.l10n,
                                           action: viewModel.handleScanQRButtonPress)))
         .frame(height: Constants.scanButtonHeight)

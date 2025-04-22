@@ -30,8 +30,8 @@ struct PCButtonModeStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         switch mode {
-        case .solid:
-            PCButtonSolidStyle(brand: brand, isEnabled: isEnabled)
+        case .solid(let style):
+            PCButtonSolidStyle(style: style, brand: brand, isEnabled: isEnabled)
                 .makeBody(configuration: configuration)
         case .text:
             PCButtonTextStyle(brand: brand, isEnabled: isEnabled)
