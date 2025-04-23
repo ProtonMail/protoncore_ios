@@ -79,9 +79,14 @@ struct SignInWithQRCodeRequirePassFailedView: View {
     }
 
     var backButton: some View {
-        PCButton(style: .constant(.init(mode: .solid)), content: .constant(.init(title: LUITranslation.back_to_signin_button.l10n, action: {
-            handleBackPress()
-        })))
+        PCButton(
+            style: .constant(.init(mode: .solid())),
+            content: .constant(.init(
+                title: LUITranslation.back_to_signin_button.l10n,
+                action: {
+                    handleBackPress()
+                }
+            )))
         .frame(height: Constants.buttonHeight)
         .padding(.horizontal, Constants.leadingTrailingPadding)
         .padding(.top, Constants.buttonTopPadding)
