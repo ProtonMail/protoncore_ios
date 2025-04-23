@@ -31,6 +31,7 @@ public class APIErrorCode {
     public static let HTTP503 = 503
     public static let HTTP504 = 504
     public static let HTTP404 = 404
+    public static let HTTP422 = 422
 
     public static let badParameter = 1
     public static let badPath = 2

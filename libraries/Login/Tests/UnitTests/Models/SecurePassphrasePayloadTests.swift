@@ -24,15 +24,18 @@ import XCTest
 
 final class SecurePassphrasePayloadTests: XCTestCase {
     func testEncodeAndDecode() throws {
-        let passphrase = "testPassphrase"
-        let encryptionKey = Data(Array(repeating: UInt8.random(in: 0..<100), count: 32))
+        let passphrases: [String?] = ["testPassphrase", "", nil]
 
-        let payload1 = try SecurePassphrasePayload(passphrase: passphrase, encryptionKey: encryptionKey)
+        for passphrase in passphrases {
+            let encryptionKey = Data(Array(repeating: UInt8.random(in: 0..<100), count: 32))
 
-        XCTAssertEqual(payload1.passphrase, passphrase)
+            let payload1 = try SecurePassphrasePayload(passphrase: passphrase, encryptionKey: encryptionKey)
 
-        let payload2 = try SecurePassphrasePayload(encryptedPayload: payload1.encryptedPayload, encryptionKey: encryptionKey)
+            XCTAssertEqual(payload1.passphrase, passphrase ?? "")
 
-        XCTAssertEqual(payload2.passphrase, payload1.passphrase)
+            let payload2 = try SecurePassphrasePayload(encryptedPayload: payload1.encryptedPayload, encryptionKey: encryptionKey)
+
+            XCTAssertEqual(payload2.passphrase, payload1.passphrase)
+        }
     }
 }

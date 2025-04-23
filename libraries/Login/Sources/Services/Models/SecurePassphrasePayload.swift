@@ -42,12 +42,15 @@ public struct SecurePassphrasePayload {
     ///    keyPassword: "passphrase_not_encrypted"
     /// }
     /// And then encrypt the json using ASM/GCM/NoPadding 16 iv bytes 16 tag bytes
-    public init(passphrase: String, encryptionKey: Data) throws {
-        self.passphrase = passphrase
-        let json: [String: String] = [
-            "type": "default",
-            "keyPassword": "\(passphrase)"
+    public init(passphrase: String?, encryptionKey: Data) throws {
+        self.passphrase = passphrase ?? ""
+        var json: [String: String] = [
+            "type": "default"
         ]
+
+        if let passphrase = passphrase {
+            json["keyPassword"] = passphrase
+        }
 
         let jsonData = try JSONSerialization.data(withJSONObject: json)
         guard let jsonString = String(data: jsonData, encoding: .utf8) else {
@@ -67,10 +70,10 @@ public struct SecurePassphrasePayload {
             throw Errors.couldNotExtractPassphraseFromEncryptedPayload
         }
         let json = try JSONSerialization.jsonObject(with: jsonData) as? [String: String]
-        guard let passphrase = json?["keyPassword"] else {
-            ObservabilityEnv.report(.qrLoginDecodeQRCode(status: .failedToExtractPassphraseFromPayload))
-            throw Errors.couldNotExtractPassphraseFromEncryptedPayload
+        if let passphrase = json?["keyPassword"] {
+            self.passphrase = passphrase
+        } else {
+            self.passphrase = ""
         }
-        self.passphrase = passphrase
     }
 }
