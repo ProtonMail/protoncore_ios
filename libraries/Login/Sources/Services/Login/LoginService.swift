@@ -293,7 +293,7 @@ public final class LoginService {
         )
 
         var forkedCredential = credential
-        forkedCredential.userName = user.name ?? ""
+        forkedCredential.userName = user.name ?? user.email ?? ""
         forkedCredential.userID = user.ID
 
         return .finished(UserData(
