@@ -32,6 +32,17 @@ import ProtonCoreServices
 import ProtonCoreAPIClient
 
 struct LoginStub: Login {
+    func loginWithCredentialLessUser() async throws -> LoginStatus {
+        return .finished(
+            UserData.init(
+                credential: .none,
+                user: User.mock,
+                salts: [],
+                passphrases: [:],
+                addresses: [],
+                scopes: []))
+    }
+
     func loginWithQRCode(credential: ProtonCoreNetworking.Credential) async throws -> ProtonCoreLogin.LoginStatus {
         return .finished(
             UserData.init(

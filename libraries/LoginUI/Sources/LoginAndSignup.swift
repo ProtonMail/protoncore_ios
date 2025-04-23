@@ -34,6 +34,7 @@ public enum ScreenVariant<SpecificScreenData, CustomScreenData> {
     case calendar(SpecificScreenData)
     case drive(SpecificScreenData)
     case vpn(SpecificScreenData)
+    case vpnV2(SpecificScreenData) // Screen variant containing Guest mode
     case pass(SpecificScreenData)
     case wallet(SpecificScreenData)
     case custom(CustomScreenData)

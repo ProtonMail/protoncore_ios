@@ -205,7 +205,7 @@ final class WelcomeView: UIView {
         case .mail: ColorProvider.brand = .proton
         case .calendar: ColorProvider.brand = .proton
         case .drive: ColorProvider.brand = .proton
-        case .vpn: ColorProvider.brand = .vpn
+        case .vpn, .vpnV2: ColorProvider.brand = .vpn
         case .pass: ColorProvider.brand = .pass
         case .wallet: ColorProvider.brand = .wallet
         case .custom(let data): ColorProvider.brand = data.brand
@@ -220,6 +220,7 @@ final class WelcomeView: UIView {
         case .calendar: return IconProvider.calendarTopImage
         case .drive: return IconProvider.driveTopImage
         case .vpn: return IconProvider.vpnTopImage
+        case .vpnV2: return IconProvider.vpnWelcomeImageV2
         case .pass: return IconProvider.passTopImage
         case .wallet: return IconProvider.walletTopImage
         case .custom: return IconProvider.mailTopImage
@@ -232,7 +233,7 @@ final class WelcomeView: UIView {
         case .mail: wordmark = IconProvider.mailWordmarkNoBackground
         case .calendar: wordmark = IconProvider.calendarWordmarkNoBackground
         case .drive: wordmark = IconProvider.driveWordmarkNoBackground
-        case .vpn: wordmark = IconProvider.vpnWordmarkNoBackground
+        case .vpn, .vpnV2: wordmark = IconProvider.vpnWordmarkNoBackground
         case .pass: wordmark = IconProvider.passWordmarkNoBackground
         case .wallet: wordmark = IconProvider.walletWordmarkNoBackground
         case .custom(let data): wordmark = data.wordmarkWithLogo
@@ -246,7 +247,8 @@ final class WelcomeView: UIView {
         switch variant {
         case .mail(let texts), .calendar(let texts),
              .drive(let texts), .vpn(let texts),
-             .pass(let texts), .wallet(let texts):
+             .pass(let texts), .wallet(let texts),
+             .vpnV2(let texts):
             text = texts.body
         case .custom(let data):
             text = data.body

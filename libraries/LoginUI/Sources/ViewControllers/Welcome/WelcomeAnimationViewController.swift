@@ -70,7 +70,7 @@ public final class WelcomeAnimationViewController: UIViewController {
         case .calendar: return "welcome_animation_calendar"
         case .drive: return "welcome_animation_drive"
         // no animation for pass and wallet, but it's ok because we don't use the animations atm
-        case .pass, .wallet: return ""
+        case .pass, .wallet, .vpnV2: return ""
         }
     }
 }

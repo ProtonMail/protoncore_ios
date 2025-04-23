@@ -94,8 +94,22 @@ final class LoginCoordinator {
         return showInitialViewController(.unmanaged, initialViewController: welcome, navigationBarHidden: true)
     }
 
-    func createWelcomeViewController(variant: WelcomeScreenVariant, username: String? = nil) -> WelcomeViewController {
-        let welcome = WelcomeViewController(variant: variant, delegate: self, username: username, signupAvailable: isSignupAvailable)
+    func createWelcomeViewController(variant: WelcomeScreenVariant, username: String? = nil) -> UIViewController {
+        let welcome: UIViewController
+        switch variant {
+        case .vpnV2:
+            welcome = WelcomeVPNGuestViewController(dependencies: .init(
+                login: container.login,
+                delegate: self
+            ))
+        case .calendar, .mail, .drive, .wallet, .custom, .pass, .vpn:
+            welcome = WelcomeViewController(
+                variant: variant,
+                delegate: self,
+                username: username,
+                signupAvailable: isSignupAvailable
+            )
+        }
         welcome.overrideUserInterfaceStyle = customization.inAppTheme().userInterfaceStyle
         return welcome
     }
