@@ -305,7 +305,7 @@ private struct CameraNotAllowedView: View {
 
     var button: some View {
         ZStack(alignment: .center) {
-            PCButton(style: .constant(.init(mode: .solid)), content: .constant(.init(title: LUITranslation.settings_title.l10n, action: {
+            PCButton(style: .constant(.init(mode: .solid())), content: .constant(.init(title: LUITranslation.settings_title.l10n, action: {
                 buttonPressAction()
             })))
 
@@ -368,7 +368,7 @@ private struct CameraNotAllowedView: View {
     var button: some View {
         VStack(alignment: .center, spacing: Constants.noSpacing) {
             Spacer()
-            PCButton(style: .constant(.init(mode: .solid)),
+            PCButton(style: .constant(.init(mode: .solid())),
                      content: .constant(.init(title: buttonTitle, action: buttonPressAction)))
             .frame(height: Constants.buttonVerticalHeight)
             .padding(.horizontal, Constants.horizontalPadding)

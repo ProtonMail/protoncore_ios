@@ -52,7 +52,7 @@ public struct Fido2View: View {
             .frame(maxWidth: .infinity, alignment: .center)
 
             PCButton(
-                style: .constant(.init(mode: .solid)),
+                style: .constant(.init(mode: .solid())),
                 content: .constant(.init(
                     title: "Authenticate",
                     isEnabled: !viewModel.isLoading,

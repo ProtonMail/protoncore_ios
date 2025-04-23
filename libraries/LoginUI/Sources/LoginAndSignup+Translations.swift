@@ -232,6 +232,12 @@ public enum LUITranslation: TranslationsExposing {
     case settings_title
     case qr_code_load_error_description
     case retry
+    case login_vpn_guest_screen_title
+    case login_vpn_guest_screen_description
+    case login_vpn_guest_certified_no_logs
+    case continue_as_guest
+    case login_vpn_guest_tc_description
+    case login_vpn_guest_tc_link
 
     public var l10n: String {
         switch self {
@@ -646,6 +652,18 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "We couldn't load the QR code", comment: "We couldn't load the QR code")
         case .retry:
             return localized(key: "Retry", comment: "Retry")
+        case .login_vpn_guest_screen_title:
+            return localized(key: "Welcome to Proton VPN", comment: "VPN welcome screen title for guest mode")
+        case .login_vpn_guest_screen_description:
+            return localized(key: "Browse privately, access blocked content, and enjoy digital freedom.", comment: "VPN welcome screen description for guest mode")
+        case .login_vpn_guest_certified_no_logs:
+            return localized(key: "Certified no-logs VPN", comment: "Certified no-logs button")
+        case .continue_as_guest:
+            return localized(key: "Continue as guest", comment: "Action button")
+        case .login_vpn_guest_tc_description:
+            return localized(key: "By using this app you accept our", comment: "Terms and conditions description")
+        case .login_vpn_guest_tc_link:
+            return localized(key: "Terms and Conditions.", comment: "Terms and conditions link")
         }
     }
 }

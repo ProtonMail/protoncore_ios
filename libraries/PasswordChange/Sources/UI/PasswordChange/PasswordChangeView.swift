@@ -82,7 +82,7 @@ public struct PasswordChangeView: View {
 
                 VStack {
                     PCButton(
-                        style: .constant(.init(mode: .solid)),
+                        style: .constant(.init(mode: .solid())),
                         content: .constant(.init(
                             title: PCTranslation.savePassword.l10n,
                             isEnabled: saveButtonIsEnabled,

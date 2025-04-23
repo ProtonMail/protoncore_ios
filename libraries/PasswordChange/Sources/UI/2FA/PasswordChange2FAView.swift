@@ -47,7 +47,7 @@ struct PasswordChange2FAView: View {
                 )
 
                 PCButton(
-                    style: .constant(.init(mode: .solid)),
+                    style: .constant(.init(mode: .solid())),
                     content: .constant(.init(
                         title: PCTranslation.authenticate.l10n,
                         isEnabled: authenticateButtonIsEnabled,

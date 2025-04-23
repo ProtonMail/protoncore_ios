@@ -58,22 +58,24 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
     override private init() { }
 
     private let srpBuilder = SRPBuilder()
-    
+
     /// login as a "credential-less" user
     public func authenticateWithCredentialLessSession() async -> Result<Status, AuthErrors> {
         let credentialResult = await apiService.fetchCredentialForCredentialLessSession()
-        
+
         guard let credential = credentialResult.value else {
+            // TODO: Handle ACCOUNT_CREDENTIALLESS_INVALID(10200)
             return .failure(
-                .networkingError(
-                    .init(httpCode: nil,
-                          responseCode: nil,
-                          userFacingMessage: nil,
-                          underlyingError: credentialResult.error ?? AuthErrors.emptyAuthResponse.underlyingError)))
+                .networkingError(.init(
+                    httpCode: nil,
+                    responseCode: nil,
+                    userFacingMessage: nil,
+                    underlyingError: credentialResult.error ?? AuthErrors.emptyAuthResponse.underlyingError
+                )))
         }
-        
+
         self.apiService.setSessionUID(uid: credential.UID)
-        
+
         return .success(.credentialLess(credential))
     }
 

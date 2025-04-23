@@ -290,6 +290,29 @@ extension LoginService: Login {
         }
     }
 
+    public func loginWithCredentialLessUser() async throws -> LoginStatus {
+        let result = await authManager.authenticateWithCredentialLessSession()
+        switch result {
+        case .success(let status):
+            switch status {
+            case .credentialLess(let credential):
+                // TODO: Fix user
+                return .finished(.init(
+                    credential: AuthCredential(credential),
+                    user: .mock,
+                    salts: [],
+                    passphrases: [:],
+                    addresses: [],
+                    scopes: credential.scopes
+                ))
+            case .newCredential, .askAny2FA, .askTOTP, .askFIDO2, .updatedCredential, .ssoChallenge:
+                throw LoginError.invalidState
+            }
+        case .failure(let error):
+            throw LoginError.invalidState
+        }
+    }
+
     public func finishLoginFlow(mailboxPassword: String, passwordMode: PasswordMode, completion: @escaping (Result<LoginStatus, LoginError>) -> Void) {
         authManager.getUserInfo { result in
             switch result {

@@ -28,7 +28,7 @@ public struct PCButtonStyle {
     public var brand: Brand
     public var mode: ButtonMode
     public enum ButtonMode {
-        case solid
+        case solid(SolidStyleConfiguration = .default)
         case text
     }
 
@@ -38,6 +38,33 @@ public struct PCButtonStyle {
     ) {
         self.brand = brand
         self.mode = mode
+    }
+}
+
+extension PCButtonStyle {
+    public struct SolidStyleConfiguration {
+        let backgroundColorDisabled: Color
+        let backgroundColorNorm: Color
+        let backgroundColorPressed: Color
+
+        public init(
+            backgroundColorDisabled: Color,
+            backgroundColorNorm: Color,
+            backgroundColorPressed: Color
+        ) {
+            self.backgroundColorDisabled = backgroundColorDisabled
+            self.backgroundColorNorm = backgroundColorNorm
+            self.backgroundColorPressed = backgroundColorPressed
+        }
+
+        public static let `default`: SolidStyleConfiguration = {
+            let brands = [Brand.proton, Brand.vpn, Brand.wallet]
+            return .init(
+                backgroundColorDisabled: ColorProvider.InteractionNormDisabled,
+                backgroundColorNorm: brands.contains(Brand.currentBrand) ? ColorProvider.InteractionNorm : ColorProvider.InteractionNormMajor1PassTheme,
+                backgroundColorPressed: ColorProvider.InteractionNormPressed
+            )
+        }()
     }
 }
 

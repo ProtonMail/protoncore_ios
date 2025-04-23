@@ -88,7 +88,7 @@ struct SignInWithQRCodeGenericFailedView: View {
     }
 
     var qrCodebutton: some View {
-        PCButton(style: .constant(.init(mode: .solid)), content: .constant(.init(title: LUITranslation.new_qr_code_title.l10n, action: {
+        PCButton(style: .constant(.init(mode: .solid())), content: .constant(.init(title: LUITranslation.new_qr_code_title.l10n, action: {
             handleTryAgainPress()
         })))
         .frame(height: Constants.buttonHeight)
