@@ -38,31 +38,44 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
         mockSecureHashGenerator = MockSecureHashGenerator()
         mockClientIdProvider = MockClientIdProvider()
 
-        sut = SignInWithQRCodeView.ViewModel(dependencies:
+        setUpSut(withEncryptionKeyInQRCode: true)
+    }
+
+    func setUpSut(withEncryptionKeyInQRCode: Bool) {
+        sut = SignInWithQRCodeView.ViewModel(
+            dependencies:
                 .init(apiService: mockAPIService,
                       secureHashGenerator: mockSecureHashGenerator,
                       clientIdProvider: mockClientIdProvider,
                       handleBackToLoginButtonPress: {},
-                      handleLoginCredentials: handleLoginCredentials))
+                      handleLoginCredentials: handleLoginCredentials),
+            generateEncryptionKey: withEncryptionKeyInQRCode)
     }
 
     func testGenerateQRCodeText() async {
-        let selector = "selector"
-        let userCode = "userCode"
-        let clientId = "clientId"
-        mockAPIService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
-            completion(nil, .success(ForkSessionInitiateResponse(selector: selector, userCode: userCode)))
+
+        let withEncryptionKeyInQRCodeAndEncryptionKey = [(true, "AQID"), (false, "")]
+
+        for (flag, base64EncryptionKey) in withEncryptionKeyInQRCodeAndEncryptionKey {
+            setUpSut(withEncryptionKeyInQRCode: flag)
+
+            let selector = "selector"
+            let userCode = "userCode"
+            let clientId = "clientId"
+            mockAPIService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
+                completion(nil, .success(ForkSessionInitiateResponse(selector: selector, userCode: userCode)))
+            }
+
+            mockClientIdProvider.id = clientId
+            mockSecureHashGenerator.data = Data([1,2,3])
+
+            sut.generateANewQRCodeText()
+
+            // wait a little for the qrCode to reach the main thread
+            try? await Task.sleep(nanoseconds: 100_000_000)
+
+            XCTAssertEqual(sut.qrCodeText, "\(GenerateSignInQRCode.QRCodeVersion):\(userCode):\(base64EncryptionKey):\(clientId)")
         }
-
-        mockClientIdProvider.id = clientId
-        mockSecureHashGenerator.data = Data([1,2,3])
-
-        sut.generateANewQRCodeText()
-
-        // wait a little for the qrCode to reach the main thread
-        try? await Task.sleep(nanoseconds: 100_000_000)
-
-        XCTAssertEqual(sut.qrCodeText, "\(GenerateSignInQRCode.QRCodeVersion):\(userCode):AQID:\(clientId)")
     }
 
     func testRefreshOfQRCodeText() async {
@@ -97,58 +110,125 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
     }
 
     func testPollingOfFork() async throws {
-        let encryptionKey = Data(Array(repeating: UInt8.random(in: 0..<100), count: 32))
-        let selector = "selector"
-        let userCode = "userCode"
-        let clientId = "clientId"
-        let UID = "UID"
-        var payload = try SecurePassphrasePayload(passphrase: "TestPassphrase", encryptionKey: encryptionKey)
-        let refreshToken = "RefreshToken"
-        let accessToken = "AccessToken"
-        var pullResult: ForkSessionPullResponse?
-
-        mockAPIService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
-            if path.contains(try! Regex("/auth/[^/]+/sessions/forks$")) {
-                completion(nil, .success(ForkSessionInitiateResponse(selector: selector, userCode: userCode)))
-                return
-            } else if let result = pullResult {
-                completion(nil, .success(result))
-                return
-            } else {
-                completion(nil, .failure(NSError(domain: "", code: 404)))
-                return
-            }
+        enum Cases: Equatable {
+            case success
+            case encryptionKeyMissing
+            case payloadMissing
+            case passphraseEmptyString
+            case passphraseMissing
+            case apiError
         }
 
-        mockClientIdProvider.id = clientId
-        mockSecureHashGenerator.data = encryptionKey
+        let cases: [Cases] = [
+            .success, .encryptionKeyMissing, .payloadMissing, .passphraseEmptyString, .passphraseMissing, .apiError
+        ]
 
-        sut.refreshWaitTimeInSeconds = 100
-        sut.pullForkIntervalInSeconds = 1
+        // In vpn .encryptionKeyMissing, .payloadMissing, .passphraseEmptyString, .passphraseMissing should succeed
+        // In any other product we should get an error and set the state to a fail view
+        let clientIds = ["vpn", "somethingElse"]
 
-        sut.generateANewQRCodeText()
+        let testCases = cases.cartesianProduct(with: clientIds)
 
-        // wait for a bit more then a second for the fork to be pulled
-        try? await Task.sleep(nanoseconds: UInt64(sut.pullForkIntervalInSeconds * 1_000_000_000) + 100_000_000)
+        for (testCase, clientId) in testCases {
+            if testCase == .encryptionKeyMissing {
+                setUpSut(withEncryptionKeyInQRCode: false)
+            } else {
+                setUpSut(withEncryptionKeyInQRCode: true)
+            }
 
-        // wait for one cycle and then set the pullResult, to make sure that we keep polling on failure to get the fork
-        pullResult = ForkSessionPullResponse(code: 1000, payload: payload.encryptedPayload, UID: UID, refreshToken: refreshToken, accessToken: accessToken)
+            let encryptionKey = Data(Array(repeating: UInt8.random(in: 0..<100), count: 32))
+            let selector = "selector"
+            let userCode = "userCode"
+            let UID = "UID"
+            let refreshToken = "RefreshToken"
+            let accessToken = "AccessToken"
+            var pullResult: ForkSessionPullResponse?
 
-        try? await Task.sleep(nanoseconds: UInt64(sut.pullForkIntervalInSeconds * 1_000_000_000) + 100_000_000)
+            var httpErrorCode = 422
 
-        XCTAssertEqual(pullResult?.UID, sut.forkedSession?.UID)
-        XCTAssertEqual(pullResult?.payload, sut.forkedSession?.payload)
-        XCTAssertEqual(pullResult?.accessToken, sut.forkedSession?.accessToken)
-        XCTAssertEqual(pullResult?.refreshToken, sut.forkedSession?.refreshToken)
+            if testCase == .apiError {
+                httpErrorCode = 500
+            }
 
-        // make sure that after we get the pullResult, we stop polling
-        payload = try SecurePassphrasePayload(passphrase: "DifferentPassphrase", encryptionKey: encryptionKey)
-        pullResult = ForkSessionPullResponse(code: 1000, payload: payload.encryptedPayload, UID: UID, refreshToken: refreshToken, accessToken: accessToken)
+            mockAPIService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+                if path.contains(try! Regex("/auth/[^/]+/sessions/forks$")) {
+                    completion(nil, .success(ForkSessionInitiateResponse(selector: selector, userCode: userCode)))
+                    return
+                } else if let result = pullResult {
+                    completion(nil, .success(result))
+                    return
+                } else {
+                    completion(nil, .failure(
+                        ResponseError(httpCode: httpErrorCode, responseCode: 0, userFacingMessage: "Invalid Selector", underlyingError: nil) as NSError)
+                    )
+                    return
+                }
+            }
 
-        try? await Task.sleep(nanoseconds: UInt64(sut.pullForkIntervalInSeconds * 1_000_000_000) + 100_000_000)
+            mockClientIdProvider.id = clientId
+            mockSecureHashGenerator.data = encryptionKey
 
-        // Make sure we did not replace the forkedSession with the new pulledResult.
-        XCTAssertNotEqual(pullResult?.payload, sut.forkedSession?.payload)
+            sut.refreshWaitTimeInSeconds = 100
+            sut.pullForkIntervalInSeconds = 1
+
+            sut.generateANewQRCodeText()
+
+            // wait for a bit more then a second for the fork to be pulled
+            try? await Task.sleep(nanoseconds: UInt64(sut.pullForkIntervalInSeconds * 1_000_000_000) + 100_000_000)
+
+            // wait for one cycle and then set the pullResult, to make sure that we keep polling on failure to get the fork
+
+            switch testCase {
+            case .success:
+                let payload = try SecurePassphrasePayload(passphrase: "TestPassphrase", encryptionKey: encryptionKey)
+                pullResult = ForkSessionPullResponse(code: 1000, payload: payload.encryptedPayload, UID: UID, refreshToken: refreshToken, accessToken: accessToken)
+            case .encryptionKeyMissing, .payloadMissing:
+                pullResult = ForkSessionPullResponse(code: 1000, payload: nil, UID: UID, refreshToken: refreshToken, accessToken: accessToken)
+            case .passphraseEmptyString:
+                let payload = try SecurePassphrasePayload(passphrase: "", encryptionKey: encryptionKey)
+                pullResult = ForkSessionPullResponse(code: 1000, payload: payload.encryptedPayload, UID: UID, refreshToken: refreshToken, accessToken: accessToken)
+            case .passphraseMissing:
+                let payload = try SecurePassphrasePayload(passphrase: nil, encryptionKey: encryptionKey)
+                pullResult = ForkSessionPullResponse(code: 1000, payload: payload.encryptedPayload, UID: UID, refreshToken: refreshToken, accessToken: accessToken)
+            case .apiError:
+                pullResult = nil
+            }
+
+            try? await Task.sleep(nanoseconds: UInt64(sut.pullForkIntervalInSeconds * 1_000_000_000) + 100_000_000)
+
+            // Check result
+
+            switch testCase {
+            case .success:
+                XCTAssertEqual(pullResult?.UID, sut.forkedSession?.UID)
+                XCTAssertEqual(pullResult?.payload, sut.forkedSession?.payload)
+                XCTAssertEqual(pullResult?.accessToken, sut.forkedSession?.accessToken)
+                XCTAssertEqual(pullResult?.refreshToken, sut.forkedSession?.refreshToken)
+
+                XCTAssertEqual(sut.state, .qrCode)
+            case .encryptionKeyMissing, .passphraseEmptyString, .passphraseMissing, .payloadMissing:
+                if !clientId.contains("vpn") {
+                    XCTAssertEqual(sut.state, .requirePasswordFail)
+                } else {
+                    // On VPN if the passphrase, payload or encryption key are missing we are fine. We can log in
+                    XCTAssertEqual(pullResult?.UID, sut.forkedSession?.UID)
+                    XCTAssertEqual(pullResult?.accessToken, sut.forkedSession?.accessToken)
+                    XCTAssertEqual(pullResult?.refreshToken, sut.forkedSession?.refreshToken)
+                    XCTAssertEqual(sut.state, .qrCode)
+                }
+            case .apiError:
+                XCTAssertEqual(sut.state, .genericFail)
+            }
+
+            // make sure that after we get the pullResult, we stop polling
+            let payload = try SecurePassphrasePayload(passphrase: "DifferentPassphrase", encryptionKey: encryptionKey)
+            pullResult = ForkSessionPullResponse(code: 1000, payload: payload.encryptedPayload, UID: UID, refreshToken: refreshToken, accessToken: accessToken)
+
+            try? await Task.sleep(nanoseconds: UInt64(sut.pullForkIntervalInSeconds * 1_000_000_000) + 100_000_000)
+
+            // Make sure we did not replace the forkedSession with the new pulledResult.
+            XCTAssertNotEqual(pullResult?.payload, sut.forkedSession?.payload)
+        }
     }
 }
 
@@ -169,5 +249,18 @@ class MockClientIdProvider: ClientIdProvider {
 
     func clientId() -> String {
         id
+    }
+}
+
+extension Array {
+    func cartesianProduct<OtherElement>(with otherArray: [OtherElement]) -> [(Element, OtherElement)] {
+        guard !self.isEmpty, !otherArray.isEmpty else {
+            return []
+        }
+        return self.flatMap { element -> [(Element, OtherElement)] in
+            otherArray.map { otherElement -> (Element, OtherElement) in
+                return (element, otherElement)
+            }
+        }
     }
 }

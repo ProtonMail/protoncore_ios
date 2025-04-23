@@ -42,23 +42,31 @@ public struct GenerateSignInQRCode {
     public struct Response {
         public let version: Int
         public let userCode: String
-        public let encryptionKeyBase64: String
+        public let encryptionKeyBase64: String?
         public let clientId: String
 
-        public var encryptionKey: Data {
-            Base64.decode(base64: encryptionKeyBase64)
+        public var encryptionKey: Data? {
+            guard let encryptionKeyBase64 = self.encryptionKeyBase64 else {
+                return nil
+            }
+            return Base64.decode(base64: encryptionKeyBase64)
         }
 
         public var text: String {
-            "\(version):\(userCode):\(encryptionKeyBase64):\(clientId)"
+            "\(version):\(userCode):\(encryptionKeyBase64 ?? ""):\(clientId)"
         }
     }
 
     /// userCode comes from call to /session/forks
-    public func invoke(userCode: String) throws -> Response {
-        let encryptionKey = try hashGenerator.random(bits: 256)
+    public func invoke(userCode: String, withEncryptionKey: Bool) throws -> Response {
         let clientId = clientIdProvider.clientId()
-        let base64EncryptionKey = Base64.encode(raw: encryptionKey)
+
+        var base64EncryptionKey: String? = nil
+
+        if withEncryptionKey {
+            let encryptionKey = try hashGenerator.random(bits: 256)
+            base64EncryptionKey = Base64.encode(raw: encryptionKey)
+        }
 
         return Response(
             version: Self.QRCodeVersion,

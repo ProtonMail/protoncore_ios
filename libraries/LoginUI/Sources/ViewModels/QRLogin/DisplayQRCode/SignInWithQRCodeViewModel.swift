@@ -74,7 +74,8 @@ extension SignInWithQRCodeView {
 
         enum ViewState {
             case qrCode
-            case signInFailed
+            case genericFail
+            case requirePasswordFail
         }
 
         @Published var qrCodeText: String?
@@ -92,6 +93,7 @@ extension SignInWithQRCodeView {
         private var selector: String?
         private var encryptionKey: Data?
         private var apiService: APIService?
+        private var clientIdProvider: ClientIdProvider?
         private let handleLoginCredentials: (Credential,
                                              _ loginErrorHandler: @escaping () -> Void,
                                              _ loginSuccessHandler: @escaping () -> Void) -> Void
@@ -102,12 +104,18 @@ extension SignInWithQRCodeView {
         private var refreshQRCodeTimer: Timer?
         private var pullForkTimer: Timer?
 
+        private let generateEntryptionKey: Bool
+
         enum Errors: Error {
-            case responseOrEncryptionKeyMissing
+            case responseMissing
+            case encryptionKeyMissing
             case payloadMissing
+            case passphraseMissing
         }
 
-        init(dependencies: Dependencies) {
+        /// If you don't need the passphrase to log in, set generateEncryptionKey to false. This will omit the encrytion key from the QR Code.
+        /// If an encryption key is not present in the QR Code the passphrase won't be sent. The payload, when pulling the fork, will be null.
+        init(dependencies: Dependencies, generateEncryptionKey: Bool = true) {
             if let apiService = dependencies.apiService {
                 self.apiService = apiService
                 getUserCodeAndSelectorUseCase = GetUserCodeAndSelector(apiService: apiService)
@@ -119,8 +127,10 @@ extension SignInWithQRCodeView {
                 generateSignInQRCodeUseCase = GenerateSignInQRCode(hashGenerator: secureHashGenerator, clientIdProvider: clientIdProvider)
             }
 
+            self.clientIdProvider = dependencies.clientIdProvider
             self.handleLoginCredentials = dependencies.handleLoginCredentials
             self.handleBackToLoginButtonPress = dependencies.handleBackToLoginButtonPress
+            self.generateEntryptionKey = generateEncryptionKey
         }
 
         func handleTryAgainPressed() {
@@ -131,8 +141,12 @@ extension SignInWithQRCodeView {
             handleBackToLoginButtonPress()
         }
 
-        private func showSignInFailureView() {
-            self.state = .signInFailed
+        private func showGenericFailureView() {
+            self.state = .genericFail
+        }
+
+        private func showRequirePasswordFailureView() {
+            self.state = .requirePasswordFail
         }
 
         func generateANewQRCodeText() {
@@ -146,7 +160,9 @@ extension SignInWithQRCodeView {
 
                 do {
                     let userCodeAndSelector = try await getUserCodeAndSelectorUseCase.invoke()
-                    let qrCode = try generateSignInQRCodeUseCase.invoke(userCode: userCodeAndSelector.userCode)
+                    let qrCode = try generateSignInQRCodeUseCase.invoke(
+                        userCode: userCodeAndSelector.userCode,
+                        withEncryptionKey: self.generateEntryptionKey)
 
                     self.selector = userCodeAndSelector.selector
                     self.encryptionKey = qrCode.encryptionKey
@@ -176,67 +192,49 @@ extension SignInWithQRCodeView {
             pullForkTimer?.invalidate()
             pullForkTimer = Timer.scheduledTimer(withTimeInterval: pullForkIntervalInSeconds, repeats: true, block: { [weak self] timer in
                 Task { @MainActor [weak self] in
+                    guard let self = self else {
+                        timer.invalidate()
+                        return
+                    }
+
                     do {
-                        guard let self = self else {
-                            timer.invalidate()
+                        guard let selector = self.selector, timer.isValid else { return }
+                        try await pullTheFork(for: selector)
+                        // Pulled success. Invalidate timer.
+                        timer.invalidate()
+                    } catch {
+                        if error.httpCode == APIErrorCode.HTTP422 {
+                            // Expected error when polling and the fork is not yet pushed
                             return
                         }
-                        guard let selector = self.selector, timer.isValid else { return }
-#if DEBUG
-                        print("PT: Fork about to be pulled")
-#endif
-                        self.forkedSession = try await self.getForkedSessionUseCase?.invoke(selector: selector)
-                        guard let response = self.forkedSession,
-                              let key = self.encryptionKey else {
-                            throw Errors.responseOrEncryptionKeyMissing
-                        }
+
                         timer.invalidate()
-#if DEBUG
-                        print("PT: Fork pulled successfully")
-#endif
-                        self.handleReceivedForkResponse(response, encryptionKey: key)
-                    } catch {
-                        // Do nothing. The fork might not be available yet.
-#if DEBUG
-                        print("PT: Fork pull error: \(error)")
-#endif
+
+                        ObservabilityEnv.report(.qrLoginResult(status: .failure))
+                        PMLog.error("Could not handle the response of pulling the fork: \(error)")
+
+                        guard let error = error as? Errors else {
+                            self.showGenericFailureView()
+                            return
+                        }
+
+                        switch error {
+                        case .responseMissing:
+                            self.showGenericFailureView()
+                        case .passphraseMissing, .encryptionKeyMissing, .payloadMissing:
+                            self.showRequirePasswordFailureView()
+                        }
                     }
                 }
             })
-        }
-
-        private func handleReceivedForkResponse(_ response: GetForkedSession.Response, encryptionKey: Data) {
-            do {
-                guard let payload = response.payload else {
-                    throw Errors.payloadMissing
-                }
-                let securePayload = try SecurePassphrasePayload(encryptedPayload: payload, encryptionKey: encryptionKey)
-                let credential = Credential.init(UID: response.UID,
-                                                 accessToken: response.accessToken,
-                                                 refreshToken: response.refreshToken,
-                                                 userName: "",
-                                                 userID: "",
-                                                 scopes: [],
-                                                 mailboxPassword: securePayload.passphrase)
-                 self.handleLoginCredentials(credential, { [weak self] in
-                    // Failure
-                    ObservabilityEnv.report(.qrLoginResult(status: .failure))
-                    self?.showSignInFailureView()
-                }, {
-                    // Success
-                    ObservabilityEnv.report(.qrLoginResult(status: .success))
-                })
-            } catch {
-                ObservabilityEnv.report(.qrLoginResult(status: .failure))
-                PMLog.error("Could not handle the response of pulling the fork: \(error)")
-                self.showSignInFailureView()
-            }
         }
 
         func stopPollingFork() {
             pullForkTimer?.invalidate()
             pullForkTimer = nil
         }
+
+        // MARK: QR code utilities
 
         private func removeQRCodeText() {
             self.qrCodeText = nil
@@ -252,6 +250,65 @@ extension SignInWithQRCodeView {
                     self?.generateANewQRCodeText()
                 }
             })
+        }
+
+        // MARK: Pull fork utilities
+
+        private func pullTheFork(for selector: String) async throws {
+            self.forkedSession = try await self.getForkedSessionUseCase?.invoke(selector: selector)
+            guard let response = self.forkedSession else {
+                throw Errors.responseMissing
+            }
+
+            let mailboxPassword: String = try extractMailboxPassword(from: response, with: encryptionKey)
+
+            let credential = Credential.init(UID: response.UID,
+                                             accessToken: response.accessToken,
+                                             refreshToken: response.refreshToken,
+                                             userName: "",
+                                             userID: "",
+                                             scopes: [],
+                                             mailboxPassword: mailboxPassword)
+             self.handleLoginCredentials(credential, { [weak self] in
+                // Failure
+                ObservabilityEnv.report(.qrLoginResult(status: .failure))
+                self?.showGenericFailureView()
+            }, {
+                // Success
+                ObservabilityEnv.report(.qrLoginResult(status: .success))
+            })
+        }
+
+        private func extractMailboxPassword(from response: GetForkedSession.Response, with encryptionKey: Data?) throws -> String {
+            let clientId = clientIdProvider?.clientId().lowercased() ?? ""
+
+            guard let encryptionKey = encryptionKey else {
+                if clientId.contains("vpn") {
+                    return ""
+                } else {
+                    throw Errors.encryptionKeyMissing
+                }
+            }
+
+            guard let payload = response.payload else {
+                if clientId.contains("vpn") {
+                    return ""
+                } else {
+                    throw Errors.payloadMissing
+                }
+            }
+
+            let securePayload = try SecurePassphrasePayload(encryptedPayload: payload, encryptionKey: encryptionKey)
+
+            guard securePayload.passphrase != "" else {
+                if clientId.contains("vpn") {
+                    return ""
+                } else {
+                    throw Errors.passphraseMissing
+                }
+            }
+
+            return securePayload.passphrase
         }
     }
 }

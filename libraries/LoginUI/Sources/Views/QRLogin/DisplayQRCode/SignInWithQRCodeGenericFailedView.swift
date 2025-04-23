@@ -23,7 +23,7 @@ import ProtonCoreUIFoundations
 import ProtonCoreObservability
 
 @MainActor
-struct SignInFailedView: View {
+struct SignInWithQRCodeGenericFailedView: View {
 
     enum Constants {
         static let noSpacing: CGFloat = .zero

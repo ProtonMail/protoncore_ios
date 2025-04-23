@@ -41,11 +41,16 @@ public struct SignInWithQRCodeView: View {
                         viewModel.cancelQRCodeRefresh()
                         viewModel.stopPollingFork()
                     }
-            case .signInFailed:
-                SignInFailedView(
+            case .genericFail:
+                SignInWithQRCodeGenericFailedView(
                     handleTryAgainPress: {
                         viewModel.handleTryAgainPressed()
                     }, handleBackPress: {
+                        viewModel.handleBackPressed()
+                    })
+            case .requirePasswordFail:
+                SignInWithQRCodeRequirePassFailedView(
+                    handleBackPress: {
                         viewModel.handleBackPressed()
                     })
             }

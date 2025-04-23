@@ -40,14 +40,18 @@ final class GenerateSignInQRCodeTests: XCTestCase {
     }
 
     func testGenerateQRTextSuccess() throws {
-        let userCode = "someUserCode"
-        let clientId = "ios-vpn"
-        mockHashGenerator.data = Data([1,2,3])
-        mockClientIdProvider.id = clientId
+        let flagAndBase64EncryptionKey = [(true,"AQID"), (false, "")]
 
-        let qrCode = try sut.invoke(userCode: userCode)
+        for (flag, base64EncryptionKey) in flagAndBase64EncryptionKey {
+            let userCode = "someUserCode"
+            let clientId = "ios-vpn"
+            mockHashGenerator.data = Data([1,2,3])
+            mockClientIdProvider.id = clientId
 
-        XCTAssertEqual(qrCode.text, "\(GenerateSignInQRCode.QRCodeVersion):\(userCode):\("AQID"):\(clientId)")
+            let qrCode = try sut.invoke(userCode: userCode, withEncryptionKey: flag)
+
+            XCTAssertEqual(qrCode.text, "\(GenerateSignInQRCode.QRCodeVersion):\(userCode):\(base64EncryptionKey):\(clientId)")
+        }
     }
 
     func testGenerateQRTextFailure() {
@@ -55,16 +59,35 @@ final class GenerateSignInQRCodeTests: XCTestCase {
             case some
         }
 
-        let userCode = "someUserCode"
-        let clientId = "ios-vpn"
-        mockHashGenerator.error = MockError.some
-        mockClientIdProvider.id = clientId
+        enum Result {
+            case throwError
+            case doNothing
+        }
 
-        do {
-            let _ = try sut.invoke(userCode: userCode)
-            XCTFail("call to invoke should throw an error.")
-        } catch {
-            XCTAssertEqual((error as! MockError), .some)
+        let flagsAndResult = [(true, Result.throwError), (false, Result.doNothing)]
+
+        for (flag, result) in flagsAndResult {
+            let userCode = "someUserCode"
+            let clientId = "ios-vpn"
+            mockHashGenerator.error = MockError.some
+            mockClientIdProvider.id = clientId
+
+            do {
+                let _ = try sut.invoke(userCode: userCode, withEncryptionKey: flag)
+                switch result {
+                case .throwError:
+                    XCTFail("call to invoke should throw an error.")
+                case .doNothing:
+                    break
+                }
+            } catch {
+                switch result {
+                case .throwError:
+                    XCTAssertEqual((error as! MockError), .some)
+                case .doNothing:
+                    XCTFail("call to invoke should NOT throw an error.")
+                }
+            }
         }
     }
 }

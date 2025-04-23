@@ -402,6 +402,8 @@
 
 "We couldn't sign you in. Please scan a new QR code to try again." = "We couldn't sign you in. Please scan a new QR code to try again.";
 
+"We couldn't sign you in. Please sign in with your password." = "We couldn't sign you in. Please sign in with your password.";
+
 "New QR code" = "New QR code";
 
 "Allow access to camera" = "Allow access to camera";
