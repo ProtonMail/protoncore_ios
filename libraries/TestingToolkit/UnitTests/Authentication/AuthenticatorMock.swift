@@ -34,6 +34,11 @@ public struct AuthenticatorMock: AuthenticatorInterface {
 
     public init() {}
 
+    @AsyncFuncStub(AuthenticatorInterface.authenticateWithCredentialLessSession, initialReturn: .crash) public var authenticateWithCredentialLessSessionStub
+    public func authenticateWithCredentialLessSession() async -> Result<ProtonCoreAuthentication.Authenticator.Status, ProtonCoreNetworking.AuthErrors> {
+        await authenticateWithCredentialLessSessionStub()
+    }
+
     @AsyncThrowingFuncStub(AuthenticatorInterface.authenticate(idpEmail:responseToken:), initialReturn: .crash) public var authenticateStubWithSSOAsync
     public func authenticate(idpEmail: String, responseToken: ProtonCoreNetworking.SSOResponseToken) async throws -> ProtonCoreAuthentication.Authenticator.Status {
         try await authenticateStubWithSSOAsync(idpEmail, responseToken)
