@@ -23,14 +23,15 @@
 public enum CoreFeatureFlagType: String, FeatureFlagTypeProtocol {
     case accountRecovery = "SignedInAccountRecovery"
     case changePassword = "IOSChangePassword"
+    case credentialLessDisabled = "CredentialLessDisabled"
     case dynamicPlan = "DynamicPlan"
+    case easyDeviceMigrationDisabled = "EasyDeviceMigrationDisabled"
     case externalSSO = "ExternalSSO"
     case pushNotifications = "PushNotifications"
     case reportInvalidUnauthRequests = "ReportInvalidUnauthRequests"
     case splitStorage = "SplitStorage"
     case telemetrySignUpMetrics = "IOSTelemetrySignUpMetrics"
+    case passwordPolicyDisabled = "PasswordPolicyDisabled"
     case paymentsV2 = "IOSPaymentsV2"
     case paymentsV6Status = "PaymentsV6StatusRequest"
-    case easyDeviceMigrationDisabled = "EasyDeviceMigrationDisabled"
-    case credentialLessDisabled = "CredentialLessDisabled"
 }
