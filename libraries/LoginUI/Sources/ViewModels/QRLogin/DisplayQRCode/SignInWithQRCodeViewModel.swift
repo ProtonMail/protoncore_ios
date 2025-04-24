@@ -272,7 +272,7 @@ extension SignInWithQRCodeView {
              self.handleLoginCredentials(credential, { [weak self] in
                 // Failure
                 ObservabilityEnv.report(.qrLoginResult(status: .failure))
-                self?.showGenericFailureView()
+                self?.showRequirePasswordFailureView()
             }, {
                 // Success
                 ObservabilityEnv.report(.qrLoginResult(status: .success))

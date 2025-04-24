@@ -288,13 +288,22 @@ public final class LoginService {
         let keys = (user.keys + addresses.toKeys())
             .filter({ $0.active ==  1 })
 
-        try keyRingBuilder.buildPrivateKeyRingUnlock(
+        _ = try keyRingBuilder.buildPrivateKeyRingUnlock(
             privateKeys: keys.map({ DecryptionKey(privateKey: ArmoredKey(value: $0.privateKey), passphrase: Passphrase(value: credential.mailboxPassword))})
         )
 
         var forkedCredential = credential
         forkedCredential.userName = user.name ?? user.email ?? ""
         forkedCredential.userID = user.ID
+
+        let hasOnlyExternalAddresses = addresses.count > 0 && addresses.allSatisfy({ $0.isExternal })
+        let hasNoAddresses = addresses.count == 0
+
+        if (hasOnlyExternalAddresses || hasNoAddresses) && self.minimumAccountType == .internal {
+            // We don't support the case when an external user / username user needs an internal address to use this client.
+            // We would need to create a new custom flow to handle this case.
+            throw LoginError.invalidState
+        }
 
         return .finished(UserData(
             credential: .init(forkedCredential),
