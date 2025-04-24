@@ -14,7 +14,7 @@
 
 "PlansComposer_unable_to_fetch_currentSub" = "Unable to fetch the current subscription";
 
-"Remote_manager_error" = "Something went wrong and we could fullfil your request. If the issue persists, please contact customer support.";
+"Remote_manager_error" = "Something went wrong and we couldn't fulfill your request. If the issue persists, please contact customer support.";
 
 "SK_Receipt_impossible_to_get_receipt" = "Impossible to get transaction receipt data from Apple";
 
