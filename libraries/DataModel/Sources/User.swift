@@ -48,7 +48,10 @@ public struct User: Codable, Equatable, CustomDebugStringConvertible {
     public let lockedFlags: LockedFlags?
     public let flags: UserFlags?
 
-    public let isCredentialLess: Bool
+    private var _isCredentialLess: Bool? // To avoid failing when automatically decoding data
+    public var isCredentialLess: Bool {
+        _isCredentialLess ?? false
+    }
 
     public var hasAnySubscription: Bool {
         !subscribed.isEmpty
@@ -126,7 +129,7 @@ public struct User: Codable, Equatable, CustomDebugStringConvertible {
         self.accountRecovery = accountRecovery
         self.lockedFlags = lockedFlags
         self.flags = flags
-        self.isCredentialLess = isCredentialLess
+        self._isCredentialLess = isCredentialLess
     }
 
     public var description: String {

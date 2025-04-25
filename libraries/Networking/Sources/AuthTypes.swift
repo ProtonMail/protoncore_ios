@@ -208,7 +208,7 @@ public final class AuthCredential: NSObject, NSCoding, Codable {
         self.mailboxpassword = aDecoder.decodeObject(forKey: CoderKey.password) as? String ?? ""
         self.userName = aDecoder.decodeObject(forKey: CoderKey.userName) as? String ?? ""
         self.userID = aDecoder.decodeObject(forKey: CoderKey.userID) as? String ?? ""
-        self.isCredentialLess = aDecoder.decodeObject(forKey: CoderKey.credentialLess) as? Bool ?? false
+        self.isCredentialLess = aDecoder.decodeBool(forKey: CoderKey.credentialLess)
     }
 
     public class func unarchive(data: NSData?) -> AuthCredential? {
