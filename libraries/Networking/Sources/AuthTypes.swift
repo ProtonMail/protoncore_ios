@@ -28,17 +28,19 @@ public final class AuthCredential: NSObject, NSCoding, Codable {
     }
 
     struct CoderKey {
-        static let accessToken   = "accessTokenCoderKey"
-        static let refreshToken  = "refreshTokenCoderKey"
-        static let sessionID     = "userIDCoderKey"
-        static let key           = "privateKeyCoderKey"
-        static let plainToken    = "plainCoderKey"
-        static let pwd           = "pwdKey"
-        static let salt          = "passwordKeySalt"
+        static let accessToken      = "accessTokenCoderKey"
+        static let refreshToken     = "refreshTokenCoderKey"
+        static let sessionID        = "userIDCoderKey"
+        static let key              = "privateKeyCoderKey"
+        static let plainToken       = "plainCoderKey"
+        static let pwd              = "pwdKey"
+        static let salt             = "passwordKeySalt"
 
-        static let userID        = "AuthCredential.UserID"
-        static let password      = "AuthCredential.Password"
-        static let userName      = "AuthCredential.UserName"
+        static let userID           = "AuthCredential.UserID"
+        static let password         = "AuthCredential.Password"
+        static let userName         = "AuthCredential.UserName"
+
+        static let credentialLess   = "AuthCredential.credentialLess"
     }
 
     public static var none: AuthCredential = AuthCredential.init(res: AuthResponse(), userName: "" )
@@ -62,6 +64,8 @@ public final class AuthCredential: NSObject, NSCoding, Codable {
     public var passwordKeySalt: String?
     public var mailboxpassword: String = ""
 
+    public var isCredentialLess: Bool = false
+
     override public var description: String {
         return """
         AccessToken: \(accessToken)
@@ -80,7 +84,8 @@ public final class AuthCredential: NSObject, NSCoding, Codable {
                 userName: String,
                 userID: String,
                 privateKey: String?,
-                passwordKeySalt: String?) {
+                passwordKeySalt: String?,
+                isCredentialLess: Bool = false) {
         self.sessionID = sessionID
         self.accessToken = accessToken
         self.refreshToken = refreshToken
@@ -88,6 +93,7 @@ public final class AuthCredential: NSObject, NSCoding, Codable {
         self.userID = userID
         self.privateKey = privateKey
         self.passwordKeySalt = passwordKeySalt
+        self.isCredentialLess = isCredentialLess
     }
 
     @available(*, deprecated, message: "Please use the init method without expiration")
@@ -117,6 +123,7 @@ public final class AuthCredential: NSObject, NSCoding, Codable {
         self.privateKey = other.privateKey
         self.passwordKeySalt = other.passwordKeySalt
         self.mailboxpassword = other.mailboxpassword
+        self.isCredentialLess = other.isCredentialLess
     }
 
     @available(*, deprecated, message: "This method no longer does anything. Client apps should not depend on the expiration date, please don't use this for anything")
@@ -201,6 +208,7 @@ public final class AuthCredential: NSObject, NSCoding, Codable {
         self.mailboxpassword = aDecoder.decodeObject(forKey: CoderKey.password) as? String ?? ""
         self.userName = aDecoder.decodeObject(forKey: CoderKey.userName) as? String ?? ""
         self.userID = aDecoder.decodeObject(forKey: CoderKey.userID) as? String ?? ""
+        self.isCredentialLess = aDecoder.decodeObject(forKey: CoderKey.credentialLess) as? Bool ?? false
     }
 
     public class func unarchive(data: NSData?) -> AuthCredential? {
@@ -239,6 +247,7 @@ public final class AuthCredential: NSObject, NSCoding, Codable {
         aCoder.encode(passwordKeySalt, forKey: CoderKey.salt)
         aCoder.encode(userName, forKey: CoderKey.userName)
         aCoder.encode(userID, forKey: CoderKey.userID)
+        aCoder.encode(isCredentialLess, forKey: CoderKey.credentialLess)
     }
 }
 
@@ -250,7 +259,8 @@ extension AuthCredential {
                   userName: credential.userName,
                   userID: credential.userID,
                   privateKey: nil,
-                  passwordKeySalt: nil)
+                  passwordKeySalt: nil,
+                  isCredentialLess: credential.isCredentialLess)
         update(password: credential.mailboxPassword)
     }
 
@@ -289,7 +299,9 @@ public struct Credential: Equatable {
 
     public var isForUnauthenticatedSession: Bool { userID.isEmpty }
 
-    public init(UID: String, accessToken: String, refreshToken: String, userName: String, userID: String, scopes: Scopes, mailboxPassword: String) {
+    public var isCredentialLess: Bool = false
+
+    public init(UID: String, accessToken: String, refreshToken: String, userName: String, userID: String, scopes: Scopes, mailboxPassword: String, isCredentialLess: Bool = false) {
         self.UID = UID
         self.accessToken = accessToken
         self.refreshToken = refreshToken
@@ -297,6 +309,7 @@ public struct Credential: Equatable {
         self.userID = userID
         self.scopes = scopes
         self.mailboxPassword = mailboxPassword
+        self.isCredentialLess = isCredentialLess
     }
 
     @available(*, deprecated, message: "Please use the init method with mailboxPassword")
@@ -362,7 +375,8 @@ extension Credential {
                   userName: authCredential.userName,
                   userID: authCredential.userID,
                   scopes: [],
-                  mailboxPassword: authCredential.mailboxpassword)
+                  mailboxPassword: authCredential.mailboxpassword,
+                  isCredentialLess: authCredential.isCredentialLess)
     }
 
     public init(_ authCredential: AuthCredential, scopes: Scopes) {
@@ -372,7 +386,8 @@ extension Credential {
                   userName: authCredential.userName,
                   userID: authCredential.userID,
                   scopes: scopes,
-                  mailboxPassword: authCredential.mailboxpassword)
+                  mailboxPassword: authCredential.mailboxpassword,
+                  isCredentialLess: authCredential.isCredentialLess)
     }
 
     @available(*, deprecated, message: "Please use the init method with scopes")

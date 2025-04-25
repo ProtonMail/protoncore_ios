@@ -73,6 +73,8 @@ public protocol AuthenticatorInterface {
     func getUserInfo(_ credential: Credential?, completion: @escaping (Result<User, AuthErrors>) -> Void)
     func getUserInfo(_ credential: Credential?) async throws -> User
 
+    func getUserSettings(_ credential: Credential?) async throws -> UserSettings
+
     @available(*, deprecated, message: "Use async version")
     func getAddresses(_ credential: Credential?, completion: @escaping (Result<[Address], AuthErrors>) -> Void)
     func getAddresses(_ credential: Credential?) async throws -> [Address]
@@ -161,6 +163,10 @@ public extension AuthenticatorInterface {
 
     func getUserInfo() async throws -> User {
         try await getUserInfo(nil)
+    }
+
+    func getUserSettings() async throws -> UserSettings {
+        try await getUserSettings(nil)
     }
 
     @available(*, deprecated, message: "Use async version")

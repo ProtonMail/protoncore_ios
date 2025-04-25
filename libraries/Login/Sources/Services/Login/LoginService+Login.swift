@@ -296,10 +296,10 @@ extension LoginService: Login {
         case .success(let status):
             switch status {
             case .credentialLess(let credential):
-                // TODO: Fix user
+                let user = try await authManager.getUserInfo(credential)
                 return .finished(.init(
                     credential: AuthCredential(credential),
-                    user: .mock,
+                    user: user,
                     salts: [],
                     passphrases: [:],
                     addresses: [],

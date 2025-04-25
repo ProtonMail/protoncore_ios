@@ -25,10 +25,39 @@ import ProtonCoreNetworking
 public class SettingsResponse: APIDecodableResponse {
     public let code: Int
     public let userSettings: UserSettings
+
+    public init(code: Int, userSettings: UserSettings) {
+        self.code = code
+        self.userSettings = userSettings
+    }
 }
 
 public struct UserSettings: Codable {
+    public let password: Password
     public let _2FA: TwoFA
+
+    public init(password: Password,
+                _2FA: TwoFA) {
+        self.password = password
+        self._2FA = _2FA
+    }
+
+    public struct Password: Codable {
+        public let mode: PasswordMode
+
+        public init(mode: PasswordMode) {
+            self.mode = mode
+        }
+
+        public enum PasswordMode: Int, Sendable, Codable {
+            case singlePassword = 1
+            case loginAndMailboxPassword = 2
+        }
+
+        enum CodingKeys: String, CodingKey {
+            case mode
+        }
+    }
 
     public struct TwoFA: Codable {
         public var enabled: EnabledMechanism
@@ -41,10 +70,21 @@ public struct UserSettings: Codable {
     }
 }
 
+public extension UserSettings {
+    static var `default`: UserSettings {
+        .init(password: .init(mode: .singlePassword), _2FA: .init(enabled: .off, registeredKeys: []))
+    }
+}
+
 public final class SettingsEndpoint: Request {
 
     public var path: String {
         "/core/v4/settings"
+    }
+
+    public var auth: AuthCredential?
+    public var authCredential: AuthCredential? {
+        return self.auth
     }
 
     public init() { }

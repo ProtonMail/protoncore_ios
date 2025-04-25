@@ -63,7 +63,7 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
     public func authenticateWithCredentialLessSession() async -> Result<Status, AuthErrors> {
         let credentialResult = await apiService.fetchCredentialForCredentialLessSession()
 
-        guard let credential = credentialResult.value else {
+        guard var credential = credentialResult.value else {
             // TODO: Handle ACCOUNT_CREDENTIALLESS_INVALID(10200)
             return .failure(
                 .networkingError(.init(
@@ -75,6 +75,7 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
         }
 
         self.apiService.setSessionUID(uid: credential.UID)
+        credential.isCredentialLess = true
 
         return .success(.credentialLess(credential))
     }
@@ -390,6 +391,10 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
     public func getUserInfo(_ credential: Credential? = nil, completion: @escaping (Result<User, AuthErrors>) -> Void) {
         var route = AuthService.UserInfoEndpoint()
         if let auth = credential {
+            guard !auth.isCredentialLess else {
+                completion(.success(.credentialLessUser(userId: auth.userID)))
+                return
+            }
             route.auth = AuthCredential(auth)
         }
         self.apiService.perform(request: route, decodableCompletion: mapValueAndError(completion) { (response: AuthService.UserResponse) in
@@ -401,12 +406,42 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
         var route = AuthService.UserInfoEndpoint()
         if let auth = credential {
             route.auth = AuthCredential(auth)
+        } else if case .found(let authCredential) = await apiService.fetchAuthCredentials() {
+            route.auth = authCredential
+        }
+        if let authCredential = route.authCredential, authCredential.isCredentialLess {
+            return .credentialLessUser(userId: authCredential.userID)
         }
         return try await withCheckedThrowingContinuation { continuation in
             self.apiService.perform(request: route) { (_, result: Result<AuthService.UserResponse, ResponseError>) in
                 switch result {
                 case .success(let response):
                     continuation.resume(returning: response.user)
+                case .failure(let error):
+                    let throwingError = error.isApiIsBlockedError ?
+                    AuthErrors.apiMightBeBlocked(message: error.localizedDescription, originalError: error) :
+                        .networkingError(error)
+                    continuation.resume(throwing: throwingError)
+                }
+            }
+        }
+    }
+
+    public func getUserSettings(_ credential: Credential?) async throws -> UserSettings {
+        let route = SettingsEndpoint()
+        if let auth = credential {
+            route.auth = AuthCredential(auth)
+        } else if case .found(let authCredential) = await apiService.fetchAuthCredentials() {
+            route.auth = authCredential
+        }
+        if let authCredential = route.authCredential, authCredential.isCredentialLess {
+            return .default
+        }
+        return try await withCheckedThrowingContinuation { continuation in
+            self.apiService.perform(request: route) { (_, result: Result<SettingsResponse, ResponseError>) in
+                switch result {
+                case .success(let response):
+                    continuation.resume(returning: response.userSettings)
                 case .failure(let error):
                     let throwingError = error.isApiIsBlockedError ?
                     AuthErrors.apiMightBeBlocked(message: error.localizedDescription, originalError: error) :

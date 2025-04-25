@@ -109,6 +109,11 @@ public struct AuthenticatorMock: AuthenticatorInterface {
         try await getUserInfoAsyncStub(credential)
     }
 
+    @AsyncThrowingFuncStub(AuthenticatorInterface.getUserSettings(_:), initialReturn: .crash) public var getUserSettingsAsyncStub
+    public func getUserSettings(_ credential: ProtonCoreNetworking.Credential?) async throws -> UserSettings {
+        try await getUserSettingsAsyncStub(credential)
+    }
+
     @FuncStub(Self.getAddresses) public var getAddressesStub
     public func getAddresses(_ credential: Credential?, completion: @escaping (Result<[Address], AuthErrors>) -> Void) {
         getAddressesStub(credential, completion)
