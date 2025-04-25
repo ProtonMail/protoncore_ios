@@ -158,7 +158,7 @@ extension PMAPIService {
             }
         }
     }
-    
+
     /// async version of performRequestHavingFetchedCredentials that returns a decodable response Result
     /// If you want to get the task or a json completion use the non async version
     func performRequestHavingFetchedCredentials<T>(method: HTTPMethod,

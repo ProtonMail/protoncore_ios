@@ -1863,6 +1863,41 @@ class AuthenticatorTests: XCTestCase {
         }
     }
 
+    func testGetLocalUserInfoWhenCredentialLess() async throws {
+        let manager = Authenticator(api: apiService)
+        let expect = expectation(description: "getUserInfo")
+        let testUser = User.credentialLessUser(userId: "userID")
+        apiService.requestDecodableStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, completion in
+            if path.contains("/users") {
+                let userResponse = AuthService.UserResponse(user: testUser)
+                completion(nil, .success(userResponse))
+            } else {
+                XCTFail()
+                completion(nil, .success(AuthenticatorTests.emptyReponse))
+            }
+        }
+
+        let credential = Credential(UID: "UID", accessToken: "accessToken", refreshToken: "refreshToken", userName: "userName", userID: "userID", scopes: ["Scope"], mailboxPassword: "pass", isCredentialLess: true)
+        manager.getUserInfo(credential) { result in
+            switch result {
+            case .success(let user):
+                XCTAssertEqual(user, testUser)
+                XCTAssertTrue(user.isCredentialLess)
+            default:
+                XCTFail("Wrong result")
+            }
+            expect.fulfill()
+        }
+
+        let resultUser = try await manager.getUserInfo()
+        XCTAssertEqual(resultUser, testUser)
+        XCTAssertTrue(resultUser.isCredentialLess)
+
+        waitForExpectations(timeout: timeout) { (error) in
+            XCTAssertNil(error, String(describing: error))
+        }
+    }
+
     // MARK: getAddresses
 
     func testGetAddressesSuccess() {

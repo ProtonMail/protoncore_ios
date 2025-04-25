@@ -48,6 +48,8 @@ public struct User: Codable, Equatable, CustomDebugStringConvertible {
     public let lockedFlags: LockedFlags?
     public let flags: UserFlags?
 
+    public let isCredentialLess: Bool
+
     public var hasAnySubscription: Bool {
         !subscribed.isEmpty
     }
@@ -98,7 +100,8 @@ public struct User: Codable, Equatable, CustomDebugStringConvertible {
                 keys: [Key],
                 accountRecovery: AccountRecovery? = nil,
                 lockedFlags: LockedFlags? = nil,
-                flags: UserFlags? = nil) {
+                flags: UserFlags? = nil,
+                isCredentialLess: Bool = false) {
         self.ID = ID
         self.name = name
         self.usedSpace = usedSpace
@@ -123,6 +126,7 @@ public struct User: Codable, Equatable, CustomDebugStringConvertible {
         self.accountRecovery = accountRecovery
         self.lockedFlags = lockedFlags
         self.flags = flags
+        self.isCredentialLess = isCredentialLess
     }
 
     public var description: String {
@@ -605,6 +609,34 @@ extension UserInfo {
         static let listToolbarActions: ToolbarActions = .init(isCustom: false, actions: [])
         static let lockedFlags: LockedFlags? = nil
         static let edmOptOut: Int = 0
+    }
+}
+
+public extension User {
+    static func credentialLessUser(userId: String) -> User {
+        .init(
+            ID: userId,
+            name: nil,
+            usedSpace: 0,
+            usedBaseSpace: 0,
+            usedDriveSpace: 0,
+            currency: UserInfo.DefaultValue.currency,
+            credit: UserInfo.DefaultValue.credit,
+            maxSpace: UserInfo.DefaultValue.maxSpace,
+            maxBaseSpace: nil,
+            maxDriveSpace: nil,
+            maxUpload: 0,
+            role: UserInfo.DefaultValue.role,
+            private: 0,
+            subscribed: UserInfo.DefaultValue.subscribed,
+            services: 0,
+            delinquent: 0,
+            orgPrivateKey: nil,
+            email: nil,
+            displayName: nil,
+            keys: [],
+            isCredentialLess: true
+        )
     }
 }
 
