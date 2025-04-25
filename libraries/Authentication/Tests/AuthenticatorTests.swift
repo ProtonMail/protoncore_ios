@@ -1893,7 +1893,7 @@ class AuthenticatorTests: XCTestCase {
         XCTAssertEqual(resultUser, testUser)
         XCTAssertTrue(resultUser.isCredentialLess)
 
-        waitForExpectations(timeout: timeout) { (error) in
+        await waitForExpectations(timeout: timeout) { (error) in
             XCTAssertNil(error, String(describing: error))
         }
     }
