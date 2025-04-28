@@ -1,8 +1,4 @@
-//
-//  AccessGrantedDeniedViewModel.swift
-//  ProtonCore-LoginUI - Created on 23/08/2024.
-//
-//  Copyright (c) 2024 Proton AG
+//  Copyright (c) 2025 Proton AG
 //
 //  This file is part of Proton AG and ProtonCore.
 //
@@ -20,34 +16,25 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 #if os(iOS)
-
 import SwiftUI
+import ProtonCoreUIFoundations
 
-extension LoginVPNGuestView {
-    struct Dependencies {
+public final class WelcomeVPNGuestViewController: UIHostingController<WelcomeVPNGuestView> {
+
+     required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    init(dependencies: WelcomeVPNGuestView.Dependencies) {
+        let viewModel = WelcomeVPNGuestView.ViewModel(dependencies: dependencies)
+        let view = WelcomeVPNGuestView(viewModel: viewModel)
+        super.init(rootView: view)
+    }
+
+    override public func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = ColorProvider.BackgroundNorm
     }
 }
-
-extension LoginVPNGuestView {
-
-    @MainActor
-    final class ViewModel: ObservableObject {
-
-        init(dependencies: Dependencies) {}
-
-        func continueAsGuestTapped() {}
-        func signInTapped() {}
-
-    }
-}
-#if DEBUG
-extension LoginVPNGuestView.ViewModel {
-    static func mock() -> LoginVPNGuestView.ViewModel {
-        let dependencies = LoginVPNGuestView.Dependencies()
-        let viewModel = LoginVPNGuestView.ViewModel(dependencies: dependencies)
-        return viewModel
-    }
-}
-#endif
 
 #endif

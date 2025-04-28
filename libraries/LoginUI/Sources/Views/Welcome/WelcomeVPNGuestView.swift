@@ -1,27 +1,26 @@
-//
-//  Created on 17/4/25 by Alex Morral.
-//
 //  Copyright (c) 2025 Proton AG
 //
-//  Proton VPN is free software: you can redistribute it and/or modify
+//  This file is part of Proton AG and ProtonCore.
+//
+//  ProtonCore is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 //
-//  Proton VPN is distributed in the hope that it will be useful,
+//  ProtonCore is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
 //
 //  You should have received a copy of the GNU General Public License
-//  along with Proton VPN.  If not, see <https://www.gnu.org/licenses/>.
+//  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 #if os(iOS)
 
 import SwiftUI
 import ProtonCoreUIFoundations
 
-struct LoginVPNGuestView: View {
+public struct WelcomeVPNGuestView: View {
 
     @StateObject var viewModel: ViewModel
     var externalLinks = ExternalLinks(clientApp: .vpn)
@@ -34,7 +33,7 @@ struct LoginVPNGuestView: View {
         static let extraLargeSpacing: CGFloat = 24
     }
 
-    var body: some View {
+    public var body: some View {
         ZStack {
             VStack {
                 IconProvider.vpnWelcomeImageV2
@@ -78,6 +77,7 @@ struct LoginVPNGuestView: View {
                         style: .constant(.init(mode: .solid())),
                         content: .constant(.init(
                             title: LUITranslation.continue_as_guest.l10n,
+                            isAnimating: viewModel.viewState == .loading,
                             action: viewModel.continueAsGuestTapped
                         ))
                     )
@@ -85,6 +85,7 @@ struct LoginVPNGuestView: View {
                         style: .constant(.init(mode: .solid(.signInButtonStyle))),
                         content: .constant(.init(
                             title: LUITranslation.signin_button.l10n,
+                            isEnabled: viewModel.viewState == .idle,
                             action: viewModel.signInTapped
                         ))
                     )
@@ -110,7 +111,7 @@ struct LoginVPNGuestView: View {
 
 #if DEBUG
 #Preview {
-    LoginVPNGuestView(viewModel: .mock())
+    WelcomeVPNGuestView(viewModel: .mock())
 }
 #endif
 

@@ -309,7 +309,7 @@ extension LoginService: Login {
                 throw LoginError.invalidState
             }
         case .failure(let error):
-            throw LoginError.invalidState
+            throw error
         }
     }
 

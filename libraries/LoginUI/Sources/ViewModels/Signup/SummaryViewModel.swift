@@ -80,6 +80,8 @@ class SummaryViewModel {
                 return text
             case .custom(let data):
                 return data.startButtonText
+            case .vpnV2:
+                return nil
             }
         }
     }
