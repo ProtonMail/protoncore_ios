@@ -21,10 +21,12 @@ import ProtonCoreLog
 import ProtonCoreLogin
 import SwiftUI
 
+typealias WelcomeLoginControllerDelegate = LoginViewControllerDelegate & WelcomeViewControllerDelegate
+
 extension WelcomeVPNGuestView {
     struct Dependencies {
         let login: Login
-        let delegate: LoginViewControllerDelegate?
+        let delegate: WelcomeLoginControllerDelegate?
     }
 }
 
@@ -33,7 +35,7 @@ extension WelcomeVPNGuestView {
     @MainActor
     final class ViewModel: ObservableObject {
         private var login: Login
-        private weak var delegate: LoginViewControllerDelegate?
+        private weak var delegate: WelcomeLoginControllerDelegate?
 
         enum ViewState {
             case idle
@@ -68,8 +70,9 @@ extension WelcomeVPNGuestView {
                 }
             }
         }
-        func signInTapped() {}
-
+        func signInTapped() {
+            delegate?.userWantsToLogIn(username: nil)
+        }
     }
 }
 #if DEBUG
