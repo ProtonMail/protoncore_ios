@@ -402,6 +402,8 @@
 
 "We couldn't sign you in. Please scan a new QR code to try again." = "Δεν ήταν δυνατή η σύνδεσή σας. Παρακαλούμε σαρώστε έναν νέο κωδικό QR για να προσπαθήσετε ξανά.";
 
+"We couldn't sign you in. Please sign in with your password." = "Δεν ήταν δυνατή η είσοδός σας. Παρακαλούμε, συνδεθείτε με τον κωδικό σας.";
+
 "New QR code" = "Νέος κωδικός QR";
 
 "Allow access to camera" = "Να επιτρέπεται η πρόσβαση στην κάμερα";
@@ -415,3 +417,15 @@
 "We couldn't load the QR code" = "Δεν ήταν δυνατή η φόρτωση του κωδικού QR";
 
 "Retry" = "Δοκιμάστε ξανά";
+
+"Welcome to Proton VPN" = "Καλώς ήρθατε στο Proton VPN";
+
+"Browse privately, access blocked content, and enjoy digital freedom." = "Περιηγηθείτε ιδιωτικά, αποκτήστε πρόσβαση σε αποκλεισμένο περιεχόμενο και απολαύστε την ψηφιακή ελευθερία.";
+
+"Certified no-logs VPN" = "Πιστοποιημένο VPN χωρίς αρχεία καταγραφής";
+
+"Continue as guest" = "Συνέχεια ως επισκέπτης";
+
+"By using this app you accept our" = "Χρησιμοποιώντας αυτήν την εφαρμογή αποδέχεστε τους";
+
+"Terms and Conditions." = "Όροι και Προϋποθέσεις.";

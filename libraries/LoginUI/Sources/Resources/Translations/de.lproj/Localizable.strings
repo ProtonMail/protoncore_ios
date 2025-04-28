@@ -260,7 +260,7 @@
 
 "We could not initiate the Secure Password update connection. Please try again." = "Wir konnten die Verbindung zur sicheren Passwort-Aktualisierung nicht einrichten. Bitte versuche es nochmals.";
 
-"Join %@" = "Beitreten %@";
+"Join %@" = "%@ beitreten";
 
 "%@ added you to their Proton organization." = "%@ hat dich zu seiner Proton-Organisation hinzugefügt.";
 
@@ -378,7 +378,7 @@
 
 "Place QR code within the square" = "QR-Code innerhalb des Quadrats positionieren";
 
-"Verifying..." = "Wird überprüft ...";
+"Verifying..." = "Wird überprüft...";
 
 "You’re signed in to %@ on the other device." = "Du bist bei %@ auf einem anderen Gerät angemeldet.";
 
@@ -402,6 +402,8 @@
 
 "We couldn't sign you in. Please scan a new QR code to try again." = "Anmelden fehlgeschlagen. Bitte einen neuen QR-Code scannen, um es erneut zu versuchen.";
 
+"We couldn't sign you in. Please sign in with your password." = "Anmelden fehlgeschlagen. Bitte mit deinem Passwort anmelden.";
+
 "New QR code" = "Neuer QR-Code";
 
 "Allow access to camera" = "Kamerazugriff erlauben";
@@ -415,3 +417,15 @@
 "We couldn't load the QR code" = "QR-Code konnte nicht geladen werden";
 
 "Retry" = "Erneut versuchen";
+
+"Welcome to Proton VPN" = "Willkommen bei Proton VPN";
+
+"Browse privately, access blocked content, and enjoy digital freedom." = "Surfe privat, greife auf blockierte Inhalte zu und genieße digitale Freiheit.";
+
+"Certified no-logs VPN" = "Zertifiziertes VPN ohne Protokollierung";
+
+"Continue as guest" = "Als Gast fortfahren";
+
+"By using this app you accept our" = "Mit der Nutzung dieser App akzeptierst du unsere";
+
+"Terms and Conditions." = "Allgemeinen Geschäftsbedingungen.";

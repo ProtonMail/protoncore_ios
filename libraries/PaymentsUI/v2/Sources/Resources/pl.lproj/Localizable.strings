@@ -8,50 +8,50 @@
 
 "Current_free_plan_name" = "Free";
 
-"Current_plan_exipiration" = "Your subscription expires on";
+"Current_plan_exipiration" = "Subskrypcja wygaśnie";
 
-"Current_plan_renewal" = "Your subscription automatically renews on";
+"Current_plan_renewal" = "Subskrypcja odnowi się automatycznie";
 
 "Error_view_button_title" = "Spróbuj ponownie";
 
-"Error_view_message" = "We couldn't load this page. Please refresh the page or check your internet connection.";
+"Error_view_message" = "Nie mogliśmy załadować strony. Odśwież stronę lub sprawdź połączenie internetowe.";
 
 "Error_view_title" = "Coś poszło nie tak";
 
-"Loading_plans_message" = "Fetching available plans..";
+"Loading_plans_message" = "Pobieranie dostępnych planów...";
 
 "Monthly_cycle" = "1 miesiąc";
 
-"No_available_plan_message" = "Your subscription canâ€™t be managed inside the mobile app.";
+"No_available_plan_message" = "Nie możesz zarządzać subskrypcją poprzez aplikację mobilną.";
 
-"No_available_plan_title" = "No available plans found";
+"No_available_plan_title" = "Nie znaleziono dostępnych planów";
 
-"No_filtered_plan_message" = "Please select a different billing cycle";
+"No_filtered_plan_message" = "Wybierz inny cykl rozliczeniowy";
 
-"No_filtered_plan_title" = "No plans found";
+"No_filtered_plan_title" = "Nie znaleziono planów";
 
-"Plans_footer_disclaimer" = "You cannot manage subscriptions inside the mobile app";
+"Plans_footer_disclaimer" = "Nie możesz zarządzać subskrypcją poprzez aplikację mobilną";
 
-"Purchase_button_title" = "Get %@";
+"Purchase_button_title" = "Wybierz plan %@";
 
-"Select_plan_nav_title" = "Select a plan";
+"Select_plan_nav_title" = "Wybierz plan";
 
-"Subscriptions_nav_title" = "Subscriptions";
+"Subscriptions_nav_title" = "Subskrypcje";
 
-"Transaction_cancelled_by_user" = "Transaction cancelled by the user";
+"Transaction_cancelled_by_user" = "Transakcja została anulowana przez użytkownika";
 
-"Transaction_process_error" = "Something went wrong, please retry. If the issue persists please contact our support team.";
+"Transaction_process_error" = "Coś poszło nie tak. Spróbuj ponownie. Jeśli problem będzie się powtarzał, skontaktuj się z naszym zespołem wsparcia klienta.";
 
-"Transaction_state_payment_account_update_complete" = "Account updated";
+"Transaction_state_payment_account_update_complete" = "Konto zostało ulepszone";
 
-"Transaction_state_payment_account_update_progress" = "Updating your account";
+"Transaction_state_payment_account_update_progress" = "Ulepszanie konta";
 
-"Transaction_state_payment_confirmation_complete" = "Payment confirmed";
+"Transaction_state_payment_confirmation_complete" = "Płatność została potwierdzona";
 
-"Transaction_state_payment_confirmation_progress" = "Confirming your payment";
+"Transaction_state_payment_confirmation_progress" = "Potwierdzanie płatności";
 
-"Transaction_state_view_subtitle" = "This should take no more than a minute.";
+"Transaction_state_view_subtitle" = "Zazwyczaj nie trwa to dłużej niż minutę.";
 
-"Transaction_state_view_title" = "Your payment is being verified...";
+"Transaction_state_view_title" = "Weryfikowanie płatności...";
 
-"Yearly_cycle" = "12 months";
+"Yearly_cycle" = "12 miesięcy";

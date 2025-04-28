@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "A apărut o eroare neașteptată. Dacă aceasta persistă, contactați asistența pentru clienți.";
 
-"Plans_Managere_peding_transaction_received" = "S-a primit o tranzacție în așteptare neașteptată.";
+"Plans_Managere_peding_transaction_received" = "S-a primit o tranzacție în așteptare neașteptată";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Nu se poate prelua abonamentul curent.";
 

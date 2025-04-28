@@ -1,21 +1,21 @@
-"APIs_malformed_url_request" = "Something went wrong, and we couldn't fulfil your request. If the issue persists, please contact customer support.";
+"APIs_malformed_url_request" = "Niečo sa pokazilo a vašu požiadavku sa nepodarilo splniť. Ak problém pretrváva, kontaktujte zákaznícku podporu.";
 
-"Plans_Manager_impossible_to_get_user_uuid" = "It was impossible to get the user’s UUID for the transaction";
+"Plans_Manager_impossible_to_get_user_uuid" = "Nepodarilo sa získať UUID používateľa pre transakciu";
 
-"Plans_Manager_impossible_to_match_plan" = "It was impossible to match the Proton Plan to an Apple Store plan";
+"Plans_Manager_impossible_to_match_plan" = "Nebolo možné priradiť plán Proton k plánu Apple Store";
 
-"Plans_Manager_impossible_to_restore_transactions" = "It was impossible to restore transactions, please contact customer support";
+"Plans_Manager_impossible_to_restore_transactions" = "Nebolo možné obnoviť transakcie, kontaktujte zákaznícku podporu.";
 
-"Plans_Manager_Transaction_cancelled_by_user" = "The transaction has been cancelled by the user";
+"Plans_Manager_Transaction_cancelled_by_user" = "Transakcia bola zrušená používateľom";
 
-"Plans_Manager_Transaction_unknown_error" = "An unexpected error occured, if this persists, please contact customer support";
+"Plans_Manager_Transaction_unknown_error" = "Vyskytla sa neočakávaná chyba. Ak problém pretrváva, kontaktujte zákaznícku podporu.";
 
-"Plans_Managere_peding_transaction_received" = "Unexpected peding transaction received";
+"Plans_Managere_peding_transaction_received" = "Prijatá neočakávaná čakajúca transakcia";
 
-"PlansComposer_unable_to_fetch_currentSub" = "Unable to fetch the current subscription";
+"PlansComposer_unable_to_fetch_currentSub" = "Nepodarilo sa načítať aktuálne predplatné";
 
-"Remote_manager_error" = "Something went wrong and we could fullfil your request. If the issue persists, please contact customer support.";
+"Remote_manager_error" = "Niečo sa pokazilo a vašu požiadavku sa nepodarilo splniť. Ak problém pretrváva, kontaktujte zákaznícku podporu, prosím.";
 
-"SK_Receipt_impossible_to_get_receipt" = "Impossible to get transaction receipt data from Apple";
+"SK_Receipt_impossible_to_get_receipt" = "Nedá sa získať údaj o potvrdení transakcie od spoločnosti Apple";
 
-"Transaction_Handler_plan_not_found" = "It was impossible to find the name of the plan you’re trying to purchase. If the issue persists please contact customer support";
+"Transaction_Handler_plan_not_found" = "Nepodarilo sa nájsť názov plánu, ktorý sa pokúšate zakúpiť. Ak problém pretrváva, kontaktujte, prosím, oddelenie zákazníckej podpory.";

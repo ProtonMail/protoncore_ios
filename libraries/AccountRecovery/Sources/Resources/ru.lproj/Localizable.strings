@@ -14,7 +14,7 @@
 
 "If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
 
-"Password reset requested" = "Password reset requested";
+"Password reset requested" = "Запрошен сброс пароля";
 
 "Insecure_View_line1" = "Теперь вы можете изменить свой пароль для аккаунта ";
 
@@ -32,7 +32,7 @@
 
 "Settings_Item_Value_Grace" = "Pending";
 
-"Settings_Item_Value_Expired" = "Expired";
+"Settings_Item_Value_Expired" = "Срок действия истёк";
 
 "Settings_Item_Value_Cancelled" = "Cancelled";
 
@@ -48,13 +48,13 @@
 
 "We received a password reset request for %@." = "We received a password reset request for %@.";
 
-"Password reset cancelled" = "Password reset cancelled";
+"Password reset cancelled" = "Сброс пароля отменён";
 
 "Cancelled by the user" = "Cancelled by the user";
 
 "Authenticated in another session" = "Authenticated in another session";
 
-"none" = "none";
+"none" = "отсутствует";
 
 "The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
 

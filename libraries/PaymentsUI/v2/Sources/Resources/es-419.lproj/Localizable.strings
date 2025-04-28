@@ -18,7 +18,7 @@
 
 "Error_view_title" = "Ocurrió un error";
 
-"Loading_plans_message" = "Obteniendo planes disponibles..";
+"Loading_plans_message" = "Obteniendo planes disponibles...";
 
 "Monthly_cycle" = "1 mes";
 
@@ -30,7 +30,7 @@
 
 "No_filtered_plan_title" = "No se encontraron planes";
 
-"Plans_footer_disclaimer" = "No puede gestionar las suscripciones dentro de la aplicación móvil";
+"Plans_footer_disclaimer" = "No puede gestionar las suscripciones dentro de la aplicación móvil.";
 
 "Purchase_button_title" = "Obtener %@";
 
@@ -40,17 +40,17 @@
 
 "Transaction_cancelled_by_user" = "Transacción cancelada por el usuario";
 
-"Transaction_process_error" = "Ocurrió un problema. Vuelva a intentarlo. Si el problema persiste, póngase en contacto con nuestro equipo de soporte.";
+"Transaction_process_error" = "Ocurrió un error. Inténtelo de nuevo. Si el problema persiste, póngase en contacto con nuestro equipo de soporte.";
 
 "Transaction_state_payment_account_update_complete" = "Cuenta actualizada";
 
-"Transaction_state_payment_account_update_progress" = "Mejorando su cuenta";
+"Transaction_state_payment_account_update_progress" = "Actualizando su cuenta";
 
 "Transaction_state_payment_confirmation_complete" = "Pago confirmado";
 
 "Transaction_state_payment_confirmation_progress" = "Confirmando su pago";
 
-"Transaction_state_view_subtitle" = "Esto no debería de tomar más de un minuto.";
+"Transaction_state_view_subtitle" = "Esto debería tomar menos de un minuto.";
 
 "Transaction_state_view_title" = "Se está verificando su pago...";
 

@@ -402,6 +402,8 @@
 
 "We couldn't sign you in. Please scan a new QR code to try again." = "Oturumunuz açılamadı. Yeniden denemek için lütfen yeni bir karekod tarayın.";
 
+"We couldn't sign you in. Please sign in with your password." = "We couldn't sign you in. Please sign in with your password.";
+
 "New QR code" = "Yeni kare kod ";
 
 "Allow access to camera" = "Kameraya erişme izni ver";
@@ -415,3 +417,15 @@
 "We couldn't load the QR code" = "Kare kod yüklenemedi";
 
 "Retry" = "Yeniden dene";
+
+"Welcome to Proton VPN" = "Welcome to Proton VPN";
+
+"Browse privately, access blocked content, and enjoy digital freedom." = "Browse privately, access blocked content, and enjoy digital freedom.";
+
+"Certified no-logs VPN" = "Certified no-logs VPN";
+
+"Continue as guest" = "Continue as guest";
+
+"By using this app you accept our" = "By using this app you accept our";
+
+"Terms and Conditions." = "Terms and Conditions.";

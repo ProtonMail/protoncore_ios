@@ -1,26 +1,26 @@
 "Settings_Item" = "Tilbakestilling av passord";
 
-"Insecure_View_Title" = "Password reset";
+"Insecure_View_Title" = "Tilbakestilling av passord";
 
-"Cancelled_View_Title" = "Password reset";
+"Cancelled_View_Title" = "Tilbakestilling av passord";
 
-"Grace_View_Title" = "Password reset";
+"Grace_View_Title" = "Tilbakestilling av passord";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**";
+"We received a password reset request for **%@**." = "Vi har mottatt en forespørsel om å tilbakestille passordet for **%@**";
 
-"We received a password reset request for %@." = "We received a password reset request for %@";
+"We received a password reset request for %@." = "Vi mottok en forespørsel om å tilbakestille passordet for %@";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Hvis du ikke ba om å tilbakestille passordet, kan du **avbryte denne forespørselen nå**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Hvis du ikke ba om å tilbakestille passordet ditt, kan du avbryte denne forespørselen nå.";
 
-"Password reset requested" = "Password reset requested";
+"Password reset requested" = "Forespørsel om tilbakestilling av passord";
 
 "Insecure_View_line1" = "Du kan nå endre passordet for kontoen ";
 
-"You can change your password in %@." = "You can change your password in %@.";
+"You can change your password in %@." = "Du kan endre passordet ditt om %@.";
 
-"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "For å forsikre oss om at det virkelig er deg som prøver å tilbakestille passordet ditt, venter vi 72 timer før vi godkjenner forespørsler.";
 
 "Insecure_View_line2" = " fritt i løpet av ";
 
@@ -30,52 +30,52 @@
 
 "Grace_View_Undefined_Time_Left" = "noen timer";
 
-"Settings_Item_Value_Grace" = "Pending";
+"Settings_Item_Value_Grace" = "Ventende";
 
-"Settings_Item_Value_Expired" = "Expired";
+"Settings_Item_Value_Expired" = "Utløpt";
 
-"Settings_Item_Value_Cancelled" = "Cancelled";
+"Settings_Item_Value_Cancelled" = "Avbrutt";
 
-"Settings_Item_Value_Insecure" = "Available";
+"Settings_Item_Value_Insecure" = "Tilgjengelig";
 
-"Insecure_View_Cancel_Button_CTA" = "Cancel reset";
+"Insecure_View_Cancel_Button_CTA" = "Avbryt tilbakestilling";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Hvis du ikke ba om å tilbakestille passordet, kan du **avbryte denne forespørselen nå**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Hvis du ikke ba om å tilbakestille passordet ditt, kan du avbryte denne forespørselen nå.";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**.";
+"We received a password reset request for **%@**." = "Vi har mottatt en forespørsel om å tilbakestille passordet for **%@**.";
 
-"We received a password reset request for %@." = "We received a password reset request for %@.";
+"We received a password reset request for %@." = "Vi mottok en forespørsel om å tilbakestille passordet for %@.";
 
-"Password reset cancelled" = "Password reset cancelled";
+"Password reset cancelled" = "Tilbakestilling av passord avbrutt";
 
-"Cancelled by the user" = "Cancelled by the user";
+"Cancelled by the user" = "Avbrutt av brukeren";
 
-"Authenticated in another session" = "Authenticated in another session";
+"Authenticated in another session" = "Autentisert i en annen økt";
 
-"none" = "none";
+"none" = "ingen";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "Kontogjenopprettingsprosessen er utløpt på grunn av manglende aktivitet";
 
-"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "If you never made a password reset request, someone else could have access to your account. **Change your password now**";
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Hvis du aldri har sendt en forespørsel om å tilbakestille passordet, kan det hende at noen andre har tilgang til kontoen din. **Endre passordet ditt nå**";
 
-"If you never made a password reset request, someone else could have access to your account. Change your password now" = "If you never made a password reset request, someone else could have access to your account. Change your password now";
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Hvis du aldri har sendt en forespørsel om å tilbakestille passordet ditt, kan noen andre ha fått tilgang til kontoen din. Endre passordet ditt nå";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "Kontogjenopprettingsprosessen er utløpt på grunn av manglende aktivitet";
 
-"Recovery process not started" = "Recovery process not started";
+"Recovery process not started" = "Gjenopprettingsprosessen er ikke startet";
 
-"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Foreløpig er det ingen kontogjenoppretting i gang. Gå til en økt på webapplikasjonen for å gjenopprette passordet ditt.";
 
-"You can now reset your password" = "You can now reset your password";
+"You can now reset your password" = "Du kan nå tilbakestille passordet ditt";
 
-"Reset available until %@." = "Reset available until %@.";
+"Reset available until %@." = "Tilbakestilling tilgjengelig til %@.";
 
-"Change device to continue" = "Change device to continue";
+"Change device to continue" = "Endre enhet for å fortsette";
 
-"To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
+"To reset your password, go back to your active session on **the originating device**." = "For å tilbakestille passordet ditt, gå tilbake til den aktive økten din på **den opprinnelige enheten**.";
 
-"To reset your password, go back to your active session on the originating device." = "To reset your password, go back to your active session on the originating device.";
+"To reset your password, go back to your active session on the originating device." = "For å tilbakestille passordet ditt, gå tilbake til den aktive økten din på den opprinnelige enheten.";
 
-"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now.";
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Du har %@ for å tilbakestille passordet ditt.\nDu må gjøre dette på enheten og i nettleseren som du sendte forespørselen om tilbakestilling av passord fra.\nHvis du ikke ba om å tilbakestille passordet, kan du avbryte forespørselen nå.";

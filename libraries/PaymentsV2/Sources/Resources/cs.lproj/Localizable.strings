@@ -16,6 +16,6 @@
 
 "Remote_manager_error" = "Něco se pokazilo a my jsme nemohli splnit váš požadavek. Pokud problém přetrvává, kontaktujte prosím zákaznickou podporu.";
 
-"SK_Receipt_impossible_to_get_receipt" = "Není možné získat údaje o potvrzení transakce od společnosti Apple";
+"SK_Receipt_impossible_to_get_receipt" = "Není možné získat potvrzení o přijení transakce od společnosti Apple";
 
 "Transaction_Handler_plan_not_found" = "Název tarifu, který se snažíte zakoupit, nebylo možné najít. Pokud problém přetrvává, kontaktujte prosím zákaznickou podporu";

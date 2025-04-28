@@ -1,26 +1,26 @@
 "Settings_Item" = "Pengaturan ulang kata sandi";
 
-"Insecure_View_Title" = "Password reset";
+"Insecure_View_Title" = "Pengaturan ulang kata sandi";
 
-"Cancelled_View_Title" = "Password reset";
+"Cancelled_View_Title" = "Pengaturan ulang kata sandi";
 
-"Grace_View_Title" = "Password reset";
+"Grace_View_Title" = "Pengaturan ulang kata sandi";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**";
+"We received a password reset request for **%@**." = "Kami menerima permintaan pengaturan ulang kata sandi untuk **%@**";
 
-"We received a password reset request for %@." = "We received a password reset request for %@";
+"We received a password reset request for %@." = "Kami menerima permintaan pengaturan ulang kata sandi untuk %@";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Apabila Anda tidak meminta untuk mengatur ulang kata sandi Anda, **batalkan permintaan ini sekarang juga**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Apabila Anda tidak meminta untuk mengatur ulang kata sandi Anda, batalkan permintaan ini sekarang juga.";
 
-"Password reset requested" = "Password reset requested";
+"Password reset requested" = "Pengaturan ulang kata sandi diminta";
 
 "Insecure_View_line1" = "Anda kini dapat mengubah kata sandi untuk akun ";
 
-"You can change your password in %@." = "You can change your password in %@.";
+"You can change your password in %@." = "Anda dapat mengubah kata sandi Anda dalam %@.";
 
-"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Untuk memastikan bahwa permintaan pengaturan ulang kata sandi ini benar-benar berasal dari Anda, kami menunggu 72 jam sebelum menyetujui permintaan yang ada.";
 
 "Insecure_View_line2" = " secara bebas selama ";
 
@@ -30,52 +30,52 @@
 
 "Grace_View_Undefined_Time_Left" = "beberapa jam";
 
-"Settings_Item_Value_Grace" = "Pending";
+"Settings_Item_Value_Grace" = "Menunggu respons";
 
-"Settings_Item_Value_Expired" = "Expired";
+"Settings_Item_Value_Expired" = "Kedaluwarsa";
 
-"Settings_Item_Value_Cancelled" = "Cancelled";
+"Settings_Item_Value_Cancelled" = "Dibatalkan";
 
-"Settings_Item_Value_Insecure" = "Available";
+"Settings_Item_Value_Insecure" = "Tersedia";
 
-"Insecure_View_Cancel_Button_CTA" = "Cancel reset";
+"Insecure_View_Cancel_Button_CTA" = "Batalkan pengaturan ulang";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Apabila Anda tidak meminta untuk mengatur ulang kata sandi Anda, **batalkan permintaan ini sekarang juga**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Apabila Anda tidak meminta untuk mengatur ulang kata sandi Anda, batalkan permintaan ini sekarang juga.";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**.";
+"We received a password reset request for **%@**." = "Kami menerima permintaan pengaturan ulang kata sandi untuk **%@**.";
 
-"We received a password reset request for %@." = "We received a password reset request for %@.";
+"We received a password reset request for %@." = "Kami menerima permintaan pengaturan ulang kata sandi untuk %@.";
 
-"Password reset cancelled" = "Password reset cancelled";
+"Password reset cancelled" = "Pengaturan ulang kata sandi dibatalkan";
 
-"Cancelled by the user" = "Cancelled by the user";
+"Cancelled by the user" = "Dibatalkan oleh pengguna";
 
-"Authenticated in another session" = "Authenticated in another session";
+"Authenticated in another session" = "Terautentikasi di sesi lain";
 
-"none" = "none";
+"none" = "tidak ada";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "Proses pemulihan akun telah kedaluwarsa karena tidak adanya tindakan yang diambil";
 
-"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "If you never made a password reset request, someone else could have access to your account. **Change your password now**";
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Apabila Anda tidak pernah meminta untuk mengatur ulang kata sandi, orang lain mungkin memiliki akses ke akun Anda. **Ubah kata sandi Anda sekarang juga**";
 
-"If you never made a password reset request, someone else could have access to your account. Change your password now" = "If you never made a password reset request, someone else could have access to your account. Change your password now";
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Apabila Anda tidak pernah meminta untuk mengatur ulang kata sandi, orang lain mungkin memiliki akses ke akun Anda. Ubah kata sandi Anda sekarang juga";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "Proses pemulihan akun telah kedaluwarsa karena tidak adanya tindakan yang diambil";
 
-"Recovery process not started" = "Recovery process not started";
+"Recovery process not started" = "Proses pemulihan belum dimulai";
 
-"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Tidak ada proses pemulihan akun yang sedang berlangsung untuk saat ini. Silakan tuju sesi yang aktif pada aplikasi web untuk memulihkan kata sandi Anda.";
 
-"You can now reset your password" = "You can now reset your password";
+"You can now reset your password" = "Anda kini dapat mengatur ulang kata sandi Anda";
 
-"Reset available until %@." = "Reset available until %@.";
+"Reset available until %@." = "Pengaturan ulang tersedia hingga %@.";
 
-"Change device to continue" = "Change device to continue";
+"Change device to continue" = "Ubah perangkat untuk melanjutkan";
 
-"To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
+"To reset your password, go back to your active session on **the originating device**." = "Untuk mengatur ulang kata sandi Anda, kembali ke sesi aktif Anda di **perangkat asli**.";
 
-"To reset your password, go back to your active session on the originating device." = "To reset your password, go back to your active session on the originating device.";
+"To reset your password, go back to your active session on the originating device." = "Untuk mengatur ulang kata sandi Anda, kembali ke sesi aktif Anda di perangkat yang memulai.";
 
-"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now.";
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Anda memiliki %@ untuk mengatur ulang kata sandi Anda.\nAnda harus melakukannya di perangkat dan peramban yang Anda gunakan untuk membuat permintaan pengaturan ulang kata sandi.\nApabila Anda tidak meminta untuk mengatur ulang kata sandi Anda, batalkan permintaan ini sekarang juga.";

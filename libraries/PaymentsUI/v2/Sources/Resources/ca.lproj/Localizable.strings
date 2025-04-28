@@ -1,50 +1,50 @@
 "All_cycle" = "Tots els cicles de facturació";
 
-"Available_plans_section_title" = "Millora el teu pla";
+"Available_plans_section_title" = "Milloreu el vostre pla";
 
-"Available_subscriptions_view_subtitle" = "Els nostres plans per a la teva privacitat";
+"Available_subscriptions_view_subtitle" = "Els nostres plans per a la vostra privadesa";
 
-"Available_subscriptions_view_title" = "Selecciona un pla";
+"Available_subscriptions_view_title" = "Seleccioneu un pla";
 
 "Current_free_plan_name" = "Free";
 
-"Current_plan_exipiration" = "La teva subscripció caduca en";
+"Current_plan_exipiration" = "La vostra subscripció caduca el";
 
-"Current_plan_renewal" = "La teva subscripció es renova automàticament en";
+"Current_plan_renewal" = "La vostra subscripció es renova automàticament el";
 
-"Error_view_button_title" = "Torna a provar";
+"Error_view_button_title" = "Reintenta";
 
-"Error_view_message" = "No s'ha pogut carregar aquesta pàgina. Si us plau, actualitza la pàgina o comprova la teva connexió a internet.";
+"Error_view_message" = "No hem pogut carregar aquesta pàgina. Actualitzeu la pàgina o comproveu la vostra connexió a Internet.";
 
-"Error_view_title" = "Alguna cosa ha anat malament";
+"Error_view_title" = "Quelcom ha anat malament";
 
-"Loading_plans_message" = "Obtenció de plans disponibles.";
+"Loading_plans_message" = "S'estan obtenint els plans disponibles...";
 
 "Monthly_cycle" = "1 mes";
 
-"No_available_plan_message" = "La teva subscripció no es pot gestionar des de l'aplicació mòbil.";
+"No_available_plan_message" = "La vostra subscripció no es pot gestionar des de l'aplicació mòbil.";
 
 "No_available_plan_title" = "No s'ha trobat cap pla disponible";
 
-"No_filtered_plan_message" = "Si us plau, selecciona un cicle de facturació diferent";
+"No_filtered_plan_message" = "Seleccioneu un altre cicle de facturació";
 
 "No_filtered_plan_title" = "No s'ha trobat cap pla";
 
-"Plans_footer_disclaimer" = "No pots gestionar les subscripcions des de l'aplicació mòbil";
+"Plans_footer_disclaimer" = "No podeu gestionar les subscripcions dins de l'aplicació mòbil";
 
-"Purchase_button_title" = "Obté %@";
+"Purchase_button_title" = "Obtén %@";
 
-"Select_plan_nav_title" = "Selecciona un pla";
+"Select_plan_nav_title" = "Seleccioneu un pla";
 
 "Subscriptions_nav_title" = "Subscripcions";
 
 "Transaction_cancelled_by_user" = "Transacció cancel·lada per l'usuari";
 
-"Transaction_process_error" = "Alguna cosa ha anat malament, torna a provar. Si el problema persisteix, si us plau, poseu-vos en contacte amb el nostre equip de suport.";
+"Transaction_process_error" = "S'ha produït un error, torneu-ho a provar. Si el problema persisteix, poseu-vos en contacte amb el nostre equip d'assistència.";
 
-"Transaction_state_payment_account_update_complete" = "Compte actualitzat";
+"Transaction_state_payment_account_update_complete" = "Compte millorat";
 
-"Transaction_state_payment_account_update_progress" = "Actualitzant el vostre compte";
+"Transaction_state_payment_account_update_progress" = "S'està actualitzant el vostre compte";
 
 "Transaction_state_payment_confirmation_complete" = "Pagament confirmat";
 
@@ -52,6 +52,6 @@
 
 "Transaction_state_view_subtitle" = "Això no hauria de trigar més d'un minut.";
 
-"Transaction_state_view_title" = "El vostre pagament s'està verificant...";
+"Transaction_state_view_title" = "S'està verificant el vostre pagament...";
 
 "Yearly_cycle" = "12 mesos";

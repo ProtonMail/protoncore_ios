@@ -10,9 +10,9 @@
 
 "We received a password reset request for %@." = "Атрыманы запыт на скіданне пароля для %@";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "**Скасуйце гэты запыт**, калі вы яго не рабілі.";
+"If you didn't ask to reset your password, **cancel this request now**." = "**Скасуйце запыт на скіданне пароля**, калі вы яго не рабілі.";
 
-"If you didn't ask to reset your password, cancel this request now." = "Скасуйце гэты запыт, калі вы яго не рабілі.";
+"If you didn't ask to reset your password, cancel this request now." = "Скасуйце запыт на скіданне пароля, калі вы яго не рабілі.";
 
 "Password reset requested" = "Запыт на скіданне пароля";
 
@@ -40,9 +40,9 @@
 
 "Insecure_View_Cancel_Button_CTA" = "Скасаваць скіданне";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "**Скасуйце гэты запыт**, калі вы яго не рабілі.";
+"If you didn't ask to reset your password, **cancel this request now**." = "**Скасуйце запыт на скіданне пароля**, калі вы яго не рабілі.";
 
-"If you didn't ask to reset your password, cancel this request now." = "Скасуйце гэты запыт, калі вы яго не рабілі.";
+"If you didn't ask to reset your password, cancel this request now." = "Скасуйце запыт на скіданне пароля, калі вы яго не рабілі.";
 
 "We received a password reset request for **%@**." = "Атрыманы запыт на скіданне пароля для **%@**.";
 

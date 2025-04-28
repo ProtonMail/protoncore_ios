@@ -402,6 +402,8 @@
 
 "We couldn't sign you in. Please scan a new QR code to try again." = "我们无法完成您的登录。请扫描新的二维码以重试。";
 
+"We couldn't sign you in. Please sign in with your password." = "我们无法完成您的登录。请使用您的密码登入。";
+
 "New QR code" = "新的二维码";
 
 "Allow access to camera" = "允许访问摄像头";
@@ -415,3 +417,15 @@
 "We couldn't load the QR code" = "无法加载二维码";
 
 "Retry" = "重试";
+
+"Welcome to Proton VPN" = "欢迎使用 Proton VPN";
+
+"Browse privately, access blocked content, and enjoy digital freedom." = "私密浏览、访问被屏蔽的内容，享受数字自由。";
+
+"Certified no-logs VPN" = "经过认证的无日志 VPN";
+
+"Continue as guest" = "以访客身份继续";
+
+"By using this app you accept our" = "使用本应用程序即表示您接受我们的";
+
+"Terms and Conditions." = "服务条款。";

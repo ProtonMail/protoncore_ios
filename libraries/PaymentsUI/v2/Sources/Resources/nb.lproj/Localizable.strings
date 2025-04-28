@@ -1,57 +1,57 @@
-"All_cycle" = "All billing cycles";
+"All_cycle" = "Alle faktureringssykluser";
 
-"Available_plans_section_title" = "Upgrade your plan";
+"Available_plans_section_title" = "Oppgrader planen din";
 
-"Available_subscriptions_view_subtitle" = "Our plans for your privacy";
+"Available_subscriptions_view_subtitle" = "Våre planer for ditt personvern";
 
-"Available_subscriptions_view_title" = "Select a plan";
+"Available_subscriptions_view_title" = "Velg en plan";
 
 "Current_free_plan_name" = "Free";
 
-"Current_plan_exipiration" = "Your subscription expires on";
+"Current_plan_exipiration" = "Abonnementet ditt utløper den";
 
-"Current_plan_renewal" = "Your subscription automatically renews on";
+"Current_plan_renewal" = "Abonnementet ditt fornyes automatisk den";
 
-"Error_view_button_title" = "Retry";
+"Error_view_button_title" = "Prøv på nytt";
 
-"Error_view_message" = "We couldn't load this page. Please refresh the page or check your internet connection.";
+"Error_view_message" = "Vi kunne ikke laste denne siden. Oppdater siden eller sjekk internettilkoblingen din.";
 
-"Error_view_title" = "Something went wrong";
+"Error_view_title" = "Noe gikk galt";
 
-"Loading_plans_message" = "Fetching available plans..";
+"Loading_plans_message" = "Henter tilgjengelige planer ...";
 
-"Monthly_cycle" = "1 month";
+"Monthly_cycle" = "1 måned";
 
-"No_available_plan_message" = "Your subscription canâ€™t be managed inside the mobile app.";
+"No_available_plan_message" = "Abonnementet ditt kan ikke administreres i mobilappen.";
 
-"No_available_plan_title" = "No available plans found";
+"No_available_plan_title" = "Ingen tilgjengelige planer funnet";
 
-"No_filtered_plan_message" = "Please select a different billing cycle";
+"No_filtered_plan_message" = "Velg en annen faktureringssyklus";
 
-"No_filtered_plan_title" = "No plans found";
+"No_filtered_plan_title" = "Ingen planer funnet";
 
-"Plans_footer_disclaimer" = "You cannot manage subscriptions inside the mobile app";
+"Plans_footer_disclaimer" = "Du kan ikke administrere abonnementer i mobilappen";
 
-"Purchase_button_title" = "Get %@";
+"Purchase_button_title" = "Skaff deg %@";
 
-"Select_plan_nav_title" = "Select a plan";
+"Select_plan_nav_title" = "Velg en plan";
 
-"Subscriptions_nav_title" = "Subscriptions";
+"Subscriptions_nav_title" = "Abonnementer";
 
-"Transaction_cancelled_by_user" = "Transaction cancelled by the user";
+"Transaction_cancelled_by_user" = "Transaksjon kansellert av brukeren";
 
-"Transaction_process_error" = "Something went wrong, please retry. If the issue persists please contact our support team.";
+"Transaction_process_error" = "Noe gikk galt. Prøv igjen. Hvis problemet vedvarer, kan du kontakte vårt støtteteam.";
 
-"Transaction_state_payment_account_update_complete" = "Account updated";
+"Transaction_state_payment_account_update_complete" = "Konto oppdatert";
 
-"Transaction_state_payment_account_update_progress" = "Updating your account";
+"Transaction_state_payment_account_update_progress" = "Oppdaterer kontoen din";
 
-"Transaction_state_payment_confirmation_complete" = "Payment confirmed";
+"Transaction_state_payment_confirmation_complete" = "Betaling bekreftet";
 
-"Transaction_state_payment_confirmation_progress" = "Confirming your payment";
+"Transaction_state_payment_confirmation_progress" = "Bekrefter betalingen din";
 
-"Transaction_state_view_subtitle" = "This should take no more than a minute.";
+"Transaction_state_view_subtitle" = "Dette bør ikke ta lenger enn ett minutt.";
 
-"Transaction_state_view_title" = "Your payment is being verified...";
+"Transaction_state_view_title" = "Betalingen din blir bekreftet ...";
 
-"Yearly_cycle" = "12 months";
+"Yearly_cycle" = "12 måneder";
