@@ -12,7 +12,7 @@
 
 "Current_plan_renewal" = "Votre abonnement sera automatiquement renouvelé le";
 
-"Error_view_button_title" = "Réessayer";
+"Error_view_button_title" = "Essayer à nouveau";
 
 "Error_view_message" = "Le chargement de la page n'a pas abouti. Veuillez actualiser la page ou vérifier votre connexion internet.";
 

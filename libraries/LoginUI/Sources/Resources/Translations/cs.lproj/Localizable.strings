@@ -402,6 +402,8 @@
 
 "We couldn't sign you in. Please scan a new QR code to try again." = "Nemohli jsme vás přihlásit. Naskenujte prosím nový QR kód a zkuste to znovu.";
 
+"We couldn't sign you in. Please sign in with your password." = "Nemohli jsme vás přihlásit. Přihlaste se prosím pomocí svého hesla.";
+
 "New QR code" = "Nový QR kód";
 
 "Allow access to camera" = "Povolit přístup k fotoaparátu";
@@ -415,3 +417,15 @@
 "We couldn't load the QR code" = "QR kód se nám nepodařilo načíst";
 
 "Retry" = "Opakovat";
+
+"Welcome to Proton VPN" = "Vítejte v Proton VPN";
+
+"Browse privately, access blocked content, and enjoy digital freedom." = "Procházejte soukromě, přistupujte k blokovanému obsahu a užívejte si digitální svobody.";
+
+"Certified no-logs VPN" = "Certifikovaná VPN bez logů";
+
+"Continue as guest" = "Pokračovat jako host";
+
+"By using this app you accept our" = "Používáním této aplikace souhlasíte s našimi";
+
+"Terms and Conditions." = "Smluvními podmínkami užívání.";

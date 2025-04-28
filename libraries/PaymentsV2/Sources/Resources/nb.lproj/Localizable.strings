@@ -1,21 +1,21 @@
-"APIs_malformed_url_request" = "Something went wrong, and we couldn't fulfil your request. If the issue persists, please contact customer support.";
+"APIs_malformed_url_request" = "Noe gikk galt, og vi kunne ikke oppfylle forespørselen din. Hvis problemet vedvarer, kan du kontakte kundestøtte.";
 
-"Plans_Manager_impossible_to_get_user_uuid" = "It was impossible to get the user’s UUID for the transaction";
+"Plans_Manager_impossible_to_get_user_uuid" = "Det var umulig å få tak i brukerens UUID for transaksjonen";
 
-"Plans_Manager_impossible_to_match_plan" = "It was impossible to match the Proton Plan to an Apple Store plan";
+"Plans_Manager_impossible_to_match_plan" = "Det var umulig å matche Proton-planen til en Apple Store-plan";
 
-"Plans_Manager_impossible_to_restore_transactions" = "It was impossible to restore transactions, please contact customer support";
+"Plans_Manager_impossible_to_restore_transactions" = "Det var umulig å gjenopprette transaksjoner. Kontakt kundestøtte.";
 
-"Plans_Manager_Transaction_cancelled_by_user" = "The transaction has been cancelled by the user";
+"Plans_Manager_Transaction_cancelled_by_user" = "Transaksjonen er blitt kansellert av brukeren";
 
-"Plans_Manager_Transaction_unknown_error" = "An unexpected error occured, if this persists, please contact customer support";
+"Plans_Manager_Transaction_unknown_error" = "Det oppstod en uventet feil. Hvis dette vedvarer, vennligst kontakt kundestøtte";
 
-"Plans_Managere_peding_transaction_received" = "Unexpected peding transaction received";
+"Plans_Managere_peding_transaction_received" = "Uventet ventende transaksjon mottatt";
 
-"PlansComposer_unable_to_fetch_currentSub" = "Unable to fetch the current subscription";
+"PlansComposer_unable_to_fetch_currentSub" = "Kan ikke hente gjeldende abonnement";
 
-"Remote_manager_error" = "Something went wrong and we could fullfil your request. If the issue persists, please contact customer support.";
+"Remote_manager_error" = "Noe gikk galt, og vi kunne ikke oppfylle forespørselen din. Hvis problemet vedvarer, kan du kontakte kundestøtte.";
 
-"SK_Receipt_impossible_to_get_receipt" = "Impossible to get transaction receipt data from Apple";
+"SK_Receipt_impossible_to_get_receipt" = "Kan ikke hente transaksjonsdata fra Apple";
 
-"Transaction_Handler_plan_not_found" = "It was impossible to find the name of the plan you’re trying to purchase. If the issue persists please contact customer support";
+"Transaction_Handler_plan_not_found" = "Det var umulig å finne navnet på planen du prøver å kjøpe. Hvis problemet vedvarer, vennligst kontakt kundestøtte";

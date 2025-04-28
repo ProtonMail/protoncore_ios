@@ -18,11 +18,11 @@
 
 "Error_view_title" = "Something went wrong";
 
-"Loading_plans_message" = "Fetching available plans..";
+"Loading_plans_message" = "Fetching available plans...";
 
 "Monthly_cycle" = "1 month";
 
-"No_available_plan_message" = "Your subscription canâ€™t be managed inside the mobile app.";
+"No_available_plan_message" = "Your subscription can't be managed inside the mobile app.";
 
 "No_available_plan_title" = "No available plans found";
 

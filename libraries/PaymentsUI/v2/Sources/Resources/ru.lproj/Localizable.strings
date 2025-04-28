@@ -1,10 +1,10 @@
 "All_cycle" = "All billing cycles";
 
-"Available_plans_section_title" = "Upgrade your plan";
+"Available_plans_section_title" = "Улучшить тариф";
 
 "Available_subscriptions_view_subtitle" = "Our plans for your privacy";
 
-"Available_subscriptions_view_title" = "Select a plan";
+"Available_subscriptions_view_title" = "Выбрать тариф";
 
 "Current_free_plan_name" = "Free";
 
@@ -12,17 +12,17 @@
 
 "Current_plan_renewal" = "Your subscription automatically renews on";
 
-"Error_view_button_title" = "Retry";
+"Error_view_button_title" = "Повторить попытку";
 
 "Error_view_message" = "We couldn't load this page. Please refresh the page or check your internet connection.";
 
-"Error_view_title" = "Something went wrong";
+"Error_view_title" = "Что-то пошло не так";
 
-"Loading_plans_message" = "Fetching available plans..";
+"Loading_plans_message" = "Fetching available plans...";
 
-"Monthly_cycle" = "1 month";
+"Monthly_cycle" = "1 месяц";
 
-"No_available_plan_message" = "Your subscription canâ€™t be managed inside the mobile app.";
+"No_available_plan_message" = "Your subscription can't be managed inside the mobile app.";
 
 "No_available_plan_title" = "No available plans found";
 
@@ -32,9 +32,9 @@
 
 "Plans_footer_disclaimer" = "You cannot manage subscriptions inside the mobile app";
 
-"Purchase_button_title" = "Get %@";
+"Purchase_button_title" = "Получить %@";
 
-"Select_plan_nav_title" = "Select a plan";
+"Select_plan_nav_title" = "Выбрать тариф";
 
 "Subscriptions_nav_title" = "Subscriptions";
 
@@ -50,7 +50,7 @@
 
 "Transaction_state_payment_confirmation_progress" = "Confirming your payment";
 
-"Transaction_state_view_subtitle" = "This should take no more than a minute.";
+"Transaction_state_view_subtitle" = "Обычно на это требуется менее минуты.";
 
 "Transaction_state_view_title" = "Your payment is being verified...";
 

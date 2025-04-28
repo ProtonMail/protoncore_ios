@@ -402,6 +402,8 @@
 
 "We couldn't sign you in. Please scan a new QR code to try again." = "No hem pogut iniciar la sessió. Escanegeu un codi QR nou per tornar-ho a provar.";
 
+"We couldn't sign you in. Please sign in with your password." = "No hem pogut iniciar la sessió.Inicieu la sessió amb la vostra contrasenya.";
+
 "New QR code" = "Codi QR nou";
 
 "Allow access to camera" = "Permet l'accés a la càmera";
@@ -415,3 +417,15 @@
 "We couldn't load the QR code" = "No s'ha pogut carregar el codi QR.";
 
 "Retry" = "Reintenta";
+
+"Welcome to Proton VPN" = "Us donem la benvinguda a Proton VPN";
+
+"Browse privately, access blocked content, and enjoy digital freedom." = "Navegueu en privat, accediu a continguts bloquejats i gaudiu de llibertat digital.";
+
+"Certified no-logs VPN" = "VPN certificada sense registres";
+
+"Continue as guest" = "Continueu com a convidat";
+
+"By using this app you accept our" = "En utilitzar aquesta aplicació, accepteu els nostres";
+
+"Terms and Conditions." = "Termes i condicions.";

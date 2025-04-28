@@ -6,21 +6,21 @@
 
 "Grace_View_Title" = "Resetowanie hasła";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**";
+"We received a password reset request for **%@**." = "Otrzymaliśmy żądanie zresetowania hasła konta **%@**";
 
-"We received a password reset request for %@." = "We received a password reset request for %@";
+"We received a password reset request for %@." = "Otrzymaliśmy żądanie zresetowania hasła konta %@";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Jeśli żądanie zmiany hasła nie zostało wysłane przez Ciebie, **anuluj je**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Jeśli żądanie zmiany hasła nie zostało wysłane przez Ciebie, anuluj je.";
 
-"Password reset requested" = "Password reset requested";
+"Password reset requested" = "Żądanie zresetowania hasła zostało wysłane";
 
 "Insecure_View_line1" = "Możesz zmienić hasło konta ";
 
-"You can change your password in %@." = "You can change your password in %@.";
+"You can change your password in %@." = "Możesz zmienić hasło za %@.";
 
-"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Aby upewnić się, że to Ty próbujesz zresetować hasło, czekamy 72 godziny przed zatwierdzeniem żądań.";
 
 "Insecure_View_line2" = " przez ";
 
@@ -30,52 +30,52 @@
 
 "Grace_View_Undefined_Time_Left" = "kilka godzin";
 
-"Settings_Item_Value_Grace" = "Pending";
+"Settings_Item_Value_Grace" = "Oczekujące";
 
-"Settings_Item_Value_Expired" = "Expired";
+"Settings_Item_Value_Expired" = "Wygasło";
 
-"Settings_Item_Value_Cancelled" = "Cancelled";
+"Settings_Item_Value_Cancelled" = "Anulowane";
 
-"Settings_Item_Value_Insecure" = "Available";
+"Settings_Item_Value_Insecure" = "Dostępne";
 
-"Insecure_View_Cancel_Button_CTA" = "Cancel reset";
+"Insecure_View_Cancel_Button_CTA" = "Anuluj resetowanie";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Jeśli żądanie zmiany hasła nie zostało wysłane przez Ciebie, **anuluj je**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Jeśli żądanie zmiany hasła nie zostało wysłane przez Ciebie, anuluj je.";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**.";
+"We received a password reset request for **%@**." = "Otrzymaliśmy żądanie zresetowania hasła konta **%@**.";
 
-"We received a password reset request for %@." = "We received a password reset request for %@.";
+"We received a password reset request for %@." = "Otrzymaliśmy żądanie zresetowania hasła konta %@.";
 
-"Password reset cancelled" = "Password reset cancelled";
+"Password reset cancelled" = "Resetowanie hasła zostało anulowane";
 
-"Cancelled by the user" = "Cancelled by the user";
+"Cancelled by the user" = "Anulowano przez użytkownika";
 
-"Authenticated in another session" = "Authenticated in another session";
+"Authenticated in another session" = "Uwierzytelniono w innej sesji";
 
 "none" = "brak";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "Proces odzyskiwania konta wygasł z powodu braku aktywności";
 
-"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "If you never made a password reset request, someone else could have access to your account. **Change your password now**";
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Jeśli nie wysłałeś żądania zresetowania hasła, ktoś inny może mieć dostęp do Twojego konta. **Zmień hasło**";
 
-"If you never made a password reset request, someone else could have access to your account. Change your password now" = "If you never made a password reset request, someone else could have access to your account. Change your password now";
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Jeśli nie wysłałeś żądania zresetowania hasła, ktoś inny może mieć dostęp do Twojego konta. Zmień hasło";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "Proces odzyskiwania konta wygasł z powodu braku aktywności";
 
 "Recovery process not started" = "Proces odzyskiwania nie został rozpoczęty";
 
-"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Brak aktywnego procesu odzyskiwania konta. Przejdź do sesji w aplikacji internetowej, aby odzyskać hasło.";
 
-"You can now reset your password" = "You can now reset your password";
+"You can now reset your password" = "Możesz zresetować hasło";
 
-"Reset available until %@." = "Reset available until %@.";
+"Reset available until %@." = "Resetowanie dostępne do %@.";
 
-"Change device to continue" = "Change device to continue";
+"Change device to continue" = "Zmień urządzenie, aby kontynuować";
 
-"To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
+"To reset your password, go back to your active session on **the originating device**." = "Aby zresetować hasło, wróć do aktywnej sesji na **urządzeniu początkowym**.";
 
-"To reset your password, go back to your active session on the originating device." = "To reset your password, go back to your active session on the originating device.";
+"To reset your password, go back to your active session on the originating device." = "Aby zresetować hasło, wróć do aktywnej sesji na urządzeniu początkowym.";
 
-"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now.";
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Masz %@ na zresetowanie hasła.\nMusisz to zrobić na urządzeniu i w przeglądarce, z której wysłano prośbę o zresetowanie hasła.\nJeśli żądanie zmiany hasła nie zostało wysłane przez Ciebie, anuluj je.";

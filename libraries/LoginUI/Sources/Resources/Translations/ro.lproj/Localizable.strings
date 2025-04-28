@@ -402,6 +402,8 @@
 
 "We couldn't sign you in. Please scan a new QR code to try again." = "Nu s-a putut conecta. Scanați un cod QR nou și reîncercați.";
 
+"We couldn't sign you in. Please sign in with your password." = "Nu s-a putut conecta. Conectați-vă cu parola.";
+
 "New QR code" = "Cod QR nou";
 
 "Allow access to camera" = "Permitere accesare cameră";
@@ -415,3 +417,15 @@
 "We couldn't load the QR code" = "Codul QR nu s-a putut încărca";
 
 "Retry" = "Reîncercare";
+
+"Welcome to Proton VPN" = "Bun venit la Proton VPN";
+
+"Browse privately, access blocked content, and enjoy digital freedom." = "Navigați în privat, accesați conținutul blocat și bucurați-vă de libertatea digitală.";
+
+"Certified no-logs VPN" = "VPN certificat fără jurnalizare";
+
+"Continue as guest" = "Continuare ca vizitator";
+
+"By using this app you accept our" = "Folosind această aplicație acceptați";
+
+"Terms and Conditions." = "„Termenii și condițiile”.";

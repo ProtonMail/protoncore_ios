@@ -1,4 +1,4 @@
-"All_cycle" = "Tüm fatura dönemleri";
+"All_cycle" = "Tüm faturalandırma dönemleri";
 
 "Available_plans_section_title" = "Tarifenizi yükseltin";
 
@@ -6,11 +6,11 @@
 
 "Available_subscriptions_view_title" = "Bir tarife seçin";
 
-"Current_free_plan_name" = "Ücretsiz";
+"Current_free_plan_name" = "Free";
 
-"Current_plan_exipiration" = "Aboneliğinizin geçerlilik süresi sonu";
+"Current_plan_exipiration" = "Aboneliğinizin geçerlilik süresi sona eriyor";
 
-"Current_plan_renewal" = "Aboneliğiniz şu zamanda otomatik olarak yenilenecek";
+"Current_plan_renewal" = "Aboneliğiniz şu tarihte otomatik olarak yenilenecek:";
 
 "Error_view_button_title" = "Yeniden dene";
 
@@ -18,7 +18,7 @@
 
 "Error_view_title" = "Bir sorun çıktı";
 
-"Loading_plans_message" = "Kullanılabilecek tarifeler alınıyor...";
+"Loading_plans_message" = "Kullanılabilir tarifeler alınıyor...";
 
 "Monthly_cycle" = "1 ay";
 
@@ -40,18 +40,18 @@
 
 "Transaction_cancelled_by_user" = "İşlem kullanıcı tarafından iptal edildi";
 
-"Transaction_process_error" = "Bir sorun çıktı. Lütfen yeniden deneyin. Sorun sürerse lütfen destek ekibimizle görüşün.";
+"Transaction_process_error" = "Something went wrong, please retry. If the issue persists please contact our support team.";
 
-"Transaction_state_payment_account_update_complete" = "Hesap güncellendi";
+"Transaction_state_payment_account_update_complete" = "Account updated";
 
-"Transaction_state_payment_account_update_progress" = "Hesabınız güncelleniyor";
+"Transaction_state_payment_account_update_progress" = "Updating your account";
 
-"Transaction_state_payment_confirmation_complete" = "Ödeme onaylandı";
+"Transaction_state_payment_confirmation_complete" = "Payment confirmed";
 
-"Transaction_state_payment_confirmation_progress" = "Ödemeniz onaylanıyor";
+"Transaction_state_payment_confirmation_progress" = "Confirming your payment";
 
-"Transaction_state_view_subtitle" = "Bu işlemin tamamlanması bir dakikadan fazla sürmemelidir.";
+"Transaction_state_view_subtitle" = "This should take no more than a minute.";
 
-"Transaction_state_view_title" = "Ödemeniz doğrulanıyor...";
+"Transaction_state_view_title" = "Your payment is being verified...";
 
-"Yearly_cycle" = "12 ay";
+"Yearly_cycle" = "12 months";

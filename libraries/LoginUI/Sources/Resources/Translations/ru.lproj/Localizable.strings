@@ -382,9 +382,9 @@
 
 "You’re signed in to %@ on the other device." = "You’re signed in to %@ on the other device.";
 
-"You're signed in" = "You're signed in";
+"You're signed in" = "Вход выполнен";
 
-"Got it" = "Got it";
+"Got it" = "Понятно";
 
 "Code not recognized. Try again." = "Code not recognized. Try again.";
 
@@ -398,9 +398,11 @@
 
 "to Proton %@" = "to Proton %@";
 
-"Something went wrong" = "Something went wrong";
+"Something went wrong" = "Что-то пошло не так";
 
 "We couldn't sign you in. Please scan a new QR code to try again." = "We couldn't sign you in. Please scan a new QR code to try again.";
+
+"We couldn't sign you in. Please sign in with your password." = "We couldn't sign you in. Please sign in with your password.";
 
 "New QR code" = "New QR code";
 
@@ -410,8 +412,20 @@
 
 "You're always in control: You can change this anytime in your device settings." = "You're always in control: You can change this anytime in your device settings.";
 
-"Settings" = "Settings";
+"Settings" = "Настройки";
 
 "We couldn't load the QR code" = "We couldn't load the QR code";
 
 "Retry" = "Повторить";
+
+"Welcome to Proton VPN" = "Добро пожаловать в Proton VPN";
+
+"Browse privately, access blocked content, and enjoy digital freedom." = "Просматривайте сайты в приватно, получайте доступ к заблокированному содержимому и пользуйтесь цифровой свободой.";
+
+"Certified no-logs VPN" = "Сертифицированный VPN без журналов";
+
+"Continue as guest" = "Продолжить как гость";
+
+"By using this app you accept our" = "By using this app you accept our";
+
+"Terms and Conditions." = "Условия.";

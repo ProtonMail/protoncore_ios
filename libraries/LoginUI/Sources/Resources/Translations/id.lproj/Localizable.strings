@@ -402,6 +402,8 @@
 
 "We couldn't sign you in. Please scan a new QR code to try again." = "Kami tidak dapat memasukkan Anda ke akun. Silakan salin kode QR baru atau coba lagi.";
 
+"We couldn't sign you in. Please sign in with your password." = "Kami tidak dapat memasukkan Anda ke akun. Silakan masuk dengan kata sandi Anda.";
+
 "New QR code" = "Kode QR baru";
 
 "Allow access to camera" = "Izinkan akses ke kamera";
@@ -415,3 +417,15 @@
 "We couldn't load the QR code" = "Kami tidak dapat memuat kode QR";
 
 "Retry" = "Coba Lagi";
+
+"Welcome to Proton VPN" = "Selamat datang di Proton VPN";
+
+"Browse privately, access blocked content, and enjoy digital freedom." = "Jelajahi secara pribadi, akses konten yang diblokir, dan nikmati kebebasan digital.";
+
+"Certified no-logs VPN" = "VPN bersertifikasi tanpa log";
+
+"Continue as guest" = "Lanjut sebagai tamu";
+
+"By using this app you accept our" = "Dengan menggunakan aplikasi ini, Anda menyetujui";
+
+"Terms and Conditions." = "Syarat dan Ketentuan.";

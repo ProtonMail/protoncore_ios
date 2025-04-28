@@ -402,6 +402,8 @@
 
 "We couldn't sign you in. Please scan a new QR code to try again." = "Nie udało się zalogować. Zeskanuj nowy kod QR i spróbuj ponownie.";
 
+"We couldn't sign you in. Please sign in with your password." = "Nie udało się zalogować. Zaloguj się za pomocą hasła.";
+
 "New QR code" = "Nowy kod QR";
 
 "Allow access to camera" = "Zezwól na dostęp do aparatu";
@@ -415,3 +417,15 @@
 "We couldn't load the QR code" = "Nie udało się załadować kodu QR";
 
 "Retry" = "Spróbuj ponownie";
+
+"Welcome to Proton VPN" = "Witaj w Proton VPN";
+
+"Browse privately, access blocked content, and enjoy digital freedom." = "Przeglądaj prywatnie Internet, uzyskaj dostęp do zablokowanych treści i ciesz się cyfrową wolnością.";
+
+"Certified no-logs VPN" = "Certyfikowany VPN bez logów";
+
+"Continue as guest" = "Kontynuuj jako gość";
+
+"By using this app you accept our" = "Korzystając z aplikacji, akceptujesz";
+
+"Terms and Conditions." = "regulamin.";

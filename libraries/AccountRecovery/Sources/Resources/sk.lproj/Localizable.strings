@@ -1,26 +1,26 @@
 "Settings_Item" = "Obnovenie hesla";
 
-"Insecure_View_Title" = "Password reset";
+"Insecure_View_Title" = "Obnovenie hesla";
 
-"Cancelled_View_Title" = "Password reset";
+"Cancelled_View_Title" = "Obnovenie hesla";
 
-"Grace_View_Title" = "Password reset";
+"Grace_View_Title" = "Obnovenie hesla";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**";
+"We received a password reset request for **%@**." = "Prijali sme žiadosť o resetovanie hesla pre **%@**";
 
-"We received a password reset request for %@." = "We received a password reset request for %@";
+"We received a password reset request for %@." = "Prijali sme žiadosť o resetovanie hesla pre %@";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Ak ste nepožiadali o resetovanie hesla, **zrušte túto požiadavku teraz**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Ak ste nepožiadali o resetovanie hesla, zrušte túto požiadavku teraz.";
 
-"Password reset requested" = "Password reset requested";
+"Password reset requested" = "Bola vyžiadaná obnova hesla";
 
 "Insecure_View_line1" = "Teraz si môžete zmeniť vaše heslo pre účet ";
 
-"You can change your password in %@." = "You can change your password in %@.";
+"You can change your password in %@." = "Svoje heslo môžete zmeniť o %@.";
 
-"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Aby sme mali istotu, že sa o resetovanie vášho hesla pokúšate naozaj vy, pred schválením žiadostí počkáme 72 hodín.";
 
 "Insecure_View_line2" = " neobmedzene počas ";
 
@@ -30,52 +30,52 @@
 
 "Grace_View_Undefined_Time_Left" = "niekoľko hodín";
 
-"Settings_Item_Value_Grace" = "Pending";
+"Settings_Item_Value_Grace" = "Čakajúce";
 
-"Settings_Item_Value_Expired" = "Expired";
+"Settings_Item_Value_Expired" = "Exspirované";
 
-"Settings_Item_Value_Cancelled" = "Cancelled";
+"Settings_Item_Value_Cancelled" = "Zrušené";
 
-"Settings_Item_Value_Insecure" = "Available";
+"Settings_Item_Value_Insecure" = "Dostupné";
 
-"Insecure_View_Cancel_Button_CTA" = "Cancel reset";
+"Insecure_View_Cancel_Button_CTA" = "Zrušiť reset";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Ak ste nepožiadali o resetovanie hesla, **zrušte túto požiadavku teraz**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Ak ste nepožiadali o resetovanie hesla, zrušte túto požiadavku teraz.";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**.";
+"We received a password reset request for **%@**." = "Prijali sme žiadosť o resetovanie hesla pre **%@**.";
 
-"We received a password reset request for %@." = "We received a password reset request for %@.";
+"We received a password reset request for %@." = "Prijali sme žiadosť o resetovanie hesla pre %@.";
 
-"Password reset cancelled" = "Password reset cancelled";
+"Password reset cancelled" = "Obnovenie hesla bolo zrušené";
 
-"Cancelled by the user" = "Cancelled by the user";
+"Cancelled by the user" = "Zrušené používateľom";
 
-"Authenticated in another session" = "Authenticated in another session";
+"Authenticated in another session" = "Overenie v inej relácii";
 
-"none" = "none";
+"none" = "žiadne";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "Platnosť procesu obnovy účtu vypršala z dôvodu nečinnosti.";
 
-"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "If you never made a password reset request, someone else could have access to your account. **Change your password now**";
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Ak ste nikdy nevytvorili žiadosť o reset hesla, niekto iný mohol mať prístup k vášmu účtu. **Zmeňte si heslo teraz**";
 
-"If you never made a password reset request, someone else could have access to your account. Change your password now" = "If you never made a password reset request, someone else could have access to your account. Change your password now";
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Ak ste nikdy nevytvorili žiadosť o resetovanie hesla, niekto iný mohol mať access k vášmu účtu. Zmeňte si teraz svoje heslo.";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "Platnosť procesu obnovy účtu vypršala z dôvodu nečinnosti.";
 
-"Recovery process not started" = "Recovery process not started";
+"Recovery process not started" = "Proces obnovenia sa nespustil";
 
-"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Momentálne neprebieha žiadne obnovenie účtu. Ak chcete obnoviť svoje heslo, prejdite na reláciu vo webovej aplikácii.";
 
-"You can now reset your password" = "You can now reset your password";
+"You can now reset your password" = "Teraz môžete resetovať svoje heslo";
 
-"Reset available until %@." = "Reset available until %@.";
+"Reset available until %@." = "Funkcia resetovania je k dispozícii do %@.";
 
-"Change device to continue" = "Change device to continue";
+"Change device to continue" = "Ak chcete pokračovať, zmeňte zariadenie";
 
-"To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
+"To reset your password, go back to your active session on **the originating device**." = "Ak chcete resetovať svoje heslo, vráťte sa do aktívnej relácie na **pôvodnom zariadení**.";
 
-"To reset your password, go back to your active session on the originating device." = "To reset your password, go back to your active session on the originating device.";
+"To reset your password, go back to your active session on the originating device." = "Ak chcete resetovať svoje heslo, vráťte sa do aktívnej relácie na pôvodnom zariadení.";
 
-"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now.";
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Máte %@ na resetovanie vášho hesla.\nMusíte to urobiť na zariadení a v prehliadači, z ktorého ste zadali žiadosť o resetovanie hesla.\nAk ste nežiadali o resetovanie hesla, zrušte žiadosť teraz.";
