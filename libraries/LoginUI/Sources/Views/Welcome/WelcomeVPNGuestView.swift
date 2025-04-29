@@ -36,10 +36,17 @@ public struct WelcomeVPNGuestView: View {
     public var body: some View {
         ZStack {
             VStack {
-                IconProvider.vpnWelcomeImageV2
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(maxWidth: .infinity)
+                ZStack {
+                    IconProvider.vpnWelcomeImageV2Bg
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: .infinity)
+                        .ignoresSafeArea(.all)
+                    IconProvider.vpnWelcomeImageV2
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: .infinity)
+                }
                 Spacer()
             }
             VStack(spacing: Constants.extraLargeSpacing) {
@@ -72,25 +79,7 @@ public struct WelcomeVPNGuestView: View {
                         .foregroundStyle(ColorProvider.TextWeak)
                 }
 
-                VStack {
-                    PCButton(
-                        style: .constant(.init(mode: .solid())),
-                        content: .constant(.init(
-                            title: LUITranslation.continue_as_guest.l10n,
-                            isAnimating: viewModel.viewState == .loading,
-                            action: viewModel.continueAsGuestTapped
-                        ))
-                    )
-                    PCButton(
-                        style: .constant(.init(mode: .solid(.signInButtonStyle))),
-                        content: .constant(.init(
-                            title: LUITranslation.signin_button.l10n,
-                            isEnabled: viewModel.viewState == .idle,
-                            action: viewModel.signInTapped
-                        ))
-                    )
-                }
-                .padding(.top, Constants.mediumSpacing)
+                actionButtons
 
                 Link(destination: externalLinks.termsAndConditions, label: {
                     (Text(LUITranslation.login_vpn_guest_tc_description.l10n + " ") +
@@ -106,6 +95,45 @@ public struct WelcomeVPNGuestView: View {
             .padding()
         }
         .background(ColorProvider.BackgroundNorm)
+        .bannerDisplayable(
+            bannerState: $viewModel.bannerState,
+            configuration: .init(position: .bottom)
+        )
+    }
+
+    @ViewBuilder
+    var actionButtons: some View {
+        VStack {
+            switch viewModel.viewMode {
+            case .guest:
+                PCButton(
+                    style: .constant(.init(mode: .solid())),
+                    content: .constant(.init(
+                        title: LUITranslation.continue_as_guest.l10n,
+                        isAnimating: viewModel.viewState == .loading,
+                        action: viewModel.continueAsGuestTapped
+                    ))
+                )
+            case .signUp:
+                PCButton(
+                    style: .constant(.init(mode: .solid())),
+                    content: .constant(.init(
+                        title: LUITranslation.create_account_button.l10n,
+                        action: viewModel.signUpTapped
+                    ))
+                )
+            }
+
+            PCButton(
+                style: .constant(.init(mode: .solid(.signInButtonStyle))),
+                content: .constant(.init(
+                    title: LUITranslation.signin_button.l10n,
+                    isEnabled: viewModel.viewState == .idle,
+                    action: viewModel.signInTapped
+                ))
+            )
+        }
+        .padding(.top, Constants.mediumSpacing)
     }
 }
 

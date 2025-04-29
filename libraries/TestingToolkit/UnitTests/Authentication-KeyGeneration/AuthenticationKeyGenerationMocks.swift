@@ -39,7 +39,7 @@ public struct AuthenticatorWithKeyGenerationMock: AuthenticatorInterface, Authen
     public init() {}
 
     @AsyncFuncStub(AuthenticatorInterface.authenticateWithCredentialLessSession, initialReturn: .crash) public var authenticateWithCredentialLessSessionStub
-    public func authenticateWithCredentialLessSession() async -> Result<ProtonCoreAuthentication.Authenticator.Status, ProtonCoreNetworking.AuthErrors> {
+    public func authenticateWithCredentialLessSession() async -> Result<ProtonCoreAuthentication.Authenticator.Status, ProtonCoreNetworking.ResponseError> {
         await authenticateWithCredentialLessSessionStub()
     }
 

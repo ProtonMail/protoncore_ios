@@ -71,8 +71,8 @@ public struct APIServiceMock: APIService {
         return await fetchAuthCredentialsStubAsync()
     }
 
-    public var fetchCredentialForCredentialLessSessionStub: (() async -> Result<ProtonCoreNetworking.Credential, APIError>)?
-    public func fetchCredentialForCredentialLessSession() async -> Result<ProtonCoreNetworking.Credential, APIError> {
+    public var fetchCredentialForCredentialLessSessionStub: (() async -> Result<ProtonCoreNetworking.Credential, ResponseError>)?
+    public func fetchCredentialForCredentialLessSession() async -> Result<ProtonCoreNetworking.Credential, ResponseError> {
         guard let stub = fetchCredentialForCredentialLessSessionStub else {
             fatalError("Missing stub for fetchCredentialForCredentialLessSessionStub")
         }

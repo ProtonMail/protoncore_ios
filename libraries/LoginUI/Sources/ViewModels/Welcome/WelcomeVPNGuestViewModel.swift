@@ -19,6 +19,9 @@
 
 import ProtonCoreLog
 import ProtonCoreLogin
+import ProtonCoreNetworking
+import ProtonCoreServices
+import ProtonCoreUIFoundations
 import SwiftUI
 
 typealias WelcomeLoginControllerDelegate = LoginViewControllerDelegate & WelcomeViewControllerDelegate
@@ -42,6 +45,13 @@ extension WelcomeVPNGuestView {
             case loading
         }
         @Published var viewState = ViewState.idle
+        @Published var bannerState = BannerState.none
+
+        enum ViewMode {
+            case guest
+            case signUp
+        }
+        @Published var viewMode = ViewMode.guest
 
         init(dependencies: Dependencies) {
             self.login = dependencies.login
@@ -53,7 +63,6 @@ extension WelcomeVPNGuestView {
                 do {
                     viewState = .loading
                     let status = try await login.loginWithCredentialLessUser()
-                    PMLog.debug("status: \(status)")
                     switch status {
                     case .finished(let userData):
                         delegate?.loginViewControllerDidFinish(endLoading: { [weak self] in
@@ -64,14 +73,25 @@ extension WelcomeVPNGuestView {
                     }
                 } catch {
                     viewState = .idle
-                    // TODO: Handle ACCOUNT_CREDENTIALLESS_INVALID(10200)
-                    // and show sign up button
                     PMLog.error(error, sendToExternal: true)
+                    bannerState = .error(content: .init(message: error.localizedDescription))
+                    if let responseError = error as? ResponseError,
+                       let responseCode = responseError.responseCode,
+                       responseCode == APIErrorCode.accountCredentialLessInvalid {
+                        PMLog.debug("ACCOUNT_CREDENTIALLESS_INVALID(10200) error received. Switching to sign up")
+                        viewMode = .signUp
+                        return
+                    }
                 }
             }
         }
+
         func signInTapped() {
             delegate?.userWantsToLogIn(username: nil)
+        }
+
+        func signUpTapped() {
+            delegate?.userWantsToSignUp()
         }
     }
 }
