@@ -31,6 +31,7 @@ public struct WelcomeVPNGuestView: View {
         static let largeSpacing: CGFloat = 16
         static let noLogsImageSize: CGFloat = 20
         static let extraLargeSpacing: CGFloat = 24
+        static let elementsWidthLimit: CGFloat = 480
     }
 
     public var body: some View {
@@ -45,11 +46,12 @@ public struct WelcomeVPNGuestView: View {
                     IconProvider.vpnWelcomeImageV2
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: .infinity)
+                        .frame(maxWidth: Constants.elementsWidthLimit)
                 }
                 Spacer()
             }
             VStack(spacing: Constants.extraLargeSpacing) {
+                Spacer() // Two Spacers on purpose to center the content on the 2/3 of the screen
                 Spacer()
                 Link(destination: externalLinks.certifiedNoLogsVPN) {
                     HStack {
@@ -80,17 +82,19 @@ public struct WelcomeVPNGuestView: View {
                 }
 
                 actionButtons
+                    .frame(maxWidth: Constants.elementsWidthLimit)
 
                 Link(destination: externalLinks.termsAndConditions, label: {
                     (Text(LUITranslation.login_vpn_guest_tc_description.l10n + " ") +
                      Text(LUITranslation.login_vpn_guest_tc_link.l10n)
                         .foregroundColor(ColorProvider.TextAccent)
                     )
-                    .multilineTextAlignment(.leading)
+                    .multilineTextAlignment(.center)
                     .font(.caption)
                     .foregroundColor(ColorProvider.TextWeak)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .frame(maxWidth: .infinity, alignment: .center)
                 })
+                Spacer()
             }
             .padding()
         }
