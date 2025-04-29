@@ -28,7 +28,7 @@ import ProtonCoreServices
 
 /// Handles interactions with the Authentication routes.
 public protocol AuthenticatorInterface {
-    func authenticateWithCredentialLessSession() async -> Result<Authenticator.Status, AuthErrors>
+    func authenticateWithCredentialLessSession() async -> Result<Authenticator.Status, ResponseError>
 
     func authenticate(idpEmail: String, responseToken: SSOResponseToken) async throws -> Authenticator.Status
 

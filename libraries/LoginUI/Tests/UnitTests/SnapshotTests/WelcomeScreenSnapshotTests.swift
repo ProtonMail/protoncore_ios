@@ -76,13 +76,14 @@ class WelcomeScreenSnapshotTests: ProtonCoreTestingToolkitUnitTestsCore.Snapshot
                     isSignupAvailable: $0,
                     customization: .init(inAppTheme: { inAppTheme })
                 )
-                let welcomeScreen = coordinator.createWelcomeViewController(variant: variant)
-                welcomeScreen.layout = layout
-                checkSnapshots(controller: welcomeScreen,
-                               device: device,
-                               traits: traits,
-                               perceptualPrecision: defaultPrecision,
-                               name: "\(name).\(deviceName).\($0 ? "" : ".justSignin")")
+                if let welcomeScreen = coordinator.createWelcomeViewController(variant: variant) as? WelcomeViewController {
+                    welcomeScreen.layout = layout
+                    checkSnapshots(controller: welcomeScreen,
+                                   device: device,
+                                   traits: traits,
+                                   perceptualPrecision: defaultPrecision,
+                                   name: "\(name).\(deviceName).\($0 ? "" : ".justSignin")")
+                }
             }
         }
     }

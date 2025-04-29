@@ -82,6 +82,7 @@ public class APIErrorCode {
     public static let tls = 3500
 
     public static let notAllowed = 2011
+    public static let accountCredentialLessInvalid = 10200
     public static let authDeviceNotFound = 10300
     public static let authDeviceNotActive = 10301
     public static let authDeviceTokenInvalid = 10302

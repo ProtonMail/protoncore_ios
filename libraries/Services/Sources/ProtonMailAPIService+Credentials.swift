@@ -29,12 +29,18 @@ import ProtonCoreUtilities
 // MARK: - Fetching and refreshing credentials
 
 extension PMAPIService {
-    public func fetchCredentialForCredentialLessSession() async -> Result<Credential, APIError> {
+    public func fetchCredentialForCredentialLessSession() async -> Result<Credential, ResponseError> {
         let sessionResult = await acquireSessionIfNeeded()
         
         guard let sessionAuthCredential = sessionResult.value?.authCredential else {
-            // We failed to get a session atuh credential. We probably have an error.
-            return .failure(sessionResult.error ?? APIError.badResponse())
+            // We failed to get a session auth credential. We probably have an error.
+            let responseError = ResponseError(
+                httpCode: sessionResult.error?.httpCode,
+                responseCode: sessionResult.error?.responseCode,
+                userFacingMessage: sessionResult.error?.localizedFailureReason,
+                underlyingError: sessionResult.error
+            )
+            return .failure(responseError)
         }
         
         let credentialLessRequest = CredentiallessRequest(challenge: deviceFingerprints)
@@ -53,7 +59,13 @@ extension PMAPIService {
                                                      onDataTaskCreated: { _ in })
     
         guard let credentialLessResponse = credentialLessResponse.value else {
-            return .failure(credentialLessResponse.error ?? APIError.badResponse())
+            let responseError = ResponseError(
+                httpCode: credentialLessResponse.error?.httpCode,
+                responseCode: credentialLessResponse.error?.responseCode,
+                userFacingMessage: credentialLessResponse.error?.localizedFailureReason,
+                underlyingError: credentialLessResponse.error
+            )
+            return .failure(responseError)
         }
         
         let credential = Credential(UID: credentialLessResponse.UID,

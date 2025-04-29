@@ -693,6 +693,7 @@ public struct ProtonIconSet {
     public let summary = ProtonIcon(name: "Summary")
 
     public let vpnWelcomeImageV2 = ProtonIcon(name: "VPNWelcomeImageV2")
+    public let vpnWelcomeImageV2Bg = ProtonIcon(name: "VPNWelcomeImageV2Bg")
 
     // Payments-specific
 
