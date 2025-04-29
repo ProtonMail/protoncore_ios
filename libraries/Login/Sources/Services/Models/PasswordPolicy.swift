@@ -47,7 +47,7 @@ public struct PasswordPolicy: Codable, Equatable {
         self.state = state
         self.requirementMessage = requirementMessage
         self.errorMessage = errorMessage
-        self.regex = regex
+        self.regex = regex.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
     }
 }
 

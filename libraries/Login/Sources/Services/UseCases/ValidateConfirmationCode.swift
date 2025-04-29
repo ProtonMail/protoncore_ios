@@ -1,5 +1,5 @@
 //
-//  RequestAdminHelp.swift
+//  ValidateConfirmationCode.swift
 //  ProtonCore-Login - Created on 31.12.24.
 //
 //  Copyright (c) 2024 Proton Technologies AG
