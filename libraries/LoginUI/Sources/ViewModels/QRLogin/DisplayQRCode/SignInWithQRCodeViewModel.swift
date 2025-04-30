@@ -268,8 +268,8 @@ extension SignInWithQRCodeView {
                                              accessToken: response.accessToken,
                                              refreshToken: response.refreshToken,
                                              userName: "",
-                                             userID: "",
-                                             scopes: [],
+                                             userID: response.userID,
+                                             scopes: response.scopes,
                                              mailboxPassword: mailboxPassword)
              self.handleLoginCredentials(credential, { [weak self] in
                 // Failure

@@ -317,7 +317,7 @@ public final class LoginService {
             salts: [],
             passphrases: passphrases,
             addresses: addresses,
-            scopes: credential.scopes
+            scopes: forkedCredential.scopes
         ))
     }
 

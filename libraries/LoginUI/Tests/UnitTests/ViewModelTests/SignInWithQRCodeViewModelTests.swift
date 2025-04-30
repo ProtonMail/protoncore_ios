@@ -182,15 +182,15 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
             switch testCase {
             case .success:
                 let payload = try SecurePassphrasePayload(passphrase: "TestPassphrase", encryptionKey: encryptionKey)
-                pullResult = ForkSessionPullResponse(code: 1000, payload: payload.encryptedPayload, UID: UID, refreshToken: refreshToken, accessToken: accessToken)
+                pullResult = ForkSessionPullResponse(code: 1000, payload: payload.encryptedPayload, UID: UID, refreshToken: refreshToken, accessToken: accessToken, expiresIn: 1000, tokenType: "Bearer", scope: "", scopes: [], userID: "")
             case .encryptionKeyMissing, .payloadMissing:
-                pullResult = ForkSessionPullResponse(code: 1000, payload: nil, UID: UID, refreshToken: refreshToken, accessToken: accessToken)
+                pullResult = ForkSessionPullResponse(code: 1000, payload: nil, UID: UID, refreshToken: refreshToken, accessToken: accessToken, expiresIn: 1000, tokenType: "Bearer", scope: "", scopes: [], userID: "")
             case .passphraseEmptyString:
                 let payload = try SecurePassphrasePayload(passphrase: "", encryptionKey: encryptionKey)
-                pullResult = ForkSessionPullResponse(code: 1000, payload: payload.encryptedPayload, UID: UID, refreshToken: refreshToken, accessToken: accessToken)
+                pullResult = ForkSessionPullResponse(code: 1000, payload: payload.encryptedPayload, UID: UID, refreshToken: refreshToken, accessToken: accessToken, expiresIn: 1000, tokenType: "Bearer", scope: "", scopes: [], userID: "")
             case .passphraseMissing:
                 let payload = try SecurePassphrasePayload(passphrase: nil, encryptionKey: encryptionKey)
-                pullResult = ForkSessionPullResponse(code: 1000, payload: payload.encryptedPayload, UID: UID, refreshToken: refreshToken, accessToken: accessToken)
+                pullResult = ForkSessionPullResponse(code: 1000, payload: payload.encryptedPayload, UID: UID, refreshToken: refreshToken, accessToken: accessToken, expiresIn: 1000, tokenType: "Bearer", scope: "", scopes: [], userID: "")
             case .apiError:
                 pullResult = nil
             }
@@ -223,7 +223,7 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
 
             // make sure that after we get the pullResult, we stop polling
             let payload = try SecurePassphrasePayload(passphrase: "DifferentPassphrase", encryptionKey: encryptionKey)
-            pullResult = ForkSessionPullResponse(code: 1000, payload: payload.encryptedPayload, UID: UID, refreshToken: refreshToken, accessToken: accessToken)
+            pullResult = ForkSessionPullResponse(code: 1000, payload: payload.encryptedPayload, UID: UID, refreshToken: refreshToken, accessToken: accessToken, expiresIn: 1000, tokenType: "Bearer", scope: "", scopes: [], userID: "")
 
             try? await Task.sleep(nanoseconds: UInt64(sut.pullForkIntervalInSeconds * 1_000_000_000) + 100_000_000)
 

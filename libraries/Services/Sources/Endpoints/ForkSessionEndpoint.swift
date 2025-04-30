@@ -55,13 +55,34 @@ public final class ForkSessionPullResponse: Response, Codable {
     public let UID: String
     public let refreshToken: String
     public let accessToken: String
+    public let expiresIn: Int
+    public let tokenType: String
+    public let scope: String
+    public let scopes: [String]
+    public let userID: String
 
-    public init(code: Int, payload: String?, UID: String, refreshToken: String, accessToken: String) {
+    public init(
+        code: Int,
+        payload: String?,
+        UID: String,
+        refreshToken: String,
+        accessToken: String,
+        expiresIn: Int,
+        tokenType: String,
+        scope: String,
+        scopes: [String],
+        userID: String
+    ) {
         self.code = code
         self.payload = payload
         self.UID = UID
         self.refreshToken = refreshToken
         self.accessToken = accessToken
+        self.expiresIn = expiresIn
+        self.tokenType = tokenType
+        self.scope = scope
+        self.scopes = scopes
+        self.userID = userID
     }
 
     public required init() {
@@ -70,6 +91,11 @@ public final class ForkSessionPullResponse: Response, Codable {
         self.UID = ""
         self.refreshToken = ""
         self.accessToken = ""
+        self.expiresIn = 0
+        self.tokenType = ""
+        self.scope = ""
+        self.scopes = []
+        self.userID = ""
     }
 }
 
