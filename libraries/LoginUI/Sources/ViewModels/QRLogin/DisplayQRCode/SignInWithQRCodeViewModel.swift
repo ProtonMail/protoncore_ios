@@ -202,6 +202,8 @@ extension SignInWithQRCodeView {
                         try await pullTheFork(for: selector)
                         // Pulled success. Invalidate timer.
                         timer.invalidate()
+                        // Hide the QR code and show loading spinner
+                        self.qrCodeText = nil
                     } catch {
                         if error.httpCode == APIErrorCode.HTTP422 {
                             // Expected error when polling and the fork is not yet pushed
