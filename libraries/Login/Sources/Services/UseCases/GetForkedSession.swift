@@ -32,6 +32,8 @@ public struct GetForkedSession {
         public let UID: String
         public let refreshToken: String
         public let accessToken: String
+        public let scopes: [String]
+        public let userID: String
     }
 
     public func invoke(selector: String) async throws -> Response {
@@ -42,7 +44,9 @@ public struct GetForkedSession {
             return Response(payload: response.1.payload,
                             UID: response.1.UID,
                             refreshToken: response.1.refreshToken,
-                            accessToken: response.1.accessToken)
+                            accessToken: response.1.accessToken,
+                            scopes: response.1.scopes,
+                            userID: response.1.userID)
         } catch {
             ObservabilityEnv.report(.qrLoginPullFork(status: .fromResponseError(error)))
             throw error
