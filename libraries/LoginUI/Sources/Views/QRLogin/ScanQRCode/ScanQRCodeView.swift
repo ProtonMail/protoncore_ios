@@ -94,6 +94,7 @@ struct ScanQRCodeView: View {
                 viewModel.navigationController = nav
             })
         )
+        .navigationBarHidden(true)
     }
 
     var closeButton: some View {
@@ -117,6 +118,7 @@ struct ScanQRCodeView: View {
             Spacer()
         }
         .padding(.horizontal, Constants.horizontalPadding)
+        .padding(.top, Constants.closeButtonHeight / 2)
     }
 }
 
