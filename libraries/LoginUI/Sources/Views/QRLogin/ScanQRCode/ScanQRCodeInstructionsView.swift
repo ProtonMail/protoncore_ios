@@ -59,26 +59,29 @@ public struct ScanQRCodeInstructionsView: View {
             scanButton
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(ColorProvider.BackgroundNorm))
         .navigationTitle(LUITranslation.sign_in_to_another_device.l10n)
+        .onReceive(viewModel.$showQRCodeScanner) { show in
+            guard show else {
+                return
+            }
+
+            let hostingViewController = HidingNavigationBarUIHostingController(
+                rootView: AnyView(ScanQRCodeView(
+                    viewModel: .init(dependencies: .init(passphrase: viewModel.passphrase, userEmail: viewModel.userEmail, apiService: viewModel.apiService))))
+            )
+            navController?.value?.pushViewController(hostingViewController, animated: true)
+            viewModel.showQRCodeScanner = false
+        }
+        .onAppear {
+            ObservabilityEnv.report(.qrLoginScanQRCodeScreenState(stateId: .instructions))
+        }
         .background(
             NavigationControllerAccessor(callback: { nav in
                 navController = WeakReference(value: nav)
             })
         )
-        .onReceive(viewModel.$showQRCodeScanner) { show in
-            if show {
-                let hostingViewController = HidingNavigationBarUIHostingController(
-                    rootView: AnyView(ScanQRCodeView(
-                        viewModel: .init(dependencies: .init(passphrase: viewModel.passphrase, userEmail: viewModel.userEmail, apiService: viewModel.apiService))))
-                )
-                navController?.value?.pushViewController(hostingViewController, animated: true)
-                viewModel.showQRCodeScanner = false
-            }
-        }
-        .onAppear {
-            ObservabilityEnv.report(.qrLoginScanQRCodeScreenState(stateId: .instructions))
-        }
+        .background(ColorProvider.BackgroundNorm)
+        .navigationBarHidden(false)
     }
 
     var scanImage: some View {
@@ -95,7 +98,7 @@ public struct ScanQRCodeInstructionsView: View {
             Text(LUITranslation.sign_in_with_qr_code_title.l10n)
                 .font(.title2)
                 .lineSpacing(Constants.lineSpacing)
-                .foregroundStyle(ColorProvider.White)
+                .foregroundStyle(ColorProvider.TextNorm)
             Text(LUITranslation.sign_in_with_qr_code_scan_instructions.l10n)
                 .modifier(InstructionsTextViewModifier(lineSpacing: Constants.lineSpacing))
                 .padding(.top, Constants.titleTextSpacing)
@@ -158,6 +161,7 @@ struct NavigationControllerAccessor: UIViewControllerRepresentable {
 
 class HidingNavigationBarUIHostingController: UIHostingController<AnyView> {
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
     }
 }
