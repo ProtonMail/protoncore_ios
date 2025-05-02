@@ -48,18 +48,15 @@ public struct ScanQRCodeInstructionsView: View {
         static let bodyTextSpacing: CGFloat = 12
         static let titleTextSpacing: CGFloat = 16
         static let infoBoxesVerticalSpacing: CGFloat = 8
+        static let contentSpacerMinHeight: CGFloat = 24
     }
 
     public var body: some View {
         VStack(alignment: .center, spacing: Constants.noSpacing) {
-            scanImage
-            instructions
-            Spacer()
-            informationBoxes
+            content
             scanButton
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .navigationTitle(LUITranslation.sign_in_to_another_device.l10n)
         .onReceive(viewModel.$showQRCodeScanner) { show in
             guard show else {
                 return
@@ -81,7 +78,18 @@ public struct ScanQRCodeInstructionsView: View {
             })
         )
         .background(ColorProvider.BackgroundNorm)
+        .navigationTitle(LUITranslation.sign_in_to_another_device.l10n)
         .navigationBarHidden(false)
+    }
+
+    var content: some View {
+        VStack(alignment: .center, spacing: Constants.noSpacing) {
+            scanImage
+            instructions
+            Spacer(minLength: Constants.contentSpacerMinHeight)
+            informationBoxes
+        }
+        .modifier(FillHeightInScrollView())
     }
 
     var scanImage: some View {
@@ -171,6 +179,17 @@ class WeakReference<T: AnyObject> {
 
     init(value: T?) {
         self.value = value
+    }
+}
+
+struct FillHeightInScrollView: ViewModifier {
+    func body(content: Content) -> some View {
+        GeometryReader { geometry in
+            ScrollView {
+                content
+                    .frame(minHeight: geometry.size.height)
+            }
+        }
     }
 }
 
