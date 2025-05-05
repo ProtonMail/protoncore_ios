@@ -1,60 +1,60 @@
-"OK" = "Ih";
+"OK" = "IH";
 
 "Cancel" = "Sefsex";
 
-"Warning" = "Alɣu";
+"Warning" = "Warning";
 
-"Select a plan" = "Fren aɣawas";
+"Select a plan" = "Select a plan";
 
-"Current plan" = "Aɣawas amiran";
+"Current plan" = "Current plan";
 
-"Subscription" = "Ajerred";
+"Subscription" = "Subscription";
 
-"Upgrade your plan" = "Sali aɣawas-ik";
+"Upgrade your plan" = "Upgrade your plan";
 
 "Only annual subscriptions without auto-renewal are available inside the mobile app." = "Only annual subscriptions without auto-renewal are available inside the mobile app.";
 
 "You cannot manage subscriptions inside the mobile application." = "You cannot manage subscriptions inside the mobile application.";
 
-"Your plan will automatically renew on %@" = "Aɣawas-ik·im ad yettuɛawed s wudem awurman deg %@";
+"Your plan will automatically renew on %@" = "Your plan will automatically renew on %@";
 
-"Current plan will expire on %@" = "Aɣawas amiran ad yemmet deg %@";
+"Current plan will expire on %@" = "Current plan will expire on %@";
 
 "Contact an administrator to make changes to your Proton subscription." = "Contact an administrator to make changes to your Proton subscription.";
 
-"%1$@ of %2$@" = "%1$@ si %2$@";
+"%1$@ of %2$@" = "%1$@ of %2$@";
 
-"%@ storage" = "%@ n uḥraz";
+"%@ storage" = "%@ storage";
 
-"%@ storage / user" = "%@ uḥraz / aseqdac";
+"%@ storage / user" = "%@ storage / user";
 
-"for %@" = "i %@";
+"for %@" = "for %@";
 
-"Custom email addresses" = "Tansiwin n yimayl tudmawanin";
+"Custom email addresses" = "Custom email addresses";
 
-"Priority customer support" = "Tallelt n umsaɣ yezwaren";
+"Priority customer support" = "Priority customer support";
 
-"Adblocker (NetShield)" = "Amsewḥel n udellel (NetShield)";
+"Adblocker (NetShield)" = "Adblocker (NetShield)";
 
-"Streaming service support" = "Tallalt n umeẓlu n usuddem";
+"Streaming service support" = "Streaming service support";
 
-"High speed" = "Arured ɛlayen";
+"High speed" = "High speed";
 
-"Highest speed" = "Arured afellay maḍi";
+"Highest speed" = "Highest speed";
 
-"Multi-user support" = "Tallelt n ddeqs n iseqdacen";
+"Multi-user support" = "Multi-user support";
 
-"The basic for private and secure communications." = "Lsas i teywalt tbaḍnit, taɣelsant.";
+"The basic for private and secure communications." = "The basic for private and secure communications.";
 
-"Full-featured mailbox with advanced protection." = "Tanaka n tirawt tummidt s ummesten leqqayen.";
+"Full-featured mailbox with advanced protection." = "Full-featured mailbox with advanced protection.";
 
-"Limited time offer" = "Talast n wakud yettwamudden";
+"Limited time offer" = "Limited time offer";
 
-"Complete payment?" = "Ad tkemmleḍ lexlaṣ?";
+"Complete payment?" = "Complete payment?";
 
 "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account";
 
-"Complete payment" = "Ad tkemmleḍ lexlaṣ";
+"Complete payment" = "Complete payment";
 
 "The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "The account setup process could not be finalized due to an unexpected error.\nPlease try again.";
 
@@ -62,7 +62,7 @@
 
 "In app payments are temporarily unavailable." = "In app payments are temporarily unavailable.";
 
-"One plan for all Proton services" = "Yiwen n uɣawas i meṛṛa imeẓla n Proton";
+"One plan for all Proton services" = "One plan for all Proton services";
 
 "The no-cost starter account designed to empower everyone with privacy by default." = "The no-cost starter account designed to empower everyone with privacy by default.";
 
@@ -78,58 +78,58 @@
 
 "Your subscription cannot be managed inside the mobile app." = "Your subscription cannot be managed inside the mobile app.";
 
-"Unlimited folders, labels, and filters" = "Ikaramen, tibzimin, d yimsizedgen war tilas";
+"Unlimited folders, labels, and filters" = "Unlimited folders, labels, and filters";
 
-"Up to %@ storage" = "Alamma d %@ n uḥraz";
+"Up to %@ storage" = "Up to %@ storage";
 
-"Free VPN on a single device" = "VPN baṭel ɣef yibenk asuf";
+"Free VPN on a single device" = "Free VPN on a single device";
 
-"Highest VPN speed" = "Arured afellay maḍi VPN";
+"Highest VPN speed" = "Highest VPN speed";
 
-"Built-in ad-blocker (NetShield)" = "Amsewḥel n udellel usliɣ (NetShield)";
+"Built-in ad-blocker (NetShield)" = "Built-in ad-blocker (NetShield)";
 
 "Access to streaming services globally" = "Access to streaming services globally";
 
-"Secure Core servers" = "Iqeddacen n Secure Core";
+"Secure Core servers" = "Secure Core servers";
 
-"TOR over VPN" = "Tor ɣef VPN";
+"TOR over VPN" = "Tor over VPN";
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "Awi-d %@";
+"Get %@" = "Get %@";
 
-"Get Proton for free" = "Awi Proton baṭel";
+"Get Proton for free" = "Get Proton for free";
 
-"Extend subscription" = "Seɣzef amultaɣ";
+"Extend subscription" = "Extend subscription";
 
-"%@ of %@" = "%@ n %@";
+"%@ of %@" = "%@ of %@";
 
-"Connection issues" = "Uguren n tuqqna";
+"Connection issues" = "Connection issues";
 
-"Check your internet connection" = "Senqed tuqqna internet";
+"Check your internet connection" = "Check your internet connection";
 
-"Strict no-logs policy" = "Tasertit tuḥrist war aɣmis";
+"Strict no-logs policy" = "Strict no-logs policy";
 
-"Plan successfully upgraded" = "Yettwaleqqem uɣawas akken iwata";
+"Plan successfully upgraded" = "Plan successfully upgraded";
 
-"Integrated 2FA authenticator" = "Yerna usesteb s snat tarrayin 2FA";
+"Integrated 2FA authenticator" = "Integrated 2FA authenticator";
 
-"Priority support" = "Tallalt yezwaren";
+"Priority support" = "Priority support";
 
-"Unlimited devices" = "Ibenkan war talast";
+"Unlimited devices" = "Unlimited devices";
 
-"Unlimited email aliases" = "Aliases n yimayl war tilas";
+"Unlimited email aliases" = "Unlimited email aliases";
 
-"Unlimited logins and notes" = "Inekcam d tezmilin war tilas";
+"Unlimited logins and notes" = "Unlimited logins and notes";
 
-"Custom fields" = "Urtiyen udmawanen";
+"Custom fields" = "Custom fields";
 
 "For next-level password management and identity protection." = "For next-level password management and identity protection.";
 
-"Pay monthly" = "Xelleṣ s waggur";
+"Pay monthly" = "Pay monthly";
 
-"Pay annually" = "Axelleṣ s useggas";
+"Pay annually" = "Pay annually";
 
 "Pay every two years" = "Pay every two years";
 
-"Free" = "Baṭel";
+"Free" = "Free";

@@ -10,17 +10,17 @@
 
 "Subscription" = "Předplatné";
 
-"Upgrade your plan" = "Přejít na vyšší tarif";
+"Upgrade your plan" = "Navyšte svůj tarif";
 
 "Only annual subscriptions without auto-renewal are available inside the mobile app." = "V mobilní aplikaci je k dispozici pouze roční předplatné bez automatického obnovení.";
 
 "You cannot manage subscriptions inside the mobile application." = "Předplatné nelze spravovat v mobilní aplikaci.";
 
-"Your plan will automatically renew on %@" = "Váš plán se automaticky obnoví dne %@";
+"Your plan will automatically renew on %@" = "Váš tarif bude automaticky obnoven %@";
 
-"Current plan will expire on %@" = "Stávající tarif vyprší %@";
+"Current plan will expire on %@" = "Aktuální tarif vyprší %@";
 
-"Contact an administrator to make changes to your Proton subscription." = "Chcete-li provést změny v předplatném Protonu, kontaktujte správce.";
+"Contact an administrator to make changes to your Proton subscription." = "Chcete-li provést změny v předplatném Proton, kontaktujte správce.";
 
 "%1$@ of %2$@" = "%1$@ z(e) %2$@";
 
@@ -28,7 +28,7 @@
 
 "%@ storage / user" = "%@ úložiště / uživatel";
 
-"for %@" = "na %@";
+"for %@" = "za %@";
 
 "Custom email addresses" = "Vlastní e-mailové adresy";
 
@@ -80,7 +80,7 @@
 
 "Unlimited folders, labels, and filters" = "Neomezený počet složek, štítků a filtrů";
 
-"Up to %@ storage" = "Až %@ úložného prostoru";
+"Up to %@ storage" = "Až %@ úložiště";
 
 "Free VPN on a single device" = "Bezplatná VPN na jednom zařízení";
 
@@ -102,11 +102,11 @@
 
 "Extend subscription" = "Prodloužit předplatné";
 
-"%@ of %@" = "%@ z %@";
+"%@ of %@" = "%@ z(e) %@";
 
 "Connection issues" = "Problémy s připojením";
 
-"Check your internet connection" = "Zkontrolujte vaše připojení k internetu";
+"Check your internet connection" = "Zkontrolujte své připojení k internetu";
 
 "Strict no-logs policy" = "Přísné zásady neukládání logů";
 
@@ -130,6 +130,6 @@
 
 "Pay annually" = "Platit ročně";
 
-"Pay every two years" = "Platit každé 2 roky";
+"Pay every two years" = "Platit každé dva roky";
 
 "Free" = "Free";

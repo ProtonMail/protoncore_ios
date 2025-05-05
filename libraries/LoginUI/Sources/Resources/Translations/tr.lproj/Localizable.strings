@@ -402,7 +402,7 @@
 
 "We couldn't sign you in. Please scan a new QR code to try again." = "Oturumunuz açılamadı. Yeniden denemek için lütfen yeni bir karekod tarayın.";
 
-"We couldn't sign you in. Please sign in with your password." = "We couldn't sign you in. Please sign in with your password.";
+"We couldn't sign you in. Please sign in with your password." = "Oturumunuz açılamadı. Lütfen parolanızla oturum açın.";
 
 "New QR code" = "Yeni kare kod ";
 
@@ -418,14 +418,14 @@
 
 "Retry" = "Yeniden dene";
 
-"Welcome to Proton VPN" = "Welcome to Proton VPN";
+"Welcome to Proton VPN" = "Proton VPN hizmetine hoş geldiniz";
 
-"Browse privately, access blocked content, and enjoy digital freedom." = "Browse privately, access blocked content, and enjoy digital freedom.";
+"Browse privately, access blocked content, and enjoy digital freedom." = "Gizliliğinizi koruyarak gezinin, engellenen içeriğe erişin ve dijital özgürlüğün tadını çıkarın.";
 
-"Certified no-logs VPN" = "Certified no-logs VPN";
+"Certified no-logs VPN" = "Kayıt tutmadığı belgelenmiş VPN";
 
-"Continue as guest" = "Continue as guest";
+"Continue as guest" = "Konuk olarak ilerle";
 
-"By using this app you accept our" = "By using this app you accept our";
+"By using this app you accept our" = "Bu uygulamayı kullanarak şunları kabul etmiş olursunuz:";
 
-"Terms and Conditions." = "Terms and Conditions.";
+"Terms and Conditions." = "Hüküm ve Koşullar.";

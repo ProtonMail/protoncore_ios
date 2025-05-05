@@ -354,13 +354,13 @@
 
 "Open the Proton app on your phone" = "Avaa Proton-sovellus puhelimessasi";
 
-"Tap into Settings, then tap Sign in to another device" = "Siirry asetuksiin ja napauta sitten \"Kirjaudu toisella laitteella\"";
+"Tap into Settings, then tap Sign in to another device" = "Siirry asetuksiin ja napauta sitten \"Kirjaudu toiseen laitteeseen\"";
 
 "Tap Scan QR code" = "Napauta \"Lue QR-koodi\"";
 
 "Scan this code with your phone camera to sign in instantly." = "Kirjaudu välittömästi lukemalla tämä koodi pohelimesi kameralla";
 
-"Sign in to another device" = "Kirjaudu toisella laitteella";
+"Sign in to another device" = "Kirjaudu toiseen laitteeseen";
 
 "Sign in with your QR code" = "Kirjaudu QR-koodillasi";
 
@@ -398,13 +398,13 @@
 
 "to Proton %@" = "to Proton %@";
 
-"Something went wrong" = "Something went wrong";
+"Something went wrong" = "Jotain meni pieleen";
 
 "We couldn't sign you in. Please scan a new QR code to try again." = "We couldn't sign you in. Please scan a new QR code to try again.";
 
 "We couldn't sign you in. Please sign in with your password." = "We couldn't sign you in. Please sign in with your password.";
 
-"New QR code" = "New QR code";
+"New QR code" = "Uusi QR-koodi";
 
 "Allow access to camera" = "Allow access to camera";
 
@@ -412,20 +412,20 @@
 
 "You're always in control: You can change this anytime in your device settings." = "You're always in control: You can change this anytime in your device settings.";
 
-"Settings" = "Settings";
+"Settings" = "Asetukset";
 
 "We couldn't load the QR code" = "We couldn't load the QR code";
 
 "Retry" = "Yritä uudelleen";
 
-"Welcome to Proton VPN" = "Welcome to Proton VPN";
+"Welcome to Proton VPN" = "Tervetuloa Proton VPN:ään";
 
 "Browse privately, access blocked content, and enjoy digital freedom." = "Browse privately, access blocked content, and enjoy digital freedom.";
 
 "Certified no-logs VPN" = "Certified no-logs VPN";
 
-"Continue as guest" = "Continue as guest";
+"Continue as guest" = "Jatka vieraana";
 
 "By using this app you accept our" = "By using this app you accept our";
 
-"Terms and Conditions." = "Terms and Conditions.";
+"Terms and Conditions." = "Käyttöehdot.";

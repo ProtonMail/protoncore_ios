@@ -402,7 +402,7 @@
 
 "We couldn't sign you in. Please scan a new QR code to try again." = "No se pudo iniciar sesión. Escanee un nuevo código QR e intente de nuevo.";
 
-"We couldn't sign you in. Please sign in with your password." = "No pudimos iniciar sesión. Intente acceder con su contraseña.";
+"We couldn't sign you in. Please sign in with your password." = "No se pudo iniciar sesión. Intente acceder con su contraseña.";
 
 "New QR code" = "Nuevo código QR";
 
@@ -420,7 +420,7 @@
 
 "Welcome to Proton VPN" = "Le damos la bienvenida a Proton VPN";
 
-"Browse privately, access blocked content, and enjoy digital freedom." = "Navegue de forma privada, acceda a contenido bloqueado y disfrute de la libertad digital.";
+"Browse privately, access blocked content, and enjoy digital freedom." = "Navegue de forma privada, acceda a contenido bloqueado y disfrute de libertad digital.";
 
 "Certified no-logs VPN" = "VPN certificada sin registros";
 

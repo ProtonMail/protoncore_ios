@@ -4,13 +4,13 @@
 
 "Warning" = "Attention";
 
-"Select a plan" = "Choisir un abonnement";
+"Select a plan" = "Sélectionner un abonnement";
 
 "Current plan" = "Abonnement actuel";
 
 "Subscription" = "Abonnement";
 
-"Upgrade your plan" = "Passez à un abonnement supérieur";
+"Upgrade your plan" = "Changez votre abonnement";
 
 "Only annual subscriptions without auto-renewal are available inside the mobile app." = "Seuls les abonnements annuels sans renouvellement automatique sont disponibles dans l'application mobile.";
 
@@ -18,7 +18,7 @@
 
 "Your plan will automatically renew on %@" = "Votre abonnement sera automatiquement renouvelé le %@.";
 
-"Current plan will expire on %@" = "L’abonnement actuel expirera le %@.";
+"Current plan will expire on %@" = "L’abonnement en cours expirera le %@";
 
 "Contact an administrator to make changes to your Proton subscription." = "Contactez un administrateur pour modifier votre abonnement Proton.";
 
@@ -26,7 +26,7 @@
 
 "%@ storage" = "%@ d'espace de stockage";
 
-"%@ storage / user" = "%@ d'espace de stockage par utilisateur";
+"%@ storage / user" = "%@ espace de stockage / utilisateur";
 
 "for %@" = "pour %@";
 

@@ -12,15 +12,15 @@
 
 "Upgrade your plan" = "Oppgrader planen din";
 
-"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Kun årlige abonnement uten automatisk fornyelse er tilgjengelig i mobil-appen.";
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Kun årlige abonnement uten automatisk fornyelse er tilgjengelig i mobilappen.";
 
-"You cannot manage subscriptions inside the mobile application." = "Du kan ikke administrere abonnement i mobilapplikasjonen.";
+"You cannot manage subscriptions inside the mobile application." = "Du kan ikke administrere abonnementer i mobilapplikasjonen.";
 
-"Your plan will automatically renew on %@" = "Planen din vil automatisk fornyes %@.";
+"Your plan will automatically renew on %@" = "Planen din fornyes automatisk den %@";
 
-"Current plan will expire on %@" = "Gjeldende plan vil utløpe %@.";
+"Current plan will expire on %@" = "Gjeldende plan utløper %@";
 
-"Contact an administrator to make changes to your Proton subscription." = "Kontakt en administrator for å gjøre endringer til ditt Proton-abonnement.";
+"Contact an administrator to make changes to your Proton subscription." = "Kontakt en administrator for å gjøre endringer i ditt Proton-abonnement.";
 
 "%1$@ of %2$@" = "%1$@ av %2$@";
 
@@ -42,7 +42,7 @@
 
 "Highest speed" = "Høyeste hastighet";
 
-"Multi-user support" = "Flerbruker støtte";
+"Multi-user support" = "Flerbrukerstøtte";
 
 "The basic for private and secure communications." = "Det grunnleggende for privat og sikker kommunikasjon.";
 
@@ -52,37 +52,37 @@
 
 "Complete payment?" = "Fullføre betaling?";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Et kjøp for en Proton Pakke-plan er allerede igangsatt. Trykk på fortsett for å fullføre behandlingen av betalingen og oppretting av din konto.";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Et kjøp for en Proton pakke-plan er allerede igangsatt. Trykk på fortsett for å fullføre behandlingen av betalingen og opprette kontoen din";
 
 "Complete payment" = "Fullfør betaling";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Prosessen med å sette opp konto kunne ikke finaliseres på grunn av en uventet feil.\nVennligst forsøk igjen.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Prosessen med å sette opp kontoen kunne ikke fullføres på grunn av en uventet feil.\nPrøv på nytt.";
 
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "IAP-kjøpsprosessen har startet. Vennligst følg Apple sine instruksjoner for enten å fullføre eller avbryte kjøpet.";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "IAP-kjøpsprosessen har startet. Følg Apples instruksjoner for enten å fullføre eller avbryte kjøpet.";
 
-"In app payments are temporarily unavailable." = "I appen er betalinger midlertidig utilgjengelige.";
+"In app payments are temporarily unavailable." = "Betalinger i app er midlertidig utilgjengelig.";
 
-"One plan for all Proton services" = "En plan for alle Proton-tjenester";
+"One plan for all Proton services" = "Én plan for alle Proton-tjenester";
 
 "The no-cost starter account designed to empower everyone with privacy by default." = "Gratis startpakkekonto utformet til å styrke alle med personvern som standard.";
 
-"The privacy-first email and calendar solution for your everyday communication needs." = "Den personvern-først e-post og kalender løsning for dine daglige kommunikasjonsbehov.";
+"The privacy-first email and calendar solution for your everyday communication needs." = "Den personvernfokuserte løsningen for e-post og kalender for dine daglige kommunikasjonsbehov.";
 
-"Your privacy and security are our priority." = "Ditt personvern og sikkerhet er vår prioritet.";
+"Your privacy and security are our priority." = "Personvernet og sikkerheten din er vår prioritet.";
 
-"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Den lagrings-fokuserte planen med 200 GB skylagring for å beholde filene dine private.";
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Den lagringsfokuserte planen med 200 GB skylagring for å holde filene dine private.";
 
 "The ultimate privacy pack with access to all premium Proton services." = "Den ultimate personvernpakken med tilgang til alle premium Proton-tjenester.";
 
-"Only non-renewing annual subscriptions are available via this app" = "Kun ikke automatisk fornybare årlige abonnement er tilgjengelig via denne appen.";
+"Only non-renewing annual subscriptions are available via this app" = "Kun ikke-fornybare årlige abonnementer er tilgjengelige via denne appen";
 
-"Your subscription cannot be managed inside the mobile app." = "Abonnementet ditt kan ikke forvaltes med mobilappen.";
+"Your subscription cannot be managed inside the mobile app." = "Abonnementet ditt kan ikke administreres i mobilappen.";
 
 "Unlimited folders, labels, and filters" = "Ubegrenset antall mapper, etiketter og filtre";
 
 "Up to %@ storage" = "Opptil %@ lagringsplass";
 
-"Free VPN on a single device" = "Gratis VPN på en enkelt enhet";
+"Free VPN on a single device" = "Gratis VPN på én enkelt enhet";
 
 "Highest VPN speed" = "Høyeste VPN-hastighet";
 
@@ -104,13 +104,13 @@
 
 "%@ of %@" = "%@ av %@";
 
-"Connection issues" = "Problemer med forbindelsen";
+"Connection issues" = "Problemer med tilkoblingen";
 
 "Check your internet connection" = "Sjekk internettilkoblingen din";
 
-"Strict no-logs policy" = "Streng ingen-loggførings-praksis";
+"Strict no-logs policy" = "Streng retningslinje mot loggføring";
 
-"Plan successfully upgraded" = "Planen oppgradert";
+"Plan successfully upgraded" = "Planen er oppgradert";
 
 "Integrated 2FA authenticator" = "Integrert 2FA-autentisering";
 
@@ -120,11 +120,11 @@
 
 "Unlimited email aliases" = "Ubegrenset antall e-postaliaser";
 
-"Unlimited logins and notes" = "Ubegrensede pålogginger og notater";
+"Unlimited logins and notes" = "Ubegrenset antall pålogginger og notater";
 
 "Custom fields" = "Tilpassede felt";
 
-"For next-level password management and identity protection." = "For neste-nivå passordbehandlig og identitetbeskyttelse.";
+"For next-level password management and identity protection." = "For passordadministrasjon og identitetsbeskyttelse på neste nivå.";
 
 "Pay monthly" = "Betal månedlig";
 
@@ -132,4 +132,4 @@
 
 "Pay every two years" = "Betal hvert andre år";
 
-"Free" = "Gratis";
+"Free" = "Free";

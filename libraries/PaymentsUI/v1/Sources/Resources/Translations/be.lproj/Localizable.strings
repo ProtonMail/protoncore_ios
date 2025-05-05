@@ -1,4 +1,4 @@
-"OK" = "Добра";
+"OK" = "OK";
 
 "Cancel" = "Скасаваць";
 
@@ -18,9 +18,9 @@
 
 "Your plan will automatically renew on %@" = "Ваш тарыфны план будзе аўтаматычна падоўжаны %@";
 
-"Current plan will expire on %@" = "Бягучы тарыфны план міне праз %@";
+"Current plan will expire on %@" = "Бягучы тарыфны план міне %@";
 
-"Contact an administrator to make changes to your Proton subscription." = "Звяжыцеся з адміністратарам для таго, каб унесці змены ў вашу падпіску Proton.";
+"Contact an administrator to make changes to your Proton subscription." = "Звяжыцеся з адміністратарам, каб унесці змены ў сваю падпіску Proton.";
 
 "%1$@ of %2$@" = "%1$@ з %2$@";
 
@@ -28,7 +28,7 @@
 
 "%@ storage / user" = "%@ сховішча на карыстальніка";
 
-"for %@" = "за %@";
+"for %@" = "для %@";
 
 "Custom email addresses" = "Карыстальніцкія адрасы электроннай пошты";
 
@@ -46,9 +46,9 @@
 
 "The basic for private and secure communications." = "Аснова для прыватных і бяспечных зносін.";
 
-"Full-featured mailbox with advanced protection." = "Паўнафункцыянальная паштовая скрыня з дадатковай абаронай.";
+"Full-featured mailbox with advanced protection." = "Поўнафункцыянальная паштовая скрыня з дадатковай абаронай.";
 
-"Limited time offer" = "Абмежаваная прапанова";
+"Limited time offer" = "Прапанова абмежавана па часе";
 
 "Complete payment?" = "Завяршыць аплату?";
 
@@ -58,13 +58,13 @@
 
 "The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Працэс наладжвання ўліковага запісу не можа быць завершаны па прычыне нечаканай памылкі.\nПаспрабуйце яшчэ раз.";
 
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Пачаты працэс куплі IAP. Прытрымлівайцеся інструкцый ад кампаніі Apple для таго, каб завяршыць або скасаваць куплю.";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Пачаты працэс куплі IAP. Прытрымлівайцеся інструкцый ад кампаніі Apple, каб завяршыць або скасаваць куплю.";
 
-"In app payments are temporarily unavailable." = "Плацяжы ў праграме часова недаступныя.";
+"In app payments are temporarily unavailable." = "Плацяжы ў праграме часова недаступны.";
 
 "One plan for all Proton services" = "Адзін тарыфны план для ўсіх сэрвісаў Proton";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "Бясплатны стартавы ўліковы запіс распрацаваны для кожнага хто лічыць, што прыватнасць неад'емная частка жыцця.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "Бясплатны стартавы ўліковы запіс распрацаваны для кожнага хто лічыць, што прыватнасць з'яўляецца неад'емнай часткай жыцця.";
 
 "The privacy-first email and calendar solution for your everyday communication needs." = "Электронная пошта з акцэнтам на прыватнасць і каляндар для вашых штодзённых зносін.";
 
@@ -132,4 +132,4 @@
 
 "Pay every two years" = "Аплата кожныя два гады";
 
-"Free" = "Бясплатна";
+"Free" = "Free";

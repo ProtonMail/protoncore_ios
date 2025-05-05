@@ -1,135 +1,135 @@
 "OK" = "Ok";
 
-"Cancel" = "Annullér";
+"Cancel" = "Annuller";
 
-"Warning" = "Advarsel";
+"Warning" = "Warning";
 
-"Select a plan" = "Vælg et abonnement";
+"Select a plan" = "Select a plan";
 
-"Current plan" = "Nuværende abonnement";
+"Current plan" = "Current plan";
 
-"Subscription" = "Abonnement";
+"Subscription" = "Subscription";
 
-"Upgrade your plan" = "Opgradér dit abonnement";
+"Upgrade your plan" = "Upgrade your plan";
 
-"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Kun årsabonnementer uden automatisk fornyelse er tilgængelige i mobil-appen.";
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Only annual subscriptions without auto-renewal are available inside the mobile app.";
 
-"You cannot manage subscriptions inside the mobile application." = "Du kan ikke administrere abonnementer i mobil-applikationen.";
+"You cannot manage subscriptions inside the mobile application." = "You cannot manage subscriptions inside the mobile application.";
 
-"Your plan will automatically renew on %@" = "Dit abonnement fornys automatisk den %@";
+"Your plan will automatically renew on %@" = "Your plan will automatically renew on %@";
 
-"Current plan will expire on %@" = "Nuværende abonnement udløber den %@";
+"Current plan will expire on %@" = "Current plan will expire on %@";
 
-"Contact an administrator to make changes to your Proton subscription." = "Kontakt en administrator for at foretage ændringer i dit Proton-abonnement.";
+"Contact an administrator to make changes to your Proton subscription." = "Contact an administrator to make changes to your Proton subscription.";
 
-"%1$@ of %2$@" = "%1$@ af %2$@";
+"%1$@ of %2$@" = "%1$@ of %2$@";
 
-"%@ storage" = "%@ lagerplads";
+"%@ storage" = "%@ storage";
 
-"%@ storage / user" = "%@ lager / bruger";
+"%@ storage / user" = "%@ storage / user";
 
-"for %@" = "i %@";
+"for %@" = "for %@";
 
-"Custom email addresses" = "Brugerdefinerede e-mailadresser";
+"Custom email addresses" = "Custom email addresses";
 
-"Priority customer support" = "Prioriteret kundesupport";
+"Priority customer support" = "Priority customer support";
 
-"Adblocker (NetShield)" = "Annonceblokering (NetShield)";
+"Adblocker (NetShield)" = "Adblocker (NetShield)";
 
-"Streaming service support" = "Understøttelse af streamingtjeneste";
+"Streaming service support" = "Streaming service support";
 
-"High speed" = "Høj hastighed";
+"High speed" = "High speed";
 
-"Highest speed" = "Højeste hastighed";
+"Highest speed" = "Highest speed";
 
-"Multi-user support" = "Flerbrugerunderstøttelse";
+"Multi-user support" = "Multi-user support";
 
-"The basic for private and secure communications." = "Det grundlæggende til privat og sikker kommunikation.";
+"The basic for private and secure communications." = "The basic for private and secure communications.";
 
-"Full-featured mailbox with advanced protection." = "Fuldt udstyret postkasse med avanceret beskyttelse.";
+"Full-featured mailbox with advanced protection." = "Full-featured mailbox with advanced protection.";
 
-"Limited time offer" = "Tidsbegrænset tilbud";
+"Limited time offer" = "Limited time offer";
 
-"Complete payment?" = "Gennemfør betaling?";
+"Complete payment?" = "Complete payment?";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Et køb af et Proton Bundle-abonnement er allerede blevet iværksat. Tryk på fortsæt for at afslutte betalingsprocessen og oprette din konto";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account";
 
-"Complete payment" = "Gennemfør betaling";
+"Complete payment" = "Complete payment";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Opsætningen af kontoen kunne ikke afsluttes på grund af en uventet fejl.\nPrøv venligst igen.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "The account setup process could not be finalized due to an unexpected error.\nPlease try again.";
 
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Købsprocessen for IAP er startet. Følg Apples instruktioner for at gennemføre eller annullere købet.";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase.";
 
-"In app payments are temporarily unavailable." = "Betalinger via appen er midlertidigt utilgængelige.";
+"In app payments are temporarily unavailable." = "In app payments are temporarily unavailable.";
 
-"One plan for all Proton services" = "Ét abonnement til alle Proton-tjenester";
+"One plan for all Proton services" = "One plan for all Proton services";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "Den gratis startkonto, der er designet til at give alle mulighed for at få privatlivsbeskyttelse som standard.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "The no-cost starter account designed to empower everyone with privacy by default.";
 
-"The privacy-first email and calendar solution for your everyday communication needs." = "Den privatlivsorienterede e-mail- og kalenderløsning til dine daglige kommunikationsbehov.";
+"The privacy-first email and calendar solution for your everyday communication needs." = "The privacy-first email and calendar solution for your everyday communication needs.";
 
-"Your privacy and security are our priority." = "Beskyttelse af dit privatliv og din sikkerhed er vores førsteprioritet.";
+"Your privacy and security are our priority." = "Your privacy and security are our priority.";
 
-"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Det lagerfokuserede abonnement med 200 GB cloud-lager, så dine filer forbliver private.";
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "The storage-focused plan with 200 GB of cloud storage to keep your files private.";
 
-"The ultimate privacy pack with access to all premium Proton services." = "Den ultimative privatlivspakke med adgang til alle premium Proton-tjenester.";
+"The ultimate privacy pack with access to all premium Proton services." = "The ultimate privacy pack with access to all premium Proton services.";
 
-"Only non-renewing annual subscriptions are available via this app" = "Kun årsabonnementer, der ikke forlænges, er tilgængelige via denne app";
+"Only non-renewing annual subscriptions are available via this app" = "Only non-renewing annual subscriptions are available via this app";
 
-"Your subscription cannot be managed inside the mobile app." = "Dit abonnement kan ikke administreres i mobilappen.";
+"Your subscription cannot be managed inside the mobile app." = "Your subscription cannot be managed inside the mobile app.";
 
-"Unlimited folders, labels, and filters" = "Ubegrænsede mapper, etiketter og filtre";
+"Unlimited folders, labels, and filters" = "Unlimited folders, labels, and filters";
 
-"Up to %@ storage" = "Op til %@ lagerplads";
+"Up to %@ storage" = "Up to %@ storage";
 
-"Free VPN on a single device" = "Gratis VPN på en enkelt enhed";
+"Free VPN on a single device" = "Free VPN on a single device";
 
-"Highest VPN speed" = "Højeste VPN-hastighed";
+"Highest VPN speed" = "Highest VPN speed";
 
-"Built-in ad-blocker (NetShield)" = "Indbygget annonceblokering (Netshield)";
+"Built-in ad-blocker (NetShield)" = "Built-in ad-blocker (NetShield)";
 
-"Access to streaming services globally" = "Adgang til streamingtjenester i hele verden";
+"Access to streaming services globally" = "Access to streaming services globally";
 
-"Secure Core servers" = "Secure Core servere";
+"Secure Core servers" = "Secure Core servers";
 
 "TOR over VPN" = "Tor over VPN";
 
-"P2P/BitTorrent" = "P2P/Bittorrent";
+"P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "Få %@";
+"Get %@" = "Get %@";
 
-"Get Proton for free" = "Få Proton gratis";
+"Get Proton for free" = "Get Proton for free";
 
-"Extend subscription" = "Forlæng abonnement";
+"Extend subscription" = "Extend subscription";
 
-"%@ of %@" = "%@ af %@";
+"%@ of %@" = "%@ of %@";
 
-"Connection issues" = "Problemer med forbindelsen";
+"Connection issues" = "Connection issues";
 
-"Check your internet connection" = "Tjek din internetforbindelse";
+"Check your internet connection" = "Check your internet connection";
 
-"Strict no-logs policy" = "Striks politik om ikke at logge";
+"Strict no-logs policy" = "Strict no-logs policy";
 
-"Plan successfully upgraded" = "Abonnement opgraderet";
+"Plan successfully upgraded" = "Plan successfully upgraded";
 
-"Integrated 2FA authenticator" = "Integreret 2FA-godkendelse";
+"Integrated 2FA authenticator" = "Integrated 2FA authenticator";
 
-"Priority support" = "Prioriteret support";
+"Priority support" = "Priority support";
 
-"Unlimited devices" = "Ubegrænset antal enheder";
+"Unlimited devices" = "Unlimited devices";
 
-"Unlimited email aliases" = "Ubegrænsede e-mail-aliasser";
+"Unlimited email aliases" = "Unlimited email aliases";
 
-"Unlimited logins and notes" = "Ubegrænset antal logins og noter";
+"Unlimited logins and notes" = "Unlimited logins and notes";
 
-"Custom fields" = "Brugerdefinerede felter";
+"Custom fields" = "Custom fields";
 
-"For next-level password management and identity protection." = "For avanceret adgangskodehåndtering og identitetsbeskyttelse.";
+"For next-level password management and identity protection." = "For next-level password management and identity protection.";
 
-"Pay monthly" = "Betal månedligt";
+"Pay monthly" = "Pay monthly";
 
-"Pay annually" = "Betal årligt";
+"Pay annually" = "Pay annually";
 
-"Pay every two years" = "Betal hvert 2. år";
+"Pay every two years" = "Pay every two years";
 
-"Free" = "Gratis";
+"Free" = "Free";

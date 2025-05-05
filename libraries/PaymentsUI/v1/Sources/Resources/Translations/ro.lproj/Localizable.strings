@@ -10,15 +10,15 @@
 
 "Subscription" = "Abonament";
 
-"Upgrade your plan" = "Modificare plan";
+"Upgrade your plan" = "Modificați-vă planul";
 
 "Only annual subscriptions without auto-renewal are available inside the mobile app." = "În aplicația mobilă sunt disponibile doar abonamente anuale fără reînnoire automată.";
 
 "You cannot manage subscriptions inside the mobile application." = "Nu puteți gestiona abonamentele din aplicația mobilă.";
 
-"Your plan will automatically renew on %@" = "Abonamentul se va reînnoi automat la %@";
+"Your plan will automatically renew on %@" = "Abonamentul se va reînnoi automat la data de %@";
 
-"Current plan will expire on %@" = "Planul actual va expira la %@";
+"Current plan will expire on %@" = "Planul actual va expira la data de %@";
 
 "Contact an administrator to make changes to your Proton subscription." = "Contactați un administrator pentru a face modificări la abonamentul Proton.";
 
@@ -28,9 +28,9 @@
 
 "%@ storage / user" = "%@ spațiu/utilizator";
 
-"for %@" = "pentru %@";
+"for %@" = "cu %@";
 
-"Custom email addresses" = "Adrese de e-mail personalizate";
+"Custom email addresses" = "Adrese de e-mail personale";
 
 "Priority customer support" = "Asistență prioritară clienți";
 
@@ -42,11 +42,11 @@
 
 "Highest speed" = "Viteză maximă";
 
-"Multi-user support" = "Suport utilizatori multipli";
+"Multi-user support" = "Utilizatori multipli";
 
 "The basic for private and secure communications." = "Baza pentru comunicații private și sigure.";
 
-"Full-featured mailbox with advanced protection." = "Căsuță poștală completă cu protecție avansată.";
+"Full-featured mailbox with advanced protection." = "Cont de e-mail complet cu protecție avansată.";
 
 "Limited time offer" = "Ofertă limitată";
 
@@ -60,7 +60,7 @@
 
 "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Procesul de achiziție din aplicație a început. Urmați instrucțiunile Apple pentru a finaliza sau anula achiziția.";
 
-"In app payments are temporarily unavailable." = "Plățile în aplicație sunt temporar indisponibile.";
+"In app payments are temporarily unavailable." = "Plățile în aplicație nu sunt disponibile temporar.";
 
 "One plan for all Proton services" = "Un singur abonament pentru toate serviciile Proton";
 
@@ -120,7 +120,7 @@
 
 "Unlimited email aliases" = "Aliasuri de e-mail nelimitate";
 
-"Unlimited logins and notes" = "Date de autentificare și notițe nelimitate";
+"Unlimited logins and notes" = "Date de autentificare și note nelimitate";
 
 "Custom fields" = "Câmpuri personale";
 
@@ -132,4 +132,4 @@
 
 "Pay every two years" = "Plată la doi ani";
 
-"Free" = "Gratuit";
+"Free" = "Free";

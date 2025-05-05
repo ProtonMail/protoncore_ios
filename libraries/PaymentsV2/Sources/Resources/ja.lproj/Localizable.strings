@@ -1,21 +1,21 @@
-"APIs_malformed_url_request" = "Something went wrong, and we couldn't fulfil your request. If the issue persists, please contact customer support.";
+"APIs_malformed_url_request" = "問題が発生したため、リクエストを完了できませんでした。問題が解決しない場合は、カスタマーサポートにお問い合わせください。";
 
-"Plans_Manager_impossible_to_get_user_uuid" = "It was impossible to get the user’s UUID for the transaction";
+"Plans_Manager_impossible_to_get_user_uuid" = "トランザクションのユーザーの UUID を取得することができませんでした";
 
-"Plans_Manager_impossible_to_match_plan" = "It was impossible to match the Proton Plan to an Apple Store plan";
+"Plans_Manager_impossible_to_match_plan" = "ProtonのプランをApple Storeのプランに一致させることはできませんでした";
 
-"Plans_Manager_impossible_to_restore_transactions" = "It was impossible to restore transactions, please contact customer support";
+"Plans_Manager_impossible_to_restore_transactions" = "トランザクションの復元ができませんでした。カスタマーサポートまでご連絡ください。";
 
-"Plans_Manager_Transaction_cancelled_by_user" = "The transaction has been cancelled by the user";
+"Plans_Manager_Transaction_cancelled_by_user" = "トランザクションはユーザーによってキャンセルされました";
 
-"Plans_Manager_Transaction_unknown_error" = "An unexpected error occured, if this persists, please contact customer support";
+"Plans_Manager_Transaction_unknown_error" = "予期しないエラーが発生しました。この状態が続く場合は、カスタマーサポートまでご連絡ください。";
 
-"Plans_Managere_peding_transaction_received" = "Unexpected pending transaction received";
+"Plans_Managere_peding_transaction_received" = "予期しない保留中のトランザクションを受信しました";
 
-"PlansComposer_unable_to_fetch_currentSub" = "Unable to fetch the current subscription";
+"PlansComposer_unable_to_fetch_currentSub" = "現在のサブスクリプションを取得できません";
 
-"Remote_manager_error" = "Something went wrong and we couldn't fulfill your request. If the issue persists, please contact customer support.";
+"Remote_manager_error" = "問題が発生したため、リクエストを完了できませんでした。問題が解決しない場合は、カスタマーサポートにお問い合わせください。";
 
-"SK_Receipt_impossible_to_get_receipt" = "Impossible to get transaction receipt data from Apple";
+"SK_Receipt_impossible_to_get_receipt" = "Appleからトランザクション受信データを取得することができません";
 
-"Transaction_Handler_plan_not_found" = "It was impossible to find the name of the plan you’re trying to purchase. If the issue persists please contact customer support";
+"Transaction_Handler_plan_not_found" = "購入しようとしているプラン名が見つかりませんでした。問題が解決しない場合は、カスタマーサポートまでご連絡ください。";
