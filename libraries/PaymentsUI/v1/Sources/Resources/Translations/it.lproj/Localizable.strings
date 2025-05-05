@@ -10,9 +10,9 @@
 
 "Subscription" = "Abbonamento";
 
-"Upgrade your plan" = "Effettua l'upgrade del piano";
+"Upgrade your plan" = "Effettua l'upgrade del tuo piano";
 
-"Only annual subscriptions without auto-renewal are available inside the mobile app." = "All'interno dell'app mobile sono disponibili solo abbonamenti annuali senza rinnovo automatico.";
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Nell'app mobile sono disponibili solo gli abbonamenti annuali senza rinnovo automatico.";
 
 "You cannot manage subscriptions inside the mobile application." = "Non puoi gestire gli abbonamenti all'interno dell'applicazione mobile.";
 
@@ -24,9 +24,9 @@
 
 "%1$@ of %2$@" = "%1$@ di %2$@";
 
-"%@ storage" = "%@ di archiviazione";
+"%@ storage" = "%@ di spazio di archiviazione";
 
-"%@ storage / user" = "%@ spazio / utente";
+"%@ storage / user" = "%@ spazio di archiviazione / utente";
 
 "for %@" = "per %@";
 
@@ -36,7 +36,7 @@
 
 "Adblocker (NetShield)" = "Adblocker (NetShield)";
 
-"Streaming service support" = "Supporto servizio streaming";
+"Streaming service support" = "Supporto per i servizi di streaming";
 
 "High speed" = "Alta velocità";
 
@@ -50,11 +50,11 @@
 
 "Limited time offer" = "Offerta a tempo limitato";
 
-"Complete payment?" = "Completare pagamento?";
+"Complete payment?" = "Completare il pagamento?";
 
 "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "È già stato avviato un acquisto per un piano Proton Bundle. Clicca continua per completare l'elaborazione del pagamento e creare il tuo account";
 
-"Complete payment" = "Completa pagamento";
+"Complete payment" = "Completa il pagamento";
 
 "The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Non è stato possibile finalizzare il processo di configurazione dell'account a causa di un errore imprevisto.\nPer favore riprova.";
 
@@ -98,7 +98,7 @@
 
 "Get %@" = "Ottieni %@";
 
-"Get Proton for free" = "Ottieni Proton gratis";
+"Get Proton for free" = "Ottieni Proton gratuitamente";
 
 "Extend subscription" = "Proroga l'abbonamento";
 
@@ -106,7 +106,7 @@
 
 "Connection issues" = "Problemi di connessione";
 
-"Check your internet connection" = "Controlla la connessione internet";
+"Check your internet connection" = "Verifica la tua connessione Internet";
 
 "Strict no-logs policy" = "Rigorosa politica di non conservazione dei log";
 
@@ -118,7 +118,7 @@
 
 "Unlimited devices" = "Dispositivi illimitati";
 
-"Unlimited email aliases" = "Numero illimitato di alias";
+"Unlimited email aliases" = "Alias email illimitati";
 
 "Unlimited logins and notes" = "Login e note illimitati";
 

@@ -20,7 +20,7 @@
 
 "Current plan will expire on %@" = "O plano atual irá expirar em %@";
 
-"Contact an administrator to make changes to your Proton subscription." = "Contate um administrador para alterar sua assinatura Proton.";
+"Contact an administrator to make changes to your Proton subscription." = "Contate um administrador para alterar sua assinatura da Proton.";
 
 "%1$@ of %2$@" = "%1$@ de %2$@";
 
@@ -52,7 +52,7 @@
 
 "Complete payment?" = "Completar pagamento?";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Um compra do plano Proton Bundle já foi iniciada. Clique em continuar para completar o processo de pagamento e criar sua conta";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Um compra do plano da Proton Bundle já foi iniciada. Clique em continuar para completar o processo de pagamento e criar sua conta";
 
 "Complete payment" = "Completar pagamento";
 
@@ -60,7 +60,7 @@
 
 "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "O processo de compra no app foi iniciado. Siga as instruções da Apple para concluir ou cancelar a compra.";
 
-"In app payments are temporarily unavailable." = "Os pagamentos no aplicativo estão indisponíveis temporariamente.";
+"In app payments are temporarily unavailable." = "Os pagamentos no aplicativo estão temporariamente indisponíveis.";
 
 "One plan for all Proton services" = "Um plano para todos os serviços da Proton";
 
@@ -128,8 +128,8 @@
 
 "Pay monthly" = "Pagar mensalmente";
 
-"Pay annually" = "Pagamento anual";
+"Pay annually" = "Pagar anualmente";
 
 "Pay every two years" = "Pagar a cada dois anos";
 
-"Free" = "Grátis";
+"Free" = "Free";

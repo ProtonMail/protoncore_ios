@@ -12,11 +12,11 @@
 
 "Upgrade your plan" = "Uppgradera ditt paket";
 
-"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Endast årliga prenumerationer utan automatisk förnyelse är tillgängliga inuti mobilappen.";
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Endast årliga prenumerationer utan automatisk förnyelse är tillgängliga i mobilappen.";
 
 "You cannot manage subscriptions inside the mobile application." = "Du kan inte hantera prenumerationer i mobilapplikationen.";
 
-"Your plan will automatically renew on %@" = "Ditt paket kommer att förnyas automatiskt den %@";
+"Your plan will automatically renew on %@" = "Ditt paket kommer förnyas automatiskt den %@";
 
 "Current plan will expire on %@" = "Nuvarande paket kommer löpa ut den %@";
 
@@ -52,7 +52,7 @@
 
 "Complete payment?" = "Slutför betalning?";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Ett köp för ett Proton-paket har redan påbörjats. Tryck fortsätt för att slutföra betalningshanteringen och skapa ditt konto";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account";
 
 "Complete payment" = "Slutför betalning";
 
@@ -60,21 +60,21 @@
 
 "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "IAP-köpprocessen har startat. Följ Apples instruktioner för att antingen slutföra eller avbryta köpet.";
 
-"In app payments are temporarily unavailable." = "Betalning i appar är temporärt otillgängligt.";
+"In app payments are temporarily unavailable." = "Betalning i app är temporärt otillgängligt.";
 
 "One plan for all Proton services" = "Ett paket för alla Proton-tjänster";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "Gratiskontot designat för att ge alla integritet som standard.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "The no-cost starter account designed to empower everyone with privacy by default.";
 
-"The privacy-first email and calendar solution for your everyday communication needs." = "Den integritetsbaserade e-post- och kalenderlösningen för dina dagliga kommunikationsbehov.";
+"The privacy-first email and calendar solution for your everyday communication needs." = "Den integritetsfokuserade lösningen för e-post och kalender för dina dagliga kommunikationsbehov.";
 
 "Your privacy and security are our priority." = "Din integritet och säkerhet är vår prioritet.";
 
-"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Det lagringsfokuserade paketet med 200 GB molnlagring för att hålla dina filer privata.";
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Det lagringsfokuserade paketet med 200 GB molnlagringsutrymme för att hålla dina filer privata.";
 
-"The ultimate privacy pack with access to all premium Proton services." = "Det ultimata integritetspaketet med åtkomst till alla premium Proton-tjänster.";
+"The ultimate privacy pack with access to all premium Proton services." = "The ultimate privacy pack with access to all premium Proton services.";
 
-"Only non-renewing annual subscriptions are available via this app" = "Endast icke-förnyande årsprenumerationer är tillgängliga via denna app";
+"Only non-renewing annual subscriptions are available via this app" = "Only non-renewing annual subscriptions are available via this app";
 
 "Your subscription cannot be managed inside the mobile app." = "Din prenumeration kan inte hanteras i mobilappen.";
 
@@ -106,13 +106,13 @@
 
 "Connection issues" = "Anslutningsproblem";
 
-"Check your internet connection" = "Kontrollera din Internetanslutning";
+"Check your internet connection" = "Kontrollera din internetanslutning";
 
-"Strict no-logs policy" = "Strikt policy att inte logga";
+"Strict no-logs policy" = "Strict no-logs policy";
 
 "Plan successfully upgraded" = "Paket uppgraderat";
 
-"Integrated 2FA authenticator" = "Integrerad 2FA-autentisering";
+"Integrated 2FA authenticator" = "Integrerad 2FA-autentiserare";
 
 "Priority support" = "Prioriterad support";
 
@@ -132,4 +132,4 @@
 
 "Pay every two years" = "Betala vartannat år";
 
-"Free" = "Gratis";
+"Free" = "Free";

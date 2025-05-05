@@ -2,134 +2,134 @@
 
 "Cancel" = "Zrušiť";
 
-"Warning" = "Upozornenie";
+"Warning" = "Warning";
 
-"Select a plan" = "Vyberte plán";
+"Select a plan" = "Select a plan";
 
-"Current plan" = "Momentálne predplatné";
+"Current plan" = "Current plan";
 
-"Subscription" = "Predplatné";
+"Subscription" = "Subscription";
 
-"Upgrade your plan" = "Upgradovať svoj plán";
+"Upgrade your plan" = "Upgrade your plan";
 
-"Only annual subscriptions without auto-renewal are available inside the mobile app." = "V mobilnej aplikácii je k dispozícii iba ročné predplatné bez automatického obnovenia.";
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Only annual subscriptions without auto-renewal are available inside the mobile app.";
 
-"You cannot manage subscriptions inside the mobile application." = "V mobilnej aplikácii nemôžete spravovať predplatné.";
+"You cannot manage subscriptions inside the mobile application." = "You cannot manage subscriptions inside the mobile application.";
 
-"Your plan will automatically renew on %@" = "Váš plán sa automaticky obnoví %@";
+"Your plan will automatically renew on %@" = "Your plan will automatically renew on %@";
 
-"Current plan will expire on %@" = "Váš plán vyprší dňa %@";
+"Current plan will expire on %@" = "Current plan will expire on %@";
 
-"Contact an administrator to make changes to your Proton subscription." = "Ak chcete vykonať zmeny vo vašom predplatnom Proton, kontaktujte správcu.";
+"Contact an administrator to make changes to your Proton subscription." = "Contact an administrator to make changes to your Proton subscription.";
 
-"%1$@ of %2$@" = "%1$@ z %2$@";
+"%1$@ of %2$@" = "%1$@ of %2$@";
 
-"%@ storage" = "%@ úložisko";
+"%@ storage" = "%@ storage";
 
-"%@ storage / user" = "%@ úložisko / používateľ";
+"%@ storage / user" = "%@ storage / user";
 
-"for %@" = "pre %@";
+"for %@" = "for %@";
 
-"Custom email addresses" = "Vlastné emailové adresy";
+"Custom email addresses" = "Custom email addresses";
 
-"Priority customer support" = "Prioritná zákaznícka podpora";
+"Priority customer support" = "Priority customer support";
 
-"Adblocker (NetShield)" = "Blokátor reklám (NetShield)";
+"Adblocker (NetShield)" = "Adblocker (NetShield)";
 
-"Streaming service support" = "Podpora streamovacích služieb";
+"Streaming service support" = "Streaming service support";
 
-"High speed" = "Vysoká rýchlosť";
+"High speed" = "High speed";
 
-"Highest speed" = "Najvyššia rýchlosť";
+"Highest speed" = "Highest speed";
 
-"Multi-user support" = "Podpora pre viac uživateľov";
+"Multi-user support" = "Multi-user support";
 
-"The basic for private and secure communications." = "Základ pre súkromnú a bezpečnú komunikáciu.";
+"The basic for private and secure communications." = "The basic for private and secure communications.";
 
-"Full-featured mailbox with advanced protection." = "Plne vybavená schránka s pokročilou ochranou.";
+"Full-featured mailbox with advanced protection." = "Full-featured mailbox with advanced protection.";
 
-"Limited time offer" = "Časovo obmedzená ponuka";
+"Limited time offer" = "Limited time offer";
 
-"Complete payment?" = "Dokončiť platbu?";
+"Complete payment?" = "Complete payment?";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Nákup plánu Proton Bundle už bol spustený. Stlačením Pokračovať dokončite spracovanie platby a vytvorte si účet";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account";
 
-"Complete payment" = "Dokončiť platbu";
+"Complete payment" = "Complete payment";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Proces nastavenia účtu nebolo možné dokončiť pre neočakávanú chybu.\nSkúste to znova.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "The account setup process could not be finalized due to an unexpected error.\nPlease try again.";
 
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Proces nákupu IAP sa začal. Dokončite alebo zrušte nákup podľa pokynov spoločnosti Apple.";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase.";
 
-"In app payments are temporarily unavailable." = "Platby v aplikácii sú dočasne nedostupné.";
+"In app payments are temporarily unavailable." = "In app payments are temporarily unavailable.";
 
-"One plan for all Proton services" = "Jeden plán pre všetky Proton služby";
+"One plan for all Proton services" = "One plan for all Proton services";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "Bezplatný štartovací účet, ktorý je navrhnutý tak, aby poskytol súkromie pre všetkých už v základnom nastavení.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "The no-cost starter account designed to empower everyone with privacy by default.";
 
-"The privacy-first email and calendar solution for your everyday communication needs." = "Riešenie e-mailu a kalendára s dôrazom na ochranu osobných údajov pre vaše každodenné komunikačné potreby.";
+"The privacy-first email and calendar solution for your everyday communication needs." = "The privacy-first email and calendar solution for your everyday communication needs.";
 
-"Your privacy and security are our priority." = "Vaše súkromie a bezpečnosť sú našou prioritou.";
+"Your privacy and security are our priority." = "Your privacy and security are our priority.";
 
-"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Plán zameraný na úložisko s 200 GB cloudovej kapacity, aby zostali vaše súbory v súkromí.";
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "The storage-focused plan with 200 GB of cloud storage to keep your files private.";
 
-"The ultimate privacy pack with access to all premium Proton services." = "Dokonalý balík ochrany osobných údajov s prístupom ku všetkým prémiovým službám Protonu.";
+"The ultimate privacy pack with access to all premium Proton services." = "The ultimate privacy pack with access to all premium Proton services.";
 
-"Only non-renewing annual subscriptions are available via this app" = "Prostredníctvom tejto aplikácie je k dispozícii iba neobnovujúce sa ročné predplatné";
+"Only non-renewing annual subscriptions are available via this app" = "Only non-renewing annual subscriptions are available via this app";
 
-"Your subscription cannot be managed inside the mobile app." = "Vaše predplatné nie je možné spravovať v mobilnej aplikácii.";
+"Your subscription cannot be managed inside the mobile app." = "Your subscription cannot be managed inside the mobile app.";
 
-"Unlimited folders, labels, and filters" = "Neobmedzený počet priečinkov, štítkov a filtrov";
+"Unlimited folders, labels, and filters" = "Unlimited folders, labels, and filters";
 
-"Up to %@ storage" = "Až do %@ úložtného priestoru";
+"Up to %@ storage" = "Up to %@ storage";
 
-"Free VPN on a single device" = "Bezplatná sieť VPN na jednom zariadení";
+"Free VPN on a single device" = "Free VPN on a single device";
 
-"Highest VPN speed" = "Najvyššia rýchlosť VPN";
+"Highest VPN speed" = "Highest VPN speed";
 
-"Built-in ad-blocker (NetShield)" = "Vstavaný blokovač reklám (NetShield)";
+"Built-in ad-blocker (NetShield)" = "Built-in ad-blocker (NetShield)";
 
-"Access to streaming services globally" = "Prístup k streamovacím službám na celom svete";
+"Access to streaming services globally" = "Access to streaming services globally";
 
-"Secure Core servers" = "Servery Secure Core";
+"Secure Core servers" = "Secure Core servers";
 
-"TOR over VPN" = "TOR cez VPN";
+"TOR over VPN" = "Tor over VPN";
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "Získať %@";
+"Get %@" = "Get %@";
 
-"Get Proton for free" = "Získajte Proton zadarmo";
+"Get Proton for free" = "Get Proton for free";
 
-"Extend subscription" = "Predĺžiť predplatné";
+"Extend subscription" = "Extend subscription";
 
-"%@ of %@" = "%@ z %@";
+"%@ of %@" = "%@ of %@";
 
-"Connection issues" = "Problémy s pripojením";
+"Connection issues" = "Connection issues";
 
-"Check your internet connection" = "Skontrolujte svoje internetové pripojenie";
+"Check your internet connection" = "Check your internet connection";
 
-"Strict no-logs policy" = "Prísna politika neuchovávania záznamov";
+"Strict no-logs policy" = "Strict no-logs policy";
 
-"Plan successfully upgraded" = "Plán bol úspešne inovovaný";
+"Plan successfully upgraded" = "Plan successfully upgraded";
 
-"Integrated 2FA authenticator" = "Integrovaný 2FA autentifikátor";
+"Integrated 2FA authenticator" = "Integrated 2FA authenticator";
 
-"Priority support" = "Prioritná podpora";
+"Priority support" = "Priority support";
 
-"Unlimited devices" = "Neobmedzený počet zariadení";
+"Unlimited devices" = "Unlimited devices";
 
-"Unlimited email aliases" = "Neobmedzený počet emailových aliasov";
+"Unlimited email aliases" = "Unlimited email aliases";
 
-"Unlimited logins and notes" = "Neobmedzený počet prihlásení a poznámok";
+"Unlimited logins and notes" = "Unlimited logins and notes";
 
-"Custom fields" = "Vlastné polia";
+"Custom fields" = "Custom fields";
 
-"For next-level password management and identity protection." = "Pre správu hesiel a ochranu identity ďalšej úrovne.";
+"For next-level password management and identity protection." = "For next-level password management and identity protection.";
 
-"Pay monthly" = "Mesačná platba";
+"Pay monthly" = "Pay monthly";
 
-"Pay annually" = "Ročná platba";
+"Pay annually" = "Pay annually";
 
-"Pay every two years" = "Platba každé dva roky";
+"Pay every two years" = "Pay every two years";
 
-"Free" = "Zdarma";
+"Free" = "Free";

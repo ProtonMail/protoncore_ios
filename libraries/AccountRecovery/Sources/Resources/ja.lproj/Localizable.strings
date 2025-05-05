@@ -1,26 +1,26 @@
 "Settings_Item" = "パスワードリセット";
 
-"Insecure_View_Title" = "Password reset";
+"Insecure_View_Title" = "パスワードのリセット";
 
-"Cancelled_View_Title" = "Password reset";
+"Cancelled_View_Title" = "パスワードのリセット";
 
-"Grace_View_Title" = "Password reset";
+"Grace_View_Title" = "パスワードのリセット";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**";
+"We received a password reset request for **%@**." = "**%@** のパスワードリセットリクエストを受け取りました";
 
-"We received a password reset request for %@." = "We received a password reset request for %@";
+"We received a password reset request for %@." = "%@ のパスワードリセットリクエストを受け取りました";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "もしパスワードのリセットをリクエストしていない場合は、**今すぐこのリクエストをキャンセル**してください。";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "もしパスワードのリセットをリクエストしていない場合は、今すぐこのリクエストをキャンセルしてください。";
 
-"Password reset requested" = "Password reset requested";
+"Password reset requested" = "パスワードのリセットを要求しました";
 
 "Insecure_View_line1" = "アカウントのパスワードを変更できます。 ";
 
-"You can change your password in %@." = "You can change your password in %@.";
+"You can change your password in %@." = "%@でパスワードを変更できます。";
 
-"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "パスワードをリセットしようとしているのが本当にあなたであることを確認するために、リクエストを承認する前に72時間待ちます。";
 
 "Insecure_View_line2" = " 期間中は自由に ";
 
@@ -30,52 +30,52 @@
 
 "Grace_View_Undefined_Time_Left" = "数時間";
 
-"Settings_Item_Value_Grace" = "Pending";
+"Settings_Item_Value_Grace" = "保留中";
 
-"Settings_Item_Value_Expired" = "Expired";
+"Settings_Item_Value_Expired" = "有効期限切れ";
 
-"Settings_Item_Value_Cancelled" = "Cancelled";
+"Settings_Item_Value_Cancelled" = "キャンセル済み";
 
-"Settings_Item_Value_Insecure" = "Available";
+"Settings_Item_Value_Insecure" = "利用可能";
 
-"Insecure_View_Cancel_Button_CTA" = "Cancel reset";
+"Insecure_View_Cancel_Button_CTA" = "リセットのキャンセル";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "もしパスワードのリセットをリクエストしていない場合は、**今すぐこのリクエストをキャンセル**してください。";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "もしパスワードのリセットをリクエストしていない場合は、今すぐこのリクエストをキャンセルしてください。";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**.";
+"We received a password reset request for **%@**." = "**%@** のパスワードリセットリクエストを受け取りました。";
 
-"We received a password reset request for %@." = "We received a password reset request for %@.";
+"We received a password reset request for %@." = "%@ のパスワードリセットリクエストを受け取りました。";
 
-"Password reset cancelled" = "Password reset cancelled";
+"Password reset cancelled" = "パスワードのリセットがキャンセルされました";
 
-"Cancelled by the user" = "Cancelled by the user";
+"Cancelled by the user" = "ユーザーによってキャンセルされました";
 
-"Authenticated in another session" = "Authenticated in another session";
+"Authenticated in another session" = "別のセッションで認証されました";
 
-"none" = "none";
+"none" = "なし";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "操作が行われなかったため、アカウントのリカバリープロセスは有効期限切れになりました。";
 
-"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "If you never made a password reset request, someone else could have access to your account. **Change your password now**";
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "パスワードのリセットをリクエストした覚えがない場合は、他の誰かがあなたのアカウントにアクセスした可能性があります。**今すぐパスワードを変更してください**";
 
-"If you never made a password reset request, someone else could have access to your account. Change your password now" = "If you never made a password reset request, someone else could have access to your account. Change your password now";
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "パスワードのリセットをリクエストした覚えがない場合は、他の誰かがあなたのアカウントにアクセスした可能性があります。今すぐパスワードを変更してください。";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "操作が行われなかったため、アカウントのリカバリープロセスは有効期限切れになりました。";
 
-"Recovery process not started" = "Recovery process not started";
+"Recovery process not started" = "リカバリプロセスは開始されていません";
 
-"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "現在、アカウントのリカバリ処理は行われていません。パスワードを回復するには、Webアプリのセッションにアクセスしてください。";
 
-"You can now reset your password" = "You can now reset your password";
+"You can now reset your password" = "パスワードをリセットできるようになりました";
 
-"Reset available until %@." = "Reset available until %@.";
+"Reset available until %@." = "%@までリセットできます。";
 
-"Change device to continue" = "Change device to continue";
+"Change device to continue" = "続行するにはデバイスを変更してください";
 
-"To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
+"To reset your password, go back to your active session on **the originating device**." = "パスワードをリセットするには、**元のデバイス**のアクティブなセッションに戻ってください。";
 
-"To reset your password, go back to your active session on the originating device." = "To reset your password, go back to your active session on the originating device.";
+"To reset your password, go back to your active session on the originating device." = "パスワードをリセットするには、元のデバイスのアクティブなセッションに戻ってください。";
 
-"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now.";
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "パスワードをリセットするには、%@ が必要です。\nパスワードのリセットのリクエストを行ったデバイスとブラウザでこれを行う必要があります。\nパスワードのリセットを要求していない場合は、今すぐキャンセルしてください。";

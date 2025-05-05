@@ -28,7 +28,7 @@
 
 "%@ storage / user" = "%@ przestrzeni dyskowej / użytkownika";
 
-"for %@" = "na %@";
+"for %@" = "for %@";
 
 "Custom email addresses" = "Niestandardowe adresy e-mail";
 
@@ -68,15 +68,15 @@
 
 "The privacy-first email and calendar solution for your everyday communication needs." = "Prywatna poczta i kalendarz do codziennej komunikacji.";
 
-"Your privacy and security are our priority." = "Twoja prywatność i bezpieczeństwo są dla nas priorytetem.";
+"Your privacy and security are our priority." = "Twoja prywatność i bezpieczeństwo są naszym priorytetem.";
 
 "The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Plan z przestrzenią dyskową 200 GB dla dysku w chmurze.";
 
-"The ultimate privacy pack with access to all premium Proton services." = "Najwyższy pakiet prywatności z dostępem do wszystkich usług Proton premium.";
+"The ultimate privacy pack with access to all premium Proton services." = "Najwyższy pakiet prywatności z dostępem do wszystkich usług Proton w wersji premium.";
 
 "Only non-renewing annual subscriptions are available via this app" = "Za pośrednictwem tej aplikacji dostępne są tylko nieodnawialne roczne subskrypcje";
 
-"Your subscription cannot be managed inside the mobile app." = "Twoja subskrypcja nie może być zarządzana w aplikacji mobilnej.";
+"Your subscription cannot be managed inside the mobile app." = "Nie możesz zarządzać subskrypcją poprzez aplikację mobilną.";
 
 "Unlimited folders, labels, and filters" = "Nieograniczona liczba folderów, etykiet i filtrów";
 
@@ -132,4 +132,4 @@
 
 "Pay every two years" = "Płatne co 2 lata";
 
-"Free" = "Za darmo";
+"Free" = "Free";

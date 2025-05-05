@@ -92,7 +92,7 @@
 
 "Secure Core servers" = "Secure Core サーバー";
 
-"TOR over VPN" = "Tor over VPN";
+"TOR over VPN" = "VPN 経由の TOR";
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
@@ -102,7 +102,7 @@
 
 "Extend subscription" = "サブスクリプションを延長";
 
-"%@ of %@" = "%@/%@";
+"%@ of %@" = "%@ の中の%@";
 
 "Connection issues" = "接続の問題";
 
@@ -112,7 +112,7 @@
 
 "Plan successfully upgraded" = "プランは正常にアップグレードされました";
 
-"Integrated 2FA authenticator" = "統合された2FA認証機能";
+"Integrated 2FA authenticator" = "統合された2要素認証機能";
 
 "Priority support" = "優先サポート";
 
@@ -126,9 +126,9 @@
 
 "For next-level password management and identity protection." = "次のレベルのパスワード管理とアイデンティティ保護のために。";
 
-"Pay monthly" = "月額支払い";
+"Pay monthly" = "月払い";
 
-"Pay annually" = "年間支払い";
+"Pay annually" = "年払い";
 
 "Pay every two years" = "2年ごとの支払い";
 

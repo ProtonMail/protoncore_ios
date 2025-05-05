@@ -10,11 +10,11 @@
 
 "Plans_Manager_Transaction_unknown_error" = "Beklenmeyen bir sorun çıktı. Sorun sürerse lütfen müşteri destek ekibimizle görüşün.";
 
-"Plans_Managere_peding_transaction_received" = "Unexpected pending transaction received";
+"Plans_Managere_peding_transaction_received" = "Olmaması gereken bir bekleyen işlem alındı";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Geçerli abonelik alınamadı";
 
-"Remote_manager_error" = "Something went wrong and we couldn't fulfill your request. If the issue persists, please contact customer support.";
+"Remote_manager_error" = "Bir sorun çıktığından isteğinizi yerine getiremedik. Sorun sürerse, lütfen müşteri destek ekibimiz ile görüşün.";
 
 "SK_Receipt_impossible_to_get_receipt" = "İşlemin ödeme verileri Apple üzerinden alınamadı";
 

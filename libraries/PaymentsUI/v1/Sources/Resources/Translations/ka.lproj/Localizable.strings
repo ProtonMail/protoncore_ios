@@ -2,134 +2,134 @@
 
 "Cancel" = "გაუქმება";
 
-"Warning" = "გაფრთხილება";
+"Warning" = "Warning";
 
-"Select a plan" = "აირჩეთ გეგმა";
+"Select a plan" = "Select a plan";
 
-"Current plan" = "მიმდინარე ტარიფი";
+"Current plan" = "Current plan";
 
-"Subscription" = "გამოწერა";
+"Subscription" = "Subscription";
 
-"Upgrade your plan" = "გააუმჯობესეთ თქვენი ტარიფი";
+"Upgrade your plan" = "Upgrade your plan";
 
-"Only annual subscriptions without auto-renewal are available inside the mobile app." = "მობილური აპლიკაციიდან წვდომადია, მხოლოდ, წლიური გამოწერები, ავტომატური განახლების გარეშე.";
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Only annual subscriptions without auto-renewal are available inside the mobile app.";
 
-"You cannot manage subscriptions inside the mobile application." = "მობილური აპლიკაციიდან გამოწერებს ვერ მართავთ.";
+"You cannot manage subscriptions inside the mobile application." = "You cannot manage subscriptions inside the mobile application.";
 
-"Your plan will automatically renew on %@" = "თქვენი გეგმის ავტომატური განახლების თარიღი: %@";
+"Your plan will automatically renew on %@" = "Your plan will automatically renew on %@";
 
-"Current plan will expire on %@" = "მიმდინარე ტარიფის ამოწურვის ვადაა %@";
+"Current plan will expire on %@" = "Current plan will expire on %@";
 
-"Contact an administrator to make changes to your Proton subscription." = "Proton-ის გამოწერის შესაცვლელად დაუკავშირდით ადმინისტრატორს.";
+"Contact an administrator to make changes to your Proton subscription." = "Contact an administrator to make changes to your Proton subscription.";
 
-"%1$@ of %2$@" = "%1$@ %2$@-დან";
+"%1$@ of %2$@" = "%1$@ of %2$@";
 
-"%@ storage" = "%@ საცავი";
+"%@ storage" = "%@ storage";
 
-"%@ storage / user" = "%@ საცავი / მომხმარებელზე";
+"%@ storage / user" = "%@ storage / user";
 
-"for %@" = "%@-თვის";
+"for %@" = "for %@";
 
-"Custom email addresses" = "მორგებული ელ-ფოსტის მისამართები";
+"Custom email addresses" = "Custom email addresses";
 
-"Priority customer support" = "მომხმარებლის პრიორიტეტული მხარდაჭერა";
+"Priority customer support" = "Priority customer support";
 
 "Adblocker (NetShield)" = "Adblocker (NetShield)";
 
-"Streaming service support" = "სტრიმინგის სერვერის მხარდაჭერა";
+"Streaming service support" = "Streaming service support";
 
-"High speed" = "მაღალი სიჩქარე";
+"High speed" = "High speed";
 
-"Highest speed" = "უმაღლესი სიჩქარე";
+"Highest speed" = "Highest speed";
 
-"Multi-user support" = "მრავალმომხმარებლიანობის მხარდაჭერა";
+"Multi-user support" = "Multi-user support";
 
-"The basic for private and secure communications." = "საბაზისო ფუნქციები კონფიდენციალური და დაცული ურთიერთობისთვის.";
+"The basic for private and secure communications." = "The basic for private and secure communications.";
 
-"Full-featured mailbox with advanced protection." = "საფოსტო ყუთი ყველა ფუნქციითა და დამატებითი უსაფრთხოებით.";
+"Full-featured mailbox with advanced protection." = "Full-featured mailbox with advanced protection.";
 
-"Limited time offer" = "დროში შეზღუდული შეთავაზება";
+"Limited time offer" = "Limited time offer";
 
-"Complete payment?" = "დავასრულო შეძენა?";
+"Complete payment?" = "Complete payment?";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Proton Bundle-ის ტარიფის გეგმის შეძენა უკვე დაწყებულია. დააწექით ღილაკს \"გაგრძელება\", რომ დაასრულოთ გადახდა და შექმნათ თქვენი ანგარიში";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account";
 
-"Complete payment" = "შეძენის დასრულება";
+"Complete payment" = "Complete payment";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "ანგარიშის მორგების პროცესის დასრულება შეუძლებელია გაუთვალისწინებელი შეცდომის გამო.\nთავიდან სცადეთ.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "The account setup process could not be finalized due to an unexpected error.\nPlease try again.";
 
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "IAP შეძენის პროცესი დაწყებულია. შეძენის დასასრულებლად ან გასაუქმებლად Apple-ის ინსტრუქციებს მიჰყევით.";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase.";
 
-"In app payments are temporarily unavailable." = "აპში გადახდები დროებით ხელმისაწვდომი არაა.";
+"In app payments are temporarily unavailable." = "In app payments are temporarily unavailable.";
 
-"One plan for all Proton services" = "ერთი სატარიფო გეგმა Proton-ის ყველა სერვისისთვის";
+"One plan for all Proton services" = "One plan for all Proton services";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "დამწყების უფასო ანგარიში განკუთვნილია, მათთვის, ვისთვისაც კონფიდენციალობა მნიშვნელოვანია.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "The no-cost starter account designed to empower everyone with privacy by default.";
 
-"The privacy-first email and calendar solution for your everyday communication needs." = "დაცული ელფოსტისა და კალენდრის გადაწყვეტილება თქვენი ყოველდღიური საჭიროებებისთვის.";
+"The privacy-first email and calendar solution for your everyday communication needs." = "The privacy-first email and calendar solution for your everyday communication needs.";
 
-"Your privacy and security are our priority." = "თქვენი კონფიდენციალობა და უსაფრთხოება ჩვენი პრიორიტეტია.";
+"Your privacy and security are our priority." = "Your privacy and security are our priority.";
 
-"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "საცავზე-ფოკუსირებული ტარიფი 200გბ ღრუბლოვანი საცავით, თქვენი ფაილების კონფიდენციალურად შესანახად.";
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "The storage-focused plan with 200 GB of cloud storage to keep your files private.";
 
-"The ultimate privacy pack with access to all premium Proton services." = "მაქსიმალური ნაკრები Proton-ის ყველა ფასიან ფუნქციასთან წვდომის საშუალებით.";
+"The ultimate privacy pack with access to all premium Proton services." = "The ultimate privacy pack with access to all premium Proton services.";
 
-"Only non-renewing annual subscriptions are available via this app" = "ამ აპიდან, მხოლოდ, არაგანმეორებადი წლიური გამოწერებია ხელმისაწვდომი";
+"Only non-renewing annual subscriptions are available via this app" = "Only non-renewing annual subscriptions are available via this app";
 
-"Your subscription cannot be managed inside the mobile app." = "გამოწერის მართვა მობილური აპიდან შეუძლებელია.";
+"Your subscription cannot be managed inside the mobile app." = "Your subscription cannot be managed inside the mobile app.";
 
-"Unlimited folders, labels, and filters" = "ულიმიტო საქაღალდეები, ჭდეები და ფილტრები";
+"Unlimited folders, labels, and filters" = "Unlimited folders, labels, and filters";
 
-"Up to %@ storage" = "%@-მდე საცავი";
+"Up to %@ storage" = "Up to %@ storage";
 
-"Free VPN on a single device" = "უფასო VPN-ი ერთ მოწყობილობაზე";
+"Free VPN on a single device" = "Free VPN on a single device";
 
-"Highest VPN speed" = "უსწრაფესი VPN";
+"Highest VPN speed" = "Highest VPN speed";
 
-"Built-in ad-blocker (NetShield)" = "ჩაშენებული Ad-blocker (NetShield)";
+"Built-in ad-blocker (NetShield)" = "Built-in ad-blocker (NetShield)";
 
-"Access to streaming services globally" = "გლობალური წვდომა ვიდეოს გადაცემის სერვისებთან";
+"Access to streaming services globally" = "Access to streaming services globally";
 
-"Secure Core servers" = "Secure Core-ის სერვერები";
+"Secure Core servers" = "Secure Core servers";
 
-"TOR over VPN" = "Tor VPN-ის ზემოდან";
+"TOR over VPN" = "Tor over VPN";
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "%@-ის მიღება";
+"Get %@" = "Get %@";
 
-"Get Proton for free" = "მიიღეთ Proton-ი უფასოდ";
+"Get Proton for free" = "Get Proton for free";
 
-"Extend subscription" = "გამოწერის გაგრძელება";
+"Extend subscription" = "Extend subscription";
 
-"%@ of %@" = "%@ %@-დან";
+"%@ of %@" = "%@ of %@";
 
-"Connection issues" = "დაკავშირების პრობლემა";
+"Connection issues" = "Connection issues";
 
-"Check your internet connection" = "შეამოწმეთ თქვენი შეერთება ინტერნეტთან";
+"Check your internet connection" = "Check your internet connection";
 
-"Strict no-logs policy" = "ჩვენ არ ვინახავთ ჟურნალს";
+"Strict no-logs policy" = "Strict no-logs policy";
 
-"Plan successfully upgraded" = "ტარიფი წარმატებით განახლდა";
+"Plan successfully upgraded" = "Plan successfully upgraded";
 
-"Integrated 2FA authenticator" = "ჩაშენებული 2FA ავთენტიკატორი";
+"Integrated 2FA authenticator" = "Integrated 2FA authenticator";
 
-"Priority support" = "პრიორიტეტული მხარდაჭერა";
+"Priority support" = "Priority support";
 
-"Unlimited devices" = "მოწყობილობების უსაზღვრო რაოდენობა";
+"Unlimited devices" = "Unlimited devices";
 
-"Unlimited email aliases" = "განუსაზღვრელი რაოდენობის ელფოსტის მეტსახელები";
+"Unlimited email aliases" = "Unlimited email aliases";
 
-"Unlimited logins and notes" = "მომხმარებლების და შენიშვნების უსაზღვრო რაოდენობა";
+"Unlimited logins and notes" = "Unlimited logins and notes";
 
-"Custom fields" = "მორგებადი ველები";
+"Custom fields" = "Custom fields";
 
-"For next-level password management and identity protection." = "პაროლების მართვისა და პირადი მონაცემების დაცვის შემდეგი დონე.";
+"For next-level password management and identity protection." = "For next-level password management and identity protection.";
 
-"Pay monthly" = "თვიურად გადახდა";
+"Pay monthly" = "Pay monthly";
 
-"Pay annually" = "წლიურად გადახდა";
+"Pay annually" = "Pay annually";
 
-"Pay every two years" = "გადახდა 2 წელიწადში ერთხელ";
+"Pay every two years" = "Pay every two years";
 
-"Free" = "უფასო";
+"Free" = "Free";

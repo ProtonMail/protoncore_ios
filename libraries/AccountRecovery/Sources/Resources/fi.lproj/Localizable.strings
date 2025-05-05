@@ -1,10 +1,10 @@
 "Settings_Item" = "Salasanan uudelleenasetus";
 
-"Insecure_View_Title" = "Password reset";
+"Insecure_View_Title" = "Salasanan nollaus";
 
-"Cancelled_View_Title" = "Password reset";
+"Cancelled_View_Title" = "Salasanan nollaus";
 
-"Grace_View_Title" = "Password reset";
+"Grace_View_Title" = "Salasanan nollaus";
 
 "We received a password reset request for **%@**." = "We received a password reset request for **%@**";
 
@@ -14,7 +14,7 @@
 
 "If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
 
-"Password reset requested" = "Password reset requested";
+"Password reset requested" = "Salasanan nollausta pyydettiin";
 
 "Insecure_View_line1" = "Voit nyt vaihtaa salasanasi tilille ";
 
@@ -38,7 +38,7 @@
 
 "Settings_Item_Value_Insecure" = "Available";
 
-"Insecure_View_Cancel_Button_CTA" = "Cancel reset";
+"Insecure_View_Cancel_Button_CTA" = "Peru nollaus";
 
 "If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
 
@@ -48,9 +48,9 @@
 
 "We received a password reset request for %@." = "We received a password reset request for %@.";
 
-"Password reset cancelled" = "Password reset cancelled";
+"Password reset cancelled" = "Salasanan nollaus peruttiin";
 
-"Cancelled by the user" = "Cancelled by the user";
+"Cancelled by the user" = "Käyttäjän peruuttama";
 
 "Authenticated in another session" = "Authenticated in another session";
 
@@ -68,11 +68,11 @@
 
 "Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
 
-"You can now reset your password" = "You can now reset your password";
+"You can now reset your password" = "Voit nyt nollata salasanasi";
 
 "Reset available until %@." = "Reset available until %@.";
 
-"Change device to continue" = "Change device to continue";
+"Change device to continue" = "Vaihda laitetta jatkaaksesi";
 
 "To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
 
