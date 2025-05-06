@@ -51,6 +51,11 @@ public struct PasswordPolicy: Codable, Equatable {
     }
 }
 
+/// Disallow Common Passwords
+public extension PasswordPolicy {
+    static let disallowCommonPasswordsPolicyName = "DisallowCommonPasswords"
+}
+
 #if DEBUG
 public extension PasswordPolicy {
     static var mock: PasswordPolicy {
