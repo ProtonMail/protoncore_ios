@@ -634,6 +634,8 @@ public struct ProtonIconSet {
 
     public let vpnMainTransparent = ProtonIcon(name: "VPNMainTransparent")
 
+    public let passMainTransparent = ProtonIcon(name: "PassMainTransparent")
+
     public let calendarStroke = ProtonIcon(name: "CalendarStroke")
 
     public let driveStroke = ProtonIcon(name: "DriveStroke")
