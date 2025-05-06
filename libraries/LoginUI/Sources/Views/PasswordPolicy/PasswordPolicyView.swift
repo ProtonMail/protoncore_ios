@@ -27,7 +27,11 @@ import ProtonCoreLogin
 
 public struct PasswordPolicyView: View {
 
-    @ObservedObject var viewModel: ViewModel
+    @Binding var viewModel: ViewModel
+
+    public init(viewModel: Binding<ViewModel>) {
+        self._viewModel = viewModel
+    }
 
     private enum Constants {
         static let verticalSpacing: CGFloat = 4
@@ -86,17 +90,6 @@ public struct PasswordPolicyView: View {
     }
 
 }
-
-#if DEBUG
-let policies = [(PasswordPolicy.disallowCommonPasswordsMock, false),
-                (PasswordPolicy.atLeastOneNumberMock, true),
-                (PasswordPolicy.atLeastOneSpecialCharacterMock, false),
-                (PasswordPolicy.atLeastOneUpperCaseAndOneLowercaseMock, false)]
-
-#Preview {
-    PasswordPolicyView(viewModel: PasswordPolicyView.ViewModel(passwordPolicies: policies))
-}
-#endif
 
 #endif
 

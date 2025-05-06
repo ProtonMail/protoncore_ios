@@ -62,6 +62,8 @@ extension PasswordChangeView {
         @Published var confirmNewPasswordFieldStyle: PCTextFieldStyle!
         @Published var savePasswordIsLoading = false
 
+        @Published var passwordPolicyViewModel: PasswordPolicyView.ViewModel!
+
         @Published var bannerState: BannerState = .none
 
         var needs2FA: Bool {
@@ -93,6 +95,14 @@ extension PasswordChangeView {
                 isSecureEntry: true,
                 textContentType: .password
             )
+
+            passwordPolicyViewModel = .init(
+                apiService: self.passwordChangeService?.apiService
+                // this ^ is a hack, should probably pass apiService to the initializer of
+                // PasswordChangeView directly
+            )
+
+            passwordPolicyViewModel.loadPasswordPolicies()
 
             newPasswordFieldContent = .init(
                 title: mode == .mailboxPassword ? PCTranslation.newMailboxPassword.l10n : PCTranslation.newPassword.l10n,
@@ -325,4 +335,15 @@ extension PasswordChangeView.ViewModel: TwoFAProviderDelegate {
     }
 
 }
+
+//extension PasswordChangeView.ViewModel: PasswordValidator {
+//
+//    override public func validate(for restrictions: PasswordRestrictions, password: String, confirmPassword: String) throws {
+//        if self.passwordChangeService.updateUserPassword(
+//        else {
+//
+//        }
+//    }
+//}
+
 #endif

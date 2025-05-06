@@ -24,6 +24,8 @@
 import ProtonCoreUIFoundations
 import ProtonCoreLogin
 import ProtonCoreLog
+import ProtonCoreNetworking
+import ProtonCoreServices
 import SwiftUI
 
 extension PasswordPolicyView {
@@ -41,19 +43,56 @@ extension PasswordPolicyView {
             PasswordPolicy.disallowSequencesPolicyName
         ]
 
-        private var passwordPolicies: [(PasswordPolicy, Bool)] = []
+        private var getPasswordPoliciesUseCase: GetPasswordPolicies?
+        private var checkPasswordPoliciesUseCase: CheckPasswordPolicies?
+        private var apiService: APIService?
 
-        public init(passwordPolicies: [(PasswordPolicy, Bool)]) {
+        private var passwordPolicies: [PasswordPolicy] = []
+
+        @Binding private var evaluatedPasswordPolicies: [(PasswordPolicy, Bool)]
+
+        public init(apiService: APIService?) {
             exceptionalErrorMessage = nil
             requirementsList = []
 
-            self.passwordPolicies = passwordPolicies
+            if let apiService = apiService {
+                self.apiService = apiService
+                getPasswordPoliciesUseCase = GetPasswordPolicies(apiService: apiService)
+                checkPasswordPoliciesUseCase = CheckPasswordPolicies()
+            }
+
+            self._evaluatedPasswordPolicies = .constant([])
 
             constructStrings()
         }
 
+        public func loadPasswordPolicies() {
+            Task {
+                guard let getPasswordPoliciesUseCase = self.getPasswordPoliciesUseCase else {
+                    return
+                }
+
+                do {
+                    self.passwordPolicies = try await getPasswordPoliciesUseCase.invoke()
+                } catch {
+                    // Observability?
+                }
+            }
+        }
+
+        public func checkPassword(_ password: String) {
+            guard let checkPasswordPoliciesUseCase = self.checkPasswordPoliciesUseCase else {
+                return
+            }
+
+            self.evaluatedPasswordPolicies = checkPasswordPoliciesUseCase.invoke(
+                passwordPolicies: self.passwordPolicies,
+                password: password
+            )
+        }
+
         func constructStrings() {
-            let unsatisfiedExceptionalPolicies = passwordPolicies.filter { (policy, valid) in
+            let unsatisfiedExceptionalPolicies = evaluatedPasswordPolicies.filter { (policy, valid) in
                 Self.exceptionalPolicyNames.contains(policy.policyName) && !valid
             }
 
@@ -61,7 +100,7 @@ extension PasswordPolicyView {
 
             // Filter out only the "exceptional" policies-- the policies which are displayed in
             // red above the list of standard policies.
-            let standardPolicies = passwordPolicies.filter { (policy, _) in
+            let standardPolicies = evaluatedPasswordPolicies.filter { (policy, _) in
                 !Self.exceptionalPolicyNames.contains(policy.policyName)
             }
 

@@ -25,6 +25,7 @@ import SwiftUI
 import ProtonCoreUIFoundations
 import ProtonCoreObservability
 import ProtonCoreUtilities
+import ProtonCoreLoginUI
 
 public struct PasswordChangeView: View {
     @ObservedObject public var viewModel: ViewModel
@@ -68,6 +69,8 @@ public struct PasswordChangeView: View {
                         style: $viewModel.currentPasswordFieldStyle,
                         content: $viewModel.currentPasswordFieldContent
                     )
+
+                    PasswordPolicyView(viewModel: $viewModel.passwordPolicyViewModel)
 
                     PCTextField(
                         style: $viewModel.newPasswordFieldStyle,
