@@ -96,7 +96,8 @@ final class CheckPasswordPoliciesTests: XCTestCase {
         let result = sut.invoke(passwordPolicies: [atLeast8CharactersPolicy(),
                                                    atLeastOneNumberPolicy(),
                                                    atLeastOneSpecialCharacterPolicy(),
-                                                   atLeastOneUpperCaseAndOneLowercasePolicy()
+                                                   atLeastOneUpperCaseAndOneLowercasePolicy(),
+                                                   disallowCommonPasswordsPolicy()
                                                   ],
                                 password: password)
 
@@ -111,6 +112,22 @@ final class CheckPasswordPoliciesTests: XCTestCase {
 
         let valid3 = result[3].1
         XCTAssertEqual(valid3, true)
+
+        let valid4 = result[4].1
+        XCTAssertEqual(valid4, true)
+    }
+
+    func testContainsCommonPassword() throws {
+        let password = "qwertyuiop"
+
+        let result = sut.invoke(passwordPolicies: [disallowCommonPasswordsPolicy()],
+                                password: password)
+
+        let errorMessage = result.first?.0.errorMessage
+        let valid = result.first?.1 as? Bool
+
+        XCTAssertEqual(errorMessage, "Password shouldn't be too common or too predictable")
+        XCTAssertEqual(valid, false)
     }
 
     private func atLeast8CharactersPolicy() -> PasswordPolicy {
@@ -159,6 +176,14 @@ final class CheckPasswordPoliciesTests: XCTestCase {
                                    requirementMessage: "At least 1 uppercase and 1 lowercase letter",
                                    errorMessage: "Password must contain at least 1 uppercase and 1 lowercase letter",
                                    regex: "/(?=.*[a-z])(?=.*[A-Z])/")
+    }
+
+    private func disallowCommonPasswordsPolicy() -> PasswordPolicy {
+        return PasswordPolicy.init(policyName: "DisallowCommonPasswords",
+                                   state: .enabled,
+                                   requirementMessage: "Something not too common",
+                                   errorMessage: "Password shouldn't be too common or too predictable",
+                                   regex: "/^(?:(?!proton|protonmail|protonvpn|protondrive|protonpass|123456|password|12345678|qwerty|123456789|12345|1234|111111|1234567|dragon|123123|baseball|abc123|football|monkey|letmein|696969|shadow|master|666666|qwertyuiop|123321|mustang|1234567890|michael|654321|pussy|superman|1qaz2wsx|7777777|fuckyou|121212|000000|qazwsx|123qwe|killer|trustno1|jordan|jennifer|zxcvbnm|asdfgh|hunter|buster|soccer|harley|batman|andrew|tigger|sunshine|iloveyou|fuckme|2000|charlie|robert|thomas|hockey|ranger|daniel|starwars|klaster|112233|george|asshole|computer|michelle|jessica|pepper|1111|zxcvbn|555555|11111111|131313|freedom|777777|pass|fuck|maggie|159753|aaaaaa|ginger|princess|joshua|cheese|amanda|summer|love|ashley|6969|nicole|chelsea|biteme|matthew|access|yankees|987654321|dallas|austin|thunder|taylor|matrix).)*$/")
     }
 }
 #endif

@@ -39,13 +39,33 @@ public struct CheckPasswordPolicies {
 
         var result: [(PasswordPolicy, Bool)] = []
         for passwordPolicy in passwordPolicies {
-            if passwordPolicy.state == .enabled {
+            guard passwordPolicy.state == .enabled else {
+                continue
+            }
+            
+            if passwordPolicy.policyName == PasswordPolicy.disallowCommonPasswordsPolicyName {
+                result.append((passwordPolicy,
+                               password.matches(passwordPolicy.regex) && !isCommonPassword(password)))
+            } else {
                 result.append((passwordPolicy, password.matches(passwordPolicy.regex)))
             }
         }
 
         return result
     }
+
+    private func isCommonPassword(_ password: String) -> Bool {
+        Self.commonPasswords.contains(password)
+    }
+
+    static let commonPasswords: [String] = {
+        guard let url = Bundle.main.url(forResource: "ignis_10k", withExtension: "txt"),
+              let content = try? String(contentsOf: url) else {
+            PMLog.error("Failed to load ignis_10k.txt from bundle")
+            return []
+        }
+        return content.components(separatedBy: .newlines).filter { !$0.isEmpty }
+    }()
 }
 
 extension String {
