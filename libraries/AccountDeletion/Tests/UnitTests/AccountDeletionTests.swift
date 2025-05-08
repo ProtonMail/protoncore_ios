@@ -120,6 +120,7 @@ final class AccountDeletionTests: XCTestCase {
     func testAccountDeletionPresentsAccountDeletionWebViewWithRightSelectorIfForkingSucceeds() async throws {
         let presenterMock = AccountDeletionViewControllerPresenterMock()
         let out = AccountDeletionService(api: apiMock, doh: dohMock)
+        dohMock.getAccountHeadersStub.bodyIs { _ in [:] }
         dohMock.getAccountHostStub.bodyIs { _ in "https://proton.unittests/account" }
         apiMock.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/core/v4/users/delete") {
@@ -327,6 +328,7 @@ final class AccountDeletionTests: XCTestCase {
     }
 
     func testAccountDeletionViewModelAddsLanguageHeaderExplicitly() {
+        dohMock.getAccountHeadersStub.bodyIs { _ in [:] }
         dohMock.getAccountHostStub.bodyIs { _ in "https://proton.unittests/account" }
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  preferredLanguage: "fr",
@@ -337,6 +339,7 @@ final class AccountDeletionTests: XCTestCase {
     }
 
     func testAccountDeletionViewModelAddsLanguageHeaderImplicitly() {
+        dohMock.getAccountHeadersStub.bodyIs { _ in [:] }
         dohMock.getAccountHostStub.bodyIs { _ in "https://proton.unittests/account" }
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },

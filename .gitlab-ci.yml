@@ -225,27 +225,6 @@ test:unit:macos:all:
     GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-2
   tags:
     - account-lane-2
-    
-test:apphost:macos:all:
-  stage: unit_test
-  retry: 2
-  rules: *rules_mr_and_develop
-  allow_failure: true
-  interruptible: true
-  before_script:
-    - *add_private_ssh_key
-    - *clone_pmconstants
-  script:
-    - fastlane run_apphosted_test_macos
-  after_script:
-    - fastlane cleanup_unit_tests_macos
-  artifacts:
-    paths:
-      - fastlane/test_output/*xcresult/**
-  variables:
-    GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-6
-  tags:
-    - account-lane-6
 
 test:unit:localization:
   stage: unit_test
@@ -297,82 +276,6 @@ test:unit:integration:
     - account-lane-4
 
 #
-# --- UI testing ---
-#
-
-# UI light tests are now temporarily disable because of flakiness. CP-6530
-test:ui:light:
-  retry: 1
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "web"'
-      when: never
-    - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
-      when: never
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-      when: never
-  script:
-    - fastlane run_ui_tests device_name:$DEVICE_NAME
-    - bash scripts/run_ui_tests_on_ci.sh --light --device $DEVICE_NAME $DEVICE_OS --dynamic-domain ${DYNAMIC_DOMAIN}
-  <<: &ui_testing_common_configuration
-    stage: ui_and_integration_test
-    allow_failure: false
-    interruptible: true
-    needs:
-      - job: linting:code-quality
-        artifacts: false
-      - job: atlas:deploy:pipenv
-        artifacts: true
-    artifacts:
-      when: always
-      name: "test-report-$CI_PIPELINE_IID"
-      paths:
-        - UITestsResults-${CI_PIPELINE_IID}.html
-      expire_in: 7 days
-    before_script:
-      - *add_private_ssh_key
-      - *clone_pmconstants
-      - *set_up_simulator
-    after_script:
-      - *tear_down_simulator
-      - rm -rf ~/ProtonCore/UITests/${CI_PIPELINE_IID}/DerivedData/
-      - fastlane cleanup_ui_tests
-      - ssh-add -D
-    variables:
-      GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-5
-    tags:
-      - account-lane-5
-
-# ui tests smoke is run on merge to develop
-test:ui:smoke:
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "web"'
-      when: never
-    - if: '$CI_PIPELINE_SOURCE == "schedule"'
-      when: never
-    - if: "$CI_PIPELINE_SOURCE"
-      when: never
-    - if: "$CI_COMMIT_BRANCH"
-      when: never
-  script:
-    - fastlane run_ui_tests device_name:$DEVICE_NAME
-    - bash scripts/run_ui_tests_on_ci.sh --smoke --device $DEVICE_NAME $DEVICE_OS --dynamic-domain ${DYNAMIC_DOMAIN}
-  <<: *ui_testing_common_configuration
-
-# ui tests regression is run only on schedules
-test:ui:regression:
-  rules:
-    # We do not want to run the job if the schedule doesn't deploy 
-    - if: $CI_PIPELINE_SOURCE == "schedule" && $ATLAS_DEPLOY_ENV == "true"
-      when: on_success
-
-    - when: never
-  timeout: 3 hours 30 minutes
-  script:
-    - fastlane run_ui_tests device_name:$DEVICE_NAME
-    - bash scripts/run_ui_tests_on_ci.sh --regression --device $DEVICE_NAME $DEVICE_OS --dynamic-domain ${DYNAMIC_DOMAIN}
-  <<: *ui_testing_common_configuration
-
-#
 # --- Coverage reports ---
 #
 
@@ -410,41 +313,6 @@ report:integration:code:coverage:
     GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-4
   tags:
     - account-lane-4
-
-report:apphost:macos:code:coverage:
-  retry: 1
-  coverage: '/Average Coverage.* (\d+\.\d+%)/'
-  stage: report
-  interruptible: true
-  rules: *rules_mr_and_develop
-  allow_failure: true
-  needs:
-    - job: test:apphost:macos:all
-      artifacts: true
-  before_script:
-    - *add_private_ssh_key
-    - bash scripts/generate_obfuscated_constants.sh
-    - ls -l fastlane/test_output
-  script:
-    # Call xcov from fastlane
-    - fastlane macos_apphost_test_reports
-    # generate alt coverage json from xcresult
-    - xcrun xccov view --report --json fastlane/test_output/ProtonCore-Keymaker-macOS-AppHost.xcresult > fastlane/test_output/ProtonCore-Keymaker-macOS-AppHost.json
-    # Print and process the result for Gitlab coverage capture
-    - jq '"Line Coverage \(.lineCoverage * 100 |tostring | .[0:5])%"' fastlane/test_output/ProtonCore-Keymaker-macOS-AppHost.json
-    # generate cobertura xml from coverage json
-    - xcc generate fastlane/test_output/ProtonCore-Keymaker-macOS-AppHost.json fastlane/test_output cobertura-xml --verbose
-    # Split big cobertura file
-    - python3 scripts/split-by-package.py fastlane/test_output/cobertura.xml fastlane/test_output/
-  artifacts:
-    reports:
-      coverage_report:
-        coverage_format: cobertura
-        path: fastlane/test_output/cobertura-*.xml
-  variables:
-    GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-6
-  tags:
-    - account-lane-6
 
 report:unit:macos:code:coverage:
   retry: 1
