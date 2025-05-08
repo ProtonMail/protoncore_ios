@@ -24,7 +24,7 @@ import XCTest
 @testable import ProtonCorePayments
 
 final class PaymentStatusResponseTests: XCTestCase {
-    var sut: PaymentStatusResponse!
+    var sut: V6PaymentStatusResponse!
 
     override func setUp() {
         super.setUp()

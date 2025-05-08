@@ -27,10 +27,18 @@ public struct Plan: Codable, Equatable {
 
     public struct Vendors: Codable, Equatable {
         public let apple: Vendor
+
+        public init(apple: Vendor) {
+            self.apple = apple
+        }
     }
 
     public struct Vendor: Codable, Equatable {
         public let plans: [String: String]
+
+        public init(plans: [String : String]) {
+            self.plans = plans
+        }
     }
 
     // amount is ignored
