@@ -103,6 +103,9 @@ public struct WelcomeVPNGuestView: View {
             bannerState: $viewModel.bannerState,
             configuration: .init(position: .bottom)
         )
+        .onAppear {
+            viewModel.measureOnViewDisplayed()
+        }
     }
 
     @ViewBuilder

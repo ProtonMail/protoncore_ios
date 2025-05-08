@@ -21,6 +21,7 @@ import ProtonCoreLog
 import ProtonCoreLogin
 import ProtonCoreNetworking
 import ProtonCoreServices
+import ProtonCoreTelemetry
 import ProtonCoreUIFoundations
 import SwiftUI
 
@@ -36,7 +37,12 @@ extension WelcomeVPNGuestView {
 extension WelcomeVPNGuestView {
 
     @MainActor
-    final class ViewModel: ObservableObject {
+    final class ViewModel: ObservableObject, ProductMetricsMeasurable {
+        var productMetrics: ProductMetrics = .init(
+            group: TelemetryMeasurementGroup.signUp.rawValue,
+            flow: TelemetryFlow.signUpFull.rawValue,
+            screen: .welcome
+        )
         private var login: Login
         private weak var delegate: WelcomeLoginControllerDelegate?
 
@@ -59,6 +65,7 @@ extension WelcomeVPNGuestView {
         }
 
         func continueAsGuestTapped() {
+            measureOnViewClicked(item: "sign_in_guest")
             Task {
                 do {
                     viewState = .loading
@@ -87,10 +94,12 @@ extension WelcomeVPNGuestView {
         }
 
         func signInTapped() {
+            measureOnViewClicked(item: "sign_in")
             delegate?.userWantsToLogIn(username: nil)
         }
 
         func signUpTapped() {
+            measureOnViewClicked(item: "sign_up")
             delegate?.userWantsToSignUp()
         }
     }
