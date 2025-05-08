@@ -56,7 +56,7 @@ final class FeatureFlagsTests: XCTestCase {
                     remoteDataSource: Atomic<RemoteFeatureFlagsDataSourceProtocol?>(nil),
                     overrideLocalDataSource: overrideLocalDataSource
         )
-//        sut.overrideLocalDataSource = overrideLocalDataSource
+        //        sut.overrideLocalDataSource = overrideLocalDataSource
     }
 
     override func tearDown() {
@@ -807,7 +807,7 @@ final class FeatureFlagsTests: XCTestCase {
         XCTAssertTrue(sut.isEnabled(TestFlagsType.disabledFlag))
         XCTAssertFalse(sut.isEnabled(TestFlagsType.notActivatedFlag))
     }
-    
+
     func test_override_flag_not_provided_by_Unleash_for_a_given_userId() {
         // Given
         let userId = "userId"
@@ -885,20 +885,20 @@ final class FeatureFlagsTests: XCTestCase {
         // Then
         XCTAssertEqual(sut.isEnabled(TestFlagsType.blackFriday), defaultValue)
     }
-    
+
     func test_remove_unexistent_overridden_feature_flag() {
         // Given
         let expectedCount = 1
-        
+
         // When
         sut.setFlagOverride(TestFlagsType.notActivatedFlag, true)
         sut.resetFlagOverride(TestFlagsType.blackFriday)
-       
+
         // Then
         XCTAssertEqual(overrideLocalDataSource.value.getFeatureFlags()?.flagsCount, expectedCount)
         XCTAssertFalse(sut.isEnabled(TestFlagsType.blackFriday))
     }
-    
+
     func test_sync_overridden_flags_after_setting_userId() {
         // Given
         let userId = "userId"
@@ -909,11 +909,11 @@ final class FeatureFlagsTests: XCTestCase {
         sut.setFlagOverride(TestFlagsType.blackFriday, expectedFlagValue)
         sut.setUserId(userId)
         sut.updateLocalDataSource(localDataSource)
-    
+
         // Then
         XCTAssertEqual(sut.isEnabled(TestFlagsType.blackFriday), expectedFlagValue)
     }
-    
+
     func test_override_add_flag() {
         // Given
         let expectedCount = 1
@@ -921,12 +921,12 @@ final class FeatureFlagsTests: XCTestCase {
 
         // When
         sut.setFlagOverride(TestFlagsType.blackFriday, expectedValue)
-    
+
         // Then
         XCTAssertEqual(overrideLocalDataSource.value.getFeatureFlags()?.flagsCount, expectedCount)
         XCTAssertEqual(sut.isEnabled(TestFlagsType.blackFriday), expectedValue)
     }
-    
+
     func test_override_replace_existing_flag() {
         // Given
         let expectedCount = 2
@@ -936,7 +936,7 @@ final class FeatureFlagsTests: XCTestCase {
         sut.setFlagOverride(TestFlagsType.fakeFlag, false)
         sut.setFlagOverride(TestFlagsType.blackFriday, false)
         sut.setFlagOverride(TestFlagsType.blackFriday, true)
-    
+
         // Then
         XCTAssertEqual(sut.isEnabled(TestFlagsType.blackFriday), expectedValue)
         XCTAssertEqual(overrideLocalDataSource.value.getFeatureFlags()?.flagsCount, expectedCount)

@@ -28,7 +28,7 @@ public final class OverrideLocalFeatureFlagsDatasource: OverrideFeatureFlagDataS
     static let overrideFeatureFlagsKey = "protoncore.overrideFeatureflag"
     static let userIdKey = "protoncore.featureflag.userId"
     static let globalUserId = ""
-    
+
     private let userDefaults: UserDefaults
 
     public init(userDefaults: UserDefaults = .standard) {

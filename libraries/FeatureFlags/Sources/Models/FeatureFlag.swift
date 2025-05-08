@@ -54,7 +54,7 @@ public struct FeatureFlagVariantPayload: Codable, Equatable, Hashable, Sendable 
     public let type: String
     public let value: FeatureFlagVariantPayloadValue
 
-   public init(type: String, value: FeatureFlagVariantPayloadValue) {
+    public init(type: String, value: FeatureFlagVariantPayloadValue) {
         self.type = type
         self.value = value
     }

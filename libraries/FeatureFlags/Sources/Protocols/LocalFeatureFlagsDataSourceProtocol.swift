@@ -30,7 +30,7 @@ public protocol LocalFeatureFlagsDataSourceProtocol: BaseFeatureFlagsDatasourceP
     func getFeatureFlags(userId: String, reloadFromLocalDataSource: Bool) -> FeatureFlags?
     func upsertFlags(_ flags: FeatureFlags, userId: String)
     func cleanFlags(for userId: String)
-    
+
     var userIdForActiveSession: String? { get }
     func setUserIdForActiveSession(_ userId: String)
     func clearUserId()

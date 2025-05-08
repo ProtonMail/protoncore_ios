@@ -30,9 +30,10 @@ import Foundation
  It conforms to the FeatureFlagsRepositoryProtocol.
  */
 public final class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol, @unchecked Sendable {
-  /// The local data source for feature flags.
+
+    /// The local data source for feature flags.
     private var _localDataSource: Atomic<any LocalFeatureFlagsDataSourceProtocol>
-    
+
     /// The remote data source for feature flags.
     private var _remoteDataSource: Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?>
 
@@ -55,7 +56,7 @@ public final class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol, @unch
             }
         }
     }
-    
+
     /// The remote data source for feature flags.
     var remoteDataSource: Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?> {
         get {
@@ -83,14 +84,10 @@ public final class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol, @unch
 
     private var _userId: String?
 
-    public static let shared: FeatureFlagsRepository = .init(
-        localDataSource: Atomic<any LocalFeatureFlagsDataSourceProtocol>(DefaultLocalFeatureFlagsDatasource()),
-        remoteDataSource: Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?>(nil)
-    )
+    public static var shared: FeatureFlagsRepository = FeatureFlagsRepository.makeFeatureFlagsRepository(userDefaults: .standard)
 
     /**
      Private initialization of the shared FeatureFlagsRepository instance.
-     
      - Parameters:
      - localDataSource: The local data source for feature flags.
      - remoteDataSource: The remote data source for feature flags.
@@ -124,7 +121,7 @@ public extension FeatureFlagsRepository {
 
     /**
      Sets the FeatureFlagsRepository configuration with the given user id.
-     
+
      - Parameters:
      - userId: The user id used to initialize the configuration for feature flags.
      */
@@ -134,12 +131,12 @@ public extension FeatureFlagsRepository {
 
     /**
      Sets the FeatureFlagsRepository remote data source with the given api service.
-     
+
      - Parameters:
      - apiService: The api service used to initialize the remote data source for feature flags.
      - completionExecutor: The executor used to determine how the completion handler is executed:
-        - `asyncMainExecutor`: Executes tasks asynchronously on the main dispatch queue.
-        - `immediateExecutor`: Executes tasks immediately, ignoring any delays.
+     - `asyncMainExecutor`: Executes tasks asynchronously on the main dispatch queue.
+     - `immediateExecutor`: Executes tasks immediately, ignoring any delays.
      */
     func setApiService(_ apiService: any APIService, completionExecutor: CompletionBlockExecutor = .asyncMainExecutor) {
         remoteDataSource = Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?>(
@@ -149,7 +146,7 @@ public extension FeatureFlagsRepository {
 
     /**
      Asynchronously fetches the feature flags from the remote data source and updates the local data source.
-     
+
      - Throws: An error if the operation fails.
      */
     func fetchFlags() async throws {
@@ -166,7 +163,7 @@ public extension FeatureFlagsRepository {
      A Boolean function indicating if a feature flag is enabled or not.
      The flag is fetched from the local data source and is intended for use in a single-user context.
      If an overridden flag is found, it gets returned instead of the local value.
-     
+
      - Parameters:
      - flag: The flag we want to know the state of.
      - reloadValue: Pass `true` if you want the latest stored value for the flag. Pass `false` if  you want the "static" value, which is always the same as the first returned.
@@ -179,7 +176,7 @@ public extension FeatureFlagsRepository {
      A Boolean function indicating if a feature flag is enabled or not.
      The flag is fetched from the local data source and is intended for use in multi-user contexts.
      If an overridden flag is found, it gets returned instead of the local value.
-     
+
      - Parameters:
      - flag: The flag we want to know the state of.
      - userId: The user id for which we want to check the flag value. If the userId is `nil`, the first-set userId will be used.  See ``setUserId(_)``.
@@ -221,7 +218,7 @@ public extension FeatureFlagsRepository {
 public extension FeatureFlagsRepository {
 
     func setFlagOverride(_ flag: any FeatureFlagTypeProtocol, _ overrideWithValue: Bool) {
-        
+
         let newFeatureFlag = FeatureFlag(name: flag.rawValue,
                                          enabled: overrideWithValue,
                                          variant: nil)
@@ -259,7 +256,6 @@ public extension FeatureFlagsRepository {
 
     /**
      Resets feature flags for a specific user.
-     
      - Parameters:
      - userId: The ID of the user whose feature flags need to be reset.
      */
@@ -273,5 +269,36 @@ public extension FeatureFlagsRepository {
     func clearUserId() {
         localDataSource.value.clearUserId()
         _userId = ""
+    }
+
+    /**
+     Creates and returns a new instance of `FeatureFlagsRepository` configured with the provided `UserDefaults`.
+
+     This factory method initializes the repository with:
+     - A default local feature flags data source using `UserDefaults`.
+     - An override local feature flags data source for manually overriding feature flag values, also using `UserDefaults`.
+     - A `nil` remote data source, which can be set later using ``setApiService(_:completionExecutor:)``.
+
+     This setup is useful for initializing the repository in a predictable, default state for single-user or offline-first use cases.
+
+     - Parameters:
+        - userDefaults: The `UserDefaults` instance used to store and retrieve local and override feature flags.
+
+     - Returns: A fully configured instance of `FeatureFlagsRepository`.
+     */
+    public static func makeFeatureFlagsRepository(userDefaults: UserDefaults) -> FeatureFlagsRepository {
+        let local = Atomic<any LocalFeatureFlagsDataSourceProtocol>(
+            DefaultLocalFeatureFlagsDatasource(userDefaults: userDefaults)
+        )
+        let override = Atomic<any OverrideFeatureFlagDataSourceProtocol>(
+            OverrideLocalFeatureFlagsDatasource(userDefaults: userDefaults)
+        )
+        let remote = Atomic<(any RemoteFeatureFlagsDataSourceProtocol)?>(nil)
+
+        return FeatureFlagsRepository(
+            localDataSource: local,
+            remoteDataSource: remote,
+            overrideLocalDataSource: override
+        )
     }
 }
