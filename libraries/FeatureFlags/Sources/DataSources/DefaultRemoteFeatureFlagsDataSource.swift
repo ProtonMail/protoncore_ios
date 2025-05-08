@@ -48,7 +48,7 @@ struct FeatureFlagResponse: Decodable {
 public struct DefaultRemoteFeatureFlagsDataSource: RemoteFeatureFlagsDataSourceProtocol {
     public let apiService: any APIService
     public let completionExecutor: CompletionBlockExecutor
-    
+
     init(apiService: any APIService, completionExecutor: CompletionBlockExecutor = .asyncMainExecutor) {
         self.apiService = apiService
         self.completionExecutor = completionExecutor
