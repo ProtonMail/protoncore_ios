@@ -51,7 +51,7 @@ final class SignupCoordinatorTests: XCTestCase {
         let container = Container(appName: #file,
                                   clientApp: .other(named: "core"),
                                   apiService: testService,
-                                  minimumAccountType: minimumAccountType)
+                                  initialMinimumAccountTypeForLogin: minimumAccountType)
         let coordinator = SignupCoordinator(container: container,
                                             minimumAccountType: minimumAccountType,
                                             isCloseButton: false,

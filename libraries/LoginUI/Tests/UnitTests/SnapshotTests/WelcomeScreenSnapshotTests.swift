@@ -71,7 +71,7 @@ class WelcomeScreenSnapshotTests: ProtonCoreTestingToolkitUnitTestsCore.Snapshot
                 apiService.dohInterfaceStub.fixture = Environment.black.doh
                 apiService.challengeParametersProviderStub.fixture = .forAPIService(clientApp: clientApp, challenge: PMChallenge())
                 let coordinator = LoginCoordinator(
-                    container: Container(appName: "test", clientApp: clientApp, apiService: apiService, minimumAccountType: .internal),
+                    container: Container(appName: "test", clientApp: clientApp, apiService: apiService, initialMinimumAccountTypeForLogin: .internal),
                     isCloseButtonAvailable: false,
                     isSignupAvailable: $0,
                     customization: .init(inAppTheme: { inAppTheme })

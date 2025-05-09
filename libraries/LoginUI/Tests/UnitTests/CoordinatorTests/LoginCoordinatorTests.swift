@@ -55,7 +55,7 @@ final class LoginCoordinatorTests: XCTestCase {
             AuthCredential(sessionID: "test session", accessToken: "test token", refreshToken: "test refresh", userName: "test username",
                            userID: "test userID", privateKey: "test private key", passwordKeySalt: "test password key")
         }
-        let container = Container(appName: "tests", clientApp: .other(named: "tests"), apiService: testService, minimumAccountType: .internal)
+        let container = Container(appName: "tests", clientApp: .other(named: "tests"), apiService: testService, initialMinimumAccountTypeForLogin: .internal)
         let out = LoginCoordinator(container: container, isCloseButtonAvailable: false, isSignupAvailable: false, customization: .empty)
         let rootVC = UIViewController()
         let navigationVC = LoginNavigationViewController(rootViewController: rootVC)

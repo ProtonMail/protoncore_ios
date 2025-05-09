@@ -121,7 +121,7 @@ class LoginUISnapshotTests: SnapshotTestCase {
         }
 
         let coordinator = SignupCoordinator(
-            container: Container(appName: "test", clientApp: clientApp, apiService: apiService, minimumAccountType: accountType),
+            container: Container(appName: "test", clientApp: clientApp, apiService: apiService, initialMinimumAccountTypeForLogin: accountType),
             minimumAccountType: accountType,
             isCloseButton: false,
             paymentsAvailability: .notAvailable,
@@ -183,7 +183,7 @@ class LoginUISnapshotTests: SnapshotTestCase {
         }
 
         let coordinator = LoginCoordinator(
-            container: Container(appName: "test", clientApp: clientApp, apiService: apiService, minimumAccountType: .internal),
+            container: Container(appName: "test", clientApp: clientApp, apiService: apiService, initialMinimumAccountTypeForLogin: .internal),
             isCloseButtonAvailable: true,
             isSignupAvailable: true,
             customization: customization

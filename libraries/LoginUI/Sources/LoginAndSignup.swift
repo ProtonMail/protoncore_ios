@@ -174,7 +174,7 @@ public final class LoginAndSignup {
 
     let container: Container
     private let isCloseButtonAvailable: Bool
-    private let minimumAccountType: AccountType
+    private let minimumAccountTypes: AccountTypes
     private(set) var loginCoordinator: LoginCoordinator?
     private(set) var signupCoordinator: SignupCoordinator?
     private var mailboxPasswordCoordinator: MailboxPasswordCoordinator?
@@ -189,18 +189,35 @@ public final class LoginAndSignup {
     public init(appName: String,
                 clientApp: ClientApp,
                 apiService: APIService,
-                minimumAccountType: AccountType,
+                minimumAccountTypes: AccountTypes,
                 isCloseButtonAvailable: Bool = true,
                 paymentsAvailability: PaymentsAvailability,
                 signupAvailability: SignupAvailability = .notAvailable) {
         container = Container(appName: appName,
                               clientApp: clientApp,
                               apiService: apiService,
-                              minimumAccountType: minimumAccountType)
+                              initialMinimumAccountTypeForLogin: minimumAccountTypes.login)
         self.isCloseButtonAvailable = isCloseButtonAvailable
         self.paymentsAvailability = paymentsAvailability
         self.signupAvailability = signupAvailability
-        self.minimumAccountType = minimumAccountType
+        self.minimumAccountTypes = minimumAccountTypes
+    }
+
+    public convenience init(appName: String,
+                clientApp: ClientApp,
+                apiService: APIService,
+                minimumAccountType: AccountType,
+                isCloseButtonAvailable: Bool = true,
+                paymentsAvailability: PaymentsAvailability,
+                signupAvailability: SignupAvailability = .notAvailable) {
+        self.init(
+            appName: appName,
+            clientApp: clientApp,
+            apiService: apiService,
+            minimumAccountTypes: .init(login: minimumAccountType, signup: minimumAccountType),
+            paymentsAvailability: paymentsAvailability,
+            signupAvailability: signupAvailability
+        )
     }
 
     @discardableResult
@@ -245,7 +262,7 @@ public final class LoginAndSignup {
 
     private func presentSignup(_ start: FlowStartKind, customization: LoginCustomizationOptions, completion: @escaping (LoginAndSignupResult) -> Void) {
         signupCoordinator = SignupCoordinator(container: container,
-                                              minimumAccountType: minimumAccountType,
+                                              minimumAccountType: minimumAccountTypes.signup,
                                               isCloseButton: isCloseButtonAvailable,
                                               paymentsAvailability: paymentsAvailability,
                                               signupAvailability: signupAvailability,
@@ -384,7 +401,7 @@ extension LoginAndSignup: SignupCoordinatorDelegate {
             loginCoordinator?.initialError = LoginError.emailAddressAlreadyUsed
         }
         loginCoordinator?.start(.inside(navigationViewController), username: email)
-        container.login.updateAccountType(accountType: minimumAccountType)
+        container.login.updateAccountType(accountType: minimumAccountTypes.login)
     }
 }
 

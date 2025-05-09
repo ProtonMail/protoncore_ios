@@ -28,6 +28,16 @@ import ProtonCoreNetworking
 import ProtonCorePayments
 import ProtonCorePaymentsUI
 
+public struct AccountTypes {
+    public let login: AccountType
+    public let signup: AccountType
+
+    public init(login: AccountType, signup: AccountType) {
+        self.login = login
+        self.signup = signup
+    }
+}
+
 @available(*, deprecated, message: "SignupMode is deprecated")
 public enum SignupMode: Equatable {
     case `internal`
