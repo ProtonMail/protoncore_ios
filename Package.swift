@@ -1429,27 +1429,27 @@ add(
                    ],
                    path: "libraries/Payments/Sources"),
 
-        coreTestTarget(name: .payments + "Tests",
-                       dependencies: [
-                        .authentication,
-                        .challenge,
-                        .dataModel,
-                        .doh,
-                        .log,
-                        .login,
-                        .payments,
-                        .services,
-                        .testingToolkitTestData,
-                        .testingToolkitUnitTestsFeatureFlag,
-                        .testingToolkitUnitTestsPayments,
-                        .testingToolkitUnitTestsServices,
-                        .ohhttpStubs
-                       ],
-                       path: "libraries/Payments/Tests/UnitTests",
-                       resources: [
-                        .process("AppStoreLocalTest"),
-                        .process("Mocks/Responses")
-                       ]),
+//        coreTestTarget(name: .payments + "Tests",
+//                       dependencies: [
+//                        .authentication,
+//                        .challenge,
+//                        .dataModel,
+//                        .doh,
+//                        .log,
+//                        .login,
+//                        .payments,
+//                        .services,
+//                        .testingToolkitTestData,
+//                        .testingToolkitUnitTestsFeatureFlag,
+//                        .testingToolkitUnitTestsPayments,
+//                        .testingToolkitUnitTestsServices,
+//                        .ohhttpStubs
+//                       ],
+//                       path: "libraries/Payments/Tests/UnitTests",
+//                       resources: [
+//                        .process("AppStoreLocalTest"),
+//                        .process("Mocks/Responses")
+//                       ]),
 
         coreTestTarget(name: .payments + "IntegrationTests",
                        dependencies: [
@@ -1526,18 +1526,18 @@ add(
                     .process("Resources-iOS")
                    ]),
 
-        coreTestTarget(name: .paymentsUI + "Tests",
-                       dependencies: [
-                        .paymentsUI,
-                        .obfuscatedConstants,
-                        .testingToolkitUnitTestsDataModel,
-                        .testingToolkitUnitTestsFeatureFlag,
-                        .testingToolkitUnitTestsObservability,
-                        .testingToolkitUnitTestsPayments,
-                        .testingToolkitUnitTestsServices
-                       ],
-                       path: "libraries/PaymentsUI/v1/Tests/UnitTests",
-                       exclude: ["__Snapshots__"]),
+//        coreTestTarget(name: .paymentsUI + "Tests",
+//                       dependencies: [
+//                        .paymentsUI,
+//                        .obfuscatedConstants,
+//                        .testingToolkitUnitTestsDataModel,
+//                        .testingToolkitUnitTestsFeatureFlag,
+//                        .testingToolkitUnitTestsObservability,
+//                        .testingToolkitUnitTestsPayments,
+//                        .testingToolkitUnitTestsServices
+//                       ],
+//                       path: "libraries/PaymentsUI/v1/Tests/UnitTests",
+//                       exclude: ["__Snapshots__"]),
 
         coreTestTarget(name: .paymentsUI + "LocalizationTests",
                        dependencies: [

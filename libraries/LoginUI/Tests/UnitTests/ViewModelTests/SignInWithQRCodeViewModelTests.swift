@@ -170,7 +170,7 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
             mockSecureHashGenerator.data = encryptionKey
 
             sut.refreshWaitTimeInSeconds = 100
-            sut.pullForkIntervalInSeconds = 1
+            sut.pullForkIntervalInSeconds = 0.01
 
             sut.generateANewQRCodeText()
 
