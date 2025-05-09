@@ -579,7 +579,7 @@ public enum LUITranslation: TranslationsExposing {
         case .set_backup_password_title:
             return localized(key: "Set backup password", comment: "Set backup password screen title")
         case .validation_invalid_email:
-            return localized(key: "Email is invalid.", comment: "Input email validation error")
+            return localized(key: "Email is invalid", comment: "Input email validation error")
         case .validation_empty_email:
             return localized(key: "Please enter your Proton Account email.", comment: "Invalid email empty hint")
         case .invalid_password:

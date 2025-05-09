@@ -28,7 +28,17 @@ import ProtonCorePayments
 public extension Subscription {
 
     static var dummy: Subscription {
-        Subscription(start: nil, end: nil, planDetails: nil, couponCode: nil, cycle: nil, amount: nil, currency: nil)
+        Subscription(
+            start: nil,
+            end: nil,
+            planDetails: [
+                .dummy
+            ],
+            couponCode: nil,
+            cycle: nil,
+            amount: nil,
+            currency: nil
+        )
     }
 
     func updated(start: Date? = nil,

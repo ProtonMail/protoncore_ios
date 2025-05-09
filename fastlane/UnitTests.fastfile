@@ -51,24 +51,6 @@ def execute_tests(folder, scheme, device, destination, arguments)
   )
 end
 
-def execute_tests_for_workspace(workspace, scheme, derived_data_path, destination, arguments)
-  sh("mkdir", "-p", derived_data_path)
-  prepare_for_building
-  run_tests(
-    workspace: workspace, 
-    scheme: scheme, 
-    derived_data_path: derived_data_path,
-    device: nil,
-    destination: destination,
-    xcargs: arguments[:xcargs],
-    clean: false, 
-    skip_build: true,
-    code_coverage: true,
-    result_bundle: true
-  )
-  sh("rm", "-rf", derived_data_path)
-end
-
 # --- Test lanes ---
 
 lane :run_unit_tests do |arguments|
@@ -77,10 +59,6 @@ end
 
 lane :run_unit_tests_macos do |arguments|
   execute_tests("UnitTests-macOS", "UnitTests", nil, "platform=macOS", arguments)
-end
-
-lane :run_apphosted_test_macos do |arguments|
-  execute_tests_for_workspace("ExampleApp.xcworkspace", "ProtonCore-Keymaker-macOS-AppHost", "fastlane/DerivedData/UnitTests-macOS", "platform=macOS", arguments)
 end
 
 lane :run_integration_tests do |arguments|
@@ -101,20 +79,6 @@ lane :run_localization_tests do |arguments|
     skip_build: true,
     code_coverage: false,
     result_bundle: false
-  )
-end
-
-lane :run_ui_tests do |arguments|
-  create_derived_data_folder("UITestsOnlyBuild")
-  prepare_for_building
-  run_tests(
-    workspace: "ExampleApp.xcworkspace",
-    scheme: "UITests-light",
-    derived_data_path: derived_data_path("UITestsOnlyBuild"),
-    device: device_name(arguments),
-    xcargs: arguments[:xcargs],
-    build_and_test: true,
-    clean: false
   )
 end
 

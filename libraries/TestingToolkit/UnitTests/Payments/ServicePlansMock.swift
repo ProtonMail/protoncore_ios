@@ -101,6 +101,11 @@ public class ServicePlansMock {
               "12" : 7500,
               "24" : 12900
             },
+            "Vendors": {
+                "Apple": {
+                    "plans": {}
+                }
+            },
             "MaxDomains" : 2,
             "MaxSpace" : 5368709120,
             "Services" : 1,

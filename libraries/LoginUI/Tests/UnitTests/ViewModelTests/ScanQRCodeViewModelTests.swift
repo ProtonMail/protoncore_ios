@@ -16,6 +16,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
 
+#if os(iOS)
+
 import XCTest
 import ProtonCoreLogin
 @testable import ProtonCoreLoginUI
@@ -70,3 +72,4 @@ class ScanQRCodeViewModelTests: XCTestCase {
         XCTAssertEqual(sut.state, .success)
     }
 }
+#endif

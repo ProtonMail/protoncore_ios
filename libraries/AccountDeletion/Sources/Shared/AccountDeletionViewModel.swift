@@ -145,7 +145,8 @@ final class AccountDeletionViewModel: AccountDeletionViewModelInterface {
         self.forkSelector = forkSelector
         self.apiService = apiService
         self.doh = doh
-        self.preferredLanguage = preferredLanguage
+        /// Format of Locale.autoupdatingCurrentIdentifier: `en_US@rg=eszzzz`
+        self.preferredLanguage = preferredLanguage.components(separatedBy: "@").first ?? preferredLanguage
         self.performBeforeClosingAccountDeletionScreen = performBeforeClosingAccountDeletionScreen
         self.callCompletionBlockUsing = callCompletionBlockUsing
         self.completion = completion

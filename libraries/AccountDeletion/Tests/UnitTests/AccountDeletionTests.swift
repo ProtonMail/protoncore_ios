@@ -120,7 +120,8 @@ final class AccountDeletionTests: XCTestCase {
     func testAccountDeletionPresentsAccountDeletionWebViewWithRightSelectorIfForkingSucceeds() async throws {
         let presenterMock = AccountDeletionViewControllerPresenterMock()
         let out = AccountDeletionService(api: apiMock, doh: dohMock)
-        dohMock.getAccountHostStub.bodyIs { _ in "https://proton.unittests/account" }
+        dohMock.getAccountHeadersStub.bodyIs { _ in [:] }
+        dohMock.getAccountHostStub.bodyIs { _ in "https://account.proton.unittests" }
         apiMock.requestJSONStub.bodyIs { _, _, path, _, _, _, _, _, _, _, _, _, completion in
             if path.contains("/core/v4/users/delete") {
                 completion(nil, .success(["Code": 1000]))
@@ -151,7 +152,7 @@ final class AccountDeletionTests: XCTestCase {
         guard let navigationController = presenterMock.presentStub.lastArguments?.first as? UINavigationController,
               let webView = navigationController.topViewController as? AccountDeletionWebView else { XCTFail(); return }
         XCTAssertEqual(webView.viewModel.getURLRequest.url?.absoluteString,
-                       "https://proton.unittests/account/lite?action=delete-account&language=en_US#selector=happy_test_selector")
+                       "https://account.proton.unittests/lite?action=delete-account&language=en_US#selector=happy_test_selector")
     }
 
     // MARK: - AccountDeletionWebView tests
@@ -327,6 +328,7 @@ final class AccountDeletionTests: XCTestCase {
     }
 
     func testAccountDeletionViewModelAddsLanguageHeaderExplicitly() {
+        dohMock.getAccountHeadersStub.bodyIs { _ in [:] }
         dohMock.getAccountHostStub.bodyIs { _ in "https://proton.unittests/account" }
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  preferredLanguage: "fr",
@@ -337,6 +339,7 @@ final class AccountDeletionTests: XCTestCase {
     }
 
     func testAccountDeletionViewModelAddsLanguageHeaderImplicitly() {
+        dohMock.getAccountHeadersStub.bodyIs { _ in [:] }
         dohMock.getAccountHostStub.bodyIs { _ in "https://proton.unittests/account" }
         let viewModel = AccountDeletionViewModel(forkSelector: "happy_for_selector", apiService: apiMock, doh: dohMock,
                                                  performBeforeClosingAccountDeletionScreen: { _ in },

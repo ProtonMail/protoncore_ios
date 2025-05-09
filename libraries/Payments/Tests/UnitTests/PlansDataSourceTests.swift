@@ -126,7 +126,7 @@ final class PlansDataSourceTests: XCTestCase {
     func test_isIAPAvailable_isFalseWhenSettingPaymentsBackendStatusAcceptsIAPToFalse() {
         // Given
         withFeatureFlags([.dynamicPlans]) {
-            servicePlanDataStorageMock.iapSupportStatusStub.fixture = .enabled
+            servicePlanDataStorageMock.iapSupportStatusStub.fixture = .disabled(localizedReason: nil)
             sut = .init(
                 apiService: apiServiceMock,
                 storeKitDataSource: storeKitDataSourceMock,

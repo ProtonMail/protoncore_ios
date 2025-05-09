@@ -28,7 +28,7 @@ import ProtonCorePayments
 public extension Plan {
 
     static var dummy: Plan {
-        Plan(name: .empty, ID: nil, maxAddresses: .zero, maxMembers: .zero, pricing: nil, defaultPricing: nil, vendors: nil, offer: nil,
+        Plan(name: .empty, ID: nil, maxAddresses: .zero, maxMembers: .zero, pricing: nil, defaultPricing: nil, vendors: .init(apple: .init(plans: [:])), offer: nil,
              maxDomains: .zero, maxSpace: .zero, maxRewardsSpace: nil, type: .zero, title: .empty, maxVPN: .zero, maxTier: nil,
              features: .zero, maxCalendars: nil, state: nil, cycle: nil)
     }

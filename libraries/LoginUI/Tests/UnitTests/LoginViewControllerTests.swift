@@ -139,22 +139,6 @@ final class LoginViewControllerTests: XCTestCase {
         XCTAssertTrue(self.observabilityServiceMock.reportStub.lastArguments!.value.isSameAs(event: expectedEvent))
     }
 
-    func test_wkNavigationDelegate_cancels_uponTokenReception() {
-        // Given
-        let token = "92834urjhfog34"
-        let uid = "98h2biw4uaekjf"
-        let webView = WKWebView(frame: .zero)
-        let url = URL(string: "http://account.proton.me/sso/login#token=\(token)&uid=\(uid)")!
-        let action = FakeNavigationAction(url: url)
-        action.setExpectation(expectation: .cancel)
-
-        let loginVC = setupVCThroughStoryboard()
-
-        // When
-        loginVC.webView(webView, decidePolicyFor: action, decisionHandler: action.decisionHandler)
-        XCTAssertTrue(loginMock.processResponseTokenStub.wasCalledExactlyOnce)
-    }
-
     func test_wkNavigationDelegate_allowsAnyURL() {
         // Given
         let webView = WKWebView(frame: .zero)
@@ -168,7 +152,12 @@ final class LoginViewControllerTests: XCTestCase {
         loginVC.webView(webView, decidePolicyFor: action, decisionHandler: action.decisionHandler)
     }
 
-    func test_wkNavigationDelegate_withToken_callsProcessResponseToken() {
+    func test_wkNavigationDelegate_withToken_callsValidateAndAuthenticateSSOStub() {
+        let expectation = XCTestExpectation(description: "Handler is called")
+        loginMock.validateAndAuthenticateSSOStub.bodyIs { _, _, _ in
+            expectation.fulfill()
+            return .finished(.dummy)
+        }
         // Given
         let token = "92834urjhfog34"
         let uid = "98h2biw4uaekjf"
@@ -182,7 +171,7 @@ final class LoginViewControllerTests: XCTestCase {
         loginVC.webView(webView, decidePolicyFor: action, decisionHandler: action.decisionHandler)
 
         // Then
-        XCTAssertTrue(loginMock.processResponseTokenStub.wasCalledExactlyOnce)
+        wait(for: [expectation], timeout: 1)
     }
 
     func test_wkNavigationDelegate_withoutToken_doesNotCallProcessResponseToken() {
