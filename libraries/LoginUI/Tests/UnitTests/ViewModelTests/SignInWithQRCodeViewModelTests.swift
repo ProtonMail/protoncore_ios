@@ -70,10 +70,13 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
             mockClientIdProvider.id = clientId
             mockSecureHashGenerator.data = Data([1,2,3])
 
+            sut.refreshWaitTimeInSeconds = 0.01
+            sut.pullForkIntervalInSeconds = 100
+
             sut.generateANewQRCodeText()
 
             // wait a little for the qrCode to reach the main thread
-            try? await Task.sleep(nanoseconds: 100_000_000)
+            try? await Task.sleep(nanoseconds: 50_000_000)
 
             XCTAssertEqual(sut.qrCodeText, "\(GenerateSignInQRCode.QRCodeVersion):\(userCode):\(base64EncryptionKey):\(clientId)")
         }
@@ -91,12 +94,13 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
         mockClientIdProvider.id = clientId
         mockSecureHashGenerator.data = Data([1,2,3])
 
-        sut.refreshWaitTimeInSeconds = 1
+        sut.refreshWaitTimeInSeconds = 0.5
+        sut.pullForkIntervalInSeconds = 100
 
         sut.generateANewQRCodeText()
 
         // wait a little for the qrCode to reach the main thread
-        try? await Task.sleep(nanoseconds: 100_000_000)
+        try? await Task.sleep(nanoseconds: 50_000_000)
 
         let qrCode1 = sut.qrCodeText
 
@@ -104,7 +108,7 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
         mockSecureHashGenerator.data = Data([1,2,3,4])
 
         // wait for refreshWaitTimeInSeconds to expire
-        try? await Task.sleep(nanoseconds: UInt64(sut.refreshWaitTimeInSeconds * 1_000_000_000))
+        try? await Task.sleep(nanoseconds: UInt64(sut.refreshWaitTimeInSeconds * 1_000_000_000) + 50_000_000)
 
         let qrCode2 = sut.qrCodeText
 
@@ -176,7 +180,7 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
             sut.generateANewQRCodeText()
 
             // wait for a bit more then a second for the fork to be pulled
-            try? await Task.sleep(nanoseconds: UInt64(sut.pullForkIntervalInSeconds * 1_000_000_000) + 100_000_000)
+            try? await Task.sleep(nanoseconds: UInt64(sut.pullForkIntervalInSeconds * 1_000_000_000) + 50_000_000)
 
             // wait for one cycle and then set the pullResult, to make sure that we keep polling on failure to get the fork
 
@@ -196,7 +200,7 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
                 pullResult = nil
             }
 
-            try? await Task.sleep(nanoseconds: UInt64(sut.pullForkIntervalInSeconds * 1_000_000_000) + 100_000_000)
+            try? await Task.sleep(nanoseconds: UInt64(sut.pullForkIntervalInSeconds * 1_000_000_000) + 50_000_000)
 
             // Check result
 
