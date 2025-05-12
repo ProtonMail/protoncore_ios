@@ -1,12 +1,12 @@
 "Settings_Item" = "Nulstilling af adgangskode";
 
-"Insecure_View_Title" = "Password reset";
+"Insecure_View_Title" = "Nulstil adgangskode";
 
-"Cancelled_View_Title" = "Password reset";
+"Cancelled_View_Title" = "Nulstil adgangskode";
 
-"Grace_View_Title" = "Password reset";
+"Grace_View_Title" = "Nulstil adgangskode";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**";
+"We received a password reset request for **%@**." = "Vi har modtaget en anmodning om nulstilling af adgangskoden for **%@**";
 
 "We received a password reset request for %@." = "We received a password reset request for %@";
 
@@ -14,7 +14,7 @@
 
 "If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
 
-"Password reset requested" = "Password reset requested";
+"Password reset requested" = "Nulstilling af adgangskode anmodet";
 
 "Insecure_View_line1" = "Du kan nu ændre din adgangskode til kontoen ";
 
@@ -30,37 +30,37 @@
 
 "Grace_View_Undefined_Time_Left" = "om et par timer";
 
-"Settings_Item_Value_Grace" = "Pending";
+"Settings_Item_Value_Grace" = "Afventer";
 
-"Settings_Item_Value_Expired" = "Expired";
+"Settings_Item_Value_Expired" = "Udløbet";
 
-"Settings_Item_Value_Cancelled" = "Cancelled";
+"Settings_Item_Value_Cancelled" = "Annulleret";
 
-"Settings_Item_Value_Insecure" = "Available";
+"Settings_Item_Value_Insecure" = "Tilgængelig";
 
-"Insecure_View_Cancel_Button_CTA" = "Cancel reset";
+"Insecure_View_Cancel_Button_CTA" = "Annuller nulstil";
 
 "If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
 
 "If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**.";
+"We received a password reset request for **%@**." = "Vi har modtaget en anmodning om nulstilling af adgangskoden for **%@**.";
 
 "We received a password reset request for %@." = "We received a password reset request for %@.";
 
-"Password reset cancelled" = "Password reset cancelled";
+"Password reset cancelled" = "Nulstilling af adgangskode annulleret";
 
 "Cancelled by the user" = "Cancelled by the user";
 
 "Authenticated in another session" = "Authenticated in another session";
 
-"none" = "none";
+"none" = "ingen";
 
 "The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
 
-"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "If you never made a password reset request, someone else could have access to your account. **Change your password now**";
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Hvis du aldrig har anmodet om en nulstilling af din adgangskode, kan en anden have adgang til din konto. **Skift din adgangskode nu**";
 
-"If you never made a password reset request, someone else could have access to your account. Change your password now" = "If you never made a password reset request, someone else could have access to your account. Change your password now";
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Hvis du aldrig har lavet en anmodning om nulstilling af adgangskoden, kan en anden have adgang til din konto. Skift din adgangskode nu";
 
 "The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
 
@@ -70,7 +70,7 @@
 
 "You can now reset your password" = "You can now reset your password";
 
-"Reset available until %@." = "Reset available until %@.";
+"Reset available until %@." = "Nulstilling tilgængelig indtil %@.";
 
 "Change device to continue" = "Change device to continue";
 

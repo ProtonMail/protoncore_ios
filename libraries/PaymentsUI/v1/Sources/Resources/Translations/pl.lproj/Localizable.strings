@@ -28,7 +28,7 @@
 
 "%@ storage / user" = "%@ przestrzeni dyskowej / użytkownika";
 
-"for %@" = "for %@";
+"for %@" = "na %@";
 
 "Custom email addresses" = "Niestandardowe adresy e-mail";
 
@@ -132,4 +132,4 @@
 
 "Pay every two years" = "Płatne co 2 lata";
 
-"Free" = "Free";
+"Free" = "Za darmo";

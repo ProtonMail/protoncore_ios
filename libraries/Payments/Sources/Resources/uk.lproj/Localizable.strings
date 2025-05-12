@@ -2,7 +2,7 @@
 
 "Failed to get list of available products from App Store." = "Не вдалося отримати список доступних продуктів з App Store.";
 
-"Purchase is not possible." = "Купівля неможлива.";
+"Purchase is not possible." = "Неможливо здійснити покупку.";
 
 "Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you." = "Компанія Apple повідомила нас про те, що ви оновили план послуг, але не вистачає деяких технічних даних. Будь ласка, заповніть дані звіту про помилку і наша служба підтримки зв'яжеться з вами.";
 
@@ -24,7 +24,7 @@
 
 "Do you want to activate the purchase for %@ address?" = "Ви хочете активувати покупку для адреси %@?";
 
-"Yes, activate it for " = "Так, увімкнути для ";
+"Yes, activate it for " = "Так, активувати для ";
 
 "No, for another Proton Mail account" = "Ні, для іншого облікового запису електронної пошти Proton";
 
@@ -44,4 +44,4 @@
 
 "The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Сервери Proton недоступні. Причиною може бути неправильна конфігурація мережі, сервери Proton не працюють або сервери Proton заблоковані";
 
-"The signed-in Apple account already purchased this item." = "The signed-in Apple account already purchased this item.";
+"The signed-in Apple account already purchased this item." = "В обліковому записі Apple, з яким виконано вхід, вже придбано цей елемент.";

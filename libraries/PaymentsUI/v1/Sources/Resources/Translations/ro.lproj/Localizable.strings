@@ -110,9 +110,9 @@
 
 "Strict no-logs policy" = "Politică strictă fără înregistrări";
 
-"Plan successfully upgraded" = "Planul a fost modernizat";
+"Plan successfully upgraded" = "Planul a fost modificat";
 
-"Integrated 2FA authenticator" = "Autentificator A2F integrat";
+"Integrated 2FA authenticator" = "Autentificare cu doi factori integrată";
 
 "Priority support" = "Asistență prioritară";
 
@@ -132,4 +132,4 @@
 
 "Pay every two years" = "Plată la doi ani";
 
-"Free" = "Free";
+"Free" = "Gratuit";

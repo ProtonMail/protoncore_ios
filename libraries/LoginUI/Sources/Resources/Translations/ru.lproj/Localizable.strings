@@ -360,7 +360,7 @@
 
 "Scan this code with your phone camera to sign in instantly." = "Scan this code with your phone camera to sign in instantly.";
 
-"Sign in to another device" = "Sign in to another device";
+"Sign in to another device" = "Войти в другое устройство";
 
 "Sign in with your QR code" = "Sign in with your QR code";
 
@@ -429,3 +429,7 @@
 "By using this app you accept our" = "By using this app you accept our";
 
 "Terms and Conditions." = "Условия.";
+
+"Tap **Scan QR code**" = "Tap **Scan QR code**";
+
+"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";

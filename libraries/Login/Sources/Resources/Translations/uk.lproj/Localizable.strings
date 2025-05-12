@@ -2,16 +2,16 @@
 
 "An error has occured" = "Сталася помилка";
 
-"Get a Proton Mail address linked to this account in your Proton web settings." = "Отримайте адресу Proton Mail, пов'язану з цим обліковим записом, у вебналаштуваннях Proton.";
+"Get a Proton Mail address linked to this account in your Proton web settings." = "Отримайте адресу Proton Mail, пов'язану з цим обліковим записом, у налаштуваннях на сайті Proton.";
 
-"Proton address required" = "Адреса Proton обов'язкова";
+"Proton address required" = "Введіть адресу Proton";
 
-"Code doesn't match" = "Code doesn't match";
+"Code doesn't match" = "Код відрізняється";
 
-"Code isn't valid" = "Code isn't valid";
+"Code isn't valid" = "Код недійсний";
 
-"Device secret not found" = "Device secret not found";
+"Device secret not found" = "Ключ пристрою не знайдено";
 
-"Passphrase not found" = "Passphrase not found";
+"Passphrase not found" = "Парольну фразу не знайдено";
 
 "Password update failed" = "Не вдалося оновити пароль";

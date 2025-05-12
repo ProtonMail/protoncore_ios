@@ -2,7 +2,7 @@
 
 "Plans_Manager_impossible_to_get_user_uuid" = "Det var omöjligt att hämta användarens UUID för transaktionen";
 
-"Plans_Manager_impossible_to_match_plan" = "It was impossible to match the Proton Plan to an Apple Store plan";
+"Plans_Manager_impossible_to_match_plan" = "Det var omöjligt att matcha Proton-paketet med ett Apple Store-paket";
 
 "Plans_Manager_impossible_to_restore_transactions" = "Det var omöjligt att återställa transaktioner, kontakta kundsupport";
 

@@ -1,21 +1,21 @@
-"APIs_malformed_url_request" = "Something went wrong, and we couldn't fulfil your request. If the issue persists, please contact customer support.";
+"APIs_malformed_url_request" = "Щось пішло не так, і ми не змогли виконати ваш запит. Якщо проблема не зникає, зверніться до клієнтської підтримки.";
 
-"Plans_Manager_impossible_to_get_user_uuid" = "It was impossible to get the user’s UUID for the transaction";
+"Plans_Manager_impossible_to_get_user_uuid" = "Не вдалося отримати UUID користувача для транзакції";
 
-"Plans_Manager_impossible_to_match_plan" = "It was impossible to match the Proton Plan to an Apple Store plan";
+"Plans_Manager_impossible_to_match_plan" = "Неможливо зіставити тарифний план Proton з тарифним планом Apple Store";
 
-"Plans_Manager_impossible_to_restore_transactions" = "It was impossible to restore transactions, please contact customer support";
+"Plans_Manager_impossible_to_restore_transactions" = "Не вдалося відновити транзакції, зверніться до клієнтської підтримки";
 
-"Plans_Manager_Transaction_cancelled_by_user" = "The transaction has been cancelled by the user";
+"Plans_Manager_Transaction_cancelled_by_user" = "Користувач скасував транзакцію";
 
-"Plans_Manager_Transaction_unknown_error" = "An unexpected error occured, if this persists, please contact customer support";
+"Plans_Manager_Transaction_unknown_error" = "Сталася невідома помилка. Якщо це повторюватиметься, зверніться до клієнтської підтримки.";
 
-"Plans_Managere_peding_transaction_received" = "Unexpected pending transaction received";
+"Plans_Managere_peding_transaction_received" = "Отримано неочікувану незавершену транзакцію";
 
-"PlansComposer_unable_to_fetch_currentSub" = "Unable to fetch the current subscription";
+"PlansComposer_unable_to_fetch_currentSub" = "Не вдається отримати поточну передплату";
 
-"Remote_manager_error" = "Something went wrong and we couldn't fulfill your request. If the issue persists, please contact customer support.";
+"Remote_manager_error" = "Щось пішло не так, і ми не змогли виконати ваш запит. Якщо проблема не зникає, зверніться до клієнтської підтримки.";
 
-"SK_Receipt_impossible_to_get_receipt" = "Impossible to get transaction receipt data from Apple";
+"SK_Receipt_impossible_to_get_receipt" = "Неможливо отримати дані про підтвердження транзакції від Apple";
 
-"Transaction_Handler_plan_not_found" = "It was impossible to find the name of the plan you’re trying to purchase. If the issue persists please contact customer support";
+"Transaction_Handler_plan_not_found" = "Не вдалося знайти назву тарифного плану, який ви намагаєтеся придбати. Якщо проблема повторюватиметься, зверніться до клієнтської підтримки.";

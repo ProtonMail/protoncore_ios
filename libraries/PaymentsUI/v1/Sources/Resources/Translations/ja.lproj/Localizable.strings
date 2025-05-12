@@ -2,134 +2,134 @@
 
 "Cancel" = "キャンセル";
 
-"Warning" = "警告";
+"Warning" = "Warning";
 
-"Select a plan" = "プランを選択";
+"Select a plan" = "Select a plan";
 
-"Current plan" = "現在のプラン";
+"Current plan" = "Current plan";
 
-"Subscription" = "サブスクリプション";
+"Subscription" = "Subscription";
 
-"Upgrade your plan" = "プランをアップグレード";
+"Upgrade your plan" = "Upgrade your plan";
 
-"Only annual subscriptions without auto-renewal are available inside the mobile app." = "モバイルアプリ内では、自動更新なしの年間サブスクリプションのみ利用できます。";
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Only annual subscriptions without auto-renewal are available inside the mobile app.";
 
-"You cannot manage subscriptions inside the mobile application." = "モバイルアプリからサブスクリプションを管理することはできません。";
+"You cannot manage subscriptions inside the mobile application." = "You cannot manage subscriptions inside the mobile application.";
 
-"Your plan will automatically renew on %@" = "%@ にプランは自動的に更新されます";
+"Your plan will automatically renew on %@" = "Your plan will automatically renew on %@";
 
-"Current plan will expire on %@" = "現在のプランは %@ に期限を迎えます";
+"Current plan will expire on %@" = "Current plan will expire on %@";
 
-"Contact an administrator to make changes to your Proton subscription." = "管理者に連絡して Proton サブスクリプションを変更する必要があります。";
+"Contact an administrator to make changes to your Proton subscription." = "Contact an administrator to make changes to your Proton subscription.";
 
-"%1$@ of %2$@" = "%2$@ の中の%1$@";
+"%1$@ of %2$@" = "%1$@ of %2$@";
 
-"%@ storage" = "%@ ストレージ";
+"%@ storage" = "%@ storage";
 
-"%@ storage / user" = "%@ ストレージ / ユーザー";
+"%@ storage / user" = "%@ storage / user";
 
-"for %@" = "%@ 間";
+"for %@" = "for %@";
 
-"Custom email addresses" = "カスタムメールアドレス";
+"Custom email addresses" = "Custom email addresses";
 
-"Priority customer support" = "優先カスタマーサポート";
+"Priority customer support" = "Priority customer support";
 
-"Adblocker (NetShield)" = "広告ブロッカー (NetShield)";
+"Adblocker (NetShield)" = "Adblocker (NetShield)";
 
-"Streaming service support" = "ストリーミングサービス対応";
+"Streaming service support" = "Streaming service support";
 
-"High speed" = "高速";
+"High speed" = "High speed";
 
-"Highest speed" = "最高速";
+"Highest speed" = "Highest speed";
 
-"Multi-user support" = "複数ユーザー対応";
+"Multi-user support" = "Multi-user support";
 
-"The basic for private and secure communications." = "プライベートで安全な会話のための基本機能。";
+"The basic for private and secure communications." = "The basic for private and secure communications.";
 
-"Full-featured mailbox with advanced protection." = "高度な保護を備えたフル機能のメールボックス。";
+"Full-featured mailbox with advanced protection." = "Full-featured mailbox with advanced protection.";
 
-"Limited time offer" = "期間限定キャンペーン";
+"Limited time offer" = "Limited time offer";
 
-"Complete payment?" = "支払いが完了しましたか?";
+"Complete payment?" = "Complete payment?";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Proton バンドルプランの購入処理が進行中です。続けるを押すと、支払い処理を完了してアカウントを作成します";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account";
 
-"Complete payment" = "支払いが完了しました";
+"Complete payment" = "Complete payment";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "予期しないエラーによりアカウントセットアップを完了できませんでした。\n再度お試しください。";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "The account setup process could not be finalized due to an unexpected error.\nPlease try again.";
 
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "アプリ内購入の処理が進行中です。Apple の指示に従って購入を完了またはキャンセルしてください。";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase.";
 
-"In app payments are temporarily unavailable." = "アプリ内支払いは一時的に利用できません。";
+"In app payments are temporarily unavailable." = "In app payments are temporarily unavailable.";
 
-"One plan for all Proton services" = "すべての Proton サービスのための 1 つのプラン";
+"One plan for all Proton services" = "One plan for all Proton services";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "すべての人にプライバシーを提供するための、無料のスタータープランです。";
+"The no-cost starter account designed to empower everyone with privacy by default." = "The no-cost starter account designed to empower everyone with privacy by default.";
 
-"The privacy-first email and calendar solution for your everyday communication needs." = "毎日のコミュニケーションに必要なプライバシーファーストのメールおよびカレンダーソリューション。";
+"The privacy-first email and calendar solution for your everyday communication needs." = "The privacy-first email and calendar solution for your everyday communication needs.";
 
-"Your privacy and security are our priority." = "あなたのプライバシーとセキュリティは私たちの最優先事項です。";
+"Your privacy and security are our priority." = "Your privacy and security are our priority.";
 
-"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "ストレージに焦点を当てたプランで、ファイルをプライベートに保つための 200 GB のクラウドストレージを備えています。";
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "The storage-focused plan with 200 GB of cloud storage to keep your files private.";
 
-"The ultimate privacy pack with access to all premium Proton services." = "究極のプライバシーパックにはすべてのプレミアムな Proton サービスが含まれています。";
+"The ultimate privacy pack with access to all premium Proton services." = "The ultimate privacy pack with access to all premium Proton services.";
 
-"Only non-renewing annual subscriptions are available via this app" = "このアプリでは、更新なしの年間サブスクリプションのみ利用できます";
+"Only non-renewing annual subscriptions are available via this app" = "Only non-renewing annual subscriptions are available via this app";
 
-"Your subscription cannot be managed inside the mobile app." = "サブスクリプションはモバイル アプリ内では管理できません。";
+"Your subscription cannot be managed inside the mobile app." = "Your subscription cannot be managed inside the mobile app.";
 
-"Unlimited folders, labels, and filters" = "制限なしのフォルダー、ラベル、フィルター";
+"Unlimited folders, labels, and filters" = "Unlimited folders, labels, and filters";
 
-"Up to %@ storage" = "最大 %@ のストレージ";
+"Up to %@ storage" = "Up to %@ storage";
 
-"Free VPN on a single device" = "1 台のデバイスで無料 VPN";
+"Free VPN on a single device" = "Free VPN on a single device";
 
-"Highest VPN speed" = "最高速 VPN";
+"Highest VPN speed" = "Highest VPN speed";
 
-"Built-in ad-blocker (NetShield)" = "広告ブロッカー内蔵 (NetShield)";
+"Built-in ad-blocker (NetShield)" = "Built-in ad-blocker (NetShield)";
 
-"Access to streaming services globally" = "世界中でストリーミングサービスにアクセス";
+"Access to streaming services globally" = "Access to streaming services globally";
 
-"Secure Core servers" = "Secure Core サーバー";
+"Secure Core servers" = "Secure Core servers";
 
-"TOR over VPN" = "VPN 経由の TOR";
+"TOR over VPN" = "Tor over VPN";
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "%@ を入手";
+"Get %@" = "Get %@";
 
-"Get Proton for free" = "Proton を無料で入手";
+"Get Proton for free" = "Get Proton for free";
 
-"Extend subscription" = "サブスクリプションを延長";
+"Extend subscription" = "Extend subscription";
 
-"%@ of %@" = "%@ の中の%@";
+"%@ of %@" = "%@ of %@";
 
-"Connection issues" = "接続の問題";
+"Connection issues" = "Connection issues";
 
-"Check your internet connection" = "インターネット接続を確認してください";
+"Check your internet connection" = "Check your internet connection";
 
-"Strict no-logs policy" = "厳格なノーログポリシー";
+"Strict no-logs policy" = "Strict no-logs policy";
 
-"Plan successfully upgraded" = "プランは正常にアップグレードされました";
+"Plan successfully upgraded" = "Plan successfully upgraded";
 
-"Integrated 2FA authenticator" = "統合された2要素認証機能";
+"Integrated 2FA authenticator" = "Integrated 2FA authenticator";
 
-"Priority support" = "優先サポート";
+"Priority support" = "Priority support";
 
-"Unlimited devices" = "無制限のデバイス";
+"Unlimited devices" = "Unlimited devices";
 
-"Unlimited email aliases" = "無制限のメールエイリアス";
+"Unlimited email aliases" = "Unlimited email aliases";
 
-"Unlimited logins and notes" = "無制限のログインとメモ";
+"Unlimited logins and notes" = "Unlimited logins and notes";
 
-"Custom fields" = "カスタムフィールド";
+"Custom fields" = "Custom fields";
 
-"For next-level password management and identity protection." = "次のレベルのパスワード管理とアイデンティティ保護のために。";
+"For next-level password management and identity protection." = "For next-level password management and identity protection.";
 
-"Pay monthly" = "月払い";
+"Pay monthly" = "Pay monthly";
 
-"Pay annually" = "年払い";
+"Pay annually" = "Pay annually";
 
-"Pay every two years" = "2年ごとの支払い";
+"Pay every two years" = "Pay every two years";
 
-"Free" = "無料";
+"Free" = "Free";
