@@ -14,7 +14,7 @@
 
 "Only annual subscriptions without auto-renewal are available inside the mobile app." = "У мабільнай праграме даступны толькі гадавыя падпіскі без аўтаматычнага падаўжэння.";
 
-"You cannot manage subscriptions inside the mobile application." = "Вы не можаце кіраваць падпіскамі праз мабільную праграму.";
+"You cannot manage subscriptions inside the mobile application." = "Вы не можаце кіраваць падпіскамі ў мабільнай праграме.";
 
 "Your plan will automatically renew on %@" = "Ваш тарыфны план будзе аўтаматычна падоўжаны %@";
 
@@ -76,7 +76,7 @@
 
 "Only non-renewing annual subscriptions are available via this app" = "Праз гэту праграму даступны толькі гадавыя падпіскі без падаўжэння";
 
-"Your subscription cannot be managed inside the mobile app." = "Вашай падпіска нельга кіраваць унутры мабільнай праграмы.";
+"Your subscription cannot be managed inside the mobile app." = "Вашай падпіскай нельга кіраваць унутры мабільнай праграмы.";
 
 "Unlimited folders, labels, and filters" = "Неабмежаваная колькасць папак, метак і фільтраў";
 
@@ -132,4 +132,4 @@
 
 "Pay every two years" = "Аплата кожныя два гады";
 
-"Free" = "Free";
+"Free" = "Бясплатна";

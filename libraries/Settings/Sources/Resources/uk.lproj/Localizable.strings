@@ -1,6 +1,6 @@
-"pmsettings-settings-title" = "Параметри";
+"pmsettings-settings-title" = "Налаштування";
 
-"pmsettings-settings-app-settings-section" = "Параметри програми";
+"pmsettings-settings-app-settings-section" = "Налаштування програми";
 
 "pmsettings-settings-system-settings-section" = "Налаштування системи";
 
@@ -8,13 +8,13 @@
 
 "pmsettings-settings-system-settings-language-description" = "Ви можете вибрати бажану мову в налаштуваннях системи.";
 
-"pmsettings-settings-system-settings-language-button" = "Встановити мову в параметрах системи.";
+"pmsettings-settings-system-settings-language-button" = "Оберіть мову в налаштуваннях системи.";
 
 "pmsettings-settings-system-settings-notifications-title" = "Сповіщення";
 
-"pmsettings-settings-system-settings-notifications-description" = "Цей календар допоможе вам бути в курсі подій та реагувати на запрошення. Якщо ви хочете отримувати push-сповіщення, потрібно змінити параметри системи.";
+"pmsettings-settings-system-settings-notifications-description" = "Цей календар допоможе вам бути в курсі подій та реагувати на запрошення. Якщо ви хочете отримувати push-сповіщення, потрібно змінити налаштування системи.";
 
-"pmsettings-settings-system-settings-notifications-button" = "Керуйте дозволами в параметрах системи";
+"pmsettings-settings-system-settings-notifications-button" = "Керуйте дозволами в налаштуваннях системи";
 
 "pmsettings-settings-about-section" = "Про програму";
 
@@ -34,6 +34,6 @@
 
 "What went wrong" = "Що сталося";
 
-"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Якнайдокладніше опишіть проблему. Якщо було повідомлення про помилку, повідомте нам, про що в ньому йшлося. Введіть щонайменше 10 символів.";
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "Якнайдокладніше опишіть проблему. Якщо було повідомлення про помилку, опишіть, про що в ньому йшлося. Введіть щонайменше 10 символів.";
 
 "Your report was sent successfully" = "Ваш звіт успішно надіслано";

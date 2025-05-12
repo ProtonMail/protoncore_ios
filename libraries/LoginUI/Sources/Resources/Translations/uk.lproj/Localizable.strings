@@ -1,6 +1,6 @@
 "Privacy by default" = "Усталена приватність";
 
-"Proton address required" = "Адреса Proton обов'язкова";
+"Proton address required" = "Введіть адресу Proton";
 
 "Update required" = "Необхідне оновлення";
 
@@ -38,7 +38,7 @@
 
 "Sign in with SSO" = "Увійти за допомогою SSO";
 
-"Sign in with a QR code" = "Sign in with a QR code";
+"Sign in with a QR code" = "Увійти за допомогою QR-коду";
 
 "Sign in to your organization" = "Увійдіть до своєї організації";
 
@@ -56,19 +56,19 @@
 
 "Still need help? Contact us directly." = "Досі потребуєте допомоги? Зв'яжіться з нами безпосередньо.";
 
-"Please enter your Proton Account email or username." = "Введіть свою електронну адресу або ім'я користувача облікового запису Proton.";
+"Please enter your Proton Account email or username." = "Введіть свою адресу електронної пошти або ім'я користувача облікового запису Proton.";
 
 "Complete Setup" = "Завершити налаштування";
 
-"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "У вашому обліковому записі немає ключів. Будь ласка, увійдіть через браузер для автоматичного генерування ключів. Після успішного входу в браузері, поверніться до програми та виконайте вхід.";
+"Your account is missing keys, please sign in on web to automatically generate required keys. Once you have signed in on web, please return to the app and sign in." = "У вашому обліковому записі немає ключів. Увійдіть через браузер, щоб автоматично згенерувати ключі. Після успішного входу в браузері, поверніться до програми та виконайте вхід.";
 
-"Account setup required" = "Налаштування облікового запису обов'язкове";
+"Account setup required" = "Необхідно налаштувати обліковий запис";
 
 "Incorrect mailbox password" = "Неправильний пароль поштової скриньки";
 
 "Your session has expired. Please log in again." = "Термін дії вашого сеансу завершився. Увійдіть знову.";
 
-"Proton address required" = "Адреса Proton обов'язкова";
+"Proton address required" = "Введіть адресу Proton";
 
 "You need a Proton email address to use Proton Mail and Proton Calendar.\nYou’ll still be able to use %@ to sign in, and to recover your account." = "Вам потрібна адреса електронної пошти Proton, щоб користуватися Proton Mail і Proton Calendar.\nВи зможете використовувати %@ для входу в систему та відновлення свого облікового запису.";
 
@@ -96,7 +96,7 @@
 
 "Use two-factor code" = "Використати код двоетапної перевірки";
 
-"Enter the 6-digit code." = "Введіть 6-значний код.";
+"Enter the 6-digit code." = "Введіть код із 6 цифр.";
 
 "Enter an 8-character recovery code." = "Введіть 8-значний код відновлення.";
 
@@ -134,7 +134,7 @@
 
 "Set recovery method (optional)" = "Налаштувати спосіб відновлення (необов'язково)";
 
-"We will send recovery instructions to this email or phone number if you get locked out of your account." = "Ми надішлемо настанови щодо відновлення на цю електронну адресу або номер телефону, якщо ви втратите доступ до свого облікового запису.";
+"We will send recovery instructions to this email or phone number if you get locked out of your account." = "Ми надішлемо інструкції щодо відновлення на цю електронну пошту або номер телефону, якщо ви втратите доступ до свого облікового запису.";
 
 "Email" = "Е-пошта";
 
@@ -146,7 +146,7 @@
 
 "By clicking Next, you agree with Proton's Terms and Conditions" = "Натискаючи Далі, ви погоджуєтеся з Умовами та положеннями Proton";
 
-"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Натискаючи «Далі», ви погоджуєтеся з Умовами та положеннями й Політикою приватності компанії Proton";
+"By clicking Next, you agree with Proton's Terms and Conditions and Privacy Policy" = "Натискаючи \"Далі\", ви погоджуєтеся з Умовами та положеннями й Політикою приватності компанії Proton";
 
 "Terms and Conditions" = "Умови та положення";
 
@@ -156,13 +156,13 @@
 
 "Skip recovery method?" = "Не додавати спосіб відновлення?";
 
-"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "Спосіб відновлення допоможе вам отримати доступ до свого облікового запису у випадку втрати пароля чи виходу з облікового запису.";
+"A recovery method will help you access your account in case you forget your password or get locked out of your account." = "Спосіб відновлення допоможе вам відновити доступ до свого облікового запису у випадку втрати пароля чи втрати доступу до облікового запису.";
 
 "Set recovery method" = "Додати спосіб відновлення";
 
 "Your account is being created" = "Створюємо ваш обліковий запис";
 
-"This should take no more than a minute." = "Це повинно тривати не довше хвилини.";
+"This should take no more than a minute." = "Це триватиме не довше хвилини.";
 
 "Creating your account" = "Створення облікового запису";
 
@@ -178,7 +178,7 @@
 
 "Verification code" = "Код підтвердження";
 
-"Enter the 6-digit code." = "Введіть 6-значний код.";
+"Enter the 6-digit code." = "Введіть код із 6 цифр.";
 
 "Did not receive a code?" = "Не отримали код?";
 
@@ -194,15 +194,15 @@
 
 "Invalid hashed password" = "Неправильний хешований пароль";
 
-"Password can not be empty.\nPlease try again." = "Потрібно ввести пароль.\nБудь ласка, спробуйте знову.";
+"Password can not be empty.\nPlease try again." = "Потрібно ввести пароль.\nПовторіть спробу.";
 
 "Passwords do not match.\nPlease try again." = "Паролі відрізняються.\nПовторіть спробу.";
 
 "Email address already used." = "Ця адреса вже використовується.";
 
-"Please ask your admin to configure your sub-user." = "Попросіть свого адміністратора налаштувати підкористувача.";
+"Please ask your admin to configure your sub-user." = "Попросіть свого адміністратора налаштувати підлеглого користувача.";
 
-"Would you like to receive a new verification code or use an alternate email address?" = "Бажаєте отримати новий код перевірки чи скористатися іншою електронною адресою?";
+"Would you like to receive a new verification code or use an alternate email address?" = "Бажаєте отримати новий код перевірки чи скористатися іншою адресою електронної пошти?";
 
 "Change email address" = "Змінити адресу е-пошти";
 
@@ -226,17 +226,17 @@
 
 "Please choose how you want to confirm your identity." = "Оберіть спосіб підтвердження вашої особи.";
 
-"One-time code" = "Одноразовий код";
+"One-time code" = "Разовий код";
 
 "Security key" = "Ключ безпеки";
 
 "Two-Factor Authentication" = "Двоетапна перевірка";
 
-"Present a security key linked to your Proton Account." = "Пред'явіть ключ безпеки, прив'язаний до вашого облікового запису Proton.";
+"Present a security key linked to your Proton Account." = "Надайте ключ безпеки, пов'язаний з вашим обліковим записом Proton.";
 
 "Learn more" = "Докладніше";
 
-"Invalid state. Please quit the app and try again in a few minutes." = "Недійсний стан. Вийдіть із застосунку та спробуйте ще раз за кілька хвилин.";
+"Invalid state. Please quit the app and try again in a few minutes." = "Недійсний стан. Вийдіть із програми та повторіть спробу за кілька хвилин.";
 
 "There was a problem reading your security key." = "Сталася помилка під час читання вашого ключа безпеки.";
 
@@ -246,83 +246,83 @@
 
 "You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "У вашому обліковому записі ще не зареєстровано жодного ключа безпеки. Відвідайте розділ налаштувань на нашому сайті, щоб додати ключі безпеки.";
 
-"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "Виникла помилка при отриманні ваших ключів безпеки. Ви також можете перевірити їх на вебсайті Proton %@.";
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "Виникла помилка під час отримання ваших ключів безпеки. Ви також можете перевірити їх на вебсайті Proton %@.";
 
 "These are the security keys registered to your account" = "Це ключі безпеки, зареєстровані у вашому обліковому записі";
 
-"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "У вашому обліковому записі ще немає ключів безпеки. Будь ласка, скористайтеся вебзастосунком Proton %@, щоб додати ключі безпеки.";
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "У вашому обліковому записі ще немає ключів безпеки. Скористайтеся вебпрограмою Proton %@, щоб додати ключі безпеки.";
 
 "Security Keys" = "Ключі безпеки";
 
-"To manage, add, or remove security keys, please use the Proton %@ web application." = "Для керування, додавання або видалення ключів безпеки, використовуйте вебзастосунок Proton %@.";
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "Для керування, додавання або видалення ключів безпеки, використовуйте вебпрограму Proton %@.";
 
 "Unexpected FIDO2 signature." = "Неочікуваний підпис FIDO2.";
 
 "We could not initiate the Secure Password update connection. Please try again." = "Не вдалося встановити з'єднання для оновлення захищеного пароля. Спробуйте ще раз.";
 
-"Join %@" = "Доєднатися %@";
+"Join %@" = "Приєднатися до %@";
 
-"%@ added you to their Proton organization." = "%@ додали вас до своєї організації Proton.";
+"%@ added you to their Proton organization." = "%@ додає вас до своєї організації Proton.";
 
 "Continue" = "Продовжити";
 
-"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Встановіть резервний пароль, щоби продовжити. Цей пароль дозволить вам увійти й відновити свої дані, якщо ви заблокуєте свій обліковий запис Proton, тому обов'язково зберігайте його в безпечному місці.";
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Встановіть резервний пароль, щоб продовжити. За допомогою цього пароля ви зможете ввійти й відновити свої дані у разі втрати доступу до облікового запису Proton, тому обов'язково зберігайте його в надійному місці.";
 
 "Backup password" = "Резервний пароль";
 
-"Repeat backup password" = "Повторити резервний пароль";
+"Repeat backup password" = "Введіть резервний пароль ще раз";
 
 "Password cannot be empty" = "Потрібно ввести пароль";
 
 "Password must contain at least 8 characters" = "Пароль повинен містити принаймні 8 символів";
 
-"Password doesn't match" = "Пароль не збігається";
+"Password doesn't match" = "Паролі відрізняються";
 
-"Sign-in requested on another device. Was it you?" = "Запит на вхід на іншому пристрої. Це були ви?";
+"Sign-in requested on another device. Was it you?" = "Запит входу на іншому пристрої. Це були ви?";
 
-"Enter the confirmation code we sent on your other device for %@." = "Уведіть код підтвердження, який ми надіслали на інший пристрій протягом %@.";
+"Enter the confirmation code we sent on your other device for %@." = "Введіть код підтвердження, надісланий на ваш інший пристрій для %@.";
 
 "Confirmation code" = "Код підтвердження";
 
-"If you didn't make this request, cancel it now." = "Якщо не ви зробили цей запит, скасуйте його зараз.";
+"If you didn't make this request, cancel it now." = "Якщо ви не робили цей запит, скасуйте його зараз.";
 
-"Yes, it was me" = "Так, це був я";
+"Yes, it was me" = "Так, це я";
 
-"No, it wasn't me" = "Ні, це був не я";
+"No, it wasn't me" = "Ні, це не я";
 
-"Share the confirmation code with your administrator" = "Поділитися кодом підтвердження з адміністратором";
+"Share the confirmation code with your administrator" = "Поділіться кодом підтвердження зі своїм адміністратором";
 
-"Approve the sign-in from another device" = "Підтвердити вхід з іншого пристрою";
+"Approve the sign-in from another device" = "Підтвердьте вхід на іншому пристрої";
 
-"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Щоб переконатися, що ви дійсно хочете увійти та поділитися кодом підтвердження з адміністратором %@, щоб вони могли затвердити запит %@.";
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Щоб переконатися, що це дійсно ви намагаєтесь увійти, поділіться кодом підтвердження зі своїм адміністратором %@, щоб він міг схвалити запит для %@.";
 
-"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Щоб переконатися, що ви дійсно намагаєтеся увійти до свого облікового запису, перегляньте код підтвердження і підтвердьте запит з іншого пристрою.";
+"To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Щоб переконатися, що це дійсно ви намагаєтесь увійти до свого облікового запису, перегляньте код підтвердження і схваліть запит на іншому пристрої.";
 
-"Use backup password instead" = "Використовувати пароль резервного копіювання";
+"Use backup password instead" = "Скористатися резервним паролем";
 
-"Ask administrator for help" = "Зверніться до адміністратора про допомогу";
+"Ask administrator for help" = "Попросіть адміністратора допомогти";
 
 "Devices available:" = "Доступні пристрої:";
 
-"Operation couldn't be completed. Please try again." = "Неможливо завершити операцію. Будь ласка, спробуйте ще раз.";
+"Operation couldn't be completed. Please try again." = "Неможливо завершити операцію. Повторіть спробу.";
 
-"Enter your backup password" = "Введіть пароль резервного копіювання";
+"Enter your backup password" = "Введіть свій резервний пароль";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "Щоб переконатися, що ви дійсно намагаєтеся увійти, введіть свій резервний пароль.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "Щоб переконатися, що це дійсно ви намагаєтесь увійти, введіть свій резервний пароль.";
 
 "Access granted" = "Доступ надано";
 
 "Access denied" = "Доступ заборонено";
 
-"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Для вашої безпеки ми вийшли з облікового запису на усіх інших активних пристроїв. Перш ніж отримати доступ до свого облікового запису, вам потрібно буде ввести новий резервний пароль.";
+"For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "Для вашої безпеки виконано вихід з облікового запису на всіх ваших інших активних пристроях. Перш ніж отримати доступ до свого облікового запису, вам потрібно буде ввести новий резервний пароль.";
 
 "Contact your administrator if the problem persists." = "Зверніться до адміністратора, якщо проблема повторюється.";
 
-"Back to sign-in" = "Повернутися до авторизації";
+"Back to sign-in" = "Повернутися до входу";
 
-"Ask your administrator for access?" = "Звернутися до адміністратора для доступу?";
+"Ask your administrator for access?" = "Звернутися до адміністратора для отримання доступу?";
 
-"This will sign you out of your other devices and you will have to create a new backup password." = "Це призведе до виходу з інших пристроїв, і вам доведеться створити новий резервний пароль.";
+"This will sign you out of your other devices and you will have to create a new backup password." = "Це завершить сеанси на інших пристроях, і вам потрібно буде створити новий резервний пароль.";
 
 "Grant access to user?" = "Надати доступ користувачеві?";
 
@@ -332,100 +332,104 @@
 
 "Deny access" = "Заборонити доступ";
 
-"Signing you in" = "Виконуємо вхід";
+"Signing you in" = "Виконується вхід";
 
 "to your organization" = "до вашої організації";
 
 "Sign in with single sign-on" = "Вхід за допомогою єдиного входу";
 
-"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Ваша організація використовує SSO. Продовжуйте входити за допомогою стороннього постачальника SSO.";
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Ваша організація використовує SSO. Увійдіть за допомогою стороннього постачальника SSO.";
 
 "Unknown" = "Невідомо";
 
 "Set backup password" = "Встановіть резервний пароль";
 
-"Email is invalid" = "Недійсна електронна адреса";
+"Email is invalid" = "Недійсна адреса е-пошти";
 
-"Please enter your Proton Account email." = "Please enter your Proton Account email.";
+"Please enter your Proton Account email." = "Введіть адресу е-пошти свого облікового запису Proton.";
 
-"Password not valid" = "Password not valid";
+"Password not valid" = "Недійсний пароль";
 
-"Passphrase not found" = "Passphrase not found";
+"Passphrase not found" = "Парольну фразу не знайдено";
 
-"Open the Proton app on your phone" = "Open the Proton app on your phone";
+"Open the Proton app on your phone" = "Відкрийте програму Proton на своєму телефоні";
 
-"Tap into Settings, then tap Sign in to another device" = "Tap into Settings, then tap Sign in to another device";
+"Tap into Settings, then tap Sign in to another device" = "Торкніться \"Налаштування\", потім торкніться \"Увійти на іншому пристрої\"";
 
-"Tap Scan QR code" = "Tap Scan QR code";
+"Tap Scan QR code" = "Торкніться \"Сканувати QR-код\"";
 
-"Scan this code with your phone camera to sign in instantly." = "Scan this code with your phone camera to sign in instantly.";
+"Scan this code with your phone camera to sign in instantly." = "Скануйте цей код за допомогою камери телефона, щоб миттєво ввійти.";
 
-"Sign in to another device" = "Sign in to another device";
+"Sign in to another device" = "Увійти на іншому пристрої";
 
-"Sign in with your QR code" = "Sign in with your QR code";
+"Sign in with your QR code" = "Увійдіть за допомогою QR-коду";
 
-"Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active.";
+"Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Використовуйте цей пристрій, щоб сканувати QR-код, показаний на пристрої, за допомогою якого ви хочете ввійти. Обидва пристрої залишаться активними.";
 
-"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "To access the QR code, tap the **Sign in with QR code** button on the sign-in screen.";
+"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "Щоб відкрити QR-код, торкніться кнопки **Увійти за допомогою QR-коду** на екрані входу.";
 
-"Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust." = "Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust.";
+"Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust." = "Слідкуйте за повідомленнями, що містять QR-код. Ніколи не скануйте QR-код із вебсайту або від особи, якщо ви їм не довіряєте.";
 
-"Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Proton will never ask you to scan a QR code that does not come from the domain **proton.me**.";
+"Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Proton ніколи не попросить вас сканувати QR-код, що походить не з домену **proton.me**.";
 
-"Scan QR code" = "Scan QR code";
+"Scan QR code" = "Сканувати QR-код";
 
-"Authenticate to access the QR code scanner" = "Authenticate to access the QR code scanner";
+"Authenticate to access the QR code scanner" = "Пройдіть авторизацію для доступу до сканера QR-кодів";
 
-"Place QR code within the square" = "Place QR code within the square";
+"Place QR code within the square" = "Наведіть QR-код у межі квадрата";
 
-"Verifying..." = "Verifying...";
+"Verifying..." = "Перевірка...";
 
-"You’re signed in to %@ on the other device." = "You’re signed in to %@ on the other device.";
+"You’re signed in to %@ on the other device." = "Ви ввійшли в %@ на іншому пристрої.";
 
-"You're signed in" = "You're signed in";
+"You're signed in" = "Ви ввійшли до системи";
 
-"Got it" = "Got it";
+"Got it" = "Зрозуміло";
 
-"Code not recognized. Try again." = "Code not recognized. Try again.";
+"Code not recognized. Try again." = "Код не розпізнано. Спробуйте ще раз.";
 
-"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me.";
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Порада: ніколи не скануйте QR-код з вебсайту або від людини, якщо ви їм не довіряєте. Proton ніколи не попросить вас сканувати QR-код, який не походить з домену account.proton.me.";
 
-"Camera Access Denied." = "Camera Access Denied.";
+"Camera Access Denied." = "Доступ до камери заборонено.";
 
-"The permission to use the Camera is off. Please enable it from the Settings." = "The permission to use the Camera is off. Please enable it from the Settings.";
+"The permission to use the Camera is off. Please enable it from the Settings." = "Дозвіл на використання камери вимкнено. Увімкніть його в налаштуваннях.";
 
-"Go to Settings" = "Go to Settings";
+"Go to Settings" = "Відкрити налаштування";
 
-"to Proton %@" = "to Proton %@";
+"to Proton %@" = "до Proton %@";
 
-"Something went wrong" = "Something went wrong";
+"Something went wrong" = "Щось пішло не так";
 
-"We couldn't sign you in. Please scan a new QR code to try again." = "We couldn't sign you in. Please scan a new QR code to try again.";
+"We couldn't sign you in. Please scan a new QR code to try again." = "Не вдалося увійти. Скануйте новий QR-код, щоб спробувати ще раз.";
 
-"We couldn't sign you in. Please sign in with your password." = "We couldn't sign you in. Please sign in with your password.";
+"We couldn't sign you in. Please sign in with your password." = "Не вдалося увійти. Скористайтеся паролем для входу.";
 
-"New QR code" = "New QR code";
+"New QR code" = "Новий QR-код";
 
-"Allow access to camera" = "Allow access to camera";
+"Allow access to camera" = "Дозволити доступ до камери";
 
-"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "To scan a QR code and sign in to another device, grant Proton %@ access to your camera.";
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "Щоб сканувати QR-код і ввійти на іншому пристрої, надайте Proton %@ доступ до камери.";
 
-"You're always in control: You can change this anytime in your device settings." = "You're always in control: You can change this anytime in your device settings.";
+"You're always in control: You can change this anytime in your device settings." = "Ви завжди все контролюєте. Дозвіл можна будь-коли змінити в налаштуваннях пристрою.";
 
-"Settings" = "Settings";
+"Settings" = "Налаштування";
 
-"We couldn't load the QR code" = "We couldn't load the QR code";
+"We couldn't load the QR code" = "Не вдалося завантажити QR-код";
 
 "Retry" = "Повторити спробу";
 
-"Welcome to Proton VPN" = "Welcome to Proton VPN";
+"Welcome to Proton VPN" = "Вітаємо у Proton VPN";
 
-"Browse privately, access blocked content, and enjoy digital freedom." = "Browse privately, access blocked content, and enjoy digital freedom.";
+"Browse privately, access blocked content, and enjoy digital freedom." = "Приватний перегляд, доступ до заблокованого вмісту і задоволення від цифрової свободи.";
 
-"Certified no-logs VPN" = "Certified no-logs VPN";
+"Certified no-logs VPN" = "Сертифікована VPN без журналювання";
 
-"Continue as guest" = "Continue as guest";
+"Continue as guest" = "Продовжити як гість";
 
-"By using this app you accept our" = "By using this app you accept our";
+"By using this app you accept our" = "Використовуючи цю програму, ви приймаєте наші";
 
-"Terms and Conditions." = "Terms and Conditions.";
+"Terms and Conditions." = "Умови та положення.";
+
+"Tap **Scan QR code**" = "Торкніться **Сканувати QR-код**";
+
+"Tap into **Settings**, then tap **Sign in to another device**" = "Торкніться **Налаштування**, потім торкніться **Увійти на іншому пристрої**";

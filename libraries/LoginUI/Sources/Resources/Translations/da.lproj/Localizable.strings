@@ -310,13 +310,13 @@
 
 "To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
 
-"Access granted" = "Access granted";
+"Access granted" = "Adgang bevilget";
 
 "Access denied" = "Adgang nægtet";
 
 "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password." = "For your security, you have been signed out of all your other active devices. Before accessing your account, you’ll need to enter a new backup password.";
 
-"Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
+"Contact your administrator if the problem persists." = "Kontakt din administrator, hvis problemet fortsætter.";
 
 "Back to sign-in" = "Tilbage til login";
 
@@ -330,7 +330,7 @@
 
 "Grant access" = "Tildel adgang";
 
-"Deny access" = "Deny access";
+"Deny access" = "Nægt adgang";
 
 "Signing you in" = "Logger dig ind";
 
@@ -358,11 +358,11 @@
 
 "Tap Scan QR code" = "Tap Scan QR code";
 
-"Scan this code with your phone camera to sign in instantly." = "Scan this code with your phone camera to sign in instantly.";
+"Scan this code with your phone camera to sign in instantly." = "Scan denne kode med dit telefonkamera for at logge ind med det samme.";
 
-"Sign in to another device" = "Sign in to another device";
+"Sign in to another device" = "Log ind på en anden enhed";
 
-"Sign in with your QR code" = "Sign in with your QR code";
+"Sign in with your QR code" = "Log ind med din QR-kode";
 
 "Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active.";
 
@@ -372,19 +372,19 @@
 
 "Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Proton will never ask you to scan a QR code that does not come from the domain **proton.me**.";
 
-"Scan QR code" = "Scan QR code";
+"Scan QR code" = "Scan QR-kode";
 
 "Authenticate to access the QR code scanner" = "Authenticate to access the QR code scanner";
 
 "Place QR code within the square" = "Place QR code within the square";
 
-"Verifying..." = "Verifying...";
+"Verifying..." = "Verificerer...";
 
 "You’re signed in to %@ on the other device." = "You’re signed in to %@ on the other device.";
 
 "You're signed in" = "You're signed in";
 
-"Got it" = "Got it";
+"Got it" = "Forstået";
 
 "Code not recognized. Try again." = "Code not recognized. Try again.";
 
@@ -394,31 +394,31 @@
 
 "The permission to use the Camera is off. Please enable it from the Settings." = "The permission to use the Camera is off. Please enable it from the Settings.";
 
-"Go to Settings" = "Go to Settings";
+"Go to Settings" = "Gå til Indstillinger";
 
-"to Proton %@" = "to Proton %@";
+"to Proton %@" = "til Proton %@";
 
-"Something went wrong" = "Something went wrong";
+"Something went wrong" = "Noget gik galt";
 
 "We couldn't sign you in. Please scan a new QR code to try again." = "We couldn't sign you in. Please scan a new QR code to try again.";
 
-"We couldn't sign you in. Please sign in with your password." = "We couldn't sign you in. Please sign in with your password.";
+"We couldn't sign you in. Please sign in with your password." = "Vi kunne ikke logge dig ind. Log ind med din adgangskode.";
 
-"New QR code" = "New QR code";
+"New QR code" = "Ny QR-kode";
 
-"Allow access to camera" = "Allow access to camera";
+"Allow access to camera" = "Tillad adgang til kamera";
 
 "To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "To scan a QR code and sign in to another device, grant Proton %@ access to your camera.";
 
 "You're always in control: You can change this anytime in your device settings." = "You're always in control: You can change this anytime in your device settings.";
 
-"Settings" = "Settings";
+"Settings" = "Indstillinger";
 
 "We couldn't load the QR code" = "We couldn't load the QR code";
 
 "Retry" = "Prøv igen";
 
-"Welcome to Proton VPN" = "Welcome to Proton VPN";
+"Welcome to Proton VPN" = "Velkommen til Proton VPN";
 
 "Browse privately, access blocked content, and enjoy digital freedom." = "Browse privately, access blocked content, and enjoy digital freedom.";
 
@@ -428,4 +428,8 @@
 
 "By using this app you accept our" = "By using this app you accept our";
 
-"Terms and Conditions." = "Terms and Conditions.";
+"Terms and Conditions." = "Vilkår og betingelser.";
+
+"Tap **Scan QR code**" = "Tap **Scan QR code**";
+
+"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";

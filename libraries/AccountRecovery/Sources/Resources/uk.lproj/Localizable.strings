@@ -1,26 +1,26 @@
 "Settings_Item" = "Скидання пароля";
 
-"Insecure_View_Title" = "Password reset";
+"Insecure_View_Title" = "Скидання пароля";
 
-"Cancelled_View_Title" = "Password reset";
+"Cancelled_View_Title" = "Скидання пароля";
 
-"Grace_View_Title" = "Password reset";
+"Grace_View_Title" = "Скидання пароля";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**";
+"We received a password reset request for **%@**." = "Ми отримали запит на скидання пароля для **%@**";
 
-"We received a password reset request for %@." = "We received a password reset request for %@";
+"We received a password reset request for %@." = "Ми отримали запит на скидання пароля для %@";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Якщо ви не просили скинути пароль, **скасуйте цей запит негайно**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Якщо ви не просили скинути пароль, скасуйте цей запит негайно.";
 
-"Password reset requested" = "Password reset requested";
+"Password reset requested" = "Подано запит на скидання пароля";
 
 "Insecure_View_line1" = "Тепер ви можете змінити свій пароль для облікового запису ";
 
-"You can change your password in %@." = "You can change your password in %@.";
+"You can change your password in %@." = "Ви можете змінити свій пароль у %@.";
 
-"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Щоб переконатися, що саме ви намагаєтеся скинути пароль, ми чекаємо 72 години, перш ніж схвалити запит.";
 
 "Insecure_View_line2" = " у будь-який час протягом ";
 
@@ -30,52 +30,52 @@
 
 "Grace_View_Undefined_Time_Left" = "кілька годин";
 
-"Settings_Item_Value_Grace" = "Pending";
+"Settings_Item_Value_Grace" = "Очікується";
 
-"Settings_Item_Value_Expired" = "Expired";
+"Settings_Item_Value_Expired" = "Термін дії закінчився";
 
-"Settings_Item_Value_Cancelled" = "Cancelled";
+"Settings_Item_Value_Cancelled" = "Скасовано";
 
-"Settings_Item_Value_Insecure" = "Available";
+"Settings_Item_Value_Insecure" = "Доступно";
 
-"Insecure_View_Cancel_Button_CTA" = "Cancel reset";
+"Insecure_View_Cancel_Button_CTA" = "Скасувати скидання";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Якщо ви не просили скинути пароль, **скасуйте цей запит негайно**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Якщо ви не просили скинути пароль, скасуйте цей запит негайно.";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**.";
+"We received a password reset request for **%@**." = "Ми отримали запит на скидання пароля для **%@**.";
 
-"We received a password reset request for %@." = "We received a password reset request for %@.";
+"We received a password reset request for %@." = "Ми отримали запит на скидання пароля для %@.";
 
-"Password reset cancelled" = "Password reset cancelled";
+"Password reset cancelled" = "Скидання пароля скасовано";
 
-"Cancelled by the user" = "Cancelled by the user";
+"Cancelled by the user" = "Скасовано користувачем";
 
-"Authenticated in another session" = "Authenticated in another session";
+"Authenticated in another session" = "Автентифіковано в іншому сеансі";
 
-"none" = "none";
+"none" = "немає";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "Процес відновлення облікового запису завершився через бездіяльність";
 
-"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "If you never made a password reset request, someone else could have access to your account. **Change your password now**";
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Якщо ви ніколи не надсилали запит на скидання пароля, хтось інший міг отримати доступ до вашого облікового запису. **Змініть свій пароль зараз**";
 
-"If you never made a password reset request, someone else could have access to your account. Change your password now" = "If you never made a password reset request, someone else could have access to your account. Change your password now";
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Якщо ви ніколи не надсилали запит на скидання пароля, хтось інший міг отримати доступ до вашого облікового запису. Змініть свій пароль зараз";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "Процес відновлення облікового запису завершився через бездіяльність";
 
-"Recovery process not started" = "Recovery process not started";
+"Recovery process not started" = "Процес відновлення не розпочато";
 
-"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Наразі відновлення облікового запису не відбувається. Перейдіть до сеансу у вебпрограмі, щоб відновити свій пароль.";
 
-"You can now reset your password" = "You can now reset your password";
+"You can now reset your password" = "Тепер ви можете скинути пароль";
 
-"Reset available until %@." = "Reset available until %@.";
+"Reset available until %@." = "Скидання доступне до %@.";
 
-"Change device to continue" = "Change device to continue";
+"Change device to continue" = "Змініть пристрій, щоб продовжити";
 
-"To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
+"To reset your password, go back to your active session on **the originating device**." = "Щоб скинути свій пароль, поверніться до активного сеансу на **ініційованому пристрої**.";
 
-"To reset your password, go back to your active session on the originating device." = "To reset your password, go back to your active session on the originating device.";
+"To reset your password, go back to your active session on the originating device." = "Щоб скинути свій пароль, поверніться до активного сеансу на ініційованому пристрої.";
 
-"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now.";
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "У вас є %@, щоб скинути пароль.\nВам потрібно зробити це на пристрої та в браузері, з якого ви надіслали запит на скидання пароля.\nЯкщо ви не надсилали запит на скидання пароля, скасуйте його зараз.";

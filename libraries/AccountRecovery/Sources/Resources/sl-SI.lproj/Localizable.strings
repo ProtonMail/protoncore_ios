@@ -1,24 +1,24 @@
 "Settings_Item" = "Ponastavitev gesla";
 
-"Insecure_View_Title" = "Password reset";
+"Insecure_View_Title" = "Ponastavitev gesla";
 
-"Cancelled_View_Title" = "Password reset";
+"Cancelled_View_Title" = "Ponastavitev gesla";
 
-"Grace_View_Title" = "Password reset";
+"Grace_View_Title" = "Ponastavitev gesla";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**";
+"We received a password reset request for **%@**." = "Prejeli smo zahtevo za ponastavitev gesla za **%@**.";
 
-"We received a password reset request for %@." = "We received a password reset request for %@";
+"We received a password reset request for %@." = "Prejeli smo zahtevo za ponastavitev gesla za %@";
 
 "If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
 
 "If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
 
-"Password reset requested" = "Password reset requested";
+"Password reset requested" = "Zahteva za ponastavitev gesla je bila poslana";
 
 "Insecure_View_line1" = "Zdaj lahko spremenite vaše geslo za račun ";
 
-"You can change your password in %@." = "You can change your password in %@.";
+"You can change your password in %@." = "Geslo lahko spremenite v %@.";
 
 "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.";
 
@@ -30,15 +30,15 @@
 
 "Grace_View_Undefined_Time_Left" = "nekaj urah";
 
-"Settings_Item_Value_Grace" = "Pending";
+"Settings_Item_Value_Grace" = "Čakajoče";
 
-"Settings_Item_Value_Expired" = "Expired";
+"Settings_Item_Value_Expired" = "Poteklo";
 
-"Settings_Item_Value_Cancelled" = "Cancelled";
+"Settings_Item_Value_Cancelled" = "Preklicano";
 
-"Settings_Item_Value_Insecure" = "Available";
+"Settings_Item_Value_Insecure" = "Na voljo";
 
-"Insecure_View_Cancel_Button_CTA" = "Cancel reset";
+"Insecure_View_Cancel_Button_CTA" = "Prekliči ponastavitev";
 
 "If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
 
@@ -46,11 +46,11 @@
 
 "We received a password reset request for **%@**." = "We received a password reset request for **%@**.";
 
-"We received a password reset request for %@." = "We received a password reset request for %@.";
+"We received a password reset request for %@." = "Prejeli smo zahtevo za ponastavitev gesla za %@.";
 
-"Password reset cancelled" = "Password reset cancelled";
+"Password reset cancelled" = "Ponastavitev gesla je preklicana.";
 
-"Cancelled by the user" = "Cancelled by the user";
+"Cancelled by the user" = "Preklical uporabnik";
 
 "Authenticated in another session" = "Authenticated in another session";
 
@@ -64,18 +64,18 @@
 
 "The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
 
-"Recovery process not started" = "Recovery process not started";
+"Recovery process not started" = "Postopek obnovitve ni bil zagnan";
 
 "Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
 
-"You can now reset your password" = "You can now reset your password";
+"You can now reset your password" = "Zdaj lahko ponastavite svoje geslo";
 
-"Reset available until %@." = "Reset available until %@.";
+"Reset available until %@." = "Ponastavitev je na voljo do %@.";
 
-"Change device to continue" = "Change device to continue";
+"Change device to continue" = "Spremenite napravo, da nadaljujete";
 
 "To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
 
 "To reset your password, go back to your active session on the originating device." = "To reset your password, go back to your active session on the originating device.";
 
-"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now.";
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Na voljo imate %@ za ponastavitev gesla.\nTo morate storiti v napravi in brskalniku, iz katerega ste poslali zahtevo za ponastavitev gesla.\nČe niste zaprosili za ponastavitev gesla, zdaj prekliči zahtevo.";

@@ -2,134 +2,134 @@
 
 "Cancel" = "取消";
 
-"Warning" = "Warning";
+"Warning" = "警告";
 
-"Select a plan" = "Select a plan";
+"Select a plan" = "选择套餐";
 
-"Current plan" = "Current plan";
+"Current plan" = "当前套餐";
 
-"Subscription" = "Subscription";
+"Subscription" = "订阅";
 
-"Upgrade your plan" = "Upgrade your plan";
+"Upgrade your plan" = "升级套餐";
 
-"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Only annual subscriptions without auto-renewal are available inside the mobile app.";
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "移动应用内只提供不自动续订的年度订阅。";
 
-"You cannot manage subscriptions inside the mobile application." = "You cannot manage subscriptions inside the mobile application.";
+"You cannot manage subscriptions inside the mobile application." = "您无法在移动应用内管理订阅。";
 
-"Your plan will automatically renew on %@" = "Your plan will automatically renew on %@";
+"Your plan will automatically renew on %@" = "您的套餐将于 %@ 自动更新。";
 
-"Current plan will expire on %@" = "Current plan will expire on %@";
+"Current plan will expire on %@" = "当前套餐将于 %@ 到期";
 
-"Contact an administrator to make changes to your Proton subscription." = "Contact an administrator to make changes to your Proton subscription.";
+"Contact an administrator to make changes to your Proton subscription." = "请联系管理员更改您的 Proton 订阅。";
 
-"%1$@ of %2$@" = "%1$@ of %2$@";
+"%1$@ of %2$@" = "已使用 %1$@，共 %2$@";
 
-"%@ storage" = "%@ storage";
+"%@ storage" = "%@ 存储空间";
 
-"%@ storage / user" = "%@ storage / user";
+"%@ storage / user" = "%@ 存储空间/用户";
 
-"for %@" = "for %@";
+"for %@" = "适用于 %@";
 
-"Custom email addresses" = "Custom email addresses";
+"Custom email addresses" = "自定义邮箱地址";
 
-"Priority customer support" = "Priority customer support";
+"Priority customer support" = "优先客户支持";
 
-"Adblocker (NetShield)" = "Adblocker (NetShield)";
+"Adblocker (NetShield)" = "广告拦截 (NetShield)";
 
-"Streaming service support" = "Streaming service support";
+"Streaming service support" = "支持流媒体服务";
 
-"High speed" = "High speed";
+"High speed" = "速度较快";
 
-"Highest speed" = "Highest speed";
+"Highest speed" = "速度最快";
 
-"Multi-user support" = "Multi-user support";
+"Multi-user support" = "多用户支持";
 
-"The basic for private and secure communications." = "The basic for private and secure communications.";
+"The basic for private and secure communications." = "私密安全通信的基础。";
 
-"Full-featured mailbox with advanced protection." = "Full-featured mailbox with advanced protection.";
+"Full-featured mailbox with advanced protection." = "功能齐全且具有先进保护功能的邮箱。";
 
-"Limited time offer" = "Limited time offer";
+"Limited time offer" = "限时优惠";
 
-"Complete payment?" = "Complete payment?";
+"Complete payment?" = "完成支付？";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "正在订阅 Proton Bundle 套餐，请按“继续”以完成付款并创建账户";
 
-"Complete payment" = "Complete payment";
+"Complete payment" = "完成支付";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "The account setup process could not be finalized due to an unexpected error.\nPlease try again.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "由于出现意外错误，我们无法完成账户设置。\n请重新尝试。";
 
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase.";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "IAP 购买流程已启动，请按照 Apple 的指示完成或取消购买。";
 
-"In app payments are temporarily unavailable." = "In app payments are temporarily unavailable.";
+"In app payments are temporarily unavailable." = "应用内支付暂时不可用。";
 
-"One plan for all Proton services" = "One plan for all Proton services";
+"One plan for all Proton services" = "一个套餐畅享所有 Proton 服务";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "The no-cost starter account designed to empower everyone with privacy by default.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "完全免费的普通账户，旨在助力所有人捍卫隐私。";
 
-"The privacy-first email and calendar solution for your everyday communication needs." = "The privacy-first email and calendar solution for your everyday communication needs.";
+"The privacy-first email and calendar solution for your everyday communication needs." = "隐私至上的电子邮件和日历解决方案，满足您的日常通信需求。";
 
-"Your privacy and security are our priority." = "Your privacy and security are our priority.";
+"Your privacy and security are our priority." = "您的隐私和安全是我们的首要任务。";
 
-"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "The storage-focused plan with 200 GB of cloud storage to keep your files private.";
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "该套餐侧重于存储，提供 200 GB 的云存储空间，以确保文件的私密安全。";
 
-"The ultimate privacy pack with access to all premium Proton services." = "The ultimate privacy pack with access to all premium Proton services.";
+"The ultimate privacy pack with access to all premium Proton services." = "终极隐私包，可享受所有 Proton 高级服务。";
 
-"Only non-renewing annual subscriptions are available via this app" = "Only non-renewing annual subscriptions are available via this app";
+"Only non-renewing annual subscriptions are available via this app" = "此应用仅提供非续订年度订阅";
 
-"Your subscription cannot be managed inside the mobile app." = "Your subscription cannot be managed inside the mobile app.";
+"Your subscription cannot be managed inside the mobile app." = "您的订阅无法在移动应用内进行管理。";
 
-"Unlimited folders, labels, and filters" = "Unlimited folders, labels, and filters";
+"Unlimited folders, labels, and filters" = "不限量文件夹、标签和筛选规则";
 
-"Up to %@ storage" = "Up to %@ storage";
+"Up to %@ storage" = "最高 %@ 存储空间";
 
-"Free VPN on a single device" = "Free VPN on a single device";
+"Free VPN on a single device" = "在单个设备上免费使用 VPN";
 
-"Highest VPN speed" = "Highest VPN speed";
+"Highest VPN speed" = "最快的 VPN 速度";
 
-"Built-in ad-blocker (NetShield)" = "Built-in ad-blocker (NetShield)";
+"Built-in ad-blocker (NetShield)" = "内置广告拦截器 (NetShield)";
 
-"Access to streaming services globally" = "Access to streaming services globally";
+"Access to streaming services globally" = "访问全球流媒体服务";
 
-"Secure Core servers" = "Secure Core servers";
+"Secure Core servers" = "Secure Core 服务器";
 
 "TOR over VPN" = "Tor over VPN";
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "Get %@";
+"Get %@" = "开通 %@";
 
-"Get Proton for free" = "Get Proton for free";
+"Get Proton for free" = "免费注册 Proton";
 
-"Extend subscription" = "Extend subscription";
+"Extend subscription" = "延长订阅";
 
-"%@ of %@" = "%@ of %@";
+"%@ of %@" = "已使用 %@，共 %@";
 
-"Connection issues" = "Connection issues";
+"Connection issues" = "连接失败";
 
-"Check your internet connection" = "Check your internet connection";
+"Check your internet connection" = "请检查您的网络连接";
 
-"Strict no-logs policy" = "Strict no-logs policy";
+"Strict no-logs policy" = "严格的无日志政策";
 
-"Plan successfully upgraded" = "Plan successfully upgraded";
+"Plan successfully upgraded" = "套餐升级成功";
 
-"Integrated 2FA authenticator" = "Integrated 2FA authenticator";
+"Integrated 2FA authenticator" = "集成 2FA 验证器";
 
-"Priority support" = "Priority support";
+"Priority support" = "优先支持";
 
-"Unlimited devices" = "Unlimited devices";
+"Unlimited devices" = "设备数不限";
 
-"Unlimited email aliases" = "Unlimited email aliases";
+"Unlimited email aliases" = "不限量的邮箱别名";
 
-"Unlimited logins and notes" = "Unlimited logins and notes";
+"Unlimited logins and notes" = "无限制的登录和笔记";
 
-"Custom fields" = "Custom fields";
+"Custom fields" = "自定义字段";
 
-"For next-level password management and identity protection." = "For next-level password management and identity protection.";
+"For next-level password management and identity protection." = "实现更高级别的密码管理和身份保护。";
 
-"Pay monthly" = "Pay monthly";
+"Pay monthly" = "按月支付";
 
-"Pay annually" = "Pay annually";
+"Pay annually" = "按年支付";
 
-"Pay every two years" = "Pay every two years";
+"Pay every two years" = "每两年付费";
 
 "Free" = "Free";
