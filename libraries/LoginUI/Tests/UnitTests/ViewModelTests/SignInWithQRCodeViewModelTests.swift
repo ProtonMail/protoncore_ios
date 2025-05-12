@@ -79,6 +79,7 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
         }
     }
 
+    @MainActor
     func testRefreshOfQRCodeText() async {
         let selector = "selector"
         let userCode = "userCode"
