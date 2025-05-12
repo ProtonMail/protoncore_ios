@@ -59,7 +59,7 @@ final class Container {
     init(appName: String,
          clientApp: ClientApp,
          apiService: APIService,
-         minimumAccountType: AccountType) {
+         initialMinimumAccountTypeForLogin: AccountType) {
 
         self.appName = appName
         self.clientApp = clientApp
@@ -71,7 +71,7 @@ final class Container {
             PMLog.debug("\(result)")
             #endif
         }
-        self.login = LoginService(api: apiService, clientApp: clientApp, minimumAccountType: minimumAccountType)
+        self.login = LoginService(api: apiService, clientApp: clientApp, minimumAccountType: initialMinimumAccountTypeForLogin)
         self.signupService = SignupService(api: apiService, clientApp: clientApp)
 
         if let challenge = apiService.challengeParametersProvider.challenge {
