@@ -20,8 +20,35 @@
 
 import ProtonCoreNetworking
 
+public enum QRLoginHTTPPullForkResponseCodeStatus: String, Encodable, CaseIterable {
+    case http1xx
+    case http2xx
+    case http3xx
+    case http4xx
+    case http5xx
+    case sslError
+    case forkNotReady
+    case unknown
+
+    public static func fromResponseError(_ error: Error) -> Self {
+        guard let httpCode = error.httpCode else {
+            return .unknown
+        }
+        switch httpCode {
+        case 100...199: return .http1xx
+        case 200...299: return .http2xx
+        case 300...399: return .http3xx
+        case 422: return .forkNotReady
+        case 495: return .sslError
+        case 400...499: return .http4xx
+        case 500...599: return .http5xx
+        default: return .unknown
+        }
+    }
+}
+
 public struct QRLoginPullForkTotalLabels: Encodable, Equatable {
-    let status: QRLoginHTTPResponseCodeStatus
+    let status: QRLoginHTTPPullForkResponseCodeStatus
 
     enum CodingKeys: String, CodingKey {
         case status
@@ -29,7 +56,7 @@ public struct QRLoginPullForkTotalLabels: Encodable, Equatable {
 }
 
 extension ObservabilityEvent where Payload == PayloadWithLabels<QRLoginPullForkTotalLabels> {
-    public static func qrLoginPullFork(status: QRLoginHTTPResponseCodeStatus) -> Self {
+    public static func qrLoginPullFork(status: QRLoginHTTPPullForkResponseCodeStatus) -> Self {
         .init(name: "ios_core_qr_login_pull_fork_total",
               labels: .init(status: status),
               version: .v1)
