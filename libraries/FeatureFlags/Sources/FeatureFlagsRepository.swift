@@ -84,7 +84,7 @@ public final class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol, @unch
 
     private var _userId: String?
 
-    public static var shared: FeatureFlagsRepository = FeatureFlagsRepository.makeFeatureFlagsRepository(userDefaults: .standard)
+    public static let shared = FeatureFlagsRepository.makeFeatureFlagsRepository(userDefaults: .standard)
 
     /**
      Private initialization of the shared FeatureFlagsRepository instance.
