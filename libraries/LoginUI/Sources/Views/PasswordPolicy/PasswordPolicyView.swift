@@ -52,7 +52,6 @@ public struct PasswordPolicyView: View {
                 BulletedListView(items: viewModel.requirementsList)
             }
         }
-
     }
 
     struct BulletedListView: View {

@@ -77,6 +77,10 @@ public struct PasswordChangeView: View {
                         content: $viewModel.newPasswordFieldContent
                     )
 
+                    PasswordPolicyView(viewModel: viewModel.passwordPolicyViewModel)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.vertical, -16)
+
                     PCTextField(
                         style: $viewModel.confirmNewPasswordFieldStyle,
                         content: $viewModel.confirmNewPasswordFieldContent
@@ -114,6 +118,12 @@ public struct PasswordChangeView: View {
         .bannerDisplayable(bannerState: $viewModel.bannerState, configuration: .default())
         .onChange(of: textFieldContents) { _ in
             saveButtonIsEnabled = textFieldContents.first(where: { $0.isEmpty }) == nil
+
+            if textFieldContents.count > 1 {
+                let newPassword = textFieldContents[1]
+                viewModel.passwordPolicyViewModel
+                    .checkPassword(newPassword)
+            }
         }
         .onAppear {
             viewModel.currentPasswordFieldContent.focus()

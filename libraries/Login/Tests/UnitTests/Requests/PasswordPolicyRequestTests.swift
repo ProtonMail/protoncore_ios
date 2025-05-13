@@ -52,7 +52,7 @@ final class PasswordPolicyRequestTests: XCTestCase, JSONMockLoader {
         let sut = PasswordPolicyRequest()
 
         apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, _, completion in
-            if method == .get && path.contains("/core/v4/password-policies") {
+            if method == .get && path.contains("/auth/v4/password-policies") {
                 completion(nil, .success(passwordPoliciesRes.toSuccessfulResponse))
             } else {
                 XCTFail()

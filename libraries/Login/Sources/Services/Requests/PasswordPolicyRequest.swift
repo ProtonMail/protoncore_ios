@@ -27,7 +27,7 @@ public final class PasswordPolicyResponse: Response, APIDecodableResponse, Encod
 
 public final class PasswordPolicyRequest: Request {
     public var path: String {
-        return "/core/v4/password-policies"
+        return "/auth/v4/password-policies"
     }
 
     public let isAuth: Bool = false

@@ -30,24 +30,12 @@ public struct PasswordPolicy: Codable, Equatable {
     public var state: State
     public var requirementMessage: String
     public var errorMessage: String
-    public var regex: String
+    @TrimmedRegex public var regex: String
 
     public enum State: Int, Codable, Equatable {
         case enabled = 0
         case disabled = 1
         case optional = 2
-    }
-
-    public init(policyName: String,
-                state: State,
-                requirementMessage: String,
-                errorMessage: String,
-                regex: String) {
-        self.policyName = policyName
-        self.state = state
-        self.requirementMessage = requirementMessage
-        self.errorMessage = errorMessage
-        self.regex = regex.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
     }
 }
 
@@ -55,6 +43,30 @@ public struct PasswordPolicy: Codable, Equatable {
 public extension PasswordPolicy {
     static let disallowCommonPasswordsPolicyName = "DisallowCommonPasswords"
     static let disallowSequencesPolicyName = "DisallowSequences"
+}
+
+@propertyWrapper
+public struct TrimmedRegex: Codable, Equatable {
+    public var wrappedValue: String
+
+    public init(wrappedValue: String) {
+        self.wrappedValue = wrappedValue.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let rawValue = try container.decode(String.self)
+        self.wrappedValue = rawValue.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(wrappedValue)
+    }
+
+    public static func == (lhs: TrimmedRegex, rhs: TrimmedRegex) -> Bool {
+        lhs.wrappedValue == rhs.wrappedValue
+    }
 }
 
 #if DEBUG
@@ -108,4 +120,3 @@ public extension PasswordPolicy {
     }
 }
 #endif
-

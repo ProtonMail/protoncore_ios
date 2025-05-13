@@ -44,12 +44,11 @@ extension PasswordPolicyView {
         ]
 
         private var getPasswordPoliciesUseCase: GetPasswordPolicies?
-        private var checkPasswordPoliciesUseCase: CheckPasswordPolicies?
+        private var checkPasswordPoliciesUseCase: CheckPasswordPolicies = CheckPasswordPolicies()
         private var apiService: APIService?
 
         private var passwordPolicies: [PasswordPolicy] = []
-
-        @Binding private var evaluatedPasswordPolicies: [(PasswordPolicy, Bool)]
+        private var evaluatedPasswordPolicies: [(PasswordPolicy, Bool)]
 
         public init(apiService: APIService?) {
             exceptionalErrorMessage = nil
@@ -58,20 +57,19 @@ extension PasswordPolicyView {
             if let apiService = apiService {
                 self.apiService = apiService
                 getPasswordPoliciesUseCase = GetPasswordPolicies(apiService: apiService)
-                checkPasswordPoliciesUseCase = CheckPasswordPolicies()
             }
 
-            self._evaluatedPasswordPolicies = .constant([])
 
-            constructStrings()
+            self.evaluatedPasswordPolicies = []
+            self.checkPassword("")
         }
 
         public func loadPasswordPolicies() {
-            Task {
-                guard let getPasswordPoliciesUseCase = self.getPasswordPoliciesUseCase else {
-                    return
-                }
+            guard let getPasswordPoliciesUseCase = self.getPasswordPoliciesUseCase else {
+                return
+            }
 
+            Task {
                 do {
                     self.passwordPolicies = try await getPasswordPoliciesUseCase.invoke()
                 } catch {
@@ -81,35 +79,40 @@ extension PasswordPolicyView {
         }
 
         public func checkPassword(_ password: String) {
-            guard let checkPasswordPoliciesUseCase = self.checkPasswordPoliciesUseCase else {
-                return
-            }
-
             self.evaluatedPasswordPolicies = checkPasswordPoliciesUseCase.invoke(
                 passwordPolicies: self.passwordPolicies,
                 password: password
             )
+
+            constructStrings(password)
         }
 
-        func constructStrings() {
-            let unsatisfiedExceptionalPolicies = evaluatedPasswordPolicies.filter { (policy, valid) in
-                Self.exceptionalPolicyNames.contains(policy.policyName) && !valid
+        func constructStrings(_ password: String) {
+            let unsatisfiedPolicies = self.evaluatedPasswordPolicies.filter { (policy, valid) in
+                !valid
+            }
+
+            // Filter for only the invalid "exceptional" policies-- the policies which are displayed in
+            // red above the list of standard policies.
+            let unsatisfiedExceptionalPolicies = unsatisfiedPolicies.filter { (policy, valid) in
+                Self.exceptionalPolicyNames.contains(policy.policyName)
             }
 
             exceptionalErrorMessage = unsatisfiedExceptionalPolicies.first?.0.errorMessage
 
-            // Filter out only the "exceptional" policies-- the policies which are displayed in
-            // red above the list of standard policies.
-            let standardPolicies = evaluatedPasswordPolicies.filter { (policy, _) in
+            // Filter for the standard policies which will be displayed in a list containing both
+            // satisfied and unsatisfied requirements.
+            let standardPolicies = self.evaluatedPasswordPolicies.filter { (policy, _) in
                 !Self.exceptionalPolicyNames.contains(policy.policyName)
             }
 
-            // Construct the list of requirements for the standard policies.
+            var newRequirementsList = [BulletedListItem]()
             for standardPolicy in standardPolicies {
                 let listItem = BulletedListItem(text: standardPolicy.0.requirementMessage,
                                                 struck: standardPolicy.1)
-                requirementsList.append(listItem)
+                newRequirementsList.append(listItem)
             }
+            requirementsList = newRequirementsList
         }
     }
 
