@@ -35,6 +35,18 @@ public final class DefaultLocalFeatureFlagsDatasource: @unchecked Sendable, Loca
 
     public init(userDefaults: UserDefaults = .standard) {
         self.userDefaults = userDefaults
+        // Migrate only if using a non-standard instance
+        if userDefaults != .standard {
+            let standard = UserDefaults.standard
+            let allStandardEntries = standard.dictionaryRepresentation()
+
+            for (key, value) in allStandardEntries {
+                if key.hasPrefix(Self.featureFlagsKey) {
+                    userDefaults.set(value, forKey: key)
+                    standard.removeObject(forKey: key)
+                }
+            }
+        }
     }
 
     // MARK: - Get flags
