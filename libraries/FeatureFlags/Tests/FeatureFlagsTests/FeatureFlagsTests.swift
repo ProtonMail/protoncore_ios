@@ -941,4 +941,51 @@ final class FeatureFlagsTests: XCTestCase {
         XCTAssertEqual(sut.isEnabled(TestFlagsType.blackFriday), expectedValue)
         XCTAssertEqual(overrideLocalDataSource.value.getFeatureFlags()?.flagsCount, expectedCount)
     }
+
+    func test_migration_from_standardUserDefaults_to_customUserDefaults() {
+        // Given
+        let standardUserDefaults = UserDefaults.standard
+        let customSuiteName = "com.proton.test.customUserDefaults"
+        let customUserDefaults = UserDefaults(suiteName: customSuiteName)!
+
+        let userId = "userId"
+        let testFlag = FeatureFlag(name: "BlackFriday", enabled: true, variant: nil)
+        let featureFlags = FeatureFlags(flags: [testFlag])
+        let flagsDict = [userId: featureFlags]
+
+        standardUserDefaults.setEncodableValue(flagsDict, forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+
+        // When
+        _ = DefaultLocalFeatureFlagsDatasource(userDefaults: customUserDefaults)
+
+        // Then
+        let migratedFlags: [String: FeatureFlags]? = customUserDefaults.decodableValue(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+        XCTAssertEqual(migratedFlags?[userId], featureFlags, "Flags should be migrated to custom UserDefaults")
+
+        let originalFlags: [String: FeatureFlags]? = standardUserDefaults.decodableValue(forKey: DefaultLocalFeatureFlagsDatasource.featureFlagsKey)
+        XCTAssertNil(originalFlags, "Flags should be removed from standard UserDefaults after migration")
+    }
+
+    func test_migration_from_standardUserDefaults_to_customUserDefaults_forOverrideFlags() {
+        // Given
+        let standardUserDefaults = UserDefaults.standard
+        let customSuiteName = "com.proton.test.overrideUserDefaults"
+        let customUserDefaults = UserDefaults(suiteName: customSuiteName)!
+
+        let flag = FeatureFlag(name: "BlackFriday", enabled: true, variant: nil)
+        let flags = FeatureFlags(flags: [flag])
+        let flagsDict = [OverrideLocalFeatureFlagsDatasource.globalUserId: flags]
+
+        standardUserDefaults.setEncodableValue(flagsDict, forKey: OverrideLocalFeatureFlagsDatasource.overrideFeatureFlagsKey)
+
+        // When
+        _ = OverrideLocalFeatureFlagsDatasource(userDefaults: customUserDefaults)
+
+        // Then
+        let migratedFlags: [String: FeatureFlags]? = customUserDefaults.decodableValue(forKey: OverrideLocalFeatureFlagsDatasource.overrideFeatureFlagsKey)
+        XCTAssertEqual(migratedFlags?[OverrideLocalFeatureFlagsDatasource.globalUserId], flags, "Flags should be migrated to custom UserDefaults")
+
+        let originalFlags: [String: FeatureFlags]? = standardUserDefaults.decodableValue(forKey: OverrideLocalFeatureFlagsDatasource.overrideFeatureFlagsKey)
+        XCTAssertNil(originalFlags, "Flags should be removed from standard UserDefaults after migration")
+    }
 }
