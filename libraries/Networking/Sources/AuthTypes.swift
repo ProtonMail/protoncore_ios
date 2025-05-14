@@ -251,6 +251,47 @@ public final class AuthCredential: NSObject, NSCoding, Codable {
         aCoder.encode(userID, forKey: CoderKey.userID)
         aCoder.encode(isCredentialLess, forKey: CoderKey.credentialLess)
     }
+
+    // Explicit conformance to Codable protocol for backward compatibility
+    enum CodingKeys: String, CodingKey {
+        case sessionID
+        case accessToken
+        case refreshToken
+        case userName
+        case userID
+        case privateKey
+        case passwordKeySalt
+        case mailboxpassword
+        case isCredentialLess
+    }
+
+    public func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(sessionID, forKey: .sessionID)
+        try container.encode(accessToken, forKey: .accessToken)
+        try container.encode(refreshToken, forKey: .refreshToken)
+        try container.encode(userName, forKey: .userName)
+        try container.encode(userID, forKey: .userID)
+        try container.encode(privateKey, forKey: .privateKey)
+        try container.encode(passwordKeySalt, forKey: .passwordKeySalt)
+        try container.encode(mailboxpassword, forKey: .mailboxpassword)
+        try container.encode(isCredentialLess, forKey: .isCredentialLess)
+    }
+
+    public init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        sessionID = try container.decode(String.self, forKey: .sessionID)
+        accessToken = try container.decode(String.self, forKey: .accessToken)
+        refreshToken = try container.decode(String.self, forKey: .refreshToken)
+        userName = try container.decode(String.self, forKey: .userName)
+        userID = try container.decode(String.self, forKey: .userID)
+        privateKey = try container.decodeIfPresent(String.self, forKey: .privateKey)
+        passwordKeySalt = try container.decodeIfPresent(String.self, forKey: .passwordKeySalt)
+        mailboxpassword = try container.decode(String.self, forKey: .mailboxpassword)
+
+        // Optionally decode all new added properties for backward compatibility
+        isCredentialLess = try container.decodeIfPresent(Bool.self, forKey: .isCredentialLess) ?? false
+    }
 }
 
 extension AuthCredential {
