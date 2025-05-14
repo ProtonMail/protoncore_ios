@@ -238,6 +238,7 @@ public enum LUITranslation: TranslationsExposing {
     case continue_as_guest
     case login_vpn_guest_tc_description
     case login_vpn_guest_tc_link
+    case password_must_contain
 
     public var l10n: String {
         switch self {
@@ -664,6 +665,8 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "By using this app you accept our", comment: "Terms and conditions description")
         case .login_vpn_guest_tc_link:
             return localized(key: "Terms and Conditions.", comment: "Terms and conditions link")
+        case .password_must_contain:
+            return localized(key: "Password must contain:", comment: "Header for list of password requirements")
         }
     }
 }

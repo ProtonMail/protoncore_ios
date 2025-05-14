@@ -198,13 +198,17 @@ public struct ProtonIconSet {
 
     public let chevronsRight = ProtonIcon(name: "ic-chevrons-right")
 
+    public let circle = ProtonIcon(name: "ic-circle")
+
+    public let circleCheckmark = ProtonIcon(name: "ic-circle-checkmark")
+
     public let circleFilled = ProtonIcon(name: "ic-circle-filled")
 
     public let circleHalfFilled = ProtonIcon(name: "ic-circle-half-filled")
 
     public let circleSlash = ProtonIcon(name: "ic-circle-slash")
 
-    public let circle = ProtonIcon(name: "ic-circle")
+    public let circleSmall = ProtonIcon(name: "ic-circle-small")
 
     public let clockPaperPlane = ProtonIcon(name: "ic-clock-paper-plane")
 
