@@ -75,7 +75,6 @@ public class ScenarioDataFactory {
 
         var jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] ?? [:]
 
-        // "name" cannot be null
         if jsonObject["name"] == nil {
             let relativePath = fileURL.path.replacingOccurrences(of: bundle.bundlePath, with: "").trimmingCharacters(in: .whitespacesAndNewlines)
             jsonObject["name"] = "\(scenarioName)-\(relativePath)"
@@ -86,15 +85,8 @@ public class ScenarioDataFactory {
         let generatedMock = try JSONDecoder().decode(MockObject.self, from: updatedData)
         try generatedMock.request.validate()
 
-        return MockObject(
-            name: generatedMock.name,
-            enabled: generatedMock.enabled,
-            updateFile: generatedMock.updateFile,
-            request: generatedMock.request,
-            response: generatedMock.response
-        )
+        return generatedMock
     }
-
 
     private static func processDirectory(directory: String, scenarioFileWithName: ScenarioFileWithName, bundle: Bundle) throws -> [MockObject] {
         guard let directoryURL = bundle.url(forResource: directory, withExtension: nil) else {

@@ -56,7 +56,6 @@ public class ProxyClient {
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         }
 
-
         session.dataTask(with: request) { data, response, error in
             if let error = error {
                 completion(.failure(.requestError(error)))
@@ -72,7 +71,6 @@ public class ProxyClient {
                 completion(.failure(.serverError(httpResponse.statusCode)))
                 return
             }
-
             do {
                 let decodedResponse = try JSONDecoder().decode(T.self, from: data)
                 completion(.success(decodedResponse))
@@ -98,7 +96,7 @@ public class ProxyClient {
     }
 
     // MARK: - Endpoints
-    public func fetchStaticMockRoutes(completion: @escaping (Result<[String: MockObject], APIError>) -> Void) {
+    public func fetchStaticMockRoutes(completion: @escaping (Result<[MockObject], APIError>) -> Void) {
         request(endpoint: "/mock/routes/static", method: "GET", completion: completion)
     }
 
@@ -169,17 +167,6 @@ public class ProxyClient {
             return
         }
         request(endpoint: "/mock/bandwidth", method: "POST", body: body, completion: completion)
-    }
-
-    public func resetStaticMocks(completion: @escaping (Result<String, APIError>) -> Void) {
-        request(endpoint: "/mock/reset/static", method: "POST") { (result: Result<[String: String], APIError>) in
-            switch result {
-            case .success(let response):
-                completion(.success(response["message"] ?? "Success"))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
     }
 
     public func disableStaticMocks(staticMock: MockObject, completion: @escaping (Result<MockObject, APIError>) -> Void) {
