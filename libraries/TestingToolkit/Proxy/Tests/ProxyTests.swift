@@ -26,9 +26,18 @@ final class ProxyTest: XCTestCase {
     var client: ProxyClient!
     private let defaultTimeout: TimeInterval = 25.0
 
+    private var dynamicDomain: String? {
+        if let domain = ProcessInfo.processInfo.environment["DYNAMIC_DOMAIN"], !domain.isEmpty {
+            return domain
+        } else {
+            return nil
+        }
+    }
+
     override func setUp() {
         super.setUp()
-        client = ProxyClient(baseURL: URL(string: "http://account.mock.proton.black:3001")!)
+        let domain = dynamicDomain ?? "proton.black"
+        client = ProxyClient(baseURL: URL(string: "https://account.mock.\(domain)")!)
     }
 
     override func tearDown() {
@@ -59,7 +68,7 @@ final class ProxyTest: XCTestCase {
         client.fetchMockForwardingStatus { result in
             switch result {
             case .success(let forward):
-                XCTAssert(forward.enabled, "The forward should be enabled.")
+                XCTAssertNotNil(forward.enabled, "The forward should be enabled.")
             case .failure(let error):
                 XCTFail("Failed to fetch scenarios: \(error)")
             }
@@ -85,12 +94,15 @@ final class ProxyTest: XCTestCase {
 
     func testEnableDynamicMockSrp() {
         let expectation = self.expectation(description: "Fetch scenarios")
-        let dynamicMock = DynamicMockBody(name: "loginWithSrp", enabled: true)
+        let parameters: [String: Any] = [
+            "password": "test1234"
+        ]
+        let dynamicMock = DynamicMockBody(name: "loginWithSrp", enabled: true, parameters: AnyCodable(value: parameters))
 
         client.addDynamicMockScenario(dynamicMock: dynamicMock) { result in
             switch result {
             case .success(let dynamicMock):
-                print(dynamicMock)
+                debugPrint(dynamicMock)
             case .failure(let error):
                 XCTFail("Failed to fetch scenarios: \(error)")
             }
@@ -98,18 +110,18 @@ final class ProxyTest: XCTestCase {
         }
         wait(for: [expectation], timeout: defaultTimeout)
     }
-    
+
     func testEnableDynamicMockRecordAll() {
         let expectation = self.expectation(description: "Fetch scenarios")
         let parameters: [String: Any] = [
             "mockDirectory": "1234"
         ]
-        let dynamicMock = DynamicMockBody(name: "recordAll", enabled: true, parameters: AnyCodable(value: parameters))
+        let dynamicMock = DynamicMockBody(name: "loginWithSrp", enabled: true, parameters: AnyCodable(value: parameters))
 
         client.addDynamicMockScenario(dynamicMock: dynamicMock) { result in
             switch result {
             case .success(let dynamicMock):
-                print(dynamicMock)
+                debugPrint(dynamicMock)
             case .failure(let error):
                 XCTFail("Failed to fetch scenarios: \(error)")
             }
@@ -279,15 +291,36 @@ final class ProxyTest: XCTestCase {
             case .success(let mocks):
 
                 for mock in mocks {
-                    print(mock.value.request.exactUrl!)
+                    debugPrint(mock.request.exactUrl!)
                 }
+
             case .failure(let error):
-                XCTFail("Failed to disable all mocks: \(error)")
+                XCTFail("Fetch all static mocks: \(error)")
             }
             expectation.fulfill()
         }
 
         wait(for: [expectation], timeout: defaultTimeout)
+    }
+
+    func testBulkRouteActions() {
+        let bulkRouteExpectation = expectation(description: "Set bulk routes")
+
+        let routes = TestDataFactory.createMultipleRoutes()
+
+        client.updateStaticMockRoutes(routes: routes) { result in
+            switch result {
+            case .success(let routeDataArray):
+                XCTAssertEqual(routeDataArray.count, routes.count, "Expected the same number of routes to be set.")
+                XCTAssertEqual(routeDataArray[0].name, "Route1", "Expected the first route to be named 'Route1'.")
+                XCTAssertEqual(routeDataArray[1].response.statusCode, 201, "Expected status code 201 for the second route.")
+            case .failure(let error):
+                XCTFail("Failed to set bulk routes: \(error)")
+            }
+            bulkRouteExpectation.fulfill()
+        }
+
+        wait(for: [bulkRouteExpectation], timeout: defaultTimeout)
     }
 
     func testBulkRouteActionsWithFileInput() {
@@ -323,10 +356,6 @@ final class ProxyTest: XCTestCase {
         do {
             let scenarioFileWithName = try ScenarioDataFactory.readScenarioFile(filename: filename, subdirectory: subdirectory, bundle: bundle)
             let routes = try ScenarioDataFactory.parseScenarioFile(from: scenarioFileWithName, bundle: bundle)
-
-            for route in routes {
-                print("NAME: \(route.name) | URL: \(route.request.exactUrl!)\n")
-            }
             client.updateStaticMockRoutes(routes: routes) { result in
                 switch result {
                 case .success(let routeDataArray):
@@ -356,26 +385,25 @@ final class ProxyTest: XCTestCase {
     }
 
     func testBulkRouteActionsFromScenarioFileAsAFolder() {
-        let resetStaticMocks = self.expectation(description:"Reset static mocks")
+        let resetStaticMocks = self.expectation(description:"Reset all mocks")
         let expectationsrp = self.expectation(description:"Fetch scenarios")
         let dynamicMock = DynamicMockBody(name: "loginWithSrp", enabled: true)
 
-        client.resetStaticMocks { result in
+        client.resetAllMocksAndSettings { result in
             switch result {
             case .success(_):
-                print("Reset static mocks Success \n")
+                debugPrint("Reset all mocks Success \n")
             case .failure(let error):
                 XCTFail("Failed to fetch scenarios: \(error)")
             }
             resetStaticMocks.fulfill()
         }
-
         wait(for: [resetStaticMocks], timeout: defaultTimeout)
 
         client.addDynamicMockScenario(dynamicMock: dynamicMock) { result in
             switch result {
             case .success(_):
-                print("Success \n")
+                debugPrint("Enable loginWithSrp \n")
             case .failure(let error):
                 XCTFail("Failed to fetch scenarios: \(error)")
             }

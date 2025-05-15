@@ -28,14 +28,18 @@ public struct MockObject: Codable {
     public let isRawFileContent: Bool?
     public let request: RequestDetails
     public let response: ResponseDetails
+    public let timestamp: Double?
+    public var id: String?
 
-    public init(name: String, enabled: Bool, updateFile: Bool? = nil, isRawFileContent: Bool? = nil, request: RequestDetails, response: ResponseDetails) {
+    public init(name: String, enabled: Bool, updateFile: Bool? = nil, isRawFileContent: Bool? = nil, request: RequestDetails, response: ResponseDetails, timestamp: Double? = nil, id: String? = nil) {
+        self.id = id
         self.name = name
         self.enabled = enabled
         self.updateFile = updateFile
         self.isRawFileContent = isRawFileContent
         self.request = request
         self.response = response
+        self.timestamp = timestamp
     }
 }
 
@@ -178,10 +182,10 @@ public struct DynamicMockResponse: Codable {
     public let name: String
     public let description: String
     public let enabled: Bool
-    public let updateFile: Bool
-    public let mocks: [Mock]
+    public let updateFile: Bool?
+    public let mocks: [DynamicMock]
 
-    public init(name: String, description: String, enabled: Bool, updateFile: Bool, mocks: [Mock]) {
+    public init(name: String, description: String, enabled: Bool, updateFile: Bool?, mocks: [DynamicMock]) {
         self.name = name
         self.description = description
         self.enabled = enabled
@@ -200,6 +204,26 @@ public struct Mock: Codable {
         self.response = response
         self.meta = meta
     }
+}
+
+public struct DynamicMock: Codable {
+    public let id: String
+    public let name: String
+    public let enabled: Bool
+    public let statusCode: Int
+    public let method: String
+    public let url: [String]
+    public let parameters: AnyCodable?
+
+    public init(id: String, name: String, enabled: Bool, statusCode: Int, method: String, url: [String], parameters: AnyCodable? = nil) {
+          self.id = id
+          self.name = name
+          self.enabled = enabled
+          self.statusCode = statusCode
+          self.method = method
+          self.url = url
+          self.parameters = parameters
+      }
 }
 
 public struct MockMeta: Codable {
