@@ -52,7 +52,7 @@ final class PasswordPolicyRequestTests: XCTestCase, JSONMockLoader {
         let sut = PasswordPolicyRequest()
 
         apiService.requestJSONStub.bodyIs { _, method, path, _, _, _, _, _, _, _, _, _, completion in
-            if method == .get && path.contains("/core/v4/password-policies") {
+            if method == .get && path.contains("/auth/v4/password-policies") {
                 completion(nil, .success(passwordPoliciesRes.toSuccessfulResponse))
             } else {
                 XCTFail()
@@ -64,8 +64,11 @@ final class PasswordPolicyRequestTests: XCTestCase, JSONMockLoader {
 
         XCTAssertEqual(response.responseCode, 1000)
         XCTAssertNil(response.error)
-        XCTAssertEqual(response.passwordPolicies.count, 5)
-        XCTAssertEqual(response.passwordPolicies.first?.policyName, "AtLeastXCharacters")
+        XCTAssertEqual(response.passwordPolicies.count, 6)
+
+        let firstPasswordPolicy = response.passwordPolicies.first!
+        XCTAssertEqual(firstPasswordPolicy.policyName, "AtLeastXCharacters")
+        XCTAssertEqual(firstPasswordPolicy.regex, ".{8,}")
     }
 }
 

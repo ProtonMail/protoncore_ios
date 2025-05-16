@@ -29,6 +29,10 @@ public struct PasswordPolicyView: View {
 
     @ObservedObject var viewModel: ViewModel
 
+    public init(viewModel: ViewModel) {
+        self.viewModel = viewModel
+    }
+
     private enum Constants {
         static let verticalSpacing: CGFloat = 4
         static let bulletListHeaderSpacing: CGFloat = 2
@@ -48,7 +52,6 @@ public struct PasswordPolicyView: View {
                 BulletedListView(items: viewModel.requirementsList)
             }
         }
-
     }
 
     struct BulletedListView: View {
@@ -84,19 +87,7 @@ public struct PasswordPolicyView: View {
                 .padding(Constants.bulletIconPadding)
         }
     }
-
 }
-
-#if DEBUG
-let policies = [(PasswordPolicy.disallowCommonPasswordsMock, false),
-                (PasswordPolicy.atLeastOneNumberMock, true),
-                (PasswordPolicy.atLeastOneSpecialCharacterMock, false),
-                (PasswordPolicy.atLeastOneUpperCaseAndOneLowercaseMock, false)]
-
-#Preview {
-    PasswordPolicyView(viewModel: PasswordPolicyView.ViewModel(passwordPolicies: policies))
-}
-#endif
 
 #endif
 

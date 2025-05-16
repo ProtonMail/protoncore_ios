@@ -25,6 +25,7 @@ import SwiftUI
 import ProtonCoreUIFoundations
 import ProtonCoreObservability
 import ProtonCoreUtilities
+import ProtonCoreLoginUI
 
 public struct PasswordChangeView: View {
     @ObservedObject public var viewModel: ViewModel
@@ -36,6 +37,7 @@ public struct PasswordChangeView: View {
     enum Constants {
         static let iconImageSize: CGFloat = 20
         static let iconButtonSize: CGFloat = 40
+        static let textFieldSpacing: CGFloat = 30
     }
 
     var textFieldContents: [String] {[
@@ -53,7 +55,7 @@ public struct PasswordChangeView: View {
     public var body: some View {
         ScrollView {
             VStack(spacing: 40) {
-                VStack(spacing: 30) {
+                VStack(spacing: Constants.textFieldSpacing) {
                     Link(destination: urlRecoveryMethods, label: {
                         (Text(PCTranslation.protonPasswordDescription.l10n + " ") +
                          Text(PCTranslation.learnMore.l10n)
@@ -73,6 +75,10 @@ public struct PasswordChangeView: View {
                         style: $viewModel.newPasswordFieldStyle,
                         content: $viewModel.newPasswordFieldContent
                     )
+
+                    PasswordPolicyView(viewModel: viewModel.passwordPolicyViewModel)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.top, -Constants.textFieldSpacing + 4)
 
                     PCTextField(
                         style: $viewModel.confirmNewPasswordFieldStyle,
@@ -112,9 +118,17 @@ public struct PasswordChangeView: View {
         .onChange(of: textFieldContents) { _ in
             saveButtonIsEnabled = textFieldContents.first(where: { $0.isEmpty }) == nil
         }
+        .onChange(of: viewModel.newPasswordFieldContent.text) { _ in
+            let newPassword = viewModel.newPasswordFieldContent.text
+            viewModel.passwordPolicyViewModel
+                .checkPassword(newPassword)
+        }
         .onAppear {
             viewModel.currentPasswordFieldContent.focus()
             ObservabilityEnv.report(.screenLoadCountTotal(screenName: viewModel.screenLoadObservabilityEvent))
+        }
+        .onLoad {
+            viewModel.passwordPolicyViewModel.loadPasswordPolicies()
         }
     }
 

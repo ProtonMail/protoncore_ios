@@ -243,7 +243,7 @@ extension SetBackupPasswordView {
 
         private func displayPasswordError(error: PasswordValidationError) {
             switch error {
-            case .passwordEmpty, .passwordShouldHaveAtLeastEightCharacters:
+            case .passwordEmpty, .passwordShouldHaveAtLeastEightCharacters, .passwordPolicyViolation:
                 backupPasswordStyle.mode = .error
             case .passwordNotEqual:
                 backupPasswordStyle.mode = .error
@@ -262,6 +262,8 @@ extension PasswordValidationError: LocalizedError {
             return LUITranslation.passwordLeast8CharactersErrorDescription.l10n
         case .passwordNotEqual:
             return LUITranslation.passwordNotMatchErrorDescription.l10n
+        case .passwordPolicyViolation:
+            return nil
         }
     }
 }

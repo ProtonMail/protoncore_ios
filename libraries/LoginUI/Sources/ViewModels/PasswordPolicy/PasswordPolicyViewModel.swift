@@ -24,6 +24,8 @@
 import ProtonCoreUIFoundations
 import ProtonCoreLogin
 import ProtonCoreLog
+import ProtonCoreNetworking
+import ProtonCoreServices
 import SwiftUI
 
 extension PasswordPolicyView {
@@ -41,36 +43,78 @@ extension PasswordPolicyView {
             PasswordPolicy.disallowSequencesPolicyName
         ]
 
-        private var passwordPolicies: [(PasswordPolicy, Bool)] = []
+        private var getPasswordPoliciesUseCase: GetPasswordPolicies?
+        private var checkPasswordPoliciesUseCase: CheckPasswordPolicies = CheckPasswordPolicies()
+        private var apiService: APIService?
 
-        public init(passwordPolicies: [(PasswordPolicy, Bool)]) {
+        private var passwordPolicies: [PasswordPolicy] = []
+        private var evaluatedPasswordPolicies: [(PasswordPolicy, Bool)]
+
+        public init(apiService: APIService?) {
             exceptionalErrorMessage = nil
             requirementsList = []
 
-            self.passwordPolicies = passwordPolicies
+            if let apiService = apiService {
+                self.apiService = apiService
+                getPasswordPoliciesUseCase = GetPasswordPolicies(apiService: apiService)
+            }
 
-            constructStrings()
+
+            self.evaluatedPasswordPolicies = []
         }
 
-        func constructStrings() {
-            let unsatisfiedExceptionalPolicies = passwordPolicies.filter { (policy, valid) in
+        public func loadPasswordPolicies() {
+            guard let getPasswordPoliciesUseCase = self.getPasswordPoliciesUseCase else {
+                return
+            }
+
+            Task {
+                do {
+                    self.passwordPolicies = try await getPasswordPoliciesUseCase.invoke()
+                } catch {
+                    // Observability?
+                }
+            }
+        }
+
+        public var passwordIsValid: Bool {
+            return self.evaluatedPasswordPolicies.allSatisfy { (policy, valid) in
+                valid
+            }
+        }
+
+        // Updates `exceptionalErrorMessage` and `requirementsList`.
+        public func checkPassword(_ password: String) {
+            self.evaluatedPasswordPolicies = checkPasswordPoliciesUseCase.invoke(
+                passwordPolicies: self.passwordPolicies,
+                password: password
+            )
+
+            let unsatisfiedPolicies = self.evaluatedPasswordPolicies.filter { (policy, valid) in
+                !valid
+            }
+
+            // Filter for only the invalid "exceptional" policies-- the policies which are displayed in
+            // red above the list of standard policies.
+            let unsatisfiedExceptionalPolicies = unsatisfiedPolicies.filter { (policy, valid) in
                 Self.exceptionalPolicyNames.contains(policy.policyName) && !valid
             }
 
             exceptionalErrorMessage = unsatisfiedExceptionalPolicies.first?.0.errorMessage
 
-            // Filter out only the "exceptional" policies-- the policies which are displayed in
-            // red above the list of standard policies.
-            let standardPolicies = passwordPolicies.filter { (policy, _) in
+            // Filter for the standard policies which will be displayed in a list containing both
+            // satisfied and unsatisfied requirements.
+            let standardPolicies = self.evaluatedPasswordPolicies.filter { (policy, _) in
                 !Self.exceptionalPolicyNames.contains(policy.policyName)
             }
 
-            // Construct the list of requirements for the standard policies.
+            var newRequirementsList = [BulletedListItem]()
             for standardPolicy in standardPolicies {
                 let listItem = BulletedListItem(text: standardPolicy.0.requirementMessage,
                                                 struck: standardPolicy.1)
-                requirementsList.append(listItem)
+                newRequirementsList.append(listItem)
             }
+            requirementsList = newRequirementsList
         }
     }
 
