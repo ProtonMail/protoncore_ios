@@ -64,7 +64,6 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
         switch await apiService.fetchCredentialForCredentialLessSession() {
         case .success(var credential):
             self.apiService.setSessionUID(uid: credential.UID)
-            credential.isCredentialLess = true
             return .success(.credentialLess(credential))
         case .failure(let error):
             return .failure(error)

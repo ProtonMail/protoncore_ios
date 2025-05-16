@@ -125,7 +125,10 @@ public class AuthService: Client {
         let service = self.apiService
         service.fetchAuthCredentials { result in
             switch result {
-            case .found(let credential):
+            case .found(let credential) where !credential.isCredentialLess:
+                // We want to be able to perform a sign in during a credential-less session (aka guest mode) in VPN.
+                // So when doing so, we skip fetching the credentials to acquire a new unauthenticated session and
+                // be able to perform the sign in with this new session successfully.
                 route.authCredential = credential
 
                 // We are authenticating the user. If the current credentials are not for unauth session,
@@ -153,7 +156,7 @@ public class AuthService: Client {
                     )))
                     return
                 }
-            case .notFound, .wrongConfigurationNoDelegate:
+            case .notFound, .wrongConfigurationNoDelegate, .found:
                 break
             }
             service.perform(request: route, decodableCompletion: { _, result in complete(result) })

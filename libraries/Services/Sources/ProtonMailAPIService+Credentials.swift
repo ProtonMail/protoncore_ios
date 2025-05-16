@@ -74,8 +74,9 @@ extension PMAPIService {
                                     userName: "",
                                     userID: credentialLessResponse.userID,
                                     scopes: credentialLessResponse.scopes,
-                                    mailboxPassword: "")
-        
+                                    mailboxPassword: "",
+                                    isCredentialLess: true)
+
         return .success(credential)
     }
 
