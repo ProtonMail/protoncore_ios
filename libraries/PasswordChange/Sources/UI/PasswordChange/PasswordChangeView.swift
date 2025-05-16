@@ -120,7 +120,7 @@ public struct PasswordChangeView: View {
         }
         .onChange(of: viewModel.newPasswordFieldContent.text) { _ in
             let newPassword = viewModel.newPasswordFieldContent.text
-            _ = viewModel.passwordPolicyViewModel
+            viewModel.passwordPolicyViewModel
                 .checkPassword(newPassword)
         }
         .onAppear {

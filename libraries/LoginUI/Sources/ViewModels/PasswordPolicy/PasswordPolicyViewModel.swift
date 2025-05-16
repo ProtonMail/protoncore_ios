@@ -77,9 +77,14 @@ extension PasswordPolicyView {
             }
         }
 
-        // Returns `true` if all requirements are satisfied, `false` otherwise.
+        public var passwordIsValid: Bool {
+            return self.evaluatedPasswordPolicies.allSatisfy { (policy, valid) in
+                valid
+            }
+        }
+
         // Updates `exceptionalErrorMessage` and `requirementsList`.
-        public func checkPassword(_ password: String) -> Bool {
+        public func checkPassword(_ password: String) {
             self.evaluatedPasswordPolicies = checkPasswordPoliciesUseCase.invoke(
                 passwordPolicies: self.passwordPolicies,
                 password: password
@@ -104,17 +109,12 @@ extension PasswordPolicyView {
             }
 
             var newRequirementsList = [BulletedListItem]()
-            var requirementsSatisfied = true
             for standardPolicy in standardPolicies {
                 let listItem = BulletedListItem(text: standardPolicy.0.requirementMessage,
                                                 struck: standardPolicy.1)
                 newRequirementsList.append(listItem)
-
-                requirementsSatisfied = requirementsSatisfied && standardPolicy.1
             }
             requirementsList = newRequirementsList
-
-            return requirementsSatisfied && (exceptionalErrorMessage == nil)
         }
     }
 

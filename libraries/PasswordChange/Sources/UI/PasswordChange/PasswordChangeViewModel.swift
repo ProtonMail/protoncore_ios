@@ -351,7 +351,8 @@ extension PasswordChangeView.ViewModel: PasswordValidator {
             throw PasswordValidationError.passwordNotEqual
         }
 
-        if !self.passwordPolicyViewModel.checkPassword(password) {
+        self.passwordPolicyViewModel.checkPassword(password)
+        if !self.passwordPolicyViewModel.passwordIsValid {
             throw PasswordValidationError.passwordPolicyViolation
         }
     }
