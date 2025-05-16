@@ -100,8 +100,6 @@ extension PasswordChangeView {
                 apiService: self.passwordChangeService?.apiService
             )
 
-            passwordPolicyViewModel.loadPasswordPolicies()
-
             newPasswordFieldContent = .init(
                 title: mode == .mailboxPassword ? PCTranslation.newMailboxPassword.l10n : PCTranslation.newPassword.l10n,
                 isSecureEntry: true,

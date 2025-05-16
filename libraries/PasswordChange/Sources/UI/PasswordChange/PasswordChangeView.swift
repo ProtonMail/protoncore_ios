@@ -37,6 +37,7 @@ public struct PasswordChangeView: View {
     enum Constants {
         static let iconImageSize: CGFloat = 20
         static let iconButtonSize: CGFloat = 40
+        static let textFieldSpacing: CGFloat = 30
     }
 
     var textFieldContents: [String] {[
@@ -54,7 +55,7 @@ public struct PasswordChangeView: View {
     public var body: some View {
         ScrollView {
             VStack(spacing: 40) {
-                VStack(spacing: 30) {
+                VStack(spacing: Constants.textFieldSpacing) {
                     Link(destination: urlRecoveryMethods, label: {
                         (Text(PCTranslation.protonPasswordDescription.l10n + " ") +
                          Text(PCTranslation.learnMore.l10n)
@@ -77,7 +78,7 @@ public struct PasswordChangeView: View {
 
                     PasswordPolicyView(viewModel: viewModel.passwordPolicyViewModel)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.vertical, -16)
+                        .padding(.top, -Constants.textFieldSpacing + 4)
 
                     PCTextField(
                         style: $viewModel.confirmNewPasswordFieldStyle,
@@ -125,6 +126,9 @@ public struct PasswordChangeView: View {
         .onAppear {
             viewModel.currentPasswordFieldContent.focus()
             ObservabilityEnv.report(.screenLoadCountTotal(screenName: viewModel.screenLoadObservabilityEvent))
+        }
+        .onLoad {
+            viewModel.passwordPolicyViewModel.loadPasswordPolicies()
         }
     }
 
