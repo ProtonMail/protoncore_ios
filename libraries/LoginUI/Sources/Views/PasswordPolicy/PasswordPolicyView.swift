@@ -27,10 +27,10 @@ import ProtonCoreLogin
 
 public struct PasswordPolicyView: View {
 
-    @Binding var viewModel: ViewModel
+    @ObservedObject var viewModel: ViewModel
 
-    public init(viewModel: Binding<ViewModel>) {
-        self._viewModel = viewModel
+    public init(viewModel: ViewModel) {
+        self.viewModel = viewModel
     }
 
     private enum Constants {

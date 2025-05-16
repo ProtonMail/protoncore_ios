@@ -95,7 +95,7 @@ extension PasswordPolicyView {
             // Filter for only the invalid "exceptional" policies-- the policies which are displayed in
             // red above the list of standard policies.
             let unsatisfiedExceptionalPolicies = unsatisfiedPolicies.filter { (policy, valid) in
-                Self.exceptionalPolicyNames.contains(policy.policyName)
+                Self.exceptionalPolicyNames.contains(policy.policyName) && !valid
             }
 
             exceptionalErrorMessage = unsatisfiedExceptionalPolicies.first?.0.errorMessage

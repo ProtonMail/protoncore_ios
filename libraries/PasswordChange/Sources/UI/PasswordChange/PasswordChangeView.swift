@@ -70,8 +70,6 @@ public struct PasswordChangeView: View {
                         content: $viewModel.currentPasswordFieldContent
                     )
 
-                    PasswordPolicyView(viewModel: $viewModel.passwordPolicyViewModel)
-
                     PCTextField(
                         style: $viewModel.newPasswordFieldStyle,
                         content: $viewModel.newPasswordFieldContent

@@ -60,7 +60,7 @@ public struct CheckPasswordPolicies {
     }
 
     static let commonPasswords: [String] = {
-        guard let url = Bundle.main.url(forResource: "ignis_10k", withExtension: "txt"),
+        guard let url = Bundle.module.url(forResource: "ignis_10k", withExtension: "txt"),
               let content = try? String(contentsOf: url) else {
             PMLog.error("Failed to load ignis_10k.txt from bundle")
             return []
