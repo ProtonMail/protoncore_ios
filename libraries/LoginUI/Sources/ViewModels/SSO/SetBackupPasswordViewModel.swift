@@ -97,6 +97,11 @@ extension SetBackupPasswordView {
 
         weak var ssoNavigationDelegate: GlobalSSONavigationDelegate?
 
+        var isPasswordPolicyEnabled: Bool {
+            !FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.passwordPolicyDisabled,
+                                                     reloadValue: true)
+        }
+
         init(dependencies: Dependencies) {
             self.userData = dependencies.userData
             self.mode = dependencies.mode
@@ -273,7 +278,7 @@ extension SetBackupPasswordView.ViewModel: PasswordValidator {
     public func validate(for restrictions: PasswordRestrictions,
                          password: String,
                          confirmPassword: String) throws {
-        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.passwordPolicyDisabled) {
+        if !isPasswordPolicyEnabled {
             // If the kill-switch is enabled, fallback to just simple password validation.
             try (self as PasswordValidator).validate(for: restrictions,
                                                      password: password,
