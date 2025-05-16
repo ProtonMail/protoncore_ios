@@ -30,6 +30,7 @@ public protocol StoreKitDataSourceProtocol {
     func fetchAvailableProducts(availablePlans: AvailablePlans) async throws
     func fetchAvailableProducts(productIdentifiers: Set<String>) async throws
     func filterAccordingToAvailableProducts(availablePlans: AvailablePlans) -> AvailablePlans
+    var countryCode: String? { get async }
 }
 
 extension StoreKitDataSourceProtocol {
@@ -65,6 +66,12 @@ extension StoreKitDataSourceProtocol {
 final class StoreKitDataSource: StoreKitDataSourceProtocol {
     private(set) var availableProducts: [SKProduct] = []
     private(set) var unavailableProductsIdentifiers: [String] = []
+
+    var countryCode: String? {
+        get async {
+            await Storefront.current?.countryCode.lowercased()
+        }
+    }
 
     private let requestFactory: (Set<String>) -> SKProductsRequest
 

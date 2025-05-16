@@ -39,6 +39,7 @@ public protocol PlansDataSourceProtocol {
     var willRenewAutomatically: Bool { get }
     var hasPaymentMethods: Bool { get }
     var lastFetchedProducts: [SKProduct] { get }
+    var shouldShowTwoYearsWebPlan: Bool { get async }
 
     func fetchIAPAvailability() async throws
     func fetchAvailablePlans() async throws
@@ -86,6 +87,15 @@ class PlansDataSource: PlansDataSourceProtocol {
             }
         }
         return storeKitDataSource.availableProducts
+    }
+    
+    // A U.S. court ruled that Apple must allow developers alternative payment systems for digital goods,
+    // bypassing the infamous 30% commission
+    // This allows us to redirect US users to the payment through the web
+    var shouldShowTwoYearsWebPlan: Bool {
+        get async {
+            await storeKitDataSource.countryCode == "usa" // https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
+        }
     }
 
     private let apiService: APIService
