@@ -39,8 +39,7 @@ public struct CheckPasswordPolicies {
 
         var result: [(PasswordPolicy, Bool)] = []
         for passwordPolicy in passwordPolicies {
-            guard passwordPolicy.state == .enabled || passwordPolicy.state == .optional else {
-                // TODO: this should be changed when backend sends enabled for all defaults
+            guard passwordPolicy.state == .enabled else {
                 continue
             }
             

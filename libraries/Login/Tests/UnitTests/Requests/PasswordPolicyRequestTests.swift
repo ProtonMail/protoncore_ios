@@ -64,7 +64,7 @@ final class PasswordPolicyRequestTests: XCTestCase, JSONMockLoader {
 
         XCTAssertEqual(response.responseCode, 1000)
         XCTAssertNil(response.error)
-        XCTAssertEqual(response.passwordPolicies.count, 5)
+        XCTAssertEqual(response.passwordPolicies.count, 6)
 
         let firstPasswordPolicy = response.passwordPolicies.first!
         XCTAssertEqual(firstPasswordPolicy.policyName, "AtLeastXCharacters")
