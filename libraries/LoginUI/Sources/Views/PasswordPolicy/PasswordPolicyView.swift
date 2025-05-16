@@ -87,7 +87,6 @@ public struct PasswordPolicyView: View {
                 .padding(Constants.bulletIconPadding)
         }
     }
-
 }
 
 #endif

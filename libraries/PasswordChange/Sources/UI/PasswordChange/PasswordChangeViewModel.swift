@@ -44,7 +44,7 @@ extension PasswordChangeView {
 
     /// The `ObservableObject` that holds the model data for this View
     @MainActor
-    public final class ViewModel: ObservableObject, PasswordValidator, PasswordChangeObservability {
+    public final class ViewModel: ObservableObject, PasswordChangeObservability {
 
         private let passwordChangeService: PasswordChangeService?
         private let authCredential: AuthCredential?
@@ -98,8 +98,6 @@ extension PasswordChangeView {
 
             passwordPolicyViewModel = .init(
                 apiService: self.passwordChangeService?.apiService
-                // this ^ is a hack, should probably pass apiService to the initializer of
-                // PasswordChangeView directly
             )
 
             passwordPolicyViewModel.loadPasswordPolicies()
@@ -296,6 +294,8 @@ extension PasswordChangeView {
             case .passwordNotEqual:
                 confirmNewPasswordFieldStyle.mode = .error
                 confirmNewPasswordFieldContent.footnote = PCTranslation.passwordNotMatchErrorDescription.l10n
+            case .passwordPolicyViolation:
+                confirmNewPasswordFieldStyle.mode = .error
             }
         }
 
@@ -336,14 +336,27 @@ extension PasswordChangeView.ViewModel: TwoFAProviderDelegate {
 
 }
 
-//extension PasswordChangeView.ViewModel: PasswordValidator {
-//
-//    override public func validate(for restrictions: PasswordRestrictions, password: String, confirmPassword: String) throws {
-//        if self.passwordChangeService.updateUserPassword(
-//        else {
-//
-//        }
-//    }
-//}
+extension PasswordChangeView.ViewModel: PasswordValidator {
+    public func validate(for restrictions: PasswordRestrictions,
+                         password: String,
+                         confirmPassword: String) throws {
+        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.passwordPolicyDisabled) {
+            // If the kill-switch is enabled, fallback to just simple password validation.
+            try (self as PasswordValidator).validate(for: restrictions,
+                                                     password: password,
+                                                     confirmPassword: confirmPassword)
+
+            return
+        }
+
+        guard password == confirmPassword else {
+            throw PasswordValidationError.passwordNotEqual
+        }
+
+        if !self.passwordPolicyViewModel.checkPassword(password) {
+            throw PasswordValidationError.passwordPolicyViolation
+        }
+    }
+}
 
 #endif

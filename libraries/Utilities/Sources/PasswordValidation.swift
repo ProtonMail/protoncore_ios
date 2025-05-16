@@ -25,6 +25,7 @@ public enum PasswordValidationError: Error {
     case passwordEmpty
     case passwordShouldHaveAtLeastEightCharacters
     case passwordNotEqual
+    case passwordPolicyViolation
 }
 
 public struct PasswordRestrictions: OptionSet {

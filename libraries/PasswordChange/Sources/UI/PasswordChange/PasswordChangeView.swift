@@ -116,12 +116,11 @@ public struct PasswordChangeView: View {
         .bannerDisplayable(bannerState: $viewModel.bannerState, configuration: .default())
         .onChange(of: textFieldContents) { _ in
             saveButtonIsEnabled = textFieldContents.first(where: { $0.isEmpty }) == nil
-
-            if textFieldContents.count > 1 {
-                let newPassword = textFieldContents[1]
-                viewModel.passwordPolicyViewModel
-                    .checkPassword(newPassword)
-            }
+        }
+        .onChange(of: viewModel.newPasswordFieldContent.text) { _ in
+            let newPassword = viewModel.newPasswordFieldContent.text
+            _ = viewModel.passwordPolicyViewModel
+                .checkPassword(newPassword)
         }
         .onAppear {
             viewModel.currentPasswordFieldContent.focus()
