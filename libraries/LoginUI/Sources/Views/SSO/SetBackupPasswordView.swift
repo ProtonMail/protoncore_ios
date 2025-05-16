@@ -61,7 +61,7 @@ public struct SetBackupPasswordView: View {
 
                 PasswordPolicyView(viewModel: viewModel.passwordPolicyViewModel)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.vertical, -16)
+                    .padding(.vertical, -Constants.itemSpacing + 4)
 
                 PCTextField(
                     style: $viewModel.repeatBackupPasswordStyle,
