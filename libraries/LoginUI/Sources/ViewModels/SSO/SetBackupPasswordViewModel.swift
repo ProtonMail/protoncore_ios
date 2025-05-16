@@ -24,6 +24,7 @@
 import ProtonCoreAuthentication
 import ProtonCoreAuthenticationKeyGeneration
 import ProtonCoreCrypto
+import ProtonCoreFeatureFlags
 import ProtonCoreLog
 import ProtonCoreLogin
 import ProtonCoreObservability
@@ -40,7 +41,7 @@ extension SetBackupPasswordView {
 
     struct Dependencies {
         let mode: SetBackupPasswordView.Mode
-        let apiService: APIService?
+        let apiService: APIService
         let userData: LoginData
         let loginService: Login?
         let ssoNavigationDelegate: GlobalSSONavigationDelegate?
@@ -57,7 +58,7 @@ extension SetBackupPasswordView {
 extension SetBackupPasswordView {
 
     @MainActor
-    final class ViewModel: ObservableObject, PasswordValidator {
+    final class ViewModel: ObservableObject {
         @Published var viewState: ViewState = .idle
         @Published var bannerState: BannerState = .none
 
@@ -78,6 +79,8 @@ extension SetBackupPasswordView {
             title: LUITranslation.repeat_backup_password.l10n,
             isSecureEntry: true
         )
+
+        @Published var passwordPolicyViewModel: PasswordPolicyView.ViewModel!
 
         private var authenticator: AuthenticatorKeyGenerationInterface?
         private let userData: LoginData
@@ -101,16 +104,14 @@ extension SetBackupPasswordView {
             switch mode {
             case .setNewBackupPassword(let organizationInfo):
                 self.organizationInfo = organizationInfo
-                if let apiService = dependencies.apiService {
-                    self.authenticator = Authenticator(api: apiService)
-                    self.getOrganizationLogo = GetOrganizationLogo(apiService: apiService)
-                }
+                self.authenticator = Authenticator(api: dependencies.apiService)
+                self.getOrganizationLogo = GetOrganizationLogo(apiService: dependencies.apiService)
             case .changeTemporaryPassword:
-                if let apiService = dependencies.apiService {
-                    self.passwordChangeService = BasePasswordChangeService(api: apiService)
-                    self.getOrganizationLogo = GetOrganizationLogo(apiService: apiService)
-                }
+                self.passwordChangeService = BasePasswordChangeService(api: dependencies.apiService)
+                self.getOrganizationLogo = GetOrganizationLogo(apiService: dependencies.apiService)
             }
+
+            self.passwordPolicyViewModel = PasswordPolicyView.ViewModel(apiService: dependencies.apiService)
 
             self.ssoNavigationDelegate = dependencies.ssoNavigationDelegate
             self.deviceSecretRepository = DeviceSecretRepository()
@@ -264,6 +265,30 @@ extension PasswordValidationError: LocalizedError {
             return LUITranslation.passwordNotMatchErrorDescription.l10n
         case .passwordPolicyViolation:
             return nil
+        }
+    }
+}
+
+extension SetBackupPasswordView.ViewModel: PasswordValidator {
+    public func validate(for restrictions: PasswordRestrictions,
+                         password: String,
+                         confirmPassword: String) throws {
+        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.passwordPolicyDisabled) {
+            // If the kill-switch is enabled, fallback to just simple password validation.
+            try (self as PasswordValidator).validate(for: restrictions,
+                                                     password: password,
+                                                     confirmPassword: confirmPassword)
+
+            return
+        }
+
+        guard password == confirmPassword else {
+            throw PasswordValidationError.passwordNotEqual
+        }
+
+        self.passwordPolicyViewModel.checkPassword(password)
+        if !self.passwordPolicyViewModel.passwordIsValid {
+            throw PasswordValidationError.passwordPolicyViolation
         }
     }
 }

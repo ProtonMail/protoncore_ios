@@ -29,12 +29,19 @@ public struct SetBackupPasswordView: View {
 
     @StateObject var viewModel: ViewModel
 
+    @State var saveButtonIsEnabled = false
+
     private enum Constants {
         static let itemSpacing: CGFloat = 20
         static let imageCornerRadius: CGFloat = 12
         static let imageSize: CGFloat = 56
         static let standardPadding: CGFloat = 12
     }
+
+    var textFieldContents: [String] {[
+        viewModel.backupPasswordContent.text,
+        viewModel.repeatBackupPasswordContent.text
+    ]}
 
     public var body: some View {
         ScrollView {
@@ -52,6 +59,10 @@ public struct SetBackupPasswordView: View {
                     content: $viewModel.backupPasswordContent
                 )
 
+                PasswordPolicyView(viewModel: viewModel.passwordPolicyViewModel)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.vertical, -16)
+
                 PCTextField(
                     style: $viewModel.repeatBackupPasswordStyle,
                     content: $viewModel.repeatBackupPasswordContent
@@ -61,6 +72,7 @@ public struct SetBackupPasswordView: View {
                     style: .constant(.init(mode: .solid())),
                     content: .constant(.init(
                         title: LUITranslation.continue_core_button.l10n,
+                        isEnabled: saveButtonIsEnabled,
                         isAnimating: viewModel.viewState == .loading,
                         action: viewModel.continueTapped
                     ))
@@ -79,6 +91,14 @@ public struct SetBackupPasswordView: View {
         )
         .bannerDisplayable(bannerState: $viewModel.bannerState,
                            configuration: .default())
+        .onChange(of: textFieldContents) { _ in
+            saveButtonIsEnabled = textFieldContents.first(where: { $0.isEmpty }) == nil
+        }
+        .onChange(of: viewModel.backupPasswordContent.text) { _ in
+            let password = viewModel.backupPasswordContent.text
+            viewModel.passwordPolicyViewModel
+                .checkPassword(password)
+        }
         .onAppear {
             viewModel.backupPasswordContent.focus()
             switch viewModel.mode {
@@ -90,6 +110,7 @@ public struct SetBackupPasswordView: View {
         }
         .onLoad {
             viewModel.loadOrganizationLogo()
+            viewModel.passwordPolicyViewModel.loadPasswordPolicies()
         }
     }
 
@@ -162,6 +183,10 @@ public struct SetBackupPasswordView: View {
 import ProtonCoreCrypto
 import ProtonCoreDataModel
 import ProtonCoreLogin
+import ProtonCoreServices
+
+let emptyApiService = PMAPIService.createAPIServiceWithoutSession(environment: .custom(""),
+                                                                  challengeParametersProvider: .empty)
 
 #Preview("Set new backup password") {
     NavigationView {
@@ -172,7 +197,7 @@ import ProtonCoreLogin
                 organizationLogoID: nil,
                 organizationPublicKey: .init(value: "")
             )),
-            apiService: nil,
+            apiService: emptyApiService,
             userData: .init(
                 credential: .none,
                 user: .mock,
@@ -191,7 +216,7 @@ import ProtonCoreLogin
     NavigationView {
         SetBackupPasswordView(viewModel: .init(dependencies: .init(
             mode: .changeTemporaryPassword,
-            apiService: nil,
+            apiService: emptyApiService,
             userData: .init(
                 credential: .none,
                 user: .mock,
