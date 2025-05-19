@@ -2,134 +2,134 @@
 
 "Cancel" = "Cancelar";
 
-"Warning" = "Aviso";
+"Warning" = "Warning";
 
-"Select a plan" = "Selecione um plano";
+"Select a plan" = "Select a plan";
 
-"Current plan" = "Plano atual";
+"Current plan" = "Current plan";
 
-"Subscription" = "Assinatura";
+"Subscription" = "Subscription";
 
-"Upgrade your plan" = "Faça upgrade do seu plano";
+"Upgrade your plan" = "Upgrade your plan";
 
-"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Apenas assinaturas anuais sem renovação automática estão disponíveis no app para dispositivos móveis.";
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Only annual subscriptions without auto-renewal are available inside the mobile app.";
 
-"You cannot manage subscriptions inside the mobile application." = "Você não pode gerenciar assinaturas no aplicativo para dispositivos móveis.";
+"You cannot manage subscriptions inside the mobile application." = "You cannot manage subscriptions inside the mobile application.";
 
-"Your plan will automatically renew on %@" = "Seu plano será renovado automaticamente em %@";
+"Your plan will automatically renew on %@" = "Your plan will automatically renew on %@";
 
-"Current plan will expire on %@" = "O plano atual irá expirar em %@";
+"Current plan will expire on %@" = "Current plan will expire on %@";
 
-"Contact an administrator to make changes to your Proton subscription." = "Contate um administrador para alterar sua assinatura da Proton.";
+"Contact an administrator to make changes to your Proton subscription." = "Contact an administrator to make changes to your Proton subscription.";
 
-"%1$@ of %2$@" = "%1$@ de %2$@";
+"%1$@ of %2$@" = "%1$@ of %2$@";
 
-"%@ storage" = "%@ de armazenamento";
+"%@ storage" = "%@ storage";
 
-"%@ storage / user" = "%@ de armazenamento / usuário";
+"%@ storage / user" = "%@ storage / user";
 
-"for %@" = "por %@";
+"for %@" = "for %@";
 
-"Custom email addresses" = "Endereços de e-mail personalizados";
+"Custom email addresses" = "Custom email addresses";
 
-"Priority customer support" = "Suporte prioritário ao cliente";
+"Priority customer support" = "Priority customer support";
 
-"Adblocker (NetShield)" = "Bloqueador de anúncios (NetShield)";
+"Adblocker (NetShield)" = "Adblocker (NetShield)";
 
-"Streaming service support" = "Suporte a serviços de streaming";
+"Streaming service support" = "Streaming service support";
 
-"High speed" = "Velocidade alta";
+"High speed" = "High speed";
 
-"Highest speed" = "Velocidade máxima";
+"Highest speed" = "Highest speed";
 
-"Multi-user support" = "Suporte para múltiplos usuários";
+"Multi-user support" = "Multi-user support";
 
-"The basic for private and secure communications." = "O básico para comunicações privadas e seguras.";
+"The basic for private and secure communications." = "The basic for private and secure communications.";
 
-"Full-featured mailbox with advanced protection." = "Caixa de entrada completa com proteção avançada.";
+"Full-featured mailbox with advanced protection." = "Full-featured mailbox with advanced protection.";
 
-"Limited time offer" = "Oferta por tempo limitado";
+"Limited time offer" = "Limited time offer";
 
-"Complete payment?" = "Completar pagamento?";
+"Complete payment?" = "Complete payment?";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Um compra do plano da Proton Bundle já foi iniciada. Clique em continuar para completar o processo de pagamento e criar sua conta";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account";
 
-"Complete payment" = "Completar pagamento";
+"Complete payment" = "Complete payment";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "A configuração da conta não foi finalizada devido a um erro inesperado.\nTente novamente.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "The account setup process could not be finalized due to an unexpected error.\nPlease try again.";
 
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "O processo de compra no app foi iniciado. Siga as instruções da Apple para concluir ou cancelar a compra.";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase.";
 
-"In app payments are temporarily unavailable." = "Os pagamentos no aplicativo estão temporariamente indisponíveis.";
+"In app payments are temporarily unavailable." = "In app payments are temporarily unavailable.";
 
-"One plan for all Proton services" = "Um plano para todos os serviços da Proton";
+"One plan for all Proton services" = "One plan for all Proton services";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "A conta inicial gratuita criada para oferecer privacidade a todos por padrão.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "The no-cost starter account designed to empower everyone with privacy by default.";
 
-"The privacy-first email and calendar solution for your everyday communication needs." = "A solução de e-mail e calendário que prioriza a privacidade para suas necessidades diárias de comunicação.";
+"The privacy-first email and calendar solution for your everyday communication needs." = "The privacy-first email and calendar solution for your everyday communication needs.";
 
-"Your privacy and security are our priority." = "Sua privacidade e segurança são nossa prioridade.";
+"Your privacy and security are our priority." = "Your privacy and security are our priority.";
 
-"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "O plano focado em armazenamento com 200 GB de armazenamento em nuvem para manter seus arquivos privados.";
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "The storage-focused plan with 200 GB of cloud storage to keep your files private.";
 
-"The ultimate privacy pack with access to all premium Proton services." = "O melhor pacote de privacidade com acesso a todos os serviços premium da Proton.";
+"The ultimate privacy pack with access to all premium Proton services." = "The ultimate privacy pack with access to all premium Proton services.";
 
-"Only non-renewing annual subscriptions are available via this app" = "Somente assinaturas anuais sem renovação estão disponíveis neste app";
+"Only non-renewing annual subscriptions are available via this app" = "Only non-renewing annual subscriptions are available via this app";
 
-"Your subscription cannot be managed inside the mobile app." = "Não é possível gerenciar sua assinatura no aplicativo móvel.";
+"Your subscription cannot be managed inside the mobile app." = "Your subscription cannot be managed inside the mobile app.";
 
-"Unlimited folders, labels, and filters" = "Pastas, marcadores e filtros ilimitados";
+"Unlimited folders, labels, and filters" = "Unlimited folders, labels, and filters";
 
-"Up to %@ storage" = "Até %@ de armazenamento";
+"Up to %@ storage" = "Up to %@ storage";
 
-"Free VPN on a single device" = "VPN gratuita em um único dispositivo";
+"Free VPN on a single device" = "Free VPN on a single device";
 
-"Highest VPN speed" = "VPN de altíssima velocidade";
+"Highest VPN speed" = "Highest VPN speed";
 
-"Built-in ad-blocker (NetShield)" = "Bloqueador de anúncios integrado (NetShield)";
+"Built-in ad-blocker (NetShield)" = "Built-in ad-blocker (NetShield)";
 
-"Access to streaming services globally" = "Acesso global a serviços de streaming";
+"Access to streaming services globally" = "Access to streaming services globally";
 
-"Secure Core servers" = "Servidores Secure Core";
+"Secure Core servers" = "Secure Core servers";
 
-"TOR over VPN" = "Tor sobre VPN";
+"TOR over VPN" = "Tor over VPN";
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "Obter %@";
+"Get %@" = "Get %@";
 
-"Get Proton for free" = "Obter Proton de graça";
+"Get Proton for free" = "Get Proton for free";
 
-"Extend subscription" = "Estender assinatura";
+"Extend subscription" = "Extend subscription";
 
-"%@ of %@" = "%@ de %@";
+"%@ of %@" = "%@ of %@";
 
-"Connection issues" = "Problemas com a conexão";
+"Connection issues" = "Connection issues";
 
-"Check your internet connection" = "Verifique sua conexão com a internet";
+"Check your internet connection" = "Check your internet connection";
 
-"Strict no-logs policy" = "Rigorosa política de inexistência de registros";
+"Strict no-logs policy" = "Strict no-logs policy";
 
-"Plan successfully upgraded" = "Upgrade do plano concluído";
+"Plan successfully upgraded" = "Plan successfully upgraded";
 
-"Integrated 2FA authenticator" = "Autenticador A2F integrado";
+"Integrated 2FA authenticator" = "Integrated 2FA authenticator";
 
-"Priority support" = "Suporte prioritário";
+"Priority support" = "Priority support";
 
-"Unlimited devices" = "Dispositivos ilimitados";
+"Unlimited devices" = "Unlimited devices";
 
-"Unlimited email aliases" = "Aliases de e-mail ilimitados";
+"Unlimited email aliases" = "Unlimited email aliases";
 
-"Unlimited logins and notes" = "Notas e inícios de sessão ilimitados";
+"Unlimited logins and notes" = "Unlimited logins and notes";
 
-"Custom fields" = "Campos personalizados";
+"Custom fields" = "Custom fields";
 
-"For next-level password management and identity protection." = "Para um gerenciamento de senhas e proteção de identidade de nível superior.";
+"For next-level password management and identity protection." = "For next-level password management and identity protection.";
 
-"Pay monthly" = "Pagar mensalmente";
+"Pay monthly" = "Pay monthly";
 
-"Pay annually" = "Pagar anualmente";
+"Pay annually" = "Pay annually";
 
-"Pay every two years" = "Pagar a cada dois anos";
+"Pay every two years" = "Pay every two years";
 
-"Free" = "Grátis";
+"Free" = "Free";

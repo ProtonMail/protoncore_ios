@@ -430,6 +430,8 @@
 
 "Terms and Conditions." = "Zmluvnými podmienkami používania.";
 
-"Tap **Scan QR code**" = "Tap **Scan QR code**";
+"Tap **Scan QR code**" = "Ťuknutím **naskenujte QR kód**";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "Ťuknite na **Nastavenia**, potom ťuknite na **Prihlásiť sa do iného zariadenia**";
+
+"Password must contain:" = "Heslo musí obsahovať:";

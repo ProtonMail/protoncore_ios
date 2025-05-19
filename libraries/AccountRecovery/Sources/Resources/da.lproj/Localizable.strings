@@ -8,19 +8,19 @@
 
 "We received a password reset request for **%@**." = "Vi har modtaget en anmodning om nulstilling af adgangskoden for **%@**";
 
-"We received a password reset request for %@." = "We received a password reset request for %@";
+"We received a password reset request for %@." = "Vi har modtaget en anmodning om nulstilling af adgangskoden for %@";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Hvis du ikke bad om at nulstille din adgangskode, **skal du annullere denne anmodning nu**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Hvis du ikke bad om at nulstille din adgangskode, skal du annullere denne anmodning nu.";
 
 "Password reset requested" = "Nulstilling af adgangskode anmodet";
 
 "Insecure_View_line1" = "Du kan nu ændre din adgangskode til kontoen ";
 
-"You can change your password in %@." = "You can change your password in %@.";
+"You can change your password in %@." = "Du kan ændre din adgangskode i %@.";
 
-"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "For at sikre os, at det virkelig er dig, der prøver at nulstille din adgangskode, venter vi 72 timer, før vi godkender anmodninger.";
 
 "Insecure_View_line2" = " frit i løbet af ";
 
@@ -40,19 +40,19 @@
 
 "Insecure_View_Cancel_Button_CTA" = "Annuller nulstil";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Hvis du ikke bad om at nulstille din adgangskode, **skal du annullere denne anmodning nu**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Hvis du ikke bad om at nulstille din adgangskode, skal du annullere denne anmodning nu.";
 
 "We received a password reset request for **%@**." = "Vi har modtaget en anmodning om nulstilling af adgangskoden for **%@**.";
 
-"We received a password reset request for %@." = "We received a password reset request for %@.";
+"We received a password reset request for %@." = "Vi har modtaget en anmodning om nulstilling af adgangskoden for %@.";
 
 "Password reset cancelled" = "Nulstilling af adgangskode annulleret";
 
-"Cancelled by the user" = "Cancelled by the user";
+"Cancelled by the user" = "Annulleret af brugeren";
 
-"Authenticated in another session" = "Authenticated in another session";
+"Authenticated in another session" = "Autentificeret i en anden session";
 
 "none" = "ingen";
 
@@ -76,6 +76,6 @@
 
 "To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
 
-"To reset your password, go back to your active session on the originating device." = "To reset your password, go back to your active session on the originating device.";
+"To reset your password, go back to your active session on the originating device." = "For at nulstille din adgangskode, skal du gå tilbage til din aktive session på den oprindelige enhed.";
 
 "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now.";

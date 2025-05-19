@@ -430,6 +430,8 @@
 
 "Terms and Conditions." = "Syarat dan Ketentuan.";
 
-"Tap **Scan QR code**" = "Tap **Scan QR code**";
+"Tap **Scan QR code**" = "Ketuk **Pindai kode QR**";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "Ketuk **Pengaturan**, lalu ketuk **Masuk ke perangkat lain**";
+
+"Password must contain:" = "Kata sandi harus berisi:";

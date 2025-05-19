@@ -1,26 +1,26 @@
 "Settings_Item" = "Jelszó visszaállítás";
 
-"Insecure_View_Title" = "Password reset";
+"Insecure_View_Title" = "Jelszó visszaállítás";
 
-"Cancelled_View_Title" = "Password reset";
+"Cancelled_View_Title" = "Jelszó visszaállítás";
 
-"Grace_View_Title" = "Password reset";
+"Grace_View_Title" = "Jelszó visszaállítás";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**";
+"We received a password reset request for **%@**." = "Egy jelszó-visszaállítási kérés érkezett a következőhöz: **%@**";
 
-"We received a password reset request for %@." = "We received a password reset request for %@";
+"We received a password reset request for %@." = "Kaptunk egy jelszó visszaállítási kérelmet a következőhöz: %@";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Ha nem kérte jelszava visszaállítását, **törölje ezt a kérést most**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Ha nem kérte jelszava visszaállítását, törölje ezt a kérést most.";
 
-"Password reset requested" = "Password reset requested";
+"Password reset requested" = "Jelszó-visszaállítás kérés";
 
 "Insecure_View_line1" = "Most megváltoztathatja a fiók jelszavát ";
 
-"You can change your password in %@." = "You can change your password in %@.";
+"You can change your password in %@." = "Megváltoztathatja a jelszavát: %@.";
 
-"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Annak biztosítására, hogy valóban Ön próbálja visszaállítani a jelszavát, 72 órát várunk a kérések jóváhagyása előtt.";
 
 "Insecure_View_line2" = " szabadon ";
 
@@ -30,52 +30,52 @@
 
 "Grace_View_Undefined_Time_Left" = "néhány óra";
 
-"Settings_Item_Value_Grace" = "Pending";
+"Settings_Item_Value_Grace" = "Függőben";
 
-"Settings_Item_Value_Expired" = "Expired";
+"Settings_Item_Value_Expired" = "Lejárt";
 
-"Settings_Item_Value_Cancelled" = "Cancelled";
+"Settings_Item_Value_Cancelled" = "Megszakítva";
 
-"Settings_Item_Value_Insecure" = "Available";
+"Settings_Item_Value_Insecure" = "Elérhető";
 
-"Insecure_View_Cancel_Button_CTA" = "Cancel reset";
+"Insecure_View_Cancel_Button_CTA" = "Mégsem visszaállítás";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Ha nem kérte jelszava visszaállítását, **törölje ezt a kérést most**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Ha nem kérte jelszava visszaállítását, törölje ezt a kérést most.";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**.";
+"We received a password reset request for **%@**." = "Egy jelszó-visszaállítási kérés érkezett a következőhöz: **%@**.";
 
-"We received a password reset request for %@." = "We received a password reset request for %@.";
+"We received a password reset request for %@." = "Kaptunk egy jelszó visszaállítási kérelmet a következőhöz: %@.";
 
-"Password reset cancelled" = "Password reset cancelled";
+"Password reset cancelled" = "Jelszó-visszaállítás megszakítva";
 
-"Cancelled by the user" = "Cancelled by the user";
+"Cancelled by the user" = "Felhasználó által törölve";
 
-"Authenticated in another session" = "Authenticated in another session";
+"Authenticated in another session" = "Hitelesítve egy másik munkamenetben";
 
-"none" = "none";
+"none" = "nincs";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "A fiók-helyreállítási folyamat tétlenség miatt lejárt";
 
-"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "If you never made a password reset request, someone else could have access to your account. **Change your password now**";
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Ha soha nem kezdeményezett jelszó-visszaállítási kérelmet, valaki más hozzáférhet az Ön fiókjához. **Változtassa meg a jelszavát most**";
 
-"If you never made a password reset request, someone else could have access to your account. Change your password now" = "If you never made a password reset request, someone else could have access to your account. Change your password now";
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Ha soha nem kezdeményezett jelszó visszaállítást, valaki más hozzáférhetett a fiókjához. Módosítsa a jelszavát most.";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "A fiók-helyreállítási folyamat tétlenség miatt lejárt";
 
-"Recovery process not started" = "Recovery process not started";
+"Recovery process not started" = "A helyreállítási folyamat nincs elindítva";
 
-"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Jelenleg nincs folyamatban fiók helyreállítás. Kérjük, lépjen be egy munkamenetbe a web alkalmazásban a jelszó helyreállításához.";
 
-"You can now reset your password" = "You can now reset your password";
+"You can now reset your password" = "Most már visszaállíthatja a jelszavát";
 
-"Reset available until %@." = "Reset available until %@.";
+"Reset available until %@." = "Visszaállítás érvényes eddig %@.";
 
-"Change device to continue" = "Change device to continue";
+"Change device to continue" = "Válasszon másik eszközt a folytatáshoz";
 
-"To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
+"To reset your password, go back to your active session on **the originating device**." = "Jelszava visszaállításához térjen vissza az aktív munkamenethez **az eredeti eszközön**.";
 
-"To reset your password, go back to your active session on the originating device." = "To reset your password, go back to your active session on the originating device.";
+"To reset your password, go back to your active session on the originating device." = "A jelszó visszaállításához térjen vissza az eredeti eszközön lévő aktív munkamenetéhez.";
 
-"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now.";
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Van %@ ideje a jelszó visszaállítására.\nEzt azon az eszközön és böngészőn kell megtennie, amelyről a jelszó visszaállítását kérte.\nHa nem kérte jelszavának visszaállítását, törölje a kérést most.";

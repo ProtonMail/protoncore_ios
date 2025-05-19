@@ -1,4 +1,4 @@
-"APIs_malformed_url_request" = "Something went wrong, and we couldn't fulfil your request. If the issue persists, please contact customer support.";
+"APIs_malformed_url_request" = "오류가 발생하여 요청을 처리할 수 없습니다. 문제 재발시 고객 지원팀에 문의해 주십시오.";
 
 "Plans_Manager_impossible_to_get_user_uuid" = "It was impossible to get the user’s UUID for the transaction";
 

@@ -1,26 +1,26 @@
 "Settings_Item" = "Сброс пароля";
 
-"Insecure_View_Title" = "Password reset";
+"Insecure_View_Title" = "Сброс пароля";
 
-"Cancelled_View_Title" = "Password reset";
+"Cancelled_View_Title" = "Сброс пароля";
 
-"Grace_View_Title" = "Password reset";
+"Grace_View_Title" = "Сброс пароля";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**";
+"We received a password reset request for **%@**." = "Мы получили запрос на сброс пароля для **%@**";
 
-"We received a password reset request for %@." = "We received a password reset request for %@";
+"We received a password reset request for %@." = "Мы получили запрос на сброс пароля для %@";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Если вы не запрашивали сброс пароля, **отмените этот запрос прямо сейчас**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Если вы не запрашивали сброс пароля, то отмените этот запрос прямо сейчас.";
 
 "Password reset requested" = "Запрошен сброс пароля";
 
 "Insecure_View_line1" = "Теперь вы можете изменить свой пароль для аккаунта ";
 
-"You can change your password in %@." = "You can change your password in %@.";
+"You can change your password in %@." = "Вы можете изменить свой пароль через %@.";
 
-"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Чтобы убедиться, что это действительно вы пытаетесь сбросить пароль, мы ждем 72 часа, прежде чем одобрить запрос.";
 
 "Insecure_View_line2" = " freely during ";
 
@@ -30,52 +30,52 @@
 
 "Grace_View_Undefined_Time_Left" = "несколько часов";
 
-"Settings_Item_Value_Grace" = "Pending";
+"Settings_Item_Value_Grace" = "В ожидании";
 
 "Settings_Item_Value_Expired" = "Срок действия истёк";
 
-"Settings_Item_Value_Cancelled" = "Cancelled";
+"Settings_Item_Value_Cancelled" = "Отменено";
 
-"Settings_Item_Value_Insecure" = "Available";
+"Settings_Item_Value_Insecure" = "Доступно";
 
-"Insecure_View_Cancel_Button_CTA" = "Cancel reset";
+"Insecure_View_Cancel_Button_CTA" = "Отменить сброс";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Если вы не запрашивали сброс пароля, **отмените этот запрос прямо сейчас**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Если вы не запрашивали сброс пароля, то отмените этот запрос прямо сейчас.";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**.";
+"We received a password reset request for **%@**." = "Мы получили запрос на сброс пароля для **%@**.";
 
-"We received a password reset request for %@." = "We received a password reset request for %@.";
+"We received a password reset request for %@." = "Мы получили запрос на сброс пароля для %@.";
 
 "Password reset cancelled" = "Сброс пароля отменён";
 
-"Cancelled by the user" = "Cancelled by the user";
+"Cancelled by the user" = "Отменено пользователем";
 
-"Authenticated in another session" = "Authenticated in another session";
+"Authenticated in another session" = "Аутентифицирован в другом сеансе";
 
 "none" = "отсутствует";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "Срок действия процесса восстановления аккаунта истек из-за бездействия";
 
-"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "If you never made a password reset request, someone else could have access to your account. **Change your password now**";
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Если вы никогда не делали запрос на сброс пароля, кто-то другой может получить доступ к вашей учетной записи. **Сменить пароль прямо сейчас**";
 
-"If you never made a password reset request, someone else could have access to your account. Change your password now" = "If you never made a password reset request, someone else could have access to your account. Change your password now";
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Если вы никогда не делали запрос на сброс пароля, кто-то другой может получить доступ к вашей учетной записи. Сменить пароль прямо сейчас";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "Срок действия процесса восстановления аккаунта истек из-за бездействия";
 
-"Recovery process not started" = "Recovery process not started";
+"Recovery process not started" = "Процесс восстановления не начат";
 
-"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "В настоящее время восстановление аккаунта не производится. Пперейдите в сеанс работы с веб-приложением, чтобы восстановить пароль.";
 
-"You can now reset your password" = "You can now reset your password";
+"You can now reset your password" = "Теперь вы можете сбросить свой пароль";
 
-"Reset available until %@." = "Reset available until %@.";
+"Reset available until %@." = "Сброс доступен до %@.";
 
-"Change device to continue" = "Change device to continue";
+"Change device to continue" = "Смените устройство, чтобы продолжить";
 
-"To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
+"To reset your password, go back to your active session on **the originating device**." = "Чтобы сбросить пароль, вернитесь в активный сеанс на **исходном устройстве**.";
 
-"To reset your password, go back to your active session on the originating device." = "To reset your password, go back to your active session on the originating device.";
+"To reset your password, go back to your active session on the originating device." = "Чтобы сбросить свой пароль, вернитесь к вашему активному сеансу на исходном устройстве.";
 
-"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now.";
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "У вас есть %@ для сброса пароля.\nЭто нужно сделать на том устройстве и в том браузере, с которого вы отправляли запрос на сброс пароля.\nЕсли вы не просили сбросить пароль, отмените запрос сейчас.";

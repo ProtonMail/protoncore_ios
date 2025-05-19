@@ -16,7 +16,7 @@
 
 "You cannot manage subscriptions inside the mobile application." = "Du kan ikke administrere abonnementer i mobilapplikasjonen.";
 
-"Your plan will automatically renew on %@" = "Planen din fornyes automatisk den %@";
+"Your plan will automatically renew on %@" = "Planen din vil automatisk fornyes %@.";
 
 "Current plan will expire on %@" = "Gjeldende plan utløper %@";
 
@@ -34,7 +34,7 @@
 
 "Priority customer support" = "Prioritert kundestøtte";
 
-"Adblocker (NetShield)" = "Annonseblokkering (NetShield)";
+"Adblocker (NetShield)" = "Annonseblokker (NetShield)";
 
 "Streaming service support" = "Støtte for strømmetjenester";
 
@@ -50,7 +50,7 @@
 
 "Limited time offer" = "Tidsbegrenset tilbud";
 
-"Complete payment?" = "Fullføre betaling?";
+"Complete payment?" = "Vil du fullføre betalingen?";
 
 "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Et kjøp for en Proton pakke-plan er allerede igangsatt. Trykk på fortsett for å fullføre behandlingen av betalingen og opprette kontoen din";
 
@@ -80,7 +80,7 @@
 
 "Unlimited folders, labels, and filters" = "Ubegrenset antall mapper, etiketter og filtre";
 
-"Up to %@ storage" = "Opptil %@ lagringsplass";
+"Up to %@ storage" = "Opptil %@ med lagringsplass";
 
 "Free VPN on a single device" = "Gratis VPN på én enkelt enhet";
 
@@ -132,4 +132,4 @@
 
 "Pay every two years" = "Betal hvert andre år";
 
-"Free" = "Gratis";
+"Free" = "Free";

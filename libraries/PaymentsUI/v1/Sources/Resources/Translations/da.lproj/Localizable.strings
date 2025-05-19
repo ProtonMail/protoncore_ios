@@ -2,13 +2,13 @@
 
 "Cancel" = "Annuller";
 
-"Warning" = "Advarsel";
+"Warning" = "Warning";
 
-"Select a plan" = "Vælg et abonnement";
+"Select a plan" = "Select a plan";
 
-"Current plan" = "Nuværende abonnement";
+"Current plan" = "Current plan";
 
-"Subscription" = "Abonnement";
+"Subscription" = "Subscription";
 
 "Upgrade your plan" = "Upgrade your plan";
 
@@ -22,9 +22,9 @@
 
 "Contact an administrator to make changes to your Proton subscription." = "Contact an administrator to make changes to your Proton subscription.";
 
-"%1$@ of %2$@" = "%1$@ af %2$@";
+"%1$@ of %2$@" = "%1$@ of %2$@";
 
-"%@ storage" = "%@ lagerplads";
+"%@ storage" = "%@ storage";
 
 "%@ storage / user" = "%@ storage / user";
 
@@ -32,15 +32,15 @@
 
 "Custom email addresses" = "Custom email addresses";
 
-"Priority customer support" = "Prioriteret kundesupport";
+"Priority customer support" = "Priority customer support";
 
-"Adblocker (NetShield)" = "Annonceblokering (NetShield)";
+"Adblocker (NetShield)" = "Adblocker (NetShield)";
 
-"Streaming service support" = "Streamingtjeneste-support";
+"Streaming service support" = "Streaming service support";
 
-"High speed" = "Høj hastighed";
+"High speed" = "High speed";
 
-"Highest speed" = "Højeste hastighed";
+"Highest speed" = "Highest speed";
 
 "Multi-user support" = "Multi-user support";
 
@@ -76,13 +76,13 @@
 
 "Only non-renewing annual subscriptions are available via this app" = "Only non-renewing annual subscriptions are available via this app";
 
-"Your subscription cannot be managed inside the mobile app." = "Dit abonnement kan ikke administreres i mobil-app'en.";
+"Your subscription cannot be managed inside the mobile app." = "Your subscription cannot be managed inside the mobile app.";
 
 "Unlimited folders, labels, and filters" = "Unlimited folders, labels, and filters";
 
 "Up to %@ storage" = "Up to %@ storage";
 
-"Free VPN on a single device" = "Gratis VPN på en enkelt enhed";
+"Free VPN on a single device" = "Free VPN on a single device";
 
 "Highest VPN speed" = "Highest VPN speed";
 
@@ -96,21 +96,21 @@
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "Få %@";
+"Get %@" = "Get %@";
 
 "Get Proton for free" = "Get Proton for free";
 
 "Extend subscription" = "Extend subscription";
 
-"%@ of %@" = "%@ af %@";
+"%@ of %@" = "%@ of %@";
 
 "Connection issues" = "Connection issues";
 
 "Check your internet connection" = "Check your internet connection";
 
-"Strict no-logs policy" = "Streng ingen logfiler-politik";
+"Strict no-logs policy" = "Strict no-logs policy";
 
-"Plan successfully upgraded" = "Abonnementet er opgraderet";
+"Plan successfully upgraded" = "Plan successfully upgraded";
 
 "Integrated 2FA authenticator" = "Integrated 2FA authenticator";
 
@@ -118,18 +118,18 @@
 
 "Unlimited devices" = "Unlimited devices";
 
-"Unlimited email aliases" = "Ubegrænsede e-mail-aliasser";
+"Unlimited email aliases" = "Unlimited email aliases";
 
-"Unlimited logins and notes" = "Ubegrænsede logins og noter";
+"Unlimited logins and notes" = "Unlimited logins and notes";
 
-"Custom fields" = "Brugerdefinerede felter";
+"Custom fields" = "Custom fields";
 
-"For next-level password management and identity protection." = "Til adgangskodestyring og identitetsbeskyttelse på næste niveau.";
+"For next-level password management and identity protection." = "For next-level password management and identity protection.";
 
-"Pay monthly" = "Betal månedligt";
+"Pay monthly" = "Pay monthly";
 
-"Pay annually" = "Betal årligt";
+"Pay annually" = "Pay annually";
 
 "Pay every two years" = "Pay every two years";
 
-"Free" = "Gratis";
+"Free" = "Free";

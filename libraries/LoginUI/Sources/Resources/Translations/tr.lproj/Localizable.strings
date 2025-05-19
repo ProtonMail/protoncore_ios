@@ -430,6 +430,8 @@
 
 "Terms and Conditions." = "Hüküm ve Koşullar.";
 
-"Tap **Scan QR code**" = "Tap **Scan QR code**";
+"Tap **Scan QR code**" = "**Kare kodu** tara üzerine dokunun";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "**Ayarlar** ve **Başka bir aygıtta oturum aç** üzerine dokunun";
+
+"Password must contain:" = "Şifre şunları içermelidir:";
