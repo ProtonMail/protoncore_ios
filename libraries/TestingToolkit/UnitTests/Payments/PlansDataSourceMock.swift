@@ -109,4 +109,6 @@ public final class PlansDataSourceMock: NSObject, PlansDataSourceProtocol {
     public func shouldDisplayPlanInstance(_ plan: ProtonCorePayments.AvailablePlans.AvailablePlan.Instance) -> Bool {
         shouldDisplayPlanInstanceStub(plan)
     }
+
+    public var shouldShowTwoYearsWebPlan: Bool { false }
 }

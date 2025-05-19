@@ -54,4 +54,6 @@ public final class StoreKitDataSourceMock: NSObject, StoreKitDataSourceProtocol 
     public func filterAccordingToAvailableProducts(availablePlans: AvailablePlans) -> AvailablePlans {
         filterAccordingToAvailableProductsStub(availablePlans)
     }
+
+    public var countryCode: String? { nil }
 }
