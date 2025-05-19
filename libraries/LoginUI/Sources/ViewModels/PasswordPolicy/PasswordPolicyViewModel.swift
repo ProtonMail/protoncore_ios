@@ -116,6 +116,16 @@ extension PasswordPolicyView {
             }
             requirementsList = newRequirementsList
         }
+
+#if DEBUG
+        public init(passwordPolicies: [PasswordPolicy]) {
+            exceptionalErrorMessage = nil
+            requirementsList = []
+
+            self.evaluatedPasswordPolicies = []
+            self.passwordPolicies = passwordPolicies
+        }
+#endif
     }
 
     public struct BulletedListItem: Identifiable, Hashable {
@@ -126,4 +136,3 @@ extension PasswordPolicyView {
 }
 
 #endif
-

@@ -89,5 +89,17 @@ public struct PasswordPolicyView: View {
     }
 }
 
+#if DEBUG
+let policies = [
+        PasswordPolicy.disallowCommonPasswordsMock,
+        PasswordPolicy.atLeastOneNumberMock,
+        PasswordPolicy.atLeastOneSpecialCharacterMock,
+        PasswordPolicy.atLeastOneUpperCaseAndOneLowercaseMock
+]
+
+#Preview {
+    PasswordPolicyView(viewModel: PasswordPolicyView.ViewModel(passwordPolicies: policies))
+}
 #endif
 
+#endif

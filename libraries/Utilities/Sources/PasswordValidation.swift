@@ -49,6 +49,7 @@ public struct PasswordRestrictions: OptionSet {
     }
 }
 
+@MainActor
 public protocol PasswordValidator {
     func validate(for restrictions: PasswordRestrictions, password: String, confirmPassword: String) throws
 }
