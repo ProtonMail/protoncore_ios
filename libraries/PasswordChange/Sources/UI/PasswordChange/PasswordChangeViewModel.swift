@@ -72,6 +72,11 @@ extension PasswordChangeView {
             authInfo?._2FA != nil
         }
 
+        var isPasswordPolicyEnabled: Bool {
+            !FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.passwordPolicyDisabled,
+                                                     reloadValue: true)
+        }
+
         public init(
             mode: PasswordChangeModule.PasswordChangeMode,
             passwordChangeService: PasswordChangeService? = nil,
@@ -96,9 +101,11 @@ extension PasswordChangeView {
                 textContentType: .password
             )
 
-            passwordPolicyViewModel = .init(
-                apiService: self.passwordChangeService?.apiService
-            )
+            if isPasswordPolicyEnabled {
+                passwordPolicyViewModel = .init(
+                    apiService: self.passwordChangeService?.apiService
+                )
+            }
 
             newPasswordFieldContent = .init(
                 title: mode == .mailboxPassword ? PCTranslation.newMailboxPassword.l10n : PCTranslation.newPassword.l10n,
@@ -338,7 +345,7 @@ extension PasswordChangeView.ViewModel: PasswordValidator {
     public func validate(for restrictions: PasswordRestrictions,
                          password: String,
                          confirmPassword: String) throws {
-        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.passwordPolicyDisabled) {
+        if !isPasswordPolicyEnabled {
             // If the kill-switch is enabled, fallback to just simple password validation.
             try (self as PasswordValidator).validate(for: restrictions,
                                                      password: password,
