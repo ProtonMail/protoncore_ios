@@ -33,8 +33,8 @@ public struct PasswordPolicy: Codable, Equatable {
     @TrimmedRegex public var regex: String
 
     public enum State: Int, Codable, Equatable {
-        case enabled = 0
-        case disabled = 1
+        case disabled = 0
+        case enabled = 1
         case optional = 2
     }
 }
