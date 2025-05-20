@@ -52,7 +52,7 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable, Produ
     var viewModel: PasswordViewModel!
     var customErrorPresenter: LoginErrorPresenter?
     var signupAccountType: SignupAccountType!
-    var signupPasswordRestrictions: SignupPasswordRestrictions!
+    var signupPasswordRestrictions: PasswordRestrictions!
 
     var onDohTroubleshooting: () -> Void = { }
 

@@ -25,6 +25,7 @@ import Foundation
 import UIKit
 import ProtonCoreLogin
 import ProtonCoreUIFoundations
+import ProtonCoreUtilities
 
 extension UIViewController {
     func showBanner(message: String, style: PMBannerNewStyle = .error, button: String? = nil, action: (() -> Void)? = nil, position: PMBannerPosition) {
@@ -149,7 +150,7 @@ extension LoginErrorCapable {
 
 enum SignUpInvalidPasswordReason {
     case notEqual
-    case notFulfilling(SignupPasswordRestrictions)
+    case notFulfilling(PasswordRestrictions)
 }
 
 enum InvalidVerificationReson {

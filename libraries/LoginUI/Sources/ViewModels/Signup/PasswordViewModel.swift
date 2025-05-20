@@ -24,6 +24,7 @@
 import Foundation
 import ProtonCoreLogin
 import ProtonCoreDataModel
+import ProtonCoreUtilities
 import UIKit
 
 class PasswordViewModel {
@@ -33,7 +34,7 @@ class PasswordViewModel {
         self.clientApp = clientApp
     }
 
-    func passwordValidationResult(for restrictions: SignupPasswordRestrictions,
+    func passwordValidationResult(for restrictions: PasswordRestrictions,
                                   password: String,
                                   repeatParrword: String) -> (Result<(), SignupError>) {
 
