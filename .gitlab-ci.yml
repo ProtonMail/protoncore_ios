@@ -49,6 +49,13 @@ variables:
   - rm -rf ../pmconstants
   - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
 
+.setup_permissions: &setup_permissions
+  - echo -e "machine gitlab.protontech.ch\n  login gitlab-ci-token\n  password $CI_JOB_TOKEN\n\n" > ~/.netrc
+  - chmod 0600 ~/.netrc
+
+.tear_down_simulator: &tear_down_simulator
+  - DEVICE_NAME=$CI_PIPELINE_ID-$CI_JOB_NAME
+  - xcrun simctl delete $DEVICE_NAME
 
 .rules_mr: &rules_mr
   - if: '$CI_PIPELINE_SOURCE == "web"'
@@ -108,11 +115,6 @@ linting:code-quality:
   script:
     - env
     - tools/portable_swiftlint/swiftlint --config .swiftlint.yml --reporter junit > swiftlint.xml
-    - |
-      # Lint commits on branches only (not tags)
-      if [ -z "$CI_COMMIT_TAG" ] && [ "$CI_MERGE_REQUEST_EVENT_TYPE" != "merge_train" ]; then
-          mint run git-lhc lint --verbose --train core # Lint commit history
-      fi
 
   rules: &rules_mr_and_develop
     - if: $CI_PIPELINE_SOURCE == "push"
@@ -136,6 +138,34 @@ linting:code-quality:
       junit:
         - swiftlint.xml
     expire_in: 90 days
+  tags:
+    - macstadium-m1-protoncore
+
+linting:commits:
+  stage: linting
+  before_script:
+    - *setup_permissions
+  script:
+    - |
+      # Lint commits on branches only (not tags)
+      if [ -z "$CI_COMMIT_TAG" ] && [ "$CI_MERGE_REQUEST_EVENT_TYPE" != "merge_train" ]; then
+          mint run git-lhc lint --verbose --train core # Lint commit history
+      fi
+
+  rules: &rules_mr_and_develop
+    - if: $CI_PIPELINE_SOURCE == "push"
+    - if: $TEST == "manual"
+      when: manual
+
+    # We do not want to run jobs if the schedule doesn't deploy 
+    - if: $CI_PIPELINE_SOURCE == "schedule" && $ATLAS_DEPLOY_ENV != "true"
+      when: never
+
+    - when: on_success
+
+  needs: []
+  allow_failure: false
+  interruptible: true
   tags:
     - macstadium-m1-protoncore
 
