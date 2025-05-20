@@ -432,4 +432,6 @@
 
 "Tap **Scan QR code**" = "Tik op **scan QR-code**";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "Tik op **Instellingen**, daarna op **aanmelden bij een ander apparaat**";
+
+"Password must contain:" = "Wachtwoord moet bevatten:";

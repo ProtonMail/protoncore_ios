@@ -430,6 +430,8 @@
 
 "Terms and Conditions." = "Termos e condições.";
 
-"Tap **Scan QR code**" = "Tap **Scan QR code**";
+"Tap **Scan QR code**" = "Toque em **Ler o código QR**.";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "Toque em **Definições** e toque em **Iniciar sessão noutro dispositivo**";
+
+"Password must contain:" = "A palavra-passe deve conter:";

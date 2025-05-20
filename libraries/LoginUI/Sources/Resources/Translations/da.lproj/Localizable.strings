@@ -308,7 +308,7 @@
 
 "Enter your backup password" = "Indtast din sikkerhedskopi-adgangskode";
 
-"To make sure it’s really you trying to sign-in, please enter your backup password." = "To make sure it’s really you trying to sign-in, please enter your backup password.";
+"To make sure it’s really you trying to sign-in, please enter your backup password." = "For at sikre, at det virkelig er dig, der forsøger at logge ind, bedes du indtaste din backupadgangskode.";
 
 "Access granted" = "Adgang bevilget";
 
@@ -392,7 +392,7 @@
 
 "Camera Access Denied." = "Camera Access Denied.";
 
-"The permission to use the Camera is off. Please enable it from the Settings." = "The permission to use the Camera is off. Please enable it from the Settings.";
+"The permission to use the Camera is off. Please enable it from the Settings." = "Tilladelsen til at bruge kameraet er slået fra. Aktivér den venligst fra indstillingerne.";
 
 "Go to Settings" = "Gå til Indstillinger";
 
@@ -410,7 +410,7 @@
 
 "To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "To scan a QR code and sign in to another device, grant Proton %@ access to your camera.";
 
-"You're always in control: You can change this anytime in your device settings." = "You're always in control: You can change this anytime in your device settings.";
+"You're always in control: You can change this anytime in your device settings." = "Du har altid kontrol: du kan ændre dette når som helst i dine enhedsindstillinger.";
 
 "Settings" = "Indstillinger";
 
@@ -424,7 +424,7 @@
 
 "Certified no-logs VPN" = "Certified no-logs VPN";
 
-"Continue as guest" = "Continue as guest";
+"Continue as guest" = "Fortsæt som gæst";
 
 "By using this app you accept our" = "By using this app you accept our";
 
@@ -433,3 +433,5 @@
 "Tap **Scan QR code**" = "Tap **Scan QR code**";
 
 "Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
+
+"Password must contain:" = "Password must contain:";

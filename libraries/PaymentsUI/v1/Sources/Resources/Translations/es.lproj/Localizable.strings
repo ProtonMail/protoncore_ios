@@ -16,7 +16,7 @@
 
 "You cannot manage subscriptions inside the mobile application." = "No se pueden administrar las suscripciones desde la aplicación móvil.";
 
-"Your plan will automatically renew on %@" = "El plan actual se renovará automáticamente el %@";
+"Your plan will automatically renew on %@" = "Tu plan se renovará automáticamente el %@.";
 
 "Current plan will expire on %@" = "El plan actual expirará el %@";
 
@@ -26,13 +26,13 @@
 
 "%@ storage" = "%@ de almacenamiento";
 
-"%@ storage / user" = "%@ de almacenamiento / usuario";
+"%@ storage / user" = "%@ de almacenamiento por usuario";
 
 "for %@" = "por %@";
 
 "Custom email addresses" = "Direcciones de correo personalizadas";
 
-"Priority customer support" = "Soporte prioritario";
+"Priority customer support" = "Atención al cliente prioritaria";
 
 "Adblocker (NetShield)" = "Bloqueador de anuncios (NetShield)";
 
@@ -118,9 +118,9 @@
 
 "Unlimited devices" = "Dispositivos ilimitados";
 
-"Unlimited email aliases" = "Número ilimitado de alias Hide-my-email";
+"Unlimited email aliases" = "Alias de correo electrónico ilimitados";
 
-"Unlimited logins and notes" = "Número ilimitado de inicios de sesión y notas";
+"Unlimited logins and notes" = "Inicios de sesión y notas ilimitados";
 
 "Custom fields" = "Campos personalizados";
 

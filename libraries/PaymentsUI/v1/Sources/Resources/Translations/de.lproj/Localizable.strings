@@ -2,7 +2,7 @@
 
 "Cancel" = "Abbrechen";
 
-"Warning" = "Warnhinweis";
+"Warning" = "Warnung";
 
 "Select a plan" = "Abonnement auswählen";
 
@@ -14,7 +14,7 @@
 
 "Only annual subscriptions without auto-renewal are available inside the mobile app." = "Nur Jahresabonnemente ohne automatische Verlängerung sind in der mobilen App verfügbar.";
 
-"You cannot manage subscriptions inside the mobile application." = "Du kannst Abonnements nicht innerhalb der mobilen App verwalten.";
+"You cannot manage subscriptions inside the mobile application." = "Du kannst Abonnemente nicht innerhalb der mobilen Anwendung verwalten.";
 
 "Your plan will automatically renew on %@" = "Dein Abonnement wird am %@ automatisch verlängert.";
 
@@ -108,7 +108,7 @@
 
 "Check your internet connection" = "Überprüfe deine Internetverbindung";
 
-"Strict no-logs policy" = "Strenge Nicht-Protokollierung";
+"Strict no-logs policy" = "Strenge No Logs-Richtlinie";
 
 "Plan successfully upgraded" = "Abonnement erfolgreich upgraded";
 

@@ -1,26 +1,26 @@
 "Settings_Item" = "비밀번호 재설정";
 
-"Insecure_View_Title" = "Password reset";
+"Insecure_View_Title" = "비밀번호 재설정";
 
-"Cancelled_View_Title" = "Password reset";
+"Cancelled_View_Title" = "비밀번호 재설정";
 
-"Grace_View_Title" = "Password reset";
+"Grace_View_Title" = "비밀번호 재설정";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**";
+"We received a password reset request for **%@**." = "**%@**에 대한 비밀번호 재설정을 요청받았습니다.";
 
-"We received a password reset request for %@." = "We received a password reset request for %@";
+"We received a password reset request for %@." = "%@에 대한 비밀번호 재설정을 요청받았습니다.";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "비밀번호 재설정을 요청하지 않으셨다면, **이 요청을 지금 취소하십시오**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "비밀번호 재설정을 요청하지 않으셨다면, 이 요청을 지금 취소하십시오.";
 
-"Password reset requested" = "Password reset requested";
+"Password reset requested" = "비밀번호 재설정 요청됨";
 
 "Insecure_View_line1" = "해당 계정의 비밀번호를 이제 변경할 수 있습니다: ";
 
-"You can change your password in %@." = "You can change your password in %@.";
+"You can change your password in %@." = "%@ 후에 비밀번호 재설정이 가능합니다.";
 
-"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "비밀번호를 재설정이 본인 요청인지 여부를 확인하기 위해 승인까지 72시간을 대기해야 합니다.";
 
 "Insecure_View_line2" = " 해당 기간 사이 - ";
 
@@ -30,52 +30,52 @@
 
 "Grace_View_Undefined_Time_Left" = "수 시간";
 
-"Settings_Item_Value_Grace" = "Pending";
+"Settings_Item_Value_Grace" = "대기 중";
 
-"Settings_Item_Value_Expired" = "Expired";
+"Settings_Item_Value_Expired" = "만료됨";
 
-"Settings_Item_Value_Cancelled" = "Cancelled";
+"Settings_Item_Value_Cancelled" = "취소됨";
 
-"Settings_Item_Value_Insecure" = "Available";
+"Settings_Item_Value_Insecure" = "사용 가능";
 
-"Insecure_View_Cancel_Button_CTA" = "Cancel reset";
+"Insecure_View_Cancel_Button_CTA" = "요청 취소";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "비밀번호 재설정을 요청하지 않으셨다면, **이 요청을 지금 취소하십시오**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "비밀번호 재설정을 요청하지 않으셨다면, 이 요청을 지금 취소하십시오.";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**.";
+"We received a password reset request for **%@**." = "**%@**에 대한 비밀번호 재설정을 요청받았습니다.";
 
-"We received a password reset request for %@." = "We received a password reset request for %@.";
+"We received a password reset request for %@." = "%@에 대한 비밀번호 재설정을 요청받았습니다.";
 
-"Password reset cancelled" = "Password reset cancelled";
+"Password reset cancelled" = "비밀번호 재설정이 취소되었습니다";
 
-"Cancelled by the user" = "Cancelled by the user";
+"Cancelled by the user" = "사용자에 의해 취소됨";
 
-"Authenticated in another session" = "Authenticated in another session";
+"Authenticated in another session" = "다른 세션에서 인증됨";
 
-"none" = "none";
+"none" = "없음";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "계정 복구 프로세스가 조치 없음으로 인해 만료되었습니다.";
 
-"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "If you never made a password reset request, someone else could have access to your account. **Change your password now**";
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "만약 비밀번호 초기화 요청을 한 적이 없다면, 다른 사람이 회원님의 계정에 접근했을 수 있습니다. **지금 바로 비밀번호를 변경하십시오**";
 
-"If you never made a password reset request, someone else could have access to your account. Change your password now" = "If you never made a password reset request, someone else could have access to your account. Change your password now";
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "만약 비밀번호 초기화 요청을 한 적이 없다면, 다른 사람이 회원님의 계정에 접근했을 수 있습니다. 지금 바로 비밀번호를 변경하십시오";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "계정 복구 프로세스가 조치 없음으로 인해 만료되었습니다.";
 
-"Recovery process not started" = "Recovery process not started";
+"Recovery process not started" = "복구 절차가 시작되지 않음";
 
-"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "현재 진행 중인 계정 복구가 없습니다. 웹 어플리케이션상의 세션으로 이동하여 비밀번호를 복구하세요.";
 
-"You can now reset your password" = "You can now reset your password";
+"You can now reset your password" = "이제 비밀번호 재설정이 가능합니다";
 
-"Reset available until %@." = "Reset available until %@.";
+"Reset available until %@." = "%@까지 재설정 가능.";
 
-"Change device to continue" = "Change device to continue";
+"Change device to continue" = "계속하려면 기기 변경하기";
 
-"To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
+"To reset your password, go back to your active session on **the originating device**." = "비밀번호를 재설정하려면, **원래 장치**의 활성 세션으로 돌아가세요.";
 
-"To reset your password, go back to your active session on the originating device." = "To reset your password, go back to your active session on the originating device.";
+"To reset your password, go back to your active session on the originating device." = "비밀번호를 재설정하려면, 원래 장치의 활성 세션으로 돌아가세요.";
 
 "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now.";

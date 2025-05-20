@@ -40,7 +40,7 @@
 
 "High speed" = "Alta velocidad";
 
-"Highest speed" = "Velocidad máxima";
+"Highest speed" = "Máxima velocidad";
 
 "Multi-user support" = "Soporte multiusuario";
 
@@ -110,7 +110,7 @@
 
 "Strict no-logs policy" = "Estricta política de cero registros";
 
-"Plan successfully upgraded" = "El plan se actualizó correctamente";
+"Plan successfully upgraded" = "Se mejoró el plan.";
 
 "Integrated 2FA authenticator" = "Autenticador 2FA integrado";
 
@@ -130,6 +130,6 @@
 
 "Pay annually" = "Pagar anualmente";
 
-"Pay every two years" = "Pago cada dos años";
+"Pay every two years" = "Pagar cada dos años";
 
 "Free" = "Gratis";

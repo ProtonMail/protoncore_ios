@@ -396,40 +396,42 @@
 
 "Go to Settings" = "Menjen a beállításokhoz";
 
-"to Proton %@" = "to Proton %@";
+"to Proton %@" = "A Protonhoz %@";
 
-"Something went wrong" = "Something went wrong";
+"Something went wrong" = "Valamilyen hiba történt";
 
-"We couldn't sign you in. Please scan a new QR code to try again." = "We couldn't sign you in. Please scan a new QR code to try again.";
+"We couldn't sign you in. Please scan a new QR code to try again." = "Nem sikerült bejelentkeztetnünk.";
 
-"We couldn't sign you in. Please sign in with your password." = "We couldn't sign you in. Please sign in with your password.";
+"We couldn't sign you in. Please sign in with your password." = "Nem sikerült bejelentkeztetni.Kérjük, jelentkezzen be a jelszavával.";
 
-"New QR code" = "New QR code";
+"New QR code" = "Új QR-kód";
 
-"Allow access to camera" = "Allow access to camera";
+"Allow access to camera" = "Hozzáférés engedélyezése a kamerához";
 
-"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "To scan a QR code and sign in to another device, grant Proton %@ access to your camera.";
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "QR-kód beolvasásához és egy másik eszközre való bejelentkezéshez engedélyezze a Proton %@ számára a kamerához való hozzáférést.";
 
-"You're always in control: You can change this anytime in your device settings." = "You're always in control: You can change this anytime in your device settings.";
+"You're always in control: You can change this anytime in your device settings." = "Mindig Ön irányít: Ezt bármikor megváltoztathatja az eszköz beállításaiban.";
 
-"Settings" = "Settings";
+"Settings" = "Beállítások";
 
-"We couldn't load the QR code" = "We couldn't load the QR code";
+"We couldn't load the QR code" = "Nem sikerült betölteni a QR kódot";
 
 "Retry" = "Újra";
 
-"Welcome to Proton VPN" = "Welcome to Proton VPN";
+"Welcome to Proton VPN" = "Üdvözli a Proton VPN";
 
-"Browse privately, access blocked content, and enjoy digital freedom." = "Browse privately, access blocked content, and enjoy digital freedom.";
+"Browse privately, access blocked content, and enjoy digital freedom." = "Böngésszen privát módon, érjen el blokkolt tartalmakat és élvezze a digitális szabadságot.";
 
-"Certified no-logs VPN" = "Certified no-logs VPN";
+"Certified no-logs VPN" = "Hitelesített, naplózás nélküli VPN";
 
-"Continue as guest" = "Continue as guest";
+"Continue as guest" = "Folytatás vendégként";
 
-"By using this app you accept our" = "By using this app you accept our";
+"By using this app you accept our" = "Az alkalmazás használatával elfogadja a következőket:";
 
-"Terms and Conditions." = "Terms and Conditions.";
+"Terms and Conditions." = "Feltételek és szabályok.";
 
-"Tap **Scan QR code**" = "Tap **Scan QR code**";
+"Tap **Scan QR code**" = "Koppintson a **QR-kód beolvasása** gombra";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "Koppintson a **Beállítások**, majd a **Bejelentkezés egy másik eszközre** lehetőségre.";
+
+"Password must contain:" = "A jelszónak tartalmaznia kell:";

@@ -22,11 +22,11 @@
 
 "Contact an administrator to make changes to your Proton subscription." = "Chcete-li provést změny v předplatném Proton, kontaktujte správce.";
 
-"%1$@ of %2$@" = "%1$@ z(e) %2$@";
+"%1$@ of %2$@" = "%1$@ z %2$@";
 
 "%@ storage" = "%@ úložiště";
 
-"%@ storage / user" = "%@ úložiště / uživatel";
+"%@ storage / user" = "%@ úložiště / uživatele";
 
 "for %@" = "za %@";
 
@@ -76,7 +76,7 @@
 
 "Only non-renewing annual subscriptions are available via this app" = "Prostřednictvím této aplikace je k dispozici pouze roční předplatné, které není obnovováno";
 
-"Your subscription cannot be managed inside the mobile app." = "Předplatné nelze spravovat v mobilní aplikaci.";
+"Your subscription cannot be managed inside the mobile app." = "Vaše předplatné nelze spravovat v mobilní aplikaci.";
 
 "Unlimited folders, labels, and filters" = "Neomezený počet složek, štítků a filtrů";
 
@@ -102,7 +102,7 @@
 
 "Extend subscription" = "Prodloužit předplatné";
 
-"%@ of %@" = "%@ z(e) %@";
+"%@ of %@" = "%@ z %@";
 
 "Connection issues" = "Problémy s připojením";
 

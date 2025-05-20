@@ -1,21 +1,21 @@
-"APIs_malformed_url_request" = "Something went wrong, and we couldn't fulfil your request. If the issue persists, please contact customer support.";
+"APIs_malformed_url_request" = "Hiba történt, és nem tudtuk teljesíteni a kérését. Ha a probléma továbbra is fennáll, kérjük, lépjen kapcsolatba az ügyfélszolgálattal.";
 
-"Plans_Manager_impossible_to_get_user_uuid" = "It was impossible to get the user’s UUID for the transaction";
+"Plans_Manager_impossible_to_get_user_uuid" = "Nem sikerült lekérni a felhasználó UUID-jét a tranzakcióhoz";
 
-"Plans_Manager_impossible_to_match_plan" = "It was impossible to match the Proton Plan to an Apple Store plan";
+"Plans_Manager_impossible_to_match_plan" = "Nem sikerült összevetni a Proton Csomagot egy Apple Store csomaggal.";
 
-"Plans_Manager_impossible_to_restore_transactions" = "It was impossible to restore transactions, please contact customer support";
+"Plans_Manager_impossible_to_restore_transactions" = "A tranzakciók helyreállítása lehetetlen volt, kérjük, forduljon az ügyfélszolgálathoz.";
 
-"Plans_Manager_Transaction_cancelled_by_user" = "The transaction has been cancelled by the user";
+"Plans_Manager_Transaction_cancelled_by_user" = "A tranzakciót a felhasználó megszakította.";
 
-"Plans_Manager_Transaction_unknown_error" = "An unexpected error occured, if this persists, please contact customer support";
+"Plans_Manager_Transaction_unknown_error" = "Váratlan hiba történt. Ha ez továbbra is fennáll, kérjük, forduljon az ügyfélszolgálathoz.";
 
-"Plans_Managere_peding_transaction_received" = "Unexpected pending transaction received";
+"Plans_Managere_peding_transaction_received" = "Váratlan függőben lévő tranzakció érkezett.";
 
-"PlansComposer_unable_to_fetch_currentSub" = "Unable to fetch the current subscription";
+"PlansComposer_unable_to_fetch_currentSub" = "Nem sikerült lekérni az aktuális előfizetést";
 
-"Remote_manager_error" = "Something went wrong and we couldn't fulfill your request. If the issue persists, please contact customer support.";
+"Remote_manager_error" = "Hiba történt, és nem tudtuk teljesíteni a kérését. Ha a probléma továbbra is fennáll, kérjük, lépjen kapcsolatba az ügyfélszolgálattal.";
 
-"SK_Receipt_impossible_to_get_receipt" = "Impossible to get transaction receipt data from Apple";
+"SK_Receipt_impossible_to_get_receipt" = "Nem lehet megszerezni a tranzakciót visszaigazoló adatokat az Apple-től";
 
-"Transaction_Handler_plan_not_found" = "It was impossible to find the name of the plan you’re trying to purchase. If the issue persists please contact customer support";
+"Transaction_Handler_plan_not_found" = "Lehetetlen volt megtalálni a csomag nevét, amit megpróbál megvásárolni. Ha a probléma továbbra is fennáll, kérjük, forduljon az ügyfélszolgálathoz.";

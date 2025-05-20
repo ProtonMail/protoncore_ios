@@ -433,3 +433,5 @@
 "Tap **Scan QR code**" = "Pulsa **Escanear código QR**";
 
 "Tap into **Settings**, then tap **Sign in to another device**" = "Pulsa en **Ajustes**, luego pulsa **Iniciar sesión en otro dispositivo**";
+
+"Password must contain:" = "La contraseña debe contener:";

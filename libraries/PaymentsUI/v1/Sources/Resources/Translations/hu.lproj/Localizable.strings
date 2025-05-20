@@ -2,134 +2,134 @@
 
 "Cancel" = "Törlés";
 
-"Warning" = "Warning";
+"Warning" = "Figyelem";
 
-"Select a plan" = "Select a plan";
+"Select a plan" = "Válasszon csomagot";
 
-"Current plan" = "Current plan";
+"Current plan" = "Jelenlegi csomag";
 
-"Subscription" = "Subscription";
+"Subscription" = "Előfizetés";
 
-"Upgrade your plan" = "Upgrade your plan";
+"Upgrade your plan" = "Fejlessze a csomagját";
 
-"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Only annual subscriptions without auto-renewal are available inside the mobile app.";
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "A mobilalkalmazásban csak éves előfizetések érhetők el, automatikus megújítás nélkül.";
 
-"You cannot manage subscriptions inside the mobile application." = "You cannot manage subscriptions inside the mobile application.";
+"You cannot manage subscriptions inside the mobile application." = "Nem lehet kezelni az előfizetéseket a mobil alkalmazásban.";
 
-"Your plan will automatically renew on %@" = "Your plan will automatically renew on %@";
+"Your plan will automatically renew on %@" = "A csomagja automatikusan megújul ekkor: %@";
 
-"Current plan will expire on %@" = "Current plan will expire on %@";
+"Current plan will expire on %@" = "Jelenlegi csomagja lejár: %@";
 
-"Contact an administrator to make changes to your Proton subscription." = "Contact an administrator to make changes to your Proton subscription.";
+"Contact an administrator to make changes to your Proton subscription." = "Lépjen kapcsolatba egy rendszergazdával a Proton előfizetésén végzett módosításokhoz.";
 
-"%1$@ of %2$@" = "%1$@ of %2$@";
+"%1$@ of %2$@" = "%1$@ / %2$@";
 
-"%@ storage" = "%@ storage";
+"%@ storage" = "%@ tárhely";
 
-"%@ storage / user" = "%@ storage / user";
+"%@ storage / user" = "%@ tárhely / felhasználó";
 
-"for %@" = "for %@";
+"for %@" = "%@ számára";
 
-"Custom email addresses" = "Custom email addresses";
+"Custom email addresses" = "Egyéni e-mail címek";
 
-"Priority customer support" = "Priority customer support";
+"Priority customer support" = "Prioritásos ügyfélszolgálat";
 
-"Adblocker (NetShield)" = "Adblocker (NetShield)";
+"Adblocker (NetShield)" = "Reklámblokkoló (NetShield)";
 
-"Streaming service support" = "Streaming service support";
+"Streaming service support" = "Videó szolgáltatások támogatása";
 
-"High speed" = "High speed";
+"High speed" = "Nagy sebesség";
 
-"Highest speed" = "Highest speed";
+"Highest speed" = "Legnagyobb sebesség";
 
-"Multi-user support" = "Multi-user support";
+"Multi-user support" = "Többfelhasználós lehetőség";
 
-"The basic for private and secure communications." = "The basic for private and secure communications.";
+"The basic for private and secure communications." = "A privát és biztonságos kommunikáció alapja.";
 
-"Full-featured mailbox with advanced protection." = "Full-featured mailbox with advanced protection.";
+"Full-featured mailbox with advanced protection." = "Teljes funkcionalitású postafiók, fejlett védelemmel.";
 
-"Limited time offer" = "Limited time offer";
+"Limited time offer" = "Korlátozott idejű ajánlat";
 
-"Complete payment?" = "Complete payment?";
+"Complete payment?" = "Fizetés befejezése?";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "A Proton Bundle csomagra vonatkozó beszerzés már elindult. Nyomja meg a tovább gombot a fizetés feldolgozásának befejezéséhez és a fiók létrehozásához.";
 
-"Complete payment" = "Complete payment";
+"Complete payment" = "Fizetés befejezése";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "The account setup process could not be finalized due to an unexpected error.\nPlease try again.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "A fiókbeállítási folyamat nem fejeződött be váratlan hiba miatt.\nKérjük, próbálkozzon újra.";
 
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase.";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Az IAP vásárlási folyamat elindult. Kérjük, kövesse az Apple utasításait a vásárlás befejezéséhez vagy megszakításához.";
 
-"In app payments are temporarily unavailable." = "In app payments are temporarily unavailable.";
+"In app payments are temporarily unavailable." = "Az alkalmazáson belüli fizetések átmenetileg nem érhetők el.";
 
-"One plan for all Proton services" = "One plan for all Proton services";
+"One plan for all Proton services" = "Egy csomag az összes Proton szolgáltatáshoz";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "The no-cost starter account designed to empower everyone with privacy by default.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "Az ingyenes kezdő fiók mindenkit felvértez alapvető adatvédelemmel.";
 
-"The privacy-first email and calendar solution for your everyday communication needs." = "The privacy-first email and calendar solution for your everyday communication needs.";
+"The privacy-first email and calendar solution for your everyday communication needs." = "Az adatvédelem-központú e-mail és naptár megoldás a mindennapi kommunikációjában.";
 
-"Your privacy and security are our priority." = "Your privacy and security are our priority.";
+"Your privacy and security are our priority." = "Az Ön adatvédelme és biztonsága a legfontosabb számunkra.";
 
-"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "The storage-focused plan with 200 GB of cloud storage to keep your files private.";
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "A tárhelyközpontú csomag 200 GB felhő tárhellyel fájljainak privát tárolásához.";
 
-"The ultimate privacy pack with access to all premium Proton services." = "The ultimate privacy pack with access to all premium Proton services.";
+"The ultimate privacy pack with access to all premium Proton services." = "A teljes adatvédelmi csomag, amellyel hozzáférhet minden prémium Proton szolgáltatáshoz.";
 
-"Only non-renewing annual subscriptions are available via this app" = "Only non-renewing annual subscriptions are available via this app";
+"Only non-renewing annual subscriptions are available via this app" = "Ezen az alkalmazáson keresztül csak nem megújuló éves előfizetések érhetők el.";
 
-"Your subscription cannot be managed inside the mobile app." = "Your subscription cannot be managed inside the mobile app.";
+"Your subscription cannot be managed inside the mobile app." = "Az előfizetése nem kezelhető a mobilalkalmazásban.";
 
-"Unlimited folders, labels, and filters" = "Unlimited folders, labels, and filters";
+"Unlimited folders, labels, and filters" = "Korlátlan számú mappa, címkék és szűrők";
 
-"Up to %@ storage" = "Up to %@ storage";
+"Up to %@ storage" = "Legfeljebb %@ tárhely";
 
-"Free VPN on a single device" = "Free VPN on a single device";
+"Free VPN on a single device" = "Ingyenes VPN egyetlen eszközön";
 
-"Highest VPN speed" = "Highest VPN speed";
+"Highest VPN speed" = "Legnagyobb VPN sebesség";
 
-"Built-in ad-blocker (NetShield)" = "Built-in ad-blocker (NetShield)";
+"Built-in ad-blocker (NetShield)" = "Beépített reklámblokkoló (NetShield)";
 
-"Access to streaming services globally" = "Access to streaming services globally";
+"Access to streaming services globally" = "Hozzáférés videózási szolgáltatásokhoz világszerte";
 
-"Secure Core servers" = "Secure Core servers";
+"Secure Core servers" = "Secure Core szerverek";
 
-"TOR over VPN" = "Tor over VPN";
+"TOR over VPN" = "Tor VPN-en";
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "Get %@";
+"Get %@" = "%@ beszerzése";
 
-"Get Proton for free" = "Get Proton for free";
+"Get Proton for free" = "Szerezze meg a Protont ingyen";
 
-"Extend subscription" = "Extend subscription";
+"Extend subscription" = "Előfizetés meghosszabbítása";
 
-"%@ of %@" = "%@ of %@";
+"%@ of %@" = "%@ / %@";
 
-"Connection issues" = "Connection issues";
+"Connection issues" = "Kapcsolódási problémák";
 
-"Check your internet connection" = "Check your internet connection";
+"Check your internet connection" = "Ellenőrizze internetkapcsolatát";
 
-"Strict no-logs policy" = "Strict no-logs policy";
+"Strict no-logs policy" = "Szigorú nincs-naplózás irányelv";
 
-"Plan successfully upgraded" = "Plan successfully upgraded";
+"Plan successfully upgraded" = "Csomag sikeresen frissítve";
 
-"Integrated 2FA authenticator" = "Integrated 2FA authenticator";
+"Integrated 2FA authenticator" = "Beépített kétlépcsős hitelesítés";
 
-"Priority support" = "Priority support";
+"Priority support" = "Elsőbbségi támogatás";
 
-"Unlimited devices" = "Unlimited devices";
+"Unlimited devices" = "Korlátlan számú eszköz";
 
-"Unlimited email aliases" = "Unlimited email aliases";
+"Unlimited email aliases" = "Korlátlan e-mail álnév";
 
-"Unlimited logins and notes" = "Unlimited logins and notes";
+"Unlimited logins and notes" = "Korlátlan bejelentkezés és jegyzet";
 
-"Custom fields" = "Custom fields";
+"Custom fields" = "Egyéni mezők";
 
-"For next-level password management and identity protection." = "For next-level password management and identity protection.";
+"For next-level password management and identity protection." = "A fejlettebb jelszókezeléshez és személyazonosság-védelemhez.";
 
-"Pay monthly" = "Pay monthly";
+"Pay monthly" = "Fizetés havonta";
 
-"Pay annually" = "Pay annually";
+"Pay annually" = "Fizetés évente";
 
-"Pay every two years" = "Pay every two years";
+"Pay every two years" = "Fizetés 2 évente";
 
-"Free" = "Free";
+"Free" = "Ingyenes";

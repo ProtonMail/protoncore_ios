@@ -24,11 +24,11 @@
 
 "%1$@ of %2$@" = "%1$@ из %2$@";
 
-"%@ storage" = "%@ storage";
+"%@ storage" = "Объем хранилища: %@";
 
-"%@ storage / user" = "%@ storage / user";
+"%@ storage / user" = "Объем хранилища на пользователя: %@";
 
-"for %@" = "for %@";
+"for %@" = "для %@";
 
 "Custom email addresses" = "Пользовательские адреса электронной почты";
 
@@ -36,7 +36,7 @@
 
 "Adblocker (NetShield)" = "Блокировщик рекламы (NetShield)";
 
-"Streaming service support" = "Поддержка стриминговых сервисов";
+"Streaming service support" = "Поддержка служб трансляции";
 
 "High speed" = "Высокая скорость";
 
@@ -44,51 +44,51 @@
 
 "Multi-user support" = "Многопользовательская поддержка";
 
-"The basic for private and secure communications." = "Основа для конфиденциальных и защищенных коммуникаций.";
+"The basic for private and secure communications." = "Основа для приватного и защищенного общения.";
 
-"Full-featured mailbox with advanced protection." = "Полнофункциональный почтовый ящик с расширенной защитой.";
+"Full-featured mailbox with advanced protection." = "Полнофункциональный почтовый ящик с передовой защитой.";
 
 "Limited time offer" = "Ограниченное предложение";
 
 "Complete payment?" = "Завершить оплату?";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Покупка тарифа Proton Bundle уже начата. Нажмите кнопку \"Продолжить\", чтобы завершить обработку платежа и создать свой аккаунт";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Покупка тарифа Proton Bundle уже начата. Нажмите Продолжить, чтобы завершить обработку платежа и создать свой аккаунт";
 
 "Complete payment" = "Завершить оплату";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "The account setup process could not be finalized due to an unexpected error.\nPlease try again.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Процесс настройки аккаунта не удалось завершить из-за непредвиденной ошибки.\nПопробуйте еще раз.";
 
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Процесс покупки IAP начался. Пожалуйста, следуйте инструкциям Apple, чтобы завершить или отменить покупку.";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Процесс покупки IAP начался. Следуйте инструкциям Apple, чтобы завершить или отменить покупку.";
 
-"In app payments are temporarily unavailable." = "In app payments are temporarily unavailable.";
+"In app payments are temporarily unavailable." = "Платежи в приложении временно недоступны.";
 
 "One plan for all Proton services" = "Единый тариф для всех служб Proton";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "The no-cost starter account designed to empower everyone with privacy by default.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "Бесплатный стартовый аккаунт, призванный обеспечить каждому приватность по умолчанию.";
 
-"The privacy-first email and calendar solution for your everyday communication needs." = "The privacy-first email and calendar solution for your everyday communication needs.";
+"The privacy-first email and calendar solution for your everyday communication needs." = "Электронная почта и календарь, ориентированные на приватность, для ежедневного общения.";
 
-"Your privacy and security are our priority." = "Наш приоритет — ваша конфиденциальность и безопасность.";
+"Your privacy and security are our priority." = "Наши приоритеты - ваша приватность и безопасность.";
 
-"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "The storage-focused plan with 200 GB of cloud storage to keep your files private.";
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Тариф, ориентированный на хранение данных, с 200 ГБ облачного хранилища для сохранения приватности ваших файлов.";
 
-"The ultimate privacy pack with access to all premium Proton services." = "The ultimate privacy pack with access to all premium Proton services.";
+"The ultimate privacy pack with access to all premium Proton services." = "Пакет с максимальным уровнем приватности и доступом ко всем платным услугам Proton.";
 
-"Only non-renewing annual subscriptions are available via this app" = "Only non-renewing annual subscriptions are available via this app";
+"Only non-renewing annual subscriptions are available via this app" = "Через это приложение доступны только невозобновляемые годовые подписки";
 
-"Your subscription cannot be managed inside the mobile app." = "Your subscription cannot be managed inside the mobile app.";
+"Your subscription cannot be managed inside the mobile app." = "Вы не можете управлять подпиской из мобильного приложения.";
 
 "Unlimited folders, labels, and filters" = "Неограниченное количество папок, ярлыков и фильтров";
 
-"Up to %@ storage" = "Up to %@ storage";
+"Up to %@ storage" = "До %@ хранилища";
 
-"Free VPN on a single device" = "Бесплатный VPN на одном устройстве";
+"Free VPN on a single device" = "Бесплатная VPN на одном устройстве";
 
 "Highest VPN speed" = "Наивысшая скорость VPN";
 
 "Built-in ad-blocker (NetShield)" = "Встроенный блокировщик рекламы (NetShield)";
 
-"Access to streaming services globally" = "Доступ к стриминговым сервисам по всему миру";
+"Access to streaming services globally" = "Доступ к услугам трансляций по всему миру";
 
 "Secure Core servers" = "Серверы Secure Core";
 
@@ -104,32 +104,32 @@
 
 "%@ of %@" = "%@ из %@";
 
-"Connection issues" = "Connection issues";
+"Connection issues" = "Проблемы с подключением";
 
 "Check your internet connection" = "Проверьте подключение к Интернету";
 
 "Strict no-logs policy" = "Строгая политика отсутствия журналов активности";
 
-"Plan successfully upgraded" = "Plan successfully upgraded";
+"Plan successfully upgraded" = "Тариф успешно улучшен";
 
-"Integrated 2FA authenticator" = "Integrated 2FA authenticator";
+"Integrated 2FA authenticator" = "Встроенный двухфакторный аутентификатор";
 
-"Priority support" = "Priority support";
+"Priority support" = "Приоритетная поддержка";
 
 "Unlimited devices" = "Неограниченное количество устройств";
 
-"Unlimited email aliases" = "Unlimited email aliases";
+"Unlimited email aliases" = "Неограниченное количество псевдонимов электронной почты";
 
-"Unlimited logins and notes" = "Unlimited logins and notes";
+"Unlimited logins and notes" = "Неограниченное количество имен пользователей и заметок";
 
-"Custom fields" = "Custom fields";
+"Custom fields" = "Настраиваемые поля";
 
-"For next-level password management and identity protection." = "For next-level password management and identity protection.";
+"For next-level password management and identity protection." = "Управление паролями и защита личных данных нового уровня.";
 
-"Pay monthly" = "Pay monthly";
+"Pay monthly" = "Оплачивать ежемесячно";
 
-"Pay annually" = "Pay annually";
+"Pay annually" = "Оплачивать ежегодно";
 
-"Pay every two years" = "Pay every two years";
+"Pay every two years" = "Оплачивать каждые 2 года";
 
 "Free" = "Free";
