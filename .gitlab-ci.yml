@@ -23,10 +23,9 @@ include:
 
 stages:
   - i18n
-  - releasing
   - linting
-  - deploy
   - unit_test
+  - deploy
   - ui_and_integration_test
   - report
   - cleanup
@@ -43,12 +42,6 @@ variables:
   IMAGES: $IMAGES
   FEATURES: $FEATURES
 
-.set_up_simulator: &set_up_simulator
-  - DEVICE_NAME=$CI_PIPELINE_ID-$CI_JOB_NAME
-  - DEVICE_OS=17.5
-  - DEVICE_RUNTIME=iOS$DEVICE_OS
-  - xcrun simctl create $DEVICE_NAME "iPhone 15" $DEVICE_RUNTIME
-
 .add_private_ssh_key: &add_private_ssh_key
   - echo "$CI_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
 
@@ -56,9 +49,6 @@ variables:
   - rm -rf ../pmconstants
   - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@${PROTON_GIT_URL}/apple/shared/pmconstants ../pmconstants
 
-.tear_down_simulator: &tear_down_simulator
-  - DEVICE_NAME=$CI_PIPELINE_ID-$CI_JOB_NAME
-  - xcrun simctl delete $DEVICE_NAME
 
 .rules_mr: &rules_mr
   - if: '$CI_PIPELINE_SOURCE == "web"'
@@ -85,34 +75,6 @@ workflow:
     - if: $CI_COMMIT_BRANCH
       variables:
         TEST: "manual"
-
-releasing:
-  stage: releasing
-  needs: []
-  artifacts:
-    when: always
-    name: "ReleaseNotes-$CI_COMMIT_SHA"
-    paths:
-      - ReleaseNotes.md
-    expire_in: never
-  script:
-    - git remote set-url origin https://protoncore:$PROTONCORE_ACCESS_TOKEN@${PROTON_GIT_URL}/apple/shared/protoncore.git
-    - git remote -v
-    - bash scripts/finish_release_mr_with_new_version.sh
-  <<: &release_jobs
-    rules:
-      - if: '$CI_PIPELINE_SOURCE == "web"'
-        when: never
-      - if: '$CI_PIPELINE_SOURCE == "schedule"'
-        when: never
-      - if: '$CI_COMMIT_TITLE =~ /^Merge branch .release\/.+ into .+$/'
-        when: always
-      - if: "$CI_COMMIT_BRANCH"
-        when: never
-    allow_failure: false
-    interruptible: false
-    tags:
-      - macstadium-m1-protoncore
 
 github:mirror:
   stage: github
@@ -184,11 +146,9 @@ test:unit:ios:all:
   before_script:
     - *add_private_ssh_key
     - *clone_pmconstants
-    - *set_up_simulator
   script:
-    - fastlane run_unit_tests device_name:$DEVICE_NAME
+    - fastlane run_unit_tests
   after_script:
-    - *tear_down_simulator
     - fastlane cleanup_unit_tests
     - ssh-add -D
   artifacts:
@@ -234,11 +194,9 @@ test:unit:localization:
   interruptible: true
   before_script:
     - *add_private_ssh_key
-    - *set_up_simulator
   script:
-    - fastlane run_localization_tests device_name:$DEVICE_NAME
+    - fastlane run_localization_tests
   after_script:
-    - *tear_down_simulator
     - fastlane cleanup_localization_tests
   variables:
     GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-3
@@ -261,11 +219,9 @@ test:unit:integration:
   before_script:
     - *add_private_ssh_key
     - *clone_pmconstants
-    - *set_up_simulator
   script:
-    - fastlane run_integration_tests device_name:$DEVICE_NAME xcargs:DYNAMIC_DOMAIN="${DYNAMIC_DOMAIN}"
+    - fastlane run_integration_tests xcargs:DYNAMIC_DOMAIN="${DYNAMIC_DOMAIN}"
   after_script:
-    - *tear_down_simulator
     - fastlane cleanup_integration_tests
   artifacts:
     paths:

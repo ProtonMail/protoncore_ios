@@ -4,12 +4,8 @@ ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "180"
 
 # --- Functions definition ---
 
-def default_destination
-  "platform=iOS Simulator,name=iPhone 15,OS=17.5"
-end
-
-def device_name(arguments)
-  arguments.has_key?(:device_name) ? arguments[:device_name] : 'iPhone 15'
+def test_device
+  'iPhone 16 (18.3)'
 end
 
 def derived_data_path(prefix)
@@ -54,7 +50,7 @@ end
 # --- Test lanes ---
 
 lane :run_unit_tests do |arguments|
-  execute_tests("UnitTests-iOS", "UnitTests", device_name(arguments), nil, arguments)
+  execute_tests("UnitTests-iOS", "UnitTests", test_device, nil, arguments)
 end
 
 lane :run_unit_tests_macos do |arguments|
@@ -62,7 +58,7 @@ lane :run_unit_tests_macos do |arguments|
 end
 
 lane :run_integration_tests do |arguments|
-  execute_tests("IntegrationTests", "IntegrationTests", device_name(arguments), nil, arguments)
+  execute_tests("IntegrationTests", "IntegrationTests", test_device, nil, arguments)
 end
 
 lane :run_localization_tests do |arguments|
@@ -73,7 +69,7 @@ lane :run_localization_tests do |arguments|
     testplan: "CoreTranslationTests",
     derived_data_path: derived_data_path("CoreTranslationTests"),
     prelaunch_simulator: false,
-    device: device_name(arguments),
+    device: test_device,
     xcargs: arguments[:xcargs],
     clean: false,
     skip_build: true,
