@@ -108,6 +108,12 @@ linting:code-quality:
   script:
     - env
     - tools/portable_swiftlint/swiftlint --config .swiftlint.yml --reporter junit > swiftlint.xml
+    - |
+      # Lint commits on branches only (not tags)
+      if [ -z "$CI_COMMIT_TAG" ] && [ "$CI_MERGE_REQUEST_EVENT_TYPE" != "merge_train" ]; then
+          mint run git-lhc lint --verbose --train core # Lint commit history
+      fi
+
   rules: &rules_mr_and_develop
     - if: $CI_PIPELINE_SOURCE == "push"
     - if: $TEST == "manual"
