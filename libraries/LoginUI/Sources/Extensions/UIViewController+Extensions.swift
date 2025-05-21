@@ -152,6 +152,7 @@ extension LoginErrorCapable {
 enum SignUpInvalidPasswordReason {
     case notEqual
     case notFulfilling(PasswordRestrictions)
+    case policyViolation
 }
 
 enum InvalidVerificationReson {
@@ -189,6 +190,8 @@ extension SignUpErrorCapable {
         case .passwordShouldHaveAtLeastEightCharacters:
             showBanner(message: LUITranslation.password_field_minimum_length_hint.l10n)
             self.invalidPassword(reason: .notFulfilling(.atLeastEightCharactersLong))
+        case .passwordPolicyViolation:
+            self.invalidPassword(reason: .policyViolation)
         case .passwordNotEqual:
             showBanner(message: LUITranslation.error_password_not_equal.l10n)
             self.invalidPassword(reason: .notEqual)

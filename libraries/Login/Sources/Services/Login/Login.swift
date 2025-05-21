@@ -147,6 +147,7 @@ public enum SignupError: Error {
     case passwordEmpty
     case passwordNotEqual
     case passwordShouldHaveAtLeastEightCharacters
+    case passwordPolicyViolation
     case generic(message: String, code: Int, originalError: Error)
     case apiMightBeBlocked(message: String, originalError: Error)
     case unknown

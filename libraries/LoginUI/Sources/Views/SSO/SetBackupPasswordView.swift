@@ -62,7 +62,7 @@ public struct SetBackupPasswordView: View {
                 if viewModel.isPasswordPolicyEnabled {
                     PasswordPolicyView(viewModel: viewModel.passwordPolicyViewModel)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.vertical, -Constants.itemSpacing + 4)
+                        .padding(.vertical, -Constants.itemSpacing + 8)
                 }
 
                 PCTextField(
