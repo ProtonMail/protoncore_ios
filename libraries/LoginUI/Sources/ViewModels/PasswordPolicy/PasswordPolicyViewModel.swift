@@ -59,7 +59,6 @@ extension PasswordPolicyView {
                 getPasswordPoliciesUseCase = GetPasswordPolicies(apiService: apiService)
             }
 
-
             self.evaluatedPasswordPolicies = []
         }
 

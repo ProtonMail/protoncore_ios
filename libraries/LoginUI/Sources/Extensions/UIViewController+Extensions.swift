@@ -264,6 +264,7 @@ extension Focusable {
 }
 
 final class IntrinsicSizeHostingView<Content: View>: UIView {
+    private var heightConstraint: NSLayoutConstraint?
     private let hostingController: UIHostingController<Content>
 
     init(rootView: Content) {
@@ -281,13 +282,24 @@ final class IntrinsicSizeHostingView<Content: View>: UIView {
         ])
     }
 
+    func updateHeight(_ height: CGFloat) {
+        invalidateIntrinsicContentSize()
+        setNeedsLayout()
+        layoutIfNeeded()
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     override var intrinsicContentSize: CGSize {
         layoutIfNeeded()
-        return hostingController.sizeThatFits(in: CGSize(width: bounds.width, height: UIView.layoutFittingCompressedSize.height))
+        layoutIfNeeded()
+        let size = hostingController.sizeThatFits(
+            in: CGSize(width: bounds.width,
+                       height: UIView.layoutFittingCompressedSize.height)
+        )
+        return size
     }
 }
 

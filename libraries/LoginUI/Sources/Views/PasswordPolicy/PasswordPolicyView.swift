@@ -29,8 +29,11 @@ public struct PasswordPolicyView: View {
 
     @ObservedObject var viewModel: ViewModel
 
-    public init(viewModel: ViewModel) {
+    public var onHeightChange: ((CGFloat) -> Void)?
+
+    public init(viewModel: ViewModel, onHeightChange: ((CGFloat) -> Void)? = nil) {
         self.viewModel = viewModel
+        self.onHeightChange = onHeightChange
     }
 
     private enum Constants {
@@ -42,6 +45,22 @@ public struct PasswordPolicyView: View {
     }
 
     public var body: some View {
+        content
+            .background(
+                GeometryReader { geo in
+                    Color.clear
+                        .onAppear {
+                            onHeightChange?(geo.size.height)
+                        }
+                        .onChange(of: viewModel.requirementsList) { _ in
+                            onHeightChange?(geo.size.height)
+                        }
+                }
+            )
+    }
+
+    @ViewBuilder
+    private var content: some View {
         Group {
             if viewModel.exceptionalErrorMessage != nil || !viewModel.requirementsList.isEmpty {
                 VStack(alignment: .leading, spacing: Constants.verticalSpacing) {
@@ -61,6 +80,7 @@ public struct PasswordPolicyView: View {
                 Color.clear.frame(height: 1) // <- this gives it a tiny height when empty
             }
         }
+        .background(ColorProvider.BackgroundNorm)
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 

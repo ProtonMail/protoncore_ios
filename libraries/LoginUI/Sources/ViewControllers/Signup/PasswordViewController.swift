@@ -128,11 +128,15 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable, Produ
                 return
             }
 
-            passwordPolicyContainer.backgroundColor = ColorProvider.BackgroundNorm
-
-            passwordPolicyHostingView = IntrinsicSizeHostingView(
-                rootView: PasswordPolicyView(viewModel: passwordPolicyViewModel)
+            let passwordPolicyView = PasswordPolicyView(
+                viewModel: passwordPolicyViewModel,
+                onHeightChange: { [weak self] height in
+                    self?.passwordPolicyHostingView?.updateHeight(height)
+                }
             )
+
+            passwordPolicyHostingView = IntrinsicSizeHostingView(rootView: passwordPolicyView)
+            passwordPolicyHostingView.backgroundColor = ColorProvider.BackgroundNorm
             passwordPolicyContainer.addSubview(passwordPolicyHostingView)
 
             passwordPolicyHostingView.translatesAutoresizingMaskIntoConstraints = false
@@ -275,20 +279,6 @@ extension PasswordViewController: PMTextFieldDelegate {
     func didChangeValue(_ textField: PMTextField, value: String) {
         if textField == self.passwordTextField {
             passwordPolicyViewModel.checkPassword(value)
-
-            // Trigger layout update
-            DispatchQueue.main.async {
-                // Nest one extra layer because `checkPassword()` above updates the SwiftUI View
-                // but this is not ready for UIKit until one render pass later.
-                DispatchQueue.main.async {
-                    self.passwordPolicyHostingView.invalidateIntrinsicContentSize()
-                    self.passwordPolicyHostingView.setNeedsLayout()
-                    self.passwordPolicyHostingView.layoutIfNeeded()
-
-                    self.scrollView.setNeedsLayout()
-                    self.scrollView.layoutIfNeeded()
-                }
-            }
         }
     }
 
