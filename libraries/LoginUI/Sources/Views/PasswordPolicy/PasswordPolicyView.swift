@@ -42,16 +42,26 @@ public struct PasswordPolicyView: View {
     }
 
     public var body: some View {
-        VStack(alignment: .leading, spacing: Constants.verticalSpacing) {
-            if let exceptionalErrorMessage = viewModel.exceptionalErrorMessage {
-                Text(exceptionalErrorMessage).foregroundColor(ColorProvider.NotificationError)
-                    .font(.caption)
-            }
+        Group {
+            if viewModel.exceptionalErrorMessage != nil || !viewModel.requirementsList.isEmpty {
+                VStack(alignment: .leading, spacing: Constants.verticalSpacing) {
+                    if let exceptionalErrorMessage = viewModel.exceptionalErrorMessage {
+                        Text(exceptionalErrorMessage)
+                            .foregroundColor(ColorProvider.NotificationError)
+                            .font(.caption)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
 
-            if viewModel.requirementsList.count > 0 {
-                BulletedListView(items: viewModel.requirementsList)
+                    if viewModel.requirementsList.count > 0 {
+                        BulletedListView(items: viewModel.requirementsList)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                }
+            } else {
+                EmptyView()
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     struct BulletedListView: View {

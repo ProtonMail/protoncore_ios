@@ -22,14 +22,15 @@
 #if os(iOS)
 
 import UIKit
+import ProtonCoreFeatureFlags
+import ProtonCoreFoundations
+import ProtonCoreHumanVerification
+import ProtonCoreLog
 import ProtonCoreLogin
 import ProtonCoreNetworking
-import ProtonCoreUIFoundations
 import ProtonCorePayments
 import ProtonCorePaymentsUI
-import ProtonCoreHumanVerification
-import ProtonCoreFoundations
-import ProtonCoreLog
+import ProtonCoreUIFoundations
 
 enum FlowStartKind {
     case over(UIViewController, UIModalTransitionStyle)
@@ -191,7 +192,11 @@ final class SignupCoordinator {
     private func showPasswordViewController() {
         guard let signupParameters = signupParameters else { return }
         let passwordViewController = UIStoryboard.instantiateInSignup(PasswordViewController.self, inAppTheme: customization.inAppTheme)
+        passwordViewController.isPasswordPolicyEnabled =
+            !FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.passwordPolicyDisabled,
+                                                     reloadValue: true)
         passwordViewController.viewModel = container.makePasswordViewModel()
+        passwordViewController.apiService = container.api
         passwordViewController.customErrorPresenter = customization.customErrorPresenter
         passwordViewController.delegate = self
         passwordViewController.signupAccountType = signupAccountTypeManager.accountType
