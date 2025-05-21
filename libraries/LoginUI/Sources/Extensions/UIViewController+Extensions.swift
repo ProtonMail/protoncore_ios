@@ -26,6 +26,7 @@ import UIKit
 import ProtonCoreLogin
 import ProtonCoreUIFoundations
 import ProtonCoreUtilities
+import SwiftUI
 
 extension UIViewController {
     func showBanner(message: String, style: PMBannerNewStyle = .error, button: String? = nil, action: (() -> Void)? = nil, position: PMBannerPosition) {
@@ -259,6 +260,34 @@ extension Focusable {
 
     func cancelFocus() {
         self.focusNoMore = true
+    }
+}
+
+final class IntrinsicSizeHostingView<Content: View>: UIView {
+    private let hostingController: UIHostingController<Content>
+
+    init(rootView: Content) {
+        self.hostingController = UIHostingController(rootView: rootView)
+        super.init(frame: .zero)
+
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(hostingController.view)
+
+        NSLayoutConstraint.activate([
+            hostingController.view.topAnchor.constraint(equalTo: topAnchor),
+            hostingController.view.bottomAnchor.constraint(equalTo: bottomAnchor),
+            hostingController.view.leadingAnchor.constraint(equalTo: leadingAnchor),
+            hostingController.view.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override var intrinsicContentSize: CGSize {
+        layoutIfNeeded()
+        return hostingController.sizeThatFits(in: CGSize(width: bounds.width, height: UIView.layoutFittingCompressedSize.height))
     }
 }
 

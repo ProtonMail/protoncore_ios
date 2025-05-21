@@ -121,31 +121,29 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable, Produ
         }
     }
 
+    private var passwordPolicyHostingView: IntrinsicSizeHostingView<PasswordPolicyView>!
     @IBOutlet weak var passwordPolicyContainer: UIView! {
         didSet {
             guard isPasswordPolicyEnabled else {
                 return
             }
 
-            let passwordPolicyView = PasswordPolicyView(viewModel: passwordPolicyViewModel)
-            let hostingController = UIHostingController(rootView: passwordPolicyView)
-            hostingController.view.backgroundColor = ColorProvider.BackgroundNorm
+            passwordPolicyContainer.backgroundColor = ColorProvider.BackgroundNorm
 
-            addChild(hostingController)
-            passwordPolicyContainer.addSubview(hostingController.view)
-            hostingController.didMove(toParent: self)
+            passwordPolicyHostingView = IntrinsicSizeHostingView(
+                rootView: PasswordPolicyView(viewModel: passwordPolicyViewModel)
+            )
+            passwordPolicyContainer.addSubview(passwordPolicyHostingView)
 
-            hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+            passwordPolicyHostingView.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                hostingController.view.topAnchor.constraint(equalTo: passwordPolicyContainer.topAnchor),
-                hostingController.view.bottomAnchor.constraint(equalTo: passwordPolicyContainer.bottomAnchor),
-                hostingController.view.leadingAnchor.constraint(equalTo: passwordPolicyContainer.leadingAnchor),
-                hostingController.view.trailingAnchor.constraint(equalTo: passwordPolicyContainer.trailingAnchor)
+                passwordPolicyHostingView.topAnchor.constraint(equalTo: passwordPolicyContainer.topAnchor),
+                passwordPolicyHostingView.bottomAnchor.constraint(equalTo: passwordPolicyContainer.bottomAnchor),
+                passwordPolicyHostingView.leadingAnchor.constraint(equalTo: passwordPolicyContainer.leadingAnchor),
+                passwordPolicyHostingView.trailingAnchor.constraint(equalTo: passwordPolicyContainer.trailingAnchor)
             ])
         }
     }
-
-//    @IBOutlet weak var passwordPolicyHeightConstraint: NSLayoutConstraint!
 
     var focusNoMore: Bool = false
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
@@ -277,6 +275,20 @@ extension PasswordViewController: PMTextFieldDelegate {
     func didChangeValue(_ textField: PMTextField, value: String) {
         if textField == self.passwordTextField {
             passwordPolicyViewModel.checkPassword(value)
+
+            // Trigger layout update
+            DispatchQueue.main.async {
+                // Nest one extra layer because `checkPassword()` above updates the SwiftUI View
+                // but this is not ready for UIKit until one render pass later.
+                DispatchQueue.main.async {
+                    self.passwordPolicyHostingView.invalidateIntrinsicContentSize()
+                    self.passwordPolicyHostingView.setNeedsLayout()
+                    self.passwordPolicyHostingView.layoutIfNeeded()
+
+                    self.scrollView.setNeedsLayout()
+                    self.scrollView.layoutIfNeeded()
+                }
+            }
         }
     }
 

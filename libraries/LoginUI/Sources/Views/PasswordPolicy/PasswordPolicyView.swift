@@ -58,7 +58,7 @@ public struct PasswordPolicyView: View {
                     }
                 }
             } else {
-                EmptyView()
+                Color.clear.frame(height: 1) // <- this gives it a tiny height when empty
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)

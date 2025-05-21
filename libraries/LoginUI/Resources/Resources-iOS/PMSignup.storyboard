@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,7 +24,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZM1-O3-W7Y">
-                                                <rect key="frame" x="8" y="58" width="359" height="496"/>
+                                                <rect key="frame" x="8" y="108" width="359" height="496"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" axis="vertical" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="AWR-V5-JGo">
                                                         <rect key="frame" x="8" y="7.9999999999999982" width="343" height="26.333333333333329"/>
@@ -45,7 +45,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="251" text="One account for all Proton services." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWf-De-PP6">
-                                                        <rect key="frame" x="8" y="50.333333333333329" width="343" height="18"/>
+                                                        <rect key="frame" x="8" y="50.333333333333343" width="343" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" systemColor="systemGrayColor"/>
                                                         <nil key="highlightedColor"/>
@@ -213,7 +213,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xwd-ef-Nhl">
-                                        <rect key="frame" x="8" y="58" width="359" height="363.66666666666669"/>
+                                        <rect key="frame" x="8" y="108.00000000000003" width="359" height="367.66666666666674"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create your password" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCl-ar-NAN">
                                                 <rect key="frame" x="8" y="7.9999999999999982" width="343" height="26.333333333333329"/>
@@ -222,40 +222,46 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="80" translatesAutoresizingMaskIntoConstraints="NO" id="wJi-kj-bMv" customClass="PMTextField" customModule="ProtonCoreUIFoundations">
-                                                <rect key="frame" x="8" y="58.333333333333329" width="343" height="79.999999999999986"/>
+                                                <rect key="frame" x="8" y="58.333333333333343" width="343" height="80"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Password"/>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isPassword" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="80" translatesAutoresizingMaskIntoConstraints="NO" id="xWC-gS-6sP" customClass="PMTextField" customModule="ProtonCoreUIFoundations">
-                                                <rect key="frame" x="8" y="154.33333333333334" width="343" height="80"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Password"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isPassword" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
+                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="avd-ro-MKX" userLabel="Password Policy View">
+                                                <rect key="frame" x="8" y="142.33333333333334" width="343" height="0.0"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zji-Vi-H4O" customClass="ProtonButton" customModule="ProtonCoreUIFoundations">
-                                                <rect key="frame" x="8" y="258.33333333333331" width="343" height="34"/>
+                                                <rect key="frame" x="8" y="262.33333333333331" width="343" height="34"/>
                                                 <state key="normal" title="Next"/>
                                                 <connections>
                                                     <action selector="onNextButtonTap:" destination="oq8-ak-9hu" eventType="touchUpInside" id="QLd-tY-ome"/>
                                                 </connections>
                                             </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="By clicking Next, you agree with Proton's Terms and Conditions" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="EoW-Tr-7Xr">
-                                                <rect key="frame" x="8" y="308.33333333333331" width="343" height="47.333333333333314"/>
+                                                <rect key="frame" x="8" y="312.33333333333331" width="343" height="47.333333333333314"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                             </textView>
+                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="80" translatesAutoresizingMaskIntoConstraints="NO" id="xWC-gS-6sP" customClass="PMTextField" customModule="ProtonCoreUIFoundations">
+                                                <rect key="frame" x="8" y="158.33333333333331" width="343" height="80"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Password"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isPassword" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="EoW-Tr-7Xr" firstAttribute="leading" secondItem="Xwd-ef-Nhl" secondAttribute="leading" constant="8" id="3Fh-fs-Jua"/>
                                             <constraint firstItem="wJi-kj-bMv" firstAttribute="top" secondItem="aCl-ar-NAN" secondAttribute="bottom" constant="24" id="3mA-qG-WJJ"/>
                                             <constraint firstItem="xWC-gS-6sP" firstAttribute="trailing" secondItem="Xwd-ef-Nhl" secondAttribute="trailing" constant="-8" id="4Vo-I0-vqx"/>
+                                            <constraint firstAttribute="trailing" secondItem="avd-ro-MKX" secondAttribute="trailing" constant="8" id="6dT-d6-EGh"/>
+                                            <constraint firstItem="avd-ro-MKX" firstAttribute="leading" secondItem="Xwd-ef-Nhl" secondAttribute="leading" constant="8" id="7S8-Kl-aNp"/>
                                             <constraint firstItem="zji-Vi-H4O" firstAttribute="top" secondItem="xWC-gS-6sP" secondAttribute="bottom" constant="24" id="BmA-Zp-XoV"/>
                                             <constraint firstAttribute="bottom" secondItem="EoW-Tr-7Xr" secondAttribute="bottom" constant="8" id="D2O-8m-d0C"/>
                                             <constraint firstItem="wJi-kj-bMv" firstAttribute="trailing" secondItem="Xwd-ef-Nhl" secondAttribute="trailing" constant="-8" id="KPg-FW-5rl"/>
@@ -266,9 +272,10 @@
                                             <constraint firstItem="aCl-ar-NAN" firstAttribute="trailing" secondItem="Xwd-ef-Nhl" secondAttribute="trailing" constant="-8" id="kfR-vm-PnY"/>
                                             <constraint firstItem="wJi-kj-bMv" firstAttribute="leading" secondItem="Xwd-ef-Nhl" secondAttribute="leading" constant="8" id="m3s-M8-lzD"/>
                                             <constraint firstItem="xWC-gS-6sP" firstAttribute="leading" secondItem="Xwd-ef-Nhl" secondAttribute="leading" constant="8" id="nO0-px-GF6"/>
+                                            <constraint firstItem="avd-ro-MKX" firstAttribute="top" secondItem="wJi-kj-bMv" secondAttribute="bottom" constant="4" id="osS-Mg-ilA"/>
                                             <constraint firstAttribute="trailing" secondItem="EoW-Tr-7Xr" secondAttribute="trailing" constant="8" id="qSF-Gn-S9p"/>
                                             <constraint firstItem="aCl-ar-NAN" firstAttribute="top" secondItem="Xwd-ef-Nhl" secondAttribute="top" constant="8" id="uxI-SW-e86"/>
-                                            <constraint firstItem="xWC-gS-6sP" firstAttribute="top" secondItem="wJi-kj-bMv" secondAttribute="bottom" constant="16" id="vZ8-Bg-hqi"/>
+                                            <constraint firstItem="xWC-gS-6sP" firstAttribute="top" secondItem="avd-ro-MKX" secondAttribute="bottom" constant="16" id="w07-7y-BQK"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -294,6 +301,7 @@
                     <connections>
                         <outlet property="createPasswordTitleLabel" destination="aCl-ar-NAN" id="OVv-TK-yck"/>
                         <outlet property="nextButton" destination="zji-Vi-H4O" id="rHe-o4-hSP"/>
+                        <outlet property="passwordPolicyContainer" destination="avd-ro-MKX" id="nA9-Kh-23p"/>
                         <outlet property="passwordTextField" destination="wJi-kj-bMv" id="SGW-XR-OFh"/>
                         <outlet property="repeatPasswordTextField" destination="xWC-gS-6sP" id="4Yd-XX-sXT"/>
                         <outlet property="scrollView" destination="S0k-W5-iwt" id="yq3-Rx-wBF"/>
@@ -302,7 +310,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6n-jj-6G5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1027.536231884058" y="-618.08035714285711"/>
+            <point key="canvasLocation" x="1026.4000000000001" y="-618.4729064039409"/>
         </scene>
         <!--Recovery View Controller-->
         <scene sceneID="vlv-Z3-03s">
@@ -316,7 +324,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mmH-MH-N8x">
-                                        <rect key="frame" x="8" y="58" width="359" height="330.33333333333331"/>
+                                        <rect key="frame" x="8" y="107.99999999999997" width="359" height="330.33333333333326"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set recovery method" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="546-5J-cxx">
                                                 <rect key="frame" x="8" y="7.9999999999999982" width="343" height="26.333333333333329"/>
@@ -325,7 +333,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This will help you access your account in case you forget your password or get locked out of your account." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Rt-Fy-zQH">
-                                                <rect key="frame" x="8" y="42.333333333333329" width="343" height="54"/>
+                                                <rect key="frame" x="8" y="42.333333333333343" width="343" height="54"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -356,10 +364,10 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="350" placeholderIntrinsicHeight="80" translatesAutoresizingMaskIntoConstraints="NO" id="hen-aY-mep" customClass="PMTextField" customModule="ProtonCoreUIFoundations">
-                                                <rect key="frame" x="8" y="184.33333333333334" width="343" height="80.000000000000028"/>
+                                                <rect key="frame" x="8" y="184.33333333333331" width="343" height="80"/>
                                             </view>
                                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="350" placeholderIntrinsicHeight="80" translatesAutoresizingMaskIntoConstraints="NO" id="h0d-0U-xjK" customClass="PMTextFieldCombo" customModule="ProtonCoreUIFoundations">
-                                                <rect key="frame" x="8" y="184.33333333333334" width="343" height="80.000000000000028"/>
+                                                <rect key="frame" x="8" y="184.33333333333331" width="343" height="80"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isPassword" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
@@ -461,7 +469,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="28" estimatedRowHeight="28" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XXE-C9-cOC">
-                                <rect key="frame" x="71" y="467" width="233" height="295"/>
+                                <rect key="frame" x="71" y="467" width="233" height="261"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="233" id="aE9-p3-JhH"/>
@@ -587,7 +595,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OAR-iX-yhn">
-                                        <rect key="frame" x="8" y="58" width="359" height="322"/>
+                                        <rect key="frame" x="8" y="108" width="359" height="322"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account verification" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00i-im-2tw">
                                                 <rect key="frame" x="8" y="7.9999999999999982" width="343" height="26.333333333333329"/>
@@ -596,7 +604,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Da-BL-h3P">
-                                                <rect key="frame" x="8" y="42.333333333333321" width="343" height="71.666666666666686"/>
+                                                <rect key="frame" x="8" y="42.33333333333335" width="343" height="71.666666666666686"/>
                                                 <string key="text">For your security, we must verify that the address you entered belongs to you. We sent a verification code to paumuller@gmail.com. Please enter the code below:</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
@@ -781,7 +789,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
