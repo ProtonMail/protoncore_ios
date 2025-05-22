@@ -31,6 +31,7 @@ public struct PasswordPolicy: Codable, Equatable {
     public var requirementMessage: String
     public var errorMessage: String
     @TrimmedRegex public var regex: String
+    public var hideIfValid: Bool
 
     public enum State: Int, Codable, Equatable {
         case disabled = 0
@@ -42,7 +43,6 @@ public struct PasswordPolicy: Codable, Equatable {
 /// Disallow Common Passwords
 public extension PasswordPolicy {
     static let disallowCommonPasswordsPolicyName = "DisallowCommonPasswords"
-    static let disallowSequencesPolicyName = "DisallowSequences"
 }
 
 @propertyWrapper
@@ -76,7 +76,8 @@ public extension PasswordPolicy {
                      state: .enabled,
                      requirementMessage: "At least 8 characters",
                      errorMessage: "Password must contain at least 8 characters",
-                     regex: "/.{8,}/")
+                     regex: "/.{8,}/",
+                     hideIfValid: false)
     }
 
     static var atLeastOneNumberMock: PasswordPolicy {
@@ -84,7 +85,8 @@ public extension PasswordPolicy {
                      state: .enabled,
                      requirementMessage: "Numbers",
                      errorMessage: "Password must contain at least 1 number",
-                     regex: "/[0-9]/")
+                     regex: "/[0-9]/",
+                     hideIfValid: false)
     }
 
     static var atLeastOneSpecialCharacterMock: PasswordPolicy {
@@ -92,7 +94,8 @@ public extension PasswordPolicy {
                      state: .enabled,
                      requirementMessage: "Symbols (!&*)",
                      errorMessage: "Password must contain at least 1 special character (!&*)",
-                     regex: "/[\\*\\.\\!\\@\\$\\%\\^\\&\\#'\\\"\\`\\(\\)\\{\\}\\[\\]\\:\\;\\<\\>\\,\\.\\?\\/\\~\\_\\+\\-\\=\\|\\\\]/")
+                     regex: "/[\\*\\.\\!\\@\\$\\%\\^\\&\\#'\\\"\\`\\(\\)\\{\\}\\[\\]\\:\\;\\<\\>\\,\\.\\?\\/\\~\\_\\+\\-\\=\\|\\\\]/",
+                     hideIfValid: false)
     }
 
     static var atLeastOneUpperCaseAndOneLowercaseMock: PasswordPolicy {
@@ -100,7 +103,8 @@ public extension PasswordPolicy {
                      state: .enabled,
                      requirementMessage: "At least 1 uppercase and 1 lowercase letter",
                      errorMessage: "Password must contain at least 1 uppercase and 1 lowercase letter",
-                     regex: "/(?=.*[a-z])(?=.*[A-Z])/")
+                     regex: "/(?=.*[a-z])(?=.*[A-Z])/",
+                     hideIfValid: false)
     }
 
     static var disallowCommonPasswordsMock: PasswordPolicy {
@@ -108,7 +112,8 @@ public extension PasswordPolicy {
                      state: .enabled,
                      requirementMessage: "Something not too common",
                      errorMessage: "Password shouldn't be too common or too predictable",
-                     regex: "/^(?:(?!proton|protonmail|protonvpn|protondrive|protonpass|123456|password|12345678|qwerty|123456789|12345|1234|111111|1234567|dragon|123123|baseball|abc123|football|monkey|letmein|696969|shadow|master|666666|qwertyuiop|123321|mustang|1234567890|michael|654321|pussy|superman|1qaz2wsx|7777777|fuckyou|121212|000000|qazwsx|123qwe|killer|trustno1|jordan|jennifer|zxcvbnm|asdfgh|hunter|buster|soccer|harley|batman|andrew|tigger|sunshine|iloveyou|fuckme|2000|charlie|robert|thomas|hockey|ranger|daniel|starwars|klaster|112233|george|asshole|computer|michelle|jessica|pepper|1111|zxcvbn|555555|11111111|131313|freedom|777777|pass|fuck|maggie|159753|aaaaaa|ginger|princess|joshua|cheese|amanda|summer|love|ashley|6969|nicole|chelsea|biteme|matthew|access|yankees|987654321|dallas|austin|thunder|taylor|matrix).)*$/")
+                     regex: "/^(?:(?!proton|protonmail|protonvpn|protondrive|protonpass|123456|password|12345678|qwerty|123456789|12345|1234|111111|1234567|dragon|123123|baseball|abc123|football|monkey|letmein|696969|shadow|master|666666|qwertyuiop|123321|mustang|1234567890|michael|654321|pussy|superman|1qaz2wsx|7777777|fuckyou|121212|000000|qazwsx|123qwe|killer|trustno1|jordan|jennifer|zxcvbnm|asdfgh|hunter|buster|soccer|harley|batman|andrew|tigger|sunshine|iloveyou|fuckme|2000|charlie|robert|thomas|hockey|ranger|daniel|starwars|klaster|112233|george|asshole|computer|michelle|jessica|pepper|1111|zxcvbn|555555|11111111|131313|freedom|777777|pass|fuck|maggie|159753|aaaaaa|ginger|princess|joshua|cheese|amanda|summer|love|ashley|6969|nicole|chelsea|biteme|matthew|access|yankees|987654321|dallas|austin|thunder|taylor|matrix).)*$/",
+                     hideIfValid: true)
     }
 
     static var disallowSequencesMock: PasswordPolicy {
@@ -116,7 +121,8 @@ public extension PasswordPolicy {
                      state: .enabled,
                      requirementMessage: "No sequences (not 123 or abc)",
                      errorMessage: "Password must not contain a sequence (not 123 or abc)",
-                     regex: "/^(?:(?!(.)\\1{2}|012|123|234|345|456|567|678|789|890|210|321|432|543|654|765|876|987|098|abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz).)*$/")
+                     regex: "/^(?:(?!(.)\\1{2}|012|123|234|345|456|567|678|789|890|210|321|432|543|654|765|876|987|098|abc|bcd|cde|def|efg|fgh|ghi|hij|ijk|jkl|klm|lmn|mno|nop|opq|pqr|qrs|rst|stu|tuv|uvw|vwx|wxy|xyz).)*$/",
+                     hideIfValid: true)
     }
 }
 #endif

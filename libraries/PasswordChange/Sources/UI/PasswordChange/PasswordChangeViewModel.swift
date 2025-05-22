@@ -300,6 +300,7 @@ extension PasswordChangeView {
                 confirmNewPasswordFieldStyle.mode = .error
                 confirmNewPasswordFieldContent.footnote = PCTranslation.passwordNotMatchErrorDescription.l10n
             case .passwordPolicyViolation:
+                newPasswordFieldStyle.mode = .error
                 confirmNewPasswordFieldStyle.mode = .error
             }
         }
