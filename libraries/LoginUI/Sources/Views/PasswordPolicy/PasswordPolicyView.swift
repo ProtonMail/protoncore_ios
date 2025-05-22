@@ -72,8 +72,15 @@ public struct PasswordPolicyView: View {
                     }
 
                     if !viewModel.requirementsList.isEmpty {
-                        BulletedListView(items: viewModel.requirementsList)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                        if let singleRequirementErrorMessage = viewModel.singleRequirementErrorMessage {
+                            Text(singleRequirementErrorMessage)
+                                .foregroundColor(ColorProvider.TextWeak)
+                                .font(.caption)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        } else {
+                            BulletedListView(items: viewModel.requirementsList)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
                     }
                 }
             } else {
