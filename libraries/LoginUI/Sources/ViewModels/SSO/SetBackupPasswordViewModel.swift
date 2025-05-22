@@ -249,9 +249,9 @@ extension SetBackupPasswordView {
 
         private func displayPasswordError(error: PasswordValidationError) {
             switch error {
-            case .passwordEmpty, .passwordShouldHaveAtLeastEightCharacters, .passwordPolicyViolation:
+            case .passwordEmpty, .passwordShouldHaveAtLeastEightCharacters:
                 backupPasswordStyle.mode = .error
-            case .passwordNotEqual:
+            case .passwordNotEqual, .passwordPolicyViolation:
                 backupPasswordStyle.mode = .error
                 repeatBackupPasswordStyle.mode = .error
             }
