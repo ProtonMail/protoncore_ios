@@ -115,9 +115,8 @@ extension PasswordPolicyView {
             }
             requirementsList = newRequirementsList
 
-            // Set `singleRequirementErrorMessage` if there is only one standard policy
-            // and it's unsatisfied.
-            if standardPolicies.count == 1, !standardPolicies[0].1 {
+            // Set `singleRequirementErrorMessage` if there is only one standard policy.
+            if standardPolicies.count == 1 {
                 singleRequirementErrorMessage = standardPolicies[0].0.errorMessage
             } else {
                 singleRequirementErrorMessage = nil
