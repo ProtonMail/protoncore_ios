@@ -135,7 +135,8 @@ final class CheckPasswordPoliciesTests: XCTestCase {
                                    state: .enabled,
                                    requirementMessage: "At least 8 characters",
                                    errorMessage: "Password must contain at least 8 characters",
-                                   regex: "/.{8,}/")
+                                   regex: "/.{8,}/",
+                                   hideIfValid: false)
     }
 
     private func disabledPolicy() -> PasswordPolicy {
@@ -143,7 +144,8 @@ final class CheckPasswordPoliciesTests: XCTestCase {
                                    state: .disabled,
                                    requirementMessage: "At least 8 characters",
                                    errorMessage: "Password must contain at least 8 characters",
-                                   regex: "/.{8,}/")
+                                   regex: "/.{8,}/",
+                                   hideIfValid: false)
     }
 
     private func optionalPolicy() -> PasswordPolicy {
@@ -151,7 +153,8 @@ final class CheckPasswordPoliciesTests: XCTestCase {
                                    state: .optional,
                                    requirementMessage: "At least 8 characters",
                                    errorMessage: "Password must contain at least 8 characters",
-                                   regex: "/.{8,}/")
+                                   regex: "/.{8,}/",
+                                   hideIfValid: false)
     }
 
     private func atLeastOneNumberPolicy() -> PasswordPolicy {

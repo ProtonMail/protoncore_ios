@@ -32,6 +32,8 @@ extension PasswordPolicyView {
     @MainActor
     public class ViewModel: ObservableObject {
         // Error message for the first unsatisfied exceptional policy (if any, nil otherwise)
+        // Exceptional error messages are errors associated with any policy marked `hideIfValid`,
+        // ie. policies that will be satisfied by default (an empty string satisfies them).
         @Published var exceptionalErrorMessage: String?
 
         // List of requirement messages with Booleans indicating if satisfied or not
@@ -40,12 +42,6 @@ extension PasswordPolicyView {
         // If there is only one requirement, this will optionally contain its error message when
         // unsatisfied.
         @Published var singleRequirementErrorMessage: String?
-
-        // The names of the exceptional policies that are shown separate from standard password policies.
-        private static let exceptionalPolicyNames = [
-            PasswordPolicy.disallowCommonPasswordsPolicyName,
-            PasswordPolicy.disallowSequencesPolicyName
-        ]
 
         private var getPasswordPoliciesUseCase: GetPasswordPolicies?
         private var checkPasswordPoliciesUseCase: CheckPasswordPolicies = CheckPasswordPolicies()
@@ -100,7 +96,7 @@ extension PasswordPolicyView {
             // Filter for only the invalid "exceptional" policies-- the policies which are displayed in
             // red above the list of standard policies.
             let unsatisfiedExceptionalPolicies = unsatisfiedPolicies.filter { (policy, valid) in
-                Self.exceptionalPolicyNames.contains(policy.policyName) && !valid
+                policy.hideIfValid && !valid
             }
 
             exceptionalErrorMessage = unsatisfiedExceptionalPolicies.first?.0.errorMessage
@@ -108,7 +104,7 @@ extension PasswordPolicyView {
             // Filter for the standard policies which will be displayed in a list containing both
             // satisfied and unsatisfied requirements.
             let standardPolicies = self.evaluatedPasswordPolicies.filter { (policy, _) in
-                !Self.exceptionalPolicyNames.contains(policy.policyName)
+                !policy.hideIfValid
             }
 
             var newRequirementsList = [BulletedListItem]()
