@@ -76,9 +76,11 @@ public struct PasswordChangeView: View {
                         content: $viewModel.newPasswordFieldContent
                     )
 
-                    PasswordPolicyView(viewModel: viewModel.passwordPolicyViewModel)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.top, -Constants.textFieldSpacing + 4)
+                    if viewModel.isPasswordPolicyEnabled {
+                        PasswordPolicyView(viewModel: viewModel.passwordPolicyViewModel)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.top, -Constants.textFieldSpacing + 8)
+                    }
 
                     PCTextField(
                         style: $viewModel.confirmNewPasswordFieldStyle,

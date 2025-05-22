@@ -29,8 +29,11 @@ public struct PasswordPolicyView: View {
 
     @ObservedObject var viewModel: ViewModel
 
-    public init(viewModel: ViewModel) {
+    public var onHeightChange: ((CGFloat) -> Void)?
+
+    public init(viewModel: ViewModel, onHeightChange: ((CGFloat) -> Void)? = nil) {
         self.viewModel = viewModel
+        self.onHeightChange = onHeightChange
     }
 
     private enum Constants {
@@ -42,16 +45,50 @@ public struct PasswordPolicyView: View {
     }
 
     public var body: some View {
-        VStack(alignment: .leading, spacing: Constants.verticalSpacing) {
-            if let exceptionalErrorMessage = viewModel.exceptionalErrorMessage {
-                Text(exceptionalErrorMessage).foregroundColor(ColorProvider.NotificationError)
-                    .font(.caption)
-            }
+        content
+            .background(
+                GeometryReader { geo in
+                    Color.clear
+                        .onAppear {
+                            onHeightChange?(geo.size.height)
+                        }
+                        .onChange(of: viewModel.requirementsList) { _ in
+                            onHeightChange?(geo.size.height)
+                        }
+                }
+            )
+    }
 
-            if viewModel.requirementsList.count > 0 {
-                BulletedListView(items: viewModel.requirementsList)
+    @ViewBuilder
+    private var content: some View {
+        Group {
+            if viewModel.exceptionalErrorMessage != nil || !viewModel.requirementsList.isEmpty {
+                VStack(alignment: .leading, spacing: Constants.verticalSpacing) {
+                    if let exceptionalErrorMessage = viewModel.exceptionalErrorMessage {
+                        Text(exceptionalErrorMessage)
+                            .foregroundColor(ColorProvider.NotificationError)
+                            .font(.caption)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+
+                    if !viewModel.requirementsList.isEmpty {
+                        if let singleRequirementErrorMessage = viewModel.singleRequirementErrorMessage {
+                            Text(singleRequirementErrorMessage)
+                                .foregroundColor(ColorProvider.TextWeak)
+                                .font(.caption)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        } else {
+                            BulletedListView(items: viewModel.requirementsList)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                    }
+                }
+            } else {
+                Color.clear.frame(height: CGFloat.leastNonzeroMagnitude) // <- this gives it a tiny height when empty
             }
         }
+        .background(ColorProvider.BackgroundNorm)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     struct BulletedListView: View {

@@ -27,6 +27,9 @@ import ProtonCoreUIFoundations
 import ProtonCoreObservability
 import ProtonCoreTelemetry
 import ProtonCoreUtilities
+import ProtonCoreServices
+import SwiftUI
+import ProtonCoreLogin
 
 protocol PasswordViewControllerDelegate: AnyObject {
     func passwordIsShown()
@@ -50,9 +53,17 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable, Produ
 
     weak var delegate: PasswordViewControllerDelegate?
     var viewModel: PasswordViewModel!
+    var apiService: APIService! {
+        didSet {
+            passwordPolicyViewModel = PasswordPolicyView.ViewModel(apiService: apiService)
+        }
+    }
+    private var passwordPolicyViewModel: PasswordPolicyView.ViewModel!
     var customErrorPresenter: LoginErrorPresenter?
     var signupAccountType: SignupAccountType!
-    var signupPasswordRestrictions: SignupPasswordRestrictions!
+    var signupPasswordRestrictions: PasswordRestrictions!
+
+    var isPasswordPolicyEnabled: Bool = false
 
     var onDohTroubleshooting: () -> Void = { }
 
@@ -72,7 +83,10 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable, Produ
     @IBOutlet weak var passwordTextField: PMTextField! {
         didSet {
             passwordTextField.title = LUITranslation._core_password_field_title.l10n
-            passwordTextField.assistiveText = LUITranslation.password_field_minimum_length_hint.l10n
+            if !isPasswordPolicyEnabled {
+                // Only show this assistive text if dynamic password policies is disabled
+                passwordTextField.assistiveText = LUITranslation.password_field_minimum_length_hint.l10n
+            }
             passwordTextField.delegate = self
             passwordTextField.textContentType = .newPassword
             passwordTextField.autocorrectionType = .no
@@ -108,6 +122,34 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable, Produ
         }
     }
 
+    private var passwordPolicyHostingView: IntrinsicSizeHostingView<PasswordPolicyView>!
+    @IBOutlet weak var passwordPolicyContainer: UIView! {
+        didSet {
+            guard isPasswordPolicyEnabled else {
+                return
+            }
+
+            let passwordPolicyView = PasswordPolicyView(
+                viewModel: passwordPolicyViewModel,
+                onHeightChange: { [weak self] height in
+                    self?.passwordPolicyHostingView?.updateHeight(height)
+                }
+            )
+
+            passwordPolicyHostingView = IntrinsicSizeHostingView(rootView: passwordPolicyView)
+            passwordPolicyHostingView.backgroundColor = ColorProvider.BackgroundNorm
+            passwordPolicyContainer.addSubview(passwordPolicyHostingView)
+
+            passwordPolicyHostingView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                passwordPolicyHostingView.topAnchor.constraint(equalTo: passwordPolicyContainer.topAnchor),
+                passwordPolicyHostingView.bottomAnchor.constraint(equalTo: passwordPolicyContainer.bottomAnchor),
+                passwordPolicyHostingView.leadingAnchor.constraint(equalTo: passwordPolicyContainer.leadingAnchor),
+                passwordPolicyHostingView.trailingAnchor.constraint(equalTo: passwordPolicyContainer.trailingAnchor)
+            ])
+        }
+    }
+
     var focusNoMore: Bool = false
     private let navigationBarAdjuster = NavigationBarAdjustingScrollViewDelegate()
 
@@ -123,6 +165,8 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable, Produ
         generateAccessibilityIdentifiers()
         delegate?.passwordIsShown()
         ObservabilityEnv.report(.screenLoadCountTotal(screenName: .passwordCreation))
+
+        passwordPolicyViewModel.loadPasswordPolicies()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -137,6 +181,8 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable, Produ
         DispatchQueue.main.async {
             self.scrollView.adjust(forKeyboardVisibilityNotification: nil)
         }
+
+        self.passwordPolicyContainer.layoutIfNeeded()
     }
 
     // MARK: Actions
@@ -159,9 +205,17 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable, Produ
         _ = repeatPasswordTextField.resignFirstResponder()
         passwordTextField.isError = false
         repeatPasswordTextField.isError = false
-        let result = viewModel.passwordValidationResult(for: signupPasswordRestrictions,
+
+        var result: (Result<(), SignupError>) = .success
+        if !isPasswordPolicyEnabled {
+            result = viewModel.passwordValidationResult(for: signupPasswordRestrictions,
                                                         password: passwordTextField.value,
-                                                        repeatParrword: repeatPasswordTextField.value)
+                                                        repeatPassword: repeatPasswordTextField.value)
+        } else {
+            result = self.checkPasswordPolicy(password: passwordTextField.value,
+                                              repeatPassword: repeatPasswordTextField.value)
+        }
+
         switch result {
         case .failure(let error):
             if let willPresentError = customErrorPresenter?.willPresentError(error: error, from: self),
@@ -179,6 +233,25 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable, Produ
             }
             measureOnViewAction(action: .validate, additionalDimensions: [.result(MeasureConstants.resultSuccess)])
         }
+    }
+
+    private func checkPasswordPolicy(password: String,
+                                     repeatPassword: String) -> (Result<(), SignupError>) {
+
+        guard password == repeatPassword else {
+            return .failure(SignupError.passwordNotEqual)
+        }
+
+        guard !password.isEmpty else {
+            return .failure(SignupError.passwordEmpty)
+        }
+
+        self.passwordPolicyViewModel.checkPassword(password)
+        if !self.passwordPolicyViewModel.passwordIsValid {
+            return .failure(SignupError.passwordPolicyViolation)
+        }
+
+        return .success
     }
 
     private func setupGestures() {
@@ -232,7 +305,9 @@ class PasswordViewController: UIViewController, AccessibleView, Focusable, Produ
 
 extension PasswordViewController: PMTextFieldDelegate {
     func didChangeValue(_ textField: PMTextField, value: String) {
-
+        if textField == self.passwordTextField {
+            passwordPolicyViewModel.checkPassword(value)
+        }
     }
 
     func didEndEditing(textField: PMTextField) {
@@ -280,6 +355,10 @@ extension PasswordViewController: SignUpErrorCapable, LoginErrorCapable {
             passwordTextField.isError = true
             repeatPasswordTextField.isError = true
             measureOnViewAction(action: .validate, additionalDimensions: [.result("password_mismatch")])
+        case .policyViolation:
+            passwordTextField.isError = true
+            repeatPasswordTextField.isError = true
+            measureOnViewAction(action: .validate, additionalDimensions: [.result("password_policy_violation")])
         }
     }
 }

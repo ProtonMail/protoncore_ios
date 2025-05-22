@@ -24,6 +24,7 @@
 import Foundation
 import ProtonCoreLogin
 import ProtonCoreDataModel
+import ProtonCoreUtilities
 import UIKit
 
 class PasswordViewModel {
@@ -33,12 +34,12 @@ class PasswordViewModel {
         self.clientApp = clientApp
     }
 
-    func passwordValidationResult(for restrictions: SignupPasswordRestrictions,
+    func passwordValidationResult(for restrictions: PasswordRestrictions,
                                   password: String,
-                                  repeatParrword: String) -> (Result<(), SignupError>) {
+                                  repeatPassword: String) -> (Result<(), SignupError>) {
 
         let passwordFailedRestrictions = restrictions.failedRestrictions(for: password)
-        let repeatPasswordFailedRestrictions = restrictions.failedRestrictions(for: repeatParrword)
+        let repeatPasswordFailedRestrictions = restrictions.failedRestrictions(for: repeatPassword)
 
         if passwordFailedRestrictions.contains(.notEmpty) && repeatPasswordFailedRestrictions.contains(.notEmpty) {
             return .failure(SignupError.passwordEmpty)
@@ -50,7 +51,7 @@ class PasswordViewModel {
             return .failure(SignupError.passwordShouldHaveAtLeastEightCharacters)
         }
 
-        guard password == repeatParrword else {
+        guard password == repeatPassword else {
             return .failure(SignupError.passwordNotEqual)
         }
 

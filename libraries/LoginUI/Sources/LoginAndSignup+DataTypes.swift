@@ -27,6 +27,7 @@ import ProtonCoreDataModel
 import ProtonCoreNetworking
 import ProtonCorePayments
 import ProtonCorePaymentsUI
+import ProtonCoreUtilities
 
 public struct AccountTypes {
     public let login: AccountType
@@ -66,37 +67,15 @@ public typealias SignupAvailability = LoginFeatureAvailability<SignupParameters>
 public struct SignupParameters {
 
     let separateDomainsButton: Bool
-    let passwordRestrictions: SignupPasswordRestrictions
+    let passwordRestrictions: PasswordRestrictions
     let summaryScreenVariant: SummaryScreenVariant
 
     public init(separateDomainsButton: Bool,
-                passwordRestrictions: SignupPasswordRestrictions,
+                passwordRestrictions: PasswordRestrictions,
                 summaryScreenVariant: SummaryScreenVariant) {
         self.separateDomainsButton = separateDomainsButton
         self.passwordRestrictions = passwordRestrictions
         self.summaryScreenVariant = summaryScreenVariant
-    }
-}
-
-@available(*, deprecated, message: "SignupPasswordRestrictions is deprecated. Use PasswordRestrictions in ProtonCore-Utilities")
-public struct SignupPasswordRestrictions: OptionSet {
-    public let rawValue: Int
-    public init(rawValue: Int) { self.rawValue = rawValue }
-
-    public static let notEmpty                   = SignupPasswordRestrictions(rawValue: 1 << 0)
-    public static let atLeastEightCharactersLong = SignupPasswordRestrictions(rawValue: 1 << 1)
-
-    public static let `default`: SignupPasswordRestrictions = [.atLeastEightCharactersLong, .notEmpty]
-
-    public func failedRestrictions(for password: String) -> SignupPasswordRestrictions {
-        var failedRestrictions: SignupPasswordRestrictions = []
-        if contains(.notEmpty) && password.isEmpty {
-            failedRestrictions.insert(.notEmpty)
-        }
-        if contains(.atLeastEightCharactersLong) && password.count < 8 {
-            failedRestrictions.insert(.atLeastEightCharactersLong)
-        }
-        return failedRestrictions
     }
 }
 

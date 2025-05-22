@@ -37,6 +37,10 @@ extension PasswordPolicyView {
         // List of requirement messages with Booleans indicating if satisfied or not
         @Published var requirementsList: [BulletedListItem]
 
+        // If there is only one requirement, this will optionally contain its error message when
+        // unsatisfied.
+        @Published var singleRequirementErrorMessage: String?
+
         // The names of the exceptional policies that are shown separate from standard password policies.
         private static let exceptionalPolicyNames = [
             PasswordPolicy.disallowCommonPasswordsPolicyName,
@@ -58,7 +62,6 @@ extension PasswordPolicyView {
                 self.apiService = apiService
                 getPasswordPoliciesUseCase = GetPasswordPolicies(apiService: apiService)
             }
-
 
             self.evaluatedPasswordPolicies = []
         }
@@ -115,6 +118,14 @@ extension PasswordPolicyView {
                 newRequirementsList.append(listItem)
             }
             requirementsList = newRequirementsList
+
+            // Set `singleRequirementErrorMessage` if there is only one standard policy
+            // and it's unsatisfied.
+            if standardPolicies.count == 1, !standardPolicies[0].1 {
+                singleRequirementErrorMessage = standardPolicies[0].0.errorMessage
+            } else {
+                singleRequirementErrorMessage = nil
+            }
         }
 
 #if DEBUG
