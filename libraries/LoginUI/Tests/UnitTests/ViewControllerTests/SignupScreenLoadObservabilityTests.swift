@@ -27,6 +27,7 @@ import XCTest
 import ProtonCoreTestingToolkitUnitTestsCore
 import ProtonCoreTestingToolkitUnitTestsLogin
 import ProtonCoreTestingToolkitUnitTestsObservability
+import ProtonCoreTestingToolkitUnitTestsServices
 #elseif canImport(ProtonCoreTestingToolkit)
 import ProtonCoreTestingToolkit
 #endif
@@ -71,6 +72,7 @@ class SignupScreenLoadObservabilityTests: SnapshotTestCase {
                                                               controllerType: PasswordViewController.self,
                                                               inAppTheme: { .default })
         passwordViewController.viewModel = PasswordViewModel(clientApp: .other(named: "core-unit-tests"))
+        passwordViewController.apiService = APIServiceMock()
         _ = passwordViewController.view
         XCTAssertTrue(stub.reportStub.wasCalledExactlyOnce)
         XCTAssertTrue(stub.reportStub.lastArguments!.value.isSameAs(event: .screenLoadCountTotal(screenName: .passwordCreation)))
