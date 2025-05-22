@@ -71,13 +71,13 @@ public struct PasswordPolicyView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
 
-                    if viewModel.requirementsList.count > 0 {
+                    if !viewModel.requirementsList.isEmpty {
                         BulletedListView(items: viewModel.requirementsList)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
             } else {
-                Color.clear.frame(height: 1) // <- this gives it a tiny height when empty
+                Color.clear.frame(height: CGFloat.leastNonzeroMagnitude) // <- this gives it a tiny height when empty
             }
         }
         .background(ColorProvider.BackgroundNorm)

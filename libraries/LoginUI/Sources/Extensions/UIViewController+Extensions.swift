@@ -297,7 +297,6 @@ final class IntrinsicSizeHostingView<Content: View>: UIView {
 
     override var intrinsicContentSize: CGSize {
         layoutIfNeeded()
-        layoutIfNeeded()
         let size = hostingController.sizeThatFits(
             in: CGSize(width: bounds.width,
                        height: UIView.layoutFittingCompressedSize.height)
