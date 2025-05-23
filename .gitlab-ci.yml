@@ -334,7 +334,11 @@ report:unit:macos:code:coverage:
     # generate cobertura xml from coverage json
     - xcc generate fastlane/test_output/UnitTests.json fastlane/test_output cobertura-xml --verbose
     # Split big cobertura file
-    - python3 scripts/split-by-package.py fastlane/test_output/cobertura.xml fastlane/test_output/
+    - |
+      python3 -m venv .venv
+      source .venv/bin/activate
+      pip install lxml
+      python3 scripts/split-by-package.py fastlane/test_output/cobertura.xml fastlane/test_output/
   artifacts:
     reports:
       coverage_report:
@@ -369,7 +373,11 @@ report:unit:ios:code:coverage:
     # generate cobertura xml from coverage json
     - xcc generate fastlane/test_output/UnitTests.json fastlane/test_output cobertura-xml --verbose
     # Split big cobertura file
-    - python3 scripts/split-by-package.py fastlane/test_output/cobertura.xml fastlane/test_output/
+    - |
+      python3 -m venv .venv
+      source .venv/bin/activate
+      pip install lxml
+      python3 scripts/split-by-package.py fastlane/test_output/cobertura.xml fastlane/test_output/
   artifacts:
     reports:
       coverage_report:
