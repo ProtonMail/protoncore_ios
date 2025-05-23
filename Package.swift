@@ -65,7 +65,7 @@ func coreTarget(name: String,
                 path: String,
                 exclude: [String]? = nil,
                 sources: [String]? = nil,
-                settings:  [SwiftSetting] = [.spm],
+                settings: [SwiftSetting] = [.spm],
                 resources: [Resource]? = nil) -> Target {
     .target(name: name,
             dependencies: dependencies ?? [],
@@ -1402,7 +1402,7 @@ add(
                         .paymentsV2
                        ],
                        path: "libraries/PaymentsV2/Tests/UnitTests",
-                       resources:[
+                       resources: [
                         .copy("mockData/availablePlans.json"),
                         .copy("mockData/plans_entitlements_types.json"),
                         .copy("mockData/plans_decorations.json"),
@@ -2142,8 +2142,8 @@ let package = Package(
                 ),
                 path: "libraries/ObfuscatedConstants/Plugin"),
 
-            .plugin(name: "swiftlint",
-                    capability: .buildTool(),
-                    path: "plugins/SwiftLint")
+        .plugin(name: "swiftlint",
+                capability: .buildTool(),
+                path: "plugins/SwiftLint")
     ]
 )

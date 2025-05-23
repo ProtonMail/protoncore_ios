@@ -27,14 +27,14 @@ public struct IUser: Encodable {
     public var password: String
     public var settings: UserSettings
     public var subscriptionHistory: [UserSubscriptionHistory]?
-    
+
     public init(userName: String, password: String, settings: UserSettings, subscriptionHistory: [UserSubscriptionHistory]? = nil) {
         self.userName = userName
         self.password = password
         self.settings = settings
         self.subscriptionHistory = subscriptionHistory
     }
-    
+
     enum CodingKeys: String, CodingKey {
         case userName = "UserName"
         case password = "Password"
@@ -47,13 +47,13 @@ public struct UserSettings: Encodable {
     public var flags: UserFlags
     public var timeFormat: String
     public var weekStart: String
-    
+
     public init(flags: UserFlags, timeFormat: String, weekStart: String) {
         self.flags = flags
         self.timeFormat = timeFormat
         self.weekStart = weekStart
     }
-    
+
     enum CodingKeys: String, CodingKey {
         case flags = "Flags"
         case timeFormat = "TimeFormat"
@@ -63,11 +63,11 @@ public struct UserSettings: Encodable {
 
 public struct UserFlags: Encodable {
     public var welcomed: Bool
-    
+
     public init(welcomed: Bool) {
         self.welcomed = welcomed
     }
-    
+
     enum CodingKeys: String, CodingKey {
         case welcomed = "Welcomed"
     }
@@ -75,26 +75,26 @@ public struct UserFlags: Encodable {
 
 public struct UserSubscriptionHistory: Encodable {
     public var plan: String
-    
+
     public init(plan: String) {
         self.plan = plan
     }
-    
+
     enum CodingKeys: String, CodingKey {
         case plan = "Plan"
     }
 }
 
 public final class UserBuilder {
-    
+
     var user: IUser
     public lazy var mailbox: MailboxBuilder = MailboxBuilder(user: self)
     public lazy var contacts: ContactBuilder = ContactBuilder(user: self)
     public lazy var calbox: CalboxBuilder = CalboxBuilder()
-    
+
     private var yamlDataInMemory: String = "" // In-memory storage for YAML data
     private var fixturesInMemory: [String: String] = [:] // In-memory storage for all YAML data
-    
+
     public init(userName: String = "sasasa", password: String = "test1234") {
         self.user = IUser(
             userName: userName,
@@ -103,13 +103,13 @@ public final class UserBuilder {
             subscriptionHistory: [UserSubscriptionHistory(plan: "mail2022")]
         )
     }
-    
+
     public func seedUser(quark: Quark) throws -> User {
         let fixturesToUpload = try self.generateUserFixture()
-        
+
         return try quark.uploadFixtures(props: fixturesToUpload)
     }
-    
+
     private func getDataAsYaml() {
         do {
             let encoder = YAMLEncoder()
@@ -120,41 +120,41 @@ public final class UserBuilder {
             print("Error saving user data to memory: \(error)")
         }
     }
-    
+
     public func generateUserFixture() throws -> LoadFixturesProps {
         // Save user data
         self.getDataAsYaml()
-        
+
         // Save contacts
         if self.contacts.hasContacts() {
             let contactsYaml = try self.contacts.getDataAsYaml()
             self.fixturesInMemory["contacts.yml"] = contactsYaml
         }
-        
+
         // Save mailbox messages
         if try self.mailbox.getDataAsYaml().isEmpty == false {
             let mailboxYaml = try self.mailbox.getDataAsYaml()
             self.fixturesInMemory["mailbox.yml"] = mailboxYaml
-            
+
             for eml in self.mailbox.emails {
                 let emlYaml = eml.generateRFC2822()
                 self.fixturesInMemory[eml.options.path ?? "default.eml"] = emlYaml
             }
         }
-        
+
         // Save calendar data if available
         if try self.calbox.getDataAsYaml().isEmpty == false{
             let calboxYaml = try self.calbox.getDataAsYaml()
             self.fixturesInMemory["calendars.yml"] = calboxYaml
         }
-        
+
         let files: [(filename: String, fixtureData: Data)] = self.fixturesInMemory.compactMap { (filename, content) in
             if let data = content.data(using: .utf8) {
                 return (filename, data)
             }
             return nil
         }
-        
+
         return LoadFixturesProps(files: files)
     }
 }

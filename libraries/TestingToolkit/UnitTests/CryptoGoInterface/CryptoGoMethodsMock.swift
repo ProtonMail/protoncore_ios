@@ -389,7 +389,7 @@ public class CryptoGoMethodsMock: CryptoGoMethods {
     public func CryptoEncryptSessionKeyWithPassword(_ sk: CryptoSessionKey?, _ password: Data?, _ error: NSErrorPointer) -> Data? {
         CryptoEncryptSessionKeyWithPasswordStub(sk, password, error)
     }
-    
+
     @FuncStub(CryptoGoMethodsMock.CryptoIsPGPMessage, initialReturn: false) public var CryptoIsPGPMessageStub
     public func CryptoIsPGPMessage(_ data: String?) -> Bool {
         CryptoIsPGPMessageStub(data)

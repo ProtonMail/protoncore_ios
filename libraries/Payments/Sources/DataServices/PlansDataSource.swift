@@ -88,7 +88,7 @@ class PlansDataSource: PlansDataSourceProtocol {
         }
         return storeKitDataSource.availableProducts
     }
-    
+
     // A U.S. court ruled that Apple must allow developers alternative payment systems for digital goods,
     // bypassing the infamous 30% commission
     // This allows us to redirect US users to the payment through the web

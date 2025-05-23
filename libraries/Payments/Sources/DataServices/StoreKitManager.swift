@@ -184,7 +184,7 @@ final class StoreKitManager: NSObject, StoreKitManagerProtocol {
     }
 
     private func callSilentErrorCompletion(for cache: UserInitiatedPurchaseCache, with error: Error) {
-        threadSafeCache.removeValue(for: cache, in: \.errorCompletion, defaultValue: {_ in }) { $0?(error) }
+        threadSafeCache.removeValue(for: cache, in: \.errorCompletion, defaultValue: { _ in }) { $0?(error) }
     }
 
     private func getSuccessCompletion(for cache: UserInitiatedPurchaseCache, completion: @escaping (SuccessCallback?) -> Void) {

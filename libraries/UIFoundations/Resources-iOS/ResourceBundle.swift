@@ -21,7 +21,7 @@
 
 import Foundation
 
-fileprivate func isResourceBundlePath(_ path: String) -> Bool {
+private func isResourceBundlePath(_ path: String) -> Bool {
     /*
      * https://developer.apple.com/documentation/swift/fileid()
      * "The unique identifier has the form `module/file`, where `file` is the name of the file in which the expression

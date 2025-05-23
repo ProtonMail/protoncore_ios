@@ -36,7 +36,6 @@ final class OrganizationRepositoryTests: XCTestCase, JSONMockLoader {
         apiService = APIServiceMock()
         sut = OrganizationRepository(apiService: apiService)
 
-
     }
 
     override func tearDownWithError() throws {

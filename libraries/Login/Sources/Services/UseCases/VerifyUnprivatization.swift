@@ -62,7 +62,6 @@ struct VerifyUnprivatization {
                 throw UnprivatizationError.publicAddressKeyNotFound
             }
 
-
             // Verify the SHA265 fingerprint of the OrgPublicKey using the OrgKeyFingerprintSignature and the fetched admin address key.
             let fingerprint = unprivatizationInfo.orgPublicKey.sha256Fingerprint
 

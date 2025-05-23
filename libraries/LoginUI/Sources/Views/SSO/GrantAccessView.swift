@@ -103,7 +103,6 @@ public struct GrantAccessView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-
     @ViewBuilder
     private var confirmationCodeInput: some View {
         PCCodeInput(

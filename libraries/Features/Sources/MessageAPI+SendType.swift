@@ -41,7 +41,7 @@ public struct SendType: OptionSet {
     public static let pgpmime = SendType(rawValue: 1 << 4)
     // clear text mime
     public static let cmime   = SendType(rawValue: 1 << 5)
-    
+
     public init(rawValue: Int) {
         self.rawValue = rawValue
     }

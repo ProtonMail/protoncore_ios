@@ -78,7 +78,7 @@ public extension Quark {
     }
 
     @discardableResult
-    func newSeedNewSubscriber(user: User, plan: String, cycle: Int, currency: String = "USD",  coupon: String = "") throws -> User {
+    func newSeedNewSubscriber(user: User, plan: String, cycle: Int, currency: String = "USD", coupon: String = "") throws -> User {
         let args = [
             "username=\(user.name)",
             "password=\(user.password)",

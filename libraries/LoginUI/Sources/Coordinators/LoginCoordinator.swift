@@ -413,7 +413,7 @@ extension LoginCoordinator: LoginViewControllerDelegate {
 // MARK: - Global SSO Login delegate
 
 extension LoginCoordinator: GlobalSSONavigationDelegate {
-    
+
     func globalSSOLoginDidCancel() {
         userDidClose()
     }

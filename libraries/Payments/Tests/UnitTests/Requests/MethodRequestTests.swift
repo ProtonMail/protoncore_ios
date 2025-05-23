@@ -155,7 +155,7 @@ final class V4MethodRequestTests: XCTestCase {
                 XCTFail(error.localizedDescription)
             }
         }
-        waitForExpectations(timeout: 3) { (expectationError) -> Void in
+        waitForExpectations(timeout: 3) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -276,7 +276,7 @@ final class V5MethodRequestTests: XCTestCase {
                 XCTFail(error.localizedDescription)
             }
         }
-        waitForExpectations(timeout: 3) { (expectationError) -> Void in
+        waitForExpectations(timeout: 3) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }

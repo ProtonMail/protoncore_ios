@@ -27,7 +27,7 @@ public final class ForkSessionInitiateResponse: Response, Codable {
         self.selector = selector
         self.userCode = userCode
     }
-    
+
     public required init() {
         self.selector = ""
         self.userCode = ""
@@ -140,7 +140,7 @@ public final class ForkSessionRequest: Request {
     public var parameters: [String: Any]? {
         switch useCase {
         case .pushFork(let payload, let clientId, let independent, let userCode):
-            var params: [String : Any] = [
+            var params: [String: Any] = [
                 "ChildClientID": clientId,
                 "Independent": independent ? 1 : 0,
                 "UserCode": userCode

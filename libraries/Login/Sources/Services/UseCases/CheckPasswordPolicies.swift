@@ -42,7 +42,7 @@ public struct CheckPasswordPolicies {
             guard passwordPolicy.state == .enabled else {
                 continue
             }
-            
+
             if passwordPolicy.policyName == PasswordPolicy.disallowCommonPasswordsPolicyName {
                 result.append((passwordPolicy,
                                password.matches(passwordPolicy.regex) && !isCommonPassword(password)))

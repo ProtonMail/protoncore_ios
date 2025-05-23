@@ -385,13 +385,13 @@ final class ProxyTest: XCTestCase {
     }
 
     func testBulkRouteActionsFromScenarioFileAsAFolder() {
-        let resetStaticMocks = self.expectation(description:"Reset all mocks")
-        let expectationsrp = self.expectation(description:"Fetch scenarios")
+        let resetStaticMocks = self.expectation(description: "Reset all mocks")
+        let expectationsrp = self.expectation(description: "Fetch scenarios")
         let dynamicMock = DynamicMockBody(name: "loginWithSrp", enabled: true)
 
         client.resetAllMocksAndSettings { result in
             switch result {
-            case .success(_):
+            case .success:
                 debugPrint("Reset all mocks Success \n")
             case .failure(let error):
                 XCTFail("Failed to fetch scenarios: \(error)")
@@ -402,7 +402,7 @@ final class ProxyTest: XCTestCase {
 
         client.addDynamicMockScenario(dynamicMock: dynamicMock) { result in
             switch result {
-            case .success(_):
+            case .success:
                 debugPrint("Enable loginWithSrp \n")
             case .failure(let error):
                 XCTFail("Failed to fetch scenarios: \(error)")
@@ -437,7 +437,6 @@ final class ProxyTest: XCTestCase {
         let requestDetails = RequestDetails(exactUrl: ["/mail/valid.png"], method: "GET")
         let responseDetails = ResponseDetails(statusCode: 200, body: AnyCodable(value: data), headers: AnyCodable(value: ContentType.imagePng.asHeader))
         let routeRequest = MockObject(name: "TestScenario", enabled: true, updateFile: false, isRawFileContent: true, request: requestDetails, response: responseDetails)
-
 
         client.addStaticMockRoute(route: routeRequest) { result in
             switch result {

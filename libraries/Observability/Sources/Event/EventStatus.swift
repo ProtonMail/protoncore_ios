@@ -204,4 +204,3 @@ public enum QRLoginHTTPResponseCodeStatus: String, Encodable, CaseIterable {
         }
     }
 }
-

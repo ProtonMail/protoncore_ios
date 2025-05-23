@@ -61,7 +61,7 @@ public struct GenerateSignInQRCode {
     public func invoke(userCode: String, withEncryptionKey: Bool) throws -> Response {
         let clientId = clientIdProvider.clientId()
 
-        var base64EncryptionKey: String? = nil
+        var base64EncryptionKey: String?
 
         if withEncryptionKey {
             let encryptionKey = try hashGenerator.random(bits: 256)

@@ -22,7 +22,7 @@ import SwiftUI
 import ProtonCoreUIFoundations
 import ProtonCoreObservability
 
-fileprivate enum Constants {
+private enum Constants {
     static let noSpacing: CGFloat = 0
     static let closeButtonHeight: CGFloat = 24
     static let arrowOutHeight: CGFloat = 24
@@ -77,7 +77,7 @@ struct ScanQRCodeView: View {
                     viewModel.handleGotItButtonPressed()
                 }
             case .failure:
-                FailureView() {
+                FailureView {
                     withAnimation {
                         viewModel.handleScanQRCodePressed()
                     }
@@ -142,7 +142,7 @@ private struct ScanningView: View {
     }
 
     var camera: some View {
-        QRCodeCameraView(handleQRCodeString:handleQRCodeString,
+        QRCodeCameraView(handleQRCodeString: handleQRCodeString,
                          handleCameraUsePermissionRequestRejection: handleCameraUsePermissionRequestRejection,
                          handleCameraUseNotAllowed: handleCameraUseNotAllowed)
         .edgesIgnoringSafeArea(.all)
@@ -179,8 +179,6 @@ private struct ScanningView: View {
             .padding(.top, Constants.crosshairTopPadding + Constants.crosshairHeight + Constants.descriptionTextTopPadding)
     }
 }
-
-
 
 @MainActor
 private struct VerifyingView: View {

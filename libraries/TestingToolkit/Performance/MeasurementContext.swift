@@ -104,4 +104,3 @@ public class MeasurementContext: NSObject, XCTestObservation {
         }
     }
 }
-

@@ -60,7 +60,7 @@ public struct EnterBackupPasswordView: View {
                             action: viewModel.primaryActionButtonTapped
                         ))
                     )
-                    
+
                     PCButton(
                         style: .constant(.init(mode: .text)),
                         content: .constant(.init(

@@ -43,7 +43,7 @@ public struct GetOrganizationLogo {
                         return
                     }
                     continuation.resume(returning: url)
-                }
+            }
         }
     }
 

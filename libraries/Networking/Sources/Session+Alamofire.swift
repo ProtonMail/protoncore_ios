@@ -319,7 +319,7 @@ extension AlamofireSession {
                         uploadProgress: ProgressCompletion?) -> (() -> URLSessionDataTask?, UploadRequest) {
         alamofireRequest.updateHeader()
         var taskOut: URLSessionDataTask?
-        let uploadRequest = self.session.upload(multipartFormData: { (formData) -> Void in
+        let uploadRequest = self.session.upload(multipartFormData: { (formData) in
             let data: MultipartFormData = formData
             if let value = parameters["Filename"], let fileName = value.data(using: .utf8) {
                 data.append(fileName, withName: "Filename")
@@ -391,7 +391,7 @@ extension AlamofireSession {
                         uploadProgress: ProgressCompletion?) -> (() -> URLSessionDataTask?, UploadRequest) {
         alamofireRequest.updateHeader()
         var taskOut: URLSessionDataTask?
-        let uploadRequest = self.session.upload(multipartFormData: { (formData) -> Void in
+        let uploadRequest = self.session.upload(multipartFormData: { (formData) in
             let data: MultipartFormData = formData
             for (key, value) in parameters {
                 if let valueData = value.data(using: .utf8) {
@@ -465,7 +465,7 @@ extension AlamofireSession {
 
         alamofireRequest.updateHeader()
         var taskOut: URLSessionDataTask?
-        let uploadRequest = self.session.upload(multipartFormData: { (formData) -> Void in
+        let uploadRequest = self.session.upload(multipartFormData: { (formData) in
             let data: MultipartFormData = formData
             if let value = parameters["Filename"], let fileName = value.data(using: .utf8) {
                 data.append(fileName, withName: "Filename")

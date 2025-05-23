@@ -36,7 +36,7 @@ public struct Plan: Codable, Equatable {
     public struct Vendor: Codable, Equatable {
         public let plans: [String: String]
 
-        public init(plans: [String : String]) {
+        public init(plans: [String: String]) {
             self.plans = plans
         }
     }

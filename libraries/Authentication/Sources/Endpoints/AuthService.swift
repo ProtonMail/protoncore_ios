@@ -38,7 +38,7 @@ public class AuthService: Client {
         self.featureFlagsRepository = featureFlagsRepository
     }
 
-    func ssoAuthentication(ssoResponseToken: SSOResponseToken, complete: @escaping(_ response: Result<AuthService.AuthRouteResponse, ResponseError>) -> Void) {
+    func ssoAuthentication(ssoResponseToken: SSOResponseToken, complete: @escaping (_ response: Result<AuthService.AuthRouteResponse, ResponseError>) -> Void) {
         let endpoint = SSOEndpoint(ssoResponseToken: ssoResponseToken)
         apiService.perform(request: endpoint) { (_, result: Result<AuthService.AuthRouteResponse, ResponseError>) in
             switch result {
@@ -52,7 +52,7 @@ public class AuthService: Client {
         }
     }
 
-    public func info(username: String? = nil, intent: Intent? = nil, complete: @escaping(_ response: Result<Either<AuthInfoResponse, SSOChallengeResponse>, ResponseError>) -> Void) {
+    public func info(username: String? = nil, intent: Intent? = nil, complete: @escaping (_ response: Result<Either<AuthInfoResponse, SSOChallengeResponse>, ResponseError>) -> Void) {
         var endpoint: InfoEndpoint
 
         if let intent = intent {
@@ -119,7 +119,7 @@ public class AuthService: Client {
               proof: Data,
               srpSession: String,
               challenge: ChallengeProperties?,
-              complete: @escaping(_ response: Result<AuthService.AuthRouteResponse, ResponseError>) -> Void) {
+              complete: @escaping (_ response: Result<AuthService.AuthRouteResponse, ResponseError>) -> Void) {
         var route = AuthEndpoint(data: .left(.init(username: username, ephemeral: ephemeral, proof: proof, srpSession: srpSession, challenge: challenge)))
 
         let service = self.apiService

@@ -75,7 +75,7 @@ class ForceUpgradeAPITests: XCTestCase {
             XCTAssert(response.error != nil)
             expectation.fulfill()
         }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
+        waitForExpectations(timeout: timeout) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -98,7 +98,7 @@ class ForceUpgradeAPITests: XCTestCase {
             XCTAssert(response.error != nil)
             expectation.fulfill()
         }
-        waitForExpectations(timeout: timeout) { (expectationError) -> Void in
+        waitForExpectations(timeout: timeout) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }

@@ -111,7 +111,7 @@ final class PMAPIServiceRequestTests: XCTestCase {
         apiServiceDelegateMock = APIServiceDelegateMock()
         authDelegateMock = AuthDelegateMock()
     }
-    
+
     override func tearDown() {
         super.tearDown()
         dohMock = nil

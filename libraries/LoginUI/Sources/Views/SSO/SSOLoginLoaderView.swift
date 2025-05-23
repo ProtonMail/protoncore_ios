@@ -60,7 +60,7 @@ public struct SSOLoginLoaderView: View {
                     .font(.title3)
                     .foregroundColor(ColorProvider.TextHint)
             }
-            
+
             emailContainer
 
             Spacer()

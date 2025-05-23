@@ -135,7 +135,7 @@ extension Either: APIResponse where Left == JSONDictionary, Right == ResponseErr
     }
 }
 
-public class PMAPIService: APIService {    
+public class PMAPIService: APIService {
     typealias ResponseFromSession<T> = Either<Result<JSONDictionary, SessionResponseError>, Result<T, SessionResponseError>> where T: SessionDecodableResponse
     typealias ResponseInPMAPIService<T> = Either<Result<JSONDictionary, API.APIError>, Result<T, API.APIError>> where T: APIDecodableResponse
     typealias APIResponseCompletion<T> = Either<JSONCompletion, DecodableCompletion<T>> where T: APIDecodableResponse
@@ -286,7 +286,7 @@ public class PMAPIService: APIService {
               trustKitProvider: trustKitProvider,
               challengeParametersProvider: challengeParametersProvider)
     }
-    
+
     public func acquireSessionIfNeeded() async -> Result<SessionAcquiringResult, APIError> {
         await withCheckedContinuation { continuation in
             acquireSessionIfNeeded { result in

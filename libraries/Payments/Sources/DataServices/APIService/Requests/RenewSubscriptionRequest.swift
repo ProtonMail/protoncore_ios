@@ -30,8 +30,8 @@ public final class RenewSubscriptionRequest: BaseApiRequest<Response> {
     override public var parameters: [String: Any]? {
         return ["RenewalState": 1]
     }
-    
-    public override init(api: APIService) {
+
+    override public init(api: APIService) {
         super.init(api: api)
     }
 }

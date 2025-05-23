@@ -728,7 +728,7 @@ public extension APIService {
                 executor.execute {
                     complete(urlResponse, url, error)
                 }
-            }
+        }
     }
 }
 

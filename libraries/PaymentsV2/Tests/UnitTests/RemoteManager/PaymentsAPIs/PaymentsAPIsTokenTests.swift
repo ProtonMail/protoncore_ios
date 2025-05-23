@@ -57,7 +57,6 @@ final class PaymentsAPIsTokenTests: XCTestCase {
     // MARK: Token
     func test_createToken() throws {
 
-
         guard let expectedResult = URL(string: doh.getCurrentlyUsedHostUrl() + "/payments/v5/tokens") else {
             return
         }
@@ -246,7 +245,7 @@ final class PaymentsAPIsTokenTests: XCTestCase {
     // MARK: Transaction UUID
 
     func test_transactionUUID() throws {
-        
+
         guard let expectedResult = URL(string: doh.getCurrentlyUsedHostUrl() + "/auth/v4/sessions/uuid") else {
             return
         }

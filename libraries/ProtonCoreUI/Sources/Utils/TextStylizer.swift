@@ -34,7 +34,7 @@ public struct TextStylizer {
             styledText.font = text.font
             styledText.foregroundColor = text.color
 
-            composedText +=  index > 0 ? " " + styledText : styledText
+            composedText += index > 0 ? " " + styledText : styledText
         }
 
         return composedText

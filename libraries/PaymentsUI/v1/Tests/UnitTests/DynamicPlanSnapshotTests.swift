@@ -1715,7 +1715,7 @@ extension CurrentPlan {
                                                                 cycleDescription: cycleDescription,
                                                                 currency: currency,
                                                                 amount: amount,
-                                                                renew: renew, 
+                                                                renew: renew,
                                                                 external: external)
         })
     }

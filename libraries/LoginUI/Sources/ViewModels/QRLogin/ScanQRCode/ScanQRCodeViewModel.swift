@@ -79,14 +79,14 @@ extension ScanQRCodeView {
             do {
                 let decodedQRCode = try decodeQRCodeUseCase.invoke(qrCode: code)
                 // encrypt the passphrase
-                var payload: String? = nil
+                var payload: String?
                 if let encryptionKey = decodedQRCode.encryptionKey {
                     let securePassphrase = try SecurePassphrasePayload(passphrase: passphrase, encryptionKey: encryptionKey)
                     payload = securePassphrase.encryptedPayload
                 }
 
                 // push the fork -> Show sucess on 200
-                let _ = try await pushSessionForkUseCase.invoke(encryptedPayload: payload,
+                _ = try await pushSessionForkUseCase.invoke(encryptedPayload: payload,
                                                                 clientId: decodedQRCode.clientId,
                                                                 userCode: decodedQRCode.userCode)
                 state = .success

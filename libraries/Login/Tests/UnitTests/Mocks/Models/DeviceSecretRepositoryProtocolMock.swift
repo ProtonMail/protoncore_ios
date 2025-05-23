@@ -27,11 +27,11 @@ class DeviceSecretRepositoryProtocolMock: DeviceSecretRepositoryProtocol {
     func getByUserId(userId: String) throws -> ProtonCoreLogin.DeviceSecret? {
         store[userId]
     }
-    
+
     func upsert(deviceSecret: ProtonCoreLogin.DeviceSecret) throws {
         store[deviceSecret.userId] = deviceSecret
     }
-    
+
     func delete(for userId: String) throws {
         store[userId] = nil
     }

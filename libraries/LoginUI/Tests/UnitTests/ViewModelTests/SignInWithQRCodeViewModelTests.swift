@@ -68,7 +68,7 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
             }
 
             mockClientIdProvider.id = clientId
-            mockSecureHashGenerator.data = Data([1,2,3])
+            mockSecureHashGenerator.data = Data([1, 2, 3])
 
             sut.refreshWaitTimeInSeconds = 0.01
             sut.pullForkIntervalInSeconds = 100
@@ -92,7 +92,7 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
         }
 
         mockClientIdProvider.id = clientId
-        mockSecureHashGenerator.data = Data([1,2,3])
+        mockSecureHashGenerator.data = Data([1, 2, 3])
 
         sut.refreshWaitTimeInSeconds = 0.5
         sut.pullForkIntervalInSeconds = 100
@@ -105,7 +105,7 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
         let qrCode1 = sut.qrCodeText
 
         // Change the secure hash
-        mockSecureHashGenerator.data = Data([1,2,3,4])
+        mockSecureHashGenerator.data = Data([1, 2, 3, 4])
 
         // wait for refreshWaitTimeInSeconds to expire
         try? await Task.sleep(nanoseconds: UInt64(sut.refreshWaitTimeInSeconds * 1_000_000_000) + 50_000_000)

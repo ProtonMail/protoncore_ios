@@ -76,7 +76,7 @@ final class StoreKitDataSource: StoreKitDataSourceProtocol {
     private let requestFactory: (Set<String>) -> SKProductsRequest
 
     final class RequestDelegate: NSObject, SKProductsRequestDelegate {
-        typealias ResultClosure = (Result<SKProductsResponse, Error>) -> ()
+        typealias ResultClosure = (Result<SKProductsResponse, Error>) -> Void
 
         static var outstandingRequests: [UUID: RequestDelegate] = [:]
         static let queue = DispatchQueue(label: "StoreKitDataSourceRequests")

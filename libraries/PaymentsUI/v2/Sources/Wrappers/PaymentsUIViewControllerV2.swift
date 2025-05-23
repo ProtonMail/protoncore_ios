@@ -90,7 +90,7 @@ public final class PaymentsUIViewControllerV2: UIViewController {
         }
     }
 
-    public override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         debugPrint("viewControllerWillAppear called with value: \(viewWillAppear)")
         viewWillAppear = false

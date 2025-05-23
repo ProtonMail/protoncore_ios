@@ -192,7 +192,7 @@ final class PMChallengeTests: XCTestCase {
             XCTAssertNil(recoveryDict["pasteUsername"])
             XCTAssertNil(recoveryDict["copyUsername"])
         }
-        self.waitForExpectations(timeout: 2) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: 2) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -268,7 +268,7 @@ final class PMChallengeTests: XCTestCase {
             XCTAssertNil(recoveryDict["pasteUsername"])
             XCTAssertNil(recoveryDict["copyUsername"])
         }
-        self.waitForExpectations(timeout: 2) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: 2) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -345,7 +345,7 @@ final class PMChallengeTests: XCTestCase {
             XCTAssertNil(recoveryDict["pasteUsername"])
             XCTAssertNil(recoveryDict["copyUsername"])
         }
-        self.waitForExpectations(timeout: 2) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: 2) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -422,7 +422,7 @@ final class PMChallengeTests: XCTestCase {
             XCTAssertNil(recoveryDict["pasteUsername"])
             XCTAssertNil(recoveryDict["copyUsername"])
         }
-        self.waitForExpectations(timeout: 2) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: 2) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -523,7 +523,7 @@ final class PMChallengeTests: XCTestCase {
                 XCTAssertNil(recoveryDict["copyUsername"])
             }
         }
-        self.waitForExpectations(timeout: 4) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: 4) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }

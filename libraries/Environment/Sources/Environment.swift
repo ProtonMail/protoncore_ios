@@ -151,7 +151,7 @@ extension Environment {
             apnEnvironment: .development
         )
     }
-    
+
     static func buildCustomHttpDoh(customDomain: String) -> CustomServerConfigDoH {
         return CustomServerConfigDoH.build(
             signupDomain: customDomain,

@@ -75,8 +75,8 @@ struct QRCodeCameraView: UIViewControllerRepresentable {
 }
 
 protocol CameraUsagePermissionsHandler: AnyObject {
-    func handleCameraUsePermissionRequestRejection() -> Void
-    func handleCameraUseNotAllowed() -> Void
+    func handleCameraUsePermissionRequestRejection()
+    func handleCameraUseNotAllowed()
 }
 
 protocol QRScannerDelegate: AnyObject {
@@ -175,7 +175,7 @@ class QRCodeCameraViewController: UIViewController {
 
             self.previewLayer = preview
             self.captureSession = session
-            
+
             startSession()
         } catch {
             assertionFailure("Error setting up the camera. Make sure you first check if we have access to the camera!")

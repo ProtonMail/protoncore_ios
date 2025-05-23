@@ -34,7 +34,6 @@ import ProtonCoreCryptoSearchGoImplementation
 #elseif canImport(ProtonCoreCryptoVPNPatchedGoImplementation)
 import ProtonCoreCryptoVPNPatchedGoImplementation
 #else
-import ProtonCoreCryptoGoImplementation
 #endif
 import ProtonCoreChallenge
 import ProtonCoreDataModel

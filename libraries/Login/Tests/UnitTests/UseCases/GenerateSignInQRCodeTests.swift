@@ -40,12 +40,12 @@ final class GenerateSignInQRCodeTests: XCTestCase {
     }
 
     func testGenerateQRTextSuccess() throws {
-        let flagAndBase64EncryptionKey = [(true,"AQID"), (false, "")]
+        let flagAndBase64EncryptionKey = [(true, "AQID"), (false, "")]
 
         for (flag, base64EncryptionKey) in flagAndBase64EncryptionKey {
             let userCode = "someUserCode"
             let clientId = "ios-vpn"
-            mockHashGenerator.data = Data([1,2,3])
+            mockHashGenerator.data = Data([1, 2, 3])
             mockClientIdProvider.id = clientId
 
             let qrCode = try sut.invoke(userCode: userCode, withEncryptionKey: flag)
@@ -73,7 +73,7 @@ final class GenerateSignInQRCodeTests: XCTestCase {
             mockClientIdProvider.id = clientId
 
             do {
-                let _ = try sut.invoke(userCode: userCode, withEncryptionKey: flag)
+                _ = try sut.invoke(userCode: userCode, withEncryptionKey: flag)
                 switch result {
                 case .throwError:
                     XCTFail("call to invoke should throw an error.")

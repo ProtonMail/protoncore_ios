@@ -37,7 +37,7 @@ public enum PaymentsPresentationError: Error {
     case unableToFindValidEnvironment
 }
 
-final public class PaymentsV2: Sendable {
+public final class PaymentsV2: Sendable {
 
     public private(set) var transactionProgress = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
     private let queue = DispatchQueue(label: "paymentsV2Presenter.syncQueue")
@@ -46,9 +46,9 @@ final public class PaymentsV2: Sendable {
 
     public init() {}
 
-    //MARK: Public functions
+    // MARK: Public functions
 
-    //MARK: Restore Purchases
+    // MARK: Restore Purchases
     public func restorePurchases(sessionId: String,
                                  token: String,
                                  doh: DoHInterface & ServerConfig,
@@ -59,7 +59,7 @@ final public class PaymentsV2: Sendable {
        return try await plansManager.restorePurchases()
     }
 
-    //MARK: Presentation
+    // MARK: Presentation
     public func availablePlansView(sessionID: String,
                                    accessToken: String,
                                    appVersion: String,
@@ -121,7 +121,7 @@ final public class PaymentsV2: Sendable {
         }
     }
 
-    //MARK: Private functions
+    // MARK: Private functions
     private func presentView(vc: UIViewController) throws {
         guard let viewController = UIApplication.getTopViewController() else {
             throw PaymentsPresentationError.unableToGetParentViewController
