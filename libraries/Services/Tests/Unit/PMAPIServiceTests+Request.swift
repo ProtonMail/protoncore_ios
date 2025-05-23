@@ -146,29 +146,50 @@ final class PMAPIServiceRequestTests: XCTestCase {
         XCTAssertEqual(error.code, 2222)
     }
 
-    func testRequestWithJSONPassesHttpErrorCode() async throws {
+    func testRequestWithJSONPassesHttpErrorCode() throws {
         let service = testService
+
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
             try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
 
         sessionMock.requestJSONStub.bodyIs { _, _, _, completion in
-            completion(URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 404)), .success([:]))
+            completion(
+                URLSessionDataTaskMock(response: HTTPURLResponse(statusCode: 404)),
+                .success([:])
+            )
         }
 
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, authRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
-        }
+        let expectation = expectation(description: "JSON request completed")
+        var result: (task: URLSessionDataTask?, response: [String: Any]?, error: NSError?)?
 
-        _ = try XCTUnwrap(result.task)
-        let error = try XCTUnwrap(result.error)
+        service.request(
+            method: .get,
+            path: "/unit/tests",
+            parameters: nil,
+            headers: nil,
+            authenticated: false,
+            authRetry: true,
+            customAuthCredential: nil,
+            nonDefaultTimeout: nil,
+            retryPolicy: .userInitiated,
+            jsonCompletion: { task, response in
+                result = (task, response.value, response.error)
+                expectation.fulfill()
+            }
+        )
+
+        wait(for: [expectation], timeout: 1.0)
+
+        _ = try XCTUnwrap(result?.task)
+        let error = try XCTUnwrap(result?.error)
         XCTAssertEqual(error.code, 404)
     }
 
-    func testRequestWithJSONReturnsResponseDictionaryInError() async throws {
+    func testRequestWithJSONReturnsResponseDictionaryInError() throws {
         let originalResponseDict: [String: Any] = ["Code": 4242, "string": "test string", "number": 24]
         let service = testService
+
         sessionMock.generateStub.bodyIs { _, method, url, params, time, retryPolicy in
             try SessionRequest(parameters: params, urlString: url, method: method, timeout: time ?? 30.0, retryPolicy: retryPolicy)
         }
@@ -180,12 +201,28 @@ final class PMAPIServiceRequestTests: XCTestCase {
             )
         }
 
-        let result = await withCheckedContinuation { continuation in
-            service.request(method: .get, path: "/unit/tests", parameters: nil, headers: nil, authenticated: false, authRetry: true,
-                            customAuthCredential: nil, nonDefaultTimeout: nil, retryPolicy: .userInitiated, jsonCompletion: optionalContinuation(continuation))
-        }
+        let expectation = expectation(description: "JSON request completed")
+        var result: (task: URLSessionDataTask?, response: [String: Any]?, error: NSError?)?
 
-        let error = try XCTUnwrap(result.error)
+        service.request(
+            method: .get,
+            path: "/unit/tests",
+            parameters: nil,
+            headers: nil,
+            authenticated: false,
+            authRetry: true,
+            customAuthCredential: nil,
+            nonDefaultTimeout: nil,
+            retryPolicy: .userInitiated,
+            jsonCompletion: { task, response in
+                result = (task, response.value, response.error)
+                expectation.fulfill()
+            }
+        )
+
+        wait(for: [expectation], timeout: 1.0)
+
+        let error = try XCTUnwrap(result?.error)
         let responseDictionary = try XCTUnwrap(error.responseDictionary)
         XCTAssertTrue((responseDictionary as NSDictionary).isEqual(to: originalResponseDict))
     }
@@ -1697,7 +1734,7 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         XCTAssertEqual(authDelegateMock.onSessionObtainingStub.lastArguments?.value.accessToken, "new test access token")
     }
 
-    func testSessionAcquireCallContainsFingerprintData() async throws {
+    func testSessionAcquireCallContainsFingerprintData() throws {
         // GIVEN
         let challengeProperties: ChallengeParametersProvider = .forAPIService(clientApp: .other(named: "core"), challenge: .init())
         let service = testService
@@ -1724,9 +1761,15 @@ func testErrorIsPassedToHandleErrorResolvingProxyDomainAndSynchronizingCookiesIf
         }
 
         // WHEN
-        let result = await withCheckedContinuation { continuation in
-            service.acquireSessionIfNeeded(completion: continuation.resume(returning:))
+        let expectation = expectation(description: "Session acquired")
+        var result: Result<SessionAcquiringResult, NSError>?
+
+        service.acquireSessionIfNeeded {
+            result = $0
+            expectation.fulfill()
         }
+
+        wait(for: [expectation], timeout: 1.0)
 
         // THEN
         guard case .success(.sessionFetchedAndAvailable) = result else { XCTFail(); return }
