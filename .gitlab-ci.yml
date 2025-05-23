@@ -183,7 +183,7 @@ test:unit:ios:all:
   stage: unit_test
   retry: 2
   rules: *rules_mr_and_develop
-  allow_failure: true
+  allow_failure: false
   interruptible: true
   before_script:
     - *add_private_ssh_key
@@ -211,7 +211,7 @@ test:unit:macos:all:
   stage: unit_test
   retry: 2
   rules: *rules_mr_and_develop
-  allow_failure: true
+  allow_failure: false
   interruptible: true
   before_script:
     - *add_private_ssh_key
@@ -253,7 +253,7 @@ test:unit:integration:
   stage: ui_and_integration_test
   retry: 1
   rules: *rules_mr_and_develop
-  allow_failure: true
+  allow_failure: false
   interruptible: true
   needs:
     - job: atlas:deploy:pipenv
