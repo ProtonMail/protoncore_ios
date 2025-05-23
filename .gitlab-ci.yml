@@ -12,6 +12,11 @@ include:
       features: $FEATURES
       key: customenv$CI_PIPELINE_ID
       suffix: ":custom"
+  - component: gitlab.protontech.ch/tpe/ai-components/ai-mr-summarizer@master
+    inputs:
+      gitlab-token: $GITLAB_AI_TOKEN
+      stage: summarise
+      runner-tag: shared-small
   
   - project: "translations/generator"
     ref: master
@@ -24,6 +29,7 @@ include:
 stages:
   - i18n
   - linting
+  - summarise
   - unit_test
   - deploy
   - ui_and_integration_test
