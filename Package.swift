@@ -4,7 +4,9 @@ import PackageDescription
 
 var products: [Product] = []
 var targets: [Target] = []
-var plugins: [Target.PluginUsage] = []
+var plugins: [Target.PluginUsage] = [
+    .plugin(name: "swiftlint")
+]
 
 let swiftSettings: [SwiftSetting] = [
     .enableUpcomingFeature("BareSlashRegexLiterals"),
@@ -215,6 +217,7 @@ extension String {
     // MARK: - Plugin names
 
     static let obfuscatedConstantsGenerationPlugin: String = "ObfuscatedConstantsGenerationPlugin"
+    static let swiftLintPlugin: String = "SwiftLintPlugin"
 }
 
 extension Target.Dependency {
@@ -335,7 +338,7 @@ extension Target.Dependency {
     static var sdWebImage: Target.Dependency { .product(name: .sdWebImage, package: .sdWebImage) }
     static var viewInspector: Target.Dependency { .product(name: .viewInspector, package: .viewInspector)}
     static var yams: Target.Dependency { .product(name: .yams, package: .yams)}
-  
+
     // MARK: - Helpers
 
     static var cryptoGoUsedInTests: Target.Dependency { .cryptoPatchedGoImplementation }
@@ -2137,6 +2140,10 @@ let package = Package(
                                     description: "Generate obfuscated constants"),
                     permissions: [.writeToPackageDirectory(reason: "Generate ObfuscatedConstants.swift")]
                 ),
-                path: "libraries/ObfuscatedConstants/Plugin")
+                path: "libraries/ObfuscatedConstants/Plugin"),
+
+            .plugin(name: "swiftlint",
+                    capability: .buildTool(),
+                    path: "plugins/SwiftLint")
     ]
 )
