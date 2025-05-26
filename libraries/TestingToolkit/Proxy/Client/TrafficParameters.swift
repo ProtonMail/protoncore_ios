@@ -27,11 +27,11 @@ public enum ContentType: String {
     case imagePng = "image/png"
     case octetStream = "application/octet-stream"
     case multipartFormData = "multipart/form-data"
-    
+
     public var asHeader: [String: String] {
         return ["content-type": self.rawValue]
     }
-    
+
     public var type: String {
         return self.rawValue
     }
@@ -69,4 +69,3 @@ public enum BandwidthLimit: Int, Codable {
         return self.rawValue * 8
     }
 }
-

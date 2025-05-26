@@ -35,10 +35,10 @@ final class ComposeTests: XCTestCase {
     }
 }
 
-fileprivate struct TestElement1 {
+private struct TestElement1 {
     var title: String
 }
 
-fileprivate struct TestElement2 {
+private struct TestElement2 {
     var value: Int
 }

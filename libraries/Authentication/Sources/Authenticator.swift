@@ -284,7 +284,7 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
             }
         }
     }
-    
+
     // Refresh expired access token using refresh token
     public func refreshCredential(_ oldCredential: Credential) async throws -> Credential {
         try await withCheckedThrowingContinuation { continuation in
@@ -614,7 +614,7 @@ public class Authenticator: NSObject, AuthenticatorInterface, AuthenticationObse
 
     private func mapValueAndError<T, S>(_ completion: @escaping (Result<T, AuthErrors>) -> Void,
                                         _ f: @escaping (S) -> T) -> (URLSessionDataTask?, Result<S, ResponseError>) -> Void {
-        return { (_, result: Result<S, ResponseError>) -> Void in
+        return { (_, result: Result<S, ResponseError>) in
             completion(result.map(f).mapError {
                 $0.isApiIsBlockedError ? AuthErrors.apiMightBeBlocked(message: $0.localizedDescription, originalError: $0) : .networkingError($0)
             })

@@ -170,7 +170,7 @@ final class AccountDeletionViewModel: AccountDeletionViewModelInterface {
 
     func interpretMessage(_ message: WKScriptMessage,
                           loadedPresentation: @escaping () -> Void,
-                          notificationPresentation: @escaping(NotificationType, String) -> Void,
+                          notificationPresentation: @escaping (NotificationType, String) -> Void,
                           successPresentation: @escaping () -> Void,
                           closeWebView: @escaping (@escaping () -> Void) -> Void) {
         guard let string = message.body as? String,

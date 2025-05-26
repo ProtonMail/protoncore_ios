@@ -276,20 +276,20 @@ public final class LoginService {
         guard let authDelegate = apiService.authDelegate else { throw LoginError.invalidState }
         authDelegate.onSessionObtaining(credential: credential)
         self.apiService.setSessionUID(uid: credential.UID)
-        
+
         async let userResult = authManager.getUserInfo()
         async let addressesResult = authManager.getAddresses()
         let (user, addresses) = try await (userResult, addressesResult)
-        
+
         // Verify the keys - make sure the keys are active and that they can be unlocked
         // DOC: https://protonag.atlassian.net/wiki/spaces/API/pages/55609920/Authentication+sessions+and+tokens#Getting-keys
         // "test that all the keys that have the property active = 1 can successfully decrypt according to the schema"
         let keyRingBuilder = KeyRingBuilder()
         let keys = (user.keys + addresses.toKeys())
-            .filter({ $0.active ==  1 })
+            .filter({ $0.active == 1 })
 
         _ = try keyRingBuilder.buildPrivateKeyRingUnlock(
-            privateKeys: keys.map({ DecryptionKey(privateKey: ArmoredKey(value: $0.privateKey), passphrase: Passphrase(value: credential.mailboxPassword))})
+            privateKeys: keys.map({ DecryptionKey(privateKey: ArmoredKey(value: $0.privateKey), passphrase: Passphrase(value: credential.mailboxPassword)) })
         )
 
         var forkedCredential = credential

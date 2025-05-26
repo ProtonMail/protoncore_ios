@@ -4,7 +4,9 @@ import PackageDescription
 
 var products: [Product] = []
 var targets: [Target] = []
-var plugins: [Target.PluginUsage] = []
+var plugins: [Target.PluginUsage] = [
+    .plugin(name: "swiftlint")
+]
 
 let swiftSettings: [SwiftSetting] = [
     .enableUpcomingFeature("BareSlashRegexLiterals"),
@@ -63,7 +65,7 @@ func coreTarget(name: String,
                 path: String,
                 exclude: [String]? = nil,
                 sources: [String]? = nil,
-                settings:  [SwiftSetting] = [.spm],
+                settings: [SwiftSetting] = [.spm],
                 resources: [Resource]? = nil) -> Target {
     .target(name: name,
             dependencies: dependencies ?? [],
@@ -215,6 +217,7 @@ extension String {
     // MARK: - Plugin names
 
     static let obfuscatedConstantsGenerationPlugin: String = "ObfuscatedConstantsGenerationPlugin"
+    static let swiftLintPlugin: String = "SwiftLintPlugin"
 }
 
 extension Target.Dependency {
@@ -335,7 +338,7 @@ extension Target.Dependency {
     static var sdWebImage: Target.Dependency { .product(name: .sdWebImage, package: .sdWebImage) }
     static var viewInspector: Target.Dependency { .product(name: .viewInspector, package: .viewInspector)}
     static var yams: Target.Dependency { .product(name: .yams, package: .yams)}
-  
+
     // MARK: - Helpers
 
     static var cryptoGoUsedInTests: Target.Dependency { .cryptoPatchedGoImplementation }
@@ -1399,7 +1402,7 @@ add(
                         .paymentsV2
                        ],
                        path: "libraries/PaymentsV2/Tests/UnitTests",
-                       resources:[
+                       resources: [
                         .copy("mockData/availablePlans.json"),
                         .copy("mockData/plans_entitlements_types.json"),
                         .copy("mockData/plans_decorations.json"),
@@ -2137,6 +2140,10 @@ let package = Package(
                                     description: "Generate obfuscated constants"),
                     permissions: [.writeToPackageDirectory(reason: "Generate ObfuscatedConstants.swift")]
                 ),
-                path: "libraries/ObfuscatedConstants/Plugin")
+                path: "libraries/ObfuscatedConstants/Plugin"),
+
+        .plugin(name: "swiftlint",
+                capability: .buildTool(),
+                path: "plugins/SwiftLint")
     ]
 )

@@ -31,28 +31,28 @@ import ProtonCoreServices
 public typealias AnyAPIDecodableResponseCompletion = (_ task: URLSessionDataTask?, _ result: Result<Any, API.APIError>) -> Void
 
 public struct APIServiceMock: APIService {
-    
+
     static let jsonSerializer = JSONSerialization()
-    
+
     public init() {}
-    
+
     private func eraseGenerics<T>(from completion: @escaping DecodableCompletion<T>) -> AnyAPIDecodableResponseCompletion where T: APIDecodableResponse {
         { task, result in completion(task, result.map { $0 as! T }) }
     }
     @FuncStub(APIServiceMock.getSession, initialReturn: nil) public var getSessionUIDStub
     public func getSession() -> Session? { getSessionUIDStub() }
-    
+
     @FuncStub(APIServiceMock.setSessionUID) public var setSessionUIDStub
     public func setSessionUID(uid: String) { setSessionUIDStub(uid) }
-    
+
     @PropertyStub(\APIServiceMock.sessionUID, initialGet: .crash) public var sessionUIDStub
     public var sessionUID: String { sessionUIDStub() }
-    
+
     @FuncStub(APIServiceMock.acquireSessionIfNeeded) public var acquireSessionIfNeededStub
     public func acquireSessionIfNeeded(completion: @escaping (Result<SessionAcquiringResult, APIError>) -> Void) {
         acquireSessionIfNeededStub(completion)
     }
-    
+
     public var acquireSessionIfNeededAyncStub: (() async -> Result<ProtonCoreServices.SessionAcquiringResult, APIError>)?
     public func acquireSessionIfNeeded() async -> Result<ProtonCoreServices.SessionAcquiringResult, APIError> {
         guard let stub = acquireSessionIfNeededAyncStub else {
@@ -60,7 +60,7 @@ public struct APIServiceMock: APIService {
         }
         return await stub()
     }
-    
+
     @FuncStub(APIServiceMock.fetchAuthCredentials) public var fetchAuthCredentialsStub
     public func fetchAuthCredentials(completion: @escaping (AuthCredentialFetchingResult) -> Void) {
         fetchAuthCredentialsStub(completion)

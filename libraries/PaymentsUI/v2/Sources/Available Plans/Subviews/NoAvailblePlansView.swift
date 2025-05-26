@@ -26,7 +26,6 @@ public enum NoAvailblePlansViewType {
     case noPlans
     case filterEmtpy
 
-
     public var title: String {
         switch self {
         case .noPlans:

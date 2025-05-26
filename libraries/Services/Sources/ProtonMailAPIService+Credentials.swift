@@ -31,7 +31,7 @@ import ProtonCoreUtilities
 extension PMAPIService {
     public func fetchCredentialForCredentialLessSession() async -> Result<Credential, ResponseError> {
         let sessionResult = await acquireSessionIfNeeded()
-        
+
         guard let sessionAuthCredential = sessionResult.value?.authCredential else {
             // We failed to get a session auth credential. We probably have an error.
             let responseError = ResponseError(
@@ -42,9 +42,9 @@ extension PMAPIService {
             )
             return .failure(responseError)
         }
-        
+
         let credentialLessRequest = CredentiallessRequest(challenge: deviceFingerprints)
-        
+
         let credentialLessResponse: Result<CredentiallessRequestResponse, APIError> =
         await performRequestHavingFetchedCredentials(method: credentialLessRequest.method,
                                                      path: credentialLessRequest.path,
@@ -57,7 +57,7 @@ extension PMAPIService {
                                                      nonDefaultTimeout: nil,
                                                      retryPolicy: .background,
                                                      onDataTaskCreated: { _ in })
-    
+
         guard let credentialLessResponse = credentialLessResponse.value else {
             let responseError = ResponseError(
                 httpCode: credentialLessResponse.error?.httpCode,
@@ -67,7 +67,7 @@ extension PMAPIService {
             )
             return .failure(responseError)
         }
-        
+
         let credential = Credential(UID: credentialLessResponse.UID,
                                     accessToken: credentialLessResponse.accessToken,
                                     refreshToken: credentialLessResponse.refreshToken,
@@ -389,7 +389,7 @@ extension PMAPIService {
             completion(.refreshingError(underlyingError: error))
         }
     }
-    
+
     enum SessionAcquisitionResult {
         case acquired(AuthCredential)
         case acquiringError(ResponseError)

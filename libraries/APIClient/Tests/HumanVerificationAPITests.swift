@@ -166,7 +166,7 @@ class HumanVerificationAPITests: XCTestCase {
             XCTAssert(response.error == nil)
             expectation.fulfill()
         }
-        waitForExpectations(timeout: 3) { (expectationError) -> Void in
+        waitForExpectations(timeout: 3) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -185,7 +185,7 @@ class HumanVerificationAPITests: XCTestCase {
             XCTAssert(response.error == nil)
             expectation.fulfill()
         }
-        waitForExpectations(timeout: 3) { (expectationError) -> Void in
+        waitForExpectations(timeout: 3) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -205,7 +205,7 @@ class HumanVerificationAPITests: XCTestCase {
             XCTAssert(response.error?.localizedDescription == "Invalid email address")
             expectation.fulfill()
         }
-        waitForExpectations(timeout: 3) { (expectationError) -> Void in
+        waitForExpectations(timeout: 3) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -225,7 +225,7 @@ class HumanVerificationAPITests: XCTestCase {
             XCTAssert(response.error?.localizedDescription == "Invalid phone number")
             expectation.fulfill()
         }
-        waitForExpectations(timeout: 3) { (expectationError) -> Void in
+        waitForExpectations(timeout: 3) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -254,7 +254,7 @@ class HumanVerificationAPITests: XCTestCase {
             XCTAssert(response.error?.localizedDescription == "Human verification required")
             expectation.fulfill()
         }
-        waitForExpectations(timeout: 3) { (expectationError) -> Void in
+        waitForExpectations(timeout: 3) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -292,7 +292,7 @@ class HumanVerificationAPITests: XCTestCase {
             XCTAssert(response.error == nil)
             expectation.fulfill()
         }
-        waitForExpectations(timeout: 3) { (expectationError) -> Void in
+        waitForExpectations(timeout: 3) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -340,7 +340,7 @@ class HumanVerificationAPITests: XCTestCase {
             XCTAssert(response.error == nil)
             expectation2.fulfill()
         }
-        waitForExpectations(timeout: 3) { (expectationError) -> Void in
+        waitForExpectations(timeout: 3) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -387,7 +387,7 @@ class HumanVerificationAPITests: XCTestCase {
             XCTAssert(response.error == nil)
             expectation2.fulfill()
         }
-        waitForExpectations(timeout: 3) { (expectationError) -> Void in
+        waitForExpectations(timeout: 3) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -451,7 +451,7 @@ class HumanVerificationAPITests: XCTestCase {
             XCTAssert(response.error == nil)
             expectation2.fulfill()
         }
-        waitForExpectations(timeout: 50) { (expectationError) -> Void in
+        waitForExpectations(timeout: 50) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }

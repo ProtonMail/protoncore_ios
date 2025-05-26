@@ -63,7 +63,7 @@ class TroubleShootingCell: UITableViewCell, UITextViewDelegate {
 
     @IBAction func switchAction(_ sender: UISwitch) {
         let status = sender.isOn
-        callback?(self, status, { (isOK ) -> Void in
+        callback?(self, status, { (isOK ) in
             if isOK == false {
                 self.switchView.setOn(false, animated: true)
                 self.layoutIfNeeded()

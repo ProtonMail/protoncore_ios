@@ -53,12 +53,11 @@ struct LoginStub: Login {
                 addresses: [],
                 scopes: []))
     }
-    
-    
+
     func validateAndAuthenticateSSO(idpEmail: String, responseToken: ProtonCoreNetworking.SSOResponseToken) async throws -> ProtonCoreLogin.LoginStatus {
         .askTOTP
     }
-    
+
     func processResponseToken(idpEmail: String, responseToken: ProtonCoreNetworking.SSOResponseToken, completion: @escaping (Result<ProtonCoreLogin.LoginStatus, ProtonCoreLogin.LoginError>) -> Void) {
 
     }

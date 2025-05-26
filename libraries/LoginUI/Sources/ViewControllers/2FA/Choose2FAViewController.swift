@@ -29,7 +29,7 @@ public final class Choose2FAViewController: UIHostingController<Choose2FAView> {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public override init(rootView: Choose2FAView) {
+    override public init(rootView: Choose2FAView) {
         super.init(rootView: rootView)
     }
 

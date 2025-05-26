@@ -137,7 +137,7 @@ class DoHProviderRequestTests: XCTestCase {
             expectation.fulfill()
         }
 
-        self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: timeout) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -165,7 +165,7 @@ class DoHProviderRequestTests: XCTestCase {
             expectation.fulfill()
         }
 
-        self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: timeout) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -194,7 +194,7 @@ class DoHProviderRequestTests: XCTestCase {
             expectation.fulfill()
         }
 
-        self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: timeout) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -224,7 +224,7 @@ class DoHProviderRequestTests: XCTestCase {
             expectation.fulfill()
         }
 
-        self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: timeout) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -253,7 +253,7 @@ class DoHProviderRequestTests: XCTestCase {
             expectation.fulfill()
         }
 
-        self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: timeout) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -282,7 +282,7 @@ class DoHProviderRequestTests: XCTestCase {
             expectation.fulfill()
         }
 
-        self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: timeout) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -312,7 +312,7 @@ class DoHProviderRequestTests: XCTestCase {
             expectation.fulfill()
         }
 
-        self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: timeout) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }

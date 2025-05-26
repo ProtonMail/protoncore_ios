@@ -160,7 +160,7 @@ public func handleAuthenticationChallenge(
     noTrustKit: Bool,
     trustKit: TrustKit?,
     challengeCompletionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void,
-    trustKitCompletionHandler: @escaping(URLSession.AuthChallengeDisposition,
+    trustKitCompletionHandler: @escaping (URLSession.AuthChallengeDisposition,
                                          URLCredential?, @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) -> Void = { disposition, credential, completionHandler in completionHandler(disposition, credential) }
 ) {
     if noTrustKit {

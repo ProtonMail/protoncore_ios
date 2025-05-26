@@ -173,7 +173,7 @@ final class OrganizationsRequestTests: XCTestCase {
                 XCTFail(error.localizedDescription)
             }
         }
-        waitForExpectations(timeout: 3) { (expectationError) -> Void in
+        waitForExpectations(timeout: 3) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }

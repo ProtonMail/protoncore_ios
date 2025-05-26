@@ -19,7 +19,6 @@
 // You should have received a copy of the GNU General Public License
 // along with Proton Mail. If not, see https://www.gnu.org/licenses/.
 
-
 import Foundation
 import Yams
 
@@ -27,12 +26,12 @@ import Yams
 public struct MailboxSettings: Codable {
     public var viewMode: String
     public var pgpScheme: String
-    
+
     public init(viewMode: String, pgpScheme: String) {
         self.viewMode = viewMode
         self.pgpScheme = pgpScheme
     }
-    
+
     enum CodingKeys: String, CodingKey {
         case viewMode = "ViewMode"
         case pgpScheme = "PGPScheme"
@@ -43,15 +42,10 @@ public struct MailboxSettings: Codable {
 public struct Message: Codable {
     public var path: String
     public var state: MessageState
-    
+
     enum CodingKeys: String, CodingKey {
         case path = "Path"
         case state = "State"
-    }
-    
-    init(path: String, state: MessageState) {
-        self.path = path
-        self.state = state
     }
 }
 
@@ -66,21 +60,21 @@ public class MailboxBuilder {
     public var user: UserBuilder
     public var emails: [EmailBuilder] = []
     public var emailStates: [(EmailBuilder, MessageState?)] = []
-    
+
     var settings: MailboxSettings
-    
+
     public init(user: UserBuilder, viewMode: String = "Conversation", pgpScheme: String = "PGPInline") {
         self.user = user
         self.settings = MailboxSettings(viewMode: viewMode, pgpScheme: pgpScheme)
     }
-    
+
     @discardableResult
     public func addEml(eml: EmailBuilder, messageState: MessageState? = nil) -> Self {
         emails.append(eml)
         emailStates.append((eml, messageState))
         return self
     }
-    
+
     public func getDataAsYaml() throws -> String {
         // Create an array of messages for YAML output
         let messages: [[String: String]] = emailStates.map { (email, state) in
@@ -89,7 +83,7 @@ public class MailboxBuilder {
                 "State": state?.rawValue ?? "Draft"
             ]
         }
-        
+
         // Construct the YAML content dictionary
         let yamlContent: [String: Any] = [
             "Settings": [
@@ -98,7 +92,7 @@ public class MailboxBuilder {
             ],
             "Messages": messages
         ]
-        
+
         return try Yams.dump(object: yamlContent)
     }
 }

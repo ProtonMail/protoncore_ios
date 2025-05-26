@@ -22,7 +22,7 @@
 import Foundation
 import ProtonCoreNetworking
 
-public final class OrganizationResponse:  Response, APIDecodableResponse, Encodable {
+public final class OrganizationResponse: Response, APIDecodableResponse, Encodable {
     var organization: Organization
 }
 

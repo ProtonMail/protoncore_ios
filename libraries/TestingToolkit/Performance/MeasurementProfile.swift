@@ -89,7 +89,7 @@ public class MeasurementProfile: MeasurementProtocol {
     }
 
     @discardableResult
-    public func addMetrics(data: [String: String])  -> MeasurementProfile  {
+    public func addMetrics(data: [String: String]) -> MeasurementProfile  {
         measuresList.forEach { measure in
             measure.addMetrics(data)
         }

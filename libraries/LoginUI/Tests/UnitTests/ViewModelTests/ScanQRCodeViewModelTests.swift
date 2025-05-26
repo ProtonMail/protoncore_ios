@@ -54,7 +54,7 @@ class ScanQRCodeViewModelTests: XCTestCase {
 
     func testHandleQRCode_BadQRCode() async throws {
         let qrCode = "SomeAbsoluteGarbageQRCode"
-        
+
         await sut.processQRCode(qrCode)
 
         XCTAssertEqual(sut.state, .failure)

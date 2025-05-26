@@ -173,7 +173,7 @@ class AddressExtensionsTests: XCTestCase {
         } catch let error {
             XCTFail(error.localizedDescription)
         }
-        self.waitForExpectations(timeout: 30) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: 30) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -234,7 +234,7 @@ class AddressExtensionsTests: XCTestCase {
         } catch let error {
             XCTFail(error.localizedDescription)
         }
-        self.waitForExpectations(timeout: 30) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: 30) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -255,7 +255,7 @@ class AddressExtensionsTests: XCTestCase {
         } catch let error {
             XCTFail(error.localizedDescription)
         }
-        self.waitForExpectations(timeout: 30) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: 30) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -275,7 +275,7 @@ class AddressExtensionsTests: XCTestCase {
         } catch let error {
             XCTFail(error.localizedDescription)
         }
-        self.waitForExpectations(timeout: 30) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: 30) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -292,7 +292,7 @@ class AddressExtensionsTests: XCTestCase {
         } catch let error {
             XCTFail(error.localizedDescription)
         }
-        self.waitForExpectations(timeout: 30) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: 30) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -310,7 +310,7 @@ class AddressExtensionsTests: XCTestCase {
         } catch let error {
             XCTFail(error.localizedDescription)
         }
-        self.waitForExpectations(timeout: 30) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: 30) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }

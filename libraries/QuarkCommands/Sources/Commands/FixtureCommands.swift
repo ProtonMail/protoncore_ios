@@ -105,7 +105,7 @@ public struct LoadFixturesProps {
     public init(files: [(filename: String, fixtureData: Data)]) {
         self.files = files
     }
-    
+
     public var description: String {
         let fileDescriptions = files.map { file -> String in
             let filenameDescription = "Filename: \(file.filename)"

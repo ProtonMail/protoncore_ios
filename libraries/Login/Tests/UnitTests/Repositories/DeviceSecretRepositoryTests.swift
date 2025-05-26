@@ -50,7 +50,7 @@ final class DeviceSecretRepositoryTests: XCTestCase {
         provider.dataToReturn = NSData(data: try! JSONEncoder().encode(secret))
 
         try sut.upsert(deviceSecret: secret)
-        
+
         let result = try sut.getByUserId(userId: userId)
 
         XCTAssertEqual(secret, result)

@@ -237,7 +237,7 @@ extension LoginViewModel: TwoFAProviderDelegate {
     }
 
     func providerDidObtain(factor: String) async throws {
-       try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, any Error>) -> Void in
+       try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, any Error>) in
             login.provide2FACode(factor) { [weak self] result in
                 self?.callbackForDidObtain(result: result, continuation: continuation)
             }
@@ -245,7 +245,7 @@ extension LoginViewModel: TwoFAProviderDelegate {
     }
 
     func providerDidObtain(factor: ProtonCoreAuthentication.Fido2Signature) async throws {
-        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, any Error>) -> Void in
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, any Error>) in
             login.provideFido2Signature(factor) { [weak self] result in
                 self?.callbackForDidObtain(result: result, continuation: continuation)
             }

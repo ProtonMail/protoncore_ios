@@ -15,10 +15,8 @@ disabled_rules: # rule identifiers to exclude from running
   - nesting # https://realm.github.io/SwiftLint/nesting
   - function_parameter_count # https://realm.github.io/SwiftLint/function_parameter_count
   - for_where # https://realm.github.io/SwiftLint/for_where
-# these rules were temporarily disabled
   - force_try
   - empty_count
-# This need to be enabled later
   - todo
   - large_tuple
   - multiple_closures_with_trailing_closure
@@ -48,8 +46,6 @@ opt_in_rules: # some rules are only opt-in
 # More rules can be found here: https://github.com/realm/SwiftLint/blob/master/Rules.md
 
 excluded: # paths to ignore during linting. Takes precedence over `included`.
-  - Pods
-  - ExampleApp/Pods
   - fastlane
   - third-party
 
@@ -63,37 +59,11 @@ function_body_length:
   warning: 120
   error: 150
 
-
 custom_rules:
   no_print:
     name: "Printing to console"
-    message: "No direct printing to console is allowed. Please use PMLog class from vpncore library."
+    message: "No direct printing to console is allowed. Please use PMLog class."
     regex: "(^\\s*print\\()|(NSLog)"
     match_kinds:
       - identifier
     excluded: ExampleApp/
-
-#file_header:
-#  severity: error
-#  required_pattern: |
-#                    \/\/
-#                    \/\/  .*?\.swift
-#                    \/\/  ProtonCore.* - Created on \d{1,4}.\d{1,2}.\d{2,4}.?
-#                    \/\/
-#                    \/\/  Copyright \(c\) \d{4} Proton (Technologies )?AG
-#                    \/\/
-#                    \/\/  This file is part of (Proton Technologies AG and )?ProtonCore\.
-#                    \/\/
-#                    \/\/  ProtonCore is free software: you can redistribute it and\/or modify
-#                    \/\/  it under the terms of the GNU General Public License as published by
-#                    \/\/  the Free Software Foundation, either version 3 of the License, or
-#                    \/\/  \(at your option\) any later version\.
-#                    \/\/
-#                    \/\/  ProtonCore is distributed in the hope that it will be useful,
-#                    \/\/  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#                    \/\/  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE\..? See the
-#                    \/\/  GNU General Public License for more details\.
-#                    \/\/
-#                    \/\/  You should have received a copy of the GNU General Public License
-#                    \/\/  along with ProtonCore\..? If not, see <?https:\/\/www\.gnu\.org\/#dlicenses\/>?\.
-          

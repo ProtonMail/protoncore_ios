@@ -143,7 +143,6 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
             throw error
         }
 
-
         self.remoteManager = RemoteManager(sessionID: config.sessionID,
                                            authToken: config.authToken,
                                            appVersion: config.appVersion,

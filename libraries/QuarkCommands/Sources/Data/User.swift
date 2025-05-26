@@ -135,7 +135,6 @@ public struct User: Decodable {
         self.recoveryEmail = recoveryEmail
     }
 
-
     public init(
         email: String,
         name: String,

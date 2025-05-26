@@ -56,7 +56,7 @@ class UserTests: XCTestCase {
         } catch {
 
         }
-        self.waitForExpectations(timeout: 30) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: 30) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }

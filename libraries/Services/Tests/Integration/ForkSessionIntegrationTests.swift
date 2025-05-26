@@ -141,7 +141,7 @@ final class ForkSessionIntegrationTests: IntegrationTestCase {
 
     private func deleteAccount(id: Int) {
         let quark = Quark().baseUrl(environment.doh)
-        let _ = try? quark.deleteUser(id: id)
+        _ = try? quark.deleteUser(id: id)
     }
 
 }

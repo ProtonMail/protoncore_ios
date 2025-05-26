@@ -45,7 +45,7 @@ public final class SHA256 {
 
         // hash values
         var hh = [UInt32]()
-        h.forEach { h -> Void in
+        h.forEach { h in
             hh.append(UInt32(h))
         }
 

@@ -34,7 +34,7 @@ public struct AvailablePlansView: View {
                 .ignoresSafeArea()
 
             VStack {
-                //MARK: Modal presentation close button
+                // MARK: Modal presentation close button
                 if viewModel.showCloseButton {
                     HStack {
                         Button {
@@ -163,7 +163,7 @@ public struct AvailablePlansView: View {
                                             presentationMode: .push)
     viewModel.addPlanViewModels(availablePlans)
     viewModel.setBillingCycle(.all)
-    //viewModel.showBanner()
+    // viewModel.showBanner()
     viewModel.setCurrentPlan(currentPlan)
 
     return AvailablePlansView(viewModel: viewModel)

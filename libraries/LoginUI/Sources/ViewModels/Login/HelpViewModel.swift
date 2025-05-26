@@ -31,7 +31,7 @@ final class HelpViewModel {
     let helpSections: [[HelpItem]]
 
     init(helpDecorator: ([[HelpItem]]) -> [[HelpItem]]) {
-        
+
         var mainSection: [HelpItem] = [
               .forgotUsername,
               .forgotPassword,
@@ -41,7 +41,7 @@ final class HelpViewModel {
         if !FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.easyDeviceMigrationDisabled) {
             mainSection.insert(.signInWithQRCode, at: 0)
         }
-        
+
         let defaultHelp: [[HelpItem]] = [
             mainSection,
             [

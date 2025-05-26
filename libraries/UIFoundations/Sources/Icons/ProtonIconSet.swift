@@ -121,7 +121,7 @@ public struct ProtonIconSet {
     public let brandProtonMail = ProtonIcon(name: "ic-brand-proton-mail")
 
     public let brandProtonVpn = ProtonIcon(name: "ic-brand-proton-vpn")
-    
+
     public let brandProtonPass = ProtonIcon(name: "ic-brand-proton-pass")
 
     public let brandProton = ProtonIcon(name: "ic-brand-proton")
@@ -475,7 +475,7 @@ public struct ProtonIconSet {
     public let questionCircleFilled = ProtonIcon(name: "ic-question-circle-filled")
 
     public let questionCircle = ProtonIcon(name: "ic-question-circle")
-    
+
     public let qrCode = ProtonIcon(name: "ic-qr-code")
 
     public let replyAll = ProtonIcon(name: "ic-reply-all")

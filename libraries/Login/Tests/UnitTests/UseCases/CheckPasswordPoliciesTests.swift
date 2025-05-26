@@ -174,4 +174,3 @@ final class CheckPasswordPoliciesTests: XCTestCase {
     }
 }
 #endif
-

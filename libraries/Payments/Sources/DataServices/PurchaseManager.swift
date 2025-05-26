@@ -292,7 +292,7 @@ final class PurchaseManager: PurchaseManagerProtocol {
                 finishCallback(.purchaseCancelled)
             } else if let error = error as? StoreKitManagerErrors, case let .apiMightBeBlocked(message, originalError) = error {
                 finishCallback(.apiMightBeBlocked(message: message, originalError: originalError, processingPlan: self?.unfinishedPurchasePlan))
-            } else if (error as? StoreKitManagerErrors)  == .renewalTransaction {
+            } else if (error as? StoreKitManagerErrors) == .renewalTransaction {
                 finishCallback(.planAlreadyPurchased(error: error))
             } else {
                 finishCallback(.purchaseError(error: error, processingPlan: self?.unfinishedPurchasePlan))

@@ -46,7 +46,7 @@ public class AvailablePlansViewModel: ObservableObject {
     @Published var updateCompleted: Bool = false
     @Published var showAlert: BannerState = .none
     @Published var hideCurrentPlan: Bool = false
-    
+
     public var hideAvailablePlans: Bool {
         guard let isFreePlan = currentPlan?.isFreePlan else {
             return false
@@ -161,7 +161,7 @@ public class AvailablePlansViewModel: ObservableObject {
     }
 
     @discardableResult
-    public func billingFilter(filter: BillingCycle) ->  [PlanViewModel] {
+    public func billingFilter(filter: BillingCycle) -> [PlanViewModel] {
         filteredPlans.removeAll()
         filteredPlans = filter == .all ? availablePlansViewModels : availablePlansViewModels.filter { return $0.subscriptionPeriod == filter }
 
@@ -195,7 +195,7 @@ public class AvailablePlansViewModel: ObservableObject {
                 default:
                     break
                 }
-            }
+                }
             .store(in: &self.cancellables)
         }
 

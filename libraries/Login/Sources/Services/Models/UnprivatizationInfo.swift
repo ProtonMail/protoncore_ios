@@ -61,7 +61,7 @@ public final class UnprivatizationInfo: Response, APIDecodableResponse, Encodabl
     required init() {
         fatalError("init() has not been implemented")
     }
-    
+
     public enum UnprivatizeState: Int, Codable {
         case declined
         case pending

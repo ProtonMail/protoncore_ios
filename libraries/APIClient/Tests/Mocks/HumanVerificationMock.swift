@@ -30,13 +30,13 @@ class HumanCheckHelperMock: HumanVerifyDelegate {
     fileprivate let resultSuccess: Bool
     fileprivate let resultHeaders: [[String: Any]]?
     fileprivate let delay: TimeInterval
-    fileprivate let resultClosure: ((@escaping(Bool) -> Void) -> Void)?
+    fileprivate let resultClosure: ((@escaping (Bool) -> Void) -> Void)?
 
     weak var responseDelegateForLoginAndSignup: HumanVerifyResponseDelegate?
 
     weak var paymentDelegateForLoginAndSignup: HumanVerifyPaymentDelegate?
 
-    init(apiService: APIService, resultSuccess: Bool, resultHeaders: [[String: Any]]? = nil, delay: TimeInterval = 0, resultClosure: ((@escaping(Bool) -> Void) -> Void)? = nil) {
+    init(apiService: APIService, resultSuccess: Bool, resultHeaders: [[String: Any]]? = nil, delay: TimeInterval = 0, resultClosure: ((@escaping (Bool) -> Void) -> Void)? = nil) {
         self.resultSuccess = resultSuccess
         self.resultHeaders = resultHeaders
         self.delay = delay

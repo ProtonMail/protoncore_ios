@@ -54,7 +54,7 @@ public enum SessionResponseError: Error {
                                      userFacingMessage: "Response Body is not a JSON.",
                                      underlyingError: self.withoutResponse as NSError) as NSError
             }
-            
+
             // Note: I want to keep the response, and the body. They are really helpful when debugging.
             let errorMessage: String
             if let errorFromObject = object["Error"] as? String {
@@ -106,8 +106,8 @@ public func handleAuthenticationChallenge(
     noTrustKit: Bool,
     trustKit: TrustKit?,
     challengeCompletionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void,
-    trustKitCompletionHandler: @escaping(URLSession.AuthChallengeDisposition,
-                                         URLCredential?, @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) -> Void = { disposition, credential, completionHandler in completionHandler(disposition, credential) }
+    trustKitCompletionHandler: @escaping (URLSession.AuthChallengeDisposition,
+                                          URLCredential?, @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) -> Void = { disposition, credential, completionHandler in completionHandler(disposition, credential) }
 ) {
     if noTrustKit {
         guard let trust = challenge.protectionSpace.serverTrust else {

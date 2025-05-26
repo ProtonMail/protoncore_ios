@@ -40,7 +40,7 @@ public final class FeatureFlagsRepository: FeatureFlagsRepositoryProtocol, @unch
     /// The local data source for overridden feature flags.
     private let overrideLocalDataSource: Atomic<any OverrideFeatureFlagDataSourceProtocol>
 
-    //If we notice a explosion of threads using concurrent queue we should move to a serial queue
+    // If we notice a explosion of threads using concurrent queue we should move to a serial queue
     private let queue = DispatchQueue(label: "ch.proton.featureflagsrepository_queue", attributes: .concurrent)
 
     /// The local data source for feature flags.

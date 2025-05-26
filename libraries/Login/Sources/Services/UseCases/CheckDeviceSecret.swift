@@ -66,7 +66,7 @@ struct CheckDeviceSecret {
                 .sessionAlreadyAssociated,
                 .unknownError:
             return .noSecret
-        case .success(let encryptedSecret): return .success(encryptedSecret) 
+        case .success(let encryptedSecret): return .success(encryptedSecret)
         }
     }
 }

@@ -152,10 +152,10 @@ final class AeadCryptoTests: XCTestCase {
         let plainData = getRandomBytes(count: 100 * 1000)
         for sut in suts {
             let key = getRandomKey()
-            
+
             let encrypted = try sut.encrypt(value: plainData, key: key)
             let decrypted = try sut.decrypt(value: encrypted, key: key)
-            
+
             XCTAssertEqual(plainData, decrypted)
         }
     }

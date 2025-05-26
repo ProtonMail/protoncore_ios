@@ -73,7 +73,7 @@ public struct PaymentsAPIs: PaymentsAPIsProviding, Sendable {
         }
 
         static func urlString(hostURL: String, requestType: RequestType) -> String {
-            return hostURL  + Constants.moduleNameSpace(requestType: requestType) + Constants.apiVersion(requestType: requestType).rawValue + requestType.requestEndpoint
+            return hostURL + Constants.moduleNameSpace(requestType: requestType) + Constants.apiVersion(requestType: requestType).rawValue + requestType.requestEndpoint
         }
     }
 

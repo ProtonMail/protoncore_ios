@@ -65,7 +65,7 @@ final class CredentialLessIntegrationTests: IntegrationTestCase {
         super.tearDown()
         PMAPIService.noTrustKit = false
     }
-    
+
     func testCredentialLessSessionIsAquiredSuccessfully() async throws {
         // GIVEN
         let service = PMAPIService.createAPIServiceWithoutSession(
@@ -82,7 +82,7 @@ final class CredentialLessIntegrationTests: IntegrationTestCase {
 
         // THEN
         guard case .success(let success) = result else { XCTFail("\(result)"); return }
-        
+
         // Make sure the values are not empty
         XCTAssertNotEqual(success.UID, "")
         XCTAssertNotEqual(success.accessToken, "")

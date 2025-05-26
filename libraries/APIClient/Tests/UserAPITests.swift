@@ -137,7 +137,7 @@ class UserAPITests: XCTestCase {
             XCTAssert(response.error != nil)
             expectation6.fulfill()
         }
-        self.waitForExpectations(timeout: 1.0) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: 1.0) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }

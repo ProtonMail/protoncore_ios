@@ -66,7 +66,7 @@ public extension ServicePlanDataServiceProtocol {
     func updateCountriesCount(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
         updateCountriesCount(callBlocksOnParticularQueue: .main, success: success, failure: failure)
     }
-    
+
     func fetchCurrentSubscription(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
         fetchCurrentSubscription(callBlocksOnParticularQueue: .main, success: success, failure: failure)
     }
@@ -280,12 +280,12 @@ extension ServicePlanDataService {
             self.countriesCount = countriesCountRes.countriesCount
         }, callBlocksOnParticularQueue: callBlocksOnParticularQueue, success: success, failure: failure)
     }
-    
+
     public func fetchCurrentSubscription(callBlocksOnParticularQueue: DispatchQueue? = nil, success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
         performWork(work: { try self.fetchCurrentSubscription() },
                     callBlocksOnParticularQueue: callBlocksOnParticularQueue, success: success, failure: failure)
     }
-    
+
     func willRenewAutomatically(plan: InAppPurchasePlan) -> Bool {
         guard let subscription = currentSubscription else {
             return false
@@ -399,7 +399,7 @@ extension ServicePlanDataService {
     }
 
     private func fetchCurrentSubscription() throws {
-        
+
         guard Thread.isMainThread == false else {
             assertionFailure("This is a blocking network request, should never be called from main thread")
             throw AwaitInternalError.synchronousCallPerformedFromTheMainThread

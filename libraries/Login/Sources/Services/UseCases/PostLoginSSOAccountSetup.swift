@@ -193,7 +193,7 @@ public final class PostLoginSSOAccountSetup {
         let authDevices = try await getAuthDevices.invoke()
             .filter({ $0.state == .active })
         guard !authDevices.isEmpty else {
-            if (userData.user.hasTemporaryPassword) {
+            if userData.user.hasTemporaryPassword {
                 return try await loadRequestAdminHelpScreen()
             } else {
                 return .enterBackupPassword

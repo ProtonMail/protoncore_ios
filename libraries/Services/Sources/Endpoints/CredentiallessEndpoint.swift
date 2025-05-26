@@ -38,11 +38,11 @@ public final class CredentiallessRequest: Request {
     public let method: HTTPMethod = .post
     public var isAuth: Bool = true
     public let challenge: ChallengeProperties?
-    
+
     public var challengeProperties: ChallengeProperties? {
         return challenge
     }
-    
+
     public init(challenge: ChallengeProperties?) {
         self.challenge = challenge
     }

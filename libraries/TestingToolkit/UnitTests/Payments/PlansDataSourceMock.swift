@@ -103,7 +103,7 @@ public final class PlansDataSourceMock: NSObject, PlansDataSourceProtocol {
     ) -> ProtonCorePayments.AvailablePlans.AvailablePlan.Instance? {
         detailsOfAvailablePlanInstanceCorrespondingToIAPStub(iap)
     }
-    
+
     @FuncStub(PlansDataSourceProtocol.shouldDisplayPlanInstance, initialReturn: false)
     public var shouldDisplayPlanInstanceStub
     public func shouldDisplayPlanInstance(_ plan: ProtonCorePayments.AvailablePlans.AvailablePlan.Instance) -> Bool {

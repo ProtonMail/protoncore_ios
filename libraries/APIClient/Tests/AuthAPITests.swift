@@ -101,7 +101,7 @@ class AuthAPITests: XCTestCase {
             expectation.fulfill()
         }
 
-        self.waitForExpectations(timeout: timeout) { expectationError -> Void in
+        self.waitForExpectations(timeout: timeout) { expectationError in
             XCTAssertNil(expectationError)
         }
     }
@@ -128,7 +128,7 @@ class AuthAPITests: XCTestCase {
             expectation.fulfill()
         }
 
-        self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: timeout) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -212,7 +212,7 @@ class AuthAPITests: XCTestCase {
             XCTAssertEqual(response.modulusID, modulusID)
             expectation1.fulfill()
         }
-        self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: timeout) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }
@@ -240,7 +240,7 @@ class AuthAPITests: XCTestCase {
             XCTAssert(response.error == nil)
             expectation1.fulfill()
         }
-        self.waitForExpectations(timeout: timeout) { (expectationError) -> Void in
+        self.waitForExpectations(timeout: timeout) { (expectationError) in
             XCTAssertNil(expectationError)
         }
     }

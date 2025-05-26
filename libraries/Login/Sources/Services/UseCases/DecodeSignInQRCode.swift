@@ -63,7 +63,7 @@ public struct DecodeSignInQRCode {
         }
 
         /// Note: the encryption key can be empty. Some clients don't need the passphrase so they don't send a key.
-        var keyData: Data? = nil
+        var keyData: Data?
         if !key.isEmpty {
             keyData = Base64.decode(base64: String(key))
 

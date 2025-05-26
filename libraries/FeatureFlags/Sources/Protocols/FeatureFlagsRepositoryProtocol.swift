@@ -47,7 +47,7 @@ public protocol FeatureFlagsRepositoryProtocol: AnyObject, Sendable {
 }
 
 public extension FeatureFlagsRepositoryProtocol {
-    
+
     /// For single-user clients
     func isEnabled(_ flag: any FeatureFlagTypeProtocol, reloadValue: Bool = false) -> Bool {
         isEnabled(flag, reloadValue: reloadValue)
