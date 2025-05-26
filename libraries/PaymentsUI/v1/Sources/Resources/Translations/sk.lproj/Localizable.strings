@@ -96,7 +96,7 @@
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "Získať %@";
+"Get %@" = "Získajte %@";
 
 "Get Proton for free" = "Získajte Proton zadarmo";
 
@@ -133,3 +133,9 @@
 "Pay every two years" = "Platba každé dva roky";
 
 "Free" = "Zdarma";
+
+"Your storage is full" = "Vaše úložisko je plné";
+
+"Upgrade your plan to continue to use your account without interruptions." = "Ak chcete pokračovať v používaní svojho účtu bez prerušenia, prejdite na vyšší plán.";
+
+"Get more storage" = "Získajte viac úložného priestoru";

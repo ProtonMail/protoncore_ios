@@ -40,13 +40,13 @@
 
 "High speed" = "Alta velocità";
 
-"Highest speed" = "Altissima velocità";
+"Highest speed" = "Massima velocità";
 
 "Multi-user support" = "Supporto multi-utente";
 
 "The basic for private and secure communications." = "La base per le comunicazioni private e sicure.";
 
-"Full-featured mailbox with advanced protection." = "Casella email completa con protezione avanzata.";
+"Full-featured mailbox with advanced protection." = "Casella di posta completa con protezione avanzata.";
 
 "Limited time offer" = "Offerta a tempo limitato";
 
@@ -133,3 +133,9 @@
 "Pay every two years" = "Paga ogni due anni";
 
 "Free" = "Free";
+
+"Your storage is full" = "Il tuo spazio di archiviazione è pieno";
+
+"Upgrade your plan to continue to use your account without interruptions." = "Effettua l'upgrade del tuo piano per continuare a utilizzare il tuo account senza interruzioni.";
+
+"Get more storage" = "Ottieni più spazio di archiviazione";

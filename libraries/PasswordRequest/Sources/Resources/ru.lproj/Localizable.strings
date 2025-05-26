@@ -13,3 +13,11 @@
 "Cancel password reset" = "Отменить сброс пароля";
 
 "Cancel password reset?" = "Отменить сброс пароля?";
+
+"Cancel password reset?" = "Отменить сброс пароля?";
+
+"Cancel password reset" = "Отменить сброс пароля";
+
+"Enter your current password to cancel the password reset process. No other changes will take effect." = "Введите свой текущий пароль, чтобы отменить процесс сброса пароля. Никакие другие изменения не вступят в силу.";
+
+"Current password" = "Текущий пароль";

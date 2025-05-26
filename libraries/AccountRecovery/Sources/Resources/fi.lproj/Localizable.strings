@@ -6,21 +6,21 @@
 
 "Grace_View_Title" = "Salasanan nollaus";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**";
+"We received a password reset request for **%@**." = "Saimme salasanan nollauspyynnön käyttäjälle **%@**";
 
-"We received a password reset request for %@." = "We received a password reset request for %@";
+"We received a password reset request for %@." = "Saimme salasanan nollauspyynnön käyttäjälle %@";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Jos et pyytänyt salasanasi nollaamista, **peruuta tämä pyyntö nyt**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Jos et pyytänyt salasanasi nollaamista, peruuta tämä pyyntö nyt.";
 
 "Password reset requested" = "Salasanan nollausta pyydettiin";
 
 "Insecure_View_line1" = "Voit nyt vaihtaa salasanasi tilille ";
 
-"You can change your password in %@." = "You can change your password in %@.";
+"You can change your password in %@." = "Voit vaihtaa salasanasi kohdassa %@.";
 
-"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Odotamme 72 tuntia ennen pyyntöjen hyväksyntää varmistaaksemme juuri sinun pyytäneen salasanasi nollausta.";
 
 "Insecure_View_line2" = " vapaasti aikana ";
 
@@ -30,52 +30,52 @@
 
 "Grace_View_Undefined_Time_Left" = "muutaman tunnin";
 
-"Settings_Item_Value_Grace" = "Pending";
+"Settings_Item_Value_Grace" = "Odottaa";
 
-"Settings_Item_Value_Expired" = "Expired";
+"Settings_Item_Value_Expired" = "Erääntyneet";
 
-"Settings_Item_Value_Cancelled" = "Cancelled";
+"Settings_Item_Value_Cancelled" = "Peruttu";
 
-"Settings_Item_Value_Insecure" = "Available";
+"Settings_Item_Value_Insecure" = "Saatavilla";
 
 "Insecure_View_Cancel_Button_CTA" = "Peru nollaus";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Jos et pyytänyt salasanasi nollaamista, **peruuta tämä pyyntö nyt**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Jos et pyytänyt salasanasi nollaamista, peruuta tämä pyyntö nyt.";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**.";
+"We received a password reset request for **%@**." = "Saimme salasanan nollauspyynnön käyttäjälle **%@**.";
 
-"We received a password reset request for %@." = "We received a password reset request for %@.";
+"We received a password reset request for %@." = "Saimme salasanan nollauspyynnön käyttäjälle %@.";
 
 "Password reset cancelled" = "Salasanan nollaus peruttiin";
 
 "Cancelled by the user" = "Käyttäjän peruuttama";
 
-"Authenticated in another session" = "Authenticated in another session";
+"Authenticated in another session" = "Todennettu toisessa istunnossa";
 
-"none" = "none";
+"none" = "ei määritetty";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "Tilin palautusprosessi erääntyi toimettomuuden vuoksi";
 
-"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "If you never made a password reset request, someone else could have access to your account. **Change your password now**";
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Jos et ole tehnyt salasanan nollauspyyntöä, jollain muulla voi olla pääsy tiliisi. **Vaihda salasanasi nyt**";
 
-"If you never made a password reset request, someone else could have access to your account. Change your password now" = "If you never made a password reset request, someone else could have access to your account. Change your password now";
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Jos et ole tehnyt salasanan nollauspyyntöä, jollain muulla voi olla pääsy tiliisi. Vaihda salasanasi nyt";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "Tilin palautusprosessi erääntyi toimettomuuden vuoksi";
 
-"Recovery process not started" = "Recovery process not started";
+"Recovery process not started" = "Palautusprosessia ei aloitettu";
 
-"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Tällä hetkellä tilin palautusta ei ole käynnissä. Siirry istuntoon verkkosovelluksessa palauttaaksesi salasanasi.";
 
 "You can now reset your password" = "Voit nyt nollata salasanasi";
 
-"Reset available until %@." = "Reset available until %@.";
+"Reset available until %@." = "Nollaus saatavilla %@ saakka.";
 
 "Change device to continue" = "Vaihda laitetta jatkaaksesi";
 
-"To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
+"To reset your password, go back to your active session on **the originating device**." = "Nollataksesi salasanasi, palaa takaisin aktiiviseen istuntoosi **alkuperäisellä laitteella**.";
 
-"To reset your password, go back to your active session on the originating device." = "To reset your password, go back to your active session on the originating device.";
+"To reset your password, go back to your active session on the originating device." = "Nollataksesi salasanasi, palaa takaisin aktiiviseen istuntoosi alkuperäisellä laitteella.";
 
-"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now.";
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Sinulla on %@ aikaa nollata salasanasi.\nSinun täytyy tehdä tämä sillä laitteella ja selaimella, jolta teit salasanan nollauspyynnön.\nJos et pyytänyt salasanasi nollausta, peruuta pyyntö nyt.";

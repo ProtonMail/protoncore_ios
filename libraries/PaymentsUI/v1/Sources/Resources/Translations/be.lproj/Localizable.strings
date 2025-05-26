@@ -102,34 +102,40 @@
 
 "Extend subscription" = "Падоўжыць падпіску";
 
-"%@ of %@" = "%@ з %@";
+"%@ of %@" = "%@ of %@";
 
-"Connection issues" = "Праблемы з падключэннем";
+"Connection issues" = "Connection issues";
 
-"Check your internet connection" = "Праверце сваё падключэнне да інтэрнэту";
+"Check your internet connection" = "Check your internet connection";
 
-"Strict no-logs policy" = "Палітыка строгай адсутнасці журналаў актыўнасці";
+"Strict no-logs policy" = "Strict no-logs policy";
 
-"Plan successfully upgraded" = "Тарыфны план паспяхова палепшаны";
+"Plan successfully upgraded" = "Plan successfully upgraded";
 
-"Integrated 2FA authenticator" = "Інтэграваная аўтэнтыфікацыя 2ФА";
+"Integrated 2FA authenticator" = "Integrated 2FA authenticator";
 
-"Priority support" = "Прыярытэтная падтрымка";
+"Priority support" = "Priority support";
 
-"Unlimited devices" = "Неабмежаваная колькасць прылад";
+"Unlimited devices" = "Unlimited devices";
 
-"Unlimited email aliases" = "Неабмежаваная колькасць псеўданімаў электроннай пошты";
+"Unlimited email aliases" = "Unlimited email aliases";
 
-"Unlimited logins and notes" = "Неабмежаваная колькасць запісаў уваходу і нататак";
+"Unlimited logins and notes" = "Unlimited logins and notes";
 
-"Custom fields" = "Карыстальніцкія палі";
+"Custom fields" = "Custom fields";
 
-"For next-level password management and identity protection." = "Для больш высокага ўзроўню кіравання паролямі і абароны ідэнтычнасці.";
+"For next-level password management and identity protection." = "For next-level password management and identity protection.";
 
-"Pay monthly" = "Штомесячная аплата";
+"Pay monthly" = "Pay monthly";
 
-"Pay annually" = "Штогадовая аплата";
+"Pay annually" = "Pay annually";
 
-"Pay every two years" = "Аплата кожныя два гады";
+"Pay every two years" = "Pay every two years";
 
-"Free" = "Бясплатна";
+"Free" = "Free";
+
+"Your storage is full" = "Ваша сховішча запоўнена";
+
+"Upgrade your plan to continue to use your account without interruptions." = "Палепшыце свой тарыфны план, каб бесперапынна працягваць карыстацца ўліковым запісам.";
+
+"Get more storage" = "Атрымаць больш месца ў сховішчы";

@@ -13,3 +13,11 @@
 "Cancel password reset" = "Passwortzurücksetzung abbrechen";
 
 "Cancel password reset?" = "Passwortzurücksetzung abbrechen?";
+
+"Cancel password reset?" = "Passwortzurücksetzung abbrechen?";
+
+"Cancel password reset" = "Passwortzurücksetzung abbrechen";
+
+"Enter your current password to cancel the password reset process. No other changes will take effect." = "Gib dein aktuelles Passwort ein, um den Prozess zur Passwortzurücksetzung abzubrechen. Andere Änderungen werden nicht wirksam.";
+
+"Current password" = "Aktuelles Passwort";

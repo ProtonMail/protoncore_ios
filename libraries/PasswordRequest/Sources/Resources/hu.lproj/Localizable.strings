@@ -13,3 +13,11 @@
 "Cancel password reset" = "Jelszó visszaállítás megszakítása";
 
 "Cancel password reset?" = "Jelszó visszaállítás megszakítása?";
+
+"Cancel password reset?" = "Jelszó visszaállítás megszakítása?";
+
+"Cancel password reset" = "Jelszó visszaállítás megszakítása";
+
+"Enter your current password to cancel the password reset process. No other changes will take effect." = "Adja meg a jelenlegi jelszavát a jelszóvisszaállítási folyamat megszakításához. Más változás nem lép életbe.";
+
+"Current password" = "Jelenlegi jelszó";

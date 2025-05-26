@@ -13,3 +13,11 @@
 "Cancel password reset" = "Annuler la réinitialisation du mot de passe ";
 
 "Cancel password reset?" = "Annuler la réinitialisation du mot de passe ?";
+
+"Cancel password reset?" = "Annuler la réinitialisation du mot de passe ?";
+
+"Cancel password reset" = "Annuler la réinitialisation du mot de passe ";
+
+"Enter your current password to cancel the password reset process. No other changes will take effect." = "Saisissez votre mot de passe actuel pour annuler la procédure de réinitialisation du mot de passe. Aucune autre modification ne sera prise en compte.";
+
+"Current password" = "Mot de passe actuel";
