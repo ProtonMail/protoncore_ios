@@ -382,7 +382,7 @@
 
 "You’re signed in to %@ on the other device." = "다른 기기에서 %@(으)로 로그인되었습니다.";
 
-"You're signed in" = "You're signed in";
+"You're signed in" = "로그인 완료";
 
 "Got it" = "확인";
 
@@ -398,9 +398,9 @@
 
 "to Proton %@" = "to Proton %@";
 
-"Something went wrong" = "Something went wrong";
+"Something went wrong" = "문제가 발생했습니다";
 
-"We couldn't sign you in. Please scan a new QR code to try again." = "We couldn't sign you in. Please scan a new QR code to try again.";
+"We couldn't sign you in. Please scan a new QR code to try again." = "로그인에 실패했습니다. 다시 시도하려면 새로운 QR 코드를 스캔하세요.";
 
 "We couldn't sign you in. Please sign in with your password." = "We couldn't sign you in. Please sign in with your password.";
 
@@ -412,23 +412,23 @@
 
 "You're always in control: You can change this anytime in your device settings." = "You're always in control: You can change this anytime in your device settings.";
 
-"Settings" = "Settings";
+"Settings" = "설정";
 
 "We couldn't load the QR code" = "We couldn't load the QR code";
 
 "Retry" = "재시도";
 
-"Welcome to Proton VPN" = "Welcome to Proton VPN";
+"Welcome to Proton VPN" = "Proton VPN에 오신 것을 환영합니다";
 
-"Browse privately, access blocked content, and enjoy digital freedom." = "Browse privately, access blocked content, and enjoy digital freedom.";
+"Browse privately, access blocked content, and enjoy digital freedom." = "브라우징은 은밀하게, 막힌 컨텐츠는 열리게, 디지털 자유를 그렇게 누리십시오.";
 
-"Certified no-logs VPN" = "Certified no-logs VPN";
+"Certified no-logs VPN" = "노-로그 인증을 받은 VPN";
 
-"Continue as guest" = "Continue as guest";
+"Continue as guest" = "게스트로 계속하기";
 
 "By using this app you accept our" = "By using this app you accept our";
 
-"Terms and Conditions." = "Terms and Conditions.";
+"Terms and Conditions." = "이용 약관.";
 
 "Tap **Scan QR code**" = "Tap **Scan QR code**";
 

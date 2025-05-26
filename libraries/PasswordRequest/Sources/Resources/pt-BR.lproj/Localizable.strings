@@ -13,3 +13,11 @@
 "Cancel password reset" = "Cancelar redefinição de senha";
 
 "Cancel password reset?" = "Cancelar redefinição de senha?";
+
+"Cancel password reset?" = "Cancelar redefinição de senha?";
+
+"Cancel password reset" = "Cancelar redefinição de senha";
+
+"Enter your current password to cancel the password reset process. No other changes will take effect." = "Digite sua senha atual para cancelar o processo de redefinição de senha. Nenhuma outra alteração será salva.";
+
+"Current password" = "Senha atual";

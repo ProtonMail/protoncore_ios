@@ -2,134 +2,140 @@
 
 "Cancel" = "Cancel·la";
 
-"Warning" = "Advertència";
+"Warning" = "Warning";
 
-"Select a plan" = "Seleccioneu un pla";
+"Select a plan" = "Select a plan";
 
-"Current plan" = "Pla actual";
+"Current plan" = "Current plan";
 
-"Subscription" = "Subscripció";
+"Subscription" = "Subscription";
 
-"Upgrade your plan" = "Milloreu el vostre pla";
+"Upgrade your plan" = "Upgrade your plan";
 
-"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Només hi ha disponibles subscripcions anuals sense renovació automàtica dins de l'aplicació mòbil.";
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Only annual subscriptions without auto-renewal are available inside the mobile app.";
 
-"You cannot manage subscriptions inside the mobile application." = "No podeu gestionar subscripcions dins de l'aplicació mòbil.";
+"You cannot manage subscriptions inside the mobile application." = "You cannot manage subscriptions inside the mobile application.";
 
-"Your plan will automatically renew on %@" = "El vostre pla es renovarà automàticament el %@";
+"Your plan will automatically renew on %@" = "Your plan will automatically renew on %@";
 
-"Current plan will expire on %@" = "El pla actual caducarà el %@";
+"Current plan will expire on %@" = "Current plan will expire on %@";
 
-"Contact an administrator to make changes to your Proton subscription." = "Poseu-vos en contacte amb un administrador per fer canvis a la vostra subscripció del Proton.";
+"Contact an administrator to make changes to your Proton subscription." = "Contact an administrator to make changes to your Proton subscription.";
 
-"%1$@ of %2$@" = "%1$@ de %2$@";
+"%1$@ of %2$@" = "%1$@ of %2$@";
 
-"%@ storage" = "%@ d'emmagatzematge";
+"%@ storage" = "%@ storage";
 
-"%@ storage / user" = "%@ emmagatzematge/usuari";
+"%@ storage / user" = "%@ storage / user";
 
-"for %@" = "per %@";
+"for %@" = "for %@";
 
-"Custom email addresses" = "Adreces de correu personalitzades";
+"Custom email addresses" = "Custom email addresses";
 
-"Priority customer support" = "Atenció al client prioritària";
+"Priority customer support" = "Priority customer support";
 
-"Adblocker (NetShield)" = "Blocador d'anuncis (NetShield)";
+"Adblocker (NetShield)" = "Adblocker (NetShield)";
 
-"Streaming service support" = "Suport de serveis d'estríming";
+"Streaming service support" = "Streaming service support";
 
-"High speed" = "Velocitat alta";
+"High speed" = "High speed";
 
-"Highest speed" = "La velocitat mes alta";
+"Highest speed" = "Highest speed";
 
-"Multi-user support" = "Suport multiusuari";
+"Multi-user support" = "Multi-user support";
 
-"The basic for private and secure communications." = "La base de les comunicacions privades i segures.";
+"The basic for private and secure communications." = "The basic for private and secure communications.";
 
-"Full-featured mailbox with advanced protection." = "Bústia de correu completa amb protecció avançada.";
+"Full-featured mailbox with advanced protection." = "Full-featured mailbox with advanced protection.";
 
-"Limited time offer" = "Oferta per temps limitat";
+"Limited time offer" = "Limited time offer";
 
-"Complete payment?" = "Voleu completar el pagament?";
+"Complete payment?" = "Complete payment?";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Ja s'ha iniciat una compra per a un pla Proton Bundle. Premeu «Continua» per completar el processament del pagament i crear el vostre compte.";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account";
 
-"Complete payment" = "Completa el pagament";
+"Complete payment" = "Complete payment";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "El procés de configuració del compte no s'ha pogut finalitzar a causa d'un error inesperat.\nTorneu-ho a provar.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "The account setup process could not be finalized due to an unexpected error.\nPlease try again.";
 
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "El procés de compra IAP ha començat. Seguiu les instruccions d'Apple per completar o cancel·lar la compra.";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase.";
 
-"In app payments are temporarily unavailable." = "Els pagaments a l'aplicació no estan disponibles temporalment.";
+"In app payments are temporarily unavailable." = "In app payments are temporarily unavailable.";
 
-"One plan for all Proton services" = "Un pla per a tots els serveis del Proton";
+"One plan for all Proton services" = "One plan for all Proton services";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "El compte inicial sense cost dissenyat per proporcionar a tothom privadesa per defecte.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "The no-cost starter account designed to empower everyone with privacy by default.";
 
-"The privacy-first email and calendar solution for your everyday communication needs." = "La solució de correu i calendari que prioritza la privadesa per a les vostres necessitats de comunicació diàries.";
+"The privacy-first email and calendar solution for your everyday communication needs." = "The privacy-first email and calendar solution for your everyday communication needs.";
 
-"Your privacy and security are our priority." = "La vostra privadesa i seguretat són la nostra prioritat.";
+"Your privacy and security are our priority." = "Your privacy and security are our priority.";
 
-"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "El pla centrat en l'emmagatzematge amb 200 GB d'emmagatzematge al núvol per mantenir la privadesa dels vostres fitxers.";
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "The storage-focused plan with 200 GB of cloud storage to keep your files private.";
 
-"The ultimate privacy pack with access to all premium Proton services." = "El paquet de privadesa definitiu amb accés a tots els serveis prèmium del Proton.";
+"The ultimate privacy pack with access to all premium Proton services." = "The ultimate privacy pack with access to all premium Proton services.";
 
-"Only non-renewing annual subscriptions are available via this app" = "Només les subscripcions anuals no renovables estan disponibles a través d'aquesta aplicació";
+"Only non-renewing annual subscriptions are available via this app" = "Only non-renewing annual subscriptions are available via this app";
 
-"Your subscription cannot be managed inside the mobile app." = "La vostra subscripció no es pot gestionar des de l'aplicació mòbil.";
+"Your subscription cannot be managed inside the mobile app." = "Your subscription cannot be managed inside the mobile app.";
 
-"Unlimited folders, labels, and filters" = "Carpetes, etiquetes i filtres il·limitats";
+"Unlimited folders, labels, and filters" = "Unlimited folders, labels, and filters";
 
-"Up to %@ storage" = "Fins a %@ d'emmagatzematge";
+"Up to %@ storage" = "Up to %@ storage";
 
-"Free VPN on a single device" = "VPN gratuïta en un sol dispositiu";
+"Free VPN on a single device" = "Free VPN on a single device";
 
-"Highest VPN speed" = "VPN de màxima velocitat";
+"Highest VPN speed" = "Highest VPN speed";
 
-"Built-in ad-blocker (NetShield)" = "Blocador d'anuncis integrat (NetShield)";
+"Built-in ad-blocker (NetShield)" = "Built-in ad-blocker (NetShield)";
 
-"Access to streaming services globally" = "Accediu a serveis d'estríming en tot el món";
+"Access to streaming services globally" = "Access to streaming services globally";
 
-"Secure Core servers" = "Servidors Secure Core";
+"Secure Core servers" = "Secure Core servers";
 
-"TOR over VPN" = "Tor sobre VPN";
+"TOR over VPN" = "Tor over VPN";
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "Obtén %@";
+"Get %@" = "Get %@";
 
-"Get Proton for free" = "Obtén el Proton gratuïtament";
+"Get Proton for free" = "Get Proton for free";
 
-"Extend subscription" = "Amplieu la subscripció";
+"Extend subscription" = "Extend subscription";
 
-"%@ of %@" = "%@ de %@";
+"%@ of %@" = "%@ of %@";
 
-"Connection issues" = "Problemes de connexió";
+"Connection issues" = "Connection issues";
 
-"Check your internet connection" = "Comproveu la connexió a internet";
+"Check your internet connection" = "Check your internet connection";
 
-"Strict no-logs policy" = "Política estricta de no registres";
+"Strict no-logs policy" = "Strict no-logs policy";
 
-"Plan successfully upgraded" = "El pla s'ha millorat correctament";
+"Plan successfully upgraded" = "Plan successfully upgraded";
 
-"Integrated 2FA authenticator" = "Autenticador 2FA integrat";
+"Integrated 2FA authenticator" = "Integrated 2FA authenticator";
 
-"Priority support" = "Suport prioritari";
+"Priority support" = "Priority support";
 
-"Unlimited devices" = "Dispositius il·limitats";
+"Unlimited devices" = "Unlimited devices";
 
-"Unlimited email aliases" = "Nombre il·limitat d'àlies de correu";
+"Unlimited email aliases" = "Unlimited email aliases";
 
-"Unlimited logins and notes" = "Nombre il·limitat d'inicis de sessió i de notes";
+"Unlimited logins and notes" = "Unlimited logins and notes";
 
-"Custom fields" = "Camps personalitzats";
+"Custom fields" = "Custom fields";
 
-"For next-level password management and identity protection." = "Per a una gestió de contrasenyes i protecció d'identitat de nivell superior.";
+"For next-level password management and identity protection." = "For next-level password management and identity protection.";
 
-"Pay monthly" = "Pagament mensual";
+"Pay monthly" = "Pay monthly";
 
-"Pay annually" = "Pagament anual";
+"Pay annually" = "Pay annually";
 
-"Pay every two years" = "Pagament cada 2 anys";
+"Pay every two years" = "Pay every two years";
 
-"Free" = "Gratuït";
+"Free" = "Free";
+
+"Your storage is full" = "Your storage is full";
+
+"Upgrade your plan to continue to use your account without interruptions." = "Upgrade your plan to continue to use your account without interruptions.";
+
+"Get more storage" = "Get more storage";

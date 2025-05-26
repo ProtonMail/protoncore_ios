@@ -2,134 +2,140 @@
 
 "Cancel" = "Anulare";
 
-"Warning" = "Avertizare";
+"Warning" = "Warning";
 
-"Select a plan" = "Selectare plan";
+"Select a plan" = "Select a plan";
 
-"Current plan" = "Plan actual";
+"Current plan" = "Current plan";
 
-"Subscription" = "Abonament";
+"Subscription" = "Subscription";
 
-"Upgrade your plan" = "Modificați-vă planul";
+"Upgrade your plan" = "Upgrade your plan";
 
-"Only annual subscriptions without auto-renewal are available inside the mobile app." = "În aplicația mobilă sunt disponibile doar abonamente anuale fără reînnoire automată.";
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Only annual subscriptions without auto-renewal are available inside the mobile app.";
 
-"You cannot manage subscriptions inside the mobile application." = "Nu puteți gestiona abonamentele din aplicația mobilă.";
+"You cannot manage subscriptions inside the mobile application." = "You cannot manage subscriptions inside the mobile application.";
 
-"Your plan will automatically renew on %@" = "Abonamentul se va reînnoi automat la data de %@";
+"Your plan will automatically renew on %@" = "Your plan will automatically renew on %@";
 
-"Current plan will expire on %@" = "Planul actual va expira la data de %@";
+"Current plan will expire on %@" = "Current plan will expire on %@";
 
-"Contact an administrator to make changes to your Proton subscription." = "Contactați un administrator pentru a face modificări la abonamentul Proton.";
+"Contact an administrator to make changes to your Proton subscription." = "Contact an administrator to make changes to your Proton subscription.";
 
-"%1$@ of %2$@" = "%1$@ din %2$@";
+"%1$@ of %2$@" = "%1$@ of %2$@";
 
-"%@ storage" = "%@ spațiu";
+"%@ storage" = "%@ storage";
 
-"%@ storage / user" = "%@ spațiu/utilizator";
+"%@ storage / user" = "%@ storage / user";
 
-"for %@" = "cu %@";
+"for %@" = "for %@";
 
-"Custom email addresses" = "Adrese de e-mail personale";
+"Custom email addresses" = "Custom email addresses";
 
-"Priority customer support" = "Asistență prioritară clienți";
+"Priority customer support" = "Priority customer support";
 
-"Adblocker (NetShield)" = "Blocare reclame (NetShield)";
+"Adblocker (NetShield)" = "Adblocker (NetShield)";
 
-"Streaming service support" = "Suport servicii de transmisie în flux";
+"Streaming service support" = "Streaming service support";
 
-"High speed" = "Viteză mare";
+"High speed" = "High speed";
 
-"Highest speed" = "Viteză maximă";
+"Highest speed" = "Highest speed";
 
-"Multi-user support" = "Utilizatori multipli";
+"Multi-user support" = "Multi-user support";
 
-"The basic for private and secure communications." = "Baza pentru comunicații private și sigure.";
+"The basic for private and secure communications." = "The basic for private and secure communications.";
 
-"Full-featured mailbox with advanced protection." = "Cont de e-mail complet cu protecție avansată.";
+"Full-featured mailbox with advanced protection." = "Full-featured mailbox with advanced protection.";
 
-"Limited time offer" = "Ofertă limitată";
+"Limited time offer" = "Limited time offer";
 
-"Complete payment?" = "Finalizați plata?";
+"Complete payment?" = "Complete payment?";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Deja a fost inițiată o achiziție pentru un plan Proton Bundle. Apăsați pe continuare pentru finalizarea procesării plății și crearea contului.";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account";
 
-"Complete payment" = "Finalizare plată";
+"Complete payment" = "Complete payment";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Procesul de configurare a contului nu a putut fi finalizat din cauza unei erori neașteptate.\nMai încercați.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "The account setup process could not be finalized due to an unexpected error.\nPlease try again.";
 
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Procesul de achiziție din aplicație a început. Urmați instrucțiunile Apple pentru a finaliza sau anula achiziția.";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase.";
 
-"In app payments are temporarily unavailable." = "Plățile în aplicație nu sunt disponibile temporar.";
+"In app payments are temporarily unavailable." = "In app payments are temporarily unavailable.";
 
-"One plan for all Proton services" = "Un singur abonament pentru toate serviciile Proton";
+"One plan for all Proton services" = "One plan for all Proton services";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "Contul de început, fără costuri, creat pentru a împuternici pe toată lumea cu confidențialitate în mod implicit.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "The no-cost starter account designed to empower everyone with privacy by default.";
 
-"The privacy-first email and calendar solution for your everyday communication needs." = "Soluția de e-mail și calendar private pentru nevoile personale de comunicații zilnice.";
+"The privacy-first email and calendar solution for your everyday communication needs." = "The privacy-first email and calendar solution for your everyday communication needs.";
 
-"Your privacy and security are our priority." = "Intimitatea și securitatea dvs. sunt prioritatea noastră.";
+"Your privacy and security are our priority." = "Your privacy and security are our priority.";
 
-"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Plan axat pe stocare cu 200 GiB spațiu în cloud pentru a vă păstra fișierele private.";
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "The storage-focused plan with 200 GB of cloud storage to keep your files private.";
 
-"The ultimate privacy pack with access to all premium Proton services." = "Pachetul complet de confidențialitate pentru accesarea tuturor serviciilor Proton premium.";
+"The ultimate privacy pack with access to all premium Proton services." = "The ultimate privacy pack with access to all premium Proton services.";
 
-"Only non-renewing annual subscriptions are available via this app" = "Prin intermediul acestei aplicații sunt disponibile doar abonamentele anuale care nu sunt reînnoite.";
+"Only non-renewing annual subscriptions are available via this app" = "Only non-renewing annual subscriptions are available via this app";
 
-"Your subscription cannot be managed inside the mobile app." = "Abonamentul nu poate fi gestionat din aplicația mobilă.";
+"Your subscription cannot be managed inside the mobile app." = "Your subscription cannot be managed inside the mobile app.";
 
-"Unlimited folders, labels, and filters" = "Foldere, etichete și filtre nelimitate";
+"Unlimited folders, labels, and filters" = "Unlimited folders, labels, and filters";
 
-"Up to %@ storage" = "Până la %@ spațiu";
+"Up to %@ storage" = "Up to %@ storage";
 
-"Free VPN on a single device" = "VPN gratuit pe un singur dispozitiv";
+"Free VPN on a single device" = "Free VPN on a single device";
 
-"Highest VPN speed" = "Viteză maximă VPN";
+"Highest VPN speed" = "Highest VPN speed";
 
-"Built-in ad-blocker (NetShield)" = "Blocare reclame încorporată (NetShield)";
+"Built-in ad-blocker (NetShield)" = "Built-in ad-blocker (NetShield)";
 
-"Access to streaming services globally" = "Acces la serviciile de transmisie în flux la nivel global";
+"Access to streaming services globally" = "Access to streaming services globally";
 
-"Secure Core servers" = "Servere Secure Core";
+"Secure Core servers" = "Secure Core servers";
 
-"TOR over VPN" = "Tor prin VPN";
+"TOR over VPN" = "Tor over VPN";
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "Luați %@";
+"Get %@" = "Get %@";
 
-"Get Proton for free" = "Luați Proton gratuit";
+"Get Proton for free" = "Get Proton for free";
 
-"Extend subscription" = "Extindere abonament";
+"Extend subscription" = "Extend subscription";
 
-"%@ of %@" = "%@ din %@";
+"%@ of %@" = "%@ of %@";
 
-"Connection issues" = "Probleme de conectare";
+"Connection issues" = "Connection issues";
 
-"Check your internet connection" = "Verificați-vă conexiunea la internet";
+"Check your internet connection" = "Check your internet connection";
 
-"Strict no-logs policy" = "Politică strictă fără înregistrări";
+"Strict no-logs policy" = "Strict no-logs policy";
 
-"Plan successfully upgraded" = "Planul a fost modificat";
+"Plan successfully upgraded" = "Plan successfully upgraded";
 
-"Integrated 2FA authenticator" = "Autentificare cu doi factori integrată";
+"Integrated 2FA authenticator" = "Integrated 2FA authenticator";
 
-"Priority support" = "Asistență prioritară";
+"Priority support" = "Priority support";
 
-"Unlimited devices" = "Dispozitive nelimitate";
+"Unlimited devices" = "Unlimited devices";
 
-"Unlimited email aliases" = "Aliasuri de e-mail nelimitate";
+"Unlimited email aliases" = "Unlimited email aliases";
 
-"Unlimited logins and notes" = "Date de autentificare și note nelimitate";
+"Unlimited logins and notes" = "Unlimited logins and notes";
 
-"Custom fields" = "Câmpuri personale";
+"Custom fields" = "Custom fields";
 
-"For next-level password management and identity protection." = "Pentru gestionarea parolelor la un nivel superior și protecția identității.";
+"For next-level password management and identity protection." = "For next-level password management and identity protection.";
 
-"Pay monthly" = "Plată lunară";
+"Pay monthly" = "Pay monthly";
 
-"Pay annually" = "Plată anuală";
+"Pay annually" = "Pay annually";
 
-"Pay every two years" = "Plată la doi ani";
+"Pay every two years" = "Pay every two years";
 
 "Free" = "Free";
+
+"Your storage is full" = "Spațiul de stocare este plin";
+
+"Upgrade your plan to continue to use your account without interruptions." = "Treceți la un plan cu plată pentru a continua să vă folosiți contul fără întreruperi.";
+
+"Get more storage" = "Obțineți mai mult spațiu";

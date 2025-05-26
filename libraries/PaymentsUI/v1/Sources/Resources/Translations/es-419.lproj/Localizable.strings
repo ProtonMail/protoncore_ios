@@ -96,40 +96,46 @@
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "Obtener %@";
+"Get %@" = "Obtenga %@";
 
 "Get Proton for free" = "Obtenga Proton gratis";
 
 "Extend subscription" = "Extender suscripción";
 
-"%@ of %@" = "%@ de %@";
+"%@ of %@" = "%@ of %@";
 
-"Connection issues" = "Problemas de conexión";
+"Connection issues" = "Connection issues";
 
-"Check your internet connection" = "Revise su conexión a internet";
+"Check your internet connection" = "Check your internet connection";
 
-"Strict no-logs policy" = "Estricta política de cero registros";
+"Strict no-logs policy" = "Strict no-logs policy";
 
-"Plan successfully upgraded" = "Se mejoró el plan.";
+"Plan successfully upgraded" = "Plan successfully upgraded";
 
-"Integrated 2FA authenticator" = "Autenticador 2FA integrado";
+"Integrated 2FA authenticator" = "Integrated 2FA authenticator";
 
-"Priority support" = "Soporte prioritario";
+"Priority support" = "Priority support";
 
-"Unlimited devices" = "Dispositivos ilimitados";
+"Unlimited devices" = "Unlimited devices";
 
-"Unlimited email aliases" = "Alias de correo electrónico ilimitados";
+"Unlimited email aliases" = "Unlimited email aliases";
 
-"Unlimited logins and notes" = "Inicios de sesión y notas ilimitados";
+"Unlimited logins and notes" = "Unlimited logins and notes";
 
-"Custom fields" = "Campos personalizados";
+"Custom fields" = "Custom fields";
 
-"For next-level password management and identity protection." = "Para una gestión de contraseñas y protección de identidad de siguiente nivel.";
+"For next-level password management and identity protection." = "For next-level password management and identity protection.";
 
-"Pay monthly" = "Pagar mensualmente";
+"Pay monthly" = "Pay monthly";
 
-"Pay annually" = "Pagar anualmente";
+"Pay annually" = "Pay annually";
 
-"Pay every two years" = "Pagar cada dos años";
+"Pay every two years" = "Pay every two years";
 
-"Free" = "Gratis";
+"Free" = "Free";
+
+"Your storage is full" = "Su almacenamiento está lleno";
+
+"Upgrade your plan to continue to use your account without interruptions." = "Actualice su plan para continuar usando su cuenta sin interrupciones.";
+
+"Get more storage" = "Obtener más almacenamiento";

@@ -13,3 +13,11 @@
 "Cancel password reset" = "Peru salasanan uudelleenasetus";
 
 "Cancel password reset?" = "Peruutaanko salasanan uudelleenasetus?";
+
+"Cancel password reset?" = "Peruutaanko salasanan uudelleenasetus?";
+
+"Cancel password reset" = "Peru salasanan uudelleenasetus";
+
+"Enter your current password to cancel the password reset process. No other changes will take effect." = "Peru salasanan uudelleenasetuspyyntö syöttämällä nykyinen salasanasi. Muita muutoksia ei tehdä.";
+
+"Current password" = "Nykyinen salasana";

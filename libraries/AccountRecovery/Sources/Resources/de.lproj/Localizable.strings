@@ -68,7 +68,7 @@
 
 "Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Derzeit findet keine Kontowiederherstellung statt. Bitte öffne eine Sitzung in der Webanwendung, um dein Passwort wiederherzustellen.";
 
-"You can now reset your password" = "Dein Passwort kannst jetzt zurückgesetzt werden";
+"You can now reset your password" = "Du kannst jetzt dein Passwort zurücksetzen";
 
 "Reset available until %@." = "Zurücksetzen verfügbar bis %@.";
 

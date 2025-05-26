@@ -13,3 +13,11 @@
 "Cancel password reset" = "Prekliči ponastavitev gesla";
 
 "Cancel password reset?" = "Prekliči ponastavitev gesla?";
+
+"Cancel password reset?" = "Prekliči ponastavitev gesla?";
+
+"Cancel password reset" = "Prekliči ponastavitev gesla";
+
+"Enter your current password to cancel the password reset process. No other changes will take effect." = "Vpišite vaše trenutno geslo in s tem ustavite postopek za ponastavitev gesla. Prišlo ne bo do nobenih drugih sprememb.";
+
+"Current password" = "Trenutno geslo";

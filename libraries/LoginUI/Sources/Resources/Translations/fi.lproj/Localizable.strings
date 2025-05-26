@@ -380,7 +380,7 @@
 
 "Verifying..." = "Vahvistetaan...";
 
-"You’re signed in to %@ on the other device." = "You’re signed in to %@ on the other device.";
+"You’re signed in to %@ on the other device." = "Olet sisäänkirjattuna kohteeseen %@ toisella laitteella.";
 
 "You're signed in" = "Olet kirjautunut sisään";
 
@@ -390,9 +390,9 @@
 
 "Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Vinkki: Älä koskaan lue QR-koodeja sivustoilta tai henkilöiltä, joihin et luota. Proton ei koskaan pyydä sinua lukemaan QR-koodia, joka ei ole peräisin verkkotunnuksesta account.proton.me.";
 
-"Camera Access Denied." = "Camera Access Denied.";
+"Camera Access Denied." = "Pääsy kameraan estetty.";
 
-"The permission to use the Camera is off. Please enable it from the Settings." = "The permission to use the Camera is off. Please enable it from the Settings.";
+"The permission to use the Camera is off. Please enable it from the Settings." = "Lupa käyttää kameraa on pois päältä. Ota se käyttöön asetuksista.";
 
 "Go to Settings" = "Mene asetuksiin";
 
@@ -400,38 +400,38 @@
 
 "Something went wrong" = "Jotain meni pieleen";
 
-"We couldn't sign you in. Please scan a new QR code to try again." = "We couldn't sign you in. Please scan a new QR code to try again.";
+"We couldn't sign you in. Please scan a new QR code to try again." = "Emme voineet sisäänkirjata sinua. Skannaa uusi QR-koodi yrittääksesi uudelleen.";
 
-"We couldn't sign you in. Please sign in with your password." = "We couldn't sign you in. Please sign in with your password.";
+"We couldn't sign you in. Please sign in with your password." = "Emme voineet sisäänkirjata sinua. Ole hyvä ja kirjaudu sisään salasanallasi.";
 
 "New QR code" = "Uusi QR-koodi";
 
-"Allow access to camera" = "Allow access to camera";
+"Allow access to camera" = "Salli pääsy kameraan";
 
 "To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "To scan a QR code and sign in to another device, grant Proton %@ access to your camera.";
 
-"You're always in control: You can change this anytime in your device settings." = "You're always in control: You can change this anytime in your device settings.";
+"You're always in control: You can change this anytime in your device settings." = "Olet aina hallinnassa: Voit muuttaa tämän milloin vain laitteesi asetuksissa.";
 
 "Settings" = "Asetukset";
 
-"We couldn't load the QR code" = "We couldn't load the QR code";
+"We couldn't load the QR code" = "QR-koodia ei voitu ladata";
 
 "Retry" = "Yritä uudelleen";
 
 "Welcome to Proton VPN" = "Tervetuloa Proton VPN:ään";
 
-"Browse privately, access blocked content, and enjoy digital freedom." = "Browse privately, access blocked content, and enjoy digital freedom.";
+"Browse privately, access blocked content, and enjoy digital freedom." = "Selaa yksityisesti, käytä estettyä sisältöä ja nauti digitaalisesta vapaudesta.";
 
-"Certified no-logs VPN" = "Certified no-logs VPN";
+"Certified no-logs VPN" = "Todistetusti lokivapaa VPN";
 
 "Continue as guest" = "Jatka vieraana";
 
-"By using this app you accept our" = "By using this app you accept our";
+"By using this app you accept our" = "Käyttämällä tätä sovellusta hyväksyt";
 
 "Terms and Conditions." = "Käyttöehdot.";
 
-"Tap **Scan QR code**" = "Tap **Scan QR code**";
+"Tap **Scan QR code**" = "Napauta **Lue QR-koodi**";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "Siirry **asetuksiin** ja napauta sitten **Kirjaudu toiseen laitteeseen**";
 
-"Password must contain:" = "Password must contain:";
+"Password must contain:" = "Salasanan täytyy sisältää:";

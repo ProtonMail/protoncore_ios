@@ -2,7 +2,7 @@
 
 "Cancel" = "Abbrechen";
 
-"Warning" = "Warnung";
+"Warning" = "Warnhinweis";
 
 "Select a plan" = "Abonnement auswählen";
 
@@ -10,15 +10,15 @@
 
 "Subscription" = "Abonnement";
 
-"Upgrade your plan" = "Abonnement upgraden";
+"Upgrade your plan" = "Abonnement erweitern";
 
 "Only annual subscriptions without auto-renewal are available inside the mobile app." = "Nur Jahresabonnemente ohne automatische Verlängerung sind in der mobilen App verfügbar.";
 
-"You cannot manage subscriptions inside the mobile application." = "Du kannst Abonnemente nicht innerhalb der mobilen Anwendung verwalten.";
+"You cannot manage subscriptions inside the mobile application." = "Abonnements können nicht innerhalb der mobilen App verwaltet werden.";
 
 "Your plan will automatically renew on %@" = "Dein Abonnement wird am %@ automatisch verlängert.";
 
-"Current plan will expire on %@" = "Das aktuelle Abonnement läuft am %@ ab";
+"Current plan will expire on %@" = "Das aktuelle Abonnement ist nur noch bis zum %@ gültig";
 
 "Contact an administrator to make changes to your Proton subscription." = "Wende dich an einen Administrator, um Änderungen an deinem Proton-Abonnement vorzunehmen.";
 
@@ -52,7 +52,7 @@
 
 "Complete payment?" = "Zahlung abschließen?";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Ein Kauf für ein Proton Paket-Abonnement wurde bereits eingeleitet. Klicke auf „Weiter“, um die Zahlungsabwicklung abzuschließen und dein Konto zu erstellen.";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Ein Kauf für ein Proton Paket-Abonnement wurde bereits eingeleitet. Auf „Weiter“ klicken, um die Zahlungsabwicklung abzuschließen und ein Konto zu erstellen.";
 
 "Complete payment" = "Zahlung abschließen";
 
@@ -64,7 +64,7 @@
 
 "One plan for all Proton services" = "Ein Abonnement für alle Proton-Dienste";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "Das kostenlose Starter-Konto, das jedem die Möglichkeit gibt, seine Privatsphäre standardmäßig zu schützen.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "Das kostenlose Starter-Konto, das jedem ermöglicht, seine Privatsphäre standardmäßig zu schützen.";
 
 "The privacy-first email and calendar solution for your everyday communication needs." = "Die datenschutzfreundliche E-Mail- und Kalenderlösung für deine täglichen Kommunikationsbedürfnisse.";
 
@@ -74,9 +74,9 @@
 
 "The ultimate privacy pack with access to all premium Proton services." = "Das ultimative Privatsphäre-Paket mit Zugang zu allen Premium-Diensten von Proton.";
 
-"Only non-renewing annual subscriptions are available via this app" = "Nur nicht verlängerbare Jahresabonnemente sind über diese App verfügbar.";
+"Only non-renewing annual subscriptions are available via this app" = "Über diese App sind nur nicht verlängerbare Jahresabonnements verfügbar";
 
-"Your subscription cannot be managed inside the mobile app." = "Dein Abonnement kann nicht in der mobilen App verwaltet werden.";
+"Your subscription cannot be managed inside the mobile app." = "Das Abonnement kann nicht über die mobile App verwaltet werden.";
 
 "Unlimited folders, labels, and filters" = "Unbegrenzte Anzahl an Ordnern, Kategorien und Filtern.";
 
@@ -106,7 +106,7 @@
 
 "Connection issues" = "Verbindungsprobleme";
 
-"Check your internet connection" = "Überprüfe deine Internetverbindung";
+"Check your internet connection" = "Internetverbindung überprüfen";
 
 "Strict no-logs policy" = "Strenge No Logs-Richtlinie";
 
@@ -116,7 +116,7 @@
 
 "Priority support" = "Vorrangiger Support";
 
-"Unlimited devices" = "Unbegrenzte Geräte";
+"Unlimited devices" = "Unbegrenzte Anzahl Geräte";
 
 "Unlimited email aliases" = "Unbegrenzte E-Mail-Aliasse";
 
@@ -133,3 +133,9 @@
 "Pay every two years" = "Zweijährlich bezahlen";
 
 "Free" = "Kostenlos";
+
+"Your storage is full" = "Dein Speicherplatz ist aufgebraucht";
+
+"Upgrade your plan to continue to use your account without interruptions." = "Erweitere dein Abonnement, um das Konto weiterhin ohne Unterbrechungen nutzen zu können.";
+
+"Get more storage" = "Mehr Speicherplatz erhalten";

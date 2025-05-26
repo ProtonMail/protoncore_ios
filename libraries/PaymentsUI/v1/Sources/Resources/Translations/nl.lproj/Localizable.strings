@@ -2,134 +2,140 @@
 
 "Cancel" = "Annuleren";
 
-"Warning" = "Warning";
+"Warning" = "Waarschuwing";
 
-"Select a plan" = "Select a plan";
+"Select a plan" = "Selecteer een abonnement";
 
-"Current plan" = "Current plan";
+"Current plan" = "Huidig abonnement";
 
-"Subscription" = "Subscription";
+"Subscription" = "Abonnement";
 
-"Upgrade your plan" = "Upgrade your plan";
+"Upgrade your plan" = "Upgrade uw abonnement";
 
-"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Only annual subscriptions without auto-renewal are available inside the mobile app.";
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "In de mobiele app zijn alleen jaarlijkse abonnementen zonder automatische verlenging beschikbaar.";
 
-"You cannot manage subscriptions inside the mobile application." = "You cannot manage subscriptions inside the mobile application.";
+"You cannot manage subscriptions inside the mobile application." = "U kunt geen abonnementen beheren in de mobiele app.";
 
-"Your plan will automatically renew on %@" = "Your plan will automatically renew on %@";
+"Your plan will automatically renew on %@" = "Uw abonnement wordt automatisch verlengd op %@";
 
-"Current plan will expire on %@" = "Current plan will expire on %@";
+"Current plan will expire on %@" = "Huidige abonnement verloopt op %@";
 
-"Contact an administrator to make changes to your Proton subscription." = "Contact an administrator to make changes to your Proton subscription.";
+"Contact an administrator to make changes to your Proton subscription." = "Neem contact op met een beheerder om wijzigingen aan te brengen in uw Proton abonnement.";
 
-"%1$@ of %2$@" = "%1$@ of %2$@";
+"%1$@ of %2$@" = "%1$@ van %2$@";
 
-"%@ storage" = "%@ storage";
+"%@ storage" = "%@ opslag";
 
-"%@ storage / user" = "%@ storage / user";
+"%@ storage / user" = "%@ opslag / gebruiker";
 
-"for %@" = "for %@";
+"for %@" = "voor %@";
 
-"Custom email addresses" = "Custom email addresses";
+"Custom email addresses" = "Aangepaste e-mailadressen";
 
-"Priority customer support" = "Priority customer support";
+"Priority customer support" = "Klantenondersteuning met hoge prioriteit";
 
-"Adblocker (NetShield)" = "Adblocker (NetShield)";
+"Adblocker (NetShield)" = "Advertentieblokkering (NetShield)";
 
-"Streaming service support" = "Streaming service support";
+"Streaming service support" = "Ondersteuning voor streamingdiensten";
 
-"High speed" = "High speed";
+"High speed" = "Hoge snelheid";
 
-"Highest speed" = "Highest speed";
+"Highest speed" = "Hoogste snelheid";
 
-"Multi-user support" = "Multi-user support";
+"Multi-user support" = "Ondersteuning voor meerdere gebruikers";
 
-"The basic for private and secure communications." = "The basic for private and secure communications.";
+"The basic for private and secure communications." = "De basis voor privé-en veilige communicatie.";
 
-"Full-featured mailbox with advanced protection." = "Full-featured mailbox with advanced protection.";
+"Full-featured mailbox with advanced protection." = "Volledig uitgeruste mailbox met geavanceerde beveiliging.";
 
-"Limited time offer" = "Limited time offer";
+"Limited time offer" = "Tijdelijke aanbieding";
 
-"Complete payment?" = "Complete payment?";
+"Complete payment?" = "Betaling voltooien?";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Er is al een aankoop gestart voor een Proton Bundel abonnement. Klik op verder om de betalingsverwerking te voltooien en uw account aan te maken";
 
-"Complete payment" = "Complete payment";
+"Complete payment" = "Betaling voltooien";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "The account setup process could not be finalized due to an unexpected error.\nPlease try again.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Het account set-up proces kon niet worden afgerond als gevolg van een onverwachte fout.\nProbeer het nogmaals.";
 
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase.";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Het IAP-aankoopproces is gestart. Volg de instructies van Apple om de aankoop te voltooien of te annuleren.";
 
-"In app payments are temporarily unavailable." = "In app payments are temporarily unavailable.";
+"In app payments are temporarily unavailable." = "In-app betalingen zijn tijdelijk niet beschikbaar.";
 
-"One plan for all Proton services" = "One plan for all Proton services";
+"One plan for all Proton services" = "Eén abonnement voor alle Proton diensten";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "The no-cost starter account designed to empower everyone with privacy by default.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "Het gratis startersaccount, ontworpen om iedereen standaard privacy te bieden.";
 
-"The privacy-first email and calendar solution for your everyday communication needs." = "The privacy-first email and calendar solution for your everyday communication needs.";
+"The privacy-first email and calendar solution for your everyday communication needs." = "De privacy eerst, e-mail en agenda oplossing voor uw dagelijkse communicatiebehoeften.";
 
-"Your privacy and security are our priority." = "Your privacy and security are our priority.";
+"Your privacy and security are our priority." = "Uw privacy en veiligheid zijn onze prioriteit.";
 
-"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "The storage-focused plan with 200 GB of cloud storage to keep your files private.";
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Het opslaggeoriënteerd abonnement met 200 GB aan cloudopslag om uw bestanden privé te houden.";
 
-"The ultimate privacy pack with access to all premium Proton services." = "The ultimate privacy pack with access to all premium Proton services.";
+"The ultimate privacy pack with access to all premium Proton services." = "Het ultieme privacy pakket met toegang tot alle premium Proton diensten.";
 
-"Only non-renewing annual subscriptions are available via this app" = "Only non-renewing annual subscriptions are available via this app";
+"Only non-renewing annual subscriptions are available via this app" = "Via deze app zijn alleen jaarabonnementen zonder automatische verlenging beschikbaar";
 
-"Your subscription cannot be managed inside the mobile app." = "Your subscription cannot be managed inside the mobile app.";
+"Your subscription cannot be managed inside the mobile app." = "Uw abonnement kan niet beheerd worden in de mobiele app.";
 
-"Unlimited folders, labels, and filters" = "Unlimited folders, labels, and filters";
+"Unlimited folders, labels, and filters" = "Onbeperkt aantal mappen, labels en filters";
 
-"Up to %@ storage" = "Up to %@ storage";
+"Up to %@ storage" = "Tot %@ opslag";
 
-"Free VPN on a single device" = "Free VPN on a single device";
+"Free VPN on a single device" = "Gratis VPN op één apparaat";
 
-"Highest VPN speed" = "Highest VPN speed";
+"Highest VPN speed" = "Hoogste VPN-snelheid";
 
-"Built-in ad-blocker (NetShield)" = "Built-in ad-blocker (NetShield)";
+"Built-in ad-blocker (NetShield)" = "Ingebouwde advertentieblokkering (NetShield)";
 
-"Access to streaming services globally" = "Access to streaming services globally";
+"Access to streaming services globally" = "Toegang tot wereldwijde streamingdiensten";
 
-"Secure Core servers" = "Secure Core servers";
+"Secure Core servers" = "Secure Core-servers";
 
-"TOR over VPN" = "Tor over VPN";
+"TOR over VPN" = "Tor via VPN";
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "Get %@";
+"Get %@" = "Krijg %@";
 
-"Get Proton for free" = "Get Proton for free";
+"Get Proton for free" = "Krijg Proton gratis";
 
-"Extend subscription" = "Extend subscription";
+"Extend subscription" = "Abonnement verlengen";
 
-"%@ of %@" = "%@ of %@";
+"%@ of %@" = "%@ van %@";
 
-"Connection issues" = "Connection issues";
+"Connection issues" = "Verbindingsproblemen";
 
-"Check your internet connection" = "Check your internet connection";
+"Check your internet connection" = "Controleer uw internetverbinding";
 
-"Strict no-logs policy" = "Strict no-logs policy";
+"Strict no-logs policy" = "Strikt beleid tegen logboeken";
 
-"Plan successfully upgraded" = "Plan successfully upgraded";
+"Plan successfully upgraded" = "Abonnement succesvol geüpgraded";
 
-"Integrated 2FA authenticator" = "Integrated 2FA authenticator";
+"Integrated 2FA authenticator" = "Geïntegreerde 2FA-authenticator";
 
-"Priority support" = "Priority support";
+"Priority support" = "Prioriteitsondersteuning";
 
-"Unlimited devices" = "Unlimited devices";
+"Unlimited devices" = "Onbeperkt aantal apparaten";
 
-"Unlimited email aliases" = "Unlimited email aliases";
+"Unlimited email aliases" = "Onbeperkte e-mailaliassen";
 
-"Unlimited logins and notes" = "Unlimited logins and notes";
+"Unlimited logins and notes" = "Onbeperkte logins en notities";
 
-"Custom fields" = "Custom fields";
+"Custom fields" = "Zelf gedefinieerde velden";
 
-"For next-level password management and identity protection." = "For next-level password management and identity protection.";
+"For next-level password management and identity protection." = "Voor wachtwoordbeheer en identiteitsbescherming op een hoger niveau.";
 
-"Pay monthly" = "Pay monthly";
+"Pay monthly" = "Maandelijks betalen";
 
-"Pay annually" = "Pay annually";
+"Pay annually" = "Jaarlijks betalen";
 
-"Pay every two years" = "Pay every two years";
+"Pay every two years" = "Betaal elke twee jaar";
 
-"Free" = "Free";
+"Free" = "Gratis";
+
+"Your storage is full" = "Uw opslag is vol";
+
+"Upgrade your plan to continue to use your account without interruptions." = "Upgrade uw abonnement om uw account zonder onderbrekingen te blijven gebruiken.";
+
+"Get more storage" = "Krijg meer opslagruimte";

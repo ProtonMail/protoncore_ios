@@ -10,13 +10,13 @@
 
 "Subscription" = "Abonnement";
 
-"Upgrade your plan" = "Changez votre abonnement";
+"Upgrade your plan" = "Améliorer votre abonnement";
 
 "Only annual subscriptions without auto-renewal are available inside the mobile app." = "Seuls les abonnements annuels sans renouvellement automatique sont disponibles dans l'application mobile.";
 
 "You cannot manage subscriptions inside the mobile application." = "Vous ne pouvez pas gérer les abonnements dans l'application mobile.";
 
-"Your plan will automatically renew on %@" = "Votre abonnement sera automatiquement renouvelé le %@.";
+"Your plan will automatically renew on %@" = "Votre abonnement sera automatiquement renouvelé le %@";
 
 "Current plan will expire on %@" = "L’abonnement en cours expirera le %@";
 
@@ -26,7 +26,7 @@
 
 "%@ storage" = "%@ d'espace de stockage";
 
-"%@ storage / user" = "%@ espace de stockage / utilisateur";
+"%@ storage / user" = "%@ d'espace de stockage / utilisateur";
 
 "for %@" = "pour %@";
 
@@ -58,13 +58,13 @@
 
 "The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Le processus de configuration du compte n'a pas pu être finalisé en raison d'une erreur inattendue.\nNous vous invitons à réessayer.";
 
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Le processus d'achat dans l’application a commencé. Suivez les instructions d'Apple pour terminer ou annuler l'achat.";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Le processus d'achat dans l’application a commencé. Suivez les instructions d'Apple pour finaliser ou annuler l'achat.";
 
 "In app payments are temporarily unavailable." = "Les paiements dans l'application sont temporairement indisponibles.";
 
 "One plan for all Proton services" = "Un seul abonnement pour tous les services Proton";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "Le compte de démarrage gratuit conçu pour que tout le monde puisse bénéficier du respect de la vie privée.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "Le compte de départ gratuit conçu pour que tout le monde puisse bénéficier du respect de la vie privée.";
 
 "The privacy-first email and calendar solution for your everyday communication needs." = "La messagerie et le calendrier qui privilégient la confidentialité et la vie privée, pour vos besoins quotidiens de communication.";
 
@@ -72,7 +72,7 @@
 
 "The storage-focused plan with 200 GB of cloud storage to keep your files private." = "L'abonnement idéal pour le stockage avec 200 Go de stockage cloud permettant de garder vos fichiers privés.";
 
-"The ultimate privacy pack with access to all premium Proton services." = "L'ensemble des services premium de Proton : la solution ultime pour protéger sa vie privée.";
+"The ultimate privacy pack with access to all premium Proton services." = "Le pack de confidentialité ultime avec accès à tous les services premium Proton.";
 
 "Only non-renewing annual subscriptions are available via this app" = "Seuls les abonnements annuels non renouvelables sont disponibles depuis cette application.";
 
@@ -124,7 +124,7 @@
 
 "Custom fields" = "Champs personnalisés";
 
-"For next-level password management and identity protection." = "Passez au niveau supérieur pour gérer vos mots de passe et protéger votre identité.";
+"For next-level password management and identity protection." = "Pour une gestion des mots de passe et une protection de l'identité de niveau supérieur.";
 
 "Pay monthly" = "Paiement mensuel";
 
@@ -133,3 +133,9 @@
 "Pay every two years" = "Paiement tous les deux ans";
 
 "Free" = "Gratuit";
+
+"Your storage is full" = "Votre espace de stockage est plein.";
+
+"Upgrade your plan to continue to use your account without interruptions." = "Vous devez changer d'abonnement pour continuer à utiliser votre compte sans interruptions.";
+
+"Get more storage" = "Obtenir plus d'espace de stockage";
