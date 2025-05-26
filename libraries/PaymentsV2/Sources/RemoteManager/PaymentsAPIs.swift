@@ -22,6 +22,7 @@
 import Foundation
 import ProtonCoreDoh
 import ProtonCoreLog
+import ProtonCoreFeatureFlags
 
 public struct APIRequest: @unchecked Sendable {
     public let url: URL
@@ -67,6 +68,11 @@ public struct PaymentsAPIs: PaymentsAPIsProviding, Sendable {
             switch requestType {
             case .userTransactionUUID:
                 return .v4
+            case .appleStatus:
+                if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsV6Status) {
+                    return .v6
+                }
+                return .v5
             default:
                 return .v5
             }
@@ -80,6 +86,7 @@ public struct PaymentsAPIs: PaymentsAPIsProviding, Sendable {
     private enum APIv: String {
         case v4
         case v5
+        case v6
     }
 
     private let doh: DoHInterface
@@ -124,6 +131,7 @@ public enum RequestType {
 
     // MARK: Payments
     case paymentStatus(vendor: VendorType)
+    case appleStatus
 
     // MARK: Plans
     case availablePlans(currency: String?, vendor: String?, state: Int?, timeStamp: Int?)
@@ -151,6 +159,8 @@ extension RequestType {
             return "/subscription/renew"
         case .paymentStatus(let vendor):
             return "/status/\(vendor.rawValue)"
+        case .appleStatus:
+            return "/status/apple"
         case .availablePlans:
             return "/plans"
         case .icon(let iconName):
@@ -180,6 +190,8 @@ extension RequestType {
             return renew.toDictionary()
         case .paymentStatus:
             return nil
+        case .appleStatus:
+            return nil
         case .availablePlans:
             return nil
         case .icon:
@@ -208,6 +220,8 @@ extension RequestType {
         case .changeRenewSubscription:
             return nil
         case .paymentStatus:
+            return nil
+        case .appleStatus:
             return nil
         case .availablePlans(let currency, let vendor, let state, let timestamp):
             let queryParams: [String: Any?] = ["currency": currency,

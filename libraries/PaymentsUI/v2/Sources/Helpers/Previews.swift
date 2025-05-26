@@ -21,6 +21,7 @@
 
 import Foundation
 import ProtonCorePaymentsV2
+import StoreKit
 
 public struct ProductMock: ProductProtocol {
     public var displayName: String
@@ -28,6 +29,8 @@ public struct ProductMock: ProductProtocol {
     public var displayPrice: String
     public var price: Decimal
     public var id: String
+    public var priceFormatStyle: Decimal.FormatStyle.Currency = .init(code: "USD")
+    public var subscription: Product.SubscriptionInfo? = nil
 }
 
 // swiftlint:disable line_length

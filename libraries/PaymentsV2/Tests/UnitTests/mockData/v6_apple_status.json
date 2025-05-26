@@ -1,0 +1,26 @@
+{
+  "Code": 1000,
+  "Location": {
+    "CountryCode": "LT",
+    "State": null,
+    "ZipCode": null
+  },
+  "PaymentMethods": {
+    "Bitcoin": {
+      "State": 0,
+      "Reason": null
+    },
+    "Card": {
+      "State": 0,
+      "Reason": null
+    },
+    "InApp": {
+      "State": 1,
+      "Reason": null
+    },
+    "Paypal": {
+      "State": 0,
+      "Reason": null
+    }
+  }
+}

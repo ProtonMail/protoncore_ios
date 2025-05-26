@@ -41,6 +41,32 @@ public struct AvailablePlan: Decodable, Hashable, Identifiable, Sendable {
     public let decorations: [Decoration]
     public let id: String
     public let services: Int
+
+    public init(
+        description: String,
+        instances: [PlanInstance],
+        name: String?,
+        state: Int,
+        type: Int?,
+        title: String,
+        features: Int,
+        entitlements: [Entitlement],
+        decorations: [Decoration],
+        id: String,
+        services: Int
+    ) {
+        self.description = description
+        self.instances = instances
+        self.name = name
+        self.state = state
+        self.type = type
+        self.title = title
+        self.features = features
+        self.entitlements = entitlements
+        self.decorations = decorations
+        self.id = id
+        self.services = services
+    }
 }
 
 public struct PlanInstance: Decodable, Hashable, Equatable, Sendable {
@@ -49,6 +75,14 @@ public struct PlanInstance: Decodable, Hashable, Equatable, Sendable {
     public let cycle: Int
     public let periodEnd: Int
     public let vendors: Vendors
+
+    public init(price: [Price], description: String, cycle: Int, periodEnd: Int, vendors: Vendors) {
+        self.price = price
+        self.description = description
+        self.cycle = cycle
+        self.periodEnd = periodEnd
+        self.vendors = vendors
+    }
 }
 
 public struct Price: Decodable, Hashable, Equatable, Identifiable, Sendable {
@@ -56,10 +90,20 @@ public struct Price: Decodable, Hashable, Equatable, Identifiable, Sendable {
     public let current: Int
     public let currency: String
     public let id: String
+
+    public init(current: Int, currency: String, id: String) {
+        self.current = current
+        self.currency = currency
+        self.id = id
+    }
 }
 
 public struct Vendors: Decodable, Hashable, Equatable, Sendable {
     public let apple: Vendor?
+
+    public init(apple: Vendor?) {
+        self.apple = apple
+    }
 }
 
 public struct Vendor: Decodable, Hashable, Equatable, Sendable {

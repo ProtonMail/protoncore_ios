@@ -50,7 +50,7 @@ final class V5PaymentStatusRequest: PaymentStatusRequest {
     override var isAuth: Bool { false }
 }
 
-/// Payment Status request for API v5
+/// Payment Status request for API v6
 final class V6PaymentStatusRequest: PaymentStatusRequest {
 
     override init(api: APIService) {

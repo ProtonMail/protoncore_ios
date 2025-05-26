@@ -36,6 +36,7 @@ public struct ComposedPlan: Equatable, Hashable, Sendable {
         self.product = product
     }
 
+    @available(*, deprecated, message: "This will be removed; please use `storePricePerMonth` instead")
     public var pricePerMonth: Double {
         switch instance.cycle {
         case 1, 12:
@@ -46,15 +47,51 @@ public struct ComposedPlan: Equatable, Hashable, Sendable {
         }
     }
 
+    public var amountOfMonths: Int {
+        // subsription will be `nil` only if it's not autorenewable
+        guard let subscription = product.subscription else { return 0 }
+        let unit = subscription.subscriptionPeriod.unit
+        let value = subscription.subscriptionPeriod.value
+        switch unit {
+        // we don't support these
+        case .day, .week:
+            return 0
+        case .month:
+            return value
+        case .year:
+            return 12 * value
+        @unknown default:
+            return 0
+        }
+    }
+
+    public var storePricePerMonth: Decimal {
+        guard amountOfMonths != 0 else { return product.price / Decimal(instance.cycle) }
+        return product.price / Decimal(amountOfMonths)
+    }
+
+    public var pricePerMonthLabel: String {
+        product.priceFormatStyle.format(storePricePerMonth)
+    }
+
+    public var durationLabel: String? {
+        // subsription will be `nil` only if it's not autorenewable
+        guard let subscription = product.subscription else {
+            // should not happen; if it did then it's a single purchase that we don't have now
+            return nil
+        }
+        return subscription.subscriptionPeriod.formatted(Date.ComponentsFormatStyle.init(style: .wide))
+    }
+
     public func discount(comparedTo plan: ComposedPlan) -> Int? {
-        let pricePerMonthCurrentPlan: Double = pricePerMonth
-        let pricePerMonthComparedPlan: Double = plan.pricePerMonth
+        let pricePerMonthCurrentPlan: Decimal = storePricePerMonth
+        let pricePerMonthComparedPlan: Decimal = plan.storePricePerMonth
 
         guard pricePerMonthComparedPlan != 0 else { return nil }
         guard pricePerMonthCurrentPlan != 0 else { return 100 }
-        let discountDouble = (1 - (pricePerMonthCurrentPlan / pricePerMonthComparedPlan)) * 100
+        let discountDecimal = (1 - (pricePerMonthCurrentPlan / pricePerMonthComparedPlan)) * 100
         // don't round to 100% if it's not exactly 100%
-        let discountInt = min(Int(discountDouble.rounded()), 99)
+        let discountInt = min(Int(NSDecimalNumber(decimal: discountDecimal).doubleValue.rounded()), 99)
         return discountInt >= Self.minimumVisibleDiscount ? discountInt : nil
     }
 }

@@ -346,6 +346,33 @@ extension RemoteManagerTests {
     }
 }
 
+// MARK: Apple status
+extension RemoteManagerTests {
+    func test_v5_apple_status() async throws {
+        let mockResponse = Bundle.main.loadJsonDataToDic(from: "v5_apple_status.json")
+        mockRemoteManager.setupURLSessionMock(withMockResponse: mockResponse)
+
+        guard let request = try? paymentsAPI.url(for: .appleStatus) else {
+            XCTFail("Unable to generate the expected request")
+            return
+        }
+        let v5AppleStatus: V5PaymentStatusResponse = try await sut.getFromURL(request.url)
+        XCTAssertTrue(v5AppleStatus.isAvailable)
+    }
+
+    func test_v6_apple_status() async throws {
+        let mockResponse = Bundle.main.loadJsonDataToDic(from: "v6_apple_status.json")
+        mockRemoteManager.setupURLSessionMock(withMockResponse: mockResponse)
+
+        guard let request = try? paymentsAPI.url(for: .appleStatus) else {
+            XCTFail("Unable to generate the expected request")
+            return
+        }
+        let v6AppleStatus: V6PaymentStatusResponse = try await sut.getFromURL(request.url)
+        XCTAssertTrue(v6AppleStatus.isAvailable)
+    }
+}
+
 extension RemoteManagerTests {
 
     func test_APIError_code_handling() async throws {

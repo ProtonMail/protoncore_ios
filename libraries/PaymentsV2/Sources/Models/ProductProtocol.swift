@@ -30,6 +30,8 @@ public protocol ProductProtocol: Hashable, Sendable {
     var displayPrice: String { get }
     var price: Decimal { get }
     var id: String { get }
+    var priceFormatStyle: Decimal.FormatStyle.Currency { get }
+    var subscription: Product.SubscriptionInfo? { get }
 }
 
 public protocol ProtonTransactionProviding: Sendable {
