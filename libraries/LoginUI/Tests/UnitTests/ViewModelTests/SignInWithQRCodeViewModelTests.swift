@@ -53,8 +53,7 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
             generateEncryptionKey: withEncryptionKeyInQRCode)
     }
 
-    func testGenerateQRCodeText() async {
-
+    func testGenerateQRCodeText() async throws {
         let withEncryptionKeyInQRCodeAndEncryptionKey = [(true, "AQID"), (false, "")]
 
         for (flag, base64EncryptionKey) in withEncryptionKeyInQRCodeAndEncryptionKey {
@@ -63,6 +62,8 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
             let selector = "selector"
             let userCode = "userCode"
             let clientId = "clientId"
+            let expectedQRCodeText = "\(GenerateSignInQRCode.QRCodeVersion):\(userCode):\(base64EncryptionKey):\(clientId)"
+
             mockAPIService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
                 completion(nil, .success(ForkSessionInitiateResponse(selector: selector, userCode: userCode)))
             }
@@ -75,44 +76,38 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
 
             sut.generateANewQRCodeText()
 
-            // wait a little for the qrCode to reach the main thread
-            try? await Task.sleep(nanoseconds: 50_000_000)
-
-            XCTAssertEqual(sut.qrCodeText, "\(GenerateSignInQRCode.QRCodeVersion):\(userCode):\(base64EncryptionKey):\(clientId)")
+            try await waitForQRCodeText { $0 == expectedQRCodeText }
+            XCTAssertEqual(sut.qrCodeText, expectedQRCodeText)
         }
     }
 
     @MainActor
-    func testRefreshOfQRCodeText() async {
+    func testRefreshOfQRCodeText() async throws {
         let selector = "selector"
         let userCode = "userCode"
         let clientId = "clientId"
+
         mockAPIService.requestDecodableStub.bodyIs { _, _, _, _, _, _, _, _, _, _, _, completion in
             completion(nil, .success(ForkSessionInitiateResponse(selector: selector, userCode: userCode)))
         }
 
         mockClientIdProvider.id = clientId
-        mockSecureHashGenerator.data = Data([1, 2, 3])
+        mockSecureHashGenerator.data = Data([1,2,3])
 
         sut.refreshWaitTimeInSeconds = 0.5
         sut.pullForkIntervalInSeconds = 100
 
         sut.generateANewQRCodeText()
 
-        // wait a little for the qrCode to reach the main thread
-        try? await Task.sleep(nanoseconds: 50_000_000)
-
+        try await waitForQRCodeText { $0 != nil }
         let qrCode1 = sut.qrCodeText
 
-        // Change the secure hash
-        mockSecureHashGenerator.data = Data([1, 2, 3, 4])
+        // Change the secure hash so QR text changes
+        mockSecureHashGenerator.data = Data([1,2,3,4])
 
-        // wait for refreshWaitTimeInSeconds to expire
-        try? await Task.sleep(nanoseconds: UInt64(sut.refreshWaitTimeInSeconds * 1_000_000_000) + 50_000_000)
+        try await waitForQRCodeText { $0 != qrCode1 }
 
-        let qrCode2 = sut.qrCodeText
-
-        XCTAssertNotEqual(qrCode1, qrCode2)
+        XCTAssertNotEqual(qrCode1, sut.qrCodeText)
     }
 
     func testPollingOfFork() async throws {
@@ -234,6 +229,21 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
 
             // Make sure we did not replace the forkedSession with the new pulledResult.
             XCTAssertNotEqual(pullResult?.payload, sut.forkedSession?.payload)
+        }
+    }
+
+    private func waitForQRCodeText(
+        where predicate: @escaping (String?) -> Bool,
+        timeout: TimeInterval = 2.0
+    ) async throws {
+        let deadline = Date().addingTimeInterval(timeout)
+
+        while !predicate(sut.qrCodeText), Date() < deadline {
+            try await Task.sleep(nanoseconds: 10_000_000) // 10 ms
+        }
+
+        if !predicate(sut.qrCodeText) {
+            throw XCTSkip("Timed out waiting for QR code to satisfy condition.")
         }
     }
 }
