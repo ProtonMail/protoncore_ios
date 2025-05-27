@@ -83,6 +83,7 @@
 /**
  * Error codes
  */
+@property (nonatomic) long errorCodeUnknown;
 @property (nonatomic) long errorCodeGuestSession;
 @property (nonatomic) long errorCodeRestrictedServer;
 @property (nonatomic) long errorCodeBadCertSignature;
@@ -138,6 +139,7 @@
 - (LocalAgentStringArray* _Nullable)getKeys;
 - (LocalAgentStringToValueMap* _Nullable)getMap:(NSString* _Nullable)name;
 - (NSString* _Nonnull)getString:(NSString* _Nullable)name;
+- (NSString* _Nonnull)getStringOrDefault:(NSString* _Nullable)name defaultVal:(NSString* _Nullable)defaultVal;
 - (BOOL)hasKey:(NSString* _Nullable)name;
 - (NSData* _Nullable)marshalJSON:(NSError* _Nullable* _Nullable)error;
 - (void)remove:(NSString* _Nullable)key;
@@ -219,6 +221,7 @@
 - (LocalAgentStringArray* _Nullable)getKeys;
 - (LocalAgentStringToValueMap* _Nullable)getMap:(NSString* _Nullable)name;
 - (NSString* _Nonnull)getString:(NSString* _Nullable)name;
+- (NSString* _Nonnull)getStringOrDefault:(NSString* _Nullable)name defaultVal:(NSString* _Nullable)defaultVal;
 - (BOOL)hasKey:(NSString* _Nullable)name;
 - (NSData* _Nullable)marshalJSON:(NSError* _Nullable* _Nullable)error;
 - (void)remove:(NSString* _Nullable)key;
@@ -228,11 +231,16 @@
 - (BOOL)unmarshalJSON:(NSData* _Nullable)data error:(NSError* _Nullable* _Nullable)error;
 @end
 
-FOUNDATION_EXPORT const long LocalAgentErrorClientCertExpired;
-FOUNDATION_EXPORT const long LocalAgentErrorClientCertUnknownCA;
-FOUNDATION_EXPORT const long LocalAgentErrorInvalidServerCert;
-FOUNDATION_EXPORT const long LocalAgentErrorOther;
-FOUNDATION_EXPORT const long LocalAgentErrorUnreachable;
+// skipped const ErrorClientCertExpired with unsupported type: github.com/ProtonVPN/go-vpn-lib/localAgent.ErrorType
+
+// skipped const ErrorClientCertUnknownCA with unsupported type: github.com/ProtonVPN/go-vpn-lib/localAgent.ErrorType
+
+// skipped const ErrorInvalidServerCert with unsupported type: github.com/ProtonVPN/go-vpn-lib/localAgent.ErrorType
+
+// skipped const ErrorOther with unsupported type: github.com/ProtonVPN/go-vpn-lib/localAgent.ErrorType
+
+// skipped const ErrorUnreachable with unsupported type: github.com/ProtonVPN/go-vpn-lib/localAgent.ErrorType
+
 
 /**
  * Constants export constants for the client
