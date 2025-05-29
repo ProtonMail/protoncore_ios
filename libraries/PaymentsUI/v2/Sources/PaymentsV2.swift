@@ -151,7 +151,6 @@ public final class PaymentsV2: Sendable {
                                             doh: doh,
                                             presentationMode: presentationMode,
                                             hideCurrentPlan: hideCurrentPlan)
-
         return vc
     }
 }
