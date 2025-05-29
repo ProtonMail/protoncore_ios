@@ -38,6 +38,7 @@ public final class PaymentsUIViewControllerV2: UIViewController {
     private let doh: DoHInterface & ServerConfig
     private let presentationMode: PresentationMode
     private let hideCurrentPlan: Bool
+    private var hostingViewController: UIHostingController<AvailablePlansView>!
 
     public init(sessionId: String,
                 token: String,
@@ -77,12 +78,12 @@ public final class PaymentsUIViewControllerV2: UIViewController {
 
         let availablePlansView = AvailablePlansView(viewModel: viewModel)
 
-        let hostingController = UIHostingController(rootView: availablePlansView)
-        addChild(hostingController)
+        hostingViewController = UIHostingController(rootView: availablePlansView)
+        addChild(hostingViewController)
 
-        view.addSubview(hostingController.view)
-        hostingController.view.frame = view.bounds
-        hostingController.didMove(toParent: self)
+        view.addSubview(hostingViewController.view)
+        hostingViewController.view.frame = view.bounds
+        hostingViewController.didMove(toParent: self)
 
         if presentationMode == .push {
             title = hideCurrentPlan ? PaymentsUIV2Localizer.Select_plan_nav_title.l10n : PaymentsUIV2Localizer.Subscriptions_nav_title.l10n
@@ -95,6 +96,11 @@ public final class PaymentsUIViewControllerV2: UIViewController {
         debugPrint("viewControllerWillAppear called with value: \(viewWillAppear)")
         viewWillAppear = false
         setupView()
+    }
+
+    override public func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        hostingViewController.view.frame = view.bounds
     }
 
     private func customNavBarButton() -> UIButton {
