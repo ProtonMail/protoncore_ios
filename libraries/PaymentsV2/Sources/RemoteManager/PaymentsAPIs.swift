@@ -22,7 +22,6 @@
 import Foundation
 import ProtonCoreDoh
 import ProtonCoreLog
-import ProtonCoreFeatureFlags
 
 public struct APIRequest: @unchecked Sendable {
     public let url: URL
@@ -69,10 +68,7 @@ public struct PaymentsAPIs: PaymentsAPIsProviding, Sendable {
             case .userTransactionUUID:
                 return .v4
             case .appleStatus:
-                if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsV6Status) {
-                    return .v6
-                }
-                return .v5
+                return .v6
             default:
                 return .v5
             }
@@ -131,6 +127,7 @@ public enum RequestType {
 
     // MARK: Payments
     case paymentStatus(vendor: VendorType)
+    case legacyAppleStatus
     case appleStatus
 
     // MARK: Plans
@@ -159,6 +156,8 @@ extension RequestType {
             return "/subscription/renew"
         case .paymentStatus(let vendor):
             return "/status/\(vendor.rawValue)"
+        case .legacyAppleStatus:
+            return "/status/apple"
         case .appleStatus:
             return "/status/apple"
         case .availablePlans:
@@ -190,6 +189,8 @@ extension RequestType {
             return renew.toDictionary()
         case .paymentStatus:
             return nil
+        case .legacyAppleStatus:
+            return nil
         case .appleStatus:
             return nil
         case .availablePlans:
@@ -220,6 +221,8 @@ extension RequestType {
         case .changeRenewSubscription:
             return nil
         case .paymentStatus:
+            return nil
+        case .legacyAppleStatus:
             return nil
         case .appleStatus:
             return nil

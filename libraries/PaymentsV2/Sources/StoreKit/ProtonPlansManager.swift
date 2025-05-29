@@ -25,13 +25,11 @@ import ProtonCoreObservability
 import ProtonCoreLog
 import ProtonCoreDoh
 import StoreKit
-import ProtonCoreFeatureFlags
 
 public protocol ProtonPlansManagerProviding: Sendable {
 
     var transactionProgress: CurrentValueSubject<TransactionHandlerState, Never> { get }
     var countryCode: String? { get async }
-    func fetchAppleStatus() async throws -> IAPSupportStatusV2
     func getProtonPlans() async throws -> AvailablePlans
     func getStoreProducts(_ plans: [String]) async throws -> [Product]
     func getAvailablePlans() async throws -> [ComposedPlan]
@@ -257,19 +255,6 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
 
     private func findMatchingPlan(productID: String) -> ComposedPlan? {
         planComposer.matchPlanToStoreProduct(productID)
-    }
-
-    public func fetchAppleStatus() async throws -> IAPSupportStatusV2 {
-        let iapStatusRequest = try paymentsAPI.url(for: .appleStatus)
-        let iapStatus: IAPSupportStatusV2
-        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsV6Status) {
-            let iapV6Response: V6PaymentStatusResponse = try await remoteManager.getFromURL(iapStatusRequest.url)
-            iapStatus = iapV6Response.status
-        } else {
-            let iapV5Response: V5PaymentStatusResponse = try await remoteManager.getFromURL(iapStatusRequest.url)
-            iapStatus = iapV5Response.status
-        }
-        return iapStatus
     }
 }
 

@@ -1392,8 +1392,7 @@ add(
                    dependencies: [
                     .log,
                     .observability,
-                    .networking,
-                    .featureFlags
+                    .networking
                    ],
                    path: "libraries/PaymentsV2/Sources"),
 
@@ -1410,8 +1409,8 @@ add(
                         .copy("mockData/new_sub_payload.json"),
                         .copy("mockData/check_sub_payload.json"),
                         .copy("mockData/payment_status_payload.json"),
-                        .copy("mockData/v5_apple_status.json"),
-                        .copy("mockData/v6_apple_status.json"),
+                        .copy("mockData/LegacyIAPStatus.json"),
+                        .copy("mockData/IAPStatus.json"),
                         .copy("mockData/StoreKit_mock.storekit"),
                         .copy("mockData/StoreKitTestCertificate.cer")
                        ])

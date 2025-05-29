@@ -21,7 +21,7 @@
 
 import Foundation
 
-struct V5PaymentStatusResponse: Decodable {
+public struct LegacyIAPStatus: Decodable {
     /* Sample V5 response
      {
        "Code": 1000,
@@ -39,7 +39,7 @@ struct V5PaymentStatusResponse: Decodable {
 
     var isAvailable: Bool
 
-    var status: IAPSupportStatusV2 {
+    public var status: IAPSupportStatusV2 {
         guard isAvailable else { return .disabled(localizedReason: nil) }
         return .enabled
     }
@@ -52,14 +52,14 @@ struct V5PaymentStatusResponse: Decodable {
         var inApp: Int?
     }
 
-    init(from decoder: any Decoder) throws {
+    public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let vendorStates = try container.decodeIfPresent(VendorStates.self, forKey: .vendorStates)
         self.isAvailable = vendorStates?.inApp == 1
     }
 }
 
-struct V6PaymentStatusResponse: Decodable {
+public struct IAPStatus: Decodable {
     /* Sample V6 response
      {
        "Code": 1000,
@@ -92,7 +92,7 @@ struct V6PaymentStatusResponse: Decodable {
     var isAvailable: Bool
     var unavailabilityReason: String?
 
-    var status: IAPSupportStatusV2 {
+    public var status: IAPSupportStatusV2 {
         guard isAvailable else { return .disabled(localizedReason: unavailabilityReason) }
         return .enabled
     }
@@ -110,7 +110,7 @@ struct V6PaymentStatusResponse: Decodable {
         }
     }
 
-    init(from decoder: any Decoder) throws {
+    public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let paymentMethods = try container.decodeIfPresent(PaymentMethods.self, forKey: .paymentMethods)
         // Value can be 0 or 1, values > 1 are reserved for future use.
