@@ -25,7 +25,7 @@ import ProtonCoreLogin
 import ProtonCoreAuthenticationKeyGeneration
 import ProtonCoreNetworking
 import SwiftUI
-import ProtonCoreUI
+import ProtonCoreUIFoundations
 import ProtonCoreObservability
 import ProtonCoreLog
 
