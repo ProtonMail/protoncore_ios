@@ -215,6 +215,7 @@ public final class LoginAndSignup {
             clientApp: clientApp,
             apiService: apiService,
             minimumAccountTypes: .init(login: minimumAccountType, signup: minimumAccountType),
+            isCloseButtonAvailable: isCloseButtonAvailable,
             paymentsAvailability: paymentsAvailability,
             signupAvailability: signupAvailability
         )
