@@ -29,6 +29,7 @@ import StoreKit
 public protocol ProtonPlansManagerProviding: Sendable {
 
     var transactionProgress: CurrentValueSubject<TransactionHandlerState, Never> { get }
+    var countryCode: String? { get async }
     func getProtonPlans() async throws -> AvailablePlans
     func getStoreProducts(_ plans: [String]) async throws -> [Product]
     func getAvailablePlans() async throws -> [ComposedPlan]
@@ -92,6 +93,12 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
     private var paymentsToken: NewToken!
     private var planName: String!
     private var planCycle: Int!
+
+    public var countryCode: String? {
+        get async {
+            await Storefront.current?.countryCode.lowercased()
+        }
+    }
 
     public init(doh: DoHInterface & ServerConfig,
                 remoteManager: RemoteManagerProviding,
