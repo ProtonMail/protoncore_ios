@@ -86,10 +86,13 @@ public struct ComposedPlan: Equatable, Hashable, Sendable {
     public func discount(comparedTo plan: ComposedPlan) -> Int? {
         let pricePerMonthCurrentPlan: Decimal = storePricePerMonth
         let pricePerMonthComparedPlan: Decimal = plan.storePricePerMonth
+        return Self.discount(currentPrice: pricePerMonthCurrentPlan, comparedPrice: pricePerMonthComparedPlan)
+    }
 
-        guard pricePerMonthComparedPlan != 0 else { return nil }
-        guard pricePerMonthCurrentPlan != 0 else { return 100 }
-        let discountDecimal = (1 - (pricePerMonthCurrentPlan / pricePerMonthComparedPlan)) * 100
+    public static func discount(currentPrice: Decimal, comparedPrice: Decimal) -> Int? {
+        guard comparedPrice != 0 else { return nil }
+        guard currentPrice != 0 else { return 100 }
+        let discountDecimal = (1 - (currentPrice / comparedPrice)) * 100
         // don't round to 100% if it's not exactly 100%
         let discountInt = min(Int(NSDecimalNumber(decimal: discountDecimal).doubleValue.rounded()), 99)
         return discountInt >= Self.minimumVisibleDiscount ? discountInt : nil
