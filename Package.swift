@@ -1409,7 +1409,6 @@ add(
                         .copy("mockData/new_sub_payload.json"),
                         .copy("mockData/check_sub_payload.json"),
                         .copy("mockData/payment_status_payload.json"),
-                        .copy("mockData/LegacyIAPStatus.json"),
                         .copy("mockData/IAPStatus.json"),
                         .copy("mockData/StoreKit_mock.storekit"),
                         .copy("mockData/StoreKitTestCertificate.cer")

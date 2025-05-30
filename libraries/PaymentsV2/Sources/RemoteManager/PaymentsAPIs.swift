@@ -127,7 +127,6 @@ public enum RequestType {
 
     // MARK: Payments
     case paymentStatus(vendor: VendorType)
-    case legacyAppleStatus
     case appleStatus
 
     // MARK: Plans
@@ -156,8 +155,6 @@ extension RequestType {
             return "/subscription/renew"
         case .paymentStatus(let vendor):
             return "/status/\(vendor.rawValue)"
-        case .legacyAppleStatus:
-            return "/status/apple"
         case .appleStatus:
             return "/status/apple"
         case .availablePlans:
@@ -189,8 +186,6 @@ extension RequestType {
             return renew.toDictionary()
         case .paymentStatus:
             return nil
-        case .legacyAppleStatus:
-            return nil
         case .appleStatus:
             return nil
         case .availablePlans:
@@ -221,8 +216,6 @@ extension RequestType {
         case .changeRenewSubscription:
             return nil
         case .paymentStatus:
-            return nil
-        case .legacyAppleStatus:
             return nil
         case .appleStatus:
             return nil

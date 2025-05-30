@@ -21,44 +21,6 @@
 
 import Foundation
 
-public struct LegacyIAPStatus: Decodable {
-    /* Sample V5 response
-     {
-       "Code": 1000,
-       "CountryCode": "LT",
-       "State": null,
-       "ZipCode": null,
-       "VendorStates": {
-         "Bitcoin": 0,
-         "Card": 0,
-         "InApp": 1,
-         "Paypal": 0
-       }
-     }
-     */
-
-    var isAvailable: Bool
-
-    public var status: IAPSupportStatusV2 {
-        guard isAvailable else { return .disabled(localizedReason: nil) }
-        return .enabled
-    }
-
-    enum CodingKeys: CodingKey {
-        case vendorStates
-    }
-
-    struct VendorStates: Decodable {
-        var inApp: Int?
-    }
-
-    public init(from decoder: any Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        let vendorStates = try container.decodeIfPresent(VendorStates.self, forKey: .vendorStates)
-        self.isAvailable = vendorStates?.inApp == 1
-    }
-}
-
 public struct IAPStatus: Decodable {
     /* Sample V6 response
      {
