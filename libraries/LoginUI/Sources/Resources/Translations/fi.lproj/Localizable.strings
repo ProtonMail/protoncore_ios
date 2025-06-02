@@ -396,7 +396,7 @@
 
 "Go to Settings" = "Mene asetuksiin";
 
-"to Proton %@" = "to Proton %@";
+"to Proton %@" = "kohteeseen Proton %@";
 
 "Something went wrong" = "Jotain meni pieleen";
 
@@ -408,7 +408,7 @@
 
 "Allow access to camera" = "Salli pääsy kameraan";
 
-"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "To scan a QR code and sign in to another device, grant Proton %@ access to your camera.";
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "Proton %@ tarvitsee pääsyn kameraasi, jotta voit skannata QR-koodin ja kirjautua toiseen laitteeseen.";
 
 "You're always in control: You can change this anytime in your device settings." = "Olet aina hallinnassa: Voit muuttaa tämän milloin vain laitteesi asetuksissa.";
 

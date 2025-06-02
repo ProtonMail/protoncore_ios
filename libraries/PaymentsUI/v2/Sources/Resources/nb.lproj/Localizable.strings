@@ -50,7 +50,7 @@
 
 "Transaction_state_payment_confirmation_progress" = "Bekrefter betalingen din";
 
-"Transaction_state_view_subtitle" = "Dette bør ikke ta lenger enn ett minutt.";
+"Transaction_state_view_subtitle" = "Dette bør ikke ta mer enn ett minutt.";
 
 "Transaction_state_view_title" = "Betalingen din blir bekreftet ...";
 

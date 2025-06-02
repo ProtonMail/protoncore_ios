@@ -8,29 +8,29 @@
 
 "Current_free_plan_name" = "Gratis";
 
-"Current_plan_exipiration" = "Langganan Anda kedaluwarsa pada";
+"Current_plan_exipiration" = "Langganan Anda akan kedaluwarsa pada";
 
-"Current_plan_renewal" = "Langganan Anda diperpanjang secara otomatis pada";
+"Current_plan_renewal" = "Langganan Anda akan diperpanjang secara otomatis pada";
 
-"Error_view_button_title" = "Coba Lagi";
+"Error_view_button_title" = "Coba lagi";
 
 "Error_view_message" = "Kami tidak dapat memuat halaman ini. Silakan muat ulang halaman atau periksa koneksi internet Anda.";
 
-"Error_view_title" = "Terdapat suatu kesalahan";
+"Error_view_title" = "Terjadi kesalahan";
 
-"Loading_plans_message" = "Mengambil paket yang tersedia...";
+"Loading_plans_message" = "Memperoleh daftar paket yang tersedia...";
 
 "Monthly_cycle" = "1 bulan";
 
-"No_available_plan_message" = "Langganan Anda tidak dapat dikelola di dalam aplikasi seluler.";
+"No_available_plan_message" = "Langganan Anda tidak dapat dikelola dari dalam aplikasi seluler.";
 
-"No_available_plan_title" = "Tidak ada paket yang tersedia";
+"No_available_plan_title" = "Tidak ada paket yang tersedia yang ditemukan";
 
 "No_filtered_plan_message" = "Silakan pilih siklus tagihan yang berbeda";
 
 "No_filtered_plan_title" = "Tidak ada paket yang ditemukan";
 
-"Plans_footer_disclaimer" = "Anda tidak dapat mengelola langganan di dalam aplikasi seluler";
+"Plans_footer_disclaimer" = "Anda tidak dapat mengelola langganan dari dalam aplikasi seluler";
 
 "Purchase_button_title" = "Dapatkan %@";
 
@@ -40,7 +40,7 @@
 
 "Transaction_cancelled_by_user" = "Transaksi dibatalkan oleh pengguna";
 
-"Transaction_process_error" = "Terjadi kesalahan, silakan coba lagi. Jika masalah terus berlanjut, hubungi tim layanan dukungan kami.";
+"Transaction_process_error" = "Terjadi kesalahan. Silakan coba lagi. Apabila masalah ini terus berlanjut, silakan hubungi tim layanan dukungan kami.";
 
 "Transaction_state_payment_account_update_complete" = "Akun diperbarui";
 

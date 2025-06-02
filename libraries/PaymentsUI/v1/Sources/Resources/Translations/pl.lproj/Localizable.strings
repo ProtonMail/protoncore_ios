@@ -12,7 +12,7 @@
 
 "Upgrade your plan" = "Ulepsz plan";
 
-"Only annual subscriptions without auto-renewal are available inside the mobile app." = "W aplikacji mobilnej dostępne są tylko roczne subskrypcje z automatycznym odnowieniem.";
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "W aplikacji mobilnej dostępne są jedynie subskrypcje roczne bez automatycznego odnowienia.";
 
 "You cannot manage subscriptions inside the mobile application." = "Nie możesz zarządzać subskrypcjami poprzez aplikację mobilną.";
 
@@ -20,13 +20,13 @@
 
 "Current plan will expire on %@" = "Obecny plan wygaśnie %@";
 
-"Contact an administrator to make changes to your Proton subscription." = "Skontaktuj się z administratorem, aby zmienić subskrypcję.";
+"Contact an administrator to make changes to your Proton subscription." = "Skontaktuj się z administratorem, aby dokonać zmian w Twojej subskrypcji Proton.";
 
 "%1$@ of %2$@" = "%1$@ z %2$@";
 
 "%@ storage" = "%@ przestrzeni dyskowej";
 
-"%@ storage / user" = "%@ przestrzeni dyskowej na użytkownika";
+"%@ storage / user" = "%@ przestrzeni dyskowej / użytkownika";
 
 "for %@" = "na %@";
 
@@ -50,13 +50,13 @@
 
 "Limited time offer" = "Oferta ograniczona czasowo";
 
-"Complete payment?" = "Zakończyć płatność?";
+"Complete payment?" = "Sfinalizować płatność?";
 
 "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Zakup planu Proton Bundle został już zainicjowany. Kliknij przycisk Kontynuuj, aby zakończyć proces płatności i utworzyć konto";
 
-"Complete payment" = "Zakończ płatność";
+"Complete payment" = "Sfinalizuj płatność";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Wystąpił nieoczekiwany błąd i konfiguracja konta nie została zakończona.\nSpróbuj ponownie.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Proces zakładania konta nie mógł zostać ukończony z powodu nieoczekiwanego błędu.\nSpróbuj ponownie.";
 
 "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Proces zakupu w aplikacji został rozpoczęty. Wykonaj instrukcję firmy Apple, aby zakończyć lub anulować zakup.";
 
@@ -66,11 +66,11 @@
 
 "The no-cost starter account designed to empower everyone with privacy by default." = "Darmowe, podstawowe konto stworzone z myślą o zapewnieniu każdemu prywatności.";
 
-"The privacy-first email and calendar solution for your everyday communication needs." = "Prywatna poczta i kalendarz do codziennej komunikacji.";
+"The privacy-first email and calendar solution for your everyday communication needs." = "Poczta i kalendarz do codziennej komunikacji, stworzone z myślą o prywatności.";
 
 "Your privacy and security are our priority." = "Twoja prywatność i bezpieczeństwo są naszym priorytetem.";
 
-"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Plan z przestrzenią dyskową 200 GB dla dysku w chmurze.";
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Plan z 200 GB przestrzeni dyskowej w chmurze, aby Twoje pliki pozostały prywatne.";
 
 "The ultimate privacy pack with access to all premium Proton services." = "Najwyższy pakiet prywatności z dostępem do wszystkich usług Proton w wersji premium.";
 
@@ -108,11 +108,11 @@
 
 "Check your internet connection" = "Sprawdź połączenie internetowe";
 
-"Strict no-logs policy" = "Ścisła polityka braku przechowywania logów";
+"Strict no-logs policy" = "Polityka braku przechowywania logów";
 
 "Plan successfully upgraded" = "Plan został ulepszony";
 
-"Integrated 2FA authenticator" = "Zintegrowana aplikacja do uwierzytelniania dwustopniowego";
+"Integrated 2FA authenticator" = "Zintegrowana aplikacja uwierzytelniająca";
 
 "Priority support" = "Priorytetowe wsparcie";
 
@@ -122,9 +122,9 @@
 
 "Unlimited logins and notes" = "Nieograniczona liczba danych logowania i notatek";
 
-"Custom fields" = "Niestandardowe pola";
+"Custom fields" = "Pola niestandardowe";
 
-"For next-level password management and identity protection." = "Dla zarządzania hasłami i ochrony tożsamości na najwyższym poziomie.";
+"For next-level password management and identity protection." = "Zarządzanie hasłami i ochrona tożsamości na najwyższym poziomie.";
 
 "Pay monthly" = "Płatne miesięcznie";
 
@@ -133,9 +133,3 @@
 "Pay every two years" = "Płatne co dwa lata";
 
 "Free" = "Za darmo";
-
-"Your storage is full" = "Przestrzeń dyskowa jest pełna";
-
-"Upgrade your plan to continue to use your account without interruptions." = "Ulepsz plan, aby używać konta bez ograniczeń.";
-
-"Get more storage" = "Uzyskaj więcej przestrzeni dyskowej";

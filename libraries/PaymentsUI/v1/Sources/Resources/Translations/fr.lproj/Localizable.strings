@@ -10,7 +10,7 @@
 
 "Subscription" = "Abonnement";
 
-"Upgrade your plan" = "Améliorer votre abonnement";
+"Upgrade your plan" = "Améliorez votre abonnement";
 
 "Only annual subscriptions without auto-renewal are available inside the mobile app." = "Seuls les abonnements annuels sans renouvellement automatique sont disponibles dans l'application mobile.";
 
@@ -50,13 +50,13 @@
 
 "Limited time offer" = "Offre à durée limitée";
 
-"Complete payment?" = "Finaliser le paiement ?";
+"Complete payment?" = "Terminer le paiement ?";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "L'achat d'un abonnement Proton Bundle a déjà été effectué. Appuyez sur Continuer pour finaliser le traitement du paiement et créer votre compte.";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "L'achat d'une offre d'abonnement groupée Proton a déjà été effectué. Appuyez sur continuer pour finaliser le traitement du paiement et créer votre compte";
 
-"Complete payment" = "Finaliser le paiement";
+"Complete payment" = "Terminer le paiement";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Le processus de configuration du compte n'a pas pu être finalisé en raison d'une erreur inattendue.\nNous vous invitons à réessayer.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Le processus de configuration du compte n'a pas pu être finalisé en raison d'une erreur inattendue.\nMerci de réessayer.";
 
 "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Le processus d'achat dans l’application a commencé. Suivez les instructions d'Apple pour finaliser ou annuler l'achat.";
 
@@ -66,15 +66,15 @@
 
 "The no-cost starter account designed to empower everyone with privacy by default." = "Le compte de départ gratuit conçu pour que tout le monde puisse bénéficier du respect de la vie privée.";
 
-"The privacy-first email and calendar solution for your everyday communication needs." = "La messagerie et le calendrier qui privilégient la confidentialité et la vie privée, pour vos besoins quotidiens de communication.";
+"The privacy-first email and calendar solution for your everyday communication needs." = "La solution de messagerie et de calendrier axée sur la confidentialité pour vos besoins de communication quotidiens.";
 
 "Your privacy and security are our priority." = "Votre vie privée et votre sécurité sont notre priorité.";
 
-"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "L'abonnement idéal pour le stockage avec 200 Go de stockage cloud permettant de garder vos fichiers privés.";
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Le plan axé sur le stockage avec 200 Go de stockage cloud pour protéger vos fichiers.";
 
 "The ultimate privacy pack with access to all premium Proton services." = "Le pack de confidentialité ultime avec accès à tous les services premium Proton.";
 
-"Only non-renewing annual subscriptions are available via this app" = "Seuls les abonnements annuels non renouvelables sont disponibles depuis cette application.";
+"Only non-renewing annual subscriptions are available via this app" = "Seuls les abonnements annuels non renouvelables sont disponibles via cette application";
 
 "Your subscription cannot be managed inside the mobile app." = "Votre abonnement ne peut pas être géré depuis l'application mobile.";
 
@@ -108,17 +108,17 @@
 
 "Check your internet connection" = "Vérifiez votre connexion internet.";
 
-"Strict no-logs policy" = "Politique stricte de non-journalisation (no log)";
+"Strict no-logs policy" = "Politique stricte de non-journalisation (no-log)";
 
-"Plan successfully upgraded" = "Votre abonnement a été mis à niveau.";
+"Plan successfully upgraded" = "Votre abonnement a été mis à jour.";
 
 "Integrated 2FA authenticator" = "Authentification à deux facteurs (A2F) intégrée";
 
 "Priority support" = "Assistance prioritaire";
 
-"Unlimited devices" = "Nombre illimité d'appareils";
+"Unlimited devices" = "Nombre d'appareils illimités";
 
-"Unlimited email aliases" = "Nombre illimité d'alias";
+"Unlimited email aliases" = "Nombre d'alias illimités";
 
 "Unlimited logins and notes" = "Nombre illimité d'identifiants et de notes";
 
@@ -133,9 +133,3 @@
 "Pay every two years" = "Paiement tous les deux ans";
 
 "Free" = "Gratuit";
-
-"Your storage is full" = "Votre espace de stockage est plein.";
-
-"Upgrade your plan to continue to use your account without interruptions." = "Vous devez changer d'abonnement pour continuer à utiliser votre compte sans interruptions.";
-
-"Get more storage" = "Obtenir plus d'espace de stockage";

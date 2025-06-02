@@ -58,7 +58,7 @@
 
 "The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "El proceso de configuración de la cuenta no se pudo finalizar debido a un error inesperado.\nInténtelo de nuevo.";
 
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "El proceso de compra IAP ha comenzado. Siga las instrucciones de Apple para completar o cancelar la compra.";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "El proceso de compra en la aplicación ha comenzado. Siga las instrucciones de Apple para completar o cancelar la compra.";
 
 "In app payments are temporarily unavailable." = "Los pagos en la aplicación no están disponibles temporalmente.";
 
@@ -96,46 +96,40 @@
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "Obtenga %@";
+"Get %@" = "Obtener %@";
 
-"Get Proton for free" = "Obtenga Proton gratis";
+"Get Proton for free" = "Obtener Proton gratis";
 
 "Extend subscription" = "Extender suscripción";
 
-"%@ of %@" = "%@ of %@";
+"%@ of %@" = "%@ de %@";
 
-"Connection issues" = "Connection issues";
+"Connection issues" = "Hay un problema de conexión.";
 
-"Check your internet connection" = "Check your internet connection";
+"Check your internet connection" = "Verifica tu conexión de internet.";
 
-"Strict no-logs policy" = "Strict no-logs policy";
+"Strict no-logs policy" = "Política estricta de cero registros";
 
-"Plan successfully upgraded" = "Plan successfully upgraded";
+"Plan successfully upgraded" = "Plan actualizado exitosamente.";
 
-"Integrated 2FA authenticator" = "Integrated 2FA authenticator";
+"Integrated 2FA authenticator" = "Autenticador de dos pasos integrado";
 
-"Priority support" = "Priority support";
+"Priority support" = "Soporte prioritario";
 
-"Unlimited devices" = "Unlimited devices";
+"Unlimited devices" = "Dispositivos ilimitados";
 
-"Unlimited email aliases" = "Unlimited email aliases";
+"Unlimited email aliases" = "Alias de correo electrónico ilimitado";
 
-"Unlimited logins and notes" = "Unlimited logins and notes";
+"Unlimited logins and notes" = "Inicios de sesión y notas ilimitadas.";
 
-"Custom fields" = "Custom fields";
+"Custom fields" = "Campo personalizable";
 
-"For next-level password management and identity protection." = "For next-level password management and identity protection.";
+"For next-level password management and identity protection." = "Para una gestión de contraseñas y protección de identidad en alto nivel.";
 
-"Pay monthly" = "Pay monthly";
+"Pay monthly" = "Pago mensual";
 
-"Pay annually" = "Pay annually";
+"Pay annually" = "Pago anual";
 
-"Pay every two years" = "Pay every two years";
+"Pay every two years" = "Pago cada dos años";
 
-"Free" = "Free";
-
-"Your storage is full" = "Su almacenamiento está lleno";
-
-"Upgrade your plan to continue to use your account without interruptions." = "Actualice su plan para continuar usando su cuenta sin interrupciones.";
-
-"Get more storage" = "Obtener más almacenamiento";
+"Free" = "Gratis";

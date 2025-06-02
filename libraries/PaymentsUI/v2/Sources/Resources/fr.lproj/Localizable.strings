@@ -1,10 +1,10 @@
 "All_cycle" = "Tous les cycles de facturation";
 
-"Available_plans_section_title" = "Changez d'abonnement";
+"Available_plans_section_title" = "Améliorez votre abonnement";
 
 "Available_subscriptions_view_subtitle" = "Nos abonnements pour votre confidentialité";
 
-"Available_subscriptions_view_title" = "Choisir un abonnement";
+"Available_subscriptions_view_title" = "Sélectionner un abonnement";
 
 "Current_free_plan_name" = "Free";
 
@@ -22,7 +22,7 @@
 
 "Monthly_cycle" = "1 mois";
 
-"No_available_plan_message" = "Vous ne pouvez pas gérer votre abonnement dans l'application mobile.";
+"No_available_plan_message" = "Votre abonnement ne peut pas être géré dans l'application mobile.";
 
 "No_available_plan_title" = "Aucun abonnement disponible trouvé";
 
@@ -30,11 +30,11 @@
 
 "No_filtered_plan_title" = "Aucun abonnement trouvé";
 
-"Plans_footer_disclaimer" = "Vous ne pouvez pas gérer les abonnements dans l'application mobile.";
+"Plans_footer_disclaimer" = "Vous ne pouvez pas gérer les abonnements dans l'application mobile";
 
 "Purchase_button_title" = "Obtenir %@";
 
-"Select_plan_nav_title" = "Choisir un abonnement";
+"Select_plan_nav_title" = "Sélectionner un abonnement";
 
 "Subscriptions_nav_title" = "Abonnements";
 
@@ -46,7 +46,7 @@
 
 "Transaction_state_payment_account_update_progress" = "Mise à jour de votre compte";
 
-"Transaction_state_payment_confirmation_complete" = "Le paiement est confirmé.";
+"Transaction_state_payment_confirmation_complete" = "Le paiement a été confirmé";
 
 "Transaction_state_payment_confirmation_progress" = "Confirmation de votre paiement";
 

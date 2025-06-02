@@ -10,23 +10,23 @@
 
 "Subscription" = "Abonnement";
 
-"Upgrade your plan" = "Upgrade uw abonnement";
+"Upgrade your plan" = "Uw abonnement upgraden";
 
 "Only annual subscriptions without auto-renewal are available inside the mobile app." = "In de mobiele app zijn alleen jaarlijkse abonnementen zonder automatische verlenging beschikbaar.";
 
-"You cannot manage subscriptions inside the mobile application." = "U kunt geen abonnementen beheren in de mobiele app.";
+"You cannot manage subscriptions inside the mobile application." = "U kunt geen abonnementen beheren in de mobiele applicatie.";
 
 "Your plan will automatically renew on %@" = "Uw abonnement wordt automatisch verlengd op %@";
 
-"Current plan will expire on %@" = "Huidige abonnement verloopt op %@";
+"Current plan will expire on %@" = "Huidig abonnement verloopt op %@";
 
 "Contact an administrator to make changes to your Proton subscription." = "Neem contact op met een beheerder om wijzigingen aan te brengen in uw Proton abonnement.";
 
 "%1$@ of %2$@" = "%1$@ van %2$@";
 
-"%@ storage" = "%@ opslag";
+"%@ storage" = "%@ Opslag";
 
-"%@ storage / user" = "%@ opslag / gebruiker";
+"%@ storage / user" = "%@ opslagruimte / gebruiker";
 
 "for %@" = "voor %@";
 
@@ -44,9 +44,9 @@
 
 "Multi-user support" = "Ondersteuning voor meerdere gebruikers";
 
-"The basic for private and secure communications." = "De basis voor privé-en veilige communicatie.";
+"The basic for private and secure communications." = "De basis voor privé en veilige communicatie.";
 
-"Full-featured mailbox with advanced protection." = "Volledig uitgeruste mailbox met geavanceerde beveiliging.";
+"Full-featured mailbox with advanced protection." = "Volwaardige mailbox met geavanceerde beveiliging";
 
 "Limited time offer" = "Tijdelijke aanbieding";
 
@@ -54,9 +54,9 @@
 
 "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Er is al een aankoop gestart voor een Proton Bundel abonnement. Klik op verder om de betalingsverwerking te voltooien en uw account aan te maken";
 
-"Complete payment" = "Betaling voltooien";
+"Complete payment" = "Voltooi betaling";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Het account set-up proces kon niet worden afgerond als gevolg van een onverwachte fout.\nProbeer het nogmaals.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Het account set-up proces kon niet worden afgerond als gevolg van een onverwachte fout.\nProbeer het opnieuw.";
 
 "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Het IAP-aankoopproces is gestart. Volg de instructies van Apple om de aankoop te voltooien of te annuleren.";
 
@@ -74,13 +74,13 @@
 
 "The ultimate privacy pack with access to all premium Proton services." = "Het ultieme privacy pakket met toegang tot alle premium Proton diensten.";
 
-"Only non-renewing annual subscriptions are available via this app" = "Via deze app zijn alleen jaarabonnementen zonder automatische verlenging beschikbaar";
+"Only non-renewing annual subscriptions are available via this app" = "Enkel jaarabonnementen zonder automatische verlenging zijn beschikbaar via deze app";
 
-"Your subscription cannot be managed inside the mobile app." = "Uw abonnement kan niet beheerd worden in de mobiele app.";
+"Your subscription cannot be managed inside the mobile app." = "Uw abonnement kan niet worden beheerd in de mobiele app";
 
-"Unlimited folders, labels, and filters" = "Onbeperkt aantal mappen, labels en filters";
+"Unlimited folders, labels, and filters" = "Ongelimiteerd aantal mappen, labels en filters";
 
-"Up to %@ storage" = "Tot %@ opslag";
+"Up to %@ storage" = "Tot %@ Opslag";
 
 "Free VPN on a single device" = "Gratis VPN op één apparaat";
 
@@ -122,7 +122,7 @@
 
 "Unlimited logins and notes" = "Onbeperkte logins en notities";
 
-"Custom fields" = "Zelf gedefinieerde velden";
+"Custom fields" = "Aangepaste velden";
 
 "For next-level password management and identity protection." = "Voor wachtwoordbeheer en identiteitsbescherming op een hoger niveau.";
 
@@ -132,10 +132,4 @@
 
 "Pay every two years" = "Betaal elke twee jaar";
 
-"Free" = "Gratis";
-
-"Your storage is full" = "Uw opslag is vol";
-
-"Upgrade your plan to continue to use your account without interruptions." = "Upgrade uw abonnement om uw account zonder onderbrekingen te blijven gebruiken.";
-
-"Get more storage" = "Krijg meer opslagruimte";
+"Free" = "Free";

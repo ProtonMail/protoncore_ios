@@ -40,7 +40,7 @@
 
 "High speed" = "Υψηλή ταχύτητα";
 
-"Highest speed" = "Μέγιστη ταχύτητα";
+"Highest speed" = "Ύψιστη ταχύτητα";
 
 "Multi-user support" = "Υποστήριξη πολλαπλών χρηστών";
 
@@ -84,11 +84,11 @@
 
 "Free VPN on a single device" = "Δωρεάν VPN σε μία μόνο συσκευή";
 
-"Highest VPN speed" = "Μέγιστη ταχύτητα VPN";
+"Highest VPN speed" = "Ύψιστη ταχύτητα VPN";
 
 "Built-in ad-blocker (NetShield)" = "Ενσωματωμένη φραγή διαφημίσεων (NetShield)";
 
-"Access to streaming services globally" = "Πρόσβαση σε υπηρεσίες μετάδοσης παγκοσμίως";
+"Access to streaming services globally" = "Πρόσβαση σε υπηρεσίες ροής παγκοσμίως";
 
 "Secure Core servers" = "Διακομιστές Secure Core";
 
@@ -124,7 +124,7 @@
 
 "Custom fields" = "Προσαρμοσμένα πεδία";
 
-"For next-level password management and identity protection." = "Για διαχείριση κωδικών πρόσβασης και προστασία ταυτότητας ανώτερου επιπέδου.";
+"For next-level password management and identity protection." = "Για διαχείριση κωδικών πρόσβασης και προστασία ταυτότητας επόμενου επιπέδου.";
 
 "Pay monthly" = "Μηνιαία πληρωμή";
 
@@ -132,10 +132,4 @@
 
 "Pay every two years" = "Πληρωμή κάθε δύο χρόνια";
 
-"Free" = "Δωρεάν";
-
-"Your storage is full" = "Ο αποθηκευτικός σας χώρος είναι γεμάτος";
-
-"Upgrade your plan to continue to use your account without interruptions." = "Αναβαθμίστε το πλάνο σας για να συνεχίσετε να χρησιμοποιείτε τον λογαριασμό σας χωρίς διακοπές.";
-
-"Get more storage" = "Αποκτήστε περισσότερο αποθηκευτικό χώρο";
+"Free" = "Free";

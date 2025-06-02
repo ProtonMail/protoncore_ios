@@ -108,7 +108,7 @@
 
 "Check your internet connection" = "Skontrolujte svoje internetové pripojenie";
 
-"Strict no-logs policy" = "Prísne zásady neukladania záznamov";
+"Strict no-logs policy" = "Prísna politika neuchovávania záznamov";
 
 "Plan successfully upgraded" = "Plán bol úspešne inovovaný";
 
@@ -132,10 +132,4 @@
 
 "Pay every two years" = "Platba každé dva roky";
 
-"Free" = "Zdarma";
-
-"Your storage is full" = "Vaše úložisko je plné";
-
-"Upgrade your plan to continue to use your account without interruptions." = "Ak chcete pokračovať v používaní svojho účtu bez prerušenia, prejdite na vyšší plán.";
-
-"Get more storage" = "Získajte viac úložného priestoru";
+"Free" = "Free";

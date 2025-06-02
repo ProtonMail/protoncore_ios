@@ -1,4 +1,4 @@
-"All_cycle" = "Todos los ciclos de facturación";
+"All_cycle" = "Todos los periodos de facturación";
 
 "Available_plans_section_title" = "Actualice su plan";
 
@@ -14,7 +14,7 @@
 
 "Error_view_button_title" = "Reintentar";
 
-"Error_view_message" = "No pudimos cargar esta página. Actualice la página o revise su conexión a internet.";
+"Error_view_message" = "No pudimos cargar esta página. Actualice la página o verifique su conexión a internet.";
 
 "Error_view_title" = "Ocurrió un error";
 
@@ -30,7 +30,7 @@
 
 "No_filtered_plan_title" = "No se encontraron planes";
 
-"Plans_footer_disclaimer" = "No puede gestionar las suscripciones dentro de la aplicación móvil.";
+"Plans_footer_disclaimer" = "No puede gestionar las suscripciones dentro de la aplicación móvil";
 
 "Purchase_button_title" = "Obtener %@";
 
@@ -40,7 +40,7 @@
 
 "Transaction_cancelled_by_user" = "Transacción cancelada por el usuario";
 
-"Transaction_process_error" = "Ocurrió un error. Inténtelo de nuevo. Si el problema persiste, póngase en contacto con nuestro equipo de soporte.";
+"Transaction_process_error" = "Ocurrió un error, inténtelo de nuevo. Si el problema persiste, póngase en contacto con nuestro equipo de soporte.";
 
 "Transaction_state_payment_account_update_complete" = "Cuenta actualizada";
 
