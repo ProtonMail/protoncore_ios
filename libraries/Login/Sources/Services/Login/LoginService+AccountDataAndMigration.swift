@@ -109,7 +109,7 @@ extension LoginService {
         }
 
         // in Mail, if allowing external sign-in, we should only let external users in that have a BYOE address
-        guard clientApp != .mail || minimumAccountType == .internal || hasAnyInternalAddress || hasBYOEAddress else {
+        guard clientApp != .mail || minimumAccountType != .external || hasAnyInternalAddress || hasBYOEAddress else {
             completion(.failure(.invalidState))
             return
         }
