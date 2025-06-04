@@ -87,6 +87,7 @@ extension LoginService {
         let hasAtLeastOneAddress = !hasNoAddressesAtAll
         let hasExternalAddressAndNoInternalOnes = !hasAnyInternalAddress && hasAtLeastOneAddress
         let hasNoKeys = user.keys.isEmpty
+        let hasBYOEAddress = user.hasBYOEAddress
 
         // user has no addresses but username — username account. If the app supports the username account, we finish right away
         let isUsernameAccountAndAppSupportsIt = user.isInternal && hasNoAddressesAtAll && minimumAccountType == .username
@@ -104,6 +105,12 @@ extension LoginService {
                     UserData(credential: authCredentials, user: user, salts: [], passphrases: [:], addresses: addresses, scopes: credentials.scopes)
                 )))
             }
+            return
+        }
+
+        // in Mail, if allowing external sign-in, we should only let external users in that have a BYOE address
+        guard clientApp != .mail || minimumAccountType != .external || hasAnyInternalAddress || hasBYOEAddress else {
+            completion(.failure(.invalidState))
             return
         }
 

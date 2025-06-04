@@ -61,6 +61,10 @@ public struct User: Codable, Equatable, CustomDebugStringConvertible {
         flags?.sso ?? false
     }
 
+    public var hasBYOEAddress: Bool {
+        flags?.hasBYOEAddress ?? false
+    }
+
     public var hasTemporaryPassword: Bool {
         flags?.hasTemporaryPassword ?? false
     }
@@ -483,15 +487,18 @@ extension UserInfo {
 // MARK: UserFlags
 
 public struct UserFlags: Codable, Equatable {
+    public let hasBYOEAddress: Bool
     public let hasTemporaryPassword: Bool
     public let sso: Bool
 
-    public init(hasTemporaryPassword: Bool, sso: Bool) {
+    public init(hasBYOEAddress: Bool, hasTemporaryPassword: Bool, sso: Bool) {
+        self.hasBYOEAddress = hasBYOEAddress
         self.hasTemporaryPassword = hasTemporaryPassword
         self.sso = sso
     }
 
     enum CodingKeys: String, CodingKey {
+        case hasBYOEAddress = "has-a-byoe-address"
         case hasTemporaryPassword = "has-temporary-password"
         case sso
     }
@@ -646,7 +653,7 @@ public extension User {
 #if DEBUG
 public extension UserFlags {
     static var `default`: UserFlags {
-        .init(hasTemporaryPassword: false, sso: false)
+        .init(hasBYOEAddress: false, hasTemporaryPassword: false, sso: false)
     }
 }
 public extension User {
