@@ -13,7 +13,7 @@ excluded_targets_for_macos_unit_tests = [
   'ProtonCoreTroubleShootingTests'
 ]
 
-lane :unit_test_reports do
+lane :ios_unit_test_reports do
   xcov(
     scheme: 'UnitTests',
     workspace: '.swiftpm/xcode/package.xcworkspace',
@@ -22,7 +22,7 @@ lane :unit_test_reports do
   )
 end
 
-lane :integration_test_reports do
+lane :ios_integration_test_reports do
   xcov(
     scheme: 'IntegrationTests',
     workspace: '.swiftpm/xcode/package.xcworkspace',
