@@ -30,9 +30,9 @@ stages:
   - i18n
   - linting
   - summarise
-  - unit_test
+  - offline_tests
   - deploy
-  - ui_and_integration_test
+  - online_tests
   - report
   - cleanup
   - github
@@ -179,10 +179,11 @@ linting:commits:
 # --- Unit testing ---
 #
 
-test:unit:ios:all:
-  stage: unit_test
+test:ios:unit:
+  stage: offline_tests
   retry: 2
   rules: *rules_mr_and_develop
+  needs: []
   allow_failure: false
   interruptible: true
   before_script:
@@ -194,10 +195,10 @@ test:unit:ios:all:
     - fastlane cleanup_unit_tests
     - ssh-add -D
   artifacts:
-    name: "ios-tests-$CI_COMMIT_SHA"
+    name: "ios-unit-tests-$CI_COMMIT_SHA"
     when: always
     paths:
-      - fastlane/test_output/UnitTests.xcresult/**
+      - fastlane/test_output/*.xcresult/**
     expire_in: 14 days
     reports:
       junit:
@@ -207,10 +208,11 @@ test:unit:ios:all:
   tags:
     - account-lane-1
 
-test:unit:macos:all:
-  stage: unit_test
+test:macos:unit:
+  stage: offline_tests
   retry: 2
   rules: *rules_mr_and_develop
+  needs: []
   allow_failure: false
   interruptible: true
   before_script:
@@ -228,10 +230,11 @@ test:unit:macos:all:
   tags:
     - account-lane-2
 
-test:unit:localization:
-  stage: unit_test
+test:ios:localization:
+  stage: offline_tests
   retry: 1
   rules: *rules_mr_and_develop
+  needs: []
   allow_failure: false
   interruptible: true
   before_script:
@@ -245,19 +248,15 @@ test:unit:localization:
   tags:
     - account-lane-3
 
-#
-# --- Integration testing
-#
-
-test:unit:integration:
-  stage: ui_and_integration_test
+test:ios:integration:
+  stage: online_tests
   retry: 1
   rules: *rules_mr_and_develop
-  allow_failure: false
-  interruptible: true
   needs:
     - job: atlas:deploy:pipenv
       artifacts: true
+  allow_failure: false
+  interruptible: true
   before_script:
     - *add_private_ssh_key
     - *clone_pmconstants
@@ -265,9 +264,16 @@ test:unit:integration:
     - fastlane run_integration_tests xcargs:DYNAMIC_DOMAIN="${DYNAMIC_DOMAIN}"
   after_script:
     - fastlane cleanup_integration_tests
+    - ssh-add -D
   artifacts:
+    name: "ios-integration-tests-$CI_COMMIT_SHA"
+    when: always
     paths:
-      - fastlane/test_output/*xcresult/**
+      - fastlane/test_output/*.xcresult/**
+    expire_in: 14 days
+    reports:
+      junit:
+        - fastlane/test_output/report.junit
   variables:
     GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-4
   tags:
@@ -277,23 +283,22 @@ test:unit:integration:
 # --- Coverage reports ---
 #
 
-report:integration:code:coverage:
+report:ios:integration:coverage:
+  stage: report
   retry: 1
   coverage: '/Average Coverage.* (\d+\.\d+%)/'
-  stage: report
   interruptible: true
   rules: *rules_mr_and_develop
   allow_failure: true
   needs:
-    - job: test:unit:integration
+    - job: test:ios:integration
       artifacts: true
   before_script:
     - *add_private_ssh_key
     - bash scripts/generate_obfuscated_constants.sh
     - ls -l fastlane/test_output
   script:
-    # Call xcov from fastlane
-    - fastlane integration_test_reports
+    - fastlane ios_integration_test_reports
     # generate alt coverage json from xcresult
     - xcrun xccov view --report --json fastlane/test_output/IntegrationTests.xcresult > fastlane/test_output/IntegrationTests.json
     # Print and process the result for Gitlab coverage capture
@@ -316,22 +321,21 @@ report:integration:code:coverage:
   tags:
     - account-lane-4
 
-report:unit:macos:code:coverage:
+report:macos:code:coverage:
+  stage: report
   retry: 1
   coverage: '/Average Coverage.* (\d+\.\d+%)/'
-  stage: report
   interruptible: true
   rules: *rules_mr_and_develop
   allow_failure: true
   needs:
-    - job: test:unit:macos:all
+    - job: test:macos:unit
       artifacts: true
   before_script:
     - *add_private_ssh_key
     - bash scripts/generate_obfuscated_constants.sh
     - ls -l fastlane/test_output
   script:
-    # Call xcov from fastlane
     - fastlane macos_unit_test_reports
     # generate alt coverage json from xcresult
     - xcrun xccov view --report --json fastlane/test_output/UnitTests.xcresult > fastlane/test_output/UnitTests.json
@@ -355,23 +359,22 @@ report:unit:macos:code:coverage:
   tags:
     - account-lane-2
 
-report:unit:ios:code:coverage:
+report:ios:unit:coverage:
+  stage: report
   retry: 1
   coverage: '/Average Coverage.* (\d+\.\d+%)/'
-  stage: report
   interruptible: true
   rules: *rules_mr_and_develop
   allow_failure: true
   needs:
-    - job: test:unit:ios:all
+    - job: test:ios:unit
       artifacts: true
   before_script:
     - *add_private_ssh_key
     - bash scripts/generate_obfuscated_constants.sh
     - ls -l fastlane/test_output
   script:
-    # Call xcov from fastlane
-    - fastlane unit_test_reports
+    - fastlane ios_unit_test_reports
     # generate alt coverage json from xcresult
     - xcrun xccov view --report --json fastlane/test_output/UnitTests.xcresult > fastlane/test_output/UnitTests.json
     # Print and process the result for Gitlab coverage capture
