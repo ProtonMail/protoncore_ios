@@ -78,4 +78,4 @@
 
 "To reset your password, go back to your active session on the originating device." = "비밀번호를 재설정하려면, 원래 장치의 활성 세션으로 돌아가세요.";
 
-"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now.";
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "비밀번호 재설정까지 %@ 남았습니다.\n비밀번호 재설정을 요청한 기기 및 브라우저에서 재설정해야 합니다.\n비밀번호 재설정을 요청하지 않은 경우 즉시 요청을 취소하십시오.";

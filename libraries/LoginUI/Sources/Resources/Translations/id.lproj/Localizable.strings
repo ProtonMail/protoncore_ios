@@ -188,7 +188,7 @@
 
 "Invalid token request" = "Permintaan token tidak valid";
 
-"Invalid token error" = "Kesalahan untuk token yang tidak valid";
+"Invalid token error" = "Terjadi kesalahan akibat token yang tidak valid";
 
 "Create user failed" = "Pengguna gagal dibuat";
 
@@ -304,7 +304,7 @@
 
 "Devices available:" = "Perangkat yang tersedia:";
 
-"Operation couldn't be completed. Please try again." = "Tindakan tidak dapat diselesaikan. Silakan coba lagi.";
+"Operation couldn't be completed. Please try again." = "Operasi tidak dapat dirampungkan. Silakan coba lagi.";
 
 "Enter your backup password" = "Masukkan kata sandi cadangan Anda";
 

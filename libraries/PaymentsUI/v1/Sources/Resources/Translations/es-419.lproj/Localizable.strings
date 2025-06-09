@@ -30,7 +30,7 @@
 
 "for %@" = "por %@";
 
-"Custom email addresses" = "Direcciones de correo electrónico personalizadas";
+"Custom email addresses" = "Direcciones de correo personalizadas";
 
 "Priority customer support" = "Soporte prioritario";
 
@@ -100,13 +100,13 @@
 
 "Get Proton for free" = "Obtener Proton gratis";
 
-"Extend subscription" = "Extender suscripción";
+"Extend subscription" = "Extender la suscripción";
 
 "%@ of %@" = "%@ de %@";
 
 "Connection issues" = "Hay un problema de conexión.";
 
-"Check your internet connection" = "Verifica tu conexión de internet.";
+"Check your internet connection" = "Compruebe la conexión a internet";
 
 "Strict no-logs policy" = "Política estricta de cero registros";
 
@@ -120,7 +120,7 @@
 
 "Unlimited email aliases" = "Alias de correo electrónico ilimitado";
 
-"Unlimited logins and notes" = "Inicios de sesión y notas ilimitadas.";
+"Unlimited logins and notes" = "Inicios de sesión y notas ilimitados";
 
 "Custom fields" = "Campo personalizable";
 

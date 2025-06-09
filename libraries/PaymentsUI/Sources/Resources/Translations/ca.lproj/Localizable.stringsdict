@@ -61,9 +61,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d adreça de correu electrònic/usuari</string>
+        <string>%d adreça de correu electrònic per usuari</string>
         <key>other</key>
-        <string>%d adreces de correu electrònic / usuari</string>
+        <string>%d adreces de correu electrònic per usuari</string>
       </dict>
     </dict>
     <key>&lt;n&gt; calendars</key>
@@ -93,9 +93,9 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>one</key>
-        <string>%d carpeta/etiqueta</string>
+        <string>%d carpeta / etiqueta</string>
         <key>other</key>
-        <string>%d carpetes/etiquetes</string>
+        <string>%d carpetes i etiquetes</string>
       </dict>
     </dict>
     <key>&lt;n&gt; countries</key>
@@ -207,7 +207,7 @@
         <key>one</key>
         <string>Admissió d'%d domini de correu electrònic personalitzat</string>
         <key>other</key>
-        <string>Admissió de %d dominis de correu electrònic personalitzats</string>
+        <string>S'admeten %d dominis de correu electrònic personalitzats</string>
       </dict>
     </dict>
     <key>&lt;n&gt; folders and labels</key>
