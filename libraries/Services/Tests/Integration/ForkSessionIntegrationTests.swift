@@ -54,7 +54,7 @@ final class ForkSessionIntegrationTests: IntegrationTestCase {
     var environment: Environment { dynamicDomain.map(Environment.custom) ?? .black }
 
     final class TestServiceDelegate: APIServiceDelegate {
-        var appVersion: String { "ios-vpn@4.2.0-dev" }
+        var appVersion: String { "ios-vpn@99.9.0-dev" }
         var userAgent: String? { nil }
         var locale: String { "en_US" }
         var additionalHeaders: [String: String]? { ["X-Enforce-UnauthSession": "true"] }
