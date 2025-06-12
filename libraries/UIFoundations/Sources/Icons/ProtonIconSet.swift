@@ -26,6 +26,8 @@ public struct ProtonIconSet {
 
     // Proton icon set
 
+    public let accessShared = ProtonIcon(name: "ic-access-shared")
+
     public let fullStorage = ProtonIcon(name: "fullStorage")
 
     public let accountWarning = ProtonIcon(name: "ic-account-warning")

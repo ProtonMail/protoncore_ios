@@ -33,7 +33,7 @@ struct QRCodeInstructionsView: View {
         static let sectionPadding: CGFloat = 32
         static let leadingTrailingPadding: CGFloat = 16
         static let noSpacing: CGFloat = .zero
-        static let tinySpacing: CGFloat = 4
+        static let tinySpacing: CGFloat = 8
         static let lineSpacing: CGFloat = 0.25
         static let textWidth: CGFloat = 16
         static let borderSize: CGFloat = 1
@@ -77,8 +77,9 @@ struct QRCodeInstructionsView: View {
     var instructions: some View {
         VStack(alignment: .leading, spacing: Constants.noSpacing) {
             Text(LUITranslation.scan_this_code_instructions.l10n)
-                .modifier(TextViewModifier(lineSpacing: Constants.lineSpacing))
+                .modifier(TextViewModifier(lineSpacing: Constants.lineSpacing, font: .headline))
             numberedList
+            learnMore
         }
         .padding(.top, Constants.sectionPadding)
         .padding(.horizontal, Constants.leadingTrailingPadding)
@@ -89,15 +90,16 @@ struct QRCodeInstructionsView: View {
             numberedTextItem(number: 1, text: AttributedString.markdown(LUITranslation.open_proton_app_on_phone.l10n))
             numberedTextItem(number: 2, text: AttributedString.markdown(LUITranslation.tap_into_settings_instructions.l10n))
             numberedTextItem(number: 3, text: AttributedString.markdown(LUITranslation.tap_scan_qr_code.l10n))
+            numberedTextItem(number: 4, text: AttributedString.markdown(LUITranslation.scan_settings_instructions.l10n))
         }
-        .padding(.top, Constants.verticalTextPadding)
+        .padding(.top, Constants.tinySpacing * 2)
     }
 
     func numberedTextItem(number: Int, text: AttributedString) -> some View {
         HStack(alignment: .top, spacing: Constants.tinySpacing) {
             Text("\(number).")
-                // frame(width: textSize) makes sure the text is aligned
-                // without it there is like a 2-3 pixel difference in alignment between the first item and the second.
+                // frame(width: textWidth) makes sure the text is aligned
+                // without it there is a 2-3 pixel difference in alignment between the first item and the second.
                 .frame(width: Constants.textWidth)
                 .modifier(TextViewModifier(lineSpacing: Constants.lineSpacing))
             Text(text)
@@ -105,13 +107,28 @@ struct QRCodeInstructionsView: View {
         }
     }
 
+    var learnMore: some View {
+        Text(AttributedString.markdown("**\(LUITranslation.learn_more.l10n)**"))
+            .font(.body)
+            .lineSpacing(Constants.lineSpacing)
+            .foregroundStyle(ColorProvider.TextAccent)
+            .padding(.top, Constants.tinySpacing * 2)
+            .onTapGesture {
+                guard let url = URL(string: "https://proton.me/support/qr-code-sign-in") else {
+                    return
+                }
+                UIApplication.shared.open(url)
+            }
+    }
+
     struct TextViewModifier: ViewModifier {
 
         var lineSpacing: CGFloat
+        var font: Font = .body
 
         func body(content: Content) -> some View {
             content
-                .font(.body)
+                .font(font)
                 .lineSpacing(lineSpacing)
                 .foregroundStyle(ColorProvider.TextWeak)
         }

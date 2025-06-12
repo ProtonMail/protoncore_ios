@@ -22,7 +22,8 @@ import SwiftUI
 import ProtonCoreUIFoundations
 
 struct InformationBox: View {
-    var text: AttributedString
+    var title: AttributedString
+    var tips: [AttributedString]
 
     private enum Constants {
         static let imageHeight: CGFloat = 16
@@ -30,10 +31,27 @@ struct InformationBox: View {
         static let horizontalSpacing: CGFloat = 8
         static let padding: CGFloat = 12
         static let cornerRadius: CGFloat = 8
+        static let noSpacing: CGFloat = .zero
+        static let verticalSpacing: CGFloat = 8
     }
 
     var body: some View {
-        HStack(alignment: .top, spacing: Constants.horizontalSpacing) {
+        VStack(alignment: .leading, spacing: Constants.noSpacing) {
+            header(text: title)
+                .padding(.bottom, Constants.verticalSpacing / 2)
+            ForEach(tips, id: \.self) { text in
+                tip(text: text)
+                    .padding(.top, Constants.verticalSpacing)
+            }
+        }
+        .padding(Constants.padding)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(ColorProvider.BackgroundSecondary)
+        .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+    }
+
+    func header(text: AttributedString) -> some View {
+        HStack(alignment: .center, spacing: Constants.horizontalSpacing) {
             Image(uiImage: IconProvider.lightbulb)
                 .resizable()
                 .renderingMode(.template)
@@ -45,10 +63,15 @@ struct InformationBox: View {
                 .lineSpacing(Constants.lineSpacing)
                 .foregroundStyle(ColorProvider.TextWeak)
         }
-        .padding(Constants.padding)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(ColorProvider.BackgroundSecondary)
-        .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+        .frame(maxWidth: .infinity)
+        .multilineTextAlignment(.center)
+    }
+
+    func tip(text: AttributedString) -> some View {
+        Text(text)
+            .font(.footnote)
+            .lineSpacing(Constants.lineSpacing)
+            .foregroundStyle(ColorProvider.TextWeak)
     }
 }
 

@@ -45,10 +45,11 @@ public struct ScanQRCodeInstructionsView: View {
         static let scanButtonHeight: CGFloat = 48
         static let scanButtonTopPadding: CGFloat = 28
         static let scanButtonBottomPadding: CGFloat = 20
-        static let bodyTextSpacing: CGFloat = 12
-        static let titleTextSpacing: CGFloat = 16
-        static let infoBoxesVerticalSpacing: CGFloat = 8
+        static let bodyTextSpacing: CGFloat = 8
+        static let titleTextSpacing: CGFloat = 10
         static let contentSpacerMinHeight: CGFloat = 24
+        static let tinySpacing: CGFloat = 4
+        static let numberTextWidth: CGFloat = 16
     }
 
     public var body: some View {
@@ -87,7 +88,7 @@ public struct ScanQRCodeInstructionsView: View {
             scanImage
             instructions
             Spacer(minLength: Constants.contentSpacerMinHeight)
-            informationBoxes
+            informationBox
         }
         .modifier(FillHeightInScrollView())
     }
@@ -102,27 +103,36 @@ public struct ScanQRCodeInstructionsView: View {
     }
 
     var instructions: some View {
-        VStack(alignment: .center, spacing: Constants.noSpacing) {
-            Text(LUITranslation.sign_in_with_qr_code_title.l10n)
+        VStack(alignment: .leading, spacing: Constants.noSpacing) {
+            Text(AttributedString.markdown("**\(LUITranslation.sign_in_with_qr_code_title.l10n)**"))
                 .font(.title2)
                 .lineSpacing(Constants.lineSpacing)
                 .foregroundStyle(ColorProvider.TextNorm)
-            Text(LUITranslation.sign_in_with_qr_code_scan_instructions.l10n)
-                .modifier(InstructionsTextViewModifier(lineSpacing: Constants.lineSpacing))
-                .padding(.top, Constants.titleTextSpacing)
-            Text(AttributedString.markdown(LUITranslation.sign_in_with_qr_code_access_qr_code_instructions.l10n))
-                .modifier(InstructionsTextViewModifier(lineSpacing: Constants.lineSpacing))
-                .padding(.top, Constants.bodyTextSpacing)
+                .frame(maxWidth: .infinity)
+                .multilineTextAlignment(.center)
+                .padding(.bottom, Constants.titleTextSpacing)
+            ForEach(Array([
+                AttributedString.markdown(LUITranslation.scan_qr_code_first_step.l10n),
+                AttributedString.markdown(LUITranslation.scan_qr_code_second_step.l10n),
+                AttributedString.markdown(LUITranslation.scan_qr_code_third_step.l10n),
+                AttributedString.markdown(LUITranslation.scan_qr_code_fourth_step.l10n),
+            ].enumerated()), id: \.offset) { (index, text) in
+                numberedTextItem(number: index + 1, text: text)
+                    .padding(.top, Constants.bodyTextSpacing)
+            }
         }
         .padding(.horizontal, Constants.leadingTrailingPadding)
         .padding(.top, Constants.sectionPadding)
     }
 
-    var informationBoxes: some View {
-        VStack(alignment: .leading, spacing: Constants.infoBoxesVerticalSpacing) {
-            InformationBox(text: AttributedString.markdown(LUITranslation.sign_in_with_qr_code_warning_one.l10n))
-            InformationBox(text: AttributedString.markdown(LUITranslation.sign_in_with_qr_code_warning_two.l10n))
-        }
+    var informationBox: some View {
+        InformationBox(
+            title: AttributedString.markdown("**\(LUITranslation.security_tips.l10n)**"),
+            tips: [
+                AttributedString.markdown(LUITranslation.security_first_tip.l10n),
+                AttributedString.markdown(LUITranslation.security_second_tip.l10n),
+                AttributedString.markdown(LUITranslation.security_third_tip.l10n)
+            ])
         .padding(.horizontal, Constants.leadingTrailingPadding)
     }
 
@@ -136,6 +146,18 @@ public struct ScanQRCodeInstructionsView: View {
         .padding(.bottom, Constants.scanButtonBottomPadding)
     }
 
+    func numberedTextItem(number: Int, text: AttributedString) -> some View {
+        HStack(alignment: .top, spacing: Constants.tinySpacing) {
+            Text("\(number).")
+                // frame(width: textWidth) makes sure the text is aligned
+                // without it there is a 2-3 pixel difference in alignment between the first item and the second.
+                .frame(width: Constants.numberTextWidth)
+                .modifier(InstructionsTextViewModifier(lineSpacing: Constants.lineSpacing))
+            Text(text)
+                .modifier(InstructionsTextViewModifier(lineSpacing: Constants.lineSpacing))
+        }
+    }
+
     struct InstructionsTextViewModifier: ViewModifier {
 
         var lineSpacing: CGFloat
@@ -144,8 +166,8 @@ public struct ScanQRCodeInstructionsView: View {
             content
                 .font(.subheadline)
                 .lineSpacing(lineSpacing)
-                .multilineTextAlignment(.center)
-                .foregroundStyle(ColorProvider.TextWeak)
+                .multilineTextAlignment(.leading)
+                .foregroundStyle(ColorProvider.TextNorm)
         }
     }
 }

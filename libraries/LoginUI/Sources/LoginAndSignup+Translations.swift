@@ -239,6 +239,18 @@ public enum LUITranslation: TranslationsExposing {
     case login_vpn_guest_tc_description
     case login_vpn_guest_tc_link
     case password_must_contain
+    case access_shared
+    case back_to_settings
+    case scan_settings_instructions
+    case security_tips
+    case security_first_tip
+    case security_second_tip
+    case security_third_tip
+    case scan_qr_code_first_step
+    case scan_qr_code_second_step
+    case scan_qr_code_third_step
+    case scan_qr_code_fourth_step
+    case learn_more
 
     public var l10n: String {
         switch self {
@@ -363,7 +375,7 @@ public enum LUITranslation: TranslationsExposing {
         case .signin_button:
             return localized(key: "Sign in", comment: "Sign in button")
         case .signin_qr_code_button:
-            return localized(key: "Sign in with a QR code", comment: "Sign in with a QR code")
+            return localized(key: "Sign in with QR code", comment: "Sign in with QR code")
         case .email_address_button:
             return localized(key: "Use your current email instead", comment: "Email address button")
         case .proton_address_button:
@@ -588,17 +600,19 @@ public enum LUITranslation: TranslationsExposing {
         case .passphrase_not_found:
             return localized(key: "Passphrase not found", comment: "Passphrase not found error")
         case .open_proton_app_on_phone:
-            return localized(key: "Open the Proton app on your phone", comment: "Open the Proton app on your phone")
+            return localized(key: "Get another device that’s signed in to your Proton Account", comment: "Get another device that’s signed in to your Proton Account")
         case .tap_into_settings_instructions:
-            return localized(key: "Tap into **Settings**, then tap **Sign in to another device**", comment: "Tap into **Settings**, then tap **Sign in to another device**")
+            return localized(key: "Using that device, open any Proton app and select **Settings**", comment: "Using that device, open any Proton app and select **Settings**")
+        case .scan_settings_instructions:
+            return localized(key: "Scan the code to sign in", comment: "Scan the code to sign in")
         case .tap_scan_qr_code:
-            return localized(key: "Tap **Scan QR code**", comment: "Tap **Scan QR code**")
+            return localized(key: "Select **Sign in on another device → Scan QR code**", comment: "Select **Sign in on another device → Scan QR code**")
         case .scan_this_code_instructions:
-            return localized(key: "Scan this code with your phone camera to sign in instantly.", comment: "Scan this code with your phone camera to sign in instantly.")
+            return localized(key: "How to sign in using another device", comment: "How to sign in using another device")
         case .sign_in_to_another_device:
-            return localized(key: "Sign in to another device", comment: "Sign in to another device")
+            return localized(key: "Sign in on another device", comment: "Sign in on another device")
         case .sign_in_with_qr_code_title:
-            return localized(key: "Sign in with your QR code", comment: "Sign in with your QR code")
+            return localized(key: "How to sign in with QR code", comment: "How to sign in with QR code")
         case .sign_in_with_qr_code_scan_instructions:
             return localized(key: "Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active.", comment: "Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active.")
         case .sign_in_with_qr_code_access_qr_code_instructions:
@@ -612,7 +626,7 @@ public enum LUITranslation: TranslationsExposing {
         case .authenticate_to_scan_qr_description:
             return localized(key: "Authenticate to access the QR code scanner", comment: "Authenticate to access the QR code scanner")
         case .scan_qr_code_placing_instructions:
-            return localized(key: "Place QR code within the square", comment: "Place QR code within the square")
+            return localized(key: "Position QR code inside the square", comment: "Position QR code inside the square")
         case .verifying:
             return localized(key: "Verifying...", comment: "Verifying...")
         case .signed_in_other_device:
@@ -634,17 +648,17 @@ public enum LUITranslation: TranslationsExposing {
         case .to_proton_placeholder:
             return localized(key: "to Proton %@", comment: "to Proton %@")
         case .something_went_wrong_title:
-            return localized(key: "Something went wrong", comment: "Something went wrong")
+            return localized(key: "We couldn't sign you in", comment: "We couldn't sign you in")
         case .sign_in_error_description:
-            return localized(key: "We couldn't sign you in. Please scan a new QR code to try again.", comment: "We couldn't sign you in. Please scan a new QR code to try again.")
+            return localized(key: "Try generating a new QR code.", comment: "Try generating a new QR code.")
         case .sign_in_require_password_error_description:
-            return localized(key: "We couldn't sign you in. Please sign in with your password.", comment: "We couldn't sign you in. Please sign in with your password.")
+            return localized(key: "Please try another sign in method.", comment: "Please try another sign in method.")
         case .new_qr_code_title:
-            return localized(key: "New QR code", comment: "New QR code")
+            return localized(key: "Generate QR code", comment: "Generate QR code")
         case .allow_access_camera_title:
-            return localized(key: "Allow access to camera", comment: "Allow access to camera")
+            return localized(key: "Allow camera access", comment: "Allow camera access")
         case .allow_access_camera_description:
-            return localized(key: "To scan a QR code and sign in to another device, grant Proton %@ access to your camera.", comment: "To scan a QR code and sign in to another device, grant Proton %@ access to your camera.")
+            return localized(key: "To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings.", comment: "To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings.")
         case .allow_access_camera_disclaimer:
             return localized(key: "You're always in control: You can change this anytime in your device settings.", comment: "You're always in control: You can change this anytime in your device settings.")
         case .settings_title:
@@ -667,6 +681,28 @@ public enum LUITranslation: TranslationsExposing {
             return localized(key: "Terms and Conditions.", comment: "Terms and conditions link")
         case .password_must_contain:
             return localized(key: "Password must contain:", comment: "Header for list of password requirements")
+        case .access_shared:
+            return localized(key: "Access shared", comment: "Access shared")
+        case .back_to_settings:
+            return localized(key: "Back to settings", comment: "Back to settings")
+        case .security_tips:
+            return localized(key: "**Security tips**", comment: "**Security tips**")
+        case .security_first_tip:
+            return localized(key: "Be cautious of messages with QR codes. Only scan a code if you trust the source.", comment: "Be cautious of messages with QR codes. Only scan a code if you trust the source.")
+        case .security_second_tip:
+            return localized(key: "Proton will never contact you unexpectedly asking you to sign in with a QR code.", comment: "Proton will never contact you unexpectedly asking you to sign in with a QR code.")
+        case .security_third_tip:
+            return localized(key: "Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app.", comment: "Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app.")
+        case .scan_qr_code_first_step:
+            return localized(key: "Open any Proton app on the device you want to sign in to", comment: "Open any Proton app on the device you want to sign in to")
+        case .scan_qr_code_second_step:
+            return localized(key: "On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)", comment: "On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)")
+        case .scan_qr_code_third_step:
+            return localized(key: "Select **Sign in with QR code**. A QR code will appear.", comment: "Select **Sign in with QR code**. A QR code will appear.")
+        case .scan_qr_code_fourth_step:
+            return localized(key: "On this device, press **Scan QR code** and scan the code.", comment: "On this device, press **Scan QR code** and scan the code.")
+        case .learn_more:
+            return localized(key: "Learn more", comment: "Learn more")
         }
     }
 }

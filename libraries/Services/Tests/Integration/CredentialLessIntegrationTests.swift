@@ -45,7 +45,7 @@ final class CredentialLessIntegrationTests: IntegrationTestCase {
 
     final class TestServiceDelegate: APIServiceDelegate {
         // Feature works only for VPN
-        var appVersion: String { "ios-vpn@4.2.0-dev" }
+        var appVersion: String { "ios-vpn@99.2.0-dev" }
         var userAgent: String? { nil }
         var locale: String { "en_US" }
         var additionalHeaders: [String: String]? { ["X-Enforce-UnauthSession": "true"] }

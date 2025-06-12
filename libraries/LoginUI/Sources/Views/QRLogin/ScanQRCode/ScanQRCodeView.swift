@@ -36,7 +36,7 @@ private enum Constants {
     static let buttonVerticalPadding: CGFloat = 24
     static let buttonVerticalHeight: CGFloat = 48
     static let loadingIndicatorHeight: CGFloat = 56
-    static let successImageHeight: CGFloat = 128
+    static let successImageHeight: CGFloat = 230
     static let failureImageHeight: CGFloat = 168
     static let topTextTopPadding: CGFloat = 72
     static let cameraIllustrationSize: CGSize = .init(width: 188, height: 148)
@@ -51,10 +51,10 @@ struct ScanQRCodeView: View {
     @StateObject var viewModel: ViewModel
 
     var closeButtonColor: Color {
-      switch viewModel.state {
+        switch viewModel.state {
         case .scanning: return Color.white
         default: return ColorProvider.IconNorm
-      }
+        }
     }
 
     var body: some View {
@@ -204,24 +204,14 @@ private struct SuccessView: View {
     var email: String
     var buttonPressAction: () -> Void
 
-    var bodyDescription: AttributedString {
-        let localizedString = String.localizedStringWithFormat(
-            LUITranslation.signed_in_other_device.l10n,
-            email
-        )
-
-        var attributedString = AttributedString(localizedString)
-        attributedString = attributedString.withBoldText(text: email)
-        return attributedString
-    }
-
     var body: some View {
         SharedImageTextAndButtonView(
-            topText: LUITranslation.you_are_signed_in.l10n,
-            image: IconProvider.checkmarkBig,
+            topText: LUITranslation.access_shared.l10n,
+            subtitle: email,
+            image: IconProvider.accessShared,
             imageHeight: Constants.successImageHeight,
-            infoText: bodyDescription,
-            buttonTitle: LUITranslation.got_it.l10n,
+            showCrossHair: false,
+            buttonTitle: LUITranslation.back_to_settings.l10n,
             buttonPressAction: buttonPressAction)
         .onAppear {
             ObservabilityEnv.report(.qrLoginScanQRCodeScreenState(stateId: .success))
@@ -334,17 +324,21 @@ private struct CameraNotAllowedView: View {
 
 @MainActor struct SharedImageTextAndButtonView: View {
     var topText: String
+    var subtitle: String?
     var image: UIImage
     var imageHeight: CGFloat
-    var infoText: AttributedString
+    var showCrossHair: Bool = true
+    var infoText: AttributedString?
     var buttonTitle: String
     var buttonPressAction: () -> Void
 
     var body: some View {
         ZStack(alignment: .top) {
-            SharedBackgroundView(text: topText)
+            SharedBackgroundView(text: topText, subtitle: subtitle, showCrossHair: showCrossHair)
             checkMarkImage
-            description
+            if let info = infoText {
+                description(text: info)
+            }
             button
         }
     }
@@ -358,8 +352,8 @@ private struct CameraNotAllowedView: View {
             .padding(.top, Constants.crosshairTopPadding + (Constants.crosshairHeight / 2) - (imageHeight / 2))
     }
 
-    var description: some View {
-        Text(infoText)
+    func description(text: AttributedString) -> some View {
+        Text(text)
             .modifier(TextModifier())
             .padding(.horizontal, Constants.horizontalPadding)
             .padding(.top, Constants.crosshairTopPadding + Constants.crosshairHeight + Constants.descriptionTextTopPadding)
@@ -390,10 +384,14 @@ private struct CameraNotAllowedView: View {
 private struct SharedBackgroundView: View {
 
     var text: String
+    var subtitle: String?
+    var showCrossHair = true
 
     var body: some View {
         ZStack(alignment: .top) {
-            crossHairOutline
+            if showCrossHair {
+                crossHairOutline
+            }
             topText
         }
     }
@@ -409,10 +407,18 @@ private struct SharedBackgroundView: View {
     }
 
     var topText: some View {
-        Text(text)
-            .font(.title2)
-            .foregroundStyle(ColorProvider.TextNorm)
-            .padding(.top, Constants.topTextTopPadding)
+        VStack(alignment: .center, spacing: Constants.noSpacing) {
+            Text(text)
+                .font(.title2)
+                .foregroundStyle(ColorProvider.TextNorm)
+                .padding(.top, Constants.topTextTopPadding)
+            if let subtitle = subtitle {
+                Text(subtitle)
+                    .font(.body)
+                    .foregroundStyle(ColorProvider.TextWeak)
+                    .padding(.top, Constants.textPadding / 2)
+            }
+        }
     }
 }
 
