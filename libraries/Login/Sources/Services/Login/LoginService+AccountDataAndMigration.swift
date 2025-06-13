@@ -46,9 +46,9 @@ extension LoginService {
             return
         }
 
-        // external account used but internal needed
+        // external account used but either internal needed or non-BYOE user is logging into Mail
         // account migration needs to take place and we cannot do it automatically because user has not chosen the internal username yet
-        if user.isExternal, self.minimumAccountType == .internal {
+        if user.isExternal && (self.minimumAccountType == .internal || (clientApp == .mail && !user.hasBYOEAddress)) {
 
             // external to internal conversion flow kick-off
             withAuthDelegateAvailable(completion) { authManager in
@@ -105,12 +105,6 @@ extension LoginService {
                     UserData(credential: authCredentials, user: user, salts: [], passphrases: [:], addresses: addresses, scopes: credentials.scopes)
                 )))
             }
-            return
-        }
-
-        // in Mail, if allowing external sign-in, we should only let external users in that have a BYOE address
-        guard clientApp != .mail || minimumAccountType != .external || hasAnyInternalAddress || hasBYOEAddress else {
-            completion(.failure(.invalidState))
             return
         }
 
