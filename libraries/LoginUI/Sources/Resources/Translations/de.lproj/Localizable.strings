@@ -435,3 +435,57 @@
 "Tap into **Settings**, then tap **Sign in to another device**" = "Auf **Einstellungen** und dann auf **An einem anderen Gerät anmelden** tippen";
 
 "Password must contain:" = "Passwort muss enthalten:";
+
+"Access shared" = "Zugriff geteilt";
+
+"Back to settings" = "Zurück zu den Einstellungen";
+
+"How to sign in using another device" = "So meldest du dich an einem anderen Gerät an";
+
+"Get another device that’s signed in to your Proton Account" = "Nimm ein anderes Gerät, welches bei deinem Proton-Konto angemeldet ist";
+
+"Using that device, open any Proton app and select **Settings**" = "Verwende das Gerät, öffne eine beliebige Proton-App und wähle **Einstellungen**";
+
+"Select **Sign in on another device → Scan QR code**" = "Wähle **Anmelden auf einem anderen Gerät → QR-Code scannen**";
+
+"Scan the code to sign in" = "Scanne den Code, um dich anzumelden";
+
+"We couldn't sign you in" = "Anmelden fehlgeschlagen";
+
+"Try generating a new QR code." = "Versuche, einen neuen QR-Code zu generieren.";
+
+"Generate QR code" = "QR-Code erzeugen";
+
+"Please try another sign in method." = "Bitte versuche eine andere Anmeldemethode.";
+
+"Sign in on another device" = "An einem anderen Gerät anmelden";
+
+"How to sign in with QR code" = "So meldet man sich mit einem QR-Code an";
+
+"Allow camera access" = "Kamerazugriff erlauben";
+
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "Um sich mit einem QR-Code anzumelden, muss Proton %@ auf Ihre Kamera zugreifen können. Dies kann in den Einstellungen Ihres Geräts erfolgen.";
+
+"Position QR code inside the square" = "QR-Code innerhalb des Quadrats positionieren";
+
+"Sign in with QR code" = "Mit QR-Code anmelden";
+
+"Open any Proton app on the device you want to sign in to" = "Öffne eine beliebige Proton App auf dem Gerät, auf dem du dich anmelden möchtest";
+
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "Wähle auf dem Anmeldebildschirm **Passwort vergessen** oder **Probleme bei der Anmeldung?** (bei mobilen Anwendungen wähle **Hilfe**)";
+
+"Select **Sign in with QR code**. A QR code will appear." = "Wähle **Mit QR-Code anmelden**. Ein QR-Code wird angezeigt.";
+
+"On this device, press **Scan QR code** and scan the code." = "Drücke auf diesem Gerät auf **QR-Code scannen** und scannen Sie den Code.";
+
+"Security tips" = "Sicherheitshinweise";
+
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Sei vorsichtig bei Nachrichten mit QR-Codes. Scannen Sie einen Code nur, wenn Sie der Quelle vertrauen.";
+
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton wird Sie niemals unerwartet kontaktieren und Sie auffordern, sich mit einem QR-Code anzumelden.";
+
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton wird dich niemals auffordern, einen QR-Code zu scannen, der nicht von **https://proton.me** oder einer offiziellen Proton-App stammt.";
+
+"Learn more" = "Mehr erfahren";
+
+"**Security tips**" = "**Sicherheitshinweise**";

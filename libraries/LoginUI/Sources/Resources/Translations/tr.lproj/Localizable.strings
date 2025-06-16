@@ -435,3 +435,57 @@
 "Tap into **Settings**, then tap **Sign in to another device**" = "**Ayarlar** ve **Başka bir aygıtta oturum aç** üzerine dokunun";
 
 "Password must contain:" = "Parolada şunlar bulunmalıdır:";
+
+"Access shared" = "Erişim paylaşıldı";
+
+"Back to settings" = "Ayarlara dön";
+
+"How to sign in using another device" = "Başka bir aygıt kullanarak oturum nasıl açılır";
+
+"Get another device that’s signed in to your Proton Account" = "Proton hesap oturumunuz açık olan başka bir aygıtı alın";
+
+"Using that device, open any Proton app and select **Settings**" = "Bu aygıtta herhangi bir Proton uygulamasını açın ve **Ayarlar** bölümüne gidin";
+
+"Select **Sign in on another device → Scan QR code**" = "**Başka bir aygıtta oturum aç → Kare kodu tara** üzerine basın";
+
+"Scan the code to sign in" = "Oturum açmak için kodu tarayın";
+
+"We couldn't sign you in" = "Oturumunuzu açamadık";
+
+"Try generating a new QR code." = "Yeni bir kare kod oluşturmayı deneyin.";
+
+"Generate QR code" = "Kare kod oluştur";
+
+"Please try another sign in method." = "Lütfen başka bir oturum açma yöntemi deneyin.";
+
+"Sign in on another device" = "Başka bir aygıtta oturum açın";
+
+"How to sign in with QR code" = "Kare kod ile nasıl oturum açılır";
+
+"Allow camera access" = "Kameraya erişme izni ver";
+
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "Kare kod ile oturum açmak için Proton %@ için kameraya erişme izni vermelisiniz. Bunu aygıt ayarlarınızdan yapabilirsiniz.";
+
+"Position QR code inside the square" = "Kare kodu çerçeve içine yerleştirin";
+
+"Sign in with QR code" = "Kare kod ile oturum aç";
+
+"Open any Proton app on the device you want to sign in to" = "Oturum açmak istediğiniz aygıtta herhangi bir Proton uygulamasını açın.";
+
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "Oturum açma ekranında, **Parolamı unuttum** veya **Oturum açarken sorun mu yaşıyorsunuz?** seçeneklerinden biri (mobil uygulamalarda **Yardım**) üzerine basın.";
+
+"Select **Sign in with QR code**. A QR code will appear." = "**Kare kod ile oturum aç** üzerine basın. Bir kare kod görüntülenir.";
+
+"On this device, press **Scan QR code** and scan the code." = "Bu aygıtta, **Kare kodu tara** üzerine basın ve kodu tarayın.";
+
+"Security tips" = "Güvenlik ipuçları";
+
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Kare kod içeren iletilere dikkat edin. Yalnızca kaynağına güvendiğiniz kodları tarayın.";
+
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton, beklenmeyen bir şekilde kare kod ile oturum açmanız için sizinle görüşmez.";
+
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton, **https://proton.me** veya resmi Proton uygulamasından olmayan bir kare kodunu taramanızı asla istemez.";
+
+"Learn more" = "Ayrıntılı bilgi alın";
+
+"**Security tips**" = "**Güvenlik ipuçları**";

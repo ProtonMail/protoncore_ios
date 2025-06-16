@@ -354,13 +354,13 @@
 
 "Open the Proton app on your phone" = "Адкрыць праграму Proton на вашай прыладзе";
 
-"Tap into Settings, then tap Sign in to another device" = "Націсніце на Налады, а потым выберыце Увайсці ў іншую прыладу";
+"Tap into Settings, then tap Sign in to another device" = "Націсніце на Налады, а потым выберыце \"Увайсці на іншай прыладзе\"";
 
 "Tap Scan QR code" = "Націсніце сканіраваць QR-код";
 
 "Scan this code with your phone camera to sign in instantly." = "Сканіраваць гэты код з дапамогай камеры прылады, каб імгненна ўвайсці.";
 
-"Sign in to another device" = "Увайсці праз іншую прыладу";
+"Sign in to another device" = "Увайсці на іншай прыладзе";
 
 "Sign in with your QR code" = "Увайсці праз ваш QR-код";
 
@@ -432,6 +432,60 @@
 
 "Tap **Scan QR code**" = "Націсніце **Сканіраваць QR-код**";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Націсніце на **Налады**, а потым выберыце **Увайсці ў іншую прыладу**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "Націсніце на **Налады**, а потым выберыце **Увайсці на іншай прыладзе**";
 
-"Password must contain:" = "Пароль павінен утрымліваць:";
+"Password must contain:" = "Пароль павінен змяшчаць:";
+
+"Access shared" = "Доступ абагулены";
+
+"Back to settings" = "Вярнуцца ў налады";
+
+"How to sign in using another device" = "Як увайсці з дапамогай іншай прылады";
+
+"Get another device that’s signed in to your Proton Account" = "Скарыстайцеся іншай прыладай, якая ўжо аўтарызавана ў вашым уліковым запісе Proton";
+
+"Using that device, open any Proton app and select **Settings**" = "З яе дапамогай адкрыйце любую праграму Proton і выберыце **Налады**";
+
+"Select **Sign in on another device → Scan QR code**" = "Перайдзіце ў раздзел **Увайсці на іншай прыладзе → Сканіраваць QR-код**";
+
+"Scan the code to sign in" = "Сканіруйце код, каб увайсці";
+
+"We couldn't sign you in" = "Не атрымалася ўвайсці";
+
+"Try generating a new QR code." = "Паспрабуйце згенерыраваць новы QR-код.";
+
+"Generate QR code" = "Згенерыраваць QR-код";
+
+"Please try another sign in method." = "Паспрабуйце іншы спосаб уваходу.";
+
+"Sign in on another device" = "Увайсці на іншай прыладзе";
+
+"How to sign in with QR code" = "Як увайсці з дапамогай QR-кода";
+
+"Allow camera access" = "Дазволіць доступ да камеры";
+
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "Дазвольце %@ доступ Proton да вашай камеры, каб увайсці з дапамогай QR-кода. Вы можаце зрабіць гэта ў наладах прылады.";
+
+"Position QR code inside the square" = "Памясціце QR-код у квадрат";
+
+"Sign in with QR code" = "Увайсці з дапамогай QR-кода";
+
+"Open any Proton app on the device you want to sign in to" = "Адкрыйце любую праграму Proton на прыладзе, на якой вы хочаце ўвайсці.";
+
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "На экране ўваходу выберыце **Забылі пароль** або **Праблемы з уваходам?** (на мабільных праграмах, выберыце **Даведка**)";
+
+"Select **Sign in with QR code**. A QR code will appear." = "Выберыце **Увайсці з дапамогай QR-кода**. З'явіцца QR-код.";
+
+"On this device, press **Scan QR code** and scan the code." = "На гэтай прыладзе, націсніце **Сканіраваць QR-код** і адсканіруйце код.";
+
+"Security tips" = "Парады па бяспецы";
+
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Будзьце асцярожныя з паведамленнямі, якія змяшчаюць QR-коды. Сканіраваць код можна толькі ў тым выпадку, калі вы давяраеце крыніцы.";
+
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton ніколі не будзе прасіць вас увайсці з дапамогай QR-кода.";
+
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton ніколі не будзе прасіць вас адсканіраваць QR-код на вэб-сайтах, якія не належаць да **https://proton.me** або ў не афіцыйных праграмах Proton.";
+
+"Learn more" = "Даведацца больш";
+
+"**Security tips**" = "**Парады па бяспецы**";

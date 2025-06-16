@@ -435,3 +435,57 @@
 "Tap into **Settings**, then tap **Sign in to another device**" = "Tryk på **Indstillinger**, tryk derefter på **Log ind på en anden enhed**";
 
 "Password must contain:" = "Adgangskode skal indeholde:";
+
+"Access shared" = "Adgang delt";
+
+"Back to settings" = "Tilbage til indstillinger";
+
+"How to sign in using another device" = "Sådan logger du ind med en anden enhed";
+
+"Get another device that’s signed in to your Proton Account" = "Få fat i en anden enhed, der er logget ind på din Proton-konto";
+
+"Using that device, open any Proton app and select **Settings**" = "Åbn en hvilken som helst Proton-app på denne enhed, og vælg **Indstillinger**";
+
+"Select **Sign in on another device → Scan QR code**" = "Vælg **Log ind på en anden enhed → Scan QR-kode**";
+
+"Scan the code to sign in" = "Scan koden for at logge ind";
+
+"We couldn't sign you in" = "Vi kunne ikke logge dig ind";
+
+"Try generating a new QR code." = "Prøv at generere en ny QR-kode.";
+
+"Generate QR code" = "Generer QR-kode";
+
+"Please try another sign in method." = "Prøv en anden log ind-metode.";
+
+"Sign in on another device" = "Log ind på en anden enhed";
+
+"How to sign in with QR code" = "Sådan logges ind med QR-kode";
+
+"Allow camera access" = "Tillad adgang til kamera";
+
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "For at logge ind med QR-kode, bliver du nødt til at give Proton %@ adgang til dit kamera. Du kan gøre dette i din enheds indstillinger.";
+
+"Position QR code inside the square" = "Placer QR-koden inden for firkanten";
+
+"Sign in with QR code" = "Log ind med QR-kode";
+
+"Open any Proton app on the device you want to sign in to" = "Åbn en hvilken som helst Proton-app på den enhed, du vil logge ind på";
+
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "På log ind-skærmen, vælg **Glemt adgangskode** eller **Problemer med at logge ind?** (på mobilapps, vælg **Hjælp**)";
+
+"Select **Sign in with QR code**. A QR code will appear." = "Vælg **Log ind med QR-kode**. En QR-kode vil blive vist.";
+
+"On this device, press **Scan QR code** and scan the code." = "På denne enhed, tryk på **Scan QR-kode** og scan koden.";
+
+"Security tips" = "Sikkerhedstips";
+
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Vær varsom med beskeder indeholdende QR-koder. Scan kun en kode, hvis du stoler på kilden.";
+
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton vil aldrig kontakte dig uventet og bede dig om at logge ind med en QR-kode.";
+
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton vil aldrig bede dig om at scanne en QR-kode, der ikke er fra **https://proton.me** eller en officiel Proton-app.";
+
+"Learn more" = "Få mere at vide";
+
+"**Security tips**" = "**Sikkerhedstips**";

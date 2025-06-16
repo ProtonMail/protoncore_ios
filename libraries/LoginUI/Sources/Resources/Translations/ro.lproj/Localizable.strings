@@ -435,3 +435,57 @@
 "Tap into **Settings**, then tap **Sign in to another device**" = "Apăsați pe **Setări**, apoi pe **Conectare pe alt dispozitiv**";
 
 "Password must contain:" = "Parola trebuie să conțină:";
+
+"Access shared" = "Acces partajat";
+
+"Back to settings" = "Înapoi la setări";
+
+"How to sign in using another device" = "Cum să vă conectați folosind alt dispozitiv";
+
+"Get another device that’s signed in to your Proton Account" = "Obțineți un alt dispozitiv care este conectat la contul Proton";
+
+"Using that device, open any Proton app and select **Settings**" = "Folosind acel dispozitiv, deschideți orice aplicație Proton și selectați **Setări**";
+
+"Select **Sign in on another device → Scan QR code**" = "Selectați **Conectare pe alt dispozitiv → Scanare cod QR**";
+
+"Scan the code to sign in" = "Scanați codul pentru a vă conecta";
+
+"We couldn't sign you in" = "Nu s-a putut autentifica în";
+
+"Try generating a new QR code." = "Încercați să generați un cod QR nou.";
+
+"Generate QR code" = "Generare cod QR";
+
+"Please try another sign in method." = "Încercați altă metodă de conectare.";
+
+"Sign in on another device" = "Conectare pe alt dispozitiv";
+
+"How to sign in with QR code" = "Cum să vă conectați cu Cod QR";
+
+"Allow camera access" = "Permiteți accesul camerei";
+
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "Pentru a vă conecta cu un cod QR, trebuie să permiteți ca Proton %@ să vă acceseze camera. Puteți face acest lucru în setările dispozitivului.";
+
+"Position QR code inside the square" = "Plasați codul QR în chenar";
+
+"Sign in with QR code" = "Conectare cu cod QR";
+
+"Open any Proton app on the device you want to sign in to" = "Deschideți orice aplicație Proton pe dispozitivul pe care doriți să vă conectați.";
+
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "Pe ecranul de conectare, selectați **Am uitat parola** sau **Probleme la conectare** (pe aplicațiile mobile, selectați **Ajutor**)";
+
+"Select **Sign in with QR code**. A QR code will appear." = "Selectați **Conectare cu cod QR**. Va apărea un cod QR.";
+
+"On this device, press **Scan QR code** and scan the code." = "Pe acest dispozitiv, apăsați pe **Scanare cod QR** și scanați codul.";
+
+"Security tips" = "Sfaturi de securitate";
+
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Aveți grijă la mesajele cu coduri QR. Scanați un cod doar dacă aprobați sursa.";
+
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton nu vă va contacta niciodată în mod neașteptat cerându-vă să vă conectați cu un cod QR.";
+
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton nu vă va cere niciodată să scanați un cod QR care să nu provină de la **https://proton.me** sau o aplicație oficială Proton.";
+
+"Learn more" = "Detalii";
+
+"**Security tips**" = "**Sfaturi de securitate**";

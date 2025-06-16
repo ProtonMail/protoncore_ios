@@ -435,3 +435,57 @@
 "Tap into **Settings**, then tap **Sign in to another device**" = "Ketuk **Pengaturan**, lalu ketuk **Masuk ke perangkat lain**";
 
 "Password must contain:" = "Kata sandi harus berisi:";
+
+"Access shared" = "Akses dibagikan";
+
+"Back to settings" = "Kembali ke pengaturan";
+
+"How to sign in using another device" = "Cara masuk menggunakan perangkat lain";
+
+"Get another device that’s signed in to your Proton Account" = "Ambil perangkat lain yang telah terhubung masuk ke Akun Proton Anda";
+
+"Using that device, open any Proton app and select **Settings**" = "Menggunakan perangkat ini, buka aplikasi Proton mana pun dan pilih **Pengaturan**";
+
+"Select **Sign in on another device → Scan QR code**" = "Pilih **Masuk ke perangkat lain → Pindai kode QR**";
+
+"Scan the code to sign in" = "Pindai kode yang tertera untuk masuk";
+
+"We couldn't sign you in" = "Kami tidak dapat memasukkan Anda";
+
+"Try generating a new QR code." = "Cobalah untuk menghasilkan kode QR yang baru.";
+
+"Generate QR code" = "Hasilkan Kode QR";
+
+"Please try another sign in method." = "Silakan coba metode masuk lainnya.";
+
+"Sign in on another device" = "Masuk ke perangkat lain";
+
+"How to sign in with QR code" = "Cara masuk dengan kode QR";
+
+"Allow camera access" = "Izinkan akses kamera";
+
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "Untuk masuk dengan kode QR, Anda perlu mengizinkan Proton %@ untuk mengakses kamera Anda. Anda dapat memberikan izini ini pada pengaturan perangkat Anda.";
+
+"Position QR code inside the square" = "Posisikan kode QR di dalam kotak";
+
+"Sign in with QR code" = "Masuk dengan kode QR";
+
+"Open any Proton app on the device you want to sign in to" = "Buka aplikasi Proton mana pun pada perangkat yang ingin Anda gunakan untuk masuk";
+
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "Pada layar masuk, pilih **Lupa kata sandi** atau **Mengalami masalah saat akan masuk?** (pada aplikasi seluler, pilih **Bantuan**)";
+
+"Select **Sign in with QR code**. A QR code will appear." = "Pilih **Masuk dengan kode QR**. Kode QR akan muncul.";
+
+"On this device, press **Scan QR code** and scan the code." = "Pada perangkat ini, tekan **Pindai kode QR** dan pindai kode yang tertera.";
+
+"Security tips" = "Tips keamanan";
+
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Berhati-hatilah dengan pesan yang mengandung kode QR. Pastikan untuk memindai kode ini hanya apabila Anda memercayai sumbernya.";
+
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton tidak akan pernah menghubungi Anda secara tiba-tiba untuk meminta Anda masuk dengan kode QR.";
+
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton tidak akan pernah meminta Anda untuk memindai kode QR yang tidak berasal dari **https://proton.me** atau aplikasi resmi Proton.";
+
+"Learn more" = "Pelajari lebih lanjut";
+
+"**Security tips**" = "**Tips keamanan**";
