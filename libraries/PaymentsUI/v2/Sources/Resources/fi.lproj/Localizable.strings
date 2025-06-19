@@ -30,28 +30,28 @@
 
 "No_filtered_plan_title" = "No plans found";
 
-"Plans_footer_disclaimer" = "You cannot manage subscriptions inside the mobile app";
+"Plans_footer_disclaimer" = "Et voi hallita tilauksia mobiilisovelluksessa";
 
-"Purchase_button_title" = "Get %@";
+"Purchase_button_title" = "Hanki %@";
 
-"Select_plan_nav_title" = "Select a plan";
+"Select_plan_nav_title" = "Valitse tilaus";
 
-"Subscriptions_nav_title" = "Subscriptions";
+"Subscriptions_nav_title" = "Tilaukset";
 
-"Transaction_cancelled_by_user" = "Transaction cancelled by the user";
+"Transaction_cancelled_by_user" = "Käyttäjä perui ostotapahtuman";
 
-"Transaction_process_error" = "Something went wrong, please retry. If the issue persists please contact our support team.";
+"Transaction_process_error" = "Jotain meni pieleen, yritä uudelleen. Ole ongelman jatkuessa yhteydessä asiakaspalveluun.";
 
-"Transaction_state_payment_account_update_complete" = "Account updated";
+"Transaction_state_payment_account_update_complete" = "Tili on päivitetty";
 
-"Transaction_state_payment_account_update_progress" = "Updating your account";
+"Transaction_state_payment_account_update_progress" = "Tiliäsi päivitetään";
 
-"Transaction_state_payment_confirmation_complete" = "Payment confirmed";
+"Transaction_state_payment_confirmation_complete" = "Maksu on vahvistettu";
 
-"Transaction_state_payment_confirmation_progress" = "Confirming your payment";
+"Transaction_state_payment_confirmation_progress" = "Maksuasi vahvistetaan";
 
-"Transaction_state_view_subtitle" = "This should take no more than a minute.";
+"Transaction_state_view_subtitle" = "Yleensä tämä ei kestä minuuttia pidempään.";
 
-"Transaction_state_view_title" = "Your payment is being verified...";
+"Transaction_state_view_title" = "Maksuasi vahvistetaan...";
 
-"Yearly_cycle" = "12 months";
+"Yearly_cycle" = "12 kuukautta";

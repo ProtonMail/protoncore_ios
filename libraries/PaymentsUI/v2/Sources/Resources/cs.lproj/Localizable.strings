@@ -10,9 +10,9 @@
 
 "Current_plan_exipiration" = "Vaše předplatné vyprší";
 
-"Current_plan_renewal" = "Vaše předplatné se automaticky obnoví";
+"Current_plan_renewal" = "Vaše předplatné je automaticky obnovováno";
 
-"Error_view_button_title" = "Opakovat";
+"Error_view_button_title" = "Zkusit znovu";
 
 "Error_view_message" = "Tuto stránku se nám nepodařilo načíst. Obnovte prosím stránku nebo zkontrolujte své internetové připojení.";
 
@@ -50,8 +50,8 @@
 
 "Transaction_state_payment_confirmation_progress" = "Potvrzování vaší platby";
 
-"Transaction_state_view_subtitle" = "Nemělo by to trvat déle, než minutu.";
+"Transaction_state_view_subtitle" = "Nemělo by to trvat déle než minutu.";
 
-"Transaction_state_view_title" = "Vaše platba se ověřuje...";
+"Transaction_state_view_title" = "Vaše platba je ověřována...";
 
 "Yearly_cycle" = "12 měsíců";

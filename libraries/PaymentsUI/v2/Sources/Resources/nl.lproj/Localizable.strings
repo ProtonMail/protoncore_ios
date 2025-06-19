@@ -1,6 +1,6 @@
 "All_cycle" = "Alle factureringscycli";
 
-"Available_plans_section_title" = "Upgrade uw abonnement";
+"Available_plans_section_title" = "Uw abonnement upgraden";
 
 "Available_subscriptions_view_subtitle" = "Onze abonnementen voor uw privacy";
 
@@ -18,11 +18,11 @@
 
 "Error_view_title" = "Er is iets fout gegaan";
 
-"Loading_plans_message" = "Beschikbare abonnementen ophalen...";
+"Loading_plans_message" = "Beschikbare abonnement ophalen...";
 
 "Monthly_cycle" = "1 maand";
 
-"No_available_plan_message" = "Uw abonnement kan niet worden beheerd in de mobiele app.";
+"No_available_plan_message" = "Uw abonnement kan niet worden beheerd in de mobiele app";
 
 "No_available_plan_title" = "Geen beschikbare abonnementen gevonden";
 

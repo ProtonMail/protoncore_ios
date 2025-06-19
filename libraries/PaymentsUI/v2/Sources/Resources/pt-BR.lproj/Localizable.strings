@@ -14,7 +14,7 @@
 
 "Error_view_button_title" = "Tentar novamente";
 
-"Error_view_message" = "Não conseguimos carregar esta página. Por favor, atualize a página ou verifique sua conexão com a internet.";
+"Error_view_message" = "Não conseguimos carregar esta página. Atualize a página ou verifique sua conexão com a internet.";
 
 "Error_view_title" = "Algo deu errado";
 
@@ -40,7 +40,7 @@
 
 "Transaction_cancelled_by_user" = "Transação cancelada pelo usuário";
 
-"Transaction_process_error" = "Algo deu errado, por favor, tente novamente. Se o problema persistir, entre em contato com nossa equipe de suporte.";
+"Transaction_process_error" = "Algo deu errado, tente novamente. Se o problema persistir, entre em contato com nossa equipe de suporte.";
 
 "Transaction_state_payment_account_update_complete" = "Conta atualizada";
 

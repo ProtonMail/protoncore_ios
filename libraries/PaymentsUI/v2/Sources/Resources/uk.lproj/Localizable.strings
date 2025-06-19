@@ -1,57 +1,57 @@
-"All_cycle" = "All billing cycles";
+"All_cycle" = "Усі платіжні цикли";
 
-"Available_plans_section_title" = "Upgrade your plan";
+"Available_plans_section_title" = "Оновіть свій тарифний план";
 
-"Available_subscriptions_view_subtitle" = "Our plans for your privacy";
+"Available_subscriptions_view_subtitle" = "Наші тарифні плани для вашої приватності";
 
-"Available_subscriptions_view_title" = "Select a plan";
+"Available_subscriptions_view_title" = "Оберіть тарифний план";
 
 "Current_free_plan_name" = "Free";
 
-"Current_plan_exipiration" = "Your subscription expires on";
+"Current_plan_exipiration" = "Ваша передплата завершується";
 
-"Current_plan_renewal" = "Your subscription automatically renews on";
+"Current_plan_renewal" = "Ваша передплата автоматично поновиться";
 
-"Error_view_button_title" = "Retry";
+"Error_view_button_title" = "Повторити";
 
-"Error_view_message" = "We couldn't load this page. Please refresh the page or check your internet connection.";
+"Error_view_message" = "Не вдалося завантажити цю сторінку. Оновіть сторінку або перевірте з'єднання з інтернетом.";
 
-"Error_view_title" = "Something went wrong";
+"Error_view_title" = "Щось пішло не так";
 
-"Loading_plans_message" = "Fetching available plans...";
+"Loading_plans_message" = "Отримання доступних планів...";
 
-"Monthly_cycle" = "1 month";
+"Monthly_cycle" = "1 місяць";
 
-"No_available_plan_message" = "Your subscription can't be managed inside the mobile app.";
+"No_available_plan_message" = "Вашою передплатою не можна керувати в програмі для мобільних пристроїв.";
 
-"No_available_plan_title" = "No available plans found";
+"No_available_plan_title" = "Не знайдено доступних тарифних планів";
 
-"No_filtered_plan_message" = "Please select a different billing cycle";
+"No_filtered_plan_message" = "Виберіть інший платіжний цикл";
 
-"No_filtered_plan_title" = "No plans found";
+"No_filtered_plan_title" = "Не знайдено тарифних планів";
 
-"Plans_footer_disclaimer" = "You cannot manage subscriptions inside the mobile app";
+"Plans_footer_disclaimer" = "Не можна керувати передплатами в програмі для мобільних пристроїв";
 
-"Purchase_button_title" = "Get %@";
+"Purchase_button_title" = "Отримати %@";
 
-"Select_plan_nav_title" = "Select a plan";
+"Select_plan_nav_title" = "Оберіть тарифний план";
 
-"Subscriptions_nav_title" = "Subscriptions";
+"Subscriptions_nav_title" = "Передплати";
 
-"Transaction_cancelled_by_user" = "Transaction cancelled by the user";
+"Transaction_cancelled_by_user" = "Транзакцію скасовано користувачем";
 
-"Transaction_process_error" = "Something went wrong, please retry. If the issue persists please contact our support team.";
+"Transaction_process_error" = "Щось пішло не так, повторіть спробу. Якщо проблема не зникає, зверніться до нашої служби підтримки.";
 
-"Transaction_state_payment_account_update_complete" = "Account updated";
+"Transaction_state_payment_account_update_complete" = "Обліковий запис оновлено";
 
-"Transaction_state_payment_account_update_progress" = "Updating your account";
+"Transaction_state_payment_account_update_progress" = "Оновлення вашого облікового запису";
 
-"Transaction_state_payment_confirmation_complete" = "Payment confirmed";
+"Transaction_state_payment_confirmation_complete" = "Платіж підтверджено";
 
-"Transaction_state_payment_confirmation_progress" = "Confirming your payment";
+"Transaction_state_payment_confirmation_progress" = "Підтвердження вашого платежу";
 
-"Transaction_state_view_subtitle" = "This should take no more than a minute.";
+"Transaction_state_view_subtitle" = "Це триватиме не довше хвилини.";
 
-"Transaction_state_view_title" = "Your payment is being verified...";
+"Transaction_state_view_title" = "Ваш платіж перевіряється...";
 
-"Yearly_cycle" = "12 months";
+"Yearly_cycle" = "12 місяців";

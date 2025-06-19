@@ -2,47 +2,47 @@
 
 "Cancel" = "Отменить";
 
-"Warning" = "Внимание";
+"Warning" = "Warning";
 
-"Select a plan" = "Выберите тариф";
+"Select a plan" = "Select a plan";
 
-"Current plan" = "Текущий тариф";
+"Current plan" = "Current plan";
 
-"Subscription" = "Подписка";
+"Subscription" = "Subscription";
 
-"Upgrade your plan" = "Улучшить план";
+"Upgrade your plan" = "Upgrade your plan";
 
 "Only annual subscriptions without auto-renewal are available inside the mobile app." = "Only annual subscriptions without auto-renewal are available inside the mobile app.";
 
-"You cannot manage subscriptions inside the mobile application." = "Вы не можете управлять подпиской через мобильное приложение.";
+"You cannot manage subscriptions inside the mobile application." = "You cannot manage subscriptions inside the mobile application.";
 
-"Your plan will automatically renew on %@" = "Ваша подписка автоматический возобновится %@";
+"Your plan will automatically renew on %@" = "Your plan will automatically renew on %@";
 
-"Current plan will expire on %@" = "Текущий план истечёт %@";
+"Current plan will expire on %@" = "Current plan will expire on %@";
 
-"Contact an administrator to make changes to your Proton subscription." = "Обратитесь к администратору для изменения вашей подписки Proton.";
+"Contact an administrator to make changes to your Proton subscription." = "Contact an administrator to make changes to your Proton subscription.";
 
-"%1$@ of %2$@" = "%1$@ из %2$@";
+"%1$@ of %2$@" = "%1$@ of %2$@";
 
-"%@ storage" = "Объем хранилища: %@";
+"%@ storage" = "%@ storage";
 
-"%@ storage / user" = "%@ хранилища на пользователя";
+"%@ storage / user" = "%@ storage / user";
 
-"for %@" = "для %@";
+"for %@" = "for %@";
 
-"Custom email addresses" = "Пользовательские адреса электронной почты";
+"Custom email addresses" = "Custom email addresses";
 
-"Priority customer support" = "Приоритетная поддержка клиентов";
+"Priority customer support" = "Priority customer support";
 
-"Adblocker (NetShield)" = "Блокировщик рекламы (NetShield)";
+"Adblocker (NetShield)" = "Adblocker (NetShield)";
 
 "Streaming service support" = "Streaming service support";
 
-"High speed" = "Высокая скорость";
+"High speed" = "High speed";
 
-"Highest speed" = "Максимальная скорость";
+"Highest speed" = "Highest speed";
 
-"Multi-user support" = "Многопользовательская поддержка";
+"Multi-user support" = "Multi-user support";
 
 "The basic for private and secure communications." = "The basic for private and secure communications.";
 
@@ -62,13 +62,13 @@
 
 "In app payments are temporarily unavailable." = "In app payments are temporarily unavailable.";
 
-"One plan for all Proton services" = "Один тариф для всех служб Proton";
+"One plan for all Proton services" = "One plan for all Proton services";
 
 "The no-cost starter account designed to empower everyone with privacy by default." = "The no-cost starter account designed to empower everyone with privacy by default.";
 
 "The privacy-first email and calendar solution for your everyday communication needs." = "The privacy-first email and calendar solution for your everyday communication needs.";
 
-"Your privacy and security are our priority." = "Ваша конфиденциальность и безопасность - наш приоритет.";
+"Your privacy and security are our priority." = "Your privacy and security are our priority.";
 
 "The storage-focused plan with 200 GB of cloud storage to keep your files private." = "The storage-focused plan with 200 GB of cloud storage to keep your files private.";
 
@@ -76,37 +76,37 @@
 
 "Only non-renewing annual subscriptions are available via this app" = "Only non-renewing annual subscriptions are available via this app";
 
-"Your subscription cannot be managed inside the mobile app." = "Вашей подпиской нельзя управлять через мобильно приложение.";
+"Your subscription cannot be managed inside the mobile app." = "Your subscription cannot be managed inside the mobile app.";
 
-"Unlimited folders, labels, and filters" = "Неограниченное количество папок, ярлыков и фильтров";
+"Unlimited folders, labels, and filters" = "Unlimited folders, labels, and filters";
 
 "Up to %@ storage" = "Up to %@ storage";
 
 "Free VPN on a single device" = "Free VPN on a single device";
 
-"Highest VPN speed" = "Максимальная скорость VPN";
+"Highest VPN speed" = "Highest VPN speed";
 
 "Built-in ad-blocker (NetShield)" = "Built-in ad-blocker (NetShield)";
 
 "Access to streaming services globally" = "Access to streaming services globally";
 
-"Secure Core servers" = "Серверы Secure Core";
+"Secure Core servers" = "Secure Core servers";
 
-"TOR over VPN" = "Tor через VPN";
+"TOR over VPN" = "Tor over VPN";
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "Получить %@";
+"Get %@" = "Get %@";
 
-"Get Proton for free" = "Получить Proton бесплатно";
+"Get Proton for free" = "Get Proton for free";
 
 "Extend subscription" = "Extend subscription";
 
 "%@ of %@" = "%@ of %@";
 
-"Connection issues" = "Проблемы с подключением";
+"Connection issues" = "Connection issues";
 
-"Check your internet connection" = "Проверьте подключение к интернету";
+"Check your internet connection" = "Check your internet connection";
 
 "Strict no-logs policy" = "Strict no-logs policy";
 
@@ -133,9 +133,3 @@
 "Pay every two years" = "Pay every two years";
 
 "Free" = "Free";
-
-"Your storage is full" = "Your storage is full";
-
-"Upgrade your plan to continue to use your account without interruptions." = "Upgrade your plan to continue to use your account without interruptions.";
-
-"Get more storage" = "Get more storage";

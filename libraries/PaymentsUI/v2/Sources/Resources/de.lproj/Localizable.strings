@@ -1,8 +1,8 @@
 "All_cycle" = "Alle Abrechnungszeiträume";
 
-"Available_plans_section_title" = "Abonnement erweitern";
+"Available_plans_section_title" = "Abonnement upgraden";
 
-"Available_subscriptions_view_subtitle" = "Unsere Abonnements für deine Privatsphäre";
+"Available_subscriptions_view_subtitle" = "Unsere Abonnemente für deine Privatsphäre";
 
 "Available_subscriptions_view_title" = "Abonnement auswählen";
 
@@ -10,9 +10,9 @@
 
 "Current_plan_exipiration" = "Dein Abonnement ist gültig bis";
 
-"Current_plan_renewal" = "Das Abonnement verlängert sich automatisch am";
+"Current_plan_renewal" = "Dein Abonnement verlängert sich automatisch am";
 
-"Error_view_button_title" = "Erneut versuchen";
+"Error_view_button_title" = "Wiederholen";
 
 "Error_view_message" = "Diese Seite konnte nicht geladen werden. Bitte die Seite aktualisieren oder die Internetverbindung überprüfen.";
 
@@ -22,21 +22,21 @@
 
 "Monthly_cycle" = "1 Monat";
 
-"No_available_plan_message" = "Das Abonnement kann nicht in der mobilen App verwaltet werden.";
+"No_available_plan_message" = "Das Abonnement kann nicht über die mobile App verwaltet werden.";
 
-"No_available_plan_title" = "Keine verfügbaren Abonnements vorhanden";
+"No_available_plan_title" = "Keine verfügbaren Abonnemente gefunden";
 
-"No_filtered_plan_message" = "Bitte einen anderen Abrechnungszeitraum auswählen";
+"No_filtered_plan_message" = "Bitte einen anderen Abrechnungszeitraum wählen";
 
-"No_filtered_plan_title" = "Keine Abonnements vorhanden";
+"No_filtered_plan_title" = "Keine Abonnemente gefunden";
 
-"Plans_footer_disclaimer" = "Abonnements können nicht innerhalb der mobilen App verwaltet werden.";
+"Plans_footer_disclaimer" = "Abonnemente können nicht innerhalb der mobilen App verwaltet werden.";
 
 "Purchase_button_title" = "%@ kaufen";
 
 "Select_plan_nav_title" = "Abonnement auswählen";
 
-"Subscriptions_nav_title" = "Abonnements";
+"Subscriptions_nav_title" = "Abonnemente";
 
 "Transaction_cancelled_by_user" = "Bezahlvorgang durch den Benutzer abgebrochen";
 
@@ -48,7 +48,7 @@
 
 "Transaction_state_payment_confirmation_complete" = "Zahlung bestätigt";
 
-"Transaction_state_payment_confirmation_progress" = "Zahlung wird bestätigt";
+"Transaction_state_payment_confirmation_progress" = "Bestätigung deine Zahlung";
 
 "Transaction_state_view_subtitle" = "Dies sollte nicht länger als eine Minute dauern.";
 
