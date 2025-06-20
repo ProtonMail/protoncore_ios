@@ -23,9 +23,23 @@ import Foundation
 import StoreKit
 
 extension Sequence where Element == AvailablePlan {
-    func identifiersForAppleInstances() -> [String] {
-        flatMap { $0.instances }
-            .compactMap { $0.vendors.apple?.productID ?? $0.vendors.safari?.productID }
+func identifiersForAppleInstances() -> [String] {
+        let appleInstances = flatMap { $0.instances }
+            .compactMap {
+                $0.vendors.apple?.productID
+            }
+
+        let safariInstances = flatMap { $0.instances }
+            .compactMap {
+                $0.vendors.safari?.productID
+            }
+
+        if !appleInstances.isEmpty && !safariInstances.isEmpty {
+            debugPrint("Both Apple and Safari instances found - this should never happen")
+            return []
+        }
+
+        return appleInstances.appending(safariInstances)
     }
 
     func modelsMatchingProducts(in products: any Sequence<Product>) -> [ComposedPlan] {
