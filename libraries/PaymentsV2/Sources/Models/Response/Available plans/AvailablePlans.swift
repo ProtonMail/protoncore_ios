@@ -60,6 +60,9 @@ public struct Price: Decodable, Hashable, Equatable, Identifiable, Sendable {
 
 public struct Vendors: Decodable, Hashable, Equatable, Sendable {
     public let apple: Vendor?
+
+    // Only applicable to Safari extension
+    public var safari: Vendor?
 }
 
 public struct Vendor: Decodable, Hashable, Equatable, Sendable {

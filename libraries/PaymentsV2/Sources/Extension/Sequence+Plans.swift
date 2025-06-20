@@ -25,7 +25,7 @@ import StoreKit
 extension Sequence where Element == AvailablePlan {
     func identifiersForAppleInstances() -> [String] {
         flatMap { $0.instances }
-            .compactMap { $0.vendors.apple?.productID }
+            .compactMap { $0.vendors.apple?.productID ?? $0.vendors.safari?.productID }
     }
 
     func modelsMatchingProducts(in products: any Sequence<Product>) -> [ComposedPlan] {
@@ -35,7 +35,10 @@ extension Sequence where Element == AvailablePlan {
         }
         .compactMap { plan, instance -> ComposedPlan? in
             // when instance.productID and Product.id match, build a model with the plan, instance and product
-            guard let matchingProduct = products.first(where: { $0.id == instance.vendors.apple?.productID }) else { return nil }
+            guard let matchingProduct = products.first(where: {
+                $0.id == instance.vendors.apple?.productID ||
+                $0.id == instance.vendors.safari?.productID
+            }) else { return nil }
             return ComposedPlan(plan: plan, instance: instance, product: matchingProduct)
         }
     }
