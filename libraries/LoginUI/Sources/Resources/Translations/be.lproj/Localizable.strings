@@ -464,7 +464,7 @@
 
 "Allow camera access" = "Дазволіць доступ да камеры";
 
-"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "Дазвольце %@ доступ Proton да вашай камеры, каб увайсці з дапамогай QR-кода. Вы можаце зрабіць гэта ў наладах прылады.";
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "Неабходна дазволіць Proton %@ доступ да камеры на вашай прыладзе, каб увайсці з дапамогай QR-кода. Гэта можна зрабіць ў наладах прылады.";
 
 "Position QR code inside the square" = "Памясціце QR-код у квадрат";
 
@@ -472,11 +472,11 @@
 
 "Open any Proton app on the device you want to sign in to" = "Адкрыйце любую праграму Proton на прыладзе, на якой вы хочаце ўвайсці.";
 
-"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "На экране ўваходу выберыце **Забылі пароль** або **Праблемы з уваходам?** (на мабільных праграмах, выберыце **Даведка**)";
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "На экране ўваходу выберыце **Забылі пароль** або **Праблемы з уваходам?** (у мабільных праграмах выберыце **Даведка**)";
 
 "Select **Sign in with QR code**. A QR code will appear." = "Выберыце **Увайсці з дапамогай QR-кода**. З'явіцца QR-код.";
 
-"On this device, press **Scan QR code** and scan the code." = "На гэтай прыладзе, націсніце **Сканіраваць QR-код** і адсканіруйце код.";
+"On this device, press **Scan QR code** and scan the code." = "Націсніце **Сканіраваць QR-код** і адсканіруйце код на гэтай прыладзе.";
 
 "Security tips" = "Парады па бяспецы";
 
