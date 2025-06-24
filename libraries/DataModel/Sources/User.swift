@@ -487,9 +487,9 @@ extension UserInfo {
 // MARK: UserFlags
 
 public struct UserFlags: Codable, Equatable {
-    public let hasBYOEAddress: Bool
-    public let hasTemporaryPassword: Bool
-    public let sso: Bool
+    public let hasBYOEAddress: Bool?
+    public let hasTemporaryPassword: Bool?
+    public let sso: Bool?
 
     public init(hasBYOEAddress: Bool, hasTemporaryPassword: Bool, sso: Bool) {
         self.hasBYOEAddress = hasBYOEAddress
