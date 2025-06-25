@@ -32,6 +32,7 @@ stages:
   - summarise
   - offline_tests
   - deploy
+  - trigger
   - online_tests
   - report
   - cleanup
@@ -396,6 +397,35 @@ report:ios:unit:coverage:
     GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PIPELINE_ID/account-lane-1
   tags:
     - account-lane-1
+
+trigger:payments-app:tests:
+  stage: trigger
+  needs: []
+  when: manual
+  inherit:
+    variables: false
+  trigger:
+    project: Payments/PaymentsApp
+    branch: develop
+    strategy: depend
+  variables:
+    GIT_STRATEGY: "clone"
+    COMMIT_HASH: $CI_COMMIT_SHA
+
+trigger:pass:tests:
+  stage: trigger
+  needs: []
+  when: manual
+  inherit:
+    variables: false
+  trigger:
+    project: apple/pass/ios-mac-app
+    branch: develop
+    strategy: depend
+  variables:
+    GIT_STRATEGY: "clone"
+    COMMIT_HASH: $CI_COMMIT_SHA
+
 
 #
 # --- Translation related tasks ---
