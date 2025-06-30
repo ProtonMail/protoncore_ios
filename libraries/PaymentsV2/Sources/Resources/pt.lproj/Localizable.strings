@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "Ocorreu um erro inesperado. Se o problema persistir, entre em contacto com o apoio ao cliente.";
 
-"Plans_Managere_peding_transaction_received" = "Transação pendente inesperada recebida";
+"Plans_Manager_pending_transaction_received" = "Transação pendente inesperada recebida";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Não foi possível obter a subscrição atual.";
 

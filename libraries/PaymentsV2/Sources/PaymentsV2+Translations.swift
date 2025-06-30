@@ -38,11 +38,12 @@ public enum PaymentsV2Localizer: String, TranslationsExposing {
     case Plans_Manager_impossible_to_restore_transactions
     case Plans_Manager_Transaction_cancelled_by_user
     case Plans_Manager_Transaction_unknown_error
-    case Plans_Managere_peding_transaction_received
+    case Plans_Manager_pending_transaction_received
     case PlansComposer_unable_to_fetch_currentSub
     case Remote_manager_error
     case SK_Receipt_impossible_to_get_receipt
     case Transaction_Handler_plan_not_found
+    case Transaction_Handler_repeated_purchase
 
     public var l10n: String {
         switch self {
@@ -58,7 +59,7 @@ public enum PaymentsV2Localizer: String, TranslationsExposing {
             return localized(key: self.rawValue, comment: "Proton Plan - transaction cancelled by the user")
         case .Plans_Manager_Transaction_unknown_error:
             return localized(key: self.rawValue, comment: "Proton Plan - unknown transaction error")
-        case .Plans_Managere_peding_transaction_received:
+        case .Plans_Manager_pending_transaction_received:
             return localized(key: self.rawValue, comment: "Proton Plan - unexpected pending transaction")
         case .PlansComposer_unable_to_fetch_currentSub:
             return localized(key: self.rawValue, comment: "Plans manager get current sub fail")
@@ -68,6 +69,8 @@ public enum PaymentsV2Localizer: String, TranslationsExposing {
             return localized(key: self.rawValue, comment: "StoreKitManager get receipt fail")
         case .Transaction_Handler_plan_not_found:
             return localized(key: self.rawValue, comment: "TransactionHandler - impossible to find plan's name")
+        case .Transaction_Handler_repeated_purchase:
+            return localized(key: self.rawValue, comment: "TransactionHandler - repeated purchase, or renewal attempted")
         }
     }
 

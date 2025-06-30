@@ -436,56 +436,56 @@
 
 "Password must contain:" = "Heslo musí obsahovať:";
 
-"Access shared" = "Access shared";
+"Access shared" = "Prístup zdieľaný";
 
-"Back to settings" = "Back to settings";
+"Back to settings" = "Späť do nastavení";
 
-"How to sign in using another device" = "How to sign in using another device";
+"How to sign in using another device" = "Ako sa prihlásiť pomocou iného zariadenia";
 
-"Get another device that’s signed in to your Proton Account" = "Get another device that’s signed in to your Proton Account";
+"Get another device that’s signed in to your Proton Account" = "Vezmite si iné zariadenie, ktoré je prihlásené do vášho Proton účtu";
 
-"Using that device, open any Proton app and select **Settings**" = "Using that device, open any Proton app and select **Settings**";
+"Using that device, open any Proton app and select **Settings**" = "Na tomto zariadení otvorte ľubovoľnú aplikáciu Proton a vyberte **Nastavenia**";
 
-"Select **Sign in on another device → Scan QR code**" = "Select **Sign in on another device → Scan QR code**";
+"Select **Sign in on another device → Scan QR code**" = "Vyberte **Prihlásiť sa na inom zariadení → Naskenovať QR kód**";
 
-"Scan the code to sign in" = "Scan the code to sign in";
+"Scan the code to sign in" = "Naskenujte kód na prihlásenie";
 
-"We couldn't sign you in" = "We couldn't sign you in";
+"We couldn't sign you in" = "Nepodarilo sa nám prihlásiť vás";
 
-"Try generating a new QR code." = "Try generating a new QR code.";
+"Try generating a new QR code." = "Skúste vygenerovať nový QR kód.";
 
-"Generate QR code" = "Generate QR code";
+"Generate QR code" = "Generovať QR kód";
 
-"Please try another sign in method." = "Please try another sign in method.";
+"Please try another sign in method." = "Skúste inú metódu prihlásenia, prosím.";
 
-"Sign in on another device" = "Sign in on another device";
+"Sign in on another device" = "Prihlásiť sa do iného zariadenia";
 
-"How to sign in with QR code" = "How to sign in with QR code";
+"How to sign in with QR code" = "Ako prihlásiť sa pomocou QR kódu";
 
-"Allow camera access" = "Allow camera access";
+"Allow camera access" = "Povoľte prístup ku kamere";
 
-"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings.";
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "Ak sa chcete prihlásiť pomocou QR kódu, budete musieť aplikácii %@ umožniť prístup k fotoaparátu. Môžete to urobiť v nastaveniach zariadenia.";
 
-"Position QR code inside the square" = "Position QR code inside the square";
+"Position QR code inside the square" = "Umiestnite QR kód do štvorca";
 
-"Sign in with QR code" = "Sign in with QR code";
+"Sign in with QR code" = "Prihlásiť sa pomocou QR kódu";
 
-"Open any Proton app on the device you want to sign in to" = "Open any Proton app on the device you want to sign in to";
+"Open any Proton app on the device you want to sign in to" = "Otvorte ľubovoľnú aplikáciu Proton na zariadení, na ktoré sa chcete prihlásiť";
 
-"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)";
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "Na prihlasovacej obrazovke, vyberte **Zabudli ste heslo** alebo **Problémy s prihlásením?** (na mobilných aplikáciách, vyberte **Nápoveda**)";
 
-"Select **Sign in with QR code**. A QR code will appear." = "Select **Sign in with QR code**. A QR code will appear.";
+"Select **Sign in with QR code**. A QR code will appear." = "Vyberte **Prihlásiť sa pomocou QR kódu**. Zobrazí sa QR kód.";
 
-"On this device, press **Scan QR code** and scan the code." = "On this device, press **Scan QR code** and scan the code.";
+"On this device, press **Scan QR code** and scan the code." = "Na tomto zariadení stlačte **Naskenovať QR kód** a naskenujte kód.";
 
-"Security tips" = "Security tips";
+"Security tips" = "Bezpečnostné tipy";
 
-"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Be cautious of messages with QR codes. Only scan a code if you trust the source.";
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Dávajte si pozor na správy s QR kódmi. Kód skenujte len, ak dôverujete zdroju.";
 
-"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton will never contact you unexpectedly asking you to sign in with a QR code.";
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton vás nikdy neočakávane nekontaktuje a nepožiada vás o prihlásenie pomocou QR kódu.";
 
-"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app.";
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton vás nikdy nepožiada o naskenovanie QR kódu, ktorý nepochádza z **https://proton.me** alebo oficiálnej aplikácie Proton.";
 
 "Learn more" = "Dozvedieť sa viac";
 
-"**Security tips**" = "**Security tips**";
+"**Security tips**" = "**Bezpečnostné tipy**";

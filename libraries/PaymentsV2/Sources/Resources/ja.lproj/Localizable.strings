@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "予期しないエラーが発生しました。この状態が続く場合は、カスタマーサポートまでご連絡ください。";
 
-"Plans_Managere_peding_transaction_received" = "予期しない保留中のトランザクションを受信しました";
+"Plans_Manager_pending_transaction_received" = "予期しない保留中のトランザクションを受信しました";
 
 "PlansComposer_unable_to_fetch_currentSub" = "現在のサブスクリプションを取得できません";
 
