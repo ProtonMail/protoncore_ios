@@ -435,3 +435,57 @@
 "Tap into **Settings**, then tap **Sign in to another device**" = "**설정**을 탭한 후 **다른 기기에서 로그인**을 눌러주세요";
 
 "Password must contain:" = "비밀번호는 다음을 포함해야 합니다:";
+
+"Access shared" = "접근이 공유되었습니다";
+
+"Back to settings" = "설정으로 돌아가기";
+
+"How to sign in using another device" = "다른 기기에서 로그인하는 방법";
+
+"Get another device that’s signed in to your Proton Account" = "Proton 계정에 로그인된 다른 기기를 가져오세요.";
+
+"Using that device, open any Proton app and select **Settings**" = "해당 기기에서 Proton 앱 중 아무거나 실행한 뒤 **설정**을 선택하세요.";
+
+"Select **Sign in on another device → Scan QR code**" = "**다른 기기에서 로그인을 선택한 뒤 QR코드를 스캔하세요**.";
+
+"Scan the code to sign in" = "코드를 스캔하여 로그인하세요.";
+
+"We couldn't sign you in" = "로그인에 실패했습니다";
+
+"Try generating a new QR code." = "새로운 QR 코드를 생성해 보세요";
+
+"Generate QR code" = "QR 코드 생성";
+
+"Please try another sign in method." = "다른 로그인 방법을 시도해 주세요.";
+
+"Sign in on another device" = "다른 기기에서 로그인";
+
+"How to sign in with QR code" = "QR 코드로 로그인 방법";
+
+"Allow camera access" = "카메라 접근 권한 허용";
+
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "QR 코드로 로그인하려면 Proton %@(에)서 카메라에 접근하도록 허용해야 합니다. 기기 설정에서 변경할 수 있습니다.";
+
+"Position QR code inside the square" = "QR 코드를 사각형 안에 위치시켜 주세요";
+
+"Sign in with QR code" = "QR 코드로 로그인";
+
+"Open any Proton app on the device you want to sign in to" = "로그인하려는 기기에서 Proton 앱을 실행하세요";
+
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "로그인 화면에서 **비밀번호를 잊으셨나요?** 또는 **로그인 문제를 겪고 계신가요?**를 선택하세요(모바일 앱에서는 **도움말**을 선택하세요).";
+
+"Select **Sign in with QR code**. A QR code will appear." = "**QR 코드로 로그인**을 선택하세요. QR 코드가 표시됩니다.";
+
+"On this device, press **Scan QR code** and scan the code." = "이 기기에서 **QR 코드 스캔**을 누르고 코드를 스캔하세요.";
+
+"Security tips" = "보안 팁";
+
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "QR 코드가 포함된 메시지에 주의하세요. 출처를 신뢰하는 경우에만 코드를 스캔해야 합니다.";
+
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton은 예기치 않게 회원님께 QR 코드로 로그인을 절대 요청하지 않습니다.";
+
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton은 **https://proton.me** 또는 공식 Proton 앱이 아닌 QR 코드를 스캔하도록 요청하지 않습니다.";
+
+"Learn more" = "더 알아보기";
+
+"**Security tips**" = "**보안 팁**";

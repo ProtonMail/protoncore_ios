@@ -435,3 +435,57 @@
 "Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
 
 "Password must contain:" = "Password must contain:";
+
+"Access shared" = "Access shared";
+
+"Back to settings" = "Back to settings";
+
+"How to sign in using another device" = "How to sign in using another device";
+
+"Get another device that’s signed in to your Proton Account" = "Get another device that’s signed in to your Proton Account";
+
+"Using that device, open any Proton app and select **Settings**" = "Using that device, open any Proton app and select **Settings**";
+
+"Select **Sign in on another device → Scan QR code**" = "Select **Sign in on another device → Scan QR code**";
+
+"Scan the code to sign in" = "Scan the code to sign in";
+
+"We couldn't sign you in" = "We couldn't sign you in";
+
+"Try generating a new QR code." = "Try generating a new QR code.";
+
+"Generate QR code" = "Generate QR code";
+
+"Please try another sign in method." = "Please try another sign in method.";
+
+"Sign in on another device" = "Sign in on another device";
+
+"How to sign in with QR code" = "How to sign in with QR code";
+
+"Allow camera access" = "Allow camera access";
+
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings.";
+
+"Position QR code inside the square" = "Position QR code inside the square";
+
+"Sign in with QR code" = "Sign in with QR code";
+
+"Open any Proton app on the device you want to sign in to" = "Open any Proton app on the device you want to sign in to";
+
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)";
+
+"Select **Sign in with QR code**. A QR code will appear." = "Select **Sign in with QR code**. A QR code will appear.";
+
+"On this device, press **Scan QR code** and scan the code." = "On this device, press **Scan QR code** and scan the code.";
+
+"Security tips" = "Security tips";
+
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Be cautious of messages with QR codes. Only scan a code if you trust the source.";
+
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton will never contact you unexpectedly asking you to sign in with a QR code.";
+
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app.";
+
+"Learn more" = "بیشتر بدانید";
+
+"**Security tips**" = "**Security tips**";

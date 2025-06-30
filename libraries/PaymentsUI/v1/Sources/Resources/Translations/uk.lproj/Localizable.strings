@@ -2,134 +2,134 @@
 
 "Cancel" = "Скасувати";
 
-"Warning" = "Warning";
+"Warning" = "Попередження";
 
-"Select a plan" = "Select a plan";
+"Select a plan" = "Оберіть тарифний план";
 
-"Current plan" = "Current plan";
+"Current plan" = "Поточний тарифний план";
 
-"Subscription" = "Subscription";
+"Subscription" = "Передплата";
 
-"Upgrade your plan" = "Upgrade your plan";
+"Upgrade your plan" = "Оновіть свій тарифний план";
 
-"Only annual subscriptions without auto-renewal are available inside the mobile app." = "Only annual subscriptions without auto-renewal are available inside the mobile app.";
+"Only annual subscriptions without auto-renewal are available inside the mobile app." = "У програмі для мобільних пристроїв доступні лише річні передплати без автопоновлення.";
 
-"You cannot manage subscriptions inside the mobile application." = "You cannot manage subscriptions inside the mobile application.";
+"You cannot manage subscriptions inside the mobile application." = "Не можна керувати передплатами в програмі для мобільних пристроїв.";
 
-"Your plan will automatically renew on %@" = "Your plan will automatically renew on %@";
+"Your plan will automatically renew on %@" = "Ваш тарифний план автоматично поновиться %@";
 
-"Current plan will expire on %@" = "Current plan will expire on %@";
+"Current plan will expire on %@" = "Поточний тарифний план завершиться %@";
 
-"Contact an administrator to make changes to your Proton subscription." = "Contact an administrator to make changes to your Proton subscription.";
+"Contact an administrator to make changes to your Proton subscription." = "Зверніться до адміністратора для зміни вашої передплати Proton.";
 
-"%1$@ of %2$@" = "%1$@ of %2$@";
+"%1$@ of %2$@" = "%1$@ з %2$@";
 
-"%@ storage" = "%@ storage";
+"%@ storage" = "%@ сховища";
 
-"%@ storage / user" = "%@ storage / user";
+"%@ storage / user" = "%@ сховища на користувача";
 
-"for %@" = "for %@";
+"for %@" = "за %@";
 
-"Custom email addresses" = "Custom email addresses";
+"Custom email addresses" = "Власні адреси е-пошти";
 
-"Priority customer support" = "Priority customer support";
+"Priority customer support" = "Пріоритетна підтримка клієнтів";
 
-"Adblocker (NetShield)" = "Adblocker (NetShield)";
+"Adblocker (NetShield)" = "Блокувальник реклами (NetShield)";
 
-"Streaming service support" = "Streaming service support";
+"Streaming service support" = "Підтримка сервісів потокової трансляції";
 
-"High speed" = "High speed";
+"High speed" = "Висока швидкість";
 
-"Highest speed" = "Highest speed";
+"Highest speed" = "Найвища швидкість";
 
-"Multi-user support" = "Multi-user support";
+"Multi-user support" = "Підтримка кількох користувачів";
 
-"The basic for private and secure communications." = "The basic for private and secure communications.";
+"The basic for private and secure communications." = "Основа для приватного та захищеного спілкування.";
 
-"Full-featured mailbox with advanced protection." = "Full-featured mailbox with advanced protection.";
+"Full-featured mailbox with advanced protection." = "Повноцінна поштова скринька з розширеним захистом.";
 
-"Limited time offer" = "Limited time offer";
+"Limited time offer" = "Обмежена пропозиція";
 
-"Complete payment?" = "Complete payment?";
+"Complete payment?" = "Завершити оплату?";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Тарифний план Proton Bundle вже було ініційовано. Натисніть \"Продовжити\" для завершення обробки платежу та створення вашого облікового запису";
 
-"Complete payment" = "Complete payment";
+"Complete payment" = "Завершити оплату";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "The account setup process could not be finalized due to an unexpected error.\nPlease try again.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Не вдалося завершити процес налаштування облікового запису через неочікувану помилку.\nБудь ласка, спробуйте знову.";
 
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase.";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "Процес покупки в програмі розпочато. Дотримуйтесь інструкцій Apple для завершення чи скасування покупки.";
 
-"In app payments are temporarily unavailable." = "In app payments are temporarily unavailable.";
+"In app payments are temporarily unavailable." = "Платежі у програмі тимчасово недоступні.";
 
-"One plan for all Proton services" = "One plan for all Proton services";
+"One plan for all Proton services" = "Один тарифний план для всіх служб Proton";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "The no-cost starter account designed to empower everyone with privacy by default.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "Безплатний початковий обліковий запис, створений, щоб надати можливості приватності для всіх.";
 
-"The privacy-first email and calendar solution for your everyday communication needs." = "The privacy-first email and calendar solution for your everyday communication needs.";
+"The privacy-first email and calendar solution for your everyday communication needs." = "Зосереджені на приватності електронна пошта й календар, призначенні для задоволення ваших щоденних потреб у спілкуванні.";
 
-"Your privacy and security are our priority." = "Your privacy and security are our priority.";
+"Your privacy and security are our priority." = "Ваша приватність і безпека — наш пріоритет.";
 
-"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "The storage-focused plan with 200 GB of cloud storage to keep your files private.";
+"The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Тарифний план, орієнтований на зберігання даних, який надає 200 ГБ хмарного сховища для захисту приватності ваших файлів.";
 
-"The ultimate privacy pack with access to all premium Proton services." = "The ultimate privacy pack with access to all premium Proton services.";
+"The ultimate privacy pack with access to all premium Proton services." = "Максимальний набір усіх послуг Proton для забезпечення вашої приватності.";
 
-"Only non-renewing annual subscriptions are available via this app" = "Only non-renewing annual subscriptions are available via this app";
+"Only non-renewing annual subscriptions are available via this app" = "У цій програмі доступні лише річні передплати без поновлення";
 
-"Your subscription cannot be managed inside the mobile app." = "Your subscription cannot be managed inside the mobile app.";
+"Your subscription cannot be managed inside the mobile app." = "Вашою передплатою не можна керувати в програмі для мобільних пристроїв.";
 
-"Unlimited folders, labels, and filters" = "Unlimited folders, labels, and filters";
+"Unlimited folders, labels, and filters" = "Необмежена кількість тек, міток і фільтрів";
 
-"Up to %@ storage" = "Up to %@ storage";
+"Up to %@ storage" = "До %@ сховища";
 
-"Free VPN on a single device" = "Free VPN on a single device";
+"Free VPN on a single device" = "Безплатна VPN для одного пристрою";
 
-"Highest VPN speed" = "Highest VPN speed";
+"Highest VPN speed" = "Найвища швидкість VPN";
 
-"Built-in ad-blocker (NetShield)" = "Built-in ad-blocker (NetShield)";
+"Built-in ad-blocker (NetShield)" = "Вбудований блокувальник реклами (NetShield)";
 
-"Access to streaming services globally" = "Access to streaming services globally";
+"Access to streaming services globally" = "Доступ до світових сервісів потокової трансляції";
 
-"Secure Core servers" = "Secure Core servers";
+"Secure Core servers" = "Сервери Secure Core";
 
-"TOR over VPN" = "Tor over VPN";
+"TOR over VPN" = "Tor через VPN";
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "Get %@";
+"Get %@" = "Отримати %@";
 
-"Get Proton for free" = "Get Proton for free";
+"Get Proton for free" = "Отримати Proton безплатно";
 
-"Extend subscription" = "Extend subscription";
+"Extend subscription" = "Продовжити передплату";
 
-"%@ of %@" = "%@ of %@";
+"%@ of %@" = "%@ з %@";
 
-"Connection issues" = "Connection issues";
+"Connection issues" = "Проблеми зі з'єднанням";
 
-"Check your internet connection" = "Check your internet connection";
+"Check your internet connection" = "Перевірте своє з'єднання з інтернетом";
 
-"Strict no-logs policy" = "Strict no-logs policy";
+"Strict no-logs policy" = "Суворе дотримання політики без журналювання";
 
-"Plan successfully upgraded" = "Plan successfully upgraded";
+"Plan successfully upgraded" = "Тарифний план успішно оновлено";
 
-"Integrated 2FA authenticator" = "Integrated 2FA authenticator";
+"Integrated 2FA authenticator" = "Інтегрований автентифікатор 2FA";
 
-"Priority support" = "Priority support";
+"Priority support" = "Пріоритетна підтримка";
 
-"Unlimited devices" = "Unlimited devices";
+"Unlimited devices" = "Необмежена кількість пристроїв";
 
-"Unlimited email aliases" = "Unlimited email aliases";
+"Unlimited email aliases" = "Необмежена кількість псевдонімів е-пошти";
 
-"Unlimited logins and notes" = "Unlimited logins and notes";
+"Unlimited logins and notes" = "Необмежена кількість паролів і нотаток";
 
-"Custom fields" = "Custom fields";
+"Custom fields" = "Власні поля";
 
-"For next-level password management and identity protection." = "For next-level password management and identity protection.";
+"For next-level password management and identity protection." = "Для вдосконаленого керування паролями та захисту особистих даних.";
 
-"Pay monthly" = "Pay monthly";
+"Pay monthly" = "Щомісячна оплата";
 
-"Pay annually" = "Pay annually";
+"Pay annually" = "Щорічна оплата";
 
-"Pay every two years" = "Pay every two years";
+"Pay every two years" = "Оплата кожні два роки";
 
-"Free" = "Free";
+"Free" = "Безплатно";

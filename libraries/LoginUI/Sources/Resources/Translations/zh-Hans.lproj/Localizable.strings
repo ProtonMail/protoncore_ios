@@ -435,3 +435,57 @@
 "Tap into **Settings**, then tap **Sign in to another device**" = "点击进入**设置**，然后点击**登录到另一台设备**";
 
 "Password must contain:" = "密码必须包含：";
+
+"Access shared" = "已授权访问";
+
+"Back to settings" = "返回设置";
+
+"How to sign in using another device" = "如何使用其他设备登入";
+
+"Get another device that’s signed in to your Proton Account" = "获取另一台已登录 Proton 账户的设备";
+
+"Using that device, open any Proton app and select **Settings**" = "使用该设备，打开任何 Proton 应用并选择 **设置**";
+
+"Select **Sign in on another device → Scan QR code**" = "选择 **在其他设备上登录 → 扫描二维码**";
+
+"Scan the code to sign in" = "扫码以登录";
+
+"We couldn't sign you in" = "我们无法为您登录";
+
+"Try generating a new QR code." = "尝试生成新的二维码";
+
+"Generate QR code" = "生成二维码";
+
+"Please try another sign in method." = "请尝试其他登录方式";
+
+"Sign in on another device" = "登录到其他设备";
+
+"How to sign in with QR code" = "如何扫描二维码登录";
+
+"Allow camera access" = "允许相机访问";
+
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "若要使用二维码登录，您需要让 %@ 访问您的摄像头。您可以在设备设置中进行设置。";
+
+"Position QR code inside the square" = "请将二维码放入扫描框";
+
+"Sign in with QR code" = "扫描二维码登录";
+
+"Open any Proton app on the device you want to sign in to" = "在要登录的设备上打开任何 Proton 应用程序";
+
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "在登入屏幕上，选择 **忘记密码** 或 **登入遇到问题？** (在移动应用上，选择 **帮助**)";
+
+"Select **Sign in with QR code**. A QR code will appear." = ". 选择 **扫描二维码登录**，此时便会出现一个二维码。";
+
+"On this device, press **Scan QR code** and scan the code." = "在此设备上，点按 **扫描二维码** 并扫描代码。";
+
+"Security tips" = "安全提示";
+
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "请谨慎对待带有二维码的信息，只有在您信任来源的情况下才扫描二维码。";
+
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton 绝不会突然联系您，并要求您使用二维码登入。";
+
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton 绝不会要求您扫描来自非 **https://proton.me** 或 Proton 官方应用的二维码。";
+
+"Learn more" = "了解详情";
+
+"**Security tips**" = "**安全提示**";
