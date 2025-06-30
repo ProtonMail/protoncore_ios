@@ -402,19 +402,19 @@
 
 "We couldn't sign you in. Please scan a new QR code to try again." = "로그인에 실패했습니다. 다시 시도하려면 새로운 QR 코드를 스캔하세요.";
 
-"We couldn't sign you in. Please sign in with your password." = "We couldn't sign you in. Please sign in with your password.";
+"We couldn't sign you in. Please sign in with your password." = "로그인에 실패했습니다. 비밀번호로 로그인해주세요.";
 
-"New QR code" = "New QR code";
+"New QR code" = "신규 QR 코드";
 
-"Allow access to camera" = "Allow access to camera";
+"Allow access to camera" = "카메라에 접근 권한 허용";
 
-"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "To scan a QR code and sign in to another device, grant Proton %@ access to your camera.";
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "QR 코드를 스캔하고 다른 기기에서 로그인하려면, Proton %@에 카메라 접근 권한을 부여해 주세요.";
 
-"You're always in control: You can change this anytime in your device settings." = "You're always in control: You can change this anytime in your device settings.";
+"You're always in control: You can change this anytime in your device settings." = "항상 설정을 변경하실 수 있습니다: 언제든지 기기 설정에서 변경할 수 있습니다.";
 
 "Settings" = "설정";
 
-"We couldn't load the QR code" = "We couldn't load the QR code";
+"We couldn't load the QR code" = "QR 코드를 불러오는데 실패했습니다";
 
 "Retry" = "재시도";
 
@@ -430,8 +430,8 @@
 
 "Terms and Conditions." = "이용 약관.";
 
-"Tap **Scan QR code**" = "Tap **Scan QR code**";
+"Tap **Scan QR code**" = "**QR 코드 스캔**을 터치해주세요";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "**설정**을 탭한 후 **다른 기기에서 로그인**을 눌러주세요";
 
-"Password must contain:" = "Password must contain:";
+"Password must contain:" = "비밀번호는 다음을 포함해야 합니다:";

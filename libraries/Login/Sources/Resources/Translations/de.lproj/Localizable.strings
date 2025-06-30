@@ -10,7 +10,7 @@
 
 "Code isn't valid" = "Code ist ungültig.";
 
-"Device secret not found" = "Geräteschlüssel nicht gefunden";
+"Device secret not found" = "Das Geheimnis des Geräts wurde nicht gefunden.";
 
 "Passphrase not found" = "Passphrase nicht gefunden";
 

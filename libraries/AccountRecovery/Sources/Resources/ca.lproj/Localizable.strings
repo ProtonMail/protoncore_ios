@@ -6,25 +6,25 @@
 
 "Grace_View_Title" = "Restabliment de la contrasenya";
 
-"We received a password reset request for **%@**." = "Hem rebut una sol·licitud de restabliment de la contrasenya per **%@**";
+"We received a password reset request for **%@**." = "Hem rebut una sol·licitud de restabliment de la contrasenya per a **%@**";
 
-"We received a password reset request for %@." = "Hem rebut una sol·licitud de restabliment de la contrasenya per %@";
+"We received a password reset request for %@." = "Hem rebut una sol·licitud de restabliment de la contrasenya per a %@";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "Si no has sol·licitat restablir la contrasenya, **cancel·la aquesta petició ara**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Si no heu sol·licitat restablir la contrasenya, **cancel·leu aquesta petició ara**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "Si no has sol·licitat restablir la contrasenya, cancel·la aquesta petició ara.";
+"If you didn't ask to reset your password, cancel this request now." = "Si no heu sol·licitat restablir la contrasenya, cancel·leu aquesta petició ara.";
 
-"Password reset requested" = "Restabliment de la contrasenya sol·licitat";
+"Password reset requested" = "S'ha sol·licitat un restabliment de la contrasenya.";
 
 "Insecure_View_line1" = "Ara podeu canviar la contrasenya del compte ";
 
-"You can change your password in %@." = "Pots canviar la teva contrasenya en %@.";
+"You can change your password in %@." = "Podeu canviar la vostra contrasenya a %@.";
 
-"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Per assegurar-nos que ets realment tu qui intenta restablir la contrasenya, esperarem 72 hores abans d'aprovar les sol·licituds.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Per assegurar-nos que sou realment vós qui intenteu restablir la contrasenya, esperarem 72 hores abans d'aprovar cap sol·licitud.";
 
 "Insecure_View_line2" = " lliurement durant ";
 
-"Insecure_View_line3" = "Aneu al dispositiu en què heu iniciat la sessió (en la qual es va iniciar la sol·licitud) per canviar la vostra contrasenya.";
+"Insecure_View_line3" = "Aneu al dispositiu en què heu iniciat la sessió (en el qual es va iniciar la sol·licitud) per canviar la vostra contrasenya.";
 
 "Grace_View_Cancel_Button_CTA" = "Cancel·la la sol·licitud";
 
@@ -38,44 +38,44 @@
 
 "Settings_Item_Value_Insecure" = "Disponible";
 
-"Insecure_View_Cancel_Button_CTA" = "Cancel·la la sol·licitud";
+"Insecure_View_Cancel_Button_CTA" = "Cancel·leu la sol·licitud";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "Si no has sol·licitat restablir la contrasenya, **cancel·la aquesta petició ara**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Si no heu sol·licitat restablir la contrasenya, **cancel·leu aquesta petició ara**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "Si no has sol·licitat restablir la contrasenya, cancel·la aquesta petició ara.";
+"If you didn't ask to reset your password, cancel this request now." = "Si no heu sol·licitat restablir la contrasenya, cancel·leu aquesta petició ara.";
 
-"We received a password reset request for **%@**." = "Hem rebut una sol·licitud de restabliment de la contrasenya per **%@**.";
+"We received a password reset request for **%@**." = "Hem rebut una sol·licitud de restabliment de la contrasenya per a **%@**.";
 
-"We received a password reset request for %@." = "Hem rebut una sol·licitud de restabliment de la contrasenya per %@.";
+"We received a password reset request for %@." = "Hem rebut una sol·licitud de restabliment de la contrasenya per a %@.";
 
-"Password reset cancelled" = "Sol·licitud de restabliment de la contrasenya cancel·lat";
+"Password reset cancelled" = "S'ha cancel·lat el restabliment de la contrasenya.";
 
-"Cancelled by the user" = "Cancel·lat per l'usuari";
+"Cancelled by the user" = "Ha estat cancel·lada per l'usuari";
 
-"Authenticated in another session" = "Autenticat en una altra sessió";
+"Authenticated in another session" = "Ha estat utenticada en una altra sessió";
 
 "none" = "cap";
 
 "The account recovery process expired due to inaction" = "El procés de recuperació del compte ha caducat a causa d'inacció";
 
-"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Si mai has sol·licitat un restabliment de la contrasenya, algú altre podria tenir accés al teu compte. **Canvia la teva contrasenya ara**";
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Si mai heu sol·licitat un restabliment de la contrasenya, algú altre podria tenir accés al vostre compte. **Canvieu la contrasenya ara**";
 
-"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Si mai has sol·licitat un restabliment de la contrasenya, algú altre podria tenir accés al teu compte. Canvia la teva contrasenya ara";
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Si mai heu sol·licitat un restabliment de la contrasenya, algú altre podria tenir accés al vostre compte. Canvieu la contrasenya de seguida";
 
 "The account recovery process expired due to inaction" = "El procés de recuperació del compte ha caducat a causa d'inacció";
 
-"Recovery process not started" = "Procés de recuperació no iniciat";
+"Recovery process not started" = "El procés de recuperació no s'ha iniciat";
 
-"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Actualment no hi ha cap procés de recuperació de compte. Si us plau, aneu a una sessió de l'aplicació web per recuperar la contrasenya.";
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Actualment no hi ha cap procés de recuperació de compte en curs. Si us plau, aneu a una sessió de l'aplicació web per recuperar la contrasenya.";
 
-"You can now reset your password" = "Ara pots restablir la teva contrasenya";
+"You can now reset your password" = "Ara podeu restablir la contrasenya";
 
-"Reset available until %@." = "Restabliment disponible fins %@.";
+"Reset available until %@." = "El restabliment estarà disponible fins %@.";
 
-"Change device to continue" = "Canvia de dispositiu per continuar";
+"Change device to continue" = "Canvieu de dispositiu per continuar";
 
 "To reset your password, go back to your active session on **the originating device**." = "Per restablir la contrasenya, torneu a la sessió activa del **dispositiu d'origen**.";
 
 "To reset your password, go back to your active session on the originating device." = "Per restablir la contrasenya, torneu a la sessió activa del dispositiu d'origen.";
 
-"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Tens %@ per restablir la contrasenya.\nNecesitaràs fer-ho al dispositiu i al navegador des d'on has fet la sol·licitud de restabliment de la contrasenya.\nSi no has sol·licitat restablir la contrasenya, cancel·la aquesta petició ara.";
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Teniu %@ per restablir la contrasenya.\nNecesitareu fer-ho al dispositiu i amb el navegador des d'on ho heu sol·licitat.\nSi no heu estat vós, cancel·la aquesta petició de seguida.";

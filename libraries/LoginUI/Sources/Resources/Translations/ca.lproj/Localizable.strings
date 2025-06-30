@@ -38,7 +38,7 @@
 
 "Sign in with SSO" = "Inicieu la sessió amb SSO";
 
-"Sign in with a QR code" = "Inicia la sessió amb un codi QR";
+"Sign in with a QR code" = "Inicieu la sessió amb un codi QR";
 
 "Sign in to your organization" = "Inicieu la sessió a la vostra organització";
 
@@ -354,7 +354,7 @@
 
 "Open the Proton app on your phone" = "Obriu l'aplicació Proton al vostre telèfon.";
 
-"Tap into Settings, then tap Sign in to another device" = "Toqueu a Preferències i, a continuació, toqueu Inicia la sessió a un altre dispositiu.";
+"Tap into Settings, then tap Sign in to another device" = "Toqueu a Preferències i, a continuació, toqueu Inicieu la sessió a un altre dispositiu.";
 
 "Tap Scan QR code" = "Toqueu Escaneja el codi QR.";
 
@@ -364,7 +364,7 @@
 
 "Sign in with your QR code" = "Inicieu la sessió amb el vostre codi QR";
 
-"Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Utilitzeu aquest dispositiu per escanejar el codi QR que es mostra al dispositiu al qual voleu iniciar la sessió. Tots dos dispositius romandran actius.";
+"Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Utilitzeu aquest dispositiu per escanejar el codi QR que es mostra al dispositiu en què voleu iniciar la sessió. Tots dos dispositius romandran actius.";
 
 "To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "Per accedir al codi QR, toqueu el botó **Inicieu la sessió amb un codi QR** a la pantalla d'inici de sessió.";
 
@@ -400,9 +400,9 @@
 
 "Something went wrong" = "S'ha produït un error.";
 
-"We couldn't sign you in. Please scan a new QR code to try again." = "No hem pogut iniciar la sessió. Escanegeu un codi QR nou per tornar-ho a provar.";
+"We couldn't sign you in. Please scan a new QR code to try again." = "No hem pogut iniciar la sessió. Escanegeu un altre codi QR per tornar-ho a provar.";
 
-"We couldn't sign you in. Please sign in with your password." = "No hem pogut iniciar la sessió.Inicieu la sessió amb la vostra contrasenya.";
+"We couldn't sign you in. Please sign in with your password." = "No hem pogut iniciar la sessió.Torneu-la a iniciar amb la vostra contrasenya.";
 
 "New QR code" = "Codi QR nou";
 
@@ -430,8 +430,8 @@
 
 "Terms and Conditions." = "Termes i condicions.";
 
-"Tap **Scan QR code**" = "Toqueu**Escaneja el codi QR**";
+"Tap **Scan QR code**" = "Toqueu**Escanegeu el codi QR**";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Toqueu **Preferències**, a continuació, toqueu **Inicia sessió a un altre dispositiu**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "Toqueu **Preferències**, a continuació, toqueu **Inicieu sessió a un altre dispositiu**";
 
 "Password must contain:" = "La contrasenya ha de contenir:";

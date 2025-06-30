@@ -2,7 +2,7 @@
 
 "Available_plans_section_title" = "Milloreu el pla";
 
-"Available_subscriptions_view_subtitle" = "Els nostres plans per a la vostra privadesa";
+"Available_subscriptions_view_subtitle" = "Aquests són els nostres plans per a la vostra privadesa";
 
 "Available_subscriptions_view_title" = "Seleccioneu un pla";
 
@@ -10,9 +10,9 @@
 
 "Current_plan_exipiration" = "La subscripció caduca el";
 
-"Current_plan_renewal" = "La subscripció es renova automàticament el";
+"Current_plan_renewal" = "Aquesta subscripció es renova automàticament el";
 
-"Error_view_button_title" = "Reintenta";
+"Error_view_button_title" = "Torneu-ho a provar";
 
 "Error_view_message" = "No hem pogut carregar aquesta pàgina. Actualitzeu la pàgina o comproveu la connexió a Internet.";
 
@@ -30,23 +30,23 @@
 
 "No_filtered_plan_title" = "No s'ha trobat cap pla";
 
-"Plans_footer_disclaimer" = "No podeu gestionar les subscripcions dins de l'aplicació mòbil";
+"Plans_footer_disclaimer" = "No podeu gestionar les subscripcions des de l'aplicació mòbil";
 
-"Purchase_button_title" = "Obtén %@";
+"Purchase_button_title" = "Obtingueu %@";
 
 "Select_plan_nav_title" = "Seleccioneu un pla";
 
 "Subscriptions_nav_title" = "Subscripcions";
 
-"Transaction_cancelled_by_user" = "Transacció cancel·lada per l'usuari";
+"Transaction_cancelled_by_user" = "La transacció ha estat cancel·lada per l'usuari";
 
 "Transaction_process_error" = "S'ha produït un error, torneu-ho a provar. Si el problema persisteix, poseu-vos en contacte amb el nostre equip d'assistència.";
 
-"Transaction_state_payment_account_update_complete" = "Compte millorat";
+"Transaction_state_payment_account_update_complete" = "S'ha actualitzat el compte";
 
 "Transaction_state_payment_account_update_progress" = "S'està actualitzant el compte";
 
-"Transaction_state_payment_confirmation_complete" = "Pagament confirmat";
+"Transaction_state_payment_confirmation_complete" = "S'ha confirmat el pagament";
 
 "Transaction_state_payment_confirmation_progress" = "S'està confirmant el pagament";
 

@@ -1,57 +1,57 @@
-"All_cycle" = "All billing cycles";
+"All_cycle" = "전체 결제 주기";
 
-"Available_plans_section_title" = "Upgrade your plan";
+"Available_plans_section_title" = "플랜 업그레이드";
 
-"Available_subscriptions_view_subtitle" = "Our plans for your privacy";
+"Available_subscriptions_view_subtitle" = "당신의 프라이버시를 위한 모든 플랜";
 
-"Available_subscriptions_view_title" = "Select a plan";
+"Available_subscriptions_view_title" = "플랜 선택하기";
 
-"Current_free_plan_name" = "Free";
+"Current_free_plan_name" = "무료";
 
-"Current_plan_exipiration" = "Your subscription expires on";
+"Current_plan_exipiration" = "구독이 다음 날짜에 종료됨:";
 
-"Current_plan_renewal" = "Your subscription automatically renews on";
+"Current_plan_renewal" = "구독이 다음 날짜에 자동 갱신됨:";
 
-"Error_view_button_title" = "Retry";
+"Error_view_button_title" = "재시도";
 
-"Error_view_message" = "We couldn't load this page. Please refresh the page or check your internet connection.";
+"Error_view_message" = "페이지를 불러올 수 없습니다. 인터넷 연결 상태를 확인하거나 페이지를 새로고침하세요.";
 
-"Error_view_title" = "Something went wrong";
+"Error_view_title" = "문제가 발생했습니다";
 
-"Loading_plans_message" = "Fetching available plans...";
+"Loading_plans_message" = "사용 가능한 요금제 불러오기 중...";
 
-"Monthly_cycle" = "1 month";
+"Monthly_cycle" = "1개월";
 
-"No_available_plan_message" = "Your subscription can't be managed inside the mobile app.";
+"No_available_plan_message" = "모바일 앱에서 구독을 관리할 수 없습니다.";
 
-"No_available_plan_title" = "No available plans found";
+"No_available_plan_title" = "사용 가능한 플랜이 없습니다";
 
-"No_filtered_plan_message" = "Please select a different billing cycle";
+"No_filtered_plan_message" = "다른 결제 주기를 선택해 주세요.";
 
-"No_filtered_plan_title" = "No plans found";
+"No_filtered_plan_title" = "플랜을 찾을 수 없음";
 
-"Plans_footer_disclaimer" = "You cannot manage subscriptions inside the mobile app";
+"Plans_footer_disclaimer" = "모바일 앱에서 구독을 관리할 수 없습니다.";
 
-"Purchase_button_title" = "Get %@";
+"Purchase_button_title" = "%@ 가져오기";
 
-"Select_plan_nav_title" = "Select a plan";
+"Select_plan_nav_title" = "플랜 선택하기";
 
-"Subscriptions_nav_title" = "Subscriptions";
+"Subscriptions_nav_title" = "구독";
 
-"Transaction_cancelled_by_user" = "Transaction cancelled by the user";
+"Transaction_cancelled_by_user" = "거래가 사용자에 의해 취소되었습니다";
 
-"Transaction_process_error" = "Something went wrong, please retry. If the issue persists please contact our support team.";
+"Transaction_process_error" = "문제가 발생했습니다. 다시 시도해 주세요. 문제 재발시 당사 고객 지원팀에 문의해 주세요.";
 
-"Transaction_state_payment_account_update_complete" = "Account updated";
+"Transaction_state_payment_account_update_complete" = "계정 업데이트됨";
 
-"Transaction_state_payment_account_update_progress" = "Updating your account";
+"Transaction_state_payment_account_update_progress" = "계정을 업데이트하는 중";
 
-"Transaction_state_payment_confirmation_complete" = "Payment confirmed";
+"Transaction_state_payment_confirmation_complete" = "결제 수단 승인 완료";
 
-"Transaction_state_payment_confirmation_progress" = "Confirming your payment";
+"Transaction_state_payment_confirmation_progress" = "결제 수단 승인 중";
 
-"Transaction_state_view_subtitle" = "This should take no more than a minute.";
+"Transaction_state_view_subtitle" = "1분 이상 걸리지 않습니다.";
 
-"Transaction_state_view_title" = "Your payment is being verified...";
+"Transaction_state_view_title" = "결제 수단을 확인하는 중...";
 
-"Yearly_cycle" = "12 months";
+"Yearly_cycle" = "12개월";

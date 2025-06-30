@@ -2,7 +2,7 @@
 
 "Available_plans_section_title" = "Abonnement upgraden";
 
-"Available_subscriptions_view_subtitle" = "Unsere Abonnemente für deine Privatsphäre";
+"Available_subscriptions_view_subtitle" = "Unsere Abonnements für deine Privatsphäre";
 
 "Available_subscriptions_view_title" = "Abonnement auswählen";
 
@@ -14,29 +14,29 @@
 
 "Error_view_button_title" = "Wiederholen";
 
-"Error_view_message" = "Diese Seite konnte nicht geladen werden. Bitte die Seite aktualisieren oder die Internetverbindung überprüfen.";
+"Error_view_message" = "Diese Seite konnte nicht geladen werden. Bitte aktualisiere die Seite oder überprüfe deine Internetverbindung.";
 
 "Error_view_title" = "Ein Fehler ist aufgetreten";
 
-"Loading_plans_message" = "Verfügbare Abonnements werden abgerufen ...";
+"Loading_plans_message" = "Verfügbare Abonnements werden abgerufen...";
 
 "Monthly_cycle" = "1 Monat";
 
 "No_available_plan_message" = "Das Abonnement kann nicht über die mobile App verwaltet werden.";
 
-"No_available_plan_title" = "Keine verfügbaren Abonnemente gefunden";
+"No_available_plan_title" = "Keine verfügbaren Abonnements gefunden";
 
 "No_filtered_plan_message" = "Bitte einen anderen Abrechnungszeitraum wählen";
 
-"No_filtered_plan_title" = "Keine Abonnemente gefunden";
+"No_filtered_plan_title" = "Keine Abonnements gefunden";
 
-"Plans_footer_disclaimer" = "Abonnemente können nicht innerhalb der mobilen App verwaltet werden.";
+"Plans_footer_disclaimer" = "Abonnements können nicht innerhalb der mobilen App verwaltet werden.";
 
 "Purchase_button_title" = "%@ kaufen";
 
 "Select_plan_nav_title" = "Abonnement auswählen";
 
-"Subscriptions_nav_title" = "Abonnemente";
+"Subscriptions_nav_title" = "Abonnements";
 
 "Transaction_cancelled_by_user" = "Bezahlvorgang durch den Benutzer abgebrochen";
 
@@ -48,10 +48,10 @@
 
 "Transaction_state_payment_confirmation_complete" = "Zahlung bestätigt";
 
-"Transaction_state_payment_confirmation_progress" = "Bestätigung deine Zahlung";
+"Transaction_state_payment_confirmation_progress" = "Zahlung wird bestätigt";
 
 "Transaction_state_view_subtitle" = "Dies sollte nicht länger als eine Minute dauern.";
 
-"Transaction_state_view_title" = "Deine Zahlung wird überprüft ...";
+"Transaction_state_view_title" = "Deine Zahlung wird überprüft...";
 
 "Yearly_cycle" = "12 Monate";

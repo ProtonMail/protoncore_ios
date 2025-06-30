@@ -6,12 +6,12 @@
 
 "Proton address required" = "Proton-adresse kræves";
 
-"Code doesn't match" = "Code doesn't match";
+"Code doesn't match" = "Kode matcher ikke";
 
-"Code isn't valid" = "Code isn't valid";
+"Code isn't valid" = "Kode er ikke gyldig";
 
-"Device secret not found" = "Device secret not found";
+"Device secret not found" = "Enhedshemmelighed ikke fundet";
 
-"Passphrase not found" = "Passphrase not found";
+"Passphrase not found" = "Adgangssætning blev ikke fundet";
 
 "Password update failed" = "Adgangskodeopdatering mislykkedes";

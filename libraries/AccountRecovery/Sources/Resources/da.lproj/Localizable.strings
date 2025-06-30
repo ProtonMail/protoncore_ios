@@ -56,26 +56,26 @@
 
 "none" = "ingen";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "Processen for gendannelse af konto udløb på grund af inaktivitet";
 
 "If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Hvis du aldrig har anmodet om en nulstilling af din adgangskode, kan en anden have adgang til din konto. **Skift din adgangskode nu**";
 
 "If you never made a password reset request, someone else could have access to your account. Change your password now" = "Hvis du aldrig har lavet en anmodning om nulstilling af adgangskoden, kan en anden have adgang til din konto. Skift din adgangskode nu";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "Processen for gendannelse af konto udløb på grund af inaktivitet";
 
-"Recovery process not started" = "Recovery process not started";
+"Recovery process not started" = "Gendannelsesprocessen er ikke startet";
 
-"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Der er i øjeblikket ingen kontogendannelse i gang. Gå venligst til en session i webapplikationen for at gendanne din adgangskode.";
 
-"You can now reset your password" = "You can now reset your password";
+"You can now reset your password" = "Du kan nu nulstille din adgangskode";
 
 "Reset available until %@." = "Nulstilling tilgængelig indtil %@.";
 
-"Change device to continue" = "Change device to continue";
+"Change device to continue" = "Skift enhed for at fortsætte";
 
-"To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
+"To reset your password, go back to your active session on **the originating device**." = "For at nulstille din adgangskode, skal du gå tilbage til din aktive session på **oprindelsesenheden**.";
 
 "To reset your password, go back to your active session on the originating device." = "For at nulstille din adgangskode, skal du gå tilbage til din aktive session på den oprindelige enhed.";
 
-"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now.";
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Du har %@ til at nulstille din adgangskode.\nDu skal gøre dette på den enhed og browser, som du anmodede om nulstilling af adgangskoden fra.\nHvis du ikke anmodede om at nulstile din adgangskode, så annullér anmodningen nu.";

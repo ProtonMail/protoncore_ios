@@ -1,21 +1,21 @@
-"APIs_malformed_url_request" = "Alguna cosa ha anat malament, i no s'ha pogut complir la vostra sol·licitud. Si el problema persisteix, poseu-vos en contacte amb el servei d'atenció al client.";
+"APIs_malformed_url_request" = "Alguna cosa ha anat malament, i no s'ha pogut completar la vostra sol·licitud. Si el problema persisteix, poseu-vos en contacte amb el servei d'atenció al client.";
 
-"Plans_Manager_impossible_to_get_user_uuid" = "Ha estat impossible obtenir l'UUID de l'usuari per a la transacció";
+"Plans_Manager_impossible_to_get_user_uuid" = "Ha estat impossible obtenir l'UUID de l'usuari per a aquesta transacció";
 
-"Plans_Manager_impossible_to_match_plan" = "Ha estat impossible fer coincidir el pla de Proton amb un pla de l'Apple Store";
+"Plans_Manager_impossible_to_match_plan" = "Ha estat impossible fer coincidir el pla de Proton amb un pla d'Apple Store";
 
 "Plans_Manager_impossible_to_restore_transactions" = "Ha estat impossible restaurar les transaccions. Poseu-vos en contacte amb el servei d'atenció al client.";
 
 "Plans_Manager_Transaction_cancelled_by_user" = "La transacció ha estat cancel·lada per l'usuari";
 
-"Plans_Manager_Transaction_unknown_error" = "S'ha produït un error inesperat. Si persisteix, si us plau, contacteu amb el servei d'atenció al client";
+"Plans_Manager_Transaction_unknown_error" = "S'ha produït un error inesperat. Si persisteix contacteu amb el servei d'atenció al client";
 
 "Plans_Managere_peding_transaction_received" = "S'ha rebut una transacció pendent inesperada";
 
 "PlansComposer_unable_to_fetch_currentSub" = "No s'ha pogut obtenir la subscripció actual";
 
-"Remote_manager_error" = "Alguna cosa ha anat malament, i no s'ha pogut complir la vostra sol·licitud. Si el problema persisteix, poseu-vos en contacte amb el servei d'atenció al client.";
+"Remote_manager_error" = "Alguna cosa ha anat malament i no s'ha pogut complir la vostra sol·licitud. Si el problema persisteix, poseu-vos en contacte amb el servei d'atenció al client.";
 
 "SK_Receipt_impossible_to_get_receipt" = "Impossible obtenir les dades del rebut de transacció d'Apple";
 
-"Transaction_Handler_plan_not_found" = "Ha estat impossible trobar el nom del pla que intenteu comprar. Si el problema persisteix, si us plau, poseu-vos en contacte amb el servei d'atenció al client.";
+"Transaction_Handler_plan_not_found" = "Ha estat impossible trobar el nom del pla que intenteu comprar. Si el problema persisteix poseu-vos en contacte amb el servei d'atenció al client.";

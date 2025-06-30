@@ -1,21 +1,21 @@
 "APIs_malformed_url_request" = "오류가 발생하여 요청을 처리할 수 없습니다. 문제 재발시 고객 지원팀에 문의해 주십시오.";
 
-"Plans_Manager_impossible_to_get_user_uuid" = "It was impossible to get the user’s UUID for the transaction";
+"Plans_Manager_impossible_to_get_user_uuid" = "거래에 대한 사용자의 UUID를 가져오는데 실패했습니다.";
 
-"Plans_Manager_impossible_to_match_plan" = "It was impossible to match the Proton Plan to an Apple Store plan";
+"Plans_Manager_impossible_to_match_plan" = "Proton 플랜을 Apple Store 플랜과 일치시키는데 실패했습니다.";
 
-"Plans_Manager_impossible_to_restore_transactions" = "It was impossible to restore transactions, please contact customer support";
+"Plans_Manager_impossible_to_restore_transactions" = "거래 내역을 복구하는데 실패했습니다. 당사 고객 지원 팀에 문의해 주세요.";
 
-"Plans_Manager_Transaction_cancelled_by_user" = "The transaction has been cancelled by the user";
+"Plans_Manager_Transaction_cancelled_by_user" = "거래가 사용자에 의해 취소되었습니다";
 
-"Plans_Manager_Transaction_unknown_error" = "An unexpected error occured, if this persists, please contact customer support";
+"Plans_Manager_Transaction_unknown_error" = "예기치 못한 오류가 발생했습니다. 만약 재발시 고객 지원 팀으로 문의해 주세요.";
 
-"Plans_Managere_peding_transaction_received" = "Unexpected pending transaction received";
+"Plans_Managere_peding_transaction_received" = "예기치 못한 보류 중인 거래가 수신되었습니다";
 
-"PlansComposer_unable_to_fetch_currentSub" = "Unable to fetch the current subscription";
+"PlansComposer_unable_to_fetch_currentSub" = "현재 구독을 가져올 수 없습니다";
 
-"Remote_manager_error" = "Something went wrong and we couldn't fulfill your request. If the issue persists, please contact customer support.";
+"Remote_manager_error" = "오류가 발생하여 요청을 처리할 수 없습니다. 문제 재발시 고객 지원팀에 문의해 주세요.";
 
-"SK_Receipt_impossible_to_get_receipt" = "Impossible to get transaction receipt data from Apple";
+"SK_Receipt_impossible_to_get_receipt" = "Apple로부터 거래 영수증 데이터를 수신하는데 실패했습니다";
 
-"Transaction_Handler_plan_not_found" = "It was impossible to find the name of the plan you’re trying to purchase. If the issue persists please contact customer support";
+"Transaction_Handler_plan_not_found" = "사용자가 구매를 시도한 플랜의 명칭을 탐색하는데 실패했습니다. 문제 재발시 고객 지원에 문의해 주세요.";
