@@ -294,7 +294,7 @@
 
 "Approve the sign-in from another device" = "Aprovar o login a partir de outro dispositivo";
 
-"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Para ter certeza de que é realmente você que está tentando fazer login, compartilhe o código de confirmação com seu administrador %@ para ele poder aprovar a solicitação para %@.";
+"To make sure it’s really you trying to sign-in, share the confirmation code with your administrator %@ so that they can approve the request for %@." = "Para ter certeza de que é realmente você que está tentando iniciar sessão, compartilhe o código de confirmação com seu administrador %@ para ele poder aprovar a solicitação para %@.";
 
 "To make sure it’s really you trying to sign in to your account, review the confirmation code and approve the request from another device." = "Para ter certeza de que é realmente você que está tentando fazer login na sua conta, revise o código de confirmação e aprove a solicitação de outro dispositivo.";
 
@@ -388,7 +388,7 @@
 
 "Code not recognized. Try again." = "O código não foi reconhecido. Tente novamente.";
 
-"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Dica: Nunca escaneie um código QR de um site ou de uma pessoa em quem você não confia. O Proton nunca pedirá que você escaneie um código QR que não venha do domínio account.proton.me.";
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Dica: Nunca escaneie um código QR de um site ou de uma pessoa em quem você não confia. A Proton nunca pedirá que você escaneie um código QR que não venha do domínio account.proton.me.";
 
 "Camera Access Denied." = "Acesso negado a câmera";
 
@@ -396,19 +396,19 @@
 
 "Go to Settings" = "Ir para Ajustes";
 
-"to Proton %@" = "para o Proton %@";
+"to Proton %@" = "para a Proton %@";
 
 "Something went wrong" = "Algo deu errado";
 
-"We couldn't sign you in. Please scan a new QR code to try again." = "Não conseguimos fazer o login. Por favor, escaneie um novo código QR para tentar novamente.";
+"We couldn't sign you in. Please scan a new QR code to try again." = "Não conseguimos iniciar sessão. Escaneie um novo código QR para tentar novamente.";
 
 "We couldn't sign you in. Please sign in with your password." = "Não conseguimos iniciar sua sessão.Inicie a sessão com sua senha.";
 
-"New QR code" = "Novo QR Code";
+"New QR code" = "Novo código QR";
 
 "Allow access to camera" = "Permitir acesso à câmera";
 
-"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "Para escanear um QR code e iniciar sessão em outro dispositivo, conceda ao Proton %@ acesso à sua câmera.";
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "Para escanear um código QR e iniciar sessão em outro dispositivo, conceda ao Proton %@ acesso à sua câmera.";
 
 "You're always in control: You can change this anytime in your device settings." = "Você está sempre no controle: você pode alterar isso a qualquer momento nas configurações do seu dispositivo.";
 
@@ -450,7 +450,7 @@
 
 "Scan the code to sign in" = "Escaneie o código para iniciar sessão";
 
-"We couldn't sign you in" = "Não foi possível fazer login";
+"We couldn't sign you in" = "Não foi possível iniciar sessão";
 
 "Try generating a new QR code." = "Tente gerar um novo código QR.";
 
@@ -464,7 +464,7 @@
 
 "Allow camera access" = "Permitir acesso à câmera";
 
-"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "Para fazer login com o código QR, você precisará permitir que a Proton %@ acesse sua câmera. Você pode fazer isso nas configurações do seu dispositivo.";
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "Para iniciar sessão com o código QR, você precisará permitir que a Proton %@ acesse sua câmera. Você pode fazer isso nas configurações do seu dispositivo.";
 
 "Position QR code inside the square" = "Coloque o código QR no quadrado.";
 
