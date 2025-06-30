@@ -438,39 +438,39 @@
 
 "Access shared" = "Access shared";
 
-"Back to settings" = "Back to settings";
+"Back to settings" = "Takaisin asetuksiin";
 
-"How to sign in using another device" = "How to sign in using another device";
+"How to sign in using another device" = "Miten kirjaudut toisella laitteella";
 
-"Get another device that’s signed in to your Proton Account" = "Get another device that’s signed in to your Proton Account";
+"Get another device that’s signed in to your Proton Account" = "Ota toinen laite, joka on kirjautunut sisään Proton-tilillesi";
 
-"Using that device, open any Proton app and select **Settings**" = "Using that device, open any Proton app and select **Settings**";
+"Using that device, open any Proton app and select **Settings**" = "Avaa kyseisellä laitteella mikä tahansa Proton-sovellus ja valitse **Asetukset**";
 
-"Select **Sign in on another device → Scan QR code**" = "Select **Sign in on another device → Scan QR code**";
+"Select **Sign in on another device → Scan QR code**" = "Valitse **Kirjaudu toisella laitteella → Skannaa QR-koodi**";
 
-"Scan the code to sign in" = "Scan the code to sign in";
+"Scan the code to sign in" = "Skannaa koodi kirjautuaksesi sisään";
 
 "We couldn't sign you in" = "We couldn't sign you in";
 
-"Try generating a new QR code." = "Try generating a new QR code.";
+"Try generating a new QR code." = "Yritä luoda uusi QR-koodi.";
 
-"Generate QR code" = "Generate QR code";
+"Generate QR code" = "Luo QR-koodi";
 
-"Please try another sign in method." = "Please try another sign in method.";
+"Please try another sign in method." = "Kokeile toista kirjautumistapaa.";
 
-"Sign in on another device" = "Sign in on another device";
+"Sign in on another device" = "Kirjaudu toisella laitteella";
 
-"How to sign in with QR code" = "How to sign in with QR code";
+"How to sign in with QR code" = "Miten kirjaudut QR-koodilla";
 
 "Allow camera access" = "Allow camera access";
 
 "To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings.";
 
-"Position QR code inside the square" = "Position QR code inside the square";
+"Position QR code inside the square" = "Aseta QR-koodi neliön sisälle";
 
-"Sign in with QR code" = "Sign in with QR code";
+"Sign in with QR code" = "Kirjaudu QR-koodilla";
 
-"Open any Proton app on the device you want to sign in to" = "Open any Proton app on the device you want to sign in to";
+"Open any Proton app on the device you want to sign in to" = "Avaa mikä tahansa Proton-sovellus laitteella, johon haluat kirjautua";
 
 "On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)";
 
@@ -478,14 +478,14 @@
 
 "On this device, press **Scan QR code** and scan the code." = "On this device, press **Scan QR code** and scan the code.";
 
-"Security tips" = "Security tips";
+"Security tips" = "Turvallisuusvinkkejä";
 
-"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Be cautious of messages with QR codes. Only scan a code if you trust the source.";
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Ole varovainen QR-koodeja sisältävien viestien kanssa. Skannaa koodi vain, jos luotat lähteeseen.";
 
-"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton will never contact you unexpectedly asking you to sign in with a QR code.";
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton ei koskaan ota sinuun yllättäen yhteyttä ja pyydä kirjautumaan sisään QR-koodilla.";
 
-"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app.";
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton ei koskaan pyydä sinua skannaamaan QR-koodia, joka ei ole peräisin **https://proton.me**-sivustolta tai virallisesta Proton-sovelluksesta.";
 
 "Learn more" = "Lue lisää";
 
-"**Security tips**" = "**Security tips**";
+"**Security tips**" = "**Turvallisuusvinkkejä**";

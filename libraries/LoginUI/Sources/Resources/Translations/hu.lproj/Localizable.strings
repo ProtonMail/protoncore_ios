@@ -436,56 +436,56 @@
 
 "Password must contain:" = "A jelszónak tartalmaznia kell:";
 
-"Access shared" = "Access shared";
+"Access shared" = "Megosztott elérés";
 
-"Back to settings" = "Back to settings";
+"Back to settings" = "Vissza a beállításokhoz";
 
-"How to sign in using another device" = "How to sign in using another device";
+"How to sign in using another device" = "Hogyan lehet bejelentkezni másik eszközzel";
 
-"Get another device that’s signed in to your Proton Account" = "Get another device that’s signed in to your Proton Account";
+"Get another device that’s signed in to your Proton Account" = "Vegyen elő egy másik eszközt, amely be van jelentkezve a Proton fiókjába";
 
-"Using that device, open any Proton app and select **Settings**" = "Using that device, open any Proton app and select **Settings**";
+"Using that device, open any Proton app and select **Settings**" = "Ezzel az eszközzel nyissa meg bármely Proton alkalmazást, és válassza a **Beállítások** lehetőséget";
 
-"Select **Sign in on another device → Scan QR code**" = "Select **Sign in on another device → Scan QR code**";
+"Select **Sign in on another device → Scan QR code**" = "Válassza ezt: **Bejelentkezés másik eszközön → QR-kód beolvasása**";
 
-"Scan the code to sign in" = "Scan the code to sign in";
+"Scan the code to sign in" = "Olvassa be a kódot a bejelentkezéshez";
 
-"We couldn't sign you in" = "We couldn't sign you in";
+"We couldn't sign you in" = "Nem sikerült bejelentkeztetni";
 
-"Try generating a new QR code." = "Try generating a new QR code.";
+"Try generating a new QR code." = "Próbáljon új QR-kódot létrehozni.";
 
-"Generate QR code" = "Generate QR code";
+"Generate QR code" = "QR-kód létrehozása";
 
-"Please try another sign in method." = "Please try another sign in method.";
+"Please try another sign in method." = "Próbálkozzon másik bejelentkezési módszerrel.";
 
-"Sign in on another device" = "Sign in on another device";
+"Sign in on another device" = "Jelentkezzen be másik eszközön";
 
-"How to sign in with QR code" = "How to sign in with QR code";
+"How to sign in with QR code" = "Hogyan lehet bejelentkezni QR-kóddal";
 
-"Allow camera access" = "Allow camera access";
+"Allow camera access" = "Kamera-hozzáférés engedélyezése";
 
-"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings.";
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "QR-kóddal történő bejelentkezéshez engedélyeznie kell a Proton %@ alkalmazásnak a hozzáférést a kamerájához. Ezt az eszköz beállításaiban teheti meg.";
 
-"Position QR code inside the square" = "Position QR code inside the square";
+"Position QR code inside the square" = "A QR-kód legyen a négyzeten belül";
 
-"Sign in with QR code" = "Sign in with QR code";
+"Sign in with QR code" = "Bejelentkezés QR-kóddal";
 
-"Open any Proton app on the device you want to sign in to" = "Open any Proton app on the device you want to sign in to";
+"Open any Proton app on the device you want to sign in to" = "Nyisson meg bármely Proton alkalmazást azon az eszközön, amelyen be szeretne jelentkezni";
 
-"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)";
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "A bejelentkezés képernyőn válassza ki a **Elfelejtett jelszó** vagy **Probléma a bejelentkezéssel?** (mobil alkalmazásokon válassza ki a **Súgó**-t)";
 
-"Select **Sign in with QR code**. A QR code will appear." = "Select **Sign in with QR code**. A QR code will appear.";
+"Select **Sign in with QR code**. A QR code will appear." = "Kiválasztás: **Bejelentkezés QR kóddal**. Megjelenik egy QR kód.";
 
-"On this device, press **Scan QR code** and scan the code." = "On this device, press **Scan QR code** and scan the code.";
+"On this device, press **Scan QR code** and scan the code." = "Ezen az eszközön nyomja meg a **QR-kód beolvasása** gombot, és olvassa be a kódot.";
 
-"Security tips" = "Security tips";
+"Security tips" = "Biztonsági tippek";
 
-"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Be cautious of messages with QR codes. Only scan a code if you trust the source.";
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Legyen óvatos a QR kódot tartalmazó üzenetekkel. Csak akkor olvasson be egy kódot, ha megbízható a forrás.";
 
-"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton will never contact you unexpectedly asking you to sign in with a QR code.";
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "A Proton soha nem keresi meg Önt arra kérve, hogy jelentkezzen be QR-kóddal.";
 
-"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app.";
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "A Proton soha nem fogja arra kérni, hogy olyan QR-kódot olvasson be, amely nem a **https://proton.me** címről vagy egy hivatalos Proton alkalmazásból származik.";
 
 "Learn more" = "További információk";
 
-"**Security tips**" = "**Security tips**";
+"**Security tips**" = "**Biztonsági tippek**";

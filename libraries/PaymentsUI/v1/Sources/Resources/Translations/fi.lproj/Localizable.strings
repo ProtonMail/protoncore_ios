@@ -68,7 +68,7 @@
 
 "The privacy-first email and calendar solution for your everyday communication needs." = "The privacy-first email and calendar solution for your everyday communication needs.";
 
-"Your privacy and security are our priority." = "Your privacy and security are our priority.";
+"Your privacy and security are our priority." = "Yksityisyytesi ja tietoturvasi ovat meille ensisijaisia.";
 
 "The storage-focused plan with 200 GB of cloud storage to keep your files private." = "The storage-focused plan with 200 GB of cloud storage to keep your files private.";
 
@@ -78,58 +78,58 @@
 
 "Your subscription cannot be managed inside the mobile app." = "Your subscription cannot be managed inside the mobile app.";
 
-"Unlimited folders, labels, and filters" = "Unlimited folders, labels, and filters";
+"Unlimited folders, labels, and filters" = "Rajattomasti kansioita, tunnisteita ja suodattimia";
 
-"Up to %@ storage" = "Up to %@ storage";
+"Up to %@ storage" = "Jopa %@ tallennustilaa";
 
-"Free VPN on a single device" = "Free VPN on a single device";
+"Free VPN on a single device" = "Ilmainen VPN yhdelle laitteelle";
 
-"Highest VPN speed" = "Highest VPN speed";
+"Highest VPN speed" = "Korkein VPN-nopeus";
 
-"Built-in ad-blocker (NetShield)" = "Built-in ad-blocker (NetShield)";
+"Built-in ad-blocker (NetShield)" = "Sisäänrakennettu mainosesto (NetShield)";
 
-"Access to streaming services globally" = "Access to streaming services globally";
+"Access to streaming services globally" = "Käytä suoratoistopalveluita maailmanlaajuisesti";
 
-"Secure Core servers" = "Secure Core servers";
+"Secure Core servers" = "Secure Core -palvelimet";
 
-"TOR over VPN" = "Tor over VPN";
+"TOR over VPN" = "Tor + VPN";
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "Get %@";
+"Get %@" = "Hanki %@";
 
-"Get Proton for free" = "Get Proton for free";
+"Get Proton for free" = "Hanki Proton ilmaiseksi";
 
-"Extend subscription" = "Extend subscription";
+"Extend subscription" = "Jatka tilausta";
 
-"%@ of %@" = "%@ of %@";
+"%@ of %@" = "%@/%@";
 
-"Connection issues" = "Connection issues";
+"Connection issues" = "Yhteysongelmia";
 
-"Check your internet connection" = "Check your internet connection";
+"Check your internet connection" = "Tarkista Internet-yhteytesi";
 
-"Strict no-logs policy" = "Strict no-logs policy";
+"Strict no-logs policy" = "Tiukka lokivapaa käytäntö";
 
-"Plan successfully upgraded" = "Plan successfully upgraded";
+"Plan successfully upgraded" = "Tilaus on päivitetty";
 
-"Integrated 2FA authenticator" = "Integrated 2FA authenticator";
+"Integrated 2FA authenticator" = "Sisäänrakennettu kaksivaiheinen todentaja";
 
-"Priority support" = "Priority support";
+"Priority support" = "Ensisijainen tuki";
 
-"Unlimited devices" = "Unlimited devices";
+"Unlimited devices" = "Rajattomasti laitteita";
 
-"Unlimited email aliases" = "Unlimited email aliases";
+"Unlimited email aliases" = "Rajattomasti sähköpostialiaksia";
 
-"Unlimited logins and notes" = "Unlimited logins and notes";
+"Unlimited logins and notes" = "Rajattomasti kirjautumistietoja ja muistiinpanoja";
 
-"Custom fields" = "Custom fields";
+"Custom fields" = "Mukautetut kentät";
 
-"For next-level password management and identity protection." = "For next-level password management and identity protection.";
+"For next-level password management and identity protection." = "Edistyneempään salasanojen hallintaan ja henkilöllisyyden suojaukseen.";
 
-"Pay monthly" = "Pay monthly";
+"Pay monthly" = "Maksa kuukausittain";
 
-"Pay annually" = "Pay annually";
+"Pay annually" = "Maksa vuosittain";
 
-"Pay every two years" = "Pay every two years";
+"Pay every two years" = "Maksa kahden vuoden välein";
 
 "Free" = "Free";
