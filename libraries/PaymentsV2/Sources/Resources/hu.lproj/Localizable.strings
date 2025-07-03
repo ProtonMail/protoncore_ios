@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "Váratlan hiba történt. Ha ez továbbra is fennáll, kérjük, forduljon az ügyfélszolgálathoz.";
 
-"Plans_Managere_peding_transaction_received" = "Váratlan függőben lévő tranzakció érkezett.";
+"Plans_Manager_pending_transaction_received" = "Váratlan függőben lévő tranzakció érkezett.";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Nem sikerült lekérni az aktuális előfizetést";
 

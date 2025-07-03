@@ -35,6 +35,8 @@ public enum TransactionHandlerError: LocalizedError {
 
     public var errorDescription: String? {
         switch self {
+        case .transactionIdNotEqualToOriginalTransactionId:
+            return PaymentsV2Localizer.Transaction_Handler_repeated_purchase.l10n
         default:
             return PaymentsV2Localizer.Transaction_Handler_plan_not_found.l10n
         }

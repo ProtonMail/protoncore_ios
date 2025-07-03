@@ -61,7 +61,7 @@ public enum ProtonPlansManagerError: LocalizedError {
         case .transactionUnknownError:
             return PaymentsV2Localizer.Plans_Manager_Transaction_unknown_error.l10n
         case .transactionPending:
-            return PaymentsV2Localizer.Plans_Managere_peding_transaction_received.l10n
+            return PaymentsV2Localizer.Plans_Manager_pending_transaction_received.l10n
         }
     }
 
@@ -200,6 +200,7 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
                 debugPrint("Transaction completed ✅")
                 return matchingPlan
             } catch {
+                TransactionsObserver.shared.removeTransactionInProgress(transaction.id)
                 debugPrint(error)
                 throw error
             }

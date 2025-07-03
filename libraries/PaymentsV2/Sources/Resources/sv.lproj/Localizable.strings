@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "Ett oväntat fel uppstod. Om detta kvarstår, kontakta kundsupport";
 
-"Plans_Managere_peding_transaction_received" = "Oväntad väntande transaktion mottagen";
+"Plans_Manager_pending_transaction_received" = "Oväntad väntande transaktion mottagen";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Kan inte hämta nuvarande prenumerationen";
 

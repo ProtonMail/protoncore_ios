@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "Παρουσιάστηκε ένα μη αναμενόμενο σφάλμα, αν αυτό παραμένει, παρακαλούμε επικοινωνήστε με την εξυπηρέτηση πελατών.";
 
-"Plans_Managere_peding_transaction_received" = "Λήφθηκε μη αναμενόμενη εκκρεμής συναλλαγή";
+"Plans_Manager_pending_transaction_received" = "Λήφθηκε μη αναμενόμενη εκκρεμής συναλλαγή";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Δεν είναι δυνατή η ανάκτηση της τρέχουσας συνδρομής";
 
