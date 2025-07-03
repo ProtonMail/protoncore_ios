@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "Si è verificato un errore imprevisto. Se il problema persiste, contatta l'assistenza clienti.";
 
-"Plans_Managere_peding_transaction_received" = "Transazione in sospeso inaspettata ricevuta";
+"Plans_Manager_pending_transaction_received" = "Transazione in sospeso inaspettata ricevuta";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Impossibile recuperare l'abbonamento attuale";
 

@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "예기치 못한 오류가 발생했습니다. 만약 재발시 고객 지원 팀으로 문의해 주세요.";
 
-"Plans_Managere_peding_transaction_received" = "예기치 못한 보류 중인 거래가 수신되었습니다";
+"Plans_Manager_pending_transaction_received" = "예기치 못한 보류 중인 거래가 수신되었습니다";
 
 "PlansComposer_unable_to_fetch_currentSub" = "현재 구독을 가져올 수 없습니다";
 

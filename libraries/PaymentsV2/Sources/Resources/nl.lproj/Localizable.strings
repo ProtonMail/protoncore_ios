@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "Er is een onverwachte fout opgetreden, als dit aanhoudt, neem contact op met de klantenservice";
 
-"Plans_Managere_peding_transaction_received" = "Onverwachte transactie in behandeling ontvangen";
+"Plans_Manager_pending_transaction_received" = "Onverwachte transactie in behandeling ontvangen";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Kan het huidige abonnement niet ophalen";
 

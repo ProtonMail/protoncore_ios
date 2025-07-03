@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "Der opstod en ukendt fejl. Hvis dette fortsætter, venligst kontakt kundesupport.";
 
-"Plans_Managere_peding_transaction_received" = "Uventet afventende transaktion modtaget";
+"Plans_Manager_pending_transaction_received" = "Uventet afventende transaktion modtaget";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Kunne ikke hente det aktuelle abonnement";
 
