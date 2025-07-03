@@ -436,56 +436,56 @@
 
 "Password must contain:" = "Пароль повинен містити:";
 
-"Access shared" = "Access shared";
+"Access shared" = "Доступ надано";
 
-"Back to settings" = "Back to settings";
+"Back to settings" = "Повернутись до налаштувань";
 
-"How to sign in using another device" = "How to sign in using another device";
+"How to sign in using another device" = "Як увійти за допомогою іншого пристрою";
 
-"Get another device that’s signed in to your Proton Account" = "Get another device that’s signed in to your Proton Account";
+"Get another device that’s signed in to your Proton Account" = "Візьміть інший пристрій, на якому виконано вхід у ваш обліковий запис Proton";
 
-"Using that device, open any Proton app and select **Settings**" = "Using that device, open any Proton app and select **Settings**";
+"Using that device, open any Proton app and select **Settings**" = "Використовуючи той пристрій, відкрийте програму Proton і перейдіть в **Налаштування**";
 
-"Select **Sign in on another device → Scan QR code**" = "Select **Sign in on another device → Scan QR code**";
+"Select **Sign in on another device → Scan QR code**" = "Виберіть **Увійти на іншому пристрої → Сканувати QR-код**";
 
-"Scan the code to sign in" = "Scan the code to sign in";
+"Scan the code to sign in" = "Скануйте код, щоб увійти";
 
-"We couldn't sign you in" = "We couldn't sign you in";
+"We couldn't sign you in" = "Не вдається виконати вхід";
 
-"Try generating a new QR code." = "Try generating a new QR code.";
+"Try generating a new QR code." = "Спробуйте згенерувати новий QR-код.";
 
-"Generate QR code" = "Generate QR code";
+"Generate QR code" = "Згенерувати QR-код";
 
-"Please try another sign in method." = "Please try another sign in method.";
+"Please try another sign in method." = "Спробуйте інший спосіб входу.";
 
-"Sign in on another device" = "Sign in on another device";
+"Sign in on another device" = "Увійти на іншому пристрої";
 
-"How to sign in with QR code" = "How to sign in with QR code";
+"How to sign in with QR code" = "Як увійти за допомогою QR-коду";
 
-"Allow camera access" = "Allow camera access";
+"Allow camera access" = "Дозволити доступ до камери";
 
-"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings.";
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "Щоб увійти за допомогою QR-коду, необхідно дозволити Proton %@ доступ до вашої камери. Це можна зробити в налаштуваннях пристрою.";
 
-"Position QR code inside the square" = "Position QR code inside the square";
+"Position QR code inside the square" = "Наведіть QR-код у межі квадрата";
 
-"Sign in with QR code" = "Sign in with QR code";
+"Sign in with QR code" = "Увійти за допомогою QR-коду";
 
-"Open any Proton app on the device you want to sign in to" = "Open any Proton app on the device you want to sign in to";
+"Open any Proton app on the device you want to sign in to" = "Відкрийте програму Proton на пристрої, на якому хочете ввійти";
 
-"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)";
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "На екрані входу виберіть **Забули пароль** або **Проблеми з входом?** (у мобільних програмах виберіть **Довідка**)";
 
-"Select **Sign in with QR code**. A QR code will appear." = "Select **Sign in with QR code**. A QR code will appear.";
+"Select **Sign in with QR code**. A QR code will appear." = "Виберіть **Увійти за допомогою QR-коду**. З'явиться QR-код.";
 
-"On this device, press **Scan QR code** and scan the code." = "On this device, press **Scan QR code** and scan the code.";
+"On this device, press **Scan QR code** and scan the code." = "На цьому пристрої натисніть **Сканувати QR-код**, щоб завершити вхід.";
 
-"Security tips" = "Security tips";
+"Security tips" = "Поради з безпеки";
 
-"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Be cautious of messages with QR codes. Only scan a code if you trust the source.";
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Будьте обережні з повідомленнями, що містять QR-коди. Скануйте код, лише якщо довіряєте джерелу.";
 
-"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton will never contact you unexpectedly asking you to sign in with a QR code.";
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton ніколи не звернеться до вас без попередження з проханням увійти за допомогою QR-коду.";
 
-"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app.";
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton ніколи не попросить вас сканувати QR-код з інших джерел, окрім **https://proton.me** або офіційної програми Proton.";
 
 "Learn more" = "Докладніше";
 
-"**Security tips**" = "**Security tips**";
+"**Security tips**" = "**Поради з безпеки**";
