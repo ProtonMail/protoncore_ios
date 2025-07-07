@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "Une erreur inattendue s'est produite. Si le problème persiste, veuillez contacter le service client.";
 
-"Plans_Manager_pending_transaction_received" = "Transaction en attente inattendue reçue";
+"Plans_Manager_peding_transaction_received" = "Transaction en attente inattendue reçue";
 
 "PlansComposer_unable_to_fetch_currentSub" = "La récupération de l'abonnement actuel n'a pas abouti.";
 
@@ -19,3 +19,5 @@
 "SK_Receipt_impossible_to_get_receipt" = "L'obtention des données de l'accusé de réception de la transaction d'Apple n'a pas abouti.";
 
 "Transaction_Handler_plan_not_found" = "Le nom de l’abonnement que vous essayez d’acheter est introuvable. Si le problème persiste, veuillez contacter le service client.";
+
+"Transaction_Handler_repeated_purchase" = "It's not possible to renew the selected plan multiple times. If you think this is an error or if the issue persists please contact our customer support";

@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "Ett oväntat fel uppstod. Om detta kvarstår, kontakta kundsupport";
 
-"Plans_Manager_pending_transaction_received" = "Oväntad väntande transaktion mottagen";
+"Plans_Manager_peding_transaction_received" = "Unexpected pending transaction received";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Kan inte hämta nuvarande prenumerationen";
 
@@ -19,3 +19,5 @@
 "SK_Receipt_impossible_to_get_receipt" = "Impossible to get transaction receipt data from Apple";
 
 "Transaction_Handler_plan_not_found" = "Det var omöjligt att hitta namnet på paketet du försöker köpa. Om problemet kvarstår, kontakta kundsupport";
+
+"Transaction_Handler_repeated_purchase" = "It's not possible to renew the selected plan multiple times. If you think this is an error or if the issue persists please contact our customer support";

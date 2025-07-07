@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "Ein unerwarteter Fehler ist aufgetreten. Wenn das Problem weiterhin besteht, wende dich bitte an den Kundensupport.";
 
-"Plans_Manager_pending_transaction_received" = "Unerwartete ausstehende Transaktion empfangen";
+"Plans_Manager_peding_transaction_received" = "Unerwartete ausstehende Transaktion empfangen";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Das aktuelle Abonnement konnte nicht abgerufen werden";
 
@@ -19,3 +19,5 @@
 "SK_Receipt_impossible_to_get_receipt" = "Es war unmöglich, Buchungsbelegdaten von Apple abzurufen";
 
 "Transaction_Handler_plan_not_found" = "Es war nicht möglich, den Namen des Pakets zu finden, das du zu kaufen versuchst. Wenn das Problem weiterhin besteht, wenden dich bitte an den Kundendienst";
+
+"Transaction_Handler_repeated_purchase" = "Es ist nicht möglich, den ausgewählten Abonnement mehrfach zu verlängern. Wenn Sie glauben, dass es sich um einen Fehler handelt oder das Problem weiterhin besteht, wenden Sie sich bitte an unseren Kundensupport";

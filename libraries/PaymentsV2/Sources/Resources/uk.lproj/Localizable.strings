@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "Сталася невідома помилка. Якщо це повторюватиметься, зверніться до клієнтської підтримки.";
 
-"Plans_Manager_pending_transaction_received" = "Отримано неочікувану незавершену транзакцію";
+"Plans_Manager_peding_transaction_received" = "Unexpected pending transaction received";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Не вдається отримати поточну передплату";
 
@@ -19,3 +19,5 @@
 "SK_Receipt_impossible_to_get_receipt" = "Неможливо отримати дані про підтвердження транзакції від Apple";
 
 "Transaction_Handler_plan_not_found" = "Не вдалося знайти назву тарифного плану, який ви намагаєтеся придбати. Якщо проблема повторюватиметься, зверніться до клієнтської підтримки.";
+
+"Transaction_Handler_repeated_purchase" = "It's not possible to renew the selected plan multiple times. If you think this is an error or if the issue persists please contact our customer support";

@@ -1,57 +1,57 @@
-"All_cycle" = "All billing cycles";
+"All_cycle" = "すべての支払い間隔";
 
-"Available_plans_section_title" = "Upgrade your plan";
+"Available_plans_section_title" = "プランをアップグレード";
 
-"Available_subscriptions_view_subtitle" = "Our plans for your privacy";
+"Available_subscriptions_view_subtitle" = "お客様のプライバシーに関する私たちのプラン";
 
-"Available_subscriptions_view_title" = "Select a plan";
+"Available_subscriptions_view_title" = "プランを選択";
 
-"Current_free_plan_name" = "Free";
+"Current_free_plan_name" = "無料";
 
-"Current_plan_exipiration" = "Your subscription expires on";
+"Current_plan_exipiration" = "サブスクリプションの有効期限は";
 
-"Current_plan_renewal" = "Your subscription automatically renews on";
+"Current_plan_renewal" = "お客様のサブスクリプションは自動的に更新されます";
 
-"Error_view_button_title" = "Retry";
+"Error_view_button_title" = "再試行";
 
-"Error_view_message" = "We couldn't load this page. Please refresh the page or check your internet connection.";
+"Error_view_message" = "ページが読み込めませんでした。再読み込みするか、インターネット接続をご確認ください。";
 
-"Error_view_title" = "Something went wrong";
+"Error_view_title" = "何か問題が発生しました";
 
-"Loading_plans_message" = "Fetching available plans...";
+"Loading_plans_message" = "現在のプランを取得しています...";
 
-"Monthly_cycle" = "1 month";
+"Monthly_cycle" = "1ヶ月";
 
-"No_available_plan_message" = "Your subscription can't be managed inside the mobile app.";
+"No_available_plan_message" = "サブスクリプションはモバイル アプリ内では管理できません。";
 
-"No_available_plan_title" = "No available plans found";
+"No_available_plan_title" = "利用可能なプランが見つかりませんでした";
 
-"No_filtered_plan_message" = "Please select a different billing cycle";
+"No_filtered_plan_message" = "異なる支払い間隔を選択してください";
 
-"No_filtered_plan_title" = "No plans found";
+"No_filtered_plan_title" = "プランが見つかりません";
 
-"Plans_footer_disclaimer" = "You cannot manage subscriptions inside the mobile app";
+"Plans_footer_disclaimer" = "モバイルアプリからサブスクリプションを管理することはできません。";
 
-"Purchase_button_title" = "Get %@";
+"Purchase_button_title" = "%@を入手";
 
-"Select_plan_nav_title" = "Select a plan";
+"Select_plan_nav_title" = "プランを選択";
 
-"Subscriptions_nav_title" = "Subscriptions";
+"Subscriptions_nav_title" = "サブスクリプション";
 
-"Transaction_cancelled_by_user" = "Transaction cancelled by the user";
+"Transaction_cancelled_by_user" = "トランザクションはユーザーによってキャンセルされました";
 
-"Transaction_process_error" = "Something went wrong, please retry. If the issue persists please contact our support team.";
+"Transaction_process_error" = "何か問題が発生ました、再度お試しください。もしこの問題が解決しない場合には、サポートチームにご連絡ください。";
 
-"Transaction_state_payment_account_update_complete" = "Account updated";
+"Transaction_state_payment_account_update_complete" = "アカウントが更新されました";
 
-"Transaction_state_payment_account_update_progress" = "Updating your account";
+"Transaction_state_payment_account_update_progress" = "アカウントを更新しています";
 
-"Transaction_state_payment_confirmation_complete" = "Payment confirmed";
+"Transaction_state_payment_confirmation_complete" = "支払いが確認されました";
 
-"Transaction_state_payment_confirmation_progress" = "Confirming your payment";
+"Transaction_state_payment_confirmation_progress" = "支払いを確認しています";
 
-"Transaction_state_view_subtitle" = "This should take no more than a minute.";
+"Transaction_state_view_subtitle" = "これにはそんなに時間はかかりません。";
 
-"Transaction_state_view_title" = "Your payment is being verified...";
+"Transaction_state_view_title" = "お客様のお支払いを検証しています...";
 
-"Yearly_cycle" = "12 months";
+"Yearly_cycle" = "12ヶ月";

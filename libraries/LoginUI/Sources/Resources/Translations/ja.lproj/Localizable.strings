@@ -436,56 +436,56 @@
 
 "Password must contain:" = "パスワードは以下を含める必要があります:";
 
-"Access shared" = "Access shared";
+"Access shared" = "アクセスが共有されました";
 
-"Back to settings" = "Back to settings";
+"Back to settings" = "設定に戻る";
 
-"How to sign in using another device" = "How to sign in using another device";
+"How to sign in using another device" = "ほかのデバイスを使ってサインインする方法";
 
-"Get another device that’s signed in to your Proton Account" = "Get another device that’s signed in to your Proton Account";
+"Get another device that’s signed in to your Proton Account" = "お客様のProtonアカウントにサインイン済みの別のデバイスを用意します";
 
-"Using that device, open any Proton app and select **Settings**" = "Using that device, open any Proton app and select **Settings**";
+"Using that device, open any Proton app and select **Settings**" = "そのデバイスを使用して、いずれかのProtonアプリを開き、**設定**を選択してください。";
 
-"Select **Sign in on another device → Scan QR code**" = "Select **Sign in on another device → Scan QR code**";
+"Select **Sign in on another device → Scan QR code**" = "**別のデバイスでサインイン → QRコードをスキャン** を選択してください";
 
-"Scan the code to sign in" = "Scan the code to sign in";
+"Scan the code to sign in" = "コードをスキャンし、サインインしてください";
 
-"We couldn't sign you in" = "We couldn't sign you in";
+"We couldn't sign you in" = "サインインできませんでした";
 
-"Try generating a new QR code." = "Try generating a new QR code.";
+"Try generating a new QR code." = "新しいQRコードを生成してみてください。";
 
-"Generate QR code" = "Generate QR code";
+"Generate QR code" = "QRコードを生成";
 
-"Please try another sign in method." = "Please try another sign in method.";
+"Please try another sign in method." = "別のサインイン方法をお試しください。";
 
-"Sign in on another device" = "Sign in on another device";
+"Sign in on another device" = "ほかのデバイスでサインイン";
 
-"How to sign in with QR code" = "How to sign in with QR code";
+"How to sign in with QR code" = "QRコードでサインインする方法";
 
-"Allow camera access" = "Allow camera access";
+"Allow camera access" = "カメラへのアクセスを許可";
 
-"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings.";
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "QRコードでサインインするには、Proton %@にカメラへのアクセスを許可する必要があります。これは端末の設定で行うことができます。";
 
-"Position QR code inside the square" = "Position QR code inside the square";
+"Position QR code inside the square" = "正方形内に QR コードを配置する";
 
-"Sign in with QR code" = "Sign in with QR code";
+"Sign in with QR code" = "QRコードでサインイン";
 
-"Open any Proton app on the device you want to sign in to" = "Open any Proton app on the device you want to sign in to";
+"Open any Proton app on the device you want to sign in to" = "サインインしたいデバイスで任意の Proton アプリを開きます";
 
-"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)";
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = ". サインイン画面で、**パスワードを忘れましたか** または **サインインに問題がありますか？** を選択してください。(モバイルアプリでは、**ヘルプ**を選択してください)。";
 
-"Select **Sign in with QR code**. A QR code will appear." = "Select **Sign in with QR code**. A QR code will appear.";
+"Select **Sign in with QR code**. A QR code will appear." = "**QRコードでサインイン**を選択してください。QRコードが表示されます。";
 
-"On this device, press **Scan QR code** and scan the code." = "On this device, press **Scan QR code** and scan the code.";
+"On this device, press **Scan QR code** and scan the code." = "このデバイスで、**QRコードをスキャン**を押し、コードをスキャンしてください";
 
-"Security tips" = "Security tips";
+"Security tips" = "セキュリティのヒント";
 
-"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Be cautious of messages with QR codes. Only scan a code if you trust the source.";
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "QRコード付きのメッセージにはご注意ください。ソースを信頼できる場合にのみ、コードをスキャンしてください。";
 
-"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton will never contact you unexpectedly asking you to sign in with a QR code.";
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton が、QRコードでサインインするよう予期せずお客様に連絡することは決してありません。";
 
-"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app.";
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Protonが、**https://proton.me**または公式のProtonアプリ以外のQRコードをスキャンするようお客様に依頼することはありません。";
 
 "Learn more" = "詳細";
 
-"**Security tips**" = "**Security tips**";
+"**Security tips**" = "**セキュリティのヒント**";

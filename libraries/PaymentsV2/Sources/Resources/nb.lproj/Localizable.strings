@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "Det oppstod en uventet feil. Hvis dette vedvarer, vennligst kontakt kundestøtte";
 
-"Plans_Manager_pending_transaction_received" = "Uventet ventende transaksjon mottatt";
+"Plans_Manager_peding_transaction_received" = "Uventet ventende transaksjon mottatt";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Kan ikke hente gjeldende abonnement";
 
@@ -19,3 +19,5 @@
 "SK_Receipt_impossible_to_get_receipt" = "Kan ikke hente transaksjonsdata fra Apple";
 
 "Transaction_Handler_plan_not_found" = "Det var umulig å finne navnet på planen du prøver å kjøpe. Hvis problemet vedvarer, vennligst kontakt kundestøtte";
+
+"Transaction_Handler_repeated_purchase" = "Det er ikke mulig å fornye den valgte planen flere ganger. Hvis du tror dette er en feil eller hvis problemet vedvarer, vennligst kontakt vår kundestøtte";

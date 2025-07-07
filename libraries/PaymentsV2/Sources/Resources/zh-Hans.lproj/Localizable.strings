@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "出现意外错误，如果问题仍然存在，请联系客户支持部门";
 
-"Plans_Manager_pending_transaction_received" = "收到意外的待处理交易";
+"Plans_Manager_peding_transaction_received" = "收到意外的待处理交易";
 
 "PlansComposer_unable_to_fetch_currentSub" = "无法获取当前订阅";
 
@@ -19,3 +19,5 @@
 "SK_Receipt_impossible_to_get_receipt" = "无法从 Apple 获取交易收据";
 
 "Transaction_Handler_plan_not_found" = "无法找到您尝试购买的计划。如果问题仍然存在，请联系客户支持部门";
+
+"Transaction_Handler_repeated_purchase" = "无法多次续订所选套餐。如果您认为这是一个错误或问题仍然存在，请联系我们的客户支持部门。";

@@ -446,7 +446,7 @@
 
 "Using that device, open any Proton app and select **Settings**" = "Ved å bruke den enheten, åpne en hvilken som helst Proton app og velg **Innstillinger**";
 
-"Select **Sign in on another device → Scan QR code**" = "Velg **Logg på en annen enhet → Skann QR-kode**";
+"Select **Sign in on another device → Scan QR code**" = "Velg **Logg inn på en annen enhet → Skann QR-kode**";
 
 "Scan the code to sign in" = "Skann koden for å logge på";
 
@@ -458,7 +458,7 @@
 
 "Please try another sign in method." = "Gjerne forsøk en annen påloggingsmetode.";
 
-"Sign in on another device" = "Logg på en annen enhet";
+"Sign in on another device" = "Logg inn på en annen enhet";
 
 "How to sign in with QR code" = "Hvordan logge på med QR-kode";
 

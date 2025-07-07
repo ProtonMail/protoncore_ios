@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "Wystąpił nieoczekiwany błąd. Jeśli problem będzie się powtarzał, skontaktuj się ze wsparciem klienta";
 
-"Plans_Manager_pending_transaction_received" = "Odebrano nieoczekiwaną transakcję oczekującą";
+"Plans_Manager_peding_transaction_received" = "Odebrano nieoczekiwaną transakcję oczekującą";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Nie można pobrać obecnej subskrypcji";
 
@@ -19,3 +19,5 @@
 "SK_Receipt_impossible_to_get_receipt" = "Nie można uzyskać potwierdzenia transakcji od Apple";
 
 "Transaction_Handler_plan_not_found" = "Nie można znaleźć nazwy planu do zakupu. Jeśli problem będzie się powtarzał, skontaktuj się ze wsparciem klienta.";
+
+"Transaction_Handler_repeated_purchase" = "Nie można wielokrotnie odnowić planu. Jeśli uważasz, że to nie jest błąd lub jeśli problem będzie się powtarzał, skontaktuj się z naszym wsparcia klienta";
