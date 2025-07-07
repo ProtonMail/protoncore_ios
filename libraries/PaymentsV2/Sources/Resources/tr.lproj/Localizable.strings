@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "Beklenmeyen bir sorun çıktı. Sorun sürerse lütfen müşteri destek ekibimizle görüşün.";
 
-"Plans_Manager_pending_transaction_received" = "Olmaması gereken bir bekleyen işlem alındı";
+"Plans_Manager_peding_transaction_received" = "Unexpected pending transaction received";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Geçerli abonelik alınamadı";
 
@@ -19,3 +19,5 @@
 "SK_Receipt_impossible_to_get_receipt" = "İşlemin ödeme verileri Apple üzerinden alınamadı";
 
 "Transaction_Handler_plan_not_found" = "Satın almaya çalıştığınız tarifenin adı bulunamadı. Sorun sürerse lütfen müşteri destek ekibimizle görüşün.";
+
+"Transaction_Handler_repeated_purchase" = "It's not possible to renew the selected plan multiple times. If you think this is an error or if the issue persists please contact our customer support";

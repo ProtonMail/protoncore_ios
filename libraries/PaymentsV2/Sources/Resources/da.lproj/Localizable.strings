@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "Der opstod en ukendt fejl. Hvis dette fortsætter, venligst kontakt kundesupport.";
 
-"Plans_Manager_pending_transaction_received" = "Uventet afventende transaktion modtaget";
+"Plans_Manager_peding_transaction_received" = "Uventet afventende transaktion modtaget";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Kunne ikke hente det aktuelle abonnement";
 
@@ -19,3 +19,5 @@
 "SK_Receipt_impossible_to_get_receipt" = "Det er ikke muligt at hente transaktionskvitteringsdata fra Apple";
 
 "Transaction_Handler_plan_not_found" = "Det var ikke muligt at finde navnet på det abonnement, du forsøger at købe. Hvis problemet vedvarer, bedes du kontakte kundesupport.";
+
+"Transaction_Handler_repeated_purchase" = "Det er ikke muligt at forny det valgte abonnement flere gange. Hvis du tror, det er en fejl, eller hvis problemet fortsætter, bedes du kontakte vores kundesupport.";

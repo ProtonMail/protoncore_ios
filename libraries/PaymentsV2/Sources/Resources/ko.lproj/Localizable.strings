@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "예기치 못한 오류가 발생했습니다. 만약 재발시 고객 지원 팀으로 문의해 주세요.";
 
-"Plans_Manager_pending_transaction_received" = "예기치 못한 보류 중인 거래가 수신되었습니다";
+"Plans_Manager_peding_transaction_received" = "Unexpected pending transaction received";
 
 "PlansComposer_unable_to_fetch_currentSub" = "현재 구독을 가져올 수 없습니다";
 
@@ -19,3 +19,5 @@
 "SK_Receipt_impossible_to_get_receipt" = "Apple로부터 거래 영수증 데이터를 수신하는데 실패했습니다";
 
 "Transaction_Handler_plan_not_found" = "사용자가 구매를 시도한 플랜의 명칭을 탐색하는데 실패했습니다. 문제 재발시 고객 지원에 문의해 주세요.";
+
+"Transaction_Handler_repeated_purchase" = "It's not possible to renew the selected plan multiple times. If you think this is an error or if the issue persists please contact our customer support";

@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "Ocorreu um erro inesperado. Se o problema persistir, entre em contacto com o apoio ao cliente.";
 
-"Plans_Manager_pending_transaction_received" = "Transação pendente inesperada recebida";
+"Plans_Manager_peding_transaction_received" = "Transação pendente inesperada recebida.";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Não foi possível obter a subscrição atual.";
 
@@ -19,3 +19,5 @@
 "SK_Receipt_impossible_to_get_receipt" = "Impossível obter os dados do recibo de transação da Apple";
 
 "Transaction_Handler_plan_not_found" = "Não foi possível encontrar o nome do plano que tenta comprar. Se o problema persistir, entre em contacto com o apoio ao cliente.";
+
+"Transaction_Handler_repeated_purchase" = "Não é possível renovar o plano selecionado várias vezes. Se pensa que isto é um erro ou se o problema persistir, entre em contacto com o nosso apoio ao cliente.";

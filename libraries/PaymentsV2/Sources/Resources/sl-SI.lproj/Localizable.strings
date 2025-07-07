@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "An unexpected error occured, if this persists, please contact customer support";
 
-"Plans_Manager_pending_transaction_received" = "Prejeta je bila nepričakovana transakcija v čakanju";
+"Plans_Manager_peding_transaction_received" = "Unexpected pending transaction received";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Ni mogoče pridobiti trenutne naročnine";
 
@@ -19,3 +19,5 @@
 "SK_Receipt_impossible_to_get_receipt" = "Impossible to get transaction receipt data from Apple";
 
 "Transaction_Handler_plan_not_found" = "It was impossible to find the name of the plan you’re trying to purchase. If the issue persists please contact customer support";
+
+"Transaction_Handler_repeated_purchase" = "It's not possible to renew the selected plan multiple times. If you think this is an error or if the issue persists please contact our customer support";

@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "Vyskytla sa neočakávaná chyba. Ak problém pretrváva, kontaktujte zákaznícku podporu.";
 
-"Plans_Manager_pending_transaction_received" = "Prijatá neočakávaná čakajúca transakcia";
+"Plans_Manager_peding_transaction_received" = "Prijatá neočakávaná čakajúca transakcia";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Nepodarilo sa načítať aktuálne predplatné";
 
@@ -19,3 +19,5 @@
 "SK_Receipt_impossible_to_get_receipt" = "Nedá sa získať údaj o potvrdení transakcie od spoločnosti Apple";
 
 "Transaction_Handler_plan_not_found" = "Nepodarilo sa nájsť názov plánu, ktorý sa pokúšate zakúpiť. Ak problém pretrváva, kontaktujte, prosím, oddelenie zákazníckej podpory.";
+
+"Transaction_Handler_repeated_purchase" = "Vybraný plán nie je možné obnoviť viackrát. Ak si myslíte, že ide o chybu, alebo ak problém pretrváva, kontaktujte našu zákaznícku podporu, prosím";
