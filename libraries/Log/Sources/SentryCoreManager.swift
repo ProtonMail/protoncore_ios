@@ -79,7 +79,8 @@ public final class SentryCoreManager: ExternalLogProtocol {
     public let host: String
 
     public init(_ host: String) {
-        self.host = host
+        let hostURL = URL(string: host)
+        self.host = hostURL?.host() ?? host
         setup()
     }
 
