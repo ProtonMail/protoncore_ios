@@ -64,7 +64,7 @@ public protocol LoginErrorPresenter {
 
 public typealias FlowCompletion = (LoginData, @escaping (Result<Void, Error>) -> Void) -> Void
 
-public struct CloseFlowAlertConfirmation {
+public struct CloseSignupFlowAlertConfirmation {
     let title: String
     let cancelButtonTitle: String
     let continueButtonTitle: String
@@ -86,7 +86,7 @@ public struct LoginCustomizationOptions {
     let initialError: String?
     let helpDecorator: ([[HelpItem]]) -> [[HelpItem]]
     let inAppTheme: () -> InAppTheme
-    let closeFlowAlertConfirmation: CloseFlowAlertConfirmation?
+    let closeSignupFlowAlertConfirmation: CloseSignupFlowAlertConfirmation?
 
     public init(username: String? = nil,
                 performBeforeFlow: WorkBeforeFlow? = nil,
@@ -94,14 +94,14 @@ public struct LoginCustomizationOptions {
                 initialError: String? = nil,
                 helpDecorator: @escaping ([[HelpItem]]) -> [[HelpItem]] = { $0 },
                 inAppTheme: @escaping () -> InAppTheme = { .default },
-                closeFlowAlertConfirmation: CloseFlowAlertConfirmation? = nil) {
+                closeSignupFlowAlertConfirmation: CloseSignupFlowAlertConfirmation? = nil) {
         self.username = username
         self.performBeforeFlow = performBeforeFlow
         self.customErrorPresenter = customErrorPresenter
         self.initialError = initialError
         self.helpDecorator = helpDecorator
         self.inAppTheme = inAppTheme
-        self.closeFlowAlertConfirmation = closeFlowAlertConfirmation
+        self.closeSignupFlowAlertConfirmation = closeSignupFlowAlertConfirmation
     }
 }
 

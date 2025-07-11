@@ -64,7 +64,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
     var showSeparateDomainsButton = true
     var minimumAccountType: AccountType?
     var tapGesture: UITapGestureRecognizer?
-    var closeFlowAlertConfirmation: CloseFlowAlertConfirmation?
+    var closeSignupFlowAlertConfirmation: CloseSignupFlowAlertConfirmation?
 
     // MARK: Outlets
 
@@ -270,9 +270,9 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
     }
 
     @objc func onCloseButtonTap(_ sender: UIButton) {
-        if let closeFlowAlertConfirmation {
+        if let closeSignupFlowAlertConfirmation {
             // present close confirmation Alert
-            showCloseAlert(closeFlowAlertConfirmation: closeFlowAlertConfirmation)
+            showCloseAlert(closeSignupFlowAlertConfirmation: closeSignupFlowAlertConfirmation)
         } else {
             proceedWithClose()
         }
@@ -286,20 +286,20 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
         measureOnViewClosed()
     }
 
-    private func showCloseAlert(closeFlowAlertConfirmation: CloseFlowAlertConfirmation) {
+    private func showCloseAlert(closeSignupFlowAlertConfirmation: CloseSignupFlowAlertConfirmation) {
         let alert = UIAlertController(
-            title: closeFlowAlertConfirmation.title,
+            title: closeSignupFlowAlertConfirmation.title,
             message: nil,
             preferredStyle: .actionSheet
         )
         let cancelAction = UIAlertAction(
-            title: closeFlowAlertConfirmation.cancelButtonTitle,
+            title: closeSignupFlowAlertConfirmation.cancelButtonTitle,
             style: .destructive
         ) { _ in
             self.proceedWithClose()
         }
         alert.addAction(cancelAction)
-        let continueAction = UIAlertAction(title: closeFlowAlertConfirmation.continueButtonTitle, style: .cancel)
+        let continueAction = UIAlertAction(title: closeSignupFlowAlertConfirmation.continueButtonTitle, style: .cancel)
         alert.addAction(continueAction)
         present(alert, animated: true, completion: nil)
     }

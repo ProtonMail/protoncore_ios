@@ -147,7 +147,7 @@ final class SignupCoordinator {
         let signupViewController = UIStoryboard.instantiateInSignup(SignupViewController.self, inAppTheme: customization.inAppTheme)
         signupViewController.viewModel = container.makeSignupViewModel()
         signupViewController.customErrorPresenter = customization.customErrorPresenter
-        signupViewController.closeFlowAlertConfirmation = customization.closeFlowAlertConfirmation
+        signupViewController.closeSignupFlowAlertConfirmation = customization.closeSignupFlowAlertConfirmation
         signupViewController.delegate = self
         self.signupViewController = signupViewController
 
