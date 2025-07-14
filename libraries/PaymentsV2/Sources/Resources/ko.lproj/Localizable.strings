@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "예기치 못한 오류가 발생했습니다. 만약 재발시 고객 지원 팀으로 문의해 주세요.";
 
-"Plans_Manager_peding_transaction_received" = "Unexpected pending transaction received";
+"Plans_Manager_peding_transaction_received" = "예상치 못한 보류 중인 거래가 수신됨";
 
 "PlansComposer_unable_to_fetch_currentSub" = "현재 구독을 가져올 수 없습니다";
 
@@ -20,4 +20,4 @@
 
 "Transaction_Handler_plan_not_found" = "사용자가 구매를 시도한 플랜의 명칭을 탐색하는데 실패했습니다. 문제 재발시 고객 지원에 문의해 주세요.";
 
-"Transaction_Handler_repeated_purchase" = "It's not possible to renew the selected plan multiple times. If you think this is an error or if the issue persists please contact our customer support";
+"Transaction_Handler_repeated_purchase" = "선택한 요금제를 여러 번 갱신하는 것은 불가능합니다. 이것이 오류라고 생각하시거나 문제가 지속되면 고객지원에 문의해주세요.";

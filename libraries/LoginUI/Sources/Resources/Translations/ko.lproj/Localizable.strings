@@ -396,7 +396,7 @@
 
 "Go to Settings" = "설정으로 이동";
 
-"to Proton %@" = "to Proton %@";
+"to Proton %@" = "Proton %@(으)로";
 
 "Something went wrong" = "문제가 발생했습니다";
 
@@ -426,7 +426,7 @@
 
 "Continue as guest" = "게스트로 계속하기";
 
-"By using this app you accept our" = "By using this app you accept our";
+"By using this app you accept our" = "이 앱을 사용하면 다음을 수락하게 됩니다:";
 
 "Terms and Conditions." = "이용 약관.";
 

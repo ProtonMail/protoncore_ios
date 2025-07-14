@@ -20,4 +20,4 @@
 
 "Transaction_Handler_plan_not_found" = "Le nom de l’abonnement que vous essayez d’acheter est introuvable. Si le problème persiste, veuillez contacter le service client.";
 
-"Transaction_Handler_repeated_purchase" = "It's not possible to renew the selected plan multiple times. If you think this is an error or if the issue persists please contact our customer support";
+"Transaction_Handler_repeated_purchase" = "Il n'est pas possible de renouveler l'abonnement sélectionné plusieurs fois. Si vous pensez qu'il s'agit d'une erreur ou si le problème persiste, veuillez contacter notre service client.";
