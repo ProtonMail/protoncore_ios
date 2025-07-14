@@ -147,6 +147,7 @@ final class SignupCoordinator {
         let signupViewController = UIStoryboard.instantiateInSignup(SignupViewController.self, inAppTheme: customization.inAppTheme)
         signupViewController.viewModel = container.makeSignupViewModel()
         signupViewController.customErrorPresenter = customization.customErrorPresenter
+        signupViewController.closeSignupFlowAlertConfirmation = customization.closeSignupFlowAlertConfirmation
         signupViewController.delegate = self
         self.signupViewController = signupViewController
 
@@ -456,9 +457,12 @@ final class SignupCoordinator {
 
     private func completeSignupFlow(signupState: SignupState) {
         if case .signupFinished = signupState {
-            navigationController?.presentingViewController?.dismiss(animated: true)
+            navigationController?.presentingViewController?.dismiss(animated: true, completion: {
+                self.delegate?.signupCoordinatorDidFinish(signupCoordinator: self, signupState: signupState)
+            })
+        } else {
+            delegate?.signupCoordinatorDidFinish(signupCoordinator: self, signupState: signupState)
         }
-        delegate?.signupCoordinatorDidFinish(signupCoordinator: self, signupState: signupState)
     }
 }
 

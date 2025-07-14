@@ -64,6 +64,7 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
     var showSeparateDomainsButton = true
     var minimumAccountType: AccountType?
     var tapGesture: UITapGestureRecognizer?
+    var closeSignupFlowAlertConfirmation: CloseSignupFlowAlertConfirmation?
 
     // MARK: Outlets
 
@@ -269,12 +270,40 @@ class SignupViewController: UIViewController, AccessibleView, Focusable, Product
     }
 
     @objc func onCloseButtonTap(_ sender: UIButton) {
+        if let closeSignupFlowAlertConfirmation {
+            // present close confirmation Alert
+            showCloseAlert(closeSignupFlowAlertConfirmation: closeSignupFlowAlertConfirmation)
+        } else {
+            proceedWithClose()
+        }
+    }
+
+    // MARK: Private methods
+
+    private func proceedWithClose() {
         cancelFocus()
         delegate?.signupCloseButtonPressed()
         measureOnViewClosed()
     }
 
-    // MARK: Private methods
+    private func showCloseAlert(closeSignupFlowAlertConfirmation: CloseSignupFlowAlertConfirmation) {
+        let alert = UIAlertController(
+            title: closeSignupFlowAlertConfirmation.title,
+            message: nil,
+            preferredStyle: .actionSheet
+        )
+        let cancelAction = UIAlertAction(
+            title: closeSignupFlowAlertConfirmation.cancelButtonTitle,
+            style: .destructive
+        ) { _ in
+            self.proceedWithClose()
+        }
+        alert.addAction(cancelAction)
+        let continueAction = UIAlertAction(title: closeSignupFlowAlertConfirmation.continueButtonTitle, style: .cancel)
+        alert.addAction(continueAction)
+        present(alert, animated: true, completion: nil)
+    }
+
     private func requestDomain() {
         viewModel.updateAvailableDomain { [weak self] _ in
             self?.configureDomainSuffix()
