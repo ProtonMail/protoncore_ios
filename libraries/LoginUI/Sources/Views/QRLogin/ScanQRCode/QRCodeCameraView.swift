@@ -127,13 +127,13 @@ class QRCodeCameraViewController: UIViewController {
     }
 
     private func askForPermission() {
-        AVCaptureDevice.requestAccess(for: .video) { [weak self] granted in
-            Task { @MainActor [weak self] in
-                if granted {
-                    self?.setupCamera()
-                } else {
-                    self?.cameraPermissionsDelegate?.handleCameraUsePermissionRequestRejection()
-                }
+        Task { @MainActor in
+            let granted = await AVCaptureDevice.requestAccess(for: .video)
+
+            if granted {
+                self.setupCamera()
+            } else {
+                self.cameraPermissionsDelegate?.handleCameraUsePermissionRequestRejection()
             }
         }
     }
