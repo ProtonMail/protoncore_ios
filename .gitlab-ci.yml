@@ -426,6 +426,33 @@ trigger:pass:tests:
     GIT_STRATEGY: "clone"
     COMMIT_HASH: $CI_COMMIT_SHA
 
+trigger:calendar:tests:
+  stage: trigger
+  needs: []
+  when: manual
+  inherit:
+    variables: false
+  trigger:
+    project: protoncalendar/protoncalendar-ios
+    branch: develop
+    strategy: depend
+  variables:
+    GIT_STRATEGY: "clone"
+    COMMIT_HASH: $CI_COMMIT_SHA
+
+trigger:drive:tests:
+  stage: trigger
+  needs: []
+  when: manual
+  inherit:
+    variables: false
+  trigger:
+    project: apple/drive/ios-mac-app
+    branch: develop
+    strategy: depend
+  variables:
+    GIT_STRATEGY: "clone"
+    COMMIT_HASH: $CI_COMMIT_SHA
 
 #
 # --- Translation related tasks ---
