@@ -2,15 +2,15 @@
 
 "Cancel" = "取消";
 
-"Warning" = "Warning";
+"Warning" = "警告";
 
-"Select a plan" = "Select a plan";
+"Select a plan" = "選取方案";
 
-"Current plan" = "Current plan";
+"Current plan" = "目前方案";
 
-"Subscription" = "Subscription";
+"Subscription" = "訂購授權";
 
-"Upgrade your plan" = "Upgrade your plan";
+"Upgrade your plan" = "升級您的方案";
 
 "Only annual subscriptions without auto-renewal are available inside the mobile app." = "Only annual subscriptions without auto-renewal are available inside the mobile app.";
 
@@ -22,39 +22,39 @@
 
 "Contact an administrator to make changes to your Proton subscription." = "Contact an administrator to make changes to your Proton subscription.";
 
-"%1$@ of %2$@" = "%1$@ of %2$@";
+"%1$@ of %2$@" = "%1$@的%2$@";
 
-"%@ storage" = "%@ storage";
+"%@ storage" = "%@ 儲存";
 
 "%@ storage / user" = "%@ storage / user";
 
-"for %@" = "for %@";
+"for %@" = "為 %@";
 
 "Custom email addresses" = "Custom email addresses";
 
-"Priority customer support" = "Priority customer support";
+"Priority customer support" = "優先客戶支援服務";
 
 "Adblocker (NetShield)" = "Adblocker (NetShield)";
 
-"Streaming service support" = "Streaming service support";
+"Streaming service support" = "影音串流支援服務";
 
-"High speed" = "High speed";
+"High speed" = "高速";
 
-"Highest speed" = "Highest speed";
+"Highest speed" = "最高速度";
 
-"Multi-user support" = "Multi-user support";
+"Multi-user support" = "多位使用者支援";
 
 "The basic for private and secure communications." = "The basic for private and secure communications.";
 
 "Full-featured mailbox with advanced protection." = "Full-featured mailbox with advanced protection.";
 
-"Limited time offer" = "Limited time offer";
+"Limited time offer" = "限時優惠";
 
-"Complete payment?" = "Complete payment?";
+"Complete payment?" = "完成付款?";
 
 "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account";
 
-"Complete payment" = "Complete payment";
+"Complete payment" = "完成付款";
 
 "The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "The account setup process could not be finalized due to an unexpected error.\nPlease try again.";
 
@@ -80,11 +80,11 @@
 
 "Unlimited folders, labels, and filters" = "Unlimited folders, labels, and filters";
 
-"Up to %@ storage" = "Up to %@ storage";
+"Up to %@ storage" = "高達 %@ 儲存";
 
 "Free VPN on a single device" = "Free VPN on a single device";
 
-"Highest VPN speed" = "Highest VPN speed";
+"Highest VPN speed" = "最高 VPN 速度";
 
 "Built-in ad-blocker (NetShield)" = "Built-in ad-blocker (NetShield)";
 
@@ -92,44 +92,44 @@
 
 "Secure Core servers" = "Secure Core servers";
 
-"TOR over VPN" = "Tor over VPN";
+"TOR over VPN" = "透過 VPN 的 Tor";
 
 "P2P/BitTorrent" = "P2P/BitTorrent";
 
-"Get %@" = "Get %@";
+"Get %@" = "取得 %@";
 
 "Get Proton for free" = "Get Proton for free";
 
 "Extend subscription" = "Extend subscription";
 
-"%@ of %@" = "%@ of %@";
+"%@ of %@" = "%@的%@";
 
-"Connection issues" = "Connection issues";
+"Connection issues" = "連線問題";
 
 "Check your internet connection" = "Check your internet connection";
 
 "Strict no-logs policy" = "Strict no-logs policy";
 
-"Plan successfully upgraded" = "Plan successfully upgraded";
+"Plan successfully upgraded" = "方案已成功升級";
 
 "Integrated 2FA authenticator" = "Integrated 2FA authenticator";
 
-"Priority support" = "Priority support";
+"Priority support" = "優先支援";
 
-"Unlimited devices" = "Unlimited devices";
+"Unlimited devices" = "無限制裝置";
 
 "Unlimited email aliases" = "Unlimited email aliases";
 
-"Unlimited logins and notes" = "Unlimited logins and notes";
+"Unlimited logins and notes" = "無限制登入和筆記";
 
-"Custom fields" = "Custom fields";
+"Custom fields" = "自訂欄位";
 
 "For next-level password management and identity protection." = "For next-level password management and identity protection.";
 
-"Pay monthly" = "Pay monthly";
+"Pay monthly" = "每月付款";
 
-"Pay annually" = "Pay annually";
+"Pay annually" = "每年付款";
 
 "Pay every two years" = "Pay every two years";
 
-"Free" = "Free";
+"Free" = "免費";

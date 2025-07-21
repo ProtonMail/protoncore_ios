@@ -18,7 +18,7 @@
 
 "Error_view_title" = "문제가 발생했습니다";
 
-"Loading_plans_message" = "사용 가능한 요금제 불러오기 중...";
+"Loading_plans_message" = "사용 가능한 요금제를 불러오는 중...";
 
 "Monthly_cycle" = "1개월";
 

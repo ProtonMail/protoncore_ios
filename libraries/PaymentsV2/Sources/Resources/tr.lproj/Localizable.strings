@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "Beklenmeyen bir sorun çıktı. Sorun sürerse lütfen müşteri destek ekibimizle görüşün.";
 
-"Plans_Manager_peding_transaction_received" = "Unexpected pending transaction received";
+"Plans_Manager_peding_transaction_received" = "Olmaması gereken bir bekleyen işlem alındı";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Geçerli abonelik alınamadı";
 
@@ -20,4 +20,4 @@
 
 "Transaction_Handler_plan_not_found" = "Satın almaya çalıştığınız tarifenin adı bulunamadı. Sorun sürerse lütfen müşteri destek ekibimizle görüşün.";
 
-"Transaction_Handler_repeated_purchase" = "It's not possible to renew the selected plan multiple times. If you think this is an error or if the issue persists please contact our customer support";
+"Transaction_Handler_repeated_purchase" = "Seçilmiş tarife birden çok kez yenilenemez. Bir yanlışlık olduğunu düşünüyorsanız veya sorun sürüyorsa lütfen müşteri destek ekibimizle görüşün.";

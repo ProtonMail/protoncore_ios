@@ -1,26 +1,26 @@
 "All_cycle" = "All billing cycles";
 
-"Available_plans_section_title" = "Upgrade your plan";
+"Available_plans_section_title" = "升級您的方案";
 
-"Available_subscriptions_view_subtitle" = "Our plans for your privacy";
+"Available_subscriptions_view_subtitle" = "我們的隱私方案";
 
-"Available_subscriptions_view_title" = "Select a plan";
+"Available_subscriptions_view_title" = "選取方案";
 
-"Current_free_plan_name" = "Free";
+"Current_free_plan_name" = "免費";
 
 "Current_plan_exipiration" = "Your subscription expires on";
 
 "Current_plan_renewal" = "Your subscription automatically renews on";
 
-"Error_view_button_title" = "Retry";
+"Error_view_button_title" = "重試";
 
-"Error_view_message" = "We couldn't load this page. Please refresh the page or check your internet connection.";
+"Error_view_message" = "我們無法載入此頁面。請重新整理頁面或檢查您的網際網路連線。";
 
-"Error_view_title" = "Something went wrong";
+"Error_view_title" = "出了點問題";
 
 "Loading_plans_message" = "Fetching available plans...";
 
-"Monthly_cycle" = "1 month";
+"Monthly_cycle" = "1 個月";
 
 "No_available_plan_message" = "Your subscription can't be managed inside the mobile app.";
 
@@ -32,11 +32,11 @@
 
 "Plans_footer_disclaimer" = "You cannot manage subscriptions inside the mobile app";
 
-"Purchase_button_title" = "Get %@";
+"Purchase_button_title" = "取得 %@";
 
-"Select_plan_nav_title" = "Select a plan";
+"Select_plan_nav_title" = "選取方案";
 
-"Subscriptions_nav_title" = "Subscriptions";
+"Subscriptions_nav_title" = "訂購授權";
 
 "Transaction_cancelled_by_user" = "Transaction cancelled by the user";
 
@@ -46,7 +46,7 @@
 
 "Transaction_state_payment_account_update_progress" = "Updating your account";
 
-"Transaction_state_payment_confirmation_complete" = "Payment confirmed";
+"Transaction_state_payment_confirmation_complete" = "付款已確認";
 
 "Transaction_state_payment_confirmation_progress" = "Confirming your payment";
 
@@ -54,4 +54,4 @@
 
 "Transaction_state_view_title" = "Your payment is being verified...";
 
-"Yearly_cycle" = "12 months";
+"Yearly_cycle" = "12 個月";
