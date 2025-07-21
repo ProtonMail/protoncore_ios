@@ -38,7 +38,7 @@
 
 "Sign in with SSO" = "使用 SSO 登入";
 
-"Sign in with a QR code" = "Sign in with a QR code";
+"Sign in with a QR code" = "使用 QR code 登入";
 
 "Sign in to your organization" = "登入您的組織";
 
@@ -348,7 +348,7 @@
 
 "Please enter your Proton Account email." = "Please enter your Proton Account email.";
 
-"Password not valid" = "Password not valid";
+"Password not valid" = "密碼字元無效";
 
 "Passphrase not found" = "Passphrase not found";
 
@@ -360,7 +360,7 @@
 
 "Scan this code with your phone camera to sign in instantly." = "Scan this code with your phone camera to sign in instantly.";
 
-"Sign in to another device" = "Sign in to another device";
+"Sign in to another device" = "登入服務";
 
 "Sign in with your QR code" = "Sign in with your QR code";
 
@@ -372,19 +372,19 @@
 
 "Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Proton will never ask you to scan a QR code that does not come from the domain **proton.me**.";
 
-"Scan QR code" = "Scan QR code";
+"Scan QR code" = "掃描 QR 碼";
 
 "Authenticate to access the QR code scanner" = "Authenticate to access the QR code scanner";
 
 "Place QR code within the square" = "Place QR code within the square";
 
-"Verifying..." = "Verifying...";
+"Verifying..." = "正在驗證...";
 
 "You’re signed in to %@ on the other device." = "You’re signed in to %@ on the other device.";
 
-"You're signed in" = "You're signed in";
+"You're signed in" = "您已登入";
 
-"Got it" = "Got it";
+"Got it" = "我知道了";
 
 "Code not recognized. Try again." = "Code not recognized. Try again.";
 
@@ -394,17 +394,17 @@
 
 "The permission to use the Camera is off. Please enable it from the Settings." = "The permission to use the Camera is off. Please enable it from the Settings.";
 
-"Go to Settings" = "Go to Settings";
+"Go to Settings" = "前往設定值";
 
 "to Proton %@" = "to Proton %@";
 
-"Something went wrong" = "Something went wrong";
+"Something went wrong" = "出了點問題";
 
 "We couldn't sign you in. Please scan a new QR code to try again." = "We couldn't sign you in. Please scan a new QR code to try again.";
 
 "We couldn't sign you in. Please sign in with your password." = "We couldn't sign you in. Please sign in with your password.";
 
-"New QR code" = "New QR code";
+"New QR code" = "新 QR 代碼";
 
 "Allow access to camera" = "Allow access to camera";
 
@@ -412,7 +412,7 @@
 
 "You're always in control: You can change this anytime in your device settings." = "You're always in control: You can change this anytime in your device settings.";
 
-"Settings" = "Settings";
+"Settings" = "設定";
 
 "We couldn't load the QR code" = "We couldn't load the QR code";
 
@@ -424,11 +424,11 @@
 
 "Certified no-logs VPN" = "Certified no-logs VPN";
 
-"Continue as guest" = "Continue as guest";
+"Continue as guest" = "以訪客身分繼續";
 
 "By using this app you accept our" = "By using this app you accept our";
 
-"Terms and Conditions." = "Terms and Conditions.";
+"Terms and Conditions." = "服務條款.";
 
 "Tap **Scan QR code**" = "Tap **Scan QR code**";
 
@@ -436,7 +436,7 @@
 
 "Password must contain:" = "Password must contain:";
 
-"Access shared" = "Access shared";
+"Access shared" = "存取已共享";
 
 "Back to settings" = "Back to settings";
 
@@ -458,7 +458,7 @@
 
 "Please try another sign in method." = "Please try another sign in method.";
 
-"Sign in on another device" = "Sign in on another device";
+"Sign in on another device" = "登入服務";
 
 "How to sign in with QR code" = "How to sign in with QR code";
 
@@ -478,7 +478,7 @@
 
 "On this device, press **Scan QR code** and scan the code." = "On this device, press **Scan QR code** and scan the code.";
 
-"Security tips" = "Security tips";
+"Security tips" = "安全性提示";
 
 "Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Be cautious of messages with QR codes. Only scan a code if you trust the source.";
 
@@ -488,4 +488,4 @@
 
 "Learn more" = "瞭解詳情";
 
-"**Security tips**" = "**Security tips**";
+"**Security tips**" = "**安全性提示**";

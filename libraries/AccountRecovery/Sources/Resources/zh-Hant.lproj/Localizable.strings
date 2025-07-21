@@ -1,26 +1,26 @@
 "Settings_Item" = "重設密碼";
 
-"Insecure_View_Title" = "Password reset";
+"Insecure_View_Title" = "重設密碼";
 
-"Cancelled_View_Title" = "Password reset";
+"Cancelled_View_Title" = "重設密碼";
 
-"Grace_View_Title" = "Password reset";
+"Grace_View_Title" = "重設密碼";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**";
+"We received a password reset request for **%@**." = "我們收到一個針對 **%@** 的密碼字元重設請求";
 
-"We received a password reset request for %@." = "We received a password reset request for %@";
+"We received a password reset request for %@." = "我們收到了一則針對 %@ 的密碼字元重設要求";
 
 "If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
 
 "If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
 
-"Password reset requested" = "Password reset requested";
+"Password reset requested" = "密碼重設已依需求送出";
 
 "Insecure_View_line1" = "您已完成變更密碼，相應的帳號是 ";
 
 "You can change your password in %@." = "You can change your password in %@.";
 
-"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "為了核實確認是您在嘗試重設您的密碼字元，我們會靜候 72 小時才進行核准需求。";
 
 "Insecure_View_line2" = " 免費於 ";
 
@@ -30,31 +30,31 @@
 
 "Grace_View_Undefined_Time_Left" = "幾個小時";
 
-"Settings_Item_Value_Grace" = "Pending";
+"Settings_Item_Value_Grace" = "擱置中";
 
-"Settings_Item_Value_Expired" = "Expired";
+"Settings_Item_Value_Expired" = "已過期";
 
-"Settings_Item_Value_Cancelled" = "Cancelled";
+"Settings_Item_Value_Cancelled" = "已取消";
 
-"Settings_Item_Value_Insecure" = "Available";
+"Settings_Item_Value_Insecure" = "可用";
 
-"Insecure_View_Cancel_Button_CTA" = "Cancel reset";
+"Insecure_View_Cancel_Button_CTA" = "取消重設";
 
 "If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
 
 "If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**.";
+"We received a password reset request for **%@**." = "我們收到一個針對 **%@** 的密碼字元重設請求.";
 
-"We received a password reset request for %@." = "We received a password reset request for %@.";
+"We received a password reset request for %@." = "我們收到了一則針對 %@ 的密碼字元重設要求.";
 
-"Password reset cancelled" = "Password reset cancelled";
+"Password reset cancelled" = "已取消密碼重設";
 
 "Cancelled by the user" = "Cancelled by the user";
 
 "Authenticated in another session" = "Authenticated in another session";
 
-"none" = "none";
+"none" = "無";
 
 "The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
 
