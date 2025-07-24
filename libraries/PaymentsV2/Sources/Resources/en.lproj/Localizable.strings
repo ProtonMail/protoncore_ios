@@ -21,3 +21,5 @@
 "Transaction_Handler_plan_not_found" = "It was impossible to find the name of the plan you’re trying to purchase. If the issue persists please contact customer support";
 
 "Transaction_Handler_repeated_purchase" = "It's not possible to renew the selected plan multiple times. If you think this is an error or if the issue persists please contact our customer support";
+
+"Transaction_Handler_receipt_update_failed" = "An error occured while requesting the transaction receipt from Apple. If the issue persists please contact customer support"

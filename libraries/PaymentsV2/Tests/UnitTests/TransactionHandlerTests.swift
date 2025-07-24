@@ -35,7 +35,6 @@ final class TransactionHandlerTests: XCTestCase, @unchecked Sendable {
     private let productsIds = ["iosvpn_bundle2022_12_usd_auto_renewing", "iosvpn_vpn2022_1_usd_auto_renewing"]
     private var subsComposer: PlansComposer!
     private var storeSession: SKTestSession!
-    private var receiptManager: MockStoreKitReceiptManager!
 
     private var cancellable = Set<AnyCancellable>()
 
@@ -61,11 +60,9 @@ final class TransactionHandlerTests: XCTestCase, @unchecked Sendable {
                 debugPrint(error)
             }
 
-            receiptManager = MockStoreKitReceiptManager(receipt: "asdpoasmdpo12dp1o2mdpoasmdpoasmdcpaoscmapsomc")
-
             sut = TransactionHandler(remoteManager: remoteManager,
                                      paymentsAPIs: paymentsAPIs,
-                                     receiptManager: receiptManager)
+                                     receiptManger: MockStoreKitReceiptManager(receipt: "asdpoasmdpo12dp1o2mdpoasmdpoasmdcpaoscmapsomc"))
         }
     }
 

@@ -33,7 +33,7 @@ public enum PaymentsAPIsError: LocalizedError {
 
     public var errorDescription: String? {
         switch self {
-        case .malformedURL(let url):
+        case .malformedURL:
             return PaymentsV2Localizer.APIs_malformed_url_request.l10n
         }
     }
