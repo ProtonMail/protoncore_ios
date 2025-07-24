@@ -36,6 +36,7 @@ public protocol ProtonPlansManagerProviding: Sendable {
     func getCurrentPlan() async throws -> CurrentSubscriptionResponse
     func getIntroductoryOfferPrice(product: Product) -> String?
     func purchase(_ product: Product, planName: String, planCycle: Int) async throws -> ComposedPlan
+    func recoverTransactionReceipt() async throws
 }
 
 public enum ProtonPlansManagerError: LocalizedError {
@@ -47,6 +48,7 @@ public enum ProtonPlansManagerError: LocalizedError {
     case transactionCancelledByUser
     case transactionPending
     case transactionUnknownError
+    case noUnfinshedTransactionsFound
 
     public var errorDescription: String? {
         switch self {
@@ -60,8 +62,10 @@ public enum ProtonPlansManagerError: LocalizedError {
             return PaymentsV2Localizer.Plans_Manager_Transaction_cancelled_by_user.l10n
         case .transactionUnknownError:
             return PaymentsV2Localizer.Plans_Manager_Transaction_unknown_error.l10n
-        case .transactionPending:
+        case .noUnfinshedTransactionsFound:
             return PaymentsV2Localizer.Plans_Manager_pending_transaction_received.l10n
+        case .transactionPending:
+            return nil
         }
     }
 
@@ -69,6 +73,8 @@ public enum ProtonPlansManagerError: LocalizedError {
         switch self {
         case .unableToMatchProtonPlanToStoreProduct(let productId):
             return "Impossible to find AppleStore product with id: \(productId)"
+        case .noUnfinshedTransactionsFound:
+            return "Receipt recover attempt: No unfinished verified transaction found"
         default:
             return nil
         }
@@ -81,7 +87,6 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
 
     private var products: [Product] = []
     private var transactionToken: Token!
-    private var refresh: SKReceiptRefreshRequest?
     private var transaction: Transaction?
 
     private let paymentsAPI: PaymentsAPIs
@@ -89,7 +94,6 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
     private let transactionHandler: TransactionHandler
     private let planComposer: PlansComposerProviding
 
-    private var tokenContinuation: CheckedContinuation<Void, Error>?
     private var paymentsToken: NewToken!
     private var planName: String!
     private var planCycle: Int!
@@ -171,6 +175,9 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
         self.planName = planName
         self.planCycle = planCycle
 
+        TransactionsObserver.shared.logHelper.logEvent(["transaction": ["time": Date.now.description,
+                                                                        "productId": product.id]])
+
         let userTransactionUUID = try await generateUserTransactionUUID()
         let result = try await product.purchase(options: [.appAccountToken(userTransactionUUID)])
 
@@ -179,18 +186,21 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
             let transaction = try verificationResult.payloadValue
             self.transaction = transaction
 
-            try await withCheckedThrowingContinuation { continuation in
-                tokenContinuation = continuation
-                refresh = SKReceiptRefreshRequest()
-                refresh?.delegate = self
-                refresh?.start()
-            }
+            TransactionsObserver.shared.logHelper.logEvent(["apple_transaction": ["status": "success",
+                                                                                  "jwsRepresentation": verificationResult.jwsRepresentation]])
 
             guard let matchingPlan = findMatchingPlan(productID: transaction.productID) else {
                 let error = ProtonPlansManagerError.unableToMatchProtonPlanToStoreProduct(productId: transaction.productID)
+                TransactionsObserver.shared.logHelper.logEvent(["proton_plan_match": ["time": Date.now.description,
+                                                                                     "success": false,
+                                                                                     "error": error.localizedDescription]],
+                                                               type: .close)
                 PMLog.error(error.failureReason ?? "PaymentsV2 - unable to match Proton and AppleStore plans", sendToExternal: true)
                 throw error
             }
+
+            TransactionsObserver.shared.logHelper.logEvent(["proton_plan_match": ["time": Date.now.description,
+                                                                                 "success": true]])
 
             do {
                 TransactionsObserver.shared.addTransactionInProgress(transaction.id)
@@ -198,8 +208,13 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
                 TransactionsObserver.shared.removeTransactionInProgress(transaction.id)
                 await transaction.finish()
                 debugPrint("Transaction completed ✅")
+                TransactionsObserver.shared.logHelper.logEvent(["proton_create_sub_flow": ["time": Date.now.description,
+                                                                                           "apple_transction_completed": true]])
                 return matchingPlan
             } catch {
+                TransactionsObserver.shared.logHelper.logEvent(["proton_create_sub_flow": ["time": Date.now.description,
+                                                                                           "error:": error.localizedDescription]],
+                                                               type: .close)
                 TransactionsObserver.shared.removeTransactionInProgress(transaction.id)
                 debugPrint(error)
                 throw error
@@ -219,6 +234,32 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
             transactionProgress.send(completion: .finished)
             let error = ProtonPlansManagerError.transactionUnknownError
             PMLog.error(error.errorDescription ?? "PaymentsV2 - unknown transaction error", sendToExternal: true)
+            throw error
+        }
+    }
+
+    public func recoverTransactionReceipt() async throws {
+        // Recovery TransactionTest
+        debugPrint("RECOVERY FLOW INITIATED 🤞🏻🤞🏻")
+        guard let pendingTransaction = try await StoreKitReceiptManager().recoverTransaction() else {
+            debugPrint("No transaction returned")
+            throw ProtonPlansManagerError.noUnfinshedTransactionsFound
+        }
+
+        guard let matchingPlan = findMatchingPlan(productID: pendingTransaction.transaction.productID) else {
+            let error = ProtonPlansManagerError.unableToMatchProtonPlanToStoreProduct(productId: pendingTransaction.transaction.productID)
+            PMLog.error(error.failureReason ?? "PaymentsV2 - unable to match Proton and AppleStore plans", sendToExternal: true)
+            throw error
+        }
+
+        do {
+            TransactionsObserver.shared.addTransactionInProgress(pendingTransaction.transaction.id)
+            _ = try await transactionHandler.processTransaction(pendingTransaction.transaction.toProtonTransaction(), plan: matchingPlan)
+            TransactionsObserver.shared.removeTransactionInProgress(pendingTransaction.transaction.id)
+            await pendingTransaction.transaction.finish()
+            debugPrint("RECOVERY FLOW SUCCESSFUL ✅")
+        } catch {
+            TransactionsObserver.shared.removeTransactionInProgress(pendingTransaction.transaction.id)
             throw error
         }
     }
@@ -256,26 +297,5 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
 
     private func findMatchingPlan(productID: String) -> ComposedPlan? {
         planComposer.matchPlanToStoreProduct(productID)
-    }
-}
-
-extension ProtonPlansManager: SKRequestDelegate {
-
-    public func requestDidFinish(_ request: SKRequest) {
-        cancelActiveRequest(request)
-        ObservabilityEnv.report(.paymentQuerySubscriptionsTotal(status: .successful, isDynamic: true))
-        tokenContinuation?.resume()
-    }
-
-    public func request(_ request: SKRequest, didFailWithError error: Error) {
-        cancelActiveRequest(request)
-        ObservabilityEnv.report(.paymentQuerySubscriptionsTotal(status: .failed, isDynamic: true))
-        tokenContinuation?.resume(throwing: error)
-        debugPrint(error)
-    }
-
-    private func cancelActiveRequest(_ request: SKRequest) {
-        request.cancel()
-        refresh = nil
     }
 }

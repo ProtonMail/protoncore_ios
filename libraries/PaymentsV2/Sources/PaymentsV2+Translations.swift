@@ -44,6 +44,7 @@ public enum PaymentsV2Localizer: String, TranslationsExposing {
     case SK_Receipt_impossible_to_get_receipt
     case Transaction_Handler_plan_not_found
     case Transaction_Handler_repeated_purchase
+    case Transaction_Handler_receipt_update_failed
 
     public var l10n: String {
         switch self {
@@ -71,7 +72,8 @@ public enum PaymentsV2Localizer: String, TranslationsExposing {
             return localized(key: self.rawValue, comment: "TransactionHandler - impossible to find plan's name")
         case .Transaction_Handler_repeated_purchase:
             return localized(key: self.rawValue, comment: "TransactionHandler - repeated purchase, or renewal attempted")
+        case .Transaction_Handler_receipt_update_failed:
+            return localized(key: self.rawValue, comment: "TransactionHandler - receipt refresh failed")
         }
     }
-
 }

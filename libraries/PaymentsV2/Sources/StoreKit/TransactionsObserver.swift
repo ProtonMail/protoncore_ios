@@ -40,6 +40,7 @@ public protocol TransactionsObserverProviding: Sendable {
     func setConfiguration(_ configuration: TransactionsObserverConfiguration)
     func addTransactionInProgress(_ transactionId: UInt64)
     func removeTransactionInProgress(_ transactionId: UInt64)
+    func generateTransactionLog() -> URL?
 }
 
 public enum TransactionsObserverError: LocalizedError {
@@ -76,6 +77,7 @@ public struct TransactionsObserverConfiguration: Sendable {
 public final class TransactionsObserver: TransactionsObserverProviding, @unchecked Sendable {
 
     public static let shared = TransactionsObserver()
+    public var logHelper = LogHelper()
     private var configuration: TransactionsObserverConfiguration?
     @Published public private(set) var isON: Bool = false
     @Published public private(set) var transactionStatus: TransactionType = .unknown
@@ -190,11 +192,12 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
     }
 
     // MARK: Public methods
+
     public func start() async throws {
         if !isON {
             try initRequiredComponents()
 
-            guard let planComposer = planComposer, let _ = transactionHandler else {
+            guard let planComposer = planComposer, transactionHandler != nil else {
                 assertionFailure("TransactionsObserver: TransactionsObserverConfiguration required to start the observer")
                 let error = TransactionsObserverError.requiredSubComponentInitFailed
                 PMLog.error(error.failureReason ?? "Impossible to initilize sub-components required by PaymentsV2 - TransactionObserver", sendToExternal: true)
@@ -239,5 +242,9 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
         queue.sync {
             _ = self.transactionsInProgress.remove(transactionId)
         }
+    }
+
+    public func generateTransactionLog() -> URL? {
+        logHelper.returnTransactionLog()
     }
 }

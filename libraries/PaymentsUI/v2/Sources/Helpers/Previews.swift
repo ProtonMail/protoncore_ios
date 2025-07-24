@@ -30,7 +30,7 @@ public struct ProductMock: ProductProtocol {
     public var price: Decimal
     public var id: String
     public var priceFormatStyle: Decimal.FormatStyle.Currency = .init(code: "USD")
-    public var subscription: Product.SubscriptionInfo? = nil
+    public var subscription: Product.SubscriptionInfo?
 }
 
 // swiftlint:disable line_length

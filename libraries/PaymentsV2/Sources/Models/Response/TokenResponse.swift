@@ -31,7 +31,7 @@ struct TokenStatus: Decodable, Sendable {
     }
 }
 
-public struct NewToken: Decodable, Sendable {
+public struct NewToken: Decodable, Sendable, DictionaryConvertible {
 
     public let code: Int
     public let status: Int

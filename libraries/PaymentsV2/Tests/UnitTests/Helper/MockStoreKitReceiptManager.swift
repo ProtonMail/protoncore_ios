@@ -33,4 +33,12 @@ class MockStoreKitReceiptManager: StoreKitReceiptManagerProviding {
     func fetchPurchaseReceipt() throws -> String {
         return receipt
     }
+
+    func recoverTransaction() async -> ProtonCorePaymentsV2.UnfinishedTransaction? {
+        return nil
+    }
+
+    func refreshReceipt() async throws -> String? {
+        return receipt
+    }
 }

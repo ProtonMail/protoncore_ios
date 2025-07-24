@@ -32,11 +32,14 @@ public enum TransactionHandlerError: LocalizedError {
     case transactionIdNotEqualToOriginalTransactionId(originalID: UInt64, transactionId: UInt64)
     case unableToGetBundleIdentifier
     case unableToGetTransactionAmountOrCurrency(transactionId: UInt64)
+    case fetchReceiptDidFail(description: String)
 
     public var errorDescription: String? {
         switch self {
         case .transactionIdNotEqualToOriginalTransactionId:
             return PaymentsV2Localizer.Transaction_Handler_repeated_purchase.l10n
+        case .fetchReceiptDidFail:
+            return PaymentsV2Localizer.Transaction_Handler_receipt_update_failed.l10n
         default:
             return PaymentsV2Localizer.Transaction_Handler_plan_not_found.l10n
         }
@@ -52,6 +55,8 @@ public enum TransactionHandlerError: LocalizedError {
             return "App Bundle identifier not found"
         case .unableToGetTransactionAmountOrCurrency(let transactionId):
             return "Impossible to find transaction amount or currency for transactionId: \(transactionId)"
+        case .fetchReceiptDidFail(let description):
+            return "SKReceiptRefreshRequest failed with error: \(description)"
         }
     }
 }
@@ -78,31 +83,48 @@ public enum TransactionHandlerState: String, Sendable {
 }
 
 public protocol TransactionHandlerProviding: Sendable {
-    func processTransaction(_ transaction: ProtonTransaction, plan: ComposedPlan) async throws -> ComposedPlan
+    func processTransaction(_ transaction: ProtonTransaction, plan: ComposedPlan, fail: Bool) async throws -> ComposedPlan
     func updateRemoteManager(remoteManager: RemoteManagerProviding) async
     func verifyTransactionUUIDs(appAccountToken: UUID) async throws -> Bool
 }
 
-public final class TransactionHandler: TransactionHandlerProviding, @unchecked Sendable {
+public final class TransactionHandler: NSObject, TransactionHandlerProviding, @unchecked Sendable {
 
     private var remoteManager: RemoteManagerProviding
     private let paymentsAPIs: PaymentsAPIs
-    private let receiptManager: StoreKitReceiptManagerProviding
     private(set) var transactionState = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
     private let queue = DispatchQueue(label: "paymentsV2.transactionHandler.syncQueue")
+    private var tokenContinuation: CheckedContinuation<Void, Error>?
+    private var refresh: SKReceiptRefreshRequest?
+    private let receiptManager: StoreKitReceiptManagerProviding
 
     public init(remoteManager: RemoteManagerProviding,
                 paymentsAPIs: PaymentsAPIs,
-                receiptManager: StoreKitReceiptManagerProviding = StoreKitReceiptManager()) {
+                receiptManger: StoreKitReceiptManagerProviding = StoreKitReceiptManager()) {
         self.remoteManager = remoteManager
         self.paymentsAPIs = paymentsAPIs
-        self.receiptManager = receiptManager
+        self.receiptManager = receiptManger
     }
 
-    public func processTransaction(_ transaction: ProtonTransaction, plan: ComposedPlan) async throws -> ComposedPlan {
+    public func processTransaction(_ transaction: ProtonTransaction, plan: ComposedPlan, fail: Bool = false) async throws -> ComposedPlan {
         debugPrint("Transaction in progress...")
         debugPrint(transaction.originalID)
         debugPrint(transaction.id)
+
+        // NOTE:
+        // This flag is used only in debug mode to force fail
+        // a transaction after the product is has been successfully purchased on the AppleStore.
+        // The purpose of the fail is testing the Apple transaction receipt recovery functionality.
+        // For now the flag is internal only.
+#if DEBUG
+        if fail {
+            debugPrint("Transaction FORCED to fail")
+            throw TransactionHandlerError.unableToGetBundleIdentifier
+        }
+#endif
+
+        try await receiptManager.refreshReceipt()
+
         guard transaction.originalID == transaction.id else {
             updateTransactionState(state: .mismatchTransactionIDs)
             let error = TransactionHandlerError.transactionIdNotEqualToOriginalTransactionId(originalID: transaction.originalID, transactionId: transaction.id)
@@ -110,6 +132,7 @@ public final class TransactionHandler: TransactionHandlerProviding, @unchecked S
             throw error
         }
 
+        TransactionsObserver.shared.logHelper.logEvent(["start_resolving_transaction": Date.now.description])
         try await resolveTransaction(transaction, plan: plan)
 
         // transaction.appAccountToken
@@ -150,13 +173,15 @@ private extension TransactionHandler {
     private func generateValidationTokenFromStoreKitReceipt(_ transaction: ProtonTransactionProviding) throws -> Token {
 
         debugPrint("Generating validation token..")
-
         let receipt = try receiptManager.fetchPurchaseReceipt()
 
         guard var bundleIdentifier = Bundle.main.bundleIdentifier else {
             debugPrint("bundle not obtainable")
             let error = TransactionHandlerError.unableToGetBundleIdentifier
             PMLog.error(error.failureReason ?? "Bundle identifier not found", sendToExternal: true)
+            TransactionsObserver.shared.logHelper.logEvent(["fetch_bundle_identifier": ["time": Date.now.description,
+                                                                                        "status": "failed"]],
+                                                           type: .close)
             throw error
         }
 
@@ -177,6 +202,11 @@ private extension TransactionHandler {
             updateTransactionState(state: .transactionProcessError)
             let error = TransactionHandlerError.unableToGetTransactionAmountOrCurrency(transactionId: transaction.id)
             PMLog.error(error.failureReason ?? "Bundle identifier not found", sendToExternal: true)
+
+            TransactionsObserver.shared.logHelper.logEvent(["fetch_amount_currency": ["time": Date.now.description,
+                                                                                      "status": "failed"]],
+                                                           type: .close)
+
             throw error
         }
 
@@ -192,6 +222,8 @@ private extension TransactionHandler {
                                                      type: "apple-recurring"),
                              paymentMethodID: nil)
         debugPrint("Validation token generated ✅")
+        TransactionsObserver.shared.logHelper.logEvent(["validation_token_creation": ["time": Date.now.description,
+                                                                                      "token": newToken.toDictionary()]])
         return newToken
     }
 
@@ -202,6 +234,8 @@ private extension TransactionHandler {
             let request = try paymentsAPIs.url(for: .createToken(token: transactionToken))
             let newToken: NewToken = try await remoteManager.postToURL(request: request)
             ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(status: .http2xx, isDynamic: true))
+            TransactionsObserver.shared.logHelper.logEvent(["post_validation_token_request": ["time": Date.now.description,
+                                                                                              "token": newToken.toDictionary()]])
             return newToken
         } catch {
 
@@ -212,6 +246,9 @@ private extension TransactionHandler {
             }
 
             updateTransactionState(state: .transactionProcessError)
+            TransactionsObserver.shared.logHelper.logEvent(["post_validation_token_request": ["time": Date.now.description,
+                                                                                              "status": "failed",
+                                                                                              "response": nil]])
             throw error
         }
     }
@@ -222,6 +259,10 @@ private extension TransactionHandler {
             let error = TransactionHandlerError.unableToFindPlanName(productID: transaction.productID)
             PMLog.error(error.failureReason ?? "PaymentsV2 - TransactionHandler unableToFindPlanName failure reason missing", sendToExternal: true)
             updateTransactionState(state: .transactionProcessError)
+            TransactionsObserver.shared.logHelper.logEvent(["create_new_subscription": ["time": Date.now.description,
+                                                                                        "status": "failed",
+                                                                                        "reason": "plan name and compose plan mismatch"]],
+                                                           type: .close)
             throw error
         }
         debugPrint("Creating new subscription..")
@@ -244,12 +285,20 @@ private extension TransactionHandler {
             let request = try paymentsAPIs.url(for: .createSubscription(newSubscription: newSub))
             _ = try await remoteManager.postToURL(request: request)
             debugPrint("New subscription successfully created ✅")
+            TransactionsObserver.shared.logHelper.logEvent(["create_new_subscription": ["time": Date.now.description,
+                                                                                        "status": "success",
+                                                                                        "response": "TO BE ADDED"]],
+                                                           type: .close)
             ObservabilityEnv.report(.paymentSubscribeTotal(status: .successful, isDynamic: true))
             updateTransactionState(state: .transactionCompleted)
             return true
         } catch {
             ObservabilityEnv.report(.paymentSubscribeTotal(status: .failed, isDynamic: true))
             updateTransactionState(state: .transactionProcessError)
+            TransactionsObserver.shared.logHelper.logEvent(["create_new_subscription": ["time": Date.now.description,
+                                                                                        "status": "failed",
+                                                                                        "reason": error.localizedDescription]],
+                                                           type: .close)
             throw error
         }
     }

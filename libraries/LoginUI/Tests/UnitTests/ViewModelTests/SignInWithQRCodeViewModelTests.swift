@@ -92,7 +92,7 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
         }
 
         mockClientIdProvider.id = clientId
-        mockSecureHashGenerator.data = Data([1,2,3])
+        mockSecureHashGenerator.data = Data([1, 2, 3])
 
         sut.refreshWaitTimeInSeconds = 0.5
         sut.pullForkIntervalInSeconds = 100
@@ -103,7 +103,7 @@ class SignInWithQRCodeViewModelTests: XCTestCase {
         let qrCode1 = sut.qrCodeText
 
         // Change the secure hash so QR text changes
-        mockSecureHashGenerator.data = Data([1,2,3,4])
+        mockSecureHashGenerator.data = Data([1, 2, 3, 4])
 
         try await waitForQRCodeText { $0 != qrCode1 }
 
