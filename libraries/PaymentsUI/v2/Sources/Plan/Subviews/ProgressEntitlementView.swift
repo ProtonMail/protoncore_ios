@@ -27,6 +27,7 @@ struct ProgressEntitlementView: View {
     let currentValue: Int
     let maxValue: Int
     let text: String
+    let title: String
 
     @State private var isShown: Bool = false
 
@@ -52,7 +53,11 @@ struct ProgressEntitlementView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text(text)
+            HStack {
+                Text(title)
+                Spacer()
+                Text(text)
+            }
 
             GeometryReader { proxy in
                 ZStack(alignment: .leading) {

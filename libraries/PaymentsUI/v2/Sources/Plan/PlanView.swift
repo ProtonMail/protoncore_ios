@@ -60,7 +60,10 @@ public struct PlanView: View {
 
             if viewModel.showProgressEntitlements {
                 ForEach(viewModel.progressEntitlements, id: \.self) { progress in
-                    ProgressEntitlementView(currentValue: progress.current, maxValue: progress.max, text: progress.text)
+                    ProgressEntitlementView(currentValue: progress.current,
+                                            maxValue: progress.max,
+                                            text: progress.text,
+                                            title: progress.title)
                 }
             }
 

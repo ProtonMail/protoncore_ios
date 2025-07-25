@@ -29,7 +29,7 @@ public struct Examples {
         entitlements: [Entitlement] = [Entitlement.description(DescriptionEntitlement(type: "description",
                                                                                       text: "10 VPN connections",
                                                                                       iconName: "shield")),
-                                       Entitlement.progress(ProgressEntitlement(type: "progress", text: "0.6 GB of 1 GB", min: 0, max: 10, current: 6))],
+                                       Entitlement.progress(ProgressEntitlement(title: "Mail storage", type: "progress", text: "0.6 GB of 1 GB", min: 0, max: 10, current: 6))],
         decorations: [Decoration] = [Decoration.starred(StarredDecoration(type: "Star", iconName: "star"))]) -> AvailablePlan{
 
         return AvailablePlan(description: "Your privacy and security are our priority.",
