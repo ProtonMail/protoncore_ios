@@ -21,3 +21,5 @@
 "Transaction_Handler_plan_not_found" = "Impossibile trovare il nome del piano che stai cercando di acquistare. Se il problema persiste, contatta l'assistenza clienti.";
 
 "Transaction_Handler_repeated_purchase" = "Non è possibile rinnovare più volte il piano selezionato. Se ritieni che si tratti di un errore o se il problema persiste, contatta il nostro servizio clienti.";
+
+"Transaction_Handler_receipt_update_failed" = "Si è verificato un errore durante la richiesta della ricevuta della transazione da Apple. Se il problema persiste, contatta l'assistenza clienti.";

@@ -21,3 +21,5 @@
 "Transaction_Handler_plan_not_found" = "Nepodarilo sa nájsť názov plánu, ktorý sa pokúšate zakúpiť. Ak problém pretrváva, kontaktujte, prosím, oddelenie zákazníckej podpory.";
 
 "Transaction_Handler_repeated_purchase" = "Vybraný plán nie je možné obnoviť viackrát. Ak si myslíte, že ide o chybu, alebo ak problém pretrváva, kontaktujte našu zákaznícku podporu, prosím";
+
+"Transaction_Handler_receipt_update_failed" = "An error occured while requesting the transaction receipt from Apple. If the issue persists please contact customer support";

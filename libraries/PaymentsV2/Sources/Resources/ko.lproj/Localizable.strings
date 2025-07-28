@@ -21,3 +21,5 @@
 "Transaction_Handler_plan_not_found" = "사용자가 구매를 시도한 플랜의 명칭을 탐색하는데 실패했습니다. 문제 재발시 고객 지원에 문의해 주세요.";
 
 "Transaction_Handler_repeated_purchase" = "선택한 요금제를 여러 번 갱신하는 것은 불가능합니다. 이것이 오류라고 생각하시거나 문제가 지속되면 고객지원에 문의해주세요.";
+
+"Transaction_Handler_receipt_update_failed" = "Apple에 거래 영수증을 요청하는 중 오류가 발생했습니다. 문제가 지속되면 고객 지원팀에 문의하세요.";

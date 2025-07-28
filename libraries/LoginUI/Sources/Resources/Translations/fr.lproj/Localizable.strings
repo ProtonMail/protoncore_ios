@@ -406,7 +406,7 @@
 
 "New QR code" = "Nouveau QR code";
 
-"Allow access to camera" = "Autoriser l’accès à la caméra";
+"Allow access to camera" = "Permettre l'accès à la caméra.";
 
 "To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "Pour scanner un QR code et vous connecter à un autre appareil, autorisez Proton %@ à accéder à votre appareil photo.";
 

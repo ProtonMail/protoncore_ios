@@ -21,3 +21,5 @@
 "Transaction_Handler_plan_not_found" = "Le nom de l’abonnement que vous essayez d’acheter est introuvable. Si le problème persiste, veuillez contacter le service client.";
 
 "Transaction_Handler_repeated_purchase" = "Il n'est pas possible de renouveler l'abonnement sélectionné plusieurs fois. Si vous pensez qu'il s'agit d'une erreur ou si le problème persiste, veuillez contacter notre service client.";
+
+"Transaction_Handler_receipt_update_failed" = "Une erreur s'est produite lors de la demande de l'accusé de réception de la transaction auprès d'Apple. Si le problème persiste, veuillez contacter le service client.";

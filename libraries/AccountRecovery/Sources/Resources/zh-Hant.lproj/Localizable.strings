@@ -10,15 +10,15 @@
 
 "We received a password reset request for %@." = "我們收到了一則針對 %@ 的密碼字元重設要求";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "若您未曾要求重設您的密碼字元，請**立即取消此要求**。";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "若您未曾要求重設您的密碼字元，請立即取消此要求。";
 
 "Password reset requested" = "密碼重設已依需求送出";
 
 "Insecure_View_line1" = "您已完成變更密碼，相應的帳號是 ";
 
-"You can change your password in %@." = "You can change your password in %@.";
+"You can change your password in %@." = "您可在 %@ 更改您的密碼字元。";
 
 "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "為了核實確認是您在嘗試重設您的密碼字元，我們會靜候 72 小時才進行核准需求。";
 
@@ -40,9 +40,9 @@
 
 "Insecure_View_Cancel_Button_CTA" = "取消重設";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "若您未曾要求重設您的密碼字元，請**立即取消此要求**。";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "若您未曾要求重設您的密碼字元，請立即取消此要求。";
 
 "We received a password reset request for **%@**." = "我們收到一個針對 **%@** 的密碼字元重設請求.";
 
@@ -50,32 +50,32 @@
 
 "Password reset cancelled" = "已取消密碼重設";
 
-"Cancelled by the user" = "Cancelled by the user";
+"Cancelled by the user" = "由使用者取消";
 
-"Authenticated in another session" = "Authenticated in another session";
+"Authenticated in another session" = "已在另一個作業階段中驗證";
 
 "none" = "無";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "帳號復原程序因未採取行動而逾期";
 
-"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "If you never made a password reset request, someone else could have access to your account. **Change your password now**";
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "若您從未提出密碼字元重設要求，可能有人已存取您的帳號。請**立即更改您的密碼字元**";
 
-"If you never made a password reset request, someone else could have access to your account. Change your password now" = "If you never made a password reset request, someone else could have access to your account. Change your password now";
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "若您從未提出密碼字元重設要求，可能有人已存取您的帳號。請立即更改您的密碼字元";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "帳號復原程序因未採取行動而逾期";
 
-"Recovery process not started" = "Recovery process not started";
+"Recovery process not started" = "復原程序尚未開始";
 
-"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "目前沒有正在進行的帳號復原程序。請前往全球資訊網應用程式上的作業階段以復原您的密碼字元。";
 
-"You can now reset your password" = "You can now reset your password";
+"You can now reset your password" = "您現在可以重設您的密碼字元";
 
-"Reset available until %@." = "Reset available until %@.";
+"Reset available until %@." = "重設功能開放至 %@。";
 
-"Change device to continue" = "Change device to continue";
+"Change device to continue" = "請更換裝置以繼續";
 
-"To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
+"To reset your password, go back to your active session on **the originating device**." = "若要重設您的密碼字元，請返回您在**原始裝置**上的作用中作業階段。";
 
-"To reset your password, go back to your active session on the originating device." = "To reset your password, go back to your active session on the originating device.";
+"To reset your password, go back to your active session on the originating device." = "若要重設您的密碼字元，請返回您在原始裝置上的作用中作業階段。";
 
-"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now.";
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "您有 %@ 的時間可重設您的密碼字元。";

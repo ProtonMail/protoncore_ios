@@ -8,10 +8,10 @@
 
 "Code doesn't match" = "代碼不符";
 
-"Code isn't valid" = "Code isn't valid";
+"Code isn't valid" = "代碼無效";
 
-"Device secret not found" = "Device secret not found";
+"Device secret not found" = "找不到裝置密鑰";
 
-"Passphrase not found" = "Passphrase not found";
+"Passphrase not found" = "找不到密碼";
 
 "Password update failed" = "密碼更新失敗";

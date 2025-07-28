@@ -21,3 +21,5 @@
 "Transaction_Handler_plan_not_found" = "Es war nicht möglich, den Namen des Pakets zu finden, das du zu kaufen versuchst. Wenn das Problem weiterhin besteht, wenden dich bitte an den Kundendienst";
 
 "Transaction_Handler_repeated_purchase" = "Es ist nicht möglich, den ausgewählten Abonnement mehrfach zu verlängern. Wenn Sie glauben, dass es sich um einen Fehler handelt oder das Problem weiterhin besteht, wenden Sie sich bitte an unseren Kundensupport";
+
+"Transaction_Handler_receipt_update_failed" = "Es ist ein Fehler beim Anfordern der Transaktionsbestätigung von Apple aufgetreten. Sollte das Problem weiterhin bestehen, kontaktiere bitte den Kundensupport.";
