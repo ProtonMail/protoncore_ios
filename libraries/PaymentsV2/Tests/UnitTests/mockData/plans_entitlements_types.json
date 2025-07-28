@@ -7,6 +7,7 @@
     },
     {
        "Type":"progress",
+       "Title": "Mail storage",
        "Text":"Easy Switch import assistant",
        "IconName":"shield",
        "Max":100,
