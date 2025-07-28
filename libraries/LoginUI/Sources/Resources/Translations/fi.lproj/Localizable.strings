@@ -354,9 +354,9 @@
 
 "Open the Proton app on your phone" = "Avaa Proton-sovellus puhelimessasi";
 
-"Tap into Settings, then tap Sign in to another device" = "Siirry asetuksiin ja napauta sitten \"Kirjaudu toiseen laitteeseen\"";
+"Tap into Settings, then tap Sign in to another device" = "Siirry asetuksiin ja napauta sitten \"Kirjaudu toiseen laitteeseen\";
 
-"Tap Scan QR code" = "Napauta \"Lue QR-koodi\"";
+"Tap Scan QR code" = "Napauta \"Lue QR-koodi\";
 
 "Scan this code with your phone camera to sign in instantly." = "Kirjaudu välittömästi lukemalla tämä koodi pohelimesi kameralla";
 

@@ -21,3 +21,5 @@
 "Transaction_Handler_plan_not_found" = "Ha estat impossible trobar el nom del pla que intenteu comprar. Si el problema persisteix poseu-vos en contacte amb el servei d'atenció al client.";
 
 "Transaction_Handler_repeated_purchase" = "No es pot renovar el pla seleccionat múltiples vegades. Si creieu que això és un error o si el problema persisteix, poseu-vos en contacte amb el nostre servei d'atenció al client";
+
+"Transaction_Handler_receipt_update_failed" = "S'ha produït un error mentre se sol·licitava el rebut de la transacció a Apple. Si el problema persisteix, poseu-vos en contacte amb el servei d'atenció al client.";

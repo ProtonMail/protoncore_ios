@@ -21,3 +21,5 @@
 "Transaction_Handler_plan_not_found" = "Det var ikke muligt at finde navnet på det abonnement, du forsøger at købe. Hvis problemet vedvarer, bedes du kontakte kundesupport.";
 
 "Transaction_Handler_repeated_purchase" = "Det er ikke muligt at forny det valgte abonnement flere gange. Hvis du tror, det er en fejl, eller hvis problemet fortsætter, bedes du kontakte vores kundesupport.";
+
+"Transaction_Handler_receipt_update_failed" = "An error occured while requesting the transaction receipt from Apple. If the issue persists please contact customer support";

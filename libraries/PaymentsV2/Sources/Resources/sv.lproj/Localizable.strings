@@ -21,3 +21,5 @@
 "Transaction_Handler_plan_not_found" = "Det var omöjligt att hitta namnet på paketet du försöker köpa. Om problemet kvarstår, kontakta kundsupport";
 
 "Transaction_Handler_repeated_purchase" = "Det är inte möjligt att förnya det valda paketet flera gånger. Om du tror att detta är ett fel eller om problemet kvarstår, kontakta vår kundsupport.";
+
+"Transaction_Handler_receipt_update_failed" = "Ett fel uppstod när transaktionskvittot begärdes från Apple. Om problemet kvarstår, kontakta kundsupport.";

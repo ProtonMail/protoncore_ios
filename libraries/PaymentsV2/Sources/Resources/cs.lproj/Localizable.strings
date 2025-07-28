@@ -12,7 +12,7 @@
 
 "Plans_Manager_peding_transaction_received" = "Přijata neočekávaná čekající transakce";
 
-"PlansComposer_unable_to_fetch_currentSub" = "Nelze načíst aktuální předplatné";
+"PlansComposer_unable_to_fetch_currentSub" = "Nelze stáhout aktuální předplatné";
 
 "Remote_manager_error" = "Něco se pokazilo a my jsme nemohli splnit váš požadavek. Pokud problém přetrvává, kontaktujte prosím zákaznickou podporu.";
 
@@ -21,3 +21,5 @@
 "Transaction_Handler_plan_not_found" = "Název tarifu, který se snažíte zakoupit, nebylo možné najít. Pokud problém přetrvává, kontaktujte prosím zákaznickou podporu";
 
 "Transaction_Handler_repeated_purchase" = "Vybraný tarif není možné obnovit vícekrát. Pokud se domníváte, že se jedná o chybu, nebo pokud problém přetrvává, obraťte se na naši zákaznickou podporu";
+
+"Transaction_Handler_receipt_update_failed" = "Při vyžádání potvrzení o transakci od společnosti Apple došlo k chybě. Pokud problém přetrvává, kontaktujte prosím zákaznickou podporu";

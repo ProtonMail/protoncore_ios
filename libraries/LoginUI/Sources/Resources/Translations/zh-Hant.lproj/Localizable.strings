@@ -224,7 +224,7 @@
 
 "Troubleshoot" = "疑難排解";
 
-"Please choose how you want to confirm your identity." = "Please choose how you want to confirm your identity.";
+"Please choose how you want to confirm your identity." = "請選擇您要如何確認您的身分。";
 
 "One-time code" = "拋棄式驗證碼";
 
@@ -236,29 +236,29 @@
 
 "Learn more" = "瞭解詳情";
 
-"Invalid state. Please quit the app and try again in a few minutes." = "Invalid state. Please quit the app and try again in a few minutes.";
+"Invalid state. Please quit the app and try again in a few minutes." = "狀態無效。請退出應用程式，並在幾分鐘後再試一次。";
 
 "There was a problem reading your security key." = "讀取安全金鑰時發生問題。";
 
-"We received an authorization from a type we don't support yet." = "We received an authorization from a type we don't support yet.";
+"We received an authorization from a type we don't support yet." = "我們收到了目前尚不支援的授權類型。";
 
-"Fetching your security keys details" = "Fetching your security keys details";
+"Fetching your security keys details" = "正在擷取您的安全金鑰詳細資料";
 
-"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys.";
+"You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "您的帳號尚未註冊任何安全金鑰。請造訪我們網站上的設定區段以新增安全金鑰。";
 
-"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "An error occurred fetching your security keys. You can also check them on the Proton %@ website.";
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "擷取您的安全金鑰時發生錯誤。您也可以在 Proton %@ 網站上查看它們。";
 
 "These are the security keys registered to your account" = "這些是註冊在您帳號的安全性密鑰。";
 
-"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys.";
+"You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "您的帳號尚未註冊任何安全金鑰。請使用 Proton %@ 網路應用程式來新增安全金鑰。";
 
 "Security Keys" = "安全金鑰";
 
-"To manage, add, or remove security keys, please use the Proton %@ web application." = "To manage, add, or remove security keys, please use the Proton %@ web application.";
+"To manage, add, or remove security keys, please use the Proton %@ web application." = "若要管理、新增或移除安全金鑰，請使用 Proton %@ 網路應用程式。";
 
-"Unexpected FIDO2 signature." = "Unexpected FIDO2 signature.";
+"Unexpected FIDO2 signature." = "非預期的 FIDO2 簽章。";
 
-"We could not initiate the Secure Password update connection. Please try again." = "We could not initiate the Secure Password update connection. Please try again.";
+"We could not initiate the Secure Password update connection. Please try again." = "我們無法啟動安全密碼更新連線。請再試一次。";
 
 "Join %@" = "加入 %@";
 
@@ -266,7 +266,7 @@
 
 "Continue" = "繼續";
 
-"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe.";
+"Set a backup password to continue. This password will allow you to sign in and recover your data if you get locked out of your Proton Account, so make sure to keep it somewhere safe." = "設定備用密碼以繼續。如果您被鎖定在 Proton 帳號之外，此密碼將允許您登入並復原您的資料，因此請務必將其存放在安全的地方。";
 
 "Backup password" = "備份密碼";
 
@@ -326,7 +326,7 @@
 
 "Grant access to user?" = "授予使用者存取權?";
 
-"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user.";
+"%@ is requesting your help to sign in to their Proton Account with single sign-on.\n\nEnter the confirmation code we sent to this user." = "%@ 正在請求您的協助，以單一登入方式登入其 Proton 帳號。";
 
 "Grant access" = "獲取權限";
 
@@ -336,155 +336,155 @@
 
 "to your organization" = "給您的組織";
 
-"Sign in with single sign-on" = "Sign in with single sign-on";
+"Sign in with single sign-on" = "使用單一登入方式登入";
 
-"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "Your organization uses SSO. Continue to sign in with your third-party SSO provider.";
+"Your organization uses SSO. Continue to sign in with your third-party SSO provider." = "您的組織使用 SSO。請繼續使用第三方 SSO 提供者登入。";
 
 "Unknown" = "未知";
 
 "Set backup password" = "設定備份密碼";
 
-"Email is invalid" = "Email is invalid";
+"Email is invalid" = "電子郵件無效";
 
-"Please enter your Proton Account email." = "Please enter your Proton Account email.";
+"Please enter your Proton Account email." = "請輸入您的 Proton 帳號電子郵件。";
 
 "Password not valid" = "密碼字元無效";
 
-"Passphrase not found" = "Passphrase not found";
+"Passphrase not found" = "找不到密碼";
 
-"Open the Proton app on your phone" = "Open the Proton app on your phone";
+"Open the Proton app on your phone" = "在手機上開啟 Proton 應用程式";
 
-"Tap into Settings, then tap Sign in to another device" = "Tap into Settings, then tap Sign in to another device";
+"Tap into Settings, then tap Sign in to another device" = "點選「設定」，然後點選「登入其他裝置」";
 
-"Tap Scan QR code" = "Tap Scan QR code";
+"Tap Scan QR code" = "輕點 掃描 QR 碼";
 
-"Scan this code with your phone camera to sign in instantly." = "Scan this code with your phone camera to sign in instantly.";
+"Scan this code with your phone camera to sign in instantly." = "使用手機相機掃描此代碼以立即登入。";
 
 "Sign in to another device" = "登入服務";
 
-"Sign in with your QR code" = "Sign in with your QR code";
+"Sign in with your QR code" = "使用您的 QR 碼登入";
 
-"Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active.";
+"Use this device to scan the QR code displayed on the device you want to sign in to. Both devices will stay active." = "使用此裝置掃描您要登入的裝置上顯示的 QR 碼。這兩個裝置都將保持作用中。";
 
-"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "To access the QR code, tap the **Sign in with QR code** button on the sign-in screen.";
+"To access the QR code, tap the **Sign in with QR code** button on the sign-in screen." = "若要存取 QR 碼，請在登入畫面上點選「**使用 QR 碼登入**」按鈕。";
 
-"Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust." = "Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust.";
+"Watch out for messages that contain a QR code. Never scan a QR code from a website or a person you don't trust." = "請注意含有 QR 碼的訊息。切勿掃描來自您不信任的網站或個人的 QR 碼。";
 
-"Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Proton will never ask you to scan a QR code that does not come from the domain **proton.me**.";
+"Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Proton 絕不會要求您掃描不是來自 **proton.me** 網域的 QR 碼。";
 
 "Scan QR code" = "掃描 QR 碼";
 
-"Authenticate to access the QR code scanner" = "Authenticate to access the QR code scanner";
+"Authenticate to access the QR code scanner" = "驗證以存取 QR 碼掃描器";
 
-"Place QR code within the square" = "Place QR code within the square";
+"Place QR code within the square" = "將 QR 碼置於方框內";
 
 "Verifying..." = "正在驗證...";
 
-"You’re signed in to %@ on the other device." = "You’re signed in to %@ on the other device.";
+"You’re signed in to %@ on the other device." = "您已在其他裝置上登入 %@。";
 
 "You're signed in" = "您已登入";
 
 "Got it" = "我知道了";
 
-"Code not recognized. Try again." = "Code not recognized. Try again.";
+"Code not recognized. Try again." = "無法辨識代碼。請再試一次。";
 
-"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me.";
+"Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "提示：切勿掃描來自您不信任的網站或個人的 QR 碼。Proton 絕不會要求您掃描不是來自 account.proton.me 網域的 QR 碼。";
 
-"Camera Access Denied." = "Camera Access Denied.";
+"Camera Access Denied." = "相機存取已拒絕。";
 
-"The permission to use the Camera is off. Please enable it from the Settings." = "The permission to use the Camera is off. Please enable it from the Settings.";
+"The permission to use the Camera is off. Please enable it from the Settings." = "相機使用權限已關閉。請從「設定」中啟用。";
 
 "Go to Settings" = "前往設定值";
 
-"to Proton %@" = "to Proton %@";
+"to Proton %@" = "至 Proton %@";
 
 "Something went wrong" = "出了點問題";
 
-"We couldn't sign you in. Please scan a new QR code to try again." = "We couldn't sign you in. Please scan a new QR code to try again.";
+"We couldn't sign you in. Please scan a new QR code to try again." = "我們無法登入您。請掃描新的 QR 碼以再試一次。";
 
-"We couldn't sign you in. Please sign in with your password." = "We couldn't sign you in. Please sign in with your password.";
+"We couldn't sign you in. Please sign in with your password." = "我們無法登入您。請使用您的密碼登入。";
 
 "New QR code" = "新 QR 代碼";
 
-"Allow access to camera" = "Allow access to camera";
+"Allow access to camera" = "允許存取相機";
 
-"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "To scan a QR code and sign in to another device, grant Proton %@ access to your camera.";
+"To scan a QR code and sign in to another device, grant Proton %@ access to your camera." = "若要掃描 QR 碼並登入另一裝置，請授予 Proton %@ 相機存取權限。";
 
-"You're always in control: You can change this anytime in your device settings." = "You're always in control: You can change this anytime in your device settings.";
+"You're always in control: You can change this anytime in your device settings." = "您始終掌控：您可以隨時在裝置設定中更改此項。";
 
 "Settings" = "設定";
 
-"We couldn't load the QR code" = "We couldn't load the QR code";
+"We couldn't load the QR code" = "我們無法載入 QR 碼";
 
 "Retry" = "重試";
 
-"Welcome to Proton VPN" = "Welcome to Proton VPN";
+"Welcome to Proton VPN" = "歡迎使用 Proton VPN";
 
-"Browse privately, access blocked content, and enjoy digital freedom." = "Browse privately, access blocked content, and enjoy digital freedom.";
+"Browse privately, access blocked content, and enjoy digital freedom." = "私密瀏覽、存取被封鎖的內容，並享受數位自由。";
 
-"Certified no-logs VPN" = "Certified no-logs VPN";
+"Certified no-logs VPN" = "經過認證的無日誌 VPN";
 
 "Continue as guest" = "以訪客身分繼續";
 
-"By using this app you accept our" = "By using this app you accept our";
+"By using this app you accept our" = "使用此應用程式即表示您接受我們的";
 
 "Terms and Conditions." = "服務條款.";
 
-"Tap **Scan QR code**" = "Tap **Scan QR code**";
+"Tap **Scan QR code**" = "輕點 **掃描 QR 碼**";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "點選「**設定**」，然後點選「**登入其他裝置**」";
 
-"Password must contain:" = "Password must contain:";
+"Password must contain:" = "密碼字元必須包含:";
 
 "Access shared" = "存取已共享";
 
-"Back to settings" = "Back to settings";
+"Back to settings" = "返回設定";
 
-"How to sign in using another device" = "How to sign in using another device";
+"How to sign in using another device" = "如何使用其他裝置登入";
 
-"Get another device that’s signed in to your Proton Account" = "Get another device that’s signed in to your Proton Account";
+"Get another device that’s signed in to your Proton Account" = "取得已登入您 Proton 帳號的其他裝置";
 
-"Using that device, open any Proton app and select **Settings**" = "Using that device, open any Proton app and select **Settings**";
+"Using that device, open any Proton app and select **Settings**" = "使用該裝置，開啟任何 Proton 應用程式，然後選取「**設定**」";
 
-"Select **Sign in on another device → Scan QR code**" = "Select **Sign in on another device → Scan QR code**";
+"Select **Sign in on another device → Scan QR code**" = "選取「**登入其他裝置 → 掃描 QR Code**」";
 
-"Scan the code to sign in" = "Scan the code to sign in";
+"Scan the code to sign in" = "掃描代碼以登入";
 
-"We couldn't sign you in" = "We couldn't sign you in";
+"We couldn't sign you in" = "我們無法為您登入";
 
-"Try generating a new QR code." = "Try generating a new QR code.";
+"Try generating a new QR code." = "請嘗試產生新的 QR Code。";
 
-"Generate QR code" = "Generate QR code";
+"Generate QR code" = "產生 QR Code";
 
-"Please try another sign in method." = "Please try another sign in method.";
+"Please try another sign in method." = "請嘗試其他登入方法。";
 
 "Sign in on another device" = "登入服務";
 
-"How to sign in with QR code" = "How to sign in with QR code";
+"How to sign in with QR code" = "如何使用 QR Code 登入";
 
-"Allow camera access" = "Allow camera access";
+"Allow camera access" = "允許相機存取";
 
-"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings.";
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "若要使用 QR Code 登入，您需要允許 Proton %@ 存取您的相機。您可以在裝置設定中執行此動作。";
 
-"Position QR code inside the square" = "Position QR code inside the square";
+"Position QR code inside the square" = "將 QR Code 置於方框內";
 
-"Sign in with QR code" = "Sign in with QR code";
+"Sign in with QR code" = "使用 QR code 登入";
 
-"Open any Proton app on the device you want to sign in to" = "Open any Proton app on the device you want to sign in to";
+"Open any Proton app on the device you want to sign in to" = "在您要登入的裝置上開啟任何 Proton 應用程式";
 
-"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)";
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "在登入畫面中，選取「**忘記密碼字元**」或「**登入時發生問題？**」(在行動應用程式上，選取「**說明**」)";
 
-"Select **Sign in with QR code**. A QR code will appear." = "Select **Sign in with QR code**. A QR code will appear.";
+"Select **Sign in with QR code**. A QR code will appear." = "選取「**使用 QR Code 登入**」。將會顯示 QR Code。";
 
-"On this device, press **Scan QR code** and scan the code." = "On this device, press **Scan QR code** and scan the code.";
+"On this device, press **Scan QR code** and scan the code." = "在此裝置上，按下「**掃描 QR Code**」並掃描 QR Code。";
 
 "Security tips" = "安全性提示";
 
-"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "Be cautious of messages with QR codes. Only scan a code if you trust the source.";
+"Be cautious of messages with QR codes. Only scan a code if you trust the source." = "請謹慎處理含有 QR Code 的訊息。僅在您信任來源時才掃描 QR Code。";
 
-"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton will never contact you unexpectedly asking you to sign in with a QR code.";
+"Proton will never contact you unexpectedly asking you to sign in with a QR code." = "Proton 絕不會在您未預期的情況下聯絡您，要求您使用 QR Code 登入。";
 
-"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app.";
+"Proton will never ask you to scan a QR code that’s not from **https://proton.me** or an official Proton app." = "Proton 絕不會要求您掃描並非來自 **https://proton.me** 或官方 Proton 應用程式的 QR Code。";
 
 "Learn more" = "瞭解詳情";
 

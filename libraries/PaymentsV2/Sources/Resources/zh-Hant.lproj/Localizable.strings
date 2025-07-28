@@ -1,23 +1,25 @@
-"APIs_malformed_url_request" = "Something went wrong, and we couldn't fulfil your request. If the issue persists, please contact customer support.";
+"APIs_malformed_url_request" = "發生錯誤，我們無法處理您的請求。如果問題仍然存在，請聯絡客戶支援。";
 
-"Plans_Manager_impossible_to_get_user_uuid" = "It was impossible to get the user’s UUID for the transaction";
+"Plans_Manager_impossible_to_get_user_uuid" = "無法取得交易的使用者 UUID";
 
-"Plans_Manager_impossible_to_match_plan" = "It was impossible to match the Proton Plan to an Apple Store plan";
+"Plans_Manager_impossible_to_match_plan" = "無法將 Proton 方案與 Apple Store 方案配對";
 
-"Plans_Manager_impossible_to_restore_transactions" = "It was impossible to restore transactions, please contact customer support";
+"Plans_Manager_impossible_to_restore_transactions" = "無法還原交易，請聯絡客戶支援";
 
-"Plans_Manager_Transaction_cancelled_by_user" = "The transaction has been cancelled by the user";
+"Plans_Manager_Transaction_cancelled_by_user" = "交易已由使用者取消";
 
-"Plans_Manager_Transaction_unknown_error" = "An unexpected error occured, if this persists, please contact customer support";
+"Plans_Manager_Transaction_unknown_error" = "發生意外錯誤，如果問題仍然存在，請聯絡客戶支援";
 
-"Plans_Manager_peding_transaction_received" = "Unexpected pending transaction received";
+"Plans_Manager_peding_transaction_received" = "收到意外的待處理交易";
 
-"PlansComposer_unable_to_fetch_currentSub" = "Unable to fetch the current subscription";
+"PlansComposer_unable_to_fetch_currentSub" = "無法擷取目前訂閱";
 
-"Remote_manager_error" = "Something went wrong and we couldn't fulfill your request. If the issue persists, please contact customer support.";
+"Remote_manager_error" = "發生錯誤，我們無法處理您的請求。如果問題仍然存在，請聯絡客戶支援。";
 
-"SK_Receipt_impossible_to_get_receipt" = "Impossible to get transaction receipt data from Apple";
+"SK_Receipt_impossible_to_get_receipt" = "無法從 Apple 取得交易收據資料";
 
-"Transaction_Handler_plan_not_found" = "It was impossible to find the name of the plan you’re trying to purchase. If the issue persists please contact customer support";
+"Transaction_Handler_plan_not_found" = "無法找到您嘗試購買的方案名稱。如果問題仍然存在，請聯絡客戶支援";
 
-"Transaction_Handler_repeated_purchase" = "It's not possible to renew the selected plan multiple times. If you think this is an error or if the issue persists please contact our customer support";
+"Transaction_Handler_repeated_purchase" = "無法多次續訂所選方案。如果您認為這是錯誤或問題持續發生，請聯絡我們的客戶支援。";
+
+"Transaction_Handler_receipt_update_failed" = "在向 Apple 要求交易收據時發生錯誤。如果問題持續發生，請聯絡客戶支援。";

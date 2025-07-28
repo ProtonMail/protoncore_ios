@@ -21,3 +21,5 @@
 "Transaction_Handler_plan_not_found" = "Tidak mungkin menemukan nama paket yang coba Anda beli. Jika masalah terus berlanjut, hubungi layanan dukungan.";
 
 "Transaction_Handler_repeated_purchase" = "Paket yang dipilih tidak dapat diperbarui berulang kali. Apabila Anda merasa hal ini merupakan suatu kesalahan atau apabila masalah ini terus berlanjut, silakan hubungi layanan dukungan kami";
+
+"Transaction_Handler_receipt_update_failed" = "An error occured while requesting the transaction receipt from Apple. If the issue persists please contact customer support";

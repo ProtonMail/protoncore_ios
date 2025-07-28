@@ -21,3 +21,5 @@
 "Transaction_Handler_plan_not_found" = "Не вдалося знайти назву тарифного плану, який ви намагаєтеся придбати. Якщо проблема повторюватиметься, зверніться до клієнтської підтримки.";
 
 "Transaction_Handler_repeated_purchase" = "Неможливо поновити вибраний план кілька разів. Якщо ви вважаєте, що це помилка, або якщо проблема не вирішується, зверніться до нашої служби підтримки клієнтів.";
+
+"Transaction_Handler_receipt_update_failed" = "An error occured while requesting the transaction receipt from Apple. If the issue persists please contact customer support";

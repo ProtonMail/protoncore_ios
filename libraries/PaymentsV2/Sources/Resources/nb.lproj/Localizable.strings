@@ -21,3 +21,5 @@
 "Transaction_Handler_plan_not_found" = "Det var umulig å finne navnet på planen du prøver å kjøpe. Hvis problemet vedvarer, vennligst kontakt kundestøtte";
 
 "Transaction_Handler_repeated_purchase" = "Det er ikke mulig å fornye den valgte planen flere ganger. Hvis du tror dette er en feil eller hvis problemet vedvarer, vennligst kontakt vår kundestøtte";
+
+"Transaction_Handler_receipt_update_failed" = "Det oppstod en feil under forespørsel om transaksjonskvittering fra Apple. Hvis problemet vedvarer, vennligst kontakt kundestøtte";

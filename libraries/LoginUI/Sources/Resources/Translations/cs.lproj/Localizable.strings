@@ -246,7 +246,7 @@
 
 "You don't yet have any security keys enrolled in your account. Please visit the settings section on our website to add security keys." = "Ve svém účtu zatím nemáte zapsány žádné bezpečnostní klíče. Chcete-li přidat bezpečnostní klíče, navštivte sekci nastavení na našich webových stránkách.";
 
-"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "Načítání bezpečnostních klíčů selhalo. Můžete si je také prohlédnout na webových stránkách Proton %@.";
+"An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "Stahování bezpečnostních klíčů selhalo. Můžete si je také prohlédnout na webových stránkách Proton %@.";
 
 "These are the security keys registered to your account" = "Toto jsou bezpečnostní klíče registrované k vašemu účtu";
 

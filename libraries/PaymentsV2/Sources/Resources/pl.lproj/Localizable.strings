@@ -21,3 +21,5 @@
 "Transaction_Handler_plan_not_found" = "Nie można znaleźć nazwy planu do zakupu. Jeśli problem będzie się powtarzał, skontaktuj się ze wsparciem klienta.";
 
 "Transaction_Handler_repeated_purchase" = "Nie można wielokrotnie odnowić planu. Jeśli uważasz, że to nie jest błąd lub jeśli problem będzie się powtarzał, skontaktuj się z naszym wsparcia klienta";
+
+"Transaction_Handler_receipt_update_failed" = "Wystąpił błąd podczas żądania potwierdzenia transakcji od Apple. Jeśli problem będzie się powtarzał, skontaktuj się ze wsparciem klienta";
