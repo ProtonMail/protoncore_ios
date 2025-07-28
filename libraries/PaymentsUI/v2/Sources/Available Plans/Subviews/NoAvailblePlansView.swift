@@ -20,7 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import SwiftUI
-import ProtonCoreUI
+import ProtonCoreUIFoundations
 
 public enum NoAvailblePlansViewType {
     case noPlans
@@ -47,24 +47,27 @@ public enum NoAvailblePlansViewType {
 
 struct NoAvailblePlansView: View {
 
+    private struct Spacing {
+        static let large: CGFloat = 16
+        static let extraLarge: CGFloat = 24
+    }
+
     let type: NoAvailblePlansViewType
 
     var body: some View {
-        ZStack {
-            Color(Theme.color.backgroundNorm)
-                .ignoresSafeArea()
-            VStack {
-                Image("empty_result_image", bundle: Bundle.module)
-                Text(type.title)
-                    .font(.headline)
-                    .padding(.top, Theme.spacing.extraLarge)
-                Text(type.message)
-                    .font(.subheadline)
-                    .multilineTextAlignment(.center)
-                    .padding(.top, Theme.spacing.large)
-            }
-            .padding(Theme.spacing.large)
+        VStack {
+            Image("empty_result_image", bundle: Bundle.module)
+            Text(type.title)
+                .font(.headline)
+                .padding(.top, Spacing.extraLarge)
+            Text(type.message)
+                .font(.subheadline)
+                .multilineTextAlignment(.center)
+                .padding(.top, Spacing.large)
+                .padding(.horizontal, Spacing.large)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(ColorProvider.BackgroundNorm)
     }
 }
 

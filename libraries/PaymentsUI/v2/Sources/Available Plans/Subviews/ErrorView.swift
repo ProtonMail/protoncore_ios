@@ -20,34 +20,35 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import SwiftUI
-import ProtonCoreUI
+import ProtonCoreUIFoundations
 
 struct ErrorView: View {
+
+    private enum Spacing {
+        static let large: CGFloat = 16
+        static let extraLarge: CGFloat = 24
+    }
 
     let buttonAction: @Sendable () -> Void
 
     var body: some View {
-        ZStack {
-            Color(Theme.color.backgroundNorm)
-                .ignoresSafeArea()
-
             VStack {
                 Image("error_image", bundle: Bundle.module)
                 Text(PaymentsUIV2Localizer.Error_view_title.l10n)
                     .font(.headline)
-                    .padding(.top, Theme.spacing.extraLarge)
+                    .padding(.top, Spacing.extraLarge)
                 Text(PaymentsUIV2Localizer.Error_view_message.l10n)
                     .font(.subheadline)
                     .multilineTextAlignment(.center)
-                    .padding(.top, Theme.spacing.large)
+                    .padding(.top, Spacing.large)
 
                 IconButton(action: {
                         buttonAction()
                 }, title: PaymentsUIV2Localizer.Error_view_button_title.l10n, icon: Image(systemName: "arrow.clockwise"))
-                .padding(.top, Theme.spacing.large)
+                .padding(.top, Spacing.large)
             }
-            .padding(Theme.spacing.large)
-        }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(ColorProvider.BackgroundNorm)
     }
 }
 

@@ -152,7 +152,6 @@ extension String {
     static let paymentsUI: String = "ProtonCorePaymentsUI"
     static let paymentsUIV2: String = "ProtonCorePaymentsUIV2"
     static let paymentsUIResourcesiOS: String = "ProtonCorePaymentsUIResourcesiOS"
-    static let protonCoreUI: String = "ProtonCoreUI"
     static let pushNotifications: String = "ProtonCorePushNotifications"
     static let quarkCommands: String = "ProtonCoreQuarkCommands"
     static let services: String = "ProtonCoreServices"
@@ -276,7 +275,6 @@ extension Target.Dependency {
     static var paymentsUIV2: Target.Dependency { .target(name: .paymentsUIV2) }
     static var paymentsUIResourcesiOS: Target.Dependency { .target(name: .paymentsUIResourcesiOS,
                                                                    condition: .when(platforms: [.iOS, .macCatalyst])) }
-    static var protonCoreUI: Target.Dependency { .target(name: .protonCoreUI) }
     static var pushNotifications: Target.Dependency { .target(name: .pushNotifications) }
     static var quarkCommands: Target.Dependency { .target(name: .quarkCommands) }
     static var services: Target.Dependency { .target(name: .services) }
@@ -1489,7 +1487,7 @@ add(
                    dependencies: [
                         .log,
                         .paymentsV2,
-                        .protonCoreUI,
+                        .uiFoundations,
                         .foundations,
                         .utilities
                    ],
@@ -1575,19 +1573,6 @@ add(
                         .testingToolkitUnitTestsCore
                        ],
                        path: "libraries/PushNotifications/Tests")
-    ]
-)
-
-// MARK: ProtonCoreUI
-
-add(
-    product: .protonCoreUI,
-    targets: [
-        coreTarget(name: .protonCoreUI,
-                   path: "libraries/ProtonCoreUI/Sources"),
-
-        coreTestTarget(name: .protonCoreUI + "UnitTests",
-                       path: "libraries/ProtonCoreUI/Tests/ProtonCoreUITests")
     ]
 )
 

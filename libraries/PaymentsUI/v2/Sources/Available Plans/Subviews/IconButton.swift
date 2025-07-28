@@ -20,13 +20,14 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import SwiftUI
-import ProtonCoreUI
+import ProtonCoreUIFoundations
 
 struct IconButton: View {
 
     private struct Constants {
         static let buttonLabelPadding: CGFloat = 10
         static let buttonBorderWidth: CGFloat = 2
+        static let mediumSpacing: CGFloat = 12
     }
 
     let action: () -> Void
@@ -44,13 +45,13 @@ struct IconButton: View {
                 icon
             }
             .padding(.all, Constants.buttonLabelPadding)
-            .foregroundColor(Theme.color.iconAccent)
+            .foregroundColor(ColorProvider.IconAccent)
             .background(
                 RoundedRectangle(
-                    cornerRadius: Theme.radius.medium,
+                    cornerRadius: Constants.mediumSpacing,
                     style: .continuous
                 )
-                .stroke(Theme.color.iconAccent, lineWidth: Constants.buttonBorderWidth))
+                .stroke(ColorProvider.IconAccent, lineWidth: Constants.buttonBorderWidth))
         })
     }
 }

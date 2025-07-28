@@ -24,7 +24,7 @@ import Foundation
 import ProtonCoreDoh
 import ProtonCorePaymentsV2
 import ProtonCoreUtilities
-import ProtonCoreUI
+import ProtonCoreUIFoundations
 import StoreKit
 
 @MainActor

@@ -20,39 +20,40 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import SwiftUI
-import ProtonCoreUI
+import ProtonCoreUIFoundations
 
 struct TransactionProgressView: View {
 
     @Binding var confirmationCompleted: Bool
     @Binding var updateCompleted: Bool
 
+    private struct Spacing {
+        static let large: CGFloat = 16
+        static let extraLarge: CGFloat = 24
+    }
+
     var body: some View {
-        ZStack {
-            Color(Theme.color.backgroundNorm)
-                .ignoresSafeArea()
+        VStack {
+            Image("transaction_image", bundle: Bundle.module)
+            Text(PaymentsUIV2Localizer.Transaction_state_view_title.l10n)
+                .font(.headline)
+                .padding(.top, Spacing.extraLarge)
+            Text(PaymentsUIV2Localizer.Transaction_state_view_subtitle.l10n)
+                .font(.subheadline)
+                .multilineTextAlignment(.center)
 
-            VStack {
-                Image("transaction_image", bundle: Bundle.module)
-                Text(PaymentsUIV2Localizer.Transaction_state_view_title.l10n)
-                    .font(.headline)
-                    .padding(.top, Theme.spacing.extraLarge)
-                Text(PaymentsUIV2Localizer.Transaction_state_view_subtitle.l10n)
-                    .font(.subheadline)
-                    .multilineTextAlignment(.center)
-
-                StateProgressView(progressCompleted: $confirmationCompleted,
-                                  stateProgressText: PaymentsUIV2Localizer.Transaction_state_payment_confirmation_progress.l10n,
-                                  stateCompleteText: PaymentsUIV2Localizer.Transaction_state_payment_confirmation_complete.l10n)
-                    .padding(.top, Theme.spacing.extraLarge)
-                if confirmationCompleted {
-                    StateProgressView(progressCompleted: $updateCompleted,
-                                      stateProgressText: PaymentsUIV2Localizer.Transaction_state_payment_account_update_progress.l10n,
-                                      stateCompleteText: PaymentsUIV2Localizer.Transaction_state_payment_account_update_complete.l10n)
-                }
+            StateProgressView(progressCompleted: $confirmationCompleted,
+                              stateProgressText: PaymentsUIV2Localizer.Transaction_state_payment_confirmation_progress.l10n,
+                              stateCompleteText: PaymentsUIV2Localizer.Transaction_state_payment_confirmation_complete.l10n)
+            .padding(.top, Spacing.extraLarge)
+            if confirmationCompleted {
+                StateProgressView(progressCompleted: $updateCompleted,
+                                  stateProgressText: PaymentsUIV2Localizer.Transaction_state_payment_account_update_progress.l10n,
+                                  stateCompleteText: PaymentsUIV2Localizer.Transaction_state_payment_account_update_complete.l10n)
             }
-            .padding(Theme.spacing.large)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(ColorProvider.BackgroundNorm)
     }
 }
 

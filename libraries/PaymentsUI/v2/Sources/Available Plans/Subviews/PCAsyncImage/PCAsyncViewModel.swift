@@ -1,6 +1,6 @@
 //
-//  Miscellaneous.swift
-//  ProtonCore-PaymentsUIV2 - Created on 7/11/2024.
+//  PCAsyncViewModel.swift
+//  ProtonCore-PaymentsUIV2 - Created on 6/1/2025.
 //
 //  Copyright (c) 2024 Proton Technologies AG
 //
@@ -19,21 +19,25 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import Foundation
+import SwiftUI
 
-public enum BillingCycle: Int, CaseIterable {
-    case monthly = 1
-    case yearly = 12
-    case all = 0
+@MainActor
+public struct PCAsyncViewModel {
 
-    var displayName: String {
-        switch self {
-        case .monthly:
-            PaymentsUIV2Localizer.Monthly_cycle.l10n
-        case .yearly:
-            PaymentsUIV2Localizer.Yearly_cycle.l10n
-        case .all:
-            PaymentsUIV2Localizer.All_cycle.l10n
+    let placeholderImage: UIImage?
+    let downloader: DownloaderProviding
+
+    public init(placeholderImage: UIImage?,
+                downloader: DownloaderProviding) {
+        self.placeholderImage = placeholderImage
+        self.downloader = downloader
+    }
+
+    func getImage() async -> UIImage? {
+        guard let image = await downloader.downloadAsset() else {
+            return placeholderImage
         }
+
+        return image
     }
 }

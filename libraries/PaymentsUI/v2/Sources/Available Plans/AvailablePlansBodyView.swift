@@ -19,10 +19,16 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import ProtonCoreUI
+import ProtonCoreUIFoundations
 import SwiftUI
 
 struct AvailablePlansBodyView: View {
+
+    private struct Spacing {
+        static let standard: CGFloat = 8
+        static let large: CGFloat = 16
+        static let extraLarge: CGFloat = 24
+    }
 
     @ObservedObject var viewModel: AvailablePlansViewModel
 
@@ -32,7 +38,7 @@ struct AvailablePlansBodyView: View {
             // MARK: Header
             if viewModel.hideCurrentPlan {
                 SubscriptionsViewHeader()
-                    .padding(.bottom, viewModel.hideCurrentPlan ? Theme.spacing.extraLarge : 0)
+                    .padding(.bottom, viewModel.hideCurrentPlan ? Spacing.extraLarge : 0)
             }
 
             // MARK: Available plans section title
@@ -43,7 +49,7 @@ struct AvailablePlansBodyView: View {
                         .fontWeight(.bold)
                     Spacer()
                 }
-                .padding(.horizontal, Theme.spacing.extraLarge)
+                .padding(.horizontal, Spacing.extraLarge)
                 .opacity(viewModel.hasAvailablePlans ? 1 : 0)
             }
 
@@ -55,14 +61,14 @@ struct AvailablePlansBodyView: View {
                     }
                 }
                 .pickerStyle(.menu)
-                .tint(Theme.color.iconAccent)
+                .tint(ColorProvider.IconAccent)
                 .onChange(of: viewModel.billingCycle) { _ in
                     viewModel.billingFilter(filter: viewModel.billingCycle)
                 }
 
                 Spacer()
             }
-            .padding(.horizontal, Theme.spacing.large)
+            .padding(.horizontal, Spacing.large)
             .opacity(viewModel.hasAvailablePlans ? 1 : 0)
 
             // MARK: Available plans
@@ -74,14 +80,14 @@ struct AvailablePlansBodyView: View {
                     } else {
                         ForEach(viewModel.filteredPlans, id: \.id) { viewModel in
                             PlanView(viewModel: viewModel)
-                                .padding(.top, Theme.spacing.standard)
+                                .padding(.top, Spacing.standard)
                         }
                     }
                 } else {
                     NoAvailblePlansView(type: .noPlans)
                 }
             }
-            .padding(.horizontal, Theme.spacing.large)
+            .padding(.horizontal, Spacing.large)
             .padding(.bottom, viewModel.bottomPadding)
         }
     }
