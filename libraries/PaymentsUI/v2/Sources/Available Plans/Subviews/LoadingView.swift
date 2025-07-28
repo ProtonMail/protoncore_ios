@@ -20,24 +20,21 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import SwiftUI
-import ProtonCoreUI
+import ProtonCoreUIFoundations
 
 struct LoadingView: View {
 
     let loadingMessage: String
-
+    
     var body: some View {
-        ZStack {
-            Color(Theme.color.backgroundNorm)
-                .ignoresSafeArea()
-
-            VStack {
-                Spacer()
-                ProgressView(loadingMessage)
-                    .tint(Theme.color.iconAccent)
-                Spacer()
-            }
+        VStack {
+            Spacer()
+            ProgressView(loadingMessage)
+                .tint(ColorProvider.IconAccent)
+            Spacer()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(ColorProvider.BackgroundNorm)
     }
 }
 

@@ -21,11 +21,16 @@
 
 import ProtonCorePaymentsV2
 import SwiftUI
-import ProtonCoreUI
+import ProtonCoreUIFoundations
 
 public struct PlanView: View {
 
     @ObservedObject public var viewModel: PlanViewModel
+
+    private enum Spacing {
+        static let large: CGFloat = 16
+
+    }
 
     public init(viewModel: PlanViewModel) {
         self.viewModel = viewModel
@@ -36,19 +41,19 @@ public struct PlanView: View {
 
         static func backgroundColor(isCurrentPlan: Bool, isExpanded: Bool) -> Color {
             if isCurrentPlan {
-                return Theme.color.backgroundNorm
+                return ColorProvider.BackgroundNorm
             }
 
-            return isExpanded ? Theme.color.backgroundNorm : Theme.color.backgroundSecondary
+            return isExpanded ? ColorProvider.BackgroundNorm : ColorProvider.BackgroundSecondary
         }
 
         static func borderColor(isExpanded: Bool) -> Color {
-            isExpanded ? Theme.color.iconAccent : Theme.color.backgroundSecondary
+            isExpanded ? ColorProvider.IconAccent : ColorProvider.BackgroundSecondary
         }
     }
 
     public var body: some View {
-        VStack(alignment: .leading, spacing: Theme.spacing.large) {
+        VStack(alignment: .leading, spacing: Spacing.large) {
 
             PlanDetailHeaderView(isExpanded: $viewModel.isExpanded,
                                  title: viewModel.title,
@@ -56,7 +61,7 @@ public struct PlanView: View {
                                  formattedPrice: viewModel.formattedPrice,
                                  formattedPeriod: viewModel.formattedPeriod,
                                  showChevron: !viewModel.isCurrentPlan,
-                                 decorationsURLs: viewModel.decorationsURLs())
+                                 decorationsURLs: viewModel.decorationsDownloaders())
 
             if viewModel.showProgressEntitlements {
                 ForEach(viewModel.progressEntitlements, id: \.self) { progress in
@@ -66,7 +71,7 @@ public struct PlanView: View {
 
             if viewModel.isExpanded || viewModel.isCurrentPlan {
                 PlanDetailView(viewModel: viewModel)
-                    .padding(.top, Theme.spacing.large)
+                    .padding(.top, Spacing.large)
             }
 
             if let renewFooter = viewModel.renewFooter, viewModel.isCurrentPlan {
@@ -75,12 +80,12 @@ public struct PlanView: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
         }
-        .foregroundColor(Theme.color.textNorm)
-        .padding(Theme.spacing.large)
+        .foregroundColor(ColorProvider.TextNorm)
+        .padding(Spacing.large)
         .background(Constants.backgroundColor(isCurrentPlan: viewModel.isCurrentPlan, isExpanded: viewModel.isExpanded))
-        .clipShape(RoundedRectangle(cornerRadius: Theme.radius.large))
+        .clipShape(RoundedRectangle(cornerRadius: Spacing.large))
         .overlay(
-            RoundedRectangle(cornerRadius: Theme.radius.large)
+            RoundedRectangle(cornerRadius: Spacing.large)
                 .stroke(Constants.borderColor(isExpanded: viewModel.isExpanded), lineWidth: Constants.borderWidth)
         )
         .onTapGesture {

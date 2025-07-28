@@ -22,7 +22,7 @@
 import SwiftUI
 import ProtonCoreDoh
 import ProtonCorePaymentsV2
-import ProtonCoreUI
+import ProtonCoreUIFoundations
 import Combine
 
 public final class PaymentsUIViewControllerV2: UIViewController {
@@ -105,9 +105,9 @@ public final class PaymentsUIViewControllerV2: UIViewController {
 
     private func customNavBarButton() -> UIButton {
         let button = UIButton(frame: .zero)
-        button.setImage(Theme.icon.arrowLeft, for: .normal)
+        button.setImage(IconProvider.arrowLeft, for: .normal)
         button.addTarget(self, action: #selector(popView), for: .touchUpInside)
-        button.tintColor = Theme.color.textNorm
+        button.tintColor = ColorProvider.TextNorm
         return button
     }
 

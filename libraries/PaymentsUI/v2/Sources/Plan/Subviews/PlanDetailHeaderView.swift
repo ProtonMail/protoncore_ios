@@ -20,7 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import SwiftUI
-import ProtonCoreUI
+import ProtonCoreUIFoundations
 
 struct PlanDetailHeaderView: View {
 
@@ -31,7 +31,7 @@ struct PlanDetailHeaderView: View {
     let formattedPrice: String
     let formattedPeriod: String
     let showChevron: Bool
-    let decorationsURLs: [URL]?
+    let decorationsURLs: [AssetDownloader]?
 
     private struct Constants {
 
@@ -51,7 +51,7 @@ struct PlanDetailHeaderView: View {
         HStack(alignment: .top) {
             HeaderTitleView(title: title,
                             description: description,
-                            decorations: decorationsURLs,
+                            decorationsDownloaders: decorationsURLs,
                             showChevron: showChevron)
             Spacer()
             VStack(alignment: .trailing) {
@@ -70,7 +70,7 @@ struct PlanDetailHeaderView: View {
                             .padding(Constants.imageTouchArea)
                             .rotationEffect(.degrees(Constants.imageRotationAngle(isExpanded: isExpanded)))
                     }
-                    .foregroundColor(Theme.color.iconAccent)
+                    .foregroundColor(ColorProvider.IconAccent)
                     .padding(.top, Constants.buttonTopPadding)}
             }
         }

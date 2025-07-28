@@ -20,7 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import SwiftUI
-import ProtonCoreUI
+import ProtonCoreUIFoundations
 
 struct ProgressEntitlementView: View {
 
@@ -41,11 +41,11 @@ struct ProgressEntitlementView: View {
         static func progressColor(maxValue: Int, currentValue: Int) -> Color {
             let progress = Double(currentValue) / Double(maxValue)
             if progress < 0.5 {
-                return Theme.color.iconAccent
+                return ColorProvider.IconAccent
             } else if progress >= 0.5 && progress < 0.9 {
-                return Theme.color.notificationWarning
+                return ColorProvider.NotificationWarning
             } else {
-                return Theme.color.notificationError
+                return ColorProvider.NotificationError
             }
         }
     }
@@ -57,7 +57,7 @@ struct ProgressEntitlementView: View {
             GeometryReader { proxy in
                 ZStack(alignment: .leading) {
                     Capsule()
-                        .fill(Theme.color.interactionWeak)
+                        .fill(ColorProvider.InteractionWeak)
                         .frame(height: Constants.progressLineHeight)
                     Capsule()
                         .fill(Constants.progressColor(maxValue: maxValue, currentValue: currentValue))

@@ -1,5 +1,5 @@
 //
-//  FooterView.swift
+//  Formatter.swift
 //  ProtonCore-PaymentsUIV2 - Created on 7/11/2024.
 //
 //  Copyright (c) 2024 Proton Technologies AG
@@ -19,34 +19,32 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import SwiftUI
-import ProtonCoreUIFoundations
+import Foundation
 
-struct FooterView: View {
+public enum DateFormatterType: String {
+    case MMddYYYY = "MMM dd, YYYY"
+}
 
-    let image: Image
-    let text: String
+public struct Formatter {
 
-    private struct Constants {
-        static let horizontalSpacing: CGFloat = 8
-        static let iconSize: CGSize = CGSize(width: 16, height: 16)
+    // Date formatter
+    public static func formatDate(_ timeStamp: Double, formatType: DateFormatterType) -> String {
+        let date = Date(timeIntervalSince1970: timeStamp)
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = formatType.rawValue
+
+        return dateFormatter.string(from: date)
     }
 
-    var body: some View {
-        HStack(spacing: Constants.horizontalSpacing) {
-            image
-                .resizable()
-                .frame(width: Constants.iconSize.width, height: Constants.iconSize.height)
-                .foregroundColor(ColorProvider.Shade80)
-            Text(text)
-                .font(.caption)
-                .foregroundColor(ColorProvider.Shade80)
-            Spacer()
+    // Currency formatter
+    public static func formatCurrency(amount: Int?, currency: String?) -> String {
+        guard let amount = amount, let currency = currency else {
+            return ""
         }
+
+        return Decimal(Double(amount) / 100).formatted(.currency(code: currency).presentation(.narrow).rounded())
     }
 }
 
-#Preview {
-    FooterView(image: IconProvider.infoCircle,
-               text: PaymentsUIV2Localizer.Plans_footer_disclaimer.l10n)
-}

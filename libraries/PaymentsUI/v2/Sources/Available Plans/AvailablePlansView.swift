@@ -21,81 +21,83 @@
 
 import SwiftUI
 import ProtonCorePaymentsV2
-import ProtonCoreUI
+import ProtonCoreUIFoundations
 
 public struct AvailablePlansView: View {
+
+    private struct Spacing {
+        static let large: CGFloat = 16
+        static let extraLarge: CGFloat = 24
+    }
 
     @ObservedObject var viewModel: AvailablePlansViewModel
     @Environment(\.presentationMode) var presentationMode
 
     public var body: some View {
-        ZStack {
-            Color(Theme.color.backgroundNorm)
-                .ignoresSafeArea()
-
-            VStack {
-                // MARK: Modal presentation close button
-                if viewModel.showCloseButton {
-                    HStack {
-                        Button {
-                            presentationMode.wrappedValue.dismiss()
-                        } label: {
-                            Image(uiImage: Theme.icon.crossBig)
-                                .tint(Theme.color.textNorm)
-                        }
-                        .padding(Theme.spacing.extraLarge)
-                        Spacer()
+        VStack {
+            // MARK: Modal presentation close button
+            if viewModel.showCloseButton {
+                HStack {
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Image(uiImage: IconProvider.crossBig)
+                            .tint(ColorProvider.TextNorm)
                     }
-                }
-                // MARK: Current plan
-                if !viewModel.hideCurrentPlan {
-                    // MARK: Current plan view
-                    if let planViewModel = viewModel.currentPlan {
-                        PlanView(viewModel: planViewModel)
-                            .padding(Theme.spacing.large)
-                            .opacity(viewModel.hideCurrentPlan ? 0 : 1)
-                        if viewModel.hideAvailablePlans {
-                            FooterView(image: Theme.icon.infoCircle,
-                                       text: PaymentsUIV2Localizer.Plans_footer_disclaimer.l10n)
-                            .padding(.horizontal)
-                        }
-                        Spacer()
-                    }
-                }
-                switch viewModel.viewState {
-                case .dataLoaded:
-                    if !viewModel.hideAvailablePlans {
-                        AvailablePlansBodyView(viewModel: viewModel)
-                    }
-                case .fetching:
-                    LoadingView(loadingMessage: PaymentsUIV2Localizer.Loading_plans_message.l10n)
-                case .errorData, .idle, .purchasing:
-                    ErrorView(buttonAction: {
-                        Task {
-                            await viewModel.fetchData()
-                        }
-                    })
-                case .noData:
-                    if viewModel.hideCurrentPlan {
-                        NoAvailblePlansView(type: .noPlans)
-                    }
+                    .padding(Spacing.extraLarge)
+                    Spacer()
                 }
             }
-            .overlay(content: {
-                if viewModel.viewState == .purchasing {
-                    TransactionProgressView(confirmationCompleted: $viewModel.confirmationCompleted,
-                                            updateCompleted: $viewModel.updateCompleted)
+            // MARK: Current plan
+            if !viewModel.hideCurrentPlan {
+                // MARK: Current plan view
+                if let planViewModel = viewModel.currentPlan {
+                    PlanView(viewModel: planViewModel)
+                        .padding(Spacing.large)
+                        .opacity(viewModel.hideCurrentPlan ? 0 : 1)
+                    if viewModel.hideAvailablePlans {
+                        FooterView(image: IconProvider.infoCircle,
+                                   text: PaymentsUIV2Localizer.Plans_footer_disclaimer.l10n)
+                        .padding(.horizontal)
+                    }
+                    Spacer()
                 }
-            })
-            .onAppear {
-                Task {
-                    if viewModel.viewState != .dataLoaded {
+            }
+            switch viewModel.viewState {
+            case .dataLoaded:
+                if !viewModel.hideAvailablePlans {
+                    AvailablePlansBodyView(viewModel: viewModel)
+                }
+            case .fetching:
+                LoadingView(loadingMessage: PaymentsUIV2Localizer.Loading_plans_message.l10n)
+            case .errorData, .idle, .purchasing:
+                ErrorView(buttonAction: {
+                    Task {
                         await viewModel.fetchData()
                     }
+                })
+            case .noData:
+                if viewModel.hideCurrentPlan {
+                    NoAvailblePlansView(type: .noPlans)
                 }
             }
-            .bannerDisplayable(bannerState: $viewModel.showAlert, configuration: .default())
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(ColorProvider.BackgroundNorm)
+        .overlay(content: {
+            if viewModel.viewState == .purchasing {
+                TransactionProgressView(confirmationCompleted: $viewModel.confirmationCompleted,
+                                        updateCompleted: $viewModel.updateCompleted)
+            }
+        })
+        .onAppear {
+            Task {
+                if viewModel.viewState != .dataLoaded {
+                    await viewModel.fetchData()
+                }
+            }
+        }
+        .bannerDisplayable(bannerState: $viewModel.showAlert, configuration: .default())
     }
 
     public init(viewModel: AvailablePlansViewModel) {

@@ -1,6 +1,6 @@
 //
-//  Miscellaneous.swift
-//  ProtonCore-PaymentsUIV2 - Created on 7/11/2024.
+//  UIApplication+extension.swift
+//  ProtonCoreUI - Created on 7/11/2024.
 //
 //  Copyright (c) 2024 Proton Technologies AG
 //
@@ -19,21 +19,21 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import Foundation
+import UIKit
 
-public enum BillingCycle: Int, CaseIterable {
-    case monthly = 1
-    case yearly = 12
-    case all = 0
+extension UIApplication {
+    // swiftlint:disable:next line_length
+    public class func getTopViewController(base: UIViewController? = UIApplication.shared.windows.first { $0.isKeyWindow }?.rootViewController) -> UIViewController? {
 
-    var displayName: String {
-        switch self {
-        case .monthly:
-            PaymentsUIV2Localizer.Monthly_cycle.l10n
-        case .yearly:
-            PaymentsUIV2Localizer.Yearly_cycle.l10n
-        case .all:
-            PaymentsUIV2Localizer.All_cycle.l10n
+        if let nav = base as? UINavigationController {
+            return getTopViewController(base: nav.visibleViewController)
+
+        } else if let tab = base as? UITabBarController, let selected = tab.selectedViewController {
+            return getTopViewController(base: selected)
+
+        } else if let presented = base?.presentedViewController {
+            return getTopViewController(base: presented)
         }
+        return base
     }
 }

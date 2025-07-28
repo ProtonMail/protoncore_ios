@@ -20,20 +20,24 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import SwiftUI
-import ProtonCoreUI
+import ProtonCoreUIFoundations
 
 public struct SubscriptionsViewHeader: View {
+
+    private struct Spacing {
+        static let standard: CGFloat = 8
+    }
 
     private let icons = ["proton_mail", "proton_cal", "proton_drive", "proton_vpn", "proton_pass", "proton_wallet"]
 
     public var body: some View {
-        VStack(spacing: Theme.spacing.standard) {
+        VStack(spacing: Spacing.standard) {
             Text(PaymentsUIV2Localizer.Available_subscriptions_view_title.l10n)
                 .font(.title2)
                 .fontWeight(.bold)
             Text(PaymentsUIV2Localizer.Available_subscriptions_view_subtitle.l10n)
                 .font(.caption)
-            HStack(spacing: Theme.spacing.standard) {
+            HStack(spacing: Spacing.standard) {
                 ForEach(icons, id: \.self) { iconName in
                     Image(iconName, bundle: Bundle.module)
                 }

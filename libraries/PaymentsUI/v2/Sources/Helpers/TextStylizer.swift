@@ -1,6 +1,6 @@
 //
-//  Miscellaneous.swift
-//  ProtonCore-PaymentsUIV2 - Created on 7/11/2024.
+//  TextStylizer.swift
+//  ProtonCore-PaymentsUIV2 - Created on 6/1/2025.
 //
 //  Copyright (c) 2024 Proton Technologies AG
 //
@@ -19,21 +19,25 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import Foundation
+import SwiftUI
+// swiftlint:disable:next large_tuple
+public typealias TextStyle = (text: String,
+                              font: AttributeScopes.SwiftUIAttributes.FontAttribute.Value,
+                              color: Color)
 
-public enum BillingCycle: Int, CaseIterable {
-    case monthly = 1
-    case yearly = 12
-    case all = 0
+public struct TextStylizer {
 
-    var displayName: String {
-        switch self {
-        case .monthly:
-            PaymentsUIV2Localizer.Monthly_cycle.l10n
-        case .yearly:
-            PaymentsUIV2Localizer.Yearly_cycle.l10n
-        case .all:
-            PaymentsUIV2Localizer.All_cycle.l10n
+    public static func composeText(texts: [TextStyle]) -> AttributedString {
+
+        var composedText = AttributedString("")
+
+        for (index, text) in texts.enumerated() {
+            var styledText = AttributedString(text.text)
+            styledText.font = text.font
+            styledText.foregroundColor = text.color
+            composedText += index > 0 ? " " + styledText : styledText
         }
+
+        return composedText
     }
 }

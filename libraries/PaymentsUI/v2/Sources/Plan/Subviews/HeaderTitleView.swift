@@ -20,42 +20,47 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import SwiftUI
-import ProtonCoreUI
+import ProtonCoreUIFoundations
 
 public struct HeaderTitleView: View {
 
     private struct Constants {
-        static let decorationSize: CGFloat = 16
+        static var standardSpacing: CGFloat = 8
 
-        static let titleTextSize: CGFloat = 17
-        static let titleFontWeight: Font.Weight = .semibold
+        static var decorationSize: CGFloat = 16
 
-        static let descriptionTextSize: CGFloat = 13
-        static let descriptionFontWeight: Font.Weight = .regular
+        static var titleTextSize: CGFloat = 17
+        static var titleFontWeight: Font.Weight = .semibold
+
+        static var descriptionTextSize: CGFloat = 13
+        static var descriptionFontWeight: Font.Weight = .regular
     }
 
     let title: String
     let description: String
-    let decorations: [URL]?
+    let decorationsDownloaders: [AssetDownloader]?
     let showChevron: Bool
 
     public var body: some View {
-        VStack(alignment: .leading, spacing: Theme.spacing.standard) {
+        VStack(alignment: .leading, spacing: Constants.standardSpacing) {
             HStack {
                 Text(title)
                     .font(.system(size: Constants.titleTextSize))
                     .fontWeight(Constants.titleFontWeight)
-                if let decorationsUrl = decorations {
-                    ForEach(decorationsUrl, id: \.self) { decoration in
-                        PCAsyncImage(url: decoration, placeholderImage: nil) { image in
+                if let decorationsDownloaders = decorationsDownloaders {
+                    ForEach(decorationsDownloaders, id: \.self) { downloader in
+
+                        PCAsyncImage(placeholderImage: nil, content: { image in
                             image
                                 .resizable()
                                 .renderingMode(.template)
                                 .opacity(showChevron ? 1 : 0)
-                        } placeholder: {
+                        },
+                                     placeholder: {
                             ProgressView()
-                        }
-                        .foregroundColor(Theme.color.iconAccent)
+                        },
+                                     dowloader: downloader)
+                        .foregroundColor(ColorProvider.IconAccent)
                         .frame(width: Constants.decorationSize, height: Constants.decorationSize)
                     }
                 }
@@ -63,7 +68,7 @@ public struct HeaderTitleView: View {
             Text(description)
                 .font(.system(size: Constants.descriptionTextSize))
                 .fontWeight(Constants.descriptionFontWeight)
-                .foregroundColor(Theme.color.textWeak)
+                .foregroundColor(ColorProvider.TextWeak)
         }
     }
 }

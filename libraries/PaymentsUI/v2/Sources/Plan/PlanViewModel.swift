@@ -23,7 +23,7 @@ import Combine
 import Foundation
 import ProtonCoreDoh
 import ProtonCorePaymentsV2
-import ProtonCoreUI
+import ProtonCoreUIFoundations
 import StoreKit
 
 /// Represents a purchasable plan or free instance
@@ -160,15 +160,15 @@ public class PlanViewModel: ObservableObject, Identifiable {
         self.name = currentPlan.name ?? PaymentsUIV2Localizer.Current_free_plan_name.l10n
         self.isFreePlan = currentPlan.name == nil
         self.progressEntitlements = progressEntitlements
-        self.formattedPrice = ProtonCoreUI.Formatter.formatCurrency(amount: currentPlan.amount, currency: currentPlan.currency)
+        self.formattedPrice = Formatter.formatCurrency(amount: currentPlan.amount, currency: currentPlan.currency)
         self.formattedPeriod = currentPlan.cycleDescription ?? ""
         self.subscriptionPeriod = BillingCycle(rawValue: currentPlan.cycle ?? 0) ?? .all
         self.decorations = currentPlan.decorations
         self.isCurrentPlan = true
         self.product = nil
         if let endPeriod = currentPlan.periodEnd {
-            let texts = [TextStyle(text: Constants.footerText(renew: currentPlan.renew ?? 0), font: .callout, color: Theme.color.shade80),
-                         TextStyle(text: Formatter.formatDate(Double(endPeriod), formatType: .MMddYYYY), font: .headline, color: Theme.color.textNorm)]
+            let texts = [TextStyle(text: Constants.footerText(renew: currentPlan.renew ?? 0), font: .callout, color: ColorProvider.Shade80),
+                         TextStyle(text: Formatter.formatDate(Double(endPeriod), formatType: .MMddYYYY), font: .headline, color: ColorProvider.TextNorm)]
             createFooterText(texts: texts)
         }
 
@@ -178,15 +178,15 @@ public class PlanViewModel: ObservableObject, Identifiable {
     }
 
     // MARK: Public methods
-    public func iconURLforEntitlement(_ entitlement: DescriptionEntitlement) -> URL? {
-        try? paymentsAPI.url(for: .icon(name: entitlement.iconName)).url
+    public func downloaderForEntitlement(_ entitlement: DescriptionEntitlement) -> AssetDownloader {
+        return AssetDownloader(url: try? paymentsAPI.url(for: .icon(name: entitlement.iconName)).url)
     }
 
-    public func decorationsURLs() -> [URL]? {
+    public func decorationsDownloaders() -> [AssetDownloader]? {
         return decorations.compactMap {
             switch $0 {
             case .starred(let decoration):
-                try? paymentsAPI.url(for: .icon(name: decoration.iconName)).url
+                AssetDownloader(url: try? paymentsAPI.url(for: .icon(name: decoration.iconName)).url)
             default:
                 nil
             }

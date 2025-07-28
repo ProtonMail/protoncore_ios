@@ -20,11 +20,12 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import SwiftUI
-import ProtonCoreUI
+import ProtonCoreUIFoundations
 
 struct PlanDetailView: View {
 
     private struct Constants {
+        static let standardSpacing: CGFloat = 8
         static let iconSize: CGFloat = 15
         static let buttonTopPadding: CGFloat = 10
         static let entitlementTextVerticalOffset: CGFloat = -3
@@ -35,19 +36,20 @@ struct PlanDetailView: View {
     @StateObject var viewModel: PlanViewModel
 
     var body: some View {
-        VStack(alignment: .leading, spacing: Theme.spacing.standard) {
+        VStack(alignment: .leading, spacing: Constants.standardSpacing) {
             ForEach(viewModel.descriptionEntitlements, id: \.self) { entitlement in
                 HStack(alignment: .top) {
-                    PCAsyncImage(url: viewModel.iconURLforEntitlement(entitlement),
-                                 placeholderImage: Theme.icon.checkmark) { image in
+                    PCAsyncImage(placeholderImage: IconProvider.checkmark, content: { image in
                         image
                             .resizable()
                             .renderingMode(.template)
-                    } placeholder: {
+                    }, placeholder: {
                         ProgressView()
-                    }
-                    .foregroundColor(Theme.color.iconAccent)
+                    }, dowloader: viewModel.downloaderForEntitlement(entitlement)
+                    )
+                    .foregroundColor(ColorProvider.IconAccent)
                     .frame(width: Constants.iconSize, height: Constants.iconSize)
+
                     Text(entitlement.text)
                         .font(.system(size: Constants.entitlementTextSize))
                         .fontWeight(Constants.entitlementFontWeight)
@@ -57,7 +59,7 @@ struct PlanDetailView: View {
             }
             if !viewModel.isCurrentPlan {
 
-                PCButton(style: .constant(.init(mode: .solid)),
+                PCButton(style: .constant(.init(mode: .solid())),
                          content: .constant(.init(title: String(format: PaymentsUIV2Localizer.Purchase_button_title.l10n, viewModel.title), action: {
                     Task {
                         await viewModel.purchasePlan()
