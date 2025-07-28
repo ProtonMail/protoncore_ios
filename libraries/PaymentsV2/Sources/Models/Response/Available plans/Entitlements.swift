@@ -38,6 +38,7 @@ public struct DescriptionEntitlement: Decodable, Equatable, Hashable, Sendable {
 
 public struct ProgressEntitlement: Decodable, Equatable, Hashable, Sendable {
 
+    public let title: String
     public let type: String
     public let text: String
     public let min: Int
@@ -45,7 +46,8 @@ public struct ProgressEntitlement: Decodable, Equatable, Hashable, Sendable {
     public let current: Int
     public let iconName: String?
 
-    public init(type: String, text: String, min: Int, max: Int, current: Int, iconName: String? = nil) {
+    public init(title: String, type: String, text: String, min: Int, max: Int, current: Int, iconName: String? = nil) {
+        self.title = title
         self.type = type
         self.text = text
         self.min = min
