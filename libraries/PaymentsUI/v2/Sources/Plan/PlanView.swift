@@ -60,24 +60,15 @@ public struct PlanView: View {
                                  description: viewModel.description,
                                  formattedPrice: viewModel.formattedPrice,
                                  formattedPeriod: viewModel.formattedPeriod,
-                                 showChevron: !viewModel.isCurrentPlan,
+                                 showChevron: viewModel.canMinimize,
                                  decorationsURLs: viewModel.decorationsDownloaders())
 
-            if viewModel.showProgressEntitlements {
-                ForEach(viewModel.progressEntitlements, id: \.self) { progress in
-                    ProgressEntitlementView(currentValue: progress.current,
-                                            maxValue: progress.max,
-                                            text: progress.text,
-                                            title: progress.title)
-                }
-            }
-
-            if viewModel.isExpanded || viewModel.isCurrentPlan {
+            if viewModel.isExpanded {
                 PlanDetailView(viewModel: viewModel)
                     .padding(.top, Spacing.large)
             }
 
-            if let renewFooter = viewModel.renewFooter, viewModel.isCurrentPlan {
+            if let renewFooter = viewModel.renewFooter, viewModel.showRenewFooter {
                 Divider()
                 Text(renewFooter)
                     .fixedSize(horizontal: false, vertical: true)

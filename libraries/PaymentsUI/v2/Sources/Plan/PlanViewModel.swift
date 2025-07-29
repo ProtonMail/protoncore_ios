@@ -60,6 +60,10 @@ public class PlanViewModel: ObservableObject, Identifiable {
     @Published var isExpanded = false
 
     public var isCurrentPlan: Bool
+    public var canMinimize: Bool
+    public var showRenewFooter: Bool {
+        isExpanded && !isFreePlan
+    }
 
     private(set) var transactionState = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
 
@@ -126,6 +130,7 @@ public class PlanViewModel: ObservableObject, Identifiable {
         self.decorations = composedPlan.plan.decorations
         self.product = composedPlan.product
         self.isCurrentPlan = false
+        self.canMinimize = true
 
         if let transactionState = plansManager?.transactionProgress {
             self.transactionState = transactionState
@@ -134,6 +139,7 @@ public class PlanViewModel: ObservableObject, Identifiable {
 
     public init(doh: DoHInterface & ServerConfig,
                 remoteManager: RemoteManager,
+                canMinimize: Bool = true,
                 currentPlan: CurrentSubscriptionResponse) {
 
         self.paymentsAPI = PaymentsAPIs(doh: doh)
@@ -165,6 +171,8 @@ public class PlanViewModel: ObservableObject, Identifiable {
         self.subscriptionPeriod = BillingCycle(rawValue: currentPlan.cycle ?? 0) ?? .all
         self.decorations = currentPlan.decorations
         self.isCurrentPlan = true
+        self.canMinimize = canMinimize
+        self.isExpanded = true
         self.product = nil
         if let endPeriod = currentPlan.periodEnd {
             let texts = [TextStyle(text: Constants.footerText(renew: currentPlan.renew ?? 0), font: .callout, color: ColorProvider.Shade80),

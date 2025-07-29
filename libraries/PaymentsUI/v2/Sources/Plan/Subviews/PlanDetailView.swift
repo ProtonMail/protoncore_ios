@@ -26,6 +26,7 @@ struct PlanDetailView: View {
 
     private struct Constants {
         static let standardSpacing: CGFloat = 8
+        static let mediumSpacing: CGFloat = 16
         static let iconSize: CGFloat = 15
         static let buttonTopPadding: CGFloat = 10
         static let entitlementTextVerticalOffset: CGFloat = -3
@@ -37,6 +38,19 @@ struct PlanDetailView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: Constants.standardSpacing) {
+            // Progress Entitlements
+            if viewModel.showProgressEntitlements {
+                VStack {
+                    ForEach(viewModel.progressEntitlements, id: \.self) { progress in
+                        ProgressEntitlementView(currentValue: progress.current,
+                                                maxValue: progress.max,
+                                                text: progress.text,
+                                                title: progress.title)
+                    }
+                }
+                .padding(.bottom, Constants.mediumSpacing)
+            }
+            // Description Entitlements
             ForEach(viewModel.descriptionEntitlements, id: \.self) { entitlement in
                 HStack(alignment: .top) {
                     PCAsyncImage(placeholderImage: IconProvider.checkmark, content: { image in
