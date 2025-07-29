@@ -185,22 +185,21 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
         case .success(let verificationResult):
             let transaction = try verificationResult.payloadValue
             self.transaction = transaction
-
             TransactionsObserver.shared.logHelper.logEvent(["apple_transaction": ["status": "success",
                                                                                   "jwsRepresentation": verificationResult.jwsRepresentation]])
 
             guard let matchingPlan = findMatchingPlan(productID: transaction.productID) else {
                 let error = ProtonPlansManagerError.unableToMatchProtonPlanToStoreProduct(productId: transaction.productID)
                 TransactionsObserver.shared.logHelper.logEvent(["proton_plan_match": ["time": Date.now.description,
-                                                                                     "success": false,
-                                                                                     "error": error.localizedDescription]],
+                                                                                      "success": false,
+                                                                                      "error": error.localizedDescription]],
                                                                type: .close)
                 PMLog.error(error.failureReason ?? "PaymentsV2 - unable to match Proton and AppleStore plans", sendToExternal: true)
                 throw error
             }
 
             TransactionsObserver.shared.logHelper.logEvent(["proton_plan_match": ["time": Date.now.description,
-                                                                                 "success": true]])
+                                                                                  "success": true]])
 
             do {
                 TransactionsObserver.shared.addTransactionInProgress(transaction.id)
