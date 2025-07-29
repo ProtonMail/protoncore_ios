@@ -25,9 +25,13 @@ import ProtonCoreUIFoundations
 
 public struct AvailablePlansView: View {
 
-    private struct Spacing {
-        static let large: CGFloat = 16
-        static let extraLarge: CGFloat = 24
+    private struct Constants {
+
+        static var titleTextSize: CGFloat = 17
+        static var titleFontWeight: Font.Weight = .semibold
+
+        static let largeSpacing: CGFloat = 16
+        static let extraLargeSpacing: CGFloat = 24
     }
 
     @ObservedObject var viewModel: AvailablePlansViewModel
@@ -37,15 +41,23 @@ public struct AvailablePlansView: View {
         VStack {
             // MARK: Modal presentation close button
             if viewModel.showCloseButton {
-                HStack {
-                    Button {
-                        presentationMode.wrappedValue.dismiss()
-                    } label: {
-                        Image(uiImage: IconProvider.crossBig)
-                            .tint(ColorProvider.TextNorm)
+                ZStack {
+                    HStack {
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            Image(uiImage: IconProvider.crossBig)
+                                .tint(ColorProvider.TextNorm)
+                        }
+                        .padding(Constants.extraLargeSpacing)
+                        .layoutPriority(1)
+
+                        Spacer()
                     }
-                    .padding(Spacing.extraLarge)
-                    Spacer()
+                    Text(PaymentsUIV2Localizer.Subscriptions_nav_title.l10n)
+                        .font(.system(size: Constants.titleTextSize))
+                        .fontWeight(Constants.titleFontWeight)
+                        .opacity(viewModel.hideCurrentPlan ? 0 : 1)
                 }
             }
             // MARK: Current plan
@@ -53,7 +65,7 @@ public struct AvailablePlansView: View {
                 // MARK: Current plan view
                 if let planViewModel = viewModel.currentPlan {
                     PlanView(viewModel: planViewModel)
-                        .padding(Spacing.large)
+                        .padding(Constants.largeSpacing)
                         .opacity(viewModel.hideCurrentPlan ? 0 : 1)
                     if viewModel.hideAvailablePlans {
                         FooterView(image: IconProvider.infoCircle,
@@ -162,7 +174,8 @@ public struct AvailablePlansView: View {
                                             token: "1231da",
                                             doh: PaymentsDoH(),
                                             appVersion: "VPN@5.5.0",
-                                            presentationMode: .push)
+                                            hideCurrentPlan: true,
+                                            presentationMode: .modal)
     viewModel.addPlanViewModels(availablePlans)
     viewModel.setBillingCycle(.all)
     // viewModel.showBanner()
