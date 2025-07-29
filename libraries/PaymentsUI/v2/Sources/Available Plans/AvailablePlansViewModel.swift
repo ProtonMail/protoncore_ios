@@ -247,6 +247,7 @@ extension AvailablePlansViewModel {
         availablePlansViewModels = plans
         billingCycle = .all
         billingFilter(filter: billingCycle)
+        viewState = .dataLoaded
     }
 
     func setBillingCycle(_ billingCycle: BillingCycle) {
