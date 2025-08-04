@@ -16,7 +16,7 @@
 
 "Remote_manager_error" = "Något gick fel och vi kunde inte fullfölja din begäran. Om problemet kvarstår, kontakta kundsupport.";
 
-"SK_Receipt_impossible_to_get_receipt" = "Impossible to get transaction receipt data from Apple";
+"SK_Receipt_impossible_to_get_receipt" = "Omöjligt att hämta transaktionskvittodata från Apple";
 
 "Transaction_Handler_plan_not_found" = "Det var omöjligt att hitta namnet på paketet du försöker köpa. Om problemet kvarstår, kontakta kundsupport";
 
