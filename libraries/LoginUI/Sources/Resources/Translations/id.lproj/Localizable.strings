@@ -446,7 +446,7 @@
 
 "Using that device, open any Proton app and select **Settings**" = "Menggunakan perangkat ini, buka aplikasi Proton mana pun dan pilih **Pengaturan**";
 
-"Select **Sign in on another device → Scan QR code**" = "Pilih **Masuk ke perangkat lain → Pindai kode QR**";
+"Select **Sign in on another device → Scan QR code**" = "Pilih **Masuk melalui perangkat lain → Pindai kode QR**";
 
 "Scan the code to sign in" = "Pindai kode yang tertera untuk masuk";
 
@@ -458,7 +458,7 @@
 
 "Please try another sign in method." = "Silakan coba metode masuk lainnya.";
 
-"Sign in on another device" = "Masuk ke perangkat lain";
+"Sign in on another device" = "Masuk melalui perangkat lain";
 
 "How to sign in with QR code" = "Cara masuk dengan kode QR";
 

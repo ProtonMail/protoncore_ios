@@ -52,7 +52,7 @@
 
 "Complete payment?" = "Slutför betalning?";
 
-"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account";
+"A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "Ett köp för ett Proton-paket har redan påbörjats. Tryck fortsätt för att slutföra betalningshanteringen och skapa ditt konto";
 
 "Complete payment" = "Slutför betalning";
 
@@ -64,7 +64,7 @@
 
 "One plan for all Proton services" = "Ett paket för alla Proton-tjänster";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "The no-cost starter account designed to empower everyone with privacy by default.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "Gratiskontot designat för att ge alla integritet som standard.";
 
 "The privacy-first email and calendar solution for your everyday communication needs." = "Den integritetsfokuserade lösningen för e-post och kalender för dina dagliga kommunikationsbehov.";
 
@@ -72,9 +72,9 @@
 
 "The storage-focused plan with 200 GB of cloud storage to keep your files private." = "Det lagringsfokuserade paketet med 200 GB molnlagringsutrymme för att hålla dina filer privata.";
 
-"The ultimate privacy pack with access to all premium Proton services." = "The ultimate privacy pack with access to all premium Proton services.";
+"The ultimate privacy pack with access to all premium Proton services." = "Det ultimata integritetspaketet med åtkomst till alla Protons premiumtjänster.";
 
-"Only non-renewing annual subscriptions are available via this app" = "Only non-renewing annual subscriptions are available via this app";
+"Only non-renewing annual subscriptions are available via this app" = "Endast icke-förnyande årliga prenumerationer är tillgängliga via denna app";
 
 "Your subscription cannot be managed inside the mobile app." = "Din prenumeration kan inte hanteras i mobilappen.";
 
@@ -108,7 +108,7 @@
 
 "Check your internet connection" = "Kontrollera din internetanslutning";
 
-"Strict no-logs policy" = "Strict no-logs policy";
+"Strict no-logs policy" = "Strikt policy att inte logga";
 
 "Plan successfully upgraded" = "Paket uppgraderat";
 

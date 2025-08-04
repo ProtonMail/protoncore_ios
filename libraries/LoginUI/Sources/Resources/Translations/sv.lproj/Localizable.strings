@@ -442,7 +442,7 @@
 
 "How to sign in using another device" = "Hur man loggar in med annan enhet";
 
-"Get another device that’s signed in to your Proton Account" = "Get another device that’s signed in to your Proton Account";
+"Get another device that’s signed in to your Proton Account" = "Skaffa en annan enhet som är inloggad på ditt Proton-konto";
 
 "Using that device, open any Proton app and select **Settings**" = "På den enheten, öppna valfri Proton-app och välj **Inställningar**";
 
@@ -472,7 +472,7 @@
 
 "Open any Proton app on the device you want to sign in to" = "Öppna valfri Proton-app på enheten du vill logga in på";
 
-"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)";
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "På inloggningsskärmen, välj **Glömt lösenord** eller **Problem att logga in?** (på mobilappar, välj **Hjälp**)";
 
 "Select **Sign in with QR code**. A QR code will appear." = "Välj **Logga in med QR-kod**. En QR-kod kommer visas.";
 
