@@ -165,7 +165,12 @@ extension Fido2View.ViewModel: ASAuthorizationControllerDelegate {
 @available(iOS 15.0, macOS 12.0, *)
 extension Fido2View.ViewModel: ASAuthorizationControllerPresentationContextProviding {
     public func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        ASPresentationAnchor()
+        guard let windowScene = (UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .first { $0.activationState == .foregroundActive }) else {
+                return ASPresentationAnchor()
+            }
+        return .init(windowScene: windowScene)
     }
 }
 
