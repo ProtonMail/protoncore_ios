@@ -35,7 +35,7 @@ public protocol ProtonPlansManagerProviding: Sendable {
     func getAvailablePlans() async throws -> [ComposedPlan]
     func getCurrentPlan() async throws -> CurrentSubscriptionResponse
     func getIntroductoryOfferPrice(product: Product) -> String?
-    func purchase(_ product: Product, planName: String, planCycle: Int) async throws -> ComposedPlan
+    func purchase(_ product: Product) async throws -> ComposedPlan
     func recoverTransactionReceipt() async throws
 }
 
@@ -86,17 +86,11 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
     public var transactionProgress = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
 
     private var products: [Product] = []
-    private var transactionToken: Token!
-    private var transaction: Transaction?
 
     private let paymentsAPI: PaymentsAPIs
     private let remoteManager: RemoteManagerProviding
     private let transactionHandler: TransactionHandler
     private let planComposer: PlansComposerProviding
-
-    private var paymentsToken: NewToken!
-    private var planName: String!
-    private var planCycle: Int!
 
     public var countryCode: String? {
         get async {
@@ -142,6 +136,7 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
         try await planComposer.fetchProtonPlans()
     }
 
+    // TODO: This will be implemented once Payments moves to Omnichannel
     public func getIntroductoryOfferPrice(product: Product) -> String? {
         guard let introductoryOffer = product.subscription?.introductoryOffer else { return nil }
 
@@ -170,11 +165,7 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
         }
     }
 
-    public func purchase(_ product: Product, planName: String, planCycle: Int) async throws -> ComposedPlan {
-
-        self.planName = planName
-        self.planCycle = planCycle
-
+    public func purchase(_ product: Product) async throws -> ComposedPlan {
         TransactionsObserver.shared.logHelper.logEvent(["transaction": ["time": Date.now.description,
                                                                         "productId": product.id]])
 
@@ -184,7 +175,6 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
         switch result {
         case .success(let verificationResult):
             let transaction = try verificationResult.payloadValue
-            self.transaction = transaction
             TransactionsObserver.shared.logHelper.logEvent(["apple_transaction": ["status": "success",
                                                                                   "jwsRepresentation": verificationResult.jwsRepresentation]])
 

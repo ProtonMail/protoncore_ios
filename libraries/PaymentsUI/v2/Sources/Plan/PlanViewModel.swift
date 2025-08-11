@@ -209,7 +209,7 @@ public class PlanViewModel: ObservableObject, Identifiable {
         transactionState.send(.generatingReceipt)
 
         do {
-            _ = try await plansManager.purchase(product, planName: name, planCycle: subscriptionPeriod.rawValue)
+            _ = try await plansManager.purchase(product)
         } catch {
             debugPrint(error)
         }
