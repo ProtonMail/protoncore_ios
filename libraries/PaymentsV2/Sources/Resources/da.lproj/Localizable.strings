@@ -22,4 +22,4 @@
 
 "Transaction_Handler_repeated_purchase" = "Det er ikke muligt at forny det valgte abonnement flere gange. Hvis du tror, det er en fejl, eller hvis problemet fortsætter, bedes du kontakte vores kundesupport.";
 
-"Transaction_Handler_receipt_update_failed" = "An error occured while requesting the transaction receipt from Apple. If the issue persists please contact customer support";
+"Transaction_Handler_receipt_update_failed" = "Der opstod en fejl under anmodning om transaktionskvitteringen fra Apple. Hvis problemet fortsætter, bedes du kontakte kundesupport.";

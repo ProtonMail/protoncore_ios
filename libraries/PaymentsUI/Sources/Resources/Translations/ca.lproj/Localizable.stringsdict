@@ -95,7 +95,7 @@
         <key>one</key>
         <string>%d carpeta / etiqueta</string>
         <key>other</key>
-        <string>%d carpetes i etiquetes</string>
+        <string>%d carpetes / etiquetes</string>
       </dict>
     </dict>
     <key>&lt;n&gt; countries</key>
