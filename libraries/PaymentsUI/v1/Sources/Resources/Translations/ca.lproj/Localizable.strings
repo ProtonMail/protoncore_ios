@@ -10,7 +10,7 @@
 
 "Subscription" = "Subscripció";
 
-"Upgrade your plan" = "Milloreu el vostre pla";
+"Upgrade your plan" = "Milloreu el pla";
 
 "Only annual subscriptions without auto-renewal are available inside the mobile app." = "Dins l'aplicació mòbil només hi ha disponibles subscripcions anuals sense renovació automàtica.";
 
@@ -104,7 +104,7 @@
 
 "%@ of %@" = "%@ de %@";
 
-"Connection issues" = "Hi ha hagut problemes de connexió";
+"Connection issues" = "Problemes de connexió";
 
 "Check your internet connection" = "Comproveu la connexió a internet";
 
