@@ -1,44 +1,96 @@
 //
-//  Helpers.swift
-//  ProtonCore
+//  LogHelper.swift
+//  ProtonCore-PaymentsV2 - Created on 7/11/2024.
 //
-//  Created by Tiziano Bruni on 22/07/2025.
+//  Copyright (c) 2024 Proton Technologies AG
 //
+//  This file is part of Proton Technologies AG and ProtonCore.
+//
+//  ProtonCore is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  ProtonCore is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
 
 public class LogHelper {
 
-    private let savePath = URL.documentsDirectory.appending(path: "TransactionLog.txt")
-    private var transactionLog: [String: Any] = [:]
+    private struct Constants {
+        static let fileName = "TransactionLog.txt"
+    }
+
+    private let backgroundQueue = DispatchQueue(label: "com.protonCore.payments.logger")
+
+    public typealias TransactionLog = [[String: Any]]
+    public private(set) var transactionLog = TransactionLog()
+    public private(set) var transactionLogs = [TransactionLog]()
+
+    private lazy var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss.SSS"
+
+        return dateFormatter
+    }()
 
     public enum LogStatus {
         case inProgress
         case close
     }
 
-    // MARK: Public
-
-    public func logEvent(_ event: [String: Any], type: LogStatus = .inProgress) {
-        transactionLog.merge(event) { (_, second) in second }
-        if type == .close {
-            save()
+    init() {
+        Task {
+            await load()
         }
     }
 
-    public func returnTransactionLog() -> URL? {
+    private func runInBackground<T>(_ task: @escaping () -> T) async -> T {
+        await withCheckedContinuation { continuation in
+            backgroundQueue.async {
+                let result = task()
+                continuation.resume(returning: result)
+            }
+        }
+    }
 
-        let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        let fileURL = documentDirectory.appendingPathComponent("TransactionLog.txt")
+    // MARK: Public
 
-        // TODO: Remove this after implementing the append functionality to the log file
-        do {
-            let content = try String(contentsOf: fileURL)
-            debugPrint(content)
-        } catch {
-            debugPrint("Error reading file: $error)")
+    public func logEvent(_ event: [String: Any], type: LogStatus = .inProgress) async {
+        await runInBackground { [weak self] in
+            guard let self else { return }
+            let formattedEvent = [dateFormatter.string(from: Date.now): event]
+            transactionLog.append(formattedEvent)
         }
 
+        if type == .close {
+            await save()
+        }
+    }
+
+    public func logEventSync(_ event: [String: Any], type: LogStatus = .inProgress) {
+            Task { await logEvent(event, type: type) }
+    }
+
+    public func returnTransactionLog() async -> URL? {
+
+        let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+        let fileURL = documentDirectory.appendingPathComponent(Constants.fileName)
+#if DEBUG
+        // Printing the log in Debug mode to easy end to end testing
+        do {
+            let content = try String(contentsOf: fileURL)
+            debugPrint("TransactionLog:\n \(content)")
+        } catch {
+            debugPrint("Error reading file: \(error)")
+        }
+#endif
         return fileURL
     }
 
@@ -56,17 +108,59 @@ public class LogHelper {
         return jsonString
     }
 
-    private func save() {
-        do {
-            guard let jsonString = LogHelper.toJSONString(dic: transactionLog) else {
+    private func save() async {
+        await runInBackground { [weak self] in
+            guard let self else { return }
+
+            transactionLogs.append(transactionLog)
+            guard let jsonString = transactionLogs.toJSONString() else {
                 debugPrint("Transaction log conversion to JSONString failed")
                 return
             }
 
-            try jsonString.write(to: savePath, atomically: true, encoding: .utf8)
+            let data = Data(jsonString.utf8)
+            let url = URL.documentsDirectory.appending(path: Constants.fileName)
 
-        } catch {
-            debugPrint("Unable to save data.")
+            do {
+                try data.write(to: url, options: [.atomic, .completeFileProtection])
+                debugPrint("File successfully saved at path: \(url)")
+            } catch {
+                debugPrint(error.localizedDescription)
+            }
+        }
+    }
+
+    internal func load() async {
+        await runInBackground { [weak self] in
+            guard let self else { return }
+
+            let url = URL.documentsDirectory.appending(path: Constants.fileName)
+            do {
+                let stringData = try String(contentsOf: url)
+                guard let data = stringData.data(using: .utf8) else {
+                    debugPrint("Cannot convert string to data")
+                    return
+                }
+                guard let jsonArray = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [TransactionLog] else {
+                    debugPrint("Impossible to generate TransactionLogs from data")
+                    return
+                }
+                transactionLogs = jsonArray
+            } catch {
+                debugPrint(error.localizedDescription)
+            }
+        }
+    }
+
+    internal func deleteLogs() async {
+        await runInBackground {
+            do {
+                let url = URL.documentsDirectory.appending(path: Constants.fileName)
+                try FileManager.default.removeItem(at: url)
+                debugPrint("File successfully deleted at path: \(url)")
+            } catch {
+                debugPrint(error)
+            }
         }
     }
 }

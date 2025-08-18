@@ -245,6 +245,9 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
     }
 
     public func generateTransactionLog() -> URL? {
-        logHelper.returnTransactionLog()
+//        Task {
+//            await logHelper.returnTransactionLog()
+//        }
+        return nil
     }
 }
