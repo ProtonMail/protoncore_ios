@@ -83,7 +83,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>other</key>
-        <string>%d 個のフォルダー / ラベル</string>
+        <string>%d 個のフォルダ / ラベル</string>
       </dict>
     </dict>
     <key>&lt;n&gt; countries</key>
@@ -195,7 +195,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>d</string>
         <key>other</key>
-        <string>%d 個のフォルダーとラベル</string>
+        <string>%d 個のフォルダとラベル</string>
       </dict>
     </dict>
     <key>High-speed VPN on &lt;n&gt; devices</key>

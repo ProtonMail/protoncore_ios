@@ -78,7 +78,7 @@
 
 "Your subscription cannot be managed inside the mobile app." = "サブスクリプションはモバイル アプリ内では管理できません。";
 
-"Unlimited folders, labels, and filters" = "制限なしのフォルダー、ラベル、フィルター";
+"Unlimited folders, labels, and filters" = "制限なしのフォルダ、ラベル、フィルター";
 
 "Up to %@ storage" = "最大 %@ のストレージ";
 
@@ -98,7 +98,7 @@
 
 "Get %@" = "%@ を入手";
 
-"Get Proton for free" = "Proton を無料を入手";
+"Get Proton for free" = "Proton を無料で入手";
 
 "Extend subscription" = "サブスクリプションを延長";
 
