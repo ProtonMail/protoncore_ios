@@ -89,7 +89,8 @@ public final class RemoteManager: RemoteManagerProviding, @unchecked Sendable {
         }
     }
 
-    public func setSession(_ session: URLSession) {
+    // Used for testing
+    func setSession(_ session: URLSession) {
         queue.sync {
             self.session = session
         }
