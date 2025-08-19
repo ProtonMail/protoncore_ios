@@ -66,7 +66,7 @@ final class SignupCoordinator {
     private let isCloseButton: Bool
     private let signupAvailability: SignupAvailability
     private var signupParameters: SignupParameters?
-    private var navigationController: LoginNavigationViewController? {
+    private(set) var navigationController: LoginNavigationViewController? {
         didSet {
             navigationController?.overrideUserInterfaceStyle = customization.inAppTheme().userInterfaceStyle
         }

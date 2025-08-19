@@ -34,6 +34,7 @@ public final class WelcomeVPNGuestViewController: UIHostingController<WelcomeVPN
     override public func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = ColorProvider.BackgroundNorm
+        navigationController?.isNavigationBarHidden = true
     }
 }
 

@@ -200,6 +200,7 @@ public final class LoginAndSignup {
     private var loginAndSignupCompletion: (LoginAndSignupResult) -> Void = { _ in }
     private var loginDataTemporarilyCachedForOlderAPI: LoginData?
     private var mailboxPasswordCompletion: ((String) -> Void)?
+    private var welcomeScreenVariant: WelcomeScreenVariant?
 
     public init(appName: String,
                 clientApp: ClientApp,
@@ -219,12 +220,12 @@ public final class LoginAndSignup {
     }
 
     public convenience init(appName: String,
-                clientApp: ClientApp,
-                apiService: APIService,
-                minimumAccountType: AccountType,
-                isCloseButtonAvailable: Bool = true,
-                paymentsAvailability: PaymentsAvailability,
-                signupAvailability: SignupAvailability = .notAvailable) {
+                            clientApp: ClientApp,
+                            apiService: APIService,
+                            minimumAccountType: AccountType,
+                            isCloseButtonAvailable: Bool = true,
+                            paymentsAvailability: PaymentsAvailability,
+                            signupAvailability: SignupAvailability = .notAvailable) {
         self.init(
             appName: appName,
             clientApp: clientApp,
@@ -243,6 +244,7 @@ public final class LoginAndSignup {
                               completion: @escaping (LoginAndSignupResult) -> Void) -> UINavigationController {
         self.viewController = viewController
         self.customization = customization
+        self.welcomeScreenVariant = welcomeScreen
 
         container.registerHumanVerificationDelegates()
         self.loginAndSignupCompletion = { [weak self] result in
@@ -250,9 +252,8 @@ public final class LoginAndSignup {
             completion(result)
         }
 
-        let shouldShowCloseButton = viewController == nil ? false : isCloseButtonAvailable
         let loginCoordinator = LoginCoordinator(container: container,
-                                                isCloseButtonAvailable: shouldShowCloseButton,
+                                                isCloseButtonAvailable: isCloseButtonAvailable,
                                                 isSignupAvailable: signupAvailability.isAvailable,
                                                 customization: customization)
         self.loginCoordinator = loginCoordinator
@@ -322,6 +323,7 @@ extension LoginAndSignup: LoginAndSignupInterface {
                                              welcomeScreen: WelcomeScreenVariant,
                                              customization: LoginCustomizationOptions,
                                              updateBlock: @escaping (LoginAndSignupResult) -> Void) {
+        self.welcomeScreenVariant = welcomeScreen
         presentLogin(over: viewController, welcomeScreen: welcomeScreen, customization: customization, completion: updateBlock)
     }
 
@@ -353,6 +355,7 @@ extension LoginAndSignup: LoginAndSignupInterface {
                                              welcomeScreen: WelcomeScreenVariant,
                                              customization: LoginCustomizationOptions,
                                              completion: @escaping (LoginResult) -> Void) {
+        self.welcomeScreenVariant = welcomeScreen
         presentFlowFromWelcomeScreen(over: viewController, welcomeScreen: welcomeScreen, customization: customization, updateBlock: transformedCompletion(completion))
     }
 
@@ -381,11 +384,26 @@ extension LoginAndSignup: LoginAndSignupInterface {
             }
         }
     }
+
+    private func loadWelcomeScreen(navigationViewController: LoginNavigationViewController?) {
+        guard let navigationViewController else { return }
+        loginCoordinator = LoginCoordinator(container: container,
+                                            isCloseButtonAvailable: isCloseButtonAvailable,
+                                            isSignupAvailable: signupAvailability.isAvailable,
+                                            customization: customization)
+        loginCoordinator?.delegate = self
+        loginCoordinator?.welcomeScreenVariant = welcomeScreenVariant
+        loginCoordinator?.backToWelcomeScreen(using: navigationViewController)
+    }
 }
 
 extension LoginAndSignup: LoginCoordinatorDelegate {
     func userDidDismissLoginCoordinator(loginCoordinator: LoginCoordinator) {
-        loginAndSignupCompletion(.dismissed)
+        if welcomeScreenVariant == nil {
+            loginAndSignupCompletion(.dismissed)
+        } else {
+            loadWelcomeScreen(navigationViewController: loginCoordinator.navigationController)
+        }
     }
 
     func loginCoordinatorDidFinish(loginCoordinator: LoginCoordinator, data: LoginData) {
@@ -400,7 +418,12 @@ extension LoginAndSignup: LoginCoordinatorDelegate {
 
 extension LoginAndSignup: SignupCoordinatorDelegate {
     func userDidDismissSignupCoordinator(signupCoordinator: SignupCoordinator) {
-        loginAndSignupCompletion(.dismissed)
+        if welcomeScreenVariant == nil {
+            loginAndSignupCompletion(.dismissed)
+        } else {
+            loadWelcomeScreen(navigationViewController: signupCoordinator.navigationController)
+        }
+
     }
 
     func signupCoordinatorDidFinish(signupCoordinator: SignupCoordinator, signupState: SignupState) {
