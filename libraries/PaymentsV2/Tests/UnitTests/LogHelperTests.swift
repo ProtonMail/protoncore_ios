@@ -29,9 +29,9 @@ final class LogHelperTests: XCTestCase {
 
     private var sut: LogHelper!
 
-    override func setUp() {
-        super.setUp()
-        sut = LogHelper()
+    override func setUp() async throws {
+        try await super.setUp()
+        sut = await LogHelper.create()
     }
 
     override func tearDown() async throws {

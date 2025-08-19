@@ -221,8 +221,8 @@ private extension TransactionHandler {
                              paymentMethodID: nil)
         debugPrint("Validation token generated ✅")
          TransactionsObserver.shared.logHelper.logEventSync(["phase": "validation_token_creation",
-                                                                  "token": newToken.toDictionary()])
-        
+                                                             "token": newToken.toDictionary()])
+
         return newToken
     }
 

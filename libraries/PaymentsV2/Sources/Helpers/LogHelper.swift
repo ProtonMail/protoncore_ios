@@ -21,7 +21,25 @@
 
 import Foundation
 
-public class LogHelper {
+public enum LogStatus {
+    case inProgress
+    case close
+}
+
+public protocol LogHelperProviding {
+    static func create() async -> LogHelper
+    func logEvent(_ event: [String: Any], type: LogStatus) async
+    func logEventSync(_ event: [String: Any], type: LogStatus)
+    func returnTransactionLog() async -> URL?
+    func deleteLogs() async
+}
+
+extension LogHelperProviding {
+    func logEvent(_ event: [String: Any], type: LogStatus = .inProgress) async {}
+    func logEventSync(_ event: [String: Any], type: LogStatus = .inProgress) {}
+}
+
+public class LogHelper: LogHelperProviding {
 
     private struct Constants {
         static let fileName = "TransactionLog.txt"
@@ -40,16 +58,7 @@ public class LogHelper {
         return dateFormatter
     }()
 
-    public enum LogStatus {
-        case inProgress
-        case close
-    }
-
-    init() {
-        Task {
-            await load()
-        }
-    }
+    private init() {}
 
     private func runInBackground<T>(_ task: @escaping () -> T) async -> T {
         await withCheckedContinuation { continuation in
@@ -61,6 +70,12 @@ public class LogHelper {
     }
 
     // MARK: Public
+
+    public static func create() async -> LogHelper {
+        let logHelper = LogHelper()
+        await logHelper.load()
+        return logHelper
+    }
 
     public func logEvent(_ event: [String: Any], type: LogStatus = .inProgress) async {
         await runInBackground { [weak self] in
@@ -75,7 +90,7 @@ public class LogHelper {
     }
 
     public func logEventSync(_ event: [String: Any], type: LogStatus = .inProgress) {
-            Task { await logEvent(event, type: type) }
+        Task { await logEvent(event, type: type) }
     }
 
     public func returnTransactionLog() async -> URL? {
@@ -92,6 +107,18 @@ public class LogHelper {
         }
 #endif
         return fileURL
+    }
+
+    public func deleteLogs() async {
+        await runInBackground {
+            do {
+                let url = URL.documentsDirectory.appending(path: Constants.fileName)
+                try FileManager.default.removeItem(at: url)
+                debugPrint("File successfully deleted at path: \(url)")
+            } catch {
+                debugPrint(error)
+            }
+        }
     }
 
     // MARK: Private
@@ -148,18 +175,6 @@ public class LogHelper {
                 transactionLogs = jsonArray
             } catch {
                 debugPrint(error.localizedDescription)
-            }
-        }
-    }
-
-    internal func deleteLogs() async {
-        await runInBackground {
-            do {
-                let url = URL.documentsDirectory.appending(path: Constants.fileName)
-                try FileManager.default.removeItem(at: url)
-                debugPrint("File successfully deleted at path: \(url)")
-            } catch {
-                debugPrint(error)
             }
         }
     }

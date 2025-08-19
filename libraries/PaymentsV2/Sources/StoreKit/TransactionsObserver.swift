@@ -40,7 +40,8 @@ public protocol TransactionsObserverProviding: Sendable {
     func setConfiguration(_ configuration: TransactionsObserverConfiguration)
     func addTransactionInProgress(_ transactionId: UInt64)
     func removeTransactionInProgress(_ transactionId: UInt64)
-    func generateTransactionLog() -> URL?
+    func generateTransactionLog() async -> URL?
+    func deleteLogs() async
 }
 
 public enum TransactionsObserverError: LocalizedError {
@@ -77,7 +78,7 @@ public struct TransactionsObserverConfiguration: Sendable {
 public final class TransactionsObserver: TransactionsObserverProviding, @unchecked Sendable {
 
     public static let shared = TransactionsObserver()
-    public var logHelper = LogHelper()
+    public var logHelper: LogHelperProviding!
     private var configuration: TransactionsObserverConfiguration?
     @Published public private(set) var isON: Bool = false
     @Published public private(set) var transactionStatus: TransactionType = .unknown
@@ -137,13 +138,15 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
     }
 
     // MARK: Private functions
-    private func initRequiredComponents() throws {
+    private func initRequiredComponents() async throws {
 
         guard let config = configuration else {
             let error = TransactionsObserverError.missingOrInvalidConfiguration
             PMLog.error(error.failureReason ?? "No configuration provided to PaymentsV2 - TransactionObserver", sendToExternal: true)
             throw error
         }
+
+        logHelper = await LogHelper.create()
 
         self.remoteManager = RemoteManager(sessionID: config.sessionID,
                                            authToken: config.authToken,
@@ -195,7 +198,7 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
 
     public func start() async throws {
         if !isON {
-            try initRequiredComponents()
+            try await initRequiredComponents()
 
             guard let planComposer = planComposer, transactionHandler != nil else {
                 assertionFailure("TransactionsObserver: TransactionsObserverConfiguration required to start the observer")
@@ -244,10 +247,11 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
         }
     }
 
-    public func generateTransactionLog() -> URL? {
-//        Task {
-//            await logHelper.returnTransactionLog()
-//        }
-        return nil
+    public func generateTransactionLog() async -> URL? {
+        return await logHelper.returnTransactionLog()
+    }
+
+    public func deleteLogs() async {
+        await logHelper.deleteLogs()
     }
 }
