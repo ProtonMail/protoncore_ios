@@ -25,7 +25,7 @@ import StoreKit
 
 public enum StoreKitReceiptManagerError: LocalizedError {
     case unableToExtractReceiptData
-    
+
     public var errorDescription: String? {
         switch self {
         case .unableToExtractReceiptData:
@@ -47,10 +47,10 @@ public struct UnfinishedTransaction {
 }
 
 public final class StoreKitReceiptManager: NSObject, StoreKitReceiptManagerProviding {
-    
+
     private var refresh: SKReceiptRefreshRequest?
     private var tokenContinuation: CheckedContinuation<Void, Error>?
-    
+
     public func fetchPurchaseReceipt() throws -> String {
         guard let url = Bundle.main.appStoreReceiptURL, let data = try? Data(contentsOf: url) else {
             debugPrint("Unable to get receipt data")
@@ -58,24 +58,24 @@ public final class StoreKitReceiptManager: NSObject, StoreKitReceiptManagerProvi
             PMLog.error(error.errorDescription ?? "PaymentsV2 - StoreKit impssible to get receipt data", sendToExternal: true)
             throw error
         }
-        
+
         return data.base64EncodedString()
     }
-    
+
     public func recoverTransaction() async throws -> UnfinishedTransaction? {
         guard let transaction = await getTransactions() else {
             debugPrint("No unfinished transaction found")
             return nil
         }
-        
+
         guard let receipt = try await refreshReceipt() else {
             debugPrint("No receipt found")
             return nil
         }
-        
+
         return UnfinishedTransaction(transaction: transaction, receipt: receipt)
     }
-    
+
     public func refreshReceipt() async throws -> String? {
         try await withCheckedThrowingContinuation { continuation in
             tokenContinuation = continuation
@@ -83,10 +83,10 @@ public final class StoreKitReceiptManager: NSObject, StoreKitReceiptManagerProvi
             refresh?.delegate = self
             refresh?.start()
         }
-        
+
         return try? fetchPurchaseReceipt()
     }
-    
+
     private func getTransactions() async -> Transaction? {
         // We assume there will possibly be only 1 unfinished transaction
         // for a Proton product for a given Apple Account.
@@ -100,20 +100,20 @@ public final class StoreKitReceiptManager: NSObject, StoreKitReceiptManagerProvi
                 return nil
             }
         }
-        
+
         return nil
     }
 }
 
 extension StoreKitReceiptManager: SKRequestDelegate {
-    
+
     public func requestDidFinish(_ request: SKRequest) {
         cancelActiveRequest(request)
         TransactionsObserver.shared.logHelper.logEventSync(["phase": "apple_receipt_refresh",
                                                             "status": "success"])
         tokenContinuation?.resume()
     }
-    
+
     public func request(_ request: SKRequest, didFailWithError error: Error) {
         cancelActiveRequest(request)
         TransactionsObserver.shared.logHelper.logEventSync(["phase": "apple_receipt_refresh",
@@ -121,7 +121,7 @@ extension StoreKitReceiptManager: SKRequestDelegate {
         tokenContinuation?.resume(throwing: TransactionHandlerError.fetchReceiptDidFail(description: error.localizedDescription))
         PMLog.error("PaymentsV2: Refresh Apple receipt failed with error: \(error.localizedDescription)", sendToExternal: true)
     }
-    
+
     private func cancelActiveRequest(_ request: SKRequest) {
         request.cancel()
         refresh = nil

@@ -269,7 +269,7 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
             }
         }
     }
-    
+
     private func generateUserTransactionUUID() async throws -> UUID {
         let request = try paymentsAPI.url(for: .userTransactionUUID)
 
