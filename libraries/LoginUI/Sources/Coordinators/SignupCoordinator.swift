@@ -456,8 +456,8 @@ final class SignupCoordinator {
     }
 
     private func completeSignupFlow(signupState: SignupState) {
-        if case .signupFinished = signupState {
-            navigationController?.presentingViewController?.dismiss(animated: true, completion: {
+        if case .signupFinished = signupState, let presentingViewController = navigationController?.presentingViewController {
+            presentingViewController.dismiss(animated: true, completion: {
                 self.delegate?.signupCoordinatorDidFinish(signupCoordinator: self, signupState: signupState)
             })
         } else {
