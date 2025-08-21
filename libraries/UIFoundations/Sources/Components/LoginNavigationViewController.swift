@@ -29,6 +29,7 @@ public final class LoginNavigationViewController: DarkModeAwareNavigationViewCon
     public enum TransitionStyle {
         case systemDefault
         case modalLike
+        case dismissLike
         case fade
     }
 
@@ -89,6 +90,7 @@ extension LoginNavigationViewController: UINavigationControllerDelegate {
         defer { autoresettingNextTransitionStyle = .systemDefault }
         switch autoresettingNextTransitionStyle {
         case .modalLike: return ModalLikeTransition()
+        case .dismissLike: return DismissLikeTransition()
         case .fade:
             switch operation {
             case .push:
@@ -119,6 +121,31 @@ private final class ModalLikeTransition: NSObject, UIViewControllerAnimatedTrans
             toViewController.view.frame = finalFrame
         } completion: {
             toViewController.navigationController?.setNavigationBarHidden(false, animated: false)
+            transitionContext.completeTransition($0)
+        }
+    }
+}
+
+private final class DismissLikeTransition: NSObject, UIViewControllerAnimatedTransitioning {
+
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval { 0.3 }
+
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        guard let fromViewController = transitionContext.viewController(forKey: .from),
+              let toViewController = transitionContext.viewController(forKey: .to)
+        else { return }
+        let containerView = transitionContext.containerView
+
+        let finalFrame = CGRect.init(
+            origin: .init(x: 0, y: fromViewController.view.frame.maxY),
+            size: fromViewController.view.frame.size
+        )
+        containerView.insertSubview(toViewController.view, belowSubview: fromViewController.view)
+        toViewController.navigationController?.setNavigationBarHidden(true, animated: false)
+
+        UIView.animate(withDuration: transitionDuration(using: transitionContext)) {
+            fromViewController.view.frame = finalFrame
+        } completion: {
             transitionContext.completeTransition($0)
         }
     }

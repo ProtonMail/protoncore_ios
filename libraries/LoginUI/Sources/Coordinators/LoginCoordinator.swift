@@ -47,11 +47,12 @@ final class LoginCoordinator {
 
     weak var delegate: LoginCoordinatorDelegate?
     var initialError: LoginError?
+    var welcomeScreenVariant: WelcomeScreenVariant?
 
     private let container: Container
     private let isCloseButtonAvailable: Bool
     private let isSignupAvailable: Bool
-    private var navigationController: LoginNavigationViewController? {
+    private(set) var navigationController: LoginNavigationViewController? {
         didSet {
             navigationController?.overrideUserInterfaceStyle = customization.inAppTheme().userInterfaceStyle
         }
@@ -82,6 +83,11 @@ final class LoginCoordinator {
         showInitialViewController(kind, initialViewController: createLoginViewController(username: username))
     }
 
+    func backToWelcomeScreen(using navigationController: LoginNavigationViewController) {
+        self.navigationController = navigationController
+        userWantsToGoBackToWelcome()
+    }
+
     func startFromWelcomeScreen(
         viewController: UIViewController, variant: WelcomeScreenVariant, username: String? = nil
     ) -> UINavigationController {
@@ -95,6 +101,7 @@ final class LoginCoordinator {
     }
 
     func createWelcomeViewController(variant: WelcomeScreenVariant, username: String? = nil) -> UIViewController {
+        self.welcomeScreenVariant = variant
         let welcome: UIViewController
         switch variant {
         case .vpnV2:
@@ -669,6 +676,18 @@ extension LoginCoordinator: WelcomeViewControllerDelegate {
         navigationController.modalTransitionStyle = .coverVertical
         navigationController.autoresettingNextTransitionStyle = .modalLike
         delegate?.userSelectedSignup(navigationController: navigationController)
+    }
+
+    func userWantsToGoBackToWelcome() {
+        guard let navigationController = navigationController,
+              let welcomeScreenVariant else {
+            PMLog.error("NavigationController or WelcomeScreenVariant not provided")
+            return
+        }
+        navigationController.modalTransitionStyle = .coverVertical
+        let welcome = createWelcomeViewController(variant: welcomeScreenVariant)
+        navigationController.autoresettingNextTransitionStyle = .dismissLike
+        navigationController.setViewControllers([welcome], animated: true)
     }
 }
 
