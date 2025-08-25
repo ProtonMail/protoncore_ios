@@ -436,7 +436,7 @@
 
 "Password must contain:" = "Salasanan täytyy sisältää:";
 
-"Access shared" = "Access shared";
+"Access shared" = "Pääsy jaettu";
 
 "Back to settings" = "Takaisin asetuksiin";
 
@@ -450,7 +450,7 @@
 
 "Scan the code to sign in" = "Skannaa koodi kirjautuaksesi sisään";
 
-"We couldn't sign you in" = "We couldn't sign you in";
+"We couldn't sign you in" = "Kirjautuminen epäonnistui";
 
 "Try generating a new QR code." = "Yritä luoda uusi QR-koodi.";
 
@@ -462,9 +462,9 @@
 
 "How to sign in with QR code" = "Miten kirjaudut QR-koodilla";
 
-"Allow camera access" = "Allow camera access";
+"Allow camera access" = "Salli pääsy kameraan";
 
-"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings.";
+"To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "Kirjautuaksesi sisään QR-koodilla, sinun täytyy antaa Proton %@:lle pääsy kameraasi. Voit tehdä tämän laitteesi asetuksissa.";
 
 "Position QR code inside the square" = "Aseta QR-koodi neliön sisälle";
 
@@ -472,11 +472,11 @@
 
 "Open any Proton app on the device you want to sign in to" = "Avaa mikä tahansa Proton-sovellus laitteella, johon haluat kirjautua";
 
-"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)";
+"On the sign-in screen, select **Forgot password** or **Trouble signing in?** (on mobile apps, select **Help**)" = "Valitse kirjautumisruudussa **Unohtunut salasana** tai **Ongelmia kirjautumisessa?** (mobiilisovelluksissa, valitse **Ohje**)";
 
-"Select **Sign in with QR code**. A QR code will appear." = "Select **Sign in with QR code**. A QR code will appear.";
+"Select **Sign in with QR code**. A QR code will appear." = "Valitse **kirjaudu sisään QR-koodilla**. QR-koodi ilmestyy.";
 
-"On this device, press **Scan QR code** and scan the code." = "On this device, press **Scan QR code** and scan the code.";
+"On this device, press **Scan QR code** and scan the code." = "Paina tällä laitteella **Lue QR-koodi** ja skannaa koodi.";
 
 "Security tips" = "Turvallisuusvinkkejä";
 
