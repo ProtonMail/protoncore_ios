@@ -2,7 +2,7 @@
 
 "Available_plans_section_title" = "Päivitä tilauksesi";
 
-"Available_subscriptions_view_subtitle" = "Our plans for your privacy";
+"Available_subscriptions_view_subtitle" = "Tilauksemme yksityisyytesi turvaamiseksi.";
 
 "Available_subscriptions_view_title" = "Valitse tilaus";
 
@@ -14,7 +14,7 @@
 
 "Error_view_button_title" = "Yritä uudelleen";
 
-"Error_view_message" = "We couldn't load this page. Please refresh the page or check your internet connection.";
+"Error_view_message" = "Sivua ei voitu ladata. Päivitä sivu tai tarkista internet-yhteytesi.";
 
 "Error_view_title" = "Jotain meni pieleen";
 
@@ -22,7 +22,7 @@
 
 "Monthly_cycle" = "Yksi kuukausi";
 
-"No_available_plan_message" = "Your subscription can't be managed inside the mobile app.";
+"No_available_plan_message" = "Et voi hallita tilaustasi mobiilisovelluksesta.";
 
 "No_available_plan_title" = "Saatavilla olevia tilauksia ei löytynyt";
 

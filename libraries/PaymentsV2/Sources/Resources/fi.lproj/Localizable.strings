@@ -10,7 +10,7 @@
 
 "Plans_Manager_Transaction_unknown_error" = "Odottamaton virhe ilmeni. Jos tämä jatkuu, ota yhteyttä asiakaspalveluun.";
 
-"Plans_Manager_peding_transaction_received" = "Unexpected pending transaction received";
+"Plans_Manager_peding_transaction_received" = "Odottamaton vireillä oleva kauppatapahtuma vastaanotettu";
 
 "PlansComposer_unable_to_fetch_currentSub" = "Nykyistä tilausta ei voitu noutaa";
 
@@ -20,6 +20,6 @@
 
 "Transaction_Handler_plan_not_found" = "Oli mahdotonta löytää nimeä tilaukselle, jota yrität ostaa. Jos ongelma jatkuu, ota yhteys asiakaspalveluun.";
 
-"Transaction_Handler_repeated_purchase" = "It's not possible to renew the selected plan multiple times. If you think this is an error or if the issue persists please contact our customer support";
+"Transaction_Handler_repeated_purchase" = "Valittua tilausta ei voi uusia useaan kertaan. Jos luulet tämän olevan virhe tai jos ongelma jatkuu, ota ystävällisesti yhteyttä asiakaspalveluumme.";
 
-"Transaction_Handler_receipt_update_failed" = "An error occured while requesting the transaction receipt from Apple. If the issue persists please contact customer support";
+"Transaction_Handler_receipt_update_failed" = "Tapahtui virhe pyydettäessä tapahtuman kuittausta Applelta. Jos ongelma jatkuu, ota yhteyttä asiakaspalveluun.";
