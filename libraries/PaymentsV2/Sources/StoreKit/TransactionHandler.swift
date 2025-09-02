@@ -170,10 +170,10 @@ public final class TransactionHandler: NSObject, TransactionHandlerProviding, @u
 // MARK: Private methods
 private extension TransactionHandler {
 
-    private func generateValidationTokenFromStoreKitReceipt(_ transaction: ProtonTransactionProviding) throws -> Token {
+    private func generateValidationTokenFromStoreKitReceipt(_ transaction: ProtonTransactionProviding) async throws -> Token {
 
         debugPrint("Generating validation token..")
-        let receipt = try receiptManager.fetchPurchaseReceipt()
+        let receipt = try await receiptManager.refreshReceipt()
 
         guard var bundleIdentifier = Bundle.main.bundleIdentifier else {
             debugPrint("bundle not obtainable")
@@ -302,7 +302,7 @@ private extension TransactionHandler {
 
     private func resolveTransaction(_ transaction: ProtonTransactionProviding, plan: ComposedPlan) async throws {
 
-        let transactionToken = try generateValidationTokenFromStoreKitReceipt(transaction)
+        let transactionToken = try await generateValidationTokenFromStoreKitReceipt(transaction)
         let newToken = try await createNewToken(transactionToken)
         debugPrint("New token created ✅")
         _ = try await createNewSubscription(token: newToken, composedPlan: plan, transaction: transaction)
