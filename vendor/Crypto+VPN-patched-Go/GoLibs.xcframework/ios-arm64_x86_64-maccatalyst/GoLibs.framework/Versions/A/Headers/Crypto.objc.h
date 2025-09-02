@@ -254,6 +254,10 @@ the given headers. Empty parameters are omitted from the headers.
  */
 - (BOOL)isExpired;
 /**
+ * IsForwardingKey checks if the given key is a Proton forwarding key.
+ */
+- (BOOL)isForwardingKey;
+/**
  * IsLocked checks if a private key is locked.
  */
 - (BOOL)isLocked:(BOOL* _Nullable)ret0_ error:(NSError* _Nullable* _Nullable)error;
@@ -597,6 +601,10 @@ If a context is provided, it verifies that the signature is valid in the given c
 the signature notation with name the name set in `constants.SignatureContextName`.
  */
 - (BOOL)verifyDetachedWithContext:(CryptoPlainMessage* _Nullable)message signature:(CryptoPGPSignature* _Nullable)signature verifyTime:(int64_t)verifyTime verificationContext:(CryptoVerificationContext* _Nullable)verificationContext error:(NSError* _Nullable* _Nullable)error;
+/**
+ * WithoutForwardingKeys returns a new keyring containing only non-forwarding keys.
+ */
+- (CryptoKeyRing* _Nullable)withoutForwardingKeys:(NSError* _Nullable* _Nullable)error;
 @end
 
 /**
