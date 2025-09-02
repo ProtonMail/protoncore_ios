@@ -38,7 +38,7 @@ class MockStoreKitReceiptManager: StoreKitReceiptManagerProviding {
         return nil
     }
 
-    func refreshReceipt() async throws -> String? {
+    func refreshReceipt() async throws -> String {
         return receipt
     }
 }

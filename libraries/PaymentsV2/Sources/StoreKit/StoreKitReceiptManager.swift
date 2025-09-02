@@ -38,7 +38,7 @@ public protocol StoreKitReceiptManagerProviding {
     func fetchPurchaseReceipt() throws -> String
     func recoverTransaction() async throws -> UnfinishedTransaction?
     @discardableResult
-    func refreshReceipt() async throws -> String?
+    func refreshReceipt() async throws -> String
 }
 
 public struct UnfinishedTransaction {
@@ -68,15 +68,12 @@ public final class StoreKitReceiptManager: NSObject, StoreKitReceiptManagerProvi
             return nil
         }
 
-        guard let receipt = try await refreshReceipt() else {
-            debugPrint("No receipt found")
-            return nil
-        }
+        let receipt = try await refreshReceipt()
 
         return UnfinishedTransaction(transaction: transaction, receipt: receipt)
     }
 
-    public func refreshReceipt() async throws -> String? {
+    public func refreshReceipt() async throws -> String {
         try await withCheckedThrowingContinuation { continuation in
             tokenContinuation = continuation
             refresh = SKReceiptRefreshRequest()
@@ -84,7 +81,9 @@ public final class StoreKitReceiptManager: NSObject, StoreKitReceiptManagerProvi
             refresh?.start()
         }
 
-        return try? fetchPurchaseReceipt()
+        let receipt = try fetchPurchaseReceipt()
+
+        return receipt
     }
 
     private func getTransactions() async -> Transaction? {
@@ -104,7 +103,6 @@ public final class StoreKitReceiptManager: NSObject, StoreKitReceiptManagerProvi
         return nil
     }
 }
-
 extension StoreKitReceiptManager: SKRequestDelegate {
 
     public func requestDidFinish(_ request: SKRequest) {
