@@ -123,8 +123,6 @@ public final class TransactionHandler: NSObject, TransactionHandlerProviding, @u
         }
 #endif
 
-        try await receiptManager.refreshReceipt()
-
         guard transaction.originalID == transaction.id else {
             updateTransactionState(state: .mismatchTransactionIDs)
             let error = TransactionHandlerError.transactionIdNotEqualToOriginalTransactionId(originalID: transaction.originalID, transactionId: transaction.id)
