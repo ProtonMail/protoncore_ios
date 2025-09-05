@@ -2,7 +2,7 @@
 //  MeasurementProfile.swift
 //  ProtonCore-Performance - Created on 13.06.2024.
 //
-// Copyright (c) 2023. Proton Technologies AG
+// Copyright (c) 2025. Proton Technologies AG
 //
 // This file is part of Proton Mail.
 //
@@ -27,12 +27,12 @@ import UIKit
 
 public class MeasurementProfile: MeasurementProtocol {
 
-    var workflow: String
-    var measurements: [Measurement] = []
-    var measuresList: [MeasureBlock] = []
-    var serviceLevelIndicator: String?
-    var sharedLabels: [String: String]
-    var sharedMetadata: [String: String]
+    public var workflow: String
+    public var measurements: [Measurement] = []
+    public var measuresList: [MeasureBlock] = []
+    public var serviceLevelIndicator: String?
+    public var sharedLabels: [String: String]
+    public var sharedMetadata: [String: String]
 
     public init(workflow: String) {
         self.workflow = workflow

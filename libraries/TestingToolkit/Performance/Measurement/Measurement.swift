@@ -2,7 +2,7 @@
 //  Measurement.swift
 //  ProtonCore-Performance - Created on 13.06.2024.
 //
-// Copyright (c) 2023. Proton Technologies AG
+// Copyright (c) 2025. Proton Technologies AG
 //
 // This file is part of Proton Mail.
 //

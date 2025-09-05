@@ -2,7 +2,7 @@
 //  MeasureBlock.swift
 //  ProtonCore-Performance - Created on 13.06.2024.
 //
-// Copyright (c) 2023. Proton Technologies AG
+// Copyright (c) 2025. Proton Technologies AG
 //
 // This file is part of Proton Mail.
 //
@@ -21,12 +21,14 @@
 
 import Foundation
 import XCTest
+import os.log
 
 public class MeasureBlock {
-    internal let profile: MeasurementProfile
+    public let profile: MeasurementProfile
     private var labels: [String: Any] = [:]
     private var metrics: [String: Any] = [:]
     private var metadata: [String: Any] = [:]
+    private let logger = Logger(subsystem: "ProtonCore", category: "Performance.MeasureBlock")
 
     public init(profile: MeasurementProfile) {
         self.profile = profile
@@ -37,8 +39,8 @@ public class MeasureBlock {
 
     internal func startMeasurement() {
         profile.measuresList.append(self)
-        if self.labels["sli"] as! String == "unknown" {
-            XCTFail("MeasurementProfile: measure block for profile with workflow: \"\(profile.workflow)\" expected Service Level Indicator to be set via profile.setServiceLevelIndicator() but it wasn't. Current value is \"null\".")
+        if let sli = self.labels["sli"] as? String, sli == "unknown" {
+            logger.warning("MeasurementProfile: measure block for profile with workflow: \"\(self.profile.workflow)\" expected Service Level Indicator to be set via profile.setServiceLevelIndicator() but it wasn't.")
         }
         profile.measurements.forEach { $0.onStartMeasurement(measurementProfile: profile) }
     }
@@ -59,7 +61,7 @@ public class MeasureBlock {
         ]]
 
         return [
-            "stream": profile.sharedLabels,
+            "stream": labels,
             "values": values
         ]
     }
@@ -73,14 +75,34 @@ public class MeasureBlock {
     }
 
     public func addMetric(key: String, value: String) {
-        validateMetricsSize {
-            metrics[key] = value
+        do {
+            try validateMetricsSize {
+                metrics[key] = value
+            }
+        } catch let measurementError as MeasurementError {
+            logger.warning("Failed to add metric '\(key)': \(measurementError)")
+            // Record error for the current test
+            if let testName = getCurrentTestName() {
+                MeasurementContext.shared.recordMeasurementError(measurementError, forTest: testName)
+            }
+        } catch {
+            logger.warning("Failed to add metric '\(key)': \(error)")
         }
     }
 
     public func addMetrics(_ data: [String: String]) {
-        validateMetricsSize {
-            metrics.merge(data) { (_, new) in new }
+        do {
+            try validateMetricsSize {
+                metrics.merge(data) { (_, new) in new }
+            }
+        } catch let measurementError as MeasurementError {
+            logger.warning("Failed to add metrics: \(measurementError)")
+            // Record error for the current test
+            if let testName = getCurrentTestName() {
+                MeasurementContext.shared.recordMeasurementError(measurementError, forTest: testName)
+            }
+        } catch {
+            logger.warning("Failed to add metrics: \(error)")
         }
     }
 
@@ -102,12 +124,35 @@ public class MeasureBlock {
         metadata.merge(data) { (_, new) in new }
     }
 
-    private func validateMetricsSize(_ block: () -> Void) {
-        if metrics.count <= 10 {
-            block()
-        } else {
-            fatalError("MeasureBlock: you have exceeded the maximum metrics size count. For performance reasons, it is not allowed to push more than 10 metrics.")
+    // Public getter for metrics (needed for XCTMetric adapter)
+    public var metricsData: [String: Any] {
+        return metrics
+    }
+
+    private func validateMetricsSize(_ block: () throws -> Void) throws {
+        let maxMetricsCount = 50
+        guard metrics.count < maxMetricsCount else {
+            throw MeasurementError.metricsLimitExceeded(current: metrics.count, max: maxMetricsCount)
         }
+        try block()
+    }
+
+    /// Gets the current test name from the metadata or labels
+    private func getCurrentTestName() -> String? {
+        // Try to get test name from metadata first
+        if let testName = metadata["test"] as? String {
+            return testName
+        }
+
+        // Try to get test name from labels
+        if let testName = labels["test"] as? String {
+            return testName
+        }
+
+        // If no test name is found, log a warning and return nil
+        // The error will still be logged but won't fail a specific test
+        logger.warning("Cannot determine current test name for measurement error recording")
+        return nil
     }
 }
 

@@ -2,7 +2,7 @@
 //  LokiApiClient.swift
 //  ProtonCore-Performance - Created on 13.06.2024.
 //
-// Copyright (c) 2023. Proton Technologies AG
+// Copyright (c) 2025. Proton Technologies AG
 //
 // This file is part of Proton Mail.
 //
@@ -23,18 +23,28 @@ import Foundation
 import CryptoKit
 import XCTest
 import Security
+import os.log
 
-enum LokiPushError: Error {
+public enum LokiPushError: Error {
     case invalidURL
     case invalidResponse
     case httpError(statusCode: Int)
+    case certificateNotFound
+    case certificateLoadError(OSStatus)
+    case invalidCertificateData
+}
+
+public protocol LokiClientProtocol {
+    func pushToLoki(entry: String, lokiEndpoint: String) async throws
 }
 
 @available(iOS 15.0, *)
 @available(macOS 12.0, *)
-class LokiClient {
+public class LokiClient: LokiClientProtocol {
 
-    init(){
+    private let logger = Logger(subsystem: "ProtonCore", category: "Performance.LokiClient")
+
+    public init(){
         self.session = URLSession(configuration: .default, delegate: CustomSessionDelegate(), delegateQueue: nil)
     }
 
@@ -42,49 +52,82 @@ class LokiClient {
 
     private let session: URLSession
 
-    internal func pushToLoki(entry: String, lokiEndpoint: String) async throws {
-        var request = URLRequest(url: URL(string: lokiEndpoint)!)
+    public func pushToLoki(entry: String, lokiEndpoint: String) async throws {
+        guard let url = URL(string: lokiEndpoint) else {
+            throw LokiPushError.invalidURL
+        }
+
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = entry.data(using: .utf8)
 
         do {
             let (_, response) = try await session.data(for: request, delegate: nil)
-            guard response is HTTPURLResponse else { throw LokiPushError.invalidResponse }
-        } catch {
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw LokiPushError.invalidResponse
+            }
+
+            if httpResponse.statusCode >= 400 {
+                throw LokiPushError.httpError(statusCode: httpResponse.statusCode)
+            }
+        } catch let error as LokiPushError {
             throw error
+        } catch {
+            throw LokiPushError.httpError(statusCode: 0)
         }
     }
 
     // Helper function to load the PKCS#12 file with a passphrase
-    private func loadIdentity() -> SecIdentity? {
+    private func loadIdentity() throws -> SecIdentity {
+        guard !MeasurementConfig.lokiCertificate.isEmpty else {
+            throw LokiPushError.certificateNotFound
+        }
 
         let testBundle = Bundle(for: type(of: self))
-        let certFileURL = testBundle.url(forResource: MeasurementConfig.lokiCertificate, withExtension: "p12")
-        let p12Data = try! Data(contentsOf: certFileURL!)
+        guard let certFileURL = testBundle.url(forResource: MeasurementConfig.lokiCertificate, withExtension: "p12") else {
+            throw LokiPushError.certificateNotFound
+        }
+
+        let p12Data: Data
+        do {
+            p12Data = try Data(contentsOf: certFileURL)
+        } catch {
+            throw LokiPushError.invalidCertificateData
+        }
 
         let options: [String: Any] = [kSecImportExportPassphrase as String: MeasurementConfig.lokiCertificatePassphrase]
         var items: CFArray?
 
         let securityError = SecPKCS12Import(p12Data as NSData, options as NSDictionary, &items)
-        if securityError == errSecSuccess {
-            let array = items! as NSArray
-            let dictionary = array.firstObject! as! NSDictionary
-            let identity = dictionary[kSecImportItemIdentity as String] as! SecIdentity
-            return identity
-        } else {
-            print("Error importing PKCS#12 file: \(securityError)")
-            return nil
+        guard securityError == errSecSuccess else {
+            throw LokiPushError.certificateLoadError(securityError)
         }
+
+        guard let itemsArray = items as? NSArray,
+              let firstItem = itemsArray.firstObject as? NSDictionary,
+              let identityRef = firstItem[kSecImportItemIdentity as String] else {
+            throw LokiPushError.invalidCertificateData
+        }
+
+        // Safely cast to SecIdentity using CFGetTypeID
+        guard CFGetTypeID(identityRef as CFTypeRef) == SecIdentityGetTypeID() else {
+            throw LokiPushError.invalidCertificateData
+        }
+
+        let identity = identityRef as! SecIdentity
+        return identity
     }
 
     class CustomSessionDelegate: NSObject, URLSessionDelegate {
         func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
             if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodClientCertificate {
-                if let identity = LokiClient().loadIdentity() {
+                do {
+                    let identity = try LokiClient().loadIdentity()
                     let credential = URLCredential(identity: identity, certificates: nil, persistence: .forSession)
                     completionHandler(.useCredential, credential)
-                } else {
+                } catch {
+                    Logger(subsystem: "ProtonCore", category: "Performance.LokiClient").error("Failed to load client certificate: \(error)")
                     completionHandler(.cancelAuthenticationChallenge, nil)
                 }
             } else {
