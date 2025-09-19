@@ -105,13 +105,11 @@ public final class RemoteManager: RemoteManagerProviding, @unchecked Sendable {
                                  .contentType: "application/json",
                                  .authorization: "Bearer \(authToken)",
                                  .appVersion: appVersion]
-#if DEBUG
-            guard let atlasSecret = atlasSecret else {
+            guard let atlasSecret else {
                 return
             }
 
             requestHTTPHeader[.atlasSecret] = atlasSecret
-#endif
         }
     }
 
