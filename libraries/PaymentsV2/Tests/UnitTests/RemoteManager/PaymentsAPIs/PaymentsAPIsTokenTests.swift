@@ -61,32 +61,20 @@ final class PaymentsAPIsTokenTests: XCTestCase {
             return
         }
 
-        let expectedToken = Token(amount: 100,
-                                  currency: "EUR",
-                                  payment: PaymentReceipt(details:
-                                                            ReceiptDetails(bundleID: "bundle",
-                                                                           productID: "123asd",
-                                                                           receipt: "22211sd",
-                                                                           transactionID: "778787"),
-                                                          type: "apple-recurring"),
-                                  paymentMethodID: nil)
+        let expectedToken = OCToken(payment: OCPaymentReceipt(details: OCReceiptDetails(jws: "bun1231231231231dle")))
 
         let expectedJSONBody: [String: Any] = [
-            "Amount": 100,
-            "Currency": "EUR",
+            "Amount": 0,
+            "Currency": "CHF",
             "Payment": [
                 "Details": [
-                    "BundleID": "bundle",
-                    "ProductID": "123asd",
-                    "Receipt": "22211sd",
-                    "TransactionID": "778787",
+                    "Jws": "bun1231231231231dle"
                 ],
-                "Type": "apple-recurring"
-            ],
-            "PaymentMethodID": NSNull()
+                "Type": "apple-iap"
+            ]
         ]
 
-        let result = try? sut.url(for: .createToken(token: expectedToken))
+        let result = try? sut.url(for: .createOCToken(token: expectedToken))
 
         XCTAssertEqual(expectedResult, result?.url)
         XCTAssertNotNil(result?.body)

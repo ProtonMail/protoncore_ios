@@ -47,4 +47,3 @@ public struct Formatter {
         return Decimal(Double(amount) / 100).formatted(.currency(code: currency).presentation(.narrow).rounded())
     }
 }
-

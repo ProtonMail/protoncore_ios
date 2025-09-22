@@ -1,6 +1,6 @@
 //
-//  LoadingView.swift
-//  ProtonCore-PaymentsUIV2 - Created on 7/11/2024.
+//  TransactionHandlerProviding.swift
+//  ProtonCore-PaymentsV2 - Created on 15/10/2024.
 //
 //  Copyright (c) 2024 Proton Technologies AG
 //
@@ -19,25 +19,14 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
-import SwiftUI
-import ProtonCoreUIFoundations
+import Foundation
+import Combine
 
-struct LoadingView: View {
-
-    let loadingMessage: String
-
-    var body: some View {
-        VStack {
-            Spacer()
-            ProgressView(loadingMessage)
-                .tint(ColorProvider.IconAccent)
-            Spacer()
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(ColorProvider.BackgroundNorm)
-    }
-}
-
-#Preview {
-    LoadingView(loadingMessage: "Loading plans...")
+public protocol TransactionHandlerProviding: Sendable {
+    var transactionState: CurrentValueSubject<TransactionHandlerState, Never> { get }
+    func processTransaction(_ transaction: ProtonTransaction, plan: ComposedPlan) async throws -> ComposedPlan
+    // Only Omnichannel TransactionHandler implements this
+    func processTransaction(_ transaction: ProtonTransaction, jwsRepresentation: String, plan: ComposedPlan) async throws -> ComposedPlan
+    func updateRemoteManager(remoteManager: RemoteManagerProviding)
+    func verifyTransactionUUIDs(appAccountToken: UUID) async throws -> Bool
 }

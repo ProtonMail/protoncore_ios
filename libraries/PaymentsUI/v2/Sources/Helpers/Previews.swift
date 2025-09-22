@@ -45,9 +45,9 @@ public struct PreviewsData {
     }
 
     static func progressEntitlements() -> [Entitlement] {
-        return [Entitlement.progress(ProgressEntitlement(title: "Mail storage",type: "progress", text: "0.1 GB of 1 GB", min: 0, max: 10, current: 1)),
-                Entitlement.progress(ProgressEntitlement(title: "Mail storage",type: "progress", text: "0.6 GB of 1 GB", min: 0, max: 10, current: 6)),
-                Entitlement.progress(ProgressEntitlement(title: "Mail storage",type: "progress", text: "0.9 GB of 1 GB", min: 0, max: 10, current: 9))]
+        return [Entitlement.progress(ProgressEntitlement(title: "Mail storage", type: "progress", text: "0.1 GB of 1 GB", min: 0, max: 10, current: 1)),
+                Entitlement.progress(ProgressEntitlement(title: "Mail storage", type: "progress", text: "0.6 GB of 1 GB", min: 0, max: 10, current: 6)),
+                Entitlement.progress(ProgressEntitlement(title: "Mail storage", type: "progress", text: "0.9 GB of 1 GB", min: 0, max: 10, current: 9))]
     }
 
     static func allEntitlements() -> [Entitlement] {

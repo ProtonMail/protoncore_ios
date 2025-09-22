@@ -1436,7 +1436,8 @@ add(
                    dependencies: [
                     .log,
                     .observability,
-                    .networking
+                    .networking,
+                    .featureFlags
                    ],
                    path: "libraries/PaymentsV2/Sources"),
 

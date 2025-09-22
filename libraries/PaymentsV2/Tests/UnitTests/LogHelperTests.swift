@@ -104,7 +104,7 @@ final class LogHelperTests: XCTestCase {
         sleep(1) // Simulate delay in logging
         sut.logEventSync(["Log 3": "event 3",
                           "Log 4": 12122])
-        
+
         DispatchQueue.global().asyncAfter(deadline: .now() + 0.1) {
             Task {
                 XCTAssertTrue(self.sut.transactionLog.count == 2)

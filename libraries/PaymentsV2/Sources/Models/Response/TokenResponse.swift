@@ -37,3 +37,10 @@ public struct NewToken: Decodable, Sendable, DictionaryConvertible {
     public let status: Int
     public let token: String
 }
+
+// Omnichannel model to decode the get /token response
+public struct ResponseStatus: Decodable, Sendable, DictionaryConvertible {
+
+    public let code: Int
+    public let status: Int
+}

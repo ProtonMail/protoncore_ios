@@ -37,6 +37,15 @@ public struct NewSubscriptionValues: Codable, DictionaryConvertible {
     public let paymentToken: String?
 }
 
+// Omnichannel variant of the above model, remove the old one once all the system runs on Omnichannel
+public struct OCNewSubscriptionValues: Encodable, DictionaryConvertible {
+    private let amount: Int? = nil
+    private let paymentMethodID: String? = nil
+    private let payments: [String]? = nil
+    public let paymentToken: String?
+    private let external: Int = 1
+}
+
 public struct Subscription: Codable, DictionaryConvertible {
     public let cycle: Int
     public let currency: String?
@@ -48,7 +57,21 @@ public struct Subscription: Codable, DictionaryConvertible {
     public let giftCode: String?
 }
 
+// Omnichannel variant of the above model, remove the old one once all the system runs on Omnichannel
+public struct OCSubscription: Encodable, DictionaryConvertible {
+    public let cycle: Int
+    public let currency: String?
+    private let currencyID: Int? = nil
+    public let plans: [String: Int]?
+    private let planIDs: [Int]? = nil
+    private let codes: [String]? = nil
+    private let couponCode: String? = nil
+    private let giftCode: String? = nil
+}
+
 public typealias CreateSubscription = Compose<Subscription, NewSubscriptionValues>
+// Omnichannel variant of the above typealias, remove the old one once all the system runs on Omnichannel
+public typealias OCreateSubscription = Compose<OCSubscription, OCNewSubscriptionValues>
 
 public struct NewSubscription: Codable, DictionaryConvertible {
 
@@ -57,6 +80,17 @@ public struct NewSubscription: Codable, DictionaryConvertible {
     init(newValues: NewSubscriptionValues,
          subscription: Subscription) {
         newSubscription = CreateSubscription(subscription, newValues)
+    }
+}
+
+// Omnichannel variant of the above model, remove the old one once all the system runs on Omnichannel
+public struct OCNewSubscription: Encodable, DictionaryConvertible {
+
+    public let newSubscription: OCreateSubscription
+
+    init(newValues: OCNewSubscriptionValues,
+         subscription: OCSubscription) {
+        newSubscription = OCreateSubscription(subscription, newValues)
     }
 }
 
