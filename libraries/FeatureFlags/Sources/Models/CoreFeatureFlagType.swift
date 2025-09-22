@@ -34,4 +34,5 @@ public enum CoreFeatureFlagType: String, FeatureFlagTypeProtocol {
     case passwordPolicyDisabled = "PasswordPolicyDisabled"
     case paymentsV2 = "IOSPaymentsV2"
     case paymentsV6Status = "PaymentsV6StatusRequest"
+    case paymentsOmnichannelEnabled = "OmnichannelClient"
 }

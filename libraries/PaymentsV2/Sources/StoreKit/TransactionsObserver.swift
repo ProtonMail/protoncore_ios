@@ -78,7 +78,7 @@ public struct TransactionsObserverConfiguration: Sendable {
 public final class TransactionsObserver: TransactionsObserverProviding, @unchecked Sendable {
 
     public static let shared = TransactionsObserver()
-    public var logHelper: LogHelperProviding!
+    public var logHelper: LogHelperProviding?
     private var configuration: TransactionsObserverConfiguration?
     @Published public private(set) var isON: Bool = false
     @Published public private(set) var transactionStatus: TransactionType = .unknown
@@ -248,10 +248,10 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
     }
 
     public func generateTransactionLog() async -> URL? {
-        return await logHelper.returnTransactionLog()
+        return await logHelper?.returnTransactionLog()
     }
 
     public func deleteLogs() async {
-        await logHelper.deleteLogs()
+        await logHelper?.deleteLogs()
     }
 }

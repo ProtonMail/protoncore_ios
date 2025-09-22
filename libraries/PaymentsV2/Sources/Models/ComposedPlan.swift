@@ -97,6 +97,10 @@ public struct ComposedPlan: Equatable, Hashable, Sendable {
         let discountInt = min(Int(NSDecimalNumber(decimal: discountDecimal).doubleValue.rounded()), 99)
         return discountInt >= Self.minimumVisibleDiscount ? discountInt : nil
     }
+
+    public func isEligibleForIntroOffer() async -> Bool {
+        return await self.product.subscription?.isEligibleForIntroOffer ?? false
+    }
 }
 
 extension ComposedPlan {

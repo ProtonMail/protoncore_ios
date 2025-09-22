@@ -107,14 +107,14 @@ extension StoreKitReceiptManager: SKRequestDelegate {
 
     public func requestDidFinish(_ request: SKRequest) {
         cancelActiveRequest(request)
-        TransactionsObserver.shared.logHelper.logEventSync(["phase": "apple_receipt_refresh",
+        TransactionsObserver.shared.logHelper?.logEventSync(["phase": "apple_receipt_refresh",
                                                             "status": "success"])
         tokenContinuation?.resume()
     }
 
     public func request(_ request: SKRequest, didFailWithError error: Error) {
         cancelActiveRequest(request)
-        TransactionsObserver.shared.logHelper.logEventSync(["phase": "apple_receipt_refresh",
+        TransactionsObserver.shared.logHelper?.logEventSync(["phase": "apple_receipt_refresh",
                                                             "status": "failed"])
         tokenContinuation?.resume(throwing: TransactionHandlerError.fetchReceiptDidFail(description: error.localizedDescription))
         PMLog.error("PaymentsV2: Refresh Apple receipt failed with error: \(error.localizedDescription)", sendToExternal: true)

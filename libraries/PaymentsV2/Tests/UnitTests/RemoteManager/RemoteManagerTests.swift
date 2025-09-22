@@ -116,7 +116,7 @@ extension RemoteManagerTests {
 
         mockRemoteManager.setupURLSessionMock(withMockResponse: mockResponse)
 
-        let token = Token(amount: 200, currency: "USD", payment: nil, paymentMethodID: nil)
+        let token = Token(payment: nil, paymentMethodID: nil)
         guard let request = try? paymentsAPI.url(for: .createToken(token: token)) else {
             XCTFail("Unable to generate the expected request")
             return
@@ -136,7 +136,7 @@ extension RemoteManagerTests {
 
         mockRemoteManager.setupURLSessionMock(withMockResponse: mockResponse)
 
-        let token = Token(amount: 200, currency: "USD", payment: nil, paymentMethodID: nil)
+        let token = Token(payment: nil, paymentMethodID: nil)
         guard let request = try? paymentsAPI.url(for: .createToken(token: token)) else {
             XCTFail("Unable to generate the expected request")
             return
@@ -150,7 +150,7 @@ extension RemoteManagerTests {
 
         mockRemoteManager.setupURLSessionMock()
 
-        let token = Token(amount: 200, currency: "USD", payment: nil, paymentMethodID: nil)
+        let token = Token(payment: nil, paymentMethodID: nil)
         guard let request = try? paymentsAPI.url(for: .createToken(token: token)) else {
             XCTFail("Unable to generate the expected request")
             return
@@ -164,7 +164,7 @@ extension RemoteManagerTests {
 
         let expectedErrorCode = 500
 
-        let token = Token(amount: 200, currency: "USD", payment: nil, paymentMethodID: nil)
+        let token = Token(payment: nil, paymentMethodID: nil)
         guard let request = try? paymentsAPI.url(for: .createToken(token: token)) else {
             XCTFail("Unable to generate the expected request")
             return
@@ -326,6 +326,70 @@ extension RemoteManagerTests {
 
         XCTAssertEqual(userTransactionUUID.code, 1000)
         XCTAssertEqual(userTransactionUUID.uuid, "adq2d12dp12od1p2odmp12od")
+    }
+
+    // MARK: Omnichannel
+
+    func test_getTokens() async throws {
+        let mockResponse: [String: Any] = [
+            "Code": 1000,
+            "Status": 1
+        ]
+        mockRemoteManager.setupURLSessionMock(withMockResponse: mockResponse)
+
+        guard let request = try? paymentsAPI.url(for: .getToken(token: "1231231")) else {
+            XCTFail("Unable to generate the expected request")
+            return
+        }
+
+        let response: ResponseStatus = try await sut.getFromURL(request.url)
+
+        XCTAssertEqual(response.status, 1)
+    }
+
+    func test_create_new_OCSubscription() async throws {
+
+        let mockResponse = Bundle.main.loadJsonDataToDic(from: "new_sub_payload.json")
+        mockRemoteManager.setupURLSessionMock(withMockResponse: mockResponse)
+
+        let payload = OCNewSubscription(newValues: OCNewSubscriptionValues(paymentToken: "payment-token"),
+                                        subscription: OCSubscription(cycle: 1,
+                                                                     currency: "USD",
+                                                                     plans: nil))
+
+        guard let request = try? paymentsAPI.url(for: .createOmnichannelSubscription(newSubscription: payload)) else {
+            XCTFail("Unable to generate the expected request")
+            return
+        }
+        let newSub: NewSubscriptionResponse = try await sut.postToURL(request: request)
+
+        XCTAssertEqual(newSub.code, 1000)
+        XCTAssertEqual(newSub.subscription.renew, 1)
+        XCTAssertEqual(newSub.subscription.cycle, 1)
+        XCTAssertNil(newSub.upcomingSubscriptions)
+    }
+
+    func test_create_payment_OCtoken() async throws {
+
+        let mockResponse: [String: Any] = [
+            "Code": 1000,
+            "Status": 1,
+            "Token": "IM_A_TOKEN",
+            "Data": NSNull()
+        ]
+
+        mockRemoteManager.setupURLSessionMock(withMockResponse: mockResponse)
+
+        let token = OCToken(payment: OCPaymentReceipt(details: OCReceiptDetails(jws: "asldjaslkdjaljda")))
+        guard let request = try? paymentsAPI.url(for: .createOCToken(token: token)) else {
+            XCTFail("Unable to generate the expected request")
+            return
+        }
+        let tokenStatus: NewToken = try await sut.postToURL(request: request)
+
+        XCTAssertEqual(tokenStatus.code, 1000)
+        XCTAssertEqual(tokenStatus.status, 1)
+        XCTAssertEqual(tokenStatus.token, "IM_A_TOKEN")
     }
 }
 

@@ -128,6 +128,39 @@ final class PaymentsAPIsSubscriptionTests: XCTestCase {
         assertPayload(expectedPayload: expectedJSONBody, generatedPayload: jsonPayload)
     }
 
+    func testCreateOCNewSubscription() throws {
+        guard let expectedResult = URL(string: doh.getCurrentlyUsedHostUrl() + "/payments/v5/subscription") else {
+            return
+        }
+
+        let newSub = OCNewSubscription(newValues: OCNewSubscriptionValues(paymentToken: "payment-token"),
+                                       subscription: OCSubscription(cycle: 24, currency: "USD", plans: ["mail2022": 1]))
+
+        let expectedJSONBody: [String: Any] = [
+            "Amount": NSNull(),
+            "PaymentMethodID": NSNull(),
+            "Payments": NSNull(),
+            "PaymentToken": "payment-token",
+            "Cycle": 24,
+            "Currency": "USD",
+            "CurrencyID": NSNull(),
+            "Plans": ["mail2022": 1],
+            "PlanIDs": NSNull(),
+            "Codes": NSNull(),
+            "CouponCode": NSNull(),
+            "GiftCode": NSNull(),
+            "External": 1
+        ]
+
+        let result = try? sut.url(for: .createOmnichannelSubscription(newSubscription: newSub))
+        let payload = try? JSONSerialization.data(withJSONObject: result!.body!)
+        let jsonPayload = try? JSONSerialization.jsonObject(with: payload!)
+
+        XCTAssertEqual(expectedResult, result?.url)
+        XCTAssertNotNil(result?.body)
+        assertPayload(expectedPayload: expectedJSONBody, generatedPayload: jsonPayload)
+    }
+
     func testCheckSubscriptionRequest() throws {
         guard let expectedResult = URL(string: doh.getCurrentlyUsedHostUrl() + "/payments/v5/subscription/check") else {
             return

@@ -23,10 +23,17 @@ import Foundation
 
 // MARK: Tokens
 public struct Token: Codable, DictionaryConvertible {
-    public let amount: Int
-    public let currency: String
+    private let amount: Int = 0
+    private let currency: String = "CHF"
     public let payment: PaymentReceipt?
     public let paymentMethodID: String?
+}
+
+// Omnichannel variant of the above model, remove the old one once all the system runs on Omnichannel
+public struct OCToken: Encodable, DictionaryConvertible {
+    private let amount: Int = 0 // hardcoded for legacy reasons --> Jens will try to remove them
+    private let currency: String = "CHF" // hardcoded for legacy reasons --> Jens will try to remove them
+    public let payment: OCPaymentReceipt?
 }
 
 public struct PaymentReceipt: Codable, Equatable, DictionaryConvertible {
@@ -34,9 +41,20 @@ public struct PaymentReceipt: Codable, Equatable, DictionaryConvertible {
     public let type: String
 }
 
+// Omnichannel variant of the above model, remove the old one once all the system runs on Omnichannel
+public struct OCPaymentReceipt: Encodable, Equatable, DictionaryConvertible {
+    public let details: OCReceiptDetails
+    private let type: String = "apple-iap"
+}
+
 public struct ReceiptDetails: Codable, Equatable, DictionaryConvertible {
     public let bundleID: String
     public let productID: String
     public let receipt: String
     public let transactionID: String
+}
+
+// Omnichannel variant of the above model, remove the old one once all the system runs on Omnichannel
+public struct OCReceiptDetails: Codable, Equatable, DictionaryConvertible {
+    public let jws: String
 }

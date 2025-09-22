@@ -23,7 +23,7 @@ import Foundation
 import StoreKit
 
 extension Sequence where Element == AvailablePlan {
-func identifiersForAppleInstances() -> [String] {
+    func identifiersForAppleInstances() -> [String] {
         let appleInstances = flatMap { $0.instances }
             .compactMap {
                 $0.vendors.apple?.productID

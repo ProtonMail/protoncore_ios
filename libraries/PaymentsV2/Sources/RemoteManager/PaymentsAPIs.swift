@@ -115,11 +115,14 @@ public enum RequestType {
 
     // MARK: Tokens
     case createToken(token: Token)
+    case createOCToken(token: OCToken) // Omnichannel variant of CreateToken, this will replace the old one once the BE is fully migrated
     case checkToken(token: String)
+    case getToken(token: String)
 
     // MARK: Subscription
     case getCurrentSubscription
     case createSubscription(newSubscription: NewSubscription)
+    case createOmnichannelSubscription(newSubscription: OCNewSubscription) // Omnichannel variant of CreateSubscription, this will replace the old one once the BE is fully migrated
     case checkSubscription(subscription: Subscription)
     case cancelSubscription(cancelSubscription: CancelSubscription)
     case subscriptionLatest // returns latest cancelled sub check and then delete if not needed
@@ -141,11 +144,11 @@ extension RequestType {
 
     var requestEndpoint: String {
         switch self {
-        case .createToken:
+        case .createToken, .createOCToken:
             return "/tokens"
-        case .checkToken(let token):
+        case .checkToken(let token), .getToken(let token):
             return "/tokens/\(token)"
-        case .getCurrentSubscription, .createSubscription, .cancelSubscription:
+        case .getCurrentSubscription, .createSubscription, .createOmnichannelSubscription, .cancelSubscription:
             return "/subscription"
         case .checkSubscription: // Docs: POST request, PUT has been deprecated
             return "/subscription/check"
@@ -170,10 +173,16 @@ extension RequestType {
         switch self {
         case .createToken(let body):
             return body.toDictionary()
+        case .createOCToken(let body):
+            return body.toDictionary()
         case .checkToken:
+            return nil
+        case .getToken:
             return nil
         case .getCurrentSubscription:
             return nil
+        case .createOmnichannelSubscription(let ocNewSub):
+            return ocNewSub.newSubscription.toDictionary()
         case .createSubscription(let newSub):
             return newSub.newSubscription.toDictionary() // This is required because NewSubscription is a Composed struct
         case .cancelSubscription(let subscription):
@@ -199,13 +208,15 @@ extension RequestType {
 
     var queryComponents: [URLQueryItem]? {
         switch self {
-        case .createToken:
+        case .createToken, .createOCToken:
             return nil
         case .checkToken:
             return nil
+        case .getToken:
+            return nil
         case .getCurrentSubscription:
             return nil
-        case .createSubscription:
+        case .createSubscription, .createOmnichannelSubscription:
             return nil
         case .cancelSubscription:
             return nil

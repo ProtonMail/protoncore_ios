@@ -100,8 +100,10 @@ public final class PlansComposer: PlansComposerProviding, @unchecked Sendable {
 
         availablePlans = try await fetchProtonPlans()
         storeProducts = try await getStoreProducts(availablePlans.plans.identifiersForAppleInstances())
+
         let matchedPlans = availablePlans.plans.modelsMatchingProducts(in: storeProducts)
         mostExpensivePlan = matchedPlans.sorted { $0.pricePerMonth > $1.pricePerMonth }.first
+
         return matchedPlans
     }
 

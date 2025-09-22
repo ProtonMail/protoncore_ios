@@ -88,11 +88,13 @@ public class PlanViewModel: ObservableObject, Identifiable {
     private let paymentsAPI: PaymentsAPIs
     private let remoteManager: RemoteManager
     private var plansManager: ProtonPlansManagerProviding?
+    private let composedPlan: ComposedPlan?
 
     public init(doh: DoHInterface & ServerConfig,
                 remoteManager: RemoteManager,
                 composedPlan: ComposedPlan,
                 plansManager: ProtonPlansManagerProviding? = nil) {
+        self.composedPlan = composedPlan
 
         self.paymentsAPI = PaymentsAPIs(doh: doh)
         self.remoteManager = remoteManager
@@ -141,7 +143,7 @@ public class PlanViewModel: ObservableObject, Identifiable {
                 remoteManager: RemoteManager,
                 canMinimize: Bool = true,
                 currentPlan: CurrentSubscriptionResponse) {
-
+        self.composedPlan = nil
         self.paymentsAPI = PaymentsAPIs(doh: doh)
         self.remoteManager = remoteManager
 
@@ -202,7 +204,7 @@ public class PlanViewModel: ObservableObject, Identifiable {
     }
 
     public func purchasePlan() async {
-        guard let product = product as? Product, let name = name, let plansManager = plansManager else {
+        guard let product = product as? Product, let plansManager = plansManager else {
             return
         }
 
@@ -218,6 +220,17 @@ public class PlanViewModel: ObservableObject, Identifiable {
     // MARK: Private methods
     private func createFooterText(texts: [TextStyle]) {
         renewFooter = TextStylizer.composeText(texts: texts)
+    }
+
+    public func checkIntroOffer() async {
+        guard let plan = composedPlan else {
+            return
+        }
+
+        let userIsEligible = await plan.isEligibleForIntroOffer()
+
+        let planHasOffer = plan.product.subscription?.introductoryOffer != nil && userIsEligible
+        self.formattedPrice = planHasOffer ? (plan.product.subscription?.introductoryOffer?.displayPrice ?? "Free!!") : plan.product.displayPrice
     }
 }
 

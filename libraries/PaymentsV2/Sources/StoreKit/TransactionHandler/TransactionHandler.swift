@@ -22,6 +22,7 @@
 import Combine
 import Foundation
 import ProtonCoreLog
+import ProtonCoreFeatureFlags
 import ProtonCoreNetworking
 import ProtonCoreObservability
 import StoreKit
@@ -31,8 +32,8 @@ public enum TransactionHandlerError: LocalizedError {
     case unableToFindPlanName(productID: String)
     case transactionIdNotEqualToOriginalTransactionId(originalID: UInt64, transactionId: UInt64)
     case unableToGetBundleIdentifier
-    case unableToGetTransactionAmountOrCurrency(transactionId: UInt64)
     case fetchReceiptDidFail(description: String)
+    case wrongMethodCalled
 
     public var errorDescription: String? {
         switch self {
@@ -53,10 +54,10 @@ public enum TransactionHandlerError: LocalizedError {
             return "\(originalId) != \(transactionId) this could indicate a repeated or renewal of an existing plan"
         case .unableToGetBundleIdentifier:
             return "App Bundle identifier not found"
-        case .unableToGetTransactionAmountOrCurrency(let transactionId):
-            return "Impossible to find transaction amount or currency for transactionId: \(transactionId)"
         case .fetchReceiptDidFail(let description):
             return "SKReceiptRefreshRequest failed with error: \(description)"
+        case .wrongMethodCalled:
+            return "Wrong function called"
         }
     }
 }
@@ -65,6 +66,7 @@ public enum TransactionHandlerState: String, Sendable {
     case idle
     case generatingReceipt
     case creatingTransactionToken
+    case waitingTokenResponse // Omnichannel only state
     case createNewSubscription
     case transactionCompleted
     // Error states:
@@ -82,17 +84,11 @@ public enum TransactionHandlerState: String, Sendable {
     }
 }
 
-public protocol TransactionHandlerProviding: Sendable {
-    func processTransaction(_ transaction: ProtonTransaction, plan: ComposedPlan, fail: Bool) async throws -> ComposedPlan
-    func updateRemoteManager(remoteManager: RemoteManagerProviding) async
-    func verifyTransactionUUIDs(appAccountToken: UUID) async throws -> Bool
-}
-
 public final class TransactionHandler: NSObject, TransactionHandlerProviding, @unchecked Sendable {
 
     private var remoteManager: RemoteManagerProviding
     private let paymentsAPIs: PaymentsAPIs
-    private(set) var transactionState = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
+    public private(set) var transactionState = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
     private let queue = DispatchQueue(label: "paymentsV2.transactionHandler.syncQueue")
     private var tokenContinuation: CheckedContinuation<Void, Error>?
     private var refresh: SKReceiptRefreshRequest?
@@ -106,22 +102,15 @@ public final class TransactionHandler: NSObject, TransactionHandlerProviding, @u
         self.receiptManager = receiptManger
     }
 
-    public func processTransaction(_ transaction: ProtonTransaction, plan: ComposedPlan, fail: Bool = false) async throws -> ComposedPlan {
+    public func processTransaction(_ transaction: ProtonTransaction, jwsRepresentation: String, plan: ComposedPlan) async throws -> ComposedPlan {
+        assertionFailure("TransactionHandler should never call this function, this is for Omnichannel only flow")
+        throw TransactionHandlerError.wrongMethodCalled
+    }
+
+    public func processTransaction(_ transaction: ProtonTransaction, plan: ComposedPlan) async throws -> ComposedPlan {
         debugPrint("Transaction in progress...")
         debugPrint(transaction.originalID)
         debugPrint(transaction.id)
-
-        // NOTE:
-        // This flag is used only in debug mode to force fail
-        // a transaction after the product is has been successfully purchased on the AppleStore.
-        // The purpose of the fail is testing the Apple transaction receipt recovery functionality.
-        // For now the flag is internal only.
-#if DEBUG
-        if fail {
-            debugPrint("Transaction FORCED to fail")
-            throw TransactionHandlerError.unableToGetBundleIdentifier
-        }
-#endif
 
         guard transaction.originalID == transaction.id else {
             updateTransactionState(state: .mismatchTransactionIDs)
@@ -130,7 +119,7 @@ public final class TransactionHandler: NSObject, TransactionHandlerProviding, @u
             throw error
         }
 
-        await TransactionsObserver.shared.logHelper.logEvent(["phase": "start_resolving_transaction"])
+        await TransactionsObserver.shared.logHelper?.logEvent(["phase": "start_resolving_transaction"])
         try await resolveTransaction(transaction, plan: plan)
 
         // transaction.appAccountToken
@@ -177,9 +166,9 @@ private extension TransactionHandler {
             debugPrint("bundle not obtainable")
             let error = TransactionHandlerError.unableToGetBundleIdentifier
             PMLog.error(error.failureReason ?? "Bundle identifier not found", sendToExternal: true)
-            TransactionsObserver.shared.logHelper.logEventSync(["phase": "fetch_bundle_identifier",
-                                                                "status": "failed"],
-                                                               type: .close)
+            TransactionsObserver.shared.logHelper?.logEventSync(["phase": "fetch_bundle_identifier",
+                                                                 "status": "failed"],
+                                                                type: .close)
             throw error
         }
 
@@ -195,30 +184,16 @@ private extension TransactionHandler {
         }
 #endif
 
-        guard let amount = transaction.price, let currency = transaction.currencyIdentifier else {
-            debugPrint("Impossible to get amount and currency from transaction")
-            updateTransactionState(state: .transactionProcessError)
-            let error = TransactionHandlerError.unableToGetTransactionAmountOrCurrency(transactionId: transaction.id)
-            PMLog.error(error.failureReason ?? "Bundle identifier not found", sendToExternal: true)
-            TransactionsObserver.shared.logHelper.logEventSync(["phase": "fetch_amount_currency",
-                                                                "status": "failed"],
-                                                               type: .close)
-            throw error
-        }
-
         updateTransactionState(state: .generatingReceipt)
 
-        let formattedAmount = NSDecimalNumber(decimal: amount * 100).intValue
-        let newToken = Token(amount: formattedAmount,
-                             currency: currency,
-                             payment: PaymentReceipt(details: ReceiptDetails(bundleID: bundleIdentifier,
+        let newToken = Token(payment: PaymentReceipt(details: ReceiptDetails(bundleID: bundleIdentifier,
                                                                              productID: transaction.productID,
                                                                              receipt: receipt,
                                                                              transactionID: transactionIdentifier),
                                                      type: "apple-recurring"),
                              paymentMethodID: nil)
         debugPrint("Validation token generated ✅")
-         TransactionsObserver.shared.logHelper.logEventSync(["phase": "validation_token_creation",
+        TransactionsObserver.shared.logHelper?.logEventSync(["phase": "validation_token_creation",
                                                              "token": newToken.toDictionary()])
 
         return newToken
@@ -231,8 +206,8 @@ private extension TransactionHandler {
             let request = try paymentsAPIs.url(for: .createToken(token: transactionToken))
             let newToken: NewToken = try await remoteManager.postToURL(request: request)
             ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(status: .http2xx, isDynamic: true))
-            await TransactionsObserver.shared.logHelper.logEvent(["phase": "post_validation_token_request",
-                                                                  "token": newToken.toDictionary()])
+            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "post_validation_token_request",
+                                                                   "token": newToken.toDictionary()])
             return newToken
         } catch {
 
@@ -243,8 +218,8 @@ private extension TransactionHandler {
             }
 
             updateTransactionState(state: .transactionProcessError)
-            await TransactionsObserver.shared.logHelper.logEvent(["phase": "post_validation_token_request",
-                                                                  "status": "failed"])
+            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "post_validation_token_request",
+                                                                   "status": "failed"])
             throw error
         }
     }
@@ -255,10 +230,10 @@ private extension TransactionHandler {
             let error = TransactionHandlerError.unableToFindPlanName(productID: transaction.productID)
             PMLog.error(error.failureReason ?? "PaymentsV2 - TransactionHandler unableToFindPlanName failure reason missing", sendToExternal: true)
             updateTransactionState(state: .transactionProcessError)
-            await TransactionsObserver.shared.logHelper.logEvent(["phase": "create_new_subscription",
-                                                                  "status": "failed",
-                                                                  "reason": "plan name and compose plan mismatch"],
-                                                                 type: .close)
+            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_new_subscription",
+                                                                   "status": "failed",
+                                                                   "reason": "plan name and compose plan mismatch"],
+                                                                  type: .close)
             throw error
         }
         debugPrint("Creating new subscription..")
@@ -281,24 +256,26 @@ private extension TransactionHandler {
             let request = try paymentsAPIs.url(for: .createSubscription(newSubscription: newSub))
             _ = try await remoteManager.postToURL(request: request)
             debugPrint("New subscription successfully created ✅")
-            await TransactionsObserver.shared.logHelper.logEvent(["phase": "create_new_subscription",
-                                                                  "status": "success"],
-                                                                 type: .close)
+            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_new_subscription",
+                                                                   "status": "success"],
+                                                                  type: .close)
             ObservabilityEnv.report(.paymentSubscribeTotal(status: .successful, isDynamic: true))
             updateTransactionState(state: .transactionCompleted)
             return true
         } catch {
             ObservabilityEnv.report(.paymentSubscribeTotal(status: .failed, isDynamic: true))
             updateTransactionState(state: .transactionProcessError)
-            await TransactionsObserver.shared.logHelper.logEvent(["phase": "create_new_subscription",
-                                                                  "status": "failed",
-                                                                  "reason": error.localizedDescription],
-                                                                 type: .close)
+            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_new_subscription",
+                                                                   "status": "failed",
+                                                                   "reason": error.localizedDescription],
+                                                                  type: .close)
             throw error
         }
     }
 
     private func resolveTransaction(_ transaction: ProtonTransactionProviding, plan: ComposedPlan) async throws {
+
+        debugPrint(FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsOmnichannelEnabled))
 
         let transactionToken = try await generateValidationTokenFromStoreKitReceipt(transaction)
         let newToken = try await createNewToken(transactionToken)

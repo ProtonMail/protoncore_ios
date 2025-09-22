@@ -1,5 +1,5 @@
 //
-//  TransactionHandlerTests.swift
+//  OCTransactionHandlerTests.swift
 //  ProtonCore-PaymentsV2Test - Created on 15/10/2024.
 //
 //  Copyright (c) 2024 Proton Technologies AG
@@ -26,7 +26,7 @@ import Combine
 import StoreKitTest
 import XCTest
 
-final class TransactionHandlerTests: XCTestCase, @unchecked Sendable {
+final class OCTransactionHandlerTests: XCTestCase, @unchecked Sendable {
 
     private var urlSessionConfig: URLSessionConfiguration!
     private var mockRemoteManager: MockedRemoteManager!
@@ -57,20 +57,20 @@ final class TransactionHandlerTests: XCTestCase, @unchecked Sendable {
             debugPrint(error)
         }
 
-        sut = TransactionHandler(remoteManager: remoteManager,
-                                 paymentsAPIs: paymentsAPIs,
-                                 receiptManger: MockStoreKitReceiptManager(receipt: "asdpoasmdpo12dp1o2mdpoasmdpoasmdcpaoscmapsomc"))
+        sut = OCTransactionHandler(remoteManager: remoteManager,
+                                   paymentsAPIs: paymentsAPIs,
+                                   receiptManger: MockStoreKitReceiptManager(receipt: "asdpoasmdpo12dp1o2mdpoasmdpoasmdcpaoscmapsomc"))
 
         try await super.setUp()
     }
 
-    override func tearDown() async throws {
+    override func tearDown() {
         subsComposer = nil
         cancellable.removeAll()
         mockRemoteManager.destroy()
         mockRemoteManager = nil
 
-        try await super.tearDown()
+        super.tearDown()
     }
 
     func test_transaction_state() async throws {
@@ -119,7 +119,7 @@ final class TransactionHandlerTests: XCTestCase, @unchecked Sendable {
         }
         .store(in: &cancellable)
 
-        _ = try await sut.processTransaction(protonTransaction, plan: composedPlan)
+        _ = try await sut.processTransaction(protonTransaction, jwsRepresentation: "asdasd12d12d12d", plan: composedPlan)
     }
 
     private func convertStoreTestTransaction(_ transaction: SKTestTransaction, price: Decimal, currencyId: String) -> ProtonTransaction {
@@ -137,6 +137,11 @@ final class TransactionHandlerTests: XCTestCase, @unchecked Sendable {
             return Bundle.main.loadJsonDataToDic(from: "availablePlans.json")
         case .createNewSubscription:
             return ["Code": 1000]
+        case .waitingTokenResponse:
+            return [
+                "Code": 1000,
+                "Status": 1
+            ]
         case .generatingReceipt:
             return [
                 "Code": 1000,

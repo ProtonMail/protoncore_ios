@@ -1,5 +1,5 @@
 //
-//  StoreObserverTests.swift
+//  TransactionsObserverTests.swift
 //  ProtonCore-PaymentsV2Test - Created on 15/10/2024.
 //
 //  Copyright (c) 2024 Proton Technologies AG
@@ -25,7 +25,7 @@ import Combine
 @testable import ProtonCorePaymentsV2
 import XCTest
 
-final class StoreObserverTests: XCTestCase, @unchecked Sendable {
+final class TransactionsObserverTests: XCTestCase, @unchecked Sendable {
 
     private var urlSessionConfig: URLSessionConfiguration!
     private var mockRemoteManager: MockedRemoteManager!

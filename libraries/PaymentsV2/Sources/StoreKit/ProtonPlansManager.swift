@@ -21,6 +21,7 @@
 
 import Combine
 import Foundation
+import ProtonCoreFeatureFlags
 import ProtonCoreObservability
 import ProtonCoreLog
 import ProtonCoreDoh
@@ -37,6 +38,7 @@ public protocol ProtonPlansManagerProviding: Sendable {
     func getIntroductoryOfferPrice(product: Product) -> String?
     func purchase(_ product: Product) async throws -> ComposedPlan
     func recoverTransactionReceipt() async throws
+    func updateUserSession(sessionID: String, authToken: String)
 }
 
 public enum ProtonPlansManagerError: LocalizedError {
@@ -89,7 +91,7 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
 
     private let paymentsAPI: PaymentsAPIs
     private let remoteManager: RemoteManagerProviding
-    private let transactionHandler: TransactionHandler
+    private let transactionHandler: TransactionHandlerProviding
     private let planComposer: PlansComposerProviding
 
     public var countryCode: String? {
@@ -103,8 +105,21 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
                 plansComposer: PlansComposerProviding? = nil) {
         self.remoteManager = remoteManager
         self.paymentsAPI = PaymentsAPIs(doh: doh)
+
+#if DEBUG
+        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsOmnichannelEnabled) {
+            debugPrint("OM Transaction flow")
+            self.transactionHandler = OCTransactionHandler(remoteManager: remoteManager,
+                                                           paymentsAPIs: paymentsAPI)
+        } else {
+            debugPrint("Legacy Transaction flow")
+            self.transactionHandler = TransactionHandler(remoteManager: remoteManager,
+                                                         paymentsAPIs: paymentsAPI)
+        }
+#else
         self.transactionHandler = TransactionHandler(remoteManager: remoteManager,
                                                      paymentsAPIs: paymentsAPI)
+#endif
         if let composer = plansComposer {
             self.planComposer = composer
         } else {
@@ -166,45 +181,61 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
     }
 
     public func purchase(_ product: Product) async throws -> ComposedPlan {
-        await TransactionsObserver.shared.logHelper.logEvent(["phase": "iap purchase",
-                                                              "productId": product.id])
+        await TransactionsObserver.shared.logHelper?.logEvent(["phase": "iap purchase",
+                                                               "productId": product.id])
 
         let userTransactionUUID = try await generateUserTransactionUUID()
+
         let result = try await product.purchase(options: [.appAccountToken(userTransactionUUID)])
 
         switch result {
         case .success(let verificationResult):
             let transaction = try verificationResult.payloadValue
-            await TransactionsObserver.shared.logHelper.logEvent(["phase": "apple_transaction",
-                                                                  "status": "success",
-                                                                  "jwsRepresentation": verificationResult.jwsRepresentation])
+            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "apple_transaction",
+                                                                   "status": "success",
+                                                                   "jwsRepresentation": verificationResult.jwsRepresentation])
 
             guard let matchingPlan = findMatchingPlan(productID: transaction.productID) else {
                 let error = ProtonPlansManagerError.unableToMatchProtonPlanToStoreProduct(productId: transaction.productID)
-                await TransactionsObserver.shared.logHelper.logEvent(["phase": "proton_plan_match",
-                                                                      "success": false,
-                                                                      "error": error.localizedDescription],
-                                                                     type: .close)
+                await TransactionsObserver.shared.logHelper?.logEvent(["phase": "proton_plan_match",
+                                                                       "success": false,
+                                                                       "error": error.failureReason ?? error.localizedDescription],
+                                                                      type: .close)
                 PMLog.error(error.failureReason ?? "PaymentsV2 - unable to match Proton and AppleStore plans", sendToExternal: true)
                 throw error
             }
 
-            await TransactionsObserver.shared.logHelper.logEvent(["phase": "proton_plan_match",
-                                                                  "time": Date.now.description,
-                                                                  "success": true])
+            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "proton_plan_match",
+                                                                   "time": Date.now.description,
+                                                                   "success": true])
 
             do {
                 TransactionsObserver.shared.addTransactionInProgress(transaction.id)
-                _ = try await transactionHandler.processTransaction(transaction.toProtonTransaction(), plan: matchingPlan)
+
+                // Omnichannel FF check
+#if DEBUG
+                if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsOmnichannelEnabled) {
+                    _ = try await transactionHandler.processTransaction(transaction.toProtonTransaction(),
+                                                                        jwsRepresentation: verificationResult.jwsRepresentation,
+                                                                        plan: matchingPlan)
+                } else {
+                    _ = try await transactionHandler.processTransaction(transaction.toProtonTransaction(),
+                                                                        plan: matchingPlan)
+                }
+#else
+                _ = try await transactionHandler.processTransaction(transaction.toProtonTransaction(),
+                                                                    plan: matchingPlan)
+#endif
+
                 TransactionsObserver.shared.removeTransactionInProgress(transaction.id)
                 await transaction.finish()
                 debugPrint("Transaction completed ✅")
-                await TransactionsObserver.shared.logHelper.logEvent(["phase": "create_sub",
-                                                                      "apple_transction_completed": true])
+                await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_sub",
+                                                                       "apple_transction_completed": true])
                 return matchingPlan
             } catch {
-                await TransactionsObserver.shared.logHelper.logEvent(["phase": "create_sub",
-                                                                      "error:": error.localizedDescription])
+                await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_sub",
+                                                                       "error:": error.localizedDescription])
                 TransactionsObserver.shared.removeTransactionInProgress(transaction.id)
                 debugPrint(error)
                 throw error
