@@ -44,6 +44,7 @@ public struct AvailablePlansView: View {
                 ZStack {
                     HStack {
                         Button {
+                            viewModel.viewStateDidChange(.dismissed)
                             presentationMode.wrappedValue.dismiss()
                         } label: {
                             Image(uiImage: IconProvider.crossBig)
@@ -104,6 +105,7 @@ public struct AvailablePlansView: View {
         })
         .onAppear {
             Task {
+                viewModel.viewStateDidChange(.displayed)
                 if viewModel.viewState != .dataLoaded {
                     await viewModel.fetchData()
                 }

@@ -31,6 +31,7 @@ public final class PaymentsUIViewControllerV2: UIViewController {
     private var cancellables = Set<AnyCancellable>()
     @Published private var viewState: AvailablePlansViewModel.State = .idle
     public private(set) var transactionProgress = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
+    public private(set) var viewCycleState = CurrentValueSubject<ViewCycleState, Never>(.none)
 
     private let sessionId: String
     private let token: String
@@ -68,13 +69,13 @@ public final class PaymentsUIViewControllerV2: UIViewController {
                                                 hideCurrentPlan: hideCurrentPlan,
                                                 presentationMode: presentationMode)
 
-        viewModel.transactionProgress.sink { [weak self] value in
-            guard let self = self else {
-                return
+        Publishers
+            .CombineLatest(viewModel.transactionProgress, viewModel.viewCycleState)
+            .sink {
+                self.transactionProgress.value = $0
+                self.viewCycleState.value = $1
             }
-            self.transactionProgress.value = value
-        }
-        .store(in: &cancellables)
+            .store(in: &cancellables)
 
         let availablePlansView = AvailablePlansView(viewModel: viewModel)
 
