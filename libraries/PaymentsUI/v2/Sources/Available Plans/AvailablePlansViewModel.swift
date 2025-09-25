@@ -27,6 +27,12 @@ import ProtonCoreUtilities
 import ProtonCoreUIFoundations
 import StoreKit
 
+public enum ViewCycleState {
+    case none
+    case displayed
+    case dismissed
+}
+
 @MainActor
 public class AvailablePlansViewModel: ObservableObject {
 
@@ -63,6 +69,7 @@ public class AvailablePlansViewModel: ObservableObject {
     }
 
     public private(set) var transactionProgress = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
+    public private(set) var viewCycleState = CurrentValueSubject<ViewCycleState, Never>(.none)
 
     private let doh: DoHInterface & ServerConfig
     private var cancellables = Set<AnyCancellable>()
@@ -200,6 +207,13 @@ public class AvailablePlansViewModel: ObservableObject {
         }
 
         return filteredPlans
+    }
+
+    public func viewStateDidChange(_ state: ViewCycleState) {
+        viewCycleState.send(state)
+        if state == .dismissed {
+            viewCycleState.send(completion: .finished)
+        }
     }
 }
 

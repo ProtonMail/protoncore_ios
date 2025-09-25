@@ -40,10 +40,11 @@ public enum PaymentsPresentationError: Error {
 public final class PaymentsV2: Sendable {
 
     public private(set) var transactionProgress = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
+    public private(set) var viewCycleState = CurrentValueSubject<ViewCycleState, Never>(.none)
     private let queue = DispatchQueue(label: "paymentsV2Presenter.syncQueue")
     private var presentationMode: PresentationMode = .none
     private var paymentsView: PaymentsUIViewControllerV2!
-    private var cancellable: Cancellable?
+    private var cancellables = Set<AnyCancellable>()
 
     public init() {}
 
@@ -92,11 +93,13 @@ public final class PaymentsV2: Sendable {
                                               hideCurrentPlan: hideCurrentPlan,
                                               presentationMode: presentationMode,
                                               doh: doh)
-        cancellable = paymentsView.transactionProgress.sink(receiveValue: { [weak self] state in
-            self?.queue.sync {
-                self?.transactionProgress.value = state
+        Publishers
+            .CombineLatest(paymentsView.transactionProgress, paymentsView.viewCycleState)
+            .sink {
+                self.transactionProgress.value = $0
+                self.viewCycleState.value = $1
             }
-        })
+            .store(in: &cancellables)
 
         switch presentationMode {
         case .modal:
