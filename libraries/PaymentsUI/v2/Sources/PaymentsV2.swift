@@ -43,6 +43,7 @@ public final class PaymentsV2: Sendable {
     private let queue = DispatchQueue(label: "paymentsV2Presenter.syncQueue")
     private var presentationMode: PresentationMode = .none
     private var paymentsView: PaymentsUIViewControllerV2!
+    private var cancellable: Cancellable?
 
     public init() {}
 
@@ -91,9 +92,11 @@ public final class PaymentsV2: Sendable {
                                               hideCurrentPlan: hideCurrentPlan,
                                               presentationMode: presentationMode,
                                               doh: doh)
-        queue.sync {
-            self.transactionProgress = paymentsView.transactionProgress
-        }
+        cancellable = paymentsView.transactionProgress.sink(receiveValue: { [weak self] state in
+            self?.queue.sync {
+                self?.transactionProgress.value = state
+            }
+        })
 
         switch presentationMode {
         case .modal:
