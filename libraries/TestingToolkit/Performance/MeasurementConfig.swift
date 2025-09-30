@@ -2,7 +2,7 @@
 //  MeasurementConfig.swift
 //  ProtonCore-Performance - Created on 13.06.2024.
 //
-// Copyright (c) 2023. Proton Technologies AG
+// Copyright (c) 2025. Proton Technologies AG
 //
 // This file is part of Proton Mail.
 //
@@ -20,6 +20,13 @@
 // along with Proton Mail. If not, see https://www.gnu.org/licenses/.
 
 import Foundation
+
+public enum ConfigurationError: Error {
+    case missingLokiEndpoint
+    case missingCertificate
+    case missingCertificatePassphrase
+    case invalidBundle
+}
 
 public final class MeasurementConfig {
 
@@ -71,5 +78,17 @@ public final class MeasurementConfig {
     public static func setAppVersion(_ app_version: String) -> MeasurementConfig.Type {
         version = app_version
         return self
+    }
+
+    public static func validate() throws {
+        guard let endpoint = lokiEndpoint, !endpoint.isEmpty else {
+            throw ConfigurationError.missingLokiEndpoint
+        }
+        guard !lokiCertificate.isEmpty else {
+            throw ConfigurationError.missingCertificate
+        }
+        guard !lokiCertificatePassphrase.isEmpty else {
+            throw ConfigurationError.missingCertificatePassphrase
+        }
     }
 }

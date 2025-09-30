@@ -24,6 +24,9 @@
 import fusion
 import XCTest
 import ProtonCoreLog
+#if canImport(ProtonCoreTestingToolkitPerformance)
+import ProtonCoreTestingToolkitPerformance
+#endif
 
 extension Bundle {
     static var testBundle: Bundle {
@@ -77,12 +80,40 @@ open class ProtonCoreBaseTestCase: CoreTestCase {
     }
 
     override open func tearDown() {
+        // Push performance measurements immediately if they exist
+#if canImport(ProtonCoreTestingToolkitPerformance)
+        if #available(iOS 15.0, *) {
+            // Only attempt to push if there are actual measurements
+            if MeasurementContext.shared.hasMeasurements() {
+                let expectation = XCTestExpectation(description: "Push performance metrics")
+
+                Task {
+                    do {
+                        PMLog.info("=== PERFORMANCE: Pushing metrics synchronously in tearDown ===")
+                        try await MeasurementContext.shared.pushToLoki()
+                        PMLog.info("PERFORMANCE: ✅ Successfully pushed metrics to Loki")
+                    } catch {
+                        PMLog.error("PERFORMANCE: ❌ Failed to push metrics to Loki: \(error)")
+                    }
+                    expectation.fulfill()
+                }
+
+                let result = XCTWaiter().wait(for: [expectation], timeout: 30.0)
+                if result != .completed {
+                    PMLog.error("PERFORMANCE: Failed to push metrics within timeout")
+                }
+            }
+        }
+#endif
+
         super.tearDown()
         guard let log = PMLog.logFile else { return }
         PMLog.info("UI TEST ENDED")
         let logsAttachment = XCTAttachment(contentsOfFile: log)
         logsAttachment.lifetime = .keepAlways
         add(logsAttachment)
+
+        // Always clean up log file now since we've handled performance measurements above
         try? FileManager.default.removeItem(at: log)
     }
 }

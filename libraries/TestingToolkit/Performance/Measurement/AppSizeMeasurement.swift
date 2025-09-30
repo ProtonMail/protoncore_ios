@@ -2,7 +2,7 @@
 //  AppSizeMeasurement.swift
 //  ProtonCore-Performance - Created on 13.06.2024.
 //
-// Copyright (c) 2023. Proton Technologies AG
+// Copyright (c) 2025. Proton Technologies AG
 //
 // This file is part of Proton Mail.
 //
@@ -25,11 +25,11 @@ public class AppSizeMeasurement: Measurement {
 
     private let bundle: Bundle
     private let byteCountFormatter: ByteCountFormatter = {
-      let formatter = ByteCountFormatter()
-      formatter.countStyle = .binary
-      formatter.allowedUnits = .useMB
-      formatter.includesUnit = false
-      return formatter
+        let formatter = ByteCountFormatter()
+        formatter.countStyle = .binary
+        formatter.allowedUnits = .useMB
+        formatter.includesUnit = false
+        return formatter
     }()
 
     public init(bundle: Bundle) {

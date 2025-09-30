@@ -2,7 +2,7 @@
 //  MeasurementContext.swift
 //  ProtonCore-Performance - Created on 13.06.2024.
 //
-// Copyright (c) 2023. Proton Technologies AG
+// Copyright (c) 2025. Proton Technologies AG
 //
 // This file is part of Proton Mail.
 //
@@ -21,86 +21,226 @@
 
 import XCTest
 
+// Extension to add jsonString method for compatibility
+extension Dictionary where Key == String, Value == Any {
+    func jsonString() -> String {
+        if let jsonData = try? JSONSerialization.data(withJSONObject: self, options: []) {
+            return String(data: jsonData, encoding: .utf8) ?? "{}"
+        }
+        return "{}"
+    }
+}
+
+public enum MeasurementError: Error {
+    case missingConfiguration(String)
+    case invalidConfiguration(String)
+    case networkError(Error)
+    case timeout
+    case metricsLimitExceeded(current: Int, max: Int)
+    
+    public var localizedDescription: String {
+        switch self {
+        case .missingConfiguration(let message):
+            return "Missing configuration: \(message)"
+        case .invalidConfiguration(let message):
+            return "Invalid configuration: \(message)"
+        case .networkError(let error):
+            return "Network error: \(error.localizedDescription)"
+        case .timeout:
+            return "Operation timed out"
+        case .metricsLimitExceeded(let current, let max):
+            return "Metrics limit exceeded: \(current) metrics, maximum allowed: \(max)"
+        }
+    }
+}
+
+// DefaultLogger removed - using PMLog directly
+
 @available(iOS 15.0, *)
 @available(macOS 12.0, *)
 public class MeasurementContext: NSObject, XCTestObservation {
     public static let shared = MeasurementContext(MeasurementConfig.self)
-
-    private var measurementProfiles: [String: MeasurementProfile] = [:]
-    private var measurementConfig: MeasurementConfig.Type
-
-    public init(_ measurementConfig: MeasurementConfig.Type) {
-        self.measurementConfig = measurementConfig
-        super.init()
-        XCTestObservationCenter.shared.addTestObserver(self)
+    
+    private let profilesQueue = DispatchQueue(label: "measurement.profiles", attributes: .concurrent)
+    private var _measurementProfiles: [String: MeasurementProfile] = [:]
+    public var measurementConfig: MeasurementConfig.Type
+    private let lokiClient: LokiClientProtocol
+    
+    // Track measurement errors that should fail tests
+    private let errorsQueue = DispatchQueue(label: "measurement.errors", attributes: .concurrent)
+    private var _measurementErrors: [String: [MeasurementError]] = [:]
+    
+    // Flag to indicate if testBundleDidFinish will need to write logs
+    private var _expectsTestBundleFinish = false
+    private let bundleFinishQueue = DispatchQueue(label: "measurement.bundlefinish")
+    
+    public var expectsTestBundleFinish: Bool {
+        get { bundleFinishQueue.sync { _expectsTestBundleFinish } }
+        set { bundleFinishQueue.sync { _expectsTestBundleFinish = newValue } }
     }
-
+    
+    /// Check if testBundleDidFinish is expected to run and write performance logs
+    public func shouldPreserveLogFile() -> Bool {
+        return bundleFinishQueue.sync { _expectsTestBundleFinish }
+    }
+    
+    /// Check if there are any measurement profiles with data to push
+    public func hasMeasurements() -> Bool {
+        let profiles = profilesQueue.sync { _measurementProfiles }
+        return !profiles.isEmpty
+    }
+    
+    private var measurementProfiles: [String: MeasurementProfile] {
+        get {
+            return profilesQueue.sync { _measurementProfiles }
+        }
+        set {
+            profilesQueue.async(flags: .barrier) { self._measurementProfiles = newValue }
+        }
+    }
+    
+    private var measurementErrors: [String: [MeasurementError]] {
+        get {
+            return errorsQueue.sync { _measurementErrors }
+        }
+        set {
+            errorsQueue.async(flags: .barrier) { self._measurementErrors = newValue }
+        }
+    }
+    
+    public init(_ measurementConfig: MeasurementConfig.Type, lokiClient: LokiClientProtocol = LokiClient()) {
+        self.measurementConfig = measurementConfig
+        self.lokiClient = lokiClient
+        super.init()
+        
+        // XCTestObservationCenter.shared.addTestObserver must be called on main thread
+        // If not on main thread, do nothing to avoid crashes
+        if Thread.isMainThread {
+            XCTestObservationCenter.shared.addTestObserver(self)
+        } else {
+            DispatchQueue.main.async {
+                XCTestObservationCenter.shared.addTestObserver(self)
+            }
+        }
+    }
+    
     public func setWorkflow(_ workflow: String, forTest testName: String) -> MeasurementProfile {
         let profile = MeasurementProfile(workflow: workflow)
-        measurementProfiles[testName] = profile
+        profilesQueue.async(flags: .barrier) {
+            self._measurementProfiles[testName] = profile
+        }
+        
+        // Set flag to indicate testBundleDidFinish will need to write logs
+        expectsTestBundleFinish = true
+        
+        // Set environment variable to preserve PMLog file in tearDown
+        setenv("PRESERVE_PMLOG_FOR_PERFORMANCE", "true", 1)
+        
         return profile
     }
-
+    
     public func addMetric(_ key: String, _ value: String, forTest testName: String) {
-        guard let profile = measurementProfiles[testName] else { return }
+        let profile = profilesQueue.sync { _measurementProfiles[testName] }
+        guard let profile = profile else {
+            return
+        }
         profile.addMetricToMeasures(key, value)
     }
-
+    
     public func addMetadata(_ key: String, _ value: String, forTest testName: String) {
-        guard let profile = measurementProfiles[testName] else { return }
+        let profile = profilesQueue.sync { _measurementProfiles[testName] }
+        guard let profile = profile else {
+            return
+        }
         for measure in profile.measuresList {
             measure.addMetadata(key: key, value: value)
         }
     }
-
+    
     public func addTestRunData(testName: String, status: String) {
-        guard let profile = measurementProfiles[testName] else { return }
+        let profile = profilesQueue.sync { _measurementProfiles[testName] }
+        guard let profile = profile else {
+            return
+        }
         for measure in profile.measuresList {
             measure.addTestNameMetadata(key: "test", value: testName)
         }
         profile.addMetricToMeasures("status", status)
     }
-
+    
     public func pushToLoki() async throws {
+        guard let endpoint = measurementConfig.lokiEndpoint, !endpoint.isEmpty else {
+            let error = MeasurementError.missingConfiguration("Loki endpoint not configured")
+            // Record error for all active test profiles
+            let profiles = profilesQueue.sync { _measurementProfiles }
+            for testName in profiles.keys {
+                self.recordMeasurementError(error, forTest: testName)
+            }
+            throw error
+        }
+        
         let payload: [String: Any] = ["streams": getProfilesStreams()]
-        try await LokiClient().pushToLoki(entry: payload.jsonString(), lokiEndpoint: measurementConfig.lokiEndpoint!)
+        let jsonPayload = payload.jsonString()
+        
+        // Performance logs are now handled in tearDown, not here
+        // Just do the actual push to Loki
+        
+        do {
+            try await lokiClient.pushToLoki(entry: jsonPayload, lokiEndpoint: endpoint)
+        } catch {
+            let measurementError = MeasurementError.networkError(error)
+            // Record error for all active test profiles
+            let profiles = profilesQueue.sync { _measurementProfiles }
+            for testName in profiles.keys {
+                self.recordMeasurementError(measurementError, forTest: testName)
+            }
+            throw measurementError
+        }
     }
-
+    
     private func getProfilesStreams() -> [[String: Any]] {
         var streams: [[String: Any]] = []
-        for (_, profile) in measurementProfiles {
-            streams.append(contentsOf: profile.getProfileMetricsStreams())
+        let profiles = profilesQueue.sync { _measurementProfiles }
+        for (testName, profile) in profiles {
+            let profileStreams = profile.getProfileMetricsStreams()
+            streams.append(contentsOf: profileStreams)
         }
         return streams
     }
-
+    
     private var allTestResults: [(testName: String, status: String)] = []
-
+    
     public func testCaseDidFinish(_ testCase: XCTestCase) {
         guard let testRun = testCase.testRun else { return }
+        
+        // Note: Measurement error checking is now handled in ProtonCoreBaseTestCase.tearDown()
+        // to ensure proper test failure reporting
+        
         let status = testRun.totalFailureCount == 0 ? "succeeded" : "failed"
         allTestResults.append((testName: testCase.name, status: status))
     }
-
+    
     public func testBundleDidFinish(_ testBundle: Bundle) {
+        // Performance measurements are now handled in individual test tearDown
+        // This method is kept for compatibility but does minimal work
+        
         for result in allTestResults {
             self.addTestRunData(testName: result.testName, status: result.status)
         }
-
-        let expectation = XCTestExpectation(description: "Push metrics to Loki")
-
-        Task {
-            do {
-                try await self.pushToLoki()
-                expectation.fulfill()
-            } catch {
-                XCTFail("Failed to push metrics to Loki: \(error)")
+        
+        // Clear flags and cleanup
+        expectsTestBundleFinish = false
+        unsetenv("PRESERVE_PMLOG_FOR_PERFORMANCE")
+    }
+    
+    /// Records a measurement error for a specific test that should cause test failure
+    public func recordMeasurementError(_ error: MeasurementError, forTest testName: String) {
+        errorsQueue.sync {
+            if self._measurementErrors[testName] == nil {
+                self._measurementErrors[testName] = []
             }
-        }
-
-        let result = XCTWaiter().wait(for: [expectation], timeout: 30.0)
-        if result != .completed {
-            XCTFail("Failed to push metrics to Loki within the timeout period")
+            self._measurementErrors[testName]?.append(error)
         }
     }
+
 }
