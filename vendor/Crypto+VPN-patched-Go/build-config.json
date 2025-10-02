@@ -43,7 +43,7 @@
         {
             "module":{
                 "path":"github.com/ProtonVPN/go-vpn-lib",
-                "version":"8d063a7c78986e3ea422953236788d1ef9a97e81"
+                "version":"5684efdb259346cfdc93efc938d1549b4b028df8"
             },
             "packages":[
                 "ed25519",
