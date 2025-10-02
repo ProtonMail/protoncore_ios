@@ -39,7 +39,7 @@
 @property(strong, readonly) _Nonnull id _ref;
 
 - (nonnull instancetype)initWithRef:(_Nonnull id)ref;
-- (nullable instancetype)init:(NSString* _Nullable)clientCertPEM clientKeyPEM:(NSString* _Nullable)clientKeyPEM serverCAsPEM:(NSString* _Nullable)serverCAsPEM host:(NSString* _Nullable)host certServerName:(NSString* _Nullable)certServerName client:(id<LocalAgentNativeClient> _Nullable)client features:(LocalAgentFeatures* _Nullable)features connectivity:(BOOL)connectivity;
+- (nullable instancetype)init:(NSString* _Nullable)clientCertPEM clientKeyPEM:(NSString* _Nullable)clientKeyPEM serverCAsPEM:(NSString* _Nullable)serverCAsPEM host:(NSString* _Nullable)host certServerName:(NSString* _Nullable)certServerName client:(id<LocalAgentNativeClient> _Nullable)client features:(LocalAgentFeatures* _Nullable)features connectivity:(BOOL)connectivity keepAliveSeconds:(long)keepAliveSeconds keepAliveMaxCount:(long)keepAliveMaxCount;
 @property (nonatomic) NSString* _Nonnull state;
 @property (nonatomic) LocalAgentStatusMessage* _Nullable status;
 - (void)close;
@@ -141,11 +141,19 @@
 - (NSString* _Nonnull)getString:(NSString* _Nullable)name;
 - (NSString* _Nonnull)getStringOrDefault:(NSString* _Nullable)name defaultVal:(NSString* _Nullable)defaultVal;
 - (BOOL)hasKey:(NSString* _Nullable)name;
+- (void)lock;
 - (NSData* _Nullable)marshalJSON:(NSError* _Nullable* _Nullable)error;
+- (void)rLock;
+// skipped method Features.RLocker with unsupported parameter or return types
+
+- (void)rUnlock;
 - (void)remove:(NSString* _Nullable)key;
 - (void)setBool:(NSString* _Nullable)name value:(BOOL)value;
 - (void)setInt:(NSString* _Nullable)name value:(int64_t)value;
 - (void)setString:(NSString* _Nullable)name value:(NSString* _Nullable)value;
+- (BOOL)tryLock;
+- (BOOL)tryRLock;
+- (void)unlock;
 - (BOOL)unmarshalJSON:(NSData* _Nullable)data error:(NSError* _Nullable* _Nullable)error;
 @end
 
@@ -193,6 +201,7 @@
 @property (nonatomic) NSString* _Nonnull switchTo;
 @property (nonatomic) LocalAgentConnectionDetails* _Nullable connectionDetails;
 @property (nonatomic) LocalAgentStringToValueMap* _Nullable featuresStatistics;
+@property (nonatomic) LocalAgentStringArray* _Nullable restrictions;
 @end
 
 /**
@@ -206,6 +215,8 @@
 - (nonnull instancetype)init;
 - (NSString* _Nonnull)get:(long)i;
 - (long)getCount;
+- (NSData* _Nullable)marshalJSON:(NSError* _Nullable* _Nullable)error;
+- (BOOL)unmarshalJSON:(NSData* _Nullable)data error:(NSError* _Nullable* _Nullable)error;
 @end
 
 @interface LocalAgentStringToValueMap : NSObject <goSeqRefInterface> {
@@ -214,6 +225,8 @@
 
 - (nonnull instancetype)initWithRef:(_Nonnull id)ref;
 - (nonnull instancetype)init;
+// skipped field StringToValueMap.RWMutex with unsupported type: sync.RWMutex
+
 - (BOOL)getBool:(NSString* _Nullable)name;
 - (long)getCount;
 - (int64_t)getInt:(NSString* _Nullable)name;
@@ -223,11 +236,19 @@
 - (NSString* _Nonnull)getString:(NSString* _Nullable)name;
 - (NSString* _Nonnull)getStringOrDefault:(NSString* _Nullable)name defaultVal:(NSString* _Nullable)defaultVal;
 - (BOOL)hasKey:(NSString* _Nullable)name;
+- (void)lock;
 - (NSData* _Nullable)marshalJSON:(NSError* _Nullable* _Nullable)error;
+- (void)rLock;
+// skipped method StringToValueMap.RLocker with unsupported parameter or return types
+
+- (void)rUnlock;
 - (void)remove:(NSString* _Nullable)key;
 - (void)setBool:(NSString* _Nullable)name value:(BOOL)value;
 - (void)setInt:(NSString* _Nullable)name value:(int64_t)value;
 - (void)setString:(NSString* _Nullable)name value:(NSString* _Nullable)value;
+- (BOOL)tryLock;
+- (BOOL)tryRLock;
+- (void)unlock;
 - (BOOL)unmarshalJSON:(NSData* _Nullable)data error:(NSError* _Nullable* _Nullable)error;
 @end
 
@@ -247,7 +268,7 @@
  */
 FOUNDATION_EXPORT LocalAgentConsts* _Nullable LocalAgentConstants(void);
 
-FOUNDATION_EXPORT LocalAgentAgentConnection* _Nullable LocalAgentNewAgentConnection(NSString* _Nullable clientCertPEM, NSString* _Nullable clientKeyPEM, NSString* _Nullable serverCAsPEM, NSString* _Nullable host, NSString* _Nullable certServerName, id<LocalAgentNativeClient> _Nullable client, LocalAgentFeatures* _Nullable features, BOOL connectivity, NSError* _Nullable* _Nullable error);
+FOUNDATION_EXPORT LocalAgentAgentConnection* _Nullable LocalAgentNewAgentConnection(NSString* _Nullable clientCertPEM, NSString* _Nullable clientKeyPEM, NSString* _Nullable serverCAsPEM, NSString* _Nullable host, NSString* _Nullable certServerName, id<LocalAgentNativeClient> _Nullable client, LocalAgentFeatures* _Nullable features, BOOL connectivity, long keepAliveSeconds, long keepAliveMaxCount, NSError* _Nullable* _Nullable error);
 
 FOUNDATION_EXPORT LocalAgentFeatures* _Nullable LocalAgentNewFeatures(void);
 
