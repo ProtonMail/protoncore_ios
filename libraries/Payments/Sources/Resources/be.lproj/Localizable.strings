@@ -20,7 +20,7 @@
 
 "Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Увайдзіце ва ўліковы запіс Proton Mail для якога вы хочаце палепшыць тарыфны план абслугоўвання, каб мы маглі завяршыць актывацыю тарыфнага плана абслугоўвання.";
 
-"Wrong payment token status. Please relaunch the app. If error persists, contact support." = "Няправільны статус плацежнага токена. Перазапусціце праграму. У выпадку, калі праблема будзе паўтарацца, звярніцеся ў службу падтрымкі.";
+"Wrong payment token status. Please relaunch the app. If error persists, contact support." = "Няправільны статус плацежнага токена. Перазапусціце праграму. Звярніцеся ў службу падтрымкі кліентаў, калі праблема застанецца.";
 
 "Do you want to activate the purchase for %@ address?" = "Вы хочаце актываваць пакупку для адраса %@?";
 
@@ -36,7 +36,7 @@
 
 "Payment failed" = "Збой плацяжу";
 
-"You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support." = "Вы паспяхова зарэгістраваны, але ваш плацеж не апрацаваны. Для паўторнай адпраўкі плацежнай інфармацыі, націсніце \"Паўтарыць\". Плацеж будзе спагнаны толькі адзін раз. Калі праблема будзе паўтарацца, звярніцеся ў нашу службу падтрымкі кліентаў.";
+"You have successfully registered but your payment was not processed. To resend your payment information, click Retry. You will only be charged once. If the problem persists, please contact customer support." = "Вы паспяхова зарэгістраваны, але ваш плацеж не апрацаваны. Для паўторнай адпраўкі плацежнай інфармацыі, націсніце \"Паўтарыць\". Плацеж будзе спагнаны толькі адзін раз. Звярніцеся ў службу падтрымкі кліентаў, калі праблема застанецца.";
 
 "Retry" = "Паўтарыць";
 
