@@ -712,7 +712,7 @@ add(
                         .cryptoGoInterface
                        ],
                        path: "libraries/CryptoGoImplementation/Tests-Crypto+multiversion-Go"),
-        
+
         coreTestTarget(name: .cryptoMultiversionPatchedGoImplementation + "Tests",
                        dependencies: [
                         .goLibsCryptoMultiversionPatchedGo,

@@ -195,7 +195,7 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
                                                                    "status": "success",
                                                                    "jwsRepresentation": verificationResult.jwsRepresentation])
 
-            guard let matchingPlan = findMatchingPlan(productID: transaction.productID) else {
+            guard let matchingPlan = await findMatchingPlan(productID: transaction.productID) else {
                 let error = ProtonPlansManagerError.unableToMatchProtonPlanToStoreProduct(productId: transaction.productID)
                 await TransactionsObserver.shared.logHelper?.logEvent(["phase": "proton_plan_match",
                                                                        "success": false,
@@ -267,7 +267,7 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
             throw ProtonPlansManagerError.noUnfinshedTransactionsFound
         }
 
-        guard let matchingPlan = findMatchingPlan(productID: pendingTransaction.transaction.productID) else {
+        guard let matchingPlan = await findMatchingPlan(productID: pendingTransaction.transaction.productID) else {
             let error = ProtonPlansManagerError.unableToMatchProtonPlanToStoreProduct(productId: pendingTransaction.transaction.productID)
             PMLog.error(error.failureReason ?? "PaymentsV2 - unable to match Proton and AppleStore plans", sendToExternal: true)
             throw error
@@ -316,7 +316,15 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
         return uuid
     }
 
-    private func findMatchingPlan(productID: String) -> ComposedPlan? {
-        planComposer.matchPlanToStoreProduct(productID)
+    private func findMatchingPlan(productID: String) async -> ComposedPlan? {
+        do {
+            if !planComposer.hasData {
+                _ = try await planComposer.fetchProtonPlans()
+            }
+            return planComposer.matchPlanToStoreProduct(productID)
+        } catch {
+            debugPrint("ProtonPlanManager failed to match plan: \(error)")
+            return nil
+        }
     }
 }
