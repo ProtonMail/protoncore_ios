@@ -160,6 +160,8 @@ private extension TransactionHandler {
     private func generateValidationTokenFromStoreKitReceipt(_ transaction: ProtonTransactionProviding) async throws -> Token {
 
         debugPrint("Generating validation token..")
+        // Delay to give time for the receipt to update
+        try await Task.sleep(for: .seconds(0.3))
         let receipt = try await receiptManager.refreshReceipt()
 
         guard var bundleIdentifier = Bundle.main.bundleIdentifier else {
