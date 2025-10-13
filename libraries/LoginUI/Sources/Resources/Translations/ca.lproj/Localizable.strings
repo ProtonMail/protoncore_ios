@@ -430,7 +430,7 @@
 
 "Terms and Conditions." = "Termes i condicions.";
 
-"Tap **Scan QR code**" = "Toqueu**Escanegeu el codi QR**";
+"Tap **Scan QR code**" = "Toqueu**Escaneja el codi QR**";
 
 "Tap into **Settings**, then tap **Sign in to another device**" = "Toqueu **Preferències**, a continuació, toqueu **Inicieu sessió a un altre dispositiu**";
 
@@ -462,7 +462,7 @@
 
 "How to sign in with QR code" = "Com iniciar sessió amb un codi QR?";
 
-"Allow camera access" = "Permeteu l'accés a la càmera";
+"Allow camera access" = "Permet l'accés a la càmera";
 
 "To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "Per iniciar sessió amb un codi QR, haureu de permetre que Proton %@ accedeixi a la càmera. Podeu fer-ho a la configuració del dispositiu.";
 
