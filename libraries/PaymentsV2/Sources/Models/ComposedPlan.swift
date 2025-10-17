@@ -20,6 +20,7 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
+import ProtonCoreFeatureFlags
 import StoreKit
 
 public struct ComposedPlan: Equatable, Hashable, Sendable {
@@ -27,6 +28,7 @@ public struct ComposedPlan: Equatable, Hashable, Sendable {
     public let plan: AvailablePlan
     public let instance: PlanInstance
     public let product: any ProductProtocol
+    public private(set) var offers: [Offer] = []
 
     private static let minimumVisibleDiscount = 5
 
@@ -34,6 +36,7 @@ public struct ComposedPlan: Equatable, Hashable, Sendable {
         self.plan = plan
         self.instance = instance
         self.product = product
+        offersAvailable()
     }
 
     @available(*, deprecated, message: "This will be removed; please use `storePricePerMonth` instead")
@@ -53,7 +56,7 @@ public struct ComposedPlan: Equatable, Hashable, Sendable {
         let unit = subscription.subscriptionPeriod.unit
         let value = subscription.subscriptionPeriod.value
         switch unit {
-        // we don't support these
+            // we don't support these
         case .day, .week:
             return 0
         case .month:
@@ -100,6 +103,23 @@ public struct ComposedPlan: Equatable, Hashable, Sendable {
 
     public func isEligibleForIntroOffer() async -> Bool {
         return await self.product.subscription?.isEligibleForIntroOffer ?? false
+    }
+
+    private mutating func offersAvailable() {
+        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsOmnichannelEnabled) {
+            if let introOffer = product.subscription?.introductoryOffer {
+                offers.append(introOffer.toOffer())
+            }
+            if let promoOffers = product.subscription?.promotionalOffers.compactMap({ $0.toOffer() }) {
+                offers.append(contentsOf: promoOffers)
+            }
+
+            if #available(iOS 18.0, *), #available(macOS 15.0, *) {
+                if let winBackOffers = product.subscription?.winBackOffers.compactMap({ $0.toOffer() }) {
+                    offers.append(contentsOf: winBackOffers)
+                }
+            }
+        }
     }
 }
 
