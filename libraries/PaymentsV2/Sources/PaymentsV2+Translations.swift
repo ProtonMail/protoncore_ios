@@ -45,6 +45,9 @@ public enum PaymentsV2Localizer: String, TranslationsExposing {
     case Transaction_Handler_plan_not_found
     case Transaction_Handler_repeated_purchase
     case Transaction_Handler_receipt_update_failed
+    case PayUpFront_offer_description
+    case PayAsYouGo_offer_description
+    case FreeTrial_offer_description
 
     public var l10n: String {
         switch self {
@@ -74,6 +77,12 @@ public enum PaymentsV2Localizer: String, TranslationsExposing {
             return localized(key: self.rawValue, comment: "TransactionHandler - repeated purchase, or renewal attempted")
         case .Transaction_Handler_receipt_update_failed:
             return localized(key: self.rawValue, comment: "TransactionHandler - receipt refresh failed")
+        case .PayUpFront_offer_description:
+            return localized(key: self.rawValue, comment: "Pay up front offer description")
+        case .FreeTrial_offer_description:
+            return localized(key: self.rawValue, comment: "Free trial offer description")
+        case .PayAsYouGo_offer_description:
+            return localized(key: self.rawValue, comment: "Pay as you go offer description")
         }
     }
 }
