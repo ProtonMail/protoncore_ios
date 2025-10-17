@@ -97,8 +97,8 @@ public class AvailablePlansViewModel: ObservableObject {
 
     private let paymentsAPIs: PaymentsAPIs
     private let remoteManager: RemoteManager
-    private let plansComposer: PlansComposer
     private let presentationMode: PresentationMode
+    private let protonPlansManager: ProtonPlansManager
 
     public init(sessionId: String,
                 token: String,
@@ -110,7 +110,10 @@ public class AvailablePlansViewModel: ObservableObject {
         self.doh = doh
         paymentsAPIs = PaymentsAPIs(doh: doh)
         remoteManager = RemoteManager(sessionID: sessionId, authToken: token, appVersion: appVersion, atlasSecret: doh.getProxyToken())
-        plansComposer = PlansComposer(remoteManager: remoteManager, paymentsAPIs: paymentsAPIs)
+        protonPlansManager = ProtonPlansManager(doh: doh,
+                                                remoteManager: remoteManager,
+                                                plansComposer: PlansComposer(remoteManager: remoteManager,
+                                                                             paymentsAPIs: paymentsAPIs))
         self.hideCurrentPlan = hideCurrentPlan
         self.presentationMode = presentationMode
     }
@@ -118,7 +121,7 @@ public class AvailablePlansViewModel: ObservableObject {
     private func fetchCurrentPlan() async throws -> PlanViewModel? {
         viewState = .fetching
 
-        let currentPlanResponse = try await plansComposer.fetchCurrentSubscription()
+        let currentPlanResponse = try await protonPlansManager.getCurrentPlan()
         return PlanViewModel(doh: doh,
                              remoteManager: remoteManager,
                              currentPlan: currentPlanResponse)
@@ -128,10 +131,9 @@ public class AvailablePlansViewModel: ObservableObject {
     private func fetchAvailablePlans() async throws -> [PlanViewModel] {
         viewState = .fetching
 
-        let composedPlans = try await plansComposer.fetchAvailablePlans()
+        let composedPlans = try await protonPlansManager.getAvailablePlans()
 
         if composedPlans.isEmpty {
-            viewState = .noData
             return []
         }
 
@@ -140,9 +142,7 @@ public class AvailablePlansViewModel: ObservableObject {
             viewModels.append(PlanViewModel(doh: doh,
                                             remoteManager: remoteManager,
                                             composedPlan: plan,
-                                            plansManager: ProtonPlansManager(doh: doh,
-                                                                             remoteManager: remoteManager,
-                                                                             plansComposer: plansComposer)))
+                                            plansManager: protonPlansManager))
         }
         availablePlansViewModels = viewModels
 
@@ -157,10 +157,10 @@ public class AvailablePlansViewModel: ObservableObject {
                 async let currentSubscription = fetchCurrentPlan()
                 currentPlan = try await currentSubscription
             }
+
             async let plans = fetchAvailablePlans()
             filteredPlans = try await plans
-
-            viewState = .dataLoaded
+            viewState = filteredPlans.isEmpty && !hideAvailablePlans ? .noData : .dataLoaded
         } catch {
             viewState = .errorData
             debugPrint(error)

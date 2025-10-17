@@ -51,8 +51,8 @@ public struct IAPStatus: Decodable {
      }
      */
 
-    var isAvailable: Bool
-    var unavailabilityReason: String?
+    public var isAvailable: Bool
+    public var unavailabilityReason: String?
 
     public var status: IAPSupportStatusV2 {
         guard isAvailable else { return .disabled(localizedReason: unavailabilityReason) }
