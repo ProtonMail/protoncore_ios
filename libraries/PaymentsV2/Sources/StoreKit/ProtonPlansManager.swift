@@ -39,12 +39,14 @@ public protocol ProtonPlansManagerProviding: Sendable {
     func purchase(_ product: Product) async throws -> ComposedPlan
     func recoverTransactionReceipt() async throws
     func updateUserSession(sessionID: String, authToken: String)
+    func checkIAPStatus() async throws -> IAPStatus
 }
 
 public enum ProtonPlansManagerError: LocalizedError {
     case unableToMatchProtonPlanToStoreProduct(productId: String)
     case unableToGetUserTransactionUUID
     case unableToRestorePurchases
+    case iapNotAvailable(reason: String)
 
     // Transaction error
     case transactionCancelledByUser
@@ -66,7 +68,7 @@ public enum ProtonPlansManagerError: LocalizedError {
             return PaymentsV2Localizer.Plans_Manager_Transaction_unknown_error.l10n
         case .noUnfinshedTransactionsFound:
             return PaymentsV2Localizer.Plans_Manager_pending_transaction_received.l10n
-        case .transactionPending:
+        case .transactionPending, .iapNotAvailable:
             return nil
         }
     }
@@ -77,6 +79,8 @@ public enum ProtonPlansManagerError: LocalizedError {
             return "Impossible to find AppleStore product with id: \(productId)"
         case .noUnfinshedTransactionsFound:
             return "Receipt recover attempt: No unfinished verified transaction found"
+        case .iapNotAvailable(let reason):
+            return "IAP error: \(reason)"
         default:
             return nil
         }
@@ -141,6 +145,21 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
         planComposer.updateRemoteManager(remoteManager: remoteManager)
     }
 
+    public func checkIAPStatus() async throws -> IAPStatus {
+        do {
+            let iapStatus = try paymentsAPI.url(for: .appleStatus)
+            let iapStatusResponse: IAPStatus = try await remoteManager.getFromURL(iapStatus.url)
+            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "iap status check",
+                                                                   "status": "available"])
+            return iapStatusResponse
+        } catch {
+            debugPrint(error)
+            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "iap status check",
+                                                                   "status": error.localizedDescription])
+            throw ProtonPlansManagerError.iapNotAvailable(reason: error.localizedDescription)
+        }
+    }
+
     public func getStoreProducts(_ plans: [String]) async throws -> [Product] {
 
         products = try await planComposer.getStoreProducts(plans)
@@ -160,6 +179,9 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
 
     public func getAvailablePlans() async throws -> [ComposedPlan] {
         do {
+            if try await checkIAPStatus().isAvailable == false {
+                return []
+            }
             let availablePlans = try await planComposer.fetchAvailablePlans()
             ObservabilityEnv.report(.availablePlansLoad(status: .http2xx))
             return availablePlans
@@ -181,6 +203,12 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
     }
 
     public func purchase(_ product: Product) async throws -> ComposedPlan {
+
+        let iapStatus = try await checkIAPStatus()
+        if !iapStatus.isAvailable {
+            throw ProtonPlansManagerError.iapNotAvailable(reason: iapStatus.unavailabilityReason ?? "")
+        }
+
         await TransactionsObserver.shared.logHelper?.logEvent(["phase": "iap purchase",
                                                                "productId": product.id])
 

@@ -83,8 +83,6 @@ struct AvailablePlansBodyView: View {
                                 .padding(.top, Spacing.standard)
                         }
                     }
-                } else {
-                    NoAvailblePlansView(type: .noPlans)
                 }
             }
             .padding(.horizontal, Spacing.large)

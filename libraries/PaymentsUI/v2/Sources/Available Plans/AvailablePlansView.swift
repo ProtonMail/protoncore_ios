@@ -27,8 +27,8 @@ public struct AvailablePlansView: View {
 
     private struct Constants {
 
-        static var titleTextSize: CGFloat = 17
-        static var titleFontWeight: Font.Weight = .semibold
+        static let titleTextSize: CGFloat = 17
+        static let titleFontWeight: Font.Weight = .semibold
 
         static let largeSpacing: CGFloat = 16
         static let extraLargeSpacing: CGFloat = 24
