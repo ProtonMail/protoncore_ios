@@ -105,6 +105,40 @@ class EncryptorTests: CryptoTestBase {
             XCTFail("Should not happen: \(error)")
         }
     }
+    
+    func testEncryptSignRsa1023() {
+        let privKey = self.content(of: "user_rsa1023_privatekey")
+        let privKeyPassphrase = self.content(of: "user_rsa1023_privatekey_passphrase")
+        let clearText = "testing encryption & sign"
+        let pubKey = privKey.publicKey
+
+        let privKeyB = self.content(of: "user_rsa1023_privatekey")
+        let privKeyPassphraseB = self.content(of: "user_rsa1023_privatekey_passphrase")
+
+        let signingKey = SigningKey.init(privateKey: ArmoredKey.init(value: privKeyB),
+                                         passphrase: Passphrase.init(value: privKeyPassphraseB))
+        do {
+            let armoredMessage: ArmoredMessage = try Encryptor.encrypt(publicKey: ArmoredKey.init(value: pubKey),
+                                                                       cleartext: clearText,
+                                                                       signerKey: signingKey)
+
+            let decryptionKey = DecryptionKey.init(privateKey: ArmoredKey.init(value: privKey),
+                                                   passphrase: Passphrase.init(value: privKeyPassphrase))
+
+            let verifyKey = ArmoredKey.init(value: privKeyB.publicKey)
+            let verifiedString: VerifiedString = try Decryptor.decryptAndVerify(decryptionKeys: [decryptionKey],
+                                                                                value: armoredMessage, verificationKeys: [verifyKey])
+
+            switch verifiedString {
+            case .unverified(let value, let error):
+                XCTFail("Should not happen: \(value) : \(error)")
+            case .verified(let value):
+                XCTAssertEqual(clearText, value)
+            }
+        } catch let error {
+            XCTFail("Should not happen: \(error)")
+        }
+    }
 
     func testEncryptSignWrongVerify() {
         let privKey = self.content(of: "user_a_privatekey")
