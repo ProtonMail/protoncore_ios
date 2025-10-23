@@ -57,6 +57,7 @@ extension JSONDecoder {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .decapitaliseFirstLetter
         decoder.dataDecodingStrategy = .deferredToData
+        decoder.dateDecodingStrategy = .secondsSince1970
         return decoder
     }()
 }
