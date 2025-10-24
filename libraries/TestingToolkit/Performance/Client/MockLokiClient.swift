@@ -28,7 +28,7 @@ public class MockLokiClient: LokiClientProtocol {
     public var entries: [String] = []
     public var endpoints: [String] = []
     public var shouldThrowError: Error?
-    
+
     // Convenience properties for backward compatibility
     public var lastEntry: String? { entries.last }
     public var lastEndpoint: String? { endpoints.last }
@@ -52,4 +52,3 @@ public class MockLokiClient: LokiClientProtocol {
         shouldThrowError = nil
     }
 }
-

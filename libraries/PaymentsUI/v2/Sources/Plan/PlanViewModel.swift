@@ -168,7 +168,7 @@ public class PlanViewModel: ObservableObject, Identifiable {
         self.name = currentPlan.name ?? PaymentsUIV2Localizer.Current_free_plan_name.l10n
         self.isFreePlan = currentPlan.name == nil
         self.progressEntitlements = progressEntitlements
-        self.formattedPrice = currentPlan.name == nil ? "Free" : Formatter.formatCurrency(amount: currentPlan.amount, currency: currentPlan.currency)
+        self.formattedPrice = currentPlan.name == nil ? "Free" : Formatter.formatCurrency(amount: currentPlan.renewAmount, currency: currentPlan.currency)
         self.formattedPeriod = currentPlan.cycleDescription ?? ""
         self.subscriptionPeriod = BillingCycle(rawValue: currentPlan.cycle ?? 0) ?? .all
         self.decorations = currentPlan.decorations
