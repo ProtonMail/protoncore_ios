@@ -239,7 +239,6 @@ public final class XCTMetricLokiAdapter: NSObject, XCTMetric {
     }
 }
 
-
 extension MeasurementProfile {
     /// Returns an `XCTMetric` that forwards calls to this profile.
     ///
@@ -276,7 +275,7 @@ extension MeasurementContext {
 
         // Add all measurements
         measurements.forEach { profile.addMeasurement($0) }
-        
+
         // Set SLI
         profile.setServiceLevelIndicator(sli)
 
