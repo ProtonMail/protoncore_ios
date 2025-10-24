@@ -114,7 +114,7 @@ public struct ComposedPlan: Equatable, Hashable, Sendable {
                 offers.append(contentsOf: promoOffers)
             }
 
-            if #available(iOS 18.0, *), #available(macOS 15.0, *) {
+            if #available(iOS 18.0, macOS 15.0, tvOS 18.0, *){
                 if let winBackOffers = product.subscription?.winBackOffers.compactMap({ $0.toOffer() }) {
                     offers.append(contentsOf: winBackOffers)
                 }
