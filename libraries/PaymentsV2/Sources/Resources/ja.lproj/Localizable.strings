@@ -23,3 +23,9 @@
 "Transaction_Handler_repeated_purchase" = "選択したプランを複数回更新することはできません。これがエラーであると思われる場合、あるいは問題が続くようでしたら、弊社のカスタマーサポートにご連絡ください。";
 
 "Transaction_Handler_receipt_update_failed" = "Appleからの取引レシートを要求中にエラーが発生しました。問題が解決しない場合は、カスタマーサポートまでご連絡ください。";
+
+"PayUpFront_offer_description" = "Allows new subscribers to pay a one-time introductory price for a specific duration, after which they pay the regular subscription price.";
+
+"PayAsYouGo_offer_description" = "Allows new subscribers to pay an introductory price for a specific number of billing periods before transitioning to the regular subscription price.";
+
+"FreeTrial_offer_description" = "Allows new subscribers to have access to the subscription for a given number of billing cycles. One that expires, the user pays full price.";

@@ -23,3 +23,9 @@
 "Transaction_Handler_repeated_purchase" = "Paket yang dipilih tidak dapat diperbarui berulang kali. Apabila Anda merasa hal ini merupakan suatu kesalahan atau apabila masalah ini terus berlanjut, silakan hubungi layanan dukungan kami";
 
 "Transaction_Handler_receipt_update_failed" = "Terjadi kesalahan pada saat meminta resi transaksi dari Apple. Apabila masalah ini terus berlanjut, silakan hubungi layanan dukungan";
+
+"PayUpFront_offer_description" = "Memungkinkan pelanggan baru untuk membayar harga perkenalan sekali pakai untuk durasi tertentu, yang ke depannya akan disambung dengan harga langganan reguler.";
+
+"PayAsYouGo_offer_description" = "Memungkinkan pelanggan baru untuk membayar harga perkenalan untuk sejumlah periode penagihan tertentu sebelum beralih ke harga langganan reguler.";
+
+"FreeTrial_offer_description" = "Memungkinkan pelanggan baru untuk mengakses langganan selama sejumlah siklus penagihan tertentu. Setelah masa promosi ini berakhir, pelanggan yang bersangkutan akan membayar harga penuh.";

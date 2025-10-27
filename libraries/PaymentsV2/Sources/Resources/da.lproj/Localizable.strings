@@ -23,3 +23,9 @@
 "Transaction_Handler_repeated_purchase" = "Det er ikke muligt at forny det valgte abonnement flere gange. Hvis du tror, det er en fejl, eller hvis problemet fortsætter, bedes du kontakte vores kundesupport.";
 
 "Transaction_Handler_receipt_update_failed" = "Der opstod en fejl under anmodning om transaktionskvitteringen fra Apple. Hvis problemet fortsætter, bedes du kontakte kundesupport.";
+
+"PayUpFront_offer_description" = "Tillader nye abonnenter at betale en engangsintroduktionspris i en bestemt periode, hvorefter de betaler den almindelige abonnementspris.";
+
+"PayAsYouGo_offer_description" = "Tillader nye abonnenter at betale en introduktionspris i et specifikt antal faktureringsperioder, før der skiftes til den almindelige abonnementspris.";
+
+"FreeTrial_offer_description" = "Tillader nye abonnenter at få adgang til abonnementet i et angivet antal faktureringsperioder. Når de udløber, betaler brugeren fuld pris.";

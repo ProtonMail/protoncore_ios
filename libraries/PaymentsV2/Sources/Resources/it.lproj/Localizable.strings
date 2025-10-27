@@ -23,3 +23,9 @@
 "Transaction_Handler_repeated_purchase" = "Non è possibile rinnovare più volte il piano selezionato. Se ritieni che si tratti di un errore o se il problema persiste, contatta il nostro servizio clienti.";
 
 "Transaction_Handler_receipt_update_failed" = "Si è verificato un errore durante la richiesta della ricevuta della transazione da Apple. Se il problema persiste, contatta l'assistenza clienti.";
+
+"PayUpFront_offer_description" = "Consente ai nuovi abbonati di pagare un prezzo introduttivo una tantum per una durata specifica, dopo la quale pagheranno il normale prezzo dell'abbonamento.";
+
+"PayAsYouGo_offer_description" = "Consente ai nuovi abbonati di pagare un prezzo introduttivo per un numero specifico di periodi di fatturazione prima di passare al prezzo di abbonamento regolare.";
+
+"FreeTrial_offer_description" = "Consente ai nuovi abbonati di accedere all'abbonamento per un determinato numero di cicli di fatturazione. Una volta scaduto, l'utente paga il prezzo intero.";

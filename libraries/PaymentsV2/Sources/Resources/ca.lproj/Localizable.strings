@@ -23,3 +23,9 @@
 "Transaction_Handler_repeated_purchase" = "No es pot renovar el pla seleccionat múltiples vegades. Si creieu que això és un error o si el problema persisteix, poseu-vos en contacte amb el nostre servei d'atenció al client";
 
 "Transaction_Handler_receipt_update_failed" = "S'ha produït un error mentre se sol·licitava el rebut de la transacció a Apple. Si el problema persisteix, poseu-vos en contacte amb el servei d'atenció al client.";
+
+"PayUpFront_offer_description" = "Permet als nous subscriptors pagar un preu introductori únic per un temps determinat, després del qual pagaran el preu de subscripció normal.";
+
+"PayAsYouGo_offer_description" = "Permet als subscriptors nous pagar un preu introductori durant un nombre determinat de períodes de facturació abans de passar al preu de subscripció normal.";
+
+"FreeTrial_offer_description" = "Permet als subscriptors nous tenir accés a la subscripció durant un nombre determinat de cicles de facturació. Un cop caduqui, l'usuari pagarà el preu complet.";

@@ -23,3 +23,9 @@
 "Transaction_Handler_repeated_purchase" = "Nem lehet többször megújítani a kiválasztott csomagot. Ha úgy gondolja, hogy ez egy hiba, vagy ha a probléma továbbra is fennáll, kérjük, lépjen kapcsolatba ügyfélszolgálatunkkal.";
 
 "Transaction_Handler_receipt_update_failed" = "Hiba történt az Apple tranzakciós visszaigazolásának kérése közben. Ha a probléma továbbra is fennáll, kérjük, lépjen kapcsolatba az ügyfélszolgálattal.";
+
+"PayUpFront_offer_description" = "Allows new subscribers to pay a one-time introductory price for a specific duration, after which they pay the regular subscription price.";
+
+"PayAsYouGo_offer_description" = "Allows new subscribers to pay an introductory price for a specific number of billing periods before transitioning to the regular subscription price.";
+
+"FreeTrial_offer_description" = "Allows new subscribers to have access to the subscription for a given number of billing cycles. One that expires, the user pays full price.";

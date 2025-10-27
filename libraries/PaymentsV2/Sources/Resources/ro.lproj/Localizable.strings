@@ -23,3 +23,9 @@
 "Transaction_Handler_repeated_purchase" = "Nu este posibil să reînnoiți planul selectat de mai multe ori. Dacă credeți că aceasta este o eroare sau dacă problema persistă, vă rugăm să contactați asistența noastră pentru clienți.";
 
 "Transaction_Handler_receipt_update_failed" = "A apărut o eroare în timpul solicitării confirmării de primire a tranzacției de la Apple. Dacă problema persistă, vă rugăm să contactați asistența pentru clienți.";
+
+"PayUpFront_offer_description" = "Permite abonaților noi să plătească un preț introductiv unic pentru o durată specifică, după care aceștia plătesc prețul obișnuit al abonamentului.";
+
+"PayAsYouGo_offer_description" = "Permite abonaților noi să plătească un preț introductiv pentru un număr specific de perioade de facturare înainte de a trece la prețul obișnuit al abonamentului.";
+
+"FreeTrial_offer_description" = "Permite noilor abonați să aibă acces la abonament pentru un număr dat de cicluri de facturare. Odată ce acestea expiră, utilizatorul plătește prețul integral.";

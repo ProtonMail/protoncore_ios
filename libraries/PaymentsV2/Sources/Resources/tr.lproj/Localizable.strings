@@ -23,3 +23,9 @@
 "Transaction_Handler_repeated_purchase" = "Seçilmiş tarife birden çok kez yenilenemez. Bir yanlışlık olduğunu düşünüyorsanız veya sorun sürüyorsa lütfen müşteri destek ekibimizle görüşün.";
 
 "Transaction_Handler_receipt_update_failed" = "Apple tarafından işlem alındısı istenirken bir sorun çıktı. Sorun sürerse lütfen müşteri destek ekibi ile görüşün.";
+
+"PayUpFront_offer_description" = "Yeni abonelerin belirli bir süre için tek seferlik tanıtım ücretini ödemelerini sağlar. Aboneler bu sürenin sonunda normal ücreti öderler.";
+
+"PayAsYouGo_offer_description" = "Yeni abonelerin, normal abonelik ücretine geçmeden önce belirli sayıda fatura dönemi için tanıtım ücretini ödemesini sağlar.";
+
+"FreeTrial_offer_description" = "Yeni abonelerin belirli sayıda fatura dönemi boyunca aboneliğe erişmesini sağlar. Süre dolduğunda, kullanıcı tam ücreti öder.";

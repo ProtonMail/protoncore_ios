@@ -6,7 +6,7 @@
 
 "Troubleshooting" = "Sorun giderme";
 
-"Allow alternative routing" = "Alternatif yöneltme kullanılabilsin";
+"Allow alternative routing" = "Alternatif yönlendirme kullanılabilsin";
 
 "No internet connection" = "İnternet bağlantısı yok";
 
@@ -22,7 +22,7 @@
 
 "Still can't find a solution" = "Hala bir çözüm bulunamadı";
 
-"In case Proton sites are blocked, this setting allows the app to try alternative network routing to reach Proton, which can be useful for bypassing firewalls or network issues. We recommend keeping this setting on for greater reliability. %1$@" = "Proton sitelerine erişimin engellenmiş olması durumunda, uygulama Proton ağına ulaşmak için alternatif ağ yöneltmesi kullanmayı dener. Güvenlik duvarlarını veya ağ sorunlarını aşmakta yararlı olabilir. Bağlantı güvenilirliğini artırmak için bu seçeneği açık tutmanız önerilir. %1$@";
+"In case Proton sites are blocked, this setting allows the app to try alternative network routing to reach Proton, which can be useful for bypassing firewalls or network issues. We recommend keeping this setting on for greater reliability. %1$@" = "Proton sitelerine erişimin engellenmiş olması durumunda, uygulama Proton ağına ulaşmak için alternatif ağ yönlendirmesi kullanmayı dener. Güvenlik duvarlarını veya ağ sorunlarını aşmakta yararlı olabilir. Bağlantı güvenilirliğini artırmak için bu seçeneği açık tutmanız önerilir. %1$@";
 
 "Learn more" = "Ayrıntılı bilgi alın";
 

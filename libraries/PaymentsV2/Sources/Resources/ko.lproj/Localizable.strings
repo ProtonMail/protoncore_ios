@@ -23,3 +23,9 @@
 "Transaction_Handler_repeated_purchase" = "선택한 요금제를 여러 번 갱신하는 것은 불가능합니다. 이것이 오류라고 생각하시거나 문제가 지속되면 고객지원에 문의해주세요.";
 
 "Transaction_Handler_receipt_update_failed" = "Apple에 거래 영수증을 요청하는 중 오류가 발생했습니다. 문제가 지속되면 고객 지원팀에 문의하세요.";
+
+"PayUpFront_offer_description" = "Allows new subscribers to pay a one-time introductory price for a specific duration, after which they pay the regular subscription price.";
+
+"PayAsYouGo_offer_description" = "Allows new subscribers to pay an introductory price for a specific number of billing periods before transitioning to the regular subscription price.";
+
+"FreeTrial_offer_description" = "Allows new subscribers to have access to the subscription for a given number of billing cycles. One that expires, the user pays full price.";
