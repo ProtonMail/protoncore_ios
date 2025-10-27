@@ -23,3 +23,9 @@
 "Transaction_Handler_repeated_purchase" = "Vybraný plán nie je možné obnoviť viackrát. Ak si myslíte, že ide o chybu, alebo ak problém pretrváva, kontaktujte našu zákaznícku podporu, prosím";
 
 "Transaction_Handler_receipt_update_failed" = "Pri žiadosti o potvrdenie transakcie od spoločnosti Apple došlo k chybe. Ak problém pretrváva, kontaktujte zákaznícku podporu, prosím.";
+
+"PayUpFront_offer_description" = "Umožňuje novým predplatiteľom zaplatiť jednorazovú uvádzaciu cenu na určité obdobie, po ktorom platia bežnú cenu predplatného.";
+
+"PayAsYouGo_offer_description" = "Umožňuje novým predplatiteľom platiť uvádzaciu cenu za určitý počet fakturačných období pred prechodom na bežnú cenu predplatného.";
+
+"FreeTrial_offer_description" = "Umožňuje novým predplatiteľom prístup k predplatnému na určitý počet fakturačných cyklov. Po uplynutí platnosti predplatného platí používateľ plnú cenu.";

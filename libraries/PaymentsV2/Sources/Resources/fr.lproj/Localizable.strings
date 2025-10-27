@@ -23,3 +23,9 @@
 "Transaction_Handler_repeated_purchase" = "Il n'est pas possible de renouveler l'abonnement sélectionné plusieurs fois. Si vous pensez qu'il s'agit d'une erreur ou si le problème persiste, veuillez contacter notre service client.";
 
 "Transaction_Handler_receipt_update_failed" = "Une erreur s'est produite lors de la demande de l'accusé de réception de la transaction auprès d'Apple. Si le problème persiste, veuillez contacter le service client.";
+
+"PayUpFront_offer_description" = "Permets aux nouveaux abonnés de payer un prix de lancement unique pour une durée spécifique, après quoi ils paient le prix normal de l'abonnement.";
+
+"PayAsYouGo_offer_description" = "Permet aux nouveaux abonnés de payer un prix de lancement pendant un certain nombre de périodes de facturation avant de passer au prix normal de l'abonnement.";
+
+"FreeTrial_offer_description" = "Permets aux nouveaux abonnés d'avoir accès à l'abonnement pendant un certain nombre de cycles de facturation. Une fois celui-ci expiré, l'utilisateur paie le prix normal.";

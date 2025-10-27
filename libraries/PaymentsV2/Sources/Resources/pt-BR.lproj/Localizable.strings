@@ -23,3 +23,9 @@
 "Transaction_Handler_repeated_purchase" = "Não é possível renovar o plano selecionado várias vezes. Se você acha que isto é um erro ou se o problema persistir, entre em contato com nosso suporte ao cliente.";
 
 "Transaction_Handler_receipt_update_failed" = "Um erro ocorreu ao solicitar o recebimento da transação da Apple. Se o problema persistir, por favor, entre em contato com o suporte ao cliente.";
+
+"PayUpFront_offer_description" = "Permite que novos assinantes paguem um preço introdutório único por uma duração específica, após a qual eles pagarão o preço regular da assinatura.";
+
+"PayAsYouGo_offer_description" = "Permite que novos assinantes paguem um preço introdutório por um número específico de períodos de cobrança antes de fazer a transição para o preço normal da assinatura.";
+
+"FreeTrial_offer_description" = "Permite que novos assinantes tenham acesso à assinatura por um determinado número de ciclos de faturamento. Quando expirarem, o usuário pagará o preço total.";

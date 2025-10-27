@@ -23,3 +23,9 @@
 "Transaction_Handler_repeated_purchase" = "Het is niet mogelijk om het geselecteerde abonnement meerdere keren te verlengen. Als u denkt dat dit een fout is of als het probleem aanhoudt, neemt u dan contact op met onze klantenondersteuning.";
 
 "Transaction_Handler_receipt_update_failed" = "Er is een fout opgetreden tijdens het aanvragen van de transactieontvangstbevestiging van Apple. Als het probleem aanhoudt, neem dan contact op met de klantenondersteuning.";
+
+"PayUpFront_offer_description" = "Stelt nieuwe abonnees in staat om een eenmalige introductieprijs te betalen voor een specifieke periode, waarna zij de reguliere abonnementsprijs betalen.";
+
+"PayAsYouGo_offer_description" = "Stelt nieuwe abonnees in staat om een introductieprijs te betalen voor een specifiek aantal facturatieperiodes voordat zij overgaan op de reguliere abonnementsprijs.";
+
+"FreeTrial_offer_description" = "Stelt nieuwe abonnees in staat om toegang te krijgen tot het abonnement gedurende een bepaald aantal factureringscycli. Zodra deze verloopt, betaalt de gebruiker de volledige prijs.";

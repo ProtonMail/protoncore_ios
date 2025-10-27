@@ -23,3 +23,9 @@
 "Transaction_Handler_repeated_purchase" = "Es ist nicht möglich, den ausgewählten Abonnement mehrfach zu verlängern. Wenn Sie glauben, dass es sich um einen Fehler handelt oder das Problem weiterhin besteht, wenden Sie sich bitte an unseren Kundensupport";
 
 "Transaction_Handler_receipt_update_failed" = "Es ist ein Fehler beim Anfordern der Transaktionsbestätigung von Apple aufgetreten. Sollte das Problem weiterhin bestehen, kontaktiere bitte den Kundensupport.";
+
+"PayUpFront_offer_description" = "Ermöglicht neuen Abonnenten, für einen bestimmten Zeitraum einen einmaligen Einführungspreis zu zahlen, nach dessen Ablauf sie den regulären Abonnementpreis zahlen.";
+
+"PayAsYouGo_offer_description" = "Ermöglicht neuen Abonnenten, für eine bestimmte Anzahl von Abrechnungszeiträumen einen Einführungspreis zu zahlen, bevor sie zum regulären Abonnementpreis wechseln.";
+
+"FreeTrial_offer_description" = "Ermöglicht neuen Abonnenten den Zugang zum Abonnement für eine bestimmte Anzahl von Abrechnungszyklen. Nach Ablauf dieser Frist wird der volle Preis fällig.";
