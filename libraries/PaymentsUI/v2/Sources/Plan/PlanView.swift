@@ -61,7 +61,8 @@ public struct PlanView: View {
                                  formattedPrice: viewModel.formattedPrice,
                                  formattedPeriod: viewModel.formattedPeriod,
                                  showChevron: viewModel.canMinimize,
-                                 decorationsURLs: viewModel.decorationsDownloaders())
+                                 decorationsURLs: viewModel.decorationsDownloaders(),
+                                 isCurrentPlan: viewModel.isCurrentPlan)
 
             if viewModel.isExpanded {
                 PlanDetailView(viewModel: viewModel)

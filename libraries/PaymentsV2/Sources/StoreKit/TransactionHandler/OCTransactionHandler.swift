@@ -25,7 +25,6 @@ import ProtonCoreLog
 import ProtonCoreFeatureFlags
 import ProtonCoreNetworking
 import ProtonCoreObservability
-import StoreKit
 
 public final class OCTransactionHandler: NSObject, TransactionHandlerProviding, @unchecked Sendable {
 
@@ -34,15 +33,11 @@ public final class OCTransactionHandler: NSObject, TransactionHandlerProviding, 
     public private(set) var transactionState = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
     private let queue = DispatchQueue(label: "paymentsV2.transactionHandler.syncQueue")
     private var tokenContinuation: CheckedContinuation<Void, Error>?
-    private var refresh: SKReceiptRefreshRequest?
-    private let receiptManager: StoreKitReceiptManagerProviding
 
     public init(remoteManager: RemoteManagerProviding,
-                paymentsAPIs: PaymentsAPIs,
-                receiptManger: StoreKitReceiptManagerProviding = StoreKitReceiptManager()) {
+                paymentsAPIs: PaymentsAPIs) {
         self.remoteManager = remoteManager
         self.paymentsAPIs = paymentsAPIs
-        self.receiptManager = receiptManger
     }
 
     public func processTransaction(_ transaction: ProtonTransaction, plan: ComposedPlan) async throws -> ComposedPlan {

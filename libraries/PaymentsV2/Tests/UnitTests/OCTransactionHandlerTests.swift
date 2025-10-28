@@ -58,8 +58,7 @@ final class OCTransactionHandlerTests: XCTestCase, @unchecked Sendable {
         }
 
         sut = OCTransactionHandler(remoteManager: remoteManager,
-                                   paymentsAPIs: paymentsAPIs,
-                                   receiptManger: MockStoreKitReceiptManager(receipt: "asdpoasmdpo12dp1o2mdpoasmdpoasmdcpaoscmapsomc"))
+                                   paymentsAPIs: paymentsAPIs)
 
         try await super.setUp()
     }

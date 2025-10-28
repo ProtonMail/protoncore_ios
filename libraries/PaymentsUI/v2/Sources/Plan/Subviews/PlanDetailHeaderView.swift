@@ -32,6 +32,7 @@ struct PlanDetailHeaderView: View {
     let formattedPeriod: String
     let showChevron: Bool
     let decorationsURLs: [AssetDownloader]?
+    let isCurrentPlan: Bool
 
     private struct Constants {
 
@@ -55,10 +56,12 @@ struct PlanDetailHeaderView: View {
                             showChevron: showChevron)
             Spacer()
             VStack(alignment: .trailing) {
-                Text(formattedPrice)
-                    .font(Constants.priceTextFont)
-                Text(formattedPeriod)
-                    .font(Constants.periodTextFont)
+                if !isCurrentPlan {
+                    Text(formattedPrice)
+                        .font(Constants.priceTextFont)
+                    Text(formattedPeriod)
+                        .font(Constants.periodTextFont)
+                }
                 if showChevron {
                     Button {
                         withAnimation {
