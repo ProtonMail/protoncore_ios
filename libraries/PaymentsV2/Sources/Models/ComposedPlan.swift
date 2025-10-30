@@ -28,7 +28,9 @@ public struct ComposedPlan: Equatable, Hashable, Sendable {
     public let plan: AvailablePlan
     public let instance: PlanInstance
     public let product: any ProductProtocol
-    public private(set) var offers: [Offer] = []
+    public private(set) var introOffer: Offer?
+    public private(set) var promoOffers: [Offer] = []
+    public private(set) var winBackOffers: [Offer] = []
 
     private static let minimumVisibleDiscount = 5
 
@@ -108,15 +110,16 @@ public struct ComposedPlan: Equatable, Hashable, Sendable {
     private mutating func offersAvailable() {
         if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsOmnichannelEnabled) {
             if let introOffer = product.subscription?.introductoryOffer {
-                offers.append(introOffer.toOffer())
+                self.introOffer = introOffer.toOffer()
             }
+            
             if let promoOffers = product.subscription?.promotionalOffers.compactMap({ $0.toOffer() }) {
-                offers.append(contentsOf: promoOffers)
+                self.promoOffers.append(contentsOf: promoOffers)
             }
 
             if #available(iOS 18.0, macOS 15.0, tvOS 18.0, *){
                 if let winBackOffers = product.subscription?.winBackOffers.compactMap({ $0.toOffer() }) {
-                    offers.append(contentsOf: winBackOffers)
+                    self.winBackOffers.append(contentsOf: winBackOffers)
                 }
             }
         }

@@ -221,17 +221,6 @@ public class PlanViewModel: ObservableObject, Identifiable {
     private func createFooterText(texts: [TextStyle]) {
         renewFooter = TextStylizer.composeText(texts: texts)
     }
-
-    public func checkIntroOffer() async {
-        guard let plan = composedPlan else {
-            return
-        }
-
-        let userIsEligible = await plan.isEligibleForIntroOffer()
-
-        let planHasOffer = plan.product.subscription?.introductoryOffer != nil && userIsEligible
-        self.formattedPrice = planHasOffer ? (plan.product.subscription?.introductoryOffer?.displayPrice ?? "Free!!") : plan.product.displayPrice
-    }
 }
 
 extension PlanViewModel: @preconcurrency Equatable {
