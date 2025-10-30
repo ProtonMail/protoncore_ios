@@ -35,7 +35,6 @@ public protocol ProtonPlansManagerProviding: Sendable {
     func getStoreProducts(_ plans: [String]) async throws -> [Product]
     func getAvailablePlans() async throws -> [ComposedPlan]
     func getCurrentPlan() async throws -> CurrentSubscriptionResponse
-    func getIntroductoryOfferPrice(product: Product) -> String?
     func purchase(_ product: Product) async throws -> ComposedPlan
     func recoverTransactionReceipt() async throws
     func updateUserSession(sessionID: String, authToken: String)
@@ -168,13 +167,6 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
 
     public func getProtonPlans() async throws -> AvailablePlans {
         try await planComposer.fetchProtonPlans()
-    }
-
-    // TODO: This will be implemented once Payments moves to Omnichannel
-    public func getIntroductoryOfferPrice(product: Product) -> String? {
-        guard let introductoryOffer = product.subscription?.introductoryOffer else { return nil }
-
-        return introductoryOffer.displayPrice
     }
 
     public func getAvailablePlans() async throws -> [ComposedPlan] {

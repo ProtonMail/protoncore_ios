@@ -42,9 +42,9 @@ public struct Offer: Sendable {
     }
 
     public enum Kind: String, Sendable {
-        case introductory
-        case promotional
-        case winBack
+        case IntroOffer
+        case AdhocOffer // Promotional offer
+        case Winback
     }
 
     public enum PeriodUnit: Sendable {

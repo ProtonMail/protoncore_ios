@@ -88,11 +88,6 @@ public struct PlanView: View {
                 viewModel.isExpanded.toggle()
             }
         }
-        .onAppear {
-            Task {
-                await viewModel.checkIntroOffer()
-            }
-        }
     }
 }
 
