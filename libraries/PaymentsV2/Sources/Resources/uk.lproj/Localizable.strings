@@ -24,8 +24,8 @@
 
 "Transaction_Handler_receipt_update_failed" = "Виникла помилка під час запиту підтвердження транзакції від Apple. Якщо проблема не зникає, зверніться до клієнтської підтримки.";
 
-"PayUpFront_offer_description" = "Allows new subscribers to pay a one-time introductory price for a specific duration, after which they pay the regular subscription price.";
+"PayUpFront_offer_description" = "Дозволяє новим передплатникам сплатити одноразову вступну ціну на певний термін, після чого вони сплачують звичайну вартість.";
 
-"PayAsYouGo_offer_description" = "Allows new subscribers to pay an introductory price for a specific number of billing periods before transitioning to the regular subscription price.";
+"PayAsYouGo_offer_description" = "Дозволяє новим передплатникам сплачувати початкову ціну протягом певної кількості розрахункових періодів, перш ніж перейти на звичайну вартість.";
 
-"FreeTrial_offer_description" = "Allows new subscribers to have access to the subscription for a given number of billing cycles. One that expires, the user pays full price.";
+"FreeTrial_offer_description" = "Дозволяє новим передплатникам мати доступ до передплати протягом певної кількості платіжних циклів. Після того, як вона завершується, користувач сплачує повну вартість.";
