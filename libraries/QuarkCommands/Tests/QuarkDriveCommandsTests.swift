@@ -62,7 +62,7 @@ final class QuarkDriveCommandsTests: XCTestCase {
         let user = User(name: "quarkcommand@test.quark.commands.url", password: "123456789")
         do {
             // Act
-            let (_, response) = try quarkCommand.drivePopulateUser(user: user, scenario: 4, hasPhotos: false, withDevice: false)
+            let (_, response) = try quarkCommand.drivePopulateUser(user: user, scenario: 4, photos: .none, withDevice: false)
 
             // Assert
             XCTAssertEqual(response.url?.absoluteString, "https://test.quark.commands.url/quark/raw::drive:populate?-u=quarkcommand@test.quark.commands.url&-p=123456789&-S=4")
@@ -78,10 +78,10 @@ final class QuarkDriveCommandsTests: XCTestCase {
 
         do {
             // Act
-            let (_, response) = try quarkCommand.drivePopulateUser(user: user, scenario: 4, hasPhotos: true, withDevice: true)
+            let (_, response) = try quarkCommand.drivePopulateUser(user: user, scenario: 4, photos: .photoVolume, withDevice: true)
 
             // Assert
-            XCTAssertEqual(response.url?.absoluteString, "https://test.quark.commands.url/quark/raw::drive:populate?-u=quarkcommand@test.quark.commands.url&-p=123456789&-S=4&--photo=true&--device=true")
+            XCTAssertEqual(response.url?.absoluteString, "https://test.quark.commands.url/quark/raw::drive:populate?-u=quarkcommand@test.quark.commands.url&-p=123456789&-S=4&--photo=new&--device=true")
         } catch {
             XCTFail("drivePopulateUser method threw an unexpected error: \(error)")
         }

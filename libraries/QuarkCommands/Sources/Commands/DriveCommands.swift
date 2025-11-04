@@ -26,14 +26,34 @@ private let setUsedSpaceCommand = "quark/drive:quota:set-used-space"
 
 public extension Quark {
 
-    @discardableResult
-    func drivePopulateUser(user: User, scenario: Int, hasPhotos: Bool, withDevice: Bool = false, sharingWithUserName: String = "", sharingWithUserPassword: String = "") throws -> (data: Data, response: URLResponse) {
+    enum PhotosPopulationType {
+        case none
+        case photoVolume
 
+        var argument: String? {
+            switch self {
+            case .none:
+                return nil
+            case .photoVolume:
+                return "--photo=new"
+            }
+        }
+    }
+
+    @discardableResult
+    func drivePopulateUser(
+        user: User,
+        scenario: Int,
+        photos: PhotosPopulationType,
+        withDevice: Bool = false,
+        sharingWithUserName: String = "",
+        sharingWithUserPassword: String = ""
+    ) throws -> (data: Data, response: URLResponse) {
         let args = [
             "-u=\(user.name)",
             "-p=\(user.password)",
             "-S=\(scenario)",
-            hasPhotos ? "--photo=\(hasPhotos)" : nil,
+            photos.argument,
             withDevice ? "--device=\(withDevice)" : nil,
             !sharingWithUserName.isEmpty ? "--sharing-username=\(sharingWithUserName)" : nil,
             !sharingWithUserPassword.isEmpty ? "--sharing-user-pass=\(sharingWithUserPassword)" : nil,
