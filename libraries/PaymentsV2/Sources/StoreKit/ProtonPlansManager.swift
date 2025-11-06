@@ -27,7 +27,7 @@ import ProtonCoreLog
 import ProtonCoreDoh
 import StoreKit
 
-public protocol ProtonPlansManagerProviding: Sendable {
+public protocol PublicProtonPlansManagerProviding: Sendable {
 
     var transactionProgress: CurrentValueSubject<TransactionHandlerState, Never> { get }
     var countryCode: String? { get async }
@@ -35,10 +35,15 @@ public protocol ProtonPlansManagerProviding: Sendable {
     func getStoreProducts(_ plans: [String]) async throws -> [Product]
     func getAvailablePlans() async throws -> [ComposedPlan]
     func getCurrentPlan() async throws -> CurrentSubscriptionResponse
-    func purchase(_ product: Product) async throws -> ComposedPlan
+    func purchase(_ product: Product, options: Set<Product.PurchaseOption>?) async throws -> ComposedPlan
+    func purchaseWinBackOffer(_ product: Product, offerId: String) async throws -> ComposedPlan
     func recoverTransactionReceipt() async throws
     func updateUserSession(sessionID: String, authToken: String)
     func checkIAPStatus() async throws -> IAPStatus
+}
+
+internal protocol ProtonPlansManagerProviding: PublicProtonPlansManagerProviding {
+    func buildPurchaseOptions(_ options: Set<Product.PurchaseOption>?) async throws -> Set<Product.PurchaseOption>
 }
 
 public enum ProtonPlansManagerError: LocalizedError {
@@ -46,6 +51,8 @@ public enum ProtonPlansManagerError: LocalizedError {
     case unableToGetUserTransactionUUID
     case unableToRestorePurchases
     case iapNotAvailable(reason: String)
+    case noOfferFound(id: String, offerType: String)
+    case iOSVersionError
 
     // Transaction error
     case transactionCancelledByUser
@@ -67,7 +74,7 @@ public enum ProtonPlansManagerError: LocalizedError {
             return PaymentsV2Localizer.Plans_Manager_Transaction_unknown_error.l10n
         case .noUnfinshedTransactionsFound:
             return PaymentsV2Localizer.Plans_Manager_pending_transaction_received.l10n
-        case .transactionPending, .iapNotAvailable:
+        case .transactionPending, .iapNotAvailable, .noOfferFound, .iOSVersionError:
             return nil
         }
     }
@@ -80,6 +87,10 @@ public enum ProtonPlansManagerError: LocalizedError {
             return "Receipt recover attempt: No unfinished verified transaction found"
         case .iapNotAvailable(let reason):
             return "IAP error: \(reason)"
+        case .noOfferFound(let id, let offerType):
+            return "No offer found of type: \(offerType) and id: \(id)"
+        case .iOSVersionError:
+            return "Functionality not supported in the current OS version: \(SystemHelpers.currentOS)"
         default:
             return nil
         }
@@ -145,6 +156,7 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
     }
 
     public func checkIAPStatus() async throws -> IAPStatus {
+        transactionProgress.value = .iapStatusCheck
         do {
             let iapStatus = try paymentsAPI.url(for: .appleStatus)
             let iapStatusResponse: IAPStatus = try await remoteManager.getFromURL(iapStatus.url)
@@ -160,13 +172,13 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
     }
 
     public func getStoreProducts(_ plans: [String]) async throws -> [Product] {
-
         products = try await planComposer.getStoreProducts(plans)
         return products
     }
 
     public func getProtonPlans() async throws -> AvailablePlans {
-        try await planComposer.fetchProtonPlans()
+        transactionProgress.value = .fetchProtonPlans
+        return try await planComposer.fetchProtonPlans()
     }
 
     public func getAvailablePlans() async throws -> [ComposedPlan] {
@@ -174,6 +186,7 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
             if try await checkIAPStatus().isAvailable == false {
                 return []
             }
+            transactionProgress.value = .fetchAvailablePlans
             let availablePlans = try await planComposer.fetchAvailablePlans()
             ObservabilityEnv.report(.availablePlansLoad(status: .http2xx))
             return availablePlans
@@ -194,7 +207,18 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
         }
     }
 
-    public func purchase(_ product: Product) async throws -> ComposedPlan {
+    internal func buildPurchaseOptions(_ options: Set<Product.PurchaseOption>? = []) async throws -> Set<Product.PurchaseOption> {
+        var purchaseOptions = Set<Product.PurchaseOption>()
+        // Request UUID and pass it as a purchase option
+        let userTransactionUUID = try await generateUserTransactionUUID()
+        purchaseOptions.insert(.appAccountToken(userTransactionUUID))
+        // Add any passed purchase options
+        purchaseOptions.formUnion(options ?? [])
+
+        return purchaseOptions
+    }
+
+    public func purchase(_ product: Product, options: Set<Product.PurchaseOption>? = []) async throws -> ComposedPlan {
 
         let iapStatus = try await checkIAPStatus()
         if !iapStatus.isAvailable {
@@ -203,10 +227,9 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
 
         await TransactionsObserver.shared.logHelper?.logEvent(["phase": "iap purchase",
                                                                "productId": product.id])
-
-        let userTransactionUUID = try await generateUserTransactionUUID()
-
-        let result = try await product.purchase(options: [.appAccountToken(userTransactionUUID)])
+        let purchaseOptions = try await buildPurchaseOptions(options)
+        transactionProgress.value = .iapPurchase
+        let result = try await product.purchase(options: purchaseOptions)
 
         switch result {
         case .success(let verificationResult):
@@ -279,6 +302,18 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
         }
     }
 
+    public func purchaseWinBackOffer(_ product: Product, offerId: String) async throws -> ComposedPlan {
+        if #available(iOS 18.0, macOS 15.0, tvOS 18.0, *) {
+            guard let offers = product.subscription?.winBackOffers.filter({ $0.id == offerId }), let offer = offers.first else {
+                throw ProtonPlansManagerError.noOfferFound(id: offerId, offerType: Offer.Kind.Winback.rawValue)
+            }
+            let option: Set<Product.PurchaseOption> = [Product.PurchaseOption.winBackOffer(offer)]
+            return try await purchase(product, options: option)
+        } else {
+            throw ProtonPlansManagerError.noOfferFound(id: offerId, offerType: Offer.Kind.Winback.rawValue)
+        }
+    }
+
     public func recoverTransactionReceipt() async throws {
         // Recovery TransactionTest
         debugPrint("RECOVERY FLOW INITIATED 🤞🏻🤞🏻")
@@ -322,10 +357,12 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
     }
 
     private func generateUserTransactionUUID() async throws -> UUID {
+
+        transactionProgress.value = .fetchUserUUID
         let request = try paymentsAPI.url(for: .userTransactionUUID)
 
-        let uuidStrign: UserTransactionUUIDResponse = try await remoteManager.getFromURL(request.url)
-        guard let uuid = UUID(uuidString: uuidStrign.uuid) else {
+        let uuidString: UserTransactionUUIDResponse = try await remoteManager.getFromURL(request.url)
+        guard let uuid = UUID(uuidString: uuidString.uuid) else {
             transactionProgress.value = .unableToGetUserTransactionUUID
             transactionProgress.send(completion: .finished)
             let error = ProtonPlansManagerError.unableToGetUserTransactionUUID

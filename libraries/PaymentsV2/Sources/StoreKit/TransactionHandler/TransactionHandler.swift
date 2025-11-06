@@ -64,6 +64,13 @@ public enum TransactionHandlerError: LocalizedError {
 
 public enum TransactionHandlerState: String, Sendable {
     case idle
+
+    case iapStatusCheck
+    case iapPurchase
+    case fetchAvailablePlans
+    case fetchProtonPlans
+    case fetchUserUUID
+
     case generatingReceipt
     case creatingTransactionToken
     case waitingTokenResponse // Omnichannel only state

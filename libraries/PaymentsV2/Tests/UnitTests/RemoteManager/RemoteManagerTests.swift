@@ -314,7 +314,7 @@ extension RemoteManagerTests {
     func test_userTransactionUUID() async throws {
         let mockResponse: [String: Any] = [
             "Code": 1000,
-            "UUID": "adq2d12dp12od1p2odmp12od"
+            "UUID": "E621E1F8-C36C-495A-93FC-0C247A3E6E5F"
         ]
         mockRemoteManager.setupURLSessionMock(withMockResponse: mockResponse)
 
@@ -325,7 +325,8 @@ extension RemoteManagerTests {
         let userTransactionUUID: UserTransactionUUIDResponse = try await sut.getFromURL(request.url)
 
         XCTAssertEqual(userTransactionUUID.code, 1000)
-        XCTAssertEqual(userTransactionUUID.uuid, "adq2d12dp12od1p2odmp12od")
+        XCTAssertEqual(userTransactionUUID.uuid, "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")
+        XCTAssertNotNil(userTransactionUUID.uuidValue)
     }
 
     // MARK: Omnichannel

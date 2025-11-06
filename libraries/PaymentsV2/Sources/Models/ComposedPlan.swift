@@ -112,7 +112,7 @@ public struct ComposedPlan: Equatable, Hashable, Sendable {
             if let introOffer = product.subscription?.introductoryOffer {
                 self.introOffer = introOffer.toOffer()
             }
-            
+
             if let promoOffers = product.subscription?.promotionalOffers.compactMap({ $0.toOffer() }) {
                 self.promoOffers.append(contentsOf: promoOffers)
             }

@@ -69,13 +69,14 @@ final class TransactionHandlerTests: XCTestCase, @unchecked Sendable {
         cancellable.removeAll()
         mockRemoteManager.destroy()
         mockRemoteManager = nil
+        storeSession = nil
 
         try await super.tearDown()
     }
 
     func test_transaction_state() async throws {
         // Fetch Proton plans
-        mockRemoteManager.setupURLSessionMock(withMockResponse: remoteResponseFor(transactionState: .idle))
+        mockRemoteManager.setupURLSessionMock(withMockResponse: ResponseStubber.remoteResponseFor(transactionState: .fetchProtonPlans))
 
         _ = try await subsComposer.fetchProtonPlans()
         _ = try await subsComposer.getStoreProducts(["iosvpn_bundle2022_12_usd_auto_renewing", "iosvpn_vpn2022_1_usd_auto_renewing"])
@@ -106,7 +107,7 @@ final class TransactionHandlerTests: XCTestCase, @unchecked Sendable {
                 XCTFail()
             }
 
-            self.mockRemoteManager.setupURLSessionMock(withMockResponse: remoteResponseFor(transactionState: state))
+            self.mockRemoteManager.setupURLSessionMock(withMockResponse: ResponseStubber.remoteResponseFor(transactionState: state))
 
             debugPrint(state.localizedDescription ?? "")
             switch state {
@@ -128,25 +129,6 @@ final class TransactionHandlerTests: XCTestCase, @unchecked Sendable {
                           productID: transaction.productIdentifier,
                           price: price,
                           currencyIdentifier: currencyId)
-    }
-
-    private func remoteResponseFor(transactionState: TransactionHandlerState) -> [String: Any] {
-
-        switch transactionState {
-        case .idle:
-            return Bundle.main.loadJsonDataToDic(from: "availablePlans.json")
-        case .createNewSubscription:
-            return ["Code": 1000]
-        case .generatingReceipt:
-            return [
-                "Code": 1000,
-                "Token": "abc",
-                "Status": 1,
-                "Data": NSNull()
-            ]
-        default:
-            return [:]
-        }
     }
 }
 #endif
