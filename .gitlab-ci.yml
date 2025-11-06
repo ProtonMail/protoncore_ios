@@ -1,23 +1,19 @@
 include:
-  - component: gitlab.protontech.ch/proton/devops/cicd-components/kubernetes/atlas-deploy/pipenv@0.7.0
+  - component: gitlab.protontech.ch/proton/devops/cicd-components/kubernetes/ephemera-deploy/standard@1.7.0
     inputs:
-      cleanup-stage: cleanup
+      environment-claim-template: ephemera.yml
+      deploy: "auto"
+      deploy-stage: "deploy"
+      cleanup-stage: "cleanup"
+      expiration: "4h"
+      suffix: "core"
 
-  - component: gitlab.protontech.ch/proton/devops/cicd-components/kubernetes/atlas-deploy/pipenv@0.7.0
-    inputs:
-      cleanup-stage: cleanup
-      deploy: manual
-      cleanup: manual
-      images: $IMAGES
-      features: $FEATURES
-      key: customenv$CI_PIPELINE_ID
-      suffix: ":custom"
   - component: gitlab.protontech.ch/tpe/ai-components/ai-mr-summarizer@master
     inputs:
       gitlab-token: $GITLAB_AI_TOKEN
       stage: summarise
       runner-tag: shared-small
-  
+
   - project: "translations/generator"
     ref: master
     file: "/jobs/sync-crowdin.gitlab-ci.yml"
@@ -75,7 +71,7 @@ variables:
 workflow:
   rules:
     - if: $CI_PIPELINE_SOURCE == "schedule"
-    
+
     - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_BRANCH == "develop"
       variables:
         ATLAS_DEPLOY_ENV: "true"
@@ -128,7 +124,7 @@ linting:code-quality:
     - if: $TEST == "manual"
       when: manual
 
-    # We do not want to run jobs if the schedule doesn't deploy 
+    # We do not want to run jobs if the schedule doesn't deploy
     - if: $CI_PIPELINE_SOURCE == "schedule" && $ATLAS_DEPLOY_ENV != "true"
       when: never
 
@@ -164,7 +160,7 @@ linting:commits:
     - if: $TEST == "manual"
       when: manual
 
-    # We do not want to run jobs if the schedule doesn't deploy 
+    # We do not want to run jobs if the schedule doesn't deploy
     - if: $CI_PIPELINE_SOURCE == "schedule" && $ATLAS_DEPLOY_ENV != "true"
       when: never
 
@@ -254,7 +250,7 @@ test:ios:integration:
   retry: 1
   rules: *rules_mr_and_develop
   needs:
-    - job: atlas:deploy:pipenv
+    - job: ephemera:deploy:core
       artifacts: true
   allow_failure: false
   interruptible: true
@@ -464,7 +460,6 @@ i18n-crowdin-sync:
   variables:
     I18N_SYNC_CROWDIN_PROJECT: "apple-core"
   extends: .i18n-sync-crowdin-shared-apple
-
 
 i18n-commit-locales:
   stage: i18n
