@@ -22,20 +22,20 @@
 import Foundation
 import StoreKit
 
-public struct Offer: Sendable {
+public struct Offer: Sendable, Hashable, Identifiable {
 
     public enum PaymentType: String, Sendable {
-        case payAsYouGo
-        case payUpFront
-        case freeTrial
+        case PayAsYouGo
+        case PayUpFront
+        case FreeTrial
 
         public var description: String {
             switch self {
-            case .payUpFront:
+            case .PayUpFront:
                 return PaymentsV2Localizer.PayUpFront_offer_description.l10n
-            case .payAsYouGo:
+            case .PayAsYouGo:
                 return PaymentsV2Localizer.PayAsYouGo_offer_description.l10n
-            case .freeTrial:
+            case .FreeTrial:
                 return PaymentsV2Localizer.FreeTrial_offer_description.l10n
             }
         }
