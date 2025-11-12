@@ -87,13 +87,13 @@ public class PlanViewModel: ObservableObject, Identifiable {
 
     private let paymentsAPI: PaymentsAPIs
     private let remoteManager: RemoteManager
-    private var plansManager: ProtonPlansManagerProviding?
+    private var plansManager: PublicProtonPlansManagerProviding?
     private let composedPlan: ComposedPlan?
 
     public init(doh: DoHInterface & ServerConfig,
                 remoteManager: RemoteManager,
                 composedPlan: ComposedPlan,
-                plansManager: ProtonPlansManagerProviding? = nil) {
+                plansManager: PublicProtonPlansManagerProviding? = nil) {
         self.composedPlan = composedPlan
 
         self.paymentsAPI = PaymentsAPIs(doh: doh)
@@ -211,7 +211,7 @@ public class PlanViewModel: ObservableObject, Identifiable {
         transactionState.send(.generatingReceipt)
 
         do {
-            _ = try await plansManager.purchase(product)
+            _ = try await plansManager.purchase(product, options: nil)
         } catch {
             debugPrint(error)
         }

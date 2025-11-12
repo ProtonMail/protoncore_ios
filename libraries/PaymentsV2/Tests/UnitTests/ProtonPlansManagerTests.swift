@@ -16,7 +16,7 @@ final class ProtonPlansManagerTests: XCTestCase, @unchecked Sendable {
 
     private var urlSessionConfig: URLSessionConfiguration!
     private var mockRemoteManager: MockedRemoteManager!
-    private var sut: ProtonPlansManagerProviding!
+    private var sut: ProtonPlansManager!
 
     override func setUp() async throws {
 
