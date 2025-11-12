@@ -6,9 +6,9 @@
 //
 
 #if os(macOS)
-        import AppKit
+import AppKit
 #elseif os(iOS)
-        import UIKit
+import UIKit
 #endif
 
 public struct SystemHelpers {

@@ -42,7 +42,7 @@ public protocol PublicProtonPlansManagerProviding: Sendable {
     func checkIAPStatus() async throws -> IAPStatus
 }
 
-internal protocol ProtonPlansManagerProviding: PublicProtonPlansManagerProviding {
+internal protocol InternalProtonPlansManagerProviding: Sendable {
     func buildPurchaseOptions(_ options: Set<Product.PurchaseOption>?) async throws -> Set<Product.PurchaseOption>
 }
 
@@ -97,7 +97,7 @@ public enum ProtonPlansManagerError: LocalizedError {
     }
 }
 
-public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @unchecked Sendable {
+public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProviding, InternalProtonPlansManagerProviding, @unchecked Sendable {
 
     public var transactionProgress = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
 
@@ -207,7 +207,7 @@ public final class ProtonPlansManager: NSObject, ProtonPlansManagerProviding, @u
         }
     }
 
-    internal func buildPurchaseOptions(_ options: Set<Product.PurchaseOption>? = []) async throws -> Set<Product.PurchaseOption> {
+    func buildPurchaseOptions(_ options: Set<Product.PurchaseOption>? = []) async throws -> Set<Product.PurchaseOption> {
         var purchaseOptions = Set<Product.PurchaseOption>()
         // Request UUID and pass it as a purchase option
         let userTransactionUUID = try await generateUserTransactionUUID()
