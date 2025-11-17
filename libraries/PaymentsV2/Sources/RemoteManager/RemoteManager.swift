@@ -21,6 +21,7 @@
 
 import Foundation
 import ProtonCoreLog
+import ProtonCoreEnvironment
 
 public protocol RemoteManagerProviding: Sendable {
 
@@ -70,15 +71,17 @@ public enum RequestTye: String {
     case PUT, POST, DELETE, GET
 }
 
-public final class RemoteManager: RemoteManagerProviding, @unchecked Sendable {
+public final class RemoteManager: NSObject, RemoteManagerProviding, @unchecked Sendable {
 
     private var requestHTTPHeader: [APIHeader: String]!
     private let queue = DispatchQueue(label: "paymentsV2.remoteManager.syncQueue")
 
-    private var session: URLSession
+    private var session: URLSession!
 
     public init(sessionID: String, authToken: String, appVersion: String, atlasSecret: String? = nil) {
-        session = URLSession.shared
+        super.init()
+
+        session = URLSession(configuration: URLSession.shared.configuration, delegate: self, delegateQueue: URLSession.shared.delegateQueue)
         generateRequestHeader(sessionID, authToken, appVersion, atlasSecret)
     }
 
@@ -257,5 +260,34 @@ public final class RemoteManager: RemoteManagerProviding, @unchecked Sendable {
         }
 
         return formattedHTTPHeader
+    }
+}
+
+extension RemoteManager: URLSessionDelegate {
+    public func urlSession(
+        _ session: URLSession,
+        didReceive challenge: URLAuthenticationChallenge
+    ) async -> (URLSession.AuthChallengeDisposition, URLCredential?) {
+        guard let tk = TrustKitWrapper.current else {
+            guard let trust = challenge.protectionSpace.serverTrust else {
+                return (.performDefaultHandling, nil)
+            }
+
+            let credential = URLCredential(trust: trust)
+            return (.useCredential, credential)
+        }
+
+        return await withCheckedContinuation { c in
+            let success = tk.pinningValidator.handle(challenge) { (disposition, credential) in
+                c.resume(returning: (disposition, credential))
+            }
+
+            guard success else {
+                // TrustKit did not handle this challenge: perhaps it was not for server trust
+                // or the domain was not pinned. Fall back to the default behavior
+                c.resume(returning: (.performDefaultHandling, nil))
+                return
+            }
+        }
     }
 }
