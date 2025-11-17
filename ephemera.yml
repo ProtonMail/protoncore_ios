@@ -8,8 +8,8 @@ spec:
   forProvider:
     nameService:
       app: configurator
-      tag: <|CI_COMMIT_REF_SLUG|>
-      branch: <|CI_COMMIT_REF_SLUG|>
+      tag: <|NAMESERVICE_REF|>
+      branch: <|NAMESERVICE_REF|>
       timeoutDelta: 2h
       deleteDelta: 4h
     claim:

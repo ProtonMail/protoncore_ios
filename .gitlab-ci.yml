@@ -38,12 +38,10 @@ variables:
   LC_ALL: "en_US.UTF-8"
   LANG: "en_US.UTF-8"
   GEM_HOME: "$CI_PROJECT_DIR/gem"
-  ATLAS_DEPLOY_LIST: ""
   GIT_DEPTH: 20
   GIT_STRATEGY: clone
   FF_ENABLE_JOB_CLEANUP: "true"
-  IMAGES: $IMAGES
-  FEATURES: $FEATURES
+  NAMESERVICE_REF: ${CI_COMMIT_REF_SLUG}
 
 .add_private_ssh_key: &add_private_ssh_key
   - echo "$CI_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
@@ -75,6 +73,7 @@ workflow:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_BRANCH == "develop"
       variables:
         ATLAS_DEPLOY_ENV: "true"
+        NAMESERVICE_REF: ${CI_COMMIT_REF_SLUG}_${CI_PROJECT_ID}
 
     - if: $CI_OPEN_MERGE_REQUESTS
       when: never
