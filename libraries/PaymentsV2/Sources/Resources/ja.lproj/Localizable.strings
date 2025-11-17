@@ -24,8 +24,8 @@
 
 "Transaction_Handler_receipt_update_failed" = "Appleからの取引レシートを要求中にエラーが発生しました。問題が解決しない場合は、カスタマーサポートまでご連絡ください。";
 
-"PayUpFront_offer_description" = "Allows new subscribers to pay a one-time introductory price for a specific duration, after which they pay the regular subscription price.";
+"PayUpFront_offer_description" = "新規加入者は特定の期間、初回限定価格を一度だけ支払い、その後は通常料金を支払うことができます。";
 
-"PayAsYouGo_offer_description" = "Allows new subscribers to pay an introductory price for a specific number of billing periods before transitioning to the regular subscription price.";
+"PayAsYouGo_offer_description" = "新規加入者は、特定の請求期間数について導入価格を支払い、その後通常のサブスクリプション価格に移行します。";
 
-"FreeTrial_offer_description" = "Allows new subscribers to have access to the subscription for a given number of billing cycles. One that expires, the user pays full price.";
+"FreeTrial_offer_description" = "新規加入者は、指定された請求サイクル数分間、サブスクリプションを利用できます。有効期限が切れた後は、ユーザーは通常料金を支払います。";
