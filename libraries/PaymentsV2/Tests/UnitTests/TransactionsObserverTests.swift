@@ -42,10 +42,13 @@ final class TransactionsObserverTests: XCTestCase, @unchecked Sendable {
         mockRemoteManager.setupURLSessionMock(withMockResponse: plansMockResponse)
 
         sut = TransactionsObserver.shared
-        let configuration = TransactionsObserverConfiguration(sessionID: "asdasd12d",
-                                                              authToken: "12d12",
-                                                              appVersion: "V200",
-                                                              doh: PaymentsDoH())
+        let configuration = TransactionsObserverConfiguration(
+            sessionID: "asdasd12d",
+            authToken: "12d12",
+            appVersion: "V200",
+            doh: PaymentsDoH(),
+            session: mockRemoteManager.session
+        )
         sut.setConfiguration(configuration)
     }
 

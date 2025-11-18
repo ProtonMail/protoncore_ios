@@ -27,18 +27,24 @@ final class MockedRemoteManager: @unchecked Sendable {
     public var paymentsAPI: PaymentsAPIs!
     private var urlSessionConfig: URLSessionConfiguration!
     public var remoteManager: RemoteManager!
+
+    public var session: URLSession {
+        didSet {
+            remoteManager?.setSession(session)
+        }
+    }
+
     let doh: PaymentsDoH
 
     init() {
         doh = PaymentsDoH()
         paymentsAPI = PaymentsAPIs(doh: doh)
-        URLProtocol.registerClass(MockURLProtocol.self)
 
         urlSessionConfig = URLSessionConfiguration.ephemeral
         urlSessionConfig.protocolClasses = [MockURLProtocol.self]
 
         remoteManager = RemoteManager(sessionID: "adasd12d21d", authToken: "dasdawd12e", appVersion: "@VPN3.3.2")
-        remoteManager?.setSession(URLSession(configuration: urlSessionConfig))
+        session = URLSession(configuration: urlSessionConfig)
     }
 
     public func destroy() {
@@ -55,7 +61,7 @@ final class MockedRemoteManager: @unchecked Sendable {
         var responseData: Data = Data()
         if let mock = mock {
             guard let data = try? JSONSerialization.data(withJSONObject: mock) else {
-                assertionFailure("Unable to converto mock response to data")
+                assertionFailure("Unable to convert mock response to data")
                 return
             }
             responseData = data
@@ -65,7 +71,7 @@ final class MockedRemoteManager: @unchecked Sendable {
             ]
 
             guard let data = try? JSONSerialization.data(withJSONObject: defaultMock) else {
-                assertionFailure("Unable to converto mock response to data")
+                assertionFailure("Unable to convert mock response to data")
                 return
             }
 
@@ -80,6 +86,6 @@ final class MockedRemoteManager: @unchecked Sendable {
             return (response, responseData)
         }
 
-        remoteManager.setSession(URLSession(configuration: urlSessionConfig))
+        session = URLSession(configuration: urlSessionConfig)
     }
 }

@@ -64,15 +64,37 @@ public struct TransactionsObserverConfiguration: Sendable {
     let appVersion: String
     let doh: DoHInterface & ServerConfig
 
-    public init(sessionID: String,
-                authToken: String,
-                appVersion: String,
-                doh: DoHInterface & ServerConfig) {
+    #if DEBUG
+    let session: URLSession?
+    #endif
+
+    #if DEBUG
+    public init(
+        sessionID: String,
+        authToken: String,
+        appVersion: String,
+        doh: DoHInterface & ServerConfig,
+        session: URLSession? = nil
+    ) {
+        self.sessionID = sessionID
+        self.authToken = authToken
+        self.appVersion = appVersion
+        self.doh = doh
+        self.session = session
+    }
+    #else
+    public init(
+        sessionID: String,
+        authToken: String,
+        appVersion: String,
+        doh: DoHInterface & ServerConfig
+    ) {
         self.sessionID = sessionID
         self.authToken = authToken
         self.appVersion = appVersion
         self.doh = doh
     }
+    #endif
 }
 
 public final class TransactionsObserver: TransactionsObserverProviding, @unchecked Sendable {
@@ -148,10 +170,20 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
 
         logHelper = await LogHelper.create()
 
-        self.remoteManager = RemoteManager(sessionID: config.sessionID,
-                                           authToken: config.authToken,
-                                           appVersion: config.appVersion,
-                                           atlasSecret: config.doh.getProxyToken())
+        let remoteManager = RemoteManager(
+            sessionID: config.sessionID,
+            authToken: config.authToken,
+            appVersion: config.appVersion,
+            atlasSecret: config.doh.getProxyToken()
+        )
+
+        #if DEBUG
+        if let session = config.session {
+            remoteManager.setSession(session)
+        }
+        #endif
+
+        self.remoteManager = remoteManager
         self.paymentsAPI = PaymentsAPIs(doh: config.doh)
 
         guard let remoteManager = self.remoteManager, let paymentsAPI = self.paymentsAPI else {
