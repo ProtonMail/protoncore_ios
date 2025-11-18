@@ -53,6 +53,6 @@ final class MockURLProtocol: URLProtocol, @unchecked Sendable {
     }
 
     override func stopLoading() {
-        // TODO: Andd stop loading here
+        // TODO: And stop loading here
     }
 }

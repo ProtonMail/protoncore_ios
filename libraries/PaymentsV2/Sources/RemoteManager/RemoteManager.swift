@@ -76,12 +76,11 @@ public final class RemoteManager: NSObject, RemoteManagerProviding, @unchecked S
     private var requestHTTPHeader: [APIHeader: String]!
     private let queue = DispatchQueue(label: "paymentsV2.remoteManager.syncQueue")
 
-    private var session: URLSession!
+    private lazy var session = URLSession(configuration: URLSession.shared.configuration, delegate: self, delegateQueue: URLSession.shared.delegateQueue)
 
     public init(sessionID: String, authToken: String, appVersion: String, atlasSecret: String? = nil) {
         super.init()
 
-        session = URLSession(configuration: URLSession.shared.configuration, delegate: self, delegateQueue: URLSession.shared.delegateQueue)
         generateRequestHeader(sessionID, authToken, appVersion, atlasSecret)
     }
 
@@ -92,12 +91,14 @@ public final class RemoteManager: NSObject, RemoteManagerProviding, @unchecked S
         }
     }
 
+    #if DEBUG
     // Used for testing
     func setSession(_ session: URLSession) {
         queue.sync {
             self.session = session
         }
     }
+    #endif
 
     // MARK: Private methods
 
