@@ -44,12 +44,23 @@ public protocol ProtonTransactionProviding: Sendable {
 }
 
 public struct ProtonTransaction: ProtonTransactionProviding {
-    public var id: UInt64
-    public var originalID: UInt64
-    public var productID: String
-    public var price: Decimal?
-    public var userTransactionUUID: UUID?
-    public var currencyIdentifier: String?
+    public let id: UInt64
+    public let originalID: UInt64
+    public let productID: String
+    public let price: Decimal?
+    public let userTransactionUUID: UUID?
+    public let currencyIdentifier: String?
+    public let renewal: Bool
+
+    public init(id: UInt64, originalID: UInt64, productID: String, price: Decimal?, userTransactionUUID: UUID?, currencyIdentifier: String?, renewal: Bool) {
+        self.id = id
+        self.originalID = originalID
+        self.productID = productID
+        self.price = price
+        self.userTransactionUUID = userTransactionUUID
+        self.currencyIdentifier = currencyIdentifier
+        self.renewal = renewal
+    }
 }
 
 extension Product: ProductProtocol {}
@@ -57,12 +68,24 @@ extension Product: ProductProtocol {}
 extension Transaction {
 
     public func toProtonTransaction() -> ProtonTransaction {
-        ProtonTransaction(
-            id: id,
-            originalID: originalID,
-            productID: productID,
-            price: price,
-            userTransactionUUID: appAccountToken,
-            currencyIdentifier: currency?.identifier)
+        if #available(iOS 17.0, macOS 14.0, *) {
+            ProtonTransaction(
+                id: id,
+                originalID: originalID,
+                productID: productID,
+                price: price,
+                userTransactionUUID: appAccountToken,
+                currencyIdentifier: currency?.identifier,
+                renewal: reason == .renewal)
+        } else {
+            ProtonTransaction(
+                id: id,
+                originalID: originalID,
+                productID: productID,
+                price: price,
+                userTransactionUUID: appAccountToken,
+                currencyIdentifier: currency?.identifier,
+                renewal: purchaseDate != originalPurchaseDate)
+        }
     }
 }

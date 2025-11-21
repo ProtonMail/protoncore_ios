@@ -18,6 +18,13 @@ public struct ResponseStubber {
                 "Code": 1000,
                 "UUID": "E621E1F8-C36C-495A-93FC-0C247A3E6E5F",
             ]
+        case .creatingTransactionToken:
+            return [
+                "Code": 1000,
+                "Status": 1,
+                "Token": "IM_A_TOKEN",
+                "Data": NSNull()
+            ]
         case .iapStatusCheck:
             return Bundle.main.loadJsonDataToDic(from: "IAPStatus.json")
         case .fetchProtonPlans:
@@ -31,6 +38,9 @@ public struct ResponseStubber {
                 "Status": 1,
                 "Data": NSNull()
             ]
+        case .waitingTokenResponse:
+            return ["Code": 1000,
+                    "Status": 1]
         default:
             return [:]
         }

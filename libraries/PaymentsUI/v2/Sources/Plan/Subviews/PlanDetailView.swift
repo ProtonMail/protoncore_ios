@@ -74,7 +74,7 @@ struct PlanDetailView: View {
             if !viewModel.isCurrentPlan {
 
                 PCButton(style: .constant(.init(mode: .solid())),
-                         content: .constant(.init(title: String(format: PaymentsUIV2Localizer.Purchase_button_title.l10n, viewModel.title), action: {
+                         content: .constant(.init(title: String(format: PaymentsUIV2Localizer.Purchase_button_title.l10n, viewModel.title), isAnimating: viewModel.isPurchasing, action: {
                     Task {
                         await viewModel.purchasePlan()
                     }

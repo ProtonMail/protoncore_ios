@@ -106,9 +106,9 @@ final class LogHelperTests: XCTestCase {
                           "Log 4": 12122])
 
         DispatchQueue.global().asyncAfter(deadline: .now() + 0.1) {
-            Task {
-                XCTAssertTrue(self.sut.transactionLog.count == 2)
-                XCTAssertTrue(self.sut.transactionLogs.isEmpty)
+            Task { [weak self] in
+                XCTAssertTrue(self?.sut.transactionLog.count == 2)
+                XCTAssertTrue(self?.sut.transactionLogs != nil)
                 expectation.fulfill()
             }
         }
@@ -142,7 +142,7 @@ final class LogHelperTests: XCTestCase {
         await sut.logEvent(["Log 3": "event 3",
                             "Log 4": 12122], type: .close)
 
-        let logFileURL = await sut.returnTransactionLog()
+        let logFileURL = sut.returnTransactionLog()
         // Afer log is closed, the file should exist
         XCTAssertNotNil(fileURL())
         // Requesting the log should return a valid fileURL

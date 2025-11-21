@@ -30,13 +30,19 @@ public protocol LogHelperProviding {
     static func create() async -> LogHelper
     func logEvent(_ event: [String: Any], type: LogStatus) async
     func logEventSync(_ event: [String: Any], type: LogStatus)
-    func returnTransactionLog() async -> URL?
+    func returnTransactionLog() -> URL?
     func deleteLogs() async
 }
 
 extension LogHelperProviding {
-    func logEvent(_ event: [String: Any], type: LogStatus = .inProgress) async {}
-    func logEventSync(_ event: [String: Any], type: LogStatus = .inProgress) {}
+    func logEvent(_ event: [String: Any]) async {
+        
+        await logEvent(event, type: .inProgress)
+    }
+
+    func logEventSync(_ event: [String: Any]) {
+        logEventSync(event, type: .inProgress)
+    }
 }
 
 public class LogHelper: LogHelperProviding {
@@ -77,7 +83,7 @@ public class LogHelper: LogHelperProviding {
         return logHelper
     }
 
-    public func logEvent(_ event: [String: Any], type: LogStatus = .inProgress) async {
+    public func logEvent(_ event: [String: Any], type: LogStatus) async {
         await runInBackground { [weak self] in
             guard let self else { return }
             let formattedEvent = [dateFormatter.string(from: Date.now): event]
@@ -89,14 +95,14 @@ public class LogHelper: LogHelperProviding {
         }
     }
 
-    public func logEventSync(_ event: [String: Any], type: LogStatus = .inProgress) {
+    public func logEventSync(_ event: [String: Any], type: LogStatus) {
         Task { await logEvent(event, type: type) }
     }
 
-    public func returnTransactionLog() async -> URL? {
-
+    public func returnTransactionLog() -> URL? {
         let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
         let fileURL = documentDirectory.appendingPathComponent(Constants.fileName)
+
 #if DEBUG
         // Printing the log in Debug mode to easy end to end testing
         do {
@@ -106,7 +112,12 @@ public class LogHelper: LogHelperProviding {
             debugPrint("Error reading file: \(error)")
         }
 #endif
-        return fileURL
+
+        if FileManager.default.fileExists(atPath: fileURL.path()) {
+            return fileURL
+        } else {
+            return nil
+        }
     }
 
     public func deleteLogs() async {

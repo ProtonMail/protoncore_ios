@@ -74,7 +74,7 @@ final class OCTransactionHandlerTests: XCTestCase, @unchecked Sendable {
 
     func test_transaction_state() async throws {
         // Fetch Proton plans
-        mockRemoteManager.setupURLSessionMock(withMockResponse: remoteResponseFor(transactionState: .idle))
+        mockRemoteManager.setupURLSessionMock(withMockResponse: ResponseStubber.remoteResponseFor(transactionState: .fetchProtonPlans))
 
         _ = try await subsComposer.fetchProtonPlans()
         _ = try await subsComposer.getStoreProducts(["iosvpn_bundle2022_12_usd_auto_renewing", "iosvpn_vpn2022_1_usd_auto_renewing"])
@@ -92,7 +92,7 @@ final class OCTransactionHandlerTests: XCTestCase, @unchecked Sendable {
             return
         }
 
-        let protonTransaction = convertStoreTestTransaction(transaction, price: composedPlan.product.price, currencyId: "USD")
+        let protonTransaction = TransactionStubber.convertStoreTestTransaction(transaction, price: composedPlan.product.price, currencyId: "USD", renewal: false)
 
         sut.transactionState.sink { [weak self] state in
             guard let self = self else {
@@ -105,7 +105,7 @@ final class OCTransactionHandlerTests: XCTestCase, @unchecked Sendable {
                 XCTFail()
             }
 
-            self.mockRemoteManager.setupURLSessionMock(withMockResponse: remoteResponseFor(transactionState: state))
+            self.mockRemoteManager.setupURLSessionMock(withMockResponse: ResponseStubber.remoteResponseFor(transactionState: state))
 
             debugPrint(state.localizedDescription ?? "")
             switch state {
@@ -121,36 +121,87 @@ final class OCTransactionHandlerTests: XCTestCase, @unchecked Sendable {
         _ = try await sut.processTransaction(protonTransaction, jwsRepresentation: "asdasd12d12d12d", plan: composedPlan)
     }
 
-    private func convertStoreTestTransaction(_ transaction: SKTestTransaction, price: Decimal, currencyId: String) -> ProtonTransaction {
-        ProtonTransaction(id: UInt64(transaction.identifier),
-                          originalID: UInt64(transaction.originalTransactionIdentifier),
-                          productID: transaction.productIdentifier,
-                          price: price,
-                          currencyIdentifier: currencyId)
+    func test_transaction_renewal_state() async throws {
+        // Fetch Proton plans
+        mockRemoteManager.setupURLSessionMock(withMockResponse: ResponseStubber.remoteResponseFor(transactionState: .fetchProtonPlans))
+
+        _ = try await subsComposer.fetchProtonPlans()
+        _ = try await subsComposer.getStoreProducts(["iosvpn_bundle2022_12_usd_auto_renewing", "iosvpn_vpn2022_1_usd_auto_renewing"])
+
+        try storeSession.buyProduct(productIdentifier: productsIds[0])
+
+        // extract store receipt logic behind interface and mock it for testing
+
+        guard let transaction = storeSession.allTransactions().first else {
+            XCTFail("No transaction found")
+            return
+        }
+        guard let composedPlan = subsComposer.matchPlanToStoreProduct(transaction.productIdentifier) else {
+            XCTFail("No plan found")
+            return
+        }
+
+        let protonTransaction = TransactionStubber.convertStoreTestTransaction(transaction, price: composedPlan.product.price, currencyId: "USD", renewal: true)
+
+        sut.transactionState.sink { [weak self] state in
+            guard let self = self else {
+                XCTFail()
+                return
+            }
+            debugPrint(state.localizedDescription ?? "")
+
+            if state == .transactionProcessError {
+                XCTFail()
+            }
+
+            self.mockRemoteManager.setupURLSessionMock(withMockResponse: ResponseStubber.remoteResponseFor(transactionState: state))
+
+            debugPrint(state.localizedDescription ?? "")
+            switch state {
+            case .transactionCompleted:
+                XCTAssert(true)
+            default:
+                debugPrint("Test in progress...")
+            }
+
+        }
+        .store(in: &cancellable)
+
+        _ = try await sut.processTransaction(protonTransaction, jwsRepresentation: "asdasd12d12d12d", plan: composedPlan)
     }
 
-    private func remoteResponseFor(transactionState: TransactionHandlerState) -> [String: Any] {
+    func test_UUID_fetched_when_not_provided() async throws {
+        self.mockRemoteManager.setupURLSessionMock(withMockResponse: ResponseStubber.remoteResponseFor(transactionState: .fetchUserUUID))
 
-        switch transactionState {
-        case .idle:
-            return Bundle.main.loadJsonDataToDic(from: "availablePlans.json")
-        case .createNewSubscription:
-            return ["Code": 1000]
-        case .waitingTokenResponse:
-            return [
-                "Code": 1000,
-                "Status": 1
-            ]
-        case .generatingReceipt:
-            return [
-                "Code": 1000,
-                "Token": "abc",
-                "Status": 1,
-                "Data": NSNull()
-            ]
-        default:
-            return [:]
+        let mockUUID = UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")!
+        let mockUUID2 = UUID(uuidString: "E621E1F8-C46C-495A-93FC-0C247A3E6E5F")!
+        let positiveResult = try await sut.verifyTransactionUUIDs(appAccountToken: mockUUID)
+        let negativeResult = try await sut.verifyTransactionUUIDs(appAccountToken: mockUUID2)
+
+        XCTAssertTrue(positiveResult)
+        XCTAssertFalse(negativeResult)
+    }
+
+    func test_UUID_provided_at_init() async throws {
+
+        guard let remoteManager = mockRemoteManager.remoteManager, let paymentsAPIs = mockRemoteManager.paymentsAPI else {
+            XCTFail("MockRemoteManager returned nil remoteManager or paymentsAPIs")
+            return
         }
+
+        let mockUUID = UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")!
+        let mockUUID2 = UUID(uuidString: "E621E1F8-C46C-495A-93FC-0C247A3E6E5F")!
+
+        sut = OCTransactionHandler(remoteManager: remoteManager,
+                                   paymentsAPIs: paymentsAPIs,
+                                   appAccountToken: mockUUID)
+
+        self.mockRemoteManager.setupURLSessionMock(withMockResponse: ResponseStubber.remoteResponseFor(transactionState: .fetchUserUUID))
+        let positiveResult = try await sut.verifyTransactionUUIDs(appAccountToken: mockUUID)
+        let negativeResult = try await sut.verifyTransactionUUIDs(appAccountToken: mockUUID2)
+
+        XCTAssertTrue(positiveResult)
+        XCTAssertFalse(negativeResult)
     }
 }
 #endif

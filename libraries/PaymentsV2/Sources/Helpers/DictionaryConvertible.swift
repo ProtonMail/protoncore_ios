@@ -34,6 +34,14 @@ extension DictionaryConvertible {
         return dictionary
     }
 
+    func jsonString() -> String {
+        if let jsonData = try? JSONSerialization.data(withJSONObject: self.toDictionary(), options: .prettyPrinted),
+           let jsonString = String(data: jsonData, encoding: .utf8) {
+            return jsonString
+        }
+        return ""
+    }
+
     func toAnyHashable(elements: AnyCollection<Mirror.Child>) -> [String: Any] {
         var dictionary: [String: Any] = [:]
         for element in elements {

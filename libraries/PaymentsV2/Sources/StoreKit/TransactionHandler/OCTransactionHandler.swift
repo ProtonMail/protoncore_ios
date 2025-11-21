@@ -32,12 +32,14 @@ public final class OCTransactionHandler: NSObject, TransactionHandlerProviding, 
     private let paymentsAPIs: PaymentsAPIs
     public private(set) var transactionState = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
     private let queue = DispatchQueue(label: "paymentsV2.transactionHandler.syncQueue")
-    private var tokenContinuation: CheckedContinuation<Void, Error>?
+    private var appAccountToken: UUID?
 
     public init(remoteManager: RemoteManagerProviding,
-                paymentsAPIs: PaymentsAPIs) {
+                paymentsAPIs: PaymentsAPIs,
+                appAccountToken: UUID? = nil) {
         self.remoteManager = remoteManager
         self.paymentsAPIs = paymentsAPIs
+        self.appAccountToken = appAccountToken
     }
 
     public func processTransaction(_ transaction: ProtonTransaction, plan: ComposedPlan) async throws -> ComposedPlan {
@@ -49,17 +51,17 @@ public final class OCTransactionHandler: NSObject, TransactionHandlerProviding, 
                                    jwsRepresentation: String,
                                    plan: ComposedPlan) async throws -> ComposedPlan {
         debugPrint("Transaction in progress...")
-        debugPrint(transaction.originalID)
-        debugPrint(transaction.id)
 
-        guard transaction.originalID == transaction.id else {
-            updateTransactionState(state: .mismatchTransactionIDs)
-            let error = TransactionHandlerError.transactionIdNotEqualToOriginalTransactionId(originalID: transaction.originalID, transactionId: transaction.id)
-            PMLog.error(error.failureReason ?? "Transaction: originaId (\(transaction.originalID)) different from transactionId (\(transaction.id)", sendToExternal: true)
-            throw error
+        if transaction.renewal {
+            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "start_resolving_transaction",
+                                                                   "isRenewal": transaction.renewal])
+            PMLog.info("OCTransactionHandler: Transaction is a renewal, skip processing", sendToExternal: true)
+            updateTransactionState(state: .transactionCompleted)
+            return plan
         }
 
         await TransactionsObserver.shared.logHelper?.logEvent(["phase": "start_resolving_transaction"])
+        PMLog.info("OCTransactionHandler: Transaction is not a renewal, start processing it.", sendToExternal: true)
         try await resolveTransaction(transaction, plan: plan, jwsRepresentation: jwsRepresentation)
 
         return plan
@@ -73,11 +75,21 @@ public final class OCTransactionHandler: NSObject, TransactionHandlerProviding, 
 
     public func verifyTransactionUUIDs(appAccountToken: UUID) async throws -> Bool {
 
-        let request = try paymentsAPIs.url(for: .userTransactionUUID)
-        debugPrint("Fetching user transaction UUID")
+        guard let uuid = self.appAccountToken else {
+            let request = try paymentsAPIs.url(for: .userTransactionUUID)
+            PMLog.info("OCTransactionHandler: UUID not provided, fetching it", sendToExternal: true)
 
-        let userUUID: UserTransactionUUIDResponse = try await remoteManager.getFromURL(request.url)
-        return appAccountToken == userUUID.uuidValue
+            let userUUID: UserTransactionUUIDResponse = try await remoteManager.getFromURL(request.url)
+            return appAccountToken == userUUID.uuidValue
+        }
+        PMLog.info("OCTransactionHandler: UUID check", sendToExternal: true)
+        return appAccountToken == uuid
+    }
+
+    public func setAppAccountToken(_ appAccountToken: UUID?) {
+        queue.sync {
+            self.appAccountToken = appAccountToken
+        }
     }
 
     private func updateTransactionState(state: TransactionHandlerState) {
@@ -115,7 +127,7 @@ private extension OCTransactionHandler {
         debugPrint("Validation token generated ✅")
         TransactionsObserver.shared.logHelper?.logEventSync(["phase": "validation_token_creation",
                                                              "token": newToken.toDictionary()])
-        print("NEW TOKEN:\n", newToken)
+        PMLog.info("OCTransactionHandler: Validation token generated", sendToExternal: true)
         return newToken
     }
 
@@ -128,21 +140,20 @@ private extension OCTransactionHandler {
             ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(status: .http2xx, isDynamic: true))
             await TransactionsObserver.shared.logHelper?.logEvent(["phase": "post_validation_token_request",
                                                                    "token": newToken.toDictionary()])
-
-            print("POST NEW TOKEN:\n", newToken)
+            PMLog.info("OCTransactionHandler: Post validation token successful", sendToExternal: true)
             return newToken
         } catch {
 
             if case let RemoteError.responseReturnedError(error, urlString) = error {
                 let responseError = ResponseError(httpCode: nil, responseCode: error, userFacingMessage: "PaymentV2 - TransactionHandler: Error for requets: \(urlString)", underlyingError: nil)
                 ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(error: responseError, isDynamic: true))
-                PMLog.error("PaymentsV2 - Failed to create new token, error: \(error), url: \(urlString)", sendToExternal: true)
+                PMLog.error("OCTransactionHandler: Post validation token failed, error: \(error), url: \(urlString)", sendToExternal: true)
             }
 
             updateTransactionState(state: .transactionProcessError)
             await TransactionsObserver.shared.logHelper?.logEvent(["phase": "post_validation_token_request",
                                                                    "status": "failed"])
-            print(error)
+            PMLog.error("OCTransactionHandler: Post validation token failed", sendToExternal: true)
             throw error
         }
     }
@@ -158,6 +169,7 @@ private extension OCTransactionHandler {
                 let status: ResponseStatus = try await self.remoteManager.getFromURL(request.url)
                 if status.status == 1 {
                     debugPrint("Transaction validated ✅")
+                    PMLog.info("OCTransactionHandler: Polling token status success", sendToExternal: true)
                     await TransactionsObserver.shared.logHelper?.logEvent(["get_token_polling": ["time": Date.now.description,
                                                                                                  "status": "success"]])
                     expectedStatus = 1
@@ -166,11 +178,11 @@ private extension OCTransactionHandler {
                 }
             } catch {
                 self.updateTransactionState(state: .transactionProcessError)
+                PMLog.error("OCTransactionHandler: Polling token status failed", sendToExternal: true)
                 await TransactionsObserver.shared.logHelper?.logEvent(["get_token_polling": ["time": Date.now.description,
                                                                                              "status": "failed",
                                                                                              "reason": (error as? LocalizedError)?.failureReason]],
                                                                       type: .close)
-                print(error)
                 throw error
             }
         } while expectedStatus != 1
@@ -180,13 +192,12 @@ private extension OCTransactionHandler {
 
         guard let planName = composedPlan.plan.name else {
             let error = TransactionHandlerError.unableToFindPlanName(productID: transaction.productID)
-            PMLog.error(error.failureReason ?? "PaymentsV2 - TransactionHandler unableToFindPlanName failure reason missing", sendToExternal: true)
             updateTransactionState(state: .transactionProcessError)
+            PMLog.error("OCTransactionHandler: Create new subscription - Plan name not found", sendToExternal: true)
             await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_new_subscription",
                                                                    "status": "failed",
-                                                                   "reason": "plan name and compose plan mismatch"],
+                                                                   "reason": "Plan name not found"],
                                                                   type: .close)
-            print(error)
             throw error
         }
         debugPrint("Creating new subscription..")
@@ -196,12 +207,12 @@ private extension OCTransactionHandler {
                                                                     plans: [planName: 1]))
 
         updateTransactionState(state: .createNewSubscription)
-        print("NEW SUB:\n", newSub)
 
         do {
             let request = try paymentsAPIs.url(for: .createOmnichannelSubscription(newSubscription: newSub))
             _ = try await remoteManager.postToURL(request: request)
             debugPrint("New subscription successfully created ✅")
+            PMLog.info("OCTransactionHandler: Create new subscription - New subscription successfully created ✅", sendToExternal: true)
             await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_new_subscription",
                                                                    "status": "success"],
                                                                   type: .close)
@@ -211,11 +222,11 @@ private extension OCTransactionHandler {
         } catch {
             ObservabilityEnv.report(.paymentSubscribeTotal(status: .failed, isDynamic: true))
             updateTransactionState(state: .transactionProcessError)
+            PMLog.error("OCTransactionHandler: Create new subscription - New subscription creation failed", sendToExternal: true)
             await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_new_subscription",
                                                                    "status": "failed",
                                                                    "reason": error.localizedDescription],
                                                                   type: .close)
-            print(error)
             throw error
         }
     }
