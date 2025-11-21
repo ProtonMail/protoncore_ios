@@ -31,8 +31,6 @@ func products(from newProduct: String) -> [Product] {
         .goLibsCryptoSearchGo,
         .goLibsCryptoPatchedGo,
         .goLibsCryptoVPNPatchedGo,
-        .goLibsCryptoMultiversionGo,
-        .goLibsCryptoMultiversionPatchedGo,
         .vCard
     ]
 
@@ -122,8 +120,6 @@ extension String {
     static let cryptoPatchedGoImplementation: String = "ProtonCoreCryptoPatchedGoImplementation"
     static let cryptoVPNPatchedGoImplementation: String = "ProtonCoreCryptoVPNPatchedGoImplementation"
     static let cryptoSearchGoImplementation: String = "ProtonCoreCryptoSearchGoImplementation"
-    static let cryptoMultiversionGoImplementation: String = "ProtonCoreCryptoMultiversionGoImplementation"
-    static let cryptoMultiversionPatchedGoImplementation: String = "ProtonCoreCryptoMultiversionPatchedGoImplementation"
     static let dataModel: String = "ProtonCoreDataModel"
     static let doh: String = "ProtonCoreDoh"
     static let environment: String = "ProtonCoreEnvironment"
@@ -135,8 +131,6 @@ extension String {
     static let goLibsCryptoPatchedGo: String = "GoLibsCryptoPatchedGo"
     static let goLibsCryptoVPNPatchedGo: String = "GoLibsCryptoVPNPatchedGo"
     static let goLibsCryptoSearchGo: String = "GoLibsCryptoSearchGo"
-    static let goLibsCryptoMultiversionGo: String = "GoLibsCryptoMultiversionGo"
-    static let goLibsCryptoMultiversionPatchedGo: String = "GoLibsCryptoMultiversionPatchedGo"
     static let hash: String = "ProtonCoreHash"
     static let humanVerification: String = "ProtonCoreHumanVerification"
     static let humanVerificationResourcesiOS: String = "ProtonCoreHumanVerificationResourcesiOS"
@@ -245,8 +239,6 @@ extension Target.Dependency {
     static var cryptoPatchedGoImplementation: Target.Dependency { .target(name: .cryptoPatchedGoImplementation) }
     static var cryptoVPNPatchedGoImplementation: Target.Dependency { .target(name: .cryptoVPNPatchedGoImplementation) }
     static var cryptoSearchGoImplementation: Target.Dependency { .target(name: .cryptoSearchGoImplementation) }
-    static var cryptoMultiversionGoImplementation: Target.Dependency { .target(name: .cryptoMultiversionGoImplementation) }
-    static var cryptoMultiversionPatchedGoImplementation: Target.Dependency { .target(name: .cryptoMultiversionPatchedGoImplementation) }
     static var dataModel: Target.Dependency { .target(name: .dataModel) }
     static var doh: Target.Dependency { .target(name: .doh) }
     static var environment: Target.Dependency { .target(name: .environment) }
@@ -258,8 +250,6 @@ extension Target.Dependency {
     static var goLibsCryptoPatchedGo: Target.Dependency { .target(name: .goLibsCryptoPatchedGo) }
     static var goLibsCryptoVPNPatchedGo: Target.Dependency { .target(name: .goLibsCryptoVPNPatchedGo) }
     static var goLibsCryptoSearchGo: Target.Dependency { .target(name: .goLibsCryptoSearchGo) }
-    static var goLibsCryptoMultiversionGo: Target.Dependency { .target(name: .goLibsCryptoMultiversionGo) }
-    static var goLibsCryptoMultiversionPatchedGo: Target.Dependency { .target(name: .goLibsCryptoMultiversionPatchedGo) }
     static var hash: Target.Dependency { .target(name: .hash) }
     static var humanVerification: Target.Dependency { .target(name: .humanVerification) }
     static var humanVerificationResourcesiOS: Target.Dependency { .target(name: .humanVerificationResourcesiOS,
@@ -626,9 +616,7 @@ add(
         .cryptoGoImplementation,
         .cryptoPatchedGoImplementation,
         .cryptoVPNPatchedGoImplementation,
-        .cryptoSearchGoImplementation,
-        .cryptoMultiversionGoImplementation,
-        .cryptoMultiversionPatchedGoImplementation,
+        .cryptoSearchGoImplementation
     ],
     targets: [
         coreTarget(name: .cryptoGoImplementation,
@@ -658,20 +646,6 @@ add(
                     .cryptoGoInterface
                    ],
                    path: "libraries/CryptoGoImplementation/Crypto+Search-Go"),
-
-        coreTarget(name: .cryptoMultiversionGoImplementation,
-                   dependencies: [
-                    .goLibsCryptoMultiversionGo,
-                    .cryptoGoInterface
-                   ],
-                   path: "libraries/CryptoGoImplementation/Crypto+multiversion-Go"),
-
-        coreTarget(name: .cryptoMultiversionPatchedGoImplementation,
-                   dependencies: [
-                    .goLibsCryptoMultiversionPatchedGo,
-                    .cryptoGoInterface
-                   ],
-                   path: "libraries/CryptoGoImplementation/Crypto+multiversion-patched-Go"),
 
         coreTestTarget(name: .cryptoGoImplementation + "Tests",
                        dependencies: [
@@ -703,23 +677,7 @@ add(
                         .cryptoSearchGoImplementation,
                         .cryptoGoInterface
                        ],
-                       path: "libraries/CryptoGoImplementation/Tests-Crypto+Search-Go"),
-
-        coreTestTarget(name: .cryptoMultiversionGoImplementation + "Tests",
-                       dependencies: [
-                        .goLibsCryptoMultiversionGo,
-                        .cryptoMultiversionGoImplementation,
-                        .cryptoGoInterface
-                       ],
-                       path: "libraries/CryptoGoImplementation/Tests-Crypto+multiversion-Go"),
-
-        coreTestTarget(name: .cryptoMultiversionPatchedGoImplementation + "Tests",
-                       dependencies: [
-                        .goLibsCryptoMultiversionPatchedGo,
-                        .cryptoMultiversionPatchedGoImplementation,
-                        .cryptoGoInterface
-                       ],
-                       path: "libraries/CryptoGoImplementation/Tests-Crypto+multiversion-patched-Go")
+                       path: "libraries/CryptoGoImplementation/Tests-Crypto+Search-Go")
     ]
 )
 
@@ -911,17 +869,13 @@ add(
         .goLibsCryptoGo,
         .goLibsCryptoPatchedGo,
         .goLibsCryptoVPNPatchedGo,
-        .goLibsCryptoSearchGo,
-        .goLibsCryptoMultiversionGo,
-        .goLibsCryptoMultiversionPatchedGo,
+        .goLibsCryptoSearchGo
     ],
     targets: [
         .binaryTarget(name: .goLibsCryptoGo, path: "vendor/Crypto-Go/GoLibs.xcframework"),
         .binaryTarget(name: .goLibsCryptoPatchedGo, path: "vendor/Crypto-patched-Go/GoLibs.xcframework"),
         .binaryTarget(name: .goLibsCryptoVPNPatchedGo, path: "vendor/Crypto+VPN-patched-Go/GoLibs.xcframework"),
         .binaryTarget(name: .goLibsCryptoSearchGo, path: "vendor/Crypto+Search-Go/GoLibs.xcframework"),
-        .binaryTarget(name: .goLibsCryptoMultiversionGo, path: "vendor/Crypto+multiversion-Go/GoLibs.xcframework"),
-        .binaryTarget(name: .goLibsCryptoMultiversionPatchedGo, path: "vendor/Crypto+multiversion-patched-Go/GoLibs.xcframework"),
     ]
 )
 

@@ -1071,62 +1071,6 @@
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "GoLibsCryptoMultiversionGo"
-               BuildableName = "GoLibsCryptoMultiversionGo"
-               BlueprintName = "GoLibsCryptoMultiversionGo"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "GoLibsCryptoMultiversionPatchedGo"
-               BuildableName = "GoLibsCryptoMultiversionPatchedGo"
-               BlueprintName = "GoLibsCryptoMultiversionPatchedGo"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ProtonCoreCryptoMultiversionGoImplementation"
-               BuildableName = "ProtonCoreCryptoMultiversionGoImplementation"
-               BlueprintName = "ProtonCoreCryptoMultiversionGoImplementation"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ProtonCoreCryptoMultiversionPatchedGoImplementation"
-               BuildableName = "ProtonCoreCryptoMultiversionPatchedGoImplementation"
-               BlueprintName = "ProtonCoreCryptoMultiversionPatchedGoImplementation"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -1753,26 +1697,6 @@
                BlueprintIdentifier = "ProtonCoreUIUnitTests"
                BuildableName = "ProtonCoreUIUnitTests"
                BlueprintName = "ProtonCoreUIUnitTests"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ProtonCoreCryptoMultiversionGoImplementationTests"
-               BuildableName = "ProtonCoreCryptoMultiversionGoImplementationTests"
-               BlueprintName = "ProtonCoreCryptoMultiversionGoImplementationTests"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ProtonCoreCryptoMultiversionPatchedGoImplementationTests"
-               BuildableName = "ProtonCoreCryptoMultiversionPatchedGoImplementationTests"
-               BlueprintName = "ProtonCoreCryptoMultiversionPatchedGoImplementationTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>
