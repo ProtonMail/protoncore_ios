@@ -39,5 +39,10 @@
                 "version":"v0.0.7"
             }
         }
-    ]
+    ],
+    "cgo_api":{
+            "path":"github.com/ProtonMail/gopenpgp-v3-c-api",
+            "version":"v1.1.0",
+            "local_path": "../cgo-api"
+     }
 }
