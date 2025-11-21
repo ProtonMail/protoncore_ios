@@ -130,6 +130,7 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
                         transactionStatus = .failed
                         return
                     }
+                    PMLog.info("TransactionsObserver: Resolving unfinished transaction", sendToExternal: true)
                     await processTransaction(transaction)
                 case .unverified(let transaction, let transactionError):
                     debugPrint("Unverified unfinished transaction:\n \(transaction)\n \(transactionError)")
@@ -140,17 +141,12 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
             for await update in Transaction.updates {
                 switch update {
                 case .verified(let transaction):
-                    guard let status = await transaction.subscriptionStatus else {
+                    guard await transaction.subscriptionStatus != nil else {
                         debugPrint("Transaction received is not a subscription")
                         return
                     }
-                    switch status.state {
-                    case .subscribed:
-                        debugPrint("Transaction already processed")
-                        return
-                    default:
-                        debugPrint("Transaction state: \(status.state)")
-                    }
+                    PMLog.info("TransactionsObserver: Resolving pending", sendToExternal: true)
+                    await processTransaction(transaction)
                 case .unverified(let transaction, let transactionError):
                     debugPrint("Unverified update transaction:\n \(transaction)\n \(transactionError)")
                     return
@@ -279,8 +275,8 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
         }
     }
 
-    public func generateTransactionLog() async -> URL? {
-        return await logHelper?.returnTransactionLog()
+    public func generateTransactionLog() -> URL? {
+        return logHelper?.returnTransactionLog()
     }
 
     public func deleteLogs() async {

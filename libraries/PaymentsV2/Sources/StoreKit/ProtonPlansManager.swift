@@ -35,8 +35,8 @@ public protocol PublicProtonPlansManagerProviding: Sendable {
     func getStoreProducts(_ plans: [String]) async throws -> [Product]
     func getAvailablePlans() async throws -> [ComposedPlan]
     func getCurrentPlan() async throws -> CurrentSubscriptionResponse
-    func purchase(_ product: Product, options: Set<Product.PurchaseOption>?) async throws -> ComposedPlan
-    func purchaseWinBackOffer(_ product: Product, offerId: String) async throws -> ComposedPlan
+    func purchase(_ product: Product, options: Set<Product.PurchaseOption>?) async throws -> ComposedPlan?
+    func purchaseWinBackOffer(_ product: Product, offerId: String) async throws -> ComposedPlan?
     func recoverTransactionReceipt() async throws
     func updateUserSession(sessionID: String, authToken: String)
     func checkIAPStatus() async throws -> IAPStatus
@@ -107,6 +107,7 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
     private let remoteManager: RemoteManagerProviding
     private let transactionHandler: TransactionHandlerProviding
     private let planComposer: PlansComposerProviding
+    private var userTransactionUUID: UUID?
 
     public var countryCode: String? {
         get async {
@@ -160,11 +161,13 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
         do {
             let iapStatus = try paymentsAPI.url(for: .appleStatus)
             let iapStatusResponse: IAPStatus = try await remoteManager.getFromURL(iapStatus.url)
+            PMLog.info("ProtonPlansManager - IAP Status check successful", sendToExternal: true)
             await TransactionsObserver.shared.logHelper?.logEvent(["phase": "iap status check",
                                                                    "status": "available"])
             return iapStatusResponse
         } catch {
             debugPrint(error)
+            PMLog.error("ProtonPlansManager - IAP Status check failed: \(error)", sendToExternal: true)
             await TransactionsObserver.shared.logHelper?.logEvent(["phase": "iap status check",
                                                                    "status": error.localizedDescription])
             throw ProtonPlansManagerError.iapNotAvailable(reason: error.localizedDescription)
@@ -209,22 +212,28 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
 
     func buildPurchaseOptions(_ options: Set<Product.PurchaseOption>? = []) async throws -> Set<Product.PurchaseOption> {
         var purchaseOptions = Set<Product.PurchaseOption>()
+        userTransactionUUID = try await generateUserTransactionUUID()
         // Request UUID and pass it as a purchase option
-        let userTransactionUUID = try await generateUserTransactionUUID()
-        purchaseOptions.insert(.appAccountToken(userTransactionUUID))
+        guard let userUUID = userTransactionUUID else {
+            let error = ProtonPlansManagerError.unableToGetUserTransactionUUID
+            PMLog.error(error.errorDescription ?? "PaymentsV2 - impossible to get user uuid", sendToExternal: true)
+            throw error
+        }
+        purchaseOptions.insert(.appAccountToken(userUUID))
         // Add any passed purchase options
         purchaseOptions.formUnion(options ?? [])
 
         return purchaseOptions
     }
 
-    public func purchase(_ product: Product, options: Set<Product.PurchaseOption>? = []) async throws -> ComposedPlan {
+    public func purchase(_ product: Product, options: Set<Product.PurchaseOption>? = []) async throws -> ComposedPlan? {
 
         let iapStatus = try await checkIAPStatus()
         if !iapStatus.isAvailable {
             throw ProtonPlansManagerError.iapNotAvailable(reason: iapStatus.unavailabilityReason ?? "")
         }
 
+        PMLog.info("ProtonPlansManager - IAP Purchase product: \(product.id)", sendToExternal: true)
         await TransactionsObserver.shared.logHelper?.logEvent(["phase": "iap purchase",
                                                                "productId": product.id])
         let purchaseOptions = try await buildPurchaseOptions(options)
@@ -233,10 +242,10 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
 
         switch result {
         case .success(let verificationResult):
+            PMLog.info("ProtonPlansManager - IAP purchase successful", sendToExternal: true)
             let transaction = try verificationResult.payloadValue
             await TransactionsObserver.shared.logHelper?.logEvent(["phase": "apple_transaction",
-                                                                   "status": "success",
-                                                                   "jwsRepresentation": verificationResult.jwsRepresentation])
+                                                                   "status": "success"])
 
             guard let matchingPlan = await findMatchingPlan(productID: transaction.productID) else {
                 let error = ProtonPlansManagerError.unableToMatchProtonPlanToStoreProduct(productId: transaction.productID)
@@ -244,7 +253,7 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
                                                                        "success": false,
                                                                        "error": error.failureReason ?? error.localizedDescription],
                                                                       type: .close)
-                PMLog.error(error.failureReason ?? "PaymentsV2 - unable to match Proton and AppleStore plans", sendToExternal: true)
+                PMLog.error("ProtonPlansManager - unable to match Proton and AppleStore plans", sendToExternal: true)
                 throw error
             }
 
@@ -255,6 +264,7 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
             do {
                 TransactionsObserver.shared.addTransactionInProgress(transaction.id)
 
+                transactionHandler.setAppAccountToken(userTransactionUUID)
                 // Omnichannel FF check
 #if DEBUG
                 if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsOmnichannelEnabled) {
@@ -269,40 +279,43 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
                 _ = try await transactionHandler.processTransaction(transaction.toProtonTransaction(),
                                                                     plan: matchingPlan)
 #endif
-
                 TransactionsObserver.shared.removeTransactionInProgress(transaction.id)
                 await transaction.finish()
                 debugPrint("Transaction completed ✅")
                 await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_sub",
                                                                        "apple_transction_completed": true])
+                PMLog.info("ProtonPlansManager: Proton subscription creation successful ✅", sendToExternal: true)
                 return matchingPlan
             } catch {
                 await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_sub",
                                                                        "error:": error.localizedDescription])
+                PMLog.error("ProtonPlansManager: Create sub error: \(error.localizedDescription)", sendToExternal: true)
                 TransactionsObserver.shared.removeTransactionInProgress(transaction.id)
                 debugPrint(error)
                 throw error
             }
         case .pending:
-            let error = ProtonPlansManagerError.transactionPending
-            PMLog.error(error.errorDescription ?? "PaymentsV2 - Transaction cancelled by the user", sendToExternal: true)
-            throw error
+            // pending transactions will be returned by the TransactionObserver once the necessary requirements are fulfilled.
+            // In case shouldn't trigger an error, the user should be notified.
+            // Once the transaction will be ready to be processed it will be received by the TransactionObserver's Transaction.updates.
+            PMLog.info("ProtonPlansManager: IAP Transaction pending", sendToExternal: true)
+            return nil
         case .userCancelled:
             transactionProgress.value = .transactionCancelledByUser
             transactionProgress.send(completion: .finished)
             let error = ProtonPlansManagerError.transactionCancelledByUser
-            PMLog.error(error.errorDescription ?? "PaymentsV2 - Transaction cancelled by the user", sendToExternal: true)
+            PMLog.info("ProtonPlansManager: IAP Transaction cancelled by the user", sendToExternal: true)
             throw error
         @unknown default:
             transactionProgress.value = .unknownError
             transactionProgress.send(completion: .finished)
             let error = ProtonPlansManagerError.transactionUnknownError
-            PMLog.error(error.errorDescription ?? "PaymentsV2 - unknown transaction error", sendToExternal: true)
+            PMLog.error("ProtonPlansManager: unknown IAP result error", sendToExternal: true)
             throw error
         }
     }
 
-    public func purchaseWinBackOffer(_ product: Product, offerId: String) async throws -> ComposedPlan {
+    public func purchaseWinBackOffer(_ product: Product, offerId: String) async throws -> ComposedPlan? {
         if #available(iOS 18.0, macOS 15.0, tvOS 18.0, *) {
             guard let offers = product.subscription?.winBackOffers.filter({ $0.id == offerId }), let offer = offers.first else {
                 throw ProtonPlansManagerError.noOfferFound(id: offerId, offerType: Offer.Kind.Winback.rawValue)
@@ -340,6 +353,7 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
         }
     }
 
+    @discardableResult
     public func restorePurchases() async throws -> CurrentSubscriptionResponse {
         do {
             try await AppStore.sync()

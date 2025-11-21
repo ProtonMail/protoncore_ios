@@ -58,6 +58,7 @@ public class PlanViewModel: ObservableObject, Identifiable {
     @Published var subscriptionPeriod: BillingCycle
 
     @Published var isExpanded = false
+    @Published var isPurchasing = false
 
     public var isCurrentPlan: Bool
     public var canMinimize: Bool
@@ -94,8 +95,8 @@ public class PlanViewModel: ObservableObject, Identifiable {
                 remoteManager: RemoteManager,
                 composedPlan: ComposedPlan,
                 plansManager: PublicProtonPlansManagerProviding? = nil) {
-        self.composedPlan = composedPlan
 
+        self.composedPlan = composedPlan
         self.paymentsAPI = PaymentsAPIs(doh: doh)
         self.remoteManager = remoteManager
         if let pManager = plansManager {
@@ -207,12 +208,12 @@ public class PlanViewModel: ObservableObject, Identifiable {
         guard let product = product as? Product, let plansManager = plansManager else {
             return
         }
-
-        transactionState.send(.generatingReceipt)
-
         do {
+            isPurchasing = true
             _ = try await plansManager.purchase(product, options: nil)
+            isPurchasing = false
         } catch {
+            isPurchasing = false
             debugPrint(error)
         }
     }

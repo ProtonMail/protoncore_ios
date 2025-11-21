@@ -95,7 +95,10 @@ public final class PaymentsV2: Sendable {
                                               doh: doh)
         Publishers
             .CombineLatest(paymentsView.transactionProgress, paymentsView.viewCycleState)
-            .sink {
+            .sink { [weak self] in
+                guard let self = self else {
+                    return
+                }
                 self.transactionProgress.value = $0
                 self.viewCycleState.value = $1
             }

@@ -71,7 +71,10 @@ public final class PaymentsUIViewControllerV2: UIViewController {
 
         Publishers
             .CombineLatest(viewModel.transactionProgress, viewModel.viewCycleState)
-            .sink {
+            .sink { [weak self] in
+                guard let self = self else {
+                    return
+                }
                 self.transactionProgress.value = $0
                 self.viewCycleState.value = $1
             }
