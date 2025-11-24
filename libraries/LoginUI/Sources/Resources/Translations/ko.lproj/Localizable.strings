@@ -248,7 +248,7 @@
 
 "An error occurred fetching your security keys. You can also check them on the Proton %@ website." = "보안 키를 가져오던 중 오류가 발생했습니다. Proton %@ 웹사이트에서도 확인하실 수 있습니다.";
 
-"These are the security keys registered to your account" = "이 항목들이 내 계정에 등록된 보안 키입니다.";
+"These are the security keys registered to your account" = "아래는 사용자의 계정에 등록된 보안 키입니다.";
 
 "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "아직 계정에 등록된 보안 키가 없습니다. 보안 키를 추가하려면 Proton %@ 웹 앱을 사용해 주세요.";
 
