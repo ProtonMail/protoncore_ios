@@ -76,6 +76,7 @@ public enum TransactionHandlerState: String, Sendable {
     case waitingTokenResponse // Omnichannel only state
     case createNewSubscription
     case transactionCompleted
+    case transactionPending
     // Error states:
     case transactionCancelledByUser
     case mismatchTransactionIDs

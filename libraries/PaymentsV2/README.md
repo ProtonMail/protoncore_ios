@@ -320,13 +320,20 @@ public protocol ProtonPlansManagerProviding: Sendable {
     func getStoreProducts(_ plans: [String]) async throws -> [Product]
     func getAvailablePlans() async throws -> [ComposedPlan]
     func getCurrentPlan() async throws -> CurrentSubscriptionResponse
-    func getIntroductoryOfferPrice(product: Product) -> String?
-    func purchase(_ product: Product) async throws -> ComposedPlan
+    func purchase(_ product: Product, options: Set<Product.PurchaseOption>?) async throws -> ComposedPlan
+    func purchaseWinBackOffer(_ product: Product, offerId: String) async throws -> ComposedPlan?
     func recoverTransactionReceipt() async throws
+    func updateUserSession(sessionID: String, authToken: String)
+    func checkIAPStatus() async throws -> IAPStatus
 }
 ```
 It wraps functionalities provided by `PlansComposer` and `TransactionHandler`. 
-To create custom payments screens, i.e. the upsell screen, the ProtonPlansManger provides all the necessary APIs. 
+To create custom payments screens, i.e. the upsell screen, the ProtonPlansManger provides all the necessary APIs.
+
+### Pending transactions
+A pending transaction in StoreKit 2 occurs when a purchase requires additional user action, such as parental approval through the "Ask to Buy" feature, or account verification. 
+When this happens ProtonPlansManager will throw and error. The error provides a failure reason that explains how the pending transaction will be resolved when the required actions are fulfilled.
+Please make sure to handle this case accordingly when implementing a custom screen.
 
 ## TransactionsObserver
 StoreObserver is a singleton class used to listen to StoreKit updates.

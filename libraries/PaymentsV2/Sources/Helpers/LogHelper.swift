@@ -36,7 +36,7 @@ public protocol LogHelperProviding {
 
 extension LogHelperProviding {
     func logEvent(_ event: [String: Any]) async {
-        
+
         await logEvent(event, type: .inProgress)
     }
 

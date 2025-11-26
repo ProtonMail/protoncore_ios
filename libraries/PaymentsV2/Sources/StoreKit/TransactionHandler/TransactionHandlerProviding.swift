@@ -25,7 +25,7 @@ import Combine
 public protocol TransactionHandlerProviding: Sendable {
     var transactionState: CurrentValueSubject<TransactionHandlerState, Never> { get }
     func processTransaction(_ transaction: ProtonTransaction, plan: ComposedPlan) async throws -> ComposedPlan
-    // Only Omnichannel TransactionHandler implements this
+    // !!!: Warning Only Omnichannel TransactionHandler implements this
     func processTransaction(_ transaction: ProtonTransaction, jwsRepresentation: String, plan: ComposedPlan) async throws -> ComposedPlan
     func updateRemoteManager(remoteManager: RemoteManagerProviding)
     func verifyTransactionUUIDs(appAccountToken: UUID) async throws -> Bool
