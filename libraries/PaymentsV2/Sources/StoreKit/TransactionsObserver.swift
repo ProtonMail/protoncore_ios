@@ -21,6 +21,7 @@
 
 import Foundation
 import ProtonCoreDoh
+import ProtonCoreFeatureFlags
 import ProtonCoreLog
 import StoreKit
 
@@ -109,7 +110,7 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
     private var remoteManager: RemoteManagerProviding?
     private var paymentsAPI: PaymentsAPIs?
     private var planComposer: PlansComposerProviding?
-    private var transactionHandler: TransactionHandler?
+    private var transactionHandler: TransactionHandlerProviding?
     private var transactionsInProgress = Set<UInt64>()
     private let queue = DispatchQueue(label: "paymentsV2.transactionObserver.syncQueue")
 
@@ -131,7 +132,7 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
                         return
                     }
                     PMLog.info("TransactionsObserver: Resolving unfinished transaction", sendToExternal: true)
-                    await processTransaction(transaction)
+                    await processTransaction(transaction, jwsRepresentation: unfinished.jwsRepresentation)
                 case .unverified(let transaction, let transactionError):
                     debugPrint("Unverified unfinished transaction:\n \(transaction)\n \(transactionError)")
                     return
@@ -146,7 +147,7 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
                         return
                     }
                     PMLog.info("TransactionsObserver: Resolving pending", sendToExternal: true)
-                    await processTransaction(transaction)
+                    await processTransaction(transaction, jwsRepresentation: update.jwsRepresentation)
                 case .unverified(let transaction, let transactionError):
                     debugPrint("Unverified update transaction:\n \(transaction)\n \(transactionError)")
                     return
@@ -188,11 +189,24 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
             throw error
         }
 
-        self.transactionHandler = TransactionHandler(remoteManager: remoteManager, paymentsAPIs: paymentsAPI)
+#if DEBUG
+        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsOmnichannelEnabled) {
+            PMLog.info("TransactionsObserver: Omnichannel flow started")
+            self.transactionHandler = OCTransactionHandler(remoteManager: remoteManager,
+                                                           paymentsAPIs: paymentsAPI)
+        } else {
+            PMLog.info("TransactionsObserver: Legacy flow started")
+            self.transactionHandler = TransactionHandler(remoteManager: remoteManager,
+                                                         paymentsAPIs: paymentsAPI)
+        }
+#else
+        self.transactionHandler = TransactionHandler(remoteManager: remoteManager,
+                                                     paymentsAPIs: paymentsAPI)
+#endif
         self.planComposer = PlansComposer(remoteManager: remoteManager, paymentsAPIs: paymentsAPI)
     }
 
-    private func processTransaction(_ transaction: Transaction) async {
+    private func processTransaction(_ transaction: Transaction, jwsRepresentation: String) async {
 
         guard let plan = planComposer?.matchPlanToStoreProduct(transaction.productID), let appAccountToken = transaction.appAccountToken else {
             return
@@ -203,7 +217,20 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
                 return
             }
             if accountMatching {
-                _ = try await transactionHandler?.processTransaction(transaction.toProtonTransaction(), plan: plan)
+                // Omnichannel FF check
+#if DEBUG
+                if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsOmnichannelEnabled) {
+                    _ = try await transactionHandler?.processTransaction(transaction.toProtonTransaction(),
+                                                                        jwsRepresentation: jwsRepresentation,
+                                                                        plan: plan)
+                } else {
+                    _ = try await transactionHandler?.processTransaction(transaction.toProtonTransaction(),
+                                                                        plan: plan)
+                }
+#else
+                _ = try await transactionHandler.processTransaction(transaction.toProtonTransaction(),
+                                                                    plan: plan)
+#endif
                 await transaction.finish()
                 transactionStatus = .successful
             } else {

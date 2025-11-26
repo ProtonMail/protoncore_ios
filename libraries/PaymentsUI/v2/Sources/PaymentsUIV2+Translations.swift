@@ -59,6 +59,7 @@ public enum PaymentsUIV2Localizer: String, TranslationsExposing {
     case Transaction_state_payment_confirmation_progress
     case Transaction_state_view_subtitle
     case Transaction_state_view_title
+    case Transaction_pending
     case Yearly_cycle
 
     public var l10n: String {
@@ -121,6 +122,8 @@ public enum PaymentsUIV2Localizer: String, TranslationsExposing {
             return localized(key: self.rawValue, comment: "Transaction progress view title")
         case .Yearly_cycle:
             return localized(key: self.rawValue, comment: "Yearly billing cycles")
+        case .Transaction_pending:
+            return localized(key: self.rawValue, comment: "Transaction pending message")
         }
     }
 

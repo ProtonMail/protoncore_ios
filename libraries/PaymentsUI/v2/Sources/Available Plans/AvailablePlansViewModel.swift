@@ -188,6 +188,9 @@ public class AvailablePlansViewModel: ObservableObject {
                 switch value {
                 case .generatingReceipt:
                     self.purchaseInProgress()
+                case .transactionPending:
+                    self.transactionProgress.send(completion: .finished)
+                    self.transactionPending()
                 case .transactionCompleted:
                     self.transactionProgress.send(completion: .finished)
                     self.transactionCompleted()
@@ -195,7 +198,6 @@ public class AvailablePlansViewModel: ObservableObject {
                     self.confirmationCompleted = true
                 case .transactionCancelledByUser:
                     self.transactionProgress.send(completion: .finished)
-                    self.transactionCancelledByUser()
                 case .unknownError, .transactionProcessError, .mismatchTransactionIDs, .unableToGetUserTransactionUUID:
                     self.transactionProgress.send(completion: .finished)
                     self.transactionProcessError()
@@ -241,17 +243,15 @@ extension AvailablePlansViewModel {
         viewState = .purchasing
     }
 
-    public func transactionCancelledByUser() {
-        Task {
-            await fetchData()
-        }
-    }
-
     public func transactionProcessError() {
         showAlert = .error(content: PCBannerContent(message: PaymentsUIV2Localizer.Transaction_process_error.l10n))
         Task {
             await fetchData()
         }
+    }
+
+    public func transactionPending() {
+        showAlert = .success(content: PCBannerContent(message: PaymentsUIV2Localizer.Transaction_pending.l10n))
     }
 }
 

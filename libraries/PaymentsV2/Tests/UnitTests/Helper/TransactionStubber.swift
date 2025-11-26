@@ -10,7 +10,7 @@ import StoreKitTest
 import ProtonCorePaymentsV2
 
 struct TransactionStubber {
-    static public func convertStoreTestTransaction(_ transaction: SKTestTransaction, price: Decimal, currencyId: String, renewal: Bool) -> ProtonTransaction {
+    public static func convertStoreTestTransaction(_ transaction: SKTestTransaction, price: Decimal, currencyId: String, renewal: Bool) -> ProtonTransaction {
         ProtonTransaction(id: UInt64(transaction.identifier),
                           originalID: UInt64(transaction.originalTransactionIdentifier),
                           productID: transaction.productIdentifier,

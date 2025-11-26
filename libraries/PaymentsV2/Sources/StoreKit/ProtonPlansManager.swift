@@ -56,7 +56,6 @@ public enum ProtonPlansManagerError: LocalizedError {
 
     // Transaction error
     case transactionCancelledByUser
-    case transactionPending
     case transactionUnknownError
     case noUnfinshedTransactionsFound
 
@@ -74,7 +73,7 @@ public enum ProtonPlansManagerError: LocalizedError {
             return PaymentsV2Localizer.Plans_Manager_Transaction_unknown_error.l10n
         case .noUnfinshedTransactionsFound:
             return PaymentsV2Localizer.Plans_Manager_pending_transaction_received.l10n
-        case .transactionPending, .iapNotAvailable, .noOfferFound, .iOSVersionError:
+        case .iapNotAvailable, .noOfferFound, .iOSVersionError:
             return nil
         }
     }
@@ -298,6 +297,7 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
             // pending transactions will be returned by the TransactionObserver once the necessary requirements are fulfilled.
             // In case shouldn't trigger an error, the user should be notified.
             // Once the transaction will be ready to be processed it will be received by the TransactionObserver's Transaction.updates.
+            transactionProgress.value = .transactionPending
             PMLog.info("ProtonPlansManager: IAP Transaction pending", sendToExternal: true)
             return nil
         case .userCancelled:

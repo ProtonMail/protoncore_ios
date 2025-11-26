@@ -265,10 +265,10 @@ public final class RemoteManager: NSObject, RemoteManagerProviding, @unchecked S
 }
 
 extension RemoteManager: URLSessionDelegate {
-    public func urlSession(
-        _ session: URLSession,
-        didReceive challenge: URLAuthenticationChallenge
-    ) async -> (URLSession.AuthChallengeDisposition, URLCredential?) {
+
+    public func urlSession(_ session: URLSession,
+                           didReceive challenge: URLAuthenticationChallenge) async -> (URLSession.AuthChallengeDisposition, URLCredential?) {
+
         guard let tk = TrustKitWrapper.current else {
             guard let trust = challenge.protectionSpace.serverTrust else {
                 return (.performDefaultHandling, nil)
