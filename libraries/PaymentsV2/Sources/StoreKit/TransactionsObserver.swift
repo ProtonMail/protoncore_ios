@@ -65,11 +65,11 @@ public struct TransactionsObserverConfiguration: Sendable {
     let appVersion: String
     let doh: DoHInterface & ServerConfig
 
-    #if DEBUG
+#if DEBUG
     let session: URLSession?
-    #endif
+#endif
 
-    #if DEBUG
+#if DEBUG
     public init(
         sessionID: String,
         authToken: String,
@@ -83,7 +83,7 @@ public struct TransactionsObserverConfiguration: Sendable {
         self.doh = doh
         self.session = session
     }
-    #else
+#else
     public init(
         sessionID: String,
         authToken: String,
@@ -95,7 +95,7 @@ public struct TransactionsObserverConfiguration: Sendable {
         self.appVersion = appVersion
         self.doh = doh
     }
-    #endif
+#endif
 }
 
 public final class TransactionsObserver: TransactionsObserverProviding, @unchecked Sendable {
@@ -174,11 +174,11 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
             atlasSecret: config.doh.getProxyToken()
         )
 
-        #if DEBUG
+#if DEBUG
         if let session = config.session {
             remoteManager.setSession(session)
         }
-        #endif
+#endif
 
         self.remoteManager = remoteManager
         self.paymentsAPI = PaymentsAPIs(doh: config.doh)
@@ -221,15 +221,15 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
 #if DEBUG
                 if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsOmnichannelEnabled) {
                     _ = try await transactionHandler?.processTransaction(transaction.toProtonTransaction(),
-                                                                        jwsRepresentation: jwsRepresentation,
-                                                                        plan: plan)
+                                                                         jwsRepresentation: jwsRepresentation,
+                                                                         plan: plan)
                 } else {
                     _ = try await transactionHandler?.processTransaction(transaction.toProtonTransaction(),
-                                                                        plan: plan)
+                                                                         plan: plan)
                 }
 #else
-                _ = try await transactionHandler.processTransaction(transaction.toProtonTransaction(),
-                                                                    plan: plan)
+                _ = try await transactionHandler?.processTransaction(transaction.toProtonTransaction(),
+                                                                     plan: plan)
 #endif
                 await transaction.finish()
                 transactionStatus = .successful
