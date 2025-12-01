@@ -55,3 +55,5 @@
 "Transaction_state_view_title" = "S'està verificant el pagament...";
 
 "Yearly_cycle" = "12 mesos";
+
+"Transaction_pending" = "La compra està pendent. Es reprendrà un cop s'hagin complert les accions requerides";

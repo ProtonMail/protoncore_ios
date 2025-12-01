@@ -55,3 +55,5 @@
 "Transaction_state_view_title" = "Votre paiement est en cours de vérification...";
 
 "Yearly_cycle" = "12 mois";
+
+"Transaction_pending" = "Achat en attente. Il reprendra une fois les actions requises effectuées.";

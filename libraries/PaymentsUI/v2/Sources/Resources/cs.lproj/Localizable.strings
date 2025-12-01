@@ -55,3 +55,5 @@
 "Transaction_state_view_title" = "Vaše platba je ověřována...";
 
 "Yearly_cycle" = "12 měsíců";
+
+"Transaction_pending" = "Nákup čeká na vyřízení. Bude pokračovat, jakmile budou provedeny potřebné akce";

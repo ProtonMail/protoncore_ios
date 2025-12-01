@@ -55,3 +55,5 @@
 "Transaction_state_view_title" = "Weryfikowanie płatności...";
 
 "Yearly_cycle" = "12 miesięcy";
+
+"Transaction_pending" = "Purchase pending. It will resume once the required actions are fulfilled";

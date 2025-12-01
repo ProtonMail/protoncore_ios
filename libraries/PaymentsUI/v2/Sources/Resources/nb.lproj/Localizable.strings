@@ -55,3 +55,5 @@
 "Transaction_state_view_title" = "Betalingen din blir bekreftet ...";
 
 "Yearly_cycle" = "12 måneder";
+
+"Transaction_pending" = "Kjøpet venter. Det vil gjenopptas når de nødvendige handlingene er fullført.";

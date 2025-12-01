@@ -55,3 +55,5 @@
 "Transaction_state_view_title" = "Vi se verifică plata...";
 
 "Yearly_cycle" = "12 luni";
+
+"Transaction_pending" = "Achiziție în așteptare. Se va relua după ce acțiunile necesare sunt îndeplinite.";

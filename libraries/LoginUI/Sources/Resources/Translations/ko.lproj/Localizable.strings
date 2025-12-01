@@ -432,9 +432,9 @@
 
 "Tap **Scan QR code**" = "**QR 코드 스캔**을 터치해주세요";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "**설정**을 탭한 후 **다른 기기에서 로그인**을 눌러주세요";
+"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
 
-"Password must contain:" = "비밀번호는 다음을 포함해야 합니다:";
+"Password must contain:" = "Password must contain:";
 
 "Access shared" = "접근이 공유되었습니다";
 

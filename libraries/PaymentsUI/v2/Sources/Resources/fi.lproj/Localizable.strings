@@ -55,3 +55,5 @@
 "Transaction_state_view_title" = "Maksuasi vahvistetaan...";
 
 "Yearly_cycle" = "12 kuukautta";
+
+"Transaction_pending" = "Osto odottaa. Se jatkuu, kun vaaditut toimenpiteet on suoritettu.";
