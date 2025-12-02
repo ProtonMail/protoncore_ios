@@ -55,3 +55,5 @@
 "Transaction_state_view_title" = "Uw betaling wordt geverifieerd...";
 
 "Yearly_cycle" = "12 maanden";
+
+"Transaction_pending" = "Aankoop in behandeling. De aankoop zal hervat worden zodra aan de vereiste acties is voldaan.";

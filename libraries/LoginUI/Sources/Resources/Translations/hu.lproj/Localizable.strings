@@ -432,9 +432,9 @@
 
 "Tap **Scan QR code**" = "Koppintson a **QR-kód beolvasása** gombra";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Koppintson a **Beállítások**, majd a **Bejelentkezés egy másik eszközre** lehetőségre.";
+"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
 
-"Password must contain:" = "A jelszónak tartalmaznia kell:";
+"Password must contain:" = "Password must contain:";
 
 "Access shared" = "Megosztott elérés";
 

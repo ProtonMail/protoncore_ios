@@ -14,7 +14,7 @@
 
 "Password" = "Adgangskode";
 
-"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Proton-serverne kan ikke nås. Det kan skyldes forkert netværkskonfiguration, at Proton-servere ikke fungerer eller at Proton-servere er blokeret";
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "Proton-serverne kan ikke nås. Det kan skyldes forkert netværkskonfiguration, at Proton-servenre ikke fungerer eller at Proton-serverne er blokeret";
 
 "Search country" = "Søg efter land";
 
@@ -46,7 +46,7 @@
 
 "How can we help?" = "Hvordan kan vi hjælpe?";
 
-"Forgot username" = "Glemte brugernavn";
+"Forgot username" = "Glemt brugernavn";
 
 "Forgot password" = "Glemt adgangskode";
 
@@ -88,7 +88,7 @@
 
 "Authenticate" = "Godkend";
 
-"Two-factor code" = "To-faktor-kode";
+"Two-factor code" = "To-faktor-adgangskode";
 
 "Recovery code" = "Gendannelseskode";
 
@@ -134,7 +134,7 @@
 
 "Set recovery method (optional)" = "Indstil gendannelsesmetode (valgfrit)";
 
-"We will send recovery instructions to this email or phone number if you get locked out of your account." = "Vi vil sende gendannelsesinstruktioner til denne e-mail eller telefonnummer, hvis du bliver låst ude af din konto.";
+"We will send recovery instructions to this email or phone number if you get locked out of your account." = "Vi vil sende gendannelsesinstruktioner til denne e-mail eller telefonnummeret hvis du bliver låst ude af din konto.";
 
 "Email" = "E-mail";
 
@@ -432,9 +432,9 @@
 
 "Tap **Scan QR code**" = "Tryk på **Scan QR-kode**";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Tryk på **Indstillinger**, tryk derefter på **Log ind på en anden enhed**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
 
-"Password must contain:" = "Adgangskode skal indeholde:";
+"Password must contain:" = "Password must contain:";
 
 "Access shared" = "Adgang delt";
 

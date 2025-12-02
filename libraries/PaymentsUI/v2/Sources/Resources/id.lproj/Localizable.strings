@@ -55,3 +55,5 @@
 "Transaction_state_view_title" = "Pembayaran Anda sedang diverifikasi...";
 
 "Yearly_cycle" = "12 bulan";
+
+"Transaction_pending" = "Purchase pending. It will resume once the required actions are fulfilled";

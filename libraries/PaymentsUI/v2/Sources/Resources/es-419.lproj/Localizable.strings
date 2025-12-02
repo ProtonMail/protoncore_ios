@@ -55,3 +55,5 @@
 "Transaction_state_view_title" = "Se está verificando su pago...";
 
 "Yearly_cycle" = "12 meses";
+
+"Transaction_pending" = "Compra pendiente. Se reanudará una vez que se cumplan las acciones requeridas.";

@@ -55,3 +55,5 @@
 "Transaction_state_view_title" = "Din betalning verifieras …";
 
 "Yearly_cycle" = "12 månader";
+
+"Transaction_pending" = "Purchase pending. It will resume once the required actions are fulfilled";

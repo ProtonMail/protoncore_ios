@@ -432,9 +432,9 @@
 
 "Tap **Scan QR code**" = "Napauta **Lue QR-koodi**";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Siirry **asetuksiin** ja napauta sitten **Kirjaudu toiseen laitteeseen**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
 
-"Password must contain:" = "Salasanan täytyy sisältää:";
+"Password must contain:" = "Password must contain:";
 
 "Access shared" = "Pääsy jaettu";
 

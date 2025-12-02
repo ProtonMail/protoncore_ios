@@ -24,8 +24,8 @@
 
 "Transaction_Handler_receipt_update_failed" = "Tapahtui virhe pyydettäessä tapahtuman kuittausta Applelta. Jos ongelma jatkuu, ota yhteyttä asiakaspalveluun.";
 
-"PayUpFront_offer_description" = "Allows new subscribers to pay a one-time introductory price for a specific duration, after which they pay the regular subscription price.";
+"PayUpFront_offer_description" = "Sallii uusien tilaajien kertaluonteisen tutustumishinnan tietyn ajan, ennen kuin siirrytään tavalliseen hintaan.";
 
-"PayAsYouGo_offer_description" = "Allows new subscribers to pay an introductory price for a specific number of billing periods before transitioning to the regular subscription price.";
+"PayAsYouGo_offer_description" = "Sallii uusien tilaajien maksaa tutustumishinnan tietyn laskutusajan ajan, ennen kuin siirrytään tavalliseen hintaan.";
 
-"FreeTrial_offer_description" = "Allows new subscribers to have access to the subscription for a given number of billing cycles. One that expires, the user pays full price.";
+"FreeTrial_offer_description" = "Sallii uusille tilaajille pääsyn tilaukseen tietyksi määräksi laskutusjaksoja. Kun se päättyy, käyttäjä maksaa täyden hinnan.";

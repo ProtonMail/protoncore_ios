@@ -432,9 +432,9 @@
 
 "Tap **Scan QR code**" = "Πατήστε **Σάρωση κωδικού QR**";
 
-"Tap into **Settings**, then tap **Sign in to another device**" = "Πατήστε **Ρυθμίσεις**, και στη συνέχεια πατήστε **Σύνδεση σε άλλη συσκευή**";
+"Tap into **Settings**, then tap **Sign in to another device**" = "Tap into **Settings**, then tap **Sign in to another device**";
 
-"Password must contain:" = "Ο κωδικός πρέπει να περιέχει:";
+"Password must contain:" = "Password must contain:";
 
 "Access shared" = "Πρόσβαση στα κοινοποιημένα";
 

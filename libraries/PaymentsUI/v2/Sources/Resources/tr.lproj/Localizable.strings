@@ -55,3 +55,5 @@
 "Transaction_state_view_title" = "Ödemeniz doğrulanıyor...";
 
 "Yearly_cycle" = "12 ay";
+
+"Transaction_pending" = "Satın alma işlemi bekliyor. Gerekli işlemler tamamlandığında sürdürülecek.";
