@@ -116,6 +116,36 @@ public class AvailablePlansViewModel: ObservableObject {
                                                                              paymentsAPIs: paymentsAPIs))
         self.hideCurrentPlan = hideCurrentPlan
         self.presentationMode = presentationMode
+
+        protonPlansManager.transactionProgress
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] value in
+                guard let self = self else {
+                    return
+                }
+                self.transactionProgress.value = value
+                switch value {
+                case .generatingReceipt:
+                    self.purchaseInProgress()
+                case .transactionPending:
+                    self.transactionProgress.send(completion: .finished)
+                    self.transactionPending()
+                case .transactionCompleted:
+                    self.transactionProgress.send(completion: .finished)
+                    self.transactionCompleted()
+                case .createNewSubscription:
+                    self.confirmationCompleted = true
+                case .transactionCancelledByUser:
+                    self.transactionProgress.send(completion: .finished)
+                case .unknownError, .transactionProcessError, .mismatchTransactionIDs, .unableToGetUserTransactionUUID:
+                    self.transactionProgress.send(completion: .finished)
+                    self.transactionProcessError()
+                default:
+                    break
+                }
+            }
+            .store(in: &self.cancellables)
     }
 
     private func fetchCurrentPlan() async throws -> PlanViewModel? {
@@ -150,17 +180,21 @@ public class AvailablePlansViewModel: ObservableObject {
         return billingFilter(filter: billingCycle)
     }
 
-    public func fetchData() async {
-
+    public func fetchData(from: String) async {
+        debugPrint("fetchData from: " + from)
         do {
             if !hideCurrentPlan {
                 async let currentSubscription = fetchCurrentPlan()
                 currentPlan = try await currentSubscription
             }
 
-            async let plans = fetchAvailablePlans()
-            filteredPlans = try await plans
-            viewState = filteredPlans.isEmpty && !hideAvailablePlans ? .noData : .dataLoaded
+            if try await protonPlansManager.checkIAPStatus().isAvailable {
+                async let plans = fetchAvailablePlans()
+                filteredPlans = try await plans
+                viewState = filteredPlans.isEmpty && !hideAvailablePlans ? .noData : .dataLoaded
+            } else {
+                viewState = .dataLoaded
+            }
         } catch {
             viewState = .errorData
             debugPrint(error)
@@ -171,42 +205,6 @@ public class AvailablePlansViewModel: ObservableObject {
     public func billingFilter(filter: BillingCycle) -> [PlanViewModel] {
         filteredPlans.removeAll()
         filteredPlans = filter == .all ? availablePlansViewModels : availablePlansViewModels.filter { return $0.subscriptionPeriod == filter }
-
-        filteredPlans.forEach { [weak self] plan in
-            guard let self = self else {
-                return
-            }
-
-            plan.transactionState
-                .dropFirst()
-                .receive(on: DispatchQueue.main)
-                .sink { [weak self] value in
-                    guard let self = self else {
-                        return
-                    }
-                    self.transactionProgress.value = value
-                switch value {
-                case .generatingReceipt:
-                    self.purchaseInProgress()
-                case .transactionPending:
-                    self.transactionProgress.send(completion: .finished)
-                    self.transactionPending()
-                case .transactionCompleted:
-                    self.transactionProgress.send(completion: .finished)
-                    self.transactionCompleted()
-                case .createNewSubscription:
-                    self.confirmationCompleted = true
-                case .transactionCancelledByUser:
-                    self.transactionProgress.send(completion: .finished)
-                case .unknownError, .transactionProcessError, .mismatchTransactionIDs, .unableToGetUserTransactionUUID:
-                    self.transactionProgress.send(completion: .finished)
-                    self.transactionProcessError()
-                default:
-                    break
-                }
-                }
-            .store(in: &self.cancellables)
-        }
 
         return filteredPlans
     }
@@ -223,16 +221,18 @@ extension AvailablePlansViewModel {
 
     public func transactionCompleted() {
         updateCompleted = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + Constants.transactionCompletedDelay) { [weak self] in
-            guard let self else { return }
-            // Reset TransactionProgress flags --> Improve this logic
-            self.confirmationCompleted = false
-            self.updateCompleted = false
-            self.hideCurrentPlan = false
-            Task {
-                await self.fetchData()
-            }
+
+        Task { @MainActor in
+            try? await Task.sleep(nanoseconds: UInt64(Constants.transactionCompletedDelay * 1_000_000_000))
+            self.resetTransactionState()
+            await self.fetchData(from: "Transaction Completed")
         }
+    }
+
+    private func resetTransactionState() {
+        confirmationCompleted = false
+        updateCompleted = false
+        hideCurrentPlan = false
     }
 
     public func updatingAccount() {
@@ -246,7 +246,7 @@ extension AvailablePlansViewModel {
     public func transactionProcessError() {
         showAlert = .error(content: PCBannerContent(message: PaymentsUIV2Localizer.Transaction_process_error.l10n))
         Task {
-            await fetchData()
+            await fetchData(from: "Transaction Process error")
         }
     }
 
