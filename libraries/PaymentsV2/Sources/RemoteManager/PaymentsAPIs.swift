@@ -75,7 +75,12 @@ public struct PaymentsAPIs: PaymentsAPIsProviding, Sendable {
         }
 
         static func urlString(hostURL: String, requestType: RequestType) -> String {
-            return hostURL + Constants.moduleNameSpace(requestType: requestType) + Constants.apiVersion(requestType: requestType).rawValue + requestType.requestEndpoint
+            switch requestType {
+            case .icon:
+                return "https://mail.proton.me/api" + Constants.moduleNameSpace(requestType: requestType) + Constants.apiVersion(requestType: requestType).rawValue + requestType.requestEndpoint
+            default:
+                return hostURL + Constants.moduleNameSpace(requestType: requestType) + Constants.apiVersion(requestType: requestType).rawValue + requestType.requestEndpoint
+            }
         }
     }
 

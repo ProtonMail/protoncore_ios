@@ -156,6 +156,7 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
     }
 
     public func checkIAPStatus() async throws -> IAPStatus {
+        debugPrint("checkIAPStatus called \(Date.now)")
         transactionProgress.value = .iapStatusCheck
         do {
             let iapStatus = try paymentsAPI.url(for: .appleStatus)
@@ -185,9 +186,6 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
 
     public func getAvailablePlans() async throws -> [ComposedPlan] {
         do {
-            if try await checkIAPStatus().isAvailable == false {
-                return []
-            }
             transactionProgress.value = .fetchAvailablePlans
             let availablePlans = try await planComposer.fetchAvailablePlans()
             ObservabilityEnv.report(.availablePlansLoad(status: .http2xx))

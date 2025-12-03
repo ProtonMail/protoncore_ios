@@ -138,21 +138,6 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
                     return
                 }
             }
-
-            for await update in Transaction.updates {
-                switch update {
-                case .verified(let transaction):
-                    guard await transaction.subscriptionStatus != nil else {
-                        debugPrint("Transaction received is not a subscription")
-                        return
-                    }
-                    PMLog.info("TransactionsObserver: Resolving pending", sendToExternal: true)
-                    await processTransaction(transaction, jwsRepresentation: update.jwsRepresentation)
-                case .unverified(let transaction, let transactionError):
-                    debugPrint("Unverified update transaction:\n \(transaction)\n \(transactionError)")
-                    return
-                }
-            }
         }
     }
 

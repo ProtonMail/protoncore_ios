@@ -86,7 +86,7 @@ public struct AvailablePlansView: View {
             case .errorData, .idle, .purchasing:
                 ErrorView(buttonAction: {
                     Task {
-                        await viewModel.fetchData()
+                        await viewModel.fetchData(from: "UIVIew Error case")
                     }
                 })
             case .noData:
@@ -107,7 +107,7 @@ public struct AvailablePlansView: View {
             Task {
                 viewModel.viewStateDidChange(.displayed)
                 if viewModel.viewState != .dataLoaded {
-                    await viewModel.fetchData()
+                    await viewModel.fetchData(from: "UIView onAppear")
                 }
             }
         }
