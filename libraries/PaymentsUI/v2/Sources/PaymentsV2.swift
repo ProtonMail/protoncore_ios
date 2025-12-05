@@ -41,7 +41,6 @@ public final class PaymentsV2: Sendable {
 
     public private(set) var transactionProgress = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
     public private(set) var viewCycleState = CurrentValueSubject<ViewCycleState, Never>(.none)
-    private let queue = DispatchQueue(label: "paymentsV2Presenter.syncQueue")
     private var presentationMode: PresentationMode = .none
     private var paymentsView: PaymentsUIViewControllerV2!
     private var cancellables = Set<AnyCancellable>()

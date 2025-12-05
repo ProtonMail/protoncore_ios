@@ -19,6 +19,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+import Combine
 import Foundation
 import ProtonCoreDoh
 import ProtonCoreFeatureFlags
@@ -36,6 +37,9 @@ public enum TransactionType {
 }
 
 public protocol TransactionsObserverProviding: Sendable {
+
+    var transactionProgress: CurrentValueSubject<TransactionHandlerState, Never> { get }
+
     func start() async throws
     func stop()
     func setConfiguration(_ configuration: TransactionsObserverConfiguration)
@@ -100,6 +104,7 @@ public struct TransactionsObserverConfiguration: Sendable {
 
 public final class TransactionsObserver: TransactionsObserverProviding, @unchecked Sendable {
 
+    public var transactionProgress = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
     public static let shared = TransactionsObserver()
     public var logHelper: LogHelperProviding?
     private var configuration: TransactionsObserverConfiguration?
@@ -110,9 +115,10 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
     private var remoteManager: RemoteManagerProviding?
     private var paymentsAPI: PaymentsAPIs?
     private var planComposer: PlansComposerProviding?
-    private var transactionHandler: TransactionHandlerProviding?
+    var transactionHandler: TransactionHandlerProviding!
     private var transactionsInProgress = Set<UInt64>()
     private let queue = DispatchQueue(label: "paymentsV2.transactionObserver.syncQueue")
+    private var cancellables = Set<AnyCancellable>()
 
     private init() {}
 
@@ -189,6 +195,11 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
                                                      paymentsAPIs: paymentsAPI)
 #endif
         self.planComposer = PlansComposer(remoteManager: remoteManager, paymentsAPIs: paymentsAPI)
+
+        self.transactionHandler.transactionState.sink { [weak self] state in
+            self?.transactionProgress.send(state)
+        }
+        .store(in: &cancellables)
     }
 
     private func processTransaction(_ transaction: Transaction, jwsRepresentation: String) async {

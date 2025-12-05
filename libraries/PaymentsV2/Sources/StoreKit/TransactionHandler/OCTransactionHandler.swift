@@ -92,8 +92,8 @@ public final class OCTransactionHandler: NSObject, TransactionHandlerProviding, 
         }
     }
 
-    private func updateTransactionState(state: TransactionHandlerState) {
-        let completableStates: [TransactionHandlerState] = [.transactionProcessError, .mismatchTransactionIDs, .transactionCompleted]
+    public func updateTransactionState(state: TransactionHandlerState) {
+        let completableStates: [TransactionHandlerState] = [.transactionProcessError, .mismatchTransactionIDs, .transactionCompleted, .unableToGetUserTransactionUUID]
         queue.sync {
             transactionState.value = state
             if completableStates.contains(state) {

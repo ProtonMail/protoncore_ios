@@ -38,6 +38,7 @@ final class TransactionsObserverTests: XCTestCase, @unchecked Sendable {
 
         sut = TransactionsObserver.shared
         mockRemoteManager = MockedRemoteManager()
+        
         let plansMockResponse = Bundle.main.loadJsonDataToDic(from: "availablePlans.json")
         mockRemoteManager.setupURLSessionMock(withMockResponse: plansMockResponse)
 

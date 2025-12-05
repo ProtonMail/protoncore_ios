@@ -52,6 +52,7 @@ public class AvailablePlansViewModel: ObservableObject {
     @Published var updateCompleted: Bool = false
     @Published var showAlert: BannerState = .none
     @Published var hideCurrentPlan: Bool = false
+    @Published var isPurchasing: Bool = false
 
     public var hideAvailablePlans: Bool {
         guard let isFreePlan = currentPlan?.isFreePlan else {
@@ -81,7 +82,6 @@ public class AvailablePlansViewModel: ObservableObject {
         case fetching
         case errorData
         case idle
-        case purchasing
         case noData
     }
 
@@ -117,7 +117,7 @@ public class AvailablePlansViewModel: ObservableObject {
         self.hideCurrentPlan = hideCurrentPlan
         self.presentationMode = presentationMode
 
-        protonPlansManager.transactionProgress
+        TransactionsObserver.shared.transactionProgress
             .removeDuplicates()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] value in
@@ -129,6 +129,7 @@ public class AvailablePlansViewModel: ObservableObject {
                 case .generatingReceipt:
                     self.purchaseInProgress()
                 case .transactionPending:
+                    self.isPurchasing = false
                     self.transactionProgress.send(completion: .finished)
                     self.transactionPending()
                 case .transactionCompleted:
@@ -137,8 +138,10 @@ public class AvailablePlansViewModel: ObservableObject {
                 case .createNewSubscription:
                     self.confirmationCompleted = true
                 case .transactionCancelledByUser:
+                    self.isPurchasing = false
                     self.transactionProgress.send(completion: .finished)
                 case .unknownError, .transactionProcessError, .mismatchTransactionIDs, .unableToGetUserTransactionUUID:
+                    self.isPurchasing = false
                     self.transactionProgress.send(completion: .finished)
                     self.transactionProcessError()
                 default:
@@ -233,6 +236,7 @@ extension AvailablePlansViewModel {
         confirmationCompleted = false
         updateCompleted = false
         hideCurrentPlan = false
+        isPurchasing = false
     }
 
     public func updatingAccount() {
@@ -240,7 +244,7 @@ extension AvailablePlansViewModel {
     }
 
     public func purchaseInProgress() {
-        viewState = .purchasing
+        isPurchasing = true
     }
 
     public func transactionProcessError() {
