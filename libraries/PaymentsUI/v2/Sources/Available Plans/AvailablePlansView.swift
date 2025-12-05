@@ -81,9 +81,9 @@ public struct AvailablePlansView: View {
                 if !viewModel.hideAvailablePlans {
                     AvailablePlansBodyView(viewModel: viewModel)
                 }
-            case .fetching:
+            case .fetching, .idle:
                 LoadingView(loadingMessage: PaymentsUIV2Localizer.Loading_plans_message.l10n)
-            case .errorData, .idle, .purchasing:
+            case .errorData:
                 ErrorView(buttonAction: {
                     Task {
                         await viewModel.fetchData(from: "UIVIew Error case")
@@ -98,7 +98,7 @@ public struct AvailablePlansView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(ColorProvider.BackgroundNorm)
         .overlay(content: {
-            if viewModel.viewState == .purchasing {
+            if viewModel.isPurchasing {
                 TransactionProgressView(confirmationCompleted: $viewModel.confirmationCompleted,
                                         updateCompleted: $viewModel.updateCompleted)
             }

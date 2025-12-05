@@ -17,6 +17,7 @@ final class ProtonPlansManagerTests: XCTestCase, @unchecked Sendable {
     private var urlSessionConfig: URLSessionConfiguration!
     private var mockRemoteManager: MockedRemoteManager!
     private var sut: ProtonPlansManager!
+    private var mockObserver = TransactionsObserver.shared
 
     override func setUp() async throws {
 
@@ -26,6 +27,20 @@ final class ProtonPlansManagerTests: XCTestCase, @unchecked Sendable {
             XCTFail("MockRemoteManager returned nil remoteManager or paymentsAPIs")
             return
         }
+
+        // Setting up TransactionObserver
+        let plansMockResponse = Bundle.main.loadJsonDataToDic(from: "availablePlans.json")
+        mockRemoteManager.setupURLSessionMock(withMockResponse: plansMockResponse)
+        mockObserver = TransactionsObserver.shared
+        let configuration = TransactionsObserverConfiguration(
+            sessionID: "asdasd12d",
+            authToken: "12d12",
+            appVersion: "V200",
+            doh: PaymentsDoH(),
+            session: mockRemoteManager.session
+        )
+        mockObserver.setConfiguration(configuration)
+        try await mockObserver.start()
 
         sut = ProtonPlansManager(doh: PaymentsDoH(),
                                  remoteManager: remoteManager)

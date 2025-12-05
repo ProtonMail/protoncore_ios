@@ -30,4 +30,5 @@ public protocol TransactionHandlerProviding: Sendable {
     func updateRemoteManager(remoteManager: RemoteManagerProviding)
     func verifyTransactionUUIDs(appAccountToken: UUID) async throws -> Bool
     func setAppAccountToken(_ appAccountToken: UUID?)
+    func updateTransactionState(state: TransactionHandlerState)
 }

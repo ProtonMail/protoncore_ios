@@ -90,6 +90,7 @@ public class PlanViewModel: ObservableObject, Identifiable {
     private let remoteManager: RemoteManager
     private var plansManager: PublicProtonPlansManagerProviding?
     private let composedPlan: ComposedPlan?
+    private var cancellables = Set<AnyCancellable>()
 
     public init(doh: DoHInterface & ServerConfig,
                 remoteManager: RemoteManager,
@@ -135,9 +136,11 @@ public class PlanViewModel: ObservableObject, Identifiable {
         self.isCurrentPlan = false
         self.canMinimize = true
 
-        if let transactionState = plansManager?.transactionProgress {
-            self.transactionState = transactionState
+        TransactionsObserver.shared.transactionProgress.sink { [weak self] state in
+            self?.transactionState.send(state)
         }
+        .store(in: &cancellables)
+
     }
 
     public init(doh: DoHInterface & ServerConfig,
@@ -183,9 +186,10 @@ public class PlanViewModel: ObservableObject, Identifiable {
             createFooterText(texts: texts)
         }
 
-        if let transactionState = plansManager?.transactionProgress {
-            self.transactionState = transactionState
+        TransactionsObserver.shared.transactionProgress.sink { [weak self] state in
+            self?.transactionState.send(state)
         }
+        .store(in: &cancellables)
     }
 
     // MARK: Public methods

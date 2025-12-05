@@ -29,7 +29,6 @@ import StoreKit
 
 public protocol PublicProtonPlansManagerProviding: Sendable {
 
-    var transactionProgress: CurrentValueSubject<TransactionHandlerState, Never> { get }
     var countryCode: String? { get async }
     func getProtonPlans() async throws -> AvailablePlans
     func getStoreProducts(_ plans: [String]) async throws -> [Product]
@@ -98,15 +97,13 @@ public enum ProtonPlansManagerError: LocalizedError {
 
 public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProviding, InternalProtonPlansManagerProviding, @unchecked Sendable {
 
-    public var transactionProgress = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
-
     private var products: [Product] = []
 
     private let paymentsAPI: PaymentsAPIs
     private let remoteManager: RemoteManagerProviding
-    private let transactionHandler: TransactionHandlerProviding
     private let planComposer: PlansComposerProviding
     private var userTransactionUUID: UUID?
+    private var cancellables = Set<AnyCancellable>()
 
     public var countryCode: String? {
         get async {
@@ -120,20 +117,6 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
         self.remoteManager = remoteManager
         self.paymentsAPI = PaymentsAPIs(doh: doh)
 
-#if DEBUG
-        if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsOmnichannelEnabled) {
-            debugPrint("OM Transaction flow")
-            self.transactionHandler = OCTransactionHandler(remoteManager: remoteManager,
-                                                           paymentsAPIs: paymentsAPI)
-        } else {
-            debugPrint("Legacy Transaction flow")
-            self.transactionHandler = TransactionHandler(remoteManager: remoteManager,
-                                                         paymentsAPIs: paymentsAPI)
-        }
-#else
-        self.transactionHandler = TransactionHandler(remoteManager: remoteManager,
-                                                     paymentsAPIs: paymentsAPI)
-#endif
         if let composer = plansComposer {
             self.planComposer = composer
         } else {
@@ -143,21 +126,20 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
 
         super.init()
 
-        // Assiging TransactionHandler currentValue subject to ProtonPlansManager transactionProgress currentValue subject to receive changes.
-        // Values received from TransactionHandler are not currently used here, we rely on the throwable processTransaction in TransactionHandler
-        // But changes sent from TransactionHandler.transactionState will be passed anyway and can be used, if necessary, from any subscriber
-        transactionProgress = transactionHandler.transactionState
+        if TransactionsObserver.shared.transactionHandler == nil {
+            fatalError("TransactionsObserver not started. It's required in order to process transactions")
+        }
     }
 
     public func updateUserSession(sessionID: String, authToken: String) {
         remoteManager.updateSession(sessionID: sessionID, authToken: authToken)
-        transactionHandler.updateRemoteManager(remoteManager: remoteManager)
+        TransactionsObserver.shared.transactionHandler.updateRemoteManager(remoteManager: remoteManager)
         planComposer.updateRemoteManager(remoteManager: remoteManager)
     }
 
     public func checkIAPStatus() async throws -> IAPStatus {
         debugPrint("checkIAPStatus called \(Date.now)")
-        transactionProgress.value = .iapStatusCheck
+        TransactionsObserver.shared.transactionHandler.updateTransactionState(state: .iapStatusCheck)
         do {
             let iapStatus = try paymentsAPI.url(for: .appleStatus)
             let iapStatusResponse: IAPStatus = try await remoteManager.getFromURL(iapStatus.url)
@@ -180,13 +162,13 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
     }
 
     public func getProtonPlans() async throws -> AvailablePlans {
-        transactionProgress.value = .fetchProtonPlans
+        TransactionsObserver.shared.transactionHandler.updateTransactionState(state: .fetchProtonPlans)
         return try await planComposer.fetchProtonPlans()
     }
 
     public func getAvailablePlans() async throws -> [ComposedPlan] {
         do {
-            transactionProgress.value = .fetchAvailablePlans
+            TransactionsObserver.shared.transactionHandler.updateTransactionState(state: .fetchAvailablePlans)
             let availablePlans = try await planComposer.fetchAvailablePlans()
             ObservabilityEnv.report(.availablePlansLoad(status: .http2xx))
             return availablePlans
@@ -234,7 +216,7 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
         await TransactionsObserver.shared.logHelper?.logEvent(["phase": "iap purchase",
                                                                "productId": product.id])
         let purchaseOptions = try await buildPurchaseOptions(options)
-        transactionProgress.value = .iapPurchase
+        TransactionsObserver.shared.transactionHandler.updateTransactionState(state: .iapPurchase)
         let result = try await product.purchase(options: purchaseOptions)
 
         switch result {
@@ -261,20 +243,20 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
             do {
                 TransactionsObserver.shared.addTransactionInProgress(transaction.id)
 
-                transactionHandler.setAppAccountToken(userTransactionUUID)
+                TransactionsObserver.shared.transactionHandler.setAppAccountToken(userTransactionUUID)
                 // Omnichannel FF check
 #if DEBUG
                 if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsOmnichannelEnabled) {
-                    _ = try await transactionHandler.processTransaction(transaction.toProtonTransaction(),
-                                                                        jwsRepresentation: verificationResult.jwsRepresentation,
-                                                                        plan: matchingPlan)
+                    _ = try await TransactionsObserver.shared.transactionHandler.processTransaction(transaction.toProtonTransaction(),
+                                                                                                    jwsRepresentation: verificationResult.jwsRepresentation,
+                                                                                                    plan: matchingPlan)
                 } else {
-                    _ = try await transactionHandler.processTransaction(transaction.toProtonTransaction(),
-                                                                        plan: matchingPlan)
+                    _ = try await TransactionsObserver.shared.transactionHandler.processTransaction(transaction.toProtonTransaction(),
+                                                                                                    plan: matchingPlan)
                 }
 #else
-                _ = try await transactionHandler.processTransaction(transaction.toProtonTransaction(),
-                                                                    plan: matchingPlan)
+                _ = try await TransactionsObserver.shared.transactionHandler.processTransaction(transaction.toProtonTransaction(),
+                                                                                                plan: matchingPlan)
 #endif
                 TransactionsObserver.shared.removeTransactionInProgress(transaction.id)
                 await transaction.finish()
@@ -295,18 +277,16 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
             // pending transactions will be returned by the TransactionObserver once the necessary requirements are fulfilled.
             // In case shouldn't trigger an error, the user should be notified.
             // Once the transaction will be ready to be processed it will be received by the TransactionObserver's Transaction.updates.
-            transactionProgress.value = .transactionPending
+            TransactionsObserver.shared.transactionHandler.updateTransactionState(state: .transactionPending)
             PMLog.info("ProtonPlansManager: IAP Transaction pending", sendToExternal: true)
             return nil
         case .userCancelled:
-            transactionProgress.value = .transactionCancelledByUser
-            transactionProgress.send(completion: .finished)
+            TransactionsObserver.shared.transactionHandler.updateTransactionState(state: .transactionCancelledByUser)
             let error = ProtonPlansManagerError.transactionCancelledByUser
             PMLog.info("ProtonPlansManager: IAP Transaction cancelled by the user", sendToExternal: true)
             throw error
         @unknown default:
-            transactionProgress.value = .unknownError
-            transactionProgress.send(completion: .finished)
+            TransactionsObserver.shared.transactionHandler.updateTransactionState(state: .unknownError)
             let error = ProtonPlansManagerError.transactionUnknownError
             PMLog.error("ProtonPlansManager: unknown IAP result error", sendToExternal: true)
             throw error
@@ -341,7 +321,7 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
 
         do {
             TransactionsObserver.shared.addTransactionInProgress(pendingTransaction.transaction.id)
-            _ = try await transactionHandler.processTransaction(pendingTransaction.transaction.toProtonTransaction(), plan: matchingPlan)
+            _ = try await TransactionsObserver.shared.transactionHandler.processTransaction(pendingTransaction.transaction.toProtonTransaction(), plan: matchingPlan)
             TransactionsObserver.shared.removeTransactionInProgress(pendingTransaction.transaction.id)
             await pendingTransaction.transaction.finish()
             debugPrint("RECOVERY FLOW SUCCESSFUL ✅")
@@ -370,13 +350,12 @@ public final class ProtonPlansManager: NSObject, PublicProtonPlansManagerProvidi
 
     private func generateUserTransactionUUID() async throws -> UUID {
 
-        transactionProgress.value = .fetchUserUUID
+        TransactionsObserver.shared.transactionHandler.updateTransactionState(state: .fetchUserUUID)
         let request = try paymentsAPI.url(for: .userTransactionUUID)
 
         let uuidString: UserTransactionUUIDResponse = try await remoteManager.getFromURL(request.url)
         guard let uuid = UUID(uuidString: uuidString.uuid) else {
-            transactionProgress.value = .unableToGetUserTransactionUUID
-            transactionProgress.send(completion: .finished)
+            TransactionsObserver.shared.transactionHandler.updateTransactionState(state: .unableToGetUserTransactionUUID)
             let error = ProtonPlansManagerError.unableToGetUserTransactionUUID
             PMLog.error(error.errorDescription ?? "PaymentsV2 - impossible to get user uuid", sendToExternal: true)
             throw error
