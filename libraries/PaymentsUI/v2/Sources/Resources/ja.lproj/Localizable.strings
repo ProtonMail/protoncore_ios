@@ -56,4 +56,4 @@
 
 "Yearly_cycle" = "12ヶ月";
 
-"Transaction_pending" = "Purchase pending. It will resume once the required actions are fulfilled";
+"Transaction_pending" = "購入は保留中です。必要な手続きが完了次第、再開されます。";

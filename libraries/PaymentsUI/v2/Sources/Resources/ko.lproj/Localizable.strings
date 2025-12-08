@@ -56,4 +56,4 @@
 
 "Yearly_cycle" = "12개월";
 
-"Transaction_pending" = "Purchase pending. It will resume once the required actions are fulfilled";
+"Transaction_pending" = "구매 처리 중입니다. 필요한 조치가 완료되면 재개됩니다";
