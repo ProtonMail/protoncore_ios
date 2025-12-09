@@ -56,4 +56,4 @@
 
 "Yearly_cycle" = "12 měsíců";
 
-"Transaction_pending" = "Nákup čeká na vyřízení. Bude pokračovat, jakmile budou provedeny potřebné akce";
+"Transaction_pending" = "Nákup čeká na vyřízení. Bude pokračovat po provedení požadovaných akcí.";
