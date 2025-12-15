@@ -4,11 +4,11 @@
 
 "Purchase is not possible." = "Køb er ikke muligt.";
 
-"Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you." = "Apple meddelte os, at du har opgraderet tjenesteabonnementet, men at nogle tekniske data mangler. Udfyld fejlrapporten, så vil kundesupportteamet kontakte dig.";
+"Apple informed us you've upgraded the service plan, but some technical data was missing. Please fill in the bug report and our customer support team will contact you." = "Apple meddelte os, at du har opgraderet serviceabonnementet, men at nogle tekniske data mangler. Udfyld fejlrapporten, så vil kundesupportteamet kontakte dig.";
 
-"Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "Apple meddelte os, at du har opgraderet tjenesteabonnementet, men vi har registreret, at du siden da har logget ud af kontoen.";
+"Apple informed us you've upgraded the service plan, but we detected you have logged out of the account since then." = "Apple meddelte os, at du har opgraderet serviceabonnementet, men vi har registreret, at du senere har logget ud af kontoen.";
 
-"It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Det var ikke muligt at matche dit købte App Store-produkt med noget produkt på vores server. Udfyld venligst fejlrapporten, så kontakter kundesupportteamet dig.";
+"It wasn't possible to match your purchased App Store product to any products on our server. Please fill in the bug report and our customer support team will contact you." = "Det var ikke muligt at matche dit købte App Store-produkt med noget produkt på vores server. Udfyld fejlrapporten, så kontakter kundesupportteamet dig.";
 
 "Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the purchase." = "Log ind på den Proton Mail-konto, du opgraderer tjenesteabonnementet til, så vi kan gennemføre købet.";
 
@@ -18,17 +18,17 @@
 
 "Please unlock the app to proceed with your service plan activation" = "Oplås appen for at fortsætte med din abonnementsaktivering";
 
-"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Log ind på den Proton Mail-konto, hvortil tjenesteabonnementet opgraderes, så vi kan effektuere aktiveringen af tjenesteabonnementet.";
+"Please log in to the Proton Mail account you're upgrading the service plan for so we can complete the service plan activation." = "Log ind på den Proton Mail-konto, hvortil serviceabonnementet opgraderes, så vi kan effektuere aktiveringen afserviceabonnementet.";
 
 "Wrong payment token status. Please relaunch the app. If error persists, contact support." = "Forkert status for betalingstoken. Genstart appen. Hvis fejlen fortsætter, skal du kontakte support.";
 
-"Do you want to activate the purchase for %@ address?" = "Vil du aktivere det købte abonnement for %@ addresse?";
+"Do you want to activate the purchase for %@ address?" = "Vil du aktivere det købte abonnement for %@ adresse?";
 
 "Yes, activate it for " = "Ja, aktivér det for ";
 
 "No, for another Proton Mail account" = "Nej, til en anden Proton Mail-konto";
 
-"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "Vi kunne ikke opgradere din konto til det abonnement, du valgte, så vi har tilføjet din betaling som kreditter til din konto. Kontakt venligst support for at få flere oplysninger og for at gennemføre din opgradering.";
+"We were unable to upgrade your account to the plan you selected, so we added your payment as credits to your account. For more information and to complete your upgrade, please contact Support." = "Vi kunne ikke opgradere din konto til det abonnement, du valgte, så vi har tilføjet din betaling som kreditter til din konto. Kontakt support for at få flere oplysninger og for at gennemføre din opgradering.";
 
 "Contact Support" = "Kontakt support";
 

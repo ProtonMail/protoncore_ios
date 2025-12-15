@@ -56,15 +56,15 @@
 
 "Complete payment" = "Gennemfør betaling";
 
-"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Opsætningen af kontoen kunne ikke afsluttes på grund af en uventet fejl.\nPrøv venligst igen.";
+"The account setup process could not be finalized due to an unexpected error.\nPlease try again." = "Opsætningen af kontoen kunne ikke afsluttes på grund af en uventet fejl.\nPrøv igen.";
 
-"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "IAP-købsprocessen er startet. Følg venligst Apples instruktioner for enten at gennemføre eller annullere købet.";
+"The IAP purchase process has started. Please follow Apple's instructions to either complete or cancel the purchase." = "IAP-købsprocessen er startet. Følg Apples instruktioner for enten at gennemføre eller annullere købet.";
 
 "In app payments are temporarily unavailable." = "Betalinger inde i app er midlertidigt utilgængelige.";
 
 "One plan for all Proton services" = "Én abonnement til alle Proton-tjenester";
 
-"The no-cost starter account designed to empower everyone with privacy by default." = "Den omkostningsfrie startkonto, der er designet til at give alle privatliv som standard.";
+"The no-cost starter account designed to empower everyone with privacy by default." = "Den omkostningsfrie startkonto, der er designet til at give alle privatlivsbeskyttelse som standard.";
 
 "The privacy-first email and calendar solution for your everyday communication needs." = "Den privatlivsfokuserede e-mail- og kalenderløsning til dine daglige kommunikationsbehov.";
 
