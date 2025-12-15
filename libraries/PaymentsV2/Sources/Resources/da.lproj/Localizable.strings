@@ -4,11 +4,11 @@
 
 "Plans_Manager_impossible_to_match_plan" = "Det var ikke muligt at matche Proton-abonnementet med et Apple Store-abonnement";
 
-"Plans_Manager_impossible_to_restore_transactions" = "Det var umuligt at genoprette transaktioner. Kontakt venligst kundesupporten.";
+"Plans_Manager_impossible_to_restore_transactions" = "Det var umuligt at genoprette transaktionerne. Kontakt kundesupporten.";
 
 "Plans_Manager_Transaction_cancelled_by_user" = "Transaktionen er blevet annulleret af brugeren";
 
-"Plans_Manager_Transaction_unknown_error" = "Der opstod en ukendt fejl. Hvis dette fortsætter, venligst kontakt kundesupport.";
+"Plans_Manager_Transaction_unknown_error" = "Der opstod en ukendt fejl. Hvis dette fortsætter, så kontakt kundesupport.";
 
 "Plans_Manager_peding_transaction_received" = "Uventet afventende transaktion modtaget";
 

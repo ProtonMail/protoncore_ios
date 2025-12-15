@@ -10,9 +10,9 @@
 
 "We received a password reset request for %@." = "Vi har modtaget en anmodning om nulstilling af adgangskoden for %@";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "Hvis du ikke bad om at nulstille din adgangskode, **skal du annullere denne anmodning nu**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Hvis du ikke bad om at få nulstillet din adgangskode, **skal du annullere denne anmodning nu**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "Hvis du ikke bad om at nulstille din adgangskode, skal du annullere denne anmodning nu.";
+"If you didn't ask to reset your password, cancel this request now." = "Hvis du ikke bad om at få nulstillet din adgangskode, skal du annullere denne anmodning nu.";
 
 "Password reset requested" = "Nulstilling af adgangskode anmodet";
 
@@ -40,9 +40,9 @@
 
 "Insecure_View_Cancel_Button_CTA" = "Annuller nulstil";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "Hvis du ikke bad om at nulstille din adgangskode, **skal du annullere denne anmodning nu**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Hvis du ikke bad om at få nulstillet din adgangskode, **skal du annullere denne anmodning nu**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "Hvis du ikke bad om at nulstille din adgangskode, skal du annullere denne anmodning nu.";
+"If you didn't ask to reset your password, cancel this request now." = "Hvis du ikke bad om at få nulstillet din adgangskode, skal du annullere denne anmodning nu.";
 
 "We received a password reset request for **%@**." = "Vi har modtaget en anmodning om nulstilling af adgangskoden for **%@**.";
 
@@ -58,7 +58,7 @@
 
 "The account recovery process expired due to inaction" = "Processen for gendannelse af konto udløb på grund af inaktivitet";
 
-"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Hvis du aldrig har anmodet om en nulstilling af din adgangskode, kan en anden have adgang til din konto. **Skift din adgangskode nu**";
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Hvis du aldrig har anmodet om en nulstilling af din adgangskode, kan en anden have fået adgang til din konto. **Skift din adgangskode nu**";
 
 "If you never made a password reset request, someone else could have access to your account. Change your password now" = "Hvis du aldrig har lavet en anmodning om nulstilling af adgangskoden, kan en anden have adgang til din konto. Skift din adgangskode nu";
 
@@ -66,7 +66,7 @@
 
 "Recovery process not started" = "Gendannelsesprocessen er ikke startet";
 
-"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Der er i øjeblikket ingen kontogendannelse i gang. Gå venligst til en session i webapplikationen for at gendanne din adgangskode.";
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Der er i øjeblikket ingen kontogendannelse i gang. Gå til en session i webapplikationen for at gendanne din adgangskode.";
 
 "You can now reset your password" = "Du kan nu nulstille din adgangskode";
 
