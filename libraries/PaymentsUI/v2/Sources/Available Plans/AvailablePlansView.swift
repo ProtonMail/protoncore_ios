@@ -22,6 +22,7 @@
 import SwiftUI
 import ProtonCorePaymentsV2
 import ProtonCoreUIFoundations
+import ProtonCoreServices
 
 public struct AvailablePlansView: View {
 
@@ -112,6 +113,7 @@ public struct AvailablePlansView: View {
             }
         }
         .bannerDisplayable(bannerState: $viewModel.showAlert, configuration: .default())
+        .disabled(viewModel.isPurchasing)
     }
 
     public init(viewModel: AvailablePlansViewModel) {
@@ -122,67 +124,62 @@ public struct AvailablePlansView: View {
 #if DEBUG
 // swiftlint:disable line_length
 #Preview {
+    AsyncModel { _ in
+        let productVPNMonthly = ProductMock(displayName: "name", description: "description", displayPrice: "$12", price: Decimal(12), id: "iosvpn_bundle2022_12_usd_auto_recurring")
+        let productVPNYearly = ProductMock(displayName: "name", description: "description", displayPrice: "$49", price: Decimal(49), id: "iosvpn_bundle2022_12_usd_auto_recurring")
 
-    let productVPNMonthly = ProductMock(displayName: "name", description: "description", displayPrice: "$12", price: Decimal(12), id: "iosvpn_bundle2022_12_usd_auto_recurring")
-    let productVPNYearly = ProductMock(displayName: "name", description: "description", displayPrice: "$49", price: Decimal(49), id: "iosvpn_bundle2022_12_usd_auto_recurring")
+        let product2 = ProductMock(displayName: "name", description: "description", displayPrice: "$149", price: Decimal(149), id: "iosvpn_bundle2022_12_usd_auto_recurring")
 
-    let product2 = ProductMock(displayName: "name", description: "description", displayPrice: "$149", price: Decimal(149), id: "iosvpn_bundle2022_12_usd_auto_recurring")
+        let composedPlan = ComposedPlan(plan: ProtonCorePaymentsV2.Examples.availablePlanExample(title: "VPN Plus",
+                                                                                                 entitlements: PreviewsData.descriptionEntitlements()),
+                                        instance: ProtonCorePaymentsV2.Examples.planInstance(cycle: 1),
+                                        product: productVPNMonthly)
 
-    let composedPlan = ComposedPlan(plan: ProtonCorePaymentsV2.Examples.availablePlanExample(title: "VPN Plus",
-                                                                                             entitlements: PreviewsData.descriptionEntitlements()),
-                                    instance: ProtonCorePaymentsV2.Examples.planInstance(cycle: 1),
-                                    product: productVPNMonthly)
+        let composedPlan2 = ComposedPlan(plan: ProtonCorePaymentsV2.Examples.availablePlanExample(title: "VPN Unlimited",
+                                                                                                  cycle: 12,
+                                                                                                  entitlements: PreviewsData.descriptionEntitlements()),
+                                         instance: ProtonCorePaymentsV2.Examples.planInstance(cycle: 12),
+                                         product: product2)
 
-    let composedPlan2 = ComposedPlan(plan: ProtonCorePaymentsV2.Examples.availablePlanExample(title: "VPN Unlimited",
-                                                                                              cycle: 12,
-                                                                                              entitlements: PreviewsData.descriptionEntitlements()),
-                                     instance: ProtonCorePaymentsV2.Examples.planInstance(cycle: 12),
-                                     product: product2)
+        let composedPlan5 = ComposedPlan(plan: ProtonCorePaymentsV2.Examples.availablePlanExample(title: "VPN Plus",
+                                                                                                  entitlements: PreviewsData.descriptionEntitlements()),
+                                         instance: ProtonCorePaymentsV2.Examples.planInstance(cycle: 12),
+                                         product: productVPNYearly)
 
-    let composedPlan5 = ComposedPlan(plan: ProtonCorePaymentsV2.Examples.availablePlanExample(title: "VPN Plus",
-                                                                                              entitlements: PreviewsData.descriptionEntitlements()),
-                                     instance: ProtonCorePaymentsV2.Examples.planInstance(cycle: 12),
-                                     product: productVPNYearly)
+        let planViewModel = PlanViewModel(remoteManager: PreviewsData.remoteManager,
+                                          composedPlan: composedPlan)
 
-    let planViewModel = PlanViewModel(doh: PaymentsDoH(),
-                                      remoteManager: PreviewsData.remoteManager,
-                                      composedPlan: composedPlan)
+        let planViewModel2 = PlanViewModel(remoteManager: PreviewsData.remoteManager,
+                                           composedPlan: composedPlan2)
 
-    let planViewModel2 = PlanViewModel(doh: PaymentsDoH(),
-                                       remoteManager: PreviewsData.remoteManager,
-                                       composedPlan: composedPlan2)
+        let planViewModel3 = PlanViewModel(remoteManager: PreviewsData.remoteManager,
+                                           currentPlan: PreviewsData.currentSub)
 
-    let planViewModel3 = PlanViewModel(doh: PaymentsDoH(),
-                                       remoteManager: PreviewsData.remoteManager,
-                                       currentPlan: PreviewsData.currentSub)
+        let planViewModel4 = PlanViewModel(remoteManager: PreviewsData.remoteManager,
+                                           currentPlan: PreviewsData.freePlan)
 
-    let planViewModel4 = PlanViewModel(doh: PaymentsDoH(),
-                                       remoteManager: PreviewsData.remoteManager,
-                                       currentPlan: PreviewsData.freePlan)
+        let planViewModel5 = PlanViewModel(remoteManager: PreviewsData.remoteManager,
+                                           composedPlan: composedPlan5)
 
-    let planViewModel5 = PlanViewModel(doh: PaymentsDoH(),
-                                       remoteManager: PreviewsData.remoteManager,
-                                       composedPlan: composedPlan5)
+        //  let allPlans = [planViewModel3, planViewModel4, planViewModel, planViewModel2]
+        let availablePlans = [planViewModel, planViewModel2, planViewModel5]
 
-    //  let allPlans = [planViewModel3, planViewModel4, planViewModel, planViewModel2]
-    let availablePlans = [planViewModel, planViewModel2, planViewModel5]
+        // Current plan
+        let currentPlan = PlanViewModel(remoteManager: PreviewsData.remoteManager,
+                                        currentPlan: PreviewsData.currentSub)
 
-    // Current plan
-    let currentPlan = PlanViewModel(doh: PaymentsDoH(),
-                                    remoteManager: PreviewsData.remoteManager,
-                                    currentPlan: PreviewsData.currentSub)
-
-    let viewModel = AvailablePlansViewModel(sessionId: "123",
-                                            token: "1231da",
-                                            doh: PaymentsDoH(),
-                                            appVersion: "VPN@5.5.0",
-                                            hideCurrentPlan: true,
-                                            presentationMode: .modal)
-    viewModel.addPlanViewModels(availablePlans)
-    viewModel.setBillingCycle(.all)
-    // viewModel.showBanner()
-    viewModel.setCurrentPlan(currentPlan)
-
-    return AvailablePlansView(viewModel: viewModel)
+        let viewModel = AvailablePlansViewModel(remoteManager: PreviewsData.remoteManager,
+                                                hideCurrentPlan: false,
+                                                presentationMode: .modal)
+        viewModel.addPlanViewModels(availablePlans)
+        viewModel.setBillingCycle(.all)
+        // viewModel.showBanner()
+        viewModel.setCurrentPlan(currentPlan)
+        return AvailablePlansView(viewModel: viewModel)
+    } model: {
+        let config = TransactionsObserverConfiguration(remoteManager: MockRemoteManager())
+        TransactionsObserver.shared.setConfiguration(config)
+        try await TransactionsObserver.shared.start()
+    }
 }
 #endif

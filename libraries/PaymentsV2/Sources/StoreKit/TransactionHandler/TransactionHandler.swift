@@ -27,88 +27,21 @@ import ProtonCoreNetworking
 import ProtonCoreObservability
 import StoreKit
 
-public enum TransactionHandlerError: LocalizedError {
-
-    case unableToFindPlanName(productID: String)
-    case transactionIdNotEqualToOriginalTransactionId(originalID: UInt64, transactionId: UInt64)
-    case unableToGetBundleIdentifier
-    case fetchReceiptDidFail(description: String)
-    case wrongMethodCalled
-
-    public var errorDescription: String? {
-        switch self {
-        case .transactionIdNotEqualToOriginalTransactionId:
-            return PaymentsV2Localizer.Transaction_Handler_repeated_purchase.l10n
-        case .fetchReceiptDidFail:
-            return PaymentsV2Localizer.Transaction_Handler_receipt_update_failed.l10n
-        default:
-            return PaymentsV2Localizer.Transaction_Handler_plan_not_found.l10n
-        }
-    }
-
-    public var failureReason: String? {
-        switch self {
-        case .unableToFindPlanName(let productId):
-            return "Impossible to find plan name for productId: \(productId)"
-        case .transactionIdNotEqualToOriginalTransactionId(let originalId, let transactionId):
-            return "\(originalId) != \(transactionId) this could indicate a repeated or renewal of an existing plan"
-        case .unableToGetBundleIdentifier:
-            return "App Bundle identifier not found"
-        case .fetchReceiptDidFail(let description):
-            return "SKReceiptRefreshRequest failed with error: \(description)"
-        case .wrongMethodCalled:
-            return "Wrong function called"
-        }
-    }
-}
-
-public enum TransactionHandlerState: String, Sendable {
-    case idle
-
-    case iapStatusCheck
-    case iapPurchase
-    case fetchAvailablePlans
-    case fetchProtonPlans
-    case fetchUserUUID
-
-    case generatingReceipt
-    case creatingTransactionToken
-    case waitingTokenResponse // Omnichannel only state
-    case createNewSubscription
-    case transactionCompleted
-    case transactionPending
-    // Error states:
-    case transactionCancelledByUser
-    case mismatchTransactionIDs
-    case transactionProcessError
-    case unableToGetUserTransactionUUID
-    case unknownError
-
-    public var localizedDescription: String? {
-        switch self {
-        default:
-            return self.rawValue
-        }
-    }
-}
-
 public final class TransactionHandler: NSObject, TransactionHandlerProviding, @unchecked Sendable {
 
     private var remoteManager: RemoteManagerProviding
-    private let paymentsAPIs: PaymentsAPIs
     public private(set) var transactionState = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
     private let queue = DispatchQueue(label: "paymentsV2.transactionHandler.syncQueue")
     private var tokenContinuation: CheckedContinuation<Void, Error>?
     private var refresh: SKReceiptRefreshRequest?
     private let receiptManager: StoreKitReceiptManagerProviding
     private var appAccountToken: UUID?
+    private var transactionIdInProgress: UInt64 = 0
 
     public init(remoteManager: RemoteManagerProviding,
-                paymentsAPIs: PaymentsAPIs,
                 receiptManger: StoreKitReceiptManagerProviding = StoreKitReceiptManager(),
                 appAccountToken: UUID? = nil) {
         self.remoteManager = remoteManager
-        self.paymentsAPIs = paymentsAPIs
         self.receiptManager = receiptManger
         self.appAccountToken = appAccountToken
     }
@@ -120,21 +53,16 @@ public final class TransactionHandler: NSObject, TransactionHandlerProviding, @u
 
     public func processTransaction(_ transaction: ProtonTransaction, plan: ComposedPlan) async throws -> ComposedPlan {
         debugPrint("Transaction in progress...")
-
-        if transaction.renewal {
-            PMLog.info("TransactionHandler: Transaction is a renewal, skip processing", sendToExternal: true)
-            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "start_resolving_transaction",
-                                                                   "isRenewal": transaction.renewal])
-            updateTransactionState(state: .transactionCompleted)
-            return plan
+        queue.sync {
+            transactionIdInProgress = transaction.id
         }
-        PMLog.info("TransactionHandler: Transaction is not a renewal, start processing it.", sendToExternal: true)
+
+        // Adding the transactions to the set of the resolved ones
+        TransactionsObserver.shared.addTransactionInProgress(transactionIdInProgress)
+
         await TransactionsObserver.shared.logHelper?.logEvent(["phase": "start_resolving_transaction"])
         try await resolveTransaction(transaction, plan: plan)
 
-        // transaction.appAccountToken
-        // add API to fetch account UUID from BE --> AccountUUID
-        // if transaction.appAccountToken == AccountUUID --> Process
         return plan
     }
 
@@ -147,10 +75,9 @@ public final class TransactionHandler: NSObject, TransactionHandlerProviding, @u
     public func verifyTransactionUUIDs(appAccountToken: UUID) async throws -> Bool {
 
         guard let uuid = self.appAccountToken else {
-            let request = try paymentsAPIs.url(for: .userTransactionUUID)
             PMLog.info("TransactionHandler: UUID not provided, fetching it", sendToExternal: true)
 
-            let userUUID: UserTransactionUUIDResponse = try await remoteManager.getFromURL(request.url)
+            let userUUID: UserTransactionUUIDResponse = try await remoteManager.getUserUUID()
             return appAccountToken == userUUID.uuidValue
         }
         PMLog.info("OCTransactionHandler: UUID check", sendToExternal: true)
@@ -164,12 +91,8 @@ public final class TransactionHandler: NSObject, TransactionHandlerProviding, @u
     }
 
     public func updateTransactionState(state: TransactionHandlerState) {
-        let completableStates: [TransactionHandlerState] = [.transactionProcessError, .mismatchTransactionIDs, .transactionCompleted, .unableToGetUserTransactionUUID]
         queue.sync {
             transactionState.value = state
-            if completableStates.contains(state) {
-                transactionState.send(completion: .finished)
-            }
         }
     }
 }
@@ -191,6 +114,7 @@ private extension TransactionHandler {
             TransactionsObserver.shared.logHelper?.logEventSync(["phase": "fetch_bundle_identifier",
                                                                  "status": "failed"],
                                                                 type: .close)
+            TransactionsObserver.shared.removeTransactionInProgress(transactionIdInProgress)
             throw error
         }
 
@@ -226,26 +150,30 @@ private extension TransactionHandler {
 
         debugPrint("Creating payment token..")
         updateTransactionState(state: .creatingTransactionToken)
+
         do {
-            let request = try paymentsAPIs.url(for: .createToken(token: transactionToken))
-            let newToken: NewToken = try await remoteManager.postToURL(request: request)
+            let newToken: NewToken = try await remoteManager.post(transactionToken)
             ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(status: .http2xx, isDynamic: true))
             await TransactionsObserver.shared.logHelper?.logEvent(["phase": "post_validation_token_request",
                                                                    "token": newToken.toDictionary()])
             PMLog.info("TransactionHandler: Post validation token successful", sendToExternal: true)
             return newToken
         } catch {
-
-            if case let RemoteError.responseReturnedError(error, urlString) = error {
-                let responseError = ResponseError(httpCode: nil, responseCode: error, userFacingMessage: "PaymentV2 - TransactionHandler: Error for requets: \(urlString)", underlyingError: nil)
+            TransactionsObserver.shared.removeTransactionInProgress(transactionIdInProgress)
+            if let error = error as? APICodeError, error == APICodeError.invalidRequirements {
+                let responseError = ResponseError(httpCode: nil, responseCode: error.rawValue, userFacingMessage: "POST /tokens failed", underlyingError: nil)
                 ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(error: responseError, isDynamic: true))
-                PMLog.error("TransactionHandler: Post validation token failed, error: \(error), url: \(urlString)", sendToExternal: true)
+                PMLog.error("TransactionHandler: Post validation token failed, error: \(error.rawValue), request: POST /tokens", sendToExternal: true)
+
+                updateTransactionState(state: .transactionProcessErrorInvalidReq)
+                throw TransactionHandlerError.invalidTokenRequirements
             }
 
             updateTransactionState(state: .transactionProcessError)
             await TransactionsObserver.shared.logHelper?.logEvent(["phase": "post_validation_token_request",
                                                                    "status": "failed"])
             PMLog.error("TransactionHandler: Post validation token failed", sendToExternal: true)
+
             throw error
         }
     }
@@ -260,27 +188,34 @@ private extension TransactionHandler {
                                                                    "status": "failed",
                                                                    "reason": "plan name and compose plan mismatch"],
                                                                   type: .close)
+
+            TransactionsObserver.shared.removeTransactionInProgress(transactionIdInProgress)
             throw error
         }
         debugPrint("Creating new subscription..")
-        let newSub = NewSubscription(newValues: NewSubscriptionValues(amount: nil,
-                                                                      paymentMethodID: nil,
-                                                                      payments: nil,
-                                                                      paymentToken: token.token),
-                                     subscription: Subscription(cycle: composedPlan.instance.cycle,
-                                                                currency: transaction.currencyIdentifier,
-                                                                currencyID: nil,
-                                                                plans: [planName: 1],
-                                                                planIDs: nil,
-                                                                codes: nil,
-                                                                couponCode: nil,
-                                                                giftCode: nil))
+        let newSub = NewSubscription(
+            newValues: NewSubscriptionValues(
+                amount: nil,
+                paymentMethodID: nil,
+                payments: nil,
+                paymentToken: token.token
+            ),
+            subscription: Subscription(
+                cycle: composedPlan.instance.cycle,
+                currency: transaction.currencyIdentifier,
+                currencyID: nil,
+                plans: [planName: 1],
+                planIDs: nil,
+                codes: nil,
+                couponCode: nil,
+                giftCode: nil
+            )
+        )
 
         updateTransactionState(state: .createNewSubscription)
 
         do {
-            let request = try paymentsAPIs.url(for: .createSubscription(newSubscription: newSub))
-            _ = try await remoteManager.postToURL(request: request)
+            _ = try await remoteManager.create(newSubscription: newSub)
             debugPrint("New subscription successfully created ✅")
             PMLog.info("TransactionHandler: Create new subscription - New subscription successfully created ✅", sendToExternal: true)
             await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_new_subscription",
@@ -290,6 +225,7 @@ private extension TransactionHandler {
             updateTransactionState(state: .transactionCompleted)
             return true
         } catch {
+            TransactionsObserver.shared.removeTransactionInProgress(transactionIdInProgress)
             ObservabilityEnv.report(.paymentSubscribeTotal(status: .failed, isDynamic: true))
             updateTransactionState(state: .transactionProcessError)
             PMLog.error("TransactionHandler: Create new subscription - New subscription creation failed", sendToExternal: true)

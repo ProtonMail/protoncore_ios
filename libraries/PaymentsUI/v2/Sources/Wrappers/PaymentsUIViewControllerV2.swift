@@ -21,6 +21,7 @@
 
 import SwiftUI
 import ProtonCoreDoh
+import ProtonCoreServices
 import ProtonCorePaymentsV2
 import ProtonCoreUIFoundations
 import Combine
@@ -33,24 +34,15 @@ public final class PaymentsUIViewControllerV2: UIViewController {
     public private(set) var transactionProgress = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
     public private(set) var viewCycleState = CurrentValueSubject<ViewCycleState, Never>(.none)
 
-    private let sessionId: String
-    private let token: String
-    private let appVersion: String
-    private let doh: DoHInterface & ServerConfig
+    private let apiService: APIService
     private let presentationMode: PresentationMode
     private let hideCurrentPlan: Bool
     private var hostingViewController: UIHostingController<AvailablePlansView>!
 
-    public init(sessionId: String,
-                token: String,
-                appVersion: String,
-                doh: DoHInterface & ServerConfig,
+    public init(apiService: APIService,
                 presentationMode: PresentationMode = .none,
                 hideCurrentPlan: Bool = false) {
-        self.sessionId = sessionId
-        self.token = token
-        self.appVersion = appVersion
-        self.doh = doh
+        self.apiService = apiService
         self.presentationMode = presentationMode
         self.hideCurrentPlan = hideCurrentPlan
 
@@ -62,10 +54,7 @@ public final class PaymentsUIViewControllerV2: UIViewController {
     }
 
     private func setupView() {
-        let viewModel = AvailablePlansViewModel(sessionId: sessionId,
-                                                token: token,
-                                                doh: doh,
-                                                appVersion: appVersion,
+        let viewModel = AvailablePlansViewModel(remoteManager: RemoteManager(apiService: apiService),
                                                 hideCurrentPlan: hideCurrentPlan,
                                                 presentationMode: presentationMode)
 

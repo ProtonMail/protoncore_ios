@@ -22,6 +22,7 @@
 import Combine
 import Foundation
 import ProtonCoreDoh
+import ProtonCoreServices
 import ProtonCoreFeatureFlags
 import ProtonCoreLog
 import StoreKit
@@ -64,42 +65,11 @@ public enum TransactionsObserverError: LocalizedError {
 }
 
 public struct TransactionsObserverConfiguration: Sendable {
-    let sessionID: String
-    let authToken: String
-    let appVersion: String
-    let doh: DoHInterface & ServerConfig
+    let remoteManager: RemoteManagerProviding
 
-#if DEBUG
-    let session: URLSession?
-#endif
-
-#if DEBUG
-    public init(
-        sessionID: String,
-        authToken: String,
-        appVersion: String,
-        doh: DoHInterface & ServerConfig,
-        session: URLSession? = nil
-    ) {
-        self.sessionID = sessionID
-        self.authToken = authToken
-        self.appVersion = appVersion
-        self.doh = doh
-        self.session = session
+    public init(remoteManager: RemoteManagerProviding) {
+        self.remoteManager = remoteManager
     }
-#else
-    public init(
-        sessionID: String,
-        authToken: String,
-        appVersion: String,
-        doh: DoHInterface & ServerConfig
-    ) {
-        self.sessionID = sessionID
-        self.authToken = authToken
-        self.appVersion = appVersion
-        self.doh = doh
-    }
-#endif
 }
 
 public final class TransactionsObserver: TransactionsObserverProviding, @unchecked Sendable {
@@ -113,8 +83,7 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
 
     private var updates: Task<Void, Never>?
     private var remoteManager: RemoteManagerProviding?
-    private var paymentsAPI: PaymentsAPIs?
-    private var planComposer: PlansComposerProviding?
+    private var planComposer: PlansComposerProviding!
     var transactionHandler: TransactionHandlerProviding!
     private var transactionsInProgress = Set<UInt64>()
     private let queue = DispatchQueue(label: "paymentsV2.transactionObserver.syncQueue")
@@ -137,10 +106,43 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
                         transactionStatus = .failed
                         return
                     }
+                    guard transaction.purchaseDate == transaction.originalPurchaseDate else {
+                        debugPrint("Transaction received is a renewal, no need to process it.")
+                        transactionStatus = .successful
+                        await transaction.finish()
+                        return
+                    }
                     PMLog.info("TransactionsObserver: Resolving unfinished transaction", sendToExternal: true)
                     await processTransaction(transaction, jwsRepresentation: unfinished.jwsRepresentation)
                 case .unverified(let transaction, let transactionError):
                     debugPrint("Unverified unfinished transaction:\n \(transaction)\n \(transactionError)")
+                    return
+                }
+            }
+
+            for await update in Transaction.updates {
+                switch update {
+                case .verified(let transaction):
+                    guard !transactionsInProgress.contains(transaction.id) else {
+                        debugPrint("Transaction already in progress, no action required")
+                        return
+                    }
+                    guard (await transaction.subscriptionStatus) != nil else {
+                        debugPrint("Transaction received is not a subscription")
+                        transactionStatus = .failed
+                        return
+                    }
+                    guard transaction.purchaseDate == transaction.originalPurchaseDate else {
+                        debugPrint("Transaction received is a renewal, no need to process it.")
+                        transactionStatus = .successful
+                        await transaction.finish()
+                        return
+                    }
+                    PMLog.info("TransactionsObserver: Resolving transaction", sendToExternal: true)
+                    await processTransaction(transaction, jwsRepresentation: update.jwsRepresentation)
+                case .unverified(let transaction, let transactionError):
+                    PMLog.info("Unverified update transaction:\n \(transaction)\n \(transactionError)", sendToExternal: true)
+                    debugPrint("Unverified update transaction:\n \(transaction)\n \(transactionError)")
                     return
                 }
             }
@@ -158,23 +160,9 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
 
         logHelper = await LogHelper.create()
 
-        let remoteManager = RemoteManager(
-            sessionID: config.sessionID,
-            authToken: config.authToken,
-            appVersion: config.appVersion,
-            atlasSecret: config.doh.getProxyToken()
-        )
+        self.remoteManager = config.remoteManager
 
-#if DEBUG
-        if let session = config.session {
-            remoteManager.setSession(session)
-        }
-#endif
-
-        self.remoteManager = remoteManager
-        self.paymentsAPI = PaymentsAPIs(doh: config.doh)
-
-        guard let remoteManager = self.remoteManager, let paymentsAPI = self.paymentsAPI else {
+        guard let remoteManager = self.remoteManager else {
             let error = TransactionsObserverError.requiredSubComponentInitFailed
             PMLog.error(error.failureReason ?? "Impossible to initilize sub-components required by PaymentsV2 - TransactionObserver", sendToExternal: true)
             throw error
@@ -183,31 +171,34 @@ public final class TransactionsObserver: TransactionsObserverProviding, @uncheck
 #if DEBUG
         if FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.paymentsOmnichannelEnabled) {
             PMLog.info("TransactionsObserver: Omnichannel flow started")
-            self.transactionHandler = OCTransactionHandler(remoteManager: remoteManager,
-                                                           paymentsAPIs: paymentsAPI)
+            self.transactionHandler = OCTransactionHandler(remoteManager: remoteManager)
         } else {
             PMLog.info("TransactionsObserver: Legacy flow started")
-            self.transactionHandler = TransactionHandler(remoteManager: remoteManager,
-                                                         paymentsAPIs: paymentsAPI)
+            self.transactionHandler = TransactionHandler(remoteManager: remoteManager)
         }
 #else
-        self.transactionHandler = TransactionHandler(remoteManager: remoteManager,
-                                                     paymentsAPIs: paymentsAPI)
+        self.transactionHandler = TransactionHandler(remoteManager: remoteManager)
 #endif
-        self.planComposer = PlansComposer(remoteManager: remoteManager, paymentsAPIs: paymentsAPI)
-
         self.transactionHandler.transactionState.sink { [weak self] state in
             self?.transactionProgress.send(state)
         }
         .store(in: &cancellables)
+
+        self.planComposer = PlansComposer(remoteManager: remoteManager)
+        _ = try await self.planComposer.fetchProtonPlans()
     }
 
     private func processTransaction(_ transaction: Transaction, jwsRepresentation: String) async {
 
-        guard let plan = planComposer?.matchPlanToStoreProduct(transaction.productID), let appAccountToken = transaction.appAccountToken else {
-            return
-        }
         do {
+            if !planComposer.hasData {
+                _ = try await planComposer.fetchAvailablePlans()
+            }
+
+            guard let plan = planComposer.matchPlanToStoreProduct(transaction.productID), let appAccountToken = transaction.appAccountToken else {
+                return
+            }
+
             guard let accountMatching = try await transactionHandler?.verifyTransactionUUIDs(appAccountToken: appAccountToken) else {
                 transactionStatus = .unableToVerifyAccountsUUIDs
                 return

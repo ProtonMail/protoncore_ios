@@ -133,7 +133,7 @@ extension ComposedPlan {
     }
 
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(plan.id)
+        hasher.combine(plan.ID)
         hasher.combine(product.id)
     }
 }

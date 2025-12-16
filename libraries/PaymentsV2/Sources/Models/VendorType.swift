@@ -22,5 +22,5 @@
 import Foundation
 
 public enum VendorType: String {
-    case Card, Paypal, Apple, Bitcoin, InApp
+    case card, paypal, apple, bitcoin, inApp
 }

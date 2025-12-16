@@ -29,16 +29,14 @@ import ProtonCoreObservability
 public final class OCTransactionHandler: NSObject, TransactionHandlerProviding, @unchecked Sendable {
 
     private var remoteManager: RemoteManagerProviding
-    private let paymentsAPIs: PaymentsAPIs
     public private(set) var transactionState = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
     private let queue = DispatchQueue(label: "paymentsV2.transactionHandler.syncQueue")
     private var appAccountToken: UUID?
+    private var transactionIdInProgress: UInt64 = 0
 
     public init(remoteManager: RemoteManagerProviding,
-                paymentsAPIs: PaymentsAPIs,
                 appAccountToken: UUID? = nil) {
         self.remoteManager = remoteManager
-        self.paymentsAPIs = paymentsAPIs
         self.appAccountToken = appAccountToken
     }
 
@@ -51,17 +49,14 @@ public final class OCTransactionHandler: NSObject, TransactionHandlerProviding, 
                                    jwsRepresentation: String,
                                    plan: ComposedPlan) async throws -> ComposedPlan {
         debugPrint("Transaction in progress...")
-
-        if transaction.renewal {
-            await TransactionsObserver.shared.logHelper?.logEvent(["phase": "start_resolving_transaction",
-                                                                   "isRenewal": transaction.renewal])
-            PMLog.info("OCTransactionHandler: Transaction is a renewal, skip processing", sendToExternal: true)
-            updateTransactionState(state: .transactionCompleted)
-            return plan
+        queue.sync {
+            transactionIdInProgress = transaction.id
         }
 
+        // Adding the transactions to the set of the resolved ones
+        TransactionsObserver.shared.addTransactionInProgress(transactionIdInProgress)
+
         await TransactionsObserver.shared.logHelper?.logEvent(["phase": "start_resolving_transaction"])
-        PMLog.info("OCTransactionHandler: Transaction is not a renewal, start processing it.", sendToExternal: true)
         try await resolveTransaction(transaction, plan: plan, jwsRepresentation: jwsRepresentation)
 
         return plan
@@ -76,10 +71,8 @@ public final class OCTransactionHandler: NSObject, TransactionHandlerProviding, 
     public func verifyTransactionUUIDs(appAccountToken: UUID) async throws -> Bool {
 
         guard let uuid = self.appAccountToken else {
-            let request = try paymentsAPIs.url(for: .userTransactionUUID)
             PMLog.info("OCTransactionHandler: UUID not provided, fetching it", sendToExternal: true)
-
-            let userUUID: UserTransactionUUIDResponse = try await remoteManager.getFromURL(request.url)
+            let userUUID: UserTransactionUUIDResponse = try await remoteManager.getUserUUID()
             return appAccountToken == userUUID.uuidValue
         }
         PMLog.info("OCTransactionHandler: UUID check", sendToExternal: true)
@@ -93,12 +86,8 @@ public final class OCTransactionHandler: NSObject, TransactionHandlerProviding, 
     }
 
     public func updateTransactionState(state: TransactionHandlerState) {
-        let completableStates: [TransactionHandlerState] = [.transactionProcessError, .mismatchTransactionIDs, .transactionCompleted, .unableToGetUserTransactionUUID]
         queue.sync {
             transactionState.value = state
-            if completableStates.contains(state) {
-                transactionState.send(completion: .finished)
-            }
         }
     }
 }
@@ -109,17 +98,6 @@ private extension OCTransactionHandler {
     private func generateValidationTokenFromStoreKitReceipt(_ transaction: ProtonTransactionProviding, jwsRepresentation: String) throws -> OCToken {
 
         debugPrint("Generating validation token..")
-
-#if DEBUG && targetEnvironment(simulator)
-        // TODO: Refactor this to make it testable
-        //        let envrionment = ProcessInfo.processInfo.environment
-        //        if envrionment["test-transaction"] == "sandbox" {
-        //            transactionIdentifier = "test-transaction"
-        //        }
-        //        if let bundle = envrionment["bundleIdentifier"] {
-        //            bundleIdentifier = bundle
-        //        }
-#endif
         updateTransactionState(state: .generatingReceipt)
 
         let newToken = OCToken(payment: OCPaymentReceipt(details: OCReceiptDetails(jws: jwsRepresentation)))
@@ -135,19 +113,21 @@ private extension OCTransactionHandler {
 
         debugPrint("Creating payment token..")
         do {
-            let request = try paymentsAPIs.url(for: .createOCToken(token: transactionToken))
-            let newToken: NewToken = try await remoteManager.postToURL(request: request)
+            let newToken: NewToken = try await remoteManager.post(transactionToken)
             ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(status: .http2xx, isDynamic: true))
             await TransactionsObserver.shared.logHelper?.logEvent(["phase": "post_validation_token_request",
                                                                    "token": newToken.toDictionary()])
             PMLog.info("OCTransactionHandler: Post validation token successful", sendToExternal: true)
             return newToken
         } catch {
-
-            if case let RemoteError.responseReturnedError(error, urlString) = error {
-                let responseError = ResponseError(httpCode: nil, responseCode: error, userFacingMessage: "PaymentV2 - TransactionHandler: Error for requets: \(urlString)", underlyingError: nil)
+            TransactionsObserver.shared.removeTransactionInProgress(transactionIdInProgress)
+            if let error = error as? APICodeError, error == APICodeError.invalidRequirements {
+                let responseError = ResponseError(httpCode: nil, responseCode: error.rawValue, userFacingMessage: "POST /tokens failed", underlyingError: nil)
                 ObservabilityEnv.report(.paymentCreatePaymentTokenTotal(error: responseError, isDynamic: true))
-                PMLog.error("OCTransactionHandler: Post validation token failed, error: \(error), url: \(urlString)", sendToExternal: true)
+                PMLog.error("TransactionHandler: Post validation token failed, error: \(error.rawValue), request: POST /tokens", sendToExternal: true)
+
+                updateTransactionState(state: .transactionProcessErrorInvalidReq)
+                throw TransactionHandlerError.invalidTokenRequirements
             }
 
             updateTransactionState(state: .transactionProcessError)
@@ -165,8 +145,7 @@ private extension OCTransactionHandler {
         var expectedStatus = 0
         repeat {
             do {
-                let request = try self.paymentsAPIs.url(for: .getToken(token: token.token))
-                let status: ResponseStatus = try await self.remoteManager.getFromURL(request.url)
+                let status = try await self.remoteManager.fetch(token: token.token)
                 if status.status == 1 {
                     debugPrint("Transaction validated ✅")
                     PMLog.info("OCTransactionHandler: Polling token status success", sendToExternal: true)
@@ -177,6 +156,7 @@ private extension OCTransactionHandler {
                     debugPrint("Pending validation results..")
                 }
             } catch {
+                TransactionsObserver.shared.removeTransactionInProgress(transactionIdInProgress)
                 self.updateTransactionState(state: .transactionProcessError)
                 PMLog.error("OCTransactionHandler: Polling token status failed", sendToExternal: true)
                 await TransactionsObserver.shared.logHelper?.logEvent(["get_token_polling": ["time": Date.now.description,
@@ -198,6 +178,8 @@ private extension OCTransactionHandler {
                                                                    "status": "failed",
                                                                    "reason": "Plan name not found"],
                                                                   type: .close)
+
+            TransactionsObserver.shared.removeTransactionInProgress(transactionIdInProgress)
             throw error
         }
         debugPrint("Creating new subscription..")
@@ -209,8 +191,7 @@ private extension OCTransactionHandler {
         updateTransactionState(state: .createNewSubscription)
 
         do {
-            let request = try paymentsAPIs.url(for: .createOmnichannelSubscription(newSubscription: newSub))
-            _ = try await remoteManager.postToURL(request: request)
+            _ = try await remoteManager.create(newOCSubscription: newSub)
             debugPrint("New subscription successfully created ✅")
             PMLog.info("OCTransactionHandler: Create new subscription - New subscription successfully created ✅", sendToExternal: true)
             await TransactionsObserver.shared.logHelper?.logEvent(["phase": "create_new_subscription",
@@ -220,6 +201,7 @@ private extension OCTransactionHandler {
             updateTransactionState(state: .transactionCompleted)
             return true
         } catch {
+            TransactionsObserver.shared.removeTransactionInProgress(transactionIdInProgress)
             ObservabilityEnv.report(.paymentSubscribeTotal(status: .failed, isDynamic: true))
             updateTransactionState(state: .transactionProcessError)
             PMLog.error("OCTransactionHandler: Create new subscription - New subscription creation failed", sendToExternal: true)

@@ -28,8 +28,7 @@ import XCTest
 
 final class OCTransactionHandlerTests: XCTestCase, @unchecked Sendable {
 
-    private var urlSessionConfig: URLSessionConfiguration!
-    private var mockRemoteManager: MockedRemoteManager!
+    private var mockRemoteManager: RemoteManagerProviding!
 
     private let productsIds = ["iosvpn_bundle2022_12_usd_auto_renewing", "iosvpn_vpn2022_1_usd_auto_renewing"]
     private var subsComposer: PlansComposer!
@@ -41,15 +40,8 @@ final class OCTransactionHandlerTests: XCTestCase, @unchecked Sendable {
 
     override func setUp() async throws {
 
-        mockRemoteManager = MockedRemoteManager()
-
-        guard let remoteManager = mockRemoteManager.remoteManager, let paymentsAPIs = mockRemoteManager.paymentsAPI else {
-            XCTFail("MockRemoteManager returned nil remoteManager or paymentsAPIs")
-            return
-        }
-
-        subsComposer = PlansComposer(remoteManager: remoteManager,
-                                     paymentsAPIs: paymentsAPIs)
+        mockRemoteManager = MockRemoteManager()
+        subsComposer = PlansComposer(remoteManager: mockRemoteManager)
         let url = Bundle.module.url(forResource: "StoreKit_mock", withExtension: "storekit")!
         do {
             storeSession = try SKTestSession(contentsOf: url)
@@ -57,8 +49,7 @@ final class OCTransactionHandlerTests: XCTestCase, @unchecked Sendable {
             debugPrint(error)
         }
 
-        sut = OCTransactionHandler(remoteManager: remoteManager,
-                                   paymentsAPIs: paymentsAPIs)
+        sut = OCTransactionHandler(remoteManager: mockRemoteManager)
 
         try await super.setUp()
     }
@@ -66,15 +57,11 @@ final class OCTransactionHandlerTests: XCTestCase, @unchecked Sendable {
     override func tearDown() {
         subsComposer = nil
         cancellable.removeAll()
-        mockRemoteManager.destroy()
-        mockRemoteManager = nil
 
         super.tearDown()
     }
 
     func test_transaction_state() async throws {
-        // Fetch Proton plans
-        mockRemoteManager.setupURLSessionMock(withMockResponse: ResponseStubber.remoteResponseFor(transactionState: .fetchProtonPlans))
 
         _ = try await subsComposer.fetchProtonPlans()
         _ = try await subsComposer.getStoreProducts(["iosvpn_bundle2022_12_usd_auto_renewing", "iosvpn_vpn2022_1_usd_auto_renewing"])
@@ -94,18 +81,12 @@ final class OCTransactionHandlerTests: XCTestCase, @unchecked Sendable {
 
         let protonTransaction = TransactionStubber.convertStoreTestTransaction(transaction, price: composedPlan.product.price, currencyId: "USD", renewal: false)
 
-        sut.transactionState.sink { [weak self] state in
-            guard let self = self else {
-                XCTFail()
-                return
-            }
+        sut.transactionState.sink { state in
             debugPrint(state.localizedDescription ?? "")
 
             if state == .transactionProcessError {
                 XCTFail()
             }
-
-            self.mockRemoteManager.setupURLSessionMock(withMockResponse: ResponseStubber.remoteResponseFor(transactionState: state))
 
             debugPrint(state.localizedDescription ?? "")
             switch state {
@@ -122,8 +103,6 @@ final class OCTransactionHandlerTests: XCTestCase, @unchecked Sendable {
     }
 
     func test_transaction_renewal_state() async throws {
-        // Fetch Proton plans
-        mockRemoteManager.setupURLSessionMock(withMockResponse: ResponseStubber.remoteResponseFor(transactionState: .fetchProtonPlans))
 
         _ = try await subsComposer.fetchProtonPlans()
         _ = try await subsComposer.getStoreProducts(["iosvpn_bundle2022_12_usd_auto_renewing", "iosvpn_vpn2022_1_usd_auto_renewing"])
@@ -143,18 +122,12 @@ final class OCTransactionHandlerTests: XCTestCase, @unchecked Sendable {
 
         let protonTransaction = TransactionStubber.convertStoreTestTransaction(transaction, price: composedPlan.product.price, currencyId: "USD", renewal: true)
 
-        sut.transactionState.sink { [weak self] state in
-            guard let self = self else {
-                XCTFail()
-                return
-            }
+        sut.transactionState.sink { state in
             debugPrint(state.localizedDescription ?? "")
 
             if state == .transactionProcessError {
                 XCTFail()
             }
-
-            self.mockRemoteManager.setupURLSessionMock(withMockResponse: ResponseStubber.remoteResponseFor(transactionState: state))
 
             debugPrint(state.localizedDescription ?? "")
             switch state {
@@ -171,7 +144,6 @@ final class OCTransactionHandlerTests: XCTestCase, @unchecked Sendable {
     }
 
     func test_UUID_fetched_when_not_provided() async throws {
-        self.mockRemoteManager.setupURLSessionMock(withMockResponse: ResponseStubber.remoteResponseFor(transactionState: .fetchUserUUID))
 
         let mockUUID = UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")!
         let mockUUID2 = UUID(uuidString: "E621E1F8-C46C-495A-93FC-0C247A3E6E5F")!
@@ -184,19 +156,10 @@ final class OCTransactionHandlerTests: XCTestCase, @unchecked Sendable {
 
     func test_UUID_provided_at_init() async throws {
 
-        guard let remoteManager = mockRemoteManager.remoteManager, let paymentsAPIs = mockRemoteManager.paymentsAPI else {
-            XCTFail("MockRemoteManager returned nil remoteManager or paymentsAPIs")
-            return
-        }
-
         let mockUUID = UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")!
         let mockUUID2 = UUID(uuidString: "E621E1F8-C46C-495A-93FC-0C247A3E6E5F")!
-
-        sut = OCTransactionHandler(remoteManager: remoteManager,
-                                   paymentsAPIs: paymentsAPIs,
+        sut = OCTransactionHandler(remoteManager: mockRemoteManager,
                                    appAccountToken: mockUUID)
-
-        self.mockRemoteManager.setupURLSessionMock(withMockResponse: ResponseStubber.remoteResponseFor(transactionState: .fetchUserUUID))
         let positiveResult = try await sut.verifyTransactionUUIDs(appAccountToken: mockUUID)
         let negativeResult = try await sut.verifyTransactionUUIDs(appAccountToken: mockUUID2)
 

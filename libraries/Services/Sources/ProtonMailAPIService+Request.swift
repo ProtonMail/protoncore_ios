@@ -224,7 +224,7 @@ extension PMAPIService {
         }
 
         let url = self.dohInterface.getCurrentlyUsedHostUrl() + path
-
+        print(url)
         do {
 
             let request = try self.createRequest(

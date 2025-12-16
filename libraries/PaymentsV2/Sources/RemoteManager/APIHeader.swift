@@ -26,6 +26,7 @@ public enum APIHeader: String, Sendable {
     case authorization = "Authorization"
     case sessionId = "x-pm-uid"
     case appVersion = "x-pm-appversion"
+    case features = "x-pm-features"
     case apiVersion = "x-pm-apiversion"
     case contentType = "Content-Type"
     case accept = "Accept"

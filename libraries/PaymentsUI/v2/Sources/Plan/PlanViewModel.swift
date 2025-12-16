@@ -86,25 +86,19 @@ public class PlanViewModel: ObservableObject, Identifiable {
     /// The plan description is taken from the `AvailablePlan`. The duration and identifier com from the `PlanInstance`,
     /// and the localized price and the purchase action are derived from the `Product`
 
-    private let paymentsAPI: PaymentsAPIs
-    private let remoteManager: RemoteManager
     private var plansManager: PublicProtonPlansManagerProviding?
     private let composedPlan: ComposedPlan?
     private var cancellables = Set<AnyCancellable>()
 
-    public init(doh: DoHInterface & ServerConfig,
-                remoteManager: RemoteManager,
+    public init(remoteManager: RemoteManagerProviding,
                 composedPlan: ComposedPlan,
                 plansManager: PublicProtonPlansManagerProviding? = nil) {
 
         self.composedPlan = composedPlan
-        self.paymentsAPI = PaymentsAPIs(doh: doh)
-        self.remoteManager = remoteManager
         if let pManager = plansManager {
             self.plansManager = pManager
         } else {
-            self.plansManager = ProtonPlansManager(doh: doh,
-                                                   remoteManager: remoteManager)
+            self.plansManager = ProtonPlansManager(remoteManager: remoteManager)
         }
 
         let progressEntitlements = composedPlan.plan.entitlements.compactMap {
@@ -143,13 +137,10 @@ public class PlanViewModel: ObservableObject, Identifiable {
 
     }
 
-    public init(doh: DoHInterface & ServerConfig,
-                remoteManager: RemoteManager,
+    public init(remoteManager: RemoteManagerProviding,
                 canMinimize: Bool = true,
                 currentPlan: CurrentSubscriptionResponse) {
         self.composedPlan = nil
-        self.paymentsAPI = PaymentsAPIs(doh: doh)
-        self.remoteManager = remoteManager
 
         let progressEntitlements = currentPlan.entitlements.compactMap {
             switch $0 {
@@ -194,14 +185,14 @@ public class PlanViewModel: ObservableObject, Identifiable {
 
     // MARK: Public methods
     public func downloaderForEntitlement(_ entitlement: DescriptionEntitlement) -> AssetDownloader {
-        return AssetDownloader(url: try? paymentsAPI.url(for: .icon(name: entitlement.iconName)).url)
+        return AssetDownloader(iconName: entitlement.iconName)
     }
 
     public func decorationsDownloaders() -> [AssetDownloader]? {
         return decorations.compactMap {
             switch $0 {
             case .starred(let decoration):
-                AssetDownloader(url: try? paymentsAPI.url(for: .icon(name: decoration.iconName)).url)
+                AssetDownloader(iconName: decoration.iconName)
             default:
                 nil
             }

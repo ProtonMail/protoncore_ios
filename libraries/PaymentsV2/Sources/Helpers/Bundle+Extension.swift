@@ -1,6 +1,6 @@
 //
 //  Bundle+Extension.swift
-//  ProtonCore-PaymentsV2Test - Created on 15/10/2024.
+//  ProtonCore-PaymentsV2 - Created on 15/10/2024.
 //
 //  Copyright (c) 2024 Proton Technologies AG
 //
@@ -20,11 +20,12 @@
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
+import ProtonCoreUtilities
 
+#if DEBUG
 extension Bundle {
 
     func decode<T: Decodable>(_ type: T.Type, from file: String) -> T {
-
         guard let url = Bundle.module.url(forResource: file, withExtension: nil) else {
             fatalError("Failed to locate \(file) in bundle.")
         }
@@ -33,18 +34,17 @@ extension Bundle {
             fatalError("Failed to load \(file) from bundle.")
         }
 
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .lowerCamelCase
+        let decoder = JSONDecoder.decapitalisingFirstLetter
 
-        guard let loaded = try? decoder.decode(T.self, from: data) else {
-            fatalError("Failed to decode \(file) from bundle.")
+        do {
+            return try decoder.decode(T.self, from: data)
+        } catch {
+            print(error)
+            fatalError("Failed to decode \(file) from bundle: \(error).")
         }
-
-        return loaded
     }
 
     func loadJsonDataToDic(from file: String) -> [String: Any] {
-
         guard let url = Bundle.module.url(forResource: file, withExtension: nil) else {
             fatalError("Failed to locate \(file) in bundle.")
         }
@@ -61,7 +61,6 @@ extension Bundle {
     }
 
     func loadJsonData(from file: String) -> Any {
-
         guard let url = Bundle.module.url(forResource: file, withExtension: nil) else {
             fatalError("Failed to locate \(file) in bundle.")
         }
@@ -77,3 +76,4 @@ extension Bundle {
         return jsonData
     }
 }
+#endif
