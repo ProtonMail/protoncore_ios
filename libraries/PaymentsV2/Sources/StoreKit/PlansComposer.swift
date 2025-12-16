@@ -58,14 +58,12 @@ public final class PlansComposer: PlansComposerProviding, @unchecked Sendable {
     public var mostExpensivePlan: ComposedPlan?
 
     private var remoteManager: RemoteManagerProviding
-    private let paymentsAPIs: PaymentsAPIs
     private var availablePlans: AvailablePlans = AvailablePlans(code: 0, plans: [], defaultCycle: 0)
     private var storeProducts: [Product] = []
     private let queue = DispatchQueue(label: "paymentsV2.plansComposer.syncQueue")
 
-    public init(remoteManager: RemoteManagerProviding, paymentsAPIs: PaymentsAPIs) {
+    public init(remoteManager: RemoteManagerProviding) {
         self.remoteManager = remoteManager
-        self.paymentsAPIs = paymentsAPIs
     }
 
     public func getStoreProducts(_ plans: [String]) async throws -> [Product] {
@@ -80,8 +78,7 @@ public final class PlansComposer: PlansComposerProviding, @unchecked Sendable {
     }
 
     public func fetchProtonPlans() async throws -> AvailablePlans {
-        let availablePlansRequests = try paymentsAPIs.url(for: .availablePlans(currency: nil, vendor: nil, state: nil, timeStamp: nil))
-        availablePlans = try await remoteManager.getFromURL(availablePlansRequests.url)
+        availablePlans = try await remoteManager.getAvailablePlans()
         return availablePlans
     }
 
@@ -108,10 +105,8 @@ public final class PlansComposer: PlansComposerProviding, @unchecked Sendable {
     }
 
     public func fetchCurrentSubscription() async throws -> CurrentSubscriptionResponse {
-        let request = try paymentsAPIs.url(for: .getCurrentSubscription)
-        let currentSubResponse: CurrentSubscription = try await remoteManager.getFromURL(request.url)
-
-        guard let currentSub = currentSubResponse.subscriptions.first else {
+        let response = try await remoteManager.getCurrentPlan()
+        guard let currentSub = response.subscriptions.first else {
             let error = PlansComposerError.unableToFetchCurrentSub
             PMLog.error(error.errorDescription ?? "PaymentsV2 - unableToFetchCurrentSub", sendToExternal: true)
             throw error

@@ -20,7 +20,7 @@
 //  along with ProtonCore. If not, see https://www.gnu.org/licenses/.
 //
 
-public enum CoreFeatureFlagType: String, FeatureFlagTypeProtocol {
+public enum CoreFeatureFlagType: String, CaseIterable, FeatureFlagTypeProtocol {
     case accountRecovery = "SignedInAccountRecovery"
     case changePassword = "IOSChangePassword"
     case credentialLessAccount = "CredentiallessAccount"

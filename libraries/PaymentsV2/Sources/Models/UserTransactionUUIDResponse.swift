@@ -28,4 +28,9 @@ public struct UserTransactionUUIDResponse: Decodable, Sendable {
     var uuidValue: UUID? {
         UUID(uuidString: uuid)
     }
+
+    public enum CodingKeys: String, CodingKey {
+        case code
+        case uuid = "UUID"
+    }
 }

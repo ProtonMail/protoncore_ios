@@ -22,6 +22,8 @@
 import Combine
 import Foundation
 import ProtonCoreDoh
+import ProtonCoreLog
+import ProtonCoreServices
 import ProtonCorePaymentsV2
 import ProtonCoreUtilities
 import ProtonCoreUIFoundations
@@ -72,7 +74,6 @@ public class AvailablePlansViewModel: ObservableObject {
     public private(set) var transactionProgress = CurrentValueSubject<TransactionHandlerState, Never>(.idle)
     public private(set) var viewCycleState = CurrentValueSubject<ViewCycleState, Never>(.none)
 
-    private let doh: DoHInterface & ServerConfig
     private var cancellables = Set<AnyCancellable>()
 
     let billing = BillingCycle.allCases
@@ -95,25 +96,17 @@ public class AvailablePlansViewModel: ObservableObject {
         return Constants.bottomPadding(presentationMode: presentationMode)
     }
 
-    private let paymentsAPIs: PaymentsAPIs
-    private let remoteManager: RemoteManager
+    private let remoteManager: RemoteManagerProviding
     private let presentationMode: PresentationMode
     private let protonPlansManager: ProtonPlansManager
 
-    public init(sessionId: String,
-                token: String,
-                doh: DoHInterface & ServerConfig,
-                appVersion: String,
+    public init(remoteManager: RemoteManagerProviding,
                 hideCurrentPlan: Bool = false,
                 presentationMode: PresentationMode) {
 
-        self.doh = doh
-        paymentsAPIs = PaymentsAPIs(doh: doh)
-        remoteManager = RemoteManager(sessionID: sessionId, authToken: token, appVersion: appVersion, atlasSecret: doh.getProxyToken())
-        protonPlansManager = ProtonPlansManager(doh: doh,
-                                                remoteManager: remoteManager,
-                                                plansComposer: PlansComposer(remoteManager: remoteManager,
-                                                                             paymentsAPIs: paymentsAPIs))
+        self.remoteManager = remoteManager
+        protonPlansManager = ProtonPlansManager(remoteManager: remoteManager,
+                                                plansComposer: PlansComposer(remoteManager: remoteManager))
         self.hideCurrentPlan = hideCurrentPlan
         self.presentationMode = presentationMode
 
@@ -140,6 +133,8 @@ public class AvailablePlansViewModel: ObservableObject {
                 case .transactionCancelledByUser:
                     self.isPurchasing = false
                     self.transactionProgress.send(completion: .finished)
+                case .transactionProcessErrorInvalidReq:
+                    self.recoverTransaction()
                 case .unknownError, .transactionProcessError, .mismatchTransactionIDs, .unableToGetUserTransactionUUID:
                     self.isPurchasing = false
                     self.transactionProgress.send(completion: .finished)
@@ -151,12 +146,25 @@ public class AvailablePlansViewModel: ObservableObject {
             .store(in: &self.cancellables)
     }
 
+    private func recoverTransaction() {
+        Task {
+            do {
+                isPurchasing = true
+                try await self.protonPlansManager.recoverTransactionReceipt()
+            } catch {
+                PMLog.error(String(describing: error), sendToExternal: true)
+                isPurchasing = false
+                transactionProgress.send(completion: .finished)
+                transactionProcessError()
+            }
+        }
+    }
+
     private func fetchCurrentPlan() async throws -> PlanViewModel? {
         viewState = .fetching
 
         let currentPlanResponse = try await protonPlansManager.getCurrentPlan()
-        return PlanViewModel(doh: doh,
-                             remoteManager: remoteManager,
+        return PlanViewModel(remoteManager: remoteManager,
                              currentPlan: currentPlanResponse)
 
     }
@@ -172,8 +180,7 @@ public class AvailablePlansViewModel: ObservableObject {
 
         var viewModels = [PlanViewModel]()
         composedPlans.forEach { plan in
-            viewModels.append(PlanViewModel(doh: doh,
-                                            remoteManager: remoteManager,
+            viewModels.append(PlanViewModel(remoteManager: remoteManager,
                                             composedPlan: plan,
                                             plansManager: protonPlansManager))
         }
@@ -186,9 +193,13 @@ public class AvailablePlansViewModel: ObservableObject {
     public func fetchData(from: String) async {
         debugPrint("fetchData from: " + from)
         do {
-            if !hideCurrentPlan {
-                async let currentSubscription = fetchCurrentPlan()
-                currentPlan = try await currentSubscription
+
+            async let currentSubscription = fetchCurrentPlan()
+            currentPlan = try await currentSubscription
+
+            if let plan = currentPlan, plan.isFreePlan == false {
+                viewState = .dataLoaded
+                return
             }
 
             if try await protonPlansManager.checkIAPStatus().isAvailable {
@@ -237,6 +248,7 @@ extension AvailablePlansViewModel {
         updateCompleted = false
         hideCurrentPlan = false
         isPurchasing = false
+        TransactionsObserver.shared.transactionProgress.value = .idle
     }
 
     public func updatingAccount() {
@@ -249,8 +261,9 @@ extension AvailablePlansViewModel {
 
     public func transactionProcessError() {
         showAlert = .error(content: PCBannerContent(message: PaymentsUIV2Localizer.Transaction_process_error.l10n))
-        Task {
+        Task { @MainActor in
             await fetchData(from: "Transaction Process error")
+            showAlert = .none
         }
     }
 

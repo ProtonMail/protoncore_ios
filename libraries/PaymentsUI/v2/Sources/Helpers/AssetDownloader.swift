@@ -28,12 +28,14 @@ public protocol DownloaderProviding {
 // Default DownloaderProviding implementation using URLSession+URLCache
 public struct AssetDownloader: DownloaderProviding {
 
-    let url: URL?
+    private let iconStringURL = "https://mail.proton.me/api/payments/v5/resources/icons/"
+
+    let iconName: String
 
     public func downloadAsset() async -> UIImage? {
 
         do {
-            guard let url = url else { return nil }
+            guard let url = URL(string: iconStringURL + iconName) else { return nil }
             // Check if the image is cached already
             if let cachedResponse = URLCache.shared.cachedResponse(for: .init(url: url)) {
                 return UIImage(data: cachedResponse.data)
@@ -52,12 +54,12 @@ public struct AssetDownloader: DownloaderProviding {
 
 extension AssetDownloader: Equatable {
     public static func == (lhs: AssetDownloader, rhs: AssetDownloader) -> Bool {
-        return lhs.url == rhs.url
+        return lhs.iconName == rhs.iconName
     }
 }
 
 extension AssetDownloader: Hashable {
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.url)
+        hasher.combine(self.iconName)
     }
 }

@@ -1393,7 +1393,16 @@ add(
                     .networking,
                     .featureFlags
                    ],
-                   path: "libraries/PaymentsV2/Sources"),
+                   path: "libraries/PaymentsV2/Sources",
+                  resources: [.copy("Helpers/mockData/availablePlans.json"),
+                              .copy("Helpers/mockData/plans_entitlements_types.json"),
+                              .copy("Helpers/mockData/plans_decorations.json"),
+                              .copy("Helpers/mockData/current_sub_response.json"),
+                              .copy("Helpers/mockData/new_sub_payload.json"),
+                              .copy("Helpers/mockData/check_sub_payload.json"),
+                              .copy("Helpers/mockData/payment_status_payload.json"),
+                              .copy("Helpers/mockData/IAPStatus.json")
+                  ]),
 
         coreTestTarget(name: .paymentsV2 + "UnitTests",
                        dependencies: [
@@ -1401,14 +1410,6 @@ add(
                        ],
                        path: "libraries/PaymentsV2/Tests/UnitTests",
                        resources: [
-                        .copy("mockData/availablePlans.json"),
-                        .copy("mockData/plans_entitlements_types.json"),
-                        .copy("mockData/plans_decorations.json"),
-                        .copy("mockData/current_sub_response.json"),
-                        .copy("mockData/new_sub_payload.json"),
-                        .copy("mockData/check_sub_payload.json"),
-                        .copy("mockData/payment_status_payload.json"),
-                        .copy("mockData/IAPStatus.json"),
                         .copy("mockData/StoreKit_mock.storekit"),
                         .copy("mockData/StoreKitTestCertificate.cer")
                        ])
@@ -1430,28 +1431,6 @@ add(
                     .featureFlags
                    ],
                    path: "libraries/Payments/Sources"),
-
-//        coreTestTarget(name: .payments + "Tests",
-//                       dependencies: [
-//                        .authentication,
-//                        .challenge,
-//                        .dataModel,
-//                        .doh,
-//                        .log,
-//                        .login,
-//                        .payments,
-//                        .services,
-//                        .testingToolkitTestData,
-//                        .testingToolkitUnitTestsFeatureFlag,
-//                        .testingToolkitUnitTestsPayments,
-//                        .testingToolkitUnitTestsServices,
-//                        .ohhttpStubs
-//                       ],
-//                       path: "libraries/Payments/Tests/UnitTests",
-//                       resources: [
-//                        .process("AppStoreLocalTest"),
-//                        .process("Mocks/Responses")
-//                       ]),
 
         coreTestTarget(name: .payments + "IntegrationTests",
                        dependencies: [

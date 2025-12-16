@@ -27,19 +27,15 @@ import XCTest
 final class PlansComposerTests: XCTestCase, @unchecked Sendable {
 
     private let productsIds = ["iosvpn_bundle2022_12_usd_auto_renewing", "iosvpn_vpn2022_1_usd_auto_renewing"]
-    private var mockRemoteManager: MockedRemoteManager!
+    private var mockRemoteManager: RemoteManagerProviding!
 
     var plansComposer: PlansComposer!
 
     override func setUp() {
         super.setUp()
-        mockRemoteManager = MockedRemoteManager()
-        guard let remoteManager = mockRemoteManager.remoteManager, let paymentsAPIs = mockRemoteManager.paymentsAPI else {
-            XCTFail("MockRemoteManager returned nil remoteManager or paymentsAPIs")
-            return
-        }
+        mockRemoteManager = MockRemoteManager()
 
-        plansComposer = PlansComposer(remoteManager: remoteManager, paymentsAPIs: paymentsAPIs)
+        plansComposer = PlansComposer(remoteManager: mockRemoteManager)
         let url = Bundle.module.url(forResource: "StoreKit_mock", withExtension: "storekit")!
         do {
             _ = try SKTestSession(contentsOf: url)
@@ -54,9 +50,6 @@ final class PlansComposerTests: XCTestCase, @unchecked Sendable {
     }
 
     func test_composedPlan_success() async throws {
-        let mockResponse = Bundle.main.loadJsonDataToDic(from: "availablePlans.json")
-        mockRemoteManager.setupURLSessionMock(withMockResponse: mockResponse)
-
         // Fetch Proton plans
         _ = try await plansComposer.fetchProtonPlans()
         _ = try await plansComposer.getStoreProducts(["iosvpn_bundle2022_12_usd_auto_renewing", "iosvpn_vpn2022_1_usd_auto_renewing"])
@@ -67,9 +60,6 @@ final class PlansComposerTests: XCTestCase, @unchecked Sendable {
     }
 
     func test_composedPlan_match_individual_StoreKit_plan() async throws {
-        let mockResponse = Bundle.main.loadJsonDataToDic(from: "availablePlans.json")
-        mockRemoteManager.setupURLSessionMock(withMockResponse: mockResponse)
-
         // Fetch Proton plans
         _ = try await plansComposer.fetchProtonPlans()
         _ = try await plansComposer.getStoreProducts(productsIds)
@@ -80,9 +70,6 @@ final class PlansComposerTests: XCTestCase, @unchecked Sendable {
     }
 
     func test_composedPlan_equatable() async throws {
-        let mockResponse = Bundle.main.loadJsonDataToDic(from: "availablePlans.json")
-        mockRemoteManager.setupURLSessionMock(withMockResponse: mockResponse)
-
         // Fetch Proton plans
         _ = try await plansComposer.fetchProtonPlans()
         _ = try await plansComposer.getStoreProducts(productsIds)
@@ -94,9 +81,6 @@ final class PlansComposerTests: XCTestCase, @unchecked Sendable {
     }
 
     func test_fetch_current_subscription() async throws {
-        let mockResponse = Bundle.main.loadJsonDataToDic(from: "current_sub_response.json")
-        mockRemoteManager.setupURLSessionMock(withMockResponse: mockResponse)
-
         let currentSubscription = try await plansComposer.fetchCurrentSubscription()
 
         XCTAssertEqual(currentSubscription.name, "mail2022+drivepro2022")
@@ -104,9 +88,6 @@ final class PlansComposerTests: XCTestCase, @unchecked Sendable {
     }
 
     func test_mostExpensivePlan() async throws {
-        let mockResponse = Bundle.main.loadJsonDataToDic(from: "availablePlans.json")
-        mockRemoteManager.setupURLSessionMock(withMockResponse: mockResponse)
-
         // Fetch Proton plans
         _ = try await plansComposer.fetchAvailablePlans()
 
@@ -115,10 +96,8 @@ final class PlansComposerTests: XCTestCase, @unchecked Sendable {
     }
 
     func test_discount() async throws {
-        let mockResponse = Bundle.main.loadJsonDataToDic(from: "availablePlans.json")
         // we know by the mock that the most expensive plan is 11.99 a month
         // compared to the first returned 119.99 a year, we expect a price discount, per month, of 17%
-        mockRemoteManager.setupURLSessionMock(withMockResponse: mockResponse)
 
         // Fetch Proton plans
         let availablePlans = try await plansComposer.fetchAvailablePlans()

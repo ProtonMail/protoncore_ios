@@ -22,7 +22,6 @@
 import Foundation
 
 public struct SubscriptionResponse: Decodable, Hashable, Identifiable, Sendable {
-
     public let id: String
     public let invoiceID: String?
     public let cycle: Int?
@@ -38,6 +37,38 @@ public struct SubscriptionResponse: Decodable, Hashable, Identifiable, Sendable 
     public let renewAmount: Int
     public let renew: Int
     public let external: Int
+
+    public init(id: String,
+                invoiceID: String?,
+                cycle: Int?,
+                periodStart: Int,
+                periodEnd: Int,
+                createTime: Int,
+                couponCode: String?,
+                currency: String,
+                amount: Int,
+                discount: Int,
+                renewDiscount: Int,
+                plans: [Plan],
+                renewAmount: Int,
+                renew: Int,
+                external: Int) {
+        self.id = id
+        self.invoiceID = invoiceID
+        self.cycle = cycle
+        self.periodStart = periodStart
+        self.periodEnd = periodEnd
+        self.createTime = createTime
+        self.couponCode = couponCode
+        self.currency = currency
+        self.amount = amount
+        self.discount = discount
+        self.renewDiscount = renewDiscount
+        self.plans = plans
+        self.renewAmount = renewAmount
+        self.renew = renew
+        self.external = external
+    }
 }
 
 public struct CurrentSubscriptionResponse: Decodable, Hashable, Identifiable, Sendable {

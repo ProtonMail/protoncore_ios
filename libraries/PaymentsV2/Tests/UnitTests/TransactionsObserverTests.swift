@@ -27,9 +27,6 @@ import XCTest
 
 final class TransactionsObserverTests: XCTestCase, @unchecked Sendable {
 
-    private var urlSessionConfig: URLSessionConfiguration!
-    private var mockRemoteManager: MockedRemoteManager!
-
     private var sut: TransactionsObserver!
     private var cancellable: AnyCancellable?
 
@@ -37,27 +34,12 @@ final class TransactionsObserverTests: XCTestCase, @unchecked Sendable {
         super.setUp()
 
         sut = TransactionsObserver.shared
-        mockRemoteManager = MockedRemoteManager()
-        
-        let plansMockResponse = Bundle.main.loadJsonDataToDic(from: "availablePlans.json")
-        mockRemoteManager.setupURLSessionMock(withMockResponse: plansMockResponse)
-
-        sut = TransactionsObserver.shared
-        let configuration = TransactionsObserverConfiguration(
-            sessionID: "asdasd12d",
-            authToken: "12d12",
-            appVersion: "V200",
-            doh: PaymentsDoH(),
-            session: mockRemoteManager.session
-        )
+        let configuration = TransactionsObserverConfiguration(remoteManager: MockRemoteManager())
         sut.setConfiguration(configuration)
     }
 
     override func tearDown() {
         super.tearDown()
-
-        mockRemoteManager.destroy()
-        mockRemoteManager = nil
         sut = nil
         cancellable = nil
     }

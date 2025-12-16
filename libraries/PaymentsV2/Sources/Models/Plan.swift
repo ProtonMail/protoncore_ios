@@ -41,4 +41,42 @@ public struct Plan: Decodable, Identifiable, Equatable, Hashable, Sendable {
     public let features: Int
     public let quantity: Int
     public let maxTier: Int
+
+    public init(id: String,
+                type: Int,
+                state: Int,
+                cycle: Int,
+                name: String,
+                title: String,
+                currency: String,
+                amount: Int,
+                maxDomains: Int,
+                maxAddresses: Int,
+                maxCalendars: Int,
+                maxSpace: Int,
+                maxMembers: Int,
+                maxVPN: Int,
+                services: Int,
+                features: Int,
+                quantity: Int,
+                maxTier: Int) {
+        self.id = id
+        self.type = type
+        self.state = state
+        self.cycle = cycle
+        self.name = name
+        self.title = title
+        self.currency = currency
+        self.amount = amount
+        self.maxDomains = maxDomains
+        self.maxAddresses = maxAddresses
+        self.maxCalendars = maxCalendars
+        self.maxSpace = maxSpace
+        self.maxMembers = maxMembers
+        self.maxVPN = maxVPN
+        self.services = services
+        self.features = features
+        self.quantity = quantity
+        self.maxTier = maxTier
+    }
 }

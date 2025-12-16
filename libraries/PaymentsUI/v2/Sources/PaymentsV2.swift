@@ -21,6 +21,7 @@
 
 import Combine
 import ProtonCoreDoh
+import ProtonCoreServices
 import ProtonCorePaymentsV2
 import UIKit
 
@@ -50,35 +51,22 @@ public final class PaymentsV2: Sendable {
     // MARK: Public functions
 
     // MARK: Restore Purchases
-    public func restorePurchases(sessionId: String,
-                                 token: String,
-                                 doh: DoHInterface & ServerConfig,
-                                 appVersion: String) async throws -> CurrentSubscriptionResponse {
+    public func restorePurchases(apiService: APIService) async throws -> CurrentSubscriptionResponse {
 
-        let plansManager = ProtonPlansManager(doh: doh,
-                                              remoteManager: RemoteManager(sessionID: sessionId, authToken: token, appVersion: appVersion))
-       return try await plansManager.restorePurchases()
+        let plansManager = ProtonPlansManager(remoteManager: RemoteManager(apiService: apiService))
+        return try await plansManager.restorePurchases()
     }
 
     // MARK: Presentation
-    public func availablePlansView(sessionID: String,
-                                   accessToken: String,
-                                   appVersion: String,
-                                   hideCurrentPlan: Bool = false,
-                                   doh: DoHInterface & ServerConfig) throws -> PaymentsUIViewControllerV2 {
-        return try createPaymentsView(sessionID: sessionID,
-                                      accessToken: accessToken,
-                                      appVersion: appVersion,
-                                      hideCurrentPlan: hideCurrentPlan,
-                                      doh: doh)
+    public func availablePlansView(hideCurrentPlan: Bool = false,
+                                   apiService: APIService) throws -> PaymentsUIViewControllerV2 {
+        return try createPaymentsView(hideCurrentPlan: hideCurrentPlan,
+                                      apiService: apiService)
     }
 
     public func showAvailablePlans(presentationMode: PresentationMode,
-                                   sessionID: String,
-                                   accessToken: String,
-                                   appVersion: String,
                                    hideCurrentPlan: Bool = false,
-                                   doh: DoHInterface & ServerConfig) throws {
+                                   apiService: APIService) throws {
 
         guard TransactionsObserver.shared.isON else {
             throw PaymentsPresentationError.transactionsObserverNotActive
@@ -86,12 +74,9 @@ public final class PaymentsV2: Sendable {
 
         self.presentationMode = presentationMode
 
-        paymentsView = try createPaymentsView(sessionID: sessionID,
-                                              accessToken: accessToken,
-                                              appVersion: appVersion,
-                                              hideCurrentPlan: hideCurrentPlan,
+        paymentsView = try createPaymentsView(hideCurrentPlan: hideCurrentPlan,
                                               presentationMode: presentationMode,
-                                              doh: doh)
+                                              apiService: apiService)
         Publishers
             .CombineLatest(paymentsView.transactionProgress, paymentsView.viewCycleState)
             .sink { [weak self] in
@@ -146,17 +131,11 @@ public final class PaymentsV2: Sendable {
         navController.pushViewController(vc, animated: true)
     }
 
-    private func createPaymentsView(sessionID: String,
-                                    accessToken: String,
-                                    appVersion: String,
-                                    hideCurrentPlan: Bool = false,
+    private func createPaymentsView(hideCurrentPlan: Bool = false,
                                     presentationMode: PresentationMode = .none,
-                                    doh: DoHInterface & ServerConfig) throws -> PaymentsUIViewControllerV2 {
+                                    apiService: APIService) throws -> PaymentsUIViewControllerV2 {
 
-        let vc = PaymentsUIViewControllerV2(sessionId: sessionID,
-                                            token: accessToken,
-                                            appVersion: appVersion,
-                                            doh: doh,
+        let vc = PaymentsUIViewControllerV2(apiService: apiService,
                                             presentationMode: presentationMode,
                                             hideCurrentPlan: hideCurrentPlan)
         return vc

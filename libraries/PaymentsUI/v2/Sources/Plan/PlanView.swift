@@ -93,28 +93,30 @@ public struct PlanView: View {
 
 #if DEBUG
 #Preview {
+    AsyncModel { _ in
+        let product = ProductMock(displayName: "name", description: "description", displayPrice: "$12", price: Decimal(12), id: "iosvpn_bundle2022_12_usd_auto_recurring")
 
-    let product = ProductMock(displayName: "name", description: "description", displayPrice: "$12", price: Decimal(12), id: "iosvpn_bundle2022_12_usd_auto_recurring")
+        // ViewModel displaying available plan
+        let composedPlan = ComposedPlan(plan: ProtonCorePaymentsV2.Examples.availablePlanExample(title: "VPN Plus",
+                                                                                                 entitlements: PreviewsData.descriptionEntitlements()),
+                                        instance: ProtonCorePaymentsV2.Examples.planInstance(),
+                                        product: product)
+        let viewModel = PlanViewModel(remoteManager: PreviewsData.remoteManager,
+                                      composedPlan: composedPlan)
 
-    // ViewModel displaying available plan
-    let composedPlan = ComposedPlan(plan: ProtonCorePaymentsV2.Examples.availablePlanExample(title: "VPN Plus",
-                                                                                             entitlements: PreviewsData.descriptionEntitlements()),
-                                    instance: ProtonCorePaymentsV2.Examples.planInstance(),
-                                    product: product)
-    let viewModel = PlanViewModel(doh: PaymentsDoH(),
-                                  remoteManager: PreviewsData.remoteManager,
-                                  composedPlan: composedPlan)
+        // ViewModel displaying current sub
+        let viewModel2 = PlanViewModel(remoteManager: PreviewsData.remoteManager,
+                                       currentPlan: PreviewsData.currentSub)
+        // ViewModel displaying Free plan
+        let viewModel3 = PlanViewModel(remoteManager: PreviewsData.remoteManager,
+                                       currentPlan: PreviewsData.freePlan)
 
-    // ViewModel displaying current sub
-    let viewModel2 = PlanViewModel(doh: PaymentsDoH(),
-                                   remoteManager: PreviewsData.remoteManager,
-                                   currentPlan: PreviewsData.currentSub)
-    // ViewModel displaying Free plan
-    let viewModel3 = PlanViewModel(doh: PaymentsDoH(),
-                                   remoteManager: PreviewsData.remoteManager,
-                                   currentPlan: PreviewsData.freePlan)
-
-    return PlanView(viewModel: viewModel2)
-        .padding(12)
+        return PlanView(viewModel: viewModel2)
+            .padding(12)
+    } model: {
+        let config = TransactionsObserverConfiguration(remoteManager: MockRemoteManager())
+        TransactionsObserver.shared.setConfiguration(config)
+        try await TransactionsObserver.shared.start()
+    }
 }
 #endif

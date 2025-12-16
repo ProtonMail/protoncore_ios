@@ -22,273 +22,75 @@
 import Foundation
 import ProtonCoreLog
 import ProtonCoreEnvironment
+import ProtonCoreNetworking
+import ProtonCoreServices
+import ProtonCoreUtilities
 
 public protocol RemoteManagerProviding: Sendable {
 
-    func updateSession(sessionID: String, authToken: String)
+    func getAvailablePlans() async throws -> AvailablePlans
+    func getCurrentPlan() async throws -> CurrentSubscription
 
-    func getFromURL<T: Decodable>(_ url: URL) async throws -> T
+    func post(_ token: Token) async throws -> NewToken
+    func post(_ token: OCToken) async throws -> NewToken
+    func fetch(token: String) async throws -> ResponseStatus
 
-    func postToURL(request: APIRequest) async throws
-    func postToURL<T: Decodable>(request: APIRequest) async throws -> T
+    func getUserUUID() async throws -> UserTransactionUUIDResponse
 
-    func putToURL(request: APIRequest) async throws
-    func putToURL<T: Decodable>(request: APIRequest) async throws -> T
+    func create(newOCSubscription: OCNewSubscription) async throws -> StatusResponse
+    func create(newSubscription: NewSubscription) async throws -> StatusResponse
 
-    func deleteToURL(request: APIRequest) async throws
-    func deleteToURL<T: Decodable>(request: APIRequest) async throws -> T
+    func checkIAPStatus() async throws -> IAPStatus
 }
 
-public enum RemoteError: LocalizedError, Comparable {
-    case errorDecondingResponse(details: String)
-    case invalidHTTPResponse(url: String)
-    case responseReturnedError(errorCode: Int, urlString: String)
+/// This class is a shim to ``APIService`` for easy mocking in payments unit tests.
+public final class RemoteManager: RemoteManagerProviding, @unchecked Sendable {
+    private let apiService: APIService
 
-    public var errorDescription: String? {
-        switch self {
-        default:
-            return PaymentsV2Localizer.Remote_manager_error.l10n
-        }
-    }
-
-    public var failureReason: String? {
-        switch self {
-        case .errorDecondingResponse(let details):
-            return "Error deconding response: \(details)"
-        case .invalidHTTPResponse(let url):
-            return "Invalid http response for url: \(url)"
-        case .responseReturnedError(let errorCode, let urlString):
-            return "Request: \(urlString) returned error code: \(errorCode)"
-        }
-    }
-}
-
-enum SerializationError: Error {
-    case unabledToSerializeHTTPBody
-}
-
-public enum RequestTye: String {
-    case PUT, POST, DELETE, GET
-}
-
-public final class RemoteManager: NSObject, RemoteManagerProviding, @unchecked Sendable {
-
-    private var requestHTTPHeader: [APIHeader: String]!
-    private let queue = DispatchQueue(label: "paymentsV2.remoteManager.syncQueue")
-
-    private lazy var session = URLSession(configuration: URLSession.shared.configuration, delegate: self, delegateQueue: URLSession.shared.delegateQueue)
-
-    public init(sessionID: String, authToken: String, appVersion: String, atlasSecret: String? = nil) {
-        super.init()
-
-        generateRequestHeader(sessionID, authToken, appVersion, atlasSecret)
-    }
-
-    public func updateSession(sessionID: String, authToken: String) {
-        queue.sync {
-            requestHTTPHeader[.sessionId] = sessionID
-            requestHTTPHeader[.authorization] = "Bearer \(authToken)"
-        }
-    }
-
-    #if DEBUG
-    // Used for testing
-    func setSession(_ session: URLSession) {
-        queue.sync {
-            self.session = session
-        }
-    }
-    #endif
-
-    // MARK: Private methods
-
-    private func generateRequestHeader(_ sessionID: String, _ authToken: String, _ appVersion: String, _ atlasSecret: String?) {
-        queue.sync {
-            requestHTTPHeader = [.sessionId: sessionID,
-                                 .accept: "application/json",
-                                 .contentType: "application/json",
-                                 .authorization: "Bearer \(authToken)",
-                                 .appVersion: appVersion]
-            guard let atlasSecret else {
-                return
-            }
-
-            requestHTTPHeader[.atlasSecret] = atlasSecret
-        }
-    }
-
-    // MARK: GET
-
-    public func getFromURL<T: Decodable & Sendable>(_ url: URL) async throws -> T {
-
-        let (data, response) = try await session.data(for: requestFactory(url: url,
-                                                                          requestType: .GET))
-
-        try verifyBodyResponse(data: data)
-        try verifyResponse(response: response)
-
-        return try decodeResponse(data: data)
-    }
-
-    // MARK: POST
-
-    public func postToURL(request: APIRequest) async throws {
-
-        let (data, response) = try await session.data(for: requestFactory(url: request.url,
-                                                                          requestType: .POST,
-                                                                          body: request.body))
-        try verifyBodyResponse(data: data)
-        try verifyResponse(response: response)
-    }
-
-    public func postToURL<T: Decodable & Sendable>(request: APIRequest) async throws -> T {
-
-        let (data, response) = try await session.data(for: requestFactory(url: request.url,
-                                                                          requestType: .POST,
-                                                                          body: request.body))
-
-        try verifyBodyResponse(data: data)
-        try verifyResponse(response: response)
-        return try decodeResponse(data: data)
-    }
-
-    // MARK: PUT
-
-    public func putToURL(request: APIRequest) async throws {
-
-        let (data, response) = try await session.data(for: requestFactory(url: request.url,
-                                                                          requestType: .PUT,
-                                                                          body: request.body))
-
-        try verifyBodyResponse(data: data)
-        try verifyResponse(response: response)
-    }
-
-    public func putToURL<T: Decodable & Sendable>(request: APIRequest) async throws -> T {
-
-        let (data, response) = try await session.data(for: requestFactory(url: request.url,
-                                                                          requestType: .PUT,
-                                                                          body: request.body))
-
-        try verifyBodyResponse(data: data)
-        try verifyResponse(response: response)
-
-        return try decodeResponse(data: data)
-    }
-
-    // MARK: DELETE
-
-    public func deleteToURL(request: APIRequest) async throws {
-
-        let (data, response) = try await session.data(for: requestFactory(url: request.url,
-                                                                          requestType: .DELETE,
-                                                                          body: request.body))
-        try verifyBodyResponse(data: data)
-        try verifyResponse(response: response)
-    }
-
-    public func deleteToURL<T: Decodable & Sendable>(request: APIRequest) async throws -> T {
-
-        let (data, response) = try await session.data(for: requestFactory(url: request.url,
-                                                                          requestType: .DELETE,
-                                                                          body: request.body))
-
-        try verifyBodyResponse(data: data)
-        try verifyResponse(response: response)
-
-        return try decodeResponse(data: data)
+    public init(apiService: APIService) {
+        self.apiService = apiService
     }
 
     // MARK: Private methods
 
-    private func verifyResponse(response: URLResponse) throws {
-        guard let httpResponse = response as? HTTPURLResponse else {
-            let error = RemoteError.invalidHTTPResponse(url: response.url?.absoluteString ?? "")
-            PMLog.error(error.failureReason ?? "PaymentsV2 - invalidHTTPResponse", sendToExternal: true)
-            throw error
-        }
-
-        if !(200...299).contains(httpResponse.statusCode) {
-            let error = RemoteError.responseReturnedError(errorCode: httpResponse.statusCode, urlString: httpResponse.url?.absoluteString ?? "")
-            PMLog.error(error.failureReason ?? "PaymentsV2 - responseReturnedError \(httpResponse.statusCode)", sendToExternal: true)
-            throw error
-        }
+    public func getCurrentPlan() async throws -> CurrentSubscription {
+        try await execute(.currentPlan)
     }
 
-    private func verifyBodyResponse(data: Data) throws {
-
-        let statusCode: StatusResponse = try decodeResponse(data: data)
-
-        if let error = APICodeError(rawValue: statusCode.code) {
-            throw error
-        }
+    public func getAvailablePlans() async throws -> AvailablePlans {
+        try await execute(.availablePlans)
     }
 
-    private func decodeResponse<T: Decodable>(data: Data) throws -> T {
-
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .lowerCamelCase
-        do {
-            return try decoder.decode(T.self, from: data)
-        } catch {
-            let error = RemoteError.errorDecondingResponse(details: error.localizedDescription)
-            PMLog.error(error.failureReason ?? "PaymentsV2 - errorDecondingResponse", sendToExternal: true)
-            throw error
-        }
+    public func fetch(token: String) async throws -> ResponseStatus {
+        try await execute(.fetch(token: token))
     }
 
-    private func requestFactory(url: URL,
-                                requestType: RequestTye,
-                                body: [String: Any]? = nil) throws -> URLRequest {
-
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = requestType.rawValue
-
-        if let body = body {
-            urlRequest.httpBody = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
-        }
-
-        urlRequest.allHTTPHeaderFields = formatHTTPHeader()
-
-        return urlRequest
+    public func post(_ token: Token) async throws -> NewToken {
+        try await execute(.post(token: token))
     }
 
-    private func formatHTTPHeader() -> [String: String]  {
-
-        var formattedHTTPHeader: [String: String] = [:]
-        requestHTTPHeader.keys.forEach { key in
-            formattedHTTPHeader[key.rawValue] = requestHTTPHeader[key]
-        }
-
-        return formattedHTTPHeader
+    public func post(_ token: OCToken) async throws -> NewToken {
+        try await execute(.post(ocToken: token))
     }
-}
 
-extension RemoteManager: URLSessionDelegate {
+    public func create(newOCSubscription: OCNewSubscription) async throws -> StatusResponse {
+        try await execute(.create(ocSubscription: newOCSubscription.newSubscription))
+    }
 
-    public func urlSession(_ session: URLSession,
-                           didReceive challenge: URLAuthenticationChallenge) async -> (URLSession.AuthChallengeDisposition, URLCredential?) {
+    public func create(newSubscription: NewSubscription) async throws -> StatusResponse {
+        try await execute(.create(subscription: newSubscription.newSubscription))
+    }
 
-        guard let tk = TrustKitWrapper.current else {
-            guard let trust = challenge.protectionSpace.serverTrust else {
-                return (.performDefaultHandling, nil)
-            }
+    public func getUserUUID() async throws -> UserTransactionUUIDResponse {
+        try await execute(.userUuid)
+    }
 
-            let credential = URLCredential(trust: trust)
-            return (.useCredential, credential)
-        }
+    public func checkIAPStatus() async throws -> IAPStatus {
+        try await execute(.status)
+    }
 
-        return await withCheckedContinuation { c in
-            let success = tk.pinningValidator.handle(challenge) { (disposition, credential) in
-                c.resume(returning: (disposition, credential))
-            }
-
-            guard success else {
-                // TrustKit did not handle this challenge: perhaps it was not for server trust
-                // or the domain was not pinned. Fall back to the default behavior
-                c.resume(returning: (.performDefaultHandling, nil))
-                return
-            }
-        }
+    // MARK: Private methods
+    private func execute<R>(_ request: PaymentsRequest<R>) async throws -> R {
+        try await (apiService.perform(request: request) as (URLSessionDataTask?, R)).1
     }
 }

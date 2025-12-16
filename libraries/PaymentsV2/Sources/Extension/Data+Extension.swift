@@ -1,5 +1,5 @@
 //
-//  StatusResponse.swift
+//  Data+Extension.swift
 //  ProtonCore-PaymentsV2 - Created on 15/10/2024.
 //
 //  Copyright (c) 2024 Proton Technologies AG
@@ -19,9 +19,18 @@
 //  You should have received a copy of the GNU General Public License
 //  along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
 
+
 import Foundation
 
-public struct StatusResponse: Decodable {
+extension Data {
+    var prettyPrintedJSONString: NSString? {
+        guard let jsonObject = try? JSONSerialization.jsonObject(with: self, options: []),
+              let data = try? JSONSerialization.data(withJSONObject: jsonObject,
+                                                       options: [.prettyPrinted]),
+              let prettyJSON = NSString(data: data, encoding: String.Encoding.utf8.rawValue) else {
+                  return nil
+               }
 
-    let code: Int
+        return prettyJSON
+    }
 }
