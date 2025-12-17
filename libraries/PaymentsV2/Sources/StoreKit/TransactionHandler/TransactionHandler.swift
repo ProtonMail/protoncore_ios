@@ -95,12 +95,8 @@ public final class TransactionHandler: NSObject, TransactionHandlerProviding, @u
             transactionState.value = state
         }
     }
-}
 
-// MARK: Private methods
-private extension TransactionHandler {
-
-    private func generateValidationTokenFromStoreKitReceipt(_ transaction: ProtonTransactionProviding) async throws -> Token {
+    func generateValidationTokenFromStoreKitReceipt(_ transaction: ProtonTransactionProviding) async throws -> Token {
 
         debugPrint("Generating validation token..")
         // Delay to give time for the receipt to update
@@ -118,7 +114,7 @@ private extension TransactionHandler {
             throw error
         }
 
-        var transactionIdentifier = String(transaction.originalID)
+        var transactionIdentifier = String(transaction.id)
 
 #if DEBUG && targetEnvironment(simulator)
         let envrionment = ProcessInfo.processInfo.environment
@@ -145,6 +141,10 @@ private extension TransactionHandler {
 
         return newToken
     }
+}
+
+// MARK: Private methods
+private extension TransactionHandler {
 
     private func createNewToken(_ transactionToken: Token) async throws -> NewToken {
 

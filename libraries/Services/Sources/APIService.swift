@@ -724,11 +724,11 @@ public extension APIService {
             customAuthCredential: route.authCredential,
             nonDefaultTimeout: route.nonDefaultTimeout,
             retryPolicy: route.retryPolicy) { downloadDataTask in
-            } downloadCompletion: { urlResponse, url, error in
+        } downloadCompletion: { urlResponse, url, error in
                 executor.execute {
                     complete(urlResponse, url, error)
                 }
-        }
+            }
     }
 }
 

@@ -24,7 +24,7 @@
 import UIKit
 
 extension UITableView {
-    public final func  register<T: UITableViewHeaderFooterView & Reusable>(cellType: T.Type) {
+    public final func register<T: UITableViewHeaderFooterView & Reusable>(cellType: T.Type) {
         register(cellType.self, forHeaderFooterViewReuseIdentifier: cellType.reuseIdentifier)
     }
 
