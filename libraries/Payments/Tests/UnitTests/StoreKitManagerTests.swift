@@ -265,9 +265,10 @@ final class StoreKitManagerTests: XCTestCase {
         // when: purchase (2)
         let expectation = XCTestExpectation()
         out.purchaseProduct(plan: plan, amountDue: 100) { _ in
-            XCTFail("Shouldn't be calling success handler") } errorCompletion: { _ in
+            XCTFail("Shouldn't be calling success handler")
+        } errorCompletion: { _ in
                 XCTFail("Shouldn't be calling the error handler")
-        }
+            }
 
         wait(for: [expectation], timeout: 50)
         // then
@@ -321,7 +322,7 @@ final class StoreKitManagerTests: XCTestCase {
         out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail("Shouldn't be calling success handler") }
             errorCompletion: { _ in XCTFail("Shouldn't be calling the error handler") }
             deferredCompletion: { expectation.fulfill()
-        }
+            }
         paymentsQueue.fire = true
 
         // then
@@ -349,7 +350,7 @@ final class StoreKitManagerTests: XCTestCase {
         }
             errorCompletion: { _ in XCTFail("Shouldn't be calling the error handler") }
             deferredCompletion: { XCTFail("Shouldn't be calling the deferred handler")
-        }
+            }
         paymentsQueue.fire = true
 
         // then
@@ -373,7 +374,7 @@ final class StoreKitManagerTests: XCTestCase {
         out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail("Shouldn't be calling success handler") }
             errorCompletion: { _ in XCTFail("Shouldn't be calling the error handler") }
             deferredCompletion: { expectation.fulfill()
-        }
+            }
         paymentsQueue.fire = true
 
         // then
@@ -402,7 +403,7 @@ final class StoreKitManagerTests: XCTestCase {
                 expectation.fulfill()
             }
             deferredCompletion: { XCTFail("Shouldn't be calling the deferred handler")
-        }
+            }
         paymentsQueue.fire = true
 
         // then
@@ -849,7 +850,7 @@ final class StoreKitManagerTests: XCTestCase {
 
         out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail("Shouldn't be calling a success handler") }
     errorCompletion: { _ in XCTFail("Shouldn't be calling an error handler")
-        }
+    }
 
         // then
         waitForExpectations(timeout: 0.5)
@@ -895,7 +896,7 @@ final class StoreKitManagerTests: XCTestCase {
 
         out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail("Shouldn't be calling a success handler") }
     errorCompletion: { _ in XCTFail("Shouldn't be calling an error handler")
-        }
+    }
 
         // then
         waitForExpectations(timeout: 1)
@@ -959,7 +960,7 @@ final class StoreKitManagerTests: XCTestCase {
         out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail("Shouldn't be calling success handler") }
             errorCompletion: { _ in XCTFail("Shouldn't be calling error handler") }
             deferredCompletion: { expectation.fulfill()
-        }
+            }
         paymentsQueue.fire = true
 
         // then
@@ -992,7 +993,7 @@ final class StoreKitManagerTests: XCTestCase {
         }
     errorCompletion: { _ in XCTFail("Shouldn't be calling error handler") }
     deferredCompletion: { XCTFail("Shouldn't be calling deferred handler")
-        }
+    }
         paymentsQueue.fire = true
 
         // then
@@ -1020,7 +1021,7 @@ final class StoreKitManagerTests: XCTestCase {
         out.purchaseProduct(plan: plan, amountDue: 100) { _ in XCTFail("Shouldn't be calling success handler") }
             errorCompletion: { _ in XCTFail("Shouldn't be calling the error handler") }
             deferredCompletion: { expectation.fulfill()
-        }
+            }
         paymentsQueue.fire = true
 
         // then
@@ -1053,7 +1054,7 @@ final class StoreKitManagerTests: XCTestCase {
                 expectation.fulfill()
             }
             deferredCompletion: { XCTFail("Shouldn't be calling the deferred handler")
-        }
+            }
         paymentsQueue.fire = true
 
         // then

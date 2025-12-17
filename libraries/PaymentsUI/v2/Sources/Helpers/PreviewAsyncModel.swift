@@ -62,5 +62,3 @@ public struct AsyncModel<VisualContent: View, ModelData>: View {
         }
     }
 }
-
-

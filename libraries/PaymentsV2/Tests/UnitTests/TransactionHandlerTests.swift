@@ -36,7 +36,7 @@ final class TransactionHandlerTests: XCTestCase, @unchecked Sendable {
 
     private var cancellable = Set<AnyCancellable>()
 
-    private var sut: TransactionHandlerProviding!
+    private var sut: TransactionHandler!
 
     override func setUp() async throws {
 
@@ -169,6 +169,30 @@ final class TransactionHandlerTests: XCTestCase, @unchecked Sendable {
 
         XCTAssertTrue(positiveResult)
         XCTAssertFalse(negativeResult)
+    }
+
+    func test_transaction_id() async throws {
+        _ = try await subsComposer.fetchProtonPlans()
+        _ = try await subsComposer.getStoreProducts(["iosvpn_bundle2022_12_usd_auto_renewing", "iosvpn_vpn2022_1_usd_auto_renewing"])
+
+        try storeSession.buyProduct(productIdentifier: productsIds[0])
+
+        // extract store receipt logic behind interface and mock it for testing
+
+        guard let transaction = storeSession.allTransactions().first else {
+            XCTFail("No transaction found")
+            return
+        }
+        guard let composedPlan = subsComposer.matchPlanToStoreProduct(transaction.productIdentifier) else {
+            XCTFail("No plan found")
+            return
+        }
+
+        let protonTransaction = TransactionStubber.convertStoreTestTransaction(transaction, price: composedPlan.product.price, currencyId: "USD", renewal: false)
+
+        let token = try await sut.generateValidationTokenFromStoreKitReceipt(protonTransaction)
+
+        XCTAssertEqual(token.payment?.details.transactionID, String(transaction.identifier))
     }
 }
 #endif

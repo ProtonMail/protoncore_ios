@@ -85,7 +85,7 @@ public struct Examples {
                         )
                     )
                 )
-             ],
+            ],
              name: "vpn2022",
              state: 1,
              title: title,
