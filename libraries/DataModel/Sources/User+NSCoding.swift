@@ -129,7 +129,7 @@ extension UserInfo: NSCoding {
             twoFA: aDecoder.decodeInteger(forKey: CoderKey.twoFA),
             enableFolderColor: aDecoder.decodeInteger(forKey: CoderKey.enableFolderColor),
             inheritParentFolderColor: aDecoder.decodeInteger(forKey: CoderKey.inheritParentFolderColor),
-            subscribed: .init(rawValue: UInt8(aDecoder.decodeInteger(forKey: CoderKey.subscribed))),
+            subscribed: .init(rawValue: UInt64(aDecoder.decodeInteger(forKey: CoderKey.subscribed))),
             groupingMode: aDecoder.decodeInteger(forKey: CoderKey.groupingMode),
             weekStart: aDecoder.decodeInteger(forKey: CoderKey.weekStart),
             delaySendSeconds: aDecoder.decodeIntegerIfPresent(forKey: CoderKey.delaySendSeconds),
