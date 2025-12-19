@@ -70,9 +70,9 @@ public struct User: Codable, Equatable, CustomDebugStringConvertible {
     }
 
     public struct Subscribed: OptionSet, Codable, Equatable {
-        public let rawValue: UInt8
+        public let rawValue: UInt64
 
-        public init(rawValue: UInt8) {
+        public init(rawValue: UInt64) {
             self.rawValue = rawValue
         }
 

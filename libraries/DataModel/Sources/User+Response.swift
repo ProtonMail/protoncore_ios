@@ -31,7 +31,7 @@ extension UserInfo {
                 uKeys.append(Key.init(response: key_res))
             }
         }
-        let subscribed = response["Subscribed"] as? UInt8
+        let subscribed = response["Subscribed"] as? UInt64
 
         self.init(
             maxSpace: response["MaxSpace"] as? Int64,
