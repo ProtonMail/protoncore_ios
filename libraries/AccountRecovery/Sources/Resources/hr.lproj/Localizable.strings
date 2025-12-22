@@ -1,10 +1,10 @@
 "Settings_Item" = "Poništavanje lozinke";
 
-"Insecure_View_Title" = "Password reset";
+"Insecure_View_Title" = "Ponovno postavljanje lozinke";
 
-"Cancelled_View_Title" = "Password reset";
+"Cancelled_View_Title" = "Ponovno postavljanje lozinke";
 
-"Grace_View_Title" = "Password reset";
+"Grace_View_Title" = "Ponovno postavljanje lozinke";
 
 "We received a password reset request for **%@**." = "We received a password reset request for **%@**";
 
@@ -30,15 +30,15 @@
 
 "Grace_View_Undefined_Time_Left" = "a few hours";
 
-"Settings_Item_Value_Grace" = "Pending";
+"Settings_Item_Value_Grace" = "Na čekanju";
 
-"Settings_Item_Value_Expired" = "Expired";
+"Settings_Item_Value_Expired" = "Isteklo";
 
-"Settings_Item_Value_Cancelled" = "Cancelled";
+"Settings_Item_Value_Cancelled" = "Otkazano";
 
-"Settings_Item_Value_Insecure" = "Available";
+"Settings_Item_Value_Insecure" = "Dostupno";
 
-"Insecure_View_Cancel_Button_CTA" = "Cancel reset";
+"Insecure_View_Cancel_Button_CTA" = "Otkaži ponovno postavljanje";
 
 "If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
 
