@@ -1,5 +1,75 @@
 # PaymentsV2
 
+## ProtonCore 34.2.0 update
+Starting from ProtonCore v.34.2.0 the new Payments lib introduces a list of quality of life improvements.
+- RemoteManagerProviding scope simplified
+- Adoption of ProtonCoreNetworking
+- TransactionObserver resolves every transactions
+
+### RemoteManager scope simplified
+With the adoption of ProtonCoreNetworking the RemoteMangerProviding has been updated. The updated protocol is:
+```swift
+public protocol RemoteManagerProviding: Sendable {
+
+    func getAvailablePlans() async throws -> AvailablePlans
+    func getCurrentPlan() async throws -> CurrentSubscription
+
+    func post(_ token: Token) async throws -> NewToken
+    func post(_ token: OCToken) async throws -> NewToken
+    func fetch(token: String) async throws -> ResponseStatus
+
+    func getUserUUID() async throws -> UserTransactionUUIDResponse
+
+    func create(newOCSubscription: OCNewSubscription) async throws -> StatusResponse
+    func create(newSubscription: NewSubscription) async throws -> StatusResponse
+
+    func checkIAPStatus() async throws -> IAPStatus
+}
+```
+The `RemoteManager` instance implementing it now uses ProtoCoreNetworking.
+
+```swift
+    public init(apiService: APIService) {
+        self.apiService = apiService
+    }
+```
+The only property expected now is `APIService`
+
+### Adoption of ProtonCoreNetworking
+ProtonCoreNetworking has been adopted to better manage specific requirements such as alternative routing and session management.
+This adoption simplifies how the library is instantiated.
+From ProtonCore 34.2.0 onwards, the main object required is `APIService`.
+This replaces the previous parameters:
+- sessionId
+- token
+- appVersion
+- doh
+
+```swift
+// Initate PaymentsUIViewController on ProtonCore < 34.2.0
+    public init(sessionId: String,
+                token: String,
+                appVersion: String,
+                doh: DoHInterface & ServerConfig,
+                presentationMode: PresentationMode,
+                hideCurrentPlan: Bool)
+```
+
+```swift
+// Initate PaymentsUIViewController on ProtonCore >= 34.2.0
+    public init(apiService: APIService,
+                presentationMode: PresentationMode = .none,
+                hideCurrentPlan: Bool = false)
+```
+
+### TransactionObserver resolves every transactions
+The TransactionObserver is now the only object able to resolve any transaction initiated from PaymentsV2.
+This change has been made to simplify, and reduce, the number of publishers emitting status changes. 
+Any transaction state is not emitted by `transactionProgress` publisher.
+This makes it imperative, in order to process a transaction, to start `TransactionObserver` as soon as an authenticated session is valid.
+If a transaction is initiated but the observer hasn't been started will result in crash.
+ 
+
 ## Network layer structure
 The new payments network layer is structure as follow:
 - [Remote Manager](#Remote-Manager)

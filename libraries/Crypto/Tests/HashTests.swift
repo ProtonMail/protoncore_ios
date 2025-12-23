@@ -26,7 +26,7 @@ import ProtonCoreCrypto
 class HashTests: CryptoTestBase {
 
     // Assert helper when function has return value
-    public func AssertNoThrow<T> (_ expression: @autoclosure () throws -> T,
+    public func AssertNoThrow<T>(_ expression: @autoclosure () throws -> T,
                                   _ message: String = "",
                                   file: StaticString = #file,
                                   line: UInt = #line,

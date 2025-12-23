@@ -154,7 +154,7 @@ extension String {
         return self
     }
 
-    func preg_match (_ partten: String) -> Bool {
+    func preg_match(_ partten: String) -> Bool {
         let options: NSRegularExpression.Options = [.caseInsensitive, .dotMatchesLineSeparators]
         do {
             let regex = try NSRegularExpression(pattern: partten, options: options)
@@ -168,14 +168,14 @@ extension String {
         return false
     }
     // <link rel="stylesheet" type="text/css" href="http://url/">
-    func hasImage () -> Bool {
+    func hasImage() -> Bool {
         if self.preg_match("\\ssrc='(?!cid:)|\\ssrc=\"(?!cid:)|xlink:href=|poster=|background=|url\\(|url&#40;|url&#x28;|url&lpar;") {
             return true
         }
         return false
     }
 
-    func stringByPurifyImages () -> String {
+    func stringByPurifyImages() -> String {
         // src=\"(?!cid:)(.*?)(^|>|\"|\\s)
         // let out = self.preg_replace("src=\"(.*?)(^|>|\"|\\s)|srcset=\"(.*?)(^|>|\"|\\s)|src='(.*?)(^|>|'|\\s)|xlink:href=\"(.*?)(^|>|\"|\\s)|poster=\"(.*?)(^|>|\"|\\s)|background=\"(.*?)(^|>|\"|\\s)|url\\((.*?)(^|>|\\)|\\s)", replaceto: " ")
 
@@ -195,7 +195,7 @@ extension String {
         return out
     }
 
-    func stringFixImages () -> String {
+    func stringFixImages() -> String {
         var out = self.preg_replace(" data-src='", replaceto: " src='")
         out = out.preg_replace(" data-src=\"", replaceto: " src=\"")
         out = out.preg_replace(" data-srcset=", replaceto: " srcset=")
@@ -259,7 +259,7 @@ extension String {
         return decodedData!
     }
 
-    func parseObject () -> [String: String] {
+    func parseObject() -> [String: String] {
         if self.isEmpty {
             return ["": ""]
         }

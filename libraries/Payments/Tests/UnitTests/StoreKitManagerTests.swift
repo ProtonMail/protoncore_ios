@@ -268,7 +268,7 @@ final class StoreKitManagerTests: XCTestCase {
             XCTFail("Shouldn't be calling success handler")
         } errorCompletion: { _ in
                 XCTFail("Shouldn't be calling the error handler")
-            }
+        }
 
         wait(for: [expectation], timeout: 50)
         // then
