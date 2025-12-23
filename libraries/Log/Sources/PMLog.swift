@@ -56,7 +56,7 @@ public final class PMLog {
     private static let numberOfOldestLinesToTrimInOneGo = 500
     private static let queue = DispatchQueue(label: "ch.proton.core.log")
 
-    private nonisolated(unsafe) static var mExternalLogger: (any ExternalLogProtocol)?
+    nonisolated(unsafe) private static var mExternalLogger: (any ExternalLogProtocol)?
 
     /// Set the host used to derive the Sentry host URL.  Should be `doh.defaultHost` for most clients.
     public static func setExternalLoggerHost(_ host: String) {

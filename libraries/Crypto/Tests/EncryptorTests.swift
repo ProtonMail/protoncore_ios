@@ -105,7 +105,7 @@ class EncryptorTests: CryptoTestBase {
             XCTFail("Should not happen: \(error)")
         }
     }
-    
+
     func testEncryptSignRsa1023() {
         let privKey = self.content(of: "user_rsa1023_privatekey")
         let privKeyPassphrase = self.content(of: "user_rsa1023_privatekey_passphrase")
