@@ -18,7 +18,7 @@
 
 "Error_view_title" = "Valamilyen hiba történt";
 
-"Loading_plans_message" = "Elérhető csomagok lekérése...";
+"Loading_plans_message" = "Fetching your plans...";
 
 "Monthly_cycle" = "1 hónap";
 

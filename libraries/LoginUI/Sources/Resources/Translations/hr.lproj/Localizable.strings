@@ -226,7 +226,7 @@
 
 "Please choose how you want to confirm your identity." = "Please choose how you want to confirm your identity.";
 
-"One-time code" = "One-time code";
+"One-time code" = "Jednokratni kod";
 
 "Security key" = "Sigurnosni ključ";
 
@@ -252,7 +252,7 @@
 
 "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys." = "You don't yet have any security keys enrolled in your account. Please use the Proton %@ web application to add security keys.";
 
-"Security Keys" = "Security Keys";
+"Security Keys" = "Sigurnosni ključevi";
 
 "To manage, add, or remove security keys, please use the Proton %@ web application." = "To manage, add, or remove security keys, please use the Proton %@ web application.";
 
@@ -318,7 +318,7 @@
 
 "Contact your administrator if the problem persists." = "Contact your administrator if the problem persists.";
 
-"Back to sign-in" = "Back to sign-in";
+"Back to sign-in" = "Natrag na prijavu";
 
 "Ask your administrator for access?" = "Ask your administrator for access?";
 
@@ -372,13 +372,13 @@
 
 "Proton will never ask you to scan a QR code that does not come from the domain **proton.me**." = "Proton will never ask you to scan a QR code that does not come from the domain **proton.me**.";
 
-"Scan QR code" = "Scan QR code";
+"Scan QR code" = "Skeniraj QR kod";
 
 "Authenticate to access the QR code scanner" = "Authenticate to access the QR code scanner";
 
 "Place QR code within the square" = "Place QR code within the square";
 
-"Verifying..." = "Verifying...";
+"Verifying..." = "Potvrđivanje...";
 
 "You’re signed in to %@ on the other device." = "You’re signed in to %@ on the other device.";
 
@@ -386,7 +386,7 @@
 
 "Got it" = "Got it";
 
-"Code not recognized. Try again." = "Code not recognized. Try again.";
+"Code not recognized. Try again." = "Kod nije prepoznat. Pokušajte ponovno.";
 
 "Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me." = "Tip: Never scan a QR code from a website or a person you don’t trust. Proton will never ask you to scan a QR code that doesn’t come from the domain account.proton.me.";
 
@@ -412,9 +412,9 @@
 
 "You're always in control: You can change this anytime in your device settings." = "You're always in control: You can change this anytime in your device settings.";
 
-"Settings" = "Settings";
+"Settings" = "Postavke";
 
-"We couldn't load the QR code" = "We couldn't load the QR code";
+"We couldn't load the QR code" = "Nismo mogli učitati QR kod";
 
 "Retry" = "Pokušaj ponovno";
 
@@ -436,9 +436,9 @@
 
 "Password must contain:" = "Password must contain:";
 
-"Access shared" = "Access shared";
+"Access shared" = "Pristup podijeljen";
 
-"Back to settings" = "Back to settings";
+"Back to settings" = "Natrag na postavke";
 
 "How to sign in using another device" = "How to sign in using another device";
 
@@ -448,27 +448,27 @@
 
 "Select **Sign in on another device → Scan QR code**" = "Select **Sign in on another device → Scan QR code**";
 
-"Scan the code to sign in" = "Scan the code to sign in";
+"Scan the code to sign in" = "Skenirajte kod za prijavu";
 
-"We couldn't sign you in" = "We couldn't sign you in";
+"We couldn't sign you in" = "Nismo Vas uspjeli prijaviti";
 
-"Try generating a new QR code." = "Try generating a new QR code.";
+"Try generating a new QR code." = "Pokušajte generirati novi QR kod.";
 
-"Generate QR code" = "Generate QR code";
+"Generate QR code" = "Generiraj QR kod";
 
-"Please try another sign in method." = "Please try another sign in method.";
+"Please try another sign in method." = "Pokušajte s drugim načinom prijave.";
 
-"Sign in on another device" = "Sign in on another device";
+"Sign in on another device" = "Prijava na drugi uređaj";
 
-"How to sign in with QR code" = "How to sign in with QR code";
+"How to sign in with QR code" = "Kako se prijaviti pomoću QR koda";
 
-"Allow camera access" = "Allow camera access";
+"Allow camera access" = "Dopusti pristup kameri";
 
 "To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings." = "To sign in with QR code, you'll need to let Proton %@ access your camera. You can do this in your device settings.";
 
 "Position QR code inside the square" = "Position QR code inside the square";
 
-"Sign in with QR code" = "Sign in with QR code";
+"Sign in with QR code" = "Prijavi se pomoću QR koda";
 
 "Open any Proton app on the device you want to sign in to" = "Open any Proton app on the device you want to sign in to";
 
@@ -488,4 +488,4 @@
 
 "Learn more" = "Više informacija";
 
-"**Security tips**" = "**Security tips**";
+"**Security tips**" = "**Sigurnosni savjeti**";

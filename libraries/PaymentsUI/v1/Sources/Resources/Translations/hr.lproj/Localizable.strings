@@ -2,15 +2,15 @@
 
 "Cancel" = "Odustani";
 
-"Warning" = "Warning";
+"Warning" = "Upozorenje";
 
-"Select a plan" = "Select a plan";
+"Select a plan" = "Odaberite pretplatu";
 
-"Current plan" = "Current plan";
+"Current plan" = "Trenutna pretplata";
 
-"Subscription" = "Subscription";
+"Subscription" = "Pretplata";
 
-"Upgrade your plan" = "Upgrade your plan";
+"Upgrade your plan" = "Nadogradite svoju pretplatu";
 
 "Only annual subscriptions without auto-renewal are available inside the mobile app." = "Only annual subscriptions without auto-renewal are available inside the mobile app.";
 
@@ -22,35 +22,35 @@
 
 "Contact an administrator to make changes to your Proton subscription." = "Contact an administrator to make changes to your Proton subscription.";
 
-"%1$@ of %2$@" = "%1$@ of %2$@";
+"%1$@ of %2$@" = "%1$@ od %2$@";
 
-"%@ storage" = "%@ storage";
+"%@ storage" = "%@ pohrane";
 
-"%@ storage / user" = "%@ storage / user";
+"%@ storage / user" = "%@ pohrane po korisniku";
 
-"for %@" = "for %@";
+"for %@" = "za %@";
 
-"Custom email addresses" = "Custom email addresses";
+"Custom email addresses" = "Prilagođene adrese e-pošte";
 
-"Priority customer support" = "Priority customer support";
+"Priority customer support" = "Prioritetna korisnička podrška";
 
 "Adblocker (NetShield)" = "Adblocker (NetShield)";
 
-"Streaming service support" = "Streaming service support";
+"Streaming service support" = "Podrška za streaming usluge";
 
-"High speed" = "High speed";
+"High speed" = "Visoka brzina";
 
-"Highest speed" = "Highest speed";
+"Highest speed" = "Najviša brzina";
 
-"Multi-user support" = "Multi-user support";
+"Multi-user support" = "Podrška za više korisnika";
 
 "The basic for private and secure communications." = "The basic for private and secure communications.";
 
 "Full-featured mailbox with advanced protection." = "Full-featured mailbox with advanced protection.";
 
-"Limited time offer" = "Limited time offer";
+"Limited time offer" = "Vremenski ograničena ponuda";
 
-"Complete payment?" = "Complete payment?";
+"Complete payment?" = "Dovršiti plaćanje?";
 
 "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account" = "A purchase for a Proton Bundle plan has already been initiated. Press continue to complete the payment processing and create your account";
 
@@ -126,10 +126,10 @@
 
 "For next-level password management and identity protection." = "For next-level password management and identity protection.";
 
-"Pay monthly" = "Pay monthly";
+"Pay monthly" = "Plaćaj mjesečno";
 
-"Pay annually" = "Pay annually";
+"Pay annually" = "Plaćaj godišnje";
 
-"Pay every two years" = "Pay every two years";
+"Pay every two years" = "Plaćaj svake dvije godine";
 
-"Free" = "Free";
+"Free" = "Besplatno";
