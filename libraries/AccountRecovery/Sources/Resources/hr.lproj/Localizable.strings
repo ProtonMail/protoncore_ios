@@ -6,29 +6,29 @@
 
 "Grace_View_Title" = "Ponovno postavljanje lozinke";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**";
+"We received a password reset request for **%@**." = "Zaprimili smo zahtjev za ponovno postavljanje lozinke za **%@**";
 
-"We received a password reset request for %@." = "We received a password reset request for %@";
+"We received a password reset request for %@." = "Zaprimili smo zahtjev za ponovno postavljanje lozinke za %@";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Ako niste zatražili ponovno postavljanje lozinke, **odmah otkažite ovaj zahtjev**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Ako niste zatražili ponovno postavljanje lozinke, odmah otkažite ovaj zahtjev.";
 
-"Password reset requested" = "Password reset requested";
+"Password reset requested" = "Zatraženo je ponovno postavljanje lozinke";
 
-"Insecure_View_line1" = "You can now change your password for the account ";
+"Insecure_View_line1" = "Sada možete promijeniti svoju lozinku za račun ";
 
-"You can change your password in %@." = "You can change your password in %@.";
+"You can change your password in %@." = "Svoju lozinku možete promijeniti u %@.";
 
-"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "To make sure it's really you trying to reset your password, we wait 72 hours before approving requests.";
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "Da bismo bili sigurni da zaista Vi želite ponovno postaviti svoju lozinku, čekamo 72 sata prije odobravanja zahtjeva.";
 
-"Insecure_View_line2" = " freely during ";
+"Insecure_View_line2" = " slobodno tijekom ";
 
-"Insecure_View_line3" = "Please go the signed-in device (in the session where the request was initiated) to change your password.";
+"Insecure_View_line3" = "Idite na prijavljeni uređaj (u sesiji u kojoj je zahtjev pokrenut) da biste promijenili svoju lozinku.";
 
 "Grace_View_Cancel_Button_CTA" = "Poništi zahtjev";
 
-"Grace_View_Undefined_Time_Left" = "a few hours";
+"Grace_View_Undefined_Time_Left" = "nekoliko sati";
 
 "Settings_Item_Value_Grace" = "Na čekanju";
 
@@ -40,42 +40,42 @@
 
 "Insecure_View_Cancel_Button_CTA" = "Otkaži ponovno postavljanje";
 
-"If you didn't ask to reset your password, **cancel this request now**." = "If you didn't ask to reset your password, **cancel this request now**.";
+"If you didn't ask to reset your password, **cancel this request now**." = "Ako niste zatražili ponovno postavljanje lozinke, **odmah otkažite ovaj zahtjev**.";
 
-"If you didn't ask to reset your password, cancel this request now." = "If you didn't ask to reset your password, cancel this request now.";
+"If you didn't ask to reset your password, cancel this request now." = "Ako niste zatražili ponovno postavljanje lozinke, odmah otkažite ovaj zahtjev.";
 
-"We received a password reset request for **%@**." = "We received a password reset request for **%@**.";
+"We received a password reset request for **%@**." = "Zaprimili smo zahtjev za ponovno postavljanje lozinke za **%@**.";
 
-"We received a password reset request for %@." = "We received a password reset request for %@.";
+"We received a password reset request for %@." = "Zaprimili smo zahtjev za ponovno postavljanje lozinke za %@.";
 
-"Password reset cancelled" = "Password reset cancelled";
+"Password reset cancelled" = "Ponovno postavljanje lozinke je otkazano";
 
-"Cancelled by the user" = "Cancelled by the user";
+"Cancelled by the user" = "Otkazao je korisnik";
 
-"Authenticated in another session" = "Authenticated in another session";
+"Authenticated in another session" = "Autentificirano u drugoj sesiji";
 
-"none" = "none";
+"none" = "ništa";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "Proces oporavka računa je istekao zbog neaktivnosti";
 
-"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "If you never made a password reset request, someone else could have access to your account. **Change your password now**";
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "Ako nikada niste zatražili ponovno postavljanje lozinke, netko drugi možda ima pristup Vašem računu. **Odmah promijenite svoju lozinku**";
 
-"If you never made a password reset request, someone else could have access to your account. Change your password now" = "If you never made a password reset request, someone else could have access to your account. Change your password now";
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "Ako nikada niste zatražili ponovno postavljanje lozinke, netko drugi možda ima pristup Vašem računu. Odmah promijenite svoju lozinku";
 
-"The account recovery process expired due to inaction" = "The account recovery process expired due to inaction";
+"The account recovery process expired due to inaction" = "Proces oporavka računa je istekao zbog neaktivnosti";
 
-"Recovery process not started" = "Recovery process not started";
+"Recovery process not started" = "Proces oporavka nije započeo";
 
-"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Currently there is no account recovery in process. Please go to a session on the web application to recover your password.";
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "Trenutno nema postupaka za oporavak računa koji su u tijeku. Idite u sesiju u web aplikaciji za oporavak Vaše lozinke.";
 
-"You can now reset your password" = "You can now reset your password";
+"You can now reset your password" = "Sada možete ponovno postaviti svoju lozinku";
 
-"Reset available until %@." = "Reset available until %@.";
+"Reset available until %@." = "Ponovno postavljanje je dostupno do %@.";
 
-"Change device to continue" = "Change device to continue";
+"Change device to continue" = "Promijenite uređaj za nastavak";
 
-"To reset your password, go back to your active session on **the originating device**." = "To reset your password, go back to your active session on **the originating device**.";
+"To reset your password, go back to your active session on **the originating device**." = "Idite na aktivnu sesiju na **uređaju s kojeg potječe zahtjev** da biste ponovno postavili lozinku.";
 
-"To reset your password, go back to your active session on the originating device." = "To reset your password, go back to your active session on the originating device.";
+"To reset your password, go back to your active session on the originating device." = "Idite na aktivnu sesiju na uređaju s kojeg potječe zahtjev da biste ponovno postavili lozinku.";
 
-"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now.";
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "Imate %@ za ponovno postavljanje lozinke.\nTo ćete morati učiniti na uređaju i u pregledniku s kojeg je zatraženo ponovno postavljanje lozinke.\nAko niste zatražili ponovno postavljanje lozinke, odmah otkažite zahtjev.";

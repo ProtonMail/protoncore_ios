@@ -1,0 +1,49 @@
+"support form" = "استمارة الدعم";
+
+"email" = "البريد الإلكتروني";
+
+"Twitter" = "منصة X (تويتر سابقا)";
+
+"Troubleshooting" = "استكشاف الأخطاء وإصلاحها";
+
+"Allow alternative routing" = "السماح بالتوجيه البديل";
+
+"No internet connection" = "تعذر الاتصال بالإنترنت";
+
+"Internet Service Provider (ISP) problem" = "حدثت مشكلة من طرف مزود خدمة الإنترنت";
+
+"Government block" = "حجب من طرف الحكومة";
+
+"Antivirus interference" = "تشويش من برامج مكافحة الفيروسات";
+
+"Proxy/Firewall interference" = "تشويش من البروكسي/جدار الحماية";
+
+"Proton is down" = "Proton خارج عن الخدمة";
+
+"Still can't find a solution" = "لم أجد حلًا بعد";
+
+"In case Proton sites are blocked, this setting allows the app to try alternative network routing to reach Proton, which can be useful for bypassing firewalls or network issues. We recommend keeping this setting on for greater reliability. %1$@" = "في حالة حظر مواقع Proton، يتيح هذا الإعداد للتطبيق تجربة مسارات شبكة بديلة للوصول إلى Proton، وهو ما يَسمحُ بتجاوز جدران الحماية أو مشاكل الشبكة. يُستحسن إبقاء هذا الخيار مفعّلًا لضمان استقرار الأداء. %1$@";
+
+"Learn more" = "معرفة المزيد";
+
+"Please make sure that your internet connection is working." = "يرجى التحقق من عمل شبكة الإنترنت.";
+
+"Try connecting to Proton from a different network (or use %1$@ or %2$@)." = "حاول الاتصال بـ Proton من شبكة مختلفة (أو استخدم %1$@ أو %2$@).";
+
+"Your country may be blocking access to Proton. Try using %1$@ (or any other VPN) or %2$@ to access Proton." = "قد يَمنع بلدك الوصول إلى Proton. حاول استخدام %1$@ (أو أي خدمة VPN) أو %2$@ للوصول إلى Proton.";
+
+"Temporarily disable or remove your antivirus software." = "عطِّل أو أزل برنامج مكافحة الفيروسات مؤقتا.";
+
+"Disable any proxies or firewalls, or contact your network administrator." = "عطّل كافة وكلاء البروكسي أو جدران الحماية، أو اتصل بالمسؤول عن شبكتك.";
+
+"Check Proton Status for our system status." = "تحقق من حالة Proton لمعرفة حالة نظامنا.";
+
+"Proton Status" = "حالة Proton";
+
+"Contact us directly through our support form, email (support@protonmail.zendesk.com), or Twitter." = "تواصل معنا مباشرة من خلال نموذج الدعم، أو البريد الإلكتروني (support@protonmail.zendesk.com) أو من خلال منصة X.";
+
+"Subject..." = "الموضوع...";
+
+"Please share your problem." = "المرجو إخبارنا بمشكلتك.";
+
+"Back" = "رجوع";

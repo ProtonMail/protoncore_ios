@@ -1,0 +1,17 @@
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "لا يمكن الوصول إلى خوادم Proton. قد يكون السبب في ذلك هو التكوين الخاطئ للشبكة، أو أن خوادم Proton لا يعمل أو قد يكون محظورة";
+
+"An error has occured" = "حدث خطأ";
+
+"Get a Proton Mail address linked to this account in your Proton web settings." = "احصل على عنوان Proton Mail المرتبط بهذا الحساب في إعدادات ويب Proton.";
+
+"Proton address required" = "عنوان Proton مطلوب";
+
+"Code doesn't match" = "الرمز غير مطابق";
+
+"Code isn't valid" = "الرمز غير صحيح";
+
+"Device secret not found" = "لم نَعثُر على المفتاح التشفيري للجهاز";
+
+"Passphrase not found" = "لم يتم العثور على عبارة المرور";
+
+"Password update failed" = "فشلت عملية تحديث كلمة المرور";

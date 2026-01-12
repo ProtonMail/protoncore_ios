@@ -1,0 +1,59 @@
+"All_cycle" = "جميع دورات الفوترة";
+
+"Available_plans_section_title" = "ترقية خطتك";
+
+"Available_subscriptions_view_subtitle" = "اطلع على خططنا لضمان خصوصيتك";
+
+"Available_subscriptions_view_title" = "اختر خطة";
+
+"Current_free_plan_name" = "مجاني";
+
+"Current_plan_exipiration" = "ينتهي اشتراكك في";
+
+"Current_plan_renewal" = "يتجدد اشتراكك تلقائيا في";
+
+"Error_view_button_title" = "إعادة المحاولة";
+
+"Error_view_message" = "تعذَّر تحميل هذه الصفحة. يُرجى تحديث الصفحة أو التأكد من اتصالك بالإنترنت.";
+
+"Error_view_title" = "حدث خطأ ما!";
+
+"Loading_plans_message" = "Fetching your plans...";
+
+"Monthly_cycle" = "شهر واحد";
+
+"No_available_plan_message" = "لا يمكن إدارة اشتراكك داخل تطبيق الهاتف المحمول.";
+
+"No_available_plan_title" = "لم نعثُر على خطط متاحة";
+
+"No_filtered_plan_message" = "يُرجى اختيار دورة فوترة أخرى";
+
+"No_filtered_plan_title" = "لم نعثُر على أي خطط";
+
+"Plans_footer_disclaimer" = "لا يمكن إدارة الاشتراكات داخل تطبيق الهاتف المحمول";
+
+"Purchase_button_title" = "الحصول على %@";
+
+"Select_plan_nav_title" = "اختر خطة";
+
+"Subscriptions_nav_title" = "الاشتراكات";
+
+"Transaction_cancelled_by_user" = "ألغى المستخدم هذه المعاملة المالية";
+
+"Transaction_process_error" = "حدث خطأ ما، يُرجى إعادة المحاولة. إذا استمرت المشكلة، فيُرجى الاتصال بفريق الدعم.";
+
+"Transaction_state_payment_account_update_complete" = "تم تحديث الحساب";
+
+"Transaction_state_payment_account_update_progress" = "جارٍ تحديث حسابك";
+
+"Transaction_state_payment_confirmation_complete" = "تم تأكيد عملية الدفع";
+
+"Transaction_state_payment_confirmation_progress" = "جارٍ تأكيد عملية الدفع";
+
+"Transaction_state_view_subtitle" = "لن يستغرق هذا الإجراء أكثر من دقيقة.";
+
+"Transaction_state_view_title" = "جارٍ التحقق من عملية الدفع...";
+
+"Yearly_cycle" = "12 شهرًا";
+
+"Transaction_pending" = "Purchase pending. It will resume once the required actions are fulfilled";

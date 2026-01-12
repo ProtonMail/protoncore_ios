@@ -2,25 +2,25 @@
 
 "Manage accounts" = "Upravljanje računima";
 
-"Signed in to Proton Mail" = "Signed in to Proton Mail";
+"Signed in to Proton Mail" = "Prijavljeni ste u Proton Mail";
 
-"Signed out of Proton Mail" = "Signed out of Proton Mail";
+"Signed out of Proton Mail" = "Odjavljeni ste iz Proton Maila";
 
 "Sign out" = "Odjava";
 
-"Remove account from this device" = "Remove account from this device";
+"Remove account from this device" = "Ukloni račun s ovog uređaja";
 
 "Remove account" = "Ukloni račun";
 
-"You will be signed out and all the data associated with this account will be removed from this device." = "You will be signed out and all the data associated with this account will be removed from this device.";
+"You will be signed out and all the data associated with this account will be removed from this device." = "Bit ćete odjavljeni i svi podaci povezani povezani s ovim računom bit će uklonjeni s ovog uređaja.";
 
 "Remove" = "Ukloni";
 
 "Are you sure you want to sign out %@?" = "Da li ste sigurni da se želite odjaviti %@?";
 
-"Dismiss account switcher" = "Dismiss account switcher";
+"Dismiss account switcher" = "Odbaci izbornik za prebacivanje računa";
 
-"Sign in to another account" = "Sign in to another account";
+"Sign in to another account" = "Prijavi se na drugi račun";
 
 "Cancel" = "Odustani";
 

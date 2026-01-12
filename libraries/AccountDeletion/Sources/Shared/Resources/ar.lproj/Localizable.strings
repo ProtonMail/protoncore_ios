@@ -1,0 +1,15 @@
+"Delete account" = "حذف الحساب";
+
+"This will permanently delete your account and all of its data. You will not be able to reactivate this account." = "سوف يتم حذف حسابك وجميع بياناته بشكل دائم. ولن تتمكن من إعادة تنشيط هذا الحساب.";
+
+"Account deleted.\nLogging out..." = "تم حذف الحساب.\n جاري تسجيل الخروج...";
+
+"Close" = "إغلاق";
+
+"OK" = "موافق";
+
+"A networking error has occured" = "حدث خطأ في الشبكة.";
+
+"The Proton servers are unreachable. It might be caused by wrong network configuration, Proton servers not working or Proton servers being blocked" = "لا يمكن الوصول إلى خوادم Proton. قد يكون السبب في ذلك هو التكوين الخاطئ للشبكة، أو أن خوادم Proton لا يعمل أو قد يكون محظورة";
+
+"Troubleshoot" = "مكتشف الأخطاء";

@@ -1,0 +1,81 @@
+"Settings_Item" = "إعادة تعيين كلمة المرور";
+
+"Insecure_View_Title" = "إعادة تعيين كلمة المرور";
+
+"Cancelled_View_Title" = "إعادة تعيين كلمة المرور";
+
+"Grace_View_Title" = "إعادة تعيين كلمة المرور";
+
+"We received a password reset request for **%@**." = "لقد تلقينا طلب إعادة تعيين كلمة مرور لـ **%@**";
+
+"We received a password reset request for %@." = "لقد تلقينا طلب إعادة تعيين كلمة المرور لـ %@";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "إذا لم تطلب إعادة تعيين كلمة المرور الخاصة بك، ** يُرجى إلغاء هذا الطلب الآن**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "إذا لم تطلب إعادة تعيين كلمة المرور الخاصة بك،  يُرجى إلغاء هذا الطلب الآن.";
+
+"Password reset requested" = "تم طلب إعادة تعيين كلمة المرور";
+
+"Insecure_View_line1" = "يمكنك الآن تغيير كلمة المرور الخاصة بحسابك ";
+
+"You can change your password in %@." = "يمكنك تغيير كلمة المرور الخاصة بك في %@.";
+
+"To make sure it's really you trying to reset your password, we wait 72 hours before approving requests." = "للتأكد من أن صاحب الحساب هو من يريد إعادة تعيين كلمة المرور، سنستغرق 72 ساعة قبل الموافقة على الطلب.";
+
+"Insecure_View_line2" = " خلال فترة ";
+
+"Insecure_View_line3" = "الرجاء الانتقال إلى الجهاز الذي تم تسجيل الدخول عليه (في الجلسة التي تم فيها إرسال الطلب) لتغيير كلمة المرور الخاصة بك.";
+
+"Grace_View_Cancel_Button_CTA" = "إلغاء الطلب";
+
+"Grace_View_Undefined_Time_Left" = "بضع ساعات";
+
+"Settings_Item_Value_Grace" = "في طور المعالجة ";
+
+"Settings_Item_Value_Expired" = "منتهية";
+
+"Settings_Item_Value_Cancelled" = "مَلغِية";
+
+"Settings_Item_Value_Insecure" = "متاحة";
+
+"Insecure_View_Cancel_Button_CTA" = "إلغاء إعادة التعيين";
+
+"If you didn't ask to reset your password, **cancel this request now**." = "إذا لم تطلب إعادة تعيين كلمة المرور الخاصة بك، ** يُرجى إلغاء هذا الطلب الآن**.";
+
+"If you didn't ask to reset your password, cancel this request now." = "إذا لم تطلب إعادة تعيين كلمة المرور الخاصة بك،  يُرجى إلغاء هذا الطلب الآن.";
+
+"We received a password reset request for **%@**." = "لقد تلقينا طلب إعادة تعيين كلمة مرور لـ **%@**.";
+
+"We received a password reset request for %@." = "لقد تلقينا طلب إعادة تعيين كلمة المرور لـ %@.";
+
+"Password reset cancelled" = "تم إلغاء إعادة تعيين كلمة المرور";
+
+"Cancelled by the user" = "تم الإلغاء من المستخدم";
+
+"Authenticated in another session" = "مصادق عليه في جلسة أخرى";
+
+"none" = "لا يوجد";
+
+"The account recovery process expired due to inaction" = "انتهت عملية استعادة الحساب بسبب عدم اتخاذ أي إجراء";
+
+"If you never made a password reset request, someone else could have access to your account. **Change your password now**" = "إذا لم يَسبِق لك طلب إعادة تعيين كلمة المرور، فقد يكون لشخص آخر إمكانية الوصول إلى حسابك. **يُرجى تغيير كلمة مرورك الآن**";
+
+"If you never made a password reset request, someone else could have access to your account. Change your password now" = "إذا لم يَسبِق لك طلب إعادة تعيين كلمة المرور، فقد يكون لشخص آخر إمكانية الوصول إلى حسابك. يُرجى تغيير كلمة مرورك الآن";
+
+"The account recovery process expired due to inaction" = "انتهت عملية استعادة الحساب بسبب عدم اتخاذ أي إجراء";
+
+"Recovery process not started" = "لم تبدأ عملية الاسترداد";
+
+"Currently there is no account recovery in process. Please go to a session on the web application to recover your password." = "لا توجد حاليا أي عملية استعادة حساب قيد التنفيذ. يرجى الانتقال إلى تطبيق الويب لاستعادة كلمة مرورك.";
+
+"You can now reset your password" = "يمكنك الآن إعادة تعيين كلمة مرورك.";
+
+"Reset available until %@." = "إعادة التعيين متاحة حتى %@.";
+
+"Change device to continue" = "يُرجَى تغيير الجهاز للمتابعة";
+
+"To reset your password, go back to your active session on **the originating device**." = "لإعادة تعيين كلمة المرور، ارجع إلى جلستك النشطة على **الجهاز الأصلي**.";
+
+"To reset your password, go back to your active session on the originating device." = "لإعادة تعيين كلمة المرور، ارجع إلى جلستك النشطة على الجهاز الأصلي.";
+
+"You have %@ to reset your password.\nYou'll need to do this on the device and browser that you made your password reset request from.\nIf you didn't ask to reset your password, cancel the request now." = "أمامك %@ لإعادة تعيين كلمة مرورك.\n يُرجَى تغيير كلمة المرور من الجهاز والمتصفح الذي أرسَلت منه طلب إعادة تعيين كلمة المرور.\nإذا لم تَطلب إعادة تعيين كلمة مرورك، فيُرجى إلغاء الطلب الآن.";

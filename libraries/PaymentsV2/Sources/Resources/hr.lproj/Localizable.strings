@@ -1,31 +1,31 @@
-"APIs_malformed_url_request" = "Something went wrong, and we couldn't fulfil your request. If the issue persists, please contact customer support.";
+"APIs_malformed_url_request" = "Nešto je pošlo po zlu i nismo mogli ispuniti vaš zahtjev. Ako problem potraje, obratite se korisničkoj podršci.";
 
-"Plans_Manager_impossible_to_get_user_uuid" = "It was impossible to get the user’s UUID for the transaction";
+"Plans_Manager_impossible_to_get_user_uuid" = "Nije bilo moguće dohvatiti korisnikov UUID za transakciju";
 
-"Plans_Manager_impossible_to_match_plan" = "It was impossible to match the Proton Plan to an Apple Store plan";
+"Plans_Manager_impossible_to_match_plan" = "Nije bilo moguće uskladiti Protonovu pretplatu s pretplatom na Apple Storeu";
 
-"Plans_Manager_impossible_to_restore_transactions" = "It was impossible to restore transactions, please contact customer support";
+"Plans_Manager_impossible_to_restore_transactions" = "Nije bilo moguće vratiti transakcije, kontaktirajte korisničku podršku";
 
-"Plans_Manager_Transaction_cancelled_by_user" = "The transaction has been cancelled by the user";
+"Plans_Manager_Transaction_cancelled_by_user" = "Korisnik je otkazao transakciju";
 
-"Plans_Manager_Transaction_unknown_error" = "An unexpected error occured, if this persists, please contact customer support";
+"Plans_Manager_Transaction_unknown_error" = "Došlo je do neočekivane pogreške. Ako se to ponovi, kontaktirajte korisničku podršku";
 
-"Plans_Manager_peding_transaction_received" = "Unexpected pending transaction received";
+"Plans_Manager_peding_transaction_received" = "Primljena je neočekivana transakcija na čekanju";
 
-"PlansComposer_unable_to_fetch_currentSub" = "Unable to fetch the current subscription";
+"PlansComposer_unable_to_fetch_currentSub" = "Nije moguće dohvatiti trenutnu pretplatu";
 
-"Remote_manager_error" = "Something went wrong and we couldn't fulfill your request. If the issue persists, please contact customer support.";
+"Remote_manager_error" = "Nešto je pošlo po zlu i nismo mogli ispuniti vaš zahtjev. Ako problem potraje, obratite se korisničkoj podršci.";
 
-"SK_Receipt_impossible_to_get_receipt" = "Impossible to get transaction receipt data from Apple";
+"SK_Receipt_impossible_to_get_receipt" = "Nije moguće dohvatiti podatke računa za transakciju od Applea";
 
-"Transaction_Handler_plan_not_found" = "It was impossible to find the name of the plan you’re trying to purchase. If the issue persists please contact customer support";
+"Transaction_Handler_plan_not_found" = "Bilo je nemoguće pronaći naziv pretplate koju pokušavate kupiti. Ako problem potraje, kontaktirajte korisničku podršku";
 
-"Transaction_Handler_repeated_purchase" = "It's not possible to renew the selected plan multiple times. If you think this is an error or if the issue persists please contact our customer support";
+"Transaction_Handler_repeated_purchase" = "Nije moguće višestruko obnoviti odabranu pretplatu. Ako mislite da je ovo greška ili ako se problem nastavi, obratite se našoj korisničkoj podršci";
 
-"Transaction_Handler_receipt_update_failed" = "An error occured while requesting the transaction receipt from Apple. If the issue persists please contact customer support";
+"Transaction_Handler_receipt_update_failed" = "Došlo je do pogreške prilikom zatraživanja potvrde o transakciji od tvrtke Apple. Ako problem potraje, kontaktirajte korisničku podršku";
 
-"PayUpFront_offer_description" = "Allows new subscribers to pay a one-time introductory price for a specific duration, after which they pay the regular subscription price.";
+"PayUpFront_offer_description" = "Omogućuje novim pretplatnicima da plate jednokratnu uvodnu cijenu za određeno razdoblje, nakon čega plaćaju redovnu cijenu pretplate.";
 
-"PayAsYouGo_offer_description" = "Allows new subscribers to pay an introductory price for a specific number of billing periods before transitioning to the regular subscription price.";
+"PayAsYouGo_offer_description" = "Omogućuje novim pretplatnicima da plate uvodnu cijenu za određeni broj obračunskih ciklusa prije prelaska na redovnu cijenu pretplate.";
 
-"FreeTrial_offer_description" = "Allows new subscribers to have access to the subscription for a given number of billing cycles. One that expires, the user pays full price.";
+"FreeTrial_offer_description" = "Omogućuje novim pretplatnicima pristup pretplati tijekom određenog broja platnih ciklusa. Nakon što istekne, korisnik plaća punu cijenu.";

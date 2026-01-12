@@ -1,0 +1,39 @@
+"pmsettings-settings-title" = "الإعدادات";
+
+"pmsettings-settings-app-settings-section" = "إعدادات التطبيق";
+
+"pmsettings-settings-system-settings-section" = "إعدادات النظام";
+
+"pmsettings-settings-system-settings-language-title" = "اللغة";
+
+"pmsettings-settings-system-settings-language-description" = "يمكنك اختيار اللغة المفضلة في إعدادات النظام لديك.";
+
+"pmsettings-settings-system-settings-language-button" = "تعيين اللغة في إعدادات النظام.";
+
+"pmsettings-settings-system-settings-notifications-title" = "الإشعارات";
+
+"pmsettings-settings-system-settings-notifications-description" = "يمكن لهذا التقويم أن يبقيك على اطلاع دائم بالأحداث التي تحدث أو الدعوات. إذا كنت تريد الحصول على إشعارات فورية فعليك تغيير إعدادات النظام.";
+
+"pmsettings-settings-system-settings-notifications-button" = "إدارة الصلاحيات في إعدادات النظام";
+
+"pmsettings-settings-about-section" = "عن";
+
+"pmsettings-settings-about-acknowledgements" = "الإقرارات";
+
+"pmsettings-settings-about-privacy" = "سياسة الخصوصية";
+
+"pmsettings-settings-about-terms" = "شروط الخدمة";
+
+"pmsettings-settings-footer" = "إصدار التطبيق: %@";
+
+"Bug report" = "تقرير الأخطاء";
+
+"Send report" = "إرسال تقرير";
+
+"Title" = "العنوان";
+
+"What went wrong" = "ما الخطأ الذي حدث";
+
+"Please describe the problem in as much detail as you can. If there was an error message, let us know what it said. Minimum 10 characters." = "يرجى وصف المشكلة بأكبر قدر ممكن من التفاصيل. إذا كانت هناك رسالة خطأ، فأخبرنا بما جاء فيها. الحد الأدنى 10 أحرف.";
+
+"Your report was sent successfully" = "تم إرسال التقرير بنجاح";
