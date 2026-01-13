@@ -26,6 +26,7 @@ private enum Constants {
     static let noSpacing: CGFloat = 0
     static let closeButtonHeight: CGFloat = 24
     static let arrowOutHeight: CGFloat = 24
+    static let closeButtonPadding: CGFloat = 10
     static let horizontalPadding: CGFloat = 16
     static let cornerRadius: CGFloat = 16
     static let crosshairTopPadding: CGFloat = 144
@@ -114,7 +115,9 @@ struct ScanQRCodeView: View {
                     .scaledToFit()
                     .frame(width: Constants.closeButtonHeight, height: Constants.closeButtonHeight)
                     .foregroundStyle(closeButtonColor)
+                    .padding(Constants.closeButtonPadding)
             }
+            .contentShape(Rectangle())
             Spacer()
         }
         .padding(.horizontal, Constants.horizontalPadding)
