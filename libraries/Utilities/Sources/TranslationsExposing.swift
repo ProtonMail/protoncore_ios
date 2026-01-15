@@ -30,12 +30,22 @@ public protocol TranslationsExposing: CaseIterable {
 
 public extension TranslationsExposing {
     func localized(key: String, value defaultValue: String? = nil, comment: String) -> String {
+        Self.localizing(key: key, value: defaultValue, comment: comment)
+    }
+
+    static func localizing(key: String, value defaultValue: String? = nil, comment: String) -> String {
         let value: String
         if let defaultValue {
             value = defaultValue
         } else {
             value = key
         }
-        return NSLocalizedString(key, bundle: Self.bundle, value: "\(Self.prefixForMissingValue)\(value)", comment: comment)
+
+        return NSLocalizedString(
+            key,
+            bundle: Self.bundle,
+            value: "\(Self.prefixForMissingValue)\(value)",
+            comment: comment
+        )
     }
 }
